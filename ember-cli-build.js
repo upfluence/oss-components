@@ -4,15 +4,20 @@ var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
 module.exports = function(defaults) {
   var app = new EmberAddon(defaults, {
-    // Add options here
+    lessOptions: {
+      paths: [
+        'bower_components/bootstrap/less',
+        'bower_components/upfluence-oss/less',
+      ]
+    }
   });
 
-  /*
-    This build file specifies the options for the dummy test app of this
-    addon, located in `/tests/dummy`
-    This build file does *not* influence how the addon or the app using it
-    behave. You most likely want to be modifying `./index.js` or app's build file
-  */
+  app.import('bower_components/upfluence-oss/fonts/GT-Eesti-Display-Medium.ttf', { destDir: 'assets/fonts' });
+  app.import('bower_components/upfluence-oss/fonts/GT-Eesti-Display-Medium.eot', { destDir: 'assets/fonts' });
+  app.import('bower_components/upfluence-oss/fonts/GT-Eesti-Display-Medium.woff', { destDir: 'assets/fonts' });
+  app.import('bower_components/upfluence-oss/fonts/GT-Eesti-Text-Book.ttf', { destDir: 'assets/fonts' });
+  app.import('bower_components/upfluence-oss/fonts/GT-Eesti-Text-Book.eot', { destDir: 'assets/fonts' });
+  app.import('bower_components/upfluence-oss/fonts/GT-Eesti-Text-Book.woff', { destDir: 'assets/fonts' });
 
   return app.toTree();
 };
