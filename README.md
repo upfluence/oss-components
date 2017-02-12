@@ -1,4 +1,4 @@
-# Upfluence OSS Component
+# Upfluence OSS Components
 
 This project hosts a bunch of branded (following the OSS framework)
 components for usage in our projects.
