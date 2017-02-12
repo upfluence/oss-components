@@ -1,3 +1,11 @@
 <div class='form-group upf-input-container'>
   {{yield}}
+
+  {{#if error}}
+    <span class='col-xs-12 upf-input-feedback upf-input-feedback--error'>
+      <i class='fa fa-exclamation-circle'
+         aria-label={{error}}>
+      </i>
+    </span>
+  {{/if}}
 </div>
