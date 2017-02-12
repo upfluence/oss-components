@@ -7,5 +7,13 @@
          aria-label={{error}}>
       </i>
     </span>
+  {{else}}
+    {{#if help}}
+      <span class='col-xs-12 upf-input-feedback upf-input-feedback--help'>
+        <i class='fa fa-question-circle'
+           aria-label={{help}}>
+        </i>
+      </span>
+    {{/if}}
   {{/if}}
 </div>
