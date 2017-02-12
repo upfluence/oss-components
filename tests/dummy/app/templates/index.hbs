@@ -202,45 +202,35 @@
         <h4>Inputs</h4>
         <div class='row'>
           <div class='col-xs-6'>
-            <div class='form-group upf-input-container'>
+            {{#input-wrapper}}
               <label>Label</label>
               <input type='text' placeholder='Some random placeholder text'
                      class='form-control upf-input' />
-            </div>
+            {{/input-wrapper}}
           </div>
 
           <div class='col-xs-6'>
-            <div class='form-group upf-input-container'>
+            {{#input-wrapper}}
               <label>Label</label>
               <input type='text' value='This one has a value'
                      class='form-control upf-input' />
-            </div>
+            {{/input-wrapper}}
           </div>
 
           <div class='col-xs-12'>
-            <div class='form-group upf-input-container upf-input-container--errorful'>
+            {{#input-wrapper error="Hi! My name is error. But you can call me Nickelback"}}
               <label>Label</label>
               <input type='text' value='This one has an error'
                      class='form-control upf-input' />
-              <span class='col-xs-12 upf-input-feedback upf-input-feedback--error'>
-                <i class='fa fa-exclamation-circle'
-                   aria-label='Hi! My name is error. But you can call me Nickelback'>
-                </i>
-              </span>
-            </div>
+            {{/input-wrapper}}
           </div>
 
           <div class='col-xs-12'>
-            <div class='form-group upf-input-container upf-input-container--has-help'>
+            {{#input-wrapper help="Confusing input huh?"}}
               <label>Label</label>
               <input type='text' value='A cool input that even offers some help'
                      class='form-control upf-input' />
-              <span class='col-xs-12 upf-input-feedback upf-input-feedback--help'>
-                <i class='fa fa-question-circle'
-                   aria-label='Confusing input huh?'>
-                </i>
-              </span>
-            </div>
+            {{/input-wrapper}}
           </div>
         </div>
       </div>
