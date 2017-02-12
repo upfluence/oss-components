@@ -13,12 +13,5 @@ module.exports = function(defaults) {
     }
   });
 
-  app.import('bower_components/upfluence-oss/fonts/GT-Eesti-Display-Medium.ttf', { destDir: 'assets/fonts' });
-  app.import('bower_components/upfluence-oss/fonts/GT-Eesti-Display-Medium.eot', { destDir: 'assets/fonts' });
-  app.import('bower_components/upfluence-oss/fonts/GT-Eesti-Display-Medium.woff', { destDir: 'assets/fonts' });
-  app.import('bower_components/upfluence-oss/fonts/GT-Eesti-Text-Book.ttf', { destDir: 'assets/fonts' });
-  app.import('bower_components/upfluence-oss/fonts/GT-Eesti-Text-Book.eot', { destDir: 'assets/fonts' });
-  app.import('bower_components/upfluence-oss/fonts/GT-Eesti-Text-Book.woff', { destDir: 'assets/fonts' });
-
   return app.toTree();
 };
