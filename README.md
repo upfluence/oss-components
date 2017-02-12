@@ -1,26 +1,22 @@
-# Oss-components
+# Upfluence OSS Component
 
-This README outlines the details of collaborating on this Ember addon.
+This project hosts a bunch of branded (following the OSS framework)
+components for usage in our projects.
 
-## Installation
+## Running / Development
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+This addon's dummy app is actually a showcase of the frontend framework
+and its custom components.
 
-## Running
+It's an Ember app, so we assume you have all set up as that's our
+frontend stack anyway.
 
 * `ember server`
-* Visit your app at http://localhost:4200.
+* Visit your app at [http://localhost:4200](http://localhost:4200).
 
-## Running Tests
+### Deploying
 
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
+A simple `ember deploy production --verbose` will do the trick.
 
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
+PS: Do not forget to set the env variables accordingly (See
+`config/deploy.js` for details about needed variables).
