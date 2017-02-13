@@ -17,7 +17,6 @@ export default Ember.Component.extend({
   },
 
   didInsertElement: function() {
-    console.log(this.get('btnSize'))
     var _btnSize = this.get('btnSize');
     var _height = this.get('height');
     var _focus = this.get('focus');

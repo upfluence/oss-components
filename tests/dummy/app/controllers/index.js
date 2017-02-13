@@ -8,4 +8,39 @@ export default Ember.Controller.extend({
     'in voluptate velit esse cillum dolore eu fugiat nulla pariatur. ' +
     'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui ' +
     'officia deserunt mollit anim id est laborum.',
+
+  tableColumns: [
+    {
+      'propertyName': 'id',
+      'title': 'ID'
+    },
+    {
+      'propertyName': 'firstName',
+      'title': 'First Name'
+    },
+    {
+      'propertyName': 'lastName',
+      'title': 'Last Name'
+    },
+    {
+      'propertyName': 'city',
+      'title': 'City'
+    },
+    {
+      'propertyName': 'username',
+      'title': 'Username'
+    },
+    {
+      'propertyName': 'email',
+      'title': 'Email'
+    },
+    {
+      'propertyName': 'website',
+      'title': 'Website'
+    },
+    {
+      'propertyName': 'phone',
+      'title': 'Phone'
+    },
+  ],
 });
