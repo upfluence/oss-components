@@ -80,6 +80,9 @@ export default Ember.Component.extend({
       style: {
         style: true
       },
+      fontsize: {
+        fontsize: true
+      },
       font: {
         bold: true,
         italic: true,
@@ -89,12 +92,6 @@ export default Ember.Component.extend({
         strikethrough: true,
         clear: true
       },
-      //fontname: {
-        //fontname: true
-      //},
-      fontsize: {
-        fontsize: true
-      },
       color: {
         color: true
       },
@@ -103,9 +100,6 @@ export default Ember.Component.extend({
         ol: true,
         paragraph: true
       },
-      height: {
-        height: true
-      },
       table: {
         table: true
       },
@@ -113,7 +107,6 @@ export default Ember.Component.extend({
         link: true,
         picture: true,
         video: true,
-        hr: true
       },
       view: {
         fullscreen: true,
