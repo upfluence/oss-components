@@ -1,0 +1,11 @@
+<div class='row-fluid'>
+  {{#app-base headerStyle=headerStyle menuItems=menuItems}}
+    {{outlet}}
+  {{/app-base}}
+
+  <div class='switch-header-style'>
+    <button {{action 'switchHeaderStyle'}} class='btn upf-btn'>
+      Switch Header Style
+    </button>
+  </div>
+</div>
