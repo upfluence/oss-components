@@ -5,20 +5,20 @@
     </a>
   </div>
   {{#each menuItems as |menuItem|}}
-    <a href={{menuItem.link}} title={{menuItem.title}}>
+  {{#link-to menuItem.route title=menuItem.title}}
       <div class='header-item'>
         <i class='fa {{menuItem.icon}}'></i>
       </div>
-    </a>
+    {{/link-to}}
   {{/each}}
 {{else}}
   {{#each menuItems as |menuItem|}}
-    <a href={{menuItem.link}} title={{menuItem.title}}>
+    {{#link-to menuItem.route title=menuItem.title}}
       <div class='header-item'>
         <i class='fa {{menuItem.icon}}'></i><br>
         <span>{{menuItem.title}}</span>
       </div>
-    </a>
+    {{/link-to}}
   {{/each}}
   <div class='logo-container'>
     <a href='/'>

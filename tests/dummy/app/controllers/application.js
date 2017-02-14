@@ -5,17 +5,17 @@ export default Ember.Controller.extend({
 
   menuItems: [
     {
-      link: '/colors',
+      route: 'colors',
       icon: 'fa-paint-brush',
       title: 'OSS Colors',
     },
     {
-      link: '/inputs',
+      route: 'inputs',
       icon: 'fa-check-square',
       title: 'OSS Forms',
     },
     {
-      link: '/components',
+      route: 'components',
       icon: 'fa-sitemap',
       title: 'OSS Components',
     },
