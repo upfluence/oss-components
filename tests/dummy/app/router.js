@@ -6,9 +6,9 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.route('colors', { path: '/colors'});
-  this.route('inputs', { path: '/inputs'});
-  this.route('components', { path: '/components'});
+  this.route('colors');
+  this.route('inputs');
+  this.route('components');
 });
 
 export default Router;
