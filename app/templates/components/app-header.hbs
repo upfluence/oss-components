@@ -1,8 +1,8 @@
 {{#if isSidebarStyle}}
   <div class='logo-container'>
-    <a href='/'>
+    {{#link-to 'index'}}
       <img src='/assets/images/upfluence-air-light-blue.png' />
-    </a>
+    {{/link-to}}
   </div>
   {{#each menuItems as |menuItem|}}
   {{#link-to menuItem.route title=menuItem.title}}
@@ -21,9 +21,9 @@
     {{/link-to}}
   {{/each}}
   <div class='logo-container'>
-    <a href='/'>
+    {{#link-to 'index'}}
       <img src='/assets/images/upfluence-air-light-blue.png' />
       <span>Upfluence</span>
-    </a>
+    {{/link-to}}
   </div>
 {{/if}}
