@@ -6,6 +6,9 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('colors', { path: '/colors'});
+  this.route('inputs', { path: '/inputs'});
+  this.route('components', { path: '/components'});
 });
 
 export default Router;
