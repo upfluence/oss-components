@@ -1,0 +1,29 @@
+{{#if isSidebarStyle}}
+  <div class='logo-container'>
+    <a href='/'>
+      <img src='/assets/images/upfluence-air-light-blue.png' />
+    </a>
+  </div>
+  {{#each menuItems as |menuItem|}}
+    <a href={{menuItem.link}} title={{menuItem.title}}>
+      <div class='header-item'>
+        <i class='fa {{menuItem.icon}}'></i>
+      </div>
+    </a>
+  {{/each}}
+{{else}}
+  {{#each menuItems as |menuItem|}}
+    <a href={{menuItem.link}} title={{menuItem.title}}>
+      <div class='header-item'>
+        <i class='fa {{menuItem.icon}}'></i><br>
+        <span>{{menuItem.title}}</span>
+      </div>
+    </a>
+  {{/each}}
+  <div class='logo-container'>
+    <a href='/'>
+      <img src='/assets/images/upfluence-air-light-blue.png' />
+      <span>Upfluence</span>
+    </a>
+  </div>
+{{/if}}
