@@ -1,0 +1,44 @@
+<div class='col-xs-6'>
+  <div class='col-xs-6'>
+    {{#input-wrapper}}
+      <label>Label</label>
+      <input type='text' placeholder='Some random placeholder text'
+             class='form-control upf-input' />
+    {{/input-wrapper}}
+  </div>
+
+  <div class='col-xs-6'>
+    {{#input-wrapper}}
+      <label>Label</label>
+      <input type='text' value='This one has a value'
+             class='form-control upf-input' />
+    {{/input-wrapper}}
+  </div>
+
+
+  <div class='col-xs-12'>
+    {{#input-wrapper error="Hi! My name is error. But you can call me Nickelback"}}
+      <label>Label</label>
+      <input type='text' value='This one has an error'
+             class='form-control upf-input' />
+    {{/input-wrapper}}
+  </div>
+
+  <div class='col-xs-12'>
+    {{#input-wrapper help="Confusing input huh?"}}
+      <label>Label</label>
+      <input type='text' value='A cool input that even offers some help'
+             class='form-control upf-input' />
+    {{/input-wrapper}}
+  </div>
+</div>
+
+<div class='col-xs-6'>
+  <div class='col-xs-12'>
+    <p>
+      The markup to build an input group goes as follows (set error
+      or help arguments to have feedback):
+    </p>
+    {{code-snippet name='inputs.hbs'}}
+  </div>
+</div>
