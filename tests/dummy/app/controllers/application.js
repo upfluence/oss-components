@@ -24,7 +24,6 @@ export default Ember.Controller.extend({
   actions: {
     switchHeaderStyle: function() {
       var headerStyle = (this.get('headerStyle') === 'sidebar') ? 'topbar' : 'sidebar';
-      console.log(headerStyle);
       this.set('headerStyle', headerStyle);
     }
   },

@@ -27,7 +27,7 @@ export default ModelsTableComponent.extend({
     'nav-prev': 'fa fa-arrow-left',
     'nav-next': 'fa fa-arrow-right',
     'nav-last': 'fa fa-chevron-right',
-    'sort-asc': 'fa fa-long-arrow-top',
-    'sort-desc': 'fa fa-long-arrow-bottom'
+    'sort-asc': 'fa fa-sort-asc',
+    'sort-desc': 'fa fa-sort-desc'
   }
 });
