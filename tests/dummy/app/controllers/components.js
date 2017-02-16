@@ -17,13 +17,13 @@ export default Ember.Controller.extend({
       'propertyName': 'supplier_interest',
     },
     {
+      'propertyName': 'selectability',
+    },
+    {
       'propertyName': 'price',
       'title': 'Price',
       'icon': 'fa fa-handshake-o',
       'componentForSortCell': 'data-table/icon-header',
-    },
-    {
-      'propertyName': 'selectability',
     },
     {
       'propertyName': 'proposed_price',
