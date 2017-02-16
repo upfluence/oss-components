@@ -12,35 +12,51 @@ export default Ember.Controller.extend({
   tableColumns: [
     {
       'propertyName': 'id',
-      'title': 'ID'
     },
     {
-      'propertyName': 'firstName',
-      'title': 'First Name'
+      'propertyName': 'supplier_interest',
     },
     {
-      'propertyName': 'lastName',
-      'title': 'Last Name'
+      'propertyName': 'price',
+      'title': 'Price',
+      'icon': 'fa fa-handshake-o',
+      'componentForSortCell': 'data-table/icon-header',
     },
     {
-      'propertyName': 'city',
-      'title': 'City'
+      'propertyName': 'selectability',
     },
     {
-      'propertyName': 'username',
-      'title': 'Username'
+      'propertyName': 'proposed_price',
+      'title': 'Negociated price',
+      'icon': 'fa fa-money',
+      'componentForSortCell': 'data-table/icon-header',
     },
     {
-      'propertyName': 'email',
-      'title': 'Email'
+      'propertyName': 'comment',
+      'title': 'Comment',
+      'icon': 'fa fa-commenting',
+      'componentForSortCell': 'data-table/icon-header',
     },
     {
-      'propertyName': 'website',
-      'title': 'Website'
+      'propertyName': 'visible_by_client',
+      'title': 'Visible by client',
+      'icon': 'fa fa-user-secret upf-icon-group__superior--visibility',
+      'componentForSortCell': 'data-table/icon-header',
+      'component': 'data-table/switchable-boolean-column'
     },
     {
-      'propertyName': 'phone',
-      'title': 'Phone'
+      'propertyName': 'client_approved_for_drafting',
+      'title': 'Client approved for drafting',
+      'icon': 'fa fa-user-secret upf-icon-group__superior--edit',
+      'componentForSortCell': 'data-table/icon-header',
+      'component': 'data-table/switchable-boolean-column'
+    },
+    {
+      'propertyName': 'admin_approved_for_drafting',
+      'title': 'Admin approved for drafting',
+      'icon': 'fa fa-user upf-icon-group__superior--edit',
+      'componentForSortCell': 'data-table/icon-header',
+      'component': 'data-table/switchable-boolean-column',
     },
   ],
 });
