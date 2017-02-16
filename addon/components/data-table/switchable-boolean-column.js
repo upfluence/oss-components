@@ -1,6 +1,5 @@
+import Ember from 'ember';
 import BooleanColumnComponent from 'oss-components/components/data-table/boolean-column';
-
-const { get } = Ember;
 
 export default BooleanColumnComponent.extend({
   classNames: ['upf-toggle-btn'],
