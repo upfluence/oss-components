@@ -20,15 +20,15 @@ export default Ember.Controller.extend({
       'propertyName': 'selectability',
     },
     {
-      'propertyName': 'price',
-      'title': 'Price',
-      'icon': 'fa fa-handshake-o',
-      'componentForSortCell': 'data-table/icon-header',
-    },
-    {
       'propertyName': 'proposed_price',
       'title': 'Negociated price',
       'icon': 'fa fa-money',
+      'componentForSortCell': 'data-table/icon-header',
+    },
+    {
+      'propertyName': 'price',
+      'title': 'Price',
+      'icon': 'fa fa-handshake-o',
       'componentForSortCell': 'data-table/icon-header',
     },
     {
