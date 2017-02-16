@@ -12,6 +12,5 @@ export default BooleanColumnComponent.extend({
     } else {
       this.set(attribute, true);
     }
-    console.log(get(this.get('record'), this.get('column.propertyName')));
   }),
 });
