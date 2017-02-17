@@ -19,6 +19,11 @@ module.exports = {
     app.import('bower_components/summernote/dist/font/summernote.woff', { destDir: 'assets/font' });
 
     //
+    // Money handling stuffs
+    //
+    app.import('bower_components/money-formatter/dist/money-formatter.min.js');
+
+    //
     // Upfluence OSS framework dependencies
     //
     app.import('bower_components/upfluence-oss/fonts/GT-Eesti-Display-Medium.ttf', { destDir: 'assets/fonts' });
