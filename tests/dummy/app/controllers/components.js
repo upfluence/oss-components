@@ -11,7 +11,10 @@ export default Ember.Controller.extend({
 
   tableColumns: [
     {
-      'propertyName': 'id',
+      'propertyName': 'name',
+      'title': 'Influencer',
+      'grouped_with': 'media_url,email',
+      'component': 'data-table/group-column',
     },
     {
       'propertyName': 'supplier_interest',
@@ -36,8 +39,6 @@ export default Ember.Controller.extend({
     {
       'propertyName': 'comment',
       'title': 'Comment',
-      'icon': 'fa fa-commenting',
-      'componentForSortCell': 'data-table/icon-header',
     },
     {
       'propertyName': 'visible_by_client',
