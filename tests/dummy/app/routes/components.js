@@ -111,6 +111,9 @@ export default Ember.Route.extend({
         'visible_by_client': false,
       },
       {
+        'name': faker.name.findName(),
+        'media_url': faker.internet.url(),
+        'email': faker.internet.email(),
         'supplier_interest': 'interested',
         'selectability': 'good',
         'client_approved_for_drafting': false,
@@ -367,6 +370,9 @@ export default Ember.Route.extend({
         'visible_by_client': true,
       },
       {
+        'name': faker.name.findName(),
+        'media_url': faker.internet.url(),
+        'email': faker.internet.email(),
         'supplier_interest': 'not_interested',
         'selectability': 'unknown_selectability',
         'client_approved_for_drafting': false,
