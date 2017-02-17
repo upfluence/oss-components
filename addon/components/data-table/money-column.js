@@ -4,7 +4,7 @@ const { get } = Ember;
 
 export default Ember.Component.extend({
   _receivedValue: Ember.computed('record', 'column.propertyName', function() {
-    return get(this.get('record'), this.get('column.propertyName'))
+    return get(this.get('record'), this.get('column.propertyName'));
   }),
 
   _getFormatter: function(currency) {

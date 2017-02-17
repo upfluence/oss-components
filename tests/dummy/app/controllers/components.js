@@ -24,12 +24,14 @@ export default Ember.Controller.extend({
       'title': 'Negociated price',
       'icon': 'fa fa-money',
       'componentForSortCell': 'data-table/icon-header',
+      'component': 'data-table/money-column',
     },
     {
       'propertyName': 'price',
       'title': 'Price',
       'icon': 'fa fa-handshake-o',
       'componentForSortCell': 'data-table/icon-header',
+      'component': 'data-table/money-column',
     },
     {
       'propertyName': 'comment',
