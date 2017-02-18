@@ -1,29 +1,11 @@
-{{#if isSidebarStyle}}
-  <div class='logo-container'>
-    {{#link-to 'index'}}
-      <img src='/assets/images/upfluence-air-light-blue.png' />
-    {{/link-to}}
-  </div>
-  {{#each menuItems as |menuItem|}}
-  {{#link-to menuItem.route title=menuItem.title}}
-      <div class='header-item'>
-        <i class='fa {{menuItem.icon}}'></i>
-      </div>
-    {{/link-to}}
-  {{/each}}
-{{else}}
-  {{#each menuItems as |menuItem|}}
-    {{#link-to menuItem.route title=menuItem.title}}
-      <div class='header-item'>
-        <i class='fa {{menuItem.icon}}'></i><br>
-        <span>{{menuItem.title}}</span>
-      </div>
-    {{/link-to}}
-  {{/each}}
-  <div class='logo-container'>
-    {{#link-to 'index'}}
-      <img src='/assets/images/upfluence-air-light-blue.png' />
+<div class='logo-container'>
+  {{#link-to 'index'}}
+    <img src='/assets/images/upfluence-air-light-blue.png' />
+
+    {{#if isTopbarStyle}}
       <span>Upfluence</span>
-    {{/link-to}}
-  </div>
-{{/if}}
+    {{/if}}
+  {{/link-to}}
+</div>
+
+{{yield}}

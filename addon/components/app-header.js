@@ -1,16 +1,9 @@
 import Ember from 'ember';
+import HeaderStyleMixin from 'oss-components/mixins/header-style';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(HeaderStyleMixin, {
   tagName: 'nav',
   classNameBindings: ['headerStyleClass'],
-
-  isSidebarStyle: Ember.computed('headerStyle', function() {
-    return this.get('headerStyle') === 'sidebar';
-  }),
-
-  isTopbarStyle: function() {
-    return !this.get('isSidebarStyle');
-  },
 
   headerStyleClass: Ember.computed('headerStyle', function() {
     if (this.get('isSidebarStyle')) {

@@ -1,6 +1,50 @@
 <div class='row-fluid'>
   {{#app-base headerStyle=headerStyle menuItems=menuItems}}
-    {{outlet}}
+    {{#app-header headerStyle=headerStyle}}
+      {{#if isTopbarStyle}}
+        <section class='app-header__left-side'>
+          <div class='header-item'>
+            {{#link-to 'colors'}}
+              Colors
+            {{/link-to}}
+          </div>
+
+          <div class='header-item'>
+            {{#link-to 'inputs'}}
+              Inputs
+            {{/link-to}}
+          </div>
+
+          <div class='header-item'>
+            {{#link-to 'components'}}
+              Components
+            {{/link-to}}
+          </div>
+        </section>
+      {{else}}
+        <div class='header-item'>
+          {{#link-to 'colors' title='Colors'}}
+            <i class='fa fa-paint-brush'></i>
+          {{/link-to}}
+        </div>
+
+        <div class='header-item'>
+          {{#link-to 'inputs' title='Inputs'}}
+            <i class='fa fa-check-square'></i>
+          {{/link-to}}
+        </div>
+
+        <div class='header-item'>
+          {{#link-to 'components' title='Components'}}
+            <i class='fa fa-sitemap'></i>
+          {{/link-to}}
+        </div>
+      {{/if}}
+    {{/app-header}}
+
+    <div class={{mainContentContainerClass}}>
+      {{outlet}}
+    </div>
   {{/app-base}}
 
   <div class='switch-header-style'>

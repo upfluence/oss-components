@@ -1,25 +1,16 @@
 import Ember from 'ember';
+import HeaderStyleMixin from 'oss-components/mixins/header-style';
 
-export default Ember.Controller.extend({
+export default Ember.Controller.extend(HeaderStyleMixin, {
   headerStyle: 'topbar',
 
-  menuItems: [
-    {
-      route: 'colors',
-      icon: 'fa-paint-brush',
-      title: 'OSS Colors',
-    },
-    {
-      route: 'inputs',
-      icon: 'fa-check-square',
-      title: 'OSS Forms',
-    },
-    {
-      route: 'components',
-      icon: 'fa-sitemap',
-      title: 'OSS Components',
-    },
-  ],
+  mainContentContainerClass: Ember.computed('headerStyle', function() {
+    if (this.get('headerStyle') === 'sidebar') {
+      return 'col-xs-11 app-main--along-sidebar';
+    } else {
+      return 'col-xs-12 app-main--below-topbar';
+    }
+  }),
 
   actions: {
     switchHeaderStyle: function() {
