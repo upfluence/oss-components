@@ -11,7 +11,7 @@ export default ModelsTableComponent.extend({
   },
 
   customClasses: {
-    'buttonDefault': 'btn upf-btn--dark--reversed',
+    'buttonDefault': 'btn upf-btn--purple--reversed',
     'columnsDropdown': 'dropdown-menu pull-right upf-dropdown',
     'input': 'form-control upf-input',
     'table': 'table upf-table',

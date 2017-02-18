@@ -23,26 +23,40 @@ section {
     padding: 0;
 
     .square {
-      height: 100px;
+      height: 170px;
     }
 
     .color-meta {
-      padding: 5%;
-      background-color: #ffffff;
+      background-color: rgba(0, 0, 0, 0.3);
       border-bottom-left-radius: @default-radius;
       border-bottom-right-radius: @default-radius;
+      padding: 5%;
+
+      p { color: @color-text-contrast; }
     }
 
-    &.upfluence-primary { background-color: @upfluence-primary; }
-    &.upfluence-primary-light { background-color: @upfluence-primary-light; }
-    &.upfluence-primary-dark { background-color: @upfluence-primary-dark; }
-    &.upfluence-secondary { background-color: @upfluence-secondary; }
-    &.upfluence-secondary-light { background-color: @upfluence-secondary-light; }
-    &.upfluence-secondary-dark { background-color: @upfluence-secondary-dark; }
-    &.upfluence-gray { background-color: @upfluence-gray; }
-    &.upfluence-gray-dark { background-color: @upfluence-gray-dark; }
-    &.upfluence-success { background-color: @upfluence-success; }
-    &.upfluence-error { background-color: @upfluence-error; }
+    &.upf-primary-black .color-meta {
+      background-color: rgba(255,255,255,0.3);
+    }
+
+    // Primary Colors
+    &.upf-primary-bright-purple { background-color: @upf-primary-bright-purple; }
+    &.upf-primary-dark-purple { background-color: @upf-primary-dark-purple; }
+    &.upf-primary-orange { background-color: @upf-primary-orange; }
+    &.upf-primary-rock-blue { background-color: @upf-primary-rock-blue; }
+    &.upf-primary-black { background-color: @upf-primary-black; }
+    &.upf-primary-white { background-color: @upf-primary-white; }
+
+    // Status Colors
+    &.upf-feedback-success { background-color: @upf-feedback-success; }
+    &.upf-feedback-error { background-color: @upf-feedback-error; }
+    &.upf-feedback-alert { background-color: @upf-feedback-alert; }
+/*    &.upfluence-secondary-light { background-color: @upfluence-secondary-light; }*/
+    /*&.upfluence-secondary-dark { background-color: @upfluence-secondary-dark; }*/
+    /*&.upfluence-gray { background-color: @upfluence-gray; }*/
+    /*&.upfluence-gray-dark { background-color: @upfluence-gray-dark; }*/
+    /*&.upfluence-success { background-color: @upfluence-success; }*/
+    /*&.upfluence-error { background-color: @upfluence-error; }*/
   }
 }
 
@@ -58,13 +72,13 @@ section {
 
 .fonts {
   .font {
-    border: 1px solid @upfluence-gray-dark;
+    border: 1px solid @upf-gray-dark;
     border-radius: @default-radius;
     padding: 0;
 
     .square {
       height: 100px;
-      border-bottom: 1px solid @upfluence-gray-dark;
+      border-bottom: 1px solid @upf-gray-dark;
       font-family: inherit;
 
       span {
