@@ -21,6 +21,14 @@
             {{/link-to}}
           </div>
         </section>
+
+        <section class='app-header__right-side pull-right'>
+          <div class='header-item'>
+            <a class='btn upf-btn--orange' {{action 'switchHeaderStyle'}}>
+                Switch Header Style
+            </a>
+          </div>
+        </section>
       {{else}}
         <div class='header-item'>
           {{#link-to 'colors' title='Colors'}}
@@ -46,10 +54,4 @@
       {{outlet}}
     </div>
   {{/app-base}}
-
-  <div class='switch-header-style'>
-    <button {{action 'switchHeaderStyle'}} class='btn upf-btn--orange'>
-      Switch Header Style
-    </button>
-  </div>
 </div>
