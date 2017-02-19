@@ -1,0 +1,33 @@
+<section class='app-header__top'>
+  <div class='header-item'>
+    {{#link-to 'typography' title='Typography'}}
+      <i class='fa fa-italic'></i>
+    {{/link-to}}
+  </div>
+
+  <div class='header-item'>
+    {{#link-to 'colors' title='Colors'}}
+      <i class='fa fa-paint-brush'></i>
+    {{/link-to}}
+  </div>
+
+  <div class='header-item'>
+    {{#link-to 'inputs' title='Inputs'}}
+      <i class='fa fa-check-square'></i>
+    {{/link-to}}
+  </div>
+
+  <div class='header-item'>
+    {{#link-to 'components' title='Components'}}
+      <i class='fa fa-sitemap'></i>
+    {{/link-to}}
+  </div>
+</section>
+
+<section class='app-header__bottom'>
+  <div class='header-item'>
+    <a {{action 'switchHeaderStyle'}}>
+      <i class='fa fa-exchange'></i>
+    </a>
+  </div>
+</section>

@@ -1,0 +1,33 @@
+<section class='app-header__left-side'>
+  <div class='header-item'>
+    {{#link-to 'typography'}}
+      Typography
+    {{/link-to}}
+  </div>
+
+  <div class='header-item'>
+    {{#link-to 'colors'}}
+      Colors
+    {{/link-to}}
+  </div>
+
+  <div class='header-item'>
+    {{#link-to 'inputs'}}
+      Inputs
+    {{/link-to}}
+  </div>
+
+  <div class='header-item'>
+    {{#link-to 'components'}}
+      Components
+    {{/link-to}}
+  </div>
+</section>
+
+<section class='app-header__right-side'>
+  <div class='header-item'>
+    <a class='btn upf-btn--orange' {{action 'switchHeaderStyle'}}>
+        Switch Header Style
+    </a>
+  </div>
+</section>

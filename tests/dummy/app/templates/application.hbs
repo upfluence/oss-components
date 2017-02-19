@@ -2,73 +2,9 @@
   {{#app-base headerStyle=headerStyle menuItems=menuItems}}
     {{#app-header headerStyle=headerStyle}}
       {{#if isTopbarStyle}}
-        <section class='app-header__left-side'>
-          <div class='header-item'>
-            {{#link-to 'typography'}}
-              Typography
-            {{/link-to}}
-          </div>
-
-          <div class='header-item'>
-            {{#link-to 'colors'}}
-              Colors
-            {{/link-to}}
-          </div>
-
-          <div class='header-item'>
-            {{#link-to 'inputs'}}
-              Inputs
-            {{/link-to}}
-          </div>
-
-          <div class='header-item'>
-            {{#link-to 'components'}}
-              Components
-            {{/link-to}}
-          </div>
-        </section>
-
-        <section class='app-header__right-side'>
-          <div class='header-item'>
-            <a class='btn upf-btn--orange' {{action 'switchHeaderStyle'}}>
-                Switch Header Style
-            </a>
-          </div>
-        </section>
+        {{partial 'partials/topbar-menu'}}
       {{else}}
-        <section class='app-header__top'>
-          <div class='header-item'>
-            {{#link-to 'typography' title='Typography'}}
-              <i class='fa fa-italic'></i>
-            {{/link-to}}
-          </div>
-
-          <div class='header-item'>
-            {{#link-to 'colors' title='Colors'}}
-              <i class='fa fa-paint-brush'></i>
-            {{/link-to}}
-          </div>
-
-          <div class='header-item'>
-            {{#link-to 'inputs' title='Inputs'}}
-              <i class='fa fa-check-square'></i>
-            {{/link-to}}
-          </div>
-
-          <div class='header-item'>
-            {{#link-to 'components' title='Components'}}
-              <i class='fa fa-sitemap'></i>
-            {{/link-to}}
-          </div>
-        </section>
-
-        <section class='app-header__bottom'>
-          <div class='header-item'>
-            <a {{action 'switchHeaderStyle'}}>
-              <i class='fa fa-exchange'></i>
-            </a>
-          </div>
-        </section>
+        {{partial 'partials/sidebar-menu'}}
       {{/if}}
     {{/app-header}}
 
