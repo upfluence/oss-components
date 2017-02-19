@@ -4,16 +4,23 @@ html, body {
   background-color: #f9f9f9;
   padding-bottom: 2em;
   font-family: @font-text-body;
+  height: 100vh;
 }
 
 .app-main--along-sidebar section, .app-main--below-topbar section {
   margin-top: 5%;
 }
 
-.switch-header-style {
-  position: absolute;
-  right: 2em;
-  top: 5.5em;
+.home {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(/oss.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  h1, h4 {
+    color: @color-text-contrast;
+  }
 }
 
 .colors {
