@@ -6,6 +6,7 @@ const Router = Ember.Router.extend({
 });
 
 Router.map(function() {
+  this.route('typography');
   this.route('colors');
   this.route('inputs');
   this.route('components');

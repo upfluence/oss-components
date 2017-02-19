@@ -13,4 +13,4 @@ export default Ember.Component.extend({
       return get(_this.get('record'), attribute);
     });
   })
-})
+});

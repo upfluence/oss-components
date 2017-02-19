@@ -4,6 +4,12 @@
       {{#if isTopbarStyle}}
         <section class='app-header__left-side'>
           <div class='header-item'>
+            {{#link-to 'typography'}}
+              Typography
+            {{/link-to}}
+          </div>
+
+          <div class='header-item'>
             {{#link-to 'colors'}}
               Colors
             {{/link-to}}
@@ -31,6 +37,12 @@
         </section>
       {{else}}
         <section class='app-header__top'>
+          <div class='header-item'>
+            {{#link-to 'typography' title='Typography'}}
+              <i class='fa fa-italic'></i>
+            {{/link-to}}
+          </div>
+
           <div class='header-item'>
             {{#link-to 'colors' title='Colors'}}
               <i class='fa fa-paint-brush'></i>
