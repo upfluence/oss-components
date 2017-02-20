@@ -1,38 +1,86 @@
 <div class='col-xs-6'>
   <div class='row'>
     <div class='col-xs-12'>
-      <h4>Standard Input</h4>
-      {{#input-wrapper}}
-        <input type='text' placeholder='Placeholder text for input'
-               class='form-control upf-input' />
-      {{/input-wrapper}}
-    </div>
-
-    <div class='col-xs-12'>
       <div class='row'>
         <div class='col-xs-6'>
-          <h4>Standard Error Input</h4>
-          <p>
-            An input field with an error attached to it (generally a validation
-            error). You must give the <code>input-wrapper</code> component an
-            <code>error</code> argument in order to have that style.
-          </p>
-          {{#input-wrapper error="Hi! My name is error. But you can call me Nickelback"}}
-            {{input type='text' value='This one has an error'
-                    class='form-control upf-input'}}
+          <h5>Standard Input</h5>
+
+          {{#input-wrapper}}
+            <input type='text' placeholder='Placeholder text for input'
+                   class='form-control upf-input' />
           {{/input-wrapper}}
         </div>
 
         <div class='col-xs-6'>
-          <h4>Standard Embedded Help Input</h4>
-          <p>
-            We built this one so we can provide users with some help about the input
-            they are filling. You must give the <code>input-wrapper</code> component
-            an <code>help</code> argument of the Help to show up.
-          </p>
+          <h5>Icon-Prefixed Input</h5>
+
+          {{#input-wrapper}}
+            <div class='input-group'>
+              <div class='input-group-addon'>@</div>
+              <input type='text' placeholder='Placeholder text for input'
+                     class='form-control upf-input' />
+            </div>
+          {{/input-wrapper}}
+        </div>
+      </div>
+    </div>
+
+    <div class='col-xs-12'>
+      <div class='row'>
+        <h4 class='col-xs-12 text-center'>Error Input</h4>
+
+        <p class='col-xs-12 text-center'>
+          An input field with an error attached to it (generally a validation
+          error). You must give the <code>input-wrapper</code> component an
+          <code>error</code> argument in order to have that style.
+        </p>
+
+        <div class='col-xs-6'>
+          <h5>Standard Error Input</h5>
+          {{#input-wrapper error="Hi! My name is error. But you can call me Nickelback"}}
+            {{input type='text' class='form-control upf-input'}}
+          {{/input-wrapper}}
+        </div>
+
+        <div class='col-xs-6'>
+          <h5>Icon-Prefixed Error Input</h5>
+
+          {{#input-wrapper error="Hi! My name is error. But you can call me Nickelback"}}
+            <div class='input-group'>
+              <div class='input-group-addon'><i class='fa fa-user'></i></div>
+              {{input type='text' class='form-control upf-input'}}
+            </div>
+          {{/input-wrapper}}
+        </div>
+      </div>
+    </div>
+
+    <div class='col-xs-12'>
+      <div class='row'>
+        <h4 class='col-xs-12 text-center'>Embedded Help Input</h4>
+
+        <p class='col-xs-12 text-center'>
+          We built this one so we can provide users with some help about the input
+          they are filling. You must give the <code>input-wrapper</code> component
+          an <code>help</code> argument of the Help to show up.
+        </p>
+
+        <div class='col-xs-6'>
+          <h5>Standard Help Input</h5>
+
           {{#input-wrapper help="Confusing input huh?"}}
-            {{input type='text' placeholder='A cool input that even offers some help'
-                    class='form-control upf-input'}}
+            {{input type='text' class='form-control upf-input'}}
+          {{/input-wrapper}}
+        </div>
+
+        <div class='col-xs-6'>
+          <h5>Icon-Prefixed Help Input</h5>
+
+          {{#input-wrapper help="Confusing input huh?"}}
+            <div class='input-group'>
+              <div class='input-group-addon'><i class='fa fa-key'></i></div>
+              {{input type='text' class='form-control upf-input'}}
+            </div>
           {{/input-wrapper}}
         </div>
       </div>
@@ -42,12 +90,23 @@
 
 <div class='col-xs-6'>
   <div class='col-xs-12'>
-    <p>
-      Below is an example of markup (Handlebar) for an input group. <br /><br />
+    <div class='row'>
+      <h4 class='col-xs-12'>Documentation</h4>
 
-      Note that if both <code>error</code> and <code>help</code>, the Error will
-      have the priority.<br/>
-    </p>
-    {{code-snippet name='inputs.hbs'}}
+      <h5 class='col-xs-12'>Standard Input</h5>
+      <div class='col-xs-12'>
+        {{code-snippet name='standard-inputs.hbs'}}
+      </div>
+
+      <h5 class='col-xs-12'>Standard Error Input</h5>
+      <div class='col-xs-12'>
+        {{code-snippet name='standard-error-inputs.hbs'}}
+      </div>
+
+      <h5 class='col-xs-12'>Icon-Prefixed Help Input</h5>
+      <div class='col-xs-12'>
+        {{code-snippet name='icon-prefixed-inputs.hbs'}}
+      </div>
+    </div>
   </div>
 </div>
