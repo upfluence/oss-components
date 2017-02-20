@@ -11,10 +11,15 @@
     {{/link-to}}
   </div>
 
-  <div class='header-item'>
-    {{#link-to 'inputs'}}
-      Inputs
-    {{/link-to}}
+  <div class='header-item dropdown'>
+    <a id='oss__forms-dropdown' class='upf-link--has-icon' data-toggle='dropdown' aria-expanded='false'>
+      Forms <i class='fa fa-chevron-down'></i>
+    </a>
+
+    <ul class='dropdown-menu upf-dropdown' aria-labelledby='oss__forms'>
+      <li>{{#link-to 'inputs'}}Text Fields{{/link-to}}</li>
+      <li>{{#link-to 'buttons'}}Buttons{{/link-to}}</li>
+    </ul>
   </div>
 
   <div class='header-item'>
