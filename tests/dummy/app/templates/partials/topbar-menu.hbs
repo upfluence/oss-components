@@ -1,12 +1,12 @@
 <section class='app-header__left-side'>
   <div class='header-item'>
-    {{#link-to 'typography'}}
+    {{#link-to 'typography' class='upf-link--reset'}}
       Typography
     {{/link-to}}
   </div>
 
   <div class='header-item'>
-    {{#link-to 'colors'}}
+    {{#link-to 'colors' class='upf-link--reset'}}
       Colors
     {{/link-to}}
   </div>
@@ -17,13 +17,21 @@
     </a>
 
     <ul class='dropdown-menu upf-dropdown' aria-labelledby='oss__forms'>
-      <li>{{#link-to 'inputs'}}Text Fields{{/link-to}}</li>
-      <li>{{#link-to 'buttons'}}Buttons{{/link-to}}</li>
+      <li>
+        {{#link-to 'inputs' class='upf-link--reset'}}
+          Text Fields
+        {{/link-to}}
+      </li>
+      <li>
+        {{#link-to 'buttons' class='upf-link--reset'}}
+          Buttons
+        {{/link-to}}
+      </li>
     </ul>
   </div>
 
   <div class='header-item'>
-    {{#link-to 'components'}}
+    {{#link-to 'components' class='upf-link--reset'}}
       Components
     {{/link-to}}
   </div>
