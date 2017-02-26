@@ -30,10 +30,23 @@
     </ul>
   </div>
 
-  <div class='header-item'>
-    {{#link-to 'components' class='upf-link--reset'}}
-      Components
-    {{/link-to}}
+  <div class='header-item dropdown'>
+    <a id='oss__forms-dropdown' class='upf-link--has-icon upf-link--reset' data-toggle='dropdown' aria-expanded='false'>
+      Components <i class='fa fa-chevron-down'></i>
+    </a>
+
+    <ul class='dropdown-menu upf-dropdown' aria-labelledby='oss__forms'>
+      <li>
+        {{#link-to 'text-editor' class='upf-link--reset'}}
+          Text Editor
+        {{/link-to}}
+      </li>
+      <li>
+        {{#link-to 'data-table' class='upf-link--reset'}}
+          Data Tables
+        {{/link-to}}
+      </li>
+    </ul>
   </div>
 </section>
 

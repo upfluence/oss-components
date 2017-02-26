@@ -10,7 +10,8 @@ Router.map(function() {
   this.route('colors');
   this.route('inputs');
   this.route('buttons');
-  this.route('components');
+  this.route('text-editor');
+  this.route('data-table');
 });
 
 export default Router;
