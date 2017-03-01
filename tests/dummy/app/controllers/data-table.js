@@ -1,6 +1,11 @@
 export default Ember.Controller.extend({
   tableColumns: [
     {
+      'disableFiltering': true,
+      'component': 'data-table/select-row',
+      'className': 'upf-table__row-selector'
+    },
+    {
       'propertyName': 'name',
       'title': 'Influencer',
       'grouped_with': 'media_url,email',
@@ -52,4 +57,15 @@ export default Ember.Controller.extend({
       'component': 'data-table/switchable-boolean-column',
     },
   ],
+
+  actions: {
+    toggleSelect(record) {
+      record.toggleProperty('isSelected')
+      if (record.get('isSelected')) {
+        alert(`${record.name} has been selected`)
+      } else {
+        alert(`${record.name} has been unselected`)
+      }
+    }
+  },
 });

@@ -29,5 +29,11 @@ export default ModelsTableComponent.extend({
     'nav-last': 'fa fa-chevron-right',
     'sort-asc': 'fa fa-sort-asc',
     'sort-desc': 'fa fa-sort-desc'
+  },
+
+  actions: {
+    selectRecord(record) {
+      this.get('targetObject').send(this.get('selectRecord'), record)
+    },
   }
 });
