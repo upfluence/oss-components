@@ -1,3 +1,5 @@
+import Ember from 'ember';
+
 export default Ember.Controller.extend({
   tableColumns: [
     {
@@ -60,11 +62,11 @@ export default Ember.Controller.extend({
 
   actions: {
     toggleSelect(record) {
-      record.toggleProperty('isSelected')
+      record.toggleProperty('isSelected');
       if (record.get('isSelected')) {
-        alert(`${record.name} has been selected`)
+        window.alert(`${record.name} has been selected`);
       } else {
-        alert(`${record.name} has been unselected`)
+        window.alert(`${record.name} has been unselected`);
       }
     }
   },
