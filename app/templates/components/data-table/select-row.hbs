@@ -2,6 +2,8 @@
   <div class="upf-checkbox center-block">
     {{input type='checkbox' id=(concat elementId '-row-selector')
             class='upf-checkbox__input' click=(action 'selectRecord' record)}}
-    <label for="{{concat elementId '-row-selector'}}" class='upf-checkbox__label'></label>
+    <label for="{{concat elementId '-row-selector'}}"
+           class='upf-checkbox__fake-checkbox'>
+    </label>
   </div>
 </div>
