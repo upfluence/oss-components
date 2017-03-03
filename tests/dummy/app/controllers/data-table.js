@@ -4,6 +4,7 @@ export default Ember.Controller.extend({
   tableColumns: [
     {
       'disableFiltering': true,
+      'mayBeHidden': false,
       'component': 'data-table/select-row',
       'className': 'upf-table__row-selector'
     },
