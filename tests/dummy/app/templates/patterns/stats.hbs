@@ -1,0 +1,74 @@
+<section class='col-xs-11 center-block stats'>
+  <h2 class='col-xs-12'>Stats & Data</h2>
+
+  <p class='col-xs-12'>
+    Stats & Data components are widgets used for providing an insight about a
+    given statistic. <br>
+
+    Even though they can take any type of text, it's really advised to just
+    stick with a number and a title. The number being the value of the displayed
+    stat, and the title being its user friendly name.
+  </p>
+
+  <h3 class='col-xs-12'>Standard Stat</h3>
+
+  <div class='row'>
+    <div class='col-xs-6 demo-stats__example'>
+      <div class='upf-stat'>
+        <span class='upf-stat__number'>89</span>
+        <span class='upf-stat__title'>Interested</span>
+      </div>
+    </div>
+
+    <div class='col-xs-6'>
+      <h4 class='col-xs-12'>Documentation (Markup)</h4>
+      <div class='col-xs-12'>
+        {{code-snippet name='standard-stat.hbs'}}
+      </div>
+    </div>
+  </div>
+
+  <h3 class='col-xs-12'>Standard Stat Block</h3>
+
+  <div class='row'>
+    <div class='col-xs-6'>
+      <p class='col-xs-12'>
+        A Stat block can be used to display multiple stats that are
+        relative to the same context. For eg: if you have to display the results
+        of a mailing campaign, you should group the number of Opened Emails,
+        Bounced Emails, and Replies in a Stat Block. <br />
+
+        Even though they are not mandatory, you should highly consider having
+        a title and a little description of the context the stats apply to in
+        the stat block.
+      </p>
+
+      <div class='col-xs-12'>
+        <div class='upf-stat-block demo-stats__example'>
+          <span class='upf-stat-block__title'>Emailing Campaign Overview</span>
+          <p class='upf-stat-block__description'>
+            Out of <span class='upf-stat-block__stats-total'>165</span> sent
+            email
+          </p>
+          <div class='upf-stat-block__stats'>
+            {{standard-stat number=100 title='opened'
+                            class='upf-stat-block__stat'}}
+
+            {{standard-stat number=60 title='replied'
+                            class='upf-stat-block__stat'}}
+
+            {{standard-stat number=5 title='bounced'
+                            class='upf-stat-block__stat'}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class='col-xs-6'>
+      <h4 class='col-xs-12'>Documentation (Markup)</h4>
+      <div class='col-xs-12'>
+        {{code-snippet name='standard-stat-block.hbs'}}
+      </div>
+    </div>
+  </div>
+</section>

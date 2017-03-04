@@ -12,6 +12,9 @@ Router.map(function() {
   this.route('buttons');
   this.route('text-editor');
   this.route('data-table');
+  this.route('patterns', function() {
+    this.route('stats');
+  });
 });
 
 export default Router;

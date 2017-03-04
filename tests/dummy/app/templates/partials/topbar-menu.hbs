@@ -16,7 +16,7 @@
       Forms <i class='fa fa-chevron-down'></i>
     </a>
 
-    <ul class='dropdown-menu upf-dropdown' aria-labelledby='oss__forms'>
+    <ul class='dropdown-menu upf-dropdown' aria-labelledby='oss__forms-dropdown'>
       <li>
         {{#link-to 'inputs' class='upf-link--reset'}}
           Text Fields
@@ -31,11 +31,11 @@
   </div>
 
   <div class='header-item dropdown'>
-    <a id='oss__forms-dropdown' class='upf-link--has-icon upf-link--reset' data-toggle='dropdown' aria-expanded='false'>
+    <a id='oss__components-dropdown' class='upf-link--has-icon upf-link--reset' data-toggle='dropdown' aria-expanded='false'>
       Components <i class='fa fa-chevron-down'></i>
     </a>
 
-    <ul class='dropdown-menu upf-dropdown' aria-labelledby='oss__forms'>
+    <ul class='dropdown-menu upf-dropdown' aria-labelledby='oss__components-dropdown'>
       <li>
         {{#link-to 'text-editor' class='upf-link--reset'}}
           Text Editor
@@ -44,6 +44,20 @@
       <li>
         {{#link-to 'data-table' class='upf-link--reset'}}
           Data Tables
+        {{/link-to}}
+      </li>
+    </ul>
+  </div>
+
+  <div class='header-item dropdown'>
+    <a id='oss__patterns-dropdown' class='upf-link--has-icon upf-link--reset' data-toggle='dropdown' aria-expanded='false'>
+      Patterns <i class='fa fa-chevron-down'></i>
+    </a>
+
+    <ul class='dropdown-menu upf-dropdown' aria-labelledby='oss__patterns-dropdown'>
+      <li>
+        {{#link-to 'patterns.stats' class='upf-link--reset'}}
+          Stats & Data
         {{/link-to}}
       </li>
     </ul>
