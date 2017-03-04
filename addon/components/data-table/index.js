@@ -23,6 +23,8 @@ export default ModelsTableComponent.extend({
     'caret': 'fa fa-caret-down',
     'column-visible': 'fa fa-dot-circle-o',
     'column-hidden': 'fa fa-circle-o',
+    'collapse-row': 'fa fa-chevron-down',
+    'expand-row': 'fa fa-chevron-right',
     'nav-first': 'fa fa-chevron-left',
     'nav-prev': 'fa fa-arrow-left',
     'nav-next': 'fa fa-arrow-right',

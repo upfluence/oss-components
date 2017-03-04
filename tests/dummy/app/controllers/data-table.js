@@ -35,10 +35,6 @@ export default Ember.Controller.extend({
       'component': 'data-table/money-column',
     },
     {
-      'propertyName': 'comment',
-      'title': 'Comment',
-    },
-    {
       'propertyName': 'visible_by_client',
       'title': 'Visible by client',
       'icon': 'fa fa-user-secret upf-icon-group__superior--visibility',
@@ -58,6 +54,12 @@ export default Ember.Controller.extend({
       'icon': 'fa fa-user upf-icon-group__superior--edit',
       'componentForSortCell': 'data-table/icon-header',
       'component': 'data-table/switchable-boolean-column',
+    },
+    {
+      'mayBeHidden': false,
+      'title': 'Details',
+      'template': 'components/models-table/expand-row-cell',
+      'className': 'upf-align--center',
     },
   ],
 
