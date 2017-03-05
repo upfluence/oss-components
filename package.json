@@ -1,6 +1,6 @@
 {
   "name": "upfluence-oss-components",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "The default blueprint for ember-cli addons.",
   "directories": {
     "doc": "doc",
@@ -50,7 +50,7 @@
     "ember-cli-htmlbars-inline-precompile": "^0.3.1",
     "ember-cli-less": "^1.5.3",
     "ember-cli-toggle": "^3.0.0",
-    "ember-font-awesome": "^3.0.3",
+    "ember-font-awesome": "2.1.1",
     "ember-models-table": "^1.11.0"
   },
   "ember-addon": {
