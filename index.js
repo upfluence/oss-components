@@ -8,20 +8,13 @@ module.exports = {
     this._super.included(app);
 
     app.import('bower_components/bootstrap/dist/js/bootstrap.min.js');
-
-    //
-    // Summernote component dependencies
-    //
     app.import('bower_components/summernote/dist/summernote.min.js');
     app.import('bower_components/summernote/dist/summernote.css');
     app.import('bower_components/summernote/dist/font/summernote.ttf', { destDir: 'assets/font' });
     app.import('bower_components/summernote/dist/font/summernote.eot', { destDir: 'assets/font' });
     app.import('bower_components/summernote/dist/font/summernote.woff', { destDir: 'assets/font' });
-
-    //
-    // Money handling stuffs
-    //
     app.import('bower_components/money-formatter/dist/money-formatter.min.js');
+    app.import('bower_components/countdown.js/lib/countdown.js');
 
     //
     // Upfluence OSS framework dependencies
