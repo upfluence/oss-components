@@ -10,11 +10,9 @@ export default BooleanColumnComponent.extend({
   classNames: ['upf-toggle-btn'],
 
   attributeValueFormatted: computed('attributeValue', function() {
-    console.log(this.get('attributeValue'));
     if (this.get('attributeValue') || this.get('attributeValue') === 'on') {
      return 'on';
     } else {
-      debugger
       return 'off';
     }
   }),
