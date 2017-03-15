@@ -456,6 +456,6 @@ export default Ember.Route.extend({
   model() {
     return this.get('influencers').map ( (influencer) => {
       return Ember.Object.create(influencer);
-    })
+    });
   }
 });
