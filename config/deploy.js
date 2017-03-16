@@ -23,7 +23,7 @@ module.exports = function(deployTarget) {
       secretAccessKey: process.env['AWS_SECRET_ACCESS_KEY'],
       bucket: process.env['AWS_S3_BUCKET_NAME'],
       region: process.env['AWS_S3_BUCKET_REGION'],
-      filePattern: '**/*.{html,js,css,png,gif,ico,jpg,map,xml,txt,svg,swf,eot,ttf,woff,woff2,otf}'
+      filePattern: '**/*.{html,js,json,css,png,gif,ico,jpg,map,xml,txt,svg,swf,eot,ttf,woff,woff2,otf}'
     };
     // configure other plugins for production deploy target here
   }
