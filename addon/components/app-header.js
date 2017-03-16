@@ -1,7 +1,12 @@
 import Ember from 'ember';
 import HeaderStyleMixin from 'oss-components/mixins/header-style';
 
-export default Ember.Component.extend(HeaderStyleMixin, {
+const {
+  Component,
+  computed
+} = Ember;
+
+export default Component.extend(HeaderStyleMixin, {
   tagName: 'nav',
   classNameBindings: ['headerStyleClass'],
 
@@ -12,5 +17,14 @@ export default Ember.Component.extend(HeaderStyleMixin, {
       return 'col-xs-12 app-header--topbar';
     }
   }),
+
+  randomFullLogo: computed(function() {
+    let logos = [
+      'air-1-white', 'earth-3-white', 'fire-2-white',
+      'water-1-white','water-2-white','water-3-white',
+    ]
+
+    return logos[Math.floor(Math.random() * logos.length)];
+  })
 
 });

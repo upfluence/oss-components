@@ -22,6 +22,15 @@ module.exports = {
     app.import('bower_components/upfluence-oss/fonts/GT-Eesti-Display-Medium.ttf', { destDir: 'assets/fonts' });
     app.import('bower_components/upfluence-oss/fonts/GT-Eesti-Display-Medium.eot', { destDir: 'assets/fonts' });
     app.import('bower_components/upfluence-oss/fonts/GT-Eesti-Display-Medium.woff', { destDir: 'assets/fonts' });
-    app.import('bower_components/upfluence-oss/images/upfluence-air-light-blue.png', { destDir: 'assets/images' });
+    app.import('bower_components/upfluence-oss/images/upfluence-fire-white.png', { destDir: 'assets/images' });
+    app.import('bower_components/upfluence-oss/images/air-1-white.png', { destDir: 'assets/images' });
+    app.import('bower_components/upfluence-oss/images/earth-1-white.png', { destDir: 'assets/images' });
+    app.import('bower_components/upfluence-oss/images/earth-3-white.png', { destDir: 'assets/images' });
+    app.import('bower_components/upfluence-oss/images/fire-2-white.png', { destDir: 'assets/images' });
+    app.import('bower_components/upfluence-oss/images/spirit-2-white.png', { destDir: 'assets/images' });
+    app.import('bower_components/upfluence-oss/images/spirit-3-white.png', { destDir: 'assets/images' });
+    app.import('bower_components/upfluence-oss/images/water-1-white.png', { destDir: 'assets/images' });
+    app.import('bower_components/upfluence-oss/images/water-2-white.png', { destDir: 'assets/images' });
+    app.import('bower_components/upfluence-oss/images/water-3-white.png', { destDir: 'assets/images' });
   },
 };
