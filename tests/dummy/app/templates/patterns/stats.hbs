@@ -47,7 +47,7 @@
                             upf-progress-radial-lg'>
                   <div class="overlay">
                     <span class='upf-stat__icon'>
-                      <i class='fa fa-envelope'></i>
+                      {{upf-icon 'envelope' 'gray' 'thicker'}}
                     </span>
                     <span class='upf-stat__number'>387</span>
                   </div>
@@ -65,7 +65,7 @@
                             progress-40 upf-progress-radial-lg'>
                   <div class='overlay'>
                     <span class='upf-stat__icon'>
-                      <i class='flaticon-time'></i>
+                      {{upf-icon 'clock' 'orange' 'thicker'}}
                     </span>
                     <span class='upf-stat__number'>40</span>
                   </div>
@@ -78,25 +78,27 @@
           <div class='col-xs-2'>
             {{standard-stat number=87 title='Sent'
                             type='demo-stats__stat--sent-email'
-                            iconClass='flaticon-paper-plane'}}
+                            upfIcon='paper-plane' upfIconColor='bright-purple'}}
           </div>
 
           <div class='col-xs-2'>
             {{standard-stat number=16 title='Opened'
                             type='upf-progress-radial--alert'
-                            iconClass='fa fa-envelope-open'}}
+                            upfIcon='envelope-open'
+                            upfIconColor='feedback-alert'}}
           </div>
 
           <div class='col-xs-2'>
             {{standard-stat number=9 title='Replied'
                             type='upf-progress-radial--success'
-                            iconClass='fa fa-reply'}}
+                            upfIcon='reply' upfIconColor='feedback-success'}}
           </div>
 
           <div class='col-xs-2'>
             {{standard-stat number=2 title='Failed'
                             type='upf-progress-radial--error'
-                            iconClass='fa fa-exclamation'}}
+                            upfIcon='exclamation-mark'
+                            upfIconColor='feedback-error'}}
           </div>
         </div>
       </div>
