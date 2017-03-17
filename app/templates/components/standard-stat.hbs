@@ -3,7 +3,11 @@
               {{progressValueClass}}'>
     <div class='overlay'>
       <span class='upf-stat__icon'>
-        <i class='{{iconClass}}'></i>
+        {{#if iconClass}}
+          <i class='{{iconClass}}'></i>
+        {{else if upfIcon}}
+          {{upf-icon upfIcon upfIconColor 'thicker'}}
+        {{/if}}
       </span>
       <span class='upf-stat__number'>{{number}}</span>
     </div>
