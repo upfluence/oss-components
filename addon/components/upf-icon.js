@@ -3,7 +3,8 @@ import Ember from 'ember';
 const {
   Component,
   computed,
-  inject
+  inject,
+  $
 } = Ember;
 
 const UpfIconComponent = Component.extend({
@@ -21,10 +22,10 @@ const UpfIconComponent = Component.extend({
     return this.get('params')[2];
   }),
 
-  didInsertElement: function() {
+  didInsertElement() {
     $.get(
       this.get('assetMap').resolve(`assets/upf-icons/${this.get('icon')}.svg`),
-      function(data) {
+      (data) => {
         let element = this.$()[0];
 
         if (this.get('color')) {
@@ -37,7 +38,7 @@ const UpfIconComponent = Component.extend({
         }
 
         element.innerHTML = new XMLSerializer().serializeToString(data);
-      }.bind(this)
+      }
     );
   }
 });
