@@ -32,5 +32,11 @@ module.exports = {
     app.import('bower_components/upfluence-oss/images/water-1-white.png', { destDir: 'assets/images' });
     app.import('bower_components/upfluence-oss/images/water-2-white.png', { destDir: 'assets/images' });
     app.import('bower_components/upfluence-oss/images/water-3-white.png', { destDir: 'assets/images' });
+    app.import('bower_components/upfluence-oss/upf-icons/reply.svg', { destDir: 'assets/upf-icons' });
+    app.import('bower_components/upfluence-oss/upf-icons/envelope.svg', { destDir: 'assets/upf-icons' });
+    app.import('bower_components/upfluence-oss/upf-icons/envelope-open.svg', { destDir: 'assets/upf-icons' });
+    app.import('bower_components/upfluence-oss/upf-icons/paper-plane.svg', { destDir: 'assets/upf-icons' });
+    app.import('bower_components/upfluence-oss/upf-icons/clock.svg', { destDir: 'assets/upf-icons' });
+    app.import('bower_components/upfluence-oss/upf-icons/exclamation-mark.svg', { destDir: 'assets/upf-icons' });
   },
 };
