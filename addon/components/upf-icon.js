@@ -21,8 +21,8 @@ const UpfIconComponent = Component.extend({
     return this.get('params')[2];
   }),
 
-  didInsertElement() {
-    this.$.get(
+  didInsertElement: function() {
+    $.get(
       this.get('assetMap').resolve(`assets/upf-icons/${this.get('icon')}.svg`),
       function(data) {
         let element = this.$()[0];
