@@ -24,7 +24,6 @@ export default Component.extend({
     return this.get('defaultRadialClass');
   }),
 
-
   radialSize: computed('size', function() {
     if (this.get('size')) {
       return this.get('size');

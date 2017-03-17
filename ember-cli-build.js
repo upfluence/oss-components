@@ -20,7 +20,7 @@ module.exports = function(defaults) {
       extensions: [
         'json', 'js', 'css', 'png', 'jpg', 'gif', 'map', 'ico', 'svg'
       ]
-    },
+    }
   });
 
   return app.toTree();
