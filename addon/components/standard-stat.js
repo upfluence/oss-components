@@ -15,6 +15,6 @@ export default Component.extend({
   number: 1,
 
   progressValueClass: computed('number', function() {
-    return `progress-${this.get('number')}`;
+    return `upf-progress-${this.get('number')}`;
   })
 })
