@@ -3,10 +3,13 @@ import HeaderStyleMixin from 'oss-components/mixins/header-style';
 
 const {
   Component,
-  computed
+  computed,
+  inject
 } = Ember;
 
 export default Component.extend(HeaderStyleMixin, {
+  assetMap: inject.service('asset-map'),
+
   tagName: 'nav',
   classNameBindings: ['headerStyleClass'],
 
@@ -23,8 +26,11 @@ export default Component.extend(HeaderStyleMixin, {
       'air-1-white', 'earth-3-white', 'fire-2-white',
       'water-1-white','water-2-white','water-3-white',
     ]
+    let randomLogo = logos[Math.floor(Math.random() * logos.length)];
 
-    return logos[Math.floor(Math.random() * logos.length)];
+    return this.get('assetMap').resolve(
+      `assets/images/${randomLogo}.png`
+    );
   })
 
 });

@@ -1,6 +1,9 @@
 /* jshint node: true */
 'use strict';
 
+const mergeTrees = require('broccoli-merge-trees');
+const Funnel = require('broccoli-funnel');
+
 module.exports = {
   name: 'oss-components',
 
@@ -15,22 +18,29 @@ module.exports = {
     app.import('bower_components/summernote/dist/font/summernote.woff', { destDir: 'assets/font' });
     app.import('bower_components/money-formatter/dist/money-formatter.min.js');
     app.import('bower_components/countdown.js/lib/countdown.js');
-
-    //
-    // Upfluence OSS framework dependencies
-    //
-    app.import('bower_components/upfluence-oss/fonts/GT-Eesti-Display-Medium.ttf', { destDir: 'assets/fonts' });
-    app.import('bower_components/upfluence-oss/fonts/GT-Eesti-Display-Medium.eot', { destDir: 'assets/fonts' });
-    app.import('bower_components/upfluence-oss/fonts/GT-Eesti-Display-Medium.woff', { destDir: 'assets/fonts' });
-    app.import('bower_components/upfluence-oss/images/upfluence-fire-white.png', { destDir: 'assets/images' });
-    app.import('bower_components/upfluence-oss/images/air-1-white.png', { destDir: 'assets/images' });
-    app.import('bower_components/upfluence-oss/images/earth-1-white.png', { destDir: 'assets/images' });
-    app.import('bower_components/upfluence-oss/images/earth-3-white.png', { destDir: 'assets/images' });
-    app.import('bower_components/upfluence-oss/images/fire-2-white.png', { destDir: 'assets/images' });
-    app.import('bower_components/upfluence-oss/images/spirit-2-white.png', { destDir: 'assets/images' });
-    app.import('bower_components/upfluence-oss/images/spirit-3-white.png', { destDir: 'assets/images' });
-    app.import('bower_components/upfluence-oss/images/water-1-white.png', { destDir: 'assets/images' });
-    app.import('bower_components/upfluence-oss/images/water-2-white.png', { destDir: 'assets/images' });
-    app.import('bower_components/upfluence-oss/images/water-3-white.png', { destDir: 'assets/images' });
   },
+
+  treeForPublic() {
+    let publicTree = this._super.treeForPublic.apply(this, arguments);
+    let trees = [];
+
+    if (publicTree) {
+      trees.push(publicTree);
+    }
+
+    let publicAssets = ['images', 'fonts', 'upf-icons'];
+    publicAssets.forEach((assetType) => {
+      trees.push(
+        new Funnel(
+          `${this.app.bowerDirectory}/upfluence-oss/${assetType}/`,
+          {
+            srcDir: '/',
+            destDir: `assets/${assetType}`
+          }
+        )
+      );
+    });
+
+    return mergeTrees(trees);
+  }
 };
