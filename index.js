@@ -1,8 +1,8 @@
 /* jshint node: true */
 'use strict';
 
-var mergeTrees = require('broccoli-merge-trees');
-var Funnel = require('broccoli-funnel');
+const mergeTrees = require('broccoli-merge-trees');
+const Funnel = require('broccoli-funnel');
 
 module.exports = {
   name: 'oss-components',
@@ -20,26 +20,26 @@ module.exports = {
     app.import('bower_components/countdown.js/lib/countdown.js');
   },
 
-  treeForPublic: function() {
-    const publicTree = this._super.treeForPublic.apply(this, arguments);
-    var trees = [];
+  treeForPublic() {
+    let publicTree = this._super.treeForPublic.apply(this, arguments);
+    let trees = [];
 
     if (publicTree) {
       trees.push(publicTree);
     }
 
-    const publicAssets = ['images', 'fonts', 'upf-icons'];
-    publicAssets.forEach( (assetType) => {
+    let publicAssets = ['images', 'fonts', 'upf-icons'];
+    publicAssets.forEach((assetType) => {
       trees.push(
         new Funnel(
           `${this.app.bowerDirectory}/upfluence-oss/${assetType}/`,
           {
             srcDir: '/',
-            destDir: `assets/${assetType}`,
+            destDir: `assets/${assetType}`
           }
         )
       );
-    })
+    });
 
     return mergeTrees(trees);
   }
