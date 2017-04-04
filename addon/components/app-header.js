@@ -25,12 +25,18 @@ export default Component.extend(HeaderStyleMixin, {
     let logos = [
       'air-1-white', 'earth-3-white', 'fire-2-white',
       'water-1-white','water-2-white','water-3-white',
-    ]
+    ];
     let randomLogo = logos[Math.floor(Math.random() * logos.length)];
 
     return this.get('assetMap').resolve(
       `assets/images/${randomLogo}.png`
     );
-  })
+  }),
 
+  didInsertElement() {
+    Ember.run.next(() => {
+      let activeHeaderItem = this.$('.header-item .active').parent();
+      activeHeaderItem.addClass('header-item--active');
+    });
+  }
 });
