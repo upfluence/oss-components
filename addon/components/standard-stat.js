@@ -7,12 +7,16 @@ const {
 
 export default Component.extend({
   classNames: ['upf-stat'],
-  attributeBindings: ['number', 'title', 'type', 'upfIcon', 'upfIconColor'],
+  classNameBindings: ['statSizeModifier'],
 
-  size: 'upf-progress-radial-lg',
+  size: 'lg',
   type: 'upf-progress-radial--none',
   iconClass: null,
   number: 1,
+
+  statSizeModifier: computed('size', function() {
+    return `upf-stat--${this.get('size')}`;
+  }),
 
   numberAsPercentOfMaxValue: computed('number', 'maxValue', function() {
     return Math.floor((100 * this.get('number')) / this.get('maxValue'));
