@@ -32,11 +32,4 @@ export default Component.extend(HeaderStyleMixin, {
       `assets/images/${randomLogo}.png`
     );
   }),
-
-  didInsertElement() {
-    Ember.run.next(() => {
-      let activeHeaderItem = this.$('.header-item .active').parent();
-      activeHeaderItem.addClass('header-item--active');
-    });
-  }
 });
