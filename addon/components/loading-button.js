@@ -10,7 +10,6 @@ const LoadingButtonComponent = Component.extend({
 
   click(e) {
     e.preventDefault();
-    console.log(this.get('params'))
 
     // Because `.send` method for sending actions does not return anything, we
     // pass it an `RSVP.defer` to be resolved in the remote action.
