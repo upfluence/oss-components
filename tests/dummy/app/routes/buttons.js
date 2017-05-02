@@ -16,9 +16,8 @@ export default Route.extend({
     },
 
     runSlowAction(record, defer) {
-      console.log('plplplpl');
       Ember.run.later(function() {
-        defer.resolve()
+        defer.resolve();
       }, 5000);
     }
   }
