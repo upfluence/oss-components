@@ -1,8 +1,9 @@
+/* global Countdown */
 import Ember from 'ember';
 
-const { Component, RSVP } = Ember;
+const { Component, RSVP, TargetActionSupport } = Ember;
 
-export default Component.extend({
+export default Component.extend(TargetActionSupport, {
   tagName: 'button',
   classNames: ['upf-btn', 'upf-btn--destructive'],
 
@@ -36,15 +37,14 @@ export default Component.extend({
         this.set('clickedToDelete', true);
         this.set('originalContent', this.$().html());
 
-        this.set('countdown', new Countdown(5, function(seconds) {
+        this.set('countdown', new Countdown(5, (seconds) => {
           this.$().text(`${this.get('ongoingMessage')} ( ${seconds} )...`);
-        }.bind(this), function() {
-          this.get('targetObject').send(
-            this.get('destructiveAction'),
-            this.get('record'),
-            defer
-          );
-        }.bind(this)));
+        }, () => {
+          this.triggerAction({
+            action: this.get('destructiveAction'),
+            actionContext: [this.get('record'), defer]
+          });
+        }));
       }
     }, 100);
   }
