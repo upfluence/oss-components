@@ -6,7 +6,7 @@ const {
   TargetActionSupport
 } = Ember;
 
-const LoadingButtonComponent = Component.extend({
+const LoadingButtonComponent = Component.extend(TargetActionSupport, {
   tagName: 'button',
   classNameBindings: ['isLoading:js-btn--loading'],
   attributeBindings: ['isLoading:disabled'],
@@ -34,7 +34,7 @@ const LoadingButtonComponent = Component.extend({
       this.triggerAction({
         action: this.get('slowAction'),
         actionContext: [this.get('params'), defer]
-      })
+      });
     }, 100);
   }
 });
