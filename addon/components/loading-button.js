@@ -2,7 +2,8 @@ import Ember from 'ember';
 
 const {
   Component,
-  RSVP
+  RSVP,
+  TargetActionSupport
 } = Ember;
 
 const LoadingButtonComponent = Component.extend({
@@ -30,11 +31,10 @@ const LoadingButtonComponent = Component.extend({
       this.$().width(originalWidth);
       this.$().html("<i class='fa fa-circle-o-notch fa-spin'></i>");
 
-      this.get('targetObject').send(
-        this.get('slowAction'),
-        this.get('params'),
-        defer
-      );
+      this.triggerAction({
+        action: this.get('slowAction'),
+        actionContext: [this.get('params'), defer]
+      })
     }, 100);
   }
 });
