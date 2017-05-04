@@ -9,7 +9,7 @@ const {
 const LoadingButtonComponent = Component.extend(TargetActionSupport, {
   tagName: 'button',
   classNameBindings: ['isLoading:js-btn--loading'],
-  attributeBindings: ['isLoading:disabled'],
+  attributeBindings: ['disabled', 'isLoading:disabled'],
 
   click(e) {
     e.preventDefault();
