@@ -1,0 +1,23 @@
+<section class='row'>
+  <h3>Stateful Buttons</h3>
+
+  {{#destructive-button destructiveAction='deleteStuffSuccessfully' record=model
+                        ongoingMessage='Cancel'
+                        successMessage='Deleted!'
+                        failureMessage='Failed!'}}
+    {{fa-icon 'trash'}} &nbsp; Destructive Button
+  {{/destructive-button}}
+
+  {{#destructive-button destructiveAction='deleteStuffWithError' record='hey'
+                        ongoingMessage='Cancel'
+                        successMessage='Deleted!'
+                        failureMessage='Failed!'
+                        class='margin-left-xx-sm'}}
+    {{fa-icon 'trash'}} &nbsp; Failing Destructive Button
+  {{/destructive-button}}
+
+  {{#loading-button 'hello' 'hey' slowAction='runSlowAction'
+                    class='upf-btn upf-btn--orange margin-left-xx-sm'}}
+    Loading Button
+  {{/loading-button}}
+</section>

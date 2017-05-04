@@ -1,7 +1,11 @@
 /* global Countdown */
 import Ember from 'ember';
 
-const { Component, RSVP, TargetActionSupport } = Ember;
+const {
+  Component,
+  RSVP,
+  TargetActionSupport
+} = Ember;
 
 export default Component.extend(TargetActionSupport, {
   tagName: 'button',
