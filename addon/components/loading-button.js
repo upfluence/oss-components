@@ -3,13 +3,22 @@ import Ember from 'ember';
 const {
   Component,
   RSVP,
-  TargetActionSupport
+  TargetActionSupport,
+  computed
 } = Ember;
 
 const LoadingButtonComponent = Component.extend(TargetActionSupport, {
   tagName: 'button',
   classNameBindings: ['isLoading:js-btn--loading'],
-  attributeBindings: ['isLoading:disabled', 'disabled'],
+  attributeBindings: ['shouldBeDisabled:disabled'],
+
+  shouldBeDisabled: computed('isLoading', 'initiallyDisabled', function() {
+    if(this.get('isLoading') || this.get('initiallyDisabled')) {
+      return true;
+    }
+
+    return false;
+  }),
 
   click(e) {
     e.preventDefault();
