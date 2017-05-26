@@ -22,18 +22,8 @@ export default Component.extend(HeaderStyleMixin, {
     }
   }),
 
-  _logo: computed('logo', function () {
-    if (this.get('logo')) {
-      return this.get('logo');
-    }
-
-    if (this.get('isTopbarStyle')) {
-      return this.randomFullLogo();
-    }
-
-    return this.get('assetMap').resolve(
-      'assets/images/upfluence-fire-white.png'
-    );
+  hasLogo: computed('logo', function() {
+    return this.get('logo') !== null;
   }),
 
   randomFullLogo() {
