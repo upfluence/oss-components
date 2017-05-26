@@ -12,6 +12,7 @@ export default Component.extend(HeaderStyleMixin, {
 
   tagName: 'nav',
   classNameBindings: ['headerStyleClass'],
+  logo: null,
 
   headerStyleClass: Ember.computed('headerStyle', function() {
     if (this.get('isSidebarStyle')) {
@@ -21,15 +22,30 @@ export default Component.extend(HeaderStyleMixin, {
     }
   }),
 
-  randomFullLogo: computed(function() {
+  _logo: computed('logo', function () {
+    if (this.get('logo')) {
+      return this.get('logo');
+    }
+
+    if (this.get('isTopbarStyle')) {
+      return this.randomFullLogo();
+    }
+
+    return this.get('assetMap').resolve(
+      'assets/images/upfluence-fire-white.png'
+    );
+  }),
+
+  randomFullLogo() {
     let logos = [
       'air-1-white', 'earth-3-white', 'fire-2-white',
-      'water-1-white','water-2-white','water-3-white',
+      'water-1-white','water-2-white','water-3-white'
     ];
+
     let randomLogo = logos[Math.floor(Math.random() * logos.length)];
 
     return this.get('assetMap').resolve(
       `assets/images/${randomLogo}.png`
     );
-  }),
+  }
 });
