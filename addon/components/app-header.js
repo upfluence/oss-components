@@ -26,7 +26,7 @@ export default Component.extend(HeaderStyleMixin, {
     return this.get('logo') !== null;
   }),
 
-  randomFullLogo() {
+  randomFullLogo: computed(function() {
     let logos = [
       'air-1-white', 'earth-3-white', 'fire-2-white',
       'water-1-white','water-2-white','water-3-white'
@@ -37,5 +37,5 @@ export default Component.extend(HeaderStyleMixin, {
     return this.get('assetMap').resolve(
       `assets/images/${randomLogo}.png`
     );
-  }
+  })
 });

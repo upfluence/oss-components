@@ -7,6 +7,10 @@ const Funnel = require('broccoli-funnel');
 module.exports = {
   name: 'oss-components',
 
+  isDevelopingAddon: function() {
+    return true;
+  },
+
   included: function(app) {
     this._super.included(app);
 

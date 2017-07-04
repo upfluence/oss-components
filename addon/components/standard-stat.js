@@ -25,4 +25,4 @@ export default Component.extend({
   progressValueClass: computed('number', function() {
     return `upf-progress-${this.get('numberAsPercentOfMaxValue')}`;
   })
-})
+});
