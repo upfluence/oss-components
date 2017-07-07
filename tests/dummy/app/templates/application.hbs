@@ -1,14 +1,10 @@
 <div class='row-fluid'>
-  {{#app-base headerStyle=headerStyle menuItems=menuItems}}
-    {{#app-header headerStyle=headerStyle}}
-      {{#if isTopbarStyle}}
-        {{partial 'partials/topbar-menu'}}
-      {{else}}
-        {{partial 'partials/sidebar-menu'}}
-      {{/if}}
+  {{#app-base}}
+    {{#app-header headerStyle='sidebar'}}
+      {{partial 'partials/sidebar-menu'}}
     {{/app-header}}
 
-    <div class={{mainContentContainerClass}}>
+    <div class='col-xs-11 app-main--along-sidebar'>
       {{outlet}}
     </div>
   {{/app-base}}
