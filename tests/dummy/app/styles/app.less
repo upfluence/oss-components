@@ -156,3 +156,80 @@ html, body {
     background-color: @upf-primary-white;
   }
 }
+
+
+/* Tables part - to be moved to oss */
+
+@upf-primary-rock-blue-ultralight: mix(@upf-primary-rock-blue, #ffffff, 20%);
+
+label {
+  margin-bottom: 0px;
+  user-select: none;
+}
+
+table {
+  width: 100%;
+  position:absolute;
+  left:0;
+  right:0;
+  table-layout:fixed;
+  color: @upf-primary-rock-blue;
+  font-family: "GT Eesti Text Book";
+  line-height: 1.4rem; /* ~1.2 */
+  /* we should use GT Eesti Text Book everywhere exept titles and CTA's IMHO.
+  Let's Reunite the font family :) */
+  margin-bottom: 1rem;
+
+  tr {
+    border-bottom: 1px solid @upf-primary-rock-blue-ultralight;
+  }
+
+  thead {
+    th:first-of-type{
+      padding-left: 1em;
+    }
+    th {
+      padding: 1rem 1rem 0.5rem 0rem;
+      font-weight: 100; /* overwrite the default bold text in header */
+      overflow: hidden;
+    }
+    th:hover:not(.unsortable) {
+      cursor: pointer;
+      color: @upf-primary-bright-purple;
+      border-bottom: 1px solid @upf-primary-bright-purple;
+      &:not(.descending):after {
+        content: " ↓";
+      }
+      &:not(.ascending):after {
+        content: " ↑";
+      }
+    }
+  }
+
+  tbody{
+    tr:hover {
+      td.visible_on_hover {
+        opacity: 1;
+      }
+    }
+    td{
+      padding: 1rem 1rem 0.9rem 1rem;
+      height: 6.5rem;
+      overflow: hidden;
+      &:hover:not(.unsortable) {
+        background-color: @upf-primary-rock-blue-ultralight;
+        cursor: pointer;
+      }
+    }
+    td:not(:last-child) {
+      border-right: 1px solid @upf-primary-rock-blue-ultralight;
+    }
+      .sorted {
+        color: @upf-primary-bright-purple;
+      }
+  }
+
+  td.visible_on_hover{
+    opacity: 0;
+  }
+}

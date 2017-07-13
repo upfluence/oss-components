@@ -1,10 +1,97 @@
-<section class='col-xs-11 center-block'>
-  <h2>Data Tables</h2>
+<section class='col-xs-12 center-block'>
+  <h2>Data Tables</h2><br/><br/><br/>
 
-  <div class='col-xs-12 examples-group'>
-    {{data-table data=model columns=tableColumns pageSize=4
-                 selectRecord='toggleSelect'
-                 toggledAttributeCallback='toggledAttributeCallback'
-                 expandedRowTemplate='partials/table-details-view'}}
-  </div>
+  <table>
+    <thead>
+      <tr>
+        <th width="70" class="unsortable visible_on_hover">Select all</th>
+        <th width="100" class="sorted ascending">First name&nbsp;↑</th>
+        <th width="100" class="unsortable">Status</th>
+        <th>Actions</th>
+        <th>FB</th>
+        <th>PT</th>
+        <th>IG</th>
+        <th>Rank</th>
+        <th>Notes</th>
+        <th>Amount</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="unsortable visible_on_hover">
+          <div class="upf-checkbox">
+            {{input type='checkbox' class='upf-checkbox__input'
+                    id='unchecked-checkbox1'}}
+            <label for='unchecked-checkbox1' class='upf-checkbox__fake-checkbox'></label>
+          </div>
+        </td>
+        <td class="sorted">Albertine</td>
+        <td class="unsortable upf-align--right">invite made</td>
+        <td></td>
+        <td>170k</td>
+        <td>20k</td>
+        <td>6k</td>
+        <td>#1</td>
+        <td>notes</td>
+        <td class="upf-align--right">$100</td>
+      </tr>
+
+      <tr>
+        <td class="unsortable visible_on_hover">
+          <div class="upf-checkbox">
+            {{input type='checkbox' class='upf-checkbox__input'
+                    id='unchecked-checkbox2'}}
+            <label for='unchecked-checkbox2' class='upf-checkbox__fake-checkbox'></label>
+          </div>
+        </td>
+        <td class="sorted">Albertine</td>
+        <td class="unsortable upf-align--right">invite made</td>
+        <td></td>
+        <td>170k</td>
+        <td>20k</td>
+        <td>6k</td>
+        <td>#1</td>
+        <td>notes</td>
+        <td class="upf-align--right">$100</td>
+      </tr>
+
+      <tr>
+        <td class="unsortable visible_on_hover">
+          <div class="upf-checkbox">
+            {{input type='checkbox' class='upf-checkbox__input'
+                    id='unchecked-checkbox3'}}
+            <label for='unchecked-checkbox3' class='upf-checkbox__fake-checkbox'></label>
+          </div>
+        </td>
+        <td class="sorted">Albertine</td>
+        <td class="unsortable upf-align--right">invite made</td>
+        <td></td>
+        <td>170k</td>
+        <td>20k</td>
+        <td>6k</td>
+        <td>#1</td>
+        <td>notes</td>
+        <td class="upf-align--right">$100</td>
+      </tr>
+
+      <tr>
+        <td class="unsortable visible_on_hover">
+          <div class="upf-checkbox">
+            {{input type='checkbox' class='upf-checkbox__input'
+                    id='unchecked-checkbox4'}}
+            <label for='unchecked-checkbox4' class='upf-checkbox__fake-checkbox'></label>
+          </div>
+        </td>
+        <td class="sorted">Albertine</td>
+        <td class="unsortable upf-align--right">invite made</td>
+        <td></td>
+        <td>170k</td>
+        <td>20k</td>
+        <td>6k</td>
+        <td>#1</td>
+        <td>notes</td>
+        <td class="upf-align--right">$100</td>
+      </tr>
+    </tbody>
+  </table>
 </section>
