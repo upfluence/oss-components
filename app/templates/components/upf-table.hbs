@@ -1,0 +1,17 @@
+<thead>
+  <tr>
+    {{#each columns as |column|}}
+      <th>{{column.title}}</th>
+    {{/each}}
+  </tr>
+</thead>
+
+<tbody>
+  {{#each collection as |data|}}
+    <tr>
+      {{#each columns as |column|}}
+        <td>{{get data column.property}}</td>
+      {{/each}}
+    </tr>
+  {{/each}}
+</tbody>

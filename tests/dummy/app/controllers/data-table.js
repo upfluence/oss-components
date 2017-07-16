@@ -1,6 +1,12 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+  columns: [
+    { title: 'Name', property: 'name' },
+    { title: 'Media URL', property: 'media_url' },
+    { title: 'Email', property: 'email' }
+  ],
+
   tableColumns: [
     {
       'disableFiltering': true,
