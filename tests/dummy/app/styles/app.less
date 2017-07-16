@@ -197,10 +197,14 @@ table {
       cursor: pointer;
       color: @upf-primary-bright-purple;
       border-bottom: 1px solid @upf-primary-bright-purple;
-      &:not(.descending):after {
+      color: @upf-primary-bright-purple;
+      cursor: pointer;
+
+      &:not(.upf-table__header--descending):after {
         content: " ↓";
       }
-      &:not(.ascending):after {
+
+      &:not(.upf-table__header--ascending):after {
         content: " ↑";
       }
     }

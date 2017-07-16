@@ -1,11 +1,11 @@
 <thead>
   <tr>
     {{#if hasSelection}}
-      <th width="70" class="unsortable visible_on_hover">Select all</th>
+      <th class='upf-table__header'>Select all</th>
     {{/if}}
 
     {{#each columns as |column|}}
-      <th>{{column.title}}</th>
+      <th class='upf-table__header'>{{column.title}}</th>
     {{/each}}
   </tr>
 </thead>

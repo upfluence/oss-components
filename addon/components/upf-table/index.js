@@ -5,5 +5,15 @@ const { Component } = Ember;
 export default Component.extend({
   tagName: 'table',
 
-  hasSelection: false
+  hasSelection: false,
+  hasSortableColumns: true,
+
+  didInsertElement() {
+    if (this.get('hasSortableColumns')) {
+      this.$().tablesorter({
+        cssAsc: 'upf-table__header--ascending',
+        cssDesc: 'upf-table__header--descending'
+      });
+    }
+  }
 });

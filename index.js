@@ -22,6 +22,7 @@ module.exports = {
     app.import('bower_components/summernote/dist/font/summernote.woff', { destDir: 'assets/font' });
     app.import('bower_components/money-formatter/dist/money-formatter.min.js');
     app.import('bower_components/countdown.js/lib/countdown.js');
+    app.import('bower_components/tablesorter/jquery.tablesorter.min.js');
   },
 
   treeForPublic() {
