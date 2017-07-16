@@ -1,39 +1,24 @@
 <section class='app-header__top'>
-  <div class='header-item'>
-    {{#link-to 'typography' title='Typography'}}
-      <i class='fa fa-italic'></i>
-    {{/link-to}}
-  </div>
 
-  <div class='header-item'>
-    {{#link-to 'colors' title='Colors'}}
-      <i class='fa fa-paint-brush'></i>
-    {{/link-to}}
-  </div>
+  {{#sidebar-item route='typography' title='Typography'}}
+    <i class='fa fa-italic'></i>
+  {{/sidebar-item}}
 
-  <div class='header-item'>
-    {{#link-to 'inputs' title='Inputs'}}
-      <i class='fa fa-check-square'></i>
-    {{/link-to}}
-  </div>
+  {{#sidebar-item route='colors' title='Colors'}}
+    <i class='fa fa-paint-brush'></i>
+  {{/sidebar-item}}
 
-  <div class='header-item'>
-    {{#link-to 'text-editor' title='Text Editor'}}
-      <i class='fa fa-edit'></i>
-    {{/link-to}}
-  </div>
+  {{#sidebar-item route='inputs' title='Inputs'}}
+    <i class='fa fa-check'></i>
+  {{/sidebar-item}}
 
-  <div class='header-item'>
-    {{#link-to 'data-table' title='Data Tables'}}
-      <i class='fa fa-table'></i>
-    {{/link-to}}
-  </div>
-</section>
 
-<section class='app-header__bottom'>
-  <div class='header-item'>
-    <a {{action 'switchHeaderStyle'}}>
-      <i class='fa fa-exchange'></i>
-    </a>
-  </div>
+  {{#sidebar-item route='text-editor' title='Text Editor'}}
+    <i class='fa fa-edit'></i>
+  {{/sidebar-item}}
+
+
+  {{#sidebar-item route='data-table' title='Data Tables'}}
+    <i class='fa fa-table'></i>
+  {{/sidebar-item}}
 </section>
