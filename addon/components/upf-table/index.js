@@ -13,7 +13,7 @@ export default Component.extend({
     return this.get('columns').map((column) => {
       column.visible = (column.visible !== false) ? true : column.visible;
       return Ember.Object.create(column);
-    })
+    });
   }),
 
   didInsertElement() {
@@ -26,6 +26,14 @@ export default Component.extend({
             sorter: !this.get('hasSelection')
           }
         }
+      });
+    }
+  },
+
+  actions: {
+    selectAll() {
+      this.get('collection').map((item) => {
+        item.toggleProperty('selected');
       });
     }
   }

@@ -8,7 +8,10 @@
   <thead>
     {{#upf-table/row}}
       {{#if hasSelection}}
-        <th width='70px' class='upf-table__column upf-table__column--unsortable'>Select all</th>
+        <th width='70px' {{action 'selectAll'}}
+            class='upf-table__column upf-table__column--unsortable'>
+          Select all
+        </th>
       {{/if}}
 
       {{#each _columns as |column|}}
