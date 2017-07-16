@@ -1,29 +1,37 @@
-<thead>
-  {{#upf-table/row}}
-    {{#if hasSelection}}
-      <th width='70px' class='upf-table__column upf-table__column--unsortable'>Select all</th>
-    {{/if}}
+<div class='upf-table__header'>
+  {{#each _columns as |column|}}
+    {{upf-checkbox value=column.visible}} {{column.title}}
+  {{/each}}
+</div>
 
-    {{#each columns as |column|}}
-      {{#unless (eq column.visible false)}}
-        <th class='upf-table__column'>{{column.title}}</th>
-      {{/unless}}
-    {{/each}}
-  {{/upf-table/row}}
-</thead>
-
-<tbody>
-  {{#each collection as |item index|}}
-    {{#upf-table/row ref=item}}
+<table>
+  <thead>
+    {{#upf-table/row}}
       {{#if hasSelection}}
-        <td class='upf-table__column'>{{upf-checkbox value=item.selected}}</td>
+        <th width='70px' class='upf-table__column upf-table__column--unsortable'>Select all</th>
       {{/if}}
 
-      {{#each columns as |column|}}
+      {{#each _columns as |column|}}
         {{#unless (eq column.visible false)}}
-          <td class='upf-table__column'>{{get item column.property}}</td>
+          <th class='upf-table__column'>{{column.title}}</th>
         {{/unless}}
       {{/each}}
     {{/upf-table/row}}
-  {{/each}}
-</tbody>
+  </thead>
+
+  <tbody>
+    {{#each collection as |item index|}}
+      {{#upf-table/row ref=item}}
+        {{#if hasSelection}}
+          <td class='upf-table__column'>{{upf-checkbox value=item.selected}}</td>
+        {{/if}}
+
+        {{#each _columns as |column|}}
+          {{#unless (eq column.visible false)}}
+            <td class='upf-table__column'>{{get item column.property}}</td>
+          {{/unless}}
+        {{/each}}
+      {{/upf-table/row}}
+    {{/each}}
+  </tbody>
+</table>
