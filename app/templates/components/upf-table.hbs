@@ -1,12 +1,12 @@
 <thead>
   {{#upf-table/row}}
     {{#if hasSelection}}
-      <th class='upf-table__header'>Select all</th>
+      <th width='70px' class='upf-table__column upf-table__column--unsortable'>Select all</th>
     {{/if}}
 
     {{#each columns as |column|}}
       {{#unless (eq column.visible false)}}
-        <th>{{column.title}}</th>
+        <th class='upf-table__column'>{{column.title}}</th>
       {{/unless}}
     {{/each}}
   {{/upf-table/row}}
@@ -16,12 +16,12 @@
   {{#each collection as |item index|}}
     {{#upf-table/row ref=item}}
       {{#if hasSelection}}
-        <td>{{upf-checkbox value=item.selected}}</td>
+        <td class='upf-table__column'>{{upf-checkbox value=item.selected}}</td>
       {{/if}}
 
       {{#each columns as |column|}}
         {{#unless (eq column.visible false)}}
-          <td>{{get item column.property}}</td>
+          <td class='upf-table__column'>{{get item column.property}}</td>
         {{/unless}}
       {{/each}}
     {{/upf-table/row}}

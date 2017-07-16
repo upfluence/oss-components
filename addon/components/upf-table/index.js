@@ -12,7 +12,12 @@ export default Component.extend({
     if (this.get('hasSortableColumns')) {
       this.$().tablesorter({
         cssAsc: 'upf-table__column--ascending',
-        cssDesc: 'upf-table__column--descending'
+        cssDesc: 'upf-table__column--descending',
+        headers: {
+          0: {
+            sorter: !this.get('hasSelection')
+          }
+        }
       });
     }
   }
