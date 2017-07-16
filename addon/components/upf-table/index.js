@@ -11,8 +11,8 @@ export default Component.extend({
   didInsertElement() {
     if (this.get('hasSortableColumns')) {
       this.$().tablesorter({
-        cssAsc: 'upf-table__header--ascending',
-        cssDesc: 'upf-table__header--descending'
+        cssAsc: 'upf-table__column--ascending',
+        cssDesc: 'upf-table__column--descending'
       });
     }
   }

@@ -1,13 +1,15 @@
 <thead>
-  <tr>
+  {{#upf-table/row}}
     {{#if hasSelection}}
       <th class='upf-table__header'>Select all</th>
     {{/if}}
 
     {{#each columns as |column|}}
-      <th class='upf-table__header'>{{column.title}}</th>
+      {{#unless (eq column.visible false)}}
+        <th>{{column.title}}</th>
+      {{/unless}}
     {{/each}}
-  </tr>
+  {{/upf-table/row}}
 </thead>
 
 <tbody>
@@ -18,7 +20,9 @@
       {{/if}}
 
       {{#each columns as |column|}}
-        <td>{{get item column.property}}</td>
+        {{#unless (eq column.visible false)}}
+          <td>{{get item column.property}}</td>
+        {{/unless}}
       {{/each}}
     {{/upf-table/row}}
   {{/each}}

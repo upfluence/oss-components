@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
   columns: [
     { title: 'Name', property: 'name' },
-    { title: 'Media URL', property: 'media_url' },
+    { title: 'Media URL', property: 'media_url', visible: false },
     { title: 'Email', property: 'email' }
   ],
 
