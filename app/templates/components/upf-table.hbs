@@ -1,5 +1,9 @@
 <thead>
   <tr>
+    {{#if hasSelection}}
+      <th width="70" class="unsortable visible_on_hover">Select all</th>
+    {{/if}}
+
     {{#each columns as |column|}}
       <th>{{column.title}}</th>
     {{/each}}
@@ -7,8 +11,20 @@
 </thead>
 
 <tbody>
-  {{#each collection as |data|}}
+  {{#each collection as |data index|}}
     <tr>
+      {{#if hasSelection}}
+        <td>
+          <div class="upf-checkbox">
+            {{input type='checkbox' class='upf-checkbox__input'
+                    id=(concat 'unchecked-checkbox-' index)}}
+                    <label for={{concat 'unchecked-checkbox-' index}}
+                   class='upf-checkbox__fake-checkbox'>
+            </label>
+          </div>
+        </td>
+      {{/if}}
+
       {{#each columns as |column|}}
         <td>{{get data column.property}}</td>
       {{/each}}
