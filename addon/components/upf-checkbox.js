@@ -1,9 +1,6 @@
 import Ember from 'ember';
 
-const {
-  Component,
-  observer
-} = Ember;
+const { Component } = Ember;
 
 export default Component.extend({
   classNames: ['upf-checkbox'],
