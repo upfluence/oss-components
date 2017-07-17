@@ -1,7 +1,23 @@
-<div class='upf-table__header'>
-  {{#each _columns as |column|}}
-    {{upf-checkbox value=column.visible}} {{column.title}}
-  {{/each}}
+<div class='row upf-contextual-nav'>
+  <div class='pull-right'>
+  <div class='dropdown'>
+    <a id='upf-datatable__display-columns'  data-toggle='dropdown'
+       aria-expanded='false' class='upf-link--reset text-color-contrast'>
+      Display Columns
+    </a>
+
+    <ul class='dropdown-menu dropdown-menu-right upf-dropdown'
+        aria-labelledby='upf-datatable__display-columns'>
+      {{#each _columns as |column|}}
+        <li>
+          {{#upf-checkbox value=column.visible hasLabel=true}}
+            {{column.title}}
+          {{/upf-checkbox}}
+        </li>
+      {{/each}}
+    </ul>
+  </div>
+  </div>
 </div>
 
 <table>
