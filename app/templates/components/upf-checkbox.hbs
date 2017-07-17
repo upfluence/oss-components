@@ -4,3 +4,6 @@
 <label for={{concat 'unchecked-checkbox-' elementId}}
        class='upf-checkbox__fake-checkbox'>
 </label>
+{{#if hasLabel}}
+  <span class='upf-checkbox__label'>{{yield}}</span>
+{{/if}}
