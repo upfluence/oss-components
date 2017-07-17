@@ -20,9 +20,9 @@
   </div>
 </div>
 
-<table>
+<table class='upf-datatable'>
   <thead>
-    {{#upf-table/row}}
+    {{#upf-table/row isHeaderRow=true}}
       {{#if hasSelection}}
         <th width='70px' class='upf-datatable__column upf-datatable__column--unsortable'>
           {{upf-checkbox value=allRowsSelected}}
@@ -31,7 +31,7 @@
 
       {{#each _columns as |column|}}
         {{#unless (eq column.visible false)}}
-          <th class='upf-table__column'>{{column.title}}</th>
+          <th class='upf-datatable__column'>{{column.title}}</th>
         {{/unless}}
       {{/each}}
     {{/upf-table/row}}
@@ -41,12 +41,12 @@
     {{#each collection as |item index|}}
       {{#upf-table/row ref=item}}
         {{#if hasSelection}}
-          <td class='upf-table__column'>{{upf-checkbox value=item.selected}}</td>
+          <td class='upf-datatable__column'>{{upf-checkbox value=item.selected}}</td>
         {{/if}}
 
         {{#each _columns as |column|}}
           {{#unless (eq column.visible false)}}
-            <td class='upf-table__column'>{{get item column.property}}</td>
+            <td class='upf-datatable__column'>{{get item column.property}}</td>
           {{/unless}}
         {{/each}}
       {{/upf-table/row}}

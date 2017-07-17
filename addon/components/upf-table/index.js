@@ -24,8 +24,8 @@ export default Component.extend({
   didInsertElement() {
     if (this.get('hasSortableColumns')) {
       this.$('table').tablesorter({
-        cssAsc: 'upf-table__column--ascending',
-        cssDesc: 'upf-table__column--descending',
+        cssAsc: 'upf-datatable__column--ascending',
+        cssDesc: 'upf-datatable__column--descending',
         headers: {
           0: {
             sorter: !this.get('hasSelection')
