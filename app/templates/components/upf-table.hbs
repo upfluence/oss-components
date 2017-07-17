@@ -8,9 +8,8 @@
   <thead>
     {{#upf-table/row}}
       {{#if hasSelection}}
-        <th width='70px' {{action 'selectAll'}}
-            class='upf-table__column upf-table__column--unsortable'>
-          Select all
+        <th width='70px' class='upf-datatable__column upf-datatable__column--unsortable'>
+          {{upf-checkbox value=allRowsSelected}}
         </th>
       {{/if}}
 

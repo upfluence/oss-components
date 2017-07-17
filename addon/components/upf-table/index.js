@@ -2,12 +2,17 @@ import Ember from 'ember';
 
 const {
   Component,
-  computed
+  computed,
+  observer
 } = Ember;
 
 export default Component.extend({
+  classNames: ['upf-table__container'],
+
   hasSelection: false,
   hasSortableColumns: true,
+
+  allRowsSelected: false,
 
   _columns: computed('columns', function() {
     return this.get('columns').map((column) => {
@@ -30,11 +35,9 @@ export default Component.extend({
     }
   },
 
-  actions: {
-    selectAll() {
-      this.get('collection').map((item) => {
-        item.toggleProperty('selected');
-      });
-    }
-  }
+  _: observer('allRowsSelected', function() {
+    this.get('collection').map((item) => {
+      item.toggleProperty('selected');
+    });
+  })
 });
