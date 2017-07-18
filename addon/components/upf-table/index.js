@@ -46,6 +46,16 @@ export default Component.extend({
     return headers;
   }),
 
+  _: observer('allRowsSelected', function() {
+    this.get('collection').map((item) => {
+      if (this.get('allRowsSelected')) {
+        item.set('selected', true);
+      } else {
+        item.set('selected', false);
+      }
+    });
+  }),
+
   didInsertElement() {
     if (this.get('hasSortableColumns')) {
       this.$('table').tablesorter({
