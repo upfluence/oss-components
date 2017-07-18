@@ -4,11 +4,11 @@ export default Ember.Controller.extend({
   columns: [
     { title: 'Name', property: 'name' },
     { title: 'Media URL', property: 'media_url', visible: false },
+    { title: 'Actions', component: 'table-actions' },
     { title: 'Email', property: 'email', sorted: true },
-    { title: 'selectability', property: 'selectability' },
-    { title: 'fff', property: 'client_approved_for_drafting' },
-    { title: 'popopo', property: 'proposed_price' },
-    { title: 'selected', property: 'isSelected' }
+    { title: 'Selectability', property: 'selectability' },
+    { title: 'Proposed Price', property: 'proposed_price' },
+    { title: 'Selected', property: 'isSelected' }
   ],
 
   actions: {

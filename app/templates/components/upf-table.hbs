@@ -46,7 +46,13 @@
 
         {{#each _columns as |column|}}
           {{#unless (eq column.visible false)}}
-            <td class='upf-datatable__column'>{{get item column.property}}</td>
+            {{#if column.component}}
+              <td valign='middle' class='upf-datatable__column'>
+                {{component column.component item=item column=column}}
+              </td>
+            {{else}}
+              <td class='upf-datatable__column'>{{get item column.property}}</td>
+            {{/if}}
           {{/unless}}
         {{/each}}
       {{/upf-table/row}}
