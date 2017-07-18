@@ -13,6 +13,7 @@ export default Component.extend({
   hasSortableColumns: true,
 
   allRowsSelected: false,
+  displayedColumnPanel: false,
 
   _columns: computed('columns', function() {
     return this.get('columns').map((column) => {
@@ -68,9 +69,9 @@ export default Component.extend({
     }
   },
 
-  _: observer('allRowsSelected', function() {
-    this.get('collection').map((item) => {
-      item.toggleProperty('selected');
-    });
-  })
+  actions: {
+    toggleDisplayedColumnVisibilityPanel() {
+      this.toggleProperty('displayedColumnPanel')
+    }
+  }
 });

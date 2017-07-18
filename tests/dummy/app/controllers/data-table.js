@@ -10,15 +10,4 @@ export default Ember.Controller.extend({
     { title: 'Proposed Price', property: 'proposed_price' },
     { title: 'Selected', property: 'isSelected' }
   ],
-
-  actions: {
-    toggleSelect(record) {
-      record.toggleProperty('isSelected');
-      if (record.get('isSelected')) {
-        window.alert(`${record.name} has been selected`);
-      } else {
-        window.alert(`${record.name} has been unselected`);
-      }
-    }
-  },
 });

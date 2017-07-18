@@ -163,7 +163,6 @@ html, body {
 
 /* Tables part - to be moved to oss */
 
-@upf-primary-rock-blue-ultralight: mix(@upf-primary-rock-blue, #ffffff, 20%);
 @spacing-xx-lg: 5em;
 
 .upf-datatable {
@@ -242,4 +241,25 @@ html, body {
   margin-bottom: 0px;
   user-select: none;
   vertical-align: text-bottom;
+}
+
+.upf-datatable__side-panel {
+  background-color: @upf-primary-dark-purple;
+  display: none;
+  opacity: 0;
+  z-index: 1;
+
+  height: 500px;
+  overflow-y: auto;
+
+
+  padding: @spacing-md;
+  position: absolute;
+  right: 0;
+  width: 25%;
+}
+
+.upf-datatable__side-panel--visible {
+  display: block;
+  opacity: 1;
 }

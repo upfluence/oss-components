@@ -1,23 +1,21 @@
-<div class='row upf-contextual-nav'>
+<div class='row upf-contextual-nav upf-datatable__actions-header'>
   <div class='pull-right'>
-  <div class='dropdown'>
-    <a id='upf-datatable__display-columns'  data-toggle='dropdown'
-       aria-expanded='false' class='upf-link--reset text-color-contrast'>
+    <a {{action 'toggleDisplayedColumnVisibilityPanel'}}
+       class='upf-link--reset text-color-contrast'>
       Display Columns
     </a>
+  </div>
+</div>
 
-    <ul class='dropdown-menu dropdown-menu-right upf-dropdown'
-        aria-labelledby='upf-datatable__display-columns'>
-      {{#each _columns as |column|}}
-        <li>
-          {{#upf-checkbox value=column.visible hasLabel=true}}
-            {{column.title}}
-          {{/upf-checkbox}}
-        </li>
-      {{/each}}
-    </ul>
-  </div>
-  </div>
+<div class="upf-datatable__side-panel
+     {{if displayedColumnPanel 'upf-datatable__side-panel--visible'}}">
+  {{#each _columns as |column|}}
+    <div class='margin-bottom-sm'>
+      {{#upf-checkbox value=column.visible hasLabel=true}}
+        <span class='text-color-contrast'>{{column.title}}</span>
+      {{/upf-checkbox}}
+    </div>
+  {{/each}}
 </div>
 
 <table class='upf-datatable'>
