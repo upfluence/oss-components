@@ -1,4 +1,10 @@
 <div class='row upf-contextual-nav upf-datatable__actions-header'>
+  <div class='pull-left'>
+    {{#if contextualActionsComponent}}
+      {{component contextualActionsComponent collection=collection}}
+    {{/if}}
+  </div>
+
   <div class='pull-right'>
     <a {{action 'toggleDisplayedColumnVisibilityPanel'}}
        class='upf-link--reset text-color-contrast text-size-6'>
