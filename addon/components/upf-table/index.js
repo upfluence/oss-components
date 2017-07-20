@@ -13,7 +13,7 @@ export default Component.extend({
   hasSortableColumns: true,
 
   allRowsSelected: false,
-  displayedColumnPanel: false,
+  displayedColumnsPanel: false,
 
   _columns: computed('columns', function() {
     return this.get('columns').map((column) => {
@@ -71,7 +71,7 @@ export default Component.extend({
 
   actions: {
     toggleDisplayedColumnVisibilityPanel() {
-      this.toggleProperty('displayedColumnPanel')
+      this.toggleProperty('displayedColumnsPanel')
     }
   }
 });

@@ -1,14 +1,19 @@
 <div class='row upf-contextual-nav upf-datatable__actions-header'>
   <div class='pull-right'>
     <a {{action 'toggleDisplayedColumnVisibilityPanel'}}
-       class='upf-link--reset text-color-contrast'>
-      Display Columns
+       class='upf-link--reset text-color-contrast text-size-6'>
+      Display &nbsp;
+      {{#if displayedColumnsPanel}}
+        {{fa-icon 'caret-up'}}
+      {{else}}
+        {{fa-icon 'caret-down'}}
+      {{/if}}
     </a>
   </div>
 </div>
 
 <div class="upf-datatable__side-panel
-     {{if displayedColumnPanel 'upf-datatable__side-panel--visible'}}">
+     {{if displayedColumnsPanel 'upf-datatable__side-panel--visible'}}">
   {{#each _columns as |column|}}
     <div class='margin-bottom-sm'>
       {{#upf-checkbox value=column.visible hasLabel=true}}
