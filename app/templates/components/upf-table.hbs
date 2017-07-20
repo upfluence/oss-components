@@ -44,13 +44,19 @@
 
         {{#each _columns as |column|}}
           {{#unless (eq column.visible false)}}
-            {{#if column.component}}
-              <td valign='middle' class='upf-datatable__column'>
+            <td valign='middle' class='upf-datatable__column {{column.additionalClasses}}'>
+              {{#if column.component}}
                 {{component column.component item=item column=column}}
-              </td>
-            {{else}}
-              <td class='upf-datatable__column'>{{get item column.property}}</td>
-            {{/if}}
+              {{else}}
+                {{#if (eq column.helper 'money')}}
+                  {{format-money (get item column.property) (get item column.currency)}}
+                {{else if (eq column.helper 'numeric')}}
+                  {{format-numeric (get item column.property)}}
+                {{else}}
+                  {{get item column.property}}
+                {{/if}}
+              {{/if}}
+            </td>
           {{/unless}}
         {{/each}}
       {{/upf-table/row}}
