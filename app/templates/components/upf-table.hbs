@@ -34,7 +34,13 @@
 
       {{#each _columns as |column|}}
         {{#unless (eq column.visible false)}}
-          <th class='upf-datatable__column'>{{column.title}}</th>
+          <th class="upf-datatable__column {{if column.titleIcon 'text-size-6'}}">
+            {{#if column.titleIcon}}
+              {{fa-icon column.titleIcon}}
+            {{else}}
+              {{column.title}}
+            {{/if}}
+          </th>
         {{/unless}}
       {{/each}}
     {{/upf-table/row}}
