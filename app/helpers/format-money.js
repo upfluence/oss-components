@@ -13,7 +13,6 @@ var _getFormatter = function(currency) {
 };
 
 var _formatMoney = function(amount, currency) {
-  console.log(currency);
   if (amount > 0) {
     return _getFormatter(currency).format(parseFloat(amount));
   } else {
