@@ -59,7 +59,7 @@ export default Component.extend({
 
   didInsertElement() {
     if (this.get('hasSortableColumns')) {
-      this.$('table').tablesorter({
+      this.$('.upf-datatable__table').tablesorter({
         cssAsc: 'upf-datatable__column--ascending',
         cssDesc: 'upf-datatable__column--descending',
         cssHeader: 'upf-datatable__column--unsorted',
