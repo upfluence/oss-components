@@ -7,8 +7,9 @@
 
   <div class='pull-right'>
     <a {{action 'toggleDisplayedColumnVisibilityPanel'}}
-       class='upf-link--reset text-color-contrast text-size-6'>
-      Display &nbsp;
+       class='upf-btn upf-link--contrast text-size-6'>
+      {{columnsDisplayWording}} &nbsp;
+
       {{#if displayedColumnsPanel}}
         {{fa-icon 'caret-up'}}
       {{else}}

@@ -38,10 +38,10 @@ export default Component.extend({
   }),
 
   _sortingHeaders: computed('hasSelection', function() {
-    let headers = {}
+    let headers = {};
 
     if(this.get('hasSelection')) {
-      headers[0] = { sorter: false }
+      headers[0] = { sorter: false };
     }
 
     return headers;
@@ -71,7 +71,7 @@ export default Component.extend({
 
   actions: {
     toggleDisplayedColumnVisibilityPanel() {
-      this.toggleProperty('displayedColumnsPanel')
+      this.toggleProperty('displayedColumnsPanel');
     }
   }
 });
