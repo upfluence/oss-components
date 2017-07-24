@@ -2,11 +2,14 @@
 @import 'living-oss/stats';
 @import 'living-oss/icons';
 
+@font-text-body: 'GT Eesti Text Book', 'Helvetica Neue', 'Helvetica', sans-serif;
+
 html, body {
-  background-color: #f9f9f9;
+  background-color: white;
   padding-bottom: 2em;
   font-family: @font-text-body;
   height: 100vh;
+  line-height: 1.5rem;
 }
 
 .app-main--along-sidebar section, .app-main--below-topbar section {
@@ -155,4 +158,108 @@ html, body {
     padding: 1em;
     background-color: @upf-primary-white;
   }
+}
+
+
+/* Tables part - to be moved to oss */
+
+@spacing-xx-lg: 5em;
+
+.upf-datatable {
+  position: absolute;
+  left: 0;
+  right: 0;
+
+  table-layout: fixed;
+  width: 100%;
+}
+
+.upf-datatable__row {
+  border-bottom: 1px solid lighten(@upf-gray, 15%);
+
+  th:first-of-type, td:first-of-type {
+    padding-left: @spacing-xx-sm;
+  }
+
+  th, td {
+    color: @color-text-light;
+    padding: @spacing-xxx-sm;
+    overflow: hidden;
+  }
+}
+
+.upf-datatable__row:not(.upf-datatable__row--header) {
+  &:hover {
+    background-color: @upf-gray-light;
+  }
+
+  .upf-datatable__column {
+    height: @spacing-xx-lg;
+
+    &:hover:not(.upf-datatable__column--unsortable) {
+      cursor: pointer;
+      color: @upf-primary-bright-purple;
+      transition: color 0.4s;
+    }
+  }
+
+  td:not(:last-child) {
+    border-right: 1px solid lighten(@upf-gray, 15%);
+  }
+}
+
+.upf-datatable__row--header {
+  overflow: hidden;
+  text-transform: capitalize;
+
+  .upf-datatable__column:hover:not(.upf-datatable__column--unsortable) {
+    border-bottom: 1px solid @upf-primary-bright-purple;
+    color: @upf-primary-bright-purple;
+    cursor: pointer;
+  }
+
+  .upf-datatable__column.upf-datatable__column--descending:after {
+    content: " ↑";
+  }
+
+  .upf-datatable__column.upf-datatable__column--ascending:after {
+    content: " ↓";
+  }
+}
+
+// By Philippe: The subnav with table actions
+.upf-contextual-nav {
+  background-color: @upf-primary-orange-dark;
+  padding: @spacing-x-sm;
+}
+
+.upf-checkbox__label {
+  left: @spacing-md;
+}
+
+.upf-checkbox__fake-checkbox {
+  margin-bottom: 0px;
+  user-select: none;
+  vertical-align: text-bottom;
+}
+
+.upf-datatable__side-panel {
+  background-color: @upf-primary-dark-purple;
+  display: none;
+  opacity: 0;
+  z-index: 1;
+
+  height: 500px;
+  overflow-y: auto;
+
+
+  padding: @spacing-md;
+  position: absolute;
+  right: 0;
+  width: 25%;
+}
+
+.upf-datatable__side-panel--visible {
+  display: block;
+  opacity: 1;
 }
