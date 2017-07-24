@@ -40,7 +40,8 @@
 
       {{#each _columns as |column|}}
         {{#unless (eq column.visible false)}}
-          <th class="upf-datatable__column {{if column.titleIcon 'text-size-6'}}">
+          <th width={{column.width}}
+              class="upf-datatable__column {{if column.titleIcon 'text-size-6'}}">
             {{#if column.titleIcon}}
               {{fa-icon column.titleIcon}}
             {{else}}
