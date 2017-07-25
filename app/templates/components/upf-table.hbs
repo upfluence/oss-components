@@ -64,7 +64,8 @@
 
         {{#each _columns as |column|}}
           {{#unless (eq column.visible false)}}
-            <td valign='middle' class='upf-datatable__column {{column.additionalClasses}}'>
+            <td valign='middle' class="upf-datatable__column {{column.additionalClasses}}
+                                       {{unless column.editable 'upf-datatable__column--uneditable'}}">
               {{#if column.component}}
                 {{component column.component item=item column=column}}
               {{else}}
