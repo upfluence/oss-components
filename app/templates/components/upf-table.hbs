@@ -59,7 +59,9 @@
       {{#upf-table/row ref=item action='callOnRowClickCallback'
                        onRowClickCallback=onRowClickCallback}}
         {{#if hasSelection}}
-          <td class='upf-datatable__column'>{{upf-checkbox value=item.selected}}</td>
+          <td class='upf-datatable__column upf-datatable__column--uneditable'>
+            {{upf-checkbox value=item.selected}}
+          </td>
         {{/if}}
 
         {{#each _columns as |column|}}

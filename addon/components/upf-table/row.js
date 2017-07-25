@@ -18,9 +18,9 @@ export default Component.extend({
   }),
 
   click: function(e) {
-    let clickedColumnIsUneditable = e.target.className.split(' ').includes(
-      'upf-datatable__column--uneditable'
-    );
+    let clickedColumnIsUneditable = $(e.target).parents(
+      'td.upf-datatable__column.upf-datatable__column--uneditable'
+    ).length !== 0;
     if(this.get('onRowClickCallback') && !clickedColumnIsUneditable) {
       this.send('handleRowClickCallback');
     }
