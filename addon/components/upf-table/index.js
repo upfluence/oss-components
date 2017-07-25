@@ -72,6 +72,13 @@ export default Component.extend({
   actions: {
     toggleDisplayedColumnVisibilityPanel() {
       this.toggleProperty('displayedColumnsPanel');
+    },
+
+    callOnRowClickCallback: function(action, record) {
+      this.get('_targetObject').send(
+        action,
+        record
+      );
     }
   }
 });

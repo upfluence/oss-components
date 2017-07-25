@@ -56,7 +56,8 @@
 
   <tbody>
     {{#each collection as |item index|}}
-      {{#upf-table/row ref=item}}
+      {{#upf-table/row ref=item action='callOnRowClickCallback'
+                       onRowClickCallback=onRowClickCallback}}
         {{#if hasSelection}}
           <td class='upf-datatable__column'>{{upf-checkbox value=item.selected}}</td>
         {{/if}}
