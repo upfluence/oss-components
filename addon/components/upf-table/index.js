@@ -17,9 +17,9 @@ export default Component.extend({
 
   _columns: computed('columns', function() {
     return this.get('columns').map((column) => {
-      column.visible = (column.visible !== false) ? true : column.visible;
-      column.sorted = (column.sorted !== true) ? false : column.sorted;
-      column.editable = (column.editable !== false) ? true : column.editable;
+      column.visible = column.visible !== false;
+      column.sorted = column.sorted === true;
+      column.editable = column.editable !== false;
       return Ember.Object.create(column);
     });
   }),

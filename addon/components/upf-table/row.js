@@ -13,15 +13,13 @@ export default Component.extend({
     'isSelected:upf-datatable__row--selected'
   ],
 
-  isSelected: computed('ref.selected', function() {
-    return this.get('ref.selected') === true;
-  }),
+  isSelected: computed.bool('ref.selected'),
 
   click: function(e) {
     let clickedColumnIsUneditable = $(e.target).parents(
       'td.upf-datatable__column.upf-datatable__column--uneditable'
     ).length !== 0;
-    if(this.get('onRowClickCallback') && !clickedColumnIsUneditable) {
+    if (this.get('onRowClickCallback') && !clickedColumnIsUneditable) {
       this.send('handleRowClickCallback');
     }
   },
