@@ -5,7 +5,7 @@
     {{/if}}
   </div>
 
-  <div class='pull-right'>
+  <div class='upf-contextual-nav__item upf-contextual-nav__item--pull-right'>
     <a {{action 'toggleDisplayedColumnVisibilityPanel'}}
        class='upf-btn upf-link--contrast text-size-6'>
       {{columnsDisplayWording}} &nbsp;
@@ -56,14 +56,18 @@
 
   <tbody>
     {{#each collection as |item index|}}
-      {{#upf-table/row ref=item}}
+      {{#upf-table/row ref=item action='callOnRowClickCallback'
+                       onRowClickCallback=onRowClickCallback}}
         {{#if hasSelection}}
-          <td class='upf-datatable__column'>{{upf-checkbox value=item.selected}}</td>
+          <td class='upf-datatable__column upf-datatable__column--uneditable'>
+            {{upf-checkbox value=item.selected}}
+          </td>
         {{/if}}
 
         {{#each _columns as |column|}}
           {{#unless (eq column.visible false)}}
-            <td valign='middle' class='upf-datatable__column {{column.additionalClasses}}'>
+            <td valign='middle' class="upf-datatable__column {{column.additionalClasses}}
+                                       {{unless column.editable 'upf-datatable__column--uneditable'}}">
               {{#if column.component}}
                 {{component column.component item=item column=column}}
               {{else}}

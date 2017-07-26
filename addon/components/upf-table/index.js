@@ -17,8 +17,9 @@ export default Component.extend({
 
   _columns: computed('columns', function() {
     return this.get('columns').map((column) => {
-      column.visible = (column.visible !== false) ? true : column.visible;
-      column.sorted = (column.sorted !== true) ? false : column.sorted;
+      column.visible = column.visible !== false;
+      column.sorted = column.sorted === true;
+      column.editable = column.editable !== false;
       return Ember.Object.create(column);
     });
   }),
@@ -72,6 +73,13 @@ export default Component.extend({
   actions: {
     toggleDisplayedColumnVisibilityPanel() {
       this.toggleProperty('displayedColumnsPanel');
+    },
+
+    callOnRowClickCallback: function(action, record) {
+      this.get('_targetObject').send(
+        action,
+        record
+      );
     }
   }
 });
