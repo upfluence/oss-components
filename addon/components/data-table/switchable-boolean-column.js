@@ -25,9 +25,9 @@ export default BooleanColumnComponent.extend({
       this.set(attribute, true);
     }
 
-    this.get('targetObject').send(
-      'toggledAttributeCallback',
-      this.get('record')
-    );
+    this.triggerAction({
+      action: 'toggledAttributeCallback',
+      actionContext: [this.get('record')]
+    });
   }),
 });

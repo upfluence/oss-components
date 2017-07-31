@@ -35,14 +35,17 @@ export default ModelsTableComponent.extend({
 
   actions: {
     selectRecord(record) {
-      this.get('targetObject').send(this.get('selectRecord'), record);
+      this.triggerAction({
+        action: this.get('selectRecord'),
+        actionContext: [record]
+      });
     },
 
     toggledAttributeCallback(record) {
-      this.get('targetObject').send(
-        this.get('toggledAttributeCallback'),
-        record
-      );
+      this.triggerAction({
+        action: 'toggledAttributeCallback',
+        actionContext: [record]
+      });
     }
   }
 });
