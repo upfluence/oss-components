@@ -1,13 +1,10 @@
-<div class='row upf-contextual-nav upf-datatable__actions-header'>
-  <div class='pull-left'>
-    {{#if contextualActionsComponent}}
-      {{component contextualActionsComponent collection=collection}}
-    {{/if}}
-  </div>
+<ul class='row upf-contextual-nav upf-datatable__actions-header'>
+  {{#if contextualActionsComponent}}
+    {{component contextualActionsComponent collection=collection}}
+  {{/if}}
 
-  <div class='upf-contextual-nav__item upf-contextual-nav__item--pull-right'>
-    <a {{action 'toggleDisplayedColumnVisibilityPanel'}}
-       class='upf-btn upf-link--contrast text-size-6'>
+  <li class='upf-contextual-nav__item upf-contextual-nav__item--pull-right'>
+    <a {{action 'toggleDisplayedColumnVisibilityPanel'}} class='upf-link--reset'>
       {{columnsDisplayWording}} &nbsp;
 
       {{#if displayedColumnsPanel}}
@@ -16,8 +13,8 @@
         {{fa-icon 'caret-down'}}
       {{/if}}
     </a>
-  </div>
-</div>
+  </li>
+</ul>
 
 <div class="upf-datatable__side-panel
      {{if displayedColumnsPanel 'upf-datatable__side-panel--visible'}}">
