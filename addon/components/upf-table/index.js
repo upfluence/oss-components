@@ -15,6 +15,13 @@ export default Component.extend({
   allRowsSelected: false,
   displayedColumnsPanel: false,
 
+  currentPage: 1,
+  totalPages: 1,
+  perPage: 1,
+  itemTotal: 0,
+  itemCount: 0,
+  itemName: '',
+
   _columns: computed('columns', function() {
     return this.get('columns').map((column) => {
       column.visible = column.visible !== false;
@@ -80,6 +87,10 @@ export default Component.extend({
         action,
         record
       );
+    },
+
+    didPageChange(page) {
+      this.sendAction('didPageChange', page);
     }
   }
 });
