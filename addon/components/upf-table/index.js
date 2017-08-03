@@ -11,11 +11,11 @@ export default Component.extend({
 
   hasSelection: false,
   hasSortableColumns: true,
+  hasPagination: false,
 
   allRowsSelected: false,
   displayedColumnsPanel: false,
 
-  isPaginated: false,
   currentPage: 1,
   totalPages: 1,
   perPage: 1,
