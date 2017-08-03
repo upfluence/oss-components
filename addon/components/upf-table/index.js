@@ -3,7 +3,8 @@ import Ember from 'ember';
 const {
   Component,
   computed,
-  observer
+  observer,
+  run
 } = Ember;
 
 export default Component.extend({
@@ -16,6 +17,9 @@ export default Component.extend({
 
   allRowsSelected: false,
   displayedColumnsPanel: false,
+
+  searchQuery: null,
+  searchInputPlaceholder: 'Search...',
 
   currentPage: 1,
   totalPages: 1,
@@ -65,6 +69,12 @@ export default Component.extend({
         item.set('selected', false);
       }
     });
+  }),
+
+  _: observer('searchQuery', function() {
+    run.later(this, function() {
+      this.get('_targetObject').send('performSearch', this.get('searchQuery'));
+    }, 3000);
   }),
 
   didInsertElement() {

@@ -13,9 +13,10 @@
         {{fa-icon 'caret-down'}}
       {{/if}}
     </a>
+
     {{#if hasPagination}}
       {{upf-table/pagination currentPage=currentPage perPage=perPage
-                             totalPages=totalPages  itemTotal=itemTotal
+                             totalPages=totalPages itemTotal=itemTotal
                              itemCount=itemCount itemName=itemName}}
     {{/if}}
 
