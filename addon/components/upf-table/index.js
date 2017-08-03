@@ -2,6 +2,7 @@ import Ember from 'ember';
 
 const {
   Component,
+  Object,
   computed,
   observer,
   run
@@ -33,7 +34,9 @@ export default Component.extend({
       column.visible = column.visible !== false;
       column.sorted = column.sorted === true;
       column.editable = column.editable !== false;
-      return Ember.Object.create(column);
+      column.unhideable = column.unhideable === true;
+
+      return Object.create(column);
     });
   }),
 

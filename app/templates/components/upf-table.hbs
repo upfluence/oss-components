@@ -32,11 +32,13 @@
 <div class="upf-datatable__side-panel
      {{if displayedColumnsPanel 'upf-datatable__side-panel--visible'}}">
   {{#each _columns as |column|}}
-    <div class='margin-bottom-sm'>
-      {{#upf-checkbox value=column.visible hasLabel=true}}
-        <span class='text-color-contrast'>{{column.title}}</span>
-      {{/upf-checkbox}}
-    </div>
+    {{#unless column.unhideable}}
+      <div class='margin-bottom-sm'>
+        {{#upf-checkbox value=column.visible hasLabel=true}}
+          <span class='text-color-contrast'>{{column.title}}</span>
+        {{/upf-checkbox}}
+      </div>
+    {{/unless}}
   {{/each}}
 </div>
 
