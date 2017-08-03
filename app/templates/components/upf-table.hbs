@@ -13,13 +13,15 @@
         {{fa-icon 'caret-down'}}
       {{/if}}
     </a>
-    {{upf-table/pagination
-      currentPage=currentPage
-      perPage=perPage
-      totalPages=totalPages
-      itemTotal=itemTotal
-      itemCount=itemCount
-      itemName=itemName}}
+    {{#if isPaginated}}
+      {{upf-table/pagination
+        currentPage=currentPage
+        perPage=perPage
+        totalPages=totalPages
+        itemTotal=itemTotal
+        itemCount=itemCount
+        itemName=itemName}}
+    {{/if}}
   </li>
 </ul>
 

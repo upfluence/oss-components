@@ -15,6 +15,7 @@ export default Component.extend({
   allRowsSelected: false,
   displayedColumnsPanel: false,
 
+  isPaginated: false,
   currentPage: 1,
   totalPages: 1,
   perPage: 1,
