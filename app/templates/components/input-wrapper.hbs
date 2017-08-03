@@ -1,19 +1,15 @@
-<div class='form-group upf-input-container'>
-  {{yield}}
+{{yield}}
 
-  {{#if error}}
-    <span class='col-xs-12 upf-input-feedback upf-input-feedback--error'>
-      <i class='fa fa-exclamation-circle'
-         aria-label={{error}}>
-      </i>
-    </span>
-  {{else}}
-    {{#if help}}
-      <span class='col-xs-12 upf-input-feedback upf-input-feedback--help'>
-        <i class='fa fa-question-circle'
-           aria-label={{help}}>
-        </i>
-      </span>
-    {{/if}}
-  {{/if}}
-</div>
+{{#if error}}
+  <span class='col-xs-12 upf-input-feedback upf-input-feedback--error'>
+    <i class='fa fa-exclamation-circle'
+       aria-label={{error}}>
+    </i>
+  </span>
+{{else if help}}
+  <span class='col-xs-12 upf-input-feedback upf-input-feedback--help'>
+    <i class='fa fa-question-circle'
+       aria-label={{help}}>
+    </i>
+  </span>
+{{/if}}

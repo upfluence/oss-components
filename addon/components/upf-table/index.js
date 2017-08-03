@@ -3,7 +3,8 @@ import Ember from 'ember';
 const {
   Component,
   computed,
-  observer
+  observer,
+  run
 } = Ember;
 
 export default Component.extend({
@@ -12,9 +13,13 @@ export default Component.extend({
   hasSelection: false,
   hasSortableColumns: true,
   hasPagination: false,
+  hasSearch: false,
 
   allRowsSelected: false,
   displayedColumnsPanel: false,
+
+  searchQuery: null,
+  searchInputPlaceholder: 'Search...',
 
   currentPage: 1,
   totalPages: 1,
@@ -28,6 +33,8 @@ export default Component.extend({
       column.visible = column.visible !== false;
       column.sorted = column.sorted === true;
       column.editable = column.editable !== false;
+      column.unhideable = column.unhideable === true;
+
       return Ember.Object.create(column);
     });
   }),
@@ -64,6 +71,12 @@ export default Component.extend({
         item.set('selected', false);
       }
     });
+  }),
+
+  _: observer('searchQuery', function() {
+    run.debounce(this, function() {
+      this.get('_targetObject').send('performSearch', this.get('searchQuery'));
+    }, 3000);
   }),
 
   didInsertElement() {

@@ -1,0 +1,17 @@
+machine:
+  node:
+    version: 5.5.0
+
+dependencies:
+  override:
+    - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+
+test:
+  override:
+    - echo "disable"
+
+deployment:
+  npm:
+    tag: /v[0-9]+(\.[0-9]+)*/
+    commands:
+      - npm publish
