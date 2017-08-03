@@ -11,6 +11,7 @@ export default Component.extend({
 
   hasSelection: false,
   hasSortableColumns: true,
+  hasPagination: false,
 
   allRowsSelected: false,
   displayedColumnsPanel: false,
