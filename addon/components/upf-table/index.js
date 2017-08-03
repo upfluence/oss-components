@@ -2,7 +2,6 @@ import Ember from 'ember';
 
 const {
   Component,
-  Object,
   computed,
   observer,
   run
@@ -36,7 +35,7 @@ export default Component.extend({
       column.editable = column.editable !== false;
       column.unhideable = column.unhideable === true;
 
-      return Object.create(column);
+      return Ember.Object.create(column);
     });
   }),
 
@@ -75,7 +74,7 @@ export default Component.extend({
   }),
 
   _: observer('searchQuery', function() {
-    run.later(this, function() {
+    run.debounce(this, function() {
       this.get('_targetObject').send('performSearch', this.get('searchQuery'));
     }, 3000);
   }),
