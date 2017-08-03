@@ -17,6 +17,7 @@ export default Component.extend({
 
   allRowsSelected: false,
   displayedColumnsPanel: false,
+  isLoading: false,
 
   searchQuery: null,
   searchInputPlaceholder: 'Search...',
@@ -37,6 +38,11 @@ export default Component.extend({
 
       return Ember.Object.create(column);
     });
+  }),
+
+
+  _initiallyDisplayedColumns: computed.filter('_columns', function(column, _, _) {
+    return column.visible;
   }),
 
   _sortList: computed('_columns', function() {
@@ -74,9 +80,9 @@ export default Component.extend({
   }),
 
   _: observer('searchQuery', function() {
-    run.debounce(this, function() {
+    run.throttle(this, function() {
       this.get('_targetObject').send('performSearch', this.get('searchQuery'));
-    }, 3000);
+    }, 2000);
   }),
 
   didInsertElement() {
