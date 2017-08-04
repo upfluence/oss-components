@@ -40,10 +40,7 @@ export default Component.extend({
     });
   }),
 
-
-  _initiallyDisplayedColumns: computed.filter('_columns', function(column, _, _) {
-    return column.visible;
-  }),
+  _initiallyDisplayedColumns: computed.filterBy('_columns', 'visible'),
 
   _sortList: computed('_columns', function() {
     let self = this;
