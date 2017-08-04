@@ -67,34 +67,42 @@
   </thead>
 
   <tbody>
-    {{#each collection as |item index|}}
-      {{#upf-table/row ref=item action='callOnRowClickCallback'
-                       onRowClickCallback=onRowClickCallback}}
-        {{#if hasSelection}}
-          <td class='upf-datatable__column upf-datatable__column--uneditable'>
-            {{upf-checkbox value=item.selected}}
-          </td>
-        {{/if}}
-
-        {{#each _columns as |column|}}
-          {{#unless (eq column.visible false)}}
-            <td valign='middle' class="upf-datatable__column {{column.additionalClasses}}
-                                       {{unless column.editable 'upf-datatable__column--uneditable'}}">
-              {{#if column.component}}
-                {{component column.component item=item column=column}}
-              {{else}}
-                {{#if (eq column.helper 'money')}}
-                  {{format-money (get item column.property) (get item column.currency)}}
-                {{else if (eq column.helper 'numeric')}}
-                  {{format-numeric (get item column.property)}}
-                {{else}}
-                  {{get item column.property}}
-                {{/if}}
-              {{/if}}
+    {{#if isLoading}}
+      <tr>
+        <td colspan={{_initiallyDisplayedColumns.length}} class='upf-align--center'>
+          {{loading-state}}
+        </td>
+      </tr>
+    {{else}}
+      {{#each collection as |item index|}}
+        {{#upf-table/row ref=item action='callOnRowClickCallback'
+                         onRowClickCallback=onRowClickCallback}}
+          {{#if hasSelection}}
+            <td class='upf-datatable__column upf-datatable__column--uneditable'>
+              {{upf-checkbox value=item.selected}}
             </td>
-          {{/unless}}
-        {{/each}}
-      {{/upf-table/row}}
-    {{/each}}
+          {{/if}}
+
+          {{#each _columns as |column|}}
+            {{#unless (eq column.visible false)}}
+              <td valign='middle' class="upf-datatable__column {{column.additionalClasses}}
+                                         {{unless column.editable 'upf-datatable__column--uneditable'}}">
+                {{#if column.component}}
+                  {{component column.component item=item column=column}}
+                {{else}}
+                  {{#if (eq column.helper 'money')}}
+                    {{format-money (get item column.property) (get item column.currency)}}
+                  {{else if (eq column.helper 'numeric')}}
+                    {{format-numeric (get item column.property)}}
+                  {{else}}
+                    {{get item column.property}}
+                  {{/if}}
+                {{/if}}
+              </td>
+            {{/unless}}
+          {{/each}}
+        {{/upf-table/row}}
+      {{/each}}
+    {{/if}}
   </tbody>
 </table>
