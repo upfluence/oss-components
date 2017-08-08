@@ -66,7 +66,7 @@ export default Component.extend({
     return headers;
   }),
 
-  _: observer('allRowsSelected', function() {
+  _selectAllObserver: observer('allRowsSelected', function() {
     this.get('collection').map((item) => {
       if (this.get('allRowsSelected')) {
         item.set('selected', true);
@@ -76,7 +76,7 @@ export default Component.extend({
     });
   }),
 
-  _: observer('searchQuery', function() {
+  _searchQueryObserver: observer('searchQuery', function() {
     run.throttle(this, function() {
       this.get('_targetObject').send('performSearch', this.get('searchQuery'));
     }, 2000);
