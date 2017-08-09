@@ -102,6 +102,12 @@
             {{/unless}}
           {{/each}}
         {{/upf-table/row}}
+      {{else}}
+        <tr>
+          <td colspan={{_fullSizeColumnColspan}} class='upf-align--center'>
+            {{yield}}
+          </td>
+        </tr>
       {{/each}}
     {{/if}}
   </tbody>
