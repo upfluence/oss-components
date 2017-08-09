@@ -83,10 +83,12 @@ export default Component.extend({
     });
   }),
 
+  _bubbleSearch: function() {
+    this.get('_targetObject').send('performSearch', this.get('searchQuery'));
+  },
+
   _searchQueryObserver: observer('searchQuery', function() {
-    run.throttle(this, function() {
-      this.get('_targetObject').send('performSearch', this.get('searchQuery'));
-    }, 2000);
+    run.debounce(this, this._bubbleSearch, 2000);
   }),
 
   didInsertElement() {
