@@ -41,6 +41,13 @@ export default Component.extend({
   }),
 
   _initiallyDisplayedColumns: computed.filterBy('_columns', 'visible'),
+  _fullSizeColumnColspan: computed('_initiallyDisplayedColumns', function() {
+    if (this.get('hasSelection')) {
+      return this.get('_initiallyDisplayedColumns').length + 1;
+    }
+
+    return this.get('_initiallyDisplayedColumns').length;
+  }),
 
   _sortList: computed('_columns', function() {
     let self = this;
