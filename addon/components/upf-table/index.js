@@ -19,7 +19,7 @@ export default Component.extend({
   displayedColumnsPanel: false,
   isLoading: false,
 
-  searchQuery: null,
+  _searchQuery: null,
   searchInputPlaceholder: 'Search...',
 
   currentPage: 1,
@@ -28,6 +28,12 @@ export default Component.extend({
   itemTotal: 0,
   itemCount: 0,
   itemName: '',
+
+  init() {
+    this._super();
+
+    this.set('_searchQuery', this.get('searchQuery'));
+  },
 
   _columns: computed('columns', function() {
     return this.get('columns').map((column) => {
@@ -84,10 +90,10 @@ export default Component.extend({
   }),
 
   _bubbleSearch: function() {
-    this.get('_targetObject').send('performSearch', this.get('searchQuery'));
+    this.get('_targetObject').send('performSearch', this.get('_searchQuery'));
   },
 
-  _searchQueryObserver: observer('searchQuery', function() {
+  _searchQueryObserver: observer('_searchQuery', function() {
     run.debounce(this, this._bubbleSearch, 2000);
   }),
 
