@@ -14,6 +14,8 @@ export default Component.extend({
   iconClass: null,
   number: 1,
 
+  renderFunction: '',
+
   statSizeModifier: computed('size', function() {
     return `upf-stat--${this.get('size')}`;
   }),
@@ -24,5 +26,15 @@ export default Component.extend({
 
   progressValueClass: computed('number', function() {
     return `upf-progress-${this.get('numberAsPercentOfMaxValue')}`;
+  }),
+
+  displayNumber: computed('number', 'renderFunction', function() {
+    let render = this.get('renderFunction');
+
+    if (!render) {
+      return this.get('number');
+    }
+
+    return render.call(this.get('targetObject') || this, this.get('number'));
   })
 });
