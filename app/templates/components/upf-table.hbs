@@ -1,12 +1,11 @@
-<ul class='row upf-contextual-nav upf-datatable__actions-header'>
+<ul class='row upf-datatable__actions-header'>
   {{#if contextualActionsComponent}}
     {{component contextualActionsComponent collection=collection}}
   {{/if}}
 
-  <li class='upf-contextual-nav__item upf-contextual-nav__item--pull-right'>
+  <li class='upf-datatable__action upf-datatable__actions-pull-right'>
     <a {{action 'toggleDisplayedColumnVisibilityPanel'}} class='upf-link--reset'>
-      {{columnsDisplayWording}} &nbsp;
-
+      {{fa-icon 'columns'}}&nbsp;
       {{#if displayedColumnsPanel}}
         {{fa-icon 'caret-up'}}
       {{else}}

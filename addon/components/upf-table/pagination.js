@@ -4,7 +4,7 @@ const { Component, computed } = Ember;
 
 export default Component.extend({
   tagName: 'span',
-  classNames: ['margin-left-xx-sm', 'upf-contextual-nav__item'],
+  classNames: ['margin-left-xx-sm', 'upf-datatable__action'],
   currentPage: 1,
   totalPages: 1,
   perPage: 1,
