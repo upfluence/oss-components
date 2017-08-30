@@ -11,7 +11,6 @@ export default Component.extend({
   classNames: ['upf-table__container'],
 
   hasSelection: false,
-  hasSortableColumns: true,
   hasPagination: false,
   hasSearch: false,
 
@@ -55,30 +54,6 @@ export default Component.extend({
     return this.get('_initiallyDisplayedColumns').length;
   }),
 
-  _sortList: computed('_columns', function() {
-    let self = this;
-    let sortList = [];
-
-    this.get('_columns').map(function(column, i) {
-      if (column.get('sorted')) {
-        let startingIndex = (self.get('hasSelection')) ? i : i - 1;
-        sortList.push([startingIndex, 0]);
-      }
-    });
-
-    return sortList;
-  }),
-
-  _sortingHeaders: computed('hasSelection', function() {
-    let headers = {};
-
-    if(this.get('hasSelection')) {
-      headers[0] = { sorter: false };
-    }
-
-    return headers;
-  }),
-
   _selectAllObserver: observer('allRowsSelected', function() {
     this.get('collection').map((item) => {
       if (this.get('allRowsSelected')) {
@@ -97,18 +72,6 @@ export default Component.extend({
     run.debounce(this, this._bubbleSearch, 2000);
   }),
 
-  didInsertElement() {
-    if (this.get('hasSortableColumns')) {
-      this.$('.upf-datatable__table').tablesorter({
-        cssAsc: 'upf-datatable__column--ascending',
-        cssDesc: 'upf-datatable__column--descending',
-        cssHeader: 'upf-datatable__column--unsorted',
-        sortList: this.get('_sortList'),
-        headers: this.get('_sortingHeaders')
-      });
-    }
-  },
-
   actions: {
     toggleDisplayedColumnVisibilityPanel() {
       this.toggleProperty('displayedColumnsPanel');
@@ -123,6 +86,24 @@ export default Component.extend({
 
     didPageChange(page) {
       this.sendAction('didPageChange', page);
+    },
+
+    onClickHeader(column) {
+      if (!column.get('sortKey')) {
+        return;
+      }
+
+      if (!column.get('sorted')) {
+        this.get('_columns').forEach((c) => c.set('sorted', false));
+        // default direction
+        column.set('sorted', true);
+        column.set('direction', 'desc');
+      } else {
+        let direction = column.get('direction') === 'desc' ? 'asc' : 'desc';
+        column.set('direction', direction);
+      }
+
+      this.sendAction('didSortColumn', column);
     }
   }
 });

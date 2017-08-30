@@ -6,8 +6,7 @@
     "ember-cli-test-loader": "0.2.2",
     "ember-qunit-notifications": "0.1.0",
     "upfluence-oss": "0.2.4",
-    "summernote": "^0.8.2",
-    "tablesorter": "*"
+    "summernote": "^0.8.2"
   },
   "devDependencies": {
     "faker": "Faker#^3.1.0"
