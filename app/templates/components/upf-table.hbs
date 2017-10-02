@@ -3,8 +3,9 @@
     {{component contextualActionsComponent collection=collection}}
   {{/if}}
 
-  <li class='upf-datatable__action upf-datatable__actions-pull-right'>
-    <a {{action 'toggleDisplayedColumnVisibilityPanel'}} class='upf-link--reset'>
+  <li class='upf-datatable__actions-pull-right'>
+    <a {{action 'toggleDisplayedColumnVisibilityPanel'}}
+      class='upf-datatable__action upf-link--reset'>
       {{fa-icon 'columns'}}&nbsp;
       {{#if displayedColumnsPanel}}
         {{fa-icon 'caret-up'}}
