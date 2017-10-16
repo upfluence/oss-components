@@ -10,6 +10,7 @@ const {
 export default Component.extend(TargetActionSupport, {
   tagName: 'button',
   classNames: ['upf-btn', 'upf-btn--destructive'],
+  attributeBindings: ['disabled', 'title'],
 
   clickedToDelete: false,
   actionFailed: false,
