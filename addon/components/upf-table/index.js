@@ -13,6 +13,7 @@ export default Component.extend({
   hasSelection: false,
   hasPagination: false,
   hasSearch: false,
+  hasToggleableColumns: true,
 
   allRowsSelected: false,
   displayedColumnsPanel: false,

@@ -4,15 +4,17 @@
   {{/if}}
 
   <li class='upf-datatable__actions-pull-right'>
-    <a {{action 'toggleDisplayedColumnVisibilityPanel'}}
-      class='upf-datatable__action upf-link--reset'>
-      {{fa-icon 'columns'}}&nbsp;
-      {{#if displayedColumnsPanel}}
-        {{fa-icon 'caret-up'}}
-      {{else}}
-        {{fa-icon 'caret-down'}}
-      {{/if}}
-    </a>
+    {{#if hasToggleableColumns}}
+      <a {{action 'toggleDisplayedColumnVisibilityPanel'}}
+        class='upf-datatable__action upf-link--reset'>
+        {{fa-icon 'columns'}}&nbsp;
+        {{#if displayedColumnsPanel}}
+          {{fa-icon 'caret-up'}}
+        {{else}}
+          {{fa-icon 'caret-down'}}
+        {{/if}}
+      </a>
+    {{/if}}
 
     {{#if hasPagination}}
       {{upf-table/pagination currentPage=currentPage perPage=perPage
