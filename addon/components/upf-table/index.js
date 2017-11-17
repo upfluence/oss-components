@@ -70,7 +70,7 @@ export default Component.extend({
   },
 
   _searchQueryObserver: observer('_searchQuery', function() {
-    run.debounce(this, this._bubbleSearch, 2000);
+    run.debounce(this, this._bubbleSearch, 100);
   }),
 
   actions: {
