@@ -31,4 +31,16 @@
       {{x-toggle value='on' size='medium'}}
     </div>
   </div>
+
+  <div class='col-xs-4'>
+    <div class="btn-group upf-radio-group">
+      {{#each-in types as |label value|}}
+        {{radio-button value=value
+          currentValue=selectedFormat
+          label=label
+          options=types
+          onCheck='typeChanged'}}
+      {{/each-in}}
+    </div>
+  </div>
 </section>
