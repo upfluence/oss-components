@@ -105,6 +105,10 @@ export default Component.extend({
       }
 
       this.sendAction('didSortColumn', column);
+    },
+
+    triggerObjectCreation() {
+      this.triggerAction({ action: 'handleObjectCreation'});
     }
   }
 });
