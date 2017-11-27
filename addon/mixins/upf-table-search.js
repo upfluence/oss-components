@@ -19,7 +19,7 @@ export default Mixin.create({
 
     return collection.filter((item) => {
       let query = new RegExp(this.get('searchQuery').split(' ').join('|'), 'gi');
-      return item.get(this.get('searchAttribute')).search(query) >= 0;
+      return query.test(item.get(this.get('searchAttribute')));
     });
   }),
 
