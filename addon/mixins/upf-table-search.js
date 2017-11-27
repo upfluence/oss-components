@@ -26,7 +26,7 @@ export default Mixin.create({
           this.get('searchAttribute')
         ).toLowerCase().includes(searchWords[i].toLowerCase());
 
-        if(searchMatch) {
+        if (searchMatch) {
           return true;
         }
       }
