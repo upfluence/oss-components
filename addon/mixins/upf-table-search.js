@@ -11,7 +11,7 @@ export default Mixin.create({
   searchQuery: '',
 
   filteredCollection: computed('searchQuery', function() {
-    var searchWords = this.get('searchQuery').split(' ');
+    let searchWords = this.get('searchQuery').split(' ').map(x => x.toLowerCase());
     let collection = get(this, this.get('searchCollection'));
 
     if (searchWords === []) {
@@ -19,11 +19,11 @@ export default Mixin.create({
     }
 
     return collection.filter((item) => {
+      let itemName = item.get(this.get('searchAttribute')).toLowerCase();
       let i;
+
       for (i = 0; i < searchWords.length; i++) {
-        let searchMatch = item.get(
-          this.get('searchAttribute')
-        ).toLowerCase().includes(searchWords[i].toLowerCase());
+        let searchMatch = itemName.includes(searchWords[i]);
 
         if (searchMatch) {
           return true;
