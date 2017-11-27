@@ -11,16 +11,15 @@ export default Mixin.create({
   searchQuery: '',
 
   filteredCollection: computed('searchQuery', function() {
+    var searchWords = this.get('searchQuery').split(' ');
     let collection = get(this, this.get('searchCollection'));
 
-    if (this.get('searchQuery') === '') {
+    if (searchWords === []) {
       return collection;
     }
 
     return collection.filter((item) => {
       let i;
-      let searchWords = this.get('searchQuery').split(' ');
-
       for (i = 0; i < searchWords.length; i++) {
         let searchMatch = item.get(
           this.get('searchAttribute')
