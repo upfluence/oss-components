@@ -18,8 +18,18 @@ export default Mixin.create({
     }
 
     return collection.filter((item) => {
-      let query = new RegExp(this.get('searchQuery').split(' ').join('|'), 'gi');
-      return query.test(item.get(this.get('searchAttribute')));
+      let i;
+      let searchWords = this.get('searchQuery').split(' ');
+
+      for (i = 0; i < searchWords.length; i++) {
+        let searchMatch = item.get(
+          this.get('searchAttribute')
+        ).toLowerCase().includes(searchWords[i].toLowerCase());
+
+        if(searchMatch) {
+          return true;
+        }
+      }
     });
   }),
 
