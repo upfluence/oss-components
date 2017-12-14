@@ -5,8 +5,7 @@
 
   <li class='upf-datatable__actions-pull-right'>
     {{#if hasToggleableColumns}}
-      <a {{action 'toggleDisplayedColumnVisibilityPanel'}}
-        class='upf-btn upf-btn--default upf-btn--small upf-link--reset'>
+      <a {{action 'toggleDisplayedColumnVisibilityPanel'}} class='upf-btn upf-btn--default upf-link--reset'>
         {{fa-icon 'columns'}}&nbsp;
         {{#if displayedColumnsPanel}}
           {{fa-icon 'caret-up'}}
