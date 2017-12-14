@@ -12,7 +12,5 @@ export default Mixin.create({
     });
   }),
 
-  emptySelection: computed('selectedItems', function() {
-    return this.get('selectedItems.length') === 0;
-  })
+  emptySelection: computed.equal('selectedItems.length', 0)
 });
