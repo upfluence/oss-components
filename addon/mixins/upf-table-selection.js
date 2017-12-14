@@ -6,11 +6,6 @@ const {
 } = Ember;
 
 export default Mixin.create({
-  selectedItems: computed('collection.@each.selected', function() {
-    return this.get('collection').filter((item) => {
-      return item.get('selected');
-    });
-  }),
-
+  selectedItems: computed.filterBy('collection', 'selected', true),
   emptySelection: computed.equal('selectedItems.length', 0)
 });
