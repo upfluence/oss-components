@@ -17,8 +17,12 @@ export default Mixin.create({
       this,
       'filteredCollection',
       computed('searchQuery', this.get('searchCollection'), function() {
-        let searchWords = this.get('searchQuery').split(' ').map(x => x.toLowerCase());
-        let collection = get(this, this.get('searchCollection')).filterBy('isNew', false);
+        let searchWords = this.get('searchQuery').split(' ').map( (x) => {
+          x.toLowerCase()
+        });
+        let collection = get(this, this.get('searchCollection')).filterBy(
+          'isNew', false
+        );
 
         if (searchWords === []) {
           return collection;
