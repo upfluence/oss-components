@@ -14,10 +14,6 @@ export default Component.extend({
   emptySearchQuery: computed.empty('searchQuery'),
   expandedSearch: computed.not('emptySearchQuery'),
 
-  _: observer('searchQuery', function() {
-    this.sendAction('updateSearchQuery', this.get('searchQuery'));
-  }),
-
   actions: {
     expandOrErase() {
       if (!this.get('expandedSearch')) {
