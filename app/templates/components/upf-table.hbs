@@ -22,9 +22,8 @@
     {{/if}}
 
     {{#if hasSearch}}
-      {{#input-wrapper classNames='margin-left-xx-sm'}}
-        {{expanding-search searchQuery=_searchQuery placeholder=searchInputPlaceholder}}
-      {{/input-wrapper}}
+      {{expanding-search classNames='margin-left-xx-sm' searchQuery=_searchQuery
+                         placeholder=searchInputPlaceholder}}
     {{/if}}
   </li>
 </ul>
