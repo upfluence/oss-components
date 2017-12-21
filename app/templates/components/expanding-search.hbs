@@ -1,1 +1,8 @@
-{{yield}}
+<button {{action 'expandOrErase' preventDefault=true}} class='upf-btn upf-btn--default expanding-search__submit'>
+  {{#if expandedSearch}}
+    {{fa-icon 'close'}}
+  {{else}}
+    {{fa-icon 'search'}}
+  {{/if}}
+</button>
+{{input type="text" class="form-control upf-input expanding-search__input" placeholder=placeholder value=searchQuery}}
