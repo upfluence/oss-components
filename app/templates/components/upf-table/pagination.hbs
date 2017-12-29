@@ -1,9 +1,9 @@
 <span class="text-size-5 margin-left-xx-sm">{{from}} to {{to}} out of {{itemTotal}} {{itemName}}</span>
 
-<a class="upf-btn upf-btn--default margin-left-xx-sm {{unless hasPrevious 'disabled'}}" {{action 'previousPage'}}>
+<a class="upf-btn upf-btn--default upf-btn--small margin-left-xx-sm {{unless hasPrevious 'disabled'}}" {{action 'previousPage'}}>
   {{fa-icon 'fa-caret-left'}}
 </a>
 
-<a class="upf-btn upf-btn--default {{unless hasNext 'disabled'}}" {{action 'nextPage'}}>
+<a class="upf-btn upf-btn--default upf-btn--small {{unless hasNext 'disabled'}}" {{action 'nextPage'}}>
   {{fa-icon 'fa-caret-right'}}
 </a>
