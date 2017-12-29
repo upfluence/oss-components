@@ -7,7 +7,10 @@ const {
 
 export default Component.extend({
   classNames: ['expanding-search'],
-  classNameBindings: ['expandedSearch:expanding-search--opened'],
+  classNameBindings: [
+    'expandedSearch:expanding-search--opened',
+    'small:expanding-search--small'
+  ],
 
   searchQuery: '',
   emptySearchQuery: computed.empty('searchQuery'),
