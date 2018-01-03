@@ -197,39 +197,21 @@ html, body {
 
 }
 
-// By Philippe: The subnav with table actions
-.upf-contextual-nav {
-  background-color: @upf-primary-orange-dark;
-  padding: @spacing-x-sm;
-}
+.upf-progress {
+  &:extend(.progress);
 
-.upf-checkbox__label {
-  left: @spacing-md;
-}
+  border-radius: @default-radius;
+  background-color: darken(@upf-gray-light, 5%);
+  height: 10px;
+  margin-bottom: 0;
+  margin-top: @spacing-md;
 
-.upf-checkbox__fake-checkbox {
-  margin-bottom: 0px;
-  user-select: none;
-  vertical-align: text-bottom;
-}
+  .progress-bar {
+    width: 0;
+    animation: progress 1s forwards;
 
-.upf-datatable__side-panel {
-  background-color: @upf-primary-dark-purple;
-  display: none;
-  opacity: 0;
-  z-index: 1;
+    background-color: @upf-primary-bright-purple;
+  }
 
-  height: 500px;
-  overflow-y: auto;
-
-
-  padding: @spacing-md;
-  position: absolute;
-  right: 0;
-  width: 25%;
-}
-
-.upf-datatable__side-panel--visible {
-  display: block;
-  opacity: 1;
+  @keyframes progress { from { width: 0; } to { width: 100%; }}
 }
