@@ -20,6 +20,7 @@ export default Component.extend({
     expandOrErase() {
       if (!this.get('expandedSearch')) {
         this.set('expandedSearch', true);
+        this.$('.upf-input').focus();
       } else {
         this.set('searchQuery', '');
         this.set('expandedSearch', false);
