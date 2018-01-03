@@ -166,70 +166,35 @@ html, body {
 .text-color-feedback-success { color: @upf-feedback-success; }
 .text-color-feedback-error { color: @upf-feedback-error; }
 
-/* Tables part - to be moved to oss */
+.upf-stat {
+  display: flex;
+  flex-flow: column;
+  text-align: center;
 
-@spacing-xx-lg: 5em;
-
-.upf-datatable {
-  position: absolute;
-  left: 0;
-  right: 0;
-
-  table-layout: fixed;
-  width: 100%;
-}
-
-.upf-datatable__row {
-  border-bottom: 1px solid lighten(@upf-gray, 15%);
-
-  th:first-of-type, td:first-of-type {
-    padding-left: @spacing-xx-sm;
-  }
-
-  th, td {
-    color: @color-text-light;
-    padding: @spacing-xxx-sm;
-    overflow: hidden;
-  }
-}
-
-.upf-datatable__row:not(.upf-datatable__row--header) {
-  &:hover {
-    background-color: @upf-gray-light;
-  }
-
-  .upf-datatable__column {
-    height: @spacing-xx-lg;
-
-    &:hover:not(.upf-datatable__column--unsortable) {
-      cursor: pointer;
-      color: @upf-primary-bright-purple;
-      transition: color 0.4s;
-    }
-  }
-
-  td:not(:last-child) {
-    border-right: 1px solid lighten(@upf-gray, 15%);
-  }
-}
-
-.upf-datatable__row--header {
-  overflow: hidden;
-  text-transform: capitalize;
-
-  .upf-datatable__column:hover:not(.upf-datatable__column--unsortable) {
-    border-bottom: 1px solid @upf-primary-bright-purple;
+  .upf-stat__name {
     color: @upf-primary-bright-purple;
-    cursor: pointer;
+    font-family: @font-text-title;
+    font-size: 18/@rem;
   }
 
-  .upf-datatable__column.upf-datatable__column--descending:after {
-    content: " ↑";
+  .upf-stat__icon {
+    color: @upf-primary-bright-purple;
+    display: inline-flex;
+    font-size: 12/@rem;
   }
 
-  .upf-datatable__column.upf-datatable__column--ascending:after {
-    content: " ↓";
+  .upf-stat__data {
+    font-family: @font-text-title;
+    color: @upf-primary-bright-purple;
+    font-size: 72/@rem;
+    margin-top: @spacing-xxx-sm;
   }
+
+  .upf-stat__progress-label {
+    color: @color-text-lighter;
+    margin-top: @spacing-xxx-sm;
+  }
+
 }
 
 // By Philippe: The subnav with table actions
