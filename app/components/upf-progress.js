@@ -1,1 +1,1 @@
-export { default } from 'oss-component/components/upf-progress';
+export { default } from 'oss-components/components/upf-progress';
