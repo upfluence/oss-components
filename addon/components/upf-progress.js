@@ -5,6 +5,6 @@ const { Component } = Ember;
 export default Component.extend({
   classNames: ['upf-progress'],
 
-  progressValue: null,
-  progressLabel: null
+  value: null,
+  label: null
 });
