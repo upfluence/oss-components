@@ -9,17 +9,3 @@
 </span>
 
 <span class='upf-stat__data'>{{data}}</span>
-
-{{#if progressValue}}
-  <div class='upf-progress upf-stat__progress'>
-    <div class='progress-bar' role='progressbar' aria-valuenow='{{progressValue}}'
-         aria-valuemin='0' aria-valuemax='100' style='max-width: {{progressValue}}%'>
-    </div>
-  </div>
-
-  {{#if progressLabel}}
-    <span class='upf-stat__progress-label'>
-      {{progressLabel}}
-    </span>
-  {{/if}}
-{{/if}}

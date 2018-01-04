@@ -8,9 +8,6 @@ export default Component.extend({
   name: null,
   data: null,
 
-  progressValue: null,
-  progressLabel: null,
-
   icon: null,
   iconClass: ''
 });
