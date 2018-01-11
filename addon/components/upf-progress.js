@@ -5,5 +5,6 @@ const { Component } = Ember;
 export default Component.extend({
   classNames: ['upf-progress'],
 
-  value: null
+  value: null,
+  colorClass: null
 });
