@@ -45,9 +45,11 @@
   <thead>
     {{#upf-table/row isHeaderRow=true}}
       {{#if hasSelection}}
-        <th width='45px' class='upf-datatable__column upf-datatable__column--unsortable'>
-          {{upf-checkbox value=allRowsSelected}}
-        </th>
+        {{#unless contentChanging}}
+          <th width='45px' class='upf-datatable__column upf-datatable__column--unsortable'>
+            {{upf-checkbox value=allRowsSelected}}
+          </th>
+        {{/unless}}
       {{/if}}
 
       {{#each _columns as |column|}}
@@ -67,41 +69,54 @@
         </td>
       </tr>
     {{else}}
-      {{#each collection as |item index|}}
-        {{#upf-table/row ref=item action='callOnRowClickCallback'
-                         onRowClickCallback=onRowClickCallback}}
-          {{#if hasSelection}}
-            <td class='upf-datatable__column upf-datatable__column--uneditable'>
-              {{upf-checkbox value=item.selected}}
+      {{#if contentChanging}}
+        {{#each _contentPlaceholder}}
+          {{#upf-table/row}}
+            <td valign='middle' class="upf-datatable__column upf-datatable__column--locked">
+              <div class='skeleton-placeholder'></div>
             </td>
-          {{/if}}
-
-          {{#each _columns as |column|}}
-            {{#unless (eq column.visible false)}}
-              <td valign='middle' class="upf-datatable__column {{column.additionalClasses}}
-                                         {{unless column.editable 'upf-datatable__column--uneditable'}}">
-                {{#if column.component}}
-                  {{component column.component item=item column=column}}
-                {{else}}
-                  {{#if (eq column.helper 'money')}}
-                    {{format-money (get item column.property) (get item column.currency)}}
-                  {{else if (eq column.helper 'numeric')}}
-                    {{format-numeric (get item column.property)}}
-                  {{else}}
-                    {{get item column.property}}
-                  {{/if}}
-                {{/if}}
-              </td>
-            {{/unless}}
-          {{/each}}
-        {{/upf-table/row}}
+            <td valign='middle' class="upf-datatable__column upf-datatable__column--locked">
+              <div class='skeleton-placeholder'></div>
+            </td>
+          {{/upf-table/row}}
+        {{/each}}
       {{else}}
-        <tr>
-          <td colspan={{_fullSizeColumnColspan}} class='upf-align--center'>
-            {{yield}}
-          </td>
-        </tr>
-      {{/each}}
+        {{#each collection as |item index|}}
+          {{#upf-table/row ref=item action='callOnRowClickCallback'
+                           onRowClickCallback=onRowClickCallback}}
+            {{#if hasSelection}}
+              <td class='upf-datatable__column upf-datatable__column--uneditable'>
+                {{upf-checkbox value=item.selected}}
+              </td>
+            {{/if}}
+
+            {{#each _columns as |column|}}
+              {{#unless (eq column.visible false)}}
+                <td valign='middle' class="upf-datatable__column {{column.additionalClasses}}
+                                           {{unless column.editable 'upf-datatable__column--uneditable'}}">
+                  {{#if column.component}}
+                    {{component column.component item=item column=column}}
+                  {{else}}
+                    {{#if (eq column.helper 'money')}}
+                      {{format-money (get item column.property) (get item column.currency)}}
+                    {{else if (eq column.helper 'numeric')}}
+                      {{format-numeric (get item column.property)}}
+                    {{else}}
+                      {{get item column.property}}
+                    {{/if}}
+                  {{/if}}
+                </td>
+              {{/unless}}
+            {{/each}}
+          {{/upf-table/row}}
+        {{else}}
+          <tr>
+            <td colspan={{_fullSizeColumnColspan}} class='upf-align--center'>
+              {{yield}}
+            </td>
+          </tr>
+        {{/each}}
+      {{/if}}
     {{/if}}
   </tbody>
 </table>
