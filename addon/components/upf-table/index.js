@@ -18,6 +18,8 @@ export default Component.extend({
   allRowsSelected: false,
   displayedColumnsPanel: false,
   isLoading: false,
+  contentChanging: false,
+  _contentPlaceholder: new Array(3),
 
   _searchQuery: null,
   searchInputPlaceholder: 'Search...',
@@ -109,6 +111,10 @@ export default Component.extend({
 
     triggerObjectCreation() {
       this.triggerAction({ action: 'handleObjectCreation'});
+    },
+
+    toggleContentChanging() {
+      this.toggleProperty('contentChanging');
     }
   }
 });
