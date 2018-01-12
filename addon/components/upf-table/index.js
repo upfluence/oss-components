@@ -113,8 +113,8 @@ export default Component.extend({
       this.triggerAction({ action: 'handleObjectCreation'});
     },
 
-    toggleContentChanging() {
-      this.toggleProperty('contentChanging');
+    setContentChanging(contentChanging) {
+      this.set('contentChanging', contentChanging);
     }
   }
 });
