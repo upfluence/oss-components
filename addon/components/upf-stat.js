@@ -19,10 +19,8 @@ export default Component.extend({
   iconClass: '',
 
   dataClass: computed('data', function() {
-    if (this.get('data') !== 0) {
-      return null
-    } else {
-      return ' upf-stat__data__null'
+    if (this.get('data') === 0) {
+      return ' upf-stat__data--null'
     }
   })
 });
