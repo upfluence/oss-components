@@ -12,7 +12,6 @@ export default Component.extend({
   small: null,
   name: null,
   data: null,
-  dataClass: null,
   label: null,
 
   icon: null,
@@ -20,7 +19,7 @@ export default Component.extend({
 
   dataClass: computed('data', function() {
     if (this.get('data') === 0) {
-      return ' upf-stat__data--null'
+      return ' upf-stat__data--null';
     }
   })
 });
