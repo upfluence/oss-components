@@ -15,11 +15,5 @@ export default Component.extend({
   label: null,
 
   icon: null,
-  iconClass: '',
-
-  dataClass: computed('data', function() {
-    if (this.get('data') === 0) {
-      return ' upf-stat__data--null';
-    }
-  })
+  iconClass: ''
 });
