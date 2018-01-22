@@ -2,7 +2,8 @@ import Ember from 'ember';
 
 const {
   Component,
-  computed
+  computed,
+  isBlank
 } = Ember;
 
 export default Component.extend({
@@ -20,6 +21,8 @@ export default Component.extend({
   iconLabel: null,
 
   didRender() {
-    this.$('[title]').tooltip({ placement: 'bottom' });
+    if (!isBlank(this.get('iconLabel'))) {
+      this.$('[title]').tooltip({ placement: 'bottom' });
+    }
   }
 });
