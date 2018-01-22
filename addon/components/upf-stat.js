@@ -15,5 +15,11 @@ export default Component.extend({
   label: null,
 
   icon: null,
-  iconClass: ''
+  iconClass: '',
+  iconUrl: null,
+  iconLabel: null,
+
+  didRender() {
+    this.$('[title]').tooltip({ placement: 'bottom' });
+  }
 });
