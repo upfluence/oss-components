@@ -2,8 +2,14 @@
   {{name}}
 
   {{#if icon}}
-    <span class='upf-stat__icon'>
-      {{fa-icon icon class=iconClass}}
+    <span class='upf-stat__icon' title="{{iconLabel}}">
+      {{#if iconUrl}}
+        <a href="{{iconUrl}}" target="_blank">
+          {{fa-icon icon class=iconClass}}
+        </a>
+      {{else}}
+        {{fa-icon icon class=iconClass}}
+      {{/if}}
     </span>
   {{/if}}
 </span>
