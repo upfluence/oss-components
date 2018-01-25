@@ -19,11 +19,15 @@ export default Component.extend({
   isSelected: computed.bool('ref.selected'),
 
   mouseEnter() {
-    this.set('isHovering', true);
+    if (this.get('hasPolymorphicColumns')) {
+      this.set('isHovering', true);
+    }
   },
 
   mouseLeave() {
-    this.set('isHovering', false);
+    if (this.get('hasPolymorphicColumns')) {
+      this.set('isHovering', false);
+    }
   },
 
   click: function(e) {
