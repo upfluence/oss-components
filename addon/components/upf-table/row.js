@@ -11,10 +11,23 @@ export default Component.extend({
   classNames: ['upf-datatable__row'],
   classNameBindings: [
     'isHeaderRow:upf-datatable__row--header',
-    'isSelected:upf-datatable__row--selected'
+    'isSelected:upf-datatable__row--selected',
+    'isHovering:upf-datatable__row--polymorphic'
   ],
 
   isSelected: computed.bool('ref.selected'),
+
+  mouseEnter() {
+    if (this.get('hasPolymorphicColumns')) {
+      this.set('isHovering', true);
+    }
+  },
+
+  mouseLeave() {
+    if (this.get('hasPolymorphicColumns')) {
+      this.set('isHovering', false);
+    }
+  },
 
   click: function(e) {
     let clickedColumnIsUneditable = $(e.target).parents(

@@ -83,6 +83,7 @@
       {{else}}
         {{#each collection as |item index|}}
           {{#upf-table/row ref=item action='callOnRowClickCallback'
+                           hasPolymorphicColumns=hasPolymorphicColumns
                            onRowClickCallback=onRowClickCallback}}
             {{#if hasSelection}}
               <td class='upf-datatable__column upf-datatable__column--uneditable'>
@@ -92,8 +93,8 @@
 
             {{#each _columns as |column|}}
               {{#unless (eq column.visible false)}}
-                <td valign='middle' class="upf-datatable__column {{column.additionalClasses}}
-                                           {{unless column.editable 'upf-datatable__column--uneditable'}}">
+                {{#upf-table/column ref=column editable=column.editable
+                                    classNames=column.additionalClasses}}
                   {{#if column.component}}
                     {{component column.component item=item column=column}}
                   {{else}}
@@ -105,7 +106,7 @@
                       {{get item column.property}}
                     {{/if}}
                   {{/if}}
-                </td>
+                {{/upf-table/column}}
               {{/unless}}
             {{/each}}
           {{/upf-table/row}}
