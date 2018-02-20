@@ -1,16 +1,13 @@
-<div class='header-item'>
-  <div class='logo-container'>
-    {{#link-to 'index'}}
-
-      {{#if hasLogo}}
-          <img src='{{logo}}' />
-      {{else if  isTopbarStyle}}
-        <img src='{{randomFullLogo}}' />
-      {{else}}
-        <img src='/assets/images/upfluence-fire-white.png' />
-      {{/if}}
-    {{/link-to}}
-  </div>
+<div class='logo-container'>
+  {{#link-to 'index'}}
+    {{#if hasLogo}}
+      <img src='{{logo}}' />
+    {{else if isTopbarStyle}}
+      <img src='assets/images/air-1-white.png' />
+    {{else}}
+      <img src='/assets/images/upfluence-fire-white.png' />
+    {{/if}}
+  {{/link-to}}
 </div>
 
 {{yield}}

@@ -8,8 +8,6 @@ const {
 } = Ember;
 
 export default Component.extend(HeaderStyleMixin, {
-  assetMap: inject.service('asset-map'),
-
   tagName: 'nav',
   classNameBindings: ['headerStyleClass'],
   logo: null,
@@ -24,18 +22,5 @@ export default Component.extend(HeaderStyleMixin, {
 
   hasLogo: computed('logo', function() {
     return this.get('logo') !== null;
-  }),
-
-  randomFullLogo: computed(function() {
-    let logos = [
-      'air-1-white', 'earth-3-white', 'fire-2-white',
-      'water-1-white','water-2-white','water-3-white'
-    ];
-
-    let randomLogo = logos[Math.floor(Math.random() * logos.length)];
-
-    return this.get('assetMap').resolve(
-      `assets/images/${randomLogo}.png`
-    );
   })
 });
