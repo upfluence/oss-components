@@ -160,3 +160,105 @@ html, body {
     background-color: @upf-primary-white;
   }
 }
+
+
+@upf-primary-dark-purple-bright: fadeout(@upf-primary-dark-purple, 10%);
+
+
+.app-header--sidebar {
+  width: 6em !important;
+}
+
+.tooltip {
+  color: @color-text-contrast;
+
+  &.top {
+    margin-bottom: @spacing-xx-sm;
+    .tooltip-arrow { border-top-color: @upf-primary-dark-purple; }
+  }
+
+  &.right {
+    margin-left: @spacing-xx-sm;
+
+    .tooltip-arrow {
+      border-right-color: @upf-primary-dark-purple;
+    }
+  }
+
+  &.bottom {
+    margin-left: @spacing-xx-sm;
+
+    .tooltip-arrow {
+      border-bottom-color: @upf-primary-dark-purple;
+    }
+  }
+
+  &.left {
+    margin-right: @spacing-xx-sm;
+    .tooltip-arrow {
+      border-left-color: @upf-primary-dark-purple;
+    }
+  }
+
+  .tooltip-inner {
+    background-color: tint(@upf-primary-dark-purple, 20%);
+    padding: @spacing-xxx-sm @spacing-x-sm;
+  }
+}
+
+// ===>
+@default-radius: 2px;
+
+.sidebar-item {
+  margin-top: @spacing-md;
+}
+
+@icon-background: screen(@upf-primary-dark-purple, #333333);
+
+.sidebar-item:hover, .sidebar-item__link.active {
+  .sidebar-item__icon {
+    background-color: @icon-background;
+
+    i {
+      color: @upf-primary-white;
+    }
+
+    svg * {
+      fill: @upf-primary-white;
+    }
+  }
+}
+
+.sidebar-item__icon {
+  border-radius: @default-radius;
+  transition: all .1s ease-in;
+
+  height: 30px;
+  width: 30px;
+
+  margin: 0 auto;
+  padding: @spacing-xxx-sm;
+  position: relative;
+
+  i {
+    color: @upf-primary-rock-blue;
+    font-size: 24/@rem;
+  }
+
+  svg * {
+    fill: @upf-primary-rock-blue;
+  }
+}
+
+.sidebar-item__icon .product-icon {
+  height: 30px;
+}
+
+.product-icon {
+  transition: all .1s ease-in;
+
+  line-height: 0;
+  text-align: center;
+
+  position: relative;
+}
