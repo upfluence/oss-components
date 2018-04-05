@@ -31,7 +31,6 @@ const LoadingButtonComponent = Component.extend(TargetActionSupport, {
   click(e) {
     e.preventDefault();
 
-    let originalContent = this.$().html();
     let originalWidth = this.$().width();
 
     // Because `.send` method for sending actions does not return anything, we
@@ -40,13 +39,11 @@ const LoadingButtonComponent = Component.extend(TargetActionSupport, {
     defer.promise.then(() => {
       this.$().removeAttr('style');
       this.set('isLoading', false);
-      this.$().html(originalContent);
     });
 
     Ember.run.debounce(this, function() {
       this.set('isLoading', true);
       this.$().width(originalWidth);
-      this.$().html("<i class='fa fa-circle-o-notch fa-spin'></i>");
 
       this.triggerAction({
         action: this.get('slowAction'),

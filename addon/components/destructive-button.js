@@ -12,8 +12,9 @@ export default Component.extend(TargetActionSupport, {
   classNames: ['upf-btn', 'upf-btn--destructive'],
   attributeBindings: ['disabled', 'title'],
 
-  clickedToDelete: false,
   actionFailed: false,
+  isLoading: false,
+  isSuccess: false,
 
   click: function(e) {
     e.preventDefault();
@@ -22,34 +23,33 @@ export default Component.extend(TargetActionSupport, {
     // pass it an `RSVP.defer` to be resolved in the remote action.
     let defer = RSVP.defer();
     defer.promise.then( () => {
-      this.$().text(this.get('successMessage'));
+      this.set('isLoading', false);
+      this.set('isSuccess', true);
     }, () => {
-      this.set('clickedToDelete', false);
+      this.set('isLoading', false);
       this.set('actionFailed', true);
-      this.$().html(
-        `<i class='fa fa-refresh'></i> &nbsp; ${this.get('failureMessage')}`
-      );
     });
 
     Ember.run.debounce(this, function() {
-      if (this.get('clickedToDelete')) {
-        this.set('clickedToDelete', false);
-        this.set('actionFailed', false);
+      this.set('isSuccess', false);
+      this.set('actionFailed', false);
+      this.set('seconds', 0);
+
+      if (this.get('isLoading')) {
         this.get('countdown').abort();
-
-        this.$().html(this.get('originalContent'));
+        this.set('isLoading', false);
       } else {
-        this.set('clickedToDelete', true);
-        this.set('originalContent', this.$().html());
+        this.set('isLoading', true);
 
-        this.set('countdown', new Countdown(5, (seconds) => {
-          this.$().text(`${this.get('ongoingMessage')} ( ${seconds} )...`);
-        }, () => {
-          this.triggerAction({
-            action: this.get('destructiveAction'),
-            actionContext: [this.get('record'), defer]
-          });
-        }));
+        this.set('countdown', new Countdown(5,
+          (seconds) => this.set('seconds', seconds),
+          () => {
+            this.triggerAction({
+              action: this.get('destructiveAction'),
+              actionContext: [this.get('record'), defer]
+            });
+         })
+        );
       }
     }, 100);
   }
