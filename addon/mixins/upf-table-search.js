@@ -46,6 +46,7 @@ export default Mixin.create({
 
   actions: {
     performSearch(s) {
+      this.set('page', 1);
       this.set('searchQuery', s);
     }
   }
