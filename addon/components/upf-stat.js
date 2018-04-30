@@ -21,7 +21,10 @@ export default Component.extend({
 
   didRender() {
     if (!isBlank(this.get('iconLabel'))) {
-      this.$('[title]').tooltip({ placement: 'bottom' });
+      this.$('[title]')
+        .tooltip({ placement: 'bottom' })
+        .attr('title', this.get('iconLabel'))
+        .tooltip('fixTitle');
     }
   }
 });
