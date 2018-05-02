@@ -18,6 +18,10 @@ export default Component.extend({
   isSelected: computed.bool('ref.selected'),
 
   mouseEnter() {
+    this.$().parentsUntil('.upf-datatable').find(
+      '.upf-datatable__row--polymorphic'
+    ).removeClass('upf-datatable__row--polymorphic');
+
     if (this.get('hasPolymorphicColumns')) {
       this.set('isHovering', true);
     }
