@@ -29,7 +29,10 @@ export default Mixin.create({
         }
 
         return collection.filter((item) => {
-          let itemName = item.get(this.get('searchAttribute')).toLowerCase();
+          let itemName = item.getWithDefault(
+            this.get('searchAttribute'), ''
+          ).toLowerCase();
+
           let i;
 
           for (i = 0; i < searchWords.length; i++) {
