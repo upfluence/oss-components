@@ -16,9 +16,11 @@
     {{/if}}
 
     {{#if hasPagination}}
-      {{upf-table/pagination currentPage=currentPage perPage=perPage
-                             totalPages=totalPages itemTotal=itemTotal
-                             itemCount=itemCount itemName=itemName}}
+      {{#unless isCompact}}
+        {{upf-table/pagination currentPage=currentPage perPage=perPage
+                               totalPages=totalPages itemTotal=itemTotal
+                               itemCount=itemCount itemName=itemName}}
+      {{/unless}}
     {{/if}}
 
     {{#if hasSearch}}
@@ -117,6 +119,17 @@
             </td>
           </tr>
         {{/each}}
+
+        {{#if (and hasPagination isCompact)}}
+          <tr>
+            <td colspan={{_fullSizeColumnColspan}}
+                class="upf-align--right padding-sm">
+              {{upf-table/pagination currentPage=currentPage perPage=perPage
+                                     totalPages=totalPages itemTotal=itemTotal
+                                     itemCount=itemCount itemName=itemName}}
+            </td>
+          </tr>
+        {{/if}}
       {{/if}}
     {{/if}}
   </tbody>
