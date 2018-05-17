@@ -9,12 +9,14 @@ const {
 
 export default Component.extend({
   classNames: ['upf-table__container'],
+  classNameBindings: ['isCompact:upf-table__container--compact'],
 
   hasSelection: false,
   hasPagination: false,
   hasSearch: false,
   hasPolymorphicColumns: false,
   hasToggleableColumns: true,
+  isCompact: false,
 
   allRowsSelected: false,
   displayedColumnsPanel: false,
