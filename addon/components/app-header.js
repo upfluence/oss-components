@@ -11,6 +11,7 @@ export default Component.extend(HeaderStyleMixin, {
   tagName: 'nav',
   classNameBindings: ['headerStyleClass'],
   logo: null,
+  indexRoute: 'index',
 
   headerStyleClass: Ember.computed('headerStyle', function() {
     if (this.get('isSidebarStyle')) {
