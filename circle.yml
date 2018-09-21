@@ -1,17 +1,23 @@
-machine:
-  node:
-    version: 5.5.0
+version: 2
+jobs:
+  deploy:
+    docker:
+      - image: circleci/node:6
 
-dependencies:
-  override:
-    - echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+    working_directory: ~/upfluence-oss-components
 
-test:
-  override:
-    - echo "disable"
+    steps:
+      - checkout
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+      - run: npm publish --access public
 
-deployment:
-  npm:
-    tag: /v[0-9]+(\.[0-9]+)*/
-    commands:
-      - npm publish
+workflows:
+  version: 2
+  build-and-deploy:
+    jobs:
+      - deploy:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /v[0-9]+(\.[0-9]+)*/
