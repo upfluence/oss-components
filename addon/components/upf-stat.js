@@ -6,7 +6,7 @@ const {
 } = Ember;
 
 export default Component.extend({
-  classNames: ['upf-stat--new'],
+  classNames: ['upf-stat'],
   classNameBindings: [
     'small:upf-stat--new--small', 'xsmall:upf-stat--new--x-small'
   ],
@@ -15,9 +15,11 @@ export default Component.extend({
   xsmall: null,
   name: null,
   data: null,
+  dataClass: null,
   label: null,
 
   icon: null,
+  iconPlacement: 'top',
   iconClass: '',
   iconUrl: null,
   iconLabel: null,
