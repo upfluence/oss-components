@@ -1,20 +1,32 @@
-<span class='upf-stat__name'>
+<span class="upf-stat__name">
   {{name}}
 
   {{#if icon}}
-    <span class='upf-stat__icon' title="{{iconLabel}}">
-      {{#if iconUrl}}
-        <a href="{{iconUrl}}" target="_blank">
+    {{#if (eq iconPlacement "top")}}
+      <span class="upf-stat__icon" title="{{iconLabel}}">
+        {{#if iconUrl}}
+          <a href="{{iconUrl}}" target="_blank">
+            {{fa-icon icon class=iconClass}}
+          </a>
+        {{else}}
           {{fa-icon icon class=iconClass}}
-        </a>
-      {{else}}
-        {{fa-icon icon class=iconClass}}
-      {{/if}}
-    </span>
+        {{/if}}
+      </span>
+    {{/if}}
   {{/if}}
 </span>
 
-<span class='upf-stat__data{{unless data ' upf-stat__data--null'}}'>{{data}}</span>
+<span class={{concat "upf-stat__data " dataClass (unless data " upf-stat__data--null")}}>
+  {{data}}
+
+  {{#if icon}}
+    {{#if (eq iconPlacement "right")}}
+      <span class="upf-stat__icon" title="{{iconLabel}}">
+        {{fa-icon icon class=iconClass}}
+      </span>
+    {{/if}}
+  {{/if}}
+</span>
 
 {{#if label}}
   <span class="upf-stat__label">{{{label}}}</span>
