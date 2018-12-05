@@ -8,7 +8,7 @@ const {
 export default Component.extend({
   classNames: ['upf-stat'],
   classNameBindings: [
-    'small:upf-stat--new--small', 'xsmall:upf-stat--new--x-small'
+    'small:upf-stat--small', 'xsmall:upf-stat--x-small'
   ],
 
   small: null,
