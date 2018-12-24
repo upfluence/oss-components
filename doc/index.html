@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="en-us" id="insta">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<link href="_stylemark/css/all.css" rel="stylesheet">
+		<link rel="icon" href="" type="image/x-icon">
+
+		<!-- @todo Replace with custom icomoon/fontello bundle -->
+		<script src="https://use.fontawesome.com/6dd56ad32d.js"></script>
+
+		<title></title>
+
+			<link rel="stylesheet" href="oss-styleguide/theme.css">
+	</head>
+	<body class="overflow-x-off i-page theme-page">
+		<div class="i-page__content theme-content">
+
+			<div class="i-nav-select theme-mobile-nav">
+				<form class="form">
+					<select class="form-control form-control-lg theme-mobile-nav-select">
+						<option disabled selected>Go to…</option>
+							<optgroup label="Introduction">
+									<option value="get-started">Get Started</option>
+							</optgroup>
+							<optgroup label="Core">
+									<option value="color-palette">Color Palette</option>
+									<option value="variables">Variables</option>
+							</optgroup>
+							<optgroup label="Components">
+									<option value="progress-bar">Progress Bar</option>
+									<option value="stat">Stat</option>
+							</optgroup>
+					</select>
+				</form>
+			</div>
+
+				<div id="category-introduction" class="theme-content-category">
+						<div id="get-started" class="i-library theme-content-element">
+	<h1 class="display-4 theme-content-element-title">Get Started</h1>
+	<span class="theme-content-element-source">
+		<span class="theme-content-element-source-label">Source:</span>
+		<span class="theme-content-element-source-path">index.js</span>
+	</span>
+	<div class="theme-content-element-description"><p>OSS is a design system built to help Upfluence&#39;s developers and designers quickly create
+the best experience for our clients. At Upfluence, we love to create harmonious experiences
+for our users, solving challenging interactions once then applying the solutions consistently
+across our products — making sure users only have to learn them once.</p>
+<h3>Installing</h3><hr>
+<p>There are two options for installing and implementing/using our components:
+<strong><a href="https://www.emberjs.com/">Ember JS</a></strong> or <strong><a href="http://lesscss.org">LESS</a></strong>.</p>
+<h4>Ember JS</h4><p>The best way to use the components is through our Ember JS addon,
+ <strong><a href="https://github.com/upfluence/oss-components">oss-components</a></strong>. You can install it
+via <code>Yarn</code> or <code>npm</code>:</p>
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang "> </button>
+	<div class="i-code-block__content ">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="yarn add upfluence-oss-components">Copy</button>
+		<pre class="mb-0"><code class="lang-">yarn add upfluence-oss-components</code></pre>
+	</div>
+</div><h4>LESS CSS</h4><p>If you don&#39;t want to use Ember JS or if you are working on a standalone project that only
+requires OSS&#39;s CSS, you can build it from our <strong><a href="https://github.com/upfluence/oss">LESS repository</a></strong></p>
+</div>
+</div>
+
+				</div>
+				<div id="category-core" class="theme-content-category">
+						<div id="color-palette" class="i-library theme-content-element">
+	<h1 class="display-4 theme-content-element-title">Color Palette</h1>
+	<span class="theme-content-element-source">
+		<span class="theme-content-element-source-label">Source:</span>
+		<span class="theme-content-element-source-path">bower_components/upfluence-oss/less/core/_colors.less</span>
+	</span>
+	<div class="theme-content-element-description"><p>Providing numbered insights to users.</p>
+<h3>Primary Colors</h3><hr>
+<p>These are the colors defined by the Upfluence Visual Design Guidelines.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="color-palette-primary.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="color-palette-primary.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-xs-3&quot; style=&quot;background-color: #4c00ff; padding: 0&quot;&gt;
+    &lt;div style=&quot;height: 150px&quot;&gt;&lt;/div&gt;
+    &lt;div style=&quot;background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;&quot;&gt;
+      &lt;div&gt;##4c00ff&lt;/div&gt;
+      &lt;div&gt;@upf-primary-bright-purple&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;col-xs-3&quot; style=&quot;background-color: #1b0059; padding: 0&quot;&gt;
+    &lt;div style=&quot;height: 150px&quot;&gt;&lt;/div&gt;
+    &lt;div style=&quot;background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;&quot;&gt;
+      &lt;div&gt;##1b0059&lt;/div&gt;
+      &lt;div&gt;@upf-primary-dark-purple&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;col-xs-3&quot; style=&quot;background-color: #e24b00; padding: 0&quot;&gt;
+    &lt;div style=&quot;height: 150px&quot;&gt;&lt;/div&gt;
+    &lt;div style=&quot;background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;&quot;&gt;
+      &lt;div&gt;##e24b00&lt;/div&gt;
+      &lt;div&gt;@upf-primary-orange&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;col-xs-3&quot; style=&quot;background-color: #8a99b3; padding: 0&quot;&gt;
+    &lt;div style=&quot;height: 150px&quot;&gt;&lt;/div&gt;
+    &lt;div style=&quot;background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;&quot;&gt;
+      &lt;div&gt;#8a99b3&lt;/div&gt;
+      &lt;div&gt;@upf-feedback-info&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-xs-3&quot; style=&quot;background-color: #4c00ff; padding: 0&quot;&gt;
+    &lt;div style=&quot;height: 150px&quot;&gt;&lt;/div&gt;
+    &lt;div style=&quot;background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;&quot;&gt;
+      &lt;div&gt;##4c00ff&lt;/div&gt;
+      &lt;div&gt;@upf-primary-bright-purple&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;col-xs-3&quot; style=&quot;background-color: #1b0059; padding: 0&quot;&gt;
+    &lt;div style=&quot;height: 150px&quot;&gt;&lt;/div&gt;
+    &lt;div style=&quot;background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;&quot;&gt;
+      &lt;div&gt;##1b0059&lt;/div&gt;
+      &lt;div&gt;@upf-primary-dark-purple&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;col-xs-3&quot; style=&quot;background-color: #e24b00; padding: 0&quot;&gt;
+    &lt;div style=&quot;height: 150px&quot;&gt;&lt;/div&gt;
+    &lt;div style=&quot;background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;&quot;&gt;
+      &lt;div&gt;##e24b00&lt;/div&gt;
+      &lt;div&gt;@upf-primary-orange&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;col-xs-3&quot; style=&quot;background-color: #8a99b3; padding: 0&quot;&gt;
+    &lt;div style=&quot;height: 150px&quot;&gt;&lt;/div&gt;
+    &lt;div style=&quot;background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;&quot;&gt;
+      &lt;div&gt;#8a99b3&lt;/div&gt;
+      &lt;div&gt;@upf-feedback-info&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+	</div>
+</div><h3>Feedback Colors</h3><hr>
+<p>These are the colors used to visually provide feedbacks to the user for:</p>
+<ul>
+<li>Information</li>
+<li>Error</li>
+<li>Success</li>
+<li>Alerts</li>
+</ul>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="color-palette-status.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="color-palette-status.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-xs-3&quot; style=&quot;background-color: #22B473; padding: 0&quot;&gt;
+    &lt;div style=&quot;height: 150px&quot;&gt;&lt;/div&gt;
+    &lt;div style=&quot;background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;&quot;&gt;
+      &lt;div&gt;##22B473&lt;/div&gt;
+      &lt;div&gt;@upf-feedback-success&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;col-xs-3&quot; style=&quot;background-color: #eda448; padding: 0&quot;&gt;
+    &lt;div style=&quot;height: 150px&quot;&gt;&lt;/div&gt;
+    &lt;div style=&quot;background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;&quot;&gt;
+      &lt;div&gt;#eda448&lt;/div&gt;
+      &lt;div&gt;@upf-feedback-alert&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;col-xs-3&quot; style=&quot;background-color: #e24b00; padding: 0&quot;&gt;
+    &lt;div style=&quot;height: 150px&quot;&gt;&lt;/div&gt;
+    &lt;div style=&quot;background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;&quot;&gt;
+      &lt;div&gt;##e24b00&lt;/div&gt;
+      &lt;div&gt;@upf-feedback-error&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;col-xs-3&quot; style=&quot;background-color: #8a99b3; padding: 0&quot;&gt;
+    &lt;div style=&quot;height: 150px&quot;&gt;&lt;/div&gt;
+    &lt;div style=&quot;background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;&quot;&gt;
+      &lt;div&gt;#8a99b3&lt;/div&gt;
+      &lt;div&gt;@upf-feedback-info&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col-xs-3&quot; style=&quot;background-color: #22B473; padding: 0&quot;&gt;
+    &lt;div style=&quot;height: 150px&quot;&gt;&lt;/div&gt;
+    &lt;div style=&quot;background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;&quot;&gt;
+      &lt;div&gt;##22B473&lt;/div&gt;
+      &lt;div&gt;@upf-feedback-success&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;col-xs-3&quot; style=&quot;background-color: #eda448; padding: 0&quot;&gt;
+    &lt;div style=&quot;height: 150px&quot;&gt;&lt;/div&gt;
+    &lt;div style=&quot;background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;&quot;&gt;
+      &lt;div&gt;#eda448&lt;/div&gt;
+      &lt;div&gt;@upf-feedback-alert&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;col-xs-3&quot; style=&quot;background-color: #e24b00; padding: 0&quot;&gt;
+    &lt;div style=&quot;height: 150px&quot;&gt;&lt;/div&gt;
+    &lt;div style=&quot;background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;&quot;&gt;
+      &lt;div&gt;##e24b00&lt;/div&gt;
+      &lt;div&gt;@upf-feedback-error&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;col-xs-3&quot; style=&quot;background-color: #8a99b3; padding: 0&quot;&gt;
+    &lt;div style=&quot;height: 150px&quot;&gt;&lt;/div&gt;
+    &lt;div style=&quot;background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;&quot;&gt;
+      &lt;div&gt;#8a99b3&lt;/div&gt;
+      &lt;div&gt;@upf-feedback-info&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+	</div>
+</div></div>
+</div>
+
+						<div id="variables" class="i-library theme-content-element">
+	<h1 class="display-4 theme-content-element-title">Variables</h1>
+	<span class="theme-content-element-source">
+		<span class="theme-content-element-source-label">Source:</span>
+		<span class="theme-content-element-source-path">bower_components/upfluence-oss/less/core/_variables.less</span>
+	</span>
+	<div class="theme-content-element-description"><p>Variables</p>
+<h3>Typography</h3><table class="table"><thead><tr>
+<th>Name</th>
+<th>purpose</th>
+</tr>
+</thead><tbody><tr>
+<td>font-text-title</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>font-text-body</td>
+<td></td>
+</tr>
+<tr>
+<td>font-size-body</td>
+<td></td>
+</tr>
+<tr>
+<td>rem</td>
+</tr>
+</tbody></table><p>In case you need to display some text on a bright background, the following variables
+might come handy.</p>
+<table class="table"><thead><tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody><tr>
+<td>color-text</td>
+<td>rgba(0, 0, 0, 87%)</td>
+</tr>
+<tr>
+<td>color-text</td>
+<td>rgba(0, 0, 0, 54%)</td>
+</tr>
+<tr>
+<td>color-text-lighter</td>
+<td>rgba(0, 0, 0, 46%)</td>
+</tr>
+</tbody></table><p>In case you need the displayed text to contrast with a dark or colorful background, these
+are the one you might need.</p>
+<table class="table"><thead><tr>
+<th>Name</th>
+<th>Value</th>
+</tr>
+</thead><tbody><tr>
+<td>color-text-contrast</td>
+<td>rgba(255, 255, 255, 100%)</td>
+</tr>
+<tr>
+<td>color-text-contrast-light</td>
+<td>rgba(255, 255, 255, 70%)</td>
+</tr>
+<tr>
+<td>color-text-contrast-lighter</td>
+<td>rgba(255, 255, 255, 50%)</td>
+</tr>
+</tbody></table><h3>Spacing</h3><h3>Colors</h3><h3>Social Medias</h3></div>
+</div>
+
+				</div>
+				<div id="category-components" class="theme-content-category">
+						<div id="progress-bar" class="i-library theme-content-element">
+	<h1 class="display-4 theme-content-element-title">Progress Bar</h1>
+	<span class="theme-content-element-source">
+		<span class="theme-content-element-source-label">Source:</span>
+		<span class="theme-content-element-source-path">addon/components/upf-progress.js</span>
+	</span>
+	<div class="theme-content-element-description"><p>TODO</p>
+</div>
+</div>
+
+						<div id="stat" class="i-library theme-content-element">
+	<h1 class="display-4 theme-content-element-title">Stat</h1>
+	<span class="theme-content-element-source">
+		<span class="theme-content-element-source-label">Source:</span>
+		<span class="theme-content-element-source-path">addon/components/upf-stat.js</span>
+	</span>
+	<div class="theme-content-element-description"><p>Providing numbered insights to users.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="stat-stat.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="stat-stat.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;div class=&quot;upf-stat&quot;&gt;
+  &lt;span class=&quot;upf-stat__name&quot;&gt;Stat Name&lt;/span&gt;
+  &lt;span class=&quot;upf-stat__data&quot;&gt;30&lt;/span&gt;
+&lt;/div&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;div class=&quot;upf-stat&quot;&gt;
+  &lt;span class=&quot;upf-stat__name&quot;&gt;Stat Name&lt;/span&gt;
+  &lt;span class=&quot;upf-stat__data&quot;&gt;30&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+	</div>
+</div>
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> handelbars</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="{{upf-stat name=&#39;Lorem&#39; data=12}}">Copy</button>
+		<pre class="mb-0"><code class="lang-">{{upf-stat name=&#39;Lorem&#39; data=12}}</code></pre>
+	</div>
+</div><h3>Options</h3><hr>
+<p>Use any of the available stats types to quickly create a styled stat.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="stat-types.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="stat-types.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> handlebars</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;!-- Standard button --&gt;
+{{upf-stat name=&#39;Lorem&#39; data=12}}">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;!-- Standard button --&gt;
+{{upf-stat name=&#39;Lorem&#39; data=12}}</code></pre>
+	</div>
+</div><h3>Available Sizes</h3><hr>
+<p>Need different sizes to fit your design. Add <code>small=true</code> or <code>xsmall=true</code>
+for additional sizes.</p>
+<div class="i-example">
+                    <h5 class="i-example__heading">
+                        <a
+                            href="stat-sizes.html"
+                            target="_blank"
+                            class="plain-link"
+                            data-toggle="tooltip"
+                            data-placement="top"
+                            title="Open in a new window"
+                        >
+                            <i class="fa fa-external-link-square fa-fw"></i>
+                            Example
+                        </a>
+                    </h5>
+                    <div class="i-example__body">
+                        <div
+                            class="i-example__iframe"
+                            lazyframe
+                            data-src="stat-sizes.html"
+                            data-initinview="true"
+                            data-title="Loading…"
+
+                        ></div>
+                    </div>
+                </div>
+
+
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> html</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;div class=&quot;col-xs-4&quot;&gt;
+  &lt;div class=&quot;upf-stat upf-stat--small&quot;&gt;
+    &lt;span class=&quot;upf-stat__name&quot;&gt;Standard&lt;/span&gt;
+    &lt;span class=&quot;upf-stat__data&quot;&gt;30&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;col-xs-4&quot;&gt;
+  &lt;div class=&quot;upf-stat upf-stat--small&quot;&gt;
+    &lt;span class=&quot;upf-stat__name&quot;&gt;Small&lt;/span&gt;
+    &lt;span class=&quot;upf-stat__data&quot;&gt;30&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;col-xs-4&quot;&gt;
+  &lt;div class=&quot;upf-stat upf-stat--x-small&quot;&gt;
+    &lt;span class=&quot;upf-stat__name&quot;&gt;Extra Small&lt;/span&gt;
+    &lt;span class=&quot;upf-stat__data&quot;&gt;30&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;div class=&quot;col-xs-4&quot;&gt;
+  &lt;div class=&quot;upf-stat upf-stat--small&quot;&gt;
+    &lt;span class=&quot;upf-stat__name&quot;&gt;Standard&lt;/span&gt;
+    &lt;span class=&quot;upf-stat__data&quot;&gt;30&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;col-xs-4&quot;&gt;
+  &lt;div class=&quot;upf-stat upf-stat--small&quot;&gt;
+    &lt;span class=&quot;upf-stat__name&quot;&gt;Small&lt;/span&gt;
+    &lt;span class=&quot;upf-stat__data&quot;&gt;30&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&quot;col-xs-4&quot;&gt;
+  &lt;div class=&quot;upf-stat upf-stat--x-small&quot;&gt;
+    &lt;span class=&quot;upf-stat__name&quot;&gt;Extra Small&lt;/span&gt;
+    &lt;span class=&quot;upf-stat__data&quot;&gt;30&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+	</div>
+</div>
+<div class="i-code-block">
+	<button type="button" class="i-code-block__lang -collapsible"><i class="fa fa-caret-right fa-fw"></i> handlebars</button>
+	<div class="i-code-block__content hidden">
+		<button type="button" class="btn btn-outline-primary btn-sm i-copy-button" data-clipboard-text="&lt;!-- Standard size stat --&gt;
+{{upf-stat name=&quot;Extra Small&quot; data=30}}
+
+&lt;!-- Small stat --&gt;
+{{upf-stat name=&quot;Small&quot; data=30 small=true}}
+
+&lt;!-- Extra Small stat --&gt;
+{{upf-stat name=&quot;Extra Small&quot; data=30 xsmall=true}}">Copy</button>
+		<pre class="mb-0"><code class="lang-">&lt;!-- Standard size stat --&gt;
+{{upf-stat name=&quot;Extra Small&quot; data=30}}
+
+&lt;!-- Small stat --&gt;
+{{upf-stat name=&quot;Small&quot; data=30 small=true}}
+
+&lt;!-- Extra Small stat --&gt;
+{{upf-stat name=&quot;Extra Small&quot; data=30 xsmall=true}}</code></pre>
+	</div>
+</div></div>
+</div>
+
+				</div>
+		</div>
+		<div
+			class="i-page__sidebar theme-sidebar"
+			style=""
+		>
+			<h1 class="i-sidebar-title h4 mt-4 theme-sidebar-header">
+				<span class="theme-sidebar-header-title"></span>
+			</h1>
+			
+			<div class="relative mt-3 mb-2 px-0 theme-sidebar-search">
+				<div class="i-search-input">
+					<input id="search-filter" name="filter" type="search" placeholder="Search" class="form-control i-sidebar-item-filter">
+					<label for="search-filter" class="search-input-icon icon-search"></label>
+					<button type="button" class="i-search-input-reset" aria-label="Clear">
+						<i class="icon-cross"></i>
+					</button>
+				</div>
+			</div>
+			
+			<div class="theme-sidebar-categories">
+					<div class="i-sidebar-list-group theme-sidebar-category">
+			
+						<h5
+							class="pt-4 mb-1 theme-sidebar-category-title"
+							data-filter-value=" Get Started "
+						>
+							<a href="#category-introduction" class="i-sidebar-list-item">
+								<b>Introduction</b>
+							</a>
+						</h5>
+			
+						<div>
+								<a
+									href="#get-started"
+									class="i-sidebar-list-item theme-sidebar-element"
+									data-filter-value="Get Started"
+								>
+									<span>Get Started</span>
+								</a>
+						</div>
+			
+					</div>
+					<div class="i-sidebar-list-group theme-sidebar-category">
+			
+						<h5
+							class="pt-4 mb-1 theme-sidebar-category-title"
+							data-filter-value=" Color Palette  Variables "
+						>
+							<a href="#category-core" class="i-sidebar-list-item">
+								<b>Core</b>
+							</a>
+						</h5>
+			
+						<div>
+								<a
+									href="#color-palette"
+									class="i-sidebar-list-item theme-sidebar-element"
+									data-filter-value="Color Palette"
+								>
+									<span>Color Palette</span>
+								</a>
+								<a
+									href="#variables"
+									class="i-sidebar-list-item theme-sidebar-element"
+									data-filter-value="Variables"
+								>
+									<span>Variables</span>
+								</a>
+						</div>
+			
+					</div>
+					<div class="i-sidebar-list-group theme-sidebar-category">
+			
+						<h5
+							class="pt-4 mb-1 theme-sidebar-category-title"
+							data-filter-value=" Progress Bar  Stat "
+						>
+							<a href="#category-components" class="i-sidebar-list-item">
+								<b>Components</b>
+							</a>
+						</h5>
+			
+						<div>
+								<a
+									href="#progress-bar"
+									class="i-sidebar-list-item theme-sidebar-element"
+									data-filter-value="Progress Bar"
+								>
+									<span>Progress Bar</span>
+								</a>
+								<a
+									href="#stat"
+									class="i-sidebar-list-item theme-sidebar-element"
+									data-filter-value="Stat"
+								>
+									<span>Stat</span>
+								</a>
+						</div>
+			
+					</div>
+			</div>
+			
+			<div class="i-sidebar-filter-no-results i-muted i-pad-horiz-2 theme-sidebar-search-no-results">
+				No matches.
+			</div>
+			
+			<div class="row no-gutters mt-auto py-4 theme-sidebar-footer">
+				<span class="col">
+					Generated by <a href="https://github.com/nextbigsoundinc/stylemark">Stylemark</a>
+				</span>
+			</div>
+		</div>
+
+		<script src="_stylemark/js/vendor/jquery-3.2.1.slim.min.js"></script>
+		<script src="_stylemark/js/vendor/popper.min.js"></script>
+		<script src="_stylemark/js/vendor/tether.min.js"></script>
+		<script src="_stylemark/js/vendor/bootstrap.min.js"></script>
+		<script src="_stylemark/js/vendor/iframeResizer.min.js"></script>
+		<script src="_stylemark/js/vendor/lazyframe.min.js"></script>
+		<script src="_stylemark/js/vendor/highlight.min.js"></script>
+		<script src="_stylemark/js/vendor/clipboard.min.js"></script>
+		<script src="_stylemark/js/vendor/in-view.min.js"></script>
+		<script src="_stylemark/js/app.js"></script>
+
+	</body>
+</html>
