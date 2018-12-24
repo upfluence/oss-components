@@ -5,6 +5,75 @@ const {
   isBlank
 } = Ember;
 
+/*
+---
+name: Stat
+category: Components
+---
+
+Providing numbered insights to users.
+
+```stat.html
+<div class="upf-stat">
+  <span class="upf-stat__name">Stat Name</span>
+  <span class="upf-stat__data">30</span>
+</div>
+```
+
+```types.handelbars
+{{upf-stat name='Lorem' data=12}}
+```
+
+
+### Options
+-------
+Use any of the available stats types to quickly create a styled stat.
+
+```types.handlebars
+<!-- Standard button -->
+{{upf-stat name='Lorem' data=12}}
+```
+
+
+### Available Sizes
+-----
+Need different sizes to fit your design. Add `small=true` or `xsmall=true`
+for additional sizes.
+
+```sizes.html
+<div class="col-xs-4">
+  <div class="upf-stat upf-stat--small">
+    <span class="upf-stat__name">Standard</span>
+    <span class="upf-stat__data">30</span>
+  </div>
+</div>
+
+<div class="col-xs-4">
+  <div class="upf-stat upf-stat--small">
+    <span class="upf-stat__name">Small</span>
+    <span class="upf-stat__data">30</span>
+  </div>
+</div>
+
+<div class="col-xs-4">
+  <div class="upf-stat upf-stat--x-small">
+    <span class="upf-stat__name">Extra Small</span>
+    <span class="upf-stat__data">30</span>
+  </div>
+</div>
+```
+```types.handlebars
+<!-- Standard size stat -->
+{{upf-stat name="Extra Small" data=30}}
+
+<!-- Small stat -->
+{{upf-stat name="Small" data=30 small=true}}
+
+<!-- Extra Small stat -->
+{{upf-stat name="Extra Small" data=30 xsmall=true}}
+```
+*/
+
 export default Component.extend({
   classNames: ['upf-stat'],
   classNameBindings: [
