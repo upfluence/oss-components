@@ -20,20 +20,32 @@ Providing numbered insights to users.
 </div>
 ```
 
-```types.handelbars
-{{upf-stat name='Lorem' data=12}}
+```types.handlebars
+{{upf-stat name='Lorem' data=30}}
 ```
-
 
 ### Options
 -------
 Use any of the available stats types to quickly create a styled stat.
 
-```types.handlebars
-<!-- Standard button -->
-{{upf-stat name='Lorem' data=12}}
+#### Custom Data Class
+
+```custom-data-class.html
+<div class="upf-stat">
+  <span class="upf-stat__name">Stat Name</span>
+  <span class="upf-stat__data text-color-success">30</span>
+</div>
 ```
 
+```types.handlebars
+{{upf-stat name='Lorem' data=12 dataClass='text-color-feedback-success'}}
+```
+
+```types.less
+.text-color-success {
+  color: @upf-feedback-success;
+}
+```
 
 ### Available Sizes
 -----
@@ -42,7 +54,7 @@ for additional sizes.
 
 ```sizes.html
 <div class="col-xs-4">
-  <div class="upf-stat upf-stat--small">
+  <div class="upf-stat">
     <span class="upf-stat__name">Standard</span>
     <span class="upf-stat__data">30</span>
   </div>
@@ -62,6 +74,7 @@ for additional sizes.
   </div>
 </div>
 ```
+
 ```types.handlebars
 <!-- Standard size stat -->
 {{upf-stat name="Extra Small" data=30}}
