@@ -1,5 +1,5 @@
 assets:
-- ../oss/fonts
+- oss/
 theme:
   css:
   - oss-styleguide/theme.css
@@ -12,7 +12,7 @@ examples:
       }
     </style>
   css:
-  - ../oss/less/upfluence-oss.css
+  - oss/less/upfluence-oss.css
 order:
 - +Introduction
 - +Core
