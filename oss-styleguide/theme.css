@@ -12,12 +12,12 @@ body {
   display: none;
 }
 
-#color-palette .i-example { border: none }
-#color-palette .i-example .i-example__heading:first-child,
-#color-palette .i-code-block {
+.i-example { border-width: 1px }
+.i-example .i-example__heading:first-child {
   display: none;
 }
 
+#color-palette .i-code-block { display: none; }
 #color-palette .i-example .i-example__body {
   padding: 0;
 }
