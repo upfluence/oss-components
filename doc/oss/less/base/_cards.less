@@ -1,0 +1,31 @@
+.upf-card {
+  display: inline-block;
+  height: 260px;
+  width: 330px;
+  margin: @spacing-xx-sm;
+  padding: @spacing-x-lg @spacing-x-sm;
+  border: 2px solid @upf-gray;
+  border-radius: @default-radius;
+  text-align: center;
+}
+
+.upf-card__icon {
+  img {
+    height: 80px;
+  }
+  max-height: 6em;
+}
+
+.upf-card__title {
+  padding-top: @spacing-xxx-sm;
+  padding-bottom: @spacing-xx-sm;
+}
+
+.upf-card:hover {
+  border-color: @upf-primary-bright-purple;
+  transition: border-color 0.2s linear;
+
+  .upf-card__title {
+    color: @upf-primary-bright-purple;
+  }
+}

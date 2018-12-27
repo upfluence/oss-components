@@ -1,0 +1,409 @@
+//
+// Buttons
+// --------------------------------------------------
+
+@import '../core/_colors';
+@import '../core/_variables';
+@import '../mixins/_buttons';
+@import '../mixins/_coloring';
+
+.btn {
+  font-family: @font-text-title;
+}
+
+.btn-xs {
+  padding: 0.2rem 1.5rem;
+}
+
+.btn-sm {
+  padding: 0.6rem 2rem;
+}
+
+.btn-md {
+  padding: 0.8rem 3rem;
+}
+
+.btn-lg {
+  padding: 1.1rem 5rem;
+}
+
+
+/*
+---
+name: Buttons
+category: Components
+---
+
+Buttons are best used to enable a user to perform a change or complete steps in a task.
+They are typically found inside forms, modal dialogs, or as calls to action.
+
+We have 3 main types of buttons:
+* **Default** (via `.upf-btn--default`) that can be used when you need multiple buttons
+  with no clear hierarchy between them.
+* **Primary** (via `.upf-btn--primary`) that is to be used to emphasize the most important
+action in a form (Example: "Save" or "Continue" in a form).
+* **Secondary** (via `.upf-btn--secondary), that is to be used as a companion to primary action
+to represent a secondary action a user can perform. Because they can have negative consequences,
+especially when used unintentionally, Secondary Buttons have less visual weight.
+
+```buttons.html
+<div class="col-xs-4">
+  <div class="margin-top-xxx-sm">
+    <button class="upf-btn upf-btn--default">Default</button>
+  </div>
+  <div class="margin-top-xxx-sm">
+    <button class="upf-btn upf-btn--default disabled">Disabled</button>
+  </div>
+</div>
+
+<div class="col-xs-4">
+  <div class="margin-top-xxx-sm">
+    <button class="upf-btn upf-btn--primary">Primary</button>
+  </div>
+  <div class="margin-top-xxx-sm">
+    <button class="upf-btn upf-btn--primary disabled">Disabled Primary</button>
+  </div>
+</div>
+
+<div class="col-xs-4">
+  <div class="margin-top-xxx-sm">
+    <button class="upf-btn upf-btn--secondary">Secondary</button>
+  </div>
+  <div class="margin-top-xxx-sm">
+    <button class="upf-btn upf-btn--secondary disabled">Disabled Secondary</button>
+  </div>
+</div>
+```
+
+### Available Sizes
+-------------------
+
+Need different sizes to fit your design. Use `.upf-btn--small` or `.upf-btn--x-small`
+as size modifiers.
+
+```sizes.html
+<div class="col-xs-4">
+  <div class="margin-bottom-xxx-sm">
+    <button class="upf-btn upf-btn--default">Standard Size</button>
+  </div>
+  <div class="margin-bottom-xxx-sm">
+    <button class="upf-btn upf-btn--primary">Standard Size</button>
+  </div>
+  <div class="margin-bottom-xxx-sm">
+    <button class="upf-btn upf-btn--secondary">Standard Size</button>
+  </div>
+</div>
+
+<div class="col-xs-4">
+  <div class="margin-bottom-xxx-sm">
+    <button class="upf-btn upf-btn--default upf-btn--small">Size Small</button>
+  </div>
+  <div class="margin-bottom-xxx-sm">
+    <button class="upf-btn upf-btn--primary upf-btn--small">Size Small</button>
+  </div>
+  <div class="margin-bottom-xxx-sm">
+    <button class="upf-btn upf-btn--secondary upf-btn--small">Size Small</button>
+  </div>
+</div>
+
+<div class="col-xs-4">
+  <div class="margin-bottom-xxx-sm">
+    <button class="upf-btn upf-btn--default upf-btn--x-small">Size Extra Small</button>
+  </div>
+  <div class="margin-bottom-xxx-sm">
+    <button class="upf-btn upf-btn--primary upf-btn--x-small">Size Extra Small</button>
+  </div>
+  <div class="margin-bottom-xxx-sm">
+    <button class="upf-btn upf-btn--secondary upf-btn--x-small">Size Extra Small</button>
+  </div>
+</div>
+```
+*/
+
+.upf-btn {
+  background-image: none;
+  border-radius: @default-radius;
+  cursor: pointer;
+  display: inline-block;
+  font-family: @font-text-body;
+
+  line-height: 1rem;
+  height: 37px;
+  padding: @spacing-xxx-sm @spacing-x-sm;
+
+  text-align: center;
+  text-decoration: none !important;
+  touch-action: manipulation;
+  vertical-align: middle;
+
+
+  a& { line-height: 2.4rem; }
+
+  &:focus,
+  &:active {
+    outline: none !important; // fix that bootstrap outline once and for all
+  }
+
+  &.disabled, &:disabled {
+    opacity: 0.5;
+
+    &:hover,
+    &:focus {
+      color: inherit;
+    }
+  }
+
+  &.upf-btn--dark-bg {
+    &:disabled, &.disabled {
+      border-color: transparent;
+      background-color: fade(@upf-gray, 75%);
+      color: @upf-primary-white;
+      opacity: 1;
+
+      .fa { color: @upf-primary-white; }
+    }
+  }
+}
+
+
+
+// Alternate buttons
+// --------------------------------------------------
+
+.upf-btn--default {
+  .outline(@upf-primary-rock-blue-light);
+  background-color: @upf-primary-white;
+
+  &:hover {
+    background-color: @upf-gray-light;
+    color: @upf-primary-rock-blue-dark;
+    transition: color 0.2s linear, background 0.2s linear;
+  }
+
+  &:focus, &:active {
+    border-color: @upf-primary-rock-blue-dark;
+    box-shadow: none;
+    color: @upf-primary-rock-blue-dark;
+  }
+
+  &.disabled,
+  &:disabled,
+  &.disabled:hover,
+  &:disabled:hover,
+  &.disabled:focus,
+  &:disabled:focus {
+    .disabled-button;
+  }
+}
+
+.upf-btn--primary {
+  .build-button(@upf-primary-bright-purple, @upf-primary-bright-purple-dark);
+  border: 1px solid @upf-primary-bright-purple;
+
+  &.upf-btn--dark-bg {
+    .fill(@upf-primary-white);
+    color: @upf-primary-bright-purple;
+
+    .fa {
+      color: @upf-primary-bright-purple;
+    }
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+}
+
+.upf-btn--secondary {
+  .reversed-colors(@upf-primary-bright-purple);
+
+  &.upf-btn--dark-bg {
+    .outline(@upf-primary-white);
+    color: @upf-primary-white;
+
+    .fa { color: @upf-primary-white; }
+    &:hover { opacity: 0.75; }
+  }
+}
+
+.upf-btn--destructive {
+  .outline(@upf-feedback-error);
+  color: @upf-feedback-error;
+
+  &:hover, &:focus {
+    color: @upf-feedback-error;
+  }
+}
+
+
+
+// Button Sizes
+// --------------------------------------------------
+
+.upf-btn--small {
+  height: @input-size-sm;
+
+  a& { line-height: 2rem; }
+}
+
+.upf-btn--x-small {
+  height: @input-size-x-sm;
+  padding: 0 @spacing-xx-sm;
+  line-height: 2rem;
+}
+
+
+//
+// Social Medias
+// --------------------------------------------------
+//
+
+.upf-btn--social-instagram {
+  .upf-btn--social;
+  background: linear-gradient(to right, #f77737, #e1306c);
+}
+
+.upf-btn--social-facebook {
+  .upf-btn--social;
+  background-color: @facebook-brand-color;
+}
+
+.upf-btn--social-youtube {
+  .upf-btn--social;
+  background-color: @youtube-brand-color;
+}
+
+
+// A Button with a right icon
+// This type is of button can be typically used to announce that clicking it
+// will lead to somewhere, making it useful for MultiSteps processes, Actions
+// leading to visual results (like performing a search), etc.
+//
+.upf-btn--has-right-icon {
+  transition: all 0.5s ease;
+
+  &:hover {
+    .upf-btn__right-icon {
+      transition: margin 0.5s ease;
+      margin-left: 1.5em;
+    }
+  }
+
+
+  .upf-btn__right-icon {
+    margin-left: 1em;
+  }
+}
+
+//
+// Toggle Button (Actually a stylish checkbox)
+//
+.upf-toggle-btn {}
+
+//
+// Larger than x-toggle component's "miedum size", but less than its
+// "large size".
+//
+.upf-toggle-btn .x-toggle-container { width: 4.75em; }
+.upf-toggle-btn .x-toggle-component {
+  display: block;
+}
+
+.upf-toggle-btn .x-toggle-btn {
+  background-color: @upf-gray; // Switch color when OFF
+  border-radius: 20px !important;
+  padding: 2px;
+
+  &:after {
+    border-radius: 30px !important;
+    background-color: @color-text-contrast;
+  }
+}
+
+// Switch color when ON.
+.upf-toggle-btn .x-toggle-container-checked .x-toggle-btn {
+  background-color: @upf-primary-bright-purple !important;
+}
+
+//
+// Radio buttons
+//
+.upf-radio-group {
+  display: table;
+  width: 100%;
+
+  .btn.upf-radio-btn {
+    border: 1px solid @upf-gray;
+    color: @upf-primary-rock-blue;
+    background-color: @upf-gray-light;
+    font-weight: 100;
+    font-family: @font-text-body;
+    box-shadow: none;
+    outline: none;
+    height: @input-size-default;
+    line-height: 25px;
+    border-radius: @default-radius;
+
+    input{
+      display: none;
+    }
+
+    &.active {
+      color: @upf-feedback-success;
+      background-color: @upf-primary-white;
+      transition: all 0.2s linear;
+    }
+  }
+}
+
+.upf-radio-group--small .btn.upf-radio-btn {
+  height: 31px;
+  line-height: 2rem;
+}
+
+.upf-radio-group--dark-bg {
+  .btn.upf-radio-btn {
+    background-color: transparent;
+    border: 1px solid @upf-primary-white;
+    color: @color-text-contrast;
+
+    i,
+    .upf-icon:before {
+      color: @color-text-contrast;
+    }
+  }
+}
+
+
+
+// Deprecated
+// --------------------------------------------------
+
+.upf-btn--purple {
+  .build-button(@upf-primary-bright-purple, @upf-primary-bright-purple-dark);
+}
+
+.upf-btn--orange {
+  .build-button(@upf-primary-orange, @upf-primary-orange-dark);
+}
+
+.upf-btn--orange--reversed { .reversed-colors(@upf-primary-orange); }
+.upf-btn--purple--reversed { .reversed-colors(@upf-primary-bright-purple); }
+.upf-btn--rock-blue--reversed { .reversed-colors(@upf-primary-rock-blue); }
+
+.upf-btn--purple--transparent {
+  &:extend(.upf-btn--purple--reversed);
+  .remove-outer-colors;
+
+  &:hover {
+    color: @upf-primary-bright-purple;
+  }
+}
+.upf-btn--orange--transparent {
+  &:extend(.upf-btn--orange--reversed);
+  .remove-outer-colors;
+
+  &:hover {
+    color: @upf-primary-orange;
+  }
+}

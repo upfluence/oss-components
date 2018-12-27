@@ -1,0 +1,78 @@
+@default-radius: 2px;
+@input-size-default: 37px;
+@input-size-sm: 34px;
+@input-size-x-sm: 22px;
+
+/*
+---
+name: Variables
+category: Core
+---
+
+In case you need to display some text on a bright background, the following variables
+might come handy.
+
+|  Name                       | Value                 |
+| --------------------------- | --------------------- |
+| color-text                  | rgba(0, 0, 0, 87%)    |
+| color-text                  | rgba(0, 0, 0, 54%)    |
+| color-text-lighter          | rgba(0, 0, 0, 46%)    |
+
+In case you need the displayed text to contrast with a dark or colorful background, these
+are the one you might need.
+
+|  Name                       | Value                     |
+| --------------------------- | ------------------------- |
+| color-text-contrast         | rgba(255, 255, 255, 100%) |
+| color-text-contrast-light   | rgba(255, 255, 255, 70%)  |
+| color-text-contrast-lighter | rgba(255, 255, 255, 50%)  |
+*/
+
+//
+// Font stacks
+//
+@font-text-title: 'GT Eesti', 'Helvetica Neue', 'Helvetica', sans-serif;
+@font-text-body: 'GT Eesti Text Book', 'Helvetica Neue', 'Helvetica', sans-serif;
+
+// Default size
+@font-size-body: 12;  // in px
+@rem: @font-size-body*1rem;
+
+//
+// Text Colors
+//
+
+// - default (on a bright background)
+@color-text: rgba(0, 0, 0, 87%);
+@color-text-light: rgba(0, 0, 0, 54%);
+@color-text-lighter: rgba(0, 0, 0, 46%);
+
+// - on a dark background
+@color-text-contrast: rgba(255, 255, 255, 100%);
+@color-text-contrast-light: rgba(255, 255, 255, 70%);
+@color-text-contrast-lighter: rgba(255, 255, 255, 50%);
+
+//
+// Spacers — Because sometimes we need to let elements breathe
+//
+@spacing-none: 0;
+@spacing-xxx-sm: 0.5em;
+@spacing-xx-sm: 1em;
+@spacing-x-sm: 1.5em;
+@spacing-sm: 2em;
+@spacing-md: 2.5em;
+@spacing-lg: 3em;
+@spacing-x-lg: 4em;
+@spacing-xx-lg: 5em;
+
+//
+// Brand Colors
+// Colors that are not part of our own palette but of those of some brands we
+// usually mention in our UIs.
+//
+@facebook-brand-color: #3b5998;
+@pinterest-brand-color: #bd081c;
+@instagram-brand-color: #bc2a8d;
+@youtube-brand-color: #cd201f;
+@twitter-brand-color: #1da1f2;
+@twitch-brand-color: #6441a5;

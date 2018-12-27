@@ -1,0 +1,146 @@
+/*
+ * This files holds all the primary colors, plus their variants (in light and
+ * dark).
+ *
+ * Additionally to those, it also sets some colors that are used accross the
+ * the apps to provide feedbacks such as Errors, Success, or Alerts.
+ *
+*/
+
+/*
+---
+name: Color Palette
+category: Core
+---
+
+Providing numbered insights to users.
+
+### Primary Colors
+-------------------
+
+These are the colors defined by the Upfluence Visual Design Guidelines.
+
+```primary.html
+<div class="row">
+  <div class="col-xs-3" style="background-color: #4c00ff; padding: 0">
+    <div style="height: 150px"></div>
+    <div style="background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;">
+      <div>#4c00ff</div>
+      <div>@upf-primary-bright-purple</div>
+    </div>
+  </div>
+
+  <div class="col-xs-3" style="background-color: #1b0059; padding: 0">
+    <div style="height: 150px"></div>
+    <div style="background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;">
+      <div>#1b0059</div>
+      <div>@upf-primary-dark-purple</div>
+    </div>
+  </div>
+
+  <div class="col-xs-3" style="background-color: #e24b00; padding: 0">
+    <div style="height: 150px"></div>
+    <div style="background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;">
+      <div>#e24b00</div>
+      <div>@upf-primary-orange</div>
+    </div>
+  </div>
+
+  <div class="col-xs-3" style="background-color: #8a99b3; padding: 0">
+    <div style="height: 150px"></div>
+    <div style="background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;">
+      <div>#8a99b3</div>
+      <div>@upf-feedback-info</div>
+    </div>
+  </div>
+</div>
+```
+
+### Feedback Colors
+-------------------
+
+These are the colors used to visually provide feedbacks to the user for:
+* Information
+* Error
+* Success
+* Alerts
+
+```feedback.html
+<div class="row">
+  <div class="col-xs-3" style="background-color: #22B473; padding: 0">
+    <div style="height: 150px"></div>
+    <div style="background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;">
+      <div>##22B473</div>
+      <div>@upf-feedback-success</div>
+    </div>
+  </div>
+
+  <div class="col-xs-3" style="background-color: #eda448; padding: 0">
+    <div style="height: 150px"></div>
+    <div style="background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;">
+      <div>#eda448</div>
+      <div>@upf-feedback-alert</div>
+    </div>
+  </div>
+
+  <div class="col-xs-3" style="background-color: #e24b00; padding: 0">
+    <div style="height: 150px"></div>
+    <div style="background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;">
+      <div>##e24b00</div>
+      <div>@upf-feedback-error</div>
+    </div>
+  </div>
+
+  <div class="col-xs-3" style="background-color: #8a99b3; padding: 0">
+    <div style="height: 150px"></div>
+    <div style="background-color: rgba(0, 0, 0, 0.3); padding: 1em 2em; color: white; width: 100%;">
+      <div>#8a99b3</div>
+      <div>@upf-feedback-info</div>
+    </div>
+  </div>
+</div>
+```
+*/
+
+//
+// (Brand) Primary Colors
+// These are the colors defined by the Upfluence Visual Design Guidelines.
+// --------------------------------------------------
+
+@upf-primary-bright-purple: #4c00ff;
+@upf-primary-dark-purple: #1b0059;
+@upf-primary-orange: #e24b00;
+@upf-primary-rock-blue: #8a99b3;
+@upf-primary-black: #000000;
+@upf-primary-white: #ffffff;
+
+// (Brand) Primary Colors Variations
+// These are variations of the primary colors. They can be used when an element
+// needs some to be slightly different, for example, for announcing its state.
+// One use case could be to give a button a different look depending on its
+// state: normal, on hover/active, or disabled.
+// --------------------------------------------------
+
+@upf-primary-orange-light: lighten(@upf-primary-orange, 10%);
+@upf-primary-orange-dark: darken(@upf-primary-orange, 10%);
+@upf-primary-bright-purple-light: lighten(@upf-primary-bright-purple, 10%);
+@upf-primary-bright-purple-dark: #1B00B7;
+@upf-primary-rock-blue-light: lighten(@upf-primary-rock-blue, 10%);
+@upf-primary-rock-blue-dark: darken(@upf-primary-rock-blue, 10%);
+
+// Status Colors
+// These are the colors used in feedbacks provided to
+// the user: informations, help, error, success, alerts, etc.
+// --------------------------------------------------
+
+@upf-feedback-success: #22B473;
+@upf-feedback-error: @upf-primary-orange;
+@upf-feedback-alert: #eda448;
+@upf-feedback-info: @upf-primary-rock-blue;
+
+// Grays
+// --------------------------------------------------
+
+@upf-gray: #c9c9c9;
+@upf-gray-light: #f9f9f9;
+@upf-gray-dark: darken(@upf-gray, 20);

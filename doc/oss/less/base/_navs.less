@@ -1,0 +1,125 @@
+@import '../core/_colors';
+@import '../core/_variables';
+
+.upf-nav {
+  background-color: @upf-primary-bright-purple;
+  border-bottom: none;
+  display: flex;
+  align-items: center;
+  list-style-type: none;
+
+  height: 48px;
+  padding: @spacing-xx-sm;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+
+.upf-nav__item {
+  align-self: center;
+  line-height: 2.6rem;
+  margin-left: @spacing-x-sm;
+
+  >a:not(.upf-btn) {
+    color: @color-text-contrast-light;
+    font-size: 16/@rem;
+    padding: @spacing-xxx-sm @spacing-xx-sm;
+    user-select: none;
+    text-decoration: none !important;
+  }
+
+  >a.active, >a:hover:not(.upf-btn):not(.skip-hover-style) {
+    border-bottom: none;
+    border-radius: @default-radius;
+    transition: color 0.2s linear, background 0.2s linear;
+    background-color: @upf-primary-bright-purple-dark;
+    color: @color-text-contrast;
+  }
+
+  >a:active {
+    color: @color-text-contrast-light;
+  }
+
+  .ember-transitioning-in {
+    color: @color-text-contrast-light;
+    background-color: @upf-primary-bright-purple-dark;
+  }
+
+  .ember-transitioning-out {
+    color: @color-text-contrast-light !important;
+    background-color: rgba(0,0,0,0) !important;
+  }
+}
+
+.upf-nav__item.upf-nav__item--title {
+  a {
+    color: @color-text-contrast;
+    font-size: 24/@rem;
+    padding: inherit;
+  }
+
+  a.active, a:hover {
+    border: none;
+    background-color: transparent !important;
+  }
+}
+
+.upf-nav__right {
+  display: inline-flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  margin-left: auto !important;
+
+  .upf-nav__item {
+    align-self: center;
+  }
+}
+
+.upf-nav__item.upf-nav__item-access-panel {
+  a, a:hover, a:active, a.active {
+    background-color: @upf-primary-white !important;
+    color: @upf-primary-bright-purple !important;
+
+    &:first-child {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    &:last-child {
+      border-left: 1px solid @upf-primary-bright-purple !important;
+      border-radius: @default-radius;
+      border-top-left-radius: 0 !important;
+      border-bottom-left-radius: 0 !important;
+    }
+  }
+
+ .upf-icon:before {
+    color: @upf-primary-bright-purple;
+  }
+}
+
+// A Subnavigation, with tabs that are more contextual to the current page.
+//
+.upf-contextual-nav {
+  background-color: @upf-primary-bright-purple-dark;
+
+  display: flex;
+  align-items: center;
+
+  list-style-type: none;
+  padding: @spacing-xx-sm;
+  height: 46px;
+
+  .upf-contextual-nav__item {
+    .upf-nav__item;
+
+    a.active, a:hover {
+      border-bottom: none;
+      border-radius: @default-radius;
+      background-color: @upf-primary-bright-purple;
+    }
+  }
+
+  .upf-contextual-nav__item--pull-right {
+    margin-left: auto !important;
+  }
+}
