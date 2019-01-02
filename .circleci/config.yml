@@ -10,6 +10,7 @@ jobs:
       - checkout
       - run: git clone git@github.com:upfluence/oss.git && cd oss && git checkout pn-documentation-v1; cd ../
       - run: yarn global add stylemark
+      - run: sudo apt-get install awscli
       - run: ~/.yarn/bin/stylemark -i ./ -o doc -c stylemark.yml
       - run: cp -R oss/fonts doc/oss/less/
       - run: aws s3 cp doc s3://oss.upfluence.co/ --recursive --acl public-read
