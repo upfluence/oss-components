@@ -1,5 +1,8 @@
 assets:
 - oss/
+excludeDir:
+- bower_components
+- doc
 theme:
   css:
   - oss-styleguide/theme.css
