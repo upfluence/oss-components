@@ -86,7 +86,6 @@ for additional sizes.
 {{upf-stat name="Extra Small" data=30 xsmall=true}}
 ```
 */
-
 export default Component.extend({
   classNames: ['upf-stat'],
   classNameBindings: [
