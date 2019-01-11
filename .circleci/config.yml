@@ -1,0 +1,26 @@
+version: 2
+jobs:
+  deploy-documentation:
+    docker:
+      - image: circleci/node:6
+
+    working_directory: ~/oss-components
+
+    steps:
+      - checkout
+      - run: git clone git@github.com:upfluence/oss.git
+      - run: yarn global add stylemark
+      - run: sudo apt-get install awscli
+      - run: ~/.yarn/bin/stylemark -i ./ -o doc -c stylemark.yml
+      - run: cp -R oss/fonts doc/oss/less/
+      - run: aws s3 cp doc s3://oss.upfluence.co/ --recursive --acl public-read
+
+workflows:
+  version: 2
+  deploy-documentation:
+    jobs:
+      - deploy-documentation:
+          filters:
+            branches:
+              only:
+                - master
