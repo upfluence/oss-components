@@ -19,7 +19,6 @@ Providing numbered insights to users.
   <span class="upf-stat__data">30</span>
 </div>
 ```
-
 ```types.handlebars
 {{upf-stat name='Lorem' data=30}}
 ```
