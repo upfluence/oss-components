@@ -1,10 +1,19 @@
+<<<<<<< HEAD
 # Upfluence OSS Components
 
 This project hosts a bunch of branded (following the OSS framework)
 components for usage in our projects.
+=======
+my-addon
+==============================================================================
 
-## Installation
+[Short description of the addon.]
+>>>>>>> 66b3acc... message
 
+Installation
+------------------------------------------------------------------------------
+
+<<<<<<< HEAD
 As any NPM package, you can install it via:
  `npm install --save upfluence-oss-components`
 
@@ -76,3 +85,48 @@ A simple `ember deploy production --verbose` will do the trick.
 
 PS: Do not forget to set the env variables accordingly (See
 `config/deploy.js` for details about needed variables).
+=======
+```
+ember install my-addon
+```
+
+
+Usage
+------------------------------------------------------------------------------
+
+[Longer description of how to use the addon in apps.]
+
+
+Contributing
+------------------------------------------------------------------------------
+
+### Installation
+
+* `git clone <repository-url>`
+* `cd my-addon`
+* `npm install`
+
+### Linting
+
+* `npm run lint:hbs`
+* `npm run lint:js`
+* `npm run lint:js -- --fix`
+
+### Running tests
+
+* `ember test` – Runs the test suite on the current Ember version
+* `ember test --server` – Runs the test suite in "watch mode"
+* `ember try:each` – Runs the test suite against multiple Ember versions
+
+### Running the dummy application
+
+* `ember serve`
+* Visit the dummy application at [http://localhost:4200](http://localhost:4200).
+
+For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+
+License
+------------------------------------------------------------------------------
+
+This project is licensed under the [MIT License](LICENSE.md).
+>>>>>>> 66b3acc... message
