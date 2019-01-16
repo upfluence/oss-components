@@ -1,10 +1,6 @@
-import Ember from 'ember';
-
-const {
-  Component,
-  computed,
-  $
-} = Ember;
+import { bool } from '@ember/object/computed';
+import Component from '@ember/component';
+import $ from 'jquery';
 
 export default Component.extend({
   tagName: 'tr',
@@ -15,7 +11,7 @@ export default Component.extend({
     'isHovering:upf-datatable__row--polymorphic'
   ],
 
-  isSelected: computed.bool('ref.selected'),
+  isSelected: bool('ref.selected'),
 
   mouseEnter() {
     this.$().parentsUntil('.upf-datatable').find(

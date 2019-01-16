@@ -1,11 +1,12 @@
-import Ember from 'ember';
+import { computed } from '@ember/object';
+import Mixin from '@ember/object/mixin';
 
-export default Ember.Mixin.create({
-  isSidebarStyle: Ember.computed('headerStyle', function() {
+export default Mixin.create({
+  isSidebarStyle: computed('headerStyle', function() {
     return this.get('headerStyle') === 'sidebar';
   }),
 
-  isTopbarStyle: Ember.computed('isSidebarStyle', function() {
+  isTopbarStyle: computed('isSidebarStyle', function() {
     return !this.get('isSidebarStyle');
   }),
 });

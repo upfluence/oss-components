@@ -1,11 +1,7 @@
-import Ember from 'ember';
-
-const {
-  Component,
-  computed,
-  observer,
-  run
-} = Ember;
+import { filterBy } from '@ember/object/computed';
+import Component from '@ember/component';
+import EmberObject, { observer, computed } from '@ember/object';
+import { run } from '@ember/runloop';
 
 export default Component.extend({
   classNames: ['upf-table__container'],
@@ -47,11 +43,11 @@ export default Component.extend({
       column.editable = column.editable !== false;
       column.unhideable = column.unhideable === true;
 
-      return Ember.Object.create(column);
+      return EmberObject.create(column);
     });
   }),
 
-  _initiallyDisplayedColumns: computed.filterBy('_columns', 'visible'),
+  _initiallyDisplayedColumns: filterBy('_columns', 'visible'),
   _fullSizeColumnColspan: computed('_initiallyDisplayedColumns', function() {
     if (this.get('hasSelection')) {
       return this.get('_initiallyDisplayedColumns').length + 1;

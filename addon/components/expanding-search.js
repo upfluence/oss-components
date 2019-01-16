@@ -1,9 +1,5 @@
-import Ember from 'ember';
-
-const {
-  Component,
-  computed
-} = Ember;
+import { empty, not } from '@ember/object/computed';
+import Component from '@ember/component';
 
 export default Component.extend({
   classNames: ['expanding-search'],
@@ -13,8 +9,8 @@ export default Component.extend({
   ],
 
   searchQuery: '',
-  emptySearchQuery: computed.empty('searchQuery'),
-  expandedSearch: computed.not('emptySearchQuery'),
+  emptySearchQuery: empty('searchQuery'),
+  expandedSearch: not('emptySearchQuery'),
 
   actions: {
     expandOrErase() {

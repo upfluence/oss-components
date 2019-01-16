@@ -1,9 +1,11 @@
 /* global Countdown */
+import { debounce } from '@ember/runloop';
+
+import Component from '@ember/component';
+import RSVP from 'rsvp';
 import Ember from 'ember';
 
 const {
-  Component,
-  RSVP,
   TargetActionSupport
 } = Ember;
 
@@ -30,7 +32,7 @@ export default Component.extend(TargetActionSupport, {
       this.set('actionFailed', true);
     });
 
-    Ember.run.debounce(this, function() {
+    debounce(this, function() {
       this.set('isSuccess', false);
       this.set('actionFailed', false);
       this.set('seconds', 0);

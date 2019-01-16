@@ -1,6 +1,4 @@
-import Ember from 'ember';
-
-const { Helper } = Ember;
+import Helper from '@ember/component/helper';
 
 export function truncateHelper(params) {
   let [string, numberOfCharacters] = params;

@@ -16,6 +16,7 @@
 npm-debug.log
 testem.log
 /yarn-error.log
+ember-modules-codemod.*
 
 # do not index the generated doc
 doc

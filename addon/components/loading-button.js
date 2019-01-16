@@ -1,10 +1,11 @@
+import { debounce } from '@ember/runloop';
+import Component from '@ember/component';
+import RSVP from 'rsvp';
+import { observer } from '@ember/object';
 import Ember from 'ember';
 
 const {
-  Component,
-  RSVP,
-  TargetActionSupport,
-  observer
+  TargetActionSupport
 } = Ember;
 
 const LoadingButtonComponent = Component.extend(TargetActionSupport, {
@@ -41,7 +42,7 @@ const LoadingButtonComponent = Component.extend(TargetActionSupport, {
       this.set('isLoading', false);
     });
 
-    Ember.run.debounce(this, function() {
+    debounce(this, function() {
       this.set('isLoading', true);
       this.$().width(originalWidth);
 
