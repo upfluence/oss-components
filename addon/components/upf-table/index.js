@@ -1,6 +1,6 @@
-import { filterBy } from '@ember/object/computed';
 import Component from '@ember/component';
 import EmberObject, { observer, computed } from '@ember/object';
+import { filterBy } from '@ember/object/computed';
 import { run } from '@ember/runloop';
 
 export default Component.extend({
