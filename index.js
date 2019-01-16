@@ -44,17 +44,28 @@ module.exports = {
     return true;
   },
 
+  _registerLessDependencies(app) {
+    let lessOptions = app.options.lessOptions || {};
+
+    if (!lessOptions.paths) {
+      lessOptions.paths = [];
+    }
+
+    lessOptions.paths.push(
+      'node_modules/bootstrap/less',
+      'node_modules/upfluence-oss/less',
+    );
+
+    app.options.lessOptions = lessOptions;
+  },
+
   included: function(app) {
     this._super.included(app);
 
-    app.import('bower_components/bootstrap/dist/js/bootstrap.min.js');
-    app.import('bower_components/summernote/dist/summernote.min.js');
-    app.import('bower_components/summernote/dist/summernote.css');
-    app.import('bower_components/summernote/dist/font/summernote.ttf', { destDir: 'assets/font' });
-    app.import('bower_components/summernote/dist/font/summernote.eot', { destDir: 'assets/font' });
-    app.import('bower_components/summernote/dist/font/summernote.woff', { destDir: 'assets/font' });
-    app.import('bower_components/money-formatter/dist/money-formatter.min.js');
-    app.import('bower_components/countdown.js/lib/countdown.js');
+    this._registerLessDependencies(app);
+
+    this.import('node_modules/bootstrap/dist/js/bootstrap.min.js');
+    this.import('node_modules/countdown.js/lib/countdown.js');
   },
 
   treeForPublic() {
@@ -69,7 +80,7 @@ module.exports = {
     publicAssets.forEach((assetType) => {
       trees.push(
         new Funnel(
-          `${this.app.bowerDirectory}/upfluence-oss/${assetType}/`,
+          `node_modules/upfluence-oss/${assetType}/`,
           {
             srcDir: '/',
             destDir: `assets/${assetType}`
