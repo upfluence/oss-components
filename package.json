@@ -30,7 +30,7 @@
     "ember-cli-toggle": "^3.0.0",
     "ember-font-awesome": "2.1.1",
     "ember-truth-helpers": "^1.3.0",
-    "upfluence-oss": "upfluence/oss#pn-bower-deprecation"
+    "upfluence-oss": "^1.x"
   },
   "devDependencies": {
     "@ember/optional-features": "^0.6.3",
