@@ -1,9 +1,5 @@
-import Ember from 'ember';
-
-const {
-  Component,
-  isBlank
-} = Ember;
+import Component from '@ember/component';
+import { isBlank } from '@ember/utils';
 
 /*
 ---

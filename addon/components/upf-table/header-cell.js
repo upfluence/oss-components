@@ -1,9 +1,6 @@
-import Ember from 'ember';
-
-const {
-  Component,
-  computed
-} = Ember;
+import { alias } from '@ember/object/computed';
+import Component from '@ember/component';
+import { computed } from '@ember/object';
 
 export default Component.extend({
   tagName: 'th',
@@ -13,7 +10,7 @@ export default Component.extend({
     'sort'
   ],
   attributeBindings: ['width'],
-  width: computed.alias('column.width'),
+  width: alias('column.width'),
 
   sort: computed('column.sorted', 'column.direction', function() {
     if (!this.get('column.sorted')) {

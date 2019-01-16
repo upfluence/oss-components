@@ -1,6 +1,5 @@
-import Ember from 'ember';
-
-const { Component, computed } = Ember;
+import { not } from '@ember/object/computed';
+import Component from '@ember/component';
 
 export default Component.extend({
   tagName: 'td',
@@ -11,5 +10,5 @@ export default Component.extend({
   attributeBindings: ['valign'],
 
   valign: 'middle',
-  uneditable: computed.not('editable')
+  uneditable: not('editable')
 });

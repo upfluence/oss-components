@@ -1,11 +1,5 @@
-import Ember from 'ember';
-
-const {
-  Mixin,
-  computed,
-  defineProperty,
-  get
-} = Ember;
+import Mixin from '@ember/object/mixin';
+import { get, defineProperty, computed } from '@ember/object';
 
 export default Mixin.create({
   searchCollection: 'model',

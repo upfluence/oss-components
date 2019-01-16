@@ -1,6 +1,9 @@
-import Ember from 'ember';
+import { observer } from '@ember/object';
+import $ from 'jquery';
+import { assert } from '@ember/debug';
+import Component from '@ember/component';
 
-export default Ember.Component.extend({
+export default Component.extend({
   tagName: 'div',
   classNames: ['wysiwyg-editor', 'row'],
   btnSize: 'btn-xs',
@@ -28,8 +31,8 @@ export default Ember.Component.extend({
     // summernote 0.6.0 is not working as of this code written.
     // 0.5.10 is working version.
 
-    Ember.assert("summernote has to exist on Ember.$.fn.summernote", typeof Ember.$.fn.summernote === "function" );
-    Ember.assert("tooltip has to exist on Ember.$.fn.tooltip", typeof Ember.$.fn.tooltip === "function" );
+    assert("summernote has to exist on Ember.$.fn.summernote", typeof $.fn.summernote === "function" );
+    assert("tooltip has to exist on Ember.$.fn.tooltip", typeof $.fn.tooltip === "function" );
 
     this.$('#summernote').summernote({
       height: _height,
@@ -66,11 +69,11 @@ export default Ember.Component.extend({
     this.set('content', content);
   },
 
-  setHeight: Ember.observer('height', function(/*sender, key, value, rev*/) {
+  setHeight: observer('height', function(/*sender, key, value, rev*/) {
     this.$().find('.note-editable').css('height', this.get('height')); //use css height, as jQuery heigth/outerHeight does add the padding+margin
   }),
 
-  setContentEditable: Ember.observer('disabled', function(/*sender, key, value, rev*/) {
+  setContentEditable: observer('disabled', function(/*sender, key, value, rev*/) {
     this.$().find('.note-editable').attr('contenteditable', !this.get('disabled'));
   }),
 

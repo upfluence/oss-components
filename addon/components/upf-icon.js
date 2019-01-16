@@ -1,14 +1,10 @@
-import Ember from 'ember';
-
-const {
-  Component,
-  computed,
-  inject,
-  $
-} = Ember;
+import { inject as service } from '@ember/service';
+import Component from '@ember/component';
+import { computed } from '@ember/object';
+import $ from 'jquery';
 
 const UpfIconComponent = Component.extend({
-  assetMap: inject.service('asset-map'),
+  assetMap: service('asset-map'),
 
   icon: computed('params.[]', function() {
     return this.get('params')[0];

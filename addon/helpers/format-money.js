@@ -1,8 +1,4 @@
-import Ember from 'ember';
-
-const {
-  Helper,
-} = Ember;
+import Helper from '@ember/component/helper';
 
 var _getFormatter = function(currency) {
   return Intl.NumberFormat(['en-EN', 'fr-FR'], {

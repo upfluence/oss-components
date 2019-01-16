@@ -3,7 +3,10 @@
 This project hosts a bunch of branded (following the OSS framework)
 components for usage in our projects.
 
-## Installation
+[Short description of the addon.]
+
+Installation
+------------------------------------------------------------------------------
 
 As any NPM package, you can install it via:
  `npm install --save upfluence-oss-components`

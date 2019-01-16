@@ -1,11 +1,6 @@
-import Ember from 'ember';
+import Component from '@ember/component';
+import { computed } from '@ember/object';
 import HeaderStyleMixin from 'oss-components/mixins/header-style';
-
-const {
-  Component,
-  computed,
-  inject
-} = Ember;
 
 export default Component.extend(HeaderStyleMixin, {
   tagName: 'nav',
@@ -13,7 +8,7 @@ export default Component.extend(HeaderStyleMixin, {
   logo: null,
   indexRoute: 'index',
 
-  headerStyleClass: Ember.computed('headerStyle', function() {
+  headerStyleClass: computed('headerStyle', function() {
     if (this.get('isSidebarStyle')) {
       return 'col-xs-1 app-header--sidebar';
     } else {
