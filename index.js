@@ -80,7 +80,7 @@ module.exports = {
     publicAssets.forEach((assetType) => {
       trees.push(
         new Funnel(
-          `node_modules/upfluence-oss-components/node_modules/upfluence-oss/${assetType}/`,
+          `node_modules/upfluence-oss/${assetType}/`,
           {
             srcDir: '/',
             destDir: `assets/${assetType}`
