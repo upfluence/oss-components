@@ -53,7 +53,7 @@ module.exports = {
 
     lessOptions.paths.push(
       'node_modules/bootstrap/less',
-      'node_modules/upfluence-oss/less',
+      'node_modules/upfluence-oss/less'
     );
 
     app.options.lessOptions = lessOptions;
