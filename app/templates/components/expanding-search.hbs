@@ -1,9 +1,11 @@
-<button {{action 'expandOrErase' preventDefault=true}} class='upf-btn upf-btn--default expanding-search__submit'>
+<button {{action "expandOrErase" preventDefault=true}} class="upf-btn upf-btn--default expanding-search__submit">
   {{#if expandedSearch}}
-    {{fa-icon 'close'}}
+    <i class="fa fa-close"></i>
   {{else}}
-    {{fa-icon 'search'}}
+    <i class="fa fa-search"></i>
   {{/if}}
 </button>
-{{input type="text" class=(concat "form-control upf-input expanding-search__input" (if small ' upf-input--small'))
-        placeholder=placeholder value=searchQuery}}
+
+{{input
+  type="text" class=(concat "form-control upf-input expanding-search__input" (if small ' upf-input--small'))
+  placeholder=placeholder value=searchQuery}}

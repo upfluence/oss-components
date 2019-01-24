@@ -6,10 +6,10 @@
       <span class="upf-stat__icon" title="{{iconLabel}}">
         {{#if iconUrl}}
           <a href="{{iconUrl}}" target="_blank">
-            {{fa-icon icon class=iconClass}}
+            <i class="fa fa-{{icon}} {{iconClass}}"></i>
           </a>
         {{else}}
-          {{fa-icon icon class=iconClass}}
+          <i class="fa fa-{{icon}} {{iconClass}}"></i>
         {{/if}}
       </span>
     {{/if}}
@@ -22,7 +22,7 @@
   {{#if icon}}
     {{#if (eq iconPlacement "right")}}
       <span class="upf-stat__icon" title="{{iconLabel}}">
-        {{fa-icon icon class=iconClass}}
+        <i class="fa fa-{{icon}} {{iconClass}}"></i>
       </span>
     {{/if}}
   {{/if}}

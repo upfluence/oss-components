@@ -52,6 +52,7 @@ module.exports = {
     }
 
     lessOptions.paths.push(
+      'node_modules/font-awesome/less',
       'node_modules/bootstrap/less',
       'node_modules/upfluence-oss/less'
     );
@@ -88,6 +89,14 @@ module.exports = {
         )
       );
     });
+
+    trees.push(
+      new Funnel('node_modules/font-awesome/fonts/', {
+        srcDir: '/',
+        include: ['**/*.woff', '**/*.woff2'],
+        destDir: 'fonts'
+      })
+    );
 
     return mergeTrees(trees);
   }

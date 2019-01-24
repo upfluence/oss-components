@@ -1,16 +1,16 @@
-<ul class='row upf-datatable__actions-header'>
+<ul class="row upf-datatable__actions-header">
   {{#if contextualActionsComponent}}
     {{component contextualActionsComponent collection=collection}}
   {{/if}}
 
-  <li class='upf-datatable__actions-pull-right'>
+  <li class="upf-datatable__actions-pull-right">
     {{#if hasToggleableColumns}}
-      <a {{action 'toggleDisplayedColumnVisibilityPanel'}} class='upf-btn upf-btn--default upf-btn--small upf-link--reset'>
-        {{fa-icon 'columns'}}&nbsp;
+      <a {{action "toggleDisplayedColumnVisibilityPanel"}} class="upf-btn upf-btn--default upf-btn--small upf-link--reset">
+        <i class="fa fa-columns"></i> &nbsp;
         {{#if displayedColumnsPanel}}
-          {{fa-icon 'caret-up'}}
+          <i class="fa fa-caret-up"></i>
         {{else}}
-          {{fa-icon 'caret-down'}}
+          <i class="fa fa-caret-down"></i>
         {{/if}}
       </a>
     {{/if}}
@@ -24,7 +24,7 @@
     {{/if}}
 
     {{#if hasSearch}}
-      {{expanding-search classNames='margin-left-xx-sm' searchQuery=_searchQuery
+      {{expanding-search classNames="margin-left-xx-sm" searchQuery=_searchQuery
                          placeholder=searchInputPlaceholder small=true}}
     {{/if}}
   </li>
@@ -34,21 +34,21 @@
      {{if displayedColumnsPanel 'upf-datatable__side-panel--visible'}}">
   {{#each _columns as |column|}}
     {{#unless column.unhideable}}
-      <div class='margin-bottom-sm'>
+      <div class="margin-bottom-sm">
         {{#upf-checkbox value=column.visible hasLabel=true}}
-          <span class='text-color-contrast'>{{column.title}}</span>
+          <span class="text-color-contrast">{{column.title}}</span>
         {{/upf-checkbox}}
       </div>
     {{/unless}}
   {{/each}}
 </div>
 
-<table class='upf-datatable__table'>
+<table class="upf-datatable__table">
   <thead>
     {{#upf-table/row isHeaderRow=true}}
       {{#if hasSelection}}
         {{#unless contentChanging}}
-          <th width='45px' class='upf-datatable__column upf-datatable__column--unsortable'>
+          <th width="45px" class="upf-datatable__column upf-datatable__column--unsortable">
             {{upf-checkbox value=allRowsSelected}}
           </th>
         {{/unless}}
@@ -57,7 +57,7 @@
       {{#each _columns as |column|}}
         {{#unless (eq column.visible false)}}
           {{upf-table/header_cell column=column
-                                  click=(action 'onClickHeader' column)}}
+                                  click=(action "onClickHeader" column)}}
         {{/unless}}
       {{/each}}
     {{/upf-table/row}}
@@ -66,7 +66,7 @@
   <tbody>
     {{#if isLoading}}
       <tr>
-        <td colspan={{_fullSizeColumnColspan}} class='upf-align--center'>
+        <td colspan={{_fullSizeColumnColspan}} class="upf-align--center">
           {{loading-state}}
         </td>
       </tr>
@@ -74,11 +74,11 @@
       {{#if contentChanging}}
         {{#each _contentPlaceholder}}
           {{#upf-table/row}}
-            <td valign='middle' class="upf-datatable__column upf-datatable__column--locked">
-              <div class='skeleton-placeholder'></div>
+            <td valign="middle" class="upf-datatable__column upf-datatable__column--locked">
+              <div class="skeleton-placeholder"></div>
             </td>
-            <td valign='middle' class="upf-datatable__column upf-datatable__column--locked">
-              <div class='skeleton-placeholder'></div>
+            <td valign="middle" class="upf-datatable__column upf-datatable__column--locked">
+              <div class="skeleton-placeholder"></div>
             </td>
           {{/upf-table/row}}
         {{/each}}
@@ -88,7 +88,7 @@
                            hasPolymorphicColumns=hasPolymorphicColumns
                            onRowClickCallback=onRowClickCallback}}
             {{#if hasSelection}}
-              <td class='upf-datatable__column upf-datatable__column--uneditable'>
+              <td class="upf-datatable__column upf-datatable__column--uneditable">
                 {{upf-checkbox value=item.selected}}
               </td>
             {{/if}}
@@ -100,9 +100,9 @@
                   {{#if column.component}}
                     {{component column.component item=item column=column}}
                   {{else}}
-                    {{#if (eq column.helper 'money')}}
+                    {{#if (eq column.helper "money")}}
                       {{format-money (get item column.property) (get item column.currency)}}
-                    {{else if (eq column.helper 'numeric')}}
+                    {{else if (eq column.helper "numeric")}}
                       {{format-numeric (get item column.property)}}
                     {{else}}
                       {{get item column.property}}
@@ -114,7 +114,7 @@
           {{/upf-table/row}}
         {{else}}
           <tr>
-            <td colspan={{_fullSizeColumnColspan}} class='upf-align--center'>
+            <td colspan={{_fullSizeColumnColspan}} class="upf-align--center">
               {{yield}}
             </td>
           </tr>
