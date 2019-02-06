@@ -24,6 +24,11 @@ There are two options for installing and implementing/using our components:
 
 #### Ember JS
 
+Requirements:
+
+* Ember JS: ^3.x
+* ember-cli-less
+
 The best way to use the components is through our Ember JS addon,
  **[oss-components](https://github.com/upfluence/oss-components)**. You can install it
 via `Yarn` or `npm`:
@@ -32,7 +37,31 @@ via `Yarn` or `npm`:
 yarn add upfluence-oss-components
 ```
 
-#### LESS CSS
+In your project's `ember-cli-build.js`;
+```
+module.exports = function(defaults) {
+  let app = new EmberApp(defaults, {
+    lessOptions: {
+      paths: [
+        'node_modules/upfluence-oss-components/app/styles'
+        ...
+      ]
+    }
+  }
+};
+```
+
+Finally, add the following line into your project's `app/styles/app.less` in
+order to import the OSS in your project:
+```
+@import 'oss-components';
+```
+
+NOTE: The package include Bootstrap (^3.3.7) and Font-Awesome (^4.7.0), so you
+may need to remove them from your project if you are using the same versions. If
+not, you are already good to go.
+
+#### Standalone package (with LESS preprocessor)
 
 If you don't want to use Ember JS or if you are working on a standalone project that only
 requires OSS's CSS, you can build it from our **[LESS repository](https://github.com/upfluence/oss)**
