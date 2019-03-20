@@ -64,7 +64,20 @@ not, you are already good to go.
 #### Standalone package (with LESS preprocessor)
 
 If you don't want to use Ember JS or if you are working on a standalone project that only
-requires OSS's CSS, you can build it from our **[LESS repository](https://github.com/upfluence/oss)**
+requires OSS's CSS, you can build it from our **[LESS repository](https://github.com/upfluence/oss)**.
+
+Required:
+
+* Install the LESS preprocessor using `npm install -g less`
+
+Steps to build OSS:
+1. Clone the repository using `git clone git@github.com:upfluence/oss.git`;
+2. Move to the repository's folder (`cd oss`);
+3. Install the dependencies by running `yarn`;
+4. Move to the `less` folder (`cd less`);
+5. `lessc upfluence-oss.less -x --include-path=../node_modules/bootstrap/less > upfluence-oss.css`
+6. The `upfluence-oss.css` file now contains all of OSS along with its dependencies. Hooray!
+
 */
 module.exports = {
   name: 'oss-components',
