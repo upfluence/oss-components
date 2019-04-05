@@ -1,4 +1,4 @@
-<button {{action "expandOrErase" preventDefault=true}} class="upf-btn upf-btn--default expanding-search__submit">
+<button {{action "expandOrErase" bubbles=false}} class="upf-btn upf-btn--default expanding-search__submit">
   {{#if expandedSearch}}
     <i class="fa fa-close"></i>
   {{else}}

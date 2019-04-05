@@ -33,7 +33,7 @@ export default Component.extend({
     let clickedColumnIsUneditable = $(e.target).parents(
       'td.upf-datatable__column.upf-datatable__column--uneditable'
     ).length !== 0;
-    if (this.get('onRowClickCallback') && !clickedColumnIsUneditable) {
+    if (this.onRowClick && !clickedColumnIsUneditable) {
       this.send('handleRowClickCallback');
     }
   },
@@ -42,8 +42,8 @@ export default Component.extend({
     handleRowClickCallback() {
       this.sendAction(
         'action',
-        this.get('onRowClickCallback'),
-        this.get('ref')
+        this.onRowClick,
+        this.ref
       );
     }
   }
