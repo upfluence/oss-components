@@ -67,7 +67,7 @@ export default Component.extend({
   }),
 
   _bubbleSearch: function() {
-    this.get('_targetObject').send('performSearch', this.get('_searchQuery'));
+    this.performSearch(this.get('_searchQuery'));
   },
 
   _searchQueryObserver: observer('_searchQuery', function() {
@@ -79,11 +79,8 @@ export default Component.extend({
       this.toggleProperty('displayedColumnsPanel');
     },
 
-    callOnRowClickCallback: function(action, record) {
-      this.get('_targetObject').send(
-        action,
-        record
-      );
+    callOnRowClickCallback(action, record) {
+      this.onRowClick(record);
     },
 
     didPageChange(page) {

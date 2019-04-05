@@ -86,7 +86,7 @@
         {{#each collection as |item index|}}
           {{#upf-table/row ref=item action='callOnRowClickCallback'
                            hasPolymorphicColumns=hasPolymorphicColumns
-                           onRowClickCallback=onRowClickCallback}}
+                           onRowClick=onRowClick}}
             {{#if hasSelection}}
               <td class="upf-datatable__column upf-datatable__column--uneditable">
                 {{upf-checkbox value=item.selected}}
