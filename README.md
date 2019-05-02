@@ -5,6 +5,14 @@ components for usage in our projects.
 
 [Short description of the addon.]
 
+
+Compatibility
+------------------------------------------------------------------------------
+
+* Ember.js v2.18 or above
+* Ember CLI v2.13 or above
+
+
 Installation
 ------------------------------------------------------------------------------
 
@@ -48,11 +56,11 @@ lessOptions: {
 }
 ```
 * Enable the `ember-cli-ifa`, in the `config/environment.js` file
- 
+
 ```
 module.exports = function(environment) {
   var ENV = {
-    ...,    
+    ...,
     ifa: {
       enabled: true
     },
@@ -64,18 +72,10 @@ module.exports = function(environment) {
 ```
 
 * And finally, import the OSS framework in your `app/styles/app.less` file
- 
+
 ```
 @import 'bootstrap';
 @import 'upfluence-oss';
 @import 'upf-utils';
 ...
 ```
-
-
-### Deploying
-
-A simple `ember deploy production --verbose` will do the trick.
-
-PS: Do not forget to set the env variables accordingly (See
-`config/deploy.js` for details about needed variables).
