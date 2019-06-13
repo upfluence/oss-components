@@ -11,10 +11,7 @@ export default Component.extend({
   }),
 
   isChecked: computed('value', 'currentValue', 'disabled', function() {
-    if (!this.disabled) {
-      return this.get('value') === this.get('currentValue');
-    }
-    return false;
+      return !this.disabled && this.get('value') === this.get('currentValue');
   }),
 
   click() {
