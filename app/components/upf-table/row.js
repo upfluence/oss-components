@@ -1,1 +1,1 @@
-export { default } from 'oss-components/components/upf-table/row';
+export { default } from 'oss-components/components/upf-table/row';

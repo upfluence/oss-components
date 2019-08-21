@@ -1,1 +1,1 @@
-export { default } from 'oss-components/components/upf-stat';
+export { default } from 'oss-components/components/upf-stat';

@@ -1,1 +1,1 @@
-export { default } from 'oss-components/components/upf-table/column';
+export { default } from 'oss-components/components/upf-table/column';

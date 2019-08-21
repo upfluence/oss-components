@@ -1,1 +1,1 @@
-export { default } from 'oss-components/components/upf-checkbox';
+export { default } from 'oss-components/components/upf-checkbox';

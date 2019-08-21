@@ -12,7 +12,7 @@ var _formatMoney = function(amount, currency) {
   if (amount > 0) {
     return _getFormatter(currency).format(parseFloat(amount));
   } else {
-    return '—';
+    return '--';
   }
 };
 

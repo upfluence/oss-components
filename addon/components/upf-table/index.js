@@ -67,7 +67,7 @@ export default Component.extend({
   }),
 
   _bubbleSearch: function() {
-    if (this.performSearch) {
+    if (this.performSearch) {
       this.performSearch(this.get('_searchQuery'));
     }
   },

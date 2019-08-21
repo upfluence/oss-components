@@ -1,1 +1,1 @@
-export { default } from 'oss-components/components/upf-card';
+export { default } from 'oss-components/components/upf-card';

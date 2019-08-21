@@ -12,7 +12,7 @@ export default Component.extend({
   attributeBindings: ['width'],
   width: alias('column.width'),
 
-  sort: computed('column.sorted', 'column.direction', function() {
+  sort: computed('column.{sorted,direction}', function() {
     if (!this.get('column.sorted')) {
       return 'upf-datatable__column--unsorted';
     }

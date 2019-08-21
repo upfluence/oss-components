@@ -12,7 +12,7 @@ var _formatMoney = function(amount, currency) {
   if (amount > 0) {
     return _getFormatter(currency).format(parseFloat(amount));
   } else {
-    return '—';
+    return '--';
   }
 };
 
@@ -27,7 +27,7 @@ export function formatNumericHelper(params) {
   if(number > 0) {
     return formatter.format(number);
   } else {
-    return '—';
+    return '--';
   }
 }
 

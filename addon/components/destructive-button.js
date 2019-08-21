@@ -7,7 +7,7 @@ import Ember from 'ember';
 
 const {
   TargetActionSupport
-} = Ember;
+} = Ember;
 
 export default Component.extend(TargetActionSupport, {
   tagName: 'button',
