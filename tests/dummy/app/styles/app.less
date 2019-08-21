@@ -1,1 +1,25 @@
+@import 'oss-components';
 
+.table-v2 {
+  display: flex;
+  flex-direction: row;
+}
+
+.table-v2__column {
+  margin-left: @spacing-xxx-sm;
+  border-left: 1px solid @upf-gray;
+
+  &:first-child {
+    border-left: none;
+  }
+}
+
+.table-v2__body {
+  display: flex;
+  flex-direction: column;
+}
+
+.table-v2__cell {
+  padding: @spacing-xxx-sm;
+  vertical-align: middle;
+}

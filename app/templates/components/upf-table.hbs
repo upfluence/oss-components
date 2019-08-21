@@ -43,94 +43,18 @@
   {{/each}}
 </div>
 
-<table class="upf-datatable__table">
-  <thead>
-    {{#upf-table/row isHeaderRow=true}}
-      {{#if hasSelection}}
-        {{#unless contentChanging}}
-          <th width="45px" class="upf-datatable__column upf-datatable__column--unsortable">
-            {{upf-checkbox value=allRowsSelected}}
-          </th>
-        {{/unless}}
-      {{/if}}
+<div class="table-v2">
+  {{#each _columns as |column|}}
+    <div class="table-v2__column">
+      <div class="table-v2__cell table-v2__cell--header">
+        {{column.title}}
+      </div>
 
-      {{#each _columns as |column|}}
-        {{#unless (eq column.visible false)}}
-          {{upf-table/header_cell column=column
-                                  click=(action "onClickHeader" column)}}
-        {{/unless}}
-      {{/each}}
-    {{/upf-table/row}}
-  </thead>
-
-  <tbody>
-    {{#if isLoading}}
-      <tr>
-        <td colspan={{_fullSizeColumnColspan}} class="upf-align--center">
-          {{loading-state}}
-        </td>
-      </tr>
-    {{else}}
-      {{#if contentChanging}}
-        {{#each _contentPlaceholder}}
-          {{#upf-table/row}}
-            <td valign="middle" class="upf-datatable__column upf-datatable__column--locked">
-              <div class="skeleton-placeholder"></div>
-            </td>
-            <td valign="middle" class="upf-datatable__column upf-datatable__column--locked">
-              <div class="skeleton-placeholder"></div>
-            </td>
-          {{/upf-table/row}}
+      <div class="table-v2__body">
+        {{#each collection as |item|}}
+          <div class="table-v2__cell">{{get item column.property}}</div>
         {{/each}}
-      {{else}}
-        {{#each collection as |item index|}}
-          {{#upf-table/row ref=item action='callOnRowClickCallback'
-                           hasPolymorphicColumns=hasPolymorphicColumns
-                           onRowClick=onRowClick}}
-            {{#if hasSelection}}
-              <td class="upf-datatable__column upf-datatable__column--uneditable">
-                {{upf-checkbox value=item.selected}}
-              </td>
-            {{/if}}
-
-            {{#each _columns as |column|}}
-              {{#unless (eq column.visible false)}}
-                {{#upf-table/column ref=column editable=column.editable
-                                    classNames=column.additionalClasses}}
-                  {{#if column.component}}
-                    {{component column.component item=item column=column}}
-                  {{else}}
-                    {{#if (eq column.helper "money")}}
-                      {{format-money (get item column.property) (get item column.currency)}}
-                    {{else if (eq column.helper "numeric")}}
-                      {{format-numeric (get item column.property)}}
-                    {{else}}
-                      {{get item column.property}}
-                    {{/if}}
-                  {{/if}}
-                {{/upf-table/column}}
-              {{/unless}}
-            {{/each}}
-          {{/upf-table/row}}
-        {{else}}
-          <tr>
-            <td colspan={{_fullSizeColumnColspan}} class="upf-align--center">
-              {{yield}}
-            </td>
-          </tr>
-        {{/each}}
-
-        {{#if (and hasPagination isCompact)}}
-          <tr>
-            <td colspan={{_fullSizeColumnColspan}}
-                class="upf-align--right padding-sm">
-              {{upf-table/pagination currentPage=currentPage perPage=perPage
-                                     totalPages=totalPages itemTotal=itemTotal
-                                     itemCount=itemCount itemName=itemName}}
-            </td>
-          </tr>
-        {{/if}}
-      {{/if}}
-    {{/if}}
-  </tbody>
-</table>
+      </div>
+    </div>
+  {{/each}}
+</div>

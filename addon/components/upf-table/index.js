@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import EmberObject, { observer, computed } from '@ember/object';
 import { filterBy } from '@ember/object/computed';
 import { run } from '@ember/runloop';
+import { isEmpty } from '@ember/utils';
 
 export default Component.extend({
   classNames: ['upf-table__container'],
@@ -75,6 +76,12 @@ export default Component.extend({
   _searchQueryObserver: observer('_searchQuery', function() {
     run.debounce(this, this._bubbleSearch, 100);
   }),
+
+  didReceiveAttrs() {
+    if (isEmpty(this.columns)) {
+      throw new Error('[component][upf-table] Missing columns');
+    }
+  },
 
   actions: {
     toggleDisplayedColumnVisibilityPanel() {
