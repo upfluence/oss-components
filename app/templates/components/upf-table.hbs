@@ -16,7 +16,9 @@
     {{/if}}
 
     {{#each _columns as |column|}}
-      {{#sortable-item classNames="table-v2__column" model=column group=group}}
+      {{#sortable-item
+        classNames="table-v2__column" model=column group=group
+        handle=".table-v2__cell--header"}}
         {{#upf-table/cell header=true}}
           {{column.title}}
         {{/upf-table/cell}}
