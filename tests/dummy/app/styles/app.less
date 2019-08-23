@@ -3,14 +3,27 @@
 .table-v2 {
   display: flex;
   flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .table-v2__column {
-  margin-left: @spacing-xxx-sm;
-  border-left: 1px solid @upf-gray;
+  border-left: 1px solid lighten(@upf-gray, 15%);
+  width: 100%;
 
   &:first-child {
     border-left: none;
+  }
+
+  // Animate Columns Drag & Drop
+  &.is-dragging {
+    transition: background .5s;
+    background: red;
+  }
+
+  &.is-dropping {
+    transition: background .5s;
+    background: blue;
   }
 }
 
@@ -20,6 +33,10 @@
 }
 
 .table-v2__cell {
-  padding: @spacing-xxx-sm;
-  vertical-align: middle;
+  align-items: center;
+  border-bottom: 1px solid lighten(@upf-gray, 15%);
+  display: flex;
+  height: 35px;
+  max-height: 35px;
+  padding: @spacing-xx-sm;
 }

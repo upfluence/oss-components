@@ -1,60 +1,16 @@
-<ul class="row upf-datatable__actions-header">
-  {{#if contextualActionsComponent}}
-    {{component contextualActionsComponent collection=collection}}
-  {{/if}}
+{{#sortable-group
+  direction="x" model=_columns onChange=(action "reorderColumns") as |group|}}
+  <div class="table-v2">
+    {{#each _columns as |column|}}
+      {{#sortable-item classNames="table-v2__column" model=column group=group}}
+        {{#upf-table/cell header=true}}
+          {{column.title}}
+        {{/upf-table/cell}}
 
-  <li class="upf-datatable__actions-pull-right">
-    {{#if hasToggleableColumns}}
-      <a {{action "toggleDisplayedColumnVisibilityPanel"}} class="upf-btn upf-btn--default upf-btn--small upf-link--reset">
-        <i class="fa fa-columns"></i> &nbsp;
-        {{#if displayedColumnsPanel}}
-          <i class="fa fa-caret-up"></i>
-        {{else}}
-          <i class="fa fa-caret-down"></i>
-        {{/if}}
-      </a>
-    {{/if}}
-
-    {{#if hasPagination}}
-      {{#unless isCompact}}
-        {{upf-table/pagination currentPage=currentPage perPage=perPage
-                               totalPages=totalPages itemTotal=itemTotal
-                               itemCount=itemCount itemName=itemName}}
-      {{/unless}}
-    {{/if}}
-
-    {{#if hasSearch}}
-      {{expanding-search classNames="margin-left-xx-sm" searchQuery=_searchQuery
-                         placeholder=searchInputPlaceholder small=true}}
-    {{/if}}
-  </li>
-</ul>
-
-<div class="upf-datatable__side-panel
-     {{if displayedColumnsPanel 'upf-datatable__side-panel--visible'}}">
-  {{#each _columns as |column|}}
-    {{#unless column.unhideable}}
-      <div class="margin-bottom-sm">
-        {{#upf-checkbox value=column.visible hasLabel=true}}
-          <span class="text-color-contrast">{{column.title}}</span>
-        {{/upf-checkbox}}
-      </div>
-    {{/unless}}
-  {{/each}}
-</div>
-
-<div class="table-v2">
-  {{#each _columns as |column|}}
-    <div class="table-v2__column">
-      <div class="table-v2__cell table-v2__cell--header">
-        {{column.title}}
-      </div>
-
-      <div class="table-v2__body">
         {{#each collection as |item|}}
-          <div class="table-v2__cell">{{get item column.property}}</div>
+          {{upf-table/cell item=item property=column.property}}
         {{/each}}
-      </div>
-    </div>
-  {{/each}}
-</div>
+      {{/sortable-item}}
+    {{/each}}
+  </div>
+{{/sortable-group}}

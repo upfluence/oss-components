@@ -6,36 +6,38 @@ import { isEmpty } from '@ember/utils';
 
 export default Component.extend({
   classNames: ['upf-table__container'],
-  classNameBindings: ['isCompact:upf-table__container--compact'],
+  //classNameBindings: ['isCompact:upf-table__container--compact'],
 
-  hasSelection: false,
-  hasPagination: false,
-  hasSearch: false,
-  hasPolymorphicColumns: false,
-  hasToggleableColumns: true,
-  isCompact: false,
+  // Rows Selection
+  //hasSelection: false,
+  //allRowsSelected: false,
 
-  allRowsSelected: false,
-  displayedColumnsPanel: false,
-  isLoading: false,
-  contentChanging: false,
-  _contentPlaceholder: new Array(3),
+  //hasPagination: false,
+  //hasSearch: false,
+  //hasPolymorphicColumns: false,
+  //hasToggleableColumns: true,
+  //isCompact: false,
 
-  _searchQuery: null,
-  searchInputPlaceholder: 'Search...',
+  //displayedColumnsPanel: false,
+  //isLoading: false,
+  //contentChanging: false,
+  //_contentPlaceholder: new Array(3),
 
-  currentPage: 1,
-  totalPages: 1,
-  perPage: 1,
-  itemTotal: 0,
-  itemCount: 0,
-  itemName: '',
+  //_searchQuery: null,
+  //searchInputPlaceholder: 'Search...',
 
-  init() {
-    this._super();
+/*  currentPage: 1,*/
+  //totalPages: 1,
+  //perPage: 1,
+  //itemTotal: 0,
+  //itemCount: 0,
+  /*itemName: '',*/
 
-    this.set('_searchQuery', this.get('searchQuery'));
-  },
+  //init() {
+    //this._super();
+
+    //this.set('_searchQuery', this.get('searchQuery'));
+  /*},*/
 
   _columns: computed('columns', function() {
     return this.get('columns').map((column) => {
@@ -48,34 +50,34 @@ export default Component.extend({
     });
   }),
 
-  _initiallyDisplayedColumns: filterBy('_columns', 'visible'),
-  _fullSizeColumnColspan: computed('_initiallyDisplayedColumns', function() {
-    if (this.get('hasSelection')) {
-      return this.get('_initiallyDisplayedColumns').length + 1;
-    }
+/*  _initiallyDisplayedColumns: filterBy('_columns', 'visible'),*/
+  //_fullSizeColumnColspan: computed('_initiallyDisplayedColumns', function() {
+    //if (this.get('hasSelection')) {
+      //return this.get('_initiallyDisplayedColumns').length + 1;
+    //}
 
-    return this.get('_initiallyDisplayedColumns').length;
-  }),
+    //return this.get('_initiallyDisplayedColumns').length;
+  /*}),*/
 
-  _selectAllObserver: observer('allRowsSelected', function() {
-    this.get('collection').map((item) => {
-      if (this.get('allRowsSelected')) {
-        item.set('selected', true);
-      } else {
-        item.set('selected', false);
-      }
-    });
-  }),
+/*  _selectAllObserver: observer('allRowsSelected', function() {*/
+    //this.get('collection').forEach((item) => {
+      //if (this.get('allRowsSelected')) {
+        //item.set('selected', true);
+      //} else {
+        //item.set('selected', false);
+      //}
+    //});
+  /*}),*/
 
-  _bubbleSearch: function() {
-    if (this.performSearch) {
-      this.performSearch(this.get('_searchQuery'));
-    }
-  },
+/*  _bubbleSearch: function() {*/
+    //if (this.performSearch) {
+      //this.performSearch(this.get('_searchQuery'));
+    //}
+  //},
 
-  _searchQueryObserver: observer('_searchQuery', function() {
-    run.debounce(this, this._bubbleSearch, 100);
-  }),
+  //_searchQueryObserver: observer('_searchQuery', function() {
+    //run.debounce(this, this._bubbleSearch, 100);
+  //}),
 
   didReceiveAttrs() {
     if (isEmpty(this.columns)) {
@@ -84,42 +86,47 @@ export default Component.extend({
   },
 
   actions: {
-    toggleDisplayedColumnVisibilityPanel() {
-      this.toggleProperty('displayedColumnsPanel');
+    reorderColumns(_, itemModels) {
+      this.set('columns', itemModels);
+      console.log(itemModels);
+      window.sessionStorage.setItem('columns', itemModels.map((x) => x.property));
     },
+/*    toggleDisplayedColumnVisibilityPanel() {*/
+      //this.toggleProperty('displayedColumnsPanel');
+    //},
 
-    callOnRowClickCallback(action, record) {
-      this.onRowClick(record);
-    },
+    //callOnRowClickCallback(action, record) {
+      //this.onRowClick(record);
+    //},
 
-    didPageChange(page) {
-      this.sendAction('didPageChange', page);
-    },
+    //didPageChange(page) {
+      //this.sendAction('didPageChange', page);
+    /*},*/
 
-    onClickHeader(column) {
-      if (!column.get('sortKey')) {
-        return;
-      }
+    //onClickHeader(column) {
+      //if (!column.get('sortKey')) {
+        //return;
+      //}
 
-      if (!column.get('sorted')) {
-        this.get('_columns').forEach((c) => c.set('sorted', false));
-        // default direction
-        column.set('sorted', true);
-        column.set('direction', 'desc');
-      } else {
-        let direction = column.get('direction') === 'desc' ? 'asc' : 'desc';
-        column.set('direction', direction);
-      }
+      //if (!column.get('sorted')) {
+        //this.get('_columns').forEach((c) => c.set('sorted', false));
+        //// default direction
+        //column.set('sorted', true);
+        //column.set('direction', 'desc');
+      //} else {
+        //let direction = column.get('direction') === 'desc' ? 'asc' : 'desc';
+        //column.set('direction', direction);
+      //}
 
-      this.sendAction('didSortColumn', column);
-    },
+      //this.sendAction('didSortColumn', column);
+    /*},*/
 
-    triggerObjectCreation() {
-      this.triggerAction({ action: 'handleObjectCreation'});
-    },
+    //triggerObjectCreation() {
+      //this.triggerAction({ action: 'handleObjectCreation'});
+    //},
 
-    setContentChanging(contentChanging) {
-      this.set('contentChanging', contentChanging);
-    }
+    //setContentChanging(contentChanging) {
+      //this.set('contentChanging', contentChanging);
+    //}
   }
 });
