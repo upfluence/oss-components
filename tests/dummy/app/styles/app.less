@@ -9,7 +9,9 @@
 
 .table-v2__column {
   border-left: 1px solid lighten(@upf-gray, 15%);
+  opacity: 1;
   width: 100%;
+  transition: opacity .5s;
 
   &:first-child {
     border-left: none;
@@ -17,13 +19,11 @@
 
   // Animate Columns Drag & Drop
   &.is-dragging {
-    transition: background .5s;
-    background: red;
+    opacity: .75;
   }
 
   &.is-dropping {
-    transition: background .5s;
-    background: blue;
+    opacity: 1;
   }
 }
 
