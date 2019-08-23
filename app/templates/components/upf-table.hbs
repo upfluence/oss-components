@@ -1,6 +1,20 @@
 {{#sortable-group
   direction="x" model=_columns onChange=(action "reorderColumns") as |group|}}
   <div class="table-v2">
+    {{#if hasSelection}}
+      <div class="table-v2__column table-v2__column--selection">
+        <div class="table-v2__cell table-v2__cell--header">
+          {{upf-checkbox value=allRowsSelected}}
+        </div>
+
+        {{#each collection as |item|}}
+          <div class="table-v2__cell">
+            {{upf-checkbox value=item.selected}}
+          </div>
+        {{/each}}
+      </div>
+    {{/if}}
+
     {{#each _columns as |column|}}
       {{#sortable-item classNames="table-v2__column" model=column group=group}}
         {{#upf-table/cell header=true}}

@@ -9,8 +9,8 @@ export default Component.extend({
   //classNameBindings: ['isCompact:upf-table__container--compact'],
 
   // Rows Selection
-  //hasSelection: false,
-  //allRowsSelected: false,
+  hasSelection: false,
+  allRowsSelected: false,
 
   //hasPagination: false,
   //hasSearch: false,
@@ -59,15 +59,15 @@ export default Component.extend({
     //return this.get('_initiallyDisplayedColumns').length;
   /*}),*/
 
-/*  _selectAllObserver: observer('allRowsSelected', function() {*/
-    //this.get('collection').forEach((item) => {
-      //if (this.get('allRowsSelected')) {
-        //item.set('selected', true);
-      //} else {
-        //item.set('selected', false);
-      //}
-    //});
-  /*}),*/
+  _selectAllObserver: observer('allRowsSelected', function() {
+    this.get('collection').forEach((item) => {
+      if (this.get('allRowsSelected')) {
+        item.set('selected', true);
+      } else {
+        item.set('selected', false);
+      }
+    });
+  }),
 
 /*  _bubbleSearch: function() {*/
     //if (this.performSearch) {

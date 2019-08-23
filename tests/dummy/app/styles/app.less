@@ -27,6 +27,15 @@
   }
 }
 
+.table-v2__column--selection {
+  width: 40px;
+
+  .table-v2__cell {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
 .table-v2__body {
   display: flex;
   flex-direction: column;
@@ -39,4 +48,8 @@
   height: 35px;
   max-height: 35px;
   padding: @spacing-xx-sm;
+}
+
+.table-v2__cell--selected {
+  background-color: @upf-gray-light;
 }
