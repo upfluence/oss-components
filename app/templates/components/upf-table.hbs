@@ -21,6 +21,11 @@
         handle=".table-v2__cell--header"}}
         {{#upf-table/cell header=true}}
           {{column.title}}
+
+          <div class="icon-commands">
+            <i class="text-size-6 fa fa-filter"></i>
+            <i class="text-size-6 fa fa-bars fa-rotate-90"></i>
+          </div>
         {{/upf-table/cell}}
 
         {{#each collection as |item|}}
