@@ -18,5 +18,11 @@ export default Controller.extend({
       title: 'Bulk Emails',
       property: 'bulkEmailsCount'
     }
-  ]
+  ],
+
+  actions: {
+    columnsChanged(layout) {
+      console.log(layout.map((x) => x.property));
+    }
+  }
 });

@@ -71,6 +71,13 @@ export default Component.extend({
     });
   }),
 
+  _columnsChanged: observer('_columns', function() {
+    if (this.columnsChanged) {
+      this.columnsChanged(this._columns);
+    }
+  }),
+
+
 /*  _bubbleSearch: function() {*/
     //if (this.performSearch) {
       //this.performSearch(this.get('_searchQuery'));
