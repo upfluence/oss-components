@@ -1,28 +1,31 @@
 import Controller from '@ember/controller';
+import { inject as service } from '@ember/service';
 
 export default Controller.extend({
-  columns: [
-    {
-      title: 'Plan Name',
-      property: 'name'
-    },
-    {
-      title: 'Plan Price',
-      property: 'price'
-    },
-    {
-      title: 'Users Count',
-      property: 'usersCount'
-    },
-    {
-      title: 'Bulk Emails',
-      property: 'bulkEmailsCount'
-    }
-  ],
+  plansFetcher: service(),
+
+  collection: [],
+  columns: [],
+
+  init() {
+    this._super();
+    this._fetchPlans();
+  },
+
+  _fetchPlans(columnsLayout) {
+    this.set('refreshing', true);
+
+    this.plansFetcher.fetch().then((data) => {
+      this.set('collection', data.items);
+      this.set('columns', data.meta.columns);
+    }).finally(() => {
+      this.set('refreshing', false);
+    });
+  },
 
   actions: {
     columnsChanged(layout) {
-      console.log(layout.map((x) => x.property));
+      this.plansFetcher.fetch(layout);
     }
   }
 });
