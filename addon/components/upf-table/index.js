@@ -41,12 +41,14 @@ export default Component.extend({
 
   _columns: computed('columns', function() {
     return this.get('columns').map((column) => {
-      column.visible = column.visible !== false;
-      column.sorted = column.sorted === true;
-      column.editable = column.editable !== false;
-      column.unhideable = column.unhideable === true;
+      column = EmberObject.create(column);
 
-      return EmberObject.create(column);
+      column.set('visible', column.visible !== false);
+      column.set('sorted', column.sorted === true);
+      column.set('editable', column.editable !== false);
+      column.set('unhideable', column.unhideable === true);
+
+      return column;
     });
   }),
 
