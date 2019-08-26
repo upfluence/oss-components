@@ -88,9 +88,7 @@ export default Component.extend({
   actions: {
     reorderColumns(_, itemModels) {
       this.set('columns', itemModels);
-      console.log(itemModels);
-      window.sessionStorage.setItem('columns', itemModels.map((x) => x.property));
-    },
+    }
 /*    toggleDisplayedColumnVisibilityPanel() {*/
       //this.toggleProperty('displayedColumnsPanel');
     //},

@@ -16,22 +16,24 @@
     {{/if}}
 
     {{#each _columns as |column|}}
-      {{#sortable-item
-        classNames="table-v2__column" model=column group=group
-        handle=".table-v2__cell--header"}}
-        {{#upf-table/cell header=true}}
-          {{column.title}}
+      {{#if column.visible}}
+        {{#sortable-item
+          classNames="table-v2__column" model=column group=group
+          handle=".table-v2__cell--header"}}
+          {{#upf-table/cell header=true}}
+            {{column.title}}
 
-          <div class="icon-commands">
-            <i class="text-size-6 fa fa-filter"></i>
-            <i class="text-size-6 fa fa-bars fa-rotate-90"></i>
-          </div>
-        {{/upf-table/cell}}
+            <div class="icon-commands">
+              <i class="text-size-6 fa fa-filter"></i>
+              <i class="text-size-6 fa fa-bars fa-rotate-90"></i>
+            </div>
+          {{/upf-table/cell}}
 
-        {{#each collection as |item|}}
-          {{upf-table/cell item=item property=column.property}}
-        {{/each}}
-      {{/sortable-item}}
+          {{#each collection as |item|}}
+            {{upf-table/cell item=item property=column.property}}
+          {{/each}}
+        {{/sortable-item}}
+      {{/if}}
     {{/each}}
   </div>
 {{/sortable-group}}
