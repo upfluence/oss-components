@@ -1,10 +1,27 @@
+<div class="table-v2__actions">
+  <button class="upf-btn upf-btn--default upf-btn--small" {{action "openAvailableColumns"}}>
+    <i class="fa fa-plus"></i> &nbsp; Field
+  </button>
+
+  {{#if _availableColumnsPanel}}
+    <ul class="table-v2__available-columns">
+      {{#each _orderedColumns as |column|}}
+        <li {{action "toggleColumnVisibility" column}}
+            class={{if column.visible "visible"}}>
+          {{column.title}}
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+</div>
+
 {{#sortable-group
   direction="x" model=_columns onChange=(action "reorderColumns") as |group|}}
   <div class="table-v2">
     {{#if hasSelection}}
       <div class="table-v2__column table-v2__column--selection">
         <div class="table-v2__cell table-v2__cell--header">
-          {{upf-checkbox value=allRowsSelected}}
+          {{upf-checkbox value=_allRowsSelected}}
         </div>
 
         {{#each collection as |item|}}

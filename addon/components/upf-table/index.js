@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import EmberObject, { observer, computed } from '@ember/object';
-import { filterBy } from '@ember/object/computed';
+import { filterBy, sort } from '@ember/object/computed';
 import { run } from '@ember/runloop';
 import { isEmpty } from '@ember/utils';
 
@@ -10,7 +10,7 @@ export default Component.extend({
 
   // Rows Selection
   hasSelection: false,
-  allRowsSelected: false,
+  _allRowsSelected: false,
 
   //hasPagination: false,
   //hasSearch: false,
@@ -18,7 +18,7 @@ export default Component.extend({
   //hasToggleableColumns: true,
   //isCompact: false,
 
-  //displayedColumnsPanel: false,
+  _availableColumnsPanel: false,
   //isLoading: false,
   //contentChanging: false,
   //_contentPlaceholder: new Array(3),
@@ -52,6 +52,9 @@ export default Component.extend({
     });
   }),
 
+  _columnsSortingOrder: ['title'],
+  _orderedColumns: sort('_columns', '_columnsSortingOrder'),
+
 /*  _initiallyDisplayedColumns: filterBy('_columns', 'visible'),*/
   //_fullSizeColumnColspan: computed('_initiallyDisplayedColumns', function() {
     //if (this.get('hasSelection')) {
@@ -61,9 +64,9 @@ export default Component.extend({
     //return this.get('_initiallyDisplayedColumns').length;
   /*}),*/
 
-  _selectAllObserver: observer('allRowsSelected', function() {
+  _selectAllObserver: observer('_allRowsSelected', function() {
     this.get('collection').forEach((item) => {
-      if (this.get('allRowsSelected')) {
+      if (this.get('_allRowsSelected')) {
         item.set('selected', true);
       } else {
         item.set('selected', false);
@@ -71,12 +74,14 @@ export default Component.extend({
     });
   }),
 
-  _columnsChanged: observer('_columns', function() {
-    if (this.columnsChanged) {
-      this.columnsChanged(this._columns);
+  _columnsChanged: observer(
+    '_columns', '_columns.@each.visible',
+    function() {
+      if (this.columnsChanged) {
+        this.columnsChanged(this._columns);
+      }
     }
-  }),
-
+  ),
 
 /*  _bubbleSearch: function() {*/
     //if (this.performSearch) {
@@ -95,12 +100,17 @@ export default Component.extend({
   },
 
   actions: {
-    reorderColumns(_, itemModels) {
-      this.set('columns', itemModels);
+    reorderColumns(x, itemModels, y) {
+      this.set('columns', itemModels.concat(x.filter(x => !x.visible)));
+    },
+
+    openAvailableColumns() {
+      this.toggleProperty('_availableColumnsPanel');
+    },
+
+    toggleColumnVisibility(column) {
+      column.toggleProperty('visible');
     }
-/*    toggleDisplayedColumnVisibilityPanel() {*/
-      //this.toggleProperty('displayedColumnsPanel');
-    //},
 
     //callOnRowClickCallback(action, record) {
       //this.onRowClick(record);
