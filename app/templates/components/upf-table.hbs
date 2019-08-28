@@ -47,7 +47,8 @@
           {{/upf-table/cell}}
 
           {{#each collection as |item|}}
-            {{upf-table/cell item=item property=column.property}}
+            {{upf-table/cell
+              item=item column=column}}
           {{/each}}
         {{/sortable-item}}
       {{/if}}

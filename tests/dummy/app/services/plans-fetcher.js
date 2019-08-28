@@ -6,6 +6,7 @@ const MOCK_DATA = A([
   EmberObject.create({
     name: 'Bronze',
     price: '99',
+    currency: 'EUR',
     usersCount: 1,
     bulkEmailsCount: 0,
     selected: false
@@ -13,6 +14,7 @@ const MOCK_DATA = A([
   EmberObject.create({
     name: 'Silver',
     price: '195',
+    currency: 'EUR',
     usersCount: 1,
     bulkEmailsCount: 100,
     selected: false
@@ -20,6 +22,7 @@ const MOCK_DATA = A([
   EmberObject.create({
     name: 'Gold',
     price: '495',
+    currency: 'EUR',
     usersCount: 1,
     bulkEmailsCount: 300,
     selected: false
@@ -36,19 +39,24 @@ const MOCK_DATA = A([
 const DEFAULT_COLUMNS = [
   {
     title: 'Plan Name',
-    property: 'name'
+    property: 'name',
+    type: 'text'
   },
   {
     title: 'Plan Price',
-    property: 'price'
+    property: 'price',
+    type: 'money',
+    currency_key: 'currency'
   },
   {
     title: 'Users Count',
-    property: 'usersCount'
+    property: 'usersCount',
+    type: 'numeric'
   },
   {
     title: 'Bulk Emails',
-    property: 'bulkEmailsCount'
+    property: 'bulkEmailsCount',
+    type: 'numeric'
   }
 ];
 

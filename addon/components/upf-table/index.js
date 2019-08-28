@@ -48,6 +48,7 @@ export default Component.extend({
       column.set('sorted', column.sorted === true);
       column.set('editable', column.editable !== false);
       column.set('unhideable', column.unhideable === true);
+      column.set('type', column.type || 'text');
 
       return column;
     });
