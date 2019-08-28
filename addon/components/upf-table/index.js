@@ -1,5 +1,5 @@
 import Component from '@ember/component';
-import EmberObject, { observer, computed } from '@ember/object';
+import EmberObject, { computed, observer } from '@ember/object';
 import { filterBy, sort } from '@ember/object/computed';
 import { run } from '@ember/runloop';
 import { isEmpty } from '@ember/utils';
@@ -10,6 +10,7 @@ export default Component.extend({
 
   // Rows Selection
   hasSelection: false,
+
   _allRowsSelected: false,
 
   //hasPagination: false,
@@ -55,15 +56,6 @@ export default Component.extend({
   _columnsSortingOrder: ['title'],
   _orderedColumns: sort('_columns', '_columnsSortingOrder'),
 
-/*  _initiallyDisplayedColumns: filterBy('_columns', 'visible'),*/
-  //_fullSizeColumnColspan: computed('_initiallyDisplayedColumns', function() {
-    //if (this.get('hasSelection')) {
-      //return this.get('_initiallyDisplayedColumns').length + 1;
-    //}
-
-    //return this.get('_initiallyDisplayedColumns').length;
-  /*}),*/
-
   _selectAllObserver: observer('_allRowsSelected', function() {
     this.get('collection').forEach((item) => {
       if (this.get('_allRowsSelected')) {
@@ -101,7 +93,9 @@ export default Component.extend({
 
   actions: {
     reorderColumns(x, itemModels, y) {
-      this.set('columns', itemModels.concat(x.filter(x => !x.visible)));
+      let _cs = itemModels.concat(x.filter(x => !x.visible))
+      _cs.forEach((c, i) => c.set('order', i))
+      this.set('columns', _cs);
     },
 
     openAvailableColumns() {
