@@ -1,57 +1,91 @@
-<div class="table-v2__actions">
-  <button class="upf-btn upf-btn--default upf-btn--small" {{action "openAvailableColumns"}}>
-    <i class="fa fa-plus"></i> &nbsp; Field
-  </button>
+<div class="upf-hypertable-container">
+  <div class="upf-hypertable__upper-header">
+    <button class="upf-btn upf-btn--default upf-btn--small" {{action "openAvailableColumns"}}>
+      <i class="fa fa-plus"></i> &nbsp; Field
+    </button>
 
-  {{#if _availableColumnsPanel}}
-    <ul class="table-v2__available-columns">
-      {{#each _orderedColumns as |column|}}
-        <li {{action "toggleColumnVisibility" column}}
-            class={{if column.visible "visible"}}>
-          {{column.title}}
-        </li>
-      {{/each}}
-    </ul>
-  {{/if}}
-</div>
-
-{{#sortable-group
-  direction="x" model=_columns onChange=(action "reorderColumns") as |group|}}
-  <div class="table-v2">
-    {{#if hasSelection}}
-      <div class="table-v2__column table-v2__column--selection">
-        <div class="table-v2__cell table-v2__cell--header">
-          {{upf-checkbox value=_allRowsSelected}}
+    {{#if _availableColumnsPanel}}
+      <div class="available-columns">
+        <div class="available-columns__categories">
+          <div class="field-category">
+            <div>All Fields</div>
+            <div><i class="fa fa-caret-right"></i></div>
+          </div>
         </div>
 
-        {{#each collection as |item|}}
-          <div class="table-v2__cell">
-            {{upf-checkbox value=item.selected}}
-          </div>
-        {{/each}}
+        <div class="available-columns__fields">
+          {{#each _orderedColumns as |column|}}
+            <div {{action "toggleColumnVisibility" column}}
+                class="field {{if column.visible 'visible'}}">
+              {{column.title}}
+            </div>
+          {{/each}}
+        </div>
       </div>
     {{/if}}
-
-    {{#each _columns as |column|}}
-      {{#if column.visible}}
-        {{#sortable-item
-          classNames="table-v2__column" model=column group=group
-          handle=".table-v2__cell--header"}}
-          {{#upf-table/cell header=true}}
-            {{column.title}}
-
-            <div class="icon-commands">
-              <i class="text-size-6 fa fa-filter"></i>
-              <i class="text-size-6 fa fa-bars fa-rotate-90"></i>
-            </div>
-          {{/upf-table/cell}}
-
-          {{#each collection as |item|}}
-            {{upf-table/cell
-              item=item column=column}}
-          {{/each}}
-        {{/sortable-item}}
-      {{/if}}
-    {{/each}}
   </div>
-{{/sortable-group}}
+
+
+  <div class="upf-hypertable__table">
+    {{#sortable-group
+      direction="x" model=_columns onChange=(action "reorderColumns")
+      tagName=null
+      classNames="upf-hypertable" as |group|}}
+      {{#each _columns as |column index|}}
+        {{#if (eq index 0)}}
+          <div class="upf-hypertable__sticky-columns">
+            {{#if hasSelection}}
+              <div class="upf-hypertable__column upf-hypertable__column--selection">
+                {{#upf-table/cell header=true}}
+                  {{upf-checkbox value=_allRowsSelected size="sm"}}
+                {{/upf-table/cell}}
+
+                {{#each collection as |item|}}
+                  <div class="upf-hypertable__cell">
+                    {{upf-checkbox value=item.selected size="sm"}}
+                  </div>
+                {{/each}}
+              </div>
+            {{/if}}
+
+            <div class="upf-hypertable__column">
+              {{#upf-table/cell header=true}}
+                {{column.title}}
+
+                <div class="icon-commands">
+                  <i class="text-size-6 fa fa-filter"></i>
+                  <i class="text-size-6 fa fa-bars fa-rotate-90"></i>
+                </div>
+              {{/upf-table/cell}}
+
+              {{#each collection as |item|}}
+                {{upf-table/cell item=item column=column}}
+              {{/each}}
+            </div>
+          </div>
+        {{/if}}
+      {{/each}}
+
+      {{#each _columns as |column index|}}
+        {{#if (and column.visible (gt index 0))}}
+          {{#sortable-item
+            classNames="upf-hypertable__column" model=column group=group
+            handle=".upf-hypertable__cell--header"}}
+            {{#upf-table/cell header=true}}
+              {{column.title}}
+
+              <div class="icon-commands">
+                <i class="text-size-6 fa fa-filter"></i>
+                <i class="text-size-6 fa fa-bars fa-rotate-90"></i>
+              </div>
+            {{/upf-table/cell}}
+
+            {{#each collection as |item|}}
+              {{upf-table/cell item=item column=column}}
+            {{/each}}
+          {{/sortable-item}}
+        {{/if}}
+      {{/each}}
+    {{/sortable-group}}
+  </div>
+</div>

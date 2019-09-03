@@ -57,7 +57,37 @@ const DEFAULT_COLUMNS = [
     title: 'Bulk Emails',
     property: 'bulkEmailsCount',
     type: 'numeric'
-  }
+  },
+  {
+    title: 'Data 1',
+    property: 'data1',
+    type: 'numeric'
+  },
+  {
+    title: 'Data 2',
+    property: 'data2',
+    type: 'numeric'
+  },
+  {
+    title: 'Data 3',
+    property: 'data3',
+    type: 'numeric'
+  },
+  {
+    title: 'Data 4',
+    property: 'data4',
+    type: 'numeric'
+  },
+  {
+    title: 'Data 5',
+    property: 'data5',
+    type: 'numeric'
+  },
+  {
+    title: 'Data 6',
+    property: 'data6',
+    type: 'numeric'
+  },
 ];
 
 export default Service.extend({

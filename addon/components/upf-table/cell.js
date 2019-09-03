@@ -7,12 +7,12 @@ const AVAILABLE_RENDERERS = [
 ];
 
 export default Component.extend({
-  classNames: ['table-v2__cell'],
+  classNames: ['upf-hypertable__cell'],
   classNameBindings: [
-    'header:table-v2__cell--header',
-    'item.selected:table-v2__cell--selected',
-    'isNumeric:table-v2__cell--numeric',
-    'isMoney:table-v2__cell--numeric'
+    'header:upf-hypertable__cell--header',
+    'item.selected:upf-hypertable__cell--selected',
+    'isNumeric:upf-hypertable__cell--numeric',
+    'isMoney:upf-hypertable__cell--numeric'
   ],
 
   header: false,

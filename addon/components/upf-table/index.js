@@ -94,7 +94,7 @@ export default Component.extend({
 
   actions: {
     reorderColumns(x, itemModels, y) {
-      let _cs = itemModels.concat(x.filter(x => !x.visible))
+      let _cs = [x[0]].concat(itemModels.concat(x.filter(x => !x.visible)))
       _cs.forEach((c, i) => c.set('order', i))
       this.set('columns', _cs);
     },
