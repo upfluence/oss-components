@@ -2,6 +2,8 @@ import Component from '@ember/component';
 import { computed } from '@ember/object';
 
 export default Component.extend({
+  tagName: '',
+
   currency: computed('column', 'column.currency_key', function() {
     if (this.column && !this.column.currency_key) {
       throw new Error(
