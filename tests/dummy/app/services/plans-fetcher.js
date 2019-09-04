@@ -61,7 +61,7 @@ const DEFAULT_COLUMNS = [
   {
     title: 'Data 1',
     property: 'data1',
-    type: 'numeric'
+    type: 'text'
   },
   {
     title: 'Data 2',
@@ -104,7 +104,7 @@ export default Service.extend({
 
       setTimeout(() => {
         resolve({
-          items: MOCK_DATA,
+          items: MOCK_DATA.concat(MOCK_DATA).concat(MOCK_DATA).concat(MOCK_DATA).concat(MOCK_DATA).concat(MOCK_DATA).concat(MOCK_DATA).concat(MOCK_DATA),
           meta: {
             columns: columns
           }
