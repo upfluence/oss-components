@@ -29,6 +29,13 @@
   display: flex;
 }
 
+/*
+ * Hypertable's Upper Header
+ * ========================
+ * Access to actions allowing the user to modify the current state of the
+ * datatable.
+ *
+ */
 .upf-hypertable__upper-header {
   padding: @spacing-xx-sm;
   display: flex;
@@ -36,9 +43,15 @@
   position: relative;
 
 
+  /*
+   * Available Columns
+   * =================
+   * Access all available columns and toggle their visibility in the table
+   *
+   */
   .available-columns {
     background-color: #fff;
-    border: 1px solid lighten(@upf-gray, 15%);
+    border: 2px solid lighten(@upf-gray, 15%);
     border-radius: @default-radius;
 
     display: flex;
@@ -72,20 +85,41 @@
       flex-grow: 1;
       padding: @spacing-xx-sm;
 
-      .field {
-        border-radius: @default-radius;
-        color: @color-text;
-        min-width: 200px;
+      .search {
+        background-color: #fff;
         padding: @spacing-xxx-sm;
+        position: sticky;
 
-        &:hover {
-          background-color: @upf-gray-light;
-          cursor: pointer;
+        input {
+          width: 100%;
         }
+      }
 
-        &.field:not(.visible) {
-          color: @color-text-lighter;
+      .fields-list {
+        height: 200px;
+        max-height: 200px;
+        overflow: hidden scroll;
+
+        .field {
+          border-radius: @default-radius;
+          color: @color-text;
+          min-width: 200px;
+          padding: @spacing-xxx-sm;
+          display: flex;
+
+          &:hover {
+            background-color: @upf-gray-light;
+            cursor: pointer;
+          }
+
+          &.field:not(.visible) {
+            color: @color-text-lighter;
+          }
         }
+      }
+
+      ::-webkit-scrollbar {
+        display: none;
       }
     }
 
@@ -156,7 +190,6 @@
 }
 
 .upf-hypertable__cell {
-  border-right: 1px solid lighten(@upf-gray, 15%);
   border-bottom: 1px solid lighten(@upf-gray, 15%);
 
   display: flex;

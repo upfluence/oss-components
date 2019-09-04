@@ -5,10 +5,9 @@ import { run } from '@ember/runloop';
 import { isEmpty } from '@ember/utils';
 
 export default Component.extend({
-  classNames: ['upf-table__container'],
+  classNames: ['upf-hypertable-container'],
   //classNameBindings: ['isCompact:upf-table__container--compact'],
 
-  // Rows Selection
   hasSelection: false,
 
   _allRowsSelected: false,
@@ -20,6 +19,7 @@ export default Component.extend({
   //isCompact: false,
 
   _availableColumnsPanel: false,
+  _availableColumnsKeyword: '',
   //isLoading: false,
   //contentChanging: false,
   //_contentPlaceholder: new Array(3),
@@ -33,12 +33,6 @@ export default Component.extend({
   //itemTotal: 0,
   //itemCount: 0,
   /*itemName: '',*/
-
-  //init() {
-    //this._super();
-
-    //this.set('_searchQuery', this.get('searchQuery'));
-  /*},*/
 
   _columns: computed('columns', function() {
     return this.get('columns').map((column) => {
@@ -54,8 +48,20 @@ export default Component.extend({
     });
   }),
 
-  _columnsSortingOrder: ['title'],
-  _orderedColumns: sort('_columns', '_columnsSortingOrder'),
+  _orderedFilteredColumns: computed(
+    '_columns',
+    '_availableColumnsKeyword',
+    function() {
+      let columns = Ember.A(this._columns);
+
+      if (!isEmpty(this._availableColumnsKeyword)) {
+        let reg = RegExp(this._availableColumnsKeyword, 'i');
+        columns = Ember.A(columns.filter((x) => reg.test(x.title)));
+      }
+
+      return columns.sortBy('title');
+    }
+  ),
 
   _selectAllObserver: observer('_allRowsSelected', function() {
     this.get('collection').forEach((item) => {
@@ -86,12 +92,11 @@ export default Component.extend({
     //run.debounce(this, this._bubbleSearch, 100);
   //}),
 
-  didReceiveAttrs() {
-    if (isEmpty(this.columns)) {
-      throw new Error('[component][upf-table] Missing columns');
-    }
-  },
-
+  //didReceiveAttrs() {
+    //if (isEmpty(this.columns)) {
+      //throw new Error('[component][upf-table] Missing columns');
+    //}
+  //},
   actions: {
     reorderColumns(x, itemModels, y) {
       let _cs = [x[0]].concat(itemModels.concat(x.filter(x => !x.visible)))
@@ -101,10 +106,6 @@ export default Component.extend({
 
     openAvailableColumns() {
       this.toggleProperty('_availableColumnsPanel');
-    },
-
-    toggleColumnVisibility(column) {
-      column.toggleProperty('visible');
     }
 
     //callOnRowClickCallback(action, record) {
