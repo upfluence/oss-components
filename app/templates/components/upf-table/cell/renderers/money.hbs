@@ -1,1 +1,5 @@
-{{format-money (get item column.property) currency}}
+{{#if emptyAmount}}
+  —
+{{else}}
+  {{format-money amount currency}}
+{{/if}}

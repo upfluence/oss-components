@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
+import { empty } from '@ember/object/computed';
 
 export default Component.extend({
   tagName: '',
@@ -13,4 +14,10 @@ export default Component.extend({
 
     return this.item.get(this.column.currency_key);
   }),
+
+  amount: computed('item', 'column.property', function() {
+    return this.item.get(this.column.property);
+  }),
+
+  emptyAmount: empty('amount')
 });

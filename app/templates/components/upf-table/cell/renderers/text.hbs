@@ -1,1 +1,5 @@
-{{get item column.property}}
+{{#if emptyValue}}
+  —
+{{else}}
+  {{get item column.property}}
+{{/if}}
