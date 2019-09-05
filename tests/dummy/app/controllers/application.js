@@ -3,6 +3,7 @@ import { inject as service } from '@ember/service';
 
 export default Controller.extend({
   plansFetcher: service(),
+  upfTableState: service(),
 
   collection: [],
   columns: [],
@@ -17,7 +18,7 @@ export default Controller.extend({
 
     this.plansFetcher.fetch().then((data) => {
       this.set('collection', data.items);
-      this.set('columns', data.meta.columns);
+      this.upfTableState.updateColumns(data.meta.columns);
     }).finally(() => {
       this.set('refreshing', false);
     });

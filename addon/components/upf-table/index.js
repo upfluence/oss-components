@@ -1,10 +1,13 @@
 import Component from '@ember/component';
 import EmberObject, { computed, observer } from '@ember/object';
-import { filterBy, sort } from '@ember/object/computed';
+import { alias, filterBy, sort } from '@ember/object/computed';
 import { run } from '@ember/runloop';
+import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 
 export default Component.extend({
+  upfTableState: service(),
+
   classNames: ['upf-hypertable-container'],
   //classNameBindings: ['isCompact:upf-table__container--compact'],
 
@@ -34,19 +37,7 @@ export default Component.extend({
   //itemCount: 0,
   /*itemName: '',*/
 
-  _columns: computed('columns', function() {
-    return this.get('columns').map((column) => {
-      column = EmberObject.create(column);
-
-      column.set('visible', column.visible !== false);
-      column.set('sorted', column.sorted === true);
-      column.set('editable', column.editable !== false);
-      column.set('unhideable', column.unhideable === true);
-      column.set('type', column.type || 'text');
-
-      return column;
-    });
-  }),
+  _columns: alias('upfTableState.columns'),
 
   _orderedFilteredColumns: computed(
     '_columns',
@@ -74,7 +65,7 @@ export default Component.extend({
   }),
 
   _columnsChanged: observer(
-    '_columns', '_columns.@each.visible',
+    '_columns', '_columns.@each.{visible,sortBy}',
     function() {
       if (this.columnsChanged) {
         this.columnsChanged(this._columns);
@@ -101,7 +92,7 @@ export default Component.extend({
     reorderColumns(x, itemModels, y) {
       let _cs = [x[0]].concat(itemModels.concat(x.filter(x => !x.visible)))
       _cs.forEach((c, i) => c.set('order', i))
-      this.set('columns', _cs);
+      this.upfTableState.updateColumns(_cs);
     },
 
     openAvailableColumns() {
