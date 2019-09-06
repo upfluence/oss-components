@@ -1,35 +1,52 @@
 <div class="upf-hypertable__upper-header">
-  <button class="upf-btn upf-btn--default upf-btn--small" {{action "openAvailableColumns"}}>
-    <i class="fa fa-plus"></i> &nbsp; Field
-  </button>
+  <div class="left-side">
+    {{#if hasSearch}}
+      {{input
+        type="text" placeholder="Search..." value=_searchQuery
+        class="form-control upf-input upf-input--small"}}
+    {{/if}}
 
-  {{#if _availableColumnsPanel}}
-    <div class="available-columns">
-      <div class="available-columns__categories">
-        <div class="field-category">
-          <div>All Fields</div>
-          <div><i class="fa fa-caret-right"></i></div>
+    {{#if contextualActions}}
+      <div class="contextual-actions contextual-actions--no-animation
+                  {{unless hasSearch 'contextual-actions--no-search-sibling'}}">
+        {{component contextualActions selectedItems=_selectedItems}}
+      </div>
+    {{/if}}
+  </div>
+
+  <div class="right-side">
+    <button class="upf-btn upf-btn--default upf-btn--small" {{action "openAvailableColumns"}}>
+      <i class="fa fa-plus"></i> &nbsp; Field
+    </button>
+
+    {{#if _availableColumnsPanel}}
+      <div class="available-columns">
+        <div class="available-columns__categories">
+          <div class="field-category">
+            <div>All Fields</div>
+            <div><i class="fa fa-caret-right"></i></div>
+          </div>
+        </div>
+
+        <div class="available-columns__fields">
+          <div class="search">
+            {{input
+              type="text" value=_availableColumnsKeyword
+              class="upf-input upf-input--small"}}
+          </div>
+
+          <div class="fields-list">
+            {{#each _orderedFilteredColumns as |column|}}
+              <div class="field">
+                {{upf-checkbox value=column.visible size="sm"}}
+                <div class="margin-left-xxx-sm">{{column.title}}</div>
+              </div>
+            {{/each}}
+          </div>
         </div>
       </div>
-
-      <div class="available-columns__fields">
-        <div class="search">
-          {{input
-            type="text" value=_availableColumnsKeyword
-            class="upf-input upf-input--small"}}
-        </div>
-
-        <div class="fields-list">
-          {{#each _orderedFilteredColumns as |column|}}
-            <div class="field">
-              {{upf-checkbox value=column.visible size="sm"}}
-              <div class="margin-left-xxx-sm">{{column.title}}</div>
-            </div>
-          {{/each}}
-        </div>
-      </div>
-    </div>
-  {{/if}}
+    {{/if}}
+  </div>
 </div>
 
 <div class="upf-hypertable__table">

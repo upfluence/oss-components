@@ -39,9 +39,61 @@
 .upf-hypertable__upper-header {
   padding: @spacing-xx-sm;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   position: relative;
 
+  .left-side {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  /*
+   * Search
+   * ======
+   *
+   */
+  .left-side {
+    input {
+      max-width: 250px;
+    }
+  }
+
+  /*
+   * Contextual Actions
+   * ===========
+   * Contextual actions that show up to act on the selected items
+   *
+   */
+  .left-side .contextual-actions {
+    border-left: 1px solid lighten(@upf-gray, 15%);
+    opacity: 0;
+    z-index: -1;
+    animation: none;
+
+    margin-left: @spacing-sm;
+    padding: 0 @spacing-sm;
+
+    &--no-search-sibling {
+      border-left: 0;
+      margin-left: 0;
+      padding: 0;
+    }
+
+    &--no-animation {
+      display: none !important;
+    }
+
+    &--hidden {
+      animation: hide-contextual-actions 0.5s 1;
+    }
+
+    &--visible {
+      animation: show-contextual-actions 0.5s 1;
+      z-index: 1;
+      opacity: 1;
+      display: block;
+    }
+  }
 
   /*
    * Available Columns
@@ -190,6 +242,7 @@
 }
 
 .upf-hypertable__cell {
+  border-bottom: 1px solid lighten(@upf-gray, 15%);
   display: flex;
   align-items: center;
 
@@ -227,6 +280,7 @@
 
   &.upf-hypertable__cell--sorted {
     .icon-commands .fa.fa-filter {
+      color: @color-text;
       display: block;
       font-weight: bold;
       opacity: 1;
@@ -269,8 +323,37 @@
   }
 }
 
-
-
 .upf-hypertable__cell--selected {
   background-color: @upf-gray-light;
+}
+
+/*
+ * Animations used throughout the datatable
+ * =======================================
+ *
+ */
+@keyframes show-contextual-actions {
+  0% {
+    display: block;
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+
+@keyframes hide-contextual-actions {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
 }

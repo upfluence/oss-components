@@ -6,7 +6,7 @@ import { isEmpty } from '@ember/utils';
 const MOCK_DATA = A([
   EmberObject.create({
     name: 'Bronze',
-    price: '99',
+    price: 99,
     currency: 'EUR',
     usersCount: 1,
     bulkEmailsCount: 0,
@@ -15,7 +15,7 @@ const MOCK_DATA = A([
   }),
   EmberObject.create({
     name: 'Silver',
-    price: '195',
+    price: 195,
     currency: 'EUR',
     usersCount: 1,
     bulkEmailsCount: 100,
@@ -24,7 +24,7 @@ const MOCK_DATA = A([
   }),
   EmberObject.create({
     name: 'Gold',
-    price: '495',
+    price: 495,
     currency: 'EUR',
     usersCount: 1,
     bulkEmailsCount: 300,
@@ -114,7 +114,6 @@ export default Service.extend({
 
       if (sortedColumn) {
         let [sortType, sortDirection] = sortedColumn.sortBy.split(':');
-
         data = data.sortBy(sortedColumn.property);
 
         if (sortDirection === 'desc') {

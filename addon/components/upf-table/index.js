@@ -13,11 +13,12 @@ export default Component.extend({
   //classNameBindings: ['isCompact:upf-table__container--compact'],
 
   hasSelection: false,
+  hasSearch: false,
+  contextualActions: null,
 
   _allRowsSelected: false,
 
   //hasPagination: false,
-  //hasSearch: false,
   //hasPolymorphicColumns: false,
   //hasToggleableColumns: true,
   //isCompact: false,
@@ -28,7 +29,7 @@ export default Component.extend({
   //contentChanging: false,
   //_contentPlaceholder: new Array(3),
 
-  //_searchQuery: null,
+  _searchQuery: null,
   //searchInputPlaceholder: 'Search...',
 
 /*  currentPage: 1,*/
@@ -39,6 +40,7 @@ export default Component.extend({
   /*itemName: '',*/
 
   _columns: alias('upfTableState.columns'),
+  _selectedItems: filterBy('collection', 'selected', true),
 
   _orderedFilteredColumns: computed(
     '_columns',
@@ -74,15 +76,27 @@ export default Component.extend({
     }
   ),
 
-/*  _bubbleSearch: function() {*/
-    //if (this.performSearch) {
-      //this.performSearch(this.get('_searchQuery'));
-    //}
-  //},
+  _selectedItemsChanged: observer('_selectedItems', function() {
+    if (this.contextualActions) {
+        let ca = document.querySelector('.contextual-actions');
 
-  //_searchQueryObserver: observer('_searchQuery', function() {
-    //run.debounce(this, this._bubbleSearch, 100);
-  //}),
+        if (this._selectedItems.length > 0) {
+          ca.classList.remove('contextual-actions--no-animation');
+          ca.classList.add('contextual-actions--visible');
+        } else {
+          ca.classList.remove('contextual-actions--visible');
+          ca.classList.add('contextual-actions--hidden');
+        }
+    }
+  }),
+
+  _searchQueryObserver: observer('_searchQuery', function() {
+    run.debounce(this, () => {
+      if (this.onSearchQueryChange) {
+        this.onSearchQueryChange(this.get('_searchQuery'));
+      }
+    }, 1000);
+  }),
 
   //didReceiveAttrs() {
     //if (isEmpty(this.columns)) {
