@@ -1,6 +1,7 @@
 import { A } from '@ember/array';
 import EmberObject from '@ember/object';
 import Service from '@ember/service';
+import { isEmpty } from '@ember/utils';
 
 const MOCK_DATA = A([
   EmberObject.create({
@@ -9,7 +10,8 @@ const MOCK_DATA = A([
     currency: 'EUR',
     usersCount: 1,
     bulkEmailsCount: 0,
-    selected: false
+    selected: false,
+    data1: 'A',
   }),
   EmberObject.create({
     name: 'Silver',
@@ -17,7 +19,8 @@ const MOCK_DATA = A([
     currency: 'EUR',
     usersCount: 1,
     bulkEmailsCount: 100,
-    selected: false
+    selected: false,
+    data1: 'B',
   }),
   EmberObject.create({
     name: 'Gold',
@@ -25,14 +28,16 @@ const MOCK_DATA = A([
     currency: 'EUR',
     usersCount: 1,
     bulkEmailsCount: 300,
-    selected: false
+    selected: false,
+    data1: 'C',
   }),
   EmberObject.create({
     name: 'Enterprise',
     price: 'Talk to us',
     usersCount: 'Custom',
     bulkEmailsCount: 'Custom',
-    selected: false
+    selected: false,
+    data1: 'D',
   })
 ]);
 
@@ -94,6 +99,9 @@ export default Service.extend({
   fetch(columnsLayout) {
     return new Promise((resolve, reject) => {
       let columns = DEFAULT_COLUMNS;
+      let data = A(
+        MOCK_DATA.concat(MOCK_DATA).concat(MOCK_DATA).concat(MOCK_DATA)
+      );
 
       if (columnsLayout) {
         columns = columnsLayout;
@@ -102,9 +110,21 @@ export default Service.extend({
         columns = JSON.parse(window.sessionStorage.getItem('columns'));
       }
 
+      let sortedColumn = columns.find((x) => !isEmpty(x.sortBy));
+
+      if (sortedColumn) {
+        let [sortType, sortDirection] = sortedColumn.sortBy.split(':');
+
+        data = data.sortBy(sortedColumn.property);
+
+        if (sortDirection === 'desc') {
+          data.reverse();
+        }
+      }
+
       setTimeout(() => {
         resolve({
-          items: MOCK_DATA.concat(MOCK_DATA).concat(MOCK_DATA).concat(MOCK_DATA).concat(MOCK_DATA).concat(MOCK_DATA).concat(MOCK_DATA).concat(MOCK_DATA),
+          items: data,
           meta: {
             columns: columns
           }

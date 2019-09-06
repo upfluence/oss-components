@@ -1,5 +1,24 @@
-{{#if (has-block)}}
-  {{yield}}
+{{#if header}}
+  {{#if selection}}
+    {{yield}}
+  {{else}}
+    {{column.title}}
+
+    <div class="icon-commands">
+      <i class="fa fa-filter" {{action "toggleFiltersPanel"}}></i>
+      <i class="fa fa-bars fa-rotate-90"></i>
+    </div>
+
+    {{#if showFiltersPanel}}
+      <div class="available-filters">
+        {{component _filtersRenderingComponent item=item column=column}}
+      </div>
+    {{/if}}
+  {{/if}}
 {{else}}
-  {{component _renderingComponent item=item column=column}}
+  {{#if (has-block)}}
+    {{yield}}
+  {{else}}
+    {{component _renderingComponent item=item column=column}}
+  {{/if}}
 {{/if}}

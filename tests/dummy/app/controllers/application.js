@@ -13,7 +13,7 @@ export default Controller.extend({
     this._fetchPlans();
   },
 
-  _fetchPlans(columnsLayout) {
+  _fetchPlans() {
     this.set('refreshing', true);
 
     this.plansFetcher.fetch().then((data) => {
@@ -26,7 +26,9 @@ export default Controller.extend({
 
   actions: {
     columnsChanged(layout) {
-      this.plansFetcher.fetch(layout);
+      this.plansFetcher.fetch(layout).then((data) => {
+        this.set('collection', data.items);
+      });
     }
   }
 });

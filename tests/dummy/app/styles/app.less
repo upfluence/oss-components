@@ -58,14 +58,14 @@
     flex-direction: row;
 
     position: absolute;
-    top: 65px;
+    top: 55px;
     right: 0;
     z-index: 99999;
 
     .available-columns__categories {
       background-color: @upf-gray-light;
       border-right: 1px solid lighten(@upf-gray, 15%);
-      min-width: 150px;
+      min-width: 200px;
 
       .field-category {
         background-color: #fff;
@@ -103,7 +103,7 @@
         .field {
           border-radius: @default-radius;
           color: @color-text;
-          min-width: 200px;
+          min-width: 270px;
           padding: @spacing-xxx-sm;
           display: flex;
 
@@ -128,21 +128,21 @@
       content:'';
       position: absolute;
       bottom: 100%;
-      left: 80%;
+      right: 30px;
       width: 0;
       height: 0;
       border-style: solid;
     }
 
     &:after {
-      border-color: transparent transparent @upf-gray-light transparent;
+      border-color: transparent transparent lighten(@upf-gray, 15%) transparent;
       border-width: 8px;
     }
 
     &:before {
-      left: 79%;
       border-color: transparent transparent lighten(@upf-gray, 15%) transparent;
       border-width: 10px;
+      right: 28.5px
     }
   }
 }
@@ -156,7 +156,7 @@
   position: sticky;
   left: 0;
   z-index: 9999;
-  background: white;
+  background-color: white;
   display: flex;
 }
 
@@ -190,8 +190,6 @@
 }
 
 .upf-hypertable__cell {
-  border-bottom: 1px solid lighten(@upf-gray, 15%);
-
   display: flex;
   align-items: center;
 
@@ -200,7 +198,20 @@
   padding: @spacing-xx-sm;
   width: 100%;
 
-  &.upf-hypertable__cell--numeric {
+  .available-filters {
+    background-color: #fff;
+    border: 2px solid lighten(@upf-gray, 15%);
+    border-radius: @default-radius;
+
+    min-width: 300px;
+    width: 300px;
+
+    position: absolute;
+    padding: @spacing-xx-sm;
+    top: 50px;
+  }
+
+  &.upf-hypertable__cell--numeric:not(.upf-hypertable__cell--header) {
     justify-content: flex-end;
   }
 }
@@ -214,17 +225,29 @@
   position: sticky;
   top: 0;
 
+  &.upf-hypertable__cell--sorted {
+    .icon-commands .fa.fa-filter {
+      display: block;
+      font-weight: bold;
+      opacity: 1;
+    }
+  }
+
   & > .column-name {
     display: flex;
   }
 
   & > .icon-commands {
     color: @color-text-lighter;
+
     display: flex;
     flex-direction: row;
     align-items: center;
 
     i {
+      opacity: 0;
+      display: none;
+      font-size: 16/@rem;
       margin-left: @spacing-xx-sm;
     }
 
@@ -236,10 +259,17 @@
     i.fa-bars { cursor: move; }
   }
 
-  &:hover .icon-commands {
-    opacity: 1;
+  &:hover {
+    background-color: lighten(@upf-gray, 15%);
+
+    .icon-commands i {
+      opacity: 1;
+      display: block;
+    }
   }
 }
+
+
 
 .upf-hypertable__cell--selected {
   background-color: @upf-gray-light;

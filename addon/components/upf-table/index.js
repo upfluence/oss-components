@@ -1,3 +1,4 @@
+import { A } from '@ember/array';
 import Component from '@ember/component';
 import EmberObject, { computed, observer } from '@ember/object';
 import { alias, filterBy, sort } from '@ember/object/computed';
@@ -43,11 +44,11 @@ export default Component.extend({
     '_columns',
     '_availableColumnsKeyword',
     function() {
-      let columns = Ember.A(this._columns);
+      let columns = A(this._columns);
 
       if (!isEmpty(this._availableColumnsKeyword)) {
         let reg = RegExp(this._availableColumnsKeyword, 'i');
-        columns = Ember.A(columns.filter((x) => reg.test(x.title)));
+        columns = A(columns.filter((x) => reg.test(x.title)));
       }
 
       return columns.sortBy('title');
@@ -67,8 +68,8 @@ export default Component.extend({
   _columnsChanged: observer(
     '_columns', '_columns.@each.{visible,sortBy}',
     function() {
-      if (this.columnsChanged) {
-        this.columnsChanged(this._columns);
+      if (this.onColumnsChange) {
+        this.onColumnsChange(this._columns);
       }
     }
   ),

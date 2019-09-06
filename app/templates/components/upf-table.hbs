@@ -42,7 +42,7 @@
         <div class="upf-hypertable__sticky-columns">
           {{#if hasSelection}}
             <div class="upf-hypertable__column upf-hypertable__column--selection">
-              {{#upf-table/cell header=true}}
+              {{#upf-table/cell header=true selection=true}}
                 {{upf-checkbox value=_allRowsSelected size="sm"}}
               {{/upf-table/cell}}
 
@@ -55,14 +55,7 @@
           {{/if}}
 
           <div class="upf-hypertable__column">
-            {{#upf-table/cell header=true}}
-              {{column.title}}
-
-              <div class="icon-commands">
-                <i class="text-size-6 fa fa-filter"></i>
-                <i class="text-size-6 fa fa-bars fa-rotate-90"></i>
-              </div>
-            {{/upf-table/cell}}
+            {{upf-table/cell column=column header=true}}
 
             {{#each collection as |item|}}
               {{upf-table/cell item=item column=column}}
@@ -77,14 +70,7 @@
         {{#sortable-item
           classNames="upf-hypertable__column" model=column group=group
           handle=".upf-hypertable__cell--header"}}
-          {{#upf-table/cell header=true}}
-            {{column.title}}
-
-            <div class="icon-commands">
-              <i class="text-size-6 fa fa-filter"></i>
-              <i class="text-size-6 fa fa-bars fa-rotate-90"></i>
-            </div>
-          {{/upf-table/cell}}
+          {{upf-table/cell column=column header=true}}
 
           {{#each collection as |item|}}
             {{upf-table/cell item=item column=column}}

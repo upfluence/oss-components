@@ -1,0 +1,10 @@
+{{#input-wrapper}}
+  <label>Sort</label>
+  <div class="btn-group upf-radio-group">
+    {{#each-in sortingOptions as |label value|}}
+      {{radio-button
+        value=value currentValue=column.sortBy label=label
+        options=sortingOptions onCheck="sortingOptionChanged"}}
+    {{/each-in}}
+  </div>
+{{/input-wrapper}}
