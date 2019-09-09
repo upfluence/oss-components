@@ -5,7 +5,7 @@ import { capitalize } from '@ember/string';
 import { isEmpty } from '@ember/utils';
 
 const AVAILABLE_RENDERERS = [
-  'text', 'numeric', 'money'
+  'text', 'numeric', 'money', 'date'
 ];
 
 export default Component.extend({
