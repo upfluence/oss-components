@@ -1,7 +1,7 @@
 import { A } from '@ember/array';
 import Component from '@ember/component';
-import EmberObject, { computed, observer } from '@ember/object';
-import { alias, filterBy, sort } from '@ember/object/computed';
+import { computed, observer } from '@ember/object';
+import { alias, filterBy } from '@ember/object/computed';
 import { run } from '@ember/runloop';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
@@ -104,7 +104,7 @@ export default Component.extend({
     //}
   //},
   actions: {
-    reorderColumns(x, itemModels, y) {
+    reorderColumns(x, itemModels, _) {
       let _cs = [x[0]].concat(itemModels.concat(x.filter(x => !x.visible)))
       _cs.forEach((c, i) => c.set('order', i))
       this.upfTableState.updateColumns(_cs);

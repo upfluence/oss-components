@@ -42,6 +42,12 @@ export default Component.extend({
     this.set('_sorted', !isEmpty(this.column.sortBy));
   },
 
+  _filtersPanelListener() {
+    if (this.column.property !== this.upfTableState.applyingFiltersOn) {
+      this.set('showFiltersPanel', false);
+    }
+  },
+
   init() {
     this._super();
 
@@ -66,6 +72,12 @@ export default Component.extend({
           this,
           this._tableStateListener
         );
+
+        this.addObserver(
+          'upfTableState.applyingFiltersOn',
+          this,
+          this._filtersPanelListener
+        );
       }
 
       this.set('_sorted', !isEmpty(this.column.sortBy));
@@ -75,6 +87,7 @@ export default Component.extend({
   actions: {
     toggleFiltersPanel() {
       this.toggleProperty('showFiltersPanel');
+      this.set('upfTableState.applyingFiltersOn', this.column.property);
     }
   }
 });
