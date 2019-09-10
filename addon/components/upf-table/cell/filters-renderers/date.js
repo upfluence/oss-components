@@ -62,6 +62,11 @@ export default Component.extend({
       this.upfTableState.addFilters(
         this.column, 'range', this._buildDateRange(value)
       );
+    },
+
+    // Mixin Candidate
+    clearFilters() {
+      this.upfTableState.clearFilters(this.column);
     }
   }
 });

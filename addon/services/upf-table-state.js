@@ -26,6 +26,10 @@ export default Service.extend({
     }
   },
 
+  clearFilters(column) {
+    column.set('filters', []);
+  },
+
   updateColumns(columns) {
     this.set('columns', columns.map((column) => {
       if (typeOf(column) !== 'instance') {
