@@ -262,6 +262,23 @@
     position: absolute;
     padding: @spacing-xx-sm;
     top: 50px;
+
+    .filters {
+      padding-top: @spacing-xx-sm;
+
+      .filters__option {
+        padding: @spacing-xxx-sm;
+
+        &:hover {
+          background-color: @upf-gray-light;
+          cursor: pointer;
+        }
+      }
+
+      .filters__option--active {
+        background-color: @upf-gray-light;
+      }
+    }
   }
 
   &.upf-hypertable__cell--numeric:not(.upf-hypertable__cell--header) {

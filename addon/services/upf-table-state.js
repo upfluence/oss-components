@@ -1,6 +1,7 @@
+import { A } from '@ember/array';
 import Service from '@ember/service';
 import EmberObject from '@ember/object';
-import { typeOf } from '@ember/utils';
+import { isEmpty, typeOf } from '@ember/utils';
 
 export default Service.extend({
   columns: [],
@@ -10,6 +11,21 @@ export default Service.extend({
     column.set('sortBy', sortBy);
   },
 
+  addFilters(column, type, value) {
+    if (isEmpty(column.filters)) {
+      let f = EmberObject.create({ type, value })
+      column.set('filters', [f]);
+    } else {
+      column.set('filters', column.filters.map((f) => {
+        if (f.type === type) {
+          f.set('value', value);
+        }
+
+        return f;
+      }));
+    }
+  },
+
   updateColumns(columns) {
     this.set('columns', columns.map((column) => {
       if (typeOf(column) !== 'instance') {
@@ -17,8 +33,12 @@ export default Service.extend({
       }
 
       column.set('visible', column.visible !== false);
-      column.set('sortBy', column.sortBy || null);
-      column.set('type', column.type || 'text');
+      column.set('sortBy', column.sortBy || null);
+      column.set(
+        'filters',
+        (column.filters || []).map((x) => EmberObject.create(x))
+      );
+      column.set('type', column.type || 'text');
 
       return column;
     }));

@@ -10,9 +10,7 @@
     </div>
 
     {{#if showFiltersPanel}}
-      <div class="available-filters">
-        {{component _filtersRenderingComponent item=item column=column}}
-      </div>
+      {{component _filtersRenderingComponent item=item column=column}}
     {{/if}}
   {{/if}}
 {{else}}
