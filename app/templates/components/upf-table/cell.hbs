@@ -2,7 +2,12 @@
   {{#if selection}}
     {{yield}}
   {{else}}
-    {{column.title}}
+    <div>
+      {{column.title}}
+      {{#if _sorted }}
+        &nbsp;<i class={{concat "fa " _sortingIconClass}}></i>
+      {{/if}}
+    </div>
 
     <div class="icon-commands">
       <i class="fa fa-filter" {{action "toggleFiltersPanel"}}></i>

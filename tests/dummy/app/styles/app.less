@@ -296,8 +296,15 @@
   top: 0;
 
   &.upf-hypertable__cell--sorted {
+    .fa.fa-long-arrow-up, .fa.fa-long-arrow-down {
+      color: @color-text-light;
+      font-weight: bold;
+    }
+  }
+
+  &.upf-hypertable__cell--filtered {
     .icon-commands .fa.fa-filter {
-      color: @color-text;
+      color: @color-text-light;
       display: block;
       font-weight: bold;
       opacity: 1;
