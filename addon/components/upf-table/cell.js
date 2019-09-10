@@ -48,6 +48,10 @@ export default Component.extend({
     }
   }),
 
+  _filtersChanged: observer('column.filters.@each', function () {
+    this.set('_filtered', !isEmpty(this.column.filters));
+  }),
+
   _tableStateListener() {
     this.set('_sorted', !isEmpty(this.column.sortBy));
     this.set('_filtered', !isEmpty(this.column.filters));
