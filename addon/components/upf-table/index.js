@@ -98,11 +98,22 @@ export default Component.extend({
     }, 1000);
   }),
 
-  //didReceiveAttrs() {
-    //if (isEmpty(this.columns)) {
-      //throw new Error('[component][upf-table] Missing columns');
-    //}
-  //},
+  didInsertElement() {
+    let self = this;
+
+    this.$('.upf-hypertable__table').on('scroll', function() {
+      let tableHeight = $(this).innerHeight();
+      let heightScrolled = $(this).scrollTop();
+      let contentHeight = $(`.upf-hypertable`)[0].scrollHeight;
+
+      if ((heightScrolled + tableHeight) >= contentHeight) {
+        if (self.onBottomReached) {
+          self.onBottomReached();
+        }
+      }
+    });
+  },
+
   actions: {
     reorderColumns(x, itemModels, _) {
       let _cs = [x[0]].concat(itemModels.concat(x.filter(x => !x.visible)))
