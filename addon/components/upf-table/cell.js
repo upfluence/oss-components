@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import { computed, defineProperty, observer } from '@ember/object';
+import { or } from '@ember/object/computed';
 import { inject as service } from '@ember/service';
 import { capitalize } from '@ember/string';
 import { isEmpty } from '@ember/utils';
@@ -38,11 +39,15 @@ export default Component.extend({
     }
   }),
 
-  _renderingComponent: computed('column.type', function() {
+  _typeInferredRenderingComponent: computed('column.type', function() {
     if (AVAILABLE_RENDERERS.includes(this.column.type)) {
       return `upf-table/cell/renderers/${this.column.type}`;
     }
   }),
+
+  _renderingComponent: or(
+    'column.renderingComponent', '_typeInferredRenderingComponent'
+  ),
 
   _filtersRenderingComponent: computed('column.type', function() {
     if (AVAILABLE_RENDERERS.includes(this.column.type)) {
