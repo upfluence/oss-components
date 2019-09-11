@@ -1,6 +1,6 @@
 <div class="upf-hypertable__upper-header">
   <div class="left-side">
-    {{#if hasSearch}}
+    {{#if options.features.search}}
       {{input
         type="text" placeholder="Search..." value=_searchQuery
         class="form-control upf-input upf-input--small"}}
@@ -8,7 +8,7 @@
 
     {{#if contextualActions}}
       <div class="contextual-actions contextual-actions--no-animation
-                  {{unless hasSearch 'contextual-actions--no-search-sibling'}}">
+                  {{unless options.features.search 'contextual-actions--no-search-sibling'}}">
         {{component contextualActions selectedItems=_selectedItems}}
       </div>
     {{/if}}
@@ -57,7 +57,7 @@
     {{#each _columns as |column index|}}
       {{#if (eq index 0)}}
         <div class="upf-hypertable__sticky-columns">
-          {{#if hasSelection}}
+          {{#if options.features.selection}}
             <div class="upf-hypertable__column upf-hypertable__column--selection">
               {{#upf-table/cell header=true selection=true}}
                 {{upf-checkbox value=_allRowsSelected size="sm"}}

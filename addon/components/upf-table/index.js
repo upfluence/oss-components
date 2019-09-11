@@ -6,16 +6,41 @@ import { run } from '@ember/runloop';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 
+const DEFAULT_OPTIONS = {
+  features: {
+    selection: false,
+    search: false
+  }
+};
+
 export default Component.extend({
   upfTableState: service(),
 
   classNames: ['upf-hypertable-container'],
   //classNameBindings: ['isCompact:upf-table__container--compact'],
 
-  hasSelection: false,
-  hasSearch: false,
   contextualActions: null,
   loadingMore: false,
+
+  /*
+   * Configuration
+   * =============
+   *
+   * Define which features of the datatable should be activated.
+   *
+   */
+  options: DEFAULT_OPTIONS,
+
+  /*
+   * Event Hooks
+   * ===========
+   *
+   * Actions to be called to react to various events happening on the datatable
+   *
+   */
+  onColumnsChange: null,
+  onBottomReached: null,
+  onSearchQueryChange: null,
 
   _allRowsSelected: false,
   _hasScrollbar: false,

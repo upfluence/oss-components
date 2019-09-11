@@ -8,6 +8,13 @@ export default Controller.extend({
   collection: [],
   columns: [],
 
+  tableOptions: {
+    features: {
+      search: true,
+      selection: true
+    }
+  },
+
   init() {
     this._super();
     this._fetchPlans();
@@ -29,6 +36,10 @@ export default Controller.extend({
       this.plansFetcher.fetch(layout).then((data) => {
         this.set('collection', data.items);
       });
+    },
+
+    performSearch(s) {
+      alert(`Search: ${s}`);
     }
   }
 });
