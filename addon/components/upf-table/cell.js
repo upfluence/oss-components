@@ -15,6 +15,7 @@ export default Component.extend({
   classNameBindings: [
     'header:upf-hypertable__cell--header',
     'item.selected:upf-hypertable__cell--selected',
+    'loading:upf-hypertable__cell--loading',
     '_sorted:upf-hypertable__cell--sorted',
     '_filtered:upf-hypertable__cell--filtered',
     'isNumeric:upf-hypertable__cell--numeric',
@@ -23,6 +24,7 @@ export default Component.extend({
 
   header: false,
   selection: false,
+  loading: false,
 
   _sorted: false,
   _filtered: false,

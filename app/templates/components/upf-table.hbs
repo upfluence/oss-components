@@ -68,6 +68,12 @@
                   {{upf-checkbox value=item.selected size="sm"}}
                 </div>
               {{/each}}
+
+              {{#if _loadingMore}}
+                {{upf-table/cell loading=true}}
+                {{upf-table/cell loading=true}}
+                {{upf-table/cell loading=true}}
+              {{/if}}
             </div>
           {{/if}}
 
@@ -77,6 +83,12 @@
             {{#each collection as |item|}}
               {{upf-table/cell item=item column=column}}
             {{/each}}
+
+            {{#if _loadingMore}}
+              {{upf-table/cell loading=true}}
+              {{upf-table/cell loading=true}}
+              {{upf-table/cell loading=true}}
+            {{/if}}
           </div>
         </div>
       {{/if}}
@@ -92,6 +104,12 @@
           {{#each collection as |item|}}
             {{upf-table/cell item=item column=column}}
           {{/each}}
+
+          {{#if _loadingMore}}
+            {{upf-table/cell loading=true}}
+            {{upf-table/cell loading=true}}
+            {{upf-table/cell loading=true}}
+          {{/if}}
         {{/sortable-item}}
       {{/if}}
     {{/each}}

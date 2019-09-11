@@ -19,7 +19,9 @@
     {{/if}}
   {{/if}}
 {{else}}
-  {{#if (has-block)}}
+  {{#if loading}}
+    <div class="skeleton-placeholder"></div>
+  {{else if (has-block)}}
     {{yield}}
   {{else}}
     {{component _renderingComponent item=item column=column}}
