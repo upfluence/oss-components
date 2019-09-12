@@ -78,7 +78,7 @@
           {{/if}}
 
           <div class="upf-hypertable__column">
-            {{upf-table/cell column=column header=true}}
+            {{upf-table/cell column=column header=true manager=manager}}
 
             {{#each collection as |item|}}
               {{upf-table/cell item=item column=column}}
@@ -99,7 +99,7 @@
         {{#sortable-item
           classNames="upf-hypertable__column" model=column group=group
           handle=".upf-hypertable__cell--header"}}
-          {{upf-table/cell column=column header=true}}
+          {{upf-table/cell column=column header=true manager=manager}}
 
           {{#each collection as |item|}}
             {{upf-table/cell item=item column=column}}

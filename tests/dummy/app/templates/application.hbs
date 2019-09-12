@@ -1,7 +1,7 @@
 <div class="padding-lg">
   {{upf-table
-    columns=upfTableState.columns collection=collection options=tableOptions
+    manager=tableManager collection=collection options=tableOptions
     onColumnsChange=(action "columnsChanged")
     onSearchQueryChange=(action "performSearch")
-    refreshing=refreshing contextualActions="contextual-actions"}}
+    contextualActions="contextual-actions"}}
 </div>

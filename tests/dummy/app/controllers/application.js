@@ -25,7 +25,8 @@ export default Controller.extend({
 
     this.plansFetcher.fetch().then((data) => {
       this.set('collection', data.items);
-      this.upfTableState.updateColumns(data.meta.columns);
+      this.set('tableManager', this.upfTableState.createTable());
+      this.tableManager.updateColumns(data.meta.columns);
     }).finally(() => {
       this.set('refreshing', false);
     });

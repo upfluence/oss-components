@@ -1,11 +1,8 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import { inject as service } from '@ember/service';
 
 export default Component.extend({
   classNames: ['available-filters'],
-
-  upfTableState: service(),
 
   sortingOptions: {
     'Oldest — Newest': 'alphanumerical:asc',
@@ -51,7 +48,7 @@ export default Component.extend({
 
   actions: {
     sortingOptionChanged(value) {
-      this.upfTableState.updateSortBy(this.column, value);
+      this.manager.updateSortBy(this.column, value);
     },
 
     filterOptionChanged(value) {
@@ -59,14 +56,14 @@ export default Component.extend({
     },
 
     selectMovingDate(value) {
-      this.upfTableState.addFilters(
+      this.manager.addFilters(
         this.column, 'range', this._buildDateRange(value)
       );
     },
 
     // Mixin Candidate
     clearFilters() {
-      this.upfTableState.clearFilters(this.column);
+      this.manager.clearFilters(this.column);
     }
   }
 });

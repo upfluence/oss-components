@@ -15,7 +15,8 @@
     </div>
 
     {{#if showFiltersPanel}}
-      {{component _filtersRenderingComponent item=item column=column}}
+      {{component
+        _filtersRenderingComponent item=item column=column manager=manager}}
     {{/if}}
   {{/if}}
 {{else}}

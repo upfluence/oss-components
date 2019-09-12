@@ -3,8 +3,27 @@ import Service from '@ember/service';
 import EmberObject from '@ember/object';
 import { isEmpty, typeOf } from '@ember/utils';
 
-export default Service.extend({
+const Table = EmberObject.extend({
   columns: [],
+  applyingFiltersOn: null,
+
+  updateColumns(columns) {
+    this.set('columns', columns.map((column) => {
+      if (typeOf(column) !== 'instance') {
+        column = EmberObject.create(column);
+      }
+
+      column.set('visible', column.visible !== false);
+      column.set('sortBy', column.sortBy || null);
+      column.set(
+        'filters',
+        (column.filters || []).map((x) => EmberObject.create(x))
+      );
+      column.set('type', column.type || 'text');
+
+      return column;
+    }));
+  },
 
   updateSortBy(column, sortBy) {
     this.columns.forEach((c) => c.set('sortBy', null));
@@ -28,23 +47,11 @@ export default Service.extend({
 
   clearFilters(column) {
     column.set('filters', []);
-  },
+  }
+});
 
-  updateColumns(columns) {
-    this.set('columns', columns.map((column) => {
-      if (typeOf(column) !== 'instance') {
-        column = EmberObject.create(column);
-      }
-
-      column.set('visible', column.visible !== false);
-      column.set('sortBy', column.sortBy || null);
-      column.set(
-        'filters',
-        (column.filters || []).map((x) => EmberObject.create(x))
-      );
-      column.set('type', column.type || 'text');
-
-      return column;
-    }));
+export default Service.extend({
+  createTable() {
+    return Table.create();
   }
 });

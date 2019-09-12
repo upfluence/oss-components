@@ -3,7 +3,6 @@ import Component from '@ember/component';
 import { computed, observer } from '@ember/object';
 import { alias, filterBy } from '@ember/object/computed';
 import { run } from '@ember/runloop';
-import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 
 const DEFAULT_OPTIONS = {
@@ -14,8 +13,6 @@ const DEFAULT_OPTIONS = {
 };
 
 export default Component.extend({
-  upfTableState: service(),
-
   classNames: ['upf-hypertable-container'],
   //classNameBindings: ['isCompact:upf-table__container--compact'],
 
@@ -66,7 +63,7 @@ export default Component.extend({
   //itemCount: 0,
   /*itemName: '',*/
 
-  _columns: alias('upfTableState.columns'),
+  _columns: alias('manager.columns'),
   _selectedItems: filterBy('collection', 'selected', true),
 
   _orderedFilteredColumns: computed(
@@ -151,7 +148,7 @@ export default Component.extend({
     reorderColumns(x, itemModels, _) {
       let _cs = [x[0]].concat(itemModels.concat(x.filter(x => !x.visible)))
       _cs.forEach((c, i) => c.set('order', i))
-      this.upfTableState.updateColumns(_cs);
+      this.manager.updateColumns(_cs);
     },
 
     openAvailableColumns() {

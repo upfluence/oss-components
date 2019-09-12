@@ -1,10 +1,7 @@
 import Component from '@ember/component';
-import { inject as service } from '@ember/service';
 
 export default Component.extend({
   classNames: ['available-filters'],
-
-  upfTableState: service(),
 
   sortingOptions: {
     '0 — 9': 'alphanumerical:asc',
@@ -13,7 +10,7 @@ export default Component.extend({
 
   actions: {
     sortingOptionChanged(value) {
-      this.upfTableState.updateSortBy(this.column, value);
+      this.manager.updateSortBy(this.column, value);
     }
   }
 });

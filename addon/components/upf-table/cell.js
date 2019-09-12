@@ -1,7 +1,6 @@
 import Component from '@ember/component';
 import { computed, defineProperty, observer } from '@ember/object';
 import { or } from '@ember/object/computed';
-import { inject as service } from '@ember/service';
 import { capitalize } from '@ember/string';
 import { isEmpty } from '@ember/utils';
 
@@ -10,8 +9,6 @@ const AVAILABLE_RENDERERS = [
 ];
 
 export default Component.extend({
-  upfTableState: service(),
-
   classNames: ['upf-hypertable__cell'],
   classNameBindings: [
     'header:upf-hypertable__cell--header',
@@ -65,15 +62,9 @@ export default Component.extend({
   },
 
   _filtersPanelListener() {
-    if (this.column.property !== this.upfTableState.applyingFiltersOn) {
+    if (this.column.property !== this.manager.applyingFiltersOn) {
       this.set('showFiltersPanel', false);
     }
-  },
-
-  init() {
-    this._super();
-
-    this.get('upfTableState');
   },
 
   didReceiveAttrs() {
@@ -90,13 +81,13 @@ export default Component.extend({
 
       if (this.header) {
         this.addObserver(
-          'upfTableState.columns.@each.sortBy',
+          'manager.columns.@each.sortBy',
           this,
           this._tableStateListener
         );
 
         this.addObserver(
-          'upfTableState.applyingFiltersOn',
+          'manager.applyingFiltersOn',
           this,
           this._filtersPanelListener
         );
@@ -110,7 +101,7 @@ export default Component.extend({
   actions: {
     toggleFiltersPanel() {
       this.toggleProperty('showFiltersPanel');
-      this.set('upfTableState.applyingFiltersOn', this.column.property);
+      this.set('manager.applyingFiltersOn', this.column.property);
     }
   }
 });
