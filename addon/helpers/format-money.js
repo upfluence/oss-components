@@ -9,7 +9,7 @@ var _getFormatter = function(currency) {
 };
 
 var _formatMoney = function(amount, currency) {
-  if (isNaN(parseInt(amount))) return amount;
+  if (isNaN(parseInt(amount)) || !currency) return amount;
   return _getFormatter(currency).format(parseFloat(amount));
 };
 
