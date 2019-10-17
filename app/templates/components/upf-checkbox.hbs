@@ -1,11 +1,11 @@
-{{input type='checkbox' class='upf-checkbox__input'
-        id=(concat 'unchecked-checkbox-' elementId)
-        checked=value action='selectItem'}}
+{{input
+  type="checkbox" checked=value class="upf-checkbox__input"
+  id=(concat "unchecked-checkbox-" elementId)}}
 
-<label for={{concat 'unchecked-checkbox-' elementId}}
-       class='upf-checkbox__fake-checkbox'>
+<label for={{concat "unchecked-checkbox-" elementId}}
+       class="upf-checkbox__fake-checkbox">
 </label>
 
 {{#if hasLabel}}
-  <span class='upf-checkbox__label'>{{yield}}</span>
+  <span class="upf-checkbox__label">{{yield}}</span>
 {{/if}}
