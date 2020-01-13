@@ -1,6 +1,8 @@
-<div class="slider-container">
-     <span>{{min}}</span>
-     <input type="range" class="slider {{color}}" min={{min}} max={{max}} value={{value}} oninput={{action "onChange" value="target.value"}}>
-     <span>{{max}}</span>
-</div>
-{{value}}
+<span class="min-max-value min-value">{{or minLabel min}}</span>
+<input type="text" class="slider" name="my_range"/>
+<span class="min-max-value max-value">{{or maxLabel max}}</span>
+
+{{!-- Usage Example --}}
+{{!-- {{upf-slider class="custom-class" min=0 max=100 lowValue=50
+        mediumValue=79 lowClass='low' mediumClass='medium' highClass='high'
+        onChange=(action "onSliderChange") formatValue=formatValue}} --}}
