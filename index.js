@@ -96,8 +96,7 @@ module.exports = {
     lessOptions.paths.push(
       'node_modules/font-awesome/less',
       'node_modules/bootstrap/less',
-      'node_modules/upfluence-oss/less',
-      'node_modules/ion-rangeslider/less'
+      'node_modules/upfluence-oss/less'
     );
 
     app.options.lessOptions = lessOptions;
