@@ -1,14 +1,14 @@
-import Component from "@ember/component";
-import { computed } from "@ember/object";
+import Component from '@ember/component';
+import { computed } from '@ember/object';
 
 export default Component.extend({
-  classNames: ["upf-slider"],
-  classNameBindings: ["color"],
+  classNames: ['upf-slider'],
+  classNameBindings: ['color'],
 
   value: 0,
   active: false,
 
-  color: computed("value", "active", function() {
+  color: computed('value', 'active', function() {
     if(!this.active) {
       return;
     }
@@ -21,8 +21,8 @@ export default Component.extend({
   }),
 
   didInsertElement() {
-    this.$(".slider").ionRangeSlider({
-      skin: "round",
+    this.$('.slider').ionRangeSlider({
+      skin: 'round',
       min: this.options.min,
       max: this.options.max,
       from: this.options.max/2,
@@ -30,9 +30,9 @@ export default Component.extend({
       hide_min_max: true,
       onChange: (data) => {
         if(!this.active) {
-          this.toggleProperty("active");
+          this.toggleProperty('active');
         }
-        this.set("value", data.from);
+        this.set('value', data.from);
         this.options.onChange(data.from);
       },
       prettify: this.formatValue || null
