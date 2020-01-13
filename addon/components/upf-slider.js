@@ -12,20 +12,20 @@ export default Component.extend({
     if(!this.active) {
       return;
     }
-    if (this.value <= this.lowValue) {
-      return this.lowClass;
-    } else if (this.value <= this.mediumValue) {
-      return this.mediumClass;
+    if (this.value <= this.options.lowValue) {
+      return this.options.lowClass;
+    } else if (this.value <= this.options.mediumValue) {
+      return this.options.mediumClass;
     }
-    return this.highClass;
+    return this.options.highClass;
   }),
 
   didInsertElement() {
-    $(".slider").ionRangeSlider({
+    this.$(".slider").ionRangeSlider({
       skin: "round",
-      min: 0,
-      max: 100,
-      from: 50,
+      min: this.options.min,
+      max: this.options.max,
+      from: this.options.max/2,
       force_edges: true,
       hide_min_max: true,
       onChange: (data) => {
@@ -33,7 +33,7 @@ export default Component.extend({
           this.toggleProperty("active");
         }
         this.set("value", data.from);
-        this.sendAction("onChange", data.from);
+        this.options.onChange(data.from);
       },
       prettify: this.formatValue || null
     });
