@@ -1,23 +1,33 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import { notEmpty, or } from '@ember/object/computed';
+import { notEmpty } from '@ember/object/computed';
 
 export default Component.extend({
   classNames: ['upf-slider'],
   classNameBindings: ['color', 'active'],
 
-  value: or('options.value', '0'),
-  active: notEmpty('options.value'),
-
-  color: computed('value', 'active', 'options.value', function() {
-    if(!this.active) {
+  value: 0,
+  active: false,
+  slider: null,
+  color: computed('value', 'slider', function() {
+    if(this.value === null && this.slider !== null) {
+      this.set('active', false);
+      this.slider.update({
+        from: this.options.max/2
+      });
       return;
     }
+
+    if(!this.active) {
+      this.set('active', true);
+    }
+
     if (this.value <= this.options.lowValue) {
       return this.options.lowClass;
     } else if (this.value <= this.options.mediumValue) {
       return this.options.mediumClass;
     }
+
     return this.options.highClass;
   }),
 
@@ -26,7 +36,7 @@ export default Component.extend({
       skin: 'round',
       min: this.options.min,
       max: this.options.max,
-      from: this.options.value || this.options.max/2,
+      from: this.value !== null ? this.value : this.options.max/2,
       hide_min_max: true,
       onChange: (data) => {
         if(!this.active) {
@@ -40,5 +50,8 @@ export default Component.extend({
       prettify: this.formatValue || null
     });
 
-  }
+    let slider = $(".slider").data("ionRangeSlider");
+
+    this.set('slider', slider);
+  },
 });
