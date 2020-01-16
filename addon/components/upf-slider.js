@@ -38,6 +38,9 @@ export default Component.extend({
       max: this.options.max,
       from: this.value !== null ? this.value : this.options.max/2,
       hide_min_max: true,
+      step: this.options.step,
+      from_min: this.options.start,
+      from_max: this.options.end,
       onChange: (data) => {
         if(!this.active) {
           this.toggleProperty('active');
