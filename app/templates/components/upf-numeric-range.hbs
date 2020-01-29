@@ -1,0 +1,17 @@
+{{input
+  type="number" placeholder=_options.fromPlaceholder arrowless=true value=from
+  step=_options.step min=_options.min max=_options.max
+  class=(concat
+         "upf-numeric-range__from form-control upf-input"
+         (if size (concat " upf-input--" size)))}}
+
+<div class="upf-numeric-range__separator">
+  —
+</div>
+
+{{input
+  type="number" placeholder=_options.toPlaceholder arrowless=true value=to
+  step=_options.step min=_options.min max=_options.max
+  class=(concat
+         "upf-numeric-range__to form-control upf-input"
+         (if size (concat " upf-input--" size)))}}
