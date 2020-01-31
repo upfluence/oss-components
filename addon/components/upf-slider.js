@@ -1,6 +1,5 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import { notEmpty } from '@ember/object/computed';
 
 export default Component.extend({
   classNames: ['upf-slider'],
