@@ -17,11 +17,7 @@ export default Component.extend({
 
   sizeSmall: equal('size', 'small'),
 
-  defaultOptions: {
-  },
-
   _options: computed('options', function() {
     return Object.assign({}, DEFAULT_OPTIONS, this.options);
   }),
-
 });
