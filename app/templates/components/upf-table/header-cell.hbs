@@ -3,3 +3,11 @@
 {{else}}
   {{column.title}}
 {{/if}}
+
+{{#if column.tooltip}}
+  <fa class="fa fa-info-circle" data-toggle="tooltip" title={{column.tooltip}}></fa>
+{{/if}}
+
+{{#if column.subtitle}}
+  <div class="subtitle text-size-4">{{column.subtitle}}</div>
+{{/if}}
