@@ -26,6 +26,9 @@ export default Component.extend({
   }),
 
   didRender() {
-    this.$('[data-toggle="tooltip"]').tooltip();
+    this._super();
+    if(this.column.tooltip) {
+      this.$('[data-toggle="tooltip"]').tooltip();
+    }
   }
 });
