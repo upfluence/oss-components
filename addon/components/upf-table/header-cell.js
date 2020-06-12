@@ -23,12 +23,5 @@ export default Component.extend({
     }
 
     return 'upf-datatable__column--ascending';
-  }),
-
-  didRender() {
-    this._super();
-    if(this.column.tooltip) {
-      this.$('[data-toggle="tooltip"]').tooltip();
-    }
-  }
+  })
 });
