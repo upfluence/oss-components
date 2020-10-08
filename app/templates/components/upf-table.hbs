@@ -105,7 +105,13 @@
                     {{else if (eq column.helper "numeric")}}
                       {{format-numeric (get item column.property)}}
                     {{else}}
-                      {{get item column.property}}
+                      {{#if (and (eq (get item column.property) 0) column.emptyValue)}}
+                        <span class="upf-datatable__column--empty-value">
+                          N/A
+                        </span>
+                      {{else}}
+                        {{get item column.property}}
+                      {{/if}}
                     {{/if}}
                   {{/if}}
                 {{/upf-table/column}}
