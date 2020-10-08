@@ -107,7 +107,7 @@
                     {{else}}
                       {{#if (and (eq (get item column.property) 0) column.emptyValue)}}
                         <span class="upf-datatable__column--empty-value">
-                          N/A
+                          {{column.emptyValue}}
                         </span>
                       {{else}}
                         {{get item column.property}}
