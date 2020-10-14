@@ -8,7 +8,7 @@ import Plugin from './assets/plugin.svg';
 import Repo from './assets/repo.svg';
 import StackAlt from './assets/stackalt.svg';
 
-<Meta title="Example/Introduction" />
+<Meta title="OSS/Introduction" />
 
 <style>{`
   .subheading {
@@ -110,20 +110,39 @@ import StackAlt from './assets/stackalt.svg';
     font-size: 12px;
     display: inline-block;
   }
-
-  
 `}</style>
 
-# Welcome to Storybook
+# Welcome to Upfluence's OSS design system
 
-Storybook helps you build UI components in isolation from your app's business logic, data, and context.
-That makes it easy to develop hard-to-reach states. Save these UI states as **stories** to revisit during development, testing, or QA.
+OSS is a design system built to help Upfluence's developers and designers quickly
+create the best experience for our clients. At Upfluence, we love to create
+harmonious experiences for our users, solving challenging interactions once then
+applying the solutions consistently across our products — making sure users only
+have to learn them once.
+
+<div class="subheading">Installing</div>
+
+There are two options for installing and implementing/using our components:
+* <a href="https://emberjs.com/" target="_blank">Ember JS</a>
+* <a href="http://lesscss.org/" target="_blank">LESS</a>
+
+The best way to use the components is through our Ember JS addon,
+**oss-components**. You can install it via *Yarn* or *npm* package managers :
+```
+yarn add upfluence-oss-components
+```
+
+<div class="subheading">About Storybook</div>
+
+This documentation is build using Storybook, a tool that helps you build UI
+components in isolation from your app's business logic, data, and context.
+That makes it easy to develop hard-to-reach states. Save these UI states as
+**stories** to revisit during development, testing, or QA.
 
 Browse example stories now by navigating to them in the sidebar.
-View their code in the `src/storybook-examples` directory to learn how they work.
-We recommend building UIs with a [**component-driven**](https://componentdriven.org) process starting with atomic components and ending with pages.
-
-<div class="subheading">Configure</div>
+View their code in the `stories/` directory to learn how they work.
+We recommend building UIs with a [**component-driven**](https://componentdriven.org)
+process starting with atomic components and ending with pages.
 
 <div class="link-list">
   <a class="link-item" href="https://storybook.js.org/docs/react/api/presets" target="_blank">
