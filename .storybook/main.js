@@ -7,7 +7,12 @@ module.exports = {
   ],
   "addons": [
     "@storybook/addon-links",
-    "@storybook/addon-essentials"
+    {
+      name: "@storybook/addon-essentials",
+      options: {
+        backgrounds: false
+      }
+    }
   ],
   webpackFinal: async (config, configType) => {
     config.node = {fs: 'empty', child_process: 'empty'};
