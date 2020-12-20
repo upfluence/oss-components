@@ -1,7 +1,7 @@
 import hbs from 'htmlbars-inline-precompile';
 import { storiesOf } from '@storybook/ember';
 
-storiesOf('OSS/Components/Stats', module)
+storiesOf('Components/Stats', module)
   .add('Default', () => {
     return {
       template: hbs`
