@@ -76,5 +76,8 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
+  },
+  "resolutions": {
+    "countdown.js": "git+https://git@github.com/gumroad/countdown.js.git"
   }
 }
