@@ -1,0 +1,12 @@
+<svg class='upf-icon upf-icon-reply' width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g stroke="#00B489" stroke-width="2">
+            <g transform="translate(2.000000, 4.500000)">
+                <path d="M11,7 L12,7 C16.418278,7 20,10.581722 20,15" id="Path-18" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M0.188292377,7.31393792 C-0.0633555036,7.14092893 -0.0621720501,6.85961232 0.188292377,6.68741697 L10.5443512,-0.432417331 C10.7959991,-0.605426314 11,-0.436205041 11,-0.0397301486 L11,14.041085 C11,14.4309692 10.7948156,14.6059676 10.5443512,14.4337722 L0.188292377,7.31393792 Z" id="Triangle-5"></path>
+            </g>
+        </g>
+    </g>
+</svg>
