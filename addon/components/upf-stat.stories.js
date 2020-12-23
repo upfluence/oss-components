@@ -1,24 +1,35 @@
 import hbs from 'htmlbars-inline-precompile';
-import { storiesOf } from '@storybook/ember';
+import UpfStat from './upf-stat';
 
-storiesOf('Components/Stats', module)
-  .add('Default', () => {
-    return {
-      template: hbs`
-        {{upf-stat name=insight.name data=insight.data}}
-      `,
-      context: {
-        insight: {
-          name: 'Stat',
-          data: '80',
-        }
-      }
+export default {
+  title: 'Components/Stats',
+  component: UpfStat,
+  args : {
+    name: 'Stat',
+    data: '80',
+    label: 'Label'
+  },
+  argTypes: {
+    name: {
+      description: "Insight's name",
+      control: 'text'
+    },
+    data: {
+      description: "Insight's value.",
+      control: 'text'
+    },
+    label: {
+      description: "Insight's label",
+      control: 'text'
     }
-  }, {
-    notes: {
-      markdown: `
-        # Markdown!
-        > Notes can be done via markdown,
-      `
+  }
+}
+
+export let Default = (args) => {
+  return {
+    template: hbs`{{upf-stat name=name data=data label=label}}`,
+    context: {
+      ...args
     }
-  });
+  }
+}

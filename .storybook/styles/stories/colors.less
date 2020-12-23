@@ -1,0 +1,49 @@
+/*@import "upfluence-oss/less/upfluence-oss/";*/
+
+.colors-container {
+  display: grid;
+  grid-template-columns: repeat(4, 2fr);
+  grid-gap: 4px;
+}
+
+.colors-container__color .square {
+  border-radius: 2px;
+  height: 150px;
+  position: relative;
+}
+
+.colors-container__color .color-information p {
+  font-size: 12px;
+}
+
+.colors-container__color .square.square--bright-purple {
+  background-color: @upf-primary-bright-purple;
+}
+
+.colors-container__color .square.square--dark-purple {
+  background-color: @upf-primary-dark-purple;
+}
+
+.colors-container__color .square.square--orange {
+  background-color: @upf-primary-orange;
+}
+
+.colors-container__color .square.square--rock-blue {
+  background-color: @upf-primary-rock-blue;
+}
+
+.colors-container__color .square.square--feedback-info {
+  background-color: @upf-feedback-info;
+}
+
+.colors-container__color .square.square--feedback-success {
+  background-color: @upf-feedback-success;
+}
+
+.colors-container__color .square.square--feedback-alert {
+  background-color: @upf-feedback-alert;
+}
+
+.colors-container__color .square.square--feedback-error {
+  background-color: @upf-feedback-error;
+}
