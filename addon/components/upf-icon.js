@@ -6,6 +6,8 @@ import $ from 'jquery';
 const UpfIconComponent = Component.extend({
   assetMap: service('asset-map'),
 
+  assetsRoot: 'assets',
+
   icon: computed('params.[]', function() {
     return this.get('params')[0];
   }),
@@ -20,7 +22,7 @@ const UpfIconComponent = Component.extend({
 
   willInsertElement() {
     $.get(
-      this.get('assetMap').resolve(`assets/upf-icons/${this.get('icon')}.svg`),
+      this.get('assetMap').resolve(`${this.assetsRoot}/upf-icons/${this.get('icon')}.svg`),
       (data) => {
         let element = this.$()[0];
 
