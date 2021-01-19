@@ -22,6 +22,11 @@ export default {
       description: "Insight's label",
       control: 'text'
     }
+  },
+  parameters: {
+    docs: {
+      iframeHeight: 400
+    }
   }
 }
 
