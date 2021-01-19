@@ -8,7 +8,6 @@
 /bower_components/
 /node_modules/
 yarn.lock
-.storybook/oss
 storybook-static
 
 # misc
