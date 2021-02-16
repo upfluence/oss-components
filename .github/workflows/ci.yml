@@ -16,6 +16,8 @@ jobs:
         with:
           submodules: true
           fetch-depth: 0
+      - name: list storybook
+        run: ls -la .storybook
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
