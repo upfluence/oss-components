@@ -2,6 +2,7 @@ import Component from '@ember/component';
 import EmberObject, { observer, computed } from '@ember/object';
 import { filterBy } from '@ember/object/computed';
 import { run } from '@ember/runloop';
+import $ from 'jquery';
 
 export default Component.extend({
   classNames: ['upf-table__container'],
@@ -34,6 +35,7 @@ export default Component.extend({
     this._super();
 
     this.set('_searchQuery', this.get('searchQuery'));
+    this._toggleDisplayedColumnVisibilityPanel()
   },
 
   _columns: computed('columns', function() {
@@ -76,11 +78,17 @@ export default Component.extend({
     run.debounce(this, this._bubbleSearch, 100);
   }),
 
-  actions: {
-    toggleDisplayedColumnVisibilityPanel() {
-      this.toggleProperty('displayedColumnsPanel');
-    },
+  _toggleDisplayedColumnVisibilityPanel() {
+    $(window).click(e => {
+      if ($(e.target).closest('a#button-column-visibility-panel').length > 0) {
+        this.toggleProperty('displayedColumnsPanel');
+      } else if ($(e.target).closest('div#column-visibility-panel').length === 0) {
+        this.set('displayedColumnsPanel', false);
+      }
+    })
+  },
 
+  actions: {
     callOnRowClickCallback(action, record) {
       this.onRowClick(record);
     },
