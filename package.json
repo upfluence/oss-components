@@ -18,7 +18,9 @@
     "lint:js": "eslint .",
     "start": "ember serve",
     "test": "ember test",
-    "test:all": "ember try:each"
+    "test:all": "ember try:each",
+    "storybook": "start-storybook -p 6006 -s dist",
+    "build-storybook": "build-storybook -s dist"
   },
   "dependencies": {
     "babel-plugin-debug-macros": "^0.3.1",
@@ -35,7 +37,16 @@
     "upfluence-oss": "^2.x"
   },
   "devDependencies": {
+    "@babel/core": "^7.11.6",
     "@ember/optional-features": "^0.6.3",
+    "@storybook/addon-actions": "^6.1.18",
+    "@storybook/addon-essentials": "^6.1.18",
+    "@storybook/addon-links": "^6.1.18",
+    "@storybook/ember": "^6.1.18",
+    "@storybook/ember-cli-storybook": "^0.3.0",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-ember-modules-api-polyfill": "^3.1.1",
+    "babel-plugin-htmlbars-inline-precompile": "^4.2.0",
     "broccoli-asset-rev": "^2.7.0",
     "ember-cli": "~3.8.2",
     "ember-cli-dependency-checker": "^3.1.0",
@@ -56,8 +67,10 @@
     "ember-try": "^1.0.0",
     "eslint-plugin-ember": "^5.2.0",
     "eslint-plugin-node": "^7.0.1",
+    "less-loader": "^7.1.0",
     "loader.js": "^4.7.0",
-    "qunit-dom": "^0.8.0"
+    "qunit-dom": "^0.8.0",
+    "react-is": "^16.13.1"
   },
   "resolutions": {
     "@babel/helper-compilation-targets": "7.9.6"
@@ -67,5 +80,8 @@
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
+  },
+  "resolutions": {
+    "countdown.js": "git+https://git@github.com/gumroad/countdown.js.git"
   }
 }

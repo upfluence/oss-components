@@ -1,3 +1,3 @@
-[submodule "oss"]
-	path = oss
-	url = https://github.com/upfluence/oss
+[submodule ".storybook/oss"]
+	path = .storybook/oss
+	url = git@github.com:upfluence/oss.git

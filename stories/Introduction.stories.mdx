@@ -1,0 +1,130 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+import UpfluenceLogo from './assets/images/upfluence-full-blue-logo.svg';
+import EmberTomster from './assets/images/ember-tomster.png';
+import JavascriptBundlers from './assets/images/javascript-bundlers.jpg';
+
+<Meta
+  title="Getting Started/Introduction"
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: { canvas: { hidden: true } }
+  }}
+/>
+
+<div class="upf-align--center margin-top-xx-sm padding-sm">
+  <img src={UpfluenceLogo} alt="upfluence-logo" width="50%"/>
+</div>
+
+<div class="upf-align--center">
+<h1>Welcome to Upfluence's OSS Design System</h1>
+</div>
+
+OSS is a design system built to help Upfluence's developers and designers quickly
+create the best experience for our clients. At Upfluence, we love to create
+harmonious experiences for our users, solving challenging interactions once then
+applying the solutions consistently across our products — making sure users only
+have to learn them once.
+
+## What is a design system?
+
+Modern user interfaces are constructed from hundreds of UI components that are
+endlessly reused to deliver different user experiences. Design systems catalog all the
+reusable UI components to help teams assemble complex, yet durable UIs faster. Since
+both designers and developers contribute to the UI components, the design system
+serves as a bridge between disciplines. It is also the “source of truth” for an
+organization’s common components.
+
+## Packages
+
+Even though Ember JS is Upfluence's framework of choice, the OSS design system
+codebase has been split into two packages. Based on which type of application
+you're building you'll choose a different composition:
+
+* [Our CSS/Assets](https://github.com/upfluence/oss) repository. Written using
+[Less CSS](http://lesscss.org/) preprocessor, this package holds all of the
+design system styles, including of course the ones used in our web components.
+* [Our opinionated component library](https://github.com/upfluence/oss-components) which
+is actually an [Ember JS](https://emberjs.com/) addon and is home to the common
+components we use while developing amazing products.
+
+## Installation 💻
+
+Depending on the type of application you are building you have two ways of
+installing the design system.
+
+PS : Even though we are using **Yarn** as a package manager in the following
+commands, those should work fine with **npm** too.
+
+#### Preferred Installation
+
+<p class="upf-align--center">
+  <img src={EmberTomster} width="8%" />
+</p>
+
+<p>
+ Yay 🎊 You are going with Ember JS, our framework of choice @ Upfluence. In order
+to install and use OSS, just follow the this simple steps:
+</p>
+
+
+```console
+john@acme:~$ ember install ember-cli-less
+john@acme:~$ ember install upfluence-oss-components
+```
+
+```js
+// project-name/ember-cli-build.js
+
+module.exports = function(defaults) {
+  let app = new EmberApp(defaults, {
+    lessOptions: {
+      paths: [
+        'node_modules/upfluence-oss-components/app/styles'
+      ]
+    }
+  });
+
+  return app.toTree();
+};
+```
+
+```css
+// app/styles/app.less
+
+@import "oss-components";
+```
+
+And that's it ! Your app is now up and running with our amazing design system
+🎉　🥳 !
+
+
+#### I am not using Ember JS
+
+<p class="upf-align--center">
+  <img src={JavascriptBundlers} width="35%" />
+</p>
+
+
+Our components' CSS is still usable even though you won't have a ready-to-use
+solution but will need to apply the classes by yourself.
+
+The installation by itself is pretty straightforward and consist of a single
+command :
+```console
+john@acme:~$ yarn add upfluence-oss
+```
+
+Once the package installed, you can import it for usage following your preferred
+JavaScript bundler's documentation.
+
+#### I'm not using any framework and can't rely on a JavaScript bundler
+
+You can still build a raw CSS file including its dependencies (Bootstrap) using
+the LESS preprocessor CLI tool [(See Installation)](http://lesscss.org/usage/).
+
+```console
+john@acme:~$ git clone git@github.com:upfluence/oss.git
+john@acme:~$ cd oss
+john@acme:~$ yarn
+john@acme:~$ lessc less/upfluence-oss.less --include-path=node_modules/bootstrap/less/ > oss.bundled.css
+```
