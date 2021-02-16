@@ -22,13 +22,13 @@ jobs:
       - name: Install Dependencies
         run: yarn
       - name: Ember Build
-        run: ./node_modules/ember-cli/bin/ember build
+        run: ./node_modules/ember-cli/bin/ember build --silent
       - name: Webpack assets workaround fix
         run: |
           cp -R .storybook/oss/images .storybook/oss/less/layouts/
           cp -R .storybook/oss/fonts .storybook/oss/less/core/
       - name: Storybook Build
-        run: yarn build-storybook
+        run: yarn build-storybook --quiet
       - name: Deploy website
         uses: peaceiris/actions-gh-pages@v3
         with:
