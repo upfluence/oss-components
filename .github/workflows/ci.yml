@@ -6,15 +6,24 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [12.x]
+
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           submodules: true
           fetch-depth: 0
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Install Dependencies
+        run: yarn
       - name: Ember Build
-        run: |
-          yarn && ember build
+        run: ./node_modules/ember-cli/bin/ember build
       - name: Webpack assets workaround fix
         run: |
           cp -R .storybook/oss/images .storybook/oss/less/layouts/
