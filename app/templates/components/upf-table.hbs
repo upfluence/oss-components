@@ -27,19 +27,21 @@
       {{expanding-search classNames="margin-left-xx-sm" searchQuery=_searchQuery
                          placeholder=searchInputPlaceholder small=true}}
     {{/if}}
-    <div class="upf-datatable__side-panel--arrow-up {{if displayedColumnsPanel "side-panel--appearance"}}"></div>
-    <div class="upf-datatable__side-panel {{if displayedColumnsPanel "side-panel--appearance"}}"
-         id="column-visibility-panel">
-      {{#each _columns as |column|}}
-        {{#unless column.unhideable}}
-          <div class="margin-bottom-sm">
-            {{#upf-checkbox value=column.visible hasLabel=true}}
-              <span class="text-color-contrast">{{column.title}}</span>
-            {{/upf-checkbox}}
-          </div>
-        {{/unless}}
-      {{/each}}
-    </div>
+    {{#if displayedColumnsPanel}}
+      <div class="upf-datatable__side-panel--arrow-up side-panel--appearance"></div>
+      <div class="upf-datatable__side-panel side-panel--appearance"
+           id="column-visibility-panel">
+        {{#each _columns as |column|}}
+          {{#unless column.unhideable}}
+            <div class="margin-bottom-sm">
+              {{#upf-checkbox value=column.visible hasLabel=true}}
+                <span class="text-color-contrast">{{column.title}}</span>
+              {{/upf-checkbox}}
+            </div>
+          {{/unless}}
+        {{/each}}
+      </div>
+    {{/if}}
   </li>
 </ul>
 

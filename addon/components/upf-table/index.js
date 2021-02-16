@@ -35,7 +35,11 @@ export default Component.extend({
     this._super();
 
     this.set('_searchQuery', this.get('searchQuery'));
-    this._toggleDisplayedColumnVisibilityPanel()
+    this.toggleDisplayedColumnVisibilityPanel()
+  },
+
+  didDestroyElement() {
+    $(window).off('click')
   },
 
   _columns: computed('columns', function() {
@@ -78,7 +82,7 @@ export default Component.extend({
     run.debounce(this, this._bubbleSearch, 100);
   }),
 
-  _toggleDisplayedColumnVisibilityPanel() {
+  toggleDisplayedColumnVisibilityPanel() {
     $(window).click(e => {
       if ($(e.target).closest('a#button-column-visibility-panel').length > 0) {
         this.toggleProperty('displayedColumnsPanel');
