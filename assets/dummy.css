@@ -9270,8 +9270,8 @@ These are the colors used to visually provide feedbacks to the user for:
 */
 @font-face {
   font-family: 'upf-icons';
-  src: url('fonts/upf-icons.eot?n1lb2q');
-  src: url('fonts/upf-icons.eot?n1lb2q#iefix') format('embedded-opentype'), url('fonts/upf-icons.ttf?n1lb2q') format('truetype'), url('fonts/upf-icons.woff?n1lb2q') format('woff'), url('fonts/upf-icons.svg?n1lb2q#upf-icons') format('svg');
+  src: url('fonts/upf-icons.eot?q3y53d');
+  src: url('fonts/upf-icons.eot?q3y53d#iefix') format('embedded-opentype'), url('fonts/upf-icons.ttf?q3y53d') format('truetype'), url('fonts/upf-icons.woff?q3y53d') format('woff'), url('fonts/upf-icons.svg?q3y53d#upf-icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -9289,9 +9289,15 @@ These are the colors used to visually provide feedbacks to the user for:
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-.upf-icon--tiktok:before,
-.fa-tiktok:before {
-  content: "\e900";
+.upf-icon--reel:before,
+.fa-reel:before {
+  content: "\e907";
+  color: #bc2a8d;
+}
+.upf-icon--igtv:before,
+.fa-igtv:before {
+  content: "\e906";
+  color: #bc2a8d;
 }
 .upf-icon--search:before {
   content: "\e800";
@@ -9325,6 +9331,10 @@ These are the colors used to visually provide feedbacks to the user for:
 }
 .upf-icon--messages:before {
   content: "\e810";
+}
+.upf-icon--tiktok:before,
+.fa-tiktok:before {
+  content: "\e900";
 }
 .upf-icon--check:before {
   content: "\e901";
@@ -9550,7 +9560,9 @@ These colors are not directly part of our UI, but we mention these brands regula
 
 */
 .upf-icon,
-.fa-tiktok {
+.fa-tiktok,
+.fa-reel,
+.fa-igtv {
   /* use !important to prevent issues with browser extensions that change fonts */
   font-family: 'upf-icons' !important;
   speak: none;
@@ -9581,10 +9593,9 @@ These colors are not directly part of our UI, but we mention these brands regula
   float: none;
 }
 .upf-input-container .input-group .input-group-addon {
-  background-color: #060666;
-  border: 1px solid #060666;
-  color: #ffffff;
-  font-weight: bold;
+  background-color: #ffffff;
+  border: 1px solid #f1f2f3;
+  color: #8a95a0;
   padding: 0 1.5em;
   text-align: center;
 }
@@ -9671,10 +9682,10 @@ icon usages include:
 
 */
 .upf-alert {
-  font-size: 1.5rem;
   border-radius: 4px;
   background-color: #f9f9f9;
   display: flex;
+  font-size: 1.33333333rem;
   padding: 1%;
 }
 .upf-alert__icon {
@@ -9717,7 +9728,9 @@ icon usages include:
   color: #fe2518;
 }
 .upf-alert--info {
-  background-color: #e9e9fc;
+  background-color: #f4f4fe;
+  border: 1px solid #0d0de6;
+  border-radius: 4px;
 }
 .upf-alert--info .upf-alert__icon,
 .upf-alert--info .upf-alert__text span {
@@ -10592,6 +10605,9 @@ a.upf-btn--small {
   text-transform: capitalize;
   background-color: #f9f9f9;
 }
+.upf-datatable__row--header .subtitle {
+  font-weight: 400;
+}
 .upf-datatable__row--header .upf-datatable__column:hover:not(.upf-datatable__column--unsortable) {
   border-bottom: 1px solid #0d0de6;
   color: #0d0de6;
@@ -10893,9 +10909,8 @@ label {
 }
 .upf-input-container--errorful .input-group .input-group-addon {
   background-color: #fe2518;
-  border: 1px solid #fe2518;
-  color: #ffffff;
-  font-weight: bold;
+  border: 1px solid #f1f2f3;
+  color: #8a95a0;
   padding: 0 1.5em;
   text-align: center;
 }
@@ -11659,10 +11674,9 @@ Emphasized link
   display: none;
 }
 .wysiwyg-editor .note-editor .note-group-image-url .input-group .input-group-addon {
-  background-color: #060666;
-  border: 1px solid #060666;
-  color: #ffffff;
-  font-weight: bold;
+  background-color: #ffffff;
+  border: 1px solid #f1f2f3;
+  color: #8a95a0;
   padding: 0 1.5em;
   text-align: center;
 }
@@ -11736,13 +11750,23 @@ Emphasized link
 }
 .upf-dropdown {
   background-color: #ffffff;
-  border: 1px solid #969696;
-  border-radius: 4px;
-  box-shadow: none;
+  border: 1px solid #f9f9f9;
+  border-radius: 3px;
+  box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.31) 0px 0px 1px;
   margin-top: 0.5em;
 }
 .upf-dropdown li:not(.divider) {
   padding: 0.5em 1.2em;
+  font-size: 1.33333333rem;
+  display: flex;
+  align-items: center;
+}
+.upf-dropdown li:not(.divider) .fa {
+  color: #1b1e21;
+  min-width: 15px;
+}
+.upf-dropdown li:not(.divider):hover {
+  background-color: #f9f9f9 !important;
 }
 .upf-dropdown li:not(.divider) a {
   color: #1b1e21;

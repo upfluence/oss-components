@@ -9,7 +9,7 @@
     value: true
   });
   _exports.default = void 0;
-  const App = Ember.Application.extend({
+  var App = Ember.Application.extend({
     modulePrefix: _environment.default.modulePrefix,
     podModulePrefix: _environment.default.podModulePrefix,
     Resolver: _resolver.default
@@ -56,7 +56,7 @@
   });
   Object.defineProperty(_exports, "default", {
     enumerable: true,
-    get: function () {
+    get: function get() {
       return _expandingSearch.default;
     }
   });
@@ -89,7 +89,7 @@
   });
   Object.defineProperty(_exports, "default", {
     enumerable: true,
-    get: function () {
+    get: function get() {
       return _loadingState.default;
     }
   });
@@ -102,7 +102,7 @@
   });
   Object.defineProperty(_exports, "default", {
     enumerable: true,
-    get: function () {
+    get: function get() {
       return _radioButton.default;
     }
   });
@@ -135,7 +135,7 @@
   });
   Object.defineProperty(_exports, "default", {
     enumerable: true,
-    get: function () {
+    get: function get() {
       return _upfCard.default;
     }
   });
@@ -148,7 +148,7 @@
   });
   Object.defineProperty(_exports, "default", {
     enumerable: true,
-    get: function () {
+    get: function get() {
       return _upfCheckbox.default;
     }
   });
@@ -171,7 +171,7 @@
   });
   Object.defineProperty(_exports, "default", {
     enumerable: true,
-    get: function () {
+    get: function get() {
       return _upfImage.default;
     }
   });
@@ -184,7 +184,7 @@
   });
   Object.defineProperty(_exports, "default", {
     enumerable: true,
-    get: function () {
+    get: function get() {
       return _upfProgress.default;
     }
   });
@@ -197,7 +197,7 @@
   });
   Object.defineProperty(_exports, "default", {
     enumerable: true,
-    get: function () {
+    get: function get() {
       return _upfStat.default;
     }
   });
@@ -210,7 +210,7 @@
   });
   Object.defineProperty(_exports, "default", {
     enumerable: true,
-    get: function () {
+    get: function get() {
       return _upfTable.default;
     }
   });
@@ -223,7 +223,7 @@
   });
   Object.defineProperty(_exports, "default", {
     enumerable: true,
-    get: function () {
+    get: function get() {
       return _column.default;
     }
   });
@@ -236,7 +236,7 @@
   });
   Object.defineProperty(_exports, "default", {
     enumerable: true,
-    get: function () {
+    get: function get() {
       return _headerCell.default;
     }
   });
@@ -249,7 +249,7 @@
   });
   Object.defineProperty(_exports, "default", {
     enumerable: true,
-    get: function () {
+    get: function get() {
       return _pagination.default;
     }
   });
@@ -262,7 +262,7 @@
   });
   Object.defineProperty(_exports, "default", {
     enumerable: true,
-    get: function () {
+    get: function get() {
       return _row.default;
     }
   });
@@ -274,7 +274,7 @@
     value: true
   });
   _exports.default = void 0;
-  const config = _environment.default['ember-cli-toggle'] || {};
+  var config = _environment.default['ember-cli-toggle'] || {};
 
   var _default = _component.default.extend({
     theme: config.defaultTheme || 'default',
@@ -340,13 +340,13 @@
   });
   Object.defineProperty(_exports, "default", {
     enumerable: true,
-    get: function () {
+    get: function get() {
       return _formatMoney.default;
     }
   });
   Object.defineProperty(_exports, "formatMoneyHelper", {
     enumerable: true,
-    get: function () {
+    get: function get() {
       return _formatMoney.formatMoneyHelper;
     }
   });
@@ -360,9 +360,23 @@
   _exports.formatNumericHelper = formatNumericHelper;
   _exports.default = void 0;
 
+  function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+  function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+  function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+  function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+  function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+  function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
   function formatNumericHelper(params) {
-    let [number] = params;
-    let formatter = Intl.NumberFormat(['en-EN', 'fr-FR'], {
+    var _params = _slicedToArray(params, 1),
+        number = _params[0];
+
+    var formatter = Intl.NumberFormat(['en-EN', 'fr-FR'], {
       style: 'decimal',
       minimumFractionDigits: 0 // show decimals only if there are ones
 
@@ -437,13 +451,13 @@
   });
   Object.defineProperty(_exports, "default", {
     enumerable: true,
-    get: function () {
+    get: function get() {
       return _isEqual.default;
     }
   });
   Object.defineProperty(_exports, "isEqual", {
     enumerable: true,
-    get: function () {
+    get: function get() {
       return _isEqual.isEqual;
     }
   });
@@ -547,9 +561,24 @@
   _exports.truncateHelper = truncateHelper;
   _exports.default = void 0;
 
+  function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+  function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+  function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+  function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+  function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+  function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
   function truncateHelper(params) {
-    let [string, numberOfCharacters] = params;
-    let remainingString = (string || '').slice(0, numberOfCharacters);
+    var _params = _slicedToArray(params, 2),
+        string = _params[0],
+        numberOfCharacters = _params[1];
+
+    var remainingString = (string || '').slice(0, numberOfCharacters);
     return remainingString === string ? string : remainingString + '...';
   }
 
@@ -594,13 +623,11 @@
   _exports.default = void 0;
   var _default = {
     name: 'container-debug-adapter',
-
-    initialize() {
-      let app = arguments[1] || arguments[0];
+    initialize: function initialize() {
+      var app = arguments[1] || arguments[0];
       app.register('container-debug-adapter:main', _containerDebugAdapter.default);
       app.inject('container-debug-adapter:main', 'namespace', 'application:main');
     }
-
   };
   _exports.default = _default;
 });
@@ -617,7 +644,7 @@
 
   var _default = {
     name: 'ember-faker',
-    initialize
+    initialize: initialize
   };
   _exports.default = _default;
 });
@@ -659,7 +686,7 @@
       if (!theGlobal[globalName]) {
         theGlobal[globalName] = application;
         application.reopen({
-          willDestroy: function () {
+          willDestroy: function willDestroy() {
             this._super.apply(this, arguments);
 
             delete theGlobal[globalName];
@@ -729,7 +756,7 @@
   });
   Object.defineProperty(_exports, "default", {
     enumerable: true,
-    get: function () {
+    get: function get() {
       return _upfTableSearch.default;
     }
   });
@@ -742,7 +769,7 @@
   });
   Object.defineProperty(_exports, "default", {
     enumerable: true,
-    get: function () {
+    get: function get() {
       return _upfTableSelection.default;
     }
   });
@@ -817,7 +844,7 @@
   });
   QUnit.test('addon/components/upf-stat.stories.js', function (assert) {
     assert.expect(1);
-    assert.ok(false, 'addon/components/upf-stat.stories.js should pass ESLint\n\n4:31 - \'module\' is not defined. (no-undef)');
+    assert.ok(true, 'addon/components/upf-stat.stories.js should pass ESLint\n\n');
   });
   QUnit.test('addon/components/upf-table/column.js', function (assert) {
     assert.expect(1);
@@ -989,7 +1016,7 @@
     value: true
   });
   _exports.default = void 0;
-  const Router = Ember.Router.extend({
+  var Router = Ember.Router.extend({
     location: _environment.default.locationType,
     rootURL: _environment.default.rootURL
   });
