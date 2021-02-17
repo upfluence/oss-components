@@ -35,11 +35,6 @@ export default Component.extend({
     this._super();
 
     this.set('_searchQuery', this.get('searchQuery'));
-    this.toggleDisplayedColumnVisibilityPanel()
-  },
-
-  didDestroyElement() {
-    $(window).off('click')
   },
 
   _columns: computed('columns', function() {
@@ -81,16 +76,6 @@ export default Component.extend({
   _searchQueryObserver: observer('_searchQuery', function() {
     run.debounce(this, this._bubbleSearch, 100);
   }),
-
-  toggleDisplayedColumnVisibilityPanel() {
-    $(window).click(e => {
-      if ($(e.target).closest('a#button-column-visibility-panel').length > 0) {
-        this.toggleProperty('displayedColumnsPanel');
-      } else if ($(e.target).closest('div#column-visibility-panel').length === 0) {
-        this.set('displayedColumnsPanel', false);
-      }
-    })
-  },
 
   actions: {
     callOnRowClickCallback(action, record) {

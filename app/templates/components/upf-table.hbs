@@ -5,14 +5,7 @@
 
   <li class="upf-datatable__actions-pull-right">
     {{#if hasToggleableColumns}}
-      <a class="upf-btn upf-btn--default upf-btn--small upf-link--reset" id="button-column-visibility-panel">
-        <i class="fa fa-columns"></i> &nbsp;
-        {{#if displayedColumnsPanel}}
-          <i class="fa fa-caret-up"></i>
-        {{else}}
-          <i class="fa fa-caret-down"></i>
-        {{/if}}
-      </a>
+      {{column-visibility-panel columns=_columns}}
     {{/if}}
 
     {{#if hasPagination}}
@@ -26,21 +19,6 @@
     {{#if hasSearch}}
       {{expanding-search classNames="margin-left-xx-sm" searchQuery=_searchQuery
                          placeholder=searchInputPlaceholder small=true}}
-    {{/if}}
-    {{#if displayedColumnsPanel}}
-      <div class="upf-datatable__side-panel--arrow-up side-panel--appearance"></div>
-      <div class="upf-datatable__side-panel side-panel--appearance"
-           id="column-visibility-panel">
-        {{#each _columns as |column|}}
-          {{#unless column.unhideable}}
-            <div class="margin-bottom-sm">
-              {{#upf-checkbox value=column.visible hasLabel=true}}
-                <span class="text-color-contrast">{{column.title}}</span>
-              {{/upf-checkbox}}
-            </div>
-          {{/unless}}
-        {{/each}}
-      </div>
     {{/if}}
   </li>
 </ul>
