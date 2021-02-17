@@ -5,10 +5,10 @@ export default Component.extend({
   hasToggleableColumns: false,
 
   handleClick(event) {
-    if (event.target.closest('.button-column-visibility-panel')) {
+    if (event.target.closest('.button-column-visibility-panel') != null) {
       this.toggleProperty('displayedColumnsPanel');
     }
-    else {
+    else if (event.target.closest('.side-panel--appearance') == null) {
       this.set('displayedColumnsPanel', false);
     }
   },
