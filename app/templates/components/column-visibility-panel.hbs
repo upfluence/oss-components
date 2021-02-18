@@ -1,10 +1,6 @@
 <button class="upf-btn upf-btn--default upf-btn--small upf-link--reset button-column-visibility-panel">
   <i class="fa fa-columns"></i> &nbsp;
-  {{#if displayedColumnsPanel}}
-    <i class="fa fa-caret-up"></i>
-  {{else}}
-    <i class="fa fa-caret-down"></i>
-  {{/if}}
+  <i class="fa {{if displayedColumnsPanel "fa-caret-up" "fa-caret-down"}}"></i>
 </button>
 
 {{#if displayedColumnsPanel}}
