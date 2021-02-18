@@ -1,6 +1,6 @@
 {
   "name": "upfluence-oss-components",
-  "version": "2.0.22",
+  "version": "2.0.23",
   "description": "The default blueprint for ember-cli addons.",
   "keywords": [
     "ember-addon"
@@ -73,15 +73,12 @@
     "react-is": "^16.13.1"
   },
   "resolutions": {
-    "@babel/helper-compilation-targets": "7.9.6"
+    "countdown.js": "git+https://git@github.com/gumroad/countdown.js.git"
   },
   "engines": {
     "node": "6.* || 8.* || >= 10.*"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
-  },
-  "resolutions": {
-    "countdown.js": "git+https://git@github.com/gumroad/countdown.js.git"
   }
 }
