@@ -4,7 +4,7 @@ export default Component.extend({
   displayedColumnsPanel: false,
   hasToggleableColumns: false,
 
-  handleClick(event) {
+  clickHandler(event) {
     if (event.target.closest('.button-column-visibility-panel') != null) {
       this.toggleProperty('displayedColumnsPanel');
     }
@@ -16,14 +16,14 @@ export default Component.extend({
   init(){
     this._super();
 
-    this.set('bindHandleClick', this.get('handleClick').bind(this));
+    this.set('bindClickHandler', this.clickHandler.bind(this));
   },
 
   willInsertElement() {
-    document.addEventListener('click', this.get('bindHandleClick'), false);
+    document.addEventListener('click', this.bindClickHandler, false);
   },
 
   willDestroyElement(){
-    document.removeEventListener('click', this.get('bindHandleClick'), false);
+    document.removeEventListener('click', this.bindClickHandler, false);
   }
 });
