@@ -2,7 +2,6 @@ import Component from '@ember/component';
 import EmberObject, { observer, computed } from '@ember/object';
 import { filterBy } from '@ember/object/computed';
 import { run } from '@ember/runloop';
-import $ from 'jquery';
 
 export default Component.extend({
   classNames: ['upf-table__container'],
