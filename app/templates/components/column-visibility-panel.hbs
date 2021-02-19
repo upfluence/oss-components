@@ -1,0 +1,19 @@
+<button class="upf-btn upf-btn--default upf-btn--small upf-link--reset button-column-visibility-panel">
+  <i class="fa fa-columns"></i> &nbsp;
+  <i class="fa {{if displayedColumnsPanel "fa-caret-up" "fa-caret-down"}}"></i>
+</button>
+
+{{#if displayedColumnsPanel}}
+  <div class="upf-datatable__side-panel--arrow-up side-panel--appearance"></div>
+  <div class="upf-datatable__side-panel side-panel--appearance column-visibility-panel">
+    {{#each columns as |column|}}
+      {{#unless column.unhideable}}
+        <div class="margin-bottom-sm">
+          {{#upf-checkbox value=column.visible hasLabel=true}}
+            <span class="text-color-contrast">{{column.title}}</span>
+          {{/upf-checkbox}}
+        </div>
+      {{/unless}}
+    {{/each}}
+  </div>
+{{/if}}
