@@ -127122,6 +127122,39 @@ define("ember-resolver/features", [], function () {
 
   _exports.default = _default;
 });
+;define("oss-components/components/column-visibility-panel", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _default = Ember.Component.extend({
+    displayedColumnsPanel: false,
+    hasToggleableColumns: false,
+    handleClick: function handleClick(event) {
+      if (event.target.closest('.button-column-visibility-panel')) {
+        this.toggleProperty('displayedColumnsPanel');
+      } else if (!event.target.closest('.side-panel--appearance')) {
+        this.set('displayedColumnsPanel', false);
+      }
+    },
+    init: function init() {
+      this._super();
+
+      this.set('clickHandler', this.handleClick.bind(this));
+    },
+    willInsertElement: function willInsertElement() {
+      document.addEventListener('click', this.clickHandler, false);
+    },
+    willDestroyElement: function willDestroyElement() {
+      document.removeEventListener('click', this.clickHandler, false);
+    }
+  });
+
+  _exports.default = _default;
+});
 ;define("oss-components/components/destructive-button", ["exports"], function (_exports) {
   "use strict";
 
@@ -127978,9 +128011,6 @@ define("ember-resolver/features", [], function () {
       Ember.run.debounce(this, this._bubbleSearch, 100);
     }),
     actions: {
-      toggleDisplayedColumnVisibilityPanel: function toggleDisplayedColumnVisibilityPanel() {
-        this.toggleProperty('displayedColumnsPanel');
-      },
       callOnRowClickCallback: function callOnRowClickCallback(action, record) {
         this.onRowClick(record);
       },
