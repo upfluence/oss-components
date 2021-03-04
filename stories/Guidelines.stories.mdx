@@ -1,0 +1,40 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title="Getting Started/Developer Guidelines"
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: { canvas: { hidden: true } }
+  }}
+/>
+
+# Developer Guidelines
+
+Various guidelines to ensure consistency and quality across the Upfluence Frontend Team.
+
+## Tooling
+
+At Upfluence, we use multiple tools allowing us following defined coding
+standards both on our local development workstations AND our Continuous
+Integration workflows.
+
+### ESLint
+
+We use [ESLint](https://eslint.org/) to encapsulate and enforce frontend code standards. Also,
+because we are using Ember JS, we use [eslint-plugin-ember](https://github.com/ember-cli/eslint-plugin-ember)
+to stay up to date on its standards too. You can find all settings for ESLint in `.eslintrc.js`.
+
+To run ESLint locally, the projects all include the following **Yarn** scripts 
+
+```console
+john@acme:~$ yarn lint:js
+```
+
+### Formatting with Prettier
+
+Our code is  automatically formatted with [Prettier](https://prettier.io/) to follow the defined guidelines.
+Prettier is taking care of formatting `.js`, `.html` and `.less` based on its standard
+rules. You can find all settings for Prettier in `.prettierrc`.
+
+For Installation based off your favorite code editor, please follow Prettier's
+[Editor Integration documentation](https://prettier.io/docs/en/editors.html)
