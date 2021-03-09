@@ -1,8 +1,8 @@
-import { modifiers } from 'ember-modifiers';
+import { modifier } from 'ember-modifier';
 import $ from 'jquery';
 
 export default modifier((element, [trigger]) => {
-  trigger = trigger ?? 'hover'
+  trigger ??= 'hover';
 
   $(element).popover({trigger});
 });
