@@ -125333,6 +125333,275 @@ define('faker', [], function() {
   };
 });
 
+;function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+(function () {
+  'use strict';
+
+  if (false) {
+    // @ts-ignore
+    var glimmerRuntime = Ember.__loader.require('@glimmer/runtime'); // Ember.destroy is already set by default, ignoring it here
+
+
+    Ember._registerDestructor = glimmerRuntime.registerDestructor;
+    Ember._unregisterDestructor = glimmerRuntime.unregisterDestructor;
+    Ember._associateDestroyableChild = glimmerRuntime.associateDestroyableChild;
+    Ember._isDestroying = glimmerRuntime.isDestroying;
+    Ember._isDestroyed = glimmerRuntime.isDestroyed; // on 3.20.0-beta.4 through 3.20.2 (estimated) there is an issue with the upstream
+    // `assertDestroyablesDestroyed` method that triggers the assertion in cases that it
+    // should not; in order to allow code bases to function on those specific Ember versions
+    // (including our own test suite) we detect and do nothing
+    //
+    // See https://github.com/glimmerjs/glimmer-vm/pull/1119
+
+    if (false) {
+      Ember._assertDestroyablesDestroyed = glimmerRuntime.assertDestroyablesDestroyed;
+      Ember._enableDestroyableTracking = glimmerRuntime.enableDestroyableTracking;
+    } else {
+      Ember._assertDestroyablesDestroyed = function () {};
+
+      Ember._enableDestroyableTracking = function () {};
+    }
+  } else {
+    var Meta = true ? Ember.__loader.require('@ember/-internals/meta/lib/meta').Meta : Ember.__loader.require('ember-meta/lib/meta').Meta;
+    var isTesting = false;
+    var DESTRUCTORS = new WeakMap();
+    var DESTROYABLE_PARENTS = new WeakMap();
+    var DESTROYABLE_CHILDREN = new WeakMap();
+    /**
+     * Tears down the meta on an object so that it can be garbage collected.
+     * Multiple calls will have no effect.
+     *
+     * On Ember < 3.16.4 this just calls `meta.destroy`
+     * On Ember >= 3.16.4 this calls setSourceDestroying and schedules setSourceDestroyed + `meta.destroy`
+     *
+     * @param {Object} obj  the object to destroy
+     * @return {void}
+     */
+
+    var _upstreamDestroy = Ember.destroy;
+
+    function getDestructors(destroyable) {
+      if (!DESTRUCTORS.has(destroyable)) {
+        DESTRUCTORS.set(destroyable, new Set());
+      }
+
+      return DESTRUCTORS.get(destroyable);
+    }
+
+    function getDestroyableChildren(destroyable) {
+      if (!DESTROYABLE_CHILDREN.has(destroyable)) {
+        DESTROYABLE_CHILDREN.set(destroyable, new Set());
+      }
+
+      return DESTROYABLE_CHILDREN.get(destroyable);
+    }
+
+    function isDestroying(destroyable) {
+      return Ember.meta(destroyable).isSourceDestroying();
+    }
+
+    function isDestroyed(destroyable) {
+      return Ember.meta(destroyable).isSourceDestroyed();
+    }
+
+    function assertNotDestroyed(destroyable) {
+      (true && !(!isDestroyed(destroyable)) && Ember.assert("'".concat(destroyable, "' was already destroyed."), !isDestroyed(destroyable)));
+      (true && !(!isDestroying(destroyable)) && Ember.assert("'".concat(destroyable, "' is already being destroyed."), !isDestroying(destroyable)));
+    }
+
+    function associateDestroyableChild(parent, child) {
+      if (true
+      /* DEBUG */
+      ) assertNotDestroyed(parent);
+      if (true
+      /* DEBUG */
+      ) assertNotDestroyed(child);
+      (true && !(!DESTROYABLE_PARENTS.has(child)) && Ember.assert("'".concat(child, "' is already a child of '").concat(parent, "'."), !DESTROYABLE_PARENTS.has(child)));
+      DESTROYABLE_PARENTS.set(child, parent);
+      getDestroyableChildren(parent).add(child);
+      return child;
+    }
+
+    function unregisterDestructor(destroyable, destructor) {
+      if (true
+      /* DEBUG */
+      ) assertNotDestroyed(destroyable);
+      var destructors = getDestructors(destroyable);
+      (true && !(destructors.has(destructor)) && Ember.assert("'".concat(destructor, "' is not registered with '").concat(destroyable, "'."), destructors.has(destructor)));
+      destructors.delete(destructor);
+    }
+
+    function registerDestructor(destroyable, destructor) {
+      if (true
+      /* DEBUG */
+      ) assertNotDestroyed(destroyable);
+      var destructors = getDestructors(destroyable);
+      (true && !(!destructors.has(destructor)) && Ember.assert("'".concat(destructor, "' is already registered with '").concat(destroyable, "'."), !destructors.has(destructor)));
+      destructors.add(destructor);
+      return destructor;
+    }
+
+    function destroy(destroyable) {
+      if (isDestroying(destroyable) || isDestroyed(destroyable)) return;
+
+      if (false) {
+        // Ember.destroy calls setSourceDestroying (which runs runDestructors) and schedules setSourceDestroyed
+        _upstreamDestroy(destroyable);
+
+        return;
+      }
+
+      var m = Ember.meta(destroyable);
+      m.setSourceDestroying(); // This calls `runDestructors`
+    }
+
+    var RUNNING = new WeakSet();
+
+    function runDestructors(destroyable) {
+      if (RUNNING.has(destroyable)) return;
+      RUNNING.add(destroyable);
+      var m = Ember.meta(destroyable);
+
+      var _iterator = _createForOfIteratorHelper(getDestroyableChildren(destroyable)),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var child = _step.value;
+          destroy(child);
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      var _iterator2 = _createForOfIteratorHelper(getDestructors(destroyable)),
+          _step2;
+
+      try {
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var destructor = _step2.value;
+          Ember.run.schedule('actions', undefined, destructor, destroyable);
+        }
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
+
+      Ember.run.schedule('destroy', function () {
+        if (!false) {
+          // between Ember 2.18 and 3.16.4 Ember.destroy
+          _upstreamDestroy(destroyable);
+
+          m.setSourceDestroyed();
+        }
+
+        DESTRUCTORS.delete(destroyable);
+        DESTROYABLE_PARENTS.delete(destroyable);
+      });
+    }
+
+    function enableDestroyableTracking() {
+      DESTRUCTORS = new Map();
+      DESTROYABLE_PARENTS = new Map();
+      isTesting = true;
+    }
+
+    function assertDestroyablesDestroyed() {
+      if (!isTesting) {
+        throw new Error('Attempted to assert destroyables destroyed, but you did not start a destroyable test. Did you forget to call `enableDestroyableTracking()`');
+      }
+
+      var destructors = DESTRUCTORS;
+      var children = DESTROYABLE_PARENTS;
+      isTesting = false;
+      DESTRUCTORS = new WeakMap();
+      DESTROYABLE_PARENTS = new WeakMap();
+
+      if (destructors.size > 0 || children.size > 0) {
+        var error = new Error("Some destroyables were not destroyed during this test");
+        Object.defineProperty(error, 'destroyables', {
+          get: function get() {
+            return _toConsumableArray(new Set([].concat(_toConsumableArray(destructors.keys()), _toConsumableArray(children.keys()))));
+          }
+        });
+        throw error;
+      }
+    }
+
+    var setSourceDestroying = Meta.prototype.setSourceDestroying;
+
+    Meta.prototype.setSourceDestroying = function () {
+      setSourceDestroying.call(this);
+      runDestructors(this.source);
+    };
+
+    var callWillDestroy = function callWillDestroy(instance) {
+      return instance.willDestroy();
+    }; // would prefer a WeakSet here but not available on IE11
+
+
+    var willDestroyRegistered = new WeakMap();
+
+    Ember.CoreObject.prototype.init = function destroyablesPolyfill_init() {
+      if (!willDestroyRegistered.has(this)) {
+        registerDestructor(this, callWillDestroy);
+        willDestroyRegistered.set(this, true);
+      }
+    };
+
+    Ember.CoreObject.prototype.destroy = function destroyablesPolyfill_destroy() {
+      destroy(this);
+      return this;
+    };
+
+    Ember.destroy = destroy;
+    Ember._registerDestructor = registerDestructor;
+    Ember._unregisterDestructor = unregisterDestructor;
+    Ember._associateDestroyableChild = associateDestroyableChild;
+    Ember._isDestroying = isDestroying;
+    Ember._isDestroyed = isDestroyed;
+    Ember._assertDestroyablesDestroyed = assertDestroyablesDestroyed;
+    Ember._enableDestroyableTracking = enableDestroyableTracking;
+  }
+})();
+;/* globals Ember */
+
+/* eslint-disable ember/new-module-imports */
+(function () {
+  'use strict'; // Ember < 3.13 had the export typoed, this ensures both the correct location
+  // and the typoed location work properly
+
+  Ember._modifierManagerCapabilties = Ember._modifierManagerCapabilities = function (managerAPI) {
+    if (!managerAPI) {
+      managerAPI = '3.13';
+      (true && !(false) && Ember.deprecate('Modifier manager capabilities now require you to pass a valid version when being generated. Valid versions include: 3.13', false, {
+        until: '3.17.0',
+        id: 'implicit-modifier-manager-capabilities'
+      }));
+    }
+
+    (true && !(managerAPI === '3.13') && Ember.assert('Invalid modifier manager compatibility specified', managerAPI === '3.13')); // Ember 3.13 added a feature for disabling auto-tracking, but it is
+    // impossible to polyfill the `false` version of that
+
+    return {};
+  };
+})();
 ;(function() {
   define('ember-cli-shims/deprecations', [], function() {
     var values = {"ember-application":{"default":["@ember/application"]},"ember-array":{"default":["@ember/array"]},"ember-array/mutable":{"default":["@ember/array/mutable"]},"ember-array/utils":{"A":["@ember/array","A"],"isEmberArray":["@ember/array","isArray"],"wrap":["@ember/array","makeArray"]},"ember-component":{"default":["@ember/component"]},"ember-components/checkbox":{"default":["@ember/component/checkbox"]},"ember-components/text-area":{"default":["@ember/component/text-area"]},"ember-components/text-field":{"default":["@ember/component/text-field"]},"ember-computed":{"default":["@ember/object","computed"],"alias":["@ember/object/computed","alias"],"and":["@ember/object/computed","and"],"bool":["@ember/object/computed","bool"],"collect":["@ember/object/computed","collect"],"deprecatingAlias":["@ember/object/computed","deprecatingAlias"],"empty":["@ember/object/computed","empty"],"equal":["@ember/object/computed","equal"],"filter":["@ember/object/computed","filter"],"filterBy":["@ember/object/computed","filterBy"],"filterProperty":["@ember/object/computed","filterProperty"],"gt":["@ember/object/computed","gt"],"gte":["@ember/object/computed","gte"],"intersect":["@ember/object/computed","intersect"],"lt":["@ember/object/computed","lt"],"lte":["@ember/object/computed","lte"],"map":["@ember/object/computed","map"],"mapBy":["@ember/object/computed","mapBy"],"mapProperty":["@ember/object/computed","mapProperty"],"match":["@ember/object/computed","match"],"max":["@ember/object/computed","max"],"min":["@ember/object/computed","min"],"none":["@ember/object/computed","none"],"not":["@ember/object/computed","not"],"notEmpty":["@ember/object/computed","notEmpty"],"oneWay":["@ember/object/computed","oneWay"],"or":["@ember/object/computed","or"],"readOnly":["@ember/object/computed","readOnly"],"reads":["@ember/object/computed","reads"],"setDiff":["@ember/object/computed","setDiff"],"sort":["@ember/object/computed","sort"],"sum":["@ember/object/computed","sum"],"union":["@ember/object/computed","union"],"uniq":["@ember/object/computed","uniq"]},"ember-controller":{"default":["@ember/controller"]},"ember-controller/inject":{"default":["@ember/controller","inject"]},"ember-controller/proxy":{"default":["@ember/array/proxy"]},"ember-debug":{"inspect":["@ember/debug","inspect"],"log":["@ember/debug","debug"],"run":["@ember/debug","runInDebug"],"warn":["@ember/debug","warn"]},"ember-debug/container-debug-adapter":{"default":["@ember/debug/container-debug-adapter"]},"ember-debug/data-adapter":{"default":["@ember/debug/data-adapter"]},"ember-deprecations":{"deprecate":["@ember/debug","deprecate"],"deprecateFunc":["@ember/debug","deprecateFunc"]},"ember-enumerable":{"default":["@ember/enumerable"]},"ember-evented":{"default":["@ember/object/evented"]},"ember-evented/on":{"default":["@ember/object/evented","on"]},"ember-globals-resolver":{"default":["@ember/application/globals-resolver"]},"ember-helper":{"default":["@ember/component/helper"],"helper":["@ember/component/helper","helper"]},"ember-instrumentation":{"instrument":["@ember/instrumentation","instrument"],"reset":["@ember/instrumentation","reset"],"subscribe":["@ember/instrumentation","subscribe"],"unsubscribe":["@ember/instrumentation","unsubscribe"]},"ember-locations/hash":{"default":["@ember/routing/hash-location"]},"ember-locations/history":{"default":["@ember/routing/history-location"]},"ember-locations/none":{"default":["@ember/routing/none-location"]},"ember-map":{"default":["@ember/map"],"withDefault":["@ember/map/with-default"]},"ember-metal/events":{"addListener":["@ember/object/events","addListener"],"removeListener":["@ember/object/events","removeListener"],"send":["@ember/object/events","sendEvent"]},"ember-metal/get":{"default":["@ember/object","get"],"getProperties":["@ember/object","getProperties"]},"ember-metal/mixin":{"default":["@ember/object/mixin"]},"ember-metal/observer":{"default":["@ember/object","observer"],"addObserver":["@ember/object/observers","addObserver"],"removeObserver":["@ember/object/observers","removeObserver"]},"ember-metal/on-load":{"default":["@ember/application","onLoad"],"run":["@ember/application","runLoadHooks"]},"ember-metal/set":{"default":["@ember/object","set"],"setProperties":["@ember/object","setProperties"],"trySet":["@ember/object","trySet"]},"ember-metal/utils":{"aliasMethod":["@ember/object","aliasMethod"],"assert":["@ember/debug","assert"],"cacheFor":["@ember/object/internals","cacheFor"],"copy":["@ember/object/internals","copy"],"guidFor":["@ember/object/internals","guidFor"]},"ember-object":{"default":["@ember/object"]},"ember-owner/get":{"default":["@ember/application","getOwner"]},"ember-owner/set":{"default":["@ember/application","setOwner"]},"ember-platform":{"assign":["@ember/polyfills","assign"],"create":["@ember/polyfills","create"],"hasAccessors":["@ember/polyfills","hasPropertyAccessors"],"keys":["@ember/polyfills","keys"]},"ember-route":{"default":["@ember/routing/route"]},"ember-router":{"default":["@ember/routing/router"]},"ember-runloop":{"default":["@ember/runloop","run"],"begin":["@ember/runloop","begin"],"bind":["@ember/runloop","bind"],"cancel":["@ember/runloop","cancel"],"debounce":["@ember/runloop","debounce"],"end":["@ember/runloop","end"],"join":["@ember/runloop","join"],"later":["@ember/runloop","later"],"next":["@ember/runloop","next"],"once":["@ember/runloop","once"],"schedule":["@ember/runloop","schedule"],"scheduleOnce":["@ember/runloop","scheduleOnce"],"throttle":["@ember/runloop","throttle"]},"ember-service":{"default":["@ember/service"]},"ember-service/inject":{"default":["@ember/service","inject"]},"ember-string":{"camelize":["@ember/string","camelize"],"capitalize":["@ember/string","capitalize"],"classify":["@ember/string","classify"],"dasherize":["@ember/string","dasherize"],"decamelize":["@ember/string","decamelize"],"fmt":["@ember/string","fmt"],"htmlSafe":["@ember/string","htmlSafe"],"loc":["@ember/string","loc"],"underscore":["@ember/string","underscore"],"w":["@ember/string","w"]},"ember-test/adapter":{"default":["@ember/test/adapter"]},"ember-utils":{"isBlank":["@ember/utils","isBlank"],"isEmpty":["@ember/utils","isEmpty"],"isNone":["@ember/utils","isNone"],"isPresent":["@ember/utils","isPresent"],"tryInvoke":["@ember/utils","tryInvoke"],"typeOf":["@ember/utils","typeOf"]}};
@@ -126015,6 +126284,341 @@ define('faker', [], function() {
   function _endsWith(str, suffix) {
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
   }
+});
+;define("ember-modifier/-private/class/modifier-manager", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  function destroyModifier(modifier) {
+    modifier.willRemove();
+    modifier.willDestroy();
+  }
+
+  var ClassBasedModifierManager = /*#__PURE__*/function () {
+    function ClassBasedModifierManager(owner) {
+      _classCallCheck(this, ClassBasedModifierManager);
+
+      this.owner = owner;
+
+      _defineProperty(this, "capabilities", Ember._modifierManagerCapabilities('3.13'));
+    }
+
+    _createClass(ClassBasedModifierManager, [{
+      key: "createModifier",
+      value: function createModifier(factory, args) {
+        var Modifier = factory.class;
+        var modifier = new Modifier(this.owner, args);
+
+        Ember._registerDestructor(modifier, destroyModifier);
+
+        return modifier;
+      }
+    }, {
+      key: "installModifier",
+      value: function installModifier(instance, element) {
+        instance.element = element;
+        instance.didReceiveArguments();
+        instance.didInstall();
+      }
+    }, {
+      key: "updateModifier",
+      value: function updateModifier(instance, args) {
+        // TODO: this should be an args proxy
+        Ember.set(instance, 'args', args);
+        instance.didUpdateArguments();
+        instance.didReceiveArguments();
+      }
+    }, {
+      key: "destroyModifier",
+      value: function destroyModifier(instance) {
+        Ember.destroy(instance);
+      }
+    }]);
+
+    return ClassBasedModifierManager;
+  }();
+
+  _exports.default = ClassBasedModifierManager;
+});
+;define("ember-modifier/-private/class/modifier", ["exports", "ember-modifier/-private/class/modifier-manager"], function (_exports, _modifierManager) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  /**
+   * A base class for modifiers which need more capabilities than function-based
+   * modifiers. Useful if, for example:
+   *
+   * 1. You need to inject services and access them
+   * 2. You need fine-grained control of updates, either for performance or
+   *    convenience reasons, and don't want to teardown the state of your modifier
+   *    every time only to set it up again.
+   * 3. You need to store some local state within your modifier.
+   *
+   * The lifecycle hooks of class modifiers are tracked. When they run, they any
+   * values they access will be added to the modifier, and the modifier will
+   * update if any of those values change.
+   */
+  var ClassBasedModifier = /*#__PURE__*/function () {
+    /**
+     * The arguments passed to the modifier. `args.positional` is an array of
+     * positional arguments, and `args.named` is an object containing the named
+     * arguments.
+     */
+
+    /**
+     * The element the modifier is applied to.
+     *
+     * @warning `element` is ***not*** available during `constructor` or
+     *   `willDestroy`.
+     */
+    // SAFETY: this is managed correctly by the class-based modifier. It is not
+    // available during the `constructor`.
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    function ClassBasedModifier(owner, args) {
+      _classCallCheck(this, ClassBasedModifier);
+
+      _defineProperty(this, "args", void 0);
+
+      _defineProperty(this, "element", null);
+
+      Ember.setOwner(this, owner);
+      this.args = args;
+    }
+    /**
+     * Called when the modifier is installed **and** anytime the arguments are
+     * updated.
+     */
+
+
+    _createClass(ClassBasedModifier, [{
+      key: "didReceiveArguments",
+      value: function didReceiveArguments() {
+        /* no op, for subclassing */
+      }
+      /**
+       * Called anytime the arguments are updated but **not** on the initial
+       * install. Called before `didReceiveArguments`.
+       */
+
+    }, {
+      key: "didUpdateArguments",
+      value: function didUpdateArguments() {
+        /* no op, for subclassing */
+      }
+      /**
+       * Called when the modifier is installed on the DOM element. Called after
+       * `didReceiveArguments`.
+       */
+
+    }, {
+      key: "didInstall",
+      value: function didInstall() {
+        /* no op, for subclassing */
+      }
+      /**
+       * Called when the DOM element is about to be destroyed; use for removing
+       * event listeners on the element and other similar clean-up tasks.
+       *
+       * @deprecated since 2.0.0: prefer to use `willDestroy`, since both it and
+       *   `willRemove` can perform all the same operations, including on the
+       *   `element`.
+       */
+
+    }, {
+      key: "willRemove",
+      value: function willRemove() {
+        /* no op, for subclassing */
+      }
+      /**
+       * Called when the modifier itself is about to be destroyed; use for teardown
+       * code. Called after `willRemove`.
+       */
+
+    }, {
+      key: "willDestroy",
+      value: function willDestroy() {
+        /* no op, for subclassing */
+      }
+    }, {
+      key: "isDestroying",
+      get: function get() {
+        return Ember._isDestroying(this);
+      }
+    }, {
+      key: "isDestroyed",
+      get: function get() {
+        return Ember._isDestroyed(this);
+      }
+    }]);
+
+    return ClassBasedModifier;
+  }();
+
+  _exports.default = ClassBasedModifier;
+
+  Ember._setModifierManager(function (owner) {
+    return new _modifierManager.default(owner);
+  }, ClassBasedModifier);
+});
+;define("ember-modifier/-private/functional/modifier-manager", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  var MODIFIER_ELEMENTS = new WeakMap();
+  var MODIFIER_TEARDOWNS = new WeakMap();
+
+  function teardown(modifier) {
+    var teardown = MODIFIER_TEARDOWNS.get(modifier);
+
+    if (teardown && typeof teardown === 'function') {
+      teardown();
+    }
+  }
+
+  function setup(modifier, element, args) {
+    var positional = args.positional,
+        named = args.named;
+    var teardown = modifier(element, positional, named);
+    MODIFIER_TEARDOWNS.set(modifier, teardown);
+  }
+
+  var FunctionalModifierManager = /*#__PURE__*/function () {
+    function FunctionalModifierManager() {
+      _classCallCheck(this, FunctionalModifierManager);
+
+      _defineProperty(this, "capabilities", Ember._modifierManagerCapabilities('3.13'));
+    }
+
+    _createClass(FunctionalModifierManager, [{
+      key: "createModifier",
+      value: function createModifier(factory) {
+        // This looks superfluous, but this is creating a new instance
+        // of a function -- this is important so that each instance of the
+        // created modifier can have its own state which is stored in
+        // the MODIFIER_ELEMENTS and MODIFIER_TEARDOWNS WeakMaps
+        return function () {
+          return factory.class.apply(factory, arguments);
+        };
+      }
+    }, {
+      key: "installModifier",
+      value: function installModifier(modifier, element, args) {
+        MODIFIER_ELEMENTS.set(modifier, element);
+        setup(modifier, element, args);
+      }
+    }, {
+      key: "updateModifier",
+      value: function updateModifier(modifier, args) {
+        var element = MODIFIER_ELEMENTS.get(modifier);
+        teardown(modifier);
+        setup(modifier, element, args);
+      }
+    }, {
+      key: "destroyModifier",
+      value: function destroyModifier(modifier) {
+        teardown(modifier);
+      }
+    }]);
+
+    return FunctionalModifierManager;
+  }();
+
+  var _default = new FunctionalModifierManager();
+
+  _exports.default = _default;
+});
+;define("ember-modifier/-private/functional/modifier", ["exports", "ember-modifier/-private/functional/modifier-manager"], function (_exports, _modifierManager) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = modifier;
+
+  /**
+   * An API for writing simple modifiers.
+   *
+   * This function runs the first time when the element the modifier was applied
+   * to is inserted into the DOM, and it *autotracks* while running. Any values
+   * that it accesses will be tracked, including the arguments it receives, and if
+   * any of them changes, the function will run again.
+   *
+   * The modifier can also optionally return a *destructor*. The destructor
+   * function will be run just before the next update, and when the element is
+   * being removed entirely. It should generally clean up the changes that the
+   * modifier made in the first place.
+   *
+   * @param fn The function which defines the modifier.
+   */
+  function modifier(fn) {
+    return Ember._setModifierManager(function () {
+      return _modifierManager.default;
+    }, fn);
+  }
+});
+;define("ember-modifier/-private/interfaces", [], function () {
+  "use strict";
+});
+;define("ember-modifier/index", ["exports", "ember-modifier/-private/class/modifier", "ember-modifier/-private/functional/modifier", "ember-modifier/-private/interfaces"], function (_exports, _modifier, _modifier2, _interfaces) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function get() {
+      return _modifier.default;
+    }
+  });
+  Object.defineProperty(_exports, "modifier", {
+    enumerable: true,
+    get: function get() {
+      return _modifier2.default;
+    }
+  });
+  Object.defineProperty(_exports, "ModifierArgs", {
+    enumerable: true,
+    get: function get() {
+      return _interfaces.ModifierArgs;
+    }
+  });
 });
 ;/*
  * This is a stub file, it must be on disk b/c babel-plugin-debug-macros
@@ -128288,6 +128892,40 @@ define("ember-resolver/features", [], function () {
   var _default = Ember.Mixin.create({
     selectedItems: Ember.computed.filterBy('collection', 'selected', true),
     emptySelection: Ember.computed.equal('selectedItems.length', 0)
+  });
+
+  _exports.default = _default;
+});
+;define("oss-components/modifiers/enable-popover", ["exports", "ember-modifier"], function (_exports, _emberModifier) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+  function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+  function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+  function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+  function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+  function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+  var _default = (0, _emberModifier.modifier)(function (element, _ref) {
+    var _trigger;
+
+    var _ref2 = _slicedToArray(_ref, 1),
+        trigger = _ref2[0];
+
+    (_trigger = trigger) !== null && _trigger !== void 0 ? _trigger : trigger = 'hover';
+    Ember.$(element).popover({
+      trigger: trigger
+    });
   });
 
   _exports.default = _default;

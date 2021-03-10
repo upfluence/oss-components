@@ -839,6 +839,19 @@
     }
   });
 });
+;define("dummy/modifiers/enable-popover", ["exports", "oss-components/modifiers/enable-popover"], function (_exports, _enablePopover) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function get() {
+      return _enablePopover.default;
+    }
+  });
+});
 ;define("dummy/oss-components/tests/addon.lint-test", [], function () {
   "use strict";
 
@@ -962,6 +975,10 @@
   QUnit.test('addon/mixins/upf-table-selection.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'addon/mixins/upf-table-selection.js should pass ESLint\n\n');
+  });
+  QUnit.test('addon/modifiers/enable-popover.js', function (assert) {
+    assert.expect(1);
+    assert.ok(false, 'addon/modifiers/enable-popover.js should pass ESLint\n\n5:12 - Parsing error: Unexpected token ? (null)');
   });
 });
 ;define("dummy/oss-components/tests/app.lint-test", [], function () {
@@ -1091,6 +1108,10 @@
   QUnit.test('app/mixins/upf-table-selection.js', function (assert) {
     assert.expect(1);
     assert.ok(true, 'app/mixins/upf-table-selection.js should pass ESLint\n\n');
+  });
+  QUnit.test('app/modifiers/enable-popover.js', function (assert) {
+    assert.expect(1);
+    assert.ok(true, 'app/modifiers/enable-popover.js should pass ESLint\n\n');
   });
 });
 ;define("dummy/oss-components/tests/templates.template.lint-test", [], function () {
