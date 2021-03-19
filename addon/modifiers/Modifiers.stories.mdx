@@ -1,0 +1,26 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title="Helpers & Modifiers/Modifiers"
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: { canvas: { hidden: true } }
+  }}
+/>
+
+# Modifiers
+
+According to Ember JS:
+<figure>
+  <blockquote cite="https://www.huxley.net/bnw/four.html">
+    <p>
+      Modifiers are a basic primitive for interacting with the DOM in Ember.
+    </p>
+  </blockquote>
+  <figcaption>— Ember JS</figcaption>
+</figure>
+
+| Modifier         | Description                                                                  | Usage                                                           | Default                     |
+|------------------|------------------------------------------------------------------------------|---------------------------------------------------------------- | ----------------------------|
+| enable-popover   | Adds a Bootstrap's Popover to the element                                    | `<button {{enable-popover [trigger]}}>Popover</button>`         | Default Trigger : **hover** |
+| on-click-outside | Triggers the passed callback function when a user clicks outside the element | `<div {{on-click-outside callbackFunction}}>Floating Div</div>` |                             |
