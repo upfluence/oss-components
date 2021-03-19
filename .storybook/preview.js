@@ -11,7 +11,8 @@ export const parameters = {
         'Core',
           ['Colors', 'Typography', 'Icons', 'Variables'],
         'Base',
-        'Components'
+        'Components',
+        'Helpers & Modifiers'
       ]
     }
   }
