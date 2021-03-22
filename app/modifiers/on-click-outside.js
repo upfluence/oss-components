@@ -1,1 +1,1 @@
-export { default } from 'upfluence-oss-components/modifiers/on-click-outside';
+export { default } from 'oss-components/modifiers/on-click-outside';
