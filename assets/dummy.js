@@ -852,7 +852,7 @@
     }
   });
 });
-;define("dummy/modifiers/on-click-outside", ["exports", "upfluence-oss-components/modifiers/on-click-outside"], function (_exports, _onClickOutside) {
+;define("dummy/modifiers/on-click-outside", ["exports", "oss-components/modifiers/on-click-outside"], function (_exports, _onClickOutside) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
