@@ -1,5 +1,5 @@
 <div class="logo-container">
-  {{#link-to indexRoute}}
+  <a href="/">
     {{#if hasLogo}}
       <img src="{{logo}}" />
     {{else if isTopbarStyle}}
@@ -7,7 +7,7 @@
     {{else}}
       <img src="/assets/images/upfluence-white-logo.svg" />
     {{/if}}
-  {{/link-to}}
+  </a>
 </div>
 
 {{yield}}

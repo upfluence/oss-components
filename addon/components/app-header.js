@@ -6,6 +6,7 @@ export default Component.extend(HeaderStyleMixin, {
   tagName: 'nav',
   classNameBindings: ['headerStyleClass'],
   logo: null,
+  //TODO: check if used somewhere
   indexRoute: 'index',
 
   headerStyleClass: computed('headerStyle', function() {
