@@ -127722,6 +127722,7 @@ define("ember-resolver/features", [], function () {
     tagName: 'nav',
     classNameBindings: ['headerStyleClass'],
     logo: null,
+    //TODO: check if used somewhere
     indexRoute: 'index',
     headerStyleClass: Ember.computed('headerStyle', function () {
       if (this.get('isSidebarStyle')) {

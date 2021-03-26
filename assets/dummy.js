@@ -1218,8 +1218,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "FF/kaAoE",
-    "block": "{\"symbols\":[\"&default\"],\"statements\":[[7,\"div\"],[11,\"class\",\"logo-container\"],[9],[0,\"\\n\"],[4,\"link-to\",[[23,[\"indexRoute\"]]],null,{\"statements\":[[4,\"if\",[[23,[\"hasLogo\"]]],null,{\"statements\":[[0,\"      \"],[7,\"img\"],[12,\"src\",[28,[[21,\"logo\"]]]],[9],[10],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[4,\"if\",[[23,[\"isTopbarStyle\"]]],null,{\"statements\":[[0,\"      \"],[7,\"img\"],[11,\"src\",\"/assets/images/upfluence-full-blue-logo.svg\"],[9],[10],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"      \"],[7,\"img\"],[11,\"src\",\"/assets/images/upfluence-white-logo.svg\"],[9],[10],[0,\"\\n    \"]],\"parameters\":[]}]],\"parameters\":[]}]],\"parameters\":[]},null],[10],[0,\"\\n\\n\"],[14,1],[0,\"\\n\"]],\"hasEval\":false}",
+    "id": "MljBn73z",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[7,\"div\"],[11,\"class\",\"logo-container\"],[9],[0,\"\\n  \"],[7,\"a\"],[11,\"href\",\"/\"],[9],[0,\"\\n\"],[4,\"if\",[[23,[\"hasLogo\"]]],null,{\"statements\":[[0,\"      \"],[7,\"img\"],[12,\"src\",[28,[[21,\"logo\"]]]],[9],[10],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[4,\"if\",[[23,[\"isTopbarStyle\"]]],null,{\"statements\":[[0,\"      \"],[7,\"img\"],[11,\"src\",\"/assets/images/upfluence-full-blue-logo.svg\"],[9],[10],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"      \"],[7,\"img\"],[11,\"src\",\"/assets/images/upfluence-white-logo.svg\"],[9],[10],[0,\"\\n    \"]],\"parameters\":[]}]],\"parameters\":[]}],[0,\"  \"],[10],[0,\"\\n\"],[10],[0,\"\\n\\n\"],[14,1],[0,\"\\n\"]],\"hasEval\":false}",
     "meta": {
       "moduleName": "dummy/templates/components/app-header.hbs"
     }
