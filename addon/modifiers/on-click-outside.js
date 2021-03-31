@@ -23,7 +23,6 @@ export default setModifierManager(
         }
       }
 
-      console.log('hello')
       document.addEventListener('click', state.handler, false);
     },
 
