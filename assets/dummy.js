@@ -2,21 +2,77 @@
 
 
 
-;define("dummy/app", ["exports", "dummy/resolver", "ember-load-initializers", "dummy/config/environment"], function (_exports, _resolver, _emberLoadInitializers, _environment) {
+;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+define("dummy/app", ["exports", "ember-resolver", "ember-load-initializers", "dummy/config/environment"], function (_exports, _emberResolver, _emberLoadInitializers, _environment) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  var App = Ember.Application.extend({
-    modulePrefix: _environment.default.modulePrefix,
-    podModulePrefix: _environment.default.podModulePrefix,
-    Resolver: _resolver.default
-  });
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+  function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  var App = /*#__PURE__*/function (_Ember$Application) {
+    _inherits(App, _Ember$Application);
+
+    var _super = _createSuper(App);
+
+    function App() {
+      var _this;
+
+      _classCallCheck(this, App);
+
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      _this = _super.call.apply(_super, [this].concat(args));
+
+      _defineProperty(_assertThisInitialized(_this), "modulePrefix", _environment.default.modulePrefix);
+
+      _defineProperty(_assertThisInitialized(_this), "podModulePrefix", _environment.default.podModulePrefix);
+
+      _defineProperty(_assertThisInitialized(_this), "Resolver", _emberResolver.default);
+
+      return _this;
+    }
+
+    return App;
+  }(Ember.Application);
+
+  _exports.default = App;
   (0, _emberLoadInitializers.default)(App, _environment.default.modulePrefix);
-  var _default = App;
-  _exports.default = _default;
+});
+;define("dummy/component-managers/glimmer", ["exports", "@glimmer/component/-private/ember-component-manager"], function (_exports, _emberComponentManager) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function get() {
+      return _emberComponentManager.default;
+    }
+  });
 });
 ;define("dummy/components/app-base", ["exports", "oss-components/components/app-base"], function (_exports, _appBase) {
   "use strict";
@@ -865,303 +921,62 @@
     }
   });
 });
-;define("dummy/oss-components/tests/addon.lint-test", [], function () {
-  "use strict";
+;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-  QUnit.module('ESLint | addon');
-  QUnit.test('addon/components/app-base.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/components/app-base.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/components/app-header.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/components/app-header.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/components/column-visibility-panel.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/components/column-visibility-panel.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/components/destructive-button.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/components/destructive-button.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/components/expanding-search.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/components/expanding-search.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/components/input-wrapper.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/components/input-wrapper.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/components/loading-button.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/components/loading-button.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/components/loading-state.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/components/loading-state.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/components/radio-button.js', function (assert) {
-    assert.expect(1);
-    assert.ok(false, 'addon/components/radio-button.js should pass ESLint\n\n19:5 - Use closure actions, unless you need bubbling (ember/closure-actions)');
-  });
-  QUnit.test('addon/components/standard-stat.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/components/standard-stat.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/components/summer-note.js', function (assert) {
-    assert.expect(1);
-    assert.ok(false, 'addon/components/summer-note.js should pass ESLint\n\n15:3 - Only string, number, symbol, boolean, null, undefined, and function are allowed as default properties (ember/avoid-leaking-state-in-ember-objects)\n19:5 - Unexpected console statement. (no-console)');
-  });
-  QUnit.test('addon/components/upf-card.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/components/upf-card.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/components/upf-checkbox.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/components/upf-checkbox.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/components/upf-icon.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/components/upf-icon.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/components/upf-image.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/components/upf-image.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/components/upf-numeric-range.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/components/upf-numeric-range.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/components/upf-progress.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/components/upf-progress.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/components/upf-rating.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/components/upf-rating.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/components/upf-slider.js', function (assert) {
-    assert.expect(1);
-    assert.ok(false, 'addon/components/upf-slider.js should pass ESLint\n\n13:7 - Don\'t introduce side-effects in computed properties (ember/no-side-effects)\n21:7 - Don\'t introduce side-effects in computed properties (ember/no-side-effects)\n55:18 - Do not use global `$` or `jQuery` (ember/no-global-jquery)\n55:18 - \'$\' is not defined. (no-undef)');
-  });
-  QUnit.test('addon/components/upf-stat.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/components/upf-stat.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/components/upf-stat.stories.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/components/upf-stat.stories.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/components/upf-table/column.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/components/upf-table/column.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/components/upf-table/header-cell.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/components/upf-table/header-cell.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/components/upf-table/index.js', function (assert) {
-    assert.expect(1);
-    assert.ok(false, 'addon/components/upf-table/index.js should pass ESLint\n\n21:3 - Only string, number, symbol, boolean, null, undefined, and function are allowed as default properties (ember/avoid-leaking-state-in-ember-objects)\n85:7 - Use closure actions, unless you need bubbling (ember/closure-actions)\n103:7 - Use closure actions, unless you need bubbling (ember/closure-actions)');
-  });
-  QUnit.test('addon/components/upf-table/pagination.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/components/upf-table/pagination.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/components/upf-table/row.js', function (assert) {
-    assert.expect(1);
-    assert.ok(false, 'addon/components/upf-table/row.js should pass ESLint\n\n43:7 - Use closure actions, unless you need bubbling (ember/closure-actions)');
-  });
-  QUnit.test('addon/helpers/format-money.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/helpers/format-money.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/mixins/header-style.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/mixins/header-style.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/mixins/upf-table-search.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/mixins/upf-table-search.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/mixins/upf-table-selection.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/mixins/upf-table-selection.js should pass ESLint\n\n');
-  });
-  QUnit.test('addon/modifiers/enable-popover.js', function (assert) {
-    assert.expect(1);
-    assert.ok(false, 'addon/modifiers/enable-popover.js should pass ESLint\n\n5:12 - Parsing error: Unexpected token ? (null)');
-  });
-  QUnit.test('addon/modifiers/on-click-outside.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'addon/modifiers/on-click-outside.js should pass ESLint\n\n');
-  });
-});
-;define("dummy/oss-components/tests/app.lint-test", [], function () {
-  "use strict";
-
-  QUnit.module('ESLint | app');
-  QUnit.test('app/components/app-base.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/app-base.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/app-header.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/app-header.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/column-visibility-panel.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/column-visibility-panel.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/destructive-button.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/destructive-button.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/expanding-search.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/expanding-search.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/input-wrapper.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/input-wrapper.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/loading-button.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/loading-button.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/loading-state.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/loading-state.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/radio-button.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/radio-button.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/standard-stat.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/standard-stat.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/summer-note.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/summer-note.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/upf-card.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/upf-card.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/upf-checkbox.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/upf-checkbox.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/upf-icon.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/upf-icon.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/upf-image.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/upf-image.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/upf-numeric-range.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/upf-numeric-range.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/upf-progress.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/upf-progress.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/upf-rating.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/upf-rating.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/upf-slider.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/upf-slider.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/upf-stat.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/upf-stat.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/upf-table.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/upf-table.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/upf-table/column.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/upf-table/column.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/upf-table/header-cell.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/upf-table/header-cell.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/upf-table/pagination.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/upf-table/pagination.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/components/upf-table/row.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/components/upf-table/row.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/helpers/format-money.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/helpers/format-money.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/helpers/format-numeric.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/helpers/format-numeric.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/helpers/truncate.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/helpers/truncate.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/mixins/header-style.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/mixins/header-style.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/mixins/upf-table-search.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/mixins/upf-table-search.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/mixins/upf-table-selection.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/mixins/upf-table-selection.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/modifiers/enable-popover.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/modifiers/enable-popover.js should pass ESLint\n\n');
-  });
-  QUnit.test('app/modifiers/on-click-outside.js', function (assert) {
-    assert.expect(1);
-    assert.ok(true, 'app/modifiers/on-click-outside.js should pass ESLint\n\n');
-  });
-});
-;define("dummy/oss-components/tests/templates.template.lint-test", [], function () {
-  "use strict";
-});
-;define("dummy/resolver", ["exports", "ember-resolver"], function (_exports, _emberResolver) {
+define("dummy/router", ["exports", "dummy/config/environment"], function (_exports, _environment) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  var _default = _emberResolver.default;
-  _exports.default = _default;
-});
-;define("dummy/router", ["exports", "dummy/config/environment"], function (_exports, _environment) {
-  "use strict";
 
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-  var Router = Ember.Router.extend({
-    location: _environment.default.locationType,
-    rootURL: _environment.default.rootURL
-  });
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+  function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  var Router = /*#__PURE__*/function (_Ember$Router) {
+    _inherits(Router, _Ember$Router);
+
+    var _super = _createSuper(Router);
+
+    function Router() {
+      var _this;
+
+      _classCallCheck(this, Router);
+
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      _this = _super.call.apply(_super, [this].concat(args));
+
+      _defineProperty(_assertThisInitialized(_this), "location", _environment.default.locationType);
+
+      _defineProperty(_assertThisInitialized(_this), "rootURL", _environment.default.rootURL);
+
+      return _this;
+    }
+
+    return Router;
+  }(Ember.Router);
+
+  _exports.default = Router;
   Router.map(function () {});
-  var _default = Router;
-  _exports.default = _default;
 });
 ;define("dummy/services/asset-map", ["exports", "ember-cli-ifa/services/asset-map"], function (_exports, _assetMap) {
   "use strict";
@@ -1182,8 +997,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "4Gv2J1em",
-    "block": "{\"symbols\":[],\"statements\":[[0,\"this is upfluence oss component\\n\"]],\"hasEval\":false}",
+    "id": "gIOKYXiV",
+    "block": "{\"symbols\":[],\"statements\":[[2,\"this is upfluence oss component\\n\"]],\"hasEval\":false,\"upvars\":[]}",
     "meta": {
       "moduleName": "dummy/templates/application.hbs"
     }
@@ -1200,8 +1015,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "xEySkAW/",
-    "block": "{\"symbols\":[\"&default\"],\"statements\":[[7,\"div\"],[9],[0,\"\\n  \"],[14,1],[0,\"\\n\"],[10],[0,\"\\n\"]],\"hasEval\":false}",
+    "id": "2f9jwMk3",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[10,\"div\"],[12],[2,\"\\n  \"],[18,1,null],[2,\"\\n\"],[13],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[]}",
     "meta": {
       "moduleName": "dummy/templates/components/app-base.hbs"
     }
@@ -1218,8 +1033,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "MljBn73z",
-    "block": "{\"symbols\":[\"&default\"],\"statements\":[[7,\"div\"],[11,\"class\",\"logo-container\"],[9],[0,\"\\n  \"],[7,\"a\"],[11,\"href\",\"/\"],[9],[0,\"\\n\"],[4,\"if\",[[23,[\"hasLogo\"]]],null,{\"statements\":[[0,\"      \"],[7,\"img\"],[12,\"src\",[28,[[21,\"logo\"]]]],[9],[10],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[4,\"if\",[[23,[\"isTopbarStyle\"]]],null,{\"statements\":[[0,\"      \"],[7,\"img\"],[11,\"src\",\"/assets/images/upfluence-full-blue-logo.svg\"],[9],[10],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"      \"],[7,\"img\"],[11,\"src\",\"/assets/images/upfluence-white-logo.svg\"],[9],[10],[0,\"\\n    \"]],\"parameters\":[]}]],\"parameters\":[]}],[0,\"  \"],[10],[0,\"\\n\"],[10],[0,\"\\n\\n\"],[14,1],[0,\"\\n\"]],\"hasEval\":false}",
+    "id": "hlaJeDni",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[10,\"div\"],[14,0,\"logo-container\"],[12],[2,\"\\n  \"],[10,\"a\"],[14,6,\"/\"],[12],[2,\"\\n\"],[6,[37,1],[[35,3]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"      \"],[10,\"img\"],[15,\"src\",[31,[[34,2]]]],[12],[13],[2,\"\\n\"]],\"parameters\":[]},{\"statements\":[[6,[37,1],[[35,0]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"      \"],[10,\"img\"],[14,\"src\",\"/assets/images/upfluence-full-blue-logo.svg\"],[12],[13],[2,\"\\n\"]],\"parameters\":[]},{\"statements\":[[2,\"      \"],[10,\"img\"],[14,\"src\",\"/assets/images/upfluence-white-logo.svg\"],[12],[13],[2,\"\\n    \"]],\"parameters\":[]}]]]],\"parameters\":[]}]]],[2,\"  \"],[13],[2,\"\\n\"],[13],[2,\"\\n\\n\"],[18,1,null],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"isTopbarStyle\",\"if\",\"logo\",\"hasLogo\"]}",
     "meta": {
       "moduleName": "dummy/templates/components/app-header.hbs"
     }
@@ -1236,8 +1051,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "UDHN46B/",
-    "block": "{\"symbols\":[\"column\"],\"statements\":[[7,\"button\"],[11,\"class\",\"upf-btn upf-btn--default upf-btn--small upf-link--reset button-column-visibility-panel\"],[9],[0,\"\\n  \"],[7,\"i\"],[11,\"class\",\"fa fa-columns\"],[9],[10],[0,\"  \\n  \"],[7,\"i\"],[12,\"class\",[28,[\"fa \",[27,\"if\",[[23,[\"displayedColumnsPanel\"]],\"fa-caret-up\",\"fa-caret-down\"],null]]]],[9],[10],[0,\"\\n\"],[10],[0,\"\\n\\n\"],[4,\"if\",[[23,[\"displayedColumnsPanel\"]]],null,{\"statements\":[[0,\"  \"],[7,\"div\"],[11,\"class\",\"upf-datatable__side-panel--arrow-up side-panel--appearance\"],[9],[10],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"upf-datatable__side-panel side-panel--appearance column-visibility-panel\"],[9],[0,\"\\n\"],[4,\"each\",[[23,[\"columns\"]]],null,{\"statements\":[[4,\"unless\",[[22,1,[\"unhideable\"]]],null,{\"statements\":[[0,\"        \"],[7,\"div\"],[11,\"class\",\"margin-bottom-sm\"],[9],[0,\"\\n\"],[4,\"upf-checkbox\",null,[[\"value\",\"hasLabel\"],[[22,1,[\"visible\"]],true]],{\"statements\":[[0,\"            \"],[7,\"span\"],[11,\"class\",\"text-color-contrast\"],[9],[1,[22,1,[\"title\"]],false],[10],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"        \"],[10],[0,\"\\n\"]],\"parameters\":[]},null]],\"parameters\":[1]},null],[0,\"  \"],[10],[0,\"\\n\"]],\"parameters\":[]},null]],\"hasEval\":false}",
+    "id": "iLRO2r9z",
+    "block": "{\"symbols\":[\"column\"],\"statements\":[[10,\"button\"],[14,0,\"upf-btn upf-btn--default upf-btn--small upf-link--reset button-column-visibility-panel\"],[12],[2,\"\\n  \"],[10,\"i\"],[14,0,\"fa fa-columns\"],[12],[13],[2,\"  \\n  \"],[10,\"i\"],[15,0,[31,[\"fa \",[30,[36,6],[[35,5],\"fa-caret-up\",\"fa-caret-down\"],null]]]],[12],[13],[2,\"\\n\"],[13],[2,\"\\n\\n\"],[6,[37,6],[[35,5]],null,[[\"default\"],[{\"statements\":[[2,\"  \"],[10,\"div\"],[14,0,\"upf-datatable__side-panel--arrow-up side-panel--appearance\"],[12],[13],[2,\"\\n  \"],[10,\"div\"],[14,0,\"upf-datatable__side-panel side-panel--appearance column-visibility-panel\"],[12],[2,\"\\n\"],[6,[37,4],[[30,[36,3],[[30,[36,3],[[35,2]],null]],null]],null,[[\"default\"],[{\"statements\":[[6,[37,1],[[32,1,[\"unhideable\"]]],null,[[\"default\"],[{\"statements\":[[2,\"        \"],[10,\"div\"],[14,0,\"margin-bottom-sm\"],[12],[2,\"\\n\"],[6,[37,0],null,[[\"value\",\"hasLabel\"],[[32,1,[\"visible\"]],true]],[[\"default\"],[{\"statements\":[[2,\"            \"],[10,\"span\"],[14,0,\"text-color-contrast\"],[12],[1,[32,1,[\"title\"]]],[13],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"        \"],[13],[2,\"\\n\"]],\"parameters\":[]}]]]],\"parameters\":[1]}]]],[2,\"  \"],[13],[2,\"\\n\"]],\"parameters\":[]}]]]],\"hasEval\":false,\"upvars\":[\"upf-checkbox\",\"unless\",\"columns\",\"-track-array\",\"each\",\"displayedColumnsPanel\",\"if\"]}",
     "meta": {
       "moduleName": "dummy/templates/components/column-visibility-panel.hbs"
     }
@@ -1254,8 +1069,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "f1bLgimA",
-    "block": "{\"symbols\":[\"&default\"],\"statements\":[[4,\"if\",[[23,[\"isLoading\"]]],null,{\"statements\":[[0,\"  \"],[1,[21,\"ongoingMessage\"],false],[0,\" ( \"],[1,[21,\"seconds\"],false],[0,\" )...\\n\"]],\"parameters\":[]},{\"statements\":[[4,\"if\",[[23,[\"actionFailed\"]]],null,{\"statements\":[[0,\"  \"],[7,\"i\"],[11,\"class\",\"fa fa-refresh\"],[9],[10],[0,\"   \"],[1,[21,\"failureMessage\"],false],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[4,\"if\",[[23,[\"isSuccess\"]]],null,{\"statements\":[[0,\"  \"],[1,[21,\"successMessage\"],false],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"  \"],[14,1],[0,\"\\n\"]],\"parameters\":[]}]],\"parameters\":[]}]],\"parameters\":[]}]],\"hasEval\":false}",
+    "id": "i01k/SsE",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[6,[37,2],[[35,7]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"  \"],[1,[34,5]],[2,\" ( \"],[1,[34,6]],[2,\" )...\\n\"]],\"parameters\":[]},{\"statements\":[[6,[37,2],[[35,4]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"  \"],[10,\"i\"],[14,0,\"fa fa-refresh\"],[12],[13],[2,\"   \"],[1,[34,3]],[2,\"\\n\"]],\"parameters\":[]},{\"statements\":[[6,[37,2],[[35,1]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"  \"],[1,[34,0]],[2,\"\\n\"]],\"parameters\":[]},{\"statements\":[[2,\"  \"],[18,1,null],[2,\"\\n\"]],\"parameters\":[]}]]]],\"parameters\":[]}]]]],\"parameters\":[]}]]]],\"hasEval\":false,\"upvars\":[\"successMessage\",\"isSuccess\",\"if\",\"failureMessage\",\"actionFailed\",\"ongoingMessage\",\"seconds\",\"isLoading\"]}",
     "meta": {
       "moduleName": "dummy/templates/components/destructive-button.hbs"
     }
@@ -1272,8 +1087,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "fosOhJM3",
-    "block": "{\"symbols\":[],\"statements\":[[7,\"button\"],[11,\"class\",\"upf-btn upf-btn--default expanding-search__submit\"],[9],[0,\"\\n\"],[4,\"if\",[[23,[\"expandedSearch\"]]],null,{\"statements\":[[0,\"    \"],[7,\"i\"],[11,\"class\",\"fa fa-close\"],[9],[10],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"    \"],[7,\"i\"],[11,\"class\",\"fa fa-search\"],[9],[10],[0,\"\\n\"]],\"parameters\":[]}],[3,\"action\",[[22,0,[]],\"expandOrErase\"],[[\"bubbles\"],[false]]],[10],[0,\"\\n\\n\"],[1,[27,\"input\",null,[[\"type\",\"class\",\"placeholder\",\"value\"],[\"text\",[27,\"concat\",[\"form-control upf-input expanding-search__input\",[27,\"if\",[[23,[\"small\"]],\" upf-input--small\"],null]],null],[23,[\"placeholder\"]],[23,[\"searchQuery\"]]]]],false],[0,\"\\n\"]],\"hasEval\":false}",
+    "id": "ipFC+l2T",
+    "block": "{\"symbols\":[],\"statements\":[[11,\"button\"],[24,0,\"upf-btn upf-btn--default expanding-search__submit\"],[4,[38,0],[[32,0],\"expandOrErase\"],[[\"bubbles\"],[false]]],[12],[2,\"\\n\"],[6,[37,2],[[35,1]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"    \"],[10,\"i\"],[14,0,\"fa fa-close\"],[12],[13],[2,\"\\n\"]],\"parameters\":[]},{\"statements\":[[2,\"    \"],[10,\"i\"],[14,0,\"fa fa-search\"],[12],[13],[2,\"\\n\"]],\"parameters\":[]}]]],[13],[2,\"\\n\\n\"],[1,[30,[36,7],null,[[\"type\",\"class\",\"placeholder\",\"value\"],[\"text\",[30,[36,6],[\"form-control upf-input expanding-search__input\",[30,[36,2],[[35,5],\" upf-input--small\"],null]],null],[35,4],[35,3]]]]],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"action\",\"expandedSearch\",\"if\",\"searchQuery\",\"placeholder\",\"small\",\"concat\",\"input\"]}",
     "meta": {
       "moduleName": "dummy/templates/components/expanding-search.hbs"
     }
@@ -1290,8 +1105,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "Dvoxq0cV",
-    "block": "{\"symbols\":[\"&default\"],\"statements\":[[14,1],[0,\"\\n\\n\"],[4,\"if\",[[23,[\"error\"]]],null,{\"statements\":[[0,\"  \"],[7,\"span\"],[11,\"class\",\"col-xs-12 upf-input-feedback upf-input-feedback--error\"],[9],[0,\"\\n    \"],[7,\"i\"],[11,\"class\",\"fa fa-exclamation-circle\"],[12,\"aria-label\",[21,\"error\"]],[9],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[4,\"if\",[[23,[\"help\"]]],null,{\"statements\":[[0,\"  \"],[7,\"span\"],[11,\"class\",\"col-xs-12 upf-input-feedback upf-input-feedback--help\"],[9],[0,\"\\n    \"],[7,\"i\"],[11,\"class\",\"fa fa-question-circle\"],[12,\"aria-label\",[21,\"help\"]],[9],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n\"]],\"parameters\":[]},null]],\"parameters\":[]}]],\"hasEval\":false}",
+    "id": "K+hC9y2U",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[18,1,null],[2,\"\\n\\n\"],[6,[37,1],[[35,2]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"  \"],[10,\"span\"],[14,0,\"col-xs-12 upf-input-feedback upf-input-feedback--error\"],[12],[2,\"\\n    \"],[10,\"i\"],[14,0,\"fa fa-exclamation-circle\"],[15,\"aria-label\",[34,2]],[12],[2,\"\\n    \"],[13],[2,\"\\n  \"],[13],[2,\"\\n\"]],\"parameters\":[]},{\"statements\":[[6,[37,1],[[35,0]],null,[[\"default\"],[{\"statements\":[[2,\"  \"],[10,\"span\"],[14,0,\"col-xs-12 upf-input-feedback upf-input-feedback--help\"],[12],[2,\"\\n    \"],[10,\"i\"],[14,0,\"fa fa-question-circle\"],[15,\"aria-label\",[34,0]],[12],[2,\"\\n    \"],[13],[2,\"\\n  \"],[13],[2,\"\\n\"]],\"parameters\":[]}]]]],\"parameters\":[]}]]]],\"hasEval\":false,\"upvars\":[\"help\",\"if\",\"error\"]}",
     "meta": {
       "moduleName": "dummy/templates/components/input-wrapper.hbs"
     }
@@ -1308,8 +1123,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "EJrwZbTV",
-    "block": "{\"symbols\":[\"&default\"],\"statements\":[[4,\"if\",[[23,[\"isLoading\"]]],null,{\"statements\":[[0,\"  \"],[7,\"i\"],[11,\"class\",\"fa fa-circle-o-notch fa-spin\"],[9],[10],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"  \"],[14,1],[0,\"\\n\"]],\"parameters\":[]}]],\"hasEval\":false}",
+    "id": "72HhKews",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[6,[37,1],[[35,0]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"  \"],[10,\"i\"],[14,0,\"fa fa-circle-o-notch fa-spin\"],[12],[13],[2,\"\\n\"]],\"parameters\":[]},{\"statements\":[[2,\"  \"],[18,1,null],[2,\"\\n\"]],\"parameters\":[]}]]]],\"hasEval\":false,\"upvars\":[\"isLoading\",\"if\"]}",
     "meta": {
       "moduleName": "dummy/templates/components/loading-button.hbs"
     }
@@ -1326,8 +1141,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "UnbhHZKb",
-    "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"class\",\"upf-align--center\"],[9],[0,\"\\n  \"],[7,\"div\"],[11,\"class\",\"spinner\"],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"bounce1\"],[9],[10],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"bounce2\"],[9],[10],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"bounce3\"],[9],[10],[0,\"\\n  \"],[10],[0,\"\\n\"],[10],[0,\"\\n\"]],\"hasEval\":false}",
+    "id": "gGBRss01",
+    "block": "{\"symbols\":[],\"statements\":[[10,\"div\"],[14,0,\"upf-align--center\"],[12],[2,\"\\n  \"],[10,\"div\"],[14,0,\"spinner\"],[12],[2,\"\\n    \"],[10,\"div\"],[14,0,\"bounce1\"],[12],[13],[2,\"\\n    \"],[10,\"div\"],[14,0,\"bounce2\"],[12],[13],[2,\"\\n    \"],[10,\"div\"],[14,0,\"bounce3\"],[12],[13],[2,\"\\n  \"],[13],[2,\"\\n\"],[13],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[]}",
     "meta": {
       "moduleName": "dummy/templates/components/loading-state.hbs"
     }
@@ -1344,8 +1159,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "1NYlR+Tl",
-    "block": "{\"symbols\":[],\"statements\":[[7,\"input\"],[11,\"name\",\"options\"],[12,\"value\",[21,\"value\"]],[12,\"checked\",[21,\"isChecked\"]],[11,\"type\",\"radio\"],[9],[10],[0,\" \"],[1,[21,\"label\"],false],[0,\"\\n\"]],\"hasEval\":false}",
+    "id": "in8gZa+M",
+    "block": "{\"symbols\":[],\"statements\":[[10,\"input\"],[14,3,\"options\"],[15,2,[34,0]],[15,\"checked\",[34,1]],[14,4,\"radio\"],[12],[13],[2,\" \"],[1,[34,2]],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"value\",\"isChecked\",\"label\"]}",
     "meta": {
       "moduleName": "dummy/templates/components/radio-button.hbs"
     }
@@ -1362,8 +1177,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "O6faNBx9",
-    "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"class\",\"upf-stat__number-container\"],[9],[0,\"\\n  \"],[7,\"div\"],[12,\"class\",[28,[\"upf-progress-radial \",[21,\"type\"],\"\\n              \",[27,\"concat\",[\"upf-progress-radial-\",[23,[\"size\"]]],null],\"\\n              \",[21,\"progressValueClass\"]]]],[9],[0,\"\\n    \"],[7,\"div\"],[11,\"class\",\"overlay\"],[9],[0,\"\\n      \"],[7,\"span\"],[11,\"class\",\"upf-stat__icon\"],[9],[0,\"\\n\"],[4,\"if\",[[23,[\"iconClass\"]]],null,{\"statements\":[[0,\"          \"],[7,\"i\"],[12,\"class\",[28,[[21,\"iconClass\"]]]],[9],[10],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[4,\"if\",[[23,[\"upfIcon\"]]],null,{\"statements\":[[0,\"          \"],[1,[27,\"upf-icon\",[[23,[\"upfIcon\"]],[23,[\"upfIconColor\"]],\"thicker\"],null],false],[0,\"\\n        \"]],\"parameters\":[]},null]],\"parameters\":[]}],[0,\"      \"],[10],[0,\"\\n      \"],[7,\"span\"],[11,\"class\",\"upf-stat__number\"],[9],[1,[21,\"displayNumber\"],false],[10],[0,\"\\n    \"],[10],[0,\"\\n  \"],[10],[0,\"\\n\"],[10],[0,\"\\n\"],[7,\"span\"],[11,\"class\",\"upf-stat__title\"],[9],[1,[21,\"title\"],false],[10],[0,\"\\n\"]],\"hasEval\":false}",
+    "id": "VG+H3iYf",
+    "block": "{\"symbols\":[],\"statements\":[[10,\"div\"],[14,0,\"upf-stat__number-container\"],[12],[2,\"\\n  \"],[10,\"div\"],[15,0,[31,[\"upf-progress-radial \",[34,8],\"\\n              \",[30,[36,7],[\"upf-progress-radial-\",[35,6]],null],\"\\n              \",[34,5]]]],[12],[2,\"\\n    \"],[10,\"div\"],[14,0,\"overlay\"],[12],[2,\"\\n      \"],[10,\"span\"],[14,0,\"upf-stat__icon\"],[12],[2,\"\\n\"],[6,[37,3],[[35,4]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"          \"],[10,\"i\"],[15,0,[31,[[34,4]]]],[12],[13],[2,\"\\n\"]],\"parameters\":[]},{\"statements\":[[6,[37,3],[[35,1]],null,[[\"default\"],[{\"statements\":[[2,\"          \"],[1,[30,[36,2],[[35,1],[35,0],\"thicker\"],null]],[2,\"\\n        \"]],\"parameters\":[]}]]]],\"parameters\":[]}]]],[2,\"      \"],[13],[2,\"\\n      \"],[10,\"span\"],[14,0,\"upf-stat__number\"],[12],[1,[34,9]],[13],[2,\"\\n    \"],[13],[2,\"\\n  \"],[13],[2,\"\\n\"],[13],[2,\"\\n\"],[10,\"span\"],[14,0,\"upf-stat__title\"],[12],[1,[34,10]],[13],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"upfIconColor\",\"upfIcon\",\"upf-icon\",\"if\",\"iconClass\",\"progressValueClass\",\"size\",\"concat\",\"type\",\"displayNumber\",\"title\"]}",
     "meta": {
       "moduleName": "dummy/templates/components/standard-stat.hbs"
     }
@@ -1380,8 +1195,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "TNC4IroR",
-    "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"id\",\"summernote\"],[9],[10],[0,\"\\n\"]],\"hasEval\":false}",
+    "id": "q9nwAtT2",
+    "block": "{\"symbols\":[],\"statements\":[[10,\"div\"],[14,1,\"summernote\"],[12],[13],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[]}",
     "meta": {
       "moduleName": "dummy/templates/components/summer-note.hbs"
     }
@@ -1398,8 +1213,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "Tj4mg3/b",
-    "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[11,\"class\",\"upf-card__icon\"],[9],[0,\"\\n  \"],[7,\"img\"],[12,\"src\",[21,\"imageSrc\"]],[9],[10],[0,\"\\n\"],[10],[0,\"\\n\\n\"],[7,\"div\"],[11,\"class\",\"upf-card__title text-size-8 text-color-default\"],[9],[0,\"\\n  \"],[1,[21,\"title\"],false],[0,\"\\n\"],[10],[0,\"\\n\\n\"],[7,\"div\"],[11,\"class\",\"upf-card__description text-size-5 text-color-default-light\"],[9],[0,\"\\n  \"],[1,[21,\"description\"],true],[0,\"\\n\"],[10],[0,\"\\n\"]],\"hasEval\":false}",
+    "id": "H2nBKaCj",
+    "block": "{\"symbols\":[],\"statements\":[[10,\"div\"],[14,0,\"upf-card__icon\"],[12],[2,\"\\n  \"],[10,\"img\"],[15,\"src\",[34,0]],[12],[13],[2,\"\\n\"],[13],[2,\"\\n\\n\"],[10,\"div\"],[14,0,\"upf-card__title text-size-8 text-color-default\"],[12],[2,\"\\n  \"],[1,[34,1]],[2,\"\\n\"],[13],[2,\"\\n\\n\"],[10,\"div\"],[14,0,\"upf-card__description text-size-5 text-color-default-light\"],[12],[2,\"\\n  \"],[2,[34,2]],[2,\"\\n\"],[13],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"imageSrc\",\"title\",\"description\"]}",
     "meta": {
       "moduleName": "dummy/templates/components/upf-card.hbs"
     }
@@ -1416,8 +1231,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "F/qNXIJn",
-    "block": "{\"symbols\":[\"&default\"],\"statements\":[[1,[27,\"input\",null,[[\"type\",\"checked\",\"class\",\"id\",\"disabled\"],[\"checkbox\",[23,[\"value\"]],\"upf-checkbox__input\",[27,\"concat\",[\"unchecked-checkbox-\",[23,[\"elementId\"]]],null],[23,[\"disabled\"]]]]],false],[0,\"\\n\\n\"],[7,\"label\"],[12,\"for\",[27,\"concat\",[\"unchecked-checkbox-\",[23,[\"elementId\"]]],null]],[11,\"class\",\"upf-checkbox__fake-checkbox\"],[9],[0,\"\\n\"],[10],[0,\"\\n\\n\"],[4,\"if\",[[23,[\"hasLabel\"]]],null,{\"statements\":[[0,\"  \"],[7,\"span\"],[11,\"class\",\"upf-checkbox__label\"],[9],[14,1],[10],[0,\"\\n\"]],\"parameters\":[]},null]],\"hasEval\":false}",
+    "id": "1ItBYqS5",
+    "block": "{\"symbols\":[\"&default\"],\"statements\":[[1,[30,[36,4],null,[[\"type\",\"checked\",\"class\",\"id\",\"disabled\"],[\"checkbox\",[35,3],\"upf-checkbox__input\",[30,[36,2],[\"unchecked-checkbox-\",[35,1]],null],[35,0]]]]],[2,\"\\n\\n\"],[10,\"label\"],[15,\"for\",[30,[36,2],[\"unchecked-checkbox-\",[35,1]],null]],[14,0,\"upf-checkbox__fake-checkbox\"],[12],[2,\"\\n\"],[13],[2,\"\\n\\n\"],[6,[37,6],[[35,5]],null,[[\"default\"],[{\"statements\":[[2,\"  \"],[10,\"span\"],[14,0,\"upf-checkbox__label\"],[12],[18,1,null],[13],[2,\"\\n\"]],\"parameters\":[]}]]]],\"hasEval\":false,\"upvars\":[\"disabled\",\"elementId\",\"concat\",\"value\",\"input\",\"hasLabel\",\"if\"]}",
     "meta": {
       "moduleName": "dummy/templates/components/upf-checkbox.hbs"
     }
@@ -1434,8 +1249,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "fMKmrl9v",
-    "block": "{\"symbols\":[],\"statements\":[[1,[27,\"input\",null,[[\"type\",\"placeholder\",\"arrowless\",\"value\",\"step\",\"min\",\"max\",\"class\"],[\"number\",[23,[\"_options\",\"fromPlaceholder\"]],true,[23,[\"from\"]],[23,[\"_options\",\"step\"]],[23,[\"_options\",\"min\"]],[23,[\"_options\",\"max\"]],[27,\"concat\",[\"upf-numeric-range__from form-control upf-input\",[27,\"if\",[[23,[\"size\"]],[27,\"concat\",[\" upf-input--\",[23,[\"size\"]]],null]],null]],null]]]],false],[0,\"\\n\\n\"],[7,\"div\"],[11,\"class\",\"upf-numeric-range__separator\"],[9],[0,\"\\n  —\\n\"],[10],[0,\"\\n\\n\"],[1,[27,\"input\",null,[[\"type\",\"placeholder\",\"arrowless\",\"value\",\"step\",\"min\",\"max\",\"class\"],[\"number\",[23,[\"_options\",\"toPlaceholder\"]],true,[23,[\"to\"]],[23,[\"_options\",\"step\"]],[23,[\"_options\",\"min\"]],[23,[\"_options\",\"max\"]],[27,\"concat\",[\"upf-numeric-range__to form-control upf-input\",[27,\"if\",[[23,[\"size\"]],[27,\"concat\",[\" upf-input--\",[23,[\"size\"]]],null]],null]],null]]]],false],[0,\"\\n\"]],\"hasEval\":false}",
+    "id": "8v9e5WaW",
+    "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,5],null,[[\"type\",\"placeholder\",\"arrowless\",\"value\",\"step\",\"min\",\"max\",\"class\"],[\"number\",[35,3,[\"fromPlaceholder\"]],true,[35,4],[35,3,[\"step\"]],[35,3,[\"min\"]],[35,3,[\"max\"]],[30,[36,1],[\"upf-numeric-range__from form-control upf-input\",[30,[36,2],[[35,0],[30,[36,1],[\" upf-input--\",[35,0]],null]],null]],null]]]]],[2,\"\\n\\n\"],[10,\"div\"],[14,0,\"upf-numeric-range__separator\"],[12],[2,\"\\n  —\\n\"],[13],[2,\"\\n\\n\"],[1,[30,[36,5],null,[[\"type\",\"placeholder\",\"arrowless\",\"value\",\"step\",\"min\",\"max\",\"class\"],[\"number\",[35,3,[\"toPlaceholder\"]],true,[35,6],[35,3,[\"step\"]],[35,3,[\"min\"]],[35,3,[\"max\"]],[30,[36,1],[\"upf-numeric-range__to form-control upf-input\",[30,[36,2],[[35,0],[30,[36,1],[\" upf-input--\",[35,0]],null]],null]],null]]]]],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"size\",\"concat\",\"if\",\"_options\",\"from\",\"input\",\"to\"]}",
     "meta": {
       "moduleName": "dummy/templates/components/upf-numeric-range.hbs"
     }
@@ -1452,8 +1267,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "fLsKUo8Q",
-    "block": "{\"symbols\":[],\"statements\":[[7,\"div\"],[12,\"class\",[28,[\"progress-bar \",[21,\"colorClass\"]]]],[11,\"role\",\"progressbar\"],[12,\"aria-valuenow\",[28,[[21,\"value\"]]]],[11,\"aria-valuemin\",\"0\"],[11,\"aria-valuemax\",\"100\"],[18,\"style\",[21,\"maxWidthStyle\"]],[9],[0,\"\\n\"],[10],[0,\"\\n\"]],\"hasEval\":false}",
+    "id": "fT+H+tNP",
+    "block": "{\"symbols\":[],\"statements\":[[10,\"div\"],[15,0,[31,[\"progress-bar \",[34,0]]]],[14,\"role\",\"progressbar\"],[15,\"aria-valuenow\",[31,[[34,1]]]],[14,\"aria-valuemin\",\"0\"],[14,\"aria-valuemax\",\"100\"],[22,5,[34,2]],[12],[2,\"\\n\"],[13],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"colorClass\",\"value\",\"maxWidthStyle\"]}",
     "meta": {
       "moduleName": "dummy/templates/components/upf-progress.hbs"
     }
@@ -1470,8 +1285,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "X5mm0Mfv",
-    "block": "{\"symbols\":[],\"statements\":[[1,[27,\"star-rating\",null,[[\"rating\",\"wholeOnly\",\"useHalfStars\",\"fillColor\",\"baseColor\",\"onClick\",\"width\",\"height\"],[[23,[\"rating\"]],true,false,\"#f4ba34\",\"#F1F2F3\",[23,[\"onRatingChange\"]],[23,[\"size\"]],[23,[\"size\"]]]]],false],[0,\"\\n\"]],\"hasEval\":false}",
+    "id": "HrK8tkpU",
+    "block": "{\"symbols\":[],\"statements\":[[1,[30,[36,3],null,[[\"rating\",\"wholeOnly\",\"useHalfStars\",\"fillColor\",\"baseColor\",\"onClick\",\"width\",\"height\"],[[35,2],true,false,\"#f4ba34\",\"#F1F2F3\",[35,1],[35,0],[35,0]]]]],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"size\",\"onRatingChange\",\"rating\",\"star-rating\"]}",
     "meta": {
       "moduleName": "dummy/templates/components/upf-rating.hbs"
     }
@@ -1488,8 +1303,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "6gsC1BBs",
-    "block": "{\"symbols\":[],\"statements\":[[7,\"span\"],[11,\"class\",\"min-max-value min-value\"],[9],[1,[27,\"or\",[[23,[\"options\",\"minLabel\"]],[23,[\"options\",\"min\"]]],null],false],[10],[0,\"\\n\"],[7,\"input\"],[11,\"class\",\"slider\"],[11,\"type\",\"text\"],[9],[10],[0,\"\\n\"],[7,\"span\"],[11,\"class\",\"min-max-value max-value\"],[9],[1,[27,\"or\",[[23,[\"options\",\"maxLabel\"]],[23,[\"options\",\"max\"]]],null],false],[10],[0,\"\\n\\n\"],[0,\"\\n\"]],\"hasEval\":false}",
+    "id": "Jj1PaCOD",
+    "block": "{\"symbols\":[],\"statements\":[[10,\"span\"],[14,0,\"min-max-value min-value\"],[12],[1,[30,[36,1],[[35,0,[\"minLabel\"]],[35,0,[\"min\"]]],null]],[13],[2,\"\\n\"],[10,\"input\"],[14,0,\"slider\"],[14,4,\"text\"],[12],[13],[2,\"\\n\"],[10,\"span\"],[14,0,\"min-max-value max-value\"],[12],[1,[30,[36,1],[[35,0,[\"maxLabel\"]],[35,0,[\"max\"]]],null]],[13],[2,\"\\n\\n\"],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"options\",\"or\"]}",
     "meta": {
       "moduleName": "dummy/templates/components/upf-slider.hbs"
     }
@@ -1506,8 +1321,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "/CGZMsA8",
-    "block": "{\"symbols\":[],\"statements\":[[7,\"span\"],[11,\"class\",\"upf-stat__name\"],[9],[0,\"\\n  \"],[1,[21,\"name\"],false],[0,\"\\n\\n\"],[4,\"if\",[[23,[\"icon\"]]],null,{\"statements\":[[4,\"if\",[[27,\"eq\",[[23,[\"iconPlacement\"]],\"top\"],null]],null,{\"statements\":[[0,\"      \"],[7,\"span\"],[11,\"class\",\"upf-stat__icon\"],[12,\"title\",[28,[[21,\"iconLabel\"]]]],[9],[0,\"\\n\"],[4,\"if\",[[23,[\"iconUrl\"]]],null,{\"statements\":[[0,\"          \"],[7,\"a\"],[12,\"href\",[28,[[21,\"iconUrl\"]]]],[11,\"target\",\"_blank\"],[9],[0,\"\\n            \"],[7,\"i\"],[12,\"class\",[28,[\"fa fa-\",[21,\"icon\"],\" \",[21,\"iconClass\"]]]],[9],[10],[0,\"\\n          \"],[10],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"          \"],[7,\"i\"],[12,\"class\",[28,[\"fa fa-\",[21,\"icon\"],\" \",[21,\"iconClass\"]]]],[9],[10],[0,\"\\n\"]],\"parameters\":[]}],[0,\"      \"],[10],[0,\"\\n\"]],\"parameters\":[]},null]],\"parameters\":[]},null],[10],[0,\"\\n\\n\"],[7,\"span\"],[12,\"class\",[27,\"concat\",[\"upf-stat__data \",[23,[\"dataClass\"]],[27,\"unless\",[[23,[\"data\"]],\" upf-stat__data--null\"],null]],null]],[9],[0,\"\\n  \"],[1,[21,\"data\"],false],[0,\"\\n\\n\"],[4,\"if\",[[23,[\"icon\"]]],null,{\"statements\":[[4,\"if\",[[27,\"eq\",[[23,[\"iconPlacement\"]],\"right\"],null]],null,{\"statements\":[[0,\"      \"],[7,\"span\"],[11,\"class\",\"upf-stat__icon\"],[12,\"title\",[28,[[21,\"iconLabel\"]]]],[9],[0,\"\\n        \"],[7,\"i\"],[12,\"class\",[28,[\"fa fa-\",[21,\"icon\"],\" \",[21,\"iconClass\"]]]],[9],[10],[0,\"\\n      \"],[10],[0,\"\\n\"]],\"parameters\":[]},null]],\"parameters\":[]},null],[10],[0,\"\\n\\n\"],[4,\"if\",[[23,[\"label\"]]],null,{\"statements\":[[0,\"  \"],[7,\"span\"],[11,\"class\",\"upf-stat__label\"],[9],[1,[21,\"label\"],true],[10],[0,\"\\n\"]],\"parameters\":[]},null]],\"hasEval\":false}",
+    "id": "Wm9czH53",
+    "block": "{\"symbols\":[],\"statements\":[[10,\"span\"],[14,0,\"upf-stat__name\"],[12],[2,\"\\n  \"],[1,[34,8]],[2,\"\\n\\n\"],[6,[37,6],[[35,3]],null,[[\"default\"],[{\"statements\":[[6,[37,6],[[30,[36,5],[[35,4],\"top\"],null]],null,[[\"default\"],[{\"statements\":[[2,\"      \"],[10,\"span\"],[14,0,\"upf-stat__icon\"],[15,\"title\",[31,[[34,1]]]],[12],[2,\"\\n\"],[6,[37,6],[[35,7]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"          \"],[10,\"a\"],[15,6,[31,[[34,7]]]],[14,\"target\",\"_blank\"],[12],[2,\"\\n            \"],[10,\"i\"],[15,0,[31,[\"fa fa-\",[34,3],\" \",[34,2]]]],[12],[13],[2,\"\\n          \"],[13],[2,\"\\n\"]],\"parameters\":[]},{\"statements\":[[2,\"          \"],[10,\"i\"],[15,0,[31,[\"fa fa-\",[34,3],\" \",[34,2]]]],[12],[13],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"      \"],[13],[2,\"\\n\"]],\"parameters\":[]}]]]],\"parameters\":[]}]]],[13],[2,\"\\n\\n\"],[10,\"span\"],[15,0,[30,[36,12],[\"upf-stat__data \",[35,11],[30,[36,10],[[35,9],\" upf-stat__data--null\"],null]],null]],[12],[2,\"\\n  \"],[1,[34,9]],[2,\"\\n\\n\"],[6,[37,6],[[35,3]],null,[[\"default\"],[{\"statements\":[[6,[37,6],[[30,[36,5],[[35,4],\"right\"],null]],null,[[\"default\"],[{\"statements\":[[2,\"      \"],[10,\"span\"],[14,0,\"upf-stat__icon\"],[15,\"title\",[31,[[34,1]]]],[12],[2,\"\\n        \"],[10,\"i\"],[15,0,[31,[\"fa fa-\",[34,3],\" \",[34,2]]]],[12],[13],[2,\"\\n      \"],[13],[2,\"\\n\"]],\"parameters\":[]}]]]],\"parameters\":[]}]]],[13],[2,\"\\n\\n\"],[6,[37,6],[[35,0]],null,[[\"default\"],[{\"statements\":[[2,\"  \"],[10,\"span\"],[14,0,\"upf-stat__label\"],[12],[2,[34,0]],[13],[2,\"\\n\"]],\"parameters\":[]}]]]],\"hasEval\":false,\"upvars\":[\"label\",\"iconLabel\",\"iconClass\",\"icon\",\"iconPlacement\",\"eq\",\"if\",\"iconUrl\",\"name\",\"data\",\"unless\",\"dataClass\",\"concat\"]}",
     "meta": {
       "moduleName": "dummy/templates/components/upf-stat.hbs"
     }
@@ -1524,8 +1339,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "xMvC+qG3",
-    "block": "{\"symbols\":[\"item\",\"index\",\"column\",\"column\",\"&default\"],\"statements\":[[7,\"ul\"],[11,\"class\",\"row upf-datatable__actions-header\"],[9],[0,\"\\n\"],[4,\"if\",[[23,[\"contextualActionsComponent\"]]],null,{\"statements\":[[0,\"    \"],[1,[27,\"component\",[[23,[\"contextualActionsComponent\"]]],[[\"collection\"],[[23,[\"collection\"]]]]],false],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"\\n  \"],[7,\"li\"],[11,\"class\",\"upf-datatable__actions-pull-right\"],[9],[0,\"\\n\"],[4,\"if\",[[23,[\"hasToggleableColumns\"]]],null,{\"statements\":[[0,\"      \"],[1,[27,\"column-visibility-panel\",null,[[\"columns\"],[[23,[\"_columns\"]]]]],false],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"\\n\"],[4,\"if\",[[23,[\"hasPagination\"]]],null,{\"statements\":[[4,\"unless\",[[23,[\"isCompact\"]]],null,{\"statements\":[[0,\"        \"],[1,[27,\"upf-table/pagination\",null,[[\"currentPage\",\"perPage\",\"totalPages\",\"itemTotal\",\"itemCount\",\"itemName\"],[[23,[\"currentPage\"]],[23,[\"perPage\"]],[23,[\"totalPages\"]],[23,[\"itemTotal\"]],[23,[\"itemCount\"]],[23,[\"itemName\"]]]]],false],[0,\"\\n\"]],\"parameters\":[]},null]],\"parameters\":[]},null],[0,\"\\n\"],[4,\"if\",[[23,[\"hasSearch\"]]],null,{\"statements\":[[0,\"      \"],[1,[27,\"expanding-search\",null,[[\"classNames\",\"searchQuery\",\"placeholder\",\"small\"],[\"margin-left-xx-sm\",[23,[\"_searchQuery\"]],[23,[\"searchInputPlaceholder\"]],true]]],false],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"  \"],[10],[0,\"\\n\"],[10],[0,\"\\n\\n\"],[7,\"table\"],[11,\"class\",\"upf-datatable__table\"],[9],[0,\"\\n  \"],[7,\"thead\"],[9],[0,\"\\n\"],[4,\"upf-table/row\",null,[[\"isHeaderRow\"],[true]],{\"statements\":[[4,\"if\",[[23,[\"hasSelection\"]]],null,{\"statements\":[[4,\"unless\",[[23,[\"contentChanging\"]]],null,{\"statements\":[[0,\"          \"],[7,\"th\"],[11,\"width\",\"45px\"],[11,\"class\",\"upf-datatable__column upf-datatable__column--unsortable\"],[9],[0,\"\\n            \"],[1,[27,\"upf-checkbox\",null,[[\"value\"],[[23,[\"allRowsSelected\"]]]]],false],[0,\"\\n          \"],[10],[0,\"\\n\"]],\"parameters\":[]},null]],\"parameters\":[]},null],[0,\"\\n\"],[4,\"each\",[[23,[\"_columns\"]]],null,{\"statements\":[[4,\"unless\",[[27,\"eq\",[[22,4,[\"visible\"]],false],null]],null,{\"statements\":[[0,\"          \"],[1,[27,\"upf-table/header_cell\",null,[[\"column\",\"click\"],[[22,4,[]],[27,\"action\",[[22,0,[]],\"onClickHeader\",[22,4,[]]],null]]]],false],[0,\"\\n\"]],\"parameters\":[]},null]],\"parameters\":[4]},null]],\"parameters\":[]},null],[0,\"  \"],[10],[0,\"\\n\\n  \"],[7,\"tbody\"],[9],[0,\"\\n\"],[4,\"if\",[[23,[\"isLoading\"]]],null,{\"statements\":[[0,\"      \"],[7,\"tr\"],[9],[0,\"\\n        \"],[7,\"td\"],[12,\"colspan\",[21,\"_fullSizeColumnColspan\"]],[11,\"class\",\"upf-align--center\"],[9],[0,\"\\n          \"],[1,[21,\"loading-state\"],false],[0,\"\\n        \"],[10],[0,\"\\n      \"],[10],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[4,\"if\",[[23,[\"contentChanging\"]]],null,{\"statements\":[[4,\"each\",[[23,[\"_contentPlaceholder\"]]],null,{\"statements\":[[4,\"upf-table/row\",null,null,{\"statements\":[[0,\"            \"],[7,\"td\"],[11,\"valign\",\"middle\"],[11,\"class\",\"upf-datatable__column upf-datatable__column--locked\"],[9],[0,\"\\n              \"],[7,\"div\"],[11,\"class\",\"skeleton-placeholder\"],[9],[10],[0,\"\\n            \"],[10],[0,\"\\n            \"],[7,\"td\"],[11,\"valign\",\"middle\"],[11,\"class\",\"upf-datatable__column upf-datatable__column--locked\"],[9],[0,\"\\n              \"],[7,\"div\"],[11,\"class\",\"skeleton-placeholder\"],[9],[10],[0,\"\\n            \"],[10],[0,\"\\n\"]],\"parameters\":[]},null]],\"parameters\":[]},null]],\"parameters\":[]},{\"statements\":[[4,\"each\",[[23,[\"collection\"]]],null,{\"statements\":[[4,\"upf-table/row\",null,[[\"ref\",\"action\",\"hasPolymorphicColumns\",\"onRowClick\"],[[22,1,[]],\"callOnRowClickCallback\",[23,[\"hasPolymorphicColumns\"]],[23,[\"onRowClick\"]]]],{\"statements\":[[4,\"if\",[[23,[\"hasSelection\"]]],null,{\"statements\":[[0,\"              \"],[7,\"td\"],[11,\"class\",\"upf-datatable__column upf-datatable__column--uneditable\"],[9],[0,\"\\n                \"],[1,[27,\"upf-checkbox\",null,[[\"value\"],[[22,1,[\"selected\"]]]]],false],[0,\"\\n              \"],[10],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"\\n\"],[4,\"each\",[[23,[\"_columns\"]]],null,{\"statements\":[[4,\"unless\",[[27,\"eq\",[[22,3,[\"visible\"]],false],null]],null,{\"statements\":[[4,\"upf-table/column\",null,[[\"ref\",\"editable\",\"classNames\"],[[22,3,[]],[22,3,[\"editable\"]],[22,3,[\"additionalClasses\"]]]],{\"statements\":[[4,\"if\",[[22,3,[\"component\"]]],null,{\"statements\":[[0,\"                    \"],[1,[27,\"component\",[[22,3,[\"component\"]]],[[\"item\",\"column\"],[[22,1,[]],[22,3,[]]]]],false],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[4,\"if\",[[27,\"eq\",[[22,3,[\"helper\"]],\"money\"],null]],null,{\"statements\":[[0,\"                      \"],[1,[27,\"format-money\",[[27,\"get\",[[22,1,[]],[22,3,[\"property\"]]],null],[27,\"get\",[[22,1,[]],[22,3,[\"currency\"]]],null]],null],false],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[4,\"if\",[[27,\"eq\",[[22,3,[\"helper\"]],\"numeric\"],null]],null,{\"statements\":[[0,\"                      \"],[1,[27,\"format-numeric\",[[27,\"get\",[[22,1,[]],[22,3,[\"property\"]]],null]],null],false],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[4,\"if\",[[27,\"and\",[[27,\"not\",[[27,\"get\",[[22,1,[]],[22,3,[\"property\"]]],null]],null],[22,3,[\"emptyValue\"]]],null]],null,{\"statements\":[[0,\"                        \"],[7,\"span\"],[11,\"class\",\"upf-datatable__column--empty-value\"],[9],[0,\"\\n                          \"],[1,[22,3,[\"emptyValue\"]],false],[0,\"\\n                        \"],[10],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"                        \"],[1,[27,\"get\",[[22,1,[]],[22,3,[\"property\"]]],null],false],[0,\"\\n\"]],\"parameters\":[]}],[0,\"                    \"]],\"parameters\":[]}]],\"parameters\":[]}]],\"parameters\":[]}]],\"parameters\":[]},null]],\"parameters\":[]},null]],\"parameters\":[3]},null]],\"parameters\":[]},null]],\"parameters\":[1,2]},{\"statements\":[[0,\"          \"],[7,\"tr\"],[9],[0,\"\\n            \"],[7,\"td\"],[12,\"colspan\",[21,\"_fullSizeColumnColspan\"]],[11,\"class\",\"upf-align--center\"],[9],[0,\"\\n              \"],[14,5],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n\"]],\"parameters\":[]}],[0,\"\\n\"],[4,\"if\",[[27,\"and\",[[23,[\"hasPagination\"]],[23,[\"isCompact\"]]],null]],null,{\"statements\":[[0,\"          \"],[7,\"tr\"],[9],[0,\"\\n            \"],[7,\"td\"],[12,\"colspan\",[21,\"_fullSizeColumnColspan\"]],[11,\"class\",\"upf-align--right padding-sm\"],[9],[0,\"\\n              \"],[1,[27,\"upf-table/pagination\",null,[[\"currentPage\",\"perPage\",\"totalPages\",\"itemTotal\",\"itemCount\",\"itemName\"],[[23,[\"currentPage\"]],[23,[\"perPage\"]],[23,[\"totalPages\"]],[23,[\"itemTotal\"]],[23,[\"itemCount\"]],[23,[\"itemName\"]]]]],false],[0,\"\\n            \"],[10],[0,\"\\n          \"],[10],[0,\"\\n\"]],\"parameters\":[]},null]],\"parameters\":[]}]],\"parameters\":[]}],[0,\"  \"],[10],[0,\"\\n\"],[10],[0,\"\\n\"]],\"hasEval\":false}",
+    "id": "kP+HDh/7",
+    "block": "{\"symbols\":[\"item\",\"index\",\"column\",\"column\",\"&default\"],\"statements\":[[10,\"ul\"],[14,0,\"row upf-datatable__actions-header\"],[12],[2,\"\\n\"],[6,[37,11],[[35,39]],null,[[\"default\"],[{\"statements\":[[2,\"    \"],[1,[30,[36,15],[[35,39]],[[\"collection\"],[[35,26]]]]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"\\n  \"],[10,\"li\"],[14,0,\"upf-datatable__actions-pull-right\"],[12],[2,\"\\n\"],[6,[37,11],[[35,40]],null,[[\"default\"],[{\"statements\":[[2,\"      \"],[1,[30,[36,38],null,[[\"columns\"],[[35,20]]]]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"\\n\"],[6,[37,11],[[35,28]],null,[[\"default\"],[{\"statements\":[[6,[37,17],[[35,27]],null,[[\"default\"],[{\"statements\":[[2,\"        \"],[1,[30,[36,7],null,[[\"currentPage\",\"perPage\",\"totalPages\",\"itemTotal\",\"itemCount\",\"itemName\"],[[35,6],[35,5],[35,4],[35,3],[35,2],[35,1]]]]],[2,\"\\n\"]],\"parameters\":[]}]]]],\"parameters\":[]}]]],[2,\"\\n\"],[6,[37,11],[[35,41]],null,[[\"default\"],[{\"statements\":[[2,\"      \"],[1,[30,[36,37],null,[[\"classNames\",\"searchQuery\",\"placeholder\",\"small\"],[\"margin-left-xx-sm\",[35,36],[35,35],true]]]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"  \"],[13],[2,\"\\n\"],[13],[2,\"\\n\\n\"],[10,\"table\"],[14,0,\"upf-datatable__table\"],[12],[2,\"\\n  \"],[10,\"thead\"],[12],[2,\"\\n\"],[6,[37,25],null,[[\"isHeaderRow\"],[true]],[[\"default\"],[{\"statements\":[[6,[37,11],[[35,19]],null,[[\"default\"],[{\"statements\":[[6,[37,17],[[35,30]],null,[[\"default\"],[{\"statements\":[[2,\"          \"],[10,\"th\"],[14,\"width\",\"45px\"],[14,0,\"upf-datatable__column upf-datatable__column--unsortable\"],[12],[2,\"\\n            \"],[1,[30,[36,18],null,[[\"value\"],[[35,34]]]]],[2,\"\\n          \"],[13],[2,\"\\n\"]],\"parameters\":[]}]]]],\"parameters\":[]}]]],[2,\"\\n\"],[6,[37,22],[[30,[36,21],[[30,[36,21],[[35,20]],null]],null]],null,[[\"default\"],[{\"statements\":[[6,[37,17],[[30,[36,13],[[32,4,[\"visible\"]],false],null]],null,[[\"default\"],[{\"statements\":[[2,\"          \"],[1,[30,[36,33],null,[[\"column\",\"click\"],[[32,4],[30,[36,32],[[32,0],\"onClickHeader\",[32,4]],null]]]]],[2,\"\\n\"]],\"parameters\":[]}]]]],\"parameters\":[4]}]]]],\"parameters\":[]}]]],[2,\"  \"],[13],[2,\"\\n\\n  \"],[10,\"tbody\"],[12],[2,\"\\n\"],[6,[37,11],[[35,42]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"      \"],[10,\"tr\"],[12],[2,\"\\n        \"],[10,\"td\"],[15,\"colspan\",[34,0]],[14,0,\"upf-align--center\"],[12],[2,\"\\n          \"],[1,[34,31]],[2,\"\\n        \"],[13],[2,\"\\n      \"],[13],[2,\"\\n\"]],\"parameters\":[]},{\"statements\":[[6,[37,11],[[35,30]],null,[[\"default\",\"else\"],[{\"statements\":[[6,[37,22],[[30,[36,21],[[30,[36,21],[[35,29]],null]],null]],null,[[\"default\"],[{\"statements\":[[6,[37,25],null,null,[[\"default\"],[{\"statements\":[[2,\"            \"],[10,\"td\"],[14,\"valign\",\"middle\"],[14,0,\"upf-datatable__column upf-datatable__column--locked\"],[12],[2,\"\\n              \"],[10,\"div\"],[14,0,\"skeleton-placeholder\"],[12],[13],[2,\"\\n            \"],[13],[2,\"\\n            \"],[10,\"td\"],[14,\"valign\",\"middle\"],[14,0,\"upf-datatable__column upf-datatable__column--locked\"],[12],[2,\"\\n              \"],[10,\"div\"],[14,0,\"skeleton-placeholder\"],[12],[13],[2,\"\\n            \"],[13],[2,\"\\n\"]],\"parameters\":[]}]]]],\"parameters\":[]}]]]],\"parameters\":[]},{\"statements\":[[6,[37,22],[[30,[36,21],[[30,[36,21],[[35,26]],null]],null]],null,[[\"default\",\"else\"],[{\"statements\":[[6,[37,25],null,[[\"ref\",\"action\",\"hasPolymorphicColumns\",\"onRowClick\"],[[32,1],\"callOnRowClickCallback\",[35,24],[35,23]]],[[\"default\"],[{\"statements\":[[6,[37,11],[[35,19]],null,[[\"default\"],[{\"statements\":[[2,\"              \"],[10,\"td\"],[14,0,\"upf-datatable__column upf-datatable__column--uneditable\"],[12],[2,\"\\n                \"],[1,[30,[36,18],null,[[\"value\"],[[32,1,[\"selected\"]]]]]],[2,\"\\n              \"],[13],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"\\n\"],[6,[37,22],[[30,[36,21],[[30,[36,21],[[35,20]],null]],null]],null,[[\"default\"],[{\"statements\":[[6,[37,17],[[30,[36,13],[[32,3,[\"visible\"]],false],null]],null,[[\"default\"],[{\"statements\":[[6,[37,16],null,[[\"ref\",\"editable\",\"classNames\"],[[32,3],[32,3,[\"editable\"]],[32,3,[\"additionalClasses\"]]]],[[\"default\"],[{\"statements\":[[6,[37,11],[[32,3,[\"component\"]]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"                    \"],[1,[30,[36,15],[[32,3,[\"component\"]]],[[\"item\",\"column\"],[[32,1],[32,3]]]]],[2,\"\\n\"]],\"parameters\":[]},{\"statements\":[[6,[37,11],[[30,[36,13],[[32,3,[\"helper\"]],\"money\"],null]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"                      \"],[1,[30,[36,14],[[30,[36,8],[[32,1],[32,3,[\"property\"]]],null],[30,[36,8],[[32,1],[32,3,[\"currency\"]]],null]],null]],[2,\"\\n\"]],\"parameters\":[]},{\"statements\":[[6,[37,11],[[30,[36,13],[[32,3,[\"helper\"]],\"numeric\"],null]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"                      \"],[1,[30,[36,12],[[30,[36,8],[[32,1],[32,3,[\"property\"]]],null]],null]],[2,\"\\n\"]],\"parameters\":[]},{\"statements\":[[6,[37,11],[[30,[36,10],[[30,[36,9],[[30,[36,8],[[32,1],[32,3,[\"property\"]]],null]],null],[32,3,[\"emptyValue\"]]],null]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"                        \"],[10,\"span\"],[14,0,\"upf-datatable__column--empty-value\"],[12],[2,\"\\n                          \"],[1,[32,3,[\"emptyValue\"]]],[2,\"\\n                        \"],[13],[2,\"\\n\"]],\"parameters\":[]},{\"statements\":[[2,\"                        \"],[1,[30,[36,8],[[32,1],[32,3,[\"property\"]]],null]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"                    \"]],\"parameters\":[]}]]]],\"parameters\":[]}]]]],\"parameters\":[]}]]]],\"parameters\":[]}]]]],\"parameters\":[]}]]]],\"parameters\":[3]}]]]],\"parameters\":[]}]]]],\"parameters\":[1,2]},{\"statements\":[[2,\"          \"],[10,\"tr\"],[12],[2,\"\\n            \"],[10,\"td\"],[15,\"colspan\",[34,0]],[14,0,\"upf-align--center\"],[12],[2,\"\\n              \"],[18,5,null],[2,\"\\n            \"],[13],[2,\"\\n          \"],[13],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"\\n\"],[6,[37,11],[[30,[36,10],[[35,28],[35,27]],null]],null,[[\"default\"],[{\"statements\":[[2,\"          \"],[10,\"tr\"],[12],[2,\"\\n            \"],[10,\"td\"],[15,\"colspan\",[34,0]],[14,0,\"upf-align--right padding-sm\"],[12],[2,\"\\n              \"],[1,[30,[36,7],null,[[\"currentPage\",\"perPage\",\"totalPages\",\"itemTotal\",\"itemCount\",\"itemName\"],[[35,6],[35,5],[35,4],[35,3],[35,2],[35,1]]]]],[2,\"\\n            \"],[13],[2,\"\\n          \"],[13],[2,\"\\n\"]],\"parameters\":[]}]]]],\"parameters\":[]}]]]],\"parameters\":[]}]]],[2,\"  \"],[13],[2,\"\\n\"],[13],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"_fullSizeColumnColspan\",\"itemName\",\"itemCount\",\"itemTotal\",\"totalPages\",\"perPage\",\"currentPage\",\"upf-table/pagination\",\"get\",\"not\",\"and\",\"if\",\"format-numeric\",\"eq\",\"format-money\",\"component\",\"upf-table/column\",\"unless\",\"upf-checkbox\",\"hasSelection\",\"_columns\",\"-track-array\",\"each\",\"onRowClick\",\"hasPolymorphicColumns\",\"upf-table/row\",\"collection\",\"isCompact\",\"hasPagination\",\"_contentPlaceholder\",\"contentChanging\",\"loading-state\",\"action\",\"upf-table/header_cell\",\"allRowsSelected\",\"searchInputPlaceholder\",\"_searchQuery\",\"expanding-search\",\"column-visibility-panel\",\"contextualActionsComponent\",\"hasToggleableColumns\",\"hasSearch\",\"isLoading\"]}",
     "meta": {
       "moduleName": "dummy/templates/components/upf-table.hbs"
     }
@@ -1542,8 +1357,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "znRxS3KX",
-    "block": "{\"symbols\":[],\"statements\":[[4,\"if\",[[23,[\"column\",\"titleIcon\"]]],null,{\"statements\":[[0,\"  \"],[7,\"i\"],[12,\"class\",[28,[\"fa fa-\",[23,[\"column\",\"titleIcon\"]]]]],[9],[10],[0,\"\\n\"]],\"parameters\":[]},{\"statements\":[[0,\"  \"],[1,[23,[\"column\",\"title\"]],false],[0,\"\\n\"]],\"parameters\":[]}],[0,\"\\n\"],[4,\"if\",[[23,[\"column\",\"tooltip\"]]],null,{\"statements\":[[0,\"  \"],[7,\"fa\"],[11,\"class\",\"fa fa-info-circle\"],[11,\"data-toggle\",\"tooltip\"],[12,\"title\",[23,[\"column\",\"tooltip\"]]],[9],[10],[0,\"\\n\"]],\"parameters\":[]},null],[0,\"\\n\"],[4,\"if\",[[23,[\"column\",\"subtitle\"]]],null,{\"statements\":[[0,\"  \"],[7,\"div\"],[11,\"class\",\"subtitle text-size-4\"],[9],[1,[23,[\"column\",\"subtitle\"]],false],[10],[0,\"\\n\"]],\"parameters\":[]},null]],\"hasEval\":false}",
+    "id": "DRkGaZAR",
+    "block": "{\"symbols\":[],\"statements\":[[6,[37,1],[[35,0,[\"titleIcon\"]]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"  \"],[10,\"i\"],[15,0,[31,[\"fa fa-\",[34,0,[\"titleIcon\"]]]]],[12],[13],[2,\"\\n\"]],\"parameters\":[]},{\"statements\":[[2,\"  \"],[1,[35,0,[\"title\"]]],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"\\n\"],[6,[37,1],[[35,0,[\"tooltip\"]]],null,[[\"default\"],[{\"statements\":[[2,\"  \"],[10,\"fa\"],[14,0,\"fa fa-info-circle\"],[14,\"data-toggle\",\"tooltip\"],[15,\"title\",[34,0,[\"tooltip\"]]],[12],[13],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"\\n\"],[6,[37,1],[[35,0,[\"subtitle\"]]],null,[[\"default\"],[{\"statements\":[[2,\"  \"],[10,\"div\"],[14,0,\"subtitle text-size-4\"],[12],[1,[35,0,[\"subtitle\"]]],[13],[2,\"\\n\"]],\"parameters\":[]}]]]],\"hasEval\":false,\"upvars\":[\"column\",\"if\"]}",
     "meta": {
       "moduleName": "dummy/templates/components/upf-table/header-cell.hbs"
     }
@@ -1560,8 +1375,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "V97/k/J5",
-    "block": "{\"symbols\":[],\"statements\":[[7,\"span\"],[11,\"class\",\"text-size-5 margin-left-xx-sm\"],[9],[1,[21,\"from\"],false],[0,\" to \"],[1,[21,\"to\"],false],[0,\" out of \"],[1,[21,\"itemTotal\"],false],[0,\" \"],[1,[21,\"itemName\"],false],[10],[0,\"\\n\\n\"],[7,\"a\"],[12,\"class\",[28,[\"upf-btn upf-btn--default upf-btn--small margin-left-xx-sm \",[27,\"unless\",[[23,[\"hasPrevious\"]],\"disabled\"],null]]]],[9],[0,\"\\n  \"],[7,\"i\"],[11,\"class\",\"fa fa-caret-left\"],[9],[10],[0,\"\\n\"],[3,\"action\",[[22,0,[]],\"previousPage\"]],[10],[0,\"\\n\\n\"],[7,\"a\"],[12,\"class\",[28,[\"upf-btn upf-btn--default upf-btn--small \",[27,\"unless\",[[23,[\"hasNext\"]],\"disabled\"],null]]]],[9],[0,\"\\n  \"],[7,\"i\"],[11,\"class\",\"fa fa-caret-right\"],[9],[10],[0,\"\\n\"],[3,\"action\",[[22,0,[]],\"nextPage\"]],[10],[0,\"\\n\"]],\"hasEval\":false}",
+    "id": "2pdbClS3",
+    "block": "{\"symbols\":[],\"statements\":[[10,\"span\"],[14,0,\"text-size-5 margin-left-xx-sm\"],[12],[1,[34,0]],[2,\" to \"],[1,[34,1]],[2,\" out of \"],[1,[34,2]],[2,\" \"],[1,[34,3]],[13],[2,\"\\n\\n\"],[11,\"a\"],[16,0,[31,[\"upf-btn upf-btn--default upf-btn--small margin-left-xx-sm \",[30,[36,5],[[35,4],\"disabled\"],null]]]],[4,[38,6],[[32,0],\"previousPage\"],null],[12],[2,\"\\n  \"],[10,\"i\"],[14,0,\"fa fa-caret-left\"],[12],[13],[2,\"\\n\"],[13],[2,\"\\n\\n\"],[11,\"a\"],[16,0,[31,[\"upf-btn upf-btn--default upf-btn--small \",[30,[36,5],[[35,7],\"disabled\"],null]]]],[4,[38,6],[[32,0],\"nextPage\"],null],[12],[2,\"\\n  \"],[10,\"i\"],[14,0,\"fa fa-caret-right\"],[12],[13],[2,\"\\n\"],[13],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"from\",\"to\",\"itemTotal\",\"itemName\",\"hasPrevious\",\"unless\",\"action\",\"hasNext\"]}",
     "meta": {
       "moduleName": "dummy/templates/components/upf-table/pagination.hbs"
     }
@@ -1578,8 +1393,8 @@
   _exports.default = void 0;
 
   var _default = Ember.HTMLBars.template({
-    "id": "wOfmFpuN",
-    "block": "{\"symbols\":[],\"statements\":[],\"hasEval\":false}",
+    "id": "30OVEMdV",
+    "block": "{\"symbols\":[],\"statements\":[],\"hasEval\":false,\"upvars\":[]}",
     "meta": {
       "moduleName": "dummy/templates/index.hbs"
     }
