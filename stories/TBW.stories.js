@@ -13,13 +13,11 @@ const defineStory = (name) => {
 };
 
 [
-  'Core/Typography',
   'Core/Icons',
   'Core/Variables',
 ].forEach((story) => defineStory(story));
 
 [
-  'Base/Alerts',
   'Base/Borders',
   'Base/Buttons',
   'Base/Cards',
