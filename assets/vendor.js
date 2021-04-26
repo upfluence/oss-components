@@ -133803,7 +133803,7 @@ define("ember-resolver/features", [], function () {
 
   function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-  function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+  function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 
   function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
@@ -134032,7 +134032,7 @@ define("ember-resolver/features", [], function () {
 
   function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 
-  function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+  function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
 
   function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
@@ -134424,7 +134424,7 @@ define("ember-resolver/features", [], function () {
   var _default = Ember.Component.extend(TargetActionSupport, {
     tagName: 'button',
     classNames: ['upf-btn', 'upf-btn--destructive'],
-    attributeBindings: ['disabled', 'title'],
+    attributeBindings: ['disabled', 'title', 'data-control-name'],
     actionFailed: false,
     isLoading: false,
     isSuccess: false,
@@ -134482,6 +134482,7 @@ define("ember-resolver/features", [], function () {
   var _default = Ember.Component.extend({
     classNames: ['expanding-search'],
     classNameBindings: ['expandedSearch:expanding-search--opened', 'small:expanding-search--small'],
+    attributeBindings: ['data-control-name'],
     searchQuery: '',
     emptySearchQuery: Ember.computed.empty('searchQuery'),
     expandedSearch: Ember.computed.not('emptySearchQuery'),
@@ -134539,7 +134540,7 @@ define("ember-resolver/features", [], function () {
   var LoadingButtonComponent = Ember.Component.extend(TargetActionSupport, {
     tagName: 'button',
     classNameBindings: ['isLoading:js-btn--loading'],
-    attributeBindings: ['disabled', 'title'],
+    attributeBindings: ['disabled', 'title', 'data-control-name'],
     disabled: false,
     isLoading: false,
     initiallyDisabled: false,
@@ -134608,7 +134609,7 @@ define("ember-resolver/features", [], function () {
     tagName: 'label',
     classNames: ['btn', 'upf-radio-btn'],
     classNameBindings: ['isChecked:active', 'disabled'],
-    attributeBindings: ['style'],
+    attributeBindings: ['style', 'data-control-name'],
     style: Ember.computed('options', function () {
       return "width: ".concat(100 / Object.keys(this.get('options')).length, "%;");
     }),
@@ -134839,6 +134840,7 @@ define("ember-resolver/features", [], function () {
   var _default = Ember.Component.extend({
     classNames: ['upf-checkbox'],
     classNameBindings: ['hasLabel:upf-checkbox--has-label', 'sizeSmall:upf-checkbox--sm', 'disabled:upf-checkbox--disabled'],
+    attributeBindings: ['data-control-name'],
     sizeSmall: Ember.computed.equal('size', 'sm'),
     disabled: false,
     onValueChange: null,
@@ -134938,6 +134940,7 @@ define("ember-resolver/features", [], function () {
   var _default = Ember.Component.extend({
     classNames: ['upf-numeric-range'],
     classNameBindings: ['sizeSmall:upf-numeric-range--small'],
+    attributeBindings: ['data-control-name'],
     size: null,
     sizeSmall: Ember.computed.equal('size', 'small'),
     _options: Ember.computed('options', function () {
@@ -135002,6 +135005,7 @@ define("ember-resolver/features", [], function () {
   var _default = Ember.Component.extend({
     classNames: ['upf-slider'],
     classNameBindings: ['color', 'active'],
+    attributeBindings: ['data-control-name'],
     value: 0,
     active: false,
     slider: null,
@@ -135426,7 +135430,7 @@ define("ember-resolver/features", [], function () {
 
   function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-  function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+  function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
   function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
@@ -135558,7 +135562,7 @@ define("ember-resolver/features", [], function () {
 
   function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-  function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+  function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
   function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
@@ -135610,7 +135614,7 @@ define("ember-resolver/features", [], function () {
 
   function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-  function _iterableToArrayLimit(arr, i) { if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return; var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+  function _iterableToArrayLimit(arr, i) { var _i = arr && (typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]); if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
 
   function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
@@ -135742,36 +135746,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-2036KgT8f3bPmjcU/cache-191-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-20211H1yK7Ktxcey/cache-191-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-2036KgT8f3bPmjcU/cache-191-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-20211H1yK7Ktxcey/cache-191-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2036KgT8f3bPmjcU/cache-191-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-20211H1yK7Ktxcey/cache-191-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-2036KgT8f3bPmjcU/cache-191-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-20211H1yK7Ktxcey/cache-191-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-2036KgT8f3bPmjcU/cache-191-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-20211H1yK7Ktxcey/cache-191-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2036KgT8f3bPmjcU/cache-191-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-20211H1yK7Ktxcey/cache-191-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-2036KgT8f3bPmjcU/cache-191-bundler/staging/l.js /tmp/broccoli-2036KgT8f3bPmjcU/cache-191-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-20211H1yK7Ktxcey/cache-191-bundler/staging/l.js /tmp/broccoli-20211H1yK7Ktxcey/cache-191-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-2036KgT8f3bPmjcU/cache-191-bundler/staging/l.js */\"../../../../../tmp/broccoli-2036KgT8f3bPmjcU/cache-191-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-2036KgT8f3bPmjcU/cache-191-bundler/staging/app.js */\"../../../../../tmp/broccoli-2036KgT8f3bPmjcU/cache-191-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-2036KgT8f3bPmjcU/cache-191-bundler/staging/l.js_/tmp/broccoli-2036KgT8f3bPmjcU/cache-191-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-20211H1yK7Ktxcey/cache-191-bundler/staging/l.js */\"../../../../../tmp/broccoli-20211H1yK7Ktxcey/cache-191-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-20211H1yK7Ktxcey/cache-191-bundler/staging/app.js */\"../../../../../tmp/broccoli-20211H1yK7Ktxcey/cache-191-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-20211H1yK7Ktxcey/cache-191-bundler/staging/l.js_/tmp/broccoli-20211H1yK7Ktxcey/cache-191-bundler/staging/app.js?");
 
 /***/ })
 
