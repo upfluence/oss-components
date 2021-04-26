@@ -12,6 +12,7 @@ const DEFAULT_OPTIONS = {
 export default Component.extend({
   classNames: ['upf-numeric-range'],
   classNameBindings: ['sizeSmall:upf-numeric-range--small'],
+  attributeBindings: ['data-control-name'],
 
   size: null,
 
