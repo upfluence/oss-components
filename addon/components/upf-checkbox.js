@@ -8,6 +8,7 @@ export default Component.extend({
     'hasLabel:upf-checkbox--has-label', 'sizeSmall:upf-checkbox--sm',
     'disabled:upf-checkbox--disabled'
   ],
+  attributeBindings: ['data-control-name'],
 
   sizeSmall: equal('size', 'sm'),
   disabled: false,

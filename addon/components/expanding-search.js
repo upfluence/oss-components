@@ -7,6 +7,7 @@ export default Component.extend({
     'expandedSearch:expanding-search--opened',
     'small:expanding-search--small'
   ],
+  attributeBindings: ['data-control-name'],
 
   searchQuery: '',
   emptySearchQuery: empty('searchQuery'),

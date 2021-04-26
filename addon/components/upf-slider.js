@@ -4,6 +4,7 @@ import { computed } from '@ember/object';
 export default Component.extend({
   classNames: ['upf-slider'],
   classNameBindings: ['color', 'active'],
+  attributeBindings: ['data-control-name'],
 
   value: 0,
   active: false,

@@ -5,7 +5,7 @@ export default Component.extend({
   tagName: 'label',
   classNames: ['btn', 'upf-radio-btn'],
   classNameBindings: ['isChecked:active', 'disabled'],
-  attributeBindings: ['style'],
+  attributeBindings: ['style', 'data-control-name'],
 
   style: computed('options', function() {
     return `width: ${100 / Object.keys(this.get('options')).length}%;`;
