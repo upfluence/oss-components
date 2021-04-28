@@ -135596,6 +135596,55 @@ define("ember-resolver/features", [], function () {
 
   _exports.default = _default;
 });
+;define("oss-components/modifiers/enable-tooltip", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  var _default = Ember._setModifierManager(function () {
+    return {
+      createModifier: function createModifier() {
+        return {
+          element: null
+        };
+      },
+      installModifier: function installModifier(state, element, args) {
+        var _args$named = args.named,
+            placement = _args$named.placement,
+            title = _args$named.title,
+            html = _args$named.html,
+            trigger = _args$named.trigger;
+        state.element = element;
+        Ember.$(element).tooltip({
+          delay: {
+            show: 300
+          },
+          placement: placement || 'bottom',
+          title: title || '',
+          html: html || false,
+          trigger: trigger || 'hover focus'
+        });
+      },
+      updateModifier: function updateModifier(state, args) {
+        //We use this function when tooltip title is updated and depends to translation with value
+        var title = args.named.title;
+        Ember.$(state.element).attr('data-original-title', title);
+      },
+      destroyModifier: function destroyModifier(state) {// We don't need to do anything here, but a function
+        // still has to be here so we'll leave it blank.
+      }
+    };
+  }, function EnableTooltipModifierManager() {
+    _classCallCheck(this, EnableTooltipModifierManager);
+  });
+
+  _exports.default = _default;
+});
 ;define("oss-components/modifiers/on-click-outside", ["exports"], function (_exports) {
   "use strict";
 
@@ -135746,36 +135795,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-1965cqKXXzC5spHq/cache-191-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-2065DsV8PmRIqbfH/cache-191-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-1965cqKXXzC5spHq/cache-191-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-2065DsV8PmRIqbfH/cache-191-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1965cqKXXzC5spHq/cache-191-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2065DsV8PmRIqbfH/cache-191-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-1965cqKXXzC5spHq/cache-191-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-2065DsV8PmRIqbfH/cache-191-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-1965cqKXXzC5spHq/cache-191-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-2065DsV8PmRIqbfH/cache-191-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1965cqKXXzC5spHq/cache-191-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2065DsV8PmRIqbfH/cache-191-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-1965cqKXXzC5spHq/cache-191-bundler/staging/l.js /tmp/broccoli-1965cqKXXzC5spHq/cache-191-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-2065DsV8PmRIqbfH/cache-191-bundler/staging/l.js /tmp/broccoli-2065DsV8PmRIqbfH/cache-191-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-1965cqKXXzC5spHq/cache-191-bundler/staging/l.js */\"../../../../../tmp/broccoli-1965cqKXXzC5spHq/cache-191-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1965cqKXXzC5spHq/cache-191-bundler/staging/app.js */\"../../../../../tmp/broccoli-1965cqKXXzC5spHq/cache-191-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1965cqKXXzC5spHq/cache-191-bundler/staging/l.js_/tmp/broccoli-1965cqKXXzC5spHq/cache-191-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-2065DsV8PmRIqbfH/cache-191-bundler/staging/l.js */\"../../../../../tmp/broccoli-2065DsV8PmRIqbfH/cache-191-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-2065DsV8PmRIqbfH/cache-191-bundler/staging/app.js */\"../../../../../tmp/broccoli-2065DsV8PmRIqbfH/cache-191-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-2065DsV8PmRIqbfH/cache-191-bundler/staging/l.js_/tmp/broccoli-2065DsV8PmRIqbfH/cache-191-bundler/staging/app.js?");
 
 /***/ })
 

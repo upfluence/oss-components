@@ -908,6 +908,19 @@ define("dummy/app", ["exports", "ember-resolver", "ember-load-initializers", "du
     }
   });
 });
+;define("dummy/modifiers/enable-tooltip", ["exports", "oss-components/modifiers/enable-tooltip"], function (_exports, _enableTooltip) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function get() {
+      return _enableTooltip.default;
+    }
+  });
+});
 ;define("dummy/modifiers/on-click-outside", ["exports", "oss-components/modifiers/on-click-outside"], function (_exports, _onClickOutside) {
   "use strict";
 
