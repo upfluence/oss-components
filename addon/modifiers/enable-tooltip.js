@@ -17,7 +17,8 @@ export default setModifierManager(
         delay: {show: 300},
         placement: args.placement || 'bottom',
         title: args.title || '',
-        html: args.html || false
+        html: args.html || false,
+        trigger: args.trigger || 'hover focus'
       });
     },
 
