@@ -10,23 +10,23 @@ export default setModifierManager(
     },
 
     installModifier(state, element, args) {
+      const { placement, title, html, trigger } = args.named;
       state.element = element;
-      args = args.named;
 
       $(element).tooltip({
-        delay: {show: 300},
-        placement: args.placement || 'bottom',
-        title: args.title || '',
-        html: args.html || false,
-        trigger: args.trigger || 'hover focus'
+        delay: { show: 300 },
+        placement: placement || 'bottom',
+        title: title || '',
+        html: html || false,
+        trigger: trigger || 'hover focus'
       });
     },
 
     updateModifier(state, args) {
       //We use this function when tooltip title is updated and depends to translation with value
-      args = args.named;
+      const { title } = args.named;
 
-      $(state.element).attr('data-original-title', args.title);
+      $(state.element).attr('data-original-title', title);
     },
 
     destroyModifier(state) {
