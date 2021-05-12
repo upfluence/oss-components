@@ -15,6 +15,7 @@ const LoadingButtonComponent = Component.extend(TargetActionSupport, {
   disabled: false,
   isLoading: false,
   initiallyDisabled: false,
+  bubbles: true,
 
   _: observer('isLoading', 'initiallyDisabled', function() {
     this._computeDisabled();
@@ -31,6 +32,10 @@ const LoadingButtonComponent = Component.extend(TargetActionSupport, {
 
   click(e) {
     e.preventDefault();
+
+    if (!this.bubbles) {
+      e.stopPropagation();
+    }
 
     let originalWidth = this.$().width();
 
