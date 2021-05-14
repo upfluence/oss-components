@@ -14,7 +14,6 @@ const defineStory = (name) => {
 
 [
   'Core/Icons',
-  'Core/Variables',
 ].forEach((story) => defineStory(story));
 
 [
