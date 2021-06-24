@@ -33,14 +33,12 @@ const defineStory = (name) => {
   'Base/Progress',
   'Base/Stats',
   'Base/Tables',
-  'Base/Tags',
   'Base/Toastr',
   'Base/Transitions',
 ].forEach((story) => defineStory(story));
 
 [
   'Utilities/Grid',
-  'Utilities/Typography',
   'Utilities/Statuses (Check Usage)',
 ].forEach((story) => defineStory(story));
 
