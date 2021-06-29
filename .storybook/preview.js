@@ -7,13 +7,14 @@ export const parameters = {
     storySort: {
       order: [
         'Getting Started',
-        ['Introduction', 'Developer Guidelines'],
+          ['Introduction', 'Developer Guidelines'],
         'Core',
           ['Colors', 'Typography', 'Icons', 'Variables'],
         'Base',
-        ['Alerts'],
+          ['Alerts', 'Tags'],
         'Components',
-        'Helpers & Modifiers'
+        'Helpers & Modifiers',
+        'Utilities'
       ]
     }
   }
