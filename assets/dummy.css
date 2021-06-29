@@ -9413,6 +9413,42 @@ These colors are not directly part of our UI, but we mention these brands regula
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
+.text-ellipsis-80 {
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.text-ellipsis-100 {
+  max-width: 100px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.text-ellipsis-120 {
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.text-ellipsis-140 {
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.text-ellipsis-160 {
+  max-width: 160px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.text-ellipsis-180 {
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 /*
 ---
 name: Alerts
@@ -11256,32 +11292,45 @@ Emphasized link
  * Tags are used to provide additional informations about something.
  */
 .upf-tag {
-  background-color: #f1f2f3;
-  border: 1px solid transparent;
-  border-radius: 20px;
-  float: left;
-  padding: 0 1em;
-  text-align: center;
-  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.5em;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
-.upf-tag__text {
-  color: #8a95a0;
+.upf-tag span {
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-.upf-tag--orange {
-  border-color: #fe2518;
-  background-color: #fe2518;
+.upf-tag .fa {
+  margin-right: 5px;
 }
-.upf-tag--orange .upf-tag__text {
-  color: #ffffff;
-  opacity: 0.5;
+.upf-tag--regular {
+  background-color: #e5e5fe;
+  color: #0d0de6;
 }
 .upf-tag--success {
-  border-color: #22B473;
-  background-color: #22B473;
+  background-color: #c7f4e0;
+  color: #22B473;
 }
-.upf-tag--success .upf-tag__text {
+.upf-tag--alert {
+  background-color: #fcf0e1;
+  color: #eda448;
+}
+.upf-tag--neutral {
+  background-color: #e6e6e6;
+  color: #000000;
+}
+.upf-tag--critical {
+  background-color: #ffe5e3;
+  color: #fe2518;
+}
+.upf-tag--inactive {
+  background-color: #dedede;
   color: #ffffff;
-  opacity: 0.5;
 }
 /* Toastr messages styling */
 #toast-container {
@@ -11972,6 +12021,39 @@ Emphasized link
   position: inherit;
   padding: 0;
 }
+.split-settings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.split-settings__info {
+  flex: 1;
+  padding-right: 5em;
+}
+.split-settings__info .title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+}
+.split-settings__info .description {
+  padding: 0;
+  color: #8a95a0;
+}
+.split-settings__content {
+  box-shadow: 0 1px 3px rgba(151, 159, 169, 0.15);
+  border-radius: 4px;
+  padding: 2.5em 3em;
+  background-color: white;
+  flex: 1.5;
+  min-width: 600px;
+}
+.split-settings.split-settings--column {
+  flex-direction: column;
+}
+.split-settings.split-settings--column .split-settings__info {
+  margin-bottom: 2.5em;
+  padding-right: 0;
+}
 /*
 ---
 name: Spacing
@@ -12602,5 +12684,8 @@ To color a text conveniently with the pre-defined `upf` colors, we can use the c
 }
 .text-style-capitalize {
   text-transform: capitalize;
+}
+.box-shadow {
+  box-shadow: 0 1px 3px rgba(151, 159, 169, 0.15);
 }
 /*# sourceMappingURL=/assets/dummy.css.map */
