@@ -32,7 +32,7 @@ export default class OssModalComponent extends Component {
 
   @action
   close(e) {
-    e.preventDefault();
+    e?.preventDefault();
 
     if (this.args.onClose) {
       this.args.onClose();

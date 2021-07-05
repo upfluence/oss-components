@@ -1,4 +1,4 @@
-<div class="modal fade" tabindex="-1" {{did-insert this.setup}} ...attributes>
+<div class="modal fade" tabindex="-1" {{did-insert this.setup}} {{will-destroy this.teardown}} ...attributes>
   <div class="modal-dialog {{if @options.centered 'modal-dialog-centered'}} {{@options.modalClass}}" role="document">
     <div class="modal-content">
       <div class="modal-header {{if @options.borderlessHeader 'modal-header__borderless'}}">
