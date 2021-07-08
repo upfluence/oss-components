@@ -9,7 +9,7 @@ export default class OSSToggleSwitchComponent extends Component {
       throw new Error('[component][OSS::ToggleSwitch] Please provide an onChange action');
     }
 
-    if ([null, undefined].includes(args.value) || typeof args.value !== 'boolean') {
+    if (typeof args.value !== 'boolean') {
       throw new Error('[component][OSS::ToggleSwitch] Please provide a value argument. @value must be a boolean');
     }
   }
