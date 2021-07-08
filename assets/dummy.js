@@ -176,6 +176,19 @@ define("dummy/app", ["exports", "ember-resolver", "ember-load-initializers", "du
     }
   });
 });
+;define("dummy/components/o-s-s/toggle-switch", ["exports", "oss-components/components/o-s-s/toggle-switch"], function (_exports, _toggleSwitch) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function get() {
+      return _toggleSwitch.default;
+    }
+  });
+});
 ;define("dummy/components/radio-button", ["exports", "oss-components/components/radio-button"], function (_exports, _radioButton) {
   "use strict";
 

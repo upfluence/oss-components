@@ -135218,6 +135218,92 @@ define("oss-components/components/o-s-s/modal", ["exports", "@glimmer/component"
 
   Ember._setComponentTemplate(__COLOCATED_TEMPLATE__, OssModalComponent);
 });
+;define("oss-components/components/o-s-s/toggle-switch", ["exports", "@glimmer/component"], function (_exports, _component) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _dec, _class;
+
+  function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+  function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+
+  var __COLOCATED_TEMPLATE__ = Ember.HTMLBars.template(
+  /*
+    <div class="upf-toggle {{if @value 'upf-toggle--toggled'}}" {{on "click" this.switchState}}>
+    <div class="upf-toggle__switch">
+    </div>
+  </div>
+  
+  */
+  {
+    id: "23NFu0OV",
+    block: "{\"symbols\":[\"@value\"],\"statements\":[[11,\"div\"],[16,0,[31,[\"upf-toggle \",[30,[36,0],[[32,1],\"upf-toggle--toggled\"],null]]]],[4,[38,1],[\"click\",[32,0,[\"switchState\"]]],null],[12],[2,\"\\n  \"],[10,\"div\"],[14,0,\"upf-toggle__switch\"],[12],[2,\"\\n  \"],[13],[2,\"\\n\"],[13],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"if\",\"on\"]}",
+    meta: {
+      moduleName: "oss-components/components/o-s-s/toggle-switch.hbs"
+    }
+  });
+
+  var OSSToggleSwitchComponent = (_dec = Ember._action, (_class = /*#__PURE__*/function (_Component) {
+    _inherits(OSSToggleSwitchComponent, _Component);
+
+    var _super = _createSuper(OSSToggleSwitchComponent);
+
+    function OSSToggleSwitchComponent(owner, args) {
+      var _this;
+
+      _classCallCheck(this, OSSToggleSwitchComponent);
+
+      _this = _super.call(this, owner, args);
+
+      if (!args.onChange) {
+        throw new Error('[component][OSS::ToggleSwitch] Please provide an onChange action');
+      }
+
+      if (typeof args.value !== 'boolean') {
+        throw new Error("[component][OSS::ToggleSwitch] Please provide a boolean @value. @value is ".concat(_typeof(args.value)));
+      }
+
+      return _this;
+    }
+
+    _createClass(OSSToggleSwitchComponent, [{
+      key: "switchState",
+      value: function switchState() {
+        this.args.onChange(!this.args.value);
+      }
+    }]);
+
+    return OSSToggleSwitchComponent;
+  }(_component.default), (_applyDecoratedDescriptor(_class.prototype, "switchState", [_dec], Object.getOwnPropertyDescriptor(_class.prototype, "switchState"), _class.prototype)), _class));
+  _exports.default = OSSToggleSwitchComponent;
+
+  Ember._setComponentTemplate(__COLOCATED_TEMPLATE__, OSSToggleSwitchComponent);
+});
 ;define("oss-components/components/radio-button", ["exports"], function (_exports) {
   "use strict";
 
@@ -136420,36 +136506,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-1889LcqwWCqcRfI5/cache-217-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-20608mZ2tH2WfOsg/cache-217-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-1889LcqwWCqcRfI5/cache-217-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-20608mZ2tH2WfOsg/cache-217-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1889LcqwWCqcRfI5/cache-217-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-20608mZ2tH2WfOsg/cache-217-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-1889LcqwWCqcRfI5/cache-217-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-20608mZ2tH2WfOsg/cache-217-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-1889LcqwWCqcRfI5/cache-217-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-20608mZ2tH2WfOsg/cache-217-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1889LcqwWCqcRfI5/cache-217-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-20608mZ2tH2WfOsg/cache-217-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-1889LcqwWCqcRfI5/cache-217-bundler/staging/l.js /tmp/broccoli-1889LcqwWCqcRfI5/cache-217-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-20608mZ2tH2WfOsg/cache-217-bundler/staging/l.js /tmp/broccoli-20608mZ2tH2WfOsg/cache-217-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-1889LcqwWCqcRfI5/cache-217-bundler/staging/l.js */\"../../../../../tmp/broccoli-1889LcqwWCqcRfI5/cache-217-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1889LcqwWCqcRfI5/cache-217-bundler/staging/app.js */\"../../../../../tmp/broccoli-1889LcqwWCqcRfI5/cache-217-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1889LcqwWCqcRfI5/cache-217-bundler/staging/l.js_/tmp/broccoli-1889LcqwWCqcRfI5/cache-217-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-20608mZ2tH2WfOsg/cache-217-bundler/staging/l.js */\"../../../../../tmp/broccoli-20608mZ2tH2WfOsg/cache-217-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-20608mZ2tH2WfOsg/cache-217-bundler/staging/app.js */\"../../../../../tmp/broccoli-20608mZ2tH2WfOsg/cache-217-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-20608mZ2tH2WfOsg/cache-217-bundler/staging/l.js_/tmp/broccoli-20608mZ2tH2WfOsg/cache-217-bundler/staging/app.js?");
 
 /***/ })
 
