@@ -1,1 +1,31 @@
 @import 'oss-components';
+
+.upf-toggle {
+  background-color: @field-background-color;
+  border: 1px solid @field-background-color;
+  border-radius: 20px;
+  height: 20px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+
+  .upf-toggle__switch {
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    background-color: @upf-primary-rock-blue;
+    transition: transform 0.4s;
+  }
+}
+
+.upf-toggle.upf-toggle--toggled {
+  .upf-toggle__switch {
+    background-color: @upf-primary-bright-purple;
+    transform: translateX(100%);
+  }
+}
