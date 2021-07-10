@@ -12715,4 +12715,42 @@ To color a text conveniently with the pre-defined `upf` colors, we can use the c
 .box-shadow {
   box-shadow: 0 1px 3px rgba(151, 159, 169, 0.15);
 }
+.fx-1 {
+  flex: 1;
+}
+.fx-row {
+  flex-direction: row;
+  display: flex;
+}
+.fx-col {
+  flex-direction: column;
+  display: flex;
+}
+.fx-malign-center {
+  justify-content: center;
+}
+.fx-malign-start {
+  justify-content: start;
+}
+.fx-malign-end {
+  justify-content: end;
+}
+.fx-malign-space-between {
+  justify-content: space-between;
+}
+.fx-malign-space-around {
+  justify-content: space-around;
+}
+.fx-malign-space-evenly {
+  justify-content: space-evenly;
+}
+.fx-xalign-center {
+  align-items: center;
+}
+.fx-xalign-start {
+  align-items: start;
+}
+.fx-xalign-end {
+  align-items: end;
+}
 /*# sourceMappingURL=/assets/dummy.css.map */

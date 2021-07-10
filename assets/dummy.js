@@ -414,25 +414,6 @@ define("dummy/app", ["exports", "ember-resolver", "ember-load-initializers", "du
     }
   });
 });
-;define("dummy/components/x-toggle", ["exports", "ember-cli-toggle/components/x-toggle/component", "dummy/config/environment"], function (_exports, _component, _environment) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-  var config = _environment.default['ember-cli-toggle'] || {};
-
-  var _default = _component.default.extend({
-    theme: config.defaultTheme || 'default',
-    defaultOffLabel: config.defaultOffLabel || 'Off::off',
-    defaultOnLabel: config.defaultOnLabel || 'On::on',
-    showLabels: config.defaultShowLabels || false,
-    size: config.defaultSize || 'medium'
-  });
-
-  _exports.default = _default;
-});
 ;define("dummy/helpers/and", ["exports", "ember-truth-helpers/helpers/and"], function (_exports, _and) {
   "use strict";
 
