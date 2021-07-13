@@ -9945,24 +9945,6 @@ a.upf-btn--small {
 .upf-btn--has-right-icon .upf-btn__right-icon {
   margin-left: 1em;
 }
-.upf-toggle-btn .x-toggle-container {
-  width: 4.75em;
-}
-.upf-toggle-btn .x-toggle-component {
-  display: block;
-}
-.upf-toggle-btn .x-toggle-btn {
-  background-color: #c9c9c9;
-  border-radius: 20px !important;
-  padding: 2px;
-}
-.upf-toggle-btn .x-toggle-btn:after {
-  border-radius: 30px !important;
-  background-color: #ffffff;
-}
-.upf-toggle-btn .x-toggle-container-checked .x-toggle-btn {
-  background-color: #0d0de6 !important;
-}
 .upf-radio-group {
   display: table;
   width: 100%;
@@ -11463,6 +11445,65 @@ Emphasized link
 .upf-toggle.upf-toggle--toggled .upf-toggle__switch {
   transform: translateX(110%);
 }
+@keyframes openDropdown {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+@keyframes closeDropdown {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(0);
+  }
+}
+.upf-floating-menu {
+  background-color: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 0 1.2rem rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden scroll;
+  max-height: 250px;
+  max-width: 350px;
+  margin-top: 1em;
+  padding: 0.5em;
+  position: absolute;
+  z-index: 22;
+}
+.upf-floating-menu ul {
+  padding: 0;
+}
+.upf-floating-menu-bottom {
+  overflow: hidden;
+}
+.upf-floating-menu-bottom .ql-mention-list {
+  overflow: hidden scroll;
+}
+.upf-floating-menu--visible {
+  animation: openDropdown 0.3s;
+  transform-origin: top center;
+}
+.upf-floating-menu--hidden {
+  animation: closeDropdown 0.3s;
+  display: none;
+}
+.upf-floating-menu__item {
+  border-radius: 4px;
+  cursor: pointer;
+  list-style: none;
+  padding: 0.5em 1em;
+}
+.upf-floating-menu__item:hover {
+  background-color: #f9f9f9;
+}
+.upf-floating-menu__item > li {
+  list-style-type: none;
+}
 .modal .modal-content {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
   border-radius: 4px;
@@ -11494,6 +11535,11 @@ Emphasized link
   border-radius: 0 0 4px 4px;
   text-align: center;
   border-top: 0;
+}
+.modal-dialog--centered {
+  transform: translate(0, -50%) !important;
+  top: 46% !important;
+  margin: 0 auto !important;
 }
 .modal-x-lg {
   width: 1300px;

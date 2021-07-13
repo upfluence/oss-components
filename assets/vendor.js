@@ -134987,7 +134987,7 @@ define("oss-components/components/o-s-s/modal", ["exports", "@glimmer/component"
   var __COLOCATED_TEMPLATE__ = Ember.HTMLBars.template(
   /*
     <div class="modal fade" tabindex="-1" {{did-insert this.setup}} {{will-destroy this.teardown}} ...attributes>
-    <div class="modal-dialog {{if @options.centered 'modal-dialog-centered'}} {{@options.modalClass}}" role="document">
+    <div class="modal-dialog {{if @options.centered 'modal-dialog--centered'}} {{@options.modalClass}}" role="document">
       <div class="modal-content">
         <div class="modal-header {{if @options.borderlessHeader 'modal-header__borderless'}}">
           {{#if @title}}
@@ -135008,8 +135008,8 @@ define("oss-components/components/o-s-s/modal", ["exports", "@glimmer/component"
   
   */
   {
-    id: "EQ0snoKA",
-    block: "{\"symbols\":[\"@title\",\"&attrs\",\"@options\",\"&default\"],\"statements\":[[11,\"div\"],[24,0,\"modal fade\"],[24,\"tabindex\",\"-1\"],[17,2],[4,[38,0],[[32,0,[\"setup\"]]],null],[4,[38,1],[[32,0,[\"teardown\"]]],null],[12],[2,\"\\n  \"],[10,\"div\"],[15,0,[31,[\"modal-dialog \",[30,[36,2],[[32,3,[\"centered\"]],\"modal-dialog-centered\"],null],\" \",[32,3,[\"modalClass\"]]]]],[14,\"role\",\"document\"],[12],[2,\"\\n    \"],[10,\"div\"],[14,0,\"modal-content\"],[12],[2,\"\\n      \"],[10,\"div\"],[15,0,[31,[\"modal-header \",[30,[36,2],[[32,3,[\"borderlessHeader\"]],\"modal-header__borderless\"],null]]]],[12],[2,\"\\n\"],[6,[37,2],[[32,1]],null,[[\"default\"],[{\"statements\":[[2,\"          \"],[10,\"div\"],[14,0,\"modal-title\"],[12],[2,\"\\n            \"],[1,[32,1]],[2,\"\\n          \"],[13],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"\\n        \"],[11,\"button\"],[24,0,\"close\"],[24,\"data-dismiss\",\"modal\"],[24,\"aria-label\",\"Close\"],[24,1,\"close-x\"],[24,4,\"button\"],[4,[38,3],[\"click\",[32,0,[\"close\"]]],null],[12],[2,\"\\n          \"],[10,\"span\"],[14,\"aria-hidden\",\"true\"],[12],[2,\"\xD7\"],[13],[2,\"\\n        \"],[13],[2,\"\\n      \"],[13],[2,\"\\n\\n      \"],[18,4,null],[2,\"\\n    \"],[13],[2,\"\\n  \"],[13],[2,\"\\n\"],[13],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"did-insert\",\"will-destroy\",\"if\",\"on\"]}",
+    id: "g9gvZULA",
+    block: "{\"symbols\":[\"@title\",\"&attrs\",\"@options\",\"&default\"],\"statements\":[[11,\"div\"],[24,0,\"modal fade\"],[24,\"tabindex\",\"-1\"],[17,2],[4,[38,0],[[32,0,[\"setup\"]]],null],[4,[38,1],[[32,0,[\"teardown\"]]],null],[12],[2,\"\\n  \"],[10,\"div\"],[15,0,[31,[\"modal-dialog \",[30,[36,2],[[32,3,[\"centered\"]],\"modal-dialog--centered\"],null],\" \",[32,3,[\"modalClass\"]]]]],[14,\"role\",\"document\"],[12],[2,\"\\n    \"],[10,\"div\"],[14,0,\"modal-content\"],[12],[2,\"\\n      \"],[10,\"div\"],[15,0,[31,[\"modal-header \",[30,[36,2],[[32,3,[\"borderlessHeader\"]],\"modal-header__borderless\"],null]]]],[12],[2,\"\\n\"],[6,[37,2],[[32,1]],null,[[\"default\"],[{\"statements\":[[2,\"          \"],[10,\"div\"],[14,0,\"modal-title\"],[12],[2,\"\\n            \"],[1,[32,1]],[2,\"\\n          \"],[13],[2,\"\\n\"]],\"parameters\":[]}]]],[2,\"\\n        \"],[11,\"button\"],[24,0,\"close\"],[24,\"data-dismiss\",\"modal\"],[24,\"aria-label\",\"Close\"],[24,1,\"close-x\"],[24,4,\"button\"],[4,[38,3],[\"click\",[32,0,[\"close\"]]],null],[12],[2,\"\\n          \"],[10,\"span\"],[14,\"aria-hidden\",\"true\"],[12],[2,\"\xD7\"],[13],[2,\"\\n        \"],[13],[2,\"\\n      \"],[13],[2,\"\\n\\n      \"],[18,4,null],[2,\"\\n    \"],[13],[2,\"\\n  \"],[13],[2,\"\\n\"],[13],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"did-insert\",\"will-destroy\",\"if\",\"on\"]}",
     meta: {
       moduleName: "oss-components/components/o-s-s/modal.hbs"
     }
@@ -135083,6 +135083,94 @@ define("oss-components/components/o-s-s/modal", ["exports", "@glimmer/component"
   _exports.default = OssModalComponent;
 
   Ember._setComponentTemplate(__COLOCATED_TEMPLATE__, OssModalComponent);
+});
+;define("oss-components/components/o-s-s/modal.stories", ["exports", "@storybook/addon-actions"], function (_exports, _addonActions) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.BorderelessHeader = _exports.Centered = _exports.Default = _exports.default = void 0;
+
+  function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+  function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  var _default = {
+    title: 'Components/OSS::Modal',
+    component: 'modal',
+    args: {
+      title: 'Moodal Title'
+    },
+    argTypes: {
+      title: {
+        control: 'text'
+      },
+      options: {}
+    },
+    parameters: {
+      previewTabs: {
+        'storybook/docs/panel': {
+          hidden: true
+        }
+      }
+    }
+  };
+  _exports.default = _default;
+  var defaultArgs = {
+    title: 'Hello',
+    onClose: (0, _addonActions.action)('onModalClose'),
+    callToAction: (0, _addonActions.action)('onCallToActionClick')
+  };
+
+  var Template = function Template(args) {
+    return {
+      template: Ember.HTMLBars.template(
+      /*
+        
+          <OSS::Modal @title={{title}} @onClose={{this.onClose}} @options={{this.options}}>
+            <div class="modal-body">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+              magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat.
+            </div>
+      
+            <div class="modal-footer">
+              <button class="upf-btn upf-btn--primary" {{on "click" this.callToAction}}>
+                Action Button
+              </button>
+            </div>
+          </OSS::Modal>
+        
+      */
+      {
+        id: "c5/gVdWy",
+        block: "{\"symbols\":[],\"statements\":[[2,\"\\n    \"],[8,\"o-s-s/modal\",[],[[\"@title\",\"@onClose\",\"@options\"],[[34,0],[32,0,[\"onClose\"]],[32,0,[\"options\"]]]],[[\"default\"],[{\"statements\":[[2,\"\\n      \"],[10,\"div\"],[14,0,\"modal-body\"],[12],[2,\"\\n        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore\\n        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\\n        consequat.\\n      \"],[13],[2,\"\\n\\n      \"],[10,\"div\"],[14,0,\"modal-footer\"],[12],[2,\"\\n        \"],[11,\"button\"],[24,0,\"upf-btn upf-btn--primary\"],[4,[38,1],[\"click\",[32,0,[\"callToAction\"]]],null],[12],[2,\"\\n          Action Button\\n        \"],[13],[2,\"\\n      \"],[13],[2,\"\\n    \"]],\"parameters\":[]}]]],[2,\"\\n  \"]],\"hasEval\":false,\"upvars\":[\"title\",\"on\"]}",
+        meta: {}
+      }),
+      context: args
+    };
+  };
+
+  var Default = Template.bind({});
+  _exports.Default = Default;
+  Default.args = _objectSpread({}, defaultArgs);
+  var Centered = Template.bind({});
+  _exports.Centered = Centered;
+  Centered.args = _objectSpread({
+    options: {
+      centered: true
+    }
+  }, defaultArgs);
+  var BorderelessHeader = Template.bind({});
+  _exports.BorderelessHeader = BorderelessHeader;
+  BorderelessHeader.args = _objectSpread({
+    options: {
+      borderlessHeader: true
+    }
+  }, defaultArgs);
 });
 ;define("oss-components/components/o-s-s/toggle-switch", ["exports", "@glimmer/component"], function (_exports, _component) {
   "use strict";
@@ -136372,36 +136460,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-192449x9lD9cYQ6q/cache-212-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-192449x9lD9cYQ6q/cache-212-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-192449x9lD9cYQ6q/cache-212-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-192449x9lD9cYQ6q/cache-212-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-192449x9lD9cYQ6q/cache-212-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-192449x9lD9cYQ6q/cache-212-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-192449x9lD9cYQ6q/cache-212-bundler/staging/l.js /tmp/broccoli-192449x9lD9cYQ6q/cache-212-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/l.js /tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-192449x9lD9cYQ6q/cache-212-bundler/staging/l.js */\"../../../../../tmp/broccoli-192449x9lD9cYQ6q/cache-212-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-192449x9lD9cYQ6q/cache-212-bundler/staging/app.js */\"../../../../../tmp/broccoli-192449x9lD9cYQ6q/cache-212-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-192449x9lD9cYQ6q/cache-212-bundler/staging/l.js_/tmp/broccoli-192449x9lD9cYQ6q/cache-212-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/l.js */\"../../../../../tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/app.js */\"../../../../../tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/l.js_/tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/app.js?");
 
 /***/ })
 
