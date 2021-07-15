@@ -135322,157 +135322,6 @@ define("oss-components/components/o-s-s/modal", ["exports", "@glimmer/component"
 
   _exports.default = _default;
 });
-;define("oss-components/components/summer-note", ["exports", "jquery"], function (_exports, _jquery) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-
-  var _default = Ember.Component.extend({
-    tagName: 'div',
-    classNames: ['wysiwyg-editor', 'row'],
-    btnSize: 'btn-xs',
-    height: 120,
-    focus: false,
-    airMode: false,
-    disabled: false,
-    dialogsInBody: false,
-    disabledOptions: {},
-    willDestroyElement: function willDestroyElement() {
-      this.$('#summernote').summernote('destroy');
-      console.log('summernote("destroy")');
-    },
-    didInsertElement: function didInsertElement() {
-      var _btnSize = this.get('btnSize');
-
-      var _height = this.get('height');
-
-      var _focus = this.get('focus');
-
-      var _airMode = this.get('airMode');
-
-      var _dialogsInBody = this.get('dialogsInBody');
-
-      var _toolbar = this.getToolbarOptions(this.get('disabledOptions')); // ensure summernote is loaded
-      // summernote 0.6.0 is not working as of this code written.
-      // 0.5.10 is working version.
-
-
-      (true && !(typeof _jquery.default.fn.summernote === "function") && Ember.assert("summernote has to exist on Ember.$.fn.summernote", typeof _jquery.default.fn.summernote === "function"));
-      (true && !(typeof _jquery.default.fn.tooltip === "function") && Ember.assert("tooltip has to exist on Ember.$.fn.tooltip", typeof _jquery.default.fn.tooltip === "function"));
-      this.$('#summernote').summernote({
-        height: _height,
-        focus: _focus,
-        toolbar: _toolbar,
-        airMode: _airMode,
-        dialogsInBody: _dialogsInBody // airPopover: [
-        //   ['color', ['color']],
-        //   ['font', ['bold', 'underline', 'clear']],
-        //   ['para', ['ul', 'paragraph']],
-        //   ['table', ['table']],
-        //   ['insert', ['link', 'picture']]
-        // ]
-
-      });
-      this.$().find('.note-editable').attr('contenteditable', !this.get('disabled'));
-      this.$('.btn').addClass(_btnSize);
-
-      var _content = this.get('content');
-
-      this.$('#summernote').summernote('code', _content);
-    },
-    keyUp: function keyUp() {
-      this.doUpdate();
-    },
-    click: function click() {
-      this.doUpdate();
-    },
-    doUpdate: function doUpdate() {
-      var content = this.$('#summernote').summernote('code');
-      this.set('content', content);
-    },
-    setHeight: Ember.observer('height', function ()
-    /*sender, key, value, rev*/
-    {
-      this.$().find('.note-editable').css('height', this.get('height')); //use css height, as jQuery heigth/outerHeight does add the padding+margin
-    }),
-    setContentEditable: Ember.observer('disabled', function ()
-    /*sender, key, value, rev*/
-    {
-      this.$().find('.note-editable').attr('contenteditable', !this.get('disabled'));
-    }),
-    getToolbarOptions: function getToolbarOptions(disabledOptions) {
-      var availableOptions = {
-        style: {
-          style: true
-        },
-        fontsize: {
-          fontsize: true
-        },
-        font: {
-          bold: true,
-          italic: true,
-          underline: true,
-          superscript: true,
-          subscript: true,
-          strikethrough: true,
-          clear: true
-        },
-        color: {
-          color: true
-        },
-        para: {
-          ul: true,
-          ol: true,
-          paragraph: true
-        },
-        table: {
-          table: true
-        },
-        insert: {
-          link: true,
-          picture: true,
-          video: true
-        },
-        view: {
-          fullscreen: true,
-          codeview: true
-        },
-        help: {
-          help: true
-        }
-      };
-      var _toolbar = []; //disable Options
-
-      for (var key in availableOptions) {
-        var arr = [];
-
-        if (disabledOptions === undefined || disabledOptions === null || disabledOptions[key] !== false) {
-          arr.push(key);
-          var arr2 = [];
-
-          for (var subKey in availableOptions[key]) {
-            if (disabledOptions === undefined || disabledOptions === null || disabledOptions[key] === undefined || disabledOptions[key] === null || disabledOptions[key][subKey] !== false) {
-              arr2.push(subKey);
-            }
-          }
-
-          arr.push(arr2);
-        }
-
-        if (arr.length > 0) {
-          _toolbar.push(arr);
-        }
-      }
-
-      return _toolbar;
-    }
-  });
-
-  _exports.default = _default;
-});
 ;define("oss-components/components/upf-card", ["exports"], function (_exports) {
   "use strict";
 
@@ -136460,36 +136309,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-1871WulBwmqGNaUG/cache-212-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-1871WulBwmqGNaUG/cache-212-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1871WulBwmqGNaUG/cache-212-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-1871WulBwmqGNaUG/cache-212-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-1871WulBwmqGNaUG/cache-212-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1871WulBwmqGNaUG/cache-212-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/l.js /tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-1871WulBwmqGNaUG/cache-212-bundler/staging/l.js /tmp/broccoli-1871WulBwmqGNaUG/cache-212-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/l.js */\"../../../../../tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/app.js */\"../../../../../tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/l.js_/tmp/broccoli-1998aC9dUGnQ1v4q/cache-212-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-1871WulBwmqGNaUG/cache-212-bundler/staging/l.js */\"../../../../../tmp/broccoli-1871WulBwmqGNaUG/cache-212-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1871WulBwmqGNaUG/cache-212-bundler/staging/app.js */\"../../../../../tmp/broccoli-1871WulBwmqGNaUG/cache-212-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1871WulBwmqGNaUG/cache-212-bundler/staging/l.js_/tmp/broccoli-1871WulBwmqGNaUG/cache-212-bundler/staging/app.js?");
 
 /***/ })
 

@@ -225,16 +225,6 @@ define("dummy/app", ["exports", "ember-resolver", "ember-load-initializers", "du
     }
   });
 });
-;define("dummy/components/summer-note", ["exports", "oss-components/components/summer-note"], function (_exports, _summerNote) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-  var _default = _summerNote.default;
-  _exports.default = _default;
-});
 ;define("dummy/components/upf-card", ["exports", "oss-components/components/upf-card"], function (_exports, _upfCard) {
   "use strict";
 
@@ -1228,24 +1218,6 @@ define("dummy/router", ["exports", "dummy/config/environment"], function (_expor
     "block": "{\"symbols\":[],\"statements\":[[10,\"div\"],[14,0,\"upf-stat__number-container\"],[12],[2,\"\\n  \"],[10,\"div\"],[15,0,[31,[\"upf-progress-radial \",[34,8],\"\\n              \",[30,[36,7],[\"upf-progress-radial-\",[35,6]],null],\"\\n              \",[34,5]]]],[12],[2,\"\\n    \"],[10,\"div\"],[14,0,\"overlay\"],[12],[2,\"\\n      \"],[10,\"span\"],[14,0,\"upf-stat__icon\"],[12],[2,\"\\n\"],[6,[37,3],[[35,4]],null,[[\"default\",\"else\"],[{\"statements\":[[2,\"          \"],[10,\"i\"],[15,0,[31,[[34,4]]]],[12],[13],[2,\"\\n\"]],\"parameters\":[]},{\"statements\":[[6,[37,3],[[35,1]],null,[[\"default\"],[{\"statements\":[[2,\"          \"],[1,[30,[36,2],[[35,1],[35,0],\"thicker\"],null]],[2,\"\\n        \"]],\"parameters\":[]}]]]],\"parameters\":[]}]]],[2,\"      \"],[13],[2,\"\\n      \"],[10,\"span\"],[14,0,\"upf-stat__number\"],[12],[1,[34,9]],[13],[2,\"\\n    \"],[13],[2,\"\\n  \"],[13],[2,\"\\n\"],[13],[2,\"\\n\"],[10,\"span\"],[14,0,\"upf-stat__title\"],[12],[1,[34,10]],[13],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[\"upfIconColor\",\"upfIcon\",\"upf-icon\",\"if\",\"iconClass\",\"progressValueClass\",\"size\",\"concat\",\"type\",\"displayNumber\",\"title\"]}",
     "meta": {
       "moduleName": "dummy/templates/components/standard-stat.hbs"
-    }
-  });
-
-  _exports.default = _default;
-});
-;define("dummy/templates/components/summer-note", ["exports"], function (_exports) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-
-  var _default = Ember.HTMLBars.template({
-    "id": "q9nwAtT2",
-    "block": "{\"symbols\":[],\"statements\":[[10,\"div\"],[14,1,\"summernote\"],[12],[13],[2,\"\\n\"]],\"hasEval\":false,\"upvars\":[]}",
-    "meta": {
-      "moduleName": "dummy/templates/components/summer-note.hbs"
     }
   });
 
