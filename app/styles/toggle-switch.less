@@ -1,0 +1,13 @@
+.upf-toggle.upf-toggle--disabled {
+  background-color: lighten(@upf-gray, 15%);
+  border-color: lighten(@upf-gray, 15%);
+
+  .upf-toggle__switch {
+    background-color: darken(#fff, 15%);
+  }
+}
+
+.upf-toggle.upf-toggle--disabled,
+.upf-toggle.upf-toggle--disabled > div {
+  cursor: not-allowed;
+}
