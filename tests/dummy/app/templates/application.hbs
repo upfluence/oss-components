@@ -2,8 +2,8 @@ this is upfluence oss component
 
 <OSS::InfiniteSelect
   @items={{this.items}} @itemLabel="name" @searchEnabled={{true}} @onSearch={{this.onSearch}} 
-  @onBottom={{this.onBottom}} @onSelect={{this.onSelect}} @multiple={{true}}>
- <:option as |opt|>
-   {{opt.name}}
- </:option>
+  @onBottomReached={{this.onBottom}} @onSelect={{this.onSelect}} @multiple={{true}}>
+  <:option as |opt|>
+    {{opt.name}}
+  </:option>
 </OSS::InfiniteSelect>

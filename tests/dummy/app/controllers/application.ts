@@ -26,6 +26,10 @@ export default class Application extends Controller {
   onSelect(opt: any) {
     console.log(opt.name);
   }
+
+  onBottom() {
+    console.log('reached the bottom');
+  }
 }
 
 // DO NOT DELETE: this is how TypeScript knows how to look up your controllers.
