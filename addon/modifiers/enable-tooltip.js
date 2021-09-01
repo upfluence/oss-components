@@ -1,5 +1,5 @@
 import { setModifierManager } from '@ember/modifier';
-import $ from 'jquery';
+import jQuery from 'jquery';
 
 export default setModifierManager(
   () => ({
@@ -13,7 +13,7 @@ export default setModifierManager(
       const { placement, title, html, trigger } = args.named;
       state.element = element;
 
-      $(element).tooltip({
+      jQuery(element).tooltip({
         delay: { show: 300 },
         placement: placement || 'bottom',
         title: title || '',
@@ -26,10 +26,10 @@ export default setModifierManager(
       //We use this function when tooltip title is updated and depends to translation with value
       const { title } = args.named;
 
-      $(state.element).attr('data-original-title', title);
+      jQuery(state.element).attr('data-original-title', title);
     },
 
-    destroyModifier(state) {
+    destroyModifier() {
       // We don't need to do anything here, but a function
       // still has to be here so we'll leave it blank.
     }
