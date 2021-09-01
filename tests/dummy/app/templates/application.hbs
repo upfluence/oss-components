@@ -7,7 +7,7 @@ this is upfluence oss component
     <h3>With an `itemLabel`</h3>
     <OSS::InfiniteSelect
       @items={{this.items}} @itemLabel="name" @searchEnabled={{true}} @onSearch={{this.onSearch}} 
-      @onBottomReached={{this.onBottom}} @onSelect={{this.onSelect}} @multiple={{true}}>
+      @onBottomReached={{this.onBottom}} @onSelect={{this.onSelect}}>
       <:option as |opt|>
         {{opt.name}}
       </:option>
@@ -17,8 +17,7 @@ this is upfluence oss component
   <div class="col-xs-6">
     <h3>With an option block</h3>
     <OSS::InfiniteSelect
-      @items={{this.items}} @searchEnabled={{false}}
-      @onBottomReached={{this.onBottom}} @onSelect={{this.onSelect}} @multiple={{true}}>
+      @items={{this.items}} @searchEnabled={{false}} @onBottomReached={{this.onBottom}} @onSelect={{this.onSelect}}>
       <:option as |opt|>
         <i class="fa fa-user" /> {{opt.name}} 
       </:option>
