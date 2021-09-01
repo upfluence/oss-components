@@ -1,0 +1,15 @@
+<div class="upf-infinte-select upf-floating-menu">
+  {{#if this.searchEnabled}}
+    {{#input-wrapper}}
+      <Input
+        value={{this._searchKeyword}} {{on "keyup" this.updateSearchKeyword}} type="text"
+        class="form-control upf-input" placeholder="Search..." />
+    {{/input-wrapper}}
+  {{/if}}
+
+  <ul class="upf-infinite-select__items-container margin-top-xx-sm" {{on "scroll" this.scrollListener}}>
+    {{#each this.items as |item|}}
+      <li class="upf-infinite-select__item">{{get item this.itemLabel}}</li>
+    {{/each}}
+  </ul>
+</div>
