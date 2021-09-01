@@ -36,7 +36,8 @@
     "ember-star-rating": "^3.0.0",
     "ember-truth-helpers": "^3.0.0",
     "ion-rangeslider": "^2.3.1",
-    "upfluence-oss": "^2.x"
+    "upfluence-oss": "^2.x",
+    "ember-named-blocks-polyfill": "^0.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",

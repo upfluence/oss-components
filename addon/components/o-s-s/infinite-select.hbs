@@ -9,7 +9,13 @@
 
   <ul class="upf-infinite-select__items-container margin-top-xx-sm" {{on "scroll" this.scrollListener}}>
     {{#each this.items as |item|}}
-      <li class="upf-infinite-select__item">{{get item this.itemLabel}}</li>
+      <li class="upf-infinite-select__item" {{on "click" (fn this.didSelectItem item)}}>
+        {{#if (has-block "option")}}
+          {{yield item to="option"}}
+        {{else}}
+          {{get item this.itemLabel}}
+        {{/if}}
+      </li>
     {{/each}}
   </ul>
 </div>

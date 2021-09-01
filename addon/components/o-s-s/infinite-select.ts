@@ -8,84 +8,60 @@ interface InfiniteSelectArgs {
   itemLabel: string;
   items: InfinityItem[];
 
-  onSelect?(item: InfinityItem): void;
+  onSelect(item: InfinityItem): void;
   onSearch?(keyword: string): void;
   onBottomReached?(): void;
 }
-
-type KeyboardEvent = {
-  target: HTMLInputElement;
-  key: string;
-};
 
 type InfinityItem = {
   selected: boolean;
 };
 
+const DEFAULT_ITEM_LABEL = 'name';
+
 export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
-  //itemLabel = null;
   @tracked _searchKeyword: string = '';
 
   constructor(owner: unknown, args: InfiniteSelectArgs) {
     super(owner, args);
 
-    //console.log(this.itemLabel);
-
     if (this.args.searchEnabled && !this.args.onSearch) {
       throw new Error('[component][OSS::InfiniteSelect] Search is enabled without an `onSearch` action being passed');
     }
-    if (this.args.itemLabel && !this.args.onSelect) {
-      console.log('plpl')
+
+    if (!this.args.onSelect) {
+      throw new Error('[component][OSS::InfiniteSelect] `onSelect` action is mandatory');
     }
   }
 
-  get itemLabel() {
-    return this.args.itemLabel ?? 'name';
-  }
-
-  //get searchKeyword() {
-  //return this._searchKeyword;
-  //}
-
-  //  set searchKeyword(value) {
-  ////this.value);
-  //this.searchKeyword = value;
-  ////this.
-  //}
-
-  get searchEnabled() {
+  get searchEnabled(): boolean {
     return this.args.searchEnabled ?? true;
   }
 
-  get items() {
+  get itemLabel(): string {
+    return this.args.itemLabel ?? DEFAULT_ITEM_LABEL;
+  }
+
+  get items(): InfinityItem[] {
     return this.args.items ?? [];
   }
 
   @action
-  updateSearchKeyword(event: KeyboardEvent) {
+  updateSearchKeyword(event: any): void {
     this._searchKeyword = event?.target?.value;
 
     this.args.onSearch?.(this._searchKeyword);
   }
 
   @action
-  scrollListener(event: any) {
+  scrollListener(event: any): void {
     if (event.target.scrollTop + event.target.clientHeight >= event.target.scrollHeight && !this.args.loading) {
       this.args.onBottomReached?.();
     }
   }
-  //// {{!-- @items=(array (hash name="bro" selected=true)) @searchEnabled={{false}} @onSearch={{this.onSearch}}  --}}
-  ////{{!-- @onBottom={{this.onBottom}} @onSelect={{this.onSelect}} @multiple={{true}} as |option|> --}}
 
-  ////{{!-- _onSelect(opt) { --}}
-  ////{{!-- this.args.onSelect(opt) --}}
-
-  ////{{!-- if (!this.args.multiple) { --}}
-  ////{{!-- this.close(); --}}
-  ////{{!-- } --}}
-  ////{{!-- } --}}
-  //onSelect(opt) {
-  //this.args.onSelect(opt);
-
-  //}
+  @action
+  didSelectItem(item: InfinityItem) {
+    this.args.onSelect(item);
+  }
 }

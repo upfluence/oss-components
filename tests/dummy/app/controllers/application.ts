@@ -22,6 +22,10 @@ export default class Application extends Controller {
   onSearch(v: string) {
     console.log(v);
   }
+
+  onSelect(opt: any) {
+    console.log(opt.name);
+  }
 }
 
 // DO NOT DELETE: this is how TypeScript knows how to look up your controllers.
