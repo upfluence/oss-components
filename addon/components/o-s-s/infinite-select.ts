@@ -5,6 +5,7 @@ import { action } from '@ember/object';
 interface InfiniteSelectArgs {
   searchEnabled: boolean;
   loading: boolean;
+  loadingMore: boolean;
   itemLabel: string;
   items: InfinityItem[];
 
@@ -20,12 +21,15 @@ type InfinityItem = {
 const DEFAULT_ITEM_LABEL = 'name';
 
 export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
+  loadingRows = new Array(5);
+  loadingMoreRows = new Array(3);
+
   @tracked _searchKeyword: string = '';
 
   constructor(owner: unknown, args: InfiniteSelectArgs) {
     super(owner, args);
 
-    if (this.args.searchEnabled && !this.args.onSearch) {
+    if (this.searchEnabled && !this.args.onSearch) {
       throw new Error('[component][OSS::InfiniteSelect] Search is enabled without an `onSearch` action being passed');
     }
 
