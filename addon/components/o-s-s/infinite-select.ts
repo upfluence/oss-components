@@ -12,6 +12,7 @@ interface InfiniteSelectArgs {
   onSelect(item: InfinityItem): void;
   onSearch?(keyword: string): void;
   onBottomReached?(): void;
+  didRender?(): void;
 }
 
 type InfinityItem = {
@@ -48,6 +49,11 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
 
   get items(): InfinityItem[] {
     return this.args.items ?? [];
+  }
+
+  @action
+  onRender(): void {
+    this.args.didRender?.();
   }
 
   @action
