@@ -189,11 +189,3 @@ LoadingMore.args = {
     loadingMore: true
   }
 };
-
-//export const BorderelessHeader = Template.bind({});
-//BorderelessHeader.args = {
-//options: {
-//borderlessHeader: true
-//},
-//...defaultArgs
-//};
