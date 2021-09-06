@@ -21,7 +21,7 @@
 
   {{#if icon}}
     {{#if (eq iconPlacement "right")}}
-      <span class="upf-stat__icon" title="{{iconLabel}}">
+      <span class="upf-stat__icon" {{enable-tooltip title=this.iconLabel}}>
         <i class="fa fa-{{icon}} {{iconClass}}"></i>
       </span>
     {{/if}}
