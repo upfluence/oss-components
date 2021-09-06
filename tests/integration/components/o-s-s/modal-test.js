@@ -37,7 +37,7 @@ module('Integration | Component | o-s-s/modal', function (hooks) {
           </OSS::Modal>
         `);
 
-        assert.dom('.modal-dialog').hasClass('modal-dialog-centered');
+        assert.dom('.modal-dialog').hasClass('modal-dialog--centered');
       });
     });
 
