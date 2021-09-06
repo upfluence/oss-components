@@ -9,9 +9,9 @@
 
   <ul class="upf-infinite-select__items-container" {{on "scroll" this.scrollListener}}>
     {{#if (and @loading (not @loadingMore))}}
-      <div class="skeleton-content fx-col fx-malign-start padding-xx-sm">
+      <div class="upf-skeleton-content fx-col fx-malign-start padding-xx-sm">
         {{#each this.loadingRows as |width|}}
-          <div class="skeleton-effect margin-bottom-xx-sm" style="width: {{width}}%; height: 8px;"></div>
+          <div class="upf-skeleton-effect margin-bottom-xx-sm" style="width: {{width}}%; height: 8px;"></div>
         {{/each}}
       </div>
     {{else}}
@@ -26,9 +26,9 @@
       {{/each}}
 
       {{#if @loadingMore}}
-        <div class="skeleton-content fx-col fx-malign-start padding-xx-sm">
+        <div class="upf-skeleton-content fx-col fx-malign-start padding-xx-sm">
           {{#each this.loadingMoreRows as |width|}}
-            <div class="skeleton-effect margin-bottom-xx-sm" style="width: {{width}}%; height: 8px;"></div>
+            <div class="upf-skeleton-effect margin-bottom-xx-sm" style="width: {{width}}%; height: 8px;"></div>
           {{/each}}
         </div>
       {{/if}}
