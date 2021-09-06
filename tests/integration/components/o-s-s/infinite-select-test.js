@@ -80,6 +80,38 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
     });
   });
 
+  module('loading states', function () {
+    module('full content loading', function () {
+      test('should display rows of skeleton loading in place of the content', async function (assert) {
+        this.items = FAKE_DATA;
+        this.onSelect = () => {};
+
+        await render(
+          hbs`<OSS::InfiniteSelect @items={{this.items}} @loading={{true}} @searchEnabled={{false}} @onSelect={{this.onSelect}}/>`
+        );
+
+        assert.dom('.upf-infinite-select__items-container .upf-infinite-select__item').doesNotExist();
+        assert.dom('.upf-infinite-select__items-container .skeleton-effect').exists({ count: 5 });
+      });
+    });
+
+    module('additional content loading', function () {
+      test('should display rows of skeleton loading after the existing content', async function (assert) {
+        this.items = FAKE_DATA;
+        this.onSelect = () => {};
+
+        await render(
+          hbs`<OSS::InfiniteSelect @items={{this.items}} @loadingMore={{true}} @searchEnabled={{false}} @onSelect={{this.onSelect}}/>`
+        );
+
+        assert
+          .dom('.upf-infinite-select__items-container .upf-infinite-select__item')
+          .exists({ count: FAKE_DATA.length });
+        assert.dom('.upf-infinite-select__items-container .skeleton-effect').exists({ count: 3 });
+      });
+    });
+  });
+
   module('it renders', function () {
     module('with itemLabel', function () {
       test('it uses the passed itemLabel argument as display key', async function (assert) {
