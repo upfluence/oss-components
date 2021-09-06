@@ -42,6 +42,16 @@ export default {
       },
       control: { type: null }
     },
+    searchPlaceholder: {
+      description: 'Placeholder for the search input when present',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'Search...' }
+      },
+      control: { type: 'text' }
+    },
     searchEnabled: {
       type: { name: 'boolean' },
       description: 'Enable the search feature',
@@ -129,6 +139,7 @@ export default {
 const defaultArgs = {
   items: FAKE_DATA,
   searchEnabled: true,
+  searchPlaceholder: 'My Placeholder...',
   onSearch: action('onSearch'),
   onSelect: action('onSelect'),
   loading: false,
@@ -139,7 +150,8 @@ const Template = (args) => ({
   template: hbs`
       <OSS::InfiniteSelect
         @items={{this.items}} @itemLabel="superhero" @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}}
-        @onSelect={{this.onSelect}} @loading={{this.loading}} @loadingMore={{this.loadingMore}} class="upf-align--absolute-center"/>
+        @searchPlaceholder={{this.searchPlaceholder}} @onSelect={{this.onSelect}} @loading={{this.loading}}
+        @loadingMore={{this.loadingMore}} class="upf-align--absolute-center"/>
   `,
   context: args
 });
@@ -148,7 +160,7 @@ const OptionBlockTemplate = (args) => ({
   template: hbs`
     <OSS::InfiniteSelect
       @items={{this.items}} @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}} @onSelect={{this.onSelect}}
-      class="upf-align--absolute-center">
+      @searchPlaceholder={{this.searchPlaceholder}} class="upf-align--absolute-center">
       <:option as |opt|>
         {{opt.superhero}} (Alias: {{opt.characters}})
       </:option>

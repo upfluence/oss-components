@@ -50,6 +50,22 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
         assert.dom('.upf-infinite-select input.upf-input').exists();
         await typeIn('.upf-infinite-select input.upf-input', 'b');
       });
+
+      test('it uses the passed placeholder when present', async function (assert) {
+        this.onSearch = () => {};
+        this.onSelect = () => {};
+
+        await render(
+          hbs`
+            <OSS::InfiniteSelect
+              @items={{this.items}} @searchEnabled={{true}} @onSearch={{this.onSearch}} @searchPlaceholder="Foobar"
+              @onSelect={{this.onSelect}}/>
+          `
+        );
+
+        assert.dom('.upf-infinite-select input.upf-input').exists();
+        assert.dom('.upf-infinite-select input.upf-input').hasAttribute('placeholder', 'Foobar');
+      });
     });
   });
 

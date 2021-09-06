@@ -7,6 +7,7 @@ interface InfiniteSelectArgs {
   loading: boolean;
   loadingMore: boolean;
   itemLabel: string;
+  searchPlaceholder: string;
   items: InfinityItem[];
 
   onSelect(item: InfinityItem): void;
@@ -41,6 +42,10 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
 
   get searchEnabled(): boolean {
     return this.args.searchEnabled ?? true;
+  }
+
+  get searchPlaceholder(): string {
+    return this.args.searchPlaceholder ?? "Search...";
   }
 
   get itemLabel(): string {

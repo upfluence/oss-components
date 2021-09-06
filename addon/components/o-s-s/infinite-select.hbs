@@ -3,7 +3,7 @@
     {{#input-wrapper}}
       <Input
         value={{this._searchKeyword}} {{on "keyup" this.updateSearchKeyword}} type="text"
-        class="form-control upf-input" placeholder="Search..." />
+        class="form-control upf-input" placeholder={{this.searchPlaceholder}} />
     {{/input-wrapper}}
   {{/if}}
 
