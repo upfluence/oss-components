@@ -128,7 +128,7 @@ export default {
 
 const defaultArgs = {
   items: FAKE_DATA,
-  searchEnabled: false,
+  searchEnabled: true,
   onSearch: action('onSearch'),
   onSelect: action('onSelect'),
   loading: false,
@@ -146,7 +146,9 @@ const Template = (args) => ({
 
 const OptionBlockTemplate = (args) => ({
   template: hbs`
-    <OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{this.searchEnabled}} @onSelect={{this.onSelect}} class="upf-align--absolute-center">
+    <OSS::InfiniteSelect
+      @items={{this.items}} @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}} @onSelect={{this.onSelect}}
+      class="upf-align--absolute-center">
       <:option as |opt|>
         {{opt.superhero}} (Alias: {{opt.characters}})
       </:option>
@@ -165,11 +167,11 @@ WithOptionBlock.args = {
   ...defaultArgs
 };
 
-export const WithSearch = Template.bind({});
-WithSearch.args = {
+export const WithoutSearch = Template.bind({});
+WithoutSearch.args = {
   ...defaultArgs,
   ...{
-    searchEnabled: true
+    searchEnabled: false
   }
 };
 
