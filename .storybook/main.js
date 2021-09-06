@@ -1,3 +1,4 @@
+/* global module require __dirname */
 const path = require('path');
 const root = path.join(__dirname, '../');
 const node_modules = path.join(root, 'node_modules');
@@ -29,7 +30,7 @@ module.exports = {
     polyfills: [namedBlockPolyfill]
   },
 
-  webpackFinal: async (config, { configType }) => {
+  webpackFinal: async (config) => {
     config.node = { fs: 'empty', child_process: 'empty' };
 
     config.module.rules.push({

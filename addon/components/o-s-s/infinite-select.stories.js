@@ -129,9 +129,7 @@ export default {
 const defaultArgs = {
   items: FAKE_DATA,
   searchEnabled: false,
-  //onSearch(keyword) {
-  //console.log(keyword);
-  //},
+  onSearch: action('onSearch'),
   onSelect: action('onSelect'),
   loading: false,
   loadingMore: false
@@ -140,15 +138,15 @@ const defaultArgs = {
 const Template = (args) => ({
   template: hbs`
       <OSS::InfiniteSelect
-        @items={{this.items}} @itemLabel="superhero" @searchEnabled={{this.searchEnabled}} 
-        @onSelect={{this.onSelect}} @loading={{this.loading}} @loadingMore={{this.loadingMore}} />
+        @items={{this.items}} @itemLabel="superhero" @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}}
+        @onSelect={{this.onSelect}} @loading={{this.loading}} @loadingMore={{this.loadingMore}} class="upf-align--absolute-center"/>
   `,
   context: args
 });
 
 const OptionBlockTemplate = (args) => ({
   template: hbs`
-    <OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{this.searchEnabled}} @onSelect={{this.onSelect}}>
+    <OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{this.searchEnabled}} @onSelect={{this.onSelect}} class="upf-align--absolute-center">
       <:option as |opt|>
         {{opt.superhero}} (Alias: {{opt.characters}})
       </:option>
@@ -165,6 +163,14 @@ WithItemLabel.args = {
 export const WithOptionBlock = OptionBlockTemplate.bind({});
 WithOptionBlock.args = {
   ...defaultArgs
+};
+
+export const WithSearch = Template.bind({});
+WithSearch.args = {
+  ...defaultArgs,
+  ...{
+    searchEnabled: true
+  }
 };
 
 export const Loading = Template.bind({});
