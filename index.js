@@ -20,7 +20,6 @@ module.exports = {
     }
 
     lessOptions.paths.push(
-      'node_modules/@fortawesome/fontawesome-free/less',
       'node_modules/bootstrap/less',
       'node_modules/upfluence-oss/less'
     );
@@ -37,6 +36,9 @@ module.exports = {
     this.import('node_modules/countdown.js/lib/countdown.js');
     this.import('node_modules/ion-rangeslider/js/ion.rangeSlider.min.js');
     this.import('node_modules/ion-rangeslider/css/ion.rangeSlider.min.css');
+
+    this.import('node_modules/@fortawesome/fontawesome-free/css/all.css');
+    this.import('node_modules/@fortawesome/fontawesome-free/css/v4-shims.min.css');
   },
 
   treeForPublic() {
@@ -60,8 +62,8 @@ module.exports = {
     trees.push(
       new Funnel('node_modules/@fortawesome/fontawesome-free/webfonts/', {
         srcDir: '/',
-        include: ['**/*.woff', '**/*.woff2', '**/*.eot', '**/*.ttf'],
-        destDir: 'fonts'
+        include: ['**/*.woff', '**/*.woff2', '**/*.eot', '**/*.ttf', '**/*.svg'],
+        destDir: '/webfonts'
       })
     );
 
