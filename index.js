@@ -8,7 +8,7 @@ const Funnel = require('broccoli-funnel');
 module.exports = {
   name: 'oss-components',
 
-  isDevelopingAddon: function() {
+  isDevelopingAddon: function () {
     return true;
   },
 
@@ -20,7 +20,6 @@ module.exports = {
     }
 
     lessOptions.paths.push(
-      'node_modules/font-awesome/less',
       'node_modules/bootstrap/less',
       'node_modules/upfluence-oss/less'
     );
@@ -28,7 +27,7 @@ module.exports = {
     app.options.lessOptions = lessOptions;
   },
 
-  included: function(app) {
+  included: function (app) {
     this._super.included.apply(this, app);
 
     this._registerLessDependencies(app);
@@ -38,6 +37,8 @@ module.exports = {
     this.import('node_modules/ion-rangeslider/js/ion.rangeSlider.min.js');
     this.import('node_modules/ion-rangeslider/css/ion.rangeSlider.min.css');
 
+    this.import('node_modules/@fortawesome/fontawesome-free/css/all.css');
+    this.import('node_modules/@fortawesome/fontawesome-free/css/v4-shims.min.css');
   },
 
   treeForPublic() {
@@ -51,21 +52,18 @@ module.exports = {
     let publicAssets = ['images', 'fonts', 'upf-icons'];
     publicAssets.forEach((assetType) => {
       trees.push(
-        new Funnel(
-          `node_modules/upfluence-oss/${assetType}/`,
-          {
-            srcDir: '/',
-            destDir: `assets/${assetType}`
-          }
-        )
+        new Funnel(`node_modules/upfluence-oss/${assetType}/`, {
+          srcDir: '/',
+          destDir: `assets/${assetType}`
+        })
       );
     });
 
     trees.push(
-      new Funnel('node_modules/font-awesome/fonts/', {
+      new Funnel('node_modules/@fortawesome/fontawesome-free/webfonts/', {
         srcDir: '/',
-        include: ['**/*.woff', '**/*.woff2'],
-        destDir: 'fonts'
+        include: ['**/*.woff', '**/*.woff2', '**/*.eot', '**/*.ttf', '**/*.svg'],
+        destDir: '/webfonts'
       })
     );
 
