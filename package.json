@@ -37,7 +37,7 @@
     "ember-star-rating": "^3.0.0",
     "ember-truth-helpers": "^3.0.0",
     "ion-rangeslider": "^2.3.1",
-    "upfluence-oss": "^2.x"
+    "@upfluence/oss": "git+https://git@github.com/upfluence/oss.git#pn-use-github-registry"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",

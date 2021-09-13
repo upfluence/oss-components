@@ -1,4 +1,3 @@
-/* global require module */
 /* jshint node: true */
 'use strict';
 
@@ -19,10 +18,7 @@ module.exports = {
       lessOptions.paths = [];
     }
 
-    lessOptions.paths.push(
-      'node_modules/bootstrap/less',
-      'node_modules/upfluence-oss/less'
-    );
+    lessOptions.paths.push('node_modules/bootstrap/less', 'node_modules/@upfluence/oss/less');
 
     app.options.lessOptions = lessOptions;
   },
@@ -52,7 +48,7 @@ module.exports = {
     let publicAssets = ['images', 'fonts', 'upf-icons'];
     publicAssets.forEach((assetType) => {
       trees.push(
-        new Funnel(`node_modules/upfluence-oss/${assetType}/`, {
+        new Funnel(`node_modules/@upfluence/oss/${assetType}/`, {
           srcDir: '/',
           destDir: `assets/${assetType}`
         })
