@@ -1,1 +1,1 @@
-export { default } from 'oss-components/components/o-s-s/modal';
+export { default } from '@upfluence/oss-components/components/o-s-s/modal';

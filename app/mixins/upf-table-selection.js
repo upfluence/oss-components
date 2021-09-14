@@ -1,1 +1,1 @@
-export { default } from 'oss-components/mixins/upf-table-selection';
+export { default } from '@upfluence/oss-components/mixins/upf-table-selection';

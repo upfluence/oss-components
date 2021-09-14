@@ -1,1 +1,1 @@
-export { default } from 'oss-components/components/upf-slider';
+export { default } from '@upfluence/oss-components/components/upf-slider';

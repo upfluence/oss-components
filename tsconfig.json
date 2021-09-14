@@ -28,16 +28,16 @@
         "tests/dummy/app/*",
         "app/*"
       ],
-      "upfluence-oss-components": [
+      "@upfluence/oss-components": [
         "addon"
       ],
-      "upfluence-oss-components/*": [
+      "@upfluence/oss-components/*": [
         "addon/*"
       ],
-      "upfluence-oss-components/test-support": [
+      "@upfluence/oss-components/test-support": [
         "addon-test-support"
       ],
-      "upfluence-oss-components/test-support/*": [
+      "@upfluence/oss-components/test-support/*": [
         "addon-test-support/*"
       ],
       "*": [

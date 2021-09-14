@@ -1,1 +1,1 @@
-export { default } from 'oss-components/components/expanding-search';
+export { default } from '@upfluence/oss-components/components/expanding-search';

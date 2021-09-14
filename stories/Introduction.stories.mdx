@@ -69,7 +69,7 @@ to install and use OSS, just follow the this simple steps:
 
 ```console
 john@acme:~$ ember install ember-cli-less
-john@acme:~$ ember install upfluence-oss-components
+john@acme:~$ ember install @upfluence/oss-components
 ```
 
 ```js
@@ -79,7 +79,7 @@ module.exports = function(defaults) {
   let app = new EmberApp(defaults, {
     lessOptions: {
       paths: [
-        'node_modules/upfluence-oss-components/app/styles'
+        'node_modules/@upfluence/oss-components/app/styles'
       ]
     }
   });

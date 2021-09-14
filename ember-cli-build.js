@@ -6,7 +6,7 @@ module.exports = function(defaults) {
   let app = new EmberAddon(defaults, {
     lessoptions: {
       paths: [
-        'node_modules/upfluence-oss-components/app/styles',
+        'node_modules/@upfluence/oss-components/app/styles',
       ]
     }
   });

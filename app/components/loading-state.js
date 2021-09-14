@@ -1,1 +1,1 @@
-export { default } from 'oss-components/components/loading-state';
+export { default } from '@upfluence/oss-components/components/loading-state';

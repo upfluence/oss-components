@@ -1,2 +1,2 @@
-import LoadingButtonComponent from 'oss-components/components/loading-button';
+import LoadingButtonComponent from '@upfluence/oss-components/components/loading-button';
 export default LoadingButtonComponent;

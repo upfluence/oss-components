@@ -1,1 +1,1 @@
-export { default } from 'oss-components/components/column-visibility-panel';
+export { default } from '@upfluence/oss-components/components/column-visibility-panel';

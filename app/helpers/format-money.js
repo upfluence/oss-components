@@ -1,1 +1,1 @@
-export { default, formatMoneyHelper } from 'oss-components/helpers/format-money';
+export { default, formatMoneyHelper } from '@upfluence/oss-components/helpers/format-money';

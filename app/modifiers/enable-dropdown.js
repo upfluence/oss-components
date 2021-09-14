@@ -1,1 +1,1 @@
-export { default } from 'oss-components/modifiers/enable-dropdown';
+export { default } from '@upfluence/oss-components/modifiers/enable-dropdown';

@@ -1,1 +1,1 @@
-export { default } from 'oss-components/components/radio-button';
+export { default } from '@upfluence/oss-components/components/radio-button';
