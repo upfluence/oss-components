@@ -4,9 +4,7 @@ import RSVP from 'rsvp';
 import { observer } from '@ember/object';
 import Ember from 'ember';
 
-const {
-  TargetActionSupport
-} = Ember;
+const { TargetActionSupport } = Ember;
 
 const LoadingButtonComponent = Component.extend(TargetActionSupport, {
   tagName: 'button',
@@ -17,7 +15,7 @@ const LoadingButtonComponent = Component.extend(TargetActionSupport, {
   initiallyDisabled: false,
   bubbles: true,
 
-  _: observer('isLoading', 'initiallyDisabled', function() {
+  _: observer('isLoading', 'initiallyDisabled', function () {
     this._computeDisabled();
   }),
 
@@ -30,6 +28,16 @@ const LoadingButtonComponent = Component.extend(TargetActionSupport, {
     this._computeDisabled();
   },
 
+  _handleClick() {
+    this.set('isLoading', true);
+    this.$().width(this.$().width());
+
+    this.triggerAction({
+      action: this.get('slowAction'),
+      actionContext: [this.get('params'), this.defer]
+    });
+  },
+
   click(e) {
     e.preventDefault();
 
@@ -37,25 +45,15 @@ const LoadingButtonComponent = Component.extend(TargetActionSupport, {
       e.stopPropagation();
     }
 
-    let originalWidth = this.$().width();
-
     // Because `.send` method for sending actions does not return anything, we
     // pass it an `RSVP.defer` to be resolved in the remote action.
-    let defer = RSVP.defer();
-    defer.promise.then(() => {
+    this.defer = RSVP.defer();
+    this.defer.promise.then(() => {
       this.$().removeAttr('style');
       this.set('isLoading', false);
     });
 
-    debounce(this, function() {
-      this.set('isLoading', true);
-      this.$().width(originalWidth);
-
-      this.triggerAction({
-        action: this.get('slowAction'),
-        actionContext: [this.get('params'), defer]
-      });
-    }, 100);
+    debounce(this, this._handleClick, 100);
   }
 });
 

@@ -12,28 +12,26 @@ export default Component.extend({
   itemName: '',
   didPageChange: '',
 
-  previousPage: computed('currentPage', function() {
+  previousPage: computed('currentPage', function () {
     return this.get('currentPage') - 1;
   }),
 
-  nextPage: computed('currentPage', function() {
+  nextPage: computed('currentPage', function () {
     return this.get('currentPage') + 1;
   }),
 
-  hasNext: computed('nextPage', 'totalPages', function() {
+  hasNext: computed('nextPage', 'totalPages', function () {
     return this.get('nextPage') <= this.get('totalPages');
   }),
 
-  hasPrevious: computed('previousPage', 'totalPages', function() {
-    return this.get('previousPage') >= 1;
-  }),
+  hasPrevious: computed.gte('previousPage', 1),
 
-  from: computed('currentPage', 'perPage', function() {
+  from: computed('currentPage', 'perPage', function () {
     return (this.get('currentPage') - 1) * this.get('perPage') + 1;
   }),
 
-  to: computed('from', 'itemCount', function() {
-    return (this.get('from') + this.get('itemCount')) - 1;
+  to: computed('from', 'itemCount', function () {
+    return this.get('from') + this.get('itemCount') - 1;
   }),
 
   _triggerChange(page) {

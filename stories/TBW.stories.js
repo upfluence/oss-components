@@ -2,14 +2,13 @@ import hbs from 'htmlbars-inline-precompile';
 import { storiesOf } from '@storybook/ember';
 
 const defineStory = (name) => {
-  storiesOf(name, module)
-    .add('default', () => {
-      return {
-        template: hbs`
+  storiesOf(name).add('default', () => {
+    return {
+      template: hbs`
           To be written.
         `
-      }
-    })
+    };
+  });
 };
 
 [
@@ -30,13 +29,10 @@ const defineStory = (name) => {
   'Base/Stats',
   'Base/Tables',
   'Base/Toastr',
-  'Base/Transitions',
+  'Base/Transitions'
 ].forEach((story) => defineStory(story));
 
-[
-  'Utilities/Grid',
-  'Utilities/Statuses (Check Usage)',
-].forEach((story) => defineStory(story));
+['Utilities/Grid', 'Utilities/Statuses (Check Usage)'].forEach((story) => defineStory(story));
 
 [
   'Components/Buttons',

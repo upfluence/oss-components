@@ -1,34 +1,43 @@
-<ul class="row upf-datatable__actions-header">
+<ul class='row upf-datatable__actions-header'>
   {{#if contextualActionsComponent}}
     {{component contextualActionsComponent collection=collection}}
   {{/if}}
 
-  <li class="upf-datatable__actions-pull-right">
+  <li class='upf-datatable__actions-pull-right'>
     {{#if hasToggleableColumns}}
       {{column-visibility-panel columns=_columns}}
     {{/if}}
 
     {{#if hasPagination}}
       {{#unless isCompact}}
-        {{upf-table/pagination currentPage=currentPage perPage=perPage
-                               totalPages=totalPages itemTotal=itemTotal
-                               itemCount=itemCount itemName=itemName}}
+        {{upf-table/pagination
+          currentPage=currentPage
+          perPage=perPage
+          totalPages=totalPages
+          itemTotal=itemTotal
+          itemCount=itemCount
+          itemName=itemName
+        }}
       {{/unless}}
     {{/if}}
 
     {{#if hasSearch}}
-      {{expanding-search classNames="margin-left-xx-sm" searchQuery=_searchQuery
-                         placeholder=searchInputPlaceholder small=true}}
+      {{expanding-search
+        classNames='margin-left-xx-sm'
+        searchQuery=_searchQuery
+        placeholder=searchInputPlaceholder
+        small=true
+      }}
     {{/if}}
   </li>
 </ul>
 
-<table class="upf-datatable__table">
+<table class='upf-datatable__table'>
   <thead>
     {{#upf-table/row isHeaderRow=true}}
       {{#if hasSelection}}
         {{#unless contentChanging}}
-          <th width="45px" class="upf-datatable__column upf-datatable__column--unsortable">
+          <th width='45px' class='upf-datatable__column upf-datatable__column--unsortable'>
             {{upf-checkbox value=allRowsSelected}}
           </th>
         {{/unless}}
@@ -36,8 +45,7 @@
 
       {{#each _columns as |column|}}
         {{#unless (eq column.visible false)}}
-          {{upf-table/header_cell column=column
-                                  click=(action "onClickHeader" column)}}
+          {{upf-table/header_cell column=column click=(action 'onClickHeader' column)}}
         {{/unless}}
       {{/each}}
     {{/upf-table/row}}
@@ -46,7 +54,7 @@
   <tbody>
     {{#if isLoading}}
       <tr>
-        <td colspan={{_fullSizeColumnColspan}} class="upf-align--center">
+        <td colspan={{_fullSizeColumnColspan}} class='upf-align--center'>
           {{loading-state}}
         </td>
       </tr>
@@ -54,39 +62,41 @@
       {{#if contentChanging}}
         {{#each _contentPlaceholder}}
           {{#upf-table/row}}
-            <td valign="middle" class="upf-datatable__column upf-datatable__column--locked">
-              <div class="skeleton-placeholder"></div>
+            <td valign='middle' class='upf-datatable__column upf-datatable__column--locked'>
+              <div class='skeleton-placeholder'></div>
             </td>
-            <td valign="middle" class="upf-datatable__column upf-datatable__column--locked">
-              <div class="skeleton-placeholder"></div>
+            <td valign='middle' class='upf-datatable__column upf-datatable__column--locked'>
+              <div class='skeleton-placeholder'></div>
             </td>
           {{/upf-table/row}}
         {{/each}}
       {{else}}
         {{#each collection as |item index|}}
-          {{#upf-table/row ref=item action='callOnRowClickCallback'
-                           hasPolymorphicColumns=hasPolymorphicColumns
-                           onRowClick=onRowClick}}
+          {{#upf-table/row
+            ref=item
+            action='callOnRowClickCallback'
+            hasPolymorphicColumns=hasPolymorphicColumns
+            onRowClick=onRowClick
+          }}
             {{#if hasSelection}}
-              <td class="upf-datatable__column upf-datatable__column--uneditable">
+              <td class='upf-datatable__column upf-datatable__column--uneditable'>
                 {{upf-checkbox value=item.selected}}
               </td>
             {{/if}}
 
             {{#each _columns as |column|}}
               {{#unless (eq column.visible false)}}
-                {{#upf-table/column ref=column editable=column.editable
-                                    classNames=column.additionalClasses}}
+                {{#upf-table/column ref=column editable=column.editable classNames=column.additionalClasses}}
                   {{#if column.component}}
                     {{component column.component item=item column=column}}
                   {{else}}
-                    {{#if (eq column.helper "money")}}
+                    {{#if (eq column.helper 'money')}}
                       {{format-money (get item column.property) (get item column.currency)}}
-                    {{else if (eq column.helper "numeric")}}
+                    {{else if (eq column.helper 'numeric')}}
                       {{format-numeric (get item column.property)}}
                     {{else}}
                       {{#if (and (not (get item column.property)) column.emptyValue)}}
-                        <span class="upf-datatable__column--empty-value">
+                        <span class='upf-datatable__column--empty-value'>
                           {{column.emptyValue}}
                         </span>
                       {{else}}
@@ -100,7 +110,7 @@
           {{/upf-table/row}}
         {{else}}
           <tr>
-            <td colspan={{_fullSizeColumnColspan}} class="upf-align--center">
+            <td colspan={{_fullSizeColumnColspan}} class='upf-align--center'>
               {{yield}}
             </td>
           </tr>
@@ -108,11 +118,15 @@
 
         {{#if (and hasPagination isCompact)}}
           <tr>
-            <td colspan={{_fullSizeColumnColspan}}
-                class="upf-align--right padding-sm">
-              {{upf-table/pagination currentPage=currentPage perPage=perPage
-                                     totalPages=totalPages itemTotal=itemTotal
-                                     itemCount=itemCount itemName=itemName}}
+            <td colspan={{_fullSizeColumnColspan}} class='upf-align--right padding-sm'>
+              {{upf-table/pagination
+                currentPage=currentPage
+                perPage=perPage
+                totalPages=totalPages
+                itemTotal=itemTotal
+                itemCount=itemCount
+                itemName=itemName
+              }}
             </td>
           </tr>
         {{/if}}

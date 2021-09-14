@@ -11,19 +11,17 @@ import { Meta } from '@storybook/addon-docs/blocks';
 # Modifiers
 
 According to Ember JS:
+
 <figure>
   <blockquote cite="https://www.huxley.net/bnw/four.html">
-    <p>
-      Modifiers are a basic primitive for interacting with the DOM in Ember.
-    </p>
+    <p>Modifiers are a basic primitive for interacting with the DOM in Ember.</p>
   </blockquote>
   <figcaption>— Ember JS</figcaption>
 </figure>
 
-| Modifier         | Description                                                                  | Usage                                                                          | Default                                                                                                   |
-|------------------|------------------------------------------------------------------------------|--------------------------------------------------------------------------------| ----------------------------------------------------------------------------------------------------------|
-| enable-popover   | Adds a Bootstrap's Popover to the element                                    | `<button {{enable-popover [trigger]}}>Popover</button>`                        | Default Trigger : **hover**                                                                               |
-| enable-tooltip   | Adds a Bootstrap's Tooltip to the element                                    | `<button {{enable-tooltip title='tooltip' placement='top'}}>Tooltip</button>`  | title : **''** <br /> placement : **'bottom'** <br /> html : **false** <br /> trigger : **'hover focus'** |
-| enable-dropdown  | Toggles Bootstrap's dropdown on an element                                   | `<a {{enable-dropdown}}>Dropdown Trigger link/button</a>`                      |                                                                                                           |
-| on-click-outside | Triggers the passed callback function when a user clicks outside the element | `<div {{on-click-outside callbackFunction}}>Floating Div</div>`                |                                                                                                           |
-
+| Modifier         | Description                                                                  | Usage                                                                         | Default                                                                                                   |
+| ---------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| enable-popover   | Adds a Bootstrap's Popover to the element                                    | `<button {{enable-popover [trigger]}}>Popover</button>`                       | Default Trigger : **hover**                                                                               |
+| enable-tooltip   | Adds a Bootstrap's Tooltip to the element                                    | `<button {{enable-tooltip title='tooltip' placement='top'}}>Tooltip</button>` | title : **''** <br /> placement : **'bottom'** <br /> html : **false** <br /> trigger : **'hover focus'** |
+| enable-dropdown  | Toggles Bootstrap's dropdown on an element                                   | `<a {{enable-dropdown}}>Dropdown Trigger link/button</a>`                     |                                                                                                           |
+| on-click-outside | Triggers the passed callback function when a user clicks outside the element | `<div {{on-click-outside callbackFunction}}>Floating Div</div>`               |                                                                                                           |

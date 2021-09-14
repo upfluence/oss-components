@@ -45,7 +45,7 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   }
 
   get searchPlaceholder(): string {
-    return this.args.searchPlaceholder ?? "Search...";
+    return this.args.searchPlaceholder ?? 'Search...';
   }
 
   get itemLabel(): string {

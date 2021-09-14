@@ -12,11 +12,11 @@ import JavascriptBundlers from './assets/images/javascript-bundlers.jpg';
 />
 
 <div class="upf-align--center margin-top-xx-sm padding-sm">
-  <img src={UpfluenceLogo} alt="upfluence-logo" width="50%"/>
+  <img src={UpfluenceLogo} alt="upfluence-logo" width="50%" />
 </div>
 
 <div class="upf-align--center">
-<h1>Welcome to Upfluence's OSS Design System</h1>
+  <h1>Welcome to Upfluence's OSS Design System</h1>
 </div>
 
 OSS is a design system built to help Upfluence's developers and designers quickly
@@ -40,12 +40,12 @@ Even though Ember JS is Upfluence's framework of choice, the OSS design system
 codebase has been split into two packages. Based on which type of application
 you're building you'll choose a different composition:
 
-* [Our CSS/Assets](https://github.com/upfluence/oss) repository. Written using
-[Less CSS](http://lesscss.org/) preprocessor, this package holds all of the
-design system styles, including of course the ones used in our web components.
-* [Our opinionated component library](https://github.com/upfluence/oss-components) which
-is actually an [Ember JS](https://emberjs.com/) addon and is home to the common
-components we use while developing amazing products.
+- [Our CSS/Assets](https://github.com/upfluence/oss) repository. Written using
+  [Less CSS](http://lesscss.org/) preprocessor, this package holds all of the
+  design system styles, including of course the ones used in our web components.
+- [Our opinionated component library](https://github.com/upfluence/oss-components) which
+  is actually an [Ember JS](https://emberjs.com/) addon and is home to the common
+  components we use while developing amazing products.
 
 ## Installation 💻
 
@@ -62,10 +62,9 @@ commands, those should work fine with **npm** too.
 </p>
 
 <p>
- Yay 🎊 You are going with Ember JS, our framework of choice @ Upfluence. In order
-to install and use OSS, just follow the this simple steps:
+  Yay 🎊 You are going with Ember JS, our framework of choice @ Upfluence. In order to install and use OSS, just follow
+  the this simple steps:
 </p>
-
 
 ```console
 john@acme:~$ ember install ember-cli-less
@@ -75,12 +74,10 @@ john@acme:~$ ember install @upfluence/oss-components
 ```js
 // project-name/ember-cli-build.js
 
-module.exports = function(defaults) {
+module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     lessOptions: {
-      paths: [
-        'node_modules/@upfluence/oss-components/app/styles'
-      ]
+      paths: ['node_modules/@upfluence/oss-components/app/styles']
     }
   });
 
@@ -91,12 +88,11 @@ module.exports = function(defaults) {
 ```css
 // app/styles/app.less
 
-@import "oss-components";
+@import 'oss-components';
 ```
 
 And that's it ! Your app is now up and running with our amazing design system
-🎉　🥳 !
-
+🎉 　 🥳 !
 
 #### I am not using Ember JS
 
@@ -104,12 +100,12 @@ And that's it ! Your app is now up and running with our amazing design system
   <img src={JavascriptBundlers} width="35%" />
 </p>
 
-
 Our components' CSS is still usable even though you won't have a ready-to-use
 solution but will need to apply the classes by yourself.
 
 The installation by itself is pretty straightforward and consist of a single
 command :
+
 ```console
 john@acme:~$ yarn add upfluence-oss
 ```

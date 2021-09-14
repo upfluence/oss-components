@@ -17,7 +17,7 @@ export default Component.extend({
   value: null,
   colorClass: null,
 
-  maxWidthStyle: computed('value', function() {
+  maxWidthStyle: computed('value', function () {
     return `max-width: ${this.get('value')}%`;
   })
 });

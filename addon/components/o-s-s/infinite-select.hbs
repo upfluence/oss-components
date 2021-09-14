@@ -1,24 +1,28 @@
-<div class="upf-infinite-select" {{did-insert this.onRender}} ...attributes>
+<div class='upf-infinite-select' {{did-insert this.onRender}} ...attributes>
   {{#if this.searchEnabled}}
     {{#input-wrapper}}
       <Input
-        value={{this._searchKeyword}} {{on "keyup" this.updateSearchKeyword}} type="text"
-        class="form-control upf-input" placeholder={{this.searchPlaceholder}} />
+        value={{this._searchKeyword}}
+        {{on 'keyup' this.updateSearchKeyword}}
+        type='text'
+        class='form-control upf-input'
+        placeholder={{this.searchPlaceholder}}
+      />
     {{/input-wrapper}}
   {{/if}}
 
-  <ul class="upf-infinite-select__items-container" {{on "scroll" this.scrollListener}}>
+  <ul class='upf-infinite-select__items-container' {{on 'scroll' this.scrollListener}}>
     {{#if (and @loading (not @loadingMore))}}
-      <div class="upf-skeleton-content fx-col fx-malign-start padding-xx-sm">
+      <div class='upf-skeleton-content fx-col fx-malign-start padding-xx-sm'>
         {{#each this.loadingRows as |width|}}
-          <div class="upf-skeleton-effect margin-bottom-xx-sm" style="width: {{width}}%; height: 8px;"></div>
+          <div class='upf-skeleton-effect margin-bottom-xx-sm' style='width: {{width}}%; height: 8px;'></div>
         {{/each}}
       </div>
     {{else}}
       {{#each this.items as |item|}}
-        <li class="upf-infinite-select__item" role="button" {{on "click" (fn this.didSelectItem item)}}>
-          {{#if (has-block "option")}}
-            {{yield item to="option"}}
+        <li class='upf-infinite-select__item' role='button' {{on 'click' (fn this.didSelectItem item)}}>
+          {{#if (has-block 'option')}}
+            {{yield item to='option'}}
           {{else}}
             {{get item this.itemLabel}}
           {{/if}}
@@ -26,9 +30,9 @@
       {{/each}}
 
       {{#if @loadingMore}}
-        <div class="upf-skeleton-content fx-col fx-malign-start padding-xx-sm">
+        <div class='upf-skeleton-content fx-col fx-malign-start padding-xx-sm'>
           {{#each this.loadingMoreRows as |width|}}
-            <div class="upf-skeleton-effect margin-bottom-xx-sm" style="width: {{width}}%; height: 8px;"></div>
+            <div class='upf-skeleton-effect margin-bottom-xx-sm' style='width: {{width}}%; height: 8px;'></div>
           {{/each}}
         </div>
       {{/if}}

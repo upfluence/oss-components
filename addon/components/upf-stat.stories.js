@@ -4,7 +4,7 @@ import UpfStat from './upf-stat';
 export default {
   title: 'Components/Stats',
   component: UpfStat,
-  args : {
+  args: {
     name: 'Stat',
     data: '80',
     label: 'Label'
@@ -28,7 +28,7 @@ export default {
       iframeHeight: 400
     }
   }
-}
+};
 
 export let Default = (args) => {
   return {
@@ -36,5 +36,5 @@ export let Default = (args) => {
     context: {
       ...args
     }
-  }
-}
+  };
+};

@@ -1,5 +1,6 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
+import jQuery from '@ember/jquery';
 
 export default Component.extend({
   classNames: ['upf-slider'],
@@ -9,40 +10,48 @@ export default Component.extend({
   value: 0,
   active: false,
   slider: null,
-  color: computed('value', 'slider', function() {
-    if(this.value === null && this.slider !== null) {
-      this.set('active', false);
-      this.slider.update({
-        from: this.options.max/2
-      });
-      return;
-    }
+  color: computed(
+    'active',
+    'options.{highClass,lowClass,lowValue,max,mediumClass,mediumValue}',
+    'slider',
+    'value',
+    function () {
+      if (this.value === null && this.slider !== null) {
+        // eslint-disable-next-line ember/no-side-effects
+        this.set('active', false);
+        this.slider.update({
+          from: this.options.max / 2
+        });
+        return;
+      }
 
-    if(!this.active) {
-      this.set('active', true);
-    }
+      if (!this.active) {
+        // eslint-disable-next-line ember/no-side-effects
+        this.set('active', true);
+      }
 
-    if (this.value <= this.options.lowValue) {
-      return this.options.lowClass;
-    } else if (this.value <= this.options.mediumValue) {
-      return this.options.mediumClass;
-    }
+      if (this.value <= this.options.lowValue) {
+        return this.options.lowClass;
+      } else if (this.value <= this.options.mediumValue) {
+        return this.options.mediumClass;
+      }
 
-    return this.options.highClass;
-  }),
+      return this.options.highClass;
+    }
+  ),
 
   didInsertElement() {
     this.$('.slider').ionRangeSlider({
       skin: 'round',
       min: this.options.min,
       max: this.options.max,
-      from: this.value !== null ? this.value : this.options.max/2,
+      from: this.value !== null ? this.value : this.options.max / 2,
       hide_min_max: true,
       step: this.options.step,
       from_min: this.options.start,
       from_max: this.options.end,
       onChange: (data) => {
-        if(!this.active) {
+        if (!this.active) {
           this.toggleProperty('active');
         }
         this.set('value', data.from);
@@ -53,8 +62,8 @@ export default Component.extend({
       prettify: this.formatValue || null
     });
 
-    let slider = $(".slider").data("ionRangeSlider");
+    let slider = jQuery('.slider').data('ionRangeSlider');
 
     this.set('slider', slider);
-  },
+  }
 });

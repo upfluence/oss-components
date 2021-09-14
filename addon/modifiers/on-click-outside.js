@@ -21,7 +21,7 @@ export default setModifierManager(
         if (!element.contains(event.target)) {
           callback(state.element, event);
         }
-      }
+      };
 
       document.addEventListener('click', state.handler, false);
     },

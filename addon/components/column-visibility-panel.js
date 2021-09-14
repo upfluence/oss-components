@@ -7,13 +7,12 @@ export default Component.extend({
   handleClick(event) {
     if (event.target.closest('.button-column-visibility-panel')) {
       this.toggleProperty('displayedColumnsPanel');
-    }
-    else if (!event.target.closest('.side-panel--appearance')) {
+    } else if (!event.target.closest('.side-panel--appearance')) {
       this.set('displayedColumnsPanel', false);
     }
   },
 
-  init(){
+  init() {
     this._super();
 
     this.set('clickHandler', this.handleClick.bind(this));
@@ -23,7 +22,7 @@ export default Component.extend({
     document.addEventListener('click', this.clickHandler, false);
   },
 
-  willDestroyElement(){
+  willDestroyElement() {
     document.removeEventListener('click', this.clickHandler, false);
   }
 });

@@ -1,9 +1,12 @@
-<span class="text-size-5 margin-left-xx-sm">{{from}} to {{to}} out of {{itemTotal}} {{itemName}}</span>
+<span class='text-size-5 margin-left-xx-sm'>{{from}} to {{to}} out of {{itemTotal}} {{itemName}}</span>
 
-<a class="upf-btn upf-btn--default upf-btn--small margin-left-xx-sm {{unless hasPrevious 'disabled'}}" {{action 'previousPage'}}>
-  <i class="fa fa-caret-left"></i>
+<a
+  class='upf-btn upf-btn--default upf-btn--small margin-left-xx-sm {{unless hasPrevious 'disabled'}}'
+  {{action 'previousPage'}}
+>
+  <i class='fa fa-caret-left'></i>
 </a>
 
-<a class="upf-btn upf-btn--default upf-btn--small {{unless hasNext 'disabled'}}" {{action 'nextPage'}}>
-  <i class="fa fa-caret-right"></i>
+<a class='upf-btn upf-btn--default upf-btn--small {{unless hasNext 'disabled'}}' {{action 'nextPage'}}>
+  <i class='fa fa-caret-right'></i>
 </a>
