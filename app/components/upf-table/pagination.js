@@ -1,1 +1,1 @@
-export { default } from 'oss-components/components/upf-table/pagination';
+export { default } from '@upfluence/oss-components/components/upf-table/pagination';

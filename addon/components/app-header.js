@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import HeaderStyleMixin from 'oss-components/mixins/header-style';
+import HeaderStyleMixin from '@upfluence/oss-components/mixins/header-style';
 
 export default Component.extend(HeaderStyleMixin, {
   tagName: 'nav',

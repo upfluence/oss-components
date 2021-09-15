@@ -1,1 +1,1 @@
-export { default } from 'oss-components/components/upf-image';
+export { default } from '@upfluence/oss-components/components/upf-image';

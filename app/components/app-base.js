@@ -1,2 +1,2 @@
-import AppBase from 'oss-components/components/app-base';
+import AppBase from '@upfluence/oss-components/components/app-base';
 export default AppBase;

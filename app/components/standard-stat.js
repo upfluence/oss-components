@@ -1,2 +1,2 @@
-import StandardStatComponent from 'oss-components/components/standard-stat';
+import StandardStatComponent from '@upfluence/oss-components/components/standard-stat';
 export default StandardStatComponent;

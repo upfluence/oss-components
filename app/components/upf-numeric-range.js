@@ -1,1 +1,1 @@
-export { default } from 'oss-components/components/upf-numeric-range';
+export { default } from '@upfluence/oss-components/components/upf-numeric-range';

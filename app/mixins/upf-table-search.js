@@ -1,1 +1,1 @@
-export { default } from 'oss-components/mixins/upf-table-search';
+export { default } from '@upfluence/oss-components/mixins/upf-table-search';

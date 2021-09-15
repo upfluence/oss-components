@@ -107,7 +107,7 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
         );
 
         assert.dom('.upf-infinite-select__items-container .upf-infinite-select__item').doesNotExist();
-        assert.dom('.upf-infinite-select__items-container .skeleton-effect').exists({ count: 5 });
+        assert.dom('.upf-infinite-select__items-container .upf-skeleton-effect').exists({ count: 5 });
       });
     });
 
@@ -123,7 +123,7 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
         assert
           .dom('.upf-infinite-select__items-container .upf-infinite-select__item')
           .exists({ count: FAKE_DATA.length });
-        assert.dom('.upf-infinite-select__items-container .skeleton-effect').exists({ count: 3 });
+        assert.dom('.upf-infinite-select__items-container .upf-skeleton-effect').exists({ count: 3 });
       });
     });
   });

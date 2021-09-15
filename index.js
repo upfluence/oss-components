@@ -3,9 +3,11 @@
 
 const mergeTrees = require('broccoli-merge-trees');
 const Funnel = require('broccoli-funnel');
+const { name, version } = require('./package');
 
 module.exports = {
-  name: 'oss-components',
+  name,
+  version,
 
   isDevelopingAddon: function () {
     return true;
