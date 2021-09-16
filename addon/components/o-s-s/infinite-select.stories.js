@@ -187,6 +187,14 @@ WithoutSearch.args = {
   }
 };
 
+export const EmptyState = Template.bind({});
+EmptyState.args = {
+  ...defaultArgs,
+  ...{
+    items: []
+  }
+};
+
 export const Loading = Template.bind({});
 Loading.args = {
   ...defaultArgs,

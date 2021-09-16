@@ -7,7 +7,9 @@
     {{/input-wrapper}}
   {{/if}}
 
-  <ul class="upf-infinite-select__items-container" {{on "scroll" this.scrollListener}}>
+  <ul class="upf-infinite-select__items-container
+             {{if (eq this.items.length 0) 'upf-infinite-select__items-container--empty'}}"
+             {{on "scroll" this.scrollListener}}>
     {{#if (and @loading (not @loadingMore))}}
       <div class="upf-skeleton-content fx-col fx-malign-start padding-xx-sm">
         {{#each this.loadingRows as |width|}}
@@ -23,6 +25,8 @@
             {{get item this.itemLabel}}
           {{/if}}
         </li>
+      {{else}}
+        <img src="/@upfluence/oss-components/assets/images/empty-state-skeleton.png" />
       {{/each}}
 
       {{#if @loadingMore}}

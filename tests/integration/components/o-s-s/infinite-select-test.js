@@ -185,5 +185,21 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
         );
       });
     });
+
+    module('with empty items', function () {
+      test('it should render the empty state', async function (assert) {
+        this.items = [];
+        this.onSelect = () => {};
+
+        await render(
+          hbs`<OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{false}} @onSelect={{this.onSelect}}/>`
+        );
+
+        assert.dom('.upf-infinite-select__items-container').hasClass('upf-infinite-select__items-container--empty');
+        assert
+          .dom('.upf-infinite-select__items-container img')
+          .hasAttribute('src', '/@upfluence/oss-components/assets/images/empty-state-skeleton.png');
+      });
+    });
   });
 });
