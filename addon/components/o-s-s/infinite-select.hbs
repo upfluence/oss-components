@@ -26,7 +26,22 @@
           {{/if}}
         </li>
       {{else}}
-        <img src="/@upfluence/oss-components/assets/images/empty-state-skeleton.png" />
+        <div class="fx-col fx-xalign-center">
+          <img
+            src="/@upfluence/oss-components/assets/images/empty-state-skeleton.png"
+            alt="Empty content" width="15%" />
+
+          <div class="margin-top-xx-sm text-color-default upf-align--center">
+            {{#if this._searchKeyword}}
+              <p>No matching results</p>
+              <p class="text-color-default-light">
+                Try adjusting your search to find what you’re looking for. 
+              </p>
+            {{else}}
+              Nothing to see here.
+            {{/if}}
+          </div>
+        </div>
       {{/each}}
 
       {{#if @loadingMore}}
