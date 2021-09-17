@@ -7,7 +7,9 @@
     {{/input-wrapper}}
   {{/if}}
 
-  <ul class="upf-infinite-select__items-container" {{on "scroll" this.scrollListener}}>
+  <ul class="upf-infinite-select__items-container
+             {{if (eq this.items.length 0) 'upf-infinite-select__items-container--empty'}}"
+             {{on "scroll" this.scrollListener}}>
     {{#if (and @loading (not @loadingMore))}}
       <div class="upf-skeleton-content fx-col fx-malign-start padding-xx-sm">
         {{#each this.loadingRows as |width|}}
@@ -23,6 +25,23 @@
             {{get item this.itemLabel}}
           {{/if}}
         </li>
+      {{else}}
+        <div class="fx-col fx-xalign-center">
+          <img
+            src="/@upfluence/oss-components/assets/images/empty-state-skeleton.png"
+            alt="Empty content" width="15%" />
+
+          <div class="margin-top-xx-sm text-color-default upf-align--center">
+            {{#if this._searchKeyword}}
+              <p>No matching results</p>
+              <p class="text-color-default-light">
+                Try adjusting your search to find what you’re looking for. 
+              </p>
+            {{else}}
+              Nothing to see here.
+            {{/if}}
+          </div>
+        </div>
       {{/each}}
 
       {{#if @loadingMore}}
