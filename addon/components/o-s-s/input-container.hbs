@@ -1,0 +1,17 @@
+<div class="oss-input-container{{if (has-block "prefix") ' input-padding-left'}}{{if (has-block "suffix") ' input-padding-right'}}"
+     ...attributes>
+  {{#if (has-block "prefix")}}
+    <div class="prefix">{{yield to="prefix"}}</div>
+  {{/if}}
+
+  {{#if (has-block "input")}}
+    <div class="yielded-input">{{yield to="input"}}</div>
+  {{else}}
+    <Input {{on "keyup" (fn this._onChange @value)}} @value={{@value}} placeholder={{@placeholder}}
+           class="upf-input" />
+  {{/if}}
+
+  {{#if (has-block "suffix")}}
+    <div class="suffix">{{yield to="suffix"}}</div>
+  {{/if}}
+</div>

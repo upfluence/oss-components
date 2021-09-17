@@ -1,1 +1,60 @@
-this is upfluence oss component
+{{!-- <OSS::InputContainer class="margin-bottom-sm" /> --}}
+
+<div class="fx-row fx-malign-space-around">
+  <div class="fx-col margin-top-sm" style="width: 750px">
+    <span class="text-style-bold">BASIC</span>
+    <pre><code>{{eg1}}</code></pre>
+    <OSS::InputContainer class="margin-bottom-sm" @value={{this.name}} />
+
+    <hr>
+
+    <span class="text-style-bold">BASIC</span>
+    <pre><code>{{eg2}}</code></pre>
+    <OSS::InputContainer class="margin-bottom-sm" data-control-name="input-firstname"
+                         @value={{this.name}}
+                         @onChange={{this.onValueUpdated}}
+                         @placeholder="Enter your first name">
+      <:prefix><i class="fas fa-user" style="color: blue"></i></:prefix>
+      <:suffix>
+        <i class="fas fa-times" role="button" {{on "click" this.onClear}}></i>
+      </:suffix>
+    </OSS::InputContainer>
+
+    <hr>
+
+    <span class="text-style-bold">ADVANCED</span>
+    <pre><code>{{eg4}}</code></pre>
+    <OSS::InputContainer class="margin-bottom-sm">
+      <:prefix><i class="fas fa-user"></i></:prefix>
+      <:input>
+        <Input @value={{this.lastname}} placeholder="My fancy custom input" />
+      </:input>
+    </OSS::InputContainer>
+
+    <hr>
+
+    <span class="text-style-bold">ADVANCED</span>
+    <pre><code>{{eg5}}</code></pre>
+    <OSS::InputContainer class="margin-bottom-sm" data-control-name="input-firstname">
+      <:input>
+        <Input @value={{this.lastname}} placeholder="My fancy custom input" />
+      </:input>
+      <:suffix>
+        {{#if (gt this.lastname.length 0)}}
+          <i class="fa fa-check" style="color: green"></i>
+        {{else}}
+          <i class="fa fa-times" style="color: red"></i>
+        {{/if}}
+      </:suffix>
+    </OSS::InputContainer>
+  </div>
+
+  <div class="margin-top-sm fx-col fx-malign-center" style="width: 300px">
+    <span>Value in parent controller :</span>
+    <div class="fx-col fx-xalign-center fx-xalign-start fx-malign-center"
+         style="padding: 20px; border: 2px solid red; border-radius: 4px">
+      <span>First Name: <b>{{this.name}}</b></span>
+      <span>Last Name: <b>{{this.lastname}}</b></span>
+    </div>
+  </div>
+</div>

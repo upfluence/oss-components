@@ -10,10 +10,10 @@ interface InfiniteSelectArgs {
   searchPlaceholder: string;
   items: InfinityItem[];
 
-  onSelect(item: InfinityItem): void;
-  onSearch?(keyword: string): void;
-  onBottomReached?(): void;
-  didRender?(): void;
+  onSelect: (item: InfinityItem) => void;
+  onSearch?: (keyword: string) => void;
+  onBottomReached?: () => void;
+  didRender?: () => void;
 }
 
 type InfinityItem = {
@@ -45,7 +45,7 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   }
 
   get searchPlaceholder(): string {
-    return this.args.searchPlaceholder ?? "Search...";
+    return this.args.searchPlaceholder ?? 'Search...';
   }
 
   get itemLabel(): string {
