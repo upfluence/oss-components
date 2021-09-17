@@ -5,7 +5,6 @@ interface OSSInputArgs {
   value?: string;
   placeholder?: string;
   onChange?: (arg0: string) => void;
-  suffixAction?: () => void;
 }
 
 export default class OSSInput extends Component<OSSInputArgs> {
