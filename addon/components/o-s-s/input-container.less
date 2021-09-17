@@ -1,0 +1,42 @@
+.oss-input-container {
+  position: relative;
+
+  .upf-input {
+    width: 100%;
+  }
+
+  .yielded-input input {
+    &:extend(.upf-input);
+    width: 100%;
+  }
+
+  .morpheme {
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    align-items: center;
+    display: flex;
+  }
+
+  .suffix {
+    .morpheme;
+    right: 0;
+    padding-right: 10px;
+    padding-left: 8px;
+  }
+
+  .prefix {
+    .morpheme;
+    left: 0;
+    padding-right: 8px;
+    padding-left: 10px;
+  }
+
+  &.has-prefix input {
+    padding-left: 25px;
+  }
+
+  &.has-suffix input {
+    padding-right: 25px;
+  }
+}
