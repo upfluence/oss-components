@@ -23,6 +23,8 @@ export default Component.extend({
   }),
 
   click(e) {
+    e.stopPropagation();
+
     if (this.disabled && this.onToggleAttempt) {
       e.preventDefault();
       this.onToggleAttempt();
