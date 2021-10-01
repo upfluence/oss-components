@@ -7,12 +7,13 @@ export default Component.extend({
   classNameBindings: ['isChecked:active', 'disabled'],
   attributeBindings: ['style', 'data-control-name'],
 
-  style: computed('options', function() {
+  style: computed('options', 'fixedWidth', function () {
+    if (this.fixedWidth) return;
     return `width: ${100 / Object.keys(this.get('options')).length}%;`;
   }),
 
-  isChecked: computed('value', 'currentValue', 'disabled', function() {
-      return !this.disabled && this.value === this.currentValue;
+  isChecked: computed('value', 'currentValue', 'disabled', function () {
+    return !this.disabled && this.value === this.currentValue;
   }),
 
   click() {
