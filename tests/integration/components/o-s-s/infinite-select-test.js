@@ -175,7 +175,6 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
 
         let displayedNames = [];
         document.querySelectorAll('.upf-infinite-select__items-container .upf-infinite-select__item').forEach((x) => {
-          console.log(x.textContent);
           displayedNames.push(x.textContent.trim());
         });
 

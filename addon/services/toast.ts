@@ -2,8 +2,6 @@ import { later } from '@ember/runloop';
 import Service from '@ember/service';
 import { isEmpty } from '@ember/utils';
 
-const TIMEOUT = 5000;
-
 enum ToastType {
   INFO = 'info',
   WARNING = 'warning',
@@ -11,49 +9,92 @@ enum ToastType {
   SUCCESS = 'success'
 }
 
+/**
+ * Toast Options
+ *
+ * @param {boolean} closeButton - Whether or not a button should be displayed to close the toast early.
+ * @param {boolean} tapToDismiss - Whether or not a tap on the toast should close it.
+ * @param {Function} onclick - A function to be called when the toast is clicked.
+ */
 export type ToastOptions = {
-  closeButton?: true;
+  closeButton?: boolean;
   tapToDismiss?: boolean;
-  onclick?: Function | null;
+  onclick?: Function;
+  timeout?: number | 'none';
 };
 
-type ToastFunction = (message: string, title: string, opts: ToastOptions) => void;
+type ToastFunction = (message: string, title: string, opts?: ToastOptions) => void;
+
+
+const DEFAULT_TOAST_TIMEOUT = 5000;
 
 const DEFAULT_OPTIONS: ToastOptions = Object.freeze({
   closeButton: true,
-  onclick: null,
-  tapToDismiss: true
+  tapToDismiss: true,
+  onclick: undefined,
+  timeout: undefined
 });
 
-function delegate(ctx: Toast, type: ToastType): ToastFunction {
-  return (message: string, title: string, opts: ToastOptions = DEFAULT_OPTIONS): void => {
-    if (isEmpty(message) && isEmpty(title)) return;
-
-    ctx.buildToast(type, message, title, { ...DEFAULT_OPTIONS, ...opts });
-  };
-}
 
 export default class Toast extends Service {
   private _toasts: Element[] = [];
 
-  success: ToastFunction = delegate(this, ToastType.SUCCESS);
-  error: ToastFunction = delegate(this, ToastType.ERROR);
-  warning: ToastFunction = delegate(this, ToastType.WARNING);
-  info: ToastFunction = delegate(this, ToastType.INFO);
+  /**
+   * Display a success toast
+   *
+   * @param {string} message - The Toast's message
+   * @param {string} title - The toast's title
+   * @param {Object} opts - Toast options
+   * @param {boolean} [opts.closeButton=true] - Display a button to close the toast manually.
+   */
+  success: ToastFunction = this._delegate(ToastType.SUCCESS);
 
-  buildToast(type: ToastType, message: string, title: string, opts: ToastOptions): void {
+  /**
+   * Display an error toast
+   *
+   * @param {string} message - The Toast's message
+   * @param {string} title - The toast's title
+   * @param {Object} opts - Toast options
+   * @param {boolean} [opts.closeButton=true] - Display a button to close the toast manually.
+   */
+  error: ToastFunction = this._delegate(ToastType.ERROR);
+
+  /**
+   * Display a warning toast
+   *
+   * @param {string} message - The Toast's message
+   * @param {string} title - The toast's title
+   * @param {Object} opts - Toast options
+   * @param {boolean} [opts.closeButton=true] - Display a button to close the toast manually.
+   */
+  warning: ToastFunction = this._delegate(ToastType.WARNING);
+
+  /**
+   * Display an information toast
+   *
+   * @param {string} message - The Toast's message
+   * @param {string} title - The toast's title
+   * @param {Object} opts - Toast options
+   * @param {boolean} [opts.closeButton=true] - Display a button to close the toast manually.
+   */
+  info: ToastFunction = this._delegate(ToastType.INFO);
+
+  private _delegate(type: ToastType): ToastFunction {
+    return (message: string, title: string, opts: ToastOptions = DEFAULT_OPTIONS): void => {
+      if (isEmpty(message) && isEmpty(title)) return;
+
+      this._buildToast(type, message, title, { ...DEFAULT_OPTIONS, ...opts });
+    };
+  }
+
+  private _buildToast(type: ToastType, message: string, title: string, opts: ToastOptions): void {
     const container: Element = this._buildContainer();
 
     const toast: Element = document.createElement('div');
     toast.classList.add('toast', 'toast--hidden', `toast-${type}`);
 
-    const titleContainer: Element = document.createElement('div');
-    titleContainer.classList.add('toast-title');
-    titleContainer.textContent = title;
-
-    const messageContainer: Element = document.createElement('div');
-    messageContainer.classList.add('toast-message');
-    messageContainer.textContent = message;
+    const titleContainer: Element = this._buildToastPart('div', ['toast-title'], title);
+    const messageContainer: Element = this._buildToastPart('div', ['toast-message'], message);
 
     let toastChildren: Element[] = [titleContainer, messageContainer];
 
@@ -67,8 +108,15 @@ export default class Toast extends Service {
       toastChildren.push(closeButton);
     }
 
+    if (opts.onclick && typeof opts.onclick === 'function') {
+      toast.addEventListener('click', (e) => {
+        e.stopPropagation();
+        opts.onclick && opts.onclick(e);
+      }, { once: true });
+    }
+
     if (opts.tapToDismiss) {
-      toast.addEventListener('click', () => this._destroyToast(toast), { once: true });
+      toast.addEventListener('click', () => { this._destroyToast(toast) }, { once: true });
     }
 
     toastChildren.forEach((x) => toast.append(x));
@@ -79,17 +127,16 @@ export default class Toast extends Service {
       container.append(toast);
     }
 
-    later(
-      this,
-      () => {
-        toast.classList.remove('toast--hidden');
-        toast.classList.add('toast--visible');
-      },
-      500
-    );
+    toast.classList.remove('toast--hidden');
+    toast.classList.add('toast--visible');
 
     this._toasts.push(toast);
-    later(this, () => this._destroyToast(toast), TIMEOUT);
+
+    if (opts.timeout === 'none') {
+      return;
+    }
+
+    later(this, () => this._destroyToast(toast), opts.timeout || DEFAULT_TOAST_TIMEOUT);
   }
 
   private _destroyToast(toast: Element | null): void {
@@ -104,6 +151,15 @@ export default class Toast extends Service {
     if (button) {
       this._destroyToast(button.parentElement);
     }
+  }
+
+  private _buildToastPart(tagName: string, classes: string[], textContent: string): Element {
+    const el: Element = document.createElement(tagName);
+
+    el.classList.add(...classes);
+    el.textContent = textContent;
+
+    return el;
   }
 
   private _buildContainer(): Element {
