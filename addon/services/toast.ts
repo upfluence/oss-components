@@ -25,7 +25,6 @@ export type ToastOptions = {
 
 type ToastFunction = (message: string, title: string, opts?: ToastOptions) => void;
 
-
 const DEFAULT_TOAST_TIMEOUT = 5000;
 
 const DEFAULT_OPTIONS: ToastOptions = Object.freeze({
@@ -34,7 +33,6 @@ const DEFAULT_OPTIONS: ToastOptions = Object.freeze({
   onclick: undefined,
   timeout: undefined
 });
-
 
 export default class Toast extends Service {
   private _toasts: Element[] = [];
@@ -89,35 +87,16 @@ export default class Toast extends Service {
 
   private _buildToast(type: ToastType, message: string, title: string, opts: ToastOptions): void {
     const container: Element = this._buildContainer();
-
-    const toast: Element = document.createElement('div');
-    toast.classList.add('toast', 'toast--hidden', `toast-${type}`);
-
-    const titleContainer: Element = this._buildToastPart('div', ['toast-title'], title);
-    const messageContainer: Element = this._buildToastPart('div', ['toast-message'], message);
-
+    const toast: Element = this._buildElement('div', ['toast', 'toast-hidden', `toast-${type}`]);
+    const titleContainer: Element = this._buildElement('div', ['toast-title'], title);
+    const messageContainer: Element = this._buildElement('div', ['toast-message'], message);
     let toastChildren: Element[] = [titleContainer, messageContainer];
 
     if (opts.closeButton) {
-      const closeButton: Element = document.createElement('button');
-
-      closeButton.classList.add('toast-close-button');
-      closeButton.innerHTML = '<i class="fas fa-times text-size-5"></i>';
-      closeButton.addEventListener('click', this._onToastClose.bind(this), { once: true });
-
-      toastChildren.push(closeButton);
+      toastChildren.push(this._buildCloseButton());
     }
 
-    if (opts.onclick && typeof opts.onclick === 'function') {
-      toast.addEventListener('click', (e) => {
-        e.stopPropagation();
-        opts.onclick && opts.onclick(e);
-      }, { once: true });
-    }
-
-    if (opts.tapToDismiss) {
-      toast.addEventListener('click', () => { this._destroyToast(toast) }, { once: true });
-    }
+    this._setupToastEvents(toast, opts);
 
     toastChildren.forEach((x) => toast.append(x));
 
@@ -127,6 +106,10 @@ export default class Toast extends Service {
       container.append(toast);
     }
 
+    this._handleVisibility(toast, opts);
+  }
+
+  private _handleVisibility(toast: Element, opts: ToastOptions) {
     toast.classList.remove('toast--hidden');
     toast.classList.add('toast--visible');
 
@@ -153,11 +136,56 @@ export default class Toast extends Service {
     }
   }
 
-  private _buildToastPart(tagName: string, classes: string[], textContent: string): Element {
+  private _setupToastEvents(toast: Element, opts: ToastOptions) {
+    if (opts.onclick && typeof opts.onclick === 'function') {
+      toast.addEventListener(
+        'click',
+        (e) => {
+          e.stopPropagation();
+          opts.onclick && opts.onclick(e);
+        },
+        { once: true }
+      );
+    }
+
+    if (opts.tapToDismiss) {
+      toast.addEventListener(
+        'click',
+        () => {
+          this._destroyToast(toast);
+        },
+        { once: true }
+      );
+    }
+  }
+
+  private _buildCloseButton(): Element {
+    const closeButton: Element = this._buildElement(
+      'button',
+      ['toast-close-button'],
+      '<i class="fas fa-times text-size-5"></i>',
+      true
+    );
+
+    closeButton.classList.add('toast-close-button');
+    closeButton.innerHTML = '<i class="fas fa-times text-size-5"></i>';
+    closeButton.addEventListener('click', this._onToastClose.bind(this), { once: true });
+
+    return closeButton;
+  }
+
+  private _buildElement(tagName: string, classes: string[], content?: string, htmlContent: boolean = false): Element {
     const el: Element = document.createElement(tagName);
 
     el.classList.add(...classes);
-    el.textContent = textContent;
+
+    if (content) {
+      if (htmlContent) {
+        el.innerHTML = content;
+      } else {
+        el.textContent = content;
+      }
+    }
 
     return el;
   }
@@ -169,7 +197,6 @@ export default class Toast extends Service {
       container = document.createElement('div');
       container.id = 'toast-container';
       container.classList.add('upf-toastr--container');
-
       document.body.append(container);
     }
 
