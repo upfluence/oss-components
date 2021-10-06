@@ -31,7 +31,7 @@ const DEFAULT_OPTIONS: ToastOptions = Object.freeze({
   closeButton: true,
   tapToDismiss: true,
   onclick: undefined,
-  timeout: undefined
+  timeout: DEFAULT_TOAST_TIMEOUT
 });
 
 export default class Toast extends Service {
@@ -78,19 +78,19 @@ export default class Toast extends Service {
   info: ToastFunction = this._delegate(ToastType.INFO);
 
   private _delegate(type: ToastType): ToastFunction {
-    return (message: string, title?: string, opts: ToastOptions = DEFAULT_OPTIONS): void => {
+    return (message: string, title?: string, opts?: ToastOptions): void => {
       if (isEmpty(message) && isEmpty(title)) return;
 
-      this._buildToast(type, message, title, { ...DEFAULT_OPTIONS, ...opts });
+      this._buildToast(type, message, title, { ...DEFAULT_OPTIONS, ...(opts || {})});
     };
   }
 
-  private _buildToast(type: ToastType, message: string, title?: string, opts: ToastOptions): void {
+  private _buildToast(type: ToastType, message: string, title: string | null | undefined, opts: ToastOptions): void {
     const container: Element = this._buildContainer();
-    const toast: Element = this._buildElement('div', ['toast', 'toast-hidden', `toast-${type}`]);
+    const toast: Element = this._buildElement('div', ['toast', 'toast--hidden', `toast-${type}`]);
     let toastChildren: Element[] = [this._buildElement('div', ['toast-message'], message)];
 
-    if (!isEmpty(title)) {
+    if (title && !isEmpty(title)) {
       toastChildren.splice(0, 0, this._buildElement('div', ['toast-title'], title));
     }
 
