@@ -78,19 +78,21 @@ export default class Toast extends Service {
   info: ToastFunction = this._delegate(ToastType.INFO);
 
   private _delegate(type: ToastType): ToastFunction {
-    return (message: string, title: string, opts: ToastOptions = DEFAULT_OPTIONS): void => {
+    return (message: string, title?: string, opts: ToastOptions = DEFAULT_OPTIONS): void => {
       if (isEmpty(message) && isEmpty(title)) return;
 
       this._buildToast(type, message, title, { ...DEFAULT_OPTIONS, ...opts });
     };
   }
 
-  private _buildToast(type: ToastType, message: string, title: string, opts: ToastOptions): void {
+  private _buildToast(type: ToastType, message: string, title?: string, opts: ToastOptions): void {
     const container: Element = this._buildContainer();
     const toast: Element = this._buildElement('div', ['toast', 'toast-hidden', `toast-${type}`]);
-    const titleContainer: Element = this._buildElement('div', ['toast-title'], title);
-    const messageContainer: Element = this._buildElement('div', ['toast-message'], message);
-    let toastChildren: Element[] = [titleContainer, messageContainer];
+    let toastChildren: Element[] = [this._buildElement('div', ['toast-message'], message)];
+
+    if (!isEmpty(title)) {
+      toastChildren.splice(0, 0, this._buildElement('div', ['toast-title'], title));
+    }
 
     if (opts.closeButton) {
       toastChildren.push(this._buildCloseButton());
