@@ -81,7 +81,7 @@ export default class Toast extends Service {
     return (message: string, title?: string, opts?: ToastOptions): void => {
       if (isEmpty(message) && isEmpty(title)) return;
 
-      this._buildToast(type, message, title, { ...DEFAULT_OPTIONS, ...(opts || {})});
+      this._buildToast(type, message, title, { ...DEFAULT_OPTIONS, ...(opts || {}) });
     };
   }
 
@@ -165,8 +165,7 @@ export default class Toast extends Service {
     const closeButton: Element = this._buildElement(
       'button',
       ['toast-close-button'],
-      '<i class="fas fa-times text-size-5"></i>',
-      true
+      '<i class="fas fa-times text-size-5"></i>'
     );
 
     closeButton.classList.add('toast-close-button');
@@ -176,17 +175,13 @@ export default class Toast extends Service {
     return closeButton;
   }
 
-  private _buildElement(tagName: string, classes: string[], content?: string, htmlContent: boolean = false): Element {
+  private _buildElement(tagName: string, classes: string[], content?: string): Element {
     const el: Element = document.createElement(tagName);
 
     el.classList.add(...classes);
 
     if (content) {
-      if (htmlContent) {
-        el.innerHTML = content;
-      } else {
-        el.textContent = content;
-      }
+      el.innerHTML = content;
     }
 
     return el;
