@@ -1,0 +1,8 @@
+<button class='upf-btn {{concat 'upf-btn--' this.skin}}
+        {{if this.size (concat 'upf-btn--' this.size)}}' ...attributes>
+  {{#if @loading}}
+    <i class="fas fa-circle-notch fa-spin"></i>
+  {{else}}
+    {{yield}}
+  {{/if}}
+</button>
