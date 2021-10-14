@@ -1,4 +1,6 @@
 import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
 
 enum SkinDefinition {
   DEFAULT = 'default',
@@ -20,26 +22,41 @@ interface ButtonArgs {
   size: string;
   loading: boolean;
 }
-//TODO:save size for loading
-export default class OSSButton extends Component<ButtonArgs> {
-  constructor(owner: unknown, args: ButtonArgs) {
-    super(owner, args);
 
-    let t: string = this.args.skin;
-    console.log(t);
+export default class OSSButton extends Component<ButtonArgs> {
+  @tracked btnSize: number | undefined;
+  @tracked DOMElement: HTMLElement | undefined;
+
+  _getDefinitionKey(key: string): string {
+    return key.toUpperCase().replace(/-/g, '_');
   }
 
   get skin(): string {
     if (!this.args.skin) {
       return SkinDefinition.DEFAULT;
     }
-    return SkinDefinition[this.args.skin.toUpperCase().replace(/-/g, '_') as keyof typeof SkinDefinition];
+    return SkinDefinition[this._getDefinitionKey(this.args.skin) as keyof typeof SkinDefinition];
   }
 
   get size(): string | null {
     if (!this.args.size) {
       return null;
     }
-    return SizeDefinition[this.args.size.toUpperCase().replace(/-/g, '_') as keyof typeof SizeDefinition];
+    return SizeDefinition[this._getDefinitionKey(this.args.size) as keyof typeof SizeDefinition];
+  }
+
+  get loadingState(): boolean {
+    if (!this.args.loading) {
+      this.btnSize = this.DOMElement?.offsetWidth;
+    } else if (this.btnSize && this.DOMElement) {
+      this.DOMElement.style.width = `${this.btnSize}px`;
+    }
+
+    return this.args.loading;
+  }
+
+  @action
+  didInsert(element: HTMLElement): void {
+    this.DOMElement = element;
   }
 }
