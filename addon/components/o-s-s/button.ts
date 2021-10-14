@@ -32,17 +32,25 @@ export default class OSSButton extends Component<ButtonArgs> {
   }
 
   get skin(): string {
-    if (!this.args.skin) {
-      return SkinDefinition.DEFAULT;
+    if (this.args.skin) {
+      return SkinDefinition[this._getDefinitionKey(this.args.skin) as keyof typeof SkinDefinition];
     }
-    return SkinDefinition[this._getDefinitionKey(this.args.skin) as keyof typeof SkinDefinition];
+    return SkinDefinition.DEFAULT;
   }
 
   get size(): string | null {
-    if (!this.args.size) {
-      return null;
-    }
     return SizeDefinition[this._getDefinitionKey(this.args.size) as keyof typeof SizeDefinition];
+  }
+
+  get computedClass() {
+    let classes = ['upf-btn'];
+
+    if (this.args.size) {
+      classes.push(`upf-btn--${this.size}`);
+    }
+    classes.push(`upf-btn--${this.skin}`);
+
+    return classes.join(' ');
   }
 
   get loadingState(): boolean {
