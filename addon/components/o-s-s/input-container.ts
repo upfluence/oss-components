@@ -1,13 +1,13 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 
-interface OSSInputArgs {
+interface OSSInputContainerArgs {
   value?: string;
   placeholder?: string;
   onChange?: (value: string) => void;
 }
 
-export default class OSSInput extends Component<OSSInputArgs> {
+export default class OSSInputContainer extends Component<OSSInputContainerArgs> {
   @action
   _onChange(value: string): void {
     if (this.args.onChange) {

@@ -1,0 +1,30 @@
+.array-input-container:extend(.upf-input) {
+  &:focus-within {
+    border: 1px solid @border-color;
+  }
+
+  height: auto;
+  min-height: 37px;
+  padding: 0;
+  flex-wrap: wrap;
+
+  .input-array-tag:extend(.upf-tag) {
+    height: 30px;
+    line-height: 30px;
+    margin-left: 4px;
+    background-color: @upf-gray-light;
+  }
+
+  input {
+    height: 35px;
+    background-color: transparent;
+    border: none;
+    flex: 1;
+    min-width: 20%;
+    .padding-left-xxx-sm;
+  }
+
+  input:focus {
+    outline: none;
+  }
+}

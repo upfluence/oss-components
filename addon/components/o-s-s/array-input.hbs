@@ -1,0 +1,9 @@
+<div class="array-input-container fx-row fx-xalign-center" ...attributes>
+  {{#each this.items as |item index|}}
+    <div class="input-array-tag fx-row fx-xalign-center">
+      {{item}}
+      <i class="fa fa-remove margin-left-xxx-sm text-color-blue-gray" role="button" {{on "click" (fn this.removeItem index)}}></i>
+    </div>
+  {{/each}}
+  <Input @value={{this.currentValue}} {{on "keydown" this.keyListener}} />
+</div>
