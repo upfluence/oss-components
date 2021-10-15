@@ -15,6 +15,12 @@ module('Integration | Component | o-s-s/button', function (hooks) {
   });
 
   module('it render with right skin', function () {
+    test('when using unknown skin', async function (assert) {
+      await render(hbs`<OSS::Button @skin="unknown">Test</OSS::Button>`);
+
+      assert.dom('.upf-btn').hasClass('upf-btn--default');
+    });
+
     test('when using primary skin', async function (assert) {
       await render(hbs`<OSS::Button @skin="primary">Test</OSS::Button>`);
 

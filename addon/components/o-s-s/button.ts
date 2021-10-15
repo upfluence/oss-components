@@ -26,7 +26,7 @@ const SizeDefinition: SizeDefType = {
   s: 'small'
 };
 
-const DEFAULT_CLASS = 'upf-btn';
+const BASE_CLASS = 'upf-btn';
 
 interface ButtonArgs {
   skin?: string;
@@ -52,7 +52,7 @@ export default class OSSButton extends Component<ButtonArgs> {
   }
 
   get computedClass() {
-    let classes = [DEFAULT_CLASS];
+    let classes = [BASE_CLASS];
 
     if (this.size) {
       classes.push(`upf-btn--${this.size}`);
