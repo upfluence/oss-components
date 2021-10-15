@@ -52,12 +52,11 @@ export default class OSSButton extends Component<ButtonArgs> {
   }
 
   get computedClass() {
-    let classes = [BASE_CLASS];
+    let classes = [BASE_CLASS, `upf-btn--${this.skin}`];
 
     if (this.size) {
       classes.push(`upf-btn--${this.size}`);
     }
-    classes.push(`upf-btn--${this.skin}`);
 
     return classes.join(' ');
   }
