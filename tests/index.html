@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,6 +18,7 @@
     {{content-for "head-footer"}}
     {{content-for "test-head-footer"}}
   </head>
+
   <body>
     {{content-for "body"}}
     {{content-for "test-body"}}
@@ -29,5 +31,12 @@
 
     {{content-for "body-footer"}}
     {{content-for "test-body-footer"}}
+    <div id="qunit"></div>
+    <div id="qunit-fixture">
+      <div id="ember-testing-container">
+        <div id="ember-testing"></div>
+      </div>
+    </div>
   </body>
+
 </html>
