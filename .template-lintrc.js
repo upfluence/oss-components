@@ -3,9 +3,9 @@
 module.exports = {
   extends: 'octane',
 
-  plugins: ['./u-template-lint'],
+  plugins: ['./linters/handlebars'],
 
   rules: {
-    'u-template-lint/no-bare-button': ['error', { allow: [] }]
+    'u-template-lint/no-bare-button': ['error']
   }
 };

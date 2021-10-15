@@ -4,22 +4,21 @@ class NoBareHTMLButton extends Rule {
   visitor() {
     return {
       ElementNode(node) {
-        if (node.tag === 'button') {
+        console.log(node)
+        if (['button', 'LoadingButton'].includes(node.tag)) {
           this.log({
             node,
             message: 'Prefer OSS::Button component to bare HTML buttons',
             line: node.loc.start.line
           });
         }
+      },
+
+      MustacheStatement(node, visitorPath) {
+        console.log(node, visitorPath);
       }
     };
   }
 }
 
-module.exports = {
-  name: 'u-template-lint',
-
-  rules: {
-    'u-template-lint/no-bare-button': NoBareHTMLButton
-  }
-};
+module.exports = NoBareHTMLButton;
