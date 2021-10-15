@@ -2,50 +2,59 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
-enum SkinDefinition {
-  DEFAULT = 'default',
-  PRIMARY = 'primary',
-  SECONDARY = 'secondary',
-  DESTRUCTIVE = 'destructive',
-  SOCIAL_INSTAGRAM = 'social-instagram',
-  SOCIAL_FACEBOOK = 'social-facebook',
-  SOCIAL_YOUTUBE = 'social-youtube'
-}
+type SkinType = 'default' | 'primary' | 'secondary' | 'destructive' | 'instagram' | 'facebook' | 'youtube';
+type SkinDefType = {
+  [key in SkinType]: string;
+};
 
-enum SizeDefinition {
-  X_SMALL = 'x-small',
-  SMALL = 'small'
-}
+type SizeType = 'xs' | 's';
+type SizeDefType = {
+  [key in SizeType]: string;
+};
+
+const SkinDefinition: SkinDefType = {
+  default: 'default',
+  primary: 'primary',
+  secondary: 'secondary',
+  destructive: 'destructive',
+  instagram: 'social-instagram',
+  facebook: 'social-facebook',
+  youtube: 'social-youtube'
+};
+const SizeDefinition: SizeDefType = {
+  xs: 'x-small',
+  s: 'small'
+};
+
+const DEFAULT_CLASS = 'upf-btn';
 
 interface ButtonArgs {
-  skin: string;
-  size: string;
-  loading: boolean;
+  skin?: string;
+  size?: string;
+  loading?: boolean;
 }
 
 export default class OSSButton extends Component<ButtonArgs> {
-  @tracked btnSize: number | undefined;
   @tracked DOMElement: HTMLElement | undefined;
 
-  _getDefinitionKey(key: string): string {
-    return key.toUpperCase().replace(/-/g, '_');
-  }
-
   get skin(): string {
-    if (this.args.skin) {
-      return SkinDefinition[this._getDefinitionKey(this.args.skin) as keyof typeof SkinDefinition];
+    if (!this.args.skin) {
+      return SkinDefinition.default;
     }
-    return SkinDefinition.DEFAULT;
+    return SkinDefinition[this.args.skin as SkinType] ?? SkinDefinition.default;
   }
 
   get size(): string | null {
-    return SizeDefinition[this._getDefinitionKey(this.args.size) as keyof typeof SizeDefinition];
+    if (!this.args.size) {
+      return null;
+    }
+    return SizeDefinition[this.args.size as SizeType];
   }
 
   get computedClass() {
-    let classes = ['upf-btn'];
+    let classes = [DEFAULT_CLASS];
 
-    if (this.args.size) {
+    if (this.size) {
       classes.push(`upf-btn--${this.size}`);
     }
     classes.push(`upf-btn--${this.skin}`);
@@ -54,13 +63,17 @@ export default class OSSButton extends Component<ButtonArgs> {
   }
 
   get loadingState(): boolean {
-    if (!this.args.loading) {
-      this.btnSize = this.DOMElement?.offsetWidth;
-    } else if (this.btnSize && this.DOMElement) {
-      this.DOMElement.style.width = `${this.btnSize}px`;
+    if (!this.DOMElement) {
+      return false;
     }
 
-    return this.args.loading;
+    if (this.args.loading) {
+      this.DOMElement.style.width = `${this.DOMElement?.offsetWidth}px`;
+    } else {
+      this.DOMElement.style.removeProperty('width');
+    }
+
+    return this.args.loading || false;
   }
 
   @action
