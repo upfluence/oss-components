@@ -79,29 +79,5 @@ module('Integration | Component | o-s-s/button', function (hooks) {
 
       assert.equal(btn.children[0].className, 'fas fa-circle-notch fa-spin');
     });
-
-    test('and keep same button size', async function (assert) {
-      this.loading = false;
-      this.content = '';
-
-      await render(hbs`<OSS::Button @loading={{this.loading}}>{{this.content}}</OSS::Button>`);
-      const btn = document.querySelector('.upf-btn');
-
-      assert.dom('.upf-btn').hasText('');
-      assert.equal(btn.offsetWidth, 38);
-
-      this.set('content', 'Very long text');
-      assert.dom('.upf-btn').hasText('Very long text');
-      assert.equal(btn.offsetWidth, 115);
-
-      this.set('loading', true);
-      assert.equal(btn.children[0].className, 'fas fa-circle-notch fa-spin');
-      assert.equal(btn.offsetWidth, 115);
-
-      this.set('loading', false);
-      this.set('content', '');
-      assert.dom('.upf-btn').hasText('');
-      assert.equal(btn.offsetWidth, 38);
-    });
   });
 });
