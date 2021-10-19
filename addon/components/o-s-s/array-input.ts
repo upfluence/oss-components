@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
 interface OSSArrayInputArgs {
-  initValues?: string[];
+  values?: string[];
   validator?: (value: string) => boolean;
   onChange?: (values: string[]) => string;
 }
@@ -14,13 +14,15 @@ export default class OSSArrayInput extends Component<OSSArrayInputArgs> {
 
   constructor(owner: unknown, args: OSSArrayInputArgs) {
     super(owner, args);
-    if (this.args.initValues) {
-      this.items = this.args.initValues;
+    if (this.args.values) {
+      this.items = this.args.values;
     }
   }
 
   private _triggerComponentRedraw(): void {
-    this.items = this.items; // yup.
+    // Since this.items is not properly tracked upon updating the values,
+    // re-assigning this way triggers the component redraw.
+    this.items = this.items;
   }
 
   private _addEntry() {
