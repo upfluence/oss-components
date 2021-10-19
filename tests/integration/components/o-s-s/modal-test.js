@@ -97,6 +97,20 @@ module('Integration | Component | o-s-s/modal', function (hooks) {
   });
 
   module('keyboard shortcut', function () {
+    test('it does nothing when the keyboard option is falsy', async function (assert) {
+      await render(hbs`
+          <OSS::Modal @title="Test Modal" @options={{hash keyboard=false}}>
+            <div class="modal-body">
+              Foo
+            </div>
+          </OSS::Modal>
+        `);
+
+      assert.dom('.modal-dialog').exists();
+      await triggerKeyEvent('.modal', 'keydown', 'Escape');
+      assert.dom('.modal-dialog').exists();
+    });
+
     test('it closes the modal on Escape key', async function (assert) {
       this.display = true;
       this.onClose = () => {

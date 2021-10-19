@@ -7,6 +7,7 @@ const DEFAULT_OPTIONS = {
   container: null,
   modalClass: null,
   header: true,
+  keyboard: true,
   borderlessHeader: false
 };
 
@@ -27,19 +28,24 @@ export default class OssModalComponent extends Component {
   setup(element) {
     this.element = element;
 
-    const modal = jQuery(this.element).modal({ backdrop: 'static' });
+    const modal = jQuery(this.element).modal({ backdrop: 'static', keyboard: this.options.keyboard });
 
     if (this.options.container) {
       modal.appendTo(this.options.container);
     }
 
-    this.element.addEventListener('keydown', this._handleEscapeKey.bind(this));
+    if (this.options.keyboard) {
+      this.element.addEventListener('keydown', this._handleEscapeKey.bind(this));
+    }
   }
 
   @action
   teardown() {
     jQuery(this.element).modal('hide');
-    this.element.removeEventListener('keydown', this._handleEscapeKey.bind(this));
+
+    if (this.options.keyboard) {
+      this.element.removeEventListener('keydown', this._handleEscapeKey.bind(this));
+    }
   }
 
   @action
