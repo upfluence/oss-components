@@ -18,7 +18,7 @@ export default class OssModalComponent extends Component {
   }
 
   _handleEscapeKey(event) {
-    if (event.keyCode === 27) {
+    if (event.key === 'Escape') {
       this.close(event);
     }
   }
