@@ -2,11 +2,23 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import jQuery from 'jquery';
 
+const DEFAULT_OPTIONS = {
+  centered: false,
+  container: null,
+  modalClass: null,
+  header: true,
+  borderlessHeader: false
+};
+
 export default class OssModalComponent extends Component {
   element = null;
 
+  get options() {
+    return { ...DEFAULT_OPTIONS, ...(this.args.options || {}) };
+  }
+
   _handleEscapeKey(event) {
-    if (event.keyCode === 27) {
+    if (event.key === 'Escape') {
       this.close(event);
     }
   }
@@ -17,8 +29,8 @@ export default class OssModalComponent extends Component {
 
     const modal = jQuery(this.element).modal({ backdrop: 'static' });
 
-    if (this.args.options?.container) {
-      modal.appendTo(this.args.options.container);
+    if (this.options.container) {
+      modal.appendTo(this.options.container);
     }
 
     this.element.addEventListener('keydown', this._handleEscapeKey.bind(this));

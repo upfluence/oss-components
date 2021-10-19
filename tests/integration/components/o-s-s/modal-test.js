@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { render, triggerKeyEvent } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
 module('Integration | Component | o-s-s/modal', function (hooks) {
@@ -75,6 +75,53 @@ module('Integration | Component | o-s-s/modal', function (hooks) {
 
         assert.dom('.modal-dialog .modal-header').hasClass('modal-header__borderless');
       });
+    });
+
+    module('no header', function () {
+      test('no header container is present', async function (assert) {
+        await render(hbs`
+          <OSS::Modal @options={{hash header=false}}>
+            <div class="modal-body">
+              Foo
+            </div>
+
+            <div class="modal-footer">
+              Bar
+            </div>
+          </OSS::Modal>
+        `);
+
+        assert.dom('.modal-dialog .modal-header').doesNotExist();
+      });
+    });
+  });
+
+  module('keyboard shortcut', function () {
+    test('it closes the modal on Escape key', async function (assert) {
+      this.display = true;
+      this.onClose = () => {
+        this.set('display', false);
+      };
+
+      await render(hbs`
+        {{#if this.display}}
+          <OSS::Modal @onClose={{this.onClose}}>
+            <div class="modal-body">
+              Foo
+            </div>
+
+            <div class="modal-footer">
+              Bar
+            </div>
+          </OSS::Modal>
+        {{/if}}
+      `);
+
+      assert.dom('.modal-dialog').exists();
+
+      await triggerKeyEvent('.modal', 'keydown', 'Escape');
+
+      assert.dom('.modal-dialog').doesNotExist();
     });
   });
 });
