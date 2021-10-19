@@ -76,5 +76,23 @@ module('Integration | Component | o-s-s/modal', function (hooks) {
         assert.dom('.modal-dialog .modal-header').hasClass('modal-header__borderless');
       });
     });
+
+    module('no header', function () {
+      test('no header container is present', async function (assert) {
+        await render(hbs`
+          <OSS::Modal @options={{hash header=false}}>
+            <div class="modal-body">
+              Foo
+            </div>
+
+            <div class="modal-footer">
+              Bar
+            </div>
+          </OSS::Modal>
+        `);
+
+        assert.dom('.modal-dialog .modal-header').doesNotExist();
+      });
+    });
   });
 });

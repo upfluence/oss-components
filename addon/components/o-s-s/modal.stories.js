@@ -67,3 +67,11 @@ BorderelessHeader.args = {
   },
   ...defaultArgs
 };
+
+export const NoHeader = Template.bind({});
+NoHeader.args = {
+  options: {
+    header: false
+  },
+  ...defaultArgs
+};
