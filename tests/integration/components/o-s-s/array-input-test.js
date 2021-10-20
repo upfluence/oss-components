@@ -20,13 +20,13 @@ module('Integration | Component | OSS::ArrayInput', function (hooks) {
     assert.dom('.array-input-container').exists();
   });
 
-  module('@initValues parameter', (hooks) => {
+  module('@values parameter', (hooks) => {
     hooks.beforeEach(function () {
       this.loadedValues = ['value1', 'value2'];
     });
 
-    test('Passing @initValues parameter displays the items', async function (assert) {
-      await render(hbs`<OSS::ArrayInput @initValues={{this.loadedValues}}/>`);
+    test('Passing @values parameter displays the items', async function (assert) {
+      await render(hbs`<OSS::ArrayInput @values={{this.loadedValues}}/>`);
       const domTags = await findAll('.input-array-tag');
       assert.dom(domTags[0]).hasText('value1');
       assert.dom(domTags[1]).hasText('value2');
@@ -104,7 +104,7 @@ module('Integration | Component | OSS::ArrayInput', function (hooks) {
 
     test('If there are tags, the last one is removed and is passed to edit mode', async function (assert) {
       this.loadedValues = ['value1', 'value2'];
-      await render(hbs`<OSS::ArrayInput @initValues={{this.loadedValues}}/>`);
+      await render(hbs`<OSS::ArrayInput @values={{this.loadedValues}}/>`);
       let domTags = findAll('.input-array-tag');
       assert.equal(domTags.length, 2);
       assert.dom(domTags[1]).hasText('value2');
@@ -117,7 +117,7 @@ module('Integration | Component | OSS::ArrayInput', function (hooks) {
 
   test('Clicking on the remove icon suppresses the target entry', async function (assert) {
     this.loadedValues = ['value1', 'value2'];
-    await render(hbs`<OSS::ArrayInput @initValues={{this.loadedValues}}/>`);
+    await render(hbs`<OSS::ArrayInput @values={{this.loadedValues}}/>`);
     let domTagsRemove = findAll('.input-array-tag .fa-remove');
     assert.equal(domTagsRemove.length, 2);
     await click('.input-array-tag .fa-remove');
