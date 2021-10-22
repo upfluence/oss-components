@@ -8,21 +8,20 @@ Test content goes here.
     <button {{on "click" (fn this.triggerToast "info")}}>info</button>
   </div>
 
-  <div class='fx-row padding-bottom-sm fx-xalign-center'>
-    <OSS::Button>Test</OSS::Button>
-    <OSS::Button @size="xs">X-Small</OSS::Button>
-    <OSS::Button @size="s">Small</OSS::Button>
-    <OSS::Button @loading="true">Loading</OSS::Button>
-    <OSS::Button @skin="primary">Primary</OSS::Button>
-    <OSS::Button @skin="secondary">Secondary</OSS::Button>
-    <OSS::Button @skin="destructive">Destructive</OSS::Button>
-    <OSS::Button @skin="social-instagram">Instagram</OSS::Button>
-    <OSS::Button @skin="social-facebook">Facebook</OSS::Button>
-    <OSS::Button @skin="social-youtube">Youtube</OSS::Button>
+  <div class='fx-row padding-sm fx-xalign-center'>
+    <OSS::Button @label="Test" />
+    <OSS::Button @size="xs" @label="X-Small" />
+    <OSS::Button @size="s" @label="Small" />
+    <OSS::Button @loading="true" @label="Loading" />
+    <OSS::Button @skin="primary" @label="Primary" />
+    <OSS::Button @skin="secondary" @label="Secondary" />
+    <OSS::Button @skin="destructive" @label="Destructive" />
+    <OSS::Button @skin="instagram" @label="Instagram" />
+    <OSS::Button @skin="youtube" @label="Youtube" />
   </div>
 
-  <div class='fx-row padding-bottom-sm'>
-    <OSS::Button @loading={{this.loading}} {{on "click" this.toggleLoading}}>{{this.input}}</OSS::Button>
-    <OSS::InputContainer @value={{this.input}} />
-  </div>
+  {{!-- <div class='fx-row padding-bottom-sm'> --}}
+    {{!-- <OSS::Button @loading={{this.loading}} {{on "click" this.toggleLoading}}>{{this.input}}</OSS::Button> --}}
+    {{!-- <OSS::InputContainer @value={{this.input}} /> --}}
+  {{!-- </div> --}}
 </div>
