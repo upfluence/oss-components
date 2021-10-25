@@ -32,10 +32,20 @@ interface ButtonArgs {
   skin?: string;
   size?: string;
   loading?: boolean;
+  icon?: string;
+  label?: string;
 }
 
 export default class OSSButton extends Component<ButtonArgs> {
   @tracked DOMElement: HTMLElement | undefined;
+
+  constructor(owner: unknown, args: ButtonArgs) {
+    super(owner, args);
+
+    if (!args.label && !args.icon) {
+      throw new Error('[component][OSS::Button] You must pass either a @label or an @icon argument.')
+    }
+  }
 
   get skin(): string {
     if (!this.args.skin) {

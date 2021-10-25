@@ -1,7 +1,13 @@
-<button class={{this.computedClass}} {{did-insert this.didInsert}} ...attributes>
+<button type="button" class={{this.computedClass}} {{did-insert this.didInsert}} ...attributes>
   {{#if this.loadingState}}
     <i class="fas fa-circle-notch fa-spin"></i>
   {{else}}
-    {{yield}}
+    {{#if @icon}}
+      <i class={{@icon}}></i>
+    {{/if}}
+
+    {{#if @label}}
+      <span class={{if @icon "margin-left-xxx-sm"}}>{{@label}}</span>
+    {{/if}}
   {{/if}}
 </button>
