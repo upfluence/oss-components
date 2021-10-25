@@ -6,6 +6,7 @@ interface OSSArrayInputArgs {
   values?: string[];
   validator?: (value: string) => boolean;
   onChange?: (values: string[]) => string;
+  placeholder?: string;
 }
 
 export default class OSSArrayInput extends Component<OSSArrayInputArgs> {
@@ -48,6 +49,12 @@ export default class OSSArrayInput extends Component<OSSArrayInputArgs> {
     if (this.args.onChange) {
       this.args.onChange(this.items);
     }
+  }
+
+  @action
+  validateTagOnClickOutside(): void {
+    if (this.currentValue.length > 0) this._validateEntry();
+    else this._onChange();
   }
 
   @action
