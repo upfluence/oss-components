@@ -7,7 +7,8 @@ const DEFAULT_OPTIONS = {
   container: null,
   modalClass: null,
   header: true,
-  borderlessHeader: false
+  borderlessHeader: false,
+  tabindex: -1
 };
 
 export default class OssModalComponent extends Component {
