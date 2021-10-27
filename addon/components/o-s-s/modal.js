@@ -41,6 +41,7 @@ export default class OssModalComponent extends Component {
   teardown() {
     jQuery(this.element).modal('hide');
     this.element.removeEventListener('keydown', this._handleEscapeKey.bind(this));
+    this.element.remove();
   }
 
   @action
