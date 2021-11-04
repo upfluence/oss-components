@@ -69,10 +69,8 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   }
 
   @action
-  scrollListener(event: any): void {
-    if (event.target.scrollTop + event.target.clientHeight >= event.target.scrollHeight && !this.args.loading) {
-      this.args.onBottomReached?.();
-    }
+  onBottomReached(): void {
+    this.args.onBottomReached?.();
   }
 
   @action
