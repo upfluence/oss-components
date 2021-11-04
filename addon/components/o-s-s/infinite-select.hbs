@@ -9,7 +9,7 @@
 
   <ul class="upf-infinite-select__items-container
              {{if (eq this.items.length 0) 'upf-infinite-select__items-container--empty'}}"
-             {{on "scroll" this.scrollListener}}>
+             {{on-bottom-reached this.onBottomReached}}>
     {{#if (and @loading (not @loadingMore))}}
       <div class="upf-skeleton-content fx-col fx-malign-start padding-xx-sm">
         {{#each this.loadingRows as |width|}}
