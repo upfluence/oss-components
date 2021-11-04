@@ -7,9 +7,8 @@ type State = {
 }
 
 /**
- * Used to detect clicks occuring _outside_ of the modified element.
- * This is useful especially for dropdowns to toggle content visibility
- * when the user clicks away.
+ * Used to trigger an action a user reaches the bottom of the modified element.
+ * This is useful especially for infinite scrolls.
  */
 export default setModifierManager(
   () => ({
