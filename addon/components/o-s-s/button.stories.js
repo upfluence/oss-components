@@ -40,7 +40,23 @@ export default {
     },
     label: {
       description: 'Text content of the button',
-      control: false
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: {
+        type: 'text'
+      }
+    },
+    icon: {
+      description: 'Font Awesome class, for exemple',
+      table: {
+        type: { summary: 'far fa-envelope-open | fas fa-volume-up' },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: {
+        type: 'text'
+      }
     }
   }
 };
@@ -48,39 +64,19 @@ export default {
 const defaultArgs = {
   skin: 'default',
   size: null,
-  loading: false
+  loading: false,
+  label: 'Label',
+  icon: 'far fa-envelope-open'
 };
 
 const Template = (args) => ({
   template: hbs`
-    <OSS::Button @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label="Label" />
+    <OSS::Button @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}} />
   `,
   context: args
 });
 
 export const Default = Template.bind({});
 Default.args = {
-  ...defaultArgs
-};
-
-const IconOnlyTemplate = (args) => ({
-  template: hbs`
-    <OSS::Button @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @icon="fab fa-facebook-f" />
-  `,
-  context: args
-});
-export const IconOnly = IconOnlyTemplate.bind({});
-IconOnly.args = {
-  ...defaultArgs
-};
-
-const IconAndLabelTemplate = (args) => ({
-  template: hbs`
-    <OSS::Button @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @icon="fab fa-facebook-f" @label="Facebook"/>
-  `,
-  context: args
-});
-export const IconAndLabel = IconAndLabelTemplate.bind({});
-IconOnly.args = {
   ...defaultArgs
 };
