@@ -39,8 +39,6 @@ const defineStory = (name) => {
 ].forEach((story) => defineStory(story));
 
 [
-  'Components/Buttons',
-  'Components/Loading Button',
   'Components/Destructive Button',
   'Components/Loading State',
   'Components/Expanding Search (Check Usage)',
