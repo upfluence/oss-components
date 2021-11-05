@@ -49,7 +49,7 @@ export default {
       }
     },
     icon: {
-      description: 'Font Awesome class, for exemple',
+      description: 'Font Awesome class, for example',
       table: {
         type: { summary: 'far fa-envelope-open | fas fa-volume-up' },
         defaultValue: { summary: 'undefined' }
