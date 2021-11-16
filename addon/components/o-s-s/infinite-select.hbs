@@ -1,4 +1,4 @@
-<div class="upf-infinite-select" {{did-insert this.onRender}} ...attributes>
+<div class="fx-col upf-infinite-select {{if (not this.inline) 'upf-infinite-select--absolute'}}" {{did-insert this.onRender}} ...attributes>
   {{#if this.searchEnabled}}
     {{#input-wrapper}}
       <Input
@@ -35,7 +35,7 @@
             {{#if this._searchKeyword}}
               <p>No matching results</p>
               <p class="text-color-default-light">
-                Try adjusting your search to find what you’re looking for. 
+                Try adjusting your search to find what you’re looking for.
               </p>
             {{else}}
               Nothing to see here.
