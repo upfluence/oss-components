@@ -33,12 +33,12 @@
 
           <div class="margin-top-xx-sm text-color-default upf-align--center">
             {{#if this._searchKeyword}}
-              <p>No matching results</p>
+              <p>{{t "oss-components.infinite-select.no-match.title"}}</p>
               <p class="text-color-default-light">
-                Try adjusting your search to find what you’re looking for.
+                {{t "oss-components.infinite-select.no-match.description"}}
               </p>
             {{else}}
-              Nothing to see here.
+              {{t "oss-components.infinite-select.empty"}}
             {{/if}}
           </div>
         </div>
