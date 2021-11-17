@@ -222,7 +222,7 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
 
         assert.dom('.upf-infinite-select.upf-infinite-select--absolute').exists({ count: 1 });
       });
-      test('it should render with truly arg', async function (assert) {
+      test('it should render with truthy arg', async function (assert) {
         this.items = FAKE_DATA;
         this.onSelect = () => {};
 
