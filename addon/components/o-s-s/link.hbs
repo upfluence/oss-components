@@ -1,0 +1,9 @@
+<a onclick="event.preventDefault()" href="" class="upf-link" ...attributes>
+  {{#if @icon}}
+    <i class={{@icon}}></i>
+  {{/if}}
+
+  {{#if @label}}
+    <span class={{if @icon "margin-left-xxx-sm"}}>{{@label}}</span>
+  {{/if}}
+</a>
