@@ -15,6 +15,16 @@ export default {
       },
       control: { type: 'text' }
     },
+    disabled: {
+      description: 'Disable the default input (when not passing an input named block)',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: false }
+      },
+      control: { type: 'boolean' }
+    },
     placeholder: {
       description: 'Placeholder of the input',
       table: {
@@ -53,6 +63,7 @@ const BasicWithParametersTemplate = (args) => ({
   template: hbs`
       <OSS::InputContainer class="margin-bottom-sm" data-control-name="input-firstname"
                          @value={{this.value}}
+                         @disabled={{this.disabled}}
                          @onChange={{this.onChange}}
                          @placeholder={{this.placeholder}} />
   `,
@@ -61,7 +72,8 @@ const BasicWithParametersTemplate = (args) => ({
 export const BasicWithParamaters = BasicWithParametersTemplate.bind({});
 BasicWithParamaters.args = {
   placeholder: 'Enter your name',
-  onChange: action('')
+  onChange: action(''),
+  disabled: false
 };
 
 const AdvancedWithNamedBlocksTemplate = (args) => ({

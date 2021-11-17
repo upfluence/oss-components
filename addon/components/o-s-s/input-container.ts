@@ -3,6 +3,7 @@ import Component from '@glimmer/component';
 
 interface OSSInputContainerArgs {
   value?: string;
+  disabled?: boolean;
   placeholder?: string;
   onChange?: (value: string) => void;
 }
