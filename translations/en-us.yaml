@@ -1,0 +1,6 @@
+oss-components:
+  infinite-select:
+    no-match:
+      title: No matching results
+      description: Try adjusting your search to find what you’re looking for.
+    empty: Nothing to see here.

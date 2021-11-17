@@ -200,5 +200,39 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
           .hasAttribute('src', '/@upfluence/oss-components/assets/images/empty-state-skeleton.png');
       });
     });
+
+    module('with inline', function () {
+      test('it should render with undefined arg', async function (assert) {
+        this.items = FAKE_DATA;
+        this.onSelect = () => {};
+
+        await render(
+          hbs`<OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{false}} @onSelect={{this.onSelect}}/>`
+        );
+
+        assert.dom('.upf-infinite-select.upf-infinite-select--absolute').exists({ count: 1 });
+      });
+      test('it should render with falsy arg', async function (assert) {
+        this.items = FAKE_DATA;
+        this.onSelect = () => {};
+
+        await render(
+          hbs`<OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}}/>`
+        );
+
+        assert.dom('.upf-infinite-select.upf-infinite-select--absolute').exists({ count: 1 });
+      });
+      test('it should render with truthy arg', async function (assert) {
+        this.items = FAKE_DATA;
+        this.onSelect = () => {};
+
+        await render(
+          hbs`<OSS::InfiniteSelect @items={{this.items}} @inline={{true}} @searchEnabled={{false}} @onSelect={{this.onSelect}}/>`
+        );
+
+        assert.dom('.upf-infinite-select').exists({ count: 1 });
+        assert.dom('.upf-infinite-select--absolute').doesNotExist();
+      });
+    });
   });
 });
