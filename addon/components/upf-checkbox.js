@@ -5,7 +5,8 @@ import { equal } from '@ember/object/computed';
 export default Component.extend({
   classNames: ['upf-checkbox'],
   classNameBindings: [
-    'hasLabel:upf-checkbox--has-label', 'sizeSmall:upf-checkbox--sm',
+    'hasLabel:upf-checkbox--has-label',
+    'sizeSmall:upf-checkbox--sm',
     'disabled:upf-checkbox--disabled'
   ],
   attributeBindings: ['data-control-name'],
@@ -16,13 +17,16 @@ export default Component.extend({
   onValueChange: null,
   onToggleAttempt: null,
 
-  _: observer('value', function() {
+  _: observer('value', function () {
     if (this.onValueChange) {
       this.onValueChange(this.value);
     }
   }),
 
   click(e) {
+    if (this.preventDefault) {
+      e.preventDefault();
+    }
     e.stopPropagation();
 
     if (this.disabled && this.onToggleAttempt) {
