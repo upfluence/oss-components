@@ -102,4 +102,12 @@ module('Integration | Component | o-s-s/button', function (hooks) {
       assert.equal(btn.children[0].className, 'fas fa-circle-notch fa-spin');
     });
   });
+
+  module('it renders with the right theme', function () {
+    test('it adds the right class for usage on dark theme', async function (assert) {
+      await render(hbs`<OSS::Button @label="Test" @theme="dark" />`);
+
+      assert.dom('.upf-btn').hasClass('upf-btn--dark-bg');
+    });
+  });
 });

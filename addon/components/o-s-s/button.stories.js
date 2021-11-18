@@ -2,6 +2,7 @@ import hbs from 'htmlbars-inline-precompile';
 
 const SkinTypes = ['default', 'primary', 'secondary', 'destructive', 'instagram', 'facebook', 'youtube'];
 const SizeTypes = ['xs', 's'];
+const ThemeTypes = ['light', 'dark'];
 
 export default {
   title: 'Components/OSS::Button',
@@ -57,6 +58,17 @@ export default {
       control: {
         type: 'text'
       }
+    },
+    theme: {
+      description: 'Whether the button is being on a dark background or not',
+      table: {
+        type: {
+          summary: ThemeTypes.join('|')
+        },
+        defaultValue: { summary: 'light' }
+      },
+      options: ThemeTypes,
+      control: { type: 'select' }
     }
   }
 };
@@ -66,12 +78,17 @@ const defaultArgs = {
   size: null,
   loading: false,
   label: 'Label',
-  icon: 'far fa-envelope-open'
+  icon: 'far fa-envelope-open',
+  theme: 'light'
 };
 
 const Template = (args) => ({
   template: hbs`
-    <OSS::Button @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}} />
+    <div style="padding: 2em; {{if (eq this.theme 'dark') 'background-color: #060666'}}">
+    <OSS::Button
+      @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
+      @theme={{this.theme}} />
+    </div>
   `,
   context: args
 });

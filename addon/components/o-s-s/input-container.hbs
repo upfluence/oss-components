@@ -8,7 +8,7 @@
     <div class="yielded-input">{{yield to="input"}}</div>
   {{else}}
     <Input {{on "keyup" (fn this._onChange @value)}} @value={{@value}} placeholder={{@placeholder}}
-           class="upf-input" />
+           disabled={{@disabled}} class="upf-input" />
   {{/if}}
 
   {{#if (has-block "suffix")}}

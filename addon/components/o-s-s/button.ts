@@ -12,6 +12,11 @@ type SizeDefType = {
   [key in SizeType]: string;
 };
 
+type ThemeType = 'light' | 'dark';
+type ThemeDefType = {
+  [key in ThemeType]?: string;
+};
+
 const SkinDefinition: SkinDefType = {
   default: 'default',
   primary: 'primary',
@@ -25,6 +30,9 @@ const SizeDefinition: SizeDefType = {
   xs: 'x-small',
   s: 'small'
 };
+const ThemeDefinition: ThemeDefType = {
+  dark: 'dark-bg'
+};
 
 const BASE_CLASS = 'upf-btn';
 
@@ -34,6 +42,7 @@ interface ButtonArgs {
   loading?: boolean;
   icon?: string;
   label?: string;
+  theme?: string;
 }
 
 export default class OSSButton extends Component<ButtonArgs> {
@@ -43,7 +52,7 @@ export default class OSSButton extends Component<ButtonArgs> {
     super(owner, args);
 
     if (!args.label && !args.icon) {
-      throw new Error('[component][OSS::Button] You must pass either a @label or an @icon argument.')
+      throw new Error('[component][OSS::Button] You must pass either a @label or an @icon argument.');
     }
   }
 
@@ -61,11 +70,23 @@ export default class OSSButton extends Component<ButtonArgs> {
     return SizeDefinition[this.args.size as SizeType];
   }
 
+  get theme() {
+    if (!this.args.theme || !Object.keys(ThemeDefinition).includes(this.args.theme)) {
+      return 'light';
+    }
+
+    return this.args.theme;
+  }
+
   get computedClass() {
     let classes = [BASE_CLASS, `upf-btn--${this.skin}`];
 
     if (this.size) {
       classes.push(`upf-btn--${this.size}`);
+    }
+
+    if (this.theme !== 'light') {
+      classes.push(`upf-btn--${ThemeDefinition[this.args.theme as ThemeType]}`);
     }
 
     return classes.join(' ');
