@@ -13,4 +13,8 @@ export default class OSSLink extends Component<OSSLinkArgs> {
       throw new Error('[component][OSS::Link] You must pass either a @label or an @icon argument.')
     }
   }
+
+  preventDefault(event: Event) {
+    event.preventDefault();
+  }
 }
