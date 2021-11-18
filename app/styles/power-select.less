@@ -8,29 +8,7 @@
     .border-color-default;
     .border-radius-default;
 
-    &::after {
-      position: absolute;
-      content: '';
-      height: 15px;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, @field-background-color 100%);
-    }
-  }
-
-  .upf-power-infinite-select-container {
-    position: relative;
-    height: 100%;
-    .padding-top-xx-sm;
-    .padding-left-xx-sm;
-    .padding-right-xx-sm;
-    padding-bottom: 5px;
-    .border;
-    .border-color-default;
-    .border-radius-default;
-
-    .upf-infinite-select__items-container {
+    .array-input-container {
       &::after {
         position: absolute;
         content: '';
@@ -38,10 +16,23 @@
         left: 0;
         right: 0;
         bottom: 0;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, @upf-primary-white 100%);
-        z-index: 0;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, @field-background-color 100%);
       }
     }
+  }
 
+  .upf-power-infinite-select-container {
+    position: relative;
+    height: 100%;
+    .padding-top-x-sm;
+    .padding-left-x-sm;
+    .padding-right-x-sm;
+    .border;
+    .border-color-default;
+    .border-radius-default;
+  }
+
+  .has-overflow {
+    padding-bottom: @spacing-x-sm;
   }
 }

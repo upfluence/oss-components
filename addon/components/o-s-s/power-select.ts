@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
 type OperationType = 'selection' | 'deletion';
 
@@ -17,8 +18,36 @@ interface OSSPowerSelectArgs {
 }
 
 export default class OSSPowerSelect extends Component<OSSPowerSelectArgs> {
+  @tracked hasScrollbar = false;
+
+  resizeObserver: ResizeObserver;
+
+  constructor(owner: any, args: OSSPowerSelectArgs) {
+    super(owner, args);
+
+    this.resizeObserver = new ResizeObserver((entries: ResizeObserverEntry[]) => {
+      let observedArrayInput = entries.find((entry) => {
+        return entry.target.classList.contains('array-input-container');
+      });
+
+      if (observedArrayInput) {
+        this.hasScrollbar = observedArrayInput.target.scrollHeight > observedArrayInput.target.clientHeight;
+      }
+    });
+  }
+
   get placeholder(): string {
     return this.args.placeholder ?? '';
+  }
+
+  @action
+  observeResize(element: Element) {
+    this.resizeObserver.observe(element);
+  }
+
+  @action
+  unobserveResize(element: Element) {
+    this.resizeObserver.unobserve(element);
   }
 
   @action
