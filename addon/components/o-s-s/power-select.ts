@@ -51,9 +51,9 @@ export default class OSSPowerSelect extends Component<OSSPowerSelectArgs> {
   }
 
   @action
-  checkBlockPresence(hasNameBock: boolean, name: string) {
-    if (!hasNameBock) {
-      throw new Error(`[component][OSS::PowerSelect] You must pass ${name} name block`);
+  ensureBlockPresence(name: string, hasNamedBock: boolean) {
+    if (!hasNamedBock) {
+      throw new Error(`[component][OSS::PowerSelect] You must pass ${name} named block`);
     }
   }
 
