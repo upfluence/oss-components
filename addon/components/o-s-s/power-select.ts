@@ -26,7 +26,7 @@ export default class OSSPowerSelect extends Component<OSSPowerSelectArgs> {
     super(owner, args);
 
     this.resizeObserver = new ResizeObserver((entries: ResizeObserverEntry[]) => {
-      let observedArrayInput = entries.find((entry) => {
+      const observedArrayInput = entries.find((entry) => {
         return entry.target.classList.contains('array-input-container');
       });
 
