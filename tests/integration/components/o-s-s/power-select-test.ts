@@ -16,6 +16,26 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
   });
 
   module('it renders', () => {
+    test('with all required named blocks', async function (assert) {
+      await render(hbs`
+        <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
+                          @onSearch={{this.onSearch}}>
+          <:selected-item as |selectedItem|>
+            {{selectedItem}}
+          </:selected-item>
+          <:option-item as |item|>
+            {{item}}
+          </:option-item>
+        </OSS::PowerSelect>
+      `);
+
+      assert.dom('.upf-power-select').exists({ count: 1 });
+      assert.dom('.upf-power-select__array-container').exists({ count: 1 });
+      assert.dom('.upf-power-infinite-select-container').exists({ count: 1 });
+    });
+  });
+
+  module('it throws an error', () => {
     test('without selected-item named block', async function (assert) {
       setupOnerror((err: any) => {
         assert.equal(err.message, '[component][OSS::PowerSelect] You must pass selected-item named block');
@@ -38,24 +58,6 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
           </:selected-item>
         </OSS::PowerSelect>
       `);
-    });
-
-    test('with all required named blocks', async function (assert) {
-      await render(hbs`
-        <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
-                          @onSearch={{this.onSearch}}>
-          <:selected-item as |selectedItem|>
-            {{selectedItem}}
-          </:selected-item>
-          <:option-item as |item|>
-            {{item}}
-          </:option-item>
-        </OSS::PowerSelect>
-      `);
-
-      assert.dom('.upf-power-select').exists({ count: 1 });
-      assert.dom('.upf-power-select__array-container').exists({ count: 1 });
-      assert.dom('.upf-power-infinite-select-container').exists({ count: 1 });
     });
   });
 
@@ -144,7 +146,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
       this.onChange = onChange;
     });
 
-    test('delete selected item call onChange with delete operation', async function (assert) {
+    test('deleting selected item triggers onChange with delete operation', async function (assert) {
       await render(hbs`
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}} @onChange={{this.onChange}}>
@@ -162,7 +164,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
       assert.ok(this.onChange.calledWith('value2', 'deletion'));
     });
 
-    test('select item call onChange with selection operation', async function (assert) {
+    test('selecting item triggers onChange with selection operation', async function (assert) {
       await render(hbs`
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}} @onChange={{this.onChange}}>
@@ -200,7 +202,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
   });
 
   module('with @onSearch', () => {
-    test('search is correctly call', async function (assert) {
+    test('search is correctly called', async function (assert) {
       await render(hbs`
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}}>

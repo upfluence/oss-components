@@ -41,29 +41,32 @@ export default class OSSPowerSelect extends Component<OSSPowerSelectArgs> {
   }
 
   @action
-  observeResize(element: Element) {
+  observeResize(element: Element): void {
     this.resizeObserver.observe(element);
   }
 
   @action
-  unobserveResize(element: Element) {
+  unobserveResize(element: Element): void {
     this.resizeObserver.unobserve(element);
   }
 
   @action
-  ensureBlockPresence(name: string, hasNamedBock: boolean) {
-    if (!hasNamedBock) {
-      throw new Error(`[component][OSS::PowerSelect] You must pass ${name} named block`);
+  ensureBlockPresence(hasSelectedItem: boolean, hasOptionItem: boolean): void | never {
+    if (!hasSelectedItem) {
+      throw new Error(`[component][OSS::PowerSelect] You must pass selected-item named block`);
+    }
+    if (!hasOptionItem) {
+      throw new Error(`[component][OSS::PowerSelect] You must pass option-item named block`);
     }
   }
 
   @action
-  removeItem(item: any) {
+  removeItem(item: any): void {
     this.args.onChange(item, 'deletion');
   }
 
   @action
-  onSelect(item: any) {
+  onSelect(item: any): void {
     this.args.onChange(item, 'selection');
   }
 }
