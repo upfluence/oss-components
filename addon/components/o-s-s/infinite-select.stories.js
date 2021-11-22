@@ -85,6 +85,17 @@ export default {
       },
       control: { type: null }
     },
+    inline: {
+      type: { name: 'boolean' },
+      description: 'Active or not absolute position (floating menu mode)',
+      table: {
+        type: { summary: 'true | false' },
+        defaultValue: { summary: 'false' }
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
     onSelect: {
       type: { name: 'Function', required: true },
       description: 'Function to be called with the clicked item',
@@ -143,7 +154,8 @@ const defaultArgs = {
   onSearch: action('onSearch'),
   onSelect: action('onSelect'),
   loading: false,
-  loadingMore: false
+  loadingMore: false,
+  inline: false
 };
 
 const Template = (args) => ({
@@ -151,7 +163,7 @@ const Template = (args) => ({
       <OSS::InfiniteSelect
         @items={{this.items}} @itemLabel="superhero" @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}}
         @searchPlaceholder={{this.searchPlaceholder}} @onSelect={{this.onSelect}} @loading={{this.loading}}
-        @loadingMore={{this.loadingMore}} class="upf-align--absolute-center"/>
+        @loadingMore={{this.loadingMore}} @inline={{this.inline}} class="upf-align--absolute-center"/>
   `,
   context: args
 });
