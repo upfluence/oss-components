@@ -4,7 +4,7 @@ import { setModifierManager } from '@ember/modifier';
 type State = {
   element: Element;
   handler: (...args: unknown[]) => unknown;
-}
+};
 
 /**
  * Used to trigger an action a user reaches the bottom of the modified element.
@@ -20,7 +20,7 @@ export default setModifierManager(
     },
 
     installModifier(state: State, element: Element, { positional }: any) {
-      const [ callback ] = positional;
+      const [callback] = positional;
       state.element = element;
 
       state.handler = (event: Event) => {

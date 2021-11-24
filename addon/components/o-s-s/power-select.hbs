@@ -2,6 +2,7 @@
      {{did-insert (fn this.ensureBlockPresence (has-block 'selected-item') (has-block 'option-item'))}}>
   <div class="upf-power-select__array-container margin-bottom-xxx-sm">
     <div class="array-input-container {{if @selectedItems 'fx-row fx-xalign-center' 'fx-col fx-malign-center'}} {{if this.hasScrollbar 'has-overflow'}}"
+         data-control-name="power-select_array-input-container"
          {{did-insert this.observeResize}} {{will-destroy this.unobserveResize}}>
       {{#each @selectedItems as |selectedItem|}}
         <div class="input-array-tag fx-row fx-xalign-center">
