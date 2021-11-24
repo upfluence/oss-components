@@ -1,7 +1,8 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, typeIn, render, setupOnerror } from '@ember/test-helpers';
+import { click, typeIn, render, setupOnerror, scrollTo } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
+import sinon from 'sinon';
 
 const FAKE_DATA = [
   { name: 'Batman', characters: 'Bruce Wayne' },
@@ -233,6 +234,30 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
         assert.dom('.upf-infinite-select').exists({ count: 1 });
         assert.dom('.upf-infinite-select--absolute').doesNotExist();
       });
+    });
+  });
+
+  module('with onBottomReached', function () {
+    test('it should trigger onBottomReach function', async function (assert) {
+      this.items = FAKE_DATA;
+      this.onSelect = () => {};
+      this.loadingMore = false;
+      this.onBottomReached = sinon.stub().callsFake(() => {
+        this.set('loadingMore', true);
+      });
+
+      await render(
+        hbs`
+          <OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{false}} @onSelect={{this.onSelect}}
+                               @loadingMore={{this.loadingMore}} @onBottomReached={{this.onBottomReached}} />
+        `
+      );
+
+      await scrollTo('.upf-infinite-select__items-container', 0, 1500);
+      this.set('loadingMore', false);
+      await scrollTo('.upf-infinite-select__items-container', 0, 1500);
+
+      assert.ok(this.onBottomReached.calledTwice);
     });
   });
 });

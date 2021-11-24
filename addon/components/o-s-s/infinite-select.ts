@@ -75,7 +75,9 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
 
   @action
   onBottomReached(): void {
-    this.args.onBottomReached?.();
+    if (!this.args.loadingMore) {
+      this.args.onBottomReached?.();
+    }
   }
 
   @action

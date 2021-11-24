@@ -224,13 +224,16 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
   module('with @onBottomReached', (hooks) => {
     hooks.beforeEach(function () {
       this.items = ['value1', 'value2', 'value3'];
-      this.onBottomReached = sinon.stub();
+      this.loadingMore = false;
+      this.onBottomReached = sinon.stub().callsFake(() => {
+        this.set('loadingMore', true);
+      });
     });
 
     test('search is correctly call', async function (assert) {
       await render(hbs`
         <div style="height:150px">
-          <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
+          <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}} @loadingMore={{this.loadingMore}}
                             @onSearch={{this.onSearch}} @onBottomReached={{this.onBottomReached}}>
             <:selected-item as |selectedItem|>
               {{selectedItem}}
@@ -242,9 +245,11 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
         </div>
       `);
 
-      await scrollTo('.upf-infinite-select__items-container', 0, 100);
+      await scrollTo('.upf-infinite-select__items-container', 0, 1500);
+      this.set('loadingMore', false);
+      await scrollTo('.upf-infinite-select__items-container', 0, 1500);
 
-      assert.ok(this.onBottomReached.calledOnce);
+      assert.ok(this.onBottomReached.calledTwice);
     });
   });
 });
