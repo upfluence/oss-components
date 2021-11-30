@@ -75,10 +75,10 @@ export default {
       type: { required: true }
     },
     onSearch: {
-      description: 'Action executed when the user use the search bar'
+      description: 'Action executed when the user uses the search bar'
     },
     onBottomReached: {
-      description: 'Action executed when the user scroll to the bottom of the list of items'
+      description: 'Action executed when the user scrolls to the bottom of the list of items'
     }
   },
   parameters: {
