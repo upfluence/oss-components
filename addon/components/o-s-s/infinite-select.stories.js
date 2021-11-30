@@ -8,19 +8,12 @@ const FAKE_DATA = [
   { superhero: 'Wonder Woman', characters: 'Princess Diana' },
   { superhero: 'Martian Manhunter', characters: 'Martian Manhunter' },
   { superhero: 'Robin/Nightwing', characters: 'Dick Grayson' },
-  { superhero: 'Spider Man', characters: 'Peter Parker' },
-  { superhero: 'Iron Man', characters: 'Tony Stark' },
-  { superhero: 'Thor', characters: 'Thor Odinson' },
-  { superhero: 'Hulk', characters: 'Bruce Banner' },
-  { superhero: 'Wolverine', characters: 'James Howlett' }
+  { superhero: 'Spider Man', characters: 'Peter Parker' }
 ];
 
 export default {
   title: 'Components/OSS::InfiniteSelect',
   component: 'infinite-select',
-  args: {
-    itemLabel: 'name'
-  },
   argTypes: {
     items: {
       description: 'Items to display',
@@ -30,7 +23,7 @@ export default {
         },
         defaultValue: { summary: '[]' }
       },
-      control: { type: null }
+      control: { type: 'array' }
     },
     itemLabel: {
       description: 'Attribute of the item to be used for display',
@@ -40,7 +33,7 @@ export default {
         },
         defaultValue: { summary: 'name' }
       },
-      control: { type: null }
+      control: { type: 'text' }
     },
     searchPlaceholder: {
       description: 'Placeholder for the search input when present',
@@ -61,7 +54,7 @@ export default {
         },
         defaultValue: { summary: true }
       },
-      control: { type: null }
+      control: { type: 'boolean' }
     },
     loading: {
       type: { name: 'boolean' },
@@ -72,7 +65,7 @@ export default {
         },
         defaultValue: { summary: false }
       },
-      control: { type: null }
+      control: { type: 'boolean' }
     },
     loadingMore: {
       type: { name: 'boolean' },
@@ -83,7 +76,7 @@ export default {
         },
         defaultValue: { summary: false }
       },
-      control: { type: null }
+      control: { type: 'boolean' }
     },
     inline: {
       type: { name: 'boolean' },
@@ -97,34 +90,29 @@ export default {
       }
     },
     onSelect: {
-      type: { name: 'Function', required: true },
+      type: { required: true },
       description: 'Function to be called with the clicked item',
       table: {
         type: {
           summary: 'onSelect(item): void'
         }
-      },
-      control: { type: null }
+      }
     },
     onSearch: {
-      type: { name: 'Function' },
       description: 'Function to be called every time the user searches',
       table: {
         type: {
           summary: 'onSearch(keyword: string): void'
         }
-      },
-      control: { type: null }
+      }
     },
     onBottomReached: {
-      type: { name: 'Function' },
       description: 'Function to be called when the scroll hits the bottom',
       table: {
         type: {
           summary: 'onBottomReached(): void'
         }
-      },
-      control: { type: null }
+      }
     },
     didRender: {
       type: { name: 'Function' },
@@ -133,8 +121,7 @@ export default {
         type: {
           summary: 'didRender(): void'
         }
-      },
-      control: { type: null }
+      }
     }
   },
   parameters: {
@@ -149,6 +136,7 @@ export default {
 
 const defaultArgs = {
   items: FAKE_DATA,
+  itemLabel: 'superhero',
   searchEnabled: true,
   searchPlaceholder: 'My Placeholder...',
   onSearch: action('onSearch'),
@@ -161,7 +149,7 @@ const defaultArgs = {
 const Template = (args) => ({
   template: hbs`
       <OSS::InfiniteSelect
-        @items={{this.items}} @itemLabel="superhero" @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}}
+        @items={{this.items}} @itemLabel={{this.itemLabel}} @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}}
         @searchPlaceholder={{this.searchPlaceholder}} @onSelect={{this.onSelect}} @loading={{this.loading}}
         @loadingMore={{this.loadingMore}} @inline={{this.inline}} class="upf-align--absolute-center"/>
   `,
@@ -181,8 +169,8 @@ const OptionBlockTemplate = (args) => ({
   context: args
 });
 
-export const WithItemLabel = Template.bind({});
-WithItemLabel.args = {
+export const Default = Template.bind({});
+Default.args = {
   ...defaultArgs
 };
 
@@ -191,35 +179,10 @@ WithOptionBlock.args = {
   ...defaultArgs
 };
 
-export const WithoutSearch = Template.bind({});
-WithoutSearch.args = {
-  ...defaultArgs,
-  ...{
-    searchEnabled: false
-  }
-};
-
 export const EmptyState = Template.bind({});
 EmptyState.args = {
   ...defaultArgs,
   ...{
     items: []
-  }
-};
-
-export const Loading = Template.bind({});
-Loading.args = {
-  ...defaultArgs,
-  ...{
-    loading: true
-  }
-};
-
-export const LoadingMore = Template.bind({});
-LoadingMore.args = {
-  ...defaultArgs,
-  ...{
-    items: FAKE_DATA.slice(0, 4),
-    loadingMore: true
   }
 };

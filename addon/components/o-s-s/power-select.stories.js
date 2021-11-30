@@ -1,0 +1,132 @@
+import hbs from 'htmlbars-inline-precompile';
+import { action } from '@storybook/addon-actions';
+
+const FAKE_ITEMS = ['Book of Boba Fett', 'The Bad Batch', 'The Clone Wars'];
+const FAKE_SELECTED_ITEMS = ['The Mandalorian'];
+
+export default {
+  title: 'Components/OSS::PowerSelect',
+  component: 'power-select',
+  argTypes: {
+    items: {
+      description: 'List of items to select',
+      type: { required: true },
+      table: {
+        type: {
+          summary: 'array'
+        },
+        defaultValue: { summary: '[]' }
+      },
+      control: { type: 'array' }
+    },
+    selectedItems: {
+      description: 'List of selected items',
+      type: { required: true },
+      table: {
+        type: {
+          summary: 'array'
+        },
+        defaultValue: { summary: '[]' }
+      },
+      control: { type: null }
+    },
+    loading: {
+      description: 'Display loading state of the component',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'false' }
+      },
+      control: { type: 'boolean' }
+    },
+    loadingMore: {
+      description: 'Display loading more state in the list of items',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'false' }
+      },
+      control: { type: 'boolean' }
+    },
+    placeholder: {
+      description: 'Placeholder displayed in the list of selected items',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: '' }
+      },
+      control: { type: 'text' }
+    },
+    searchPlaceholder: {
+      description: 'Placeholder displayed in the search',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'Search...' }
+      },
+      control: { type: 'text' }
+    },
+    onChange: {
+      description: 'Action executed when item is selected from selection section',
+      type: { required: true }
+    },
+    onSearch: {
+      description: 'Action executed when the user uses the search bar'
+    },
+    onBottomReached: {
+      description: 'Action executed when the user scrolls to the bottom of the list of items'
+    }
+  },
+  parameters: {
+    layout: null,
+    previewTabs: {
+      'storybook/docs/panel': {
+        hidden: true
+      }
+    }
+  }
+};
+
+const defaultArgs = {
+  items: FAKE_ITEMS,
+  selectedItems: FAKE_SELECTED_ITEMS,
+  loading: false,
+  loadingMore: false,
+  placeholder: 'My placeholder',
+  searchPlaceholder: 'My search placeholder',
+  onSearch: action('onSearch'),
+  onChange: action('onChange', { allowFunction: true }),
+  onBottomReached: action('onBottomReached')
+};
+
+const Template = (args) => ({
+  template: hbs`
+      <OSS::PowerSelect class='padding-sm' @selectedItems={{this.selectedItems}} @items={{this.items}}
+                        @onSearch={{this.onSearch}} @onChange={{this.onChange}} @loading={{this.loading}}
+                        @loadingMore={{this.loadingMore}} @placeholder={{this.placeholder}} @searchPlaceholder={{this.searchPlaceholder}}
+                        @onBottomReached={{this.onBottomReached}}>
+        <:selected-item as |selectedItem|>
+          {{selectedItem}}
+        </:selected-item>
+        <:option-item as |item|>
+          {{item}}
+        </:option-item>
+      </OSS::PowerSelect>
+  `,
+  context: args
+});
+
+export const Default = Template.bind({});
+Default.args = {
+  ...defaultArgs
+};
+
+export const WithoutSelectedItem = Template.bind({});
+WithoutSelectedItem.args = {
+  ...defaultArgs,
+  ...{ selectedItems: [] }
+};
