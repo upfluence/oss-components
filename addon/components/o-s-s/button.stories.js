@@ -1,7 +1,17 @@
 import hbs from 'htmlbars-inline-precompile';
 
-const SkinTypes = ['default', 'primary', 'secondary', 'destructive', 'instagram', 'facebook', 'youtube'];
-const SizeTypes = ['xs', 's'];
+const SkinTypes = [
+  'default',
+  'primary',
+  'secondary',
+  'destructive',
+  'alert',
+  'success',
+  'instagram',
+  'facebook',
+  'youtube'
+];
+const SizeTypes = ['xs', 'sm', 'md', 'lg'];
 const ThemeTypes = ['light', 'dark'];
 
 export default {
@@ -59,6 +69,16 @@ export default {
         type: 'text'
       }
     },
+    square: {
+      description: 'Displays the button as a square. Useful for icon buttons.',
+      table: {
+        type: { summary: 'true | false' },
+        defaultValue: { summary: 'false' }
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
     theme: {
       description: 'Whether the button is being on a dark background or not',
       table: {
@@ -79,7 +99,8 @@ const defaultArgs = {
   loading: false,
   label: 'Label',
   icon: 'far fa-envelope-open',
-  theme: 'light'
+  theme: 'light',
+  square: false
 };
 
 const Template = (args) => ({
@@ -87,7 +108,7 @@ const Template = (args) => ({
     <div style="padding: 2em; {{if (eq this.theme 'dark') 'background-color: #060666'}}">
     <OSS::Button
       @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
-      @theme={{this.theme}} />
+      @theme={{this.theme}} @square={{this.square}} />
     </div>
   `,
   context: args
