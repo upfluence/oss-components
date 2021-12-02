@@ -2,17 +2,27 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
-type SkinType = 'default' | 'primary' | 'secondary' | 'destructive' | 'instagram' | 'facebook' | 'youtube';
+type SkinType =
+  | 'default'
+  | 'primary'
+  | 'secondary'
+  | 'destructive'
+  | 'success'
+  | 'alert'
+  | 'instagram'
+  | 'facebook'
+  | 'youtube';
+
 type SkinDefType = {
   [key in SkinType]: string;
 };
 
-type SizeType = 'xs' | 's';
+type SizeType = 'xs' | 'sm' | 'md' | 'lg';
 type SizeDefType = {
   [key in SizeType]: string;
 };
 
-type ThemeType = 'light' | 'dark';
+type ThemeType = 'light' | 'dark';
 type ThemeDefType = {
   [key in ThemeType]?: string;
 };
@@ -22,19 +32,25 @@ const SkinDefinition: SkinDefType = {
   primary: 'primary',
   secondary: 'secondary',
   destructive: 'destructive',
+  success: 'success',
+  alert: 'alert',
   instagram: 'social-instagram',
   facebook: 'social-facebook',
   youtube: 'social-youtube'
 };
+
 const SizeDefinition: SizeDefType = {
-  xs: 'x-small',
-  s: 'small'
+  xs: 'xs',
+  sm: 'sm',
+  md: 'md',
+  lg: 'lg'
 };
 const ThemeDefinition: ThemeDefType = {
   dark: 'dark-bg'
 };
 
 const BASE_CLASS = 'upf-btn';
+const SQUARE_CLASS = 'upf-square-btn';
 
 interface ButtonArgs {
   skin?: string;
@@ -43,6 +59,7 @@ interface ButtonArgs {
   icon?: string;
   label?: string;
   theme?: string;
+  square?: boolean;
 }
 
 export default class OSSButton extends Component<ButtonArgs> {
@@ -79,10 +96,10 @@ export default class OSSButton extends Component<ButtonArgs> {
   }
 
   get computedClass() {
-    let classes = [BASE_CLASS, `upf-btn--${this.skin}`];
+    let classes = [this.args.square ? SQUARE_CLASS : BASE_CLASS, `upf-btn--${this.skin}`];
 
     if (this.size) {
-      classes.push(`upf-btn--${this.size}`);
+      classes.push(this.args.square ? `upf-square-btn--${this.size}` : `upf-btn--${this.size}`);
     }
 
     if (this.theme !== 'light') {
