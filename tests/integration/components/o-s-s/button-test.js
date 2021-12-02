@@ -28,7 +28,7 @@ module('Integration | Component | o-s-s/button', function (hooks) {
     assert.dom('.upf-btn span').hasText('Label');
   });
 
-  test('it renders default button', async function (assert) {
+  test('it renders the default button', async function (assert) {
     await render(hbs`<OSS::Button @label="Test" />`);
 
     assert.dom('.upf-btn').exists({ count: 1 });
@@ -36,8 +36,8 @@ module('Integration | Component | o-s-s/button', function (hooks) {
     assert.dom('.upf-btn').hasText('Test');
   });
 
-  module('it render with right skin', function () {
-    test('when using unknown skin', async function (assert) {
+  module('it render with the correct skin', function () {
+    test('when using an unknown skin, it is set to default', async function (assert) {
       await render(hbs`<OSS::Button @skin="unknown" @label="Test" />`);
 
       assert.dom('.upf-btn').hasClass('upf-btn--default');
@@ -61,6 +61,18 @@ module('Integration | Component | o-s-s/button', function (hooks) {
       assert.dom('.upf-btn').hasClass('upf-btn--destructive');
     });
 
+    test('when using alert skin', async function (assert) {
+      await render(hbs`<OSS::Button @skin="alert" @label="Test" />`);
+
+      assert.dom('.upf-btn').hasClass('upf-btn--alert');
+    });
+
+    test('when using success skin', async function (assert) {
+      await render(hbs`<OSS::Button @skin="success" @label="Test" />`);
+
+      assert.dom('.upf-btn').hasClass('upf-btn--success');
+    });
+
     test('when using social-instagram skin', async function (assert) {
       await render(hbs`<OSS::Button @skin="instagram" @label="Test" />`);
 
@@ -80,26 +92,46 @@ module('Integration | Component | o-s-s/button', function (hooks) {
     });
   });
 
-  module('it render with right size', function () {
-    test('when using small', async function (assert) {
-      await render(hbs`<OSS::Button @size="s" @label="Test" />`);
-
-      assert.dom('.upf-btn').hasClass('upf-btn--small');
-    });
-
-    test('when using x-small', async function (assert) {
+  module('it render with the right size', function () {
+    test('when using xs', async function (assert) {
       await render(hbs`<OSS::Button @size="xs" @label="Test" />`);
 
-      assert.dom('.upf-btn').hasClass('upf-btn--x-small');
+      assert.dom('.upf-btn').hasClass('upf-btn--xs');
+    });
+
+    test('when using sm', async function (assert) {
+      await render(hbs`<OSS::Button @size="sm" @label="Test" />`);
+
+      assert.dom('.upf-btn').hasClass('upf-btn--sm');
+    });
+
+    test('when using md', async function (assert) {
+      await render(hbs`<OSS::Button @size="md" @label="Test" />`);
+
+      assert.dom('.upf-btn').hasClass('upf-btn--md');
+    });
+
+    test('when using lg', async function (assert) {
+      await render(hbs`<OSS::Button @size="lg" @label="Test" />`);
+
+      assert.dom('.upf-btn').hasClass('upf-btn--lg');
     });
   });
 
-  module('it render with loading state', function () {
+  module('it renders with loading state', function () {
     test('when using default loading', async function (assert) {
-      await render(hbs`<OSS::Button @loading="true" @label="Test" />`);
+      await render(hbs`<OSS::Button @size="sm" @loading="true" @label="Test" />`);
       const btn = document.querySelector('.upf-btn');
 
       assert.equal(btn.children[0].className, 'fas fa-circle-notch fa-spin');
+    });
+  });
+
+  module('it renders a square button', function () {
+    test('when setting the square parameter to true', async function (assert) {
+      await render(hbs`<OSS::Button @square="true" @label="Test" />`);
+
+      assert.dom('.upf-square-btn').exists();
     });
   });
 
