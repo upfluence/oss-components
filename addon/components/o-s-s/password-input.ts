@@ -36,7 +36,6 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
 
   @action
   validateInput(): void {
-    console.log('validateInput :' + this.regexError);
     this.regexError = '';
     if (isEmpty(this.args.value)) return;
     if (!this.pwRegex.test(this.args.value)) {
