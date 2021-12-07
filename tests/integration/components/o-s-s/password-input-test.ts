@@ -21,7 +21,7 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
 
   test('it displays the error message when the @errorMessage is non-empty', async function (assert) {
     await render(hbs`<OSS::PasswordInput @value="" @errorMessage="This is the error message" />`);
-    assert.dom('.oss-input-container').hasClass('oss-input-errored');
+    assert.dom('.oss-input-container').hasClass('oss-input-container--errored');
     assert.dom('.text-color-error').hasText('This is the error message');
   });
 
