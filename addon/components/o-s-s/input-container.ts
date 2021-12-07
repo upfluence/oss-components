@@ -4,8 +4,9 @@ import Component from '@glimmer/component';
 interface OSSInputContainerArgs {
   value?: string;
   disabled?: boolean;
+  errorMessage?: string;
   placeholder?: string;
-  onChange?: (value: string) => void;
+  onChange?(value: string): void;
 }
 
 export default class OSSInputContainer extends Component<OSSInputContainerArgs> {

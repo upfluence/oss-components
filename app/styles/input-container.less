@@ -1,6 +1,17 @@
 .oss-input-container {
   position: relative;
 
+  &--errored {
+    input,
+    .yielded-input input,
+    input:focus,
+    .yielded-input input:focus {
+      .border;
+      .border-color-error;
+      .border-radius-default;
+    }
+  }
+
   .upf-input {
     width: 100%;
   }

@@ -1,17 +1,26 @@
-<div class="oss-input-container{{if (has-block "prefix") ' has-prefix'}}{{if (has-block "suffix") ' has-suffix'}}"
-     ...attributes>
-  {{#if (has-block "prefix")}}
-    <div class="prefix">{{yield to="prefix"}}</div>
-  {{/if}}
+<div class="fx-col">
+  <div class="oss-input-container {{if @errorMessage ' oss-input-container--errored'}}
+              {{if (has-block "prefix") ' has-prefix'}}
+              {{if (has-block "suffix") ' has-suffix'}}"
+       ...attributes>
+    {{#if (has-block "prefix")}}
+      <div class="prefix">{{yield to="prefix"}}</div>
+    {{/if}}
 
-  {{#if (has-block "input")}}
-    <div class="yielded-input">{{yield to="input"}}</div>
-  {{else}}
-    <Input {{on "keyup" (fn this._onChange @value)}} @value={{@value}} placeholder={{@placeholder}}
-           disabled={{@disabled}} class="upf-input" />
-  {{/if}}
+    {{#if (has-block "input")}}
+      <div class="yielded-input">
+        {{yield to="input"}}
+      </div>
+    {{else}}
+      <Input {{on "keyup" (fn this._onChange @value)}} @value={{@value}}
+             placeholder={{@placeholder}} disabled={{@disabled}} class="upf-input" />
+    {{/if}}
 
-  {{#if (has-block "suffix")}}
-    <div class="suffix">{{yield to="suffix"}}</div>
+    {{#if (has-block "suffix")}}
+      <div class="suffix">{{yield to="suffix"}}</div>
+    {{/if}}
+  </div>
+  {{#if @errorMessage}}
+    <span class="text-color-error margin-top-xxx-sm">{{@errorMessage}}</span>
   {{/if}}
 </div>
