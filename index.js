@@ -27,6 +27,7 @@ module.exports = {
 
   included: function (app) {
     this._super.included.apply(this, app);
+    this.hasFontAwesomePro = Object.keys(app.dependencies()).includes('@fortawesome/fontawesome-pro');
 
     this._registerLessDependencies(app);
 
@@ -35,8 +36,9 @@ module.exports = {
     this.import('node_modules/ion-rangeslider/js/ion.rangeSlider.min.js');
     this.import('node_modules/ion-rangeslider/css/ion.rangeSlider.min.css');
 
-    this.import('node_modules/@fortawesome/fontawesome-free/css/all.css');
-    this.import('node_modules/@fortawesome/fontawesome-free/css/v4-shims.min.css');
+    const faPackage = this.hasFontAwesomePro ? '@fortawesome/fontawesome-pro' : '@fortawesome/fontawesome-free';
+    this.import(`node_modules/${faPackage}/css/all.css`);
+    this.import(`node_modules/${faPackage}/css/v4-shims.min.css`);
   },
 
   treeForPublic() {
@@ -57,8 +59,9 @@ module.exports = {
       );
     });
 
+    const faPackage = this.hasFontAwesomePro ? '@fortawesome/fontawesome-pro' : '@fortawesome/fontawesome-free';
     trees.push(
-      new Funnel('node_modules/@fortawesome/fontawesome-free/webfonts/', {
+      new Funnel(`node_modules/${faPackage}/webfonts/`, {
         srcDir: '/',
         include: ['**/*.woff', '**/*.woff2', '**/*.eot', '**/*.ttf', '**/*.svg'],
         destDir: '/webfonts'
