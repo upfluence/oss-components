@@ -3,7 +3,14 @@
 
 const mergeTrees = require('broccoli-merge-trees');
 const Funnel = require('broccoli-funnel');
+const fs = require('fs');
 const { name, version } = require('./package');
+
+let faPath = 'node_modules/@fortawesome/fontawesome-pro';
+
+if (!fs.existsSync(faPath)) {
+  faPath = 'node_modules/@fortawesome/fontawesome-free';
+}
 
 module.exports = {
   name,
@@ -36,13 +43,8 @@ module.exports = {
     this.import('node_modules/ion-rangeslider/js/ion.rangeSlider.min.js');
     this.import('node_modules/ion-rangeslider/css/ion.rangeSlider.min.css');
 
-    try {
-      this.import(`node_modules/@fortawesome/fontawesome-pro/css/all.css`);
-      this.import(`node_modules/@fortawesome/fontawesome-pro/css/v4-shims.min.css`);
-    } catch {
-      this.import(`node_modules/@fortawesome/fontawesome-free/css/all.css`);
-      this.import(`node_modules/@fortawesome/fontawesome-free/css/v4-shims.min.css`);
-    }
+    this.import(`${faPath}/css/all.css`);
+    this.import(`${faPath}/css/v4-shims.min.css`);
   },
 
   treeForPublic() {
@@ -63,23 +65,14 @@ module.exports = {
       );
     });
 
-    try {
-      trees.push(
-        new Funnel(`node_modules/@fortawesome/fontawesome-pro/webfonts/`, {
-          srcDir: '/',
-          include: ['**/*.woff', '**/*.woff2', '**/*.eot', '**/*.ttf', '**/*.svg'],
-          destDir: '/webfonts'
-        })
-      );
-    } catch {
-      trees.push(
-        new Funnel(`node_modules/@fortawesome/fontawesome-free/webfonts/`, {
-          srcDir: '/',
-          include: ['**/*.woff', '**/*.woff2', '**/*.eot', '**/*.ttf', '**/*.svg'],
-          destDir: '/webfonts'
-        })
-      );
-    }
+    console.log(faPath);
+    trees.push(
+      new Funnel(`${faPath}/webfonts/`, {
+        srcDir: '/',
+        include: ['**/*.woff', '**/*.woff2', '**/*.eot', '**/*.ttf', '**/*.svg'],
+        destDir: '/webfonts'
+      })
+    );
 
     return mergeTrees(trees);
   }
