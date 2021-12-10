@@ -36,9 +36,13 @@ module.exports = {
     this.import('node_modules/ion-rangeslider/js/ion.rangeSlider.min.js');
     this.import('node_modules/ion-rangeslider/css/ion.rangeSlider.min.css');
 
-    const faPackage = this.hasFontAwesomePro ? '@fortawesome/fontawesome-pro' : '@fortawesome/fontawesome-free';
-    this.import(`node_modules/${faPackage}/css/all.css`);
-    this.import(`node_modules/${faPackage}/css/v4-shims.min.css`);
+    try {
+      this.import(`node_modules/@fortawesome/fontawesome-pro/css/all.css`);
+      this.import(`node_modules/@fortawesome/fontawesome-pro/css/v4-shims.min.css`);
+    } catch {
+      this.import(`node_modules/@fortawesome/fontawesome-free/css/all.css`);
+      this.import(`node_modules/@fortawesome/fontawesome-free/css/v4-shims.min.css`);
+    }
   },
 
   treeForPublic() {
@@ -59,14 +63,23 @@ module.exports = {
       );
     });
 
-    const faPackage = this.hasFontAwesomePro ? '@fortawesome/fontawesome-pro' : '@fortawesome/fontawesome-free';
-    trees.push(
-      new Funnel(`node_modules/${faPackage}/webfonts/`, {
-        srcDir: '/',
-        include: ['**/*.woff', '**/*.woff2', '**/*.eot', '**/*.ttf', '**/*.svg'],
-        destDir: '/webfonts'
-      })
-    );
+    try {
+      trees.push(
+        new Funnel(`node_modules/@fortawesome/fontawesome-pro/webfonts/`, {
+          srcDir: '/',
+          include: ['**/*.woff', '**/*.woff2', '**/*.eot', '**/*.ttf', '**/*.svg'],
+          destDir: '/webfonts'
+        })
+      );
+    } catch {
+      trees.push(
+        new Funnel(`node_modules/@fortawesome/fontawesome-free/webfonts/`, {
+          srcDir: '/',
+          include: ['**/*.woff', '**/*.woff2', '**/*.eot', '**/*.ttf', '**/*.svg'],
+          destDir: '/webfonts'
+        })
+      );
+    }
 
     return mergeTrees(trees);
   }
