@@ -1,0 +1,8 @@
+<div class={{this.computedClass}} ...attributes>
+  {{#if @icon}}
+    <i class="{{@icon}} text-color-bright-purple"></i>
+  {{else}}
+      {{!-- template-lint-disable require-valid-alt-text  --}}
+    <img src={{@image}} />
+  {{/if}}
+</div>
