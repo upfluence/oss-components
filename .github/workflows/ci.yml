@@ -10,6 +10,7 @@ on:
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   NODE_VERSION: '12'
+  FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
 
 jobs:
   test:
@@ -106,4 +107,3 @@ jobs:
         npm publish --access public
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
