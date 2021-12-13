@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import jQuery from 'jquery';
+import { isTesting } from '@embroider/macros';
 
 const DEFAULT_OPTIONS = {
   centered: false,
@@ -18,6 +19,10 @@ export default class OssModalComponent extends Component {
     return { ...DEFAULT_OPTIONS, ...(this.args.options || {}) };
   }
 
+  get container() {
+    return isTesting() ? null : this.options.container;
+  }
+
   _handleEscapeKey(event) {
     if (event.key === 'Escape') {
       this.close(event);
@@ -31,7 +36,7 @@ export default class OssModalComponent extends Component {
     const modal = jQuery(this.element).modal({ backdrop: 'static' });
 
     if (this.options.container) {
-      modal.appendTo(this.options.container);
+      modal.appendTo(this.container);
     }
 
     this.element.addEventListener('keydown', this._handleEscapeKey.bind(this));
