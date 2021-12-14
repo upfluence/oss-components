@@ -2,8 +2,7 @@
   {{#if @icon}}
     <i class="{{@icon}} text-color-bright-purple"></i>
   {{else if @image}}
-      {{!-- template-lint-disable require-valid-alt-text  --}}
-    <img src={{@image}} />
+    <img src={{@image}} alt={{t "oss-components.badge.image_alt"}} />
   {{else}}
     <span class="upf-badge__text">{{@text}}</span>
   {{/if}}

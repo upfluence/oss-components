@@ -1,4 +1,6 @@
 oss-components:
+  badge:
+    image_alt: Badge Icon
   infinite-select:
     no-match:
       title: No matching results

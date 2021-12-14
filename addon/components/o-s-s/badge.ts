@@ -20,9 +20,8 @@ export default class OSSBadge extends Component<OSSBadgeArgs> {
     super(owner, args);
 
     const contentArguments = [args.icon, args.image, args.text].filter((arg: string) => arg);
-    console.log(contentArguments);
 
-    if (contentArguments.length === 0 || contentArguments.length > 1) {
+    if (contentArguments.length !== 1) {
       throw new Error(
         `[component][OSS::Badge] One of @icon, @image or @text arguments is mandatory. You passed ${contentArguments.length} arguments`
       );
