@@ -65,7 +65,6 @@ module.exports = {
       );
     });
 
-    console.log(faPath);
     trees.push(
       new Funnel(`${faPath}/webfonts/`, {
         srcDir: '/',
