@@ -1,8 +1,10 @@
 <div class={{this.computedClass}} ...attributes>
   {{#if @icon}}
     <i class="{{@icon}} text-color-bright-purple"></i>
-  {{else}}
+  {{else if @image}}
       {{!-- template-lint-disable require-valid-alt-text  --}}
     <img src={{@image}} />
+  {{else}}
+    <span class="upf-badge__text">{{@text}}</span>
   {{/if}}
 </div>
