@@ -27,9 +27,6 @@ export default setModifierManager(
 
         if (observedEntry) {
           state.hasScrollbar = observedEntry.target.scrollHeight > observedEntry.target.clientHeight;
-          console.log(state.hasScrollbar);
-          console.log(observedEntry.target.scrollHeight);
-          console.log(observedEntry.target.clientHeight);
 
           if (state.hasScrollbar && !state.element.classList.contains('scroll-shadow')) {
             state.element.classList.add('scroll-shadow', `scroll-shadow--${color || 'white'}`);
