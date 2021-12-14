@@ -1,8 +1,8 @@
 <div class="upf-power-select fx-col" ...attributes
-     {{did-insert (fn this.ensureBlockPresence (has-block 'selected-item') (has-block 'option-item'))}}>
+     {{did-insert (fn this.ensureBlockPresence (has-block "selected-item") (has-block "option-item"))}}>
   <div class="upf-power-select__array-container margin-bottom-xxx-sm">
-    <div class="array-input-container {{if @selectedItems 'fx-row fx-xalign-center' 'fx-col fx-malign-center'}} {{if this.hasScrollbar 'has-overflow'}}"
-         {{did-insert this.observeResize}} {{will-destroy this.unobserveResize}}>
+    <div class="array-input-container {{if @selectedItems 'fx-row fx-xalign-center' 'fx-col fx-malign-center'}}"
+      {{scroll-shadow color="field"}}>
       {{#each @selectedItems as |selectedItem|}}
         <div class="input-array-tag fx-row fx-xalign-center">
           {{yield selectedItem to="selected-item"}}
@@ -14,9 +14,6 @@
           {{this.placeholder}}
         </span>
       {{/each}}
-      {{#if this.hasScrollbar}}
-        <div class="infinite-shadow-scroll"></div>
-      {{/if}}
     </div>
   </div>
   <div class="upf-power-infinite-select-container margin-bottom-xxx-sm">
