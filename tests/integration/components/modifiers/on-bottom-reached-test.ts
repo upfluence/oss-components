@@ -8,7 +8,7 @@ module('Integration | Component | modifiers/on-bottom-reached', function (hooks)
 
   test('it triggers the callback when the bottom of the div is reached', async function (assert) {
     this.bottomReached = () => {
-      assert.ok(true, 'Entered the bottom reached callback')
+      assert.ok(true, 'Entered the bottom reached callback');
     };
 
     await render(hbs`
