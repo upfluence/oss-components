@@ -16,8 +16,16 @@ export default setModifierManager(
       };
     },
 
-    installModifier(state: State, element: Element, args: any) {
+    baseCSSClass() {
+      return 'scroll-shadow';
+    },
+
+    colorCSSClass(args: any) {
       const { color } = args.named;
+      return `scroll-shadow--${color || 'white'}`;
+    },
+
+    installModifier(state: State, element: Element, args: any) {
       state.element = element;
 
       state.resizeObserver = new ResizeObserver((entries: ResizeObserverEntry[]) => {
@@ -28,10 +36,10 @@ export default setModifierManager(
         if (observedEntry) {
           state.hasScrollbar = observedEntry.target.scrollHeight > observedEntry.target.clientHeight;
 
-          if (state.hasScrollbar && !state.element.classList.contains('scroll-shadow')) {
-            state.element.classList.add('scroll-shadow', `scroll-shadow--${color || 'white'}`);
-          } else if (!state.hasScrollbar && state.element.classList.contains('scroll-shadow')) {
-            state.element.classList.remove('scroll-shadow', `scroll-shadow--${color || 'white'}`);
+          if (state.hasScrollbar && !state.element.classList.contains(this.baseCSSClass())) {
+            state.element.classList.add(this.baseCSSClass(), this.colorCSSClass(args));
+          } else if (!state.hasScrollbar && state.element.classList.contains(this.baseCSSClass())) {
+            state.element.classList.remove(this.baseCSSClass(), this.colorCSSClass(args));
           }
         }
       });
