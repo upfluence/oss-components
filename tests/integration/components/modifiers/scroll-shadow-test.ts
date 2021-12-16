@@ -46,24 +46,9 @@ module('Integration | Component | modifiers/scroll-shadow', function (hooks) {
             </div>
           </div>
         `);
-        await waitFor('.scroll-shadow--white', { timeout: 2000 });
+        await waitFor('.scroll-shadow--default', { timeout: 2000 });
 
-        assert.dom('.items-container').hasClass('scroll-shadow--white');
-      });
-
-      test('with white color', async function (assert) {
-        await render(hbs`
-          <div style="position: relative">
-            <div class="items-container" style="max-height: 80px;overflow: auto;" {{scroll-shadow color="white"}}>
-              {{#each this.itemNumbers as |itemNumber|}}
-                <div>Item {{itemNumber}}</div>
-              {{/each}}
-            </div>
-          </div>
-        `);
-        await waitFor('.scroll-shadow--white', { timeout: 2000 });
-
-        assert.dom('.items-container').hasClass('scroll-shadow--white');
+        assert.dom('.items-container').hasClass('scroll-shadow--default');
       });
 
       test('with field color', async function (assert) {

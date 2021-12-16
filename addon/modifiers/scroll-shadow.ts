@@ -1,6 +1,8 @@
 // @ts-ignore
 import { setModifierManager } from '@ember/modifier';
 
+type ColorAvailable = 'field' | undefined;
+
 type State = {
   element: Element;
   infiniteShadowElement: Element | null;
@@ -21,27 +23,29 @@ export default setModifierManager(
     },
 
     colorCSSClass(args: any) {
-      const { color } = args.named;
-      return `scroll-shadow--${color || 'white'}`;
+      const color: ColorAvailable = args.named.color;
+      return `scroll-shadow--${color || 'default'}`;
     },
 
     installModifier(state: State, element: Element, args: any) {
       state.element = element;
 
       state.resizeObserver = new ResizeObserver((entries: ResizeObserverEntry[]) => {
-        const observedEntry = entries.find((entry) => {
-          return entry.target === element;
-        });
+        window.requestAnimationFrame(() => {
+          const observedEntry = entries.find((entry) => {
+            return entry.target === element;
+          });
 
-        if (observedEntry) {
-          state.hasScrollbar = observedEntry.target.scrollHeight > observedEntry.target.clientHeight;
+          if (observedEntry) {
+            state.hasScrollbar = observedEntry.target.scrollHeight > observedEntry.target.clientHeight;
 
-          if (state.hasScrollbar && !state.element.classList.contains(this.baseCSSClass())) {
-            state.element.classList.add(this.baseCSSClass(), this.colorCSSClass(args));
-          } else if (!state.hasScrollbar && state.element.classList.contains(this.baseCSSClass())) {
-            state.element.classList.remove(this.baseCSSClass(), this.colorCSSClass(args));
+            if (state.hasScrollbar && !state.element.classList.contains(this.baseCSSClass())) {
+              state.element.classList.add(this.baseCSSClass(), this.colorCSSClass(args));
+            } else if (!state.hasScrollbar && state.element.classList.contains(this.baseCSSClass())) {
+              state.element.classList.remove(this.baseCSSClass(), this.colorCSSClass(args));
+            }
           }
-        }
+        });
       });
 
       state.resizeObserver.observe(element);
