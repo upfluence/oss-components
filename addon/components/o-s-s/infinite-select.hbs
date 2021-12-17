@@ -6,51 +6,52 @@
         class="form-control upf-input" placeholder={{this.searchPlaceholder}} />
     {{/input-wrapper}}
   {{/if}}
-
-  <ul class="upf-infinite-select__items-container
-             {{if (eq this.items.length 0) 'upf-infinite-select__items-container--empty'}}"
-             {{on-bottom-reached this.onBottomReached}}>
-    {{#if (and @loading (not @loadingMore))}}
-      <div class="upf-skeleton-content fx-col fx-malign-start padding-xx-sm">
-        {{#each this.loadingRows as |width|}}
-          <div class="upf-skeleton-effect margin-bottom-xx-sm" style="width: {{width}}%; height: 8px;"></div>
-        {{/each}}
-      </div>
-    {{else}}
-      {{#each this.items as |item|}}
-        <li class="upf-infinite-select__item" role="button" {{on "click" (fn this.didSelectItem item)}}>
-          {{#if (has-block "option")}}
-            {{yield item to="option"}}
-          {{else}}
-            {{get item this.itemLabel}}
-          {{/if}}
-        </li>
-      {{else}}
-        <div class="fx-col fx-xalign-center">
-          <img
-            src="/@upfluence/oss-components/assets/images/empty-state-skeleton.png"
-            alt="Empty content" width="15%" />
-
-          <div class="margin-top-xx-sm text-color-default upf-align--center">
-            {{#if this._searchKeyword}}
-              <p>{{t "oss-components.infinite-select.no-match.title"}}</p>
-              <p class="text-color-default-light">
-                {{t "oss-components.infinite-select.no-match.description"}}
-              </p>
-            {{else}}
-              {{t "oss-components.infinite-select.empty"}}
-            {{/if}}
-          </div>
-        </div>
-      {{/each}}
-
-      {{#if @loadingMore}}
+  <div class="upf-infinite-select__container">
+    <ul class="upf-infinite-select__items-container
+               {{if (eq this.items.length 0) 'upf-infinite-select__items-container--empty'}}"
+               {{on-bottom-reached this.onBottomReached}} {{scroll-shadow}}>
+      {{#if (and @loading (not @loadingMore))}}
         <div class="upf-skeleton-content fx-col fx-malign-start padding-xx-sm">
-          {{#each this.loadingMoreRows as |width|}}
+          {{#each this.loadingRows as |width|}}
             <div class="upf-skeleton-effect margin-bottom-xx-sm" style="width: {{width}}%; height: 8px;"></div>
           {{/each}}
         </div>
+      {{else}}
+        {{#each this.items as |item|}}
+          <li class="upf-infinite-select__item" role="button" {{on "click" (fn this.didSelectItem item)}}>
+            {{#if (has-block "option")}}
+              {{yield item to="option"}}
+            {{else}}
+              {{get item this.itemLabel}}
+            {{/if}}
+          </li>
+        {{else}}
+          <div class="fx-col fx-xalign-center">
+            <img
+              src="/@upfluence/oss-components/assets/images/empty-state-skeleton.png"
+              alt={{t "oss-components.infinite-select.empty_img_alt"}} width="15%" />
+
+            <div class="margin-top-xx-sm text-color-default upf-align--center">
+              {{#if this._searchKeyword}}
+                <p>{{t "oss-components.infinite-select.no-match.title"}}</p>
+                <p class="text-color-default-light">
+                  {{t "oss-components.infinite-select.no-match.description"}}
+                </p>
+              {{else}}
+                {{t "oss-components.infinite-select.empty"}}
+              {{/if}}
+            </div>
+          </div>
+        {{/each}}
+
+        {{#if @loadingMore}}
+          <div class="upf-skeleton-content fx-col fx-malign-start padding-xx-sm">
+            {{#each this.loadingMoreRows as |width|}}
+              <div class="upf-skeleton-effect margin-bottom-xx-sm" style="width: {{width}}%; height: 8px;"></div>
+            {{/each}}
+          </div>
+        {{/if}}
       {{/if}}
-    {{/if}}
-  </ul>
+    </ul>
+  </div>
 </div>

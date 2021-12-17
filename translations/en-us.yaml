@@ -6,5 +6,6 @@ oss-components:
       title: No matching results
       description: Try adjusting your search to find what you’re looking for.
     empty: Nothing to see here.
+    empty_img_alt: Empty content
   password-input:
     regex_error: 'Your password should have at least 8 characters with at least one lower-case character, one upper-case character and one digit.'

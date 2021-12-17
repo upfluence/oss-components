@@ -1429,7 +1429,7 @@
 
 "@fortawesome/fontawesome-free@^5.x":
   version "5.15.4"
-  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.4.tgz#ecda5712b61ac852c760d8b3c79c96adca5554e5"
+  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-free/-/5.15.4/fontawesome-free-5.15.4.tgz#ecda5712b61ac852c760d8b3c79c96adca5554e5"
   integrity sha512-eYm8vijH/hpzr/6/1CJ/V/Eb1xQFW2nnUKArb3z+yUWv7HTwj6M7SP957oMjfZjAHU6qpoNc2wQvIxBLWYa/Jg==
 
 "@fortawesome/fontawesome-pro@^5.15.4":
@@ -3226,9 +3226,9 @@
     eslint-visitor-keys "^3.0.0"
 
 "@upfluence/oss@^3.x":
-  version "3.0.24"
-  resolved "https://npm.pkg.github.com/download/@upfluence/oss/3.0.24/76d8b793c2ef83494f3535eee42aebe4939778fcd8aea21580a6dc013a885c6a#912fee37626d5d31a9eedf3084f5fc43c81e023b"
-  integrity sha512-X+cCbqIFbo1ufssy4mYrTMK1wa+qDsLqrtsdHphfollGcR4XaZ3lpDDzJXgRzxz9cFMuRAaYN2fo7b3H5nY6GQ==
+  version "3.1.1"
+  resolved "https://npm.pkg.github.com/download/@upfluence/oss/3.1.1/d9f69cd7a6c526cbb4f647376cc317974278617eb92ff76a1756c52314d17076#662336a66c2657b74c7ebfcf5cae8c277bc3e4f6"
+  integrity sha512-IMTzOZBNXEhYvfyWsxRuh51l1mvz2P2tAUOC/Z5AdUBJ9vX8QRui7teNdLOYUXfTPaaX/0D0bEqjoOMujE3MCA==
   dependencies:
     "@fortawesome/fontawesome-free" "^5.x"
     bootstrap "^3.3.7"
