@@ -1,33 +1,27 @@
 // @ts-ignore
 import { setModifierManager } from '@ember/modifier';
 
-type ColorAvailable = 'field' | undefined;
+const SCROLL_SHADOW_CLASS = 'scroll-shadow';
 
+type ColorAvailable = 'field' | undefined;
 type State = {
   element: Element;
-  infiniteShadowElement: Element | null;
   resizeObserver: ResizeObserver;
-  hasScrollbar: boolean;
 };
 
 export default setModifierManager(
   () => ({
-    createModifier() {
+    createModifier(): object {
       return {
         element: null
       };
     },
 
-    baseCSSClass() {
-      return 'scroll-shadow';
-    },
-
-    colorCSSClass(args: any) {
-      const color: ColorAvailable = args.named.color;
+    colorCSSClass(color: ColorAvailable): string {
       return `scroll-shadow--${color || 'default'}`;
     },
 
-    installModifier(state: State, element: Element, args: any) {
+    installModifier(state: State, element: Element, args: any): void {
       state.element = element;
 
       state.resizeObserver = new ResizeObserver((entries: ResizeObserverEntry[]) => {
@@ -36,15 +30,15 @@ export default setModifierManager(
         });
 
         if (observedEntry) {
-          state.hasScrollbar = observedEntry.target.scrollHeight > observedEntry.target.clientHeight;
+          const hasScrollbar = observedEntry.target.scrollHeight > observedEntry.target.clientHeight;
 
-          if (state.hasScrollbar && !state.element.classList.contains(this.baseCSSClass())) {
+          if (hasScrollbar && !state.element.classList.contains(SCROLL_SHADOW_CLASS)) {
             window.requestAnimationFrame(() => {
-              state.element.classList.add(this.baseCSSClass(), this.colorCSSClass(args));
+              state.element.classList.add(SCROLL_SHADOW_CLASS, this.colorCSSClass(args.named.color));
             });
-          } else if (!state.hasScrollbar && state.element.classList.contains(this.baseCSSClass())) {
+          } else if (!hasScrollbar && state.element.classList.contains(SCROLL_SHADOW_CLASS)) {
             window.requestAnimationFrame(() => {
-              state.element.classList.remove(this.baseCSSClass(), this.colorCSSClass(args));
+              state.element.classList.remove(SCROLL_SHADOW_CLASS, this.colorCSSClass(args.named.color));
             });
           }
         }
@@ -53,7 +47,7 @@ export default setModifierManager(
       state.resizeObserver.observe(element);
     },
 
-    destroyModifier(state: State) {
+    destroyModifier(state: State): void {
       state.resizeObserver.unobserve(state.element);
     }
   }),
