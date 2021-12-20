@@ -8,6 +8,7 @@ interface OSSPasswordInputArgs {
   value: string;
   errorMessage?: string;
   validateFormat?: boolean;
+  validates?(isPassing: boolean): void;
 }
 
 export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
@@ -43,10 +44,16 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
   @action
   validateInput(): void {
     this.regexError = '';
-    if (!this._runValidation || isEmpty(this.args.value)) return;
+    if (!this._runValidation || isEmpty(this.args.value)) {
+      this.args.validates?.(true);
+      return;
+    }
     if (!this._pwRegex.test(this.args.value)) {
       this.regexError = this.intl.t('oss-components.password-input.regex_error');
+      this.args.validates?.(false);
+      return;
     }
+    this.args.validates?.(true);
   }
 
   @action
