@@ -17,4 +17,11 @@ export default class ApplicationController extends Controller {
   toggleLoading() {
     this.loading = !this.loading;
   }
+
+  @action
+  destructiveAction(model, defer) {
+    console.log('Destructive action triggered');
+    console.log('model');
+    defer.resolve();
+  }
 }
