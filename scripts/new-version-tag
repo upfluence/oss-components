@@ -1,0 +1,43 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]; then
+    echo "Please specify a SemVer identifier (e.g. patch, minor, major)."
+    exit 1
+fi
+
+echo -e "[Creating a new \033[1;34m$1\033[0m version]";
+echo ""
+echo ""
+
+echo "[1/3] creating tag"
+npm version $1 
+if [ $? -ne 0 ]; then
+ echo "[1/3] KO: Tag creation failed."
+ echo "Aborting."
+ exit 1
+fi
+echo "[1/3] OK: New {$1} tag created"
+
+echo ""
+echo ""
+
+echo "[2/3] Pushing new tag to remote"
+git push --tag --no-verify
+if [ $? -ne 0 ]; then
+ echo "[2/3] KO: Could not push to remote."
+ echo "Aborting."
+ exit 1
+fi
+echo "[2/3] OK: New {$1} tag pushed to remote"
+
+echo ""
+echo ""
+
+echo "[3/3] Pushing branch remote"
+git push --no-verify
+if [ $? -ne 0 ]; then
+ echo "[3/3] KO: Could not push to remote."
+ echo "Aborting."
+ exit 1
+fi
+echo "[3/3] OK: Branch successfully pushed to remote"

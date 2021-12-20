@@ -1,0 +1,28 @@
+#!/bin/sh
+
+echo "[Pre-commit hook triggered]"
+echo ""
+echo ""
+
+echo "[1/2] Running the linter"
+yarn lint:js
+if [ $? -ne 0 ]; then
+ echo "[1/2] KO: Linter failed."
+ echo "Aborting commit."
+ exit 1
+fi
+echo "[1/2] OK: Linter success"
+
+echo ""
+echo ""
+
+echo "[2/2] Running ember tests"
+ember test --silent -r dot
+
+if [ $? -ne 0 ]; then
+ echo "[2/2] KO: Ember tests have failed."
+ echo "Aborting commit."
+ exit 1
+fi
+echo "[2/2] OK: Ember tests success"
+exit 0
