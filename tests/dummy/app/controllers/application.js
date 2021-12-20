@@ -24,4 +24,11 @@ export default class ApplicationController extends Controller {
     console.log('model');
     defer.resolve();
   }
+
+  @action
+  loadingAction(_, defer) {
+    setTimeout(() => {
+      defer.resolve();
+    }, 1000);
+  }
 }

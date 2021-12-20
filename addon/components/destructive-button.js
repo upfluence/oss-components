@@ -15,7 +15,7 @@ export default Component.extend(TargetActionSupport, {
   actionFailed: false,
   isLoading: false,
   isSuccess: false,
-  defer: RSVP.defer(),
+  defer: null,
 
   setButtonState() {
     this.set('isSuccess', false);
@@ -49,6 +49,7 @@ export default Component.extend(TargetActionSupport, {
 
     // Because `.send` method for sending actions does not return anything, we
     // pass it an `RSVP.defer` to be resolved in the remote action.
+    this.defer = RSVP.defer();
     this.defer.promise.then(
       () => {
         this.set('isLoading', false);
