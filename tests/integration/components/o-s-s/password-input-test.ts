@@ -56,4 +56,22 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
         'Your password should have at least 8 characters with at least one lower-case character, one upper-case character and one digit.'
       );
   });
+
+  test('If the password regex is matched, and the @validates method is passed, then the status of the validation is returned', async function (assert) {
+    this.value = '1Aaaaaa';
+    this.validates = (x: boolean) => {
+      assert.equal(x, true);
+    };
+    await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
+    await typeIn('input', 'a');
+  });
+
+  test('If the password regex isnt matched, and the @validates method is passed, then the status of the validation is returned', async function (assert) {
+    this.value = '1A';
+    this.validates = (x: boolean) => {
+      assert.equal(x, false);
+    };
+    await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
+    await typeIn('input', 'a');
+  });
 });
