@@ -14,9 +14,10 @@ export default Component.extend({
   isSelected: bool('ref.selected'),
 
   mouseEnter() {
-    this.$().parentsUntil('.upf-datatable').find(
-      '.upf-datatable__row--polymorphic'
-    ).removeClass('upf-datatable__row--polymorphic');
+    this.$()
+      .parentsUntil('.upf-datatable')
+      .find('.upf-datatable__row--polymorphic')
+      .removeClass('upf-datatable__row--polymorphic');
 
     if (this.get('hasPolymorphicColumns')) {
       this.set('isHovering', true);
@@ -29,10 +30,9 @@ export default Component.extend({
     }
   },
 
-  click: function(e) {
-    let clickedColumnIsUneditable = $(e.target).parents(
-      'td.upf-datatable__column.upf-datatable__column--uneditable'
-    ).length !== 0;
+  click: function (e) {
+    let clickedColumnIsUneditable =
+      $(e.target).parents('td.upf-datatable__column.upf-datatable__column--uneditable').length !== 0;
     if (this.onRowClick && !clickedColumnIsUneditable) {
       this.send('handleRowClickCallback');
     }
@@ -40,11 +40,7 @@ export default Component.extend({
 
   actions: {
     handleRowClickCallback() {
-      this.sendAction(
-        'action',
-        this.onRowClick,
-        this.ref
-      );
+      this.sendAction('action', this.onRowClick, this.ref);
     }
   }
 });

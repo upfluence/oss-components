@@ -36,7 +36,7 @@ export default Component.extend({
     this.set('_searchQuery', this.get('searchQuery'));
   },
 
-  _columns: computed('columns', function() {
+  _columns: computed('columns', function () {
     return this.get('columns').map((column) => {
       column.visible = column.visible !== false;
       column.sorted = column.sorted === true;
@@ -48,7 +48,7 @@ export default Component.extend({
   }),
 
   _initiallyDisplayedColumns: filterBy('_columns', 'visible'),
-  _fullSizeColumnColspan: computed('_initiallyDisplayedColumns', function() {
+  _fullSizeColumnColspan: computed('_initiallyDisplayedColumns', 'hasSelection', function () {
     if (this.get('hasSelection')) {
       return this.get('_initiallyDisplayedColumns').length + 1;
     }
@@ -56,7 +56,7 @@ export default Component.extend({
     return this.get('_initiallyDisplayedColumns').length;
   }),
 
-  _selectAllObserver: observer('allRowsSelected', function() {
+  _selectAllObserver: observer('allRowsSelected', function () {
     this.get('collection').map((item) => {
       if (this.get('allRowsSelected')) {
         item.set('selected', true);
@@ -66,7 +66,7 @@ export default Component.extend({
     });
   }),
 
-  _bubbleSearch: function() {
+  _bubbleSearch: function () {
     if (this.performSearch) {
       this.performSearch(this.get('_searchQuery'));
     }
@@ -104,7 +104,7 @@ export default Component.extend({
     },
 
     triggerObjectCreation() {
-      this.triggerAction({ action: 'handleObjectCreation'});
+      this.triggerAction({ action: 'handleObjectCreation' });
     },
 
     setContentChanging(contentChanging) {
