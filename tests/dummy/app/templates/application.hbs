@@ -43,16 +43,28 @@
   <div class="fx-row fx-gap-px-10 fx-xalign-center">
     <OSS::Badge @text="2x" @size="lg" />
     <OSS::Badge @text="2x" />
-    <OSS::Badge @text="2x" @size="sm"/>
+    <OSS::Badge @text="2x" @size="sm" />
   </div>
 
   <div class="fx-row fx-gap-px-10 fx-xalign-center">
-    <OSS::Badge
-      @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
-      @size="lg" />
+    <OSS::Badge @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
+                @size="lg" />
     <OSS::Badge @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png" />
-    <OSS::Badge
-      @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
-      @size="sm" />
+    <OSS::Badge @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
+                @size="sm" />
+  </div>
+
+  <div class="fx-row">
+    <DestructiveButton @destructiveAction="destructiveAction" @record={{"model"}}
+                       @ongoingMessage="ongoing"
+                       @successMessage="success"
+                       @failureMessage="failure'"
+                       class="margin-right-xx-sm">
+      Destructive button
+    </DestructiveButton>
+    <LoadingButton @slowAction="loadingAction" class="upf-btn upf-btn--primary"
+                   @initiallyDisabled={{false}}>
+      Loading button
+    </LoadingButton>
   </div>
 </div>

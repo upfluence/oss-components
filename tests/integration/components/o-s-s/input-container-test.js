@@ -67,13 +67,13 @@ module('Integration | Component | o-s-s/input-container', function (hooks) {
 
     test('Passing a @placeholder parameter works', async function (assert) {
       await renderComponentWithParameters();
-      let inputElement: Element = find('.upf-input') as Element;
+      let inputElement: Element = find('.upf-input');
       assert.equal(inputElement.getAttribute('placeholder'), 'Type your text');
     });
 
     test('Passing an @onChange method works and is triggered on input changes', async function (assert) {
       await renderComponentWithParameters();
-      let inputElement: Element = find('.upf-input') as Element;
+      let inputElement: Element = find('.upf-input');
       await typeIn(inputElement, 'hello world');
       assert.ok(onValueChange.called);
     });
@@ -87,9 +87,8 @@ module('Integration | Component | o-s-s/input-container', function (hooks) {
 
     test('passing data-control-name works', async function (assert) {
       await render(hbs`<OSS::InputContainer data-control-name="firstname-input" />`);
-      let inputWrapper: Element = find('.oss-input-container') as Element;
+      let inputWrapper: Element = find('.oss-input-container');
       assert.equal(inputWrapper.getAttribute('data-control-name'), 'firstname-input');
     });
   });
 });
-

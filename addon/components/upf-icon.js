@@ -8,36 +8,32 @@ const UpfIconComponent = Component.extend({
 
   assetsRoot: 'assets',
 
-  icon: computed('params.[]', function() {
+  icon: computed('params.[]', function () {
     return this.get('params')[0];
   }),
 
-  color: computed('params.[]', function() {
+  color: computed('params.[]', function () {
     return this.get('params')[1];
   }),
 
-  thickness: computed('params.[]', function() {
+  thickness: computed('params.[]', function () {
     return this.get('params')[2];
   }),
 
   willInsertElement() {
-    $.get(
-      this.get('assetMap').resolve(`${this.assetsRoot}/upf-icons/${this.get('icon')}.svg`),
-      (data) => {
-        let element = this.$()[0];
+    $.get(this.get('assetMap').resolve(`${this.assetsRoot}/upf-icons/${this.get('icon')}.svg`), (data) => {
+      let element = this.$()[0];
 
-        if (this.get('color')) {
-          data.children[0].classList += ` upf-icon--${this.get('color')}`;
-        }
-
-        if (this.get('thickness')) {
-          data.children[0].classList +=
-            ` upf-icon--stroke-${this.get('thickness')}`;
-        }
-
-        element.innerHTML = new XMLSerializer().serializeToString(data);
+      if (this.get('color')) {
+        data.children[0].classList += ` upf-icon--${this.get('color')}`;
       }
-    );
+
+      if (this.get('thickness')) {
+        data.children[0].classList += ` upf-icon--stroke-${this.get('thickness')}`;
+      }
+
+      element.innerHTML = new XMLSerializer().serializeToString(data);
+    });
   }
 });
 

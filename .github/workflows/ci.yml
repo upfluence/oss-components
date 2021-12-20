@@ -14,7 +14,7 @@ env:
 
 jobs:
   test:
-    name: Test
+    name: Lint & Test
     runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
@@ -35,6 +35,8 @@ jobs:
       run: yarn install --frozen-lockfile
       if: |
         steps.cache-dependencies.outputs.cache-hit != 'true'
+    - name: Lint
+      run: yarn lint:js
     - name: Test
       run: yarn test:ember
   build:

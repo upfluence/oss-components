@@ -12,19 +12,19 @@ export default Component.extend({
 
   renderFunction: '',
 
-  statSizeModifier: computed('size', function() {
+  statSizeModifier: computed('size', function () {
     return `upf-stat--${this.get('size')}`;
   }),
 
-  numberAsPercentOfMaxValue: computed('number', 'maxValue', function() {
+  numberAsPercentOfMaxValue: computed('number', 'maxValue', function () {
     return Math.floor((100 * this.get('number')) / this.get('maxValue'));
   }),
 
-  progressValueClass: computed('number', function() {
+  progressValueClass: computed('number', 'numberAsPercentOfMaxValue', function () {
     return `upf-progress-${this.get('numberAsPercentOfMaxValue')}`;
   }),
 
-  displayNumber: computed('number', 'renderFunction', function() {
+  displayNumber: computed('number', 'renderFunction', 'targetObject', function () {
     let render = this.get('renderFunction');
 
     if (!render) {

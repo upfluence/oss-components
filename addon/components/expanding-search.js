@@ -3,10 +3,7 @@ import Component from '@ember/component';
 
 export default Component.extend({
   classNames: ['expanding-search'],
-  classNameBindings: [
-    'expandedSearch:expanding-search--opened',
-    'small:expanding-search--small'
-  ],
+  classNameBindings: ['expandedSearch:expanding-search--opened', 'small:expanding-search--small'],
   attributeBindings: ['data-control-name'],
 
   searchQuery: '',

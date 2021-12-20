@@ -2,6 +2,7 @@ import hbs from 'htmlbars-inline-precompile';
 import { storiesOf } from '@storybook/ember';
 
 const defineStory = (name) => {
+  // eslint-disable-next-line no-undef
   storiesOf(name, module).add('default', () => {
     return {
       template: hbs`

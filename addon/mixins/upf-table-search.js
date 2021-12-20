@@ -10,22 +10,20 @@ export default Mixin.create({
     defineProperty(
       this,
       'filteredCollection',
-      computed('searchQuery', this.get('searchCollection'), function() {
-        let searchWords = this.get('searchQuery').split(' ').map((x) => {
-          return x.toLowerCase();
-        });
-        let collection = get(this, this.get('searchCollection')).filterBy(
-          'isNew', false
-        );
+      computed('searchQuery', 'searchAttribute', 'searchCollection', this.get('searchCollection'), function () {
+        let searchWords = this.get('searchQuery')
+          .split(' ')
+          .map((x) => {
+            return x.toLowerCase();
+          });
+        let collection = get(this, this.get('searchCollection')).filterBy('isNew', false);
 
         if (searchWords === []) {
           return collection;
         }
 
         return collection.filter((item) => {
-          let itemName = item.getWithDefault(
-            this.get('searchAttribute'), ''
-          ).toLowerCase();
+          let itemName = item.getWithDefault(this.get('searchAttribute'), '').toLowerCase();
 
           let i;
 

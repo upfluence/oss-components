@@ -22,7 +22,7 @@
     "lint:js": "eslint .",
     "start": "ember serve",
     "test": "npm-run-all lint:* test:*",
-    "test:ember": "ember test",
+    "test:ember": "ember test --silent -r dot",
     "test:ember-compatibility": "ember try:each",
     "storybook": "start-storybook -p 6006 -s dist",
     "build-storybook": "build-storybook -s dist",

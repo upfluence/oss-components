@@ -25,7 +25,7 @@ module('Unit | Utility | UPFLocalStorage', function (hooks) {
     assert.ok(upfStorage);
   });
 
-  module('Prefix', function (hooks) {
+  module('Prefix', function () {
     test('Saving content without specifying a prefix will use the default ".upf_" prefix', function (assert) {
       let upfStorage = new UPFLocalStorage();
       upfStorage.saveItem(TEST_KEY, TEST_VALUE);
@@ -39,7 +39,7 @@ module('Unit | Utility | UPFLocalStorage', function (hooks) {
     });
   });
 
-  module('Method: saveObject', function (hooks) {
+  module('Method: saveObject', function () {
     test('saveObject() sets the default prefix key', function (assert) {
       let upfStorage = new UPFLocalStorage();
       upfStorage.saveObject(TEST_KEY, TEST_OBJECT);
@@ -69,7 +69,7 @@ module('Unit | Utility | UPFLocalStorage', function (hooks) {
     });
   });
 
-  module('Method: updateObject', function (hooks) {
+  module('Method: updateObject', function () {
     test('updateObject() sets the default prefix key', function (assert) {
       let upfStorage = new UPFLocalStorage();
       upfStorage.updateObject(TEST_KEY, TEST_OBJECT_UPDATE);
@@ -107,7 +107,7 @@ module('Unit | Utility | UPFLocalStorage', function (hooks) {
     });
   });
 
-  module('Method: getObject', function (hooks) {
+  module('Method: getObject', function () {
     test('getObject() returns an empty object if the key is not found', function (assert) {
       let upfStorage = new UPFLocalStorage();
       assert.deepEqual({}, upfStorage.getObject(TEST_KEY));
@@ -120,7 +120,7 @@ module('Unit | Utility | UPFLocalStorage', function (hooks) {
     });
   });
 
-  module('Method: saveItem', function (hooks) {
+  module('Method: saveItem', function () {
     test('saveItem() throws an error if the object parameter is not a string', function (assert) {
       let upfStorage = new UPFLocalStorage();
       assert.throws(() => {
@@ -147,7 +147,7 @@ module('Unit | Utility | UPFLocalStorage', function (hooks) {
     });
   });
 
-  module('Method: updateItem', function (hooks) {
+  module('Method: updateItem', function () {
     test('updateItem() throws an error if the object parameter is not a string', function (assert) {
       let upfStorage = new UPFLocalStorage();
       assert.throws(() => {
@@ -176,7 +176,7 @@ module('Unit | Utility | UPFLocalStorage', function (hooks) {
     });
   });
 
-  module('Method: getItem', function (hooks) {
+  module('Method: getItem', function () {
     test('getItem() returns null if no key is found', function (assert) {
       let upfStorage = new UPFLocalStorage();
       assert.equal(null, upfStorage.getItem(TEST_KEY));
@@ -189,7 +189,7 @@ module('Unit | Utility | UPFLocalStorage', function (hooks) {
     });
   });
 
-  module('Method: delete', function (hooks) {
+  module('Method: delete', function () {
     test('delete() uses the default prefix when removing a key', function (assert) {
       let upfStorage = new UPFLocalStorage();
       upfStorage.saveItem(TEST_KEY, TEST_VALUE);

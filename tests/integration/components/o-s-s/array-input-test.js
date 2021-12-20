@@ -93,7 +93,7 @@ module('Integration | Component | OSS::ArrayInput', function (hooks) {
     });
   });
 
-  module('WHEN the user presses on the Backspace key', (hooks) => {
+  module('WHEN the user presses on the Backspace key', () => {
     test('If there are no tags, nothing happens', async function (assert) {
       await render(hbs`<OSS::ArrayInput />`);
       await triggerKeyEvent('.array-input-container input', 'keydown', 'Backspace', { code: 'Backspace' });
