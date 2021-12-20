@@ -1,0 +1,19 @@
+<div class="banner {{if @plain 'bg-color-grey' 'bg-color-white'}} fx-1 fx-row border border-color-default
+            border-radius-default padding-x-sm fx-xalign-center fx-gap-px-10">
+  <div>
+    {{#if (has-block "custom-icon")}}
+      <div>{{yield to="custom-icon"}}</div>
+    {{else if @icon}}
+      <i class="{{@icon}} upf-badge upf-badge--shape-round upf-badge--size-md"></i>
+    {{else if @image}}
+      <img class="upf-badge upf-badge--size-md upf-badge--shape-round" src={{@image}} alt="banner" />
+    {{/if}}
+  </div>
+  <div class="fx-col fx-1">
+    <span class="text-style-bold text-size-6">{{@title}}</span>
+    <span class="text-size-4 text-color-default-light">{{@subtitle}}</span>
+  </div>
+  {{#if (has-block "cta")}}
+    <div>{{yield to="cta"}}</div>
+  {{/if}}
+</div>
