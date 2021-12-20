@@ -9,7 +9,7 @@ export default Component.extend(HeaderStyleMixin, {
   //TODO: check if used somewhere
   indexRoute: 'index',
 
-  headerStyleClass: computed('headerStyle', function() {
+  headerStyleClass: computed('headerStyle', 'isSidebarStyle', function () {
     if (this.get('isSidebarStyle')) {
       return 'col-xs-1 app-header--sidebar';
     } else {
@@ -17,7 +17,7 @@ export default Component.extend(HeaderStyleMixin, {
     }
   }),
 
-  hasLogo: computed('logo', function() {
+  hasLogo: computed('logo', function () {
     return this.get('logo') !== null;
   })
 });
