@@ -1,4 +1,5 @@
 import hbs from 'htmlbars-inline-precompile';
+import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'Components/OSS::PasswordInput',
@@ -51,7 +52,5 @@ BasicUsage.args = {
   value: 'myPassword',
   errorMessage: '',
   validatesFormat: false,
-  validates: (validity) => {
-    console.log('Current input is ' + validity);
-  }
+  validates: action('validates')
 };
