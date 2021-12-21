@@ -76,15 +76,15 @@ UsageWithCustomIcon.args = {
 const BasicUsageCTATemplate = (args) => ({
   template: hbs`
       <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}}>
-        <:cta>
+        <:actions>
           <OSS::Button @label="Click me" />
-        </:cta>
+        </:actions>
       </OSS::Banner>
   `,
   context: args
 });
-export const UsageWithCTABlock = BasicUsageCTATemplate.bind({});
-UsageWithCTABlock.args = {
+export const UsageWithActionsBlock = BasicUsageCTATemplate.bind({});
+UsageWithActionsBlock.args = {
   title: 'Content of the Title',
   subtitle: 'Content of the Subtitle'
 };
