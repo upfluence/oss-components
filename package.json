@@ -26,7 +26,9 @@
     "test:ember-compatibility": "ember try:each",
     "storybook": "cp -R .storybook/oss/fonts .storybook/oss/less/core && start-storybook -p 6006 -s dist",
     "build-storybook": "build-storybook -s dist",
-    "prepack": "ember ts:precompile"
+    "prepack": "ember ts:precompile",
+    "install-pre-push-hook": "cp ./scripts/pre-push ./.git/hooks/pre-push",
+    "remove-pre-push-hook": "rm -rf ./.git/hooks/pre-push"
   },
   "dependencies": {
     "@embroider/macros": "^0.47.2",
