@@ -24,10 +24,11 @@
     "test": "npm-run-all lint:* test:*",
     "test:ember": "ember test --silent -r dot",
     "test:ember-compatibility": "ember try:each",
-    "storybook": "start-storybook -p 6006 -s dist",
+    "storybook": "cp -R .storybook/oss/fonts .storybook/oss/less/core && start-storybook -p 6006 -s dist",
     "build-storybook": "build-storybook -s dist",
     "prepack": "ember ts:precompile",
-    "postpack": "ember ts:clean"
+    "install-pre-push-hook": "cp ./scripts/pre-push ./.git/hooks/pre-push",
+    "remove-pre-push-hook": "rm -rf ./.git/hooks/pre-push"
   },
   "dependencies": {
     "@embroider/macros": "^0.47.2",
@@ -53,10 +54,10 @@
     "@ember/test-helpers": "^2.5.0",
     "@glimmer/component": "^1.0.0",
     "@glimmer/tracking": "^1.0.0",
-    "@storybook/addon-actions": "6.4.8",
-    "@storybook/addon-essentials": "6.4.8",
-    "@storybook/addon-links": "6.4.8",
-    "@storybook/ember": "6.4.8",
+    "@storybook/addon-actions": "6.4.9",
+    "@storybook/addon-essentials": "6.4.9",
+    "@storybook/addon-links": "6.4.9",
+    "@storybook/ember": "6.4.9",
     "@storybook/ember-cli-storybook": "^0.4.0",
     "@types/ember-qunit": "^3.4.14",
     "@types/ember-resolver": "^5.0.10",

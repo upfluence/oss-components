@@ -78,4 +78,25 @@
       Loading button
     </LoadingButton>
   </div>
+  <div class="fx-col fx-gap-px-10">
+    <OSS::Banner @icon="fas fa-box-open" @title="Import creators inside your campaign"
+                 @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file. ">
+      <:custom-icon>
+        <OSS::Badge @text="2x" @size="lg" />
+      </:custom-icon>
+      <:actions>
+        <OSS::Button @skin="primary" @label="browse" @icon="fas fa-box-open" @size="md" />
+        <OSS::Button @skin="secondary" @label="test" @icon="fas fa-box-open" @size="md" />
+      </:actions>
+    </OSS::Banner>
+    <OSS::Banner @icon="fas fa-box-open" @title="Import creators inside your campaign"
+                 @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file. " />
+    <OSS::Bruce @image="https://thepressfree.com/wp-content/uploads/2021/11/Voici-pourquoi-Bruce-Banner-netait-plus-Smart-Hulk-dans-la-800x445.jpg"
+                @title="Import creators inside your campaign" @plain={{true}}
+                @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file. ">
+      <:actions>
+        <OSS::Button @skin="secondary" @label="action" @icon="fas fa-box-open" @size="md" />
+      </:actions>
+    </OSS::Bruce>
+  </div>
 </div>

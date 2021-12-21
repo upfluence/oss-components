@@ -1,5 +1,4 @@
 import { action } from '@ember/object';
-import { isEmpty } from '@ember/utils';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
@@ -44,16 +43,14 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
   @action
   validateInput(): void {
     this.regexError = '';
-    if (!this._runValidation || isEmpty(this.args.value)) {
+    if (!this._runValidation) {
       this.args.validates?.(true);
-      return;
-    }
-    if (!this._pwRegex.test(this.args.value)) {
+    } else if (!this._pwRegex.test(this.args.value)) {
       this.regexError = this.intl.t('oss-components.password-input.regex_error');
       this.args.validates?.(false);
-      return;
+    } else {
+      this.args.validates?.(true);
     }
-    this.args.validates?.(true);
   }
 
   @action
