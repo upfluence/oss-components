@@ -1,6 +1,7 @@
 import hbs from 'htmlbars-inline-precompile';
 
 const SizeTypes = ['sm', 'md', 'lg'];
+const SkinTypes = ['primary', 'success', 'alert', 'error'];
 
 export default {
   title: 'Components/OSS::Badge',
@@ -16,6 +17,27 @@ export default {
       },
       options: SizeTypes,
       control: { type: 'select' }
+    },
+    skin: {
+      description: 'Adjust the skin of the badge',
+      table: {
+        type: {
+          summary: SkinTypes.join('|')
+        },
+        defaultValue: { summary: null }
+      },
+      options: SkinTypes,
+      control: { type: 'select' }
+    },
+    plain: {
+      description: 'Displays the badge with a plain background',
+      table: {
+        type: { summary: 'true | false' },
+        defaultValue: { summary: 'false' }
+      },
+      control: {
+        type: 'boolean'
+      }
     },
     icon: {
       description: 'Font Awesome class, for example',
@@ -46,12 +68,16 @@ const defaultArgs = {
   size: null,
   icon: null,
   image: null,
-  text: null
+  text: null,
+  plain: null,
+  skin: null
 };
 
 const Template = (args) => ({
   template: hbs`
-    <OSS::Badge @image={{this.image}} @icon={{this.icon}} @text={{this.text}} @size={{this.size}} />
+    <OSS::Badge
+      @image={{this.image}} @icon={{this.icon}} @text={{this.text}} @size={{this.size}} @skin={{this.skin}}
+      @plain={{this.plain}} />
   `,
   context: args
 });

@@ -8,11 +8,22 @@ const SizeDefinition: SizeDefType = {
   lg: 'upf-badge--size-lg'
 };
 
+type SkinType = 'primary' | 'success' | 'alert' | 'error';
+type SkinDefType = { [key in SkinType]: string };
+export const SkinDefinition: SkinDefType = {
+  primary: 'upf-badge--primary',
+  success: 'upf-badge--success',
+  alert: 'upf-badge--alert',
+  error: 'upf-badge--error'
+};
+
 interface OSSBadgeArgs {
   icon: string;
   image: string;
   text: string;
+  plain: boolean;
   size: SizeType;
+  skin: SkinType;
 }
 
 export default class OSSBadge extends Component<OSSBadgeArgs> {
@@ -40,10 +51,30 @@ export default class OSSBadge extends Component<OSSBadgeArgs> {
     return SizeDefinition[size as SizeType];
   }
 
+  get skinClass(): string {
+    const skin: SkinType = this.args.skin;
+
+    if (!skin) return '';
+
+    if (!Object.keys(SkinDefinition).includes(skin as SkinType)) {
+      throw new Error(
+        `[component][OSS::Badge] Unknown skin. Available skins are: ${Object.keys(SkinDefinition).join(', ')}`
+      );
+    }
+
+    return SkinDefinition[skin as SkinType];
+  }
+
   get computedClass(): string {
     const classes = ['upf-badge', 'upf-badge--shape-round'];
 
-    classes.push(this.sizeClass);
+    [this.sizeClass, this.skinClass].forEach((klass) => {
+      classes.push(klass);
+    });
+
+    if (this.args.plain) {
+      classes.push('upf-badge--plain');
+    }
 
     return classes.join(' ');
   }

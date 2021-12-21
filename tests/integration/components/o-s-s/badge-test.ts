@@ -3,6 +3,8 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
+import { SkinDefinition } from '@upfluence/oss-components/components/o-s-s/badge';
+
 module('Integration | Component | o-s-s/badge', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -52,6 +54,35 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
     });
   });
 
+  module('skins', function () {
+    test('it throws an error when an unsupported skin is passed', async function (assert: Assert) {
+      setupOnerror((err: Error) => {
+        assert.equal(
+          err.message,
+          '[component][OSS::Badge] Unknown skin. Available skins are: primary, success, alert, error'
+        );
+      });
+
+      await render(hbs`<OSS::Badge @skin="foo" @text="2x" />`);
+    });
+
+    Object.keys(SkinDefinition).forEach((skin) => {
+      test(`it sets the right class when using a supported skin: ${skin}`, async function (assert: Assert) {
+        this.skin = skin;
+        await render(hbs`<OSS::Badge @skin={{this.skin}} @text="2x" />`);
+
+        assert.dom('.upf-badge').exists();
+        assert.dom('.upf-badge').hasClass(`upf-badge--${skin}`);
+      });
+    });
+
+    test('it adds the plain class when passed', async function(assert: Assert) {
+      await render(hbs`<OSS::Badge @skin="primary" @plain={{true}} @text="2x" />`);
+
+        assert.dom('.upf-badge').hasClass('upf-badge--plain');
+    })
+  });
+
   module('content args', function () {
     test('it displays the right icon when using the @icon arg', async function (assert: Assert) {
       await render(hbs`<OSS::Badge @icon="fas fa-users" />`);
@@ -73,7 +104,7 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
 
       assert.dom('.upf-badge').exists();
       assert.dom('.upf-badge img').exists();
-      assert.dom('.upf-badge img').hasAttribute('src', 'http://foo.co/bar.png')
+      assert.dom('.upf-badge img').hasAttribute('src', 'http://foo.co/bar.png');
     });
   });
 });
