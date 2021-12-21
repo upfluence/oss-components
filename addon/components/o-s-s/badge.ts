@@ -10,7 +10,7 @@ const SizeDefinition: SizeDefType = {
 
 type SkinType = 'primary' | 'success' | 'alert' | 'error';
 type SkinDefType = { [key in SkinType]: string };
-const SkinDefinition: SkinDefType = {
+export const SkinDefinition: SkinDefType = {
   primary: 'upf-badge--primary',
   success: 'upf-badge--success',
   alert: 'upf-badge--alert',

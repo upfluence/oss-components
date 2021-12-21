@@ -3,6 +3,8 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
+import { SkinDefinition } from '@upfluence/oss-components/components/o-s-s/badge';
+
 module('Integration | Component | o-s-s/badge', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -64,7 +66,7 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
       await render(hbs`<OSS::Badge @skin="foo" @text="2x" />`);
     });
 
-    ['primary', 'success', 'alert', 'error'].forEach((skin) => {
+    Object.keys(SkinDefinition).forEach((skin) => {
       test(`it sets the right class when using a supported skin: ${skin}`, async function (assert: Assert) {
         this.skin = skin;
         await render(hbs`<OSS::Badge @skin={{this.skin}} @text="2x" />`);
