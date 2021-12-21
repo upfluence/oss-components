@@ -1,5 +1,4 @@
 import { action } from '@ember/object';
-import { isEmpty } from '@ember/utils';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
