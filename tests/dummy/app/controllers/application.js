@@ -7,6 +7,15 @@ export default class ApplicationController extends Controller {
   @service toast;
 
   @tracked loading = false;
+  @tracked phonePrefix = '+33';
+  @tracked phoneNumber = '782828282';
+
+  @action
+  onPhoneNumberChange(prefix, phoneNumber) {
+    console.log('onPhoneNumberChange', prefix, phoneNumber);
+    this.phonePrefix = prefix;
+    this.phoneNumber = phoneNumber;
+  }
 
   @action
   triggerToast(type) {

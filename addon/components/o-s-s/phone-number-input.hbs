@@ -1,0 +1,32 @@
+<div class="phone-number-container fx-1">
+  <div class="phone-number-input upf-input fx-row fx-1 fx-xalign-center">
+    <div class="country-selector fx-row" role="button" {{on "click" this.toggleCountrySelector}}>
+      <div class="fflag fflag-{{this.selectedCountry.id}} ff-sm ff-wave ff-rounded"></div>
+      {{#if this.countrySelectorShown}}
+        <i class="fal fa-chevron-up margin-left-xxx-sm"></i>
+      {{else}}
+        <i class="fal fa-chevron-down margin-left-xxx-sm"></i>
+      {{/if}}
+    </div>
+    <span class="phone-prefix">{{@prefix}}</span>
+    <Input class="fx-1" type="tel" @value={{@number}} {{on "keydown" this.onlyNumberic}}
+           placeholder="81726354" autocomplete="off" />
+  </div>
+  {{#if this.countrySelectorShown}}
+    <OSS::InfiniteSelect @items={{this.filteredCountries}} @onSearch={{this.onSearch}}
+                         @onSelect={{this.onSelect}}
+                         @searchPlaceholder="Search"
+                         {{on-click-outside this.hideCountrySelector}}>
+      <:option as |country|>
+        <div class="fx-row fx-xalign-center {{if (eq this.selectedCountry country) 'row-selected'}}">
+          <div class="fflag fflag-{{country.id}} ff-sm ff-wave ff-rounded"></div>
+          <span class="text-color-default-light margin-left-xx-sm">{{country.name}}</span>
+          <span class="text-color-default-light margin-left-xxx-sm fx-1">(+{{get country.countryCallingCodes 0}})</span>
+          {{#if (eq this.selectedCountry country)}}
+            <i class="far fa-check text-color-bright-purple"></i>
+          {{/if}}
+        </div>
+      </:option>
+    </OSS::InfiniteSelect>
+  {{/if}}
+</div>
