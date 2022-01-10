@@ -4,7 +4,8 @@ export type CountryData = {
   alpha2: string;
   alpha3: string;
   countryCallingCodes: string[];
-  showOnTop: true;
+  currencies: string[];
+  showOnTop?: boolean;
 };
 
 export const countries: CountryData[] = [
@@ -775,6 +776,7 @@ export const countries: CountryData[] = [
   },
   {
     id: 'ID',
+    alpha2: 'ID',
     alpha3: 'IDN',
     currencies: ['IDR'],
     countryCallingCodes: ['62'],
@@ -1901,4 +1903,4 @@ export const countries: CountryData[] = [
     currencies: ['USD', 'ZAR', 'BWP', 'GBP', 'EUR'],
     name: 'Zimbabwe'
   }
-] as const;
+];
