@@ -66,6 +66,6 @@ version_major: ## Creates & pushes a new major tag
 	./scripts/new-version-tag major
 
 upfluence: ## Displays the UPF logo :)
-	@cat ./scripts/upf_logo
+	@sh ./scripts/upf_logo
 	@echo ""
 	@echo ""
