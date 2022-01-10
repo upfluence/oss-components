@@ -21,8 +21,11 @@ export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputAr
     if (typeof this.args.prefix !== 'string') {
       throw new Error('[component][OSS::PhoneNumberInput] The parameter @prefix of type string is mandatory');
     }
-    if (typeof this.args.prefix !== 'string') {
+    if (typeof this.args.number !== 'string') {
       throw new Error('[component][OSS::PhoneNumberInput] The parameter @number of type string is mandatory');
+    }
+    if (typeof this.args.onChange !== 'function') {
+      throw new Error('[component][OSS::PhoneNumberInput] The parameter @onChange of type function is mandatory');
     }
     this.selectedCountry = this._countries[0];
     this._loadExistingNumber();
