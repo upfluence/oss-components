@@ -6,7 +6,7 @@ import { countries, CountryData } from '@upfluence/oss-components/utils/country-
 interface OSSPhoneNumberInputArgs {
   prefix: string;
   number: string;
-  onChange: (prefix: string, number: string) => void;
+  onChange(prefix: string, number: string): void;
 }
 
 export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputArgs> {
