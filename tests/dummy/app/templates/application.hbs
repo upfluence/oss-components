@@ -78,9 +78,13 @@
       Loading button
     </LoadingButton>
   </div>
+  <div class="fx-row fx-1">
+    <OSS::PhoneNumberInput @prefix={{this.phonePrefix}} @number={{this.phoneNumber}}
+                           @onChange={{this.onPhoneNumberChange}} />
+  </div>
   <div class="fx-col">
     <OSS::StarRating @rating={{3}} @totalStars={{5}} />
-    <OSS::StarRating @rating={{12}} @totalStars={{15}} @activeColor="red" @passiveColor="blue"/>
+    <OSS::StarRating @rating={{12}} @totalStars={{15}} @activeColor="red" @passiveColor="blue" />
   </div>
   <div class="fx-col fx-gap-px-10">
     <OSS::Banner @icon="fas fa-box-open" @title="Import creators inside your campaign"

@@ -1,20 +1,21 @@
-MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-MMMMMNK0000000XWMMMMMMMMMMMMWX0000000KNMMMMM
-MMMMMk'.......:XMMMMMMMMMMMMXc........xWMMMM
-MMMMMx.       ,KMMMMMMMMMMMMX;        dWMMMM
-MMMMMx.       ,KMMMMMMMMMMMMX;        dWMMMM
-MMMMMx.       ,KMMMMMMMMMMMMX;        dWMMMM
-MMMMMx.       ,KMMMMMMMMMMMMX;        dWMMMM
-MMMMMx.       ,KMMMMMMMMMMMMX;        dWMMMM
-MMMMMx.       ,KMMMMMMMMMMMMX;        dWMMMM
-MMMMMx.       ,KMMMMMMMMMMMMX;        dWMMMM
-MMMMMx.       ,KMMMMMMMMMMMMX;        dWMMMM
-MMMMMKocccccccxNMMMMMMMMMMMMX;        dWMMMM
-MMMMMMMMMMMMMMMMMMMMMMMMMMWNx.       .dMMMMM
-MMMMMN0OOOOOOOKWMMMW0olllc;.         '0MMMMM
-MMMMMK.        NMMMWo               .dWMMMMM
-MMMMM0.        NMMMWo             .;kWMMMMMM
-MMMMWK.        NMMMWo         .;;oONMMMMMMMM
-MMMMMN0OOOOOOOKWMMMM0olllodxO0XWWMMMMMMMMMMM
-MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
-MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+echo "..............................................\033[0m"
+echo "..............................................\033[0m"
+echo ".......\033[0;34m########\033[0m................\033[0;34m########\033[0m......."
+echo ".......\033[0;34m########\033[0m................\033[0;34m########\033[0m......."
+echo ".......\033[0;34m########\033[0m................\033[0;34m########\033[0m......."
+echo ".......\033[0;34m########\033[0m................\033[0;34m########\033[0m......."
+echo ".......\033[0;34m########\033[0m................\033[0;34m########\033[0m......."
+echo ".......\033[0;34m########\033[0m................\033[0;34m########\033[0m......."
+echo ".......\033[0;34m########\033[0m................\033[0;34m########\033[0m......."
+echo ".......\033[0;34m########\033[0m................\033[0;34m########\033[0m......."
+echo ".......\033[0;34m########\033[0m................\033[0;34m########\033[0m......."
+echo "...............................\033[0;34m########\033[0m......."
+echo "..............................\033[0;34m#########\033[0m......."
+echo "............................\033[0;34m##########\033[0m........"
+echo ".......\033[0;31m########\033[0m......\033[0;34m################\033[0m........."
+echo ".......\033[0;31m########\033[0m......\033[0;34m##############\033[0m..........."
+echo ".......\033[0;31m########\033[0m......\033[0;34m###########\033[0m.............."
+echo ".......\033[0;31m########\033[0m......\033[0;34m########\033[0m................."
+echo ".............................................."
+echo ".............................................."
+
