@@ -9,7 +9,7 @@
       {{/if}}
     </div>
     <span class="phone-prefix">{{@prefix}}</span>
-    <Input class="fx-1" type="tel" @value={{@number}} {{on "keydown" this.onlyNumberic}}
+    <Input class="fx-1" type="tel" @value={{@number}} {{on "keydown" this.onlyNumeric}}
            placeholder="81726354" autocomplete="off" />
   </div>
   {{#if this.countrySelectorShown}}
