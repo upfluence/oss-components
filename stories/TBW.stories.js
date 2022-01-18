@@ -16,7 +16,6 @@ const defineStory = (name) => {
   'Base/Borders',
   'Base/Buttons',
   'Base/Cards',
-  'Base/Checkboxes',
   'Base/Datatable',
   'Base/Expanding Search (Check Usage)',
   'Base/Icons',
@@ -43,7 +42,6 @@ const defineStory = (name) => {
   'Components/Progress Bar',
   'Components/Image',
   'Components/Cards',
-  'Components/Checkbox',
   'Components/Input Wrapper',
   'Components/Table'
 ].forEach((story) => defineStory(story));
