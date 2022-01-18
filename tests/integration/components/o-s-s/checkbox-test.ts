@@ -43,18 +43,18 @@ module('Integration | Component | o-s-s/checkbox', function (hooks) {
 
     await click('.upf-checkbox');
 
-    assert.ok(onChangeSpy.neverCalledWith())
+    assert.ok(onChangeSpy.neverCalledWith());
   });
 
-  test('the onChange hooks is called with the new value', async function(assert: Assert) {
+  test('the onChange hooks is called with the new value', async function (assert: Assert) {
     this.checked = false;
     this.onChange = (value: boolean) => {
       assert.equal(value, true);
-    }
+    };
 
     await render(hbs`<OSS::Checkbox @checked={{this.checked}} @onChange={{this.onChange}} />`);
     await click('.upf-checkbox');
 
     assert.expect(1);
-  })
+  });
 });
