@@ -43,12 +43,11 @@ export default class OSSCheckbox extends Component<OSSCheckboxArgs> {
   }
 
   @action
-  noOp(event: MouseEvent): void {
+  updateValue(event: MouseEvent): void {
     event.preventDefault();
     event.stopPropagation();
 
     if (!this.args.disabled) {
-      console.log('f')
       this.args.onChange(!this.args.checked);
     }
   }
