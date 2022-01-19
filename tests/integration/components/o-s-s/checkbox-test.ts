@@ -28,10 +28,21 @@ module('Integration | Component | o-s-s/checkbox', function (hooks) {
 
   test('it renders correctly', async function (assert: Assert) {
     this.checked = false;
-
     await render(hbs`<OSS::Checkbox @checked={{this.checked}} @onChange={{this.onChange}} />`);
 
     assert.dom('.upf-checkbox input').isNotChecked();
+  });
+
+  test('the size arg is handled correctly', async function(assert: Assert) {
+    await render(hbs`<OSS::Checkbox @checked={{true}} @onChange={{this.onChange}} @size="sm" />`);
+
+    assert.dom('.upf-checkbox').hasClass('upf-checkbox--sm');
+  })
+
+  test('it is correctly updated when the checked argument changes', async function(assert: Assert) {
+    this.checked = false;
+    await render(hbs`<OSS::Checkbox @checked={{this.checked}} @onChange={{this.onChange}} />`);
+
     this.set('checked', true);
     assert.dom('.upf-checkbox input').isChecked();
   });

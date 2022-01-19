@@ -2,12 +2,17 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { guidFor } from '@ember/object/internals';
 
-const AVAILABLE_SIZES = ['sm'];
+export const AVAILABLE_SIZES = ['sm'];
+type SizeType = 'sm';
+type SizeDefType = { [key in SizeType]: string };
+const SizeDefinition: SizeDefType = {
+  sm: 'upf-checkbox--sm'
+};
 
 interface OSSCheckboxArgs {
   checked: boolean;
   disabled: boolean;
-  size: string;
+  size: SizeType;
   onChange(value: boolean): void;
 }
 
@@ -35,8 +40,8 @@ export default class OSSCheckbox extends Component<OSSCheckboxArgs> {
       classes.push('upf-checkbox--disabled');
     }
 
-    if (this.args.size && AVAILABLE_SIZES.includes(this.args.size)) {
-      classes.push(`upf-checkbox--${this.args.size}`);
+    if (this.args.size && Object.keys(SizeDefinition).includes(this.args.size as SizeType)) {
+      classes.push(SizeDefinition[this.args.size]);
     }
 
     return classes.join(' ');

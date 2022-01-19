@@ -6,7 +6,7 @@ export default {
   component: 'checkbox',
   argTypes: {
     size: {
-      description: 'Adjust the size of the badge',
+      description: 'Adjust the size of the checkbox',
       table: {
         type: {
           summary: 'sm'
