@@ -49,7 +49,7 @@ const defaultArgs = {
 const Template = (args) => ({
   template: hbs`
     <OSS::Checkbox
-      @checked={{this.checked}} @disabled={{this.disabled}} @sie={{this.size}} @onChange={{this.onChange}} />
+      @checked={{this.checked}} @disabled={{this.disabled}} @size={{this.size}} @onChange={{this.onChange}} />
   `,
   context: args
 });
