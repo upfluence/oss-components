@@ -88,7 +88,7 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
       await render(hbs`<OSS::Badge @icon="fas fa-users" />`);
 
       assert.dom('.upf-badge').exists();
-      assert.dom('.upf-badge i').hasAttribute('class', 'fas fa-users text-color-bright-purple');
+      assert.dom('.upf-badge i').hasAttribute('class', 'fas fa-users');
     });
 
     test('it displays the right text when using the @text arg', async function (assert: Assert) {
