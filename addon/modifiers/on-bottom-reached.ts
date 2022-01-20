@@ -6,6 +6,8 @@ type State = {
   handler: (...args: unknown[]) => unknown;
 };
 
+const TRIGGER_OFFSET = 20;
+
 /**
  * Used to trigger an action a user reaches the bottom of the modified element.
  * This is useful especially for infinite scrolls.
@@ -23,8 +25,11 @@ export default setModifierManager(
       const [callback] = positional;
       state.element = element;
 
-      state.handler = (event: Event) => {
-        if (Math.ceil(state.element.scrollTop) + state.element.clientHeight >= state.element.scrollHeight) {
+      state.handler = (_: Event) => {
+        if (
+          Math.ceil(state.element.scrollTop) + state.element.clientHeight >=
+          state.element.scrollHeight - TRIGGER_OFFSET
+        ) {
           callback(state.element, event);
         }
       };
