@@ -1760,14 +1760,6 @@ export const countries: CountryData[] = [
     name: 'Tanzania, United Republic Of'
   },
   {
-    id: 'UA',
-    alpha2: 'UA',
-    alpha3: 'UKR',
-    countryCallingCodes: ['380'],
-    currencies: ['UAH'],
-    name: 'Ukraine'
-  },
-  {
     id: 'UG',
     alpha2: 'UG',
     alpha3: 'UGA',
