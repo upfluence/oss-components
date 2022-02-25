@@ -11,6 +11,11 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
     assert.dom('.oss-input-container').exists();
   });
 
+  test('it renders the @placeholder', async function (assert) {
+    await render(hbs`<OSS::PasswordInput @value="" @placeholder="test" />`);
+    assert.dom('.oss-input-container input').hasProperty('placeholder', 'test');
+  });
+
   test('it throws an error when the @value parameter is missing', async function (assert) {
     setupOnerror((err: any) => {
       assert.equal(err.message, '[component][OSS::PasswordInput] The @value parameter is mandatory');

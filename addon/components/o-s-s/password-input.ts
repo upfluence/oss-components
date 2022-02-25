@@ -5,6 +5,7 @@ import Component from '@glimmer/component';
 
 interface OSSPasswordInputArgs {
   value: string;
+  placeholder?: string;
   errorMessage?: string;
   validateFormat?: boolean;
   validates?(isPassing: boolean): void;

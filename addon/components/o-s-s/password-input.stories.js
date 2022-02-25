@@ -15,6 +15,16 @@ export default {
       },
       control: { type: 'text' }
     },
+    placeholder: {
+      description: 'Value of the placeholder',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: '' }
+      },
+      control: { type: 'text' }
+    },
     errorMessage: {
       description: 'Error message that is displayed when the password pattern is invalid',
       table: {
@@ -25,7 +35,7 @@ export default {
       },
       control: { type: 'text' }
     },
-    validatesFormat: {
+    validateFormat: {
       description: 'Whether or not to validate the password format with the RegEx',
       table: {
         type: {
@@ -43,14 +53,15 @@ export default {
 
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
-      <OSS::PasswordInput @value={{this.value}} @validatesFormat={{this.validatesFormat}} @validates={{this.validates}} />
+      <OSS::PasswordInput @value={{this.value}} @placeholder={{this.placeholder}} @validateFormat={{this.validateFormat}} @validates={{this.validates}} />
   `,
   context: args
 });
 export const BasicUsage = DefaultUsageTemplate.bind({});
 BasicUsage.args = {
   value: 'myPassword',
+  placeholder: '*****',
   errorMessage: '',
-  validatesFormat: false,
+  validateFormat: false,
   validates: action('validates')
 };
