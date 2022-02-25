@@ -21,7 +21,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: '' }
+        defaultValue: { summary: '*************' }
       },
       control: { type: 'text' }
     },
