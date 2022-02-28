@@ -3,8 +3,11 @@ import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
 
+const DEFAULT_PLACEHOLDER = '*************';
+
 interface OSSPasswordInputArgs {
   value: string;
+  placeholder?: string;
   errorMessage?: string;
   validateFormat?: boolean;
   validates?(isPassing: boolean): void;
@@ -14,6 +17,7 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
   @service intl: any;
   @tracked regexError: string | null = null;
   @tracked visibility: 'text' | 'password' = 'password';
+  @tracked placeholder: string | undefined;
 
   private _pwRegex: RegExp = new RegExp(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/);
   private _runValidation: boolean = true;
@@ -27,6 +31,8 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
     if (typeof args.validateFormat !== 'undefined') {
       this._runValidation = args.validateFormat;
     }
+
+    this.placeholder = args.placeholder || DEFAULT_PLACEHOLDER;
   }
 
   get visibilityIcon(): 'fa-eye' | 'fa-eye-slash' {
