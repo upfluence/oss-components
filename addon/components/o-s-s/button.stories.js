@@ -4,6 +4,7 @@ const SkinTypes = [
   'default',
   'primary',
   'secondary',
+  'tertiary',
   'destructive',
   'alert',
   'success',
@@ -72,7 +73,7 @@ export default {
     square: {
       description: 'Displays the button as a square. Useful for icon buttons.',
       table: {
-        type: { summary: 'true | false' },
+        type: { summary: 'true | false' },
         defaultValue: { summary: 'false' }
       },
       control: {
