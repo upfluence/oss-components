@@ -55,6 +55,12 @@ module('Integration | Component | o-s-s/button', function (hooks) {
       assert.dom('.upf-btn').hasClass('upf-btn--secondary');
     });
 
+    test('when using tertiary skin', async function (assert) {
+      await render(hbs`<OSS::Button @skin="tertiary" @label="Test" />`);
+
+      assert.dom('.upf-btn').hasClass('upf-btn--tertiary');
+    });
+
     test('when using destructive skin', async function (assert) {
       await render(hbs`<OSS::Button @skin="destructive" @label="Test" />`);
 
