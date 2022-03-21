@@ -92,7 +92,8 @@ export const countries: CountryData[] = [
         code: 'HI'
       },
       {
-        name: 'Idaho'
+        name: 'Idaho',
+        code: 'ID'
       },
       {
         name: 'Illinois',
