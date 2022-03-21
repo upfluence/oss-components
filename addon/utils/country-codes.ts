@@ -6,6 +6,7 @@ export type CountryData = {
   countryCallingCodes: string[];
   currencies: string[];
   showOnTop?: boolean;
+  provinces?: { name: string; code: string }[];
 };
 
 export const countries: CountryData[] = [
@@ -16,7 +17,256 @@ export const countries: CountryData[] = [
     countryCallingCodes: ['1'],
     currencies: ['USD'],
     name: 'United States',
-    showOnTop: true
+    showOnTop: true,
+    provinces: [
+      {
+        name: 'Alabama',
+        code: 'AL'
+      },
+      {
+        name: 'Alaska',
+        code: 'AK'
+      },
+      {
+        name: 'American Samoa',
+        code: 'AS'
+      },
+      {
+        name: 'Arizona',
+        code: 'AZ'
+      },
+      {
+        name: 'Arkansas',
+        code: 'AR'
+      },
+      {
+        name: 'Armed Forces Americas',
+        code: 'AA'
+      },
+      {
+        name: 'Armed Forces Europe',
+        code: 'AE'
+      },
+      {
+        name: 'Armed Forces Pacific',
+        code: 'AP'
+      },
+      {
+        name: 'California',
+        code: 'CA'
+      },
+      {
+        name: 'Colorado',
+        code: 'CO'
+      },
+      {
+        name: 'Connecticut',
+        code: 'CT'
+      },
+      {
+        name: 'Delaware',
+        code: 'DE'
+      },
+      {
+        name: 'District of Columbia',
+        code: 'DC'
+      },
+      {
+        name: 'Federated States of Micronesia',
+        code: 'FM'
+      },
+      {
+        name: 'Florida',
+        code: 'FL'
+      },
+      {
+        name: 'Georgia',
+        code: 'GA'
+      },
+      {
+        name: 'Guam',
+        code: 'GU'
+      },
+      {
+        name: 'Hawaii',
+        code: 'HI'
+      },
+      {
+        name: 'Idaho'
+      },
+      {
+        name: 'Illinois',
+        code: 'IL'
+      },
+      {
+        name: 'Indiana',
+        code: 'IN'
+      },
+      {
+        name: 'Iowa',
+        code: 'IA'
+      },
+      {
+        name: 'Kansas',
+        code: 'KS'
+      },
+      {
+        name: 'Kentucky',
+        code: 'KY'
+      },
+      {
+        name: 'Louisiana',
+        code: 'LA'
+      },
+      {
+        name: 'Maine',
+        code: 'ME'
+      },
+      {
+        name: 'Marshall Islands',
+        code: 'MH'
+      },
+      {
+        name: 'Maryland',
+        code: 'MD'
+      },
+      {
+        name: 'Massachusetts',
+        code: 'MA'
+      },
+      {
+        name: 'Michigan',
+        code: 'MI'
+      },
+      {
+        name: 'Minnesota',
+        code: 'MN'
+      },
+      {
+        name: 'Mississippi',
+        code: 'MS'
+      },
+      {
+        name: 'Missouri',
+        code: 'MO'
+      },
+      {
+        name: 'Montana',
+        code: 'MT'
+      },
+      {
+        name: 'Nebraska',
+        code: 'NE'
+      },
+      {
+        name: 'Nevada',
+        code: 'NV'
+      },
+      {
+        name: 'New Hampshire',
+        code: 'NH'
+      },
+      {
+        name: 'New Jersey',
+        code: 'NJ'
+      },
+      {
+        name: 'New Mexico',
+        code: 'NM'
+      },
+      {
+        name: 'New York',
+        code: 'NY'
+      },
+      {
+        name: 'North Carolina',
+        code: 'NC'
+      },
+      {
+        name: 'North Dakota',
+        code: 'ND'
+      },
+      {
+        name: 'Northern Mariana Islands',
+        code: 'MP'
+      },
+      {
+        name: 'Ohio',
+        code: 'OH'
+      },
+      {
+        name: 'Oklahoma',
+        code: 'OK'
+      },
+      {
+        name: 'Oregon',
+        code: 'OR'
+      },
+      {
+        name: 'Palau',
+        code: 'PW'
+      },
+      {
+        name: 'Pennsylvania',
+        code: 'PA'
+      },
+      {
+        name: 'Puerto Rico',
+        code: 'PR'
+      },
+      {
+        name: 'Rhode Island',
+        code: 'RI'
+      },
+      {
+        name: 'South Carolina',
+        code: 'SC'
+      },
+      {
+        name: 'South Dakota',
+        code: 'SD'
+      },
+      {
+        name: 'Tennessee',
+        code: 'TN'
+      },
+      {
+        name: 'Texas',
+        code: 'TX'
+      },
+      {
+        name: 'Utah',
+        code: 'UT'
+      },
+      {
+        name: 'Vermont',
+        code: 'VT'
+      },
+      {
+        name: 'Virgin Islands',
+        code: 'VI'
+      },
+      {
+        name: 'Virginia',
+        code: 'VA'
+      },
+      {
+        name: 'Washington',
+        code: 'WA'
+      },
+      {
+        name: 'West Virginia',
+        code: 'WV'
+      },
+      {
+        name: 'Wisconsin',
+        code: 'WI'
+      },
+      {
+        name: 'Wyoming',
+        code: 'WY'
+      }
+    ]
   },
   {
     id: 'FR',
@@ -34,7 +284,29 @@ export const countries: CountryData[] = [
     countryCallingCodes: ['1 473'],
     currencies: ['GBP'],
     name: 'United Kingdom',
-    showOnTop: true
+    showOnTop: true,
+    provinces: [
+      {
+        name: 'British Forces',
+        code: 'BFP'
+      },
+      {
+        name: 'England',
+        code: 'ENG'
+      },
+      {
+        name: 'Northern Ireland',
+        code: 'NIR'
+      },
+      {
+        name: 'Scotland',
+        code: 'SCT'
+      },
+      {
+        name: 'Wales',
+        code: 'WLS'
+      }
+    ]
   },
   {
     id: 'DE',
@@ -68,7 +340,37 @@ export const countries: CountryData[] = [
     alpha3: 'ARE',
     countryCallingCodes: ['971'],
     currencies: ['AED'],
-    name: 'United Arab Emirates'
+    name: 'United Arab Emirates',
+    provinces: [
+      {
+        name: 'Abu Dhabi',
+        code: 'AZ'
+      },
+      {
+        name: 'Ajman',
+        code: 'AJ'
+      },
+      {
+        name: 'Dubai',
+        code: 'DU'
+      },
+      {
+        name: 'Fujairah',
+        code: 'FU'
+      },
+      {
+        name: 'Ras al-Khaimah',
+        code: 'RK'
+      },
+      {
+        name: 'Sharjah',
+        code: 'SH'
+      },
+      {
+        name: 'Umm al-Quwain',
+        code: 'UQ'
+      }
+    ]
   },
   {
     id: 'AF',
@@ -124,7 +426,105 @@ export const countries: CountryData[] = [
     alpha3: 'ARG',
     countryCallingCodes: ['54'],
     currencies: ['ARS'],
-    name: 'Argentina'
+    name: 'Argentina',
+    provinces: [
+      {
+        name: 'Buenos Aires',
+        code: 'B'
+      },
+      {
+        name: 'Catamarca',
+        code: 'K'
+      },
+      {
+        name: 'Chaco',
+        code: 'H'
+      },
+      {
+        name: 'Chubut',
+        code: 'U'
+      },
+      {
+        name: 'Ciudad Autónoma de Buenos Aires',
+        code: 'C'
+      },
+      {
+        name: 'Córdoba',
+        code: 'X'
+      },
+      {
+        name: 'Corrientes',
+        code: 'W'
+      },
+      {
+        name: 'Entre Ríos',
+        code: 'E'
+      },
+      {
+        name: 'Formosa',
+        code: 'P'
+      },
+      {
+        name: 'Jujuy',
+        code: 'Y'
+      },
+      {
+        name: 'La Pampa',
+        code: 'L'
+      },
+      {
+        name: 'La Rioja',
+        code: 'F'
+      },
+      {
+        name: 'Mendoza',
+        code: 'M'
+      },
+      {
+        name: 'Misiones',
+        code: 'N'
+      },
+      {
+        name: 'Neuquén',
+        code: 'Q'
+      },
+      {
+        name: 'Río Negro',
+        code: 'R'
+      },
+      {
+        name: 'Salta',
+        code: 'A'
+      },
+      {
+        name: 'San Juan',
+        code: 'J'
+      },
+      {
+        name: 'San Luis',
+        code: 'D'
+      },
+      {
+        name: 'Santa Cruz',
+        code: 'Z'
+      },
+      {
+        name: 'Santa Fe',
+        code: 'S'
+      },
+      {
+        name: 'Santiago Del Estero',
+        code: 'G'
+      },
+      {
+        name: 'Tierra Del Fuego',
+        code: 'V'
+      },
+      {
+        name: 'Tucumán',
+        code: 'T'
+      }
+    ]
   },
   {
     id: 'AS',
@@ -148,7 +548,41 @@ export const countries: CountryData[] = [
     alpha3: 'AUS',
     countryCallingCodes: ['61'],
     currencies: ['AUD'],
-    name: 'Australia'
+    name: 'Australia',
+    provinces: [
+      {
+        name: 'Australian Capital Territory',
+        code: 'ACT'
+      },
+      {
+        name: 'New South Wales',
+        code: 'NSW'
+      },
+      {
+        name: 'Northern Territory',
+        code: 'NT'
+      },
+      {
+        name: 'Queensland',
+        code: 'QLD'
+      },
+      {
+        name: 'South Australia',
+        code: 'SA'
+      },
+      {
+        name: 'Tasmania',
+        code: 'TAS'
+      },
+      {
+        name: 'Victoria',
+        code: 'VIC'
+      },
+      {
+        name: 'Western Australia',
+        code: 'WA'
+      }
+    ]
   },
   {
     id: 'AW',
@@ -284,7 +718,117 @@ export const countries: CountryData[] = [
     alpha3: 'BRA',
     countryCallingCodes: ['55'],
     currencies: ['BRL'],
-    name: 'Brazil'
+    name: 'Brazil',
+    provinces: [
+      {
+        name: 'Acre',
+        code: 'AC'
+      },
+      {
+        name: 'Alagoas',
+        code: 'AL'
+      },
+      {
+        name: 'Amapá',
+        code: 'AP'
+      },
+      {
+        name: 'Amazonas',
+        code: 'AM'
+      },
+      {
+        name: 'Bahia',
+        code: 'BA'
+      },
+      {
+        name: 'Ceará',
+        code: 'CE'
+      },
+      {
+        name: 'Distrito Federal',
+        code: 'DF'
+      },
+      {
+        name: 'Espírito Santo',
+        code: 'ES'
+      },
+      {
+        name: 'Goiás',
+        code: 'GO'
+      },
+      {
+        name: 'Maranhão',
+        code: 'MA'
+      },
+      {
+        name: 'Mato Grosso',
+        code: 'MT'
+      },
+      {
+        name: 'Mato Grosso do Sul',
+        code: 'MS'
+      },
+      {
+        name: 'Minas Gerais',
+        code: 'MG'
+      },
+      {
+        name: 'Pará',
+        code: 'PA'
+      },
+      {
+        name: 'Paraíba',
+        code: 'PB'
+      },
+      {
+        name: 'Paraná',
+        code: 'PR'
+      },
+      {
+        name: 'Pernambuco',
+        code: 'PE'
+      },
+      {
+        name: 'Piauí',
+        code: 'PI'
+      },
+      {
+        name: 'Rio de Janeiro',
+        code: 'RJ'
+      },
+      {
+        name: 'Rio Grande do Norte',
+        code: 'RN'
+      },
+      {
+        name: 'Rio Grande do Sul',
+        code: 'RS'
+      },
+      {
+        name: 'Rondônia',
+        code: 'RO'
+      },
+      {
+        name: 'Roraima',
+        code: 'RR'
+      },
+      {
+        name: 'Santa Catarina',
+        code: 'SC'
+      },
+      {
+        name: 'São Paulo',
+        code: 'SP'
+      },
+      {
+        name: 'Sergipe',
+        code: 'SE'
+      },
+      {
+        name: 'Tocantins',
+        code: 'TO'
+      }
+    ]
   },
   {
     id: 'BS',
@@ -332,7 +876,61 @@ export const countries: CountryData[] = [
     alpha3: 'CAN',
     countryCallingCodes: ['1'],
     currencies: ['CAD'],
-    name: 'Canada'
+    name: 'Canada',
+    provinces: [
+      {
+        name: 'Alberta',
+        code: 'AB'
+      },
+      {
+        name: 'British Columbia',
+        code: 'BC'
+      },
+      {
+        name: 'Manitoba',
+        code: 'MB'
+      },
+      {
+        name: 'New Brunswick',
+        code: 'NB'
+      },
+      {
+        name: 'Newfoundland and Labrador',
+        code: 'NL'
+      },
+      {
+        name: 'Northwest Territories',
+        code: 'NT'
+      },
+      {
+        name: 'Nova Scotia',
+        code: 'NS'
+      },
+      {
+        name: 'Nunavut',
+        code: 'NU'
+      },
+      {
+        name: 'Ontario',
+        code: 'ON'
+      },
+      {
+        name: 'Prince Edward Island',
+        code: 'PE'
+      },
+      {
+        name: 'Quebec',
+        code: 'QC'
+      },
+      {
+        name: 'Saskatchewan',
+        code: 'SK'
+      },
+      {
+        name: 'Yukon',
+        code: 'YT'
+      }
+    ]
   },
   {
     id: 'CC',
@@ -388,7 +986,73 @@ export const countries: CountryData[] = [
     alpha3: 'CHL',
     countryCallingCodes: ['56'],
     currencies: ['CLP', 'CLF'],
-    name: 'Chile'
+    name: 'Chile',
+    provinces: [
+      {
+        name: 'Antofagasta',
+        code: 'AN'
+      },
+      {
+        name: 'Araucanía',
+        code: 'AR'
+      },
+      {
+        name: 'Arica and Parinacota',
+        code: 'AP'
+      },
+      {
+        name: 'Atacama',
+        code: 'AT'
+      },
+      {
+        name: 'Aysén',
+        code: 'AI'
+      },
+      {
+        name: 'Biobío',
+        code: 'BI'
+      },
+      {
+        name: 'Coquimbo',
+        code: 'CO'
+      },
+      {
+        name: 'Los Lagos',
+        code: 'LL'
+      },
+      {
+        name: 'Los Ríos',
+        code: 'LR'
+      },
+      {
+        name: 'Magallanes',
+        code: 'MA'
+      },
+      {
+        name: 'Maule',
+        code: 'ML'
+      },
+      {
+        name: 'Ñuble',
+        code: 'NB'
+      },
+      {
+        name: "O'Higgins",
+        code: 'LI'
+      },
+      {
+        name: 'Santiago',
+        code: 'RM'
+      },
+      {
+        name: 'Tarapacá',
+        code: 'TA'
+      },
+      {
+        name: 'Valparaíso',
+        code: 'VS'
+      }
+    ]
   },
   {
     id: 'CM',
@@ -404,7 +1068,133 @@ export const countries: CountryData[] = [
     alpha3: 'CHN',
     countryCallingCodes: ['86'],
     currencies: ['CNY'],
-    name: 'China'
+    name: 'China',
+    provinces: [
+      {
+        name: 'Anhui',
+        code: 'AH'
+      },
+      {
+        name: 'Beijing',
+        code: 'BJ'
+      },
+      {
+        name: 'Chongqing',
+        code: 'CQ'
+      },
+      {
+        name: 'Fujian',
+        code: 'FJ'
+      },
+      {
+        name: 'Gansu',
+        code: 'GS'
+      },
+      {
+        name: 'Guangdong',
+        code: 'GD'
+      },
+      {
+        name: 'Guangxi',
+        code: 'GX'
+      },
+      {
+        name: 'Guizhou',
+        code: 'GZ'
+      },
+      {
+        name: 'Hainan',
+        code: 'HI'
+      },
+      {
+        name: 'Hebei',
+        code: 'HE'
+      },
+      {
+        name: 'Heilongjiang',
+        code: 'HL'
+      },
+      {
+        name: 'Henan',
+        code: 'HA'
+      },
+      {
+        name: 'Hubei',
+        code: 'HB'
+      },
+      {
+        name: 'Hunan',
+        code: 'HN'
+      },
+      {
+        name: 'Inner Mongolia',
+        code: 'NM'
+      },
+      {
+        name: 'Jiangsu',
+        code: 'JS'
+      },
+      {
+        name: 'Jiangxi',
+        code: 'JX'
+      },
+      {
+        name: 'Jilin',
+        code: 'JL'
+      },
+      {
+        name: 'Liaoning',
+        code: 'LN'
+      },
+      {
+        name: 'Ningxia',
+        code: 'NX'
+      },
+      {
+        name: 'Qinghai',
+        code: 'QH'
+      },
+      {
+        name: 'Shaanxi',
+        code: 'SN'
+      },
+      {
+        name: 'Shandong',
+        code: 'SD'
+      },
+      {
+        name: 'Shanghai',
+        code: 'SH'
+      },
+      {
+        name: 'Shanxi',
+        code: 'SX'
+      },
+      {
+        name: 'Sichuan',
+        code: 'SC'
+      },
+      {
+        name: 'Tianjin',
+        code: 'TJ'
+      },
+      {
+        name: 'Xinjiang',
+        code: 'XJ'
+      },
+      {
+        name: 'Xizang',
+        code: 'YZ'
+      },
+      {
+        name: 'Yunnan',
+        code: 'YN'
+      },
+      {
+        name: 'Zhejiang',
+        code: 'ZJ'
+      }
+    ]
   },
   {
     id: 'CO',
@@ -412,7 +1202,141 @@ export const countries: CountryData[] = [
     alpha3: 'COL',
     countryCallingCodes: ['57'],
     currencies: ['COP', 'COU'],
-    name: 'Colombia'
+    name: 'Colombia',
+    provinces: [
+      {
+        name: 'Amazonas',
+        code: 'AMA'
+      },
+      {
+        name: 'Antioquia',
+        code: 'ANT'
+      },
+      {
+        name: 'Arauca',
+        code: 'ARA'
+      },
+      {
+        name: 'Atlántico',
+        code: 'ATL'
+      },
+      {
+        name: 'Bogotá, D.C.',
+        code: 'DC'
+      },
+      {
+        name: 'Bolívar',
+        code: 'BOL'
+      },
+      {
+        name: 'Boyacá',
+        code: 'BOY'
+      },
+      {
+        name: 'Caldas',
+        code: 'CAL'
+      },
+      {
+        name: 'Caquetá',
+        code: 'CAQ'
+      },
+      {
+        name: 'Casanare',
+        code: 'CAS'
+      },
+      {
+        name: 'Cauca',
+        code: 'CAU'
+      },
+      {
+        name: 'Cesar',
+        code: 'CES'
+      },
+      {
+        name: 'Chocó',
+        code: 'CHO'
+      },
+      {
+        name: 'Córdoba',
+        code: 'COR'
+      },
+      {
+        name: 'Cundinamarca',
+        code: 'CUN'
+      },
+      {
+        name: 'Guainía',
+        code: 'GUA'
+      },
+      {
+        name: 'Guaviare',
+        code: 'GUV'
+      },
+      {
+        name: 'Huila',
+        code: 'HUI'
+      },
+      {
+        name: 'La Guajira',
+        code: 'LAG'
+      },
+      {
+        name: 'Magdalena',
+        code: 'MAG'
+      },
+      {
+        name: 'Meta',
+        code: 'MET'
+      },
+      {
+        name: 'Nariño',
+        code: 'NAR'
+      },
+      {
+        name: 'Norte de Santander',
+        code: 'NSA'
+      },
+      {
+        name: 'Putumayo',
+        code: 'PUT'
+      },
+      {
+        name: 'Quindío',
+        code: 'QUI'
+      },
+      {
+        name: 'Risaralda',
+        code: 'RIS'
+      },
+      {
+        name: 'San Andrés, Providencia y Santa Catalina',
+        code: 'SAP'
+      },
+      {
+        name: 'Santander',
+        code: 'SAN'
+      },
+      {
+        name: 'Sucre',
+        code: 'SUC'
+      },
+      {
+        name: 'Tolima',
+        code: 'TOL'
+      },
+      {
+        name: 'Valle del Cauca',
+        code: 'VAC'
+      },
+      {
+        name: 'Vaupés',
+        code: 'VAU'
+      },
+      {
+        name: 'Vichada',
+        code: 'VID'
+      }
+    ]
   },
   {
     id: 'CR',
@@ -532,7 +1456,125 @@ export const countries: CountryData[] = [
     alpha3: 'EGY',
     countryCallingCodes: ['20'],
     currencies: ['EGP'],
-    name: 'Egypt'
+    name: 'Egypt',
+    provinces: [
+      {
+        name: '6th of October',
+        code: 'SU'
+      },
+      {
+        name: 'Al Sharqia',
+        code: 'SHR'
+      },
+      {
+        name: 'Alexandria',
+        code: 'ALX'
+      },
+      {
+        name: 'Aswan',
+        code: 'ASN'
+      },
+      {
+        name: 'Asyut',
+        code: 'AST'
+      },
+      {
+        name: 'Beheira',
+        code: 'BH'
+      },
+      {
+        name: 'Beni Suef',
+        code: 'BNS'
+      },
+      {
+        name: 'Cairo',
+        code: 'C'
+      },
+      {
+        name: 'Dakahlia',
+        code: 'DK'
+      },
+      {
+        name: 'Damietta',
+        code: 'DT'
+      },
+      {
+        name: 'Faiyum',
+        code: 'FYM'
+      },
+      {
+        name: 'Gharbia',
+        code: 'GH'
+      },
+      {
+        name: 'Giza',
+        code: 'GZ'
+      },
+      {
+        name: 'Helwan',
+        code: 'HU'
+      },
+      {
+        name: 'Ismailia',
+        code: 'IS'
+      },
+      {
+        name: 'Kafr el-Sheikh',
+        code: 'KFS'
+      },
+      {
+        name: 'Luxor',
+        code: 'LX'
+      },
+      {
+        name: 'Matrouh',
+        code: 'MT'
+      },
+      {
+        name: 'Minya',
+        code: 'MN'
+      },
+      {
+        name: 'Monufia',
+        code: 'MNF'
+      },
+      {
+        name: 'New Valley',
+        code: 'WAD'
+      },
+      {
+        name: 'North Sinai',
+        code: 'SIN'
+      },
+      {
+        name: 'Port Said',
+        code: 'PTS'
+      },
+      {
+        name: 'Qalyubia',
+        code: 'KB'
+      },
+      {
+        name: 'Qena',
+        code: 'KN'
+      },
+      {
+        name: 'Red Sea',
+        code: 'BA'
+      },
+      {
+        name: 'Sohag',
+        code: 'SHG'
+      },
+      {
+        name: 'South Sinai',
+        code: 'JS'
+      },
+      {
+        name: 'Suez',
+        code: 'SUZ'
+      }
+    ]
   },
   {
     id: 'EH',
@@ -556,7 +1598,217 @@ export const countries: CountryData[] = [
     alpha3: 'ESP',
     countryCallingCodes: ['34'],
     currencies: ['EUR'],
-    name: 'Spain'
+    name: 'Spain',
+    provinces: [
+      {
+        name: 'A Coruña',
+        code: 'C'
+      },
+      {
+        name: 'Álava',
+        code: 'VI'
+      },
+      {
+        name: 'Albacete',
+        code: 'AB'
+      },
+      {
+        name: 'Alicante',
+        code: 'A'
+      },
+      {
+        name: 'Almería',
+        code: 'AL'
+      },
+      {
+        name: 'Asturias',
+        code: 'O'
+      },
+      {
+        name: 'Ávila',
+        code: 'AV'
+      },
+      {
+        name: 'Badajoz',
+        code: 'BA'
+      },
+      {
+        name: 'Balears',
+        code: 'PM'
+      },
+      {
+        name: 'Barcelona',
+        code: 'B'
+      },
+      {
+        name: 'Burgos',
+        code: 'BU'
+      },
+      {
+        name: 'Cáceres',
+        code: 'CC'
+      },
+      {
+        name: 'Cádiz',
+        code: 'CA'
+      },
+      {
+        name: 'Cantabria',
+        code: 'S'
+      },
+      {
+        name: 'Castellón',
+        code: 'CS'
+      },
+      {
+        name: 'Ceuta',
+        code: 'CE'
+      },
+      {
+        name: 'Ciudad Real',
+        code: 'CR'
+      },
+      {
+        name: 'Córdoba',
+        code: 'CO'
+      },
+      {
+        name: 'Cuenca',
+        code: 'CU'
+      },
+      {
+        name: 'Girona',
+        code: 'GI'
+      },
+      {
+        name: 'Granada',
+        code: 'GR'
+      },
+      {
+        name: 'Guadalajara',
+        code: 'GU'
+      },
+      {
+        name: 'Guipúzcoa',
+        code: 'SS'
+      },
+      {
+        name: 'Huelva',
+        code: 'H'
+      },
+      {
+        name: 'Huesca',
+        code: 'HU'
+      },
+      {
+        name: 'Jaén',
+        code: 'J'
+      },
+      {
+        name: 'La Rioja',
+        code: 'LO'
+      },
+      {
+        name: 'Las Palmas',
+        code: 'GC'
+      },
+      {
+        name: 'León',
+        code: 'LE'
+      },
+      {
+        name: 'Lleida',
+        code: 'L'
+      },
+      {
+        name: 'Lugo',
+        code: 'LU'
+      },
+      {
+        name: 'Madrid',
+        code: 'M'
+      },
+      {
+        name: 'Málaga',
+        code: 'MA'
+      },
+      {
+        name: 'Melilla',
+        code: 'ML'
+      },
+      {
+        name: 'Murcia',
+        code: 'MU'
+      },
+      {
+        name: 'Navarra',
+        code: 'NA'
+      },
+      {
+        name: 'Ourense',
+        code: 'OR'
+      },
+      {
+        name: 'Palencia',
+        code: 'P'
+      },
+      {
+        name: 'Pontevedra',
+        code: 'PO'
+      },
+      {
+        name: 'Salamanca',
+        code: 'SA'
+      },
+      {
+        name: 'Santa Cruz de Tenerife',
+        code: 'TF'
+      },
+      {
+        name: 'Segovia',
+        code: 'SG'
+      },
+      {
+        name: 'Sevilla',
+        code: 'SE'
+      },
+      {
+        name: 'Soria',
+        code: 'SO'
+      },
+      {
+        name: 'Tarragona',
+        code: 'T'
+      },
+      {
+        name: 'Teruel',
+        code: 'TE'
+      },
+      {
+        name: 'Toledo',
+        code: 'TO'
+      },
+      {
+        name: 'Valencia',
+        code: 'V'
+      },
+      {
+        name: 'Valladolid',
+        code: 'VA'
+      },
+      {
+        name: 'Vizcaya',
+        code: 'BI'
+      },
+      {
+        name: 'Zamora',
+        code: 'ZA'
+      },
+      {
+        name: 'Zaragoza',
+        code: 'Z'
+      }
+    ]
   },
   {
     id: 'ET',
@@ -708,7 +1960,97 @@ export const countries: CountryData[] = [
     alpha3: 'GTM',
     countryCallingCodes: ['502'],
     currencies: ['GTQ'],
-    name: 'Guatemala'
+    name: 'Guatemala',
+    provinces: [
+      {
+        name: 'Alta Verapaz',
+        code: 'AVE'
+      },
+      {
+        name: 'Baja Verapaz',
+        code: 'BVE'
+      },
+      {
+        name: 'Chimaltenango',
+        code: 'CMT'
+      },
+      {
+        name: 'Chiquimula',
+        code: 'CQM'
+      },
+      {
+        name: 'El Progreso',
+        code: 'EPR'
+      },
+      {
+        name: 'Escuintla',
+        code: 'ESC'
+      },
+      {
+        name: 'Guatemala',
+        code: 'GUA'
+      },
+      {
+        name: 'Huehuetenango',
+        code: 'HUE'
+      },
+      {
+        name: 'Izabal',
+        code: 'IZA'
+      },
+      {
+        name: 'Jalapa',
+        code: 'JAL'
+      },
+      {
+        name: 'Jutiapa',
+        code: 'JUT'
+      },
+      {
+        name: 'Petén',
+        code: 'PET'
+      },
+      {
+        name: 'Quetzaltenango',
+        code: 'QUE'
+      },
+      {
+        name: 'Quiché',
+        code: 'QUI'
+      },
+      {
+        name: 'Retalhuleu',
+        code: 'RET'
+      },
+      {
+        name: 'Sacatepéquez',
+        code: 'SAC'
+      },
+      {
+        name: 'San Marcos',
+        code: 'SMA'
+      },
+      {
+        name: 'Santa Rosa',
+        code: 'SRO'
+      },
+      {
+        name: 'Sololá',
+        code: 'SOL'
+      },
+      {
+        name: 'Suchitepéquez',
+        code: 'SUC'
+      },
+      {
+        name: 'Totonicapán',
+        code: 'TOT'
+      },
+      {
+        name: 'Zacapa',
+        code: 'ZAC'
+      }
+    ]
   },
   {
     id: 'GU',
@@ -740,7 +2082,21 @@ export const countries: CountryData[] = [
     alpha3: 'HKG',
     countryCallingCodes: ['852'],
     currencies: ['HKD'],
-    name: 'Hong Kong'
+    name: 'Hong Kong',
+    provinces: [
+      {
+        name: 'Hong Kong Island',
+        code: 'HK'
+      },
+      {
+        name: 'Kowloon',
+        code: 'KL'
+      },
+      {
+        name: 'New Territories',
+        code: 'NT'
+      }
+    ]
   },
   {
     id: 'HN',
@@ -780,7 +2136,145 @@ export const countries: CountryData[] = [
     alpha3: 'IDN',
     currencies: ['IDR'],
     countryCallingCodes: ['62'],
-    name: 'Indonesia'
+    name: 'Indonesia',
+    provinces: [
+      {
+        name: 'Aceh',
+        code: 'AC'
+      },
+      {
+        name: 'Bali',
+        code: 'BA'
+      },
+      {
+        name: 'Bangka Belitung',
+        code: 'BB'
+      },
+      {
+        name: 'Banten',
+        code: 'BT'
+      },
+      {
+        name: 'Bengkulu',
+        code: 'BE'
+      },
+      {
+        name: 'Gorontalo',
+        code: 'GO'
+      },
+      {
+        name: 'Jakarta',
+        code: 'JK'
+      },
+      {
+        name: 'Jambi',
+        code: 'JA'
+      },
+      {
+        name: 'Jawa Barat',
+        code: 'JB'
+      },
+      {
+        name: 'Jawa Tengah',
+        code: 'JT'
+      },
+      {
+        name: 'Jawa Timur',
+        code: 'JI'
+      },
+      {
+        name: 'Kalimantan Barat',
+        code: 'KB'
+      },
+      {
+        name: 'Kalimantan Selatan',
+        code: 'KS'
+      },
+      {
+        name: 'Kalimantan Tengah',
+        code: 'KT'
+      },
+      {
+        name: 'Kalimantan Timur',
+        code: 'KI'
+      },
+      {
+        name: 'Kalimantan Utara',
+        code: 'KU'
+      },
+      {
+        name: 'Kepulauan Riau',
+        code: 'KR'
+      },
+      {
+        name: 'Lampung',
+        code: 'LA'
+      },
+      {
+        name: 'Maluku',
+        code: 'MA'
+      },
+      {
+        name: 'Maluku Utara',
+        code: 'MU'
+      },
+      {
+        name: 'North Sumatra',
+        code: 'SU'
+      },
+      {
+        name: 'Nusa Tenggara Barat',
+        code: 'NB'
+      },
+      {
+        name: 'Nusa Tenggara Timur',
+        code: 'NT'
+      },
+      {
+        name: 'Papua',
+        code: 'PA'
+      },
+      {
+        name: 'Papua Barat',
+        code: 'PB'
+      },
+      {
+        name: 'Riau',
+        code: 'RI'
+      },
+      {
+        name: 'South Sumatra',
+        code: 'SS'
+      },
+      {
+        name: 'Sulawesi Barat',
+        code: 'SR'
+      },
+      {
+        name: 'Sulawesi Selatan',
+        code: 'SN'
+      },
+      {
+        name: 'Sulawesi Tengah',
+        code: 'ST'
+      },
+      {
+        name: 'Sulawesi Tenggara',
+        code: 'SG'
+      },
+      {
+        name: 'Sulawesi Utara',
+        code: 'SA'
+      },
+      {
+        name: 'West Sumatra',
+        code: 'SB'
+      },
+      {
+        name: 'Yogyakarta',
+        code: 'YO'
+      }
+    ]
   },
   {
     id: 'IE',
@@ -788,7 +2282,113 @@ export const countries: CountryData[] = [
     alpha3: 'IRL',
     countryCallingCodes: ['353'],
     currencies: ['EUR'],
-    name: 'Ireland'
+    name: 'Ireland',
+    provinces: [
+      {
+        name: 'Carlow',
+        code: 'CW'
+      },
+      {
+        name: 'Cavan',
+        code: 'CN'
+      },
+      {
+        name: 'Clare',
+        code: 'CE'
+      },
+      {
+        name: 'Cork',
+        code: 'CO'
+      },
+      {
+        name: 'Donegal',
+        code: 'DL'
+      },
+      {
+        name: 'Dublin',
+        code: 'D'
+      },
+      {
+        name: 'Galway',
+        code: 'G'
+      },
+      {
+        name: 'Kerry',
+        code: 'KY'
+      },
+      {
+        name: 'Kildare',
+        code: 'KE'
+      },
+      {
+        name: 'Kilkenny',
+        code: 'KK'
+      },
+      {
+        name: 'Laois',
+        code: 'LS'
+      },
+      {
+        name: 'Leitrim',
+        code: 'LM'
+      },
+      {
+        name: 'Limerick',
+        code: 'LK'
+      },
+      {
+        name: 'Longford',
+        code: 'LD'
+      },
+      {
+        name: 'Louth',
+        code: 'LH'
+      },
+      {
+        name: 'Mayo',
+        code: 'MO'
+      },
+      {
+        name: 'Meath',
+        code: 'MH'
+      },
+      {
+        name: 'Monaghan',
+        code: 'MN'
+      },
+      {
+        name: 'Offaly',
+        code: 'OY'
+      },
+      {
+        name: 'Roscommon',
+        code: 'RN'
+      },
+      {
+        name: 'Sligo',
+        code: 'SO'
+      },
+      {
+        name: 'Tipperary',
+        code: 'TA'
+      },
+      {
+        name: 'Waterford',
+        code: 'WD'
+      },
+      {
+        name: 'Westmeath',
+        code: 'WH'
+      },
+      {
+        name: 'Wexford',
+        code: 'WX'
+      },
+      {
+        name: 'Wicklow',
+        code: 'WW'
+      }
+    ]
   },
   {
     id: 'IL',
@@ -812,7 +2412,157 @@ export const countries: CountryData[] = [
     alpha3: 'IND',
     countryCallingCodes: ['91'],
     currencies: ['INR'],
-    name: 'India'
+    name: 'India',
+    provinces: [
+      {
+        name: 'Andaman and Nicobar Islands',
+        code: 'AN'
+      },
+      {
+        name: 'Andhra Pradesh',
+        code: 'AP'
+      },
+      {
+        name: 'Arunachal Pradesh',
+        code: 'AR'
+      },
+      {
+        name: 'Assam',
+        code: 'AS'
+      },
+      {
+        name: 'Bihar',
+        code: 'BR'
+      },
+      {
+        name: 'Chandigarh',
+        code: 'CH'
+      },
+      {
+        name: 'Chhattisgarh',
+        code: 'CG'
+      },
+      {
+        name: 'Dadra and Nagar Haveli',
+        code: 'DN'
+      },
+      {
+        name: 'Daman and Diu',
+        code: 'DD'
+      },
+      {
+        name: 'Delhi',
+        code: 'DL'
+      },
+      {
+        name: 'Goa',
+        code: 'GA'
+      },
+      {
+        name: 'Gujarat',
+        code: 'GJ'
+      },
+      {
+        name: 'Haryana',
+        code: 'HR'
+      },
+      {
+        name: 'Himachal Pradesh',
+        code: 'HP'
+      },
+      {
+        name: 'Jammu and Kashmir',
+        code: 'JK'
+      },
+      {
+        name: 'Jharkhand',
+        code: 'JH'
+      },
+      {
+        name: 'Karnataka',
+        code: 'KA'
+      },
+      {
+        name: 'Kerala',
+        code: 'KL'
+      },
+      {
+        name: 'Ladakh',
+        code: 'LA'
+      },
+      {
+        name: 'Lakshadweep',
+        code: 'LD'
+      },
+      {
+        name: 'Madhya Pradesh',
+        code: 'MP'
+      },
+      {
+        name: 'Maharashtra',
+        code: 'MH'
+      },
+      {
+        name: 'Manipur',
+        code: 'MN'
+      },
+      {
+        name: 'Meghalaya',
+        code: 'ML'
+      },
+      {
+        name: 'Mizoram',
+        code: 'MZ'
+      },
+      {
+        name: 'Nagaland',
+        code: 'NL'
+      },
+      {
+        name: 'Odisha',
+        code: 'OR'
+      },
+      {
+        name: 'Puducherry',
+        code: 'PY'
+      },
+      {
+        name: 'Punjab',
+        code: 'PB'
+      },
+      {
+        name: 'Rajasthan',
+        code: 'RJ'
+      },
+      {
+        name: 'Sikkim',
+        code: 'SK'
+      },
+      {
+        name: 'Tamil Nadu',
+        code: 'TN'
+      },
+      {
+        name: 'Telangana',
+        code: 'TS'
+      },
+      {
+        name: 'Tripura',
+        code: 'TR'
+      },
+      {
+        name: 'Uttar Pradesh',
+        code: 'UP'
+      },
+      {
+        name: 'Uttarakhand',
+        code: 'UK'
+      },
+      {
+        name: 'West Bengal',
+        code: 'WB'
+      }
+    ]
   },
   {
     id: 'IQ',
@@ -844,7 +2594,449 @@ export const countries: CountryData[] = [
     alpha3: 'ITA',
     countryCallingCodes: ['39'],
     currencies: ['EUR'],
-    name: 'Italy'
+    name: 'Italy',
+    provinces: [
+      {
+        name: 'Agrigento',
+        code: 'AG'
+      },
+      {
+        name: 'Alessandria',
+        code: 'AL'
+      },
+      {
+        name: 'Ancona',
+        code: 'AN'
+      },
+      {
+        name: 'Aosta',
+        code: 'AO'
+      },
+      {
+        name: 'Arezzo',
+        code: 'AR'
+      },
+      {
+        name: 'Ascoli Piceno',
+        code: 'AP'
+      },
+      {
+        name: 'Asti',
+        code: 'AT'
+      },
+      {
+        name: 'Avellino',
+        code: 'AV'
+      },
+      {
+        name: 'Bari',
+        code: 'BA'
+      },
+      {
+        name: 'Barletta-Andria-Trani',
+        code: 'BT'
+      },
+      {
+        name: 'Belluno',
+        code: 'BL'
+      },
+      {
+        name: 'Benevento',
+        code: 'BN'
+      },
+      {
+        name: 'Bergamo',
+        code: 'BG'
+      },
+      {
+        name: 'Biella',
+        code: 'BI'
+      },
+      {
+        name: 'Bologna',
+        code: 'BO'
+      },
+      {
+        name: 'Bolzano',
+        code: 'BZ'
+      },
+      {
+        name: 'Brescia',
+        code: 'BS'
+      },
+      {
+        name: 'Brindisi',
+        code: 'BR'
+      },
+      {
+        name: 'Cagliari',
+        code: 'CA'
+      },
+      {
+        name: 'Caltanissetta',
+        code: 'CL'
+      },
+      {
+        name: 'Campobasso',
+        code: 'CB'
+      },
+      {
+        name: 'Carbonia-Iglesias',
+        code: 'CI'
+      },
+      {
+        name: 'Caserta',
+        code: 'CE'
+      },
+      {
+        name: 'Catania',
+        code: 'CT'
+      },
+      {
+        name: 'Catanzaro',
+        code: 'CZ'
+      },
+      {
+        name: 'Chieti',
+        code: 'CH'
+      },
+      {
+        name: 'Como',
+        code: 'CO'
+      },
+      {
+        name: 'Cosenza',
+        code: 'CS'
+      },
+      {
+        name: 'Cremona',
+        code: 'CR'
+      },
+      {
+        name: 'Crotone',
+        code: 'KR'
+      },
+      {
+        name: 'Cuneo',
+        code: 'CN'
+      },
+      {
+        name: 'Enna',
+        code: 'EN'
+      },
+      {
+        name: 'Fermo',
+        code: 'FM'
+      },
+      {
+        name: 'Ferrara',
+        code: 'FE'
+      },
+      {
+        name: 'Firenze',
+        code: 'FI'
+      },
+      {
+        name: 'Foggia',
+        code: 'FG'
+      },
+      {
+        name: 'Forlì-Cesena',
+        code: 'FC'
+      },
+      {
+        name: 'Frosinone',
+        code: 'FR'
+      },
+      {
+        name: 'Genova',
+        code: 'GE'
+      },
+      {
+        name: 'Gorizia',
+        code: 'GO'
+      },
+      {
+        name: 'Grosseto',
+        code: 'GR'
+      },
+      {
+        name: 'Imperia',
+        code: 'IM'
+      },
+      {
+        name: 'Isernia',
+        code: 'IS'
+      },
+      {
+        name: "L'Aquila",
+        code: 'AQ'
+      },
+      {
+        name: 'La Spezia',
+        code: 'SP'
+      },
+      {
+        name: 'Latina',
+        code: 'LT'
+      },
+      {
+        name: 'Lecce',
+        code: 'LE'
+      },
+      {
+        name: 'Lecco',
+        code: 'LC'
+      },
+      {
+        name: 'Livorno',
+        code: 'LI'
+      },
+      {
+        name: 'Lodi',
+        code: 'LO'
+      },
+      {
+        name: 'Lucca',
+        code: 'LU'
+      },
+      {
+        name: 'Macerata',
+        code: 'MC'
+      },
+      {
+        name: 'Mantova',
+        code: 'MN'
+      },
+      {
+        name: 'Massa-Carrara',
+        code: 'MS'
+      },
+      {
+        name: 'Matera',
+        code: 'MT'
+      },
+      {
+        name: 'Medio Campidano',
+        code: 'VS'
+      },
+      {
+        name: 'Messina',
+        code: 'ME'
+      },
+      {
+        name: 'Milano',
+        code: 'MI'
+      },
+      {
+        name: 'Modena',
+        code: 'MO'
+      },
+      {
+        name: 'Monza e Brianza',
+        code: 'MB'
+      },
+      {
+        name: 'Napoli',
+        code: 'NA'
+      },
+      {
+        name: 'Novara',
+        code: 'NO'
+      },
+      {
+        name: 'Nuoro',
+        code: 'NU'
+      },
+      {
+        name: 'Ogliastra',
+        code: 'OG'
+      },
+      {
+        name: 'Olbia-Tempio',
+        code: 'OT'
+      },
+      {
+        name: 'Oristano',
+        code: 'OR'
+      },
+      {
+        name: 'Padova',
+        code: 'PD'
+      },
+      {
+        name: 'Palermo',
+        code: 'PA'
+      },
+      {
+        name: 'Parma',
+        code: 'PR'
+      },
+      {
+        name: 'Pavia',
+        code: 'PV'
+      },
+      {
+        name: 'Perugia',
+        code: 'PG'
+      },
+      {
+        name: 'Pesaro e Urbino',
+        code: 'PU'
+      },
+      {
+        name: 'Pescara',
+        code: 'PE'
+      },
+      {
+        name: 'Piacenza',
+        code: 'PC'
+      },
+      {
+        name: 'Pisa',
+        code: 'PI'
+      },
+      {
+        name: 'Pistoia',
+        code: 'PT'
+      },
+      {
+        name: 'Pordenone',
+        code: 'PN'
+      },
+      {
+        name: 'Potenza',
+        code: 'PZ'
+      },
+      {
+        name: 'Prato',
+        code: 'PO'
+      },
+      {
+        name: 'Ragusa',
+        code: 'RG'
+      },
+      {
+        name: 'Ravenna',
+        code: 'RA'
+      },
+      {
+        name: 'Reggio Calabria',
+        code: 'RC'
+      },
+      {
+        name: 'Reggio Emilia',
+        code: 'RE'
+      },
+      {
+        name: 'Rieti',
+        code: 'RI'
+      },
+      {
+        name: 'Rimini',
+        code: 'RN'
+      },
+      {
+        name: 'Roma',
+        code: 'RM'
+      },
+      {
+        name: 'Rovigo',
+        code: 'RO'
+      },
+      {
+        name: 'Salerno',
+        code: 'SA'
+      },
+      {
+        name: 'Sassari',
+        code: 'SS'
+      },
+      {
+        name: 'Savona',
+        code: 'SV'
+      },
+      {
+        name: 'Siena',
+        code: 'SI'
+      },
+      {
+        name: 'Siracusa',
+        code: 'SR'
+      },
+      {
+        name: 'Sondrio',
+        code: 'SO'
+      },
+      {
+        name: 'Taranto',
+        code: 'TA'
+      },
+      {
+        name: 'Teramo',
+        code: 'TE'
+      },
+      {
+        name: 'Terni',
+        code: 'TR'
+      },
+      {
+        name: 'Torino',
+        code: 'TO'
+      },
+      {
+        name: 'Trapani',
+        code: 'TP'
+      },
+      {
+        name: 'Trento',
+        code: 'TN'
+      },
+      {
+        name: 'Treviso',
+        code: 'TV'
+      },
+      {
+        name: 'Trieste',
+        code: 'TS'
+      },
+      {
+        name: 'Udine',
+        code: 'UD'
+      },
+      {
+        name: 'Varese',
+        code: 'VA'
+      },
+      {
+        name: 'Venezia',
+        code: 'VE'
+      },
+      {
+        name: 'Verbano-Cusio-Ossola',
+        code: 'VB'
+      },
+      {
+        name: 'Vercelli',
+        code: 'VC'
+      },
+      {
+        name: 'Verona',
+        code: 'VR'
+      },
+      {
+        name: 'Vibo Valentia',
+        code: 'VV'
+      },
+      {
+        name: 'Vicenza',
+        code: 'VI'
+      },
+      {
+        name: 'Viterbo',
+        code: 'VT'
+      }
+    ]
   },
   {
     id: 'JE',
@@ -876,7 +3068,197 @@ export const countries: CountryData[] = [
     alpha3: 'JPN',
     countryCallingCodes: ['81'],
     currencies: ['JPY'],
-    name: 'Japan'
+    name: 'Japan',
+    provinces: [
+      {
+        name: 'Aichi',
+        code: 'JP-23'
+      },
+      {
+        name: 'Akita',
+        code: 'JP-05'
+      },
+      {
+        name: 'Aomori',
+        code: 'JP-02'
+      },
+      {
+        name: 'Chiba',
+        code: 'JP-12'
+      },
+      {
+        name: 'Ehime',
+        code: 'JP-38'
+      },
+      {
+        name: 'Fukui',
+        code: 'JP-18'
+      },
+      {
+        name: 'Fukuoka',
+        code: 'JP-40'
+      },
+      {
+        name: 'Fukushima',
+        code: 'JP-07'
+      },
+      {
+        name: 'Gifu',
+        code: 'JP-21'
+      },
+      {
+        name: 'Gunma',
+        code: 'JP-10'
+      },
+      {
+        name: 'Hiroshima',
+        code: 'JP-34'
+      },
+      {
+        name: 'Hokkaidō',
+        code: 'JP-01'
+      },
+      {
+        name: 'Hyōgo',
+        code: 'JP-28'
+      },
+      {
+        name: 'Ibaraki',
+        code: 'JP-08'
+      },
+      {
+        name: 'Ishikawa',
+        code: 'JP-17'
+      },
+      {
+        name: 'Iwate',
+        code: 'JP-03'
+      },
+      {
+        name: 'Kagawa',
+        code: 'JP-37'
+      },
+      {
+        name: 'Kagoshima',
+        code: 'JP-46'
+      },
+      {
+        name: 'Kanagawa',
+        code: 'JP-14'
+      },
+      {
+        name: 'Kōchi',
+        code: 'JP-39'
+      },
+      {
+        name: 'Kumamoto',
+        code: 'JP-43'
+      },
+      {
+        name: 'Kyōto',
+        code: 'JP-26'
+      },
+      {
+        name: 'Mie',
+        code: 'JP-24'
+      },
+      {
+        name: 'Miyagi',
+        code: 'JP-04'
+      },
+      {
+        name: 'Miyazaki',
+        code: 'JP-45'
+      },
+      {
+        name: 'Nagano',
+        code: 'JP-20'
+      },
+      {
+        name: 'Nagasaki',
+        code: 'JP-42'
+      },
+      {
+        name: 'Nara',
+        code: 'JP-29'
+      },
+      {
+        name: 'Niigata',
+        code: 'JP-15'
+      },
+      {
+        name: 'Ōita',
+        code: 'JP-44'
+      },
+      {
+        name: 'Okayama',
+        code: 'JP-33'
+      },
+      {
+        name: 'Okinawa',
+        code: 'JP-47'
+      },
+      {
+        name: 'Ōsaka',
+        code: 'JP-27'
+      },
+      {
+        name: 'Saga',
+        code: 'JP-41'
+      },
+      {
+        name: 'Saitama',
+        code: 'JP-11'
+      },
+      {
+        name: 'Shiga',
+        code: 'JP-25'
+      },
+      {
+        name: 'Shimane',
+        code: 'JP-32'
+      },
+      {
+        name: 'Shizuoka',
+        code: 'JP-22'
+      },
+      {
+        name: 'Tochigi',
+        code: 'JP-09'
+      },
+      {
+        name: 'Tokushima',
+        code: 'JP-36'
+      },
+      {
+        name: 'Tōkyō',
+        code: 'JP-13'
+      },
+      {
+        name: 'Tottori',
+        code: 'JP-31'
+      },
+      {
+        name: 'Toyama',
+        code: 'JP-16'
+      },
+      {
+        name: 'Wakayama',
+        code: 'JP-30'
+      },
+      {
+        name: 'Yamagata',
+        code: 'JP-06'
+      },
+      {
+        name: 'Yamaguchi',
+        code: 'JP-35'
+      },
+      {
+        name: 'Yamanashi',
+        code: 'JP-19'
+      }
+    ]
   },
   {
     id: 'KE',
@@ -940,7 +3322,77 @@ export const countries: CountryData[] = [
     alpha3: 'KOR',
     countryCallingCodes: ['82'],
     currencies: ['KRW'],
-    name: 'Korea, Republic Of'
+    name: 'Korea, Republic Of',
+    provinces: [
+      {
+        name: 'Busan',
+        code: 'KR-26'
+      },
+      {
+        name: 'Chungbuk',
+        code: 'KR-43'
+      },
+      {
+        name: 'Chungnam',
+        code: 'KR-44'
+      },
+      {
+        name: 'Daegu',
+        code: 'KR-27'
+      },
+      {
+        name: 'Daejeon',
+        code: 'KR-30'
+      },
+      {
+        name: 'Gangwon',
+        code: 'KR-42'
+      },
+      {
+        name: 'Gwangju',
+        code: 'KR-29'
+      },
+      {
+        name: 'Gyeongbuk',
+        code: 'KR-47'
+      },
+      {
+        name: 'Gyeonggi',
+        code: 'KR-41'
+      },
+      {
+        name: 'Gyeongnam',
+        code: 'KR-48'
+      },
+      {
+        name: 'Incheon',
+        code: 'KR-28'
+      },
+      {
+        name: 'Jeju',
+        code: 'KR-49'
+      },
+      {
+        name: 'Jeonbuk',
+        code: 'KR-45'
+      },
+      {
+        name: 'Jeonnam',
+        code: 'KR-46'
+      },
+      {
+        name: 'Sejong',
+        code: 'KR-50'
+      },
+      {
+        name: 'Seoul',
+        code: 'KR-11'
+      },
+      {
+        name: 'Ulsan',
+        code: 'KR-31'
+      }
+    ]
   },
   {
     id: 'KW',
@@ -1212,7 +3664,137 @@ export const countries: CountryData[] = [
     alpha3: 'MEX',
     countryCallingCodes: ['52'],
     currencies: ['MXN', 'MXV'],
-    name: 'Mexico'
+    name: 'Mexico',
+    provinces: [
+      {
+        name: 'Aguascalientes',
+        code: 'AGS'
+      },
+      {
+        name: 'Baja California',
+        code: 'BC'
+      },
+      {
+        name: 'Baja California Sur',
+        code: 'BCS'
+      },
+      {
+        name: 'Campeche',
+        code: 'CAMP'
+      },
+      {
+        name: 'Chiapas',
+        code: 'CHIS'
+      },
+      {
+        name: 'Chihuahua',
+        code: 'CHIH'
+      },
+      {
+        name: 'Ciudad de México',
+        code: 'DF'
+      },
+      {
+        name: 'Coahuila',
+        code: 'COAH'
+      },
+      {
+        name: 'Colima',
+        code: 'COL'
+      },
+      {
+        name: 'Durango',
+        code: 'DGO'
+      },
+      {
+        name: 'Guanajuato',
+        code: 'GTO'
+      },
+      {
+        name: 'Guerrero',
+        code: 'GRO'
+      },
+      {
+        name: 'Hidalgo',
+        code: 'HGO'
+      },
+      {
+        name: 'Jalisco',
+        code: 'JAL'
+      },
+      {
+        name: 'México',
+        code: 'MEX'
+      },
+      {
+        name: 'Michoacán',
+        code: 'MICH'
+      },
+      {
+        name: 'Morelos',
+        code: 'MOR'
+      },
+      {
+        name: 'Nayarit',
+        code: 'NAY'
+      },
+      {
+        name: 'Nuevo León',
+        code: 'NL'
+      },
+      {
+        name: 'Oaxaca',
+        code: 'OAX'
+      },
+      {
+        name: 'Puebla',
+        code: 'PUE'
+      },
+      {
+        name: 'Querétaro',
+        code: 'QRO'
+      },
+      {
+        name: 'Quintana Roo',
+        code: 'Q ROO'
+      },
+      {
+        name: 'San Luis Potosí',
+        code: 'SLP'
+      },
+      {
+        name: 'Sinaloa',
+        code: 'SIN'
+      },
+      {
+        name: 'Sonora',
+        code: 'SON'
+      },
+      {
+        name: 'Tabasco',
+        code: 'TAB'
+      },
+      {
+        name: 'Tamaulipas',
+        code: 'TAMPS'
+      },
+      {
+        name: 'Tlaxcala',
+        code: 'TLAX'
+      },
+      {
+        name: 'Veracruz',
+        code: 'VER'
+      },
+      {
+        name: 'Yucatán',
+        code: 'YUC'
+      },
+      {
+        name: 'Zacatecas',
+        code: 'ZAC'
+      }
+    ]
   },
   {
     id: 'MY',
@@ -1220,7 +3802,73 @@ export const countries: CountryData[] = [
     alpha3: 'MYS',
     countryCallingCodes: ['60'],
     currencies: ['MYR'],
-    name: 'Malaysia'
+    name: 'Malaysia',
+    provinces: [
+      {
+        name: 'Johor',
+        code: 'JHR'
+      },
+      {
+        name: 'Kedah',
+        code: 'KDH'
+      },
+      {
+        name: 'Kelantan',
+        code: 'KTN'
+      },
+      {
+        name: 'Kuala Lumpur',
+        code: 'KUL'
+      },
+      {
+        name: 'Labuan',
+        code: 'LBN'
+      },
+      {
+        name: 'Melaka',
+        code: 'MLK'
+      },
+      {
+        name: 'Negeri Sembilan',
+        code: 'NSN'
+      },
+      {
+        name: 'Pahang',
+        code: 'PHG'
+      },
+      {
+        name: 'Penang',
+        code: 'PNG'
+      },
+      {
+        name: 'Perak',
+        code: 'PRK'
+      },
+      {
+        name: 'Perlis',
+        code: 'PLS'
+      },
+      {
+        name: 'Putrajaya',
+        code: 'PJY'
+      },
+      {
+        name: 'Sabah',
+        code: 'SBH'
+      },
+      {
+        name: 'Sarawak',
+        code: 'SWK'
+      },
+      {
+        name: 'Selangor',
+        code: 'SGR'
+      },
+      {
+        name: 'Terengganu',
+        code: 'TRG'
+      }
+    ]
   },
   {
     id: 'MZ',
@@ -1268,7 +3916,157 @@ export const countries: CountryData[] = [
     alpha3: 'NGA',
     countryCallingCodes: ['234'],
     currencies: ['NGN'],
-    name: 'Nigeria'
+    name: 'Nigeria',
+    provinces: [
+      {
+        name: 'Abia',
+        code: 'AB'
+      },
+      {
+        name: 'Abuja Federal Capital Territory',
+        code: 'FC'
+      },
+      {
+        name: 'Adamawa',
+        code: 'AD'
+      },
+      {
+        name: 'Akwa Ibom',
+        code: 'AK'
+      },
+      {
+        name: 'Anambra',
+        code: 'AN'
+      },
+      {
+        name: 'Bauchi',
+        code: 'BA'
+      },
+      {
+        name: 'Bayelsa',
+        code: 'BY'
+      },
+      {
+        name: 'Benue',
+        code: 'BE'
+      },
+      {
+        name: 'Borno',
+        code: 'BO'
+      },
+      {
+        name: 'Cross River',
+        code: 'CR'
+      },
+      {
+        name: 'Delta',
+        code: 'DE'
+      },
+      {
+        name: 'Ebonyi',
+        code: 'EB'
+      },
+      {
+        name: 'Edo',
+        code: 'ED'
+      },
+      {
+        name: 'Ekiti',
+        code: 'EK'
+      },
+      {
+        name: 'Enugu',
+        code: 'EN'
+      },
+      {
+        name: 'Gombe',
+        code: 'GO'
+      },
+      {
+        name: 'Imo',
+        code: 'IM'
+      },
+      {
+        name: 'Jigawa',
+        code: 'JI'
+      },
+      {
+        name: 'Kaduna',
+        code: 'KD'
+      },
+      {
+        name: 'Kano',
+        code: 'KN'
+      },
+      {
+        name: 'Katsina',
+        code: 'KT'
+      },
+      {
+        name: 'Kebbi',
+        code: 'KE'
+      },
+      {
+        name: 'Kogi',
+        code: 'KO'
+      },
+      {
+        name: 'Kwara',
+        code: 'KW'
+      },
+      {
+        name: 'Lagos',
+        code: 'LA'
+      },
+      {
+        name: 'Nasarawa',
+        code: 'NA'
+      },
+      {
+        name: 'Niger',
+        code: 'NI'
+      },
+      {
+        name: 'Ogun',
+        code: 'OG'
+      },
+      {
+        name: 'Ondo',
+        code: 'ON'
+      },
+      {
+        name: 'Osun',
+        code: 'OS'
+      },
+      {
+        name: 'Oyo',
+        code: 'OY'
+      },
+      {
+        name: 'Plateau',
+        code: 'PL'
+      },
+      {
+        name: 'Rivers',
+        code: 'RI'
+      },
+      {
+        name: 'Sokoto',
+        code: 'SO'
+      },
+      {
+        name: 'Taraba',
+        code: 'TA'
+      },
+      {
+        name: 'Yobe',
+        code: 'YO'
+      },
+      {
+        name: 'Zamfara',
+        code: 'ZA'
+      }
+    ]
   },
   {
     id: 'NI',
@@ -1324,7 +4122,73 @@ export const countries: CountryData[] = [
     alpha3: 'NZL',
     countryCallingCodes: ['64'],
     currencies: ['NZD'],
-    name: 'New Zealand'
+    name: 'New Zealand',
+    provinces: [
+      {
+        name: 'Auckland',
+        code: 'AUK'
+      },
+      {
+        name: 'Bay of Plenty',
+        code: 'BOP'
+      },
+      {
+        name: 'Canterbury',
+        code: 'CAN'
+      },
+      {
+        name: 'Gisborne',
+        code: 'GIS'
+      },
+      {
+        name: "Hawke's Bay",
+        code: 'HKB'
+      },
+      {
+        name: 'Manawatu-Wanganui',
+        code: 'MWT'
+      },
+      {
+        name: 'Marlborough',
+        code: 'MBH'
+      },
+      {
+        name: 'Nelson',
+        code: 'NSN'
+      },
+      {
+        name: 'Northland',
+        code: 'NTL'
+      },
+      {
+        name: 'Otago',
+        code: 'OTA'
+      },
+      {
+        name: 'Southland',
+        code: 'STL'
+      },
+      {
+        name: 'Taranaki',
+        code: 'TKI'
+      },
+      {
+        name: 'Tasman',
+        code: 'TAS'
+      },
+      {
+        name: 'Waikato',
+        code: 'WKO'
+      },
+      {
+        name: 'Wellington',
+        code: 'WGN'
+      },
+      {
+        name: 'West Coast',
+        code: 'WTC'
+      }
+    ]
   },
   {
     id: 'OM',
@@ -1340,7 +4204,61 @@ export const countries: CountryData[] = [
     alpha3: 'PAN',
     countryCallingCodes: ['507'],
     currencies: ['PAB', 'USD'],
-    name: 'Panama'
+    name: 'Panama',
+    provinces: [
+      {
+        name: 'Bocas del Toro',
+        code: 'PA-1'
+      },
+      {
+        name: 'Chiriquí',
+        code: 'PA-4'
+      },
+      {
+        name: 'Coclé',
+        code: 'PA-2'
+      },
+      {
+        name: 'Colón',
+        code: 'PA-3'
+      },
+      {
+        name: 'Darién',
+        code: 'PA-5'
+      },
+      {
+        name: 'Emberá',
+        code: 'PA-EM'
+      },
+      {
+        name: 'Herrera',
+        code: 'PA-6'
+      },
+      {
+        name: 'Kuna Yala',
+        code: 'PA-KY'
+      },
+      {
+        name: 'Los Santos',
+        code: 'PA-7'
+      },
+      {
+        name: 'Ngöbe-Buglé',
+        code: 'PA-NB'
+      },
+      {
+        name: 'Panamá',
+        code: 'PA-8'
+      },
+      {
+        name: 'Panamá Oeste',
+        code: 'PA-10'
+      },
+      {
+        name: 'Veraguas',
+        code: 'PA-9'
+      }
+    ]
   },
   {
     id: 'PE',
@@ -1348,7 +4266,113 @@ export const countries: CountryData[] = [
     alpha3: 'PER',
     countryCallingCodes: ['51'],
     currencies: ['PEN'],
-    name: 'Peru'
+    name: 'Peru',
+    provinces: [
+      {
+        name: 'Amazonas',
+        code: 'PE-AMA'
+      },
+      {
+        name: 'Áncash',
+        code: 'PE-ANC'
+      },
+      {
+        name: 'Apurímac',
+        code: 'PE-APU'
+      },
+      {
+        name: 'Arequipa',
+        code: 'PE-ARE'
+      },
+      {
+        name: 'Ayacucho',
+        code: 'PE-AYA'
+      },
+      {
+        name: 'Cajamarca',
+        code: 'PE-CAJ'
+      },
+      {
+        name: 'Callao',
+        code: 'PE-CAL'
+      },
+      {
+        name: 'Cuzco',
+        code: 'PE-CUS'
+      },
+      {
+        name: 'Huancavelica',
+        code: 'PE-HUV'
+      },
+      {
+        name: 'Huánuco',
+        code: 'PE-HUC'
+      },
+      {
+        name: 'Ica',
+        code: 'PE-ICA'
+      },
+      {
+        name: 'Junín',
+        code: 'PE-JUN'
+      },
+      {
+        name: 'La Libertad',
+        code: 'PE-LAL'
+      },
+      {
+        name: 'Lambayeque',
+        code: 'PE-LAM'
+      },
+      {
+        name: 'Lima (departamento)',
+        code: 'PE-LIM'
+      },
+      {
+        name: 'Lima (provincia)',
+        code: 'PE-LMA'
+      },
+      {
+        name: 'Loreto',
+        code: 'PE-LOR'
+      },
+      {
+        name: 'Madre de Dios',
+        code: 'PE-MDD'
+      },
+      {
+        name: 'Moquegua',
+        code: 'PE-MOQ'
+      },
+      {
+        name: 'Pasco',
+        code: 'PE-PAS'
+      },
+      {
+        name: 'Piura',
+        code: 'PE-PIU'
+      },
+      {
+        name: 'Puno',
+        code: 'PE-PUN'
+      },
+      {
+        name: 'San Martín',
+        code: 'PE-SAM'
+      },
+      {
+        name: 'Tacna',
+        code: 'PE-TAC'
+      },
+      {
+        name: 'Tumbes',
+        code: 'PE-TUM'
+      },
+      {
+        name: 'Ucayali',
+        code: 'PE-UCA'
+      }
+    ]
   },
   {
     id: 'PF',
@@ -1372,7 +4396,337 @@ export const countries: CountryData[] = [
     alpha3: 'PHL',
     countryCallingCodes: ['63'],
     currencies: ['PHP'],
-    name: 'Philippines'
+    name: 'Philippines',
+    provinces: [
+      {
+        name: 'Abra',
+        code: 'PH-ABR'
+      },
+      {
+        name: 'Agusan del Norte',
+        code: 'PH-AGN'
+      },
+      {
+        name: 'Agusan del Sur',
+        code: 'PH-AGS'
+      },
+      {
+        name: 'Aklan',
+        code: 'PH-AKL'
+      },
+      {
+        name: 'Albay',
+        code: 'PH-ALB'
+      },
+      {
+        name: 'Antique',
+        code: 'PH-ANT'
+      },
+      {
+        name: 'Apayao',
+        code: 'PH-APA'
+      },
+      {
+        name: 'Aurora',
+        code: 'PH-AUR'
+      },
+      {
+        name: 'Basilan',
+        code: 'PH-BAS'
+      },
+      {
+        name: 'Bataan',
+        code: 'PH-BAN'
+      },
+      {
+        name: 'Batanes',
+        code: 'PH-BTN'
+      },
+      {
+        name: 'Batangas',
+        code: 'PH-BTG'
+      },
+      {
+        name: 'Benguet',
+        code: 'PH-BEN'
+      },
+      {
+        name: 'Biliran',
+        code: 'PH-BIL'
+      },
+      {
+        name: 'Bohol',
+        code: 'PH-BOH'
+      },
+      {
+        name: 'Bukidnon',
+        code: 'PH-BUK'
+      },
+      {
+        name: 'Bulacan',
+        code: 'PH-BUL'
+      },
+      {
+        name: 'Cagayan',
+        code: 'PH-CAG'
+      },
+      {
+        name: 'Camarines Norte',
+        code: 'PH-CAN'
+      },
+      {
+        name: 'Camarines Sur',
+        code: 'PH-CAS'
+      },
+      {
+        name: 'Camiguin',
+        code: 'PH-CAM'
+      },
+      {
+        name: 'Capiz',
+        code: 'PH-CAP'
+      },
+      {
+        name: 'Catanduanes',
+        code: 'PH-CAT'
+      },
+      {
+        name: 'Cavite',
+        code: 'PH-CAV'
+      },
+      {
+        name: 'Cebu',
+        code: 'PH-CEB'
+      },
+      {
+        name: 'Cotabato',
+        code: 'PH-NCO'
+      },
+      {
+        name: 'Davao de Oro',
+        code: 'PH-COM'
+      },
+      {
+        name: 'Davao del Norte',
+        code: 'PH-DAV'
+      },
+      {
+        name: 'Davao del Sur',
+        code: 'PH-DAS'
+      },
+      {
+        name: 'Davao Occidental',
+        code: 'PH-DVO'
+      },
+      {
+        name: 'Davao Oriental',
+        code: 'PH-DAO'
+      },
+      {
+        name: 'Dinagat Islands',
+        code: 'PH-DIN'
+      },
+      {
+        name: 'Eastern Samar',
+        code: 'PH-EAS'
+      },
+      {
+        name: 'Guimaras',
+        code: 'PH-GUI'
+      },
+      {
+        name: 'Ifugao',
+        code: 'PH-IFU'
+      },
+      {
+        name: 'Ilocos Norte',
+        code: 'PH-ILN'
+      },
+      {
+        name: 'Ilocos Sur',
+        code: 'PH-ILS'
+      },
+      {
+        name: 'Iloilo',
+        code: 'PH-ILI'
+      },
+      {
+        name: 'Isabela',
+        code: 'PH-ISA'
+      },
+      {
+        name: 'Kalinga',
+        code: 'PH-KAL'
+      },
+      {
+        name: 'La Union',
+        code: 'PH-LUN'
+      },
+      {
+        name: 'Laguna',
+        code: 'PH-LAG'
+      },
+      {
+        name: 'Lanao del Norte',
+        code: 'PH-LAN'
+      },
+      {
+        name: 'Lanao del Sur',
+        code: 'PH-LAS'
+      },
+      {
+        name: 'Leyte',
+        code: 'PH-LEY'
+      },
+      {
+        name: 'Maguindanao',
+        code: 'PH-MAG'
+      },
+      {
+        name: 'Marinduque',
+        code: 'PH-MAD'
+      },
+      {
+        name: 'Masbate',
+        code: 'PH-MAS'
+      },
+      {
+        name: 'Metro Manila',
+        code: 'PH-00'
+      },
+      {
+        name: 'Misamis Occidental',
+        code: 'PH-MSC'
+      },
+      {
+        name: 'Misamis Oriental',
+        code: 'PH-MSR'
+      },
+      {
+        name: 'Mountain Province',
+        code: 'PH-MOU'
+      },
+      {
+        name: 'Negros Occidental',
+        code: 'PH-NEC'
+      },
+      {
+        name: 'Negros Oriental',
+        code: 'PH-NER'
+      },
+      {
+        name: 'Northern Samar',
+        code: 'PH-NSA'
+      },
+      {
+        name: 'Nueva Ecija',
+        code: 'PH-NUE'
+      },
+      {
+        name: 'Nueva Vizcaya',
+        code: 'PH-NUV'
+      },
+      {
+        name: 'Occidental Mindoro',
+        code: 'PH-MDC'
+      },
+      {
+        name: 'Oriental Mindoro',
+        code: 'PH-MDR'
+      },
+      {
+        name: 'Palawan',
+        code: 'PH-PLW'
+      },
+      {
+        name: 'Pampanga',
+        code: 'PH-PAM'
+      },
+      {
+        name: 'Pangasinan',
+        code: 'PH-PAN'
+      },
+      {
+        name: 'Quezon',
+        code: 'PH-QUE'
+      },
+      {
+        name: 'Quirino',
+        code: 'PH-QUI'
+      },
+      {
+        name: 'Rizal',
+        code: 'PH-RIZ'
+      },
+      {
+        name: 'Romblon',
+        code: 'PH-ROM'
+      },
+      {
+        name: 'Samar',
+        code: 'PH-WSA'
+      },
+      {
+        name: 'Sarangani',
+        code: 'PH-SAR'
+      },
+      {
+        name: 'Siquijor',
+        code: 'PH-SIG'
+      },
+      {
+        name: 'Sorsogon',
+        code: 'PH-SOR'
+      },
+      {
+        name: 'South Cotabato',
+        code: 'PH-SCO'
+      },
+      {
+        name: 'Southern Leyte',
+        code: 'PH-SLE'
+      },
+      {
+        name: 'Sultan Kudarat',
+        code: 'PH-SUK'
+      },
+      {
+        name: 'Sulu',
+        code: 'PH-SLU'
+      },
+      {
+        name: 'Surigao del Norte',
+        code: 'PH-SUN'
+      },
+      {
+        name: 'Surigao del Sur',
+        code: 'PH-SUR'
+      },
+      {
+        name: 'Tarlac',
+        code: 'PH-TAR'
+      },
+      {
+        name: 'Tawi-Tawi',
+        code: 'PH-TAW'
+      },
+      {
+        name: 'Zambales',
+        code: 'PH-ZMB'
+      },
+      {
+        name: 'Zamboanga del Norte',
+        code: 'PH-ZAN'
+      },
+      {
+        name: 'Zamboanga del Sur',
+        code: 'PH-ZAS'
+      },
+      {
+        name: 'Zamboanga Sibugay',
+        code: 'PH-ZSI'
+      }
+    ]
   },
   {
     id: 'PK',
@@ -1420,7 +4774,89 @@ export const countries: CountryData[] = [
     alpha3: 'PRT',
     countryCallingCodes: ['351'],
     currencies: ['EUR'],
-    name: 'Portugal'
+    name: 'Portugal',
+    provinces: [
+      {
+        name: 'Açores',
+        code: 'PT-20'
+      },
+      {
+        name: 'Aveiro',
+        code: 'PT-01'
+      },
+      {
+        name: 'Beja',
+        code: 'PT-02'
+      },
+      {
+        name: 'Braga',
+        code: 'PT-03'
+      },
+      {
+        name: 'Bragança',
+        code: 'PT-04'
+      },
+      {
+        name: 'Castelo Branco',
+        code: 'PT-05'
+      },
+      {
+        name: 'Coimbra',
+        code: 'PT-06'
+      },
+      {
+        name: 'Évora',
+        code: 'PT-07'
+      },
+      {
+        name: 'Faro',
+        code: 'PT-08'
+      },
+      {
+        name: 'Guarda',
+        code: 'PT-09'
+      },
+      {
+        name: 'Leiria',
+        code: 'PT-10'
+      },
+      {
+        name: 'Lisboa',
+        code: 'PT-11'
+      },
+      {
+        name: 'Madeira',
+        code: 'PT-30'
+      },
+      {
+        name: 'Portalegre',
+        code: 'PT-12'
+      },
+      {
+        name: 'Porto',
+        code: 'PT-13'
+      },
+      {
+        name: 'Santarém',
+        code: 'PT-14'
+      },
+      {
+        name: 'Setúbal',
+        code: 'PT-15'
+      },
+      {
+        name: 'Viana do Castelo',
+        code: 'PT-16'
+      },
+      {
+        name: 'Vila Real',
+        code: 'PT-17'
+      },
+      {
+        name: 'Viseu',
+        code: 'PT-18'
+      }
+    ]
   },
   {
     id: 'PW',
@@ -1460,7 +4896,177 @@ export const countries: CountryData[] = [
     alpha3: 'ROU',
     countryCallingCodes: ['40'],
     currencies: ['RON'],
-    name: 'Romania'
+    name: 'Romania',
+    provinces: [
+      {
+        name: 'Alba',
+        code: 'AB'
+      },
+      {
+        name: 'Arad',
+        code: 'AR'
+      },
+      {
+        name: 'Argeș',
+        code: 'AG'
+      },
+      {
+        name: 'Bacău',
+        code: 'BC'
+      },
+      {
+        name: 'Bihor',
+        code: 'BH'
+      },
+      {
+        name: 'Bistrița-Năsăud',
+        code: 'BN'
+      },
+      {
+        name: 'Botoșani',
+        code: 'BT'
+      },
+      {
+        name: 'Brăila',
+        code: 'BR'
+      },
+      {
+        name: 'Brașov',
+        code: 'BV'
+      },
+      {
+        name: 'București',
+        code: 'B'
+      },
+      {
+        name: 'Buzău',
+        code: 'BZ'
+      },
+      {
+        name: 'Călărași',
+        code: 'CL'
+      },
+      {
+        name: 'Caraș-Severin',
+        code: 'CS'
+      },
+      {
+        name: 'Cluj',
+        code: 'CJ'
+      },
+      {
+        name: 'Constanța',
+        code: 'CT'
+      },
+      {
+        name: 'Covasna',
+        code: 'CV'
+      },
+      {
+        name: 'Dâmbovița',
+        code: 'DB'
+      },
+      {
+        name: 'Dolj',
+        code: 'DJ'
+      },
+      {
+        name: 'Galați',
+        code: 'GL'
+      },
+      {
+        name: 'Giurgiu',
+        code: 'GR'
+      },
+      {
+        name: 'Gorj',
+        code: 'GJ'
+      },
+      {
+        name: 'Harghita',
+        code: 'HR'
+      },
+      {
+        name: 'Hunedoara',
+        code: 'HD'
+      },
+      {
+        name: 'Ialomița',
+        code: 'IL'
+      },
+      {
+        name: 'Iași',
+        code: 'IS'
+      },
+      {
+        name: 'Ilfov',
+        code: 'IF'
+      },
+      {
+        name: 'Maramureș',
+        code: 'MM'
+      },
+      {
+        name: 'Mehedinți',
+        code: 'MH'
+      },
+      {
+        name: 'Mureș',
+        code: 'MS'
+      },
+      {
+        name: 'Neamț',
+        code: 'NT'
+      },
+      {
+        name: 'Olt',
+        code: 'OT'
+      },
+      {
+        name: 'Prahova',
+        code: 'PH'
+      },
+      {
+        name: 'Sălaj',
+        code: 'SJ'
+      },
+      {
+        name: 'Satu Mare',
+        code: 'SM'
+      },
+      {
+        name: 'Sibiu',
+        code: 'SB'
+      },
+      {
+        name: 'Suceava',
+        code: 'SV'
+      },
+      {
+        name: 'Teleorman',
+        code: 'TR'
+      },
+      {
+        name: 'Timiș',
+        code: 'TM'
+      },
+      {
+        name: 'Tulcea',
+        code: 'TL'
+      },
+      {
+        name: 'Vâlcea',
+        code: 'VL'
+      },
+      {
+        name: 'Vaslui',
+        code: 'VS'
+      },
+      {
+        name: 'Vrancea',
+        code: 'VN'
+      }
+    ]
   },
   {
     id: 'RS',
@@ -1476,7 +5082,337 @@ export const countries: CountryData[] = [
     alpha3: 'RUS',
     countryCallingCodes: ['7', '7 3', '7 4', '7 8'],
     currencies: ['RUB'],
-    name: 'Russian Federation'
+    name: 'Russian Federation',
+    provinces: [
+      {
+        name: 'Altai Krai',
+        code: 'ALT'
+      },
+      {
+        name: 'Altai Republic',
+        code: 'AL'
+      },
+      {
+        name: 'Amur Oblast',
+        code: 'AMU'
+      },
+      {
+        name: 'Arkhangelsk Oblast',
+        code: 'ARK'
+      },
+      {
+        name: 'Astrakhan Oblast',
+        code: 'AST'
+      },
+      {
+        name: 'Belgorod Oblast',
+        code: 'BEL'
+      },
+      {
+        name: 'Bryansk Oblast',
+        code: 'BRY'
+      },
+      {
+        name: 'Chechen Republic',
+        code: 'CE'
+      },
+      {
+        name: 'Chelyabinsk Oblast',
+        code: 'CHE'
+      },
+      {
+        name: 'Chukotka Autonomous Okrug',
+        code: 'CHU'
+      },
+      {
+        name: 'Chuvash Republic',
+        code: 'CU'
+      },
+      {
+        name: 'Irkutsk Oblast',
+        code: 'IRK'
+      },
+      {
+        name: 'Ivanovo Oblast',
+        code: 'IVA'
+      },
+      {
+        name: 'Jewish Autonomous Oblast',
+        code: 'YEV'
+      },
+      {
+        name: 'Kabardino-Balkarian Republic',
+        code: 'KB'
+      },
+      {
+        name: 'Kaliningrad Oblast',
+        code: 'KGD'
+      },
+      {
+        name: 'Kaluga Oblast',
+        code: 'KLU'
+      },
+      {
+        name: 'Kamchatka Krai',
+        code: 'KAM'
+      },
+      {
+        name: 'Karachay–Cherkess Republic',
+        code: 'KC'
+      },
+      {
+        name: 'Kemerovo Oblast',
+        code: 'KEM'
+      },
+      {
+        name: 'Khabarovsk Krai',
+        code: 'KHA'
+      },
+      {
+        name: 'Khanty-Mansi Autonomous Okrug',
+        code: 'KHM'
+      },
+      {
+        name: 'Kirov Oblast',
+        code: 'KIR'
+      },
+      {
+        name: 'Komi Republic',
+        code: 'KO'
+      },
+      {
+        name: 'Kostroma Oblast',
+        code: 'KOS'
+      },
+      {
+        name: 'Krasnodar Krai',
+        code: 'KDA'
+      },
+      {
+        name: 'Krasnoyarsk Krai',
+        code: 'KYA'
+      },
+      {
+        name: 'Kurgan Oblast',
+        code: 'KGN'
+      },
+      {
+        name: 'Kursk Oblast',
+        code: 'KRS'
+      },
+      {
+        name: 'Leningrad Oblast',
+        code: 'LEN'
+      },
+      {
+        name: 'Lipetsk Oblast',
+        code: 'LIP'
+      },
+      {
+        name: 'Magadan Oblast',
+        code: 'MAG'
+      },
+      {
+        name: 'Mari El Republic',
+        code: 'ME'
+      },
+      {
+        name: 'Moscow',
+        code: 'MOW'
+      },
+      {
+        name: 'Moscow Oblast',
+        code: 'MOS'
+      },
+      {
+        name: 'Murmansk Oblast',
+        code: 'MUR'
+      },
+      {
+        name: 'Nizhny Novgorod Oblast',
+        code: 'NIZ'
+      },
+      {
+        name: 'Novgorod Oblast',
+        code: 'NGR'
+      },
+      {
+        name: 'Novosibirsk Oblast',
+        code: 'NVS'
+      },
+      {
+        name: 'Omsk Oblast',
+        code: 'OMS'
+      },
+      {
+        name: 'Orenburg Oblast',
+        code: 'ORE'
+      },
+      {
+        name: 'Oryol Oblast',
+        code: 'ORL'
+      },
+      {
+        name: 'Penza Oblast',
+        code: 'PNZ'
+      },
+      {
+        name: 'Perm Krai',
+        code: 'PER'
+      },
+      {
+        name: 'Primorsky Krai',
+        code: 'PRI'
+      },
+      {
+        name: 'Pskov Oblast',
+        code: 'PSK'
+      },
+      {
+        name: 'Republic of Adygeya',
+        code: 'AD'
+      },
+      {
+        name: 'Republic of Bashkortostan',
+        code: 'BA'
+      },
+      {
+        name: 'Republic of Buryatia',
+        code: 'BU'
+      },
+      {
+        name: 'Republic of Dagestan',
+        code: 'DA'
+      },
+      {
+        name: 'Republic of Ingushetia',
+        code: 'IN'
+      },
+      {
+        name: 'Republic of Kalmykia',
+        code: 'KL'
+      },
+      {
+        name: 'Republic of Karelia',
+        code: 'KR'
+      },
+      {
+        name: 'Republic of Khakassia',
+        code: 'KK'
+      },
+      {
+        name: 'Republic of Mordovia',
+        code: 'MO'
+      },
+      {
+        name: 'Republic of North Ossetia–Alania',
+        code: 'SE'
+      },
+      {
+        name: 'Republic of Tatarstan',
+        code: 'TA'
+      },
+      {
+        name: 'Rostov Oblast',
+        code: 'ROS'
+      },
+      {
+        name: 'Ryazan Oblast',
+        code: 'RYA'
+      },
+      {
+        name: 'Saint Petersburg',
+        code: 'SPE'
+      },
+      {
+        name: 'Sakha Republic (Yakutia)',
+        code: 'SA'
+      },
+      {
+        name: 'Sakhalin Oblast',
+        code: 'SAK'
+      },
+      {
+        name: 'Samara Oblast',
+        code: 'SAM'
+      },
+      {
+        name: 'Saratov Oblast',
+        code: 'SAR'
+      },
+      {
+        name: 'Smolensk Oblast',
+        code: 'SMO'
+      },
+      {
+        name: 'Stavropol Krai',
+        code: 'STA'
+      },
+      {
+        name: 'Sverdlovsk Oblast',
+        code: 'SVE'
+      },
+      {
+        name: 'Tambov Oblast',
+        code: 'TAM'
+      },
+      {
+        name: 'Tomsk Oblast',
+        code: 'TOM'
+      },
+      {
+        name: 'Tula Oblast',
+        code: 'TUL'
+      },
+      {
+        name: 'Tver Oblast',
+        code: 'TVE'
+      },
+      {
+        name: 'Tyumen Oblast',
+        code: 'TYU'
+      },
+      {
+        name: 'Tyva Republic',
+        code: 'TY'
+      },
+      {
+        name: 'Udmurtia',
+        code: 'UD'
+      },
+      {
+        name: 'Ulyanovsk Oblast',
+        code: 'ULY'
+      },
+      {
+        name: 'Vladimir Oblast',
+        code: 'VLA'
+      },
+      {
+        name: 'Volgograd Oblast',
+        code: 'VGG'
+      },
+      {
+        name: 'Vologda Oblast',
+        code: 'VLG'
+      },
+      {
+        name: 'Voronezh Oblast',
+        code: 'VOR'
+      },
+      {
+        name: 'Yamalo-Nenets Autonomous Okrug',
+        code: 'YAN'
+      },
+      {
+        name: 'Yaroslavl Oblast',
+        code: 'YAR'
+      },
+      {
+        name: 'Zabaykalsky Krai',
+        code: 'ZAB'
+      }
+    ]
   },
   {
     id: 'RW',
@@ -1669,7 +5605,321 @@ export const countries: CountryData[] = [
     alpha3: 'THA',
     countryCallingCodes: ['66'],
     currencies: ['THB'],
-    name: 'Thailand'
+    name: 'Thailand',
+    provinces: [
+      {
+        name: 'Amnat Charoen',
+        code: 'TH-37'
+      },
+      {
+        name: 'Ang Thong',
+        code: 'TH-15'
+      },
+      {
+        name: 'Bangkok',
+        code: 'TH-10'
+      },
+      {
+        name: 'Bueng Kan',
+        code: 'TH-38'
+      },
+      {
+        name: 'Buriram',
+        code: 'TH-31'
+      },
+      {
+        name: 'Chachoengsao',
+        code: 'TH-24'
+      },
+      {
+        name: 'Chai Nat',
+        code: 'TH-18'
+      },
+      {
+        name: 'Chaiyaphum',
+        code: 'TH-36'
+      },
+      {
+        name: 'Chanthaburi',
+        code: 'TH-22'
+      },
+      {
+        name: 'Chiang Mai',
+        code: 'TH-50'
+      },
+      {
+        name: 'Chiang Rai',
+        code: 'TH-57'
+      },
+      {
+        name: 'Chon Buri',
+        code: 'TH-20'
+      },
+      {
+        name: 'Chumphon',
+        code: 'TH-86'
+      },
+      {
+        name: 'Kalasin',
+        code: 'TH-46'
+      },
+      {
+        name: 'Kamphaeng Phet',
+        code: 'TH-62'
+      },
+      {
+        name: 'Kanchanaburi',
+        code: 'TH-71'
+      },
+      {
+        name: 'Khon Kaen',
+        code: 'TH-40'
+      },
+      {
+        name: 'Krabi',
+        code: 'TH-81'
+      },
+      {
+        name: 'Lampang',
+        code: 'TH-52'
+      },
+      {
+        name: 'Lamphun',
+        code: 'TH-51'
+      },
+      {
+        name: 'Loei',
+        code: 'TH-42'
+      },
+      {
+        name: 'Lopburi',
+        code: 'TH-16'
+      },
+      {
+        name: 'Mae Hong Son',
+        code: 'TH-58'
+      },
+      {
+        name: 'Maha Sarakham',
+        code: 'TH-44'
+      },
+      {
+        name: 'Mukdahan',
+        code: 'TH-49'
+      },
+      {
+        name: 'Nakhon Nayok',
+        code: 'TH-26'
+      },
+      {
+        name: 'Nakhon Pathom',
+        code: 'TH-73'
+      },
+      {
+        name: 'Nakhon Phanom',
+        code: 'TH-48'
+      },
+      {
+        name: 'Nakhon Ratchasima',
+        code: 'TH-30'
+      },
+      {
+        name: 'Nakhon Sawan',
+        code: 'TH-60'
+      },
+      {
+        name: 'Nakhon Si Thammarat',
+        code: 'TH-80'
+      },
+      {
+        name: 'Nan',
+        code: 'TH-55'
+      },
+      {
+        name: 'Narathiwat',
+        code: 'TH-96'
+      },
+      {
+        name: 'Nong Bua Lam Phu',
+        code: 'TH-39'
+      },
+      {
+        name: 'Nong Khai',
+        code: 'TH-43'
+      },
+      {
+        name: 'Nonthaburi',
+        code: 'TH-12'
+      },
+      {
+        name: 'Pathum Thani',
+        code: 'TH-13'
+      },
+      {
+        name: 'Pattani',
+        code: 'TH-94'
+      },
+      {
+        name: 'Pattaya',
+        code: 'TH-S'
+      },
+      {
+        name: 'Phangnga',
+        code: 'TH-82'
+      },
+      {
+        name: 'Phatthalung',
+        code: 'TH-93'
+      },
+      {
+        name: 'Phayao',
+        code: 'TH-56'
+      },
+      {
+        name: 'Phetchabun',
+        code: 'TH-67'
+      },
+      {
+        name: 'Phetchaburi',
+        code: 'TH-76'
+      },
+      {
+        name: 'Phichit',
+        code: 'TH-66'
+      },
+      {
+        name: 'Phitsanulok',
+        code: 'TH-65'
+      },
+      {
+        name: 'Phra Nakhon Si Ayutthaya',
+        code: 'TH-14'
+      },
+      {
+        name: 'Phrae',
+        code: 'TH-54'
+      },
+      {
+        name: 'Phuket',
+        code: 'TH-83'
+      },
+      {
+        name: 'Prachin Buri',
+        code: 'TH-25'
+      },
+      {
+        name: 'Prachuap Khiri Khan',
+        code: 'TH-77'
+      },
+      {
+        name: 'Ranong',
+        code: 'TH-85'
+      },
+      {
+        name: 'Ratchaburi',
+        code: 'TH-70'
+      },
+      {
+        name: 'Rayong',
+        code: 'TH-21'
+      },
+      {
+        name: 'Roi Et',
+        code: 'TH-45'
+      },
+      {
+        name: 'Sa Kaeo',
+        code: 'TH-27'
+      },
+      {
+        name: 'Sakon Nakhon',
+        code: 'TH-47'
+      },
+      {
+        name: 'Samut Prakan',
+        code: 'TH-11'
+      },
+      {
+        name: 'Samut Sakhon',
+        code: 'TH-74'
+      },
+      {
+        name: 'Samut Songkhram',
+        code: 'TH-75'
+      },
+      {
+        name: 'Saraburi',
+        code: 'TH-19'
+      },
+      {
+        name: 'Satun',
+        code: 'TH-91'
+      },
+      {
+        name: 'Sing Buri',
+        code: 'TH-17'
+      },
+      {
+        name: 'Sisaket',
+        code: 'TH-33'
+      },
+      {
+        name: 'Songkhla',
+        code: 'TH-90'
+      },
+      {
+        name: 'Sukhothai',
+        code: 'TH-64'
+      },
+      {
+        name: 'Suphan Buri',
+        code: 'TH-72'
+      },
+      {
+        name: 'Surat Thani',
+        code: 'TH-84'
+      },
+      {
+        name: 'Surin',
+        code: 'TH-32'
+      },
+      {
+        name: 'Tak',
+        code: 'TH-63'
+      },
+      {
+        name: 'Trang',
+        code: 'TH-92'
+      },
+      {
+        name: 'Trat',
+        code: 'TH-23'
+      },
+      {
+        name: 'Ubon Ratchathani',
+        code: 'TH-34'
+      },
+      {
+        name: 'Udon Thani',
+        code: 'TH-41'
+      },
+      {
+        name: 'Uthai Thani',
+        code: 'TH-61'
+      },
+      {
+        name: 'Uttaradit',
+        code: 'TH-53'
+      },
+      {
+        name: 'Yala',
+        code: 'TH-95'
+      },
+      {
+        name: 'Yasothon',
+        code: 'TH-35'
+      }
+    ]
   },
   {
     id: 'TJ',
@@ -1885,7 +6135,45 @@ export const countries: CountryData[] = [
     alpha3: 'ZAF',
     countryCallingCodes: ['27'],
     currencies: ['ZAR'],
-    name: 'South Africa'
+    name: 'South Africa',
+    provinces: [
+      {
+        name: 'Eastern Cape',
+        code: 'EC'
+      },
+      {
+        name: 'Free State',
+        code: 'FS'
+      },
+      {
+        name: 'Gauteng',
+        code: 'GT'
+      },
+      {
+        name: 'KwaZulu-Natal',
+        code: 'NL'
+      },
+      {
+        name: 'Limpopo',
+        code: 'LP'
+      },
+      {
+        name: 'Mpumalanga',
+        code: 'MP'
+      },
+      {
+        name: 'North West',
+        code: 'NW'
+      },
+      {
+        name: 'Northern Cape',
+        code: 'NC'
+      },
+      {
+        name: 'Western Cape',
+        code: 'WC'
+      }
+    ]
   },
   {
     id: 'ZM',
