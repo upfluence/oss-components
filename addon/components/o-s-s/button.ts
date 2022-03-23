@@ -53,6 +53,8 @@ const ThemeDefinition: ThemeDefType = {
 
 const BASE_CLASS = 'upf-btn';
 const SQUARE_CLASS = 'upf-square-btn';
+const DEFAULT_COUNTER_TIME = 5000;
+const DEFAULT_STEP_COUNTER_TIME = 1000;
 
 interface ButtonArgs {
   skin?: string;
@@ -62,16 +64,29 @@ interface ButtonArgs {
   label?: string;
   theme?: string;
   square?: boolean;
+  countDown?: {
+    callback: () => {};
+    time?: number;
+  };
 }
 
 export default class OSSButton extends Component<ButtonArgs> {
   @tracked DOMElement: HTMLElement | undefined;
+  @tracked intervalID: ReturnType<typeof setInterval> | undefined;
+  @tracked intervalState: boolean = false;
+  @tracked counterTimeLeft: number = 0;
 
   constructor(owner: unknown, args: ButtonArgs) {
     super(owner, args);
 
     if (!args.label && !args.icon) {
       throw new Error('[component][OSS::Button] You must pass either a @label or an @icon argument.');
+    }
+
+    if (args.countDown && !args.countDown.callback) {
+      throw new Error(
+        "[component][OSS::Button] You must pass either a hash with 'callback' value to @countDown argument."
+      );
     }
   }
 
@@ -125,8 +140,43 @@ export default class OSSButton extends Component<ButtonArgs> {
     return this.args.loading || false;
   }
 
+  get counterTimeLeftSecond() {
+    return this.counterTimeLeft / 1000;
+  }
+
   @action
   didInsert(element: HTMLElement): void {
     this.DOMElement = element;
+  }
+
+  @action
+  onclick() {
+    if (!this.args?.countDown) {
+      return;
+    }
+
+    if (this.intervalID) {
+      this.clearInterval(this.intervalID);
+    } else {
+      this.counterTimeLeft = this.args.countDown.time || DEFAULT_COUNTER_TIME;
+      this.intervalState = true;
+
+      this.intervalID = setInterval(this.updateCounter, DEFAULT_STEP_COUNTER_TIME, this);
+    }
+  }
+
+  updateCounter(ctx: any): void {
+    if (ctx.counterTimeLeft > DEFAULT_STEP_COUNTER_TIME) {
+      ctx.counterTimeLeft -= DEFAULT_STEP_COUNTER_TIME;
+    } else {
+      ctx.clearInterval(ctx.intervalID);
+      ctx.args.countDown?.callback();
+    }
+  }
+
+  clearInterval(intervalID: ReturnType<typeof setInterval>) {
+    clearInterval(intervalID);
+    this.intervalID = undefined;
+    this.intervalState = false;
   }
 }

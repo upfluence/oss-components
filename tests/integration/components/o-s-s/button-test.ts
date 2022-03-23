@@ -1,13 +1,15 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, setupOnerror } from '@ember/test-helpers';
+import { render, click, waitUntil, setupOnerror } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
+
+import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/button', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it fails if label and icon are missing', async function (assert) {
-    setupOnerror((err) => {
+  test('it fails if @label and @icon are missing', async function (assert) {
+    setupOnerror((err: { message: string }) => {
       assert.equal(err.message, '[component][OSS::Button] You must pass either a @label or an @icon argument.');
     });
 
@@ -129,7 +131,7 @@ module('Integration | Component | o-s-s/button', function (hooks) {
       await render(hbs`<OSS::Button @size="sm" @loading="true" @label="Test" />`);
       const btn = document.querySelector('.upf-btn');
 
-      assert.equal(btn.children[0].className, 'fas fa-circle-notch fa-spin');
+      assert.equal(btn?.children[0].className, 'fas fa-circle-notch fa-spin');
     });
   });
 
@@ -146,6 +148,56 @@ module('Integration | Component | o-s-s/button', function (hooks) {
       await render(hbs`<OSS::Button @label="Test" @theme="dark" />`);
 
       assert.dom('.upf-btn').hasClass('upf-btn--dark-bg');
+    });
+  });
+
+  module('it renders countDown', function (hooks) {
+    hooks.beforeEach(function () {
+      this.intlService = this.owner.lookup('service:intl');
+    });
+
+    test('it fails if callback missing for @countDown argument', async function (assert) {
+      setupOnerror((err: { message: string }) => {
+        assert.equal(
+          err.message,
+          "[component][OSS::Button] You must pass either a hash with 'callback' value to @countDown argument."
+        );
+      });
+
+      await render(hbs`<OSS::Button @label="Test" @countDown={{hash time=1000}} />`);
+    });
+
+    test('when clicking, it trigger the countdown', async function (assert) {
+      this.callback = () => {};
+      await render(hbs`<OSS::Button @label="Test" @countDown={{hash callback=this.callback}} />`);
+      await click('.upf-btn--default');
+
+      assert.dom('.upf-btn--default').hasText(this.intlService.t('oss-components.button.cancel_message', { time: 5 }));
+    });
+
+    test('when clicking, it executes callback at the end of the countdown', async function (assert) {
+      this.callback = sinon.stub().callsFake(() => {});
+      await render(hbs`<OSS::Button @label="Test" @countDown={{hash callback=this.callback time=1000}} />`);
+      await click('.upf-btn--default');
+
+      assert.dom('.upf-btn--default').hasText(this.intlService.t('oss-components.button.cancel_message', { time: 1 }));
+      await waitUntil(
+        function () {
+          return document.querySelector('.upf-btn--default')?.textContent?.includes('Test');
+        },
+        { timeout: 2000 }
+      );
+
+      assert.true(this.callback.calledOnce);
+    });
+
+    test('when clicking again, it cancels the countdown', async function (assert) {
+      this.callback = () => {};
+      await render(hbs`<OSS::Button @label="Test" @countDown={{hash callback=this.callback}} />`);
+      await click('.upf-btn--default');
+      await click('.upf-btn--default');
+
+      assert.dom('.upf-btn--default').hasText('Test');
     });
   });
 });
