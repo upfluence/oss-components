@@ -40,4 +40,9 @@ export default class ApplicationController extends Controller {
       defer.resolve();
     }, 1000);
   }
+
+  @action
+  countDownAction() {
+    console.log('countDownAction');
+  }
 }

@@ -90,6 +90,18 @@ export default {
       },
       options: ThemeTypes,
       control: { type: 'select' }
+    },
+    countDown: {
+      description:
+        "Definition of countDown object, it takes 2 keys : 'callback' (mandatory) - function to call at the end - and 'time' " +
+        "(optional) - time between execute callback -. Key 'time' is representing entire second in millisecond, for exemple 1000, 2000 or 5000",
+      table: {
+        type: {
+          summary: 'object'
+        },
+        defaultValue: { summary: '{ callback: () => {}, time: 5000 }' }
+      },
+      control: { type: 'object' }
     }
   }
 };
@@ -101,7 +113,8 @@ const defaultArgs = {
   label: 'Label',
   icon: 'far fa-envelope-open',
   theme: 'light',
-  square: false
+  square: false,
+  countDown: undefined
 };
 
 const Template = (args) => ({
@@ -109,7 +122,7 @@ const Template = (args) => ({
     <div style="padding: 2em; {{if (eq this.theme 'dark') 'background-color: #060666'}}">
     <OSS::Button
       @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
-      @theme={{this.theme}} @square={{this.square}} />
+      @theme={{this.theme}} @square={{this.square}} @countDown={{this.countDown}} />
     </div>
   `,
   context: args
@@ -118,4 +131,17 @@ const Template = (args) => ({
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs
+};
+
+export const WithCountDown = Template.bind({});
+WithCountDown.args = {
+  ...defaultArgs,
+  ...{
+    countDown: {
+      callback: function () {
+        alert('Count down finish');
+      },
+      time: 3000
+    }
+  }
 };

@@ -9,3 +9,5 @@ oss-components:
     empty_img_alt: Empty content
   password-input:
     regex_error: 'Your password should have at least 8 characters with at least one lower-case character, one upper-case character and one digit.'
+  button:
+    cancel_message: Click to cancel {time}s...

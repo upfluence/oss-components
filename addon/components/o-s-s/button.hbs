@@ -1,5 +1,7 @@
-<button type="button" class={{this.computedClass}} {{did-insert this.didInsert}} ...attributes>
-  {{#if this.loadingState}}
+<button type="button" class={{this.computedClass}} {{did-insert this.didInsert}} {{on "click" this.onclick}} ...attributes>
+  {{#if this.intervalState}}
+    {{t "oss-components.button.cancel_message" time=this.counterTimeLeftSecond}}
+  {{else if this.loadingState}}
     <i class="fas fa-circle-notch fa-spin"></i>
   {{else}}
     {{#if @icon}}
