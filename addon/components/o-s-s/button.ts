@@ -170,7 +170,7 @@ export default class OSSButton extends Component<ButtonArgs> {
       ctx.counterTimeLeft -= DEFAULT_STEP_COUNTER_TIME;
     } else {
       ctx.clearInterval(ctx.intervalID);
-      ctx.args.countDown?.callback();
+      ctx.args.countDown.callback();
     }
   }
 
