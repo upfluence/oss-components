@@ -10,6 +10,7 @@ export const parameters = {
         'Getting Started',
         ['Introduction', 'Developer Guidelines'],
         'Core',
+        'CoreV2',
         ['Colors', 'Typography', 'Icons', 'Variables'],
         'Base',
         ['Alerts', 'Tags'],
