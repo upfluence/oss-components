@@ -6,10 +6,10 @@ import ToastService from '@upfluence/oss-components/services/toast';
 
 interface OSSCodeBlockArgs {
   content: string;
-  copyable: boolean;
-  scrollable: boolean;
-  collapseHeight: number;
-  onCopyMessage: string;
+  copyable?: boolean;
+  scrollable?: boolean;
+  collapseHeight?: number;
+  onCopyMessage?: string;
 }
 
 export default class OSSCodeBlock extends Component<OSSCodeBlockArgs> {
