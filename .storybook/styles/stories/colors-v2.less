@@ -1,0 +1,96 @@
+.palette-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  border-radius: 16px;
+  border: 1px solid var(--color-gray-200);
+
+  div:first-child {
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+  }
+
+  div:last-child {
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+  }
+}
+
+.color-container-v2 {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: end;
+  padding: 6px 32px;
+  flex: 1;
+}
+
+@colors: primary, gray, success, info, warning, error, orange, yellow, lime, cyan, blue, violet;
+.generate-colors(@i: length(@colors)) when (@i > 0) {
+  .generate-colors(@i - 1);
+  @color: extract(@colors, @i);
+  .color-@{color}-50 {
+    background-color: var(~"--color-@{color}-50");
+    color: var(--color-black);
+  }
+  .color-@{color}-400 {
+    background-color: var(~"--color-@{color}-400");
+    color: var(--color-black);
+  }
+  .color-@{color}-500 {
+    background-color: var(~"--color-@{color}-500");
+    color: var(--color-white);
+  }
+  .color-@{color}-600 {
+    background-color: var(~"--color-@{color}-600");
+    color: var(--color-white);
+  }
+  .color-@{color}-900 {
+    background-color: var(~"--color-@{color}-900");
+    color: var(--color-white);
+  }
+}
+.generate-colors();
+
+@colors-socials: instagram, facebook, youtube, twitter, tiktok, blog, twitch, pinterest;
+.generate-colors-socials(@i: length(@colors-socials)) when (@i > 0) {
+  .generate-colors-socials(@i - 1);
+  @color-socials: extract(@colors-socials, @i);
+  .color-@{color-socials}-50 {
+    background-color: var(~"--color-@{color-socials}-50");
+    color: var(--color-black);
+  }
+  .color-@{color-socials}-500 {
+    background-color: var(~"--color-@{color-socials}-500");
+    color: var(--color-white);
+  }
+}
+.generate-colors-socials();
+
+.color-primary-400 {
+  color: var(--color-white);
+}
+.color-accent {
+  background-color: var(--color-accent);
+  color: var(--color-white);
+}
+.color-white {
+  background-color: var(--color-white);
+  color: var(--color-black);
+}
+.color-black {
+  background-color: var(--color-black);
+  color: var(--color-white);
+}
+.color-gray-100 {
+  background-color: var(--color-gray-100);
+  color: var(--color-black);
+}
+.color-gray-200 {
+  background-color: var(--color-gray-200);
+  color: var(--color-black);
+}
+.color-gray-300 {
+  background-color: var(--color-gray-300);
+  color: var(--color-black);
+}
