@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, click, waitUntil, setupOnerror } from '@ember/test-helpers';
+import { render, click, setupOnerror, waitUntil } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 import sinon from 'sinon';
@@ -176,16 +176,18 @@ module('Integration | Component | o-s-s/button', function (hooks) {
     });
 
     test('when clicking, it executes callback at the end of the countdown', async function (assert) {
-      this.callback = sinon.stub().callsFake(() => {});
-      await render(hbs`<OSS::Button @label="Test" @countDown={{hash callback=this.callback time=1000}} />`);
+      this.callback = sinon.stub().callsFake(() => console.log('toto'));
+      await render(hbs`<OSS::Button @label="Test" @countDown={{hash callback=this.callback time=50 step=10}} />`);
       await click('.upf-btn--default');
 
-      assert.dom('.upf-btn--default').hasText(this.intlService.t('oss-components.button.cancel_message', { time: 1 }));
+      assert
+        .dom('.upf-btn--default')
+        .hasText(this.intlService.t('oss-components.button.cancel_message', { time: 0.05 }));
       await waitUntil(
         function () {
           return document.querySelector('.upf-btn--default')?.textContent?.includes('Test');
         },
-        { timeout: 2000 }
+        { timeout: 1000 }
       );
 
       assert.true(this.callback.calledOnce);
