@@ -1,0 +1,25 @@
+<div class="code-block" style={{this.heightStyle}} ...attributes>
+  <div class="code-container {{if @scrollable 'scrollable' 'scroll-shadow scroll-shadow--default'}}">
+    <pre class="code">
+    {{#each this.codeLineArray as |codeline|}}
+      <code>{{codeline}}</code>
+    {{/each}}
+    </pre>
+  </div>
+  {{#if @copyable}}
+    <OSS::Button class="floating-copy-btn {{if @scrollable 'position-fix'}}" @skin="secondary"
+                 @label={{t "oss-components.code-block.copy"}}
+                 @icon="fa fa-copy" {{on "click" this.copyToClipboard}} />
+  {{/if}}
+  {{#if this.collapsable}}
+    {{#if this.collapsed}}
+      <OSS::Button class="floating-collapse-btn" @skin="default" @size="xs"
+                   @label={{t "oss-components.code-block.uncollapse"}}
+                   @icon="fas fa-angle-down" {{on "click" this.uncollapse}} />
+    {{else}}
+      <OSS::Button class="floating-collapse-btn" @skin="default" @size="xs"
+                   @label={{t "oss-components.code-block.collapse"}}
+                   @icon="fas fa-angle-up" {{on "click" this.collapse}} />
+    {{/if}}
+  {{/if}}
+</div>

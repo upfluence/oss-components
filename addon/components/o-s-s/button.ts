@@ -67,6 +67,7 @@ interface ButtonArgs {
   countDown?: {
     callback: () => {};
     time?: number;
+    step?: number;
   };
 }
 
@@ -140,8 +141,12 @@ export default class OSSButton extends Component<ButtonArgs> {
     return this.args.loading || false;
   }
 
-  get counterTimeLeftSecond() {
+  get counterTimeLeftSecond(): number {
     return this.counterTimeLeft / 1000;
+  }
+
+  get stepCounterTime(): number {
+    return this.args.countDown?.step || DEFAULT_STEP_COUNTER_TIME;
   }
 
   @action
@@ -161,13 +166,13 @@ export default class OSSButton extends Component<ButtonArgs> {
       this.counterTimeLeft = this.args.countDown.time || DEFAULT_COUNTER_TIME;
       this.intervalState = true;
 
-      this.intervalID = setInterval(this.updateCounter, DEFAULT_STEP_COUNTER_TIME, this);
+      this.intervalID = setInterval(this.updateCounter, this.stepCounterTime, this);
     }
   }
 
   updateCounter(ctx: any): void {
-    if (ctx.counterTimeLeft > DEFAULT_STEP_COUNTER_TIME) {
-      ctx.counterTimeLeft -= DEFAULT_STEP_COUNTER_TIME;
+    if (ctx.counterTimeLeft > this.stepCounterTime) {
+      ctx.counterTimeLeft -= this.stepCounterTime;
     } else {
       ctx.clearInterval(ctx.intervalID);
       ctx.args.countDown.callback();

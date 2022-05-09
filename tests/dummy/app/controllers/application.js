@@ -10,6 +10,8 @@ export default class ApplicationController extends Controller {
   @tracked phonePrefix = '+33';
   @tracked phoneNumber = '782828282';
 
+  code4CodeBlock = testScript;
+
   @action
   onPhoneNumberChange(prefix, phoneNumber) {
     console.log('onPhoneNumberChange', prefix, phoneNumber);
@@ -46,3 +48,40 @@ export default class ApplicationController extends Controller {
     console.log('countDownAction');
   }
 }
+
+const testScript = `import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { render } from '@ember/test-helpers';
+import hbs from 'htmlbars-inline-precompile';
+
+module('Integration | Component | o-s-s/code-block', function(hooks) {
+  setupRenderingTest(hooks);
+
+  test('it renders', async function(assert) {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.set('myAction', function(val) { ... });
+    assert.equal(this.element.textContent.trim(), '');
+    assert.equal(this.element.textContent.trim(), 'template block text');
+  });
+
+  test('it renders', async function(assert) {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.set('myAction', function(val) { ... });
+    assert.equal(this.element.textContent.trim(), '');
+    assert.equal(this.element.textContent.trim(), 'template block text');
+  });
+
+  test('it renders', async function(assert) {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.set('myAction', function(val) { ... });
+    assert.equal(this.element.textContent.trim(), '');
+    assert.equal(this.element.textContent.trim(), 'template block text');
+  });
+
+  test('it renders', async function(assert) {
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.set('myAction', function(val) { ... });
+    assert.equal(this.element.textContent.trim(), '');
+    assert.equal(this.element.textContent.trim(), 'template block text');
+  });
+});`;

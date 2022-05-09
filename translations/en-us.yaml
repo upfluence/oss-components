@@ -11,3 +11,7 @@ oss-components:
     regex_error: 'Your password should have at least 8 characters with at least one lower-case character, one upper-case character and one digit.'
   button:
     cancel_message: Click to cancel {time}s...
+  code-block:
+    collapse: Collapse
+    uncollapse: Uncollapse
+    copy: Copy

@@ -74,7 +74,7 @@ module('Integration | Component | o-s-s/input-container', function (hooks) {
     test('Passing an @onChange method works and is triggered on input changes', async function (assert) {
       await renderComponentWithParameters();
       let inputElement: Element = find('.upf-input');
-      await typeIn(inputElement, 'hello world');
+      await typeIn(inputElement, 'a');
       assert.ok(onValueChange.called);
     });
   });
