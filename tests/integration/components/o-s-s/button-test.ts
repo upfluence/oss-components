@@ -176,7 +176,7 @@ module('Integration | Component | o-s-s/button', function (hooks) {
     });
 
     test('when clicking, it executes callback at the end of the countdown', async function (assert) {
-      this.callback = sinon.stub().callsFake(() => console.log('toto'));
+      this.callback = sinon.stub().callsFake(() => {});
       await render(hbs`<OSS::Button @label="Test" @countDown={{hash callback=this.callback time=50 step=10}} />`);
       await click('.upf-btn--default');
 
