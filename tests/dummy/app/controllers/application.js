@@ -9,8 +9,18 @@ export default class ApplicationController extends Controller {
   @tracked loading = false;
   @tracked phonePrefix = '+33';
   @tracked phoneNumber = '782828282';
+  @tracked showModal: boolean = false;
 
   code4CodeBlock = testScript;
+
+  @action openModal(e) {
+    e.stopPropagation();
+    this.showModal = true;
+  }
+
+  @action closeModal() {
+    this.showModal = false;
+  }
 
   @action
   onPhoneNumberChange(prefix, phoneNumber) {
