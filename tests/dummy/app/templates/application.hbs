@@ -2,7 +2,28 @@
   <OSS::CodeBlock @content={{this.code4CodeBlock}} @scrollable={{true}}
                   @collapseHeight={{200}} @onCopyMessage="Copied to clipboard!" />
 </div>
-
+<div class="fx-col fx-gap-px-10 margin-md">
+  <OSS::Button @skin="primary" @size="md" @label="Open MODAL" @icon="fa fa-unicorn"
+               {{on "click" this.openModal}} />
+  {{#if this.showModal}}
+    <OSS::ModalDialog @title="Example modal" @subtitle="subtitle" @close={{this.closeModal}} @size="md">
+      <:content>
+        <div style="height: 200px; background-color: white">
+          azeazeazeaze
+        </div>
+      </:content>
+      <:footer>
+        <div class="fx-1">
+          <i class="fa fa-info"></i><a href="">More info</a>
+        </div>
+        <div class="fx-row fx-gap-px-10">
+          <OSS::Button @skin="default" @label="Close" {{on "click" this.closeModal}} />
+          <OSS::Button @skin="secondary" @label="Save" />
+        </div>
+      </:footer>
+    </OSS::ModalDialog>
+  {{/if}}
+</div>
 <div class="fx-col fx-gap-px-10 margin-md">
   <div class="fx-row fx-gap-px-10">
     <div class="fx-col fx-gap-px-10">
