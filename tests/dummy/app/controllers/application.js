@@ -13,12 +13,14 @@ export default class ApplicationController extends Controller {
 
   code4CodeBlock = testScript;
 
-  @action openModal(e) {
+  @action
+  openModal(e) {
     e.stopPropagation();
     this.showModal = true;
   }
 
-  @action closeModal() {
+  @action
+  closeModal() {
     this.showModal = false;
   }
 
