@@ -17,7 +17,6 @@ enum ToastType {
  * @param {Function} onclick - A function to be called when the toast is clicked.
  */
 export type ToastOptions = {
-  closeButton?: boolean;
   tapToDismiss?: boolean;
   onclick?: Function;
   timeout?: number | 'none';
@@ -28,7 +27,6 @@ type ToastFunction = (message: string, title: string, opts?: ToastOptions) => vo
 const DEFAULT_TOAST_TIMEOUT = 5000;
 
 const DEFAULT_OPTIONS: ToastOptions = Object.freeze({
-  closeButton: true,
   tapToDismiss: true,
   onclick: undefined,
   timeout: DEFAULT_TOAST_TIMEOUT
@@ -85,28 +83,36 @@ export default class Toast extends Service {
     };
   }
 
-  private _buildToast(type: ToastType, message: string, title: string | null | undefined, opts: ToastOptions): void {
+  private _buildToast(type: ToastType, message: string, title: string | undefined, opts: ToastOptions): void {
     const container: Element = this._buildContainer();
-    const toast: Element = this._buildElement('div', ['toast', 'toast--hidden', `toast-${type}`]);
-    let toastChildren: Element[] = [this._buildElement('div', ['toast-message'], message)];
 
-    if (title && !isEmpty(title)) {
-      toastChildren.splice(0, 0, this._buildElement('div', ['toast-title'], title));
+    const toast: Element = this._buildElement('div', ['toast', 'toast--hidden', `toast--${type}`]);
+
+    const mainContainer: Element = this._buildElement('div', ['main-container']);
+    const counter: Element = this._buildElement('div', ['counter']);
+
+    const iconContainer: Element = this._buildElement('span', ['icon']);
+    const icon: Element = this._buildElement('i', ['far', 'fa-info-circle']);
+    iconContainer.append(icon);
+
+    const closeButton: Element = this._buildElement('button', [], '<i class="far fa-times"></i>');
+
+    const textContainer = this._buildElement('div', ['text-container']);
+    if (title) {
+      const mainTitle: Element = this._buildElement('span', ['title'], title);
+      textContainer.append(mainTitle);
     }
+    const subtitle: Element = this._buildElement('span', ['subtitle'], message);
+    textContainer.append(subtitle);
 
-    if (opts.closeButton) {
-      toastChildren.push(this._buildCloseButton());
-    }
+    mainContainer.append(iconContainer);
+    mainContainer.append(textContainer);
+    mainContainer.append(closeButton);
+    toast.append(counter);
+    toast.append(mainContainer);
 
-    this._setupToastEvents(toast, opts);
-
-    toastChildren.forEach((x) => toast.append(x));
-
-    if (container.querySelector('.toast')) {
-      container.insertBefore(toast, container.querySelector('.toast'));
-    } else {
-      container.append(toast);
-    }
+    // this._setupToastEvents(toast, opts);
+    container.append(toast);
 
     this._handleVisibility(toast, opts);
   }
@@ -128,56 +134,55 @@ export default class Toast extends Service {
     toast?.remove();
   }
 
-  private _onToastClose(evt: Event): void {
-    evt.stopPropagation();
+  // private _onToastClose(evt: Event): void {
+  //   evt.stopPropagation();
+  //
+  //   const button = (<Element>evt.target).tagName === 'I' ? (<Element>evt.target).parentElement : <Element>evt.target;
+  //
+  //   if (button) {
+  //     this._destroyToast(button.parentElement);
+  //   }
+  // }
 
-    const button = (<Element>evt.target).tagName === 'I' ? (<Element>evt.target).parentElement : <Element>evt.target;
+  // private _setupToastEvents(toast: Element, opts: ToastOptions) {
+  //   if (opts.onclick && typeof opts.onclick === 'function') {
+  //     toast.addEventListener(
+  //       'click',
+  //       (e) => {
+  //         e.stopPropagation();
+  //         opts.onclick && opts.onclick(e);
+  //       },
+  //       { once: true }
+  //     );
+  //   }
+  //
+  //   if (opts.tapToDismiss) {
+  //     toast.addEventListener(
+  //       'click',
+  //       () => {
+  //         this._destroyToast(toast);
+  //       },
+  //       { once: true }
+  //     );
+  //   }
+  // }
 
-    if (button) {
-      this._destroyToast(button.parentElement);
-    }
-  }
-
-  private _setupToastEvents(toast: Element, opts: ToastOptions) {
-    if (opts.onclick && typeof opts.onclick === 'function') {
-      toast.addEventListener(
-        'click',
-        (e) => {
-          e.stopPropagation();
-          opts.onclick && opts.onclick(e);
-        },
-        { once: true }
-      );
-    }
-
-    if (opts.tapToDismiss) {
-      toast.addEventListener(
-        'click',
-        () => {
-          this._destroyToast(toast);
-        },
-        { once: true }
-      );
-    }
-  }
-
-  private _buildCloseButton(): Element {
-    const closeButton: Element = this._buildElement(
-      'button',
-      ['toast-close-button'],
-      '<i class="fas fa-times text-size-5"></i>'
-    );
-
-    closeButton.classList.add('toast-close-button');
-    closeButton.innerHTML = '<i class="fas fa-times text-size-5"></i>';
-    closeButton.addEventListener('click', this._onToastClose.bind(this), { once: true });
-
-    return closeButton;
-  }
+  // private _buildCloseButton(): Element {
+  //   const closeButton: Element = this._buildElement(
+  //     'button',
+  //     ['toast-close-button'],
+  //     '<i class="fas fa-times text-size-5"></i>'
+  //   );
+  //
+  //   closeButton.classList.add('toast-close-button');
+  //   closeButton.innerHTML = '<i class="fas fa-times text-size-5"></i>';
+  //   closeButton.addEventListener('click', this._onToastClose.bind(this), { once: true });
+  //
+  //   return closeButton;
+  // }
 
   private _buildElement(tagName: string, classes: string[], content?: string): Element {
     const el: Element = document.createElement(tagName);
-
     el.classList.add(...classes);
 
     if (content) {
@@ -188,12 +193,11 @@ export default class Toast extends Service {
   }
 
   private _buildContainer(): Element {
-    let container: Element | null = document.querySelector('body #toast-container.upf-toastr--container');
+    let container: Element | null = document.querySelector('.toasts-container');
 
     if (!container) {
       container = document.createElement('div');
-      container.id = 'toast-container';
-      container.classList.add('upf-toastr--container');
+      container.classList.add('toasts-container');
       document.body.append(container);
     }
 
@@ -201,7 +205,6 @@ export default class Toast extends Service {
   }
 }
 
-// DO NOT DELETE: this is how TypeScript knows how to look up your services.
 declare module '@ember/service' {
   interface Registry {
     toast: Toast;
