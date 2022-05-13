@@ -1,6 +1,6 @@
-<div class="oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center">
+<div class="oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center" {{will-destroy this.destroy}}>
   <div class="oss-modal-dialog fx-col {{this.modalSize}}" {{on-click-outside this.closeModal}} {{did-insert this.init}}>
-    <header class="oss-modal-dialog--header fx-row">
+    <header class="fx-row">
       <div class="fx-1 fx-col fx-malign-center">
         <span class="title">{{@title}}</span>
         <span class="subtitle">{{@subtitle}}</span>
@@ -13,7 +13,7 @@
         {{yield to="content"}}
       {{/if}}
     </div>
-    <footer class="oss-modal-dialog--footer fx-row fx-xalign-center">
+    <footer class="fx-row fx-xalign-center">
       {{#if (has-block "footer")}}
         {{yield to="footer"}}
       {{/if}}

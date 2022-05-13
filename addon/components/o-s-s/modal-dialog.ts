@@ -30,6 +30,11 @@ export default class OSSModalDialog extends Component<OSSModalDialogArgs> {
   }
 
   @action
+  destroy(): void {
+    document.removeEventListener('keyup', this._closeOnEscape);
+  }
+
+  @action
   init(elem: HTMLElement): void {
     this._elem = elem;
     elem.classList.add('show-modal');
@@ -42,6 +47,7 @@ export default class OSSModalDialog extends Component<OSSModalDialogArgs> {
 
   _closeOnEscape(event: KeyboardEvent): void {
     if (event.key === 'Escape') {
+      event.stopPropagation();
       this.closeModal();
     }
   }

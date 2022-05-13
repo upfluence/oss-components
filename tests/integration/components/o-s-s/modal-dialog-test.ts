@@ -93,6 +93,6 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
       </OSS::ModalDialog>`
     );
 
-    assert.dom('.oss-modal-dialog--footer').hasText('footer content');
+    assert.dom('.oss-modal-dialog footer').hasText('footer content');
   });
 });
