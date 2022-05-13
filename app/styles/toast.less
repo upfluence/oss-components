@@ -1,12 +1,22 @@
 @keyframes slide {
-  0% {
+  from {
     opacity: 0;
     transform: translate(0, -100%);
   }
 
-  100% {
+  to {
     opacity: 1;
     transform: translate(0, 0);
+  }
+}
+
+@keyframes progress-animation {
+  from {
+    width: 100%;
+  }
+
+  to {
+    width: 0;
   }
 }
 

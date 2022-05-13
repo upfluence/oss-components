@@ -40,8 +40,11 @@
 <!--  </div>-->
 </div>
 
-<div class="fx-col fx-gap-px-10 margin-md">
-  <OSS::Button @label="Toast" @icon="fas fa-box-open" @size="md" {{on "click" (fn this.triggerToast "success")}} />
+<div class="fx-row fx-gap-px-10 margin-md">
+  <OSS::Button @label="Info" @size="md" {{on "click" (fn this.triggerToast "info")}} />
+  <OSS::Button @label="Success" @size="md" {{on "click" (fn this.triggerToast "success")}} />
+  <OSS::Button @label="Warning" @size="md" {{on "click" (fn this.triggerToast "warning")}} />
+  <OSS::Button @label="Error" @size="md" {{on "click" (fn this.triggerToast "error")}} />
 </div>
 <div class="fx-col fx-gap-px-10 margin-md">
   <OSS::CodeBlock @content={{this.code4CodeBlock}} @scrollable={{true}}

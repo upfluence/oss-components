@@ -9,6 +9,13 @@ enum ToastType {
   SUCCESS = 'success'
 }
 
+const ICONS_DEFINITION = {
+  info: 'far fa-info-circle',
+  warning: 'far fa-exclamation-circle',
+  error: 'far fa-exclamation-triangle',
+  success: 'far fa-check-circle'
+};
+
 /**
  * Toast Options
  *
@@ -84,25 +91,30 @@ export default class Toast extends Service {
   }
 
   private _buildToast(type: ToastType, message: string, title: string | undefined, opts: ToastOptions): void {
-    const container: Element = this._buildContainer();
+    const container: HTMLElement = this._buildContainer();
+    const toast: HTMLElement = this._buildElement('div', ['toast', 'toast--hidden', `toast--${type}`]);
+    const mainContainer: HTMLElement = this._buildElement('div', ['main-container']);
 
-    const toast: Element = this._buildElement('div', ['toast', 'toast--hidden', `toast--${type}`]);
+    const counter: HTMLElement = this._buildElement('div', ['counter']);
+    if (typeof opts.timeout === 'number') {
+      counter.style.animation = `progress-animation ${(opts.timeout || DEFAULT_TOAST_TIMEOUT) / 1000}s forwards`;
+    }
 
-    const mainContainer: Element = this._buildElement('div', ['main-container']);
-    const counter: Element = this._buildElement('div', ['counter']);
+    const iconContainer: HTMLElement = this._buildElement(
+      'span',
+      ['icon'],
+      `<i class="${ICONS_DEFINITION[type]}"></i>`
+    );
 
-    const iconContainer: Element = this._buildElement('span', ['icon']);
-    const icon: Element = this._buildElement('i', ['far', 'fa-info-circle']);
-    iconContainer.append(icon);
+    const closeButton: HTMLElement = this._buildElement('button', [], '<i class="far fa-times"></i>');
+    closeButton.addEventListener('click', this._onToastClose.bind(this), { once: true });
 
-    const closeButton: Element = this._buildElement('button', [], '<i class="far fa-times"></i>');
-
-    const textContainer = this._buildElement('div', ['text-container']);
+    const textContainer: HTMLElement = this._buildElement('div', ['text-container']);
     if (title) {
-      const mainTitle: Element = this._buildElement('span', ['title'], title);
+      const mainTitle: HTMLElement = this._buildElement('span', ['title'], title);
       textContainer.append(mainTitle);
     }
-    const subtitle: Element = this._buildElement('span', ['subtitle'], message);
+    const subtitle: HTMLElement = this._buildElement('span', ['subtitle'], message);
     textContainer.append(subtitle);
 
     mainContainer.append(iconContainer);
@@ -134,15 +146,18 @@ export default class Toast extends Service {
     toast?.remove();
   }
 
-  // private _onToastClose(evt: Event): void {
-  //   evt.stopPropagation();
-  //
-  //   const button = (<Element>evt.target).tagName === 'I' ? (<Element>evt.target).parentElement : <Element>evt.target;
-  //
-  //   if (button) {
-  //     this._destroyToast(button.parentElement);
-  //   }
-  // }
+  private _onToastClose(evt: Event): void {
+    evt.stopPropagation();
+
+    const button =
+      (<Element>evt.target).tagName === 'I'
+        ? (<Element>evt.target).parentElement?.parentElement
+        : (<Element>evt.target).parentElement;
+
+    if (button) {
+      this._destroyToast(button.parentElement);
+    }
+  }
 
   // private _setupToastEvents(toast: Element, opts: ToastOptions) {
   //   if (opts.onclick && typeof opts.onclick === 'function') {
@@ -167,22 +182,8 @@ export default class Toast extends Service {
   //   }
   // }
 
-  // private _buildCloseButton(): Element {
-  //   const closeButton: Element = this._buildElement(
-  //     'button',
-  //     ['toast-close-button'],
-  //     '<i class="fas fa-times text-size-5"></i>'
-  //   );
-  //
-  //   closeButton.classList.add('toast-close-button');
-  //   closeButton.innerHTML = '<i class="fas fa-times text-size-5"></i>';
-  //   closeButton.addEventListener('click', this._onToastClose.bind(this), { once: true });
-  //
-  //   return closeButton;
-  // }
-
-  private _buildElement(tagName: string, classes: string[], content?: string): Element {
-    const el: Element = document.createElement(tagName);
+  private _buildElement(tagName: string, classes: string[], content?: string): HTMLElement {
+    const el: HTMLElement = document.createElement(tagName);
     el.classList.add(...classes);
 
     if (content) {
@@ -192,8 +193,8 @@ export default class Toast extends Service {
     return el;
   }
 
-  private _buildContainer(): Element {
-    let container: Element | null = document.querySelector('.toasts-container');
+  private _buildContainer(): HTMLElement {
+    let container: HTMLElement | null = document.querySelector('.toasts-container');
 
     if (!container) {
       container = document.createElement('div');
