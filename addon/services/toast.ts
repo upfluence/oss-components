@@ -23,7 +23,6 @@ const ICONS_DEFINITION = {
  * @param {Function} onclick - A function to be called when the toast is clicked.
  */
 export type ToastOptions = {
-  tapToDismiss?: boolean;
   onclick?: Function;
   timeout?: number | 'none';
 };
@@ -33,14 +32,12 @@ type ToastFunction = (message: string, title: string, opts?: ToastOptions) => vo
 const DEFAULT_TOAST_TIMEOUT = 5000;
 
 const DEFAULT_OPTIONS: ToastOptions = Object.freeze({
-  tapToDismiss: true,
   onclick: undefined,
   timeout: DEFAULT_TOAST_TIMEOUT
 });
 
 export default class Toast extends Service {
   private _toasts: Map<Element, Animation> = new Map();
-  private counterDownKeyframes: KeyframeEffect | null = null;
 
   /**
    * Display a success toast
@@ -90,13 +87,30 @@ export default class Toast extends Service {
     };
   }
 
-  private _initCounterAnimation(element: HTMLElement, opts: ToastOptions): Animation {
+  private _createCounterAnimation(element: HTMLElement, opts: ToastOptions): Animation {
     const duration = typeof opts.timeout === 'number' ? opts.timeout : DEFAULT_TOAST_TIMEOUT;
-    this.counterDownKeyframes = new KeyframeEffect(element, [{ width: '100%' }, { width: '0' }], {
+    const counterDownKeyframes = new KeyframeEffect(element, [{ width: '100%' }, { width: '0' }], {
       duration: duration,
       fill: 'forwards'
     });
-    return new Animation(this.counterDownKeyframes, document.timeline);
+
+    return new Animation(counterDownKeyframes, document.timeline);
+  }
+
+  private _createDestroyAnimation(element: HTMLElement): Animation {
+    const destroyDownKeyframes = new KeyframeEffect(
+      element,
+      [
+        { opacity: 1, transform: 'translate(0, 0)' },
+        { opacity: 0, transform: 'translate(0, -50%)' }
+      ],
+      {
+        duration: 300,
+        fill: 'forwards'
+      }
+    );
+
+    return new Animation(destroyDownKeyframes, document.timeline);
   }
 
   private _playCounterAnimation(event: Event): void {
@@ -113,7 +127,7 @@ export default class Toast extends Service {
     const mainContainer: HTMLElement = this._buildElement('div', ['main-container']);
 
     const counter = this._buildElement('div', ['counter']);
-    const counterDownAnimation = this._initCounterAnimation(counter, opts);
+    const counterDownAnimation = this._createCounterAnimation(counter, opts);
 
     const iconContainer: HTMLElement = this._buildElement(
       'span',
@@ -145,7 +159,7 @@ export default class Toast extends Service {
     this._handleVisibility(toast, opts);
   }
 
-  private _handleVisibility(toast: Element, opts: ToastOptions) {
+  private _handleVisibility(toast: HTMLElement, opts: ToastOptions) {
     toast.classList.remove('toast--hidden');
     toast.classList.add('toast--visible');
 
@@ -153,12 +167,18 @@ export default class Toast extends Service {
     this._toasts.get(toast)?.play();
   }
 
-  private _destroyToast(toast: Element | null | undefined): void {
+  private _destroyToast(toast: HTMLElement | null | undefined): void {
     if (!toast) return;
-    toast.removeEventListener('mouseenter', this._pauseCounterAnimation.bind(this));
-    toast.removeEventListener('mouseleave', this._playCounterAnimation.bind(this));
-    this._toasts.delete(toast);
-    toast?.remove();
+
+    const destroyAnimation = this._createDestroyAnimation(toast);
+    destroyAnimation.play();
+
+    destroyAnimation.finished.then(() => {
+      toast.removeEventListener('mouseenter', this._pauseCounterAnimation.bind(this));
+      toast.removeEventListener('mouseleave', this._playCounterAnimation.bind(this));
+      this._toasts.delete(toast);
+      toast?.remove();
+    });
   }
 
   private _onToastClose(evt: Event): void {
@@ -172,23 +192,13 @@ export default class Toast extends Service {
     this._destroyToast(button?.parentElement);
   }
 
-  private _setupToastEvents(toast: Element, opts: ToastOptions) {
+  private _setupToastEvents(toast: HTMLElement, opts: ToastOptions) {
     if (opts.onclick && typeof opts.onclick === 'function') {
       toast.addEventListener(
         'click',
         (e) => {
           e.stopPropagation();
           opts.onclick?.(e);
-        },
-        { once: true }
-      );
-    }
-
-    if (opts.tapToDismiss) {
-      toast.addEventListener(
-        'click',
-        () => {
-          this._destroyToast(toast);
         },
         { once: true }
       );
