@@ -1,4 +1,3 @@
-import { later } from '@ember/runloop';
 import Service from '@ember/service';
 import { isEmpty } from '@ember/utils';
 
@@ -40,7 +39,8 @@ const DEFAULT_OPTIONS: ToastOptions = Object.freeze({
 });
 
 export default class Toast extends Service {
-  private _toasts: Element[] = [];
+  private _toasts: Map<Element, Animation> = new Map();
+  private counterDownKeyframes: KeyframeEffect | null = null;
 
   /**
    * Display a success toast
@@ -90,15 +90,30 @@ export default class Toast extends Service {
     };
   }
 
+  private _initCounterAnimation(element: HTMLElement, opts: ToastOptions): Animation {
+    const duration = typeof opts.timeout === 'number' ? opts.timeout : DEFAULT_TOAST_TIMEOUT;
+    this.counterDownKeyframes = new KeyframeEffect(element, [{ width: '100%' }, { width: '0' }], {
+      duration: duration,
+      fill: 'forwards'
+    });
+    return new Animation(this.counterDownKeyframes, document.timeline);
+  }
+
+  private _playCounterAnimation(event: Event): void {
+    this._toasts.get(<HTMLElement>event.target)?.play();
+  }
+
+  private _pauseCounterAnimation(event: Event): void {
+    this._toasts.get(<HTMLElement>event.target)?.pause();
+  }
+
   private _buildToast(type: ToastType, message: string, title: string | undefined, opts: ToastOptions): void {
     const container: HTMLElement = this._buildContainer();
     const toast: HTMLElement = this._buildElement('div', ['toast', 'toast--hidden', `toast--${type}`]);
     const mainContainer: HTMLElement = this._buildElement('div', ['main-container']);
 
-    const counter: HTMLElement = this._buildElement('div', ['counter']);
-    if (typeof opts.timeout === 'number') {
-      counter.style.animation = `progress-animation ${(opts.timeout || DEFAULT_TOAST_TIMEOUT) / 1000}s forwards`;
-    }
+    const counter = this._buildElement('div', ['counter']);
+    const counterDownAnimation = this._initCounterAnimation(counter, opts);
 
     const iconContainer: HTMLElement = this._buildElement(
       'span',
@@ -122,10 +137,11 @@ export default class Toast extends Service {
     mainContainer.append(closeButton);
     toast.append(counter);
     toast.append(mainContainer);
-
-    // this._setupToastEvents(toast, opts);
     container.append(toast);
 
+    this._toasts.set(toast, counterDownAnimation);
+
+    this._setupToastEvents(toast, opts);
     this._handleVisibility(toast, opts);
   }
 
@@ -133,16 +149,15 @@ export default class Toast extends Service {
     toast.classList.remove('toast--hidden');
     toast.classList.add('toast--visible');
 
-    this._toasts.push(toast);
-
-    if (opts.timeout === 'none') {
-      return;
-    }
-
-    later(this, () => this._destroyToast(toast), opts.timeout || DEFAULT_TOAST_TIMEOUT);
+    if (opts.timeout === 'none') return;
+    this._toasts.get(toast)?.play();
   }
 
-  private _destroyToast(toast: Element | null): void {
+  private _destroyToast(toast: Element | null | undefined): void {
+    if (!toast) return;
+    toast.removeEventListener('mouseenter', this._pauseCounterAnimation.bind(this));
+    toast.removeEventListener('mouseleave', this._playCounterAnimation.bind(this));
+    this._toasts.delete(toast);
     toast?.remove();
   }
 
@@ -154,43 +169,54 @@ export default class Toast extends Service {
         ? (<Element>evt.target).parentElement?.parentElement
         : (<Element>evt.target).parentElement;
 
-    if (button) {
-      this._destroyToast(button.parentElement);
-    }
+    this._destroyToast(button?.parentElement);
   }
 
-  // private _setupToastEvents(toast: Element, opts: ToastOptions) {
-  //   if (opts.onclick && typeof opts.onclick === 'function') {
-  //     toast.addEventListener(
-  //       'click',
-  //       (e) => {
-  //         e.stopPropagation();
-  //         opts.onclick && opts.onclick(e);
-  //       },
-  //       { once: true }
-  //     );
-  //   }
-  //
-  //   if (opts.tapToDismiss) {
-  //     toast.addEventListener(
-  //       'click',
-  //       () => {
-  //         this._destroyToast(toast);
-  //       },
-  //       { once: true }
-  //     );
-  //   }
-  // }
-
-  private _buildElement(tagName: string, classes: string[], content?: string): HTMLElement {
-    const el: HTMLElement = document.createElement(tagName);
-    el.classList.add(...classes);
-
-    if (content) {
-      el.innerHTML = content;
+  private _setupToastEvents(toast: Element, opts: ToastOptions) {
+    if (opts.onclick && typeof opts.onclick === 'function') {
+      toast.addEventListener(
+        'click',
+        (e) => {
+          e.stopPropagation();
+          opts.onclick?.(e);
+        },
+        { once: true }
+      );
     }
 
-    return el;
+    if (opts.tapToDismiss) {
+      toast.addEventListener(
+        'click',
+        () => {
+          this._destroyToast(toast);
+        },
+        { once: true }
+      );
+    }
+
+    this._toasts.get(toast)?.finished.then(() => {
+      this._destroyToast(toast);
+    });
+
+    if (opts.timeout === 'none') return;
+
+    toast.addEventListener('mouseenter', () => {
+      this._toasts.get(toast)?.pause();
+    });
+
+    toast.addEventListener('mouseenter', this._pauseCounterAnimation.bind(this));
+    toast.addEventListener('mouseleave', this._playCounterAnimation.bind(this));
+  }
+
+  private _buildElement(tagName: string, classes: string[], content?: string): HTMLElement {
+    const element: HTMLElement = document.createElement(tagName);
+    element.classList.add(...classes);
+
+    if (content) {
+      element.innerHTML = content;
+    }
+
+    return element;
   }
 
   private _buildContainer(): HTMLElement {

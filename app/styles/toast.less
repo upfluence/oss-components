@@ -10,65 +10,6 @@
   }
 }
 
-@keyframes progress-animation {
-  from {
-    width: 100%;
-  }
-
-  to {
-    width: 0;
-  }
-}
-
-#toast-container.upf-toastr--container {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-
-  width: 100%;
-  z-index: 1100;
-
-  .toast {
-    margin-bottom: @spacing-xx-sm;
-    max-width: 700px;
-    position: relative;
-    margin-left: 50%;
-    margin-right: 50%;
-    transform: translateX(-50%);
-    align-items: center;
-  }
-
-  .toast--hidden {
-    display: flex;
-    opacity: 0;
-    animation: none;
-  }
-
-  .toast--visible {
-    animation: slide-up 0.5s 1;
-    z-index: 20;
-    display: flex;
-  }
-
-  button.toast-close-button {
-    background-color: transparent;
-    border: none;
-    display: flex;
-    justify-content: flex-end;
-    margin-right: @spacing-xxx-sm;
-    align-items: center;
-  }
-
-  .toast-title {
-    font-weight: bold;
-  }
-}
-
 .toasts-container {
   position: fixed;
   display: flex;
