@@ -4,7 +4,7 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 
 interface OSSEmailInputArgs {
-  value: string;
+  value: string | null;
   placeholder?: string;
   errorMessage?: string;
   validateFormat?: boolean;
@@ -13,18 +13,19 @@ interface OSSEmailInputArgs {
 
 const DEFAULT_PLACEHOLDER = 'e.g: john.doe@example.com';
 
+export const EMAIL_REGEXP = new RegExp(/^\w+([\+\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/);
+
 export default class OSSEmailInput extends Component<OSSEmailInputArgs> {
   @service intl: any;
 
   private _runValidation: boolean = true;
-  private _emailRegex: RegExp = new RegExp(/^\w+([\+\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/);
 
   @tracked regexError: string | null = null;
 
   constructor(owner: unknown, args: OSSEmailInputArgs) {
     super(owner, args);
 
-    if (typeof args.value !== 'string') {
+    if (typeof args.value === 'undefined') {
       throw new Error('[component][OSS::EmailInput] The @value parameter is mandatory');
     }
 
@@ -45,9 +46,9 @@ export default class OSSEmailInput extends Component<OSSEmailInputArgs> {
   validateInput(): void {
     this.regexError = '';
 
-    if (!this._runValidation) {
+    if (!this._runValidation || !this.args.value) {
       this.args.validates?.(true);
-    } else if (!this._emailRegex.test(this.args.value)) {
+    } else if (!EMAIL_REGEXP.test(this.args.value)) {
       this.regexError = this.intl.t('oss-components.email-input.regex_error');
       this.args.validates?.(false);
     } else {

@@ -6,7 +6,7 @@ import Component from '@glimmer/component';
 const DEFAULT_PLACEHOLDER = '*************';
 
 interface OSSPasswordInputArgs {
-  value: string;
+  value: string | null;
   placeholder?: string;
   errorMessage?: string;
   validateFormat?: boolean;
@@ -25,7 +25,7 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
   constructor(owner: unknown, args: OSSPasswordInputArgs) {
     super(owner, args);
 
-    if (typeof this.args.value !== 'string') {
+    if (typeof this.args.value === 'undefined') {
       throw new Error('[component][OSS::PasswordInput] The @value parameter is mandatory');
     }
     if (typeof args.validateFormat !== 'undefined') {
@@ -49,7 +49,7 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
   @action
   validateInput(): void {
     this.regexError = '';
-    if (!this._runValidation) {
+    if (!this._runValidation || !this.args.value) {
       this.args.validates?.(true);
     } else if (!this._pwRegex.test(this.args.value)) {
       this.regexError = this.intl.t('oss-components.password-input.regex_error');

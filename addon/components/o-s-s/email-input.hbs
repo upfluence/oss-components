@@ -1,5 +1,3 @@
-<OSS::InputContainer @errorMessage={{this.errorMessage}} ...attributes>
-  <:input>
-    <Input @value={{@value}} @placeholder={{this.placeholder}} type="text" {{on "keyup" this.validateInput}} />
-  </:input>
-</OSS::InputContainer>
+<OSS::InputContainer
+  @value={{@value}} @placeholder={{this.placeholder}} @errorMessage={{this.errorMessage}}
+  @onChange={{this.validateInput}} ...attributes />
