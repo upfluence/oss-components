@@ -18,7 +18,7 @@ echo:
 	@echo Starting OSS-Components
 
 start: ## Starts the dev server
-	ember serve
+	ember serve --port 0
 
 clean: ## Cleans ./node_modules && ./dist
 	@echo "Cleaning up ./node_modules & ./dist folders"

@@ -9,7 +9,7 @@ export default class ApplicationController extends Controller {
   @tracked loading = false;
   @tracked phonePrefix = '+33';
   @tracked phoneNumber = '782828282';
-  @tracked showModal: boolean = false;
+  @tracked showModal = false;
 
   code4CodeBlock = testScript;
 
@@ -33,7 +33,7 @@ export default class ApplicationController extends Controller {
 
   @action
   triggerToast(type) {
-    this.toast[type](`I am the ${type} subtitle`, `Title of ${type}`);
+    this.toast[type](`I am the ${type} subtitle`, 'Toto');
   }
 
   @action
