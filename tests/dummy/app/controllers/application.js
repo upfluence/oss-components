@@ -33,7 +33,7 @@ export default class ApplicationController extends Controller {
 
   @action
   triggerToast(type) {
-    this.toast[type](`I am the ${type} subtitle`, 'Toto');
+    this.toast[type](`I am the ${type} subtitle`, 'Title');
   }
 
   @action

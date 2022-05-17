@@ -25,6 +25,11 @@ const ICONS_DEFINITION = {
 export type ToastOptions = {
   onclick?: Function;
   timeout?: number | 'none';
+  badge?: {
+    icon?: string;
+    image?: string;
+    text?: string;
+  };
 };
 
 type ToastFunction = (message: string, title: string, opts?: ToastOptions) => void;
@@ -33,7 +38,8 @@ const DEFAULT_TOAST_TIMEOUT = 5000;
 
 const DEFAULT_OPTIONS: ToastOptions = Object.freeze({
   onclick: undefined,
-  timeout: DEFAULT_TOAST_TIMEOUT
+  timeout: DEFAULT_TOAST_TIMEOUT,
+  badge: undefined
 });
 
 export default class Toast extends Service {
@@ -129,11 +135,30 @@ export default class Toast extends Service {
     const counter = this._buildElement('div', ['counter']);
     const counterDownAnimation = this._createCounterAnimation(counter, opts);
 
-    const iconContainer: HTMLElement = this._buildElement(
-      'span',
-      ['icon'],
-      `<i class="${ICONS_DEFINITION[type]}"></i>`
-    );
+    if (opts?.badge) {
+      let badgeContent: string = '';
+      if (opts.badge?.image) {
+        badgeContent = `<img src=${opts.badge.image} alt="" />`;
+      } else if (opts.badge?.icon) {
+        badgeContent = `<i class="${opts.badge.icon}"></i>`;
+      } else if (opts.badge?.text) {
+        badgeContent = `<span class="upf-badge__text">${opts.badge.text}</span>`;
+      }
+
+      const badgeContainer: HTMLElement = this._buildElement(
+        'div',
+        ['upf-badge', 'upf-badge--shape-round', 'upf-badge--size-md'],
+        badgeContent
+      );
+      mainContainer.append(badgeContainer);
+    } else {
+      const iconContainer: HTMLElement = this._buildElement(
+        'span',
+        ['icon'],
+        `<i class="${ICONS_DEFINITION[type]}"></i>`
+      );
+      mainContainer.append(iconContainer);
+    }
 
     const closeButton: HTMLElement = this._buildElement('button', [], '<i class="far fa-times"></i>');
     closeButton.addEventListener('click', this._onToastClose.bind(this), { once: true });
@@ -146,7 +171,6 @@ export default class Toast extends Service {
     const subtitle: HTMLElement = this._buildElement('span', ['subtitle'], message);
     textContainer.append(subtitle);
 
-    mainContainer.append(iconContainer);
     mainContainer.append(textContainer);
     mainContainer.append(closeButton);
     toast.append(counter);
