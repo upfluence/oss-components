@@ -10,7 +10,7 @@ oss-components:
   password-input:
     regex_error: 'Your password should have at least 8 characters with at least one lower-case character, one upper-case character and one digit.'
   email-input:
-    regex_error: Please enter a valid email address
+    regex_error: Please enter a valid email address.
   button:
     cancel_message: Click to cancel {time}s...
   code-block:
