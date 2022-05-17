@@ -8,7 +8,7 @@ enum ToastType {
   SUCCESS = 'success'
 }
 
-const ICONS_DEFINITION = {
+const ICON_CLASSES = {
   info: 'far fa-info-circle',
   warning: 'far fa-exclamation-circle',
   error: 'far fa-exclamation-triangle',
@@ -86,24 +86,26 @@ export default class Toast extends Service {
   info: ToastFunction = this._delegate(ToastType.INFO);
 
   private _delegate(type: ToastType): ToastFunction {
-    return (message: string, title?: string, opts?: ToastOptions): void => {
+    return (message: string, title?: string, opts?: ToastOptions): Element | undefined => {
       if (isEmpty(message) && isEmpty(title)) return;
 
-      this._buildToast(type, message, title, { ...DEFAULT_OPTIONS, ...(opts || {}) });
+      return this._buildToast(type, message, title, { ...DEFAULT_OPTIONS, ...(opts || {}) });
     };
   }
 
-  private _createCounterAnimation(element: HTMLElement, opts: ToastOptions): Animation {
+  private _createCounterAnimation(element: Element, opts: ToastOptions): Animation {
     const duration = typeof opts.timeout === 'number' ? opts.timeout : DEFAULT_TOAST_TIMEOUT;
     const counterDownKeyframes = new KeyframeEffect(element, [{ width: '100%' }, { width: '0' }], {
       duration: duration,
       fill: 'forwards'
     });
 
-    return new Animation(counterDownKeyframes, document.timeline);
+    let counterAnimation = new Animation(counterDownKeyframes, document.timeline);
+    counterAnimation.id = 'counter';
+    return counterAnimation;
   }
 
-  private _createDestroyAnimation(element: HTMLElement): Animation {
+  private _createDestroyAnimation(element: Element): Animation {
     const destroyDownKeyframes = new KeyframeEffect(
       element,
       [
@@ -116,25 +118,20 @@ export default class Toast extends Service {
       }
     );
 
-    return new Animation(destroyDownKeyframes, document.timeline);
+    let destroyAnimation = new Animation(destroyDownKeyframes, document.timeline);
+    destroyAnimation.id = 'destroy';
+    return destroyAnimation;
   }
 
   private _playCounterAnimation(event: Event): void {
-    this._toasts.get(<HTMLElement>event.target)?.play();
+    this._toasts.get(<Element>event.target)?.play();
   }
 
   private _pauseCounterAnimation(event: Event): void {
-    this._toasts.get(<HTMLElement>event.target)?.pause();
+    this._toasts.get(<Element>event.target)?.pause();
   }
 
-  private _buildToast(type: ToastType, message: string, title: string | undefined, opts: ToastOptions): void {
-    const container: HTMLElement = this._buildContainer();
-    const toast: HTMLElement = this._buildElement('div', ['toast', 'toast--hidden', `toast--${type}`]);
-    const mainContainer: HTMLElement = this._buildElement('div', ['main-container']);
-
-    const counter = this._buildElement('div', ['counter']);
-    const counterDownAnimation = this._createCounterAnimation(counter, opts);
-
+  private _buildIcon(type: ToastType, parent: Element, opts: ToastOptions): void {
     if (opts?.badge) {
       let badgeContent: string = '';
       if (opts.badge?.image) {
@@ -145,34 +142,55 @@ export default class Toast extends Service {
         badgeContent = `<span class="upf-badge__text">${opts.badge.text}</span>`;
       }
 
-      const badgeContainer: HTMLElement = this._buildElement(
+      const badgeContainer: Element = this._buildElement(
         'div',
         ['upf-badge', 'upf-badge--shape-round', 'upf-badge--size-md'],
         badgeContent
       );
-      mainContainer.append(badgeContainer);
+      parent.append(badgeContainer);
     } else {
-      const iconContainer: HTMLElement = this._buildElement(
-        'span',
-        ['icon'],
-        `<i class="${ICONS_DEFINITION[type]}"></i>`
-      );
-      mainContainer.append(iconContainer);
+      const iconContainer: Element = this._buildElement('span', ['icon'], `<i class="${ICON_CLASSES[type]}"></i>`);
+      parent.append(iconContainer);
     }
+  }
 
-    const closeButton: HTMLElement = this._buildElement('button', [], '<i class="far fa-times"></i>');
+  private _buildCloseButton(parent: Element) {
+    const closeButton: Element = this._buildElement('button', [], '<i class="far fa-times"></i>');
     closeButton.addEventListener('click', this._onToastClose.bind(this), { once: true });
+    parent.append(closeButton);
+  }
 
-    const textContainer: HTMLElement = this._buildElement('div', ['text-container']);
+  private _buildTitle(parent: Element, title: string | undefined) {
     if (title) {
-      const mainTitle: HTMLElement = this._buildElement('span', ['title'], title);
-      textContainer.append(mainTitle);
+      const mainTitle: Element = this._buildElement('span', ['title'], title);
+      parent.append(mainTitle);
     }
-    const subtitle: HTMLElement = this._buildElement('span', ['subtitle'], message);
-    textContainer.append(subtitle);
+  }
 
-    mainContainer.append(textContainer);
-    mainContainer.append(closeButton);
+  private _buildSubtitle(parent: Element, message: string) {
+    const subtitle: Element = this._buildElement('span', ['subtitle'], message);
+    parent.append(subtitle);
+  }
+
+  private _buildTextContainer(parent: Element, message: string, title: string | undefined) {
+    const textContainer: Element = this._buildElement('div', ['text-container']);
+    this._buildTitle(textContainer, title);
+    this._buildSubtitle(textContainer, message);
+    parent.append(textContainer);
+  }
+
+  private _buildToast(type: ToastType, message: string, title: string | undefined, opts: ToastOptions): Element {
+    const container: Element = this._buildContainer();
+    const toast: Element = this._buildElement('div', ['toast', 'toast--hidden', `toast--${type}`]);
+    const mainContainer: Element = this._buildElement('div', ['main-container']);
+
+    const counter = this._buildElement('div', ['counter']);
+    const counterDownAnimation = this._createCounterAnimation(counter, opts);
+
+    this._buildIcon(type, mainContainer, opts);
+    this._buildTextContainer(mainContainer, message, title);
+    this._buildCloseButton(mainContainer);
+
     toast.append(counter);
     toast.append(mainContainer);
     container.append(toast);
@@ -181,9 +199,11 @@ export default class Toast extends Service {
 
     this._setupToastEvents(toast, opts);
     this._handleVisibility(toast, opts);
+
+    return toast;
   }
 
-  private _handleVisibility(toast: HTMLElement, opts: ToastOptions) {
+  private _handleVisibility(toast: Element, opts: ToastOptions) {
     toast.classList.remove('toast--hidden');
     toast.classList.add('toast--visible');
 
@@ -191,7 +211,7 @@ export default class Toast extends Service {
     this._toasts.get(toast)?.play();
   }
 
-  private _destroyToast(toast: HTMLElement | null | undefined): void {
+  private _destroyToast(toast: Element | null | undefined): void {
     if (!toast) return;
 
     const destroyAnimation = this._createDestroyAnimation(toast);
@@ -216,13 +236,13 @@ export default class Toast extends Service {
     this._destroyToast(button?.parentElement);
   }
 
-  private _setupToastEvents(toast: HTMLElement, opts: ToastOptions) {
+  private _setupToastEvents(toast: Element, opts: ToastOptions) {
     if (opts.onclick && typeof opts.onclick === 'function') {
       toast.addEventListener(
         'click',
-        (e) => {
-          e.stopPropagation();
-          opts.onclick?.(e);
+        (event) => {
+          event.stopPropagation();
+          opts.onclick?.(event);
         },
         { once: true }
       );
@@ -234,16 +254,12 @@ export default class Toast extends Service {
 
     if (opts.timeout === 'none') return;
 
-    toast.addEventListener('mouseenter', () => {
-      this._toasts.get(toast)?.pause();
-    });
-
     toast.addEventListener('mouseenter', this._pauseCounterAnimation.bind(this));
     toast.addEventListener('mouseleave', this._playCounterAnimation.bind(this));
   }
 
-  private _buildElement(tagName: string, classes: string[], content?: string): HTMLElement {
-    const element: HTMLElement = document.createElement(tagName);
+  private _buildElement(tagName: string, classes: string[], content?: string): Element {
+    const element: Element = document.createElement(tagName);
     element.classList.add(...classes);
 
     if (content) {
@@ -253,8 +269,8 @@ export default class Toast extends Service {
     return element;
   }
 
-  private _buildContainer(): HTMLElement {
-    let container: HTMLElement | null = document.querySelector('.toasts-container');
+  private _buildContainer(): Element {
+    let container: Element | null = document.querySelector('.toasts-container');
 
     if (!container) {
       container = document.createElement('div');
