@@ -37,7 +37,7 @@ module('Integration | Component | o-s-s/email-input', function (hooks) {
     assert.dom('.text-color-error').hasText('Please enter a valid email address.');
   });
 
-  test('If the password regex is matched, and the @validates method is passed, then the status of the validation is returned', async function (assert) {
+  test('If the email regex is matched, and the @validates method is passed, then the status of the validation is returned', async function (assert) {
     this.value = 'john.doe@example.com';
     this.validates = (x: boolean) => {
       assert.equal(x, true);
@@ -46,7 +46,7 @@ module('Integration | Component | o-s-s/email-input', function (hooks) {
     await typeIn('input', 'a');
   });
 
-  test('If the password regex isnt matched, and the @validates method is passed, then the status of the validation is returned', async function (assert) {
+  test('If the email regex isnt matched, and the @validates method is passed, then the status of the validation is returned', async function (assert) {
     this.value = 'foo@f';
     this.validates = (x: boolean) => {
       assert.equal(x, false);
