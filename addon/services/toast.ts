@@ -110,7 +110,7 @@ export default class Toast extends Service {
       element,
       [
         { opacity: 1, transform: 'translate(0, 0)' },
-        { opacity: 0, transform: 'translate(0, -50%)' }
+        { opacity: 0, transform: 'translate(0, -30%)' }
       ],
       {
         duration: 300,
