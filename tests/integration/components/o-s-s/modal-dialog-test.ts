@@ -16,7 +16,6 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
     await render(
       hbs`<OSS::ModalDialog @title="Example modal" @subtitle="subtitle" @close={{this.closeModal}} @size="md" />`
     );
-
     assert.dom('.oss-modal-dialog').exists();
   });
 

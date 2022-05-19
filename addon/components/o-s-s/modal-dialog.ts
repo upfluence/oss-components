@@ -1,4 +1,5 @@
 import { action } from '@ember/object';
+import { isTesting } from '@embroider/macros';
 import Component from '@glimmer/component';
 
 interface OSSModalDialogArgs {
@@ -10,6 +11,7 @@ interface OSSModalDialogArgs {
 
 export default class OSSModalDialog extends Component<OSSModalDialogArgs> {
   private declare _elem: HTMLElement;
+  private declare _parent: HTMLElement;
   private prevBodyOverflow: string | null = null;
   private prevBodyPadding: string | null = null;
 
@@ -33,6 +35,7 @@ export default class OSSModalDialog extends Component<OSSModalDialogArgs> {
 
   @action
   destroy(): void {
+    this._parent?.remove();
     document.removeEventListener('keyup', this._closeOnEscape);
     document.body.style.overflow = this.prevBodyOverflow || 'auto';
     document.body.style.paddingRight = this.prevBodyPadding || '0';
@@ -44,7 +47,6 @@ export default class OSSModalDialog extends Component<OSSModalDialogArgs> {
 
   @action
   init(elem: HTMLElement): void {
-    this._elem = elem;
     elem.classList.add('show-modal');
     if (this.scrollbarVisible()) {
       this.prevBodyOverflow = document.body.style.overflow;
@@ -52,6 +54,11 @@ export default class OSSModalDialog extends Component<OSSModalDialogArgs> {
       this.prevBodyPadding = document.body.style.paddingRight;
       document.body.style.paddingRight = '16px';
     }
+    if (!isTesting() && elem.parentElement) {
+      this._parent = elem.parentElement;
+      document.body.append(this._parent);
+    }
+    this._elem = elem;
   }
 
   @action

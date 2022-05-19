@@ -43,7 +43,7 @@ export default {
 
 const BasicUsageTemplate = (args) => ({
   template: hbs`
-      <OSS::ModalDialog @title={{this.title}} @close={{this.closeModal}} @subtitle={{this.subtitle}} @size={{this.size}}>
+      <OSS::ModalDialog @title={{this.title}} @close={{this.close}} @subtitle={{this.subtitle}} @size={{this.size}}>
         <:content>
           Content goes here
         </:content>
@@ -58,6 +58,6 @@ export const Usage = BasicUsageTemplate.bind({});
 Usage.args = {
   title: 'Modal Dialog',
   subtitle: 'This is a subtitle',
-  closeModal: action('onModalClose'),
+  close: action('onModalClose'),
   size: 'md'
 };
