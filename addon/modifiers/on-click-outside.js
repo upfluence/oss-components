@@ -1,4 +1,4 @@
-import { setModifierManager } from '@ember/modifier';
+import { setModifierManager, capabilities } from '@ember/modifier';
 
 /**
  * Used to detect clicks occuring _outside_ of the modified element.
@@ -7,6 +7,8 @@ import { setModifierManager } from '@ember/modifier';
  */
 export default setModifierManager(
   () => ({
+    capabilities: capabilities('3.22'),
+
     createModifier() {
       return {
         element: null,

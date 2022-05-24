@@ -1,5 +1,5 @@
 // @ts-ignore
-import { setModifierManager } from '@ember/modifier';
+import { setModifierManager, capabilities } from '@ember/modifier';
 
 type State = {
   element: Element;
@@ -14,6 +14,8 @@ const TRIGGER_OFFSET = 20;
  */
 export default setModifierManager(
   () => ({
+    capabilities: capabilities('3.13'),
+
     createModifier() {
       return {
         element: null,

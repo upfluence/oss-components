@@ -1,5 +1,5 @@
 // @ts-ignore
-import { setModifierManager } from '@ember/modifier';
+import { setModifierManager, capabilities } from '@ember/modifier';
 
 const SCROLL_SHADOW_CLASS = 'scroll-shadow';
 
@@ -11,6 +11,8 @@ type State = {
 
 export default setModifierManager(
   () => ({
+    capabilities: capabilities('3.13'),
+
     createModifier(): object {
       return {
         element: null
