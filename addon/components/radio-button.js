@@ -16,7 +16,8 @@ export default Component.extend({
     return !this.disabled && this.value === this.currentValue;
   }),
 
-  click() {
+  click(e) {
+    e.stopPropagation();
     this.sendAction('onCheck', this.get('value'));
   }
 });

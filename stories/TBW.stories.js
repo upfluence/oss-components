@@ -24,24 +24,19 @@ const defineStory = (name) => {
   'Base/Links',
   'Base/Loading',
   'Base/Navigation',
-  'Base/Notificiations (Check Usage)',
   'Base/Progress',
   'Base/Stats',
   'Base/Tables',
-  'Base/Toastr',
   'Base/Transitions'
 ].forEach((story) => defineStory(story));
 
 ['Utilities/Grid', 'Utilities/Statuses (Check Usage)'].forEach((story) => defineStory(story));
 
 [
-  'Components/Destructive Button',
-  'Components/Loading State',
   'Components/Expanding Search (Check Usage)',
   'Components/Radio Button',
   'Components/Progress Bar',
   'Components/Image',
   'Components/Cards',
-  'Components/Input Wrapper',
   'Components/Table'
 ].forEach((story) => defineStory(story));

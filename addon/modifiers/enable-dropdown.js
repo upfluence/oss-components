@@ -1,8 +1,10 @@
-import { setModifierManager } from '@ember/modifier';
-import $ from 'jquery';
+import { setModifierManager, capabilities } from '@ember/modifier';
+import jQuery from 'jquery';
 
 export default setModifierManager(
   () => ({
+    capabilities: capabilities('3.13'),
+
     createModifier() {
       return {
         element: null
@@ -10,7 +12,7 @@ export default setModifierManager(
     },
 
     installModifier(state, element) {
-      $(element).dropdown();
+      jQuery(element).dropdown();
     },
 
     destroyModifier() {
