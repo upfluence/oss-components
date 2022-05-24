@@ -1,6 +1,6 @@
 import { bool } from '@ember/object/computed';
 import Component from '@ember/component';
-import $ from 'jquery';
+import jQuery from 'jquery';
 
 export default Component.extend({
   tagName: 'tr',
@@ -32,7 +32,7 @@ export default Component.extend({
 
   click: function (e) {
     let clickedColumnIsUneditable =
-      $(e.target).parents('td.upf-datatable__column.upf-datatable__column--uneditable').length !== 0;
+      jQuery(e.target).parents('td.upf-datatable__column.upf-datatable__column--uneditable').length !== 0;
     if (this.onRowClick && !clickedColumnIsUneditable) {
       this.send('handleRowClickCallback');
     }

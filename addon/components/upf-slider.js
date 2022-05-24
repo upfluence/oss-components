@@ -1,6 +1,6 @@
 import Component from '@ember/component';
 import { computed } from '@ember/object';
-import $ from 'jquery';
+import jQuery from 'jquery';
 
 export default Component.extend({
   classNames: ['upf-slider'],
@@ -62,7 +62,7 @@ export default Component.extend({
       prettify: this.formatValue || null
     });
 
-    let slider = $('.slider').data('ionRangeSlider');
+    let slider = jQuery('.slider').data('ionRangeSlider');
 
     this.set('slider', slider);
   }

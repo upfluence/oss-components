@@ -4,7 +4,7 @@
 </div>
 <div class="fx-col fx-gap-px-10 margin-md">
   <OSS::Button @skin="primary" @size="md" @label="Open MODAL" @icon="fa fa-unicorn"
-               {{on "click" this.openModal}} />
+  {{on "click" this.openModal}} {{enable-tooltip title="f"}}/>
   {{#if this.showModal}}
     <OSS::ModalDialog @title="Example modal" @subtitle="subtitle" @close={{this.closeModal}} @size="md">
       <:content>
