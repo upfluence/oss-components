@@ -9,7 +9,7 @@ class NoBareHTMLButton extends Rule {
         }
       },
 
-      MustacheStatement(node, visitorPath) {
+      MustacheStatement(node) {
         if (this._hasDiscouragedNode(node)) {
           this._logError(node);
         }
@@ -27,13 +27,13 @@ class NoBareHTMLButton extends Rule {
     const buttonInvokationExpr = ['MustacheStatement', 'BlockStatement'].includes(node.type)
       ? node.path.original
       : node.tag;
-    return ['LoadingButton', 'button', 'loading-button'].includes(buttonInvokationExpr);
+    return ['button', 'LoadingButton', 'loading-button'].includes(buttonInvokationExpr);
   }
 
   _logError(node) {
     this.log({
       node,
-      message: 'Prefer OSS::Button component to bare HTML buttons',
+      message: 'Prefer OSS::Button component when using buttons',
       line: node.loc.start.line
     });
   }
