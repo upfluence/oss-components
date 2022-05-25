@@ -6,6 +6,6 @@ module.exports = {
   plugins: ['./linters/handlebars'],
 
   rules: {
-    'u-template-lint/no-bare-button': ['error']
+    'u-template-lint/no-bare-button': true
   }
 };
