@@ -1,3 +1,4 @@
+/* global require module */
 const { Rule } = require('ember-template-lint');
 
 class NoBareHTMLButton extends Rule {
