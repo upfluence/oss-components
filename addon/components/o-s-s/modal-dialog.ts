@@ -23,7 +23,7 @@ export default class OSSModalDialog extends Component<OSSModalDialogArgs> {
     if (typeof args.title !== 'string') {
       throw new Error('[component][OSS::ModalDialog] The title parameter is mandatory');
     }
-    document.addEventListener('keyup', this._closeOnEscape.bind(this));
+    document.addEventListener('keyup', this._closeOnEscape);
   }
 
   get modalSize(): string {
@@ -66,6 +66,7 @@ export default class OSSModalDialog extends Component<OSSModalDialogArgs> {
     this.args.close();
   }
 
+  @action
   _closeOnEscape(event: KeyboardEvent): void {
     if (event.key === 'Escape') {
       event.stopPropagation();
