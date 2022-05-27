@@ -171,8 +171,8 @@ export default class OSSButton extends Component<ButtonArgs> {
   }
 
   updateCounter(ctx: any): void {
-    if (ctx.counterTimeLeft > this.stepCounterTime) {
-      ctx.counterTimeLeft -= this.stepCounterTime;
+    if (ctx.counterTimeLeft > ctx.stepCounterTime) {
+      ctx.counterTimeLeft -= ctx.stepCounterTime;
     } else {
       ctx.clearInterval(ctx.intervalID);
       ctx.args.countDown.callback();
