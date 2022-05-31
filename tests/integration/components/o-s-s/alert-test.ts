@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, setupOnerror } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 const ALERT_SKINS = ['success', 'error', 'info', 'warning'];
@@ -20,12 +20,10 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
     assert.dom('.upf-alert-v2').exists({ count: 1 });
   });
 
-  test('it throws an error if no skin argument is passed', async function (assert) {
-    setupOnerror((err: any) => {
-      assert.equal(err.message, '[component][OSS::Alert] The @skin argument is mandatory');
-    });
-
+  test('it sets info as default if no skin is specified', async function (assert) {
     await render(hbs`<OSS::Alert />`);
+
+    assert.dom('.upf-alert-v2').hasClass('upf-alert-v2--info');
   });
 
   ALERT_SKINS.forEach((skin) => {

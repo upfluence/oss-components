@@ -1,24 +1,18 @@
 import Component from '@glimmer/component';
 
-type skinType = 'success' | 'error' | 'info' | 'warning';
+type skinType = 'success' | 'error' | 'warning';
+
+const DEFAULT_SKIN = 'info';
 
 interface OSSAlertArgs {
-  skin: skinType;
+  skin?: skinType;
   title?: string;
   subtitle?: string;
 }
 
 export default class OSSAlert extends Component<OSSAlertArgs> {
-  constructor(owner: unknown, args: OSSAlertArgs) {
-    super(owner, args);
-
-    if (!args.skin) {
-      throw new Error('[component][OSS::Alert] The @skin argument is mandatory');
-    }
-  }
-
   get skinClass(): string {
-    return `upf-alert-v2--${this.args.skin}`;
+    return `upf-alert-v2--${this.args.skin || DEFAULT_SKIN}`;
   }
 
   get iconClass(): string {
@@ -29,10 +23,8 @@ export default class OSSAlert extends Component<OSSAlertArgs> {
         return 'fa-exclamation-circle';
       case 'error':
         return 'fa-exclamation-triangle';
-      case 'info':
-        return 'fa-info-circle';
       default:
-        return '';
+        return 'fa-info-circle';
     }
   }
 }

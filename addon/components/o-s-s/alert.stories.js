@@ -8,12 +8,11 @@ export default {
   argTypes: {
     skin: {
       description: 'Skin of the alert',
-      type: { required: true },
       table: {
         type: {
           summary: SkinTypes.join('|')
         },
-        defaultValue: { summary: '' }
+        defaultValue: { summary: 'info' }
       },
       options: SkinTypes,
       control: { type: 'select' }
