@@ -5,7 +5,7 @@
   <OSS::Button @label="Error" @size="md" {{on "click" (fn this.triggerToast "error")}} />
 </div>
 <div class="fx-col fx-gap-px-10 margin-md">
-  <OSS::CodeBlock @content={{this.code4CodeBlock}} @scrollable={{true}}
+  <OSS::CodeBlock @content={{this.code4CodeBlock}} @scrollable={{true}} @copyable={{true}}
                   @collapseHeight={{200}} @onCopyMessage="Copied to clipboard!" />
 </div>
 <div class="fx-col fx-gap-px-10 margin-md">
