@@ -19,7 +19,7 @@ export default {
     disabled: {
       description: 'Whether the checkbox is disabled or not',
       table: {
-        type: { summary: 'true | false' },
+        type: { summary: 'true | false' },
         defaultValue: { summary: 'false' }
       },
       control: {
@@ -29,7 +29,7 @@ export default {
     checked: {
       description: 'State of the checkbox',
       table: {
-        type: { summary: 'true | false' },
+        type: { summary: 'true | false' },
         defaultValue: { summary: 'false' }
       },
       control: {

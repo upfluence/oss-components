@@ -8,7 +8,7 @@ const SizeDefinition: SizeDefType = {
   lg: 'upf-badge--size-lg'
 };
 
-type SkinType = 'primary' | 'success' | 'alert' | 'error';
+type SkinType = 'primary' | 'success' | 'alert' | 'error';
 type SkinDefType = { [key in SkinType]: string };
 export const SkinDefinition: SkinDefType = {
   primary: 'upf-badge--primary',
