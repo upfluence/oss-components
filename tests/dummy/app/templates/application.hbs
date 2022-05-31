@@ -1,4 +1,12 @@
 <div class="fx-row fx-gap-px-10 margin-md">
+  <OSS::Alert @title="Title" @subtitle="Subtitle" />
+  <OSS::Alert @skin="error" @title="Title" @subtitle="Subtitle" />
+</div>
+<div class="fx-row fx-gap-px-10 margin-md">
+  <OSS::Alert @skin="success" @title="Title" />
+  <OSS::Alert @skin="warning" @subtitle="Subtitle" />
+</div>
+<div class="fx-row fx-gap-px-10 margin-md">
   <OSS::Button @label="Info" @size="md" {{on "click" (fn this.triggerToast "info")}} />
   <OSS::Button @label="Success" @size="md" {{on "click" (fn this.triggerToast "success")}} />
   <OSS::Button @label="Warning" @size="md" {{on "click" (fn this.triggerToast "warning")}} />

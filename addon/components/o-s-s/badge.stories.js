@@ -32,7 +32,7 @@ export default {
     plain: {
       description: 'Displays the badge with a plain background',
       table: {
-        type: { summary: 'true | false' },
+        type: { summary: 'true | false' },
         defaultValue: { summary: 'false' }
       },
       control: {
