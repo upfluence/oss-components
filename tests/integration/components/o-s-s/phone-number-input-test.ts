@@ -47,7 +47,7 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
     await render(hbs`<OSS::PhoneNumberInput @prefix="" @onChange={{this.onChange}} />`);
   });
 
-  test('It throws an error if @number is not passed', async function (assert) {
+  test('It throws an error if @onChange is not passed', async function (assert) {
     setupOnerror((err: any) => {
       assert.equal(
         err.message,
