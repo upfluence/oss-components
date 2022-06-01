@@ -7,7 +7,7 @@
     position: absolute;
     top: 15px;
     right: 0;
-    background-color: #f9f9f9;
+    background-color: var(--color-gray-50);
     border-radius: @default-radius;
     padding: @spacing-xx-sm;
   }
@@ -52,8 +52,8 @@
       display: flex;
       flex-direction: column;
       padding: 0;
-      background-color: #f9f9f9;
-      color: #8a95a0;
+      background-color: var(--color-gray-50);
+      color: var(--color-gray-500);
     }
     pre.code::before {
       counter-reset: listing;
@@ -62,8 +62,8 @@
       counter-increment: listing;
     }
     pre.code code::before {
-      background-color: #f3f4f6;
-      color: #8a95a0;
+      background-color: var(--color-gray-100);
+      color: var(--color-gray-400);
       content: counter(listing);
       display: inline-block;
       width: 40px;
