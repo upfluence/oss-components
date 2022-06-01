@@ -37,7 +37,7 @@ module('Integration | Component | o-s-s/code-block', function (hooks) {
     await render(hbs`<OSS::CodeBlock @content={{this.codeBlock}} @copyable={{true}} />`);
 
     const stubClipboard = sinon.stub(navigator.clipboard, 'writeText');
-    await click('.code-block .floating-copy-btn');
+    await click('.code-block .floating-copy-btn .upf-btn');
 
     assert.ok(stubClipboard.calledOnceWithExactly(this.codeBlock));
   });
@@ -45,7 +45,7 @@ module('Integration | Component | o-s-s/code-block', function (hooks) {
   test('if onCopyMessage is set, it shows a toast message when the code is copied', async function (assert) {
     await render(hbs`<OSS::CodeBlock @content={{this.codeBlock}} @copyable={{true}} @onCopyMessage={{'Copied!'}} />`);
     const stubToast = sinon.stub(this.owner.lookup('service:toast'), 'success');
-    await click('.code-block .floating-copy-btn');
+    await click('.code-block .floating-copy-btn .upf-btn');
     assert.ok(stubToast.calledOnceWithExactly('Copied!', ''));
   });
 

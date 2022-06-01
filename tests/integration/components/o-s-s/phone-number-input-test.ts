@@ -6,6 +6,7 @@ import click from '@ember/test-helpers/dom/click';
 import sinon from 'sinon';
 import findAll from '@ember/test-helpers/dom/find-all';
 import typeIn from '@ember/test-helpers/dom/type-in';
+import settled from '@ember/test-helpers/settled';
 
 module('Integration | Component | o-s-s/phone-number', function (hooks) {
   setupRenderingTest(hooks);
@@ -37,6 +38,7 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
     });
     this.onChange = () => {};
     await render(hbs`<OSS::PhoneNumberInput @number="" @onChange={{this.onChange}} />`);
+    await settled();
   });
 
   test('It throws an error if @number is not passed', async function (assert) {
@@ -45,6 +47,7 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
     });
     this.onChange = () => {};
     await render(hbs`<OSS::PhoneNumberInput @prefix="" @onChange={{this.onChange}} />`);
+    await settled();
   });
 
   test('It throws an error if @onChange is not passed', async function (assert) {
@@ -56,6 +59,7 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
     });
     this.onChange = () => {};
     await render(hbs`<OSS::PhoneNumberInput @number="" @prefix="" />`);
+    await settled();
   });
 
   module('Country selector', () => {
