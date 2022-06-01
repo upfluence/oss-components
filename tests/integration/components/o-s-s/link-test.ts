@@ -1,7 +1,8 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, setupOnerror } from '@ember/test-helpers';
+import { render, setupOnerror, click } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
+import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/link', function (hooks) {
   setupRenderingTest(hooks);
@@ -32,5 +33,26 @@ module('Integration | Component | o-s-s/link', function (hooks) {
     assert.dom('.upf-link i').hasClass('fa-facebook');
     assert.dom('.upf-link span').hasClass('margin-left-xxx-sm');
     assert.dom('.upf-link span').hasText('Facebook');
+  });
+
+  test('it opens link with href and target', async function (assert: Assert) {
+    let windowOpenStub = sinon.stub(window, 'open');
+
+    await render(hbs`
+      <OSS::Link @icon="fab fa-facebook" @label="Facebook" 
+                 @link={{hash href="https://www.google.fr" target="_blank"}} />
+    `);
+
+    await click('.upf-link');
+    assert.true(windowOpenStub.calledOnceWithExactly('https://www.google.fr', '_blank'));
+  });
+
+  test('it transits to the route', async function (assert: Assert) {
+    let transitionToStub = sinon.stub(this.owner.lookup('service:router'), 'transitionTo');
+
+    await render(hbs`<OSS::Link @icon="fab fa-facebook" @label="Facebook" @transitionTo={{"workflow.create"}} />`);
+
+    await click('.upf-link');
+    assert.true(transitionToStub.calledOnceWithExactly('workflow.create'));
   });
 });
