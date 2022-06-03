@@ -9,7 +9,7 @@
       {{/if}}
     </div>
     <Input class="fx-1" type="tel" @value={{this.value}} {{on "keydown" this.onlyNumeric}}
-           placeholder="81726354" autocomplete="off" />
+           autocomplete="off" />
   </div>
   {{#if this.currencySelectorShown}}
     <OSS::InfiniteSelect @items={{this.filteredCurrencies}} @onSearch={{this.onSearch}}
