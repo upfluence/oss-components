@@ -13,16 +13,11 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
   @tracked selectedCurrency: Currency;
   @tracked currencySelectorShown: boolean = false;
   @tracked filteredCurrencies: Currency[] = this._currencies;
+  @tracked value: number = this.args.value || 0;
 
   constructor(owner: unknown, args: OSSCurrencyInputArgs) {
     super(owner, args);
 
-    if (typeof this.args.currency !== 'string') {
-      throw new Error('[component][OSS::CurrencyInput] The parameter @prefix of type string is mandatory');
-    }
-    if (typeof this.args.value !== 'number') {
-      throw new Error('[component][OSS::CurrencyInput] The parameter @number of type string is mandatory');
-    }
     if (typeof this.args.onChange !== 'function') {
       throw new Error('[component][OSS::CurrencyInput] The parameter @onChange of type function is mandatory');
     }
@@ -31,7 +26,7 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
   }
 
   private _loadExistingData(): void {
-    if (this.args.value && this.args.currency) {
+    if (this.args.currency) {
       this.selectedCurrency =
         this._currencies.find((currency: Currency) => currency.code === this.args.currency) || this._currencies[0];
     }
@@ -45,7 +40,7 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
   onlyNumeric(event: KeyboardEvent): void {
     const authorizedInputs = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift', 'Control', '.', ','];
     if (/^[0-9]$/i.test(event.key) || authorizedInputs.find((key: string) => key === event.key)) {
-      this.args.onChange(this.selectedCurrency.code, this.args.value);
+      this.args.onChange(this.selectedCurrency.code, this.value);
     } else {
       event.preventDefault();
     }
@@ -63,7 +58,7 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
   @action
   onSelect(value: any): void {
     this.selectedCurrency = value;
-    this.args.onChange(this.selectedCurrency.code, this.args.value);
+    this.args.onChange(this.selectedCurrency.code, this.value);
     this.hideCurrencySelector();
   }
 
