@@ -26,6 +26,7 @@ export default {
       control: { type: 'text' }
     },
     onChange: {
+      type: { required: true },
       description: 'A callback that sends the modifications of the value & the currency back to the parent component'
     }
   }
