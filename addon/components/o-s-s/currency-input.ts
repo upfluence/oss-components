@@ -8,6 +8,8 @@ interface OSSCurrencyInputArgs {
   onChange(currency: string, value: number): void;
 }
 
+const NUMERIC_ONLY = /^[0-9]$/i;
+
 export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
   private _currencies = usedCurrencies;
   @tracked selectedCurrency: Currency;
@@ -39,7 +41,7 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
   @action
   onlyNumeric(event: KeyboardEvent): void {
     const authorizedInputs = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift', 'Control', '.', ','];
-    if (/^[0-9]$/i.test(event.key) || authorizedInputs.find((key: string) => key === event.key)) {
+    if (NUMERIC_ONLY.test(event.key) || authorizedInputs.find((key: string) => key === event.key)) {
       this.args.onChange(this.selectedCurrency.code, this.value);
     } else {
       event.preventDefault();

@@ -17,3 +17,5 @@ oss-components:
     collapse: Collapse
     uncollapse: Uncollapse
     copy: Copy
+  currency-input:
+    search: Search
