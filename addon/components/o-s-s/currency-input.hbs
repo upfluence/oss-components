@@ -1,0 +1,30 @@
+<div class="currency-input-container fx-1" ...attributes>
+  <div class="currency-input upf-input fx-row fx-1 fx-xalign-center">
+    <div class="currency-selector fx-row" role="button" {{on "click" this.toggleCurrencySelector}}>
+      <span class="margin-right-xxx-sm text-center symbol">{{this.selectedCurrencySymbol}}</span>
+      {{#if this.currencySelectorShown}}
+        <i class="fal fa-chevron-up margin-left-xxx-sm"></i>
+      {{else}}
+        <i class="fal fa-chevron-down margin-left-xxx-sm"></i>
+      {{/if}}
+    </div>
+    <Input class="fx-1" type="tel" @value={{@value}} {{on "keydown" this.onlyNumeric}}
+           placeholder="81726354" autocomplete="off" />
+  </div>
+  {{#if this.currencySelectorShown}}
+    <OSS::InfiniteSelect @items={{this.filteredCurrencies}} @onSearch={{this.onSearch}}
+                         @onSelect={{this.onSelect}}
+                         @searchPlaceholder="Search"
+                         {{on-click-outside this.hideCurrencySelector}}>
+      <:option as |currency|>
+        <div class="fx-row fx-xalign-center {{if (eq this.selectedCurrency currency) 'row-selected'}}">
+          <span class="symbol text-color-default-light margin-left-xx-sm">{{currency.symbol}}</span>
+          <span class="text-color-default-light margin-left-xx-sm fx-1">{{currency.code}}</span>
+          {{#if (eq this.selectedCountry currency)}}
+            <i class="far fa-check text-color-bright-purple"></i>
+          {{/if}}
+        </div>
+      </:option>
+    </OSS::InfiniteSelect>
+  {{/if}}
+</div>

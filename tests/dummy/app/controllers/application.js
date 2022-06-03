@@ -9,6 +9,8 @@ export default class ApplicationController extends Controller {
   @tracked loading = false;
   @tracked phonePrefix = '+33';
   @tracked phoneNumber = '782828282';
+  @tracked currency = 'EUR';
+  @tracked currencyValue = 42.13;
   @tracked showModal = false;
 
   code4CodeBlock = testScript;
@@ -22,6 +24,13 @@ export default class ApplicationController extends Controller {
   @action
   closeModal() {
     this.showModal = false;
+  }
+
+  @action
+  onCurrencyInputChange(currency, value) {
+    console.log('onCurrencyInputChange', currency, value);
+    this.currency = currency;
+    this.currencyValue = value;
   }
 
   @action
