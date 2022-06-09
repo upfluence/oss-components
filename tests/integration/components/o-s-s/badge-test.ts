@@ -76,11 +76,11 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
       });
     });
 
-    test('it adds the plain class when passed', async function(assert: Assert) {
+    test('it adds the plain class when passed', async function (assert: Assert) {
       await render(hbs`<OSS::Badge @skin="primary" @plain={{true}} @text="2x" />`);
 
-        assert.dom('.upf-badge').hasClass('upf-badge--plain');
-    })
+      assert.dom('.upf-badge').hasClass('upf-badge--plain');
+    });
   });
 
   module('content args', function () {

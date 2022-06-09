@@ -1,15 +1,15 @@
 <div class={{this.computedClass}}>
-    {{#if @icon}} 
-        <i class={{@icon}}></i>
-    {{/if}}
+  {{#if @icon}}
+    <i class={{@icon}}></i>
+  {{/if}}
 
-    {{#if @label}}
-    <div class="text-style-semibold">
-        {{#if @hasEllipsis}}
-            <span>{{@label}}</span>
-        {{else}}
-            {{@label}}
-        {{/if}}
+  {{#if @label}}
+    <div class="text-style-semibold fx-row">
+      {{#if @hasEllipsis}}
+        <span>{{@label}}</span>
+      {{else}}
+        {{@label}}
+      {{/if}}
     </div>
-    {{/if}}
+  {{/if}}
 </div>

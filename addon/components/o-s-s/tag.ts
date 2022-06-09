@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 
-type SkinType = 'primary' | 'success' | 'warning' | 'danger' | 'secondary';
+export type SkinType = 'primary' | 'success' | 'warning' | 'danger' | 'secondary';
 
 type SkinDefType = {
   [key in SkinType]: string;
@@ -8,7 +8,7 @@ type SkinDefType = {
 
 const BASE_CLASS = 'upf-tag';
 
-const SkinDefinition: SkinDefType = {
+export const SkinDefinition: SkinDefType = {
   primary: 'regular',
   success: 'success',
   warning: 'alert',
@@ -31,6 +31,7 @@ export default class OSSTag extends Component<OSSTagArgs> {
       throw new Error('[component][OSS::Tag] You must pass either a @label or an @icon argument.');
     }
   }
+
   get skin(): string {
     if (!this.args.skin) {
       return SkinDefinition.primary;
@@ -44,6 +45,7 @@ export default class OSSTag extends Component<OSSTagArgs> {
     }
     return this.args.hasEllipsis;
   }
+
   get computedClass() {
     let classes = [BASE_CLASS];
 
@@ -53,5 +55,4 @@ export default class OSSTag extends Component<OSSTagArgs> {
 
     return classes.join(' ');
   }
-
 }
