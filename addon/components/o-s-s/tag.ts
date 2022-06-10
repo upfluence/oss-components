@@ -46,7 +46,7 @@ export default class OSSTag extends Component<OSSTagArgs> {
     return this.args.hasEllipsis;
   }
 
-  get computedClass() {
+  get computedClass(): string {
     let classes = [BASE_CLASS];
 
     if (this.skin) {
