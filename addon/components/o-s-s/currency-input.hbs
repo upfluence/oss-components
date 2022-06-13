@@ -3,9 +3,9 @@
     <div class="currency-selector fx-row" role="button" {{on "click" this.toggleCurrencySelector}}>
       <span class="margin-right-xxx-sm text-center symbol">{{this.selectedCurrencySymbol}}</span>
       {{#if this.currencySelectorShown}}
-        <i class="fal fa-chevron-up margin-left-xxx-sm"></i>
+        <i class="fa fa-chevron-up margin-left-xxx-sm"></i>
       {{else}}
-        <i class="fal fa-chevron-down margin-left-xxx-sm"></i>
+        <i class="fa fa-chevron-down margin-left-xxx-sm"></i>
       {{/if}}
     </div>
     <Input class="fx-1" type="tel" @value={{this.value}} {{on "keydown" this.onlyNumeric}}
@@ -14,7 +14,7 @@
   {{#if this.currencySelectorShown}}
     <OSS::InfiniteSelect @items={{this.filteredCurrencies}} @onSearch={{this.onSearch}}
                          @onSelect={{this.onSelect}}
-                         @searchPlaceholder={{t "oss-component.currency-input.search"}}
+                         @searchPlaceholder={{t "oss-components.currency-input.search"}}
                          {{on-click-outside this.hideCurrencySelector}}>
       <:option as |currency|>
         <div class="fx-row fx-xalign-center {{if (eq this.selectedCurrency currency) 'row-selected'}}">

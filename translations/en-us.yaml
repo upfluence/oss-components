@@ -19,3 +19,7 @@ oss-components:
     copy: Copy
   currency-input:
     search: Search
+  country-selector:
+    placeholder:
+      country: Select your country
+      province: Select your province
