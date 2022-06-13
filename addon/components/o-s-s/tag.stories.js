@@ -12,7 +12,7 @@ export default {
         type: {
           summary: SkinTypes.join('|')
         },
-        defaultValue: { summary: 'regular' }
+        defaultValue: { summary: 'primary' }
       },
       options: SkinTypes,
       control: { type: 'select' }
@@ -59,9 +59,7 @@ const defaultArgs = {
 
 const Template = (args) => ({
   template: hbs`
-    <div style="padding: 2em; {{if (eq this.theme 'dark') 'background-color: #060666'}}">
     <OSS::Tag @skin={{this.skin}} @label={{this.label}} @icon={{this.icon}} @hasEllipsis={{this.hasEllipsis}}/>
-    </div>
   `,
   context: args
 });

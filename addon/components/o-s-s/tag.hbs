@@ -1,10 +1,10 @@
-<div class={{this.computedClass}}>
+<div class={{this.computedClass}} ...attributes>
   {{#if @icon}}
     <i class={{@icon}}></i>
   {{/if}}
 
   {{#if @label}}
-    <div class="text-style-semibold fx-row">
+    <div class='text-style-semibold fx-row'>
       {{#if @hasEllipsis}}
         <span>{{@label}}</span>
       {{else}}

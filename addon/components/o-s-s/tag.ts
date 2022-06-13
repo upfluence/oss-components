@@ -5,7 +5,6 @@ export type SkinType = 'primary' | 'success' | 'warning' | 'danger' | 'secondary
 type SkinDefType = {
   [key in SkinType]: string;
 };
-
 const BASE_CLASS = 'upf-tag';
 
 export const SkinDefinition: SkinDefType = {
@@ -32,6 +31,10 @@ export default class OSSTag extends Component<OSSTagArgs> {
     }
   }
 
+  get tooltip() {
+    return this.args.hasEllipsis ? this.args.label : null;
+  }
+
   get skin(): string {
     if (!this.args.skin) {
       return SkinDefinition.primary;
@@ -40,10 +43,7 @@ export default class OSSTag extends Component<OSSTagArgs> {
   }
 
   get hasEllipsis(): boolean {
-    if (!this.args.hasEllipsis) {
-      return false;
-    }
-    return this.args.hasEllipsis;
+    return this.args.hasEllipsis || false;
   }
 
   get computedClass(): string {
