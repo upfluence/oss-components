@@ -31,14 +31,7 @@ export default class OSSTag extends Component<OSSTagArgs> {
     }
   }
 
-  get tooltip() {
-    return this.args.hasEllipsis ? this.args.label : null;
-  }
-
   get skin(): string {
-    if (!this.args.skin) {
-      return SkinDefinition.primary;
-    }
     return SkinDefinition[this.args.skin as SkinType] ?? SkinDefinition.primary;
   }
 
