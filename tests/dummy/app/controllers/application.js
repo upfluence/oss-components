@@ -9,7 +9,7 @@ export default class ApplicationController extends Controller {
 
   @tracked selectedItems = ['toto'];
   @tracked selectedCountry: { name: string, id?: string } = null;
-  @tracked superHeroes = ['Iron Man', 'Thor', 'Loki', 'Captain America', 'Hulk'];
+  @tracked superHeroes = ['Iron Man', 'Thor', 'Loki', 'Hulk'];
   @tracked loading = false;
   @tracked phonePrefix = '+33';
   @tracked phoneNumber = '782828282';
@@ -35,6 +35,12 @@ export default class ApplicationController extends Controller {
   onCountrySelected(value) {
     console.log('selected country value : ', value);
     this.selectedCountry = value;
+  }
+
+  @action
+  updateSuperHeroes(newArray) {
+    console.log('updateSuperHeroes', newArray);
+    this.superHeroes = newArray;
   }
 
   @action

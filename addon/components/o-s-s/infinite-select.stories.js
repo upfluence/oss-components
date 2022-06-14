@@ -125,12 +125,7 @@ export default {
     }
   },
   parameters: {
-    layout: null,
-    previewTabs: {
-      'storybook/docs/panel': {
-        hidden: true
-      }
-    }
+    layout: 'fullscreen'
   }
 };
 

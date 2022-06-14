@@ -5,7 +5,7 @@ import { tracked } from '@glimmer/tracking';
 interface OSSArrayInputArgs {
   values?: string[];
   validator?: (value: string) => boolean;
-  onChange?: (values: string[]) => string;
+  onChange?: (values: string[]) => void;
   placeholder?: string;
 }
 
