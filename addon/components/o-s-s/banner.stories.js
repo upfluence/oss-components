@@ -26,6 +26,9 @@ export default {
     },
     icon: {
       description: 'A fontawesome icon that will be displayed in a round badge'
+    },
+    plain: {
+      description: 'Display the plain version of the banner, if true will show in bg-color-grey'
     }
   }
 };

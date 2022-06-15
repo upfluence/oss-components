@@ -1,0 +1,36 @@
+<div class="country-selector-container fx-1">
+  <div class="upf-input fx-row fx-1 fx-malign-space-between fx-xalign-center"
+       {{on "click" this.toggleDropdown}} role="button"
+       data-control-name="country-selector-input">
+    <div class="fx-row fx-xalign-center fx-gap-px-10">
+      {{#if this.selectedCountry.id}}
+        <div class="fflag fflag-{{this.selectedCountry.id}} ff-sm ff-wave ff-rounded"></div>
+      {{/if}}
+      <span class="{{unless this.selectedCountry 'text-color-default-light'}}">{{this.inputLabel}}</span>
+    </div>
+    {{#if this.dropdownVisibility}}
+      <i class="far fa-chevron-up"></i>
+    {{else}}
+      <i class="far fa-chevron-down"></i>
+    {{/if}}
+  </div>
+  {{#if this.dropdownVisibility}}
+    <OSS::InfiniteSelect @items={{this.filteredItems}} @onSearch={{this.search}}
+                         @onSelect={{this.onItemSelected}}
+                         @searchPlaceholder={{t "oss-components.country-selector.search"}}
+                         {{on-click-outside this.closeDropdown}}>
+      <:option as |item|>
+        <div class="fx-row fx-xalign-center {{if (eq this.selectedCountry item) 'row-selected'}}">
+          {{#if item.id}}
+            <div class="fflag fflag-{{item.id}} ff-sm ff-wave ff-rounded"></div>
+          {{/if}}
+          <span class="text-color-default-light margin-left-xx-sm">{{item.name}}</span>
+          {{#if (eq this.selectedCountry item)}}
+            <div class="fx-1"></div>
+            <i class="far fa-check text-color-bright-purple padding-right-px-6"></i>
+          {{/if}}
+        </div>
+      </:option>
+    </OSS::InfiniteSelect>
+  {{/if}}
+</div>
