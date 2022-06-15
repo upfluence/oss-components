@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, typeIn, render, scrollTo } from '@ember/test-helpers';
+import { click, typeIn, render, scrollTo, setupOnerror } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import sinon from 'sinon';
 
@@ -22,18 +22,18 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
   setupRenderingTest(hooks);
 
   module('search is enabled', function () {
-    // module('no onSearch hook has been passed', function () {
-    //   test('should throw an error', async function (assert) {
-    //     setupOnerror((err) => {
-    //       assert.equal(
-    //         err.message,
-    //         '[component][OSS::InfiniteSelect] Search is enabled without an `onSearch` action being passed'
-    //       );
-    //     });
+    module('no onSearch hook has been passed', function () {
+      test('should throw an error', async function (assert) {
+        setupOnerror((err) => {
+          assert.equal(
+            err.message,
+            '[component][OSS::InfiniteSelect] Search is enabled without an `onSearch` action being passed'
+          );
+        });
 
-    //     await render(hbs`<OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{true}} />`);
-    //   });
-    // });
+        await render(hbs`<OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{true}} />`);
+      });
+    });
 
     module('with onSearch hook', function () {
       test('it calls the onSearch hook with the typed keyword', async function (assert) {
@@ -71,15 +71,15 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
   });
 
   module('item selection', function () {
-    // module('onSelect is not passed', function () {
-    //   test('should throw an error', async function (assert) {
-    //     setupOnerror((err) => {
-    //       assert.equal(err.message, '[component][OSS::InfiniteSelect] `onSelect` action is mandatory');
-    //     });
+    module('onSelect is not passed', function () {
+      test('should throw an error', async function (assert) {
+        setupOnerror((err) => {
+          assert.equal(err.message, '[component][OSS::InfiniteSelect] `onSelect` action is mandatory');
+        });
 
-    //     await render(hbs`<OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{false}} />`);
-    //   });
-    // });
+        await render(hbs`<OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{false}} />`);
+      });
+    });
 
     module('onSelect is passed', function () {
       test('it calls the onSelect hook with the clicked item', async function (assert) {

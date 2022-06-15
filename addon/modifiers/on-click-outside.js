@@ -1,4 +1,5 @@
 import { setModifierManager, capabilities } from '@ember/modifier';
+import { run } from '@ember/runloop';
 
 /**
  * Used to detect clicks occuring _outside_ of the modified element.
@@ -25,11 +26,15 @@ export default setModifierManager(
         }
       };
 
-      document.addEventListener('click', state.handler, false);
+      run(() => {
+        document.addEventListener('click', state.handler, false);
+      });
     },
 
     destroyModifier(state) {
-      document.removeEventListener('click', state.handler, false);
+      run(() => {
+        document.removeEventListener('click', state.handler, false);
+      });
     }
   }),
   class OnClickOutsideModifierManager {}

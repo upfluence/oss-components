@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import jQuery from 'jquery';
 import { isTesting } from '@embroider/macros';
+import { run } from '@ember/runloop';
 
 const DEFAULT_OPTIONS = {
   centered: false,
@@ -39,13 +40,17 @@ export default class OssModalComponent extends Component {
       modal.appendTo(this.container);
     }
 
-    this.element.addEventListener('keydown', this._handleEscapeKey.bind(this));
+    run(() => {
+      this.element.addEventListener('keydown', this._handleEscapeKey.bind(this));
+    });
   }
 
   @action
   teardown() {
     jQuery(this.element).modal('hide');
-    this.element.removeEventListener('keydown', this._handleEscapeKey.bind(this));
+    run(() => {
+      this.element.removeEventListener('keydown', this._handleEscapeKey.bind(this));
+    });
     this.element.remove();
   }
 

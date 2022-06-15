@@ -1,5 +1,6 @@
 // @ts-ignore
 import { setModifierManager, capabilities } from '@ember/modifier';
+import { run } from '@ember/runloop';
 
 type State = {
   element: Element;
@@ -36,11 +37,15 @@ export default setModifierManager(
         }
       };
 
-      state.element.addEventListener('scroll', state.handler, false);
+      run(() => {
+        state.element.addEventListener('scroll', state.handler, false);
+      });
     },
 
     destroyModifier(state: any) {
-      state.element.removeEventListener('scroll', state.handler, false);
+      run(() => {
+        state.element.removeEventListener('scroll', state.handler, false);
+      });
     }
   }),
   class OnClickOutsideModifierManager {}
