@@ -1,5 +1,6 @@
 import Service from '@ember/service';
 import { isEmpty } from '@ember/utils';
+import { run } from '@ember/runloop';
 
 enum ToastType {
   INFO = 'info',
@@ -156,7 +157,9 @@ export default class Toast extends Service {
 
   private _buildCloseButton(parent: Element) {
     const closeButton: Element = this._buildElement('button', [], '<i class="far fa-times"></i>');
-    closeButton.addEventListener('click', this._onToastClose.bind(this), { once: true });
+    run(() => {
+      closeButton.addEventListener('click', this._onToastClose.bind(this), { once: true });
+    });
     parent.append(closeButton);
   }
 
@@ -218,8 +221,10 @@ export default class Toast extends Service {
     destroyAnimation.play();
 
     destroyAnimation.finished.then(() => {
-      toast.removeEventListener('mouseenter', this._pauseCounterAnimation.bind(this));
-      toast.removeEventListener('mouseleave', this._playCounterAnimation.bind(this));
+      run(() => {
+        toast.removeEventListener('mouseenter', this._pauseCounterAnimation.bind(this));
+        toast.removeEventListener('mouseleave', this._playCounterAnimation.bind(this));
+      });
       this._toasts.delete(toast);
       toast?.remove();
     });
@@ -238,14 +243,16 @@ export default class Toast extends Service {
 
   private _setupToastEvents(toast: Element, opts: ToastOptions) {
     if (opts.onclick && typeof opts.onclick === 'function') {
-      toast.addEventListener(
-        'click',
-        (event) => {
-          event.stopPropagation();
-          opts.onclick?.(event);
-        },
-        { once: true }
-      );
+      run(() => {
+        toast.addEventListener(
+          'click',
+          (event) => {
+            event.stopPropagation();
+            opts.onclick?.(event);
+          },
+          { once: true }
+        );
+      });
     }
 
     this._toasts.get(toast)?.finished.then(() => {
@@ -254,8 +261,10 @@ export default class Toast extends Service {
 
     if (opts.timeout === 'none') return;
 
-    toast.addEventListener('mouseenter', this._pauseCounterAnimation.bind(this));
-    toast.addEventListener('mouseleave', this._playCounterAnimation.bind(this));
+    run(() => {
+      toast.addEventListener('mouseenter', this._pauseCounterAnimation.bind(this));
+      toast.addEventListener('mouseleave', this._playCounterAnimation.bind(this));
+    });
   }
 
   private _buildElement(tagName: string, classes: string[], content?: string): Element {

@@ -1,6 +1,7 @@
 import { action } from '@ember/object';
 import { isTesting } from '@embroider/macros';
 import Component from '@glimmer/component';
+import { run } from '@ember/runloop';
 
 interface OSSModalDialogArgs {
   title: string;
@@ -23,7 +24,9 @@ export default class OSSModalDialog extends Component<OSSModalDialogArgs> {
     if (typeof args.title !== 'string') {
       throw new Error('[component][OSS::ModalDialog] The title parameter is mandatory');
     }
-    document.addEventListener('keyup', this._closeOnEscape);
+    run(() => {
+      document.addEventListener('keyup', this._closeOnEscape);
+    });
   }
 
   get modalSize(): string {
@@ -36,7 +39,9 @@ export default class OSSModalDialog extends Component<OSSModalDialogArgs> {
   @action
   destroy(): void {
     this._parent?.remove();
-    document.removeEventListener('keyup', this._closeOnEscape);
+    run(() => {
+      document.removeEventListener('keyup', this._closeOnEscape);
+    });
     document.body.style.overflow = this.prevBodyOverflow || 'auto';
     document.body.style.paddingRight = this.prevBodyPadding || '0';
   }

@@ -1,4 +1,5 @@
 import Component from '@ember/component';
+import { run } from '@ember/runloop';
 
 export default Component.extend({
   displayedColumnsPanel: false,
@@ -19,10 +20,14 @@ export default Component.extend({
   },
 
   willInsertElement() {
-    document.addEventListener('click', this.clickHandler, false);
+    run(() => {
+      document.addEventListener('click', this.clickHandler, false);
+    });
   },
 
   willDestroyElement() {
-    document.removeEventListener('click', this.clickHandler, false);
+    run(() => {
+      document.removeEventListener('click', this.clickHandler, false);
+    });
   }
 });
