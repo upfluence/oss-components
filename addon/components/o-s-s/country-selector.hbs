@@ -9,9 +9,9 @@
       <span class="{{unless this.selectedCountry 'text-color-default-light'}}">{{this.inputLabel}}</span>
     </div>
     {{#if this.dropdownVisibility}}
-      <i class="fa fa-chevron-up"></i>
+      <i class="far fa-chevron-up"></i>
     {{else}}
-      <i class="fa fa-chevron-down"></i>
+      <i class="far fa-chevron-down"></i>
     {{/if}}
   </div>
   {{#if this.dropdownVisibility}}
@@ -20,7 +20,7 @@
                          @searchPlaceholder={{t "oss-components.country-selector.search"}}
                          {{on-click-outside this.closeDropdown}}>
       <:option as |item|>
-        <div class="fx-row fx-xalign-center {{if (eq this.selectedCurrency item) 'row-selected'}}">
+        <div class="fx-row fx-xalign-center {{if (eq this.selectedCountry item) 'row-selected'}}">
           {{#if item.id}}
             <div class="fflag fflag-{{item.id}} ff-sm ff-wave ff-rounded"></div>
           {{/if}}

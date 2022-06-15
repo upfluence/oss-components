@@ -3,9 +3,9 @@
     <div class="currency-selector fx-row" role="button" {{on "click" this.toggleCurrencySelector}}>
       <span class="margin-right-xxx-sm text-center symbol">{{this.selectedCurrencySymbol}}</span>
       {{#if this.currencySelectorShown}}
-        <i class="fa fa-chevron-up margin-left-xxx-sm"></i>
+        <i class="far fa-chevron-up margin-left-xxx-sm"></i>
       {{else}}
-        <i class="fa fa-chevron-down margin-left-xxx-sm"></i>
+        <i class="far fa-chevron-down margin-left-xxx-sm"></i>
       {{/if}}
     </div>
     <Input class="fx-1" type="tel" @value={{this.value}} {{on "keydown" this.onlyNumeric}}
@@ -20,8 +20,8 @@
         <div class="fx-row fx-xalign-center {{if (eq this.selectedCurrency currency) 'row-selected'}}">
           <span class="symbol text-color-default-light margin-left-xx-sm">{{currency.symbol}}</span>
           <span class="text-color-default-light margin-left-xx-sm fx-1">{{currency.code}}</span>
-          {{#if (eq this.selectedCountry currency)}}
-            <i class="far fa-check text-color-bright-purple"></i>
+          {{#if (eq this.selectedCurrency currency)}}
+            <i class="far fa-check text-color-bright-purple padding-right-px-6"></i>
           {{/if}}
         </div>
       </:option>
