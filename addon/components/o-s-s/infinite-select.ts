@@ -81,7 +81,8 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   }
 
   @action
-  didSelectItem(item: InfinityItem) {
+  didSelectItem(item: InfinityItem, event?: PointerEvent) {
+    event?.stopPropagation();
     this.args.onSelect(item);
   }
 }
