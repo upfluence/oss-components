@@ -17,7 +17,7 @@
   {{#if this.dropdownVisibility}}
     <OSS::InfiniteSelect @items={{this.filteredItems}} @onSearch={{this.search}}
                          @onSelect={{this.onItemSelected}}
-                         @searchPlaceholder="Search"
+                         @searchPlaceholder={{t "oss-components.country-selector.search"}}
                          {{on-click-outside this.closeDropdown}}>
       <:option as |item|>
         <div class="fx-row fx-xalign-center {{if (eq this.selectedCurrency item) 'row-selected'}}">

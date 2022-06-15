@@ -20,6 +20,7 @@ oss-components:
   currency-input:
     search: Search
   country-selector:
+    search: Search
     placeholder:
       country: Select your country
       province: Select your province
