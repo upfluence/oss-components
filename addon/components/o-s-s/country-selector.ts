@@ -36,6 +36,7 @@ export default class OSSCountrySelector extends Component<OSSCountrySelectorArgs
       this.selectedCountry =
         this.args.sourceList.find((item: Item) => item.name.toLowerCase() === this.args.initialValue!.toLowerCase()) ||
         null;
+      if (this.selectedCountry) this.onItemSelected(this.selectedCountry);
     }
   }
 
