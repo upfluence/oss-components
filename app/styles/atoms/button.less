@@ -1,0 +1,77 @@
+.generate-extended-palette-btn(@variant) {
+  @outline-color: ~'--color-@{variant}-50';
+
+  .outline(var(~'--color-@{variant}-50'));
+  .fill(var(~'--color-@{variant}-50'));
+  color: var(~'--color-@{variant}-500');
+  transition: all 0.2s ease;
+
+  &:hover,
+  &:focus {
+    color: white;
+  }
+
+  &:hover {
+    background-color: var(~'--color-@{variant}-400');
+  }
+
+  &:focus {
+    background-color: var(~'--color-@{variant}-600');
+  }
+}
+
+.upf-square-btn {
+  height: 24px;
+  width: 24px;
+  border-radius: @default-radius;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &--xs,
+  &--sm {
+    height: 24px;
+    width: 24px;
+  }
+
+  &--md {
+    height: 34px;
+    width: 34px;
+  }
+
+  &--lg {
+    height: 48px;
+    width: 48px;
+    .text-size-7;
+  }
+}
+
+.upf-btn.upf-btn--extended-orange,
+.upf-square-btn.upf-btn--extended-orange {
+  .generate-extended-palette-btn(orange);
+}
+
+.upf-btn.upf-btn--extended-yellow,
+.upf-square-btn.upf-btn--extended-yellow {
+  .generate-extended-palette-btn(yellow);
+}
+
+.upf-btn.upf-btn--extended-lime,
+.upf-square-btn.upf-btn--extended-lime {
+  .generate-extended-palette-btn(lime);
+}
+
+.upf-btn.upf-btn--extended-cyan,
+.upf-square-btn.upf-btn--extended-cyan {
+  .generate-extended-palette-btn(cyan);
+}
+
+.upf-btn.upf-btn--extended-blue,
+.upf-square-btn.upf-btn--extended-blue {
+  .generate-extended-palette-btn(blue);
+}
+
+.upf-btn.upf-btn--extended-violet,
+.upf-square-btn.upf-btn--extended-violet {
+  .generate-extended-palette-btn(violet);
+}
