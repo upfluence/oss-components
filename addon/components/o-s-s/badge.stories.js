@@ -1,7 +1,18 @@
 import hbs from 'htmlbars-inline-precompile';
 
 const SizeTypes = ['sm', 'md', 'lg'];
-const SkinTypes = ['primary', 'success', 'alert', 'error'];
+const SkinTypes = [
+  'primary',
+  'success',
+  'alert',
+  'error',
+  'xtd-cyan',
+  'xtd-orange',
+  'xtd-yellow',
+  'xtd-lime',
+  'xtd-blue',
+  'xtd-violet'
+];
 
 export default {
   title: 'Components/OSS::Badge',

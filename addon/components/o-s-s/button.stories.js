@@ -10,7 +10,13 @@ const SkinTypes = [
   'success',
   'instagram',
   'facebook',
-  'youtube'
+  'youtube',
+  'xtd-cyan',
+  'xtd-orange',
+  'xtd-yellow',
+  'xtd-lime',
+  'xtd-blue',
+  'xtd-violet'
 ];
 const SizeTypes = ['xs', 'sm', 'md', 'lg'];
 const ThemeTypes = ['light', 'dark'];
