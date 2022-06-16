@@ -62,6 +62,33 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
     assert.dom('.upf-infinite-select').exists();
   });
 
+  module('If @initialValue is passed', function (hooks) {
+    hooks.beforeEach(function () {
+      this.initValue = {
+        id: 'FR',
+        alpha2: 'FR',
+        alpha3: 'FRA',
+        countryCallingCodes: ['33'],
+        currencies: ['EUR'],
+        name: 'France',
+        showOnTop: true
+      };
+    });
+    test('If the value matches an entry from the sourceList, then the input is set to the value', async function (assert) {
+      await render(
+        hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @value={{this.initValue}} />`
+      );
+      assert.dom('[data-control-name="country-selector-input"]').hasText('France');
+    });
+    test('If the value matches an entry from the sourceList, the @onChange function is triggered', async function (assert) {
+      this.onchange = sinon.spy();
+      await render(
+        hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @value={{this.initValue}} />`
+      );
+      assert.ok(this.onchange.calledOnceWith(this.initValue));
+    });
+  });
+
   module('Dropdown menu', () => {
     test('It displays all items from the @sourceList parameter', async function (assert) {
       await render(hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} />`);
@@ -84,7 +111,7 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
 
   test('if sourceList does not contain ids, then the placeholder is for provinces', async function (assert) {
     await render(hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.provinces}} />`);
-    assert.dom('[data-control-name="country-selector-input"]').hasText('Select your province');
+    assert.dom('[data-control-name="country-selector-input"]').hasText('Select your province/state');
   });
 
   module('When clicking on an item', () => {

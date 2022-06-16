@@ -6,12 +6,13 @@ import { inject as service } from '@ember/service';
 type Item = {
   name: string;
   id?: string;
+  alpha2?: string;
   code?: string;
 };
 
 interface OSSCountrySelectorArgs {
   sourceList: Item[];
-  initialValue?: string;
+  value?: Item;
   onChange(item: Item): void;
 }
 
@@ -32,10 +33,8 @@ export default class OSSCountrySelector extends Component<OSSCountrySelectorArgs
       throw new Error('[component][OSS::CountrySelector] The @onChange parameter is mandatory');
     }
 
-    if (this.args.initialValue) {
-      this.selectedCountry =
-        this.args.sourceList.find((item: Item) => item.name.toLowerCase() === this.args.initialValue!.toLowerCase()) ||
-        null;
+    if (this.args.value) {
+      this._matchValueWithSourceList();
     }
   }
 
@@ -75,5 +74,10 @@ export default class OSSCountrySelector extends Component<OSSCountrySelectorArgs
     this.selectedCountry = value;
     this.closeDropdown();
     this.args.onChange(value);
+  }
+
+  private _matchValueWithSourceList(): void {
+    this.selectedCountry = this.args.sourceList.find((item: Item) => item.alpha2 === this.args.value!.alpha2) || null;
+    if (this.selectedCountry) this.onItemSelected(this.selectedCountry);
   }
 }
