@@ -62,29 +62,30 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
     assert.dom('.upf-infinite-select').exists();
   });
 
-  module('If @initialValue is passed', () => {
+  module('If @initialValue is passed', function (hooks) {
+    hooks.beforeEach(function () {
+      this.initValue = {
+        id: 'FR',
+        alpha2: 'FR',
+        alpha3: 'FRA',
+        countryCallingCodes: ['33'],
+        currencies: ['EUR'],
+        name: 'France',
+        showOnTop: true
+      };
+    });
     test('If the value matches an entry from the sourceList, then the input is set to the value', async function (assert) {
       await render(
-        hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @initialValue="France" />`
+        hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @value={{this.initValue}} />`
       );
       assert.dom('[data-control-name="country-selector-input"]').hasText('France');
     });
     test('If the value matches an entry from the sourceList, the @onChange function is triggered', async function (assert) {
       this.onchange = sinon.spy();
       await render(
-        hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @initialValue="France" />`
+        hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @value={{this.initValue}} />`
       );
-      assert.ok(
-        this.onchange.calledOnceWith({
-          id: 'FR',
-          alpha2: 'FR',
-          alpha3: 'FRA',
-          countryCallingCodes: ['33'],
-          currencies: ['EUR'],
-          name: 'France',
-          showOnTop: true
-        })
-      );
+      assert.ok(this.onchange.calledOnceWith(this.initValue));
     });
   });
 

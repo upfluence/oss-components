@@ -87,9 +87,9 @@ export default {
       },
       control: { type: 'array' }
     },
-    initialValue: {
+    value: {
       description:
-        'The initial value applied to the input. Use for instance when the form is already pre-filled with known data',
+        'The value applied to the input. Use for instance when the form is already pre-filled with known data',
       table: {
         type: {
           summary: 'text'
