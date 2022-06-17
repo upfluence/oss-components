@@ -4,7 +4,7 @@
        data-control-name="country-selector-input">
     <div class="fx-row fx-xalign-center fx-gap-px-10">
       {{#if this.selectedCountry.id}}
-        <div class="fflag fflag-{{this.selectedCountry.id}} ff-sm ff-wave ff-rounded"></div>
+        <div class="fflag fflag-{{this.selectedCountry.id}} ff-sm ff-rounded"></div>
       {{/if}}
       <span class="{{unless this.selectedCountry 'text-color-default-light'}}">{{this.inputLabel}}</span>
     </div>
@@ -22,7 +22,7 @@
       <:option as |item|>
         <div class="fx-row fx-xalign-center {{if (eq this.selectedCountry item) 'row-selected'}}">
           {{#if item.id}}
-            <div class="fflag fflag-{{item.id}} ff-sm ff-wave ff-rounded"></div>
+            <div class="fflag fflag-{{item.id}} ff-sm ff-rounded"></div>
           {{/if}}
           <span class="text-color-default-light margin-left-xx-sm">{{item.name}}</span>
           {{#if (eq this.selectedCountry item)}}

@@ -6,12 +6,16 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { click, findAll, render } from '@ember/test-helpers';
 import { countries } from '@upfluence/oss-components/utils/country-codes';
+import { set } from '@ember/object';
 
 module('Integration | Component | o-s-s/country-selector', function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
-    this.onchange = () => {};
+    this.value = '';
+    this.onchange = (value: any) => {
+      set(this, 'value', value.alpha2);
+    };
     this.countries = countries;
     this.provinces = [
       {
@@ -62,7 +66,7 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
     assert.dom('.upf-infinite-select').exists();
   });
 
-  module('If @initialValue is passed', function (hooks) {
+  module('If @value is passed', function (hooks) {
     hooks.beforeEach(function () {
       this.initValue = {
         id: 'FR',
@@ -76,14 +80,14 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
     });
     test('If the value matches an entry from the sourceList, then the input is set to the value', async function (assert) {
       await render(
-        hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @value={{this.initValue}} />`
+        hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @value={{this.initValue.alpha2}} />`
       );
       assert.dom('[data-control-name="country-selector-input"]').hasText('France');
     });
     test('If the value matches an entry from the sourceList, the @onChange function is triggered', async function (assert) {
       this.onchange = sinon.spy();
       await render(
-        hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @value={{this.initValue}} />`
+        hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @value={{this.initValue.alpha2}} />`
       );
       assert.ok(this.onchange.calledOnceWith(this.initValue));
     });
@@ -130,7 +134,9 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
     });
 
     test('the input is updated with the value', async function (assert) {
-      await render(hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} />`);
+      await render(
+        hbs`<OSS::CountrySelector @value={{this.value}} @onChange={{this.onchange}} @sourceList={{this.countries}} />`
+      );
       await click('[data-control-name="country-selector-input"]');
       await click('.upf-infinite-select__item:nth-child(1)');
       assert.dom('[data-control-name="country-selector-input"]').hasText('United States');
@@ -155,7 +161,9 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
     });
 
     test('If the component is using Countries as @sourceList, the flag icon is visible in the input', async function (assert) {
-      await render(hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} />`);
+      await render(
+        hbs`<OSS::CountrySelector @value={{this.value}} @onChange={{this.onchange}} @sourceList={{this.countries}} />`
+      );
       await click('[data-control-name="country-selector-input"]');
       await click('.upf-infinite-select__item:nth-child(1)');
       assert.dom('[data-control-name="country-selector-input"]').hasText('United States');
@@ -163,7 +171,13 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
     });
 
     test('If the component is using Provinces as @sourceList, the flag icon is not visible in the input', async function (assert) {
-      await render(hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.provinces}} />`);
+      this.province = '';
+      this.onProvinceChange = (value: any) => {
+        set(this, 'province', value.name);
+      };
+      await render(
+        hbs`<OSS::CountrySelector @value={{this.province}} @onChange={{this.onProvinceChange}} @sourceList={{this.provinces}} />`
+      );
       await click('[data-control-name="country-selector-input"]');
       await click('.upf-infinite-select__item:nth-child(1)');
       assert.dom('[data-control-name="country-selector-input"]').hasText('Alabama');

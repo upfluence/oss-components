@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
+import { isEmpty } from '@ember/utils';
 
 type Item = {
   name: string;
@@ -12,14 +13,13 @@ type Item = {
 
 interface OSSCountrySelectorArgs {
   sourceList: Item[];
-  value?: Item;
-  onChange(item: Item): void;
+  value?: string;
+  onChange(item: Item | null): void;
 }
 
 export default class OSSCountrySelector extends Component<OSSCountrySelectorArgs> {
   @service intl: any;
 
-  @tracked selectedCountry: Item | null = null;
   @tracked dropdownVisibility: boolean = false;
   @tracked filteredItems: any[] = this.args.sourceList;
 
@@ -33,7 +33,7 @@ export default class OSSCountrySelector extends Component<OSSCountrySelectorArgs
       throw new Error('[component][OSS::CountrySelector] The @onChange parameter is mandatory');
     }
 
-    if (this.args.value) {
+    if (!isEmpty(this.args.value)) {
       this._matchValueWithSourceList();
     }
   }
@@ -71,13 +71,17 @@ export default class OSSCountrySelector extends Component<OSSCountrySelectorArgs
 
   @action
   onItemSelected(value: Item): void {
-    this.selectedCountry = value;
     this.closeDropdown();
     this.args.onChange(value);
   }
 
+  get selectedCountry(): Item | null {
+    return (
+      this.args.sourceList.find((item: Item) => item[this.isCountry ? 'alpha2' : 'name'] === this.args.value) || null
+    );
+  }
+
   private _matchValueWithSourceList(): void {
-    this.selectedCountry = this.args.sourceList.find((item: Item) => item.alpha2 === this.args.value!.alpha2) || null;
     if (this.selectedCountry) this.onItemSelected(this.selectedCountry);
   }
 }
