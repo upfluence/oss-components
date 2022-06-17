@@ -12,7 +12,13 @@ type SkinType =
   | 'alert'
   | 'instagram'
   | 'facebook'
-  | 'youtube';
+  | 'youtube'
+  | 'xtd-cyan'
+  | 'xtd-orange'
+  | 'xtd-yellow'
+  | 'xtd-lime'
+  | 'xtd-blue'
+  | 'xtd-violet';
 
 type SkinDefType = {
   [key in SkinType]: string;
@@ -38,7 +44,13 @@ const SkinDefinition: SkinDefType = {
   alert: 'alert',
   instagram: 'social-instagram',
   facebook: 'social-facebook',
-  youtube: 'social-youtube'
+  youtube: 'social-youtube',
+  'xtd-cyan': 'extended-cyan',
+  'xtd-orange': 'extended-orange',
+  'xtd-yellow': 'extended-yellow',
+  'xtd-lime': 'extended-lime',
+  'xtd-blue': 'extended-blue',
+  'xtd-violet': 'extended-violet'
 };
 
 const SizeDefinition: SizeDefType = {

@@ -27,7 +27,7 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
         setupOnerror((err) => {
           assert.equal(
             err.message,
-            '[component][OSS::InfiniteSelect] Search is enabled without an `onSearch` action being passed'
+            'Assertion Failed: [component][OSS::InfiniteSelect] Search is enabled without an `onSearch` action being passed'
           );
         });
 
@@ -74,7 +74,10 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
     module('onSelect is not passed', function () {
       test('should throw an error', async function (assert) {
         setupOnerror((err) => {
-          assert.equal(err.message, '[component][OSS::InfiniteSelect] `onSelect` action is mandatory');
+          assert.equal(
+            err.message,
+            'Assertion Failed: [component][OSS::InfiniteSelect] `onSelect` action is mandatory'
+          );
         });
 
         await render(hbs`<OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{false}} />`);

@@ -8,13 +8,29 @@ const SizeDefinition: SizeDefType = {
   lg: 'upf-badge--size-lg'
 };
 
-type SkinType = 'primary' | 'success' | 'alert' | 'error';
+type SkinType =
+  | 'primary'
+  | 'success'
+  | 'alert'
+  | 'error'
+  | 'xtd-cyan'
+  | 'xtd-orange'
+  | 'xtd-yellow'
+  | 'xtd-lime'
+  | 'xtd-blue'
+  | 'xtd-violet';
 type SkinDefType = { [key in SkinType]: string };
 export const SkinDefinition: SkinDefType = {
   primary: 'upf-badge--primary',
   success: 'upf-badge--success',
   alert: 'upf-badge--alert',
-  error: 'upf-badge--error'
+  error: 'upf-badge--error',
+  'xtd-cyan': 'upf-badge--extended-cyan',
+  'xtd-orange': 'upf-badge--extended-orange',
+  'xtd-yellow': 'upf-badge--extended-yellow',
+  'xtd-lime': 'upf-badge--extended-lime',
+  'xtd-blue': 'upf-badge--extended-blue',
+  'xtd-violet': 'upf-badge--extended-violet'
 };
 
 interface OSSBadgeArgs {

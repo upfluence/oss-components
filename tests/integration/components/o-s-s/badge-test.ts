@@ -59,7 +59,7 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
       setupOnerror((err: Error) => {
         assert.equal(
           err.message,
-          '[component][OSS::Badge] Unknown skin. Available skins are: primary, success, alert, error'
+          '[component][OSS::Badge] Unknown skin. Available skins are: primary, success, alert, error, xtd-cyan, xtd-orange, xtd-yellow, xtd-lime, xtd-blue, xtd-violet'
         );
       });
 
@@ -72,7 +72,9 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
         await render(hbs`<OSS::Badge @skin={{this.skin}} @text="2x" />`);
 
         assert.dom('.upf-badge').exists();
-        assert.dom('.upf-badge').hasClass(`upf-badge--${skin}`);
+        assert
+          .dom('.upf-badge')
+          .hasClass(`upf-badge--${skin.startsWith('xtd') ? skin.replace('xtd', 'extended') : skin}`);
       });
     });
 
