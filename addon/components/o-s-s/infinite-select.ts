@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 
 interface InfiniteSelectArgs {
@@ -32,13 +33,12 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   constructor(owner: unknown, args: InfiniteSelectArgs) {
     super(owner, args);
 
-    if (this.searchEnabled && !this.args.onSearch) {
-      throw new Error('[component][OSS::InfiniteSelect] Search is enabled without an `onSearch` action being passed');
-    }
+    assert(
+      '[component][OSS::InfiniteSelect] Search is enabled without an `onSearch` action being passed',
+      this.searchEnabled ? typeof this.args.onSearch === 'function' : true
+    );
 
-    if (!this.args.onSelect) {
-      throw new Error('[component][OSS::InfiniteSelect] `onSelect` action is mandatory');
-    }
+    assert('[component][OSS::InfiniteSelect] `onSelect` action is mandatory', typeof this.args.onSelect === 'function');
   }
 
   get searchEnabled(): boolean {
