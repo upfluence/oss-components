@@ -8,7 +8,8 @@
         <i class="far fa-chevron-down margin-left-xxx-sm"></i>
       {{/if}}
     </div>
-    <Input class="fx-1" type="tel" @value={{this.value}} {{on "keydown" this.onlyNumeric}}
+    <Input class="fx-1" type="number" @value={{this.localValue}} {{on "keydown" this.onlyNumeric}}
+           {{on "keyup" this.notifyChanges}}
            autocomplete="off" />
   </div>
   {{#if this.currencySelectorShown}}
