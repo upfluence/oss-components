@@ -15,7 +15,7 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
   @tracked selectedCurrency: Currency;
   @tracked currencySelectorShown: boolean = false;
   @tracked filteredCurrencies: Currency[] = this._currencies;
-  @tracked value: number = this.args.value || 0;
+  @tracked localValue: number = this.args.value || 0;
 
   constructor(owner: unknown, args: OSSCurrencyInputArgs) {
     super(owner, args);
@@ -40,12 +40,27 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
 
   @action
   onlyNumeric(event: KeyboardEvent): void {
-    const authorizedInputs = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift', 'Control', '.', ','];
-    if (NUMERIC_ONLY.test(event.key) || authorizedInputs.find((key: string) => key === event.key)) {
-      this.args.onChange(this.selectedCurrency.code, this.value);
-    } else {
+    const authorizedInputs = [
+      'Backspace',
+      'Delete',
+      'ArrowLeft',
+      'ArrowRight',
+      'Tab',
+      'Shift',
+      'Control',
+      '.',
+      ',',
+      'ArrowUp',
+      'ArrowDown'
+    ];
+    if (!NUMERIC_ONLY.test(event.key) && !authorizedInputs.find((key: string) => key === event.key)) {
       event.preventDefault();
     }
+  }
+
+  @action
+  notifyChanges(): void {
+    this.args.onChange(this.selectedCurrency.code, this.localValue);
   }
 
   @action
@@ -60,7 +75,7 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
   @action
   onSelect(value: any): void {
     this.selectedCurrency = value;
-    this.args.onChange(this.selectedCurrency.code, this.value);
+    this.args.onChange(this.selectedCurrency.code, this.localValue);
     this.hideCurrencySelector();
   }
 
