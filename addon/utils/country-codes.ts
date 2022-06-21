@@ -282,7 +282,7 @@ export const countries: CountryData[] = [
     id: 'GB',
     alpha2: 'GB',
     alpha3: 'GBR',
-    countryCallingCodes: ['1 473'],
+    countryCallingCodes: ['44'],
     currencies: ['GBP'],
     name: 'United Kingdom',
     showOnTop: true,
@@ -385,7 +385,7 @@ export const countries: CountryData[] = [
     id: 'AG',
     alpha2: 'AG',
     alpha3: 'ATG',
-    countryCallingCodes: ['1 268'],
+    countryCallingCodes: ['1268'],
     currencies: ['XCD'],
     name: 'Antigua And Barbuda'
   },
@@ -393,7 +393,7 @@ export const countries: CountryData[] = [
     id: 'AI',
     alpha2: 'AI',
     alpha3: 'AIA',
-    countryCallingCodes: ['1 264'],
+    countryCallingCodes: ['1264'],
     currencies: ['XCD'],
     name: 'Anguilla'
   },
@@ -531,7 +531,7 @@ export const countries: CountryData[] = [
     id: 'AS',
     alpha2: 'AS',
     alpha3: 'ASM',
-    countryCallingCodes: ['1 684'],
+    countryCallingCodes: ['1684'],
     currencies: ['USD'],
     name: 'American Samoa'
   },
@@ -613,7 +613,7 @@ export const countries: CountryData[] = [
     id: 'BB',
     alpha2: 'BB',
     alpha3: 'BRB',
-    countryCallingCodes: ['1 246'],
+    countryCallingCodes: ['1246'],
     currencies: ['BBD'],
     name: 'Barbados'
   },
@@ -685,7 +685,7 @@ export const countries: CountryData[] = [
     id: 'BM',
     alpha2: 'BM',
     alpha3: 'BMU',
-    countryCallingCodes: ['1 441'],
+    countryCallingCodes: ['1441'],
     currencies: ['BMD'],
     name: 'Bermuda'
   },
@@ -835,7 +835,7 @@ export const countries: CountryData[] = [
     id: 'BS',
     alpha2: 'BS',
     alpha3: 'BHS',
-    countryCallingCodes: ['1 242'],
+    countryCallingCodes: ['1242'],
     currencies: ['BSD'],
     name: 'Bahamas'
   },
@@ -1415,7 +1415,7 @@ export const countries: CountryData[] = [
     id: 'DM',
     alpha2: 'DM',
     alpha3: 'DMA',
-    countryCallingCodes: ['1 767'],
+    countryCallingCodes: ['1767'],
     currencies: ['XCD'],
     name: 'Dominica'
   },
@@ -1423,7 +1423,7 @@ export const countries: CountryData[] = [
     id: 'DO',
     alpha2: 'DO',
     alpha3: 'DOM',
-    countryCallingCodes: ['1 809', '1 829', '1 849'],
+    countryCallingCodes: ['1849'],
     currencies: ['DOP'],
     name: 'Dominican Republic'
   },
@@ -1863,7 +1863,7 @@ export const countries: CountryData[] = [
     id: 'GA',
     alpha2: 'GA',
     alpha3: 'GAB',
-    countryCallingCodes: ['44'],
+    countryCallingCodes: ['241'],
     currencies: ['XAF'],
     name: 'Gabon'
   },
@@ -1871,7 +1871,7 @@ export const countries: CountryData[] = [
     id: 'GD',
     alpha2: 'GD',
     alpha3: 'GRD',
-    countryCallingCodes: ['995'],
+    countryCallingCodes: ['1473'],
     currencies: ['XCD'],
     name: 'Grenada'
   },
@@ -1879,7 +1879,7 @@ export const countries: CountryData[] = [
     id: 'GE',
     alpha2: 'GE',
     alpha3: 'GEO',
-    countryCallingCodes: ['594'],
+    countryCallingCodes: ['995'],
     currencies: ['GEL'],
     name: 'Georgia'
   },
@@ -1887,7 +1887,7 @@ export const countries: CountryData[] = [
     id: 'GF',
     alpha2: 'GF',
     alpha3: 'GUF',
-    countryCallingCodes: ['44'],
+    countryCallingCodes: ['594'],
     currencies: ['EUR'],
     name: 'French Guiana'
   },
@@ -2057,7 +2057,7 @@ export const countries: CountryData[] = [
     id: 'GU',
     alpha2: 'GU',
     alpha3: 'GUM',
-    countryCallingCodes: ['1 671'],
+    countryCallingCodes: ['1671'],
     currencies: ['USD'],
     name: 'Guam'
   },
@@ -2073,7 +2073,7 @@ export const countries: CountryData[] = [
     id: 'GY',
     alpha2: 'GY',
     alpha3: 'GUY',
-    countryCallingCodes: ['592'],
+    countryCallingCodes: ['595'],
     currencies: ['GYD'],
     name: 'Guyana'
   },
@@ -3051,7 +3051,7 @@ export const countries: CountryData[] = [
     id: 'JM',
     alpha2: 'JM',
     alpha3: 'JAM',
-    countryCallingCodes: ['1 876'],
+    countryCallingCodes: ['1876'],
     currencies: ['JMD'],
     name: 'Jamaica'
   },
@@ -3305,7 +3305,7 @@ export const countries: CountryData[] = [
     id: 'KN',
     alpha2: 'KN',
     alpha3: 'KNA',
-    countryCallingCodes: ['1 869'],
+    countryCallingCodes: ['1869'],
     currencies: ['XCD'],
     name: 'Saint Kitts And Nevis'
   },
@@ -3407,7 +3407,7 @@ export const countries: CountryData[] = [
     id: 'KY',
     alpha2: 'KY',
     alpha3: 'CYM',
-    countryCallingCodes: ['1 345'],
+    countryCallingCodes: [' 345'],
     currencies: ['KYD'],
     name: 'Cayman Islands'
   },
@@ -3415,7 +3415,7 @@ export const countries: CountryData[] = [
     id: 'KZ',
     alpha2: 'KZ',
     alpha3: 'KAZ',
-    countryCallingCodes: ['7', '7 6', '7 7'],
+    countryCallingCodes: ['77'],
     currencies: ['KZT'],
     name: 'Kazakhstan'
   },
@@ -3439,7 +3439,7 @@ export const countries: CountryData[] = [
     id: 'LC',
     alpha2: 'LC',
     alpha3: 'LCA',
-    countryCallingCodes: ['1 758'],
+    countryCallingCodes: ['1758'],
     currencies: ['XCD'],
     name: 'Saint Lucia'
   },
@@ -3599,7 +3599,7 @@ export const countries: CountryData[] = [
     id: 'MP',
     alpha2: 'MP',
     alpha3: 'MNP',
-    countryCallingCodes: ['1 670'],
+    countryCallingCodes: ['1670'],
     currencies: ['USD'],
     name: 'Northern Mariana Islands'
   },
@@ -3623,7 +3623,7 @@ export const countries: CountryData[] = [
     id: 'MS',
     alpha2: 'MS',
     alpha3: 'MSR',
-    countryCallingCodes: ['1 664'],
+    countryCallingCodes: ['1664'],
     currencies: ['XCD'],
     name: 'Montserrat'
   },
@@ -4757,7 +4757,7 @@ export const countries: CountryData[] = [
     id: 'PR',
     alpha2: 'PR',
     alpha3: 'PRI',
-    countryCallingCodes: ['1 787', '1 939'],
+    countryCallingCodes: ['1939'],
     currencies: ['USD'],
     name: 'Puerto Rico'
   },
@@ -5081,7 +5081,7 @@ export const countries: CountryData[] = [
     id: 'RU',
     alpha2: 'RU',
     alpha3: 'RUS',
-    countryCallingCodes: ['7', '7 3', '7 4', '7 8'],
+    countryCallingCodes: ['7'],
     currencies: ['RUB'],
     name: 'Russian Federation',
     provinces: [
@@ -5580,7 +5580,7 @@ export const countries: CountryData[] = [
     id: 'TC',
     alpha2: 'TC',
     alpha3: 'TCA',
-    countryCallingCodes: ['1 649'],
+    countryCallingCodes: ['1649'],
     currencies: ['USD'],
     name: 'Turks And Caicos Islands'
   },
@@ -5982,7 +5982,7 @@ export const countries: CountryData[] = [
     id: 'TT',
     alpha2: 'TT',
     alpha3: 'TTO',
-    countryCallingCodes: ['1 868'],
+    countryCallingCodes: ['1868'],
     currencies: ['TTD'],
     name: 'Trinidad And Tobago'
   },
@@ -6046,7 +6046,7 @@ export const countries: CountryData[] = [
     id: 'VA',
     alpha2: 'VA',
     alpha3: 'VAT',
-    countryCallingCodes: ['379', '39'],
+    countryCallingCodes: ['379'],
     currencies: ['EUR'],
     name: 'Vatican City State'
   },
@@ -6054,7 +6054,7 @@ export const countries: CountryData[] = [
     id: 'VC',
     alpha2: 'VC',
     alpha3: 'VCT',
-    countryCallingCodes: ['1 784'],
+    countryCallingCodes: ['1784'],
     currencies: ['XCD'],
     name: 'Saint Vincent And The Grenadines'
   },
@@ -6070,7 +6070,7 @@ export const countries: CountryData[] = [
     id: 'VG',
     alpha2: 'VG',
     alpha3: 'VGB',
-    countryCallingCodes: ['1 284'],
+    countryCallingCodes: ['1284'],
     currencies: ['USD'],
     name: 'Virgin Islands (British)'
   },
@@ -6078,7 +6078,7 @@ export const countries: CountryData[] = [
     id: 'VI',
     alpha2: 'VI',
     alpha3: 'VIR',
-    countryCallingCodes: ['1 340'],
+    countryCallingCodes: ['1340'],
     currencies: ['USD'],
     name: 'Virgin Islands (US)'
   },
