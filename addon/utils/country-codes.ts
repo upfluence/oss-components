@@ -3407,7 +3407,7 @@ export const countries: CountryData[] = [
     id: 'KY',
     alpha2: 'KY',
     alpha3: 'CYM',
-    countryCallingCodes: [' 345'],
+    countryCallingCodes: ['345'],
     currencies: ['KYD'],
     name: 'Cayman Islands'
   },
