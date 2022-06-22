@@ -12,7 +12,7 @@ interface OSSAlertArgs {
 
 export default class OSSAlert extends Component<OSSAlertArgs> {
   get skinClass(): string {
-    return `upf-alert-v2--${this.args.skin || DEFAULT_SKIN}`;
+    return `upf-alert--${this.args.skin || DEFAULT_SKIN}`;
   }
 
   get iconClass(): string {
