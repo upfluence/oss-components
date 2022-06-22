@@ -17,13 +17,13 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
   test('it renders', async function (assert) {
     await render(hbs`<OSS::Alert @skin="success" />`);
 
-    assert.dom('.upf-alert-v2').exists({ count: 1 });
+    assert.dom('.upf-alert').exists({ count: 1 });
   });
 
   test('it sets info as default if no skin is specified', async function (assert) {
     await render(hbs`<OSS::Alert />`);
 
-    assert.dom('.upf-alert-v2').hasClass('upf-alert-v2--info');
+    assert.dom('.upf-alert').hasClass('upf-alert--info');
   });
 
   ALERT_SKINS.forEach((skin) => {
@@ -33,10 +33,10 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
         hbs`<OSS::Alert @skin={{this.skin}} @title={{concat "Title " this.skin}} @subtitle={{concat "Subitle " this.skin}} />`
       );
 
-      assert.dom('.upf-alert-v2 .icon i').hasClass('far');
-      assert.dom('.upf-alert-v2 .icon i').hasClass(`${ICONS[skin]}`);
-      assert.dom('.upf-alert-v2 .title').hasText(`Title ${skin}`);
-      assert.dom('.upf-alert-v2 .subtitle').hasText(`Subitle ${skin}`);
+      assert.dom('.upf-alert .icon i').hasClass('far');
+      assert.dom('.upf-alert .icon i').hasClass(`${ICONS[skin]}`);
+      assert.dom('.upf-alert .title').hasText(`Title ${skin}`);
+      assert.dom('.upf-alert .subtitle').hasText(`Subitle ${skin}`);
     });
   });
 });
