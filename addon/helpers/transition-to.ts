@@ -27,9 +27,9 @@ export default class extends Helper {
 
     return () => {
       if (model) {
-        router.transitionTo(route, model, { queryParams });
+        router.transitionTo(route, model, { queryParams: queryParams || {} });
       } else if (models) {
-        router.transitionTo(route, ...models, { queryParams });
+        router.transitionTo(route, ...models, { queryParams: queryParams || {} });
       } else {
         router.transitionTo(route, { queryParams: queryParams || {} });
       }
