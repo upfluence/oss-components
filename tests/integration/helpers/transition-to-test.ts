@@ -69,4 +69,13 @@ module('Integration | Helper | transition-to', function (hooks) {
       assert.ok(this.transitionToStub.calledWithExactly('foo', 'fizz', 'buzz', { queryParams: {} }));
     });
   });
+
+  module('with queryParams', function () {
+    test('it triggers the RouterService#transitionTo method with the route and queryParams', async function (assert) {
+      await render(hbs`<a {{on "click" (transition-to route="foo" queryParams=(hash myParam="bruh"))}}>link</a>`);
+      await click('a');
+
+      assert.ok(this.transitionToStub.calledWithExactly('foo', { queryParams: { myParam: 'bruh' } }));
+    });
+  });
 });
