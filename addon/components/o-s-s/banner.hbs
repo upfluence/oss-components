@@ -1,5 +1,5 @@
-<div class="upf-banner {{if @plain 'bg-color-grey' 'bg-color-white'}} fx-1 fx-row border border-color-default
-            border-radius-default padding-x-sm fx-xalign-center fx-gap-px-10" ...attributes>
+<div class="upf-banner {{if @plain 'bg-color-grey' 'bg-color-white'}} fx-1 fx-row border
+            padding-px-18 fx-xalign-center fx-gap-px-12" ...attributes>
   <div>
     {{#if (has-block "custom-icon")}}
       <div>{{yield to="custom-icon"}}</div>
@@ -9,12 +9,12 @@
       <img class="upf-badge upf-badge--size-md upf-badge--shape-round" src={{@image}} alt="banner" />
     {{/if}}
   </div>
-  <div class="fx-col fx-1">
+  <div class="fx-col fx-1 fx-gap-px-3">
     {{#if @title}}
-      <span class="text-style-bold text-size-6 margin-bottom-xxx-sm">{{@title}}</span>
+      <span class="text-style-bold text-size-5 font-color-gray-900">{{@title}}</span>
     {{/if}}
     {{#if @subtitle}}
-      <span class="text-size-4 text-color-default-light">{{@subtitle}}</span>
+      <span class="text-size-4 font-color-gray-500">{{@subtitle}}</span>
     {{/if}}
   </div>
   {{#if (has-block "actions")}}
