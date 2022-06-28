@@ -30,15 +30,13 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
   test('passing a title in the @title parameter, displays the title in the component', async function (assert) {
     await render(hbs`<OSS::Banner @title="Test Title" />`);
 
-    assert.dom('.upf-banner .text-style-bold').exists();
     assert.dom('.upf-banner .text-style-bold').hasText('Test Title');
   });
 
-  test('passing a subtitle in the @title parameter, displays the title in the component', async function (assert) {
+  test('passing a subtitle in the @subtitle parameter, displays the title in the component', async function (assert) {
     await render(hbs`<OSS::Banner @subtitle="Test subtitle" />`);
 
-    assert.dom('.upf-banner .text-color-default-light').exists();
-    assert.dom('.upf-banner .text-color-default-light').hasText('Test subtitle');
+    assert.dom('.upf-banner .font-color-gray-500.text-size-4').hasText('Test subtitle');
   });
 
   test('passing a custom-icon named block, renders inside the component', async function (assert) {
