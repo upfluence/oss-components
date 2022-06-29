@@ -1,4 +1,5 @@
 import { action } from '@ember/object';
+import { isEmpty } from '@ember/utils';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
@@ -12,7 +13,6 @@ const NUMERIC_ONLY = /^[0-9]$/i;
 
 export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
   private _currencies = usedCurrencies;
-  @tracked selectedCurrency: Currency;
   @tracked currencySelectorShown: boolean = false;
   @tracked filteredCurrencies: Currency[] = this._currencies;
   @tracked localValue: number = this.args.value || 0;
@@ -23,19 +23,18 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
     if (typeof this.args.onChange !== 'function') {
       throw new Error('[component][OSS::CurrencyInput] The parameter @onChange of type function is mandatory');
     }
-    this.selectedCurrency = this._currencies[0];
-    this._loadExistingData();
-  }
-
-  private _loadExistingData(): void {
-    if (this.args.currency) {
-      this.selectedCurrency =
-        this._currencies.find((currency: Currency) => currency.code === this.args.currency) || this._currencies[0];
-    }
   }
 
   get selectedCurrencySymbol(): string {
     return this.selectedCurrency.symbol || '—';
+  }
+
+  get selectedCurrency() {
+    if (isEmpty(this.args.currency)) {
+      return this._currencies[0];
+    }
+
+    return this._currencies.find((currency: Currency) => currency.code === this.args.currency) || this._currencies[0];
   }
 
   @action
@@ -73,9 +72,8 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
   }
 
   @action
-  onSelect(value: any): void {
-    this.selectedCurrency = value;
-    this.args.onChange(this.selectedCurrency.code, this.localValue);
+  onSelect(value: Currency): void {
+    this.args.onChange(value.code, this.localValue);
     this.hideCurrencySelector();
   }
 

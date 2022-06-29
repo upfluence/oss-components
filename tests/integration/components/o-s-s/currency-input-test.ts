@@ -50,12 +50,16 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       assert.dom('.upf-infinite-select').exists();
     });
     test('Selecting a new currency in the Currency selector triggers the onChange method', async function (assert) {
-      this.onChange = sinon.spy();
-      await render(hbs`<OSS::CurrencyInput @currency="" @value="" @onChange={{this.onChange}} />`);
+      this.currency = '';
+      this.onChange = (currency: string, _: number) => {
+        assert.equal(currency, 'AUD');
+        this.set('currency', currency);
+      }
+      sinon.spy(this.onChange);
+      await render(hbs`<OSS::CurrencyInput @currency={{this.currency}} @value="" @onChange={{this.onChange}} />`);
       await click('.currency-selector');
       const clickableRows = findAll('.upf-infinite-select__item');
       await click(clickableRows[4]);
-      assert.ok(this.onChange.calledOnce);
       assert.dom('.currency-selector').hasText('A$');
     });
     test('Typing in the search input filters the results', async function (assert) {
@@ -77,6 +81,14 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       const clickableRows = findAll('.upf-infinite-select__item');
       assert.equal(clickableRows.length, 1);
       assert.dom(clickableRows[0]).hasText('€ EUR');
+    });
+    test('The passed @currency parameter changes are properly tracked in the input', async function (assert) {
+      this.onChange = () => {};
+      this.currency = 'USD';
+      await render(hbs`<OSS::CurrencyInput @currency={{this.currency}} @value="" @onChange={{this.onChange}} />`);
+      assert.dom('.currency-selector').hasText('$');
+      this.set('currency', 'EUR')
+      assert.dom('.currency-selector').hasText('€');
     });
   });
 
