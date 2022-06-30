@@ -1,7 +1,8 @@
-import { action } from '@ember/object';
-import { isEmpty } from '@ember/utils';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { assert } from '@ember/debug';
+import { action } from '@ember/object';
+import { isEmpty } from '@ember/utils';
 
 interface OSSCurrencyInputArgs {
   currency: string;
@@ -20,9 +21,10 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
   constructor(owner: unknown, args: OSSCurrencyInputArgs) {
     super(owner, args);
 
-    if (typeof this.args.onChange !== 'function') {
-      throw new Error('[component][OSS::CurrencyInput] The parameter @onChange of type function is mandatory');
-    }
+    assert(
+      '[component][OSS::CurrencyInput] The parameter @onChange of type function is mandatory',
+      typeof this.args.onChange === 'function'
+    );
   }
 
   get selectedCurrencySymbol(): string {

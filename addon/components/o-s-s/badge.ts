@@ -1,4 +1,5 @@
 import Component from '@glimmer/component';
+import { assert } from '@ember/debug';
 
 type SizeType = 'sm' | 'md' | 'lg';
 type SizeDefType = { [key in SizeType]: string };
@@ -48,21 +49,19 @@ export default class OSSBadge extends Component<OSSBadgeArgs> {
 
     const contentArguments = [args.icon, args.image, args.text].filter((arg: string) => arg);
 
-    if (contentArguments.length !== 1) {
-      throw new Error(
-        `[component][OSS::Badge] One of @icon, @image or @text arguments is mandatory. You passed ${contentArguments.length} arguments`
-      );
-    }
+    assert(
+      `[component][OSS::Badge] One of @icon, @image or @text arguments is mandatory. You passed ${contentArguments.length} arguments`,
+      contentArguments.length === 1
+    );
   }
 
   get sizeClass(): string {
     const size: SizeType = this.args.size || 'md';
 
-    if (!Object.keys(SizeDefinition).includes(size as SizeType)) {
-      throw new Error(
-        `[component][OSS::Badge] Unknown size. Available sizes are: ${Object.keys(SizeDefinition).join(', ')}`
-      );
-    }
+    assert(
+      `[component][OSS::Badge] Unknown size. Available sizes are: ${Object.keys(SizeDefinition).join(', ')}`,
+      Object.keys(SizeDefinition).includes(size as SizeType)
+    );
 
     return SizeDefinition[size as SizeType];
   }
@@ -72,11 +71,10 @@ export default class OSSBadge extends Component<OSSBadgeArgs> {
 
     if (!skin) return '';
 
-    if (!Object.keys(SkinDefinition).includes(skin as SkinType)) {
-      throw new Error(
-        `[component][OSS::Badge] Unknown skin. Available skins are: ${Object.keys(SkinDefinition).join(', ')}`
-      );
-    }
+    assert(
+      `[component][OSS::Badge] Unknown skin. Available skins are: ${Object.keys(SkinDefinition).join(', ')}`,
+      Object.keys(SkinDefinition).includes(skin as SkinType)
+    );
 
     return SkinDefinition[skin as SkinType];
   }

@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import { assert } from '@ember/debug';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 
@@ -26,12 +27,15 @@ export default class OSSCountrySelector extends Component<OSSCountrySelectorArgs
   constructor(owner: unknown, args: OSSCountrySelectorArgs) {
     super(owner, args);
 
-    if (typeof this.args.sourceList !== 'object') {
-      throw new Error('[component][OSS::CountrySelector] The parameter @sourceList of type object is mandatory');
-    }
-    if (typeof this.args.onChange !== 'function') {
-      throw new Error('[component][OSS::CountrySelector] The @onChange parameter is mandatory');
-    }
+    assert(
+      '[component][OSS::CountrySelector] The parameter @sourceList of type object is mandatory',
+      typeof this.args.sourceList === 'object'
+    );
+
+    assert(
+      '[component][OSS::CountrySelector] The @onChange parameter is mandatory',
+      typeof this.args.onChange === 'function'
+    );
 
     if (!isEmpty(this.args.value)) {
       this._matchValueWithSourceList();

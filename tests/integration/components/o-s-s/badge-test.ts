@@ -12,7 +12,7 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
     setupOnerror((err: Error) => {
       assert.equal(
         err.message,
-        '[component][OSS::Badge] One of @icon, @image or @text arguments is mandatory. You passed 0 arguments'
+        'Assertion Failed: [component][OSS::Badge] One of @icon, @image or @text arguments is mandatory. You passed 0 arguments'
       );
     });
 
@@ -23,7 +23,7 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
     setupOnerror((err: Error) => {
       assert.equal(
         err.message,
-        '[component][OSS::Badge] One of @icon, @image or @text arguments is mandatory. You passed 2 arguments'
+        'Assertion Failed: [component][OSS::Badge] One of @icon, @image or @text arguments is mandatory. You passed 2 arguments'
       );
     });
 
@@ -33,7 +33,10 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
   module('sizes', function () {
     test('it throws an error when an unsupported size is passed', async function (assert: Assert) {
       setupOnerror((err: Error) => {
-        assert.equal(err.message, '[component][OSS::Badge] Unknown size. Available sizes are: sm, md, lg');
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::Badge] Unknown size. Available sizes are: sm, md, lg'
+        );
       });
 
       await render(hbs`<OSS::Badge @size="foo" @text="2x" />`);
@@ -59,7 +62,7 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
       setupOnerror((err: Error) => {
         assert.equal(
           err.message,
-          '[component][OSS::Badge] Unknown skin. Available skins are: primary, success, alert, error, xtd-cyan, xtd-orange, xtd-yellow, xtd-lime, xtd-blue, xtd-violet'
+          'Assertion Failed: [component][OSS::Badge] Unknown skin. Available skins are: primary, success, alert, error, xtd-cyan, xtd-orange, xtd-yellow, xtd-lime, xtd-blue, xtd-violet'
         );
       });
 

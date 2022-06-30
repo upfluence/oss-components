@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 
 type SkinType =
@@ -92,15 +93,11 @@ export default class OSSButton extends Component<ButtonArgs> {
   constructor(owner: unknown, args: ButtonArgs) {
     super(owner, args);
 
-    if (!args.label && !args.icon) {
-      throw new Error('[component][OSS::Button] You must pass either a @label or an @icon argument.');
-    }
-
-    if (args.countDown && !args.countDown.callback) {
-      throw new Error(
-        "[component][OSS::Button] You must pass either a hash with 'callback' value to @countDown argument."
-      );
-    }
+    assert('[component][OSS::Button] You must pass either a @label or an @icon argument.', args.label || args.icon);
+    assert(
+      "[component][OSS::Button] You must pass either a hash with 'callback' value to @countDown argument.",
+      args.countDown ? args.countDown.callback : true
+    );
   }
 
   get skin(): string {

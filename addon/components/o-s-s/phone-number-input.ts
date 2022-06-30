@@ -1,3 +1,4 @@
+import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
@@ -18,15 +19,19 @@ export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputAr
   constructor(owner: unknown, args: OSSPhoneNumberInputArgs) {
     super(owner, args);
 
-    if (typeof this.args.prefix !== 'string') {
-      throw new Error('[component][OSS::PhoneNumberInput] The parameter @prefix of type string is mandatory');
-    }
-    if (typeof this.args.number !== 'string') {
-      throw new Error('[component][OSS::PhoneNumberInput] The parameter @number of type string is mandatory');
-    }
-    if (typeof this.args.onChange !== 'function') {
-      throw new Error('[component][OSS::PhoneNumberInput] The parameter @onChange of type function is mandatory');
-    }
+    assert(
+      '[component][OSS::PhoneNumberInput] The parameter @prefix of type string is mandatory',
+      typeof this.args.prefix === 'string'
+    );
+    assert(
+      '[component][OSS::PhoneNumberInput] The parameter @number of type string is mandatory',
+      typeof this.args.number === 'string'
+    );
+    assert(
+      '[component][OSS::PhoneNumberInput] The parameter @onChange of type function is mandatory',
+      typeof this.args.onChange === 'function'
+    );
+
     this.selectedCountry = this._countries[0];
     this._loadExistingNumber();
   }

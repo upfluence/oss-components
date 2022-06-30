@@ -8,7 +8,7 @@ module('Integration | Component | o-s-s/toggle-switch', function (hooks) {
 
   test('it throws an error if no onChange action is passed', async function (assert) {
     setupOnerror((err) => {
-      assert.equal(err.message, '[component][OSS::ToggleSwitch] Please provide an onChange action');
+      assert.equal(err.message, 'Assertion Failed: [component][OSS::ToggleSwitch] Please provide an onChange action');
     });
 
     await render(hbs`<OSS::ToggleSwitch />`);
@@ -18,7 +18,10 @@ module('Integration | Component | o-s-s/toggle-switch', function (hooks) {
     this.onChange = () => {};
 
     setupOnerror((err) => {
-      assert.equal(err.message, '[component][OSS::ToggleSwitch] Please provide a boolean @value. @value is undefined');
+      assert.equal(
+        err.message,
+        'Assertion Failed: [component][OSS::ToggleSwitch] Please provide a boolean @value. @value is undefined'
+      );
     });
 
     await render(hbs`<OSS::ToggleSwitch @onChange={{this.onChange}} />`);
@@ -28,7 +31,10 @@ module('Integration | Component | o-s-s/toggle-switch', function (hooks) {
     this.onChange = () => {};
 
     setupOnerror((err) => {
-      assert.equal(err.message, '[component][OSS::ToggleSwitch] Please provide a boolean @value. @value is string');
+      assert.equal(
+        err.message,
+        'Assertion Failed: [component][OSS::ToggleSwitch] Please provide a boolean @value. @value is string'
+      );
     });
 
     await render(hbs`<OSS::ToggleSwitch @value="true" @onChange={{this.onChange}} />`);

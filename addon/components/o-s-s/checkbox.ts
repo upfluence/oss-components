@@ -1,4 +1,5 @@
 import Component from '@glimmer/component';
+import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { guidFor } from '@ember/object/internals';
 
@@ -20,13 +21,8 @@ export default class OSSCheckbox extends Component<OSSCheckboxArgs> {
   constructor(owner: unknown, args: OSSCheckboxArgs) {
     super(owner, args);
 
-    if (typeof args.checked !== 'boolean') {
-      throw new Error(`[component][OSS::Checkbox] Boolean @checked argument is mandatory.`);
-    }
-
-    if (!args.onChange) {
-      throw new Error(`[component][OSS::Checkbox] @onChange argument is mandatory.`);
-    }
+    assert('[component][OSS::Checkbox] Boolean @checked argument is mandatory.', typeof args.checked === 'boolean');
+    assert('[component][OSS::Checkbox] @onChange argument is mandatory.', args.onChange);
   }
 
   get elementId(): string {

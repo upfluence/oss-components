@@ -1,4 +1,5 @@
 import Component from '@glimmer/component';
+import { assert } from '@ember/debug';
 
 export type SkinType = 'primary' | 'success' | 'warning' | 'danger' | 'secondary';
 
@@ -26,9 +27,7 @@ export default class OSSTag extends Component<OSSTagArgs> {
   constructor(owner: unknown, args: OSSTagArgs) {
     super(owner, args);
 
-    if (!args.icon && !args.label) {
-      throw new Error('[component][OSS::Tag] You must pass either a @label or an @icon argument.');
-    }
+    assert('[component][OSS::Tag] You must pass either a @label or an @icon argument.', args.icon || args.label);
   }
 
   get skin(): string {

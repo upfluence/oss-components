@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 
@@ -27,9 +28,7 @@ export default class OSSEmailInput extends Component<OSSEmailInputArgs> {
   constructor(owner: unknown, args: OSSEmailInputArgs) {
     super(owner, args);
 
-    if (typeof args.value === 'undefined') {
-      throw new Error('[component][OSS::EmailInput] The @value parameter is mandatory');
-    }
+    assert('[component][OSS::EmailInput] The @value parameter is mandatory', typeof args.value !== 'undefined');
 
     if (typeof args.validateFormat === 'boolean') {
       this._runValidation = args.validateFormat;

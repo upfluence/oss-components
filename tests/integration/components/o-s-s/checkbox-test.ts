@@ -13,14 +13,17 @@ module('Integration | Component | o-s-s/checkbox', function (hooks) {
 
   test('it throws an error if checked argument is missing', async function (assert) {
     setupOnerror((error: Error) => {
-      assert.equal(error.message, '[component][OSS::Checkbox] Boolean @checked argument is mandatory.');
+      assert.equal(
+        error.message,
+        'Assertion Failed: [component][OSS::Checkbox] Boolean @checked argument is mandatory.'
+      );
     });
     await render(hbs`<OSS::Checkbox />`);
   });
 
   test('it throws an error if checked argument is missing', async function (assert) {
     setupOnerror((error: Error) => {
-      assert.equal(error.message, '[component][OSS::Checkbox] @onChange argument is mandatory.');
+      assert.equal(error.message, 'Assertion Failed: [component][OSS::Checkbox] @onChange argument is mandatory.');
     });
 
     await render(hbs`<OSS::Checkbox @checked={{true}} />`);
@@ -33,13 +36,13 @@ module('Integration | Component | o-s-s/checkbox', function (hooks) {
     assert.dom('.upf-checkbox input').isNotChecked();
   });
 
-  test('the size arg is handled correctly', async function(assert: Assert) {
+  test('the size arg is handled correctly', async function (assert: Assert) {
     await render(hbs`<OSS::Checkbox @checked={{true}} @onChange={{this.onChange}} @size="sm" />`);
 
     assert.dom('.upf-checkbox').hasClass('upf-checkbox--sm');
-  })
+  });
 
-  test('it is correctly updated when the checked argument changes', async function(assert: Assert) {
+  test('it is correctly updated when the checked argument changes', async function (assert: Assert) {
     this.checked = false;
     await render(hbs`<OSS::Checkbox @checked={{this.checked}} @onChange={{this.onChange}} />`);
 

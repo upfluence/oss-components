@@ -1,4 +1,5 @@
 import Component from '@glimmer/component';
+import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 
 type OperationType = 'selection' | 'deletion';
@@ -23,12 +24,8 @@ export default class OSSPowerSelect extends Component<OSSPowerSelectArgs> {
 
   @action
   ensureBlockPresence(hasSelectedItem: boolean, hasOptionItem: boolean): void | never {
-    if (!hasSelectedItem) {
-      throw new Error(`[component][OSS::PowerSelect] You must pass selected-item named block`);
-    }
-    if (!hasOptionItem) {
-      throw new Error(`[component][OSS::PowerSelect] You must pass option-item named block`);
-    }
+    assert(`[component][OSS::PowerSelect] You must pass selected-item named block`, hasSelectedItem);
+    assert(`[component][OSS::PowerSelect] You must pass option-item named block`, hasOptionItem);
   }
 
   @action

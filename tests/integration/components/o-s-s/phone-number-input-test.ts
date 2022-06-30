@@ -34,7 +34,10 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
 
   test('It throws an error if @prefix is not passed', async function (assert) {
     setupOnerror((err: any) => {
-      assert.equal(err.message, '[component][OSS::PhoneNumberInput] The parameter @prefix of type string is mandatory');
+      assert.equal(
+        err.message,
+        'Assertion Failed: [component][OSS::PhoneNumberInput] The parameter @prefix of type string is mandatory'
+      );
     });
     this.onChange = () => {};
     await render(hbs`<OSS::PhoneNumberInput @number="" @onChange={{this.onChange}} />`);
@@ -43,7 +46,10 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
 
   test('It throws an error if @number is not passed', async function (assert) {
     setupOnerror((err: any) => {
-      assert.equal(err.message, '[component][OSS::PhoneNumberInput] The parameter @number of type string is mandatory');
+      assert.equal(
+        err.message,
+        'Assertion Failed: [component][OSS::PhoneNumberInput] The parameter @number of type string is mandatory'
+      );
     });
     this.onChange = () => {};
     await render(hbs`<OSS::PhoneNumberInput @prefix="" @onChange={{this.onChange}} />`);
@@ -54,7 +60,7 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
     setupOnerror((err: any) => {
       assert.equal(
         err.message,
-        '[component][OSS::PhoneNumberInput] The parameter @onChange of type function is mandatory'
+        'Assertion Failed: [component][OSS::PhoneNumberInput] The parameter @onChange of type function is mandatory'
       );
     });
     this.onChange = () => {};

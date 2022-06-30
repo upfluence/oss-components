@@ -1,4 +1,5 @@
 import Component from '@glimmer/component';
+import { assert } from '@ember/debug';
 
 interface OSSStarRatingArgs {
   rating: number;
@@ -26,11 +27,14 @@ export default class OSSStarRating extends Component<OSSStarRatingArgs> {
   constructor(owner: unknown, args: OSSStarRatingArgs) {
     super(owner, args);
 
-    if (typeof args.rating !== 'number') {
-      throw new Error(`[component][OSS::StarRating] @rating argument is mandatory and must be a number`);
-    } else if (typeof args.totalStars !== 'number') {
-      throw new Error(`[component][OSS::StarRating] @totalStars argument is mandatory and must be a number`);
-    }
+    assert(
+      `[component][OSS::StarRating] @rating argument is mandatory and must be a number`,
+      typeof args.rating === 'number'
+    );
+    assert(
+      `[component][OSS::StarRating] @totalStars argument is mandatory and must be a number`,
+      typeof args.totalStars === 'number'
+    );
   }
 
   get activeColorClass(): string {
