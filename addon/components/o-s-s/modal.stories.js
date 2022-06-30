@@ -5,7 +5,7 @@ export default {
   title: 'Components/OSS::Modal',
   component: 'modal',
   args: {
-    title: 'Moodal Title'
+    title: 'Modal Title'
   },
   argTypes: {
     title: {
@@ -38,9 +38,7 @@ const Template = (args) => ({
       </div>
 
       <div class="modal-footer">
-        <button class="upf-btn upf-btn--primary" {{on "click" this.callToAction}}>
-          Action Button
-        </button>
+        <OSS::Button @skin="primary" @label="Action button" {{on "click" this.callToAction}} />
       </div>
     </OSS::Modal>
   `,
