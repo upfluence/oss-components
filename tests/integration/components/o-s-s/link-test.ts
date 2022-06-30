@@ -9,7 +9,10 @@ module('Integration | Component | o-s-s/link', function (hooks) {
 
   test('it fails if no label nor icon argument are present', async function (assert: Assert) {
     setupOnerror((err: Error) => {
-      assert.equal(err.message, '[component][OSS::Link] You must pass either a @label or an @icon argument.');
+      assert.equal(
+        err.message,
+        'Assertion Failed: [component][OSS::Link] You must pass either a @label or an @icon argument.'
+      );
     });
 
     await render(hbs`<OSS::Link />`);

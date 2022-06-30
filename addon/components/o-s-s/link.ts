@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import RouterService from '@ember/routing/router-service';
+import { assert } from '@ember/debug';
 
 type LinkType = {
   href: string;
@@ -21,9 +22,7 @@ export default class OSSLink extends Component<OSSLinkArgs> {
   constructor(owner: unknown, args: OSSLinkArgs) {
     super(owner, args);
 
-    if (!args.label && !args.icon) {
-      throw new Error('[component][OSS::Link] You must pass either a @label or an @icon argument.');
-    }
+    assert('[component][OSS::Link] You must pass either a @label or an @icon argument.', args.label || args.icon);
   }
 
   @action

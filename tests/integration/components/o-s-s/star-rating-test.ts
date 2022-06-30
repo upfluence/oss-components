@@ -15,7 +15,10 @@ module('Integration | Component | o-s-s/star-rating', function (hooks) {
 
   test('failing to pass @rating throws an error', async function (assert) {
     setupOnerror((err: any) => {
-      assert.equal(err.message, '[component][OSS::StarRating] @rating argument is mandatory and must be a number');
+      assert.equal(
+        err.message,
+        'Assertion Failed: [component][OSS::StarRating] @rating argument is mandatory and must be a number'
+      );
     });
 
     await render(hbs`<OSS::StarRating @totalStars={{5}} />`);
@@ -23,7 +26,10 @@ module('Integration | Component | o-s-s/star-rating', function (hooks) {
 
   test('failing to pass @totalStart throws an error', async function (assert) {
     setupOnerror((err: any) => {
-      assert.equal(err.message, '[component][OSS::StarRating] @totalStars argument is mandatory and must be a number');
+      assert.equal(
+        err.message,
+        'Assertion Failed: [component][OSS::StarRating] @totalStars argument is mandatory and must be a number'
+      );
     });
 
     await render(hbs`<OSS::StarRating @rating={{5}} />`);

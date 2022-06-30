@@ -1,7 +1,8 @@
 import { action } from '@ember/object';
+import { assert } from '@ember/debug';
+import { run } from '@ember/runloop';
 import { isTesting } from '@embroider/macros';
 import Component from '@glimmer/component';
-import { run } from '@ember/runloop';
 
 interface OSSModalDialogArgs {
   title: string;
@@ -18,12 +19,10 @@ export default class OSSModalDialog extends Component<OSSModalDialogArgs> {
 
   constructor(owner: unknown, args: OSSModalDialogArgs) {
     super(owner, args);
-    if (!args.close) {
-      throw new Error('[component][OSS::ModalDialog] The close function is mandatory');
-    }
-    if (typeof args.title !== 'string') {
-      throw new Error('[component][OSS::ModalDialog] The title parameter is mandatory');
-    }
+
+    assert('[component][OSS::ModalDialog] The close function is mandatory', args.close);
+    assert('[component][OSS::ModalDialog] The title parameter is mandatory', typeof args.title === 'string');
+
     run(() => {
       document.addEventListener('keyup', this._closeOnEscape);
     });

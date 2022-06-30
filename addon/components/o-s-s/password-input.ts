@@ -2,6 +2,7 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
+import { assert } from '@ember/debug';
 
 const DEFAULT_PLACEHOLDER = '*************';
 
@@ -25,9 +26,8 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
   constructor(owner: unknown, args: OSSPasswordInputArgs) {
     super(owner, args);
 
-    if (typeof this.args.value === 'undefined') {
-      throw new Error('[component][OSS::PasswordInput] The @value parameter is mandatory');
-    }
+    assert('[component][OSS::PasswordInput] The @value parameter is mandatory', typeof this.args.value !== 'undefined');
+
     if (typeof args.validateFormat !== 'undefined') {
       this._runValidation = args.validateFormat;
     }

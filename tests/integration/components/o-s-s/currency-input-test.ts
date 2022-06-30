@@ -34,7 +34,7 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
     setupOnerror((err: any) => {
       assert.equal(
         err.message,
-        '[component][OSS::CurrencyInput] The parameter @onChange of type function is mandatory'
+        'Assertion Failed: [component][OSS::CurrencyInput] The parameter @onChange of type function is mandatory'
       );
     });
     this.onChange = () => {};

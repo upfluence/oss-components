@@ -44,7 +44,7 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
       setupOnerror((err: any) => {
         assert.equal(
           err.message,
-          '[component][OSS::CountrySelector] The parameter @sourceList of type object is mandatory'
+          'Assertion Failed: [component][OSS::CountrySelector] The parameter @sourceList of type object is mandatory'
         );
       });
       await render(hbs`<OSS::CountrySelector @onChange={{this.onchange}} />`);
@@ -53,7 +53,10 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
 
     test('it throws an error if @onChange is not provided', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(err.message, '[component][OSS::CountrySelector] The @onChange parameter is mandatory');
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::CountrySelector] The @onChange parameter is mandatory'
+        );
       });
       await render(hbs`<OSS::CountrySelector @sourceList={{this.countries}} />`);
       await settled();

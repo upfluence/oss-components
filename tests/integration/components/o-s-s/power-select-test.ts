@@ -38,7 +38,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
   module('it throws an error', () => {
     test('without selected-item named block', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(err.message, '[component][OSS::PowerSelect] You must pass selected-item named block');
+        assert.equal(err.message, 'Assertion Failed: [component][OSS::PowerSelect] You must pass selected-item named block');
       });
 
       await render(hbs`
@@ -48,7 +48,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
 
     test('without option-item named block', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(err.message, '[component][OSS::PowerSelect] You must pass option-item named block');
+        assert.equal(err.message, 'Assertion Failed: [component][OSS::PowerSelect] You must pass option-item named block');
       });
 
       await render(hbs`

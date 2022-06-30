@@ -18,7 +18,7 @@ module('Integration | Component | o-s-s/email-input', function (hooks) {
 
   test('it throws an error when the @value parameter is missing', async function (assert) {
     setupOnerror((err: any) => {
-      assert.equal(err.message, '[component][OSS::EmailInput] The @value parameter is mandatory');
+      assert.equal(err.message, 'Assertion Failed: [component][OSS::EmailInput] The @value parameter is mandatory');
     });
 
     await render(hbs`<OSS::EmailInput />`);

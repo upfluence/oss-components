@@ -1,3 +1,5 @@
+import { assert } from '@ember/debug';
+
 const UPF_PREFIX: string = '_upf.';
 const ERROR_TYPE_STRING = '[value] parameter MUST be of type :string';
 const ERROR_TYPE_OBJECT = '[object] parameter MUST be of type :object';
@@ -10,16 +12,12 @@ export default class UPFLocalStorage {
   }
 
   saveObject(key: string, object: object) {
-    if (typeof object !== 'object') {
-      throw new Error(ERROR_TYPE_OBJECT);
-    }
+    assert(ERROR_TYPE_OBJECT, typeof object === 'object');
     localStorage.setItem(this.prefix + key, JSON.stringify(object));
   }
 
   updateObject(key: string, object: object) {
-    if (typeof object !== 'object') {
-      throw new Error(ERROR_TYPE_OBJECT);
-    }
+    assert(ERROR_TYPE_OBJECT, typeof object === 'object');
     let previousObjectState = JSON.parse(localStorage.getItem(this.prefix + key) || '{}');
     previousObjectState = { ...previousObjectState, ...object };
     localStorage.setItem(this.prefix + key, JSON.stringify(previousObjectState));
@@ -30,16 +28,12 @@ export default class UPFLocalStorage {
   }
 
   saveItem(key: string, value: string) {
-    if (typeof value !== 'string') {
-      throw new Error(ERROR_TYPE_STRING);
-    }
+    assert(ERROR_TYPE_STRING, typeof value === 'string');
     localStorage.setItem(this.prefix + key, value);
   }
 
   updateItem(key: string, value: string) {
-    if (typeof value !== 'string') {
-      throw new Error(ERROR_TYPE_STRING);
-    }
+    assert(ERROR_TYPE_STRING, typeof value === 'string');
     localStorage.setItem(this.prefix + key, value);
   }
 
