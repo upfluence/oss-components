@@ -2,13 +2,16 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
-import { inject as service } from '@ember/service';
+import { inject as service } from '@ember/service';
+import { isEmpty } from '@ember/utils';
 
 interface OSSSelectArgs {
   value: any;
   items: any[];
   placeholder?: string;
   disabled?: boolean;
+  errorMessage?: string;
+  successMessage?: string;
   onChange(value: any): void;
   onSearch?(keyword: string): void;
 }
@@ -36,6 +39,24 @@ export default class OSSSelect extends Component<OSSSelectArgs> {
 
   get placeholder(): string {
     return this.args.placeholder || this.intl.t('oss-components.select.placeholder');
+  }
+
+  get classNames(): string {
+    const classes = ['oss-select-container', 'fx-1'];
+
+    if (this.args.disabled) {
+      classes.push('oss-select-container--disabled');
+    }
+
+    if (typeof this.args.errorMessage === 'string' && !isEmpty(this.args.errorMessage)) {
+      classes.push('oss-select-container--errorful');
+    }
+
+    if (typeof this.args.successMessage === 'string' && !isEmpty(this.args.successMessage)) {
+      classes.push('oss-select-container--successful');
+    }
+
+    return classes.join(' ');
   }
 
   @action

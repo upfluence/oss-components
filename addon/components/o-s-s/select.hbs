@@ -1,7 +1,7 @@
-<div class="oss-select-container fx-1 {{if @disabled 'oss-select-container--disabled'}}"
+<div class={{this.classNames}}
      {{did-insert (fn this.ensureBlockPresence (has-block "option"))}}
      ...attributes>
-  <div class="upf-input fx-row fx-1 fx-xalign-center">
+  <div class="upf-input fx-row fx-xalign-center">
     <div class="fx-row fx-1 fx-malign-space-between fx-xalign-center" role="button" {{on "click" this.toggleSelector}}>
       {{#if @value}}
         <span>{{@value.name}}</span>
@@ -36,5 +36,17 @@
         </div>
       </:option>
     </OSS::InfiniteSelect>
+  {{/if}}
+
+  {{#if @errorMessage}}
+    <div class="font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center">
+      <i class="far fa-exclamation-triangle"></i> {{@errorMessage}}
+    </div>
+  {{/if}}
+
+  {{#if @successMessage}}
+    <div class="font-color-success-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center">
+      <i class="far fa-check-circle"></i> {{@successMessage}}
+    </div>
   {{/if}}
 </div>
