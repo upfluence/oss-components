@@ -17,6 +17,18 @@
         {{item.name}}
       </:option>
     </OSS::Select>
+
+    <OSS::Select @value={{this.selectedItem}} @items={{this.items}} @onChange={{this.onSelect}} @errorMessage="This is an error">
+      <:option as |item|>
+        {{item.name}}
+      </:option>
+    </OSS::Select>
+
+    <OSS::Select @value={{this.selectedItem}} @items={{this.items}} @onChange={{this.onSelect}} @successMessage="It works">
+      <:option as |item|>
+        {{item.name}}
+      </:option>
+    </OSS::Select>
   </div>
 
   <div class="fx-col fx-1 fx-gap-px-12">

@@ -42,7 +42,7 @@ export default class OSSSelect extends Component<OSSSelectArgs> {
   }
 
   get classNames(): string {
-    const classes = ['oss-select-container', 'fx-1'];
+    const classes = ['oss-select-container'];
 
     if (this.args.disabled) {
       classes.push('oss-select-container--disabled');
