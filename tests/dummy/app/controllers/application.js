@@ -16,6 +16,8 @@ export default class ApplicationController extends Controller {
   @tracked currency = 'EUR';
   @tracked currencyValue = 42.13;
   @tracked showModal = false;
+  @tracked items = [{ name: 'foo' }, { name: 'bar' }];
+  @tracked selectedItem = this.items[0];
 
   code4CodeBlock = testScript;
   countries = countries;
@@ -35,6 +37,11 @@ export default class ApplicationController extends Controller {
   onCountrySelected(value) {
     console.log('selected country value : ', value);
     this.selectedCountry = value;
+  }
+
+  @action
+  onSelect(value) {
+    this.selectedItem = value;
   }
 
   @action

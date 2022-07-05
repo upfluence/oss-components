@@ -10,6 +10,23 @@
     </div>
   {{/if}}
 </div>
+<div class="fx-row fx-1 margin-md fx-gap-px-12">
+  <div class="fx-col fx-1 fx-gap-px-12">
+    <OSS::Select @value={{this.selectedItem}} @items={{this.items}} @onChange={{this.onSelect}}>
+      <:option as |item|>
+        {{item.name}}
+      </:option>
+    </OSS::Select>
+  </div>
+
+  <div class="fx-col fx-1 fx-gap-px-12">
+    <OSS::Select @value={{this.selectedItem}} @items={{this.items}} @onChange={{this.onSelect}} @disabled={{true}}>
+      <:option as |item|>
+        {{item.name}}
+      </:option>
+    </OSS::Select>
+  </div>
+</div>
 <div class="fx-row fx-1 margin-md">
   <OSS::CurrencyInput @currency={{this.currency}} @value={{this.currencyValue}}
                       @onChange={{this.onCurrencyInputChange}} />

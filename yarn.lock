@@ -4048,9 +4048,9 @@
     eslint-visitor-keys "^3.0.0"
 
 "@upfluence/oss@^3.x":
-  version "3.1.14"
-  resolved "https://npm.pkg.github.com/download/@upfluence/oss/3.1.14/9bd5ce5b74a9b1647b4283f89e7bef72fe6d4af7a24c749939061485bdd2a42b#4a75a5842bb6bb9b0fba8579b3c7cefebabf6e0f"
-  integrity sha512-3I7gRyLPHNMRIzNFAYNFsq+z2sZTdTaGja3HgxtBVERdTjI3h9yi7Z+4FfP0xzvPcBMTM1afdx2bfpJDB2V6qw==
+  version "3.2.2"
+  resolved "https://npm.pkg.github.com/download/@upfluence/oss/3.2.2/88bfcfec67bede781138875fdd356f6b059400f1ff221cecfb9e613eff93a100#0a9387cb51dd6c73e76614d9af6d5099dfbef777"
+  integrity sha512-dCvRzhaWj5O3a1kUgzcui32Kpf2b2gQ/jeetkF5l44wcqqdJ843S/3QvbV0W4qRANEPP/Ka9NamGBn44ymvI2w==
   dependencies:
     "@fortawesome/fontawesome-free" "^5.x"
     bootstrap "^3.3.7"
