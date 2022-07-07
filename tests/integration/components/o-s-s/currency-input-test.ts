@@ -16,6 +16,18 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
     assert.dom('.currency-input-container').exists();
   });
 
+  test('it renders currency only', async function (assert) {
+    this.onChange = () => {};
+    this.value = 0;
+    this.currency = '';
+    this.onlyCurrency = true;
+    await render(hbs`<OSS::CurrencyInput @onlyCurrency={{this.onlyCurrency}} @onChange={{this.onChange}} />`);
+
+    assert.dom('.currency-input-container').exists();
+    assert.dom('.currency-selector ').exists();
+    assert.dom('.currency-input input ').doesNotExist();
+  });
+
   test('The passed @value parameter is properly displayed in the input', async function (assert) {
     this.onChange = () => {};
     await render(hbs`<OSS::CurrencyInput @value="12341234" @onChange={{this.onChange}} />`);
@@ -54,7 +66,7 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       this.onChange = (currency: string, _: number) => {
         assert.equal(currency, 'AUD');
         this.set('currency', currency);
-      }
+      };
       sinon.spy(this.onChange);
       await render(hbs`<OSS::CurrencyInput @currency={{this.currency}} @value="" @onChange={{this.onChange}} />`);
       await click('.currency-selector');
@@ -87,7 +99,7 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       this.currency = 'USD';
       await render(hbs`<OSS::CurrencyInput @currency={{this.currency}} @value="" @onChange={{this.onChange}} />`);
       assert.dom('.currency-selector').hasText('$');
-      this.set('currency', 'EUR')
+      this.set('currency', 'EUR');
       assert.dom('.currency-selector').hasText('€');
     });
   });

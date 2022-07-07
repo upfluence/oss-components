@@ -3,6 +3,7 @@
 
   .upf-infinite-select {
     max-width: 100%;
+    min-width: 150px;
     .padding-xx-sm;
 
     .upf-infinite-select__item {
@@ -29,6 +30,37 @@
       align-items: center;
       padding-right: var(--spacing-px-12);
       margin-right: var(--spacing-px-12);
+    }
+
+    .phone-prefix {
+      white-space: nowrap;
+      .text-color-default-light;
+      .margin-right-xxx-sm;
+    }
+
+    input {
+      border: none;
+      background-color: transparent;
+    }
+
+    input:focus {
+      border: none;
+      outline: none;
+    }
+
+    &:focus-within {
+      border: 1px solid var(--color-border-default);
+    }
+  }
+  .currency-input-onlycurrency {
+    padding-right: 0px;
+    .currency-selector {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      padding-right: var(--spacing-px-12);
+      margin-right: 0px;
+      width: 100%;
     }
 
     .phone-prefix {

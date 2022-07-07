@@ -50,6 +50,13 @@
                       @onChange={{this.onCurrencyInputChange}} />
 </div>
 <div class="fx-row fx-1 margin-md">
+  <div class="fx-col">
+  <OSS::CurrencyInput @currency={{this.currency}} @value={{this.currencyValue}}
+                      @onChange={{this.onCurrencyInputChange}} @onlyCurrency={{true}}/>
+
+  </div>
+</div>
+<div class="fx-row fx-1 margin-md">
   <OSS::ArrayInput @values={{this.superHeroes}}
                    @onChange={{this.updateSuperHeroes}} class="fx-1"
                    data-control-name="mailing-edit-template-ccs-input" />

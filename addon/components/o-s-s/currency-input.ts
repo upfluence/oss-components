@@ -8,6 +8,7 @@ interface OSSCurrencyInputArgs {
   currency: string;
   value: number;
   onChange(currency: string, value: number): void;
+  onlyCurrency: boolean;
 }
 
 const NUMERIC_ONLY = /^[0-9]$/i;
@@ -29,6 +30,10 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
 
   get selectedCurrencySymbol(): string {
     return this.selectedCurrency.symbol || '—';
+  }
+
+  get onlyCurrencyInput(): boolean {
+    return this.args.onlyCurrency || false;
   }
 
   get selectedCurrency() {

@@ -28,13 +28,23 @@ export default {
     onChange: {
       type: { required: true },
       description: 'A callback that sends the modifications of the value & the currency back to the parent component'
+    },
+    onlyCurrency: {
+      description: 'Display only the currency dropdown',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: false }
+      },
+      control: { type: 'boolean' }
     }
   }
 };
 
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
-      <OSS::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}} />
+      <OSS::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}} @onlyCurrency={{this.onlyCurrency}} />
   `,
   context: args
 });
@@ -43,5 +53,6 @@ BasicUsage.args = {
   that: this,
   value: 42,
   currency: 'USD',
-  onChange: action('onChange')
+  onChange: action('onChange'),
+  onlyCurrency: false
 };
