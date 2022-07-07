@@ -1,0 +1,52 @@
+<div class={{this.classNames}}
+     {{did-insert (fn this.ensureBlockPresence (has-block "option"))}}
+     ...attributes>
+  <div class="upf-input fx-row fx-1 fx-xalign-center">
+    <div class="fx-row fx-1 fx-malign-space-between fx-xalign-center" role="button" {{on "click" this.toggleSelector}}>
+      {{#if @value}}
+        <span>{{get @value this.targetValue}}</span>
+      {{else}}
+        <span class="text-color-default-light">{{this.placeholder}}</span>
+      {{/if}}
+      {{#if this.displaySelect}}
+        <i class="far fa-chevron-up margin-left-px-6"></i>
+      {{else}}
+        <i class="far fa-chevron-down margin-left-px-6"></i>
+      {{/if}}
+    </div>
+  </div>
+
+  {{#if this.displaySelect}}
+    <OSS::InfiniteSelect
+      @items={{this.filteredItems}}
+      @onSearch={{this.onSearch}}
+      @onSelect={{this.onSelect}}
+      @searchEnabled={{this.searchEnabled}}
+      @searchPlaceholder={{this.searchPlaceholder}}
+      {{on-click-outside this.hideSelector}}>
+      <:option as |item|>
+        <div class="item-wrapper fx-row fx-xalign-center fx-malign-space-between {{if (eq @value item) 'selected'}}">
+          {{#if (has-block "option")}}
+            {{yield item to="option"}}
+          {{/if}}
+
+          {{#if (eq @value item)}}
+            <i class="far fa-check font-color-primary-500 padding-right-px-6"></i>
+          {{/if}}
+        </div>
+      </:option>
+    </OSS::InfiniteSelect>
+  {{/if}}
+
+  {{#if @errorMessage}}
+    <div class="font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center">
+      <i class="far fa-exclamation-triangle"></i> {{@errorMessage}}
+    </div>
+  {{/if}}
+
+  {{#if @successMessage}}
+    <div class="font-color-success-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center">
+      <i class="far fa-check-circle"></i> {{@successMessage}}
+    </div>
+  {{/if}}
+</div>

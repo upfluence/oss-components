@@ -1,0 +1,88 @@
+.oss-select-container {
+  position: relative;
+
+  .upf-input {
+    background-color: var(--color-gray-100);
+    user-select: none;
+  }
+
+  .far.fa-chevron-down,
+  .far.fa-chevron-up {
+    color: var(--color-gray-900);
+  }
+
+  .upf-infinite-select {
+    max-width: 100%;
+    padding: var(--spacing-px-12);
+
+    .upf-infinite-select__item {
+      padding: 0;
+
+      .item-wrapper {
+        padding: var(--spacing-px-6) var(--spacing-px-6);
+        border-radius: var(--border-radius-sm);
+
+        &.selected {
+          background-color: var(--color-gray-100);
+        }
+      }
+    }
+  }
+
+  &:hover {
+    .upf-input {
+      background-color: var(--color-gray-100);
+    }
+  }
+
+  &:active .upf-input {
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-900);
+  }
+
+  &--disabled {
+    .upf-input {
+      color: var(--color-gray-400);
+      background-color: var(--color-gray-200);
+
+      &:active {
+        background-color: var(--color-gray-200);
+        color: var(--color-gray-400);
+      }
+    }
+
+    &:hover {
+      .upf-input {
+        background-color: var(--color-gray-200);
+      }
+
+      div {
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  &--errorful,
+  &--errorful:hover,
+  &--errorful:active {
+    &:hover .upf-input,
+    .upf-input,
+    .upf-input:hover {
+      border-color: var(--color-error-500);
+      background-color: var(--color-error-50);
+      color: var(--color-error-500);
+    }
+  }
+
+  &--successful,
+  &--successful:hover,
+  &--successful:active {
+    &:hover .upf-input,
+    .upf-input,
+    .upf-input:hover {
+      border-color: var(--color-success-500);
+      background-color: var(--color-success-50);
+      color: var(--color-success-500);
+    }
+  }
+}

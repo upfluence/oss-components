@@ -1,0 +1,137 @@
+import hbs from 'htmlbars-inline-precompile';
+import { action } from '@storybook/addon-actions';
+
+const FAKE_DATA = [
+  { name: 'Batman', characters: 'Bruce Wayne' },
+  { name: 'Superman', characters: 'Kal-El' },
+  { name: 'Green Arrow', characters: 'Oliver Queen' },
+  { name: 'Wonder Woman', characters: 'Princess Diana' },
+  { name: 'Martian Manhunter', characters: 'Martian Manhunter' },
+  { name: 'Robin/Nightwing', characters: 'Dick Grayson' },
+  { name: 'Spider Man', characters: 'Peter Parker' }
+];
+
+export default {
+  title: 'Components/OSS::Select',
+  component: 'select',
+  argTypes: {
+    items: {
+      description: 'Items to display',
+      table: {
+        type: {
+          summary: 'array'
+        },
+        defaultValue: { summary: '[]' }
+      },
+      control: { type: 'array' }
+    },
+    value: {
+      description: 'The selected value',
+      table: {
+        defaultValue: { summary: 'null' }
+      }
+    },
+    targetLabel: {
+      description: 'The attribute to use to display the selected value',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'label' }
+      },
+      control: { type: 'text' }
+    },
+    placeholder: {
+      description: 'Placeholder',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'Select' }
+      },
+      control: { type: 'text' }
+    },
+    disabled: {
+      description: 'Whether or not the select should be disabled',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: false }
+      },
+      control: { type: 'boolean' }
+    },
+    errorMessage: {
+      description: 'Error message to display',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: '' }
+      },
+      control: { type: 'text' }
+    },
+    successMessage: {
+      description: 'Success message to display',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: '' }
+      },
+      control: { type: 'text' }
+    },
+    onChange: {
+      type: { required: true },
+      description: 'Function to be called with the clicked item',
+      table: {
+        type: {
+          summary: 'onChange(item): void'
+        }
+      }
+    },
+    onSearch: {
+      description: 'Function to be called every time the user searches',
+      table: {
+        type: {
+          summary: 'onSearch(keyword: string): void'
+        }
+      }
+    }
+  },
+
+  parameters: {
+    layout: 'fullscreen'
+  }
+};
+
+const defaultArgs = {
+  items: FAKE_DATA,
+  value: FAKE_DATA[0],
+  targetLabel: 'name',
+  placeholder: null,
+  disabled: false,
+  errorMessage: '',
+  successMessage: '',
+  onSearch: action('onSearch'),
+  onChange: action('onChange')
+};
+
+const Template = (args) => ({
+  template: hbs`
+    <OSS::Select
+      @items={{this.items}} @value={{this.value}} @targetLabel={{this.targetLabel}} @placeholder={{this.placeholder}}
+      @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} @successMessage={{this.successMessage}}
+      @onSearch={{this.onSearch}} @onChange={{this.onChange}}>
+      <:option as |item|>
+        {{item.name}}
+      </:option>
+    </OSS::Select>
+  `,
+  context: args
+});
+
+export const Default = Template.bind({});
+Default.args = {
+  ...defaultArgs
+};
