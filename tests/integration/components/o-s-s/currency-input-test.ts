@@ -25,6 +25,11 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
 
     assert.dom('.currency-input-container').exists();
     assert.dom('.currency-selector ').exists();
+
+    const currencyLabel = await findAll('.currency-selector span');
+    assert.dom(currencyLabel[1]).exists();
+    assert.dom(currencyLabel[1]).hasText('USD');
+
     assert.dom('.currency-input input ').doesNotExist();
   });
 

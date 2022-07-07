@@ -32,6 +32,10 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
     return this.selectedCurrency.symbol || '—';
   }
 
+  get selectedCurrencyCode(): string {
+    return this.selectedCurrency.code || '...';
+  }
+
   get onlyCurrencyInput(): boolean {
     return this.args.onlyCurrency || false;
   }

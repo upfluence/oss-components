@@ -2,8 +2,12 @@
   <div class="{{if this.onlyCurrencyInput "currency-input-onlycurrency" "currency-input"}} upf-input fx-row fx-1 fx-xalign-center ">
     <div class="currency-selector fx-row fx-malign-space-between" role="button" {{on "click" this.toggleCurrencySelector}}>
       <div class="fx-col">
-        <span class="margin-right-xxx-sm text-center symbol">{{this.selectedCurrencySymbol}}</span>
-
+        <div class="fx-row fx-gap-px-24">
+          <span class="text-center symbol">{{this.selectedCurrencySymbol}}</span>
+          {{#if this.onlyCurrencyInput}}
+            <span class=" margin-right-px-24 text-center symbol">{{this.selectedCurrencyCode}}</span>
+          {{/if}}
+        </div>
       </div>
       <div class="fx-col">
       {{#if this.currencySelectorShown}}
