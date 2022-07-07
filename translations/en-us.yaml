@@ -26,4 +26,4 @@ oss-components:
       province: Select your province/state
   select:
     search: Search
-    placeholder: Select a value
+    placeholder: Select

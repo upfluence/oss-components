@@ -3,6 +3,7 @@
 
   .upf-input {
     background-color: var(--color-gray-100);
+    user-select: none;
   }
 
   .far.fa-chevron-down,
@@ -28,22 +29,42 @@
     }
   }
 
-  &--disabled {
-    &:hover div {
-      cursor: not-allowed;
-    }
-
+  &:hover {
     .upf-input {
+      background-color: var(--color-gray-100);
+    }
+  }
+
+  &:active .upf-input {
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-900);
+  }
+
+  &--disabled {
+    .upf-input {
+      color: var(--color-gray-400);
       background-color: var(--color-gray-200);
 
       &:active {
         background-color: var(--color-gray-200);
+        color: var(--color-gray-400);
+      }
+    }
+
+    &:hover {
+      .upf-input {
+        background-color: var(--color-gray-200);
+      }
+
+      div {
+        cursor: not-allowed;
       }
     }
   }
 
   &--errorful,
-  &--errorful:hover {
+  &--errorful:hover,
+  &--errorful:active {
     &:hover .upf-input,
     .upf-input,
     .upf-input:hover {
@@ -54,7 +75,8 @@
   }
 
   &--successful,
-  &--successful:hover {
+  &--successful:hover,
+  &--successful:active {
     &:hover .upf-input,
     .upf-input,
     .upf-input:hover {
@@ -62,16 +84,5 @@
       background-color: var(--color-success-50);
       color: var(--color-success-500);
     }
-  }
-
-  &:hover {
-    .upf-input {
-      background-color: var(--color-gray-100);
-    }
-  }
-
-  &:active .upf-input {
-    background-color: var(--color-gray-100);
-    color: var(--color-gray-900);
   }
 }

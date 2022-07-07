@@ -4,7 +4,7 @@
   <div class="upf-input fx-row fx-1 fx-xalign-center">
     <div class="fx-row fx-1 fx-malign-space-between fx-xalign-center" role="button" {{on "click" this.toggleSelector}}>
       {{#if @value}}
-        <span>{{@value.name}}</span>
+        <span>{{get @value this.targetValue}}</span>
       {{else}}
         <span class="text-color-default-light">{{this.placeholder}}</span>
       {{/if}}
@@ -22,7 +22,7 @@
       @onSearch={{this.onSearch}}
       @onSelect={{this.onSelect}}
       @searchEnabled={{this.searchEnabled}}
-      @searchPlaceholder={{t "oss-components.select.search"}}
+      @searchPlaceholder={{this.searchPlaceholder}}
       {{on-click-outside this.hideSelector}}>
       <:option as |item|>
         <div class="item-wrapper fx-row fx-xalign-center fx-malign-space-between {{if (eq @value item) 'selected'}}">

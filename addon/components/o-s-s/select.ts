@@ -8,6 +8,7 @@ import { isEmpty } from '@ember/utils';
 interface OSSSelectArgs {
   value: any;
   items: any[];
+  targetLabel?: string;
   placeholder?: string;
   disabled?: boolean;
   errorMessage?: string;
@@ -39,6 +40,14 @@ export default class OSSSelect extends Component<OSSSelectArgs> {
 
   get placeholder(): string {
     return this.args.placeholder || this.intl.t('oss-components.select.placeholder');
+  }
+
+  get searchPlaceholder(): string {
+    return this.intl.t('oss-components.select.search');
+  }
+
+  get targetValue(): string {
+    return this.args.targetLabel || 'label';
   }
 
   get classNames(): string {
@@ -87,6 +96,6 @@ export default class OSSSelect extends Component<OSSSelectArgs> {
 
   @action
   ensureBlockPresence(hasOptionItem: boolean): void | never {
-    assert(`[component][OSS::PowerSelect] You must pass option-item named block`, hasOptionItem);
+    assert(`[component][OSS::Select] You must pass option named block`, hasOptionItem);
   }
 }
