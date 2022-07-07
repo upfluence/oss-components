@@ -75,13 +75,13 @@ export default class OSSSelect extends Component<OSSSelectArgs> {
   }
 
   @action
-  onSearch(keyword: any) {
+  onSearch(keyword: string): void {
     this.args.onSearch?.(keyword);
   }
 
   @action
-  toggleSelector(e: any): void {
-    e.stopPropagation();
+  toggleSelector(e?: MouseEvent): void {
+    e?.stopPropagation();
 
     if (this.args.disabled) return;
 
@@ -95,7 +95,7 @@ export default class OSSSelect extends Component<OSSSelectArgs> {
   }
 
   @action
-  ensureBlockPresence(hasOptionItem: boolean): void | never {
+  ensureBlockPresence(hasOptionItem: boolean): void {
     assert(`[component][OSS::Select] You must pass option named block`, hasOptionItem);
   }
 }
