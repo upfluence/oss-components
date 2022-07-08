@@ -16,15 +16,12 @@ export default class ApplicationController extends Controller {
   @tracked currency = 'EUR';
   @tracked currencyValue = 42.13;
   @tracked showModal = false;
-<<<<<<< HEAD
   @tracked items = [
     { name: 'foo', label: 'foo' },
     { name: 'bar', label: 'bar' }
   ];
   @tracked selectedItem = this.items[0];
-=======
   @tracked currencyOnly = null;
->>>>>>> 36a057f (Update after review)
 
   code4CodeBlock = testScript;
   countries = countries;
