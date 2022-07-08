@@ -51,9 +51,13 @@
 </div>
 <div class="fx-row fx-1 margin-md">
   <div class="fx-col">
-  <OSS::CurrencyInput @currency={{this.currency}} @value={{this.currencyValue}}
-                      @onChange={{this.onCurrencyInputChange}} @onlyCurrency={{true}}/>
-
+    <OSS::CurrencyInput @currency={{this.currency}} @value={{this.currencyValue}}
+                        @onChange={{this.onCurrencyInputChange}} @onlyCurrency={{true}}/>
+  </div>
+</div>
+<div class="fx-row fx-1 margin-md">
+  <div class="fx-col">
+    <OSS::CurrencyInput @currency={{this.currencyOnly}} @onChange={{this.onCurrencyOnlyChange}} @onlyCurrency={{true}}/>
   </div>
 </div>
 <div class="fx-row fx-1 margin-md">
