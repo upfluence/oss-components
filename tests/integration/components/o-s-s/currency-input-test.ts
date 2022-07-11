@@ -90,7 +90,7 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
     test('Selecting a new currency in the Currency selector triggers the onChange method', async function (assert) {
       this.currency = '';
       this.onChange = sinon.stub();
-  
+
       await render(hbs`<OSS::CurrencyInput @currency={{this.currency}} @value="" @onChange={{this.onChange}} />`);
       await click('.currency-selector');
       const clickableRows = findAll('.upf-infinite-select__item');
