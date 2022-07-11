@@ -13,7 +13,7 @@ export default {
         },
         defaultValue: { summary: false }
       },
-      control: { type: 'text' }
+      control: { type: 'boolean' }
     },
     onChange: {
       type: { required: true },
