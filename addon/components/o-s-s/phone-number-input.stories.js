@@ -28,6 +28,13 @@ export default {
     onChange: {
       description: 'A callback that sends the modifications of the prefix & the phone number'
     }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'A dedicated phone number input with a country code selector.'
+      }
+    }
   }
 };
 

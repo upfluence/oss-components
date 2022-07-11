@@ -109,6 +109,13 @@ export default {
       },
       control: { type: 'object' }
     }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'The OSS version of the button component. Configurable & skinable.'
+      }
+    }
   }
 };
 

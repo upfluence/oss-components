@@ -82,7 +82,11 @@ export default {
     }
   },
   parameters: {
-    layout: 'fullscreen'
+    docs: {
+      description: {
+        component: 'Used for selecting multiple items of a list, based on a pre-filled dropdown menu.'
+      }
+    }
   }
 };
 
@@ -100,6 +104,7 @@ const defaultArgs = {
 
 const Template = (args) => ({
   template: hbs`
+    <div style="display: flex; justify-content: center; background-color: white; border-radius: 4px">
       <OSS::PowerSelect class='padding-sm' @selectedItems={{this.selectedItems}} @items={{this.items}}
                         @onSearch={{this.onSearch}} @onChange={{this.onChange}} @loading={{this.loading}}
                         @loadingMore={{this.loadingMore}} @placeholder={{this.placeholder}} @searchPlaceholder={{this.searchPlaceholder}}
@@ -111,6 +116,7 @@ const Template = (args) => ({
           {{item}}
         </:option-item>
       </OSS::PowerSelect>
+    </div>
   `,
   context: args
 });

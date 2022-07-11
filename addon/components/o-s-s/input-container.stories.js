@@ -45,6 +45,13 @@ export default {
       },
       control: { type: null }
     }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'The OSS version of the input component. Configurable & skinable.'
+      }
+    }
   }
 };
 

@@ -37,6 +37,13 @@ export default {
       },
       control: { type: 'text' }
     }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'Used for displaying a title and a subtitle in layouts.'
+      }
+    }
   }
 };
 

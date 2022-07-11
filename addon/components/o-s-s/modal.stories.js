@@ -14,9 +14,9 @@ export default {
     options: {}
   },
   parameters: {
-    previewTabs: {
-      'storybook/docs/panel': {
-        hidden: true
+    docs: {
+      description: {
+        component: 'A configurable modal component.'
       }
     }
   }

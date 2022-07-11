@@ -2,24 +2,14 @@ import hbs from 'htmlbars-inline-precompile';
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: 'Components/OSS::CurrencyInput',
-  component: 'currency-input',
+  title: 'Components/OSS::ToggleSwitch',
+  component: 'toggle-switch',
   argTypes: {
-    currency: {
-      description: 'The currency applied to the component (EUR, USD, etc.)',
-      table: {
-        type: {
-          summary: 'string'
-        },
-        defaultValue: { summary: false }
-      },
-      control: { type: 'text' }
-    },
     value: {
-      description: 'The value applied to the input',
+      description: 'The value applied to the input/switch',
       table: {
         type: {
-          summary: 'number'
+          summary: 'boolean'
         },
         defaultValue: { summary: false }
       },
@@ -33,7 +23,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A currency selector & input, used to set prices.'
+        component: 'A themed toggle switch.'
       }
     }
   }
@@ -41,14 +31,12 @@ export default {
 
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
-      <OSS::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}} />
+      <OSS::ToggleSwitch @value={{this.value}} @onChange={{this.onChange}} />
   `,
   context: args
 });
 export const BasicUsage = DefaultUsageTemplate.bind({});
 BasicUsage.args = {
-  that: this,
-  value: 42,
-  currency: 'USD',
+  value: true,
   onChange: action('onChange')
 };

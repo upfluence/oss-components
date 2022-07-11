@@ -47,6 +47,13 @@ export default {
       },
       control: { type: 'object' }
     }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'A button component used to target external content.'
+      }
+    }
   }
 };
 

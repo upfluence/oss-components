@@ -36,6 +36,13 @@ export default {
         type: 'boolean'
       }
     }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'The OSS and configurable version of the HTML Checkbox component.'
+      }
+    }
   }
 };
 

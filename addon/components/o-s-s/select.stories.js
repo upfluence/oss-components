@@ -99,9 +99,13 @@ export default {
       }
     }
   },
-
   parameters: {
-    layout: 'fullscreen'
+    layout: 'fullscreen',
+    docs: {
+      description: {
+        component: 'An OSS version of the HTML Select component.'
+      }
+    }
   }
 };
 
