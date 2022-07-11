@@ -1,14 +1,12 @@
 <div class="currency-input-container fx-1" ...attributes>
   <div class="currency-input {{if @onlyCurrency " onlycurrency"}} upf-input fx-row fx-1 fx-xalign-center">
-    <div class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between" role="button" {{on "click"
-      this.toggleCurrencySelector}}>
+    <div class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between" role="button" 
+         {{on "click" this.toggleCurrencySelector}}>
       <div class="fx-col">
         <div class="fx-row fx-gap-px-9">
-          {{#if (not-eq this.selectedCurrencyCode "Select")}}
-            <span>{{this.selectedCurrencySymbol}}</span>
-          {{/if}}
+          <span>{{this.selectedCurrencySymbol}}</span>
           {{#if @onlyCurrency}}
-            <span class=" margin-right-px-12 {{if (eq this.selectedCurrencyCode "Select") "font-color-gray-500" }}">{{this.selectedCurrencyCode}}</span>
+            <span class="margin-right-px-12">{{this.selectedCurrencyCode}}</span>
           {{/if}}
         </div>
       </div>
@@ -19,13 +17,16 @@
       {{/if}}
     </div>
     {{#unless @onlyCurrency}}
-      <Input class="fx-1" type="number" @value={{this.localValue}} {{on "keydown" this.onlyNumeric}} {{on "keyup"
-        this.notifyChanges}} autocomplete="off" />
+      <Input class="fx-1" type="number" @value={{this.localValue}} {{on "keydown" this.onlyNumeric}}
+             {{on "keyup" this.notifyChanges}}
+             autocomplete="off" />
     {{/unless}}
   </div>
   {{#if this.currencySelectorShown}}
-    <OSS::InfiniteSelect @items={{this.filteredCurrencies}} @onSearch={{this.onSearch}} @onSelect={{this.onSelect}}
-      @searchPlaceholder={{t "oss-components.currency-input.search" }} {{on-click-outside this.hideCurrencySelector}}>
+    <OSS::InfiniteSelect @items={{this.filteredCurrencies}} @onSearch={{this.onSearch}} 
+                         @onSelect={{this.onSelect}}
+                         @searchPlaceholder={{t "oss-components.currency-input.search" }} 
+                         {{on-click-outside this.hideCurrencySelector}}>
       <:option as |currency|>
         <div class="fx-row fx-xalign-center {{if (eq this.selectedCurrency currency) 'row-selected'}}">
           <span class="symbol text-color-default-light margin-left-xx-sm">{{currency.symbol}}</span>

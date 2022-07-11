@@ -7,7 +7,7 @@ import { isEmpty } from '@ember/utils';
 interface OSSCurrencyInputArgs {
   currency: string;
   value: number;
-  onChange(currency: string | undefined, value: number): void;
+  onChange(currency: string , value: number ): void;
   onlyCurrency?: boolean;
 }
 
@@ -29,21 +29,22 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
   }
 
   get selectedCurrencySymbol(): string {
-    return this.selectedCurrency?.symbol || '—';
+    return this.selectedCurrency.symbol || '—';
   }
 
   get selectedCurrencyCode(): string {
-    return this.selectedCurrency?.code || 'Select';
+    return this.selectedCurrency.code || '—';
   }
 
-  get selectedCurrency() {
-    if (isEmpty(this.args.currency) && this.args.onlyCurrency == false) {
+  get selectedCurrency(): Currency {
+    if (this.emptyCurrency) {
       return this._currencies[0];
-    } else if (isEmpty(this.args.currency) && this.args.onlyCurrency == true) {
-      return null;
     }
-
     return this._currencies.find((currency: Currency) => currency.code === this.args.currency) || this._currencies[0];
+  }
+
+  get emptyCurrency(): boolean {
+    return isEmpty(this.args.currency);
   }
 
   @action
@@ -68,7 +69,7 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
 
   @action
   notifyChanges(): void {
-    this.args.onChange(this.selectedCurrency?.code, this.localValue);
+    this.args.onChange(this.selectedCurrency.code, this.localValue);
   }
 
   @action
