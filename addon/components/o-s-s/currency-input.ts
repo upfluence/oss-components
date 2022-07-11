@@ -7,7 +7,7 @@ import { isEmpty } from '@ember/utils';
 interface OSSCurrencyInputArgs {
   currency: string;
   value: number;
-  onChange(currency: string , value: number ): void;
+  onChange(currency: string , value: number): void;
   onlyCurrency?: boolean;
 }
 
@@ -37,14 +37,10 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
   }
 
   get selectedCurrency(): Currency {
-    if (this.emptyCurrency) {
+    if (isEmpty(this.args.currency)) {
       return this._currencies[0];
     }
     return this._currencies.find((currency: Currency) => currency.code === this.args.currency) || this._currencies[0];
-  }
-
-  get emptyCurrency(): boolean {
-    return isEmpty(this.args.currency);
   }
 
   @action

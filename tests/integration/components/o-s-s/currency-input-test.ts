@@ -18,10 +18,7 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
 
   test('it renders currency only', async function (assert) {
     this.onChange = () => {};
-    this.onlyCurrency = true;
-    await render(
-      hbs`<OSS::CurrencyInput @currency="USD" @onlyCurrency={{this.onlyCurrency}} @onChange={{this.onChange}} />`
-    );
+    await render(hbs`<OSS::CurrencyInput @currency="USD" @onlyCurrency={{true}} @onChange={{this.onChange}} />`);
 
     assert.dom('.currency-input-container').exists();
     assert.dom('.currency-selector').exists();
@@ -39,10 +36,8 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
 
   test('it renders currency only with empty currency param', async function (assert) {
     this.onChange = () => {};
-    this.onlyCurrency = true;
-    this.currency = null;
     await render(
-      hbs`<OSS::CurrencyInput @currency={{this.currency}} @onlyCurrency={{this.onlyCurrency}} @onChange={{this.onChange}} />`
+      hbs`<OSS::CurrencyInput @currency={{undefined}} @onlyCurrency={{true}} @onChange={{this.onChange}} />`
     );
 
     assert.dom('.currency-input-container').exists();
@@ -94,31 +89,24 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
     });
     test('Selecting a new currency in the Currency selector triggers the onChange method', async function (assert) {
       this.currency = '';
-      this.onChange = (currency: string, _: number) => {
-        assert.equal(currency, 'AUD');
-        this.set('currency', currency);
-      };
-      sinon.spy(this.onChange);
+      this.onChange = sinon.stub();
+  
       await render(hbs`<OSS::CurrencyInput @currency={{this.currency}} @value="" @onChange={{this.onChange}} />`);
       await click('.currency-selector');
       const clickableRows = findAll('.upf-infinite-select__item');
       await click(clickableRows[4]);
-      assert.dom('.currency-selector').hasText('A$');
+      assert.true(this.onChange.calledOnceWithExactly('AUD', 0));
     });
     test('Selecting a new currency in the Currency selector triggers the onChange method with currency only', async function (assert) {
       this.currency = '';
-      this.onChange = (currency: string, _: number) => {
-        assert.equal(currency, 'AUD');
-        this.set('currency', currency);
-      };
-      sinon.spy(this.onChange);
+      this.onChange = sinon.stub();
       await render(
         hbs`<OSS::CurrencyInput @onlyCurrency={{true}} @currency={{this.currency}} @value="" @onChange={{this.onChange}} />`
       );
       await click('.currency-selector');
       const clickableRows = findAll('.upf-infinite-select__item');
       await click(clickableRows[4]);
-      assert.dom('.currency-selector').hasText('A$ AUD');
+      assert.true(this.onChange.calledOnceWithExactly('AUD', 0));
     });
     test('Typing in the search input filters the results', async function (assert) {
       this.onChange = sinon.spy();
