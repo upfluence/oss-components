@@ -25,7 +25,7 @@
   {{#if this.currencySelectorShown}}
     <OSS::InfiniteSelect @items={{this.filteredCurrencies}} @onSearch={{this.onSearch}} 
                          @onSelect={{this.onSelect}}
-                         @searchPlaceholder={{t "oss-components.currency-input.search" }} 
+                         @searchPlaceholder={{t "oss-components.currency-input.search"}} 
                          {{on-click-outside this.hideCurrencySelector}}>
       <:option as |currency|>
         <div class="fx-row fx-xalign-center {{if (eq this.selectedCurrency currency) 'row-selected'}}">
