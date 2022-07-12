@@ -18,8 +18,7 @@
     </div>
     {{#unless @onlyCurrency}}
       <Input class="fx-1" type="number" @value={{this.localValue}} {{on "keydown" this.onlyNumeric}}
-             {{on "keyup" this.notifyChanges}}
-             autocomplete="off" />
+             {{on "keyup" this.notifyChanges}} autocomplete="off" />
     {{/unless}}
   </div>
   {{#if this.currencySelectorShown}}
