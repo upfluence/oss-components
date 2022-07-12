@@ -35,7 +35,7 @@
       color: var(--color-gray-500);
       font-weight: 600;
 
-      i {
+      & > i {
         color: var(--color-gray-500);
       }
     }
@@ -58,7 +58,7 @@
         padding-left: 0;
         justify-content: end;
 
-        i {
+        & > i {
           transition: transform 250ms ease-in-out;
           color: var(--color-gray-900);
         }
@@ -73,9 +73,8 @@
         cursor: pointer;
 
         .upf-table__cell--action {
-          i {
+          & > i {
             transform: translateX(var(--spacing-px-3));
-            /*transform: translate(100px, 200px);*/
           }
         }
       }
