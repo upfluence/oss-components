@@ -7,7 +7,7 @@ import { isEmpty } from '@ember/utils';
 interface OSSCurrencyInputArgs {
   currency: string;
   value: number;
-  onChange(currency: string , value: number): void;
+  onChange(currency: string, value: number): void;
   onlyCurrency?: boolean;
 }
 
