@@ -51,16 +51,24 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
     });
     test('Selecting a new currency in the Currency selector triggers the onChange method', async function (assert) {
       this.currency = '';
-      this.onChange = (currency: string, _: number) => {
-        assert.equal(currency, 'AUD');
-        this.set('currency', currency);
-      }
-      sinon.spy(this.onChange);
+      this.onChange = sinon.stub();
+
       await render(hbs`<OSS::CurrencyInput @currency={{this.currency}} @value="" @onChange={{this.onChange}} />`);
       await click('.currency-selector');
       const clickableRows = findAll('.upf-infinite-select__item');
       await click(clickableRows[4]);
-      assert.dom('.currency-selector').hasText('A$');
+      assert.true(this.onChange.calledOnceWithExactly('AUD', 0));
+    });
+    test('Selecting a new currency in the Currency selector triggers the onChange method with currency only', async function (assert) {
+      this.currency = '';
+      this.onChange = sinon.stub();
+      await render(
+        hbs`<OSS::CurrencyInput @onlyCurrency={{true}} @currency={{this.currency}} @value="" @onChange={{this.onChange}} />`
+      );
+      await click('.currency-selector');
+      const clickableRows = findAll('.upf-infinite-select__item');
+      await click(clickableRows[4]);
+      assert.true(this.onChange.calledOnceWithExactly('AUD', 0));
     });
     test('Typing in the search input filters the results', async function (assert) {
       this.onChange = sinon.spy();
@@ -87,7 +95,7 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       this.currency = 'USD';
       await render(hbs`<OSS::CurrencyInput @currency={{this.currency}} @value="" @onChange={{this.onChange}} />`);
       assert.dom('.currency-selector').hasText('$');
-      this.set('currency', 'EUR')
+      this.set('currency', 'EUR');
       assert.dom('.currency-selector').hasText('€');
     });
   });
@@ -109,6 +117,34 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       // @ts-ignore
       await triggerKeyEvent('input', 'keydown', 'A', { code: 'a' });
       assert.dom('input').hasValue('08');
+    });
+  });
+
+  module('Currency only mode', () => {
+    test('it renders currency only', async function (assert) {
+      this.onChange = () => {};
+      await render(hbs`<OSS::CurrencyInput @currency="USD" @onlyCurrency={{true}} @onChange={{this.onChange}} />`);
+
+      assert.dom('.currency-input-container').exists();
+      assert.dom('.currency-selector').exists();
+
+      assert.dom('.currency-selector').hasText('$ USD');
+
+      assert.dom('.currency-input input').doesNotExist();
+    });
+
+    test('it renders currency only with empty currency param', async function (assert) {
+      this.onChange = () => {};
+      await render(
+        hbs`<OSS::CurrencyInput @currency={{undefined}} @onlyCurrency={{true}} @onChange={{this.onChange}} />`
+      );
+
+      assert.dom('.currency-input-container').exists();
+      assert.dom('.currency-selector').exists();
+
+      assert.dom('.currency-selector').hasText('$ USD');
+
+      assert.dom('.currency-input input').doesNotExist();
     });
   });
 });

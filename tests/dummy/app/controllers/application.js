@@ -21,6 +21,7 @@ export default class ApplicationController extends Controller {
     { name: 'bar', label: 'bar' }
   ];
   @tracked selectedItem = this.items[0];
+  @tracked currencyOnly = null;
 
   code4CodeBlock = testScript;
   countries = countries;
@@ -63,6 +64,11 @@ export default class ApplicationController extends Controller {
     console.log('onCurrencyInputChange', currency, value);
     this.currency = currency;
     this.currencyValue = value;
+  }
+
+  @action
+  onCurrencyOnlyChange(currency) {
+    this.currencyOnly = currency;
   }
 
   @action

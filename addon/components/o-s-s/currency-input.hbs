@@ -1,16 +1,25 @@
 <div class="currency-input-container fx-1" ...attributes>
-  <div class="currency-input upf-input fx-row fx-1 fx-xalign-center">
-    <div class="currency-selector fx-row" role="button" {{on "click" this.toggleCurrencySelector}}>
-      <span class="margin-right-xxx-sm text-center symbol">{{this.selectedCurrencySymbol}}</span>
+  <div class="currency-input {{if @onlyCurrency " onlycurrency"}} upf-input fx-row fx-1 fx-xalign-center">
+    <div class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between" role="button"
+         {{on "click" this.toggleCurrencySelector}}>
+      <div class="fx-col">
+        <div class="fx-row fx-gap-px-9">
+          <span>{{this.selectedCurrencySymbol}}</span>
+          {{#if @onlyCurrency}}
+            <span class="margin-right-px-12">{{this.selectedCurrencyCode}}</span>
+          {{/if}}
+        </div>
+      </div>
       {{#if this.currencySelectorShown}}
         <i class="far fa-chevron-up margin-left-xxx-sm"></i>
       {{else}}
         <i class="far fa-chevron-down margin-left-xxx-sm"></i>
       {{/if}}
     </div>
-    <Input class="fx-1" type="number" @value={{this.localValue}} {{on "keydown" this.onlyNumeric}}
-           {{on "keyup" this.notifyChanges}}
-           autocomplete="off" />
+    {{#unless @onlyCurrency}}
+      <Input class="fx-1" type="number" @value={{this.localValue}} {{on "keydown" this.onlyNumeric}}
+             {{on "keyup" this.notifyChanges}} autocomplete="off" />
+    {{/unless}}
   </div>
   {{#if this.currencySelectorShown}}
     <OSS::InfiniteSelect @items={{this.filteredCurrencies}} @onSearch={{this.onSearch}}

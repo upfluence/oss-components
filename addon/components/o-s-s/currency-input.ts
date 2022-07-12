@@ -8,6 +8,7 @@ interface OSSCurrencyInputArgs {
   currency: string;
   value: number;
   onChange(currency: string, value: number): void;
+  onlyCurrency?: boolean;
 }
 
 const NUMERIC_ONLY = /^[0-9]$/i;
@@ -31,11 +32,14 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
     return this.selectedCurrency.symbol || '—';
   }
 
-  get selectedCurrency() {
+  get selectedCurrencyCode(): string {
+    return this.selectedCurrency.code || '—';
+  }
+
+  get selectedCurrency(): Currency {
     if (isEmpty(this.args.currency)) {
       return this._currencies[0];
     }
-
     return this._currencies.find((currency: Currency) => currency.code === this.args.currency) || this._currencies[0];
   }
 
