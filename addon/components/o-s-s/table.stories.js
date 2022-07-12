@@ -3,7 +3,6 @@ import hbs from 'htmlbars-inline-precompile';
 export default {
   title: 'Components/OSS::Table',
   layout: 'fullscreen',
-  //component: 'tag',
   argTypes: {
     chevron: {
       description: 'Chevron table',
