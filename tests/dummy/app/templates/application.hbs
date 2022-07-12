@@ -1,4 +1,4 @@
-<div class="fx-row fx-gap-px-10 margin-md">
+<div class="fx-row fx-gap-px-12 margin-md">
   <div class="fx-col fx-1 fx-gap-px-5">
     <span>Country</span>
     <OSS::CountrySelector @sourceList={{this.countries}} @onChange={{this.onCountrySelected}} />
@@ -54,7 +54,7 @@
                    @onChange={{this.updateSuperHeroes}} class="fx-1"
                    data-control-name="mailing-edit-template-ccs-input" />
 </div>
-<div class="fx-row fx-gap-px-10 margin-md">
+<div class="fx-row fx-gap-px-12 margin-md">
   <OSS::Tag @label="Tag" @skin="primary" @icon="far fa-thumbs-up" />
   <OSS::Tag @label="Tag" @skin="success" @icon="far fa-thumbs-up" />
   <OSS::Tag @label="Tag" @skin="warning" @icon="far fa-thumbs-up" />
@@ -69,25 +69,25 @@
             @icon="far fa-thumbs-up" @hasEllipsis={{true}} />
 </div>
 
-<div class="fx-row fx-gap-px-10 margin-md">
+<div class="fx-row fx-gap-px-12 margin-md">
   <OSS::Alert @title="Title" @subtitle="Subtitle" />
   <OSS::Alert @skin="error" @title="Title" @subtitle="Subtitle" />
 </div>
-<div class="fx-row fx-gap-px-10 margin-md">
+<div class="fx-row fx-gap-px-12 margin-md">
   <OSS::Alert @skin="success" @title="Title" />
   <OSS::Alert @skin="warning" @subtitle="Subtitle" />
 </div>
-<div class="fx-row fx-gap-px-10 margin-md">
+<div class="fx-row fx-gap-px-12 margin-md">
   <OSS::Button @label="Info" @size="md" {{on "click" (fn this.triggerToast "info")}} />
   <OSS::Button @label="Success" @size="md" {{on "click" (fn this.triggerToast "success")}} />
   <OSS::Button @label="Warning" @size="md" {{on "click" (fn this.triggerToast "warning")}} />
   <OSS::Button @label="Error" @size="md" {{on "click" (fn this.triggerToast "error")}} />
 </div>
-<div class="fx-col fx-gap-px-10 margin-md">
+<div class="fx-col fx-gap-px-12 margin-md">
   <OSS::CodeBlock @content={{this.code4CodeBlock}} @scrollable={{true}} @copyable={{true}}
                   @collapseHeight={{200}} @onCopyMessage="Copied to clipboard!" />
 </div>
-<div class="fx-col fx-gap-px-10 margin-md">
+<div class="fx-col fx-gap-px-12 margin-md">
   <OSS::Button @skin="primary" @size="md" @label="Open MODAL" @icon="fa fa-unicorn"
                {{on "click" this.openModal}} />
   {{#if this.showModal}}
@@ -101,7 +101,7 @@
         <div class="fx-1">
           <i class="fa fa-info"></i><a href="">More info</a>
         </div>
-        <div class="fx-row fx-gap-px-10">
+        <div class="fx-row fx-gap-px-12">
           <OSS::Button @skin="default" @label="Close" {{on "click" this.closeModal}} />
           <OSS::Button @skin="secondary" @label="Save" />
         </div>
@@ -109,77 +109,77 @@
     </OSS::ModalDialog>
   {{/if}}
 </div>
-<div class="fx-col fx-gap-px-10 margin-md">
-  <div class="fx-row fx-gap-px-10">
-    <div class="fx-col fx-gap-px-10">
+<div class="fx-col fx-gap-px-12 margin-md">
+  <div class="fx-row fx-gap-px-12">
+    <div class="fx-col fx-gap-px-12">
       <OSS::Button @skin="destructive" @label="destructive" @icon="fas fa-box-open" @size="md" />
       <OSS::Button @skin="destructive" @square="true" @icon="fas fa-box-open" @size="md" />
     </div>
-    <div class="fx-col fx-gap-px-10">
+    <div class="fx-col fx-gap-px-12">
       <OSS::Button @skin="alert" @label="alert" @icon="fas fa-box-open" @size="md" />
       <OSS::Button @skin="alert" @square="true" @icon="fas fa-box-open" @size="md" />
     </div>
-    <div class="fx-col fx-gap-px-10">
+    <div class="fx-col fx-gap-px-12">
       <OSS::Button @skin="secondary" @label="secondary" @icon="fas fa-box-open" @size="md" />
       <OSS::Button @skin="secondary" @square="true" @icon="fas fa-box-open" @size="md" />
     </div>
-    <div class="fx-col fx-gap-px-10">
+    <div class="fx-col fx-gap-px-12">
       <OSS::Button @skin="default" @label="default" @icon="fas fa-box-open" @size="md" />
       <OSS::Button @skin="default" @square="true" @icon="fas fa-box-open" @size="md" />
     </div>
-    <div class="fx-col fx-gap-px-10">
+    <div class="fx-col fx-gap-px-12">
       <OSS::Button @skin="success" @label="success" @icon="fas fa-box-open" @size="md" />
       <OSS::Button @skin="success" @square="true" @icon="fas fa-box-open" @size="md" />
     </div>
-    <div class="fx-col fx-gap-px-10">
+    <div class="fx-col fx-gap-px-12">
       <OSS::Button @skin="tertiary" @label="tertiary" @icon="fas fa-plus" @size="md" />
       <OSS::Button @skin="tertiary" @square="true" @icon="fas fa-plus" @size="md" />
     </div>
-    <div class="fx-col fx-gap-px-10">
+    <div class="fx-col fx-gap-px-12">
       <OSS::Button @skin="xtd-orange" @label="Extended orange" @icon="fas fa-plus" @size="md" />
       <OSS::Button @skin="xtd-orange" @square="true" @icon="fas fa-plus" @size="md" />
     </div>
-    <div class="fx-col fx-gap-px-10">
+    <div class="fx-col fx-gap-px-12">
       <OSS::Button @skin="xtd-yellow" @label="Extended yellow" @icon="fas fa-plus" @size="md" />
       <OSS::Button @skin="xtd-yellow" @square="true" @icon="fas fa-plus" @size="md" />
     </div>
-    <div class="fx-col fx-gap-px-10">
+    <div class="fx-col fx-gap-px-12">
       <OSS::Button @skin="xtd-lime" @label="Extended lime" @icon="fas fa-plus" @size="md" />
       <OSS::Button @skin="xtd-lime" @square="true" @icon="fas fa-plus" @size="md" />
     </div>
-    <div class="fx-col fx-gap-px-10">
+    <div class="fx-col fx-gap-px-12">
       <OSS::Button @skin="xtd-cyan" @label="Extended Cyan" @icon="fas fa-plus" @size="md" />
       <OSS::Button @skin="xtd-cyan" @square="true" @icon="fas fa-plus" @size="md" />
     </div>
-    <div class="fx-col fx-gap-px-10">
+    <div class="fx-col fx-gap-px-12">
       <OSS::Button @skin="xtd-blue" @label="Extended blue" @icon="fas fa-plus" @size="md" />
       <OSS::Button @skin="xtd-blue" @square="true" @icon="fas fa-plus" @size="md" />
     </div>
-    <div class="fx-col fx-gap-px-10">
+    <div class="fx-col fx-gap-px-12">
       <OSS::Button @skin="xtd-violet" @label="Extended violet" @icon="fas fa-plus" @size="md" />
       <OSS::Button @skin="xtd-violet" @square="true" @icon="fas fa-plus" @size="md" />
     </div>
   </div>
-  <div class="fx-row fx-gap-px-10">
+  <div class="fx-row fx-gap-px-12">
     <OSS::Button @skin="primary" @size="xs" @label="XS" @icon="far fa-envelope-open" />
     <OSS::Button @skin="primary" @size="sm" @label="SM" @icon="far fa-envelope-open" />
     <OSS::Button @skin="primary" @size="md" @label="MD" @icon="far fa-envelope-open" />
     <OSS::Button @skin="primary" @size="lg" @label="LG" @icon="far fa-envelope-open" />
   </div>
-  <div class="fx-row fx-gap-px-10">
+  <div class="fx-row fx-gap-px-12">
     <OSS::Button @square="true" @skin="primary" @size="sm" @icon="far fa-envelope-open" />
     <OSS::Button @square="true" @skin="primary" @size="md" @icon="far fa-envelope-open" />
     <OSS::Button @square="true" @skin="primary" @size="lg" @icon="far fa-envelope-open" />
   </div>
 
-  <div class="fx-row fx-gap-px-10 fx-xalign-center">
+  <div class="fx-row fx-gap-px-12 fx-xalign-center">
     <OSS::Badge @icon="fas fa-box-open" @size="lg" />
     <OSS::Badge @icon="fas fa-box-open" />
     <OSS::Badge @size="md" @icon="fas fa-box-open" />
     <OSS::Badge @size="sm" @icon="fas fa-box-open" />
   </div>
 
-  <div class="fx-row fx-gap-px-10 fx-xalign-center">
+  <div class="fx-row fx-gap-px-12 fx-xalign-center">
     <OSS::Badge @icon="fas fa-box-open" @skin="primary" />
     <OSS::Badge @icon="fas fa-box-open" @skin="primary" @plain={{true}} />
     <OSS::Badge @icon="fas fa-box-open" @skin="success" />
@@ -202,13 +202,13 @@
     <OSS::Badge @icon="fas fa-box-open" @skin="xtd-violet" @plain={{true}} />
   </div>
 
-  <div class="fx-row fx-gap-px-10 fx-xalign-center">
+  <div class="fx-row fx-gap-px-12 fx-xalign-center">
     <OSS::Badge @text="2x" @size="lg" />
     <OSS::Badge @text="2x" />
     <OSS::Badge @text="2x" @size="sm" />
   </div>
 
-  <div class="fx-row fx-gap-px-10 fx-xalign-center">
+  <div class="fx-row fx-gap-px-12 fx-xalign-center">
     <OSS::Badge @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
                 @size="lg" />
     <OSS::Badge @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png" />
@@ -216,12 +216,12 @@
                 @size="sm" />
   </div>
 
-  <div class="fx-row fx-gap-px-10">
-    <div class="fx-col fx-gap-px-10">
+  <div class="fx-row fx-gap-px-12">
+    <div class="fx-col fx-gap-px-12">
       <OSS::Button @skin="destructive" @label="Count down" @icon="far fa-hourglass" @size="md"
                    @countDown={{hash callback=this.countDownAction}} />
     </div>
-    <div class="fx-col fx-gap-px-10">
+    <div class="fx-col fx-gap-px-12">
       <LoadingButton @slowAction="loadingAction" class="upf-btn upf-btn--primary"
                      @initiallyDisabled={{false}}>
         Loading button
@@ -236,7 +236,7 @@
     <OSS::StarRating @rating={{3}} @totalStars={{5}} />
     <OSS::StarRating @rating={{12}} @totalStars={{15}} @activeColor="red" @passiveColor="blue" />
   </div>
-  <div class="fx-col fx-gap-px-10">
+  <div class="fx-col fx-gap-px-12">
     <OSS::Banner @icon="fas fa-box-open" @title="Import creators inside your campaign"
                  @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file. ">
       <:custom-icon>
@@ -256,5 +256,57 @@
         <OSS::Button @skin="secondary" @label="action" @icon="fas fa-box-open" @size="md" />
       </:actions>
     </OSS::Bruce>
+  </div>
+</div>
+
+<div class="upf-table-v2 margin-md">
+  <div class="upf-table__headers">
+    {{#each this.tableDemo.header as |header|}}
+      <div class="upf-table__cell {{header.class}}">
+        {{header.title}}
+      </div>
+    {{/each}}
+  </div>
+
+  <div class="upf-table__content">
+    {{#each this.tableDemo.header as |header index|}}
+      <div class="upf-table__row">
+        {{#each this.tableDemo.header as |header index|}}
+          <div class="upf-table__cell {{header.class}}">
+            {{#if header.title}}
+              <OSS::Tag @skin="primary" @label="Hello" />
+            {{else}}
+              <i class="fa fa-chevron-right"></i>
+            {{/if}}
+          </div>
+        {{/each}}
+      </div>
+    {{/each}}
+  </div>
+</div>
+
+<div class="upf-table-v2 upf-table-v2--chevron margin-md" {{scroll-shadow}}>
+  <div class="upf-table__headers">
+    {{#each this.tableDemo.header as |header|}}
+      <div class="upf-table__cell {{header.class}}">
+        {{header.title}}
+      </div>
+    {{/each}}
+  </div>
+
+  <div class="upf-table__content">
+    {{#each this.tableDemo.header as |header index|}}
+      <div class="upf-table__row" role="button">
+        {{#each this.tableDemo.header as |header index|}}
+          <div class="upf-table__cell {{header.class}}">
+            {{#if header.title}}
+              Content {{index}}
+            {{else}}
+              <i class="fa fa-chevron-right"></i>
+            {{/if}}
+          </div>
+        {{/each}}
+      </div>
+    {{/each}}
   </div>
 </div>
