@@ -16,44 +16,6 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
     assert.dom('.currency-input-container').exists();
   });
 
-  test('it renders currency only', async function (assert) {
-    this.onChange = () => {};
-    await render(hbs`<OSS::CurrencyInput @currency="USD" @onlyCurrency={{true}} @onChange={{this.onChange}} />`);
-
-    assert.dom('.currency-input-container').exists();
-    assert.dom('.currency-selector').exists();
-
-    const currencyLabel = await findAll('.currency-selector span');
-
-    assert.dom(currencyLabel[0]).exists();
-    assert.dom(currencyLabel[0]).hasText('$');
-
-    assert.dom(currencyLabel[1]).exists();
-    assert.dom(currencyLabel[1]).hasText('USD');
-
-    assert.dom('.currency-input input').doesNotExist();
-  });
-
-  test('it renders currency only with empty currency param', async function (assert) {
-    this.onChange = () => {};
-    await render(
-      hbs`<OSS::CurrencyInput @currency={{undefined}} @onlyCurrency={{true}} @onChange={{this.onChange}} />`
-    );
-
-    assert.dom('.currency-input-container').exists();
-    assert.dom('.currency-selector').exists();
-
-    const currencyLabel = await findAll('.currency-selector span');
-
-    assert.dom(currencyLabel[0]).exists();
-    assert.dom(currencyLabel[0]).hasText('$');
-
-    assert.dom(currencyLabel[1]).exists();
-    assert.dom(currencyLabel[1]).hasText('USD');
-
-    assert.dom('.currency-input input').doesNotExist();
-  });
-
   test('The passed @value parameter is properly displayed in the input', async function (assert) {
     this.onChange = () => {};
     await render(hbs`<OSS::CurrencyInput @value="12341234" @onChange={{this.onChange}} />`);
@@ -155,6 +117,34 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       // @ts-ignore
       await triggerKeyEvent('input', 'keydown', 'A', { code: 'a' });
       assert.dom('input').hasValue('08');
+    });
+  });
+
+  module('Currency only mode', () => {
+    test('it renders currency only', async function (assert) {
+      this.onChange = () => {};
+      await render(hbs`<OSS::CurrencyInput @currency="USD" @onlyCurrency={{true}} @onChange={{this.onChange}} />`);
+
+      assert.dom('.currency-input-container').exists();
+      assert.dom('.currency-selector').exists();
+
+      assert.dom('.currency-selector').hasText('$ USD');
+
+      assert.dom('.currency-input input').doesNotExist();
+    });
+
+    test('it renders currency only with empty currency param', async function (assert) {
+      this.onChange = () => {};
+      await render(
+        hbs`<OSS::CurrencyInput @currency={{undefined}} @onlyCurrency={{true}} @onChange={{this.onChange}} />`
+      );
+
+      assert.dom('.currency-input-container').exists();
+      assert.dom('.currency-selector').exists();
+
+      assert.dom('.currency-selector').hasText('$ USD');
+
+      assert.dom('.currency-input input').doesNotExist();
     });
   });
 });
