@@ -221,12 +221,6 @@
       <OSS::Button @skin="destructive" @label="Count down" @icon="far fa-hourglass" @size="md"
                    @countDown={{hash callback=this.countDownAction}} />
     </div>
-    <div class="fx-col fx-gap-px-12">
-      <LoadingButton @slowAction="loadingAction" class="upf-btn upf-btn--primary"
-                     @initiallyDisabled={{false}}>
-        Loading button
-      </LoadingButton>
-    </div>
   </div>
   <div class="fx-row fx-1">
     <OSS::PhoneNumberInput @prefix={{this.phonePrefix}} @number={{this.phoneNumber}}
