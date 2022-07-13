@@ -1,0 +1,101 @@
+.upf-table-v2 {
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--border-radius-md);
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  .upf-table__cell {
+    flex: 1;
+    padding: var(--spacing-px-12) var(--spacing-px-18);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: var(--spacing-px-6);
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .upf-table__cell--action {
+    max-width: 36px;
+  }
+
+  .upf-table__cell--fixed {
+    max-width: 125px;
+  }
+
+  .upf-table__header {
+    background-color: var(--color-gray-50);
+    border-top-left-radius: var(--border-radius-md);
+    border-top-right-radius: var(--border-radius-md);
+    display: flex;
+    border-bottom: 1px solid var(--color-content-separator);
+
+    .upf-table__cell {
+      color: var(--color-gray-500);
+      font-weight: 600;
+
+      & > i {
+        color: var(--color-gray-500);
+      }
+    }
+  }
+
+  .upf-table__content {
+    display: flex;
+    flex-direction: column;
+
+    .upf-table__row {
+      background-color: var(--color-white);
+      display: flex;
+      height: 60px;
+
+      &:not(:last-child),
+      &:only-child {
+        border-bottom: 1px solid var(--color-content-separator);
+      }
+
+      .upf-table__cell--action {
+        padding-right: var(--spacing-px-18);
+        padding-left: 0;
+        justify-content: end;
+
+        & > i {
+          transition: transform 250ms ease-in-out;
+          color: var(--color-gray-900);
+        }
+      }
+    }
+  }
+
+  &--clickable {
+    .upf-table__content {
+      .upf-table__row:hover {
+        background-color: var(--color-gray-50);
+        cursor: pointer;
+
+        .upf-table__cell--action {
+          & > i {
+            transform: translateX(var(--spacing-px-3));
+          }
+        }
+      }
+    }
+  }
+
+  &--scrollable {
+    .upf-table__header {
+      overflow-y: scroll;
+
+      &::-webkit-scrollbar {
+        background-color: var(--color-gray-50);
+        border-radius: var(--border-radius-md);
+      }
+    }
+
+    .upf-table__content {
+      overflow-y: scroll;
+    }
+  }
+}

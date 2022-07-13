@@ -1,7 +1,6 @@
-<button class="upf-btn upf-btn--default upf-btn--small upf-link--reset button-column-visibility-panel">
-  <i class="fa fa-columns"></i> &nbsp;
-  <i class="fa {{if displayedColumnsPanel "fa-caret-up" "fa-caret-down"}}"></i>
-</button>
+{{!-- Went through the codebase and there is no occurence of a `upf-table` being invoked with `hasToggleableColumns=true` --}}
+{{!-- anyway --}}
+<OSS::Button @icon="fa fa-columns" class="button-column-visibility-panel" />
 
 {{#if displayedColumnsPanel}}
   <div class="upf-datatable__side-panel--arrow-up side-panel--appearance"></div>

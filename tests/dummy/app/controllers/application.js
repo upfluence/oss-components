@@ -8,7 +8,7 @@ export default class ApplicationController extends Controller {
   @service toast;
 
   @tracked selectedItems = ['toto'];
-  @tracked selectedCountry: { name: string, id?: string } = null;
+  @tracked selectedCountry = null;
   @tracked superHeroes = ['Iron Man', 'Thor', 'Loki', 'Hulk'];
   @tracked loading = false;
   @tracked phonePrefix = '+33';
@@ -25,6 +25,23 @@ export default class ApplicationController extends Controller {
 
   code4CodeBlock = testScript;
   countries = countries;
+
+  tableDemo = {
+    header: [
+      { title: 'Title 0' },
+      { title: 'Title 1', class: 'upf-table__cell--fixed upf-table__tag-cell' },
+      { title: 'Title 2', class: 'upf-table__cell--fixed' },
+      { title: 'Title 3', class: 'upf-table__cell--fixed' },
+      { title: '', class: 'upf-table__cell--action' }
+    ],
+    data: [
+      { content: 'Content 1' },
+      { content: 'Content 2' },
+      { content: 'Content 3' },
+      { content: 'Content 4', class: 'upf-table__cell--fixed' },
+      { content: '', class: 'upf-table__cell--action' }
+    ]
+  };
 
   @action
   openModal(e) {
