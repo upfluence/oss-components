@@ -100,7 +100,6 @@ export default {
     }
   },
   parameters: {
-    layout: 'fullscreen',
     docs: {
       description: {
         component: 'An OSS version of the HTML Select component.'
@@ -123,6 +122,7 @@ const defaultArgs = {
 
 const Template = (args) => ({
   template: hbs`
+  <div style="width: 400px">
     <OSS::Select
       @items={{this.items}} @value={{this.value}} @targetLabel={{this.targetLabel}} @placeholder={{this.placeholder}}
       @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} @successMessage={{this.successMessage}}
@@ -131,6 +131,7 @@ const Template = (args) => ({
         {{item.name}}
       </:option>
     </OSS::Select>
+  </div>
   `,
   context: args
 });
