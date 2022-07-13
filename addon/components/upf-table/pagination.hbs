@@ -1,4 +1,6 @@
-<span class="text-size-5 margin-left-px-12">{{this.from}} to {{this.to}} out of {{this.itemTotal}} {{this.itemName}}</span>
+<span class="text-size-5 margin-left-px-12">
+  {{t  "oss-components.upf-table.pagination" from=this.from to=this.to total=this.itemTotal item_name=this.itemName}}
+</span>
 
 <OSS::Button @icon="fa fa-caret-left" class="margin-left-px-12" disabled={{not this.hasPrevious}} {{action "previousPage"}} />
 <OSS::Button @icon="fa fa-caret-right" class="margin-left-px-12" disabled={{not this.hasNext}} {{action "nextPage"}} />
