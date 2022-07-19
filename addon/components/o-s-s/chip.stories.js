@@ -48,7 +48,7 @@ export default {
     },
 
     ellipsisWidth: {
-      description: 'Max width before we apply ellispsis on text',
+      description: 'Max width before we apply ellispsis on text : Requirement: <br/> -be careful you have to had enabled-tooltip for hover on chip <br/> -only few class exist for ellispsis',
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: 'undefined' }
