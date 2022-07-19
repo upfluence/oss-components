@@ -1,4 +1,15 @@
-<div class="fx-row fx-gap-px-12 margin-md">
+<div class="fx-row fx-gap-px-10 margin-md">
+  <OSS::Chip @label="Chip" @onClick={{this.onCrossChipClick}} />
+  <OSS::Chip @skin="default" @label="Chip" @onClick={{this.onCrossChipClick}} />
+  <OSS::Chip @skin="primary" @label="Chip" @onClick={{this.onCrossChipClick}} />
+  <OSS::Chip @skin="success" @label="Chip" @onClick={{this.onCrossChipClick}} />
+  <OSS::Chip @skin="danger" @label="Chip" @onClick={{this.onCrossChipClick}} />
+  <OSS::Chip @skin="danger" @label="Chip" @disabled={{true}} @onClick={{this.onCrossChipClick}} />
+  <OSS::Chip @skin="success" @label="Chip with a huge label" @disabled={{false}} @ellipsisWidth={{100}} @onClick={{this.onCrossChipClick}} {{enable-tooltip title='Chip with a huge label' placement='top'}} />
+  <OSS::Chip @skin="danger" @label="Chip with a huge label" @disabled={{false}} @ellipsisWidth={{160}} @onClick={{this.onCrossChipClick}} />
+</div>
+
+<div class="fx-row fx-gap-px-10 margin-md">
   <div class="fx-col fx-1 fx-gap-px-5">
     <span>Country</span>
     <OSS::CountrySelector @sourceList={{this.countries}} @onChange={{this.onCountrySelected}} />
