@@ -125,7 +125,11 @@ export default {
     }
   },
   parameters: {
-    layout: 'fullscreen'
+    docs: {
+      description: {
+        component: 'A configurable select component which features a search function and an infinite loader.'
+      }
+    }
   }
 };
 

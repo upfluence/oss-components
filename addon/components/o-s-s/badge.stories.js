@@ -72,6 +72,13 @@ export default {
       },
       control: false
     }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'Displays an icon or an image in a round badge.'
+      }
+    }
   }
 };
 

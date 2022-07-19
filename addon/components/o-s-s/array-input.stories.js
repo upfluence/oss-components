@@ -47,7 +47,6 @@ export default {
     }
   },
   parameters: {
-    layout: 'fullscreen',
     docs: {
       description: {
         component:
@@ -58,7 +57,7 @@ export default {
 };
 
 const DefaultUsageTemplate = (args) => ({
-  template: hbs`<div style="width: 400px">
+  template: hbs`<div style="display: flex; justify-content: center">
       <OSS::ArrayInput @values={{this.values}} @onChange={{this.onChange}} @placeholder={{this.placeholder}} @validator={{this.validator}} />
     </div>
   `,

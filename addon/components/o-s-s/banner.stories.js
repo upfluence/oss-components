@@ -30,6 +30,13 @@ export default {
     plain: {
       description: 'Display the plain version of the banner, if true will show in bg-color-grey'
     }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'A configurable Banner component. Can display a badge or an image, a title and a subtitle.'
+      }
+    }
   }
 };
 

@@ -57,6 +57,13 @@ export default {
       },
       control: { type: 'text' }
     }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'Used to display code blocks in pages.'
+      }
+    }
   }
 };
 

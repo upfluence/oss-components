@@ -102,6 +102,13 @@ export default {
       type: { required: true },
       description: 'A callback that sends the selected country/province object to the parent component'
     }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'A Country Selector that displays a Country list with a search function.'
+      }
+    }
   }
 };
 

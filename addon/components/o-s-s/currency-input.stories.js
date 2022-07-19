@@ -39,6 +39,13 @@ export default {
       },
       control: { type: 'boolean' }
     }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'A currency selector & input, used to set prices.'
+      }
+    }
   }
 };
 

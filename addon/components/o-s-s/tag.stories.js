@@ -54,7 +54,7 @@ const defaultArgs = {
   skin: 'default',
   label: 'Label',
   icon: 'far fa-thumbs-up',
-  hasEllipsis: 'false'
+  hasEllipsis: false
 };
 
 const Template = (args) => ({

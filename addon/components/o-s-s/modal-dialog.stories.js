@@ -38,6 +38,13 @@ export default {
       },
       control: { type: 'string' }
     }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'A lightweight version of the OSS Modal. Used mostly to confirm user actions.'
+      }
+    }
   }
 };
 

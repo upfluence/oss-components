@@ -61,6 +61,13 @@ export default {
       options: STAR_COLORS,
       control: { type: 'select' }
     }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'Configurable component that can be used to assign ratings.'
+      }
+    }
   }
 };
 

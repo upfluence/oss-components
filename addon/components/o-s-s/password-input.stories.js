@@ -48,6 +48,13 @@ export default {
     validates: {
       description: 'A callback that indicates wheter or not the current input matches the regex'
     }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'A dedicated password input that checks the validity of the text entered.'
+      }
+    }
   }
 };
 
