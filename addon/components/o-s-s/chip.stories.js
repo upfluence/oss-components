@@ -48,7 +48,7 @@ export default {
     },
 
     displayMaxWidth: {
-      description:'Set width for the ellipsis on label ',
+      description: 'Set width for the ellipsis on label ',
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: 'undefined' }
