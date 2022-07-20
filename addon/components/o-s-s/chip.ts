@@ -16,12 +16,13 @@ export const SkinDefinition: SkinDefType = {
 };
 
 const BASE_CLASS_CHIP: string = 'upf-chip';
+const BASE_CLASS_ELLIPSIS_CHIP: string = 'overflow: hidden;text-overflow: ellipsis;white-space: nowrap;';
 interface OSSChipArgs {
   skin?: string;
-  label?: string;
-  onClick(crossClick: boolean): void;
+  label: string;
+  onRemove(): void;
   disabled?: boolean;
-  ellipsisWidth?: number;
+  displayMaxWidth?: number;
 }
 
 export default class OSSChip extends Component<OSSChipArgs> {
@@ -29,38 +30,41 @@ export default class OSSChip extends Component<OSSChipArgs> {
     super(owner, args);
 
     assert(
-      '[component][OSS::Chip] The parameter @onClick of type function is mandatory',
-      typeof this.args.onClick === 'function'
+      '[component][OSS::Chip] The parameter @onRemove of type function is mandatory',
+      typeof this.args.onRemove === 'function'
     );
+    assert('[component][OSS::Chip] The parameter @label have to be set', args.label);
   }
 
   get skin(): string {
-    return SkinDefinition[this.args.skin as SkinType] ?? SkinDefinition.primary;
+    return SkinDefinition[this.args.skin as SkinType] ?? SkinDefinition.default;
   }
 
-  get ellipsisWidth(): string {
-    return this.args.ellipsisWidth ? `text-ellipsis-${this.args.ellipsisWidth}` : '';
+  get ellipsisStyle(): string {
+    const style: string = `max-width: ${this.args.displayMaxWidth}px;`;
+    return BASE_CLASS_ELLIPSIS_CHIP.concat(style);
+  }
+
+  get disabled(): boolean {
+    return true;
   }
 
   get computedClass(): string {
-    let classes = [BASE_CLASS_CHIP];
+    const classes = [BASE_CLASS_CHIP];
 
     if (this.skin) {
       classes.push(`upf-chip--${this.skin}`);
     }
 
     if (this.args.disabled) {
-      classes.push(`upf-chip--disabled`);
+      classes.push('upf-chip--disabled');
     }
 
     return classes.join(' ');
   }
 
   @action
-  notifyClick(): void {
-    if (this.args.disabled) {
-      return;
-    }
-    this.args.onClick(true);
+  onCrossClick(): void {
+    this.args.onRemove();
   }
 }

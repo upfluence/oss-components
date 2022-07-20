@@ -1,0 +1,46 @@
+.upf-chip {
+  display: flex;
+  align-items: center;
+  height: var(--spacing-px-24);
+  border-radius: 4px;
+  padding: var(--spacing-px-3) var(--spacing-px-6);
+  gap: var(--spacing-px-6);
+  color: var(--color-white);
+  box-shadow: var(--box-shadow-sm), var(--box-shadow-sm);
+
+  i {
+    opacity: 0.4;
+    &:hover{
+        opacity: 1;
+    }
+  }
+
+  &--default {
+    background-color: var(--color-white);
+    color: var(--color-black);
+  }
+
+  &--primary {
+    background-color: var(--color-primary-500);
+  }
+
+  &--success {
+    background-color:var(--color-success-500);
+  }
+
+
+  &--danger {
+    background-color: var(--color-error-500);
+  }
+
+  &--disabled {
+    background-color: var(--color-gray-50);
+    border-color: var(--color-gray-50);
+    color: var(--color-gray-400);
+    cursor: not-allowed;
+    i{
+      opacity: 1;
+      cursor: not-allowed;
+    }
+  }
+}

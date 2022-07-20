@@ -5,7 +5,7 @@ const SkinTypes = ['default', 'primary', 'success', 'danger'];
 
 export default {
   title: 'Components/OSS::Chip',
-  component: 'tag',
+  component: 'chip',
   argTypes: {
     skin: {
       description: 'Adjust appearance',
@@ -20,7 +20,8 @@ export default {
     },
 
     label: {
-      description: 'Text content of the tag',
+      type: { required: true },
+      description: 'Text content of the chip',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'undefined' }
@@ -30,13 +31,13 @@ export default {
       }
     },
 
-    onClick: {
+    onRemove: {
       type: { required: true },
       description: 'A callback that sends the click event on cross to the parent component'
     },
 
     disabled: {
-      description: 'Text wrapping when width > 80px',
+      description: 'Disabled chip style with no trigger onRemove event',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' }
@@ -46,9 +47,8 @@ export default {
       }
     },
 
-    ellipsisWidth: {
-      description:
-        'Max width before we apply ellispsis on text : Requirement: <br/> -be careful you have to had enabled-tooltip for hover on chip <br/> -only few class exist for ellispsis',
+    displayMaxWidth: {
+      description:'Set width for the ellipsis on label ',
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: 'undefined' }
@@ -63,14 +63,14 @@ export default {
 const defaultArgs = {
   skin: 'default',
   label: 'Label',
-  onClick: action('onClick'),
+  onRemove: action('onRemove'),
   disabled: false,
-  ellipsisWidth: 0
+  displayMaxWidth: 0
 };
 
 const Template = (args) => ({
   template: hbs`
-    <OSS::Chip @skin={{this.skin}} @label={{this.label}} @onClick={{this.onClick}} @disabled={{this.disabled}} @ellipsisWidth={{this.ellipsisWidth}} />
+    <OSS::Chip @skin={{this.skin}} @label={{this.label}} @onRemove={{this.onRemove}} @disabled={{this.disabled}} @displayMaxWidth={{this.displayMaxWidth}} />
   `,
   context: args
 });

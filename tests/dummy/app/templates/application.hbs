@@ -1,12 +1,13 @@
 <div class="fx-row fx-gap-px-10 margin-md">
-  <OSS::Chip @label="Chip" @onClick={{this.onCrossChipClick}} />
-  <OSS::Chip @skin="default" @label="Chip" @onClick={{this.onCrossChipClick}} />
-  <OSS::Chip @skin="primary" @label="Chip" @onClick={{this.onCrossChipClick}} />
-  <OSS::Chip @skin="success" @label="Chip" @onClick={{this.onCrossChipClick}} />
-  <OSS::Chip @skin="danger" @label="Chip" @onClick={{this.onCrossChipClick}} />
-  <OSS::Chip @skin="danger" @label="Chip" @disabled={{true}} @onClick={{this.onCrossChipClick}} />
-  <OSS::Chip @skin="success" @label="Chip with a huge label" @disabled={{false}} @ellipsisWidth={{100}} @onClick={{this.onCrossChipClick}} {{enable-tooltip title='Chip with a huge label' placement='top'}} />
-  <OSS::Chip @skin="danger" @label="Chip with a huge label" @disabled={{false}} @ellipsisWidth={{160}} @onClick={{this.onCrossChipClick}} />
+  <OSS::Chip @label="Chip" @onRemove={{this.onCrossChipClick}} />
+  <OSS::Chip @skin="default" @label="Chip" @onRemove={{this.onCrossChipClick}} />
+  <OSS::Chip @skin="primary" @label="Chip" @onRemove={{this.onCrossChipClick}} />
+  <OSS::Chip @skin="success" @label="Chip" @onRemove={{this.onCrossChipClick}} />
+  <OSS::Chip @skin="danger" @label="Chip" @onRemove={{this.onCrossChipClick}} />
+  <OSS::Chip @skin="danger" @label="Chip" @disabled={{true}} @onRemove={{this.onCrossChipClick}} />
+  <OSS::Chip @skin="success" @label="Chip with a huge label" @disabled={{false}} @displayMaxWidth={{100}} @onRemove={{this.onCrossChipClick}} />
+  <OSS::Chip @skin="danger" @label="Chip with a huge label" @disabled={{false}} @displayMaxWidth={{160}} @onRemove={{this.onCrossChipClick}} />
+  <OSS::Chip @skin="danger" @label="Chip with a huge label" @disabled={{true}} @onRemove={{this.onCrossChipClick}} @displayMaxWidth={{50}} />
 </div>
 
 <div class="fx-row fx-gap-px-10 margin-md">
