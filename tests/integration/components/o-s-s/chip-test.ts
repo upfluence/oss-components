@@ -12,7 +12,7 @@ module('Integration | Component | o-s-s/chip', function (hooks) {
     this.label = 'Test';
   });
 
-  module('it renders with good display', () => {
+  module('it renders', () => {
     test('basic render', async function (assert) {
       await render(hbs`<OSS::Chip @label={{this.label}} @onRemove={{this.onRemove}} />`);
 
