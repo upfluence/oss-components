@@ -31,7 +31,7 @@ module('Integration | Component | o-s-s/chip', function (hooks) {
           'Assertion Failed: [component][OSS::Chip] The parameter @onRemove of type function is mandatory'
         );
       });
-      await render(hbs`<OSS::Chip @label={{this.label}}/>`);
+      await render(hbs`<OSS::Chip @label={{this.label}} />`);
     });
 
     test('It throws an error if @label is not passed', async function (assert) {
@@ -58,7 +58,7 @@ module('Integration | Component | o-s-s/chip', function (hooks) {
   module('@maxDisplayWidth', () => {
     test('The component adds an ellispsis if the label is wider than @maxDisplayWidth', async function (assert) {
       await render(
-        hbs`<OSS::Chip @label="Test with a huge label sentence" @onRemove={{this.onRemove}} @maxDisplayWidth={{100}}/>`
+        hbs`<OSS::Chip @label="Test with a huge label sentence" @onRemove={{this.onRemove}} @maxDisplayWidth={{100}} />`
       );
 
       assert.dom('.upf-chip').exists({ count: 1 });
@@ -86,7 +86,7 @@ module('Integration | Component | o-s-s/chip', function (hooks) {
     test('When clicking on the close icon, the component triggers the @onRemove method', async function (assert) {
       await render(hbs`<OSS::Chip @label={{this.label}} @onRemove={{this.onRemove}} />`);
       await click('.upf-chip i');
-      assert.true(this.onRemove.calledOnce);
+      assert.true(this.onRemove.notCalled);
     });
 
     test('When @disabled is true and clicking on the close icon, the component no triggers the @onRemove method', async function (assert) {

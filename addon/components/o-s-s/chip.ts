@@ -19,9 +19,9 @@ const BASE_CLASS_CHIP: string = 'upf-chip';
 interface OSSChipArgs {
   skin?: string;
   label: string;
-  onRemove(): void;
   disabled?: boolean;
   maxDisplayWidth?: number;
+  onRemove(): void;
 }
 
 export default class OSSChip extends Component<OSSChipArgs> {
@@ -41,10 +41,6 @@ export default class OSSChip extends Component<OSSChipArgs> {
 
   get ellipsisStyle(): string {
     return `max-width: ${this.args.maxDisplayWidth}px;`;
-  }
-
-  get disabled(): boolean {
-    return true;
   }
 
   get computedClass(): string {
