@@ -63,7 +63,7 @@ export default class OSSChip extends Component<OSSChipArgs> {
 
   @action
   onCrossClick(): void {
-    if (this.args.disabled){
+    if (this.args.disabled) {
       return;
     }
     this.args.onRemove();
