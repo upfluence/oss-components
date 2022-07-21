@@ -89,6 +89,11 @@ export default class ApplicationController extends Controller {
   }
 
   @action
+  onCrossChipClick() {
+    console.log('onCrossChipClick');
+  }
+
+  @action
   onPhoneNumberChange(prefix, phoneNumber) {
     console.log('onPhoneNumberChange', prefix, phoneNumber);
     this.phonePrefix = prefix;

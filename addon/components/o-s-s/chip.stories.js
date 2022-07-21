@@ -1,0 +1,82 @@
+import hbs from 'htmlbars-inline-precompile';
+import { action } from '@storybook/addon-actions';
+
+const SkinTypes = ['default', 'primary', 'success', 'danger'];
+
+export default {
+  title: 'Components/OSS::Chip',
+  component: 'chip',
+  argTypes: {
+    skin: {
+      description: 'Adjust appearance',
+      table: {
+        type: {
+          summary: SkinTypes.join('|')
+        },
+        defaultValue: { summary: 'primary' }
+      },
+      options: SkinTypes,
+      control: { type: 'select' }
+    },
+
+    label: {
+      type: { required: true },
+      description: 'Text content of the chip',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: {
+        type: 'text'
+      }
+    },
+
+    onRemove: {
+      type: { required: true },
+      description: 'A callback triggered when the cross icon has been clicked.'
+    },
+
+    disabled: {
+      description: 'Disabled state of the component',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
+
+    maxDisplayWidth: {
+      description:
+        'Sets the max width of the component. If the label is too long to fit inside, an ellipsis will be shown and a tooltip with the full contents will be available.',
+      table: {
+        type: { summary: 'number' },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: {
+        type: 'number'
+      }
+    }
+  }
+};
+
+const defaultArgs = {
+  skin: 'default',
+  label: 'Label',
+  onRemove: action('onRemove'),
+  disabled: false,
+  maxDisplayWidth: 0
+};
+
+const Template = (args) => ({
+  template: hbs`
+    <OSS::Chip @skin={{this.skin}} @label={{this.label}} @onRemove={{this.onRemove}} @disabled={{this.disabled}} @maxDisplayWidth={{this.maxDisplayWidth}} />
+  `,
+  context: args
+});
+
+export const Default = Template.bind({});
+Default.args = {
+  ...defaultArgs
+};

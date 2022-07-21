@@ -1,4 +1,16 @@
-<div class="fx-row fx-gap-px-12 margin-md">
+<div class="fx-row fx-gap-px-10 margin-md">
+  <OSS::Chip @label="Chip" @onRemove={{this.onCrossChipClick}} />
+  <OSS::Chip @skin="default" @label="Chip" @onRemove={{this.onCrossChipClick}} />
+  <OSS::Chip @skin="primary" @label="Chip" @onRemove={{this.onCrossChipClick}} />
+  <OSS::Chip @skin="success" @label="Chip" @onRemove={{this.onCrossChipClick}} />
+  <OSS::Chip @skin="danger" @label="Chip" @onRemove={{this.onCrossChipClick}} />
+  <OSS::Chip @skin="danger" @label="Chip" @disabled={{true}} @onRemove={{this.onCrossChipClick}} />
+  <OSS::Chip @skin="success" @label="Chip with a huge label" @disabled={{false}} @maxDisplayWidth={{100}} @onRemove={{this.onCrossChipClick}} />
+  <OSS::Chip @skin="danger" @label="Chip with a huge label" @disabled={{false}} @maxDisplayWidth={{160}} @onRemove={{this.onCrossChipClick}} />
+  <OSS::ChipNFish @skin="danger" @label="Chip with a huge label" @disabled={{true}} @onRemove={{this.onCrossChipClick}} @maxDisplayWidth={{50}} />
+</div>
+
+<div class="fx-row fx-gap-px-10 margin-md">
   <div class="fx-col fx-1 fx-gap-px-5">
     <span>Country</span>
     <OSS::CountrySelector @sourceList={{this.countries}} @onChange={{this.onCountrySelected}} />
