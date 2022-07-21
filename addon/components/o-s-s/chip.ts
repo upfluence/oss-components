@@ -16,13 +16,12 @@ export const SkinDefinition: SkinDefType = {
 };
 
 const BASE_CLASS_CHIP: string = 'upf-chip';
-const BASE_CLASS_ELLIPSIS_CHIP: string = 'overflow: hidden;text-overflow: ellipsis;white-space: nowrap;';
 interface OSSChipArgs {
   skin?: string;
   label: string;
   onRemove(): void;
   disabled?: boolean;
-  displayMaxWidth?: number;
+  maxDisplayWidth?: number;
 }
 
 export default class OSSChip extends Component<OSSChipArgs> {
@@ -33,7 +32,7 @@ export default class OSSChip extends Component<OSSChipArgs> {
       '[component][OSS::Chip] The parameter @onRemove of type function is mandatory',
       typeof this.args.onRemove === 'function'
     );
-    assert('[component][OSS::Chip] The parameter @label have to be set', args.label);
+    assert('[component][OSS::Chip] The @label parameter is mandatory', args.label);
   }
 
   get skin(): string {
@@ -41,8 +40,7 @@ export default class OSSChip extends Component<OSSChipArgs> {
   }
 
   get ellipsisStyle(): string {
-    const style: string = `max-width: ${this.args.displayMaxWidth}px;`;
-    return BASE_CLASS_ELLIPSIS_CHIP.concat(style);
+    return `max-width: ${this.args.maxDisplayWidth}px;`;
   }
 
   get disabled(): boolean {
@@ -65,6 +63,9 @@ export default class OSSChip extends Component<OSSChipArgs> {
 
   @action
   onCrossClick(): void {
+    if (this.args.disabled){
+      return;
+    }
     this.args.onRemove();
   }
 }

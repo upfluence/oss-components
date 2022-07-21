@@ -1,11 +1,7 @@
 <div class={{this.computedClass}} ...attributes>
-  <span class="text-style-semibold" style={{if @displayMaxWidth this.ellipsisStyle}}
-        {{enable-tooltip title=(if @displayMaxWidth @label '') placement='top'}}>
+  <span class="text-style-semibold {{if @maxDisplayWidth "chip-ellipsis"}}" style={{if @maxDisplayWidth this.ellipsisStyle}}
+        {{enable-tooltip title=(if @maxDisplayWidth @label '') placement='top'}}>
     {{@label}}
   </span>
-  {{#if @disabled}}
-    <i class="far fa-times-circle" />
-  {{else}}
-    <i class="far fa-times-circle" role="button" {{on "click" this.onCrossClick}} />
-  {{/if}}
+  <i class="far fa-times-circle" role={{unless @disabled 'button'}} {{on "click" this.onCrossClick}} />
 </div>

@@ -33,11 +33,11 @@ export default {
 
     onRemove: {
       type: { required: true },
-      description: 'A callback that sends the click event on cross to the parent component'
+      description: 'A callback triggered when the cross icon has been clicked.'
     },
 
     disabled: {
-      description: 'Disabled chip style with no trigger onRemove event',
+      description: 'Disabled state of the component',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' }
@@ -47,8 +47,8 @@ export default {
       }
     },
 
-    displayMaxWidth: {
-      description: 'Set width for the ellipsis on label ',
+    maxDisplayWidth: {
+      description: 'Sets the max width of the component. If the label is too long to fit inside, an ellipsis will be shown and a tooltip with the full contents will be available.',
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: 'undefined' }
@@ -65,12 +65,12 @@ const defaultArgs = {
   label: 'Label',
   onRemove: action('onRemove'),
   disabled: false,
-  displayMaxWidth: 0
+  maxDisplayWidth: 0
 };
 
 const Template = (args) => ({
   template: hbs`
-    <OSS::Chip @skin={{this.skin}} @label={{this.label}} @onRemove={{this.onRemove}} @disabled={{this.disabled}} @displayMaxWidth={{this.displayMaxWidth}} />
+    <OSS::Chip @skin={{this.skin}} @label={{this.label}} @onRemove={{this.onRemove}} @disabled={{this.disabled}} @maxDisplayWidth={{this.maxDisplayWidth}} />
   `,
   context: args
 });

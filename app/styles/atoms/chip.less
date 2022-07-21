@@ -2,16 +2,22 @@
   display: flex;
   align-items: center;
   height: var(--spacing-px-24);
-  border-radius: 4px;
+  border-radius: var(--border-radius-sm);
   padding: var(--spacing-px-3) var(--spacing-px-6);
   gap: var(--spacing-px-6);
   color: var(--color-white);
   box-shadow: var(--box-shadow-sm), var(--box-shadow-sm);
 
+  .chip-ellipsis{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
   i {
     opacity: 0.4;
     &:hover{
-        opacity: 1;
+      opacity: 1;
     }
   }
 
@@ -25,7 +31,7 @@
   }
 
   &--success {
-    background-color:var(--color-success-500);
+    background-color: var(--color-success-500);
   }
 
 
@@ -38,7 +44,7 @@
     border-color: var(--color-gray-50);
     color: var(--color-gray-400);
     cursor: not-allowed;
-    i{
+    i {
       opacity: 1;
       cursor: not-allowed;
     }
