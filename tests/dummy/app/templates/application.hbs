@@ -1,4 +1,8 @@
 <div class="fx-row fx-gap-px-10 margin-md">
+  <OSS::PowerSelect @item={{this.superHeroes}} @selectedItem={{this.superHeroes}} @onChange={{this.onPowerSelectChange}} @onSearch={{this.onPowerSelectSearch}} />
+</div>
+
+<div class="fx-row fx-gap-px-10 margin-md">
   <OSS::Chip @label="Chip" @onRemove={{this.onCrossChipClick}} />
   <OSS::Chip @skin="default" @label="Chip" @onRemove={{this.onCrossChipClick}} />
   <OSS::Chip @skin="primary" @label="Chip" @onRemove={{this.onCrossChipClick}} />
