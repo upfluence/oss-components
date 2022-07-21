@@ -1,5 +1,13 @@
 <div class="fx-row fx-gap-px-10 margin-md">
-  <OSS::PowerSelect @item={{this.superHeroes}} @selectedItem={{this.superHeroes}} @onChange={{this.onPowerSelectChange}} @onSearch={{this.onPowerSelectSearch}} />
+  <OSS::PowerSelect @item={{this.superHeroes}} @selectedItem={{this.superHeroes}} @onChange={{this.onPowerSelectChange}}
+                    @onSearch={{this.onPowerSelectSearch}}>
+    <:selected-item as |selectedItem|>
+      {{selectedItem}}
+    </:selected-item>
+    <:option-item as |item|>
+      {{item}}
+    </:option-item>
+  </OSS::PowerSelect>
 </div>
 
 <div class="fx-row fx-gap-px-10 margin-md">
@@ -9,9 +17,12 @@
   <OSS::Chip @skin="success" @label="Chip" @onRemove={{this.onCrossChipClick}} />
   <OSS::Chip @skin="danger" @label="Chip" @onRemove={{this.onCrossChipClick}} />
   <OSS::Chip @skin="danger" @label="Chip" @disabled={{true}} @onRemove={{this.onCrossChipClick}} />
-  <OSS::Chip @skin="success" @label="Chip with a huge label" @disabled={{false}} @maxDisplayWidth={{100}} @onRemove={{this.onCrossChipClick}} />
-  <OSS::Chip @skin="danger" @label="Chip with a huge label" @disabled={{false}} @maxDisplayWidth={{160}} @onRemove={{this.onCrossChipClick}} />
-  <OSS::ChipNFish @skin="danger" @label="Chip with a huge label" @disabled={{true}} @onRemove={{this.onCrossChipClick}} @maxDisplayWidth={{50}} />
+  <OSS::Chip @skin="success" @label="Chip with a huge label" @disabled={{false}} @maxDisplayWidth={{100}}
+             @onRemove={{this.onCrossChipClick}} />
+  <OSS::Chip @skin="danger" @label="Chip with a huge label" @disabled={{false}} @maxDisplayWidth={{160}}
+             @onRemove={{this.onCrossChipClick}} />
+  <OSS::ChipNFish @skin="danger" @label="Chip with a huge label" @disabled={{true}} @onRemove={{this.onCrossChipClick}}
+                  @maxDisplayWidth={{50}} />
 </div>
 
 <div class="fx-row fx-gap-px-10 margin-md">
@@ -40,13 +51,15 @@
       </:option>
     </OSS::Select>
 
-    <OSS::Select @value={{this.selectedItem}} @items={{this.items}} @onChange={{this.onSelect}} @errorMessage="This is an error">
+    <OSS::Select @value={{this.selectedItem}} @items={{this.items}} @onChange={{this.onSelect}}
+                 @errorMessage="This is an error">
       <:option as |item|>
         {{item.name}}
       </:option>
     </OSS::Select>
 
-    <OSS::Select @value={{this.selectedItem}} @items={{this.items}} @onChange={{this.onSelect}} @successMessage="It works">
+    <OSS::Select @value={{this.selectedItem}} @items={{this.items}} @onChange={{this.onSelect}}
+                 @successMessage="It works">
       <:option as |item|>
         {{item.name}}
       </:option>
@@ -66,17 +79,17 @@
                       @onChange={{this.onCurrencyInputChange}} />
 </div>
 <div class="fx-row fx-1 margin-md">
-  <OSS::CurrencyInput @currency={{this.currency}} @value={{this.currencyValue}}
-                      @onChange={{this.onCurrencyInputChange}} @onlyCurrency={{true}} />
+  <OSS::CurrencyInput @currency={{this.currency}} @value={{this.currencyValue}} @onChange={{this.onCurrencyInputChange}}
+                      @onlyCurrency={{true}} />
 </div>
 <div class="fx-row fx-1 margin-md">
   <div class="fx-col">
-    <OSS::CurrencyInput @currency={{this.currencyOnly}} @onChange={{this.onCurrencyOnlyChange}} @onlyCurrency={{true}} />
+    <OSS::CurrencyInput @currency={{this.currencyOnly}} @onChange={{this.onCurrencyOnlyChange}}
+                        @onlyCurrency={{true}} />
   </div>
 </div>
 <div class="fx-row fx-1 margin-md">
-  <OSS::ArrayInput @values={{this.superHeroes}}
-                   @onChange={{this.updateSuperHeroes}} class="fx-1"
+  <OSS::ArrayInput @values={{this.superHeroes}} @onChange={{this.updateSuperHeroes}} class="fx-1"
                    data-control-name="mailing-edit-template-ccs-input" />
 </div>
 <div class="fx-row fx-gap-px-12 margin-md">
@@ -109,12 +122,11 @@
   <OSS::Button @label="Error" @size="md" {{on "click" (fn this.triggerToast "error")}} />
 </div>
 <div class="fx-col fx-gap-px-12 margin-md">
-  <OSS::CodeBlock @content={{this.code4CodeBlock}} @scrollable={{true}} @copyable={{true}}
-                  @collapseHeight={{200}} @onCopyMessage="Copied to clipboard!" />
+  <OSS::CodeBlock @content={{this.code4CodeBlock}} @scrollable={{true}} @copyable={{true}} @collapseHeight={{200}}
+                  @onCopyMessage="Copied to clipboard!" />
 </div>
 <div class="fx-col fx-gap-px-12 margin-md">
-  <OSS::Button @skin="primary" @size="md" @label="Open MODAL" @icon="fa fa-unicorn"
-               {{on "click" this.openModal}} />
+  <OSS::Button @skin="primary" @size="md" @label="Open MODAL" @icon="fa fa-unicorn" {{on "click" this.openModal}} />
   {{#if this.showModal}}
     <OSS::ModalDialog @title="Example modal" @subtitle="subtitle" @close={{this.closeModal}} @size="md">
       <:content>
