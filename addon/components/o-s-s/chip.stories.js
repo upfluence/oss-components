@@ -48,7 +48,8 @@ export default {
     },
 
     maxDisplayWidth: {
-      description: 'Sets the max width of the component. If the label is too long to fit inside, an ellipsis will be shown and a tooltip with the full contents will be available.',
+      description:
+        'Sets the max width of the component. If the label is too long to fit inside, an ellipsis will be shown and a tooltip with the full contents will be available.',
       table: {
         type: { summary: 'number' },
         defaultValue: { summary: 'undefined' }
