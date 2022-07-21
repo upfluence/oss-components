@@ -86,13 +86,13 @@ module('Integration | Component | o-s-s/chip', function (hooks) {
     test('When clicking on the close icon, the component triggers the @onRemove method', async function (assert) {
       await render(hbs`<OSS::Chip @label={{this.label}} @onRemove={{this.onRemove}} />`);
       await click('.upf-chip i');
-      assert.true(this.onRemove.notCalled);
+      assert.true(this.onRemove.calledOnce);
     });
 
     test('When @disabled is true and clicking on the close icon, the component no triggers the @onRemove method', async function (assert) {
       await render(hbs`<OSS::Chip @label={{this.label}} @onRemove={{this.onRemove}} @disabled={{true}} />`);
       await click('.upf-chip i');
-      assert.false(this.onRemove.calledOnce);
+      assert.true(this.onRemove.notCalled);
     });
   });
 
