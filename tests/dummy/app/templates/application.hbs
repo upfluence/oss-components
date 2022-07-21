@@ -1,5 +1,5 @@
 <div class="fx-row fx-gap-px-10 margin-md">
-  <OSS::PowerSelect @item={{this.superHeroes}} @selectedItem={{this.superHeroes}} @onChange={{this.onPowerSelectChange}}
+  <OSS::PowerSelect @items={{this.superHeroes}} @selectedItems={{this.superHeroes}} @onChange={{this.onPowerSelectChange}}
                     @onSearch={{this.onPowerSelectSearch}}>
     <:selected-item as |selectedItem|>
       {{selectedItem}}
