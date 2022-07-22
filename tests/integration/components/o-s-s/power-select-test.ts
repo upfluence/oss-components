@@ -52,9 +52,9 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
       });
 
       await render(hbs`
-        <OSS::PowerSelect @onSearch={{this.onSearch}}>
+        <OSS::PowerSelect @selectedItems={{this.selectedItems}} @onSearch={{this.onSearch}}>
           <:selected-item as |selectedItem|>
-            {{selectedItem.name}}
+            {{selectedItem}}
           </:selected-item>
         </OSS::PowerSelect>
       `);
@@ -77,9 +77,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
         </OSS::PowerSelect>
       `);
 
-      const domTags = findAll('.input-array-tag');
-      assert.dom(domTags[0]).hasText('value1');
-      assert.dom(domTags[1]).hasText('value2');
+      assert.dom('.array-input-container').hasText('value1 value2');
     });
 
     test('Passing empty @selectedItems parameter displays nothing', async function (assert) {
@@ -144,24 +142,6 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
       this.selectedItems = ['value1', 'value2'];
       this.items = ['value1', 'value2'];
       this.onChange = onChange;
-    });
-
-    test('deleting selected item triggers onChange with delete operation', async function (assert) {
-      await render(hbs`
-        <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
-                          @onSearch={{this.onSearch}} @onChange={{this.onChange}}>
-          <:selected-item as |selectedItem|>
-            {{selectedItem}}
-          </:selected-item>
-          <:option-item as |item|>
-            {{item}}
-          </:option-item>
-        </OSS::PowerSelect>
-      `);
-
-      await click('.input-array-tag:nth-child(2) i');
-
-      assert.ok(this.onChange.calledWith('value2', 'deletion'));
     });
 
     test('selecting item triggers onChange with selection operation', async function (assert) {

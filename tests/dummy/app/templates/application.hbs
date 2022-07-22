@@ -1,8 +1,8 @@
 <div class="fx-row fx-gap-px-10 margin-md">
-  <OSS::PowerSelect @items={{this.superHeroes}} @selectedItems={{this.superHeroes}} @onChange={{this.onPowerSelectChange}}
-                    @onSearch={{this.onPowerSelectSearch}}>
-    <:selected-item as |selectedItem|>
-      {{selectedItem}}
+  <OSS::PowerSelect @items={{this.superHeroes}} @selectedItems={{this.superHeroes}}
+                    @onChange={{this.onPowerSelectChange}} @onSearch={{this.onPowerSelectSearch}}>
+    <:selected-item as |selectedProduct|>
+      <OSS::Chip @label={{selectedProduct}} @onRemove={{fn this.onPowerSelectChange }} @maxDisplayWidth={{100}} />
     </:selected-item>
     <:option-item as |item|>
       {{item}}

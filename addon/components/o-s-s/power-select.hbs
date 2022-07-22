@@ -2,14 +2,9 @@
      {{did-insert (fn this.ensureBlockPresence (has-block "selected-item") (has-block "option-item"))}}>
   <div class="upf-power-select__array-container margin-bottom-xxx-sm">
     <div class="array-input-container {{if @selectedItems 'fx-row fx-xalign-center' 'fx-col fx-malign-center'}}"
-      {{scroll-shadow color="field"}}>
+         {{scroll-shadow color="field"}}>
       {{#each @selectedItems as |selectedItem|}}
-        {{!-- <div class="input-array-tag fx-row fx-xalign-center">
-          {{yield selectedItem to="selected-item"}}
-          <i class="fa fa-remove margin-left-xxx-sm text-color-blue-gray" role="button"
-            {{on "click" (fn this.removeItem selectedItem)}}></i>
-        </div> --}}
-        <OSS::Chip @label={{selectedItem}} @onRemove={{fn this.removeItem selectedItem}} />
+        {{yield selectedItem to="selected-item"}}
       {{else}}
         <span class="padding-left-xx-sm text-size-5 text-color-default-light">
           {{this.placeholder}}
