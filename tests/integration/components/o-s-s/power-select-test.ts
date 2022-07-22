@@ -69,7 +69,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}}>
           <:selected-item as |selectedItem|>
-            {{selectedItem}}
+            <span>{{selectedItem}}</span>
           </:selected-item>
           <:option-item as |item|>
             {{item}}
@@ -77,7 +77,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
         </OSS::PowerSelect>
       `);
 
-      const domTags = findAll('.input-array-tag');
+      const domTags = findAll('.array-input-container span');
       assert.dom(domTags[0]).hasText('value1');
       assert.dom(domTags[1]).hasText('value2');
     });
@@ -87,7 +87,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}}>
           <:selected-item as |selectedItem|>
-            {{selectedItem}}
+            <span id="selectedItemTest">{{selectedItem}}</span>
           </:selected-item>
           <:option-item as |item|>
             {{item}}
@@ -95,7 +95,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
         </OSS::PowerSelect>
       `);
 
-      assert.dom('.input-array-tag').doesNotExist();
+      assert.dom('.array-input-container #selectedItemTest').doesNotExist();
     });
 
     test('Passing empty @selectedItems and @placeholder parameters displays placeholder', async function (assert) {
@@ -144,24 +144,6 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
       this.selectedItems = ['value1', 'value2'];
       this.items = ['value1', 'value2'];
       this.onChange = onChange;
-    });
-
-    test('deleting selected item triggers onChange with delete operation', async function (assert) {
-      await render(hbs`
-        <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
-                          @onSearch={{this.onSearch}} @onChange={{this.onChange}}>
-          <:selected-item as |selectedItem|>
-            {{selectedItem}}
-          </:selected-item>
-          <:option-item as |item|>
-            {{item}}
-          </:option-item>
-        </OSS::PowerSelect>
-      `);
-
-      await click('.input-array-tag:nth-child(2) i');
-
-      assert.ok(this.onChange.calledWith('value2', 'deletion'));
     });
 
     test('selecting item triggers onChange with selection operation', async function (assert) {

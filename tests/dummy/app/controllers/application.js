@@ -94,6 +94,16 @@ export default class ApplicationController extends Controller {
   }
 
   @action
+  onPowerSelectChange(item, operation) {
+    console.log('onPowerSelectChange :', item, operation);
+  }
+
+  @action
+  onPowerSelectSearch(keyword) {
+    console.log('onPowerSelectSearch :', keyword);
+  }
+
+  @action
   onPhoneNumberChange(prefix, phoneNumber) {
     console.log('onPhoneNumberChange', prefix, phoneNumber);
     this.phonePrefix = prefix;
