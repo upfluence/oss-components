@@ -94,7 +94,7 @@ export default class ApplicationController extends Controller {
   }
 
   @action
-  onPowerSelectChange(item,operation) {
+  onPowerSelectChange(item, operation) {
     console.log('onPowerSelectChange :', item, operation);
   }
 
