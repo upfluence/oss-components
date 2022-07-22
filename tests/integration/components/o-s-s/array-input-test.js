@@ -81,7 +81,7 @@ module('Integration | Component | OSS::ArrayInput', function (hooks) {
       assert.ok(validator.calledWith('hashtag'));
       assert.ok(validator.returned(true));
       assert.dom('.upf-chip').exists();
-      assert.dom('.array-input-container').hasText('hashtag');
+      assert.dom('.upf-chip').hasText('hashtag');
     });
 
     test('WHEN the validator is falsy, the value is not added', async function (assert) {

@@ -69,7 +69,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}}>
           <:selected-item as |selectedItem|>
-            {{selectedItem}}
+            <span>{{selectedItem}}</span>
           </:selected-item>
           <:option-item as |item|>
             {{item}}
@@ -77,7 +77,9 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
         </OSS::PowerSelect>
       `);
 
-      assert.dom('.array-input-container').hasText('value1 value2');
+      const domTags = findAll('.array-input-container span');
+      assert.dom(domTags[0]).hasText('value1');
+      assert.dom(domTags[1]).hasText('value2');
     });
 
     test('Passing empty @selectedItems parameter displays nothing', async function (assert) {
@@ -85,7 +87,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}}>
           <:selected-item as |selectedItem|>
-            {{selectedItem}}
+            <span id="selectedItemTest">{{selectedItem}}</span>
           </:selected-item>
           <:option-item as |item|>
             {{item}}
@@ -93,7 +95,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
         </OSS::PowerSelect>
       `);
 
-      assert.dom('.upf-chip').doesNotExist();
+      assert.dom('.array-input-container #selectedItemTest').doesNotExist();
     });
 
     test('Passing empty @selectedItems and @placeholder parameters displays placeholder', async function (assert) {
