@@ -52,7 +52,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
       });
 
       await render(hbs`
-        <OSS::PowerSelect @selectedItems={{this.selectedItems}} @onSearch={{this.onSearch}}>
+        <OSS::PowerSelect @onSearch={{this.onSearch}}>
           <:selected-item as |selectedItem|>
             {{selectedItem.name}}
           </:selected-item>
