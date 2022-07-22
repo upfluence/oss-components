@@ -120,7 +120,6 @@ module('Integration | Component | OSS::ArrayInput', function (hooks) {
     this.loadedValues = ['value1', 'value2'];
     await render(hbs`<OSS::ArrayInput @values={{this.loadedValues}} />`);
     let domTagsRemove = findAll('.upf-chip');
-    console.log(domTagsRemove);
     assert.equal(domTagsRemove.length, 2);
     await click('.upf-chip i');
     domTagsRemove = findAll('.upf-chip');
