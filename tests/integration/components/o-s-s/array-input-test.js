@@ -58,7 +58,7 @@ module('Integration | Component | OSS::ArrayInput', function (hooks) {
       await fillInputAndValidate();
       assert.ok(onChange.calledWith(['keyword']));
       await triggerKeyEvent('.array-input-container input', 'keydown', 'Backspace', { code: 'Backspace' });
-      assert.dom('.input-array-tag').doesNotExist();
+      assert.dom('.upf-chip').doesNotExist();
       assert.ok(onChange.calledWith([]));
     });
   });
@@ -98,7 +98,7 @@ module('Integration | Component | OSS::ArrayInput', function (hooks) {
     test('If there are no tags, nothing happens', async function (assert) {
       await render(hbs`<OSS::ArrayInput />`);
       await triggerKeyEvent('.array-input-container input', 'keydown', 'Backspace', { code: 'Backspace' });
-      assert.dom('.input-array-tag').doesNotExist();
+      assert.dom('.upf-chip').doesNotExist();
       assert.dom('.array-input-container').exists();
       assert.dom('.array-input-container input').exists();
     });

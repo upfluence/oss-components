@@ -54,7 +54,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
       await render(hbs`
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @onSearch={{this.onSearch}}>
           <:selected-item as |selectedItem|>
-            {{selectedItem}}
+            {{selectedItem.name}}
           </:selected-item>
         </OSS::PowerSelect>
       `);
@@ -93,7 +93,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
         </OSS::PowerSelect>
       `);
 
-      assert.dom('.input-array-tag').doesNotExist();
+      assert.dom('.upf-chip').doesNotExist();
     });
 
     test('Passing empty @selectedItems and @placeholder parameters displays placeholder', async function (assert) {
