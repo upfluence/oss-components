@@ -112,7 +112,7 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
     });
   });
 
-  test('When clicking on the close icon, the component triggers the @onRemove method', async function (assert) {
+  test('When clicking on the close icon, the component triggers the @onSelection method', async function (assert) {
     this.onSelection = sinon.stub();
     this.tabArray.push({ label: 'Tab' });
     await render(hbs`<OSS::NavTab @tabArray={{this.tabArray}} @onSelection={{this.onSelection}} />`);
