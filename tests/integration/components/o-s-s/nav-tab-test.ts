@@ -85,7 +85,7 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
 
       assert.dom('.tab-container').exists();
       assert.dom('.tab-container .tab').exists();
-      assert.dom('.tab-content .iconNotif').exists();
+      assert.dom('.tab-content .fas.fa-circle').exists();
     });
 
     test('Add selected state on Tab', async function (assert) {
