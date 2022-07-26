@@ -1,6 +1,6 @@
 <div class="fx-row fx-1 tab-container">
   {{#each @tabArray as |tab|}}
-    <button class="fx-col tab {{if tab.selected "tab--selected"}} {{if tab.disabled "tab--disabled"}}"
+    <button type="button" class="fx-col tab {{if tab.selected "tab--selected"}} {{if tab.disabled "tab--disabled"}}"
             {{on "click" (fn this.onSelectTab tab)}} disabled={{tab.disabled}}>
       <div class="fx-row tab-content fx-xalign-center fx-gap-px-9">
         {{#if tab.icon}}
