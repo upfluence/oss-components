@@ -3,8 +3,6 @@ import { setupRenderingTest } from 'ember-qunit';
 import { click, render, setupOnerror } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import sinon from 'sinon';
-// import { render } from '@ember/test-helpers';
-// import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | o-s-s/nav-tab', function (hooks) {
   setupRenderingTest(hooks);
