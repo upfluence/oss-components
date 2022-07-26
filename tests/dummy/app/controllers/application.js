@@ -43,6 +43,18 @@ export default class ApplicationController extends Controller {
     ]
   };
 
+  tabArrayNavTab = [
+    { label: 'Tab', icon: 'far fa-thumbs-up' },
+    { label: 'Tab2', icon: 'far fa-thumbs-up' },
+    { label: 'Tab3' },
+    { icon: 'far fa-thumbs-up' },
+    { label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true },
+    { label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true },
+    { label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true, selected: true },
+    { label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true, disabled: true },
+    { label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true, selected: true, disabled: true }
+  ];
+
   @action
   openModal(e) {
     e.stopPropagation();
@@ -137,6 +149,11 @@ export default class ApplicationController extends Controller {
   @action
   countDownAction() {
     console.log('countDownAction');
+  }
+
+  @action
+  onSelectionNavTab() {
+    console.log('onSelectionNavTab');
   }
 }
 

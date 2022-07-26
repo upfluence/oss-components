@@ -1,0 +1,84 @@
+.tab-container {
+  .border-display {
+    align-self: flex-end;
+    height: 9px;
+    border-bottom: 1px solid var(--color-gray-200);
+  }
+
+  .tab {
+    color: var(--color-gray-400);
+
+    .border-display {
+      align-self: auto;
+    }
+
+    .tab-content {
+      align-items: center;
+      padding: var(--spacing-px-6) var(--spacing-px-18) var(--spacing-px-6) var(--spacing-px-18);
+      height: 34px;
+
+      span {
+        font-size: 14px;
+      }
+
+      i {
+        font-size: 12px;
+      }
+
+      .iconNotif {
+        height: 4px;
+        width: 4px;
+        border-radius: 2px;
+        background-color: var(--color-accent);
+      }
+
+      .infoCircle {
+        color: var(--color-gray-400);
+      }
+    }
+
+    &--selected {
+      color: var(--color-gray-900);
+      .border-display {
+        border-bottom: 2px solid var(--color-primary-500);
+      }
+
+      .tab-content .infoCircle {
+        color: var(--color-gray-900);
+      }
+    }
+
+    &--disabled {
+      pointer-events: none;
+      color: var(--color-gray-300);
+      .border-display {
+        border-bottom: 1px solid var(--color-gray-200);
+      }
+
+      .tab-content .infoCircle {
+        color: var(--color-gray-400);
+      }
+    }
+
+    &:hover {
+      cursor: pointer;
+      color: var(--color-gray-900);
+    }
+
+    &:focus {
+      outline: none;
+      color: var(--color-gray-900);
+    }
+
+    &:active {
+      color: var(--color-gray-900);
+      .border-display {
+        border-bottom: 2px solid var(--color-primary-500);
+      }
+
+      .infoCircle {
+        color: var(--color-gray-900);
+      }
+    }
+  }
+}
