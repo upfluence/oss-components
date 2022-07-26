@@ -25,7 +25,10 @@ export default class OSSNavTab extends Component<OSSNavTabArgs> {
       typeof args.onSelection === 'function'
     );
 
-    assert('[component][OSS::NavTab] The parameter @tabArray is mandatory', args.tabArray instanceof Array && args.tabArray.length>0);
+    assert(
+      '[component][OSS::NavTab] The parameter @tabArray is mandatory',
+      args.tabArray instanceof Array && args.tabArray.length > 0
+    );
 
     assert(
       '[component][OSS::NavTab] The @label or @icon parameter is mandatory for each element in @tabArray',
