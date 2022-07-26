@@ -1,8 +1,6 @@
 import hbs from 'htmlbars-inline-precompile';
 import { action } from '@storybook/addon-actions';
 
-const SkinTypes = ['default', 'primary', 'success', 'danger'];
-
 export default {
   title: 'Components/OSS::NavTab',
   component: 'NavTab',
