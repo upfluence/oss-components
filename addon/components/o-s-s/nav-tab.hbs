@@ -1,8 +1,8 @@
 <div class="fx-row fx-1 tab-container">
   {{#each @tabArray as |tab|}}
-    <div class="fx-col tab {{if tab.selected "tab--selected"}} {{if tab.disabled "tab--disabled"}}"
-         {{on "click" this.onSelectTab}} type="button" tabindex="0">
-      <div class="fx-row tab-content fx-gap-px-9">
+    <button class="fx-col tab {{if tab.selected "tab--selected"}} {{if tab.disabled "tab--disabled"}}"
+         {{on "click" (fn this.onSelectTab tab)}} disabled={{tab.disabled}}>
+      <div class="fx-row tab-content fx-xalign-center fx-gap-px-9">
         {{#if tab.icon}}
           <i class={{tab.icon}} />
         {{/if}}
@@ -10,14 +10,14 @@
           <span>{{tab.label}}</span>
         {{/if}}
         {{#if tab.infoCircle}}
-          <i class="far fa-info-circle infoCircle" />
+          <i class="far fa-info-circle" />
         {{/if}}
         {{#if tab.notificationDot}}
-          <div class="iconNotif" />
+          <i class="fas fa-circle font-color-accent text-size-1" />
         {{/if}}
       </div>
       <div class="border-display" />
-    </div>
+    </button>
   {{/each}}
   <div class="fx-col fx-1 border-display" />
 </div>

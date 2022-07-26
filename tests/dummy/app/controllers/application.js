@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { action } from '@ember/object';
+import { action, set } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { countries } from '@upfluence/oss-components/utils/country-codes';
@@ -43,7 +43,7 @@ export default class ApplicationController extends Controller {
     ]
   };
 
-  tabArrayNavTab = [
+  @tracked tabArrayNavTab = [
     { label: 'Tab', icon: 'far fa-thumbs-up' },
     { label: 'Tab2', icon: 'far fa-thumbs-up' },
     { label: 'Tab3' },
@@ -152,8 +152,15 @@ export default class ApplicationController extends Controller {
   }
 
   @action
-  onSelectionNavTab() {
-    console.log('onSelectionNavTab');
+  onSelectionNavTab(selectedTab) {
+    console.log('onSelectionNavTab : ', selectedTab);
+    this.tabArrayNavTab.forEach((element) => {
+      if (element === selectedTab) {
+        set(element, 'selected', true);
+      } else {
+        set(element, 'selected', false);
+      }
+    });
   }
 }
 

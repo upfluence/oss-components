@@ -1,8 +1,12 @@
 .tab-container {
+  button {
+    all: unset;
+  }
+
   .border-display {
     align-self: flex-end;
-    height: 9px;
-    border-bottom: 1px solid var(--color-gray-200);
+    height: var(--spacing-px-9);
+    border-bottom: 1px solid var(--color-border-default);
   }
 
   .tab {
@@ -13,7 +17,6 @@
     }
 
     .tab-content {
-      align-items: center;
       padding: var(--spacing-px-6) var(--spacing-px-18) var(--spacing-px-6) var(--spacing-px-18);
       height: 34px;
 
@@ -21,18 +24,7 @@
         font-size: 14px;
       }
 
-      i {
-        font-size: 12px;
-      }
-
-      .iconNotif {
-        height: 4px;
-        width: 4px;
-        border-radius: 2px;
-        background-color: var(--color-accent);
-      }
-
-      .infoCircle {
+      .far.fa-info-circle {
         color: var(--color-gray-400);
       }
     }
@@ -43,7 +35,7 @@
         border-bottom: 2px solid var(--color-primary-500);
       }
 
-      .tab-content .infoCircle {
+      .tab-content .far.fa-info-circle {
         color: var(--color-gray-900);
       }
     }
@@ -55,7 +47,7 @@
         border-bottom: 1px solid var(--color-gray-200);
       }
 
-      .tab-content .infoCircle {
+      .tab-content .far.fa-info-circle {
         color: var(--color-gray-400);
       }
     }
@@ -76,7 +68,7 @@
         border-bottom: 2px solid var(--color-primary-500);
       }
 
-      .infoCircle {
+      .far.fa-info-circle {
         color: var(--color-gray-900);
       }
     }

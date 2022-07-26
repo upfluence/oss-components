@@ -3,11 +3,11 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 
 interface OSSNavTabArgs {
-  onSelection(): void;
+  onSelection(selectedTab: TabDefinition): void;
   tabArray: TabDefinition[];
 }
 
-interface TabDefinition {
+export interface TabDefinition {
   icon?: string;
   label?: string;
   infoCircle?: boolean;
@@ -25,24 +25,16 @@ export default class OSSNavTab extends Component<OSSNavTabArgs> {
       typeof args.onSelection === 'function'
     );
 
-    assert('[component][OSS::NavTab] The parameter @tabArray is mandatory', args.tabArray);
-
-    let tabArrayValide = true;
-
-    args.tabArray.forEach((element: TabDefinition) => {
-      if (!element.label && !element.icon) {
-        tabArrayValide = false;
-      }
-    });
+    assert('[component][OSS::NavTab] The parameter @tabArray is mandatory', args.tabArray instanceof Array && args.tabArray.length>0);
 
     assert(
       '[component][OSS::NavTab] The @label or @icon parameter is mandatory for each element in @tabArray',
-      tabArrayValide
+      !args.tabArray.some((element: TabDefinition) => !element.label && !element.icon)
     );
   }
 
   @action
-  onSelectTab(): void {
-    this.args.onSelection();
+  onSelectTab(selectedTab: TabDefinition): void {
+    this.args.onSelection(selectedTab);
   }
 }
