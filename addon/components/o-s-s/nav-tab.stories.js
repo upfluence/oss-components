@@ -13,7 +13,7 @@ export default {
     tabArray: {
       type: { required: true },
       description:
-        'Array of TabDefinition which have a parameter: <br/> -icon?: string; <br/> -label?: string; <br/> -infoCircle?: boolean; <br/> -notificationDot?: boolean; <br/> -selected: boolean; <br/> -disabled: boolean; <br/> @label or @icon is mandatory for each element of tabArray'
+        'Array of TabDefinition which has the following parameters: <br/> -icon?: string; <br/> -label?: string; <br/> -infoCircle?: boolean; <br/> -notificationDot?: boolean; <br/> -selected: boolean; <br/> -disabled: boolean; <br/> @label or @icon is mandatory for each element of tabArray'
     }
   }
 };
@@ -35,7 +35,9 @@ const defaultArgs = {
 
 const Template = (args) => ({
   template: hbs`
-  <div class="background-color-white padding-px-6"><OSS::NavTab @onSelection={{this.onSelection}} @tabArray={{this.tabArray}} /></div>
+  <div class="background-color-white padding-px-6">
+    <OSS::NavTab @onSelection={{this.onSelection}} @tabArray={{this.tabArray}} />
+  </div>
   `,
   context: args
 });
