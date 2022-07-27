@@ -13,11 +13,13 @@ export default Component.extend({
   }),
 
   isChecked: computed('value', 'currentValue', 'disabled', function () {
-    return !this.disabled && this.value === this.currentValue;
+    return this.value === this.currentValue;
   }),
 
   click(e) {
     e.stopPropagation();
-    this.sendAction('onCheck', this.get('value'));
+    if (!this.disabled) {
+      this.onCheck(this.value);
+    }
   }
 });
