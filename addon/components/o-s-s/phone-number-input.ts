@@ -46,9 +46,9 @@ export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputAr
   }
 
   @action
-  onlyNumeric(event: KeyboardEvent): void {
+  onlyNumeric(event: KeyboardEvent | FocusEvent): void {
     const authorizedInputs = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift', 'Control'];
-    if (/^[0-9]$/i.test(event.key) || authorizedInputs.find((key: string) => key === event.key)) {
+    if (event instanceof FocusEvent || /^[0-9]$/i.test(event.key) || authorizedInputs.find((key: string) => key === event.key)) {
       this.args.onChange('+' + this.selectedCountry.countryCallingCodes[0], this.args.number);
     } else {
       event.preventDefault();
