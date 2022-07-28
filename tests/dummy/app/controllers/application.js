@@ -1,5 +1,5 @@
 import Controller from '@ember/controller';
-import { action } from '@ember/object';
+import { action, set } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { countries } from '@upfluence/oss-components/utils/country-codes';
@@ -42,6 +42,18 @@ export default class ApplicationController extends Controller {
       { content: '', class: 'upf-table__cell--action' }
     ]
   };
+
+  @tracked tabArrayNavTab = [
+    { label: 'Tab', icon: 'far fa-thumbs-up' },
+    { label: 'Tab2', icon: 'far fa-thumbs-up' },
+    { label: 'Tab3' },
+    { icon: 'far fa-thumbs-up' },
+    { label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true },
+    { label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true },
+    { label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true, selected: true },
+    { label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true, disabled: true },
+    { label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true, selected: true, disabled: true }
+  ];
 
   @action
   openModal(e) {
@@ -137,6 +149,18 @@ export default class ApplicationController extends Controller {
   @action
   countDownAction() {
     console.log('countDownAction');
+  }
+
+  @action
+  onSelectionNavTab(selectedTab) {
+    console.log('onSelectionNavTab : ', selectedTab);
+    this.tabArrayNavTab.forEach((element) => {
+      if (element === selectedTab) {
+        set(element, 'selected', true);
+      } else {
+        set(element, 'selected', false);
+      }
+    });
   }
 }
 

@@ -9,6 +9,9 @@
     </:option-item>
   </OSS::PowerSelect>
 </div>
+<div class="fx-row fx-gap-px-10 margin-md">
+  <OSS::NavTab @onSelection={{this.onSelectionNavTab}} @tabArray={{this.tabArrayNavTab}} />
+</div>
 
 <div class="fx-row fx-gap-px-10 margin-md">
   <OSS::Chip @label="Chip" @onRemove={{this.onCrossChipClick}} />
