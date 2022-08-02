@@ -1,0 +1,36 @@
+.upf-infinite-select {
+  height: 100%;
+  width: 100%;
+
+  ul {
+    padding: 0;
+  }
+}
+
+.upf-infinite-select--absolute {
+  .upf-floating-menu;
+  height: inherit;
+}
+
+.upf-infinite-select__container {
+  position: relative;
+  margin-bottom: @spacing-xx-sm;
+}
+
+.upf-infinite-select__items-container {
+  margin: 0;
+  overflow: hidden auto;
+  overscroll-behavior: contain;
+}
+
+.upf-infinite-select__item {
+  .upf-floating-menu__item;
+
+  &:not(:first-child)  {
+    margin-top: var(--spacing-px-3);
+  }
+
+  &:hover {
+    background-color: var(--color-gray-100);
+  }
+}

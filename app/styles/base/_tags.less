@@ -1,0 +1,50 @@
+@import '../core/_colors';
+@import '../core/_variables';
+@import '../mixins/_coloring';
+@import '../utilities/_typography';
+
+/*
+ * Tags
+ * Tags are used to provide additional informations about something.
+ */
+
+.upf-tag {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--spacing-px-24);
+  border-radius: 12px;
+  padding: 0 var(--spacing-px-9);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  gap: var(--spacing-px-6);
+
+  span {
+    .text-ellipsis-80;
+  }
+
+
+  &--regular {
+    background-color: var(--color-primary-50);
+    color: var(--color-primary-500);
+  }
+
+  &--success {
+    background-color:var(--color-success-50);
+    color: var(--color-success-500);
+  }
+
+  &--alert {
+    background-color: var(--color-warning-50);
+    color: var(--color-warning-500);
+  }
+
+  &--neutral,
+  &--inactive {
+    background-color: var(--color-gray-100);
+  }
+
+  &--critical {
+    background-color: var(--color-error-50);
+    color: var(--color-error-500);
+  }
+}

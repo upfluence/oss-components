@@ -1,0 +1,43 @@
+:root {
+  --box-shadow-lg: 0 25px 50px -10px #1B1E2120;
+  --box-shadow-md: 0 10px 15px -3px #1B1E2110;
+  --box-shadow-sm: 0 1px 3px 0 #1B1E2110;
+
+
+  --color-backdrop: #1B1E2160;
+  --color-border-default: var(--color-gray-200);
+  --color-content-separator: var(--color-gray-100);
+
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+
+  //
+  // Spacers — Because sometimes we need to let elements breathe
+  //
+  --spacing-px-3: 3px;
+  --spacing-px-9: 9px;
+  .generate-spacing-vars(60);
+  .generate-spacing-vars(@n, @i: 0) when (@i =< @n) {
+    --spacing-px-@{i}: calc(@i * 1px);
+    .margin {
+      &-px-@{i} { margin: calc(@i * 1px); }
+      &-left-px-@{i} { margin-left: calc(@i * 1px); }
+      &-right-px-@{i} { margin-right: calc(@i * 1px); }
+      &-top-px-@{i} { margin-top: calc(@i * 1px); }
+      &-bottom-px-@{i} { margin-bottom: calc(@i * 1px); }
+    }
+    .padding {
+      &-px-@{i} { padding: calc(@i * 1px); }
+      &-left-px-@{i} { padding-left: calc(@i * 1px); }
+      &-right-px-@{i} { padding-right: calc(@i * 1px); }
+      &-top-px-@{i} { padding-top: calc(@i * 1px); }
+      &-bottom-px-@{i} { padding-bottom: calc(@i * 1px); }
+    }
+
+    .generate-spacing-vars(@n, (@i + 6));
+  }
+}
+
+.box-shadow-lg { box-shadow: var(--box-shadow-lg); }
+.box-shadow-md { box-shadow: var(--box-shadow-md); }
+.box-shadow-sm { box-shadow: var(--box-shadow-sm); }

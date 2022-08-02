@@ -1,0 +1,72 @@
+@import '../core/_colors';
+@import '../core/_variables';
+@import '../mixins/_buttons';
+
+.modal {
+  .modal-content {
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
+    border-radius: @default-radius;
+    border: none;
+
+    .modal-header {
+      background-color: @upf-gray-light;
+      border-radius: @default-radius @default-radius 0 0;
+      box-shadow: none;
+      color: @upf-primary-bright-purple;
+      text-align: center;
+
+      &.modal-header__borderless {
+        border: 0;
+      }
+
+      .modal-title, h4 { // Please use the .modal-title class and not H4.
+        .text-size-5;
+
+        display: inline-block;
+        color: @upf-primary-rock-blue;
+      }
+
+      button {
+        color: @upf-primary-black;
+      }
+    }
+
+    .modal-body {
+      padding: @spacing-x-sm;
+    }
+
+    .modal-footer {
+      border-radius: 0 0 @default-radius @default-radius;
+      text-align: center;
+      border-top: 0;
+    }
+  }
+}
+
+.modal-dialog--centered {
+  transform: translate(0, -50%) !important;
+  top: 50% !important;
+  margin: 0 auto !important;
+}
+
+.modal-x-lg {
+  width: 1300px;
+}
+
+@media screen and (max-width: 1030px) {
+  .modal-lg {
+    width: 600px;
+  }
+}
+
+@media screen and (min-width: 1030px) and (max-width: 1060px) {
+  .modal-lg {
+    width: 800px;
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .modal-lg {
+    width: 75vw;
+  }
+}

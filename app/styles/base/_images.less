@@ -1,0 +1,51 @@
+/*
+ * Images
+ * All image styles.
+ */
+
+.squared-image(@size) {
+  width: @size;
+  height: @size;
+}
+
+.upf-image {
+  border-radius: 50%;
+}
+
+div.upf-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  flex: none;
+}
+
+.upf-image--alt {
+  background-color: lighten(@upf-gray, 10%);
+  color: @upf-primary-white;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  text-transform: uppercase;
+}
+
+
+.upf-image--round-24 {
+  .squared-image(24px);
+  font-size: 14/@rem;
+}
+
+.upf-image--round-36 {
+  .squared-image(36px);
+  font-size: 16/@rem;
+}
+
+.upf-image--round-48 {
+  .squared-image(48px);
+  font-size: 18/@rem;
+}
+
+.upf-image--round-96  { .squared-image(96px);  }
+.upf-image--round-144 { .squared-image(144px); }
+.upf-image--round-288 { .squared-image(288px); }
