@@ -1,17 +1,26 @@
-@text_ellipsis_step: 20;
+// Deprecated in favor of flexbox-based ellipsis.
+//
+.for(@list, @code) {
+  & {
+    .loop(@i:1) when (@i =< length(@list)) {
+      @value: extract(@list, @i);
 
-.text-ellipsis(@max-width) {
-  .text-ellipsis-@{max-width} {
-    max-width: ~"@{max-width}px";
+      @code();
+
+      .loop(@i + 1);
+    }
+
+    .loop();
+  }
+}
+
+@ellipsis-breakpoints: 80, 100, 120, 140, 160,  180, 200, 260, 300, 340;
+
+.for(@ellipsis-breakpoints, {
+  .text-ellipsis-@{value} {
+    max-width: ~"@{value}px";
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-}
-
-.text-ellipsis-loop(@start, @end) when (@end >= @start) {
-  .text-ellipsis(@start);
-  .text-ellipsis-loop(@start + @text_ellipsis_step, @end);
-}
-
-.text-ellipsis-loop(80, 100);
+});
