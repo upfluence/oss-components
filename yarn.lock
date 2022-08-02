@@ -4047,16 +4047,6 @@
     "@typescript-eslint/types" "5.0.0"
     eslint-visitor-keys "^3.0.0"
 
-"@upfluence/oss@^3.x":
-  version "3.2.3"
-  resolved "https://npm.pkg.github.com/download/@upfluence/oss/3.2.3/1d510edc7f94c5ba63023f69fed0aaec6b877dd4#1d510edc7f94c5ba63023f69fed0aaec6b877dd4"
-  integrity sha512-dKAiWlBa6b7RCFKy7ngEYGRJxQfLz9lGfw4gvz0U4Zi+TElDtuljZb6NUKk8cFNmRTxNK7RCCsvNCO5TFOC4cA==
-  dependencies:
-    "@fortawesome/fontawesome-free" "^5.x"
-    bootstrap "^3.3.7"
-    countdown.js "git+https://git@github.com/gumroad/countdown.js.git"
-    money-formatter "^0.1.4"
-
 "@webassemblyjs/ast@1.9.0":
   version "1.9.0"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.9.0.tgz#bd850604b4042459a5a41cd7d338cbed695ed964"
