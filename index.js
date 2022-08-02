@@ -55,6 +55,16 @@ module.exports = {
       trees.push(publicTree);
     }
 
+    let publicAssets = ['images', 'fonts', 'upf-icons'];
+    publicAssets.forEach((assetType) => {
+      trees.push(
+        new Funnel(`node_modules/@upfluence/oss-components/public/assets/${assetType}/`, {
+          srcDir: '/',
+          destDir: `assets/${assetType}`
+        })
+      );
+    });
+
     trees.push(
       new Funnel(`${faPath}/webfonts/`, {
         srcDir: '/',
