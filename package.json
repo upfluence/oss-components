@@ -44,7 +44,11 @@
     "ember-named-blocks-polyfill": "^0.2.4",
     "ember-star-rating": "^3.0.0",
     "ember-truth-helpers": "^3.0.0",
-    "ion-rangeslider": "^2.3.1"
+    "ion-rangeslider": "^2.3.1",
+    "@fortawesome/fontawesome-free": "^5.x",
+    "bootstrap": "^3.3.7",
+    "countdown.js": "git+https://git@github.com/gumroad/countdown.js.git",
+    "money-formatter": "^0.1.4"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
