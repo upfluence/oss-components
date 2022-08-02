@@ -12,9 +12,7 @@ module.exports = {
     '../addon/components/**/*.stories.@(js|jsx|ts|tsx)',
     '../addon/modifiers/**/*.stories.mdx',
     '../addon/modifiers/**/*.stories.@(js|jsx|ts|tsx)',
-    '../app/styles/**/*.stories.mdx',
-    './oss/less/**/*.stories.mdx',
-    './oss/less/**/*.stories.@(js|jsx|ts|tsx)'
+    '../app/styles/**/*.stories.mdx'
   ],
 
   addons: [
@@ -40,7 +38,6 @@ module.exports = {
     });
 
     config.resolve.alias = Object.assign(config.resolve.alias, {
-      'upfluence-oss.less': path.resolve(root, '.storybook/oss/less/upfluence-oss.less'),
       'bootstrap.less': path.resolve(node_modules, 'bootstrap/less/bootstrap')
     });
 
