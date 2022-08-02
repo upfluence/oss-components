@@ -1,0 +1,13 @@
+<svg class='upf-icon upf-icon-paper-plane' width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g stroke="#4C00FF" stroke-width="2">
+            <g transform="translate(0.500000, -6.000000)">
+                <path d="M16.0257502,6.8030581 L22.0702824,24.4823379 C22.3758105,25.3759581 21.8990676,26.3480598 21.0054475,26.6535879 C20.827362,26.7144751 20.6404465,26.7455454 20.45224,26.7455454 L8.36317547,26.7455454 C7.41876855,26.7455454 6.65317547,25.9799523 6.65317547,25.0355454 C6.65317547,24.8473389 6.68424571,24.6604233 6.74513299,24.4823379 L12.7896652,6.8030581 C13.0951933,5.90943792 14.067295,5.43269505 14.9609152,5.73822311 C15.461457,5.90935798 15.8546153,6.30251627 16.0257502,6.8030581 Z" id="Triangle-4" transform="translate(14.407293, 14.892798) rotate(47.000000) translate(-14.407293, -14.892798) "></path>
+                <path d="M4.74545455,22.175 L4.74545455,24.7701084 C4.74545455,25.7145153 5.51104762,26.4801084 6.45545455,26.4801084 L8.43636364,26.4801084" id="Path-17" stroke-linecap="round" stroke-linejoin="round"></path>
+                <path d="M20.5,9.5 L5.27272727,21.65" id="Line" stroke-linecap="square"></path>
+            </g>
+        </g>
+    </g>
+</svg>
