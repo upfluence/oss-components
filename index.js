@@ -27,14 +27,13 @@ module.exports = {
       lessOptions.paths = [];
     }
 
-    lessOptions.paths.push('node_modules/bootstrap/less', 'node_modules/@upfluence/oss/less');
+    lessOptions.paths.push('node_modules/bootstrap/less');
 
     app.options.lessOptions = lessOptions;
   },
 
   included: function (app) {
     this._super.included.apply(this, app);
-    this.hasFontAwesomePro = Object.keys(app.dependencies()).includes('@fortawesome/fontawesome-pro');
 
     this._registerLessDependencies(app);
 
@@ -48,17 +47,19 @@ module.exports = {
   },
 
   treeForPublic() {
-    let publicTree = this._super.treeForPublic.apply(this, arguments);
-    let trees = [];
+    const publicTree = this._super.treeForPublic.apply(this, arguments);
+    const trees = [];
 
     if (publicTree) {
       trees.push(publicTree);
     }
 
-    let publicAssets = ['images', 'fonts', 'upf-icons'];
+    const publicAssets = ['images', 'fonts', 'upf-icons'];
+    const srcAssetsPath =
+      this.modulePrefix === '@upfluence/oss-components' ? '' : 'node_modules/@upfluence/oss-components';
     publicAssets.forEach((assetType) => {
       trees.push(
-        new Funnel(`node_modules/@upfluence/oss-components/public/assets/${assetType}/`, {
+        new Funnel(`${srcAssetsPath}public/assets/${assetType}/`, {
           srcDir: '/',
           destDir: `assets/${assetType}`
         })
