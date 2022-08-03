@@ -24,7 +24,7 @@
     "test": "npm-run-all lint:* test:*",
     "test:ember": "ember test --silent -r dot",
     "test:ember-compatibility": "ember try:each",
-    "storybook": "cp -R .storybook/oss/fonts .storybook/oss/less/core && start-storybook -p 6006 -s dist",
+    "storybook": "cp -R public/assets/fonts app/styles/core && start-storybook -p 6006 -s dist",
     "build-storybook": "build-storybook -s dist",
     "prepack": "ember ts:precompile",
     "install-pre-push-hook": "cp ./scripts/pre-push ./.git/hooks/pre-push",
@@ -33,7 +33,6 @@
   "dependencies": {
     "@embroider/macros": "^0.47.2",
     "@fortawesome/fontawesome-pro": "^5.15.4",
-    "@upfluence/oss": "^3.x",
     "babel-plugin-debug-macros": "^0.3.1",
     "ember-cli-babel": "^7.19.0",
     "ember-cli-htmlbars": "^4.3.1",
@@ -44,7 +43,11 @@
     "ember-named-blocks-polyfill": "^0.2.4",
     "ember-star-rating": "^3.0.0",
     "ember-truth-helpers": "^3.0.0",
-    "ion-rangeslider": "^2.3.1"
+    "ion-rangeslider": "^2.3.1",
+    "@fortawesome/fontawesome-free": "^5.x",
+    "bootstrap": "^3.3.7",
+    "countdown.js": "git+https://git@github.com/gumroad/countdown.js.git",
+    "money-formatter": "^0.1.4"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",

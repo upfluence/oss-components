@@ -1,3 +1,0 @@
-[submodule ".storybook/oss"]
-	path = .storybook/oss
-	url = git@github.com:upfluence/oss.git

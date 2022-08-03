@@ -47,8 +47,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        with:
-          submodules: true
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -69,8 +67,7 @@ jobs:
         run: ./node_modules/ember-cli/bin/ember build --silent
       - name: Webpack assets workaround fix
         run: |
-          cp -R .storybook/oss/images .storybook/oss/less/layouts/
-          cp -R .storybook/oss/fonts .storybook/oss/less/core/
+          cp -R public/assets/fonts app/styles/core
       - name: Storybook Build
         run: yarn build-storybook --quiet
       - name: Deploy website

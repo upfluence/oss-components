@@ -1,0 +1,51 @@
+/*
+ * This files holds all the primary colors, plus their variants (in light and
+ * dark).
+ *
+ * Additionally to those, it also sets some colors that are used accross the
+ * the apps to provide feedbacks such as Errors, Success, or Alerts.
+ */
+
+//
+// (Brand) Primary Colors
+// These are the colors defined by the Upfluence Visual Design Guidelines.
+// --------------------------------------------------
+
+@upf-primary-bright-purple: #0d0de6;
+@upf-primary-dark-purple: #060666;
+@upf-primary-orange: #fe2518;
+@upf-primary-rock-blue: #8a95a0;
+@upf-primary-black: #000000;
+@upf-primary-white: #ffffff;
+
+// (Brand) Primary Colors Variations
+// These are variations of the primary colors. They can be used when an element
+// needs some to be slightly different, for example, for announcing its state.
+// One use case could be to give a button a different look depending on its
+// state: normal, on hover/active, or disabled.
+// --------------------------------------------------
+
+@upf-primary-orange-light: lighten(@upf-primary-orange, 10%);
+@upf-primary-orange-dark: darken(@upf-primary-orange, 10%);
+@upf-bright-orange: #ff4331;
+@upf-primary-bright-purple-light: lighten(@upf-primary-bright-purple, 10%);
+@upf-primary-bright-purple-dark: #1B00B7;
+@upf-primary-rock-blue-light: lighten(@upf-primary-rock-blue, 10%);
+@upf-primary-rock-blue-dark: darken(@upf-primary-rock-blue, 10%);
+
+// Status Colors
+// These are the colors used in feedbacks provided to
+// the user: informations, help, error, success, alerts, etc.
+// --------------------------------------------------
+
+@upf-feedback-success: #22B473;
+@upf-feedback-error: @upf-primary-orange;
+@upf-feedback-alert: #eda448;
+@upf-feedback-info: @upf-primary-rock-blue;
+
+// Grays
+// --------------------------------------------------
+
+@upf-gray: #c9c9c9;
+@upf-gray-light: #f9f9f9;
+@upf-gray-dark: darken(@upf-gray, 20);

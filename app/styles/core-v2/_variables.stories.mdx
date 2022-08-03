@@ -1,0 +1,85 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title="CoreV2/Variables"
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: { canvas: { hidden: true } }
+  }}
+/>
+
+# Variables
+
+Variables are used in .less files to standardize css values. They are represented by css variable. This is an example how to use
+Upfluence css variables:
+
+`
+.your-css-class {
+css-attribute: var(--custom-vaiables);
+}
+`
+
+## Box shadow
+
+The following values represent box shadow level. The following values represent the 3 different box-shadow levels: sm, md, lg.
+
+| Name            | Value                       |
+|-----------------|-----------------------------|
+| --box-shadow-sm | 0 1px 3px 0 #1B1E2110       |
+| --box-shadow-md | 0 10px 15px -3px #1B1E2110  |
+| --box-shadow-lg | 0 25px 50px -10px #1B1E2120 |
+
+Note: Box-shadows are also defined as classes to be called directly from the template : .box-shadow-sm, .box-shadow-md, .box-shadow-lg
+
+## Backdrop color
+
+Defines the color for modal backdrops.
+
+| Name             | Value     |
+|------------------|-----------|
+| --color-backdrop | #1B1E2160 |
+
+
+## Border color
+
+The default border color used in all components. The content separator color is used to separate different elements, for example
+to separate lines of a table.
+
+| Name                      | Value                 |
+|---------------------------|-----------------------|
+| --color-border-default    | var(--color-gray-200) |
+| --color-content-separator | var(--color-gray-100) |
+
+
+## Border radius
+
+The following values represent border radius level. There are 2 types of levels: sm, md.
+
+| Name               | Value |
+|--------------------|-------|
+| --border-radius-sm | 4px   |
+| --border-radius-md | 8px   |
+
+## Spacers
+
+These are variables that can be used alongside size css attributes (padding, margin, etc.).
+They are available from 0 to 60 incremented each time by 6 (3 is also an option).
+
+| Name               | Value                                                |
+|--------------------|------------------------------------------------------|
+| --spacing-px-XX    | Where XX is a number that reprensents the pixel size |
+
+These spacers are also defined as margin & padding classes to use directly in the templates :
+
+| Class                | Value                                                 |
+|----------------------|-------------------------------------------------------|
+| margin-px-XX         | Where XX is a number that reprensents the pixel size  |
+| margin-left-px-XX    |                                                       |
+| margin-right-px-XX   |                                                       |
+| margin-top-px-XX     |                                                       |
+| margin-bottom-px-XX  |                                                       |
+| padding-px-XX        |                                                       |
+| padding-left-px-XX   |                                                       |
+| padding-right-px-XX  |                                                       |
+| padding-top-px-XX    |                                                       |
+| padding-bottom-px-XX |                                                       |

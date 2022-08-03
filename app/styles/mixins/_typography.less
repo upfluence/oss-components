@@ -1,0 +1,27 @@
+// Deprecated in favor of flexbox-based ellipsis.
+//
+.for(@list, @code) {
+  & {
+    .loop(@i:1) when (@i =< length(@list)) {
+      @value: extract(@list, @i);
+
+      @code();
+
+      .loop(@i + 1);
+    }
+
+    .loop();
+  }
+}
+
+// This list is based on what's already in the codebase.
+@ellipsis-breakpoints: 80, 100, 120, 140, 160,  180, 200, 260, 300, 340;
+
+.for(@ellipsis-breakpoints, {
+  .text-ellipsis-@{value} {
+    max-width: ~"@{value}px";
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+});
