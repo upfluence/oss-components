@@ -12,10 +12,6 @@ module('Integration | Helper | redirect-to', function (hooks) {
     this.url = 'https://github.com/upfluence/oss-components';
   });
 
-  hooks.afterEach(function () {
-    sinon.restore();
-  });
-
   module('mandatory arguments checks', function () {
     test('it throws an error if the url argument is missing', async function (assert) {
       setupOnerror((err: Error) => {
@@ -41,11 +37,13 @@ module('Integration | Helper | redirect-to', function (hooks) {
     await render(hbs`<div {{on "click" (redirect-to url=this.url)}}>link</div>`);
     await click('div');
     assert.ok(this.redirectStub.calledOnceWithExactly(this.url, '_self'));
+    sinon.restore();
   });
 
   test('it redirects to the url on the provided target', async function (assert) {
     await render(hbs`<div {{on "click" (redirect-to url=this.url target="_blank")}}>link</div>`);
     await click('div');
     assert.ok(this.redirectStub.calledOnceWithExactly(this.url, '_blank'));
+    sinon.restore();
   });
 });
