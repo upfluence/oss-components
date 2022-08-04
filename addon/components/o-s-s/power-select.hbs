@@ -1,21 +1,21 @@
 <div class="upf-power-select fx-1 fx-col" ...attributes
      {{did-insert (fn this.ensureBlockPresence (has-block "selected-item") (has-block "option-item"))}}>
   <div class="upf-power-select__array-container" role="button" {{on "click" this.toggleSelect}}>
-    <div class="array-input-container fx-row fx-xalign-center" {{scroll-shadow color="field"}}>
-      <div class="fx-row fx-1">
+    <div class="array-input-container fx-row padding-top-px-6 padding-bottom-px-6" {{scroll-shadow color="field"}}>
+      <div class="fx-row fx-1 padding-left-px-6 fx-gap-px-6" style="flex-wrap: wrap">
         {{#each @selectedItems as |selectedItem|}}
           {{yield selectedItem to="selected-item"}}
         {{else}}
-          <span class="padding-left-xx-sm text-size-5 text-color-default-light">
+          <span class="text-size-5 text-color-default-light">
             {{this.placeholder}}
           </span>
         {{/each}}
       </div>
 
       {{#if this.displaySelect}}
-        <i class="far fa-chevron-up margin-left-px-6 margin-right-px-6"></i>
+        <i class="far fa-chevron-up margin-left-px-6 margin-right-px-6 margin-top-px-6"></i>
       {{else}}
-        <i class="far fa-chevron-down margin-left-px-6 margin-right-px-6"></i>
+        <i class="far fa-chevron-down margin-left-px-6 margin-right-px-6 margin-top-px-6"></i>
       {{/if}}
     </div>
   </div>

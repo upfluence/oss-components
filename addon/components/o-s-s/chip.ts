@@ -58,7 +58,14 @@ export default class OSSChip extends Component<OSSChipArgs> {
   }
 
   @action
-  onCrossClick(): void {
+  stopPropagation(event: MouseEvent) {
+    event.stopPropagation();
+  }
+
+  @action
+  onCrossClick(event: MouseEvent): void {
+    event.stopPropagation();
+
     if (this.args.disabled) {
       return;
     }
