@@ -56,10 +56,10 @@ module.exports = {
 
     const publicAssets = ['images', 'fonts', 'upf-icons'];
     const srcAssetsPath =
-      this.modulePrefix === '@upfluence/oss-components' ? '' : 'node_modules/@upfluence/oss-components';
+      this.parent.pkg['name'] === '@upfluence/oss-components' ? '' : 'node_modules/@upfluence/oss-components/';
     publicAssets.forEach((assetType) => {
       trees.push(
-        new Funnel(`${srcAssetsPath}public/assets/${assetType}/`, {
+        new Funnel(`${srcAssetsPath}public/assets/${assetType}`, {
           srcDir: '/',
           destDir: `assets/${assetType}`
         })
