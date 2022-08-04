@@ -48,6 +48,7 @@ module('Integration | Component | o-s-s/link', function (hooks) {
 
     await click('.upf-link');
     assert.true(windowOpenStub.calledOnceWithExactly('https://www.google.fr', '_blank'));
+    sinon.restore();
   });
 
   test('it transits to the route', async function (assert: Assert) {

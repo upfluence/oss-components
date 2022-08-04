@@ -8,7 +8,6 @@ module('Integration | Helper | redirect-to', function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
-    this.redirectStub = sinon.stub(window, 'open');
     this.url = 'https://github.com/upfluence/oss-components';
   });
 
@@ -34,6 +33,7 @@ module('Integration | Helper | redirect-to', function (hooks) {
   });
 
   test('it redirects to the url on the current tab if not target is passed', async function (assert) {
+    this.redirectStub = sinon.stub(window, 'open');
     await render(hbs`<div {{on "click" (redirect-to url=this.url)}}>link</div>`);
     await click('div');
     assert.ok(this.redirectStub.calledOnceWithExactly(this.url, '_self'));
@@ -41,6 +41,7 @@ module('Integration | Helper | redirect-to', function (hooks) {
   });
 
   test('it redirects to the url on the provided target', async function (assert) {
+    this.redirectStub = sinon.stub(window, 'open');
     await render(hbs`<div {{on "click" (redirect-to url=this.url target="_blank")}}>link</div>`);
     await click('div');
     assert.ok(this.redirectStub.calledOnceWithExactly(this.url, '_blank'));
