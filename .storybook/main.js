@@ -3,7 +3,7 @@ const path = require('path');
 const root = path.join(__dirname, '../');
 const node_modules = path.join(root, 'node_modules');
 const namedBlockPolyfill = require('ember-named-blocks-polyfill/lib/named-blocks-polyfill-plugin');
-
+d.
 module.exports = {
   stories: [
     '../stories/**/*.stories.mdx',
@@ -12,6 +12,8 @@ module.exports = {
     '../addon/components/**/*.stories.@(js|jsx|ts|tsx)',
     '../addon/modifiers/**/*.stories.mdx',
     '../addon/modifiers/**/*.stories.@(js|jsx|ts|tsx)',
+    '../addon/helpers/**/*.stories.mdx',
+    '../addon/helpers/**/*.stories.@(js|jsx|ts|tsx)',
     '../app/styles/**/*.stories.mdx'
   ],
 

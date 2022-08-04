@@ -1,0 +1,61 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title="Helpers & Modifiers/Helpers"
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: { canvas: { hidden: true } }
+  }}
+/>
+
+# Helpers
+
+## transition-to
+
+Transition to a valid Ember JS router
+
+Args:
+
+- route: the route to transition to as it would be passed to `RouterService#transitionTo`
+- model (optional): a model to pass the route
+- models (optional): an array of models to pass the route
+- queryParams (optional): a query params object
+
+Usage:
+
+```handlebars
+With route only
+<OSS::Button @label='Button that transitions' {{on 'click' (transition-to route='my-route')}} />
+
+<OSS::Button @label='Button that transitions' {{on 'click' (transition-to route='my-route' model={{this.model}})}} />
+
+<OSS::Button
+  @label='Button that transitions'
+  {{on 'click' (transition-to route='my-route' models={{array this.firstModel this.secondModel}})}} />
+
+<OSS::Button
+  @label='Button that transitions'
+  {{on 'click' (transition-to route='my-route' queryParams={{hash search="keyword"}})}} />
+```
+
+## redirect-to
+
+Redirect to any URL just like `window.open` would.
+
+Args:
+
+- url: the URL to redirect
+- target: a valid redirection target as specified in https://www.w3schools.com/tags/att_a_target.asp
+
+Usage:
+
+```handlebars
+With route only
+<OSS::Button
+  @label='Button that opens link on current tab'
+  {{on 'click' (redirect-to url='https://github.com/upfluence/oss-components')}} />
+
+<OSS::Button
+  @label='Button that opens link on target'
+  {{on 'click' (redirect-to url='https://github.com/upfluence/oss-components' target="_blank")}} />
+```
