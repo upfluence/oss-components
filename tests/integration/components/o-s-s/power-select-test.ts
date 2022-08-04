@@ -31,14 +31,19 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
 
       assert.dom('.upf-power-select').exists({ count: 1 });
       assert.dom('.upf-power-select__array-container').exists({ count: 1 });
-      assert.dom('.upf-power-infinite-select-container').exists({ count: 1 });
+      assert.dom('.upf-infinite-select').doesNotExist();
+      await click('.upf-power-select__array-container');
+      assert.dom('.upf-infinite-select').exists();
     });
   });
 
   module('it throws an error', () => {
     test('without selected-item named block', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::PowerSelect] You must pass selected-item named block');
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::PowerSelect] You must pass selected-item named block'
+        );
       });
 
       await render(hbs`
@@ -48,7 +53,10 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
 
     test('without option-item named block', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::PowerSelect] You must pass option-item named block');
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::PowerSelect] You must pass option-item named block'
+        );
       });
 
       await render(hbs`
@@ -133,6 +141,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
         </OSS::PowerSelect>
       `);
 
+      await click('.upf-power-select__array-container');
       const domTags = findAll('.upf-infinite-select__item');
       assert.dom(domTags[0]).hasText('value1');
       assert.dom(domTags[1]).hasText('value2');
@@ -159,6 +168,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
         </OSS::PowerSelect>
       `);
 
+      await click('.upf-power-select__array-container');
       await click('.upf-infinite-select__item:nth-child(1)');
 
       assert.ok(this.onChange.calledWith('value1', 'selection'));
@@ -179,6 +189,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
         </OSS::PowerSelect>
       `);
 
+      await click('.upf-power-select__array-container');
       assert.dom('.upf-infinite-select input').hasAttribute('placeholder', 'searchPlaceholder');
     });
   });
@@ -197,6 +208,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
         </OSS::PowerSelect>
       `);
 
+      await click('.upf-power-select__array-container');
       await typeIn('.upf-infinite-select input', 's');
 
       assert.ok(this.onSearch.calledWith('s'));
@@ -227,6 +239,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
         </div>
       `);
 
+      await click('.upf-power-select__array-container');
       await scrollTo('.upf-infinite-select__items-container', 0, 1500);
       this.set('loadingMore', false);
       await scrollTo('.upf-infinite-select__items-container', 0, 1500);
