@@ -1,12 +1,24 @@
 .upf-power-select {
   height: 100%;
+  position: relative;
 
   .upf-power-select__array-container {
-    position: relative;
-    height: 100%;
     .border;
     .border-color-default;
     .border-radius-default;
+
+    position: relative;
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+  }
+
+  .upf-infinite-select {
+    height: auto;
+    max-width: 100%;
+    min-width: 100%;
+    padding: var(--spacing-px-12);
+    top: var(--spacing-px-36);
   }
 
   .upf-power-infinite-select-container {

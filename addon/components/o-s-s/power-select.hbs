@@ -1,24 +1,33 @@
-<div class="upf-power-select fx-col" ...attributes
+<div class="upf-power-select fx-1 fx-col" ...attributes
      {{did-insert (fn this.ensureBlockPresence (has-block "selected-item") (has-block "option-item"))}}>
-  <div class="upf-power-select__array-container margin-bottom-xxx-sm">
-    <div class="array-input-container {{if @selectedItems 'fx-row fx-xalign-center' 'fx-col fx-malign-center'}}"
-         {{scroll-shadow color="field"}}>
-      {{#each @selectedItems as |selectedItem|}}
-        {{yield selectedItem to="selected-item"}}
+  <div class="upf-power-select__array-container" role="button" {{on "click" this.toggleSelect}}>
+    <div class="array-input-container fx-row padding-top-px-6 padding-bottom-px-6" {{scroll-shadow color="field"}}>
+      <div class="fx-row fx-1 padding-left-px-6 fx-gap-px-6" style="flex-wrap: wrap">
+        {{#each @selectedItems as |selectedItem|}}
+          {{yield selectedItem to="selected-item"}}
+        {{else}}
+          <span class="text-size-5 text-color-default-light">
+            {{this.placeholder}}
+          </span>
+        {{/each}}
+      </div>
+
+      {{#if this.displaySelect}}
+        <i class="far fa-chevron-up margin-left-px-6 margin-right-px-6 margin-top-px-6"></i>
       {{else}}
-        <span class="padding-left-xx-sm text-size-5 text-color-default-light">
-          {{this.placeholder}}
-        </span>
-      {{/each}}
+        <i class="far fa-chevron-down margin-left-px-6 margin-right-px-6 margin-top-px-6"></i>
+      {{/if}}
     </div>
   </div>
-  <div class="upf-power-infinite-select-container margin-bottom-xxx-sm">
-    <OSS::InfiniteSelect @items={{@items}} @onSearch={{@onSearch}} @inline={{true}} @onSelect={{this.onSelect}}
+
+  {{#if this.displaySelect}}
+    <OSS::InfiniteSelect @items={{@items}} @onSearch={{@onSearch}} @inline={{false}} @onSelect={{this.onSelect}}
                          @searchPlaceholder={{@searchPlaceholder}} @loading={{@loading}} @loadingMore={{@loadingMore}}
-                         @onBottomReached={{@onBottomReached}}>
+                         @onBottomReached={{@onBottomReached}}
+                         {{on-click-outside this.hideSelect}}>
       <:option as |item|>
         {{yield item to="option-item"}}
       </:option>
     </OSS::InfiniteSelect>
-  </div>
+  {{/if}}
 </div>

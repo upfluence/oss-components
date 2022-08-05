@@ -1,4 +1,4 @@
-<div class="array-input-container fx-row fx-xalign-center" ...attributes>
+<div class="array-input-container fx-row fx-xalign-center fx-gap-px-6 padding-left-px-6 padding-right-px-6" ...attributes>
   {{#each this.items as |item index|}}
     <OSS::Chip @label={{item}} @onRemove={{fn this.removeItem index}} />
   {{/each}}

@@ -1,4 +1,5 @@
 import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 
@@ -16,9 +17,13 @@ interface OSSPowerSelectArgs {
   onBottomReached?: () => void;
 }
 
+const DEFAULT_PLACEHOLDER = 'Select an item';
+
 export default class OSSPowerSelect extends Component<OSSPowerSelectArgs> {
+  @tracked displaySelect: boolean = false;
+
   get placeholder(): string {
-    return this.args.placeholder ?? '';
+    return this.args.placeholder ?? DEFAULT_PLACEHOLDER;
   }
 
   @action
@@ -30,5 +35,18 @@ export default class OSSPowerSelect extends Component<OSSPowerSelectArgs> {
   @action
   onSelect(item: any): void {
     this.args.onChange(item, 'selection');
+  }
+
+  @action
+  toggleSelect(event: MouseEvent): void {
+    event.stopPropagation();
+    this.displaySelect = !this.displaySelect;
+  }
+
+  @action
+  hideSelect(_: HTMLElement, event: MouseEvent): void {
+    event.stopPropagation();
+    this.displaySelect = false;
+
   }
 }
