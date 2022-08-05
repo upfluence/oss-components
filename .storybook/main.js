@@ -12,6 +12,8 @@ module.exports = {
     '../addon/components/**/*.stories.@(js|jsx|ts|tsx)',
     '../addon/modifiers/**/*.stories.mdx',
     '../addon/modifiers/**/*.stories.@(js|jsx|ts|tsx)',
+    '../addon/helpers/**/*.stories.mdx',
+    '../addon/helpers/**/*.stories.@(js|jsx|ts|tsx)',
     '../app/styles/**/*.stories.mdx'
   ],
 
