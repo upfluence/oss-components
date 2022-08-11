@@ -31,7 +31,7 @@
     "remove-pre-push-hook": "rm -rf ./.git/hooks/pre-push"
   },
   "dependencies": {
-    "@embroider/macros": "^0.47.2",
+    "@embroider/macros": "^1.7.1",
     "@fortawesome/fontawesome-pro": "^5.15.4",
     "babel-plugin-debug-macros": "^0.3.1",
     "ember-cli-babel": "^7.19.0",
