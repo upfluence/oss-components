@@ -116,19 +116,27 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
   module('Phone Number Input', () => {
     test('Typing numbers in the Phone input triggers the onChange method', async function (assert) {
       this.onChange = sinon.spy();
-      await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
+      this.onValidation = sinon.spy();
+      await render(
+        hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} @validates={{this.onValidation}} />`
+      );
       await typeIn('input', '8');
       assert.ok(this.onChange.calledOnce);
+      assert.ok(this.onValidation.calledWithExactly(true));
       assert.dom('input').hasValue('8');
     });
 
     test('Typing non-numeric characters does not apply changes', async function (assert) {
       this.onChange = sinon.spy();
-      await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
+      this.onValidation = sinon.spy();
+      await render(
+        hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} @validates={{this.onValidation}} />`
+      );
       await typeIn('input', '8');
       assert.ok(this.onChange.calledOnce);
       // @ts-ignore
       await triggerKeyEvent('input', 'keydown', 'A', { code: 'a' });
+      assert.ok(this.onValidation.calledWithExactly(true));
       assert.dom('input').hasValue('8');
     });
 

@@ -64,10 +64,9 @@ export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputAr
 
   @action
   onlyNumeric(event: KeyboardEvent | FocusEvent): void {
-    const authorizedInputs = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift', 'Control', 'Keydown'];
+    const authorizedInputs = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift'];
 
     if (
-      event.type === 'keydown' ||
       event instanceof FocusEvent ||
       /^[0-9]$/i.test(event.key) ||
       authorizedInputs.find((key: string) => key === event.key)
