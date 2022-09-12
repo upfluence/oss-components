@@ -9,9 +9,16 @@
       {{/if}}
     </div>
     <span class="phone-prefix">{{@prefix}}</span>
-    <Input class="fx-1" type="tel" @value={{@number}} {{on "keydown" this.onlyNumeric}}
-           placeholder="81726354" autocomplete="off" />
+    <Input class="fx-1" type="tel" @value={{@number}} placeholder="81726354"
+           {{on "keydown" this.onlyNumeric}} {{on "blur" this.onlyNumeric}} />
   </div>
+
+  {{#if this.invalidInputError}}
+    <div class="font-color-error-500 margin-top-px-6">
+      {{this.invalidInputError}}
+    </div>
+  {{/if}}
+
   {{#if this.countrySelectorShown}}
     <OSS::InfiniteSelect @items={{this.filteredCountries}} @onSearch={{this.onSearch}}
                          @onSelect={{this.onSelect}}

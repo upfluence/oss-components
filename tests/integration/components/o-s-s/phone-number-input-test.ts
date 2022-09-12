@@ -116,20 +116,48 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
   module('Phone Number Input', () => {
     test('Typing numbers in the Phone input triggers the onChange method', async function (assert) {
       this.onChange = sinon.spy();
-      await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
+      this.onValidation = sinon.spy();
+      await render(
+        hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} @validates={{this.onValidation}} />`
+      );
       await typeIn('input', '8');
       assert.ok(this.onChange.calledOnce);
+      assert.ok(this.onValidation.calledWithExactly(true));
       assert.dom('input').hasValue('8');
     });
 
     test('Typing non-numeric characters does not apply changes', async function (assert) {
       this.onChange = sinon.spy();
-      await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
+      this.onValidation = sinon.spy();
+      await render(
+        hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} @validates={{this.onValidation}} />`
+      );
       await typeIn('input', '8');
       assert.ok(this.onChange.calledOnce);
       // @ts-ignore
       await triggerKeyEvent('input', 'keydown', 'A', { code: 'a' });
+      assert.ok(this.onValidation.calledWithExactly(true));
       assert.dom('input').hasValue('8');
+    });
+
+    test('it displays an error if the number contains a + symbol', async function (assert) {
+      this.prefix = '+1';
+      this.number = '';
+
+      this.onChange = (prefix: string, number: number) => {
+        this.set('prefix', prefix);
+        this.set('number', number);
+      };
+      this.onValidation = sinon.spy();
+
+      await render(
+        hbs`<OSS::PhoneNumberInput @prefix={{this.prefix}} @number={{this.number}} @onChange={{this.onChange}} @validates={{this.onValidation}} />`
+      );
+      await typeIn('input', '+1');
+      await settled();
+
+      assert.ok(this.onValidation.calledWithExactly(false));
+      assert.dom('.font-color-error-500').exists();
     });
   });
 });
