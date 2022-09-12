@@ -1,5 +1,6 @@
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { countries, CountryData } from '@upfluence/oss-components/utils/country-codes';
@@ -8,10 +9,15 @@ interface OSSPhoneNumberInputArgs {
   prefix: string;
   number: string;
   onChange(prefix: string, number: string): void;
+  validates?(isPassing: boolean): void;
 }
 
 export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputArgs> {
+  @service declare intl: any;
+
   private _countries = countries;
+
+  @tracked invalidInputError = '';
   @tracked selectedCountry: CountryData;
   @tracked countrySelectorShown: boolean = false;
   @tracked filteredCountries: CountryData[] = this._countries;
@@ -45,14 +51,33 @@ export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputAr
     }
   }
 
+  private validateInput(): void {
+    this.invalidInputError = '';
+
+    if (this.args.number.startsWith('+')) {
+      this.invalidInputError = this.intl.t('oss-components.phone-input.invalid_input');
+      this.args.validates?.(false);
+    } else {
+      this.args.validates?.(true);
+    }
+  }
+
   @action
   onlyNumeric(event: KeyboardEvent | FocusEvent): void {
-    const authorizedInputs = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift', 'Control'];
-    if (event instanceof FocusEvent || /^[0-9]$/i.test(event.key) || authorizedInputs.find((key: string) => key === event.key)) {
+    const authorizedInputs = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift', 'Control', 'Keydown'];
+
+    if (
+      event.type === 'keydown' ||
+      event instanceof FocusEvent ||
+      /^[0-9]$/i.test(event.key) ||
+      authorizedInputs.find((key: string) => key === event.key)
+    ) {
       this.args.onChange('+' + this.selectedCountry.countryCallingCodes[0], this.args.number);
     } else {
       event.preventDefault();
     }
+
+    this.validateInput();
   }
 
   @action

@@ -131,5 +131,25 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
       await triggerKeyEvent('input', 'keydown', 'A', { code: 'a' });
       assert.dom('input').hasValue('8');
     });
+
+    test('it displays an error if the number contains a + symbol', async function (assert) {
+      this.prefix = '+1';
+      this.number = '';
+
+      this.onChange = (prefix: string, number: number) => {
+        this.set('prefix', prefix);
+        this.set('number', number);
+      };
+      this.onValidation = sinon.spy();
+
+      await render(
+        hbs`<OSS::PhoneNumberInput @prefix={{this.prefix}} @number={{this.number}} @onChange={{this.onChange}} @validates={{this.onValidation}} />`
+      );
+      await typeIn('input', '+1');
+      await settled();
+
+      assert.ok(this.onValidation.calledWithExactly(false));
+      assert.dom('.font-color-error-500').exists();
+    });
   });
 });
