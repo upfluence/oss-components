@@ -11,10 +11,15 @@ interface OSSButtonDropdownArgs {
 export default class extends Component<OSSButtonDropdownArgs> {
   @tracked displayDropdown: boolean = false;
 
+  menuContainer?: HTMLElement;
+
   constructor(owner: unknown, args: OSSButtonDropdownArgs) {
     super(owner, args);
 
-    assert('[component][OSS::ButtonDropdown] You must pass either a @label or an @icon argument.', args.label || args.icon);
+    assert(
+      '[component][OSS::ButtonDropdown] You must pass either a @label or an @icon argument.',
+      args.label || args.icon
+    );
   }
 
   @action
@@ -26,5 +31,21 @@ export default class extends Component<OSSButtonDropdownArgs> {
   @action
   closeDropdown(): void {
     this.displayDropdown = false;
+  }
+
+  @action
+  setupChildrenClickHandler(element: HTMLElement) {
+    this.menuContainer = element;
+
+    element.querySelectorAll('.oss-button-dropdown__item').forEach((child: HTMLElement) => {
+      child.addEventListener('click', this.closeDropdown);
+    });
+  }
+
+  @action
+  teardownChildrenClickHandler(element: HTMLElement) {
+    element.querySelectorAll('.oss-button-dropdown__item').forEach((child: HTMLElement) => {
+      child.removeEventListener('click', this.closeDropdown);
+    });
   }
 }
