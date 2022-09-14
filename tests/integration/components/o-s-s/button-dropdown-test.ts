@@ -6,7 +6,7 @@ import hbs from 'htmlbars-inline-precompile';
 module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it throws an error if nor icon or label args are provided', async function (assert) {
+  test('it throws an error if no icon or label args is provided', async function (assert) {
     setupOnerror((err: { message: string }) => {
       assert.equal(
         err.message,
@@ -52,11 +52,10 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
       hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label"><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
     );
 
-    assert.dom('.oss-button-dropdown__items').exists();
-    assert.dom('.oss-button-dropdown__items').hasNoClass('oss-button-dropdown__items--visible');
+    assert.dom('.oss-button-dropdown__items').doesNotExist();
 
     await click('.oss-button-dropdown__trigger .fx-row:last-child')
-    assert.dom('.oss-button-dropdown__items').hasClass('oss-button-dropdown__items--visible');
+    assert.dom('.oss-button-dropdown__items').exists();
     assert.dom('.oss-button-dropdown__items .oss-button-dropdown__item').exists({ count: 1 });
     assert.dom('.oss-button-dropdown__items .oss-button-dropdown__item').hasText('foo');
   });

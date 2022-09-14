@@ -15,8 +15,10 @@
     </div>
   </div>
 
-  <div class="oss-button-dropdown__items {{if this.displayDropdown 'oss-button-dropdown__items--visible'}}"
-        {{on-click-outside this.closeDropdown}}>
-    {{yield to="items"}}
-  </div>
+  {{#if this.displayDropdown}}
+    <div class="oss-button-dropdown__items"
+          {{on-click-outside this.closeDropdown}}>
+      {{yield to="items"}}
+    </div>
+  {{/if}}
 </div>

@@ -18,13 +18,13 @@ export default class extends Component<OSSButtonDropdownArgs> {
   }
 
   @action
-  toggleDropdown(event: MouseEvent) {
+  toggleDropdown(event: MouseEvent): void {
     event.stopPropagation();
     this.displayDropdown = !this.displayDropdown;
   }
 
   @action
-  closeDropdown() {
+  closeDropdown(): void {
     this.displayDropdown = false;
   }
 }
