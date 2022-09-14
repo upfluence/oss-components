@@ -11,7 +11,7 @@
     </div>
 
     <div class="fx-row fx-xalign-center" role="button" {{on "click" this.toggleDropdown}}>
-      <i class="far fa-caret-down"></i>
+      <i class="far fa-caret-{{if this.displayDropdown 'up' 'down'}}"></i>
     </div>
   </div>
 
