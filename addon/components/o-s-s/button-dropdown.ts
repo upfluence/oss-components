@@ -11,8 +11,6 @@ interface OSSButtonDropdownArgs {
 export default class extends Component<OSSButtonDropdownArgs> {
   @tracked displayDropdown: boolean = false;
 
-  menuContainer?: HTMLElement;
-
   constructor(owner: unknown, args: OSSButtonDropdownArgs) {
     super(owner, args);
 
@@ -35,8 +33,6 @@ export default class extends Component<OSSButtonDropdownArgs> {
 
   @action
   setupChildrenClickHandler(element: HTMLElement) {
-    this.menuContainer = element;
-
     element.querySelectorAll('.oss-button-dropdown__item').forEach((child: HTMLElement) => {
       child.addEventListener('click', this.closeDropdown);
     });
