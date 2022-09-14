@@ -1,0 +1,26 @@
+<div class="oss-button-dropdown" ...attributes>
+  <div class="oss-button-dropdown__trigger fx-row fx-xalign-center">
+    <div class="fx-row fx-xalign-center fx-gap-px-6">
+      {{#if @icon}}
+        <i class={{@icon}}></i>
+      {{/if}}
+
+      {{#if @label}}
+        <span>{{@label}}</span>
+      {{/if}}
+    </div>
+
+    <div class="fx-row fx-xalign-center" role="button" {{on "click" this.toggleDropdown}}>
+      <i class="far fa-caret-{{if this.displayDropdown 'up' 'down'}}"></i>
+    </div>
+  </div>
+
+  {{#if this.displayDropdown}}
+    <div class="oss-button-dropdown__items"
+         {{did-insert this.setupChildrenClickHandler}}
+         {{will-destroy this.teardownChildrenClickHandler}}
+         {{on-click-outside this.closeDropdown}}>
+      {{yield to="items"}}
+    </div>
+  {{/if}}
+</div>
