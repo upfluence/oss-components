@@ -3,6 +3,4 @@
   class="expanding-search__submit"
   {{action "expandOrErase" bubbles=false}} /> 
 
-{{input
-  type="text" class=(concat "form-control upf-input expanding-search__input" (if small ' upf-input--small'))
-  placeholder=placeholder value=searchQuery}}
+{{input type="text" class="form-control upf-input expanding-search__input" placeholder=this.placeholder value=this.searchQuery}}
