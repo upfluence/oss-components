@@ -39,4 +39,10 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
       assert.dom('.upf-alert .subtitle').hasText(`Subitle ${skin}`);
     });
   });
+
+  test('it render the extra-content named block', async function (assert) {
+    await render(hbs`<OSS::Alert><:extra-content><div>Hello</div></:extra-content></OSS::Alert>`);
+
+    assert.dom('.upf-alert .text-container div').hasText('Hello');
+  });
 });

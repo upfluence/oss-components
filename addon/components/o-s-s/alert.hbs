@@ -11,6 +11,9 @@
       {{#if @subtitle}}
         <span class="subtitle">{{@subtitle}}</span>
       {{/if}}
+      {{#if (has-block "extra-content")}}
+        {{yield to="extra-content"}}
+      {{/if}}
     </div>
   </div>
 </div>

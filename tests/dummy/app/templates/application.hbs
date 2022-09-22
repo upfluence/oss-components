@@ -121,6 +121,16 @@
 </div>
 
 <div class="fx-row fx-gap-px-12 margin-md">
+  <OSS::Alert @title="Title" @subtitle="Subtitle">
+    <:extra-content>
+      <div class="fx-row fx-gap-px-12">
+        <OSS::Link @label="Super Label" />
+        <OSS::Link @label="Super Label 2" />
+      </div>
+    </:extra-content>
+  </OSS::Alert>
+</div>
+<div class="fx-row fx-gap-px-12 margin-md">
   <OSS::Alert @title="Title" @subtitle="Subtitle" />
   <OSS::Alert @skin="error" @title="Title" @subtitle="Subtitle" />
 </div>
