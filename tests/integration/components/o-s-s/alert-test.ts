@@ -41,14 +41,14 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
   });
 
   test('it render the background-color white in alert when @plain is true', async function (assert) {
-    await render(hbs`<OSS::Alert @plain={{true}}></OSS::Alert>`);
+    await render(hbs`<OSS::Alert @plain={{true}} />`);
 
     assert.dom('.upf-alert .main-container').hasClass('main-container--plain');
     assert.dom('.upf-alert .main-container').hasStyle({ backgroundColor: 'rgb(255, 255, 255)' });
   });
 
   test('it render the cross which delete alert when you click on it, when @closable is true', async function (assert) {
-    await render(hbs`<div><OSS::Alert @closable={{true}}></OSS::Alert></div>`);
+    await render(hbs`<div><OSS::Alert @closable={{true}} /></div>`);
 
     assert.dom('.upf-alert').exists();
     assert.dom('.upf-alert .main-container .fx-col i').exists();
