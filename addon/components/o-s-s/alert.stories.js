@@ -38,7 +38,7 @@ export default {
       control: { type: 'text' }
     },
     plain: {
-      description: 'When value is true, then display a background-color white in alert instead of grey',
+      description: 'When true, a white background color is displayed',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' }
@@ -48,7 +48,7 @@ export default {
       }
     },
     closable: {
-      description: 'When value is true, then display a cross that delete the alert when you click on it ',
+      description: 'When enabled, the alert can be closed by clicking on the cross icon',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' }

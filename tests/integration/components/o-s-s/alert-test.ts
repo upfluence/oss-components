@@ -40,14 +40,14 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
     });
   });
 
-  test('it render the background-color white in alert when @plain is true', async function (assert) {
+  test('it renders the background-color white in alert when @plain is true', async function (assert) {
     await render(hbs`<OSS::Alert @plain={{true}} />`);
 
     assert.dom('.upf-alert .main-container').hasClass('main-container--plain');
     assert.dom('.upf-alert .main-container').hasStyle({ backgroundColor: 'rgb(255, 255, 255)' });
   });
 
-  test('it render the cross which delete alert when you click on it, when @closable is true', async function (assert) {
+  test('it renders the cross which delete alert when you click on it, when @closable is true', async function (assert) {
     await render(hbs`<div><OSS::Alert @closable={{true}} /></div>`);
 
     assert.dom('.upf-alert').exists();
@@ -59,7 +59,7 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
     assert.dom('.upf-alert').doesNotExist();
   });
 
-  test('it render the extra-content named block', async function (assert) {
+  test('it renders the extra-content named block', async function (assert) {
     await render(hbs`<OSS::Alert><:extra-content><div>Hello</div></:extra-content></OSS::Alert>`);
 
     assert.dom('.upf-alert .text-container div').hasText('Hello');
