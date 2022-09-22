@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { render, click } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 const ALERT_SKINS = ['success', 'error', 'info', 'warning'];
@@ -38,6 +38,25 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
       assert.dom('.upf-alert .title').hasText(`Title ${skin}`);
       assert.dom('.upf-alert .subtitle').hasText(`Subitle ${skin}`);
     });
+  });
+
+  test('it render the background-color white in alert when @plain is true', async function (assert) {
+    await render(hbs`<OSS::Alert @plain={{true}}></OSS::Alert>`);
+
+    assert.dom('.upf-alert .main-container').hasClass('main-container--plain');
+    assert.dom('.upf-alert .main-container').hasStyle({ backgroundColor: 'rgb(255, 255, 255)' });
+  });
+
+  test('it render the cross which delete alert when you click on it, when @closable is true', async function (assert) {
+    await render(hbs`<div><OSS::Alert @closable={{true}}></OSS::Alert></div>`);
+
+    assert.dom('.upf-alert').exists();
+    assert.dom('.upf-alert .main-container .fx-col i').exists();
+    assert.dom('.upf-alert .main-container .fx-col i').hasClass('fa-times');
+
+    await click('.upf-alert .main-container .fx-col i');
+
+    assert.dom('.upf-alert').doesNotExist();
   });
 
   test('it render the extra-content named block', async function (assert) {

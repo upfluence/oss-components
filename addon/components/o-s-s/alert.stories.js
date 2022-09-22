@@ -36,6 +36,26 @@ export default {
         defaultValue: { summary: '' }
       },
       control: { type: 'text' }
+    },
+    plain: {
+      description: 'When value is true, then display a background-color white in alert instead of grey',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
+    closable: {
+      description: 'When value is true, then display a cross that delete the alert when you click on it ',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
+      },
+      control: {
+        type: 'boolean'
+      }
     }
   },
   parameters: {
@@ -56,6 +76,27 @@ const DefaultUsageTemplate = (args) => ({
 
 export const BasicUsage = DefaultUsageTemplate.bind({});
 BasicUsage.args = {
+  skin: 'info',
+  title: 'Title',
+  subtitle: 'I am a subtitle in the alert'
+};
+
+const BasicUsageExtraContentTemplate = (args) => ({
+  template: hbs`
+      <OSS::Alert @skin={{this.skin}} @title={{this.title}} @subtitle={{this.subtitle}}>
+        <:extra-content>
+          <div class="fx-row fx-gap-px-12">
+            <OSS::Link @label="Link1" />
+            <OSS::Link @label="Link2" />
+          </div>
+        </:extra-content>
+      </OSS::Alert>
+  `,
+  context: args
+});
+
+export const UsageExtraContent = BasicUsageExtraContentTemplate.bind({});
+UsageExtraContent.args = {
   skin: 'info',
   title: 'Title',
   subtitle: 'I am a subtitle in the alert'
