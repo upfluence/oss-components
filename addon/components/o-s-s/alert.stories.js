@@ -38,7 +38,7 @@ export default {
       control: { type: 'text' }
     },
     plain: {
-      description: 'When false, a white background color is displayed',
+      description: 'When plain is true, a gray background color is displayed, otherwise a white one',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'true' }

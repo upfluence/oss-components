@@ -70,6 +70,20 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
     assert.dom('.upf-alert').doesNotExist();
   });
 
+  test('the cross icon is not displayed when @closable is false', async function (assert) {
+    await render(hbs`<OSS::Alert @closable={{false}} />`);
+
+    assert.dom('.upf-alert').exists();
+    assert.dom('.upf-alert .main-container .fx-col i').doesNotExist();
+  });
+
+  test('the cross icon is not displayed when @closable is undefined', async function (assert) {
+    await render(hbs`<OSS::Alert />`);
+
+    assert.dom('.upf-alert').exists();
+    assert.dom('.upf-alert .main-container .fx-col i').doesNotExist();
+  });
+
   test('it renders the extra-content named block', async function (assert) {
     await render(hbs`<OSS::Alert><:extra-content><div>Hello</div></:extra-content></OSS::Alert>`);
 
