@@ -38,10 +38,10 @@ export default {
       control: { type: 'text' }
     },
     plain: {
-      description: 'When true, a white background color is displayed',
+      description: 'When false, a white background color is displayed',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' }
+        defaultValue: { summary: 'true' }
       },
       control: {
         type: 'boolean'

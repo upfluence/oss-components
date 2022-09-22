@@ -20,6 +20,10 @@ export default class OSSAlert extends Component<OSSAlertArgs> {
     return `upf-alert--${this.args.skin || DEFAULT_SKIN}`;
   }
 
+  get plain(): boolean {
+    return this.args.plain ?? true;
+  }
+
   get iconClass(): string {
     switch (this.args.skin) {
       case 'success':
