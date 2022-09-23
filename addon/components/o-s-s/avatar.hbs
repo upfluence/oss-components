@@ -1,0 +1,9 @@
+<div class={{this.computedClass}} ...attributes>
+  {{#if @icon}}
+    <i class="{{@icon}}"></i>
+  {{else if @image}}
+    <img src={{@image}} alt={{t "oss-components.badge.image_alt"}} />
+  {{else}}
+    <span class="upf-badge__text">{{@text}}</span>
+  {{/if}}
+</div>
