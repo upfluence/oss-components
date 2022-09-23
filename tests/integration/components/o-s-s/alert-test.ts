@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { render, click } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 const ALERT_SKINS = ['success', 'error', 'info', 'warning'];
@@ -40,7 +40,55 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
     });
   });
 
-  test('it render the extra-content named block', async function (assert) {
+  module('@plain parameter', function () {
+    test('if true, the background-color is grey', async function (assert) {
+      await render(hbs`<OSS::Alert @plain={{true}} />`);
+
+      assert.dom('.upf-alert .main-container').hasClass('main-container--plain');
+    });
+
+    test('if false, the background-color is white', async function (assert) {
+      await render(hbs`<OSS::Alert @plain={{false}} />`);
+
+      assert.dom('.upf-alert .main-container').hasNoClass('main-container--plain');
+    });
+
+    test('if undefined, the background-color is grey', async function (assert) {
+      await render(hbs`<OSS::Alert />`);
+
+      assert.dom('.upf-alert .main-container').hasClass('main-container--plain');
+    });
+  });
+
+  module('@closable parameter', function () {
+    test('if true, display the cross icon which delete alert when you click on it', async function (assert) {
+      await render(hbs`<div><OSS::Alert @closable={{true}} /></div>`);
+
+      assert.dom('.upf-alert').exists();
+      assert.dom('.upf-alert .main-container .fx-col i').exists();
+      assert.dom('.upf-alert .main-container .fx-col i').hasClass('fa-times');
+
+      await click('.upf-alert .main-container .fx-col i');
+
+      assert.dom('.upf-alert').doesNotExist();
+    });
+
+    test('if false, the cross icon is not displayed', async function (assert) {
+      await render(hbs`<OSS::Alert @closable={{false}} />`);
+
+      assert.dom('.upf-alert').exists();
+      assert.dom('.upf-alert .main-container .fx-col i').doesNotExist();
+    });
+
+    test('if undefined, the cross icon is not displayed', async function (assert) {
+      await render(hbs`<OSS::Alert />`);
+
+      assert.dom('.upf-alert').exists();
+      assert.dom('.upf-alert .main-container .fx-col i').doesNotExist();
+    });
+  });
+
+  test('it renders the extra-content named block', async function (assert) {
     await render(hbs`<OSS::Alert><:extra-content><div>Hello</div></:extra-content></OSS::Alert>`);
 
     assert.dom('.upf-alert .text-container div').hasText('Hello');

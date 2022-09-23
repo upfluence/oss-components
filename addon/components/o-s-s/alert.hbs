@@ -1,6 +1,6 @@
-<div class={{concat "upf-alert " this.skinClass}} ...attributes>
+<div class={{concat "upf-alert " this.skinClass}} {{did-insert this.initSelf}} ...attributes>
   <div class="indicator"></div>
-  <div class="main-container">
+  <div class="main-container {{if this.plain 'main-container--plain'}}">
     <span class="icon">
       <i class={{concat "far " this.iconClass}}></i>
     </span>
@@ -15,5 +15,10 @@
         {{yield to="extra-content"}}
       {{/if}}
     </div>
+    {{#if @closable}}
+      <div class="fx-col">
+        <i role="button" class="far fa-times" {{on "click" this.removeSelf}}></i>
+      </div>
+    {{/if}}
   </div>
 </div>
