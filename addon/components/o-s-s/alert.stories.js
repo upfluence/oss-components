@@ -83,7 +83,8 @@ BasicUsage.args = {
 
 const BasicUsageExtraContentTemplate = (args) => ({
   template: hbs`
-      <OSS::Alert @skin={{this.skin}} @title={{this.title}} @subtitle={{this.subtitle}}>
+      <OSS::Alert @skin={{this.skin}} @title={{this.title}}
+                  @subtitle={{this.subtitle}} @plain={{this.plain}} @closable={{this.closable}}>
         <:extra-content>
           <div class="fx-row fx-gap-px-12">
             <OSS::Link @label="Link1" />
@@ -99,5 +100,7 @@ export const UsageExtraContent = BasicUsageExtraContentTemplate.bind({});
 UsageExtraContent.args = {
   skin: 'info',
   title: 'Title',
-  subtitle: 'I am a subtitle in the alert'
+  subtitle: 'I am a subtitle in the alert',
+  plain: true,
+  closable: false
 };
