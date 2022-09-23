@@ -40,19 +40,19 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
     });
   });
   module('@plain parameter', function () {
-    test('If true, the background-color is grey', async function (assert) {
+    test('if true, the background-color is grey', async function (assert) {
       await render(hbs`<OSS::Alert @plain={{true}} />`);
 
       assert.dom('.upf-alert .main-container').hasClass('main-container--plain');
     });
 
-    test('If false, the background-color is white', async function (assert) {
+    test('if false, the background-color is white', async function (assert) {
       await render(hbs`<OSS::Alert @plain={{false}} />`);
 
       assert.dom('.upf-alert .main-container').hasNoClass('main-container--plain');
     });
 
-    test('If undefined, the background-color is grey', async function (assert) {
+    test('if undefined, the background-color is grey', async function (assert) {
       await render(hbs`<OSS::Alert />`);
 
       assert.dom('.upf-alert .main-container').hasClass('main-container--plain');
@@ -60,7 +60,7 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
   });
 
   module('@closable parameter', function () {
-    test('it renders the cross which delete alert when you click on it, when @closable is true', async function (assert) {
+    test('if true, display the cross icon which delete alert when you click on it', async function (assert) {
       await render(hbs`<div><OSS::Alert @closable={{true}} /></div>`);
 
       assert.dom('.upf-alert').exists();
@@ -72,20 +72,21 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
       assert.dom('.upf-alert').doesNotExist();
     });
 
-    test('the cross icon is not displayed when @closable is false', async function (assert) {
+    test('if false, the cross icon is not displayed', async function (assert) {
       await render(hbs`<OSS::Alert @closable={{false}} />`);
 
       assert.dom('.upf-alert').exists();
       assert.dom('.upf-alert .main-container .fx-col i').doesNotExist();
     });
 
-    test('the cross icon is not displayed when @closable is undefined', async function (assert) {
+    test('if undefined, the cross icon is not displayed', async function (assert) {
       await render(hbs`<OSS::Alert />`);
 
       assert.dom('.upf-alert').exists();
       assert.dom('.upf-alert .main-container .fx-col i').doesNotExist();
     });
   });
+
   test('it renders the extra-content named block', async function (assert) {
     await render(hbs`<OSS::Alert><:extra-content><div>Hello</div></:extra-content></OSS::Alert>`);
 
