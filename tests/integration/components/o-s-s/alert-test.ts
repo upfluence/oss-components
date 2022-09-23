@@ -39,6 +39,7 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
       assert.dom('.upf-alert .subtitle').hasText(`Subitle ${skin}`);
     });
   });
+
   module('@plain parameter', function () {
     test('if true, the background-color is grey', async function (assert) {
       await render(hbs`<OSS::Alert @plain={{true}} />`);
