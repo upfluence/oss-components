@@ -29,19 +29,19 @@ export type FailedUploadResponse = { payload: { [key: string]: any } };
 export type ValidationResponse = {
   passes: boolean;
   validations: {
-    rule: UploadRule;
+    rule: FileValidator;
     passes: boolean;
   }[];
 };
 
-export type FileSizeRule = string;
-export type FileTypeRule = string[];
-export type UploadRule = FileSizeRule | FileTypeRule;
+export type FileSizeRule = { type: 'filesize'; value: string };
+export type FileTypeRule = { type: 'filetype'; value: string[] };
+export type FileValidator = FileSizeRule | FileTypeRule;
 
 export default interface Uploader {
   readonly url: string;
 
-  validate(request: UploadRequest, rules: UploadRule[]): ValidationResponse;
-  upload(request: UploadRequest, rules?: UploadRule[]): void;
+  validate(request: UploadRequest, rules: FileValidator[]): ValidationResponse;
+  upload(request: UploadRequest, rules?: FileValidator[]): void;
   buildHeaders(request: UploadRequest): { name: string; value: string }[];
 }

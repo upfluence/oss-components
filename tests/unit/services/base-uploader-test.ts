@@ -12,6 +12,61 @@ module('Unit | Service | base-uploader', function (hooks) {
     assert.ok(this.service);
   });
 
+  module('#validate method', function () {
+    module('FileType validator', function () {});
+
+    module('FileSize validator', function (hooks) {
+      hooks.beforeEach(function () {
+        this.request = {
+          file: new File(
+            [
+              new Blob([
+                'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=='
+              ])
+            ],
+            '1px.png',
+            { type: 'image/png' }
+          ),
+          privacy: 'private',
+          allowedExtensions: ['png'],
+          scope: 'anonymous'
+        };
+      });
+
+      test('it does not pass if the file is heavier than the maximum allowed', function (assert) {
+        this.validationRules = [{ type: 'filesize', value: '1B' }];
+        assert.deepEqual(this.service.validate(this.request, this.validationRules), {
+          passes: true,
+          validations: [
+            {
+              passes: false,
+              rule: {
+                type: 'filesize',
+                value: '1B'
+              }
+            }
+          ]
+        });
+      });
+
+      test('it passes if the file is heavier than the maximum allowed', function (assert) {
+        this.validationRules = [{ type: 'filesize', value: '10MB' }];
+        assert.deepEqual(this.service.validate(this.request, this.validationRules), {
+          passes: true,
+          validations: [
+            {
+              passes: true,
+              rule: {
+                type: 'filesize',
+                value: '10MB'
+              }
+            }
+          ]
+        });
+      });
+    });
+  });
+
   test('calling the `url` getter throws throws a NotImplemented error', function (assert: Assert) {
     try {
       this.service.url;

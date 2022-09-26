@@ -1,14 +1,14 @@
 import BaseUploader from '@upfluence/oss-components/services/base-uploader';
 import UploaderInterface, {
   UploadRequest,
-  UploadRule,
+  FileValidator,
   ValidationResponse
 } from '@upfluence/oss-components/types/uploader';
 
 export default class extends BaseUploader implements UploaderInterface {
   mode: 'success' | 'failure' = 'success';
 
-  upload(request: UploadRequest, validationRules?: UploadRule[]): void {
+  upload(request: UploadRequest, validationRules?: FileValidator[]): void {
     const validations: ValidationResponse = this.validate(request, validationRules || []);
 
     if (!validations.passes) {
