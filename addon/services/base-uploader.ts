@@ -34,6 +34,14 @@ class FileSizeValidator implements Validator {
 class FileTypeValidator implements Validator {
   static key: string = 'filetype';
 
+  private filetypeAliases: { [key: string]: string } = {
+    'image/svg': 'image/svg+xml'
+  };
+
+  private filetypeTemplates: { [key: string]: string[] } = {
+    image: ['image/png']
+  };
+
   rule: FileTypeRule;
 
   constructor(rule: FileTypeRule) {
@@ -43,8 +51,21 @@ class FileTypeValidator implements Validator {
   validate(request: UploadRequest): { rule: FileValidator; passes: boolean } {
     return {
       rule: this.rule,
-      passes: this.rule.value.includes(request.file.type)
+      passes: this.deconstructedFiletypes.includes(request.file.type)
     };
+  }
+
+  private get deconstructedFiletypes(): string[] {
+    return this.rule.value.reduce((acc: string[], filetype: string) => {
+      let filetypes = [this.filetypeAliases[filetype] ?? filetype];
+
+      if (Object.keys(this.filetypeTemplates).includes(filetype)) {
+        filetypes = this.filetypeTemplates[filetype];
+      }
+
+      acc = acc.concat(filetypes);
+      return acc;
+    }, []);
   }
 }
 

@@ -80,6 +80,22 @@ module('Unit | Service | base-uploader', function (hooks) {
           ]
         });
       });
+
+      test("it passes if the file's type matches one of a templated filetype", function (assert) {
+        this.validationRules = [{ type: 'filetype', value: ['image'] }];
+        assert.deepEqual(this.service.validate(this.request, this.validationRules), {
+          passes: true,
+          validations: [
+            {
+              passes: true,
+              rule: {
+                type: 'filetype',
+                value: ['image']
+              }
+            }
+          ]
+        });
+      });
     });
 
     module('FileSize validator', function () {
