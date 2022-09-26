@@ -13,30 +13,80 @@ module('Unit | Service | base-uploader', function (hooks) {
   });
 
   module('#validate method', function () {
-    module('FileType validator', function () {});
+    hooks.beforeEach(function () {
+      this.request = {
+        file: new File(
+          [
+            new Blob([
+              'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=='
+            ])
+          ],
+          '1px.png',
+          { type: 'image/png' }
+        ),
+        privacy: 'private',
+        scope: 'anonymous'
+      };
+    });
 
-    module('FileSize validator', function (hooks) {
-      hooks.beforeEach(function () {
-        this.request = {
-          file: new File(
-            [
-              new Blob([
-                'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=='
-              ])
-            ],
-            '1px.png',
-            { type: 'image/png' }
-          ),
-          privacy: 'private',
-          allowedExtensions: ['png'],
-          scope: 'anonymous'
-        };
+    test('it passes if no validation is provided', function (assert) {
+      this.validationRules = [];
+      assert.deepEqual(this.service.validate(this.request, this.validationRules), {
+        passes: true,
+        validations: []
+      });
+    });
+
+    test('it filters out rules with empty values and passes', function (assert) {
+      this.validationRules = [
+        { type: 'filetype', value: [] },
+        { type: 'filesize', value: null }
+      ];
+      assert.deepEqual(this.service.validate(this.request, this.validationRules), {
+        passes: true,
+        validations: []
+      });
+    });
+
+    module('FileType validator', function () {
+      test("it does not pass if the file's type is not one of the allowed ones", function (assert) {
+        this.validationRules = [{ type: 'filetype', value: ['application/pdf'] }];
+        assert.deepEqual(this.service.validate(this.request, this.validationRules), {
+          passes: false,
+          validations: [
+            {
+              passes: false,
+              rule: {
+                type: 'filetype',
+                value: ['application/pdf']
+              }
+            }
+          ]
+        });
       });
 
+      test("it passes if the file's type is one of the allowed ones", function (assert) {
+        this.validationRules = [{ type: 'filetype', value: ['image/png'] }];
+        assert.deepEqual(this.service.validate(this.request, this.validationRules), {
+          passes: true,
+          validations: [
+            {
+              passes: true,
+              rule: {
+                type: 'filetype',
+                value: ['image/png']
+              }
+            }
+          ]
+        });
+      });
+    });
+
+    module('FileSize validator', function () {
       test('it does not pass if the file is heavier than the maximum allowed', function (assert) {
         this.validationRules = [{ type: 'filesize', value: '1B' }];
         assert.deepEqual(this.service.validate(this.request, this.validationRules), {
-          passes: true,
+          passes: false,
           validations: [
             {
               passes: false,
@@ -94,7 +144,6 @@ module('Unit | Service | base-uploader', function (hooks) {
             { type: 'image/png' }
           ),
           privacy: 'private',
-          allowedExtensions: ['png'],
           scope: 'anonymous'
         },
         []

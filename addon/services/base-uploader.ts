@@ -1,9 +1,12 @@
 import Service from '@ember/service';
+import { isEmpty } from '@ember/utils';
+
 import UploaderInterface, {
   UploadRequest,
   FileValidator,
   ValidationResponse,
-  FileSizeRule
+  FileSizeRule,
+  FileTypeRule
 } from '@upfluence/oss-components/types/uploader';
 import parseFilesize from '@upfluence/oss-components/utils/filesize-parser';
 
@@ -28,13 +31,32 @@ class FileSizeValidator implements Validator {
   }
 }
 
-const AVAILABLE_VALIDATORS = [FileSizeValidator];
+class FileTypeValidator implements Validator {
+  static key: string = 'filetype';
+
+  rule: FileTypeRule;
+
+  constructor(rule: FileTypeRule) {
+    this.rule = rule;
+  }
+
+  validate(request: UploadRequest): { rule: FileValidator; passes: boolean } {
+    return {
+      rule: this.rule,
+      passes: this.rule.value.includes(request.file.type)
+    };
+  }
+}
+
+const AVAILABLE_VALIDATORS = [FileSizeValidator, FileTypeValidator];
 
 export default class BaseUploader extends Service implements UploaderInterface {
   validate(request: UploadRequest, rules: FileValidator[]): ValidationResponse {
+    const validations = this.buildValidators(rules).map((validator: Validator) => validator.validate(request));
+
     return {
-      passes: true,
-      validations: this.buildValidators(rules).map((validator: Validator) => validator.validate(request))
+      passes: validations.every((validation) => validation.passes),
+      validations
     };
   }
 
@@ -57,7 +79,7 @@ export default class BaseUploader extends Service implements UploaderInterface {
   private buildValidators(rules: FileValidator[]): Validator[] {
     return rules
       .filter((rule: FileValidator) => {
-        return AVAILABLE_VALIDATORS.find((validator) => validator.key === rule.type);
+        return AVAILABLE_VALIDATORS.find((validator) => validator.key === rule.type) && !isEmpty(rule.value);
       })
       .map((rule: FileValidator) => {
         const validator = AVAILABLE_VALIDATORS.find((validator) => validator.key === rule.type)!;

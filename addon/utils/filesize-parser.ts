@@ -1,4 +1,3 @@
-// implementation from https://github.com/patrickkettner/filesize-parser
 function validSize(n: string) {
   return !isNaN(parseFloat(n)) && isFinite(parseInt(n));
 }
@@ -15,9 +14,7 @@ const INCREMENT_BASE: any = [
 ];
 
 export default function parseFilesize(filesize: string) {
-  /* eslint-disable no-useless-escape */
   let parsed = filesize.toString().match(/^([0-9\.,]*)(?:\s*)?(.*)$/);
-  /* eslint-enable no-useless-escape */
 
   if (!parsed || !parsed[1] || !parsed[2]) {
     throw new Error('[filesize-parser] Could not parse the filesize provided');

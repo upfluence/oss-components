@@ -6,8 +6,6 @@ export enum FilePrivacy {
 export type UploadRequest = {
   file: File;
   privacy: FilePrivacy;
-
-  allowedExtensions: string[];
   scope: string;
 
   onValidationFailure?(response: ValidationResponse): void;
