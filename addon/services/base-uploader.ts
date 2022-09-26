@@ -15,13 +15,13 @@ export default class BaseUploader extends Service implements UploaderInterface {
 
   upload(_request: UploadRequest, _validationRules?: UploadRule[]): void {
     throw new Error(
-      '[@upfluence/oss-components::uploader] Not impemented error. Please extend this service and inherit this method.'
+      '[@upfluence/oss-components::uploader] NotImpemented: Please extend this service and inherit this method.'
     );
   }
 
   get url(): string {
     throw new Error(
-      '[@upfluence/oss-components::uploader] Not impemented error. Please extend this service and inherit this method.'
+      '[@upfluence/oss-components::uploader] NotImpemented: Please extend this service and inherit this method.'
     );
   }
 
