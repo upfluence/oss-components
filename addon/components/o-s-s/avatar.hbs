@@ -1,8 +1,8 @@
 <div class={{this.computedClass}} ...attributes>
-  {{#if this.displayInitial}}
+  {{#if this.displayInitials}}
     <span class="text-style-uppercase">{{@initials}}</span>
   {{else}}
-    <img src={{this.image}} alt={{t "oss-components.badge.image_alt"}} class={{this.imageClass}}
+    <img src={{this.image}} alt="avatar" class={{this.imageClass}}
          onerror={{this.imageLoadError}} loading="lazy" />
   {{/if}}
 </div>

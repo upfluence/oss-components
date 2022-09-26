@@ -22,11 +22,11 @@ export const DEFAULT_IMAGE_URL: string = '/assets/images/upfluence-white-logo.sv
 
 export default class OSSAvatar extends Component<OSSAvatarArgs> {
   @tracked hasError: boolean = false;
-  @tracked displayInitial: boolean = false;
+  @tracked displayInitials: boolean = false;
 
   constructor(owner: unknown, args: OSSAvatarArgs) {
     super(owner, args);
-    if (!args.image && args.initials) this.displayInitial = true;
+    if (!args.image && args.initials) this.displayInitials = true;
   }
 
   get image(): string | undefined {
@@ -52,7 +52,7 @@ export default class OSSAvatar extends Component<OSSAvatarArgs> {
   @action
   imageLoadError(event: Event): void {
     if (this.args.initials) {
-      this.displayInitial = true;
+      this.displayInitials = true;
       return;
     }
     (<HTMLImageElement>event.target).src = DEFAULT_IMAGE_URL;

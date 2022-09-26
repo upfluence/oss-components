@@ -9,7 +9,7 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
   setupRenderingTest(hooks);
 
   module('Default behavior', function () {
-    test('it displays the image when image is provided', async function (assert) {
+    test('it displays the image when it is provided', async function (assert) {
       await render(hbs`<OSS::Avatar @image="http://foo.co/bar.png" />`);
 
       assert.dom('.upf-avatar').exists();
@@ -17,7 +17,7 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
       assert.dom('.upf-avatar img').hasAttribute('src', 'http://foo.co/bar.png');
     });
 
-    test('it displays the initials when initials are provided', async function (assert) {
+    test('it displays the initials when they are provided', async function (assert) {
       await render(hbs`<OSS::Avatar @initials="TS" />`);
 
       assert.dom('.upf-avatar').exists();
@@ -62,7 +62,7 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
   });
 
   module('Error behavior', function () {
-    test('it throws an error if wrong size argument is passed', async function (assert: Assert) {
+    test('it throws an error if the wrong size argument is passed', async function (assert: Assert) {
       setupOnerror((err: Error) => {
         assert.equal(
           err.message,
@@ -75,7 +75,7 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
       await render(hbs`<OSS::Avatar @size="test" />`);
     });
 
-    test('it displays the initials when initials and image are provided but image loading get an error', async function (assert) {
+    test('it displays the initials when both initials and image are provided and the image fails to load', async function (assert) {
       await render(hbs`<OSS::Avatar @image="http://foo.co/bar.p" @initials="TS" />`);
       await waitFor('.upf-avatar span');
 
@@ -84,7 +84,7 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
       assert.dom('.upf-avatar span').hasText('TS');
     });
 
-    test('it displays the default image when image is provided but image loading get an error', async function (assert) {
+    test('it displays the placeholder image when the image provided in parameters fails to load', async function (assert) {
       await render(hbs`<OSS::Avatar @image="http://foo.co/bar.p" />`);
       await waitUntil(function () {
         return find('.upf-avatar img')?.getAttribute('src') === DEFAULT_IMAGE_URL;
