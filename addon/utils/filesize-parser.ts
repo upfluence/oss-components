@@ -14,7 +14,7 @@ const INCREMENT_BASE: any = [
 ];
 
 export default function parseFilesize(filesize: string) {
-  let parsed = filesize.toString().match(/^([0-9\.,]*)(?:\s*)?(.*)$/);
+  const parsed = filesize.toString().match(/^([0-9\.,]*)(?:\s*)?(.*)$/);
 
   if (!parsed || !parsed[1] || !parsed[2]) {
     throw new Error('[filesize-parser] Could not parse the filesize provided');

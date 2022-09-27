@@ -35,10 +35,12 @@ export default class extends BaseUploader implements UploaderInterface {
       request.onFailure?.({
         payload: {}
       });
+
+      this.mode = 'success';
     }
   }
 
-  get url() {
+  get url(): string {
     return 'https://oss-components.upfluence.co';
   }
 }
