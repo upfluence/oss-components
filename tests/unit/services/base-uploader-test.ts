@@ -50,7 +50,7 @@ module('Unit | Service | base-uploader', function (hooks) {
 
     module('FileType validator', function () {
       test("it does not pass if the file's type is not one of the allowed ones", function (assert) {
-        this.validationRules = [{ type: 'filetype', value: ['application/pdf'] }];
+        this.validationRules = [{ type: 'filetype', value: ['pdf'] }];
         assert.deepEqual(this.service.validate(this.request, this.validationRules), {
           passes: false,
           validations: [
@@ -58,7 +58,7 @@ module('Unit | Service | base-uploader', function (hooks) {
               passes: false,
               rule: {
                 type: 'filetype',
-                value: ['application/pdf']
+                value: ['pdf']
               }
             }
           ]
@@ -66,7 +66,7 @@ module('Unit | Service | base-uploader', function (hooks) {
       });
 
       test("it passes if the file's type is one of the allowed ones", function (assert) {
-        this.validationRules = [{ type: 'filetype', value: ['image/png'] }];
+        this.validationRules = [{ type: 'filetype', value: ['png'] }];
         assert.deepEqual(this.service.validate(this.request, this.validationRules), {
           passes: true,
           validations: [
@@ -74,7 +74,7 @@ module('Unit | Service | base-uploader', function (hooks) {
               passes: true,
               rule: {
                 type: 'filetype',
-                value: ['image/png']
+                value: ['png']
               }
             }
           ]
@@ -90,7 +90,7 @@ module('Unit | Service | base-uploader', function (hooks) {
               passes: true,
               rule: {
                 type: 'filetype',
-                value: ['image']
+                value: ['png', 'jpg', 'jpeg']
               }
             }
           ]

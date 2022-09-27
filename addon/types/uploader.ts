@@ -1,6 +1,6 @@
 export enum FilePrivacy {
-  PUBLIC,
-  PRIVATE
+  PUBLIC = 'public',
+  PRIVATE = 'private'
 }
 
 export type UploadRequest = {
