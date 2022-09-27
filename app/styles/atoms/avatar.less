@@ -1,0 +1,58 @@
+.upf-avatar {
+  .border;
+  .border-color-default;
+  .border-radius-round;
+  background-color: var(--color-gray-200);
+  color: var(--color-gray-400);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &--xs {
+    .text-size-3;
+    height: var(--spacing-px-18);
+    width: var(--spacing-px-18);
+    .default-img-placeholder {
+      height: var(--spacing-px-12);
+      width: var(--spacing-px-12);
+    }
+  }
+
+  &--sm {
+    .text-size-4;
+    height: var(--spacing-px-24);
+    width: var(--spacing-px-24);
+    .default-img-placeholder {
+      height: var(--spacing-px-12);
+      width: var(--spacing-px-12);
+    }
+  }
+
+  &--md {
+    .text-size-5;
+    height: var(--spacing-px-36);
+    width: var(--spacing-px-36);
+    .default-img-placeholder {
+      height: var(--spacing-px-18);
+      width: var(--spacing-px-18);
+    }
+  }
+
+  &--lg {
+    .text-size-5;
+    height: var(--spacing-px-48);
+    width: var(--spacing-px-48);
+    .default-img-placeholder {
+      height: var(--spacing-px-24);
+      width: var(--spacing-px-24);
+    }
+  }
+}
