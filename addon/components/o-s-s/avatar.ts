@@ -30,11 +30,11 @@ export default class OSSAvatar extends Component<OSSAvatarArgs> {
   }
 
   get image(): string | undefined {
-    return !this.args.image && !this.args.initials ? DEFAULT_IMAGE_URL : this.args.image;
+    return this.args.image ?? DEFAULT_IMAGE_URL;
   }
 
   get imageClass(): string {
-    return this.image === DEFAULT_IMAGE_URL || this.hasError ? 'img-placeholder' : '';
+    return this.image === DEFAULT_IMAGE_URL || this.hasError ? 'default-img-placeholder' : '';
   }
 
   get computedClass(): string {
