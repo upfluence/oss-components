@@ -31,3 +31,6 @@ oss-components:
   select:
     search: Search
     placeholder: Select
+  upload-area:
+    drop_file: "Drop your file here, or"
+    browse: "browse"
