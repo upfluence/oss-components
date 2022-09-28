@@ -42,7 +42,10 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A lightweight version of the OSS Modal. Used mostly to confirm user actions.'
+        component: `A lightweight version of the OSS Modal. Used mostly to confirm user actions.<br><br>
+        Notes:<br>
+        - The footer part of the component defaults to fx-row fx-gap-px-12 in desktop mode.<br>
+        - In mobile mode it defaults to fx-col (with column-reverse to have the cancel buttons at the bottom) and fx-gap-px-9`
       }
     }
   }
