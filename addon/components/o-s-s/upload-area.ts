@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import { isEmpty } from '@ember/utils';
 
 import Uploader, {
   FileArtifact,
@@ -24,8 +25,8 @@ interface OSSUploadAreaArgs {
 
 export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   fileInput?: HTMLInputElement;
-  selectedFile?: File;
 
+  @tracked selectedFile?: File;
   @tracked dragging: boolean = false;
 
   get computedClass(): string {
@@ -54,6 +55,10 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
 
   get scope(): string {
     return this.args.scope || 'anonymous';
+  }
+
+  get hasFile(): boolean {
+    return !isEmpty(this.args.artifact) || !isEmpty(this.selectedFile);
   }
 
   @action

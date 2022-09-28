@@ -1,24 +1,27 @@
-<div class={{this.computedClass}}
-     {{on "dragover" this._allowDropEvent}}
-     {{on "dragenter" this._onDragEnter}}
-     {{on "dragleave" this._onDragLeave}}
-     {{on "drop" this._onDrop}}
-     ...attributes>
-  <div class="fx-gap-px-12 fx-xalign-center {{if (eq this.size 'lg') 'fx-col' 'fx-row fx-1'}}">
-    <div class="oss-upload-area__illustration">
-      <img src="/@upfluence/oss-components/assets/images/upload-area-illustration.svg" />
-    </div>
+{{#if this.hasFile}}
+{{else}}
+  <div class={{this.computedClass}}
+       {{on "dragover" this._allowDropEvent}}
+       {{on "dragenter" this._onDragEnter}}
+       {{on "dragleave" this._onDragLeave}}
+       {{on "drop" this._onDrop}}
+       ...attributes>
+    <div class="fx-gap-px-12 fx-xalign-center {{if (eq this.size 'lg') 'fx-col' 'fx-row fx-1'}}">
+      <div class="oss-upload-area__illustration">
+        <img src="/@upfluence/oss-components/assets/images/upload-area-illustration.svg" />
+      </div>
 
-    <div class="fx-col fx-gap-px-3 {{if (eq this.size 'lg') 'fx-xalign-center'}}">
-      <span class="fx-row font-color-gray-900">
-        {{t "oss-components.upload-area.drop_file" htmlSafe=true}}
-        <OSS::Link @label={{t "oss-components.upload-area.browse"}} {{on "click" this.triggerFileBrowser}} />
-      </span>
-      <span class="font-color-gray-500">
-        {{@subtitle}}
-      </span>
-    </div>
+      <div class="fx-col fx-gap-px-3 {{if (eq this.size 'lg') 'fx-xalign-center'}}">
+        <span class="fx-row font-color-gray-900">
+          {{t "oss-components.upload-area.drop_file" htmlSafe=true}}
+          <OSS::Link @label={{t "oss-components.upload-area.browse"}} class="margin-left-px-3" {{on "click" this.triggerFileBrowser}} />
+        </span>
+        <span class="font-color-gray-500">
+          {{@subtitle}}
+        </span>
+      </div>
 
-    <input type="file" {{on "change" this.onFileSelected}} {{did-insert this.assignFileInput}} />
+      <input type="file" {{on "change" this.onFileSelected}} {{did-insert this.assignFileInput}} />
+    </div>
   </div>
-</div>
+{{/if}}
