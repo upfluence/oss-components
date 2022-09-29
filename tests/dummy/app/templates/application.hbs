@@ -1,16 +1,16 @@
 <div class="fx-row fx-gap-px-10 margin-md fx-xalign-center">
   <OSS::Avatar @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
-   @initials="Ts" />
+               @initials="Ts" />
   <OSS::Avatar @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
-   @initials="Ts" @size="xs" />
+               @initials="Ts" @size="xs" />
   <OSS::Avatar @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
-   @initials="Ts" @size="sm" />
+               @initials="Ts" @size="sm" />
   <OSS::Avatar @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
-   @initials="Ts" @size="md" />
+               @initials="Ts" @size="md" />
   <OSS::Avatar @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
-   @initials="Ts" @size="lg" />
-   <OSS::Avatar @image="https://reachr-assets.s3.us-wes-2.amazonaws.com/influencer-server/influencer/7219681.png"
-   @initials="Ts" @size="md" />
+               @initials="Ts" @size="lg" />
+  <OSS::Avatar @image="https://reachr-assets.s3.us-wes-2.amazonaws.com/influencer-server/influencer/7219681.png"
+               @initials="Ts" @size="md" />
 </div>
 
 <div class="fx-row fx-gap-px-10 margin-md fx-xalign-center">
@@ -117,6 +117,10 @@
       </:option>
     </OSS::Select>
   </div>
+</div>
+<div class="fx-row fx-1 margin-md">
+  <OSS::CurrencyInput @currency={{this.currency}} @value={{this.currencyValue}}
+                      @onChange={{this.onCurrencyInputChange}} @errorMessage="This is an error message" />
 </div>
 <div class="fx-row fx-1 margin-md">
   <OSS::CurrencyInput @currency={{this.currency}} @value={{this.currencyValue}}
@@ -227,6 +231,8 @@
       <OSS::Button @skin="tertiary" @label="tertiary" @icon="fas fa-plus" @size="md" />
       <OSS::Button @skin="tertiary" @square="true" @icon="fas fa-plus" @size="md" />
     </div>
+  </div>
+  <div class="fx-row fx-gap-px-12">
     <div class="fx-col fx-gap-px-12">
       <OSS::Button @skin="xtd-orange" @label="Extended orange" @icon="fas fa-plus" @size="md" />
       <OSS::Button @skin="xtd-orange" @square="true" @icon="fas fa-plus" @size="md" />

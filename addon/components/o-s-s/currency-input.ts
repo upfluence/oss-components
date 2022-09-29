@@ -9,6 +9,7 @@ interface OSSCurrencyInputArgs {
   value: number;
   onChange(currency: string, value: number): void;
   onlyCurrency?: boolean;
+  errorMessage?: string;
 }
 
 const NUMERIC_ONLY = /^[0-9]$/i;

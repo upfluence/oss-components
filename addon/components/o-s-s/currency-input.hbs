@@ -1,5 +1,5 @@
-<div class="currency-input-container fx-1" ...attributes>
-  <div class="currency-input {{if @onlyCurrency " onlycurrency"}} upf-input fx-row fx-1 fx-xalign-center">
+<div class="currency-input-container fx-1 {{if @errorMessage 'currency-input-container--errored'}}" ...attributes>
+  <div class="currency-input {{if @onlyCurrency 'onlycurrency'}} upf-input fx-row fx-1 fx-xalign-center">
     <div class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between" role="button"
          {{on "click" this.toggleCurrencySelector}}>
       <div class="fx-col">
@@ -21,6 +21,11 @@
              min="0" autocomplete="off" {{on "keyup" this.notifyChanges}} />
     {{/unless}}
   </div>
+  {{#if @errorMessage}}
+    <div class="font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center">
+      <i class="far fa-exclamation-triangle"></i> {{@errorMessage}}
+    </div>
+  {{/if}}
   {{#if this.currencySelectorShown}}
     <OSS::InfiniteSelect @items={{this.filteredCurrencies}} @onSearch={{this.onSearch}}
                          @onSelect={{this.onSelect}}
