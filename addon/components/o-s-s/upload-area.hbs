@@ -28,9 +28,12 @@
               {{on "click" this.triggerFileBrowser}} />
           {{/if}}
         </div>
-        <span class="font-color-gray-500">
-          {{@subtitle}}
-        </span>
+
+        {{#if @subtitle}}
+          <span class="font-color-gray-500">
+            {{@subtitle}}
+          </span>
+        {{/if}}
       </div>
 
       <input type="file" {{on "change" this.onFileSelected}} {{did-insert this.assignFileInput}} />
