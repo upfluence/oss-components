@@ -102,7 +102,6 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
 
   @action
   _onDrop(event: DragEvent): void {
-    event.stopPropagation();
     event.preventDefault();
     const file = event.dataTransfer?.files[0];
 
@@ -116,7 +115,6 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   private _handleFileUpload(file: File): void {
     if (this._validateFile(file)) {
       this.selectedFile = file;
-      return;
     }
   }
 

@@ -35,7 +35,7 @@ oss-components:
     drop_file:
       default: Drop your file here, or
       disabled: Drop your file here, or browse
-    browse: "browse"
+    browse: browse
     errors:
       filetype:
         title: Upload error
