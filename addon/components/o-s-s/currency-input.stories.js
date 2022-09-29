@@ -38,6 +38,16 @@ export default {
         defaultValue: { summary: false }
       },
       control: { type: 'boolean' }
+    },
+    errorMessage: {
+      description: 'If provided, will display a red border and the error message below the input.',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: false }
+      },
+      control: { type: 'text' }
     }
   },
   parameters: {
@@ -51,7 +61,8 @@ export default {
 
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
-      <OSS::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}} @onlyCurrency={{this.onlyCurrency}} />
+      <OSS::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}}
+                          @onlyCurrency={{this.onlyCurrency}} @errorMessage={{this.errorMessage}} />
   `,
   context: args
 });
@@ -61,5 +72,6 @@ BasicUsage.args = {
   value: 42,
   currency: 'USD',
   onChange: action('onChange'),
-  onlyCurrency: false
+  onlyCurrency: false,
+  errorMessage: ''
 };

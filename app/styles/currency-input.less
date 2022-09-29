@@ -1,6 +1,23 @@
 .currency-input-container {
   position: relative;
 
+  &--errored {
+    .currency-input {
+      .border;
+      .border-color-error;
+      .border-radius-default;
+
+      input:focus {
+        .border-color-error;
+        outline: none;
+      }
+
+      &:focus-within {
+        .border-color-error !important;
+      }
+    }
+  }
+
   .upf-infinite-select {
     max-width: 100%;
     min-width: 150px;
@@ -31,7 +48,7 @@
       padding-right: var(--spacing-px-12);
       margin-right: var(--spacing-px-12);
     }
-    
+
     input {
       border: none;
       background-color: transparent;
@@ -49,11 +66,11 @@
 
   .onlycurrency {
     padding-right: 0;
-    
+
     .currency-selector {
       border-right: none;
       margin-right: 0;
-      width:100%;
+      width: 100%;
     }
   }
 }
