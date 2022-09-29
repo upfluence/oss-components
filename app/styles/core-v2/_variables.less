@@ -36,6 +36,13 @@
 
     .generate-spacing-vars(@n, (@i + 6));
   }
+
+  .generate-width-height-pc-classes(100);
+  .generate-width-height-pc-classes(@n, @i: 0) when (@i =< @n) {
+    .width-pc-@{i} { width: calc(@i * 1%); }
+    .height-pc-@{i} { height: calc(@i * 1%); }
+    .generate-width-height-pc-classes(@n, (@i + 10));
+  }
 }
 
 .box-shadow-lg { box-shadow: var(--box-shadow-lg); }
