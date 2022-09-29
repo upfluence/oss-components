@@ -8,14 +8,13 @@
       .border-radius-default;
 
       input:focus {
-        .border-color-error;
+        .border-color-error !important;
         outline: none;
       }
-
-      &:focus-within {
-        .border-color-error !important;
-      }
     }
+  }
+  .currency-input.upf-input:focus-within {
+    .border-color-error;
   }
 
   .upf-infinite-select {
