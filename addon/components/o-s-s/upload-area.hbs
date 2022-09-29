@@ -12,10 +12,22 @@
       </div>
 
       <div class="fx-col fx-gap-px-3 {{if (eq this.size 'lg') 'fx-xalign-center'}}">
-        <span class="fx-row font-color-gray-900">
-          {{t "oss-components.upload-area.drop_file" htmlSafe=true}}
-          <OSS::Link @label={{t "oss-components.upload-area.browse"}} class="margin-left-px-3" {{on "click" this.triggerFileBrowser}} />
-        </span>
+        <div class="fx-row fx-xalign-center fx-gap-px-3">
+          {{#if @disabled}}
+            <span class="font-color-gray-500">
+              {{t "oss-components.upload-area.drop_file.disabled"}}
+            </span>
+          {{else}}
+            <span class="font-color-gray-900">
+              {{t "oss-components.upload-area.drop_file.default"}}
+            </span>
+
+            <OSS::Link
+              @label={{t "oss-components.upload-area.browse"}}
+              class="margin-left-px-3"
+              {{on "click" this.triggerFileBrowser}} />
+          {{/if}}
+        </div>
         <span class="font-color-gray-500">
           {{@subtitle}}
         </span>

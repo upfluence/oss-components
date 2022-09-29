@@ -1,8 +1,10 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 
+import ToastService from '@upfluence/oss-components/services/toast';
 import Uploader, {
   FileArtifact,
   FileValidator,
@@ -24,6 +26,9 @@ interface OSSUploadAreaArgs {
 }
 
 export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
+  @service declare intl: any;
+  @service declare toast: ToastService;
+
   fileInput?: HTMLInputElement;
 
   @tracked selectedFile?: File;
@@ -122,13 +127,24 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
       scope: this.scope
     };
 
-    const validations = this.args.uploader.validate(request, this.args.rules || []);
+    const validationResponse = this.args.uploader.validate(request, this.args.rules || []);
 
-    if (validations.passes) {
+    if (validationResponse.passes) {
       return true;
     }
 
-    // run toasts
+    validationResponse.validations.forEach((v) => {
+      const intlArgs: { [key: string]: string } = {};
+
+      if (v.rule.type === 'filesize') {
+        intlArgs.max_filesize = v.rule.value;
+      }
+
+      this.toast.error(
+        this.intl.t(`oss-components.upload-area.errors.${v.rule.type}.description`, intlArgs),
+        this.intl.t(`oss-components.upload-area.errors.${v.rule.type}.title`)
+      );
+    });
 
     return false;
   }
