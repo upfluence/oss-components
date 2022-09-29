@@ -46,8 +46,7 @@ export default class BaseUploader extends Service implements UploaderInterface {
 
         // @ts-ignore
         return new validator(rule);
-      })
-      .filter((x) => x);
+      });
   }
 }
 
