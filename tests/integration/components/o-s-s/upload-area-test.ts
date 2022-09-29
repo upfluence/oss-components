@@ -22,7 +22,10 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
     module('browse action', function () {
       test('the browse text is contained in a link', async function (assert) {
         await render(hbs`
-      <OSS::UploadArea @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}} @subtitle={{this.subtitle}} />`);
+          <OSS::UploadArea
+            @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+            @subtitle={{this.subtitle}} />
+        `);
 
         assert.dom('.oss-upload-area .fx-col.fx-gap-px-3 .fx-row.fx-xalign-center.fx-gap-px-3 .upf-link').exists();
         assert
@@ -32,8 +35,10 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
 
       test('clicking on browse text opens the hidden file input', async function (assert) {
         await render(hbs`
-      <OSS::UploadArea @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}} @subtitle={{this.subtitle}} />`);
-
+          <OSS::UploadArea
+            @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+            @subtitle={{this.subtitle}} />
+        `);
         assert.dom('.oss-upload-area input[type="file"]').exists();
 
         const fileInput: HTMLInputElement = document.querySelector('.oss-upload-area input[type="file"]')!;
@@ -47,7 +52,10 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
     module('size', function () {
       test('it renders in the default size when no size arg is provided', async function (assert) {
         await render(hbs`
-      <OSS::UploadArea @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}} @subtitle={{this.subtitle}} />`);
+          <OSS::UploadArea
+            @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+            @subtitle={{this.subtitle}} />
+        `);
 
         assert.dom('.oss-upload-area').hasClass('oss-upload-area--md');
       });
@@ -55,7 +63,10 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
       test('it renders in the default size when no valid size is provided', async function (assert) {
         this.size = 'foo';
         await render(hbs`
-      <OSS::UploadArea @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}} @subtitle={{this.subtitle}} />`);
+          <OSS::UploadArea
+            @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+            @subtitle={{this.subtitle}} />
+        `);
 
         assert.dom('.oss-upload-area').hasClass('oss-upload-area--md');
       });
@@ -63,7 +74,10 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
       test('it renders in the provided size when it is a valid one', async function (assert) {
         this.size = 'lg';
         await render(hbs`
-      <OSS::UploadArea @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}} @subtitle={{this.subtitle}} />`);
+          <OSS::UploadArea
+            @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+            @subtitle={{this.subtitle}} />
+        `);
 
         assert.dom('.oss-upload-area').hasClass('oss-upload-area--lg');
       });
@@ -72,8 +86,12 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
     module('subtitle', function () {
       test('it renders only the title when no subtitle is provided', async function (assert) {
         this.subtitle = null;
+
         await render(hbs`
-      <OSS::UploadArea @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}} @subtitle={{this.subtitle}} />`);
+          <OSS::UploadArea
+            @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+            @subtitle={{this.subtitle}} />
+        `);
 
         assert
           .dom('.oss-upload-area .fx-col.fx-gap-px-3 .fx-row.fx-xalign-center.fx-gap-px-3')
@@ -81,9 +99,12 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         assert.dom('.oss-upload-area .fx-col.fx-gap-px-3 .font-color-gray-500').doesNotExist();
       });
 
-      test('it renders only the subtitle when provided', async function (assert) {
+      test('it renders the subtitle when provided', async function (assert) {
         await render(hbs`
-      <OSS::UploadArea @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}} @subtitle={{this.subtitle}} />`);
+          <OSS::UploadArea
+            @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+            @subtitle={{this.subtitle}} />
+        `);
 
         assert
           .dom('.oss-upload-area .fx-col.fx-gap-px-3 .fx-row.fx-xalign-center.fx-gap-px-3')
@@ -96,13 +117,20 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
     module('disabled mode', function () {
       test('the right class is applied on the component', async function (assert) {
         await render(hbs`
-      <OSS::UploadArea @uploader={{this.mockUploader}} @disabled={{true}} @rules={{this.validationRules}} @size={{this.size}} @subtitle={{this.subtitle}} />`);
+          <OSS::UploadArea
+            @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+            @disabled={{true}} @subtitle={{this.subtitle}} />
+        `);
 
         assert.dom('.oss-upload-area').hasClass('oss-upload-area--disabled');
       });
+
       test('the browse word is not actionable', async function (assert) {
         await render(hbs`
-      <OSS::UploadArea @uploader={{this.mockUploader}} @disabled={{true}} @rules={{this.validationRules}} @size={{this.size}} @subtitle={{this.subtitle}} />`);
+          <OSS::UploadArea
+            @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+            @disabled={{true}} @subtitle={{this.subtitle}} />
+        `);
 
         assert
           .dom('.oss-upload-area .fx-col.fx-gap-px-3 .fx-row.fx-xalign-center.fx-gap-px-3 .upf-link')
@@ -115,7 +143,10 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
     module('disabled mode', function () {
       test('dragging a file over the component does not do nothing', async function (assert) {
         await render(hbs`
-      <OSS::UploadArea @uploader={{this.mockUploader}} @disabled={{true}} @rules={{this.validationRules}} @size={{this.size}} @subtitle={{this.subtitle}} />`);
+          <OSS::UploadArea
+            @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+            @disabled={{true}} @subtitle={{this.subtitle}} />
+        `);
 
         await triggerEvent('.oss-upload-area', 'dragenter');
         assert.dom('.oss-upload-area').hasNoClass('oss-upload-area--dragging');
@@ -137,7 +168,10 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
 
       test('dragging a file over the component applies the right class', async function (assert) {
         await render(hbs`
-          <OSS::UploadArea @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}} @subtitle={{this.subtitle}} />`);
+          <OSS::UploadArea
+            @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+            @subtitle={{this.subtitle}} />
+        `);
 
         await triggerEvent('.oss-upload-area', 'dragenter');
         assert.dom('.oss-upload-area').hasClass('oss-upload-area--dragging');
@@ -147,8 +181,9 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         sinon.spy(this.mockUploader, 'validate');
 
         await render(hbs`
-          <OSS::UploadArea @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
-                           @subtitle={{this.subtitle}} />
+          <OSS::UploadArea
+            @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+            @subtitle={{this.subtitle}} />
         `);
         await triggerEvent('.oss-upload-area', 'drop', {
           dataTransfer: { files: [this.file] }
@@ -166,7 +201,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         );
       });
 
-      test('error toasts are display if the dropped file does not pass the validation rules', async function (assert) {
+      test('error toasts are displayed if the dropped file does not pass the validation rules', async function (assert) {
         this.validationRules = [
           { type: 'filesize', value: '1B' },
           { type: 'filetype', value: ['pdf'] }
@@ -176,8 +211,9 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         const intlService = this.owner.lookup('service:intl');
 
         await render(hbs`
-          <OSS::UploadArea @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
-                           @subtitle={{this.subtitle}} />
+          <OSS::UploadArea
+            @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+            @subtitle={{this.subtitle}} />
         `);
         await triggerEvent('.oss-upload-area', 'drop', {
           dataTransfer: { files: [this.file] }
