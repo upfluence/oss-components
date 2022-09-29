@@ -1,5 +1,4 @@
 ### What does this PR do?
-
 <!-- A brief description of the context of this pull request and its purpose. -->
 
 Related to: #<!-- enter issue number here -->
@@ -13,7 +12,6 @@ Related to: #<!-- enter issue number here -->
 <!-- Feature: Implements X thrift service / Z HTTP REST API added, provide instructions on how leverage your feature from staging or your workstation -->
 
 ### Good PR checklist
-
 - [ ] Title makes sense
 - [ ] Is against the correct branch
 - [ ] Only addresses one issue
@@ -22,10 +20,3 @@ Related to: #<!-- enter issue number here -->
 - [ ] Added/updated documentation
 - [ ] Migrated touched components to Glimmer Components
 - [ ] Properly labeled
-
-### Additional Notes
-
-<!--
-    You can add anything you want here, an explanation on the way you built your implementation,
-    precisions on the origin of the bug, gotchas you need to mention.
- -->
