@@ -51,7 +51,7 @@ disable_pre_hook: ## Disables the git pre-push hook.
 	@echo ""; echo "-------------------------------"; echo ""
 	yarn remove-pre-push-hook
 
-help: ## Displays the help message
+help: clear upfluence ## Displays the help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
 h: help ## Displays the help message
