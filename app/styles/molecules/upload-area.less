@@ -1,53 +1,92 @@
-.oss-upload-area {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border: 1px dashed var(--color-border-default);
-  border-radius: var(--border-radius-md);
-
+.oss-upload-area-container {
   input[type='file'] {
     display: none;
   }
+  .oss-upload-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  .oss-upload-area__illustration {
-    position: relative;
-
-    img {
-      border-radius: var(--border-radius-md);
-    }
-  }
-
-  &--md {
-    padding: var(--spacing-px-18);
-
-    .oss-upload-area__illustration img {
-      width: 32px;
-      height: 32px;
-    }
-  }
-
-  &--lg {
-    height: 165px;
-    padding: var(--spacing-px-24);
+    border: 1px dashed var(--color-border-default);
+    border-radius: var(--border-radius-md);
 
     .oss-upload-area__illustration {
       position: relative;
 
       img {
-        width: 48px;
-        height: 56px;
+        border-radius: var(--border-radius-md);
       }
+    }
+
+    &--md {
+      padding: var(--spacing-px-18);
+
+      .oss-upload-area__illustration img {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    &--lg {
+      height: 165px;
+      padding: var(--spacing-px-24);
+
+      .oss-upload-area__illustration {
+        position: relative;
+
+        img {
+          width: 48px;
+          height: 56px;
+        }
+      }
+    }
+
+    &--dragging, &:hover:not(&--disabled) {
+      background-color: var(--color-primary-50);
+      border-color: var(--color-primary-500);
+      cursor: pointer;
+    }
+
+    &--disabled {
+      background-color: var(--color-gray-200);
+      border-color: var(--color-gray-300);
     }
   }
 
-  &--dragging {
-    background-color: var(--color-primary-50);
-    border-color: var(--color-primary-500);
-  }
+  .oss-upload-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-px-12);
 
-  &--disabled {
-    background-color: var(--color-gray-200);
-    border-color: var(--color-gray-300);
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--border-radius-md);
+
+    padding: var(--spacing-px-18);
+
+    &__loader {
+      height: 30px;
+      width: 30px;
+      border-radius: 50%;
+      transition: background-image 0.5s linear;
+
+      .value {
+        height: 26px;
+        width: 26px;
+        top: 2px;
+        left: 2px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        border-radius: 50%;
+        background-color: var(--color-white);
+        color: var(--color-gray-500);
+        font-size: 12 / @rem;
+      }
+    }
+
+    &--errored {
+      border-color: var(--color-error-500);
+    }
   }
 }

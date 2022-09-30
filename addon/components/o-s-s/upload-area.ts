@@ -1,8 +1,8 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
-import { isEmpty } from '@ember/utils';
 
 import ToastService from '@upfluence/oss-components/services/toast';
 import Uploader, {
@@ -23,6 +23,7 @@ interface OSSUploadAreaArgs {
   size?: 'lg' | 'md';
 
   onUploadSuccess(artifact: FileArtifact): void;
+  onFileDeletion?(): void;
 }
 
 export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
@@ -31,8 +32,24 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
 
   fileInput?: HTMLInputElement;
 
-  @tracked selectedFile?: File;
+  @tracked selectedFile?: File | FileArtifact;
   @tracked dragging: boolean = false;
+
+  constructor(owner: unknown, args: OSSUploadAreaArgs) {
+    super(owner, args);
+
+    assert('[OSS::UploadArea] The uploader argument is mandatory', args.uploader);
+
+    if (args.artifact) {
+      this.selectedFile = args.artifact;
+    }
+  }
+
+  get illustration(): string {
+    const root = '/@upfluence/oss-components/assets/images/upload-area/';
+    const path = this.args.disabled ? `disabled-${this.size}.svg` : `default-${this.size}.svg`;
+    return root + path;
+  }
 
   get computedClass(): string {
     const classes = ['oss-upload-area', 'fx-1'];
@@ -62,24 +79,22 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
     return this.args.scope || 'anonymous';
   }
 
-  get hasFile(): boolean {
-    return !isEmpty(this.args.artifact) || !isEmpty(this.selectedFile);
-  }
-
   @action
   assignFileInput(element: HTMLInputElement): void {
     this.fileInput = element;
   }
 
   @action
-  triggerFileBrowser(event: MouseEvent): void {
-    event.stopPropagation();
+  triggerFileBrowser(event?: MouseEvent): void {
+    event?.stopPropagation();
+    if (this.args.disabled) return;
     this.fileInput?.click();
   }
 
   @action
   onFileSelected(event: Event): void {
     this._handleFileUpload(((<HTMLInputElement>event.target).files || [])[0]);
+    (<HTMLInputElement>event.target).value = '';
   }
 
   @action
@@ -110,6 +125,13 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
     }
 
     this.dragging = false;
+  }
+
+  @action
+  onFileDeletion(event?: MouseEvent): void {
+    event?.stopPropagation();
+    this.selectedFile = undefined;
+    this.args.onFileDeletion?.();
   }
 
   private _handleFileUpload(file: File): void {

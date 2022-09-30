@@ -42,3 +42,22 @@ export default function parseFilesize(filesize: string) {
 
   throw new Error(`${unit} doesn't appear to be a valid unit`);
 }
+
+export function humanizeFilesize(bytes: number): string {
+  const threshold = 1000;
+
+  if (Math.abs(bytes) < threshold) {
+    return bytes + ' B';
+  }
+
+  const units = ['KB', 'MB', 'GB'];
+  let unitIndex = -1;
+  const roundValue = 10;
+
+  do {
+    bytes /= threshold;
+    ++unitIndex;
+  } while (Math.round(Math.abs(bytes) * roundValue) / roundValue >= threshold && unitIndex < units.length - 1);
+
+  return bytes.toFixed(1) + units[unitIndex];
+}
