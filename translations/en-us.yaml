@@ -31,3 +31,17 @@ oss-components:
   select:
     search: Search
     placeholder: Select
+  upload-area:
+    drop_file:
+      default: Drop your file here, or
+      disabled: Drop your file here, or browse
+    browse: browse
+    errors:
+      server: Upload failed, please try again
+      try_again: Try again
+      filetype:
+        title: Upload error
+        description: The type of the file you uploaded is not allowed.
+      filesize:
+        title: Upload error
+        description: "The file you uploaded is too heavy. Maximum file size: {max_filesize}"
