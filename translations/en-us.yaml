@@ -37,6 +37,7 @@ oss-components:
       disabled: Drop your file here, or browse
     browse: browse
     errors:
+      server: Upload failed, please try again
       filetype:
         title: Upload error
         description: The type of the file you uploaded is not allowed.

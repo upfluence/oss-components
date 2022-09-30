@@ -1,1 +1,1 @@
-export { default } from '@upfluence/oss-components/utils/filesize-parser';
+export { default, humanizeFilesize } from '@upfluence/oss-components/utils/filesize-parser';

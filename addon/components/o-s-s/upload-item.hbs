@@ -1,0 +1,53 @@
+<div class="oss-upload-item {{if this.error 'oss-upload-item--errored'}}">
+  <OSS::Badge @icon={{this.icon}} />
+
+  <div class="fx-row fx-1 fx-malign-space-between fx-xalign-center">
+    <div class="fx-col fx-gap-px-3">
+      <span class="font-color-gray-900" data-control-name="upload-item-filename">
+        {{this.filename}}
+      </span>
+
+      {{#if this.error}}
+        <span class="font-color-error-500">{{t "oss-components.upload-area.errors.server"}}</span>
+      {{else if this.filesize}}
+        <span class="font-color-gray-500" data-control-name="upload-item-filesize">
+          {{this.filesize}}
+        </span>
+      {{/if}}
+    </div>
+
+    <div class="fx-row fx-gap-px-6 fx-xalign-center">
+      {{#if this.uploading}}
+        {{! template-lint-disable no-triple-curlies}}
+        <div class="oss-upload-item__loader" style={{{this.loaderStyle}}}>
+          <div class="value">
+            {{this.uploadProgress}}
+          </div>
+        </div>
+      {{else}}
+        {{#if this.error}}
+          <span class="fx-row fx-gap-px-6 font-color-gray-500 fx-xalign-center" role="button" {{on "click" this.performUpload}}>
+            <i class="far fa-redo"></i> Try again
+          </span>
+        {{else}}
+          <OSS::Button
+            @icon="far fa-pen"
+            @square={{true}}
+            data-control-name="upload-item-edit-button"
+            {{on "click" @onEdition}} />
+          <OSS::Button
+            @icon="far fa-eye"
+            @square={{true}}
+            data-control-name="upload-item-view-button"
+            {{on "click" (redirect-to url=this.fileUrl target="_blank")}} />
+        {{/if}}
+
+        <OSS::Button
+          @icon="far fa-trash"
+          @square={{true}}
+          data-control-name="upload-item-remove-button"
+          {{on "click" @onDeletion}} />
+      {{/if}}
+    </div>
+  </div>
+</div>

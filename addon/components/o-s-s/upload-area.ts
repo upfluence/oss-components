@@ -30,8 +30,24 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
 
   fileInput?: HTMLInputElement;
 
-  @tracked selectedFile?: File;
+  @tracked selectedFile?: File | FileArtifact;
   @tracked dragging: boolean = false;
+
+  constructor(owner: unknown, args: OSSUploadAreaArgs) {
+    super(owner, args);
+
+    // check for uploader, onUploadSuccess
+
+    if (args.artifact) {
+      this.selectedFile = args.artifact;
+    }
+  }
+
+  get illustration(): string {
+    const root = '@upfluence/oss-components/assets/images/upload-area/';
+    const path = this.args.disabled ? `disabled-${this.size}.svg` : `default-${this.size}.svg`;
+    return root + path;
+  }
 
   get computedClass(): string {
     const classes = ['oss-upload-area', 'fx-1'];
@@ -67,8 +83,9 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   }
 
   @action
-  triggerFileBrowser(event: MouseEvent): void {
-    event.stopPropagation();
+  triggerFileBrowser(event?: MouseEvent): void {
+    event?.stopPropagation();
+    if (this.args.disabled) return;
     this.fileInput?.click();
   }
 
@@ -105,6 +122,11 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
     }
 
     this.dragging = false;
+  }
+
+  @action
+  onFileDeletion(): void {
+    this.selectedFile = undefined;
   }
 
   private _handleFileUpload(file: File): void {
