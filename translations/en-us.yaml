@@ -38,6 +38,7 @@ oss-components:
     browse: browse
     errors:
       server: Upload failed, please try again
+      try_again: Try again
       filetype:
         title: Upload error
         description: The type of the file you uploaded is not allowed.

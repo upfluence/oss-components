@@ -26,8 +26,9 @@
         </div>
       {{else}}
         {{#if this.error}}
-          <span class="fx-row fx-gap-px-6 font-color-gray-500 fx-xalign-center" role="button" {{on "click" this.performUpload}}>
-            <i class="far fa-redo"></i> Try again
+          <span class="fx-row fx-gap-px-6 font-color-gray-500 fx-xalign-center" role="button"
+                data-control-name="upload-item-try-again-button" {{on "click" this.performUpload}}>
+            <i class="far fa-redo"></i> {{t "oss-components.upload-area.errors.try_again"}}
           </span>
         {{else}}
           <OSS::Button

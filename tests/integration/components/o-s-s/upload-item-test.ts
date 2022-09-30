@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, render } from '@ember/test-helpers';
+import { click, render, waitFor } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import sinon from 'sinon';
 
@@ -188,6 +188,38 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
         )
       );
     });
+
+    test('it enters error mode if the upload failed', async function(assert) {
+      this.uploader.mode = 'failure';
+      sinon.spy(this.uploader, 'upload');
+
+      await render(hbs`
+        <OSS::UploadItem
+          @uploader={{this.uploader}} @file={{this.file}}
+          @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
+          @onEdition={{this.onEdition}} @onDeletion={{this.onFileDeletion}}
+          @onUploadSuccess={{this.onUploadSuccess}} />
+      `);
+
+      await waitFor('.oss-upload-item.oss-upload-item--errored');
+      assert.dom('.oss-upload-item').hasClass('oss-upload-item--errored');
+      assert.dom('.oss-upload-item [data-control-name="upload-item-try-again-button"]').exists();
+      assert.dom('.oss-upload-item [data-control-name="upload-item-try-again-button"]').hasText('Try again');
+      await click('.oss-upload-item [data-control-name="upload-item-try-again-button"]')
+
+      assert.ok(
+        this.uploader.upload.calledWithExactly(
+          // Partial match because the onSuccess, onFailure, and onProgress are component methods, hence not being
+          // accessible from the tests.
+          sinon.match({
+            file: this.file,
+            privacy: this.privacy,
+            scope: this.scope
+          }),
+          this.validationRules
+        )
+      );
+    })
   });
 
   module('common actions', function () {
