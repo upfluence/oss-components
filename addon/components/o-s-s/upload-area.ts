@@ -128,7 +128,7 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   }
 
   @action
-  onFileDeletion(_?: MouseEvent): void {
+  onFileDeletion(event?: MouseEvent): void {
     event?.stopPropagation();
     this.selectedFile = undefined;
     this.args.onFileDeletion?.();

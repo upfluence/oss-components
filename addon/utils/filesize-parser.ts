@@ -50,14 +50,14 @@ export function humanizeFilesize(bytes: number): string {
     return bytes + ' B';
   }
 
-  const units = ['KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-  let u = -1;
-  const r = 10;
+  const units = ['KB', 'MB', 'GB'];
+  let unitIndex = -1;
+  const roundValue = 10;
 
   do {
     bytes /= threshold;
-    ++u;
-  } while (Math.round(Math.abs(bytes) * r) / r >= threshold && u < units.length - 1);
+    ++unitIndex;
+  } while (Math.round(Math.abs(bytes) * roundValue) / roundValue >= threshold && unitIndex < units.length - 1);
 
-  return bytes.toFixed(1) + units[u];
+  return bytes.toFixed(1) + units[unitIndex];
 }
