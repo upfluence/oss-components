@@ -93,6 +93,7 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   @action
   onFileSelected(event: Event): void {
     this._handleFileUpload(((<HTMLInputElement>event.target).files || [])[0]);
+    (<HTMLInputElement>event.target).value = '';
   }
 
   @action
@@ -126,7 +127,8 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   }
 
   @action
-  onFileDeletion(): void {
+  onFileDeletion(_?: MouseEvent): void {
+    event?.stopPropagation();
     this.selectedFile = undefined;
   }
 

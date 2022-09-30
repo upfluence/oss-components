@@ -95,7 +95,7 @@ export default class OSSUploadItem extends Component<OSSUploadItemArgs> {
 
   @action
   onProgress(event: ProgressEvent): void {
-    this.uploadProgress = (event.loaded / event.total) * 100;
+    this.uploadProgress = Math.trunc((event.loaded / event.total) * 100);
   }
 
   @action
