@@ -23,6 +23,7 @@ interface OSSUploadAreaArgs {
   size?: 'lg' | 'md';
 
   onUploadSuccess(artifact: FileArtifact): void;
+  onFileDeletion?(): void;
 }
 
 export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
@@ -130,6 +131,7 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   onFileDeletion(_?: MouseEvent): void {
     event?.stopPropagation();
     this.selectedFile = undefined;
+    this.args.onFileDeletion?.();
   }
 
   private _handleFileUpload(file: File): void {

@@ -17,6 +17,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
     this.size = null;
     this.subtitle = 'JPG, PNG, PDF (Max 800x400px - 2MB)';
     this.onUploadSuccess = sinon.stub();
+    this.onFileDeletion = sinon.stub();
   });
 
   module('rendering', function () {
@@ -253,7 +254,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         await render(hbs`
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
-            @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
+            @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} @onFileDeletion={{this.onFileDeletion}} />
         `);
         await triggerEvent('.oss-upload-area', 'drop', {
           dataTransfer: { files: [this.file] }
@@ -262,6 +263,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         await click('.oss-upload-item [data-control-name="upload-item-remove-button"]');
         assert.dom('.oss-upload-item').doesNotExist();
         assert.dom('.oss-upload-area').exists();
+        assert.ok(this.onFileDeletion.calledOnce);
       });
 
       test('clicking on the edit button in the upload item opens the hidden file input', async function (assert) {
@@ -306,12 +308,13 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
       await render(hbs`
         <OSS::UploadArea
           @uploader={{this.mockUploader}} @artifact={{this.artifact}} @rules={{this.validationRules}} @size={{this.size}}
-          @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
+          @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} @onFileDeletion={{this.onFileDeletion}} />
       `);
       await click('.oss-upload-item [data-control-name="upload-item-remove-button"]');
 
       assert.dom('.oss-upload-item').doesNotExist();
       assert.dom('.oss-upload-area').exists();
+      assert.ok(this.onFileDeletion.calledOnce);
     });
 
     test('clicking on the edit button in the upload item opens the hidden file input', async function (assert) {
