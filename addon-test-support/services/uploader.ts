@@ -40,7 +40,7 @@ export default class extends BaseUploader implements UploaderInterface {
         clearInterval(interval);
         this.mode = 'success';
       }
-    }, 1000);
+    }, 100);
   }
 
   get url(): string {

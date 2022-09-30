@@ -365,3 +365,33 @@
     {{/each}}
   </div>
 </div>
+
+<div class="fx-col fx-gap-px-12 padding-px-24">
+  <div class="fx-row fx-gap-px-12">
+    <div class="fx-1">
+      <OSS::UploadArea
+        @uploader={{this.mockUploader}} @rules={{array (hash type="filesize" value="8MB")}} @size="lg"
+        @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)" @onUploadSuccess={{this.onUploadSuccess}}/>
+    </div>
+
+    <div class="fx-1">
+      <OSS::UploadArea
+        @uploader={{this.mockUploader}} @rules={{array (hash type="filesize" value="8MB")}}
+        @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)" @onUploadSuccess={{this.onUploadSuccess}}/>
+    </div>
+  </div>
+
+  <div class="fx-row fx-gap-px-12">
+    <div class="fx-1">
+      <OSS::UploadArea
+        @uploader={{this.mockUploader}} @rules={{array (hash type="filesize" value="8MB")}} @size="lg"
+        @disabled={{true}} @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)" @onUploadSuccess={{this.onUploadSuccess}}/>
+    </div>
+
+    <div class="fx-1">
+      <OSS::UploadArea
+        @uploader={{this.mockUploader}} @rules={{array (hash type="filesize" value="8MB")}}
+        @disabled={{true}} @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)" @onUploadSuccess={{this.onUploadSuccess}}/>
+    </div>
+  </div>
+</div>

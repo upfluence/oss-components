@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 
@@ -36,7 +37,7 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   constructor(owner: unknown, args: OSSUploadAreaArgs) {
     super(owner, args);
 
-    // check for uploader, onUploadSuccess
+    assert('[OSS::UploadArea] The uploader argument is mandatory', args.uploader);
 
     if (args.artifact) {
       this.selectedFile = args.artifact;

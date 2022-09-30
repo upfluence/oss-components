@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, render, triggerEvent } from '@ember/test-helpers';
+import { click, render, triggerEvent, waitFor } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import sinon from 'sinon';
 
@@ -16,6 +16,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
     this.validationRules = [{ type: 'filesize', value: '1MB' }];
     this.size = null;
     this.subtitle = 'JPG, PNG, PDF (Max 800x400px - 2MB)';
+    this.onUploadSuccess = sinon.stub();
   });
 
   module('rendering', function () {
@@ -24,7 +25,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         await render(hbs`
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
-            @subtitle={{this.subtitle}} />
+            @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
         `);
 
         assert.dom('.oss-upload-area .fx-col.fx-gap-px-3 .fx-row.fx-xalign-center.fx-gap-px-3 .upf-link').exists();
@@ -37,11 +38,11 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         await render(hbs`
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
-            @subtitle={{this.subtitle}} />
+            @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
         `);
-        assert.dom('.oss-upload-area input[type="file"]').exists();
+        assert.dom('.oss-upload-area-container input[type="file"]').exists();
 
-        const fileInput: HTMLInputElement = document.querySelector('.oss-upload-area input[type="file"]')!;
+        const fileInput: HTMLInputElement = document.querySelector('.oss-upload-area-container input[type="file"]')!;
         const fileInputClickStub = sinon.stub(fileInput, 'click');
 
         await click('.oss-upload-area .fx-col.fx-gap-px-3 .fx-row.fx-xalign-center.fx-gap-px-3 .upf-link');
@@ -54,7 +55,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         await render(hbs`
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
-            @subtitle={{this.subtitle}} />
+            @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
         `);
 
         assert.dom('.oss-upload-area').hasClass('oss-upload-area--md');
@@ -65,7 +66,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         await render(hbs`
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
-            @subtitle={{this.subtitle}} />
+            @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
         `);
 
         assert.dom('.oss-upload-area').hasClass('oss-upload-area--md');
@@ -76,7 +77,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         await render(hbs`
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
-            @subtitle={{this.subtitle}} />
+            @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
         `);
 
         assert.dom('.oss-upload-area').hasClass('oss-upload-area--lg');
@@ -90,7 +91,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         await render(hbs`
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
-            @subtitle={{this.subtitle}} />
+            @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
         `);
 
         assert
@@ -103,7 +104,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         await render(hbs`
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
-            @subtitle={{this.subtitle}} />
+            @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
         `);
 
         assert
@@ -119,7 +120,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         await render(hbs`
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
-            @disabled={{true}} @subtitle={{this.subtitle}} />
+            @disabled={{true}} @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
         `);
 
         assert.dom('.oss-upload-area').hasClass('oss-upload-area--disabled');
@@ -129,7 +130,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         await render(hbs`
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
-            @disabled={{true}} @subtitle={{this.subtitle}} />
+            @disabled={{true}} @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
         `);
 
         assert
@@ -145,7 +146,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         await render(hbs`
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
-            @disabled={{true}} @subtitle={{this.subtitle}} />
+            @disabled={{true}} @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
         `);
 
         await triggerEvent('.oss-upload-area', 'dragenter');
@@ -170,7 +171,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         await render(hbs`
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
-            @subtitle={{this.subtitle}} />
+            @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
         `);
 
         await triggerEvent('.oss-upload-area', 'dragenter');
@@ -183,14 +184,14 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         await render(hbs`
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
-            @subtitle={{this.subtitle}} />
+            @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
         `);
         await triggerEvent('.oss-upload-area', 'drop', {
           dataTransfer: { files: [this.file] }
         });
 
         assert.ok(
-          this.mockUploader.validate.calledOnceWithExactly(
+          this.mockUploader.validate.calledWithExactly(
             {
               file: this.file,
               privacy: 'private',
@@ -213,7 +214,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         await render(hbs`
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
-            @subtitle={{this.subtitle}} />
+            @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
         `);
         await triggerEvent('.oss-upload-area', 'drop', {
           dataTransfer: { files: [this.file] }
@@ -234,7 +235,98 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         );
       });
 
-      //test('the file display state is entered if the dropped file passes the validation', async function (assert) {});
+      test('the uploaded file is displayed if the dropped file passes the validation', async function (assert) {
+        await render(hbs`
+          <OSS::UploadArea
+            @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+            @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
+        `);
+        await triggerEvent('.oss-upload-area', 'drop', {
+          dataTransfer: { files: [this.file] }
+        });
+
+        assert.dom('.oss-upload-item').exists();
+        assert.dom('.oss-upload-area').doesNotExist();
+      });
+
+      test('clicking on the remove button in the upload item moves back to the upload state', async function (assert) {
+        await render(hbs`
+          <OSS::UploadArea
+            @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+            @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
+        `);
+        await triggerEvent('.oss-upload-area', 'drop', {
+          dataTransfer: { files: [this.file] }
+        });
+        await waitFor('.oss-upload-item [data-control-name="upload-item-remove-button"]');
+        await click('.oss-upload-item [data-control-name="upload-item-remove-button"]');
+        assert.dom('.oss-upload-item').doesNotExist();
+        assert.dom('.oss-upload-area').exists();
+      });
+
+      test('clicking on the edit button in the upload item opens the hidden file input', async function (assert) {
+        await render(hbs`
+          <OSS::UploadArea
+            @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+            @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
+        `);
+        await triggerEvent('.oss-upload-area', 'drop', {
+          dataTransfer: { files: [this.file] }
+        });
+
+        const fileInput: HTMLInputElement = document.querySelector('.oss-upload-area-container input[type="file"]')!;
+        const fileInputClickStub = sinon.stub(fileInput, 'click');
+
+        await waitFor('.oss-upload-item [data-control-name="upload-item-edit-button"]');
+        await click('.oss-upload-item [data-control-name="upload-item-edit-button"]');
+
+        assert.ok(fileInputClickStub.calledOnce);
+      });
+    });
+  });
+
+  module('displaying an existing file', function (hooks) {
+    hooks.beforeEach(function () {
+      this.artifact = { filename: 'foo.png', url: 'https://oss-components.org/foo.png', content_type: 'image/png' };
+    });
+
+    test('the file is displayed using an upload-item', async function (assert) {
+      await render(hbs`
+        <OSS::UploadArea
+          @uploader={{this.mockUploader}} @artifact={{this.artifact}} @rules={{this.validationRules}} @size={{this.size}}
+          @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
+      `);
+
+      assert.dom('.oss-upload-area').doesNotExist();
+      assert.dom('.oss-upload-item').exists();
+      assert.dom('.oss-upload-item [data-control-name="upload-item-filename"]').hasText('foo.png');
+    });
+
+    test('clicking on the remove button in the upload item moves back to the upload state', async function (assert) {
+      await render(hbs`
+        <OSS::UploadArea
+          @uploader={{this.mockUploader}} @artifact={{this.artifact}} @rules={{this.validationRules}} @size={{this.size}}
+          @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
+      `);
+      await click('.oss-upload-item [data-control-name="upload-item-remove-button"]');
+
+      assert.dom('.oss-upload-item').doesNotExist();
+      assert.dom('.oss-upload-area').exists();
+    });
+
+    test('clicking on the edit button in the upload item opens the hidden file input', async function (assert) {
+      await render(hbs`
+        <OSS::UploadArea
+          @uploader={{this.mockUploader}} @artifact={{this.artifact}} @rules={{this.validationRules}} @size={{this.size}}
+          @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
+      `);
+
+      const fileInput: HTMLInputElement = document.querySelector('.oss-upload-area-container input[type="file"]')!;
+      const fileInputClickStub = sinon.stub(fileInput, 'click');
+
+      await click('.oss-upload-item [data-control-name="upload-item-edit-button"]');
+
+      assert.ok(fileInputClickStub.calledOnce);
     });
   });
 });
