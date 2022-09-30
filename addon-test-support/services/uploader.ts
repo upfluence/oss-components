@@ -16,28 +16,31 @@ export default class extends BaseUploader implements UploaderInterface {
       return;
     }
 
-    [250, 500, 750, 1000].forEach((progressStep: number) => {
+    let progressStep = 0;
+    const interval = setInterval(() => {
       const progressEvent = new ProgressEvent('progress', { total: 1000, loaded: progressStep });
-      setTimeout(() => {
-        request.onProgress?.(progressEvent);
-      }, 100);
-    });
+      request.onProgress?.(progressEvent);
+      progressStep += 250;
 
-    if (this.mode === 'success') {
-      request.onSuccess?.({
-        key: 'uploader/foo.png',
-        filename: 'Foo.png',
-        url: 'https://oss-components.upfluence.co/uploader/foo.png',
-        content_type: 'png',
-        size: 1000
-      });
-    } else {
-      request.onFailure?.({
-        payload: {}
-      });
+      if (progressStep === 1000) {
+        if (this.mode === 'success') {
+          request.onSuccess?.({
+            key: 'uploader/foo.png',
+            filename: 'Foo.png',
+            url: 'https://oss-components.upfluence.co/uploader/foo.png',
+            content_type: 'png',
+            size: 1000
+          });
+        } else {
+          request.onFailure?.({
+            payload: {}
+          });
+        }
 
-      this.mode = 'success';
-    }
+        clearInterval(interval);
+        this.mode = 'success';
+      }
+    }, 1000);
   }
 
   get url(): string {
