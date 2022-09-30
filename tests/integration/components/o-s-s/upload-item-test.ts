@@ -7,6 +7,14 @@ import sinon from 'sinon';
 import MockUploader from '@upfluence/oss-components/test-support/services/uploader';
 import { FilePrivacy } from '@upfluence/oss-components/types/uploader';
 
+const buildFile = (name = '1px.png', type = 'image/png') => {
+  return new File(
+    [new Blob(['iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=='])],
+    name,
+    { type }
+  );
+};
+
 module('Integration | Component | o-s-s/upload-item', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -14,7 +22,7 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
     this.owner.register('service:uploader', MockUploader);
 
     this.uploader = this.owner.lookup('service:uploader');
-    this.file = { filename: 'foo.png', url: 'https://oss-components.org/foo.png' };
+    this.file = { filename: 'foo.png', url: 'https://oss-components.org/foo.png', content_type: 'image/png' };
     this.validationRules = [{ type: 'filesize', value: '1MB' }];
     this.scope = 'anonymous';
     this.privacy = FilePrivacy.PUBLIC;
@@ -24,16 +32,30 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
   });
 
   module('provided file is a FileArtifact', function () {
-    test('a badge with an icon matching its type is displayed', async function (assert) {
-      await render(hbs`
-        <OSS::UploadItem
-          @uploader={{this.uploader}} @file={{this.file}}
-          @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
-          @onEdition={{this.onEdition}} @onDeletion={{this.onFileDeletion}}
-          @onUploadSuccess={{this.onUploadSuccess}} />
-      `);
+    [
+      { contentType: 'image/png', expected: 'fa-image' },
+      { contentType: 'image/jpeg', expected: 'fa-image' },
+      { contentType: 'video/mov', expected: 'fa-file-video' },
+      { contentType: 'application/pdf', expected: 'fa-file-pdf' },
+      { contentType: null, expected: 'fa-file-alt' },
+      { contentType: 'foo', expected: 'fa-file-alt' }
+    ].forEach((spec) => {
+      test(`a badge with a matching icon is used when the file content type is: ${
+        spec.contentType || 'empty'
+      }`, async function (assert) {
+        this.file.content_type = spec.contentType;
 
-      assert.dom('.upf-badge i').hasClass('fa-file-alt');
+        await render(hbs`
+          <OSS::UploadItem
+            @uploader={{this.uploader}} @file={{this.file}}
+            @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
+            @onEdition={{this.onEdition}} @onDeletion={{this.onFileDeletion}}
+            @onUploadSuccess={{this.onUploadSuccess}} />
+        `);
+
+        assert.dom('.upf-badge i').hasClass('far');
+        assert.dom('.upf-badge i').hasClass(spec.expected);
+      });
     });
 
     test('its name is rendered properly', async function (assert) {
@@ -90,13 +112,32 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
 
   module('provided file is a native File object', function (hooks) {
     hooks.beforeEach(function () {
-      this.file = new File(
-        [
-          new Blob(['iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=='])
-        ],
-        '1px.png',
-        { type: 'image/png' }
-      );
+      this.file = buildFile();
+    });
+
+    [
+      { contentType: 'image/png', expected: 'fa-image' },
+      { contentType: 'image/jpeg', expected: 'fa-image' },
+      { contentType: 'video/mov', expected: 'fa-file-video' },
+      { contentType: 'application/pdf', expected: 'fa-file-pdf' },
+      { contentType: 'foo', expected: 'fa-file-alt' }
+    ].forEach((spec) => {
+      test(`a badge with a matching icon is used when the file content type is: ${
+        spec.contentType || 'empty'
+      }`, async function (assert) {
+        this.file = buildFile('my-file', spec.contentType);
+
+        await render(hbs`
+          <OSS::UploadItem
+            @uploader={{this.uploader}} @file={{this.file}}
+            @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
+            @onEdition={{this.onEdition}} @onDeletion={{this.onFileDeletion}}
+            @onUploadSuccess={{this.onUploadSuccess}} />
+        `);
+
+        assert.dom('.upf-badge i').hasClass('far');
+        assert.dom('.upf-badge i').hasClass(spec.expected);
+      });
     });
 
     test('its name is rendered properly', async function (assert) {

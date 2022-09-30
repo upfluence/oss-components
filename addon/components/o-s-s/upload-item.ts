@@ -22,6 +22,14 @@ interface OSSUploadItemArgs {
   onUploadSuccess(artifact: FileArtifact): void;
 }
 
+const FA_ICON_PER_TYPE: { [key: string]: string } = {
+  image: 'far fa-image',
+  video: 'far fa-file-video',
+  pdf: 'far fa-file-pdf'
+};
+
+const DEFAULT_FA_ICON = 'far fa-file-alt';
+
 export default class OSSUploadItem extends Component<OSSUploadItemArgs> {
   @tracked fileUrl: string = '';
   @tracked uploading: boolean = false;
@@ -50,7 +58,8 @@ export default class OSSUploadItem extends Component<OSSUploadItemArgs> {
   }
 
   get icon(): string {
-    return 'far fa-file-alt';
+    const filetypeIconCategory = this._extractFileTypeCategory();
+    return filetypeIconCategory ? FA_ICON_PER_TYPE[filetypeIconCategory] : DEFAULT_FA_ICON;
   }
 
   get filename(): string {
@@ -95,5 +104,16 @@ export default class OSSUploadItem extends Component<OSSUploadItemArgs> {
       this.uploading = true;
       this.args.uploader.upload(this.request, this.args.rules);
     }
+  }
+
+  private _extractFileTypeCategory(): string | null {
+    const mimetype = this.args.file instanceof File ? this.args.file.type : this.args.file.content_type;
+
+    if (!mimetype) return null;
+    if (mimetype.startsWith('image')) return 'image';
+    if (mimetype.startsWith('video')) return 'video';
+    if (mimetype === 'application/pdf') return 'pdf';
+
+    return null;
   }
 }
