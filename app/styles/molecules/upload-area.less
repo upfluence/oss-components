@@ -22,9 +22,49 @@
     &--md {
       padding: var(--spacing-px-18);
 
-      .oss-upload-area__illustration img {
-        width: 32px;
-        height: 32px;
+      .oss-upload-area__illustration {
+        img {
+          width: 32px;
+          height: 32px;
+          transition: all 0.25s ease-in-out;
+        }
+
+        &--dragging {
+          &-start,
+          &-end {
+            &:before {
+              content: '';
+              background-image: url('/@upfluence/oss-components/assets/images/upload-area/disabled-md.svg');
+              background-size: cover;
+              position: absolute;
+              display: block;
+              top: 6px;
+              width: 24px;
+              height: 24px;
+              transform: rotate(15deg);
+            }
+          }
+
+          &-start {
+            img {
+              transform: translateX(-4px) rotate(-15deg);
+            }
+
+            &:before {
+              animation: dragging-md-start 0.25s ease-in-out forwards;
+            }
+          }
+
+          &-end {
+            img {
+              transform: translateX(0) rotate(0deg);
+            }
+
+            &:before {
+              animation: dragging-md-end 0.25s ease-in-out forwards;
+            }
+          }
+        }
       }
     }
 
@@ -34,10 +74,58 @@
 
       .oss-upload-area__illustration {
         position: relative;
+        z-index: 1;
 
         img {
           width: 48px;
           height: 56px;
+          transition: all 0.25s ease-in-out;
+        }
+
+        &--dragging {
+          &-start,
+          &-end {
+            &:before,
+            &:after {
+              content: '';
+              background-image: url('/@upfluence/oss-components/assets/images/upload-area/disabled-lg.svg');
+              background-size: cover;
+              position: absolute;
+              display: block;
+              bottom: 0;
+              width: 28px;
+              height: 40px;
+              z-index: -1;
+            }
+          }
+
+          &-start {
+            img {
+              transform: translateY(-6px);
+            }
+
+            &:before {
+              animation: dragging-lg--left-start 0.25s ease-in-out forwards;
+            }
+
+            &:after {
+              animation: dragging-lg--right-start 0.25s ease-in-out forwards;
+            }
+          }
+
+          &-end {
+            img {
+              transform: translateY(0px);
+            }
+
+            &:before {
+              animation: dragging-lg--left-end 0.25s ease-in-out forwards;
+            }
+
+            &:after {
+              animation: dragging-lg--right-end 0.25s ease-in-out forwards;
+            }
+          }
         }
       }
     }
@@ -48,62 +136,6 @@
       border-color: var(--color-primary-500);
       cursor: pointer;
       transition: all 0.25s ease-in-out;
-
-      .oss-upload-area__illustration--dragging {
-        &-md {
-          img {
-            transform: translateX(-4px) rotate(-15deg);
-            transition: all 0.25s ease-in-out;
-          }
-
-          &:before {
-            content: '';
-            background-image: url('/@upfluence/oss-components/assets/images/upload-area/disabled-md.svg');
-            background-size: cover;
-            position: absolute;
-            display: block;
-            top: 6px;
-            width: 24px;
-            height: 24px;
-            transform: rotate(15deg);
-            animation: dragging-md 0.25s ease-in-out forwards;
-          }
-        }
-
-        &-lg {
-          z-index: 1;
-
-          img {
-            transform: translateY(-6px);
-            transition: all 0.25s ease-in-out;
-          }
-
-          &:before {
-            content: '';
-            background-image: url('/@upfluence/oss-components/assets/images/upload-area/disabled-lg.svg');
-            background-size: cover;
-            position: absolute;
-            display: block;
-            bottom: 0;
-            width: 28px;
-            height: 40px;
-            animation: dragging-lg--left 0.25s ease-in-out forwards;
-          }
-
-          &:after {
-            content: '';
-            background-image: url('/@upfluence/oss-components/assets/images/upload-area/disabled-lg.svg');
-            background-size: cover;
-            position: absolute;
-            display: block;
-            bottom: 0;
-            width: 28px;
-            height: 40px;
-            animation: dragging-lg--right 0.25s ease-in-out forwards;
-            z-index: -1;
-          }
-        }
-      }
     }
 
     &--disabled {
@@ -149,7 +181,7 @@
     }
   }
 
-  @keyframes dragging-md {
+  @keyframes dragging-md-start {
     from {
       opacity: 0;
       left: 0;
@@ -161,7 +193,19 @@
     }
   }
 
-  @keyframes dragging-lg--right {
+  @keyframes dragging-md-end {
+    from {
+      opacity: 1;
+      left: 16px;
+    }
+
+    to {
+      opacity: 0;
+      left: 0;
+    }
+  }
+
+  @keyframes dragging-lg--right-start {
     from {
       opacity: 0;
       left: 26px;
@@ -174,7 +218,20 @@
     }
   }
 
-  @keyframes dragging-lg--left {
+  @keyframes dragging-lg--right-end {
+    from {
+      opacity: 1;
+      left: 40px;
+      transform: rotate(15deg);
+    }
+
+    to {
+      opacity: 0;
+      left: 26px;
+    }
+  }
+
+  @keyframes dragging-lg--left-start {
     from {
       opacity: 0;
       left: -8px;
@@ -184,6 +241,19 @@
       opacity: 1;
       left: -20px;
       transform: rotate(-15deg);
+    }
+  }
+
+  @keyframes dragging-lg--left-end {
+    from {
+      opacity: 1;
+      left: -20px;
+      transform: rotate(-15deg);
+    }
+
+    to {
+      opacity: 0;
+      left: -8px;
     }
   }
 }

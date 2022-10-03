@@ -37,6 +37,8 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   @tracked dragging: boolean = false;
   @tracked hover: boolean = false;
 
+  @tracked alreadyTriggerAnimation: boolean = false;
+
   constructor(owner: unknown, args: OSSUploadAreaArgs) {
     super(owner, args);
 
@@ -73,7 +75,10 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
     const classes = ['oss-upload-area__illustration'];
 
     if (this.dragging || this.hover) {
-      classes.push(`oss-upload-area__illustration--dragging-${this.size}`);
+      classes.push(`oss-upload-area__illustration--dragging-start`);
+      this.alreadyTriggerAnimation = true;
+    } else if (this.alreadyTriggerAnimation) {
+      classes.push(`oss-upload-area__illustration--dragging-end`);
     }
 
     return classes.join(' ');
