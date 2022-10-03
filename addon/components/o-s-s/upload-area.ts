@@ -31,9 +31,11 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   @service declare toast: ToastService;
 
   fileInput?: HTMLInputElement;
+  private declare _DOMElement: HTMLElement;
 
   @tracked selectedFile?: File | FileArtifact;
   @tracked dragging: boolean = false;
+  @tracked hover: boolean = false;
 
   constructor(owner: unknown, args: OSSUploadAreaArgs) {
     super(owner, args);
@@ -67,6 +69,16 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
     return classes.join(' ');
   }
 
+  get computedClassIllustration(): string {
+    const classes = ['oss-upload-area__illustration'];
+
+    if (this.dragging || this.hover) {
+      classes.push(`oss-upload-area__illustration--dragging-${this.size}`);
+    }
+
+    return classes.join(' ');
+  }
+
   get size(): string {
     return this.args.size && ['lg', 'md'].includes(this.args.size) ? this.args.size : 'md';
   }
@@ -77,6 +89,11 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
 
   get scope(): string {
     return this.args.scope || 'anonymous';
+  }
+
+  @action
+  init(element: HTMLElement) {
+    this._DOMElement = element;
   }
 
   @action
@@ -110,9 +127,14 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   }
 
   @action
-  _onDragLeave(): void {
+  _onDragLeave(event: DragEvent): void {
     if (this.args.disabled) return;
-    this.dragging = false;
+    if (
+      (<HTMLElement>event.target).classList.contains('oss-upload-area--dragging') &&
+      !this._DOMElement.contains(<Node>event.relatedTarget)
+    ) {
+      this.dragging = false;
+    }
   }
 
   @action
@@ -125,6 +147,18 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
     }
 
     this.dragging = false;
+  }
+
+  @action
+  _mouseEnter() {
+    if (this.args.disabled) return;
+    this.hover = true;
+  }
+
+  @action
+  _mouseLeave() {
+    if (this.args.disabled) return;
+    this.hover = false;
   }
 
   @action

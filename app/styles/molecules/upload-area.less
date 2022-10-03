@@ -2,6 +2,7 @@
   input[type='file'] {
     display: none;
   }
+
   .oss-upload-area {
     display: flex;
     align-items: center;
@@ -41,10 +42,68 @@
       }
     }
 
-    &--dragging, &:hover:not(&--disabled) {
+    &--dragging,
+    &:hover:not(&--disabled) {
       background-color: var(--color-primary-50);
       border-color: var(--color-primary-500);
       cursor: pointer;
+      transition: all 0.25s ease-in-out;
+
+      .oss-upload-area__illustration--dragging {
+        &-md {
+          img {
+            transform: translateX(-4px) rotate(-15deg);
+            transition: all 0.25s ease-in-out;
+          }
+
+          &:before {
+            content: '';
+            background-image: url('/@upfluence/oss-components/assets/images/upload-area/disabled-md.svg');
+            background-size: cover;
+            position: absolute;
+            display: block;
+            top: 6px;
+            width: 24px;
+            height: 24px;
+            transform: rotate(15deg);
+            animation: dragging-md 0.25s ease-in-out forwards;
+          }
+        }
+
+        &-lg {
+          z-index: 1;
+
+          img {
+            transform: translateY(-6px);
+            transition: all 0.25s ease-in-out;
+          }
+
+          &:before {
+            content: '';
+            background-image: url('/@upfluence/oss-components/assets/images/upload-area/disabled-lg.svg');
+            background-size: cover;
+            position: absolute;
+            display: block;
+            bottom: 0;
+            width: 28px;
+            height: 40px;
+            animation: dragging-lg--left 0.25s ease-in-out forwards;
+          }
+
+          &:after {
+            content: '';
+            background-image: url('/@upfluence/oss-components/assets/images/upload-area/disabled-lg.svg');
+            background-size: cover;
+            position: absolute;
+            display: block;
+            bottom: 0;
+            width: 28px;
+            height: 40px;
+            animation: dragging-lg--right 0.25s ease-in-out forwards;
+            z-index: -1;
+          }
+        }
+      }
     }
 
     &--disabled {
@@ -87,6 +146,44 @@
 
     &--errored {
       border-color: var(--color-error-500);
+    }
+  }
+
+  @keyframes dragging-md {
+    from {
+      opacity: 0;
+      left: 0;
+    }
+
+    to {
+      opacity: 1;
+      left: 16px;
+    }
+  }
+
+  @keyframes dragging-lg--right {
+    from {
+      opacity: 0;
+      left: 26px;
+    }
+
+    to {
+      opacity: 1;
+      left: 40px;
+      transform: rotate(15deg);
+    }
+  }
+
+  @keyframes dragging-lg--left {
+    from {
+      opacity: 0;
+      left: -8px;
+    }
+
+    to {
+      opacity: 1;
+      left: -20px;
+      transform: rotate(-15deg);
     }
   }
 }
