@@ -40,8 +40,8 @@ oss-components:
       server: Upload failed, please try again
       try_again: Try again
       filetype:
-        title: Upload error
-        description: The type of the file you uploaded is not allowed.
+        title: Unsupported format
+        description: The uploaded file format is not allowed
       filesize:
-        title: Upload error
-        description: "The file you uploaded is too heavy. Maximum file size: {max_filesize}"
+        title: File size too large
+        description: "The maximum file size is {max_filesize}"
