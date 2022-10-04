@@ -15,9 +15,12 @@
          {{on "dragleave" this._onDragLeave}}
          {{on "drop" this._onDrop}}
          {{on "click" this.triggerFileBrowser}}
+         {{on "mouseenter" this._mouseEnter}}
+         {{on "mouseleave" this._mouseLeave}}
+         {{did-insert this.init}}
          ...attributes>
-      <div class="fx-gap-px-12 fx-xalign-center {{if (eq this.size 'lg') 'fx-col' 'fx-row fx-1'}}">
-        <div class="oss-upload-area__illustration">
+      <div class="fx-gap-px-18 fx-xalign-center {{if (eq this.size 'lg') 'fx-col' 'fx-row fx-1'}}">
+        <div class={{this.computedClassIllustration}}>
           <img src={{this.illustration}} />
         </div>
 

@@ -30,10 +30,13 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   @service declare intl: any;
   @service declare toast: ToastService;
 
+  private declare _DOMElement: HTMLElement;
   fileInput?: HTMLInputElement;
 
   @tracked selectedFile?: File | FileArtifact;
   @tracked dragging: boolean = false;
+  @tracked hover: boolean = false;
+  @tracked alreadyTriggerAnimation: boolean = false;
 
   constructor(owner: unknown, args: OSSUploadAreaArgs) {
     super(owner, args);
@@ -67,6 +70,19 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
     return classes.join(' ');
   }
 
+  get computedClassIllustration(): string {
+    const classes = ['oss-upload-area__illustration'];
+
+    if (this.dragging || this.hover) {
+      classes.push(`oss-upload-area__illustration--dragging-start`);
+      this.alreadyTriggerAnimation = true;
+    } else if (this.alreadyTriggerAnimation) {
+      classes.push(`oss-upload-area__illustration--dragging-end`);
+    }
+
+    return classes.join(' ');
+  }
+
   get size(): string {
     return this.args.size && ['lg', 'md'].includes(this.args.size) ? this.args.size : 'md';
   }
@@ -77,6 +93,11 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
 
   get scope(): string {
     return this.args.scope || 'anonymous';
+  }
+
+  @action
+  init(element: HTMLElement): void {
+    this._DOMElement = element;
   }
 
   @action
@@ -110,9 +131,14 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   }
 
   @action
-  _onDragLeave(): void {
+  _onDragLeave(event: DragEvent): void {
     if (this.args.disabled) return;
-    this.dragging = false;
+    if (
+      (<HTMLElement>event.target).classList.contains('oss-upload-area--dragging') &&
+      !this._DOMElement.contains(<Node>event.relatedTarget)
+    ) {
+      this.dragging = false;
+    }
   }
 
   @action
@@ -125,6 +151,18 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
     }
 
     this.dragging = false;
+  }
+
+  @action
+  _mouseEnter(): void {
+    if (this.args.disabled) return;
+    this.hover = true;
+  }
+
+  @action
+  _mouseLeave(): void {
+    if (this.args.disabled) return;
+    this.hover = false;
   }
 
   @action

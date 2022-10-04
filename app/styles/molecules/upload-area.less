@@ -2,6 +2,7 @@
   input[type='file'] {
     display: none;
   }
+
   .oss-upload-area {
     display: flex;
     align-items: center;
@@ -21,9 +22,49 @@
     &--md {
       padding: var(--spacing-px-18);
 
-      .oss-upload-area__illustration img {
-        width: 32px;
-        height: 32px;
+      .oss-upload-area__illustration {
+        img {
+          width: 32px;
+          height: 32px;
+          transition: all 0.25s ease-in-out;
+        }
+
+        &--dragging {
+          &-start,
+          &-end {
+            &:before {
+              content: '';
+              background-image: url('/@upfluence/oss-components/assets/images/upload-area/disabled-md.svg');
+              background-size: cover;
+              position: absolute;
+              display: block;
+              top: 6px;
+              width: 24px;
+              height: 24px;
+              transform: rotate(15deg);
+            }
+          }
+
+          &-start {
+            img {
+              transform: translateX(-4px) rotate(-15deg);
+            }
+
+            &:before {
+              animation: dragging-md-start 0.25s ease-in-out forwards;
+            }
+          }
+
+          &-end {
+            img {
+              transform: translateX(0) rotate(0deg);
+            }
+
+            &:before {
+              animation: dragging-md-end 0.25s ease-in-out forwards;
+            }
+          }
+        }
       }
     }
 
@@ -33,18 +74,68 @@
 
       .oss-upload-area__illustration {
         position: relative;
+        z-index: 1;
 
         img {
           width: 48px;
           height: 56px;
+          transition: all 0.25s ease-in-out;
+        }
+
+        &--dragging {
+          &-start,
+          &-end {
+            &:before,
+            &:after {
+              content: '';
+              background-image: url('/@upfluence/oss-components/assets/images/upload-area/disabled-lg.svg');
+              background-size: cover;
+              position: absolute;
+              display: block;
+              bottom: 0;
+              width: 28px;
+              height: 40px;
+              z-index: -1;
+            }
+          }
+
+          &-start {
+            img {
+              transform: translateY(-6px);
+            }
+
+            &:before {
+              animation: dragging-lg--left-start 0.25s ease-in-out forwards;
+            }
+
+            &:after {
+              animation: dragging-lg--right-start 0.25s ease-in-out forwards;
+            }
+          }
+
+          &-end {
+            img {
+              transform: translateY(0px);
+            }
+
+            &:before {
+              animation: dragging-lg--left-end 0.25s ease-in-out forwards;
+            }
+
+            &:after {
+              animation: dragging-lg--right-end 0.25s ease-in-out forwards;
+            }
+          }
         }
       }
     }
 
-    &--dragging, &:hover:not(&--disabled) {
+    &--dragging,
+    &:hover:not(&--disabled) {
       background-color: var(--color-primary-50);
       border-color: var(--color-primary-500);
       cursor: pointer;
+      transition: all 0.25s ease-in-out;
     }
 
     &--disabled {
@@ -88,5 +179,54 @@
     &--errored {
       border-color: var(--color-error-500);
     }
+  }
+
+  .dragging-md(@fromOpacity, @fromLeft, @toOpacity, @toLeft) {
+    from {
+      opacity: @fromOpacity;
+      left: @fromLeft;
+    }
+    to {
+      opacity: @toOpacity;
+      left: @toLeft;
+    }
+  }
+
+  @keyframes dragging-md-start {
+    .dragging-md (0, 0, 1, 16px);
+  }
+
+  @keyframes dragging-md-end {
+    .dragging-md (1, 16px, 1, 0);
+  }
+
+  .dragging-lg(@fromOpacity, @toOpacity, @fromLeft, @toLeft, @fromTransform, @toTransform) {
+    from {
+      opacity: @fromOpacity;
+      left: @fromLeft;
+      transform: @fromTransform;
+    }
+
+    to {
+      opacity: @toOpacity;
+      left: @toLeft;
+      transform: @toTransform;
+    }
+  }
+
+  @keyframes dragging-lg--right-start {
+    .dragging-lg(0, 1, 26px, 40px, rotation(0deg), rotate(15deg));
+  }
+
+  @keyframes dragging-lg--right-end {
+    .dragging-lg(1, 0, 40px, 26px, rotate(15deg), rotate(0deg));
+  }
+
+  @keyframes dragging-lg--left-start {
+    .dragging-lg(0, 1, -8px, -20px, rotation(0deg), rotate(-15deg));
+  }
+
+  @keyframes dragging-lg--left-end {
+    .dragging-lg(1, 0, -20px, -8px, rotate(-15deg), rotate(0deg));
   }
 }
