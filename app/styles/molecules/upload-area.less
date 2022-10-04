@@ -181,79 +181,52 @@
     }
   }
 
-  @keyframes dragging-md-start {
+  .dragging-md(@fromOpacity, @fromLeft, @toOpacity, @toLeft) {
     from {
-      opacity: 0;
-      left: 0;
+      opacity: @fromOpacity;
+      left: @fromLeft;
     }
-
     to {
-      opacity: 1;
-      left: 16px;
+      opacity: @toOpacity;
+      left: @toLeft;
     }
   }
 
+  @keyframes dragging-md-start {
+    .dragging-md (0, 0, 1, 16px);
+  }
+
   @keyframes dragging-md-end {
+    .dragging-md (1, 16px, 1, 0);
+  }
+
+  .dragging-lg(@fromOpacity, @toOpacity, @fromLeft, @toLeft, @fromTransform, @toTransform) {
     from {
-      opacity: 1;
-      left: 16px;
+      opacity: @fromOpacity;
+      left: @fromLeft;
+      transform: @fromTransform;
     }
 
     to {
-      opacity: 0;
-      left: 0;
+      opacity: @toOpacity;
+      left: @toLeft;
+      transform: @toTransform;
     }
   }
 
   @keyframes dragging-lg--right-start {
-    from {
-      opacity: 0;
-      left: 26px;
-    }
-
-    to {
-      opacity: 1;
-      left: 40px;
-      transform: rotate(15deg);
-    }
+    .dragging-lg(0, 1, 26px, 40px, rotation(0deg), rotate(15deg));
   }
 
   @keyframes dragging-lg--right-end {
-    from {
-      opacity: 1;
-      left: 40px;
-      transform: rotate(15deg);
-    }
-
-    to {
-      opacity: 0;
-      left: 26px;
-    }
+    .dragging-lg(1, 0, 40px, 26px, rotate(15deg), rotate(0deg));
   }
 
   @keyframes dragging-lg--left-start {
-    from {
-      opacity: 0;
-      left: -8px;
-    }
-
-    to {
-      opacity: 1;
-      left: -20px;
-      transform: rotate(-15deg);
-    }
+    .dragging-lg(0, 1, -8px, -20px, rotation(0deg), rotate(-15deg));
   }
 
   @keyframes dragging-lg--left-end {
-    from {
-      opacity: 1;
-      left: -20px;
-      transform: rotate(-15deg);
-    }
-
-    to {
-      opacity: 0;
-      left: -8px;
-    }
+    .dragging-lg(1, 0, -20px, -8px, rotate(-15deg), rotate(0deg));
   }
 }
