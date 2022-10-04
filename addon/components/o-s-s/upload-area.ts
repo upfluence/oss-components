@@ -30,13 +30,12 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   @service declare intl: any;
   @service declare toast: ToastService;
 
-  fileInput?: HTMLInputElement;
   private declare _DOMElement: HTMLElement;
+  fileInput?: HTMLInputElement;
 
   @tracked selectedFile?: File | FileArtifact;
   @tracked dragging: boolean = false;
   @tracked hover: boolean = false;
-
   @tracked alreadyTriggerAnimation: boolean = false;
 
   constructor(owner: unknown, args: OSSUploadAreaArgs) {
@@ -97,7 +96,7 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   }
 
   @action
-  init(element: HTMLElement) {
+  init(element: HTMLElement): void {
     this._DOMElement = element;
   }
 
@@ -155,13 +154,13 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   }
 
   @action
-  _mouseEnter() {
+  _mouseEnter(): void {
     if (this.args.disabled) return;
     this.hover = true;
   }
 
   @action
-  _mouseLeave() {
+  _mouseLeave(): void {
     if (this.args.disabled) return;
     this.hover = false;
   }
