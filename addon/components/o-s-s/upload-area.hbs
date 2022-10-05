@@ -21,7 +21,11 @@
          ...attributes>
       <div class="fx-gap-px-18 fx-xalign-center {{if (eq this.size 'lg') 'fx-col' 'fx-row fx-1'}}">
         <div class={{this.computedClassIllustration}}>
-          <img src={{asset-map this.illustration}} />
+          {{#if @disabled}}
+            <img src={{asset-map (concat "/@upfluence/oss-components/assets/images/upload-area/disabled-" this.size ".svg")}} />
+          {{else}}
+            <img src={{asset-map (concat "/@upfluence/oss-components/assets/images/upload-area/default-" this.size ".svg")}} />
+          {{/if}}
         </div>
 
         <div class="fx-col fx-gap-px-3 {{if (eq this.size 'lg') 'fx-xalign-center'}}">

@@ -48,12 +48,6 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
     }
   }
 
-  get illustration(): string {
-    const root = '/@upfluence/oss-components/assets/images/upload-area/';
-    const path = this.args.disabled ? `disabled-${this.size}.svg` : `default-${this.size}.svg`;
-    return root + path;
-  }
-
   get computedClass(): string {
     const classes = ['oss-upload-area', 'fx-1'];
 
