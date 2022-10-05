@@ -4,7 +4,7 @@
     {{#each (array this.selectedFile) as |selectedFile|}}
       <OSS::UploadItem
         @uploader={{@uploader}} @file={{selectedFile}}
-        @rules={{@rules}} @scope={{this.scope}} @privacy={{this.privacy}}
+        @rules={{@rules}} @scope={{this.scope}} @privacy={{this.filePrivacy}}
         @onEdition={{this.triggerFileBrowser}} @onDeletion={{this.onFileDeletion}}
         @onUploadSuccess={{@onUploadSuccess}} />
     {{/each}}
