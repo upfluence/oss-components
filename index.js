@@ -4,6 +4,7 @@
 const mergeTrees = require('broccoli-merge-trees');
 const Funnel = require('broccoli-funnel');
 const fs = require('fs');
+const cacheKeyForTree = require('calculate-cache-key-for-tree');
 const { name, version } = require('./package');
 
 let faPath = 'node_modules/@fortawesome/fontawesome-pro';
@@ -47,6 +48,7 @@ module.exports = {
   },
 
   treeForPublic() {
+    console.log('=====>', 'treeForPublic oss-components')
     const publicTree = this._super.treeForPublic.apply(this, arguments);
     const trees = [];
 
@@ -75,5 +77,9 @@ module.exports = {
     );
 
     return mergeTrees(trees);
+  },
+
+  cacheKeyForTree(treeType) {
+    return cacheKeyForTree(treeType, this, this.pkg);
   }
 };
