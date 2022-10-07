@@ -48,7 +48,6 @@ module.exports = {
   },
 
   treeForPublic() {
-    console.log('=====>', 'treeForPublic oss-components')
     const publicTree = this._super.treeForPublic.apply(this, arguments);
     const trees = [];
 
