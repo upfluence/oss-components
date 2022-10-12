@@ -1,0 +1,64 @@
+.upf-radio-btn {
+  height: var(--spacing-px-18);
+  width: var(--spacing-px-18);
+  min-height: var(--spacing-px-18);
+  min-width: var(--spacing-px-18);
+  border-radius: 50%;
+  border: 1px solid var(--color-border-default);
+  background-color: var(--color-white);
+  position: relative;
+  transition: all 250ms ease-in-out;
+}
+
+.upf-radio-btn:hover:not(.upf-radio-btn--disabled),
+.upf-radio-btn:focus:not(.upf-radio-btn--disabled) {
+  border: 1px solid var(--color-primary-500);
+  background-color: var(--color-primary-50);
+  outline: none;
+}
+
+.upf-radio-btn--selected:hover:not(.upf-radio-btn--disabled),
+.upf-radio-btn--selected:focus:not(.upf-radio-btn--disabled) {
+  border: 1px solid var(--color-primary-500);
+  background-color: var(--color-primary-400);
+  outline: 1px solid var(--color-primary-500);
+}
+
+.upf-radio-btn--disabled:focus {
+  outline-color: var(--color-gray-300);
+  border: none;
+  background-color: none;
+}
+
+.upf-radio-btn--selected {
+  background-color: var(--color-primary-500);
+  border: 1px solid var(--color-primary-500);
+}
+
+.upf-radio-btn--disabled {
+  cursor: not-allowed;
+  background-color: var(--color-gray-200);
+  border: 1px solid var(--color-gray-300);
+}
+
+.upf-radio-btn::after {
+  content: '';
+  width: 0px;
+  height: 0px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 250ms ease-in-out, height 250ms ease-in-out;
+}
+
+.upf-radio-btn--selected::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-white);
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

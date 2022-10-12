@@ -67,6 +67,8 @@ export default class ApplicationController extends Controller {
   ];
   @tracked selectedItem = this.items[0];
   @tracked currencyOnly = null;
+  @tracked radio1 = true;
+  @tracked radio2 = false;
 
   code4CodeBlock = testScript;
   countries = countries;
@@ -219,6 +221,11 @@ export default class ApplicationController extends Controller {
   @action
   onUploadSuccess(artifact) {
     console.log('Successfully uploaded', artifact);
+  }
+
+  @action
+  onRadioBtnChange(radioBtnKey, newValue) {
+    set(this, radioBtnKey, newValue);
   }
 }
 
