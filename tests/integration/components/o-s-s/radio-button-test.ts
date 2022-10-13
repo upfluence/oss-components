@@ -46,6 +46,14 @@ module('Integration | Component | o-s-s/radio-button', function (hooks) {
     assert.true(this.onChange.calledOnceWithExactly(true));
   });
 
+  test('It triggers the onChange method on click when the @disabled parameter is true', async function (assert) {
+    this.onChange = sinon.stub();
+    await render(hbs`<OSS::RadioButton @selected={{true}} @onChange={{this.onChange}} />`);
+    assert.dom('.upf-radio-btn').exists();
+    await click('.upf-radio-btn');
+    assert.true(this.onChange.calledOnceWithExactly(false));
+  });
+
   test("It doesn't trigger the onChange method on click when the @disabled parameter is true", async function (assert) {
     this.onChange = sinon.stub();
     await render(hbs`<OSS::RadioButton @selected={{false}} @disabled={{true}} @onChange={{this.onChange}} />`);
