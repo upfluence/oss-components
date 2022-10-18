@@ -40,7 +40,7 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
   });
 
   module('when passing a plain in the @plain parameter', function () {
-    test('when value is truly, it sets gray-50 background', async function (assert) {
+    test('when value is truthy, it sets gray-50 background', async function (assert) {
       await render(hbs`<OSS::Banner @plain={{true}} />`);
       assert.dom('.upf-banner.background-color-gray-50').exists();
     });
@@ -57,7 +57,7 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
   });
 
   module('when passing a selected in the @selected parameter', function () {
-    test('when value is truly, it adds upf-banner--selected class', async function (assert) {
+    test('when value is truthy, it adds upf-banner--selected class', async function (assert) {
       await render(hbs`<OSS::Banner @selected={{true}} />`);
       assert.dom('.upf-banner.upf-banner--selected').exists();
     });
@@ -67,7 +67,7 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
       assert.dom('.upf-banner.upf-banner--selected').doesNotExist();
     });
 
-    test('when value is undefined, it sets white background', async function (assert) {
+    test("when value is undefined, it doesn't add upf-banner--selected class", async function (assert) {
       await render(hbs`<OSS::Banner />`);
       assert.dom('.upf-banner.upf-banner--selected').doesNotExist();
     });
