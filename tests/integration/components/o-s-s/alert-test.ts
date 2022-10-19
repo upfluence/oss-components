@@ -1,7 +1,8 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, click } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
+import { hbs } from 'ember-cli-htmlbars';
+import sinon from 'sinon';
 
 const ALERT_SKINS = ['success', 'error', 'info', 'warning'];
 const ICONS: { [index: string]: string } = {
@@ -85,6 +86,14 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
 
       assert.dom('.upf-alert').exists();
       assert.dom('.upf-alert .main-container .fx-col i').doesNotExist();
+    });
+
+    test('clicking the cross icon also calls the onClose argument provided', async function (assert) {
+      this.onClose = sinon.stub();
+      await render(hbs`<div><OSS::Alert @closable={{true}} @onClose={{this.onClose}} /></div>`);
+      await click('.upf-alert .main-container .fx-col i');
+      assert.ok(this.onClose.calledOnce);
+      assert.dom('.upf-alert').doesNotExist();
     });
   });
 
