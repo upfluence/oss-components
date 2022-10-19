@@ -316,6 +316,12 @@
     <OSS::StarRating @rating={{12}} @totalStars={{15}} @activeColor="red" @passiveColor="blue" />
   </div>
   <div class="fx-col fx-gap-px-12">
+    <OSS::Banner @icon="fas fa-box-open" @title="Shopify" @selected={{true}}
+                 @subtitle="Identify influencers in your Shopify customers database">
+      <:actions>
+        <OSS::RadioButton @selected={{true}} />
+      </:actions>
+    </OSS::Banner>
     <OSS::Banner @icon="fas fa-box-open" @title="Import creators inside your campaign"
                  @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file. ">
       <:custom-icon>
