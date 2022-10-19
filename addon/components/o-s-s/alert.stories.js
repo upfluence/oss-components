@@ -56,6 +56,15 @@ export default {
       control: {
         type: 'boolean'
       }
+    },
+    onClose: {
+      type: { required: false },
+      description: 'Function to be called with the alert is closed',
+      table: {
+        type: {
+          summary: 'onClose(): void'
+        }
+      }
     }
   },
   parameters: {

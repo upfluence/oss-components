@@ -11,6 +11,7 @@ interface OSSAlertArgs {
   subtitle?: string;
   plain?: boolean;
   closable?: boolean;
+  onClose?(): void;
 }
 
 export default class OSSAlert extends Component<OSSAlertArgs> {
@@ -44,6 +45,7 @@ export default class OSSAlert extends Component<OSSAlertArgs> {
 
   @action
   removeSelf(): void {
+    this.args.onClose?.();
     this._DOMElement?.remove();
   }
 }
