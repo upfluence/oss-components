@@ -1,5 +1,8 @@
 .fx {
-  &-1 { flex: 1 }
+  &-1 {
+    flex: 1;
+    min-width: 0; // prevents adding "allow-text-overflow-on-children" class everywhere needed
+  }
 
   // Flex Direction definition
   &-row {
