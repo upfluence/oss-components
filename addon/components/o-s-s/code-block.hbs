@@ -7,10 +7,10 @@
     </pre>
   </div>
   {{#if @copyable}}
-    <div class="floating-copy-btn {{if @scrollable 'position-fix'}}">
-      <OSS::Button @skin="secondary"
+    <div class="floating-copy-btn">
+      <OSS::Button @skin="default" @size="sm"
                    @label={{t "oss-components.code-block.copy"}}
-                   @icon="fa fa-copy" {{on "click" this.copyToClipboard}} />
+                   {{on "click" this.copyToClipboard}} />
     </div>
   {{/if}}
   {{#if this.collapsable}}
