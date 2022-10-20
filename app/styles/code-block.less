@@ -5,11 +5,10 @@
 
   .floating-copy-btn {
     position: absolute;
-    top: 1px;
-    right: 1px;
     background-color: var(--color-gray-50);
     border-radius: @default-radius;
-    padding: @spacing-xx-sm;
+    top: 0;
+    right: 0;
   }
 
   .floating-collapse-btn {
@@ -21,10 +20,6 @@
     right: 0;
     text-align: center;
     width: 120px;
-  }
-
-  .position-fix {
-    right: 30px;
   }
 
   .code-container.scrollable {
@@ -60,6 +55,7 @@
     }
     pre.code code {
       counter-increment: listing;
+      white-space: pre;
     }
     pre.code code::before {
       background-color: var(--color-gray-100);
