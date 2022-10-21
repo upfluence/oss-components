@@ -69,7 +69,7 @@ export default {
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
       <OSS::InputGroup @prefix={{this.prefix}} @suffix={{this.suffix}} @value={{this.value}}
-                       @errorMessage={{this.errorMessage}} />
+                       @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} />
   `,
   context: args
 });
@@ -78,5 +78,6 @@ BasicUsage.args = {
   value: 'John',
   prefix: 'email',
   suffix: '@domain.com',
-  errorMessage: ''
+  errorMessage: '',
+  onChange: action('')
 };
