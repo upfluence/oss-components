@@ -15,7 +15,7 @@ module('Integration | Component | o-s-s/input-group', function (hooks) {
     setupOnerror((err: Error) => {
       assert.equal(
         err.message,
-        'Assertion Failed: [component][OSS::InputGroup] No @prefix or @suffix parameter were passed. If you are not going to use any, you might as well use an OSS::InputContainer. You little piece of shit. :)'
+        'Assertion Failed: [component][OSS::InputGroup] No @prefix or @suffix parameter were passed. If you are not going to use any, you should use an OSS::InputContainer.'
       );
     });
 

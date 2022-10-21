@@ -41,7 +41,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: undefined }
       },
       control: { type: 'text' }
     },

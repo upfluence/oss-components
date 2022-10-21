@@ -11,7 +11,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: undefined }
       },
       control: { type: 'text' }
     },
@@ -31,7 +31,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: undefined }
       },
       control: { type: 'text' }
     },
@@ -54,6 +54,26 @@ export default {
         }
       },
       control: { type: null }
+    },
+    prefix: {
+      description: 'The prefix label added to the input-group',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: undefined }
+      },
+      control: { type: 'text' }
+    },
+    suffix: {
+      description: 'The suffix label added to the input-group',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: undefined }
+      },
+      control: { type: 'text' }
     }
   },
   parameters: {

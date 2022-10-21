@@ -16,7 +16,7 @@ export default class OSSInputGroup extends Component<OSSInputGroupArgs> {
     super(owner, args);
 
     assert(
-      '[component][OSS::InputGroup] No @prefix or @suffix parameter were passed. If you are not going to use any, you might as well use an OSS::InputContainer. You little piece of shit. :)',
+      '[component][OSS::InputGroup] No @prefix or @suffix parameter were passed. If you are not going to use any, you should use an OSS::InputContainer.',
       args.prefix || args.suffix
     );
   }
