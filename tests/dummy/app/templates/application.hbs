@@ -1,3 +1,9 @@
+<div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
+  <OSS::InputGroup @value={{this.inputValue}} @prefix="This" @placeholder="makes no" @suffix="sense"
+                   @errorMessage="This is an error message" />
+  <OSS::InputGroup @value={{this.inputValue}} @prefix="@" @placeholder="Username" />
+  <OSS::InputGroup @value={{this.inputValue}} @suffix="@example.com" @placeholder="john.doe" />
+</div>
 <div class="fx-row fx-gap-px-10 margin-md">
   <OSS::RadioButton @selected={{this.radio1}} @onChange={{fn this.onRadioBtnChange "radio1"}} />
   <OSS::RadioButton @selected={{this.radio2}} @onChange={{fn this.onRadioBtnChange "radio2"}} />
