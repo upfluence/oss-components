@@ -58,6 +58,7 @@ export default class ApplicationController extends Controller {
   @tracked loading = false;
   @tracked phonePrefix = '+33';
   @tracked phoneNumber = '782828282';
+  @tracked inputValue = '';
   @tracked currency = 'EUR';
   @tracked currencyValue = 42.13;
   @tracked showModal = false;

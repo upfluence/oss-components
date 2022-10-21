@@ -35,6 +35,16 @@ export default {
       },
       control: { type: 'text' }
     },
+    errorMessage: {
+      description: 'An error message that will be displayed below the input-group.',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: undefined }
+      },
+      control: { type: 'text' }
+    },
     onChange: {
       type: { name: 'Method' },
       description: 'Method called every time the input is updated',
@@ -57,13 +67,18 @@ export default {
 
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
-      <OSS::InputContainer class="margin-bottom-sm" @value={{this.value}} />
+      <OSS::InputContainer @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}}
+                           @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} />
   `,
   context: args
 });
 export const BasicUsage = DefaultUsageTemplate.bind({});
 BasicUsage.args = {
-  value: 'John'
+  value: 'John',
+  disabled: false,
+  placeholder: 'this is the placeholder',
+  errorMessage: '',
+  onChange: action('')
 };
 
 const BasicWithParametersTemplate = (args) => ({
