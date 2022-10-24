@@ -12,7 +12,7 @@ module('Integration | Component | o-s-s/url-input', function (hooks) {
   test('it renders', async function (assert) {
     await render(hbs`<OSS::UrlInput @prefix="https://" />`);
 
-    assert.true(true);
+    assert.dom('.oss-input-group').exists();
   });
 
   module('With @validationRegex parameter', () => {

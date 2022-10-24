@@ -41,7 +41,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'string' }
       },
       control: { type: 'text' }
     },
@@ -50,7 +50,7 @@ export default {
       description: 'Method called every time the input is updated',
       table: {
         type: {
-          summary: 'onChange(value: string): void'
+          summary: 'onChange(value: string, isValid: boolean): void'
         }
       },
       control: { type: null }
@@ -114,5 +114,5 @@ BasicUsage.args = {
   disbaled: 'false',
   errorMessage: 'Not a valid subdomain',
   validationRegex: /^[a-zA-Z0-9]+[a-zA-Z0-9-._]*[a-zA-Z0-9]+$/,
-  onChange: action('')
+  onChange: action('onChange')
 };
