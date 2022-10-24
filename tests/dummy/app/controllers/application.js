@@ -59,6 +59,8 @@ export default class ApplicationController extends Controller {
   @tracked phonePrefix = '+33';
   @tracked phoneNumber = '782828282';
   @tracked inputValue = '';
+  @tracked shopifyDomain = '';
+  @tracked shopUrl = '';
   @tracked currency = 'EUR';
   @tracked currencyValue = 42.13;
   @tracked showModal = false;
@@ -73,6 +75,9 @@ export default class ApplicationController extends Controller {
 
   code4CodeBlock = testScript;
   countries = countries;
+
+  subdomainRegex = /^[a-zA-Z0-9]+[a-zA-Z0-9-._]*[a-zA-Z0-9]+$/;
+  urlRegex = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/;
 
   tableDemo = {
     header: [
@@ -227,6 +232,15 @@ export default class ApplicationController extends Controller {
   @action
   onRadioBtnChange(radioBtnKey, newValue) {
     set(this, radioBtnKey, newValue);
+  }
+
+  @action
+  onUrlInputChange(newValue, isValid) {
+    console.log('newValue : ' + newValue);
+    console.log('Value test against regext valid ? ' + isValid);
+    if (isValid) {
+      this.shopUrl = newValue.replace('https://', '').replace('http://', '');
+    }
   }
 }
 
