@@ -1,4 +1,14 @@
 <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
+  <OSS::UrlInput @value={{this.shopifyDomain}} @prefix="https://" @placeholder="shopname" @suffix=".myshopify.com"
+                 @errorMessage="Not a valid shopify domain" @validationRegex={{this.subdomainRegex}}
+                 @onChange={{this.onUrlInputChange}} />
+  <OSS::UrlInput @prefix="https://" @placeholder="No regex specified"
+                 @onChange={{this.onUrlInputChange}} @value={{this.shopifyDomain}} />
+  <OSS::UrlInput @value={{this.shopUrl}} @prefix="https://" @placeholder="shop url"
+                 @errorMessage="Please enter a valid URL" @validationRegex={{this.urlRegex}}
+                 @onChange={{this.onUrlInputChange}} />
+</div>
+<div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
   <OSS::InputGroup @value={{this.inputValue}} @prefix="This" @placeholder="makes no" @suffix="sense"
                    @errorMessage="This is an error message" />
   <OSS::InputGroup @value={{this.inputValue}} @prefix="@" @placeholder="Username" />
