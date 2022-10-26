@@ -3,4 +3,6 @@
   class="expanding-search__submit"
   {{action "expandOrErase" bubbles=false}} /> 
 
-{{input type="text" class="form-control upf-input expanding-search__input" placeholder=this.placeholder value=this.searchQuery}}
+<Input
+  @type="text" @placeholder={{this.placeholder}} @value={{this.searchQuery}}
+  class="upf-input expanding-search__input" />
