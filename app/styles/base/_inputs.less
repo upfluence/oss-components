@@ -20,7 +20,7 @@ label {
 .upf-input {
   border: 1px solid transparent;
   border-radius: @default-radius;
-  height: @input-size-default;
+  height: var(--spacing-px-36);
   padding: 0 1em;
   color: @color-text;
   background-color: @field-background-color;
@@ -66,7 +66,7 @@ label {
   background-repeat: no-repeat;
   background-size: 10px;
 
-  height: 37px;
+  height: var(--spacing-px-36);
   padding-top: 0;
   padding-bottom: 0;
 
@@ -81,7 +81,7 @@ label {
 // --------------------------------------------------
 
 .upf-input--small, .upf-select--small {
-  height: @input-size-sm;
+  height: var(--spacing-px-24);
 }
 
 //
@@ -93,13 +93,13 @@ label {
 .upf-input-container {
   // Override selectize height
   .selectize-input {
-    height: @input-size-default;
-    border-radius: @default-radius;
+    height: var(--spacing-px-36);
+    border-radius: var(--border-radius-sm);
   }
 }
 
 .selectize-control.multi .selectize-input > div {
-  border-radius: @default-radius;
+  border-radius: var(--border-radius-sm);
   padding-left: 8px;
 }
 
