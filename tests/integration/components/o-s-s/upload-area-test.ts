@@ -6,6 +6,12 @@ import sinon from 'sinon';
 
 import MockUploader from '@upfluence/oss-components/test-support/services/uploader';
 
+const file = new File(
+  [new Blob(['iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=='])],
+  '1px.png',
+  { type: 'image/png' }
+);
+
 module('Integration | Component | o-s-s/upload-area', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -157,15 +163,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
 
     module('active mode', function (hooks) {
       hooks.beforeEach(function () {
-        this.file = new File(
-          [
-            new Blob([
-              'iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=='
-            ])
-          ],
-          '1px.png',
-          { type: 'image/png' }
-        );
+        this.file = file;
       });
 
       test('dragging a file over the component applies the right class', async function (assert) {
@@ -330,6 +328,38 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
       await click('.oss-upload-item [data-control-name="upload-item-edit-button"]');
 
       assert.ok(fileInputClickStub.calledOnce);
+    });
+  });
+
+  module('allow multiple files', function () {
+    test('it allows the user to upload more than one file', async function (assert) {
+      await render(hbs`
+        <OSS::UploadArea
+          @uploader={{this.mockUploader}} @multiple={{true}} @rules={{this.validationRules}}
+          @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
+      `);
+      await triggerEvent('.oss-upload-area', 'drop', { dataTransfer: { files: [file] } });
+      await triggerEvent('.oss-upload-area', 'drop', { dataTransfer: { files: [file] } });
+
+      assert.dom('.oss-upload-area').exists();
+      assert.dom('.oss-upload-item').exists({ count: 2 });
+    });
+
+    test('the user can remove a specific uploaded item', async function (assert) {
+      await render(hbs`
+        <OSS::UploadArea
+          @uploader={{this.mockUploader}} @multiple={{true}} @rules={{this.validationRules}}
+          @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
+      `);
+      await triggerEvent('.oss-upload-area', 'drop', { dataTransfer: { files: [file] } });
+      await triggerEvent('.oss-upload-area', 'drop', { dataTransfer: { files: [file] } });
+
+      assert.dom('.oss-upload-item').exists({ count: 2 });
+
+      await waitFor('.oss-upload-item:first-child [data-control-name="upload-item-remove-button"]');
+      await click('.oss-upload-item:first-child [data-control-name="upload-item-remove-button"]');
+
+      assert.dom('.oss-upload-item').exists({ count: 1 });
     });
   });
 });

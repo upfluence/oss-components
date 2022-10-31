@@ -25,6 +25,9 @@ interface OSSUploadAreaArgs {
 
   onUploadSuccess(artifact: FileArtifact): void;
   onFileDeletion?(): void;
+
+  // In multiple mode
+  onUploadSuccess(index: number, artifact: FileArtifact): void;
   onFileDeletion?(index: number): void;
 }
 
@@ -192,11 +195,21 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
     }
   }
 
+  @action
+  onUploadSuccess(index: number, artifact: FileArtifact): void {
+    if (this.multiple) {
+      this.args.onUploadSuccess(index, artifact);
+    } else {
+      this.args.onUploadSuccess(artifact);
+    }
+  }
+
   private _handleFileUpload(file: File): void {
     if (this._validateFile(file)) {
       if (this.editingFileIndex !== undefined) {
         this.selectedFiles[this.editingFileIndex] = file;
         this.selectedFiles = this.selectedFiles;
+        this.editingFileIndex = undefined;
       } else {
         this.selectedFiles = [...this.selectedFiles, ...[file]];
       }
