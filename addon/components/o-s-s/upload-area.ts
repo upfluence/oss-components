@@ -185,18 +185,20 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
       return true;
     }
 
-    validationResponse.validations.forEach((v) => {
-      const intlArgs: { [key: string]: string } = {};
+    validationResponse.validations
+      .filter((v) => !v.passes)
+      .forEach((v) => {
+        const intlArgs: { [key: string]: string } = {};
 
-      if (v.rule.type === 'filesize') {
-        intlArgs.max_filesize = v.rule.value;
-      }
+        if (v.rule.type === 'filesize') {
+          intlArgs.max_filesize = v.rule.value;
+        }
 
-      this.toast.error(
-        this.intl.t(`oss-components.upload-area.errors.${v.rule.type}.description`, intlArgs),
-        this.intl.t(`oss-components.upload-area.errors.${v.rule.type}.title`)
-      );
-    });
+        this.toast.error(
+          this.intl.t(`oss-components.upload-area.errors.${v.rule.type}.description`, intlArgs),
+          this.intl.t(`oss-components.upload-area.errors.${v.rule.type}.title`)
+        );
+      });
 
     return false;
   }
