@@ -28,7 +28,7 @@ export default setModifierManager(
       //We use this function when tooltip title is updated and depends to translation with value
       const { title } = args.named;
 
-      jQuery(state.element).attr('data-original-title', title);
+      jQuery(state.element).attr('data-original-title', title).tooltip('show');
     },
 
     destroyModifier() {
