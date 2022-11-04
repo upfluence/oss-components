@@ -34,19 +34,22 @@ module('Integration | Component | o-s-s/code-block', function (hooks) {
   });
 
   test('Clicking on the copy button copies the code into the users clipboard', async function (assert) {
+    const stubClipboard = sinon.stub(navigator.clipboard, 'writeText');
     await render(hbs`<OSS::CodeBlock @content={{this.codeBlock}} @copyable={{true}} />`);
 
-    const stubClipboard = sinon.stub(navigator.clipboard, 'writeText');
     await click('.code-block .floating-copy-btn .upf-btn');
 
     assert.ok(stubClipboard.calledOnceWithExactly(this.codeBlock));
+    sinon.restore();
   });
 
   test('if onCopyMessage is set, it shows a toast message when the code is copied', async function (assert) {
+    sinon.stub(navigator.clipboard, 'writeText');
     await render(hbs`<OSS::CodeBlock @content={{this.codeBlock}} @copyable={{true}} @onCopyMessage={{'Copied!'}} />`);
     const stubToast = sinon.stub(this.owner.lookup('service:toast'), 'success');
     await click('.code-block .floating-copy-btn .upf-btn');
     assert.ok(stubToast.calledOnceWithExactly('Copied!', ''));
+    sinon.restore();
   });
 
   test('If scrollable parameter is set, the component is scrollable', async function (assert) {
