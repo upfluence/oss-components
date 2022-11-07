@@ -47,3 +47,6 @@ oss-components:
         description: "The maximum file size is {max_filesize}"
   url-input:
     default_format_error: This is not a valid URL.
+  copy:
+    default: Copy
+    success: Copied!
