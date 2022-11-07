@@ -51,7 +51,7 @@ oss-components:
     tooltip: Copy
     success:
       title: Copied to clipboard
-      subtitle: Successfully copied to your clipboard
+      subtitle: Successfully copied to your clipboard.
     error:
       title: Error
-      subtitle: Copy to your clipboard failed, please try again
+      subtitle: Failed to copy to your clipboard. Please try again.

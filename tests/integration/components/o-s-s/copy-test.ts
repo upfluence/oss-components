@@ -38,7 +38,7 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
       await render(hbs`<OSS::Copy @value="test" />`);
       await click('.upf-btn--default');
 
-      assert.true(toastInfoStub.calledOnceWithExactly('Successfully copied to your clipboard', 'Copied to clipboard'));
+      assert.true(toastInfoStub.calledOnceWithExactly('Successfully copied to your clipboard.', 'Copied to clipboard'));
     });
 
     test('the error toast is rendered', async function (assert) {
@@ -48,7 +48,7 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
       await render(hbs`<OSS::Copy @value="test" />`);
       await click('.upf-btn--default');
 
-      assert.true(toastErrorStub.calledOnceWithExactly('Copy to your clipboard failed, please try again', 'Error'));
+      assert.true(toastErrorStub.calledOnceWithExactly('Failed to copy to your clipboard. Please try again.', 'Error'));
     });
 
     test('the clipboard writeText method is called', async function (assert) {
