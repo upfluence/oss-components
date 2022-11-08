@@ -48,5 +48,10 @@ oss-components:
   url-input:
     default_format_error: This is not a valid URL.
   copy:
-    default: Copy
-    success: Copied!
+    tooltip: Copy
+    success:
+      title: Copied to clipboard
+      subtitle: Successfully copied to your clipboard.
+    error:
+      title: Error
+      subtitle: Failed to copy to your clipboard. Please try again.

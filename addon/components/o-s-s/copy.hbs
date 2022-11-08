@@ -1,3 +1,2 @@
-<OSS::Button class={{if this.isCopied "copy-success"}} @icon="far fa-copy" @square={{true}} @size="sm"
-             {{on "click" this.copy}}
-             {{enable-tooltip placement="top" title=this.tooltipTitle}} />
+<OSS::Button @icon="far fa-copy" @square={{true}} @size="sm" {{on "click" this.copy}}
+             {{enable-tooltip placement="top" title=(t "oss-components.copy.tooltip") trigger="hover"}} />

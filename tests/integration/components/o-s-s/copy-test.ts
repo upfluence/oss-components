@@ -24,41 +24,42 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
 
   module('when clicking', function (hooks) {
     hooks.beforeEach(function () {
-      this.writeTextStub = sinon.stub(navigator.clipboard, 'writeText').resolves();
+      this.toastService = this.owner.lookup('service:toast');
     });
+
     hooks.afterEach(function () {
       sinon.restore();
     });
 
-    test('the tooltip has correct wording', async function (assert) {
+    test('the info toast is rendered', async function (assert) {
+      sinon.stub(navigator.clipboard, 'writeText').resolves();
+      const toastInfoStub = sinon.stub(this.toastService, 'info').resolves();
+
       await render(hbs`<OSS::Copy @value="test" />`);
-
       await click('.upf-btn--default');
-      await triggerEvent('.upf-btn--default', 'mouseover');
-      await waitFor('.tooltip');
 
-      assert.dom('.tooltip .tooltip-inner').hasText('Copied!');
+      assert.true(toastInfoStub.calledOnceWithExactly('Successfully copied to your clipboard.', 'Copied to clipboard'));
     });
 
-    test('the tooltip has correct color', async function (assert) {
+    test('the error toast is rendered', async function (assert) {
+      sinon.stub(navigator.clipboard, 'writeText').rejects();
+      const toastErrorStub = sinon.stub(this.toastService, 'error').resolves();
+
       await render(hbs`<OSS::Copy @value="test" />`);
-
       await click('.upf-btn--default');
-      await triggerEvent('.upf-btn--default', 'mouseover');
-      await waitFor('.tooltip');
 
-      assert.dom('.upf-btn--default').hasClass('copy-success');
+      assert.true(toastErrorStub.calledOnceWithExactly('Failed to copy to your clipboard. Please try again.', 'Error'));
     });
 
     test('the clipboard writeText method is called', async function (assert) {
+      const writeTextStub = sinon.stub(navigator.clipboard, 'writeText').resolves();
+      sinon.stub(this.toastService, 'info').resolves();
       this.textForCopy = 'test';
+
       await render(hbs`<OSS::Copy @value={{this.textForCopy}} />`);
-
       await click('.upf-btn--default');
-      await triggerEvent('.upf-btn--default', 'mouseover');
-      await waitFor('.tooltip');
 
-      assert.true(this.writeTextStub.calledOnceWithExactly(this.textForCopy));
+      assert.true(writeTextStub.calledOnceWithExactly(this.textForCopy));
     });
   });
 });
