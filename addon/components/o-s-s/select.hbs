@@ -4,7 +4,11 @@
   <div class="upf-input fx-row fx-1 fx-xalign-center">
     <div class="fx-row fx-1 fx-malign-space-between fx-xalign-center" role="button" {{on "click" this.toggleSelector}}>
       {{#if @value}}
-        <span>{{get @value this.targetValue}}</span>
+        {{#if (has-block "selected")}}
+          {{yield @value to="selected"}}
+        {{else}}
+          <span>{{get @value this.targetValue}}</span>
+        {{/if}}
       {{else}}
         <span class="text-color-default-light">{{this.placeholder}}</span>
       {{/if}}
