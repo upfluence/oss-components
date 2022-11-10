@@ -136,6 +136,27 @@ const Template = (args) => ({
   context: args
 });
 
+const WithSelectedNamedBlockTemplate = (args) => ({
+  template: hbs`
+  <div style="width: 400px">
+    <OSS::Select
+      @items={{this.items}} @value={{this.value}} @placeholder={{this.placeholder}}
+      @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} @successMessage={{this.successMessage}}
+      @onSearch={{this.onSearch}} @onChange={{this.onChange}}>
+      <:selected as |option|>
+        With named block — {{option.name}}
+      </:selected>
+      <:option as |item|>
+        {{item.name}}
+      </:option>
+    </OSS::Select>
+  </div>
+  `,
+  context: args
+});
+export const WithSelectedNamedBlock = WithSelectedNamedBlockTemplate.bind({});
+WithSelectedNamedBlock.args = defaultArgs;
+
 export const Default = Template.bind({});
 Default.args = {
   ...defaultArgs

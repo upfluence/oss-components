@@ -151,6 +151,24 @@ module('Integration | Component | o-s-s/select', function (hooks) {
       assert.dom('.upf-infinite-select .upf-infinite-select__item:first-child .item-wrapper').hasClass('selected');
       assert.dom('.upf-infinite-select .upf-infinite-select__item:first-child .item-wrapper i.far.fa-check').exists();
     });
+
+    test('the selected value is displayed using the selected named block if provided', async function (assert) {
+      this.value = this.items[0];
+      await render(
+        hbs`
+          <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @placeholder="my placeholder">
+            <:selected as |value|>
+              Selected value: {{value.name}}
+            </:selected>
+            <:option as |item|>
+              {{item.name}}
+            </:option>
+          </OSS::Select>
+        `
+      );
+
+      assert.dom('.upf-input').hasText('Selected value: foo');
+    });
   });
 
   module('disabled state', function () {
