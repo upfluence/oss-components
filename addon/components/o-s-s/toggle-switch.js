@@ -3,8 +3,6 @@ import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 
 export default class OSSToggleSwitchComponent extends Component {
-  isDisabled = false;
-
   constructor(owner, args) {
     super(owner, args);
 
@@ -17,13 +15,11 @@ export default class OSSToggleSwitchComponent extends Component {
       `[component][OSS::ToggleSwitch] Please provide a boolean @disabled. @disabled is ${typeof args.disabled}`,
       typeof args.disabled === 'undefined' ? true : typeof args.disabled === 'boolean'
     );
-
-    this.isDisabled = this.args.disabled;
   }
 
   @action
   switchState() {
-    if (!this.isDisabled) {
+    if (!this.args.disabled) {
       this.args.onChange(!this.args.value);
     }
   }
