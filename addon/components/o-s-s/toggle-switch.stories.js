@@ -18,6 +18,16 @@ export default {
     onChange: {
       type: { required: true },
       description: 'A callback that sends the modifications of the value & the currency back to the parent component'
+    },
+    disabled: {
+      description: 'Disables the toggle switch',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: false }
+      },
+      control: { type: 'boolean' }
     }
   },
   parameters: {
@@ -38,5 +48,6 @@ const DefaultUsageTemplate = (args) => ({
 export const BasicUsage = DefaultUsageTemplate.bind({});
 BasicUsage.args = {
   value: true,
+  disabled: false,
   onChange: action('onChange')
 };
