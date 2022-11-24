@@ -44,7 +44,8 @@ export default class OSSAlert extends Component<OSSAlertArgs> {
   }
 
   @action
-  removeSelf(): void {
+  removeSelf(event: PointerEvent): void {
+    event.stopPropagation();
     this.args.onClose?.();
     this._DOMElement?.remove();
   }
