@@ -36,6 +36,7 @@ export default class OssModalComponent extends Component {
 
     const modal = jQuery(this.element).modal({ backdrop: 'static' });
 
+    console.log(this.options.container, this.container)
     if (this.options.container) {
       modal.appendTo(this.container);
     }
@@ -48,9 +49,13 @@ export default class OssModalComponent extends Component {
   @action
   teardown() {
     jQuery(this.element).modal('hide');
+
+    if (this.isDestroying || this.isDestroyed) return;
+
     run(() => {
       this.element.removeEventListener('keydown', this._handleEscapeKey.bind(this));
     });
+
     this.element.remove();
   }
 
