@@ -36,7 +36,6 @@ export default class OssModalComponent extends Component {
 
     const modal = jQuery(this.element).modal({ backdrop: 'static' });
 
-    console.log(this.options.container, this.container)
     if (this.options.container) {
       modal.appendTo(this.container);
     }
