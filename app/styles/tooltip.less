@@ -1,0 +1,20 @@
+.tooltip-container {
+  position: absolute;
+  top: var(--upf-modifier-tooltip-top, 0);
+  left: var(--upf-modifier-tooltip-left, 0);
+  background-color: var(--color-black);
+  color: var(--color-white);
+  max-width: 300px;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 19px;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    border-top: 6px solid var(--color-black);
+    border-radius: 0 8px 0 2px;
+    transform: rotate(-45deg);
+  }
+}
