@@ -72,18 +72,39 @@ function _horizontalAdjustmentRelativeToViewPort(element, placement) {
   }
 }
 
-function _generateTooltip(state, args) {
-  const { title, placement } = args.named;
-
+function _generateHTMLStructure(state, args) {
+  const { title, subtitle, icon } = args.named;
   state.tooltip = document.createElement('div');
-  state.tooltip.className = 'tooltip-container';
+  state.tooltip.className = 'upf-tooltip';
+  let titleContainer = document.createElement('div');
+  titleContainer.className = 'title-container';
 
-  let titleContainer = document.createElement('span');
-  titleContainer.innerText = title;
+  if (icon) {
+    let iconI = document.createElement('i');
+    iconI.className = icon;
+    titleContainer.append(iconI);
+  }
+  let titleSpan = document.createElement('span');
+  titleSpan.innerText = title;
+  titleContainer.append(titleSpan);
+
   state.tooltip.append(titleContainer);
-  document.body.append(state.tooltip);
 
+  if (subtitle) {
+    let subtitleSpan = document.createElement('span');
+    subtitleSpan.className = 'subtitle';
+    subtitleSpan.innerText = subtitle;
+    state.tooltip.append(subtitleSpan);
+  }
+
+  document.body.append(state.tooltip);
   state.tooltip.style.minWidth = `${state.tooltip.offsetWidth}px`;
+}
+
+function _generateTooltip(state, args) {
+  const { placement } = args.named;
+
+  _generateHTMLStructure(state, args);
 
   const top = _computedTop(state.tooltip, state.element, placement);
   state.tooltip.style.setProperty('--upf-modifier-tooltip-top', `${top}px`);
