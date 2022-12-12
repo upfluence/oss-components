@@ -1,14 +1,5 @@
 <div class="oss-upload-area-container fx-1 allow-text-overflow-on-children">
-  {{#if this.selectedFile}}
-    {{!-- This forces the re-render by creating a new array after editing a file. --}}
-    {{#each (array this.selectedFile) as |selectedFile|}}
-      <OSS::UploadItem
-        @uploader={{@uploader}} @file={{selectedFile}}
-        @rules={{@rules}} @scope={{this.scope}} @privacy={{this.filePrivacy}}
-        @onEdition={{this.triggerFileBrowser}} @onDeletion={{this.onFileDeletion}}
-        @onUploadSuccess={{@onUploadSuccess}} />
-    {{/each}}
-  {{else}}
+  {{#if this.displayUploadArea}}
     <div class={{this.computedClass}}
          {{on "dragover" this._allowDropEvent}}
          {{on "dragenter" this._onDragEnter}}
@@ -53,6 +44,20 @@
           {{/if}}
         </div>
       </div>
+    </div>
+  {{/if}}
+
+  {{#if this.selectedFiles}}
+    {{!-- This forces the re-render by creating a new array after editing a file. --}}
+    <div class="fx-col fx-gap-px-6 {{if this.multiple 'margin-top-px-12'}}">
+      {{#each this.selectedFiles as |selectedFile index|}}
+        <OSS::UploadItem
+          @uploader={{@uploader}} @file={{selectedFile}}
+          @rules={{@rules}} @scope={{this.scope}} @privacy={{this.filePrivacy}}
+          @onEdition={{fn this.onFileEdition index}}
+          @onDeletion={{fn this.onFileDeletion index}}
+          @onUploadSuccess={{fn this.onUploadSuccess index}} />
+      {{/each}}
     </div>
   {{/if}}
 

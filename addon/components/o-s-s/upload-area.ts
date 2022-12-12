@@ -21,9 +21,14 @@ interface OSSUploadAreaArgs {
   rules?: FileValidator[];
   artifact?: FileArtifact;
   size?: 'lg' | 'md';
+  multiple?: boolean;
 
   onUploadSuccess(artifact: FileArtifact): void;
   onFileDeletion?(): void;
+
+  // In multiple mode
+  onUploadSuccess(index: number, artifact: FileArtifact): void;
+  onFileDeletion?(index: number): void;
 }
 
 export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
@@ -32,8 +37,9 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
 
   private declare _DOMElement: HTMLElement;
   fileInput?: HTMLInputElement;
+  editingFileIndex?: number;
 
-  @tracked selectedFile?: File | FileArtifact;
+  @tracked selectedFiles: (File | FileArtifact)[] = [];
   @tracked dragging: boolean = false;
   @tracked hover: boolean = false;
   @tracked alreadyTriggerAnimation: boolean = false;
@@ -44,7 +50,7 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
     assert('[OSS::UploadArea] The uploader argument is mandatory', args.uploader);
 
     if (args.artifact) {
-      this.selectedFile = args.artifact;
+      this.selectedFiles = [args.artifact];
     }
   }
 
@@ -89,6 +95,14 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
     return this.args.scope || 'anonymous';
   }
 
+  get multiple(): boolean {
+    return this.args.multiple || false;
+  }
+
+  get displayUploadArea(): boolean {
+    return this.multiple || this.selectedFiles.length === 0;
+  }
+
   @action
   init(element: HTMLElement): void {
     this._DOMElement = element;
@@ -110,6 +124,14 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   onFileSelected(event: Event): void {
     this._handleFileUpload(((<HTMLInputElement>event.target).files || [])[0]);
     (<HTMLInputElement>event.target).value = '';
+  }
+
+  @action
+  onFileEdition(index: number, event?: MouseEvent): void {
+    event?.stopPropagation();
+
+    this.editingFileIndex = index;
+    this.triggerFileBrowser();
   }
 
   @action
@@ -160,15 +182,37 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   }
 
   @action
-  onFileDeletion(event?: MouseEvent): void {
+  onFileDeletion(index: number, event?: MouseEvent): void {
     event?.stopPropagation();
-    this.selectedFile = undefined;
-    this.args.onFileDeletion?.();
+
+    if (this.multiple) {
+      this.selectedFiles.splice(index, 1);
+      this.selectedFiles = this.selectedFiles;
+      this.args.onFileDeletion?.(index);
+    } else {
+      this.selectedFiles = [];
+      this.args.onFileDeletion?.();
+    }
+  }
+
+  @action
+  onUploadSuccess(index: number, artifact: FileArtifact): void {
+    if (this.multiple) {
+      this.args.onUploadSuccess(index, artifact);
+    } else {
+      this.args.onUploadSuccess(artifact);
+    }
   }
 
   private _handleFileUpload(file: File): void {
     if (this._validateFile(file)) {
-      this.selectedFile = file;
+      if (this.editingFileIndex !== undefined) {
+        this.selectedFiles[this.editingFileIndex] = file;
+        this.selectedFiles = this.selectedFiles;
+        this.editingFileIndex = undefined;
+      } else {
+        this.selectedFiles = [...this.selectedFiles, ...[file]];
+      }
     }
   }
 
