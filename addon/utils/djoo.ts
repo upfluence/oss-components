@@ -144,7 +144,7 @@ export class Djoo {
   private computedArrowLeft(element: HTMLElement, target: HTMLElement): number {
     const elementBoundingClientRect = element.getBoundingClientRect();
     const targetBoundingClientRect = target.getBoundingClientRect();
-    const leftRelative = Math.abs(elementBoundingClientRect.left - targetBoundingClientRect.left);
+    const leftRelative = targetBoundingClientRect.left - elementBoundingClientRect.left;
 
     switch (this.elementOptions.placement) {
       case 'top':
@@ -163,7 +163,7 @@ export class Djoo {
   private computedArrowTop(element: HTMLElement, target: HTMLElement): number {
     const elementBoundingClientRect = element.getBoundingClientRect();
     const targetBoundingClientRect = target.getBoundingClientRect();
-    const topRelative = Math.abs(elementBoundingClientRect.top - targetBoundingClientRect.top);
+    const topRelative = targetBoundingClientRect.top - elementBoundingClientRect.top;
 
     switch (this.elementOptions.placement) {
       case 'top':

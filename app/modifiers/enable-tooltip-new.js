@@ -1,8 +1,18 @@
 import { setModifierManager, capabilities } from '@ember/modifier';
 import { Djoo } from '@upfluence/oss-components/utils/djoo';
+import { run } from '@ember/runloop';
+import { createAnimation } from '@upfluence/oss-components/utils/animation-manager';
+
+function _setElementContent(element, value, htmlSafe) {
+  if (htmlSafe) {
+    element.innerHTML = value;
+  } else {
+    element.innerText = value;
+  }
+}
 
 function _generateHTMLStructure(state, args) {
-  const { title, subtitle, icon } = args.named;
+  const { title, subtitle, icon, html } = args.named;
   state.tooltip = document.createElement('div');
   state.tooltip.className = 'upf-tooltip upf-tooltip--visible';
   let titleContainer = document.createElement('div');
@@ -14,7 +24,9 @@ function _generateHTMLStructure(state, args) {
     titleContainer.append(iconI);
   }
   let titleSpan = document.createElement('span');
-  titleSpan.innerText = title;
+  titleSpan.className = 'title';
+  _setElementContent(titleSpan, title, html);
+
   titleContainer.append(titleSpan);
 
   state.tooltip.append(titleContainer);
@@ -22,7 +34,7 @@ function _generateHTMLStructure(state, args) {
   if (subtitle) {
     let subtitleSpan = document.createElement('span');
     subtitleSpan.className = 'subtitle';
-    subtitleSpan.innerText = subtitle;
+    _setElementContent(subtitleSpan, subtitle, html);
     state.tooltip.append(subtitleSpan);
   }
 
@@ -31,12 +43,12 @@ function _generateHTMLStructure(state, args) {
 }
 
 function _create(state, args) {
-  const { placement } = args.named;
-  const djoo = new Djoo();
+  if (state.isRendered) return;
 
+  const { placement } = args.named;
   _generateHTMLStructure(state, args);
 
-  djoo.computePosition(
+  new Djoo().computePosition(
     state.tooltip,
     state.element,
     {
@@ -47,10 +59,61 @@ function _create(state, args) {
     },
     { defaultRotation: -45, height: 4, width: 8.5 }
   );
+  state.animation = createAnimation(state.tooltip, [{ opacity: 0 }, { opacity: 1 }], {
+    duration: 250,
+    fill: 'forwards'
+  });
+  state.animation.play();
+  state.isRendered = true;
 }
 
-function _destroy(state) {
-  state.tooltip.remove();
+function _destroy(event, state) {
+  if (!state.isRendered || state.element.contains(event.relatedTarget)) return;
+
+  state.animation.reverse();
+  state.animation.finished.then(() => {
+    run(() => {
+      state.tooltip.remove();
+      state.isRendered = false;
+    });
+  });
+}
+
+function _setDefaultValue(args) {
+  args.named = {
+    ...args.named,
+    ...{
+      placement: args.named.placement || 'bottom',
+      trigger: args.named.trigger || 'hover focus',
+      title: args.named.title || '',
+      html: args.named.html || false
+    }
+  };
+}
+
+function _initEventListener(state, element, args) {
+  const { trigger } = args.named;
+  const splitTrigger = trigger.split(' ');
+
+  if (splitTrigger.includes('hover')) {
+    element.addEventListener('mouseover', () => {
+      _create(state, args);
+    });
+
+    element.addEventListener('mouseout', (event) => {
+      _destroy(event, state);
+    });
+  }
+
+  if (splitTrigger.includes('focus')) {
+    element.addEventListener('focusin', () => {
+      _create(state, args);
+    });
+
+    element.addEventListener('focusout', (event) => {
+      _destroy(event, state);
+    });
+  }
 }
 
 export default setModifierManager(
@@ -58,32 +121,28 @@ export default setModifierManager(
     capabilities: capabilities('3.13'),
 
     createModifier() {
-      console.log('created');
       return {
         element: null,
-        tooltip: null
+        tooltip: null,
+        animation: null,
+        isRendered: false
       };
     },
 
     installModifier(state, element, args) {
-      console.log('install');
       state.element = element;
-
-      element.addEventListener('mouseover', (event) => {
-        console.log(event);
-        console.log('create');
-        _create(state, args);
-      });
-      element.addEventListener('mouseout', () => {
-        console.log('destroyed');
-        _destroy(state);
-      });
+      _setDefaultValue(args);
+      _initEventListener(state, element, args);
     },
 
     updateModifier(state, args) {
-      console.log('update');
-      const { title } = args.named;
-      //TODO
+      const { title, subtitle, icon, html } = args.named;
+      const titleSpan = state.tooltip.querySelector('.title-container .title');
+      _setElementContent(titleSpan, title, html);
+      const subtitleSpan = state.tooltip.querySelector('.subtitle');
+      _setElementContent(subtitleSpan, subtitle, html);
+      const iconI = state.tooltip.querySelector('.title-container i');
+      iconI.className = icon;
     },
 
     destroyModifier() {

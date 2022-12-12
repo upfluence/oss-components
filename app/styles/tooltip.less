@@ -10,7 +10,7 @@
   color: var(--color-white);
   max-width: 300px;
   border-radius: var(--border-radius-sm);
-  z-index: 2000;
+  z-index: 9999;
 
   &:before {
     content: '';
@@ -22,16 +22,6 @@
     border-top: 8px solid var(--color-gray-900);
     border-radius: 0 6px 0 3px;
     transform: rotate(var(--upf-modifier-tooltip-arrow-rotation));
-  }
-
-  &--visible {
-    animation: tooltipVisible 0.3s;
-    height: auto;
-  }
-
-  &--hidden {
-    opacity: 0;
-    animation: tooltipHidden 0.3s;
   }
 
   .title-container {
