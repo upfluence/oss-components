@@ -32,6 +32,8 @@ export class Djoo {
     this.elementOptions = elementOptions;
     this.arrowOptions = arrowOptions;
 
+    this.overflowSecurityCheck(element, target);
+
     const elementTop = this.computedElementTop(element, target);
     element.style.setProperty(
       `${CSS_VARIABLE_NAME_PREFIX}${this.elementOptions.cssVariableName}-top`,
@@ -63,6 +65,31 @@ export class Djoo {
         `${CSS_VARIABLE_NAME_PREFIX}${this.elementOptions.cssVariableName}-arrow-rotation`,
         `${rotation}deg`
       );
+    }
+  }
+
+  private overflowSecurityCheck(element, target): void {
+    const elementTotalHeight =
+      element.offsetHeight + this.elementOptions.viewPortPadding + this.elementOptions.elementTargetMargin;
+    const elementTotalWidth =
+      element.offsetWidth + this.elementOptions.viewPortPadding + this.elementOptions.elementTargetMargin;
+
+    if (this.elementOptions.placement === 'top') {
+      if (target.getBoundingClientRect().top < elementTotalHeight) {
+        this.elementOptions.placement = 'bottom';
+      }
+    } else if (this.elementOptions.placement === 'bottom') {
+      if (window.innerHeight - target.getBoundingClientRect().bottom < elementTotalHeight) {
+        this.elementOptions.placement = 'top';
+      }
+    } else if (this.elementOptions.placement === 'right') {
+      if (window.innerWidth - target.getBoundingClientRect().right < elementTotalWidth) {
+        this.elementOptions.placement = 'left';
+      }
+    } else if (this.elementOptions.placement === 'left') {
+      if (target.getBoundingClientRect().left < elementTotalWidth) {
+        this.elementOptions.placement = 'right';
+      }
     }
   }
 

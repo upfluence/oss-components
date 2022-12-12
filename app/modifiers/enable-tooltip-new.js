@@ -42,6 +42,13 @@ function _generateHTMLStructure(state, args) {
   state.tooltip.style.minWidth = `${state.tooltip.offsetWidth}px`;
 }
 
+function _delayedCreate(state, args) {
+  if (state.isRendered) return;
+  state.setTimeoutId = setTimeout(() => {
+    _create(state, args);
+  }, 300);
+}
+
 function _create(state, args) {
   if (state.isRendered) return;
 
@@ -65,9 +72,15 @@ function _create(state, args) {
   });
   state.animation.play();
   state.isRendered = true;
+  state.setTimeoutId = null;
 }
 
 function _destroy(event, state) {
+  if (state.setTimeoutId) {
+    clearTimeout(state.setTimeoutId);
+    state.setTimeoutId = null;
+    return;
+  }
   if (!state.isRendered || state.element.contains(event.relatedTarget)) return;
 
   state.animation.reverse();
@@ -97,7 +110,7 @@ function _initEventListener(state, element, args) {
 
   if (splitTrigger.includes('hover')) {
     element.addEventListener('mouseover', () => {
-      _create(state, args);
+      _delayedCreate(state, args);
     });
 
     element.addEventListener('mouseout', (event) => {
@@ -107,7 +120,7 @@ function _initEventListener(state, element, args) {
 
   if (splitTrigger.includes('focus')) {
     element.addEventListener('focusin', () => {
-      _create(state, args);
+      _delayedCreate(state, args);
     });
 
     element.addEventListener('focusout', (event) => {
@@ -125,6 +138,7 @@ export default setModifierManager(
         element: null,
         tooltip: null,
         animation: null,
+        setTimeoutId: null,
         isRendered: false
       };
     },
