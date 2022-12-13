@@ -1,9 +1,30 @@
+// @ts-ignore
 import { setModifierManager, capabilities } from '@ember/modifier';
 import { Djoo } from '@upfluence/oss-components/utils/djoo';
 import { run } from '@ember/runloop';
 import { createAnimation } from '@upfluence/oss-components/utils/animation-manager';
 
-function _setElementContent(element, value, htmlSafe) {
+type State = {
+  element: HTMLElement;
+  tooltip: HTMLElement;
+  animation: Animation;
+  setTimeoutId: ReturnType<typeof setTimeout> | null;
+  isRendered: boolean;
+};
+
+type Args = {
+  named: {
+    placement: string;
+    trigger: string;
+    title: string;
+    subtitle: string;
+    icon: string;
+    html: boolean;
+  };
+};
+
+function _setElementContent(element: HTMLElement | null, value: string, htmlSafe: boolean): void {
+  if (element === null) return;
   if (htmlSafe) {
     element.innerHTML = value;
   } else {
@@ -11,7 +32,7 @@ function _setElementContent(element, value, htmlSafe) {
   }
 }
 
-function _generateHTMLStructure(state, args) {
+function _generateHTMLStructure(state: State, args: Args): void {
   const { title, subtitle, icon, html } = args.named;
   state.tooltip = document.createElement('div');
   state.tooltip.className = 'upf-tooltip upf-tooltip--visible';
@@ -42,14 +63,14 @@ function _generateHTMLStructure(state, args) {
   state.tooltip.style.minWidth = `${state.tooltip.offsetWidth}px`;
 }
 
-function _delayedCreate(state, args) {
+function _delayedCreate(state: State, args: Args): void {
   if (state.isRendered) return;
   state.setTimeoutId = setTimeout(() => {
     _create(state, args);
   }, 300);
 }
 
-function _create(state, args) {
+function _create(state: State, args: Args): void {
   if (state.isRendered) return;
 
   const { placement } = args.named;
@@ -75,13 +96,15 @@ function _create(state, args) {
   state.setTimeoutId = null;
 }
 
-function _destroy(event, state) {
+function _destroy(event: Event, state: State): void {
   if (state.setTimeoutId) {
     clearTimeout(state.setTimeoutId);
     state.setTimeoutId = null;
     return;
   }
-  if (!state.isRendered || state.element.contains(event.relatedTarget)) return;
+
+  const relatedTarget = (<MouseEvent>event).relatedTarget;
+  if (!state.isRendered || (relatedTarget instanceof Node && state.element.contains(relatedTarget))) return;
 
   state.animation.reverse();
   state.animation.finished.then(() => {
@@ -92,7 +115,7 @@ function _destroy(event, state) {
   });
 }
 
-function _setDefaultValue(args) {
+function _setDefaultValue(args: Args): void {
   args.named = {
     ...args.named,
     ...{
@@ -104,7 +127,7 @@ function _setDefaultValue(args) {
   };
 }
 
-function _initEventListener(state, element, args) {
+function _initEventListener(state: State, element: HTMLElement, args: Args): void {
   const { trigger } = args.named;
   const splitTrigger = trigger.split(' ');
 
@@ -143,20 +166,24 @@ export default setModifierManager(
       };
     },
 
-    installModifier(state, element, args) {
+    installModifier(state: State, element: HTMLElement, args: Args) {
       state.element = element;
       _setDefaultValue(args);
       _initEventListener(state, element, args);
     },
 
-    updateModifier(state, args) {
+    updateModifier(state: State, args: Args) {
       const { title, subtitle, icon, html } = args.named;
       const titleSpan = state.tooltip.querySelector('.title-container .title');
-      _setElementContent(titleSpan, title, html);
+      _setElementContent(<HTMLElement>titleSpan, title, html);
+
       const subtitleSpan = state.tooltip.querySelector('.subtitle');
-      _setElementContent(subtitleSpan, subtitle, html);
+      _setElementContent(<HTMLElement>subtitleSpan, subtitle, html);
+
       const iconI = state.tooltip.querySelector('.title-container i');
-      iconI.className = icon;
+      if (iconI !== null) {
+        iconI.className = icon;
+      }
     },
 
     destroyModifier() {
