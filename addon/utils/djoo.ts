@@ -9,9 +9,9 @@ type ElementOptions = {
   viewPortPadding: number; // the padding relative to the viewport
 };
 type ArrowOptions = {
-  defaultRotation: number; // defaultRotation
-  height: number; //height of the arrow
-  width: number; //height of the arrow
+  defaultRotation: number; // default rotation when placement is top
+  height: number; // total height of the arrow
+  width: number; // total width of the arrow
 };
 
 const CSS_VARIABLE_NAME_PREFIX = '--upf-';
@@ -172,6 +172,7 @@ export class Djoo {
     const elementBoundingClientRect = element.getBoundingClientRect();
     const targetBoundingClientRect = target.getBoundingClientRect();
     const leftRelative = targetBoundingClientRect.left - elementBoundingClientRect.left;
+    const rotationAdjustment = (this.arrowOptions.height - this.arrowOptions.width) / 2;
 
     switch (this.elementOptions.placement) {
       case 'top':
@@ -179,9 +180,9 @@ export class Djoo {
       case 'bottom':
         return leftRelative + target.offsetWidth / 2 - this.arrowOptions.width / 2;
       case 'right':
-        return 0 - this.arrowOptions.height;
+        return 0 - this.arrowOptions.width - rotationAdjustment;
       case 'left':
-        return leftRelative - this.elementOptions.elementTargetMargin - this.arrowOptions.height;
+        return element.offsetWidth + rotationAdjustment;
       default:
         return 0;
     }
@@ -194,13 +195,13 @@ export class Djoo {
 
     switch (this.elementOptions.placement) {
       case 'top':
-        return topRelative - this.elementOptions.elementTargetMargin - this.arrowOptions.height;
+        return element.offsetHeight;
       case 'bottom':
-        return -this.arrowOptions.height;
+        return 0 - this.arrowOptions.height;
       case 'right':
-        return topRelative + target.offsetHeight / 2 - this.arrowOptions.width / 2;
+        return topRelative + target.offsetHeight / 2 - this.arrowOptions.height / 2;
       case 'left':
-        return topRelative + target.offsetHeight / 2 - this.arrowOptions.width / 2;
+        return topRelative + target.offsetHeight / 2 - this.arrowOptions.height / 2;
       default:
         return 0;
     }

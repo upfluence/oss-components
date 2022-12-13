@@ -4,7 +4,7 @@ import { Djoo } from '@upfluence/oss-components/utils/djoo';
 import { run } from '@ember/runloop';
 import { createAnimation } from '@upfluence/oss-components/utils/animation-manager';
 
-type State = {
+type EnableTooltipState = {
   element: HTMLElement;
   tooltip: HTMLElement;
   animation: Animation;
@@ -12,7 +12,7 @@ type State = {
   isRendered: boolean;
 };
 
-type Args = {
+type EnableTooltipArgs = {
   named: {
     placement: string;
     trigger: string;
@@ -32,7 +32,7 @@ function _setElementContent(element: HTMLElement | null, value: string, htmlSafe
   }
 }
 
-function _generateHTMLStructure(state: State, args: Args): void {
+function _generateHTMLStructure(state: EnableTooltipState, args: EnableTooltipArgs): void {
   const { title, subtitle, icon, html } = args.named;
   state.tooltip = document.createElement('div');
   state.tooltip.className = 'upf-tooltip upf-tooltip--visible';
@@ -60,22 +60,17 @@ function _generateHTMLStructure(state: State, args: Args): void {
   }
 
   document.body.append(state.tooltip);
-  state.tooltip.style.minWidth = `${state.tooltip.offsetWidth}px`;
 }
 
-function _delayedCreate(state: State, args: Args): void {
+function _delayedCreate(state: EnableTooltipState, args: EnableTooltipArgs): void {
   if (state.isRendered) return;
   state.setTimeoutId = setTimeout(() => {
     _create(state, args);
   }, 300);
 }
 
-function _create(state: State, args: Args): void {
-  if (state.isRendered) return;
-
+function _computePosition(state: EnableTooltipState, args: EnableTooltipArgs) {
   const { placement } = args.named;
-  _generateHTMLStructure(state, args);
-
   new Djoo().computePosition(
     state.tooltip,
     state.element,
@@ -83,10 +78,18 @@ function _create(state: State, args: Args): void {
       placement: placement,
       cssVariableName: 'modifier-tooltip',
       elementTargetMargin: 9,
-      viewPortPadding: 3
+      viewPortPadding: 16
     },
-    { defaultRotation: -45, height: 4, width: 8.5 }
+    { defaultRotation: 0, height: 4, width: 8 }
   );
+}
+
+function _create(state: EnableTooltipState, args: EnableTooltipArgs): void {
+  if (state.isRendered) return;
+
+  _generateHTMLStructure(state, args);
+  _computePosition(state, args);
+
   state.animation = createAnimation(state.tooltip, [{ opacity: 0 }, { opacity: 1 }], {
     duration: 250,
     fill: 'forwards'
@@ -96,7 +99,7 @@ function _create(state: State, args: Args): void {
   state.setTimeoutId = null;
 }
 
-function _destroy(event: Event, state: State): void {
+function _destroy(event: Event, state: EnableTooltipState): void {
   if (state.setTimeoutId) {
     clearTimeout(state.setTimeoutId);
     state.setTimeoutId = null;
@@ -115,7 +118,7 @@ function _destroy(event: Event, state: State): void {
   });
 }
 
-function _setDefaultValue(args: Args): void {
+function _setDefaultValue(args: EnableTooltipArgs): void {
   args.named = {
     ...args.named,
     ...{
@@ -127,7 +130,7 @@ function _setDefaultValue(args: Args): void {
   };
 }
 
-function _initEventListener(state: State, element: HTMLElement, args: Args): void {
+function _initEventListener(state: EnableTooltipState, element: HTMLElement, args: EnableTooltipArgs): void {
   const { trigger } = args.named;
   const splitTrigger = trigger.split(' ');
 
@@ -166,13 +169,13 @@ export default setModifierManager(
       };
     },
 
-    installModifier(state: State, element: HTMLElement, args: Args) {
+    installModifier(state: EnableTooltipState, element: HTMLElement, args: EnableTooltipArgs) {
       state.element = element;
       _setDefaultValue(args);
       _initEventListener(state, element, args);
     },
 
-    updateModifier(state: State, args: Args) {
+    updateModifier(state: EnableTooltipState, args: EnableTooltipArgs) {
       const { title, subtitle, icon, html } = args.named;
       const titleSpan = state.tooltip.querySelector('.title-container .title');
       _setElementContent(<HTMLElement>titleSpan, title, html);
@@ -184,6 +187,8 @@ export default setModifierManager(
       if (iconI !== null) {
         iconI.className = icon;
       }
+
+      _computePosition(state, args);
     },
 
     destroyModifier() {
