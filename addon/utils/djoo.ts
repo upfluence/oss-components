@@ -4,8 +4,8 @@ export type PlacementType = 'top' | 'bottom' | 'right' | 'left';
 type ElementOptions = {
   placement?: PlacementType; // the position of the element in relation to the target
   cssVariableName: string; // name of the custom css variable
-  elementTargetMargin: number; // the margin value between the element and the target
-  viewPortPadding: number; // the padding relative to the viewport
+  targetOffset: number; // the margin value between the element and the target
+  viewportOffset: number; // the padding relative to the viewport
 };
 type ArrowOptions = {
   defaultRotation: number; // default rotation when placement is top
@@ -15,7 +15,7 @@ type ArrowOptions = {
 
 const CSS_VARIABLE_NAME_PREFIX = '--upf-';
 
-export class DynamicJavascriptOrientationOrganizer {
+export default class DynamicJavascriptOrientationOrganizer {
   declare elementOptions: ElementOptions;
   declare arrowOptions: ArrowOptions;
 
@@ -71,9 +71,9 @@ export class DynamicJavascriptOrientationOrganizer {
 
   private overflowPlacementCorrection(element: HTMLElement, target: HTMLElement): void {
     const elementTotalHeight =
-      element.offsetHeight + this.elementOptions.viewPortPadding + this.elementOptions.elementTargetMargin;
+      element.offsetHeight + this.elementOptions.viewportOffset + this.elementOptions.targetOffset;
     const elementTotalWidth =
-      element.offsetWidth + this.elementOptions.viewPortPadding + this.elementOptions.elementTargetMargin;
+      element.offsetWidth + this.elementOptions.viewportOffset + this.elementOptions.targetOffset;
 
     if (this.elementOptions.placement === 'top' && target.getBoundingClientRect().top < elementTotalHeight) {
       this.elementOptions.placement = 'bottom';
@@ -102,9 +102,9 @@ export class DynamicJavascriptOrientationOrganizer {
       case 'bottom':
         return targetLeftRelativeToDocument + target.offsetWidth / 2 - element.offsetWidth / 2;
       case 'right':
-        return targetLeftRelativeToDocument + target.offsetWidth + this.elementOptions.elementTargetMargin;
+        return targetLeftRelativeToDocument + target.offsetWidth + this.elementOptions.targetOffset;
       case 'left':
-        return targetLeftRelativeToDocument - element.offsetWidth - this.elementOptions.elementTargetMargin;
+        return targetLeftRelativeToDocument - element.offsetWidth - this.elementOptions.targetOffset;
       default:
         return 0;
     }
@@ -116,9 +116,9 @@ export class DynamicJavascriptOrientationOrganizer {
 
     switch (this.elementOptions.placement) {
       case 'top':
-        return targetTopRelativeToDocument - element.offsetHeight - this.elementOptions.elementTargetMargin;
+        return targetTopRelativeToDocument - element.offsetHeight - this.elementOptions.targetOffset;
       case 'bottom':
-        return targetTopRelativeToDocument + target.offsetHeight + this.elementOptions.elementTargetMargin;
+        return targetTopRelativeToDocument + target.offsetHeight + this.elementOptions.targetOffset;
       case 'right':
         return targetTopRelativeToDocument + target.offsetHeight / 2 - element.offsetHeight / 2;
       case 'left':
@@ -132,16 +132,16 @@ export class DynamicJavascriptOrientationOrganizer {
     if (this.elementOptions.placement !== 'left' && this.elementOptions.placement !== 'right') return;
 
     const elementBoundingClientRect = element.getBoundingClientRect();
-    if (elementBoundingClientRect.top < this.elementOptions.viewPortPadding) {
+    if (elementBoundingClientRect.top < this.elementOptions.viewportOffset) {
       const currentTopValue = parseInt(element.style.getPropertyValue('--upf-modifier-tooltip-top').replace('px', ''));
-      const correctionValue = elementBoundingClientRect.top - this.elementOptions.viewPortPadding;
+      const correctionValue = elementBoundingClientRect.top - this.elementOptions.viewportOffset;
       element.style.setProperty('--upf-modifier-tooltip-top', `${currentTopValue - correctionValue}px`);
     }
 
-    if (elementBoundingClientRect.bottom > window.innerHeight - this.elementOptions.viewPortPadding) {
+    if (elementBoundingClientRect.bottom > window.innerHeight - this.elementOptions.viewportOffset) {
       const currentTopValue = parseInt(element.style.getPropertyValue('--upf-modifier-tooltip-top').replace('px', ''));
       const correctionValue =
-        elementBoundingClientRect.bottom - window.innerHeight + this.elementOptions.viewPortPadding;
+        elementBoundingClientRect.bottom - window.innerHeight + this.elementOptions.viewportOffset;
       element.style.setProperty('--upf-modifier-tooltip-top', `${currentTopValue - correctionValue}px`);
     }
   }
@@ -150,19 +150,16 @@ export class DynamicJavascriptOrientationOrganizer {
     if (this.elementOptions.placement !== 'top' && this.elementOptions.placement !== 'bottom') return;
 
     const elementBoundingClientRect = element.getBoundingClientRect();
-    if (elementBoundingClientRect.left < this.elementOptions.viewPortPadding) {
+    if (elementBoundingClientRect.left < this.elementOptions.viewportOffset) {
       const currentTopValue = parseInt(element.style.getPropertyValue('--upf-modifier-tooltip-left').replace('px', ''));
-      const correctionValue = Math.abs(elementBoundingClientRect.left - this.elementOptions.viewPortPadding);
+      const correctionValue = Math.abs(elementBoundingClientRect.left - this.elementOptions.viewportOffset);
       element.style.setProperty('--upf-modifier-tooltip-left', `${currentTopValue + correctionValue}px`);
     }
 
-    if (
-      elementBoundingClientRect.left + element.offsetWidth - this.elementOptions.viewPortPadding >
-      window.innerWidth
-    ) {
+    if (elementBoundingClientRect.left + element.offsetWidth - this.elementOptions.viewportOffset > window.innerWidth) {
       const currentTopValue = parseInt(element.style.getPropertyValue('--upf-modifier-tooltip-left').replace('px', ''));
       const correctionValue =
-        elementBoundingClientRect.left + element.offsetWidth + this.elementOptions.viewPortPadding - window.innerWidth;
+        elementBoundingClientRect.left + element.offsetWidth + this.elementOptions.viewportOffset - window.innerWidth;
       element.style.setProperty('--upf-modifier-tooltip-left', `${currentTopValue - correctionValue}px`);
     }
   }
@@ -221,5 +218,3 @@ export class DynamicJavascriptOrientationOrganizer {
     }
   }
 }
-
-export { DynamicJavascriptOrientationOrganizer as Djoo };

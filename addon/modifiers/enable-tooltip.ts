@@ -1,6 +1,6 @@
 // @ts-ignore
 import { setModifierManager, capabilities } from '@ember/modifier';
-import { Djoo, PlacementType } from '@upfluence/oss-components/utils/djoo';
+import Djoo, { PlacementType } from '@upfluence/oss-components/utils/djoo';
 import { run } from '@ember/runloop';
 import { createAnimation } from '@upfluence/oss-components/utils/animation-manager';
 import { isTesting } from '@embroider/macros';
@@ -15,40 +15,43 @@ type EnableTooltipState = {
 
 type EnableTooltipArgs = {
   named: {
-    placement: PlacementType;
-    trigger: string;
-    title: string;
-    subtitle: string;
-    icon: string;
-    html: boolean;
+    title?: string;
+    placement?: PlacementType;
+    trigger?: string;
+    subtitle?: string;
+    icon?: string;
+    html?: boolean;
   };
 };
 
 const ANIMATION_DURATION = 250;
 const RENDERING_DELAY = 300;
 
-function setElementContent(element: HTMLElement, value: string, htmlSafe: boolean): void {
+function setElementContent(element: HTMLElement, value?: string, htmlSafe?: boolean): void {
   if (htmlSafe) {
-    element.innerHTML = value;
+    element.innerHTML = value || '';
   } else {
-    element.innerText = value;
+    element.innerText = value || '';
   }
 }
 
-function generateTitle(container: HTMLElement, title: string, html: boolean): void {
+function generateTitle(container: HTMLElement, title?: string, html?: boolean): void {
+  if (!title) return;
   const titleSpan = document.createElement('span');
   titleSpan.className = 'title';
   setElementContent(titleSpan, title, html);
   container.append(titleSpan);
 }
 
-function generateIcon(container: HTMLElement, icon: string): void {
+function generateIcon(container: HTMLElement, icon?: string): void {
+  if (!icon) return;
   const iconI = document.createElement('i');
   iconI.className = icon;
   container.append(iconI);
 }
 
-function generateSubTitle(container: HTMLElement, subtitle: string, html: boolean): void {
+function generateSubTitle(container: HTMLElement, subtitle?: string, html?: boolean): void {
+  if (!subtitle) return;
   const subtitleSpan = document.createElement('span');
   subtitleSpan.className = 'subtitle';
   setElementContent(subtitleSpan, subtitle, html);
@@ -56,21 +59,17 @@ function generateSubTitle(container: HTMLElement, subtitle: string, html: boolea
 }
 
 function generateHTMLStructure(state: EnableTooltipState, args: EnableTooltipArgs): void {
-  const { title, subtitle, icon, html } = args.named;
+  const { title, subtitle, icon, html, placement } = args.named;
   state.tooltip = document.createElement('div');
   state.tooltip.className = 'upf-tooltip';
+  state.tooltip.dataset.placement = placement;
   const titleContainer = document.createElement('div');
   titleContainer.className = 'title-container';
 
-  if (icon) {
-    generateIcon(titleContainer, icon);
-  }
+  generateIcon(titleContainer, icon);
   generateTitle(titleContainer, title, html);
   state.tooltip.append(titleContainer);
-
-  if (subtitle) {
-    generateSubTitle(state.tooltip, subtitle, html);
-  }
+  generateSubTitle(state.tooltip, subtitle, html);
 
   if (isTesting()) {
     document.querySelector('#ember-testing')?.append(state.tooltip);
@@ -94,8 +93,8 @@ function computePosition(state: EnableTooltipState, args: EnableTooltipArgs) {
     {
       placement: placement,
       cssVariableName: 'modifier-tooltip',
-      elementTargetMargin: 9,
-      viewPortPadding: 16
+      targetOffset: 9,
+      viewportOffset: 16
     },
     { defaultRotation: 0, height: 4, width: 8 }
   );
@@ -149,9 +148,9 @@ function setDefaultConfiguration(args: EnableTooltipArgs): void {
 
 function initEventListener(state: EnableTooltipState, element: HTMLElement, args: EnableTooltipArgs): void {
   const { trigger } = args.named;
-  const splitTrigger = trigger.split(' ');
+  const triggerEvents = trigger?.split(' ') || [];
 
-  if (splitTrigger.includes('hover')) {
+  if (triggerEvents.includes('hover')) {
     element.addEventListener('mouseover', () => {
       delayedRender(state, args);
     });
@@ -161,7 +160,7 @@ function initEventListener(state: EnableTooltipState, element: HTMLElement, args
     });
   }
 
-  if (splitTrigger.includes('focus')) {
+  if (triggerEvents.includes('focus')) {
     element.addEventListener('focusin', () => {
       delayedRender(state, args);
     });
@@ -202,7 +201,7 @@ export default setModifierManager(
       setElementContent(<HTMLElement>subtitleSpan, subtitle, html);
 
       const iconI = state.tooltip.querySelector('.title-container i');
-      if (iconI !== null) {
+      if (iconI !== null && icon) {
         iconI.className = icon;
       }
 
