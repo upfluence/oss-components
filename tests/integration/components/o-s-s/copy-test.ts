@@ -17,9 +17,9 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
     await render(hbs`<OSS::Copy />`);
 
     await triggerEvent('.upf-btn--default', 'mouseover');
-    await waitFor('.tooltip');
+    await waitFor('.upf-tooltip');
 
-    assert.dom('.tooltip .tooltip-inner').hasText('Copy');
+    assert.dom('.upf-tooltip .title').hasText('Copy');
   });
 
   module('when clicking', function (hooks) {

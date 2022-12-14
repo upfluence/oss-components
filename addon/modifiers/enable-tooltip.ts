@@ -3,6 +3,7 @@ import { setModifierManager, capabilities } from '@ember/modifier';
 import { Djoo } from '@upfluence/oss-components/utils/djoo';
 import { run } from '@ember/runloop';
 import { createAnimation } from '@upfluence/oss-components/utils/animation-manager';
+import { isTesting } from '@embroider/macros';
 
 type EnableTooltipState = {
   element: HTMLElement;
@@ -58,8 +59,11 @@ function _generateHTMLStructure(state: EnableTooltipState, args: EnableTooltipAr
     _setElementContent(subtitleSpan, subtitle, html);
     state.tooltip.append(subtitleSpan);
   }
-
-  document.body.append(state.tooltip);
+  if (isTesting()) {
+    document.querySelector('#ember-testing')?.append(state.tooltip);
+  } else {
+    document.body.append(state.tooltip);
+  }
 }
 
 function _delayedCreate(state: EnableTooltipState, args: EnableTooltipArgs): void {
@@ -176,6 +180,7 @@ export default setModifierManager(
     },
 
     updateModifier(state: EnableTooltipState, args: EnableTooltipArgs) {
+      if (!state.tooltip) return;
       const { title, subtitle, icon, html } = args.named;
       const titleSpan = state.tooltip.querySelector('.title-container .title');
       _setElementContent(<HTMLElement>titleSpan, title, html);
