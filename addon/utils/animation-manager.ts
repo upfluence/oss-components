@@ -1,8 +1,8 @@
 function createAnimation(element: HTMLElement, keyframes: Keyframe[], options: KeyframeAnimationOptions): Animation {
-  const destroyDownKeyframes = new KeyframeEffect(element, keyframes, options);
-  let destroyAnimation = new Animation(destroyDownKeyframes, document.timeline);
-  destroyAnimation.id = options.id || 'default';
-  return destroyAnimation;
+  const downKeyframes = new KeyframeEffect(element, keyframes, options);
+  const animation = new Animation(downKeyframes, document.timeline);
+  animation.id = options.id || 'default';
+  return animation;
 }
 
 export { createAnimation };

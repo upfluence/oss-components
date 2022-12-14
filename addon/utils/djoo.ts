@@ -1,9 +1,8 @@
 //Dynamic Javascript Orientation Organizer
-// @ts-nocheck
-
 export type PlacementType = 'top' | 'bottom' | 'right' | 'left';
+
 type ElementOptions = {
-  placement?: string; // the position of the element in relation to the target
+  placement?: PlacementType; // the position of the element in relation to the target
   cssVariableName: string; // name of the custom css variable
   elementTargetMargin: number; // the margin value between the element and the target
   viewPortPadding: number; // the padding relative to the viewport
@@ -16,12 +15,9 @@ type ArrowOptions = {
 
 const CSS_VARIABLE_NAME_PREFIX = '--upf-';
 
-export class Djoo {
+export class DynamicJavascriptOrientationOrganizer {
   declare elementOptions: ElementOptions;
   declare arrowOptions: ArrowOptions;
-
-  hasVerticalAdjustment: boolean = false;
-  hasHorizontalAdjustment: boolean = false;
 
   computePosition(
     element: HTMLElement,
@@ -32,68 +28,71 @@ export class Djoo {
     this.elementOptions = elementOptions;
     this.arrowOptions = arrowOptions;
 
-    this.overflowSecurityCheck(element, target);
+    this.overflowPlacementCorrection(element, target);
+    this.computeElementPosition(element, target);
+    this.verticalAdjustmentRelativeToViewPort(element);
+    this.horizontalAdjustmentRelativeToViewPort(element);
+    if (this.arrowOptions) {
+      this.computeArrowPositionAndRotation(element, target);
+    }
+  }
 
-    const elementTop = this.computedElementTop(element, target);
+  private computeElementPosition(element: HTMLElement, target: HTMLElement) {
+    const elementTop = this.computedElementTopPosition(element, target);
     element.style.setProperty(
       `${CSS_VARIABLE_NAME_PREFIX}${this.elementOptions.cssVariableName}-top`,
       `${elementTop}px`
     );
-    const elementLeft = this.computedElementLeft(element, target);
+    const elementLeft = this.computedElementLeftPosition(element, target);
     element.style.setProperty(
       `${CSS_VARIABLE_NAME_PREFIX}${this.elementOptions.cssVariableName}-left`,
       `${elementLeft}px`
     );
-
-    this.verticalAdjustmentRelativeToViewPort(element);
-    this.horizontalAdjustmentRelativeToViewPort(element);
-
-    if (this.arrowOptions) {
-      const arrowLeft = this.computedArrowLeft(element, target);
-      element.style.setProperty(
-        `${CSS_VARIABLE_NAME_PREFIX}${this.elementOptions.cssVariableName}-arrow-left`,
-        `${arrowLeft}px`
-      );
-      const arrowTop = this.computedArrowTop(element, target);
-      element.style.setProperty(
-        `${CSS_VARIABLE_NAME_PREFIX}${this.elementOptions.cssVariableName}-arrow-top`,
-        `${arrowTop}px`
-      );
-
-      const rotation = this.computedArrowRotation();
-      element.style.setProperty(
-        `${CSS_VARIABLE_NAME_PREFIX}${this.elementOptions.cssVariableName}-arrow-rotation`,
-        `${rotation}deg`
-      );
-    }
   }
 
-  private overflowSecurityCheck(element, target): void {
+  private computeArrowPositionAndRotation(element: HTMLElement, target: HTMLElement) {
+    const arrowLeft = this.computedArrowLeftPosition(element, target);
+    element.style.setProperty(
+      `${CSS_VARIABLE_NAME_PREFIX}${this.elementOptions.cssVariableName}-arrow-left`,
+      `${arrowLeft}px`
+    );
+    const arrowTop = this.computedArrowTopPosition(element, target);
+    element.style.setProperty(
+      `${CSS_VARIABLE_NAME_PREFIX}${this.elementOptions.cssVariableName}-arrow-top`,
+      `${arrowTop}px`
+    );
+
+    const rotation = this.computedArrowRotation();
+    element.style.setProperty(
+      `${CSS_VARIABLE_NAME_PREFIX}${this.elementOptions.cssVariableName}-arrow-rotation`,
+      `${rotation}deg`
+    );
+  }
+
+  private overflowPlacementCorrection(element: HTMLElement, target: HTMLElement): void {
     const elementTotalHeight =
       element.offsetHeight + this.elementOptions.viewPortPadding + this.elementOptions.elementTargetMargin;
     const elementTotalWidth =
       element.offsetWidth + this.elementOptions.viewPortPadding + this.elementOptions.elementTargetMargin;
 
-    if (this.elementOptions.placement === 'top') {
-      if (target.getBoundingClientRect().top < elementTotalHeight) {
-        this.elementOptions.placement = 'bottom';
-      }
-    } else if (this.elementOptions.placement === 'bottom') {
-      if (window.innerHeight - target.getBoundingClientRect().bottom < elementTotalHeight) {
-        this.elementOptions.placement = 'top';
-      }
-    } else if (this.elementOptions.placement === 'right') {
-      if (window.innerWidth - target.getBoundingClientRect().right < elementTotalWidth) {
-        this.elementOptions.placement = 'left';
-      }
-    } else if (this.elementOptions.placement === 'left') {
-      if (target.getBoundingClientRect().left < elementTotalWidth) {
-        this.elementOptions.placement = 'right';
-      }
+    if (this.elementOptions.placement === 'top' && target.getBoundingClientRect().top < elementTotalHeight) {
+      this.elementOptions.placement = 'bottom';
+    } else if (
+      this.elementOptions.placement === 'bottom' &&
+      window.innerHeight - target.getBoundingClientRect().bottom < elementTotalHeight
+    ) {
+      this.elementOptions.placement = 'top';
+    } else if (
+      this.elementOptions.placement === 'right' &&
+      window.innerWidth - target.getBoundingClientRect().right < elementTotalWidth
+    ) {
+      this.elementOptions.placement = 'left';
+    } else if (this.elementOptions.placement === 'left' && target.getBoundingClientRect().left < elementTotalWidth) {
+      this.elementOptions.placement = 'right';
     }
   }
 
-  private computedElementLeft(element: HTMLElement, target: HTMLElement): number {
+  private computedElementLeftPosition(element: HTMLElement, target: HTMLElement): number {
     const targetBoundingClientRect = target.getBoundingClientRect();
     const targetLeftRelativeToDocument = targetBoundingClientRect.left + document.documentElement.scrollLeft;
 
@@ -111,7 +110,7 @@ export class Djoo {
     }
   }
 
-  private computedElementTop(element: HTMLElement, target: HTMLElement): number {
+  private computedElementTopPosition(element: HTMLElement, target: HTMLElement): number {
     const targetBoundingClientRect = target.getBoundingClientRect();
     const targetTopRelativeToDocument = targetBoundingClientRect.top + document.documentElement.scrollTop;
 
@@ -168,7 +167,7 @@ export class Djoo {
     }
   }
 
-  private computedArrowLeft(element: HTMLElement, target: HTMLElement): number {
+  private computedArrowLeftPosition(element: HTMLElement, target: HTMLElement): number {
     const elementBoundingClientRect = element.getBoundingClientRect();
     const targetBoundingClientRect = target.getBoundingClientRect();
     const leftRelative = targetBoundingClientRect.left - elementBoundingClientRect.left;
@@ -188,7 +187,7 @@ export class Djoo {
     }
   }
 
-  private computedArrowTop(element: HTMLElement, target: HTMLElement): number {
+  private computedArrowTopPosition(element: HTMLElement, target: HTMLElement): number {
     const elementBoundingClientRect = element.getBoundingClientRect();
     const targetBoundingClientRect = target.getBoundingClientRect();
     const topRelative = targetBoundingClientRect.top - elementBoundingClientRect.top;
@@ -222,3 +221,5 @@ export class Djoo {
     }
   }
 }
+
+export { DynamicJavascriptOrientationOrganizer as Djoo };
