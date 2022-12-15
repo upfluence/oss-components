@@ -1,31 +1,40 @@
 // @ts-ignore
 import { setModifierManager, capabilities } from '@ember/modifier';
-import Djoo, { PlacementType } from '@upfluence/oss-components/utils/djoo';
+import Djoo, { Placement } from '@upfluence/oss-components/utils/djoo';
 import { run } from '@ember/runloop';
 import { createAnimation } from '@upfluence/oss-components/utils/animation-manager';
 import { isTesting } from '@embroider/macros';
 
+type EnableTooltipAttrs = {
+  title?: string;
+  placement?: Placement;
+  trigger?: string;
+  subtitle?: string;
+  icon?: string;
+  html?: boolean;
+};
+
+type EnableTooltipArgs = {
+  named: EnableTooltipAttrs;
+};
+
 type EnableTooltipState = {
-  element: HTMLElement;
+  originElement: HTMLElement;
   tooltip: HTMLElement;
+  attrs: EnableTooltipAttrs;
   animation: Animation;
   setTimeoutId: ReturnType<typeof setTimeout> | null;
   isRendered: boolean;
 };
 
-type EnableTooltipArgs = {
-  named: {
-    title?: string;
-    placement?: PlacementType;
-    trigger?: string;
-    subtitle?: string;
-    icon?: string;
-    html?: boolean;
-  };
-};
-
 const ANIMATION_DURATION = 250;
 const RENDERING_DELAY = 300;
+const DEFAULT_CONFIGURATION = {
+  placement: 'bottom' as Placement,
+  trigger: 'hover focus',
+  title: '',
+  html: false
+};
 
 function setElementContent(element: HTMLElement, value?: string, htmlSafe?: boolean): void {
   if (htmlSafe) {
@@ -58,8 +67,8 @@ function generateSubTitle(container: HTMLElement, subtitle?: string, html?: bool
   container.append(subtitleSpan);
 }
 
-function generateHTMLStructure(state: EnableTooltipState, args: EnableTooltipArgs): void {
-  const { title, subtitle, icon, html, placement } = args.named;
+function generateHTMLStructure(state: EnableTooltipState): void {
+  const { title, subtitle, icon, html, placement } = state.attrs;
   state.tooltip = document.createElement('div');
   state.tooltip.className = 'upf-tooltip';
   state.tooltip.dataset.placement = placement;
@@ -78,18 +87,18 @@ function generateHTMLStructure(state: EnableTooltipState, args: EnableTooltipArg
   }
 }
 
-function delayedRender(state: EnableTooltipState, args: EnableTooltipArgs): void {
+function delayedRender(state: EnableTooltipState): void {
   if (state.isRendered) return;
   state.setTimeoutId = setTimeout(() => {
-    renderTooltip(state, args);
+    renderTooltip(state);
   }, RENDERING_DELAY);
 }
 
-function computePosition(state: EnableTooltipState, args: EnableTooltipArgs) {
-  const { placement } = args.named;
+function computePosition(state: EnableTooltipState) {
+  const { placement } = state.attrs;
   new Djoo().computePosition(
     state.tooltip,
-    state.element,
+    state.originElement,
     {
       placement: placement,
       cssVariableName: 'modifier-tooltip',
@@ -100,11 +109,11 @@ function computePosition(state: EnableTooltipState, args: EnableTooltipArgs) {
   );
 }
 
-function renderTooltip(state: EnableTooltipState, args: EnableTooltipArgs): void {
+function renderTooltip(state: EnableTooltipState): void {
   if (state.isRendered) return;
 
-  generateHTMLStructure(state, args);
-  computePosition(state, args);
+  generateHTMLStructure(state);
+  computePosition(state);
 
   state.animation = createAnimation(state.tooltip, [{ opacity: 0 }, { opacity: 1 }], {
     duration: ANIMATION_DURATION,
@@ -123,7 +132,7 @@ function destroy(event: Event, state: EnableTooltipState): void {
   }
 
   const relatedTarget = (<MouseEvent>event).relatedTarget;
-  if (!state.isRendered || (relatedTarget instanceof Node && state.element.contains(relatedTarget))) return;
+  if (!state.isRendered || (relatedTarget instanceof Node && state.originElement.contains(relatedTarget))) return;
 
   state.animation.reverse();
   state.animation.finished.then(() => {
@@ -134,25 +143,20 @@ function destroy(event: Event, state: EnableTooltipState): void {
   });
 }
 
-function setDefaultConfiguration(args: EnableTooltipArgs): void {
-  args.named = {
+function setDefaultConfiguration(state: EnableTooltipState, args: EnableTooltipArgs): void {
+  state.attrs = {
     ...args.named,
-    ...{
-      placement: args.named.placement || 'bottom',
-      trigger: args.named.trigger || 'hover focus',
-      title: args.named.title || '',
-      html: args.named.html || false
-    }
+    ...DEFAULT_CONFIGURATION
   };
 }
 
-function initEventListener(state: EnableTooltipState, element: HTMLElement, args: EnableTooltipArgs): void {
-  const { trigger } = args.named;
+function initEventListener(state: EnableTooltipState, element: HTMLElement): void {
+  const { trigger } = state.attrs;
   const triggerEvents = trigger?.split(' ') || [];
 
   if (triggerEvents.includes('hover')) {
     element.addEventListener('mouseover', () => {
-      delayedRender(state, args);
+      delayedRender(state);
     });
 
     element.addEventListener('mouseout', (event) => {
@@ -162,7 +166,7 @@ function initEventListener(state: EnableTooltipState, element: HTMLElement, args
 
   if (triggerEvents.includes('focus')) {
     element.addEventListener('focusin', () => {
-      delayedRender(state, args);
+      delayedRender(state);
     });
 
     element.addEventListener('focusout', (event) => {
@@ -179,6 +183,7 @@ export default setModifierManager(
       return {
         element: null,
         tooltip: null,
+        attrs: null,
         animation: null,
         setTimeoutId: null,
         isRendered: false
@@ -186,14 +191,15 @@ export default setModifierManager(
     },
 
     installModifier(state: EnableTooltipState, element: HTMLElement, args: EnableTooltipArgs) {
-      state.element = element;
-      setDefaultConfiguration(args);
-      initEventListener(state, element, args);
+      state.originElement = element;
+      setDefaultConfiguration(state, args);
+      initEventListener(state, element);
     },
 
     updateModifier(state: EnableTooltipState, args: EnableTooltipArgs) {
       if (!state.tooltip) return;
-      const { title, subtitle, icon, html } = args.named;
+      setDefaultConfiguration(state, args);
+      const { title, subtitle, icon, html } = state.attrs;
       const titleSpan = state.tooltip.querySelector('.title-container .title');
       setElementContent(<HTMLElement>titleSpan, title, html);
 
@@ -205,12 +211,12 @@ export default setModifierManager(
         iconI.className = icon;
       }
 
-      computePosition(state, args);
+      computePosition(state);
     },
 
     destroyModifier() {
       // We don't need to do anything here, but a function
-      // still has to be here so we'll leave it blank.
+      // still has to be here, so we'll leave it blank.
     }
   }),
   class EnableTooltipModifierNewManager {}

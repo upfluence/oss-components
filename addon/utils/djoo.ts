@@ -1,8 +1,8 @@
 //Dynamic Javascript Orientation Organizer
-export type PlacementType = 'top' | 'bottom' | 'right' | 'left';
+export type Placement = 'top' | 'bottom' | 'right' | 'left';
 
 type ElementOptions = {
-  placement?: PlacementType; // the position of the element in relation to the target
+  placement?: Placement; // the position of the element in relation to the target
   cssVariableName: string; // name of the custom css variable
   targetOffset: number; // the margin value between the element and the target
   viewportOffset: number; // the padding relative to the viewport
