@@ -1,4 +1,4 @@
-//Dynamic Javascript Orientation Organizer
+//Dynamic Object PlacEment
 export type Placement = 'top' | 'bottom' | 'right' | 'left';
 
 type ElementOptions = {
@@ -15,7 +15,7 @@ type ArrowOptions = {
 
 const CSS_VARIABLE_NAME_PREFIX = '--upf-';
 
-export default class DynamicJavascriptOrientationOrganizer {
+export default class DynamicObjectPlacement {
   declare elementOptions: ElementOptions;
   declare arrowOptions: ArrowOptions;
 
