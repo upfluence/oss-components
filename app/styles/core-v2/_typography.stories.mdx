@@ -1,0 +1,100 @@
+import { Meta, Typeset, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title="CoreV2/Typography"
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: { canvas: { hidden: true } }
+  }}
+/>
+
+# Typography
+
+export const typography = {
+  type: {
+    primary: getComputedStyle(document.documentElement).getPropertyValue('--font-family-stack')
+  },
+  weight: {
+    regular: '400',
+    semibold: '600',
+    bold: '700'
+  }
+};
+
+export const SampleText = 'The quick brown fox jumps over a lazy dog.';
+
+## Product Font
+
+**Open Sans** is the primary typeface accross Upfluence products and can be used
+in 3 different weights:
+
+- Regular: 400
+- Semibold: 600
+- Bold: 700
+
+<div class="fx-col fx-gap-px-12">
+  <div class="fx-col">
+    <span>Regular</span>
+    <Typeset
+      fontSizes={[Number(10), Number(12), Number(14), Number(16)]}
+      fontWeight={typography.weight.regular}
+      sampleText={SampleText}
+      fontFamily={typography.type.primary}
+      classNames="background-color-white"
+    />
+  </div>
+
+  <div class="fx-row fx-gap-px-12">
+    <div class="fx-1">
+      <div class="fx-col">
+        <span>Semibold</span>
+        <Typeset
+          fontSizes={[Number(10), Number(12), Number(14), Number(16)]}
+          fontWeight={typography.weight.semibold}
+          sampleText={SampleText}
+          fontFamily={typography.type.primary}
+        />
+      </div>
+    </div>
+    <div class="fx-1">
+      <div class="fx-col">
+        <span>Bold</span>
+        <Typeset
+          fontSizes={[Number(10), Number(12), Number(14), Number(16)]}
+          fontWeight={typography.weight.bold}
+          sampleText={SampleText}
+          fontFamily={typography.type.primary}
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+## Text Colors
+
+<ColorPalette>
+  <ColorItem
+    title="Primary"
+    colors={{
+      'var(--font-color-primary) / .font-color-primary': getComputedStyle(document.documentElement).getPropertyValue(
+        '--font-color-primary'
+      )
+    }}
+  />
+  <ColorItem
+    title="Secondary"
+    colors={{
+      'var(--font-color-secondary) / .font-color-secondary': getComputedStyle(
+        document.documentElement
+      ).getPropertyValue('--font-color-secondary')
+    }}
+  />
+  <ColorItem
+    title="Tertiary"
+    colors={{
+      'var(--font-color-tertiary) / .font-color-tertiary': getComputedStyle(document.documentElement).getPropertyValue(
+        '--font-color-tertiary'
+      )
+    }}
+  />
+</ColorPalette>
