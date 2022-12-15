@@ -8,8 +8,6 @@ import { Meta, Typeset, ColorPalette, ColorItem } from '@storybook/addon-docs/bl
   }}
 />
 
-# Typography
-
 export const typography = {
   type: {
     primary: getComputedStyle(document.documentElement).getPropertyValue('--font-family-stack')
@@ -23,6 +21,11 @@ export const typography = {
 
 export const SampleText = 'The quick brown fox jumps over a lazy dog.';
 
+# Typography
+
+Typography helps establish hierarchy and communicate important content by
+creating clear visual patterns.
+
 ## Product Font
 
 **Open Sans** is the primary typeface accross Upfluence products and can be used
@@ -32,6 +35,18 @@ in 3 different weights:
 - Semibold: 600
 - Bold: 700
 
+## Type styles
+
+Throughout our products, we can distinguish two type styles: heading and body.
+Each has a default set of variants along with a set of options to allow for
+flexibility and a wide range of applications within the user interface.
+
+### Body styles
+
+Body styles are used within components and blocks of text.
+
+The default body text font size is: **12px**.
+
 <div class="fx-col fx-gap-px-12">
   <div class="fx-col">
     <span>Regular</span>
@@ -40,7 +55,6 @@ in 3 different weights:
       fontWeight={typography.weight.regular}
       sampleText={SampleText}
       fontFamily={typography.type.primary}
-      classNames="background-color-white"
     />
   </div>
 
@@ -70,7 +84,17 @@ in 3 different weights:
   </div>
 </div>
 
-## Text Colors
+## Color
+
+Mixing colors can be used to add contrast and reinforce the hierarchy between
+text.
+
+For example, one way to distinguish between a title and a subtitle is to apply
+`.font-color-primary` to the title, and `.font-color-secondary` to the subtitle.
+
+Using a lighter color for secondary information provides contrast between the
+text and helps reinforce hierarchy even when the text is the same size and
+weight.
 
 <ColorPalette>
   <ColorItem
