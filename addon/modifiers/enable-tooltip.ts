@@ -4,8 +4,9 @@ import Dope, { Placement } from '@upfluence/oss-components/utils/dope';
 import { run } from '@ember/runloop';
 import { createAnimation } from '@upfluence/oss-components/utils/animation-manager';
 import { isTesting } from '@embroider/macros';
+import { isEmpty } from '@ember/utils';
 
-type EnableTooltipAttrs = {
+type TooltipConfig = {
   title?: string;
   placement?: Placement;
   trigger?: string;
@@ -15,13 +16,13 @@ type EnableTooltipAttrs = {
 };
 
 type EnableTooltipArgs = {
-  named: EnableTooltipAttrs;
+  named: TooltipConfig;
 };
 
 type EnableTooltipState = {
   originElement: HTMLElement;
-  tooltip: HTMLElement;
-  attrs: EnableTooltipAttrs;
+  tooltipElement: HTMLElement | null;
+  tooltipConfig: TooltipConfig;
   animation: Animation;
   setTimeoutId: ReturnType<typeof setTimeout> | null;
   isRendered: boolean;
@@ -32,7 +33,6 @@ const RENDERING_DELAY = 300;
 const DEFAULT_CONFIGURATION = {
   placement: 'bottom' as Placement,
   trigger: 'hover focus',
-  title: '',
   html: false
 };
 
@@ -68,36 +68,36 @@ function generateSubTitle(container: HTMLElement, subtitle?: string, html?: bool
 }
 
 function generateHTMLStructure(state: EnableTooltipState): void {
-  const { title, subtitle, icon, html, placement } = state.attrs;
-  state.tooltip = document.createElement('div');
-  state.tooltip.className = 'upf-tooltip';
-  state.tooltip.dataset.placement = placement;
+  const { title, subtitle, icon, html, placement } = state.tooltipConfig;
+  state.tooltipElement = document.createElement('div');
+  state.tooltipElement.className = 'upf-tooltip';
+  state.tooltipElement.dataset.placement = placement;
   const titleContainer = document.createElement('div');
   titleContainer.className = 'title-container';
 
   generateIcon(titleContainer, icon);
   generateTitle(titleContainer, title, html);
-  state.tooltip.append(titleContainer);
-  generateSubTitle(state.tooltip, subtitle, html);
+  state.tooltipElement.append(titleContainer);
+  generateSubTitle(state.tooltipElement, subtitle, html);
 
   if (isTesting()) {
-    document.querySelector('#ember-testing')?.append(state.tooltip);
+    document.querySelector('#ember-testing')?.append(state.tooltipElement);
   } else {
-    document.body.append(state.tooltip);
+    document.body.append(state.tooltipElement);
   }
 }
 
 function delayedRender(state: EnableTooltipState): void {
-  if (state.isRendered) return;
+  if (isEmpty(state.tooltipConfig.title) || state.isRendered) return;
   state.setTimeoutId = setTimeout(() => {
     renderTooltip(state);
   }, RENDERING_DELAY);
 }
 
 function computePosition(state: EnableTooltipState) {
-  const { placement } = state.attrs;
+  const { placement } = state.tooltipConfig;
   new Dope().computePosition(
-    state.tooltip,
+    state.tooltipElement!,
     state.originElement,
     {
       placement: placement,
@@ -115,7 +115,7 @@ function renderTooltip(state: EnableTooltipState): void {
   generateHTMLStructure(state);
   computePosition(state);
 
-  state.animation = createAnimation(state.tooltip, [{ opacity: 0 }, { opacity: 1 }], {
+  state.animation = createAnimation(state.tooltipElement!, [{ opacity: 0 }, { opacity: 1 }], {
     duration: ANIMATION_DURATION,
     fill: 'forwards'
   });
@@ -137,21 +137,26 @@ function destroy(event: Event, state: EnableTooltipState): void {
   state.animation.reverse();
   state.animation.finished.then(() => {
     run(() => {
-      state.tooltip.remove();
+      state.tooltipElement!.remove();
       state.isRendered = false;
+      state.tooltipElement = null;
     });
   });
 }
 
 function setDefaultConfiguration(state: EnableTooltipState, args: EnableTooltipArgs): void {
-  state.attrs = {
+  state.tooltipConfig = {
     ...args.named,
-    ...DEFAULT_CONFIGURATION
+    ...{
+      placement: args.named.placement || DEFAULT_CONFIGURATION.placement,
+      trigger: args.named.trigger || DEFAULT_CONFIGURATION.trigger,
+      html: args.named.html || DEFAULT_CONFIGURATION.html
+    }
   };
 }
 
 function initEventListener(state: EnableTooltipState, element: HTMLElement): void {
-  const { trigger } = state.attrs;
+  const { trigger } = state.tooltipConfig;
   const triggerEvents = trigger?.split(' ') || [];
 
   if (triggerEvents.includes('hover')) {
@@ -197,17 +202,21 @@ export default setModifierManager(
     },
 
     updateModifier(state: EnableTooltipState, args: EnableTooltipArgs) {
-      if (!state.tooltip) return;
       setDefaultConfiguration(state, args);
-      const { title, subtitle, icon, html } = state.attrs;
-      const titleSpan = state.tooltip.querySelector('.title-container .title');
-      setElementContent(<HTMLElement>titleSpan, title, html);
 
-      const subtitleSpan = state.tooltip.querySelector('.subtitle');
-      setElementContent(<HTMLElement>subtitleSpan, subtitle, html);
+      if (!state.tooltipElement) return;
+      const { title, subtitle, icon, html } = state.tooltipConfig;
 
-      const iconI = state.tooltip.querySelector('.title-container i');
-      if (iconI !== null && icon) {
+      const titleSpan = state.tooltipElement.querySelector('.title-container .title');
+      if (titleSpan) {
+        setElementContent(<HTMLElement>titleSpan, title, html);
+      }
+      const subtitleSpan = state.tooltipElement.querySelector('.subtitle');
+      if (subtitleSpan) {
+        setElementContent(<HTMLElement>subtitleSpan, subtitle, html);
+      }
+      const iconI = state.tooltipElement.querySelector('.title-container i');
+      if (iconI && icon) {
         iconI.className = icon;
       }
 
