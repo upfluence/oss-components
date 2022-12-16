@@ -4,7 +4,7 @@ const PlacementDefinitions = ['bottom', 'top', 'left', 'right'];
 const TriggerDefinitions = ['hover focus', 'hover', 'focus'];
 
 export default {
-  title: 'Helpers & Modifiers/Modifiers/Tooltip',
+  title: 'Helpers & Modifiers/Modifiers/Tooltip/Definition',
   argTypes: {
     title: {
       description: 'The title value',

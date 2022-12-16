@@ -13,11 +13,11 @@ export interface TooltipAssertions {
   exists(trigger?: string, message?: string): void;
   doesNotExist(trigger?: string, message?: string): void;
   hasTitle(title: string, message?: string): void;
-  hasSubtitle(title: string, message?: string): void;
+  hasSubtitle(subtitle: string, message?: string): void;
   doesNotHaveSubtitle(message?: string): void;
-  hasPlacement(placement: Placement, message?: string): void;
   hasIcon(icon: string, message?: string): void;
   doesNotHaveIcon(message?: string): void;
+  hasPlacement(placement: Placement, message?: string): void;
   isHtmlSafe(message?: string): void;
   isNotHtmlSafe(message?: string): void;
 }
