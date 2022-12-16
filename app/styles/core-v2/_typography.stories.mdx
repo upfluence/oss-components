@@ -90,7 +90,7 @@ Mixing colors can be used to add contrast and reinforce the hierarchy between
 text.
 
 For example, one way to distinguish between a title and a subtitle is to apply
-`.font-color-primary` to the title, and `.font-color-secondary` to the subtitle.
+`.font-color-gray-900` to the title, and `.font-color-gray-500` to the subtitle.
 
 Using a lighter color for secondary information provides contrast between the
 text and helps reinforce hierarchy even when the text is the same size and
@@ -98,26 +98,29 @@ weight.
 
 <ColorPalette>
   <ColorItem
-    title="Primary"
+    title="900"
+    subtitle="This is the default text color and can be used for any content that does not have any particular hierarchy."
     colors={{
-      'var(--font-color-primary) / .font-color-primary': getComputedStyle(document.documentElement).getPropertyValue(
-        '--font-color-primary'
+      'var(--color-gray-900) / .font-color-gray-900': getComputedStyle(document.documentElement).getPropertyValue(
+        '--color-gray-900'
       )
     }}
   />
   <ColorItem
-    title="Secondary"
+    title="500"
+    subtitle="This lighter color can be used to de-emphasize secondary content, sub-sections, labels, etc."
     colors={{
-      'var(--font-color-secondary) / .font-color-secondary': getComputedStyle(
-        document.documentElement
-      ).getPropertyValue('--font-color-secondary')
+      'var(--color-gray-500) / .font-color-gray-500': getComputedStyle(document.documentElement).getPropertyValue(
+        '--color-gray-500'
+      )
     }}
   />
   <ColorItem
-    title="Tertiary"
+    title="400"
+    subtitle="Our lightest font color, usable when a 3rd level of hierarchy is needed"
     colors={{
-      'var(--font-color-tertiary) / .font-color-tertiary': getComputedStyle(document.documentElement).getPropertyValue(
-        '--font-color-tertiary'
+      'var(--color-gray-400) / .font-color-gray-400': getComputedStyle(document.documentElement).getPropertyValue(
+        '--color-gray-400'
       )
     }}
   />
