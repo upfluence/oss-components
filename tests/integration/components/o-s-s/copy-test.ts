@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, triggerEvent, waitFor, click } from '@ember/test-helpers';
+import { render, click } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import sinon from 'sinon';
 
@@ -16,10 +16,7 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
   test('the tooltip has correct wording', async function (assert) {
     await render(hbs`<OSS::Copy />`);
 
-    await triggerEvent('.upf-btn--default', 'mouseover');
-    await waitFor('.tooltip');
-
-    assert.dom('.tooltip .tooltip-inner').hasText('Copy');
+    await assert.tooltip('.upf-btn--default').hasTitle('Copy');
   });
 
   module('when clicking', function (hooks) {

@@ -1,7 +1,7 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta
-  title="Helpers & Modifiers/Modifiers"
+  title="Helpers & Modifiers/Modifiers/General"
   parameters={{
     viewMode: 'docs',
     previewTabs: { canvas: { hidden: true } }
@@ -23,7 +23,6 @@ According to Ember JS:
 | Modifier         | Description                                                                  | Usage                                                                          | Default                                                                                                   |
 |------------------|------------------------------------------------------------------------------|--------------------------------------------------------------------------------| ----------------------------------------------------------------------------------------------------------|
 | enable-popover   | Adds a Bootstrap's Popover to the element                                    | `<button {{enable-popover [trigger]}}>Popover</button>`                        | Default Trigger : **hover**                                                                               |
-| enable-tooltip   | Adds a Bootstrap's Tooltip to the element                                    | `<button {{enable-tooltip title='tooltip' placement='top'}}>Tooltip</button>`  | title : **''** <br /> placement : **'bottom'** <br /> html : **false** <br /> trigger : **'hover focus'** |
 | enable-dropdown  | Toggles Bootstrap's dropdown on an element                                   | `<a {{enable-dropdown}}>Dropdown Trigger link/button</a>`                      |                                                                                                           |
 | on-click-outside | Triggers the passed callback function when a user clicks outside the element | `<div {{on-click-outside callbackFunction}}>Floating Div</div>`                |                                                                                                           |
 | on-bottom-reached | Triggers the passed callback function when a user reaches the bottom of the target element | `<div {{on-bottom-reached callbackFunction}}>Div</div>`                |                                                                                                           |

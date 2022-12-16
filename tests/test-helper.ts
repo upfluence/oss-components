@@ -7,6 +7,9 @@ import { setup } from 'qunit-dom';
 import { start } from 'ember-qunit';
 import 'qunit-dom';
 
+import registerAssertions from '@upfluence/oss-components/test-support/register-assertions';
+
+registerAssertions(QUnit.assert);
 setup(QUnit.assert);
 setApplication(Application.create(config.APP));
 

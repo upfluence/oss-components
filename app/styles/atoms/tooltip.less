@@ -1,0 +1,36 @@
+.upf-tooltip {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-px-3);
+  top: var(--upf-modifier-tooltip-top, 0);
+  left: var(--upf-modifier-tooltip-left, 0);
+  padding: var(--spacing-px-6) var(--spacing-px-9);
+  background-color: var(--color-gray-900);
+  color: var(--color-white);
+  max-width: 300px;
+  border-radius: var(--border-radius-sm);
+  z-index: 9999;
+
+  &:before {
+    content: '';
+    position: absolute;
+    left: var(--upf-modifier-tooltip-arrow-left, 0);
+    top: var(--upf-modifier-tooltip-arrow-top, 0);
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 4px solid var(--color-gray-900);
+    transform: rotate(var(--upf-modifier-tooltip-arrow-rotation));
+  }
+
+  .title-container {
+    display: flex;
+    gap: var(--spacing-px-6);
+    align-items: center;
+  }
+
+  .subtitle {
+    color: var(--color-gray-300);
+    .text-size-3;
+  }
+}
