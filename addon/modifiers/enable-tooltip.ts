@@ -39,6 +39,7 @@ const DEFAULT_CONFIGURATION = {
 function setElementContent(element: HTMLElement, value?: string, htmlSafe?: boolean): void {
   if (htmlSafe) {
     element.innerHTML = value || '';
+    element.dataset.htmlSafe = 'true';
   } else {
     element.innerText = value || '';
   }
