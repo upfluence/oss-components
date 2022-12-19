@@ -111,7 +111,7 @@ function computePosition(state: EnableTooltipState) {
 }
 
 function renderTooltip(state: EnableTooltipState): void {
-  if (state.isRendered) return;
+  if (state.isRendered && state.originElement) return;
 
   generateHTMLStructure(state);
   computePosition(state);
@@ -125,14 +125,14 @@ function renderTooltip(state: EnableTooltipState): void {
   state.setTimeoutId = null;
 }
 
-function destroy(event: Event, state: EnableTooltipState): void {
+function destroy(state: EnableTooltipState, event?: Event): void {
   if (state.setTimeoutId) {
     clearTimeout(state.setTimeoutId);
     state.setTimeoutId = null;
     return;
   }
 
-  const relatedTarget = (<MouseEvent>event).relatedTarget;
+  const relatedTarget = (<MouseEvent>event)?.relatedTarget;
   if (!state.isRendered || (relatedTarget instanceof Node && state.originElement.contains(relatedTarget))) return;
 
   state.animation.reverse();
@@ -166,7 +166,7 @@ function initEventListener(state: EnableTooltipState, element: HTMLElement): voi
     });
 
     element.addEventListener('mouseout', (event) => {
-      destroy(event, state);
+      destroy(state, event);
     });
   }
 
@@ -176,7 +176,7 @@ function initEventListener(state: EnableTooltipState, element: HTMLElement): voi
     });
 
     element.addEventListener('focusout', (event) => {
-      destroy(event, state);
+      destroy(state, event);
     });
   }
 }
@@ -224,9 +224,8 @@ export default setModifierManager(
       computePosition(state);
     },
 
-    destroyModifier() {
-      // We don't need to do anything here, but a function
-      // still has to be here, so we'll leave it blank.
+    destroyModifier(state: EnableTooltipState) {
+      destroy(state);
     }
   }),
   class EnableTooltipModifierNewManager {}
