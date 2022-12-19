@@ -1,25 +1,17 @@
 import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta
-  title="Helpers & Modifiers/Modifiers/Tooltip/Assertions"
+  title="Helpers & Modifiers/Modifiers/Tooltip/Testing"
   parameters={{
     viewMode: 'docs',
     previewTabs: { canvas: { hidden: true } }
   }}
 />
 
-# Assertions
+# Testing
 
-To help testing tooltip, new `assert` functions will be added. The simple way is to add the following code in `test-helper.ts`
-
-```typescript
-import * as QUnit from 'qunit';
-import registerAssertions from '@upfluence/oss-components/test-support/register-assertions';
-registerAssertions(QUnit.assert);
-```
-
-Now, it is possible de use `await assert.tooltip('element-class')` in your tests to easily check the different attributes
-of a tooltip for a given element. This is the following list of tooltip custom assertion:
+It's now possible to use `await assert.tooltip('element-class')` in your tests to easily check the different attributes
+of a tooltip for a given element. Below is the list of the custom tooltip assertions:
 
 - [tooltip().exists()](#exists)
 - [tooltip().doesNotExist()](#doesNotExist)
@@ -36,7 +28,7 @@ of a tooltip for a given element. This is the following list of tooltip custom a
 
 `exists(trigger?: string, message?: string)`
 
-Checks for the presence of the tooltip on a given element.
+Checks the presence of the tooltip on a given element.
 
 | Name         | Description |
 |--------------| ------------|
@@ -47,7 +39,7 @@ Checks for the presence of the tooltip on a given element.
 
 `doesNotExist(trigger?: string, message?: string)`
 
-Checks for the absence of the tooltip on a given element.
+Checks the absence of the tooltip on a given element.
 
 | Name         | Description |
 |--------------| ------------|
@@ -56,7 +48,7 @@ Checks for the absence of the tooltip on a given element.
 
 ## <a name="hasTitle"></a> assert.tooltip('element-class').hasTitle()
 
-Check for the wording of the tooltip title
+Checks the wording of the tooltip title.
 
 `hasTitle(title: string, message?: string)`
 
@@ -67,7 +59,7 @@ Check for the wording of the tooltip title
 
 ## <a name="hasSubtitle"></a> assert.tooltip('element-class').hasSubtitle()
 
-Check for the wording of the tooltip subtitle
+Checks the wording of the tooltip subtitle
 
 `hasSubtitle(subtitle: string, message?: string)`
 
@@ -78,7 +70,7 @@ Check for the wording of the tooltip subtitle
 
 ## <a name="doesNotHaveSubtitle"></a> assert.tooltip('element-class').doesNotHaveSubtitle()
 
-Check for the absence of the tooltip subtitle
+Checks the absence of the tooltip subtitle
 
 `doesNotHaveSubtitle(message?: string)`
 
@@ -88,7 +80,7 @@ Check for the absence of the tooltip subtitle
 
 ## <a name="hasIcon"></a> assert.tooltip('element-class').hasIcon()
 
-Check for the tooltip icon
+Checks the presence of the tooltip icon
 
 `hasIcon(icon: string, message?: string)`
 
@@ -99,7 +91,7 @@ Check for the tooltip icon
 
 ## <a name="doesNotHaveIcon"></a> assert.tooltip('element-class').doesNotHaveIcon()
 
-Check for the absence of the tooltip icon
+Checks the absence of the tooltip icon
 
 `doesNotHaveIcon(message?: string)`
 
@@ -109,7 +101,7 @@ Check for the absence of the tooltip icon
 
 ## <a name="hasPlacement"></a> assert.tooltip('element-class').hasPlacement()
 
-Check for the tooltip placement value
+Checks the tooltip placement value
 
 `hasPlacement(placement: Placement, message?: string)`
 
@@ -120,7 +112,7 @@ Check for the tooltip placement value
 
 ## <a name="isHtmlSafe"></a> assert.tooltip('element-class').isHtmlSafe()
 
-Check for the tooltip is HTML safe
+Checks if the tooltip is HTML safe
 
 `isHtmlSafe(message?: string)`
 
@@ -130,7 +122,7 @@ Check for the tooltip is HTML safe
 
 ## <a name="isNotHtmlSafe"></a> assert.tooltip('element-class').isNotHtmlSafe()
 
-Check for the tooltip is not HTML safe
+Checks if the tooltip is not HTML safe
 
 | Name         | Description |
 |--------------| ------------|
