@@ -1,0 +1,127 @@
+import { Meta, Typeset, ColorPalette, ColorItem } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title="CoreV2/Typography"
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: { canvas: { hidden: true } }
+  }}
+/>
+
+export const typography = {
+  type: {
+    primary: getComputedStyle(document.documentElement).getPropertyValue('--font-family-stack')
+  },
+  weight: {
+    regular: '400',
+    semibold: '600',
+    bold: '700'
+  }
+};
+
+export const SampleText = 'The quick brown fox jumps over a lazy dog.';
+
+# Typography
+
+Typography helps establish hierarchy and communicate important content by
+creating clear visual patterns.
+
+## Product Font
+
+**[Inter](https://fonts.google.com/specimen/Inter)** is the primary typeface accross Upfluence products and can be used
+in 3 different weights:
+
+- Regular: 400
+- Semibold: 600
+- Bold: 700
+
+## Type styles
+
+Throughout our products, we can distinguish two type styles: heading and body.
+Each has a default set of variants along with a set of options to allow for
+flexibility and a wide range of applications within the user interface.
+
+### Body styles
+
+Body styles are used within components and blocks of text.
+
+The default body text font size is: **12px**.
+
+<div class="fx-col fx-gap-px-12">
+  <div class="fx-col">
+    <span>Regular</span>
+    <Typeset
+      fontSizes={[Number(10), Number(12), Number(14), Number(16)]}
+      fontWeight={typography.weight.regular}
+      sampleText={SampleText}
+      fontFamily={typography.type.primary}
+    />
+  </div>
+
+  <div class="fx-row fx-gap-px-12">
+    <div class="fx-1">
+      <div class="fx-col">
+        <span>Semibold</span>
+        <Typeset
+          fontSizes={[Number(10), Number(12), Number(14), Number(16)]}
+          fontWeight={typography.weight.semibold}
+          sampleText={SampleText}
+          fontFamily={typography.type.primary}
+        />
+      </div>
+    </div>
+    <div class="fx-1">
+      <div class="fx-col">
+        <span>Bold</span>
+        <Typeset
+          fontSizes={[Number(10), Number(12), Number(14), Number(16)]}
+          fontWeight={typography.weight.bold}
+          sampleText={SampleText}
+          fontFamily={typography.type.primary}
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+## Color
+
+Mixing colors can be used to add contrast and reinforce the hierarchy between
+text.
+
+For example, one way to distinguish between a title and a subtitle is to apply
+`.font-color-gray-900` to the title, and `.font-color-gray-500` to the subtitle.
+
+Using a lighter color for secondary information provides contrast between the
+text and helps reinforce hierarchy even when the text is the same size and
+weight.
+
+<ColorPalette>
+  <ColorItem
+    title="900"
+    subtitle="This is the default text color and can be used for any content that does not have any particular hierarchy."
+    colors={{
+      'var(--color-gray-900) / .font-color-gray-900': getComputedStyle(document.documentElement).getPropertyValue(
+        '--color-gray-900'
+      )
+    }}
+  />
+  <ColorItem
+    title="500"
+    subtitle="This lighter color can be used to de-emphasize secondary content, sub-sections, labels, etc."
+    colors={{
+      'var(--color-gray-500) / .font-color-gray-500': getComputedStyle(document.documentElement).getPropertyValue(
+        '--color-gray-500'
+      )
+    }}
+  />
+  <ColorItem
+    title="400"
+    subtitle="Our lightest font color, usable when a 3rd level of hierarchy is needed"
+    colors={{
+      'var(--color-gray-400) / .font-color-gray-400': getComputedStyle(document.documentElement).getPropertyValue(
+        '--color-gray-400'
+      )
+    }}
+  />
+</ColorPalette>
