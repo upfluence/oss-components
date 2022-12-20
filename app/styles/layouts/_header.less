@@ -10,7 +10,8 @@
     width: 100%;
     padding: @spacing-xxx-sm @spacing-xxx-sm;
 
-    a, a:hover {
+    a,
+    a:hover {
       /*.reset-link;*/
     }
 
@@ -27,7 +28,8 @@
     font-size: 1.2em;
     text-align: center;
 
-    a, i {
+    a,
+    i {
       color: @color-text-contrast;
       text-decoration: none !important;
     }
@@ -43,8 +45,8 @@
   padding: 0;
   top: 0;
   width: 5em;
-  z-index: 9999999;
-  box-shadow: 10px 0 10px -10px rgba(0,0,0,0.1);
+  z-index: 9998;
+  box-shadow: 10px 0 10px -10px rgba(0, 0, 0, 0.1);
 
   .logo-container {
     margin-top: 0;
@@ -96,7 +98,9 @@
 
     // Only change the color of the icons in the sidebar when it's active
     // route.
-    a.active, a.active i, a.active .upf-icon {
+    a.active,
+    a.active i,
+    a.active .upf-icon {
       color: @upf-primary-white;
       border-bottom: none;
       background-color: @upf-primary-bright-purple;
@@ -125,7 +129,8 @@
   display: inline-flex;
   position: absolute;
 
-  .app-header__left-side, .app-header__right-side {
+  .app-header__left-side,
+  .app-header__right-side {
     display: flex;
     align-items: center;
 
