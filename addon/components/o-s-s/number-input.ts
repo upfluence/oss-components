@@ -32,10 +32,10 @@ export default class OSSNumberInput extends Component<OSSNumberInputArgs> {
   @action
   keyParser(event: KeyboardEvent): void {
     if (INCREASE_VALUE_KEYS.find((key: string) => key === event.key)) {
-      this.increaseValue();
+      this.increaseValue(event.shiftKey);
       return;
     } else if (DECREASE_VALUE_KEYS.find((key: string) => key === event.key)) {
-      this.decreaseValue();
+      this.decreaseValue(event.shiftKey);
       return;
     }
     if (!NUMERIC_ONLY.test(event.key) && !AUTHORIZED_KEYS.find((key: string) => key === event.key)) {
@@ -57,17 +57,17 @@ export default class OSSNumberInput extends Component<OSSNumberInputArgs> {
   }
 
   @action
-  increaseValue(): void {
+  increaseValue(shiftEnabled?: boolean): void {
     if (this.args.max === undefined || Number(this.localValue) + this.step <= this.args.max) {
-      this.localValue = Number(this.localValue) + this.step;
+      this.localValue = Number(this.localValue) + (shiftEnabled ? this.step * 2 : this.step);
       this.notifyChanges();
     }
   }
 
   @action
-  decreaseValue(): void {
+  decreaseValue(shiftEnabled?: boolean): void {
     if (this.args.min === undefined || Number(this.localValue) - this.step >= this.args.min) {
-      this.localValue = Number(this.localValue) - this.step;
+      this.localValue = Number(this.localValue) - (shiftEnabled ? this.step * 2 : this.step);
       this.notifyChanges();
     }
   }
