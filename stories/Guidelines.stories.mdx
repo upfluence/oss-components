@@ -38,3 +38,49 @@ rules. You can find all settings for Prettier in `.prettierrc`.
 
 For Installation based off your favorite code editor, please follow Prettier's
 [Editor Integration documentation](https://prettier.io/docs/en/editors.html)
+
+## Custom Assertions
+
+To help testing the component, new `QUnit.assert` functions can be setup by adding the following code in `test-helper.ts`
+
+```typescript
+import * as QUnit from 'qunit';
+import registerAssertions from '@upfluence/oss-components/test-support/register-assertions';
+registerAssertions(QUnit.assert);
+```
+
+In oss-components project, all custom assertions are stored in `addon-test-support/custom-assertions`. The following code
+gives you an example:
+
+```typescript
+import * as QUnit from 'qunit';
+
+export interface CustomAssertions {
+  exists(value: string, message?: string): void;
+}
+
+const assertion = (selector: string) => {
+  return {
+    exists(value:string, message?:string) {
+      // your implementation
+      QUnit.assert.pushResult({ result, actual, expected, message });
+    }
+  }
+}
+
+assertion.__name__ = 'yourCustomName';
+
+export default assertion;
+
+declare global {
+  interface Assert {
+    example(selector: string): CustomAssertions;
+  }
+}
+```
+
+How do you use it your tests? Just call the created function on `assert` with:
+
+```typescript
+assert.example('.your-selector').exists(value);
+```
