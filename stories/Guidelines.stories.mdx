@@ -41,7 +41,7 @@ For Installation based off your favorite code editor, please follow Prettier's
 
 ## Custom Assertions
 
-To help to test component, new `QUnit.assert` functions can be setup by adding the following code in `test-helper.ts`
+To help testing the component, new `QUnit.assert` functions can be setup by adding the following code in `test-helper.ts`
 
 ```typescript
 import * as QUnit from 'qunit';
@@ -49,8 +49,8 @@ import registerAssertions from '@upfluence/oss-components/test-support/register-
 registerAssertions(QUnit.assert);
 ```
 
-In oss-components project, all custom assertions will be store in `addon-test-support/custom-assertions`. The following code
-will present you an example:
+In oss-components project, all custom assertions are stored in `addon-test-support/custom-assertions`. The following code
+gives you an example:
 
 ```typescript
 import * as QUnit from 'qunit';
