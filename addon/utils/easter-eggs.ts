@@ -17,10 +17,10 @@ export const registerEasterEgg = (callback: EasterEggCallback) => {
     const key = ALLOWED_KEYS[e.keyCode];
     const requiredKey = KONAMI_CODE_SEQUENCE[konamiCodePosition];
 
-    if (key == requiredKey) {
+    if (key === requiredKey) {
       konamiCodePosition++;
 
-      if (konamiCodePosition == KONAMI_CODE_SEQUENCE.length) {
+      if (konamiCodePosition === KONAMI_CODE_SEQUENCE.length) {
         callback();
         konamiCodePosition = 0;
       }
