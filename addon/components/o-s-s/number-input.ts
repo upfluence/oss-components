@@ -60,7 +60,7 @@ export default class OSSNumberInput extends Component<OSSNumberInputArgs> {
   increaseValue(event: PointerEvent | KeyboardEvent): void {
     if (this.args.max === undefined || Number(this.localValue) + this.step <= this.args.max) {
       this.localValue = Number(this.localValue) + (event.shiftKey ? this.step * 2 : this.step);
-      this.notifyChanges();
+      this.checkUserInput();
     }
   }
 
@@ -68,7 +68,7 @@ export default class OSSNumberInput extends Component<OSSNumberInputArgs> {
   decreaseValue(event: PointerEvent | KeyboardEvent): void {
     if (this.args.min === undefined || Number(this.localValue) - this.step >= this.args.min) {
       this.localValue = Number(this.localValue) - (event.shiftKey ? this.step * 2 : this.step);
-      this.notifyChanges();
+      this.checkUserInput();
     }
   }
 
