@@ -89,7 +89,7 @@ function generateHTMLStructure(state: EnableTooltipState): void {
 }
 
 function delayedRender(state: EnableTooltipState): void {
-  if (isEmpty(state.tooltipConfig.title) || state.isRendered) return;
+  if (isEmpty(state.tooltipConfig.title) || state.isRendered || state.setTimeoutId) return;
   state.setTimeoutId = setTimeout(() => {
     renderTooltip(state);
   }, RENDERING_DELAY);
@@ -111,8 +111,6 @@ function computePosition(state: EnableTooltipState) {
 }
 
 function renderTooltip(state: EnableTooltipState): void {
-  if (state.isRendered && state.originElement) return;
-
   generateHTMLStructure(state);
   computePosition(state);
 
@@ -125,20 +123,25 @@ function renderTooltip(state: EnableTooltipState): void {
   state.setTimeoutId = null;
 }
 
-function destroy(state: EnableTooltipState, event?: Event): void {
+function destroyWithEvent(state: EnableTooltipState, event?: Event) {
+  const relatedTarget = (<MouseEvent>event)?.relatedTarget;
+  if (relatedTarget instanceof Node && state.originElement.contains(relatedTarget)) return;
+
+  destroy(state);
+}
+
+function destroy(state: EnableTooltipState): void {
   if (state.setTimeoutId) {
     clearTimeout(state.setTimeoutId);
     state.setTimeoutId = null;
-    return;
   }
 
-  const relatedTarget = (<MouseEvent>event)?.relatedTarget;
-  if (!state.isRendered || (relatedTarget instanceof Node && state.originElement.contains(relatedTarget))) return;
+  if (!state.isRendered) return;
 
   state.animation.reverse();
   state.animation.finished.then(() => {
     run(() => {
-      state.tooltipElement!.remove();
+      state.tooltipElement?.remove();
       state.isRendered = false;
       state.tooltipElement = null;
     });
@@ -166,7 +169,7 @@ function initEventListener(state: EnableTooltipState, element: HTMLElement): voi
     });
 
     element.addEventListener('mouseout', (event) => {
-      destroy(state, event);
+      destroyWithEvent(state, event);
     });
   }
 
@@ -176,7 +179,7 @@ function initEventListener(state: EnableTooltipState, element: HTMLElement): voi
     });
 
     element.addEventListener('focusout', (event) => {
-      destroy(state, event);
+      destroyWithEvent(state, event);
     });
   }
 }

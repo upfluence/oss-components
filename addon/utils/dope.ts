@@ -19,6 +19,9 @@ export default class DynamicObjectPlacement {
   declare elementOptions: ElementOptions;
   declare arrowOptions: ArrowOptions;
 
+  elementWidth = 0;
+  elementHeight = 0;
+
   computePosition(
     element: HTMLElement,
     target: HTMLElement,
@@ -27,8 +30,10 @@ export default class DynamicObjectPlacement {
   ): void {
     this.elementOptions = elementOptions;
     this.arrowOptions = arrowOptions;
+    this.elementHeight = element.offsetHeight;
+    this.elementWidth = element.offsetWidth;
 
-    this.overflowPlacementCorrection(element, target);
+    this.overflowPlacementCorrection(target);
     this.computeElementPosition(element, target);
     this.verticalAdjustmentRelativeToViewPort(element);
     this.horizontalAdjustmentRelativeToViewPort(element);
@@ -38,12 +43,12 @@ export default class DynamicObjectPlacement {
   }
 
   private computeElementPosition(element: HTMLElement, target: HTMLElement) {
-    const elementTop = this.computedElementTopPosition(element, target);
+    const elementTop = this.computedElementTopPosition(target);
+    const elementLeft = this.computedElementLeftPosition(target);
     element.style.setProperty(
       `${CSS_VARIABLE_NAME_PREFIX}${this.elementOptions.cssVariableName}-top`,
       `${elementTop}px`
     );
-    const elementLeft = this.computedElementLeftPosition(element, target);
     element.style.setProperty(
       `${CSS_VARIABLE_NAME_PREFIX}${this.elementOptions.cssVariableName}-left`,
       `${elementLeft}px`
@@ -69,11 +74,10 @@ export default class DynamicObjectPlacement {
     );
   }
 
-  private overflowPlacementCorrection(element: HTMLElement, target: HTMLElement): void {
+  private overflowPlacementCorrection(target: HTMLElement): void {
     const elementTotalHeight =
-      element.offsetHeight + this.elementOptions.viewportOffset + this.elementOptions.targetOffset;
-    const elementTotalWidth =
-      element.offsetWidth + this.elementOptions.viewportOffset + this.elementOptions.targetOffset;
+      this.elementHeight + this.elementOptions.viewportOffset + this.elementOptions.targetOffset;
+    const elementTotalWidth = this.elementWidth + this.elementOptions.viewportOffset + this.elementOptions.targetOffset;
 
     if (this.elementOptions.placement === 'top' && target.getBoundingClientRect().top < elementTotalHeight) {
       this.elementOptions.placement = 'bottom';
@@ -92,37 +96,37 @@ export default class DynamicObjectPlacement {
     }
   }
 
-  private computedElementLeftPosition(element: HTMLElement, target: HTMLElement): number {
+  private computedElementLeftPosition(target: HTMLElement): number {
     const targetBoundingClientRect = target.getBoundingClientRect();
     const targetLeftRelativeToDocument = targetBoundingClientRect.left + document.documentElement.scrollLeft;
 
     switch (this.elementOptions.placement) {
       case 'top':
-        return targetLeftRelativeToDocument + target.offsetWidth / 2 - element.offsetWidth / 2;
+        return targetLeftRelativeToDocument + target.offsetWidth / 2 - this.elementWidth / 2;
       case 'bottom':
-        return targetLeftRelativeToDocument + target.offsetWidth / 2 - element.offsetWidth / 2;
+        return targetLeftRelativeToDocument + target.offsetWidth / 2 - this.elementWidth / 2;
       case 'right':
         return targetLeftRelativeToDocument + target.offsetWidth + this.elementOptions.targetOffset;
       case 'left':
-        return targetLeftRelativeToDocument - element.offsetWidth - this.elementOptions.targetOffset;
+        return targetLeftRelativeToDocument - this.elementWidth - this.elementOptions.targetOffset;
       default:
         return 0;
     }
   }
 
-  private computedElementTopPosition(element: HTMLElement, target: HTMLElement): number {
+  private computedElementTopPosition(target: HTMLElement): number {
     const targetBoundingClientRect = target.getBoundingClientRect();
     const targetTopRelativeToDocument = targetBoundingClientRect.top + document.documentElement.scrollTop;
 
     switch (this.elementOptions.placement) {
       case 'top':
-        return targetTopRelativeToDocument - element.offsetHeight - this.elementOptions.targetOffset;
+        return targetTopRelativeToDocument - this.elementHeight - this.elementOptions.targetOffset;
       case 'bottom':
         return targetTopRelativeToDocument + target.offsetHeight + this.elementOptions.targetOffset;
       case 'right':
-        return targetTopRelativeToDocument + target.offsetHeight / 2 - element.offsetHeight / 2;
+        return targetTopRelativeToDocument + target.offsetHeight / 2 - this.elementHeight / 2;
       case 'left':
-        return targetTopRelativeToDocument + target.offsetHeight / 2 - element.offsetHeight / 2;
+        return targetTopRelativeToDocument + target.offsetHeight / 2 - this.elementHeight / 2;
       default:
         return 0;
     }
@@ -156,10 +160,10 @@ export default class DynamicObjectPlacement {
       element.style.setProperty('--upf-modifier-tooltip-left', `${currentTopValue + correctionValue}px`);
     }
 
-    if (elementBoundingClientRect.left + element.offsetWidth - this.elementOptions.viewportOffset > window.innerWidth) {
+    if (elementBoundingClientRect.left + this.elementWidth - this.elementOptions.viewportOffset > window.innerWidth) {
       const currentTopValue = parseInt(element.style.getPropertyValue('--upf-modifier-tooltip-left').replace('px', ''));
       const correctionValue =
-        elementBoundingClientRect.left + element.offsetWidth + this.elementOptions.viewportOffset - window.innerWidth;
+        elementBoundingClientRect.left + this.elementWidth + this.elementOptions.viewportOffset - window.innerWidth;
       element.style.setProperty('--upf-modifier-tooltip-left', `${currentTopValue - correctionValue}px`);
     }
   }
@@ -178,7 +182,7 @@ export default class DynamicObjectPlacement {
       case 'right':
         return 0 - this.arrowOptions.width - rotationAdjustment;
       case 'left':
-        return element.offsetWidth + rotationAdjustment;
+        return this.elementWidth + rotationAdjustment;
       default:
         return 0;
     }
@@ -191,7 +195,7 @@ export default class DynamicObjectPlacement {
 
     switch (this.elementOptions.placement) {
       case 'top':
-        return element.offsetHeight;
+        return this.elementHeight;
       case 'bottom':
         return 0 - this.arrowOptions.height;
       case 'right':
