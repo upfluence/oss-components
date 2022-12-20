@@ -46,14 +46,14 @@ export default {
       control: { type: 'number' }
     },
     onChange: {
-      description: 'A callback that sends back the new value of the input'
+      description: '[OPTIONAL] A callback that sends back the new value of the input'
     }
   },
   parameters: {
     docs: {
       description: {
         component:
-          '[OPTIONAL] A number input wrapper with decrease & increase buttons. (Up & Right arrow increase, Down & Left arrow decrease)'
+          'A number input wrapper with decrease & increase buttons. (Up & Right arrow increase, Down & Left arrow decrease)'
       }
     }
   }
