@@ -63,6 +63,7 @@ export default class ApplicationController extends Controller {
   @tracked shopUrl = '';
   @tracked currency = 'EUR';
   @tracked currencyValue = 42.13;
+  @tracked numberValue = 42;
   @tracked showModal = false;
   @tracked items = [
     { name: 'foo', label: 'foo' },
@@ -114,6 +115,12 @@ export default class ApplicationController extends Controller {
     const owner = getOwner(this);
     owner.register('service:mock-uploader', MockUploader);
     this.mockUploader = owner.lookup('service:mock-uploader');
+  }
+
+  @action
+  handleNumberInput(newValue: number) {
+    console.log('new value = ' + newValue);
+    this.numberValue = newValue;
   }
 
   @action
