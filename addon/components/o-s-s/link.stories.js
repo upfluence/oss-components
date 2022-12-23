@@ -5,24 +5,22 @@ export default {
   component: 'link',
   argTypes: {
     icon: {
-      type: { required: true },
-      description: 'Icon set on the left position.',
+      description: 'Icon set on the left position. Font Awesome class, for example: far fa-link',
       table: {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: 'null' }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
     label: {
-      type: { required: true },
       description: 'Label of the link.',
       table: {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: 'null' }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
@@ -32,7 +30,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: 'null' }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
@@ -43,7 +41,7 @@ export default {
         type: {
           summary: 'object'
         },
-        defaultValue: { summary: 'null' }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'object' }
     }
@@ -57,19 +55,24 @@ export default {
   }
 };
 
-const DefaultUsageTemplate = (args) => ({
+const defaultArgs = {
+  icon: 'far fa-link',
+  label: 'I am link',
+  transitionTo: undefined,
+  link: {
+    href: 'https://www.google.fr',
+    target: '_blank'
+  }
+};
+
+const Template = (args) => ({
   template: hbs`
       <OSS::Link @icon={{this.icon}} @label={{this.label}} @transitionTo={{this.transitionTo}} @link={{this.link}} />
   `,
   context: args
 });
-export const BasicUsage = DefaultUsageTemplate.bind({});
+
+export const BasicUsage = Template.bind({});
 BasicUsage.args = {
-  icon: 'fas fa-link',
-  label: 'I am link',
-  transitionTo: 'workflow.create',
-  link: {
-    href: 'https://www.google.fr',
-    target: '_blank'
-  }
+  ...defaultArgs
 };

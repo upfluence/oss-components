@@ -1,4 +1,5 @@
 import hbs from 'htmlbars-inline-precompile';
+import { action } from '@storybook/addon-actions';
 
 const SkinTypes = ['success', 'info', 'warning', 'error'];
 
@@ -23,7 +24,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: '' }
+        defaultValue: { summary: undefined }
       },
       control: { type: 'text' }
     },
@@ -33,7 +34,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: '' }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
@@ -58,9 +59,9 @@ export default {
       }
     },
     onClose: {
-      type: { required: false },
       description: 'Function to be called with the alert is closed',
       table: {
+        category: 'Actions',
         type: {
           summary: 'onClose(): void'
         }
@@ -76,24 +77,27 @@ export default {
   }
 };
 
-const DefaultUsageTemplate = (args) => ({
+const defaultArgs = {
+  skin: 'info',
+  title: 'Title',
+  subtitle: 'I am a subtitle in the alert',
+  plain: true,
+  closable: false,
+  onClose: action('onClose')
+};
+
+const Template = (args) => ({
   template: hbs`
-      <OSS::Alert @skin={{this.skin}} @title={{this.title}} @subtitle={{this.subtitle}} />
+      <OSS::Alert @skin={{this.skin}} @title={{this.title}} @subtitle={{this.subtitle}} @plain={{this.plain}} 
+                  @closable={{this.closable}} />
   `,
   context: args
 });
 
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = {
-  skin: 'info',
-  title: 'Title',
-  subtitle: 'I am a subtitle in the alert'
-};
-
-const BasicUsageExtraContentTemplate = (args) => ({
+const ExtraContentTemplate = (args) => ({
   template: hbs`
-      <OSS::Alert @skin={{this.skin}} @title={{this.title}}
-                  @subtitle={{this.subtitle}} @plain={{this.plain}} @closable={{this.closable}}>
+      <OSS::Alert @skin={{this.skin}} @title={{this.title}} @subtitle={{this.subtitle}} @plain={{this.plain}} 
+                  @closable={{this.closable}}>
         <:extra-content>
           <div class="fx-row fx-gap-px-12">
             <OSS::Link @label="Link1" />
@@ -105,11 +109,12 @@ const BasicUsageExtraContentTemplate = (args) => ({
   context: args
 });
 
-export const UsageExtraContent = BasicUsageExtraContentTemplate.bind({});
+export const BasicUsage = Template.bind({});
+BasicUsage.args = {
+  ...defaultArgs
+};
+
+export const UsageExtraContent = ExtraContentTemplate.bind({});
 UsageExtraContent.args = {
-  skin: 'info',
-  title: 'Title',
-  subtitle: 'I am a subtitle in the alert',
-  plain: true,
-  closable: false
+  ...defaultArgs
 };

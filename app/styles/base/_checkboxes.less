@@ -17,7 +17,7 @@
 
 .upf-checkbox {
   width: 20px;
-	position: relative;
+  position: relative;
 }
 
 .upf-checkbox--has-label {
@@ -25,7 +25,7 @@
   left: @spacing-md;
 }
 
-.upf-checkbox--sm {
+.upf-checkbox--sm {
   width: 15px;
 
   .upf-checkbox__fake-checkbox {
@@ -54,21 +54,23 @@
 //
 // For one checkbox to be styled, one checkbox must disappear
 //
-.upf-checkbox__input { display: none; }
+.upf-checkbox__input {
+  display: none;
+}
 
 //
 // As we hide the actual checkbox, all of the styling is done on it's label.
 // We then make it look like a checkbox square.
 //
 .upf-checkbox__fake-checkbox {
-	border: 1px solid @upf-primary-rock-blue;
+  border: 1px solid @upf-primary-rock-blue;
   border-radius: @default-radius;
   cursor: pointer;
   background-color: white;
 
   margin-bottom: 0;
-	height: 20px;
-	width: 20px;
+  height: 20px;
+  width: 20px;
 
   user-select: none;
   vertical-align: text-bottom;

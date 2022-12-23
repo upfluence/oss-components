@@ -5,6 +5,7 @@ export default {
   component: 'copy',
   argTypes: {
     value: {
+      type: { required: true },
       description: 'The value to copy value in clipboard',
       table: {
         type: {
@@ -24,6 +25,10 @@ export default {
   }
 };
 
+const defaultArgs = {
+  value: 'Your copied value'
+};
+
 const BasicUsageTemplate = (args) => ({
   template: hbs`<OSS::Copy @value={{this.value}} />`,
   context: args
@@ -31,5 +36,5 @@ const BasicUsageTemplate = (args) => ({
 
 export const Default = BasicUsageTemplate.bind({});
 Default.args = {
-  value: 'Copied to clipboard!'
+  ...defaultArgs
 };

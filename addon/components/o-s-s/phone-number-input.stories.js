@@ -11,7 +11,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
@@ -21,12 +21,27 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
     onChange: {
-      description: 'A callback that sends the modifications of the prefix & the phone number'
+      description: 'A callback that sends the modifications of the prefix & the phone number',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'onChange(prefix: string, number: string): void'
+        }
+      }
+    },
+    validates: {
+      description: 'A callback that indicates whether or not the current input matches the regex',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'validates?(isPassing: boolean): void'
+        }
+      }
     }
   },
   parameters: {
@@ -38,16 +53,20 @@ export default {
   }
 };
 
+const defaultArgs = {
+  prefix: '+33',
+  number: '742424242',
+  onChange: action('onChange'),
+  validates: action('validates')
+};
+
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
-      <OSS::PhoneNumberInput @prefix={{this.prefix}} @number={{this.number}} @onChange={{this.onChange}} />
+      <OSS::PhoneNumberInput @prefix={{this.prefix}} @number={{this.number}} @onChange={{this.onChange}}
+                             @validates={{this.validates}} />
   `,
   context: args
 });
+
 export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = {
-  that: this,
-  prefix: '+33',
-  number: '742424242',
-  onChange: action('onChange')
-};
+BasicUsage.args = { ...defaultArgs };

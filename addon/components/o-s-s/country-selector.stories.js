@@ -92,15 +92,21 @@ export default {
         'The value applied to the input. Use for instance when the form is already pre-filled with known data',
       table: {
         type: {
-          summary: 'text'
+          summary: 'string'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: undefined }
       },
       control: { type: 'text' }
     },
     onChange: {
       type: { required: true },
-      description: 'A callback that sends the selected country/province object to the parent component'
+      description: 'A callback that sends the selected country/province object to the parent component',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'onChange(item: Item | null): void'
+        }
+      }
     }
   },
   parameters: {
@@ -112,42 +118,33 @@ export default {
   }
 };
 
-const DefaultUsageTemplate = (args) => ({
+const defaultArgs = {
+  sourceList: partialCountries,
+  value: undefined,
+  onChange: action('onChange')
+};
+
+const Template = (args) => ({
   template: hbs`<div style="width: 400px">
-      <OSS::CountrySelector @sourceList={{this.sourceList}} @onChange={{this.onChange}} />
+      <OSS::CountrySelector @sourceList={{this.sourceList}} @value={{this.value}} @onChange={{this.onChange}} />
     </div>
   `,
   context: args
 });
-export const BasicUsage = DefaultUsageTemplate.bind({});
+
+export const BasicUsage = Template.bind({});
 BasicUsage.args = {
-  sourceList: partialCountries,
-  onChange: action('onChange')
+  ...defaultArgs
 };
 
-const ProvinceUsageTemplate = (args) => ({
-  template: hbs`<div style="width: 400px">
-      <OSS::CountrySelector @sourceList={{this.sourceList}} @onChange={{this.onChange}} />
-    </div>
-  `,
-  context: args
-});
-export const ProvinceUsage = ProvinceUsageTemplate.bind({});
+export const ProvinceUsage = Template.bind({});
 ProvinceUsage.args = {
-  sourceList: gbProvinces,
-  onChange: action('onChange')
+  ...defaultArgs,
+  ...{ sourceList: gbProvinces }
 };
 
-const PrefilledUsageTemplate = (args) => ({
-  template: hbs`<div style="width: 400px">
-      <OSS::CountrySelector @sourceList={{this.sourceList}} @initialValue={{this.initialValue}} @onChange={{this.onChange}} />
-    </div>
-  `,
-  context: args
-});
-export const InitialValueUsage = PrefilledUsageTemplate.bind({});
-InitialValueUsage.args = {
-  sourceList: partialCountries,
-  initialValue: 'France',
-  onChange: action('onChange')
+export const PrefilledUsage = Template.bind({});
+PrefilledUsage.args = {
+  ...defaultArgs,
+  ...{ value: 'FR' }
 };

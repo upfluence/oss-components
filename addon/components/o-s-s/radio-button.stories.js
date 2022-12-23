@@ -9,7 +9,7 @@ export default {
       description: 'Whether the radio-button is selected or not',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' }
+        defaultValue: { summary: false }
       },
       control: { type: 'boolean' }
     },
@@ -22,7 +22,13 @@ export default {
       control: { type: 'boolean' }
     },
     onChange: {
-      description: 'A callback that sends the new value of the radio-button.'
+      description: 'A callback that sends the new value of the radio-button.',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'onChange?(value: boolean): void'
+        }
+      }
     }
   },
   parameters: {
@@ -34,15 +40,20 @@ export default {
   }
 };
 
-const DefaultUsageTemplate = (args) => ({
+const defaultArgs = {
+  selected: false,
+  disabled: false,
+  onChange: action('onChange')
+};
+
+const Template = (args) => ({
   template: hbs`
       <OSS::RadioButton @selected={{this.selected}} @disabled={{this.disabled}} @onChange={{this.onChange}}/>
   `,
   context: args
 });
-export const BasicUsage = DefaultUsageTemplate.bind({});
+
+export const BasicUsage = Template.bind({});
 BasicUsage.args = {
-  selected: true,
-  disabled: false,
-  onChange: action('onChange')
+  ...defaultArgs
 };

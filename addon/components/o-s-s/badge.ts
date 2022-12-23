@@ -38,9 +38,9 @@ interface OSSBadgeArgs {
   icon: string;
   image: string;
   text: string;
-  plain: boolean;
-  size: SizeType;
-  skin: SkinType;
+  skin?: SkinType;
+  plain?: boolean;
+  size?: SizeType;
 }
 
 export default class OSSBadge extends Component<OSSBadgeArgs> {
@@ -67,7 +67,7 @@ export default class OSSBadge extends Component<OSSBadgeArgs> {
   }
 
   get skinClass(): string {
-    const skin: SkinType = this.args.skin;
+    const skin: SkinType | undefined = this.args?.skin;
 
     if (!skin) return '';
 

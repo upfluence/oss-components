@@ -11,7 +11,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
@@ -31,7 +31,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
@@ -41,19 +41,18 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: undefined }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
     onChange: {
-      type: { name: 'Method' },
       description: 'Method called every time the input is updated',
       table: {
+        category: 'Actions',
         type: {
           summary: 'onChange(value: string): void'
         }
-      },
-      control: { type: null }
+      }
     }
   },
   parameters: {
@@ -65,6 +64,14 @@ export default {
   }
 };
 
+const defaultArgs = {
+  value: 'John',
+  disabled: false,
+  placeholder: 'this is the placeholder',
+  errorMessage: undefined,
+  onChange: action('onChange')
+};
+
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
       <OSS::InputContainer @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}}
@@ -72,35 +79,10 @@ const DefaultUsageTemplate = (args) => ({
   `,
   context: args
 });
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = {
-  value: 'John',
-  disabled: false,
-  placeholder: 'this is the placeholder',
-  errorMessage: '',
-  onChange: action('')
-};
-
-const BasicWithParametersTemplate = (args) => ({
-  template: hbs`
-      <OSS::InputContainer class="margin-bottom-sm" data-control-name="input-firstname"
-                         @value={{this.value}}
-                         @disabled={{this.disabled}}
-                         @onChange={{this.onChange}}
-                         @placeholder={{this.placeholder}} />
-  `,
-  context: args
-});
-export const BasicWithParamaters = BasicWithParametersTemplate.bind({});
-BasicWithParamaters.args = {
-  placeholder: 'Enter your name',
-  onChange: action(''),
-  disabled: false
-};
 
 const AdvancedWithNamedBlocksTemplate = (args) => ({
   template: hbs`
-      <OSS::InputContainer class="margin-bottom-sm" data-control-name="input-firstname">
+      <OSS::InputContainer>
         <:prefix>
           {{#if (gt this.lastname.length 0)}}
             <i class="fa fa-check text-color-success"></i>
@@ -122,5 +104,11 @@ const AdvancedWithNamedBlocksTemplate = (args) => ({
   `,
   context: args
 });
+
+export const BasicUsage = DefaultUsageTemplate.bind({});
+BasicUsage.args = {
+  ...defaultArgs
+};
+
 export const AdvancedWithNamedBlocks = AdvancedWithNamedBlocksTemplate.bind({});
 AdvancedWithNamedBlocks.args = {};

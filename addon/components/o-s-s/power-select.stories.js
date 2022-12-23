@@ -56,7 +56,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: '' }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
@@ -72,13 +72,31 @@ export default {
     },
     onChange: {
       description: 'Action executed when item is selected from selection section',
-      type: { required: true }
+      type: { required: true },
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'onChange(item: any, operation: OperationType): void'
+        }
+      }
     },
     onSearch: {
-      description: 'Action executed when the user uses the search bar'
+      description: 'Action executed when the user uses the search bar',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'onSearch(keyword: string): void'
+        }
+      }
     },
     onBottomReached: {
-      description: 'Action executed when the user scrolls to the bottom of the list of items'
+      description: 'Action executed when the user scrolls to the bottom of the list of items',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'onBottomReached(): void'
+        }
+      }
     }
   },
   parameters: {

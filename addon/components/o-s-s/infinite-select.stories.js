@@ -93,14 +93,16 @@ export default {
       type: { required: true },
       description: 'Function to be called with the clicked item',
       table: {
+        category: 'Actions',
         type: {
-          summary: 'onSelect(item): void'
+          summary: 'onSelect(item: InfinityItem): void'
         }
       }
     },
     onSearch: {
       description: 'Function to be called every time the user searches',
       table: {
+        category: 'Actions',
         type: {
           summary: 'onSearch(keyword: string): void'
         }
@@ -109,15 +111,16 @@ export default {
     onBottomReached: {
       description: 'Function to be called when the scroll hits the bottom',
       table: {
+        category: 'Actions',
         type: {
           summary: 'onBottomReached(): void'
         }
       }
     },
     didRender: {
-      type: { name: 'Function' },
       description: 'Function to be called every time the component is rendered',
       table: {
+        category: 'Actions',
         type: {
           summary: 'didRender(): void'
         }
@@ -138,11 +141,13 @@ const defaultArgs = {
   itemLabel: 'superhero',
   searchEnabled: true,
   searchPlaceholder: 'My Placeholder...',
-  onSearch: action('onSearch'),
-  onSelect: action('onSelect'),
   loading: false,
   loadingMore: false,
-  inline: false
+  inline: false,
+  onSelect: action('onSelect'),
+  onSearch: action('onSearch'),
+  onBottomReached: action('onBottomReached'),
+  didRender: action('didRender')
 };
 
 const Template = (args) => ({
@@ -150,7 +155,8 @@ const Template = (args) => ({
       <OSS::InfiniteSelect
         @items={{this.items}} @itemLabel={{this.itemLabel}} @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}}
         @searchPlaceholder={{this.searchPlaceholder}} @onSelect={{this.onSelect}} @loading={{this.loading}}
-        @loadingMore={{this.loadingMore}} @inline={{this.inline}} class="upf-align--absolute-center"/>
+        @loadingMore={{this.loadingMore}} @inline={{this.inline}} @onBottomReached={{this.onBottomReached}} 
+        @didRender={{this.didRender}} class="upf-align--absolute-center"/>
   `,
   context: args
 });
@@ -158,8 +164,10 @@ const Template = (args) => ({
 const OptionBlockTemplate = (args) => ({
   template: hbs`
     <OSS::InfiniteSelect
-      @items={{this.items}} @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}} @onSelect={{this.onSelect}}
-      @searchPlaceholder={{this.searchPlaceholder}} class="upf-align--absolute-center">
+      @items={{this.items}} @itemLabel={{this.itemLabel}} @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}}
+        @searchPlaceholder={{this.searchPlaceholder}} @onSelect={{this.onSelect}} @loading={{this.loading}}
+        @loadingMore={{this.loadingMore}} @inline={{this.inline}} @onBottomReached={{this.onBottomReached}} 
+        @didRender={{this.didRender}} class="upf-align--absolute-center">
       <:option as |opt|>
         {{opt.superhero}} (Alias: {{opt.characters}})
       </:option>

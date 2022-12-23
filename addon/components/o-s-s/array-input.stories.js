@@ -9,7 +9,7 @@ export default {
       description: 'An array of values which will be displayed as deletable items',
       table: {
         type: {
-          summary: 'array'
+          summary: 'string[]'
         },
         defaultValue: { summary: '[]' }
       },
@@ -19,28 +19,28 @@ export default {
       description: 'The placeholder to show when the input is empty',
       table: {
         type: {
-          summary: 'text'
+          summary: 'string'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: undefined }
       },
       control: { type: 'text' }
     },
     onChange: {
-      type: { required: false },
       description:
         'A callback that sends the new array to the parent component when the input is changed (adding or removing items)',
       table: {
+        category: 'Actions',
         type: {
           summary: 'onChange(values: string[]): void'
         }
       }
     },
     validator: {
-      type: { required: false },
       description:
         'The method that validates the current content of the input. If the result is true, then on enter, the input is added to the values array.',
       table: {
         type: {
+          category: 'Actions',
           summary: 'validator?(value: string): boolean'
         }
       }
@@ -66,7 +66,7 @@ const DefaultUsageTemplate = (args) => ({
 export const BasicUsage = DefaultUsageTemplate.bind({});
 BasicUsage.args = {
   values: ['Iron Man', 'Thor', 'Loki', 'Hulk'],
+  placeholder: 'Enter a super hero name',
   onChange: action('onChange'),
-  validator: action('validator'),
-  placeholder: 'Enter a super hero name'
+  validator: action('validator')
 };

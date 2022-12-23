@@ -13,7 +13,7 @@ export default {
         type: {
           summary: SkinTypes.join('|')
         },
-        defaultValue: { summary: 'primary' }
+        defaultValue: { summary: 'default' }
       },
       options: SkinTypes,
       control: { type: 'select' }
@@ -29,11 +29,6 @@ export default {
       control: {
         type: 'text'
       }
-    },
-
-    onRemove: {
-      type: { required: true },
-      description: 'A callback triggered when the cross icon has been clicked.'
     },
 
     disabled: {
@@ -57,6 +52,15 @@ export default {
       control: {
         type: 'number'
       }
+    },
+
+    onRemove: {
+      type: { required: true },
+      description: 'A callback triggered when the cross icon has been clicked.',
+      table: {
+        category: 'Actions',
+        type: { summary: 'onRemove(): void' }
+      }
     }
   }
 };
@@ -64,9 +68,9 @@ export default {
 const defaultArgs = {
   skin: 'default',
   label: 'Label',
-  onRemove: action('onRemove'),
   disabled: false,
-  maxDisplayWidth: 0
+  maxDisplayWidth: 0,
+  onRemove: action('onRemove')
 };
 
 const Template = (args) => ({

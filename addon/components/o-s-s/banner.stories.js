@@ -10,7 +10,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
@@ -20,7 +20,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
@@ -34,8 +34,18 @@ export default {
       },
       control: { type: 'text' }
     },
+    image: {
+      description: 'Image URL that will be displayed in a round badge',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'text' }
+    },
     plain: {
-      description: 'Display the plain version of the banner, if true will show in bg-color-grey',
+      description: 'Display the plain version of the banner, if true will show in background-color-gray-50',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' }
@@ -68,31 +78,50 @@ const defaultArgs = {
   title: 'Content of the Title',
   subtitle: 'Content of the Subtitle',
   icon: undefined,
+  image: undefined,
   plain: false,
   selected: false
 };
 
-const BasicUsageTemplate = (args) => ({
+const Template = (args) => ({
   template: hbs`
       <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
-                   @selected={{this.selected}} />
+                   @image={{this.image}} @selected={{this.selected}} />
   `,
   context: args
 });
-export const UsageWithIcon = BasicUsageTemplate.bind({});
+
+const CustomIconTemplate = (args) => ({
+  template: hbs`
+      <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
+                   @image={{this.image}} @selected={{this.selected}}>
+        <:custom-icon>
+          <OSS::Badge @icon="fas fa-check" />
+        </:custom-icon>
+      </OSS::Banner>
+  `,
+  context: args
+});
+
+const ActionTemplate = (args) => ({
+  template: hbs`
+      <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
+                   @image={{this.image}} @selected={{this.selected}}>
+        <:actions>
+          <OSS::Button @label="Click me" />
+        </:actions>
+      </OSS::Banner>
+  `,
+  context: args
+});
+
+export const UsageWithIcon = Template.bind({});
 UsageWithIcon.args = {
   ...defaultArgs,
   ...{ icon: 'fas fa-info-circle' }
 };
 
-const BasicUsageImageTemplate = (args) => ({
-  template: hbs`
-      <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @image={{this.image}} @plain={{this.plain}}
-                   @selected={{this.selected}} />
-  `,
-  context: args
-});
-export const UsageWithImage = BasicUsageImageTemplate.bind({});
+export const UsageWithImage = Template.bind({});
 UsageWithImage.args = {
   ...defaultArgs,
   ...{
@@ -101,28 +130,8 @@ UsageWithImage.args = {
   }
 };
 
-const BasicUsageCustomIconTemplate = (args) => ({
-  template: hbs`
-      <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @plain={{this.plain}} @selected={{this.selected}}>
-        <:custom-icon>
-          <OSS::Badge @icon="fas fa-check" />
-        </:custom-icon>
-      </OSS::Banner>
-  `,
-  context: args
-});
-export const UsageWithCustomIcon = BasicUsageCustomIconTemplate.bind({});
+export const UsageWithCustomIcon = CustomIconTemplate.bind({});
 UsageWithCustomIcon.args = defaultArgs;
 
-const BasicUsageCTATemplate = (args) => ({
-  template: hbs`
-      <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @plain={{this.plain}} @selected={{this.selected}}>
-        <:actions>
-          <OSS::Button @label="Click me" />
-        </:actions>
-      </OSS::Banner>
-  `,
-  context: args
-});
-export const UsageWithActionsBlock = BasicUsageCTATemplate.bind({});
+export const UsageWithActionsBlock = ActionTemplate.bind({});
 UsageWithActionsBlock.args = defaultArgs;

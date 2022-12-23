@@ -28,7 +28,10 @@ export default {
     value: {
       description: 'The selected value',
       table: {
-        defaultValue: { summary: 'null' }
+        defaultValue: { summary: 'undefined' },
+        type: {
+          summary: 'any'
+        }
       }
     },
     targetLabel: {

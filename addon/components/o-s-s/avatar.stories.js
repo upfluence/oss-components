@@ -20,6 +20,9 @@ export default {
     image: {
       description: 'URL of an image',
       table: {
+        type: {
+          summary: 'string'
+        },
         defaultValue: { summary: 'undefined' }
       },
       control: {
@@ -29,6 +32,9 @@ export default {
     initials: {
       description: 'Initials to display inside the avatar component',
       table: {
+        type: {
+          summary: 'string'
+        },
         defaultValue: { summary: 'undefined' }
       },
       control: {
@@ -39,9 +45,9 @@ export default {
 };
 
 const defaultArgs = {
-  size: null,
-  image: null,
-  initials: null
+  size: 'md',
+  image: undefined,
+  initials: undefined
 };
 
 const Template = (args) => ({

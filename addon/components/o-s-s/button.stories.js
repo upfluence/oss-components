@@ -51,10 +51,11 @@ export default {
       description: 'Display loading state',
       table: {
         type: {
-          summary: 'true | false'
+          summary: 'boolean'
         },
         defaultValue: { summary: 'false' }
-      }
+      },
+      control: { type: 'boolean' }
     },
     label: {
       description: 'Text content of the button',
@@ -67,9 +68,9 @@ export default {
       }
     },
     icon: {
-      description: 'Font Awesome class, for example',
+      description: 'Font Awesome class, for example: far fa-envelope-open',
       table: {
-        type: { summary: 'far fa-envelope-open | fas fa-volume-up' },
+        type: { summary: 'string' },
         defaultValue: { summary: 'undefined' }
       },
       control: {
@@ -79,7 +80,7 @@ export default {
     square: {
       description: 'Displays the button as a square. Useful for icon buttons.',
       table: {
-        type: { summary: 'true | false' },
+        type: { summary: 'boolean' },
         defaultValue: { summary: 'false' }
       },
       control: {
@@ -99,13 +100,15 @@ export default {
     },
     countDown: {
       description:
-        "Definition of countDown object, it takes 2 keys : 'callback' (mandatory) - function to call at the end - and 'time' " +
-        "(optional) - time between execute callback -. Key 'time' is representing entire second in millisecond, for exemple 1000, 2000 or 5000",
+        'Definition of countDown object, it takes 3 keys:<br/>' +
+        "- 'callback' (mandatory): function to call at the end<br/>" +
+        "- 'time' (optional): time between execute callback. It is representing entire second in millisecond, for exemple 1000, 2000 or 5000<br/>" +
+        "- 'step' (optional): the step value, it should be in the same unit as the time",
       table: {
         type: {
-          summary: 'object'
+          summary: '{ callback: () => {}, time?: number, step?: number }'
         },
-        defaultValue: { summary: '{ callback: () => {}, time: 5000 }' }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'object' }
     }
@@ -121,7 +124,7 @@ export default {
 
 const defaultArgs = {
   skin: 'default',
-  size: null,
+  size: 'md',
   loading: false,
   label: 'Label',
   icon: 'far fa-envelope-open',
@@ -135,7 +138,7 @@ const Template = (args) => ({
     <div style="padding: 2em; {{if (eq this.theme 'dark') 'background-color: #060666'}}">
     <OSS::Button
       @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
-      @theme={{this.theme}} @square={{this.square}} @countDown={{this.countDown}} />
+      @theme={{this.theme}} @square={{this.square}} @countDown={{this.countDown}} @theme={{this.theme}} />
     </div>
   `,
   context: args
