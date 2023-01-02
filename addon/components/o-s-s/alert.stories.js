@@ -72,7 +72,8 @@ export default {
     docs: {
       description: {
         component: 'Used for displaying a title and a subtitle in layouts.'
-      }
+      },
+      iframeHeight: 120
     }
   }
 };
@@ -110,11 +111,7 @@ const ExtraContentTemplate = (args) => ({
 });
 
 export const BasicUsage = Template.bind({});
-BasicUsage.args = {
-  ...defaultArgs
-};
+BasicUsage.args = defaultArgs;
 
 export const UsageExtraContent = ExtraContentTemplate.bind({});
-UsageExtraContent.args = {
-  ...defaultArgs
-};
+UsageExtraContent.args = defaultArgs;

@@ -55,6 +55,4 @@ const Template = (args) => ({
 });
 
 export const Default = Template.bind({});
-Default.args = {
-  ...defaultArgs
-};
+Default.args = defaultArgs;

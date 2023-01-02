@@ -51,7 +51,8 @@ export default {
       description: {
         component:
           'A component for adding and removing items from an array in an input. It can be used for instance in a CC/BCC component.'
-      }
+      },
+      iframeHeight: 100
     }
   }
 };

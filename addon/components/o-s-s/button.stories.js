@@ -135,19 +135,15 @@ const defaultArgs = {
 
 const Template = (args) => ({
   template: hbs`
-    <div style="padding: 2em; {{if (eq this.theme 'dark') 'background-color: #060666'}}">
     <OSS::Button
       @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
       @theme={{this.theme}} @square={{this.square}} @countDown={{this.countDown}} @theme={{this.theme}} />
-    </div>
   `,
   context: args
 });
 
 export const Default = Template.bind({});
-Default.args = {
-  ...defaultArgs
-};
+Default.args = defaultArgs;
 
 export const WithCountDown = Template.bind({});
 WithCountDown.args = {

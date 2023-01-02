@@ -70,6 +70,4 @@ WithInitials.args = {
 };
 
 export const WithoutParam = Template.bind({});
-WithoutParam.args = {
-  ...defaultArgs
-};
+WithoutParam.args = defaultArgs;

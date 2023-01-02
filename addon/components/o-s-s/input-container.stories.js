@@ -106,9 +106,7 @@ const AdvancedWithNamedBlocksTemplate = (args) => ({
 });
 
 export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = {
-  ...defaultArgs
-};
+BasicUsage.args = defaultArgs;
 
 export const AdvancedWithNamedBlocks = AdvancedWithNamedBlocksTemplate.bind({});
 AdvancedWithNamedBlocks.args = {};

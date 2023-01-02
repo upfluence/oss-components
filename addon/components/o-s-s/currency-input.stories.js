@@ -58,7 +58,8 @@ export default {
     docs: {
       description: {
         component: 'A currency selector & input, used to set prices.'
-      }
+      },
+      iframeHeight: 200
     }
   }
 };
@@ -73,13 +74,13 @@ const defaultArgs = {
 
 const Template = (args) => ({
   template: hbs`
-      <OSS::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}}
-                          @onlyCurrency={{this.onlyCurrency}} @errorMessage={{this.errorMessage}} />
+      <div style="width:270px">
+        <OSS::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}}
+                            @onlyCurrency={{this.onlyCurrency}} @errorMessage={{this.errorMessage}} />
+      </div>
   `,
   context: args
 });
 
 export const BasicUsage = Template.bind({});
-BasicUsage.args = {
-  ...defaultArgs
-};
+BasicUsage.args = defaultArgs;

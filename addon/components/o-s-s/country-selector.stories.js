@@ -113,7 +113,8 @@ export default {
     docs: {
       description: {
         component: 'A Country Selector that displays a Country list with a search function.'
-      }
+      },
+      iframeHeight: 200
     }
   }
 };
@@ -125,7 +126,7 @@ const defaultArgs = {
 };
 
 const Template = (args) => ({
-  template: hbs`<div style="width: 400px">
+  template: hbs`<div style="width: 200px">
       <OSS::CountrySelector @sourceList={{this.sourceList}} @value={{this.value}} @onChange={{this.onChange}} />
     </div>
   `,
@@ -133,9 +134,7 @@ const Template = (args) => ({
 });
 
 export const BasicUsage = Template.bind({});
-BasicUsage.args = {
-  ...defaultArgs
-};
+BasicUsage.args = defaultArgs;
 
 export const ProvinceUsage = Template.bind({});
 ProvinceUsage.args = {

@@ -28,9 +28,9 @@ export default {
       }
     },
     icon: {
-      description: 'Font Awesome class, for example',
+      description: 'Font Awesome class, for example: far fa-envelope-open',
       table: {
-        type: { summary: 'far fa-envelope-open | fas fa-volume-up' },
+        type: { summary: 'string' },
         defaultValue: { summary: 'undefined' }
       },
       control: {
@@ -51,7 +51,7 @@ export default {
 };
 
 const defaultArgs = {
-  skin: 'default',
+  skin: 'primary',
   label: 'Label',
   icon: 'far fa-thumbs-up',
   hasEllipsis: false
@@ -65,6 +65,4 @@ const Template = (args) => ({
 });
 
 export const Default = Template.bind({});
-Default.args = {
-  ...defaultArgs
-};
+Default.args = defaultArgs;

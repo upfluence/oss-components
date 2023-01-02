@@ -131,7 +131,8 @@ export default {
     docs: {
       description: {
         component: 'A configurable select component which features a search function and an infinite loader.'
-      }
+      },
+      iframeHeight: 275
     }
   }
 };
@@ -177,14 +178,10 @@ const OptionBlockTemplate = (args) => ({
 });
 
 export const Default = Template.bind({});
-Default.args = {
-  ...defaultArgs
-};
+Default.args = defaultArgs;
 
 export const WithOptionBlock = OptionBlockTemplate.bind({});
-WithOptionBlock.args = {
-  ...defaultArgs
-};
+WithOptionBlock.args = defaultArgs;
 
 export const EmptyState = Template.bind({});
 EmptyState.args = {

@@ -103,7 +103,8 @@ export default {
     docs: {
       description: {
         component: 'Used for selecting multiple items of a list, based on a pre-filled dropdown menu.'
-      }
+      },
+      iframeHeight: 200
     }
   }
 };

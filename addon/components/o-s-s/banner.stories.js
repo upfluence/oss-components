@@ -69,7 +69,8 @@ export default {
     docs: {
       description: {
         component: 'A configurable Banner component. Can display a badge or an image, a title and a subtitle.'
-      }
+      },
+      iframeHeight: 120
     }
   }
 };

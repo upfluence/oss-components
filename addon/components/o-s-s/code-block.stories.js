@@ -90,14 +90,11 @@ interface OSSCodeBlockArgs {
 
 const BasicUsageTemplate = (args) => ({
   template: hbs`
-      <OSS::CodeBlock @content={{this.content}} @copyable={{this.copyable}}
-                      @scrollable={{this.scrollable}} @collapseHeight={{this.collapseHeight}}
-                      @onCopyMessage={{this.onCopyMessage}} />
+      <OSS::CodeBlock @content={{this.content}} @copyable={{this.copyable}} @scrollable={{this.scrollable}}
+                      @collapseHeight={{this.collapseHeight}} @onCopyMessage={{this.onCopyMessage}} />
   `,
   context: args
 });
 
 export const UsageWithIcon = BasicUsageTemplate.bind({});
-UsageWithIcon.args = {
-  ...defaultArgs
-};
+UsageWithIcon.args = defaultArgs;

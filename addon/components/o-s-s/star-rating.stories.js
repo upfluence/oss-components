@@ -20,22 +20,24 @@ export default {
   component: 'star-rating',
   argTypes: {
     rating: {
+      type: { required: true },
       description: 'Number of active stars to display',
       table: {
         type: {
           summary: 'number'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'number' }
     },
     totalStars: {
+      type: { required: true },
       description: 'Total Amount of stars to display',
       table: {
         type: {
           summary: 'number'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'number' }
     },
@@ -45,7 +47,7 @@ export default {
         type: {
           summary: STAR_COLORS.join('|')
         },
-        defaultValue: { summary: null }
+        defaultValue: { summary: 'yellow' }
       },
       options: STAR_COLORS,
       control: { type: 'select' }
@@ -56,7 +58,7 @@ export default {
         type: {
           summary: STAR_COLORS.join('|')
         },
-        defaultValue: { summary: null }
+        defaultValue: { summary: 'grey' }
       },
       options: STAR_COLORS,
       control: { type: 'select' }
@@ -71,6 +73,13 @@ export default {
   }
 };
 
+const defaultArgs = {
+  rating: 3,
+  totalStars: 5,
+  activeColor: 'yellow',
+  passiveColor: 'grey'
+};
+
 const BasicUsageTemplate = (args) => ({
   template: hbs`
       <OSS::StarRating @rating={{this.rating}}
@@ -80,10 +89,6 @@ const BasicUsageTemplate = (args) => ({
   `,
   context: args
 });
+
 export const Usage = BasicUsageTemplate.bind({});
-Usage.args = {
-  rating: 3,
-  totalStars: 5,
-  activeColor: 'yellow',
-  passiveColor: 'grey'
-};
+Usage.args = defaultArgs;

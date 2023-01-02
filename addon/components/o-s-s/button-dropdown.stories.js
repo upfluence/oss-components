@@ -29,7 +29,8 @@ export default {
     docs: {
       description: {
         component: 'A button that provides multiple actions in dropdown menu.'
-      }
+      },
+      iframeHeight: 120
     }
   }
 };
@@ -41,18 +42,16 @@ const defaultArgs = {
 
 const Template = (args) => ({
   template: hbs`
-    <div class="background-color-white padding-px-36">
-      <OSS::ButtonDropdown @icon={{this.icon}} @label={{this.label}}>
-        <:items>
-          <div class="oss-button-dropdown__item">
-            <i class="fas fa-share"></i> Share
-          </div>
-        </:items>
-      </OSS::ButtonDropdown>
-    </div>
+    <OSS::ButtonDropdown @icon={{this.icon}} @label={{this.label}}>
+      <:items>
+        <div class="oss-button-dropdown__item">
+          <i class="fas fa-share"></i> Share
+        </div>
+      </:items>
+    </OSS::ButtonDropdown>
   `,
   context: args
 });
 
 export const Usage = Template.bind({});
-Usage.args = { ...defaultArgs };
+Usage.args = defaultArgs;

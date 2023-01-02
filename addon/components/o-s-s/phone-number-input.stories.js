@@ -69,4 +69,4 @@ const DefaultUsageTemplate = (args) => ({
 });
 
 export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = { ...defaultArgs };
+BasicUsage.args = defaultArgs;

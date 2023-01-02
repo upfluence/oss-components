@@ -83,6 +83,4 @@ const BasicUsageTemplate = (args) => ({
 });
 
 export const Usage = BasicUsageTemplate.bind({});
-Usage.args = {
-  ...defaultArgs
-};
+Usage.args = defaultArgs;

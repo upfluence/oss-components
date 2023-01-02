@@ -44,7 +44,8 @@ export default {
     docs: {
       description: {
         component: 'A configurable modal component.'
-      }
+      },
+      iframeHeight: 230
     }
   }
 };
@@ -68,9 +69,7 @@ const Template = (args) => ({
   template: hbs`
     <OSS::Modal @title={{this.title}} @onClose={{this.onClose}} @options={{this.options}}>
       <div class="modal-body">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
       </div>
 
       <div class="modal-footer">
@@ -82,9 +81,7 @@ const Template = (args) => ({
 });
 
 export const Default = Template.bind({});
-Default.args = {
-  ...defaultArgs
-};
+Default.args = defaultArgs;
 
 export const Centered = Template.bind({});
 Centered.args = {
