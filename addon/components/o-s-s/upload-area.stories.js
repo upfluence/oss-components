@@ -11,7 +11,7 @@ export default {
   argTypes: {
     uploader: {
       type: { required: true },
-      description: 'The uploader instance. The uploader can extends BaseUploader class in service/base-uploader.ts',
+      description: 'The uploader instance. The uploader can extend BaseUploader class in service/base-uploader.ts',
       table: {
         type: {
           summary: 'BaseUploader'
@@ -21,7 +21,7 @@ export default {
       control: { type: null }
     },
     subtitle: {
-      description: 'The subtitle value.',
+      description: 'The subtitle value',
       table: {
         type: {
           summary: 'string'
@@ -42,7 +42,7 @@ export default {
     },
     privacy: {
       description:
-        'The privacy value of uploaded file. If the value is public, it can be visible by everyone.Else it can be visible by logged use',
+        'The privacy value of uploaded file. If the value is public, it will be visible by everyone, otherwise it will only be visible by logged-in users',
       table: {
         type: {
           summary: PrivacyTypes.join('|')
@@ -94,7 +94,7 @@ export default {
       control: { type: 'select' }
     },
     multiple: {
-      description: 'If true, can support multiple upload files',
+      description: 'If true, can support multiple uploads',
       table: {
         type: {
           summary: 'boolean'
@@ -105,7 +105,7 @@ export default {
     },
     onUploadSuccess: {
       description:
-        'Action call when the file is upload with success. This action has two definitions:<br>' +
+        'Action called when the file is upload with success. This action has two definitions:<br>' +
         '- onUploadSuccess(artifact: FileArtifact): void (single mode)<br>' +
         '- onUploadSuccess(index: number, artifact: FileArtifact): void (multiple mode)',
       table: {
@@ -117,7 +117,7 @@ export default {
     },
     onFileDeletion: {
       description:
-        'Action call when the artifact is deleted. This action has two definitions:<br>' +
+        'Action called when the artifact is deleted. This action has two definitions:<br>' +
         '- onFileDeletion(): void (single mode)<br>' +
         '- onFileDeletion(index: number): void (multiple mode)',
       table: {

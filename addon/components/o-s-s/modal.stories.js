@@ -31,7 +31,7 @@ export default {
       }
     },
     onClose: {
-      description: 'A callback that sends when clicking on closing button',
+      description: 'A callback triggered when the close button is clicked',
       table: {
         category: 'Actions',
         type: {
@@ -43,7 +43,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A configurable modal component.'
+        component: '[DEPRECATED] A configurable modal component. Use OSS::ModalDialog component instead.'
       },
       iframeHeight: 230
     }

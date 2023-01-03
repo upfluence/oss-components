@@ -39,7 +39,7 @@ export default {
     },
     onChange: {
       type: { required: true },
-      description: 'The action trigger when the checkbox change status',
+      description: 'The action triggered when the checkbox status is changed',
       table: {
         category: 'Actions',
         type: { summary: 'onChange(value: boolean): void' }

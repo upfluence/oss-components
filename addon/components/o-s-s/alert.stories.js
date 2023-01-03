@@ -24,7 +24,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: undefined }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },

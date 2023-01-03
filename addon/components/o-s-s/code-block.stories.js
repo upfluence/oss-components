@@ -11,7 +11,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: '' }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
@@ -43,7 +43,7 @@ export default {
         type: {
           summary: 'number'
         },
-        defaultValue: { summary: undefined }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'number' }
     },
@@ -54,7 +54,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: undefined }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     }

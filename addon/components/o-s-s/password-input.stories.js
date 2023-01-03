@@ -46,7 +46,7 @@ export default {
       control: { type: 'boolean' }
     },
     validates: {
-      description: 'A callback that indicates wheter or not the current input matches the regex',
+      description: 'A callback that indicates whether or not the current input matches the regex',
       table: {
         category: 'Actions',
         type: {

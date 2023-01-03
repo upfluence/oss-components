@@ -10,7 +10,7 @@ export default {
   argTypes: {
     uploader: {
       type: { required: true },
-      description: 'The uploader instance. The uploader can extends BaseUploader class in service/base-uploader.ts',
+      description: 'The uploader instance. The uploader can extend BaseUploader class in service/base-uploader.ts',
       table: {
         type: {
           summary: 'BaseUploader'
@@ -42,7 +42,7 @@ export default {
     },
     privacy: {
       description:
-        'The privacy value of uploaded file. If the value is public, it can be visible by everyone.Else it can be visible by logged use',
+        'The privacy value of uploaded file. If the value is public, it will be visible by everyone, otherwise it will only be visible by logged-in users',
       table: {
         type: {
           summary: PrivacyTypes.join('|')
