@@ -4,41 +4,76 @@ import { action } from '@storybook/addon-actions';
 export default {
   title: 'Components/OSS::Modal',
   component: 'modal',
-  args: {
-    title: 'Modal Title'
-  },
   argTypes: {
     title: {
-      control: 'text'
+      description: 'The title in the header of the modal',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'text' }
     },
-    options: {}
+    options: {
+      description:
+        'The options available:<br>' +
+        '- centered: boolean<br>' +
+        '- modalClass: string<br>' +
+        '- header: boolean<br>' +
+        '- borderlessHeader: boolean<br>' +
+        '- tabindex: number',
+      table: {
+        type: {
+          summary: 'object'
+        },
+        control: { type: 'object' }
+      }
+    },
+    onClose: {
+      description: 'A callback triggered when the close button is clicked',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'onClose():void'
+        }
+      }
+    }
   },
   parameters: {
     docs: {
       description: {
-        component: 'A configurable modal component.'
-      }
+        component: '[DEPRECATED] A configurable modal component. Use OSS::ModalDialog component instead.'
+      },
+      iframeHeight: 230
     }
   }
 };
 
+const defaultOptions = {
+  centered: false,
+  container: null,
+  modalClass: null,
+  header: true,
+  borderlessHeader: false,
+  tabindex: -1
+};
+
 const defaultArgs = {
   title: 'Hello',
-  onClose: action('onModalClose'),
-  callToAction: action('onCallToActionClick')
+  options: defaultOptions,
+  onClose: action('onModalClose')
 };
 
 const Template = (args) => ({
   template: hbs`
-    <OSS::Modal @title={{title}} @onClose={{this.onClose}} @options={{this.options}}>
+    <OSS::Modal @title={{this.title}} @onClose={{this.onClose}} @options={{this.options}}>
       <div class="modal-body">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat.
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.
       </div>
 
       <div class="modal-footer">
-        <OSS::Button @skin="primary" @label="Action button" {{on "click" this.callToAction}} />
+        <OSS::Button @skin="primary" @label="Action button" /> 
       </div>
     </OSS::Modal>
   `,
@@ -46,30 +81,31 @@ const Template = (args) => ({
 });
 
 export const Default = Template.bind({});
-Default.args = {
-  ...defaultArgs
-};
+Default.args = defaultArgs;
 
 export const Centered = Template.bind({});
 Centered.args = {
+  ...defaultArgs,
   options: {
-    centered: true
-  },
-  ...defaultArgs
+    ...defaultOptions,
+    ...{ centered: true }
+  }
 };
 
 export const BorderelessHeader = Template.bind({});
 BorderelessHeader.args = {
+  ...defaultArgs,
   options: {
-    borderlessHeader: true
-  },
-  ...defaultArgs
+    ...defaultOptions,
+    ...{ borderlessHeader: true }
+  }
 };
 
 export const NoHeader = Template.bind({});
 NoHeader.args = {
+  ...defaultArgs,
   options: {
-    header: false
-  },
-  ...defaultArgs
+    ...defaultOptions,
+    ...{ header: false }
+  }
 };

@@ -11,7 +11,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: undefined }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
@@ -31,7 +31,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: undefined }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
@@ -41,19 +41,9 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
-    },
-    onChange: {
-      type: { name: 'Method' },
-      description: 'Method called every time the input is updated',
-      table: {
-        type: {
-          summary: 'onChange(value: string): void'
-        }
-      },
-      control: { type: null }
     },
     prefix: {
       description: 'The prefix label added to the input-group',
@@ -61,7 +51,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: undefined }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
@@ -71,9 +61,19 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: undefined }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
+    },
+    onChange: {
+      description: 'Method called every time the input is updated',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'onChange(value: string): void'
+        }
+      },
+      control: { type: null }
     }
   },
   parameters: {
@@ -86,18 +86,22 @@ export default {
   }
 };
 
-const DefaultUsageTemplate = (args) => ({
+const defaultArgs = {
+  value: 'John',
+  disabled: false,
+  prefix: 'email',
+  suffix: '@domain.com',
+  errorMessage: undefined,
+  placeholder: 'My placeholder',
+  onChange: action('onChange')
+};
+
+const Template = (args) => ({
   template: hbs`
-      <OSS::InputGroup @prefix={{this.prefix}} @suffix={{this.suffix}} @value={{this.value}}
-                       @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} />
+      <OSS::InputGroup @prefix={{this.prefix}} @disabled={{this.disabled}} @suffix={{this.suffix}} @value={{this.value}}
+                       @errorMessage={{this.errorMessage}} @placeholder={{this.placeholder}} @onChange={{this.onChange}} />
   `,
   context: args
 });
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = {
-  value: 'John',
-  prefix: 'email',
-  suffix: '@domain.com',
-  errorMessage: '',
-  onChange: action('')
-};
+export const BasicUsage = Template.bind({});
+BasicUsage.args = defaultArgs;

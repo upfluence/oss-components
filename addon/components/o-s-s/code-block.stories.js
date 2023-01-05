@@ -5,12 +5,13 @@ export default {
   component: 'code-block',
   argTypes: {
     content: {
+      type: { required: true },
       description: 'Parameter to pass a code snippet',
       table: {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
@@ -42,7 +43,7 @@ export default {
         type: {
           summary: 'number'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'number' }
     },
@@ -53,7 +54,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     }
@@ -67,16 +68,7 @@ export default {
   }
 };
 
-const BasicUsageTemplate = (args) => ({
-  template: hbs`
-      <OSS::CodeBlock @content={{this.content}} @copyable={{this.copyable}}
-                      @scrollable={{this.scrollable}} @collapseHeight={{this.collapseHeight}}
-                      @onCopyMessage={{this.onCopyMessage}} />
-  `,
-  context: args
-});
-export const UsageWithIcon = BasicUsageTemplate.bind({});
-UsageWithIcon.args = {
+const defaultArgs = {
   content: `import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
@@ -95,3 +87,14 @@ interface OSSCodeBlockArgs {
   collapseHeight: 130,
   onCopyMessage: 'Copied to clipboard!'
 };
+
+const BasicUsageTemplate = (args) => ({
+  template: hbs`
+      <OSS::CodeBlock @content={{this.content}} @copyable={{this.copyable}} @scrollable={{this.scrollable}}
+                      @collapseHeight={{this.collapseHeight}} @onCopyMessage={{this.onCopyMessage}} />
+  `,
+  context: args
+});
+
+export const UsageWithIcon = BasicUsageTemplate.bind({});
+UsageWithIcon.args = defaultArgs;

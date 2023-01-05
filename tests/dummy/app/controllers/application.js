@@ -6,7 +6,7 @@ import { tracked } from '@glimmer/tracking';
 import { countries } from '@upfluence/oss-components/utils/country-codes';
 import BaseUploader from '@upfluence/oss-components/services/base-uploader';
 
-class MockUploader extends BaseUploader {
+export class MockUploader extends BaseUploader {
   mode = 'success';
 
   upload(request, validationRules = []) {
@@ -118,7 +118,7 @@ export default class ApplicationController extends Controller {
   }
 
   @action
-  handleNumberInput(newValue: number) {
+  handleNumberInput(newValue) {
     console.log('new value = ' + newValue);
     this.numberValue = newValue;
   }

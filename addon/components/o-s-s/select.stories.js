@@ -28,8 +28,12 @@ export default {
     value: {
       description: 'The selected value',
       table: {
-        defaultValue: { summary: 'null' }
-      }
+        defaultValue: { summary: 'undefined' },
+        type: {
+          summary: 'object'
+        }
+      },
+      control: { type: 'object' }
     },
     targetLabel: {
       description: 'The attribute to use to display the selected value',
@@ -67,7 +71,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: '' }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
@@ -77,7 +81,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: '' }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
@@ -85,6 +89,7 @@ export default {
       type: { required: true },
       description: 'Function to be called with the clicked item',
       table: {
+        category: 'Actions',
         type: {
           summary: 'onChange(item): void'
         }
@@ -93,6 +98,7 @@ export default {
     onSearch: {
       description: 'Function to be called every time the user searches',
       table: {
+        category: 'Actions',
         type: {
           summary: 'onSearch(keyword: string): void'
         }
@@ -103,7 +109,8 @@ export default {
     docs: {
       description: {
         component: 'An OSS version of the HTML Select component.'
-      }
+      },
+      iframeHeight: 250
     }
   }
 };
@@ -112,17 +119,17 @@ const defaultArgs = {
   items: FAKE_DATA,
   value: FAKE_DATA[0],
   targetLabel: 'name',
-  placeholder: null,
+  placeholder: undefined,
   disabled: false,
-  errorMessage: '',
-  successMessage: '',
+  errorMessage: undefined,
+  successMessage: undefined,
   onSearch: action('onSearch'),
   onChange: action('onChange')
 };
 
 const Template = (args) => ({
   template: hbs`
-  <div style="width: 400px">
+  <div style="width: 250px">
     <OSS::Select
       @items={{this.items}} @value={{this.value}} @targetLabel={{this.targetLabel}} @placeholder={{this.placeholder}}
       @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} @successMessage={{this.successMessage}}
@@ -138,7 +145,7 @@ const Template = (args) => ({
 
 const WithSelectedNamedBlockTemplate = (args) => ({
   template: hbs`
-  <div style="width: 400px">
+  <div style="width: 250px">
     <OSS::Select
       @items={{this.items}} @value={{this.value}} @placeholder={{this.placeholder}}
       @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} @successMessage={{this.successMessage}}
@@ -154,10 +161,9 @@ const WithSelectedNamedBlockTemplate = (args) => ({
   `,
   context: args
 });
-export const WithSelectedNamedBlock = WithSelectedNamedBlockTemplate.bind({});
-WithSelectedNamedBlock.args = defaultArgs;
 
 export const Default = Template.bind({});
-Default.args = {
-  ...defaultArgs
-};
+Default.args = defaultArgs;
+
+export const WithSelectedNamedBlock = WithSelectedNamedBlockTemplate.bind({});
+WithSelectedNamedBlock.args = defaultArgs;

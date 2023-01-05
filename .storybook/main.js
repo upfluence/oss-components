@@ -2,6 +2,8 @@
 const path = require('path');
 const root = path.join(__dirname, '../');
 const node_modules = path.join(root, 'node_modules');
+const addon_path = path.join(root, 'addon');
+const dummy_path = path.join(root, 'tests/dummy/app');
 const namedBlockPolyfill = require('ember-named-blocks-polyfill/lib/named-blocks-polyfill-plugin');
 
 module.exports = {
@@ -41,7 +43,9 @@ module.exports = {
     });
 
     config.resolve.alias = Object.assign(config.resolve.alias, {
-      'bootstrap.less': path.resolve(node_modules, 'bootstrap/less/bootstrap')
+      'bootstrap.less': path.resolve(node_modules, 'bootstrap/less/bootstrap'),
+      '@upfluence/oss-components': path.resolve(addon_path),
+      dummy: path.resolve(dummy_path)
     });
 
     return config;

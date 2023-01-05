@@ -7,13 +7,25 @@ export default {
   argTypes: {
     onSelection: {
       type: { required: true },
-      description: 'A callback triggered when the tab has been clicked.'
+      description: 'A callback triggered when the tab has been clicked.',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'onSelection(selectedTab: TabDefinition): void'
+        }
+      }
     },
 
     tabArray: {
       type: { required: true },
       description:
-        'Array of TabDefinition which has the following parameters: <br/> -icon?: string; <br/> -label?: string; <br/> -infoCircle?: boolean; <br/> -notificationDot?: boolean; <br/> -selected: boolean; <br/> -disabled: boolean; <br/> @label or @icon is mandatory for each element of tabArray'
+        'Array of TabDefinition which has the following parameters: <br/> -icon?: string; <br/> -label?: string; <br/> -infoCircle?: boolean; <br/> -notificationDot?: boolean; <br/> -selected: boolean; <br/> -disabled: boolean; <br/> @label or @icon is mandatory for each element of tabArray',
+      table: {
+        type: {
+          summary: 'TabDefinition[]'
+        },
+        control: { type: 'array' }
+      }
     }
   }
 };
@@ -43,6 +55,4 @@ const Template = (args) => ({
 });
 
 export const Default = Template.bind({});
-Default.args = {
-  ...defaultArgs
-};
+Default.args = defaultArgs;

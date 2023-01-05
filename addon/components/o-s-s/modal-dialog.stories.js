@@ -1,6 +1,8 @@
 import hbs from 'htmlbars-inline-precompile';
 import { action } from '@storybook/addon-actions';
 
+const SizeTypes = ['sm', 'md'];
+
 export default {
   title: 'Components/OSS::ModalDialog',
   component: 'modal-dialog',
@@ -11,12 +13,9 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
-    },
-    close: {
-      description: 'The callback that closes the modal-dialog'
     },
     subtitle: {
       description: '[OPTIONAL] The modal dialog subtitle',
@@ -24,7 +23,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
@@ -34,9 +33,19 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'sm' }
       },
-      control: { type: 'string' }
+      options: SizeTypes,
+      control: { type: 'select' }
+    },
+    close: {
+      description: 'The callback that closes the modal-dialog',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'close(): void'
+        }
+      }
     }
   },
   parameters: {
@@ -51,9 +60,17 @@ export default {
   }
 };
 
+const defaultArgs = {
+  title: 'Modal Dialog',
+  subtitle: 'This is a subtitle',
+  size: 'sm',
+  close: action('close')
+};
+
 const BasicUsageTemplate = (args) => ({
   template: hbs`
-      <OSS::ModalDialog @title={{this.title}} @close={{this.close}} @subtitle={{this.subtitle}} @size={{this.size}}>
+      <OSS::ModalDialog @title={{this.title}} @close={{this.close}} @subtitle={{this.subtitle}} @size={{this.size}} 
+                        @close={{this.close}}>
         <:content>
           Content goes here
         </:content>
@@ -64,10 +81,6 @@ const BasicUsageTemplate = (args) => ({
   `,
   context: args
 });
+
 export const Usage = BasicUsageTemplate.bind({});
-Usage.args = {
-  title: 'Modal Dialog',
-  subtitle: 'This is a subtitle',
-  close: action('onModalClose'),
-  size: 'md'
-};
+Usage.args = defaultArgs;

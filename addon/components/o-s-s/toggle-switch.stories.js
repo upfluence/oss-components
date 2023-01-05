@@ -6,6 +6,7 @@ export default {
   component: 'toggle-switch',
   argTypes: {
     value: {
+      type: { required: true },
       description: 'The value applied to the input/switch',
       table: {
         type: {
@@ -14,10 +15,6 @@ export default {
         defaultValue: { summary: false }
       },
       control: { type: 'boolean' }
-    },
-    onChange: {
-      type: { required: true },
-      description: 'A callback that sends the modifications of the value & the currency back to the parent component'
     },
     disabled: {
       description: 'Disables the toggle switch',
@@ -28,6 +25,16 @@ export default {
         defaultValue: { summary: false }
       },
       control: { type: 'boolean' }
+    },
+    onChange: {
+      type: { required: true },
+      description: 'A callback that sends the modifications of the value & the currency back to the parent component',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'onClose(value): void'
+        }
+      }
     }
   },
   parameters: {
@@ -39,15 +46,17 @@ export default {
   }
 };
 
-const DefaultUsageTemplate = (args) => ({
-  template: hbs`
-      <OSS::ToggleSwitch @value={{this.value}} @onChange={{this.onChange}} />
-  `,
-  context: args
-});
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = {
-  value: true,
+const defaultArgs = {
+  value: false,
   disabled: false,
   onChange: action('onChange')
 };
+const DefaultUsageTemplate = (args) => ({
+  template: hbs`
+      <OSS::ToggleSwitch @value={{this.value}} @disabled={{this.disabled}} @onChange={{this.onChange}} />
+  `,
+  context: args
+});
+
+export const BasicUsage = DefaultUsageTemplate.bind({});
+BasicUsage.args = defaultArgs;

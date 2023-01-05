@@ -11,7 +11,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: undefined }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
@@ -31,7 +31,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: undefined }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
@@ -41,7 +41,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: 'string' }
+        defaultValue: { summary: '' }
       },
       control: { type: 'text' }
     },
@@ -49,6 +49,7 @@ export default {
       type: { name: 'Method' },
       description: 'Method called every time the input is updated',
       table: {
+        category: 'Actions',
         type: {
           summary: 'onChange(value: string, isValid: boolean): void'
         }
@@ -61,7 +62,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: undefined }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
@@ -71,7 +72,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: undefined }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
@@ -79,11 +80,11 @@ export default {
       description: 'A regex that will be used to validate the input',
       table: {
         type: {
-          summary: 'string'
+          summary: 'RegExp'
         },
-        defaultValue: { summary: undefined }
+        defaultValue: { summary: 'undefined' }
       },
-      control: { type: 'text' }
+      control: { type: null }
     }
   },
   parameters: {
@@ -96,6 +97,16 @@ export default {
   }
 };
 
+const defaultArgs = {
+  value: '',
+  prefix: 'https://',
+  suffix: '@shopify.com',
+  placeholder: 'subdomain',
+  disabled: false,
+  errorMessage: '',
+  validationRegex: /^[a-zA-Z0-9]+[a-zA-Z0-9-._]*[a-zA-Z0-9]+$/,
+  onChange: action('onChange')
+};
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
       <OSS::UrlInput @prefix={{this.prefix}} @suffix={{this.suffix}} @value={{this.value}}
@@ -105,14 +116,6 @@ const DefaultUsageTemplate = (args) => ({
   `,
   context: args
 });
+
 export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = {
-  value: '',
-  prefix: 'https://',
-  suffix: '@shopify.com',
-  placeholder: 'subdomain',
-  disbaled: 'false',
-  errorMessage: 'Not a valid subdomain',
-  validationRegex: /^[a-zA-Z0-9]+[a-zA-Z0-9-._]*[a-zA-Z0-9]+$/,
-  onChange: action('onChange')
-};
+BasicUsage.args = defaultArgs;

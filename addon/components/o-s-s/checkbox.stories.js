@@ -9,17 +9,17 @@ export default {
       description: 'Adjust the size of the checkbox',
       table: {
         type: {
-          summary: 'sm'
+          summary: 'string'
         },
-        defaultValue: { summary: '' }
+        defaultValue: { summary: 'undefined' }
       },
-      options: [null, 'sm'],
+      options: [undefined, 'sm'],
       control: { type: 'select' }
     },
     disabled: {
       description: 'Whether the checkbox is disabled or not',
       table: {
-        type: { summary: 'true | false' },
+        type: { summary: 'boolean' },
         defaultValue: { summary: 'false' }
       },
       control: {
@@ -27,13 +27,22 @@ export default {
       }
     },
     checked: {
+      type: { required: true },
       description: 'State of the checkbox',
       table: {
-        type: { summary: 'true | false' },
+        type: { summary: 'boolean' },
         defaultValue: { summary: 'false' }
       },
       control: {
         type: 'boolean'
+      }
+    },
+    onChange: {
+      type: { required: true },
+      description: 'The action triggered when the checkbox status is changed',
+      table: {
+        category: 'Actions',
+        type: { summary: 'onChange(value: boolean): void' }
       }
     }
   },
@@ -62,6 +71,4 @@ const Template = (args) => ({
 });
 
 export const Default = Template.bind({});
-Default.args = {
-  ...defaultArgs
-};
+Default.args = defaultArgs;

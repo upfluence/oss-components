@@ -35,7 +35,7 @@ export default {
         type: {
           summary: SkinTypes.join('|')
         },
-        defaultValue: { summary: null }
+        defaultValue: { summary: 'undefined' }
       },
       options: SkinTypes,
       control: { type: 'select' }
@@ -43,7 +43,7 @@ export default {
     plain: {
       description: 'Displays the badge with a plain background',
       table: {
-        type: { summary: 'true | false' },
+        type: { summary: 'boolean' },
         defaultValue: { summary: 'false' }
       },
       control: {
@@ -51,26 +51,28 @@ export default {
       }
     },
     icon: {
-      description: 'Font Awesome class, for example',
+      description: 'Font Awesome class, for example: far fa-envelope-open',
       table: {
-        type: { summary: 'far fa-envelope-open | fas fa-volume-up' },
+        type: { summary: 'string' },
         defaultValue: { summary: 'undefined' }
       },
-      control: false
+      control: { type: 'text' }
     },
     image: {
       description: 'URL of an image',
       table: {
+        type: { summary: 'string' },
         defaultValue: { summary: 'undefined' }
       },
-      control: false
+      control: { type: 'text' }
     },
     text: {
       description: 'Text to display inside the badge',
       table: {
+        type: { summary: 'string' },
         defaultValue: { summary: 'undefined' }
       },
-      control: false
+      control: { type: 'text' }
     }
   },
   parameters: {
@@ -83,19 +85,18 @@ export default {
 };
 
 const defaultArgs = {
-  size: null,
-  icon: null,
-  image: null,
-  text: null,
-  plain: null,
-  skin: null
+  size: 'md',
+  icon: undefined,
+  image: undefined,
+  text: undefined,
+  plain: false,
+  skin: undefined
 };
 
 const Template = (args) => ({
   template: hbs`
-    <OSS::Badge
-      @image={{this.image}} @icon={{this.icon}} @text={{this.text}} @size={{this.size}} @skin={{this.skin}}
-      @plain={{this.plain}} />
+    <OSS::Badge @image={{this.image}} @icon={{this.icon}} @text={{this.text}} @size={{this.size}} @skin={{this.skin}}
+                @plain={{this.plain}} />
   `,
   context: args
 });

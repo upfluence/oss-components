@@ -11,7 +11,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
@@ -31,7 +31,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
     },
@@ -46,7 +46,13 @@ export default {
       control: { type: 'boolean' }
     },
     validates: {
-      description: 'A callback that indicates wheter or not the current input matches the regex'
+      description: 'A callback that indicates whether or not the current input matches the regex',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'validates?(isPassing: boolean): void'
+        }
+      }
     }
   },
   parameters: {
@@ -58,17 +64,20 @@ export default {
   }
 };
 
+const defaultArgs = {
+  value: 'myPassword',
+  placeholder: '*****',
+  errorMessage: undefined,
+  validateFormat: true,
+  validates: action('validates')
+};
+
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
       <OSS::PasswordInput @value={{this.value}} @placeholder={{this.placeholder}} @validateFormat={{this.validateFormat}} @validates={{this.validates}} />
   `,
   context: args
 });
+
 export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = {
-  value: 'myPassword',
-  placeholder: '*****',
-  errorMessage: '',
-  validateFormat: false,
-  validates: action('validates')
-};
+BasicUsage.args = defaultArgs;

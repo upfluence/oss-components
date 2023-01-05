@@ -11,7 +11,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'USD' }
       },
       control: { type: 'text' }
     },
@@ -21,13 +21,9 @@ export default {
         type: {
           summary: 'number'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 0 }
       },
-      control: { type: 'text' }
-    },
-    onChange: {
-      type: { required: true },
-      description: 'A callback that sends the modifications of the value & the currency back to the parent component'
+      control: { type: 'number' }
     },
     onlyCurrency: {
       description: 'Display only the currency dropdown',
@@ -45,33 +41,46 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
+    },
+    onChange: {
+      type: { required: true },
+      description: 'A callback that sends the modifications of the value & the currency back to the parent component',
+      table: {
+        category: 'Actions',
+        type: { summary: 'onChange(currency: string, value: number): void' }
+      }
     }
   },
   parameters: {
     docs: {
       description: {
         component: 'A currency selector & input, used to set prices.'
-      }
+      },
+      iframeHeight: 200
     }
   }
 };
 
-const DefaultUsageTemplate = (args) => ({
+const defaultArgs = {
+  value: 42,
+  currency: 'USD',
+  onlyCurrency: false,
+  errorMessage: '',
+  onChange: action('onChange')
+};
+
+const Template = (args) => ({
   template: hbs`
-      <OSS::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}}
-                          @onlyCurrency={{this.onlyCurrency}} @errorMessage={{this.errorMessage}} />
+      <div style="width:270px">
+        <OSS::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}}
+                            @onlyCurrency={{this.onlyCurrency}} @errorMessage={{this.errorMessage}} />
+      </div>
   `,
   context: args
 });
-export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = {
-  that: this,
-  value: 42,
-  currency: 'USD',
-  onChange: action('onChange'),
-  onlyCurrency: false,
-  errorMessage: ''
-};
+
+export const BasicUsage = Template.bind({});
+BasicUsage.args = defaultArgs;
