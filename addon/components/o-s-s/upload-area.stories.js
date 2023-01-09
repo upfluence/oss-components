@@ -103,6 +103,15 @@ export default {
       },
       control: { type: 'boolean' }
     },
+    displayPreview: {
+      description: 'Wether or not the image should be displayed in the badge after a successful upload.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: false }
+      }
+    },
     onUploadSuccess: {
       description:
         'Action called when the file is upload with success. This action has two definitions:<br>' +

@@ -423,7 +423,8 @@
                      @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)" @onUploadSuccess={{this.onUploadSuccess}} />
 
     <OSS::UploadArea @uploader={{this.mockUploader}} @rules={{array (hash type="filesize" value="8MB")}}
-                     @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)" @onUploadSuccess={{this.onUploadSuccess}} />
+                     @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)" @onUploadSuccess={{this.onUploadSuccess}}
+                     @displayPreview={{true}} />
   </div>
 
   <div class="fx-col fx-gap-px-12">

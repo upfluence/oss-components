@@ -62,6 +62,15 @@ export default {
       },
       control: { type: 'text' }
     },
+    displayPreview: {
+      description: 'Wether or not the image should be displayed in the badge after a successful upload.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: false }
+      }
+    },
     onEdition: {
       description: 'Action triggers when the user click on the edition button',
       table: {
