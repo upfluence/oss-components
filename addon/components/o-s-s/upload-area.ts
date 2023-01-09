@@ -22,6 +22,7 @@ interface OSSUploadAreaArgs {
   artifact?: FileArtifact;
   size?: 'lg' | 'md';
   multiple?: boolean;
+  displayPreview?: boolean;
 
   onUploadSuccess(artifact: FileArtifact): void;
   onFileDeletion?(): void;

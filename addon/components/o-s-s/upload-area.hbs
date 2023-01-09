@@ -56,7 +56,8 @@
           @rules={{@rules}} @scope={{this.scope}} @privacy={{this.filePrivacy}}
           @onEdition={{fn this.onFileEdition index}}
           @onDeletion={{fn this.onFileDeletion index}}
-          @onUploadSuccess={{fn this.onUploadSuccess index}} />
+          @onUploadSuccess={{fn this.onUploadSuccess index}}
+          @displayPreview={{@displayPreview}} />
       {{/each}}
     </div>
   {{/if}}

@@ -1,5 +1,9 @@
 <div class="oss-upload-item {{if this.error 'oss-upload-item--errored'}}">
-  <OSS::Badge @icon={{this.icon}} />
+  {{#if this.shouldDisplayPreview}}
+    <OSS::Badge @image={{this.fileUrl}} />
+  {{else}}
+    <OSS::Badge @icon={{this.icon}} />
+  {{/if}}
 
   <div class="fx-row fx-1 fx-malign-space-between fx-xalign-center allow-text-overflow-on-children">
     <div class="fx-col fx-gap-px-3 allow-text-overflow-on-children">

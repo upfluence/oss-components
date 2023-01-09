@@ -17,6 +17,7 @@ interface OSSUploadItemArgs {
   rules: FileValidator[];
   privacy: FilePrivacy;
   scope: string;
+  displayPreview?: boolean;
   onEdition(): void;
   onDeletion(): void;
   onUploadSuccess(artifact: FileArtifact): void;
@@ -76,6 +77,14 @@ export default class OSSUploadItem extends Component<OSSUploadItemArgs> {
     return `
         background-image: conic-gradient(var(--color-primary-500) ${angle}deg, transparent ${angle + 0.5}deg 100%),
                           conic-gradient(var(--color-border-default) 360deg 100%);`;
+  }
+
+  get displayPreview(): boolean {
+    return this.args.displayPreview || false;
+  }
+
+  get shouldDisplayPreview(): boolean {
+    return this.displayPreview && Boolean(this.fileUrl) && this._extractFileTypeCategory() === 'image';
   }
 
   @action
