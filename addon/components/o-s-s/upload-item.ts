@@ -87,6 +87,10 @@ export default class OSSUploadItem extends Component<OSSUploadItemArgs> {
     return this.displayPreview && Boolean(this.fileUrl) && this._extractFileTypeCategory() === 'image';
   }
 
+  get dynamicBackgroundImage(): string {
+    return `background-image: url(${this.fileUrl}); background-position: center; background-size: cover;`;
+  }
+
   @action
   onUploadSuccess(artifact: FileArtifact): void {
     this.fileUrl = artifact.url;

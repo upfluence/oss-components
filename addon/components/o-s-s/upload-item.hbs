@@ -1,6 +1,7 @@
 <div class="oss-upload-item {{if this.error 'oss-upload-item--errored'}}">
   {{#if this.shouldDisplayPreview}}
-    <OSS::Badge @image={{this.fileUrl}} />
+    <div class="upf-badge upf-badge--shape-round upf-badge--size-md"
+         style={{this.dynamicBackgroundImage}}></div>
   {{else}}
     <OSS::Badge @icon={{this.icon}} />
   {{/if}}
