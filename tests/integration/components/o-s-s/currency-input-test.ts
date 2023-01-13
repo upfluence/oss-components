@@ -101,6 +101,15 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       this.set('currency', 'EUR');
       assert.dom('.currency-selector').hasText('€');
     });
+    test('the selection is disabled if @allowCurrencyUpdate is falsy', async function (assert) {
+      this.currency = 'USD';
+      await render(
+        hbs`<OSS::CurrencyInput @currency={{this.currency}} @value="" @onChange={{this.onChange}} @allowCurrencyUpdate={{false}} />`
+      );
+      assert.dom('.currency-selector .far.fa-chevron-down').doesNotExist();
+      await click('.currency-selector');
+      assert.dom('.upf-infinite-select').doesNotExist();
+    });
   });
 
   module('Currency Input', () => {
@@ -119,6 +128,11 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       await triggerKeyEvent('input', 'keydown', 'A', { code: 'a' });
       assert.dom('input').hasValue('08');
     });
+
+    test('Placeholder is correctly displayed when provided', async function(assert) {
+      await render(hbs`<OSS::CurrencyInput @currency="" @value="" @placeholder="foobar" @onChange={{this.onChange}} />`);
+      assert.dom('input').hasAttribute('placeholder', 'foobar');
+    })
   });
 
   module('Currency only mode', () => {

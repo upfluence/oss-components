@@ -131,6 +131,10 @@
                       @onChange={{this.onCurrencyInputChange}} @errorMessage="This is an error message" />
 </div>
 <div class="fx-row fx-1 margin-md">
+  <OSS::CurrencyInput @currency={{this.currency}} @value={{this.currencyValue}} @allowCurrencyUpdate={{false}}
+                      @onChange={{this.onCurrencyInputChange}} />
+</div>
+<div class="fx-row fx-1 margin-md">
   <OSS::CurrencyInput @currency={{this.currency}} @value={{this.currencyValue}}
                       @onChange={{this.onCurrencyInputChange}} />
 </div>
