@@ -10,15 +10,19 @@
           {{/if}}
         </div>
       </div>
-      {{#if this.currencySelectorShown}}
-        <i class="far fa-chevron-up margin-left-xxx-sm"></i>
-      {{else}}
-        <i class="far fa-chevron-down margin-left-xxx-sm"></i>
+
+      {{#if this.allowCurrencyUpdate}}
+        {{#if this.currencySelectorShown}}
+          <i class="far fa-chevron-up margin-left-xxx-sm"></i>
+        {{else}}
+          <i class="far fa-chevron-down margin-left-xxx-sm"></i>
+        {{/if}}
       {{/if}}
     </div>
     {{#unless @onlyCurrency}}
-      <Input class="fx-1" type="number" @value={{this.localValue}} {{on "keydown" this.onlyNumeric}}
-             min="0" autocomplete="off" {{on "keyup" this.notifyChanges}} />
+      <Input
+        class="fx-1" type="number" @value={{this.localValue}} min="0" autocomplete="off" placeholder={{this.placeholder}}
+        {{on "keydown" this.onlyNumeric}} {{on "keyup" this.notifyChanges}} />
     {{/unless}}
   </div>
   {{#if @errorMessage}}

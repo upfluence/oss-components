@@ -39,6 +39,26 @@ export default {
       },
       control: { type: 'boolean' }
     },
+    allowCurrencyUpdate: {
+      description: 'Allow to change the currency part of the input',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: true }
+      },
+      control: { type: 'boolean' }
+    },
+    placeholder: {
+      description: 'Placeholder for the number input when no value is passed',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: null }
+      },
+      control: { type: 'text' }
+    },
     errorMessage: {
       description: 'If provided, will display a red border and the error message below the input.',
       table: {

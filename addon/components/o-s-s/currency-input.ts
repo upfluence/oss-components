@@ -8,7 +8,9 @@ interface OSSCurrencyInputArgs {
   currency: string;
   value: number;
   onChange(currency: string, value: number): void;
+  allowCurrencyUpdate?: boolean;
   onlyCurrency?: boolean;
+  placeholder?: string;
   errorMessage?: string;
 }
 
@@ -18,15 +20,23 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
   private _currencies = usedCurrencies;
   @tracked currencySelectorShown: boolean = false;
   @tracked filteredCurrencies: Currency[] = this._currencies;
-  @tracked localValue: number = this.args.value || 0;
+  @tracked localValue: number = this.args.value;
 
   constructor(owner: unknown, args: OSSCurrencyInputArgs) {
     super(owner, args);
+
+    if (!this.args.value && !this.args.placeholder) {
+      this.localValue = 0;
+    }
 
     assert(
       '[component][OSS::CurrencyInput] The parameter @onChange of type function is mandatory',
       typeof this.args.onChange === 'function'
     );
+  }
+
+  get allowCurrencyUpdate(): boolean {
+    return typeof this.args.allowCurrencyUpdate === 'boolean' ? this.args.allowCurrencyUpdate : true;
   }
 
   get selectedCurrencySymbol(): string {
@@ -42,6 +52,10 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
       return this._currencies[0];
     }
     return this._currencies.find((currency: Currency) => currency.code === this.args.currency) || this._currencies[0];
+  }
+
+  get placeholder(): string {
+    return this.args.placeholder || '0';
   }
 
   @action
@@ -87,6 +101,8 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
   @action
   toggleCurrencySelector(e: any): void {
     e.stopPropagation();
+
+    if (!this.allowCurrencyUpdate) return;
     this.currencySelectorShown = !this.currencySelectorShown;
   }
 
