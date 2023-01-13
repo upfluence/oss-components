@@ -128,6 +128,11 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       await triggerKeyEvent('input', 'keydown', 'A', { code: 'a' });
       assert.dom('input').hasValue('08');
     });
+
+    test('Placeholder is correctly displayed when provided', async function(assert) {
+      await render(hbs`<OSS::CurrencyInput @currency="" @value="" @placeholder="foobar" @onChange={{this.onChange}} />`);
+      assert.dom('input').hasAttribute('placeholder', 'foobar');
+    })
   });
 
   module('Currency only mode', () => {

@@ -36,7 +36,7 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
   }
 
   get allowCurrencyUpdate(): boolean {
-    return typeof this.args.allowCurrencyUpdate === 'boolean' ? this.args.allowCurrencyUpdate : true;
+    return this.args.allowCurrencyUpdate ?? true;
   }
 
   get selectedCurrencySymbol(): string {
