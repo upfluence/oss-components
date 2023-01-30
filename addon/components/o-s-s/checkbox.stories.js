@@ -37,6 +37,16 @@ export default {
         type: 'boolean'
       }
     },
+    partial: {
+      description: 'Partial state of the checkbox',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
     onChange: {
       type: { required: true },
       description: 'The action triggered when the checkbox status is changed',
@@ -56,16 +66,17 @@ export default {
 };
 
 const defaultArgs = {
-  size: null,
-  disabled: false,
   checked: false,
+  partial: false,
+  disabled: false,
+  size: null,
   onChange: action('onSelect')
 };
 
 const Template = (args) => ({
   template: hbs`
     <OSS::Checkbox
-      @checked={{this.checked}} @disabled={{this.disabled}} @size={{this.size}} @onChange={{this.onChange}} />
+      @checked={{this.checked}} @partial={{this.partial}} @disabled={{this.disabled}} @size={{this.size}} @onChange={{this.onChange}} />
   `,
   context: args
 });

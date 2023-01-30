@@ -12,8 +12,9 @@ const SizeDefinition: SizeDefType = {
 
 interface OSSCheckboxArgs {
   checked: boolean;
-  disabled: boolean;
-  size: SizeType;
+  partial?: boolean;
+  disabled?: boolean;
+  size?: SizeType;
   onChange(value: boolean): void;
 }
 
@@ -38,6 +39,16 @@ export default class OSSCheckbox extends Component<OSSCheckboxArgs> {
 
     if (this.args.size && Object.keys(SizeDefinition).includes(this.args.size as SizeType)) {
       classes.push(SizeDefinition[this.args.size]);
+    }
+
+    return classes.join(' ');
+  }
+
+  get checkboxClasses(): string {
+    const classes = ['upf-checkbox__fake-checkbox'];
+
+    if (this.args.partial) {
+      classes.push('upf-checkbox__fake-checkbox--partial');
     }
 
     return classes.join(' ');
