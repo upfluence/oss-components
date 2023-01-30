@@ -44,7 +44,7 @@ export default class OSSCheckbox extends Component<OSSCheckboxArgs> {
     return classes.join(' ');
   }
 
-  get fakeCheckboxClasses(): string {
+  get checkboxClasses(): string {
     const classes = ['upf-checkbox__fake-checkbox'];
 
     if (this.args.partial) {
