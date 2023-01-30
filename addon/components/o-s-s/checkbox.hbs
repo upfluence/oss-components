@@ -3,5 +3,5 @@
     @type="checkbox" @checked={{@checked}} @disabled={{@disabled}} class="upf-checkbox__input" 
     id={{concat "unchecked-checkbox-" this.elementId}} />
 
-  <label for={{concat "unchecked-checkbox-" this.elementId}} class="upf-checkbox__fake-checkbox"></label>
+  <label for={{concat "unchecked-checkbox-" this.elementId}} class={{this.fakeCheckboxClasses}}></label>
 </div>

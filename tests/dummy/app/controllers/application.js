@@ -73,6 +73,7 @@ export default class ApplicationController extends Controller {
   @tracked currencyOnly = null;
   @tracked radio1 = true;
   @tracked radio2 = false;
+  @tracked isChecked = true;
 
   code4CodeBlock = testScript;
   countries = countries;
@@ -248,6 +249,11 @@ export default class ApplicationController extends Controller {
     if (isValid) {
       this.shopUrl = newValue.replace('https://', '').replace('http://', '');
     }
+  }
+
+  @action
+  onCheck(value) {
+    this.isChecked = value;
   }
 }
 

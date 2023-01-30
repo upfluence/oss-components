@@ -1,52 +1,28 @@
 @import '../core/_colors';
 @import '../core/_variables';
 
-//
-// Styling checkboxes accross OSS.
-// Checkboxes can be used when there is a list of options and the user may
-// select any number of choices, including zero, one or several. In other words,
-// each checkbox is independent of all other checkboxes in the list, and
-// checking one checkbox doesn't uncheck the other.
-//
-// If you have two choices which are exclusive, please consider using a Toggle
-// Button.
-//
-// If you have more than two choices which are exclusive, using radio buttons
-// might be the better way to go.
-//
-
 .upf-checkbox {
   width: 20px;
-  position: relative;
+  height: 20px;
 }
 
 .upf-checkbox--has-label {
   width: 100%;
-  left: @spacing-md;
+  left: var(--spacing-px-24);
 }
 
 .upf-checkbox--sm {
-  width: 15px;
-
-  .upf-checkbox__fake-checkbox {
-    width: 15px;
-    height: 15px;
-  }
-
-  .upf-checkbox__input:checked + .upf-checkbox__fake-checkbox:after {
-    top: 7px;
-    left: 4px;
-    height: 4px;
-    width: 7px;
-  }
+  width: 16px;
+  height: 16px;
 }
 
 .upf-checkbox--disabled {
   cursor: not-allowed;
 
-  .upf-checkbox__input:checked + .upf-checkbox__fake-checkbox {
-    background-color: @upf-gray;
-    border-color: @upf-gray;
+  .upf-checkbox__input:checked + .upf-checkbox__fake-checkbox,
+  .upf-checkbox__input + .upf-checkbox__fake-checkbox {
+    background-color: var(--color-gray-200);
+    border-color: var(--color-gray-200);
     cursor: not-allowed;
   }
 }
@@ -63,46 +39,45 @@
 // We then make it look like a checkbox square.
 //
 .upf-checkbox__fake-checkbox {
-  border: 1px solid @upf-primary-rock-blue;
-  border-radius: @default-radius;
+  position: relative;
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--border-radius-sm);
   cursor: pointer;
-  background-color: white;
+  background-color: var(--color-white);
 
   margin-bottom: 0;
-  height: 20px;
-  width: 20px;
+  height: 100%;
+  width: 100%;
 
   user-select: none;
-  vertical-align: text-bottom;
 }
 
 //
 // Checked state of the "checkbox"
 //
 .upf-checkbox__input:checked + .upf-checkbox__fake-checkbox {
-  border-color: @upf-primary-bright-purple;
-  background-color: @upf-primary-bright-purple;
+  border-color: var(--color-primary-500);
+  background-color: var(--color-primary-500);
 
-  //
-  // Shows the tick at the center of the "checkbox"
-  //
   &:after {
-    background: transparent;
-    color: @upf-primary-white;
-    content: '';
-    opacity: 1;
-
     position: absolute;
-    top: 7px;
-    left: 6px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--color-white);
+    content: '\f00c';
+    font-family: 'Font Awesome 5 Pro';
+    font-weight: 400;
+    font-size: 8px;
+  }
 
-    // This, my friends, i how you draw a tick ;)
-    border: 2px solid @upf-primary-white;
-    border-top: none;
-    border-right: none;
-    height: 5px;
-    width: 9px;
-    transform: rotate(-45deg);
+  &--partial {
+    background-color: var(--color-white);
+
+    &:after {
+      content: '\f068';
+      color: var(--color-primary-500);
+    }
   }
 }
 

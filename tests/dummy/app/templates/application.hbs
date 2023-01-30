@@ -1,4 +1,17 @@
 <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
+  OSS:Checkbox:
+  <OSS::Checkbox @checked={{this.isChecked}} @onChange={{this.onCheck}} />
+  <OSS::Checkbox @checked={{this.isChecked}} @disabled={{true}} @onChange={{this.onCheck}} />
+  <OSS::Checkbox @checked={{this.isChecked}} @disabled={{true}} @partial={{true}} @onChange={{this.onCheck}} />
+  <OSS::Checkbox @checked={{this.isChecked}} @partial={{true}} @onChange={{this.onCheck}} />
+  <OSS::Checkbox @checked={{this.isChecked}} @size="sm" @onChange={{this.onCheck}} />
+  <OSS::Checkbox @checked={{this.isChecked}} @size="sm" @partial={{true}} @onChange={{this.onCheck}} />
+  upf-checkbox:
+  {{upf-checkbox value=this.isChecked}}
+  {{upf-checkbox disabled=true value=this.isChecked}}
+  {{upf-checkbox value=this.isChecked size='sm'}}
+</div>
+<div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
   <OSS::NumberInput @value={{this.numberValue}} @onChange={{this.handleNumberInput}} />
   <OSS::NumberInput @min={{0}} @max={{15}} @step={{5}} @onChange={{this.handleNumberInput}} />
 </div>

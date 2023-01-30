@@ -50,6 +50,20 @@ module('Integration | Component | o-s-s/checkbox', function (hooks) {
     assert.dom('.upf-checkbox input').isChecked();
   });
 
+  test('it is correctly updated when the partial argument changes', async function (assert: Assert) {
+    this.checked = true;
+    this.partial = false;
+    await render(
+      hbs`<OSS::Checkbox @checked={{this.checked}} @partial={{this.partial}} @onChange={{this.onChange}} />`
+    );
+
+    assert.dom('.upf-checkbox__fake-checkbox').hasNoClass('upf-checkbox__fake-checkbox--partial');
+    assert.dom('.upf-checkbox input').isChecked();
+
+    this.set('partial', true);
+    assert.dom('.upf-checkbox__fake-checkbox').hasClass('upf-checkbox__fake-checkbox--partial');
+  });
+
   test('disabled state is handled correctly', async function (assert: Assert) {
     const onChangeSpy = sinon.spy(this.onChange);
     await render(hbs`<OSS::Checkbox @checked={{false}} @onChange={{this.onChange}} @disabled={{true}} />`);
