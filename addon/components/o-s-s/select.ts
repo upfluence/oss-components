@@ -21,7 +21,6 @@ export default class OSSSelect extends Component<OSSSelectArgs> {
   @service declare intl: any;
 
   @tracked displaySelect: boolean = false;
-  @tracked filteredItems: any[] = [];
 
   constructor(owner: unknown, args: OSSSelectArgs) {
     super(owner, args);
@@ -30,8 +29,6 @@ export default class OSSSelect extends Component<OSSSelectArgs> {
       '[component][OSS::Select] The parameter @onChange of type function is mandatory',
       typeof this.args.onChange === 'function'
     );
-
-    this.filteredItems = args.items;
   }
 
   get searchEnabled(): boolean {
@@ -91,7 +88,6 @@ export default class OSSSelect extends Component<OSSSelectArgs> {
   @action
   hideSelector(): void {
     this.displaySelect = false;
-    this.filteredItems = this.args.items;
   }
 
   @action
