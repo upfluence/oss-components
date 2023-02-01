@@ -9,7 +9,6 @@ module('Integration | Component | o-s-s/select', function (hooks) {
 
   hooks.beforeEach(function () {
     this.onChange = sinon.stub();
-    this.onSearch = sinon.stub();
     this.items = [
       { name: 'foo', label: 'First item' },
       { name: 'bar', label: 'Second item' }
@@ -267,8 +266,20 @@ module('Integration | Component | o-s-s/select', function (hooks) {
       assert.dom('.upf-infinite-select .upf-input').doesNotExist();
     });
 
-    test('the search is not displayed if no onSearch arg is provided', async function (assert) {
+    test('the search is displayed if the @onSearch arg is provided', async function (assert) {
+      assert.expect(4);
+
       this.value = this.items[0];
+      this.onSearch = (keyword: string) => {
+        assert.equal(keyword, 'F');
+        this.set(
+          'items',
+          this.items.filter(
+            (item: { name: string; label: string }) => item.name.toLowerCase().indexOf(keyword.toLowerCase()) >= 0
+          )
+        );
+      };
+
       await render(
         hbs`
           <OSS::Select @onChange={{this.onChange}} @onSearch={{this.onSearch}} @items={{this.items}} @value={{this.value}}>
@@ -281,8 +292,9 @@ module('Integration | Component | o-s-s/select', function (hooks) {
 
       await click('.upf-input div');
       assert.dom('.upf-infinite-select .upf-input').exists();
-      await typeIn('.upf-infinite-select .upf-input', 'k');
-      assert.ok(this.onSearch.calledOnceWithExactly('k'));
+      await typeIn('.upf-infinite-select .upf-input', 'F');
+      assert.dom('.upf-infinite-select .upf-infinite-select__item').exists({ count: 1 });
+      assert.dom('.upf-infinite-select .upf-infinite-select__item').hasText('foo');
     });
   });
 });
