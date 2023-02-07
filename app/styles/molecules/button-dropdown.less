@@ -31,7 +31,9 @@
     margin-top: var(--spacing-px-6);
     background-color: var(--color-white);
     min-width: 180px;
+    border: 1px solid var(--color-border-default);
     border-radius: var(--border-radius-sm);
+    z-index: 99;
 
     &--visible {
       display: flex;
@@ -58,6 +60,26 @@
       &:active {
         background-color: var(--color-gray-100);
       }
+    }
+  }
+
+  &.oss-button-dropdown--dark {
+    .oss-button-dropdown__trigger {
+      background-color: var(--color-primary-500);
+      border: 1px solid var(--color-white);
+
+      i,
+      span {
+        color: var(--color-white);
+      }
+
+      [role='button'] {
+        border-left-color: var(--color-white);
+      }
+    }
+
+    .oss-button-dropdown__items {
+      border: 1px solid var(--color-border-default);
     }
   }
 }
