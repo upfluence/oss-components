@@ -17,8 +17,9 @@ export default setModifierManager(
       };
     },
 
-    installModifier(state, element, { positional: [callback] }) {
+    installModifier(state, element, { positional: [callback], named: { useCapture } }) {
       state.element = element;
+      state.useCapture = useCapture ?? false;
 
       state.handler = (event) => {
         if (!element.contains(event.target)) {
@@ -27,13 +28,13 @@ export default setModifierManager(
       };
 
       run(() => {
-        document.addEventListener('click', state.handler, false);
+        document.addEventListener('click', state.handler, state.useCapture);
       });
     },
 
     destroyModifier(state) {
       run(() => {
-        document.removeEventListener('click', state.handler, false);
+        document.removeEventListener('click', state.handler, state.useCapture);
       });
     }
   }),

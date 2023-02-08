@@ -21,27 +21,31 @@ export default class extends Component<OSSButtonDropdownArgs> {
   }
 
   @action
-  toggleDropdown(event: MouseEvent): void {
-    event.stopPropagation();
+  toggleDropdown(): void {
     this.displayDropdown = !this.displayDropdown;
   }
 
   @action
-  closeDropdown(): void {
-    this.displayDropdown = false;
+  onClickOutside(_: Element, event: PointerEvent): void {
+    event.stopPropagation();
+    this.closeDropdown();
   }
 
   @action
-  setupChildrenClickHandler(element: HTMLElement) {
+  setupChildrenClickHandler(element: HTMLElement): void {
     element.querySelectorAll('.oss-button-dropdown__item').forEach((child: HTMLElement) => {
       child.addEventListener('click', this.closeDropdown);
     });
   }
 
   @action
-  teardownChildrenClickHandler(element: HTMLElement) {
+  teardownChildrenClickHandler(element: HTMLElement): void {
     element.querySelectorAll('.oss-button-dropdown__item').forEach((child: HTMLElement) => {
       child.removeEventListener('click', this.closeDropdown);
     });
+  }
+
+  private closeDropdown(): void {
+    this.displayDropdown = false;
   }
 }
