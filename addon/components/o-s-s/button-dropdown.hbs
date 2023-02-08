@@ -19,7 +19,7 @@
     <div class="oss-button-dropdown__items"
          {{did-insert this.setupChildrenClickHandler}}
          {{will-destroy this.teardownChildrenClickHandler}}
-         {{on-click-outside this.closeDropdown useCapture=true}}>
+         {{on-click-outside this.onClickOutside useCapture=true}}>
       {{yield to="items"}}
     </div>
   {{/if}}
