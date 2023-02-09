@@ -77,17 +77,28 @@ export default class OSSSelect extends Component<OSSSelectArgs> {
   }
 
   @action
-  toggleSelector(e?: MouseEvent): void {
-    e?.stopPropagation();
+  toggleSelector(event: PointerEvent): void {
+    event.stopPropagation();
 
     if (this.args.disabled) return;
 
-    this.displaySelect = !this.displaySelect;
+    if (this.displaySelect) {
+      this.hideSelector();
+    } else {
+      this.displaySelect = true;
+    }
+  }
+
+  @action
+  onClickOutside(_: Element, event: PointerEvent): void {
+    event.stopPropagation();
+    this.hideSelector();
   }
 
   @action
   hideSelector(): void {
     this.displaySelect = false;
+    this.args.onSearch?.('');
   }
 
   @action
