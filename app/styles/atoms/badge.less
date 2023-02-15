@@ -1,3 +1,30 @@
+.build-badge(@variant) {
+  background-color: var(~'--color-@{variant}-50');
+  border-color: var(~'--color-@{variant}-500');
+  color: var(~'--color-@{variant}-500');
+
+  i {
+    color: var(~'--color-@{variant}-500');
+  }
+
+  .upf-badge__text {
+    color: var(~'--color-@{variant}-500');
+  }
+}
+
+.build-plain-badge(@variant) {
+  background-color: @variant;
+  color: var(--color-white);
+
+  i {
+    color: var(--color-white);
+  }
+
+  .upf-badge__text {
+    color: var(--color-white);
+  }
+}
+
 .generate-extended-palette-badge(@variant) {
   background-color: var(~'--color-@{variant}-50');
   border-color: var(~'--color-@{variant}-500');
@@ -25,6 +52,69 @@
     color: var(--color-white);
   }
 }
+
+.upf-badge {
+  .border;
+  .border-color-default;
+  background-color: @upf-primary-white;
+  color: @upf-primary-bright-purple;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .upf-badge__text {
+    .font-weight-semibold;
+    color: @upf-primary-bright-purple;
+    font-size: 14 / @rem;
+  }
+
+  &.upf-badge--shape-round {
+    border-radius: 50%;
+  }
+
+  &--size-sm {
+    width: 24px;
+    height: 24px;
+  }
+
+  &--size-md {
+    width: 36px;
+    height: 36px;
+
+    .upf-badge__text {
+      font-size: 18 / @rem;
+    }
+  }
+
+  &--size-lg {
+    width: 48px;
+    height: 48px;
+
+    .upf-badge__text {
+      font-size: 18 / @rem;
+    }
+  }
+}
+
+.upf-badge.upf-badge--primary { .build-badge(primary); }
+.upf-badge.upf-badge--primary.upf-badge--plain { .build-plain-badge(var(--color-primary-500)); }
+
+.upf-badge.upf-badge--alert { .build-badge(warning); }
+.upf-badge.upf-badge--alert.upf-badge--plain { .build-plain-badge(var(--color-warning-500)); }
+
+.upf-badge.upf-badge--error { .build-badge(error); }
+.upf-badge.upf-badge--error.upf-badge--plain { .build-plain-badge(var(--color-error-500)); }
+
+.upf-badge.upf-badge--success { .build-badge(success); }
+.upf-badge.upf-badge--success.upf-badge--plain { .build-plain-badge(var(--color-success-500)); }
 
 .upf-badge.upf-badge--extended-orange {
   .generate-extended-palette-badge(orange);
