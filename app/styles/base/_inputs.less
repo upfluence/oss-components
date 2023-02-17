@@ -6,7 +6,7 @@
 @import '../mixins/_inputs';
 
 label {
-  color: @upf-primary-rock-blue;
+  color: var(--color-gray-500);
   font-weight: 100;
 }
 
@@ -17,7 +17,7 @@ label {
 
 .upf-input {
   border: 1px solid transparent;
-  border-radius: @default-radius;
+  border-radius: var(--border-radius-sm);
   height: var(--spacing-px-36);
   padding: 0 1em;
   color: @color-text;
@@ -32,12 +32,12 @@ label {
   &::placeholder { color: @color-text-lighter }
 
   &--inverse {
-    background-color: @upf-primary-white;
+    background-color: var(--color-white);
   }
 }
 
 .upf-input:disabled, .upf-input.disabled {
-  color: @upf-primary-rock-blue-light;
+  color: var(--color-gray-400);
   cursor: not-allowed;
 }
 
@@ -123,7 +123,7 @@ label {
     i[aria-label]:hover:after {
       pointer-events: none;
       content: attr(aria-label);
-      border-radius: @default-radius;
+      border-radius: var(--border-radius-sm);
 
       font-size: 14px;
 
@@ -144,15 +144,15 @@ label {
 
 
   .input-group {
-    .setup-input-group-addon(@upf-feedback-error);
+    .setup-input-group-addon(var(--color-error-500));
   }
 
   .upf-input, .upf-input:focus {
-    border: 1px solid @upf-feedback-error;
+    border: 1px solid var(--color-error-500);
   }
 
   .upf-input-feedback--error {
-    .set-feedback-colors(@upf-feedback-error, @upf-feedback-error, @color-text-contrast);
+    .set-feedback-colors(var(--color-error-500), var(--color-error-500), @color-text-contrast);
   }
 }
 

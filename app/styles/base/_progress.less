@@ -4,7 +4,7 @@
 .upf-progress {
   .progress;
 
-  border-radius: @default-radius;
+  border-radius: var(--border-radius-sm);
   background-color: darken(@upf-gray-light, 8%);
   height: 10px;
   margin-bottom: 0;
@@ -13,15 +13,15 @@
     width: 0;
     animation: progress 1s forwards;
 
-    background-color: @upf-primary-bright-purple;
+    background-color: var(--color-primary-500);
   }
 
   .progress-bar.progress-bar--alert {
-    background-color: @upf-feedback-alert;
+    background-color: var(--color-warning-500);
   }
 
   .progress-bar.progress-bar--success {
-    background-color: @upf-feedback-success;
+    background-color: var(--color-success-500);
   }
 
   @keyframes progress { from { width: 0; } to { width: 100%; }}

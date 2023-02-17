@@ -6,7 +6,7 @@
 .disabled-button {
   &:not(.js-btn--loading) {
     .fill(@upf-primary-rock-blue-light);
-    color: @upf-primary-white;
+    color: var(--color-white);
     cursor: not-allowed;
   }
 }
@@ -63,8 +63,8 @@
   &:hover {
     .remove-outline;
     .fill(@base-color);
-    .icon-color(@upf-primary-white);
-    color: @upf-primary-white;
+    .icon-color(var(--color-white));
+    color: var(--color-white);
   }
 
   &:focus,
@@ -82,9 +82,9 @@
 
 .upf-btn--social {
   border: 0px;
-  color: @upf-primary-white;
+  color: var(--color-white);
 
   &:disabled:hover {
-    color: @upf-primary-white;
+    color: var(--color-white);
   }
 }
