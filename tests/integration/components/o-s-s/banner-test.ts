@@ -30,7 +30,7 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
   test('passing a title in the @title parameter, displays the title in the component', async function (assert) {
     await render(hbs`<OSS::Banner @title="Test Title" />`);
 
-    assert.dom('.upf-banner .text-style-bold').hasText('Test Title');
+    assert.dom('.upf-banner .font-weight-semibold').hasText('Test Title');
   });
 
   test('passing a subtitle in the @subtitle parameter, displays the title in the component', async function (assert) {

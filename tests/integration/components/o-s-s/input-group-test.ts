@@ -47,12 +47,12 @@ module('Integration | Component | o-s-s/input-group', function (hooks) {
   test('Passing the @errorMessage sets an error border on the whole compoenent', async function (assert) {
     await render(hbs`<OSS::InputGroup @prefix="random" @suffix="@domain.com" @errorMessage="This is an error." />`);
     assert.dom('.oss-input-group-row--error').exists();
-    assert.dom('input').hasStyle({ borderColor: 'rgb(254, 37, 24)' });
+    assert.dom('input').hasStyle({ borderColor: 'rgb(239, 68, 68)' });
     assert
       .dom('.oss-input-group-row-prefix')
-      .hasStyle({ borderColor: 'rgb(254, 37, 24) rgb(27, 30, 33) rgb(254, 37, 24) rgb(254, 37, 24)' });
+      .hasStyle({ borderColor: 'rgb(239, 68, 68) rgb(27, 30, 33) rgb(239, 68, 68) rgb(239, 68, 68)' });
     assert
       .dom('.oss-input-group-row-suffix')
-      .hasStyle({ borderColor: 'rgb(254, 37, 24) rgb(254, 37, 24) rgb(254, 37, 24) rgb(27, 30, 33)' });
+      .hasStyle({ borderColor: 'rgb(239, 68, 68) rgb(239, 68, 68) rgb(239, 68, 68) rgb(27, 30, 33)' });
   });
 });
