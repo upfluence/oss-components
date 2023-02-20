@@ -1,18 +1,16 @@
-@import '../core/_colors';
-@import '../core/_variables';
 @import '../mixins/_buttons';
 
 .modal {
   .modal-content {
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
-    border-radius: @default-radius;
+    border-radius: var(--border-radius-sm);
     border: none;
 
     .modal-header {
       background-color: @upf-gray-light;
-      border-radius: @default-radius @default-radius 0 0;
+      border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
       box-shadow: none;
-      color: @upf-primary-bright-purple;
+      color: var(--color-primary-500);
       text-align: center;
 
       &.modal-header__borderless {
@@ -36,7 +34,7 @@
     }
 
     .modal-footer {
-      border-radius: 0 0 @default-radius @default-radius;
+      border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
       text-align: center;
       border-top: 0;
     }

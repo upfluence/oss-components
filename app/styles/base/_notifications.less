@@ -1,5 +1,3 @@
-@import '../core/_variables';
-
 /*
  * Notifications
  * Notifications come in the form of a littre red dot. Different sizes exist
@@ -15,7 +13,7 @@
 .upf-notification--corner::after {
   content: '';
   position: absolute;
-  background-color: @upf-primary-orange;
+  background-color: var(--color-error-500);
   top: 6px;
   right: 6px;
   height: 4px;
@@ -26,10 +24,10 @@
 .upf-notification--inline::after {
   content: '';
   display: inline-block;
-  background-color: @upf-primary-orange;
+  background-color: var(--color-error-500);
   height: 6px;
   width: 6px;
   border-radius: 50%;
-  margin-left: @spacing-xxx-sm;
+  margin-left: var(--spacing-px-6);
   vertical-align: middle;
 }

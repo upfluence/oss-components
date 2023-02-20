@@ -1,5 +1,3 @@
-@import '../core/_colors';
-@import '../core/_variables';
 @import '../mixins/_links';
 
 .app-header {
@@ -71,7 +69,7 @@
       align-items: center;
       justify-content: center;
       flex: 1;
-      border-radius: @default-radius;
+      border-radius: var(--border-radius-sm);
       max-width: 24px;
       height: 24px;
       padding: 24px;
@@ -101,9 +99,9 @@
     a.active,
     a.active i,
     a.active .upf-icon {
-      color: @upf-primary-white;
+      color: var(--color-white);
       border-bottom: none;
-      background-color: @upf-primary-bright-purple;
+      background-color: var(--color-primary-500);
       transition: all 0.5s ease;
     }
   }

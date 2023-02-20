@@ -4,10 +4,6 @@
   {{/if}}
 
   <li class="upf-datatable__actions-pull-right">
-    {{#if hasToggleableColumns}}
-      {{column-visibility-panel columns=_columns}}
-    {{/if}}
-
     {{#if hasPagination}}
       {{#unless isCompact}}
         {{upf-table/pagination currentPage=currentPage perPage=perPage

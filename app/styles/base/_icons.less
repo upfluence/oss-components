@@ -1,6 +1,3 @@
-@import '../core/_colors';
-@import '../core/_variables';
-
 // DEPRECIATED as we progressively move to the upf-icon-font
 
 //
@@ -20,13 +17,13 @@
 // `.upf-icon--stroke-*` allows to change the stroke colors of the icon.
 // `.upf-icon--stroke-thick` allows us to increase the thickness of the icon.
 //
-.upf-icon--orange * { stroke: @upf-primary-orange; };
-.upf-icon--bright-purple * { stroke: @upf-primary-bright-purple; };
-.upf-icon--dark-purple * { stroke: @upf-primary-dark-purple; };
+.upf-icon--orange * { stroke: var(--color-error-500); };
+.upf-icon--bright-purple * { stroke: var(--color-primary-500); };
+.upf-icon--dark-purple * { stroke: var(--color-primary-900); };
 .upf-icon--rock-blue * { stroke: @upf-primary-rock-blue; };
-.upf-icon--feedback-error * { stroke: @upf-feedback-error; };
-.upf-icon--feedback-success * { stroke: @upf-feedback-success; };
-.upf-icon--feedback-alert * { stroke: @upf-feedback-alert; };
+.upf-icon--feedback-error * { stroke: var(--color-error-500); };
+.upf-icon--feedback-success * { stroke: var(--color-success-500); };
+.upf-icon--feedback-alert * { stroke: var(--color-warning-500); };
 .upf-icon--gray * { stroke: @upf-gray; };
 .upf-icon--gray-light * { stroke: @upf-gray-light; };
 .upf-icon--gray-dark * { stroke: @upf-gray-dark; };
@@ -36,7 +33,7 @@
 
 .upf-icon-group { font-size: 1.5em; }
 .upf-icon-group__superior {
-  color: @upf-feedback-success;
+  color: var(--color-success-500);
   font: normal normal normal 14px/1 FontAwesome;
   position: absolute;
 }

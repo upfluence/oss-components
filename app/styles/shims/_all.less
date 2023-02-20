@@ -1,0 +1,210 @@
+/*
+ * Why does this file exist?
+ * ==========================
+ *
+ * In attempt to gradually move away from LESS variables in favor of native CSS
+ * variables, this file lists all of LESS variables used in the project (and
+ * possibly by the ones depending on it).
+ * This way, we can easily check if a project needs LESS vars by just commenting
+ * this file and let the compiler fail if so.
+ * Once all projects have migrated to CSS vars, we will be able to remove this
+ * file without causing any issues.
+ */
+
+// Spacers variables and helper classes
+// Spacers are used to reduce or increase the space between multiple elements
+// (margins) or within one (paddings).
+//
+
+.for(@list, @code) {
+  & {
+    .loop(@i:1) when (@i =< length(@list)) {
+      @value: extract(@list, @i);
+
+      @code();
+
+      .loop(@i + 1);
+    }
+
+    .loop();
+  }
+}
+
+@spacers: none, xxx-sm, xx-sm, x-sm, sm, md, lg, x-lg, xx-lg;
+
+.for(@spacers, {
+  .margin-top-@{value} {
+    margin-top: ~'@{spacing-@{value}}';
+  }
+  .margin-right-@{value} {
+    margin-right: ~'@{spacing-@{value}}';
+  }
+  .margin-bottom-@{value} {
+    margin-bottom: ~'@{spacing-@{value}}';
+  }
+  .margin-left-@{value} {
+    margin-left: ~'@{spacing-@{value}}';
+  }
+  .margin-@{value} {
+    margin: ~'@{spacing-@{value}}';
+  }
+
+  .padding-top-@{value} {
+    padding-top: ~'@{spacing-@{value}}';
+  }
+  .padding-right-@{value} {
+    padding-right: ~'@{spacing-@{value}}';
+  }
+  .padding-bottom-@{value} {
+    padding-bottom: ~'@{spacing-@{value}}';
+  }
+  .padding-left-@{value} {
+    padding-left: ~'@{spacing-@{value}}';
+  }
+  .padding-@{value} {
+    padding: ~'@{spacing-@{value}}';
+  }
+});
+
+/*
+ * This files holds all the primary colors, plus their variants (in light and
+ * dark).
+ *
+ * Additionally to those, it also sets some colors that are used accross the
+ * the apps to provide feedbacks such as Errors, Success, or Alerts.
+ */
+
+//
+// (Brand) Primary Colors
+// These are the colors defined by the Upfluence Visual Design Guidelines.
+// --------------------------------------------------
+
+@upf-primary-bright-purple: #0d0de6;
+@upf-primary-dark-purple: #060666;
+@upf-primary-orange: #fe2518;
+@upf-primary-rock-blue: #8a95a0;
+@upf-primary-black: #000000;
+@upf-primary-white: #ffffff;
+
+// (Brand) Primary Colors Variations
+// These are variations of the primary colors. They can be used when an element
+// needs some to be slightly different, for example, for announcing its state.
+// One use case could be to give a button a different look depending on its
+// state: normal, on hover/active, or disabled.
+// --------------------------------------------------
+
+@upf-primary-orange-dark: darken(@upf-primary-orange, 10%);
+@upf-bright-orange: #ff4331;
+@upf-primary-bright-purple-light: lighten(@upf-primary-bright-purple, 10%);
+@upf-primary-bright-purple-dark: #1B00B7;
+@upf-primary-rock-blue-light: lighten(@upf-primary-rock-blue, 10%);
+@upf-primary-rock-blue-dark: darken(@upf-primary-rock-blue, 10%);
+
+// Status Colors
+// These are the colors used in feedbacks provided to
+// the user: informations, help, error, success, alerts, etc.
+// --------------------------------------------------
+
+@upf-feedback-success: #22B473;
+@upf-feedback-error: @upf-primary-orange;
+@upf-feedback-alert: #eda448;
+@upf-feedback-info: @upf-primary-rock-blue;
+
+// Grays
+// --------------------------------------------------
+
+@upf-gray: #c9c9c9;
+@upf-gray-light: #f9f9f9;
+@upf-gray-dark: darken(@upf-gray, 20);
+
+// Text Size Utility classes
+// --------------------------------------------------
+
+@min_font_size: 8;
+@breaking_size: 18; // size after what the step is 6px
+
+.text-size(@id, @size) {
+  .text-size-@{id} {
+    font-size: @size/@rem;
+  }
+}
+
+.text-size-loop(@counter, @size, @max) when (@counter < @max) {
+
+  & when (@size >= @breaking_size) {
+    .text-size-loop(@counter+1, @size+6, @max);
+  }
+
+  & when (@size < @breaking_size) {
+    .text-size-loop(@counter+1, @size+2, @max);
+  }
+
+  .text-size(@counter+1, @size);
+}
+
+.text-size-loop(0, @min_font_size, 10);
+.text-size(normal, @font-size-body);
+
+@default-radius: 4px;
+@input-size-default: 36px;
+@input-size-sm: @input-size-default;
+
+//
+// Font stacks
+//
+
+@font-text: var(--font-family-stack);
+
+//deprecated
+@font-text-title: var(--font-family-stack);
+@font-text-body: var(--font-family-stack);
+
+// Default size
+@font-size-body: 12;  // in px
+@rem: @font-size-body*1rem;
+
+//
+// Colors
+//
+
+@background-color: @upf-gray-light;
+@field-background-color: #f1f2f3;
+@border-color: #bfc5cb;
+
+// - Default text color (on a bright background)
+@color-text: #1b1e21;
+@color-text-light: @upf-primary-rock-blue;
+@color-text-lighter: #bfc5cb;
+
+// - Text color on a dark background
+@color-text-contrast: rgba(255, 255, 255, 100%);
+@color-text-contrast-light: rgba(255, 255, 255, 70%);
+// @color-text-contrast-lighter: rgba(255, 255, 255, 50%);
+@color-text-contrast-lighter: #97a5bb; // temporary
+
+//
+// Spacers — Because sometimes we need to let elements breathe
+//
+@spacing-none: 0;
+@spacing-xxxx-sm: 3px;
+@spacing-xxx-sm: 6px;
+@spacing-xx-sm: 12px;
+@spacing-x-sm: 18px;
+@spacing-sm: 24px;
+@spacing-md: 30px;
+@spacing-lg: 36px;
+@spacing-x-lg: 48px;
+@spacing-xx-lg: 60px;
+
+//
+// Brand Colors
+//
+@facebook-brand-color: #3b5998;
+@pinterest-brand-color: #bd081c;
+@instagram-brand-color: #bc2a8d;
+@youtube-brand-color: #cd201f;
+@twitter-brand-color: #1da1f2;
+@twitch-brand-color: #6441a5;
+@tiktok-brand-color: #333333;
+
+@box-shadow: 0 1px 3px rgba(151, 159, 169, 0.15);
