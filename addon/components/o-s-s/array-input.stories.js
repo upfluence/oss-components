@@ -25,6 +25,16 @@ export default {
       },
       control: { type: 'text' }
     },
+    keyboardTriggers: {
+      description: 'An array of keyboard event codes that can be used to trigger an entry validation in addition to Enter',
+      table: {
+        type: {
+          summary: 'string[]'
+        },
+        defaultValue: { summary: '[]' }
+      },
+      control: { type: 'array' }
+    },
     onChange: {
       description:
         'A callback that sends the new array to the parent component when the input is changed (adding or removing items)',
