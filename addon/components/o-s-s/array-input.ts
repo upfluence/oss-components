@@ -66,7 +66,7 @@ export default class OSSArrayInput extends Component<OSSArrayInputArgs> {
 
   @action
   keyListener(keyboardEvent: KeyboardEvent): void {
-    if (this.keyboardTriggers.includes(keyboardEvent.code) && this.currentValue.length > 0) {
+    if (this.keyboardTriggers.includes(keyboardEvent.key) && this.currentValue.length > 0) {
       keyboardEvent.preventDefault();
       this._validateEntry();
     } else if (this.currentValue.length === 0 && this.items.length > 0 && keyboardEvent.code === 'Backspace') {

@@ -118,11 +118,11 @@ module('Integration | Component | OSS::ArrayInput', function (hooks) {
 
   module('Keyboard validation', function () {
     test('entries are validated when one of the extra keyboard trigger is hit', async function (assert) {
-      await render(hbs`<OSS::ArrayInput @keyboardTriggers={{array "Space"}} />`);
+      await render(hbs`<OSS::ArrayInput @keyboardTriggers={{array " "}} />`);
 
       await fillIn('.array-input-container input', 'foobar');
       let input = find('.array-input-container input');
-      await triggerKeyEvent(input, 'keydown', 'Space', { code: 'Space' });
+      await triggerKeyEvent(input, 'keydown', ' ');
 
       assert.dom('.upf-chip').exists();
       assert.dom('.upf-chip').hasText('foobar');
