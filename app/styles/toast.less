@@ -14,10 +14,10 @@
   position: fixed;
   display: flex;
   flex-direction: column;
-  gap: @spacing-xx-sm;
+  gap: var(--spacing-px-12);
   top: 56px;
-  right: @spacing-x-sm;
-  z-index: 1100;
+  right: var(--spacing-px-18);
+  z-index: 9999;
 
   .toast {
     display: flex;
@@ -36,13 +36,13 @@
     .main-container {
       display: flex;
       flex-direction: row;
-      padding: @spacing-xx-sm;
-      gap: @spacing-xx-sm;
+      padding: var(--spacing-px-12);
+      gap: var(--spacing-px-12);
       background-color: var(--color-white);
       .text-size-5;
 
       button {
-        padding: 0 @spacing-xxx-sm;
+        padding: 0 var(--spacing-px-6);
         align-self: baseline;
         border: none;
         background-color: transparent;
@@ -56,7 +56,7 @@
       gap: 3px;
 
       .title {
-        .text-style-semibold;
+        .font-weight-semibold;
       }
 
       .subtitle {
