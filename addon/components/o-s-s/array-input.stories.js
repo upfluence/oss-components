@@ -26,7 +26,8 @@ export default {
       control: { type: 'text' }
     },
     keyboardTriggers: {
-      description: 'An array of keyboard event codes that can be used to trigger an entry validation in addition to Enter',
+      description:
+        'An array of keyboard event codes that can be used to trigger an entry validation in addition to Enter',
       table: {
         type: {
           summary: 'string[]'

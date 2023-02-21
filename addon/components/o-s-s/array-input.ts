@@ -10,6 +10,8 @@ interface OSSArrayInputArgs {
   placeholder?: string;
 }
 
+const DEFAULT_KEYBOARD_TRIGGERS = ['Enter'];
+
 export default class OSSArrayInput extends Component<OSSArrayInputArgs> {
   @tracked currentValue = '';
   @tracked items: string[] = [];
@@ -22,7 +24,7 @@ export default class OSSArrayInput extends Component<OSSArrayInputArgs> {
   }
 
   get keyboardTriggers(): string[] {
-    return ['Enter'].concat(this.args.keyboardTriggers || []);
+    return DEFAULT_KEYBOARD_TRIGGERS.concat(this.args.keyboardTriggers || []);
   }
 
   private _triggerComponentRedraw(): void {
