@@ -4,6 +4,7 @@ import { tracked } from '@glimmer/tracking';
 
 interface OSSArrayInputArgs {
   values?: string[];
+  keyboardTriggers?: string[];
   validator?: (value: string) => boolean;
   onChange?: (values: string[]) => void;
   placeholder?: string;
@@ -18,6 +19,10 @@ export default class OSSArrayInput extends Component<OSSArrayInputArgs> {
     if (this.args.values) {
       this.items = this.args.values;
     }
+  }
+
+  get keyboardTriggers(): string[] {
+    return ['Enter'].concat(this.args.keyboardTriggers || []);
   }
 
   private _triggerComponentRedraw(): void {
@@ -59,7 +64,8 @@ export default class OSSArrayInput extends Component<OSSArrayInputArgs> {
 
   @action
   keyListener(keyboardEvent: KeyboardEvent): void {
-    if (keyboardEvent.code === 'Enter' && this.currentValue.length > 0) {
+    if (this.keyboardTriggers.includes(keyboardEvent.code) && this.currentValue.length > 0) {
+      keyboardEvent.preventDefault();
       this._validateEntry();
     } else if (this.currentValue.length === 0 && this.items.length > 0 && keyboardEvent.code === 'Backspace') {
       this._editPreviousEntry();
