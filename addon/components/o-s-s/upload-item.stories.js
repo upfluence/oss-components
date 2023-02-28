@@ -97,6 +97,15 @@ export default {
           summary: 'onUploadSuccess(artifact: FileArtifact): void'
         }
       }
+    },
+    onUploadFailure: {
+      description: 'Action triggers when the upload fails',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'onUploadFailure(error: FailedUploadResponse): void'
+        }
+      }
     }
   },
   parameters: {

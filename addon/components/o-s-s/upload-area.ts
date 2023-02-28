@@ -9,7 +9,8 @@ import Uploader, {
   FileArtifact,
   FileValidator,
   FilePrivacy,
-  UploadRequest
+  UploadRequest,
+  FailedUploadResponse
 } from '@upfluence/oss-components/types/uploader';
 
 interface OSSUploadAreaArgs {
@@ -25,10 +26,14 @@ interface OSSUploadAreaArgs {
   displayPreview?: boolean;
 
   onUploadSuccess(artifact: FileArtifact): void;
+  onUploadFailure?(error: FailedUploadResponse): void;
+  onVerificationFailure?(): void;
+  onHandleFileUpload?(): void;
   onFileDeletion?(): void;
 
   // In multiple mode
   onUploadSuccess(index: number, artifact: FileArtifact): void;
+  onUploadFailure?(index: number, error: FailedUploadResponse): void;
   onFileDeletion?(index: number): void;
 }
 
@@ -205,7 +210,17 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
     }
   }
 
+  @action
+  onUploadFailure(index: number, error: FailedUploadResponse): void {
+    if (this.multiple) {
+      this.args.onUploadFailure?.(index, error);
+    } else {
+      this.args.onUploadFailure?.(error);
+    }
+  }
+
   private _handleFileUpload(file: File): void {
+    this.args.onHandleFileUpload?.();
     if (this._validateFile(file)) {
       if (this.editingFileIndex !== undefined) {
         this.selectedFiles[this.editingFileIndex] = file;
@@ -245,6 +260,7 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
         );
       });
 
+    this.args.onVerificationFailure?.();
     return false;
   }
 }

@@ -135,6 +135,36 @@ export default {
           summary: null
         }
       }
+    },
+    onUploadFailure: {
+      description:
+        'Action called when the file is upload with error. This action has two definitions:<br>' +
+        '- onUploadFailure(error: FailedUploadResponse): void (single mode)<br>' +
+        '- onUploadFailure(index: number, error: FailedUploadResponse): void (multiple mode)',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'onUploadFailure(error: FailedUploadResponse): void'
+        }
+      }
+    },
+    onVerificationFailure: {
+      description: 'Action triggers when the upload verification fail',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'onVerificationFailure(): void'
+        }
+      }
+    },
+    onHandleFileUpload: {
+      description: 'Action triggers when the file is selected',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'onHandleFileUpload(): void'
+        }
+      }
     }
   },
   parameters: {
