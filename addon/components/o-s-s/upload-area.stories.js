@@ -138,7 +138,7 @@ export default {
     },
     onUploadFailure: {
       description:
-        'Action called when the file is upload with error. This action has two definitions:<br>' +
+        'Action called when the file fails to be uploaded. This action has two definitions:<br>' +
         '- onUploadFailure(error: FailedUploadResponse): void (single mode)<br>' +
         '- onUploadFailure(index: number, error: FailedUploadResponse): void (multiple mode)',
       table: {
