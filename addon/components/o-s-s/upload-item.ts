@@ -21,6 +21,7 @@ interface OSSUploadItemArgs {
   onEdition(): void;
   onDeletion(): void;
   onUploadSuccess(artifact: FileArtifact): void;
+  onUploadFailure?(error: FailedUploadResponse): void;
 }
 
 const FA_ICON_PER_TYPE: { [key: string]: string } = {
@@ -104,6 +105,7 @@ export default class OSSUploadItem extends Component<OSSUploadItemArgs> {
     this.uploading = false;
     this.uploadProgress = 0;
     this.error = error;
+    this.args.onUploadFailure?.(error);
   }
 
   @action

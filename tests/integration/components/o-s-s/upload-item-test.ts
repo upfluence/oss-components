@@ -189,23 +189,24 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
       );
     });
 
-    test('it enters error mode if the upload failed', async function(assert) {
+    test('it enters error mode if the upload failed', async function (assert) {
       this.uploader.mode = 'failure';
       sinon.spy(this.uploader, 'upload');
+      this.onUploadFailure = sinon.stub();
 
       await render(hbs`
         <OSS::UploadItem
           @uploader={{this.uploader}} @file={{this.file}}
           @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
           @onEdition={{this.onEdition}} @onDeletion={{this.onFileDeletion}}
-          @onUploadSuccess={{this.onUploadSuccess}} />
+          @onUploadSuccess={{this.onUploadSuccess}} @onUploadFailure={{this.onUploadFailure}} />
       `);
 
       await waitFor('.oss-upload-item.oss-upload-item--errored');
       assert.dom('.oss-upload-item').hasClass('oss-upload-item--errored');
       assert.dom('.oss-upload-item [data-control-name="upload-item-try-again-button"]').exists();
       assert.dom('.oss-upload-item [data-control-name="upload-item-try-again-button"]').hasText('Try again');
-      await click('.oss-upload-item [data-control-name="upload-item-try-again-button"]')
+      await click('.oss-upload-item [data-control-name="upload-item-try-again-button"]');
 
       assert.ok(
         this.uploader.upload.calledWithExactly(
@@ -219,7 +220,8 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
           this.validationRules
         )
       );
-    })
+      assert.true(this.onUploadFailure.calledOnceWithExactly({ payload: {} }));
+    });
   });
 
   module('common actions', function () {
