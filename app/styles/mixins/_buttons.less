@@ -5,9 +5,16 @@
 //
 .disabled-button {
   &:not(.js-btn--loading) {
-    .fill(@upf-primary-rock-blue-light);
-    color: var(--color-white);
+    border: 1px solid var(--color-gray-200);
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-400);
     cursor: not-allowed;
+
+    .far,
+    .fa,
+    .span {
+      color: var(--color-gray-400);
+    }
   }
 }
 
@@ -23,7 +30,9 @@
   color: @darker-color;
   border: 0px;
 
-  &:hover, &:focus, &:active {
+  &:hover,
+  &:focus,
+  &:active {
     .remove-outline;
     .fill(@darker-color);
     .icon-color(@base-color);
@@ -32,7 +41,8 @@
     transition: all 200ms ease-out;
   }
 
-  &:disabled, &.disabled {
+  &:disabled,
+  &.disabled {
     .disabled-button;
   }
 

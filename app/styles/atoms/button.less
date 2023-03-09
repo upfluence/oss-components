@@ -1,22 +1,66 @@
 .generate-extended-palette-btn(@variant) {
-  @outline-color: ~'--color-@{variant}-50';
-
-  .outline(var(~'--color-@{variant}-50'));
-  .fill(var(~'--color-@{variant}-50'));
+  background-color: var(~'--color-@{variant}-50');
+  border: 1px solid var(~'--color-@{variant}-500');
   color: var(~'--color-@{variant}-500');
-  transition: all 0.2s ease;
+
+  i {
+    color: var(~'--color-@{variant}-500');
+  }
+
+  a& {
+    line-height: 2.4rem;
+  }
 
   &:hover,
-  &:focus {
-    color: white;
+  &:active {
+    box-shadow: 0px 0px 0px 2px var(~'--color-@{variant}-100'), var(--box-shadow-xs);
+    color: var(--color-white);
+
+    i {
+      color: var(--color-white);
+    }
   }
 
   &:hover {
-    background-color: var(~'--color-@{variant}-400');
+    background-color: var(~'--color-@{variant}-500');
   }
 
-  &:focus {
-    background-color: var(~'--color-@{variant}-600');
+  &:active {
+    background-color: var(~'--color-@{variant}-400');
+    border-color: var(~'--color-@{variant}-400');
+  }
+}
+
+.upf-btn--destructive {
+  background-color: var(--color-error-50);
+  border: 1px solid var(--color-error-500);
+  color: var(--color-error-500);
+
+  i {
+    color: var(--color-error-500);
+  }
+
+  a& {
+    line-height: 2.4rem;
+  }
+
+  &:hover,
+  &:active {
+    box-shadow: 0px 0px 0px 2px var(--color-error-100), var(--box-shadow-xs);
+    color: var(--color-white);
+
+    i {
+      color: var(--color-white);
+    }
+  }
+
+  &:hover {
+    background-color: var(--color-error-500);
+  }
+
+  &:active {
+    background-color: var(--color-error-400);
+    border-color: var(--color-error-400);
   }
 }
 
@@ -48,6 +92,200 @@
   &:disabled {
     .disabled-button;
   }
+}
+
+.upf-btn {
+  background-image: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  height: 36px;
+  padding: 3px 18px;
+
+  font-weight: 400;
+  font-size: var(--font-size-sm);
+
+  text-align: center;
+  text-decoration: none !important;
+  touch-action: manipulation;
+  vertical-align: middle;
+  white-space: nowrap;
+
+  transition: all 0.25s ease-in-out;
+
+  &:focus,
+  &:active {
+    outline: none !important; // fix that bootstrap outline once and for all
+  }
+
+  &.disabled,
+  &:disabled {
+    .disabled-button;
+  }
+
+  &.upf-btn--dark-bg {
+    &:disabled,
+    &.disabled {
+      border-color: transparent;
+      background-color: fade(@upf-gray, 75%);
+      color: var(--color-white);
+      opacity: 1;
+
+      .fa,
+      .far {
+        color: var(--color-white);
+      }
+    }
+  }
+}
+
+.upf-btn--primary {
+  background-color: var(--color-primary-500);
+  border: 1px solid var(--color-primary-500);
+  color: var(--color-white);
+
+  i {
+    color: var(--color-white);
+  }
+
+  a& {
+    line-height: 2.4rem;
+  }
+
+  &:hover,
+  &:active {
+    box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
+  }
+
+  &:hover {
+    border: 1px solid var(--color-primary-600);
+    background-color: var(--color-primary-600);
+  }
+
+  &:active {
+    background-color: var(--color-primary-400);
+    border: 1px solid var(--color-primary-400);
+  }
+
+  &.upf-btn--dark-bg {
+    .fill(var(--color-white));
+    color: var(--color-primary-500) !important;
+
+    .fa,
+    .far {
+      color: var(--color-primary-500);
+    }
+
+    &:hover {
+      opacity: 0.85;
+    }
+  }
+}
+
+.upf-btn--default {
+  border: 1px solid var(--color-gray-200);
+  background-color: var(--color-white);
+  color: var(--color-gray-600);
+
+  i {
+    color: var(--color-gray-600);
+  }
+
+  a& {
+    line-height: 2.4rem;
+  }
+
+  &:hover,
+  &:active {
+    box-shadow: 0px 0px 0px 2px var(--color-gray-100), var(--box-shadow-xs);
+    color: var(--color-white);
+
+    i {
+      color: var(--color-white);
+    }
+  }
+
+  &:hover {
+    background-color: var(--color-gray-600);
+    border-color: var(--color-gray-100);
+  }
+
+  &:active {
+    background-color: var(--color-gray-500);
+  }
+
+  &.disabled,
+  &:disabled,
+  &.disabled:hover,
+  &:disabled:hover,
+  &.disabled:focus,
+  &:disabled:focus {
+    .disabled-button;
+  }
+}
+
+.upf-btn--secondary {
+  .upf-btn--primary;
+
+  background-color: var(--color-primary-50);
+  border: 1px solid var(--color-primary-500);
+  color: var(--color-primary-500);
+
+  i {
+    color: var(--color-primary-500);
+  }
+
+  a& {
+    line-height: 2.4rem;
+  }
+
+  &:hover, &:active {
+    color: var(--color-white);
+
+    i {
+      color: var(--color-white);
+    }
+  }
+
+  &.upf-btn--dark-bg {
+    .outline(var(--color-white));
+    color: var(--color-white);
+
+    i {
+      color: var(--color-white);
+    }
+    &:hover {
+      opacity: 0.75;
+    }
+  }
+}
+
+// Button Sizes
+// --------------------------------------------------
+
+.upf-btn--small,
+.upf-btn--sm {
+  height: 24px;
+  padding: var(--spacing-px-3) var(--spacing-px-12);
+
+  a& {
+    line-height: 2rem;
+  }
+}
+
+// Deprecated in favor of small.
+.upf-btn--x-small,
+.upf-btn--xs {
+  &:extend(.upf-btn--small);
+}
+
+.upf-btn--medium,
+.upf-btn--md {
+  height: 36px;
 }
 
 .upf-btn.upf-btn--extended-orange,
