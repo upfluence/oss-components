@@ -3,7 +3,7 @@
   border: 1px solid var(~'--color-@{variant}-500');
   color: var(~'--color-@{variant}-500');
 
-  i {
+  i, span {
     color: var(~'--color-@{variant}-500');
   }
 
@@ -16,7 +16,7 @@
     box-shadow: 0px 0px 0px 2px var(~'--color-@{variant}-100'), var(--box-shadow-xs);
     color: var(--color-white);
 
-    i {
+    i, span {
       color: var(--color-white);
     }
   }
@@ -36,7 +36,7 @@
   border: 1px solid var(--color-error-500);
   color: var(--color-error-500);
 
-  i {
+  i, span {
     color: var(--color-error-500);
   }
 
@@ -49,7 +49,7 @@
     box-shadow: 0px 0px 0px 2px var(--color-error-100), var(--box-shadow-xs);
     color: var(--color-white);
 
-    i {
+    i, span {
       color: var(--color-white);
     }
   }
@@ -99,7 +99,7 @@
   border-radius: var(--border-radius-sm);
   cursor: pointer;
 
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
 
@@ -135,8 +135,7 @@
       color: var(--color-white);
       opacity: 1;
 
-      .fa,
-      .far {
+      i, span {
         color: var(--color-white);
       }
     }
@@ -148,7 +147,7 @@
   border: 1px solid var(--color-primary-500);
   color: var(--color-white);
 
-  i {
+  i, span {
     color: var(--color-white);
   }
 
@@ -172,11 +171,11 @@
   }
 
   &.upf-btn--dark-bg {
-    .fill(var(--color-white));
+    border-color: var(--color-white);
+    background-color: var(--color-white);
     color: var(--color-primary-500) !important;
 
-    .fa,
-    .far {
+    i, span {
       color: var(--color-primary-500);
     }
 
@@ -191,7 +190,7 @@
   background-color: var(--color-white);
   color: var(--color-gray-600);
 
-  i {
+  i, span {
     color: var(--color-gray-600);
   }
 
@@ -204,7 +203,7 @@
     box-shadow: 0px 0px 0px 2px var(--color-gray-100), var(--box-shadow-xs);
     color: var(--color-white);
 
-    i {
+    i, span {
       color: var(--color-white);
     }
   }
@@ -217,25 +216,14 @@
   &:active {
     background-color: var(--color-gray-500);
   }
-
-  &.disabled,
-  &:disabled,
-  &.disabled:hover,
-  &:disabled:hover,
-  &.disabled:focus,
-  &:disabled:focus {
-    .disabled-button;
-  }
 }
 
 .upf-btn--secondary {
-  .upf-btn--primary;
-
   background-color: var(--color-primary-50);
   border: 1px solid var(--color-primary-500);
   color: var(--color-primary-500);
 
-  i {
+  i, span {
     color: var(--color-primary-500);
   }
 
@@ -243,21 +231,35 @@
     line-height: 2.4rem;
   }
 
-  &:hover, &:active {
+  &:hover,
+  &:active {
+    box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
     color: var(--color-white);
 
-    i {
+    i, span {
       color: var(--color-white);
     }
   }
 
-  &.upf-btn--dark-bg {
-    .outline(var(--color-white));
+  &:hover {
+    border: 1px solid var(--color-primary-600);
+    background-color: var(--color-primary-600);
+  }
+
+  &:active {
+    background-color: var(--color-primary-400);
+    border: 1px solid var(--color-primary-400);
+  }
+
+  &.upf-btn.upf-btn--dark-bg {
+    border: 1px solid var(--color-white);
+    background-color: transparent;
     color: var(--color-white);
 
-    i {
+    i, span {
       color: var(--color-white);
     }
+
     &:hover {
       opacity: 0.75;
     }
