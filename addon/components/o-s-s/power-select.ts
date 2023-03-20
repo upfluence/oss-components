@@ -41,12 +41,16 @@ export default class OSSPowerSelect extends Component<OSSPowerSelectArgs> {
   toggleSelect(event: MouseEvent): void {
     event.stopPropagation();
     this.displaySelect = !this.displaySelect;
+
+    if (!this.displaySelect) {
+      this.args.onSearch?.('');
+    }
   }
 
   @action
   hideSelect(_: HTMLElement, event: MouseEvent): void {
     event.stopPropagation();
     this.displaySelect = false;
-
+    this.args.onSearch?.('');
   }
 }
