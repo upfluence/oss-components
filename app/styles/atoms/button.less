@@ -3,7 +3,8 @@
   border: 1px solid var(~'--color-@{variant}-500');
   color: var(~'--color-@{variant}-500');
 
-  i, span {
+  i,
+  span {
     color: var(~'--color-@{variant}-500');
   }
 
@@ -16,7 +17,8 @@
     box-shadow: 0px 0px 0px 2px var(~'--color-@{variant}-100'), var(--box-shadow-xs);
     color: var(--color-white);
 
-    i, span {
+    i,
+    span {
       color: var(--color-white);
     }
   }
@@ -31,39 +33,6 @@
   }
 }
 
-.upf-btn--destructive {
-  background-color: var(--color-error-50);
-  border: 1px solid var(--color-error-500);
-  color: var(--color-error-500);
-
-  i, span {
-    color: var(--color-error-500);
-  }
-
-  a& {
-    line-height: 2.4rem;
-  }
-
-  &:hover,
-  &:active {
-    box-shadow: 0px 0px 0px 2px var(--color-error-100), var(--box-shadow-xs);
-    color: var(--color-white);
-
-    i, span {
-      color: var(--color-white);
-    }
-  }
-
-  &:hover {
-    background-color: var(--color-error-500);
-  }
-
-  &:active {
-    background-color: var(--color-error-400);
-    border-color: var(--color-error-400);
-  }
-}
-
 .upf-square-btn {
   height: 24px;
   width: 24px;
@@ -71,6 +40,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.25s ease-in-out;
 
   &--xs,
   &--sm {
@@ -135,7 +105,8 @@
       color: var(--color-white);
       opacity: 1;
 
-      i, span {
+      i,
+      span {
         color: var(--color-white);
       }
     }
@@ -147,7 +118,8 @@
   border: 1px solid var(--color-primary-500);
   color: var(--color-white);
 
-  i, span {
+  i,
+  span {
     color: var(--color-white);
   }
 
@@ -175,7 +147,8 @@
     background-color: var(--color-white);
     color: var(--color-primary-500) !important;
 
-    i, span {
+    i,
+    span {
       color: var(--color-primary-500);
     }
 
@@ -190,7 +163,8 @@
   background-color: var(--color-white);
   color: var(--color-gray-600);
 
-  i, span {
+  i,
+  span {
     color: var(--color-gray-600);
   }
 
@@ -201,20 +175,27 @@
   &:hover,
   &:active {
     box-shadow: 0px 0px 0px 2px var(--color-gray-100), var(--box-shadow-xs);
-    color: var(--color-white);
+    color: var(--color-gray-900);
 
-    i, span {
-      color: var(--color-white);
+    i,
+    span {
+      color: var(--color-gray-900);
     }
   }
 
   &:hover {
-    background-color: var(--color-gray-600);
-    border-color: var(--color-gray-100);
+    background-color: var(--color-gray-50);
+    border-color: var(--color-gray-300);
   }
 
   &:active {
-    background-color: var(--color-gray-500);
+    background-color: var(--color-white);
+    color: var(--color-gray-600);
+
+    i,
+    span {
+      color: var(--color-gray-600);
+    }
   }
 }
 
@@ -223,7 +204,8 @@
   border: 1px solid var(--color-primary-500);
   color: var(--color-primary-500);
 
-  i, span {
+  i,
+  span {
     color: var(--color-primary-500);
   }
 
@@ -236,7 +218,8 @@
     box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
     color: var(--color-white);
 
-    i, span {
+    i,
+    span {
       color: var(--color-white);
     }
   }
@@ -256,7 +239,8 @@
     background-color: transparent;
     color: var(--color-white);
 
-    i, span {
+    i,
+    span {
       color: var(--color-white);
     }
 
@@ -266,28 +250,16 @@
   }
 }
 
-// Button Sizes
-// --------------------------------------------------
-
-.upf-btn--small,
-.upf-btn--sm {
-  height: 24px;
-  padding: var(--spacing-px-3) var(--spacing-px-12);
-
-  a& {
-    line-height: 2rem;
-  }
+.upf-btn--destructive {
+  .generate-extended-palette-btn(error);
 }
 
-// Deprecated in favor of small.
-.upf-btn--x-small,
-.upf-btn--xs {
-  &:extend(.upf-btn--small);
+.upf-btn--alert {
+  .generate-extended-palette-btn(warning);
 }
 
-.upf-btn--medium,
-.upf-btn--md {
-  height: 36px;
+.upf-btn--success {
+  .generate-extended-palette-btn(success);
 }
 
 .upf-btn.upf-btn--extended-orange,
@@ -318,4 +290,28 @@
 .upf-btn.upf-btn--extended-violet,
 .upf-square-btn.upf-btn--extended-violet {
   .generate-extended-palette-btn(violet);
+}
+
+// Button Sizes
+// --------------------------------------------------
+
+.upf-btn--small,
+.upf-btn--sm {
+  height: 24px;
+  padding: var(--spacing-px-3) var(--spacing-px-12);
+
+  a& {
+    line-height: 2rem;
+  }
+}
+
+// Deprecated in favor of small.
+.upf-btn--x-small,
+.upf-btn--xs {
+  &:extend(.upf-btn--small);
+}
+
+.upf-btn--medium,
+.upf-btn--md {
+  height: 36px;
 }
