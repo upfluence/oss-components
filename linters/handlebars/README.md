@@ -27,6 +27,6 @@ module.exports = {
 
 | Name                                                                                                      | Description |
 | :-------------------------------------------------------------------------------------------------------- | :-- | 
-| no-bare-button                                           | Warns against usage of raw `button` element and legacy `loading-button` component
+| no-bare-button                                           | Warns against usage of raw `button` element 
 
 <!--RULES_TABLE_END-->
