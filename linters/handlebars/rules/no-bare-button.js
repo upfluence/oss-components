@@ -5,30 +5,30 @@ class NoBareHTMLButton extends Rule {
   visitor() {
     return {
       ElementNode(node) {
-        if (this._hasDiscouragedNode(node)) {
+        if (this._hasUnrecommendedNode(node)) {
           this._logError(node);
         }
       },
 
       MustacheStatement(node) {
-        if (this._hasDiscouragedNode(node)) {
+        if (this._hasUnrecommendedNode(node)) {
           this._logError(node);
         }
       },
 
       BlockStatement(node) {
-        if (this._hasDiscouragedNode(node)) {
+        if (this._hasUnrecommendedNode(node)) {
           this._logError(node);
         }
       }
     };
   }
 
-  _hasDiscouragedNode(node) {
+  _hasUnrecommendedNode(node) {
     const buttonInvokationExpr = ['MustacheStatement', 'BlockStatement'].includes(node.type)
       ? node.path.original
       : node.tag;
-    return ['button', 'LoadingButton', 'loading-button'].includes(buttonInvokationExpr);
+    return ['button'].includes(buttonInvokationExpr);
   }
 
   _logError(node) {

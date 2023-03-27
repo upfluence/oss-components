@@ -39,7 +39,6 @@ module.exports = {
     this._registerLessDependencies(app);
 
     this.import('node_modules/bootstrap/dist/js/bootstrap.min.js');
-    this.import('node_modules/countdown.js/lib/countdown.js');
     this.import('node_modules/ion-rangeslider/js/ion.rangeSlider.min.js');
     this.import('node_modules/ion-rangeslider/css/ion.rangeSlider.min.css');
 

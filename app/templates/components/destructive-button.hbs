@@ -1,9 +1,0 @@
-{{#if isLoading}}
-  {{ongoingMessage}} ( {{seconds}} )...
-{{else if actionFailed}}
-  <i class='fa fa-refresh'></i> &nbsp; {{failureMessage}}
-{{else if isSuccess}}
-  {{successMessage}}
-{{else}}
-  {{yield}}
-{{/if}}
