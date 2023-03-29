@@ -1,7 +1,17 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 
-export type SkinType = 'primary' | 'success' | 'warning' | 'danger' | 'secondary';
+export type SkinType =
+  | 'primary'
+  | 'success'
+  | 'warning'
+  | 'danger'
+  | 'secondary'
+  | 'xtd-orange'
+  | 'xtd-cyan'
+  | 'xtd-yellow'
+  | 'xtd-blue'
+  | 'xtd-violet';
 
 type SkinDefType = {
   [key in SkinType]: string;
@@ -13,7 +23,12 @@ export const SkinDefinition: SkinDefType = {
   success: 'success',
   warning: 'alert',
   danger: 'critical',
-  secondary: 'neutral'
+  secondary: 'neutral',
+  'xtd-orange': 'xtd-orange',
+  'xtd-cyan': 'xtd-cyan',
+  'xtd-yellow': 'xtd-yellow',
+  'xtd-blue': 'xtd-blue',
+  'xtd-violet': 'xtd-violet'
 };
 
 interface OSSTagArgs {
@@ -21,6 +36,7 @@ interface OSSTagArgs {
   skin?: string;
   icon?: string;
   hasEllipsis?: boolean;
+  plain?: boolean;
 }
 
 export default class OSSTag extends Component<OSSTagArgs> {
@@ -43,6 +59,10 @@ export default class OSSTag extends Component<OSSTagArgs> {
 
     if (this.skin) {
       classes.push(`upf-tag--${this.skin}`);
+    }
+
+    if (this.args.plain) {
+      classes.push('upf-tag--plain');
     }
 
     return classes.join(' ');
