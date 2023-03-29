@@ -37,6 +37,13 @@ module('Integration | Component | o-s-s/tag', function (hooks) {
     assert.dom('.upf-tag i').hasClass('fa-thumbs-up');
   });
 
+  module('@plain', () => {
+    test('the right class is applied on the tag', async function (assert) {
+      await render(hbs`<OSS::Tag @icon="far fa-thumbs-up" @plain={{true}} />`);
+      assert.dom('.upf-tag').hasClass('upf-tag--plain');
+    });
+  });
+
   module('@hasEllipsis', () => {
     test('When the param is true then the ellipsis is shown', async function (assert) {
       await render(hbs`<OSS::Tag @label='Test with a huge label sentence' @hasEllipsis='true' />`);

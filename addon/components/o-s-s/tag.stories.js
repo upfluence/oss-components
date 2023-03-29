@@ -46,6 +46,16 @@ export default {
       control: {
         type: 'boolean'
       }
+    },
+    plain: {
+      description: 'Whether to use the plain style or not',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
+      },
+      control: {
+        type: 'boolean'
+      }
     }
   }
 };
