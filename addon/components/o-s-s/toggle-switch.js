@@ -18,9 +18,9 @@ export default class OSSToggleSwitchComponent extends Component {
   }
 
   @action
-  switchState() {
+  switchState(event) {
     if (!this.args.disabled) {
-      this.args.onChange(!this.args.value);
+      this.args.onChange(!this.args.value, event);
     }
   }
 }
