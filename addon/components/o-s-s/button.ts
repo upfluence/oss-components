@@ -7,7 +7,6 @@ type SkinType =
   | 'default'
   | 'primary'
   | 'secondary'
-  | 'tertiary'
   | 'destructive'
   | 'success'
   | 'alert'
@@ -39,7 +38,6 @@ const SkinDefinition: SkinDefType = {
   default: 'default',
   primary: 'primary',
   secondary: 'secondary',
-  tertiary: 'tertiary',
   destructive: 'destructive',
   success: 'success',
   alert: 'alert',
