@@ -4,7 +4,6 @@ const SkinTypes = [
   'default',
   'primary',
   'secondary',
-  'tertiary',
   'destructive',
   'alert',
   'success',

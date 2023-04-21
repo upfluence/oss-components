@@ -4,7 +4,7 @@ import { inject as service } from '@ember/service';
 import RouterService from '@ember/routing/router-service';
 import { assert } from '@ember/debug';
 
-type LinkType = {
+export type LinkType = {
   href: string;
   target: '_self' | '_blank' | '_parent' | '_top';
 };
