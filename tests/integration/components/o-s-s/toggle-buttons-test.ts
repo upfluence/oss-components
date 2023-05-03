@@ -7,7 +7,7 @@ import hbs from 'htmlbars-inline-precompile';
 import setupOnerror from '@ember/test-helpers/setup-onerror';
 import sinon from 'sinon';
 
-module('Integration | Component | o-s-s/toggle-buttons', function(hooks) {
+module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -15,19 +15,22 @@ module('Integration | Component | o-s-s/toggle-buttons', function(hooks) {
     this.onSelection = (value: any) => {
       set(this, 'selectedToggle', value);
     };
-    this.toggles = [{
-      value:'first',
-      label:'First'
-    },
-    {
-      value:'second',
-      label:'Second'
-    }];
+    this.toggles = [
+      {
+        value: 'first',
+        label: 'First'
+      },
+      {
+        value: 'second',
+        label: 'Second'
+      }
+    ];
   });
 
-  
-  test('it renders', async function(assert) {
-    await render(hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`);
+  test('it renders', async function (assert) {
+    await render(
+      hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+    );
 
     assert.ok(true);
   });
@@ -56,11 +59,9 @@ module('Integration | Component | o-s-s/toggle-buttons', function(hooks) {
     });
   });
 
-  module('If @selectedToggle is passed', function (/*hooks*/) {
-
-    test('If the selectedToggle doesn\'t match an entry from the toggles, then the first toggle is set to selected', async function (assert) {
-
-      this.selectedToggle = 'toto'
+  module('If @selectedToggle is passed', function () {
+    test("If the selectedToggle doesn't match an entry from the toggles, then the first toggle is set to selected", async function (assert) {
+      this.selectedToggle = 'toto';
       await render(
         hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
       );
@@ -68,19 +69,16 @@ module('Integration | Component | o-s-s/toggle-buttons', function(hooks) {
     });
 
     test('If the selectedToggle matches an entry from the toggles, then the toggle is set to selected', async function (assert) {
-
-      this.selectedToggle = 'second'
+      this.selectedToggle = 'second';
 
       await render(
         hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
       );
       assert.dom('.oss-toggle-buttons-btn--selected').hasText('Second');
     });
-
   });
 
   module('When clicking on an item', () => {
-
     test('the toggle is selected', async function (assert) {
       await render(
         hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
@@ -89,7 +87,6 @@ module('Integration | Component | o-s-s/toggle-buttons', function(hooks) {
       await click('.oss-toggle-buttons-btn:first-child');
       assert.dom('.oss-toggle-buttons-btn--selected').hasText('First');
 
-      
       await click('.oss-toggle-buttons-btn:last-child');
       assert.dom('.oss-toggle-buttons-btn--selected').hasText('Second');
     });

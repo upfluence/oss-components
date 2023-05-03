@@ -81,24 +81,26 @@ export default class ApplicationController extends Controller {
   subdomainRegex = /^[a-zA-Z0-9]+[a-zA-Z0-9-._]*[a-zA-Z0-9]+$/;
   urlRegex = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/;
 
-  @tracked selectedToggle = undefined
+  @tracked selectedToggle = undefined;
 
-  toggles = [{
-    value:'first',
-    label:'First'
-  },
-  {
-    value:'second',
-    label:'Second'
-  }]
+  toggles = [
+    {
+      value: 'first',
+      label: 'First'
+    },
+    {
+      value: 'second',
+      label: 'Second'
+    }
+  ];
 
   @action
-  triggerSelection(value){
+  triggerSelection(value) {
     console.log('selected toggle value : ', value);
 
-    this.selectedToggle = value
+    this.selectedToggle = value;
   }
-  
+
   tableDemo = {
     header: [
       { title: 'Title 0' },

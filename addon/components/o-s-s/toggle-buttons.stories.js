@@ -1,8 +1,6 @@
 import hbs from 'htmlbars-inline-precompile';
 import { action } from '@storybook/addon-actions';
 
-const PrivacyTypes = ['public', 'private'];
-
 export default {
   title: 'Components/OSS::ToggleButtons',
   component: 'upload-item',
@@ -50,11 +48,13 @@ export default {
   }
 };
 
-
 const defaultArgs = {
-  toggles: [{'value':'categories','label':'Categories'},{'value':'products','label':'Products'}],
+  toggles: [
+    { value: 'categories', label: 'Categories' },
+    { value: 'products', label: 'Products' }
+  ],
   selectedToggle: 'categories',
-  onSelection: action('onSelection'),
+  onSelection: action('onSelection')
 };
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
