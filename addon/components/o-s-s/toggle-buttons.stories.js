@@ -3,14 +3,15 @@ import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'Components/OSS::ToggleButtons',
-  component: 'upload-item',
+  component: 'toggle-buttons',
   argTypes: {
     toggles: {
       type: { required: true },
-      description: 'The uploader instance. The uploader can extend BaseUploader class in service/base-uploader.ts',
+      description: 'An array of toggles passed to the component',
       table: {
         type: {
-          summary: 'toggles'
+          summary: 'toggles',
+          object: 'test'
         },
         defaultValue: { summary: 'undefined' }
       },
@@ -29,7 +30,7 @@ export default {
     },
     onSelection: {
       type: { required: true },
-      description: 'Action triggers when selecting new toggle',
+      description: 'Action triggered when selecting a new toggle',
       table: {
         category: 'Actions',
         type: {

@@ -81,7 +81,7 @@ export default class ApplicationController extends Controller {
   subdomainRegex = /^[a-zA-Z0-9]+[a-zA-Z0-9-._]*[a-zA-Z0-9]+$/;
   urlRegex = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/;
 
-  @tracked selectedToggle = undefined;
+  @tracked selectedToggle = '';
 
   toggles = [
     {

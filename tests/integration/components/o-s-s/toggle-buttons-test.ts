@@ -32,7 +32,7 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
       hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
     );
 
-    assert.ok(true);
+    assert.dom('.oss-toggle-buttons-container').exists();
   });
 
   module('error management', () => {
@@ -40,7 +40,7 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
       setupOnerror((err: any) => {
         assert.equal(
           err.message,
-          'Assertion Failed: [component][OSS::ToggleButtons] The @toggles parameter of type object is mandatory'
+          'Assertion Failed: [component][OSS::ToggleButtons] The @toggles parameter of type Toggle[] is mandatory'
         );
       });
       await render(hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}}/>`);
