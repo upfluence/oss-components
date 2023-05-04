@@ -87,7 +87,7 @@ const WithIllustrationTemplate = (args) => ({
       <OSS::ModalDialog @title={{this.title}} @close={{this.close}} @subtitle={{this.subtitle}} @size={{this.size}} 
                         @close={{this.close}}>
         <:illustration>
-        This will contain an illustration.
+          This will contain an illustration.
         </:illustration>
         <:content>
           Content goes here
