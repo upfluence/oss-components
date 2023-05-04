@@ -11,7 +11,7 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
-    this.selectedToggle = '';
+    this.selectedToggle = 'first';
     this.onSelection = (value: any) => {
       set(this, 'selectedToggle', value);
     };
@@ -43,7 +43,9 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
           'Assertion Failed: [component][OSS::ToggleButtons] The @toggles parameter of type Toggle[] is mandatory'
         );
       });
-      await render(hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}}/>`);
+      await render(
+        hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @selectedToggle={{this.selectedToggle}}/>`
+      );
       await settled();
     });
 
@@ -54,20 +56,38 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
           'Assertion Failed: [component][OSS::ToggleButtons] The @onSelection parameter of type function is mandatory'
         );
       });
-      await render(hbs`<OSS::ToggleButtons @toggles={{this.toggles}}/>`);
+      await render(hbs`<OSS::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`);
+      await settled();
+    });
+
+    test('it throws an error if @selectedToggle is not provided', async function (assert) {
+      setupOnerror((err: any) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::ToggleButtons] The @selectedToggle parameter of type string is mandatory'
+        );
+      });
+      await render(hbs`<OSS::ToggleButtons @toggles={{this.toggles}} @onSelection={{this.onSelection}}  />`);
+      await settled();
+    });
+
+    test('it throws an error if @selectedToggle is not a value of toggles', async function (assert) {
+      this.selectedToggle = 'toto';
+
+      setupOnerror((err: any) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::ToggleButtons] The @selectedToggle parameter should be a value of toggles'
+        );
+      });
+      await render(
+        hbs`<OSS::ToggleButtons @toggles={{this.toggles}} @onSelection={{this.onSelection}} @selectedToggle={{this.selectedToggle}}/>`
+      );
       await settled();
     });
   });
 
   module('If @selectedToggle is passed', function () {
-    test("If the selectedToggle doesn't match an entry from the toggles, then the first toggle is set to selected", async function (assert) {
-      this.selectedToggle = 'toto';
-      await render(
-        hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
-      );
-      assert.dom('.oss-toggle-buttons-btn--selected').hasText('First');
-    });
-
     test('If the selectedToggle matches an entry from the toggles, then the toggle is set to selected', async function (assert) {
       this.selectedToggle = 'second';
 

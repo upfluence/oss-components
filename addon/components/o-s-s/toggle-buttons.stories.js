@@ -18,13 +18,13 @@ export default {
       control: { type: 'object' }
     },
     selectedToggle: {
-      type: { required: false },
+      type: { required: true },
       description: 'Value selected',
       table: {
         type: {
           summary: 'selectedToggle'
         },
-        defaultValue: { summary: 'First element of toggles' }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'object' }
     },

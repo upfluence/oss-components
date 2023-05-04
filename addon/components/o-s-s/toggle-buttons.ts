@@ -9,7 +9,7 @@ export type Toggle = {
 
 interface OSSToggleButtonsArgs {
   toggles: Toggle[];
-  selectedToggle?: string;
+  selectedToggle: string;
   onSelection(selectedToggle: string): void;
 }
 
@@ -19,20 +19,22 @@ export default class OSSToggleButtons extends Component<OSSToggleButtonsArgs> {
 
     assert(
       '[component][OSS::ToggleButtons] The @toggles parameter of type Toggle[] is mandatory',
-      typeof this.args.toggles === 'object'
+      this.args.toggles instanceof Array
     );
 
     assert(
       '[component][OSS::ToggleButtons] The @onSelection parameter of type function is mandatory',
       typeof args.onSelection === 'function'
     );
-  }
 
-  get selectedToggle(): string {
-    return (
-      this.args.toggles.find((item: Toggle) => {
-        return item.value === this.args.selectedToggle;
-      })?.value || this.args.toggles[0].value
+    assert(
+      '[component][OSS::ToggleButtons] The @selectedToggle parameter of type string is mandatory',
+      typeof args.selectedToggle === 'string'
+    );
+
+    assert(
+      '[component][OSS::ToggleButtons] The @selectedToggle parameter should be a value of toggles',
+      args.toggles.map((item) => item.value).includes(args.selectedToggle)
     );
   }
 

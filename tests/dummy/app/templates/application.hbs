@@ -12,7 +12,8 @@
   {{upf-checkbox value=this.isChecked size='sm'}}
 </div>
 <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
-  <OSS::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{'toto'}} @onSelection={{this.triggerSelection}} />
+  <OSS::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}
+    @onSelection={{this.triggerSelection}} />
 </div>
 <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
   <OSS::NumberInput @value={{this.numberValue}} @onChange={{this.handleNumberInput}} />
