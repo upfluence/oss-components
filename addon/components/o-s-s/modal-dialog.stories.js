@@ -82,5 +82,26 @@ const BasicUsageTemplate = (args) => ({
   context: args
 });
 
+const WithIllustrationTemplate = (args) => ({
+  template: hbs`
+      <OSS::ModalDialog @title={{this.title}} @close={{this.close}} @subtitle={{this.subtitle}} @size={{this.size}} 
+                        @close={{this.close}}>
+        <:illustration>
+          This will contain an illustration.
+        </:illustration>
+        <:content>
+          Content goes here
+        </:content>
+        <:footer>
+          Footer goes here
+        </:footer>
+      </OSS::ModalDialog>
+  `,
+  context: args
+});
+
 export const Usage = BasicUsageTemplate.bind({});
+export const WithIlllustration = WithIllustrationTemplate.bind({});
+
 Usage.args = defaultArgs;
+WithIlllustration.args = defaultArgs;

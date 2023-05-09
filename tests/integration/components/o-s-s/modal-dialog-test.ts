@@ -69,6 +69,19 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
     assert.dom('.oss-modal-dialog .subtitle').hasText('Subtitle');
   });
 
+  test('The illustration named-block is properly displayed', async function (assert) {
+    await render(
+      hbs`
+      <OSS::ModalDialog @title="Example modal" @subtitle="subtitle" @close={{this.closeModal}} @size="md">
+        <:illustration>
+          <p class="illustration-container">Illustration</p>
+        </:illustration>
+      </OSS::ModalDialog>`
+    );
+
+    assert.dom('.illustration-container').exists();
+  });
+
   test('The content named-block is properly displayed', async function (assert) {
     await render(
       hbs`
