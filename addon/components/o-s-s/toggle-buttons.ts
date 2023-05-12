@@ -40,6 +40,8 @@ export default class OSSToggleButtons extends Component<OSSToggleButtonsArgs> {
 
   @action
   onSelectToggle(selectedToggle: string): void {
-    this.args.onSelection(selectedToggle);
+    if (this.args.selectedToggle !== selectedToggle) {
+      this.args.onSelection(selectedToggle);
+    }
   }
 }

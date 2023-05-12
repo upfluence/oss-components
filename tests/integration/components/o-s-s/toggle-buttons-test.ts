@@ -111,6 +111,17 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
       assert.dom('.oss-toggle-buttons-btn--selected').hasText('Second');
     });
 
+    test('the @onSelection method is not triggered if the item is already selected', async function (assert) {
+      this.onSelectionStub = sinon.stub();
+
+      await render(
+        hbs`<OSS::ToggleButtons @onSelection={{this.onSelectionStub}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+      );
+
+      await click('.oss-toggle-buttons-btn:first-child');
+      assert.ok(this.onSelectionStub.notCalled);
+    });
+
     test('the @onSelection method is triggered with the selected value', async function (assert) {
       this.onSelection = sinon.spy();
 
@@ -118,8 +129,6 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
         hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
       );
 
-      await click('.oss-toggle-buttons-btn:first-child');
-      assert.ok(this.onSelection.calledWith('first'));
       await click('.oss-toggle-buttons-btn:last-child');
       assert.ok(this.onSelection.calledWith('second'));
     });
