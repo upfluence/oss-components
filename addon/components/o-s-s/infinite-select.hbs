@@ -13,7 +13,7 @@
       {{#if (and @loading (not @loadingMore))}}
         <div class="upf-skeleton-content fx-col fx-malign-start padding-xx-sm">
           {{#each this.loadingRows as |width|}}
-            <div class="upf-skeleton-effect margin-bottom-xx-sm" style="width: {{width}}%; height: 8px;"></div>
+            <div class="upf-skeleton-effect margin-bottom-xx-sm" style="width: 100%; height: 8px;"></div>
           {{/each}}
         </div>
       {{else}}
@@ -47,7 +47,7 @@
         {{#if @loadingMore}}
           <div class="upf-skeleton-content fx-col fx-malign-start padding-xx-sm">
             {{#each this.loadingMoreRows as |width|}}
-              <div class="upf-skeleton-effect margin-bottom-xx-sm" style="width: {{width}}%; height: 8px;"></div>
+              <div class="upf-skeleton-effect margin-bottom-xx-sm" style="width: 100%; height: 8px;"></div>
             {{/each}}
           </div>
         {{/if}}

@@ -1,46 +1,26 @@
-import { bool } from '@ember/object/computed';
 import Component from '@ember/component';
-import jQuery from 'jquery';
+import { computed } from '@ember/object';
+import { bool } from '@ember/object/computed';
 
 export default Component.extend({
-  tagName: 'tr',
-  classNames: ['upf-datatable__row'],
-  classNameBindings: [
-    'isHeaderRow:upf-datatable__row--header',
-    'isSelected:upf-datatable__row--selected',
-    'isHovering:upf-datatable__row--polymorphic'
-  ],
+  tagName: '',
 
   isSelected: bool('ref.selected'),
 
-  mouseEnter() {
-    this.$()
-      .parentsUntil('.upf-datatable')
-      .find('.upf-datatable__row--polymorphic')
-      .removeClass('upf-datatable__row--polymorphic');
+  computedClasses: computed('isHeaderRow', 'isSelected', 'isHovering', function () {
+    const classes = ['upf-datatable__row'];
 
-    if (this.get('hasPolymorphicColumns')) {
-      this.set('isHovering', true);
-    }
-  },
+    if (this.isHeaderRow) classes.push('upf-datatable__row--header');
+    if (this.isSelected) classes.push('upf-datatable__row--selected');
+    if (this.isHovering) classes.push('upf-datatable__row--polymorphic');
 
-  mouseLeave() {
-    if (this.get('hasPolymorphicColumns')) {
-      this.set('isHovering', false);
-    }
-  },
-
-  click: function (e) {
-    let clickedColumnIsUneditable =
-      jQuery(e.target).parents('td.upf-datatable__column.upf-datatable__column--uneditable').length !== 0;
-    if (this.onRowClick && !clickedColumnIsUneditable) {
-      this.send('handleRowClickCallback');
-    }
-  },
+    return classes.join(' ');
+  }),
 
   actions: {
-    handleRowClickCallback() {
-      this.sendAction('action', this.onRowClick, this.ref);
+    onRowClick(event) {
+      event.stopPropagation();
+      this.onRowClick?.(this.ref);
     }
   }
 });

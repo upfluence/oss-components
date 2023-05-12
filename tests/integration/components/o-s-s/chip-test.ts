@@ -79,7 +79,7 @@ module('Integration | Component | o-s-s/chip', function (hooks) {
     });
   });
 
-  module('On cross click event', () => {
+  module('On cross click event', (hooks) => {
     hooks.beforeEach(function () {
       this.onRemove = sinon.stub();
     });

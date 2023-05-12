@@ -12,7 +12,7 @@ module('Unit | Service | base-uploader', function (hooks) {
     assert.ok(this.service);
   });
 
-  module('#validate method', function () {
+  module('#validate method', function (hooks) {
     hooks.beforeEach(function () {
       this.request = {
         file: new File(

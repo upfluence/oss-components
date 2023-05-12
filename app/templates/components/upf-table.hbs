@@ -1,20 +1,20 @@
 <ul class="row upf-datatable__actions-header">
-  {{#if contextualActionsComponent}}
-    {{component contextualActionsComponent collection=collection}}
+  {{#if this.contextualActionsComponent}}
+    {{component this.contextualActionsComponent collection=this.collection}}
   {{/if}}
 
   <li class="upf-datatable__actions-pull-right">
-    {{#if hasPagination}}
-      {{#unless isCompact}}
-        {{upf-table/pagination currentPage=currentPage perPage=perPage
-                               totalPages=totalPages itemTotal=itemTotal
-                               itemCount=itemCount itemName=itemName}}
+    {{#if this.hasPagination}}
+      {{#unless this.isCompact}}
+        {{upf-table/pagination currentPage=this.currentPage perPage=this.perPage
+                               totalPages=this.totalPages itemTotal=this.itemTotal
+                               itemCount=this.itemCount itemName=this.itemName}}
       {{/unless}}
     {{/if}}
 
-    {{#if hasSearch}}
-      {{expanding-search classNames="margin-left-xx-sm" searchQuery=_searchQuery
-                         placeholder=searchInputPlaceholder small=true}}
+    {{#if this.hasSearch}}
+      {{expanding-search classNames="margin-left-xx-sm" searchQuery=this._searchQuery
+                         placeholder=this.searchInputPlaceholder small=true}}
     {{/if}}
   </li>
 </ul>
@@ -22,33 +22,34 @@
 <table class="upf-datatable__table">
   <thead>
     {{#upf-table/row isHeaderRow=true}}
-      {{#if hasSelection}}
-        {{#unless contentChanging}}
+      {{#if this.hasSelection}}
+        {{#unless this.contentChanging}}
           <th width="45px" class="upf-datatable__column upf-datatable__column--unsortable">
-            {{upf-checkbox value=allRowsSelected}}
+            <OSS::Checkbox
+              @checked={{this.allRowsSelected}}
+              @onChange={{fn (mut this.allRowsSelected) (not this.allRowsSelected)}} />
           </th>
         {{/unless}}
       {{/if}}
 
-      {{#each _columns as |column|}}
+      {{#each this._columns as |column|}}
         {{#unless (eq column.visible false)}}
-          {{upf-table/header_cell column=column
-                                  click=(action "onClickHeader" column)}}
+          {{upf-table/header_cell column=column click=(action "onClickHeader" column)}}
         {{/unless}}
       {{/each}}
     {{/upf-table/row}}
   </thead>
 
   <tbody>
-    {{#if isLoading}}
+    {{#if this.isLoading}}
       <tr>
-        <td colspan={{_fullSizeColumnColspan}} class="upf-align--center">
+        <td colspan={{this._fullSizeColumnColspan}} class="upf-align--center">
           {{loading-state}}
         </td>
       </tr>
     {{else}}
-      {{#if contentChanging}}
-        {{#each _contentPlaceholder}}
+      {{#if this.contentChanging}}
+        {{#each this._contentPlaceholder}}
           {{#upf-table/row}}
             <td valign="middle" class="upf-datatable__column upf-datatable__column--locked">
               <div class="skeleton-placeholder"></div>
@@ -61,15 +62,16 @@
       {{else}}
         {{#each collection as |item index|}}
           {{#upf-table/row ref=item action='callOnRowClickCallback'
-                           hasPolymorphicColumns=hasPolymorphicColumns
-                           onRowClick=onRowClick}}
-            {{#if hasSelection}}
+                           hasPolymorphicColumns=this.hasPolymorphicColumns
+                           onRowClick=this.onRowClick}}
+            {{#if this.hasSelection}}
               <td class="upf-datatable__column upf-datatable__column--uneditable">
-                {{upf-checkbox value=item.selected}}
+                <OSS::Checkbox
+                  @checked={{eq item.selected true}} @onChange={{fn (mut item.selected) (not item.selected)}} />
               </td>
             {{/if}}
 
-            {{#each _columns as |column|}}
+            {{#each this._columns as |column|}}
               {{#unless (eq column.visible false)}}
                 {{#upf-table/column ref=column editable=column.editable
                                     classNames=column.additionalClasses}}
@@ -96,19 +98,18 @@
           {{/upf-table/row}}
         {{else}}
           <tr>
-            <td colspan={{_fullSizeColumnColspan}} class="upf-align--center">
+            <td colspan={{this._fullSizeColumnColspan}} class="upf-align--center">
               {{yield}}
             </td>
           </tr>
         {{/each}}
 
-        {{#if (and hasPagination isCompact)}}
+        {{#if (and this.hasPagination this.isCompact)}}
           <tr>
-            <td colspan={{_fullSizeColumnColspan}}
-                class="upf-align--right padding-sm">
-              {{upf-table/pagination currentPage=currentPage perPage=perPage
-                                     totalPages=totalPages itemTotal=itemTotal
-                                     itemCount=itemCount itemName=itemName}}
+            <td colspan={{this._fullSizeColumnColspan}} class="upf-align--right padding-sm">
+              {{upf-table/pagination currentPage=this.currentPage perPage=this.perPage
+                                     totalPages=this.totalPages itemTotal=this.itemTotal
+                                     itemCount=this.itemCount itemName=this.itemName}}
             </td>
           </tr>
         {{/if}}
