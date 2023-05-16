@@ -1,6 +1,7 @@
 <div class="number-input fx-row">
   <OSS::Button @square={{true}} @size="md" @icon="far fa-minus" {{on "click" this.decreaseValue}} />
-  <OSS::InputContainer @value={{this.localValue}} @onChange={{this.checkUserInput}} style={{this.dynamicWidth}}
+  {{! template-lint-disable no-triple-curlies}}
+  <OSS::InputContainer @value={{this.localValue}} @onChange={{this.checkUserInput}} style={{{this.dynamicWidth}}}
                        {{on "keydown" this.keyParser}} {{on "blur" this.checkUserInput}} />
   <OSS::Button @square={{true}} @size="md" @icon="far fa-plus" {{on "click" this.increaseValue}} />
 </div>

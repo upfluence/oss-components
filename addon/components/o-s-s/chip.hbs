@@ -1,5 +1,5 @@
 <div class={{this.computedClass}} ...attributes {{on "click" this.stopPropagation}}>
-  <span class="text-style-semibold {{if @maxDisplayWidth "chip-ellipsis"}}"
+  <span class="font-weight-semibold {{if @maxDisplayWidth "chip-ellipsis"}}"
         style={{if @maxDisplayWidth this.ellipsisStyle}}
         {{enable-tooltip title=(if @maxDisplayWidth @label '') placement='top'}}>
     {{@label}}

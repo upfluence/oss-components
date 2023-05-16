@@ -1,5 +1,5 @@
-import { not } from '@ember/object/computed';
 import Component from '@ember/component';
+import { not } from '@ember/object/computed';
 
 export default Component.extend({
   tagName: 'td',

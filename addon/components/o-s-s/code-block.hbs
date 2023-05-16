@@ -1,4 +1,5 @@
-<div class="code-block" style={{this.heightStyle}} ...attributes>
+{{! template-lint-disable no-triple-curlies}}
+<div class="code-block" style={{{this.heightStyle}}} ...attributes>
   <div class="code-container {{if @scrollable 'scrollable' 'scroll-shadow scroll-shadow--default'}}">
     <pre class="code">
     {{#each this.codeLineArray as |codeline|}}

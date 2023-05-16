@@ -82,7 +82,7 @@ export default Component.extend({
     },
 
     didPageChange(page) {
-      this.sendAction('didPageChange', page);
+      this.didPageChange(page);
     },
 
     onClickHeader(column) {
@@ -100,7 +100,7 @@ export default Component.extend({
         column.set('direction', direction);
       }
 
-      this.sendAction('didSortColumn', column);
+      this.didSortColumn(column);
     },
 
     triggerObjectCreation() {

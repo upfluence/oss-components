@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
+import { htmlSafe } from '@ember/template';
 
 export type SkinType = 'default' | 'primary' | 'success' | 'danger';
 
@@ -39,8 +40,8 @@ export default class OSSChip extends Component<OSSChipArgs> {
     return SkinDefinition[this.args.skin as SkinType] ?? SkinDefinition.default;
   }
 
-  get ellipsisStyle(): string {
-    return `max-width: ${this.args.maxDisplayWidth}px;`;
+  get ellipsisStyle(): ReturnType<typeof htmlSafe> {
+    return htmlSafe(`max-width: ${this.args.maxDisplayWidth}px;`);
   }
 
   get computedClass(): string {
