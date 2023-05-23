@@ -11,24 +11,6 @@ module('Integration | Component | o-s-s/checkbox', function (hooks) {
     this.onChange = () => {};
   });
 
-  test('it throws an error if checked argument is missing', async function (assert) {
-    setupOnerror((error: Error) => {
-      assert.equal(
-        error.message,
-        'Assertion Failed: [component][OSS::Checkbox] Boolean @checked argument is mandatory.'
-      );
-    });
-    await render(hbs`<OSS::Checkbox />`);
-  });
-
-  test('it throws an error if checked argument is missing', async function (assert) {
-    setupOnerror((error: Error) => {
-      assert.equal(error.message, 'Assertion Failed: [component][OSS::Checkbox] @onChange argument is mandatory.');
-    });
-
-    await render(hbs`<OSS::Checkbox @checked={{true}} />`);
-  });
-
   test('it renders correctly', async function (assert: Assert) {
     this.checked = false;
     await render(hbs`<OSS::Checkbox @checked={{this.checked}} @onChange={{this.onChange}} />`);
@@ -105,6 +87,26 @@ module('Integration | Component | o-s-s/checkbox', function (hooks) {
       );
 
       assert.dom('.upf-checkbox__fake-checkbox').hasNoClass('upf-checkbox__fake-checkbox--partial');
+    });
+  });
+
+  module('Error management', function () {
+    test('it throws an error if checked argument is missing', async function (assert) {
+      setupOnerror((error: Error) => {
+        assert.equal(
+          error.message,
+          'Assertion Failed: [component][OSS::Checkbox] Boolean @checked argument is mandatory.'
+        );
+      });
+      await render(hbs`<OSS::Checkbox />`);
+    });
+
+    test('it throws an error if checked argument is missing', async function (assert) {
+      setupOnerror((error: Error) => {
+        assert.equal(error.message, 'Assertion Failed: [component][OSS::Checkbox] @onChange argument is mandatory.');
+      });
+
+      await render(hbs`<OSS::Checkbox @checked={{true}} />`);
     });
   });
 });

@@ -24,23 +24,6 @@ module('Integration | Component | o-s-s/chip', function (hooks) {
       assert.dom('.upf-chip span').hasText(this.label);
     });
 
-    test('It throws an error if @onRemove is not passed', async function (assert) {
-      setupOnerror((err: any) => {
-        assert.equal(
-          err.message,
-          'Assertion Failed: [component][OSS::Chip] The parameter @onRemove of type function is mandatory'
-        );
-      });
-      await render(hbs`<OSS::Chip @label={{this.label}} />`);
-    });
-
-    test('It throws an error if @label is not passed', async function (assert) {
-      setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::Chip] The @label parameter is mandatory');
-      });
-      await render(hbs`<OSS::Chip @onRemove={{this.onRemove}} />`);
-    });
-
     test('it renders the proper label when @label is passed', async function (assert) {
       await render(hbs`<OSS::Chip @label={{this.label}} @onRemove={{this.onRemove}} />`);
 
@@ -103,6 +86,25 @@ module('Integration | Component | o-s-s/chip', function (hooks) {
 
       assert.dom('.upf-chip').exists();
       assert.dom('.upf-chip').hasClass(`upf-chip--${SkinDefinition[this.skin as SkinType]}`);
+    });
+  });
+
+  module('Error management', function () {
+    test('It throws an error if @onRemove is not passed', async function (assert) {
+      setupOnerror((err: any) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::Chip] The parameter @onRemove of type function is mandatory'
+        );
+      });
+      await render(hbs`<OSS::Chip @label={{this.label}} />`);
+    });
+
+    test('It throws an error if @label is not passed', async function (assert) {
+      setupOnerror((err: any) => {
+        assert.equal(err.message, 'Assertion Failed: [component][OSS::Chip] The @label parameter is mandatory');
+      });
+      await render(hbs`<OSS::Chip @onRemove={{this.onRemove}} />`);
     });
   });
 });

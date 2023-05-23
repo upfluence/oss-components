@@ -35,7 +35,54 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
     assert.dom('.oss-toggle-buttons-container').exists();
   });
 
-  module('error management', () => {
+  module('If @selectedToggle is passed', function () {
+    test('If the selectedToggle matches an entry from the toggles, then the toggle is set to selected', async function (assert) {
+      this.selectedToggle = 'second';
+
+      await render(
+        hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+      );
+      assert.dom('.oss-toggle-buttons-btn--selected').hasText('Second');
+    });
+  });
+
+  module('When clicking on an item', () => {
+    test('the toggle is selected', async function (assert) {
+      await render(
+        hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+      );
+
+      await click('.oss-toggle-buttons-btn:first-child');
+      assert.dom('.oss-toggle-buttons-btn--selected').hasText('First');
+
+      await click('.oss-toggle-buttons-btn:last-child');
+      assert.dom('.oss-toggle-buttons-btn--selected').hasText('Second');
+    });
+
+    test('the @onSelection method is not triggered if the item is already selected', async function (assert) {
+      this.onSelectionStub = sinon.stub();
+
+      await render(
+        hbs`<OSS::ToggleButtons @onSelection={{this.onSelectionStub}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+      );
+
+      await click('.oss-toggle-buttons-btn:first-child');
+      assert.ok(this.onSelectionStub.notCalled);
+    });
+
+    test('the @onSelection method is triggered with the selected value', async function (assert) {
+      this.onSelection = sinon.spy();
+
+      await render(
+        hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+      );
+
+      await click('.oss-toggle-buttons-btn:last-child');
+      assert.ok(this.onSelection.calledWith('second'));
+    });
+  });
+
+  module('Error management', () => {
     test('it throws an error if @toggles is not provided', async function (assert) {
       setupOnerror((err: any) => {
         assert.equal(
@@ -84,53 +131,6 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
         hbs`<OSS::ToggleButtons @toggles={{this.toggles}} @onSelection={{this.onSelection}} @selectedToggle={{this.selectedToggle}}/>`
       );
       await settled();
-    });
-  });
-
-  module('If @selectedToggle is passed', function () {
-    test('If the selectedToggle matches an entry from the toggles, then the toggle is set to selected', async function (assert) {
-      this.selectedToggle = 'second';
-
-      await render(
-        hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
-      );
-      assert.dom('.oss-toggle-buttons-btn--selected').hasText('Second');
-    });
-  });
-
-  module('When clicking on an item', () => {
-    test('the toggle is selected', async function (assert) {
-      await render(
-        hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
-      );
-
-      await click('.oss-toggle-buttons-btn:first-child');
-      assert.dom('.oss-toggle-buttons-btn--selected').hasText('First');
-
-      await click('.oss-toggle-buttons-btn:last-child');
-      assert.dom('.oss-toggle-buttons-btn--selected').hasText('Second');
-    });
-
-    test('the @onSelection method is not triggered if the item is already selected', async function (assert) {
-      this.onSelectionStub = sinon.stub();
-
-      await render(
-        hbs`<OSS::ToggleButtons @onSelection={{this.onSelectionStub}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
-      );
-
-      await click('.oss-toggle-buttons-btn:first-child');
-      assert.ok(this.onSelectionStub.notCalled);
-    });
-
-    test('the @onSelection method is triggered with the selected value', async function (assert) {
-      this.onSelection = sinon.spy();
-
-      await render(
-        hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
-      );
-
-      await click('.oss-toggle-buttons-btn:last-child');
-      assert.ok(this.onSelection.calledWith('second'));
     });
   });
 });

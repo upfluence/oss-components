@@ -8,17 +8,6 @@ import sinon from 'sinon';
 module('Integration | Component | o-s-s/button', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it fails if @label and @icon are missing', async function (assert) {
-    setupOnerror((err: { message: string }) => {
-      assert.equal(
-        err.message,
-        'Assertion Failed: [component][OSS::Button] You must pass either a @label or an @icon argument.'
-      );
-    });
-
-    await render(hbs`<OSS::Button />`);
-  });
-
   test('it renders the icon when present', async function (assert) {
     await render(hbs`<OSS::Button @icon="fab fa-facebook" />`);
 
@@ -153,17 +142,6 @@ module('Integration | Component | o-s-s/button', function (hooks) {
       this.intlService = this.owner.lookup('service:intl');
     });
 
-    test('it fails if callback missing for @countDown argument', async function (assert) {
-      setupOnerror((err: { message: string }) => {
-        assert.equal(
-          err.message,
-          "Assertion Failed: [component][OSS::Button] You must pass either a hash with 'callback' value to @countDown argument."
-        );
-      });
-
-      await render(hbs`<OSS::Button @label="Test" @countDown={{hash time=1000}} />`);
-    });
-
     test('when clicking, it trigger the countdown', async function (assert) {
       this.callback = () => {};
       await render(hbs`<OSS::Button @label="Test" @countDown={{hash callback=this.callback}} />`);
@@ -197,6 +175,30 @@ module('Integration | Component | o-s-s/button', function (hooks) {
       await click('.upf-btn--default');
 
       assert.dom('.upf-btn--default').hasText('Test');
+    });
+  });
+
+  module('Error management', function () {
+    test('it fails if @label and @icon are missing', async function (assert) {
+      setupOnerror((err: { message: string }) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::Button] You must pass either a @label or an @icon argument.'
+        );
+      });
+
+      await render(hbs`<OSS::Button />`);
+    });
+
+    test('it fails if callback missing for @countDown argument', async function (assert) {
+      setupOnerror((err: { message: string }) => {
+        assert.equal(
+          err.message,
+          "Assertion Failed: [component][OSS::Button] You must pass either a hash with 'callback' value to @countDown argument."
+        );
+      });
+
+      await render(hbs`<OSS::Button @label="Test" @countDown={{hash time=1000}} />`);
     });
   });
 });

@@ -11,17 +11,6 @@ module('Integration | Component | o-s-s/input-group', function (hooks) {
     assert.dom('.oss-input-group').exists();
   });
 
-  test('it fails if no prefix or suffix parameters are passed', async function (assert: Assert) {
-    setupOnerror((err: Error) => {
-      assert.equal(
-        err.message,
-        'Assertion Failed: [component][OSS::InputGroup] No @prefix or @suffix parameter were passed. If you are not going to use any, you should use an OSS::InputContainer.'
-      );
-    });
-
-    await render(hbs`<OSS::InputGroup />`);
-  });
-
   test('Passing the @prefix parameter displays the input prefix', async function (assert) {
     await render(hbs`<OSS::InputGroup @prefix="username" />`);
     assert.dom('.oss-input-group-row-prefix').hasText('username');
@@ -54,5 +43,16 @@ module('Integration | Component | o-s-s/input-group', function (hooks) {
     assert
       .dom('.oss-input-group-row-suffix')
       .hasStyle({ borderColor: 'rgb(239, 68, 68) rgb(239, 68, 68) rgb(239, 68, 68) rgb(27, 30, 33)' });
+  });
+
+  test('it fails if no prefix or suffix parameters are passed', async function (assert: Assert) {
+    setupOnerror((err: Error) => {
+      assert.equal(
+        err.message,
+        'Assertion Failed: [component][OSS::InputGroup] No @prefix or @suffix parameter were passed. If you are not going to use any, you should use an OSS::InputContainer.'
+      );
+    });
+
+    await render(hbs`<OSS::InputGroup />`);
   });
 });

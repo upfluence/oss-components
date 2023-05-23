@@ -11,7 +11,23 @@ module('Integration | Helper | redirect-to', function (hooks) {
     this.url = 'https://github.com/upfluence/oss-components';
   });
 
-  module('mandatory arguments checks', function () {
+  test('it redirects to the url on the current tab if not target is passed', async function (assert) {
+    this.redirectStub = sinon.stub(window, 'open');
+    await render(hbs`<div {{on "click" (redirect-to url=this.url)}}>link</div>`);
+    await click('div');
+    assert.ok(this.redirectStub.calledOnceWithExactly(this.url, '_self'));
+    sinon.restore();
+  });
+
+  test('it redirects to the url on the provided target', async function (assert) {
+    this.redirectStub = sinon.stub(window, 'open');
+    await render(hbs`<div {{on "click" (redirect-to url=this.url target="_blank")}}>link</div>`);
+    await click('div');
+    assert.ok(this.redirectStub.calledOnceWithExactly(this.url, '_blank'));
+    sinon.restore();
+  });
+
+  module('Error management', function () {
     test('it throws an error if the url argument is missing', async function (assert) {
       setupOnerror((err: Error) => {
         assert.equal(err.message, 'Assertion Failed: [helper][OSS::redirect-to] url argument is mandatory.');
@@ -30,21 +46,5 @@ module('Integration | Helper | redirect-to', function (hooks) {
 
       await render(hbs`<div {{on "click" (redirect-to url=this.url target="_foo")}}>link</div>`);
     });
-  });
-
-  test('it redirects to the url on the current tab if not target is passed', async function (assert) {
-    this.redirectStub = sinon.stub(window, 'open');
-    await render(hbs`<div {{on "click" (redirect-to url=this.url)}}>link</div>`);
-    await click('div');
-    assert.ok(this.redirectStub.calledOnceWithExactly(this.url, '_self'));
-    sinon.restore();
-  });
-
-  test('it redirects to the url on the provided target', async function (assert) {
-    this.redirectStub = sinon.stub(window, 'open');
-    await render(hbs`<div {{on "click" (redirect-to url=this.url target="_blank")}}>link</div>`);
-    await click('div');
-    assert.ok(this.redirectStub.calledOnceWithExactly(this.url, '_blank'));
-    sinon.restore();
   });
 });

@@ -19,22 +19,6 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
     assert.dom('.oss-modal-dialog').exists();
   });
 
-  test('The component throws an error if the title parameter is not passed', async function (assert) {
-    setupOnerror((err: any) => {
-      assert.equal(err.message, 'Assertion Failed: [component][OSS::ModalDialog] The title parameter is mandatory');
-    });
-
-    await render(hbs`<OSS::ModalDialog @close={{this.closeModal}} />`);
-  });
-
-  test('The component throws an error if the close parameter is not passed', async function (assert) {
-    setupOnerror((err: any) => {
-      assert.equal(err.message, 'Assertion Failed: [component][OSS::ModalDialog] The close function is mandatory');
-    });
-
-    await render(hbs`<OSS::ModalDialog @title="Test" />`);
-  });
-
   test('On escape button the modal is closed', async function (assert) {
     await render(
       hbs`<OSS::ModalDialog @title="Example modal" @subtitle="subtitle" @close={{this.closeModal}} @size="md" />`
@@ -106,5 +90,23 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
     );
 
     assert.dom('.oss-modal-dialog footer').hasText('footer content');
+  });
+
+  module('Error management', function () {
+    test('The component throws an error if the title parameter is not passed', async function (assert) {
+      setupOnerror((err: any) => {
+        assert.equal(err.message, 'Assertion Failed: [component][OSS::ModalDialog] The title parameter is mandatory');
+      });
+
+      await render(hbs`<OSS::ModalDialog @close={{this.closeModal}}></OSS::ModalDialog>`);
+    });
+
+    test('The component throws an error if the close parameter is not passed', async function (assert) {
+      setupOnerror((err: any) => {
+        assert.equal(err.message, 'Assertion Failed: [component][OSS::ModalDialog] The close function is mandatory');
+      });
+
+      await render(hbs`<OSS::ModalDialog @title="Test"></OSS::ModalDialog>`);
+    });
   });
 });

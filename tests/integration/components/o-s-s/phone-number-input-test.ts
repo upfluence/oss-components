@@ -32,42 +32,6 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
     assert.dom('.country-selector .fflag.fflag-FR').exists();
   });
 
-  test('It throws an error if @prefix is not passed', async function (assert) {
-    setupOnerror((err: any) => {
-      assert.equal(
-        err.message,
-        'Assertion Failed: [component][OSS::PhoneNumberInput] The parameter @prefix of type string is mandatory'
-      );
-    });
-    this.onChange = () => {};
-    await render(hbs`<OSS::PhoneNumberInput @number="" @onChange={{this.onChange}} />`);
-    await settled();
-  });
-
-  test('It throws an error if @number is not passed', async function (assert) {
-    setupOnerror((err: any) => {
-      assert.equal(
-        err.message,
-        'Assertion Failed: [component][OSS::PhoneNumberInput] The parameter @number of type string is mandatory'
-      );
-    });
-    this.onChange = () => {};
-    await render(hbs`<OSS::PhoneNumberInput @prefix="" @onChange={{this.onChange}} />`);
-    await settled();
-  });
-
-  test('It throws an error if @onChange is not passed', async function (assert) {
-    setupOnerror((err: any) => {
-      assert.equal(
-        err.message,
-        'Assertion Failed: [component][OSS::PhoneNumberInput] The parameter @onChange of type function is mandatory'
-      );
-    });
-    this.onChange = () => {};
-    await render(hbs`<OSS::PhoneNumberInput @number="" @prefix="" />`);
-    await settled();
-  });
-
   module('Country selector', () => {
     test('Clicking on the Flag button opens the country selector', async function (assert) {
       this.onChange = () => {};
@@ -158,6 +122,44 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
 
       assert.ok(this.onValidation.calledWithExactly(false));
       assert.dom('.font-color-error-500').exists();
+    });
+  });
+
+  module('Error management', function () {
+    test('It throws an error if @prefix is not passed', async function (assert) {
+      setupOnerror((err: any) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::PhoneNumberInput] The parameter @prefix of type string is mandatory'
+        );
+      });
+      this.onChange = () => {};
+      await render(hbs`<OSS::PhoneNumberInput @number="" @onChange={{this.onChange}} />`);
+      await settled();
+    });
+
+    test('It throws an error if @number is not passed', async function (assert) {
+      setupOnerror((err: any) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::PhoneNumberInput] The parameter @number of type string is mandatory'
+        );
+      });
+      this.onChange = () => {};
+      await render(hbs`<OSS::PhoneNumberInput @prefix="" @onChange={{this.onChange}} />`);
+      await settled();
+    });
+
+    test('It throws an error if @onChange is not passed', async function (assert) {
+      setupOnerror((err: any) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::PhoneNumberInput] The parameter @onChange of type function is mandatory'
+        );
+      });
+      this.onChange = () => {};
+      await render(hbs`<OSS::PhoneNumberInput @number="" @prefix="" />`);
+      await settled();
     });
   });
 });

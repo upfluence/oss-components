@@ -1,4 +1,17 @@
 <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
+  <OSS::Button @label="Open split modal" {{on "click" this.openSplitModal}} />
+  {{#if this.showSplitModal}}
+    <OSS::SplitModal @close={{this.closeSplitModal}}>
+      <:content>
+        Content goes here
+      </:content>
+      <:footer>
+        <OSS::Button @label="Close" {{on "click" this.closeSplitModal}} />
+      </:footer>
+    </OSS::SplitModal>
+  {{/if}}
+</div>
+<div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
   OSS:Checkbox:
   <OSS::Checkbox @checked={{this.isChecked}} @onChange={{this.onCheck}} />
   <OSS::Checkbox @checked={{this.isChecked}} @disabled={{true}} @onChange={{this.onCheck}} />
@@ -13,7 +26,7 @@
 </div>
 <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
   <OSS::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}
-    @onSelection={{this.triggerSelection}} />
+                      @onSelection={{this.triggerSelection}} />
 </div>
 <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
   <OSS::NumberInput @value={{this.numberValue}} @onChange={{this.handleNumberInput}} />
@@ -21,16 +34,17 @@
 </div>
 <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
   <OSS::UrlInput @value={{this.shopifyDomain}} @prefix="https://" @placeholder="shopname" @suffix=".myshopify.com"
-    @errorMessage="Not a valid shopify domain" @validationRegex={{this.subdomainRegex}}
-    @onChange={{this.onUrlInputChange}} />
+                 @errorMessage="Not a valid shopify domain" @validationRegex={{this.subdomainRegex}}
+                 @onChange={{this.onUrlInputChange}} />
   <OSS::UrlInput @prefix="https://" @placeholder="No regex specified" @onChange={{this.onUrlInputChange}}
-    @value={{this.shopifyDomain}} />
+                 @value={{this.shopifyDomain}} />
   <OSS::UrlInput @value={{this.shopUrl}} @prefix="https://" @placeholder="shop url"
-    @errorMessage="Please enter a valid URL" @validationRegex={{this.urlRegex}} @onChange={{this.onUrlInputChange}} />
+                 @errorMessage="Please enter a valid URL" @validationRegex={{this.urlRegex}}
+                 @onChange={{this.onUrlInputChange}} />
 </div>
 <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
   <OSS::InputGroup @value={{this.inputValue}} @prefix="This" @placeholder="makes no" @suffix="sense"
-    @errorMessage="This is an error message" />
+                   @errorMessage="This is an error message" />
   <OSS::InputGroup @value={{this.inputValue}} @prefix="@" @placeholder="Username" />
   <OSS::InputGroup @value={{this.inputValue}} @suffix="@example.com" @placeholder="john.doe" />
 </div>
@@ -43,7 +57,7 @@
 </div>
 <div class="fx-row fx-gap-px-10 margin-md fx-xalign-center">
   <OSS::Avatar @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
-    @initials="Ts" />
+               @initials="Ts" />
   <OSS::Avatar @initials="MI" />
   <OSS::Avatar />
 
@@ -55,7 +69,7 @@
 
 <div class="fx-row fx-gap-px-10 margin-md">
   <OSS::PowerSelect @items={{this.superHeroes}} @selectedItems={{this.superHeroes}}
-    @onChange={{this.onPowerSelectChange}} @onSearch={{this.onPowerSelectSearch}}>
+                    @onChange={{this.onPowerSelectChange}} @onSearch={{this.onPowerSelectSearch}}>
     <:selected-item as |selectedProduct|>
       <OSS::Chip @label={{selectedProduct}} @onRemove={{fn this.onPowerSelectChange }} @maxDisplayWidth={{100}} />
     </:selected-item>
@@ -65,7 +79,7 @@
   </OSS::PowerSelect>
 
   <OSS::PowerSelect @items={{this.superHeroes}} @selectedItems={{null}} @onChange={{this.onPowerSelectChange}}
-    @onSearch={{this.onPowerSelectSearch}}>
+                    @onSearch={{this.onPowerSelectSearch}}>
     <:selected-item as |selectedProduct|>
       <OSS::Chip @label={{selectedProduct}} @onRemove={{fn this.onPowerSelectChange }} @maxDisplayWidth={{100}} />
     </:selected-item>
@@ -86,11 +100,11 @@
   <OSS::Chip @skin="danger" @label="Chip" @onRemove={{this.onCrossChipClick}} />
   <OSS::Chip @skin="danger" @label="Chip" @disabled={{true}} @onRemove={{this.onCrossChipClick}} />
   <OSS::Chip @skin="success" @label="Chip with a huge label" @disabled={{false}} @maxDisplayWidth={{100}}
-    @onRemove={{this.onCrossChipClick}} />
+             @onRemove={{this.onCrossChipClick}} />
   <OSS::Chip @skin="danger" @label="Chip with a huge label" @disabled={{false}} @maxDisplayWidth={{160}}
-    @onRemove={{this.onCrossChipClick}} />
+             @onRemove={{this.onCrossChipClick}} />
   <OSS::ChipNFish @skin="danger" @label="Chip with a huge label" @disabled={{true}} @onRemove={{this.onCrossChipClick}}
-    @maxDisplayWidth={{50}} />
+                  @maxDisplayWidth={{50}} />
 </div>
 
 <div class="fx-row fx-gap-px-10 margin-md">
@@ -99,10 +113,10 @@
     <OSS::CountrySelector @sourceList={{this.countries}} @onChange={{this.onCountrySelected}} />
   </div>
   {{#if (gt this.selectedCountry.provinces.length 0)}}
-  <div class="fx-col fx-1 fx-gap-px-5">
-    <span>Province</span>
-    <OSS::CountrySelector @sourceList={{this.selectedCountry.provinces}} @onChange={{this.onProvinceSelected}} />
-  </div>
+    <div class="fx-col fx-1 fx-gap-px-5">
+      <span>Province</span>
+      <OSS::CountrySelector @sourceList={{this.selectedCountry.provinces}} @onChange={{this.onProvinceSelected}} />
+    </div>
   {{/if}}
 </div>
 <div class="fx-row fx-1 margin-md fx-gap-px-12">
@@ -120,14 +134,14 @@
     </OSS::Select>
 
     <OSS::Select @value={{this.selectedItem}} @items={{this.items}} @onChange={{this.onSelect}}
-      @errorMessage="This is an error">
+                 @errorMessage="This is an error">
       <:option as |item|>
         {{item.name}}
       </:option>
     </OSS::Select>
 
     <OSS::Select @value={{this.selectedItem}} @items={{this.items}} @onChange={{this.onSelect}}
-      @successMessage="It works">
+                 @successMessage="It works">
       <:option as |item|>
         {{item.name}}
       </:option>
@@ -144,29 +158,29 @@
 </div>
 <div class="fx-row fx-1 margin-md">
   <OSS::CurrencyInput @currency={{this.currency}} @value={{this.currencyValue}} @onChange={{this.onCurrencyInputChange}}
-    @errorMessage="This is an error message" />
+                      @errorMessage="This is an error message" />
 </div>
 <div class="fx-row fx-1 margin-md">
   <OSS::CurrencyInput @currency={{this.currency}} @value={{this.currencyValue}} @allowCurrencyUpdate={{false}}
-    @onChange={{this.onCurrencyInputChange}} />
+                      @onChange={{this.onCurrencyInputChange}} />
 </div>
 <div class="fx-row fx-1 margin-md">
   <OSS::CurrencyInput @currency={{this.currency}} @value={{this.currencyValue}}
-    @onChange={{this.onCurrencyInputChange}} />
+                      @onChange={{this.onCurrencyInputChange}} />
 </div>
 <div class="fx-row fx-1 margin-md">
   <OSS::CurrencyInput @currency={{this.currency}} @value={{this.currencyValue}} @onChange={{this.onCurrencyInputChange}}
-    @onlyCurrency={{true}} />
+                      @onlyCurrency={{true}} />
 </div>
 <div class="fx-row fx-1 margin-md">
   <div class="fx-col">
     <OSS::CurrencyInput @currency={{this.currencyOnly}} @onChange={{this.onCurrencyOnlyChange}}
-      @onlyCurrency={{true}} />
+                        @onlyCurrency={{true}} />
   </div>
 </div>
 <div class="fx-row fx-1 margin-md">
   <OSS::ArrayInput @values={{this.superHeroes}} @onChange={{this.updateSuperHeroes}} class="fx-1"
-    data-control-name="mailing-edit-template-ccs-input" />
+                   data-control-name="mailing-edit-template-ccs-input" />
 </div>
 <div class="fx-row fx-gap-px-12 margin-md">
   <OSS::Tag @label="Tag" @skin="primary" @icon="far fa-thumbs-up" />
@@ -233,27 +247,27 @@
 </div>
 <div class="fx-col fx-gap-px-12 margin-md">
   <OSS::CodeBlock @content={{this.code4CodeBlock}} @scrollable={{true}} @copyable={{true}} @collapseHeight={{200}}
-    @onCopyMessage="Copied to clipboard!" />
+                  @onCopyMessage="Copied to clipboard!" />
 </div>
 <div class="fx-col fx-gap-px-12 margin-md">
   <OSS::Button @skin="primary" @size="md" @label="Open MODAL" @icon="fa fa-unicorn" {{on "click" this.openModal}} />
   {{#if this.showModal}}
-  <OSS::ModalDialog @title="Example modal" @subtitle="subtitle" @close={{this.closeModal}} @size="md">
-    <:content>
-      <div style="height: 200px; background-color: white">
-        azeazeazeaze
-      </div>
-    </:content>
-    <:footer>
-      <div class="fx-1">
-        <i class="fa fa-info"></i><a href="">More info</a>
-      </div>
-      <div class="fx-row fx-gap-px-12">
-        <OSS::Button @skin="default" @label="Close" {{on "click" this.closeModal}} />
-        <OSS::Button @skin="secondary" @label="Save" />
-      </div>
-    </:footer>
-  </OSS::ModalDialog>
+    <OSS::ModalDialog @title="Example modal" @subtitle="subtitle" @close={{this.closeModal}} @size="md">
+      <:content>
+        <div style="height: 200px; background-color: white">
+          azeazeazeaze
+        </div>
+      </:content>
+      <:footer>
+        <div class="fx-1">
+          <i class="fa fa-info"></i><a href="">More info</a>
+        </div>
+        <div class="fx-row fx-gap-px-12">
+          <OSS::Button @skin="default" @label="Close" {{on "click" this.closeModal}} />
+          <OSS::Button @skin="secondary" @label="Save" />
+        </div>
+      </:footer>
+    </OSS::ModalDialog>
   {{/if}}
 </div>
 <div class="fx-col fx-gap-px-12 margin-md">
@@ -355,10 +369,10 @@
 
   <div class="fx-row fx-gap-px-12 fx-xalign-center">
     <OSS::Badge @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
-      @size="lg" />
+                @size="lg" />
     <OSS::Badge @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png" />
     <OSS::Badge @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
-      @size="sm" />
+                @size="sm" />
   </div>
 
   <div class="fx-row fx-gap-px-12">
@@ -369,7 +383,7 @@
   </div>
   <div class="fx-row fx-1">
     <OSS::PhoneNumberInput @prefix={{this.phonePrefix}} @number={{this.phoneNumber}}
-      @onChange={{this.onPhoneNumberChange}} />
+                           @onChange={{this.onPhoneNumberChange}} />
   </div>
   <div class="fx-col">
     <OSS::StarRating @rating={{3}} @totalStars={{5}} />
@@ -377,13 +391,13 @@
   </div>
   <div class="fx-col fx-gap-px-12">
     <OSS::Banner @icon="fas fa-box-open" @title="Shopify" @selected={{true}}
-      @subtitle="Identify influencers in your Shopify customers database">
+                 @subtitle="Identify influencers in your Shopify customers database">
       <:actions>
         <OSS::RadioButton @selected={{true}} />
       </:actions>
     </OSS::Banner>
     <OSS::Banner @icon="fas fa-box-open" @title="Import creators inside your campaign"
-      @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file. ">
+                 @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file. ">
       <:custom-icon>
         <OSS::Badge @text="2x" @size="lg" />
       </:custom-icon>
@@ -393,13 +407,13 @@
       </:actions>
     </OSS::Banner>
     <OSS::Banner @icon="fas fa-box-open" @title="Import creators inside your campaign"
-      @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file." />
+                 @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file." />
     <OSS::Banner @title="Banner without icon"
-      @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file." />
+                 @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file." />
     <OSS::Bruce
-      @image="https://thepressfree.com/wp-content/uploads/2021/11/Voici-pourquoi-Bruce-Banner-netait-plus-Smart-Hulk-dans-la-800x445.jpg"
-      @title="Import creators inside your campaign" @plain={{true}}
-      @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file. ">
+                @image="https://thepressfree.com/wp-content/uploads/2021/11/Voici-pourquoi-Bruce-Banner-netait-plus-Smart-Hulk-dans-la-800x445.jpg"
+                @title="Import creators inside your campaign" @plain={{true}}
+                @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file. ">
       <:actions>
         <OSS::Button @skin="secondary" @label="action" @icon="fas fa-box-open" @size="md" />
       </:actions>
@@ -410,25 +424,25 @@
 <div class="upf-table-v2 margin-md">
   <div class="upf-table__header">
     {{#each this.tableDemo.header as |header|}}
-    <div class="upf-table__cell {{header.class}}">
-      {{header.title}}
-    </div>
+      <div class="upf-table__cell {{header.class}}">
+        {{header.title}}
+      </div>
     {{/each}}
   </div>
 
   <div class="upf-table__content">
     {{#each this.tableDemo.header as |header index|}}
-    <div class="upf-table__row">
-      {{#each this.tableDemo.header as |header index|}}
-      <div class="upf-table__cell {{header.class}}">
-        {{#if header.title}}
-        <OSS::Tag @skin="primary" @label="Hello" />
-        {{else}}
-        <i class="fa fa-chevron-right"></i>
-        {{/if}}
+      <div class="upf-table__row">
+        {{#each this.tableDemo.header as |header index|}}
+          <div class="upf-table__cell {{header.class}}">
+            {{#if header.title}}
+              <OSS::Tag @skin="primary" @label="Hello" />
+            {{else}}
+              <i class="fa fa-chevron-right"></i>
+            {{/if}}
+          </div>
+        {{/each}}
       </div>
-      {{/each}}
-    </div>
     {{/each}}
   </div>
 </div>
@@ -436,25 +450,25 @@
 <div class="upf-table-v2 upf-table-v2--clickable margin-md">
   <div class="upf-table__header">
     {{#each this.tableDemo.header as |header|}}
-    <div class="upf-table__cell {{header.class}}">
-      {{header.title}}
-    </div>
+      <div class="upf-table__cell {{header.class}}">
+        {{header.title}}
+      </div>
     {{/each}}
   </div>
 
   <div class="upf-table__content">
     {{#each this.tableDemo.header as |header index|}}
-    <div class="upf-table__row" role="button">
-      {{#each this.tableDemo.header as |header index|}}
-      <div class="upf-table__cell {{header.class}}">
-        {{#if header.title}}
-        Content {{index}}
-        {{else}}
-        <i class="fa fa-chevron-right"></i>
-        {{/if}}
+      <div class="upf-table__row" role="button">
+        {{#each this.tableDemo.header as |header index|}}
+          <div class="upf-table__cell {{header.class}}">
+            {{#if header.title}}
+              Content {{index}}
+            {{else}}
+              <i class="fa fa-chevron-right"></i>
+            {{/if}}
+          </div>
+        {{/each}}
       </div>
-      {{/each}}
-    </div>
     {{/each}}
   </div>
 </div>
@@ -462,18 +476,20 @@
 <div class="fx-col fx-gap-px-12 padding-px-24">
   <div class="fx-row fx-gap-px-12">
     <OSS::UploadArea @uploader={{this.mockUploader}} @rules={{array (hash type="filesize" value="8MB" )}} @size="lg"
-      @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)" @onUploadSuccess={{this.onUploadSuccess}} />
+                     @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)" @onUploadSuccess={{this.onUploadSuccess}} />
 
     <OSS::UploadArea @uploader={{this.mockUploader}} @rules={{array (hash type="filesize" value="8MB" )}}
-      @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)" @onUploadSuccess={{this.onUploadSuccess}}
-      @displayPreview={{true}} />
+                     @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)" @onUploadSuccess={{this.onUploadSuccess}}
+                     @displayPreview={{true}} />
   </div>
 
   <div class="fx-col fx-gap-px-12">
     <OSS::UploadArea @uploader={{this.mockUploader}} @rules={{array (hash type="filesize" value="8MB" )}} @size="lg"
-      @disabled={{true}} @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)" @onUploadSuccess={{this.onUploadSuccess}} />
+                     @disabled={{true}} @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)"
+                     @onUploadSuccess={{this.onUploadSuccess}} />
 
     <OSS::UploadArea @uploader={{this.mockUploader}} @rules={{array (hash type="filesize" value="8MB" )}}
-      @disabled={{true}} @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)" @onUploadSuccess={{this.onUploadSuccess}} />
+                     @disabled={{true}} @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)"
+                     @onUploadSuccess={{this.onUploadSuccess}} />
   </div>
 </div>

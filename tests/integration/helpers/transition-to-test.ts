@@ -11,38 +11,6 @@ module('Integration | Helper | transition-to', function (hooks) {
     this.transitionToStub = sinon.stub(this.owner.lookup('service:router'), 'transitionTo');
   });
 
-  module('mandatory arguments checks', function () {
-    test('it throws an error if the route argument is missing', async function (assert) {
-      setupOnerror((err: Error) => {
-        assert.equal(err.message, 'Assertion Failed: [helper][OSS::transition-to] route argument is mandatory');
-      });
-
-      await render(hbs`<a {{on "click" (transition-to)}}>link</a>`);
-    });
-
-    test('it throws an error if both models and model arguments are passed', async function (assert) {
-      setupOnerror((err: Error) => {
-        assert.equal(
-          err.message,
-          'Assertion Failed: [helper][OSS::transition-to] only one of model or models argument must be provided'
-        );
-      });
-
-      await render(hbs`<a {{on "click" (transition-to route="foo" models=(array '1' '2') model='3')}}>link</a>`);
-    });
-
-    test('it throws an error if queryParams argument is passed but is not an object', async function (assert) {
-      setupOnerror((err: Error) => {
-        assert.equal(
-          err.message,
-          'Assertion Failed: [helper][OSS::transition-to] queryParams argument must be an object'
-        );
-      });
-
-      await render(hbs`<a {{on "click" (transition-to route="foo" queryParams='string')}}>link</a>`);
-    });
-  });
-
   module('only a route has been passed', function () {
     test('it triggers the RouterService#transitionTo method with the route only', async function (assert) {
       await render(hbs`<a {{on "click" (transition-to route="foo")}}>link</a>`);
@@ -76,6 +44,38 @@ module('Integration | Helper | transition-to', function (hooks) {
       await click('a');
 
       assert.ok(this.transitionToStub.calledWithExactly('foo', { queryParams: { myParam: 'bruh' } }));
+    });
+  });
+
+  module('Error management', function () {
+    test('it throws an error if the route argument is missing', async function (assert) {
+      setupOnerror((err: Error) => {
+        assert.equal(err.message, 'Assertion Failed: [helper][OSS::transition-to] route argument is mandatory');
+      });
+
+      await render(hbs`<a {{on "click" (transition-to)}}>link</a>`);
+    });
+
+    test('it throws an error if both models and model arguments are passed', async function (assert) {
+      setupOnerror((err: Error) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [helper][OSS::transition-to] only one of model or models argument must be provided'
+        );
+      });
+
+      await render(hbs`<a {{on "click" (transition-to route="foo" models=(array '1' '2') model='3')}}>link</a>`);
+    });
+
+    test('it throws an error if queryParams argument is passed but is not an object', async function (assert) {
+      setupOnerror((err: Error) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [helper][OSS::transition-to] queryParams argument must be an object'
+        );
+      });
+
+      await render(hbs`<a {{on "click" (transition-to route="foo" queryParams='string')}}>link</a>`);
     });
   });
 });
