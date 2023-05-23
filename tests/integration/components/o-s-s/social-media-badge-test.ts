@@ -8,7 +8,7 @@ module('Integration | Component | o-s-s/social-media-badge', function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
-    this.mediaType = 'pin';
+    this.socialMedia = 'pin';
     this.plain = false;
     this.selected = false;
     this.onToggle = () => {
@@ -19,7 +19,7 @@ module('Integration | Component | o-s-s/social-media-badge', function (hooks) {
 
   test('it renders', async function (assert) {
     await render(
-      hbs`<OSS::SocialMediaBadge @mediaType={{this.mediaType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
+      hbs`<OSS::SocialMediaBadge @socialMedia={{this.socialMedia}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
     );
 
     assert.dom('.oss-social-media-badge').exists();
@@ -28,7 +28,7 @@ module('Integration | Component | o-s-s/social-media-badge', function (hooks) {
   module('@plain', () => {
     test('When @plain is not set class is not added', async function (assert) {
       await render(
-        hbs`<OSS::SocialMediaBadge @mediaType={{this.mediaType}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
+        hbs`<OSS::SocialMediaBadge @socialMedia={{this.socialMedia}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
       );
 
       assert.dom('.oss-social-media-badge').hasNoClass('oss-social-media-badge--plain');
@@ -38,7 +38,7 @@ module('Integration | Component | o-s-s/social-media-badge', function (hooks) {
       this.plain = true;
 
       await render(
-        hbs`<OSS::SocialMediaBadge @mediaType={{this.mediaType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
+        hbs`<OSS::SocialMediaBadge @socialMedia={{this.socialMedia}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
       );
 
       assert.dom('.oss-social-media-badge').hasClass('oss-social-media-badge--plain');
@@ -48,7 +48,7 @@ module('Integration | Component | o-s-s/social-media-badge', function (hooks) {
   module('@selected', () => {
     test('When @selected is not set class is not added', async function (assert) {
       await render(
-        hbs`<OSS::SocialMediaBadge @mediaType={{this.mediaType}} @plain={{this.plain}} @onToggle={{this.onToggle}}/>`
+        hbs`<OSS::SocialMediaBadge @socialMedia={{this.socialMedia}} @plain={{this.plain}} @onToggle={{this.onToggle}}/>`
       );
 
       assert.dom('.oss-social-media-badge').hasNoClass('oss-social-media-badge--selected');
@@ -58,7 +58,7 @@ module('Integration | Component | o-s-s/social-media-badge', function (hooks) {
       this.selected = true;
 
       await render(
-        hbs`<OSS::SocialMediaBadge @mediaType={{this.mediaType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
+        hbs`<OSS::SocialMediaBadge @socialMedia={{this.socialMedia}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
       );
 
       assert.dom('.oss-social-media-badge').hasClass('oss-social-media-badge--selected');
@@ -67,11 +67,11 @@ module('Integration | Component | o-s-s/social-media-badge', function (hooks) {
 
   module('When clicking on an item', () => {
     test('Then the @onToggle method is triggered', async function (assert) {
-      this.mediaType = 'facebook_status';
+      this.socialMedia = 'facebook_status';
       this.onToggle = sinon.spy();
 
       await render(
-        hbs`<OSS::SocialMediaBadge @mediaType={{this.mediaType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
+        hbs`<OSS::SocialMediaBadge @socialMedia={{this.socialMedia}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
       );
 
       await click('.oss-social-media-badge');
@@ -84,7 +84,7 @@ module('Integration | Component | o-s-s/social-media-badge', function (hooks) {
       setupOnerror((err: any) => {
         assert.equal(
           err.message,
-          'Assertion Failed: [component][OSS::SocialMediaBadge] The @mediaType parameter of type SocialMediaType is mandatory'
+          'Assertion Failed: [component][OSS::SocialMediaBadge] The @socialMedia parameter of type SocialMediaType is mandatory'
         );
       });
       await render(
@@ -93,17 +93,17 @@ module('Integration | Component | o-s-s/social-media-badge', function (hooks) {
       await settled();
     });
 
-    test('it throws an error if @mediaType is not a value of MediaType', async function (assert) {
-      this.mediaType = 'toto';
+    test('it throws an error if @socialMedia is not a value of MediaType', async function (assert) {
+      this.socialMedia = 'toto';
 
       setupOnerror((err: any) => {
         assert.equal(
           err.message,
-          'Assertion Failed: [component][OSS::SocialMediaBadge] The @mediaType parameter should be a value of SocialMediaType'
+          'Assertion Failed: [component][OSS::SocialMediaBadge] The @socialMedia parameter should be a value of SocialMediaType'
         );
       });
       await render(
-        hbs`<OSS::SocialMediaBadge @mediaType={{this.mediaType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
+        hbs`<OSS::SocialMediaBadge @socialMedia={{this.socialMedia}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
       );
       await settled();
     });

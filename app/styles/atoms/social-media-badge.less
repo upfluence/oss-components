@@ -1,0 +1,167 @@
+.oss-social-media-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--color-white);
+  border: 1px solid;
+  border-radius: 50%;
+  height: 36px;
+  min-height: 36px;
+  width: 36px;
+  min-width: 36px;
+  position: relative;
+
+  transition: transform 0.25s ease-in-out;
+
+  .icon-container {
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-white);
+    border-radius: 50%;
+  }
+
+  &.oss-social-media-badge--plain {
+    i {
+      color: var(~'--color-white');
+      background: none;
+      -webkit-background-clip: unset;
+      -webkit-text-fill-color: unset;
+    }
+  }
+
+  &--tweet {
+    border: 1px solid var(~'--color-twitter-500');
+    color: var(~'--color-twitter-500');
+
+    &.oss-social-media-badge--plain,
+    &.oss-social-media-badge--plain .icon-container {
+      background-color: var(~'--color-twitter-500');
+    }
+  }
+
+  &--tiktok_video {
+    border: 1px solid var(~'--color-tiktok-500');
+    color: var(~'--color-tiktok-500');
+
+    &.oss-social-media-badge--plain,
+    &.oss-social-media-badge--plain .icon-container {
+      background-color: var(~'--color-tiktok-500');
+    }
+  }
+
+  &--youtube_video {
+    border: 1px solid var(~'--color-youtube-500');
+    color: var(~'--color-youtube-500');
+
+    &.oss-social-media-badge--plain,
+    &.oss-social-media-badge--plain .icon-container {
+      background-color: var(~'--color-youtube-500');
+    }
+  }
+
+  &--twitch_stream {
+    border: 1px solid var(~'--color-twitch-500');
+    color: var(~'--color-twitch-500');
+
+    &.oss-social-media-badge--plain,
+    &.oss-social-media-badge--plain .icon-container {
+      background-color: var(~'--color-twitch-500');
+    }
+  }
+
+  &--pin {
+    border: 1px solid var(~'--color-pinterest-500');
+    color: var(~'--color-pinterest-500');
+
+    &.oss-social-media-badge--plain,
+    &.oss-social-media-badge--plain .icon-container {
+      background-color: var(~'--color-pinterest-500');
+    }
+  }
+
+  &--article {
+    border: 1px solid var(~'--color-blog-500');
+    color: var(~'--color-blog-500');
+
+    &.oss-social-media-badge--plain,
+    &.oss-social-media-badge--plain .icon-container {
+      background-color: var(~'--color-blog-500');
+    }
+  }
+
+  &--facebook_status {
+    border: 1px solid var(~'--color-facebook-500');
+    color: var(~'--color-facebook-500');
+
+    &.oss-social-media-badge--plain,
+    &.oss-social-media-badge--plain .icon-container {
+      background-color: var(~'--color-facebook-500');
+    }
+  }
+
+  &--instagram_media,
+  &--story {
+    background: var(--color-instagram-accent);
+    border: none;
+    color: var(--color-white);
+
+    .icon-container {
+      width: calc(~'100% - 2px');
+      height: calc(~'100% - 2px');
+
+      i {
+        background: var(--color-instagram-accent);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    &.oss-social-media-badge--plain {
+      // .generate-plain-social-media-badge('instagram');
+      background: var(--color-instagram-accent);
+
+      .icon-container  {
+        background: transparent;
+        i {
+          background: var(--color-white);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+    }
+  }
+
+  &.oss-social-media-badge--selected {
+    transform: translateY(~'calc(-1 * var(--spacing-px-3))');
+
+    &:after {
+      opacity: 1;
+    }
+  }
+
+  &:after {
+    transition: opacity 0.25s ease-in-out;
+    opacity: 0;
+    content: '\f00c';
+    position: absolute;
+    background: var(--color-success-500);
+    width: 14px;
+    height: 14px;
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--color-white);
+    top: -3px;
+    right: -3px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Font Awesome 5 Pro';
+    font-weight: 300;
+    font-size: 6px;
+  }
+}

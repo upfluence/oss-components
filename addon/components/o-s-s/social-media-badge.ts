@@ -29,11 +29,11 @@ export const skinMatching: skinDefinitionType = {
 };
 
 interface OSSSocialMediaBadgeArgs {
-  mediaType: SocialMediaType;
+  socialMedia: SocialMediaType;
   selected?: boolean;
   plain?: boolean;
   tooltip?: string;
-  onToggle?(mediaType: string): void;
+  onToggle?(socialMedia: string): void;
 }
 
 export default class OSSSocialMediaBadge extends Component<OSSSocialMediaBadgeArgs> {
@@ -41,18 +41,18 @@ export default class OSSSocialMediaBadge extends Component<OSSSocialMediaBadgeAr
     super(owner, args);
 
     assert(
-      '[component][OSS::SocialMediaBadge] The @mediaType parameter of type SocialMediaType is mandatory',
-      this.args.mediaType
+      '[component][OSS::SocialMediaBadge] The @socialMedia parameter of type SocialMediaType is mandatory',
+      this.args.socialMedia
     );
 
     assert(
-      '[component][OSS::SocialMediaBadge] The @mediaType parameter should be a value of SocialMediaType',
-      Object.keys(skinMatching).includes(this.args.mediaType)
+      '[component][OSS::SocialMediaBadge] The @socialMedia parameter should be a value of SocialMediaType',
+      Object.keys(skinMatching).includes(this.args.socialMedia)
     );
   }
 
   get computedClasses(): string {
-    const classes = ['oss-social-media-badge', `oss-social-media-badge--${this.args.mediaType}`];
+    const classes = ['oss-social-media-badge', `oss-social-media-badge--${this.args.socialMedia}`];
 
     if (this.args.plain) {
       classes.push('oss-social-media-badge--plain');
@@ -66,13 +66,13 @@ export default class OSSSocialMediaBadge extends Component<OSSSocialMediaBadgeAr
   }
 
   get iconDefinition(): string {
-    return skinMatching[this.args.mediaType];
+    return skinMatching[this.args.socialMedia];
   }
 
   @action
   onMediaTypeClick(event: MouseEvent): void {
     event.stopPropagation();
 
-    this.args.onToggle?.(this.args.mediaType);
+    this.args.onToggle?.(this.args.socialMedia);
   }
 }

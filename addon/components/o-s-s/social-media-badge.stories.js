@@ -1,6 +1,6 @@
 import hbs from 'htmlbars-inline-precompile';
 
-const MediaTypes = [
+const SocialMediaTypes = [
   'article',
   'facebook_status',
   'instagram_media',
@@ -16,16 +16,16 @@ export default {
   title: 'Components/OSS::SocialMediaBadge',
   component: 'socialMediaBadge',
   argTypes: {
-    mediaType: {
+    socialMedia: {
       type: { required: true },
       description: 'Type of the media used to load icon & style',
       table: {
         type: {
-          summary: MediaTypes.join('|')
+          summary: SocialMediaTypes.join('|')
         },
         defaultValue: { summary: '' }
       },
-      options: MediaTypes,
+      options: SocialMediaTypes,
       control: { type: 'select' }
     },
     plain: {
@@ -79,7 +79,7 @@ export default {
 };
 
 const defaultArgs = {
-  mediaType: 'pin',
+  socialMedia: 'pin',
   plain: false,
   selected: false,
   tooltip: 'Pinterest',

@@ -377,7 +377,7 @@
 
   <div class="fx-row fx-gap-px-12 fx-xalign-center">
     {{#each this.media as |socialMedia|}}
-      <OSS::SocialMediaBadge @mediaType={{socialMedia.key}} @selected={{socialMedia.active}}
+      <OSS::SocialMediaBadge @socialMedia={{socialMedia.key}} @selected={{socialMedia.active}}
                              @plain={{socialMedia.active}}
                              @onToggle={{this.toggleMedia}}
                              @tooltip={{t (concat "oss-components.social_media_badge.media_types." socialMedia.key)}} />
