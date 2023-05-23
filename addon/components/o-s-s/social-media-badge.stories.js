@@ -9,16 +9,16 @@ const MediaTypes = [
   'tweet',
   'pin',
   'youtube_video',
-  'twitch_stream',
+  'twitch_stream'
 ];
 
 export default {
   title: 'Components/OSS::SocialMediaBadge',
   component: 'socialMediaBadge',
   argTypes: {
-    postType: {
+    mediaType: {
       type: { required: true },
-      description: 'Type of the post used to load icon & style',
+      description: 'Type of the media used to load icon & style',
       table: {
         type: {
           summary: MediaTypes.join('|')
@@ -64,7 +64,7 @@ export default {
       table: {
         category: 'Actions',
         type: {
-          summary: 'onToggle(postType: String): void'
+          summary: 'onToggle(mediaType: String): void'
         }
       }
     }
@@ -79,7 +79,7 @@ export default {
 };
 
 const defaultArgs = {
-  postType: 'pin',
+  mediaType: 'pin',
   plain: false,
   selected: false,
   tooltip: 'Pinterest',
@@ -88,7 +88,7 @@ const defaultArgs = {
 
 const Template = (args) => ({
   template: hbs`
-    <OSS::SocialMediaBadge @postType={{this.postType}} @onToggle={{this.onToggle}} @selected={{this.selected}}
+    <OSS::SocialMediaBadge @mediaType={{this.mediaType}} @onToggle={{this.onToggle}} @selected={{this.selected}}
                            @plain={{this.plain}} @tooltip={{this.tooltip}}/>        
   `,
   context: args

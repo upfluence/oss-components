@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 
 import { assert } from '@ember/debug';
 
-export type MediaType =
+export type SocialMediaType =
   | 'article'
   | 'facebook_status'
   | 'instagram_media'
@@ -14,7 +14,7 @@ export type MediaType =
   | 'youtube_video'
   | 'twitch_stream';
 
-type skinDefinitionType = { [key in MediaType]: string };
+type skinDefinitionType = { [key in SocialMediaType]: string };
 
 export const skinMatching: skinDefinitionType = {
   article: 'fab fa-wordpress',
@@ -29,11 +29,11 @@ export const skinMatching: skinDefinitionType = {
 };
 
 interface OSSSocialMediaBadgeArgs {
-  postType: MediaType;
+  mediaType: SocialMediaType;
   selected?: boolean;
   plain?: boolean;
   tooltip?: string;
-  onToggle?(postType: string): void;
+  onToggle?(mediaType: string): void;
 }
 
 export default class OSSSocialMediaBadge extends Component<OSSSocialMediaBadgeArgs> {
@@ -41,18 +41,18 @@ export default class OSSSocialMediaBadge extends Component<OSSSocialMediaBadgeAr
     super(owner, args);
 
     assert(
-      '[component][OSS::SocialMediaBadge] The @postType parameter of type PostType is mandatory',
-      this.args.postType
+      '[component][OSS::SocialMediaBadge] The @mediaType parameter of type SocialMediaType is mandatory',
+      this.args.mediaType
     );
 
     assert(
-      '[component][OSS::SocialMediaBadge] The @postType parameter should be a value of PostType',
-      Object.keys(skinMatching).includes(this.args.postType)
+      '[component][OSS::SocialMediaBadge] The @mediaType parameter should be a value of SocialMediaType',
+      Object.keys(skinMatching).includes(this.args.mediaType)
     );
   }
 
   get computedClasses(): string {
-    const classes = ['oss-social-media-badge', `oss-social-media-badge--${this.args.postType}`];
+    const classes = ['oss-social-media-badge', `oss-social-media-badge--${this.args.mediaType}`];
 
     if (this.args.plain) {
       classes.push('oss-social-media-badge--plain');
@@ -66,13 +66,13 @@ export default class OSSSocialMediaBadge extends Component<OSSSocialMediaBadgeAr
   }
 
   get iconDefinition(): string {
-    return skinMatching[this.args.postType];
+    return skinMatching[this.args.mediaType];
   }
 
   @action
-  onPostTypeClick(event: MouseEvent): void {
+  onMediaTypeClick(event: MouseEvent): void {
     event.stopPropagation();
 
-    this.args.onToggle?.(this.args.postType);
+    this.args.onToggle?.(this.args.mediaType);
   }
 }
