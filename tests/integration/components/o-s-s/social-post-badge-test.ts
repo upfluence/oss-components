@@ -84,7 +84,7 @@ module('Integration | Component | o-s-s/social-post-badge', function (hooks) {
       setupOnerror((err: any) => {
         assert.equal(
           err.message,
-          'Assertion Failed: [component][OSS::SocialPostBadge] The @postType parameter of type SocialPostType is mandatory'
+          'Assertion Failed: [component][OSS::SocialPostBadge] The @postType parameter of type String is mandatory'
         );
       });
       await render(

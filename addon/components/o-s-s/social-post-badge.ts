@@ -40,8 +40,8 @@ export default class OSSSocialPostBadge extends Component<OSSSocialPostBadgeArgs
     super(owner, args);
 
     assert(
-      '[component][OSS::SocialPostBadge] The @postType parameter of type SocialPostType is mandatory',
-      this.args.postType
+      '[component][OSS::SocialPostBadge] The @postType parameter of type String is mandatory',
+      typeof this.args.postType === 'string'
     );
 
     assert(
