@@ -1,6 +1,6 @@
 import hbs from 'htmlbars-inline-precompile';
 
-const SocialMediaTypes = [
+const SocialPostTypes = [
   'article',
   'facebook_status',
   'instagram_media',
@@ -13,19 +13,19 @@ const SocialMediaTypes = [
 ];
 
 export default {
-  title: 'Components/OSS::SocialMediaBadge',
-  component: 'socialMediaBadge',
+  title: 'Components/OSS::SocialPostBadge',
+  component: 'socialPostBadge',
   argTypes: {
-    socialMedia: {
+    postType: {
       type: { required: true },
       description: 'Type of the media used to load icon & style',
       table: {
         type: {
-          summary: SocialMediaTypes.join('|')
+          summary: SocialPostTypes.join('|')
         },
         defaultValue: { summary: '' }
       },
-      options: SocialMediaTypes,
+      options: SocialPostTypes,
       control: { type: 'select' }
     },
     plain: {
@@ -48,23 +48,13 @@ export default {
         type: 'boolean'
       }
     },
-    tooltip: {
-      description: 'Add a tooltip on mouseover',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '' }
-      },
-      control: {
-        type: 'text'
-      }
-    },
     onToggle: {
       type: { required: false },
       description: 'Action triggered when clicking on the badge',
       table: {
         category: 'Actions',
         type: {
-          summary: 'onToggle(mediaType: String): void'
+          summary: 'onToggle(postType: String): void'
         }
       }
     }
@@ -79,17 +69,16 @@ export default {
 };
 
 const defaultArgs = {
-  socialMedia: 'pin',
+  postType: 'pin',
   plain: false,
   selected: false,
-  tooltip: 'Pinterest',
   onToggle: undefined
 };
 
 const Template = (args) => ({
   template: hbs`
-    <OSS::SocialMediaBadge @mediaType={{this.mediaType}} @onToggle={{this.onToggle}} @selected={{this.selected}}
-                           @plain={{this.plain}} @tooltip={{this.tooltip}}/>        
+    <OSS::SocialPostBadge @postType={{this.postType}} @onToggle={{this.onToggle}} @selected={{this.selected}}
+                           @plain={{this.plain}}/>        
   `,
   context: args
 });

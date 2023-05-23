@@ -1,4 +1,4 @@
-.oss-social-media-badge {
+.oss-social-post-badge {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -25,7 +25,7 @@
     border-radius: 50%;
   }
 
-  &.oss-social-media-badge--plain {
+  &.oss-social-post-badge--plain {
     i {
       color: var(~'--color-white');
       background: none;
@@ -38,8 +38,8 @@
     border: 1px solid var(~'--color-twitter-500');
     color: var(~'--color-twitter-500');
 
-    &.oss-social-media-badge--plain,
-    &.oss-social-media-badge--plain .icon-container {
+    &.oss-social-post-badge--plain,
+    &.oss-social-post-badge--plain .icon-container {
       background-color: var(~'--color-twitter-500');
     }
   }
@@ -48,8 +48,8 @@
     border: 1px solid var(~'--color-tiktok-500');
     color: var(~'--color-tiktok-500');
 
-    &.oss-social-media-badge--plain,
-    &.oss-social-media-badge--plain .icon-container {
+    &.oss-social-post-badge--plain,
+    &.oss-social-post-badge--plain .icon-container {
       background-color: var(~'--color-tiktok-500');
     }
   }
@@ -58,8 +58,8 @@
     border: 1px solid var(~'--color-youtube-500');
     color: var(~'--color-youtube-500');
 
-    &.oss-social-media-badge--plain,
-    &.oss-social-media-badge--plain .icon-container {
+    &.oss-social-post-badge--plain,
+    &.oss-social-post-badge--plain .icon-container {
       background-color: var(~'--color-youtube-500');
     }
   }
@@ -68,8 +68,8 @@
     border: 1px solid var(~'--color-twitch-500');
     color: var(~'--color-twitch-500');
 
-    &.oss-social-media-badge--plain,
-    &.oss-social-media-badge--plain .icon-container {
+    &.oss-social-post-badge--plain,
+    &.oss-social-post-badge--plain .icon-container {
       background-color: var(~'--color-twitch-500');
     }
   }
@@ -78,8 +78,8 @@
     border: 1px solid var(~'--color-pinterest-500');
     color: var(~'--color-pinterest-500');
 
-    &.oss-social-media-badge--plain,
-    &.oss-social-media-badge--plain .icon-container {
+    &.oss-social-post-badge--plain,
+    &.oss-social-post-badge--plain .icon-container {
       background-color: var(~'--color-pinterest-500');
     }
   }
@@ -88,8 +88,8 @@
     border: 1px solid var(~'--color-blog-500');
     color: var(~'--color-blog-500');
 
-    &.oss-social-media-badge--plain,
-    &.oss-social-media-badge--plain .icon-container {
+    &.oss-social-post-badge--plain,
+    &.oss-social-post-badge--plain .icon-container {
       background-color: var(~'--color-blog-500');
     }
   }
@@ -98,8 +98,8 @@
     border: 1px solid var(~'--color-facebook-500');
     color: var(~'--color-facebook-500');
 
-    &.oss-social-media-badge--plain,
-    &.oss-social-media-badge--plain .icon-container {
+    &.oss-social-post-badge--plain,
+    &.oss-social-post-badge--plain .icon-container {
       background-color: var(~'--color-facebook-500');
     }
   }
@@ -121,8 +121,7 @@
       }
     }
 
-    &.oss-social-media-badge--plain {
-      // .generate-plain-social-media-badge('instagram');
+    &.oss-social-post-badge--plain {
       background: var(--color-instagram-accent);
 
       .icon-container  {
@@ -136,7 +135,7 @@
     }
   }
 
-  &.oss-social-media-badge--selected {
+  &.oss-social-post-badge--selected {
     transform: translateY(~'calc(-1 * var(--spacing-px-3))');
 
     &:after {
