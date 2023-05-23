@@ -1,6 +1,6 @@
 import hbs from 'htmlbars-inline-precompile';
 
-const SizeTypes = [
+const PostTypes = [
   'article',
   'facebook_status',
   'instagram_media',
@@ -18,14 +18,14 @@ export default {
   argTypes: {
     postType: {
       type: { required: true },
-      description: 'Adjust the size of the badge',
+      description: 'Type of the post used to load icon & style',
       table: {
         type: {
-          summary: SizeTypes.join('|')
+          summary: PostTypes.join('|')
         },
         defaultValue: { summary: 'article' }
       },
-      options: SizeTypes,
+      options: PostTypes,
       control: { type: 'select' }
     },
     plain: {
@@ -62,7 +62,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'Displays an icon or an image in a round badge.'
+        component: 'Displays a media icon in a round badge.'
       }
     }
   }
