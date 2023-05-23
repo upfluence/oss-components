@@ -65,6 +65,7 @@ export default class ApplicationController extends Controller {
   @tracked currencyValue = 42.13;
   @tracked numberValue = 42;
   @tracked showModal = false;
+  @tracked showSplitModal = false;
   @tracked items = [
     { name: 'foo', label: 'foo' },
     { name: 'bar', label: 'bar' }
@@ -151,8 +152,19 @@ export default class ApplicationController extends Controller {
   }
 
   @action
+  openSplitModal(e) {
+    e.stopPropagation();
+    this.showSplitModal = true;
+  }
+
+  @action
   closeModal() {
     this.showModal = false;
+  }
+
+  @action
+  closeSplitModal() {
+    this.showSplitModal = false;
   }
 
   @action

@@ -39,30 +39,6 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
     assert.ok(true);
   });
 
-  module('error management', () => {
-    test('it throws an error if @sourceList is not provided', async function (assert) {
-      setupOnerror((err: any) => {
-        assert.equal(
-          err.message,
-          'Assertion Failed: [component][OSS::CountrySelector] The parameter @sourceList of type object is mandatory'
-        );
-      });
-      await render(hbs`<OSS::CountrySelector @onChange={{this.onchange}} />`);
-      await settled();
-    });
-
-    test('it throws an error if @onChange is not provided', async function (assert) {
-      setupOnerror((err: any) => {
-        assert.equal(
-          err.message,
-          'Assertion Failed: [component][OSS::CountrySelector] The @onChange parameter is mandatory'
-        );
-      });
-      await render(hbs`<OSS::CountrySelector @sourceList={{this.countries}} />`);
-      await settled();
-    });
-  });
-
   test('When clicking on the input, the dropdown menu opens', async function (assert) {
     await render(hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} />`);
     await click('[data-control-name="country-selector-input"]');
@@ -185,6 +161,30 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
       await click('.upf-infinite-select__item:nth-child(1)');
       assert.dom('[data-control-name="country-selector-input"]').hasText('Alabama');
       assert.dom('[data-control-name="country-selector-input"] .fflag.fflag-US').doesNotExist();
+    });
+  });
+
+  module('error management', () => {
+    test('it throws an error if @sourceList is not provided', async function (assert) {
+      setupOnerror((err: any) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::CountrySelector] The parameter @sourceList of type object is mandatory'
+        );
+      });
+      await render(hbs`<OSS::CountrySelector @onChange={{this.onchange}} />`);
+      await settled();
+    });
+
+    test('it throws an error if @onChange is not provided', async function (assert) {
+      setupOnerror((err: any) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::CountrySelector] The @onChange parameter is mandatory'
+        );
+      });
+      await render(hbs`<OSS::CountrySelector @sourceList={{this.countries}} />`);
+      await settled();
     });
   });
 });

@@ -31,17 +31,6 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
     assert.dom('.currency-selector').hasText('€');
   });
 
-  test('It throws an error if @onChange is not passed', async function (assert) {
-    setupOnerror((err: any) => {
-      assert.equal(
-        err.message,
-        'Assertion Failed: [component][OSS::CurrencyInput] The parameter @onChange of type function is mandatory'
-      );
-    });
-    await render(hbs`<OSS::CurrencyInput />`);
-    await settled();
-  });
-
   test('It displays an error message below the component if @errorMessage is passed', async function (assert) {
     await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @errorMessage="This is an error message" />`);
     assert.dom('.currency-input-container').containsText('This is an error message');
@@ -129,10 +118,12 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       assert.dom('input').hasValue('08');
     });
 
-    test('Placeholder is correctly displayed when provided', async function(assert) {
-      await render(hbs`<OSS::CurrencyInput @currency="" @value="" @placeholder="foobar" @onChange={{this.onChange}} />`);
+    test('Placeholder is correctly displayed when provided', async function (assert) {
+      await render(
+        hbs`<OSS::CurrencyInput @currency="" @value="" @placeholder="foobar" @onChange={{this.onChange}} />`
+      );
       assert.dom('input').hasAttribute('placeholder', 'foobar');
-    })
+    });
   });
 
   module('Currency only mode', () => {
@@ -153,5 +144,16 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       assert.dom('.currency-selector').hasText('$ USD');
       assert.dom('.currency-input input').doesNotExist();
     });
+  });
+
+  test('It throws an error if @onChange is not passed', async function (assert) {
+    setupOnerror((err: any) => {
+      assert.equal(
+        err.message,
+        'Assertion Failed: [component][OSS::CurrencyInput] The parameter @onChange of type function is mandatory'
+      );
+    });
+    await render(hbs`<OSS::CurrencyInput />`);
+    await settled();
   });
 });

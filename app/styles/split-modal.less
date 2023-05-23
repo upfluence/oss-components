@@ -1,0 +1,39 @@
+.split-modal {
+  .oss-modal-dialog {
+    width: 80%;
+    max-width: 1050px;
+    min-height: 550px;
+  }
+
+  &__content {
+    border-right: 1px solid var(--color-gray-200);
+
+    footer {
+      flex: 0;
+      padding: @spacing-xx-sm @spacing-x-sm;
+    }
+  }
+
+  &__preview {
+    position: relative;
+    width: 450px;
+    min-width: 450px;
+
+    .close-modal-icon {
+      position: absolute;
+      padding: var(--spacing-px-12);
+      top: var(--spacing-px-12);
+      right: var(--spacing-px-12);
+    }
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .split-modal__preview {
+    display: none;
+  }
+
+  .split-modal__content {
+    border-right: none;
+  }
+}

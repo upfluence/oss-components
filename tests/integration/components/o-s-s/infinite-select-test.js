@@ -22,19 +22,6 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
   setupRenderingTest(hooks);
 
   module('search is enabled', function () {
-    module('no onSearch hook has been passed', function () {
-      test('should throw an error', async function (assert) {
-        setupOnerror((err) => {
-          assert.equal(
-            err.message,
-            'Assertion Failed: [component][OSS::InfiniteSelect] Search is enabled without an `onSearch` action being passed'
-          );
-        });
-
-        await render(hbs`<OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{true}} />`);
-      });
-    });
-
     module('with onSearch hook', function () {
       test('it calls the onSearch hook with the typed keyword', async function (assert) {
         this.onSearch = (keyword) => {
@@ -71,19 +58,6 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
   });
 
   module('item selection', function () {
-    module('onSelect is not passed', function () {
-      test('should throw an error', async function (assert) {
-        setupOnerror((err) => {
-          assert.equal(
-            err.message,
-            'Assertion Failed: [component][OSS::InfiniteSelect] `onSelect` action is mandatory'
-          );
-        });
-
-        await render(hbs`<OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{false}} />`);
-      });
-    });
-
     module('onSelect is passed', function () {
       test('it calls the onSelect hook with the clicked item', async function (assert) {
         this.items = FAKE_DATA;
@@ -261,6 +235,34 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
       await scrollTo('.upf-infinite-select__items-container', 0, 1500);
 
       assert.ok(this.onBottomReached.calledTwice);
+    });
+  });
+
+  module('Error management', function () {
+    module('On item selection, if onSelect is not passed', function () {
+      test('it should throw an error', async function (assert) {
+        setupOnerror((err) => {
+          assert.equal(
+            err.message,
+            'Assertion Failed: [component][OSS::InfiniteSelect] `onSelect` action is mandatory'
+          );
+        });
+
+        await render(hbs`<OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{false}} />`);
+      });
+    });
+
+    module('When the search is enabled, if no onSearch hook has been passed', function () {
+      test('should throw an error', async function (assert) {
+        setupOnerror((err) => {
+          assert.equal(
+            err.message,
+            'Assertion Failed: [component][OSS::InfiniteSelect] Search is enabled without an `onSearch` action being passed'
+          );
+        });
+
+        await render(hbs`<OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{true}} />`);
+      });
     });
   });
 });

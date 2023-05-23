@@ -15,25 +15,6 @@ module('Integration | Component | o-s-s/select', function (hooks) {
     ];
   });
 
-  test('it throws an error if no @onChange arg is passed', async function (assert) {
-    setupOnerror((err: Error) => {
-      assert.equal(
-        err.message,
-        'Assertion Failed: [component][OSS::Select] The parameter @onChange of type function is mandatory'
-      );
-    });
-
-    await render(hbs`<OSS::Select />`);
-  });
-
-  test('it throws an error if the component is invoked with no option named blocked', async function (assert) {
-    setupOnerror((err: Error) => {
-      assert.equal(err.message, 'Assertion Failed: [component][OSS::Select] You must pass option named block');
-    });
-
-    await render(hbs`<OSS::Select @onChange={{this.onChange}} />`);
-  });
-
   module('value changes', function () {
     test('the onChange function is called with the selected item', async function (assert) {
       this.value = this.items[0];
@@ -295,6 +276,27 @@ module('Integration | Component | o-s-s/select', function (hooks) {
       await typeIn('.upf-infinite-select .upf-input', 'F');
       assert.dom('.upf-infinite-select .upf-infinite-select__item').exists({ count: 1 });
       assert.dom('.upf-infinite-select .upf-infinite-select__item').hasText('foo');
+    });
+  });
+
+  module('Error management', function () {
+    test('it throws an error if no @onChange arg is passed', async function (assert) {
+      setupOnerror((err: Error) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::Select] The parameter @onChange of type function is mandatory'
+        );
+      });
+
+      await render(hbs`<OSS::Select />`);
+    });
+
+    test('it throws an error if the component is invoked with no option named blocked', async function (assert) {
+      setupOnerror((err: Error) => {
+        assert.equal(err.message, 'Assertion Failed: [component][OSS::Select] You must pass option named block');
+      });
+
+      await render(hbs`<OSS::Select @onChange={{this.onChange}} />`);
     });
   });
 });

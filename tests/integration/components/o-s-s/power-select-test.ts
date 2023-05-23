@@ -37,38 +37,6 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
     });
   });
 
-  module('it throws an error', () => {
-    test('without selected-item named block', async function (assert) {
-      setupOnerror((err: any) => {
-        assert.equal(
-          err.message,
-          'Assertion Failed: [component][OSS::PowerSelect] You must pass selected-item named block'
-        );
-      });
-
-      await render(hbs`
-        <OSS::PowerSelect @onSearch={{this.onSearch}}/>
-      `);
-    });
-
-    test('without option-item named block', async function (assert) {
-      setupOnerror((err: any) => {
-        assert.equal(
-          err.message,
-          'Assertion Failed: [component][OSS::PowerSelect] You must pass option-item named block'
-        );
-      });
-
-      await render(hbs`
-        <OSS::PowerSelect @onSearch={{this.onSearch}}>
-          <:selected-item as |selectedItem|>
-            {{selectedItem.name}}
-          </:selected-item>
-        </OSS::PowerSelect>
-      `);
-    });
-  });
-
   module('with @selectedItems', () => {
     test('Passing @selectedItems parameter displays the items', async function (assert) {
       this.selectedItems = ['value1', 'value2'];
@@ -245,6 +213,38 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
       await scrollTo('.upf-infinite-select__items-container', 0, 1500);
 
       assert.ok(this.onBottomReached.calledTwice);
+    });
+  });
+
+  module('Error management', () => {
+    test('without selected-item named block', async function (assert) {
+      setupOnerror((err: any) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::PowerSelect] You must pass selected-item named block'
+        );
+      });
+
+      await render(hbs`
+        <OSS::PowerSelect @onSearch={{this.onSearch}}/>
+      `);
+    });
+
+    test('without option-item named block', async function (assert) {
+      setupOnerror((err: any) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::PowerSelect] You must pass option-item named block'
+        );
+      });
+
+      await render(hbs`
+        <OSS::PowerSelect @onSearch={{this.onSearch}}>
+          <:selected-item as |selectedItem|>
+            {{selectedItem.name}}
+          </:selected-item>
+        </OSS::PowerSelect>
+      `);
     });
   });
 });

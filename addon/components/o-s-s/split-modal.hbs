@@ -1,0 +1,19 @@
+<div class="split-modal oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center"
+     {{will-destroy this.destroy}} ...attributes>
+  <div class="oss-modal-dialog fx-row" {{on-click-outside @close}} {{did-insert this.init}}>
+    <div class="split-modal__content fx-col fx-1">
+      <div class="oss-modal-dialog--content fx-1 fx-col fx-gap-px-18">
+        {{yield to="content"}}
+      </div>
+      {{#if (has-block "footer")}}
+        <footer class="fx-row fx-malign-center fx-xalign-space-between">
+          {{yield to="footer"}}
+        </footer>
+      {{/if}}
+    </div>
+    <div class="split-modal__preview">
+      <i class="far fa-times close-modal-icon" role="button" {{on "click" this.closeModal}}></i>
+      {{yield to="preview"}}
+    </div>
+  </div>
+</div>

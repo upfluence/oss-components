@@ -12,17 +12,6 @@ module('Integration | Component | o-s-s/tag', function (hooks) {
     assert.dom('.upf-tag').exists();
   });
 
-  test('it fails if @label and @icon are missing', async function (assert) {
-    setupOnerror((err: { message: string }) => {
-      assert.equal(
-        err.message,
-        'Assertion Failed: [component][OSS::Tag] You must pass either a @label or an @icon argument.'
-      );
-    });
-
-    await render(hbs`<OSS::Tag />`);
-  });
-
   test('it renders the proper label when @label is passed', async function (assert) {
     await render(hbs`<OSS::Tag @label="Test" />`);
 
@@ -74,5 +63,16 @@ module('Integration | Component | o-s-s/tag', function (hooks) {
       assert.dom('.upf-tag').exists();
       assert.dom('.upf-tag').hasClass(`upf-tag--${SkinDefinition[this.skin as SkinType]}`);
     });
+  });
+
+  test('it fails if @label and @icon are missing', async function (assert) {
+    setupOnerror((err: { message: string }) => {
+      assert.equal(
+        err.message,
+        'Assertion Failed: [component][OSS::Tag] You must pass either a @label or an @icon argument.'
+      );
+    });
+
+    await render(hbs`<OSS::Tag />`);
   });
 });

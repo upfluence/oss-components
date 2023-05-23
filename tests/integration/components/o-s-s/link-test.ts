@@ -7,17 +7,6 @@ import sinon from 'sinon';
 module('Integration | Component | o-s-s/link', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it fails if no label nor icon argument are present', async function (assert: Assert) {
-    setupOnerror((err: Error) => {
-      assert.equal(
-        err.message,
-        'Assertion Failed: [component][OSS::Link] You must pass either a @label or an @icon argument.'
-      );
-    });
-
-    await render(hbs`<OSS::Link />`);
-  });
-
   test('it renders with icon only', async function (assert: Assert) {
     await render(hbs`<OSS::Link @icon="fab fa-facebook" />`);
 
@@ -58,5 +47,16 @@ module('Integration | Component | o-s-s/link', function (hooks) {
 
     await click('.upf-link');
     assert.true(transitionToStub.calledOnceWithExactly('workflow.create'));
+  });
+
+  test('it fails if no label nor icon argument are present', async function (assert: Assert) {
+    setupOnerror((err: Error) => {
+      assert.equal(
+        err.message,
+        'Assertion Failed: [component][OSS::Link] You must pass either a @label or an @icon argument.'
+      );
+    });
+
+    await render(hbs`<OSS::Link />`);
   });
 });

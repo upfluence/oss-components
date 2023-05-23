@@ -16,14 +16,6 @@ module('Integration | Component | o-s-s/email-input', function (hooks) {
     assert.dom('.oss-input-container input').hasProperty('placeholder', 'test');
   });
 
-  test('it throws an error when the @value parameter is missing', async function (assert) {
-    setupOnerror((err: any) => {
-      assert.equal(err.message, 'Assertion Failed: [component][OSS::EmailInput] The @value parameter is mandatory');
-    });
-
-    await render(hbs`<OSS::EmailInput />`);
-  });
-
   test('it displays the error message when the @errorMessage is non-empty', async function (assert) {
     await render(hbs`<OSS::EmailInput @value="" @errorMessage="This is the error message" />`);
     assert.dom('.oss-input-container').hasClass('oss-input-container--errored');
@@ -53,5 +45,13 @@ module('Integration | Component | o-s-s/email-input', function (hooks) {
     };
     await render(hbs`<OSS::EmailInput @value={{this.value}} @validates={{this.validates}} />`);
     await typeIn('input', 'a');
+  });
+
+  test('it throws an error when the @value parameter is missing', async function (assert) {
+    setupOnerror((err: any) => {
+      assert.equal(err.message, 'Assertion Failed: [component][OSS::EmailInput] The @value parameter is mandatory');
+    });
+
+    await render(hbs`<OSS::EmailInput />`);
   });
 });
