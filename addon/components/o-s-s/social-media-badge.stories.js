@@ -1,6 +1,6 @@
 import hbs from 'htmlbars-inline-precompile';
 
-const PostTypes = [
+const MediaTypes = [
   'article',
   'facebook_status',
   'instagram_media',
@@ -9,7 +9,7 @@ const PostTypes = [
   'tweet',
   'pin',
   'youtube_video',
-  'twitch_stream'
+  'twitch_stream',
 ];
 
 export default {
@@ -21,11 +21,11 @@ export default {
       description: 'Type of the post used to load icon & style',
       table: {
         type: {
-          summary: PostTypes.join('|')
+          summary: MediaTypes.join('|')
         },
-        defaultValue: { summary: 'article' }
+        defaultValue: { summary: '' }
       },
-      options: PostTypes,
+      options: MediaTypes,
       control: { type: 'select' }
     },
     plain: {
@@ -48,6 +48,16 @@ export default {
         type: 'boolean'
       }
     },
+    tooltip: {
+      description: 'Add a tooltip on mouseover',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '' }
+      },
+      control: {
+        type: 'text'
+      }
+    },
     onToggle: {
       type: { required: false },
       description: 'Action triggered when clicking on the badge',
@@ -62,7 +72,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'Displays a media icon in a round badge.'
+        component: 'Displays a social media skin in a round badge.'
       }
     }
   }
@@ -72,13 +82,14 @@ const defaultArgs = {
   postType: 'pin',
   plain: false,
   selected: false,
+  tooltip: 'Pinterest',
   onToggle: undefined
 };
 
 const Template = (args) => ({
   template: hbs`
     <OSS::SocialMediaBadge @postType={{this.postType}} @onToggle={{this.onToggle}} @selected={{this.selected}}
-                @plain={{this.plain}} />
+                           @plain={{this.plain}} @tooltip={{this.tooltip}}/>        
   `,
   context: args
 });

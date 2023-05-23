@@ -379,7 +379,8 @@
     {{#each this.media as |socialMedia|}}
       <OSS::SocialMediaBadge @postType={{socialMedia.key}} @selected={{socialMedia.active}}
                              @plain={{socialMedia.active}}
-                             @onToggle={{this.toggleMedia}} />
+                             @onToggle={{this.toggleMedia}}
+                             @tooltip={{t (concat "oss-components.social_media_badge.media_types." socialMedia.key)}} />
     {{/each}}
   </div>
 

@@ -27,36 +27,6 @@ module('Integration | Component | o-s-s/social-media-badge', function (hooks) {
     assert.dom('.oss-social-media-badge').exists();
   });
 
-  module('error management', () => {
-    test('it throws an error if @selectedToggle is not provided', async function (assert) {
-      setupOnerror((err: any) => {
-        assert.equal(
-          err.message,
-          'Assertion Failed: [component][OSS::SocialMediaBadge] The @postType parameter of type PostType is mandatory'
-        );
-      });
-      await render(
-        hbs`<OSS::SocialMediaBadge @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
-      );
-      await settled();
-    });
-
-    test('it throws an error if @postType is not a value of PostType', async function (assert) {
-      this.postType = 'toto';
-
-      setupOnerror((err: any) => {
-        assert.equal(
-          err.message,
-          'Assertion Failed: [component][OSS::SocialMediaBadge] The @postType parameter should be a value of PostType'
-        );
-      });
-      await render(
-        hbs`<OSS::SocialMediaBadge @postType={{this.postType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
-      );
-      await settled();
-    });
-  });
-
   module('@plain', () => {
     test('When @plain is not set class is not added', async function (assert) {
       await render(
@@ -108,6 +78,36 @@ module('Integration | Component | o-s-s/social-media-badge', function (hooks) {
 
       await click('.oss-social-media-badge');
       assert.ok(this.onToggle.calledWith('facebook_status'));
+    });
+  });
+
+  module('error management', () => {
+    test('it throws an error if @selectedToggle is not provided', async function (assert) {
+      setupOnerror((err: any) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::SocialMediaBadge] The @postType parameter of type PostType is mandatory'
+        );
+      });
+      await render(
+        hbs`<OSS::SocialMediaBadge @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
+      );
+      await settled();
+    });
+
+    test('it throws an error if @postType is not a value of PostType', async function (assert) {
+      this.postType = 'toto';
+
+      setupOnerror((err: any) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::SocialMediaBadge] The @postType parameter should be a value of PostType'
+        );
+      });
+      await render(
+        hbs`<OSS::SocialMediaBadge @postType={{this.postType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
+      );
+      await settled();
     });
   });
 });

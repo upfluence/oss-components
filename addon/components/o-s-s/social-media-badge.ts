@@ -3,63 +3,36 @@ import { action } from '@ember/object';
 
 import { assert } from '@ember/debug';
 
-export enum PostType {
-  'article',
-  'facebook_status',
-  'instagram_media',
-  'tiktok_video',
-  'story',
-  'tweet',
-  'pin',
-  'youtube_video',
-  'twitch_stream'
-}
+export type MediaType =
+  | 'article'
+  | 'facebook_status'
+  | 'instagram_media'
+  | 'tiktok_video'
+  | 'story'
+  | 'tweet'
+  | 'pin'
+  | 'youtube_video'
+  | 'twitch_stream';
 
-type MatchingElement = { key: string; icon: string };
+type skinDefinitionType = { [key in MediaType]: string };
 
-const mediaMatching: MatchingElement[] = [
-  {
-    key: PostType[PostType.article],
-    icon: 'fab fa-wordpress'
-  },
-  {
-    key: PostType[PostType.facebook_status],
-    icon: 'fab fa-facebook'
-  },
-  {
-    key: PostType[PostType.instagram_media],
-    icon: 'fab fa-instagram'
-  },
-  {
-    key: PostType[PostType.tiktok_video],
-    icon: 'fab fa-tiktok'
-  },
-  {
-    key: PostType[PostType.story],
-    icon: 'far fa-circle-notch'
-  },
-  {
-    key: PostType[PostType.tweet],
-    icon: 'fab fa-twitter'
-  },
-  {
-    key: PostType[PostType.pin],
-    icon: 'fab fa-pinterest'
-  },
-  {
-    key: PostType[PostType.youtube_video],
-    icon: 'fab fa-youtube'
-  },
-  {
-    key: PostType[PostType.twitch_stream],
-    icon: 'fab fa-twitch'
-  }
-];
+export const skinMatching: skinDefinitionType = {
+  article: 'fab fa-wordpress',
+  facebook_status: 'fab fa-facebook',
+  instagram_media: 'fab fa-instagram',
+  tiktok_video: 'fab fa-tiktok',
+  story: 'far fa-circle-notch',
+  tweet: 'fab fa-twitter',
+  pin: 'fab fa-pinterest',
+  youtube_video: 'fab fa-youtube',
+  twitch_stream: 'fab fa-twitch'
+};
 
 interface OSSSocialMediaBadgeArgs {
-  postType: PostType;
+  postType: MediaType;
   selected?: boolean;
   plain?: boolean;
+  tooltip?: string;
   onToggle?(postType: string): void;
 }
 
@@ -74,9 +47,7 @@ export default class OSSSocialMediaBadge extends Component<OSSSocialMediaBadgeAr
 
     assert(
       '[component][OSS::SocialMediaBadge] The @postType parameter should be a value of PostType',
-      Object.values(PostType)
-        .filter((el: any) => isNaN(el))
-        .includes(this.args.postType)
+      Object.keys(skinMatching).includes(this.args.postType)
     );
   }
 
@@ -95,13 +66,13 @@ export default class OSSSocialMediaBadge extends Component<OSSSocialMediaBadgeAr
   }
 
   get iconDefinition(): string {
-    return mediaMatching.find((el: MatchingElement) => el.key === this.args.postType.toString())?.icon || '';
+    return skinMatching[this.args.postType];
   }
 
   @action
   onPostTypeClick(event: MouseEvent): void {
     event.stopPropagation();
 
-    this.args.onToggle?.(this.args.postType.toString());
+    this.args.onToggle?.(this.args.postType);
   }
 }
