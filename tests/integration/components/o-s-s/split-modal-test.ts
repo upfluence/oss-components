@@ -1,19 +1,14 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, triggerKeyEvent, click, resetOnerror } from '@ember/test-helpers';
+import { render, triggerKeyEvent, click, setupOnerror } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import sinon from 'sinon';
-import setupOnerror from '@ember/test-helpers/setup-onerror';
 
 module('Integration | Component | o-s-s/split-modal', function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
     this.closeModal = sinon.stub();
-  });
-
-  hooks.afterEach(() => {
-    resetOnerror();
   });
 
   test('it renders', async function (assert) {

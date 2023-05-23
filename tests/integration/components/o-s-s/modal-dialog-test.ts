@@ -4,7 +4,6 @@ import { render, setupOnerror, triggerKeyEvent } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import sinon from 'sinon';
 import click from '@ember/test-helpers/dom/click';
-import { resetOnerror } from '@ember/test-helpers/setup-onerror';
 
 module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
   setupRenderingTest(hooks);
@@ -100,7 +99,6 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
       });
 
       await render(hbs`<OSS::ModalDialog @close={{this.closeModal}}></OSS::ModalDialog>`);
-      resetOnerror();
     });
 
     test('The component throws an error if the close parameter is not passed', async function (assert) {
@@ -109,7 +107,6 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
       });
 
       await render(hbs`<OSS::ModalDialog @title="Test"></OSS::ModalDialog>`);
-      resetOnerror();
     });
   });
 });
