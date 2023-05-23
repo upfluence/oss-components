@@ -375,6 +375,14 @@
                 @size="sm" />
   </div>
 
+  <div class="fx-row fx-gap-px-12 fx-xalign-center">
+    {{#each this.media as |socialMedia|}}
+      <OSS::SocialMediaBadge @postType={{socialMedia.key}} @selected={{socialMedia.active}}
+                             @plain={{socialMedia.active}}
+                             @onToggle={{this.toggleMedia}} />
+    {{/each}}
+  </div>
+
   <div class="fx-row fx-gap-px-12">
     <div class="fx-col fx-gap-px-12">
       <OSS::Button @skin="destructive" @label="Count down" @icon="far fa-hourglass" @size="md" @countDown={{hash
