@@ -43,7 +43,7 @@ module('Integration | Component | o-s-s/toggle-switch', function (hooks) {
     });
 
     test('it throws an error if no value is passed', async function (assert) {
-      this.onChange = () => { };
+      this.onChange = () => {};
 
       setupOnerror((err) => {
         assert.equal(
@@ -56,7 +56,7 @@ module('Integration | Component | o-s-s/toggle-switch', function (hooks) {
     });
 
     test('it throws an error if passed value is not a boolean', async function (assert) {
-      this.onChange = () => { };
+      this.onChange = () => {};
 
       setupOnerror((err) => {
         assert.equal(
