@@ -55,14 +55,3 @@ oss-components:
     error:
       title: Error
       subtitle: Failed to copy to your clipboard. Please try again.
-  social_media_badge:
-    media_types:
-      facebook_status: Facebook Status
-      tweet: Tweet
-      pin: Pin
-      instagram_media: Instagram Media
-      tiktok_video: Tiktok Video
-      youtube_video: Youtube Video
-      article: Article
-      story: Story
-      twitch_stream: Twitch Stream
