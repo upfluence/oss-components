@@ -76,6 +76,45 @@ export default class ApplicationController extends Controller {
   @tracked radio2 = false;
   @tracked isChecked = true;
 
+  @tracked media = [
+    {
+      key: 'article',
+      active: false
+    },
+    {
+      key: 'pin',
+      active: false
+    },
+    {
+      key: 'tweet',
+      active: false
+    },
+    {
+      key: 'instagram_media',
+      active: false
+    },
+    {
+      key: 'story',
+      active: false
+    },
+    {
+      key: 'youtube_video',
+      active: false
+    },
+    {
+      key: 'twitch_stream',
+      active: false
+    },
+    {
+      key: 'tiktok_video',
+      active: false
+    },
+    {
+      key: 'facebook_status',
+      active: false
+    }
+  ];
+
   code4CodeBlock = testScript;
   countries = countries;
 
@@ -94,6 +133,14 @@ export default class ApplicationController extends Controller {
       label: 'Second'
     }
   ];
+
+  @action
+  toggleMedia(key) {
+    console.log('toggled key', key);
+
+    const index = this.media.findIndex((el) => el.key === key);
+    set(this.media[index], 'active', !this.media[index].active);
+  }
 
   @action
   triggerSelection(value) {
