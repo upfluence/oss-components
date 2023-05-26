@@ -18,7 +18,7 @@ type skinDefinitionType = { [key in SocialPostType]: string };
 
 export const skinMatching: skinDefinitionType = {
   article: 'fab fa-wordpress',
-  facebook_status: 'fab fa-facebook',
+  facebook_status: 'fab fa-facebook-f',
   instagram_media: 'fab fa-instagram',
   tiktok_video: 'fab fa-tiktok',
   story: 'far fa-circle-notch',
