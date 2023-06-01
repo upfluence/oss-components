@@ -19,7 +19,7 @@ export default Component.extend({
   click(e) {
     e.stopPropagation();
     if (!this.disabled) {
-      this.onCheck(this.value);
+      this.sendAction('onCheck', this.value);
     }
   }
 });
