@@ -19,6 +19,7 @@ export default Component.extend({
   click(e) {
     e.stopPropagation();
     if (!this.disabled) {
+      // eslint-disable-next-line
       this.sendAction('onCheck', this.value);
     }
   }
