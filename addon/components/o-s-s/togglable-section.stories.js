@@ -58,7 +58,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'The OSS version of the button component. Configurable & skinable.'
+        component: 'A component that allows to toggle the visibility of a section. Useful for settings.'
       }
     }
   }
