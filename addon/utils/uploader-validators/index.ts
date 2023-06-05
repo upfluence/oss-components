@@ -27,7 +27,7 @@ export class FileTypeValidator implements Validator {
 
   static key: string = 'filetype';
 
-  private filetypeTemplates: { [key: string]: string[] } = {
+  private filetypeTemplates: Record<string, string[]> = {
     image: ['png', 'jpg', 'jpeg']
   };
 
@@ -36,7 +36,7 @@ export class FileTypeValidator implements Validator {
   }
 
   validate(request: UploadRequest): { rule: FileValidator; passes: boolean } {
-    const filename = request.file.name;
+    const filename = request.file.name || '';
 
     return {
       rule: {
@@ -45,7 +45,7 @@ export class FileTypeValidator implements Validator {
       },
       passes: this.deconstructedFiletypes
         .map((f: string) => f.toLowerCase())
-        .includes(filename.split('.')[filename.split('.').length - 1].toLowerCase())
+        .includes((filename.split('.')[filename.split('.').length - 1] || '').toLowerCase())
     };
   }
 
@@ -54,7 +54,7 @@ export class FileTypeValidator implements Validator {
       let filetypes = [filetype];
 
       if (Object.keys(this.filetypeTemplates).includes(filetype)) {
-        filetypes = this.filetypeTemplates[filetype];
+        filetypes = this.filetypeTemplates[filetype]!;
       }
 
       acc = acc.concat(filetypes);

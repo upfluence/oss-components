@@ -49,9 +49,9 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
 
   get selectedCurrency(): Currency {
     if (isEmpty(this.args.currency)) {
-      return this._currencies[0];
+      return this._currencies[0]!;
     }
-    return this._currencies.find((currency: Currency) => currency.code === this.args.currency) || this._currencies[0];
+    return this._currencies.find((currency: Currency) => currency.code === this.args.currency) || this._currencies[0]!;
   }
 
   get placeholder(): string {

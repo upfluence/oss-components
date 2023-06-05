@@ -43,10 +43,10 @@ module('Integration | Component | o-s-s/link', function (hooks) {
   test('it transits to the route', async function (assert: Assert) {
     let transitionToStub = sinon.stub(this.owner.lookup('service:router'), 'transitionTo');
 
-    await render(hbs`<OSS::Link @icon="fab fa-facebook" @label="Facebook" @transitionTo={{"workflow.create"}} />`);
+    await render(hbs`<OSS::Link @icon="fab fa-facebook" @label="Facebook" @transitionTo="workflow.create" />`);
 
     await click('.upf-link');
-    assert.true(transitionToStub.calledOnceWithExactly('workflow.create'));
+    assert.true(transitionToStub.calledOnceWithExactly(sinon.match('workflow.create')));
   });
 
   test('it fails if no label nor icon argument are present', async function (assert: Assert) {

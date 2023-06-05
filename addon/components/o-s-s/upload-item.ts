@@ -61,7 +61,7 @@ export default class OSSUploadItem extends Component<OSSUploadItemArgs> {
 
   get icon(): string {
     const filetypeIconCategory = this._extractFileTypeCategory();
-    return filetypeIconCategory ? FA_ICON_PER_TYPE[filetypeIconCategory] : DEFAULT_FA_ICON;
+    return filetypeIconCategory ? FA_ICON_PER_TYPE[filetypeIconCategory]! : DEFAULT_FA_ICON;
   }
 
   get filename(): string {

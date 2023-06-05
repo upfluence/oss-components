@@ -46,8 +46,7 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
       await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
 
       await click('.country-selector');
-      const clickableRows = findAll('.upf-infinite-select__item');
-      await click(clickableRows[4]);
+      await click('.upf-infinite-select__item:nth-child(5)');
       assert.ok(this.onChange.calledOnce);
       assert.dom('.country-selector .fflag.fflag-CH').exists();
     });
@@ -59,9 +58,8 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
       await click('.country-selector');
       assert.dom('.upf-infinite-select').exists();
       await typeIn('.upf-infinite-select input', 'fran');
-      const clickableRows = findAll('.upf-infinite-select__item');
-      assert.equal(clickableRows.length, 1);
-      assert.dom(clickableRows[0]).hasText('France (+33)');
+      assert.dom('.upf-infinite-select__item').exists({ count: 1 });
+      assert.dom('.upf-infinite-select__item:first-child').hasText('France (+33)');
     });
 
     test('Searching by Country Code Prefix works', async function (assert) {

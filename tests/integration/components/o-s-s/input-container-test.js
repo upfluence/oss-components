@@ -2,7 +2,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, find, typeIn } from '@ember/test-helpers';
-import sinon, { SinonSpy } from 'sinon';
+import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/input-container', function (hooks) {
   setupRenderingTest(hooks);

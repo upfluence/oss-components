@@ -15,7 +15,7 @@ interface OSSPhoneNumberInputArgs {
 export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputArgs> {
   @service declare intl: any;
 
-  private _countries = countries;
+  private _countries: CountryData[] = countries;
 
   @tracked invalidInputError = '';
   @tracked selectedCountry: CountryData;
@@ -38,7 +38,7 @@ export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputAr
       typeof this.args.onChange === 'function'
     );
 
-    this.selectedCountry = this._countries[0];
+    this.selectedCountry = this._countries[0]!;
     this._loadExistingNumber();
   }
 
@@ -47,7 +47,7 @@ export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputAr
       const purePrefix = this.args.prefix.replace(/\D/g, '');
       this.selectedCountry =
         this._countries.find((country: CountryData) => country.countryCallingCodes[0] === purePrefix) ||
-        this._countries[0];
+        this._countries[0]!;
     }
   }
 

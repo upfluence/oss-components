@@ -43,7 +43,7 @@ export default class OSSCountrySelector extends Component<OSSCountrySelectorArgs
   }
 
   get isCountry(): boolean {
-    return this.args.sourceList[0].id !== undefined;
+    return this.args.sourceList[0]?.id !== undefined;
   }
 
   get inputLabel(): string | null {

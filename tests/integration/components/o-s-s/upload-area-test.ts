@@ -220,7 +220,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         ];
 
         const toastStub = sinon.stub(this.owner.lookup('service:toast'), 'error');
-        const intlService = this.owner.lookup('service:intl');
+        const intlService: any = this.owner.lookup('service:intl');
 
         await render(hbs`
           {{! @glint-nocheck: not typesafe yet }}

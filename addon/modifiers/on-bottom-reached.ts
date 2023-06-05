@@ -4,7 +4,7 @@ import { run } from '@ember/runloop';
 
 type State = {
   element: Element;
-  handler: (...args: unknown[]) => unknown;
+  handler: (event: Event) => unknown;
 };
 
 const TRIGGER_OFFSET = 20;

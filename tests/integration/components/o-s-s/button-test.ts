@@ -114,10 +114,9 @@ module('Integration | Component | o-s-s/button', function (hooks) {
 
   module('it renders with loading state', function () {
     test('when using default loading', async function (assert) {
-      await render(hbs`<OSS::Button @size="sm" @loading="true" @label="Test" />`);
-      const btn = document.querySelector('.upf-btn');
-
-      assert.equal(btn?.children[0].className, 'fas fa-circle-notch fa-spin');
+      await render(hbs`<OSS::Button @size="sm" @loading={{true}} @label="Test" />`);
+      assert.dom('.upf-btn i').exists();
+      assert.dom('.upf-btn i').hasClass('fas').hasClass('fa-circle-notch').hasClass('fa-spin');
     });
   });
 

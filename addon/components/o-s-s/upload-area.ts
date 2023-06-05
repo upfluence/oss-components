@@ -128,7 +128,7 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
 
   @action
   onFileSelected(event: Event): void {
-    this._handleFileUpload(((<HTMLInputElement>event.target).files || [])[0]);
+    this._handleFileUpload(((<HTMLInputElement>event.target).files || [])[0]!);
     (<HTMLInputElement>event.target).value = '';
   }
 

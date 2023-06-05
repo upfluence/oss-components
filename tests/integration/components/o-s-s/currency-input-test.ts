@@ -51,8 +51,7 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       this.currency = '';
       await render(hbs`<OSS::CurrencyInput @currency={{this.currency}} @value="" @onChange={{this.onChange}} />`);
       await click('.currency-selector');
-      const clickableRows = findAll('.upf-infinite-select__item');
-      await click(clickableRows[4]);
+      await click('.upf-infinite-select__item:nth-child(5)');
       assert.true(this.onChange.calledOnceWithExactly('AUD', 0));
     });
     test('Selecting a new currency in the Currency selector triggers the onChange method with currency only', async function (assert) {
@@ -61,8 +60,7 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
         hbs`<OSS::CurrencyInput @onlyCurrency={{true}} @currency={{this.currency}} @value="" @onChange={{this.onChange}} />`
       );
       await click('.currency-selector');
-      const clickableRows = findAll('.upf-infinite-select__item');
-      await click(clickableRows[4]);
+      await click('.upf-infinite-select__item:nth-child(5)');
       assert.true(this.onChange.calledOnceWithExactly('AUD', 0));
     });
     test('Typing in the search input filters the results', async function (assert) {
