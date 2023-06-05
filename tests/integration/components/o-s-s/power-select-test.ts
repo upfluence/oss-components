@@ -18,6 +18,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
   module('it renders', () => {
     test('with all required named blocks', async function (assert) {
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}}>
           <:selected-item as |selectedItem|>
@@ -42,6 +43,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
       this.selectedItems = ['value1', 'value2'];
 
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}}>
           <:selected-item as |selectedItem|>
@@ -60,6 +62,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
 
     test('Passing empty @selectedItems parameter displays nothing', async function (assert) {
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}}>
           <:selected-item as |selectedItem|>
@@ -76,6 +79,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
 
     test('Passing empty @selectedItems and @placeholder parameters displays placeholder', async function (assert) {
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}} @placeholder="placeholder">
           <:selected-item as |selectedItem|>
@@ -98,6 +102,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
 
     test('Passing @items parameter displays the items in InfiniteSelect', async function (assert) {
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}}>
           <:selected-item as |selectedItem|>
@@ -125,6 +130,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
 
     test('selecting item triggers onChange with selection operation', async function (assert) {
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}} @onChange={{this.onChange}}>
           <:selected-item as |selectedItem|>
@@ -146,6 +152,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
   module('with @searchPlaceholder', () => {
     test('Passing @items parameter displays the items in InfiniteSelect', async function (assert) {
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}} @searchPlaceholder='searchPlaceholder'>
           <:selected-item as |selectedItem|>
@@ -165,6 +172,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
   module('with @onSearch', () => {
     test('search is correctly called', async function (assert) {
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}}>
           <:selected-item as |selectedItem|>
@@ -194,6 +202,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
 
     test('search is correctly call', async function (assert) {
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <div style="height:150px">
           <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}} @loadingMore={{this.loadingMore}}
                             @onSearch={{this.onSearch}} @onBottomReached={{this.onBottomReached}}>
@@ -226,6 +235,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
       });
 
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::PowerSelect @onSearch={{this.onSearch}}/>
       `);
     });
@@ -239,6 +249,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
       });
 
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::PowerSelect @onSearch={{this.onSearch}}>
           <:selected-item as |selectedItem|>
             {{selectedItem.name}}

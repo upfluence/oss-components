@@ -7,35 +7,35 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    await render(hbs`<OSS::PasswordInput @value="" />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::PasswordInput @value="" />`);
     assert.dom('.oss-input-container').exists();
   });
 
   test('it renders the @placeholder', async function (assert) {
-    await render(hbs`<OSS::PasswordInput @value="" @placeholder="test" />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::PasswordInput @value="" @placeholder="test" />`);
     assert.dom('.oss-input-container input').hasProperty('placeholder', 'test');
   });
 
   test('it displays the error message when the @errorMessage is non-empty', async function (assert) {
-    await render(hbs`<OSS::PasswordInput @value="" @errorMessage="This is the error message" />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::PasswordInput @value="" @errorMessage="This is the error message" />`);
     assert.dom('.oss-input-container').hasClass('oss-input-container--errored');
     assert.dom('.text-color-error').hasText('This is the error message');
   });
 
   test('The input is set to password, thus hiding characters, by default', async function (assert) {
-    await render(hbs`<OSS::PasswordInput @value="azeaze" />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::PasswordInput @value="azeaze" />`);
     assert.dom('input').hasAttribute('type', 'password');
   });
 
   test('Clicking on the eye icon sets the input type to text, thus making the text readable', async function (assert) {
-    await render(hbs`<OSS::PasswordInput @value="azeaze" />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::PasswordInput @value="azeaze" />`);
     assert.dom('input').hasAttribute('type', 'password');
     await click('.fa-eye');
     assert.dom('input').hasAttribute('type', 'text');
   });
 
   test('Clicking on the eye-slash icon sets the input type to password, thus hiding the text', async function (assert) {
-    await render(hbs`<OSS::PasswordInput @value="azeaze" />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::PasswordInput @value="azeaze" />`);
     assert.dom('input').hasAttribute('type', 'password');
     await click('.fa-eye');
     assert.dom('input').hasAttribute('type', 'text');
@@ -45,7 +45,7 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
 
   test('If the password regex isnt matched, then the error message is displayed', async function (assert) {
     this.value = '';
-    await render(hbs`<OSS::PasswordInput @value={{this.value}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::PasswordInput @value={{this.value}} />`);
     await typeIn('input', 'az');
     assert
       .dom('.text-color-error')
@@ -59,7 +59,7 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
     this.validates = (x: boolean) => {
       assert.equal(x, true);
     };
-    await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
     await typeIn('input', 'a');
   });
 
@@ -68,7 +68,7 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
     this.validates = (x: boolean) => {
       assert.equal(x, false);
     };
-    await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
     await typeIn('input', 'a');
   });
 
@@ -77,6 +77,6 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
       assert.equal(err.message, 'Assertion Failed: [component][OSS::PasswordInput] The @value parameter is mandatory');
     });
 
-    await render(hbs`<OSS::PasswordInput />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::PasswordInput />`);
   });
 });

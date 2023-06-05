@@ -8,7 +8,7 @@ module('Integration | Component | o-s-s/star-rating', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    await render(hbs`<OSS::StarRating @rating={{3}} @totalStars={{5}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::StarRating @rating={{3}} @totalStars={{5}} />`);
 
     assert.dom('.star-rating').exists();
   });
@@ -17,7 +17,8 @@ module('Integration | Component | o-s-s/star-rating', function (hooks) {
     test('Passing @activeColor and @passiveColor applies the correct classes to the component', async function (assert) {
       this.activeColor = starColor;
       this.passiveColor = starColor;
-      await render(hbs`<OSS::StarRating @rating={{5}} @totalStars={{8}}
+      await render(hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::StarRating @rating={{5}} @totalStars={{8}}
                                         @activeColor={{this.activeColor}}
                                         @passiveColor={{this.passiveColor}} />`);
       assert.dom('.fas').hasClass(`color-${starColor}`);
@@ -33,7 +34,7 @@ module('Integration | Component | o-s-s/star-rating', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::StarRating @totalStars={{5}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::StarRating @totalStars={{5}} />`);
     });
 
     test('failing to pass @totalStart throws an error', async function (assert) {
@@ -44,7 +45,7 @@ module('Integration | Component | o-s-s/star-rating', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::StarRating @rating={{5}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::StarRating @rating={{5}} />`);
     });
   });
 });

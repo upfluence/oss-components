@@ -14,14 +14,14 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
 
   test('it renders', async function (assert) {
     await render(
-      hbs`<OSS::ModalDialog @title="Example modal" @subtitle="subtitle" @close={{this.closeModal}} @size="md" />`
+      hbs`{{! @glint-nocheck }}<OSS::ModalDialog @title="Example modal" @subtitle="subtitle" @close={{this.closeModal}} @size="md" />`
     );
     assert.dom('.oss-modal-dialog').exists();
   });
 
   test('On escape button the modal is closed', async function (assert) {
     await render(
-      hbs`<OSS::ModalDialog @title="Example modal" @subtitle="subtitle" @close={{this.closeModal}} @size="md" />`
+      hbs`{{! @glint-nocheck }}<OSS::ModalDialog @title="Example modal" @subtitle="subtitle" @close={{this.closeModal}} @size="md" />`
     );
 
     await triggerKeyEvent('.oss-modal-dialog', 'keyup', 27);
@@ -30,7 +30,7 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
 
   test('The cross button at the top right of the modal closes the modal', async function (assert) {
     await render(
-      hbs`<OSS::ModalDialog @title="Example modal" @subtitle="subtitle" @close={{this.closeModal}} @size="md" />`
+      hbs`{{! @glint-nocheck }}<OSS::ModalDialog @title="Example modal" @subtitle="subtitle" @close={{this.closeModal}} @size="md" />`
     );
 
     await click('.fa-close');
@@ -39,7 +39,7 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
 
   test('The title parameter is properly displayed', async function (assert) {
     await render(
-      hbs`<OSS::ModalDialog @title="Example modal" @subtitle="subtitle" @close={{this.closeModal}} @size="md" />`
+      hbs`{{! @glint-nocheck }}<OSS::ModalDialog @title="Example modal" @subtitle="subtitle" @close={{this.closeModal}} @size="md" />`
     );
 
     assert.dom('.oss-modal-dialog .title').hasText('Example modal');
@@ -47,7 +47,7 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
 
   test('The subtitle parameter is properly displayed', async function (assert) {
     await render(
-      hbs`<OSS::ModalDialog @title="Example modal" @subtitle="Subtitle" @close={{this.closeModal}} @size="md" />`
+      hbs`{{! @glint-nocheck }}<OSS::ModalDialog @title="Example modal" @subtitle="Subtitle" @close={{this.closeModal}} @size="md" />`
     );
 
     assert.dom('.oss-modal-dialog .subtitle').hasText('Subtitle');
@@ -56,6 +56,7 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
   test('The illustration named-block is properly displayed', async function (assert) {
     await render(
       hbs`
+      {{! @glint-nocheck: not typesafe yet }}
       <OSS::ModalDialog @title="Example modal" @subtitle="subtitle" @close={{this.closeModal}} @size="md">
         <:illustration>
           <p class="illustration-container">Illustration</p>
@@ -69,6 +70,7 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
   test('The content named-block is properly displayed', async function (assert) {
     await render(
       hbs`
+      {{! @glint-nocheck: not typesafe yet }}
       <OSS::ModalDialog @title="Example modal" @subtitle="subtitle" @close={{this.closeModal}} @size="md">
         <:content>
           <p>This is the content</p>
@@ -82,6 +84,7 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
   test('The footer named-block is properly displayed', async function (assert) {
     await render(
       hbs`
+      {{! @glint-nocheck: not typesafe yet }}
       <OSS::ModalDialog @title="Example modal" @subtitle="subtitle" @close={{this.closeModal}} @size="md">
         <:footer>
           footer content
@@ -98,7 +101,7 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
         assert.equal(err.message, 'Assertion Failed: [component][OSS::ModalDialog] The title parameter is mandatory');
       });
 
-      await render(hbs`<OSS::ModalDialog @close={{this.closeModal}}></OSS::ModalDialog>`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::ModalDialog @close={{this.closeModal}}></OSS::ModalDialog>`);
     });
 
     test('The component throws an error if the close parameter is not passed', async function (assert) {
@@ -106,7 +109,7 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
         assert.equal(err.message, 'Assertion Failed: [component][OSS::ModalDialog] The close function is mandatory');
       });
 
-      await render(hbs`<OSS::ModalDialog @title="Test"></OSS::ModalDialog>`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::ModalDialog @title="Test"></OSS::ModalDialog>`);
     });
   });
 });

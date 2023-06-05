@@ -8,19 +8,19 @@ module('Integration | Component | o-s-s/link', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders with icon only', async function (assert: Assert) {
-    await render(hbs`<OSS::Link @icon="fab fa-facebook" />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Link @icon="fab fa-facebook" />`);
 
     assert.dom('.upf-link i').hasClass('fa-facebook');
   });
 
   test('it renders with label only', async function (assert: Assert) {
-    await render(hbs`<OSS::Link @label="Super Label" />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Link @label="Super Label" />`);
 
     assert.dom('.upf-link span').hasText('Super Label');
   });
 
   test('it renders with both label and icon', async function (assert: Assert) {
-    await render(hbs`<OSS::Link @icon="fab fa-facebook" @label="Facebook" />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Link @icon="fab fa-facebook" @label="Facebook" />`);
 
     assert.dom('.upf-link i').hasClass('fa-facebook');
     assert.dom('.upf-link span').hasClass('margin-left-xxx-sm');
@@ -31,6 +31,7 @@ module('Integration | Component | o-s-s/link', function (hooks) {
     let windowOpenStub = sinon.stub(window, 'open');
 
     await render(hbs`
+      {{! @glint-nocheck: not typesafe yet }}
       <OSS::Link @icon="fab fa-facebook" @label="Facebook" 
                  @link={{hash href="https://www.google.fr" target="_blank"}} />
     `);
@@ -43,7 +44,7 @@ module('Integration | Component | o-s-s/link', function (hooks) {
   test('it transits to the route', async function (assert: Assert) {
     let transitionToStub = sinon.stub(this.owner.lookup('service:router'), 'transitionTo');
 
-    await render(hbs`<OSS::Link @icon="fab fa-facebook" @label="Facebook" @transitionTo="workflow.create" />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Link @icon="fab fa-facebook" @label="Facebook" @transitionTo="workflow.create" />`);
 
     await click('.upf-link');
     assert.true(transitionToStub.calledOnceWithExactly(sinon.match('workflow.create')));
@@ -57,6 +58,6 @@ module('Integration | Component | o-s-s/link', function (hooks) {
       );
     });
 
-    await render(hbs`<OSS::Link />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Link />`);
   });
 });

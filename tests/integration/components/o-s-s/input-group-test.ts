@@ -7,34 +7,34 @@ module('Integration | Component | o-s-s/input-group', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    await render(hbs`<OSS::InputGroup @prefix="username" />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::InputGroup @prefix="username" />`);
     assert.dom('.oss-input-group').exists();
   });
 
   test('Passing the @prefix parameter displays the input prefix', async function (assert) {
-    await render(hbs`<OSS::InputGroup @prefix="username" />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::InputGroup @prefix="username" />`);
     assert.dom('.oss-input-group-row-prefix').hasText('username');
   });
 
   test('Passing the @suffix parameter displays the input suffix', async function (assert) {
-    await render(hbs`<OSS::InputGroup @suffix="@domain.com" />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::InputGroup @suffix="@domain.com" />`);
     assert.dom('.oss-input-group-row-suffix').hasText('@domain.com');
   });
 
   test('Passing the @suffix parameter displays the input suffix', async function (assert) {
-    await render(hbs`<OSS::InputGroup @prefix="email" @suffix="@domain.com" />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::InputGroup @prefix="email" @suffix="@domain.com" />`);
     assert.dom('.oss-input-group-row-prefix').hasText('email');
     assert.dom('.oss-input-group-row-suffix').hasText('@domain.com');
   });
 
   test('Passing the @errorMessage parameter displays the error message', async function (assert) {
-    await render(hbs`<OSS::InputGroup @suffix="@domain.com" @errorMessage="This is an error." />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::InputGroup @suffix="@domain.com" @errorMessage="This is an error." />`);
     assert.dom('.oss-input-group-row--error').exists();
     assert.dom('.oss-input-group span').hasText('This is an error.');
   });
 
   test('Passing the @errorMessage sets an error border on the whole compoenent', async function (assert) {
-    await render(hbs`<OSS::InputGroup @prefix="random" @suffix="@domain.com" @errorMessage="This is an error." />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::InputGroup @prefix="random" @suffix="@domain.com" @errorMessage="This is an error." />`);
     assert.dom('.oss-input-group-row--error').exists();
     assert.dom('input').hasStyle({ borderColor: 'rgb(239, 68, 68)' });
     assert
@@ -53,6 +53,6 @@ module('Integration | Component | o-s-s/input-group', function (hooks) {
       );
     });
 
-    await render(hbs`<OSS::InputGroup />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::InputGroup />`);
   });
 });

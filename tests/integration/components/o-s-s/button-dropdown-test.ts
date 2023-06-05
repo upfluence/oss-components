@@ -8,7 +8,7 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
 
   test('the icon is not displayed if not provided', async function (assert) {
     await render(
-      hbs`<OSS::ButtonDropdown @label="label"><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
+      hbs`{{! @glint-nocheck }}<OSS::ButtonDropdown @label="label"><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
     );
 
     assert.dom('.oss-button-dropdown__trigger .fx-row:first-child i').doesNotExist();
@@ -16,7 +16,7 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
 
   test('the label is not displayed if not provided', async function (assert) {
     await render(
-      hbs`<OSS::ButtonDropdown @icon="far fa-users"><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
+      hbs`{{! @glint-nocheck }}<OSS::ButtonDropdown @icon="far fa-users"><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
     );
 
     assert.dom('.oss-button-dropdown__trigger .fx-row:first-child span').doesNotExist();
@@ -24,7 +24,7 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
 
   test('the icon and label are displayed correctly when provided', async function (assert) {
     await render(
-      hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label"><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
+      hbs`{{! @glint-nocheck }}<OSS::ButtonDropdown @icon="far fa-users" @label="label"><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
     );
 
     assert.dom('.oss-button-dropdown__trigger .fx-row:first-child i').exists();
@@ -36,7 +36,7 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
 
   test('clicking on the caret container part opens the dropdown', async function (assert) {
     await render(
-      hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label"><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
+      hbs`{{! @glint-nocheck }}<OSS::ButtonDropdown @icon="far fa-users" @label="label"><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
     );
 
     assert.dom('.oss-button-dropdown__items').doesNotExist();
@@ -56,7 +56,7 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
     });
 
     await render(
-      hbs`<OSS::ButtonDropdown><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
+      hbs`{{! @glint-nocheck }}<OSS::ButtonDropdown><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
     );
   });
 });

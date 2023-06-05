@@ -19,7 +19,7 @@ module('Integration | Component | o-s-s/social-post-badge', function (hooks) {
 
   test('it renders', async function (assert) {
     await render(
-      hbs`<OSS::SocialPostBadge @postType={{this.postType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
+      hbs`{{! @glint-nocheck }}<OSS::SocialPostBadge @postType={{this.postType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
     );
 
     assert.dom('.oss-social-post-badge').exists();
@@ -28,7 +28,7 @@ module('Integration | Component | o-s-s/social-post-badge', function (hooks) {
   module('@plain', () => {
     test('When @plain is not set class is not added', async function (assert) {
       await render(
-        hbs`<OSS::SocialPostBadge @postType={{this.postType}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
+        hbs`{{! @glint-nocheck }}<OSS::SocialPostBadge @postType={{this.postType}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
       );
 
       assert.dom('.oss-social-post-badge').hasNoClass('oss-social-post-badge--plain');
@@ -38,7 +38,7 @@ module('Integration | Component | o-s-s/social-post-badge', function (hooks) {
       this.plain = true;
 
       await render(
-        hbs`<OSS::SocialPostBadge @postType={{this.postType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
+        hbs`{{! @glint-nocheck }}<OSS::SocialPostBadge @postType={{this.postType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
       );
 
       assert.dom('.oss-social-post-badge').hasClass('oss-social-post-badge--plain');
@@ -48,7 +48,7 @@ module('Integration | Component | o-s-s/social-post-badge', function (hooks) {
   module('@selected', () => {
     test('When @selected is not set class is not added', async function (assert) {
       await render(
-        hbs`<OSS::SocialPostBadge @postType={{this.postType}} @plain={{this.plain}} @onToggle={{this.onToggle}}/>`
+        hbs`{{! @glint-nocheck }}<OSS::SocialPostBadge @postType={{this.postType}} @plain={{this.plain}} @onToggle={{this.onToggle}}/>`
       );
 
       assert.dom('.oss-social-post-badge').hasNoClass('oss-social-post-badge--selected');
@@ -58,7 +58,7 @@ module('Integration | Component | o-s-s/social-post-badge', function (hooks) {
       this.selected = true;
 
       await render(
-        hbs`<OSS::SocialPostBadge @postType={{this.postType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
+        hbs`{{! @glint-nocheck }}<OSS::SocialPostBadge @postType={{this.postType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
       );
 
       assert.dom('.oss-social-post-badge').hasClass('oss-social-post-badge--selected');
@@ -71,7 +71,7 @@ module('Integration | Component | o-s-s/social-post-badge', function (hooks) {
       this.onToggle = sinon.spy();
 
       await render(
-        hbs`<OSS::SocialPostBadge @postType={{this.postType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
+        hbs`{{! @glint-nocheck }}<OSS::SocialPostBadge @postType={{this.postType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
       );
 
       await click('.oss-social-post-badge');
@@ -88,7 +88,7 @@ module('Integration | Component | o-s-s/social-post-badge', function (hooks) {
         );
       });
       await render(
-        hbs`<OSS::SocialPostBadge @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
+        hbs`{{! @glint-nocheck }}<OSS::SocialPostBadge @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
       );
     });
 
@@ -102,7 +102,7 @@ module('Integration | Component | o-s-s/social-post-badge', function (hooks) {
         );
       });
       await render(
-        hbs`<OSS::SocialPostBadge @postType={{this.postType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
+        hbs`{{! @glint-nocheck }}<OSS::SocialPostBadge @postType={{this.postType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
       );
     });
   });

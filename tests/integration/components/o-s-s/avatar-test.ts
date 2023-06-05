@@ -10,7 +10,7 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
 
   module('Default behavior', function () {
     test('it displays the image when it is provided', async function (assert) {
-      await render(hbs`<OSS::Avatar @image="http://foo.co/bar.png" />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Avatar @image="http://foo.co/bar.png" />`);
 
       assert.dom('.upf-avatar').exists();
       assert.dom('.upf-avatar img').exists();
@@ -18,7 +18,7 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
     });
 
     test('it displays the initials when they are provided', async function (assert) {
-      await render(hbs`<OSS::Avatar @initials="TS" />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Avatar @initials="TS" />`);
 
       assert.dom('.upf-avatar').exists();
       assert.dom('.upf-avatar span').exists();
@@ -26,7 +26,7 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
     });
 
     test('it displays the default image when initials and image are not provided', async function (assert) {
-      await render(hbs`<OSS::Avatar />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Avatar />`);
 
       assert.dom('.upf-avatar').exists();
       assert.dom('.upf-avatar img').exists();
@@ -34,7 +34,7 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
     });
 
     test('it displays the image when image and initials are provided', async function (assert) {
-      await render(hbs`<OSS::Avatar @image="http://foo.co/bar.png" @initials="TS" />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Avatar @image="http://foo.co/bar.png" @initials="TS" />`);
 
       assert.dom('.upf-avatar').exists();
       assert.dom('.upf-avatar img').exists();
@@ -44,7 +44,7 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
 
   module('Sizes', function () {
     test('it sets the right default class when size is not provided', async function (assert) {
-      await render(hbs`<OSS::Avatar />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Avatar />`);
 
       assert.dom('.upf-avatar').exists();
       assert.dom('.upf-avatar').hasClass(`upf-avatar--md`);
@@ -53,7 +53,7 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
     Object.keys(SizeDefinition).forEach((size) => {
       test(`it sets the right class when using a supported size: ${size}`, async function (assert: Assert) {
         this.size = size;
-        await render(hbs`<OSS::Avatar @size={{this.size}} />`);
+        await render(hbs`{{! @glint-nocheck }}<OSS::Avatar @size={{this.size}} />`);
 
         assert.dom('.upf-avatar').exists();
         assert.dom('.upf-avatar').hasClass(`upf-avatar--${size}`);
@@ -72,11 +72,11 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::Avatar @size="test" />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Avatar @size="test" />`);
     });
 
     test('it displays the initials when both initials and image are provided and the image fails to load', async function (assert) {
-      await render(hbs`<OSS::Avatar @image="http://foo.co/bar.p" @initials="TS" />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Avatar @image="http://foo.co/bar.p" @initials="TS" />`);
       await waitFor('.upf-avatar span');
 
       assert.dom('.upf-avatar').exists();
@@ -85,7 +85,7 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
     });
 
     test('it displays the placeholder image when the image provided in parameters fails to load', async function (assert) {
-      await render(hbs`<OSS::Avatar @image="http://foo.co/bar.p" />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Avatar @image="http://foo.co/bar.p" />`);
       await waitUntil(function () {
         return find('.upf-avatar img')?.getAttribute('src') === DEFAULT_IMAGE_URL;
       });

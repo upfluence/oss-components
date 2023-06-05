@@ -8,13 +8,13 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    await render(hbs`<OSS::Copy />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Copy />`);
 
     assert.dom('.upf-btn--default').exists();
   });
 
   test('the tooltip has correct wording', async function (assert) {
-    await render(hbs`<OSS::Copy />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Copy />`);
 
     await assert.tooltip('.upf-btn--default').hasTitle('Copy');
   });
@@ -32,7 +32,7 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
       sinon.stub(navigator.clipboard, 'writeText').resolves();
       const toastInfoStub = sinon.stub(this.toastService, 'info').resolves();
 
-      await render(hbs`<OSS::Copy @value="test" />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Copy @value="test" />`);
       await click('.upf-btn--default');
 
       assert.true(toastInfoStub.calledOnceWithExactly('Successfully copied to your clipboard.', 'Copied to clipboard'));
@@ -42,7 +42,7 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
       sinon.stub(navigator.clipboard, 'writeText').rejects();
       const toastErrorStub = sinon.stub(this.toastService, 'error').resolves();
 
-      await render(hbs`<OSS::Copy @value="test" />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Copy @value="test" />`);
       await click('.upf-btn--default');
 
       assert.true(toastErrorStub.calledOnceWithExactly('Failed to copy to your clipboard. Please try again.', 'Error'));
@@ -53,7 +53,7 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
       sinon.stub(this.toastService, 'info').resolves();
       this.textForCopy = 'test';
 
-      await render(hbs`<OSS::Copy @value={{this.textForCopy}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Copy @value={{this.textForCopy}} />`);
       await click('.upf-btn--default');
 
       assert.true(writeTextStub.calledOnceWithExactly(this.textForCopy));

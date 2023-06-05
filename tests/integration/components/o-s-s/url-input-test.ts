@@ -10,7 +10,7 @@ module('Integration | Component | o-s-s/url-input', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    await render(hbs`<OSS::UrlInput @prefix="https://" />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::UrlInput @prefix="https://" />`);
 
     assert.dom('.oss-input-group').exists();
   });
@@ -21,7 +21,8 @@ module('Integration | Component | o-s-s/url-input', function (hooks) {
       this.value = '';
       this.onChange = sinon.stub();
 
-      await render(hbs`<OSS::UrlInput @prefix="https://" @suffix=".myshopify.com"
+      await render(hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::UrlInput @prefix="https://" @suffix=".myshopify.com"
                                       @onChange={{this.onChange}} @value={{this.value}}
                                       @validationRegex={{this.subdomainRegex}} />`);
       await fillIn('input', 'fakedomai');
@@ -35,7 +36,8 @@ module('Integration | Component | o-s-s/url-input', function (hooks) {
         this.value = '';
         this.onChange = sinon.stub();
 
-        await render(hbs`<OSS::UrlInput @prefix="https://" @suffix=".myshopify.com"
+        await render(hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::UrlInput @prefix="https://" @suffix=".myshopify.com"
                                       @onChange={{this.onChange}} @value={{this.value}}
                                       @validationRegex={{this.subdomainRegex}} />`);
         await typeIn('input', 'a');
@@ -45,7 +47,8 @@ module('Integration | Component | o-s-s/url-input', function (hooks) {
       test('If no error message has been specified by the parent, a default one is displayed', async function (assert) {
         this.subdomainRegex = /^[a-zA-Z0-9]+[a-zA-Z0-9-._]*[a-zA-Z0-9]+$/;
         this.value = '';
-        await render(hbs`<OSS::UrlInput @prefix="https://" @suffix=".myshopify.com"
+        await render(hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::UrlInput @prefix="https://" @suffix=".myshopify.com"
                                       @onChange={{this.onChange}} @value={{this.value}}
                                       @validationRegex={{this.subdomainRegex}} />`);
         await typeIn('input', 'a');
@@ -55,7 +58,8 @@ module('Integration | Component | o-s-s/url-input', function (hooks) {
       test('If an error message has been specified by the parent, it is displayed', async function (assert) {
         this.subdomainRegex = /^[a-zA-Z0-9]+[a-zA-Z0-9-._]*[a-zA-Z0-9]+$/;
         this.value = '';
-        await render(hbs`<OSS::UrlInput @prefix="https://" @suffix=".myshopify.com"
+        await render(hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::UrlInput @prefix="https://" @suffix=".myshopify.com"
                                       @onChange={{this.onChange}} @value={{this.value}}
                                       @errorMessage="This is a custom error message."
                                       @validationRegex={{this.subdomainRegex}} />`);

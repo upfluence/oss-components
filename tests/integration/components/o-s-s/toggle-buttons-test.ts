@@ -29,7 +29,7 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
 
   test('it renders', async function (assert) {
     await render(
-      hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+      hbs`{{! @glint-nocheck }}<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
     );
 
     assert.dom('.oss-toggle-buttons-container').exists();
@@ -40,7 +40,7 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
       this.selectedToggle = 'second';
 
       await render(
-        hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+        hbs`{{! @glint-nocheck }}<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
       );
       assert.dom('.oss-toggle-buttons-btn--selected').hasText('Second');
     });
@@ -49,7 +49,7 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
   module('When clicking on an item', () => {
     test('the toggle is selected', async function (assert) {
       await render(
-        hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+        hbs`{{! @glint-nocheck }}<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
       );
 
       await click('.oss-toggle-buttons-btn:first-child');
@@ -63,7 +63,7 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
       this.onSelectionStub = sinon.stub();
 
       await render(
-        hbs`<OSS::ToggleButtons @onSelection={{this.onSelectionStub}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+        hbs`{{! @glint-nocheck }}<OSS::ToggleButtons @onSelection={{this.onSelectionStub}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
       );
 
       await click('.oss-toggle-buttons-btn:first-child');
@@ -74,7 +74,7 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
       this.onSelection = sinon.spy();
 
       await render(
-        hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+        hbs`{{! @glint-nocheck }}<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
       );
 
       await click('.oss-toggle-buttons-btn:last-child');
@@ -91,7 +91,7 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
         );
       });
       await render(
-        hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @selectedToggle={{this.selectedToggle}}/>`
+        hbs`{{! @glint-nocheck }}<OSS::ToggleButtons @onSelection={{this.onSelection}} @selectedToggle={{this.selectedToggle}}/>`
       );
       await settled();
     });
@@ -103,7 +103,7 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
           'Assertion Failed: [component][OSS::ToggleButtons] The @onSelection parameter of type function is mandatory'
         );
       });
-      await render(hbs`<OSS::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`);
       await settled();
     });
 
@@ -114,7 +114,7 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
           'Assertion Failed: [component][OSS::ToggleButtons] The @selectedToggle parameter of type string is mandatory'
         );
       });
-      await render(hbs`<OSS::ToggleButtons @toggles={{this.toggles}} @onSelection={{this.onSelection}}  />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::ToggleButtons @toggles={{this.toggles}} @onSelection={{this.onSelection}}  />`);
       await settled();
     });
 
@@ -128,7 +128,7 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
         );
       });
       await render(
-        hbs`<OSS::ToggleButtons @toggles={{this.toggles}} @onSelection={{this.onSelection}} @selectedToggle={{this.selectedToggle}}/>`
+        hbs`{{! @glint-nocheck }}<OSS::ToggleButtons @toggles={{this.toggles}} @onSelection={{this.onSelection}} @selectedToggle={{this.selectedToggle}}/>`
       );
       await settled();
     });
