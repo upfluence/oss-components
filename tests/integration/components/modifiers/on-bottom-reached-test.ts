@@ -12,6 +12,7 @@ module('Integration | Component | modifiers/on-bottom-reached', function (hooks)
     };
 
     await render(hbs`
+      {{! @glint-nocheck: not typesafe yet }}
       <div class="scrollable" style="background: red; height: 100px; overflow: scroll"
            {{on-bottom-reached this.bottomReached}}>
         <div style="height: 250px">hello</div>

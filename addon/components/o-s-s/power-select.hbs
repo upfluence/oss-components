@@ -1,3 +1,4 @@
+{{! @glint-nocheck: not typesafe yet }}
 <div class="upf-power-select fx-1 fx-col" ...attributes
      {{did-insert (fn this.ensureBlockPresence (has-block "selected-item") (has-block "option-item"))}}>
   <div class="upf-power-select__array-container" role="button" {{on "click" this.toggleSelect}}>

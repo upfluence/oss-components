@@ -13,7 +13,7 @@ module('Integration | Helper | transition-to', function (hooks) {
 
   module('only a route has been passed', function () {
     test('it triggers the RouterService#transitionTo method with the route only', async function (assert) {
-      await render(hbs`<a {{on "click" (transition-to route="foo")}}>link</a>`);
+      await render(hbs`{{! @glint-nocheck }}<a {{on "click" (transition-to route="foo")}}>link</a>`);
       await click('a');
 
       assert.ok(this.transitionToStub.calledWithExactly('foo', { queryParams: {} }));
@@ -22,7 +22,7 @@ module('Integration | Helper | transition-to', function (hooks) {
 
   module('a model has been passed to the transition', function () {
     test('it triggers the RouterService#transitionTo method with the route only', async function (assert) {
-      await render(hbs`<a {{on "click" (transition-to route="foo" model="1")}}>link</a>`);
+      await render(hbs`{{! @glint-nocheck }}<a {{on "click" (transition-to route="foo" model="1")}}>link</a>`);
       await click('a');
 
       assert.ok(this.transitionToStub.calledWithExactly('foo', '1', { queryParams: {} }));
@@ -31,7 +31,7 @@ module('Integration | Helper | transition-to', function (hooks) {
 
   module('multiple models have been passed to the transition', function () {
     test('it triggers the RouterService#transitionTo method with the route only', async function (assert) {
-      await render(hbs`<a {{on "click" (transition-to route="foo" models=(array 'fizz' 'buzz'))}}>link</a>`);
+      await render(hbs`{{! @glint-nocheck }}<a {{on "click" (transition-to route="foo" models=(array 'fizz' 'buzz'))}}>link</a>`);
       await click('a');
 
       assert.ok(this.transitionToStub.calledWithExactly('foo', 'fizz', 'buzz', { queryParams: {} }));
@@ -40,7 +40,7 @@ module('Integration | Helper | transition-to', function (hooks) {
 
   module('with queryParams', function () {
     test('it triggers the RouterService#transitionTo method with the route and queryParams', async function (assert) {
-      await render(hbs`<a {{on "click" (transition-to route="foo" queryParams=(hash myParam="bruh"))}}>link</a>`);
+      await render(hbs`{{! @glint-nocheck }}<a {{on "click" (transition-to route="foo" queryParams=(hash myParam="bruh"))}}>link</a>`);
       await click('a');
 
       assert.ok(this.transitionToStub.calledWithExactly('foo', { queryParams: { myParam: 'bruh' } }));
@@ -53,7 +53,7 @@ module('Integration | Helper | transition-to', function (hooks) {
         assert.equal(err.message, 'Assertion Failed: [helper][OSS::transition-to] route argument is mandatory');
       });
 
-      await render(hbs`<a {{on "click" (transition-to)}}>link</a>`);
+      await render(hbs`{{! @glint-nocheck }}<a {{on "click" (transition-to)}}>link</a>`);
     });
 
     test('it throws an error if both models and model arguments are passed', async function (assert) {
@@ -64,7 +64,7 @@ module('Integration | Helper | transition-to', function (hooks) {
         );
       });
 
-      await render(hbs`<a {{on "click" (transition-to route="foo" models=(array '1' '2') model='3')}}>link</a>`);
+      await render(hbs`{{! @glint-nocheck }}<a {{on "click" (transition-to route="foo" models=(array '1' '2') model='3')}}>link</a>`);
     });
 
     test('it throws an error if queryParams argument is passed but is not an object', async function (assert) {
@@ -75,7 +75,7 @@ module('Integration | Helper | transition-to', function (hooks) {
         );
       });
 
-      await render(hbs`<a {{on "click" (transition-to route="foo" queryParams='string')}}>link</a>`);
+      await render(hbs`{{! @glint-nocheck }}<a {{on "click" (transition-to route="foo" queryParams='string')}}>link</a>`);
     });
   });
 });

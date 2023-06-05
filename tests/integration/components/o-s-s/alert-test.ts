@@ -16,13 +16,13 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    await render(hbs`<OSS::Alert @skin="success" />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Alert @skin="success" />`);
 
     assert.dom('.upf-alert').exists({ count: 1 });
   });
 
   test('it sets info as default if no skin is specified', async function (assert) {
-    await render(hbs`<OSS::Alert />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Alert />`);
 
     assert.dom('.upf-alert').hasClass('upf-alert--info');
   });
@@ -31,7 +31,7 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
     test(`it renders ${skin} skin correctly`, async function (assert) {
       this.skin = skin;
       await render(
-        hbs`<OSS::Alert @skin={{this.skin}} @title={{concat "Title " this.skin}} @subtitle={{concat "Subitle " this.skin}} />`
+        hbs`{{! @glint-nocheck }}<OSS::Alert @skin={{this.skin}} @title={{concat "Title " this.skin}} @subtitle={{concat "Subitle " this.skin}} />`
       );
 
       assert.dom('.upf-alert .icon i').hasClass('far');
@@ -43,19 +43,19 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
 
   module('@plain parameter', function () {
     test('if true, the background-color is grey', async function (assert) {
-      await render(hbs`<OSS::Alert @plain={{true}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Alert @plain={{true}} />`);
 
       assert.dom('.upf-alert .main-container').hasClass('main-container--plain');
     });
 
     test('if false, the background-color is white', async function (assert) {
-      await render(hbs`<OSS::Alert @plain={{false}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Alert @plain={{false}} />`);
 
       assert.dom('.upf-alert .main-container').hasNoClass('main-container--plain');
     });
 
     test('if undefined, the background-color is grey', async function (assert) {
-      await render(hbs`<OSS::Alert />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Alert />`);
 
       assert.dom('.upf-alert .main-container').hasClass('main-container--plain');
     });
@@ -63,7 +63,7 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
 
   module('@closable parameter', function () {
     test('if true, display the cross icon which delete alert when you click on it', async function (assert) {
-      await render(hbs`<div><OSS::Alert @closable={{true}} /></div>`);
+      await render(hbs`{{! @glint-nocheck }}<div><OSS::Alert @closable={{true}} /></div>`);
 
       assert.dom('.upf-alert').exists();
       assert.dom('.upf-alert .main-container .fx-col i').exists();
@@ -75,14 +75,14 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
     });
 
     test('if false, the cross icon is not displayed', async function (assert) {
-      await render(hbs`<OSS::Alert @closable={{false}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Alert @closable={{false}} />`);
 
       assert.dom('.upf-alert').exists();
       assert.dom('.upf-alert .main-container .fx-col i').doesNotExist();
     });
 
     test('if undefined, the cross icon is not displayed', async function (assert) {
-      await render(hbs`<OSS::Alert />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Alert />`);
 
       assert.dom('.upf-alert').exists();
       assert.dom('.upf-alert .main-container .fx-col i').doesNotExist();
@@ -90,7 +90,7 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
 
     test('clicking the cross icon also calls the onClose argument provided', async function (assert) {
       this.onClose = sinon.stub();
-      await render(hbs`<div><OSS::Alert @closable={{true}} @onClose={{this.onClose}} /></div>`);
+      await render(hbs`{{! @glint-nocheck }}<div><OSS::Alert @closable={{true}} @onClose={{this.onClose}} /></div>`);
       await click('.upf-alert .main-container .fx-col i');
       assert.ok(this.onClose.calledOnce);
       assert.dom('.upf-alert').doesNotExist();
@@ -98,7 +98,7 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
   });
 
   test('it renders the extra-content named block', async function (assert) {
-    await render(hbs`<OSS::Alert><:extra-content><div>Hello</div></:extra-content></OSS::Alert>`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Alert><:extra-content><div>Hello</div></:extra-content></OSS::Alert>`);
 
     assert.dom('.upf-alert .text-container div').hasText('Hello');
   });

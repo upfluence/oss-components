@@ -19,7 +19,8 @@ module('Integration | Component | o-s-s/togglable-section', function(hooks) {
   });
 
   test('it renders', async function (assert) {
-    await render(hbs`<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
+    await render(hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
                                                  @iconUrl={{this.iconUrl}} @toggled={{this.toggled}}
                                                  @onChange={{this.onChange}} />`);
     assert.dom('.upf-banner').exists();
@@ -29,7 +30,8 @@ module('Integration | Component | o-s-s/togglable-section', function(hooks) {
     setupOnerror((err: any) => {
       assert.equal(err.message, 'Assertion Failed: [OSS::TogglableSection] The @title parameter is mandatory');
     });
-    await render(hbs`<OSS::TogglableSection @subtitle={{this.subtitle}}
+    await render(hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::TogglableSection @subtitle={{this.subtitle}}
                                                  @iconUrl={{this.iconUrl}} @toggled={{this.toggled}}
                                                  @onChange={{this.onChange}} />`);
   });
@@ -38,7 +40,8 @@ module('Integration | Component | o-s-s/togglable-section', function(hooks) {
     setupOnerror((err: any) => {
       assert.equal(err.message, 'Assertion Failed: [OSS::TogglableSection] The @toggled parameter is mandatory');
     });
-    await render(hbs`<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
+    await render(hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
                                                  @iconUrl={{this.iconUrl}}
                                                  @onChange={{this.onChange}} />`);
   });
@@ -47,19 +50,22 @@ module('Integration | Component | o-s-s/togglable-section', function(hooks) {
     setupOnerror((err: any) => {
       assert.equal(err.message, 'Assertion Failed: [OSS::TogglableSection] The @onChange function is mandatory');
     });
-    await render(hbs`<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
+    await render(hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
                                                  @iconUrl={{this.iconUrl}} @toggled={{this.toggled}} />`);
   });
 
   test('It displays no image if @iconUrl param is not passed', async function (assert) {
-    await render(hbs`<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
+    await render(hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
                                                  @toggled={{this.toggled}}
                                                  @onChange={{this.onChange}} />`);
     assert.dom('img').doesNotExist();
   });
 
   test('When the toggle is enabled, the named-block contents are displayed', async function (assert) {
-    await render(hbs`<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
+    await render(hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
                                                  @iconUrl={{this.iconUrl}} @toggled={{this.toggled}}
                                                  @onChange={{this.onChange}}>
                        <:contents>
@@ -73,7 +79,8 @@ module('Integration | Component | o-s-s/togglable-section', function(hooks) {
 
   test('When the toggle is disabled, the named-block contents are displayed', async function (assert) {
     this.toggled = true;
-    await render(hbs`<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
+    await render(hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
                                                  @iconUrl={{this.iconUrl}} @toggled={{this.toggled}}
                                                  @onChange={{this.onChange}}>
                        <:contents>
@@ -87,7 +94,8 @@ module('Integration | Component | o-s-s/togglable-section', function(hooks) {
 
   test('When the toggle is click, the @onChange method is called', async function (assert) {
     this.onChange = sinon.stub();
-    await render(hbs`<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
+    await render(hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
                                                  @iconUrl={{this.iconUrl}} @toggled={{this.toggled}}
                                                  @onChange={{this.onChange}}>
                        <:contents>
