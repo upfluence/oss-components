@@ -10,7 +10,7 @@
     <OSS::ToggleSwitch @value={{@toggled}} @onChange={{@onChange}} />
   </div>
   {{#if (and (has-block "contents") @toggled)}}
-    <hr class="margin-px-0" />
+    <hr class="margin-px-0 width-pc-100" />
     <div class="width-pc-100">
       {{yield to="contents"}}
     </div>
