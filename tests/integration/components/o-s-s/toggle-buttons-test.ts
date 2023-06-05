@@ -1,9 +1,9 @@
+import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { set } from '@ember/object';
 import { click, render } from '@ember/test-helpers';
 import settled from '@ember/test-helpers/settled';
-import hbs from 'htmlbars-inline-precompile';
 import setupOnerror from '@ember/test-helpers/setup-onerror';
 import sinon from 'sinon';
 

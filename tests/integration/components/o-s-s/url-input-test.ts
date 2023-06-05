@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
+import { hbs } from 'ember-cli-htmlbars';
 import fillIn from '@ember/test-helpers/dom/fill-in';
 import typeIn from '@ember/test-helpers/dom/type-in';
 import sinon from 'sinon';

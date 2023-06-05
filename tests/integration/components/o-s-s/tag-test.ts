@@ -1,7 +1,7 @@
+import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
 import { SkinDefinition, SkinType } from '@upfluence/oss-components/components/o-s-s/tag';
 
 module('Integration | Component | o-s-s/tag', function (hooks) {

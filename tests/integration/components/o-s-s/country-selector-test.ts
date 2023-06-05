@@ -1,4 +1,4 @@
-import hbs from 'htmlbars-inline-precompile';
+import { hbs } from 'ember-cli-htmlbars';
 import setupOnerror from '@ember/test-helpers/setup-onerror';
 import settled from '@ember/test-helpers/settled';
 import sinon from 'sinon';

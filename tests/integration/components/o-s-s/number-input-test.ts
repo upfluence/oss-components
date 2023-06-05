@@ -1,7 +1,7 @@
+import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
 import click from '@ember/test-helpers/dom/click';
 import triggerKeyEvent from '@ember/test-helpers/dom/trigger-key-event';
 import typeIn from '@ember/test-helpers/dom/type-in';
