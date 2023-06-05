@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  extends: 'octane',
+  extends: 'recommended',
 
   plugins: ['./linters/handlebars'],
 

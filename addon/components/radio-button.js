@@ -19,7 +19,7 @@ export default Component.extend({
   click(e) {
     e.stopPropagation();
     if (!this.disabled) {
-      // eslint-disable-next-line
+      // eslint-disable-next-line ember/closure-actions
       this.sendAction('onCheck', this.value);
     }
   }

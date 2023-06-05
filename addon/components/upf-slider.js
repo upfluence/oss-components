@@ -40,6 +40,7 @@ export default Component.extend({
     }
   ),
 
+  // eslint-disable-next-line ember/require-super-in-lifecycle-hooks
   didInsertElement() {
     this.$('.slider').ionRangeSlider({
       skin: 'round',
