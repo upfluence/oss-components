@@ -1,19 +1,19 @@
 @import '../mixins/_links';
 
 .upf-link-base {
-  color: var(--color-primary-500);
+  color: var(--color-blue-500);
 
   i {
-    color: var(--color-primary-500);
+    color: var(--color-blue-500);
   }
 
   &:hover,
   &:active,
   &:focus {
-    color: var(--color-primary-900);
+    color: var(--color-blue-900);
 
     i {
-      color: var(--color-primary-900);
+      color: var(--color-blue-900);
     }
   }
 }
@@ -55,8 +55,12 @@
 // A link disabled
 //
 .upf-link--disabled {
-  color: @color-text-contrast-light !important;
+  color: var(--color-gray-400) !important;
   cursor: initial !important;
+
+  i {
+    color: var(--color-gray-400) !important;
+  }
 
   &:hover {
     background-color: initial !important;
