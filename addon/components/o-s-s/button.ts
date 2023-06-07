@@ -7,7 +7,6 @@ type SkinType =
   | 'default'
   | 'primary'
   | 'secondary'
-  | 'tertiary'
   | 'destructive'
   | 'success'
   | 'alert'
@@ -38,7 +37,6 @@ type ThemeDefType = {
 const SkinDefinition: SkinDefType = {
   default: 'default',
   primary: 'primary',
-  tertiary: 'tertiary',
   secondary: 'secondary',
   destructive: 'destructive',
   success: 'success',
