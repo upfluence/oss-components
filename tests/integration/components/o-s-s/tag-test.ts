@@ -56,7 +56,7 @@ module('Integration | Component | o-s-s/tag', function (hooks) {
   });
 
   Object.keys(SkinDefinition).forEach((skin) => {
-    test(`it sets the right class when using a supported skin: ${skin}`, async function (assert: Assert) {
+    test(`it sets the right class when using a supported skin: ${skin}`, async function (assert) {
       this.skin = skin;
       await render(hbs`{{! @glint-nocheck }}<OSS::Tag @skin={{this.skin}} @label="Test Skin" />`);
 

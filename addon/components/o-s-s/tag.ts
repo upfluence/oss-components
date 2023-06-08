@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
+import { action } from '@ember/object';
 
 export type SkinType =
   | 'primary'
@@ -13,9 +14,8 @@ export type SkinType =
   | 'xtd-blue'
   | 'xtd-violet';
 
-type SkinDefType = {
-  [key in SkinType]: string;
-};
+type SkinDefType = Record<SkinType, string>;
+
 const BASE_CLASS = 'upf-tag';
 
 export const SkinDefinition: SkinDefType = {
@@ -31,16 +31,19 @@ export const SkinDefinition: SkinDefType = {
   'xtd-violet': 'xtd-violet'
 };
 
-interface OSSTagArgs {
-  label?: string;
-  skin?: string;
-  icon?: string;
-  hasEllipsis?: boolean;
-  plain?: boolean;
+interface ComponentSignature {
+  Element: HTMLDivElement;
+  Args: {
+    label?: string;
+    skin?: string;
+    icon?: string;
+    hasEllipsis?: boolean;
+    plain?: boolean;
+  };
 }
 
-export default class OSSTag extends Component<OSSTagArgs> {
-  constructor(owner: unknown, args: OSSTagArgs) {
+export default class OSSTag extends Component<ComponentSignature> {
+  constructor(owner: unknown, args: ComponentSignature['Args']) {
     super(owner, args);
 
     assert('[component][OSS::Tag] You must pass either a @label or an @icon argument.', args.icon || args.label);
@@ -66,5 +69,11 @@ export default class OSSTag extends Component<OSSTagArgs> {
     }
 
     return classes.join(' ');
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::Tag': typeof OSSTag;
   }
 }

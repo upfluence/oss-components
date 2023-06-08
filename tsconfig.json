@@ -2,6 +2,7 @@
   "extends": "@tsconfig/ember/tsconfig.json",
   "compilerOptions": {
     "noPropertyAccessFromIndexSignature": false,
+    "allowJs": true,
     "baseUrl": ".",
     "paths": {
       "dummy/tests/*": [
