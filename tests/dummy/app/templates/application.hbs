@@ -502,15 +502,13 @@
   </div>
 </div>
 <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
-  <OSS::ContentPanel>
-    <div class="fx-col fx-1">
-      <span class="text-style-semibold">Title</span>
-      <span class="font-color-gray-500">Subtitle</span>
-      <hr class="width-pc-100" />
-      <span>Content</span>
-    </div>
+  <OSS::ContentPanel class="fx-col fx-1">
+    <span class="text-style-semibold">Title</span>
+    <span class="font-color-gray-500">Subtitle</span>
+    <hr class="width-pc-100" />
+    <span>Content</span>
   </OSS::ContentPanel>
-  <OSS::ContentPanel class="fx-gap-px-10">
+  <OSS::ContentPanel class="fx-row fx-1 fx-gap-px-10">
     <OSS::UrlInput @value={{this.shopifyDomain}} @prefix="https://" @placeholder="shopname" @suffix=".myshopify.com"
                    @errorMessage="Not a valid shopify domain" @validationRegex={{this.subdomainRegex}}
                    @onChange={{this.onUrlInputChange}} />
