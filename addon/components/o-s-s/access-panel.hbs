@@ -42,8 +42,11 @@
             {{/each}}
           {{else}}
             {{#each @records as |record|}}
-              <div class="oss-access-panel-container__row">
+              <div class={{concat "access-panel-container__row" (if record._accessPanel.active " access-panel-container__row--active")}}>
                 {{yield record to="row"}}
+                {{#if record._accessPanel.active}}
+                  <i class="far fa-check font-color-primary-500"></i>
+                {{/if}}
               </div>
             {{/each}}
 
