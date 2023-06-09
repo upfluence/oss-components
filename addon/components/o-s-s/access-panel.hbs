@@ -1,0 +1,63 @@
+<div class="access-panel-container">
+  <div class="access-panel-container__header">
+    {{yield to="header"}}
+  </div>
+
+  {{#if (and this.displayEmptyState (not this.searchKeyword))}}
+    <div class="fx-1">
+      {{yield to="empty-state"}}
+    </div>
+  {{else}}
+    <div class="padding-top-px-18 padding-bottom-px-18 padding-left-px-18 padding-right-px-18">
+      <OSS::InputContainer>
+        <:prefix>
+          <i class="far fa-search"></i>
+        </:prefix>
+
+        <:input>
+          <Input
+            @value={{this.searchKeyword}} placeholder="Search..."
+            {{on "keyup" this.onSearch}} />
+        </:input>
+      </OSS::InputContainer>
+    </div>
+
+    <div class="access-panel-container__content-wrapper fx-col height-pc-100">
+      <div class="access-panel-container__rows-header">
+        {{yield to="columns"}}
+      </div>
+
+      <hr />
+
+      {{#if (and this.displayEmptyState this.searchKeyword)}}
+        {{yield to="no-results"}}
+      {{else}}
+        <div class="access-panel-container__rows-container" {{on-bottom-reached @onBottomReached}}>
+          {{#if (and @loading @initialLoad)}}
+            {{#each this.loadingRows}}
+              <div class="access-panel-container__row fx-malign-space-between">
+                <div class="upf-skeleton-effect" style="width: 150px; height: 12px"></div>
+                <div class="upf-skeleton-effect" style="width: 36px; height: 12px"></div>
+              </div>
+            {{/each}}
+          {{else}}
+            {{#each @records as |record|}}
+              <div class="access-panel-container__row">
+                {{yield record to="row"}}
+              </div>
+            {{/each}}
+
+            {{#if @loading}}
+              {{#each this.loadingMoreRows}}
+                <div class="access-panel-container__row fx-malign-space-between">
+                  <div class="upf-skeleton-effect" style="width: 150px; height: 12px"></div>
+                  <div class="upf-skeleton-effect" style="width: 36px; height: 12px"></div>
+                </div>
+              {{/each}}
+            {{/if}}
+          {{/if}}
+        </div>
+      {{/if}}
+    </div>
+  {{/if}}
+</div>
