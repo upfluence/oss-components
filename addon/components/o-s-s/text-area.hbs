@@ -1,0 +1,9 @@
+<div class="fx-1">
+  <div class="oss-textarea-container {{if @errorMessage ' oss-textarea-container--errored'}}">
+    <Textarea {{on "change" (fn this._onChange @value)}} @value={{@value}} placeholder={{@placeholder}}
+              disabled={{@disabled}} class="oss-textarea {{this.computedClass}}" rows={{this.rows}} ...attributes />
+  </div>
+  {{#if @errorMessage}}
+    <span class="text-color-error margin-top-xxx-sm">{{@errorMessage}}</span>
+  {{/if}}
+</div>

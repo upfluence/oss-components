@@ -1,0 +1,40 @@
+.oss-textarea-container {
+  position: relative;
+
+  &--errored {
+    textarea,
+    textarea:focus {
+      .border;
+      .border-color-error;
+      .border-radius-default;
+    }
+  }
+
+  .oss-textarea {
+    width: 100%;
+    min-height: var(--spacing-px-36);
+    height: auto;
+  }
+}
+
+.oss-textarea  {
+  .upf-input;
+
+  padding: var(--spacing-px-6) var(--spacing-px-12);
+
+  &--resize-v {
+    resize: vertical;
+  }
+
+  &--resize-h {
+    resize: horizontal;
+  }
+
+  &--resize-none {
+    resize: none;
+  }
+
+  &::-webkit-scrollbar-corner {
+    background: inherit;
+  }
+}
