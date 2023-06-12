@@ -35,6 +35,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     if: contains(github.ref, 'refs/tags/v')
+    timeout-minutes: 8
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
