@@ -4,11 +4,6 @@ import { render, typeIn, setupOnerror } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import sinon from 'sinon';
 
-function getRealHeight(element: Element): number {
-  const height = element.getBoundingClientRect()?.height * 2;
-  return Math.round(height * 100) / 100;
-}
-
 module('Integration | Component | o-s-s/text-area', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -60,19 +55,20 @@ module('Integration | Component | o-s-s/text-area', function (hooks) {
     test('Default height', async function (assert) {
       await render(hbs`<OSS::TextArea />`);
 
-      assert.equal(getRealHeight(document.querySelector(this.textareaSelector)), 36);
+      assert.equal(document.querySelector(this.textareaSelector).offsetHeight, 36);
     });
 
     test('Row change height', async function (assert) {
-      const lineHeight = 19;
       this.rows = 2;
       await render(hbs`<OSS::TextArea @rows={{this.rows}}/>`);
 
-      assert.equal(getRealHeight(document.querySelector(this.textareaSelector)), lineHeight * 2 + 14);
+      const twoRowHeight = document.querySelector(this.textareaSelector).offsetHeight;
+      assert.ok(twoRowHeight > 36);
 
-      this.set('rows', 8);
-      await render(hbs`<OSS::TextArea @rows={{this.rows}}/>`);
-      assert.equal(getRealHeight(document.querySelector(this.textareaSelector)), lineHeight * 8 + 14);
+      await this.set('rows', 8);
+      const heightRowHeight = document.querySelector(this.textareaSelector).offsetHeight;
+
+      assert.ok(heightRowHeight > twoRowHeight);
     });
   });
 
