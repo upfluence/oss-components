@@ -30,11 +30,11 @@ re:	clean install echo start ## Reinstalls dependencies & starts the dev server
 
 tests: ## Runs tests once
 	@echo "Running tests once"
-	ember test --silent -r dot
+	yarn run ember test --silent -r dot
 
 testserver: ## Runs the test server
 	@echo "Starting Test Server"
-	ember test -s
+	yarn run ember test -s
 
 yarn_link_ls: ## Displays all the current projects linked using 'yarn link'
 	@echo Checking for yarn-links
