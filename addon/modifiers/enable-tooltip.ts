@@ -186,7 +186,7 @@ function initEventListener(state: EnableTooltipState, element: HTMLElement): voi
 
 export default setModifierManager(
   () => ({
-    capabilities: capabilities('3.13'),
+    capabilities: capabilities('3.22'),
 
     createModifier() {
       return {
