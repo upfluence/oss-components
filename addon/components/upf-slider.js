@@ -40,9 +40,9 @@ export default Component.extend({
     }
   ),
 
-  // eslint-disable-next-line ember/require-super-in-lifecycle-hooks
   didInsertElement() {
-    this.$('.slider').ionRangeSlider({
+    this._super();
+    this.element.querySelector('.slider').ionRangeSlider({
       skin: 'round',
       min: this.options.min,
       max: this.options.max,
@@ -63,7 +63,7 @@ export default Component.extend({
       prettify: this.formatValue || null
     });
 
-    let slider = jQuery('.slider').data('ionRangeSlider');
+    let slider = jQuery(this.element.querySelector('.slider')).data('ionRangeSlider');
 
     this.set('slider', slider);
   }

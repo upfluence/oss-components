@@ -14,7 +14,7 @@ export default Component.extend({
     expandOrErase() {
       if (!this.get('expandedSearch')) {
         this.set('expandedSearch', true);
-        this.$('.expanding-search__input').focus();
+        this.element.querySelector('.expanding-search__input').focus();
       } else {
         this.set('searchQuery', '');
         this.set('expandedSearch', false);
