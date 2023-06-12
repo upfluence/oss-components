@@ -1,8 +1,8 @@
 <OSS::Button
   @icon={{if this.expandedSearch "fa fa-close" "fa fa-search"}}
   class="expanding-search__submit"
-  {{action "expandOrErase" bubbles=false}} /> 
+  {{action "expandOrErase" bubbles=false}} />
 
 <Input
-  @type="text" @placeholder={{this.placeholder}} @value={{this.searchQuery}}
+  @type="text" @value={{this.searchQuery}} placeholder={{this.placeholder}}
   class="upf-input expanding-search__input" />
