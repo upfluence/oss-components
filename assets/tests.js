@@ -13955,6 +13955,420 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["@ember/template-fa
     }());
   });
 });
+define("dummy/tests/integration/components/o-s-s/text-area-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "sinon"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _sinon) {
+  "use strict";
+
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+  function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+  (0, _qunit.module)('Integration | Component | o-s-s/text-area', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.value = 'Data';
+      this.textareaSelector = '.oss-textarea-container  .oss-textarea';
+    });
+    (0, _qunit.test)('it renders', /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(assert) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::TextArea @label='test' />
+                */
+                {
+                  "id": "euACnvZD",
+                  "block": "[[[8,[39,0],null,[[\"@label\"],[\"test\"]],null]],[],false,[\"o-s-s/text-area\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-textarea-container').exists();
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.module)('@resize', function () {
+      (0, _qunit.test)('Default has no class resize', /*#__PURE__*/function () {
+        var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
+          return regeneratorRuntime.wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  _context2.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::TextArea />
+                  */
+                  {
+                    "id": "VlrozZ3x",
+                    "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/text-area\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-v');
+                  assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-h');
+                  assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-none');
+
+                case 5:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2, this);
+        }));
+
+        return function (_x2) {
+          return _ref3.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('When resize is vertical should have class resize-v', /*#__PURE__*/function () {
+        var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
+          return regeneratorRuntime.wrap(function _callee3$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  this.resize = 'vertical';
+                  _context3.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::TextArea @resize={{this.resize}}/>
+                  */
+                  {
+                    "id": "/yZUZjEp",
+                    "block": "[[[8,[39,0],null,[[\"@resize\"],[[30,0,[\"resize\"]]]],null]],[],false,[\"o-s-s/text-area\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  assert.dom(this.textareaSelector).hasClass('oss-textarea--resize-v');
+                  assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-h');
+                  assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-none');
+
+                case 6:
+                case "end":
+                  return _context3.stop();
+              }
+            }
+          }, _callee3, this);
+        }));
+
+        return function (_x3) {
+          return _ref4.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('When resize is horizontal should have class resize-h', /*#__PURE__*/function () {
+        var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
+          return regeneratorRuntime.wrap(function _callee4$(_context4) {
+            while (1) {
+              switch (_context4.prev = _context4.next) {
+                case 0:
+                  this.resize = 'horizontal';
+                  _context4.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::TextArea @resize={{this.resize}}/>
+                  */
+                  {
+                    "id": "/yZUZjEp",
+                    "block": "[[[8,[39,0],null,[[\"@resize\"],[[30,0,[\"resize\"]]]],null]],[],false,[\"o-s-s/text-area\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-v');
+                  assert.dom(this.textareaSelector).hasClass('oss-textarea--resize-h');
+                  assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-none');
+
+                case 6:
+                case "end":
+                  return _context4.stop();
+              }
+            }
+          }, _callee4, this);
+        }));
+
+        return function (_x4) {
+          return _ref5.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('When resize is none should have class resize-none', /*#__PURE__*/function () {
+        var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(assert) {
+          return regeneratorRuntime.wrap(function _callee5$(_context5) {
+            while (1) {
+              switch (_context5.prev = _context5.next) {
+                case 0:
+                  this.resize = 'none';
+                  _context5.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::TextArea @resize={{this.resize}}/>
+                  */
+                  {
+                    "id": "/yZUZjEp",
+                    "block": "[[[8,[39,0],null,[[\"@resize\"],[[30,0,[\"resize\"]]]],null]],[],false,[\"o-s-s/text-area\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-v');
+                  assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-h');
+                  assert.dom(this.textareaSelector).hasClass('oss-textarea--resize-none');
+
+                case 6:
+                case "end":
+                  return _context5.stop();
+              }
+            }
+          }, _callee5, this);
+        }));
+
+        return function (_x5) {
+          return _ref6.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('@rows', function () {
+      (0, _qunit.test)('Default height', /*#__PURE__*/function () {
+        var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(assert) {
+          return regeneratorRuntime.wrap(function _callee6$(_context6) {
+            while (1) {
+              switch (_context6.prev = _context6.next) {
+                case 0:
+                  _context6.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::TextArea />
+                  */
+                  {
+                    "id": "VlrozZ3x",
+                    "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/text-area\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.equal(document.querySelector(this.textareaSelector).offsetHeight, 52);
+
+                case 3:
+                case "end":
+                  return _context6.stop();
+              }
+            }
+          }, _callee6, this);
+        }));
+
+        return function (_x6) {
+          return _ref7.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('Row change height', /*#__PURE__*/function () {
+        var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(assert) {
+          var twoRowHeight, heightRowHeight;
+          return regeneratorRuntime.wrap(function _callee7$(_context7) {
+            while (1) {
+              switch (_context7.prev = _context7.next) {
+                case 0:
+                  this.rows = 2;
+                  _context7.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::TextArea @rows={{this.rows}}/>
+                  */
+                  {
+                    "id": "BL2XAOpH",
+                    "block": "[[[8,[39,0],null,[[\"@rows\"],[[30,0,[\"rows\"]]]],null]],[],false,[\"o-s-s/text-area\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  twoRowHeight = document.querySelector(this.textareaSelector).offsetHeight;
+                  assert.ok(twoRowHeight > 36);
+                  _context7.next = 7;
+                  return this.set('rows', 8);
+
+                case 7:
+                  heightRowHeight = document.querySelector(this.textareaSelector).offsetHeight;
+                  assert.ok(heightRowHeight > twoRowHeight);
+
+                case 9:
+                case "end":
+                  return _context7.stop();
+              }
+            }
+          }, _callee7, this);
+        }));
+
+        return function (_x7) {
+          return _ref8.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.test)('When the field is updated, the @onChange method is called', /*#__PURE__*/function () {
+      var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
+        return regeneratorRuntime.wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                this.onChange = _sinon.default.spy();
+                _context8.next = 3;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::TextArea @value={{this.value}} @onChange={{this.onChange}}/>
+                */
+                {
+                  "id": "wkdSNoIG",
+                  "block": "[[[8,[39,0],null,[[\"@value\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/text-area\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 3:
+                _context8.next = 5;
+                return (0, _testHelpers.typeIn)(this.textareaSelector, 'base');
+
+              case 5:
+                assert.ok(this.onChange.calledOnceWithExactly('Database'));
+
+              case 6:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8, this);
+      }));
+
+      return function (_x8) {
+        return _ref9.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.module)('Extra attributes', function () {
+      (0, _qunit.test)('passing an extra class is applied to the component', /*#__PURE__*/function () {
+        var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(assert) {
+          return regeneratorRuntime.wrap(function _callee9$(_context9) {
+            while (1) {
+              switch (_context9.prev = _context9.next) {
+                case 0:
+                  _context9.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::TextArea class="my-extra-class" />
+                  */
+                  {
+                    "id": "K0ip07Ao",
+                    "block": "[[[8,[39,0],[[24,0,\"my-extra-class\"]],null,null]],[],false,[\"o-s-s/text-area\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.my-extra-class').exists();
+
+                case 3:
+                case "end":
+                  return _context9.stop();
+              }
+            }
+          }, _callee9);
+        }));
+
+        return function (_x9) {
+          return _ref10.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('passing data-control-name works', /*#__PURE__*/function () {
+        var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(assert) {
+          var inputWrapper;
+          return regeneratorRuntime.wrap(function _callee10$(_context10) {
+            while (1) {
+              switch (_context10.prev = _context10.next) {
+                case 0:
+                  _context10.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::TextArea data-control-name="description-input" />
+                  */
+                  {
+                    "id": "JN91p5V5",
+                    "block": "[[[8,[39,0],[[24,\"data-control-name\",\"description-input\"]],null,null]],[],false,[\"o-s-s/text-area\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  inputWrapper = document.querySelector('.fx-1');
+                  assert.equal(inputWrapper === null || inputWrapper === void 0 ? void 0 : inputWrapper.getAttribute('data-control-name'), 'description-input');
+
+                case 4:
+                case "end":
+                  return _context10.stop();
+              }
+            }
+          }, _callee10);
+        }));
+
+        return function (_x10) {
+          return _ref11.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('error management', function () {
+      (0, _qunit.test)('it throws an error if @resize is not a correct value', /*#__PURE__*/function () {
+        var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(assert) {
+          return regeneratorRuntime.wrap(function _callee11$(_context11) {
+            while (1) {
+              switch (_context11.prev = _context11.next) {
+                case 0:
+                  (0, _testHelpers.setupOnerror)(function (err) {
+                    assert.equal(err.message, 'Assertion Failed: [component][OSS::TextArea] The @resize parameter should be a value of resize');
+                  });
+                  this.resize = 'NotACorrectValue';
+                  _context11.next = 4;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::TextArea @resize={{this.resize}} />
+                  */
+                  {
+                    "id": "/yZUZjEp",
+                    "block": "[[[8,[39,0],null,[[\"@resize\"],[[30,0,[\"resize\"]]]],null]],[],false,[\"o-s-s/text-area\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 4:
+                case "end":
+                  return _context11.stop();
+              }
+            }
+          }, _callee11, this);
+        }));
+
+        return function (_x11) {
+          return _ref12.apply(this, arguments);
+        };
+      }());
+    });
+  });
+});
 define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "@ember/object", "sinon"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _object, _sinon) {
   "use strict";
 

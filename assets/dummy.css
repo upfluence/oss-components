@@ -13657,6 +13657,10 @@ a.upf-btn--sm {
 .oss-input-container .upf-input {
   width: 100%;
 }
+.oss-input-container textarea.upf-input {
+  max-width: 100%;
+  height: var(--height-pc-100);
+}
 .oss-input-container .yielded-input input {
   width: 100%;
 }
@@ -14364,6 +14368,54 @@ a.upf-btn--sm {
 }
 .number-input:focus-within .upf-input {
   border-color: var(--color-gray-300);
+}
+.oss-textarea-container {
+  position: relative;
+}
+.oss-textarea-container--errored textarea,
+.oss-textarea-container--errored textarea:focus {
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--color-error-500);
+  border-radius: var(--border-radius-sm);
+}
+.oss-textarea-container .oss-textarea {
+  width: 100%;
+  min-height: var(--spacing-px-36);
+  height: auto;
+}
+.oss-textarea {
+  border: 1px solid transparent;
+  border-radius: var(--border-radius-sm);
+  height: var(--spacing-px-36);
+  padding: 0 1em;
+  color: #1b1e21;
+  background-color: #f1f2f3;
+  box-shadow: none;
+  padding: var(--spacing-px-6) var(--spacing-px-12);
+}
+.oss-textarea:focus {
+  outline: none !important;
+  box-shadow: none;
+  border: 1px solid var(--color-gray-300);
+}
+.oss-textarea::placeholder {
+  color: #bfc5cb;
+}
+.oss-textarea--inverse {
+  background-color: var(--color-white);
+}
+.oss-textarea--resize-v {
+  resize: vertical;
+}
+.oss-textarea--resize-h {
+  resize: horizontal;
+}
+.oss-textarea--resize-none {
+  resize: none;
+}
+.oss-textarea::-webkit-scrollbar-corner {
+  background: inherit;
 }
 .oss-toggle-buttons-container {
   border-radius: var(--border-radius-sm);
