@@ -25,7 +25,7 @@ export default class OSSTextArea extends Component<OSSTextAreaArgs> {
   }
 
   get rows(): number {
-    return this.args.rows || 1;
+    return this.args.rows || 2;
   }
 
   get computedClass(): string {
@@ -39,8 +39,6 @@ export default class OSSTextArea extends Component<OSSTextAreaArgs> {
 
   @action
   _onChange(value: string): void {
-    if (this.args.onChange) {
-      this.args.onChange(value);
-    }
+    this.args.onChange?.(value);
   }
 }

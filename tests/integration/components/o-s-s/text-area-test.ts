@@ -89,7 +89,7 @@ module('Integration | Component | o-s-s/text-area', function (hooks) {
 
     test('passing data-control-name works', async function (assert) {
       await render(hbs`<OSS::TextArea data-control-name="description-input" />`);
-      let inputWrapper: Element | null = document.querySelector(this.textareaSelector);
+      let inputWrapper: Element | null = document.querySelector('.fx-1');
       assert.equal(inputWrapper?.getAttribute('data-control-name'), 'description-input');
     });
   });

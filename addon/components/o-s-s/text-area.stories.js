@@ -6,7 +6,7 @@ export default {
   component: 'text-area',
   argTypes: {
     value: {
-      description: 'Value of the input',
+      description: 'Value of the textarea',
       table: {
         type: {
           summary: 'string'
@@ -16,7 +16,7 @@ export default {
       control: { type: 'text' }
     },
     disabled: {
-      description: 'Disable the default input (when not passing an input named block)',
+      description: 'Disable the default textarea (when not passing an textarea named block)',
       table: {
         type: {
           summary: 'boolean'
@@ -26,7 +26,7 @@ export default {
       control: { type: 'boolean' }
     },
     placeholder: {
-      description: 'Placeholder of the input',
+      description: 'Placeholder of the textarea',
       table: {
         type: {
           summary: 'string'
@@ -36,7 +36,7 @@ export default {
       control: { type: 'text' }
     },
     errorMessage: {
-      description: 'An error message that will be displayed below the input-group.',
+      description: 'An error message that will be displayed below the textarea-group.',
       table: {
         type: {
           summary: 'string'
@@ -46,7 +46,7 @@ export default {
       control: { type: 'text' }
     },
     onChange: {
-      description: 'Method called every time the input is updated',
+      description: 'Method called every time the textarea is updated',
       table: {
         category: 'Actions',
         type: {
