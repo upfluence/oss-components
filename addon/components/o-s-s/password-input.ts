@@ -4,7 +4,7 @@ import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 
-const DEFAULT_PLACEHOLDER = '*************';
+const DEFAULT_PLACEHOLDER = '••••••••••••';
 
 interface OSSPasswordInputArgs {
   value: string | null;
