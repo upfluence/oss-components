@@ -2,6 +2,6 @@
   {{#each this.items as |item index|}}
     <OSS::Chip @label={{item}} @onRemove={{fn this.removeItem index}} />
   {{/each}}
-  <Input @value={{this.currentValue}} @placeholder={{@placeholder}} autocomplete="off" 
+  <Input @value={{this.currentValue}} placeholder={{@placeholder}} autocomplete="off"
          {{on "keydown" this.keyListener}} {{on "blur" this.validateTagOnClickOutside}} />
 </div>

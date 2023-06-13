@@ -8,7 +8,7 @@ import { run } from '@ember/runloop';
  */
 export default setModifierManager(
   () => ({
-    capabilities: capabilities('3.13'),
+    capabilities: capabilities('3.22'),
 
     createModifier() {
       return {
