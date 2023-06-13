@@ -42,7 +42,8 @@ export default Component.extend({
 
   didInsertElement() {
     this._super();
-    this.element.querySelector('.slider').ionRangeSlider({
+
+    jQuery(this.element.querySelector('.slider')).ionRangeSlider({
       skin: 'round',
       min: this.options.min,
       max: this.options.max,
