@@ -1,4 +1,10 @@
 <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
+  <OSS::TextArea @value={{this.numberValue}} @onChange={{this.handleNumberInput}}
+                 @errorMessage="This is an error message" @rows={{8}} @resize="vertical" />
+  <OSS::TextArea @value={{this.numberValue}} @onChange={{this.handleNumberInput}} @rows={{1}} />
+</div>
+
+<div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
   <OSS::Button @label="Open split modal" {{on "click" this.openSplitModal}} />
   {{#if this.showSplitModal}}
     <OSS::SplitModal @close={{this.closeSplitModal}}>
