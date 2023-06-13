@@ -4,7 +4,7 @@ import Component from '@glimmer/component';
 
 interface OSSTextAreaArgs {
   rows?: number;
-  resize?: 'vertical' | 'horizontal' | 'both' | 'none';
+  resize?: 'vertical' | 'horizontal' | 'none';
   value?: string;
   disabled?: boolean;
   errorMessage?: string;
@@ -19,7 +19,7 @@ export default class OSSTextArea extends Component<OSSTextAreaArgs> {
     if (this.args.resize) {
       assert(
         '[component][OSS::TextArea] The @resize parameter should be a value of resize',
-        ['vertical', 'horizontal', 'both', 'none'].includes(this.args.resize)
+        ['vertical', 'horizontal', 'none'].includes(this.args.resize)
       );
     }
   }

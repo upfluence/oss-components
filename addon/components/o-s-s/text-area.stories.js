@@ -1,6 +1,8 @@
 import hbs from 'htmlbars-inline-precompile';
 import { action } from '@storybook/addon-actions';
 
+const ResizeTypes = ['horizontal', 'vertical', 'none', null];
+
 export default {
   title: 'Components/OSS::TextArea',
   component: 'text-area',
@@ -15,8 +17,29 @@ export default {
       },
       control: { type: 'text' }
     },
+    rows: {
+      description: 'Number of rows dispayed in the textarea',
+      table: {
+        type: {
+          summary: 'number'
+        },
+        defaultValue: { summary: 2 }
+      },
+      control: { type: 'number' }
+    },
+    resize: {
+      description: 'Define direction in which textarea can be resized (By default the resize is set to Both)',
+      table: {
+        type: {
+          summary: ResizeTypes.join('|')
+        },
+        defaultValue: { summary: 'both' }
+      },
+      options: ResizeTypes,
+      control: { type: 'select' }
+    },
     disabled: {
-      description: 'Disable the default textarea (when not passing an textarea named block)',
+      description: 'Disable the default textarea',
       table: {
         type: {
           summary: 'boolean'
@@ -58,7 +81,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'The OSS version of the textarea component. Configurable & skinable.'
+        component: 'The OSS version of the textarea component.'
       }
     }
   }
@@ -66,6 +89,8 @@ export default {
 
 const defaultArgs = {
   value: 'John',
+  rows: 2,
+  resize: null,
   disabled: false,
   placeholder: 'this is the placeholder',
   errorMessage: undefined,
@@ -75,7 +100,8 @@ const defaultArgs = {
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
       <OSS::TextArea @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}}
-                           @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} />
+                     @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} @rows={{this.rows}}
+                     @resize={{this.resize}} />
   `,
   context: args
 });
