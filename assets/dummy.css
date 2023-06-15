@@ -14414,8 +14414,16 @@ a.upf-btn--sm {
 .oss-textarea--resize-none {
   resize: none;
 }
+.oss-textarea::-webkit-scrollbar {
+  border-top-right-radius: var(--border-radius-sm);
+}
 .oss-textarea::-webkit-scrollbar-corner {
   background: inherit;
+  border-bottom-right-radius: var(--border-radius-sm);
+}
+.oss-textarea::-webkit-resizer {
+  background: right bottom no-repeat url('/assets/upf-icons/resizer.svg');
+  border-bottom-right-radius: var(--border-radius-sm);
 }
 .oss-toggle-buttons-container {
   border-radius: var(--border-radius-sm);
