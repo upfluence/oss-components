@@ -1,0 +1,11 @@
+<a class="oss-sidebar-item--containers" ...attributes>
+  {{#if this.locked}}
+    <span class="oss-sidebar-item--locked">
+      <i class='far fa-lock'></i>
+    </span>
+  {{/if}}
+  <span class={{@icon}} />
+  {{#if this.hasNotifications}}
+    <span class="oss-sidebar-item--notification" />
+  {{/if}}
+</a>

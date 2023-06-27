@@ -1,0 +1,15 @@
+<div class="oss-sidebar--containers fx-col" ...attributes>
+  <div class="logo-container">
+    <a href="/">
+      <img src={{@logo}} alt="" role="none" />
+    </a>
+  </div>
+  <div class="oss-sidebar--content fx-1 fx-col fx-xalign-center fx-gap-px-9">
+    {{yield to="content"}}
+  </div>
+  {{#if (has-block "footer")}}
+    <div class="oss-sidebar--footer fx-col">
+      {{yield to="footer"}}
+    </div>
+  {{/if}}
+</div>

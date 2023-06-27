@@ -1,0 +1,101 @@
+.oss-sidebar--containers {
+  background-color: var(--sidebar-bg-color);
+  width: var(--sidebar-width);
+
+  position: fixed;
+  height: 100vh;
+
+  border-right: 1px solid var(--sidebar-outer-border-color);
+
+  .logo-container {
+    border-bottom: 1px solid var(--sidebar-inner-border-color);
+
+    min-height: var(--topbar-height);
+    max-height: var(--topbar-height);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  .oss-sidebar--content {
+    padding: var(--spacing-px-12) 0px;
+  }
+
+  .oss-sidebar--footer {
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid var(--sidebar-inner-border-color);
+    padding: var(--spacing-px-12) var(--spacing-px-9);
+  }
+}
+
+.oss-sidebar-item--containers {
+  position: relative;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 42px;
+  width: 42px;
+
+  color: var(--color-white);
+  font-size: var(--font-size-lg);
+
+  border-radius: var(--border-radius-md);
+
+  &:hover {
+    background-color: var(--sidebar-item-hover-bg-color);
+    border: 1px solid var(--sidebar-inner-border-color);
+    color: white;
+    text-decoration: none;
+  }
+
+  &.active {
+    background-color: var(--sidebar-item-hover-bg-color);
+    border: 1px solid var(--sidebar-inner-border-color);
+  }
+
+  .oss-sidebar-item--notification {
+    position: absolute;
+    top: 9px;
+    right: 9px;
+
+    height: 3px;
+    width: 3px;
+
+    background-color: var(--color-accent);
+
+    border-radius: var(--border-radius-md);
+  }
+
+  .oss-sidebar-item--locked {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 15px;
+    width: 15px;
+
+    background-color: var(--sidebar-item-hover-bg-color);
+
+    border: 1px solid var(--sidebar-inner-border-color);
+    border-radius: var(--border-radius-sm);
+
+    i {
+      font-size: 8px;
+    }
+  }
+}
