@@ -1,0 +1,13 @@
+<div class="oss-sidebar-item" disabled={{if this.locked "disabled"}} ...attributes>
+  {{#if this.locked}}
+    <div class="oss-sidebar-item--locked">
+      <i class='fal fa-lock'></i>
+    </div>
+  {{/if}}
+  <div class="oss-sidebar-item--icon">
+    <i class={{@icon}}></i>
+  </div>
+  {{#if this.hasNotifications}}
+    <span class="oss-sidebar-item--notification" />
+  {{/if}}
+</div>

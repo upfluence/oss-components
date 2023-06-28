@@ -3,12 +3,12 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render, find } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-module('Integration | Component | o-s-s/layouts/sidebar', function (hooks) {
+module('Integration | Component | o-s-s/layout/sidebar', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
     this.onChange = () => {};
-    await render(hbs`<OSS::Layouts::Sidebar />`);
+    await render(hbs`<OSS::Layout::Sidebar />`);
 
     assert.dom('.oss-sidebar--containers').exists();
   });
@@ -18,7 +18,7 @@ module('Integration | Component | o-s-s/layouts/sidebar', function (hooks) {
 
     await render(
       hbs`
-      <OSS::Layouts::Sidebar @logo={{this.logo}}/>`
+      <OSS::Layout::Sidebar @logo={{this.logo}}/>`
     );
 
     assert.equal(
@@ -31,11 +31,11 @@ module('Integration | Component | o-s-s/layouts/sidebar', function (hooks) {
     test('The content named-block is properly displayed', async function (assert) {
       await render(
         hbs`
-        <OSS::Layouts::Sidebar>
+        <OSS::Layout::Sidebar>
           <:content>
             <p>This is the content</p>
           </:content>
-        </OSS::Layouts::Sidebar>`
+        </OSS::Layout::Sidebar>`
       );
       assert.dom('.oss-sidebar--content').hasText('This is the content');
     });
@@ -43,11 +43,11 @@ module('Integration | Component | o-s-s/layouts/sidebar', function (hooks) {
     test('The footer named-block is properly displayed', async function (assert) {
       await render(
         hbs`
-        <OSS::Layouts::Sidebar>
+        <OSS::Layout::Sidebar>
           <:footer>
             footer content
           </:footer>
-        </OSS::Layouts::Sidebar>`
+        </OSS::Layout::Sidebar>`
       );
 
       assert.dom('.oss-sidebar--footer').hasText('footer content');
@@ -56,12 +56,12 @@ module('Integration | Component | o-s-s/layouts/sidebar', function (hooks) {
 
   module('Extra attributes', () => {
     test('passing an extra class is applied to the component', async function (assert) {
-      await render(hbs`<OSS::Layouts::Sidebar class="my-extra-class" />`);
+      await render(hbs`<OSS::Layout::Sidebar class="my-extra-class" />`);
       assert.dom('.my-extra-class').exists();
     });
 
     test('passing data-control-name works', async function (assert) {
-      await render(hbs`<OSS::Layouts::Sidebar data-control-name="layout-sidebar" />`);
+      await render(hbs`<OSS::Layout::Sidebar data-control-name="layout-sidebar" />`);
       let inputWrapper: Element | null = find('.oss-sidebar--containers');
       assert.equal(inputWrapper?.getAttribute('data-control-name'), 'layout-sidebar');
     });

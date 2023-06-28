@@ -1,21 +1,22 @@
 <div class="fx-row">
-  <OSS::Layouts::Sidebar @logo="/assets/images/upfluence-white-logo.svg">
+  <OSS::Layout::Sidebar @logo="/assets/images/upfluence-white-logo.svg">
     <:content>
-      <OSS::Layouts::Sidebar::Item @icon="far fa-search" href="/toto" class="active" />
-      <OSS::Layouts::Sidebar::Item @icon="fal fa-list" />
-      <OSS::Layouts::Sidebar::Item @icon="fal fa-envelope" />
-      <OSS::Layouts::Sidebar::Item @icon="fal fa-bullhorn" />
-      <OSS::Layouts::Sidebar::Item @icon="far fa-credit-card" @locked={{true}} />
-      <OSS::Layouts::Sidebar::Item @icon="fal fa-project-diagram" />
-      <OSS::Layouts::Sidebar::Item @icon="fal fa-chart-pie" />
-      <OSS::Layouts::Sidebar::Item @icon="fal fa-bullseye-pointer" @hasNotifications={{true}} />
+      <OSS::Layout::Sidebar::Item @icon="fas fa-search" class="active" onClick={{fn this.redirectTo "search"}} />
+      <OSS::Layout::Sidebar::Item @icon="fal fa-list" onClick={{fn this.redirectTo "list"}} />
+      <OSS::Layout::Sidebar::Item @icon="fal fa-envelope" onClick={{fn this.redirectTo "envelope"}} />
+      <OSS::Layout::Sidebar::Item @icon="fal fa-bullhorn" onClick={{fn this.redirectTo "bullhorn"}} />
+      <OSS::Layout::Sidebar::Item @icon="fal fa-credit-card" @locked={{true}} />
+      <OSS::Layout::Sidebar::Item @icon="fal fa-project-diagram" onClick={{fn this.redirectTo "diagram"}} />
+      <OSS::Layout::Sidebar::Item @icon="fal fa-chart-pie" onClick={{fn this.redirectTo "pie"}} />
+      <OSS::Layout::Sidebar::Item @icon="fal fa-bullseye-pointer" @hasNotifications={{true}}
+                                  onClick={{fn this.redirectTo "pointer"}} />
     </:content>
     <:footer>
-      <OSS::Layouts::Sidebar::Item @icon="fal fa-info-circle" @hasNotifications={{true}} />
+      <OSS::Layout::Sidebar::Item @icon="fal fa-info-circle" />
       <OSS::Avatar @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
                    @initials="Ts" />
     </:footer>
-  </OSS::Layouts::Sidebar>
+  </OSS::Layout::Sidebar>
   <div style="padding-left: var(--sidebar-width); width:100%;">
     <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
       <OSS::TextArea @value={{this.numberValue}} @onChange={{this.handleNumberInput}}

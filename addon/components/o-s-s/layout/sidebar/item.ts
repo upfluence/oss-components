@@ -1,12 +1,12 @@
 import Component from '@glimmer/component';
 
-interface OSSLayoutsSidebarItemArgs {
+interface OSSLayoutSidebarItemArgs {
   icon: string;
   locked?: boolean;
   hasNotifications?: boolean;
 }
 
-export default class OSSLayoutsSidebarItem extends Component<OSSLayoutsSidebarItemArgs> {
+export default class OSSLayoutSidebarItem extends Component<OSSLayoutSidebarItemArgs> {
   get locked(): boolean {
     return this.args.locked || false;
   }
