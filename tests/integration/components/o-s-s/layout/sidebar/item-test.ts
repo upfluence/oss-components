@@ -7,7 +7,6 @@ module('Integration | Component | oss/layout/sidebar/item', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    this.onChange = () => {};
     await render(hbs`<OSS::Layout::Sidebar::Item />`);
 
     assert.dom('.oss-sidebar-item').exists();
