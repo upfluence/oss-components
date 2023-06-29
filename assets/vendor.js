@@ -89692,6 +89692,174 @@ define("@upfluence/oss-components/components/o-s-s/input-group", ["exports", "@e
 });
 ;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+define("@upfluence/oss-components/components/o-s-s/layout/sidebar", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@ember/object"], function (_exports, _component, _templateFactory, _component2, _object) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _class;
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+  function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="oss-sidebar--containers fx-col" ...attributes>
+    <div class="logo-container">
+      <div onClick={{this.onHomeAction}} role="button">
+        <img src={{@logo}} alt="brand" />
+      </div>
+    </div>
+    <div class="oss-sidebar--content fx-1 fx-col fx-xalign-center fx-gap-px-9">
+      {{yield to="content"}}
+    </div>
+    {{#if (has-block "footer")}}
+      <div class="oss-sidebar--footer fx-col fx-xalign-center fx-gap-px-9">
+        {{yield to="footer"}}
+      </div>
+    {{/if}}
+  </div>
+  
+  */
+  {
+    "id": "OPP8HhVn",
+    "block": "[[[11,0],[24,0,\"oss-sidebar--containers fx-col\"],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"logo-container\"],[12],[1,\"\\n    \"],[10,0],[15,\"onClick\",[30,0,[\"onHomeAction\"]]],[14,\"role\",\"button\"],[12],[1,\"\\n      \"],[10,\"img\"],[15,\"src\",[30,2]],[14,\"alt\",\"brand\"],[12],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,0],[14,0,\"oss-sidebar--content fx-1 fx-col fx-xalign-center fx-gap-px-9\"],[12],[1,\"\\n    \"],[18,3,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[48,[30,4]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar--footer fx-col fx-xalign-center fx-gap-px-9\"],[12],[1,\"\\n      \"],[18,4,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@logo\",\"&content\",\"&footer\"],false,[\"yield\",\"if\",\"has-block\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/layout/sidebar.hbs",
+    "isStrictMode": false
+  });
+
+  var OSSLayoutSidebar = (_class = /*#__PURE__*/function (_Component) {
+    _inherits(OSSLayoutSidebar, _Component);
+
+    var _super = _createSuper(OSSLayoutSidebar);
+
+    function OSSLayoutSidebar() {
+      _classCallCheck(this, OSSLayoutSidebar);
+
+      return _super.apply(this, arguments);
+    }
+
+    _createClass(OSSLayoutSidebar, [{
+      key: "onHomeAction",
+      value: function onHomeAction() {
+        var _this$args$homeAction, _this$args;
+
+        return (_this$args$homeAction = (_this$args = this.args).homeAction) === null || _this$args$homeAction === void 0 ? void 0 : _this$args$homeAction.call(_this$args);
+      }
+    }]);
+
+    return OSSLayoutSidebar;
+  }(_component2.default), (_applyDecoratedDescriptor(_class.prototype, "onHomeAction", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onHomeAction"), _class.prototype)), _class);
+  _exports.default = OSSLayoutSidebar;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSLayoutSidebar);
+});
+;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component"], function (_exports, _component, _templateFactory, _component2) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+  function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="oss-sidebar-item" disabled={{if this.locked "disabled"}} ...attributes>
+    {{#if this.locked}}
+      <div class="oss-sidebar-item--locked">
+        <i class="fal fa-lock"></i>
+      </div>
+    {{/if}}
+    <div class="oss-sidebar-item--icon">
+      <i class={{@icon}}></i>
+    </div>
+    {{#if this.hasNotifications}}
+      <span class="oss-sidebar-item--notification" />
+    {{/if}}
+  </div>
+  
+  */
+  {
+    "id": "OZQA2G/o",
+    "block": "[[[11,0],[24,0,\"oss-sidebar-item\"],[16,\"disabled\",[52,[30,0,[\"locked\"]],\"disabled\"]],[17,1],[12],[1,\"\\n\"],[41,[30,0,[\"locked\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-item--locked\"],[12],[1,\"\\n      \"],[10,\"i\"],[14,0,\"fal fa-lock\"],[12],[13],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"oss-sidebar-item--icon\"],[12],[1,\"\\n    \"],[10,\"i\"],[15,0,[30,2]],[12],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"hasNotifications\"]],[[[1,\"    \"],[10,1],[14,0,\"oss-sidebar-item--notification\"],[12],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\"],false,[\"if\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/layout/sidebar/item.hbs",
+    "isStrictMode": false
+  });
+
+  var OSSLayoutSidebarItem = /*#__PURE__*/function (_Component) {
+    _inherits(OSSLayoutSidebarItem, _Component);
+
+    var _super = _createSuper(OSSLayoutSidebarItem);
+
+    function OSSLayoutSidebarItem() {
+      _classCallCheck(this, OSSLayoutSidebarItem);
+
+      return _super.apply(this, arguments);
+    }
+
+    _createClass(OSSLayoutSidebarItem, [{
+      key: "locked",
+      get: function get() {
+        return this.args.locked || false;
+      }
+    }, {
+      key: "hasNotifications",
+      get: function get() {
+        return this.args.hasNotifications || false;
+      }
+    }]);
+
+    return OSSLayoutSidebarItem;
+  }(_component2.default);
+
+  _exports.default = OSSLayoutSidebarItem;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSLayoutSidebarItem);
+});
+;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 define("@upfluence/oss-components/components/o-s-s/link", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@ember/object", "@ember/service", "@ember/debug"], function (_exports, _component, _templateFactory, _component2, _object, _service, _debug) {
   "use strict";
 
@@ -106540,36 +106708,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-1833BRit2xV1I8ve/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-1833BRit2xV1I8ve/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1833BRit2xV1I8ve/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-1833BRit2xV1I8ve/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-1833BRit2xV1I8ve/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1833BRit2xV1I8ve/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-1833BRit2xV1I8ve/cache-275-bundler/staging/l.js /tmp/broccoli-1833BRit2xV1I8ve/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/l.js /tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-1833BRit2xV1I8ve/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1833BRit2xV1I8ve/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1833BRit2xV1I8ve/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1833BRit2xV1I8ve/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1833BRit2xV1I8ve/cache-275-bundler/staging/l.js_/tmp/broccoli-1833BRit2xV1I8ve/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/l.js_/tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
