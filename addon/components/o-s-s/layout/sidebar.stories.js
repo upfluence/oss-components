@@ -45,10 +45,10 @@ const Template = (args) => ({
     <div style="height:100vh; padding:5px;">
       <OSS::Layout::Sidebar @logo={{this.logo}} @homeAction={{this.homeAction}} style="height:95vh;">
       <:content>
-      <OSS::Layout::Sidebar::Item @icon="far fa-search" class="active" @homeAction={{this.homeAction}} />
-      <OSS::Layout::Sidebar::Item @icon="far fa-list" />
-      <OSS::Layout::Sidebar::Item @icon="far fa-envelope" @hasNotifications={{true}} />
-      <OSS::Layout::Sidebar::Item @icon="far fa-credit-card" @locked={{true}} />
+        <OSS::Layout::Sidebar::Item @icon="far fa-search" class="active" @homeAction={{this.homeAction}} />
+        <OSS::Layout::Sidebar::Item @icon="far fa-list" />
+        <OSS::Layout::Sidebar::Item @icon="far fa-envelope" @hasNotifications={{true}} />
+        <OSS::Layout::Sidebar::Item @icon="far fa-credit-card" @locked={{true}} />
       </:content>
       <:footer>
         <OSS::Avatar @initials="Ts" />
