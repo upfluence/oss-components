@@ -135,6 +135,11 @@ export default class ApplicationController extends Controller {
   ];
 
   @action
+  redirectTo(route) {
+    console.log('Redirect to', route);
+  }
+
+  @action
   toggleMedia(key) {
     console.log('toggled key', key);
 
