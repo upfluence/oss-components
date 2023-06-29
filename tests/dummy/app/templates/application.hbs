@@ -1,5 +1,5 @@
 <div class="fx-row">
-  <OSS::Layout::Sidebar @logo="/assets/images/upfluence-white-logo.svg">
+  <OSS::Layout::Sidebar @logo="/assets/images/upfluence-white-logo.svg" @homeAction={{fn this.redirectTo "/"}}>
     <:content>
       <OSS::Layout::Sidebar::Item @icon="fas fa-search" class="active" onClick={{fn this.redirectTo "search"}} />
       <OSS::Layout::Sidebar::Item @icon="fal fa-list" onClick={{fn this.redirectTo "list"}} />

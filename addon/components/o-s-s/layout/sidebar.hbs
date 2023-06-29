@@ -1,8 +1,8 @@
 <div class="oss-sidebar--containers fx-col" ...attributes>
   <div class="logo-container">
-    <a href="/">
+    <div onClick={{this.onHomeAction}} role="button">
       <img src={{@logo}} alt="brand" />
-    </a>
+    </div>
   </div>
   <div class="oss-sidebar--content fx-1 fx-col fx-xalign-center fx-gap-px-9">
     {{yield to="content"}}
