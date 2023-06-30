@@ -14743,7 +14743,6 @@ a.upf-btn--sm {
   }
 }
 .oss-sidebar--containers {
-  position: fixed;
   height: 100vh;
   width: var(--sidebar-width);
   background-color: var(--sidebar-bg-color);

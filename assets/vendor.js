@@ -89775,6 +89775,90 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar", ["exports", 
   _exports.default = OSSLayoutSidebar;
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSLayoutSidebar);
 });
+;define("@upfluence/oss-components/components/o-s-s/layout/sidebar.stories", ["exports", "@ember/template-factory", "@storybook/addon-actions"], function (_exports, _templateFactory, _addonActions) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.BasicUsage = _exports.default = void 0;
+  var _default = {
+    title: 'Components/OSS::Layout::Sidebar',
+    component: 'sidebar',
+    argTypes: {
+      logo: {
+        description: 'Url of the brand logo',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      homeAction: {
+        description: 'Function to be called when the brand logo is clicked',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'homeAction(): void'
+          }
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'Layout component to display sidebar.'
+        },
+        iframeHeight: 120
+      }
+    }
+  };
+  _exports.default = _default;
+  var defaultArgs = {
+    logo: 'https://d2vn5no6mw06ds.cloudfront.net/assets/images/upfluence-white-logo-6914f5a181fad59b7c6e4e755ce05d70.svg',
+    homeAction: (0, _addonActions.action)('homeAction')
+  };
+
+  var Template = function Template(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <div style="height:100vh; padding:5px;">
+            <OSS::Layout::Sidebar @logo={{this.logo}} @homeAction={{this.homeAction}} style="height:95vh;">
+            <:content>
+              <OSS::Layout::Sidebar::Item @icon="far fa-search" class="active" @homeAction={{this.homeAction}} />
+              <OSS::Layout::Sidebar::Item @icon="far fa-list" />
+              <OSS::Layout::Sidebar::Item @icon="far fa-envelope" @hasNotifications={{true}} />
+              <OSS::Layout::Sidebar::Item @icon="far fa-credit-card" @locked={{true}} />
+            </:content>
+            <:footer>
+              <OSS::Avatar @initials="Ts" />
+            </:footer>
+            </OSS::Layout::Sidebar>
+          </div>
+        
+      */
+      {
+        "id": "WSwRP+Ha",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"height:100vh; padding:5px;\"],[12],[1,\"\\n      \"],[8,[39,0],[[24,5,\"height:95vh;\"]],[[\"@logo\",\"@homeAction\"],[[30,0,[\"logo\"]],[30,0,[\"homeAction\"]]]],[[\"content\",\"footer\"],[[[[1,\"\\n        \"],[8,[39,1],[[24,0,\"active\"]],[[\"@icon\",\"@homeAction\"],[\"far fa-search\",[30,0,[\"homeAction\"]]]],null],[1,\"\\n        \"],[8,[39,1],null,[[\"@icon\"],[\"far fa-list\"]],null],[1,\"\\n        \"],[8,[39,1],null,[[\"@icon\",\"@hasNotifications\"],[\"far fa-envelope\",true]],null],[1,\"\\n        \"],[8,[39,1],null,[[\"@icon\",\"@locked\"],[\"far fa-credit-card\",true]],null],[1,\"\\n      \"]],[]],[[[1,\"\\n        \"],[8,[39,2],null,[[\"@initials\"],[\"Ts\"]],null],[1,\"\\n      \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/layout/sidebar\",\"o-s-s/layout/sidebar/item\",\"o-s-s/avatar\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+
+  var BasicUsage = Template.bind({});
+  _exports.BasicUsage = BasicUsage;
+  BasicUsage.args = defaultArgs;
+});
 ;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component"], function (_exports, _component, _templateFactory, _component2) {
@@ -89857,6 +89941,100 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["expor
 
   _exports.default = OSSLayoutSidebarItem;
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSLayoutSidebarItem);
+});
+;define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.BasicUsage = _exports.default = void 0;
+  var _default = {
+    title: 'Components/OSS::Layout::Sidebar::Item',
+    component: 'item',
+    argTypes: {
+      icon: {
+        description: 'Font Awesome class, for example: far fa-envelope-open',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      hasNotifications: {
+        description: 'Has notifications',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      locked: {
+        description: 'Is item locked',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'Component Item used in sidebar.'
+        },
+        iframeHeight: 120
+      }
+    }
+  };
+  _exports.default = _default;
+  var defaultArgs = {
+    icon: 'far fa-search',
+    hasNotifications: false,
+    locked: false
+  };
+
+  var Template = function Template(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <div style="background: var(--sidebar-bg-color)">
+            <OSS::Layout::Sidebar::Item @icon={{this.icon}} @locked={{this.locked}} @hasNotifications={{this.hasNotifications}}/>
+          </div>
+        
+      */
+      {
+        "id": "qG3rvbIZ",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"background: var(--sidebar-bg-color)\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@icon\",\"@locked\",\"@hasNotifications\"],[[30,0,[\"icon\"]],[30,0,[\"locked\"]],[30,0,[\"hasNotifications\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+
+  var BasicUsage = Template.bind({});
+  _exports.BasicUsage = BasicUsage;
+  BasicUsage.args = defaultArgs;
 });
 ;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -106708,36 +106886,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/l.js /tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/l.js /tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/l.js_/tmp/broccoli-184141DbGRe4WAoz/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/l.js_/tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
