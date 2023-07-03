@@ -1,3 +1,4 @@
+<div class="oss-access-panel-backdrop" {{on "click" @onClose}}></div>
 <div class="oss-access-panel-container" ...attributes>
   <div class="oss-access-panel-container__header">
     {{yield to="header"}}
@@ -42,7 +43,7 @@
             {{/each}}
           {{else}}
             {{#each @records as |record|}}
-              <div class={{concat "access-panel-container__row" (if record._accessPanel.active " access-panel-container__row--active")}}>
+              <div class={{concat "oss-access-panel-container__row" (if record._accessPanel.active " oss-access-panel-container__row--active")}}>
                 {{yield record to="row"}}
                 {{#if record._accessPanel.active}}
                   <i class="far fa-check font-color-primary-500"></i>
