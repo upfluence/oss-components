@@ -8608,7 +8608,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar-test", ["@ember/
     });
   });
 });
-define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers"], function (_templateFactory, _qunit, _emberQunit, _testHelpers) {
+define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "sinon"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _sinon) {
   "use strict";
 
   function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -8817,14 +8817,96 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["@e
         };
       }());
     });
-    (0, _qunit.module)('Extra attributes', function () {
-      (0, _qunit.test)('passing an extra class is applied to the component', /*#__PURE__*/function () {
+    (0, _qunit.module)('Actions', function (hooks) {
+      hooks.beforeEach(function () {
+        this.defaultAction = _sinon.default.spy();
+        this.lockedAction = _sinon.default.spy();
+      });
+      (0, _qunit.test)('OnClick defaultAction is triggered', /*#__PURE__*/function () {
         var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(assert) {
           return regeneratorRuntime.wrap(function _callee7$(_context7) {
             while (1) {
               switch (_context7.prev = _context7.next) {
                 case 0:
                   _context7.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Layout::Sidebar::Item @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}}/>
+                  */
+                  {
+                    "id": "NmyDaads",
+                    "block": "[[[8,[39,0],null,[[\"@defaultAction\",\"@lockedAction\"],[[30,0,[\"defaultAction\"]],[30,0,[\"lockedAction\"]]]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  _context7.next = 4;
+                  return (0, _testHelpers.click)('.oss-sidebar-item');
+
+                case 4:
+                  assert.ok(this.defaultAction.calledOnce);
+                  assert.ok(this.lockedAction.notCalled);
+
+                case 6:
+                case "end":
+                  return _context7.stop();
+              }
+            }
+          }, _callee7, this);
+        }));
+
+        return function (_x7) {
+          return _ref8.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('When locked is true lockedAction is triggered', /*#__PURE__*/function () {
+        var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
+          return regeneratorRuntime.wrap(function _callee8$(_context8) {
+            while (1) {
+              switch (_context8.prev = _context8.next) {
+                case 0:
+                  _context8.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Layout::Sidebar::Item  @locked={{true}} @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}}/>
+                  */
+                  {
+                    "id": "WN50t+PB",
+                    "block": "[[[8,[39,0],null,[[\"@locked\",\"@defaultAction\",\"@lockedAction\"],[true,[30,0,[\"defaultAction\"]],[30,0,[\"lockedAction\"]]]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  _context8.next = 4;
+                  return (0, _testHelpers.click)('.oss-sidebar-item');
+
+                case 4:
+                  assert.ok(this.defaultAction.notCalled);
+                  assert.ok(this.lockedAction.calledOnce);
+
+                case 6:
+                case "end":
+                  return _context8.stop();
+              }
+            }
+          }, _callee8, this);
+        }));
+
+        return function (_x8) {
+          return _ref9.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('Extra attributes', function () {
+      (0, _qunit.test)('passing an extra class is applied to the component', /*#__PURE__*/function () {
+        var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(assert) {
+          return regeneratorRuntime.wrap(function _callee9$(_context9) {
+            while (1) {
+              switch (_context9.prev = _context9.next) {
+                case 0:
+                  _context9.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     <OSS::Layout::Sidebar::Item class="my-extra-class" />
@@ -8841,24 +8923,24 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["@e
 
                 case 3:
                 case "end":
-                  return _context7.stop();
+                  return _context9.stop();
               }
             }
-          }, _callee7);
+          }, _callee9);
         }));
 
-        return function (_x7) {
-          return _ref8.apply(this, arguments);
+        return function (_x9) {
+          return _ref10.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('passing data-control-name works', /*#__PURE__*/function () {
-        var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
+        var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(assert) {
           var inputWrapper;
-          return regeneratorRuntime.wrap(function _callee8$(_context8) {
+          return regeneratorRuntime.wrap(function _callee10$(_context10) {
             while (1) {
-              switch (_context8.prev = _context8.next) {
+              switch (_context10.prev = _context10.next) {
                 case 0:
-                  _context8.next = 2;
+                  _context10.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     <OSS::Layout::Sidebar::Item data-control-name="layout-sidebar" />
@@ -8876,14 +8958,14 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["@e
 
                 case 4:
                 case "end":
-                  return _context8.stop();
+                  return _context10.stop();
               }
             }
-          }, _callee8);
+          }, _callee10);
         }));
 
-        return function (_x8) {
-          return _ref9.apply(this, arguments);
+        return function (_x10) {
+          return _ref11.apply(this, arguments);
         };
       }());
     });

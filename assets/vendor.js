@@ -89728,7 +89728,7 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar", ["exports", 
   /*
     <div class="oss-sidebar--containers fx-col" ...attributes>
     <div class="logo-container">
-      <div onClick={{this.onHomeAction}} role="button">
+      <div {{on "click" this.onHomeAction}} role="button">
         <img src={{@logo}} alt="brand" />
       </div>
     </div>
@@ -89744,8 +89744,8 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar", ["exports", 
   
   */
   {
-    "id": "OPP8HhVn",
-    "block": "[[[11,0],[24,0,\"oss-sidebar--containers fx-col\"],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"logo-container\"],[12],[1,\"\\n    \"],[10,0],[15,\"onClick\",[30,0,[\"onHomeAction\"]]],[14,\"role\",\"button\"],[12],[1,\"\\n      \"],[10,\"img\"],[15,\"src\",[30,2]],[14,\"alt\",\"brand\"],[12],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,0],[14,0,\"oss-sidebar--content fx-1 fx-col fx-xalign-center fx-gap-px-9\"],[12],[1,\"\\n    \"],[18,3,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[48,[30,4]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar--footer fx-col fx-xalign-center fx-gap-px-9\"],[12],[1,\"\\n      \"],[18,4,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@logo\",\"&content\",\"&footer\"],false,[\"yield\",\"if\",\"has-block\"]]",
+    "id": "RtHLrGB9",
+    "block": "[[[11,0],[24,0,\"oss-sidebar--containers fx-col\"],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"logo-container\"],[12],[1,\"\\n    \"],[11,0],[24,\"role\",\"button\"],[4,[38,0],[\"click\",[30,0,[\"onHomeAction\"]]],null],[12],[1,\"\\n      \"],[10,\"img\"],[15,\"src\",[30,2]],[14,\"alt\",\"brand\"],[12],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,0],[14,0,\"oss-sidebar--content fx-1 fx-col fx-xalign-center fx-gap-px-9\"],[12],[1,\"\\n    \"],[18,3,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[48,[30,4]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar--footer fx-col fx-xalign-center fx-gap-px-9\"],[12],[1,\"\\n      \"],[18,4,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@logo\",\"&content\",\"&footer\"],false,[\"on\",\"yield\",\"if\",\"has-block\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/layout/sidebar.hbs",
     "isStrictMode": false
   });
@@ -89861,13 +89861,15 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar", ["exports", 
 });
 ;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component"], function (_exports, _component, _templateFactory, _component2) {
+define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@ember/object"], function (_exports, _component, _templateFactory, _component2, _object) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
+
+  var _class;
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -89889,9 +89891,12 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["expor
 
   function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="oss-sidebar-item" disabled={{if this.locked "disabled"}} ...attributes>
+    <div class="oss-sidebar-item" disabled={{if this.locked "disabled"}} {{on "click" this.onClick}} role="button"
+       ...attributes>
     {{#if this.locked}}
       <div class="oss-sidebar-item--locked">
         <i class="fal fa-lock"></i>
@@ -89907,13 +89912,13 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["expor
   
   */
   {
-    "id": "OZQA2G/o",
-    "block": "[[[11,0],[24,0,\"oss-sidebar-item\"],[16,\"disabled\",[52,[30,0,[\"locked\"]],\"disabled\"]],[17,1],[12],[1,\"\\n\"],[41,[30,0,[\"locked\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-item--locked\"],[12],[1,\"\\n      \"],[10,\"i\"],[14,0,\"fal fa-lock\"],[12],[13],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"oss-sidebar-item--icon\"],[12],[1,\"\\n    \"],[10,\"i\"],[15,0,[30,2]],[12],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"hasNotifications\"]],[[[1,\"    \"],[10,1],[14,0,\"oss-sidebar-item--notification\"],[12],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\"],false,[\"if\"]]",
+    "id": "c22YuLwN",
+    "block": "[[[11,0],[24,0,\"oss-sidebar-item\"],[16,\"disabled\",[52,[30,0,[\"locked\"]],\"disabled\"]],[24,\"role\",\"button\"],[17,1],[4,[38,1],[\"click\",[30,0,[\"onClick\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"locked\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-item--locked\"],[12],[1,\"\\n      \"],[10,\"i\"],[14,0,\"fal fa-lock\"],[12],[13],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"oss-sidebar-item--icon\"],[12],[1,\"\\n    \"],[10,\"i\"],[15,0,[30,2]],[12],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"hasNotifications\"]],[[[1,\"    \"],[10,1],[14,0,\"oss-sidebar-item--notification\"],[12],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\"],false,[\"if\",\"on\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/layout/sidebar/item.hbs",
     "isStrictMode": false
   });
 
-  var OSSLayoutSidebarItem = /*#__PURE__*/function (_Component) {
+  var OSSLayoutSidebarItem = (_class = /*#__PURE__*/function (_Component) {
     _inherits(OSSLayoutSidebarItem, _Component);
 
     var _super = _createSuper(OSSLayoutSidebarItem);
@@ -89934,15 +89939,27 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["expor
       get: function get() {
         return this.args.hasNotifications || false;
       }
+    }, {
+      key: "onClick",
+      value: function onClick() {
+        var _this$args$defaultAct, _this$args2;
+
+        if (this.locked) {
+          var _this$args$lockedActi, _this$args;
+
+          return (_this$args$lockedActi = (_this$args = this.args).lockedAction) === null || _this$args$lockedActi === void 0 ? void 0 : _this$args$lockedActi.call(_this$args);
+        }
+
+        return (_this$args$defaultAct = (_this$args2 = this.args).defaultAction) === null || _this$args$defaultAct === void 0 ? void 0 : _this$args$defaultAct.call(_this$args2);
+      }
     }]);
 
     return OSSLayoutSidebarItem;
-  }(_component2.default);
-
+  }(_component2.default), (_applyDecoratedDescriptor(_class.prototype, "onClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClick"), _class.prototype)), _class);
   _exports.default = OSSLayoutSidebarItem;
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSLayoutSidebarItem);
 });
-;define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item.stories", ["exports", "@ember/template-factory", "@storybook/addon-actions"], function (_exports, _templateFactory, _addonActions) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -89994,6 +90011,24 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["expor
         control: {
           type: 'boolean'
         }
+      },
+      defaultAction: {
+        description: 'Function to be called on click per default',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'defaultAction(): void'
+          }
+        }
+      },
+      lockedAction: {
+        description: 'Function to be called on click when item is locked',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'lockedAction(): void'
+          }
+        }
       }
     },
     parameters: {
@@ -90009,7 +90044,9 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["expor
   var defaultArgs = {
     icon: 'far fa-search',
     hasNotifications: false,
-    locked: false
+    locked: false,
+    defaultAction: (0, _addonActions.action)('defaultAction'),
+    lockedAction: (0, _addonActions.action)('lockedAction')
   };
 
   var Template = function Template(args) {
@@ -90018,13 +90055,16 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["expor
       /*
         
           <div style="background: var(--sidebar-bg-color)">
-            <OSS::Layout::Sidebar::Item @icon={{this.icon}} @locked={{this.locked}} @hasNotifications={{this.hasNotifications}}/>
+            <OSS::Layout::Sidebar::Item @icon={{this.icon}} @locked={{this.locked}} 
+                                        @hasNotifications={{this.hasNotifications}}
+                                        @defaultAction={{this.defaultAction}}
+                                        @lockedAction={{this.lockedAction}}/>
           </div>
         
       */
       {
-        "id": "qG3rvbIZ",
-        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"background: var(--sidebar-bg-color)\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@icon\",\"@locked\",\"@hasNotifications\"],[[30,0,[\"icon\"]],[30,0,[\"locked\"]],[30,0,[\"hasNotifications\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+        "id": "Mevqube1",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"background: var(--sidebar-bg-color)\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@icon\",\"@locked\",\"@hasNotifications\",\"@defaultAction\",\"@lockedAction\"],[[30,0,[\"icon\"]],[30,0,[\"locked\"]],[30,0,[\"hasNotifications\"]],[30,0,[\"defaultAction\"]],[30,0,[\"lockedAction\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -106886,36 +106926,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-1868wOmXxdMYFMXG/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-1868wOmXxdMYFMXG/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1868wOmXxdMYFMXG/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-1868wOmXxdMYFMXG/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-1868wOmXxdMYFMXG/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1868wOmXxdMYFMXG/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/l.js /tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-1868wOmXxdMYFMXG/cache-275-bundler/staging/l.js /tmp/broccoli-1868wOmXxdMYFMXG/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/l.js_/tmp/broccoli-1832sgcMt3y2empc/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-1868wOmXxdMYFMXG/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1868wOmXxdMYFMXG/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1868wOmXxdMYFMXG/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1868wOmXxdMYFMXG/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1868wOmXxdMYFMXG/cache-275-bundler/staging/l.js_/tmp/broccoli-1868wOmXxdMYFMXG/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
