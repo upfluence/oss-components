@@ -14779,6 +14779,7 @@ a.upf-btn--sm {
   color: var(--sidebar-font-color);
   font-size: var(--font-size-lg);
   border-radius: var(--border-radius-md);
+  transition: color 300ms ease-in-out, background-color 300ms ease-in-out;
   cursor: pointer;
 }
 .oss-sidebar-item:hover {
