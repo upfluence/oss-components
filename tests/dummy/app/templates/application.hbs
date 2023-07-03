@@ -1,15 +1,17 @@
 <div class="fx-row">
   <OSS::Layout::Sidebar @logo="/assets/images/upfluence-white-logo.svg" @homeAction={{fn this.redirectTo "/"}}>
     <:content>
-      <OSS::Layout::Sidebar::Item @icon="fas fa-search" class="active" onClick={{fn this.redirectTo "search"}} />
-      <OSS::Layout::Sidebar::Item @icon="fal fa-list" onClick={{fn this.redirectTo "list"}} />
-      <OSS::Layout::Sidebar::Item @icon="fal fa-envelope" onClick={{fn this.redirectTo "envelope"}} />
-      <OSS::Layout::Sidebar::Item @icon="fal fa-bullhorn" onClick={{fn this.redirectTo "bullhorn"}} />
-      <OSS::Layout::Sidebar::Item @icon="fal fa-credit-card" @locked={{true}} />
-      <OSS::Layout::Sidebar::Item @icon="fal fa-project-diagram" onClick={{fn this.redirectTo "diagram"}} />
-      <OSS::Layout::Sidebar::Item @icon="fal fa-chart-pie" onClick={{fn this.redirectTo "pie"}} />
-      <OSS::Layout::Sidebar::Item @icon="fal fa-bullseye-pointer" @hasNotifications={{true}}
-                                  onClick={{fn this.redirectTo "pointer"}} />
+      <OSS::Layout::Sidebar::Item @icon="far fa-search" class="active" @defaultAction={{fn this.redirectTo "search"}} />
+      <OSS::Layout::Sidebar::Item @icon="far fa-list" @defaultAction={{fn this.redirectTo "list"}} />
+      <OSS::Layout::Sidebar::Item @icon="far fa-envelope" @defaultAction={{fn this.redirectTo "envelope"}} />
+      <OSS::Layout::Sidebar::Item @icon="far fa-bullhorn" @defaultAction={{fn this.redirectTo "bullhorn"}} />
+      <OSS::Layout::Sidebar::Item @icon="far fa-credit-card" @locked={{true}}
+                                  @defaultAction={{fn this.redirectTo "credit-card"}}
+                                  @lockedAction={{fn this.redirectTo "locked credit-card"}} />
+      <OSS::Layout::Sidebar::Item @icon="far fa-project-diagram" @defaultAction={{fn this.redirectTo "diagram"}} />
+      <OSS::Layout::Sidebar::Item @icon="far fa-chart-pie" @defaultAction={{fn this.redirectTo "pie"}} />
+      <OSS::Layout::Sidebar::Item @icon="far fa-bullseye-pointer" @hasNotifications={{true}}
+                                  @defaultAction={{fn this.redirectTo "pointer"}} />
     </:content>
     <:footer>
       <OSS::Layout::Sidebar::Item @icon="fal fa-info-circle" />
@@ -17,7 +19,7 @@
                    @initials="Ts" />
     </:footer>
   </OSS::Layout::Sidebar>
-  <div style="padding-left: var(--sidebar-width); width:100%;">
+  <div style="width:100%; height:100vh; overflow: auto;">
     <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
       <OSS::TextArea @value={{this.numberValue}} @onChange={{this.handleNumberInput}}
                      @errorMessage="This is an error message" @rows={{8}} @resize="vertical" />

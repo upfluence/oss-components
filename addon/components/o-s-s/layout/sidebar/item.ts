@@ -1,9 +1,12 @@
 import Component from '@glimmer/component';
+import { action } from '@ember/object';
 
 interface OSSLayoutSidebarItemArgs {
   icon: string;
   locked?: boolean;
   hasNotifications?: boolean;
+  defaultAction?(): void;
+  lockedAction?(): void;
 }
 
 export default class OSSLayoutSidebarItem extends Component<OSSLayoutSidebarItemArgs> {
@@ -13,5 +16,13 @@ export default class OSSLayoutSidebarItem extends Component<OSSLayoutSidebarItem
 
   get hasNotifications(): boolean {
     return this.args.hasNotifications || false;
+  }
+
+  @action
+  onClick(): void {
+    if (this.locked) {
+      return this.args.lockedAction?.();
+    }
+    return this.args.defaultAction?.();
   }
 }

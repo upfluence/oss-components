@@ -1,7 +1,8 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, find } from '@ember/test-helpers';
+import { render, find, click } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
+import sinon from 'sinon';
 
 module('Integration | Component | oss/layout/sidebar/item', function (hooks) {
   setupRenderingTest(hooks);
@@ -37,6 +38,33 @@ module('Integration | Component | oss/layout/sidebar/item', function (hooks) {
     test('When hasNotification is true', async function (assert) {
       await render(hbs`<OSS::Layout::Sidebar::Item  @hasNotifications={{true}}/>`);
       assert.dom('.oss-sidebar-item--notification').exists();
+    });
+  });
+
+  module('Actions', function (hooks) {
+    hooks.beforeEach(function () {
+      this.defaultAction = sinon.spy();
+      this.lockedAction = sinon.spy();
+    });
+
+    test('OnClick defaultAction is triggered', async function (assert) {
+      await render(
+        hbs`<OSS::Layout::Sidebar::Item @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}}/>`
+      );
+      await click('.oss-sidebar-item');
+
+      assert.ok(this.defaultAction.calledOnce);
+      assert.ok(this.lockedAction.notCalled);
+    });
+
+    test('When locked is true lockedAction is triggered', async function (assert) {
+      await render(
+        hbs`<OSS::Layout::Sidebar::Item  @locked={{true}} @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}}/>`
+      );
+      await click('.oss-sidebar-item');
+
+      assert.ok(this.defaultAction.notCalled);
+      assert.ok(this.lockedAction.calledOnce);
     });
   });
 

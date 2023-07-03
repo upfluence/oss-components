@@ -1,4 +1,5 @@
-<div class="oss-sidebar-item" disabled={{if this.locked "disabled"}} ...attributes>
+<div class="oss-sidebar-item" disabled={{if this.locked "disabled"}} onClick={{this.onClick}}
+     role="button" ...attributes>
   {{#if this.locked}}
     <div class="oss-sidebar-item--locked">
       <i class="fal fa-lock"></i>
