@@ -17,8 +17,8 @@ export default {
       control: { type: 'text' },
       type: { required: true }
     },
-    type: {
-      description: 'The style type of the fontawesome icon',
+    style: {
+      description: 'The style of the fontawesome icon',
       table: {
         type: {
           summary: StyleTypes.join('|')
@@ -41,13 +41,13 @@ export default {
 
 const defaultArgs = {
   icon: 'fa-laptop-code',
-  type: 'regular'
+  style: 'regular'
 };
 
 const Template = (args) => ({
   template: hbs`
     <div style="font-size: 60px;">
-      <OSS::Icon @icon={{this.icon}} @type={{this.type}} />
+      <OSS::Icon @icon={{this.icon}} @style={{this.style}} />
     </div>
   `,
   context: args

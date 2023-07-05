@@ -3,7 +3,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
-const TYPE_CLASSES = {
+const STYLE_CLASSES = {
   solid: 'fas',
   regular: 'far',
   light: 'fal',
@@ -24,15 +24,15 @@ module('Integration | Component | o-s-s/icon', function (hooks) {
     assert.dom('i').hasClass('fa-code-merge');
   });
 
-  test(`it renders the correct default type class`, async function (assert) {
+  test(`it renders the correct default style class`, async function (assert) {
     await render(hbs`<OSS::Icon @icon="fa-code-merge" />`);
     assert.dom('i').hasClass('far');
   });
 
-  for (const [key, value] of Object.entries(TYPE_CLASSES)) {
-    test(`it renders the correct type ${key} class`, async function (assert) {
-      this.type = key;
-      await render(hbs`<OSS::Icon @icon="fa-code-merge" @type={{this.type}} />`);
+  for (const [key, value] of Object.entries(STYLE_CLASSES)) {
+    test(`it renders the correct style ${key} class`, async function (assert) {
+      this.style = key;
+      await render(hbs`<OSS::Icon @icon="fa-code-merge" @style={{this.style}} />`);
       assert.dom('i').hasClass(value);
     });
   }

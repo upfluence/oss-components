@@ -1,14 +1,14 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 
-export type IconType = 'solid' | 'regular' | 'light' | 'duotone' | 'brand';
+export type IconStyle = 'solid' | 'regular' | 'light' | 'duotone' | 'brand';
 
 interface OSSIconArgs {
   icon: string;
-  type?: IconType;
+  style?: IconStyle;
 }
 
-export const TYPE_CLASSES = {
+export const STYLE_CLASSES = {
   solid: 'fas',
   regular: 'far',
   light: 'fal',
@@ -24,7 +24,7 @@ export default class OSSIcon extends Component<OSSIconArgs> {
 
   get computedClass(): string {
     const classes: string[] = [];
-    classes.push(TYPE_CLASSES[this.args.type ?? 'regular']);
+    classes.push(STYLE_CLASSES[this.args.style ?? 'regular']);
     classes.push(this.args.icon);
     return classes.join(' ');
   }
