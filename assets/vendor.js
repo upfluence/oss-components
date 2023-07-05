@@ -88725,6 +88725,174 @@ define("@upfluence/oss-components/components/o-s-s/email-input", ["exports", "@e
 });
 ;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+define("@upfluence/oss-components/components/o-s-s/icon", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@ember/debug"], function (_exports, _component, _templateFactory, _component2, _debug) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.STYLE_CLASSES = void 0;
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+  function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <i class={{this.computedClass}} ...attributes></i>
+  
+  */
+  {
+    "id": "H8Ua3deX",
+    "block": "[[[11,\"i\"],[16,0,[30,0,[\"computedClass\"]]],[17,1],[12],[13],[1,\"\\n\"]],[\"&attrs\"],false,[]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/icon.hbs",
+    "isStrictMode": false
+  });
+
+  var STYLE_CLASSES = {
+    solid: 'fas',
+    regular: 'far',
+    light: 'fal',
+    duotone: 'fad',
+    brand: 'fab'
+  };
+  _exports.STYLE_CLASSES = STYLE_CLASSES;
+
+  var OSSIcon = /*#__PURE__*/function (_Component) {
+    _inherits(OSSIcon, _Component);
+
+    var _super = _createSuper(OSSIcon);
+
+    function OSSIcon(owner, args) {
+      var _this;
+
+      _classCallCheck(this, OSSIcon);
+
+      _this = _super.call(this, owner, args);
+      (true && !(typeof args.icon !== 'undefined') && (0, _debug.assert)('[component][OSS::Icon] The @icon parameter is mandatory', typeof args.icon !== 'undefined'));
+      return _this;
+    }
+
+    _createClass(OSSIcon, [{
+      key: "computedClass",
+      get: function get() {
+        var _this$args$style;
+
+        var classes = [];
+        classes.push(STYLE_CLASSES[(_this$args$style = this.args.style) !== null && _this$args$style !== void 0 ? _this$args$style : 'regular']);
+        classes.push(this.args.icon);
+        return classes.join(' ');
+      }
+    }]);
+
+    return OSSIcon;
+  }(_component2.default);
+
+  _exports.default = OSSIcon;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSIcon);
+});
+;define("@upfluence/oss-components/components/o-s-s/icon.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.BasicUsage = _exports.default = void 0;
+  var StyleTypes = ['solid', 'regular', 'light', 'duotone', 'brand'];
+  var _default = {
+    title: 'Components/OSS::Icon',
+    component: 'icon',
+    argTypes: {
+      icon: {
+        description: 'The fontawesome icon value',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        },
+        type: {
+          required: true
+        }
+      },
+      style: {
+        description: 'The style of the fontawesome icon',
+        table: {
+          type: {
+            summary: StyleTypes.join('|')
+          },
+          defaultValue: {
+            summary: 'regular'
+          }
+        },
+        options: StyleTypes,
+        control: {
+          type: 'select'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'An fontawesome icon at 5.15.4 version'
+        },
+        iframeHeight: 200
+      }
+    }
+  };
+  _exports.default = _default;
+  var defaultArgs = {
+    icon: 'fa-laptop-code',
+    style: 'regular'
+  };
+
+  var Template = function Template(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <div style="font-size: 60px;">
+            <OSS::Icon @icon={{this.icon}} @style={{this.style}} />
+          </div>
+        
+      */
+      {
+        "id": "qIeSg9j/",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"font-size: 60px;\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@icon\",\"@style\"],[[30,0,[\"icon\"]],[30,0,[\"style\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/icon\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+
+  var BasicUsage = Template.bind({});
+  _exports.BasicUsage = BasicUsage;
+  BasicUsage.args = defaultArgs;
+});
+;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@glimmer/tracking", "@ember/debug", "@ember/object"], function (_exports, _component, _templateFactory, _component2, _tracking, _debug, _object) {
   "use strict";
 
@@ -106926,36 +107094,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-1850o0OLywD31bmF/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-1897EyHuhnyG7t7B/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-1850o0OLywD31bmF/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-1897EyHuhnyG7t7B/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1850o0OLywD31bmF/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1897EyHuhnyG7t7B/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-1850o0OLywD31bmF/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-1897EyHuhnyG7t7B/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-1850o0OLywD31bmF/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-1897EyHuhnyG7t7B/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1850o0OLywD31bmF/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1897EyHuhnyG7t7B/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-1850o0OLywD31bmF/cache-275-bundler/staging/l.js /tmp/broccoli-1850o0OLywD31bmF/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-1897EyHuhnyG7t7B/cache-275-bundler/staging/l.js /tmp/broccoli-1897EyHuhnyG7t7B/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-1850o0OLywD31bmF/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1850o0OLywD31bmF/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1850o0OLywD31bmF/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1850o0OLywD31bmF/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1850o0OLywD31bmF/cache-275-bundler/staging/l.js_/tmp/broccoli-1850o0OLywD31bmF/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-1897EyHuhnyG7t7B/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1897EyHuhnyG7t7B/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1897EyHuhnyG7t7B/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1897EyHuhnyG7t7B/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1897EyHuhnyG7t7B/cache-275-bundler/staging/l.js_/tmp/broccoli-1897EyHuhnyG7t7B/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
