@@ -21,6 +21,14 @@
   </OSS::Layout::Sidebar>
   <div style="width:100%; height:100vh; overflow: auto;">
     <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
+      <OSS::Icon @icon="fa-laptop-code" />
+      <OSS::Icon @icon="fa-laptop-code" @style="solid" />
+      <OSS::Icon @icon="fa-laptop-code" @style="regular" />
+      <OSS::Icon @icon="fa-laptop-code" @style="light" />
+      <OSS::Icon @icon="fa-laptop-code" @style="duotone" />
+      <OSS::Icon @icon="fa-facebook-square" @style="brand" />
+    </div>
+    <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
       <OSS::TextArea @value={{this.numberValue}} @onChange={{this.handleNumberInput}}
                      @errorMessage="This is an error message" @rows={{8}} @resize="vertical" />
       <OSS::TextArea @value={{this.numberValue}} @onChange={{this.handleNumberInput}} @rows={{1}} />
@@ -99,7 +107,7 @@
       <OSS::PowerSelect @items={{this.superHeroes}} @selectedItems={{this.superHeroes}}
                         @onChange={{this.onPowerSelectChange}} @onSearch={{this.onPowerSelectSearch}}>
         <:selected-item as |selectedProduct|>
-          <OSS::Chip @label={{selectedProduct}} @onRemove={{fn this.onPowerSelectChange }} @maxDisplayWidth={{100}} />
+          <OSS::Chip @label={{selectedProduct}} @onRemove={{this.onPowerSelectChange }} @maxDisplayWidth={{100}} />
         </:selected-item>
         <:option-item as |item|>
           {{item}}
@@ -109,7 +117,7 @@
       <OSS::PowerSelect @items={{this.superHeroes}} @selectedItems={{null}} @onChange={{this.onPowerSelectChange}}
                         @onSearch={{this.onPowerSelectSearch}}>
         <:selected-item as |selectedProduct|>
-          <OSS::Chip @label={{selectedProduct}} @onRemove={{fn this.onPowerSelectChange }} @maxDisplayWidth={{100}} />
+          <OSS::Chip @label={{selectedProduct}} @onRemove={{this.onPowerSelectChange }} @maxDisplayWidth={{100}} />
         </:selected-item>
         <:option-item as |item|>
           {{item}}
