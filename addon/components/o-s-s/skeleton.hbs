@@ -1,6 +1,5 @@
 <div class={{this.computedClass}} style={{this.computedStyle}} ...attributes>
   {{#each this.rows as |row|}}
-    <div class="upf-skeleton-effect fx-1" style={{row.style}}></div>
-    {{this.getRandomSize}}
+    <div class={{concat "upf-skeleton-effect " row.class}} style={{row.style}}></div>
   {{/each}}
 </div>

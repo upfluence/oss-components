@@ -2,15 +2,17 @@ import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 
 interface Row {
+  class?: string;
   style?: string;
 }
 
 interface OSSSkeletonArgs {
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
   multiple?: number;
   type?: 'row' | 'column';
   gap?: number;
+  randomize?: boolean;
 }
 
 export default class OSSSkeleton extends Component<OSSSkeletonArgs> {
@@ -26,11 +28,11 @@ export default class OSSSkeleton extends Component<OSSSkeletonArgs> {
   }
 
   get height(): number {
-    return this.args.height || 100;
+    return this.args.height || 36;
   }
 
   get width(): number {
-    return this.args.width || 100;
+    return this.args.width || 36;
   }
 
   get gap(): number {
@@ -43,11 +45,8 @@ export default class OSSSkeleton extends Component<OSSSkeletonArgs> {
 
   get computedClass(): string {
     let style: String[] = ['upf-skeleton-content', `fx-gap-px-${this.gap}`];
-    if (this.type == 'row') {
-      style.push('fx-col');
-    } else {
-      style.push('fx-row');
-    }
+
+    this.type === 'row' ? style.push('fx-col') : style.push('fx-row');
 
     return style.join(' ');
   }
@@ -60,24 +59,29 @@ export default class OSSSkeleton extends Component<OSSSkeletonArgs> {
     let rows: Row[] = [];
     let multiple = this.args.multiple || 1;
 
-    if (multiple == 1) {
-      rows.push({});
+    if (this.args.randomize) {
+      for (let i = 0; i < multiple; i++) {
+        rows.push(this.generateRandomRowSize());
+      }
     } else {
       for (let i = 0; i < multiple; i++) {
-        rows.push(this._generateRandomRowSize());
+        rows.push({ class: 'fx-1' });
       }
     }
 
     return rows;
   }
 
-  _generateRandomRowSize(): Row {
-    let percent = 100 - Math.floor(Math.random() * (20 + 1) + 0);
+  private generateRandomRowSize(): Row {
+    let multiple = this.args.multiple || 1;
 
-    if (this.type == 'row') {
-      return { style: `width: ${percent}%;` };
+    if (this.type === 'row') {
+      let percent = 100 - Math.floor(Math.random() * (20 + 1) + 0);
+      return { class: 'fx-1', style: `width: ${percent}%;` };
     } else {
-      return { style: `height: ${percent}%;` };
+      let coef = (100 + Math.floor(Math.random() * (100 + 1) + -50)) / 100;
+      let defaultWidth = (this.width - (multiple - 1) * this.gap) / multiple;
+      return { style: `width: ${Math.floor(defaultWidth * coef)}px;` };
     }
   }
 }

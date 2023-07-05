@@ -15,10 +15,10 @@ module('Integration | Component | o-s-s/skeleton', function (hooks) {
     test('Default height', async function (assert) {
       await render(hbs`<OSS::Skeleton/>`);
 
-      assert.dom('.upf-skeleton-content').hasStyle({ height: '100px' });
+      assert.dom('.upf-skeleton-content').hasStyle({ height: '36px' });
     });
 
-    test('Then style height should correspond to parameter value', async function (assert) {
+    test('The style height should correspond to parameter value', async function (assert) {
       this.height = 400;
 
       await render(hbs`<OSS::Skeleton @height={{this.height}}/>`);
@@ -31,10 +31,10 @@ module('Integration | Component | o-s-s/skeleton', function (hooks) {
     test('Default width', async function (assert) {
       await render(hbs`<OSS::Skeleton/>`);
 
-      assert.dom('.upf-skeleton-content').hasStyle({ width: '100px' });
+      assert.dom('.upf-skeleton-content').hasStyle({ width: '36px' });
     });
 
-    test('Then style width should correspond to parameter value', async function (assert) {
+    test('The style width should correspond to parameter value', async function (assert) {
       this.width = 400;
 
       await render(hbs`<OSS::Skeleton @width={{this.width}}/>`);
@@ -50,7 +50,7 @@ module('Integration | Component | o-s-s/skeleton', function (hooks) {
       assert.dom('.upf-skeleton-content').hasClass('fx-gap-px-9');
     });
 
-    test('Then has class corresponding to gap', async function (assert) {
+    test('The has class corresponding to gap', async function (assert) {
       this.gap = 12;
 
       await render(hbs`<OSS::Skeleton @gap={{this.gap}}/>`);
@@ -68,7 +68,7 @@ module('Integration | Component | o-s-s/skeleton', function (hooks) {
       assert.ok(items.length === 1);
     });
 
-    test('Then has multiple skeleton effect', async function (assert) {
+    test('The content has multiple skeleton effect', async function (assert) {
       this.multiple = 4;
 
       await render(hbs`<OSS::Skeleton @multiple={{this.multiple}}/>`);
@@ -79,47 +79,49 @@ module('Integration | Component | o-s-s/skeleton', function (hooks) {
     });
   });
 
-  module('When type is row', () => {
+  module('@randomize parameters', () => {
     hooks.beforeEach(function () {
       this.multiple = 4;
       this.width = 200;
     });
 
-    test('Then content should have class fx-col', async function (assert) {
-      await render(hbs`<OSS::Skeleton/>`);
+    test('Default randomize is false', async function (assert) {
+      await render(hbs`<OSS::Skeleton @width={{this.width}}/>`);
 
-      assert.dom('.upf-skeleton-content').hasClass(`fx-col`);
+      let item = find('.upf-skeleton-content .upf-skeleton-effect') as HTMLElement;
+
+      assert.dom('.upf-skeleton-content .upf-skeleton-effect').hasClass('fx-1');
+      assert.ok(this.width == item?.offsetWidth);
     });
 
-    test('Then multiple should randomise width', async function (assert) {
-      await render(hbs`<OSS::Skeleton @multiple={{this.multiple}} @width={{this.width}}/>`);
+    test('Randomize width', async function (assert) {
+      await render(hbs`<OSS::Skeleton @multiple={{this.multiple}} @width={{this.width}} @randomize={{true}}/>`);
 
       let item = find('.upf-skeleton-content .upf-skeleton-effect') as HTMLElement;
 
       assert.ok(this.width * 0.8 <= item?.offsetWidth && item?.offsetWidth <= this.width);
     });
-  });
 
-  module('When type is column', function (hooks) {
-    hooks.beforeEach(function () {
-      this.type = 'column';
-      this.multiple = 4;
-      this.height = 200;
-    });
-
-    test('Then content should have class fx-row', async function (assert) {
-      await render(hbs`<OSS::Skeleton @type={{this.type}} @multiple={{this.multiple}}/>`);
-
-      assert.dom('.upf-skeleton-content').hasClass(`fx-row`);
-    });
-
-    test('Then multiple should randomise height', async function (assert) {
-      await render(hbs`<OSS::Skeleton @type={{this.type}} @multiple={{this.multiple}} @height={{this.height}}/> `);
+    test('Randomize width and @type is column', async function (assert) {
+      await render(hbs`<OSS::Skeleton @type="column" @width={{this.width}} @randomize={{true}}/>`);
 
       let item = find('.upf-skeleton-content .upf-skeleton-effect') as HTMLElement;
 
-      assert.ok(this.height * 0.8 <= item?.offsetHeight && item?.offsetHeight <= this.height);
+      assert.dom('.upf-skeleton-content .upf-skeleton-effect').hasNoClass('fx-1');
+      assert.ok(this.width * 0.5 <= item?.offsetWidth && item?.offsetWidth <= this.width * 1.5);
     });
+  });
+
+  test('@type default value is row', async function (assert) {
+    await render(hbs`<OSS::Skeleton/>`);
+
+    assert.dom('.upf-skeleton-content').hasClass(`fx-col`);
+  });
+
+  test('@type value is column', async function (assert) {
+    await render(hbs`<OSS::Skeleton @type="column"/>`);
+
+    assert.dom('.upf-skeleton-content').hasClass(`fx-row`);
   });
 
   module('Extra attributes', () => {

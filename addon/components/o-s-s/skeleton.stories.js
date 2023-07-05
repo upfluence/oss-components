@@ -12,7 +12,7 @@ export default {
         type: {
           summary: 'number'
         },
-        defaultValue: { summary: '100' }
+        defaultValue: { summary: '36' }
       },
       control: { type: 'number' }
     },
@@ -22,12 +22,12 @@ export default {
         type: {
           summary: 'number'
         },
-        defaultValue: { summary: '100' }
+        defaultValue: { summary: '36' }
       },
       control: { type: 'number' }
     },
     multiple: {
-      description: 'How many skeleton effect should be displayed',
+      description: 'How many skeleton effects should be displayed',
       table: {
         type: {
           summary: 'number'
@@ -46,6 +46,16 @@ export default {
       },
       control: { type: 'number' }
     },
+    randomize: {
+      description: 'Randomize skeleton effect width',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: false }
+      },
+      control: { type: 'boolean' }
+    },
     type: {
       description: 'Direction of the skeleton',
       table: {
@@ -61,7 +71,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'Component used to create skeleton effect.'
+        component: 'Component used to create a skeleton effect.'
       },
       iframeHeight: 250
     }
@@ -72,13 +82,16 @@ const defaultArgs = {
   height: 200,
   width: 300,
   multiple: 1,
-  gap: 9
+  gap: 9,
+  randomize: false
 };
 
 const Template = (args) => ({
   template: hbs`
     <div class="bg-color-white padding-px-6">
-      <OSS::Skeleton @height={{this.height}} @width={{this.width}} @multiple={{this.multiple}} @gap={{this.gap}} @type={{this.type}}/>
+      <OSS::Skeleton @height={{this.height}} @width={{this.width}} @multiple={{this.multiple}} @gap={{this.gap}} 
+                     @type={{this.type}}
+                     @randomize={{this.randomize}}/>
     </div>
   `,
   context: args
