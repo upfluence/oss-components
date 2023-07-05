@@ -1,0 +1,6 @@
+<div class={{this.computedClass}} style={{this.computedStyle}} ...attributes>
+  {{#each this.rows as |row|}}
+    <div class="upf-skeleton-effect fx-1" style={{row.style}}></div>
+    {{this.getRandomSize}}
+  {{/each}}
+</div>
