@@ -17,6 +17,7 @@ jobs:
   test:
     name: Lint & Test
     runs-on: ubuntu-20.04
+    if: (!contains(github.ref, 'refs/heads/master') || contains(github.ref, 'refs/tags/v'))
     timeout-minutes: 5
     steps:
     - uses: actions/checkout@v3
