@@ -13722,6 +13722,622 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["@ember/template
     });
   });
 });
+define("dummy/tests/integration/components/o-s-s/skeleton-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers"], function (_templateFactory, _qunit, _emberQunit, _testHelpers) {
+  "use strict";
+
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+  function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+  (0, _qunit.module)('Integration | Component | o-s-s/skeleton', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(assert) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Skeleton/>
+                */
+                {
+                  "id": "SrLwdpLC",
+                  "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/skeleton\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.upf-skeleton-content').exists();
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.module)('@height parameters', function () {
+      (0, _qunit.test)('Default height', /*#__PURE__*/function () {
+        var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
+          return regeneratorRuntime.wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  _context2.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Skeleton/>
+                  */
+                  {
+                    "id": "SrLwdpLC",
+                    "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/skeleton\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.upf-skeleton-content').hasStyle({
+                    height: '36px'
+                  });
+
+                case 3:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2);
+        }));
+
+        return function (_x2) {
+          return _ref3.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('The style height should correspond to parameter value', /*#__PURE__*/function () {
+        var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
+          return regeneratorRuntime.wrap(function _callee3$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  this.height = 400;
+                  _context3.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Skeleton @height={{this.height}}/>
+                  */
+                  {
+                    "id": "qhSYk5tt",
+                    "block": "[[[8,[39,0],null,[[\"@height\"],[[30,0,[\"height\"]]]],null]],[],false,[\"o-s-s/skeleton\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  assert.dom('.upf-skeleton-content').hasStyle({
+                    height: '400px'
+                  });
+
+                case 4:
+                case "end":
+                  return _context3.stop();
+              }
+            }
+          }, _callee3, this);
+        }));
+
+        return function (_x3) {
+          return _ref4.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('@width parameters', function () {
+      (0, _qunit.test)('Default width', /*#__PURE__*/function () {
+        var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
+          return regeneratorRuntime.wrap(function _callee4$(_context4) {
+            while (1) {
+              switch (_context4.prev = _context4.next) {
+                case 0:
+                  _context4.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Skeleton/>
+                  */
+                  {
+                    "id": "SrLwdpLC",
+                    "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/skeleton\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.upf-skeleton-content').hasStyle({
+                    width: '36px'
+                  });
+
+                case 3:
+                case "end":
+                  return _context4.stop();
+              }
+            }
+          }, _callee4);
+        }));
+
+        return function (_x4) {
+          return _ref5.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('The style width should correspond to parameter value', /*#__PURE__*/function () {
+        var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(assert) {
+          return regeneratorRuntime.wrap(function _callee5$(_context5) {
+            while (1) {
+              switch (_context5.prev = _context5.next) {
+                case 0:
+                  this.width = 400;
+                  _context5.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Skeleton @width={{this.width}}/>
+                  */
+                  {
+                    "id": "isCzhG2g",
+                    "block": "[[[8,[39,0],null,[[\"@width\"],[[30,0,[\"width\"]]]],null]],[],false,[\"o-s-s/skeleton\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  assert.dom('.upf-skeleton-content').hasStyle({
+                    width: '400px'
+                  });
+
+                case 4:
+                case "end":
+                  return _context5.stop();
+              }
+            }
+          }, _callee5, this);
+        }));
+
+        return function (_x5) {
+          return _ref6.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('@gap parameters', function () {
+      (0, _qunit.test)('Default gap', /*#__PURE__*/function () {
+        var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(assert) {
+          return regeneratorRuntime.wrap(function _callee6$(_context6) {
+            while (1) {
+              switch (_context6.prev = _context6.next) {
+                case 0:
+                  _context6.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Skeleton/>
+                  */
+                  {
+                    "id": "SrLwdpLC",
+                    "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/skeleton\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.upf-skeleton-content').hasClass('fx-gap-px-9');
+
+                case 3:
+                case "end":
+                  return _context6.stop();
+              }
+            }
+          }, _callee6);
+        }));
+
+        return function (_x6) {
+          return _ref7.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('The has class corresponding to gap', /*#__PURE__*/function () {
+        var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(assert) {
+          return regeneratorRuntime.wrap(function _callee7$(_context7) {
+            while (1) {
+              switch (_context7.prev = _context7.next) {
+                case 0:
+                  this.gap = 12;
+                  _context7.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Skeleton @gap={{this.gap}}/>
+                  */
+                  {
+                    "id": "ljHrdEbO",
+                    "block": "[[[8,[39,0],null,[[\"@gap\"],[[30,0,[\"gap\"]]]],null]],[],false,[\"o-s-s/skeleton\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  assert.dom('.upf-skeleton-content').hasClass('fx-gap-px-12');
+
+                case 4:
+                case "end":
+                  return _context7.stop();
+              }
+            }
+          }, _callee7, this);
+        }));
+
+        return function (_x7) {
+          return _ref8.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('@multiple parameters', function () {
+      (0, _qunit.test)('Default has one skeleton effect', /*#__PURE__*/function () {
+        var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
+          var items;
+          return regeneratorRuntime.wrap(function _callee8$(_context8) {
+            while (1) {
+              switch (_context8.prev = _context8.next) {
+                case 0:
+                  _context8.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Skeleton/>
+                  */
+                  {
+                    "id": "SrLwdpLC",
+                    "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/skeleton\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  items = (0, _testHelpers.findAll)('.upf-skeleton-content .upf-skeleton-effect');
+                  assert.ok(items.length === 1);
+
+                case 4:
+                case "end":
+                  return _context8.stop();
+              }
+            }
+          }, _callee8);
+        }));
+
+        return function (_x8) {
+          return _ref9.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('The content has multiple skeleton effect', /*#__PURE__*/function () {
+        var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(assert) {
+          var items;
+          return regeneratorRuntime.wrap(function _callee9$(_context9) {
+            while (1) {
+              switch (_context9.prev = _context9.next) {
+                case 0:
+                  this.multiple = 4;
+                  _context9.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Skeleton @multiple={{this.multiple}}/>
+                  */
+                  {
+                    "id": "Bd+Pd5mH",
+                    "block": "[[[8,[39,0],null,[[\"@multiple\"],[[30,0,[\"multiple\"]]]],null]],[],false,[\"o-s-s/skeleton\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  items = (0, _testHelpers.findAll)('.upf-skeleton-content .upf-skeleton-effect');
+                  assert.ok(items.length === 4);
+
+                case 5:
+                case "end":
+                  return _context9.stop();
+              }
+            }
+          }, _callee9, this);
+        }));
+
+        return function (_x9) {
+          return _ref10.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('@randomize parameters', function () {
+      hooks.beforeEach(function () {
+        this.multiple = 4;
+        this.width = 200;
+      });
+      (0, _qunit.test)('Default randomize is false', /*#__PURE__*/function () {
+        var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(assert) {
+          var item;
+          return regeneratorRuntime.wrap(function _callee10$(_context10) {
+            while (1) {
+              switch (_context10.prev = _context10.next) {
+                case 0:
+                  _context10.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Skeleton @width={{this.width}}/>
+                  */
+                  {
+                    "id": "isCzhG2g",
+                    "block": "[[[8,[39,0],null,[[\"@width\"],[[30,0,[\"width\"]]]],null]],[],false,[\"o-s-s/skeleton\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  item = (0, _testHelpers.find)('.upf-skeleton-content .upf-skeleton-effect');
+                  assert.dom('.upf-skeleton-content .upf-skeleton-effect').hasClass('fx-1');
+                  assert.ok(this.width == (item === null || item === void 0 ? void 0 : item.offsetWidth));
+
+                case 5:
+                case "end":
+                  return _context10.stop();
+              }
+            }
+          }, _callee10, this);
+        }));
+
+        return function (_x10) {
+          return _ref11.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('Randomize width', /*#__PURE__*/function () {
+        var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(assert) {
+          var item;
+          return regeneratorRuntime.wrap(function _callee11$(_context11) {
+            while (1) {
+              switch (_context11.prev = _context11.next) {
+                case 0:
+                  _context11.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Skeleton @multiple={{this.multiple}} @width={{this.width}} @randomize={{true}}/>
+                  */
+                  {
+                    "id": "vqxoUfFV",
+                    "block": "[[[8,[39,0],null,[[\"@multiple\",\"@width\",\"@randomize\"],[[30,0,[\"multiple\"]],[30,0,[\"width\"]],true]],null]],[],false,[\"o-s-s/skeleton\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  item = (0, _testHelpers.find)('.upf-skeleton-content .upf-skeleton-effect');
+                  assert.ok(this.width * 0.8 <= (item === null || item === void 0 ? void 0 : item.offsetWidth) && (item === null || item === void 0 ? void 0 : item.offsetWidth) <= this.width);
+
+                case 4:
+                case "end":
+                  return _context11.stop();
+              }
+            }
+          }, _callee11, this);
+        }));
+
+        return function (_x11) {
+          return _ref12.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('Randomize width and @type is column', /*#__PURE__*/function () {
+        var _ref13 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(assert) {
+          var item;
+          return regeneratorRuntime.wrap(function _callee12$(_context12) {
+            while (1) {
+              switch (_context12.prev = _context12.next) {
+                case 0:
+                  _context12.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Skeleton @type="column" @width={{this.width}} @randomize={{true}}/>
+                  */
+                  {
+                    "id": "WxO6XoEf",
+                    "block": "[[[8,[39,0],null,[[\"@type\",\"@width\",\"@randomize\"],[\"column\",[30,0,[\"width\"]],true]],null]],[],false,[\"o-s-s/skeleton\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  item = (0, _testHelpers.find)('.upf-skeleton-content .upf-skeleton-effect');
+                  assert.dom('.upf-skeleton-content .upf-skeleton-effect').hasNoClass('fx-1');
+                  assert.ok(this.width * 0.5 <= (item === null || item === void 0 ? void 0 : item.offsetWidth) && (item === null || item === void 0 ? void 0 : item.offsetWidth) <= this.width * 1.5);
+
+                case 5:
+                case "end":
+                  return _context12.stop();
+              }
+            }
+          }, _callee12, this);
+        }));
+
+        return function (_x12) {
+          return _ref13.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.test)('@type default value is row', /*#__PURE__*/function () {
+      var _ref14 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13(assert) {
+        return regeneratorRuntime.wrap(function _callee13$(_context13) {
+          while (1) {
+            switch (_context13.prev = _context13.next) {
+              case 0:
+                _context13.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Skeleton/>
+                */
+                {
+                  "id": "SrLwdpLC",
+                  "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/skeleton\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.upf-skeleton-content').hasClass("fx-col");
+
+              case 3:
+              case "end":
+                return _context13.stop();
+            }
+          }
+        }, _callee13);
+      }));
+
+      return function (_x13) {
+        return _ref14.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('@type value is column', /*#__PURE__*/function () {
+      var _ref15 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee14(assert) {
+        return regeneratorRuntime.wrap(function _callee14$(_context14) {
+          while (1) {
+            switch (_context14.prev = _context14.next) {
+              case 0:
+                _context14.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Skeleton @type="column"/>
+                */
+                {
+                  "id": "GnThMCNN",
+                  "block": "[[[8,[39,0],null,[[\"@type\"],[\"column\"]],null]],[],false,[\"o-s-s/skeleton\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.upf-skeleton-content').hasClass("fx-row");
+
+              case 3:
+              case "end":
+                return _context14.stop();
+            }
+          }
+        }, _callee14);
+      }));
+
+      return function (_x14) {
+        return _ref15.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.module)('Extra attributes', function () {
+      (0, _qunit.test)('passing an extra class is applied to the component', /*#__PURE__*/function () {
+        var _ref16 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15(assert) {
+          return regeneratorRuntime.wrap(function _callee15$(_context15) {
+            while (1) {
+              switch (_context15.prev = _context15.next) {
+                case 0:
+                  _context15.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Skeleton class="my-extra-class" />
+                  */
+                  {
+                    "id": "ZIWseQiU",
+                    "block": "[[[8,[39,0],[[24,0,\"my-extra-class\"]],null,null]],[],false,[\"o-s-s/skeleton\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.my-extra-class').exists();
+
+                case 3:
+                case "end":
+                  return _context15.stop();
+              }
+            }
+          }, _callee15);
+        }));
+
+        return function (_x15) {
+          return _ref16.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('passing data-control-name works', /*#__PURE__*/function () {
+        var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(assert) {
+          var inputWrapper;
+          return regeneratorRuntime.wrap(function _callee16$(_context16) {
+            while (1) {
+              switch (_context16.prev = _context16.next) {
+                case 0:
+                  _context16.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Skeleton data-control-name="layout-sidebar" />
+                  */
+                  {
+                    "id": "ivBqECsJ",
+                    "block": "[[[8,[39,0],[[24,\"data-control-name\",\"layout-sidebar\"]],null,null]],[],false,[\"o-s-s/skeleton\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  inputWrapper = (0, _testHelpers.find)('.upf-skeleton-content');
+                  assert.equal(inputWrapper === null || inputWrapper === void 0 ? void 0 : inputWrapper.getAttribute('data-control-name'), 'layout-sidebar');
+
+                case 4:
+                case "end":
+                  return _context16.stop();
+              }
+            }
+          }, _callee16);
+        }));
+
+        return function (_x16) {
+          return _ref17.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('Error management', function () {
+      (0, _qunit.test)('it throws an error if @type is provided and does not match required values', /*#__PURE__*/function () {
+        var _ref18 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17(assert) {
+          return regeneratorRuntime.wrap(function _callee17$(_context17) {
+            while (1) {
+              switch (_context17.prev = _context17.next) {
+                case 0:
+                  (0, _testHelpers.setupOnerror)(function (err) {
+                    assert.equal(err.message, 'Assertion Failed: [component][OSS::Skeleton] The @type argument should be a value of row,column');
+                  });
+                  _context17.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Skeleton @type="toto"/>
+                  */
+                  {
+                    "id": "KhlCo34y",
+                    "block": "[[[8,[39,0],null,[[\"@type\"],[\"toto\"]],null]],[],false,[\"o-s-s/skeleton\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                case "end":
+                  return _context17.stop();
+              }
+            }
+          }, _callee17);
+        }));
+
+        return function (_x17) {
+          return _ref18.apply(this, arguments);
+        };
+      }());
+    });
+  });
+});
 define("dummy/tests/integration/components/o-s-s/social-post-badge-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "sinon"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _sinon) {
   "use strict";
 
