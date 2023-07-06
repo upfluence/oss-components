@@ -1,0 +1,5 @@
+<div class={{this.computedClass}} style={{this.computedStyle}} ...attributes>
+  {{#each this.rows as |row|}}
+    <div class={{concat "upf-skeleton-effect " row.class}} style={{row.style}}></div>
+  {{/each}}
+</div>
