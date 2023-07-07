@@ -1,5 +1,3 @@
-
-
 export type IconStyle = 'solid' | 'regular' | 'light' | 'duotone' | 'brand';
 
 const FA_ICON_PREFIX = 'fa-';
