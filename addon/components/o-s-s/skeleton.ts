@@ -1,28 +1,25 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 
-interface Row {
-  class?: string;
-  style?: string;
-}
-
 interface OSSSkeletonArgs {
-  width?: number;
+  width?: number | string;
   height?: number;
   multiple?: number;
-  type?: 'row' | 'column';
+  direction?: 'row' | 'column' | 'col';
   gap?: number;
   randomize?: boolean;
 }
+
+const RANGE_PERCENTAGE: number = 15;
 
 export default class OSSSkeleton extends Component<OSSSkeletonArgs> {
   constructor(owner: unknown, args: OSSSkeletonArgs) {
     super(owner, args);
 
-    if (this.args.type) {
+    if (this.args.direction) {
       assert(
-        `[component][OSS::Skeleton] The @type argument should be a value of ${['row', 'column']}`,
-        ['row', 'column'].includes(this.args.type)
+        `[component][OSS::Skeleton] The @direction argument should be a value of ${['row', 'column', 'col']}`,
+        ['row', 'column', 'col'].includes(this.args.direction)
       );
     }
   }
@@ -32,56 +29,43 @@ export default class OSSSkeleton extends Component<OSSSkeletonArgs> {
   }
 
   get width(): number {
-    return this.args.width || 36;
+    return parseInt((this.args.width || 36) as string);
+  }
+
+  get pxOrPc(): 'px' | '%' {
+    return (this.args.width as string)?.includes?.('%') ? '%' : 'px';
   }
 
   get gap(): number {
     return this.args.gap || 9;
   }
 
-  get type(): string {
-    return this.args.type || 'row';
+  get direction(): string {
+    return this.args.direction || 'row';
   }
 
   get computedClass(): string {
-    let style: String[] = ['upf-skeleton-content', `fx-gap-px-${this.gap}`];
+    let style: String[] = [`fx-gap-px-${this.gap}`];
 
-    this.type === 'row' ? style.push('fx-col') : style.push('fx-row');
+    this.direction === 'row' ? style.push('fx-row') : style.push('fx-col');
 
     return style.join(' ');
   }
 
-  get computedStyle(): string {
-    return `width:${this.width}px; height: ${this.height}px;`;
-  }
-
-  get rows(): Row[] {
-    let rows: Row[] = [];
+  get rows(): string[] {
+    const randomizeInRange: number = this.width * (RANGE_PERCENTAGE / 100);
+    let rows: string[] = [];
     let multiple = this.args.multiple || 1;
 
-    if (this.args.randomize) {
-      for (let i = 0; i < multiple; i++) {
-        rows.push(this.generateRandomRowSize());
+    for (let i = 0; i < multiple; ++i) {
+      let width = this.width;
+      if (this.args.randomize) {
+        const randomValue = Math.ceil(Math.random() * randomizeInRange) * (Math.round(Math.random()) ? 1 : -1);
+        width = this.width + randomValue;
       }
-    } else {
-      for (let i = 0; i < multiple; i++) {
-        rows.push({ class: 'fx-1' });
-      }
+      rows.push(`min-height: ${this.height}px; width: ${width}${this.pxOrPc}`);
     }
 
     return rows;
-  }
-
-  private generateRandomRowSize(): Row {
-    let multiple = this.args.multiple || 1;
-
-    if (this.type === 'row') {
-      let percent = 100 - Math.floor(Math.random() * (20 + 1) + 0);
-      return { class: 'fx-1', style: `width: ${percent}%;` };
-    } else {
-      let coef = (100 + Math.floor(Math.random() * (100 + 1) + -50)) / 100;
-      let defaultWidth = (this.width - (multiple - 1) * this.gap) / multiple;
-      return { style: `width: ${Math.floor(defaultWidth * coef)}px;` };
-    }
   }
 }

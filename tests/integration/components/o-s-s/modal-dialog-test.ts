@@ -33,7 +33,7 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
       hbs`<OSS::ModalDialog @title="Example modal" @subtitle="subtitle" @close={{this.closeModal}} @size="md" />`
     );
 
-    await click('.fa-close');
+    await click('.fa-times');
     assert.ok(this.closeModal.calledOnce);
   });
 

@@ -17,13 +17,13 @@ module('Integration | Component | o-s-s/input-container', function (hooks) {
       await render(hbs`
       <OSS::InputContainer>
         <:prefix>
-          <i class="fas fa-user"></i>
+          <OSS::Icon @style="solid" @icon="fa-user" />
         </:prefix>
         <:input>
           <Input id="custom-input"/>
         </:input>
         <:suffix>
-          <i class="fas fa-times"></i>
+          <OSS::Icon @style="solid" @icon="fa-times" />
         </:suffix>
       </OSS::InputContainer>`);
     }

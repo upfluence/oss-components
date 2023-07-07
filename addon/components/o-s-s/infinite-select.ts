@@ -25,9 +25,6 @@ type InfinityItem = {
 const DEFAULT_ITEM_LABEL = 'name';
 
 export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
-  loadingRows = new Array(5);
-  loadingMoreRows = new Array(3);
-
   @tracked _searchKeyword: string = '';
 
   constructor(owner: unknown, args: InfiniteSelectArgs) {

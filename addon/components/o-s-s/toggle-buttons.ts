@@ -39,7 +39,8 @@ export default class OSSToggleButtons extends Component<OSSToggleButtonsArgs> {
   }
 
   @action
-  onSelectToggle(selectedToggle: string): void {
+  onSelectToggle(selectedToggle: string, event: PointerEvent): void {
+    event.stopPropagation();
     if (this.args.selectedToggle !== selectedToggle) {
       this.args.onSelection(selectedToggle);
     }

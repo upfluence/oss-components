@@ -9,9 +9,9 @@
       <span class="{{unless this.selectedCountry 'text-color-default-light'}}">{{this.inputLabel}}</span>
     </div>
     {{#if this.dropdownVisibility}}
-      <i class="far fa-chevron-up"></i>
+      <OSS::Icon @icon="fa-chevron-up" />
     {{else}}
-      <i class="far fa-chevron-down"></i>
+      <OSS::Icon @icon="fa-chevron-down" />
     {{/if}}
   </div>
   {{#if this.dropdownVisibility}}
@@ -27,7 +27,7 @@
           <span class="text-color-default-light margin-left-xx-sm">{{item.name}}</span>
           {{#if (eq this.selectedCountry item)}}
             <div class="fx-1"></div>
-            <i class="far fa-check text-color-bright-purple padding-right-px-6"></i>
+            <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
           {{/if}}
         </div>
       </:option>

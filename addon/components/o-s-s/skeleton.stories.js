@@ -1,6 +1,6 @@
 import hbs from 'htmlbars-inline-precompile';
 
-const DirectionTypes = ['row', 'column'];
+const DirectionTypes = ['row', 'col', 'column'];
 
 export default {
   title: 'Components/OSS::Skeleton',
@@ -47,7 +47,7 @@ export default {
       control: { type: 'number' }
     },
     randomize: {
-      description: 'Randomize skeleton effect width',
+      description: 'Randomize skeleton effect width within a 15% range',
       table: {
         type: {
           summary: 'boolean'
@@ -56,7 +56,7 @@ export default {
       },
       control: { type: 'boolean' }
     },
-    type: {
+    direction: {
       description: 'Direction of the skeleton',
       table: {
         type: {
@@ -90,7 +90,7 @@ const Template = (args) => ({
   template: hbs`
     <div class="bg-color-white padding-px-6">
       <OSS::Skeleton @height={{this.height}} @width={{this.width}} @multiple={{this.multiple}} @gap={{this.gap}} 
-                     @type={{this.type}}
+                     @direction={{this.direction}}
                      @randomize={{this.randomize}}/>
     </div>
   `,

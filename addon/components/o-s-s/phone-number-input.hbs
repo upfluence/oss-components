@@ -3,9 +3,9 @@
     <div class="country-selector fx-row" role="button" {{on "click" this.toggleCountrySelector}}>
       <div class="fflag fflag-{{this.selectedCountry.id}} ff-sm ff-rounded"></div>
       {{#if this.countrySelectorShown}}
-        <i class="fal fa-chevron-up margin-left-xxx-sm"></i>
+        <OSS::Icon @icon="fa-chevron-up" class="margin-left-px-6" />
       {{else}}
-        <i class="fal fa-chevron-down margin-left-xxx-sm"></i>
+        <OSS::Icon @icon="fa-chevron-down" class="margin-left-px-6" />
       {{/if}}
     </div>
     <span class="phone-prefix">{{@prefix}}</span>
@@ -30,7 +30,7 @@
           <span class="text-color-default-light margin-left-xx-sm">{{country.name}}</span>
           <span class="text-color-default-light margin-left-xxx-sm fx-1">(+{{get country.countryCallingCodes 0}})</span>
           {{#if (eq this.selectedCountry country)}}
-            <i class="far fa-check text-color-bright-purple"></i>
+            <OSS::Icon @icon="fa-check" class="font-color-primary-500" />
           {{/if}}
         </div>
       </:option>

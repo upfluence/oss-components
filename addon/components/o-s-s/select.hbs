@@ -13,9 +13,9 @@
         <span class="text-color-default-light">{{this.placeholder}}</span>
       {{/if}}
       {{#if this.displaySelect}}
-        <i class="far fa-chevron-up margin-left-px-6"></i>
+        <OSS::Icon @icon="fa-chevron-up" class="margin-left-px-6" />
       {{else}}
-        <i class="far fa-chevron-down margin-left-px-6"></i>
+        <OSS::Icon @icon="fa-chevron-down" class="margin-left-px-6" />
       {{/if}}
     </div>
   </div>
@@ -35,7 +35,7 @@
           {{/if}}
 
           {{#if (eq @value item)}}
-            <i class="far fa-check font-color-primary-500 padding-right-px-6"></i>
+            <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
           {{/if}}
         </div>
       </:option>
@@ -44,13 +44,13 @@
 
   {{#if @errorMessage}}
     <div class="font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center">
-      <i class="far fa-exclamation-triangle"></i> {{@errorMessage}}
+      <OSS::Icon @icon="fa-exclamation-triangle" /> {{@errorMessage}}
     </div>
   {{/if}}
 
   {{#if @successMessage}}
     <div class="font-color-success-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center">
-      <i class="far fa-check-circle"></i> {{@successMessage}}
+      <OSS::Icon @icon="fa-check-circle" /> {{@successMessage}}
     </div>
   {{/if}}
 </div>

@@ -12,7 +12,8 @@
       {{/if}}
     </div>
     <div class="split-modal__preview">
-      <i class="far fa-times close-modal-icon" role="button" {{on "click" this.closeModal}}></i>
+      <OSS::Icon @style="solid" @icon="fa-times" class="close-modal-icon" role="button"
+                 {{on "click" this.closeModal}} />
       {{yield to="preview"}}
     </div>
   </div>

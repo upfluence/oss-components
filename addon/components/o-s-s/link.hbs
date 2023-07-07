@@ -1,6 +1,6 @@
 <div class="upf-link" role="button" {{on "click" this.goTo}} ...attributes>
   {{#if @icon}}
-    <i class={{@icon}}></i>
+    <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
   {{/if}}
 
   {{#if @label}}
