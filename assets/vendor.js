@@ -84579,7 +84579,7 @@ define("@upfluence/oss-components/components/o-s-s/alert", ["exports", "@ember/c
     <div class="indicator"></div>
     <div class="main-container {{if this.plain 'main-container--plain'}}">
       <span class="icon">
-        <i class={{concat "far " this.iconClass}}></i>
+        <OSS::Icon @icon={{this.iconClass}} />
       </span>
       <div class="text-container">
         {{#if @title}}
@@ -84602,8 +84602,8 @@ define("@upfluence/oss-components/components/o-s-s/alert", ["exports", "@ember/c
   
   */
   {
-    "id": "r6nyjEKn",
-    "block": "[[[11,0],[16,0,[28,[37,0],[\"upf-alert \",[30,0,[\"skinClass\"]]],null]],[17,1],[4,[38,1],[[30,0,[\"initSelf\"]]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"indicator\"],[12],[13],[1,\"\\n  \"],[10,0],[15,0,[29,[\"main-container \",[52,[30,0,[\"plain\"]],\"main-container--plain\"]]]],[12],[1,\"\\n    \"],[10,1],[14,0,\"icon\"],[12],[1,\"\\n      \"],[10,\"i\"],[15,0,[28,[37,0],[\"far \",[30,0,[\"iconClass\"]]],null]],[12],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"text-container\"],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"        \"],[10,1],[14,0,\"title\"],[12],[1,[30,2]],[13],[1,\"\\n\"]],[]],null],[41,[30,3],[[[1,\"        \"],[10,1],[14,0,\"subtitle\"],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,5]],[[[1,\"        \"],[18,5,null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[30,4],[[[1,\"      \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n        \"],[11,\"i\"],[24,\"role\",\"button\"],[24,0,\"far fa-times\"],[4,[38,5],[\"click\",[30,0,[\"removeSelf\"]]],null],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@title\",\"@subtitle\",\"@closable\",\"&extra-content\"],false,[\"concat\",\"did-insert\",\"if\",\"has-block\",\"yield\",\"on\"]]",
+    "id": "YlmpJtfC",
+    "block": "[[[11,0],[16,0,[28,[37,0],[\"upf-alert \",[30,0,[\"skinClass\"]]],null]],[17,1],[4,[38,1],[[30,0,[\"initSelf\"]]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"indicator\"],[12],[13],[1,\"\\n  \"],[10,0],[15,0,[29,[\"main-container \",[52,[30,0,[\"plain\"]],\"main-container--plain\"]]]],[12],[1,\"\\n    \"],[10,1],[14,0,\"icon\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@icon\"],[[30,0,[\"iconClass\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"text-container\"],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"        \"],[10,1],[14,0,\"title\"],[12],[1,[30,2]],[13],[1,\"\\n\"]],[]],null],[41,[30,3],[[[1,\"        \"],[10,1],[14,0,\"subtitle\"],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,5]],[[[1,\"        \"],[18,5,null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[30,4],[[[1,\"      \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n        \"],[11,\"i\"],[24,\"role\",\"button\"],[24,0,\"far fa-times\"],[4,[38,6],[\"click\",[30,0,[\"removeSelf\"]]],null],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@title\",\"@subtitle\",\"@closable\",\"&extra-content\"],false,[\"concat\",\"did-insert\",\"if\",\"o-s-s/icon\",\"has-block\",\"yield\",\"on\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/alert.hbs",
     "isStrictMode": false
   });
@@ -85396,7 +85396,7 @@ define("@upfluence/oss-components/components/o-s-s/badge", ["exports", "@ember/c
   /*
     <div class={{this.computedClass}} ...attributes>
     {{#if @icon}}
-      <i class="{{@icon}}"></i>
+      <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
     {{else if @image}}
       <img src={{@image}} alt={{t "oss-components.badge.image_alt"}} />
     {{else}}
@@ -85406,8 +85406,8 @@ define("@upfluence/oss-components/components/o-s-s/badge", ["exports", "@ember/c
   
   */
   {
-    "id": "B09MNasU",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[10,\"i\"],[15,0,[29,[[30,2]]]],[12],[13],[1,\"\\n\"]],[]],[[[41,[30,3],[[[1,\"    \"],[10,\"img\"],[15,\"src\",[30,3]],[15,\"alt\",[28,[37,1],[\"oss-components.badge.image_alt\"],null]],[12],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[10,1],[14,0,\"upf-badge__text\"],[12],[1,[30,4]],[13],[1,\"\\n  \"]],[]]]],[]]],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@image\",\"@text\"],false,[\"if\",\"t\"]]",
+    "id": "DIxTIsg1",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[[28,[37,2],[[30,2]],null],[28,[37,3],[[30,2]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,3],[[[1,\"    \"],[10,\"img\"],[15,\"src\",[30,3]],[15,\"alt\",[28,[37,4],[\"oss-components.badge.image_alt\"],null]],[12],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[10,1],[14,0,\"upf-badge__text\"],[12],[1,[30,4]],[13],[1,\"\\n  \"]],[]]]],[]]],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@image\",\"@text\"],false,[\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"t\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/badge.hbs",
     "isStrictMode": false
   });
@@ -85663,7 +85663,8 @@ define("@upfluence/oss-components/components/o-s-s/badge", ["exports", "@ember/c
     {{#if (has-block "custom-icon")}}
       <div>{{yield to="custom-icon"}}</div>
     {{else if @icon}}
-      <i class="{{@icon}} upf-badge upf-badge--shape-round upf-badge--size-md"></i>
+      <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}}
+                 class="upf-badge upf-badge--shape-round upf-badge--size-md" />
     {{else if @image}}
       <img class="upf-badge upf-badge--size-md upf-badge--shape-round" src={{@image}} alt="banner" />
     {{/if}}
@@ -85682,8 +85683,8 @@ define("@upfluence/oss-components/components/o-s-s/badge", ["exports", "@ember/c
   
   */
   {
-    "id": "WG6vNtEM",
-    "block": "[[[11,0],[16,0,[29,[\"upf-banner \",[52,[30,1],\"background-color-gray-50\",\"background-color-white\"],\" \",[52,[30,2],\"upf-banner--selected\"],\"\\n            fx-1 fx-row padding-px-18 fx-xalign-center fx-gap-px-12\"]]],[17,3],[12],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"    \"],[10,0],[12],[18,8,null],[13],[1,\"\\n\"]],[]],[[[41,[30,4],[[[1,\"    \"],[10,\"i\"],[15,0,[29,[[30,4],\" upf-badge upf-badge--shape-round upf-badge--size-md\"]]],[12],[13],[1,\"\\n\"]],[]],[[[41,[30,5],[[[1,\"    \"],[10,\"img\"],[14,0,\"upf-badge upf-badge--size-md upf-badge--shape-round\"],[15,\"src\",[30,5]],[14,\"alt\",\"banner\"],[12],[13],[1,\"\\n  \"]],[]],null]],[]]]],[]]],[1,\"  \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-3\"],[12],[1,\"\\n\"],[41,[30,6],[[[1,\"      \"],[10,1],[14,0,\"font-weight-semibold text-size-5 font-color-gray-900\"],[12],[1,[30,6]],[13],[1,\"\\n\"]],[]],null],[41,[30,7],[[[1,\"      \"],[10,1],[14,0,\"text-size-4 font-color-gray-500\"],[12],[1,[30,7]],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[48,[30,9]],[[[1,\"    \"],[10,0],[12],[18,9,null],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"@plain\",\"@selected\",\"&attrs\",\"@icon\",\"@image\",\"@title\",\"@subtitle\",\"&custom-icon\",\"&actions\"],false,[\"if\",\"has-block\",\"yield\"]]",
+    "id": "zpVMhkaJ",
+    "block": "[[[11,0],[16,0,[29,[\"upf-banner \",[52,[30,1],\"background-color-gray-50\",\"background-color-white\"],\" \",[52,[30,2],\"upf-banner--selected\"],\"\\n            fx-1 fx-row padding-px-18 fx-xalign-center fx-gap-px-12\"]]],[17,3],[12],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"    \"],[10,0],[12],[18,8,null],[13],[1,\"\\n\"]],[]],[[[41,[30,4],[[[1,\"    \"],[8,[39,3],[[24,0,\"upf-badge upf-badge--shape-round upf-badge--size-md\"]],[[\"@style\",\"@icon\"],[[28,[37,4],[[30,4]],null],[28,[37,5],[[30,4]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,5],[[[1,\"    \"],[10,\"img\"],[14,0,\"upf-badge upf-badge--size-md upf-badge--shape-round\"],[15,\"src\",[30,5]],[14,\"alt\",\"banner\"],[12],[13],[1,\"\\n  \"]],[]],null]],[]]]],[]]],[1,\"  \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-3\"],[12],[1,\"\\n\"],[41,[30,6],[[[1,\"      \"],[10,1],[14,0,\"font-weight-semibold text-size-5 font-color-gray-900\"],[12],[1,[30,6]],[13],[1,\"\\n\"]],[]],null],[41,[30,7],[[[1,\"      \"],[10,1],[14,0,\"text-size-4 font-color-gray-500\"],[12],[1,[30,7]],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[48,[30,9]],[[[1,\"    \"],[10,0],[12],[18,9,null],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"@plain\",\"@selected\",\"&attrs\",\"@icon\",\"@image\",\"@title\",\"@subtitle\",\"&custom-icon\",\"&actions\"],false,[\"if\",\"has-block\",\"yield\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/banner.hbs",
     "isStrictMode": false
   });
@@ -85942,7 +85943,7 @@ define("@upfluence/oss-components/components/o-s-s/button-dropdown", ["exports",
     <div class="oss-button-dropdown__trigger fx-row fx-xalign-center">
       <div class="fx-row fx-xalign-center fx-gap-px-6">
         {{#if @icon}}
-          <i class={{@icon}}></i>
+          <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
         {{/if}}
   
         {{#if @label}}
@@ -85951,7 +85952,7 @@ define("@upfluence/oss-components/components/o-s-s/button-dropdown", ["exports",
       </div>
   
       <div class="fx-row fx-xalign-center" role="button" {{on "click" this.toggleDropdown}}>
-        <i class="far fa-caret-{{if this.displayDropdown 'up' 'down'}}"></i>
+        <OSS::Icon @icon="fa-caret-{{if this.displayDropdown 'up' 'down'}}" />
       </div>
     </div>
   
@@ -85967,8 +85968,8 @@ define("@upfluence/oss-components/components/o-s-s/button-dropdown", ["exports",
   
   */
   {
-    "id": "4LXO+Dzq",
-    "block": "[[[11,0],[24,0,\"oss-button-dropdown\"],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-button-dropdown__trigger fx-row fx-xalign-center\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-6\"],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"        \"],[10,\"i\"],[15,0,[30,2]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,3],[[[1,\"        \"],[10,1],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\\n    \"],[11,0],[24,0,\"fx-row fx-xalign-center\"],[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n      \"],[10,\"i\"],[15,0,[29,[\"far fa-caret-\",[52,[30,0,[\"displayDropdown\"]],\"up\",\"down\"]]]],[12],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displayDropdown\"]],[[[1,\"    \"],[11,0],[24,0,\"oss-button-dropdown__items\"],[4,[38,2],[[30,0,[\"setupChildrenClickHandler\"]]],null],[4,[38,3],[[30,0,[\"teardownChildrenClickHandler\"]]],null],[4,[38,4],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[true]]],[12],[1,\"\\n      \"],[18,4,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@label\",\"&items\"],false,[\"if\",\"on\",\"did-insert\",\"will-destroy\",\"on-click-outside\",\"yield\"]]",
+    "id": "PVu1ZPAm",
+    "block": "[[[11,0],[24,0,\"oss-button-dropdown\"],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-button-dropdown__trigger fx-row fx-xalign-center\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-6\"],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"        \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[[28,[37,2],[[30,2]],null],[28,[37,3],[[30,2]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,3],[[[1,\"        \"],[10,1],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\\n    \"],[11,0],[24,0,\"fx-row fx-xalign-center\"],[24,\"role\",\"button\"],[4,[38,4],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n      \"],[8,[39,1],null,[[\"@icon\"],[[29,[\"fa-caret-\",[52,[30,0,[\"displayDropdown\"]],\"up\",\"down\"]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displayDropdown\"]],[[[1,\"    \"],[11,0],[24,0,\"oss-button-dropdown__items\"],[4,[38,5],[[30,0,[\"setupChildrenClickHandler\"]]],null],[4,[38,6],[[30,0,[\"teardownChildrenClickHandler\"]]],null],[4,[38,7],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[true]]],[12],[1,\"\\n      \"],[18,4,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@label\",\"&items\"],false,[\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"on\",\"did-insert\",\"will-destroy\",\"on-click-outside\",\"yield\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/button-dropdown.hbs",
     "isStrictMode": false
   });
@@ -86102,15 +86103,15 @@ define("@upfluence/oss-components/components/o-s-s/button-dropdown", ["exports",
           <OSS::ButtonDropdown @icon={{this.icon}} @label={{this.label}}>
             <:items>
               <div class="oss-button-dropdown__item">
-                <i class="fas fa-share"></i> Share
+                <OSS::Icon @style="solid" @icon="fa-share" /> Share
               </div>
             </:items>
           </OSS::ButtonDropdown>
         
       */
       {
-        "id": "RAN5yAB+",
-        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@icon\",\"@label\"],[[30,0,[\"icon\"]],[30,0,[\"label\"]]]],[[\"items\"],[[[[1,\"\\n        \"],[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"\\n          \"],[10,\"i\"],[14,0,\"fas fa-share\"],[12],[13],[1,\" Share\\n        \"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/button-dropdown\"]]",
+        "id": "cJMLfyrx",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@icon\",\"@label\"],[[30,0,[\"icon\"]],[30,0,[\"label\"]]]],[[\"items\"],[[[[1,\"\\n        \"],[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"\\n          \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-share\"]],null],[1,\" Share\\n        \"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/button-dropdown\",\"o-s-s/icon\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -86169,10 +86170,10 @@ define("@upfluence/oss-components/components/o-s-s/button", ["exports", "@ember/
     {{#if this.intervalState}}
       {{t "oss-components.button.cancel_message" time=this.counterTimeLeftSecond}}
     {{else if this.loadingState}}
-      <i class="fas fa-circle-notch fa-spin"></i>
+      <OSS::Icon @style="solid" @icon="fa-circle-notch fa-spin" />
     {{else}}
       {{#if @icon}}
-        <i class={{@icon}}></i>
+        <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
       {{/if}}
   
       {{#if @label}}
@@ -86183,8 +86184,8 @@ define("@upfluence/oss-components/components/o-s-s/button", ["exports", "@ember/
   
   */
   {
-    "id": "gkpSStAH",
-    "block": "[[[11,\"button\"],[24,4,\"button\"],[16,0,[30,0,[\"computedClass\"]]],[17,1],[4,[38,0],[[30,0,[\"didInsert\"]]],null],[4,[38,1],[\"click\",[30,0,[\"onclick\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"intervalState\"]],[[[1,\"    \"],[1,[28,[35,3],[\"oss-components.button.cancel_message\"],[[\"time\"],[[30,0,[\"counterTimeLeftSecond\"]]]]]],[1,\"\\n\"]],[]],[[[41,[30,0,[\"loadingState\"]],[[[1,\"    \"],[10,\"i\"],[14,0,\"fas fa-circle-notch fa-spin\"],[12],[13],[1,\"\\n\"]],[]],[[[41,[30,2],[[[1,\"      \"],[10,\"i\"],[15,0,[30,2]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,3],[[[1,\"      \"],[10,1],[15,0,[52,[30,2],\"margin-left-xxx-sm\"]],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[1,\"  \"]],[]]]],[]]],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@label\"],false,[\"did-insert\",\"on\",\"if\",\"t\"]]",
+    "id": "wDCr0/3x",
+    "block": "[[[11,\"button\"],[24,4,\"button\"],[16,0,[30,0,[\"computedClass\"]]],[17,1],[4,[38,0],[[30,0,[\"didInsert\"]]],null],[4,[38,1],[\"click\",[30,0,[\"onclick\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"intervalState\"]],[[[1,\"    \"],[1,[28,[35,3],[\"oss-components.button.cancel_message\"],[[\"time\"],[[30,0,[\"counterTimeLeftSecond\"]]]]]],[1,\"\\n\"]],[]],[[[41,[30,0,[\"loadingState\"]],[[[1,\"    \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-circle-notch fa-spin\"]],null],[1,\"\\n\"]],[]],[[[41,[30,2],[[[1,\"      \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[[28,[37,5],[[30,2]],null],[28,[37,6],[[30,2]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,3],[[[1,\"      \"],[10,1],[15,0,[52,[30,2],\"margin-left-xxx-sm\"]],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[1,\"  \"]],[]]]],[]]],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@label\"],false,[\"did-insert\",\"on\",\"if\",\"t\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/button.hbs",
     "isStrictMode": false
   });
@@ -86875,13 +86876,13 @@ define("@upfluence/oss-components/components/o-s-s/chip", ["exports", "@ember/co
           {{enable-tooltip title=(if @maxDisplayWidth @label '') placement='top'}}>
       {{@label}}
     </span>
-    <i class="far fa-times-circle" role={{unless @disabled 'button'}} {{on "click" this.onCrossClick}} />
+    <OSS::Icon @icon="fa-times-circle" role={{unless @disabled 'button'}} {{on "click" this.onCrossClick}} />
   </div>
   
   */
   {
-    "id": "axiCc1HL",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[4,[38,0],[\"click\",[30,0,[\"stopPropagation\"]]],null],[12],[1,\"\\n  \"],[11,1],[16,0,[29,[\"font-weight-semibold \",[52,[30,2],\"chip-ellipsis\"]]]],[16,5,[52,[30,2],[30,0,[\"ellipsisStyle\"]]]],[4,[38,2],null,[[\"title\",\"placement\"],[[52,[30,2],[30,3],\"\"],\"top\"]]],[12],[1,\"\\n    \"],[1,[30,3]],[1,\"\\n  \"],[13],[1,\"\\n  \"],[11,\"i\"],[24,0,\"far fa-times-circle\"],[16,\"role\",[52,[51,[30,4]],\"button\"]],[4,[38,0],[\"click\",[30,0,[\"onCrossClick\"]]],null],[12],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@maxDisplayWidth\",\"@label\",\"@disabled\"],false,[\"on\",\"if\",\"enable-tooltip\",\"unless\"]]",
+    "id": "s6S76ORb",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[4,[38,0],[\"click\",[30,0,[\"stopPropagation\"]]],null],[12],[1,\"\\n  \"],[11,1],[16,0,[29,[\"font-weight-semibold \",[52,[30,2],\"chip-ellipsis\"]]]],[16,5,[52,[30,2],[30,0,[\"ellipsisStyle\"]]]],[4,[38,2],null,[[\"title\",\"placement\"],[[52,[30,2],[30,3],\"\"],\"top\"]]],[12],[1,\"\\n    \"],[1,[30,3]],[1,\"\\n  \"],[13],[1,\"\\n  \"],[8,[39,3],[[16,\"role\",[52,[51,[30,4]],\"button\"]],[4,[38,0],[\"click\",[30,0,[\"onCrossClick\"]]],null]],[[\"@icon\"],[\"fa-times-circle\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@maxDisplayWidth\",\"@label\",\"@disabled\"],false,[\"on\",\"if\",\"enable-tooltip\",\"o-s-s/icon\",\"unless\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/chip.hbs",
     "isStrictMode": false
   });
@@ -87708,9 +87709,9 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
         <span class="{{unless this.selectedCountry 'text-color-default-light'}}">{{this.inputLabel}}</span>
       </div>
       {{#if this.dropdownVisibility}}
-        <i class="far fa-chevron-up"></i>
+        <OSS::Icon @icon="fa-chevron-up" />
       {{else}}
-        <i class="far fa-chevron-down"></i>
+        <OSS::Icon @icon="fa-chevron-down" />
       {{/if}}
     </div>
     {{#if this.dropdownVisibility}}
@@ -87726,7 +87727,7 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
             <span class="text-color-default-light margin-left-xx-sm">{{item.name}}</span>
             {{#if (eq this.selectedCountry item)}}
               <div class="fx-1"></div>
-              <i class="far fa-check text-color-bright-purple padding-right-px-6"></i>
+              <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
             {{/if}}
           </div>
         </:option>
@@ -87736,8 +87737,8 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
   
   */
   {
-    "id": "NE+zX65f",
-    "block": "[[[11,0],[24,0,\"country-selector-container fx-1\"],[17,1],[12],[1,\"\\n  \"],[11,0],[24,0,\"upf-input fx-row fx-1 fx-malign-space-between fx-xalign-center\"],[24,\"role\",\"button\"],[24,\"data-control-name\",\"country-selector-input\"],[4,[38,0],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-10\"],[12],[1,\"\\n\"],[41,[30,0,[\"selectedCountry\",\"id\"]],[[[1,\"        \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"selectedCountry\",\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[15,0,[29,[[52,[51,[30,0,[\"selectedCountry\"]]],\"text-color-default-light\"]]]],[12],[1,[30,0,[\"inputLabel\"]]],[13],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[30,0,[\"dropdownVisibility\"]],[[[1,\"      \"],[10,\"i\"],[14,0,\"far fa-chevron-up\"],[12],[13],[1,\"\\n\"]],[]],[[[1,\"      \"],[10,\"i\"],[14,0,\"far fa-chevron-down\"],[12],[13],[1,\"\\n\"]],[]]],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,0,[\"dropdownVisibility\"]],[[[1,\"    \"],[8,[39,3],[[4,[38,5],[[30,0,[\"closeDropdown\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredItems\"]],[30,0,[\"search\"]],[30,0,[\"onItemSelected\"]],[28,[37,4],[\"oss-components.country-selector.search\"],null]]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,6],[[30,0,[\"selectedCountry\"]],[30,2]],null],\"row-selected\"]]]],[12],[1,\"\\n\"],[41,[30,2,[\"id\"]],[[[1,\"            \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,2,[\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm\"],[12],[1,[30,2,[\"name\"]]],[13],[1,\"\\n\"],[41,[28,[37,6],[[30,0,[\"selectedCountry\"]],[30,2]],null],[[[1,\"            \"],[10,0],[14,0,\"fx-1\"],[12],[13],[1,\"\\n            \"],[10,\"i\"],[14,0,\"far fa-check text-color-bright-purple padding-right-px-6\"],[12],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[2]]]]],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"item\"],false,[\"on\",\"if\",\"unless\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\",\"eq\"]]",
+    "id": "MB/HfmPS",
+    "block": "[[[11,0],[24,0,\"country-selector-container fx-1\"],[17,1],[12],[1,\"\\n  \"],[11,0],[24,0,\"upf-input fx-row fx-1 fx-malign-space-between fx-xalign-center\"],[24,\"role\",\"button\"],[24,\"data-control-name\",\"country-selector-input\"],[4,[38,0],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-10\"],[12],[1,\"\\n\"],[41,[30,0,[\"selectedCountry\",\"id\"]],[[[1,\"        \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"selectedCountry\",\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[15,0,[29,[[52,[51,[30,0,[\"selectedCountry\"]]],\"text-color-default-light\"]]]],[12],[1,[30,0,[\"inputLabel\"]]],[13],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[30,0,[\"dropdownVisibility\"]],[[[1,\"      \"],[8,[39,3],null,[[\"@icon\"],[\"fa-chevron-up\"]],null],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,3],null,[[\"@icon\"],[\"fa-chevron-down\"]],null],[1,\"\\n\"]],[]]],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,0,[\"dropdownVisibility\"]],[[[1,\"    \"],[8,[39,4],[[4,[38,6],[[30,0,[\"closeDropdown\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredItems\"]],[30,0,[\"search\"]],[30,0,[\"onItemSelected\"]],[28,[37,5],[\"oss-components.country-selector.search\"],null]]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,2]],null],\"row-selected\"]]]],[12],[1,\"\\n\"],[41,[30,2,[\"id\"]],[[[1,\"            \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,2,[\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm\"],[12],[1,[30,2,[\"name\"]]],[13],[1,\"\\n\"],[41,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,2]],null],[[[1,\"            \"],[10,0],[14,0,\"fx-1\"],[12],[13],[1,\"\\n            \"],[8,[39,3],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[2]]]]],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"item\"],false,[\"on\",\"if\",\"unless\",\"o-s-s/icon\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\",\"eq\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/country-selector.hbs",
     "isStrictMode": false
   });
@@ -88067,9 +88068,9 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
   
         {{#if this.allowCurrencyUpdate}}
           {{#if this.currencySelectorShown}}
-            <i class="far fa-chevron-up margin-left-xxx-sm"></i>
+            <OSS::Icon @icon="fa-chevron-up" class="margin-left-px-6" />
           {{else}}
-            <i class="far fa-chevron-down margin-left-xxx-sm"></i>
+            <OSS::Icon @icon="fa-chevron-down" class="margin-left-px-6" />
           {{/if}}
         {{/if}}
       </div>
@@ -88081,7 +88082,7 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
     </div>
     {{#if @errorMessage}}
       <div class="font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center">
-        <i class="far fa-exclamation-triangle"></i> {{@errorMessage}}
+        <OSS::Icon @icon="fa-exclamation-triangle" /> {{@errorMessage}}
       </div>
     {{/if}}
     {{#if this.currencySelectorShown}}
@@ -88094,7 +88095,7 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
             <span class="symbol text-color-default-light margin-left-xx-sm">{{currency.symbol}}</span>
             <span class="text-color-default-light margin-left-xx-sm fx-1">{{currency.code}}</span>
             {{#if (eq this.selectedCurrency currency)}}
-              <i class="far fa-check text-color-bright-purple padding-right-px-6"></i>
+              <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
             {{/if}}
           </div>
         </:option>
@@ -88104,8 +88105,8 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
   
   */
   {
-    "id": "B5iF8BxV",
-    "block": "[[[11,0],[16,0,[29,[\"currency-input-container fx-1 \",[52,[30,1],\"currency-input-container--errored\"]]]],[17,2],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"currency-input \",[52,[30,3],\"onlycurrency\"],\" upf-input fx-row fx-1 fx-xalign-center\"]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"currency-selector fx-row fx-gap-px-12 fx-malign-space-between\"],[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,0,[\"toggleCurrencySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-9\"],[12],[1,\"\\n          \"],[10,1],[12],[1,[30,0,[\"selectedCurrencySymbol\"]]],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"            \"],[10,1],[14,0,\"margin-right-px-12\"],[12],[1,[30,0,[\"selectedCurrencyCode\"]]],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"allowCurrencyUpdate\"]],[[[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"          \"],[10,\"i\"],[14,0,\"far fa-chevron-up margin-left-xxx-sm\"],[12],[13],[1,\"\\n\"]],[]],[[[1,\"          \"],[10,\"i\"],[14,0,\"far fa-chevron-down margin-left-xxx-sm\"],[12],[13],[1,\"\\n\"]],[]]]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[51,[30,3]],[[[1,\"      \"],[8,[39,3],[[24,0,\"fx-1\"],[24,\"min\",\"0\"],[24,\"autocomplete\",\"off\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,4,\"number\"],[4,[38,1],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,1],[\"keyup\",[30,0,[\"notifyChanges\"]]],null]],[[\"@value\"],[[30,0,[\"localValue\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,1],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[10,\"i\"],[14,0,\"far fa-exclamation-triangle\"],[12],[13],[1,\" \"],[1,[30,1]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"    \"],[8,[39,4],[[4,[38,6],[[30,0,[\"hideCurrencySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCurrencies\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[28,[37,5],[\"oss-components.currency-input.search\"],null]]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,7],[[30,0,[\"selectedCurrency\"]],[30,4]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,1],[14,0,\"symbol text-color-default-light margin-left-xx-sm\"],[12],[1,[30,4,[\"symbol\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm fx-1\"],[12],[1,[30,4,[\"code\"]]],[13],[1,\"\\n\"],[41,[28,[37,7],[[30,0,[\"selectedCurrency\"]],[30,4]],null],[[[1,\"            \"],[10,\"i\"],[14,0,\"far fa-check text-color-bright-purple padding-right-px-6\"],[12],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"@errorMessage\",\"&attrs\",\"@onlyCurrency\",\"currency\"],false,[\"if\",\"on\",\"unless\",\"input\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\",\"eq\"]]",
+    "id": "krLc2U7S",
+    "block": "[[[11,0],[16,0,[29,[\"currency-input-container fx-1 \",[52,[30,1],\"currency-input-container--errored\"]]]],[17,2],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"currency-input \",[52,[30,3],\"onlycurrency\"],\" upf-input fx-row fx-1 fx-xalign-center\"]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"currency-selector fx-row fx-gap-px-12 fx-malign-space-between\"],[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,0,[\"toggleCurrencySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-9\"],[12],[1,\"\\n          \"],[10,1],[12],[1,[30,0,[\"selectedCurrencySymbol\"]]],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"            \"],[10,1],[14,0,\"margin-right-px-12\"],[12],[1,[30,0,[\"selectedCurrencyCode\"]]],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"allowCurrencyUpdate\"]],[[[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"          \"],[8,[39,2],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[\"fa-chevron-up\"]],null],[1,\"\\n\"]],[]],[[[1,\"          \"],[8,[39,2],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[\"fa-chevron-down\"]],null],[1,\"\\n\"]],[]]]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[51,[30,3]],[[[1,\"      \"],[8,[39,4],[[24,0,\"fx-1\"],[24,\"min\",\"0\"],[24,\"autocomplete\",\"off\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,4,\"number\"],[4,[38,1],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,1],[\"keyup\",[30,0,[\"notifyChanges\"]]],null]],[[\"@value\"],[[30,0,[\"localValue\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,1],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\" \"],[1,[30,1]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"    \"],[8,[39,5],[[4,[38,7],[[30,0,[\"hideCurrencySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCurrencies\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[28,[37,6],[\"oss-components.currency-input.search\"],null]]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,8],[[30,0,[\"selectedCurrency\"]],[30,4]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,1],[14,0,\"symbol text-color-default-light margin-left-xx-sm\"],[12],[1,[30,4,[\"symbol\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm fx-1\"],[12],[1,[30,4,[\"code\"]]],[13],[1,\"\\n\"],[41,[28,[37,8],[[30,0,[\"selectedCurrency\"]],[30,4]],null],[[[1,\"            \"],[8,[39,2],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"@errorMessage\",\"&attrs\",\"@onlyCurrency\",\"currency\"],false,[\"if\",\"on\",\"o-s-s/icon\",\"unless\",\"input\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\",\"eq\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/currency-input.hbs",
     "isStrictMode": false
   });
@@ -88946,11 +88947,7 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
                  {{if (eq this.items.length 0) 'upf-infinite-select__items-container--empty'}}"
                  {{on-bottom-reached this.onBottomReached}} {{scroll-shadow}}>
         {{#if (and @loading (not @loadingMore))}}
-          <div class="upf-skeleton-content fx-col fx-malign-start padding-xx-sm">
-            {{#each this.loadingRows as |width|}}
-              <div class="upf-skeleton-effect margin-bottom-xx-sm" style="width: 100%; height: 8px;"></div>
-            {{/each}}
-          </div>
+          <OSS::Skeleton @width="100%" @height="18" @multiple={{5}} @direction="col" />
         {{else}}
           {{#each this.items as |item|}}
             <li class="upf-infinite-select__item" role="button" {{on "click" (fn this.didSelectItem item)}}>
@@ -88980,11 +88977,7 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
           {{/each}}
   
           {{#if @loadingMore}}
-            <div class="upf-skeleton-content fx-col fx-malign-start padding-xx-sm">
-              {{#each this.loadingMoreRows as |width|}}
-                <div class="upf-skeleton-effect margin-bottom-xx-sm" style="width: 100%; height: 8px;"></div>
-              {{/each}}
-            </div>
+            <OSS::Skeleton @width="100%" @height="18" @multiple={{3}} @direction="col" />
           {{/if}}
         {{/if}}
       </ul>
@@ -88993,8 +88986,8 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
   
   */
   {
-    "id": "d+Q4KsvG",
-    "block": "[[[11,0],[16,0,[29,[\"fx-col upf-infinite-select \",[52,[28,[37,1],[[30,0,[\"inline\"]]],null],\"upf-infinite-select--absolute\"]]]],[17,1],[4,[38,2],[[30,0,[\"onRender\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"searchEnabled\"]],[[[6,[39,3],null,null,[[\"default\"],[[[[1,\"      \"],[8,[39,4],[[16,2,[30,0,[\"_searchKeyword\"]]],[24,0,\"form-control upf-input\"],[16,\"placeholder\",[30,0,[\"searchPlaceholder\"]]],[24,4,\"text\"],[4,[38,5],[\"keyup\",[30,0,[\"updateSearchKeyword\"]]],null]],null,null],[1,\"\\n\"]],[]]]]]],[]],null],[1,\"  \"],[10,0],[14,0,\"upf-infinite-select__container\"],[12],[1,\"\\n    \"],[11,\"ul\"],[16,0,[29,[\"upf-infinite-select__items-container\\n               \",[52,[28,[37,6],[[30,0,[\"items\",\"length\"]],0],null],\"upf-infinite-select__items-container--empty\"]]]],[4,[38,7],[[30,0,[\"onBottomReached\"]]],null],[4,[38,8],null,null],[12],[1,\"\\n\"],[41,[28,[37,9],[[30,2],[28,[37,1],[[30,3]],null]],null],[[[1,\"        \"],[10,0],[14,0,\"upf-skeleton-content fx-col fx-malign-start padding-xx-sm\"],[12],[1,\"\\n\"],[42,[28,[37,11],[[28,[37,11],[[30,0,[\"loadingRows\"]]],null]],null],null,[[[1,\"            \"],[10,0],[14,0,\"upf-skeleton-effect margin-bottom-xx-sm\"],[14,5,\"width: 100%; height: 8px;\"],[12],[13],[1,\"\\n\"]],[4]],null],[1,\"        \"],[13],[1,\"\\n\"]],[]],[[[42,[28,[37,11],[[28,[37,11],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"          \"],[11,\"li\"],[24,0,\"upf-infinite-select__item\"],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[28,[37,12],[[30,0,[\"didSelectItem\"]],[30,5]],null]],null],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"              \"],[18,7,[[30,5]]],[1,\"\\n\"]],[]],[[[1,\"              \"],[1,[28,[35,15],[[30,5],[30,0,[\"itemLabel\"]]],null]],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[5]],[[[1,\"          \"],[10,0],[14,0,\"fx-col fx-xalign-center\"],[12],[1,\"\\n            \"],[10,\"img\"],[14,\"src\",\"/@upfluence/oss-components/assets/images/empty-state-skeleton.png\"],[15,\"alt\",[28,[37,16],[\"oss-components.infinite-select.empty_img_alt\"],null]],[14,\"width\",\"15%\"],[12],[13],[1,\"\\n\\n            \"],[10,0],[14,0,\"margin-top-xx-sm text-color-default upf-align--center\"],[12],[1,\"\\n\"],[41,[30,0,[\"_searchKeyword\"]],[[[1,\"                \"],[10,2],[12],[1,[28,[35,16],[\"oss-components.infinite-select.no-match.title\"],null]],[13],[1,\"\\n                \"],[10,2],[14,0,\"text-color-default-light\"],[12],[1,\"\\n                  \"],[1,[28,[35,16],[\"oss-components.infinite-select.no-match.description\"],null]],[1,\"\\n                \"],[13],[1,\"\\n\"]],[]],[[[1,\"                \"],[1,[28,[35,16],[\"oss-components.infinite-select.empty\"],null]],[1,\"\\n\"]],[]]],[1,\"            \"],[13],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,3],[[[1,\"          \"],[10,0],[14,0,\"upf-skeleton-content fx-col fx-malign-start padding-xx-sm\"],[12],[1,\"\\n\"],[42,[28,[37,11],[[28,[37,11],[[30,0,[\"loadingMoreRows\"]]],null]],null],null,[[[1,\"              \"],[10,0],[14,0,\"upf-skeleton-effect margin-bottom-xx-sm\"],[14,5,\"width: 100%; height: 8px;\"],[12],[13],[1,\"\\n\"]],[6]],null],[1,\"          \"],[13],[1,\"\\n\"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@loading\",\"@loadingMore\",\"width\",\"item\",\"width\",\"&option\"],false,[\"if\",\"not\",\"did-insert\",\"input-wrapper\",\"input\",\"on\",\"eq\",\"on-bottom-reached\",\"scroll-shadow\",\"and\",\"each\",\"-track-array\",\"fn\",\"has-block\",\"yield\",\"get\",\"t\"]]",
+    "id": "yfzQlxPb",
+    "block": "[[[11,0],[16,0,[29,[\"fx-col upf-infinite-select \",[52,[28,[37,1],[[30,0,[\"inline\"]]],null],\"upf-infinite-select--absolute\"]]]],[17,1],[4,[38,2],[[30,0,[\"onRender\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"searchEnabled\"]],[[[6,[39,3],null,null,[[\"default\"],[[[[1,\"      \"],[8,[39,4],[[16,2,[30,0,[\"_searchKeyword\"]]],[24,0,\"form-control upf-input\"],[16,\"placeholder\",[30,0,[\"searchPlaceholder\"]]],[24,4,\"text\"],[4,[38,5],[\"keyup\",[30,0,[\"updateSearchKeyword\"]]],null]],null,null],[1,\"\\n\"]],[]]]]]],[]],null],[1,\"  \"],[10,0],[14,0,\"upf-infinite-select__container\"],[12],[1,\"\\n    \"],[11,\"ul\"],[16,0,[29,[\"upf-infinite-select__items-container\\n               \",[52,[28,[37,6],[[30,0,[\"items\",\"length\"]],0],null],\"upf-infinite-select__items-container--empty\"]]]],[4,[38,7],[[30,0,[\"onBottomReached\"]]],null],[4,[38,8],null,null],[12],[1,\"\\n\"],[41,[28,[37,9],[[30,2],[28,[37,1],[[30,3]],null]],null],[[[1,\"        \"],[8,[39,10],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",5,\"col\"]],null],[1,\"\\n\"]],[]],[[[42,[28,[37,12],[[28,[37,12],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"          \"],[11,\"li\"],[24,0,\"upf-infinite-select__item\"],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[28,[37,13],[[30,0,[\"didSelectItem\"]],[30,4]],null]],null],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"              \"],[18,5,[[30,4]]],[1,\"\\n\"]],[]],[[[1,\"              \"],[1,[28,[35,16],[[30,4],[30,0,[\"itemLabel\"]]],null]],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[4]],[[[1,\"          \"],[10,0],[14,0,\"fx-col fx-xalign-center\"],[12],[1,\"\\n            \"],[10,\"img\"],[14,\"src\",\"/@upfluence/oss-components/assets/images/empty-state-skeleton.png\"],[15,\"alt\",[28,[37,17],[\"oss-components.infinite-select.empty_img_alt\"],null]],[14,\"width\",\"15%\"],[12],[13],[1,\"\\n\\n            \"],[10,0],[14,0,\"margin-top-xx-sm text-color-default upf-align--center\"],[12],[1,\"\\n\"],[41,[30,0,[\"_searchKeyword\"]],[[[1,\"                \"],[10,2],[12],[1,[28,[35,17],[\"oss-components.infinite-select.no-match.title\"],null]],[13],[1,\"\\n                \"],[10,2],[14,0,\"text-color-default-light\"],[12],[1,\"\\n                  \"],[1,[28,[35,17],[\"oss-components.infinite-select.no-match.description\"],null]],[1,\"\\n                \"],[13],[1,\"\\n\"]],[]],[[[1,\"                \"],[1,[28,[35,17],[\"oss-components.infinite-select.empty\"],null]],[1,\"\\n\"]],[]]],[1,\"            \"],[13],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,3],[[[1,\"          \"],[8,[39,10],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",3,\"col\"]],null],[1,\"\\n\"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@loading\",\"@loadingMore\",\"item\",\"&option\"],false,[\"if\",\"not\",\"did-insert\",\"input-wrapper\",\"input\",\"on\",\"eq\",\"on-bottom-reached\",\"scroll-shadow\",\"and\",\"o-s-s/skeleton\",\"each\",\"-track-array\",\"fn\",\"has-block\",\"yield\",\"get\",\"t\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/infinite-select.hbs",
     "isStrictMode": false
   });
@@ -89011,10 +89004,6 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
       _classCallCheck(this, OSSInfiniteSelect);
 
       _this = _super.call(this, owner, args);
-
-      _defineProperty(_assertThisInitialized(_this), "loadingRows", new Array(5));
-
-      _defineProperty(_assertThisInitialized(_this), "loadingMoreRows", new Array(3));
 
       _initializerDefineProperty(_assertThisInitialized(_this), "_searchKeyword", _descriptor, _assertThisInitialized(_this));
 
@@ -89593,9 +89582,9 @@ define("@upfluence/oss-components/components/o-s-s/input-container", ["exports",
             <OSS::InputContainer>
               <:prefix>
                 {{#if (gt this.lastname.length 0)}}
-                  <i class="fa fa-check text-color-success"></i>
+                  <OSS::Icon @icon="fa-check" class="font-color-success-500" />
                 {{else}}
-                  <i class="fa fa-times text-color-error"></i>
+                  <OSS::Icon @icon="fa-times" class="font-color-error-500" />
                 {{/if}}
               </:prefix>
               <:input>
@@ -89603,17 +89592,17 @@ define("@upfluence/oss-components/components/o-s-s/input-container", ["exports",
               </:input>
               <:suffix>
                 {{#if (gt this.lastname.length 0)}}
-                  <i class="fa fa-check text-color-success"></i>
+                  <OSS::Icon @icon="fa-check" class="font-color-success-500" />
                 {{else}}
-                  <i class="fa fa-times text-color-error"></i>
+                  <OSS::Icon @icon="fa-times" class="font-color-error-500" />
                 {{/if}}
               </:suffix>
             </OSS::InputContainer>
         
       */
       {
-        "id": "lF/SMLyT",
-        "block": "[[[1,\"\\n      \"],[8,[39,0],null,null,[[\"prefix\",\"input\",\"suffix\"],[[[[1,\"\\n\"],[41,[28,[37,2],[[30,0,[\"lastname\",\"length\"]],0],null],[[[1,\"            \"],[10,\"i\"],[14,0,\"fa fa-check text-color-success\"],[12],[13],[1,\"\\n\"]],[]],[[[1,\"            \"],[10,\"i\"],[14,0,\"fa fa-times text-color-error\"],[12],[13],[1,\"\\n\"]],[]]],[1,\"        \"]],[]],[[[1,\"\\n          \"],[8,[39,3],[[24,\"placeholder\",\"My fancy custom input\"]],[[\"@value\"],[[30,0,[\"lastname\"]]]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n\"],[41,[28,[37,2],[[30,0,[\"lastname\",\"length\"]],0],null],[[[1,\"            \"],[10,\"i\"],[14,0,\"fa fa-check text-color-success\"],[12],[13],[1,\"\\n\"]],[]],[[[1,\"            \"],[10,\"i\"],[14,0,\"fa fa-times text-color-error\"],[12],[13],[1,\"\\n\"]],[]]],[1,\"        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/input-container\",\"if\",\"gt\",\"input\"]]",
+        "id": "1Foq7u9H",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,null,[[\"prefix\",\"input\",\"suffix\"],[[[[1,\"\\n\"],[41,[28,[37,2],[[30,0,[\"lastname\",\"length\"]],0],null],[[[1,\"            \"],[8,[39,3],[[24,0,\"font-color-success-500\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],[[[1,\"            \"],[8,[39,3],[[24,0,\"font-color-error-500\"]],[[\"@icon\"],[\"fa-times\"]],null],[1,\"\\n\"]],[]]],[1,\"        \"]],[]],[[[1,\"\\n          \"],[8,[39,4],[[24,\"placeholder\",\"My fancy custom input\"]],[[\"@value\"],[[30,0,[\"lastname\"]]]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n\"],[41,[28,[37,2],[[30,0,[\"lastname\",\"length\"]],0],null],[[[1,\"            \"],[8,[39,3],[[24,0,\"font-color-success-500\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],[[[1,\"            \"],[8,[39,3],[[24,0,\"font-color-error-500\"]],[[\"@icon\"],[\"fa-times\"]],null],[1,\"\\n\"]],[]]],[1,\"        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/input-container\",\"if\",\"gt\",\"o-s-s/icon\",\"input\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -90067,11 +90056,11 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["expor
        ...attributes>
     {{#if this.locked}}
       <div class="oss-sidebar-item--locked">
-        <i class="fal fa-lock"></i>
+        <OSS::Icon @style="light" @icon="fa-lock" />
       </div>
     {{/if}}
     <div class="oss-sidebar-item--icon">
-      <i class={{@icon}}></i>
+      <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
     </div>
     {{#if this.hasNotifications}}
       <span class="oss-sidebar-item--notification" />
@@ -90080,8 +90069,8 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["expor
   
   */
   {
-    "id": "c22YuLwN",
-    "block": "[[[11,0],[24,0,\"oss-sidebar-item\"],[16,\"disabled\",[52,[30,0,[\"locked\"]],\"disabled\"]],[24,\"role\",\"button\"],[17,1],[4,[38,1],[\"click\",[30,0,[\"onClick\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"locked\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-item--locked\"],[12],[1,\"\\n      \"],[10,\"i\"],[14,0,\"fal fa-lock\"],[12],[13],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"oss-sidebar-item--icon\"],[12],[1,\"\\n    \"],[10,\"i\"],[15,0,[30,2]],[12],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"hasNotifications\"]],[[[1,\"    \"],[10,1],[14,0,\"oss-sidebar-item--notification\"],[12],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\"],false,[\"if\",\"on\"]]",
+    "id": "TeRjIGk0",
+    "block": "[[[11,0],[24,0,\"oss-sidebar-item\"],[16,\"disabled\",[52,[30,0,[\"locked\"]],\"disabled\"]],[24,\"role\",\"button\"],[17,1],[4,[38,1],[\"click\",[30,0,[\"onClick\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"locked\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-item--locked\"],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@style\",\"@icon\"],[\"light\",\"fa-lock\"]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"oss-sidebar-item--icon\"],[12],[1,\"\\n    \"],[8,[39,2],null,[[\"@style\",\"@icon\"],[[28,[37,3],[[30,2]],null],[28,[37,4],[[30,2]],null]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"hasNotifications\"]],[[[1,\"    \"],[10,1],[14,0,\"oss-sidebar-item--notification\"],[12],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\"],false,[\"if\",\"on\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/layout/sidebar/item.hbs",
     "isStrictMode": false
   });
@@ -90288,7 +90277,7 @@ define("@upfluence/oss-components/components/o-s-s/link", ["exports", "@ember/co
   /*
     <div class="upf-link" role="button" {{on "click" this.goTo}} ...attributes>
     {{#if @icon}}
-      <i class={{@icon}}></i>
+      <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
     {{/if}}
   
     {{#if @label}}
@@ -90298,8 +90287,8 @@ define("@upfluence/oss-components/components/o-s-s/link", ["exports", "@ember/co
   
   */
   {
-    "id": "E7qQAygw",
-    "block": "[[[11,0],[24,0,\"upf-link\"],[24,\"role\",\"button\"],[17,1],[4,[38,0],[\"click\",[30,0,[\"goTo\"]]],null],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[10,\"i\"],[15,0,[30,2]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,1],[15,0,[52,[30,2],\"margin-left-xxx-sm\"]],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@label\"],false,[\"on\",\"if\"]]",
+    "id": "SMK7n8Z3",
+    "block": "[[[11,0],[24,0,\"upf-link\"],[24,\"role\",\"button\"],[17,1],[4,[38,0],[\"click\",[30,0,[\"goTo\"]]],null],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[8,[39,2],null,[[\"@style\",\"@icon\"],[[28,[37,3],[[30,2]],null],[28,[37,4],[[30,2]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,1],[15,0,[52,[30,2],\"margin-left-xxx-sm\"]],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@label\"],false,[\"on\",\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/link.hbs",
     "isStrictMode": false
   });
@@ -90496,8 +90485,8 @@ define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@
           <span class="title">{{@title}}</span>
           <span class="subtitle">{{@subtitle}}</span>
         </div>
-        <i class="fa fa-close padding-xx-sm" {{on "click" this.closeModal}} role="button"
-           data-control-name="close-modal-button"></i>
+        <OSS::Icon @style="solid" @icon="fa-times" class="padding-px-12" {{on "click" this.closeModal}} role="button"
+                   data-control-name="close-modal-button" />
       </header>
   
       {{#if (has-block "illustration")}}
@@ -90519,8 +90508,8 @@ define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@
   
   */
   {
-    "id": "w9P0e/7d",
-    "block": "[[[11,0],[24,0,\"oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center\"],[17,1],[4,[38,0],[[30,0,[\"destroy\"]]],null],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-modal-dialog fx-col \",[30,0,[\"modalSize\"]]]]],[4,[38,1],[[30,0,[\"closeModal\"]]],null],[4,[38,2],[[30,0,[\"init\"]]],null],[12],[1,\"\\n    \"],[10,\"header\"],[14,0,\"fx-row\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-1 fx-col fx-malign-center\"],[12],[1,\"\\n        \"],[10,1],[14,0,\"title\"],[12],[1,[30,2]],[13],[1,\"\\n        \"],[10,1],[14,0,\"subtitle\"],[12],[1,[30,3]],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[11,\"i\"],[24,0,\"fa fa-close padding-xx-sm\"],[24,\"role\",\"button\"],[24,\"data-control-name\",\"close-modal-button\"],[4,[38,3],[\"click\",[30,0,[\"closeModal\"]]],null],[12],[13],[1,\"\\n    \"],[13],[1,\"\\n\\n\"],[41,[48,[30,4]],[[[1,\"      \"],[18,4,null],[1,\"\\n\"]],[]],null],[1,\"\\n    \"],[10,0],[14,0,\"oss-modal-dialog--content fx-1\"],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"        \"],[18,5,null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n    \"],[10,\"footer\"],[14,0,\"fx-row fx-xalign-center\"],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"        \"],[18,6,null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@title\",\"@subtitle\",\"&illustration\",\"&content\",\"&footer\"],false,[\"will-destroy\",\"on-click-outside\",\"did-insert\",\"on\",\"if\",\"has-block\",\"yield\"]]",
+    "id": "4c95RGr1",
+    "block": "[[[11,0],[24,0,\"oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center\"],[17,1],[4,[38,0],[[30,0,[\"destroy\"]]],null],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-modal-dialog fx-col \",[30,0,[\"modalSize\"]]]]],[4,[38,1],[[30,0,[\"closeModal\"]]],null],[4,[38,2],[[30,0,[\"init\"]]],null],[12],[1,\"\\n    \"],[10,\"header\"],[14,0,\"fx-row\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-1 fx-col fx-malign-center\"],[12],[1,\"\\n        \"],[10,1],[14,0,\"title\"],[12],[1,[30,2]],[13],[1,\"\\n        \"],[10,1],[14,0,\"subtitle\"],[12],[1,[30,3]],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[8,[39,3],[[24,0,\"padding-px-12\"],[24,\"role\",\"button\"],[24,\"data-control-name\",\"close-modal-button\"],[4,[38,4],[\"click\",[30,0,[\"closeModal\"]]],null]],[[\"@style\",\"@icon\"],[\"solid\",\"fa-times\"]],null],[1,\"\\n    \"],[13],[1,\"\\n\\n\"],[41,[48,[30,4]],[[[1,\"      \"],[18,4,null],[1,\"\\n\"]],[]],null],[1,\"\\n    \"],[10,0],[14,0,\"oss-modal-dialog--content fx-1\"],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"        \"],[18,5,null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n    \"],[10,\"footer\"],[14,0,\"fx-row fx-xalign-center\"],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"        \"],[18,6,null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@title\",\"@subtitle\",\"&illustration\",\"&content\",\"&footer\"],false,[\"will-destroy\",\"on-click-outside\",\"did-insert\",\"o-s-s/icon\",\"on\",\"if\",\"has-block\",\"yield\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/modal-dialog.hbs",
     "isStrictMode": false
   });
@@ -91038,16 +91027,16 @@ define("@upfluence/oss-components/components/o-s-s/nav-tab", ["exports", "@ember
               {{on "click" (fn this.onSelectTab tab)}} disabled={{tab.disabled}}>
         <div class="fx-row tab-content fx-xalign-center fx-gap-px-9">
           {{#if tab.icon}}
-            <i class={{tab.icon}} />
+            <OSS::Icon @style={{fa-icon-style tab.icon}} @icon={{fa-icon-value tab.icon}} />
           {{/if}}
           {{#if tab.label}}
             <span class="text-size-6">{{tab.label}}</span>
           {{/if}}
           {{#if tab.infoCircle}}
-            <i class="far fa-info-circle" />
+            <OSS::Icon @icon="fa-info-circle" />
           {{/if}}
           {{#if tab.notificationDot}}
-            <i class="fas fa-circle font-color-accent text-size-1" />
+            <OSS::Icon @style="solid" @icon="fa-circle" class="font-color-accent text-size-1" />
           {{/if}}
         </div>
         <div class="border-display" />
@@ -91058,8 +91047,8 @@ define("@upfluence/oss-components/components/o-s-s/nav-tab", ["exports", "@ember
   
   */
   {
-    "id": "k5hVXReD",
-    "block": "[[[10,0],[14,0,\"fx-row fx-1 tab-container\"],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,1]],null]],null],null,[[[1,\"    \"],[11,\"button\"],[16,0,[29,[\"fx-col tab \",[52,[30,2,[\"selected\"]],\"tab--selected\"],\" \",[52,[30,2,[\"disabled\"]],\"tab--disabled\"]]]],[16,\"disabled\",[30,2,[\"disabled\"]]],[24,4,\"button\"],[4,[38,3],[\"click\",[28,[37,4],[[30,0,[\"onSelectTab\"]],[30,2]],null]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row tab-content fx-xalign-center fx-gap-px-9\"],[12],[1,\"\\n\"],[41,[30,2,[\"icon\"]],[[[1,\"          \"],[10,\"i\"],[15,0,[30,2,[\"icon\"]]],[12],[13],[1,\"\\n\"]],[]],null],[41,[30,2,[\"label\"]],[[[1,\"          \"],[10,1],[14,0,\"text-size-6\"],[12],[1,[30,2,[\"label\"]]],[13],[1,\"\\n\"]],[]],null],[41,[30,2,[\"infoCircle\"]],[[[1,\"          \"],[10,\"i\"],[14,0,\"far fa-info-circle\"],[12],[13],[1,\"\\n\"]],[]],null],[41,[30,2,[\"notificationDot\"]],[[[1,\"          \"],[10,\"i\"],[14,0,\"fas fa-circle font-color-accent text-size-1\"],[12],[13],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"border-display\"],[12],[13],[1,\"\\n    \"],[13],[1,\"\\n\"]],[2]],null],[1,\"  \"],[10,0],[14,0,\"fx-col fx-1 border-display\"],[12],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"@tabArray\",\"tab\"],false,[\"each\",\"-track-array\",\"if\",\"on\",\"fn\"]]",
+    "id": "gN/QUOtb",
+    "block": "[[[10,0],[14,0,\"fx-row fx-1 tab-container\"],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,1]],null]],null],null,[[[1,\"    \"],[11,\"button\"],[16,0,[29,[\"fx-col tab \",[52,[30,2,[\"selected\"]],\"tab--selected\"],\" \",[52,[30,2,[\"disabled\"]],\"tab--disabled\"]]]],[16,\"disabled\",[30,2,[\"disabled\"]]],[24,4,\"button\"],[4,[38,3],[\"click\",[28,[37,4],[[30,0,[\"onSelectTab\"]],[30,2]],null]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row tab-content fx-xalign-center fx-gap-px-9\"],[12],[1,\"\\n\"],[41,[30,2,[\"icon\"]],[[[1,\"          \"],[8,[39,5],null,[[\"@style\",\"@icon\"],[[28,[37,6],[[30,2,[\"icon\"]]],null],[28,[37,7],[[30,2,[\"icon\"]]],null]]],null],[1,\"\\n\"]],[]],null],[41,[30,2,[\"label\"]],[[[1,\"          \"],[10,1],[14,0,\"text-size-6\"],[12],[1,[30,2,[\"label\"]]],[13],[1,\"\\n\"]],[]],null],[41,[30,2,[\"infoCircle\"]],[[[1,\"          \"],[8,[39,5],null,[[\"@icon\"],[\"fa-info-circle\"]],null],[1,\"\\n\"]],[]],null],[41,[30,2,[\"notificationDot\"]],[[[1,\"          \"],[8,[39,5],[[24,0,\"font-color-accent text-size-1\"]],[[\"@style\",\"@icon\"],[\"solid\",\"fa-circle\"]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"border-display\"],[12],[13],[1,\"\\n    \"],[13],[1,\"\\n\"]],[2]],null],[1,\"  \"],[10,0],[14,0,\"fx-col fx-1 border-display\"],[12],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"@tabArray\",\"tab\"],false,[\"each\",\"-track-array\",\"if\",\"on\",\"fn\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/nav-tab.hbs",
     "isStrictMode": false
   });
@@ -91815,9 +91804,9 @@ define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["export
       <div class="country-selector fx-row" role="button" {{on "click" this.toggleCountrySelector}}>
         <div class="fflag fflag-{{this.selectedCountry.id}} ff-sm ff-rounded"></div>
         {{#if this.countrySelectorShown}}
-          <i class="fal fa-chevron-up margin-left-xxx-sm"></i>
+          <OSS::Icon @icon="fa-chevron-up" class="margin-left-px-6" />
         {{else}}
-          <i class="fal fa-chevron-down margin-left-xxx-sm"></i>
+          <OSS::Icon @icon="fa-chevron-down" class="margin-left-px-6" />
         {{/if}}
       </div>
       <span class="phone-prefix">{{@prefix}}</span>
@@ -91842,7 +91831,7 @@ define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["export
             <span class="text-color-default-light margin-left-xx-sm">{{country.name}}</span>
             <span class="text-color-default-light margin-left-xxx-sm fx-1">(+{{get country.countryCallingCodes 0}})</span>
             {{#if (eq this.selectedCountry country)}}
-              <i class="far fa-check text-color-bright-purple"></i>
+              <OSS::Icon @icon="fa-check" class="font-color-primary-500" />
             {{/if}}
           </div>
         </:option>
@@ -91852,8 +91841,8 @@ define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["export
   
   */
   {
-    "id": "eG2hiMNF",
-    "block": "[[[11,0],[24,0,\"phone-number-container fx-1\"],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"phone-number-input upf-input fx-row fx-1 fx-xalign-center\"],[12],[1,\"\\n    \"],[11,0],[24,0,\"country-selector fx-row\"],[24,\"role\",\"button\"],[4,[38,0],[\"click\",[30,0,[\"toggleCountrySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"selectedCountry\",\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n\"],[41,[30,0,[\"countrySelectorShown\"]],[[[1,\"        \"],[10,\"i\"],[14,0,\"fal fa-chevron-up margin-left-xxx-sm\"],[12],[13],[1,\"\\n\"]],[]],[[[1,\"        \"],[10,\"i\"],[14,0,\"fal fa-chevron-down margin-left-xxx-sm\"],[12],[13],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n    \"],[10,1],[14,0,\"phone-prefix\"],[12],[1,[30,2]],[13],[1,\"\\n    \"],[8,[39,2],[[24,0,\"fx-1\"],[24,\"placeholder\",\"81726354\"],[24,4,\"tel\"],[4,[38,0],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,0],[\"blur\",[30,0,[\"onlyNumeric\"]]],null]],[[\"@value\"],[[30,3]]],null],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"invalidInputError\"]],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,\"\\n      \"],[1,[30,0,[\"invalidInputError\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,0,[\"countrySelectorShown\"]],[[[1,\"    \"],[8,[39,3],[[4,[38,4],[[30,0,[\"hideCountrySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCountries\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],\"Search\"]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,5],[[30,0,[\"selectedCountry\"]],[30,4]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,4,[\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm\"],[12],[1,[30,4,[\"name\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xxx-sm fx-1\"],[12],[1,\"(+\"],[1,[28,[35,6],[[30,4,[\"countryCallingCodes\"]],0],null]],[1,\")\"],[13],[1,\"\\n\"],[41,[28,[37,5],[[30,0,[\"selectedCountry\"]],[30,4]],null],[[[1,\"            \"],[10,\"i\"],[14,0,\"far fa-check text-color-bright-purple\"],[12],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@prefix\",\"@number\",\"country\"],false,[\"on\",\"if\",\"input\",\"o-s-s/infinite-select\",\"on-click-outside\",\"eq\",\"get\"]]",
+    "id": "cOU5iMFy",
+    "block": "[[[11,0],[24,0,\"phone-number-container fx-1\"],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"phone-number-input upf-input fx-row fx-1 fx-xalign-center\"],[12],[1,\"\\n    \"],[11,0],[24,0,\"country-selector fx-row\"],[24,\"role\",\"button\"],[4,[38,0],[\"click\",[30,0,[\"toggleCountrySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"selectedCountry\",\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n\"],[41,[30,0,[\"countrySelectorShown\"]],[[[1,\"        \"],[8,[39,2],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[\"fa-chevron-up\"]],null],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,2],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[\"fa-chevron-down\"]],null],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n    \"],[10,1],[14,0,\"phone-prefix\"],[12],[1,[30,2]],[13],[1,\"\\n    \"],[8,[39,3],[[24,0,\"fx-1\"],[24,\"placeholder\",\"81726354\"],[24,4,\"tel\"],[4,[38,0],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,0],[\"blur\",[30,0,[\"onlyNumeric\"]]],null]],[[\"@value\"],[[30,3]]],null],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"invalidInputError\"]],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,\"\\n      \"],[1,[30,0,[\"invalidInputError\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,0,[\"countrySelectorShown\"]],[[[1,\"    \"],[8,[39,4],[[4,[38,5],[[30,0,[\"hideCountrySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCountries\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],\"Search\"]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,6],[[30,0,[\"selectedCountry\"]],[30,4]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,4,[\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm\"],[12],[1,[30,4,[\"name\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xxx-sm fx-1\"],[12],[1,\"(+\"],[1,[28,[35,7],[[30,4,[\"countryCallingCodes\"]],0],null]],[1,\")\"],[13],[1,\"\\n\"],[41,[28,[37,6],[[30,0,[\"selectedCountry\"]],[30,4]],null],[[[1,\"            \"],[8,[39,2],[[24,0,\"font-color-primary-500\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@prefix\",\"@number\",\"country\"],false,[\"on\",\"if\",\"o-s-s/icon\",\"input\",\"o-s-s/infinite-select\",\"on-click-outside\",\"eq\",\"get\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/phone-number-input.hbs",
     "isStrictMode": false
   });
@@ -92151,9 +92140,9 @@ define("@upfluence/oss-components/components/o-s-s/power-select", ["exports", "@
         </div>
   
         {{#if this.displaySelect}}
-          <i class="far fa-chevron-up margin-left-px-6 margin-right-px-6 margin-top-px-6"></i>
+          <OSS::Icon @icon="fa-chevron-up" class="margin-left-px-6 margin-right-px-6 margin-top-px-6" />
         {{else}}
-          <i class="far fa-chevron-down margin-left-px-6 margin-right-px-6 margin-top-px-6"></i>
+          <OSS::Icon @icon="fa-chevron-down" class="margin-left-px-6 margin-right-px-6 margin-top-px-6" />
         {{/if}}
       </div>
     </div>
@@ -92172,8 +92161,8 @@ define("@upfluence/oss-components/components/o-s-s/power-select", ["exports", "@
   
   */
   {
-    "id": "eBaruYor",
-    "block": "[[[11,0],[24,0,\"upf-power-select fx-1 fx-col\"],[17,1],[4,[38,0],[[28,[37,1],[[30,0,[\"ensureBlockPresence\"]],[48,[30,11]],[48,[30,12]]],null]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"upf-power-select__array-container\"],[24,\"role\",\"button\"],[4,[38,3],[\"click\",[30,0,[\"toggleSelect\"]]],null],[12],[1,\"\\n    \"],[11,0],[24,0,\"array-input-container fx-row padding-top-px-6 padding-bottom-px-6\"],[4,[38,4],null,[[\"color\"],[\"field\"]]],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-1 padding-left-px-6 fx-gap-px-6 fx-wrap\"],[12],[1,\"\\n\"],[42,[28,[37,6],[[28,[37,6],[[30,2]],null]],null],null,[[[1,\"          \"],[18,11,[[30,3]]],[1,\"\\n\"]],[3]],[[[1,\"          \"],[10,1],[14,0,\"text-size-5 text-color-default-light\"],[12],[1,\"\\n            \"],[1,[30,0,[\"placeholder\"]]],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]]],[1,\"      \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displaySelect\"]],[[[1,\"        \"],[10,\"i\"],[14,0,\"far fa-chevron-up margin-left-px-6 margin-right-px-6 margin-top-px-6\"],[12],[13],[1,\"\\n\"]],[]],[[[1,\"        \"],[10,\"i\"],[14,0,\"far fa-chevron-down margin-left-px-6 margin-right-px-6 margin-top-px-6\"],[12],[13],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displaySelect\"]],[[[1,\"    \"],[8,[39,9],[[4,[38,10],[[30,0,[\"hideSelect\"]]],null]],[[\"@items\",\"@onSearch\",\"@inline\",\"@onSelect\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\"],[[30,4],[30,5],false,[30,0,[\"onSelect\"]],[30,6],[30,7],[30,8],[30,9]]],[[\"option\"],[[[[1,\"\\n        \"],[18,12,[[30,10]]],[1,\"\\n      \"]],[10]]]]],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@selectedItems\",\"selectedItem\",\"@items\",\"@onSearch\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\",\"item\",\"&selected-item\",\"&option-item\"],false,[\"did-insert\",\"fn\",\"has-block\",\"on\",\"scroll-shadow\",\"each\",\"-track-array\",\"yield\",\"if\",\"o-s-s/infinite-select\",\"on-click-outside\"]]",
+    "id": "2Z9hbLWz",
+    "block": "[[[11,0],[24,0,\"upf-power-select fx-1 fx-col\"],[17,1],[4,[38,0],[[28,[37,1],[[30,0,[\"ensureBlockPresence\"]],[48,[30,11]],[48,[30,12]]],null]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"upf-power-select__array-container\"],[24,\"role\",\"button\"],[4,[38,3],[\"click\",[30,0,[\"toggleSelect\"]]],null],[12],[1,\"\\n    \"],[11,0],[24,0,\"array-input-container fx-row padding-top-px-6 padding-bottom-px-6\"],[4,[38,4],null,[[\"color\"],[\"field\"]]],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-1 padding-left-px-6 fx-gap-px-6 fx-wrap\"],[12],[1,\"\\n\"],[42,[28,[37,6],[[28,[37,6],[[30,2]],null]],null],null,[[[1,\"          \"],[18,11,[[30,3]]],[1,\"\\n\"]],[3]],[[[1,\"          \"],[10,1],[14,0,\"text-size-5 text-color-default-light\"],[12],[1,\"\\n            \"],[1,[30,0,[\"placeholder\"]]],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]]],[1,\"      \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displaySelect\"]],[[[1,\"        \"],[8,[39,9],[[24,0,\"margin-left-px-6 margin-right-px-6 margin-top-px-6\"]],[[\"@icon\"],[\"fa-chevron-up\"]],null],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,9],[[24,0,\"margin-left-px-6 margin-right-px-6 margin-top-px-6\"]],[[\"@icon\"],[\"fa-chevron-down\"]],null],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displaySelect\"]],[[[1,\"    \"],[8,[39,10],[[4,[38,11],[[30,0,[\"hideSelect\"]]],null]],[[\"@items\",\"@onSearch\",\"@inline\",\"@onSelect\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\"],[[30,4],[30,5],false,[30,0,[\"onSelect\"]],[30,6],[30,7],[30,8],[30,9]]],[[\"option\"],[[[[1,\"\\n        \"],[18,12,[[30,10]]],[1,\"\\n      \"]],[10]]]]],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@selectedItems\",\"selectedItem\",\"@items\",\"@onSearch\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\",\"item\",\"&selected-item\",\"&option-item\"],false,[\"did-insert\",\"fn\",\"has-block\",\"on\",\"scroll-shadow\",\"each\",\"-track-array\",\"yield\",\"if\",\"o-s-s/icon\",\"o-s-s/infinite-select\",\"on-click-outside\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/power-select.hbs",
     "isStrictMode": false
   });
@@ -92795,9 +92784,9 @@ define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/
           <span class="text-color-default-light">{{this.placeholder}}</span>
         {{/if}}
         {{#if this.displaySelect}}
-          <i class="far fa-chevron-up margin-left-px-6"></i>
+          <OSS::Icon @icon="fa-chevron-up" class="margin-left-px-6" />
         {{else}}
-          <i class="far fa-chevron-down margin-left-px-6"></i>
+          <OSS::Icon @icon="fa-chevron-down" class="margin-left-px-6" />
         {{/if}}
       </div>
     </div>
@@ -92817,7 +92806,7 @@ define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/
             {{/if}}
   
             {{#if (eq @value item)}}
-              <i class="far fa-check font-color-primary-500 padding-right-px-6"></i>
+              <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
             {{/if}}
           </div>
         </:option>
@@ -92826,21 +92815,21 @@ define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/
   
     {{#if @errorMessage}}
       <div class="font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center">
-        <i class="far fa-exclamation-triangle"></i> {{@errorMessage}}
+        <OSS::Icon @icon="fa-exclamation-triangle" /> {{@errorMessage}}
       </div>
     {{/if}}
   
     {{#if @successMessage}}
       <div class="font-color-success-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center">
-        <i class="far fa-check-circle"></i> {{@successMessage}}
+        <OSS::Icon @icon="fa-check-circle" /> {{@successMessage}}
       </div>
     {{/if}}
   </div>
   
   */
   {
-    "id": "bbidm21M",
-    "block": "[[[11,0],[16,0,[30,0,[\"classNames\"]]],[17,1],[4,[38,0],[[28,[37,1],[[30,0,[\"ensureBlockPresence\"]],[48,[30,7]]],null]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"upf-input fx-row fx-1 fx-xalign-center\"],[12],[1,\"\\n    \"],[11,0],[24,0,\"fx-row fx-1 fx-malign-space-between fx-xalign-center\"],[24,\"role\",\"button\"],[4,[38,3],[\"click\",[30,0,[\"toggleSelector\"]]],null],[12],[1,\"\\n\"],[41,[30,2],[[[41,[48,[30,8]],[[[1,\"          \"],[18,8,[[30,2]]],[1,\"\\n\"]],[]],[[[1,\"          \"],[10,1],[12],[1,[28,[35,6],[[30,2],[30,0,[\"targetValue\"]]],null]],[13],[1,\"\\n\"]],[]]]],[]],[[[1,\"        \"],[10,1],[14,0,\"text-color-default-light\"],[12],[1,[30,0,[\"placeholder\"]]],[13],[1,\"\\n\"]],[]]],[41,[30,0,[\"displaySelect\"]],[[[1,\"        \"],[10,\"i\"],[14,0,\"far fa-chevron-up margin-left-px-6\"],[12],[13],[1,\"\\n\"]],[]],[[[1,\"        \"],[10,\"i\"],[14,0,\"far fa-chevron-down margin-left-px-6\"],[12],[13],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displaySelect\"]],[[[1,\"    \"],[8,[39,7],[[4,[38,8],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[true]]]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchEnabled\",\"@searchPlaceholder\"],[[30,3],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"searchPlaceholder\"]]]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"item-wrapper fx-row fx-xalign-center fx-malign-space-between \",[52,[28,[37,9],[[30,2],[30,4]],null],\"selected\"]]]],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"            \"],[18,7,[[30,4]]],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,9],[[30,2],[30,4]],null],[[[1,\"            \"],[10,\"i\"],[14,0,\"far fa-check font-color-primary-500 padding-right-px-6\"],[12],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,5],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[10,\"i\"],[14,0,\"far fa-exclamation-triangle\"],[12],[13],[1,\" \"],[1,[30,5]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,6],[[[1,\"    \"],[10,0],[14,0,\"font-color-success-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[10,\"i\"],[14,0,\"far fa-check-circle\"],[12],[13],[1,\" \"],[1,[30,6]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@value\",\"@items\",\"item\",\"@errorMessage\",\"@successMessage\",\"&option\",\"&selected\"],false,[\"did-insert\",\"fn\",\"has-block\",\"on\",\"if\",\"yield\",\"get\",\"o-s-s/infinite-select\",\"on-click-outside\",\"eq\"]]",
+    "id": "yIDs62MW",
+    "block": "[[[11,0],[16,0,[30,0,[\"classNames\"]]],[17,1],[4,[38,0],[[28,[37,1],[[30,0,[\"ensureBlockPresence\"]],[48,[30,7]]],null]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"upf-input fx-row fx-1 fx-xalign-center\"],[12],[1,\"\\n    \"],[11,0],[24,0,\"fx-row fx-1 fx-malign-space-between fx-xalign-center\"],[24,\"role\",\"button\"],[4,[38,3],[\"click\",[30,0,[\"toggleSelector\"]]],null],[12],[1,\"\\n\"],[41,[30,2],[[[41,[48,[30,8]],[[[1,\"          \"],[18,8,[[30,2]]],[1,\"\\n\"]],[]],[[[1,\"          \"],[10,1],[12],[1,[28,[35,6],[[30,2],[30,0,[\"targetValue\"]]],null]],[13],[1,\"\\n\"]],[]]]],[]],[[[1,\"        \"],[10,1],[14,0,\"text-color-default-light\"],[12],[1,[30,0,[\"placeholder\"]]],[13],[1,\"\\n\"]],[]]],[41,[30,0,[\"displaySelect\"]],[[[1,\"        \"],[8,[39,7],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[\"fa-chevron-up\"]],null],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,7],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[\"fa-chevron-down\"]],null],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displaySelect\"]],[[[1,\"    \"],[8,[39,8],[[4,[38,9],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[true]]]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchEnabled\",\"@searchPlaceholder\"],[[30,3],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"searchPlaceholder\"]]]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"item-wrapper fx-row fx-xalign-center fx-malign-space-between \",[52,[28,[37,10],[[30,2],[30,4]],null],\"selected\"]]]],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"            \"],[18,7,[[30,4]]],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,10],[[30,2],[30,4]],null],[[[1,\"            \"],[8,[39,7],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,5],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,7],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\" \"],[1,[30,5]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,6],[[[1,\"    \"],[10,0],[14,0,\"font-color-success-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,7],null,[[\"@icon\"],[\"fa-check-circle\"]],null],[1,\" \"],[1,[30,6]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@value\",\"@items\",\"item\",\"@errorMessage\",\"@successMessage\",\"&option\",\"&selected\"],false,[\"did-insert\",\"fn\",\"has-block\",\"on\",\"if\",\"yield\",\"get\",\"o-s-s/icon\",\"o-s-s/infinite-select\",\"on-click-outside\",\"eq\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/select.hbs",
     "isStrictMode": false
   });
@@ -93238,19 +93227,27 @@ define("@upfluence/oss-components/components/o-s-s/skeleton", ["exports", "@embe
 
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class={{this.computedClass}} style={{this.computedStyle}} ...attributes>
+    {{#if @multiple}}
+    <div class="fx-1 {{this.computedClass}}" ...attributes>
+      {{#each this.rows as |row|}}
+        <div class="upf-skeleton-effect" style={{row}}></div>
+      {{/each}}
+    </div>
+  {{else}}
     {{#each this.rows as |row|}}
-      <div class={{concat "upf-skeleton-effect " row.class}} style={{row.style}}></div>
+      <div class="upf-skeleton-effect" style={{row}} ...attributes></div>
     {{/each}}
-  </div>
+  {{/if}}
   
   */
   {
-    "id": "4f0lbmzw",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[16,5,[30,0,[\"computedStyle\"]]],[17,1],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,0,[\"rows\"]]],null]],null],null,[[[1,\"    \"],[10,0],[15,0,[28,[37,2],[\"upf-skeleton-effect \",[30,2,[\"class\"]]],null]],[15,5,[30,2,[\"style\"]]],[12],[13],[1,\"\\n\"]],[2]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"row\"],false,[\"each\",\"-track-array\",\"concat\"]]",
+    "id": "Gtu/ikwe",
+    "block": "[[[41,[30,1],[[[1,\"  \"],[11,0],[16,0,[29,[\"fx-1 \",[30,0,[\"computedClass\"]]]]],[17,2],[12],[1,\"\\n\"],[42,[28,[37,2],[[28,[37,2],[[30,0,[\"rows\"]]],null]],null],null,[[[1,\"      \"],[10,0],[14,0,\"upf-skeleton-effect\"],[15,5,[30,3]],[12],[13],[1,\"\\n\"]],[3]],null],[1,\"  \"],[13],[1,\"\\n\"]],[]],[[[42,[28,[37,2],[[28,[37,2],[[30,0,[\"rows\"]]],null]],null],null,[[[1,\"    \"],[11,0],[24,0,\"upf-skeleton-effect\"],[16,5,[30,4]],[17,2],[12],[13],[1,\"\\n\"]],[4]],null]],[]]]],[\"@multiple\",\"&attrs\",\"row\",\"row\"],false,[\"if\",\"each\",\"-track-array\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/skeleton.hbs",
     "isStrictMode": false
   });
+
+  var RANGE_PERCENTAGE = 15;
 
   var OSSSkeleton = /*#__PURE__*/function (_Component) {
     _inherits(OSSSkeleton, _Component);
@@ -93264,8 +93261,8 @@ define("@upfluence/oss-components/components/o-s-s/skeleton", ["exports", "@embe
 
       _this = _super.call(this, owner, args);
 
-      if (_this.args.type) {
-        (true && !(['row', 'column'].includes(_this.args.type)) && (0, _debug.assert)("[component][OSS::Skeleton] The @type argument should be a value of ".concat(['row', 'column']), ['row', 'column'].includes(_this.args.type)));
+      if (_this.args.direction) {
+        (true && !(['row', 'column', 'col'].includes(_this.args.direction)) && (0, _debug.assert)("[component][OSS::Skeleton] The @direction argument should be a value of ".concat(['row', 'column', 'col']), ['row', 'column', 'col'].includes(_this.args.direction)));
       }
 
       return _this;
@@ -93279,7 +93276,14 @@ define("@upfluence/oss-components/components/o-s-s/skeleton", ["exports", "@embe
     }, {
       key: "width",
       get: function get() {
-        return this.args.width || 36;
+        return parseInt(this.args.width || 36);
+      }
+    }, {
+      key: "pxOrPc",
+      get: function get() {
+        var _this$args$width, _this$args$width$incl;
+
+        return (_this$args$width = this.args.width) !== null && _this$args$width !== void 0 && (_this$args$width$incl = _this$args$width.includes) !== null && _this$args$width$incl !== void 0 && _this$args$width$incl.call(_this$args$width, '%') ? '%' : 'px';
       }
     }, {
       key: "gap",
@@ -93287,60 +93291,36 @@ define("@upfluence/oss-components/components/o-s-s/skeleton", ["exports", "@embe
         return this.args.gap || 9;
       }
     }, {
-      key: "type",
+      key: "direction",
       get: function get() {
-        return this.args.type || 'row';
+        return this.args.direction || 'row';
       }
     }, {
       key: "computedClass",
       get: function get() {
-        var style = ['upf-skeleton-content', "fx-gap-px-".concat(this.gap)];
-        this.type === 'row' ? style.push('fx-col') : style.push('fx-row');
+        var style = ["fx-gap-px-".concat(this.gap)];
+        this.direction === 'row' ? style.push('fx-row') : style.push('fx-col');
         return style.join(' ');
-      }
-    }, {
-      key: "computedStyle",
-      get: function get() {
-        return "width:".concat(this.width, "px; height: ").concat(this.height, "px;");
       }
     }, {
       key: "rows",
       get: function get() {
+        var randomizeInRange = this.width * (RANGE_PERCENTAGE / 100);
         var rows = [];
         var multiple = this.args.multiple || 1;
 
-        if (this.args.randomize) {
-          for (var i = 0; i < multiple; i++) {
-            rows.push(this.generateRandomRowSize());
+        for (var i = 0; i < multiple; ++i) {
+          var width = this.width;
+
+          if (this.args.randomize) {
+            var randomValue = Math.ceil(Math.random() * randomizeInRange) * (Math.round(Math.random()) ? 1 : -1);
+            width = this.width + randomValue;
           }
-        } else {
-          for (var _i = 0; _i < multiple; _i++) {
-            rows.push({
-              class: 'fx-1'
-            });
-          }
+
+          rows.push("min-height: ".concat(this.height, "px; width: ").concat(width).concat(this.pxOrPc));
         }
 
         return rows;
-      }
-    }, {
-      key: "generateRandomRowSize",
-      value: function generateRandomRowSize() {
-        var multiple = this.args.multiple || 1;
-
-        if (this.type === 'row') {
-          var percent = 100 - Math.floor(Math.random() * (20 + 1) + 0);
-          return {
-            class: 'fx-1',
-            style: "width: ".concat(percent, "%;")
-          };
-        } else {
-          var coef = (100 + Math.floor(Math.random() * (100 + 1) + -50)) / 100;
-          var defaultWidth = (this.width - (multiple - 1) * this.gap) / multiple;
-          return {
-            style: "width: ".concat(Math.floor(defaultWidth * coef), "px;")
-          };
-        }
       }
     }]);
 
@@ -93357,7 +93337,7 @@ define("@upfluence/oss-components/components/o-s-s/skeleton", ["exports", "@embe
     value: true
   });
   _exports.Default = _exports.default = void 0;
-  var DirectionTypes = ['row', 'column'];
+  var DirectionTypes = ['row', 'col', 'column'];
   var _default = {
     title: 'Components/OSS::Skeleton',
     component: 'skeleton',
@@ -93419,7 +93399,7 @@ define("@upfluence/oss-components/components/o-s-s/skeleton", ["exports", "@embe
         }
       },
       randomize: {
-        description: 'Randomize skeleton effect width',
+        description: 'Randomize skeleton effect width within a 15% range',
         table: {
           type: {
             summary: 'boolean'
@@ -93432,7 +93412,7 @@ define("@upfluence/oss-components/components/o-s-s/skeleton", ["exports", "@embe
           type: 'boolean'
         }
       },
-      type: {
+      direction: {
         description: 'Direction of the skeleton',
         table: {
           type: {
@@ -93473,14 +93453,14 @@ define("@upfluence/oss-components/components/o-s-s/skeleton", ["exports", "@embe
         
           <div class="bg-color-white padding-px-6">
             <OSS::Skeleton @height={{this.height}} @width={{this.width}} @multiple={{this.multiple}} @gap={{this.gap}} 
-                           @type={{this.type}}
+                           @direction={{this.direction}}
                            @randomize={{this.randomize}}/>
           </div>
         
       */
       {
-        "id": "LgSmDJy7",
-        "block": "[[[1,\"\\n    \"],[10,0],[14,0,\"bg-color-white padding-px-6\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@height\",\"@width\",\"@multiple\",\"@gap\",\"@type\",\"@randomize\"],[[30,0,[\"height\"]],[30,0,[\"width\"]],[30,0,[\"multiple\"]],[30,0,[\"gap\"]],[30,0,[\"type\"]],[30,0,[\"randomize\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/skeleton\"]]",
+        "id": "B2Pq84Oc",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,0,\"bg-color-white padding-px-6\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@height\",\"@width\",\"@multiple\",\"@gap\",\"@direction\",\"@randomize\"],[[30,0,[\"height\"]],[30,0,[\"width\"]],[30,0,[\"multiple\"]],[30,0,[\"gap\"]],[30,0,[\"direction\"]],[30,0,[\"randomize\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/skeleton\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -93532,14 +93512,14 @@ define("@upfluence/oss-components/components/o-s-s/social-post-badge", ["exports
        {{on "click" this.onPostTypeClick}}
        ...attributes>
     <div class="icon-container">
-      <i class={{this.iconDefinition}}></i>
+      <OSS::Icon @style={{fa-icon-style this.iconDefinition}} @icon={{fa-icon-value this.iconDefinition}} />
     </div>
   </div>
   
   */
   {
-    "id": "b0HMtuJ9",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[24,\"role\",\"button\"],[17,1],[4,[38,0],[\"click\",[30,0,[\"onPostTypeClick\"]]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"icon-container\"],[12],[1,\"\\n    \"],[10,\"i\"],[15,0,[30,0,[\"iconDefinition\"]]],[12],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\"],false,[\"on\"]]",
+    "id": "jVukQSVA",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[24,\"role\",\"button\"],[17,1],[4,[38,0],[\"click\",[30,0,[\"onPostTypeClick\"]]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"icon-container\"],[12],[1,\"\\n    \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[[28,[37,2],[[30,0,[\"iconDefinition\"]]],null],[28,[37,3],[[30,0,[\"iconDefinition\"]]],null]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\"],false,[\"on\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/social-post-badge.hbs",
     "isStrictMode": false
   });
@@ -93763,7 +93743,8 @@ define("@upfluence/oss-components/components/o-s-s/split-modal", ["exports", "@e
         {{/if}}
       </div>
       <div class="split-modal__preview">
-        <i class="far fa-times close-modal-icon" role="button" {{on "click" this.closeModal}}></i>
+        <OSS::Icon @style="solid" @icon="fa-times" class="close-modal-icon" role="button"
+                   {{on "click" this.closeModal}} />
         {{yield to="preview"}}
       </div>
     </div>
@@ -93771,8 +93752,8 @@ define("@upfluence/oss-components/components/o-s-s/split-modal", ["exports", "@e
   
   */
   {
-    "id": "4McZt9jM",
-    "block": "[[[11,0],[24,0,\"split-modal oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center\"],[17,1],[4,[38,0],[[30,0,[\"destroy\"]]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"oss-modal-dialog fx-row\"],[4,[38,1],[[30,2]],null],[4,[38,2],[[30,0,[\"init\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"split-modal__content fx-col fx-1\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"oss-modal-dialog--content fx-1 fx-col fx-gap-px-18\"],[12],[1,\"\\n        \"],[18,3,null],[1,\"\\n      \"],[13],[1,\"\\n\"],[41,[48,[30,4]],[[[1,\"        \"],[10,\"footer\"],[14,0,\"fx-row fx-malign-center fx-xalign-space-between\"],[12],[1,\"\\n          \"],[18,4,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"split-modal__preview\"],[12],[1,\"\\n      \"],[11,\"i\"],[24,0,\"far fa-times close-modal-icon\"],[24,\"role\",\"button\"],[4,[38,6],[\"click\",[30,0,[\"closeModal\"]]],null],[12],[13],[1,\"\\n      \"],[18,5,null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@close\",\"&content\",\"&footer\",\"&preview\"],false,[\"will-destroy\",\"on-click-outside\",\"did-insert\",\"yield\",\"if\",\"has-block\",\"on\"]]",
+    "id": "n8JGuZgN",
+    "block": "[[[11,0],[24,0,\"split-modal oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center\"],[17,1],[4,[38,0],[[30,0,[\"destroy\"]]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"oss-modal-dialog fx-row\"],[4,[38,1],[[30,2]],null],[4,[38,2],[[30,0,[\"init\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"split-modal__content fx-col fx-1\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"oss-modal-dialog--content fx-1 fx-col fx-gap-px-18\"],[12],[1,\"\\n        \"],[18,3,null],[1,\"\\n      \"],[13],[1,\"\\n\"],[41,[48,[30,4]],[[[1,\"        \"],[10,\"footer\"],[14,0,\"fx-row fx-malign-center fx-xalign-space-between\"],[12],[1,\"\\n          \"],[18,4,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"split-modal__preview\"],[12],[1,\"\\n      \"],[8,[39,6],[[24,0,\"close-modal-icon\"],[24,\"role\",\"button\"],[4,[38,7],[\"click\",[30,0,[\"closeModal\"]]],null]],[[\"@style\",\"@icon\"],[\"solid\",\"fa-times\"]],null],[1,\"\\n      \"],[18,5,null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@close\",\"&content\",\"&footer\",\"&preview\"],false,[\"will-destroy\",\"on-click-outside\",\"did-insert\",\"yield\",\"if\",\"has-block\",\"o-s-s/icon\",\"on\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/split-modal.hbs",
     "isStrictMode": false
   });
@@ -93899,17 +93880,17 @@ define("@upfluence/oss-components/components/o-s-s/star-rating", ["exports", "@e
   /*
     <div class="star-rating fx-row">
     {{#each this.activeStars}}
-      <i class="fas fa-star {{this.activeColorClass}}"></i>
+      <OSS::Icon @style="solid" @icon="fa-star" class={{this.activeColorClass}} />
     {{/each}}
     {{#each this.passiveStars}}
-      <i class="fas fa-star {{this.passiveColorClass}}"></i>
+      <OSS::Icon @style="solid" @icon="fa-star" class={{this.passiveColorClass}} />
     {{/each}}
   </div>
   
   */
   {
-    "id": "Ks/mEqa9",
-    "block": "[[[10,0],[14,0,\"star-rating fx-row\"],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,0,[\"activeStars\"]]],null]],null],null,[[[1,\"    \"],[10,\"i\"],[15,0,[29,[\"fas fa-star \",[30,0,[\"activeColorClass\"]]]]],[12],[13],[1,\"\\n\"]],[]],null],[42,[28,[37,1],[[28,[37,1],[[30,0,[\"passiveStars\"]]],null]],null],null,[[[1,\"    \"],[10,\"i\"],[15,0,[29,[\"fas fa-star \",[30,0,[\"passiveColorClass\"]]]]],[12],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[],false,[\"each\",\"-track-array\"]]",
+    "id": "8M6Zj6M0",
+    "block": "[[[10,0],[14,0,\"star-rating fx-row\"],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,0,[\"activeStars\"]]],null]],null],null,[[[1,\"    \"],[8,[39,2],[[16,0,[30,0,[\"activeColorClass\"]]]],[[\"@style\",\"@icon\"],[\"solid\",\"fa-star\"]],null],[1,\"\\n\"]],[]],null],[42,[28,[37,1],[[28,[37,1],[[30,0,[\"passiveStars\"]]],null]],null],null,[[[1,\"    \"],[8,[39,2],[[16,0,[30,0,[\"passiveColorClass\"]]]],[[\"@style\",\"@icon\"],[\"solid\",\"fa-star\"]],null],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[],false,[\"each\",\"-track-array\",\"o-s-s/icon\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/star-rating.hbs",
     "isStrictMode": false
   });
@@ -94128,7 +94109,7 @@ define("@upfluence/oss-components/components/o-s-s/tag", ["exports", "@ember/com
   /*
     <div class={{this.computedClass}} ...attributes>
     {{#if @icon}}
-      <i class={{@icon}}></i>
+      <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
     {{/if}}
   
     {{#if @label}}
@@ -94144,8 +94125,8 @@ define("@upfluence/oss-components/components/o-s-s/tag", ["exports", "@ember/com
   
   */
   {
-    "id": "jkdary+f",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[10,\"i\"],[15,0,[30,2]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,0],[14,0,\"text-style-semibold fx-row\"],[12],[1,\"\\n\"],[41,[30,4],[[[1,\"        \"],[10,1],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],[[[1,\"        \"],[1,[30,3]],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@label\",\"@hasEllipsis\"],false,[\"if\"]]",
+    "id": "kXVkYOAU",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[[28,[37,2],[[30,2]],null],[28,[37,3],[[30,2]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,0],[14,0,\"text-style-semibold fx-row\"],[12],[1,\"\\n\"],[41,[30,4],[[[1,\"        \"],[10,1],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],[[[1,\"        \"],[1,[30,3]],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@label\",\"@hasEllipsis\"],false,[\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/tag.hbs",
     "isStrictMode": false
   });
@@ -94862,7 +94843,9 @@ define("@upfluence/oss-components/components/o-s-s/toggle-buttons", ["exports", 
 
     _createClass(OSSToggleButtons, [{
       key: "onSelectToggle",
-      value: function onSelectToggle(selectedToggle) {
+      value: function onSelectToggle(selectedToggle, event) {
+        event.stopPropagation();
+
         if (this.args.selectedToggle !== selectedToggle) {
           this.args.onSelection(selectedToggle);
         }
@@ -95949,7 +95932,7 @@ define("@upfluence/oss-components/components/o-s-s/upload-item", ["exports", "@e
           {{#if this.error}}
             <span class="fx-row fx-gap-px-6 font-color-gray-500 fx-xalign-center" role="button"
                   data-control-name="upload-item-try-again-button" {{on "click" this.performUpload}}>
-              <i class="far fa-redo"></i> {{t "oss-components.upload-area.errors.try_again"}}
+              <OSS::Icon @icon="fa-redo" /> {{t "oss-components.upload-area.errors.try_again"}}
             </span>
           {{else}}
             <OSS::Button
@@ -95976,8 +95959,8 @@ define("@upfluence/oss-components/components/o-s-s/upload-item", ["exports", "@e
   
   */
   {
-    "id": "NS7X0wp1",
-    "block": "[[[10,0],[15,0,[29,[\"oss-upload-item \",[52,[30,0,[\"error\"]],\"oss-upload-item--errored\"]]]],[12],[1,\"\\n\"],[41,[30,0,[\"shouldDisplayPreview\"]],[[[1,\"    \"],[10,0],[14,0,\"upf-badge upf-badge--shape-round upf-badge--size-md\"],[15,5,[30,0,[\"dynamicBackgroundImage\"]]],[12],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[8,[39,1],null,[[\"@icon\"],[[30,0,[\"icon\"]]]],null],[1,\"\\n\"]],[]]],[1,\"\\n  \"],[10,0],[14,0,\"fx-row fx-1 fx-malign-space-between fx-xalign-center\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-3\"],[12],[1,\"\\n      \"],[10,1],[14,0,\"font-color-gray-900 text-ellipsis padding-right-px-12\"],[14,\"data-control-name\",\"upload-item-filename\"],[12],[1,\"\\n        \"],[1,[30,0,[\"filename\"]]],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"error\"]],[[[1,\"        \"],[10,1],[14,0,\"font-color-error-500\"],[12],[1,[28,[35,2],[\"oss-components.upload-area.errors.server\"],null]],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"filesize\"]],[[[1,\"        \"],[10,1],[14,0,\"font-color-gray-500\"],[14,\"data-control-name\",\"upload-item-filesize\"],[12],[1,\"\\n          \"],[1,[30,0,[\"filesize\"]]],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n\"],[41,[30,0,[\"uploading\"]],[[[1,\"        \"],[10,0],[14,0,\"oss-upload-item__loader\"],[22,5,[30,0,[\"loaderStyle\"]]],[12],[1,\"\\n          \"],[10,0],[14,0,\"value\"],[12],[1,\"\\n            \"],[1,[30,0,[\"uploadProgress\"]]],[1,\"\\n          \"],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"error\"]],[[[1,\"          \"],[11,1],[24,0,\"fx-row fx-gap-px-6 font-color-gray-500 fx-xalign-center\"],[24,\"role\",\"button\"],[24,\"data-control-name\",\"upload-item-try-again-button\"],[4,[38,3],[\"click\",[30,0,[\"performUpload\"]]],null],[12],[1,\"\\n            \"],[10,\"i\"],[14,0,\"far fa-redo\"],[12],[13],[1,\" \"],[1,[28,[35,2],[\"oss-components.upload-area.errors.try_again\"],null]],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]],[[[1,\"          \"],[8,[39,4],[[24,\"data-control-name\",\"upload-item-edit-button\"],[4,[38,3],[\"click\",[30,1]],null]],[[\"@icon\",\"@square\"],[\"far fa-pen\",true]],null],[1,\"\\n          \"],[8,[39,4],[[24,\"data-control-name\",\"upload-item-view-button\"],[4,[38,3],[\"click\",[28,[37,5],null,[[\"url\",\"target\"],[[30,0,[\"fileUrl\"]],\"_blank\"]]]],null]],[[\"@icon\",\"@square\"],[\"far fa-eye\",true]],null],[1,\"\\n\"]],[]]],[1,\"\\n        \"],[8,[39,4],[[24,\"data-control-name\",\"upload-item-remove-button\"],[4,[38,3],[\"click\",[30,2]],null]],[[\"@icon\",\"@square\"],[\"far fa-trash\",true]],null],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"@onEdition\",\"@onDeletion\"],false,[\"if\",\"o-s-s/badge\",\"t\",\"on\",\"o-s-s/button\",\"redirect-to\"]]",
+    "id": "rkwx5Bxe",
+    "block": "[[[10,0],[15,0,[29,[\"oss-upload-item \",[52,[30,0,[\"error\"]],\"oss-upload-item--errored\"]]]],[12],[1,\"\\n\"],[41,[30,0,[\"shouldDisplayPreview\"]],[[[1,\"    \"],[10,0],[14,0,\"upf-badge upf-badge--shape-round upf-badge--size-md\"],[15,5,[30,0,[\"dynamicBackgroundImage\"]]],[12],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[8,[39,1],null,[[\"@icon\"],[[30,0,[\"icon\"]]]],null],[1,\"\\n\"]],[]]],[1,\"\\n  \"],[10,0],[14,0,\"fx-row fx-1 fx-malign-space-between fx-xalign-center\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-3\"],[12],[1,\"\\n      \"],[10,1],[14,0,\"font-color-gray-900 text-ellipsis padding-right-px-12\"],[14,\"data-control-name\",\"upload-item-filename\"],[12],[1,\"\\n        \"],[1,[30,0,[\"filename\"]]],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"error\"]],[[[1,\"        \"],[10,1],[14,0,\"font-color-error-500\"],[12],[1,[28,[35,2],[\"oss-components.upload-area.errors.server\"],null]],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"filesize\"]],[[[1,\"        \"],[10,1],[14,0,\"font-color-gray-500\"],[14,\"data-control-name\",\"upload-item-filesize\"],[12],[1,\"\\n          \"],[1,[30,0,[\"filesize\"]]],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n\"],[41,[30,0,[\"uploading\"]],[[[1,\"        \"],[10,0],[14,0,\"oss-upload-item__loader\"],[22,5,[30,0,[\"loaderStyle\"]]],[12],[1,\"\\n          \"],[10,0],[14,0,\"value\"],[12],[1,\"\\n            \"],[1,[30,0,[\"uploadProgress\"]]],[1,\"\\n          \"],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"error\"]],[[[1,\"          \"],[11,1],[24,0,\"fx-row fx-gap-px-6 font-color-gray-500 fx-xalign-center\"],[24,\"role\",\"button\"],[24,\"data-control-name\",\"upload-item-try-again-button\"],[4,[38,3],[\"click\",[30,0,[\"performUpload\"]]],null],[12],[1,\"\\n            \"],[8,[39,4],null,[[\"@icon\"],[\"fa-redo\"]],null],[1,\" \"],[1,[28,[35,2],[\"oss-components.upload-area.errors.try_again\"],null]],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]],[[[1,\"          \"],[8,[39,5],[[24,\"data-control-name\",\"upload-item-edit-button\"],[4,[38,3],[\"click\",[30,1]],null]],[[\"@icon\",\"@square\"],[\"far fa-pen\",true]],null],[1,\"\\n          \"],[8,[39,5],[[24,\"data-control-name\",\"upload-item-view-button\"],[4,[38,3],[\"click\",[28,[37,6],null,[[\"url\",\"target\"],[[30,0,[\"fileUrl\"]],\"_blank\"]]]],null]],[[\"@icon\",\"@square\"],[\"far fa-eye\",true]],null],[1,\"\\n\"]],[]]],[1,\"\\n        \"],[8,[39,5],[[24,\"data-control-name\",\"upload-item-remove-button\"],[4,[38,3],[\"click\",[30,2]],null]],[[\"@icon\",\"@square\"],[\"far fa-trash\",true]],null],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"@onEdition\",\"@onDeletion\"],false,[\"if\",\"o-s-s/badge\",\"t\",\"on\",\"o-s-s/icon\",\"o-s-s/button\",\"redirect-to\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/upload-item.hbs",
     "isStrictMode": false
   });
@@ -97263,6 +97246,116 @@ define("@upfluence/oss-components/components/o-s-s/url-input", ["exports", "@emb
       }
     }
   }));
+
+  _exports.default = _default;
+});
+;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+define("@upfluence/oss-components/helpers/fa-icon-style", ["exports", "@ember/component/helper", "@ember/debug", "@upfluence/oss-components/utils/icon-details"], function (_exports, _helper, _debug, _iconDetails) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+  function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+  var _default = /*#__PURE__*/function (_Helper) {
+    _inherits(_default, _Helper);
+
+    var _super = _createSuper(_default);
+
+    function _default() {
+      _classCallCheck(this, _default);
+
+      return _super.apply(this, arguments);
+    }
+
+    _createClass(_default, [{
+      key: "compute",
+      value: function compute(args) {
+        var faIconString = args[0];
+        (true && !(typeof faIconString === 'string') && (0, _debug.assert)('[helper][OSS::fa-icon-style] faIconString argument is mandatory', typeof faIconString === 'string'));
+        return (0, _iconDetails.getIconStyle)(faIconString);
+      }
+    }]);
+
+    return _default;
+  }(_helper.default);
+
+  _exports.default = _default;
+});
+;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+define("@upfluence/oss-components/helpers/fa-icon-value", ["exports", "@ember/component/helper", "@ember/debug", "@upfluence/oss-components/utils/icon-details"], function (_exports, _helper, _debug, _iconDetails) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+  function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+  var _default = /*#__PURE__*/function (_Helper) {
+    _inherits(_default, _Helper);
+
+    var _super = _createSuper(_default);
+
+    function _default() {
+      _classCallCheck(this, _default);
+
+      return _super.apply(this, arguments);
+    }
+
+    _createClass(_default, [{
+      key: "compute",
+      value: function compute(args) {
+        var faIconString = args[0];
+        (true && !(typeof faIconString === 'string') && (0, _debug.assert)('[helper][OSS::fa-icon-value] faIconString argument is mandatory', typeof faIconString === 'string'));
+        return (0, _iconDetails.getIconValue)(faIconString);
+      }
+    }]);
+
+    return _default;
+  }(_helper.default);
 
   _exports.default = _default;
 });
@@ -103956,6 +104049,41 @@ define("@upfluence/oss-components/services/toast", ["exports", "@ember/service",
     return bytes.toFixed(1) + units[unitIndex];
   }
 });
+;define("@upfluence/oss-components/utils/icon-details", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.getIconStyle = getIconStyle;
+  _exports.getIconValue = getIconValue;
+  var FA_ICON_PREFIX = 'fa-';
+  var STYLE_MATCHER = {
+    fas: 'solid',
+    far: 'regular',
+    fal: 'light',
+    fad: 'duotone',
+    fab: 'brand'
+  };
+
+  function getIconStyle(fontAwesomeIcon) {
+    var iconStyle = STYLE_MATCHER.far;
+    Object.keys(STYLE_MATCHER).forEach(function (style) {
+      if (fontAwesomeIcon.includes(style)) {
+        iconStyle = STYLE_MATCHER[style];
+      }
+    });
+    return iconStyle;
+  }
+
+  function getIconValue(fontAwesomeIcon) {
+    var iconValues = [];
+    fontAwesomeIcon.split(' ').forEach(function (part) {
+      if (part.includes(FA_ICON_PREFIX)) iconValues.push(part);
+    });
+    return iconValues.join(' ');
+  }
+});
 ;define("@upfluence/oss-components/utils/upf-local-storage", ["exports", "@ember/debug"], function (_exports, _debug) {
   "use strict";
 
@@ -107380,36 +107508,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-1921geVEIdHupca0/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-1921geVEIdHupca0/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1921geVEIdHupca0/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-1921geVEIdHupca0/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-1921geVEIdHupca0/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1921geVEIdHupca0/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-1921geVEIdHupca0/cache-275-bundler/staging/l.js /tmp/broccoli-1921geVEIdHupca0/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/l.js /tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-1921geVEIdHupca0/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1921geVEIdHupca0/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1921geVEIdHupca0/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1921geVEIdHupca0/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1921geVEIdHupca0/cache-275-bundler/staging/l.js_/tmp/broccoli-1921geVEIdHupca0/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/l.js_/tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 

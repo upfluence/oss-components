@@ -8037,19 +8037,19 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["@ember
                     
                         <OSS::InputContainer>
                           <:prefix>
-                            <i class="fas fa-user"></i>
+                            <OSS::Icon @style="solid" @icon="fa-user" />
                           </:prefix>
                           <:input>
                             <Input id="custom-input"/>
                           </:input>
                           <:suffix>
-                            <i class="fas fa-times"></i>
+                            <OSS::Icon @style="solid" @icon="fa-times" />
                           </:suffix>
                         </OSS::InputContainer>
                   */
                   {
-                    "id": "O1kMebKf",
-                    "block": "[[[1,\"\\n      \"],[8,[39,0],null,null,[[\"prefix\",\"input\",\"suffix\"],[[[[1,\"\\n          \"],[10,\"i\"],[14,0,\"fas fa-user\"],[12],[13],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[8,[39,1],[[24,1,\"custom-input\"]],null,null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[10,\"i\"],[14,0,\"fas fa-times\"],[12],[13],[1,\"\\n        \"]],[]]]]]],[],false,[\"o-s-s/input-container\",\"input\"]]",
+                    "id": "QB4gWFuj",
+                    "block": "[[[1,\"\\n      \"],[8,[39,0],null,null,[[\"prefix\",\"input\",\"suffix\"],[[[[1,\"\\n          \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-user\"]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[8,[39,2],[[24,1,\"custom-input\"]],null,null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-times\"]],null],[1,\"\\n        \"]],[]]]]]],[],false,[\"o-s-s/input-container\",\"o-s-s/icon\",\"input\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
@@ -8834,11 +8834,11 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["@e
                 _context.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
-                  <OSS::Layout::Sidebar::Item />
+                  <OSS::Layout::Sidebar::Item @icon="far fa-search" />
                 */
                 {
-                  "id": "CCuTvbx2",
-                  "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+                  "id": "LA23dVaz",
+                  "block": "[[[8,[39,0],null,[[\"@icon\"],[\"far fa-search\"]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
                   "moduleName": "(unknown template module)",
                   "isStrictMode": false
                 }));
@@ -8901,11 +8901,11 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["@e
                   _context3.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
-                    <OSS::Layout::Sidebar::Item/>
+                    <OSS::Layout::Sidebar::Item @icon="far fa-search"/>
                   */
                   {
-                    "id": "CCuTvbx2",
-                    "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+                    "id": "LA23dVaz",
+                    "block": "[[[8,[39,0],null,[[\"@icon\"],[\"far fa-search\"]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
@@ -8934,11 +8934,11 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["@e
                   _context4.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
-                    <OSS::Layout::Sidebar::Item  @locked={{true}}/>
+                    <OSS::Layout::Sidebar::Item @icon="far fa-search" @locked={{true}}/>
                   */
                   {
-                    "id": "4c6jKh7+",
-                    "block": "[[[8,[39,0],null,[[\"@locked\"],[true]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+                    "id": "CcotIReK",
+                    "block": "[[[8,[39,0],null,[[\"@icon\",\"@locked\"],[\"far fa-search\",true]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
@@ -8967,11 +8967,11 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["@e
                   _context5.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
-                    <OSS::Layout::Sidebar::Item/>
+                    <OSS::Layout::Sidebar::Item @icon="far fa-search"/>
                   */
                   {
-                    "id": "CCuTvbx2",
-                    "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+                    "id": "LA23dVaz",
+                    "block": "[[[8,[39,0],null,[[\"@icon\"],[\"far fa-search\"]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
@@ -9000,11 +9000,11 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["@e
                   _context6.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
-                    <OSS::Layout::Sidebar::Item  @hasNotifications={{true}}/>
+                    <OSS::Layout::Sidebar::Item @icon="far fa-search" @hasNotifications={{true}}/>
                   */
                   {
-                    "id": "p3Xt5+qC",
-                    "block": "[[[8,[39,0],null,[[\"@hasNotifications\"],[true]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+                    "id": "d4lA8yT2",
+                    "block": "[[[8,[39,0],null,[[\"@icon\",\"@hasNotifications\"],[\"far fa-search\",true]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
@@ -9039,11 +9039,11 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["@e
                   _context7.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
-                    <OSS::Layout::Sidebar::Item @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}}/>
+                    <OSS::Layout::Sidebar::Item @icon="far fa-search" @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}}/>
                   */
                   {
-                    "id": "NmyDaads",
-                    "block": "[[[8,[39,0],null,[[\"@defaultAction\",\"@lockedAction\"],[[30,0,[\"defaultAction\"]],[30,0,[\"lockedAction\"]]]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+                    "id": "0MWtuUPe",
+                    "block": "[[[8,[39,0],null,[[\"@icon\",\"@defaultAction\",\"@lockedAction\"],[\"far fa-search\",[30,0,[\"defaultAction\"]],[30,0,[\"lockedAction\"]]]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
@@ -9077,11 +9077,11 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["@e
                   _context8.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
-                    <OSS::Layout::Sidebar::Item  @locked={{true}} @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}}/>
+                    <OSS::Layout::Sidebar::Item @icon="far fa-search" @locked={{true}} @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}}/>
                   */
                   {
-                    "id": "WN50t+PB",
-                    "block": "[[[8,[39,0],null,[[\"@locked\",\"@defaultAction\",\"@lockedAction\"],[true,[30,0,[\"defaultAction\"]],[30,0,[\"lockedAction\"]]]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+                    "id": "HvbD4VlW",
+                    "block": "[[[8,[39,0],null,[[\"@icon\",\"@locked\",\"@defaultAction\",\"@lockedAction\"],[\"far fa-search\",true,[30,0,[\"defaultAction\"]],[30,0,[\"lockedAction\"]]]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
@@ -9117,11 +9117,11 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["@e
                   _context9.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
-                    <OSS::Layout::Sidebar::Item class="my-extra-class" />
+                    <OSS::Layout::Sidebar::Item @icon="far fa-search" class="my-extra-class" />
                   */
                   {
-                    "id": "nshSDLYV",
-                    "block": "[[[8,[39,0],[[24,0,\"my-extra-class\"]],null,null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+                    "id": "vipnknXz",
+                    "block": "[[[8,[39,0],[[24,0,\"my-extra-class\"]],[[\"@icon\"],[\"far fa-search\"]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
@@ -9151,11 +9151,11 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["@e
                   _context10.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
-                    <OSS::Layout::Sidebar::Item data-control-name="layout-sidebar" />
+                    <OSS::Layout::Sidebar::Item @icon="far fa-search" data-control-name="layout-sidebar" />
                   */
                   {
-                    "id": "mRigmute",
-                    "block": "[[[8,[39,0],[[24,\"data-control-name\",\"layout-sidebar\"]],null,null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+                    "id": "OaSwikXn",
+                    "block": "[[[8,[39,0],[[24,\"data-control-name\",\"layout-sidebar\"]],[[\"@icon\"],[\"far fa-search\"]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
@@ -9509,7 +9509,7 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["@ember/te
 
               case 2:
                 _context3.next = 4;
-                return (0, _click.default)('.fa-close');
+                return (0, _click.default)('.fa-times');
 
               case 4:
                 assert.ok(this.closeModal.calledOnce);
@@ -13750,7 +13750,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["@ember/templa
                 }));
 
               case 2:
-                assert.dom('.upf-skeleton-content').exists();
+                assert.dom('.upf-skeleton-effect').exists();
 
               case 3:
               case "end":
@@ -13784,7 +13784,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["@ember/templa
                   }));
 
                 case 2:
-                  assert.dom('.upf-skeleton-content').hasStyle({
+                  assert.dom('.upf-skeleton-effect').hasStyle({
                     height: '36px'
                   });
 
@@ -13820,7 +13820,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["@ember/templa
                   }));
 
                 case 3:
-                  assert.dom('.upf-skeleton-content').hasStyle({
+                  assert.dom('.upf-skeleton-effect').hasStyle({
                     height: '400px'
                   });
 
@@ -13857,7 +13857,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["@ember/templa
                   }));
 
                 case 2:
-                  assert.dom('.upf-skeleton-content').hasStyle({
+                  assert.dom('.upf-skeleton-effect').hasStyle({
                     width: '36px'
                   });
 
@@ -13893,7 +13893,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["@ember/templa
                   }));
 
                 case 3:
-                  assert.dom('.upf-skeleton-content').hasStyle({
+                  assert.dom('.upf-skeleton-effect').hasStyle({
                     width: '400px'
                   });
 
@@ -13920,17 +13920,17 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["@ember/templa
                   _context6.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
-                    <OSS::Skeleton/>
+                    <OSS::Skeleton @multiple={{2}} />
                   */
                   {
-                    "id": "SrLwdpLC",
-                    "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/skeleton\"]]",
+                    "id": "IYhXiFx+",
+                    "block": "[[[8,[39,0],null,[[\"@multiple\"],[2]],null]],[],false,[\"o-s-s/skeleton\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
 
                 case 2:
-                  assert.dom('.upf-skeleton-content').hasClass('fx-gap-px-9');
+                  assert.dom('.fx-1').hasClass('fx-gap-px-9');
 
                 case 3:
                 case "end":
@@ -13954,17 +13954,17 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["@ember/templa
                   _context7.next = 3;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
-                    <OSS::Skeleton @gap={{this.gap}}/>
+                    <OSS::Skeleton @gap={{this.gap}} @multiple={{2}} />
                   */
                   {
-                    "id": "ljHrdEbO",
-                    "block": "[[[8,[39,0],null,[[\"@gap\"],[[30,0,[\"gap\"]]]],null]],[],false,[\"o-s-s/skeleton\"]]",
+                    "id": "OnnUNH2D",
+                    "block": "[[[8,[39,0],null,[[\"@gap\",\"@multiple\"],[[30,0,[\"gap\"]],2]],null]],[],false,[\"o-s-s/skeleton\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
 
                 case 3:
-                  assert.dom('.upf-skeleton-content').hasClass('fx-gap-px-12');
+                  assert.dom('.fx-1').hasClass('fx-gap-px-12');
 
                 case 4:
                 case "end":
@@ -14000,7 +14000,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["@ember/templa
                   }));
 
                 case 2:
-                  items = (0, _testHelpers.findAll)('.upf-skeleton-content .upf-skeleton-effect');
+                  items = (0, _testHelpers.findAll)('.upf-skeleton-effect');
                   assert.ok(items.length === 1);
 
                 case 4:
@@ -14036,7 +14036,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["@ember/templa
                   }));
 
                 case 3:
-                  items = (0, _testHelpers.findAll)('.upf-skeleton-content .upf-skeleton-effect');
+                  items = (0, _testHelpers.findAll)('.upf-skeleton-effect');
                   assert.ok(items.length === 4);
 
                 case 5:
@@ -14077,11 +14077,10 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["@ember/templa
                   }));
 
                 case 2:
-                  item = (0, _testHelpers.find)('.upf-skeleton-content .upf-skeleton-effect');
-                  assert.dom('.upf-skeleton-content .upf-skeleton-effect').hasClass('fx-1');
+                  item = (0, _testHelpers.find)('.upf-skeleton-effect');
                   assert.ok(this.width == (item === null || item === void 0 ? void 0 : item.offsetWidth));
 
-                case 5:
+                case 4:
                 case "end":
                   return _context10.stop();
               }
@@ -14093,7 +14092,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["@ember/templa
           return _ref11.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('Randomize width', /*#__PURE__*/function () {
+      (0, _qunit.test)('Randomize width is within a 15% range', /*#__PURE__*/function () {
         var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(assert) {
           var item;
           return regeneratorRuntime.wrap(function _callee11$(_context11) {
@@ -14113,59 +14112,56 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["@ember/templa
                   }));
 
                 case 2:
-                  item = (0, _testHelpers.find)('.upf-skeleton-content .upf-skeleton-effect');
-                  assert.ok(this.width * 0.8 <= (item === null || item === void 0 ? void 0 : item.offsetWidth) && (item === null || item === void 0 ? void 0 : item.offsetWidth) <= this.width);
+                  item = (0, _testHelpers.find)('.upf-skeleton-effect');
+                  assert.ok(item.offsetWidth < 230 && item.offsetWidth > 170);
 
                 case 4:
                 case "end":
                   return _context11.stop();
               }
             }
-          }, _callee11, this);
+          }, _callee11);
         }));
 
         return function (_x11) {
           return _ref12.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('Randomize width and @type is column', /*#__PURE__*/function () {
-        var _ref13 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(assert) {
-          var item;
-          return regeneratorRuntime.wrap(function _callee12$(_context12) {
-            while (1) {
-              switch (_context12.prev = _context12.next) {
-                case 0:
-                  _context12.next = 2;
-                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-                  /*
-                    <OSS::Skeleton @type="column" @width={{this.width}} @randomize={{true}}/>
-                  */
-                  {
-                    "id": "WxO6XoEf",
-                    "block": "[[[8,[39,0],null,[[\"@type\",\"@width\",\"@randomize\"],[\"column\",[30,0,[\"width\"]],true]],null]],[],false,[\"o-s-s/skeleton\"]]",
-                    "moduleName": "(unknown template module)",
-                    "isStrictMode": false
-                  }));
-
-                case 2:
-                  item = (0, _testHelpers.find)('.upf-skeleton-content .upf-skeleton-effect');
-                  assert.dom('.upf-skeleton-content .upf-skeleton-effect').hasNoClass('fx-1');
-                  assert.ok(this.width * 0.5 <= (item === null || item === void 0 ? void 0 : item.offsetWidth) && (item === null || item === void 0 ? void 0 : item.offsetWidth) <= this.width * 1.5);
-
-                case 5:
-                case "end":
-                  return _context12.stop();
-              }
-            }
-          }, _callee12, this);
-        }));
-
-        return function (_x12) {
-          return _ref13.apply(this, arguments);
-        };
-      }());
     });
-    (0, _qunit.test)('@type default value is row', /*#__PURE__*/function () {
+    (0, _qunit.test)('@direction default value is row', /*#__PURE__*/function () {
+      var _ref13 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(assert) {
+        return regeneratorRuntime.wrap(function _callee12$(_context12) {
+          while (1) {
+            switch (_context12.prev = _context12.next) {
+              case 0:
+                _context12.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Skeleton @multiple="3" />
+                */
+                {
+                  "id": "C8LZMYkY",
+                  "block": "[[[8,[39,0],null,[[\"@multiple\"],[\"3\"]],null]],[],false,[\"o-s-s/skeleton\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.fx-1').hasClass("fx-row");
+
+              case 3:
+              case "end":
+                return _context12.stop();
+            }
+          }
+        }, _callee12);
+      }));
+
+      return function (_x12) {
+        return _ref13.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('@direction value is column if specified', /*#__PURE__*/function () {
       var _ref14 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13(assert) {
         return regeneratorRuntime.wrap(function _callee13$(_context13) {
           while (1) {
@@ -14174,17 +14170,17 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["@ember/templa
                 _context13.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
-                  <OSS::Skeleton/>
+                  <OSS::Skeleton @direction="column" @multiple="2" />
                 */
                 {
-                  "id": "SrLwdpLC",
-                  "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/skeleton\"]]",
+                  "id": "aAWBTEyc",
+                  "block": "[[[8,[39,0],null,[[\"@direction\",\"@multiple\"],[\"column\",\"2\"]],null]],[],false,[\"o-s-s/skeleton\"]]",
                   "moduleName": "(unknown template module)",
                   "isStrictMode": false
                 }));
 
               case 2:
-                assert.dom('.upf-skeleton-content').hasClass("fx-col");
+                assert.dom('.fx-1').hasClass("fx-col");
 
               case 3:
               case "end":
@@ -14198,47 +14194,14 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["@ember/templa
         return _ref14.apply(this, arguments);
       };
     }());
-    (0, _qunit.test)('@type value is column', /*#__PURE__*/function () {
-      var _ref15 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee14(assert) {
-        return regeneratorRuntime.wrap(function _callee14$(_context14) {
-          while (1) {
-            switch (_context14.prev = _context14.next) {
-              case 0:
-                _context14.next = 2;
-                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-                /*
-                  <OSS::Skeleton @type="column"/>
-                */
-                {
-                  "id": "GnThMCNN",
-                  "block": "[[[8,[39,0],null,[[\"@type\"],[\"column\"]],null]],[],false,[\"o-s-s/skeleton\"]]",
-                  "moduleName": "(unknown template module)",
-                  "isStrictMode": false
-                }));
-
-              case 2:
-                assert.dom('.upf-skeleton-content').hasClass("fx-row");
-
-              case 3:
-              case "end":
-                return _context14.stop();
-            }
-          }
-        }, _callee14);
-      }));
-
-      return function (_x14) {
-        return _ref15.apply(this, arguments);
-      };
-    }());
     (0, _qunit.module)('Extra attributes', function () {
       (0, _qunit.test)('passing an extra class is applied to the component', /*#__PURE__*/function () {
-        var _ref16 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15(assert) {
-          return regeneratorRuntime.wrap(function _callee15$(_context15) {
+        var _ref15 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee14(assert) {
+          return regeneratorRuntime.wrap(function _callee14$(_context14) {
             while (1) {
-              switch (_context15.prev = _context15.next) {
+              switch (_context14.prev = _context14.next) {
                 case 0:
-                  _context15.next = 2;
+                  _context14.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     <OSS::Skeleton class="my-extra-class" />
@@ -14255,24 +14218,24 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["@ember/templa
 
                 case 3:
                 case "end":
-                  return _context15.stop();
+                  return _context14.stop();
               }
             }
-          }, _callee15);
+          }, _callee14);
         }));
 
-        return function (_x15) {
-          return _ref16.apply(this, arguments);
+        return function (_x14) {
+          return _ref15.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('passing data-control-name works', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(assert) {
+        var _ref16 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15(assert) {
           var inputWrapper;
-          return regeneratorRuntime.wrap(function _callee16$(_context16) {
+          return regeneratorRuntime.wrap(function _callee15$(_context15) {
             while (1) {
-              switch (_context16.prev = _context16.next) {
+              switch (_context15.prev = _context15.next) {
                 case 0:
-                  _context16.next = 2;
+                  _context15.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     <OSS::Skeleton data-control-name="layout-sidebar" />
@@ -14285,10 +14248,45 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["@ember/templa
                   }));
 
                 case 2:
-                  inputWrapper = (0, _testHelpers.find)('.upf-skeleton-content');
+                  inputWrapper = (0, _testHelpers.find)('.upf-skeleton-effect');
                   assert.equal(inputWrapper === null || inputWrapper === void 0 ? void 0 : inputWrapper.getAttribute('data-control-name'), 'layout-sidebar');
 
                 case 4:
+                case "end":
+                  return _context15.stop();
+              }
+            }
+          }, _callee15);
+        }));
+
+        return function (_x15) {
+          return _ref16.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('Error management', function () {
+      (0, _qunit.test)('it throws an error if @direct is provided and does not match required values', /*#__PURE__*/function () {
+        var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(assert) {
+          return regeneratorRuntime.wrap(function _callee16$(_context16) {
+            while (1) {
+              switch (_context16.prev = _context16.next) {
+                case 0:
+                  (0, _testHelpers.setupOnerror)(function (err) {
+                    assert.equal(err.message, 'Assertion Failed: [component][OSS::Skeleton] The @direction argument should be a value of row,column,col');
+                  });
+                  _context16.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Skeleton @direction="toto"/>
+                  */
+                  {
+                    "id": "gXD+pLej",
+                    "block": "[[[8,[39,0],null,[[\"@direction\"],[\"toto\"]],null]],[],false,[\"o-s-s/skeleton\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
                 case "end":
                   return _context16.stop();
               }
@@ -14298,41 +14296,6 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["@ember/templa
 
         return function (_x16) {
           return _ref17.apply(this, arguments);
-        };
-      }());
-    });
-    (0, _qunit.module)('Error management', function () {
-      (0, _qunit.test)('it throws an error if @type is provided and does not match required values', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17(assert) {
-          return regeneratorRuntime.wrap(function _callee17$(_context17) {
-            while (1) {
-              switch (_context17.prev = _context17.next) {
-                case 0:
-                  (0, _testHelpers.setupOnerror)(function (err) {
-                    assert.equal(err.message, 'Assertion Failed: [component][OSS::Skeleton] The @type argument should be a value of row,column');
-                  });
-                  _context17.next = 3;
-                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-                  /*
-                    <OSS::Skeleton @type="toto"/>
-                  */
-                  {
-                    "id": "KhlCo34y",
-                    "block": "[[[8,[39,0],null,[[\"@type\"],[\"toto\"]],null]],[],false,[\"o-s-s/skeleton\"]]",
-                    "moduleName": "(unknown template module)",
-                    "isStrictMode": false
-                  }));
-
-                case 3:
-                case "end":
-                  return _context17.stop();
-              }
-            }
-          }, _callee17);
-        }));
-
-        return function (_x17) {
-          return _ref18.apply(this, arguments);
         };
       }());
     });
