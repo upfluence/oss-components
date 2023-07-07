@@ -2,12 +2,10 @@
 
 {{#if this.error}}
   <span class="col-xs-12 upf-input-feedback upf-input-feedback--error">
-    <i class="fa fa-exclamation-circle" aria-label={{this.error}}>
-    </i>
+    <OSS::Icon @icon="fa-exclamation-circle" aria-label={{this.error}} />
   </span>
 {{else if this.help}}
   <span class="col-xs-12 upf-input-feedback upf-input-feedback--help">
-    <i class="fa fa-question-circle" aria-label={{this.help}}>
-    </i>
+    <OSS::Icon @icon="fa-question-circle" aria-label={{this.help}} />
   </span>
 {{/if}}

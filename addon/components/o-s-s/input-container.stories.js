@@ -85,9 +85,9 @@ const AdvancedWithNamedBlocksTemplate = (args) => ({
       <OSS::InputContainer>
         <:prefix>
           {{#if (gt this.lastname.length 0)}}
-            <i class="fa fa-check text-color-success"></i>
+            <OSS::Icon @icon="fa-check" class="font-color-success-500" />
           {{else}}
-            <i class="fa fa-times text-color-error"></i>
+            <OSS::Icon @icon="fa-times" class="font-color-error-500" />
           {{/if}}
         </:prefix>
         <:input>
@@ -95,9 +95,9 @@ const AdvancedWithNamedBlocksTemplate = (args) => ({
         </:input>
         <:suffix>
           {{#if (gt this.lastname.length 0)}}
-            <i class="fa fa-check text-color-success"></i>
+            <OSS::Icon @icon="fa-check" class="font-color-success-500" />
           {{else}}
-            <i class="fa fa-times text-color-error"></i>
+            <OSS::Icon @icon="fa-times" class="font-color-error-500" />
           {{/if}}
         </:suffix>
       </OSS::InputContainer>

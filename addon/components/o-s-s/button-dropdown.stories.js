@@ -45,7 +45,7 @@ const Template = (args) => ({
     <OSS::ButtonDropdown @icon={{this.icon}} @label={{this.label}}>
       <:items>
         <div class="oss-button-dropdown__item">
-          <i class="fas fa-share"></i> Share
+          <OSS::Icon @style="solid" @icon="fa-share" /> Share
         </div>
       </:items>
     </OSS::ButtonDropdown>

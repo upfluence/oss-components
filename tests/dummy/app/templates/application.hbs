@@ -20,6 +20,16 @@
     </:footer>
   </OSS::Layout::Sidebar>
   <div style="width:100%; height:100vh; overflow: auto;">
+    <div class="fx-row fx-1 fx-gap-px-10 margin-md">
+      <OSS::Skeleton @width="70%" />
+      <OSS::Skeleton @width={{20}} />
+    </div>
+    <div class="fx-row fx-1 fx-gap-px-10 margin-md">
+      <OSS::Skeleton @direction="column" @width="60%" @gap="12" @multiple="3" @randomize={{true}} />
+    </div>
+    <div class="fx-row fx-1 fx-gap-px-10 margin-md">
+      <OSS::Skeleton @width="10%" @multiple="3" @direction="row" @randomize="true" />
+    </div>
     <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
       <OSS::Icon @icon="fa-laptop-code" />
       <OSS::Icon @icon="fa-laptop-code" @style="solid" />
@@ -36,6 +46,14 @@
 
     <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
       <OSS::Button @label="Open split modal" {{on "click" this.openSplitModal}} />
+      <OSS::ButtonDropdown @icon="far fa-hourglass" @label="Dropdown button">
+        <:items>
+          <div class="oss-button-dropdown__item">
+            <OSS::Icon @style="solid" @icon="fa-share" /> Share
+          </div>
+        </:items>
+      </OSS::ButtonDropdown>
+      <OSS::Button @label="loading" @loading={{true}} />
       {{#if this.showSplitModal}}
         <OSS::SplitModal @close={{this.closeSplitModal}}>
           <:content>
@@ -263,7 +281,7 @@
       <OSS::Alert @title="Title" @subtitle="Subtitle">
         <:extra-content>
           <div class="fx-row fx-gap-px-12">
-            <OSS::Link @label="Super Label" />
+            <OSS::Link @label="Super Label" @icon="fas fa-hourglass" />
             <OSS::Link @label="Super Label 2" />
           </div>
         </:extra-content>
@@ -299,7 +317,7 @@
           </:content>
           <:footer>
             <div class="fx-1">
-              <i class="fa fa-info"></i><a href="">More info</a>
+              <OSS::Icon @icon="fa-info" /><a href="">More info</a>
             </div>
             <div class="fx-row fx-gap-px-12">
               <OSS::Button @skin="default" @label="Close" {{on "click" this.closeModal}} />
@@ -486,7 +504,7 @@
                 {{#if header.title}}
                   <OSS::Tag @skin="primary" @label="Hello" />
                 {{else}}
-                  <i class="fa fa-chevron-right"></i>
+                  <OSS::Icon @icon="fa-chevron-right" />
                 {{/if}}
               </div>
             {{/each}}
@@ -512,7 +530,7 @@
                 {{#if header.title}}
                   Content {{index}}
                 {{else}}
-                  <i class="fa fa-chevron-right"></i>
+                  <OSS::Icon @icon="fa-chevron-right" />
                 {{/if}}
               </div>
             {{/each}}
@@ -555,11 +573,6 @@
         <OSS::UrlInput @prefix="https://" @placeholder="No regex specified" @onChange={{this.onUrlInputChange}}
                        @value={{this.shopifyDomain}} />
       </OSS::ContentPanel>
-    </div>
-    <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
-      <OSS::Skeleton @height="200" @width="400" />
-      <OSS::Skeleton @type="row" @height="300" @width="400" @multiple="12" @randomize={{true}} />
-      <OSS::Skeleton @type="column" @width="600" @gap="12" @multiple="3" @randomize={{false}} />
     </div>
   </div>
 </div>

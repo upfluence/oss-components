@@ -2,7 +2,7 @@
   <div class="oss-button-dropdown__trigger fx-row fx-xalign-center">
     <div class="fx-row fx-xalign-center fx-gap-px-6">
       {{#if @icon}}
-        <i class={{@icon}}></i>
+        <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
       {{/if}}
 
       {{#if @label}}
@@ -11,7 +11,7 @@
     </div>
 
     <div class="fx-row fx-xalign-center" role="button" {{on "click" this.toggleDropdown}}>
-      <i class="far fa-caret-{{if this.displayDropdown 'up' 'down'}}"></i>
+      <OSS::Icon @icon="fa-caret-{{if this.displayDropdown 'up' 'down'}}" />
     </div>
   </div>
 

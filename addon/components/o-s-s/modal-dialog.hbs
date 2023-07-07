@@ -6,8 +6,8 @@
         <span class="title">{{@title}}</span>
         <span class="subtitle">{{@subtitle}}</span>
       </div>
-      <i class="fa fa-close padding-xx-sm" {{on "click" this.closeModal}} role="button"
-         data-control-name="close-modal-button"></i>
+      <OSS::Icon @style="solid" @icon="fa-times" class="padding-px-12" {{on "click" this.closeModal}} role="button"
+                 data-control-name="close-modal-button" />
     </header>
 
     {{#if (has-block "illustration")}}

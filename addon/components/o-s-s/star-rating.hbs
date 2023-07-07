@@ -1,8 +1,8 @@
 <div class="star-rating fx-row">
   {{#each this.activeStars}}
-    <i class="fas fa-star {{this.activeColorClass}}"></i>
+    <OSS::Icon @style="solid" @icon="fa-star" class={{this.activeColorClass}} />
   {{/each}}
   {{#each this.passiveStars}}
-    <i class="fas fa-star {{this.passiveColorClass}}"></i>
+    <OSS::Icon @style="solid" @icon="fa-star" class={{this.passiveColorClass}} />
   {{/each}}
 </div>

@@ -3,7 +3,8 @@
   {{#if (has-block "custom-icon")}}
     <div>{{yield to="custom-icon"}}</div>
   {{else if @icon}}
-    <i class="{{@icon}} upf-badge upf-badge--shape-round upf-badge--size-md"></i>
+    <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}}
+               class="upf-badge upf-badge--shape-round upf-badge--size-md" />
   {{else if @image}}
     <img class="upf-badge upf-badge--size-md upf-badge--shape-round" src={{@image}} alt="banner" />
   {{/if}}

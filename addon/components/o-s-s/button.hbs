@@ -3,10 +3,10 @@
   {{#if this.intervalState}}
     {{t "oss-components.button.cancel_message" time=this.counterTimeLeftSecond}}
   {{else if this.loadingState}}
-    <i class="fas fa-circle-notch fa-spin"></i>
+    <OSS::Icon @style="solid" @icon="fa-circle-notch fa-spin" />
   {{else}}
     {{#if @icon}}
-      <i class={{@icon}}></i>
+      <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
     {{/if}}
 
     {{#if @label}}

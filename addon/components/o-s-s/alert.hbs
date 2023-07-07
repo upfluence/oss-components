@@ -2,7 +2,7 @@
   <div class="indicator"></div>
   <div class="main-container {{if this.plain 'main-container--plain'}}">
     <span class="icon">
-      <i class={{concat "far " this.iconClass}}></i>
+      <OSS::Icon @icon={{this.iconClass}} />
     </span>
     <div class="text-container">
       {{#if @title}}

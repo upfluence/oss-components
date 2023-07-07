@@ -4,16 +4,16 @@
             {{on "click" (fn this.onSelectTab tab)}} disabled={{tab.disabled}}>
       <div class="fx-row tab-content fx-xalign-center fx-gap-px-9">
         {{#if tab.icon}}
-          <i class={{tab.icon}} />
+          <OSS::Icon @style={{fa-icon-style tab.icon}} @icon={{fa-icon-value tab.icon}} />
         {{/if}}
         {{#if tab.label}}
           <span class="text-size-6">{{tab.label}}</span>
         {{/if}}
         {{#if tab.infoCircle}}
-          <i class="far fa-info-circle" />
+          <OSS::Icon @icon="fa-info-circle" />
         {{/if}}
         {{#if tab.notificationDot}}
-          <i class="fas fa-circle font-color-accent text-size-1" />
+          <OSS::Icon @style="solid" @icon="fa-circle" class="font-color-accent text-size-1" />
         {{/if}}
       </div>
       <div class="border-display" />
