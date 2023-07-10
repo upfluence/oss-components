@@ -94592,10 +94592,13 @@ define("@upfluence/oss-components/components/o-s-s/togglable-section", ["exports
 
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="upf-banner fx-1 fx-col fx-gap-px-18 border padding-px-18 fx-xalign-center" ...attributes>
-    <div class="fx-row fx-gap-px-12 fx-xalign-center width-pc-100">
+    <div class="togglable-section fx-1 fx-col border fx-xalign-center" ...attributes>
+    <div class="fx-row fx-gap-px-12 fx-xalign-center width-pc-100 padding-px-18 inner-header
+                {{if @toggled "background-color-gray-50"}}">
       {{#if @iconUrl}}
         <img class="upf-badge upf-badge--size-md upf-badge--shape-round" src={{@iconUrl}} alt={{@title}} />
+      {{else if @icon}}
+        <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
       {{/if}}
       <div class="fx-col fx-1 fx-gap-px-3">
         <span class="font-weight-semibold font-size-md font-color-gray-900">{{@title}}</span>
@@ -94605,7 +94608,7 @@ define("@upfluence/oss-components/components/o-s-s/togglable-section", ["exports
     </div>
     {{#if (and (has-block "contents") @toggled)}}
       <hr class="margin-px-0 width-pc-100" />
-      <div class="width-pc-100">
+      <div class="width-pc-100 padding-px-18 content-block">
         {{yield to="contents"}}
       </div>
     {{/if}}
@@ -94613,8 +94616,8 @@ define("@upfluence/oss-components/components/o-s-s/togglable-section", ["exports
   
   */
   {
-    "id": "ZI5Xr/0i",
-    "block": "[[[11,0],[24,0,\"upf-banner fx-1 fx-col fx-gap-px-18 border padding-px-18 fx-xalign-center\"],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center width-pc-100\"],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"      \"],[10,\"img\"],[14,0,\"upf-badge upf-badge--size-md upf-badge--shape-round\"],[15,\"src\",[30,2]],[15,\"alt\",[30,3]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-3\"],[12],[1,\"\\n      \"],[10,1],[14,0,\"font-weight-semibold font-size-md font-color-gray-900\"],[12],[1,[30,3]],[13],[1,\"\\n      \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,[30,4]],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[8,[39,1],null,[[\"@value\",\"@onChange\"],[[30,5],[30,6]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[28,[37,2],[[48,[30,7]],[30,5]],null],[[[1,\"    \"],[10,\"hr\"],[14,0,\"margin-px-0 width-pc-100\"],[12],[13],[1,\"\\n    \"],[10,0],[14,0,\"width-pc-100\"],[12],[1,\"\\n      \"],[18,7,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@iconUrl\",\"@title\",\"@subtitle\",\"@toggled\",\"@onChange\",\"&contents\"],false,[\"if\",\"o-s-s/toggle-switch\",\"and\",\"has-block\",\"yield\"]]",
+    "id": "ZuUPYPmN",
+    "block": "[[[11,0],[24,0,\"togglable-section fx-1 fx-col border fx-xalign-center\"],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"fx-row fx-gap-px-12 fx-xalign-center width-pc-100 padding-px-18 inner-header\\n              \",[52,[30,2],\"background-color-gray-50\"]]]],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"      \"],[10,\"img\"],[14,0,\"upf-badge upf-badge--size-md upf-badge--shape-round\"],[15,\"src\",[30,3]],[15,\"alt\",[30,4]],[12],[13],[1,\"\\n\"]],[]],[[[41,[30,5],[[[1,\"      \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[[28,[37,2],[[30,5]],null],[28,[37,3],[[30,5]],null]]],null],[1,\"\\n    \"]],[]],null]],[]]],[1,\"    \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-3\"],[12],[1,\"\\n      \"],[10,1],[14,0,\"font-weight-semibold font-size-md font-color-gray-900\"],[12],[1,[30,4]],[13],[1,\"\\n      \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,[30,6]],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[8,[39,4],null,[[\"@value\",\"@onChange\"],[[30,2],[30,7]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[28,[37,5],[[48,[30,8]],[30,2]],null],[[[1,\"    \"],[10,\"hr\"],[14,0,\"margin-px-0 width-pc-100\"],[12],[13],[1,\"\\n    \"],[10,0],[14,0,\"width-pc-100 padding-px-18 content-block\"],[12],[1,\"\\n      \"],[18,8,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@toggled\",\"@iconUrl\",\"@title\",\"@icon\",\"@subtitle\",\"@onChange\",\"&contents\"],false,[\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"o-s-s/toggle-switch\",\"and\",\"has-block\",\"yield\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/togglable-section.hbs",
     "isStrictMode": false
   });
@@ -94681,6 +94684,20 @@ define("@upfluence/oss-components/components/o-s-s/togglable-section", ["exports
           type: 'text'
         }
       },
+      icon: {
+        description: 'A font-awesome icon string that will be displayed. (e.g. "far fa-hourglass")',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
       iconUrl: {
         description: 'URL pointing to an image to use as icon',
         table: {
@@ -94735,6 +94752,7 @@ define("@upfluence/oss-components/components/o-s-s/togglable-section", ["exports
     subtitle: '',
     toggled: false,
     iconUrl: '',
+    icon: '',
     onChange: (0, _addonActions.action)('onChange')
   };
 
@@ -94745,7 +94763,7 @@ define("@upfluence/oss-components/components/o-s-s/togglable-section", ["exports
         
           <OSS::TogglableSection
             @title={{this.title}} @subtitle={{this.subtitle}} @toggled={{this.toggled}} @iconUrl={{this.iconUrl}}
-            @onChange={{this.onChange}}>
+            @icon={{this.icon}} @onChange={{this.onChange}}>
             <:contents>
               Setting content
             </:contents>
@@ -94753,8 +94771,8 @@ define("@upfluence/oss-components/components/o-s-s/togglable-section", ["exports
         
       */
       {
-        "id": "PAWXkzUp",
-        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@toggled\",\"@iconUrl\",\"@onChange\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"toggled\"]],[30,0,[\"iconUrl\"]],[30,0,[\"onChange\"]]]],[[\"contents\"],[[[[1,\"\\n        Setting content\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/togglable-section\"]]",
+        "id": "snryNMf1",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@toggled\",\"@iconUrl\",\"@icon\",\"@onChange\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"toggled\"]],[30,0,[\"iconUrl\"]],[30,0,[\"icon\"]],[30,0,[\"onChange\"]]]],[[\"contents\"],[[[[1,\"\\n        Setting content\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/togglable-section\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -107508,36 +107526,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-1891rKTuOZjMUht0/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-1891rKTuOZjMUht0/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1891rKTuOZjMUht0/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-1891rKTuOZjMUht0/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-1891rKTuOZjMUht0/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1891rKTuOZjMUht0/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/l.js /tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-1891rKTuOZjMUht0/cache-275-bundler/staging/l.js /tmp/broccoli-1891rKTuOZjMUht0/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/l.js_/tmp/broccoli-1862ihuJKJMQx878/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-1891rKTuOZjMUht0/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1891rKTuOZjMUht0/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1891rKTuOZjMUht0/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1891rKTuOZjMUht0/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1891rKTuOZjMUht0/cache-275-bundler/staging/l.js_/tmp/broccoli-1891rKTuOZjMUht0/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 

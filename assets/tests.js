@@ -15790,7 +15790,7 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["@emb
                 }));
 
               case 2:
-                assert.dom('.upf-banner').exists();
+                assert.dom('.togglable-section').exists();
 
               case 3:
               case "end":
@@ -15943,7 +15943,7 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["@emb
         return _ref6.apply(this, arguments);
       };
     }());
-    (0, _qunit.test)('When the toggle is enabled, the named-block contents are displayed', /*#__PURE__*/function () {
+    (0, _qunit.test)('It displays a font-awesome icon if the @icon parameter is filled in', /*#__PURE__*/function () {
       var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(assert) {
         return regeneratorRuntime.wrap(function _callee6$(_context6) {
           while (1) {
@@ -15952,30 +15952,19 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["@emb
                 _context6.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
-                  <OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
-                                                                 @iconUrl={{this.iconUrl}} @toggled={{this.toggled}}
-                                                                 @onChange={{this.onChange}}>
-                                       <:contents>
-                                         <div>contents named block</div>
-                                       </:contents>
-                                     </OSS::TogglableSection>
+                  <OSS::TogglableSection @title="title" @icon="far fa-hourglass" @onChange={{this.onChange}} @toggled={{false}} />
                 */
                 {
-                  "id": "QnOC3dkQ",
-                  "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@iconUrl\",\"@toggled\",\"@onChange\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"iconUrl\"]],[30,0,[\"toggled\"]],[30,0,[\"onChange\"]]]],[[\"contents\"],[[[[1,\"\\n                         \"],[10,0],[12],[1,\"contents named block\"],[13],[1,\"\\n                       \"]],[]]]]]],[],false,[\"o-s-s/togglable-section\"]]",
+                  "id": "nyQwGI98",
+                  "block": "[[[8,[39,0],null,[[\"@title\",\"@icon\",\"@onChange\",\"@toggled\"],[\"title\",\"far fa-hourglass\",[30,0,[\"onChange\"]],false]],null]],[],false,[\"o-s-s/togglable-section\"]]",
                   "moduleName": "(unknown template module)",
                   "isStrictMode": false
                 }));
 
               case 2:
-                assert.dom('.upf-banner').doesNotContainText('contents named block');
-                _context6.next = 5;
-                return (0, _testHelpers.click)('.upf-toggle');
+                assert.dom('.far.fa-hourglass').exists();
 
-              case 5:
-                assert.dom('.upf-banner').hasTextContaining('contents named block');
-
-              case 6:
+              case 3:
               case "end":
                 return _context6.stop();
             }
@@ -15987,97 +15976,165 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["@emb
         return _ref7.apply(this, arguments);
       };
     }());
-    (0, _qunit.test)('When the toggle is disabled, the named-block contents are displayed', /*#__PURE__*/function () {
-      var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(assert) {
-        return regeneratorRuntime.wrap(function _callee7$(_context7) {
-          while (1) {
-            switch (_context7.prev = _context7.next) {
-              case 0:
-                this.toggled = true;
-                _context7.next = 3;
-                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-                /*
-                  <OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
-                                                                 @iconUrl={{this.iconUrl}} @toggled={{this.toggled}}
-                                                                 @onChange={{this.onChange}}>
-                                       <:contents>
-                                         <div>contents named block</div>
-                                       </:contents>
-                                     </OSS::TogglableSection>
-                */
-                {
-                  "id": "QnOC3dkQ",
-                  "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@iconUrl\",\"@toggled\",\"@onChange\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"iconUrl\"]],[30,0,[\"toggled\"]],[30,0,[\"onChange\"]]]],[[\"contents\"],[[[[1,\"\\n                         \"],[10,0],[12],[1,\"contents named block\"],[13],[1,\"\\n                       \"]],[]]]]]],[],false,[\"o-s-s/togglable-section\"]]",
-                  "moduleName": "(unknown template module)",
-                  "isStrictMode": false
-                }));
+    (0, _qunit.module)('Toggle behavior', function () {
+      function renderComponent() {
+        return _renderComponent.apply(this, arguments);
+      }
 
-              case 3:
-                assert.dom('.upf-banner').hasTextContaining('contents named block');
-                _context7.next = 6;
-                return (0, _testHelpers.click)('.upf-toggle');
+      function _renderComponent() {
+        _renderComponent = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11() {
+          return regeneratorRuntime.wrap(function _callee11$(_context11) {
+            while (1) {
+              switch (_context11.prev = _context11.next) {
+                case 0:
+                  _context11.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
+                                                                @iconUrl={{this.iconUrl}} @toggled={{this.toggled}}
+                                                                @onChange={{this.onChange}}>
+                                          <:contents>
+                                            <div>contents named block</div>
+                                          </:contents>
+                                        </OSS::TogglableSection>
+                  */
+                  {
+                    "id": "6ZBVR1Vb",
+                    "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@iconUrl\",\"@toggled\",\"@onChange\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"iconUrl\"]],[30,0,[\"toggled\"]],[30,0,[\"onChange\"]]]],[[\"contents\"],[[[[1,\"\\n                          \"],[10,0],[12],[1,\"contents named block\"],[13],[1,\"\\n                        \"]],[]]]]]],[],false,[\"o-s-s/togglable-section\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
 
-              case 6:
-                assert.dom('.upf-banner').doesNotContainText('contents named block');
-
-              case 7:
-              case "end":
-                return _context7.stop();
+                case 2:
+                case "end":
+                  return _context11.stop();
+              }
             }
-          }
-        }, _callee7, this);
-      }));
+          }, _callee11);
+        }));
+        return _renderComponent.apply(this, arguments);
+      }
 
-      return function (_x7) {
-        return _ref8.apply(this, arguments);
-      };
-    }());
-    (0, _qunit.test)('When the toggle is click, the @onChange method is called', /*#__PURE__*/function () {
-      var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
-        return regeneratorRuntime.wrap(function _callee8$(_context8) {
-          while (1) {
-            switch (_context8.prev = _context8.next) {
-              case 0:
-                this.onChange = _sinon.default.stub();
-                _context8.next = 3;
-                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-                /*
-                  <OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
-                                                                 @iconUrl={{this.iconUrl}} @toggled={{this.toggled}}
-                                                                 @onChange={{this.onChange}}>
-                                       <:contents>
-                                         <div>contents named block</div>
-                                       </:contents>
-                                     </OSS::TogglableSection>
-                */
-                {
-                  "id": "QnOC3dkQ",
-                  "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@iconUrl\",\"@toggled\",\"@onChange\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"iconUrl\"]],[30,0,[\"toggled\"]],[30,0,[\"onChange\"]]]],[[\"contents\"],[[[[1,\"\\n                         \"],[10,0],[12],[1,\"contents named block\"],[13],[1,\"\\n                       \"]],[]]]]]],[],false,[\"o-s-s/togglable-section\"]]",
-                  "moduleName": "(unknown template module)",
-                  "isStrictMode": false
-                }));
+      (0, _qunit.test)('When the toggle is enabled, the named-block contents are displayed', /*#__PURE__*/function () {
+        var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(assert) {
+          return regeneratorRuntime.wrap(function _callee7$(_context7) {
+            while (1) {
+              switch (_context7.prev = _context7.next) {
+                case 0:
+                  _context7.next = 2;
+                  return renderComponent();
 
-              case 3:
-                _context8.next = 5;
-                return (0, _testHelpers.click)('.upf-toggle');
+                case 2:
+                  assert.dom('.togglable-section').doesNotContainText('contents named block');
+                  _context7.next = 5;
+                  return (0, _testHelpers.click)('.upf-toggle');
 
-              case 5:
-                assert.true(this.onChange.calledOnceWithExactly(true, _sinon.default.match(function (propablyEvent) {
-                  return propablyEvent instanceof Event;
-                })));
+                case 5:
+                  assert.dom('.togglable-section').hasTextContaining('contents named block');
 
-              case 6:
-              case "end":
-                return _context8.stop();
+                case 6:
+                case "end":
+                  return _context7.stop();
+              }
             }
-          }
-        }, _callee8, this);
-      }));
+          }, _callee7);
+        }));
 
-      return function (_x8) {
-        return _ref9.apply(this, arguments);
-      };
-    }());
+        return function (_x7) {
+          return _ref8.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('When the toggle is enabled, the header part turns grey', /*#__PURE__*/function () {
+        var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
+          return regeneratorRuntime.wrap(function _callee8$(_context8) {
+            while (1) {
+              switch (_context8.prev = _context8.next) {
+                case 0:
+                  _context8.next = 2;
+                  return renderComponent();
+
+                case 2:
+                  assert.dom('.inner-header').doesNotHaveClass('background-color-gray-50');
+                  _context8.next = 5;
+                  return (0, _testHelpers.click)('.upf-toggle');
+
+                case 5:
+                  assert.dom('.inner-header').hasClass('background-color-gray-50');
+
+                case 6:
+                case "end":
+                  return _context8.stop();
+              }
+            }
+          }, _callee8);
+        }));
+
+        return function (_x8) {
+          return _ref9.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('When the toggle is disabled, the named-block contents are displayed', /*#__PURE__*/function () {
+        var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(assert) {
+          return regeneratorRuntime.wrap(function _callee9$(_context9) {
+            while (1) {
+              switch (_context9.prev = _context9.next) {
+                case 0:
+                  this.toggled = true;
+                  _context9.next = 3;
+                  return renderComponent();
+
+                case 3:
+                  assert.dom('.togglable-section').hasTextContaining('contents named block');
+                  _context9.next = 6;
+                  return (0, _testHelpers.click)('.upf-toggle');
+
+                case 6:
+                  assert.dom('.togglable-section').doesNotContainText('contents named block');
+
+                case 7:
+                case "end":
+                  return _context9.stop();
+              }
+            }
+          }, _callee9, this);
+        }));
+
+        return function (_x9) {
+          return _ref10.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('When the toggle is clicked, the @onChange method is called', /*#__PURE__*/function () {
+        var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(assert) {
+          return regeneratorRuntime.wrap(function _callee10$(_context10) {
+            while (1) {
+              switch (_context10.prev = _context10.next) {
+                case 0:
+                  this.onChange = _sinon.default.stub();
+                  _context10.next = 3;
+                  return renderComponent();
+
+                case 3:
+                  _context10.next = 5;
+                  return (0, _testHelpers.click)('.upf-toggle');
+
+                case 5:
+                  assert.true(this.onChange.calledOnceWithExactly(true, _sinon.default.match(function (propablyEvent) {
+                    return propablyEvent instanceof Event;
+                  })));
+
+                case 6:
+                case "end":
+                  return _context10.stop();
+              }
+            }
+          }, _callee10, this);
+        }));
+
+        return function (_x10) {
+          return _ref11.apply(this, arguments);
+        };
+      }());
+    });
   });
 });
 define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/object", "@ember/test-helpers", "@ember/test-helpers/settled", "@ember/test-helpers/setup-onerror", "sinon"], function (_templateFactory, _qunit, _emberQunit, _object, _testHelpers, _settled, _setupOnerror, _sinon) {

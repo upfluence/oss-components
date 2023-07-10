@@ -11515,7 +11515,8 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
     width: 100%;
   }
 }
-.upf-banner {
+.upf-banner,
+.togglable-section {
   border: 1px solid var(--color-border-default);
   border-radius: var(--border-radius-md);
   transition: ease-in-out 0.25s;
@@ -14538,6 +14539,24 @@ a.upf-btn--sm {
 .oss-toggle-buttons-container .oss-toggle-buttons-btn--selected {
   background-color: var(--color-white);
   box-shadow: var(--box-shadow-xs);
+}
+.togglable-section .inner-header {
+  border-top-right-radius: var(--border-radius-md);
+  border-top-left-radius: var(--border-radius-md);
+  transition: background-color 300ms linear, border-radius 300ms linear;
+}
+.togglable-section .content-block {
+  animation: append-animation 300ms linear;
+}
+@keyframes append-animation {
+  from {
+    transform: translateY(-18px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
 }
 .upf-table-v2 {
   border: 1px solid var(--color-border-default);
