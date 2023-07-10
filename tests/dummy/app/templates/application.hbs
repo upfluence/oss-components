@@ -21,6 +21,14 @@
   </OSS::Layout::Sidebar>
   <div style="width:100%; height:100vh; overflow: auto;">
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
+      <OSS::TogglableSection @title="This is a title" @subtitle="This is a subtitle" @toggled={{this.togglable}}
+                             @icon="far fa-hourglass" @onChange={{this.onToggle}}>
+        <:contents>
+          <span>This is a Contents named block</span>
+        </:contents>
+      </OSS::TogglableSection>
+    </div>
+    <div class="fx-row fx-1 fx-gap-px-10 margin-md">
       <OSS::Skeleton @width="70%" />
       <OSS::Skeleton @width={{20}} />
     </div>

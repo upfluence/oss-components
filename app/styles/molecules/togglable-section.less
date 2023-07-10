@@ -1,0 +1,24 @@
+.togglable-section {
+  &:extend(.upf-banner);
+
+  .inner-header {
+    border-top-right-radius: var(--border-radius-md);
+    border-top-left-radius: var(--border-radius-md);
+    transition: background-color 300ms linear, border-radius 300ms linear;
+  }
+
+  .content-block {
+    animation: append-animation 300ms linear;
+  }
+
+  @keyframes append-animation {
+    from {
+      transform: translateY(-18px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0%);
+      opacity: 1;
+    }
+  }
+}
