@@ -7,7 +7,6 @@ interface CampaignTogglableSectionArgs {
   iconUrl?: string;
   icon?: string;
   subtitle?: string;
-  plain?: boolean;
   onChange(value: boolean): void;
 }
 
