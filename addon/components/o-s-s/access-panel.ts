@@ -15,14 +15,19 @@ export default class OSSAccessPanel extends Component<OSSAccessPanelArgs> {
   loadingRows = new Array(12);
   loadingMoreRows = new Array(3);
 
-  @tracked searchKeyword: string = '';
+  @tracked searchKeyword?: string;
 
   get displayEmptyState(): boolean {
     return (this.args.records || []).length === 0 && !this.args.loading;
   }
 
+  get hasNoKeyword(): boolean {
+    return this.searchKeyword === undefined;
+  }
+
   @action
   onSearch(): void {
-    this.args.onSearch(this.searchKeyword);
+    if (this.hasNoKeyword) return;
+    this.args.onSearch(this.searchKeyword!);
   }
 }

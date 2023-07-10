@@ -4,7 +4,7 @@
     {{yield to="header"}}
   </div>
 
-  {{#if (and this.displayEmptyState (not this.searchKeyword))}}
+  {{#if (and this.displayEmptyState this.hasNoKeyword)}}
     <div class="fx-1">
       {{yield to="empty-state"}}
     </div>
