@@ -24,6 +24,16 @@ export default {
         type: 'text'
       }
     },
+    icon: {
+      description: 'A font-awesome icon string that will be displayed. (e.g. "far fa-hourglass")',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: {
+        type: 'text'
+      }
+    },
     iconUrl: {
       description: 'URL pointing to an image to use as icon',
       table: {
@@ -69,6 +79,7 @@ const defaultArgs = {
   subtitle: '',
   toggled: false,
   iconUrl: '',
+  icon: '',
   onChange: action('onChange')
 };
 
@@ -76,7 +87,7 @@ const Template = (args) => ({
   template: hbs`
     <OSS::TogglableSection
       @title={{this.title}} @subtitle={{this.subtitle}} @toggled={{this.toggled}} @iconUrl={{this.iconUrl}}
-      @onChange={{this.onChange}}>
+      @icon={{this.icon}} @onChange={{this.onChange}}>
       <:contents>
         Setting content
       </:contents>
