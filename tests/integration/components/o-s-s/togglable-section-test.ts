@@ -1,11 +1,11 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { click, render, setupOnerror } from '@ember/test-helpers';
-import { hbs } from 'ember-cli-htmlbars';
+import { hbs } from 'ember-cli-htmlbars';
 import { set } from '@ember/object';
 import sinon from 'sinon';
 
-module('Integration | Component | o-s-s/togglable-section', function(hooks) {
+module('Integration | Component | o-s-s/togglable-section', function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
@@ -22,7 +22,7 @@ module('Integration | Component | o-s-s/togglable-section', function(hooks) {
     await render(hbs`<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
                                                  @iconUrl={{this.iconUrl}} @toggled={{this.toggled}}
                                                  @onChange={{this.onChange}} />`);
-    assert.dom('.upf-banner').exists();
+    assert.dom('.togglable-section').exists();
   });
 
   test('It throws an error if the @title param is not passed', async function (assert) {
@@ -58,50 +58,58 @@ module('Integration | Component | o-s-s/togglable-section', function(hooks) {
     assert.dom('img').doesNotExist();
   });
 
-  test('When the toggle is enabled, the named-block contents are displayed', async function (assert) {
-    await render(hbs`<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
-                                                 @iconUrl={{this.iconUrl}} @toggled={{this.toggled}}
-                                                 @onChange={{this.onChange}}>
-                       <:contents>
-                         <div>contents named block</div>
-                       </:contents>
-                     </OSS::TogglableSection>`);
-    assert.dom('.upf-banner').doesNotContainText('contents named block');
-    await click('.upf-toggle');
-    assert.dom('.upf-banner').hasTextContaining('contents named block');
-  });
-
-  test('When the toggle is disabled, the named-block contents are displayed', async function (assert) {
-    this.toggled = true;
-    await render(hbs`<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
-                                                 @iconUrl={{this.iconUrl}} @toggled={{this.toggled}}
-                                                 @onChange={{this.onChange}}>
-                       <:contents>
-                         <div>contents named block</div>
-                       </:contents>
-                     </OSS::TogglableSection>`);
-    assert.dom('.upf-banner').hasTextContaining('contents named block');
-    await click('.upf-toggle');
-    assert.dom('.upf-banner').doesNotContainText('contents named block');
-  });
-
-  test('When the toggle is click, the @onChange method is called', async function (assert) {
-    this.onChange = sinon.stub();
-    await render(hbs`<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
-                                                 @iconUrl={{this.iconUrl}} @toggled={{this.toggled}}
-                                                 @onChange={{this.onChange}}>
-                       <:contents>
-                         <div>contents named block</div>
-                       </:contents>
-                     </OSS::TogglableSection>`);
-    await click('.upf-toggle');
-    assert.true(
-      this.onChange.calledOnceWithExactly(
-        true,
-        sinon.match((propablyEvent: unknown) => {
-          return propablyEvent instanceof Event;
-        })
-      )
+  test('It displays a font-awesome icon if the @icon parameter is filled in', async function (assert) {
+    await render(
+      hbs`<OSS::TogglableSection @title="title" @icon="far fa-hourglass" @onChange={{this.onChange}} @toggled={{false}} />`
     );
+    assert.dom('.far.fa-hourglass').exists();
+  });
+
+  module('Toggle behavior', () => {
+    async function renderComponent() {
+      await render(hbs`<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
+                                              @iconUrl={{this.iconUrl}} @toggled={{this.toggled}}
+                                              @onChange={{this.onChange}}>
+                        <:contents>
+                          <div>contents named block</div>
+                        </:contents>
+                      </OSS::TogglableSection>`);
+    }
+
+    test('When the toggle is enabled, the named-block contents are displayed', async function (assert) {
+      await renderComponent();
+      assert.dom('.togglable-section').doesNotContainText('contents named block');
+      await click('.upf-toggle');
+      assert.dom('.togglable-section').hasTextContaining('contents named block');
+    });
+
+    test('When the toggle is enabled, the header part turns grey', async function (assert) {
+      await renderComponent();
+      assert.dom('.inner-header').doesNotHaveClass('background-color-gray-50');
+      await click('.upf-toggle');
+      assert.dom('.inner-header').hasClass('background-color-gray-50');
+    });
+
+    test('When the toggle is disabled, the named-block contents are displayed', async function (assert) {
+      this.toggled = true;
+      await renderComponent();
+      assert.dom('.togglable-section').hasTextContaining('contents named block');
+      await click('.upf-toggle');
+      assert.dom('.togglable-section').doesNotContainText('contents named block');
+    });
+
+    test('When the toggle is clicked, the @onChange method is called', async function (assert) {
+      this.onChange = sinon.stub();
+      await renderComponent();
+      await click('.upf-toggle');
+      assert.true(
+        this.onChange.calledOnceWithExactly(
+          true,
+          sinon.match((propablyEvent: unknown) => {
+            return propablyEvent instanceof Event;
+          })
+        )
+      );
+    });
   });
 });

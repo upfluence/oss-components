@@ -75,6 +75,7 @@ export default class ApplicationController extends Controller {
   @tracked radio1 = true;
   @tracked radio2 = false;
   @tracked isChecked = true;
+  @tracked togglable = false;
 
   @tracked media = [
     {
@@ -240,6 +241,11 @@ export default class ApplicationController extends Controller {
   @action
   onProvinceSelected(value) {
     console.log('selected province value : ', value);
+  }
+
+  @action
+  onToggle(value) {
+    this.togglable = value;
   }
 
   @action

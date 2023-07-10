@@ -1,7 +1,10 @@
-<div class="upf-banner fx-1 fx-col fx-gap-px-18 border padding-px-18 fx-xalign-center" ...attributes>
-  <div class="fx-row fx-gap-px-12 fx-xalign-center width-pc-100">
+<div class="togglable-section fx-1 fx-col border fx-xalign-center" ...attributes>
+  <div class="fx-row fx-gap-px-12 fx-xalign-center width-pc-100 padding-px-18 inner-header
+              {{if @toggled "background-color-gray-50"}}">
     {{#if @iconUrl}}
       <img class="upf-badge upf-badge--size-md upf-badge--shape-round" src={{@iconUrl}} alt={{@title}} />
+    {{else if @icon}}
+      <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
     {{/if}}
     <div class="fx-col fx-1 fx-gap-px-3">
       <span class="font-weight-semibold font-size-md font-color-gray-900">{{@title}}</span>
@@ -11,7 +14,7 @@
   </div>
   {{#if (and (has-block "contents") @toggled)}}
     <hr class="margin-px-0 width-pc-100" />
-    <div class="width-pc-100">
+    <div class="width-pc-100 padding-px-18 content-block">
       {{yield to="contents"}}
     </div>
   {{/if}}
