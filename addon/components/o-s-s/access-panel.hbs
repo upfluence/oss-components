@@ -1,4 +1,4 @@
-<div class="oss-access-panel-backdrop" {{on "click" @onClose}}></div>
+<div class="oss-access-panel-backdrop" role="button" {{on "click" @onClose}}></div>
 <div class="oss-access-panel-container" ...attributes>
   <div class="oss-access-panel-container__header">
     {{yield to="header"}}
@@ -12,7 +12,7 @@
     <div class="padding-top-px-18 padding-bottom-px-18 padding-left-px-18 padding-right-px-18">
       <OSS::InputContainer>
         <:prefix>
-          <i class="far fa-search"></i>
+          <OSS::Icon @icon="fa-search" />
         </:prefix>
 
         <:input>
@@ -37,8 +37,8 @@
           {{#if (and @loading @initialLoad)}}
             {{#each this.loadingRows}}
               <div class="oss-access-panel-container__row fx-malign-space-between">
-                <div class="upf-skeleton-effect" style="width: 150px; height: 12px"></div>
-                <div class="upf-skeleton-effect" style="width: 36px; height: 12px"></div>
+                <OSS::Skeleton @height={{12}} @width={{150}} />
+                <OSS::Skeleton @height={{12}} @width={{36}} />
               </div>
             {{/each}}
           {{else}}
@@ -46,7 +46,7 @@
               <div class={{concat "oss-access-panel-container__row" (if record._accessPanel.active " oss-access-panel-container__row--active")}}>
                 {{yield record to="row"}}
                 {{#if record._accessPanel.active}}
-                  <i class="far fa-check font-color-primary-500"></i>
+                  <OSS::Icon @icon="fa-check" class="font-color-primary-500" />
                 {{/if}}
               </div>
             {{/each}}
@@ -54,8 +54,8 @@
             {{#if @loading}}
               {{#each this.loadingMoreRows}}
                 <div class="oss-access-panel-container__row fx-malign-space-between">
-                  <div class="upf-skeleton-effect" style="width: 150px; height: 12px"></div>
-                  <div class="upf-skeleton-effect" style="width: 36px; height: 12px"></div>
+                  <OSS::Skeleton @height={{12}} @width={{150}} />
+                  <OSS::Skeleton @height={{12}} @width={{36}} />
                 </div>
               {{/each}}
             {{/if}}
