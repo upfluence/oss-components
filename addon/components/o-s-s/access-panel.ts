@@ -4,7 +4,7 @@ import { action } from '@ember/object';
 
 interface OSSAccessPanelArgs {
   records: unknown[];
-  initialLoad: number;
+  initialLoad: boolean;
   loading?: boolean;
   onSearch(keyword: string): void;
   onBottomReached(): void;

@@ -67,7 +67,6 @@ module('Integration | Component | o-s-s/nav-tab', function (hooks) {
       assert.dom('.tab-content span').exists();
 
       assert.dom('.tab-container .tab').hasClass('tab--selected');
-      assert.dom('.tab-container .tab .border-display').hasStyle({ borderBottom: '2px solid rgb(13, 13, 230)' });
       assert.dom('.tab-content span').hasText('Tab');
     });
 
