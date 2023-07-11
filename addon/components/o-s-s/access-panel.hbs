@@ -45,9 +45,6 @@
             {{#each @records as |record|}}
               <div class={{concat "oss-access-panel-container__row" (if record._accessPanel.active " oss-access-panel-container__row--active")}}>
                 {{yield record to="row"}}
-                {{#if record._accessPanel.active}}
-                  <OSS::Icon @icon="fa-check" class="font-color-primary-500" />
-                {{/if}}
               </div>
             {{/each}}
 
