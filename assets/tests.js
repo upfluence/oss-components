@@ -742,6 +742,313 @@ define("dummy/tests/integration/components/modifiers/scroll-shadow-test", ["@emb
     });
   });
 });
+define("dummy/tests/integration/components/o-s-s/access-panel-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/object"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _sinon, _object) {
+  "use strict";
+
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+  function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+  (0, _qunit.module)('Integration | Component | o-s-s/access-panel', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.records = [{
+        label: 'foo'
+      }, {
+        label: 'bar'
+      }];
+      this.loading = false;
+      this.initialLoad = false;
+      this.loadMore = _sinon.default.stub();
+      this.onSearch = _sinon.default.stub();
+      this.onClose = _sinon.default.stub();
+    });
+
+    function renderComponent() {
+      return _renderComponent.apply(this, arguments);
+    }
+
+    function _renderComponent() {
+      _renderComponent = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
+        return regeneratorRuntime.wrap(function _callee9$(_context9) {
+          while (1) {
+            switch (_context9.prev = _context9.next) {
+              case 0:
+                _context9.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::AccessPanel
+                          @records={{this.records}} @loading={{this.loading}} @initialLoad={{this.initialLoad}}
+                          @onBottomReached={{this.loadMore}} @onSearch={{this.onSearch}} @onClose={{this.onClose}}>
+                            <:header>Header</:header>
+                            <:columns>Columns</:columns>
+                            <:row as |record|>row display: {{record.label}}</:row>
+                            <:empty-state><div class="empty-state">empty state</div></:empty-state>
+                            <:no-results><div class="no-results">no search results</div></:no-results>
+                          </OSS::AccessPanel>
+                      
+                */
+                {
+                  "id": "tyc4en3+",
+                  "block": "[[[8,[39,0],null,[[\"@records\",\"@loading\",\"@initialLoad\",\"@onBottomReached\",\"@onSearch\",\"@onClose\"],[[30,0,[\"records\"]],[30,0,[\"loading\"]],[30,0,[\"initialLoad\"]],[30,0,[\"loadMore\"]],[30,0,[\"onSearch\"]],[30,0,[\"onClose\"]]]],[[\"header\",\"columns\",\"row\",\"empty-state\",\"no-results\"],[[[[1,\"Header\"]],[]],[[[1,\"Columns\"]],[]],[[[1,\"row display: \"],[1,[30,1,[\"label\"]]]],[1]],[[[10,0],[14,0,\"empty-state\"],[12],[1,\"empty state\"],[13]],[]],[[[10,0],[14,0,\"no-results\"],[12],[1,\"no search results\"],[13]],[]]]]],[1,\"\\n      \"]],[\"record\"],false,[\"o-s-s/access-panel\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+              case "end":
+                return _context9.stop();
+            }
+          }
+        }, _callee9);
+      }));
+      return _renderComponent.apply(this, arguments);
+    }
+
+    (0, _qunit.test)('it renders the right empty state when no records are found and there is no ongoing search', /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(assert) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                this.records = [];
+                _context.next = 3;
+                return renderComponent();
+
+              case 3:
+                assert.dom('.empty-state').exists();
+                assert.dom('.empty-state').hasText('empty state');
+
+              case 5:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee, this);
+      }));
+
+      return function (_x) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('the initial loading state is correctly displayed', /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                this.loading = true;
+                this.initialLoad = true;
+                _context2.next = 4;
+                return renderComponent();
+
+              case 4:
+                assert.dom('.oss-access-panel-container__row').exists({
+                  count: 12
+                });
+                assert.dom('.oss-access-panel-container__row .upf-skeleton-effect').exists({
+                  count: 24
+                });
+
+              case 6:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2, this);
+      }));
+
+      return function (_x2) {
+        return _ref3.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('the initial loading state is correctly displayed', /*#__PURE__*/function () {
+      var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                this.loading = true;
+                this.initialLoad = false;
+                _context3.next = 4;
+                return renderComponent();
+
+              case 4:
+                assert.dom('.oss-access-panel-container__row').exists({
+                  count: 5
+                });
+                assert.dom('.oss-access-panel-container__row .upf-skeleton-effect').exists({
+                  count: 6
+                });
+
+              case 6:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      return function (_x3) {
+        return _ref4.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('The header named block is correctly filled', /*#__PURE__*/function () {
+      var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
+        return regeneratorRuntime.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.next = 2;
+                return renderComponent();
+
+              case 2:
+                assert.dom('.oss-access-panel-container__header').exists();
+                assert.dom('.oss-access-panel-container__header').hasText('Header');
+
+              case 4:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }));
+
+      return function (_x4) {
+        return _ref5.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('The columns named block is correctly filled', /*#__PURE__*/function () {
+      var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(assert) {
+        return regeneratorRuntime.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.next = 2;
+                return renderComponent();
+
+              case 2:
+                assert.dom('.oss-access-panel-container__rows-header').exists();
+                assert.dom('.oss-access-panel-container__rows-header').hasText('Columns');
+
+              case 4:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
+      }));
+
+      return function (_x5) {
+        return _ref6.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('The records are correctly displayed using the row named block', /*#__PURE__*/function () {
+      var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(assert) {
+        return regeneratorRuntime.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.next = 2;
+                return renderComponent();
+
+              case 2:
+                assert.dom('.oss-access-panel-container__row').exists({
+                  count: 2
+                });
+                assert.dom('.oss-access-panel-container__row:first-child').hasText('row display: foo');
+                assert.dom('.oss-access-panel-container__row:last-child').hasText('row display: bar');
+
+              case 5:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6);
+      }));
+
+      return function (_x6) {
+        return _ref7.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.module)('Search', function () {
+      (0, _qunit.test)('it calls the onSearch arg when a keyword is typed', /*#__PURE__*/function () {
+        var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(assert) {
+          return regeneratorRuntime.wrap(function _callee7$(_context7) {
+            while (1) {
+              switch (_context7.prev = _context7.next) {
+                case 0:
+                  _context7.next = 2;
+                  return renderComponent();
+
+                case 2:
+                  _context7.next = 4;
+                  return (0, _testHelpers.fillIn)('.oss-input-container input', 'fo');
+
+                case 4:
+                  _context7.next = 6;
+                  return (0, _testHelpers.typeIn)('.oss-input-container input', 'o', {
+                    delay: 0
+                  });
+
+                case 6:
+                  assert.ok(this.onSearch.calledOnceWithExactly('foo'));
+
+                case 7:
+                case "end":
+                  return _context7.stop();
+              }
+            }
+          }, _callee7, this);
+        }));
+
+        return function (_x7) {
+          return _ref8.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('it renders the right empty state when no records are found and there is an ongoing search', /*#__PURE__*/function () {
+        var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
+          var _this = this;
+
+          return regeneratorRuntime.wrap(function _callee8$(_context8) {
+            while (1) {
+              switch (_context8.prev = _context8.next) {
+                case 0:
+                  this.onSearch = _sinon.default.stub().callsFake(function () {
+                    (0, _object.set)(_this, 'records', []);
+                  });
+                  _context8.next = 3;
+                  return renderComponent();
+
+                case 3:
+                  _context8.next = 5;
+                  return (0, _testHelpers.fillIn)('.oss-input-container input', 'fo');
+
+                case 5:
+                  _context8.next = 7;
+                  return (0, _testHelpers.typeIn)('.oss-input-container input', 'o', {
+                    delay: 0
+                  });
+
+                case 7:
+                  assert.dom('.no-results').exists();
+                  assert.dom('.no-results').hasText('no search results');
+
+                case 9:
+                case "end":
+                  return _context8.stop();
+              }
+            }
+          }, _callee8, this);
+        }));
+
+        return function (_x8) {
+          return _ref9.apply(this, arguments);
+        };
+      }());
+    });
+  });
+});
 define("dummy/tests/integration/components/o-s-s/alert-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "sinon"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _sinon) {
   "use strict";
 
@@ -10276,12 +10583,9 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["@ember/templat
                   assert.dom('.tab-container .tab').exists();
                   assert.dom('.tab-content span').exists();
                   assert.dom('.tab-container .tab').hasClass('tab--selected');
-                  assert.dom('.tab-container .tab .border-display').hasStyle({
-                    borderBottom: '2px solid rgb(13, 13, 230)'
-                  });
                   assert.dom('.tab-content span').hasText('Tab');
 
-                case 9:
+                case 8:
                 case "end":
                   return _context5.stop();
               }

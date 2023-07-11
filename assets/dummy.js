@@ -444,6 +444,19 @@ define("dummy/app", ["exports", "@ember/application", "ember-resolver", "ember-l
     }
   });
 });
+;define("dummy/components/o-s-s/access-panel", ["exports", "@upfluence/oss-components/components/o-s-s/access-panel"], function (_exports, _accessPanel) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function get() {
+      return _accessPanel.default;
+    }
+  });
+});
 ;define("dummy/components/o-s-s/alert", ["exports", "@upfluence/oss-components/components/o-s-s/alert"], function (_exports, _alert) {
   "use strict";
 
@@ -3081,6 +3094,9 @@ define("dummy/routes/application", ["exports", "@ember/routing/route"], function
   _exports.default = void 0;
   var _default = {
     "oss-components": {
+      "access-panel": {
+        "search_placeholder": "Search..."
+      },
       "badge": {
         "image_alt": "Badge Icon"
       },
