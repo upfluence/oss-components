@@ -1,24 +1,16 @@
 .tab-container {
+  border-bottom: 1px solid var(--color-border-default);
+
   button {
     all: unset;
-  }
-
-  .border-display {
-    align-self: flex-end;
-    height: var(--spacing-px-9);
-    border-bottom: 1px solid var(--color-border-default);
   }
 
   .tab {
     color: var(--color-gray-400);
 
-    .border-display {
-      align-self: auto;
-    }
-
     .tab-content {
       padding: var(--spacing-px-6) var(--spacing-px-18);
-      height: 34px;
+      height: 42px;
 
       .far.fa-info-circle {
         color: var(--color-gray-400);
@@ -27,9 +19,8 @@
 
     &--selected {
       color: var(--color-gray-900);
-      .border-display {
-        border-bottom: 2px solid var(--color-primary-500);
-      }
+      box-shadow: 0 2px 0px 0 var(--color-primary-500);
+
 
       .tab-content .far.fa-info-circle {
         color: var(--color-gray-900);
@@ -39,9 +30,6 @@
     &--disabled {
       pointer-events: none;
       color: var(--color-gray-300);
-      .border-display {
-        border-bottom: 1px solid var(--color-gray-200);
-      }
 
       .tab-content .far.fa-info-circle {
         color: var(--color-gray-400);
@@ -60,9 +48,6 @@
 
     &:active {
       color: var(--color-gray-900);
-      .border-display {
-        border-bottom: 2px solid var(--color-primary-500);
-      }
 
       .far.fa-info-circle {
         color: var(--color-gray-900);

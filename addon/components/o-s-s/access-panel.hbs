@@ -1,0 +1,67 @@
+<div class="oss-access-panel-backdrop" role="button" {{on "click" @onClose}}></div>
+<div class="oss-access-panel-container" ...attributes>
+  <div class="oss-access-panel-container__header">
+    {{yield to="header"}}
+  </div>
+
+  {{#if (and this.displayEmptyState this.hasNoKeyword)}}
+    <div class="fx-1">
+      {{yield to="empty-state"}}
+    </div>
+  {{else}}
+    <div class="padding-top-px-18 padding-bottom-px-18 padding-left-px-18 padding-right-px-18">
+      <OSS::InputContainer>
+        <:prefix>
+          <OSS::Icon @icon="fa-search" />
+        </:prefix>
+
+        <:input>
+          <Input
+            @value={{this.searchKeyword}} placeholder={{t "oss-components.access-panel.search_placeholder"}}
+            {{on "keyup" this.onSearch}} />
+        </:input>
+      </OSS::InputContainer>
+    </div>
+
+    <div class="oss-access-panel-container__content-wrapper fx-col height-pc-100">
+      <div class="oss-access-panel-container__rows-header">
+        {{yield to="columns"}}
+      </div>
+
+      <hr />
+
+      {{#if (and this.displayEmptyState this.searchKeyword)}}
+        {{yield to="no-results"}}
+      {{else}}
+        <div class="oss-access-panel-container__rows-container" {{on-bottom-reached @onBottomReached}}>
+          {{#if (and @loading @initialLoad)}}
+            {{#each this.loadingRows}}
+              <div class="oss-access-panel-container__row fx-malign-space-between">
+                <OSS::Skeleton @height={{12}} @width={{150}} />
+                <OSS::Skeleton @height={{12}} @width={{36}} />
+              </div>
+            {{/each}}
+          {{else}}
+            {{#each @records as |record|}}
+              <div class={{concat "oss-access-panel-container__row" (if record._accessPanel.active " oss-access-panel-container__row--active")}}>
+                {{yield record to="row"}}
+                {{#if record._accessPanel.active}}
+                  <OSS::Icon @icon="fa-check" class="font-color-primary-500" />
+                {{/if}}
+              </div>
+            {{/each}}
+
+            {{#if @loading}}
+              {{#each this.loadingMoreRows}}
+                <div class="oss-access-panel-container__row fx-malign-space-between">
+                  <OSS::Skeleton @height={{12}} @width={{150}} />
+                  <OSS::Skeleton @height={{12}} @width={{36}} />
+                </div>
+              {{/each}}
+            {{/if}}
+          {{/if}}
+        </div>
+      {{/if}}
+    </div>
+  {{/if}}
+</div>
