@@ -15927,10 +15927,10 @@ define("dummy/tests/integration/components/o-s-s/text-area-test", ["@ember/templ
 
               case 3:
                 _context8.next = 5;
-                return (0, _testHelpers.typeIn)(this.textareaSelector, 'base');
+                return (0, _testHelpers.typeIn)(this.textareaSelector, 'b');
 
               case 5:
-                assert.ok(this.onChange.calledOnceWithExactly('Database'));
+                assert.ok(this.onChange.calledOnceWithExactly('Datab'));
 
               case 6:
               case "end":
