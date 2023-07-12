@@ -76,9 +76,9 @@ module('Integration | Component | o-s-s/text-area', function (hooks) {
     this.onChange = sinon.spy();
 
     await render(hbs`<OSS::TextArea @value={{this.value}} @onChange={{this.onChange}}/>`);
-    await typeIn(this.textareaSelector, 'base');
+    await typeIn(this.textareaSelector, 'b');
 
-    assert.ok(this.onChange.calledOnceWithExactly('Database'));
+    assert.ok(this.onChange.calledOnceWithExactly('Datab'));
   });
 
   module('Extra attributes', () => {
