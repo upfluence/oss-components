@@ -1,8 +1,10 @@
 <div class="oss-access-panel-backdrop" role="button" {{on "click" @onClose}}></div>
-<div class="oss-access-panel-container" ...attributes>
-  <div class="oss-access-panel-container__header">
-    {{yield to="header"}}
-  </div>
+<div class="oss-access-panel-container" {{did-insert this.setupAnimation}} ...attributes>
+  {{#if (has-block "header")}}
+    <div class="oss-access-panel-container__header">
+      {{yield to="header"}}
+    </div>
+  {{/if}}
 
   {{#if (and this.displayEmptyState this.hasNoKeyword)}}
     <div class="fx-1">

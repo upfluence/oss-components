@@ -14,12 +14,15 @@
   box-shadow: var(--box-shadow-lg);
   background-color: var(--color-white);
   overflow: hidden;
+  opacity: 0;
+
+  transition: transform 400ms cubic-bezier(0.19, 1, 0.22, 1), opacity 200ms ease-in-out;
 
   display: flex;
   flex-direction: column;
 
   position: absolute;
-  top: 42px;
+  top: 0;
   left: 12px;
   z-index: 31;
 
@@ -28,6 +31,11 @@
 
   hr {
     margin: 0 var(--spacing-px-18);
+  }
+
+  &--visible {
+    opacity: 1;
+    transform: translateY(42px);
   }
 
   &__content-wrapper {
