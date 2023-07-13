@@ -35,7 +35,7 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
     assert.dom('.oss-button-dropdown__trigger .fx-row:first-child span').hasText('label');
   });
 
-  module('If @mainAction is empty', function () {
+  module('If @mainAction is undefined', function () {
     test('Clicking on the button opens the dropdown', async function (assert) {
       await render(
         hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label">
@@ -69,7 +69,7 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
     });
   });
 
-  module('If @mainAction is set', function (hooks) {
+  module('If @mainAction is defined', function (hooks) {
     hooks.beforeEach(function () {
       this.mainAction = sinon.stub();
     });
@@ -86,7 +86,7 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
       assert.dom('.oss-button-dropdown__items').doesNotExist();
     });
 
-    test('Clicking on the right part should trigger mainAction', async function (assert) {
+    test('Clicking on the left part should trigger mainAction', async function (assert) {
       await render(
         hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
       );
