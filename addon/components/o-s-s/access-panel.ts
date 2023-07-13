@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import { later } from '@ember/runloop';
 
 interface OSSAccessPanelArgs {
   records: unknown[];
@@ -18,11 +19,18 @@ export default class OSSAccessPanel extends Component<OSSAccessPanelArgs> {
   @tracked searchKeyword?: string;
 
   get displayEmptyState(): boolean {
-    return (this.args.records || []).length === 0 && !this.args.loading;
+    return (this.args.records || []).length === 0 && !this.args.loading;
   }
 
   get hasNoKeyword(): boolean {
     return this.searchKeyword === undefined;
+  }
+
+  @action
+  setupAnimation(element: HTMLDivElement): void {
+    later(this, () => {
+      element.classList.add('oss-access-panel-container--visible');
+    }, 100);
   }
 
   @action
