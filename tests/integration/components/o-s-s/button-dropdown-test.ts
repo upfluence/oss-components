@@ -2,6 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { click, render, setupOnerror } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
+import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
   setupRenderingTest(hooks);
@@ -34,29 +35,120 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
     assert.dom('.oss-button-dropdown__trigger .fx-row:first-child span').hasText('label');
   });
 
-  test('clicking on the caret container part opens the dropdown', async function (assert) {
-    await render(
-      hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label"><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
-    );
+  module('If @mainAction is empty', function () {
+    test('Clicking on the button opens the dropdown', async function (assert) {
+      await render(
+        hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label">
+              <:items>
+                <div class="oss-button-dropdown__item">foo</div>
+              </:items>
+            </OSS::ButtonDropdown>`
+      );
 
-    assert.dom('.oss-button-dropdown__items').doesNotExist();
+      assert.dom('.oss-button-dropdown__items').doesNotExist();
+      assert.dom('.oss-button-dropdown__trigger').hasAttribute('role', 'button');
 
-    await click('.oss-button-dropdown__trigger .fx-row:last-child');
-    assert.dom('.oss-button-dropdown__items').exists();
-    assert.dom('.oss-button-dropdown__items .oss-button-dropdown__item').exists({ count: 1 });
-    assert.dom('.oss-button-dropdown__items .oss-button-dropdown__item').hasText('foo');
+      await click('.oss-button-dropdown__trigger');
+      assert.dom('.oss-button-dropdown__items').exists();
+      assert.dom('.oss-button-dropdown__items .oss-button-dropdown__item').exists({ count: 1 });
+      assert.dom('.oss-button-dropdown__items .oss-button-dropdown__item').hasText('foo');
+    });
+
+    test("Hasn't inner border separator", async function (assert) {
+      await render(
+        hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}>
+              <:items>
+                <div class="oss-button-dropdown__item">foo</div>
+              </:items>
+            </OSS::ButtonDropdown>`
+      );
+
+      assert
+        .dom('.oss-button-dropdown__trigger .fx-row:last-child')
+        .doesNotHaveStyle({ 'border-left': '1px solid rgb(229, 231, 235)' });
+    });
   });
 
-  test('it throws an error if no icon or label args is provided', async function (assert) {
-    setupOnerror((err: { message: string }) => {
-      assert.equal(
-        err.message,
-        'Assertion Failed: [component][OSS::ButtonDropdown] You must pass either a @label or an @icon argument.'
+  module('If @mainAction is set', function (hooks) {
+    hooks.beforeEach(function () {
+      this.mainAction = sinon.stub();
+    });
+
+    test('Clicking on the button should not open the dropdown', async function (assert) {
+      await render(
+        hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
+      );
+
+      assert.dom('.oss-button-dropdown__items').doesNotExist();
+      assert.dom('.oss-button-dropdown__trigger').hasNoAttribute('role', 'button');
+
+      await click('.oss-button-dropdown__trigger');
+      assert.dom('.oss-button-dropdown__items').doesNotExist();
+    });
+
+    test('Clicking on the right part should trigger mainAction', async function (assert) {
+      await render(
+        hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
+      );
+
+      assert.ok(this.mainAction.notCalled);
+      assert.dom('.oss-button-dropdown__trigger .fx-row:first-child').hasAttribute('role', 'button');
+
+      await click('.oss-button-dropdown__trigger .fx-row:first-child');
+      assert.ok(this.mainAction.calledOnce);
+    });
+
+    test('Clicking on the caret container part opens the dropdown', async function (assert) {
+      await render(
+        hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
+      );
+
+      assert.dom('.oss-button-dropdown__items').doesNotExist();
+
+      assert.dom('.oss-button-dropdown__trigger .fx-row:last-child').hasAttribute('role', 'button');
+
+      await click('.oss-button-dropdown__trigger .fx-row:last-child');
+      assert.dom('.oss-button-dropdown__items').exists();
+      assert.dom('.oss-button-dropdown__items .oss-button-dropdown__item').exists({ count: 1 });
+      assert.dom('.oss-button-dropdown__items .oss-button-dropdown__item').hasText('foo');
+    });
+
+    test('Has inner border separator', async function (assert) {
+      await render(
+        hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
+      );
+
+      assert
+        .dom('.oss-button-dropdown__trigger .fx-row:last-child')
+        .hasStyle({ 'border-left': '1px solid rgb(229, 231, 235)' });
+    });
+  });
+
+  module('Error management', function () {
+    test('it throws an error if no icon or label args is provided', async function (assert) {
+      setupOnerror((err: { message: string }) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::ButtonDropdown] You must pass either a @label or an @icon argument.'
+        );
+      });
+
+      await render(
+        hbs`<OSS::ButtonDropdown><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
       );
     });
 
-    await render(
-      hbs`<OSS::ButtonDropdown><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
-    );
+    test('it throws an error if mainAction exists and is not a function', async function (assert) {
+      setupOnerror((err: { message: string }) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::ButtonDropdown] The parameter @mainAction should be a function.'
+        );
+      });
+
+      await render(
+        hbs`<OSS::ButtonDropdown  @label="test" @mainAction="foo" ><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
+      );
+    });
   });
 });

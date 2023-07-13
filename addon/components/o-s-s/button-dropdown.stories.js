@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions';
 import { hbs } from 'ember-cli-htmlbars';
 
 export default {
@@ -23,6 +24,16 @@ export default {
         defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
+    },
+    mainAction: {
+      description: 'An action that is triggered on click in the left part of the button.',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'mainAction(): void'
+        }
+      },
+      control: { type: 'function' }
     }
   },
   parameters: {
@@ -37,12 +48,19 @@ export default {
 
 const defaultArgs = {
   icon: 'far fa-user',
-  label: 'Actions'
+  label: 'Actions',
+  mainAction: null
+};
+
+const withMainActionArgs = {
+  icon: 'far fa-user',
+  label: 'Actions',
+  mainAction: action('mainAction')
 };
 
 const Template = (args) => ({
   template: hbs`
-    <OSS::ButtonDropdown @icon={{this.icon}} @label={{this.label}}>
+    <OSS::ButtonDropdown @icon={{this.icon}} @label={{this.label}} @mainAction={{this.mainAction}}>
       <:items>
         <div class="oss-button-dropdown__item">
           <OSS::Icon @style="solid" @icon="fa-share" /> Share
@@ -55,3 +73,6 @@ const Template = (args) => ({
 
 export const Usage = Template.bind({});
 Usage.args = defaultArgs;
+
+export const WithMainActionArgs = Template.bind({});
+WithMainActionArgs.args = withMainActionArgs;
