@@ -30,7 +30,7 @@ export default class OSSAccessPanel extends Component<OSSAccessPanelArgs> {
   setupAnimation(element: HTMLDivElement): void {
     later(this, () => {
       element.classList.add('oss-access-panel-container--visible');
-    }, 100);
+    }, 0);
   }
 
   @action
