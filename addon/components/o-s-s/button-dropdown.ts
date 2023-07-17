@@ -29,7 +29,23 @@ export default class extends Component<OSSButtonDropdownArgs> {
   }
 
   @action
-  toggleDropdown(): void {
+  onMainAction(event: MouseEvent): void {
+    if (this.args.mainAction) {
+      event.stopPropagation();
+      this.args.mainAction();
+    }
+  }
+
+  @action
+  onDropdownClick(event: MouseEvent): void {
+    if (!this.args.mainAction) {
+      this.toggleDropdown(event);
+    }
+  }
+
+  @action
+  toggleDropdown(event: MouseEvent): void {
+    event.stopPropagation();
     this.displayDropdown = !this.displayDropdown;
   }
 

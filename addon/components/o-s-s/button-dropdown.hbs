@@ -1,34 +1,18 @@
 <div class="oss-button-dropdown" ...attributes>
-  {{#if @mainAction}}
-    <div class="oss-button-dropdown__trigger fx-row fx-xalign-center">
-      <div class="fx-row fx-xalign-center fx-gap-px-6" role="button" {{on "click" @mainAction}}>
-        {{#if @icon}}
-          <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
-        {{/if}}
-        {{#if @label}}
-          <span>{{@label}}</span>
-        {{/if}}
-      </div>
-      <div class="fx-row fx-xalign-center" role="button" {{on "click" this.toggleDropdown}}>
-        <OSS::Icon @icon="fa-caret-{{if this.displayDropdown 'up' 'down'}}" />
-      </div>
+  <div class="oss-button-dropdown__trigger fx-row fx-xalign-center" role={{unless @mainAction "button"}}
+       {{on "click" this.onDropdownClick}}>
+    <div class="fx-row fx-xalign-center fx-gap-px-6" role={{if @mainAction "button"}} {{on "click" this.onMainAction}}>
+      {{#if @icon}}
+        <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
+      {{/if}}
+      {{#if @label}}
+        <span>{{@label}}</span>
+      {{/if}}
     </div>
-  {{else}}
-    <div class="oss-button-dropdown__trigger fx-row fx-xalign-center" role="button" {{on "click" this.toggleDropdown}}>
-      <div class="fx-row fx-xalign-center fx-gap-px-6">
-        {{#if @icon}}
-          <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
-        {{/if}}
-        {{#if @label}}
-          <span>{{@label}}</span>
-        {{/if}}
-      </div>
-      <div class="fx-row fx-xalign-center">
-        <OSS::Icon @icon="fa-caret-{{if this.displayDropdown 'up' 'down'}}" />
-      </div>
+    <div class="fx-row fx-xalign-center" role={{if @mainAction "button"}} {{on "click" this.toggleDropdown}}>
+      <OSS::Icon @icon="fa-caret-{{if this.displayDropdown 'up' 'down'}}" />
     </div>
-  {{/if}}
-
+  </div>
 
   {{#if this.displayDropdown}}
     <div class="oss-button-dropdown__items"
