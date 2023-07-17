@@ -75,53 +75,6 @@
   }
 }
 
-// max-width to be over-written in each application
-// to fit the top navigation accordingly
-.upf-nav__item-access-panel {
-  display: flex;
-  max-width: 50%;
-}
-
-.upf-nav__item.upf-nav__item-access-panel {
-  background-color: var(--color-white) !important;
-  color: var(--color-primary-500) !important;
-  border-radius: var(--border-radius-sm);
-  border: 1px solid var(--color-white);
-  font-size: 16/@rem;
-  user-select: none;
-  height: 31px;
-
-  .upf-nav__item-container {
-    display: flex;
-    align-items: center;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    flex: 1;
-    min-width: 0;
-    padding-left: @spacing-xx-sm;
-    padding-right: @spacing-xx-sm;
-
-    .upf-nav__item-name {
-      text-overflow: ellipsis;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-  }
-
-  .upf-nav__item-toggle {
-    border-left: 1px solid var(--color-primary-500) !important;
-    padding: .1em @spacing-xx-sm;
-    display: flex;
-    align-items: center;
-  }
-
- .upf-icon:before {
-    color: var(--color-primary-500);
-    display: inline-block;
-    vertical-align: middle;
-  }
-}
-
 // A Subnavigation, with tabs that are more contextual to the current page.
 //
 .upf-contextual-nav {
