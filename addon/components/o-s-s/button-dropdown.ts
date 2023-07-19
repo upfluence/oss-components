@@ -6,6 +6,7 @@ import { assert } from '@ember/debug';
 interface OSSButtonDropdownArgs {
   icon?: string;
   label?: string;
+  mainAction?(): void;
 }
 
 export default class extends Component<OSSButtonDropdownArgs> {
@@ -18,10 +19,33 @@ export default class extends Component<OSSButtonDropdownArgs> {
       '[component][OSS::ButtonDropdown] You must pass either a @label or an @icon argument.',
       args.label || args.icon
     );
+
+    if (this.args.mainAction) {
+      assert(
+        '[component][OSS::ButtonDropdown] The parameter @mainAction should be a function.',
+        typeof this.args.mainAction === 'function'
+      );
+    }
   }
 
   @action
-  toggleDropdown(): void {
+  onMainAction(event: MouseEvent): void {
+    if (this.args.mainAction) {
+      event.stopPropagation();
+      this.args.mainAction();
+    }
+  }
+
+  @action
+  onDropdownClick(event: MouseEvent): void {
+    if (!this.args.mainAction) {
+      this.toggleDropdown(event);
+    }
+  }
+
+  @action
+  toggleDropdown(event: MouseEvent): void {
+    event.stopPropagation();
     this.displayDropdown = !this.displayDropdown;
   }
 

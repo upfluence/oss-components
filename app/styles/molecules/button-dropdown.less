@@ -14,7 +14,10 @@
 
       &:last-child {
         padding: 0 var(--spacing-px-12);
-        border-left: 1px solid var(--color-gray-200);
+
+        &[role='button'] {
+          border-left: 1px solid var(--color-gray-200);
+        }
       }
     }
 
