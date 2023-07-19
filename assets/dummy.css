@@ -14150,6 +14150,8 @@ a.upf-btn--sm {
 }
 .oss-button-dropdown__trigger div:last-child {
   padding: 0 var(--spacing-px-12);
+}
+.oss-button-dropdown__trigger div:last-child[role='button'] {
   border-left: 1px solid var(--color-gray-200);
 }
 .oss-button-dropdown__trigger i,

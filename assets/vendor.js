@@ -86116,18 +86116,17 @@ define("@upfluence/oss-components/components/o-s-s/button-dropdown", ["exports",
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class="oss-button-dropdown" ...attributes>
-    <div class="oss-button-dropdown__trigger fx-row fx-xalign-center">
-      <div class="fx-row fx-xalign-center fx-gap-px-6">
+    <div class="oss-button-dropdown__trigger fx-row fx-xalign-center" role={{unless @mainAction "button"}}
+         {{on "click" this.onDropdownClick}}>
+      <div class="fx-row fx-xalign-center fx-gap-px-6" role={{if @mainAction "button"}} {{on "click" this.onMainAction}}>
         {{#if @icon}}
           <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
         {{/if}}
-  
         {{#if @label}}
           <span>{{@label}}</span>
         {{/if}}
       </div>
-  
-      <div class="fx-row fx-xalign-center" role="button" {{on "click" this.toggleDropdown}}>
+      <div class="fx-row fx-xalign-center" role={{if @mainAction "button"}} {{on "click" this.toggleDropdown}}>
         <OSS::Icon @icon="fa-caret-{{if this.displayDropdown 'up' 'down'}}" />
       </div>
     </div>
@@ -86144,8 +86143,8 @@ define("@upfluence/oss-components/components/o-s-s/button-dropdown", ["exports",
   
   */
   {
-    "id": "PVu1ZPAm",
-    "block": "[[[11,0],[24,0,\"oss-button-dropdown\"],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-button-dropdown__trigger fx-row fx-xalign-center\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-6\"],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"        \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[[28,[37,2],[[30,2]],null],[28,[37,3],[[30,2]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,3],[[[1,\"        \"],[10,1],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\\n    \"],[11,0],[24,0,\"fx-row fx-xalign-center\"],[24,\"role\",\"button\"],[4,[38,4],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n      \"],[8,[39,1],null,[[\"@icon\"],[[29,[\"fa-caret-\",[52,[30,0,[\"displayDropdown\"]],\"up\",\"down\"]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displayDropdown\"]],[[[1,\"    \"],[11,0],[24,0,\"oss-button-dropdown__items\"],[4,[38,5],[[30,0,[\"setupChildrenClickHandler\"]]],null],[4,[38,6],[[30,0,[\"teardownChildrenClickHandler\"]]],null],[4,[38,7],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[true]]],[12],[1,\"\\n      \"],[18,4,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@label\",\"&items\"],false,[\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"on\",\"did-insert\",\"will-destroy\",\"on-click-outside\",\"yield\"]]",
+    "id": "4DYDndOW",
+    "block": "[[[11,0],[24,0,\"oss-button-dropdown\"],[17,1],[12],[1,\"\\n  \"],[11,0],[24,0,\"oss-button-dropdown__trigger fx-row fx-xalign-center\"],[16,\"role\",[52,[51,[30,2]],\"button\"]],[4,[38,1],[\"click\",[30,0,[\"onDropdownClick\"]]],null],[12],[1,\"\\n    \"],[11,0],[24,0,\"fx-row fx-xalign-center fx-gap-px-6\"],[16,\"role\",[52,[30,2],\"button\"]],[4,[38,1],[\"click\",[30,0,[\"onMainAction\"]]],null],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"        \"],[8,[39,3],null,[[\"@style\",\"@icon\"],[[28,[37,4],[[30,3]],null],[28,[37,5],[[30,3]],null]]],null],[1,\"\\n\"]],[]],null],[41,[30,4],[[[1,\"        \"],[10,1],[12],[1,[30,4]],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n    \"],[11,0],[24,0,\"fx-row fx-xalign-center\"],[16,\"role\",[52,[30,2],\"button\"]],[4,[38,1],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@icon\"],[[29,[\"fa-caret-\",[52,[30,0,[\"displayDropdown\"]],\"up\",\"down\"]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displayDropdown\"]],[[[1,\"    \"],[11,0],[24,0,\"oss-button-dropdown__items\"],[4,[38,6],[[30,0,[\"setupChildrenClickHandler\"]]],null],[4,[38,7],[[30,0,[\"teardownChildrenClickHandler\"]]],null],[4,[38,8],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[true]]],[12],[1,\"\\n      \"],[18,5,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@mainAction\",\"@icon\",\"@label\",\"&items\"],false,[\"unless\",\"on\",\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"did-insert\",\"will-destroy\",\"on-click-outside\",\"yield\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/button-dropdown.hbs",
     "isStrictMode": false
   });
@@ -86165,12 +86164,33 @@ define("@upfluence/oss-components/components/o-s-s/button-dropdown", ["exports",
       _initializerDefineProperty(_assertThisInitialized(_this), "displayDropdown", _descriptor, _assertThisInitialized(_this));
 
       (true && !(args.label || args.icon) && (0, _debug.assert)('[component][OSS::ButtonDropdown] You must pass either a @label or an @icon argument.', args.label || args.icon));
+
+      if (_this.args.mainAction) {
+        (true && !(typeof _this.args.mainAction === 'function') && (0, _debug.assert)('[component][OSS::ButtonDropdown] The parameter @mainAction should be a function.', typeof _this.args.mainAction === 'function'));
+      }
+
       return _this;
     }
 
     _createClass(_class, [{
+      key: "onMainAction",
+      value: function onMainAction(event) {
+        if (this.args.mainAction) {
+          event.stopPropagation();
+          this.args.mainAction();
+        }
+      }
+    }, {
+      key: "onDropdownClick",
+      value: function onDropdownClick(event) {
+        if (!this.args.mainAction) {
+          this.toggleDropdown(event);
+        }
+      }
+    }, {
       key: "toggleDropdown",
-      value: function toggleDropdown() {
+      value: function toggleDropdown(event) {
+        event.stopPropagation();
         this.displayDropdown = !this.displayDropdown;
       }
     }, {
@@ -86212,17 +86232,17 @@ define("@upfluence/oss-components/components/o-s-s/button-dropdown", ["exports",
     initializer: function initializer() {
       return false;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setupChildrenClickHandler", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setupChildrenClickHandler"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "teardownChildrenClickHandler", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "teardownChildrenClickHandler"), _class.prototype)), _class));
+  }), _applyDecoratedDescriptor(_class.prototype, "onMainAction", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onMainAction"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onDropdownClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onDropdownClick"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setupChildrenClickHandler", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setupChildrenClickHandler"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "teardownChildrenClickHandler", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "teardownChildrenClickHandler"), _class.prototype)), _class));
 
   _exports.default = _default;
 });
-;define("@upfluence/oss-components/components/o-s-s/button-dropdown.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/button-dropdown.stories", ["exports", "@ember/template-factory", "@storybook/addon-actions"], function (_exports, _templateFactory, _addonActions) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.Usage = _exports.default = void 0;
+  _exports.WithMainActionArgs = _exports.Usage = _exports.default = void 0;
   var _default = {
     title: 'Components/OSS::ButtonDropdown',
     component: 'button-dropdown',
@@ -86254,6 +86274,18 @@ define("@upfluence/oss-components/components/o-s-s/button-dropdown", ["exports",
         control: {
           type: 'text'
         }
+      },
+      mainAction: {
+        description: 'An action that is triggered on click in the left part of the button.',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'mainAction(): void'
+          }
+        },
+        control: {
+          type: 'function'
+        }
       }
     },
     parameters: {
@@ -86268,7 +86300,13 @@ define("@upfluence/oss-components/components/o-s-s/button-dropdown", ["exports",
   _exports.default = _default;
   var defaultArgs = {
     icon: 'far fa-user',
-    label: 'Actions'
+    label: 'Actions',
+    mainAction: null
+  };
+  var withMainActionArgs = {
+    icon: 'far fa-user',
+    label: 'Actions',
+    mainAction: (0, _addonActions.action)('mainAction')
   };
 
   var Template = function Template(args) {
@@ -86276,7 +86314,7 @@ define("@upfluence/oss-components/components/o-s-s/button-dropdown", ["exports",
       template: (0, _templateFactory.createTemplateFactory)(
       /*
         
-          <OSS::ButtonDropdown @icon={{this.icon}} @label={{this.label}}>
+          <OSS::ButtonDropdown @icon={{this.icon}} @label={{this.label}} @mainAction={{this.mainAction}}>
             <:items>
               <div class="oss-button-dropdown__item">
                 <OSS::Icon @style="solid" @icon="fa-share" /> Share
@@ -86286,8 +86324,8 @@ define("@upfluence/oss-components/components/o-s-s/button-dropdown", ["exports",
         
       */
       {
-        "id": "cJMLfyrx",
-        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@icon\",\"@label\"],[[30,0,[\"icon\"]],[30,0,[\"label\"]]]],[[\"items\"],[[[[1,\"\\n        \"],[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"\\n          \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-share\"]],null],[1,\" Share\\n        \"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/button-dropdown\",\"o-s-s/icon\"]]",
+        "id": "Sioatuar",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@icon\",\"@label\",\"@mainAction\"],[[30,0,[\"icon\"]],[30,0,[\"label\"]],[30,0,[\"mainAction\"]]]],[[\"items\"],[[[[1,\"\\n        \"],[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"\\n          \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-share\"]],null],[1,\" Share\\n        \"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/button-dropdown\",\"o-s-s/icon\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -86298,6 +86336,9 @@ define("@upfluence/oss-components/components/o-s-s/button-dropdown", ["exports",
   var Usage = Template.bind({});
   _exports.Usage = Usage;
   Usage.args = defaultArgs;
+  var WithMainActionArgs = Template.bind({});
+  _exports.WithMainActionArgs = WithMainActionArgs;
+  WithMainActionArgs.args = withMainActionArgs;
 });
 ;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -107700,36 +107741,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-1877Un15doXuMG8I/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-1873pJpJM62eVZ60/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-1877Un15doXuMG8I/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-1873pJpJM62eVZ60/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1877Un15doXuMG8I/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1873pJpJM62eVZ60/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-1877Un15doXuMG8I/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-1873pJpJM62eVZ60/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-1877Un15doXuMG8I/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-1873pJpJM62eVZ60/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1877Un15doXuMG8I/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1873pJpJM62eVZ60/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-1877Un15doXuMG8I/cache-275-bundler/staging/l.js /tmp/broccoli-1877Un15doXuMG8I/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-1873pJpJM62eVZ60/cache-275-bundler/staging/l.js /tmp/broccoli-1873pJpJM62eVZ60/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-1877Un15doXuMG8I/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1877Un15doXuMG8I/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1877Un15doXuMG8I/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1877Un15doXuMG8I/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1877Un15doXuMG8I/cache-275-bundler/staging/l.js_/tmp/broccoli-1877Un15doXuMG8I/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-1873pJpJM62eVZ60/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1873pJpJM62eVZ60/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1873pJpJM62eVZ60/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1873pJpJM62eVZ60/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1873pJpJM62eVZ60/cache-275-bundler/staging/l.js_/tmp/broccoli-1873pJpJM62eVZ60/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
