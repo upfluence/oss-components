@@ -84444,55 +84444,6 @@ define("@glimmer/component/index", ["exports", "@ember/component", "@glimmer/com
 
   _exports.default = _default;
 });
-;define("@upfluence/oss-components/components/expanding-search", ["exports", "@ember/component", "@ember/template-factory", "@ember/object/computed"], function (_exports, _component, _templateFactory, _computed) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-
-  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
-  /*
-    <OSS::Button
-    @icon={{if this.expandedSearch "fa fa-close" "fa fa-search"}}
-    class="expanding-search__submit"
-    {{action "expandOrErase" bubbles=false}} />
-  
-  <Input
-    @type="text" @value={{this.searchQuery}} placeholder={{this.placeholder}}
-    class="upf-input expanding-search__input" />
-  
-  */
-  {
-    "id": "V1oHuOZy",
-    "block": "[[[8,[39,0],[[24,0,\"expanding-search__submit\"],[4,[38,2],[[30,0],\"expandOrErase\"],[[\"bubbles\"],[false]]]],[[\"@icon\"],[[52,[30,0,[\"expandedSearch\"]],\"fa fa-close\",\"fa fa-search\"]]],null],[1,\"\\n\\n\"],[8,[39,3],[[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,0,\"upf-input expanding-search__input\"]],[[\"@type\",\"@value\"],[\"text\",[30,0,[\"searchQuery\"]]]],null],[1,\"\\n\"]],[],false,[\"o-s-s/button\",\"if\",\"action\",\"input\"]]",
-    "moduleName": "@upfluence/oss-components/components/expanding-search.hbs",
-    "isStrictMode": false
-  });
-
-  var _default = (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, _component.default.extend({
-    classNames: ['expanding-search'],
-    classNameBindings: ['expandedSearch:expanding-search--opened', 'small:expanding-search--small'],
-    attributeBindings: ['data-control-name'],
-    searchQuery: '',
-    emptySearchQuery: (0, _computed.empty)('searchQuery'),
-    expandedSearch: (0, _computed.not)('emptySearchQuery'),
-    actions: {
-      expandOrErase: function expandOrErase() {
-        if (!this.get('expandedSearch')) {
-          this.set('expandedSearch', true);
-          this.element.querySelector('.expanding-search__input').focus();
-        } else {
-          this.set('searchQuery', '');
-          this.set('expandedSearch', false);
-        }
-      }
-    }
-  }));
-
-  _exports.default = _default;
-});
 ;define("@upfluence/oss-components/components/input-wrapper", ["exports", "@ember/component", "@ember/object"], function (_exports, _component, _object) {
   "use strict";
 
@@ -96899,43 +96850,6 @@ define("@upfluence/oss-components/components/o-s-s/url-input", ["exports", "@emb
 
   _exports.default = _default;
 });
-;define("@upfluence/oss-components/components/upf-checkbox", ["exports", "@ember/component", "@ember/object", "@ember/object/computed"], function (_exports, _component, _object, _computed) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-
-  var _default = _component.default.extend({
-    classNames: ['upf-checkbox'],
-    classNameBindings: ['hasLabel:upf-checkbox--has-label', 'sizeSmall:upf-checkbox--sm', 'disabled:upf-checkbox--disabled'],
-    attributeBindings: ['data-control-name'],
-    sizeSmall: (0, _computed.equal)('size', 'sm'),
-    disabled: false,
-    onValueChange: null,
-    onToggleAttempt: null,
-    _: (0, _object.observer)('value', function () {
-      if (this.onValueChange) {
-        this.onValueChange(this.value);
-      }
-    }),
-    click: function click(e) {
-      if (this.preventDefault) {
-        e.preventDefault();
-      }
-
-      e.stopPropagation();
-
-      if (this.disabled && this.onToggleAttempt) {
-        e.preventDefault();
-        this.onToggleAttempt();
-      }
-    }
-  });
-
-  _exports.default = _default;
-});
 ;define("@upfluence/oss-components/components/upf-image", ["exports", "@ember/component"], function (_exports, _component) {
   "use strict";
 
@@ -107741,36 +107655,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-1890r0f5kNnTA6wo/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-1858uet0Tnbh8SfQ/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-1890r0f5kNnTA6wo/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-1858uet0Tnbh8SfQ/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1890r0f5kNnTA6wo/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1858uet0Tnbh8SfQ/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-1890r0f5kNnTA6wo/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-1858uet0Tnbh8SfQ/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-1890r0f5kNnTA6wo/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-1858uet0Tnbh8SfQ/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1890r0f5kNnTA6wo/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1858uet0Tnbh8SfQ/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-1890r0f5kNnTA6wo/cache-275-bundler/staging/l.js /tmp/broccoli-1890r0f5kNnTA6wo/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-1858uet0Tnbh8SfQ/cache-275-bundler/staging/l.js /tmp/broccoli-1858uet0Tnbh8SfQ/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-1890r0f5kNnTA6wo/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1890r0f5kNnTA6wo/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1890r0f5kNnTA6wo/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1890r0f5kNnTA6wo/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1890r0f5kNnTA6wo/cache-275-bundler/staging/l.js_/tmp/broccoli-1890r0f5kNnTA6wo/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-1858uet0Tnbh8SfQ/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1858uet0Tnbh8SfQ/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1858uet0Tnbh8SfQ/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1858uet0Tnbh8SfQ/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1858uet0Tnbh8SfQ/cache-275-bundler/staging/l.js_/tmp/broccoli-1858uet0Tnbh8SfQ/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
