@@ -169,9 +169,9 @@
 }
 
 .upf-btn--primary-gradient {
-  background: var(--color-primary-gradient-500);
-  border: 1px solid var(--color-primary-gradient-500);
+  background-image: var(--primary-gradient-500);
   color: var(--color-white);
+  border: none;
 
   i,
   span {
@@ -184,17 +184,15 @@
 
   &:hover,
   &:active {
-    box-shadow: 0px 0px 0px 2px var(--color-primary-gradient-500), var(--box-shadow-xs);
+    box-shadow: 0px 0px 0px 2px var(--color-gray-100), var(--box-shadow-xs);
   }
 
   &:hover {
-    border: 1px solid var(--color-primary-gradient-600);
-    background: var(--color-primary-gradient-600);
+    background-image: var(--primary-gradient-600);
   }
 
   &:active {
-    background: var(--color-primary-gradient-400);
-    border: 1px solid var(--color-primary-gradient-400);
+    background-image: var(--primary-gradient-400);
   }
 }
 
