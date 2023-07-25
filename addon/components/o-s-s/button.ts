@@ -13,6 +13,7 @@ type SkinType =
   | 'instagram'
   | 'facebook'
   | 'youtube'
+  | 'primary-gradient'
   | 'xtd-cyan'
   | 'xtd-orange'
   | 'xtd-yellow'
@@ -44,6 +45,7 @@ const SkinDefinition: SkinDefType = {
   instagram: 'social-instagram',
   facebook: 'social-facebook',
   youtube: 'social-youtube',
+  'primary-gradient': 'primary-gradient',
   'xtd-cyan': 'extended-cyan',
   'xtd-orange': 'extended-orange',
   'xtd-yellow': 'extended-yellow',

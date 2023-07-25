@@ -168,6 +168,34 @@
   }
 }
 
+.upf-btn--primary-gradient {
+  background-image: var(--primary-gradient-500);
+  color: var(--color-white);
+  border: none;
+
+  i,
+  span {
+    color: var(--color-white);
+  }
+
+  a& {
+    line-height: 2.4rem;
+  }
+
+  &:hover,
+  &:active {
+    box-shadow: 0px 0px 0px 2px var(--color-gray-100), var(--box-shadow-xs);
+  }
+
+  &:hover {
+    background-image: var(--primary-gradient-600);
+  }
+
+  &:active {
+    background-image: var(--primary-gradient-400);
+  }
+}
+
 .upf-btn--default {
   border: 1px solid var(--color-gray-200);
   background-color: var(--color-white);

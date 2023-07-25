@@ -10,6 +10,7 @@ const SkinTypes = [
   'instagram',
   'facebook',
   'youtube',
+  'primary-gradient',
   'xtd-cyan',
   'xtd-orange',
   'xtd-yellow',
