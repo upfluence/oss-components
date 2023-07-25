@@ -7552,6 +7552,16 @@ label {
   --color-twitch-500: #6441a5;
   --color-pinterest-50: #fae9ea;
   --color-pinterest-500: #c8232c;
+  --color-primary-gradient-50: #f3f8ff;
+  --color-primary-gradient-100: #cee2ff;
+  --color-primary-gradient-300: #6da7ff;
+  --color-primary-gradient-400: #5894f0;
+  --color-primary-gradient-500: #4a7dca;
+  --color-primary-gradient-600: #3f6aaa;
+  --color-primary-gradient-900: #1f3453;
+  --primary-gradient-400: linear-gradient(81.75deg, var(--color-primary-400) 16%, var(--color-primary-gradient-300) 100%);
+  --primary-gradient-500: linear-gradient(81.75deg, var(--color-primary-500) 16%, var(--color-primary-gradient-400) 100%);
+  --primary-gradient-600: linear-gradient(81.75deg, var(--color-primary-600) 16%, var(--color-primary-gradient-500) 100%);
 }
 .background-color-primary-50 {
   background-color: var(--color-primary-50);
@@ -12728,6 +12738,28 @@ a.upf-btn--primary {
 }
 .upf-btn--primary.upf-btn--dark-bg:hover {
   opacity: 0.85;
+}
+.upf-btn--primary-gradient {
+  background-image: var(--primary-gradient-500);
+  color: var(--color-white);
+  border: none;
+}
+.upf-btn--primary-gradient i,
+.upf-btn--primary-gradient span {
+  color: var(--color-white);
+}
+a.upf-btn--primary-gradient {
+  line-height: 2.4rem;
+}
+.upf-btn--primary-gradient:hover,
+.upf-btn--primary-gradient:active {
+  box-shadow: 0px 0px 0px 2px var(--color-gray-100), var(--box-shadow-xs);
+}
+.upf-btn--primary-gradient:hover {
+  background-image: var(--primary-gradient-600);
+}
+.upf-btn--primary-gradient:active {
+  background-image: var(--primary-gradient-400);
 }
 .upf-btn--default {
   border: 1px solid var(--color-gray-200);
