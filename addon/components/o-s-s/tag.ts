@@ -11,7 +11,8 @@ export type SkinType =
   | 'xtd-cyan'
   | 'xtd-yellow'
   | 'xtd-blue'
-  | 'xtd-violet';
+  | 'xtd-violet'
+  | 'xtd-lime';
 
 type SkinDefType = {
   [key in SkinType]: string;
@@ -28,7 +29,8 @@ export const SkinDefinition: SkinDefType = {
   'xtd-cyan': 'xtd-cyan',
   'xtd-yellow': 'xtd-yellow',
   'xtd-blue': 'xtd-blue',
-  'xtd-violet': 'xtd-violet'
+  'xtd-violet': 'xtd-violet',
+  'xtd-lime': 'xtd-lime'
 };
 
 interface OSSTagArgs {
