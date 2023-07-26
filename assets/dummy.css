@@ -9778,6 +9778,14 @@ label {
   background-color: var(--color-violet-500);
   color: var(--color-white);
 }
+.upf-tag--xtd-lime {
+  background-color: var(--color-lime-50);
+  color: var(--color-lime-500);
+}
+.upf-tag--xtd-lime.upf-tag--plain {
+  background-color: var(--color-lime-500);
+  color: var(--color-white);
+}
 /*
  * Transitions
  */
