@@ -174,8 +174,8 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
 
         assert.dom('.upf-infinite-select__items-container').hasClass('upf-infinite-select__items-container--empty');
         assert
-          .dom('.upf-infinite-select__items-container img')
-          .hasAttribute('src', '/@upfluence/oss-components/assets/images/empty-state-skeleton.png');
+          .dom('.upf-infinite-select__items-container object')
+          .hasAttribute('data', '/@upfluence/oss-components/assets/images/no-records.svg');
       });
     });
 
