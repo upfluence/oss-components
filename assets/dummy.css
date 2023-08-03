@@ -8697,7 +8697,9 @@ label {
   color: var(--color-primary-500);
 }
 .upf-checkbox {
+  min-width: 20px;
   width: 20px;
+  min-height: 20px;
   height: 20px;
 }
 .upf-checkbox--has-label {
@@ -8705,7 +8707,9 @@ label {
   left: var(--spacing-px-24);
 }
 .upf-checkbox--sm {
+  min-width: 16px;
   width: 16px;
+  min-height: 16px;
   height: 16px;
 }
 .upf-checkbox--disabled {

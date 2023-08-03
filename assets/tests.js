@@ -7867,6 +7867,97 @@ define("dummy/tests/integration/components/o-s-s/icon-test", ["@ember/template-f
     }());
   });
 });
+define("dummy/tests/integration/components/o-s-s/illustration-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "@upfluence/oss-components/components/o-s-s/illustration"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _illustration) {
+  "use strict";
+
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+  function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+  (0, _qunit.module)('Integration | Component | o-s-s/illustration', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(assert) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
+                */
+                {
+                  "id": "EU+1SYUL",
+                  "block": "[[[8,[39,0],null,[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null]],[],false,[\"o-s-s/illustration\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('object').hasAttribute('data', '/@upfluence/oss-components/assets/images/no-records.svg');
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('the style is inserted', /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
+        var _querySelector;
+
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
+                */
+                {
+                  "id": "EU+1SYUL",
+                  "block": "[[[8,[39,0],null,[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null]],[],false,[\"o-s-s/illustration\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                _context2.next = 4;
+                return (0, _testHelpers.waitUntil)(function () {
+                  var _contentDocument;
+
+                  return (_contentDocument = (0, _testHelpers.find)('object').contentDocument) === null || _contentDocument === void 0 ? void 0 : _contentDocument.querySelector('svg');
+                });
+
+              case 4:
+                _context2.next = 6;
+                return (0, _testHelpers.settled)();
+
+              case 6:
+                assert.equal((_querySelector = (0, _testHelpers.find)('object').contentDocument.querySelector('svg style')) === null || _querySelector === void 0 ? void 0 : _querySelector.textContent, ":root { ".concat((0, _illustration.extractCSSVars)().join(';'), " }"));
+
+              case 7:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function (_x2) {
+        return _ref3.apply(this, arguments);
+      };
+    }());
+  });
+});
 define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "sinon"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _sinon) {
   "use strict";
 
@@ -8260,7 +8351,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["@ember
 
                   case 4:
                     assert.dom('.upf-infinite-select__items-container').hasClass('upf-infinite-select__items-container--empty');
-                    assert.dom('.upf-infinite-select__items-container img').hasAttribute('src', '/@upfluence/oss-components/assets/images/empty-state-skeleton.png');
+                    assert.dom('.upf-infinite-select__items-container object').hasAttribute('data', '/@upfluence/oss-components/assets/images/no-records.svg');
 
                   case 6:
                   case "end":
@@ -12718,17 +12809,76 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["@ember/te
           return _ref2.apply(this, arguments);
         };
       }());
-    });
-    (0, _qunit.module)('with @selectedItems', function () {
-      (0, _qunit.test)('Passing @selectedItems parameter displays the items', /*#__PURE__*/function () {
+      (0, _qunit.test)('custom empty state is properly rendered', /*#__PURE__*/function () {
         var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
-          var domTags;
           return regeneratorRuntime.wrap(function _callee2$(_context2) {
             while (1) {
               switch (_context2.prev = _context2.next) {
                 case 0:
+                  _context2.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    
+                          <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
+                                            @onSearch={{this.onSearch}}>
+                            <:selected-item as |selectedItem|>
+                              {{selectedItem}}
+                            </:selected-item>
+                            <:option-item as |item|>
+                              {{item}}
+                            </:option-item>
+                            <:empty-state>
+                              <div class="foobar">custom empty state</div>
+                            </:empty-state>
+                          </OSS::PowerSelect>
+                        
+                  */
+                  {
+                    "id": "bpSmyDA0",
+                    "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@selectedItems\",\"@items\",\"@onSearch\"],[[30,0,[\"selectedItems\"]],[30,0,[\"items\"]],[30,0,[\"onSearch\"]]]],[[\"selected-item\",\"option-item\",\"empty-state\"],[[[[1,\"\\n            \"],[1,[30,1]],[1,\"\\n          \"]],[1]],[[[1,\"\\n            \"],[1,[30,2]],[1,\"\\n          \"]],[2]],[[[1,\"\\n            \"],[10,0],[14,0,\"foobar\"],[12],[1,\"custom empty state\"],[13],[1,\"\\n          \"]],[]]]]],[1,\"\\n      \"]],[\"selectedItem\",\"item\"],false,[\"o-s-s/power-select\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.upf-power-select').exists({
+                    count: 1
+                  });
+                  assert.dom('.upf-power-select__array-container').exists({
+                    count: 1
+                  });
+                  assert.dom('.upf-infinite-select').doesNotExist();
+                  _context2.next = 7;
+                  return (0, _testHelpers.click)('.upf-power-select__array-container');
+
+                case 7:
+                  assert.dom('.upf-infinite-select').exists();
+                  assert.dom('.foobar').exists();
+                  assert.dom('.foobar').hasText('custom empty state');
+
+                case 10:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2);
+        }));
+
+        return function (_x2) {
+          return _ref3.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('with @selectedItems', function () {
+      (0, _qunit.test)('Passing @selectedItems parameter displays the items', /*#__PURE__*/function () {
+        var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
+          var domTags;
+          return regeneratorRuntime.wrap(function _callee3$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
                   this.selectedItems = ['value1', 'value2'];
-                  _context2.next = 3;
+                  _context3.next = 3;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     
@@ -12757,23 +12907,23 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["@ember/te
 
                 case 6:
                 case "end":
-                  return _context2.stop();
+                  return _context3.stop();
               }
             }
-          }, _callee2, this);
+          }, _callee3, this);
         }));
 
-        return function (_x2) {
-          return _ref3.apply(this, arguments);
+        return function (_x3) {
+          return _ref4.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('Passing empty @selectedItems parameter displays nothing', /*#__PURE__*/function () {
-        var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
-          return regeneratorRuntime.wrap(function _callee3$(_context3) {
+        var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
+          return regeneratorRuntime.wrap(function _callee4$(_context4) {
             while (1) {
-              switch (_context3.prev = _context3.next) {
+              switch (_context4.prev = _context4.next) {
                 case 0:
-                  _context3.next = 2;
+                  _context4.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     
@@ -12800,23 +12950,23 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["@ember/te
 
                 case 3:
                 case "end":
-                  return _context3.stop();
+                  return _context4.stop();
               }
             }
-          }, _callee3);
+          }, _callee4);
         }));
 
-        return function (_x3) {
-          return _ref4.apply(this, arguments);
+        return function (_x4) {
+          return _ref5.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('Passing empty @selectedItems and @placeholder parameters displays placeholder', /*#__PURE__*/function () {
-        var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
-          return regeneratorRuntime.wrap(function _callee4$(_context4) {
+        var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(assert) {
+          return regeneratorRuntime.wrap(function _callee5$(_context5) {
             while (1) {
-              switch (_context4.prev = _context4.next) {
+              switch (_context5.prev = _context5.next) {
                 case 0:
-                  _context4.next = 2;
+                  _context5.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     
@@ -12843,14 +12993,14 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["@ember/te
 
                 case 3:
                 case "end":
-                  return _context4.stop();
+                  return _context5.stop();
               }
             }
-          }, _callee4);
+          }, _callee5);
         }));
 
-        return function (_x4) {
-          return _ref5.apply(this, arguments);
+        return function (_x5) {
+          return _ref6.apply(this, arguments);
         };
       }());
     });
@@ -12859,13 +13009,13 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["@ember/te
         this.items = ['value1', 'value2'];
       });
       (0, _qunit.test)('Passing @items parameter displays the items in InfiniteSelect', /*#__PURE__*/function () {
-        var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(assert) {
+        var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(assert) {
           var domTags;
-          return regeneratorRuntime.wrap(function _callee5$(_context5) {
+          return regeneratorRuntime.wrap(function _callee6$(_context6) {
             while (1) {
-              switch (_context5.prev = _context5.next) {
+              switch (_context6.prev = _context6.next) {
                 case 0:
-                  _context5.next = 2;
+                  _context6.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     
@@ -12888,7 +13038,7 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["@ember/te
                   }));
 
                 case 2:
-                  _context5.next = 4;
+                  _context6.next = 4;
                   return (0, _testHelpers.click)('.upf-power-select__array-container');
 
                 case 4:
@@ -12898,14 +13048,14 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["@ember/te
 
                 case 7:
                 case "end":
-                  return _context5.stop();
+                  return _context6.stop();
               }
             }
-          }, _callee5);
+          }, _callee6);
         }));
 
-        return function (_x5) {
-          return _ref6.apply(this, arguments);
+        return function (_x6) {
+          return _ref7.apply(this, arguments);
         };
       }());
     });
@@ -12916,12 +13066,12 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["@ember/te
         this.onChange = onChange;
       });
       (0, _qunit.test)('selecting item triggers onChange with selection operation', /*#__PURE__*/function () {
-        var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(assert) {
-          return regeneratorRuntime.wrap(function _callee6$(_context6) {
+        var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(assert) {
+          return regeneratorRuntime.wrap(function _callee7$(_context7) {
             while (1) {
-              switch (_context6.prev = _context6.next) {
+              switch (_context7.prev = _context7.next) {
                 case 0:
-                  _context6.next = 2;
+                  _context7.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     
@@ -12944,11 +13094,11 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["@ember/te
                   }));
 
                 case 2:
-                  _context6.next = 4;
+                  _context7.next = 4;
                   return (0, _testHelpers.click)('.upf-power-select__array-container');
 
                 case 4:
-                  _context6.next = 6;
+                  _context7.next = 6;
                   return (0, _testHelpers.click)('.upf-infinite-select__item:nth-child(1)');
 
                 case 6:
@@ -12956,25 +13106,25 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["@ember/te
 
                 case 7:
                 case "end":
-                  return _context6.stop();
+                  return _context7.stop();
               }
             }
-          }, _callee6, this);
+          }, _callee7, this);
         }));
 
-        return function (_x6) {
-          return _ref7.apply(this, arguments);
+        return function (_x7) {
+          return _ref8.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.module)('with @searchPlaceholder', function () {
       (0, _qunit.test)('Passing @items parameter displays the items in InfiniteSelect', /*#__PURE__*/function () {
-        var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(assert) {
-          return regeneratorRuntime.wrap(function _callee7$(_context7) {
+        var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
+          return regeneratorRuntime.wrap(function _callee8$(_context8) {
             while (1) {
-              switch (_context7.prev = _context7.next) {
+              switch (_context8.prev = _context8.next) {
                 case 0:
-                  _context7.next = 2;
+                  _context8.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     
@@ -12997,7 +13147,7 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["@ember/te
                   }));
 
                 case 2:
-                  _context7.next = 4;
+                  _context8.next = 4;
                   return (0, _testHelpers.click)('.upf-power-select__array-container');
 
                 case 4:
@@ -13005,25 +13155,25 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["@ember/te
 
                 case 5:
                 case "end":
-                  return _context7.stop();
+                  return _context8.stop();
               }
             }
-          }, _callee7);
+          }, _callee8);
         }));
 
-        return function (_x7) {
-          return _ref8.apply(this, arguments);
+        return function (_x8) {
+          return _ref9.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.module)('with @onSearch', function () {
       (0, _qunit.test)('search is correctly called', /*#__PURE__*/function () {
-        var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
-          return regeneratorRuntime.wrap(function _callee8$(_context8) {
+        var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(assert) {
+          return regeneratorRuntime.wrap(function _callee9$(_context9) {
             while (1) {
-              switch (_context8.prev = _context8.next) {
+              switch (_context9.prev = _context9.next) {
                 case 0:
-                  _context8.next = 2;
+                  _context9.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     
@@ -13046,11 +13196,11 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["@ember/te
                   }));
 
                 case 2:
-                  _context8.next = 4;
+                  _context9.next = 4;
                   return (0, _testHelpers.click)('.upf-power-select__array-container');
 
                 case 4:
-                  _context8.next = 6;
+                  _context9.next = 6;
                   return (0, _testHelpers.typeIn)('.upf-infinite-select input', 's');
 
                 case 6:
@@ -13058,14 +13208,14 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["@ember/te
 
                 case 7:
                 case "end":
-                  return _context8.stop();
+                  return _context9.stop();
               }
             }
-          }, _callee8, this);
+          }, _callee9, this);
         }));
 
-        return function (_x8) {
-          return _ref9.apply(this, arguments);
+        return function (_x9) {
+          return _ref10.apply(this, arguments);
         };
       }());
     });
@@ -13080,12 +13230,12 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["@ember/te
         });
       });
       (0, _qunit.test)('search is correctly call', /*#__PURE__*/function () {
-        var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(assert) {
-          return regeneratorRuntime.wrap(function _callee9$(_context9) {
+        var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(assert) {
+          return regeneratorRuntime.wrap(function _callee10$(_context10) {
             while (1) {
-              switch (_context9.prev = _context9.next) {
+              switch (_context10.prev = _context10.next) {
                 case 0:
-                  _context9.next = 2;
+                  _context10.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     
@@ -13110,16 +13260,16 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["@ember/te
                   }));
 
                 case 2:
-                  _context9.next = 4;
+                  _context10.next = 4;
                   return (0, _testHelpers.click)('.upf-power-select__array-container');
 
                 case 4:
-                  _context9.next = 6;
+                  _context10.next = 6;
                   return (0, _testHelpers.scrollTo)('.upf-infinite-select__items-container', 0, 1500);
 
                 case 6:
                   this.set('loadingMore', false);
-                  _context9.next = 9;
+                  _context10.next = 9;
                   return (0, _testHelpers.scrollTo)('.upf-infinite-select__items-container', 0, 1500);
 
                 case 9:
@@ -13127,28 +13277,28 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["@ember/te
 
                 case 10:
                 case "end":
-                  return _context9.stop();
+                  return _context10.stop();
               }
             }
-          }, _callee9, this);
+          }, _callee10, this);
         }));
 
-        return function (_x9) {
-          return _ref10.apply(this, arguments);
+        return function (_x10) {
+          return _ref11.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('without selected-item named block', /*#__PURE__*/function () {
-        var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(assert) {
-          return regeneratorRuntime.wrap(function _callee10$(_context10) {
+        var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(assert) {
+          return regeneratorRuntime.wrap(function _callee11$(_context11) {
             while (1) {
-              switch (_context10.prev = _context10.next) {
+              switch (_context11.prev = _context11.next) {
                 case 0:
                   (0, _testHelpers.setupOnerror)(function (err) {
                     assert.equal(err.message, 'Assertion Failed: [component][OSS::PowerSelect] You must pass selected-item named block');
                   });
-                  _context10.next = 3;
+                  _context11.next = 3;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     
@@ -13164,26 +13314,26 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["@ember/te
 
                 case 3:
                 case "end":
-                  return _context10.stop();
+                  return _context11.stop();
               }
             }
-          }, _callee10);
+          }, _callee11);
         }));
 
-        return function (_x10) {
-          return _ref11.apply(this, arguments);
+        return function (_x11) {
+          return _ref12.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('without option-item named block', /*#__PURE__*/function () {
-        var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(assert) {
-          return regeneratorRuntime.wrap(function _callee11$(_context11) {
+        var _ref13 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(assert) {
+          return regeneratorRuntime.wrap(function _callee12$(_context12) {
             while (1) {
-              switch (_context11.prev = _context11.next) {
+              switch (_context12.prev = _context12.next) {
                 case 0:
                   (0, _testHelpers.setupOnerror)(function (err) {
                     assert.equal(err.message, 'Assertion Failed: [component][OSS::PowerSelect] You must pass option-item named block');
                   });
-                  _context11.next = 3;
+                  _context12.next = 3;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     
@@ -13203,14 +13353,14 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["@ember/te
 
                 case 3:
                 case "end":
-                  return _context11.stop();
+                  return _context12.stop();
               }
             }
-          }, _callee11);
+          }, _callee12);
         }));
 
-        return function (_x11) {
-          return _ref12.apply(this, arguments);
+        return function (_x12) {
+          return _ref13.apply(this, arguments);
         };
       }());
     });

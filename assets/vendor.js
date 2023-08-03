@@ -89063,6 +89063,160 @@ define("@upfluence/oss-components/components/o-s-s/icon", ["exports", "@ember/co
 });
 ;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+define("@upfluence/oss-components/components/o-s-s/illustration", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component"], function (_exports, _component, _templateFactory, _component2) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.extractCSSVars = void 0;
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+  function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <object type="image/svg+xml" data={{@src}} {{on "load" this.setupCSSVars}}></object>
+  
+  */
+  {
+    "id": "S9g37hke",
+    "block": "[[[11,\"object\"],[16,\"data\",[30,1]],[24,4,\"image/svg+xml\"],[4,[38,0],[\"load\",[30,0,[\"setupCSSVars\"]]],null],[12],[13],[1,\"\\n\"]],[\"@src\"],false,[\"on\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/illustration.hbs",
+    "isStrictMode": false
+  });
+
+  var extractCSSVars = function extractCSSVars() {
+    return Array.from(document.styleSheets).filter(function (styleSheet) {
+      try {
+        return styleSheet.cssRules;
+      } catch (e) {
+        return false;
+      }
+    }).map(function (styleSheet) {
+      return Array.from(styleSheet.cssRules);
+    }).flat().filter(function (cssRule) {
+      return cssRule.selectorText === ':root';
+    }).map(function (cssRule) {
+      return cssRule.cssText.split('{')[1].split('}')[0].trim().split(';');
+    }).flat().filter(function (text) {
+      return text !== '';
+    });
+  };
+
+  _exports.extractCSSVars = extractCSSVars;
+
+  var OSSIllustration = /*#__PURE__*/function (_Component) {
+    _inherits(OSSIllustration, _Component);
+
+    var _super = _createSuper(OSSIllustration);
+
+    function OSSIllustration() {
+      _classCallCheck(this, OSSIllustration);
+
+      return _super.apply(this, arguments);
+    }
+
+    _createClass(OSSIllustration, [{
+      key: "setupCSSVars",
+      value: function setupCSSVars(event) {
+        var _contentDocument;
+
+        var svgDocument = (_contentDocument = event.target.contentDocument) === null || _contentDocument === void 0 ? void 0 : _contentDocument.querySelector('svg');
+
+        if (svgDocument) {
+          var style = document.createElement('style');
+          style.textContent = ":root { ".concat(extractCSSVars().join(';'), " }");
+          svgDocument.append(style);
+        }
+      }
+    }]);
+
+    return OSSIllustration;
+  }(_component2.default);
+
+  _exports.default = OSSIllustration;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSIllustration);
+});
+;define("@upfluence/oss-components/components/o-s-s/illustration.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.Default = _exports.default = void 0;
+  var _default = {
+    title: 'Components/OSS::Illustration',
+    argTypes: {
+      src: {
+        description: 'Path to an SVG Illustration',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'A component that loads/diplays svg files'
+        }
+      }
+    }
+  };
+  _exports.default = _default;
+  var defaultArgs = {
+    src: '/@upfluence/oss-components/assets/images/no-records.svg'
+  };
+
+  var Template = function Template(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <OSS::Illustration @src={{this.src}} />
+        
+      */
+      {
+        "id": "BRSAGXd4",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@src\"],[[30,0,[\"src\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/illustration\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+
+  var Default = Template.bind({});
+  _exports.Default = Default;
+  Default.args = defaultArgs;
+});
+;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@glimmer/tracking", "@ember/debug", "@ember/object"], function (_exports, _component, _templateFactory, _component2, _tracking, _debug, _object) {
   "use strict";
 
@@ -89103,13 +89257,13 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
 
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="fx-col upf-infinite-select {{if (not this.inline) 'upf-infinite-select--absolute'}}" {{did-insert this.onRender}} ...attributes>
+    <div class="fx-col upf-infinite-select {{unless this.inline 'upf-infinite-select--absolute'}}" {{did-insert this.onRender}} ...attributes>
     {{#if this.searchEnabled}}
-      {{#input-wrapper}}
+      <InputWrapper>
         <Input
           value={{this._searchKeyword}} {{on "keyup" this.updateSearchKeyword}} type="text"
           class="form-control upf-input" placeholder={{this.searchPlaceholder}} />
-      {{/input-wrapper}}
+      </InputWrapper>
     {{/if}}
     <div class="upf-infinite-select__container">
       <ul class="upf-infinite-select__items-container
@@ -89128,20 +89282,22 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
             </li>
           {{else}}
             <div class="fx-col fx-xalign-center">
-              <img
-                src="/@upfluence/oss-components/assets/images/empty-state-skeleton.png"
-                alt={{t "oss-components.infinite-select.empty_img_alt"}} width="15%" />
+  					  {{#if (has-block "empty-state")}}
+  						  {{yield to="empty-state"}}
+  						{{else}}
+  							<OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
   
-              <div class="margin-top-xx-sm text-color-default upf-align--center">
-                {{#if this._searchKeyword}}
-                  <p>{{t "oss-components.infinite-select.no-match.title"}}</p>
-                  <p class="text-color-default-light">
-                    {{t "oss-components.infinite-select.no-match.description"}}
-                  </p>
-                {{else}}
-                  {{t "oss-components.infinite-select.empty"}}
-                {{/if}}
-              </div>
+  							<div class="margin-top-xx-sm text-color-default upf-align--center">
+  								{{#if this._searchKeyword}}
+  									<p>{{t "oss-components.infinite-select.no-match.title"}}</p>
+  									<p class="text-color-default-light">
+  										{{t "oss-components.infinite-select.no-match.description"}}
+  									</p>
+  								{{else}}
+  									{{t "oss-components.infinite-select.empty"}}
+  								{{/if}}
+  							</div>
+  						{{/if}}
             </div>
           {{/each}}
   
@@ -89155,8 +89311,8 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
   
   */
   {
-    "id": "yfzQlxPb",
-    "block": "[[[11,0],[16,0,[29,[\"fx-col upf-infinite-select \",[52,[28,[37,1],[[30,0,[\"inline\"]]],null],\"upf-infinite-select--absolute\"]]]],[17,1],[4,[38,2],[[30,0,[\"onRender\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"searchEnabled\"]],[[[6,[39,3],null,null,[[\"default\"],[[[[1,\"      \"],[8,[39,4],[[16,2,[30,0,[\"_searchKeyword\"]]],[24,0,\"form-control upf-input\"],[16,\"placeholder\",[30,0,[\"searchPlaceholder\"]]],[24,4,\"text\"],[4,[38,5],[\"keyup\",[30,0,[\"updateSearchKeyword\"]]],null]],null,null],[1,\"\\n\"]],[]]]]]],[]],null],[1,\"  \"],[10,0],[14,0,\"upf-infinite-select__container\"],[12],[1,\"\\n    \"],[11,\"ul\"],[16,0,[29,[\"upf-infinite-select__items-container\\n               \",[52,[28,[37,6],[[30,0,[\"items\",\"length\"]],0],null],\"upf-infinite-select__items-container--empty\"]]]],[4,[38,7],[[30,0,[\"onBottomReached\"]]],null],[4,[38,8],null,null],[12],[1,\"\\n\"],[41,[28,[37,9],[[30,2],[28,[37,1],[[30,3]],null]],null],[[[1,\"        \"],[8,[39,10],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",5,\"col\"]],null],[1,\"\\n\"]],[]],[[[42,[28,[37,12],[[28,[37,12],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"          \"],[11,\"li\"],[24,0,\"upf-infinite-select__item\"],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[28,[37,13],[[30,0,[\"didSelectItem\"]],[30,4]],null]],null],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"              \"],[18,5,[[30,4]]],[1,\"\\n\"]],[]],[[[1,\"              \"],[1,[28,[35,16],[[30,4],[30,0,[\"itemLabel\"]]],null]],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[4]],[[[1,\"          \"],[10,0],[14,0,\"fx-col fx-xalign-center\"],[12],[1,\"\\n            \"],[10,\"img\"],[14,\"src\",\"/@upfluence/oss-components/assets/images/empty-state-skeleton.png\"],[15,\"alt\",[28,[37,17],[\"oss-components.infinite-select.empty_img_alt\"],null]],[14,\"width\",\"15%\"],[12],[13],[1,\"\\n\\n            \"],[10,0],[14,0,\"margin-top-xx-sm text-color-default upf-align--center\"],[12],[1,\"\\n\"],[41,[30,0,[\"_searchKeyword\"]],[[[1,\"                \"],[10,2],[12],[1,[28,[35,17],[\"oss-components.infinite-select.no-match.title\"],null]],[13],[1,\"\\n                \"],[10,2],[14,0,\"text-color-default-light\"],[12],[1,\"\\n                  \"],[1,[28,[35,17],[\"oss-components.infinite-select.no-match.description\"],null]],[1,\"\\n                \"],[13],[1,\"\\n\"]],[]],[[[1,\"                \"],[1,[28,[35,17],[\"oss-components.infinite-select.empty\"],null]],[1,\"\\n\"]],[]]],[1,\"            \"],[13],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,3],[[[1,\"          \"],[8,[39,10],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",3,\"col\"]],null],[1,\"\\n\"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@loading\",\"@loadingMore\",\"item\",\"&option\"],false,[\"if\",\"not\",\"did-insert\",\"input-wrapper\",\"input\",\"on\",\"eq\",\"on-bottom-reached\",\"scroll-shadow\",\"and\",\"o-s-s/skeleton\",\"each\",\"-track-array\",\"fn\",\"has-block\",\"yield\",\"get\",\"t\"]]",
+    "id": "OJzP5oLp",
+    "block": "[[[11,0],[16,0,[29,[\"fx-col upf-infinite-select \",[52,[51,[30,0,[\"inline\"]]],\"upf-infinite-select--absolute\"]]]],[17,1],[4,[38,1],[[30,0,[\"onRender\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"searchEnabled\"]],[[[1,\"    \"],[8,[39,3],null,null,[[\"default\"],[[[[1,\"\\n      \"],[8,[39,4],[[16,2,[30,0,[\"_searchKeyword\"]]],[24,0,\"form-control upf-input\"],[16,\"placeholder\",[30,0,[\"searchPlaceholder\"]]],[24,4,\"text\"],[4,[38,5],[\"keyup\",[30,0,[\"updateSearchKeyword\"]]],null]],null,null],[1,\"\\n    \"]],[]]]]],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"upf-infinite-select__container\"],[12],[1,\"\\n    \"],[11,\"ul\"],[16,0,[29,[\"upf-infinite-select__items-container\\n               \",[52,[28,[37,6],[[30,0,[\"items\",\"length\"]],0],null],\"upf-infinite-select__items-container--empty\"]]]],[4,[38,7],[[30,0,[\"onBottomReached\"]]],null],[4,[38,8],null,null],[12],[1,\"\\n\"],[41,[28,[37,9],[[30,2],[28,[37,10],[[30,3]],null]],null],[[[1,\"        \"],[8,[39,11],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",5,\"col\"]],null],[1,\"\\n\"]],[]],[[[42,[28,[37,13],[[28,[37,13],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"          \"],[11,\"li\"],[24,0,\"upf-infinite-select__item\"],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[28,[37,14],[[30,0,[\"didSelectItem\"]],[30,4]],null]],null],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"              \"],[18,5,[[30,4]]],[1,\"\\n\"]],[]],[[[1,\"              \"],[1,[28,[35,17],[[30,4],[30,0,[\"itemLabel\"]]],null]],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[4]],[[[1,\"          \"],[10,0],[14,0,\"fx-col fx-xalign-center\"],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"\\t\\t\\t\\t\\t\\t  \"],[18,6,null],[1,\"\\n\"]],[]],[[[1,\"\\t\\t\\t\\t\\t\\t\\t\"],[8,[39,18],null,[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null],[1,\"\\n\\n\\t\\t\\t\\t\\t\\t\\t\"],[10,0],[14,0,\"margin-top-xx-sm text-color-default upf-align--center\"],[12],[1,\"\\n\"],[41,[30,0,[\"_searchKeyword\"]],[[[1,\"\\t\\t\\t\\t\\t\\t\\t\\t\\t\"],[10,2],[12],[1,[28,[35,19],[\"oss-components.infinite-select.no-match.title\"],null]],[13],[1,\"\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\"],[10,2],[14,0,\"text-color-default-light\"],[12],[1,\"\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\"],[1,[28,[35,19],[\"oss-components.infinite-select.no-match.description\"],null]],[1,\"\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\"],[13],[1,\"\\n\"]],[]],[[[1,\"\\t\\t\\t\\t\\t\\t\\t\\t\\t\"],[1,[28,[35,19],[\"oss-components.infinite-select.empty\"],null]],[1,\"\\n\"]],[]]],[1,\"\\t\\t\\t\\t\\t\\t\\t\"],[13],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,3],[[[1,\"          \"],[8,[39,11],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",3,\"col\"]],null],[1,\"\\n\"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@loading\",\"@loadingMore\",\"item\",\"&option\",\"&empty-state\"],false,[\"unless\",\"did-insert\",\"if\",\"input-wrapper\",\"input\",\"on\",\"eq\",\"on-bottom-reached\",\"scroll-shadow\",\"and\",\"not\",\"o-s-s/skeleton\",\"each\",\"-track-array\",\"fn\",\"has-block\",\"yield\",\"get\",\"o-s-s/illustration\",\"t\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/infinite-select.hbs",
     "isStrictMode": false
   });
@@ -92315,21 +92471,36 @@ define("@upfluence/oss-components/components/o-s-s/power-select", ["exports", "@
     </div>
   
     {{#if this.displaySelect}}
-      <OSS::InfiniteSelect @items={{@items}} @onSearch={{@onSearch}} @inline={{false}} @onSelect={{this.onSelect}}
-                           @searchPlaceholder={{@searchPlaceholder}} @loading={{@loading}} @loadingMore={{@loadingMore}}
-                           @onBottomReached={{@onBottomReached}}
-                           {{on-click-outside this.hideSelect}}>
-        <:option as |item|>
-          {{yield item to="option-item"}}
-        </:option>
-      </OSS::InfiniteSelect>
+      {{#if (has-block "empty-state")}}
+        <OSS::InfiniteSelect @items={{@items}} @onSearch={{@onSearch}} @inline={{false}} @onSelect={{this.onSelect}}
+                             @searchPlaceholder={{@searchPlaceholder}} @loading={{@loading}} @loadingMore={{@loadingMore}}
+                             @onBottomReached={{@onBottomReached}}
+                             {{on-click-outside this.hideSelect}}>
+          <:option as |item|>
+            {{yield item to="option-item"}}
+          </:option>
+  
+          <:empty-state>
+            {{yield to="empty-state"}}
+          </:empty-state>
+        </OSS::InfiniteSelect>
+      {{else}}
+        <OSS::InfiniteSelect @items={{@items}} @onSearch={{@onSearch}} @inline={{false}} @onSelect={{this.onSelect}}
+                             @searchPlaceholder={{@searchPlaceholder}} @loading={{@loading}} @loadingMore={{@loadingMore}}
+                             @onBottomReached={{@onBottomReached}}
+                             {{on-click-outside this.hideSelect}}>
+          <:option as |item|>
+            {{yield item to="option-item"}}
+          </:option>
+        </OSS::InfiniteSelect>
+      {{/if}}
     {{/if}}
   </div>
   
   */
   {
-    "id": "2Z9hbLWz",
-    "block": "[[[11,0],[24,0,\"upf-power-select fx-1 fx-col\"],[17,1],[4,[38,0],[[28,[37,1],[[30,0,[\"ensureBlockPresence\"]],[48,[30,11]],[48,[30,12]]],null]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"upf-power-select__array-container\"],[24,\"role\",\"button\"],[4,[38,3],[\"click\",[30,0,[\"toggleSelect\"]]],null],[12],[1,\"\\n    \"],[11,0],[24,0,\"array-input-container fx-row padding-top-px-6 padding-bottom-px-6\"],[4,[38,4],null,[[\"color\"],[\"field\"]]],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-1 padding-left-px-6 fx-gap-px-6 fx-wrap\"],[12],[1,\"\\n\"],[42,[28,[37,6],[[28,[37,6],[[30,2]],null]],null],null,[[[1,\"          \"],[18,11,[[30,3]]],[1,\"\\n\"]],[3]],[[[1,\"          \"],[10,1],[14,0,\"text-size-5 text-color-default-light\"],[12],[1,\"\\n            \"],[1,[30,0,[\"placeholder\"]]],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]]],[1,\"      \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displaySelect\"]],[[[1,\"        \"],[8,[39,9],[[24,0,\"margin-left-px-6 margin-right-px-6 margin-top-px-6\"]],[[\"@icon\"],[\"fa-chevron-up\"]],null],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,9],[[24,0,\"margin-left-px-6 margin-right-px-6 margin-top-px-6\"]],[[\"@icon\"],[\"fa-chevron-down\"]],null],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displaySelect\"]],[[[1,\"    \"],[8,[39,10],[[4,[38,11],[[30,0,[\"hideSelect\"]]],null]],[[\"@items\",\"@onSearch\",\"@inline\",\"@onSelect\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\"],[[30,4],[30,5],false,[30,0,[\"onSelect\"]],[30,6],[30,7],[30,8],[30,9]]],[[\"option\"],[[[[1,\"\\n        \"],[18,12,[[30,10]]],[1,\"\\n      \"]],[10]]]]],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@selectedItems\",\"selectedItem\",\"@items\",\"@onSearch\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\",\"item\",\"&selected-item\",\"&option-item\"],false,[\"did-insert\",\"fn\",\"has-block\",\"on\",\"scroll-shadow\",\"each\",\"-track-array\",\"yield\",\"if\",\"o-s-s/icon\",\"o-s-s/infinite-select\",\"on-click-outside\"]]",
+    "id": "gxcDQAWT",
+    "block": "[[[11,0],[24,0,\"upf-power-select fx-1 fx-col\"],[17,1],[4,[38,0],[[28,[37,1],[[30,0,[\"ensureBlockPresence\"]],[48,[30,12]],[48,[30,13]]],null]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"upf-power-select__array-container\"],[24,\"role\",\"button\"],[4,[38,3],[\"click\",[30,0,[\"toggleSelect\"]]],null],[12],[1,\"\\n    \"],[11,0],[24,0,\"array-input-container fx-row padding-top-px-6 padding-bottom-px-6\"],[4,[38,4],null,[[\"color\"],[\"field\"]]],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-1 padding-left-px-6 fx-gap-px-6 fx-wrap\"],[12],[1,\"\\n\"],[42,[28,[37,6],[[28,[37,6],[[30,2]],null]],null],null,[[[1,\"          \"],[18,12,[[30,3]]],[1,\"\\n\"]],[3]],[[[1,\"          \"],[10,1],[14,0,\"text-size-5 text-color-default-light\"],[12],[1,\"\\n            \"],[1,[30,0,[\"placeholder\"]]],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]]],[1,\"      \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displaySelect\"]],[[[1,\"        \"],[8,[39,9],[[24,0,\"margin-left-px-6 margin-right-px-6 margin-top-px-6\"]],[[\"@icon\"],[\"fa-chevron-up\"]],null],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,9],[[24,0,\"margin-left-px-6 margin-right-px-6 margin-top-px-6\"]],[[\"@icon\"],[\"fa-chevron-down\"]],null],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displaySelect\"]],[[[41,[48,[30,14]],[[[1,\"      \"],[8,[39,10],[[4,[38,11],[[30,0,[\"hideSelect\"]]],null]],[[\"@items\",\"@onSearch\",\"@inline\",\"@onSelect\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\"],[[30,4],[30,5],false,[30,0,[\"onSelect\"]],[30,6],[30,7],[30,8],[30,9]]],[[\"option\",\"empty-state\"],[[[[1,\"\\n          \"],[18,13,[[30,10]]],[1,\"\\n        \"]],[10]],[[[1,\"\\n          \"],[18,14,null],[1,\"\\n        \"]],[]]]]],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,10],[[4,[38,11],[[30,0,[\"hideSelect\"]]],null]],[[\"@items\",\"@onSearch\",\"@inline\",\"@onSelect\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\"],[[30,4],[30,5],false,[30,0,[\"onSelect\"]],[30,6],[30,7],[30,8],[30,9]]],[[\"option\"],[[[[1,\"\\n          \"],[18,13,[[30,11]]],[1,\"\\n        \"]],[11]]]]],[1,\"\\n\"]],[]]]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@selectedItems\",\"selectedItem\",\"@items\",\"@onSearch\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\",\"item\",\"item\",\"&selected-item\",\"&option-item\",\"&empty-state\"],false,[\"did-insert\",\"fn\",\"has-block\",\"on\",\"scroll-shadow\",\"each\",\"-track-array\",\"yield\",\"if\",\"o-s-s/icon\",\"o-s-s/infinite-select\",\"on-click-outside\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/power-select.hbs",
     "isStrictMode": false
   });
@@ -107657,36 +107828,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-1891JeZE7PWhoaZP/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-1891JeZE7PWhoaZP/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1891JeZE7PWhoaZP/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-1891JeZE7PWhoaZP/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-1891JeZE7PWhoaZP/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1891JeZE7PWhoaZP/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-1891JeZE7PWhoaZP/cache-275-bundler/staging/l.js /tmp/broccoli-1891JeZE7PWhoaZP/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/l.js /tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-1891JeZE7PWhoaZP/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1891JeZE7PWhoaZP/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1891JeZE7PWhoaZP/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1891JeZE7PWhoaZP/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1891JeZE7PWhoaZP/cache-275-bundler/staging/l.js_/tmp/broccoli-1891JeZE7PWhoaZP/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/l.js_/tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
