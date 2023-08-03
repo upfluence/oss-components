@@ -13,6 +13,13 @@ export default {
         type: 'text'
       }
     }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component: 'A component that loads/diplays svg files'
+      }
+    }
   }
 };
 
