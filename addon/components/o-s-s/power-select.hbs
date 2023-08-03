@@ -21,13 +21,28 @@
   </div>
 
   {{#if this.displaySelect}}
-    <OSS::InfiniteSelect @items={{@items}} @onSearch={{@onSearch}} @inline={{false}} @onSelect={{this.onSelect}}
-                         @searchPlaceholder={{@searchPlaceholder}} @loading={{@loading}} @loadingMore={{@loadingMore}}
-                         @onBottomReached={{@onBottomReached}}
-                         {{on-click-outside this.hideSelect}}>
-      <:option as |item|>
-        {{yield item to="option-item"}}
-      </:option>
-    </OSS::InfiniteSelect>
+    {{#if (has-block "empty-state")}}
+      <OSS::InfiniteSelect @items={{@items}} @onSearch={{@onSearch}} @inline={{false}} @onSelect={{this.onSelect}}
+                           @searchPlaceholder={{@searchPlaceholder}} @loading={{@loading}} @loadingMore={{@loadingMore}}
+                           @onBottomReached={{@onBottomReached}}
+                           {{on-click-outside this.hideSelect}}>
+        <:option as |item|>
+          {{yield item to="option-item"}}
+        </:option>
+
+        <:empty-state>
+          {{yield to="empty-state"}}
+        </:empty-state>
+      </OSS::InfiniteSelect>
+    {{else}}
+      <OSS::InfiniteSelect @items={{@items}} @onSearch={{@onSearch}} @inline={{false}} @onSelect={{this.onSelect}}
+                           @searchPlaceholder={{@searchPlaceholder}} @loading={{@loading}} @loadingMore={{@loadingMore}}
+                           @onBottomReached={{@onBottomReached}}
+                           {{on-click-outside this.hideSelect}}>
+        <:option as |item|>
+          {{yield item to="option-item"}}
+        </:option>
+      </OSS::InfiniteSelect>
+    {{/if}}
   {{/if}}
 </div>

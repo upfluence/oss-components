@@ -1,10 +1,10 @@
-<div class="fx-col upf-infinite-select {{if (not this.inline) 'upf-infinite-select--absolute'}}" {{did-insert this.onRender}} ...attributes>
+<div class="fx-col upf-infinite-select {{unless this.inline 'upf-infinite-select--absolute'}}" {{did-insert this.onRender}} ...attributes>
   {{#if this.searchEnabled}}
-    {{#input-wrapper}}
+    <InputWrapper>
       <Input
         value={{this._searchKeyword}} {{on "keyup" this.updateSearchKeyword}} type="text"
         class="form-control upf-input" placeholder={{this.searchPlaceholder}} />
-    {{/input-wrapper}}
+    </InputWrapper>
   {{/if}}
   <div class="upf-infinite-select__container">
     <ul class="upf-infinite-select__items-container
@@ -23,20 +23,22 @@
           </li>
         {{else}}
           <div class="fx-col fx-xalign-center">
-            <img
-              src="/@upfluence/oss-components/assets/images/empty-state-skeleton.png"
-              alt={{t "oss-components.infinite-select.empty_img_alt"}} width="15%" />
+					  {{#if (has-block "empty-state")}}
+						  {{yield to="empty-state"}}
+						{{else}}
+							<OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
 
-            <div class="margin-top-xx-sm text-color-default upf-align--center">
-              {{#if this._searchKeyword}}
-                <p>{{t "oss-components.infinite-select.no-match.title"}}</p>
-                <p class="text-color-default-light">
-                  {{t "oss-components.infinite-select.no-match.description"}}
-                </p>
-              {{else}}
-                {{t "oss-components.infinite-select.empty"}}
-              {{/if}}
-            </div>
+							<div class="margin-top-xx-sm text-color-default upf-align--center">
+								{{#if this._searchKeyword}}
+									<p>{{t "oss-components.infinite-select.no-match.title"}}</p>
+									<p class="text-color-default-light">
+										{{t "oss-components.infinite-select.no-match.description"}}
+									</p>
+								{{else}}
+									{{t "oss-components.infinite-select.empty"}}
+								{{/if}}
+							</div>
+						{{/if}}
           </div>
         {{/each}}
 
