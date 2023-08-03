@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 
-const extractCSSVars = (): string[] => {
+export const extractCSSVars = (): string[] => {
   return (
     Array.from(document.styleSheets)
       .filter((styleSheet) => {
