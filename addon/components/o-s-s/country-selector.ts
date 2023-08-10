@@ -55,6 +55,19 @@ export default class OSSCountrySelector extends Component<OSSCountrySelectorArgs
   }
 
   @action
+  handleKeyEvent(e: KeyboardEvent): void {
+    if (!this.dropdownVisibility) {
+      if (e.key == 'Enter') {
+        this.toggleDropdown(e);
+      }
+    } else {
+      if (e.key == 'Escape' || e.key == 'Tab') {
+        this.toggleDropdown(e);
+      }
+    }
+  }
+
+  @action
   toggleDropdown(e: any): void {
     e.stopPropagation();
     this.dropdownVisibility = !this.dropdownVisibility;
@@ -64,6 +77,9 @@ export default class OSSCountrySelector extends Component<OSSCountrySelectorArgs
   @action
   closeDropdown(): void {
     this.dropdownVisibility = false;
+
+    const el = document.querySelector('.country-selector-container .upf-input') as HTMLElement; // TODO BETTER THAN CALL THIS WAY
+    el.focus();
   }
 
   @action
