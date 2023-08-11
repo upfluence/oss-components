@@ -89,6 +89,19 @@ export default {
         type: 'boolean'
       }
     },
+    enableKeyboard: {
+      description: 'Enable or not  keyboard navigation inside infinite select',
+      type: { name: 'boolean' },
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: false }
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
     onSelect: {
       type: { required: true },
       description: 'Function to be called with the clicked item',
@@ -145,6 +158,7 @@ const defaultArgs = {
   loading: false,
   loadingMore: false,
   inline: false,
+  enableKeyboard: false,
   onSelect: action('onSelect'),
   onSearch: action('onSearch'),
   onBottomReached: action('onBottomReached'),
@@ -157,7 +171,7 @@ const Template = (args) => ({
         @items={{this.items}} @itemLabel={{this.itemLabel}} @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}}
         @searchPlaceholder={{this.searchPlaceholder}} @onSelect={{this.onSelect}} @loading={{this.loading}}
         @loadingMore={{this.loadingMore}} @inline={{this.inline}} @onBottomReached={{this.onBottomReached}} 
-        @didRender={{this.didRender}} class="upf-align--absolute-center"/>
+        @didRender={{this.didRender}} @enableKeyboard={{this.enableKeyboard}} class="upf-align--absolute-center"/>
   `,
   context: args
 });
@@ -168,7 +182,7 @@ const OptionBlockTemplate = (args) => ({
       @items={{this.items}} @itemLabel={{this.itemLabel}} @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}}
         @searchPlaceholder={{this.searchPlaceholder}} @onSelect={{this.onSelect}} @loading={{this.loading}}
         @loadingMore={{this.loadingMore}} @inline={{this.inline}} @onBottomReached={{this.onBottomReached}} 
-        @didRender={{this.didRender}} class="upf-align--absolute-center">
+        @didRender={{this.didRender}} @enableKeyboard={{this.enableKeyboard}} class="upf-align--absolute-center">
       <:option as |opt|>
         {{opt.superhero}} (Alias: {{opt.characters}})
       </:option>

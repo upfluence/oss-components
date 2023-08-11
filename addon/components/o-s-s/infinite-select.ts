@@ -5,8 +5,6 @@ import { action } from '@ember/object';
 
 import { guidFor } from '@ember/object/internals';
 
-const focusOptions = { focusVisible: false } as FocusOptions;
-
 interface InfiniteSelectArgs {
   searchEnabled: boolean;
   loading: boolean;
@@ -15,6 +13,7 @@ interface InfiniteSelectArgs {
   searchPlaceholder: string;
   items: InfinityItem[];
   inline: boolean;
+  enableKeyboard?: boolean;
 
   onSelect: (item: InfinityItem) => void;
   onSearch?: (keyword: string) => void;
@@ -33,7 +32,7 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   @tracked _searchKeyword: string = '';
   @tracked _focusElement: number = 0;
 
-  @tracked guid: string = guidFor(this);
+  @tracked elementId: string = guidFor(this);
 
   constructor(owner: unknown, args: InfiniteSelectArgs) {
     super(owner, args);
@@ -44,6 +43,10 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
     );
 
     assert('[component][OSS::InfiniteSelect] `onSelect` action is mandatory', typeof this.args.onSelect === 'function');
+  }
+
+  get enableKeyboard(): boolean {
+    return this.args.enableKeyboard ?? false;
   }
 
   get searchEnabled(): boolean {
@@ -70,7 +73,9 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   onRender(): void {
     this.args.didRender?.();
 
-    this.autoFocus();
+    if (this.enableKeyboard) {
+      this.autoFocus();
+    }
   }
 
   @action
@@ -94,15 +99,15 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   }
 
   private _focusElementAt(index: number): void {
-    const el = document.querySelectorAll(`#${this.guid} .upf-infinite-select__items-container li`)[
+    const el = document.querySelectorAll(`#${this.elementId} .upf-infinite-select__items-container li`)[
       index
     ] as HTMLElement;
-    el.focus(focusOptions);
+    el?.focus();
   }
 
   private _focusInput(): void {
-    const el = document.querySelector(`#${this.guid} input`) as HTMLElement;
-    el.focus(focusOptions);
+    const el = document.querySelector(`#${this.elementId} input`) as HTMLElement;
+    el?.focus();
   }
 
   @action
@@ -116,58 +121,73 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
 
   @action
   handleKeyEventInput(e: KeyboardEvent): void {
-    if (e.key == 'Tab') {
-      e.preventDefault();
-    }
+    let actionsForKeys: Record<string, (self: any, e: KeyboardEvent) => void> = {
+      ArrowDown: this.focusFirstItem,
+      Enter: this.focusFirstItem
+    };
 
-    if (e.key == 'ArrowDown' || e.key == 'Enter') {
-      this._focusElementAt(this._focusElement);
-      e.preventDefault();
-    }
-
-    if (e.key == 'Escape') {
-      this.args.onClose?.();
+    if (this.enableKeyboard) {
+      actionsForKeys[e.key]?.(this, e);
     }
   }
 
   @action
   handleKeyEvent(e: KeyboardEvent): void {
-    if (e.key == 'ArrowDown') {
-      if (this.args.items.length - 1 > this._focusElement) {
-        this._focusElement++;
-        this._focusElementAt(this._focusElement);
+    let actionsForKeys: Record<string, (self: any, e: KeyboardEvent) => void> = {
+      ArrowDown: this.handleArrowDown,
+      ArrowUp: this.handleArrowUp,
+      Enter: this.handleEnter,
+      Tab: this.handleTab,
+      Escape: this.handleEscape
+    };
+
+    if (this.enableKeyboard) {
+      actionsForKeys[e.key]?.(this, e);
+    }
+  }
+
+  private handleArrowDown(self: any, e: KeyboardEvent): void {
+    if (self.args.items.length - 1 > self._focusElement) {
+      self._focusElement++;
+      self._focusElementAt(self._focusElement);
+    }
+
+    e.preventDefault();
+  }
+
+  private handleArrowUp(self: any, e: KeyboardEvent): void {
+    e.preventDefault();
+
+    if (self._focusElement == 0) {
+      if (self.searchEnabled) {
+        self._focusInput();
       }
 
-      e.preventDefault();
+      return;
     }
 
-    if (e.key == 'ArrowUp') {
-      e.preventDefault();
-
-      if (this._focusElement == 0) {
-        if (this.searchEnabled) {
-          this._focusInput();
-        }
-
-        return;
-      }
-
-      if (this._focusElement > 0) {
-        this._focusElement--;
-        this._focusElementAt(this._focusElement);
-      }
+    if (self._focusElement > 0) {
+      self._focusElement--;
+      self._focusElementAt(self._focusElement);
     }
+  }
 
-    if (e.key == 'Enter') {
-      const el = document.querySelectorAll('.upf-infinite-select__items-container li')[
-        this._focusElement
-      ] as HTMLElement;
-      el.click();
-      e.preventDefault();
-    }
+  private handleEnter(self: any, e: KeyboardEvent): void {
+    const el = document.querySelectorAll('.upf-infinite-select__items-container li')[self._focusElement] as HTMLElement;
+    el.click();
+    e.preventDefault();
+  }
 
-    if (e.key == 'Tab' || e.key == 'Escape') {
-      this.args.onClose?.();
-    }
+  private handleTab(self: any): void {
+    self.args.onClose?.();
+  }
+
+  private handleEscape(self: any): void {
+    self.args.onClose?.();
+  }
+
+  private focusFirstItem(self: any, e: KeyboardEvent): void {
+    self._focusElementAt(self._focusElement);
+    e.preventDefault();
   }
 }

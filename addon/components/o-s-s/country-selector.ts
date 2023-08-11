@@ -5,6 +5,8 @@ import { assert } from '@ember/debug';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 
+import { guidFor } from '@ember/object/internals';
+
 type Item = {
   name: string;
   id?: string;
@@ -23,6 +25,8 @@ export default class OSSCountrySelector extends Component<OSSCountrySelectorArgs
 
   @tracked dropdownVisibility: boolean = false;
   @tracked filteredItems: any[] = this.args.sourceList;
+
+  @tracked elementId: string = guidFor(this);
 
   constructor(owner: unknown, args: OSSCountrySelectorArgs) {
     super(owner, args);
@@ -78,8 +82,8 @@ export default class OSSCountrySelector extends Component<OSSCountrySelectorArgs
   closeDropdown(): void {
     this.dropdownVisibility = false;
 
-    const el = document.querySelector('.country-selector-container .upf-input') as HTMLElement; // TODO BETTER THAN CALL THIS WAY
-    el.focus();
+    const el = document.querySelector(`#${this.elementId} .upf-input`) as HTMLElement;
+    el?.focus();
   }
 
   @action
