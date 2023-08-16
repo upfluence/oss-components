@@ -61,11 +61,11 @@ export default class OSSCountrySelector extends Component<OSSCountrySelectorArgs
   @action
   handleKeyEvent(e: KeyboardEvent): void {
     if (!this.dropdownVisibility) {
-      if (e.key == 'Enter') {
+      if (e.key === 'Enter') {
         this.toggleDropdown(e);
       }
     } else {
-      if (e.key == 'Escape' || e.key == 'Tab') {
+      if (e.key === 'Escape' || e.key === 'Tab') {
         this.toggleDropdown(e);
       }
     }

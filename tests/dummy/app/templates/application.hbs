@@ -24,17 +24,6 @@
     <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
 
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
-      <div class="fx-col fx-1 fx-gap-px-5">
-        <span>Country</span>
-        <OSS::CountrySelector @sourceList={{this.countries}} @onChange={{this.onCountrySelected}}
-                              @value={{this.selectedCountry}} />
-      </div>
-      <div class="fx-col fx-1 fx-gap-px-5">
-        <span>Country2</span>
-        <OSS::CountrySelector @sourceList={{this.countries}} @onChange={{this.onCountrySelected}} />
-      </div>
-    </div>
-    <div class="fx-row fx-1 fx-gap-px-10 margin-md">
       <OSS::TogglableSection @title="This is a title" @subtitle="This is a subtitle" @toggled={{this.togglable}}
                              @icon="far fa-hourglass" @onChange={{this.onToggle}}>
         <:contents>
