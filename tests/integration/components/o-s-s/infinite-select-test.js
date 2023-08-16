@@ -250,7 +250,7 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
     });
 
     module('If keyboard is disabled', function () {
-      test('First element should not been focus on load', async function (assert) {
+      test('The first element should not be focused on load', async function (assert) {
         await render(
           hbs`<OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}} />`
         );
@@ -258,7 +258,7 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
         assert.notOk(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[0]));
       });
 
-      test('Keyboard control are disabled', async function (assert) {
+      test('The keyboard controls are disabled', async function (assert) {
         await render(
           hbs`<OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}} />`
         );
@@ -278,7 +278,7 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
       });
 
       module('If Search is enabled', function () {
-        test('Search input should be focus', async function (assert) {
+        test('Search input should be focused', async function (assert) {
           await render(
             hbs`<OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{true}} @onSelect={{this.onSelect}}
                                      @enableKeyboard={{this.enableKeyboard}} @onSearch={{this.onSearch}}/>`
@@ -333,7 +333,7 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
         });
       });
 
-      test('First element should be focus on load', async function (assert) {
+      test('The first element should be focuses on load', async function (assert) {
         await render(
           hbs`<OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}}
                                    @enableKeyboard={{this.enableKeyboard}}/>`
