@@ -90,7 +90,7 @@ export default {
       }
     },
     enableKeyboard: {
-      description: 'Enable or not  keyboard navigation inside infinite select',
+      description: 'Enable or not keyboard navigation inside infinite select',
       type: { name: 'boolean' },
       table: {
         type: {

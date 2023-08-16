@@ -98,18 +98,6 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
     this.args.onSelect(item);
   }
 
-  private _focusElementAt(index: number): void {
-    const el = document.querySelectorAll(`#${this.elementId} .upf-infinite-select__items-container li`)[
-      index
-    ] as HTMLElement;
-    el?.focus();
-  }
-
-  private _focusInput(): void {
-    const el = document.querySelector(`#${this.elementId} input`) as HTMLElement;
-    el?.focus();
-  }
-
   @action
   autoFocus(): void {
     if (this.searchEnabled) {
@@ -121,9 +109,10 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
 
   @action
   handleKeyEventInput(e: KeyboardEvent): void {
-    let actionsForKeys: Record<string, (self: any, e: KeyboardEvent) => void> = {
+    const actionsForKeys: Record<string, (self: any, e: KeyboardEvent) => void> = {
       ArrowDown: this.focusFirstItem,
-      Enter: this.focusFirstItem
+      Enter: this.focusFirstItem,
+      Escape: this.handleEscape
     };
 
     if (this.enableKeyboard) {
@@ -133,7 +122,7 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
 
   @action
   handleKeyEvent(e: KeyboardEvent): void {
-    let actionsForKeys: Record<string, (self: any, e: KeyboardEvent) => void> = {
+    const actionsForKeys: Record<string, (self: any, e: KeyboardEvent) => void> = {
       ArrowDown: this.handleArrowDown,
       ArrowUp: this.handleArrowUp,
       Enter: this.handleEnter,
@@ -144,6 +133,18 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
     if (this.enableKeyboard) {
       actionsForKeys[e.key]?.(this, e);
     }
+  }
+
+  private _focusElementAt(index: number): void {
+    const el = document.querySelectorAll(`#${this.elementId} .upf-infinite-select__items-container li`)[
+      index
+    ] as HTMLElement;
+    el?.focus();
+  }
+
+  private _focusInput(): void {
+    const el = document.querySelector(`#${this.elementId} input`) as HTMLElement;
+    el?.focus();
   }
 
   private handleArrowDown(self: any, e: KeyboardEvent): void {
@@ -173,8 +174,7 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   }
 
   private handleEnter(self: any, e: KeyboardEvent): void {
-    const el = document.querySelectorAll('.upf-infinite-select__items-container li')[self._focusElement] as HTMLElement;
-    el.click();
+    self.didSelectItem(self.items[self._focusElement]);
     e.preventDefault();
   }
 
