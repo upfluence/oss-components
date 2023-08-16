@@ -3,6 +3,8 @@ import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 
+import { guidFor } from '@ember/object/internals';
+
 interface InfiniteSelectArgs {
   searchEnabled: boolean;
   loading: boolean;
@@ -11,10 +13,12 @@ interface InfiniteSelectArgs {
   searchPlaceholder: string;
   items: InfinityItem[];
   inline: boolean;
+  enableKeyboard?: boolean;
 
   onSelect: (item: InfinityItem) => void;
   onSearch?: (keyword: string) => void;
   onBottomReached?: () => void;
+  onClose?: () => void;
   didRender?: () => void;
 }
 
@@ -26,6 +30,9 @@ const DEFAULT_ITEM_LABEL = 'name';
 
 export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   @tracked _searchKeyword: string = '';
+  @tracked _focusElement: number = 0;
+
+  @tracked elementId: string = guidFor(this);
 
   constructor(owner: unknown, args: InfiniteSelectArgs) {
     super(owner, args);
@@ -36,6 +43,10 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
     );
 
     assert('[component][OSS::InfiniteSelect] `onSelect` action is mandatory', typeof this.args.onSelect === 'function');
+  }
+
+  get enableKeyboard(): boolean {
+    return this.args.enableKeyboard ?? false;
   }
 
   get searchEnabled(): boolean {
@@ -61,6 +72,10 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   @action
   onRender(): void {
     this.args.didRender?.();
+
+    if (this.enableKeyboard) {
+      this.autoFocus();
+    }
   }
 
   @action
@@ -81,5 +96,98 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   didSelectItem(item: InfinityItem, event?: PointerEvent) {
     event?.stopPropagation();
     this.args.onSelect(item);
+  }
+
+  @action
+  autoFocus(): void {
+    if (this.searchEnabled) {
+      this._focusInput();
+    } else {
+      this._focusElementAt(0);
+    }
+  }
+
+  @action
+  handleKeyEventInput(e: KeyboardEvent): void {
+    const actionsForKeys: Record<string, (self: any, e: KeyboardEvent) => void> = {
+      ArrowDown: this.focusFirstItem,
+      Enter: this.focusFirstItem,
+      Escape: this.handleEscape
+    };
+
+    if (this.enableKeyboard) {
+      actionsForKeys[e.key]?.(this, e);
+    }
+  }
+
+  @action
+  handleKeyEvent(e: KeyboardEvent): void {
+    const actionsForKeys: Record<string, (self: any, e: KeyboardEvent) => void> = {
+      ArrowDown: this.handleArrowDown,
+      ArrowUp: this.handleArrowUp,
+      Enter: this.handleEnter,
+      Tab: this.handleTab,
+      Escape: this.handleEscape
+    };
+
+    if (this.enableKeyboard) {
+      actionsForKeys[e.key]?.(this, e);
+    }
+  }
+
+  private _focusElementAt(index: number): void {
+    const el = document.querySelectorAll(`#${this.elementId} .upf-infinite-select__items-container li`)[
+      index
+    ] as HTMLElement;
+    el?.focus();
+  }
+
+  private _focusInput(): void {
+    const el = document.querySelector(`#${this.elementId} input`) as HTMLElement;
+    el?.focus();
+  }
+
+  private handleArrowDown(self: any, e: KeyboardEvent): void {
+    if (self.args.items.length - 1 > self._focusElement) {
+      self._focusElement++;
+      self._focusElementAt(self._focusElement);
+    }
+
+    e.preventDefault();
+  }
+
+  private handleArrowUp(self: any, e: KeyboardEvent): void {
+    e.preventDefault();
+
+    if (self._focusElement == 0) {
+      if (self.searchEnabled) {
+        self._focusInput();
+      }
+
+      return;
+    }
+
+    if (self._focusElement > 0) {
+      self._focusElement--;
+      self._focusElementAt(self._focusElement);
+    }
+  }
+
+  private handleEnter(self: any, e: KeyboardEvent): void {
+    self.didSelectItem(self.items[self._focusElement]);
+    e.preventDefault();
+  }
+
+  private handleTab(self: any): void {
+    self.args.onClose?.();
+  }
+
+  private handleEscape(self: any): void {
+    self.args.onClose?.();
+  }
+
+  private focusFirstItem(self: any, e: KeyboardEvent): void {
+    self._focusElementAt(self._focusElement);
+    e.preventDefault();
   }
 }

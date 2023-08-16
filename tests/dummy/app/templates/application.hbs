@@ -193,7 +193,8 @@
     <div class="fx-row fx-gap-px-10 margin-md">
       <div class="fx-col fx-1 fx-gap-px-5">
         <span>Country</span>
-        <OSS::CountrySelector @sourceList={{this.countries}} @onChange={{this.onCountrySelected}} />
+        <OSS::CountrySelector @value={{this.selectedCountry}} @sourceList={{this.countries}}
+                              @onChange={{this.onCountrySelected}} />
       </div>
       {{#if (gt this.selectedCountry.provinces.length 0)}}
         <div class="fx-col fx-1 fx-gap-px-5">

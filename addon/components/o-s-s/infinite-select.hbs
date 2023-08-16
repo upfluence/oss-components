@@ -1,20 +1,24 @@
-<div class="fx-col upf-infinite-select {{unless this.inline 'upf-infinite-select--absolute'}}" {{did-insert this.onRender}} ...attributes>
+<div id={{this.elementId}} class="fx-col upf-infinite-select {{unless this.inline 'upf-infinite-select--absolute'}}"
+     {{did-insert this.onRender}} ...attributes>
   {{#if this.searchEnabled}}
     <InputWrapper>
       <Input
-        value={{this._searchKeyword}} {{on "keyup" this.updateSearchKeyword}} type="text"
-        class="form-control upf-input" placeholder={{this.searchPlaceholder}} />
+             value={{this._searchKeyword}} {{on "keyup" this.updateSearchKeyword}} type="text"
+             class="form-control upf-input" placeholder={{this.searchPlaceholder}}
+             {{on "keydown" this.handleKeyEventInput}} />
+
     </InputWrapper>
   {{/if}}
   <div class="upf-infinite-select__container">
     <ul class="upf-infinite-select__items-container
                {{if (eq this.items.length 0) 'upf-infinite-select__items-container--empty'}}"
-               {{on-bottom-reached this.onBottomReached}} {{scroll-shadow}}>
+        {{on-bottom-reached this.onBottomReached}} {{scroll-shadow}}
+        {{on "keydown" this.handleKeyEvent}}>
       {{#if (and @loading (not @loadingMore))}}
         <OSS::Skeleton @width="100%" @height="18" @multiple={{5}} @direction="col" />
       {{else}}
         {{#each this.items as |item|}}
-          <li class="upf-infinite-select__item" role="button" {{on "click" (fn this.didSelectItem item)}}>
+          <li class="upf-infinite-select__item" role="button" {{on "click" (fn this.didSelectItem item)}} tabindex="0">
             {{#if (has-block "option")}}
               {{yield item to="option"}}
             {{else}}
@@ -23,22 +27,21 @@
           </li>
         {{else}}
           <div class="fx-col fx-xalign-center">
-					  {{#if (has-block "empty-state")}}
-						  {{yield to="empty-state"}}
-						{{else}}
-							<OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
-
-							<div class="margin-top-xx-sm text-color-default upf-align--center">
-								{{#if this._searchKeyword}}
-									<p>{{t "oss-components.infinite-select.no-match.title"}}</p>
-									<p class="text-color-default-light">
-										{{t "oss-components.infinite-select.no-match.description"}}
-									</p>
-								{{else}}
-									{{t "oss-components.infinite-select.empty"}}
-								{{/if}}
-							</div>
-						{{/if}}
+            {{#if (has-block "empty-state")}}
+              {{yield to="empty-state"}}
+            {{else}}
+              <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
+              <div class="margin-top-xx-sm text-color-default upf-align--center">
+                {{#if this._searchKeyword}}
+                  <p>{{t "oss-components.infinite-select.no-match.title"}}</p>
+                  <p class="text-color-default-light">
+                    {{t "oss-components.infinite-select.no-match.description"}}
+                  </p>
+                {{else}}
+                  {{t "oss-components.infinite-select.empty"}}
+                {{/if}}
+              </div>
+            {{/if}}
           </div>
         {{/each}}
 

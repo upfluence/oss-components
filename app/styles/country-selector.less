@@ -10,9 +10,13 @@
     .padding-xx-sm;
 
     .upf-infinite-select__item {
-      padding: 0;
-      .padding-top-xxx-sm;
-      .padding-bottom-xxx-sm;
+      &:focus {
+        background-color: var(--color-gray-100);
+      }
+
+      &:focus-visible {
+        outline: none;
+      }
     }
 
     .row-selected span {

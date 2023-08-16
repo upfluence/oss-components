@@ -1,7 +1,8 @@
-<div class="country-selector-container fx-1" ...attributes>
+<div id={{this.elementId}} class="country-selector-container fx-1" ...attributes>
   <div class="upf-input fx-row fx-1 fx-malign-space-between fx-xalign-center"
        {{on "click" this.toggleDropdown}} role="button"
-       data-control-name="country-selector-input">
+       {{on "keydown" this.handleKeyEvent}}
+       data-control-name="country-selector-input" tabindex="0">
     <div class="fx-row fx-xalign-center fx-gap-px-10">
       {{#if this.selectedCountry.id}}
         <div class="fflag fflag-{{this.selectedCountry.id}} ff-sm ff-rounded"></div>
@@ -18,6 +19,8 @@
     <OSS::InfiniteSelect @items={{this.filteredItems}} @onSearch={{this.search}}
                          @onSelect={{this.onItemSelected}}
                          @searchPlaceholder={{t "oss-components.country-selector.search"}}
+                         @onClose={{this.closeDropdown}}
+                         @enableKeyboard={{true}}
                          {{on-click-outside this.closeDropdown}}>
       <:option as |item|>
         <div class="fx-row fx-xalign-center {{if (eq this.selectedCountry item) 'row-selected'}}">

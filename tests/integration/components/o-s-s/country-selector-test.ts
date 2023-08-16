@@ -7,6 +7,7 @@ import { setupRenderingTest } from 'ember-qunit';
 import { click, findAll, render } from '@ember/test-helpers';
 import { countries } from '@upfluence/oss-components/utils/country-codes';
 import { set } from '@ember/object';
+import triggerKeyEvent from '@ember/test-helpers/dom/trigger-key-event';
 
 module('Integration | Component | o-s-s/country-selector', function (hooks) {
   setupRenderingTest(hooks);
@@ -161,6 +162,22 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
       await click('.upf-infinite-select__item:nth-child(1)');
       assert.dom('[data-control-name="country-selector-input"]').hasText('Alabama');
       assert.dom('[data-control-name="country-selector-input"] .fflag.fflag-US').doesNotExist();
+    });
+  });
+
+  module('Keyboard control management', () => {
+    test('on keydown Enter should open the dropdown', async function (assert) {
+      this.onProvinceChange = (value: any) => {
+        set(this, 'province', value.name);
+      };
+
+      await render(
+        hbs`<OSS::CountrySelector @value={{this.province}} @onChange={{this.onProvinceChange}} @sourceList={{this.provinces}} />`
+      );
+
+      assert.dom('.upf-infinite-select').doesNotExist();
+      await triggerKeyEvent('[data-control-name="country-selector-input"]', 'keydown', 'Enter');
+      assert.dom('.upf-infinite-select').exists();
     });
   });
 

@@ -224,7 +224,7 @@ export default class ApplicationController extends Controller {
   @action
   onCountrySelected(value) {
     console.log('selected country value : ', value);
-    this.selectedCountry = value;
+    this.selectedCountry = value.id;
   }
 
   @action
