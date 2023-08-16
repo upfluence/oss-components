@@ -6024,7 +6024,7 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["@ember/template-f
     });
   });
 });
-define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@ember/template-factory", "@ember/test-helpers/setup-onerror", "@ember/test-helpers/settled", "sinon", "qunit", "ember-qunit", "@ember/test-helpers", "@upfluence/oss-components/utils/country-codes", "@ember/object"], function (_templateFactory, _setupOnerror, _settled, _sinon, _qunit, _emberQunit, _testHelpers, _countryCodes, _object) {
+define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@ember/template-factory", "@ember/test-helpers/setup-onerror", "@ember/test-helpers/settled", "sinon", "qunit", "ember-qunit", "@ember/test-helpers", "@upfluence/oss-components/utils/country-codes", "@ember/object", "@ember/test-helpers/dom/trigger-key-event"], function (_templateFactory, _setupOnerror, _settled, _sinon, _qunit, _emberQunit, _testHelpers, _countryCodes, _object, _triggerKeyEvent) {
   "use strict";
 
   function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -6615,17 +6615,63 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
         };
       }());
     });
-    (0, _qunit.module)('error management', function () {
-      (0, _qunit.test)('it throws an error if @sourceList is not provided', /*#__PURE__*/function () {
+    (0, _qunit.module)('Keyboard control management', function () {
+      (0, _qunit.test)('on keydown Enter should open the dropdown', /*#__PURE__*/function () {
         var _ref16 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15(assert) {
+          var _this3 = this;
+
           return regeneratorRuntime.wrap(function _callee15$(_context15) {
             while (1) {
               switch (_context15.prev = _context15.next) {
                 case 0:
+                  this.onProvinceChange = function (value) {
+                    (0, _object.set)(_this3, 'province', value.name);
+                  };
+
+                  _context15.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::CountrySelector @value={{this.province}} @onChange={{this.onProvinceChange}} @sourceList={{this.provinces}} />
+                  */
+                  {
+                    "id": "ueIkdnSI",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@onChange\",\"@sourceList\"],[[30,0,[\"province\"]],[30,0,[\"onProvinceChange\"]],[30,0,[\"provinces\"]]]],null]],[],false,[\"o-s-s/country-selector\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  assert.dom('.upf-infinite-select').doesNotExist();
+                  _context15.next = 6;
+                  return (0, _triggerKeyEvent.default)('[data-control-name="country-selector-input"]', 'keydown', 'Enter');
+
+                case 6:
+                  assert.dom('.upf-infinite-select').exists();
+
+                case 7:
+                case "end":
+                  return _context15.stop();
+              }
+            }
+          }, _callee15, this);
+        }));
+
+        return function (_x15) {
+          return _ref16.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('error management', function () {
+      (0, _qunit.test)('it throws an error if @sourceList is not provided', /*#__PURE__*/function () {
+        var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(assert) {
+          return regeneratorRuntime.wrap(function _callee16$(_context16) {
+            while (1) {
+              switch (_context16.prev = _context16.next) {
+                case 0:
                   (0, _setupOnerror.default)(function (err) {
                     assert.equal(err.message, 'Assertion Failed: [component][OSS::CountrySelector] The parameter @sourceList of type object is mandatory');
                   });
-                  _context15.next = 3;
+                  _context16.next = 3;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     <OSS::CountrySelector @onChange={{this.onchange}} />
@@ -6633,43 +6679,6 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
                   {
                     "id": "hH/Wd9Iz",
                     "block": "[[[8,[39,0],null,[[\"@onChange\"],[[30,0,[\"onchange\"]]]],null]],[],false,[\"o-s-s/country-selector\"]]",
-                    "moduleName": "(unknown template module)",
-                    "isStrictMode": false
-                  }));
-
-                case 3:
-                  _context15.next = 5;
-                  return (0, _settled.default)();
-
-                case 5:
-                case "end":
-                  return _context15.stop();
-              }
-            }
-          }, _callee15);
-        }));
-
-        return function (_x15) {
-          return _ref16.apply(this, arguments);
-        };
-      }());
-      (0, _qunit.test)('it throws an error if @onChange is not provided', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(assert) {
-          return regeneratorRuntime.wrap(function _callee16$(_context16) {
-            while (1) {
-              switch (_context16.prev = _context16.next) {
-                case 0:
-                  (0, _setupOnerror.default)(function (err) {
-                    assert.equal(err.message, 'Assertion Failed: [component][OSS::CountrySelector] The @onChange parameter is mandatory');
-                  });
-                  _context16.next = 3;
-                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-                  /*
-                    <OSS::CountrySelector @sourceList={{this.countries}} />
-                  */
-                  {
-                    "id": "7V+jm2PD",
-                    "block": "[[[8,[39,0],null,[[\"@sourceList\"],[[30,0,[\"countries\"]]]],null]],[],false,[\"o-s-s/country-selector\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
@@ -6688,6 +6697,43 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
 
         return function (_x16) {
           return _ref17.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('it throws an error if @onChange is not provided', /*#__PURE__*/function () {
+        var _ref18 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17(assert) {
+          return regeneratorRuntime.wrap(function _callee17$(_context17) {
+            while (1) {
+              switch (_context17.prev = _context17.next) {
+                case 0:
+                  (0, _setupOnerror.default)(function (err) {
+                    assert.equal(err.message, 'Assertion Failed: [component][OSS::CountrySelector] The @onChange parameter is mandatory');
+                  });
+                  _context17.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::CountrySelector @sourceList={{this.countries}} />
+                  */
+                  {
+                    "id": "7V+jm2PD",
+                    "block": "[[[8,[39,0],null,[[\"@sourceList\"],[[30,0,[\"countries\"]]]],null]],[],false,[\"o-s-s/country-selector\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  _context17.next = 5;
+                  return (0, _settled.default)();
+
+                case 5:
+                case "end":
+                  return _context17.stop();
+              }
+            }
+          }, _callee17);
+        }));
+
+        return function (_x17) {
+          return _ref18.apply(this, arguments);
         };
       }());
     });
@@ -7965,6 +8011,10 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["@ember
 
   function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+  function _isFocused(element) {
+    return element === document.activeElement;
+  }
+
   var FAKE_DATA = [{
     name: 'Batman',
     characters: 'Bruce Wayne'
@@ -8544,28 +8594,35 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["@ember
         };
       }());
     });
-    (0, _qunit.module)('Error management', function () {
-      (0, _qunit.module)('On item selection, if onSelect is not passed', function () {
-        (0, _qunit.test)('it should throw an error', /*#__PURE__*/function () {
+    (0, _qunit.module)('Keyboard control management', function (hooks) {
+      hooks.beforeEach(function () {
+        this.items = FAKE_DATA;
+
+        this.onSelect = function () {};
+
+        this.onSearch = function () {};
+      });
+      (0, _qunit.module)('If keyboard is disabled', function () {
+        (0, _qunit.test)('The first element should not be focused on load', /*#__PURE__*/function () {
           var _ref14 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13(assert) {
             return regeneratorRuntime.wrap(function _callee13$(_context13) {
               while (1) {
                 switch (_context13.prev = _context13.next) {
                   case 0:
-                    (0, _testHelpers.setupOnerror)(function (err) {
-                      assert.equal(err.message, 'Assertion Failed: [component][OSS::InfiniteSelect] `onSelect` action is mandatory');
-                    });
-                    _context13.next = 3;
+                    _context13.next = 2;
                     return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                     /*
-                      <OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{false}} />
+                      <OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}} />
                     */
                     {
-                      "id": "SyTm9Gvd",
-                      "block": "[[[8,[39,0],null,[[\"@items\",\"@searchEnabled\"],[[30,0,[\"items\"]],false]],null]],[],false,[\"o-s-s/infinite-select\"]]",
+                      "id": "zzIePxnW",
+                      "block": "[[[8,[39,0],null,[[\"@items\",\"@inline\",\"@searchEnabled\",\"@onSelect\"],[[30,0,[\"items\"]],false,false,[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select\"]]",
                       "moduleName": "(unknown template module)",
                       "isStrictMode": false
                     }));
+
+                  case 2:
+                    assert.notOk(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[0]));
 
                   case 3:
                   case "end":
@@ -8579,18 +8636,425 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["@ember
             return _ref14.apply(this, arguments);
           };
         }());
-      });
-      (0, _qunit.module)('When the search is enabled, if no onSearch hook has been passed', function () {
-        (0, _qunit.test)('should throw an error', /*#__PURE__*/function () {
+        (0, _qunit.test)('The keyboard controls are disabled', /*#__PURE__*/function () {
           var _ref15 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee14(assert) {
             return regeneratorRuntime.wrap(function _callee14$(_context14) {
               while (1) {
                 switch (_context14.prev = _context14.next) {
                   case 0:
+                    _context14.next = 2;
+                    return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                    /*
+                      <OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}} />
+                    */
+                    {
+                      "id": "zzIePxnW",
+                      "block": "[[[8,[39,0],null,[[\"@items\",\"@inline\",\"@searchEnabled\",\"@onSelect\"],[[30,0,[\"items\"]],false,false,[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select\"]]",
+                      "moduleName": "(unknown template module)",
+                      "isStrictMode": false
+                    }));
+
+                  case 2:
+                    assert.notOk(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[0]));
+                    _context14.next = 5;
+                    return (0, _testHelpers.triggerKeyEvent)('.upf-infinite-select__items-container', 'keydown', 'ArrowDown');
+
+                  case 5:
+                    assert.notOk(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[0]));
+                    assert.notOk(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[1]));
+
+                  case 7:
+                  case "end":
+                    return _context14.stop();
+                }
+              }
+            }, _callee14);
+          }));
+
+          return function (_x14) {
+            return _ref15.apply(this, arguments);
+          };
+        }());
+      });
+      (0, _qunit.module)('If keyboard is enabled', function (hooks) {
+        hooks.beforeEach(function () {
+          this.enableKeyboard = true;
+        });
+        (0, _qunit.module)('If Search is enabled', function () {
+          (0, _qunit.test)('Search input should be focused', /*#__PURE__*/function () {
+            var _ref16 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15(assert) {
+              return regeneratorRuntime.wrap(function _callee15$(_context15) {
+                while (1) {
+                  switch (_context15.prev = _context15.next) {
+                    case 0:
+                      _context15.next = 2;
+                      return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                      /*
+                        <OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{true}} @onSelect={{this.onSelect}}
+                                                           @enableKeyboard={{this.enableKeyboard}} @onSearch={{this.onSearch}}/>
+                      */
+                      {
+                        "id": "wfn9YsGs",
+                        "block": "[[[8,[39,0],null,[[\"@items\",\"@inline\",\"@searchEnabled\",\"@onSelect\",\"@enableKeyboard\",\"@onSearch\"],[[30,0,[\"items\"]],false,true,[30,0,[\"onSelect\"]],[30,0,[\"enableKeyboard\"]],[30,0,[\"onSearch\"]]]],null]],[],false,[\"o-s-s/infinite-select\"]]",
+                        "moduleName": "(unknown template module)",
+                        "isStrictMode": false
+                      }));
+
+                    case 2:
+                      assert.ok(_isFocused(document.querySelector('.upf-input')));
+                      assert.notOk(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[0]));
+
+                    case 4:
+                    case "end":
+                      return _context15.stop();
+                  }
+                }
+              }, _callee15);
+            }));
+
+            return function (_x15) {
+              return _ref16.apply(this, arguments);
+            };
+          }());
+          (0, _qunit.test)('On keydown Enter it should focus the first element', /*#__PURE__*/function () {
+            var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(assert) {
+              return regeneratorRuntime.wrap(function _callee16$(_context16) {
+                while (1) {
+                  switch (_context16.prev = _context16.next) {
+                    case 0:
+                      _context16.next = 2;
+                      return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                      /*
+                        <OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{true}} @onSelect={{this.onSelect}}
+                                                           @enableKeyboard={{this.enableKeyboard}} @onSearch={{this.onSearch}}/>
+                      */
+                      {
+                        "id": "wfn9YsGs",
+                        "block": "[[[8,[39,0],null,[[\"@items\",\"@inline\",\"@searchEnabled\",\"@onSelect\",\"@enableKeyboard\",\"@onSearch\"],[[30,0,[\"items\"]],false,true,[30,0,[\"onSelect\"]],[30,0,[\"enableKeyboard\"]],[30,0,[\"onSearch\"]]]],null]],[],false,[\"o-s-s/infinite-select\"]]",
+                        "moduleName": "(unknown template module)",
+                        "isStrictMode": false
+                      }));
+
+                    case 2:
+                      assert.ok(_isFocused(document.querySelector('.upf-input')));
+                      _context16.next = 5;
+                      return (0, _testHelpers.triggerKeyEvent)('.upf-input', 'keydown', 'Enter');
+
+                    case 5:
+                      assert.notOk(_isFocused(document.querySelector('.upf-input')));
+                      assert.ok(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[0]));
+
+                    case 7:
+                    case "end":
+                      return _context16.stop();
+                  }
+                }
+              }, _callee16);
+            }));
+
+            return function (_x16) {
+              return _ref17.apply(this, arguments);
+            };
+          }());
+          (0, _qunit.test)('On keydown ArrowDown it should focus the first element', /*#__PURE__*/function () {
+            var _ref18 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17(assert) {
+              return regeneratorRuntime.wrap(function _callee17$(_context17) {
+                while (1) {
+                  switch (_context17.prev = _context17.next) {
+                    case 0:
+                      _context17.next = 2;
+                      return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                      /*
+                        <OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{true}} @onSelect={{this.onSelect}}
+                                                           @enableKeyboard={{this.enableKeyboard}} @onSearch={{this.onSearch}}/>
+                      */
+                      {
+                        "id": "wfn9YsGs",
+                        "block": "[[[8,[39,0],null,[[\"@items\",\"@inline\",\"@searchEnabled\",\"@onSelect\",\"@enableKeyboard\",\"@onSearch\"],[[30,0,[\"items\"]],false,true,[30,0,[\"onSelect\"]],[30,0,[\"enableKeyboard\"]],[30,0,[\"onSearch\"]]]],null]],[],false,[\"o-s-s/infinite-select\"]]",
+                        "moduleName": "(unknown template module)",
+                        "isStrictMode": false
+                      }));
+
+                    case 2:
+                      assert.ok(_isFocused(document.querySelector('.upf-input')));
+                      _context17.next = 5;
+                      return (0, _testHelpers.triggerKeyEvent)('.upf-input', 'keydown', 'ArrowDown');
+
+                    case 5:
+                      assert.notOk(_isFocused(document.querySelector('.upf-input')));
+                      assert.ok(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[0]));
+
+                    case 7:
+                    case "end":
+                      return _context17.stop();
+                  }
+                }
+              }, _callee17);
+            }));
+
+            return function (_x17) {
+              return _ref18.apply(this, arguments);
+            };
+          }());
+          (0, _qunit.test)('On keydown Enter it should call the onClose action', /*#__PURE__*/function () {
+            var _ref19 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee18(assert) {
+              return regeneratorRuntime.wrap(function _callee18$(_context18) {
+                while (1) {
+                  switch (_context18.prev = _context18.next) {
+                    case 0:
+                      this.onClose = _sinon.default.stub();
+                      _context18.next = 3;
+                      return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                      /*
+                        <OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{true}} @onSelect={{this.onSelect}}
+                                                           @enableKeyboard={{this.enableKeyboard}} @onSearch={{this.onSearch}} @onClose={{this.onClose}}/>
+                      */
+                      {
+                        "id": "QRdAmYC7",
+                        "block": "[[[8,[39,0],null,[[\"@items\",\"@inline\",\"@searchEnabled\",\"@onSelect\",\"@enableKeyboard\",\"@onSearch\",\"@onClose\"],[[30,0,[\"items\"]],false,true,[30,0,[\"onSelect\"]],[30,0,[\"enableKeyboard\"]],[30,0,[\"onSearch\"]],[30,0,[\"onClose\"]]]],null]],[],false,[\"o-s-s/infinite-select\"]]",
+                        "moduleName": "(unknown template module)",
+                        "isStrictMode": false
+                      }));
+
+                    case 3:
+                      assert.ok(_isFocused(document.querySelector('.upf-input')));
+                      assert.ok(this.onClose.notCalled);
+                      _context18.next = 7;
+                      return (0, _testHelpers.triggerKeyEvent)('.upf-input', 'keydown', 'Escape');
+
+                    case 7:
+                      assert.ok(this.onClose.calledOnce);
+
+                    case 8:
+                    case "end":
+                      return _context18.stop();
+                  }
+                }
+              }, _callee18, this);
+            }));
+
+            return function (_x18) {
+              return _ref19.apply(this, arguments);
+            };
+          }());
+        });
+        (0, _qunit.test)('The first element should be focuses on load', /*#__PURE__*/function () {
+          var _ref20 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee19(assert) {
+            return regeneratorRuntime.wrap(function _callee19$(_context19) {
+              while (1) {
+                switch (_context19.prev = _context19.next) {
+                  case 0:
+                    _context19.next = 2;
+                    return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                    /*
+                      <OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}}
+                                                       @enableKeyboard={{this.enableKeyboard}}/>
+                    */
+                    {
+                      "id": "aghFVdQy",
+                      "block": "[[[8,[39,0],null,[[\"@items\",\"@inline\",\"@searchEnabled\",\"@onSelect\",\"@enableKeyboard\"],[[30,0,[\"items\"]],false,false,[30,0,[\"onSelect\"]],[30,0,[\"enableKeyboard\"]]]],null]],[],false,[\"o-s-s/infinite-select\"]]",
+                      "moduleName": "(unknown template module)",
+                      "isStrictMode": false
+                    }));
+
+                  case 2:
+                    assert.ok(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[0]));
+
+                  case 3:
+                  case "end":
+                    return _context19.stop();
+                }
+              }
+            }, _callee19);
+          }));
+
+          return function (_x19) {
+            return _ref20.apply(this, arguments);
+          };
+        }());
+        (0, _qunit.test)('On keydown ArrowUp & ArrowDown it should control the focused element', /*#__PURE__*/function () {
+          var _ref21 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee20(assert) {
+            return regeneratorRuntime.wrap(function _callee20$(_context20) {
+              while (1) {
+                switch (_context20.prev = _context20.next) {
+                  case 0:
+                    _context20.next = 2;
+                    return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                    /*
+                      <OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}}
+                                                       @enableKeyboard={{this.enableKeyboard}}/>
+                    */
+                    {
+                      "id": "aghFVdQy",
+                      "block": "[[[8,[39,0],null,[[\"@items\",\"@inline\",\"@searchEnabled\",\"@onSelect\",\"@enableKeyboard\"],[[30,0,[\"items\"]],false,false,[30,0,[\"onSelect\"]],[30,0,[\"enableKeyboard\"]]]],null]],[],false,[\"o-s-s/infinite-select\"]]",
+                      "moduleName": "(unknown template module)",
+                      "isStrictMode": false
+                    }));
+
+                  case 2:
+                    assert.ok(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[0]));
+                    _context20.next = 5;
+                    return (0, _testHelpers.triggerKeyEvent)('.upf-infinite-select__items-container', 'keydown', 'ArrowDown');
+
+                  case 5:
+                    assert.notOk(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[0]));
+                    assert.ok(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[1]));
+                    _context20.next = 9;
+                    return (0, _testHelpers.triggerKeyEvent)('.upf-infinite-select__items-container', 'keydown', 'ArrowUp');
+
+                  case 9:
+                    assert.notOk(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[1]));
+                    assert.ok(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[0]));
+
+                  case 11:
+                  case "end":
+                    return _context20.stop();
+                }
+              }
+            }, _callee20);
+          }));
+
+          return function (_x20) {
+            return _ref21.apply(this, arguments);
+          };
+        }());
+        (0, _qunit.test)('On keydown Enter it should select the focused element', /*#__PURE__*/function () {
+          var _ref22 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee21(assert) {
+            var el;
+            return regeneratorRuntime.wrap(function _callee21$(_context21) {
+              while (1) {
+                switch (_context21.prev = _context21.next) {
+                  case 0:
+                    this.onSelect = _sinon.default.stub();
+                    _context21.next = 3;
+                    return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                    /*
+                      <OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}}
+                                                       @enableKeyboard={{this.enableKeyboard}}/>
+                    */
+                    {
+                      "id": "aghFVdQy",
+                      "block": "[[[8,[39,0],null,[[\"@items\",\"@inline\",\"@searchEnabled\",\"@onSelect\",\"@enableKeyboard\"],[[30,0,[\"items\"]],false,false,[30,0,[\"onSelect\"]],[30,0,[\"enableKeyboard\"]]]],null]],[],false,[\"o-s-s/infinite-select\"]]",
+                      "moduleName": "(unknown template module)",
+                      "isStrictMode": false
+                    }));
+
+                  case 3:
+                    el = document.querySelectorAll('.upf-infinite-select__item')[0];
+                    assert.ok(_isFocused(el));
+                    assert.ok(this.onSelect.notCalled);
+                    _context21.next = 8;
+                    return (0, _testHelpers.triggerKeyEvent)('.upf-infinite-select__items-container', 'keydown', 'Enter');
+
+                  case 8:
+                    assert.ok(this.onSelect.calledOnceWith(FAKE_DATA[0]));
+
+                  case 9:
+                  case "end":
+                    return _context21.stop();
+                }
+              }
+            }, _callee21, this);
+          }));
+
+          return function (_x21) {
+            return _ref22.apply(this, arguments);
+          };
+        }());
+        (0, _qunit.test)('On keydown Tab/Escape it should call the onClose action', /*#__PURE__*/function () {
+          var _ref23 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee22(assert) {
+            return regeneratorRuntime.wrap(function _callee22$(_context22) {
+              while (1) {
+                switch (_context22.prev = _context22.next) {
+                  case 0:
+                    this.onClose = _sinon.default.stub();
+                    _context22.next = 3;
+                    return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                    /*
+                      <OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}}
+                                                       @enableKeyboard={{this.enableKeyboard}} @onClose={{this.onClose}}/>
+                    */
+                    {
+                      "id": "pPAwbaPG",
+                      "block": "[[[8,[39,0],null,[[\"@items\",\"@inline\",\"@searchEnabled\",\"@onSelect\",\"@enableKeyboard\",\"@onClose\"],[[30,0,[\"items\"]],false,false,[30,0,[\"onSelect\"]],[30,0,[\"enableKeyboard\"]],[30,0,[\"onClose\"]]]],null]],[],false,[\"o-s-s/infinite-select\"]]",
+                      "moduleName": "(unknown template module)",
+                      "isStrictMode": false
+                    }));
+
+                  case 3:
+                    assert.ok(this.onClose.notCalled);
+                    _context22.next = 6;
+                    return (0, _testHelpers.triggerKeyEvent)('.upf-infinite-select__items-container', 'keydown', 'Tab');
+
+                  case 6:
+                    assert.ok(this.onClose.calledOnce);
+                    _context22.next = 9;
+                    return (0, _testHelpers.triggerKeyEvent)('.upf-infinite-select__items-container', 'keydown', 'Escape');
+
+                  case 9:
+                    assert.ok(this.onClose.calledTwice);
+
+                  case 10:
+                  case "end":
+                    return _context22.stop();
+                }
+              }
+            }, _callee22, this);
+          }));
+
+          return function (_x22) {
+            return _ref23.apply(this, arguments);
+          };
+        }());
+      });
+    });
+    (0, _qunit.module)('Error management', function () {
+      (0, _qunit.module)('On item selection, if onSelect is not passed', function () {
+        (0, _qunit.test)('it should throw an error', /*#__PURE__*/function () {
+          var _ref24 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee23(assert) {
+            return regeneratorRuntime.wrap(function _callee23$(_context23) {
+              while (1) {
+                switch (_context23.prev = _context23.next) {
+                  case 0:
+                    (0, _testHelpers.setupOnerror)(function (err) {
+                      assert.equal(err.message, 'Assertion Failed: [component][OSS::InfiniteSelect] `onSelect` action is mandatory');
+                    });
+                    _context23.next = 3;
+                    return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                    /*
+                      <OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{false}} />
+                    */
+                    {
+                      "id": "SyTm9Gvd",
+                      "block": "[[[8,[39,0],null,[[\"@items\",\"@searchEnabled\"],[[30,0,[\"items\"]],false]],null]],[],false,[\"o-s-s/infinite-select\"]]",
+                      "moduleName": "(unknown template module)",
+                      "isStrictMode": false
+                    }));
+
+                  case 3:
+                  case "end":
+                    return _context23.stop();
+                }
+              }
+            }, _callee23);
+          }));
+
+          return function (_x23) {
+            return _ref24.apply(this, arguments);
+          };
+        }());
+      });
+      (0, _qunit.module)('When the search is enabled, if no onSearch hook has been passed', function () {
+        (0, _qunit.test)('should throw an error', /*#__PURE__*/function () {
+          var _ref25 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee24(assert) {
+            return regeneratorRuntime.wrap(function _callee24$(_context24) {
+              while (1) {
+                switch (_context24.prev = _context24.next) {
+                  case 0:
                     (0, _testHelpers.setupOnerror)(function (err) {
                       assert.equal(err.message, 'Assertion Failed: [component][OSS::InfiniteSelect] Search is enabled without an `onSearch` action being passed');
                     });
-                    _context14.next = 3;
+                    _context24.next = 3;
                     return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                     /*
                       <OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{true}} />
@@ -8604,14 +9068,14 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["@ember
 
                   case 3:
                   case "end":
-                    return _context14.stop();
+                    return _context24.stop();
                 }
               }
-            }, _callee14);
+            }, _callee24);
           }));
 
-          return function (_x14) {
-            return _ref15.apply(this, arguments);
+          return function (_x24) {
+            return _ref25.apply(this, arguments);
           };
         }());
       });

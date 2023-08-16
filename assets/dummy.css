@@ -12618,10 +12618,11 @@ For complete information visit: www.freakflagsprite.com
   max-width: 100%;
   padding: 12px;
 }
-.country-selector-container .upf-infinite-select .upf-infinite-select__item {
-  padding: 0;
-  padding-top: 6px;
-  padding-bottom: 6px;
+.country-selector-container .upf-infinite-select .upf-infinite-select__item:focus {
+  background-color: var(--color-gray-100);
+}
+.country-selector-container .upf-infinite-select .upf-infinite-select__item:focus-visible {
+  outline: none;
 }
 .country-selector-container .upf-infinite-select .row-selected span {
   color: #1b1e21;

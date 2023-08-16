@@ -87825,7 +87825,7 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
   _exports.Default = Default;
   Default.args = defaultArgs;
 });
-;define("@upfluence/oss-components/components/o-s-s/country-selector", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@ember/object", "@glimmer/tracking", "@ember/debug", "@ember/service", "@ember/utils"], function (_exports, _component, _templateFactory, _component2, _object, _tracking, _debug, _service, _utils) {
+;define("@upfluence/oss-components/components/o-s-s/country-selector", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@ember/object", "@glimmer/tracking", "@ember/debug", "@ember/service", "@ember/utils", "@ember/object/internals"], function (_exports, _component, _templateFactory, _component2, _object, _tracking, _debug, _service, _utils, _internals) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -87833,7 +87833,7 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
   });
   _exports.default = void 0;
 
-  var _class, _descriptor, _descriptor2, _descriptor3;
+  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4;
 
   function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -87867,10 +87867,11 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
 
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="country-selector-container fx-1" ...attributes>
+    <div id={{this.elementId}} class="country-selector-container fx-1" ...attributes>
     <div class="upf-input fx-row fx-1 fx-malign-space-between fx-xalign-center"
          {{on "click" this.toggleDropdown}} role="button"
-         data-control-name="country-selector-input">
+         {{on "keydown" this.handleKeyEvent}}
+         data-control-name="country-selector-input" tabindex="0">
       <div class="fx-row fx-xalign-center fx-gap-px-10">
         {{#if this.selectedCountry.id}}
           <div class="fflag fflag-{{this.selectedCountry.id}} ff-sm ff-rounded"></div>
@@ -87887,6 +87888,8 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
       <OSS::InfiniteSelect @items={{this.filteredItems}} @onSearch={{this.search}}
                            @onSelect={{this.onItemSelected}}
                            @searchPlaceholder={{t "oss-components.country-selector.search"}}
+                           @onClose={{this.closeDropdown}}
+                           @enableKeyboard={{true}}
                            {{on-click-outside this.closeDropdown}}>
         <:option as |item|>
           <div class="fx-row fx-xalign-center {{if (eq this.selectedCountry item) 'row-selected'}}">
@@ -87906,8 +87909,8 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
   
   */
   {
-    "id": "MB/HfmPS",
-    "block": "[[[11,0],[24,0,\"country-selector-container fx-1\"],[17,1],[12],[1,\"\\n  \"],[11,0],[24,0,\"upf-input fx-row fx-1 fx-malign-space-between fx-xalign-center\"],[24,\"role\",\"button\"],[24,\"data-control-name\",\"country-selector-input\"],[4,[38,0],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-10\"],[12],[1,\"\\n\"],[41,[30,0,[\"selectedCountry\",\"id\"]],[[[1,\"        \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"selectedCountry\",\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[15,0,[29,[[52,[51,[30,0,[\"selectedCountry\"]]],\"text-color-default-light\"]]]],[12],[1,[30,0,[\"inputLabel\"]]],[13],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[30,0,[\"dropdownVisibility\"]],[[[1,\"      \"],[8,[39,3],null,[[\"@icon\"],[\"fa-chevron-up\"]],null],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,3],null,[[\"@icon\"],[\"fa-chevron-down\"]],null],[1,\"\\n\"]],[]]],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,0,[\"dropdownVisibility\"]],[[[1,\"    \"],[8,[39,4],[[4,[38,6],[[30,0,[\"closeDropdown\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredItems\"]],[30,0,[\"search\"]],[30,0,[\"onItemSelected\"]],[28,[37,5],[\"oss-components.country-selector.search\"],null]]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,2]],null],\"row-selected\"]]]],[12],[1,\"\\n\"],[41,[30,2,[\"id\"]],[[[1,\"            \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,2,[\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm\"],[12],[1,[30,2,[\"name\"]]],[13],[1,\"\\n\"],[41,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,2]],null],[[[1,\"            \"],[10,0],[14,0,\"fx-1\"],[12],[13],[1,\"\\n            \"],[8,[39,3],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[2]]]]],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"item\"],false,[\"on\",\"if\",\"unless\",\"o-s-s/icon\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\",\"eq\"]]",
+    "id": "9sFOQSwo",
+    "block": "[[[11,0],[16,1,[30,0,[\"elementId\"]]],[24,0,\"country-selector-container fx-1\"],[17,1],[12],[1,\"\\n  \"],[11,0],[24,0,\"upf-input fx-row fx-1 fx-malign-space-between fx-xalign-center\"],[24,\"role\",\"button\"],[24,\"data-control-name\",\"country-selector-input\"],[24,\"tabindex\",\"0\"],[4,[38,0],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[4,[38,0],[\"keydown\",[30,0,[\"handleKeyEvent\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-10\"],[12],[1,\"\\n\"],[41,[30,0,[\"selectedCountry\",\"id\"]],[[[1,\"        \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"selectedCountry\",\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[15,0,[29,[[52,[51,[30,0,[\"selectedCountry\"]]],\"text-color-default-light\"]]]],[12],[1,[30,0,[\"inputLabel\"]]],[13],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[30,0,[\"dropdownVisibility\"]],[[[1,\"      \"],[8,[39,3],null,[[\"@icon\"],[\"fa-chevron-up\"]],null],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,3],null,[[\"@icon\"],[\"fa-chevron-down\"]],null],[1,\"\\n\"]],[]]],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,0,[\"dropdownVisibility\"]],[[[1,\"    \"],[8,[39,4],[[4,[38,6],[[30,0,[\"closeDropdown\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\",\"@onClose\",\"@enableKeyboard\"],[[30,0,[\"filteredItems\"]],[30,0,[\"search\"]],[30,0,[\"onItemSelected\"]],[28,[37,5],[\"oss-components.country-selector.search\"],null],[30,0,[\"closeDropdown\"]],true]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,2]],null],\"row-selected\"]]]],[12],[1,\"\\n\"],[41,[30,2,[\"id\"]],[[[1,\"            \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,2,[\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm\"],[12],[1,[30,2,[\"name\"]]],[13],[1,\"\\n\"],[41,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,2]],null],[[[1,\"            \"],[10,0],[14,0,\"fx-1\"],[12],[13],[1,\"\\n            \"],[8,[39,3],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[2]]]]],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"item\"],false,[\"on\",\"if\",\"unless\",\"o-s-s/icon\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\",\"eq\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/country-selector.hbs",
     "isStrictMode": false
   });
@@ -87930,6 +87933,8 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
 
       _initializerDefineProperty(_assertThisInitialized(_this), "filteredItems", _descriptor3, _assertThisInitialized(_this));
 
+      _initializerDefineProperty(_assertThisInitialized(_this), "elementId", _descriptor4, _assertThisInitialized(_this));
+
       (true && !(_typeof(_this.args.sourceList) === 'object') && (0, _debug.assert)('[component][OSS::CountrySelector] The parameter @sourceList of type object is mandatory', _typeof(_this.args.sourceList) === 'object'));
       (true && !(typeof _this.args.onChange === 'function') && (0, _debug.assert)('[component][OSS::CountrySelector] The @onChange parameter is mandatory', typeof _this.args.onChange === 'function'));
 
@@ -87951,6 +87956,13 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
         return this.selectedCountry ? this.selectedCountry.name : this.isCountry ? this.intl.t('oss-components.country-selector.placeholder.country') : this.intl.t('oss-components.country-selector.placeholder.province');
       }
     }, {
+      key: "handleKeyEvent",
+      value: function handleKeyEvent(e) {
+        if (e.key === 'Enter') {
+          this.toggleDropdown(e);
+        }
+      }
+    }, {
       key: "toggleDropdown",
       value: function toggleDropdown(e) {
         e.stopPropagation();
@@ -87961,6 +87973,8 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
       key: "closeDropdown",
       value: function closeDropdown() {
         this.dropdownVisibility = false;
+        var el = document.querySelector("#".concat(this.elementId, " .upf-input"));
+        el === null || el === void 0 ? void 0 : el.focus();
       }
     }, {
       key: "search",
@@ -88011,7 +88025,14 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
     initializer: function initializer() {
       return this.args.sourceList;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "search", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "search"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onItemSelected", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onItemSelected"), _class.prototype)), _class);
+  }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, "elementId", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return (0, _internals.guidFor)(this);
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "handleKeyEvent", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleKeyEvent"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "search", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "search"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onItemSelected", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onItemSelected"), _class.prototype)), _class);
   _exports.default = OSSCountrySelector;
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSCountrySelector);
 });
@@ -89217,7 +89238,7 @@ define("@upfluence/oss-components/components/o-s-s/illustration", ["exports", "@
 });
 ;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@glimmer/tracking", "@ember/debug", "@ember/object"], function (_exports, _component, _templateFactory, _component2, _tracking, _debug, _object) {
+define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@glimmer/tracking", "@ember/debug", "@ember/object", "@ember/object/internals"], function (_exports, _component, _templateFactory, _component2, _tracking, _debug, _object, _internals) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -89225,7 +89246,7 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
   });
   _exports.default = void 0;
 
-  var _class, _descriptor;
+  var _class, _descriptor, _descriptor2, _descriptor3;
 
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
 
@@ -89257,23 +89278,27 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
 
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="fx-col upf-infinite-select {{unless this.inline 'upf-infinite-select--absolute'}}" {{did-insert this.onRender}} ...attributes>
+    <div id={{this.elementId}} class="fx-col upf-infinite-select {{unless this.inline 'upf-infinite-select--absolute'}}"
+       {{did-insert this.onRender}} ...attributes>
     {{#if this.searchEnabled}}
       <InputWrapper>
         <Input
-          value={{this._searchKeyword}} {{on "keyup" this.updateSearchKeyword}} type="text"
-          class="form-control upf-input" placeholder={{this.searchPlaceholder}} />
+               value={{this._searchKeyword}} {{on "keyup" this.updateSearchKeyword}} type="text"
+               class="form-control upf-input" placeholder={{this.searchPlaceholder}}
+               {{on "keydown" this.handleKeyEventInput}} />
+  
       </InputWrapper>
     {{/if}}
     <div class="upf-infinite-select__container">
       <ul class="upf-infinite-select__items-container
                  {{if (eq this.items.length 0) 'upf-infinite-select__items-container--empty'}}"
-                 {{on-bottom-reached this.onBottomReached}} {{scroll-shadow}}>
+          {{on-bottom-reached this.onBottomReached}} {{scroll-shadow}}
+          {{on "keydown" this.handleKeyEvent}}>
         {{#if (and @loading (not @loadingMore))}}
           <OSS::Skeleton @width="100%" @height="18" @multiple={{5}} @direction="col" />
         {{else}}
           {{#each this.items as |item|}}
-            <li class="upf-infinite-select__item" role="button" {{on "click" (fn this.didSelectItem item)}}>
+            <li class="upf-infinite-select__item" role="button" {{on "click" (fn this.didSelectItem item)}} tabindex="0">
               {{#if (has-block "option")}}
                 {{yield item to="option"}}
               {{else}}
@@ -89282,22 +89307,21 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
             </li>
           {{else}}
             <div class="fx-col fx-xalign-center">
-  					  {{#if (has-block "empty-state")}}
-  						  {{yield to="empty-state"}}
-  						{{else}}
-  							<OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
-  
-  							<div class="margin-top-xx-sm text-color-default upf-align--center">
-  								{{#if this._searchKeyword}}
-  									<p>{{t "oss-components.infinite-select.no-match.title"}}</p>
-  									<p class="text-color-default-light">
-  										{{t "oss-components.infinite-select.no-match.description"}}
-  									</p>
-  								{{else}}
-  									{{t "oss-components.infinite-select.empty"}}
-  								{{/if}}
-  							</div>
-  						{{/if}}
+              {{#if (has-block "empty-state")}}
+                {{yield to="empty-state"}}
+              {{else}}
+                <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
+                <div class="margin-top-xx-sm text-color-default upf-align--center">
+                  {{#if this._searchKeyword}}
+                    <p>{{t "oss-components.infinite-select.no-match.title"}}</p>
+                    <p class="text-color-default-light">
+                      {{t "oss-components.infinite-select.no-match.description"}}
+                    </p>
+                  {{else}}
+                    {{t "oss-components.infinite-select.empty"}}
+                  {{/if}}
+                </div>
+              {{/if}}
             </div>
           {{/each}}
   
@@ -89311,8 +89335,8 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
   
   */
   {
-    "id": "OJzP5oLp",
-    "block": "[[[11,0],[16,0,[29,[\"fx-col upf-infinite-select \",[52,[51,[30,0,[\"inline\"]]],\"upf-infinite-select--absolute\"]]]],[17,1],[4,[38,1],[[30,0,[\"onRender\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"searchEnabled\"]],[[[1,\"    \"],[8,[39,3],null,null,[[\"default\"],[[[[1,\"\\n      \"],[8,[39,4],[[16,2,[30,0,[\"_searchKeyword\"]]],[24,0,\"form-control upf-input\"],[16,\"placeholder\",[30,0,[\"searchPlaceholder\"]]],[24,4,\"text\"],[4,[38,5],[\"keyup\",[30,0,[\"updateSearchKeyword\"]]],null]],null,null],[1,\"\\n    \"]],[]]]]],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"upf-infinite-select__container\"],[12],[1,\"\\n    \"],[11,\"ul\"],[16,0,[29,[\"upf-infinite-select__items-container\\n               \",[52,[28,[37,6],[[30,0,[\"items\",\"length\"]],0],null],\"upf-infinite-select__items-container--empty\"]]]],[4,[38,7],[[30,0,[\"onBottomReached\"]]],null],[4,[38,8],null,null],[12],[1,\"\\n\"],[41,[28,[37,9],[[30,2],[28,[37,10],[[30,3]],null]],null],[[[1,\"        \"],[8,[39,11],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",5,\"col\"]],null],[1,\"\\n\"]],[]],[[[42,[28,[37,13],[[28,[37,13],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"          \"],[11,\"li\"],[24,0,\"upf-infinite-select__item\"],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[28,[37,14],[[30,0,[\"didSelectItem\"]],[30,4]],null]],null],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"              \"],[18,5,[[30,4]]],[1,\"\\n\"]],[]],[[[1,\"              \"],[1,[28,[35,17],[[30,4],[30,0,[\"itemLabel\"]]],null]],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[4]],[[[1,\"          \"],[10,0],[14,0,\"fx-col fx-xalign-center\"],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"\\t\\t\\t\\t\\t\\t  \"],[18,6,null],[1,\"\\n\"]],[]],[[[1,\"\\t\\t\\t\\t\\t\\t\\t\"],[8,[39,18],null,[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null],[1,\"\\n\\n\\t\\t\\t\\t\\t\\t\\t\"],[10,0],[14,0,\"margin-top-xx-sm text-color-default upf-align--center\"],[12],[1,\"\\n\"],[41,[30,0,[\"_searchKeyword\"]],[[[1,\"\\t\\t\\t\\t\\t\\t\\t\\t\\t\"],[10,2],[12],[1,[28,[35,19],[\"oss-components.infinite-select.no-match.title\"],null]],[13],[1,\"\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\"],[10,2],[14,0,\"text-color-default-light\"],[12],[1,\"\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\\t\"],[1,[28,[35,19],[\"oss-components.infinite-select.no-match.description\"],null]],[1,\"\\n\\t\\t\\t\\t\\t\\t\\t\\t\\t\"],[13],[1,\"\\n\"]],[]],[[[1,\"\\t\\t\\t\\t\\t\\t\\t\\t\\t\"],[1,[28,[35,19],[\"oss-components.infinite-select.empty\"],null]],[1,\"\\n\"]],[]]],[1,\"\\t\\t\\t\\t\\t\\t\\t\"],[13],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,3],[[[1,\"          \"],[8,[39,11],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",3,\"col\"]],null],[1,\"\\n\"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@loading\",\"@loadingMore\",\"item\",\"&option\",\"&empty-state\"],false,[\"unless\",\"did-insert\",\"if\",\"input-wrapper\",\"input\",\"on\",\"eq\",\"on-bottom-reached\",\"scroll-shadow\",\"and\",\"not\",\"o-s-s/skeleton\",\"each\",\"-track-array\",\"fn\",\"has-block\",\"yield\",\"get\",\"o-s-s/illustration\",\"t\"]]",
+    "id": "pr5XSC6a",
+    "block": "[[[11,0],[16,1,[30,0,[\"elementId\"]]],[16,0,[29,[\"fx-col upf-infinite-select \",[52,[51,[30,0,[\"inline\"]]],\"upf-infinite-select--absolute\"]]]],[17,1],[4,[38,1],[[30,0,[\"onRender\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"searchEnabled\"]],[[[1,\"    \"],[8,[39,3],null,null,[[\"default\"],[[[[1,\"\\n      \"],[8,[39,4],[[16,2,[30,0,[\"_searchKeyword\"]]],[24,0,\"form-control upf-input\"],[16,\"placeholder\",[30,0,[\"searchPlaceholder\"]]],[24,4,\"text\"],[4,[38,5],[\"keyup\",[30,0,[\"updateSearchKeyword\"]]],null],[4,[38,5],[\"keydown\",[30,0,[\"handleKeyEventInput\"]]],null]],null,null],[1,\"\\n\\n    \"]],[]]]]],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"upf-infinite-select__container\"],[12],[1,\"\\n    \"],[11,\"ul\"],[16,0,[29,[\"upf-infinite-select__items-container\\n               \",[52,[28,[37,6],[[30,0,[\"items\",\"length\"]],0],null],\"upf-infinite-select__items-container--empty\"]]]],[4,[38,7],[[30,0,[\"onBottomReached\"]]],null],[4,[38,8],null,null],[4,[38,5],[\"keydown\",[30,0,[\"handleKeyEvent\"]]],null],[12],[1,\"\\n\"],[41,[28,[37,9],[[30,2],[28,[37,10],[[30,3]],null]],null],[[[1,\"        \"],[8,[39,11],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",5,\"col\"]],null],[1,\"\\n\"]],[]],[[[42,[28,[37,13],[[28,[37,13],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"          \"],[11,\"li\"],[24,0,\"upf-infinite-select__item\"],[24,\"role\",\"button\"],[24,\"tabindex\",\"0\"],[4,[38,5],[\"click\",[28,[37,14],[[30,0,[\"didSelectItem\"]],[30,4]],null]],null],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"              \"],[18,5,[[30,4]]],[1,\"\\n\"]],[]],[[[1,\"              \"],[1,[28,[35,17],[[30,4],[30,0,[\"itemLabel\"]]],null]],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[4]],[[[1,\"          \"],[10,0],[14,0,\"fx-col fx-xalign-center\"],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"              \"],[18,6,null],[1,\"\\n\"]],[]],[[[1,\"              \"],[8,[39,18],null,[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null],[1,\"\\n              \"],[10,0],[14,0,\"margin-top-xx-sm text-color-default upf-align--center\"],[12],[1,\"\\n\"],[41,[30,0,[\"_searchKeyword\"]],[[[1,\"                  \"],[10,2],[12],[1,[28,[35,19],[\"oss-components.infinite-select.no-match.title\"],null]],[13],[1,\"\\n                  \"],[10,2],[14,0,\"text-color-default-light\"],[12],[1,\"\\n                    \"],[1,[28,[35,19],[\"oss-components.infinite-select.no-match.description\"],null]],[1,\"\\n                  \"],[13],[1,\"\\n\"]],[]],[[[1,\"                  \"],[1,[28,[35,19],[\"oss-components.infinite-select.empty\"],null]],[1,\"\\n\"]],[]]],[1,\"              \"],[13],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,3],[[[1,\"          \"],[8,[39,11],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",3,\"col\"]],null],[1,\"\\n\"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@loading\",\"@loadingMore\",\"item\",\"&option\",\"&empty-state\"],false,[\"unless\",\"did-insert\",\"if\",\"input-wrapper\",\"input\",\"on\",\"eq\",\"on-bottom-reached\",\"scroll-shadow\",\"and\",\"not\",\"o-s-s/skeleton\",\"each\",\"-track-array\",\"fn\",\"has-block\",\"yield\",\"get\",\"o-s-s/illustration\",\"t\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/infinite-select.hbs",
     "isStrictMode": false
   });
@@ -89332,12 +89356,23 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
 
       _initializerDefineProperty(_assertThisInitialized(_this), "_searchKeyword", _descriptor, _assertThisInitialized(_this));
 
+      _initializerDefineProperty(_assertThisInitialized(_this), "_focusElement", _descriptor2, _assertThisInitialized(_this));
+
+      _initializerDefineProperty(_assertThisInitialized(_this), "elementId", _descriptor3, _assertThisInitialized(_this));
+
       (true && !(_this.searchEnabled ? typeof _this.args.onSearch === 'function' : true) && (0, _debug.assert)('[component][OSS::InfiniteSelect] Search is enabled without an `onSearch` action being passed', _this.searchEnabled ? typeof _this.args.onSearch === 'function' : true));
       (true && !(typeof _this.args.onSelect === 'function') && (0, _debug.assert)('[component][OSS::InfiniteSelect] `onSelect` action is mandatory', typeof _this.args.onSelect === 'function'));
       return _this;
     }
 
     _createClass(OSSInfiniteSelect, [{
+      key: "enableKeyboard",
+      get: function get() {
+        var _this$args$enableKeyb;
+
+        return (_this$args$enableKeyb = this.args.enableKeyboard) !== null && _this$args$enableKeyb !== void 0 ? _this$args$enableKeyb : false;
+      }
+    }, {
       key: "searchEnabled",
       get: function get() {
         var _this$args$searchEnab;
@@ -89378,6 +89413,10 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
         var _this$args$didRender, _this$args;
 
         (_this$args$didRender = (_this$args = this.args).didRender) === null || _this$args$didRender === void 0 ? void 0 : _this$args$didRender.call(_this$args);
+
+        if (this.enableKeyboard) {
+          this.autoFocus();
+        }
       }
     }, {
       key: "updateSearchKeyword",
@@ -89402,6 +89441,116 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
         event === null || event === void 0 ? void 0 : event.stopPropagation();
         this.args.onSelect(item);
       }
+    }, {
+      key: "autoFocus",
+      value: function autoFocus() {
+        if (this.searchEnabled) {
+          this._focusInput();
+        } else {
+          this._focusElementAt(0);
+        }
+      }
+    }, {
+      key: "handleKeyEventInput",
+      value: function handleKeyEventInput(e) {
+        var actionsForKeys = {
+          ArrowDown: this.focusFirstItem,
+          Enter: this.focusFirstItem,
+          Escape: this.handleEscape
+        };
+
+        if (this.enableKeyboard) {
+          var _actionsForKeys$e$key;
+
+          (_actionsForKeys$e$key = actionsForKeys[e.key]) === null || _actionsForKeys$e$key === void 0 ? void 0 : _actionsForKeys$e$key.call(actionsForKeys, this, e);
+        }
+      }
+    }, {
+      key: "handleKeyEvent",
+      value: function handleKeyEvent(e) {
+        var actionsForKeys = {
+          ArrowDown: this.handleArrowDown,
+          ArrowUp: this.handleArrowUp,
+          Enter: this.handleEnter,
+          Tab: this.handleTab,
+          Escape: this.handleEscape
+        };
+
+        if (this.enableKeyboard) {
+          var _actionsForKeys$e$key2;
+
+          (_actionsForKeys$e$key2 = actionsForKeys[e.key]) === null || _actionsForKeys$e$key2 === void 0 ? void 0 : _actionsForKeys$e$key2.call(actionsForKeys, this, e);
+        }
+      }
+    }, {
+      key: "_focusElementAt",
+      value: function _focusElementAt(index) {
+        var el = document.querySelectorAll("#".concat(this.elementId, " .upf-infinite-select__items-container li"))[index];
+        el === null || el === void 0 ? void 0 : el.focus();
+      }
+    }, {
+      key: "_focusInput",
+      value: function _focusInput() {
+        var el = document.querySelector("#".concat(this.elementId, " input"));
+        el === null || el === void 0 ? void 0 : el.focus();
+      }
+    }, {
+      key: "handleArrowDown",
+      value: function handleArrowDown(self, e) {
+        if (self.args.items.length - 1 > self._focusElement) {
+          self._focusElement++;
+
+          self._focusElementAt(self._focusElement);
+        }
+
+        e.preventDefault();
+      }
+    }, {
+      key: "handleArrowUp",
+      value: function handleArrowUp(self, e) {
+        e.preventDefault();
+
+        if (self._focusElement == 0) {
+          if (self.searchEnabled) {
+            self._focusInput();
+          }
+
+          return;
+        }
+
+        if (self._focusElement > 0) {
+          self._focusElement--;
+
+          self._focusElementAt(self._focusElement);
+        }
+      }
+    }, {
+      key: "handleEnter",
+      value: function handleEnter(self, e) {
+        self.didSelectItem(self.items[self._focusElement]);
+        e.preventDefault();
+      }
+    }, {
+      key: "handleTab",
+      value: function handleTab(self) {
+        var _self$args$onClose, _self$args;
+
+        (_self$args$onClose = (_self$args = self.args).onClose) === null || _self$args$onClose === void 0 ? void 0 : _self$args$onClose.call(_self$args);
+      }
+    }, {
+      key: "handleEscape",
+      value: function handleEscape(self) {
+        var _self$args$onClose2, _self$args2;
+
+        (_self$args$onClose2 = (_self$args2 = self.args).onClose) === null || _self$args$onClose2 === void 0 ? void 0 : _self$args$onClose2.call(_self$args2);
+      }
+    }, {
+      key: "focusFirstItem",
+      value: function focusFirstItem(self, e) {
+        self._focusElementAt(self._focusElement);
+
+        e.preventDefault();
+      }
     }]);
 
     return OSSInfiniteSelect;
@@ -89412,7 +89561,21 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
     initializer: function initializer() {
       return '';
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "onRender", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onRender"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "updateSearchKeyword", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateSearchKeyword"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onBottomReached", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onBottomReached"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "didSelectItem", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "didSelectItem"), _class.prototype)), _class);
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "_focusElement", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return 0;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "elementId", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return (0, _internals.guidFor)(this);
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "onRender", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onRender"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "updateSearchKeyword", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateSearchKeyword"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onBottomReached", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onBottomReached"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "didSelectItem", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "didSelectItem"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "autoFocus", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "autoFocus"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleKeyEventInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleKeyEventInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleKeyEvent", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleKeyEvent"), _class.prototype)), _class);
   _exports.default = OSSInfiniteSelect;
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSInfiniteSelect);
 });
@@ -89566,6 +89729,23 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
           type: 'boolean'
         }
       },
+      enableKeyboard: {
+        description: 'Enable or not keyboard navigation inside infinite select',
+        type: {
+          name: 'boolean'
+        },
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
       onSelect: {
         type: {
           required: true
@@ -89624,6 +89804,7 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
     loading: false,
     loadingMore: false,
     inline: false,
+    enableKeyboard: false,
     onSelect: (0, _addonActions.action)('onSelect'),
     onSearch: (0, _addonActions.action)('onSearch'),
     onBottomReached: (0, _addonActions.action)('onBottomReached'),
@@ -89639,12 +89820,12 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
               @items={{this.items}} @itemLabel={{this.itemLabel}} @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}}
               @searchPlaceholder={{this.searchPlaceholder}} @onSelect={{this.onSelect}} @loading={{this.loading}}
               @loadingMore={{this.loadingMore}} @inline={{this.inline}} @onBottomReached={{this.onBottomReached}} 
-              @didRender={{this.didRender}} class="upf-align--absolute-center"/>
+              @didRender={{this.didRender}} @enableKeyboard={{this.enableKeyboard}} class="upf-align--absolute-center"/>
         
       */
       {
-        "id": "XX4hlXAR",
-        "block": "[[[1,\"\\n      \"],[8,[39,0],[[24,0,\"upf-align--absolute-center\"]],[[\"@items\",\"@itemLabel\",\"@searchEnabled\",\"@onSearch\",\"@searchPlaceholder\",\"@onSelect\",\"@loading\",\"@loadingMore\",\"@inline\",\"@onBottomReached\",\"@didRender\"],[[30,0,[\"items\"]],[30,0,[\"itemLabel\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"onSearch\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"onSelect\"]],[30,0,[\"loading\"]],[30,0,[\"loadingMore\"]],[30,0,[\"inline\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"didRender\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/infinite-select\"]]",
+        "id": "kdFx817/",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],[[24,0,\"upf-align--absolute-center\"]],[[\"@items\",\"@itemLabel\",\"@searchEnabled\",\"@onSearch\",\"@searchPlaceholder\",\"@onSelect\",\"@loading\",\"@loadingMore\",\"@inline\",\"@onBottomReached\",\"@didRender\",\"@enableKeyboard\"],[[30,0,[\"items\"]],[30,0,[\"itemLabel\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"onSearch\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"onSelect\"]],[30,0,[\"loading\"]],[30,0,[\"loadingMore\"]],[30,0,[\"inline\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"didRender\"]],[30,0,[\"enableKeyboard\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/infinite-select\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -89661,7 +89842,7 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
             @items={{this.items}} @itemLabel={{this.itemLabel}} @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}}
               @searchPlaceholder={{this.searchPlaceholder}} @onSelect={{this.onSelect}} @loading={{this.loading}}
               @loadingMore={{this.loadingMore}} @inline={{this.inline}} @onBottomReached={{this.onBottomReached}} 
-              @didRender={{this.didRender}} class="upf-align--absolute-center">
+              @didRender={{this.didRender}} @enableKeyboard={{this.enableKeyboard}} class="upf-align--absolute-center">
             <:option as |opt|>
               {{opt.superhero}} (Alias: {{opt.characters}})
             </:option>
@@ -89669,8 +89850,8 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
         
       */
       {
-        "id": "kDeME1Sx",
-        "block": "[[[1,\"\\n    \"],[8,[39,0],[[24,0,\"upf-align--absolute-center\"]],[[\"@items\",\"@itemLabel\",\"@searchEnabled\",\"@onSearch\",\"@searchPlaceholder\",\"@onSelect\",\"@loading\",\"@loadingMore\",\"@inline\",\"@onBottomReached\",\"@didRender\"],[[30,0,[\"items\"]],[30,0,[\"itemLabel\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"onSearch\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"onSelect\"]],[30,0,[\"loading\"]],[30,0,[\"loadingMore\"]],[30,0,[\"inline\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"didRender\"]]]],[[\"option\"],[[[[1,\"\\n        \"],[1,[30,1,[\"superhero\"]]],[1,\" (Alias: \"],[1,[30,1,[\"characters\"]]],[1,\")\\n      \"]],[1]]]]],[1,\"\\n  \"]],[\"opt\"],false,[\"o-s-s/infinite-select\"]]",
+        "id": "v55H0uUK",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],[[24,0,\"upf-align--absolute-center\"]],[[\"@items\",\"@itemLabel\",\"@searchEnabled\",\"@onSearch\",\"@searchPlaceholder\",\"@onSelect\",\"@loading\",\"@loadingMore\",\"@inline\",\"@onBottomReached\",\"@didRender\",\"@enableKeyboard\"],[[30,0,[\"items\"]],[30,0,[\"itemLabel\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"onSearch\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"onSelect\"]],[30,0,[\"loading\"]],[30,0,[\"loadingMore\"]],[30,0,[\"inline\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"didRender\"]],[30,0,[\"enableKeyboard\"]]]],[[\"option\"],[[[[1,\"\\n        \"],[1,[30,1,[\"superhero\"]]],[1,\" (Alias: \"],[1,[30,1,[\"characters\"]]],[1,\")\\n      \"]],[1]]]]],[1,\"\\n  \"]],[\"opt\"],false,[\"o-s-s/infinite-select\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -107828,36 +108009,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-1915lS9bSCMIeZkJ/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-1915lS9bSCMIeZkJ/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1915lS9bSCMIeZkJ/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-1915lS9bSCMIeZkJ/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-1915lS9bSCMIeZkJ/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1915lS9bSCMIeZkJ/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/l.js /tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-1915lS9bSCMIeZkJ/cache-275-bundler/staging/l.js /tmp/broccoli-1915lS9bSCMIeZkJ/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/l.js_/tmp/broccoli-1865HI1GtILUNHhc/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-1915lS9bSCMIeZkJ/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1915lS9bSCMIeZkJ/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1915lS9bSCMIeZkJ/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1915lS9bSCMIeZkJ/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1915lS9bSCMIeZkJ/cache-275-bundler/staging/l.js_/tmp/broccoli-1915lS9bSCMIeZkJ/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
