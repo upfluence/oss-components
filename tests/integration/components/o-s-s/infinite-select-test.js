@@ -1,8 +1,12 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, typeIn, render, scrollTo, setupOnerror } from '@ember/test-helpers';
+import { click, typeIn, render, scrollTo, setupOnerror, triggerKeyEvent } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import sinon from 'sinon';
+
+function _isFocused(element: HTMLElement): Boolean {
+  return element === document.activeElement;
+}
 
 const FAKE_DATA = [
   { name: 'Batman', characters: 'Bruce Wayne' },
@@ -235,6 +239,159 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
       await scrollTo('.upf-infinite-select__items-container', 0, 1500);
 
       assert.ok(this.onBottomReached.calledTwice);
+    });
+  });
+
+  module('Keyboard control management', function (hooks) {
+    hooks.beforeEach(function () {
+      this.items = FAKE_DATA;
+      this.onSelect = () => {};
+      this.onSearch = () => {};
+    });
+
+    module('If keyboard is disabled', function () {
+      test('First element should not been focus on load', async function (assert) {
+        await render(
+          hbs`<OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}} />`
+        );
+
+        assert.notOk(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[0]));
+      });
+
+      test('Keyboard control are disabled', async function (assert) {
+        await render(
+          hbs`<OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}} />`
+        );
+
+        assert.notOk(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[0]));
+
+        await triggerKeyEvent('.upf-infinite-select__items-container', 'keydown', 'ArrowDown');
+
+        assert.notOk(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[0]));
+        assert.notOk(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[1]));
+      });
+    });
+
+    module('If keyboard is enabled', function (hooks) {
+      hooks.beforeEach(function () {
+        this.enableKeyboard = true;
+      });
+
+      module('If Search is enabled', function () {
+        test('Search input should be focus', async function (assert) {
+          await render(
+            hbs`<OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{true}} @onSelect={{this.onSelect}}
+                                     @enableKeyboard={{this.enableKeyboard}} @onSearch={{this.onSearch}}/>`
+          );
+
+          assert.ok(_isFocused(document.querySelector('.upf-input')));
+          assert.notOk(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[0]));
+        });
+
+        test('On keydown Enter it should focus the first element', async function (assert) {
+          await render(
+            hbs`<OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{true}} @onSelect={{this.onSelect}}
+                                     @enableKeyboard={{this.enableKeyboard}} @onSearch={{this.onSearch}}/>`
+          );
+
+          assert.ok(_isFocused(document.querySelector('.upf-input')));
+
+          await triggerKeyEvent('.upf-input', 'keydown', 'Enter');
+
+          assert.notOk(_isFocused(document.querySelector('.upf-input')));
+          assert.ok(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[0]));
+        });
+
+        test('On keydown ArrowDown it should focus the first element', async function (assert) {
+          await render(
+            hbs`<OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{true}} @onSelect={{this.onSelect}}
+                                     @enableKeyboard={{this.enableKeyboard}} @onSearch={{this.onSearch}}/>`
+          );
+
+          assert.ok(_isFocused(document.querySelector('.upf-input')));
+
+          await triggerKeyEvent('.upf-input', 'keydown', 'ArrowDown');
+
+          assert.notOk(_isFocused(document.querySelector('.upf-input')));
+          assert.ok(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[0]));
+        });
+
+        test('On keydown Enter it should call the onClose action', async function (assert) {
+          this.onClose = sinon.stub();
+
+          await render(
+            hbs`<OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{true}} @onSelect={{this.onSelect}}
+                                     @enableKeyboard={{this.enableKeyboard}} @onSearch={{this.onSearch}} @onClose={{this.onClose}}/>`
+          );
+
+          assert.ok(_isFocused(document.querySelector('.upf-input')));
+          assert.ok(this.onClose.notCalled);
+
+          await triggerKeyEvent('.upf-input', 'keydown', 'Escape');
+
+          assert.ok(this.onClose.calledOnce);
+        });
+      });
+
+      test('First element should be focus on load', async function (assert) {
+        await render(
+          hbs`<OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}}
+                                   @enableKeyboard={{this.enableKeyboard}}/>`
+        );
+
+        assert.ok(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[0]));
+      });
+
+      test('On keydown ArrowUp & ArrowDown it should control the focused element', async function (assert) {
+        await render(
+          hbs`<OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}}
+                                   @enableKeyboard={{this.enableKeyboard}}/>`
+        );
+
+        assert.ok(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[0]));
+
+        await triggerKeyEvent('.upf-infinite-select__items-container', 'keydown', 'ArrowDown');
+
+        assert.notOk(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[0]));
+        assert.ok(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[1]));
+
+        await triggerKeyEvent('.upf-infinite-select__items-container', 'keydown', 'ArrowUp');
+
+        assert.notOk(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[1]));
+        assert.ok(_isFocused(document.querySelectorAll('.upf-infinite-select__item')[0]));
+      });
+
+      test('On keydown Enter it should select the focused element', async function (assert) {
+        this.onSelect = sinon.stub();
+
+        await render(
+          hbs`<OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}}
+                                   @enableKeyboard={{this.enableKeyboard}}/>`
+        );
+
+        const el = document.querySelectorAll('.upf-infinite-select__item')[0];
+        assert.ok(_isFocused(el));
+        assert.ok(this.onSelect.notCalled);
+
+        await triggerKeyEvent('.upf-infinite-select__items-container', 'keydown', 'Enter');
+
+        assert.ok(this.onSelect.calledOnceWith(FAKE_DATA[0]));
+      });
+
+      test('On keydown Tab/Escape it should call the onClose action', async function (assert) {
+        this.onClose = sinon.stub();
+
+        await render(
+          hbs`<OSS::InfiniteSelect @items={{this.items}} @inline={{false}} @searchEnabled={{false}} @onSelect={{this.onSelect}}
+                                   @enableKeyboard={{this.enableKeyboard}} @onClose={{this.onClose}}/>`
+        );
+
+        assert.ok(this.onClose.notCalled);
+        await triggerKeyEvent('.upf-infinite-select__items-container', 'keydown', 'Tab');
+        assert.ok(this.onClose.calledOnce);
+        await triggerKeyEvent('.upf-infinite-select__items-container', 'keydown', 'Escape');
+        assert.ok(this.onClose.calledTwice);
+      });
     });
   });
 
