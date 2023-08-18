@@ -9,33 +9,63 @@
     flex-direction: row;
     display: flex;
     min-width: 0;
+
+    &-reverse {
+      flex-direction: row-reverse;
+    }
   }
   &-col {
     flex-direction: column;
     display: flex;
     min-width: 0;
+
+    &-reverse {
+      flex-direction: column-reverse;
+    }
   }
 
   // Main Axis Alignment
   &-malign {
-    &-center { justify-content: center }
-    &-start { justify-content: flex-start }
-    &-end { justify-content: flex-end }
-    &-space-between { justify-content: space-between }
-    &-space-around { justify-content: space-around }
-    &-space-evenly { justify-content: space-evenly }
+    &-center {
+      justify-content: center;
+    }
+    &-start {
+      justify-content: flex-start;
+    }
+    &-end {
+      justify-content: flex-end;
+    }
+    &-space-between {
+      justify-content: space-between;
+    }
+    &-space-around {
+      justify-content: space-around;
+    }
+    &-space-evenly {
+      justify-content: space-evenly;
+    }
   }
 
   // Cross Axis Alignment
   &-xalign {
-    &-center { align-items: center }
-    &-start { align-items: flex-start }
-    &-end { align-items: flex-end }
+    &-center {
+      align-items: center;
+    }
+    &-start {
+      align-items: flex-start;
+    }
+    &-end {
+      align-items: flex-end;
+    }
   }
 
   &-basis {
-    &-pc-33 { flex-basis: 33.33% }
-    &-pc-66 { flex-basis: 66.66% }
+    &-pc-33 {
+      flex-basis: 33.33%;
+    }
+    &-pc-66 {
+      flex-basis: 66.66%;
+    }
 
     // Generates fx-basis-pc-0, fx-basis-pc-5, fx-basis-pc-10... up until 100
     .generate-fx-basis(100);
@@ -65,7 +95,7 @@
   }
 }
 
-// Keep in my mind that the Alignment axis are switched based on the flex-direction: 
+// Keep in my mind that the Alignment axis are switched based on the flex-direction:
 
 // flex-direction: row
 // <----- Main Axis ----->
