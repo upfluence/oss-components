@@ -10521,10 +10521,16 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
   display: flex;
   min-width: 0;
 }
+.fx-row-reverse {
+  flex-direction: row-reverse;
+}
 .fx-col {
   flex-direction: column;
   display: flex;
   min-width: 0;
+}
+.fx-col-reverse {
+  flex-direction: column-reverse;
 }
 .fx-malign-center {
   justify-content: center;
@@ -11277,6 +11283,9 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
 }
 .border-radius-default {
   border-radius: var(--border-radius-sm);
+}
+.border-radius-md {
+  border-radius: var(--border-radius-md);
 }
 .border-radius-round {
   border-radius: 50%;
