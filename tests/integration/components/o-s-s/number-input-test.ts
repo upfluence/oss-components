@@ -78,8 +78,12 @@ module('Integration | Component | o-s-s/number-input', function (hooks) {
     test('If @max parameter is set, increasing the value sets the max value', async function (assert) {
       await render(hbs`<OSS::NumberInput @value={{5}} @max={{5}} />`);
       assert.dom('.number-input input').hasValue('5');
-      await click('.upf-square-btn:nth-of-type(2)');
-      assert.dom('.number-input input').hasValue('5');
+      assert.dom('.upf-square-btn:nth-of-type(2)').isDisabled();
+    });
+
+    test('If @max & @maxReachedTooltip parameter are set, it renders the tooltip', async function (assert) {
+      await render(hbs`<OSS::NumberInput @value={{5}} @max={{5}} @maxReachedTooltip="max" />`);
+      await assert.tooltip('.number-input').hasTitle('max');
     });
   });
 
@@ -110,8 +114,12 @@ module('Integration | Component | o-s-s/number-input', function (hooks) {
     test('If @min parameter is set, decreasing the value sets the min value', async function (assert) {
       await render(hbs`<OSS::NumberInput @value={{5}} @min={{5}} />`);
       assert.dom('.number-input input').hasValue('5');
-      await click('.upf-square-btn:nth-of-type(1)');
-      assert.dom('.number-input input').hasValue('5');
+      assert.dom('.upf-square-btn:nth-of-type(1)').isDisabled();
+    });
+
+    test('If @min & @minReachedTooltip parameter are set, it renders the tooltip', async function (assert) {
+      await render(hbs`<OSS::NumberInput @value={{5}} @min={{5}} @minReachedTooltip="min" />`);
+      await assert.tooltip('.number-input').hasTitle('min');
     });
   });
 

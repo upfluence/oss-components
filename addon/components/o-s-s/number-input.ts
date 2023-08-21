@@ -7,6 +7,8 @@ interface OSSNumberInputArgs {
   min?: number;
   max?: number;
   step?: number;
+  minReachedTooltip?: string;
+  maxReachedTooltip?: string;
   onChange?(value: number): void;
 }
 
@@ -20,6 +22,15 @@ const CHAR_PIXEL_WIDTH = 7;
 
 export default class OSSNumberInput extends Component<OSSNumberInputArgs> {
   @tracked localValue: number = this.args.value || DEFAULT_VALUE;
+  @tracked reachedTooltip: string | null = null;
+  @tracked isMinDisabled: boolean = false;
+  @tracked isMaxDisabled: boolean = false;
+
+  constructor(owner: unknown, args: OSSNumberInputArgs) {
+    super(owner, args);
+    this.reachedTooltipHandler();
+    this.checkDisabledButton();
+  }
 
   get step(): number {
     return this.args.step || 1;
@@ -54,6 +65,8 @@ export default class OSSNumberInput extends Component<OSSNumberInputArgs> {
       this.localValue = this.args.max;
     }
     this.notifyChanges();
+    this.reachedTooltipHandler();
+    this.checkDisabledButton();
   }
 
   @action
@@ -75,5 +88,25 @@ export default class OSSNumberInput extends Component<OSSNumberInputArgs> {
   @action
   notifyChanges(): void {
     this.args.onChange?.(Number(this.localValue));
+  }
+
+  private reachedTooltipHandler(): void {
+    if (Number(this.localValue) === this.args.min) {
+      if (!this.args.minReachedTooltip) return;
+      this.reachedTooltip = this.args.minReachedTooltip;
+      return;
+    }
+    if (Number(this.localValue) === this.args.max) {
+      if (!this.args.maxReachedTooltip) return;
+      this.reachedTooltip = this.args.maxReachedTooltip;
+      return;
+    }
+    this.reachedTooltip = null;
+    document.querySelector('.upf-tooltip')?.remove();
+  }
+
+  private checkDisabledButton(): void {
+    this.isMinDisabled = Number(this.localValue) === this.args.min;
+    this.isMaxDisabled = Number(this.localValue) === this.args.max;
   }
 }

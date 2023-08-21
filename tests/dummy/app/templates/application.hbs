@@ -100,6 +100,7 @@
     <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
       <OSS::NumberInput @value={{this.numberValue}} @onChange={{this.handleNumberInput}} />
       <OSS::NumberInput @min={{0}} @max={{15}} @step={{5}} @onChange={{this.handleNumberInput}} />
+      <OSS::NumberInput @min={{0}} @max={{15}} @step={{5}} @minReachedTooltip="Hello" @maxReachedTooltip="you" @onChange={{this.handleNumberInput}} />
     </div>
     <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
       <OSS::UrlInput @value={{this.shopifyDomain}} @prefix="https://" @placeholder="shopname" @suffix=".myshopify.com"
