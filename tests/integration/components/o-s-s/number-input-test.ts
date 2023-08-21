@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { render, waitFor } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import click from '@ember/test-helpers/dom/click';
 import triggerKeyEvent from '@ember/test-helpers/dom/trigger-key-event';
@@ -83,7 +83,9 @@ module('Integration | Component | o-s-s/number-input', function (hooks) {
 
     test('If @max & @maxReachedTooltip parameter are set, it renders the tooltip', async function (assert) {
       await render(hbs`<OSS::NumberInput @value={{5}} @max={{5}} @maxReachedTooltip="max" />`);
-      await assert.tooltip('.number-input').hasTitle('max');
+      document.querySelector('.upf-square-btn:nth-of-type(2)')?.dispatchEvent(new Event('mouseover'));
+      await waitFor('.upf-tooltip');
+      assert.dom('.upf-tooltip .title').hasText('max');
     });
   });
 
@@ -119,7 +121,9 @@ module('Integration | Component | o-s-s/number-input', function (hooks) {
 
     test('If @min & @minReachedTooltip parameter are set, it renders the tooltip', async function (assert) {
       await render(hbs`<OSS::NumberInput @value={{5}} @min={{5}} @minReachedTooltip="min" />`);
-      await assert.tooltip('.number-input').hasTitle('min');
+      document.querySelector('.upf-square-btn:nth-of-type(1)')?.dispatchEvent(new Event('mouseover'));
+      await waitFor('.upf-tooltip');
+      assert.dom('.upf-tooltip .title').hasText('min');
     });
   });
 
