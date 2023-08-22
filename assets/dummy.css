@@ -7731,6 +7731,9 @@ label {
 .font-color-gray-500 {
   color: var(--color-gray-500);
 }
+.font-color-gray-600 {
+  color: var(--color-gray-600);
+}
 .font-color-gray-900 {
   color: var(--color-gray-900);
 }
@@ -9707,6 +9710,10 @@ label {
 }
 .upf-tag--regular.upf-tag--plain {
   background-color: var(--color-primary-500);
+  color: var(--color-white);
+}
+.upf-tag--primary-gradient {
+  background: var(--primary-gradient-500);
   color: var(--color-white);
 }
 .upf-tag--success {
