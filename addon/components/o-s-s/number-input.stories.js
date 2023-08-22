@@ -11,7 +11,7 @@ export default {
         type: {
           summary: 'number'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'number' }
     },
@@ -21,7 +21,7 @@ export default {
         type: {
           summary: 'number'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'number' }
     },
@@ -31,7 +31,7 @@ export default {
         type: {
           summary: 'number'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'number' }
     },
@@ -41,12 +41,38 @@ export default {
         type: {
           summary: 'number'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'number' }
     },
+    minReachedTooltip: {
+      description: '[OPTIONAL] The tooltip to render when the minimum is reached',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'text' }
+    },
+    maxReachedTooltip: {
+      description: '[OPTIONAL] The tooltip to render when the maximum is reached',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'text' }
+    },
     onChange: {
-      description: '[OPTIONAL] A callback that sends back the new value of the input'
+      description: '[OPTIONAL] A callback that sends back the new value of the input',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'onChange(value): void'
+        }
+      }
     }
   },
   parameters: {
@@ -61,7 +87,8 @@ export default {
 
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
-    <OSS::NumberInput @value={{this.value}} @min={{this.min}} @max={{this.max}} @step={{this.step}} @onChange={{this.onChange}} />
+    <OSS::NumberInput @value={{this.value}} @min={{this.min}} @max={{this.max}} @step={{this.step}} @onChange={{this.onChange}}
+                      @minReachedTooltip={{this.minReachedTooltip}} @maxReachedTooltip={{this.maxReachedTooltip}} />
   `,
   context: args
 });
@@ -71,5 +98,7 @@ BasicUsage.args = {
   min: 0,
   max: 15,
   step: 3,
+  minReachedTooltip: '',
+  maxReachedTooltip: '',
   onChange: action('onChange')
 };

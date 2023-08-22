@@ -1,7 +1,9 @@
 <div class="number-input fx-row">
-  <OSS::Button @square={{true}} @size="md" @icon="far fa-minus" {{on "click" this.decreaseValue}} />
+  <OSS::Button @square={{true}} @size="md" @icon="far fa-minus" {{on "click" this.decreaseValue}}
+               disabled={{this.isMinDisabled}} {{enable-tooltip title=this.minTooltipTitle placement="top"}} />
   {{! template-lint-disable no-triple-curlies}}
   <OSS::InputContainer @value={{this.localValue}} @onChange={{this.checkUserInput}} style={{{this.dynamicWidth}}}
                        {{on "keydown" this.keyParser}} {{on "blur" this.checkUserInput}} />
-  <OSS::Button @square={{true}} @size="md" @icon="far fa-plus" {{on "click" this.increaseValue}} />
+  <OSS::Button @square={{true}} @size="md" @icon="far fa-plus" {{on "click" this.increaseValue}}
+               disabled={{this.isMaxDisabled}} {{enable-tooltip title=this.maxTooltipTitle placement="top"}} />
 </div>

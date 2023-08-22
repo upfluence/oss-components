@@ -7,6 +7,8 @@ interface OSSNumberInputArgs {
   min?: number;
   max?: number;
   step?: number;
+  minReachedTooltip?: string;
+  maxReachedTooltip?: string;
   onChange?(value: number): void;
 }
 
@@ -20,6 +22,7 @@ const CHAR_PIXEL_WIDTH = 7;
 
 export default class OSSNumberInput extends Component<OSSNumberInputArgs> {
   @tracked localValue: number = this.args.value || DEFAULT_VALUE;
+  @tracked reachedTooltip: string | null = null;
 
   get step(): number {
     return this.args.step || 1;
@@ -27,6 +30,22 @@ export default class OSSNumberInput extends Component<OSSNumberInputArgs> {
 
   get dynamicWidth(): any {
     return `width: ${BASE_INPUT_PIXEL_WIDTH + ('' + this.localValue).length * CHAR_PIXEL_WIDTH}px`;
+  }
+
+  get isMinDisabled(): boolean {
+    return Number(this.localValue) === this.args.min;
+  }
+
+  get isMaxDisabled(): boolean {
+    return Number(this.localValue) === this.args.max;
+  }
+
+  get minTooltipTitle(): string | undefined {
+    return Number(this.localValue) === this.args.min ? this.args.minReachedTooltip : undefined;
+  }
+
+  get maxTooltipTitle(): string | undefined {
+    return Number(this.localValue) === this.args.max ? this.args.maxReachedTooltip : undefined;
   }
 
   @action
