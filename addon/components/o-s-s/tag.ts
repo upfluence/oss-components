@@ -3,6 +3,7 @@ import { assert } from '@ember/debug';
 
 export type SkinType =
   | 'primary'
+  | 'primary-gradient'
   | 'success'
   | 'warning'
   | 'danger'
@@ -21,6 +22,7 @@ const BASE_CLASS = 'upf-tag';
 
 export const SkinDefinition: SkinDefType = {
   primary: 'regular',
+  'primary-gradient': 'primary-gradient',
   success: 'success',
   warning: 'alert',
   danger: 'critical',

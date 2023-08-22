@@ -1,6 +1,19 @@
 import hbs from 'htmlbars-inline-precompile';
 
-const SkinTypes = ['primary', 'success', 'warning', 'danger', 'secondary'];
+const SkinTypes = [
+  'primary',
+  'primary-gradient',
+  'success',
+  'warning',
+  'danger',
+  'secondary',
+  'xtd-orange',
+  'xtd-cyan',
+  'xtd-yellow',
+  'xtd-blue',
+  'xtd-violet',
+  'xtd-lime'
+];
 
 export default {
   title: 'Components/OSS::Tag',
