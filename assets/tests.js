@@ -11967,13 +11967,9 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["@ember/te
 
                 case 2:
                   assert.dom('.number-input input').hasValue('5');
-                  _context10.next = 5;
-                  return (0, _click.default)('.upf-square-btn:nth-of-type(2)');
+                  assert.dom('.upf-square-btn:nth-of-type(2)').isDisabled();
 
-                case 5:
-                  assert.dom('.number-input input').hasValue('5');
-
-                case 6:
+                case 4:
                 case "end":
                   return _context10.stop();
               }
@@ -11985,10 +11981,10 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["@ember/te
           return _ref11.apply(this, arguments);
         };
       }());
-    });
-    (0, _qunit.module)('Value decrease', function () {
-      (0, _qunit.test)('- button increases the value by the step', /*#__PURE__*/function () {
+      (0, _qunit.test)('If @max & @maxReachedTooltip parameter are set, it renders the tooltip', /*#__PURE__*/function () {
         var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(assert) {
+          var _document$querySelect;
+
           return regeneratorRuntime.wrap(function _callee11$(_context11) {
             while (1) {
               switch (_context11.prev = _context11.next) {
@@ -11996,22 +11992,22 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["@ember/te
                   _context11.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
-                    <OSS::NumberInput />
+                    <OSS::NumberInput @value={{5}} @max={{5}} @maxReachedTooltip="max" />
                   */
                   {
-                    "id": "MfDNJImx",
-                    "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/number-input\"]]",
+                    "id": "DZK+A3Ct",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@max\",\"@maxReachedTooltip\"],[5,5,\"max\"]],null]],[],false,[\"o-s-s/number-input\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
 
                 case 2:
-                  assert.dom('.number-input input').hasValue('0');
+                  (_document$querySelect = document.querySelector('.upf-square-btn:nth-of-type(2)')) === null || _document$querySelect === void 0 ? void 0 : _document$querySelect.dispatchEvent(new Event('mouseover'));
                   _context11.next = 5;
-                  return (0, _click.default)('.upf-square-btn:nth-of-type(1)');
+                  return (0, _testHelpers.waitFor)('.upf-tooltip');
 
                 case 5:
-                  assert.dom('.number-input input').hasValue('-1');
+                  assert.dom('.upf-tooltip .title').hasText('max');
 
                 case 6:
                 case "end":
@@ -12025,7 +12021,9 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["@ember/te
           return _ref12.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('Down arrow increases the value by the step', /*#__PURE__*/function () {
+    });
+    (0, _qunit.module)('Value decrease', function () {
+      (0, _qunit.test)('- button increases the value by the step', /*#__PURE__*/function () {
         var _ref13 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(assert) {
           return regeneratorRuntime.wrap(function _callee12$(_context12) {
             while (1) {
@@ -12044,12 +12042,9 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["@ember/te
                   }));
 
                 case 2:
-                  assert.dom('.number-input input').hasValue('0'); // @ts-ignore
-
+                  assert.dom('.number-input input').hasValue('0');
                   _context12.next = 5;
-                  return (0, _triggerKeyEvent.default)('.number-input input', 'keydown', 'ArrowDown', {
-                    code: 'ArrowDown'
-                  });
+                  return (0, _click.default)('.upf-square-btn:nth-of-type(1)');
 
                 case 5:
                   assert.dom('.number-input input').hasValue('-1');
@@ -12066,7 +12061,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["@ember/te
           return _ref13.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('Left arrow increases the value by the step', /*#__PURE__*/function () {
+      (0, _qunit.test)('Down arrow increases the value by the step', /*#__PURE__*/function () {
         var _ref14 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13(assert) {
           return regeneratorRuntime.wrap(function _callee13$(_context13) {
             while (1) {
@@ -12088,8 +12083,8 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["@ember/te
                   assert.dom('.number-input input').hasValue('0'); // @ts-ignore
 
                   _context13.next = 5;
-                  return (0, _triggerKeyEvent.default)('.number-input input', 'keydown', 'ArrowLeft', {
-                    code: 'ArrowLeft'
+                  return (0, _triggerKeyEvent.default)('.number-input input', 'keydown', 'ArrowDown', {
+                    code: 'ArrowDown'
                   });
 
                 case 5:
@@ -12107,7 +12102,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["@ember/te
           return _ref14.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('If @min parameter is set, decreasing the value sets the min value', /*#__PURE__*/function () {
+      (0, _qunit.test)('Left arrow increases the value by the step', /*#__PURE__*/function () {
         var _ref15 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee14(assert) {
           return regeneratorRuntime.wrap(function _callee14$(_context14) {
             while (1) {
@@ -12116,22 +12111,25 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["@ember/te
                   _context14.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
-                    <OSS::NumberInput @value={{5}} @min={{5}} />
+                    <OSS::NumberInput />
                   */
                   {
-                    "id": "nOdlie7z",
-                    "block": "[[[8,[39,0],null,[[\"@value\",\"@min\"],[5,5]],null]],[],false,[\"o-s-s/number-input\"]]",
+                    "id": "MfDNJImx",
+                    "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/number-input\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
 
                 case 2:
-                  assert.dom('.number-input input').hasValue('5');
+                  assert.dom('.number-input input').hasValue('0'); // @ts-ignore
+
                   _context14.next = 5;
-                  return (0, _click.default)('.upf-square-btn:nth-of-type(1)');
+                  return (0, _triggerKeyEvent.default)('.number-input input', 'keydown', 'ArrowLeft', {
+                    code: 'ArrowLeft'
+                  });
 
                 case 5:
-                  assert.dom('.number-input input').hasValue('5');
+                  assert.dom('.number-input input').hasValue('-1');
 
                 case 6:
                 case "end":
@@ -12145,9 +12143,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["@ember/te
           return _ref15.apply(this, arguments);
         };
       }());
-    });
-    (0, _qunit.module)('On user input', function () {
-      (0, _qunit.test)('if the inputed value is above the max value, the max value is set', /*#__PURE__*/function () {
+      (0, _qunit.test)('If @min parameter is set, decreasing the value sets the min value', /*#__PURE__*/function () {
         var _ref16 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15(assert) {
           return regeneratorRuntime.wrap(function _callee15$(_context15) {
             while (1) {
@@ -12156,23 +12152,20 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["@ember/te
                   _context15.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
-                    <OSS::NumberInput @max={{42}} />
+                    <OSS::NumberInput @value={{5}} @min={{5}} />
                   */
                   {
-                    "id": "JUYyIOFN",
-                    "block": "[[[8,[39,0],null,[[\"@max\"],[42]],null]],[],false,[\"o-s-s/number-input\"]]",
+                    "id": "nOdlie7z",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@min\"],[5,5]],null]],[],false,[\"o-s-s/number-input\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
 
                 case 2:
-                  _context15.next = 4;
-                  return (0, _typeIn.default)('.number-input input', '455');
+                  assert.dom('.number-input input').hasValue('5');
+                  assert.dom('.upf-square-btn:nth-of-type(1)').isDisabled();
 
                 case 4:
-                  assert.dom('.number-input input').hasValue('42');
-
-                case 5:
                 case "end":
                   return _context15.stop();
               }
@@ -12184,8 +12177,10 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["@ember/te
           return _ref16.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('if the inputed value is below the min value, the min value is set', /*#__PURE__*/function () {
+      (0, _qunit.test)('If @min & @minReachedTooltip parameter are set, it renders the tooltip', /*#__PURE__*/function () {
         var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(assert) {
+          var _document$querySelect2;
+
           return regeneratorRuntime.wrap(function _callee16$(_context16) {
             while (1) {
               switch (_context16.prev = _context16.next) {
@@ -12193,23 +12188,24 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["@ember/te
                   _context16.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
-                    <OSS::NumberInput @value={{0}} @min={{42}} />
+                    <OSS::NumberInput @value={{5}} @min={{5}} @minReachedTooltip="min" />
                   */
                   {
-                    "id": "fHrwPbDC",
-                    "block": "[[[8,[39,0],null,[[\"@value\",\"@min\"],[0,42]],null]],[],false,[\"o-s-s/number-input\"]]",
+                    "id": "wS5NjZsl",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@min\",\"@minReachedTooltip\"],[5,5,\"min\"]],null]],[],false,[\"o-s-s/number-input\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
 
                 case 2:
-                  _context16.next = 4;
-                  return (0, _typeIn.default)('.number-input input', '3');
-
-                case 4:
-                  assert.dom('.number-input input').hasValue('42');
+                  (_document$querySelect2 = document.querySelector('.upf-square-btn:nth-of-type(1)')) === null || _document$querySelect2 === void 0 ? void 0 : _document$querySelect2.dispatchEvent(new Event('mouseover'));
+                  _context16.next = 5;
+                  return (0, _testHelpers.waitFor)('.upf-tooltip');
 
                 case 5:
+                  assert.dom('.upf-tooltip .title').hasText('min');
+
+                case 6:
                 case "end":
                   return _context16.stop();
               }
@@ -12222,14 +12218,90 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["@ember/te
         };
       }());
     });
+    (0, _qunit.module)('On user input', function () {
+      (0, _qunit.test)('if the inputed value is above the max value, the max value is set', /*#__PURE__*/function () {
+        var _ref18 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17(assert) {
+          return regeneratorRuntime.wrap(function _callee17$(_context17) {
+            while (1) {
+              switch (_context17.prev = _context17.next) {
+                case 0:
+                  _context17.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::NumberInput @max={{42}} />
+                  */
+                  {
+                    "id": "JUYyIOFN",
+                    "block": "[[[8,[39,0],null,[[\"@max\"],[42]],null]],[],false,[\"o-s-s/number-input\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  _context17.next = 4;
+                  return (0, _typeIn.default)('.number-input input', '455');
+
+                case 4:
+                  assert.dom('.number-input input').hasValue('42');
+
+                case 5:
+                case "end":
+                  return _context17.stop();
+              }
+            }
+          }, _callee17);
+        }));
+
+        return function (_x17) {
+          return _ref18.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('if the inputed value is below the min value, the min value is set', /*#__PURE__*/function () {
+        var _ref19 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee18(assert) {
+          return regeneratorRuntime.wrap(function _callee18$(_context18) {
+            while (1) {
+              switch (_context18.prev = _context18.next) {
+                case 0:
+                  _context18.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::NumberInput @value={{0}} @min={{42}} />
+                  */
+                  {
+                    "id": "fHrwPbDC",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@min\"],[0,42]],null]],[],false,[\"o-s-s/number-input\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  _context18.next = 4;
+                  return (0, _typeIn.default)('.number-input input', '3');
+
+                case 4:
+                  assert.dom('.number-input input').hasValue('42');
+
+                case 5:
+                case "end":
+                  return _context18.stop();
+              }
+            }
+          }, _callee18);
+        }));
+
+        return function (_x18) {
+          return _ref19.apply(this, arguments);
+        };
+      }());
+    });
     (0, _qunit.test)('The @onChange method receives the updated value', /*#__PURE__*/function () {
-      var _ref18 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17(assert) {
-        return regeneratorRuntime.wrap(function _callee17$(_context17) {
+      var _ref20 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee19(assert) {
+        return regeneratorRuntime.wrap(function _callee19$(_context19) {
           while (1) {
-            switch (_context17.prev = _context17.next) {
+            switch (_context19.prev = _context19.next) {
               case 0:
                 this.onChange = _sinon.default.stub();
-                _context17.next = 3;
+                _context19.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::NumberInput @value={{0}} @onChange={{this.onChange}} />
@@ -12242,7 +12314,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["@ember/te
                 }));
 
               case 3:
-                _context17.next = 5;
+                _context19.next = 5;
                 return (0, _click.default)('.upf-square-btn:nth-of-type(2)');
 
               case 5:
@@ -12250,14 +12322,14 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["@ember/te
 
               case 6:
               case "end":
-                return _context17.stop();
+                return _context19.stop();
             }
           }
-        }, _callee17, this);
+        }, _callee19, this);
       }));
 
-      return function (_x17) {
-        return _ref18.apply(this, arguments);
+      return function (_x19) {
+        return _ref20.apply(this, arguments);
       };
     }());
   });

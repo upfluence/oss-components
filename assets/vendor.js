@@ -91707,7 +91707,7 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
   });
   _exports.default = void 0;
 
-  var _class, _descriptor;
+  var _class, _descriptor, _descriptor2;
 
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
 
@@ -91740,17 +91740,19 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class="number-input fx-row">
-    <OSS::Button @square={{true}} @size="md" @icon="far fa-minus" {{on "click" this.decreaseValue}} />
+    <OSS::Button @square={{true}} @size="md" @icon="far fa-minus" {{on "click" this.decreaseValue}}
+                 disabled={{this.isMinDisabled}} {{enable-tooltip title=this.minTooltipTitle placement="top"}} />
     {{! template-lint-disable no-triple-curlies}}
     <OSS::InputContainer @value={{this.localValue}} @onChange={{this.checkUserInput}} style={{{this.dynamicWidth}}}
                          {{on "keydown" this.keyParser}} {{on "blur" this.checkUserInput}} />
-    <OSS::Button @square={{true}} @size="md" @icon="far fa-plus" {{on "click" this.increaseValue}} />
+    <OSS::Button @square={{true}} @size="md" @icon="far fa-plus" {{on "click" this.increaseValue}}
+                 disabled={{this.isMaxDisabled}} {{enable-tooltip title=this.maxTooltipTitle placement="top"}} />
   </div>
   
   */
   {
-    "id": "7JisNIAi",
-    "block": "[[[10,0],[14,0,\"number-input fx-row\"],[12],[1,\"\\n  \"],[8,[39,0],[[4,[38,1],[\"click\",[30,0,[\"decreaseValue\"]]],null]],[[\"@square\",\"@size\",\"@icon\"],[true,\"md\",\"far fa-minus\"]],null],[1,\"\\n\"],[1,\"  \"],[8,[39,2],[[23,5,[30,0,[\"dynamicWidth\"]]],[4,[38,1],[\"keydown\",[30,0,[\"keyParser\"]]],null],[4,[38,1],[\"blur\",[30,0,[\"checkUserInput\"]]],null]],[[\"@value\",\"@onChange\"],[[30,0,[\"localValue\"]],[30,0,[\"checkUserInput\"]]]],null],[1,\"\\n  \"],[8,[39,0],[[4,[38,1],[\"click\",[30,0,[\"increaseValue\"]]],null]],[[\"@square\",\"@size\",\"@icon\"],[true,\"md\",\"far fa-plus\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"]],[],false,[\"o-s-s/button\",\"on\",\"o-s-s/input-container\"]]",
+    "id": "aI5/sNSz",
+    "block": "[[[10,0],[14,0,\"number-input fx-row\"],[12],[1,\"\\n  \"],[8,[39,0],[[16,\"disabled\",[30,0,[\"isMinDisabled\"]]],[4,[38,1],[\"click\",[30,0,[\"decreaseValue\"]]],null],[4,[38,2],null,[[\"title\",\"placement\"],[[30,0,[\"minTooltipTitle\"]],\"top\"]]]],[[\"@square\",\"@size\",\"@icon\"],[true,\"md\",\"far fa-minus\"]],null],[1,\"\\n\"],[1,\"  \"],[8,[39,3],[[23,5,[30,0,[\"dynamicWidth\"]]],[4,[38,1],[\"keydown\",[30,0,[\"keyParser\"]]],null],[4,[38,1],[\"blur\",[30,0,[\"checkUserInput\"]]],null]],[[\"@value\",\"@onChange\"],[[30,0,[\"localValue\"]],[30,0,[\"checkUserInput\"]]]],null],[1,\"\\n  \"],[8,[39,0],[[16,\"disabled\",[30,0,[\"isMaxDisabled\"]]],[4,[38,1],[\"click\",[30,0,[\"increaseValue\"]]],null],[4,[38,2],null,[[\"title\",\"placement\"],[[30,0,[\"maxTooltipTitle\"]],\"top\"]]]],[[\"@square\",\"@size\",\"@icon\"],[true,\"md\",\"far fa-plus\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"]],[],false,[\"o-s-s/button\",\"on\",\"enable-tooltip\",\"o-s-s/input-container\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/number-input.hbs",
     "isStrictMode": false
   });
@@ -91780,6 +91782,8 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
 
       _initializerDefineProperty(_assertThisInitialized(_this), "localValue", _descriptor, _assertThisInitialized(_this));
 
+      _initializerDefineProperty(_assertThisInitialized(_this), "reachedTooltip", _descriptor2, _assertThisInitialized(_this));
+
       return _this;
     }
 
@@ -91792,6 +91796,26 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
       key: "dynamicWidth",
       get: function get() {
         return "width: ".concat(BASE_INPUT_PIXEL_WIDTH + ('' + this.localValue).length * CHAR_PIXEL_WIDTH, "px");
+      }
+    }, {
+      key: "isMinDisabled",
+      get: function get() {
+        return Number(this.localValue) === this.args.min;
+      }
+    }, {
+      key: "isMaxDisabled",
+      get: function get() {
+        return Number(this.localValue) === this.args.max;
+      }
+    }, {
+      key: "minTooltipTitle",
+      get: function get() {
+        return Number(this.localValue) === this.args.min ? this.args.minReachedTooltip : undefined;
+      }
+    }, {
+      key: "maxTooltipTitle",
+      get: function get() {
+        return Number(this.localValue) === this.args.max ? this.args.maxReachedTooltip : undefined;
       }
     }, {
       key: "keyParser",
@@ -91862,6 +91886,13 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
     initializer: function initializer() {
       return this.args.value || DEFAULT_VALUE;
     }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "reachedTooltip", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return null;
+    }
   }), _applyDecoratedDescriptor(_class.prototype, "keyParser", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "keyParser"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "checkUserInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "checkUserInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "increaseValue", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "increaseValue"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "decreaseValue", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "decreaseValue"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "notifyChanges", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "notifyChanges"), _class.prototype)), _class);
   _exports.default = OSSNumberInput;
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSNumberInput);
@@ -91884,7 +91915,7 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
             summary: 'number'
           },
           defaultValue: {
-            summary: false
+            summary: 'undefined'
           }
         },
         control: {
@@ -91898,7 +91929,7 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
             summary: 'number'
           },
           defaultValue: {
-            summary: false
+            summary: 'undefined'
           }
         },
         control: {
@@ -91912,7 +91943,7 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
             summary: 'number'
           },
           defaultValue: {
-            summary: false
+            summary: 'undefined'
           }
         },
         control: {
@@ -91926,15 +91957,49 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
             summary: 'number'
           },
           defaultValue: {
-            summary: false
+            summary: 'undefined'
           }
         },
         control: {
           type: 'number'
         }
       },
+      minReachedTooltip: {
+        description: '[OPTIONAL] The tooltip to render when the minimum is reached',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      maxReachedTooltip: {
+        description: '[OPTIONAL] The tooltip to render when the maximum is reached',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
       onChange: {
-        description: '[OPTIONAL] A callback that sends back the new value of the input'
+        description: '[OPTIONAL] A callback that sends back the new value of the input',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'onChange(value): void'
+          }
+        }
       }
     },
     parameters: {
@@ -91952,12 +92017,13 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
       template: (0, _templateFactory.createTemplateFactory)(
       /*
         
-          <OSS::NumberInput @value={{this.value}} @min={{this.min}} @max={{this.max}} @step={{this.step}} @onChange={{this.onChange}} />
+          <OSS::NumberInput @value={{this.value}} @min={{this.min}} @max={{this.max}} @step={{this.step}} @onChange={{this.onChange}}
+                            @minReachedTooltip={{this.minReachedTooltip}} @maxReachedTooltip={{this.maxReachedTooltip}} />
         
       */
       {
-        "id": "epOSh9/r",
-        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@value\",\"@min\",\"@max\",\"@step\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"min\"]],[30,0,[\"max\"]],[30,0,[\"step\"]],[30,0,[\"onChange\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/number-input\"]]",
+        "id": "Wde4h8Oo",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@value\",\"@min\",\"@max\",\"@step\",\"@onChange\",\"@minReachedTooltip\",\"@maxReachedTooltip\"],[[30,0,[\"value\"]],[30,0,[\"min\"]],[30,0,[\"max\"]],[30,0,[\"step\"]],[30,0,[\"onChange\"]],[30,0,[\"minReachedTooltip\"]],[30,0,[\"maxReachedTooltip\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/number-input\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -91972,6 +92038,8 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
     min: 0,
     max: 15,
     step: 3,
+    minReachedTooltip: '',
+    maxReachedTooltip: '',
     onChange: (0, _addonActions.action)('onChange')
   };
 });
@@ -108009,36 +108077,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-19680lLM2gvgRa7j/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-1910qkgrk112ST99/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-19680lLM2gvgRa7j/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-1910qkgrk112ST99/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-19680lLM2gvgRa7j/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1910qkgrk112ST99/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-19680lLM2gvgRa7j/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-1910qkgrk112ST99/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-19680lLM2gvgRa7j/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-1910qkgrk112ST99/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-19680lLM2gvgRa7j/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1910qkgrk112ST99/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-19680lLM2gvgRa7j/cache-275-bundler/staging/l.js /tmp/broccoli-19680lLM2gvgRa7j/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-1910qkgrk112ST99/cache-275-bundler/staging/l.js /tmp/broccoli-1910qkgrk112ST99/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-19680lLM2gvgRa7j/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-19680lLM2gvgRa7j/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-19680lLM2gvgRa7j/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-19680lLM2gvgRa7j/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-19680lLM2gvgRa7j/cache-275-bundler/staging/l.js_/tmp/broccoli-19680lLM2gvgRa7j/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-1910qkgrk112ST99/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1910qkgrk112ST99/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1910qkgrk112ST99/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1910qkgrk112ST99/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1910qkgrk112ST99/cache-275-bundler/staging/l.js_/tmp/broccoli-1910qkgrk112ST99/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
