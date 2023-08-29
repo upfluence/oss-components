@@ -159,6 +159,12 @@
     var(--color-primary-600) 16%,
     var(--color-primary-gradient-500) 100%
   );
+
+  --font-color-smart-gradient: linear-gradient(180deg, #0d0de6 10%, #db00ff 100%);
+  --color-smart-gradient-50: linear-gradient(104.04deg, #f1f3ff 0%, #fff2ff 100%);
+  --color-smart-gradient-400: linear-gradient(104.04deg, #535efc 0%, #ed21ff 100%);
+  --color-smart-gradient-500: linear-gradient(104.04deg, #0d0de6 0%, #db00ff 100%);
+  --color-smart-gradient-600: linear-gradient(104.04deg, #0505b8 0%, #b700cf 100%);
 }
 
 // Easy to use background-colors as classes
@@ -419,4 +425,10 @@
 }
 .font-color-pinterest-500 {
   color: var(--color-pinterest-500);
+}
+.font-color-smart-gradient {
+  background: var(--font-color-smart-gradient);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
 }
