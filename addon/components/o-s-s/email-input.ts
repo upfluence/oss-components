@@ -10,6 +10,7 @@ interface OSSEmailInputArgs {
   errorMessage?: string;
   validateFormat?: boolean;
   validates?(isPassing: boolean): void;
+  onChange?(value: string | null): void;
 }
 
 const DEFAULT_PLACEHOLDER = 'e.g: john.doe@example.com';
@@ -46,6 +47,7 @@ export default class OSSEmailInput extends Component<OSSEmailInputArgs> {
   @action
   validateInput(): void {
     this.regexError = '';
+    this.args.onChange?.(this.args.value);
 
     if (!this._runValidation || !this.args.value) {
       this.args.validates?.(true);

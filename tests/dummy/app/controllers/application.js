@@ -76,6 +76,7 @@ export default class ApplicationController extends Controller {
   @tracked radio2 = false;
   @tracked isChecked = true;
   @tracked togglable = false;
+  @tracked emailInputValue = '';
 
   @tracked media = [
     {
@@ -280,6 +281,11 @@ export default class ApplicationController extends Controller {
     console.log('onPhoneNumberChange', prefix, phoneNumber);
     this.phonePrefix = prefix;
     this.phoneNumber = phoneNumber;
+  }
+
+  @action
+  onEmailInputChange(value) {
+    console.log('onEmailInputChange', value);
   }
 
   @action

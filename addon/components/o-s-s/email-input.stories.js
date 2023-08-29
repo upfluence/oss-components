@@ -51,6 +51,13 @@ export default {
         category: 'Actions',
         type: { summary: 'validates?(isPassing: boolean): void' }
       }
+    },
+    onChange: {
+      description: 'A callback that sends the new value to the parent component when the input is changed',
+      table: {
+        category: 'Actions',
+        type: { summary: 'onChange?(value: string | null): void' }
+      }
     }
   },
   parameters: {
