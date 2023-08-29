@@ -88761,21 +88761,24 @@ define("@upfluence/oss-components/components/o-s-s/email-input", ["exports", "@e
     }, {
       key: "validateInput",
       value: function validateInput() {
+        var _this$args$onChange, _this$args;
+
         this.regexError = '';
+        (_this$args$onChange = (_this$args = this.args).onChange) === null || _this$args$onChange === void 0 ? void 0 : _this$args$onChange.call(_this$args, this.args.value);
 
         if (!this._runValidation || !this.args.value) {
-          var _this$args$validates, _this$args;
+          var _this$args$validates, _this$args2;
 
-          (_this$args$validates = (_this$args = this.args).validates) === null || _this$args$validates === void 0 ? void 0 : _this$args$validates.call(_this$args, true);
+          (_this$args$validates = (_this$args2 = this.args).validates) === null || _this$args$validates === void 0 ? void 0 : _this$args$validates.call(_this$args2, true);
         } else if (!EMAIL_REGEXP.test(this.args.value)) {
-          var _this$args$validates2, _this$args2;
+          var _this$args$validates2, _this$args3;
 
           this.regexError = this.intl.t('oss-components.email-input.regex_error');
-          (_this$args$validates2 = (_this$args2 = this.args).validates) === null || _this$args$validates2 === void 0 ? void 0 : _this$args$validates2.call(_this$args2, false);
+          (_this$args$validates2 = (_this$args3 = this.args).validates) === null || _this$args$validates2 === void 0 ? void 0 : _this$args$validates2.call(_this$args3, false);
         } else {
-          var _this$args$validates3, _this$args3;
+          var _this$args$validates3, _this$args4;
 
-          (_this$args$validates3 = (_this$args3 = this.args).validates) === null || _this$args$validates3 === void 0 ? void 0 : _this$args$validates3.call(_this$args3, true);
+          (_this$args$validates3 = (_this$args4 = this.args).validates) === null || _this$args$validates3 === void 0 ? void 0 : _this$args$validates3.call(_this$args4, true);
         }
       }
     }]);
@@ -88870,6 +88873,15 @@ define("@upfluence/oss-components/components/o-s-s/email-input", ["exports", "@e
           category: 'Actions',
           type: {
             summary: 'validates?(isPassing: boolean): void'
+          }
+        }
+      },
+      onChange: {
+        description: 'A callback that sends the new value to the parent component when the input is changed',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'onChange?(value: string | null): void'
           }
         }
       }
@@ -108078,36 +108090,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-1954mh7X3Mjv1CVD/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-1939Frn7x7Qlklk4/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-1954mh7X3Mjv1CVD/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-1939Frn7x7Qlklk4/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1954mh7X3Mjv1CVD/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1939Frn7x7Qlklk4/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-1954mh7X3Mjv1CVD/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-1939Frn7x7Qlklk4/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-1954mh7X3Mjv1CVD/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-1939Frn7x7Qlklk4/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1954mh7X3Mjv1CVD/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1939Frn7x7Qlklk4/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-1954mh7X3Mjv1CVD/cache-275-bundler/staging/l.js /tmp/broccoli-1954mh7X3Mjv1CVD/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-1939Frn7x7Qlklk4/cache-275-bundler/staging/l.js /tmp/broccoli-1939Frn7x7Qlklk4/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-1954mh7X3Mjv1CVD/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1954mh7X3Mjv1CVD/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1954mh7X3Mjv1CVD/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1954mh7X3Mjv1CVD/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1954mh7X3Mjv1CVD/cache-275-bundler/staging/l.js_/tmp/broccoli-1954mh7X3Mjv1CVD/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-1939Frn7x7Qlklk4/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1939Frn7x7Qlklk4/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1939Frn7x7Qlklk4/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1939Frn7x7Qlklk4/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1939Frn7x7Qlklk4/cache-275-bundler/staging/l.js_/tmp/broccoli-1939Frn7x7Qlklk4/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 

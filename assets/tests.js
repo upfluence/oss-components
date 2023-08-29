@@ -7443,7 +7443,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["@ember/
     }());
   });
 });
-define("dummy/tests/integration/components/o-s-s/email-input-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers"], function (_templateFactory, _qunit, _emberQunit, _testHelpers) {
+define("dummy/tests/integration/components/o-s-s/email-input-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "sinon"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _sinon) {
   "use strict";
 
   function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -7701,6 +7701,45 @@ define("dummy/tests/integration/components/o-s-s/email-input-test", ["@ember/tem
 
       return function (_x7) {
         return _ref8.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('it calls the @onChange method', /*#__PURE__*/function () {
+      var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
+        return regeneratorRuntime.wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                this.value = '';
+                this.onChange = _sinon.default.stub();
+                _context8.next = 4;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::EmailInput @value={{this.value}} @onChange={{this.onChange}} />
+                */
+                {
+                  "id": "d06cBB/s",
+                  "block": "[[[8,[39,0],null,[[\"@value\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/email-input\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 4:
+                _context8.next = 6;
+                return (0, _testHelpers.typeIn)('input', 'a');
+
+              case 6:
+                assert.true(this.onChange.calledOnceWithExactly('a'));
+
+              case 7:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8, this);
+      }));
+
+      return function (_x8) {
+        return _ref9.apply(this, arguments);
       };
     }());
   });
