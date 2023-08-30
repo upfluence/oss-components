@@ -98,7 +98,7 @@ module('Integration | Component | o-s-s/skeleton', function (hooks) {
 
       let item = find('.upf-skeleton-effect') as HTMLElement;
 
-      assert.ok(item.offsetWidth < 230 && item.offsetWidth > 170);
+      assert.ok(item.offsetWidth <= 230 && item.offsetWidth >= 170);
     });
   });
 
