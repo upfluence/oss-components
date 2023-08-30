@@ -15384,7 +15384,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["@ember/templa
 
                 case 2:
                   item = (0, _testHelpers.find)('.upf-skeleton-effect');
-                  assert.ok(item.offsetWidth < 230 && item.offsetWidth > 170);
+                  assert.ok(item.offsetWidth <= 230 && item.offsetWidth >= 170);
 
                 case 4:
                 case "end":
