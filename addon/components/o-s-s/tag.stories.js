@@ -12,7 +12,8 @@ const SkinTypes = [
   'xtd-yellow',
   'xtd-blue',
   'xtd-violet',
-  'xtd-lime'
+  'xtd-lime',
+  'chat-gpt'
 ];
 
 export default {
