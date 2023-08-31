@@ -13,7 +13,8 @@ export type SkinType =
   | 'xtd-yellow'
   | 'xtd-blue'
   | 'xtd-violet'
-  | 'xtd-lime';
+  | 'xtd-lime'
+  | 'chat-gpt';
 
 type SkinDefType = {
   [key in SkinType]: string;
@@ -32,7 +33,8 @@ export const SkinDefinition: SkinDefType = {
   'xtd-yellow': 'xtd-yellow',
   'xtd-blue': 'xtd-blue',
   'xtd-violet': 'xtd-violet',
-  'xtd-lime': 'xtd-lime'
+  'xtd-lime': 'xtd-lime',
+  'chat-gpt': 'chat-gpt'
 };
 
 interface OSSTagArgs {
