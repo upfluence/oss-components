@@ -7562,6 +7562,11 @@ label {
   --primary-gradient-400: linear-gradient(81.75deg, var(--color-primary-400) 16%, var(--color-primary-gradient-300) 100%);
   --primary-gradient-500: linear-gradient(81.75deg, var(--color-primary-500) 16%, var(--color-primary-gradient-400) 100%);
   --primary-gradient-600: linear-gradient(81.75deg, var(--color-primary-600) 16%, var(--color-primary-gradient-500) 100%);
+  --font-color-smart-gradient: linear-gradient(180deg, #0d0de6 10%, #db00ff 100%);
+  --color-smart-gradient-50: linear-gradient(104.04deg, #f1f3ff 0%, #fff2ff 100%);
+  --color-smart-gradient-400: linear-gradient(104.04deg, #535efc 0%, #ed21ff 100%);
+  --color-smart-gradient-500: linear-gradient(104.04deg, #0d0de6 0%, #db00ff 100%);
+  --color-smart-gradient-600: linear-gradient(104.04deg, #0505b8 0%, #b700cf 100%);
 }
 .background-color-primary-50 {
   background-color: var(--color-primary-50);
@@ -7790,6 +7795,12 @@ label {
 }
 .font-color-pinterest-500 {
   color: var(--color-pinterest-500);
+}
+.font-color-smart-gradient {
+  background: var(--font-color-smart-gradient);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 :root {
   --box-shadow-xs: 0px 1px 2px rgba(0, 0, 0, 0.04), 0px 1px 3px rgba(0, 0, 0, 0.06);
@@ -9796,6 +9807,16 @@ label {
 .upf-tag--xtd-lime.upf-tag--plain {
   background-color: var(--color-lime-500);
   color: var(--color-white);
+}
+.upf-tag--chat-gpt {
+  background: var(--color-smart-gradient-50);
+}
+.upf-tag--chat-gpt div,
+.upf-tag--chat-gpt i {
+  background: var(--font-color-smart-gradient);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 /*
  * Transitions
