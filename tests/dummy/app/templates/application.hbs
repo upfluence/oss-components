@@ -613,15 +613,31 @@
       <OSS::Panel
         @icon="/assets/images/upfluence-white-logo.svg"
       >
+        <:header>
+        <OSS::Avatar
+          @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
+        />
+        </:header>
+        <:content>
         <OSS::Panel::Row
           @label="First Label"
+          @icon="fa-search"
         />
         <OSS::Panel::Row
           @label="Second Label"
+          @icon="fa-cog"
         />
         <OSS::Panel::Row
           @label="Third Label"
+          @icon="fa-search"
         />
+        </:content>
+        <:footer>
+        <OSS::Panel::Row
+          @label="Logout"
+          @icon="fa-sign-out"
+        />
+        </:footer>
       </OSS::Panel>
       </div>
   </div>

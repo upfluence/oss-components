@@ -1,6 +1,29 @@
-<div class="oss-panel--containers fx-col" ...attributes>
-  <p>Panel test</p>
-  <div class="oss-panel--content fx-1 fx-col fx-xalign-center fx-gap-px-9">
-    {{yield}}
+<div class="oss-panel">
+  <div
+    class="oss-panel--header"
+  >
+    {{yield to="header"}}
   </div>
+  <div
+    class="oss-panel--content"
+  >
+    {{#if (has-block "header")}}
+    <hr
+      class="oss-panel--separator"
+    />
+    {{/if}}
+    {{yield to="content"}}
+  </div>
+  {{#if (has-block "footer")}}
+    {{#if (has-block "content")}}
+      <hr
+        class="oss-panel--separator"
+      />
+    {{/if}}
+    <div
+      class="oss-panel--footer"
+    >
+        {{yield to="footer"}}
+    </div>
+  {{/if}}
 </div>
