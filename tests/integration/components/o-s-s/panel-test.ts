@@ -13,7 +13,7 @@ module('Integration | Component | o-s-s/panel', function (hooks) {
       </OSS::Panel>
     `);
 
-    assert.dom('.oss-panel').exists('OK');
+    assert.dom('.oss-panel').exists();
     assert.dom('.oss-panel--content').hasText('Content', 'Content should be visible');
   });
 

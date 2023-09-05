@@ -103,7 +103,8 @@
     <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
       <OSS::NumberInput @value={{this.numberValue}} @onChange={{this.handleNumberInput}} />
       <OSS::NumberInput @min={{0}} @max={{15}} @step={{5}} @onChange={{this.handleNumberInput}} />
-      <OSS::NumberInput @min={{0}} @max={{15}} @step={{5}} @minReachedTooltip="Hello" @maxReachedTooltip="you" @onChange={{this.handleNumberInput}} />
+      <OSS::NumberInput @min={{0}} @max={{15}} @step={{5}} @minReachedTooltip="Hello" @maxReachedTooltip="you"
+                        @onChange={{this.handleNumberInput}} />
     </div>
     <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
       <OSS::UrlInput @value={{this.shopifyDomain}} @prefix="https://" @placeholder="shopname" @suffix=".myshopify.com"
@@ -610,35 +611,20 @@
       </OSS::ContentPanel>
     </div>
     <div class="fx-col fx-gap-px-12 padding-px-24">
-      <OSS::Panel
-        @icon="/assets/images/upfluence-white-logo.svg"
-      >
+      <OSS::Panel @icon="/assets/images/upfluence-white-logo.svg">
         <:header>
-        <OSS::Avatar
-          @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
-        />
+          <OSS::Avatar
+                       @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png" />
         </:header>
         <:content>
-        <OSS::Panel::Row
-          @label="First Label"
-          @icon="fa-search"
-        />
-        <OSS::Panel::Row
-          @label="Second Label"
-          @icon="fa-cog"
-        />
-        <OSS::Panel::Row
-          @label="Third Label"
-          @icon="fa-search"
-        />
+          <OSS::Panel::Row @label="First Label" @icon="fa-search" />
+          <OSS::Panel::Row @label="Second Label" @icon="fa-cog" />
+          <OSS::Panel::Row @label="Third Label" @icon="fa-search" />
         </:content>
         <:footer>
-        <OSS::Panel::Row
-          @label="Logout"
-          @icon="fa-sign-out"
-        />
+          <OSS::Panel::Row @label="Logout" @icon="fa-sign-out" />
         </:footer>
       </OSS::Panel>
-      </div>
+    </div>
   </div>
 </div>
