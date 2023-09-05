@@ -12,6 +12,5 @@ module('Integration | Component | o-s-s/panel-row', function (hooks) {
     assert.dom('.oss-panel-content--row').exists();
     assert.dom('.far').exists();
     assert.dom('p').hasText('Your Label');
-    assert.dom('.far').exists();
   });
 });
