@@ -1,4 +1,8 @@
 <div class="oss-panel-content--row">
-  <OSS::Icon @icon={{this.icon}} />
-  <p>{{this.label}}</p>
+  {{#if @icon}}
+    <OSS::Icon @icon={{@icon}} />
+  {{/if}}
+  <span class="font-color-gray-500">
+    {{@label}}
+  </span>
 </div>

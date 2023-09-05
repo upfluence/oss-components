@@ -14,20 +14,18 @@ export default {
 
 const Template = (args) => ({
   template: hbs`
-  <div class="background-color-white padding-px-6">
     <OSS::Panel
     >
       <:header>
-        <h2>Header</h2>
+        <span>Header named-block</span>
       </:header>
       <:content>
-        <h2>Content</h2>
+        <span>Content named-block</span>
       </:content>
       <:footer>
-        <h2>Footer</h2>
+        <span>Footer named-block</span>
       </:footer>
     </OSS::Panel>
-  </div>
   `,
   context: args
 });
