@@ -1,9 +1,11 @@
 <div class="oss-panel">
-  <div
-    class="oss-panel--header"
-  >
-    {{yield to="header"}}
-  </div>
+  {{#if (has-block "header")}}
+    <div
+      class="oss-panel--header"
+    >
+      {{yield to="header"}}
+    </div>
+  {{/if}}
   <div
     class="oss-panel--content"
   >
@@ -15,15 +17,15 @@
     {{yield to="content"}}
   </div>
   {{#if (has-block "footer")}}
-    {{#if (has-block "content")}}
-      <hr
-        class="oss-panel--separator"
-      />
-    {{/if}}
     <div
       class="oss-panel--footer"
     >
-        {{yield to="footer"}}
+      {{#if (has-block "content")}}
+        <hr
+          class="oss-panel--separator"
+        />
+      {{/if}}
+      {{yield to="footer"}}
     </div>
   {{/if}}
 </div>

@@ -1,14 +1,11 @@
 import Component from '@glimmer/component';
-import { action } from '@ember/object';
 
 interface OSSPanelArgs {
-  logo: string;
-  homeAction?(): void;
+  isVisible: boolean;
 }
 
 export default class OSSPanel extends Component<OSSPanelArgs> {
-  @action
-  onHomeAction(): void {
-    return this.args.homeAction?.();
+  get isVisible(): boolean {
+    return this.args.isVisible;
   }
 }
