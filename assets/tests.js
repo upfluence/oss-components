@@ -12373,6 +12373,428 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["@ember/te
     }());
   });
 });
+define("dummy/tests/integration/components/o-s-s/panel-row-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers"], function (_templateFactory, _qunit, _emberQunit, _testHelpers) {
+  "use strict";
+
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+  function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+  (0, _qunit.module)('Integration | Component | o-s-s/panel-row', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(assert) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Panel::Row @icon={{"fa-cog"}} @label={{'Your Label'l}} />
+                */
+                {
+                  "id": "3M179f20",
+                  "block": "[[[8,[39,0],null,[[\"@icon\",\"@label\"],[\"fa-cog\",\"Your Label\"]],null]],[],false,[\"o-s-s/panel/row\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-panel-content--row').exists();
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('It renders the @icon properly', /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Panel::Row @icon={{"fa-cog"}} @label={{'Your Label'l}} />
+                */
+                {
+                  "id": "3M179f20",
+                  "block": "[[[8,[39,0],null,[[\"@icon\",\"@label\"],[\"fa-cog\",\"Your Label\"]],null]],[],false,[\"o-s-s/panel/row\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.far').exists();
+
+              case 3:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function (_x2) {
+        return _ref3.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('it renders the @label properly', /*#__PURE__*/function () {
+      var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Panel::Row @icon={{"fa-cog"}} @label={{'Your Label'l}} />
+                */
+                {
+                  "id": "3M179f20",
+                  "block": "[[[8,[39,0],null,[[\"@icon\",\"@label\"],[\"fa-cog\",\"Your Label\"]],null]],[],false,[\"o-s-s/panel/row\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('span').hasText('Your Label');
+
+              case 3:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }));
+
+      return function (_x3) {
+        return _ref4.apply(this, arguments);
+      };
+    }());
+  });
+});
+define("dummy/tests/integration/components/o-s-s/panel-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers"], function (_templateFactory, _qunit, _emberQunit, _testHelpers) {
+  "use strict";
+
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+  function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+  (0, _qunit.module)('Integration | Component | o-s-s/panel', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(assert) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  
+                      <OSS::Panel>
+                        <:content>Content</:content>
+                      </OSS::Panel>
+                    
+                */
+                {
+                  "id": "P8xuxtLG",
+                  "block": "[[[1,\"\\n      \"],[8,[39,0],null,null,[[\"content\"],[[[[1,\"Content\"]],[]]]]],[1,\"\\n    \"]],[],false,[\"o-s-s/panel\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-panel').exists();
+                assert.dom('.oss-panel--content').hasText('Content', 'Content should be visible');
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('it should render the content separator if the header exists', /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  
+                      <OSS::Panel>
+                        <:header>Header</:header>
+                        <:content>Content</:content>
+                      </OSS::Panel>
+                    
+                */
+                {
+                  "id": "q/ZZFaTX",
+                  "block": "[[[1,\"\\n      \"],[8,[39,0],null,null,[[\"header\",\"content\"],[[[[1,\"Header\"]],[]],[[[1,\"Content\"]],[]]]]],[1,\"\\n    \"]],[],false,[\"o-s-s/panel\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-panel--content .oss-panel--separator').exists('Content separator should be visible when header is visible');
+
+              case 3:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function (_x2) {
+        return _ref3.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('it should render the footer separator if the content exists', /*#__PURE__*/function () {
+      var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  
+                      <OSS::Panel>
+                        <:header>Header</:header>
+                        <:content>Content</:content>
+                        <:footer>Footer</:footer>
+                      </OSS::Panel>
+                    
+                */
+                {
+                  "id": "xWnKwkFn",
+                  "block": "[[[1,\"\\n      \"],[8,[39,0],null,null,[[\"header\",\"content\",\"footer\"],[[[[1,\"Header\"]],[]],[[[1,\"Content\"]],[]],[[[1,\"Footer\"]],[]]]]],[1,\"\\n    \"]],[],false,[\"o-s-s/panel\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-panel--footer .oss-panel--separator').exists('Footer separator should be visible when the content is visible');
+
+              case 3:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }));
+
+      return function (_x3) {
+        return _ref4.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('it should not render the content separator if the header does not exist', /*#__PURE__*/function () {
+      var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
+        return regeneratorRuntime.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  
+                      <OSS::Panel>
+                        <:content>Content</:content>
+                        <:footer>Footer</:footer>
+                      </OSS::Panel>
+                    
+                */
+                {
+                  "id": "gGf0p2Nd",
+                  "block": "[[[1,\"\\n      \"],[8,[39,0],null,null,[[\"content\",\"footer\"],[[[[1,\"Content\"]],[]],[[[1,\"Footer\"]],[]]]]],[1,\"\\n    \"]],[],false,[\"o-s-s/panel\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-panel--content .oss-panel--separator').doesNotExist('Content separator should not be visible when header is not visible');
+
+              case 3:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }));
+
+      return function (_x4) {
+        return _ref5.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('it should not render the footer separator if the content does not exist', /*#__PURE__*/function () {
+      var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(assert) {
+        return regeneratorRuntime.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  
+                      <OSS::Panel>
+                        <:footer>Footer</:footer>
+                      </OSS::Panel>
+                    
+                */
+                {
+                  "id": "P5g4Sh0l",
+                  "block": "[[[1,\"\\n      \"],[8,[39,0],null,null,[[\"footer\"],[[[[1,\"Footer\"]],[]]]]],[1,\"\\n    \"]],[],false,[\"o-s-s/panel\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-panel--footer .oss-panel--separator').doesNotExist('Footer separator should not be visible when the content is not visible');
+
+              case 3:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
+      }));
+
+      return function (_x5) {
+        return _ref6.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('If the header named-block is defined, it is properly rendered', /*#__PURE__*/function () {
+      var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(assert) {
+        return regeneratorRuntime.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  
+                      <OSS::Panel>
+                        <:header>Header</:header>
+                      </OSS::Panel>
+                    
+                */
+                {
+                  "id": "2hcqdwgD",
+                  "block": "[[[1,\"\\n      \"],[8,[39,0],null,null,[[\"header\"],[[[[1,\"Header\"]],[]]]]],[1,\"\\n    \"]],[],false,[\"o-s-s/panel\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-panel--header').exists('The header named block should be visible');
+
+              case 3:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6);
+      }));
+
+      return function (_x6) {
+        return _ref7.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('If the content named-block is defined, it is properly rendered', /*#__PURE__*/function () {
+      var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(assert) {
+        return regeneratorRuntime.wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                _context7.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  
+                      <OSS::Panel>
+                        <:content>Content</:content>
+                      </OSS::Panel>
+                    
+                */
+                {
+                  "id": "P8xuxtLG",
+                  "block": "[[[1,\"\\n      \"],[8,[39,0],null,null,[[\"content\"],[[[[1,\"Content\"]],[]]]]],[1,\"\\n    \"]],[],false,[\"o-s-s/panel\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-panel--content').exists('The content named block should be visible');
+
+              case 3:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7);
+      }));
+
+      return function (_x7) {
+        return _ref8.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('If the footer named-block is defined, it is properly rendered', /*#__PURE__*/function () {
+      var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
+        return regeneratorRuntime.wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                _context8.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  
+                      <OSS::Panel>
+                        <:footer>Footer</:footer>
+                      </OSS::Panel>
+                    
+                */
+                {
+                  "id": "P5g4Sh0l",
+                  "block": "[[[1,\"\\n      \"],[8,[39,0],null,null,[[\"footer\"],[[[[1,\"Footer\"]],[]]]]],[1,\"\\n    \"]],[],false,[\"o-s-s/panel\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-panel--footer').exists('The footer named block should be visible');
+
+              case 3:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8);
+      }));
+
+      return function (_x8) {
+        return _ref9.apply(this, arguments);
+      };
+    }());
+  });
+});
 define("dummy/tests/integration/components/o-s-s/password-input-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers"], function (_templateFactory, _qunit, _emberQunit, _testHelpers) {
   "use strict";
 

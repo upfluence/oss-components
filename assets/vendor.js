@@ -92055,6 +92055,137 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
     onChange: (0, _addonActions.action)('onChange')
   };
 });
+;define("@upfluence/oss-components/components/o-s-s/panel", ["exports", "@ember/component", "@ember/template-factory", "@ember/component/template-only"], function (_exports, _component, _templateFactory, _templateOnly) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="oss-panel">
+    {{#if (has-block "header")}}
+      <div class="oss-panel--header width-pc-100">
+        {{yield to="header"}}
+      </div>
+    {{/if}}
+  
+    {{#if (has-block "content")}}
+      <div class="oss-panel--content width-pc-100">
+        {{#if (has-block "header")}}
+          <hr class="oss-panel--separator" />
+        {{/if}}
+        {{yield to="content"}}
+      </div>
+    {{/if}}
+  
+    {{#if (has-block "footer")}}
+      <div class="oss-panel--footer width-pc-100">
+        {{#if (has-block "content")}}
+          <hr class="oss-panel--separator" />
+        {{/if}}
+        {{yield to="footer"}}
+      </div>
+    {{/if}}
+  </div>
+  
+  */
+  {
+    "id": "YD79Fvw5",
+    "block": "[[[10,0],[14,0,\"oss-panel\"],[12],[1,\"\\n\"],[41,[48,[30,1]],[[[1,\"    \"],[10,0],[14,0,\"oss-panel--header width-pc-100\"],[12],[1,\"\\n      \"],[18,1,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[48,[30,2]],[[[1,\"    \"],[10,0],[14,0,\"oss-panel--content width-pc-100\"],[12],[1,\"\\n\"],[41,[48,[30,1]],[[[1,\"        \"],[10,\"hr\"],[14,0,\"oss-panel--separator\"],[12],[13],[1,\"\\n\"]],[]],null],[1,\"      \"],[18,2,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[48,[30,3]],[[[1,\"    \"],[10,0],[14,0,\"oss-panel--footer width-pc-100\"],[12],[1,\"\\n\"],[41,[48,[30,2]],[[[1,\"        \"],[10,\"hr\"],[14,0,\"oss-panel--separator\"],[12],[13],[1,\"\\n\"]],[]],null],[1,\"      \"],[18,3,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&header\",\"&content\",\"&footer\"],false,[\"if\",\"has-block\",\"yield\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/panel.hbs",
+    "isStrictMode": false
+  });
+
+  var _default = (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, (0, _templateOnly.default)());
+
+  _exports.default = _default;
+});
+;define("@upfluence/oss-components/components/o-s-s/panel.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.Default = _exports.default = void 0;
+  var _default = {
+    title: 'Components/OSS::Panel',
+    component: 'Panel',
+    parameters: {
+      docs: {
+        description: {
+          component: 'A Panel component to display links & row components'
+        }
+      }
+    }
+  };
+  _exports.default = _default;
+
+  var Template = function Template(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <OSS::Panel
+          >
+            <:header>
+              <span>Header named-block</span>
+            </:header>
+            <:content>
+              <span>Content named-block</span>
+            </:content>
+            <:footer>
+              <span>Footer named-block</span>
+            </:footer>
+          </OSS::Panel>
+        
+      */
+      {
+        "id": "S6CQ4fVo",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,null,[[\"header\",\"content\",\"footer\"],[[[[1,\"\\n        \"],[10,1],[12],[1,\"Header named-block\"],[13],[1,\"\\n      \"]],[]],[[[1,\"\\n        \"],[10,1],[12],[1,\"Content named-block\"],[13],[1,\"\\n      \"]],[]],[[[1,\"\\n        \"],[10,1],[12],[1,\"Footer named-block\"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/panel\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+
+  var Default = Template.bind({});
+  _exports.Default = Default;
+});
+;define("@upfluence/oss-components/components/o-s-s/panel/row", ["exports", "@ember/component", "@ember/template-factory", "@ember/component/template-only"], function (_exports, _component, _templateFactory, _templateOnly) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="oss-panel-content--row">
+    {{#if @icon}}
+      <OSS::Icon @icon={{@icon}} />
+    {{/if}}
+    <span class="font-color-gray-500">
+      {{@label}}
+    </span>
+  </div>
+  
+  */
+  {
+    "id": "i2/eYnNY",
+    "block": "[[[10,0],[14,0,\"oss-panel-content--row\"],[12],[1,\"\\n\"],[41,[30,1],[[[1,\"    \"],[8,[39,1],null,[[\"@icon\"],[[30,1]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,\"\\n    \"],[1,[30,2]],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"@icon\",\"@label\"],false,[\"if\",\"o-s-s/icon\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/panel/row.hbs",
+    "isStrictMode": false
+  });
+
+  var _default = (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, (0, _templateOnly.default)());
+
+  _exports.default = _default;
+});
 ;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 define("@upfluence/oss-components/components/o-s-s/password-input", ["exports", "@ember/component", "@ember/template-factory", "@ember/object", "@ember/service", "@glimmer/tracking", "@glimmer/component", "@ember/debug"], function (_exports, _component, _templateFactory, _object, _service, _tracking, _component2, _debug) {
@@ -108128,36 +108259,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-1896xa3W66dcaahM/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-1988jRyt3hsVJ5Ze/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-1896xa3W66dcaahM/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-1988jRyt3hsVJ5Ze/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1896xa3W66dcaahM/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1988jRyt3hsVJ5Ze/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-1896xa3W66dcaahM/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-1988jRyt3hsVJ5Ze/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-1896xa3W66dcaahM/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-1988jRyt3hsVJ5Ze/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1896xa3W66dcaahM/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1988jRyt3hsVJ5Ze/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-1896xa3W66dcaahM/cache-275-bundler/staging/l.js /tmp/broccoli-1896xa3W66dcaahM/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-1988jRyt3hsVJ5Ze/cache-275-bundler/staging/l.js /tmp/broccoli-1988jRyt3hsVJ5Ze/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-1896xa3W66dcaahM/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1896xa3W66dcaahM/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1896xa3W66dcaahM/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1896xa3W66dcaahM/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1896xa3W66dcaahM/cache-275-bundler/staging/l.js_/tmp/broccoli-1896xa3W66dcaahM/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-1988jRyt3hsVJ5Ze/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1988jRyt3hsVJ5Ze/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1988jRyt3hsVJ5Ze/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1988jRyt3hsVJ5Ze/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1988jRyt3hsVJ5Ze/cache-275-bundler/staging/l.js_/tmp/broccoli-1988jRyt3hsVJ5Ze/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
