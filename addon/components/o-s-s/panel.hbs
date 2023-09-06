@@ -1,0 +1,25 @@
+<div class="oss-panel">
+  {{#if (has-block "header")}}
+    <div class="oss-panel--header width-pc-100">
+      {{yield to="header"}}
+    </div>
+  {{/if}}
+
+  {{#if (has-block "content")}}
+    <div class="oss-panel--content width-pc-100">
+      {{#if (has-block "header")}}
+        <hr class="oss-panel--separator" />
+      {{/if}}
+      {{yield to="content"}}
+    </div>
+  {{/if}}
+
+  {{#if (has-block "footer")}}
+    <div class="oss-panel--footer width-pc-100">
+      {{#if (has-block "content")}}
+        <hr class="oss-panel--separator" />
+      {{/if}}
+      {{yield to="footer"}}
+    </div>
+  {{/if}}
+</div>

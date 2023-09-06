@@ -1,0 +1,44 @@
+.oss-panel {
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border-default);
+  background: var(--color-white);
+  box-shadow: var(--box-shadow-md);
+  display: flex;
+  width: 200px;
+  flex-direction: column;
+  align-items: flex-start;
+
+  .oss-panel-content--row {
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    height: 36px;
+    width: 100%;
+    padding: var(--spacing-px-9) var(--spacing-px-18);
+    align-items: center;
+    gap: var(--spacing-px-9);
+    flex-shrink: 0;
+    background: var(--color-white);
+
+    .far {
+      color: var(--color-gray-400);
+    }
+
+    &:hover {
+      .far,
+      span {
+        color: var(--color-primary-500);
+      }
+    }
+
+    span {
+      margin-bottom: 0;
+    }
+  }
+
+  .oss-panel--separator {
+    margin: 0;
+    border-top: 1px solid var(--color-border-default);
+    width: 100%;
+  }
+}
