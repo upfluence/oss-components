@@ -1,5 +1,6 @@
 .oss-panel {
   border-radius: var(--border-radius-md);
+  transition: transform 400ms cubic-bezier(0.19, 1, 0.22, 1), opacity 200ms ease-in-out;
   border: 1px solid var(--color-border-default);
   background: var(--color-white);
   box-shadow: var(--box-shadow-md);
@@ -14,7 +15,7 @@
     cursor: pointer;
     height: 36px;
     width: 100%;
-    padding: var(--spacing-px-9) var(--spacing-px-18);
+    padding: var(--spacing-px-9) var(--spacing-px-12);
     align-items: center;
     gap: var(--spacing-px-9);
     flex-shrink: 0;
@@ -25,6 +26,7 @@
     }
 
     &:hover {
+      background-color: var(--color-gray-50);
       .far,
       span {
         color: var(--color-primary-500);
@@ -40,5 +42,15 @@
     margin: 0;
     border-top: 1px solid var(--color-border-default);
     width: 100%;
+  }
+  .oss-panel-content--row--icon-wrapper {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 16px;
+    i {
+      font-size: 12px;
+      margin: auto;
+    }
   }
 }
