@@ -14936,6 +14936,7 @@ a.upf-btn--sm {
 }
 .oss-panel {
   border-radius: var(--border-radius-md);
+  transition: transform 300ms cubic-bezier(0.19, 1, 0.22, 1), opacity 300ms ease-in-out;
   border: 1px solid var(--color-border-default);
   background: var(--color-white);
   box-shadow: var(--box-shadow-md);
@@ -14949,7 +14950,7 @@ a.upf-btn--sm {
   cursor: pointer;
   height: 36px;
   width: 100%;
-  padding: var(--spacing-px-9) var(--spacing-px-18);
+  padding: var(--spacing-px-9) var(--spacing-px-12);
   align-items: center;
   gap: var(--spacing-px-9);
   flex-shrink: 0;
@@ -14958,9 +14959,14 @@ a.upf-btn--sm {
 .oss-panel .oss-panel-content--row .far {
   color: var(--color-gray-400);
 }
+.oss-panel .oss-panel-content--row:hover {
+  background-color: var(--color-gray-50);
+  transition: background-color 300ms ease;
+}
 .oss-panel .oss-panel-content--row:hover .far,
 .oss-panel .oss-panel-content--row:hover span {
   color: var(--color-primary-500);
+  transition: color 300ms ease;
 }
 .oss-panel .oss-panel-content--row span {
   margin-bottom: 0;
@@ -14969,6 +14975,16 @@ a.upf-btn--sm {
   margin: 0;
   border-top: 1px solid var(--color-border-default);
   width: 100%;
+}
+.oss-panel .oss-panel-content--row--icon-wrapper {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 16px;
+}
+.oss-panel .oss-panel-content--row--icon-wrapper i {
+  font-size: var(--font-size-sm);
+  margin: auto;
 }
 @keyframes slide-up {
   0% {
