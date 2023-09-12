@@ -92165,7 +92165,7 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
 
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="oss-panel-content--row">
+    <div class="oss-panel-content--row" ...attributes>
     {{#if @icon}}
       <div class="oss-panel-content--row--icon-wrapper">
         <OSS::Icon @icon={{@icon}} />
@@ -92178,8 +92178,8 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
   
   */
   {
-    "id": "GboJOhJf",
-    "block": "[[[10,0],[14,0,\"oss-panel-content--row\"],[12],[1,\"\\n\"],[41,[30,1],[[[1,\"    \"],[10,0],[14,0,\"oss-panel-content--row--icon-wrapper\"],[12],[1,\"\\n      \"],[8,[39,1],null,[[\"@icon\"],[[30,1]]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,\"\\n    \"],[1,[30,2]],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"@icon\",\"@label\"],false,[\"if\",\"o-s-s/icon\"]]",
+    "id": "8i3owHRJ",
+    "block": "[[[11,0],[24,0,\"oss-panel-content--row\"],[17,1],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[10,0],[14,0,\"oss-panel-content--row--icon-wrapper\"],[12],[1,\"\\n      \"],[8,[39,1],null,[[\"@icon\"],[[30,2]]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,\"\\n    \"],[1,[30,3]],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@label\"],false,[\"if\",\"o-s-s/icon\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/panel/row.hbs",
     "isStrictMode": false
   });
@@ -108261,36 +108261,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-1986sd5IBBuxjJP0/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-1904pcvkGKf584k1/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-1986sd5IBBuxjJP0/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-1904pcvkGKf584k1/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1986sd5IBBuxjJP0/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1904pcvkGKf584k1/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-1986sd5IBBuxjJP0/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-1904pcvkGKf584k1/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-1986sd5IBBuxjJP0/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-1904pcvkGKf584k1/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1986sd5IBBuxjJP0/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1904pcvkGKf584k1/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-1986sd5IBBuxjJP0/cache-275-bundler/staging/l.js /tmp/broccoli-1986sd5IBBuxjJP0/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-1904pcvkGKf584k1/cache-275-bundler/staging/l.js /tmp/broccoli-1904pcvkGKf584k1/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-1986sd5IBBuxjJP0/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1986sd5IBBuxjJP0/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1986sd5IBBuxjJP0/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1986sd5IBBuxjJP0/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1986sd5IBBuxjJP0/cache-275-bundler/staging/l.js_/tmp/broccoli-1986sd5IBBuxjJP0/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-1904pcvkGKf584k1/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1904pcvkGKf584k1/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1904pcvkGKf584k1/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1904pcvkGKf584k1/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1904pcvkGKf584k1/cache-275-bundler/staging/l.js_/tmp/broccoli-1904pcvkGKf584k1/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
