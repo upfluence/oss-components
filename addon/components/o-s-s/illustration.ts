@@ -1,4 +1,5 @@
 import Component from '@glimmer/component';
+import { action } from '@ember/object';
 import { later } from '@ember/runloop';
 
 export const extractCSSVars = (): string[] => {
@@ -27,6 +28,7 @@ interface OSSIllustrationArgs {
 export default class OSSIllustration extends Component<OSSIllustrationArgs> {
   declare element: HTMLObjectElement;
 
+  @action
   setupCSSVars(event: Event): void {
     this.element = <HTMLObjectElement>event.target;
     later(this, this._insertStyle, 100);
