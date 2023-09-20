@@ -31,7 +31,7 @@ export default class OSSIllustration extends Component<OSSIllustrationArgs> {
   @action
   setupCSSVars(event: Event): void {
     this.element = <HTMLObjectElement>event.target;
-    later(this, this._insertStyle, 100);
+    later(this, this._insertStyle, 1000);
   }
 
   private _insertStyle(): void {
