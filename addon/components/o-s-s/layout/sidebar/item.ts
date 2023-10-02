@@ -19,7 +19,9 @@ export default class OSSLayoutSidebarItem extends Component<OSSLayoutSidebarItem
   }
 
   @action
-  onClick(): void {
+  onClick(event: MouseEvent): void {
+    event?.stopPropagation();
+
     if (this.locked) {
       return this.args.lockedAction?.();
     }
