@@ -1,10 +1,11 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
+import { IconNames } from './iconName.enum';
 
 export type IconStyle = 'solid' | 'regular' | 'light' | 'duotone' | 'brand';
 
 interface OSSIconArgs {
-  icon: string;
+  icon: IconNames;
   style?: IconStyle;
 }
 
