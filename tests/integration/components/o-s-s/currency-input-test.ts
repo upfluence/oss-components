@@ -194,7 +194,7 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       assert.dom('input').hasValue('123456789010');
     });
 
-    test('When selection is applied, it replace the selection', async function (assert) {
+    test('When selection is applied, it replaces the selection', async function (assert) {
       assert.dom('input').hasValue('1234567890');
       let input = document.querySelector('input.ember-text-field') as HTMLInputElement;
       input.setSelectionRange(4, 6);
