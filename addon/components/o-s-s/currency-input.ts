@@ -75,10 +75,7 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
       'ArrowDown'
     ];
 
-    if (
-      (event.key === 'v' && (event.metaKey || event.ctrlKey)) ||
-      (event.key === 'c' && (event.metaKey || event.ctrlKey))
-    ) {
+    if (['c', 'v'].includes(event.key) && (event.metaKey || event.ctrlKey)) {
       return;
     }
 
@@ -138,6 +135,9 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
 
     target.setRangeText(paste, initialSelectionStart, target.selectionEnd || initialSelectionStart);
     target.setSelectionRange(finalSelectionPosition, finalSelectionPosition);
+
+    this.localValue = target.value as unknown as number;
+    this.notifyChanges();
   }
 }
 
