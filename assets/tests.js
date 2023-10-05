@@ -7441,6 +7441,123 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["@ember/
         return _ref19.apply(this, arguments);
       };
     }());
+    (0, _qunit.module)('When paste event is received', function (hooks) {
+      hooks.beforeEach( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee19() {
+        return regeneratorRuntime.wrap(function _callee19$(_context19) {
+          while (1) {
+            switch (_context19.prev = _context19.next) {
+              case 0:
+                this.value = '1234567890';
+                _context19.next = 3;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::CurrencyInput @onChange={{this.onChange}} @value={{this.value}} />
+                */
+                {
+                  "id": "e0hCyllX",
+                  "block": "[[[8,[39,0],null,[[\"@onChange\",\"@value\"],[[30,0,[\"onChange\"]],[30,0,[\"value\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 3:
+              case "end":
+                return _context19.stop();
+            }
+          }
+        }, _callee19, this);
+      })));
+      (0, _qunit.test)('The value stored in clipboard is inserted in the input', /*#__PURE__*/function () {
+        var _ref21 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee20(assert) {
+          return regeneratorRuntime.wrap(function _callee20$(_context20) {
+            while (1) {
+              switch (_context20.prev = _context20.next) {
+                case 0:
+                  assert.dom('input').hasValue('1234567890');
+                  _context20.next = 3;
+                  return (0, _testHelpers.triggerEvent)('input', 'paste', {
+                    clipboardData: {
+                      getData: _sinon.default.stub().returns('123')
+                    }
+                  });
+
+                case 3:
+                  assert.dom('input').hasValue('1234567890123');
+
+                case 4:
+                case "end":
+                  return _context20.stop();
+              }
+            }
+          }, _callee20);
+        }));
+
+        return function (_x19) {
+          return _ref21.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('The non-numeric characters are escaped', /*#__PURE__*/function () {
+        var _ref22 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee21(assert) {
+          return regeneratorRuntime.wrap(function _callee21$(_context21) {
+            while (1) {
+              switch (_context21.prev = _context21.next) {
+                case 0:
+                  assert.dom('input').hasValue('1234567890');
+                  _context21.next = 3;
+                  return (0, _testHelpers.triggerEvent)('input', 'paste', {
+                    clipboardData: {
+                      getData: _sinon.default.stub().returns('1withletter0')
+                    }
+                  });
+
+                case 3:
+                  assert.dom('input').hasValue('123456789010');
+
+                case 4:
+                case "end":
+                  return _context21.stop();
+              }
+            }
+          }, _callee21);
+        }));
+
+        return function (_x20) {
+          return _ref22.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('When selection is applied, it replaces the selection', /*#__PURE__*/function () {
+        var _ref23 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee22(assert) {
+          var input;
+          return regeneratorRuntime.wrap(function _callee22$(_context22) {
+            while (1) {
+              switch (_context22.prev = _context22.next) {
+                case 0:
+                  assert.dom('input').hasValue('1234567890');
+                  input = document.querySelector('input.ember-text-field');
+                  input.setSelectionRange(4, 6);
+                  _context22.next = 5;
+                  return (0, _testHelpers.triggerEvent)('input', 'paste', {
+                    clipboardData: {
+                      getData: _sinon.default.stub().returns('0')
+                    }
+                  });
+
+                case 5:
+                  assert.dom('input').hasValue('123407890');
+
+                case 6:
+                case "end":
+                  return _context22.stop();
+              }
+            }
+          }, _callee22);
+        }));
+
+        return function (_x21) {
+          return _ref23.apply(this, arguments);
+        };
+      }());
+    });
   });
 });
 define("dummy/tests/integration/components/o-s-s/email-input-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "sinon"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _sinon) {

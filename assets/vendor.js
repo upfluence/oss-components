@@ -88267,7 +88267,7 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
       {{#unless @onlyCurrency}}
         <Input
           class="fx-1" type="number" @value={{this.localValue}} min="0" autocomplete="off" placeholder={{this.placeholder}}
-          {{on "keydown" this.onlyNumeric}} {{on "keyup" this.notifyChanges}} />
+          {{on "keydown" this.onlyNumeric}} {{on "keyup" this.notifyChanges}} {{on "paste" this.handlePaste}} />
       {{/unless}}
     </div>
     {{#if @errorMessage}}
@@ -88295,13 +88295,14 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
   
   */
   {
-    "id": "krLc2U7S",
-    "block": "[[[11,0],[16,0,[29,[\"currency-input-container fx-1 \",[52,[30,1],\"currency-input-container--errored\"]]]],[17,2],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"currency-input \",[52,[30,3],\"onlycurrency\"],\" upf-input fx-row fx-1 fx-xalign-center\"]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"currency-selector fx-row fx-gap-px-12 fx-malign-space-between\"],[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,0,[\"toggleCurrencySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-9\"],[12],[1,\"\\n          \"],[10,1],[12],[1,[30,0,[\"selectedCurrencySymbol\"]]],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"            \"],[10,1],[14,0,\"margin-right-px-12\"],[12],[1,[30,0,[\"selectedCurrencyCode\"]]],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"allowCurrencyUpdate\"]],[[[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"          \"],[8,[39,2],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[\"fa-chevron-up\"]],null],[1,\"\\n\"]],[]],[[[1,\"          \"],[8,[39,2],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[\"fa-chevron-down\"]],null],[1,\"\\n\"]],[]]]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[51,[30,3]],[[[1,\"      \"],[8,[39,4],[[24,0,\"fx-1\"],[24,\"min\",\"0\"],[24,\"autocomplete\",\"off\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,4,\"number\"],[4,[38,1],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,1],[\"keyup\",[30,0,[\"notifyChanges\"]]],null]],[[\"@value\"],[[30,0,[\"localValue\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,1],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\" \"],[1,[30,1]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"    \"],[8,[39,5],[[4,[38,7],[[30,0,[\"hideCurrencySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCurrencies\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[28,[37,6],[\"oss-components.currency-input.search\"],null]]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,8],[[30,0,[\"selectedCurrency\"]],[30,4]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,1],[14,0,\"symbol text-color-default-light margin-left-xx-sm\"],[12],[1,[30,4,[\"symbol\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm fx-1\"],[12],[1,[30,4,[\"code\"]]],[13],[1,\"\\n\"],[41,[28,[37,8],[[30,0,[\"selectedCurrency\"]],[30,4]],null],[[[1,\"            \"],[8,[39,2],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"@errorMessage\",\"&attrs\",\"@onlyCurrency\",\"currency\"],false,[\"if\",\"on\",\"o-s-s/icon\",\"unless\",\"input\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\",\"eq\"]]",
+    "id": "W/ESQ4Nc",
+    "block": "[[[11,0],[16,0,[29,[\"currency-input-container fx-1 \",[52,[30,1],\"currency-input-container--errored\"]]]],[17,2],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"currency-input \",[52,[30,3],\"onlycurrency\"],\" upf-input fx-row fx-1 fx-xalign-center\"]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"currency-selector fx-row fx-gap-px-12 fx-malign-space-between\"],[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,0,[\"toggleCurrencySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-9\"],[12],[1,\"\\n          \"],[10,1],[12],[1,[30,0,[\"selectedCurrencySymbol\"]]],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"            \"],[10,1],[14,0,\"margin-right-px-12\"],[12],[1,[30,0,[\"selectedCurrencyCode\"]]],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"allowCurrencyUpdate\"]],[[[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"          \"],[8,[39,2],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[\"fa-chevron-up\"]],null],[1,\"\\n\"]],[]],[[[1,\"          \"],[8,[39,2],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[\"fa-chevron-down\"]],null],[1,\"\\n\"]],[]]]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[51,[30,3]],[[[1,\"      \"],[8,[39,4],[[24,0,\"fx-1\"],[24,\"min\",\"0\"],[24,\"autocomplete\",\"off\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,4,\"number\"],[4,[38,1],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,1],[\"keyup\",[30,0,[\"notifyChanges\"]]],null],[4,[38,1],[\"paste\",[30,0,[\"handlePaste\"]]],null]],[[\"@value\"],[[30,0,[\"localValue\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,1],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\" \"],[1,[30,1]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"    \"],[8,[39,5],[[4,[38,7],[[30,0,[\"hideCurrencySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCurrencies\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[28,[37,6],[\"oss-components.currency-input.search\"],null]]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,8],[[30,0,[\"selectedCurrency\"]],[30,4]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,1],[14,0,\"symbol text-color-default-light margin-left-xx-sm\"],[12],[1,[30,4,[\"symbol\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm fx-1\"],[12],[1,[30,4,[\"code\"]]],[13],[1,\"\\n\"],[41,[28,[37,8],[[30,0,[\"selectedCurrency\"]],[30,4]],null],[[[1,\"            \"],[8,[39,2],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"@errorMessage\",\"&attrs\",\"@onlyCurrency\",\"currency\"],false,[\"if\",\"on\",\"o-s-s/icon\",\"unless\",\"input\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\",\"eq\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/currency-input.hbs",
     "isStrictMode": false
   });
 
   var NUMERIC_ONLY = /^[0-9]$/i;
+  var NOT_NUMERIC_FLOAT = /[^0-9,.]/g;
   var OSSCurrencyInput = (_class = /*#__PURE__*/function (_Component) {
     _inherits(OSSCurrencyInput, _Component);
 
@@ -88370,11 +88371,20 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
       value: function onlyNumeric(event) {
         var authorizedInputs = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift', 'Control', '.', ',', 'ArrowUp', 'ArrowDown'];
 
+        if (['c', 'v'].includes(event.key) && (event.metaKey || event.ctrlKey)) {
+          return;
+        }
+
         if (!NUMERIC_ONLY.test(event.key) && !authorizedInputs.find(function (key) {
           return key === event.key;
         })) {
           event.preventDefault();
         }
+      }
+    }, {
+      key: "handlePaste",
+      value: function handlePaste(event) {
+        this._handlePaste(event);
       }
     }, {
       key: "notifyChanges",
@@ -88407,6 +88417,22 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
         this.currencySelectorShown = false;
         this.filteredCurrencies = this._currencies;
       }
+    }, {
+      key: "_handlePaste",
+      value: function _handlePaste(event) {
+        var _event$clipboardData;
+
+        event.preventDefault();
+        var paste = ((_event$clipboardData = event.clipboardData) === null || _event$clipboardData === void 0 ? void 0 : _event$clipboardData.getData('text')) || '';
+        paste = paste.replace(NOT_NUMERIC_FLOAT, '');
+        var target = event.target;
+        var initialSelectionStart = target.selectionStart || 0;
+        var finalSelectionPosition = initialSelectionStart + paste.length;
+        target.setRangeText(paste, initialSelectionStart, target.selectionEnd || initialSelectionStart);
+        target.setSelectionRange(finalSelectionPosition, finalSelectionPosition);
+        this.localValue = target.value;
+        this.notifyChanges();
+      }
     }]);
 
     return OSSCurrencyInput;
@@ -88431,7 +88457,7 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
     initializer: function initializer() {
       return this.args.value;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "onlyNumeric", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onlyNumeric"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "notifyChanges", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "notifyChanges"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleCurrencySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleCurrencySelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "hideCurrencySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "hideCurrencySelector"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "onlyNumeric", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onlyNumeric"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handlePaste", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handlePaste"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "notifyChanges", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "notifyChanges"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleCurrencySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleCurrencySelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "hideCurrencySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "hideCurrencySelector"), _class.prototype)), _class);
   _exports.default = OSSCurrencyInput;
   var usedCurrencies = [{
     code: 'USD',
@@ -108263,36 +108289,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-1892beGiLCxo2Jad/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-2032P5bScQue8Z7U/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-1892beGiLCxo2Jad/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-2032P5bScQue8Z7U/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1892beGiLCxo2Jad/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2032P5bScQue8Z7U/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-1892beGiLCxo2Jad/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-2032P5bScQue8Z7U/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-1892beGiLCxo2Jad/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-2032P5bScQue8Z7U/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1892beGiLCxo2Jad/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2032P5bScQue8Z7U/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-1892beGiLCxo2Jad/cache-275-bundler/staging/l.js /tmp/broccoli-1892beGiLCxo2Jad/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-2032P5bScQue8Z7U/cache-275-bundler/staging/l.js /tmp/broccoli-2032P5bScQue8Z7U/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-1892beGiLCxo2Jad/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1892beGiLCxo2Jad/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1892beGiLCxo2Jad/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1892beGiLCxo2Jad/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1892beGiLCxo2Jad/cache-275-bundler/staging/l.js_/tmp/broccoli-1892beGiLCxo2Jad/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-2032P5bScQue8Z7U/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-2032P5bScQue8Z7U/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-2032P5bScQue8Z7U/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-2032P5bScQue8Z7U/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-2032P5bScQue8Z7U/cache-275-bundler/staging/l.js_/tmp/broccoli-2032P5bScQue8Z7U/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
