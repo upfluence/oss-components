@@ -22,7 +22,7 @@
     {{#unless @onlyCurrency}}
       <Input
         class="fx-1" type="number" @value={{this.localValue}} min="0" autocomplete="off" placeholder={{this.placeholder}}
-        {{on "keydown" this.onlyNumeric}} {{on "keyup" this.notifyChanges}} />
+        {{on "keydown" this.onlyNumeric}} {{on "keyup" this.notifyChanges}} {{on "paste" this.handlePaste}} />
     {{/unless}}
   </div>
   {{#if @errorMessage}}

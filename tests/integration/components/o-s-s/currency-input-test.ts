@@ -1,6 +1,15 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, setupOnerror, settled, click, findAll, typeIn, triggerKeyEvent } from '@ember/test-helpers';
+import {
+  render,
+  setupOnerror,
+  settled,
+  click,
+  findAll,
+  typeIn,
+  triggerKeyEvent,
+  triggerEvent
+} from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import sinon from 'sinon';
 
@@ -155,5 +164,47 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
     });
     await render(hbs`<OSS::CurrencyInput />`);
     await settled();
+  });
+
+  module('When paste event is received', function (hooks) {
+    hooks.beforeEach(async function () {
+      this.value = '1234567890';
+      await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @value={{this.value}} />`);
+    });
+
+    test('The value stored in clipboard is inserted in the input', async function (assert) {
+      assert.dom('input').hasValue('1234567890');
+      await triggerEvent('input', 'paste', {
+        clipboardData: {
+          getData: sinon.stub().returns('123')
+        }
+      });
+
+      assert.dom('input').hasValue('1234567890123');
+    });
+
+    test('The non-numeric characters are escaped', async function (assert) {
+      assert.dom('input').hasValue('1234567890');
+      await triggerEvent('input', 'paste', {
+        clipboardData: {
+          getData: sinon.stub().returns('1withletter0')
+        }
+      });
+
+      assert.dom('input').hasValue('123456789010');
+    });
+
+    test('When selection is applied, it replaces the selection', async function (assert) {
+      assert.dom('input').hasValue('1234567890');
+      let input = document.querySelector('input.ember-text-field') as HTMLInputElement;
+      input.setSelectionRange(4, 6);
+      await triggerEvent('input', 'paste', {
+        clipboardData: {
+          getData: sinon.stub().returns('0')
+        }
+      });
+
+      assert.dom('input').hasValue('123407890');
+    });
   });
 });

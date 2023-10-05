@@ -15,6 +15,7 @@ interface OSSCurrencyInputArgs {
 }
 
 const NUMERIC_ONLY = /^[0-9]$/i;
+const NOT_NUMERIC_FLOAT = /[^0-9,.]/g;
 
 export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
   private _currencies = usedCurrencies;
@@ -73,9 +74,19 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
       'ArrowUp',
       'ArrowDown'
     ];
+
+    if (['c', 'v'].includes(event.key) && (event.metaKey || event.ctrlKey)) {
+      return;
+    }
+
     if (!NUMERIC_ONLY.test(event.key) && !authorizedInputs.find((key: string) => key === event.key)) {
       event.preventDefault();
     }
+  }
+
+  @action
+  handlePaste(event: ClipboardEvent): void {
+    this._handlePaste(event);
   }
 
   @action
@@ -110,6 +121,23 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
   hideCurrencySelector(): void {
     this.currencySelectorShown = false;
     this.filteredCurrencies = this._currencies;
+  }
+
+  private _handlePaste(event: ClipboardEvent): void {
+    event.preventDefault();
+
+    let paste = event.clipboardData?.getData('text') || '';
+    paste = paste.replace(NOT_NUMERIC_FLOAT, '');
+
+    const target = event.target as HTMLInputElement;
+    const initialSelectionStart = target.selectionStart || 0;
+    const finalSelectionPosition = initialSelectionStart + paste.length;
+
+    target.setRangeText(paste, initialSelectionStart, target.selectionEnd || initialSelectionStart);
+    target.setSelectionRange(finalSelectionPosition, finalSelectionPosition);
+
+    this.localValue = target.value as unknown as number;
+    this.notifyChanges();
   }
 }
 
