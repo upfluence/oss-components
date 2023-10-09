@@ -7,6 +7,7 @@
 
   .tab {
     color: var(--color-gray-400);
+    transition: all 0.25s;
 
     .tab-content {
       padding: var(--spacing-px-6) var(--spacing-px-18);
@@ -18,12 +19,11 @@
     }
 
     &--selected {
-      color: var(--color-gray-900);
-      box-shadow: 0 2px 0px 0 var(--color-primary-500);
-
+      color: var(--color-primary-500);
+      box-shadow: 0 2px 0 0 var(--color-primary-500);
 
       .tab-content .far.fa-info-circle {
-        color: var(--color-gray-900);
+        color: var(--color-primary-500);
       }
     }
 
@@ -38,19 +38,19 @@
 
     &:hover {
       cursor: pointer;
-      color: var(--color-gray-900);
+      color: var(--color-primary-500);
     }
 
     &:focus {
       outline: none;
-      color: var(--color-gray-900);
+      color: var(--color-primary-500);
     }
 
     &:active {
-      color: var(--color-gray-900);
+      color: var(--color-primary-500);
 
       .far.fa-info-circle {
-        color: var(--color-gray-900);
+        color: var(--color-primary-500);
       }
     }
   }
