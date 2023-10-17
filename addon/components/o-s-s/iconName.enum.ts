@@ -125,6 +125,7 @@ export enum IconNames {
   Save = 'fa-save',
   PuzzlePiece = 'fa-puzzle-piece',
   Facebook = 'fa-facebook',
+  FacebookSquare = 'fa-facebook-square',
   Paperclip = 'fa-paperclip',
   Microphone = 'fa-microphone',
   ChartPie = 'fa-chart-pie',

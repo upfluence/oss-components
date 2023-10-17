@@ -5,7 +5,7 @@ import { IconNames } from './iconName.enum';
 export type IconStyle = 'solid' | 'regular' | 'light' | 'duotone' | 'brand';
 
 interface OSSIconArgs {
-  icon: IconNames;
+  icon: keyof typeof IconNames;
   style?: IconStyle;
 }
 
@@ -23,10 +23,14 @@ export default class OSSIcon extends Component<OSSIconArgs> {
     assert('[component][OSS::Icon] The @icon parameter is mandatory', typeof args.icon !== 'undefined');
   }
 
+  get iconClass(): string {
+    return IconNames[this.args.icon];
+  }
+
   get computedClass(): string {
     const classes: string[] = [];
     classes.push(STYLE_CLASSES[this.args.style ?? 'regular']);
-    classes.push(this.args.icon);
+    classes.push(this.iconClass);
     return classes.join(' ');
   }
 }
