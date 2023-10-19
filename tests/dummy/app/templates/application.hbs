@@ -178,6 +178,24 @@
       </OSS::AttributesPanel>
     </div>
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
+      <OSS::InputContainer
+                           @value={{@value}} @placeholder={{'placeholder'}} @errorMessage={{''}}
+                           @onChange={{this.validateInput}} ...attributes />
+      <OSS::InputContainer
+                           @value={{@value}} @placeholder={{'placeholder'}} @errorMessage={{'error'}}
+                           @onChange={{this.validateInput}} ...attributes />
+      <OSS::InputContainer
+                           @value={{'toto'}} @placeholder={{'placeholder'}} @errorMessage={{this.errorMessage}}
+                           @onChange={{this.validateInput}} ...attributes />
+      <OSS::InputContainer
+                           @value={{'disabled'}} @placeholder={{'disabled'}} @errorMessage={{this.errorMessage}}
+                           @onChange={{this.validateInput}} @disabled={{true}} ...attributes />
+      <OSS::InputContainer
+                           @value={{'disabled'}} @placeholder={{'disabled'}} @errorMessage={{'toast'}}
+                           @onChange={{this.validateInput}} @disabled={{true}} ...attributes />
+    </div>
+
+    <div class="fx-row fx-1 fx-gap-px-10 margin-md">
       <OSS::EmailInput @value={{this.emailInputValue}} @onChange={{this.onEmailInputChange}} />
     </div>
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
