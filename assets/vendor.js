@@ -88954,7 +88954,7 @@ define("@upfluence/oss-components/components/o-s-s/email-input", ["exports", "@e
 });
 ;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-define("@upfluence/oss-components/components/o-s-s/icon", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@ember/debug"], function (_exports, _component, _templateFactory, _component2, _debug) {
+define("@upfluence/oss-components/components/o-s-s/icon", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@ember/debug", "@upfluence/oss-components/components/o-s-s/iconName.enum"], function (_exports, _component, _templateFactory, _component2, _debug, _iconName) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -89015,17 +89015,27 @@ define("@upfluence/oss-components/components/o-s-s/icon", ["exports", "@ember/co
 
       _this = _super.call(this, owner, args);
       (true && !(typeof args.icon !== 'undefined') && (0, _debug.assert)('[component][OSS::Icon] The @icon parameter is mandatory', typeof args.icon !== 'undefined'));
+      (true && !(_iconName.IconNames[args.icon] || args.icon.includes('fa-')) && (0, _debug.assert)('[component][OSS::Icon] The @icon parameter should be a valid IconName or have fa- at the start', _iconName.IconNames[args.icon] || args.icon.includes('fa-')));
       return _this;
     }
 
     _createClass(OSSIcon, [{
+      key: "iconClass",
+      get: function get() {
+        if (typeof this.args.icon === 'string' && this.args.icon.includes('fa-')) {
+          return this.args.icon;
+        }
+
+        return _iconName.IconNames[this.args.icon];
+      }
+    }, {
       key: "computedClass",
       get: function get() {
         var _this$args$style;
 
         var classes = [];
         classes.push(STYLE_CLASSES[(_this$args$style = this.args.style) !== null && _this$args$style !== void 0 ? _this$args$style : 'regular']);
-        classes.push(this.args.icon);
+        classes.push(this.iconClass);
         return classes.join(' ');
       }
     }]);
@@ -89119,6 +89129,142 @@ define("@upfluence/oss-components/components/o-s-s/icon", ["exports", "@ember/co
   var BasicUsage = Template.bind({});
   _exports.BasicUsage = BasicUsage;
   BasicUsage.args = defaultArgs;
+});
+;define("@upfluence/oss-components/components/o-s-s/iconName.enum", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.IconNames = void 0;
+
+  /* eslint-disable no-unused-vars */
+  var IconNames;
+  _exports.IconNames = IconNames;
+
+  (function (IconNames) {
+    IconNames["Analytics"] = "fa-analytics";
+    IconNames["AngleLeft"] = "fa-angle-left";
+    IconNames["Archive"] = "fa-archive";
+    IconNames["ArrowRight"] = "fa-arrow-right";
+    IconNames["At"] = "fa-at";
+    IconNames["Ban"] = "fa-ban";
+    IconNames["Bell"] = "fa-bell";
+    IconNames["BoxOpen"] = "fa-box-open";
+    IconNames["Building"] = "fa-building";
+    IconNames["Bullhorn"] = "fa-bullhorn";
+    IconNames["CaretDown"] = "fa-caret-down";
+    IconNames["CaretRight"] = "fa-caret-right";
+    IconNames["CaretUp"] = "fa-caret-up";
+    IconNames["Chair"] = "fa-chair";
+    IconNames["Check"] = "fa-check";
+    IconNames["CheckCircle"] = "fa-check-circle";
+    IconNames["ChevronDown"] = "fa-chevron-down";
+    IconNames["Circle"] = "fa-circle";
+    IconNames["CircleNotch"] = "fa-circle-notch";
+    IconNames["Cloud"] = "fa-cloud";
+    IconNames["Code"] = "fa-code";
+    IconNames["CodeMerge"] = "fa-code-merge";
+    IconNames["Comment"] = "fa-comment";
+    IconNames["Copy"] = "fa-copy";
+    IconNames["CreditCard"] = "fa-credit-card";
+    IconNames["DollarSign"] = "fa-dollar-sign";
+    IconNames["Download"] = "fa-download";
+    IconNames["EllipsisH"] = "fa-ellipsis-h";
+    IconNames["Envelope"] = "fa-envelope";
+    IconNames["EnvelopeOpen"] = "fa-envelope-open";
+    IconNames["Exchange"] = "fa-exchange";
+    IconNames["ExclamationCircle"] = "fa-exclamation-circle";
+    IconNames["ExclamationTriangle"] = "fa-exclamation-triangle";
+    IconNames["ExternalLink"] = "fa-external-link";
+    IconNames["Eye"] = "fa-eye";
+    IconNames["EyeSlash"] = "fa-eye-slash";
+    IconNames["Facebook"] = "fa-facebook";
+    IconNames["FacebookF"] = "fa-facebook-f";
+    IconNames["FacebookSquare"] = "fa-facebook-square";
+    IconNames["FileAlt"] = "fa-file-alt";
+    IconNames["FileContract"] = "fa-file-contract";
+    IconNames["FilePdf"] = "fa-file-pdf";
+    IconNames["FileSignature"] = "fa-file-signature";
+    IconNames["FileVideo"] = "fa-file-video";
+    IconNames["Filter"] = "fa-filter";
+    IconNames["Fire"] = "fa-fire";
+    IconNames["Handshake"] = "fa-handshake";
+    IconNames["Hashtag"] = "fa-hashtag";
+    IconNames["Heart"] = "fa-heart";
+    IconNames["Hourglass"] = "fa-hourglass";
+    IconNames["IconStyle"] = "fa-icon-style";
+    IconNames["IconValue"] = "fa-icon-value";
+    IconNames["IdCard"] = "fa-id-card";
+    IconNames["Image"] = "fa-image";
+    IconNames["Info"] = "fa-info";
+    IconNames["InfoCircle"] = "fa-info-circle";
+    IconNames["Instagram"] = "fa-instagram";
+    IconNames["LaptopCode"] = "fa-laptop-code";
+    IconNames["Lightbulb"] = "fa-lightbulb";
+    IconNames["Link"] = "fa-link";
+    IconNames["LongArrowAltRight"] = "fa-long-arrow-alt-right";
+    IconNames["LongArrowDown"] = "fa-long-arrow-down";
+    IconNames["LongArrowLeft"] = "fa-long-arrow-left";
+    IconNames["LongArrowRight"] = "fa-long-arrow-right";
+    IconNames["LongArrowUp"] = "fa-long-arrow-up";
+    IconNames["Mars"] = "fa-mars";
+    IconNames["Meh"] = "fa-meh";
+    IconNames["Microphone"] = "fa-microphone";
+    IconNames["Paperclip"] = "fa-paperclip";
+    IconNames["PaperPlane"] = "fa-paper-plane";
+    IconNames["Pen"] = "fa-pen";
+    IconNames["Pencil"] = "fa-pencil";
+    IconNames["PencilAlt"] = "fa-pencil-alt";
+    IconNames["Percentage"] = "fa-percentage";
+    IconNames["Picture"] = "fa-picture";
+    IconNames["Pinterest"] = "fa-pinterest";
+    IconNames["Play"] = "fa-play";
+    IconNames["Plus"] = "fa-plus";
+    IconNames["PlusCircle"] = "fa-plus-circle";
+    IconNames["PowerOff"] = "fa-power-off";
+    IconNames["ProjectDiagram"] = "fa-project-diagram";
+    IconNames["PuzzlePiece"] = "fa-puzzle-piece";
+    IconNames["Redo"] = "fa-redo";
+    IconNames["Retweet"] = "fa-retweet";
+    IconNames["Save"] = "fa-save";
+    IconNames["Search"] = "fa-search";
+    IconNames["Share"] = "fa-share";
+    IconNames["ShippingFast"] = "fa-shipping-fast";
+    IconNames["Signout"] = "fa-sign-out";
+    IconNames["Smile"] = "fa-smile";
+    IconNames["Sparkles"] = "fa-sparkles";
+    IconNames["Spin"] = "fa-spin";
+    IconNames["SpinnerThird"] = "fa-spinner-third";
+    IconNames["ThumbsUp"] = "fa-thumbs-up";
+    IconNames["ThumbsDown"] = "fa-thumbs-down";
+    IconNames["ThList"] = "fa-th-list";
+    IconNames["Tiktok"] = "fa-tiktok";
+    IconNames["Times"] = "fa-times";
+    IconNames["TimesCircle"] = "fa-times-circle";
+    IconNames["Trash"] = "fa-trash";
+    IconNames["TrashAlt"] = "fa-trash-alt";
+    IconNames["Truck"] = "fa-truck";
+    IconNames["Twitch"] = "fa-twitch";
+    IconNames["Twitter"] = "fa-twitter";
+    IconNames["Unlink"] = "fa-unlink";
+    IconNames["Upload"] = "fa-upload";
+    IconNames["User"] = "fa-user";
+    IconNames["UserCrown"] = "fa-user-crown";
+    IconNames["UserCheck"] = "fa-user-check";
+    IconNames["UserCircle"] = "fa-user-circle";
+    IconNames["UserEdit"] = "fa-user-edit";
+    IconNames["UserFriends"] = "fa-user-friends";
+    IconNames["UserPlus"] = "fa-user-plus";
+    IconNames["Users"] = "fa-users";
+    IconNames["UserTimes"] = "fa-user-times";
+    IconNames["Venus"] = "fa-venus";
+    IconNames["WandMagic"] = "fa-wand-magic";
+    IconNames["Wallet"] = "fa-wallet";
+    IconNames["WineGlassAlt"] = "fa-wine-glass-alt";
+    IconNames["Wordpress"] = "fa-wordpress";
+    IconNames["Youtube"] = "fa-youtube";
+  })(IconNames || (_exports.IconNames = IconNames = {}));
 });
 ;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
@@ -98722,6 +98868,12 @@ define("@upfluence/oss-components/helpers/redirect-to", ["exports", "@ember/comp
       });
     }
 
+    if (triggerEvents.length === 1 && triggerEvents[0] === 'hover') {
+      element.addEventListener('click', function (event) {
+        destroyWithEvent(state, event);
+      });
+    }
+
     if (triggerEvents.includes('focus')) {
       element.addEventListener('focusin', function () {
         delayedRender(state);
@@ -108289,36 +108441,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-1944qO4jtAzmgUyo/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-1930WvJeKj3yHoTR/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-1944qO4jtAzmgUyo/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-1930WvJeKj3yHoTR/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1944qO4jtAzmgUyo/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1930WvJeKj3yHoTR/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-1944qO4jtAzmgUyo/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-1930WvJeKj3yHoTR/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-1944qO4jtAzmgUyo/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-1930WvJeKj3yHoTR/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1944qO4jtAzmgUyo/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1930WvJeKj3yHoTR/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-1944qO4jtAzmgUyo/cache-275-bundler/staging/l.js /tmp/broccoli-1944qO4jtAzmgUyo/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-1930WvJeKj3yHoTR/cache-275-bundler/staging/l.js /tmp/broccoli-1930WvJeKj3yHoTR/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-1944qO4jtAzmgUyo/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1944qO4jtAzmgUyo/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1944qO4jtAzmgUyo/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1944qO4jtAzmgUyo/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1944qO4jtAzmgUyo/cache-275-bundler/staging/l.js_/tmp/broccoli-1944qO4jtAzmgUyo/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-1930WvJeKj3yHoTR/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1930WvJeKj3yHoTR/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1930WvJeKj3yHoTR/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1930WvJeKj3yHoTR/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1930WvJeKj3yHoTR/cache-275-bundler/staging/l.js_/tmp/broccoli-1930WvJeKj3yHoTR/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
