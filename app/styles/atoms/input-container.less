@@ -1,6 +1,7 @@
 .oss-input-container {
   position: relative;
 
+  .yielded-input input,
   .upf-input {
     width: 100%;
 
@@ -11,10 +12,6 @@
     &:not(:disabled, .disabled) {
       &::placeholder {
         color: var(--color-gray-400);
-      }
-
-      &:placeholder-shown {
-        background-color: var(--color-gray-100);
       }
 
       &:hover {
@@ -43,8 +40,11 @@
 
   // Yielded one needed ?
   &--errored {
+    .yielded-input input,
     .upf-input,
+    .yielded-input input:focus,
     .upf-input:focus,
+    .yielded-input input:hover,
     .upf-input:hover {
       .border;
       .border-color-error;
