@@ -1,16 +1,55 @@
 .number-input {
+  .border-radius-default;
+  height: 36px;
+
+  &:active {
+    .input-state-active;
+    border: none;
+
+    .oss-input-container input {
+      border: none;
+      box-shadow: none !important;
+    }
+  }
+
+  &:hover {
+    .oss-input-container input,
+    .upf-square-btn {
+      border-color: var(--color-gray-300);
+    }
+
+    .oss-input-container input {
+      background-color: var(--color-gray-100);
+    }
+  }
+
+  .oss-input-container input,
+  .oss-input-container input:hover {
+    border-left: none !important;
+    border-right: none !important;
+  }
+
   .upf-square-btn {
-    border: 1px solid var(--color-gray-100);
+    border: 1px solid var(--color-border-default);
     outline: 0;
+    box-shadow: none;
+  }
+
+  .upf-square-btn:hover {
+    background-color: var(--color-white);
+  }
+
+  .upf-square-btn:disabled {
+    .input-state-disabled;
   }
 
   .upf-square-btn:nth-of-type(1) {
-    border-right: 1px solid var(--color-gray-100);
+    // border-right: 1px solid var(--color-border-default);
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
   }
   .upf-square-btn:nth-of-type(2) {
-    border-left: 1px solid var(--color-gray-100);
+    // border-left: 1px solid var(--color-border-default);
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
   }
@@ -31,15 +70,13 @@
 
   &:focus-within {
     .upf-square-btn:nth-of-type(1) {
-      border-color: var(--color-gray-300);
-      border-right: 0;
+      border-color: var(--color-gray-200);
     }
     .upf-square-btn:nth-of-type(2) {
-      border-color: var(--color-gray-300);
-      border-left: 0;
+      border-color: var(--color-gray-200);
     }
     .upf-input {
-      border-color: var(--color-gray-300);
+      border-color: var(--color-gray-200);
     }
   }
 }
