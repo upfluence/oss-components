@@ -9,6 +9,7 @@ interface OSSPasswordInputArgs {
   placeholder?: string;
   errorMessage?: string;
   validateFormat?: boolean;
+  disabled?: boolean;
   validates?(isPassing: boolean): void;
 }
 

@@ -35,6 +35,16 @@ export default {
       },
       control: { type: 'text' }
     },
+    disabled: {
+      description: 'Whether or not the input is disable',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: true }
+      },
+      control: { type: 'boolean' }
+    },
     validateFormat: {
       description: 'Whether or not to validate the password format with the RegEx',
       table: {
@@ -66,6 +76,7 @@ export default {
 
 const defaultArgs = {
   value: 'myPassword',
+  disabled: false,
   placeholder: '*****',
   errorMessage: undefined,
   validateFormat: true,
@@ -74,7 +85,8 @@ const defaultArgs = {
 
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
-      <OSS::PasswordInput @value={{this.value}} @placeholder={{this.placeholder}} @validateFormat={{this.validateFormat}} @validates={{this.validates}} />
+      <OSS::PasswordInput @value={{this.value}} @placeholder={{this.placeholder}} @validateFormat={{this.validateFormat}} @validates={{this.validates}}
+                          @disabled={{this.disabled}} />
   `,
   context: args
 });
