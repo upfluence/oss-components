@@ -173,6 +173,12 @@ function initEventListener(state: EnableTooltipState, element: HTMLElement): voi
     });
   }
 
+  if (triggerEvents.length === 1 && triggerEvents[0] === 'hover') {
+    element.addEventListener('click', (event) => {
+      destroyWithEvent(state, event);
+    });
+  }
+
   if (triggerEvents.includes('focus')) {
     element.addEventListener('focusin', () => {
       delayedRender(state);
