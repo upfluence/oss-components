@@ -1,7 +1,11 @@
-<div class="array-input-container fx-row fx-xalign-center fx-gap-px-6 padding-left-px-6 padding-right-px-6" ...attributes>
-  {{#each this.items as |item index|}}
-    <OSS::Chip @label={{item}} @onRemove={{fn this.removeItem index}} />
-  {{/each}}
-  <Input @value={{this.currentValue}} placeholder={{@placeholder}} autocomplete="off"
-         {{on "keydown" this.keyListener}} {{on "blur" this.validateTagOnClickOutside}} />
+<div class="fx-1 fx-col">
+  <div class={{this.computedClasses}}
+       ...attributes>
+    {{#each this.items as |item index|}}
+      <OSS::Chip @label={{item}} @onRemove={{fn this.removeItem index}} />
+    {{/each}}
+    <Input @value={{this.currentValue}} placeholder={{@placeholder}} autocomplete="off" disabled={{@disabled}}
+           {{on "keydown" this.keyListener}} {{on "blur" this.validateTagOnClickOutside}} />
+  </div>
+  <span class="text-color-error margin-top-xxx-sm">{{@errorMessage}}</span>
 </div>

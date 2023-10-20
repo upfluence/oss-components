@@ -1,3 +1,39 @@
+.input-state-hover {
+  border: 1px solid var(--color-gray-300);
+  background-color: var(--color-gray-100);
+}
+
+.input-state-error-hover {
+  .border-color-error;
+  background-color: var(--color-gray-100);
+}
+
+.input-state-active {
+  border: 1px solid var(--color-gray-100);
+  box-shadow: 0px 0px 0px 2px #d0d9ff, 0px 1px 3px 0px #0000001a, 0px 1px 2px 0px #0000000f;
+}
+
+.input-state-error-active {
+  .border-color-error;
+  box-shadow: 0px 0px 0px 2px #fee2e2, 0px 1px 3px 0px #0000001a, 0px 1px 2px 0px #0000000f;
+}
+
+.input-state-focus {
+  border: 1px solid var(--color-gray-300);
+  background-color: var(--color-white);
+}
+
+.input-state-error-focus {
+  .border-color-error;
+  background-color: var(--color-white);
+}
+
+.input-state-disabled {
+  cursor: not-allowed;
+  color: var(--color-gray-400);
+  background-color: var(--color-gray-200);
+}
+
 .oss-input-container {
   position: relative;
 
@@ -9,36 +45,30 @@
     color: var(--color-gray-900);
     background-color: var(--color-white);
 
-    &:not(:disabled, .disabled) {
-      &::placeholder {
-        color: var(--color-gray-400);
-      }
+    &input::placeholder {
+      color: var(--color-gray-400);
+    }
 
+    &:not(:disabled, .disabled) {
       &:hover {
-        border: 1px solid var(--color-gray-300);
-        background-color: var(--color-gray-100);
+        .input-state-hover;
       }
 
       &:active {
-        border: 1px solid var(--color-gray-100);
-        box-shadow: 0px 0px 0px 2px #d0d9ff;
+        .input-state-active;
       }
 
       &:focus {
-        border: 1px solid var(--color-gray-300);
-        background-color: var(--color-white);
+        .input-state-focus;
       }
     }
 
     &.disabled,
     &:disabled {
-      cursor: not-allowed;
-      color: var(--color-gray-400);
-      background-color: var(--color-gray-200);
+      .input-state-disabled;
     }
   }
 
-  // Yielded one needed ?
   &--errored {
     .yielded-input input,
     .upf-input,
@@ -52,18 +82,15 @@
 
       &:not(:disabled, .disabled) {
         &:hover {
-          .border-color-error;
-          background-color: var(--color-gray-100);
+          .input-state-error-hover;
         }
 
-        &:active:not(:disabled, .disabled) {
-          .border-color-error;
-          box-shadow: 0px 0px 0px 2px #fee2e2;
+        &:active {
+          .input-state-error-active;
         }
 
         &:focus {
-          .border-color-error;
-          background-color: var(--color-white);
+          .input-state-error-focus;
         }
       }
     }
