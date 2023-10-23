@@ -124,6 +124,46 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
     });
   });
 
+  module('When the dropdown is opened', function (hooks) {
+    hooks.beforeEach(function () {
+      this.mainAction = sinon.stub();
+    });
+
+    test('Clicking on an item should close the dropdown', async function (assert) {
+      await render(
+        hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}>
+              <:items>
+                <div class="oss-button-dropdown__item">foo</div>
+              </:items>
+            </OSS::ButtonDropdown>`
+      );
+
+      await click('.oss-button-dropdown__trigger .fx-row:last-child');
+      await click('.oss-button-dropdown__items .oss-button-dropdown__item');
+
+      assert.dom('.oss-button-dropdown__items .oss-button-dropdown__item').doesNotExist();
+    });
+
+    test('Clicking on an item with stopPropagation should keep the dropdown opened', async function (assert) {
+      this.stopPropagation = function (e: MouseEvent) {
+        e.stopPropagation();
+      };
+
+      await render(
+        hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}>
+              <:items>
+                <div class="oss-button-dropdown__item" {{on "click" this.stopPropagation}}>bar</div>
+              </:items>
+            </OSS::ButtonDropdown>`
+      );
+
+      await click('.oss-button-dropdown__trigger .fx-row:last-child');
+      await click('.oss-button-dropdown__items .oss-button-dropdown__item');
+
+      assert.dom('.oss-button-dropdown__items .oss-button-dropdown__item').exists();
+    });
+  });
+
   module('Error management', function () {
     test('it throws an error if no icon or label args is provided', async function (assert) {
       setupOnerror((err: { message: string }) => {
