@@ -11,6 +11,7 @@ oss-components:
     empty_img_alt: Empty content
   password-input:
     regex_error: 'Your password should have at least 8 characters with at least one lower-case character, one upper-case character and one digit.'
+    placeholder: Enter your password
   phone-input:
     invalid_input: Please select your country from the selector
   email-input:
