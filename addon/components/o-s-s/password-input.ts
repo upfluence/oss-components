@@ -4,8 +4,6 @@ import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 
-const DEFAULT_PLACEHOLDER = '••••••••••••';
-
 interface OSSPasswordInputArgs {
   value: string | null;
   placeholder?: string;
@@ -32,7 +30,7 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
       this._runValidation = args.validateFormat;
     }
 
-    this.placeholder = args.placeholder || DEFAULT_PLACEHOLDER;
+    this.placeholder = args.placeholder || this.intl.t('oss-components.password-input.placeholder');
   }
 
   get visibilityIcon(): 'fa-eye' | 'fa-eye-slash' {
