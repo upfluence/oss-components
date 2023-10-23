@@ -3132,6 +3132,7 @@ define("dummy/routes/application", ["exports", "@ember/routing/route"], function
         }
       },
       "password-input": {
+        "placeholder": "Enter your password",
         "regex_error": "Your password should have at least 8 characters with at least one lower-case character, one upper-case character and one digit."
       },
       "phone-input": {
