@@ -21,10 +21,6 @@ export default class OSSIcon extends Component<OSSIconArgs> {
   constructor(owner: unknown, args: OSSIconArgs) {
     super(owner, args);
     assert('[component][OSS::Icon] The @icon parameter is mandatory', typeof args.icon !== 'undefined');
-    assert(
-      '[component][OSS::Icon] The @icon parameter should be a valid IconName or have fa- at the start',
-      IconNames[args.icon as keyof typeof IconNames] || args.icon.includes('fa-')
-    );
   }
 
   get iconClass(): string {
