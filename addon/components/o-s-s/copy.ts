@@ -13,7 +13,7 @@ interface OSSCopyArgs {
 export default class OSSCopy extends Component<OSSCopyArgs> {
   @service intl: any;
   @service declare toast: ToastService;
-  @tracked inline: boolean = this.args.inline || false;
+  @tracked inline: boolean = this.args.inline ?? false;
 
   @action
   copy(event: PointerEvent) {
