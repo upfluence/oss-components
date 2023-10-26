@@ -1,0 +1,34 @@
+.oss-attribute--text {
+  font-family: 'Inter';
+  min-height: 24px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  padding-left: var(--spacing-px-9);
+  gap: 9px;
+  border-radius: var(--border-radius-sm);
+  transition: all 0.25s ease-in-out;
+  font-size: 12px;
+  &--label {
+    color: var(--color-gray-400);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 6px;
+    &--info {
+      align-items: center;
+    }
+  }
+  &--text {
+    color: var(--color-gray-900);
+  }
+  &--copy {
+    margin-left: auto;
+  }
+  &:hover {
+    background-color: var(--color-gray-50);
+  }
+}

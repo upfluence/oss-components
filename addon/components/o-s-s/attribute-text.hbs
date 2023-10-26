@@ -1,0 +1,18 @@
+<div class="oss-attribute--text">
+  <div class="oss-attribute--text--label">
+    {{this.label}}
+    {{#if this.args.tooltip}}
+      <OSS::Icon @icon="far fa-info-circle" class="oss-attribute--info" @inline={{true}}
+                 {{enable-tooltip title=this.args.tooltip placement="top"}} />
+    {{/if}}
+
+  </div>
+  <div class="oss-attribute--text--value">
+    {{this.value}}
+  </div>
+  {{#if this.copyable}}
+    <div class="oss-attribute--text--copy">
+      <OSS::Copy @value={{this.value}} @inline={{true}} />
+    </div>
+  {{/if}}
+</div>
