@@ -39,5 +39,15 @@ module('Integration | Component | o-s-s/attribute-text', function (hooks) {
       await click('.oss-copy--inline');
       assert.true(writeTextStub.calledOnceWithExactly(this.textForCopy));
     });
+
+    test("it cannot copy text if text value isn't specified or the length is 0", async function (assert) {
+      await render(hbs`<OSS::Attribute::Text @label="Hello" @copyable={{true}} />`);
+      assert.dom('.oss-copy--inline').doesNotExist();
+    });
+
+    test('it cannot copy text if text value is specified but the length is 0', async function (assert) {
+      await render(hbs`<OSS::Attribute::Text @label="Hello" @value="" @copyable={{true}} />`);
+      assert.dom('.oss-copy--inline').doesNotExist();
+    });
   });
 });

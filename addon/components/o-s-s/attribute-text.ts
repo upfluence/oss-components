@@ -23,10 +23,10 @@ export default class OSSAttributeText extends Component<OSSAttributeTextArgs> {
   }
 
   get value(): string | undefined {
-    return this.args.value ?? '-';
+    return this.args.value === undefined || this.args.value.length === 0 ? '-' : this.args.value;
   }
 
-  get copyable(): boolean | undefined {
-    return this.args.copyable ?? false;
+  get copyable(): boolean {
+    return !!(this.args.copyable && this.args.value && this.args.value.length > 0);
   }
 }
