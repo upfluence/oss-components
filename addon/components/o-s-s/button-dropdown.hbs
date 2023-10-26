@@ -16,6 +16,7 @@
 
   {{#if this.displayDropdown}}
     <div class="oss-button-dropdown__items"
+         {{on "click" this.toggleDropdown}}
          {{did-insert this.setupChildrenClickHandler}}
          {{will-destroy this.teardownChildrenClickHandler}}
          {{on-click-outside this.onClickOutside useCapture=true}}>
