@@ -21,6 +21,10 @@
   </OSS::Layout::Sidebar>
 
   <div style="width:100%; height:100vh; overflow: auto;">
+    <div class="fx-1 fx-col fx-gap-px-9">
+      <OSS::Attribute::Country @countryCode="US" />
+      <OSS::Attribute::Country @countryCode="" />
+    </div>
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
       <OSS::EmailInput @value={{this.emailInputValue}} @onChange={{this.onEmailInputChange}} />
     </div>

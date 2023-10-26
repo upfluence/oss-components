@@ -16,7 +16,7 @@
 
 <table class="upf-datatable__table">
   <thead>
-    {{#upf-table/row isHeaderRow=true}}
+    <UpfTable::Row @isHeaderRow={{true}}>
       {{#if this.hasSelection}}
         {{#unless this.contentChanging}}
           <th width="45px" class="upf-datatable__column upf-datatable__column--unsortable">
@@ -32,7 +32,7 @@
           {{upf-table/header_cell column=column click=(action "onClickHeader" column)}}
         {{/unless}}
       {{/each}}
-    {{/upf-table/row}}
+    </UpfTable::Row>
   </thead>
 
   <tbody>
@@ -45,20 +45,18 @@
     {{else}}
       {{#if this.contentChanging}}
         {{#each this._contentPlaceholder}}
-          {{#upf-table/row}}
+          <UpfTable::Row>
             <td valign="middle" class="upf-datatable__column upf-datatable__column--locked">
               <div class="skeleton-placeholder"></div>
             </td>
             <td valign="middle" class="upf-datatable__column upf-datatable__column--locked">
               <div class="skeleton-placeholder"></div>
             </td>
-          {{/upf-table/row}}
+          </UpfTable::Row>
         {{/each}}
       {{else}}
         {{#each collection as |item index|}}
-          {{#upf-table/row ref=item action='callOnRowClickCallback'
-                           hasPolymorphicColumns=this.hasPolymorphicColumns
-                           onRowClick=this.onRowClick}}
+          <UpfTable::Row @ref={{item}} @action="callOnRowClickCallback" @hasPolymorphicColumns={{this.hasPolymorphicColumns}} @onRowClick={{this.onRowClick}}>
             {{#if this.hasSelection}}
               <td class="upf-datatable__column upf-datatable__column--uneditable">
                 <OSS::Checkbox
@@ -68,8 +66,7 @@
 
             {{#each this._columns as |column|}}
               {{#unless (eq column.visible false)}}
-                {{#upf-table/column ref=column editable=column.editable
-                                    classNames=column.additionalClasses}}
+                <UpfTable::Column @ref={{column}} @editable={{column.editable}} @classNames={{column.additionalClasses}}>
                   {{#if column.component}}
                     {{component column.component item=item column=column}}
                   {{else}}
@@ -87,10 +84,10 @@
                       {{/if}}
                     {{/if}}
                   {{/if}}
-                {{/upf-table/column}}
+                </UpfTable::Column>
               {{/unless}}
             {{/each}}
-          {{/upf-table/row}}
+          </UpfTable::Row>
         {{else}}
           <tr>
             <td colspan={{this._fullSizeColumnColspan}} class="upf-align--center">
