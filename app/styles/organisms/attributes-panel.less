@@ -1,0 +1,18 @@
+.attributes-panel {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--spacing-px-12);
+
+  &__container {
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--border-radius-md);
+    background-color: var(--color-white);
+    padding: var(--spacing-px-18);
+    transition: all 0.25s ease-in-out;
+
+    &--edition {
+      box-shadow: 0 0 0 2px var(--color-primary-100), var(--box-shadow-xs);
+    }
+  }
+}
