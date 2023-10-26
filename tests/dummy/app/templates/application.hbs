@@ -33,14 +33,14 @@
       <OSS::Copy @value="I am the value copied" />
     </div>
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
-      <OSS::Attribute::Text @label="Label with tooltip copyable" @value="Hello World" @copyable={{true}}
+      <OSS::Attribute::Text @label="Label with tooltip copyable" @value="Hello World"
                             @tooltip="Hello World" />
-      <OSS::Attribute::Text @label="Label not copyable with tooltip" @value="Hello World" @tooltip="Hello World" />
-      <OSS::Attribute::Text @label="Label copyable & no value" @copyable={{true}} @value={{this.testText}} />
+      <OSS::Attribute::Text @label="Label copyable" @value="Hello World" @tooltip="Hello World" />
     </div>
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
-      <OSS::Attribute::Text @label="Label not copyable" @value="Hello World" />
-      <OSS::Attribute::Text @label="Label not copyable with tooltip" @value="Hello World" @tooltip="Hello World" />
+      <OSS::Attribute::Text @label="Label not copyable" @value="Hello World" @copyable={{false}} />
+      <OSS::Attribute::Text @label="Label not copyable with tooltip" @value="Hello World" @tooltip="Hello World"
+                            @copyable={{false}} />
     </div>
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
       <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />

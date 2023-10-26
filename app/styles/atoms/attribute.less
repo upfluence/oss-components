@@ -1,5 +1,6 @@
 .oss-attribute {
   height: 24px;
+  min-height: 24px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -8,6 +9,7 @@
   padding-right: var(--spacing-px-9);
   gap: var(--spacing-px-9);
   border-radius: var(--border-radius-sm);
+  transition: all 0.25s ease-in-out;
 
   &__label {
     display: flex;
@@ -16,14 +18,22 @@
     align-items: center;
     justify-content: start;
     gap: var(--spacing-px-6);
+    &__info {
+      align-items: center;
+      cursor: pointer;
+    }
   }
 
   &__value {
     color: var(--color-gray-900);
     flex: 1;
   }
-}
 
-.oss-attribute:hover {
-  background: var(--color-gray-50);
+  &:hover {
+    background: var(--color-gray-50);
+  }
+
+  &__copy {
+    margin-left: auto;
+  }
 }

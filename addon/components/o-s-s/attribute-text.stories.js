@@ -52,7 +52,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A text component designed to have a label , a value & a copy value button'
+        component: 'A text component designed to have a label, a value & a copy value button'
       },
       iframeHeight: 150
     }
