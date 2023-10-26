@@ -13609,6 +13609,24 @@ a.upf-btn--sm {
   height: var(--spacing-px-24);
   width: var(--spacing-px-24);
 }
+.oss-copy--inline {
+  border: 0;
+  background-color: transparent;
+  color: var(--color-gray-500);
+  height: var(--spacing-px-24);
+  width: var(--spacing-px-24);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+}
+.oss-copy--inline:hover {
+  color: var(--color-gray-900);
+  border: 0;
+  background-color: transparent;
+  box-shadow: none;
+}
 .oss-radio-btn {
   height: var(--spacing-px-18);
   width: var(--spacing-px-18);

@@ -87659,7 +87659,7 @@ define("@upfluence/oss-components/components/o-s-s/content-panel", ["exports", "
 });
 ;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@ember/object", "@ember/service"], function (_exports, _component, _templateFactory, _component2, _object, _service) {
+define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@ember/object", "@glimmer/tracking", "@ember/service"], function (_exports, _component, _templateFactory, _component2, _object, _tracking, _service) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -87667,7 +87667,7 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
   });
   _exports.default = void 0;
 
-  var _class, _descriptor, _descriptor2;
+  var _class, _descriptor, _descriptor2, _descriptor3;
 
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
 
@@ -87699,13 +87699,18 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
 
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <OSS::Button @icon="far fa-copy" @square={{true}} @size="sm" {{on "click" this.copy}}
+    {{#if this.inline}}
+    <OSS::Icon @icon="fa-copy" class="oss-copy--inline" {{on "click" this.copy}}
                {{enable-tooltip placement="top" title=(t "oss-components.copy.tooltip") trigger="hover"}} />
+  {{else}}
+    <OSS::Button @icon="far fa-copy" @square={{true}} @size="sm" {{on "click" this.copy}}
+                 {{enable-tooltip placement="top" title=(t "oss-components.copy.tooltip") trigger="hover"}} />
+  {{/if }}
   
   */
   {
-    "id": "+7kVn7Cl",
-    "block": "[[[8,[39,0],[[4,[38,1],[\"click\",[30,0,[\"copy\"]]],null],[4,[38,2],null,[[\"placement\",\"title\",\"trigger\"],[\"top\",[28,[37,3],[\"oss-components.copy.tooltip\"],null],\"hover\"]]]],[[\"@icon\",\"@square\",\"@size\"],[\"far fa-copy\",true,\"sm\"]],null],[1,\"\\n\"]],[],false,[\"o-s-s/button\",\"on\",\"enable-tooltip\",\"t\"]]",
+    "id": "zUdAAoVx",
+    "block": "[[[41,[30,0,[\"inline\"]],[[[1,\"  \"],[8,[39,1],[[24,0,\"oss-copy--inline\"],[4,[38,2],[\"click\",[30,0,[\"copy\"]]],null],[4,[38,3],null,[[\"placement\",\"title\",\"trigger\"],[\"top\",[28,[37,4],[\"oss-components.copy.tooltip\"],null],\"hover\"]]]],[[\"@icon\"],[\"fa-copy\"]],null],[1,\"\\n\"]],[]],[[[1,\"  \"],[8,[39,5],[[4,[38,2],[\"click\",[30,0,[\"copy\"]]],null],[4,[38,3],null,[[\"placement\",\"title\",\"trigger\"],[\"top\",[28,[37,4],[\"oss-components.copy.tooltip\"],null],\"hover\"]]]],[[\"@icon\",\"@square\",\"@size\"],[\"far fa-copy\",true,\"sm\"]],null],[1,\"\\n\"]],[]]]],[],false,[\"if\",\"o-s-s/icon\",\"on\",\"enable-tooltip\",\"t\",\"o-s-s/button\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/copy.hbs",
     "isStrictMode": false
   });
@@ -87729,6 +87734,8 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
       _initializerDefineProperty(_assertThisInitialized(_this), "intl", _descriptor, _assertThisInitialized(_this));
 
       _initializerDefineProperty(_assertThisInitialized(_this), "toast", _descriptor2, _assertThisInitialized(_this));
+
+      _initializerDefineProperty(_assertThisInitialized(_this), "inline", _descriptor3, _assertThisInitialized(_this));
 
       return _this;
     }
@@ -87758,6 +87765,15 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
     enumerable: true,
     writable: true,
     initializer: null
+  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "inline", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      var _this$args$inline;
+
+      return (_this$args$inline = this.args.inline) !== null && _this$args$inline !== void 0 ? _this$args$inline : false;
+    }
   }), _applyDecoratedDescriptor(_class.prototype, "copy", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "copy"), _class.prototype)), _class);
   _exports.default = OSSCopy;
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSCopy);
@@ -87789,6 +87805,23 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
         control: {
           type: 'text'
         }
+      },
+      inline: {
+        type: {
+          name: 'boolean'
+        },
+        description: 'Set to true for inline copy',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
       }
     },
     parameters: {
@@ -87802,18 +87835,19 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
   };
   _exports.default = _default;
   var defaultArgs = {
-    value: 'Your copied value'
+    value: 'Your copied value',
+    inline: false
   };
 
   var BasicUsageTemplate = function BasicUsageTemplate(args) {
     return {
       template: (0, _templateFactory.createTemplateFactory)(
       /*
-        <div class="fx-col"><OSS::Copy @value={{this.value}} /></div>
+        <div class="fx-col"><OSS::Copy @value={{this.value}} @inline={{this.inline}}/></div>
       */
       {
-        "id": "orl/KefT",
-        "block": "[[[10,0],[14,0,\"fx-col\"],[12],[8,[39,0],null,[[\"@value\"],[[30,0,[\"value\"]]]],null],[13]],[],false,[\"o-s-s/copy\"]]",
+        "id": "fgJSuEWx",
+        "block": "[[[10,0],[14,0,\"fx-col\"],[12],[8,[39,0],null,[[\"@value\",\"@inline\"],[[30,0,[\"value\"]],[30,0,[\"inline\"]]]],null],[13]],[],false,[\"o-s-s/copy\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -108438,36 +108472,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-1979GBYgGn8irrwE/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-1979GBYgGn8irrwE/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1979GBYgGn8irrwE/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-1979GBYgGn8irrwE/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-1979GBYgGn8irrwE/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1979GBYgGn8irrwE/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-1979GBYgGn8irrwE/cache-275-bundler/staging/l.js /tmp/broccoli-1979GBYgGn8irrwE/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/l.js /tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-1979GBYgGn8irrwE/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1979GBYgGn8irrwE/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1979GBYgGn8irrwE/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1979GBYgGn8irrwE/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1979GBYgGn8irrwE/cache-275-bundler/staging/l.js_/tmp/broccoli-1979GBYgGn8irrwE/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/l.js_/tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 

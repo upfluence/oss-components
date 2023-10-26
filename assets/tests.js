@@ -4364,10 +4364,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["@ember/template
                   return (0, _testHelpers.click)('.upf-btn--default');
 
                 case 5:
-                  assert.dom('.upf-btn--default').hasText(this.intlService.t('oss-components.button.cancel_message', {
-                    time: 0.05
-                  }));
-                  _context21.next = 8;
+                  _context21.next = 7;
                   return (0, _testHelpers.waitUntil)(function () {
                     var _document$querySelect, _document$querySelect2;
 
@@ -4376,10 +4373,10 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["@ember/template
                     timeout: 1000
                   });
 
-                case 8:
+                case 7:
                   assert.true(this.callback.calledOnce);
 
-                case 9:
+                case 8:
                 case "end":
                   return _context21.stop();
               }
@@ -5855,13 +5852,46 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["@ember/template-f
         return _ref2.apply(this, arguments);
       };
     }());
-    (0, _qunit.test)('the tooltip has correct wording', /*#__PURE__*/function () {
+    (0, _qunit.test)('it renders when inline value is specified', /*#__PURE__*/function () {
       var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
         return regeneratorRuntime.wrap(function _callee2$(_context2) {
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
                 _context2.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Copy @inline={{true}} />
+                */
+                {
+                  "id": "nSNPh4A4",
+                  "block": "[[[8,[39,0],null,[[\"@inline\"],[true]],null]],[],false,[\"o-s-s/copy\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-copy--inline').exists();
+
+              case 3:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function (_x2) {
+        return _ref3.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('the tooltip has correct wording', /*#__PURE__*/function () {
+      var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Copy />
@@ -5874,19 +5904,19 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["@ember/template-f
                 }));
 
               case 2:
-                _context2.next = 4;
+                _context3.next = 4;
                 return assert.tooltip('.upf-btn--default').hasTitle('Copy');
 
               case 4:
               case "end":
-                return _context2.stop();
+                return _context3.stop();
             }
           }
-        }, _callee2);
+        }, _callee3);
       }));
 
-      return function (_x2) {
-        return _ref3.apply(this, arguments);
+      return function (_x3) {
+        return _ref4.apply(this, arguments);
       };
     }());
     (0, _qunit.module)('when clicking', function (hooks) {
@@ -5897,56 +5927,15 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["@ember/template-f
         _sinon.default.restore();
       });
       (0, _qunit.test)('the info toast is rendered', /*#__PURE__*/function () {
-        var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
-          var toastInfoStub;
-          return regeneratorRuntime.wrap(function _callee3$(_context3) {
-            while (1) {
-              switch (_context3.prev = _context3.next) {
-                case 0:
-                  _sinon.default.stub(navigator.clipboard, 'writeText').resolves();
-
-                  toastInfoStub = _sinon.default.stub(this.toastService, 'info').resolves();
-                  _context3.next = 4;
-                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-                  /*
-                    <OSS::Copy @value="test" />
-                  */
-                  {
-                    "id": "sxKYnsUK",
-                    "block": "[[[8,[39,0],null,[[\"@value\"],[\"test\"]],null]],[],false,[\"o-s-s/copy\"]]",
-                    "moduleName": "(unknown template module)",
-                    "isStrictMode": false
-                  }));
-
-                case 4:
-                  _context3.next = 6;
-                  return (0, _testHelpers.click)('.upf-btn--default');
-
-                case 6:
-                  assert.true(toastInfoStub.calledOnceWithExactly('Successfully copied to your clipboard.', 'Copied to clipboard'));
-
-                case 7:
-                case "end":
-                  return _context3.stop();
-              }
-            }
-          }, _callee3, this);
-        }));
-
-        return function (_x3) {
-          return _ref4.apply(this, arguments);
-        };
-      }());
-      (0, _qunit.test)('the error toast is rendered', /*#__PURE__*/function () {
         var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
-          var toastErrorStub;
+          var toastInfoStub;
           return regeneratorRuntime.wrap(function _callee4$(_context4) {
             while (1) {
               switch (_context4.prev = _context4.next) {
                 case 0:
-                  _sinon.default.stub(navigator.clipboard, 'writeText').rejects();
+                  _sinon.default.stub(navigator.clipboard, 'writeText').resolves();
 
-                  toastErrorStub = _sinon.default.stub(this.toastService, 'error').resolves();
+                  toastInfoStub = _sinon.default.stub(this.toastService, 'info').resolves();
                   _context4.next = 4;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
@@ -5964,7 +5953,7 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["@ember/template-f
                   return (0, _testHelpers.click)('.upf-btn--default');
 
                 case 6:
-                  assert.true(toastErrorStub.calledOnceWithExactly('Failed to copy to your clipboard. Please try again.', 'Error'));
+                  assert.true(toastInfoStub.calledOnceWithExactly('Successfully copied to your clipboard.', 'Copied to clipboard'));
 
                 case 7:
                 case "end":
@@ -5978,19 +5967,60 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["@ember/template-f
           return _ref5.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('the clipboard writeText method is called', /*#__PURE__*/function () {
+      (0, _qunit.test)('the error toast is rendered', /*#__PURE__*/function () {
         var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(assert) {
-          var writeTextStub;
+          var toastErrorStub;
           return regeneratorRuntime.wrap(function _callee5$(_context5) {
             while (1) {
               switch (_context5.prev = _context5.next) {
+                case 0:
+                  _sinon.default.stub(navigator.clipboard, 'writeText').rejects();
+
+                  toastErrorStub = _sinon.default.stub(this.toastService, 'error').resolves();
+                  _context5.next = 4;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Copy @value="test" />
+                  */
+                  {
+                    "id": "sxKYnsUK",
+                    "block": "[[[8,[39,0],null,[[\"@value\"],[\"test\"]],null]],[],false,[\"o-s-s/copy\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 4:
+                  _context5.next = 6;
+                  return (0, _testHelpers.click)('.upf-btn--default');
+
+                case 6:
+                  assert.true(toastErrorStub.calledOnceWithExactly('Failed to copy to your clipboard. Please try again.', 'Error'));
+
+                case 7:
+                case "end":
+                  return _context5.stop();
+              }
+            }
+          }, _callee5, this);
+        }));
+
+        return function (_x5) {
+          return _ref6.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('the clipboard writeText method is called', /*#__PURE__*/function () {
+        var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(assert) {
+          var writeTextStub;
+          return regeneratorRuntime.wrap(function _callee6$(_context6) {
+            while (1) {
+              switch (_context6.prev = _context6.next) {
                 case 0:
                   writeTextStub = _sinon.default.stub(navigator.clipboard, 'writeText').resolves();
 
                   _sinon.default.stub(this.toastService, 'info').resolves();
 
                   this.textForCopy = 'test';
-                  _context5.next = 5;
+                  _context6.next = 5;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     <OSS::Copy @value={{this.textForCopy}} />
@@ -6003,7 +6033,7 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["@ember/template-f
                   }));
 
                 case 5:
-                  _context5.next = 7;
+                  _context6.next = 7;
                   return (0, _testHelpers.click)('.upf-btn--default');
 
                 case 7:
@@ -6011,14 +6041,14 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["@ember/template-f
 
                 case 8:
                 case "end":
-                  return _context5.stop();
+                  return _context6.stop();
               }
             }
-          }, _callee5, this);
+          }, _callee6, this);
         }));
 
-        return function (_x5) {
-          return _ref6.apply(this, arguments);
+        return function (_x6) {
+          return _ref7.apply(this, arguments);
         };
       }());
     });
