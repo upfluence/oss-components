@@ -4,7 +4,7 @@ import { click, typeIn, render, scrollTo, setupOnerror, triggerKeyEvent } from '
 import hbs from 'htmlbars-inline-precompile';
 import sinon from 'sinon';
 
-function _isFocused(element: HTMLElement): Boolean {
+function _isFocused(element) {
   return element === document.activeElement;
 }
 

@@ -1,6 +1,7 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import { assert } from '@ember/debug';
 
 type Mode = 'view' | 'edition';
 
@@ -8,7 +9,7 @@ interface OSSAttributesPanelArgs {
   title: string;
   icon?: string;
   onSave(): Promise<void>;
-  onEdit?(mode: Mode): void;
+  onEdit?(): void;
   onCancel?(): void;
 }
 
@@ -16,18 +17,17 @@ export default class OSSAttributesPanel extends Component<OSSAttributesPanelArgs
   @tracked modeSelected: Mode = 'view';
   @tracked isLoading: boolean = false;
 
-  get containerClasses(): string {
-    const classes = ['attributes-panel__container'];
-    const modeClass =
-      this.modeSelected === 'view' ? 'attributes-panel__container--view' : 'attributes-panel__container--edition';
-    classes.push(modeClass);
-    return classes.join(' ');
+  constructor(owner: unknown, args: OSSAttributesPanelArgs) {
+    super(owner, args);
+
+    assert('[component][OSS::AttributesPanel] The @title parameter is mandatory', typeof args.title === 'string');
+    assert('[component][OSS::AttributesPanel] The @onSave parameter is mandatory', typeof args.onSave === 'function');
   }
 
   @action
   toggleMode(): void {
     this.modeSelected = this.modeSelected === 'view' ? 'edition' : 'view';
-    this.args.onEdit?.(this.modeSelected);
+    this.args.onEdit?.();
   }
 
   @action

@@ -13,12 +13,13 @@
         {{#if (has-block "contextual-action")}}
           {{yield to="contextual-action"}}
         {{/if}}
-        <OSS::Button @icon="fa-pen" @square={{true}} {{on "click" this.toggleMode}} />
+        <OSS::Button @icon="fa-pen" @square={{true}} {{on "click" this.toggleMode}}
+                     data-control-name="attributes-panel-mode-switch-button" />
       </div>
     {{/if}}
   </div>
 
-  <div class={{this.containerClasses}}>
+  <div class={{concat "attributes-panel__container attributes-panel__container--" this.modeSelected}}>
     {{#if (eq this.modeSelected "view")}}
       {{#if (has-block "view-mode")}}
         {{yield to="view-mode"}}
@@ -28,8 +29,9 @@
         <div class="fx-col fx-gap-px-18">
           {{yield to="edition-mode"}}
           <div class="fx-row fx-gap-px-18 fx-malign-end">
-            <OSS::Button @label="Cancel" {{on "click" this.onCancel}} />
-            <OSS::Button @skin="primary" @label="Save" @loading={{this.isLoading}} {{on "click" this.onSave}} />
+            <OSS::Button @label="Cancel" {{on "click" this.onCancel}} data-control-name="attributes-panel-cancel-button" />
+            <OSS::Button @skin="primary" @label="Save" @loading={{this.isLoading}} {{on "click" this.onSave}}
+                         data-control-name="attributes-panel-save-button" />
           </div>
         </div>
       {{/if}}
