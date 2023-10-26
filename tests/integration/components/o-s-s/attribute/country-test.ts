@@ -16,13 +16,13 @@ module('Integration | Component | o-s-s/attribute/country', function (hooks) {
     test('The flag icon is displayed', async function (assert) {
       await render(hbs`<OSS::Attribute::Country @countryCode="US" />`);
 
-      assert.dom('.oss-attribute--label .fflag-US').exists();
+      assert.dom('.oss-attribute__label .fflag-US').exists();
     });
 
     test('The country name is displayed', async function (assert) {
       await render(hbs`<OSS::Attribute::Country @countryCode="US" />`);
 
-      assert.dom('.oss-attribute--value').hasText('United States');
+      assert.dom('.oss-attribute__value').hasText('United States');
     });
   });
 
@@ -30,13 +30,13 @@ module('Integration | Component | o-s-s/attribute/country', function (hooks) {
     test('The flag icon is not displayed', async function (assert) {
       await render(hbs`<OSS::Attribute::Country @countryCode="" />`);
 
-      assert.dom('.oss-attribute--label .fflag').doesNotExist();
+      assert.dom('.oss-attribute__label .fflag').doesNotExist();
     });
 
     test('The empty state is displayed', async function (assert) {
       await render(hbs`<OSS::Attribute::Country />`);
 
-      assert.dom('.oss-attribute--value').hasText('-');
+      assert.dom('.oss-attribute__value').hasText('-');
     });
   });
 });
