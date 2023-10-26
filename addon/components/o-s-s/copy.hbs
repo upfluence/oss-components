@@ -1,3 +1,7 @@
-<OSS::Button class={{if this.inline 'oss-copy--inline'}}
-             @icon="far fa-copy" @square={{true}} @size="sm" {{on "click" this.copy}}
+{{#if this.inline}}
+  <OSS::Icon @icon="fa-copy" class="oss-copy--inline" {{on "click" this.copy}}
              {{enable-tooltip placement="top" title=(t "oss-components.copy.tooltip") trigger="hover"}} />
+{{else}}
+  <OSS::Button @icon="far fa-copy" @square={{true}} @size="sm" {{on "click" this.copy}}
+               {{enable-tooltip placement="top" title=(t "oss-components.copy.tooltip") trigger="hover"}} />
+{{/if }}
