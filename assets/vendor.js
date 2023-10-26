@@ -86084,6 +86084,7 @@ define("@upfluence/oss-components/components/o-s-s/button-dropdown", ["exports",
   
     {{#if this.displayDropdown}}
       <div class="oss-button-dropdown__items"
+           {{on "click" this.toggleDropdown}}
            {{did-insert this.setupChildrenClickHandler}}
            {{will-destroy this.teardownChildrenClickHandler}}
            {{on-click-outside this.onClickOutside useCapture=true}}>
@@ -86094,8 +86095,8 @@ define("@upfluence/oss-components/components/o-s-s/button-dropdown", ["exports",
   
   */
   {
-    "id": "4DYDndOW",
-    "block": "[[[11,0],[24,0,\"oss-button-dropdown\"],[17,1],[12],[1,\"\\n  \"],[11,0],[24,0,\"oss-button-dropdown__trigger fx-row fx-xalign-center\"],[16,\"role\",[52,[51,[30,2]],\"button\"]],[4,[38,1],[\"click\",[30,0,[\"onDropdownClick\"]]],null],[12],[1,\"\\n    \"],[11,0],[24,0,\"fx-row fx-xalign-center fx-gap-px-6\"],[16,\"role\",[52,[30,2],\"button\"]],[4,[38,1],[\"click\",[30,0,[\"onMainAction\"]]],null],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"        \"],[8,[39,3],null,[[\"@style\",\"@icon\"],[[28,[37,4],[[30,3]],null],[28,[37,5],[[30,3]],null]]],null],[1,\"\\n\"]],[]],null],[41,[30,4],[[[1,\"        \"],[10,1],[12],[1,[30,4]],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n    \"],[11,0],[24,0,\"fx-row fx-xalign-center\"],[16,\"role\",[52,[30,2],\"button\"]],[4,[38,1],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@icon\"],[[29,[\"fa-caret-\",[52,[30,0,[\"displayDropdown\"]],\"up\",\"down\"]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displayDropdown\"]],[[[1,\"    \"],[11,0],[24,0,\"oss-button-dropdown__items\"],[4,[38,6],[[30,0,[\"setupChildrenClickHandler\"]]],null],[4,[38,7],[[30,0,[\"teardownChildrenClickHandler\"]]],null],[4,[38,8],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[true]]],[12],[1,\"\\n      \"],[18,5,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@mainAction\",\"@icon\",\"@label\",\"&items\"],false,[\"unless\",\"on\",\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"did-insert\",\"will-destroy\",\"on-click-outside\",\"yield\"]]",
+    "id": "RNtgbs6L",
+    "block": "[[[11,0],[24,0,\"oss-button-dropdown\"],[17,1],[12],[1,\"\\n  \"],[11,0],[24,0,\"oss-button-dropdown__trigger fx-row fx-xalign-center\"],[16,\"role\",[52,[51,[30,2]],\"button\"]],[4,[38,1],[\"click\",[30,0,[\"onDropdownClick\"]]],null],[12],[1,\"\\n    \"],[11,0],[24,0,\"fx-row fx-xalign-center fx-gap-px-6\"],[16,\"role\",[52,[30,2],\"button\"]],[4,[38,1],[\"click\",[30,0,[\"onMainAction\"]]],null],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"        \"],[8,[39,3],null,[[\"@style\",\"@icon\"],[[28,[37,4],[[30,3]],null],[28,[37,5],[[30,3]],null]]],null],[1,\"\\n\"]],[]],null],[41,[30,4],[[[1,\"        \"],[10,1],[12],[1,[30,4]],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n    \"],[11,0],[24,0,\"fx-row fx-xalign-center\"],[16,\"role\",[52,[30,2],\"button\"]],[4,[38,1],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@icon\"],[[29,[\"fa-caret-\",[52,[30,0,[\"displayDropdown\"]],\"up\",\"down\"]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displayDropdown\"]],[[[1,\"    \"],[11,0],[24,0,\"oss-button-dropdown__items\"],[4,[38,1],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[4,[38,6],[[30,0,[\"setupChildrenClickHandler\"]]],null],[4,[38,7],[[30,0,[\"teardownChildrenClickHandler\"]]],null],[4,[38,8],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[true]]],[12],[1,\"\\n      \"],[18,5,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@mainAction\",\"@icon\",\"@label\",\"&items\"],false,[\"unless\",\"on\",\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"did-insert\",\"will-destroy\",\"on-click-outside\",\"yield\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/button-dropdown.hbs",
     "isStrictMode": false
   });
@@ -108472,36 +108473,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-1939D5BTygCeFFjj/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-1939D5BTygCeFFjj/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1939D5BTygCeFFjj/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-1939D5BTygCeFFjj/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-1939D5BTygCeFFjj/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1939D5BTygCeFFjj/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/l.js /tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-1939D5BTygCeFFjj/cache-275-bundler/staging/l.js /tmp/broccoli-1939D5BTygCeFFjj/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/l.js_/tmp/broccoli-1911YJpw8eCGunGQ/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-1939D5BTygCeFFjj/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1939D5BTygCeFFjj/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1939D5BTygCeFFjj/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1939D5BTygCeFFjj/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1939D5BTygCeFFjj/cache-275-bundler/staging/l.js_/tmp/broccoli-1939D5BTygCeFFjj/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 

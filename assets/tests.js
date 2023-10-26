@@ -3571,17 +3571,116 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["@ember
         };
       }());
     });
-    (0, _qunit.module)('Error management', function () {
-      (0, _qunit.test)('it throws an error if no icon or label args is provided', /*#__PURE__*/function () {
+    (0, _qunit.module)('When the dropdown is opened', function (hooks) {
+      hooks.beforeEach(function () {
+        this.mainAction = _sinon.default.stub();
+      });
+      (0, _qunit.test)('Clicking on an item should close the dropdown', /*#__PURE__*/function () {
         var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(assert) {
           return regeneratorRuntime.wrap(function _callee10$(_context10) {
             while (1) {
               switch (_context10.prev = _context10.next) {
                 case 0:
+                  _context10.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}>
+                                <:items>
+                                  <div class="oss-button-dropdown__item">foo</div>
+                                </:items>
+                              </OSS::ButtonDropdown>
+                  */
+                  {
+                    "id": "Z2UQskzd",
+                    "block": "[[[8,[39,0],null,[[\"@icon\",\"@label\",\"@mainAction\"],[\"far fa-users\",\"label\",[30,0,[\"mainAction\"]]]],[[\"items\"],[[[[1,\"\\n                \"],[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"foo\"],[13],[1,\"\\n              \"]],[]]]]]],[],false,[\"o-s-s/button-dropdown\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  _context10.next = 4;
+                  return (0, _testHelpers.click)('.oss-button-dropdown__trigger .fx-row:last-child');
+
+                case 4:
+                  _context10.next = 6;
+                  return (0, _testHelpers.click)('.oss-button-dropdown__items .oss-button-dropdown__item');
+
+                case 6:
+                  assert.dom('.oss-button-dropdown__items .oss-button-dropdown__item').doesNotExist();
+
+                case 7:
+                case "end":
+                  return _context10.stop();
+              }
+            }
+          }, _callee10);
+        }));
+
+        return function (_x10) {
+          return _ref11.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('Clicking on an item with stopPropagation should keep the dropdown opened', /*#__PURE__*/function () {
+        var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(assert) {
+          return regeneratorRuntime.wrap(function _callee11$(_context11) {
+            while (1) {
+              switch (_context11.prev = _context11.next) {
+                case 0:
+                  this.stopPropagation = function (e) {
+                    e.stopPropagation();
+                  };
+
+                  _context11.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}>
+                                <:items>
+                                  <div class="oss-button-dropdown__item" {{on "click" this.stopPropagation}}>bar</div>
+                                </:items>
+                              </OSS::ButtonDropdown>
+                  */
+                  {
+                    "id": "6Pn23fQg",
+                    "block": "[[[8,[39,0],null,[[\"@icon\",\"@label\",\"@mainAction\"],[\"far fa-users\",\"label\",[30,0,[\"mainAction\"]]]],[[\"items\"],[[[[1,\"\\n                \"],[11,0],[24,0,\"oss-button-dropdown__item\"],[4,[38,1],[\"click\",[30,0,[\"stopPropagation\"]]],null],[12],[1,\"bar\"],[13],[1,\"\\n              \"]],[]]]]]],[],false,[\"o-s-s/button-dropdown\",\"on\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  _context11.next = 5;
+                  return (0, _testHelpers.click)('.oss-button-dropdown__trigger .fx-row:last-child');
+
+                case 5:
+                  _context11.next = 7;
+                  return (0, _testHelpers.click)('.oss-button-dropdown__items .oss-button-dropdown__item');
+
+                case 7:
+                  assert.dom('.oss-button-dropdown__items .oss-button-dropdown__item').exists();
+
+                case 8:
+                case "end":
+                  return _context11.stop();
+              }
+            }
+          }, _callee11, this);
+        }));
+
+        return function (_x11) {
+          return _ref12.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('Error management', function () {
+      (0, _qunit.test)('it throws an error if no icon or label args is provided', /*#__PURE__*/function () {
+        var _ref13 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(assert) {
+          return regeneratorRuntime.wrap(function _callee12$(_context12) {
+            while (1) {
+              switch (_context12.prev = _context12.next) {
+                case 0:
                   (0, _testHelpers.setupOnerror)(function (err) {
                     assert.equal(err.message, 'Assertion Failed: [component][OSS::ButtonDropdown] You must pass either a @label or an @icon argument.');
                   });
-                  _context10.next = 3;
+                  _context12.next = 3;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     <OSS::ButtonDropdown><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>
@@ -3595,26 +3694,26 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["@ember
 
                 case 3:
                 case "end":
-                  return _context10.stop();
+                  return _context12.stop();
               }
             }
-          }, _callee10);
+          }, _callee12);
         }));
 
-        return function (_x10) {
-          return _ref11.apply(this, arguments);
+        return function (_x12) {
+          return _ref13.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('it throws an error if mainAction exists and is not a function', /*#__PURE__*/function () {
-        var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(assert) {
-          return regeneratorRuntime.wrap(function _callee11$(_context11) {
+        var _ref14 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13(assert) {
+          return regeneratorRuntime.wrap(function _callee13$(_context13) {
             while (1) {
-              switch (_context11.prev = _context11.next) {
+              switch (_context13.prev = _context13.next) {
                 case 0:
                   (0, _testHelpers.setupOnerror)(function (err) {
                     assert.equal(err.message, 'Assertion Failed: [component][OSS::ButtonDropdown] The parameter @mainAction should be a function.');
                   });
-                  _context11.next = 3;
+                  _context13.next = 3;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     <OSS::ButtonDropdown  @label="test" @mainAction="foo" ><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>
@@ -3628,14 +3727,14 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["@ember
 
                 case 3:
                 case "end":
-                  return _context11.stop();
+                  return _context13.stop();
               }
             }
-          }, _callee11);
+          }, _callee13);
         }));
 
-        return function (_x11) {
-          return _ref12.apply(this, arguments);
+        return function (_x13) {
+          return _ref14.apply(this, arguments);
         };
       }());
     });
