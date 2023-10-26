@@ -2,13 +2,13 @@
      {{on "mouseenter" (fn (mut this.displayCopyBtn) true)}}
      {{on "mouseleave" (fn (mut this.displayCopyBtn) false)}}
      data-control-name="attribute-country" ...attributes>
-  <div class="oss-attribute--label">
+  <div class="oss-attribute__label">
     <span>{{t "oss-components.attribute.country"}}</span>
     {{#if (not-eq this.countryName "-")}}
       <div class="fflag fflag-{{@countryCode}} ff-round ff-sm"></div>
     {{/if}}
   </div>
-  <span class="oss-attribute--value">
+  <span class="oss-attribute__value">
     {{this.countryName}}
   </span>
   {{#if (and this.displayCopyBtn (not-eq this.countryName "-"))}}
