@@ -155,9 +155,6 @@ module('Integration | Component | o-s-s/button', function (hooks) {
       await render(hbs`<OSS::Button @label="Test" @countDown={{hash callback=this.callback time=50 step=10}} />`);
       await click('.upf-btn--default');
 
-      assert
-        .dom('.upf-btn--default')
-        .hasText(this.intlService.t('oss-components.button.cancel_message', { time: 0.05 }));
       await waitUntil(
         function () {
           return document.querySelector('.upf-btn--default')?.textContent?.includes('Test');

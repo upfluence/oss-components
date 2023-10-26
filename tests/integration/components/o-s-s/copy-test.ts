@@ -13,6 +13,11 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
     assert.dom('.upf-btn--default').exists();
   });
 
+  test('it renders when inline value is specified', async function (assert) {
+    await render(hbs`<OSS::Copy @inline={{true}} />`);
+    assert.dom('.oss-copy--inline').exists();
+  });
+
   test('the tooltip has correct wording', async function (assert) {
     await render(hbs`<OSS::Copy />`);
 

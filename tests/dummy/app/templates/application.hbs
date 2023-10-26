@@ -24,7 +24,10 @@
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
       <OSS::EmailInput @value={{this.emailInputValue}} @onChange={{this.onEmailInputChange}} />
     </div>
-
+    <div class="fx-row fx-1 fx-gap-px-10 margin-md">
+      <OSS::Copy @value="I am the value copied" @inline={{true}} />
+      <OSS::Copy @value="I am the value copied" />
+    </div>
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
       <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
       <OSS::TogglableSection @title="This is a title" @subtitle="This is a subtitle" @toggled={{this.togglable}}

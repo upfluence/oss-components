@@ -14,6 +14,17 @@ export default {
         defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
+    },
+    inline: {
+      type: { name: 'boolean' },
+      description: 'Set to true for inline copy',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: false }
+      },
+      control: { type: 'boolean' }
     }
   },
   parameters: {
@@ -27,11 +38,12 @@ export default {
 };
 
 const defaultArgs = {
-  value: 'Your copied value'
+  value: 'Your copied value',
+  inline: false
 };
 
 const BasicUsageTemplate = (args) => ({
-  template: hbs`<div class="fx-col"><OSS::Copy @value={{this.value}} /></div>`,
+  template: hbs`<div class="fx-col"><OSS::Copy @value={{this.value}} @inline={{this.inline}}/></div>`,
   context: args
 });
 
