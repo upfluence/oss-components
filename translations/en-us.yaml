@@ -1,6 +1,6 @@
 oss-components:
   upf-table:
-    pagination: "{from} to {to} out of {total} {item_name}"
+    pagination: '{from} to {to} out of {total} {item_name}'
   badge:
     image_alt: Badge Icon
   infinite-select:
@@ -45,7 +45,7 @@ oss-components:
         description: The uploaded file format is not allowed
       filesize:
         title: File size too large
-        description: "The maximum file size is {max_filesize}"
+        description: 'The maximum file size is {max_filesize}'
   url-input:
     default_format_error: This is not a valid URL.
   copy:
@@ -58,5 +58,5 @@ oss-components:
       subtitle: Failed to copy to your clipboard. Please try again.
   access-panel:
     search_placeholder: Search...
-  attribute: 
+  attribute:
     country: Country
