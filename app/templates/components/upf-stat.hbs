@@ -5,7 +5,7 @@
     {{#if (eq iconPlacement "top")}}
       <span class="upf-stat__icon" {{enable-tooltip title=this.iconLabel}}>
         {{#if iconUrl}}
-          <a href="{{iconUrl}}" target="_blank">
+          <a href="{{iconUrl}}" target="_blank" rel="noopener noreferrer">
             <i class="fa fa-{{icon}} {{iconClass}}"></i>
           </a>
         {{else}}

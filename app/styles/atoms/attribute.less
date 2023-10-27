@@ -1,0 +1,29 @@
+.oss-attribute {
+  height: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  padding-left: var(--spacing-px-9);
+  padding-right: var(--spacing-px-9);
+  gap: var(--spacing-px-9);
+  border-radius: var(--border-radius-sm);
+
+  &__label {
+    display: flex;
+    color: var(--color-gray-400);
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: var(--spacing-px-6);
+  }
+
+  &__value {
+    color: var(--color-gray-900);
+    flex: 1;
+  }
+}
+
+.oss-attribute:hover {
+  background: var(--color-gray-50);
+}
