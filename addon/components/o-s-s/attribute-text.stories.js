@@ -16,7 +16,6 @@ export default {
       control: { type: 'text' }
     },
     value: {
-      type: { required: false },
       description: 'The value of the field',
       table: {
         type: {
@@ -27,7 +26,6 @@ export default {
       control: { type: 'text' }
     },
     tooltip: {
-      type: { required: false },
       description: 'The value of the tooltip',
       table: {
         type: {
@@ -38,7 +36,7 @@ export default {
       control: { type: 'text' }
     },
     copyable: {
-      type: { name: 'boolean', required: false },
+      type: { name: 'boolean' },
       description: 'Set to true to enable copy',
       table: {
         type: {

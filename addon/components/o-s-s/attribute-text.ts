@@ -13,13 +13,14 @@ interface OSSAttributeTextArgs {
 export default class OSSAttributeText extends Component<OSSAttributeTextArgs> {
   @tracked displayCopyBtn = false;
   @tracked copyable = this.args.copyable ?? true;
+
   constructor(owner: unknown, args: OSSAttributeTextArgs) {
     super(owner, args);
     assert(`[component][OSS::Attribute::Text] label is required `, this.args.label);
   }
 
   get value(): string {
-    return isBlank(this.args.value) ? '-' : this.args.value ?? '-';
+    return isBlank(this.args.value) ? '-' : this.args.value!;
   }
 
   get isCopyable(): boolean {
