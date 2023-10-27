@@ -1,0 +1,41 @@
+<div class="attributes-panel" ...attributes>
+  <div class="fx-row fx-malign-space-between">
+    <div class="fx-row fx-gap-px-12 fx-xalign-center">
+      {{#if @icon}}
+        <OSS::Icon class="font-color-primary-500" @icon={{@icon}} />
+      {{/if}}
+      <span class="font-size-md font-weight-semibold">
+        {{@title}}
+      </span>
+    </div>
+    {{#if (eq this.modeSelected "view")}}
+      <div class="fx-row fx-gap-px-6">
+        {{#if (has-block "contextual-action")}}
+          {{yield to="contextual-action"}}
+        {{/if}}
+        <OSS::Button @icon="fa-pen" @square={{true}} {{on "click" this.toggleMode}}
+                     data-control-name="attributes-panel-mode-switch-button" />
+      </div>
+    {{/if}}
+  </div>
+
+  <div class={{concat "attributes-panel__container attributes-panel__container--" this.modeSelected}}>
+    {{#if (eq this.modeSelected "view")}}
+      {{#if (has-block "view-mode")}}
+        {{yield to="view-mode"}}
+      {{/if}}
+    {{else}}
+      {{#if (has-block "edition-mode")}}
+        <div class="fx-col fx-gap-px-18">
+          {{yield to="edition-mode"}}
+          <div class="fx-row fx-gap-px-18 fx-malign-end">
+            <OSS::Button @label={{t "oss-components.attributes_panel.cancel"}} {{on "click" this.onCancel}}
+                         data-control-name="attributes-panel-cancel-button" />
+            <OSS::Button @skin="primary" @label={{t "oss-components.attributes_panel.save"}} @loading={{this.isLoading}}
+                         {{on "click" this.onSave}} data-control-name="attributes-panel-save-button" />
+          </div>
+        </div>
+      {{/if}}
+    {{/if}}
+  </div>
+</div>

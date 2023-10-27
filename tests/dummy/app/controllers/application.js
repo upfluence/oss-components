@@ -357,6 +357,25 @@ export default class ApplicationController extends Controller {
   onCheck(value) {
     this.isChecked = value;
   }
+
+  @action
+  onAttributePanelSave() {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve();
+      }, 300);
+    });
+  }
+
+  @action
+  onAttributePanelCancel() {
+    console.log('Attributes panel cancel');
+  }
+
+  @action
+  onAttributePanelEdit(mode) {
+    console.log(`Attributes panel edition ${mode}`);
+  }
 }
 
 const testScript = `import { module, test } from 'qunit';

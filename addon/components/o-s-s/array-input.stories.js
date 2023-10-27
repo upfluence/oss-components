@@ -50,8 +50,8 @@ export default {
       description:
         'The method that validates the current content of the input. If the result is true, then on enter, the input is added to the values array.',
       table: {
+        category: 'Actions',
         type: {
-          category: 'Actions',
           summary: 'validator?(value: string): boolean'
         }
       }
