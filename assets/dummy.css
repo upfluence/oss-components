@@ -12664,6 +12664,41 @@ For complete information visit: www.freakflagsprite.com
 .country-selector-container .upf-infinite-select .row-selected span {
   color: #1b1e21;
 }
+.oss-attribute {
+  min-height: 24px;
+  max-height: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  padding-left: var(--spacing-px-9);
+  padding-right: var(--spacing-px-9);
+  gap: var(--spacing-px-9);
+  border-radius: var(--border-radius-sm);
+  transition: all 0.25s ease-in-out;
+}
+.oss-attribute__label {
+  display: flex;
+  color: var(--color-gray-400);
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  gap: var(--spacing-px-6);
+}
+.oss-attribute__label__info {
+  align-items: center;
+  cursor: pointer;
+}
+.oss-attribute__value {
+  color: var(--color-gray-900);
+  flex: 1;
+}
+.oss-attribute:hover {
+  background: var(--color-gray-50);
+}
+.oss-attribute__copy {
+  margin-left: auto;
+}
 .upf-square-btn {
   height: 24px;
   width: 24px;
@@ -13613,8 +13648,6 @@ a.upf-btn--sm {
   border: 0;
   background-color: transparent;
   color: var(--color-gray-500);
-  height: var(--spacing-px-24);
-  width: var(--spacing-px-24);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -15004,6 +15037,22 @@ a.upf-btn--sm {
 .oss-panel .oss-panel-content--row--icon-wrapper i {
   font-size: var(--font-size-sm);
   margin: auto;
+}
+.attributes-panel {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--spacing-px-12);
+}
+.attributes-panel__container {
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--border-radius-md);
+  background-color: var(--color-white);
+  padding: var(--spacing-px-18);
+  transition: all 0.25s ease-in-out;
+}
+.attributes-panel__container--edition {
+  box-shadow: 0 0 0 2px var(--color-primary-100), var(--box-shadow-xs);
 }
 @keyframes slide-up {
   0% {

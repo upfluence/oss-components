@@ -2016,6 +2016,1257 @@ define("dummy/tests/integration/components/o-s-s/array-input-test", ["@ember/tem
     }());
   });
 });
+define("dummy/tests/integration/components/o-s-s/attribute-text-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "@ember/test-helpers/dom/trigger-event"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _triggerEvent) {
+  "use strict";
+
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+  function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+  (0, _qunit.module)('Integration | Component | o-s-s/attribute-text', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.module)('Default behavior', function () {
+      (0, _qunit.module)('Render conditions', function () {
+        (0, _qunit.test)('it renders', /*#__PURE__*/function () {
+          var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(assert) {
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                    /*
+                      <OSS::Attribute::Text @label="Hello" @value="World" />
+                    */
+                    {
+                      "id": "rqhVZroa",
+                      "block": "[[[8,[39,0],null,[[\"@label\",\"@value\"],[\"Hello\",\"World\"]],null]],[],false,[\"o-s-s/attribute/text\"]]",
+                      "moduleName": "(unknown template module)",
+                      "isStrictMode": false
+                    }));
+
+                  case 2:
+                    assert.dom('.oss-attribute').exists();
+                    assert.dom('.oss-attribute__label').hasText('Hello');
+                    assert.dom('.oss-attribute__value').hasText('World');
+
+                  case 5:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee);
+          }));
+
+          return function (_x) {
+            return _ref2.apply(this, arguments);
+          };
+        }());
+        (0, _qunit.test)('It renders when the @value is undefined', /*#__PURE__*/function () {
+          var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    _context2.next = 2;
+                    return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                    /*
+                      <OSS::Attribute::Text @label="Hello" />
+                    */
+                    {
+                      "id": "QKfvK1KB",
+                      "block": "[[[8,[39,0],null,[[\"@label\"],[\"Hello\"]],null]],[],false,[\"o-s-s/attribute/text\"]]",
+                      "moduleName": "(unknown template module)",
+                      "isStrictMode": false
+                    }));
+
+                  case 2:
+                    assert.dom('.oss-attribute').exists();
+                    assert.dom('.oss-attribute__value').hasText('-');
+
+                  case 4:
+                  case "end":
+                    return _context2.stop();
+                }
+              }
+            }, _callee2);
+          }));
+
+          return function (_x2) {
+            return _ref3.apply(this, arguments);
+          };
+        }());
+        (0, _qunit.test)('it renders with a tooltip when specified', /*#__PURE__*/function () {
+          var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    _context3.next = 2;
+                    return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                    /*
+                      <OSS::Attribute::Text @label="Hello" @tooltip="Tooltip" />
+                    */
+                    {
+                      "id": "mGb+40fy",
+                      "block": "[[[8,[39,0],null,[[\"@label\",\"@tooltip\"],[\"Hello\",\"Tooltip\"]],null]],[],false,[\"o-s-s/attribute/text\"]]",
+                      "moduleName": "(unknown template module)",
+                      "isStrictMode": false
+                    }));
+
+                  case 2:
+                    assert.dom('.oss-attribute__info').exists();
+                    _context3.next = 5;
+                    return assert.tooltip('.oss-attribute__info').hasTitle('Tooltip');
+
+                  case 5:
+                  case "end":
+                    return _context3.stop();
+                }
+              }
+            }, _callee3);
+          }));
+
+          return function (_x3) {
+            return _ref4.apply(this, arguments);
+          };
+        }());
+        (0, _qunit.test)('it renders a dash as value when no value is specified', /*#__PURE__*/function () {
+          var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+              while (1) {
+                switch (_context4.prev = _context4.next) {
+                  case 0:
+                    _context4.next = 2;
+                    return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                    /*
+                      <OSS::Attribute::Text @label="Hello" />
+                    */
+                    {
+                      "id": "QKfvK1KB",
+                      "block": "[[[8,[39,0],null,[[\"@label\"],[\"Hello\"]],null]],[],false,[\"o-s-s/attribute/text\"]]",
+                      "moduleName": "(unknown template module)",
+                      "isStrictMode": false
+                    }));
+
+                  case 2:
+                    assert.dom('.oss-attribute').exists();
+                    assert.dom('.oss-attribute__value').hasText('-');
+
+                  case 4:
+                  case "end":
+                    return _context4.stop();
+                }
+              }
+            }, _callee4);
+          }));
+
+          return function (_x4) {
+            return _ref5.apply(this, arguments);
+          };
+        }());
+        (0, _qunit.test)('it renders a dash as value when @value is empty', /*#__PURE__*/function () {
+          var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(assert) {
+            return regeneratorRuntime.wrap(function _callee5$(_context5) {
+              while (1) {
+                switch (_context5.prev = _context5.next) {
+                  case 0:
+                    _context5.next = 2;
+                    return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                    /*
+                      <OSS::Attribute::Text @label="Hello" @value=""/>
+                    */
+                    {
+                      "id": "Ki301vMg",
+                      "block": "[[[8,[39,0],null,[[\"@label\",\"@value\"],[\"Hello\",\"\"]],null]],[],false,[\"o-s-s/attribute/text\"]]",
+                      "moduleName": "(unknown template module)",
+                      "isStrictMode": false
+                    }));
+
+                  case 2:
+                    assert.dom('.oss-attribute').exists();
+                    assert.dom('.oss-attribute__value').hasText('-');
+
+                  case 4:
+                  case "end":
+                    return _context5.stop();
+                }
+              }
+            }, _callee5);
+          }));
+
+          return function (_x5) {
+            return _ref6.apply(this, arguments);
+          };
+        }());
+      });
+      (0, _qunit.module)('Copy action', function (hooks) {
+        hooks.beforeEach(function () {
+          this.textForCopy = 'copied value';
+          this.displayCopyBtn = true;
+        });
+        (0, _qunit.test)('the text is copyable by default', /*#__PURE__*/function () {
+          var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(assert) {
+            return regeneratorRuntime.wrap(function _callee6$(_context6) {
+              while (1) {
+                switch (_context6.prev = _context6.next) {
+                  case 0:
+                    _context6.next = 2;
+                    return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                    /*
+                      <OSS::Attribute::Text @label="Hello" @value={{this.textForCopy}} />
+                    */
+                    {
+                      "id": "U+g/lUSI",
+                      "block": "[[[8,[39,0],null,[[\"@label\",\"@value\"],[\"Hello\",[30,0,[\"textForCopy\"]]]],null]],[],false,[\"o-s-s/attribute/text\"]]",
+                      "moduleName": "(unknown template module)",
+                      "isStrictMode": false
+                    }));
+
+                  case 2:
+                    _context6.next = 4;
+                    return (0, _triggerEvent.default)('.oss-attribute', 'mouseenter');
+
+                  case 4:
+                    assert.dom('.oss-attribute__copy').exists();
+
+                  case 5:
+                  case "end":
+                    return _context6.stop();
+                }
+              }
+            }, _callee6);
+          }));
+
+          return function (_x6) {
+            return _ref7.apply(this, arguments);
+          };
+        }());
+        (0, _qunit.test)('The text is copyable if the @copyable argument is truthy', /*#__PURE__*/function () {
+          var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(assert) {
+            return regeneratorRuntime.wrap(function _callee7$(_context7) {
+              while (1) {
+                switch (_context7.prev = _context7.next) {
+                  case 0:
+                    _context7.next = 2;
+                    return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                    /*
+                      <OSS::Attribute::Text @label="Hello" @value={{this.textForCopy}} @copyable={{true}} />
+                    */
+                    {
+                      "id": "oLqoiVrU",
+                      "block": "[[[8,[39,0],null,[[\"@label\",\"@value\",\"@copyable\"],[\"Hello\",[30,0,[\"textForCopy\"]],true]],null]],[],false,[\"o-s-s/attribute/text\"]]",
+                      "moduleName": "(unknown template module)",
+                      "isStrictMode": false
+                    }));
+
+                  case 2:
+                    _context7.next = 4;
+                    return (0, _triggerEvent.default)('.oss-attribute', 'mouseenter');
+
+                  case 4:
+                    assert.dom('.oss-attribute__copy').exists();
+
+                  case 5:
+                  case "end":
+                    return _context7.stop();
+                }
+              }
+            }, _callee7);
+          }));
+
+          return function (_x7) {
+            return _ref8.apply(this, arguments);
+          };
+        }());
+        (0, _qunit.test)('The text is not copyable (no copy button) if the argument is falsy', /*#__PURE__*/function () {
+          var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
+            return regeneratorRuntime.wrap(function _callee8$(_context8) {
+              while (1) {
+                switch (_context8.prev = _context8.next) {
+                  case 0:
+                    _context8.next = 2;
+                    return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                    /*
+                      <OSS::Attribute::Text @label="Hello" @value={{this.textForCopy}} @copyable={{false}} />
+                    */
+                    {
+                      "id": "/aC7/Xq+",
+                      "block": "[[[8,[39,0],null,[[\"@label\",\"@value\",\"@copyable\"],[\"Hello\",[30,0,[\"textForCopy\"]],false]],null]],[],false,[\"o-s-s/attribute/text\"]]",
+                      "moduleName": "(unknown template module)",
+                      "isStrictMode": false
+                    }));
+
+                  case 2:
+                    _context8.next = 4;
+                    return (0, _triggerEvent.default)('.oss-attribute', 'mouseenter');
+
+                  case 4:
+                    assert.dom('.oss-attribute__copy').doesNotExist();
+
+                  case 5:
+                  case "end":
+                    return _context8.stop();
+                }
+              }
+            }, _callee8);
+          }));
+
+          return function (_x8) {
+            return _ref9.apply(this, arguments);
+          };
+        }());
+        (0, _qunit.test)("The text is not copyable if text value isn't specified", /*#__PURE__*/function () {
+          var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(assert) {
+            return regeneratorRuntime.wrap(function _callee9$(_context9) {
+              while (1) {
+                switch (_context9.prev = _context9.next) {
+                  case 0:
+                    _context9.next = 2;
+                    return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                    /*
+                      <OSS::Attribute::Text @label="Hello" @copyable={{true}} />
+                    */
+                    {
+                      "id": "+pFdXEVY",
+                      "block": "[[[8,[39,0],null,[[\"@label\",\"@copyable\"],[\"Hello\",true]],null]],[],false,[\"o-s-s/attribute/text\"]]",
+                      "moduleName": "(unknown template module)",
+                      "isStrictMode": false
+                    }));
+
+                  case 2:
+                    _context9.next = 4;
+                    return (0, _triggerEvent.default)('.oss-attribute', 'mouseenter');
+
+                  case 4:
+                    assert.dom('.oss-copy--inline').doesNotExist();
+
+                  case 5:
+                  case "end":
+                    return _context9.stop();
+                }
+              }
+            }, _callee9);
+          }));
+
+          return function (_x9) {
+            return _ref10.apply(this, arguments);
+          };
+        }());
+        (0, _qunit.test)('The text is not copyable if text value is specified but the value is empty', /*#__PURE__*/function () {
+          var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(assert) {
+            return regeneratorRuntime.wrap(function _callee10$(_context10) {
+              while (1) {
+                switch (_context10.prev = _context10.next) {
+                  case 0:
+                    _context10.next = 2;
+                    return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                    /*
+                      <OSS::Attribute::Text @label="Hello" @value="" @copyable={{true}} />
+                    */
+                    {
+                      "id": "Vi2st0js",
+                      "block": "[[[8,[39,0],null,[[\"@label\",\"@value\",\"@copyable\"],[\"Hello\",\"\",true]],null]],[],false,[\"o-s-s/attribute/text\"]]",
+                      "moduleName": "(unknown template module)",
+                      "isStrictMode": false
+                    }));
+
+                  case 2:
+                    _context10.next = 4;
+                    return (0, _triggerEvent.default)('.oss-attribute', 'mouseenter');
+
+                  case 4:
+                    assert.dom('.oss-copy--inline').doesNotExist();
+
+                  case 5:
+                  case "end":
+                    return _context10.stop();
+                }
+              }
+            }, _callee10);
+          }));
+
+          return function (_x10) {
+            return _ref11.apply(this, arguments);
+          };
+        }());
+      });
+    });
+  });
+});
+define("dummy/tests/integration/components/o-s-s/attribute/country-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers"], function (_templateFactory, _qunit, _emberQunit, _testHelpers) {
+  "use strict";
+
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+  function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+  (0, _qunit.module)('Integration | Component | o-s-s/attribute/country', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(assert) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::Country />
+                */
+                {
+                  "id": "TH65SZyS",
+                  "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/attribute/country\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('[data-control-name="attribute-country"]').exists();
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.module)('If the @countryCode matches a dictionnary entry', function () {
+      (0, _qunit.test)('The flag icon is displayed', /*#__PURE__*/function () {
+        var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
+          return regeneratorRuntime.wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  _context2.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Attribute::Country @countryCode="US" />
+                  */
+                  {
+                    "id": "v/Opsphz",
+                    "block": "[[[8,[39,0],null,[[\"@countryCode\"],[\"US\"]],null]],[],false,[\"o-s-s/attribute/country\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.oss-attribute__label .fflag-US').exists();
+
+                case 3:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2);
+        }));
+
+        return function (_x2) {
+          return _ref3.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('The country name is displayed', /*#__PURE__*/function () {
+        var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
+          return regeneratorRuntime.wrap(function _callee3$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  _context3.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Attribute::Country @countryCode="US" />
+                  */
+                  {
+                    "id": "v/Opsphz",
+                    "block": "[[[8,[39,0],null,[[\"@countryCode\"],[\"US\"]],null]],[],false,[\"o-s-s/attribute/country\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.oss-attribute__value').hasText('United States');
+
+                case 3:
+                case "end":
+                  return _context3.stop();
+              }
+            }
+          }, _callee3);
+        }));
+
+        return function (_x3) {
+          return _ref4.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('If the @countryCode does not match a dictionnary entry', function () {
+      (0, _qunit.test)('The flag icon is not displayed', /*#__PURE__*/function () {
+        var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
+          return regeneratorRuntime.wrap(function _callee4$(_context4) {
+            while (1) {
+              switch (_context4.prev = _context4.next) {
+                case 0:
+                  _context4.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Attribute::Country @countryCode="" />
+                  */
+                  {
+                    "id": "GVI3CX+F",
+                    "block": "[[[8,[39,0],null,[[\"@countryCode\"],[\"\"]],null]],[],false,[\"o-s-s/attribute/country\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.oss-attribute__label .fflag').doesNotExist();
+
+                case 3:
+                case "end":
+                  return _context4.stop();
+              }
+            }
+          }, _callee4);
+        }));
+
+        return function (_x4) {
+          return _ref5.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('The empty state is displayed', /*#__PURE__*/function () {
+        var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(assert) {
+          return regeneratorRuntime.wrap(function _callee5$(_context5) {
+            while (1) {
+              switch (_context5.prev = _context5.next) {
+                case 0:
+                  _context5.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Attribute::Country />
+                  */
+                  {
+                    "id": "TH65SZyS",
+                    "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/attribute/country\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.oss-attribute__value').hasText('-');
+
+                case 3:
+                case "end":
+                  return _context5.stop();
+              }
+            }
+          }, _callee5);
+        }));
+
+        return function (_x5) {
+          return _ref6.apply(this, arguments);
+        };
+      }());
+    });
+  });
+});
+define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "sinon"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _sinon) {
+  "use strict";
+
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+  function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+  (0, _qunit.module)('Integration | Component | o-s-s/attributes-panel', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.icon = 'fa-laptop-code';
+      this.title = 'Title';
+      this.onSave = _sinon.default.stub();
+      this.onCancel = _sinon.default.stub();
+      this.onEdit = _sinon.default.stub();
+    });
+    (0, _qunit.test)('it renders', /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(assert) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::AttributesPanel @icon={{this.icon}} @title={{this.title}} @onSave={{this.onSave}} />
+                */
+                {
+                  "id": "nYL/qOC+",
+                  "block": "[[[8,[39,0],null,[[\"@icon\",\"@title\",\"@onSave\"],[[30,0,[\"icon\"]],[30,0,[\"title\"]],[30,0,[\"onSave\"]]]],null]],[],false,[\"o-s-s/attributes-panel\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.attributes-panel').exists();
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('it renders the icon', /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::AttributesPanel @icon={{this.icon}} @title={{this.title}} @onSave={{this.onSave}} />
+                */
+                {
+                  "id": "nYL/qOC+",
+                  "block": "[[[8,[39,0],null,[[\"@icon\",\"@title\",\"@onSave\"],[[30,0,[\"icon\"]],[30,0,[\"title\"]],[30,0,[\"onSave\"]]]],null]],[],false,[\"o-s-s/attributes-panel\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.attributes-panel .fa-laptop-code').exists();
+
+              case 3:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function (_x2) {
+        return _ref3.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('it renders the title', /*#__PURE__*/function () {
+      var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::AttributesPanel @icon={{this.icon}} @title={{this.title}} @onSave={{this.onSave}} />
+                */
+                {
+                  "id": "nYL/qOC+",
+                  "block": "[[[8,[39,0],null,[[\"@icon\",\"@title\",\"@onSave\"],[[30,0,[\"icon\"]],[30,0,[\"title\"]],[30,0,[\"onSave\"]]]],null]],[],false,[\"o-s-s/attributes-panel\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.attributes-panel span').hasText('Title');
+
+              case 3:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }));
+
+      return function (_x3) {
+        return _ref4.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('it renders the contextual-action named block', /*#__PURE__*/function () {
+      var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
+        return regeneratorRuntime.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  
+                      <OSS::AttributesPanel @icon={{this.icon}} @title={{this.title}} @onSave={{this.onSave}}>
+                        <:contextual-action>
+                          <OSS::Button @icon="fa-plus" @square={{true}} />
+                        </:contextual-action>
+                      </OSS::AttributesPanel>
+                    
+                */
+                {
+                  "id": "6AvslRO/",
+                  "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@icon\",\"@title\",\"@onSave\"],[[30,0,[\"icon\"]],[30,0,[\"title\"]],[30,0,[\"onSave\"]]]],[[\"contextual-action\"],[[[[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\",\"@square\"],[\"fa-plus\",true]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"]],[],false,[\"o-s-s/attributes-panel\",\"o-s-s/button\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.attributes-panel .fa-plus').exists();
+
+              case 3:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }));
+
+      return function (_x4) {
+        return _ref5.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.module)('for view mode', function () {
+      (0, _qunit.test)('it renders the view-mode named block', /*#__PURE__*/function () {
+        var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(assert) {
+          return regeneratorRuntime.wrap(function _callee5$(_context5) {
+            while (1) {
+              switch (_context5.prev = _context5.next) {
+                case 0:
+                  _context5.next = 2;
+                  return renderComponent();
+
+                case 2:
+                  assert.dom('.attributes-panel__container.attributes-panel__container--view').exists();
+                  assert.dom('.custom-view-mode').hasText('View mode');
+
+                case 4:
+                case "end":
+                  return _context5.stop();
+              }
+            }
+          }, _callee5);
+        }));
+
+        return function (_x5) {
+          return _ref6.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('it renders edition button', /*#__PURE__*/function () {
+        var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(assert) {
+          return regeneratorRuntime.wrap(function _callee6$(_context6) {
+            while (1) {
+              switch (_context6.prev = _context6.next) {
+                case 0:
+                  _context6.next = 2;
+                  return renderComponent();
+
+                case 2:
+                  assert.dom('[data-control-name="attributes-panel-mode-switch-button"]').exists();
+
+                case 3:
+                case "end":
+                  return _context6.stop();
+              }
+            }
+          }, _callee6);
+        }));
+
+        return function (_x6) {
+          return _ref7.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.module)('when clicking on edit button', function () {
+        (0, _qunit.test)('it changes to edition mode container', /*#__PURE__*/function () {
+          var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(assert) {
+            return regeneratorRuntime.wrap(function _callee7$(_context7) {
+              while (1) {
+                switch (_context7.prev = _context7.next) {
+                  case 0:
+                    _context7.next = 2;
+                    return renderComponent();
+
+                  case 2:
+                    _context7.next = 4;
+                    return (0, _testHelpers.click)('[data-control-name="attributes-panel-mode-switch-button"]');
+
+                  case 4:
+                    assert.dom('.attributes-panel__container.attributes-panel__container--view').doesNotExist();
+                    assert.dom('.attributes-panel__container.attributes-panel__container--edition').exists();
+
+                  case 6:
+                  case "end":
+                    return _context7.stop();
+                }
+              }
+            }, _callee7);
+          }));
+
+          return function (_x7) {
+            return _ref8.apply(this, arguments);
+          };
+        }());
+        (0, _qunit.test)('it calls the @onEdit', /*#__PURE__*/function () {
+          var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
+            return regeneratorRuntime.wrap(function _callee8$(_context8) {
+              while (1) {
+                switch (_context8.prev = _context8.next) {
+                  case 0:
+                    _context8.next = 2;
+                    return renderComponent();
+
+                  case 2:
+                    _context8.next = 4;
+                    return (0, _testHelpers.click)('[data-control-name="attributes-panel-mode-switch-button"]');
+
+                  case 4:
+                    assert.true(this.onEdit.calledOnceWithExactly());
+
+                  case 5:
+                  case "end":
+                    return _context8.stop();
+                }
+              }
+            }, _callee8, this);
+          }));
+
+          return function (_x8) {
+            return _ref9.apply(this, arguments);
+          };
+        }());
+      });
+
+      function renderComponent() {
+        return _renderComponent.apply(this, arguments);
+      }
+
+      function _renderComponent() {
+        _renderComponent = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
+          return regeneratorRuntime.wrap(function _callee9$(_context9) {
+            while (1) {
+              switch (_context9.prev = _context9.next) {
+                case 0:
+                  _context9.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    
+                          <OSS::AttributesPanel @icon={{this.icon}} @title={{this.title}} @onSave={{this.onSave}} @onEdit={{this.onEdit}}>
+                            <:view-mode>
+                              <div class="custom-view-mode">View mode</div>
+                            </:view-mode>
+                          </OSS::AttributesPanel>
+                        
+                  */
+                  {
+                    "id": "JNnyLblX",
+                    "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@icon\",\"@title\",\"@onSave\",\"@onEdit\"],[[30,0,[\"icon\"]],[30,0,[\"title\"]],[30,0,[\"onSave\"]],[30,0,[\"onEdit\"]]]],[[\"view-mode\"],[[[[1,\"\\n            \"],[10,0],[14,0,\"custom-view-mode\"],[12],[1,\"View mode\"],[13],[1,\"\\n          \"]],[]]]]],[1,\"\\n      \"]],[],false,[\"o-s-s/attributes-panel\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                case "end":
+                  return _context9.stop();
+              }
+            }
+          }, _callee9);
+        }));
+        return _renderComponent.apply(this, arguments);
+      }
+    });
+    (0, _qunit.module)('for edition mode', function () {
+      (0, _qunit.test)('it renders the view-mode named block', /*#__PURE__*/function () {
+        var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(assert) {
+          return regeneratorRuntime.wrap(function _callee10$(_context10) {
+            while (1) {
+              switch (_context10.prev = _context10.next) {
+                case 0:
+                  _context10.next = 2;
+                  return renderComponentAndClickOnEdit();
+
+                case 2:
+                  assert.dom('.attributes-panel__container.attributes-panel__container--edition').exists();
+                  assert.dom('.custom-edition-mode').hasText('Edition mode');
+
+                case 4:
+                case "end":
+                  return _context10.stop();
+              }
+            }
+          }, _callee10);
+        }));
+
+        return function (_x9) {
+          return _ref10.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)("it doesn't renders edition button", /*#__PURE__*/function () {
+        var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(assert) {
+          return regeneratorRuntime.wrap(function _callee11$(_context11) {
+            while (1) {
+              switch (_context11.prev = _context11.next) {
+                case 0:
+                  _context11.next = 2;
+                  return renderComponentAndClickOnEdit();
+
+                case 2:
+                  assert.dom('[data-control-name="attributes-panel-mode-switch-button"]').doesNotExist();
+
+                case 3:
+                case "end":
+                  return _context11.stop();
+              }
+            }
+          }, _callee11);
+        }));
+
+        return function (_x10) {
+          return _ref11.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)("it doesn't renders contextual-action named block", /*#__PURE__*/function () {
+        var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(assert) {
+          return regeneratorRuntime.wrap(function _callee12$(_context12) {
+            while (1) {
+              switch (_context12.prev = _context12.next) {
+                case 0:
+                  _context12.next = 2;
+                  return renderComponentAndClickOnEdit();
+
+                case 2:
+                  assert.dom('.custom-contextual-action').doesNotExist();
+
+                case 3:
+                case "end":
+                  return _context12.stop();
+              }
+            }
+          }, _callee12);
+        }));
+
+        return function (_x11) {
+          return _ref12.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('it renders the save and cancel button', /*#__PURE__*/function () {
+        var _ref13 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13(assert) {
+          return regeneratorRuntime.wrap(function _callee13$(_context13) {
+            while (1) {
+              switch (_context13.prev = _context13.next) {
+                case 0:
+                  _context13.next = 2;
+                  return renderComponentAndClickOnEdit();
+
+                case 2:
+                  assert.dom('[data-control-name="attributes-panel-cancel-button"]').exists();
+                  assert.dom('[data-control-name="attributes-panel-save-button"]').exists();
+
+                case 4:
+                case "end":
+                  return _context13.stop();
+              }
+            }
+          }, _callee13);
+        }));
+
+        return function (_x12) {
+          return _ref13.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.module)('when clicking on cancel button', function () {
+        (0, _qunit.test)('it switches to view mode', /*#__PURE__*/function () {
+          var _ref14 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee14(assert) {
+            return regeneratorRuntime.wrap(function _callee14$(_context14) {
+              while (1) {
+                switch (_context14.prev = _context14.next) {
+                  case 0:
+                    _context14.next = 2;
+                    return renderComponentAndClickOnEdit();
+
+                  case 2:
+                    _context14.next = 4;
+                    return (0, _testHelpers.click)('[data-control-name="attributes-panel-cancel-button"]');
+
+                  case 4:
+                    assert.dom('.attributes-panel__container.attributes-panel__container--view').exists();
+                    assert.dom('.attributes-panel__container.attributes-panel__container--edition').doesNotExist();
+
+                  case 6:
+                  case "end":
+                    return _context14.stop();
+                }
+              }
+            }, _callee14);
+          }));
+
+          return function (_x13) {
+            return _ref14.apply(this, arguments);
+          };
+        }());
+        (0, _qunit.test)('it calls the @onCancel', /*#__PURE__*/function () {
+          var _ref15 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15(assert) {
+            return regeneratorRuntime.wrap(function _callee15$(_context15) {
+              while (1) {
+                switch (_context15.prev = _context15.next) {
+                  case 0:
+                    _context15.next = 2;
+                    return renderComponentAndClickOnEdit();
+
+                  case 2:
+                    _context15.next = 4;
+                    return (0, _testHelpers.click)('[data-control-name="attributes-panel-cancel-button"]');
+
+                  case 4:
+                    assert.true(this.onCancel.calledOnceWithExactly());
+
+                  case 5:
+                  case "end":
+                    return _context15.stop();
+                }
+              }
+            }, _callee15, this);
+          }));
+
+          return function (_x14) {
+            return _ref15.apply(this, arguments);
+          };
+        }());
+      });
+      (0, _qunit.module)('when clicking on save button', function () {
+        (0, _qunit.test)('it switches to view mode', /*#__PURE__*/function () {
+          var _ref16 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(assert) {
+            return regeneratorRuntime.wrap(function _callee16$(_context16) {
+              while (1) {
+                switch (_context16.prev = _context16.next) {
+                  case 0:
+                    this.onSave.resolves();
+                    _context16.next = 3;
+                    return renderComponentAndClickOnEdit();
+
+                  case 3:
+                    _context16.next = 5;
+                    return (0, _testHelpers.click)('[data-control-name="attributes-panel-save-button"]');
+
+                  case 5:
+                    assert.dom('.attributes-panel__container.attributes-panel__container--view').exists();
+                    assert.dom('.attributes-panel__container.attributes-panel__container--edition').doesNotExist();
+
+                  case 7:
+                  case "end":
+                    return _context16.stop();
+                }
+              }
+            }, _callee16, this);
+          }));
+
+          return function (_x15) {
+            return _ref16.apply(this, arguments);
+          };
+        }());
+        (0, _qunit.test)("it doesn't switch to the view mode", /*#__PURE__*/function () {
+          var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17(assert) {
+            return regeneratorRuntime.wrap(function _callee17$(_context17) {
+              while (1) {
+                switch (_context17.prev = _context17.next) {
+                  case 0:
+                    this.onSave.rejects();
+                    _context17.next = 3;
+                    return renderComponentAndClickOnEdit();
+
+                  case 3:
+                    _context17.next = 5;
+                    return (0, _testHelpers.click)('[data-control-name="attributes-panel-save-button"]');
+
+                  case 5:
+                    assert.dom('.attributes-panel__container.attributes-panel__container--view').doesNotExist();
+                    assert.dom('.attributes-panel__container.attributes-panel__container--edition').exists();
+
+                  case 7:
+                  case "end":
+                    return _context17.stop();
+                }
+              }
+            }, _callee17, this);
+          }));
+
+          return function (_x16) {
+            return _ref17.apply(this, arguments);
+          };
+        }());
+        (0, _qunit.test)('it render a loading state', /*#__PURE__*/function () {
+          var _ref18 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee18(assert) {
+            return regeneratorRuntime.wrap(function _callee18$(_context18) {
+              while (1) {
+                switch (_context18.prev = _context18.next) {
+                  case 0:
+                    this.onSave.returns(new Promise(function () {}));
+                    _context18.next = 3;
+                    return renderComponentAndClickOnEdit();
+
+                  case 3:
+                    _context18.next = 5;
+                    return (0, _testHelpers.click)('[data-control-name="attributes-panel-save-button"]');
+
+                  case 5:
+                    assert.dom('[data-control-name="attributes-panel-save-button"] .fa-circle-notch').exists();
+
+                  case 6:
+                  case "end":
+                    return _context18.stop();
+                }
+              }
+            }, _callee18, this);
+          }));
+
+          return function (_x17) {
+            return _ref18.apply(this, arguments);
+          };
+        }());
+        (0, _qunit.test)('it calls the @onSave', /*#__PURE__*/function () {
+          var _ref19 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee19(assert) {
+            return regeneratorRuntime.wrap(function _callee19$(_context19) {
+              while (1) {
+                switch (_context19.prev = _context19.next) {
+                  case 0:
+                    this.onSave.resolves();
+                    _context19.next = 3;
+                    return renderComponentAndClickOnEdit();
+
+                  case 3:
+                    _context19.next = 5;
+                    return (0, _testHelpers.click)('[data-control-name="attributes-panel-save-button"]');
+
+                  case 5:
+                    assert.true(this.onSave.calledOnceWithExactly());
+
+                  case 6:
+                  case "end":
+                    return _context19.stop();
+                }
+              }
+            }, _callee19, this);
+          }));
+
+          return function (_x18) {
+            return _ref19.apply(this, arguments);
+          };
+        }());
+      });
+
+      function renderComponentAndClickOnEdit() {
+        return _renderComponentAndClickOnEdit.apply(this, arguments);
+      }
+
+      function _renderComponentAndClickOnEdit() {
+        _renderComponentAndClickOnEdit = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee20() {
+          return regeneratorRuntime.wrap(function _callee20$(_context20) {
+            while (1) {
+              switch (_context20.prev = _context20.next) {
+                case 0:
+                  _context20.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    
+                          <OSS::AttributesPanel @icon={{this.icon}} @title={{this.title}} @onSave={{this.onSave}} @onEdit={{this.onEdit}}
+                                                @onCancel={{this.onCancel}}>
+                            <:contextual-action><div class="custom-contextual-action"></div></:contextual-action>
+                            <:edition-mode>
+                              <div class="custom-edition-mode">Edition mode</div>
+                            </:edition-mode>
+                          </OSS::AttributesPanel>
+                        
+                  */
+                  {
+                    "id": "meBQfQEX",
+                    "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@icon\",\"@title\",\"@onSave\",\"@onEdit\",\"@onCancel\"],[[30,0,[\"icon\"]],[30,0,[\"title\"]],[30,0,[\"onSave\"]],[30,0,[\"onEdit\"]],[30,0,[\"onCancel\"]]]],[[\"contextual-action\",\"edition-mode\"],[[[[10,0],[14,0,\"custom-contextual-action\"],[12],[13]],[]],[[[1,\"\\n            \"],[10,0],[14,0,\"custom-edition-mode\"],[12],[1,\"Edition mode\"],[13],[1,\"\\n          \"]],[]]]]],[1,\"\\n      \"]],[],false,[\"o-s-s/attributes-panel\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  _context20.next = 4;
+                  return (0, _testHelpers.click)('[data-control-name="attributes-panel-mode-switch-button"]');
+
+                case 4:
+                case "end":
+                  return _context20.stop();
+              }
+            }
+          }, _callee20);
+        }));
+        return _renderComponentAndClickOnEdit.apply(this, arguments);
+      }
+    });
+    (0, _qunit.test)('it throws an error if @title is missing', /*#__PURE__*/function () {
+      var _ref20 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee21(assert) {
+        return regeneratorRuntime.wrap(function _callee21$(_context21) {
+          while (1) {
+            switch (_context21.prev = _context21.next) {
+              case 0:
+                (0, _testHelpers.setupOnerror)(function (error) {
+                  assert.equal(error.message, 'Assertion Failed: [component][OSS::AttributesPanel] The @title parameter is mandatory');
+                });
+                _context21.next = 3;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::AttributesPanel @onSave={{this.onSave}} />
+                */
+                {
+                  "id": "9qj7cxNS",
+                  "block": "[[[8,[39,0],null,[[\"@onSave\"],[[30,0,[\"onSave\"]]]],null]],[],false,[\"o-s-s/attributes-panel\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 3:
+              case "end":
+                return _context21.stop();
+            }
+          }
+        }, _callee21);
+      }));
+
+      return function (_x19) {
+        return _ref20.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('it throws an error if @onSave is missing', /*#__PURE__*/function () {
+      var _ref21 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee22(assert) {
+        return regeneratorRuntime.wrap(function _callee22$(_context22) {
+          while (1) {
+            switch (_context22.prev = _context22.next) {
+              case 0:
+                (0, _testHelpers.setupOnerror)(function (error) {
+                  assert.equal(error.message, 'Assertion Failed: [component][OSS::AttributesPanel] The @onSave parameter is mandatory');
+                });
+                _context22.next = 3;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::AttributesPanel @title={{this.title}} />
+                */
+                {
+                  "id": "6jq8MJgc",
+                  "block": "[[[8,[39,0],null,[[\"@title\"],[[30,0,[\"title\"]]]],null]],[],false,[\"o-s-s/attributes-panel\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 3:
+              case "end":
+                return _context22.stop();
+            }
+          }
+        }, _callee22);
+      }));
+
+      return function (_x20) {
+        return _ref21.apply(this, arguments);
+      };
+    }());
+  });
+});
 define("dummy/tests/integration/components/o-s-s/avatar-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "@upfluence/oss-components/components/o-s-s/avatar"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _avatar) {
   "use strict";
 
