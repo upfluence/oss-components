@@ -61,6 +61,7 @@ export default class ApplicationController extends Controller {
   @tracked inputValue = '';
   @tracked shopifyDomain = '';
   @tracked shopUrl = '';
+  @tracked testText = '';
   @tracked currency = 'EUR';
   @tracked currencyValue = 42.13;
   @tracked numberValue = 42;
@@ -204,6 +205,10 @@ export default class ApplicationController extends Controller {
   openModal(e) {
     e.stopPropagation();
     this.showModal = true;
+  }
+
+  @action updatetext(value) {
+    this.testText = value;
   }
 
   @action

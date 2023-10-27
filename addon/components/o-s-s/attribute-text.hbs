@@ -1,0 +1,18 @@
+<div class="oss-attribute"
+     {{on "mouseenter" (fn (mut this.displayCopyBtn) true)}}
+     {{on "mouseleave" (fn (mut this.displayCopyBtn) false)}}
+     data-control-name="attribute-text">
+  <div class="oss-attribute__label">
+    <span>{{this.args.label}}</span>
+    {{#if this.args.tooltip}}
+      <OSS::Icon @icon="far fa-info-circle" class="oss-attribute__info" @inline={{true}}
+                 {{enable-tooltip title=this.args.tooltip placement="top"}} />
+    {{/if}}
+  </div>
+  <span class="oss-attribute__value">{{this.value}}</span>
+  {{#if this.isCopyable}}
+    <div class="oss-attribute__copy">
+      <OSS::Copy @value={{this.value}} @inline={{true}} />
+    </div>
+  {{/if}}
+</div>
