@@ -37,7 +37,7 @@ export default {
       type: { required: true }
     },
     onEdit: {
-      description: 'A callback sent when the edition button is pressed',
+      description: 'A callback sent when the edit button is pressed',
       table: {
         category: 'Actions',
         type: {
@@ -58,7 +58,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A component composed of the 2 modes, one for the view and another for the edition'
+        component:
+          'A component meant to display OSS::Attributes. It has 2 modes: a view panel where information will be read-only and an edit mode where the information will be editable.'
       }
     }
   }
