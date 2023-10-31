@@ -10,7 +10,7 @@
     {{/if}}
   </div>
   <span class="oss-attribute__value">{{this.value}}</span>
-  {{#if this.isCopyable}}
+  {{#if (and this.displayCopyBtn this.isCopyable)}}
     <div class="oss-attribute__copy">
       <OSS::Copy @value={{this.value}} @inline={{true}} />
     </div>
