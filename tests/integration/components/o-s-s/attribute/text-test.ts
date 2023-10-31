@@ -4,7 +4,7 @@ import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import triggerEvent from '@ember/test-helpers/dom/trigger-event';
 
-module('Integration | Component | o-s-s/attribute-text', function (hooks) {
+module('Integration | Component | o-s-s/attribute/text', function (hooks) {
   setupRenderingTest(hooks);
 
   module('Default behavior', function () {
@@ -45,6 +45,11 @@ module('Integration | Component | o-s-s/attribute-text', function (hooks) {
       hooks.beforeEach(function () {
         this.textForCopy = 'copied value';
         this.displayCopyBtn = true;
+      });
+
+      test('the copy icon is not visible before hovering', async function (assert) {
+        await render(hbs`<OSS::Attribute::Text @label="Hello" @value={{this.textForCopy}} />`);
+        assert.dom('.oss-attribute__copy').doesNotExist();
       });
 
       test('the text is copyable by default', async function (assert) {

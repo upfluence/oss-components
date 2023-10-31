@@ -42,7 +42,7 @@ export default {
         type: {
           summary: 'boolean'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: true }
       },
       control: { type: 'boolean' }
     }
@@ -59,7 +59,8 @@ export default {
 
 const defaultArgs = {
   label: 'Label',
-  value: 'Your copied value'
+  value: 'Your copied value',
+  copyable: true
 };
 
 const BasicUsageTemplate = (args) => ({

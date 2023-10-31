@@ -11,8 +11,8 @@ interface OSSAttributeTextArgs {
 }
 
 export default class OSSAttributeText extends Component<OSSAttributeTextArgs> {
-  @tracked displayCopyBtn = false;
-  @tracked copyable = this.args.copyable ?? true;
+  @tracked displayCopyBtn: boolean = false;
+  @tracked copyable: boolean = this.args.copyable ?? true;
 
   constructor(owner: unknown, args: OSSAttributeTextArgs) {
     super(owner, args);
@@ -24,6 +24,6 @@ export default class OSSAttributeText extends Component<OSSAttributeTextArgs> {
   }
 
   get isCopyable(): boolean {
-    return Boolean(this.copyable) && !isBlank(this.args.value);
+    return this.copyable && !isBlank(this.args.value);
   }
 }
