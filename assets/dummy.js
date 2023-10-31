@@ -483,7 +483,7 @@ define("dummy/app", ["exports", "@ember/application", "ember-resolver", "ember-l
     }
   });
 });
-;define("dummy/components/o-s-s/attribute/text", ["exports", "@upfluence/oss-components/components/o-s-s/attribute-text"], function (_exports, _attributeText) {
+;define("dummy/components/o-s-s/attribute/text", ["exports", "@upfluence/oss-components/components/o-s-s/attribute/text"], function (_exports, _text) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -492,7 +492,7 @@ define("dummy/app", ["exports", "@ember/application", "ember-resolver", "ember-l
   Object.defineProperty(_exports, "default", {
     enumerable: true,
     get: function get() {
-      return _attributeText.default;
+      return _text.default;
     }
   });
 });

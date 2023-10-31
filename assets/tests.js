@@ -2016,14 +2016,194 @@ define("dummy/tests/integration/components/o-s-s/array-input-test", ["@ember/tem
     }());
   });
 });
-define("dummy/tests/integration/components/o-s-s/attribute-text-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "@ember/test-helpers/dom/trigger-event"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _triggerEvent) {
+define("dummy/tests/integration/components/o-s-s/attribute/country-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers"], function (_templateFactory, _qunit, _emberQunit, _testHelpers) {
   "use strict";
 
   function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
 
   function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
-  (0, _qunit.module)('Integration | Component | o-s-s/attribute-text', function (hooks) {
+  (0, _qunit.module)('Integration | Component | o-s-s/attribute/country', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(assert) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::Country />
+                */
+                {
+                  "id": "TH65SZyS",
+                  "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/attribute/country\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('[data-control-name="attribute-country"]').exists();
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.module)('If the @countryCode matches a dictionnary entry', function () {
+      (0, _qunit.test)('The flag icon is displayed', /*#__PURE__*/function () {
+        var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
+          return regeneratorRuntime.wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  _context2.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Attribute::Country @countryCode="US" />
+                  */
+                  {
+                    "id": "v/Opsphz",
+                    "block": "[[[8,[39,0],null,[[\"@countryCode\"],[\"US\"]],null]],[],false,[\"o-s-s/attribute/country\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.oss-attribute__label .fflag-US').exists();
+
+                case 3:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2);
+        }));
+
+        return function (_x2) {
+          return _ref3.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('The country name is displayed', /*#__PURE__*/function () {
+        var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
+          return regeneratorRuntime.wrap(function _callee3$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  _context3.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Attribute::Country @countryCode="US" />
+                  */
+                  {
+                    "id": "v/Opsphz",
+                    "block": "[[[8,[39,0],null,[[\"@countryCode\"],[\"US\"]],null]],[],false,[\"o-s-s/attribute/country\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.oss-attribute__value').hasText('United States');
+
+                case 3:
+                case "end":
+                  return _context3.stop();
+              }
+            }
+          }, _callee3);
+        }));
+
+        return function (_x3) {
+          return _ref4.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('If the @countryCode does not match a dictionnary entry', function () {
+      (0, _qunit.test)('The flag icon is not displayed', /*#__PURE__*/function () {
+        var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
+          return regeneratorRuntime.wrap(function _callee4$(_context4) {
+            while (1) {
+              switch (_context4.prev = _context4.next) {
+                case 0:
+                  _context4.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Attribute::Country @countryCode="" />
+                  */
+                  {
+                    "id": "GVI3CX+F",
+                    "block": "[[[8,[39,0],null,[[\"@countryCode\"],[\"\"]],null]],[],false,[\"o-s-s/attribute/country\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.oss-attribute__label .fflag').doesNotExist();
+
+                case 3:
+                case "end":
+                  return _context4.stop();
+              }
+            }
+          }, _callee4);
+        }));
+
+        return function (_x4) {
+          return _ref5.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('The empty state is displayed', /*#__PURE__*/function () {
+        var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(assert) {
+          return regeneratorRuntime.wrap(function _callee5$(_context5) {
+            while (1) {
+              switch (_context5.prev = _context5.next) {
+                case 0:
+                  _context5.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Attribute::Country />
+                  */
+                  {
+                    "id": "TH65SZyS",
+                    "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/attribute/country\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.oss-attribute__value').hasText('-');
+
+                case 3:
+                case "end":
+                  return _context5.stop();
+              }
+            }
+          }, _callee5);
+        }));
+
+        return function (_x5) {
+          return _ref6.apply(this, arguments);
+        };
+      }());
+    });
+  });
+});
+define("dummy/tests/integration/components/o-s-s/attribute/text-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "@ember/test-helpers/dom/trigger-event"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _triggerEvent) {
+  "use strict";
+
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+  function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+  (0, _qunit.module)('Integration | Component | o-s-s/attribute/text', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.module)('Default behavior', function () {
       (0, _qunit.module)('Render conditions', function () {
@@ -2205,7 +2385,7 @@ define("dummy/tests/integration/components/o-s-s/attribute-text-test", ["@ember/
           this.textForCopy = 'copied value';
           this.displayCopyBtn = true;
         });
-        (0, _qunit.test)('the text is copyable by default', /*#__PURE__*/function () {
+        (0, _qunit.test)('the copy icon is not visible before hovering', /*#__PURE__*/function () {
           var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(assert) {
             return regeneratorRuntime.wrap(function _callee6$(_context6) {
               while (1) {
@@ -2224,13 +2404,9 @@ define("dummy/tests/integration/components/o-s-s/attribute-text-test", ["@ember/
                     }));
 
                   case 2:
-                    _context6.next = 4;
-                    return (0, _triggerEvent.default)('.oss-attribute', 'mouseenter');
+                    assert.dom('.oss-attribute__copy').doesNotExist();
 
-                  case 4:
-                    assert.dom('.oss-attribute__copy').exists();
-
-                  case 5:
+                  case 3:
                   case "end":
                     return _context6.stop();
                 }
@@ -2242,7 +2418,7 @@ define("dummy/tests/integration/components/o-s-s/attribute-text-test", ["@ember/
             return _ref7.apply(this, arguments);
           };
         }());
-        (0, _qunit.test)('The text is copyable if the @copyable argument is truthy', /*#__PURE__*/function () {
+        (0, _qunit.test)('the text is copyable by default', /*#__PURE__*/function () {
           var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(assert) {
             return regeneratorRuntime.wrap(function _callee7$(_context7) {
               while (1) {
@@ -2251,11 +2427,11 @@ define("dummy/tests/integration/components/o-s-s/attribute-text-test", ["@ember/
                     _context7.next = 2;
                     return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                     /*
-                      <OSS::Attribute::Text @label="Hello" @value={{this.textForCopy}} @copyable={{true}} />
+                      <OSS::Attribute::Text @label="Hello" @value={{this.textForCopy}} />
                     */
                     {
-                      "id": "oLqoiVrU",
-                      "block": "[[[8,[39,0],null,[[\"@label\",\"@value\",\"@copyable\"],[\"Hello\",[30,0,[\"textForCopy\"]],true]],null]],[],false,[\"o-s-s/attribute/text\"]]",
+                      "id": "U+g/lUSI",
+                      "block": "[[[8,[39,0],null,[[\"@label\",\"@value\"],[\"Hello\",[30,0,[\"textForCopy\"]]]],null]],[],false,[\"o-s-s/attribute/text\"]]",
                       "moduleName": "(unknown template module)",
                       "isStrictMode": false
                     }));
@@ -2279,7 +2455,7 @@ define("dummy/tests/integration/components/o-s-s/attribute-text-test", ["@ember/
             return _ref8.apply(this, arguments);
           };
         }());
-        (0, _qunit.test)('The text is not copyable (no copy button) if the argument is falsy', /*#__PURE__*/function () {
+        (0, _qunit.test)('The text is copyable if the @copyable argument is truthy', /*#__PURE__*/function () {
           var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
             return regeneratorRuntime.wrap(function _callee8$(_context8) {
               while (1) {
@@ -2288,11 +2464,11 @@ define("dummy/tests/integration/components/o-s-s/attribute-text-test", ["@ember/
                     _context8.next = 2;
                     return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                     /*
-                      <OSS::Attribute::Text @label="Hello" @value={{this.textForCopy}} @copyable={{false}} />
+                      <OSS::Attribute::Text @label="Hello" @value={{this.textForCopy}} @copyable={{true}} />
                     */
                     {
-                      "id": "/aC7/Xq+",
-                      "block": "[[[8,[39,0],null,[[\"@label\",\"@value\",\"@copyable\"],[\"Hello\",[30,0,[\"textForCopy\"]],false]],null]],[],false,[\"o-s-s/attribute/text\"]]",
+                      "id": "oLqoiVrU",
+                      "block": "[[[8,[39,0],null,[[\"@label\",\"@value\",\"@copyable\"],[\"Hello\",[30,0,[\"textForCopy\"]],true]],null]],[],false,[\"o-s-s/attribute/text\"]]",
                       "moduleName": "(unknown template module)",
                       "isStrictMode": false
                     }));
@@ -2302,7 +2478,7 @@ define("dummy/tests/integration/components/o-s-s/attribute-text-test", ["@ember/
                     return (0, _triggerEvent.default)('.oss-attribute', 'mouseenter');
 
                   case 4:
-                    assert.dom('.oss-attribute__copy').doesNotExist();
+                    assert.dom('.oss-attribute__copy').exists();
 
                   case 5:
                   case "end":
@@ -2316,7 +2492,7 @@ define("dummy/tests/integration/components/o-s-s/attribute-text-test", ["@ember/
             return _ref9.apply(this, arguments);
           };
         }());
-        (0, _qunit.test)("The text is not copyable if text value isn't specified", /*#__PURE__*/function () {
+        (0, _qunit.test)('The text is not copyable (no copy button) if the argument is falsy', /*#__PURE__*/function () {
           var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(assert) {
             return regeneratorRuntime.wrap(function _callee9$(_context9) {
               while (1) {
@@ -2325,11 +2501,11 @@ define("dummy/tests/integration/components/o-s-s/attribute-text-test", ["@ember/
                     _context9.next = 2;
                     return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                     /*
-                      <OSS::Attribute::Text @label="Hello" @copyable={{true}} />
+                      <OSS::Attribute::Text @label="Hello" @value={{this.textForCopy}} @copyable={{false}} />
                     */
                     {
-                      "id": "+pFdXEVY",
-                      "block": "[[[8,[39,0],null,[[\"@label\",\"@copyable\"],[\"Hello\",true]],null]],[],false,[\"o-s-s/attribute/text\"]]",
+                      "id": "/aC7/Xq+",
+                      "block": "[[[8,[39,0],null,[[\"@label\",\"@value\",\"@copyable\"],[\"Hello\",[30,0,[\"textForCopy\"]],false]],null]],[],false,[\"o-s-s/attribute/text\"]]",
                       "moduleName": "(unknown template module)",
                       "isStrictMode": false
                     }));
@@ -2339,7 +2515,7 @@ define("dummy/tests/integration/components/o-s-s/attribute-text-test", ["@ember/
                     return (0, _triggerEvent.default)('.oss-attribute', 'mouseenter');
 
                   case 4:
-                    assert.dom('.oss-copy--inline').doesNotExist();
+                    assert.dom('.oss-attribute__copy').doesNotExist();
 
                   case 5:
                   case "end":
@@ -2353,7 +2529,7 @@ define("dummy/tests/integration/components/o-s-s/attribute-text-test", ["@ember/
             return _ref10.apply(this, arguments);
           };
         }());
-        (0, _qunit.test)('The text is not copyable if text value is specified but the value is empty', /*#__PURE__*/function () {
+        (0, _qunit.test)("The text is not copyable if text value isn't specified", /*#__PURE__*/function () {
           var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(assert) {
             return regeneratorRuntime.wrap(function _callee10$(_context10) {
               while (1) {
@@ -2362,11 +2538,11 @@ define("dummy/tests/integration/components/o-s-s/attribute-text-test", ["@ember/
                     _context10.next = 2;
                     return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                     /*
-                      <OSS::Attribute::Text @label="Hello" @value="" @copyable={{true}} />
+                      <OSS::Attribute::Text @label="Hello" @copyable={{true}} />
                     */
                     {
-                      "id": "Vi2st0js",
-                      "block": "[[[8,[39,0],null,[[\"@label\",\"@value\",\"@copyable\"],[\"Hello\",\"\",true]],null]],[],false,[\"o-s-s/attribute/text\"]]",
+                      "id": "+pFdXEVY",
+                      "block": "[[[8,[39,0],null,[[\"@label\",\"@copyable\"],[\"Hello\",true]],null]],[],false,[\"o-s-s/attribute/text\"]]",
                       "moduleName": "(unknown template module)",
                       "isStrictMode": false
                     }));
@@ -2390,187 +2566,44 @@ define("dummy/tests/integration/components/o-s-s/attribute-text-test", ["@ember/
             return _ref11.apply(this, arguments);
           };
         }());
+        (0, _qunit.test)('The text is not copyable if text value is specified but the value is empty', /*#__PURE__*/function () {
+          var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(assert) {
+            return regeneratorRuntime.wrap(function _callee11$(_context11) {
+              while (1) {
+                switch (_context11.prev = _context11.next) {
+                  case 0:
+                    _context11.next = 2;
+                    return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                    /*
+                      <OSS::Attribute::Text @label="Hello" @value="" @copyable={{true}} />
+                    */
+                    {
+                      "id": "Vi2st0js",
+                      "block": "[[[8,[39,0],null,[[\"@label\",\"@value\",\"@copyable\"],[\"Hello\",\"\",true]],null]],[],false,[\"o-s-s/attribute/text\"]]",
+                      "moduleName": "(unknown template module)",
+                      "isStrictMode": false
+                    }));
+
+                  case 2:
+                    _context11.next = 4;
+                    return (0, _triggerEvent.default)('.oss-attribute', 'mouseenter');
+
+                  case 4:
+                    assert.dom('.oss-copy--inline').doesNotExist();
+
+                  case 5:
+                  case "end":
+                    return _context11.stop();
+                }
+              }
+            }, _callee11);
+          }));
+
+          return function (_x11) {
+            return _ref12.apply(this, arguments);
+          };
+        }());
       });
-    });
-  });
-});
-define("dummy/tests/integration/components/o-s-s/attribute/country-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers"], function (_templateFactory, _qunit, _emberQunit, _testHelpers) {
-  "use strict";
-
-  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
-
-  function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
-
-  (0, _qunit.module)('Integration | Component | o-s-s/attribute/country', function (hooks) {
-    (0, _emberQunit.setupRenderingTest)(hooks);
-    (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(assert) {
-        return regeneratorRuntime.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                _context.next = 2;
-                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-                /*
-                  <OSS::Attribute::Country />
-                */
-                {
-                  "id": "TH65SZyS",
-                  "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/attribute/country\"]]",
-                  "moduleName": "(unknown template module)",
-                  "isStrictMode": false
-                }));
-
-              case 2:
-                assert.dom('[data-control-name="attribute-country"]').exists();
-
-              case 3:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      }));
-
-      return function (_x) {
-        return _ref2.apply(this, arguments);
-      };
-    }());
-    (0, _qunit.module)('If the @countryCode matches a dictionnary entry', function () {
-      (0, _qunit.test)('The flag icon is displayed', /*#__PURE__*/function () {
-        var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
-          return regeneratorRuntime.wrap(function _callee2$(_context2) {
-            while (1) {
-              switch (_context2.prev = _context2.next) {
-                case 0:
-                  _context2.next = 2;
-                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-                  /*
-                    <OSS::Attribute::Country @countryCode="US" />
-                  */
-                  {
-                    "id": "v/Opsphz",
-                    "block": "[[[8,[39,0],null,[[\"@countryCode\"],[\"US\"]],null]],[],false,[\"o-s-s/attribute/country\"]]",
-                    "moduleName": "(unknown template module)",
-                    "isStrictMode": false
-                  }));
-
-                case 2:
-                  assert.dom('.oss-attribute__label .fflag-US').exists();
-
-                case 3:
-                case "end":
-                  return _context2.stop();
-              }
-            }
-          }, _callee2);
-        }));
-
-        return function (_x2) {
-          return _ref3.apply(this, arguments);
-        };
-      }());
-      (0, _qunit.test)('The country name is displayed', /*#__PURE__*/function () {
-        var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
-          return regeneratorRuntime.wrap(function _callee3$(_context3) {
-            while (1) {
-              switch (_context3.prev = _context3.next) {
-                case 0:
-                  _context3.next = 2;
-                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-                  /*
-                    <OSS::Attribute::Country @countryCode="US" />
-                  */
-                  {
-                    "id": "v/Opsphz",
-                    "block": "[[[8,[39,0],null,[[\"@countryCode\"],[\"US\"]],null]],[],false,[\"o-s-s/attribute/country\"]]",
-                    "moduleName": "(unknown template module)",
-                    "isStrictMode": false
-                  }));
-
-                case 2:
-                  assert.dom('.oss-attribute__value').hasText('United States');
-
-                case 3:
-                case "end":
-                  return _context3.stop();
-              }
-            }
-          }, _callee3);
-        }));
-
-        return function (_x3) {
-          return _ref4.apply(this, arguments);
-        };
-      }());
-    });
-    (0, _qunit.module)('If the @countryCode does not match a dictionnary entry', function () {
-      (0, _qunit.test)('The flag icon is not displayed', /*#__PURE__*/function () {
-        var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
-          return regeneratorRuntime.wrap(function _callee4$(_context4) {
-            while (1) {
-              switch (_context4.prev = _context4.next) {
-                case 0:
-                  _context4.next = 2;
-                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-                  /*
-                    <OSS::Attribute::Country @countryCode="" />
-                  */
-                  {
-                    "id": "GVI3CX+F",
-                    "block": "[[[8,[39,0],null,[[\"@countryCode\"],[\"\"]],null]],[],false,[\"o-s-s/attribute/country\"]]",
-                    "moduleName": "(unknown template module)",
-                    "isStrictMode": false
-                  }));
-
-                case 2:
-                  assert.dom('.oss-attribute__label .fflag').doesNotExist();
-
-                case 3:
-                case "end":
-                  return _context4.stop();
-              }
-            }
-          }, _callee4);
-        }));
-
-        return function (_x4) {
-          return _ref5.apply(this, arguments);
-        };
-      }());
-      (0, _qunit.test)('The empty state is displayed', /*#__PURE__*/function () {
-        var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(assert) {
-          return regeneratorRuntime.wrap(function _callee5$(_context5) {
-            while (1) {
-              switch (_context5.prev = _context5.next) {
-                case 0:
-                  _context5.next = 2;
-                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-                  /*
-                    <OSS::Attribute::Country />
-                  */
-                  {
-                    "id": "TH65SZyS",
-                    "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/attribute/country\"]]",
-                    "moduleName": "(unknown template module)",
-                    "isStrictMode": false
-                  }));
-
-                case 2:
-                  assert.dom('.oss-attribute__value').hasText('-');
-
-                case 3:
-                case "end":
-                  return _context5.stop();
-              }
-            }
-          }, _callee5);
-        }));
-
-        return function (_x5) {
-          return _ref6.apply(this, arguments);
-        };
-      }());
     });
   });
 });

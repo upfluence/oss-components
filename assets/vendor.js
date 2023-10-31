@@ -85248,7 +85248,182 @@ define("@upfluence/oss-components/components/o-s-s/array-input", ["exports", "@e
 });
 ;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-define("@upfluence/oss-components/components/o-s-s/attribute-text", ["exports", "@ember/component", "@ember/template-factory", "@ember/debug", "@ember/utils", "@glimmer/component", "@glimmer/tracking"], function (_exports, _component, _templateFactory, _debug, _utils, _component2, _tracking) {
+define("@upfluence/oss-components/components/o-s-s/attribute/country", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@upfluence/oss-components/utils/country-codes", "@glimmer/tracking"], function (_exports, _component, _templateFactory, _component2, _countryCodes, _tracking) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _class, _descriptor;
+
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+  function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'proposal-class-properties is enabled and runs after the decorators transform.'); }
+
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="oss-attribute"
+       {{on "mouseenter" (fn (mut this.displayCopyBtn) true)}}
+       {{on "mouseleave" (fn (mut this.displayCopyBtn) false)}}
+       data-control-name="attribute-country" ...attributes>
+    <div class="oss-attribute__label">
+      <span>{{t "oss-components.attribute.country"}}</span>
+      {{#if (not-eq this.countryName "-")}}
+        <div class="fflag fflag-{{@countryCode}} ff-round ff-sm"></div>
+      {{/if}}
+    </div>
+    <span class="oss-attribute__value">
+      {{this.countryName}}
+    </span>
+    {{#if (and this.displayCopyBtn (not-eq this.countryName "-"))}}
+      <OSS::Copy @value={{this.countryName}} @inline="true" />
+    {{/if}}
+  </div>
+  
+  */
+  {
+    "id": "oT/Xmh5k",
+    "block": "[[[11,0],[24,0,\"oss-attribute\"],[24,\"data-control-name\",\"attribute-country\"],[17,1],[4,[38,0],[\"mouseenter\",[28,[37,1],[[28,[37,2],[[30,0,[\"displayCopyBtn\"]]],null],true],null]],null],[4,[38,0],[\"mouseleave\",[28,[37,1],[[28,[37,2],[[30,0,[\"displayCopyBtn\"]]],null],false],null]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-attribute__label\"],[12],[1,\"\\n    \"],[10,1],[12],[1,[28,[35,3],[\"oss-components.attribute.country\"],null]],[13],[1,\"\\n\"],[41,[28,[37,5],[[30,0,[\"countryName\"]],\"-\"],null],[[[1,\"      \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,2],\" ff-round ff-sm\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n  \"],[10,1],[14,0,\"oss-attribute__value\"],[12],[1,\"\\n    \"],[1,[30,0,[\"countryName\"]]],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[28,[37,6],[[30,0,[\"displayCopyBtn\"]],[28,[37,5],[[30,0,[\"countryName\"]],\"-\"],null]],null],[[[1,\"    \"],[8,[39,7],null,[[\"@value\",\"@inline\"],[[30,0,[\"countryName\"]],\"true\"]],null],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@countryCode\"],false,[\"on\",\"fn\",\"mut\",\"t\",\"if\",\"not-eq\",\"and\",\"o-s-s/copy\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/attribute/country.hbs",
+    "isStrictMode": false
+  });
+
+  var OSSAttributeCountry = (_class = /*#__PURE__*/function (_Component) {
+    _inherits(OSSAttributeCountry, _Component);
+
+    var _super = _createSuper(OSSAttributeCountry);
+
+    function OSSAttributeCountry() {
+      var _this;
+
+      _classCallCheck(this, OSSAttributeCountry);
+
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      _this = _super.call.apply(_super, [this].concat(args));
+
+      _initializerDefineProperty(_assertThisInitialized(_this), "displayCopyBtn", _descriptor, _assertThisInitialized(_this));
+
+      _defineProperty(_assertThisInitialized(_this), "countryDictionnary", _countryCodes.countries);
+
+      return _this;
+    }
+
+    _createClass(OSSAttributeCountry, [{
+      key: "countryName",
+      get: function get() {
+        var _this$countryDictionn,
+            _this2 = this;
+
+        return ((_this$countryDictionn = this.countryDictionnary.find(function (country) {
+          return country.alpha2 === _this2.args.countryCode;
+        })) === null || _this$countryDictionn === void 0 ? void 0 : _this$countryDictionn.name) || '-';
+      }
+    }]);
+
+    return OSSAttributeCountry;
+  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "displayCopyBtn", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  })), _class);
+  _exports.default = OSSAttributeCountry;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSAttributeCountry);
+});
+;define("@upfluence/oss-components/components/o-s-s/attribute/country.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.Default = _exports.default = void 0;
+  var _default = {
+    title: 'Components/OSS::Attribute::Country',
+    component: 'country',
+    argTypes: {
+      countryCode: {
+        description: 'The country-code in alpha2 format that will be used to display the flag and country name.',
+        table: {
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'Part of the Attribute displays. The OSS::Attribute::Country displays the flag and name of the country passed in parameter.'
+        }
+      }
+    }
+  };
+  _exports.default = _default;
+  var defaultArgs = {
+    countryCode: 'FR'
+  };
+
+  var Template = function Template(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <div style="padding: 12px; background: white">
+            <OSS::Attribute::Country @countryCode={{this.countryCode}} />
+          </div>
+        
+      */
+      {
+        "id": "UDNr+paw",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"padding: 12px; background: white\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@countryCode\"],[[30,0,[\"countryCode\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/attribute/country\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+
+  var Default = Template.bind({});
+  _exports.Default = Default;
+  Default.args = defaultArgs;
+});
+;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+define("@upfluence/oss-components/components/o-s-s/attribute/text", ["exports", "@ember/component", "@ember/template-factory", "@ember/debug", "@ember/utils", "@glimmer/component", "@glimmer/tracking"], function (_exports, _component, _templateFactory, _debug, _utils, _component2, _tracking) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -85300,7 +85475,7 @@ define("@upfluence/oss-components/components/o-s-s/attribute-text", ["exports", 
       {{/if}}
     </div>
     <span class="oss-attribute__value">{{this.value}}</span>
-    {{#if this.isCopyable}}
+    {{#if (and this.displayCopyBtn this.isCopyable)}}
       <div class="oss-attribute__copy">
         <OSS::Copy @value={{this.value}} @inline={{true}} />
       </div>
@@ -85309,9 +85484,9 @@ define("@upfluence/oss-components/components/o-s-s/attribute-text", ["exports", 
   
   */
   {
-    "id": "MpylFHA7",
-    "block": "[[[11,0],[24,0,\"oss-attribute\"],[24,\"data-control-name\",\"attribute-text\"],[4,[38,0],[\"mouseenter\",[28,[37,1],[[28,[37,2],[[30,0,[\"displayCopyBtn\"]]],null],true],null]],null],[4,[38,0],[\"mouseleave\",[28,[37,1],[[28,[37,2],[[30,0,[\"displayCopyBtn\"]]],null],false],null]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-attribute__label\"],[12],[1,\"\\n    \"],[10,1],[12],[1,[30,0,[\"args\",\"label\"]]],[13],[1,\"\\n\"],[41,[30,0,[\"args\",\"tooltip\"]],[[[1,\"      \"],[8,[39,4],[[24,0,\"oss-attribute__info\"],[4,[38,5],null,[[\"title\",\"placement\"],[[30,0,[\"args\",\"tooltip\"]],\"top\"]]]],[[\"@icon\",\"@inline\"],[\"far fa-info-circle\",true]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n  \"],[10,1],[14,0,\"oss-attribute__value\"],[12],[1,[30,0,[\"value\"]]],[13],[1,\"\\n\"],[41,[30,0,[\"isCopyable\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-attribute__copy\"],[12],[1,\"\\n      \"],[8,[39,6],null,[[\"@value\",\"@inline\"],[[30,0,[\"value\"]],true]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[],false,[\"on\",\"fn\",\"mut\",\"if\",\"o-s-s/icon\",\"enable-tooltip\",\"o-s-s/copy\"]]",
-    "moduleName": "@upfluence/oss-components/components/o-s-s/attribute-text.hbs",
+    "id": "RSjuJ5id",
+    "block": "[[[11,0],[24,0,\"oss-attribute\"],[24,\"data-control-name\",\"attribute-text\"],[4,[38,0],[\"mouseenter\",[28,[37,1],[[28,[37,2],[[30,0,[\"displayCopyBtn\"]]],null],true],null]],null],[4,[38,0],[\"mouseleave\",[28,[37,1],[[28,[37,2],[[30,0,[\"displayCopyBtn\"]]],null],false],null]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-attribute__label\"],[12],[1,\"\\n    \"],[10,1],[12],[1,[30,0,[\"args\",\"label\"]]],[13],[1,\"\\n\"],[41,[30,0,[\"args\",\"tooltip\"]],[[[1,\"      \"],[8,[39,4],[[24,0,\"oss-attribute__info\"],[4,[38,5],null,[[\"title\",\"placement\"],[[30,0,[\"args\",\"tooltip\"]],\"top\"]]]],[[\"@icon\",\"@inline\"],[\"far fa-info-circle\",true]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n  \"],[10,1],[14,0,\"oss-attribute__value\"],[12],[1,[30,0,[\"value\"]]],[13],[1,\"\\n\"],[41,[28,[37,6],[[30,0,[\"displayCopyBtn\"]],[30,0,[\"isCopyable\"]]],null],[[[1,\"    \"],[10,0],[14,0,\"oss-attribute__copy\"],[12],[1,\"\\n      \"],[8,[39,7],null,[[\"@value\",\"@inline\"],[[30,0,[\"value\"]],true]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[],false,[\"on\",\"fn\",\"mut\",\"if\",\"o-s-s/icon\",\"enable-tooltip\",\"and\",\"o-s-s/copy\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/attribute/text.hbs",
     "isStrictMode": false
   });
 
@@ -85343,7 +85518,7 @@ define("@upfluence/oss-components/components/o-s-s/attribute-text", ["exports", 
     }, {
       key: "isCopyable",
       get: function get() {
-        return Boolean(this.copyable) && !(0, _utils.isBlank)(this.args.value);
+        return this.copyable && !(0, _utils.isBlank)(this.args.value);
       }
     }]);
 
@@ -85368,7 +85543,7 @@ define("@upfluence/oss-components/components/o-s-s/attribute-text", ["exports", 
   _exports.default = OSSAttributeText;
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSAttributeText);
 });
-;define("@upfluence/oss-components/components/o-s-s/attribute-text.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/attribute/text.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -85434,7 +85609,7 @@ define("@upfluence/oss-components/components/o-s-s/attribute-text", ["exports", 
             summary: 'boolean'
           },
           defaultValue: {
-            summary: false
+            summary: true
           }
         },
         control: {
@@ -85454,7 +85629,8 @@ define("@upfluence/oss-components/components/o-s-s/attribute-text", ["exports", 
   _exports.default = _default;
   var defaultArgs = {
     label: 'Label',
-    value: 'Your copied value'
+    value: 'Your copied value',
+    copyable: true
   };
 
   var BasicUsageTemplate = function BasicUsageTemplate(args) {
@@ -85474,165 +85650,6 @@ define("@upfluence/oss-components/components/o-s-s/attribute-text", ["exports", 
   };
 
   var Default = BasicUsageTemplate.bind({});
-  _exports.Default = Default;
-  Default.args = defaultArgs;
-});
-;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-define("@upfluence/oss-components/components/o-s-s/attribute/country", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@upfluence/oss-components/utils/country-codes"], function (_exports, _component, _templateFactory, _component2, _countryCodes) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-
-  function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
-
-  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-
-  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
-
-  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
-  /*
-    <div class="oss-attribute"
-       {{on "mouseenter" (fn (mut this.displayCopyBtn) true)}}
-       {{on "mouseleave" (fn (mut this.displayCopyBtn) false)}}
-       data-control-name="attribute-country" ...attributes>
-    <div class="oss-attribute__label">
-      <span>{{t "oss-components.attribute.country"}}</span>
-      {{#if (not-eq this.countryName "-")}}
-        <div class="fflag fflag-{{@countryCode}} ff-round ff-sm"></div>
-      {{/if}}
-    </div>
-    <span class="oss-attribute__value">
-      {{this.countryName}}
-    </span>
-    {{#if (and this.displayCopyBtn (not-eq this.countryName "-"))}}
-      <OSS::Copy @value={{this.countryName}} @inline="true" />
-    {{/if}}
-  </div>
-  
-  */
-  {
-    "id": "oT/Xmh5k",
-    "block": "[[[11,0],[24,0,\"oss-attribute\"],[24,\"data-control-name\",\"attribute-country\"],[17,1],[4,[38,0],[\"mouseenter\",[28,[37,1],[[28,[37,2],[[30,0,[\"displayCopyBtn\"]]],null],true],null]],null],[4,[38,0],[\"mouseleave\",[28,[37,1],[[28,[37,2],[[30,0,[\"displayCopyBtn\"]]],null],false],null]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-attribute__label\"],[12],[1,\"\\n    \"],[10,1],[12],[1,[28,[35,3],[\"oss-components.attribute.country\"],null]],[13],[1,\"\\n\"],[41,[28,[37,5],[[30,0,[\"countryName\"]],\"-\"],null],[[[1,\"      \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,2],\" ff-round ff-sm\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n  \"],[10,1],[14,0,\"oss-attribute__value\"],[12],[1,\"\\n    \"],[1,[30,0,[\"countryName\"]]],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[28,[37,6],[[30,0,[\"displayCopyBtn\"]],[28,[37,5],[[30,0,[\"countryName\"]],\"-\"],null]],null],[[[1,\"    \"],[8,[39,7],null,[[\"@value\",\"@inline\"],[[30,0,[\"countryName\"]],\"true\"]],null],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@countryCode\"],false,[\"on\",\"fn\",\"mut\",\"t\",\"if\",\"not-eq\",\"and\",\"o-s-s/copy\"]]",
-    "moduleName": "@upfluence/oss-components/components/o-s-s/attribute/country.hbs",
-    "isStrictMode": false
-  });
-
-  var OSSAttributeCountry = /*#__PURE__*/function (_Component) {
-    _inherits(OSSAttributeCountry, _Component);
-
-    var _super = _createSuper(OSSAttributeCountry);
-
-    function OSSAttributeCountry() {
-      var _this;
-
-      _classCallCheck(this, OSSAttributeCountry);
-
-      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-
-      _this = _super.call.apply(_super, [this].concat(args));
-
-      _defineProperty(_assertThisInitialized(_this), "countryDictionnary", _countryCodes.countries);
-
-      return _this;
-    }
-
-    _createClass(OSSAttributeCountry, [{
-      key: "countryName",
-      get: function get() {
-        var _this$countryDictionn,
-            _this2 = this;
-
-        return ((_this$countryDictionn = this.countryDictionnary.find(function (country) {
-          return country.alpha2 === _this2.args.countryCode;
-        })) === null || _this$countryDictionn === void 0 ? void 0 : _this$countryDictionn.name) || '-';
-      }
-    }]);
-
-    return OSSAttributeCountry;
-  }(_component2.default);
-
-  _exports.default = OSSAttributeCountry;
-  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSAttributeCountry);
-});
-;define("@upfluence/oss-components/components/o-s-s/attribute/country.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.Default = _exports.default = void 0;
-  var _default = {
-    title: 'Components/OSS::Attribute::Country',
-    component: 'country',
-    argTypes: {
-      countryCode: {
-        description: 'The country-code in alpha2 format that will be used to display the flag and country name.',
-        table: {
-          defaultValue: {
-            summary: 'undefined'
-          }
-        },
-        control: {
-          type: 'text'
-        }
-      }
-    },
-    parameters: {
-      docs: {
-        description: {
-          component: 'Part of the Attribute displays. The OSS::Attribute::Country displays the flag and name of the country passed in parameter.'
-        }
-      }
-    }
-  };
-  _exports.default = _default;
-  var defaultArgs = {
-    countryCode: 'FR'
-  };
-
-  var Template = function Template(args) {
-    return {
-      template: (0, _templateFactory.createTemplateFactory)(
-      /*
-        
-          <div style="padding: 12px; background: white">
-            <OSS::Attribute::Country @countryCode={{this.countryCode}} />
-          </div>
-        
-      */
-      {
-        "id": "UDNr+paw",
-        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"padding: 12px; background: white\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@countryCode\"],[[30,0,[\"countryCode\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/attribute/country\"]]",
-        "moduleName": "(unknown template module)",
-        "isStrictMode": false
-      }),
-      context: args
-    };
-  };
-
-  var Default = Template.bind({});
   _exports.Default = Default;
   Default.args = defaultArgs;
 });
@@ -109183,36 +109200,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-1948dNnPOvuuVJQy/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-1948HX2UhF4VHSiM/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-1948dNnPOvuuVJQy/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-1948HX2UhF4VHSiM/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1948dNnPOvuuVJQy/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1948HX2UhF4VHSiM/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-1948dNnPOvuuVJQy/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-1948HX2UhF4VHSiM/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-1948dNnPOvuuVJQy/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-1948HX2UhF4VHSiM/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1948dNnPOvuuVJQy/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1948HX2UhF4VHSiM/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-1948dNnPOvuuVJQy/cache-275-bundler/staging/l.js /tmp/broccoli-1948dNnPOvuuVJQy/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-1948HX2UhF4VHSiM/cache-275-bundler/staging/l.js /tmp/broccoli-1948HX2UhF4VHSiM/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-1948dNnPOvuuVJQy/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1948dNnPOvuuVJQy/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1948dNnPOvuuVJQy/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1948dNnPOvuuVJQy/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1948dNnPOvuuVJQy/cache-275-bundler/staging/l.js_/tmp/broccoli-1948dNnPOvuuVJQy/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-1948HX2UhF4VHSiM/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1948HX2UhF4VHSiM/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1948HX2UhF4VHSiM/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1948HX2UhF4VHSiM/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1948HX2UhF4VHSiM/cache-275-bundler/staging/l.js_/tmp/broccoli-1948HX2UhF4VHSiM/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
