@@ -12706,7 +12706,7 @@ For complete information visit: www.freakflagsprite.com
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out, border-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .upf-square-btn--xs,
 .upf-square-btn--sm {
@@ -12724,7 +12724,7 @@ For complete information visit: www.freakflagsprite.com
 }
 .upf-square-btn i,
 .upf-square-btn span {
-  transition: all 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out, border-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .upf-square-btn:disabled:not(.js-btn--loading) {
   border: 1px solid var(--color-gray-200);
@@ -12752,11 +12752,11 @@ For complete information visit: www.freakflagsprite.com
   touch-action: manipulation;
   vertical-align: middle;
   white-space: nowrap;
-  transition: all 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out, border-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .upf-btn i,
 .upf-btn span {
-  transition: all 0.25s ease-in-out;
+  transition: background-color 0.25s ease-in-out, border-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .upf-btn:focus,
 .upf-btn:active {
