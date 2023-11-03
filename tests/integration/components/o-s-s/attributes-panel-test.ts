@@ -10,6 +10,7 @@ module('Integration | Component | o-s-s/attributes-panel', function (hooks) {
   hooks.beforeEach(function () {
     this.icon = 'fa-laptop-code';
     this.title = 'Title';
+    this.isSaveDisabled = undefined;
     this.onSave = sinon.stub();
     this.onCancel = sinon.stub();
     this.onEdit = sinon.stub();
@@ -157,10 +158,29 @@ module('Integration | Component | o-s-s/attributes-panel', function (hooks) {
       });
     });
 
+    module('when @isSaveDisabled', () => {
+      test('is undefined, the save button is not disabled', async function (assert) {
+        await renderComponentAndClickOnEdit();
+        assert.dom('[data-control-name="attributes-panel-save-button"]').isNotDisabled();
+      });
+
+      test('is true, the save button is disabled', async function (assert) {
+        this.isSaveDisabled = true;
+        await renderComponentAndClickOnEdit();
+        assert.dom('[data-control-name="attributes-panel-save-button"]').isDisabled();
+      });
+
+      test('is false, the save button is not disabled', async function (assert) {
+        this.isSaveDisabled = false;
+        await renderComponentAndClickOnEdit();
+        assert.dom('[data-control-name="attributes-panel-save-button"]').isNotDisabled();
+      });
+    });
+
     async function renderComponentAndClickOnEdit() {
       await render(hbs`
         <OSS::AttributesPanel @icon={{this.icon}} @title={{this.title}} @onSave={{this.onSave}} @onEdit={{this.onEdit}}
-                              @onCancel={{this.onCancel}}>
+                              @onCancel={{this.onCancel}} @isSaveDisabled={{this.isSaveDisabled}}>
           <:contextual-action><div class="custom-contextual-action"></div></:contextual-action>
           <:edition-mode>
             <div class="custom-edition-mode">Edition mode</div>

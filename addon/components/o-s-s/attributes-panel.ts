@@ -8,6 +8,7 @@ type Mode = 'view' | 'edition';
 interface OSSAttributesPanelArgs {
   title: string;
   icon?: string;
+  isSaveDisabled?: boolean;
   onSave(): Promise<void>;
   onEdit?(): void;
   onCancel?(): void;
