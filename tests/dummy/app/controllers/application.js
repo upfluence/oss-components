@@ -78,6 +78,7 @@ export default class ApplicationController extends Controller {
   @tracked isChecked = true;
   @tracked togglable = false;
   @tracked emailInputValue = '';
+  @tracked revealed = false;
 
   @tracked media = [
     {
@@ -136,6 +137,28 @@ export default class ApplicationController extends Controller {
       label: 'Second'
     }
   ];
+
+  @action
+  onRevealEmailError() {
+    console.log('on reveal email error');
+    return new Promise((res, rej) => {
+      setTimeout(() => {
+        this.toast.error('There was an error retrieving the email address. Try again later.', 'Error');
+        return rej('failed');
+      }, 1000);
+    });
+  }
+
+  @action
+  onRevealEmailSuccess() {
+    console.log('on reveal email error');
+    return new Promise((res) => {
+      setTimeout(() => {
+        this.revealed = true;
+        return res('success');
+      }, 1000);
+    });
+  }
 
   @action
   redirectTo(route) {

@@ -42,26 +42,22 @@
       <OSS::Copy @value="I am the value copied" @inline={{true}} />
       <OSS::Copy @value="I am the value copied" />
     </div>
-    <div class="fx-row fx-1 fx-gap-px-10 margin-md">
-      <OSS::Attribute::Country @countryCode="US" />
-      <OSS::Attribute::Country @countryCode="" />
-    </div>
-    <div class="fx-row fx-1 fx-gap-px-10 margin-md">
-      <OSS::Attribute::Text @label="Label with tooltip copyable" @value="Hello World"
-                            @tooltip="Hello World" />
-      <OSS::Attribute::Text @label="Label copyable" @value="Hello World" @tooltip="Hello World" />
-    </div>
-    <div class="fx-row fx-1 fx-gap-px-10 margin-md">
-      <OSS::Attribute::Text @label="Label not copyable" @value="Hello World" @copyable={{false}} />
-      <OSS::Attribute::Text @label="Label not copyable with tooltip" @value="Hello World" @tooltip="Hello World"
-                            @copyable={{false}} />
-    </div>
-    <div class="fx-row fx-1 fx-gap-px-10 margin-md">
-      <OSS::Attribute::Text @label="This label is waaaaaaaaaaaaaaaaay too long" @value="Hello World"
-                            @tooltip="Hello World" />
-      <OSS::Attribute::Text @label="And the row is long too" @value="Hello World" @copyable={{false}} />
-      <OSS::Attribute::Text @label="Label not copyable with tooltip" @value="Hello World" @tooltip="Hello World"
-                            @copyable={{false}} />
+    <div class="fx-row fx-1 fx-gap-px-10 margin-md width-pc-50">
+      <OSS::ContentPanel class="fx-1">
+        <OSS::Attribute::RevealableEmail @lockTooltip="This will fail"
+                                         @onRevealEmail={{this.onRevealEmailError}} />
+        {{#if this.revealed}}
+          <OSS::Attribute::Text @label="Email address" @value="john.doe@gmail.com" />
+        {{else}}
+          <OSS::Attribute::RevealableEmail @tooltip="Click on lock to reveal"
+                                           @onRevealEmail={{this.onRevealEmailSuccess}} />
+        {{/if}}
+        <OSS::Attribute::Country @countryCode="US" />
+        <OSS::Attribute::Country @countryCode="" />
+        <OSS::Attribute::Text @label="Label with tooltip copyable" @value="Hello World"
+                              @tooltip="Hello World" />
+        <OSS::Attribute::Text @label="Label not copyable" @value="Hello World" @copyable={{false}} />
+      </OSS::ContentPanel>
     </div>
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
       <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
