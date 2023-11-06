@@ -9,7 +9,7 @@ module('Integration | Component | o-s-s/attribute/text', function (hooks) {
 
   module('Default behavior', function () {
     module('Render conditions', function () {
-      test('it renders', async function (assert) {
+      test('It renders', async function (assert) {
         await render(hbs`<OSS::Attribute::Text @label="Hello" @value="World" />`);
         assert.dom('.oss-attribute').exists();
         assert.dom('.oss-attribute__label').hasText('Hello');
@@ -22,13 +22,13 @@ module('Integration | Component | o-s-s/attribute/text', function (hooks) {
         assert.dom('.oss-attribute__value').hasText('-');
       });
 
-      test('it renders with a tooltip when specified', async function (assert) {
+      test('It renders with a tooltip when specified', async function (assert) {
         await render(hbs`<OSS::Attribute::Text @label="Hello" @tooltip="Tooltip" />`);
         assert.dom('.oss-attribute__info').exists();
         await assert.tooltip('.oss-attribute__info').hasTitle('Tooltip');
       });
 
-      test('it renders a dash as value when no value is specified', async function (assert) {
+      test('It renders a dash as value when no value is specified', async function (assert) {
         await render(hbs`<OSS::Attribute::Text @label="Hello" />`);
         assert.dom('.oss-attribute').exists();
         assert.dom('.oss-attribute__value').hasText('-');
@@ -47,12 +47,12 @@ module('Integration | Component | o-s-s/attribute/text', function (hooks) {
         this.displayCopyBtn = true;
       });
 
-      test('the copy icon is not visible before hovering', async function (assert) {
+      test('The copy icon is not visible before hovering', async function (assert) {
         await render(hbs`<OSS::Attribute::Text @label="Hello" @value={{this.textForCopy}} />`);
         assert.dom('.oss-attribute__copy').doesNotExist();
       });
 
-      test('the text is copyable by default', async function (assert) {
+      test('The text is copyable by default', async function (assert) {
         await render(hbs`<OSS::Attribute::Text @label="Hello" @value={{this.textForCopy}} />`);
 
         await triggerEvent('.oss-attribute', 'mouseenter');

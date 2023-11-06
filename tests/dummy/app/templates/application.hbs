@@ -21,10 +21,6 @@
   </OSS::Layout::Sidebar>
 
   <div style="width:100%; height:100vh; overflow: auto; background-color: var(--color-gray-50)">
-    <div class="fx-1 fx-col fx-gap-px-9">
-      <OSS::Attribute::Country @countryCode="US" />
-      <OSS::Attribute::Country @countryCode="" />
-    </div>
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
       <OSS::AttributesPanel @title="Title" @icon="fa-laptop-code" @onSave={{this.onAttributePanelSave}}
                             @onCancel={{this.onAttributePanelCancel}} @onEdit={{this.onAttributePanelEdit}}>
@@ -45,6 +41,10 @@
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
       <OSS::Copy @value="I am the value copied" @inline={{true}} />
       <OSS::Copy @value="I am the value copied" />
+    </div>
+    <div class="fx-row fx-1 fx-gap-px-10 margin-md">
+      <OSS::Attribute::Country @countryCode="US" />
+      <OSS::Attribute::Country @countryCode="" />
     </div>
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
       <OSS::Attribute::Text @label="Label with tooltip copyable" @value="Hello World"
