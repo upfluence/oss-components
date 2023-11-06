@@ -151,7 +151,7 @@ export default class ApplicationController extends Controller {
 
   @action
   onRevealEmailSuccess() {
-    console.log('on reveal email error');
+    console.log('on reveal email success');
     return new Promise((res) => {
       setTimeout(() => {
         this.revealed = true;

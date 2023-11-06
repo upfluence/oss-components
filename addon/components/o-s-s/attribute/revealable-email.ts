@@ -7,11 +7,11 @@ import { assert } from '@ember/debug';
 interface OSSAttributeRevealableEmailArgs {
   tooltip?: string;
   lockTooltip?: string;
-  onRevealEmail(): Promise<void>;
+  onRevealEmail(): Promise<unknown>;
 }
 
 export default class OSSAttributeRevealableEmail extends Component<OSSAttributeRevealableEmailArgs> {
-  @service intl: any;
+  @service declare intl: any;
   @tracked loading: boolean = false;
 
   constructor(owner: unknown, args: OSSAttributeRevealableEmailArgs) {

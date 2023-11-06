@@ -1,9 +1,8 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, triggerEvent } from '@ember/test-helpers';
+import { render, triggerEvent, click } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import sinon from 'sinon';
-import click from '@ember/test-helpers/dom/click';
 
 module('Integration | Component | o-s-s/attribute/revealable-email', function (hooks) {
   setupRenderingTest(hooks);
