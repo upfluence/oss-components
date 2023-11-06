@@ -1,7 +1,6 @@
 import { assert } from '@ember/debug';
 import { isBlank } from '@ember/utils';
 import Component from '@glimmer/component';
-import { tracked } from '@glimmer/tracking';
 
 interface OSSAttributeTextArgs {
   label: string;
@@ -11,19 +10,12 @@ interface OSSAttributeTextArgs {
 }
 
 export default class OSSAttributeText extends Component<OSSAttributeTextArgs> {
-  @tracked displayCopyBtn: boolean = false;
-  @tracked copyable: boolean = this.args.copyable ?? true;
-
   constructor(owner: unknown, args: OSSAttributeTextArgs) {
     super(owner, args);
-    assert(`[component][OSS::Attribute::Text] label is required `, this.args.label);
+    assert('[component][OSS::Attribute::Text] label is required', this.args.label);
   }
 
   get value(): string {
     return isBlank(this.args.value) ? '-' : this.args.value!;
-  }
-
-  get isCopyable(): boolean {
-    return this.copyable && !isBlank(this.args.value);
   }
 }
