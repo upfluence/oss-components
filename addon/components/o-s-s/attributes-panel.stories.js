@@ -26,6 +26,16 @@ export default {
       },
       control: { type: 'text' }
     },
+    isSaveDisabled: {
+      description: 'If the save button is disabled or not',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'boolean' }
+    },
     onSave: {
       description: 'A callback sent when the saved button is pressed',
       table: {
@@ -68,6 +78,7 @@ export default {
 const defaultArgs = {
   title: 'Title',
   icon: 'fa-laptop-code',
+  isSaveDisabled: false,
   onSave: action('onSave'),
   onCancel: action('onCancel'),
   onEdit: action('onEdit')
@@ -77,7 +88,7 @@ const DefaultUsageTemplate = (args) => ({
   template: hbs`
     <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
       <OSS::AttributesPanel @title={{this.title}} @icon={{this.icon}} @onSave={{this.onSave}}
-                            @onCancel={{this.onCancel}} @onEdit={{this.onEdit}}>
+                            @onCancel={{this.onCancel}} @onEdit={{this.onEdit}} @isSaveDisabled={{this.isSaveDisabled}} >
           <:view-mode>
             View mode
           </:view-mode>
@@ -94,7 +105,7 @@ const WithContextualActionTemplate = (args) => ({
   template: hbs`
     <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
       <OSS::AttributesPanel @title={{this.title}} @icon={{this.icon}} @onSave={{this.onSave}}
-                            @onCancel={{this.onCancel}} @onEdit={{this.onEdit}}>
+                            @onCancel={{this.onCancel}} @onEdit={{this.onEdit}} @isSaveDisabled={{this.isSaveDisabled}}>
           <:contextual-action>
             <OSS::Button @icon="fa-plus" @square={{true}} />
           </:contextual-action>
