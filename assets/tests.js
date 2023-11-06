@@ -2619,6 +2619,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["@embe
     hooks.beforeEach(function () {
       this.icon = 'fa-laptop-code';
       this.title = 'Title';
+      this.isSaveDisabled = undefined;
       this.onSave = _sinon.default.stub();
       this.onCancel = _sinon.default.stub();
       this.onEdit = _sinon.default.stub();
@@ -3187,23 +3188,99 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["@embe
           };
         }());
       });
+      (0, _qunit.module)('when @isSaveDisabled', function () {
+        (0, _qunit.test)('is undefined, the save button is not disabled', /*#__PURE__*/function () {
+          var _ref20 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee20(assert) {
+            return regeneratorRuntime.wrap(function _callee20$(_context20) {
+              while (1) {
+                switch (_context20.prev = _context20.next) {
+                  case 0:
+                    _context20.next = 2;
+                    return renderComponentAndClickOnEdit();
+
+                  case 2:
+                    assert.dom('[data-control-name="attributes-panel-save-button"]').isNotDisabled();
+
+                  case 3:
+                  case "end":
+                    return _context20.stop();
+                }
+              }
+            }, _callee20);
+          }));
+
+          return function (_x19) {
+            return _ref20.apply(this, arguments);
+          };
+        }());
+        (0, _qunit.test)('is true, the save button is disabled', /*#__PURE__*/function () {
+          var _ref21 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee21(assert) {
+            return regeneratorRuntime.wrap(function _callee21$(_context21) {
+              while (1) {
+                switch (_context21.prev = _context21.next) {
+                  case 0:
+                    this.isSaveDisabled = true;
+                    _context21.next = 3;
+                    return renderComponentAndClickOnEdit();
+
+                  case 3:
+                    assert.dom('[data-control-name="attributes-panel-save-button"]').isDisabled();
+
+                  case 4:
+                  case "end":
+                    return _context21.stop();
+                }
+              }
+            }, _callee21, this);
+          }));
+
+          return function (_x20) {
+            return _ref21.apply(this, arguments);
+          };
+        }());
+        (0, _qunit.test)('is false, the save button is not disabled', /*#__PURE__*/function () {
+          var _ref22 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee22(assert) {
+            return regeneratorRuntime.wrap(function _callee22$(_context22) {
+              while (1) {
+                switch (_context22.prev = _context22.next) {
+                  case 0:
+                    this.isSaveDisabled = false;
+                    _context22.next = 3;
+                    return renderComponentAndClickOnEdit();
+
+                  case 3:
+                    assert.dom('[data-control-name="attributes-panel-save-button"]').isNotDisabled();
+
+                  case 4:
+                  case "end":
+                    return _context22.stop();
+                }
+              }
+            }, _callee22, this);
+          }));
+
+          return function (_x21) {
+            return _ref22.apply(this, arguments);
+          };
+        }());
+      });
 
       function renderComponentAndClickOnEdit() {
         return _renderComponentAndClickOnEdit.apply(this, arguments);
       }
 
       function _renderComponentAndClickOnEdit() {
-        _renderComponentAndClickOnEdit = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee20() {
-          return regeneratorRuntime.wrap(function _callee20$(_context20) {
+        _renderComponentAndClickOnEdit = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee23() {
+          return regeneratorRuntime.wrap(function _callee23$(_context23) {
             while (1) {
-              switch (_context20.prev = _context20.next) {
+              switch (_context23.prev = _context23.next) {
                 case 0:
-                  _context20.next = 2;
+                  _context23.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     
                           <OSS::AttributesPanel @icon={{this.icon}} @title={{this.title}} @onSave={{this.onSave}} @onEdit={{this.onEdit}}
-                                                @onCancel={{this.onCancel}}>
+                                                @onCancel={{this.onCancel}} @isSaveDisabled={{this.isSaveDisabled}}>
                             <:contextual-action><div class="custom-contextual-action"></div></:contextual-action>
                             <:edition-mode>
                               <div class="custom-edition-mode">Edition mode</div>
@@ -3212,36 +3289,36 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["@embe
                         
                   */
                   {
-                    "id": "meBQfQEX",
-                    "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@icon\",\"@title\",\"@onSave\",\"@onEdit\",\"@onCancel\"],[[30,0,[\"icon\"]],[30,0,[\"title\"]],[30,0,[\"onSave\"]],[30,0,[\"onEdit\"]],[30,0,[\"onCancel\"]]]],[[\"contextual-action\",\"edition-mode\"],[[[[10,0],[14,0,\"custom-contextual-action\"],[12],[13]],[]],[[[1,\"\\n            \"],[10,0],[14,0,\"custom-edition-mode\"],[12],[1,\"Edition mode\"],[13],[1,\"\\n          \"]],[]]]]],[1,\"\\n      \"]],[],false,[\"o-s-s/attributes-panel\"]]",
+                    "id": "OU+DtERj",
+                    "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@icon\",\"@title\",\"@onSave\",\"@onEdit\",\"@onCancel\",\"@isSaveDisabled\"],[[30,0,[\"icon\"]],[30,0,[\"title\"]],[30,0,[\"onSave\"]],[30,0,[\"onEdit\"]],[30,0,[\"onCancel\"]],[30,0,[\"isSaveDisabled\"]]]],[[\"contextual-action\",\"edition-mode\"],[[[[10,0],[14,0,\"custom-contextual-action\"],[12],[13]],[]],[[[1,\"\\n            \"],[10,0],[14,0,\"custom-edition-mode\"],[12],[1,\"Edition mode\"],[13],[1,\"\\n          \"]],[]]]]],[1,\"\\n      \"]],[],false,[\"o-s-s/attributes-panel\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
 
                 case 2:
-                  _context20.next = 4;
+                  _context23.next = 4;
                   return (0, _testHelpers.click)('[data-control-name="attributes-panel-mode-switch-button"]');
 
                 case 4:
                 case "end":
-                  return _context20.stop();
+                  return _context23.stop();
               }
             }
-          }, _callee20);
+          }, _callee23);
         }));
         return _renderComponentAndClickOnEdit.apply(this, arguments);
       }
     });
     (0, _qunit.test)('it throws an error if @title is missing', /*#__PURE__*/function () {
-      var _ref20 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee21(assert) {
-        return regeneratorRuntime.wrap(function _callee21$(_context21) {
+      var _ref23 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee24(assert) {
+        return regeneratorRuntime.wrap(function _callee24$(_context24) {
           while (1) {
-            switch (_context21.prev = _context21.next) {
+            switch (_context24.prev = _context24.next) {
               case 0:
                 (0, _testHelpers.setupOnerror)(function (error) {
                   assert.equal(error.message, 'Assertion Failed: [component][OSS::AttributesPanel] The @title parameter is mandatory');
                 });
-                _context21.next = 3;
+                _context24.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::AttributesPanel @onSave={{this.onSave}} />
@@ -3255,26 +3332,26 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["@embe
 
               case 3:
               case "end":
-                return _context21.stop();
+                return _context24.stop();
             }
           }
-        }, _callee21);
+        }, _callee24);
       }));
 
-      return function (_x19) {
-        return _ref20.apply(this, arguments);
+      return function (_x22) {
+        return _ref23.apply(this, arguments);
       };
     }());
     (0, _qunit.test)('it throws an error if @onSave is missing', /*#__PURE__*/function () {
-      var _ref21 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee22(assert) {
-        return regeneratorRuntime.wrap(function _callee22$(_context22) {
+      var _ref24 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee25(assert) {
+        return regeneratorRuntime.wrap(function _callee25$(_context25) {
           while (1) {
-            switch (_context22.prev = _context22.next) {
+            switch (_context25.prev = _context25.next) {
               case 0:
                 (0, _testHelpers.setupOnerror)(function (error) {
                   assert.equal(error.message, 'Assertion Failed: [component][OSS::AttributesPanel] The @onSave parameter is mandatory');
                 });
-                _context22.next = 3;
+                _context25.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::AttributesPanel @title={{this.title}} />
@@ -3288,14 +3365,14 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["@embe
 
               case 3:
               case "end":
-                return _context22.stop();
+                return _context25.stop();
             }
           }
-        }, _callee22);
+        }, _callee25);
       }));
 
-      return function (_x20) {
-        return _ref21.apply(this, arguments);
+      return function (_x23) {
+        return _ref24.apply(this, arguments);
       };
     }());
   });

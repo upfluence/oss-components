@@ -85729,7 +85729,7 @@ define("@upfluence/oss-components/components/o-s-s/attributes-panel", ["exports"
               <OSS::Button @label={{t "oss-components.attributes_panel.cancel"}} {{on "click" this.onCancel}}
                            data-control-name="attributes-panel-cancel-button" />
               <OSS::Button @skin="primary" @label={{t "oss-components.attributes_panel.save"}} @loading={{this.isLoading}}
-                           {{on "click" this.onSave}} data-control-name="attributes-panel-save-button" />
+                           disabled={{@isSaveDisabled}} {{on "click" this.onSave}} data-control-name="attributes-panel-save-button" />
             </div>
           </div>
         {{/if}}
@@ -85739,8 +85739,8 @@ define("@upfluence/oss-components/components/o-s-s/attributes-panel", ["exports"
   
   */
   {
-    "id": "PcqVn4e/",
-    "block": "[[[11,0],[24,0,\"attributes-panel\"],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"fx-row fx-malign-space-between\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"        \"],[8,[39,1],[[24,0,\"font-color-primary-500\"]],[[\"@icon\"],[[30,2]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n        \"],[1,[30,3]],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[28,[37,2],[[30,0,[\"modeSelected\"]],\"view\"],null],[[[1,\"      \"],[10,0],[14,0,\"fx-row fx-gap-px-6\"],[12],[1,\"\\n\"],[41,[48,[30,4]],[[[1,\"          \"],[18,4,null],[1,\"\\n\"]],[]],null],[1,\"        \"],[8,[39,5],[[24,\"data-control-name\",\"attributes-panel-mode-switch-button\"],[4,[38,6],[\"click\",[30,0,[\"toggleMode\"]]],null]],[[\"@icon\",\"@square\"],[\"fa-pen\",true]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\\n  \"],[10,0],[15,0,[28,[37,7],[\"attributes-panel__container attributes-panel__container--\",[30,0,[\"modeSelected\"]]],null]],[12],[1,\"\\n\"],[41,[28,[37,2],[[30,0,[\"modeSelected\"]],\"view\"],null],[[[41,[48,[30,5]],[[[1,\"        \"],[18,5,null],[1,\"\\n\"]],[]],null]],[]],[[[41,[48,[30,6]],[[[1,\"        \"],[10,0],[14,0,\"fx-col fx-gap-px-18\"],[12],[1,\"\\n          \"],[18,6,null],[1,\"\\n          \"],[10,0],[14,0,\"fx-row fx-gap-px-18 fx-malign-end\"],[12],[1,\"\\n            \"],[8,[39,5],[[24,\"data-control-name\",\"attributes-panel-cancel-button\"],[4,[38,6],[\"click\",[30,0,[\"onCancel\"]]],null]],[[\"@label\"],[[28,[37,8],[\"oss-components.attributes_panel.cancel\"],null]]],null],[1,\"\\n            \"],[8,[39,5],[[24,\"data-control-name\",\"attributes-panel-save-button\"],[4,[38,6],[\"click\",[30,0,[\"onSave\"]]],null]],[[\"@skin\",\"@label\",\"@loading\"],[\"primary\",[28,[37,8],[\"oss-components.attributes_panel.save\"],null],[30,0,[\"isLoading\"]]]],null],[1,\"\\n          \"],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null]],[]]],[1,\"  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@title\",\"&contextual-action\",\"&view-mode\",\"&edition-mode\"],false,[\"if\",\"o-s-s/icon\",\"eq\",\"has-block\",\"yield\",\"o-s-s/button\",\"on\",\"concat\",\"t\"]]",
+    "id": "4hRnCTNb",
+    "block": "[[[11,0],[24,0,\"attributes-panel\"],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"fx-row fx-malign-space-between\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"        \"],[8,[39,1],[[24,0,\"font-color-primary-500\"]],[[\"@icon\"],[[30,2]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n        \"],[1,[30,3]],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[28,[37,2],[[30,0,[\"modeSelected\"]],\"view\"],null],[[[1,\"      \"],[10,0],[14,0,\"fx-row fx-gap-px-6\"],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"          \"],[18,5,null],[1,\"\\n\"]],[]],null],[1,\"        \"],[8,[39,5],[[24,\"data-control-name\",\"attributes-panel-mode-switch-button\"],[4,[38,6],[\"click\",[30,0,[\"toggleMode\"]]],null]],[[\"@icon\",\"@square\"],[\"fa-pen\",true]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\\n  \"],[10,0],[15,0,[28,[37,7],[\"attributes-panel__container attributes-panel__container--\",[30,0,[\"modeSelected\"]]],null]],[12],[1,\"\\n\"],[41,[28,[37,2],[[30,0,[\"modeSelected\"]],\"view\"],null],[[[41,[48,[30,6]],[[[1,\"        \"],[18,6,null],[1,\"\\n\"]],[]],null]],[]],[[[41,[48,[30,7]],[[[1,\"        \"],[10,0],[14,0,\"fx-col fx-gap-px-18\"],[12],[1,\"\\n          \"],[18,7,null],[1,\"\\n          \"],[10,0],[14,0,\"fx-row fx-gap-px-18 fx-malign-end\"],[12],[1,\"\\n            \"],[8,[39,5],[[24,\"data-control-name\",\"attributes-panel-cancel-button\"],[4,[38,6],[\"click\",[30,0,[\"onCancel\"]]],null]],[[\"@label\"],[[28,[37,8],[\"oss-components.attributes_panel.cancel\"],null]]],null],[1,\"\\n            \"],[8,[39,5],[[16,\"disabled\",[30,4]],[24,\"data-control-name\",\"attributes-panel-save-button\"],[4,[38,6],[\"click\",[30,0,[\"onSave\"]]],null]],[[\"@skin\",\"@label\",\"@loading\"],[\"primary\",[28,[37,8],[\"oss-components.attributes_panel.save\"],null],[30,0,[\"isLoading\"]]]],null],[1,\"\\n          \"],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null]],[]]],[1,\"  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@title\",\"@isSaveDisabled\",\"&contextual-action\",\"&view-mode\",\"&edition-mode\"],false,[\"if\",\"o-s-s/icon\",\"eq\",\"has-block\",\"yield\",\"o-s-s/button\",\"on\",\"concat\",\"t\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/attributes-panel.hbs",
     "isStrictMode": false
   });
@@ -85857,6 +85857,20 @@ define("@upfluence/oss-components/components/o-s-s/attributes-panel", ["exports"
           type: 'text'
         }
       },
+      isSaveDisabled: {
+        description: 'If the save button is disabled or not',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
       onSave: {
         description: 'A callback sent when the saved button is pressed',
         table: {
@@ -85900,6 +85914,7 @@ define("@upfluence/oss-components/components/o-s-s/attributes-panel", ["exports"
   var defaultArgs = {
     title: 'Title',
     icon: 'fa-laptop-code',
+    isSaveDisabled: false,
     onSave: (0, _addonActions.action)('onSave'),
     onCancel: (0, _addonActions.action)('onCancel'),
     onEdit: (0, _addonActions.action)('onEdit')
@@ -85912,7 +85927,7 @@ define("@upfluence/oss-components/components/o-s-s/attributes-panel", ["exports"
         
           <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
             <OSS::AttributesPanel @title={{this.title}} @icon={{this.icon}} @onSave={{this.onSave}}
-                                  @onCancel={{this.onCancel}} @onEdit={{this.onEdit}}>
+                                  @onCancel={{this.onCancel}} @onEdit={{this.onEdit}} @isSaveDisabled={{this.isSaveDisabled}} >
                 <:view-mode>
                   View mode
                 </:view-mode>
@@ -85924,8 +85939,8 @@ define("@upfluence/oss-components/components/o-s-s/attributes-panel", ["exports"
         
       */
       {
-        "id": "diiSZtyA",
-        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@icon\",\"@onSave\",\"@onCancel\",\"@onEdit\"],[[30,0,[\"title\"]],[30,0,[\"icon\"]],[30,0,[\"onSave\"]],[30,0,[\"onCancel\"]],[30,0,[\"onEdit\"]]]],[[\"view-mode\",\"edition-mode\"],[[[[1,\"\\n            View mode\\n          \"]],[]],[[[1,\"\\n            Edition mode\\n          \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/attributes-panel\"]]",
+        "id": "EVlqCZNF",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@icon\",\"@onSave\",\"@onCancel\",\"@onEdit\",\"@isSaveDisabled\"],[[30,0,[\"title\"]],[30,0,[\"icon\"]],[30,0,[\"onSave\"]],[30,0,[\"onCancel\"]],[30,0,[\"onEdit\"]],[30,0,[\"isSaveDisabled\"]]]],[[\"view-mode\",\"edition-mode\"],[[[[1,\"\\n            View mode\\n          \"]],[]],[[[1,\"\\n            Edition mode\\n          \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/attributes-panel\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -85940,7 +85955,7 @@ define("@upfluence/oss-components/components/o-s-s/attributes-panel", ["exports"
         
           <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
             <OSS::AttributesPanel @title={{this.title}} @icon={{this.icon}} @onSave={{this.onSave}}
-                                  @onCancel={{this.onCancel}} @onEdit={{this.onEdit}}>
+                                  @onCancel={{this.onCancel}} @onEdit={{this.onEdit}} @isSaveDisabled={{this.isSaveDisabled}}>
                 <:contextual-action>
                   <OSS::Button @icon="fa-plus" @square={{true}} />
                 </:contextual-action>
@@ -85955,8 +85970,8 @@ define("@upfluence/oss-components/components/o-s-s/attributes-panel", ["exports"
         
       */
       {
-        "id": "ho9dvqEt",
-        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@icon\",\"@onSave\",\"@onCancel\",\"@onEdit\"],[[30,0,[\"title\"]],[30,0,[\"icon\"]],[30,0,[\"onSave\"]],[30,0,[\"onCancel\"]],[30,0,[\"onEdit\"]]]],[[\"contextual-action\",\"view-mode\",\"edition-mode\"],[[[[1,\"\\n            \"],[8,[39,1],null,[[\"@icon\",\"@square\"],[\"fa-plus\",true]],null],[1,\"\\n          \"]],[]],[[[1,\"\\n            View mode\\n          \"]],[]],[[[1,\"\\n            Edition mode\\n          \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/attributes-panel\",\"o-s-s/button\"]]",
+        "id": "7LdvucLb",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@icon\",\"@onSave\",\"@onCancel\",\"@onEdit\",\"@isSaveDisabled\"],[[30,0,[\"title\"]],[30,0,[\"icon\"]],[30,0,[\"onSave\"]],[30,0,[\"onCancel\"]],[30,0,[\"onEdit\"]],[30,0,[\"isSaveDisabled\"]]]],[[\"contextual-action\",\"view-mode\",\"edition-mode\"],[[[[1,\"\\n            \"],[8,[39,1],null,[[\"@icon\",\"@square\"],[\"fa-plus\",true]],null],[1,\"\\n          \"]],[]],[[[1,\"\\n            View mode\\n          \"]],[]],[[[1,\"\\n            Edition mode\\n          \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/attributes-panel\",\"o-s-s/button\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -109200,36 +109215,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-19904PA5YUcZoQiK/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-19904PA5YUcZoQiK/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-19904PA5YUcZoQiK/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-19904PA5YUcZoQiK/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-19904PA5YUcZoQiK/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-19904PA5YUcZoQiK/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-19904PA5YUcZoQiK/cache-275-bundler/staging/l.js /tmp/broccoli-19904PA5YUcZoQiK/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/l.js /tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-19904PA5YUcZoQiK/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-19904PA5YUcZoQiK/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-19904PA5YUcZoQiK/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-19904PA5YUcZoQiK/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-19904PA5YUcZoQiK/cache-275-bundler/staging/l.js_/tmp/broccoli-19904PA5YUcZoQiK/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/l.js_/tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
