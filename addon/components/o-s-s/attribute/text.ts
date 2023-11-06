@@ -12,7 +12,7 @@ interface OSSAttributeTextArgs {
 export default class OSSAttributeText extends Component<OSSAttributeTextArgs> {
   constructor(owner: unknown, args: OSSAttributeTextArgs) {
     super(owner, args);
-    assert(`[component][OSS::Attribute::Text] label is required `, this.args.label);
+    assert('[component][OSS::Attribute::Text] label is required', this.args.label);
   }
 
   get value(): string {
