@@ -85248,6 +85248,93 @@ define("@upfluence/oss-components/components/o-s-s/array-input", ["exports", "@e
 });
 ;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+define("@upfluence/oss-components/components/o-s-s/attribute/base", ["exports", "@ember/component", "@ember/template-factory", "@ember/utils", "@glimmer/component"], function (_exports, _component, _templateFactory, _utils, _component2) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+  function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="oss-attribute"
+       {{on "mouseenter" (fn (mut this.displayCopyBtn) true)}}
+       {{on "mouseleave" (fn (mut this.displayCopyBtn) false)}}
+       ...attributes>
+    {{#if (has-block "label")}}
+      <div class="oss-attribute__label">{{yield to="label"}}</div>
+    {{/if}}
+    {{#if (has-block "value")}}
+      <div class="oss-attribute__value">{{yield to="value"}}</div>
+    {{else}}
+      <span class="oss-attribute__value">
+        {{@value}}
+      </span>
+    {{/if}}
+    {{#if (and this.displayCopyBtn this.isCopyable)}}
+      <div class="oss-attribute__copy">
+        <OSS::Copy @value={{@value}} @inline={{true}} />
+      </div>
+    {{/if}}
+  </div>
+  
+  */
+  {
+    "id": "rIdM3+CQ",
+    "block": "[[[11,0],[24,0,\"oss-attribute\"],[17,1],[4,[38,0],[\"mouseenter\",[28,[37,1],[[28,[37,2],[[30,0,[\"displayCopyBtn\"]]],null],true],null]],null],[4,[38,0],[\"mouseleave\",[28,[37,1],[[28,[37,2],[[30,0,[\"displayCopyBtn\"]]],null],false],null]],null],[12],[1,\"\\n\"],[41,[48,[30,3]],[[[1,\"    \"],[10,0],[14,0,\"oss-attribute__label\"],[12],[18,3,null],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,4]],[[[1,\"    \"],[10,0],[14,0,\"oss-attribute__value\"],[12],[18,4,null],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[10,1],[14,0,\"oss-attribute__value\"],[12],[1,\"\\n      \"],[1,[30,2]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]]],[41,[28,[37,6],[[30,0,[\"displayCopyBtn\"]],[30,0,[\"isCopyable\"]]],null],[[[1,\"    \"],[10,0],[14,0,\"oss-attribute__copy\"],[12],[1,\"\\n      \"],[8,[39,7],null,[[\"@value\",\"@inline\"],[[30,2],true]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@value\",\"&label\",\"&value\"],false,[\"on\",\"fn\",\"mut\",\"if\",\"has-block\",\"yield\",\"and\",\"o-s-s/copy\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/attribute/base.hbs",
+    "isStrictMode": false
+  });
+
+  var OSSAttributeBase = /*#__PURE__*/function (_Component) {
+    _inherits(OSSAttributeBase, _Component);
+
+    var _super = _createSuper(OSSAttributeBase);
+
+    function OSSAttributeBase() {
+      _classCallCheck(this, OSSAttributeBase);
+
+      return _super.apply(this, arguments);
+    }
+
+    _createClass(OSSAttributeBase, [{
+      key: "isCopyable",
+      get: function get() {
+        var _this$args$copyable;
+
+        return ((_this$args$copyable = this.args.copyable) !== null && _this$args$copyable !== void 0 ? _this$args$copyable : true) && !(0, _utils.isBlank)(this.args.value) && this.args.value !== '-';
+      }
+    }]);
+
+    return OSSAttributeBase;
+  }(_component2.default);
+
+  _exports.default = OSSAttributeBase;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSAttributeBase);
+});
+;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 define("@upfluence/oss-components/components/o-s-s/attribute/country", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@upfluence/oss-components/utils/country-codes", "@glimmer/tracking"], function (_exports, _component, _templateFactory, _component2, _countryCodes, _tracking) {
   "use strict";
 
@@ -85288,28 +85375,19 @@ define("@upfluence/oss-components/components/o-s-s/attribute/country", ["exports
 
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="oss-attribute"
-       {{on "mouseenter" (fn (mut this.displayCopyBtn) true)}}
-       {{on "mouseleave" (fn (mut this.displayCopyBtn) false)}}
-       data-control-name="attribute-country" ...attributes>
-    <div class="oss-attribute__label">
+    <OSS::Attribute::Base @value={{this.countryName}} data-control-name="attribute-country" ...attributes>
+    <:label>
       <span>{{t "oss-components.attribute.country"}}</span>
       {{#if (not-eq this.countryName "-")}}
         <div class="fflag fflag-{{@countryCode}} ff-round ff-sm"></div>
       {{/if}}
-    </div>
-    <span class="oss-attribute__value">
-      {{this.countryName}}
-    </span>
-    {{#if (and this.displayCopyBtn (not-eq this.countryName "-"))}}
-      <OSS::Copy @value={{this.countryName}} @inline="true" />
-    {{/if}}
-  </div>
+    </:label>
+  </OSS::Attribute::Base>
   
   */
   {
-    "id": "oT/Xmh5k",
-    "block": "[[[11,0],[24,0,\"oss-attribute\"],[24,\"data-control-name\",\"attribute-country\"],[17,1],[4,[38,0],[\"mouseenter\",[28,[37,1],[[28,[37,2],[[30,0,[\"displayCopyBtn\"]]],null],true],null]],null],[4,[38,0],[\"mouseleave\",[28,[37,1],[[28,[37,2],[[30,0,[\"displayCopyBtn\"]]],null],false],null]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-attribute__label\"],[12],[1,\"\\n    \"],[10,1],[12],[1,[28,[35,3],[\"oss-components.attribute.country\"],null]],[13],[1,\"\\n\"],[41,[28,[37,5],[[30,0,[\"countryName\"]],\"-\"],null],[[[1,\"      \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,2],\" ff-round ff-sm\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n  \"],[10,1],[14,0,\"oss-attribute__value\"],[12],[1,\"\\n    \"],[1,[30,0,[\"countryName\"]]],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[28,[37,6],[[30,0,[\"displayCopyBtn\"]],[28,[37,5],[[30,0,[\"countryName\"]],\"-\"],null]],null],[[[1,\"    \"],[8,[39,7],null,[[\"@value\",\"@inline\"],[[30,0,[\"countryName\"]],\"true\"]],null],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@countryCode\"],false,[\"on\",\"fn\",\"mut\",\"t\",\"if\",\"not-eq\",\"and\",\"o-s-s/copy\"]]",
+    "id": "nYaXIKbG",
+    "block": "[[[8,[39,0],[[24,\"data-control-name\",\"attribute-country\"],[17,1]],[[\"@value\"],[[30,0,[\"countryName\"]]]],[[\"label\"],[[[[1,\"\\n    \"],[10,1],[12],[1,[28,[35,1],[\"oss-components.attribute.country\"],null]],[13],[1,\"\\n\"],[41,[28,[37,3],[[30,0,[\"countryName\"]],\"-\"],null],[[[1,\"      \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,2],\" ff-round ff-sm\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"  \"]],[]]]]],[1,\"\\n\"]],[\"&attrs\",\"@countryCode\"],false,[\"o-s-s/attribute/base\",\"t\",\"if\",\"not-eq\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/attribute/country.hbs",
     "isStrictMode": false
   });
@@ -85387,7 +85465,7 @@ define("@upfluence/oss-components/components/o-s-s/attribute/country", ["exports
     parameters: {
       docs: {
         description: {
-          component: 'Part of the Attribute displays. The OSS::Attribute::Country displays the flag and name of the country passed in parameter.'
+          component: 'Member of the Attribute displays. The OSS::Attribute::Country displays the flag and name of the country passed in parameter.'
         }
       }
     }
@@ -85423,7 +85501,7 @@ define("@upfluence/oss-components/components/o-s-s/attribute/country", ["exports
 });
 ;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-define("@upfluence/oss-components/components/o-s-s/attribute/text", ["exports", "@ember/component", "@ember/template-factory", "@ember/debug", "@ember/utils", "@glimmer/component", "@glimmer/tracking"], function (_exports, _component, _templateFactory, _debug, _utils, _component2, _tracking) {
+define("@upfluence/oss-components/components/o-s-s/attribute/revealable-email", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@ember/service", "@ember/object", "@glimmer/tracking", "@ember/debug"], function (_exports, _component, _templateFactory, _component2, _service, _object, _tracking, _debug) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -85463,34 +85541,231 @@ define("@upfluence/oss-components/components/o-s-s/attribute/text", ["exports", 
 
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="oss-attribute"
-       {{on "mouseenter" (fn (mut this.displayCopyBtn) true)}}
-       {{on "mouseleave" (fn (mut this.displayCopyBtn) false)}}
-       data-control-name="attribute-text">
-    <div class="oss-attribute__label">
-      <span>{{this.args.label}}</span>
-      {{#if this.args.tooltip}}
+    <OSS::Attribute::Base @copyable={{false}} data-control-name="attribute-revealable-email"
+                        {{on "mouseenter" (fn (mut this.displayLockIcon) true)}}
+                        {{on "mouseleave" (fn (mut this.displayLockIcon) false)}}
+                        ...attributes>
+    <:label>
+      <span>{{t "oss-components.attribute.email.label"}}</span>
+      {{#if @tooltip}}
         <OSS::Icon @icon="far fa-info-circle" class="oss-attribute__info" @inline={{true}}
-                   {{enable-tooltip title=this.args.tooltip placement="top"}} />
+                   {{enable-tooltip title=@tooltip placement="top"}} />
       {{/if}}
-    </div>
-    <span class="oss-attribute__value">{{this.value}}</span>
-    {{#if (and this.displayCopyBtn this.isCopyable)}}
-      <div class="oss-attribute__copy">
-        <OSS::Copy @value={{this.value}} @inline={{true}} />
+    </:label>
+    <:value>
+      <div class="fx-row fx-xalign-center fx-gap-px-6">
+        <span class="fx-1">•••••@••••.•••</span>
+        {{#if this.loading}}
+          <OSS::Icon @icon="fa-circle-notch fa-spin" />
+        {{else if this.displayLockIcon}}
+          <OSS::Icon @icon="fa-lock" {{on "click" this.onRevealEmail}} role="button"
+                     {{enable-tooltip title=this.lockTooltip placement="top"}} />
+        {{/if}}
       </div>
-    {{/if}}
-  </div>
+    </:value>
+  </OSS::Attribute::Base>
   
   */
   {
-    "id": "RSjuJ5id",
-    "block": "[[[11,0],[24,0,\"oss-attribute\"],[24,\"data-control-name\",\"attribute-text\"],[4,[38,0],[\"mouseenter\",[28,[37,1],[[28,[37,2],[[30,0,[\"displayCopyBtn\"]]],null],true],null]],null],[4,[38,0],[\"mouseleave\",[28,[37,1],[[28,[37,2],[[30,0,[\"displayCopyBtn\"]]],null],false],null]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-attribute__label\"],[12],[1,\"\\n    \"],[10,1],[12],[1,[30,0,[\"args\",\"label\"]]],[13],[1,\"\\n\"],[41,[30,0,[\"args\",\"tooltip\"]],[[[1,\"      \"],[8,[39,4],[[24,0,\"oss-attribute__info\"],[4,[38,5],null,[[\"title\",\"placement\"],[[30,0,[\"args\",\"tooltip\"]],\"top\"]]]],[[\"@icon\",\"@inline\"],[\"far fa-info-circle\",true]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n  \"],[10,1],[14,0,\"oss-attribute__value\"],[12],[1,[30,0,[\"value\"]]],[13],[1,\"\\n\"],[41,[28,[37,6],[[30,0,[\"displayCopyBtn\"]],[30,0,[\"isCopyable\"]]],null],[[[1,\"    \"],[10,0],[14,0,\"oss-attribute__copy\"],[12],[1,\"\\n      \"],[8,[39,7],null,[[\"@value\",\"@inline\"],[[30,0,[\"value\"]],true]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[],false,[\"on\",\"fn\",\"mut\",\"if\",\"o-s-s/icon\",\"enable-tooltip\",\"and\",\"o-s-s/copy\"]]",
+    "id": "JcBXOieG",
+    "block": "[[[8,[39,0],[[24,\"data-control-name\",\"attribute-revealable-email\"],[17,1],[4,[38,1],[\"mouseenter\",[28,[37,2],[[28,[37,3],[[30,0,[\"displayLockIcon\"]]],null],true],null]],null],[4,[38,1],[\"mouseleave\",[28,[37,2],[[28,[37,3],[[30,0,[\"displayLockIcon\"]]],null],false],null]],null]],[[\"@copyable\"],[false]],[[\"label\",\"value\"],[[[[1,\"\\n    \"],[10,1],[12],[1,[28,[35,4],[\"oss-components.attribute.email.label\"],null]],[13],[1,\"\\n\"],[41,[30,2],[[[1,\"      \"],[8,[39,6],[[24,0,\"oss-attribute__info\"],[4,[38,7],null,[[\"title\",\"placement\"],[[30,2],\"top\"]]]],[[\"@icon\",\"@inline\"],[\"far fa-info-circle\",true]],null],[1,\"\\n\"]],[]],null],[1,\"  \"]],[]],[[[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-6\"],[12],[1,\"\\n      \"],[10,1],[14,0,\"fx-1\"],[12],[1,\"•••••@••••.•••\"],[13],[1,\"\\n\"],[41,[30,0,[\"loading\"]],[[[1,\"        \"],[8,[39,6],null,[[\"@icon\"],[\"fa-circle-notch fa-spin\"]],null],[1,\"\\n\"]],[]],[[[41,[30,0,[\"displayLockIcon\"]],[[[1,\"        \"],[8,[39,6],[[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,0,[\"onRevealEmail\"]]],null],[4,[38,7],null,[[\"title\",\"placement\"],[[30,0,[\"lockTooltip\"]],\"top\"]]]],[[\"@icon\"],[\"fa-lock\"]],null],[1,\"\\n      \"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"]],[]]]]],[1,\"\\n\"]],[\"&attrs\",\"@tooltip\"],false,[\"o-s-s/attribute/base\",\"on\",\"fn\",\"mut\",\"t\",\"if\",\"o-s-s/icon\",\"enable-tooltip\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/attribute/revealable-email.hbs",
+    "isStrictMode": false
+  });
+
+  var OSSAttributeRevealableEmail = (_class = /*#__PURE__*/function (_Component) {
+    _inherits(OSSAttributeRevealableEmail, _Component);
+
+    var _super = _createSuper(OSSAttributeRevealableEmail);
+
+    function OSSAttributeRevealableEmail(owner, args) {
+      var _this;
+
+      _classCallCheck(this, OSSAttributeRevealableEmail);
+
+      _this = _super.call(this, owner, args);
+
+      _initializerDefineProperty(_assertThisInitialized(_this), "intl", _descriptor, _assertThisInitialized(_this));
+
+      _initializerDefineProperty(_assertThisInitialized(_this), "loading", _descriptor2, _assertThisInitialized(_this));
+
+      (true && !(typeof args.onRevealEmail === 'function') && (0, _debug.assert)('[component][OSS::Attribute::RevealableEmail] @onRevealEmail method is required', typeof args.onRevealEmail === 'function'));
+      return _this;
+    }
+
+    _createClass(OSSAttributeRevealableEmail, [{
+      key: "lockTooltip",
+      get: function get() {
+        var _this$args$lockToolti;
+
+        return (_this$args$lockToolti = this.args.lockTooltip) !== null && _this$args$lockToolti !== void 0 ? _this$args$lockToolti : this.intl.t('oss-components.attribute.email.lock_tooltip');
+      }
+    }, {
+      key: "onRevealEmail",
+      value: function onRevealEmail() {
+        var _this2 = this;
+
+        this.loading = true;
+        this.args.onRevealEmail().finally(function () {
+          return _this2.loading = false;
+        });
+      }
+    }]);
+
+    return OSSAttributeRevealableEmail;
+  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "loading", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "onRevealEmail", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onRevealEmail"), _class.prototype)), _class);
+  _exports.default = OSSAttributeRevealableEmail;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSAttributeRevealableEmail);
+});
+;define("@upfluence/oss-components/components/o-s-s/attribute/revealable-email.stories", ["exports", "@ember/template-factory", "@storybook/addon-actions"], function (_exports, _templateFactory, _addonActions) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.Default = _exports.default = void 0;
+  var _default = {
+    title: 'Components/OSS::Attribute::RevealableEmail',
+    component: 'revealable-email',
+    argTypes: {
+      tooltip: {
+        description: 'Any string passed in here will display an info icon next to the label with the defined contents as tooltip.',
+        table: {
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      lockTooltip: {
+        description: 'Overwrites the default "Reveal email" tooltip that is visible on component hover',
+        table: {
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      onRevealEmail: {
+        description: 'The callback method triggered when a user clicks on the lock icon. It should return a promise which allows the spinner to stop being displayed when needed',
+        type: {
+          required: true
+        },
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'onRevealEmail(): Promise<void>'
+          }
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'Member of the Attribute displays. The OSS::Attribute::RevealableEmail displays a fake hidden email address and exposes a method to unhide the content.'
+        }
+      }
+    }
+  };
+  _exports.default = _default;
+  var defaultArgs = {
+    tooltip: 'This is the main tooltip',
+    lockTooltip: undefined,
+    onRevealEmail: (0, _addonActions.action)('onSearch')
+  };
+
+  var Template = function Template(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <div style="padding: 12px; background: white">
+            <OSS::Attribute::RevealableEmail @tooltip={{this.tooltip}} @lockTooltip={{this.lockTooltip}}
+                                             @onRevealEmail={{this.onRevealEmail}} />
+          </div>
+        
+      */
+      {
+        "id": "8qYN7Z7J",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"padding: 12px; background: white\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@tooltip\",\"@lockTooltip\",\"@onRevealEmail\"],[[30,0,[\"tooltip\"]],[30,0,[\"lockTooltip\"]],[30,0,[\"onRevealEmail\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/attribute/revealable-email\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+
+  var Default = Template.bind({});
+  _exports.Default = Default;
+  Default.args = defaultArgs;
+});
+;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+define("@upfluence/oss-components/components/o-s-s/attribute/text", ["exports", "@ember/component", "@ember/template-factory", "@ember/debug", "@ember/utils", "@glimmer/component"], function (_exports, _component, _templateFactory, _debug, _utils, _component2) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+  function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <OSS::Attribute::Base @value={{this.value}} @copyable={{@copyable}} data-control-name="attribute-text" ...attributes>
+    <:label>
+      <span>{{@label}}</span>
+      {{#if @tooltip}}
+        <OSS::Icon @icon="far fa-info-circle" class="oss-attribute__info"
+                   {{enable-tooltip title=@tooltip placement="top"}} />
+      {{/if}}
+    </:label>
+  </OSS::Attribute::Base>
+  
+  */
+  {
+    "id": "B5v7s8fd",
+    "block": "[[[8,[39,0],[[24,\"data-control-name\",\"attribute-text\"],[17,1]],[[\"@value\",\"@copyable\"],[[30,0,[\"value\"]],[30,2]]],[[\"label\"],[[[[1,\"\\n    \"],[10,1],[12],[1,[30,3]],[13],[1,\"\\n\"],[41,[30,4],[[[1,\"      \"],[8,[39,2],[[24,0,\"oss-attribute__info\"],[4,[38,3],null,[[\"title\",\"placement\"],[[30,4],\"top\"]]]],[[\"@icon\"],[\"far fa-info-circle\"]],null],[1,\"\\n\"]],[]],null],[1,\"  \"]],[]]]]],[1,\"\\n\"]],[\"&attrs\",\"@copyable\",\"@label\",\"@tooltip\"],false,[\"o-s-s/attribute/base\",\"if\",\"o-s-s/icon\",\"enable-tooltip\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/attribute/text.hbs",
     "isStrictMode": false
   });
 
-  var OSSAttributeText = (_class = /*#__PURE__*/function (_Component) {
+  var OSSAttributeText = /*#__PURE__*/function (_Component) {
     _inherits(OSSAttributeText, _Component);
 
     var _super = _createSuper(OSSAttributeText);
@@ -85501,12 +85776,7 @@ define("@upfluence/oss-components/components/o-s-s/attribute/text", ["exports", 
       _classCallCheck(this, OSSAttributeText);
 
       _this = _super.call(this, owner, args);
-
-      _initializerDefineProperty(_assertThisInitialized(_this), "displayCopyBtn", _descriptor, _assertThisInitialized(_this));
-
-      _initializerDefineProperty(_assertThisInitialized(_this), "copyable", _descriptor2, _assertThisInitialized(_this));
-
-      (true && !(_this.args.label) && (0, _debug.assert)("[component][OSS::Attribute::Text] label is required ", _this.args.label));
+      (true && !(typeof args.label === 'string') && (0, _debug.assert)('[component][OSS::Attribute::Text] @label is required', typeof args.label === 'string'));
       return _this;
     }
 
@@ -85515,31 +85785,11 @@ define("@upfluence/oss-components/components/o-s-s/attribute/text", ["exports", 
       get: function get() {
         return (0, _utils.isBlank)(this.args.value) ? '-' : this.args.value;
       }
-    }, {
-      key: "isCopyable",
-      get: function get() {
-        return this.copyable && !(0, _utils.isBlank)(this.args.value);
-      }
     }]);
 
     return OSSAttributeText;
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "displayCopyBtn", [_tracking.tracked], {
-    configurable: true,
-    enumerable: true,
-    writable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "copyable", [_tracking.tracked], {
-    configurable: true,
-    enumerable: true,
-    writable: true,
-    initializer: function initializer() {
-      var _this$args$copyable;
+  }(_component2.default);
 
-      return (_this$args$copyable = this.args.copyable) !== null && _this$args$copyable !== void 0 ? _this$args$copyable : true;
-    }
-  })), _class);
   _exports.default = OSSAttributeText;
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSAttributeText);
 });
@@ -85620,7 +85870,7 @@ define("@upfluence/oss-components/components/o-s-s/attribute/text", ["exports", 
     parameters: {
       docs: {
         description: {
-          component: 'A text component designed to have a label, a value & a copy value button'
+          component: 'Member of the Attribute displays. The OSS::Attribute::Text is a component that displays a label, a value & a copy button when needed.'
         },
         iframeHeight: 150
       }
@@ -85637,11 +85887,16 @@ define("@upfluence/oss-components/components/o-s-s/attribute/text", ["exports", 
     return {
       template: (0, _templateFactory.createTemplateFactory)(
       /*
-        <div class="fx-col"><OSS::Attribute::Text @value={{this.value}} @label={{this.label}} @tooltip={{this.tooltip}} @copyable={{this.copyable}} /></div>
+        
+          <div style="padding: 12px; background: white">
+            <OSS::Attribute::Text @value={{this.value}} @label={{this.label}} @tooltip={{this.tooltip}}
+                                  @copyable={{this.copyable}} />
+          </div>
+        
       */
       {
-        "id": "3vx0oBt3",
-        "block": "[[[10,0],[14,0,\"fx-col\"],[12],[8,[39,0],null,[[\"@value\",\"@label\",\"@tooltip\",\"@copyable\"],[[30,0,[\"value\"]],[30,0,[\"label\"]],[30,0,[\"tooltip\"]],[30,0,[\"copyable\"]]]],null],[13]],[],false,[\"o-s-s/attribute/text\"]]",
+        "id": "aZK9bS+z",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"padding: 12px; background: white\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@value\",\"@label\",\"@tooltip\",\"@copyable\"],[[30,0,[\"value\"]],[30,0,[\"label\"]],[30,0,[\"tooltip\"]],[30,0,[\"copyable\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/attribute/text\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -109215,36 +109470,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-21277Gmo5XazhtnK/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-21277Gmo5XazhtnK/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-21277Gmo5XazhtnK/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-21277Gmo5XazhtnK/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-21277Gmo5XazhtnK/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-21277Gmo5XazhtnK/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/l.js /tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-21277Gmo5XazhtnK/cache-275-bundler/staging/l.js /tmp/broccoli-21277Gmo5XazhtnK/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/l.js_/tmp/broccoli-1927230e5O2w4aZg/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-21277Gmo5XazhtnK/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-21277Gmo5XazhtnK/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-21277Gmo5XazhtnK/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-21277Gmo5XazhtnK/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-21277Gmo5XazhtnK/cache-275-bundler/staging/l.js_/tmp/broccoli-21277Gmo5XazhtnK/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 

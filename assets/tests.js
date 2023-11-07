@@ -2016,6 +2016,343 @@ define("dummy/tests/integration/components/o-s-s/array-input-test", ["@ember/tem
     }());
   });
 });
+define("dummy/tests/integration/components/o-s-s/attribute/base-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "@ember/test-helpers/dom/trigger-event"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _triggerEvent) {
+  "use strict";
+
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+  function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+  (0, _qunit.module)('Integration | Component | o-s-s/attribute/base', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('It renders', /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(assert) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::Base />
+                */
+                {
+                  "id": "UzucRl2B",
+                  "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/attribute/base\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-attribute').exists();
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('The splattributes argument is set on the component', /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::Base data-control-name="testing-splattributes" />
+                */
+                {
+                  "id": "t3DdgSwR",
+                  "block": "[[[8,[39,0],[[24,\"data-control-name\",\"testing-splattributes\"]],null,null]],[],false,[\"o-s-s/attribute/base\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('[data-control-name="testing-splattributes"]').exists();
+
+              case 3:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function (_x2) {
+        return _ref3.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('It displays the label named-block when passed', /*#__PURE__*/function () {
+      var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::Base @value="bananas">
+                                      <:label><span>this is the label named-block</span></:label>
+                                     </OSS::Attribute::Base>
+                */
+                {
+                  "id": "+MMbo5y9",
+                  "block": "[[[8,[39,0],null,[[\"@value\"],[\"bananas\"]],[[\"label\"],[[[[10,1],[12],[1,\"this is the label named-block\"],[13]],[]]]]]],[],false,[\"o-s-s/attribute/base\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-attribute .oss-attribute__label').hasText('this is the label named-block');
+
+              case 3:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }));
+
+      return function (_x3) {
+        return _ref4.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.module)('Value handling', function () {
+      (0, _qunit.test)('It displays the value when passed', /*#__PURE__*/function () {
+        var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
+          return regeneratorRuntime.wrap(function _callee4$(_context4) {
+            while (1) {
+              switch (_context4.prev = _context4.next) {
+                case 0:
+                  _context4.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Attribute::Base @value="bananas" />
+                  */
+                  {
+                    "id": "YftPsAKb",
+                    "block": "[[[8,[39,0],null,[[\"@value\"],[\"bananas\"]],null]],[],false,[\"o-s-s/attribute/base\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.oss-attribute .oss-attribute__value').hasText('bananas');
+
+                case 3:
+                case "end":
+                  return _context4.stop();
+              }
+            }
+          }, _callee4);
+        }));
+
+        return function (_x4) {
+          return _ref5.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('It displays the value named-block when passed', /*#__PURE__*/function () {
+        var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(assert) {
+          return regeneratorRuntime.wrap(function _callee5$(_context5) {
+            while (1) {
+              switch (_context5.prev = _context5.next) {
+                case 0:
+                  _context5.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Attribute::Base @value="bananas">
+                                         <:value>
+                                           <div class="fx-row fx-xalign-center fx-gap-px-6">
+                                             {{@value}}
+                                             <OSS::Icon @icon="fa-lock" />
+                                           </div>
+                                         </:value>
+                                       </OSS::Attribute::Base>
+                  */
+                  {
+                    "id": "HiAGBeVl",
+                    "block": "[[[8,[39,0],null,[[\"@value\"],[\"bananas\"]],[[\"value\"],[[[[1,\"\\n                         \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-6\"],[12],[1,\"\\n                           \"],[1,[30,1]],[1,\"\\n                           \"],[8,[39,1],null,[[\"@icon\"],[\"fa-lock\"]],null],[1,\"\\n                         \"],[13],[1,\"\\n                       \"]],[]]]]]],[\"@value\"],false,[\"o-s-s/attribute/base\",\"o-s-s/icon\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.oss-attribute .oss-attribute__value .fa-lock').exists();
+
+                case 3:
+                case "end":
+                  return _context5.stop();
+              }
+            }
+          }, _callee5);
+        }));
+
+        return function (_x5) {
+          return _ref6.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('Copy button behaviour', function () {
+      (0, _qunit.test)('The text is copyable by default if a value is passed', /*#__PURE__*/function () {
+        var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(assert) {
+          return regeneratorRuntime.wrap(function _callee6$(_context6) {
+            while (1) {
+              switch (_context6.prev = _context6.next) {
+                case 0:
+                  _context6.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Attribute::Base @label="label" @value="value" />
+                  */
+                  {
+                    "id": "O8Tq2n76",
+                    "block": "[[[8,[39,0],null,[[\"@label\",\"@value\"],[\"label\",\"value\"]],null]],[],false,[\"o-s-s/attribute/base\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  _context6.next = 4;
+                  return (0, _triggerEvent.default)('.oss-attribute', 'mouseenter');
+
+                case 4:
+                  assert.dom('.oss-attribute__copy').exists();
+
+                case 5:
+                case "end":
+                  return _context6.stop();
+              }
+            }
+          }, _callee6);
+        }));
+
+        return function (_x6) {
+          return _ref7.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('The text is not copyable if the value is blank', /*#__PURE__*/function () {
+        var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(assert) {
+          return regeneratorRuntime.wrap(function _callee7$(_context7) {
+            while (1) {
+              switch (_context7.prev = _context7.next) {
+                case 0:
+                  _context7.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Attribute::Base @label="label" @value="   " />
+                  */
+                  {
+                    "id": "r9oeclF6",
+                    "block": "[[[8,[39,0],null,[[\"@label\",\"@value\"],[\"label\",\"   \"]],null]],[],false,[\"o-s-s/attribute/base\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  _context7.next = 4;
+                  return (0, _triggerEvent.default)('.oss-attribute', 'mouseenter');
+
+                case 4:
+                  assert.dom('.oss-attribute__copy').doesNotExist();
+
+                case 5:
+                case "end":
+                  return _context7.stop();
+              }
+            }
+          }, _callee7);
+        }));
+
+        return function (_x7) {
+          return _ref8.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('The text is not copyable if the value is undefined', /*#__PURE__*/function () {
+        var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
+          return regeneratorRuntime.wrap(function _callee8$(_context8) {
+            while (1) {
+              switch (_context8.prev = _context8.next) {
+                case 0:
+                  _context8.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Attribute::Base @label="label" />
+                  */
+                  {
+                    "id": "wr9hRnTn",
+                    "block": "[[[8,[39,0],null,[[\"@label\"],[\"label\"]],null]],[],false,[\"o-s-s/attribute/base\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  _context8.next = 4;
+                  return (0, _triggerEvent.default)('.oss-attribute', 'mouseenter');
+
+                case 4:
+                  assert.dom('.oss-attribute__copy').doesNotExist();
+
+                case 5:
+                case "end":
+                  return _context8.stop();
+              }
+            }
+          }, _callee8);
+        }));
+
+        return function (_x8) {
+          return _ref9.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('The text is not copyable if the @copyable parameter is set to false', /*#__PURE__*/function () {
+        var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(assert) {
+          return regeneratorRuntime.wrap(function _callee9$(_context9) {
+            while (1) {
+              switch (_context9.prev = _context9.next) {
+                case 0:
+                  _context9.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Attribute::Base @label="label" @value="value" @copyable={{false}} />
+                  */
+                  {
+                    "id": "ar4EDZ+o",
+                    "block": "[[[8,[39,0],null,[[\"@label\",\"@value\",\"@copyable\"],[\"label\",\"value\",false]],null]],[],false,[\"o-s-s/attribute/base\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  _context9.next = 4;
+                  return (0, _triggerEvent.default)('.oss-attribute', 'mouseenter');
+
+                case 4:
+                  assert.dom('.oss-attribute__copy').doesNotExist();
+
+                case 5:
+                case "end":
+                  return _context9.stop();
+              }
+            }
+          }, _callee9);
+        }));
+
+        return function (_x9) {
+          return _ref10.apply(this, arguments);
+        };
+      }());
+    });
+  });
+});
 define("dummy/tests/integration/components/o-s-s/attribute/country-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers"], function (_templateFactory, _qunit, _emberQunit, _testHelpers) {
   "use strict";
 
@@ -2196,6 +2533,284 @@ define("dummy/tests/integration/components/o-s-s/attribute/country-test", ["@emb
     });
   });
 });
+define("dummy/tests/integration/components/o-s-s/attribute/revealable-email-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "sinon"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _sinon) {
+  "use strict";
+
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+  function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+  (0, _qunit.module)('Integration | Component | o-s-s/attribute/revealable-email', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.onRevealStub = _sinon.default.stub().resolves();
+    });
+    (0, _qunit.test)('It renders', /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(assert) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::RevealableEmail @onRevealEmail={{this.onRevealStub}} />
+                */
+                {
+                  "id": "2CwGN9cn",
+                  "block": "[[[8,[39,0],null,[[\"@onRevealEmail\"],[[30,0,[\"onRevealStub\"]]]],null]],[],false,[\"o-s-s/attribute/revealable-email\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('[data-control-name="attribute-revealable-email"]').exists();
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.module)('Label tooltip', function () {
+      (0, _qunit.test)('If the @tooltip paramater is passed, the info icon is displayed', /*#__PURE__*/function () {
+        var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
+          return regeneratorRuntime.wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  _context2.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Attribute::RevealableEmail @tooltip="this is a tooltip" @onRevealEmail={{this.onRevealStub}} />
+                  */
+                  {
+                    "id": "BoXlX5Er",
+                    "block": "[[[8,[39,0],null,[[\"@tooltip\",\"@onRevealEmail\"],[\"this is a tooltip\",[30,0,[\"onRevealStub\"]]]],null]],[],false,[\"o-s-s/attribute/revealable-email\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  _context2.next = 4;
+                  return assert.tooltip('.oss-attribute__info').hasTitle('this is a tooltip');
+
+                case 4:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2);
+        }));
+
+        return function (_x2) {
+          return _ref3.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('If the @tooltip paramater is not passed, the info icon is not visible', /*#__PURE__*/function () {
+        var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
+          return regeneratorRuntime.wrap(function _callee3$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  _context3.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Attribute::RevealableEmail @onRevealEmail={{this.onRevealStub}} />
+                  */
+                  {
+                    "id": "2CwGN9cn",
+                    "block": "[[[8,[39,0],null,[[\"@onRevealEmail\"],[[30,0,[\"onRevealStub\"]]]],null]],[],false,[\"o-s-s/attribute/revealable-email\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  _context3.next = 4;
+                  return assert.dom('.oss-attribute__info').doesNotExist();
+
+                case 4:
+                case "end":
+                  return _context3.stop();
+              }
+            }
+          }, _callee3);
+        }));
+
+        return function (_x3) {
+          return _ref4.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('Lock tooltip', function () {
+      (0, _qunit.test)('If the @lockTooltip paramater is passed, the string contents are used as tooltip for the lock icon', /*#__PURE__*/function () {
+        var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
+          return regeneratorRuntime.wrap(function _callee4$(_context4) {
+            while (1) {
+              switch (_context4.prev = _context4.next) {
+                case 0:
+                  _context4.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Attribute::RevealableEmail @lockTooltip="locked" @onRevealEmail={{this.onRevealStub}} />
+                  */
+                  {
+                    "id": "tHHgLTwM",
+                    "block": "[[[8,[39,0],null,[[\"@lockTooltip\",\"@onRevealEmail\"],[\"locked\",[30,0,[\"onRevealStub\"]]]],null]],[],false,[\"o-s-s/attribute/revealable-email\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  _context4.next = 4;
+                  return (0, _testHelpers.triggerEvent)('.oss-attribute', 'mouseenter');
+
+                case 4:
+                  _context4.next = 6;
+                  return assert.tooltip('.fa-lock').hasTitle('locked');
+
+                case 6:
+                case "end":
+                  return _context4.stop();
+              }
+            }
+          }, _callee4);
+        }));
+
+        return function (_x4) {
+          return _ref5.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('If the @lockTooltip paramater is not passed, the default text is used', /*#__PURE__*/function () {
+        var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(assert) {
+          return regeneratorRuntime.wrap(function _callee5$(_context5) {
+            while (1) {
+              switch (_context5.prev = _context5.next) {
+                case 0:
+                  _context5.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Attribute::RevealableEmail @onRevealEmail={{this.onRevealStub}} />
+                  */
+                  {
+                    "id": "2CwGN9cn",
+                    "block": "[[[8,[39,0],null,[[\"@onRevealEmail\"],[[30,0,[\"onRevealStub\"]]]],null]],[],false,[\"o-s-s/attribute/revealable-email\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  _context5.next = 4;
+                  return (0, _testHelpers.triggerEvent)('.oss-attribute', 'mouseenter');
+
+                case 4:
+                  _context5.next = 6;
+                  return assert.tooltip('.fa-lock').hasTitle('Reveal email');
+
+                case 6:
+                case "end":
+                  return _context5.stop();
+              }
+            }
+          }, _callee5);
+        }));
+
+        return function (_x5) {
+          return _ref6.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.test)('Clicking on the lock icon calls the @onRevealEmail method', /*#__PURE__*/function () {
+      var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(assert) {
+        return regeneratorRuntime.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::RevealableEmail @onRevealEmail={{this.onRevealStub}} />
+                */
+                {
+                  "id": "2CwGN9cn",
+                  "block": "[[[8,[39,0],null,[[\"@onRevealEmail\"],[[30,0,[\"onRevealStub\"]]]],null]],[],false,[\"o-s-s/attribute/revealable-email\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                _context6.next = 4;
+                return (0, _testHelpers.triggerEvent)('.oss-attribute', 'mouseenter');
+
+              case 4:
+                _context6.next = 6;
+                return (0, _testHelpers.click)('.fa-lock');
+
+              case 6:
+                assert.true(this.onRevealStub.calledOnce);
+
+              case 7:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6, this);
+      }));
+
+      return function (_x6) {
+        return _ref7.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('Clicking on the lock icon displays a loader', /*#__PURE__*/function () {
+      var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(assert) {
+        return regeneratorRuntime.wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                this.onRevealStub.returns(new Promise(function () {}));
+                _context7.next = 3;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::RevealableEmail @onRevealEmail={{this.onRevealStub}} />
+                */
+                {
+                  "id": "2CwGN9cn",
+                  "block": "[[[8,[39,0],null,[[\"@onRevealEmail\"],[[30,0,[\"onRevealStub\"]]]],null]],[],false,[\"o-s-s/attribute/revealable-email\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 3:
+                _context7.next = 5;
+                return (0, _testHelpers.triggerEvent)('.oss-attribute', 'mouseenter');
+
+              case 5:
+                _context7.next = 7;
+                return (0, _testHelpers.click)('.fa-lock');
+
+              case 7:
+                assert.dom('.fa-circle-notch.fa-spin').exists();
+
+              case 8:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7, this);
+      }));
+
+      return function (_x7) {
+        return _ref8.apply(this, arguments);
+      };
+    }());
+  });
+});
 define("dummy/tests/integration/components/o-s-s/attribute/text-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "@ember/test-helpers/dom/trigger-event"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _triggerEvent) {
   "use strict";
 
@@ -2207,7 +2822,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/text-test", ["@ember/
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.module)('Default behavior', function () {
       (0, _qunit.module)('Render conditions', function () {
-        (0, _qunit.test)('it renders', /*#__PURE__*/function () {
+        (0, _qunit.test)('It renders', /*#__PURE__*/function () {
           var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(assert) {
             return regeneratorRuntime.wrap(function _callee$(_context) {
               while (1) {
@@ -2276,7 +2891,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/text-test", ["@ember/
             return _ref3.apply(this, arguments);
           };
         }());
-        (0, _qunit.test)('it renders with a tooltip when specified', /*#__PURE__*/function () {
+        (0, _qunit.test)('It renders with a tooltip when specified', /*#__PURE__*/function () {
           var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
             return regeneratorRuntime.wrap(function _callee3$(_context3) {
               while (1) {
@@ -2311,7 +2926,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/text-test", ["@ember/
             return _ref4.apply(this, arguments);
           };
         }());
-        (0, _qunit.test)('it renders a dash as value when no value is specified', /*#__PURE__*/function () {
+        (0, _qunit.test)('It renders a dash as value when no value is specified', /*#__PURE__*/function () {
           var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
             return regeneratorRuntime.wrap(function _callee4$(_context4) {
               while (1) {
@@ -2385,7 +3000,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/text-test", ["@ember/
           this.textForCopy = 'copied value';
           this.displayCopyBtn = true;
         });
-        (0, _qunit.test)('the copy icon is not visible before hovering', /*#__PURE__*/function () {
+        (0, _qunit.test)('The copy icon is not visible before hovering', /*#__PURE__*/function () {
           var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(assert) {
             return regeneratorRuntime.wrap(function _callee6$(_context6) {
               while (1) {
@@ -2418,7 +3033,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/text-test", ["@ember/
             return _ref7.apply(this, arguments);
           };
         }());
-        (0, _qunit.test)('the text is copyable by default', /*#__PURE__*/function () {
+        (0, _qunit.test)('The text is copyable by default', /*#__PURE__*/function () {
           var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(assert) {
             return regeneratorRuntime.wrap(function _callee7$(_context7) {
               while (1) {

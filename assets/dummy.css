@@ -12668,6 +12668,7 @@ For complete information visit: www.freakflagsprite.com
   min-height: 24px;
   max-height: 24px;
   display: flex;
+  flex: 1;
   flex-direction: row;
   align-items: center;
   justify-content: start;
