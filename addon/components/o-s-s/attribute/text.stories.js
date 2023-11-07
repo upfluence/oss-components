@@ -50,7 +50,8 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A text component designed to have a label, a value & a copy value button'
+        component:
+          'Member of the Attribute displays. The OSS::Attribute::Text is a component that displays a label, a value & a copy button when needed.'
       },
       iframeHeight: 150
     }
@@ -64,7 +65,12 @@ const defaultArgs = {
 };
 
 const BasicUsageTemplate = (args) => ({
-  template: hbs`<div class="fx-col"><OSS::Attribute::Text @value={{this.value}} @label={{this.label}} @tooltip={{this.tooltip}} @copyable={{this.copyable}} /></div>`,
+  template: hbs`
+    <div style="padding: 12px; background: white">
+      <OSS::Attribute::Text @value={{this.value}} @label={{this.label}} @tooltip={{this.tooltip}}
+                            @copyable={{this.copyable}} />
+    </div>
+  `,
   context: args
 });
 

@@ -16,7 +16,7 @@ export default {
     docs: {
       description: {
         component:
-          'Part of the Attribute displays. The OSS::Attribute::Country displays the flag and name of the country passed in parameter.'
+          'Member of the Attribute displays. The OSS::Attribute::Country displays the flag and name of the country passed in parameter.'
       }
     }
   }

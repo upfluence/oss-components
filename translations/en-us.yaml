@@ -63,3 +63,6 @@ oss-components:
     cancel: Cancel
   attribute:
     country: Country
+    email:
+      label: Email address
+      lock_tooltip: Reveal email

@@ -1,0 +1,23 @@
+<OSS::Attribute::Base @copyable={{false}} data-control-name="attribute-revealable-email"
+                      {{on "mouseenter" (fn (mut this.displayLockIcon) true)}}
+                      {{on "mouseleave" (fn (mut this.displayLockIcon) false)}}
+                      ...attributes>
+  <:label>
+    <span>{{t "oss-components.attribute.email.label"}}</span>
+    {{#if @tooltip}}
+      <OSS::Icon @icon="far fa-info-circle" class="oss-attribute__info" @inline={{true}}
+                 {{enable-tooltip title=@tooltip placement="top"}} />
+    {{/if}}
+  </:label>
+  <:value>
+    <div class="fx-row fx-xalign-center fx-gap-px-6">
+      <span class="fx-1">•••••@••••.•••</span>
+      {{#if this.loading}}
+        <OSS::Icon @icon="fa-circle-notch fa-spin" />
+      {{else if this.displayLockIcon}}
+        <OSS::Icon @icon="fa-lock" {{on "click" this.onRevealEmail}} role="button"
+                   {{enable-tooltip title=this.lockTooltip placement="top"}} />
+      {{/if}}
+    </div>
+  </:value>
+</OSS::Attribute::Base>
