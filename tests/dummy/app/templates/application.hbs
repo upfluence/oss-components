@@ -22,6 +22,21 @@
 
   <div style="width:100%; height:100vh; overflow: auto; background-color: var(--color-gray-50)">
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
+      <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}}>
+        <:prefix>
+          <OSS::Icon @icon="fa-search" class="font-color-gray-500" />
+        </:prefix>
+        <:suffix>
+          {{#if (gt this.shopUrl.length 0)}}
+            <OSS::Icon @icon="fa-times" class="font-color-gray-500" role="button"
+                       {{on "click" (fn (mut this.shopUrl) '')}} />
+          {{/if}}
+        </:suffix>
+      </OSS::InputContainer>
+      <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}} />
+      <OSS::PasswordInput @value="azeaze" />
+    </div>
+    <div class="fx-row fx-1 fx-gap-px-10 margin-md">
       <OSS::AttributesPanel @title="Title" @icon="fa-laptop-code" @onSave={{this.onAttributePanelSave}}
                             @onCancel={{this.onAttributePanelCancel}} @onEdit={{this.onAttributePanelEdit}}>
         <:contextual-action>
