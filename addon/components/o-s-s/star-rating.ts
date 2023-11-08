@@ -6,6 +6,7 @@ interface OSSStarRatingArgs {
   totalStars: number;
   activeColor: StarColor;
   passiveColor: StarColor;
+  passiveStyle?: 'solid' | 'regular';
 }
 
 export enum StarColor {
@@ -43,6 +44,10 @@ export default class OSSStarRating extends Component<OSSStarRatingArgs> {
 
   get passiveColorClass(): string {
     return `color-${this.args.passiveColor || 'grey'}`;
+  }
+
+  get passiveStyle(): string {
+    return this.args.passiveStyle || 'solid';
   }
 
   get activeStars(): any[] {

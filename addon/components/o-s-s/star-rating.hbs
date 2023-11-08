@@ -3,6 +3,6 @@
     <OSS::Icon @style="solid" @icon="fa-star" class={{this.activeColorClass}} />
   {{/each}}
   {{#each this.passiveStars}}
-    <OSS::Icon @style="solid" @icon="fa-star" class={{this.passiveColorClass}} />
+    <OSS::Icon @style={{this.passiveStyle}} @icon="fa-star" class={{this.passiveColorClass}} />
   {{/each}}
 </div>
