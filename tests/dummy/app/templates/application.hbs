@@ -81,6 +81,27 @@
       <OSS::Copy @value="I am the value copied" @inline={{true}} />
       <OSS::Copy @value="I am the value copied" />
     </div>
+    <div class="fx-row fx-1 fx-gap-px-10 margin-md width-pc-50">
+      <OSS::ContentPanel class="fx-1">
+        <OSS::Attribute::RevealableEmail @lockTooltip="This will fail"
+                                         @onRevealEmail={{this.onRevealEmailError}} />
+        {{#if this.revealed}}
+          <OSS::Attribute::Text @label="Email address" @value="john.doe@gmail.com" />
+        {{else}}
+          <OSS::Attribute::RevealableEmail @tooltip="Click on lock to reveal"
+                                           @onRevealEmail={{this.onRevealEmailSuccess}} />
+        {{/if}}
+        <OSS::Attribute::Country @countryCode="US" />
+        <OSS::Attribute::Country @countryCode="" />
+        <OSS::Attribute::Text @label="Label with tooltip copyable" @value="Hello World"
+                              @tooltip="Hello World" />
+        <OSS::Attribute::Text @label="Label not copyable" @value="Hello World" @copyable={{false}} />
+        <OSS::Attribute::Rating
+                                @label="Rating"
+                                @rating={{this.starRatingValue}} />
+        <OSS::Attribute::Rating @label="Rating not provided" />
+      </OSS::ContentPanel>
+    </div>
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
       <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
       <OSS::TogglableSection @title="This is a title" @subtitle="This is a subtitle" @toggled={{this.togglable}}

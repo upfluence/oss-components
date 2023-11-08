@@ -1,12 +1,13 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 
-interface OSSStarRatingArgs {
+export interface OSSStarRatingArgs {
   rating: number;
   totalStars: number;
   activeColor: StarColor;
   passiveColor: StarColor;
   passiveStyle?: 'solid' | 'regular';
+  onChange?: (rating: OSSStarRatingArgs['rating']) => void;
 }
 
 export enum StarColor {
@@ -27,7 +28,6 @@ export enum StarColor {
 export default class OSSStarRating extends Component<OSSStarRatingArgs> {
   constructor(owner: unknown, args: OSSStarRatingArgs) {
     super(owner, args);
-
     assert(
       `[component][OSS::StarRating] @rating argument is mandatory and must be a number`,
       typeof args.rating === 'number'

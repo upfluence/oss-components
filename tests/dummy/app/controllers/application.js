@@ -220,6 +220,7 @@ export default class ApplicationController extends Controller {
     { label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true, selected: true, disabled: true }
   ];
 
+  @tracked starRatingValue = 3;
   // eslint-disable-next-line ember/classic-decorator-hooks
   init() {
     super.init(...arguments);
