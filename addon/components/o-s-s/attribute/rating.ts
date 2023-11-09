@@ -1,6 +1,7 @@
 import { assert } from '@ember/debug';
 import Component from '@glimmer/component';
 import { OSSStarRatingArgs } from '../star-rating';
+import { action } from '@ember/object';
 
 interface OSSAttributeRatingArgs {
   label: string;
@@ -12,5 +13,11 @@ export default class OSSAttributeRating extends Component<OSSAttributeRatingArgs
   constructor(owner: unknown, args: OSSAttributeRatingArgs) {
     super(owner, args);
     assert('[component][OSS::Attribute::Rating] @label is required', typeof args.label === 'string');
+  }
+  @action
+  onClick(rating: number) {
+    if (this.args.onChange) {
+      this.args.onChange(rating);
+    }
   }
 }

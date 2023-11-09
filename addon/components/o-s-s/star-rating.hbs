@@ -1,8 +1,10 @@
 <div class="star-rating fx-row">
-  {{#each this.activeStars}}
-    <OSS::Icon @style="solid" @icon="fa-star" class={{this.activeColorClass}} />
+  {{#each this.activeStars as |star index|}}
+    <OSS::Icon @style="solid" @icon="fa-star" class={{this.activeColorClass}}
+               {{on "click" (fn this.decreaseRating index)}} />
   {{/each}}
-  {{#each this.passiveStars}}
-    <OSS::Icon @style={{this.passiveStyle}} @icon="fa-star" class={{this.passiveColorClass}} />
+  {{#each this.passiveStars as |star index|}}
+    <OSS::Icon @style={{this.passiveStyle}} @icon="fa-star" class={{this.passiveColorClass}}
+               {{on "click" (fn this.increaseRating index)}} />
   {{/each}}
 </div>

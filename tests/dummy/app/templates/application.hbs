@@ -98,7 +98,8 @@
         <OSS::Attribute::Text @label="Label not copyable" @value="Hello World" @copyable={{false}} />
         <OSS::Attribute::Rating
                                 @label="Rating"
-                                @rating={{this.starRatingValue}} />
+                                @rating={{this.starRatingValue}}
+                                @onChange={{this.onRatingClick}} />
         <OSS::Attribute::Rating @label="Rating not provided" />
       </OSS::ContentPanel>
     </div>

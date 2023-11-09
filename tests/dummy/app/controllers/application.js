@@ -221,6 +221,9 @@ export default class ApplicationController extends Controller {
   ];
 
   @tracked starRatingValue = 3;
+  @action onRatingClick(rating) {
+    console.log('hello' + rating);
+  }
   // eslint-disable-next-line ember/classic-decorator-hooks
   init() {
     super.init(...arguments);
