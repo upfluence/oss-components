@@ -8234,14 +8234,17 @@ label {
 :root .height-pc-100 {
   height: calc(100%);
 }
-.box-shadow-lg {
-  box-shadow: var(--box-shadow-lg);
+.box-shadow-xs {
+  box-shadow: var(--box-shadow-xs);
+}
+.box-shadow-sm {
+  box-shadow: var(--box-shadow-sm);
 }
 .box-shadow-md {
   box-shadow: var(--box-shadow-md);
 }
-.box-shadow-sm {
-  box-shadow: var(--box-shadow-sm);
+.box-shadow-lg {
+  box-shadow: var(--box-shadow-lg);
 }
 .border-color-gray-50 {
   border-color: var(--color-gray-50);
