@@ -36,14 +36,29 @@
       <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}} />
       <OSS::PasswordInput @value="azeaze" />
     </div>
-    <div class="fx-row fx-1 fx-gap-px-10 margin-md">
+    <div class="fx-row fx-1 fx-gap-px-10 margin-md width-pc-50">
       <OSS::AttributesPanel @title="Title" @icon="fa-laptop-code" @onSave={{this.onAttributePanelSave}}
                             @onCancel={{this.onAttributePanelCancel}} @onEdit={{this.onAttributePanelEdit}}>
         <:contextual-action>
           <OSS::Button @icon="fa-plus" @square={{true}} />
         </:contextual-action>
         <:view-mode>
-          View mode
+          <OSS::Attribute::PhoneNumber @countryCode="FR" @prefix="+33" @number="642424242" />
+          <OSS::Attribute::PhoneNumber @countryCode="nope" @number="+33642424242" />
+          <OSS::Attribute::PhoneNumber @prefix="+33" />
+          <OSS::Attribute::RevealableEmail @lockTooltip="This will fail"
+                                           @onRevealEmail={{this.onRevealEmailError}} />
+          {{#if this.revealed}}
+            <OSS::Attribute::Text @label="Email address" @value="john.doe@gmail.com" />
+          {{else}}
+            <OSS::Attribute::RevealableEmail @tooltip="Click on lock to reveal"
+                                             @onRevealEmail={{this.onRevealEmailSuccess}} />
+          {{/if}}
+          <OSS::Attribute::Country @countryCode="US" />
+          <OSS::Attribute::Country @countryCode="" />
+          <OSS::Attribute::Text @label="Label with tooltip copyable" @value="Hello World"
+                                @tooltip="Hello World" />
+          <OSS::Attribute::Text @label="Label not copyable" @value="Hello World" @copyable={{false}} />
         </:view-mode>
         <:edition-mode>
           Edition mode
@@ -56,23 +71,6 @@
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
       <OSS::Copy @value="I am the value copied" @inline={{true}} />
       <OSS::Copy @value="I am the value copied" />
-    </div>
-    <div class="fx-row fx-1 fx-gap-px-10 margin-md width-pc-50">
-      <OSS::ContentPanel class="fx-1">
-        <OSS::Attribute::RevealableEmail @lockTooltip="This will fail"
-                                         @onRevealEmail={{this.onRevealEmailError}} />
-        {{#if this.revealed}}
-          <OSS::Attribute::Text @label="Email address" @value="john.doe@gmail.com" />
-        {{else}}
-          <OSS::Attribute::RevealableEmail @tooltip="Click on lock to reveal"
-                                           @onRevealEmail={{this.onRevealEmailSuccess}} />
-        {{/if}}
-        <OSS::Attribute::Country @countryCode="US" />
-        <OSS::Attribute::Country @countryCode="" />
-        <OSS::Attribute::Text @label="Label with tooltip copyable" @value="Hello World"
-                              @tooltip="Hello World" />
-        <OSS::Attribute::Text @label="Label not copyable" @value="Hello World" @copyable={{false}} />
-      </OSS::ContentPanel>
     </div>
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
       <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />

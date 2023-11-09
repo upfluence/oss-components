@@ -1,0 +1,8 @@
+<OSS::Attribute::Base @value={{this.formattedPhoneNumber}} data-control-name="attribute-phone-number" ...attributes>
+  <:label>
+    <span>{{t "oss-components.attribute.phone_number"}}</span>
+    {{#if this.countryCodeDictionaryMatch}}
+      <div class="fflag fflag-{{@countryCode}} ff-round ff-sm"></div>
+    {{/if}}
+  </:label>
+</OSS::Attribute::Base>
