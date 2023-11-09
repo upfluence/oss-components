@@ -22,6 +22,15 @@ module('Integration | Component | o-s-s/star-rating', function (hooks) {
                                         @passiveColor={{this.passiveColor}} />`);
       assert.dom('.fas').hasClass(`color-${starColor}`);
     });
+
+    test('Passing @passiveStyle and @passiveColor applies the correct classes to the component', async function (assert) {
+      this.activeColor = starColor;
+      this.passiveColor = starColor;
+      await render(hbs`<OSS::StarRating @rating={{5}} @totalStars={{8}} @passiveStyle='regular'
+                                        @activeColor={{this.activeColor}}
+                                        @passiveColor={{this.passiveColor}} />`);
+      assert.dom('.far').hasClass(`color-${starColor}`);
+    });
   }
 
   module('Error management', function () {
