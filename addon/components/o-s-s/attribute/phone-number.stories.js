@@ -38,13 +38,15 @@ export default {
 };
 
 const defaultArgs = {
-  countryCode: 'FR'
+  countryCode: 'FR',
+  prefix: '+33',
+  number: '6 12 34 56 78'
 };
 
 const Template = (args) => ({
   template: hbs`
     <div style="padding: 12px; background: white">
-      <OSS::Attribute::PhoneNumber @countryCode={{this.countryCode}} />
+      <OSS::Attribute::PhoneNumber @countryCode={{this.countryCode}} @prefix={{this.prefix}} @number={{this.number}} />
     </div>
   `,
   context: args
