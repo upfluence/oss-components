@@ -15,12 +15,12 @@ module('Integration | Component | o-s-s/attribute/rating', function (hooks) {
     assert.dom('[data-control-name="attribute-rating"]').exists();
   });
 
-  test('it displays a dash when no rating is provided', async function (assert) {
+  test('it displays a dash when no @rating is provided', async function (assert) {
     await render(hbs`<OSS::Attribute::Rating @label="Hello" />`);
     assert.dom('.oss-attribute__value').hasText('-');
   });
 
-  test('it displays stars when a rating is provided', async function (assert) {
+  test('it displays the proper number of stars when @rating is provided', async function (assert) {
     await render(hbs`<OSS::Attribute::Rating @label="Hello" @rating={{this.testRating}}/>`);
     assert.dom('.fas.fa-star.color-yellow').exists({ count: this.testRating });
   });
