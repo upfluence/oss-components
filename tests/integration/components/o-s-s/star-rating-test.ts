@@ -32,6 +32,13 @@ module('Integration | Component | o-s-s/star-rating', function (hooks) {
       assert.dom('.far').hasClass(`color-${starColor}`);
     });
   }
+  test('the number of stars displayed is consistent with the provided @rating', async function (assert) {
+    await render(hbs`<OSS::StarRating @rating={{3}} @totalStars={{8}} @passiveStyle='regular'
+                                        @activeColor={{this.activeColor}}
+                                        @passiveColor={{this.passiveColor}}
+                                        @onChange={{this.onChange}} />`);
+    assert.dom('.fas.fa-star.color-yellow').exists({ count: 3 });
+  });
 
   module('Error management', function () {
     test('failing to pass @rating throws an error', async function (assert) {
