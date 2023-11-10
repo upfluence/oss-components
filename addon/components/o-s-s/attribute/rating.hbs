@@ -4,15 +4,10 @@
   </:label>
   <:value>
     {{#if @rating}}
-      <OSS::StarRating @rating={{@rating}}
-                       @totalStars={{5}}
-                       @activeColor="yellow"
-                       @passiveColor="yellow"
-                       @passiveStyle="regular"
-                       @onChange={{this.onClick}} />
+      <OSS::StarRating @rating={{@rating}} @totalStars={{5}} @activeColor="yellow"
+                       @passiveColor="yellow" @passiveStyle="regular" @onChange={{this.onClick}} />
     {{else}}
       -
     {{/if}}
-
   </:value>
 </OSS::Attribute::Base>

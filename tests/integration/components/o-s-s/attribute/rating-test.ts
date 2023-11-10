@@ -5,6 +5,7 @@ import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | o-s-s/attribute/rating', function (hooks) {
   setupRenderingTest(hooks);
+
   hooks.beforeEach(function () {
     this.testRating = 3;
   });
@@ -22,5 +23,10 @@ module('Integration | Component | o-s-s/attribute/rating', function (hooks) {
   test('it displays stars when a rating is provided', async function (assert) {
     await render(hbs`<OSS::Attribute::Rating @label="Hello" @rating={{this.testRating}}/>`);
     assert.dom('.fas.fa-star.color-yellow').exists({ count: this.testRating });
+  });
+
+  test('it displays a label when @label is provided', async function (assert) {
+    await render(hbs`<OSS::Attribute::Rating @label="Hello" @rating={{this.testRating}}/>`);
+    assert.dom('.oss-attribute__label').hasText('Hello');
   });
 });

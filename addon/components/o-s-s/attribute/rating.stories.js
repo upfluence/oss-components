@@ -26,7 +26,6 @@ export default {
       control: { type: 'number' }
     },
     onChange: {
-      type: { required: false },
       description: 'The action triggered when a rating star is clicked',
       table: {
         category: 'Actions',
@@ -54,8 +53,7 @@ const defaultArgs = {
 const BasicUsageTemplate = (args) => ({
   template: hbs`
     <div style="padding: 12px; background: white">
-       <OSS::Attribute::Rating
-                                @label="Rating"
+       <OSS::Attribute::Rating  @label={{this.label}}
                                 @rating={{this.rating}}
                                 @onChange={{this.onChange}} />
     </div>

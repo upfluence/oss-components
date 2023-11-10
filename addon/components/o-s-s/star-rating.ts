@@ -59,12 +59,10 @@ export default class OSSStarRating extends Component<OSSStarRatingArgs> {
     return new Array(Math.max(0, this.args.totalStars - this.args.rating));
   }
 
-  private setRating(val1: number, val2?: number): void {
-    const value2 = val2 || 0;
-    if (this.args.onChange) {
-      this.args.onChange(val1 + value2 + 1);
-    }
+  private setRating(val1: number, val2: number = 0): void {
+    this.args.onChange?.(val1 + val2 + 1);
   }
+
   @action
   decreaseRating(rate: number): void {
     this.setRating(rate);

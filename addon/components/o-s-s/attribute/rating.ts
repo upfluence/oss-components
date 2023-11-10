@@ -14,10 +14,9 @@ export default class OSSAttributeRating extends Component<OSSAttributeRatingArgs
     super(owner, args);
     assert('[component][OSS::Attribute::Rating] @label is required', typeof args.label === 'string');
   }
+
   @action
-  onClick(rating: number) {
-    if (this.args.onChange) {
-      this.args.onChange(rating);
-    }
+  onClick(rating: number): void {
+    this.args.onChange?.(rating);
   }
 }
