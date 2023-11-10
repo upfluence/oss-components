@@ -67,3 +67,5 @@ oss-components:
     email:
       label: Email address
       lock_tooltip: Reveal email
+    removable_text:
+      remove_tooltip: Remove

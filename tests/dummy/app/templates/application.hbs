@@ -44,6 +44,8 @@
         </:contextual-action>
         <:view-mode>
           <div class="fx-col fx-gap-px-9">
+            <OSS::Attribute::RemovableText @label="city" @onRemove={{this.onRemove}} @removeTooltip="Click to delete" />
+            <OSS::Attribute::RemovableText @label="city" @value="Paris" @onRemove={{this.onRemove}} />
             <OSS::Attribute::TagArray @label="Pies"
                                       @tags={{array "Apple pie" "Pecan pie" "Pumpkin pie" "Raspberry PI"}} />
             <OSS::Attribute::TagArray @label="Fruits" @tags={{array "apple" "banana" "pitaya" "jackfruit"
