@@ -44,7 +44,8 @@
         </:contextual-action>
         <:view-mode>
           <div class="fx-col fx-gap-px-9">
-            <OSS::Attribute::TagArray @label="Pies" @tags={{array "Apple pie" "Pecan pie" "Pumpkin pie" "Raspberry PI"}} />
+            <OSS::Attribute::TagArray @label="Pies"
+                                      @tags={{array "Apple pie" "Pecan pie" "Pumpkin pie" "Raspberry PI"}} />
             <OSS::Attribute::TagArray @label="Fruits" @tags={{array "apple" "banana" "pitaya" "jackfruit"
                                       "mango" "orange" "blueberry" "papaya" "pineapple" "watermelon" "vodkamelon"}} />
             <OSS::Attribute::TagArray @label="Fruits" />
@@ -61,9 +62,9 @@
             <OSS::Attribute::Text @label="Label with tooltip copyable" @value="Hello World"
                                   @tooltip="Hello World" />
             <OSS::Attribute::Text @label="Label not copyable" @value="Hello World" @copyable={{false}} />
-          <OSS::Attribute::PhoneNumber @countryCode="FR" @prefix="+33" @number="642424242" />
-          <OSS::Attribute::PhoneNumber @countryCode="nope" @number="+33642424242" />
-          <OSS::Attribute::PhoneNumber @prefix="+33" />
+            <OSS::Attribute::PhoneNumber @countryCode="FR" @prefix="+33" @number="642424242" />
+            <OSS::Attribute::PhoneNumber @countryCode="nope" @number="+33642424242" />
+            <OSS::Attribute::PhoneNumber @prefix="+33" />
           </div>
         </:view-mode>
         <:edition-mode>
