@@ -43,22 +43,28 @@
           <OSS::Button @icon="fa-plus" @square={{true}} />
         </:contextual-action>
         <:view-mode>
+          <div class="fx-col fx-gap-px-9">
+            <OSS::Attribute::TagArray @label="Pies" @tags={{array "Apple pie" "Pecan pie" "Pumpkin pie" "Raspberry PI"}} />
+            <OSS::Attribute::TagArray @label="Fruits" @tags={{array "apple" "banana" "pitaya" "jackfruit"
+                                      "mango" "orange" "blueberry" "papaya" "pineapple" "watermelon" "vodkamelon"}} />
+            <OSS::Attribute::TagArray @label="Fruits" />
+            <OSS::Attribute::RevealableEmail @lockTooltip="This will fail"
+                                             @onRevealEmail={{this.onRevealEmailError}} />
+            {{#if this.revealed}}
+              <OSS::Attribute::Text @label="Email address" @value="john.doe@gmail.com" />
+            {{else}}
+              <OSS::Attribute::RevealableEmail @tooltip="Click on lock to reveal"
+                                               @onRevealEmail={{this.onRevealEmailSuccess}} />
+            {{/if}}
+            <OSS::Attribute::Country @countryCode="US" />
+            <OSS::Attribute::Country @countryCode="" />
+            <OSS::Attribute::Text @label="Label with tooltip copyable" @value="Hello World"
+                                  @tooltip="Hello World" />
+            <OSS::Attribute::Text @label="Label not copyable" @value="Hello World" @copyable={{false}} />
           <OSS::Attribute::PhoneNumber @countryCode="FR" @prefix="+33" @number="642424242" />
           <OSS::Attribute::PhoneNumber @countryCode="nope" @number="+33642424242" />
           <OSS::Attribute::PhoneNumber @prefix="+33" />
-          <OSS::Attribute::RevealableEmail @lockTooltip="This will fail"
-                                           @onRevealEmail={{this.onRevealEmailError}} />
-          {{#if this.revealed}}
-            <OSS::Attribute::Text @label="Email address" @value="john.doe@gmail.com" />
-          {{else}}
-            <OSS::Attribute::RevealableEmail @tooltip="Click on lock to reveal"
-                                             @onRevealEmail={{this.onRevealEmailSuccess}} />
-          {{/if}}
-          <OSS::Attribute::Country @countryCode="US" />
-          <OSS::Attribute::Country @countryCode="" />
-          <OSS::Attribute::Text @label="Label with tooltip copyable" @value="Hello World"
-                                @tooltip="Hello World" />
-          <OSS::Attribute::Text @label="Label not copyable" @value="Hello World" @copyable={{false}} />
+          </div>
         </:view-mode>
         <:edition-mode>
           Edition mode

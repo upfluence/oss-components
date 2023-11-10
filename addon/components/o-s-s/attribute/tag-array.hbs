@@ -1,0 +1,17 @@
+<OSS::Attribute::Base class="oss-attribute--auto-height oss-attribute--no-hover-effect"
+                      data-control-name="attribute-tag-array" ...attributes>
+  <:label>
+    <span>{{@label}}</span>
+  </:label>
+  <:value>
+    {{#if this.displayTags}}
+      <div class="fx-row fx-wrap fx-gap-px-3">
+        {{#each @tags as |tagLabel|}}
+          <OSS::Tag @label={{tagLabel}} @skin="secondary" />
+        {{/each}}
+      </div>
+    {{else}}
+      <span>-</span>
+    {{/if}}
+  </:value>
+</OSS::Attribute::Base>
