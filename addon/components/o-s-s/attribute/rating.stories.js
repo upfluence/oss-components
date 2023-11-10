@@ -24,13 +24,6 @@ export default {
         defaultValue: { summary: 'undefined' }
       },
       control: { type: 'number' }
-    },
-    onChange: {
-      description: 'The action triggered when a rating star is clicked',
-      table: {
-        category: 'Actions',
-        type: { summary: 'onChange(index: number): void' }
-      }
     }
   },
   parameters: {
@@ -46,16 +39,14 @@ export default {
 
 const defaultArgs = {
   label: 'Label',
-  rating: 3,
-  onChange: (index) => alert('clicked on ' + index)
+  rating: 3
 };
 
 const BasicUsageTemplate = (args) => ({
   template: hbs`
     <div style="padding: 12px; background: white">
        <OSS::Attribute::Rating  @label={{this.label}}
-                                @rating={{this.rating}}
-                                @onChange={{this.onChange}} />
+                                @rating={{this.rating}} />
     </div>
   `,
   context: args

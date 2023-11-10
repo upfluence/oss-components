@@ -230,7 +230,8 @@ export default class ApplicationController extends Controller {
     this.mockUploader = owner.lookup('service:mock-uploader');
   }
 
-  @action onRatingClick(rating) {
+  @action
+  onRatingClick(rating) {
     console.log('You have rated with: ' + rating);
   }
 
