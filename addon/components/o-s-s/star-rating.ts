@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 
-export interface OSSStarRatingArgs {
+interface OSSStarRatingArgs {
   rating: number;
   totalStars: number;
   activeColor: StarColor;
