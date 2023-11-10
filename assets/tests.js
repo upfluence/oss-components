@@ -2533,6 +2533,217 @@ define("dummy/tests/integration/components/o-s-s/attribute/country-test", ["@emb
     });
   });
 });
+define("dummy/tests/integration/components/o-s-s/attribute/phone-number-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers"], function (_templateFactory, _qunit, _emberQunit, _testHelpers) {
+  "use strict";
+
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+  function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+  (0, _qunit.module)('Integration | Component | o-s-s/attribute/phone-number', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(assert) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::PhoneNumber />
+                */
+                {
+                  "id": "kTs2QUb+",
+                  "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/attribute/phone-number\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('[data-control-name="attribute-phone-number"]').exists();
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('If the number is passed, it is displayed', /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::PhoneNumber @number="+1 212 666 666" />
+                */
+                {
+                  "id": "qB3uulPm",
+                  "block": "[[[8,[39,0],null,[[\"@number\"],[\"+1 212 666 666\"]],null]],[],false,[\"o-s-s/attribute/phone-number\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-attribute__value').hasText('+1 212 666 666');
+
+              case 3:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function (_x2) {
+        return _ref3.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('If the number is undefined, a dash is displayed', /*#__PURE__*/function () {
+      var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::PhoneNumber @prefix="+44" @number="" />
+                */
+                {
+                  "id": "cor3AEPz",
+                  "block": "[[[8,[39,0],null,[[\"@prefix\",\"@number\"],[\"+44\",\"\"]],null]],[],false,[\"o-s-s/attribute/phone-number\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-attribute__value').hasText('-');
+
+              case 3:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }));
+
+      return function (_x3) {
+        return _ref4.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('If the prefix is passed with a number, they are both displayed', /*#__PURE__*/function () {
+      var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
+        return regeneratorRuntime.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::PhoneNumber @prefix="+44" @number="123 123" />
+                */
+                {
+                  "id": "chr36sZG",
+                  "block": "[[[8,[39,0],null,[[\"@prefix\",\"@number\"],[\"+44\",\"123 123\"]],null]],[],false,[\"o-s-s/attribute/phone-number\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-attribute__value').hasText('+44 123 123');
+
+              case 3:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }));
+
+      return function (_x4) {
+        return _ref5.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('If the countryCode matches one in the dictionary, a flag is displayed', /*#__PURE__*/function () {
+      var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(assert) {
+        return regeneratorRuntime.wrap(function _callee5$(_context5) {
+          while (1) {
+            switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::PhoneNumber @countryCode="US" @prefix="+1" @number="123 123" />
+                */
+                {
+                  "id": "K2heEvNH",
+                  "block": "[[[8,[39,0],null,[[\"@countryCode\",\"@prefix\",\"@number\"],[\"US\",\"+1\",\"123 123\"]],null]],[],false,[\"o-s-s/attribute/phone-number\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-attribute__value').hasText('+1 123 123');
+                assert.dom('.fflag-US').exists();
+
+              case 4:
+              case "end":
+                return _context5.stop();
+            }
+          }
+        }, _callee5);
+      }));
+
+      return function (_x5) {
+        return _ref6.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)("If the countryCode doesn't match one in the dictionary, no flag is displayed", /*#__PURE__*/function () {
+      var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(assert) {
+        return regeneratorRuntime.wrap(function _callee6$(_context6) {
+          while (1) {
+            switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::PhoneNumber @countryCode="random" @prefix="+1" @number="123 123" />
+                */
+                {
+                  "id": "hl4WOg7F",
+                  "block": "[[[8,[39,0],null,[[\"@countryCode\",\"@prefix\",\"@number\"],[\"random\",\"+1\",\"123 123\"]],null]],[],false,[\"o-s-s/attribute/phone-number\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-attribute__value').hasText('+1 123 123');
+                assert.dom('.fflag-US').doesNotExist();
+
+              case 4:
+              case "end":
+                return _context6.stop();
+            }
+          }
+        }, _callee6);
+      }));
+
+      return function (_x6) {
+        return _ref7.apply(this, arguments);
+      };
+    }());
+  });
+});
 define("dummy/tests/integration/components/o-s-s/attribute/revealable-email-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "sinon"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _sinon) {
   "use strict";
 
@@ -5106,13 +5317,114 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["@ember/template
         };
       }());
     });
+    (0, _qunit.module)('when passing a disable in the @disabled parameter', function () {
+      (0, _qunit.test)('when value is truthy, it adds upf-banner--disabled class', /*#__PURE__*/function () {
+        var _ref13 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(assert) {
+          return regeneratorRuntime.wrap(function _callee12$(_context12) {
+            while (1) {
+              switch (_context12.prev = _context12.next) {
+                case 0:
+                  _context12.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Banner @disabled={{true}} />
+                  */
+                  {
+                    "id": "IKW4p7oa",
+                    "block": "[[[8,[39,0],null,[[\"@disabled\"],[true]],null]],[],false,[\"o-s-s/banner\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.upf-banner.upf-banner--disabled').exists();
+
+                case 3:
+                case "end":
+                  return _context12.stop();
+              }
+            }
+          }, _callee12);
+        }));
+
+        return function (_x12) {
+          return _ref13.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)("when value is falsy, it doesn't add upf-banner--disabled class", /*#__PURE__*/function () {
+        var _ref14 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13(assert) {
+          return regeneratorRuntime.wrap(function _callee13$(_context13) {
+            while (1) {
+              switch (_context13.prev = _context13.next) {
+                case 0:
+                  _context13.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Banner @disabled={{false}} />
+                  */
+                  {
+                    "id": "9HSG2krW",
+                    "block": "[[[8,[39,0],null,[[\"@disabled\"],[false]],null]],[],false,[\"o-s-s/banner\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.upf-banner.upf-banner--disabled').doesNotExist();
+
+                case 3:
+                case "end":
+                  return _context13.stop();
+              }
+            }
+          }, _callee13);
+        }));
+
+        return function (_x13) {
+          return _ref14.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)("when value is undefined, it doesn't add upf-banner--disabled class", /*#__PURE__*/function () {
+        var _ref15 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee14(assert) {
+          return regeneratorRuntime.wrap(function _callee14$(_context14) {
+            while (1) {
+              switch (_context14.prev = _context14.next) {
+                case 0:
+                  _context14.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Banner />
+                  */
+                  {
+                    "id": "Dkwyjpto",
+                    "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/banner\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.upf-banner.upf-banner--disabled').doesNotExist();
+
+                case 3:
+                case "end":
+                  return _context14.stop();
+              }
+            }
+          }, _callee14);
+        }));
+
+        return function (_x14) {
+          return _ref15.apply(this, arguments);
+        };
+      }());
+    });
     (0, _qunit.test)('passing a custom-icon named block, renders inside the component', /*#__PURE__*/function () {
-      var _ref13 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(assert) {
-        return regeneratorRuntime.wrap(function _callee12$(_context12) {
+      var _ref16 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15(assert) {
+        return regeneratorRuntime.wrap(function _callee15$(_context15) {
           while (1) {
-            switch (_context12.prev = _context12.next) {
+            switch (_context15.prev = _context15.next) {
               case 0:
-                _context12.next = 2;
+                _context15.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   
@@ -5135,23 +5447,23 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["@ember/template
 
               case 3:
               case "end":
-                return _context12.stop();
+                return _context15.stop();
             }
           }
-        }, _callee12);
+        }, _callee15);
       }));
 
-      return function (_x12) {
-        return _ref13.apply(this, arguments);
+      return function (_x15) {
+        return _ref16.apply(this, arguments);
       };
     }());
     (0, _qunit.test)('passing an actions named block, renders inside the component', /*#__PURE__*/function () {
-      var _ref14 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13(assert) {
-        return regeneratorRuntime.wrap(function _callee13$(_context13) {
+      var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(assert) {
+        return regeneratorRuntime.wrap(function _callee16$(_context16) {
           while (1) {
-            switch (_context13.prev = _context13.next) {
+            switch (_context16.prev = _context16.next) {
               case 0:
-                _context13.next = 2;
+                _context16.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   
@@ -5174,14 +5486,14 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["@ember/template
 
               case 3:
               case "end":
-                return _context13.stop();
+                return _context16.stop();
             }
           }
-        }, _callee13);
+        }, _callee16);
       }));
 
-      return function (_x13) {
-        return _ref14.apply(this, arguments);
+      return function (_x16) {
+        return _ref17.apply(this, arguments);
       };
     }());
   });

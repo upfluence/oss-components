@@ -11517,6 +11517,16 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
   background-color: var(--color-primary-50);
   transition: ease-in-out 0.25s;
 }
+.upf-banner--disabled {
+  background-color: var(--color-gray-100);
+  border: 1px solid var(--color-border-default);
+}
+.upf-banner--disabled i {
+  color: var(--color-gray-400);
+}
+.upf-banner--disabled span {
+  color: var(--color-gray-400);
+}
 .bg-color-white {
   background-color: var(--color-white);
 }

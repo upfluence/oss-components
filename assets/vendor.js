@@ -85501,6 +85501,189 @@ define("@upfluence/oss-components/components/o-s-s/attribute/country", ["exports
 });
 ;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+define("@upfluence/oss-components/components/o-s-s/attribute/phone-number", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@upfluence/oss-components/utils/country-codes"], function (_exports, _component, _templateFactory, _component2, _countryCodes) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+  function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <OSS::Attribute::Base @value={{this.formattedPhoneNumber}} data-control-name="attribute-phone-number" ...attributes>
+    <:label>
+      <span>{{t "oss-components.attribute.phone_number"}}</span>
+      {{#if this.countryCodeDictionaryMatch}}
+        <div class="fflag fflag-{{@countryCode}} ff-round ff-sm"></div>
+      {{/if}}
+    </:label>
+  </OSS::Attribute::Base>
+  
+  */
+  {
+    "id": "foFumKHG",
+    "block": "[[[8,[39,0],[[24,\"data-control-name\",\"attribute-phone-number\"],[17,1]],[[\"@value\"],[[30,0,[\"formattedPhoneNumber\"]]]],[[\"label\"],[[[[1,\"\\n    \"],[10,1],[12],[1,[28,[35,1],[\"oss-components.attribute.phone_number\"],null]],[13],[1,\"\\n\"],[41,[30,0,[\"countryCodeDictionaryMatch\"]],[[[1,\"      \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,2],\" ff-round ff-sm\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"  \"]],[]]]]],[1,\"\\n\"]],[\"&attrs\",\"@countryCode\"],false,[\"o-s-s/attribute/base\",\"t\",\"if\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/attribute/phone-number.hbs",
+    "isStrictMode": false
+  });
+
+  var OSSAttributePhoneNumber = /*#__PURE__*/function (_Component) {
+    _inherits(OSSAttributePhoneNumber, _Component);
+
+    var _super = _createSuper(OSSAttributePhoneNumber);
+
+    function OSSAttributePhoneNumber() {
+      var _this;
+
+      _classCallCheck(this, OSSAttributePhoneNumber);
+
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      _this = _super.call.apply(_super, [this].concat(args));
+
+      _defineProperty(_assertThisInitialized(_this), "countryDictionnary", _countryCodes.countries);
+
+      return _this;
+    }
+
+    _createClass(OSSAttributePhoneNumber, [{
+      key: "formattedPhoneNumber",
+      get: function get() {
+        return this.args.number ? "".concat(this.formattedPrefix).concat(this.args.number) : '-';
+      }
+    }, {
+      key: "countryCodeDictionaryMatch",
+      get: function get() {
+        var _this2 = this;
+
+        return !!this.countryDictionnary.find(function (country) {
+          return country.alpha2 === _this2.args.countryCode;
+        });
+      }
+    }, {
+      key: "formattedPrefix",
+      get: function get() {
+        return this.args.prefix ? "".concat(this.args.prefix, " ") : '';
+      }
+    }]);
+
+    return OSSAttributePhoneNumber;
+  }(_component2.default);
+
+  _exports.default = OSSAttributePhoneNumber;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSAttributePhoneNumber);
+});
+;define("@upfluence/oss-components/components/o-s-s/attribute/phone-number.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.Default = _exports.default = void 0;
+  var _default = {
+    title: 'Components/OSS::Attribute::PhoneNumber',
+    component: 'phone-number',
+    argTypes: {
+      countryCode: {
+        description: 'The country-code in alpha2 format that will be used to display the country flag if it matches the dictionary.',
+        table: {
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      prefix: {
+        description: 'The phone number prefix to be displayed with a space before the number. (e.g. "+33")',
+        table: {
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      number: {
+        description: 'The phone number that will be displayed',
+        table: {
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'Member of the Attribute displays. The OSS::Attribute::PhoneNumber displays a phone number and a country flag if the country-code is provided.'
+        }
+      }
+    }
+  };
+  _exports.default = _default;
+  var defaultArgs = {
+    countryCode: 'FR',
+    prefix: '+33',
+    number: '6 12 34 56 78'
+  };
+
+  var Template = function Template(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <div style="padding: 12px; background: white">
+            <OSS::Attribute::PhoneNumber @countryCode={{this.countryCode}} @prefix={{this.prefix}} @number={{this.number}} />
+          </div>
+        
+      */
+      {
+        "id": "Bj+a1fkc",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"padding: 12px; background: white\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@countryCode\",\"@prefix\",\"@number\"],[[30,0,[\"countryCode\"]],[30,0,[\"prefix\"]],[30,0,[\"number\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/attribute/phone-number\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+
+  var Default = Template.bind({});
+  _exports.Default = Default;
+  Default.args = defaultArgs;
+});
+;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 define("@upfluence/oss-components/components/o-s-s/attribute/revealable-email", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@ember/service", "@ember/object", "@glimmer/tracking", "@ember/debug"], function (_exports, _component, _templateFactory, _component2, _service, _object, _tracking, _debug) {
   "use strict";
 
@@ -86781,7 +86964,7 @@ define("@upfluence/oss-components/components/o-s-s/badge", ["exports", "@ember/c
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class="upf-banner {{if @plain "background-color-gray-50" "background-color-white"}} {{if @selected "upf-banner--selected"}}
-              fx-1 fx-row padding-px-18 fx-xalign-center fx-gap-px-12" ...attributes>
+              {{if @disabled "upf-banner--disabled"}} fx-1 fx-row padding-px-18 fx-xalign-center fx-gap-px-12" ...attributes>
     {{#if (has-block "custom-icon")}}
       <div>{{yield to="custom-icon"}}</div>
     {{else if @icon}}
@@ -86805,8 +86988,8 @@ define("@upfluence/oss-components/components/o-s-s/badge", ["exports", "@ember/c
   
   */
   {
-    "id": "zpVMhkaJ",
-    "block": "[[[11,0],[16,0,[29,[\"upf-banner \",[52,[30,1],\"background-color-gray-50\",\"background-color-white\"],\" \",[52,[30,2],\"upf-banner--selected\"],\"\\n            fx-1 fx-row padding-px-18 fx-xalign-center fx-gap-px-12\"]]],[17,3],[12],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"    \"],[10,0],[12],[18,8,null],[13],[1,\"\\n\"]],[]],[[[41,[30,4],[[[1,\"    \"],[8,[39,3],[[24,0,\"upf-badge upf-badge--shape-round upf-badge--size-md\"]],[[\"@style\",\"@icon\"],[[28,[37,4],[[30,4]],null],[28,[37,5],[[30,4]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,5],[[[1,\"    \"],[10,\"img\"],[14,0,\"upf-badge upf-badge--size-md upf-badge--shape-round\"],[15,\"src\",[30,5]],[14,\"alt\",\"banner\"],[12],[13],[1,\"\\n  \"]],[]],null]],[]]]],[]]],[1,\"  \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-3\"],[12],[1,\"\\n\"],[41,[30,6],[[[1,\"      \"],[10,1],[14,0,\"font-weight-semibold text-size-5 font-color-gray-900\"],[12],[1,[30,6]],[13],[1,\"\\n\"]],[]],null],[41,[30,7],[[[1,\"      \"],[10,1],[14,0,\"text-size-4 font-color-gray-500\"],[12],[1,[30,7]],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[48,[30,9]],[[[1,\"    \"],[10,0],[12],[18,9,null],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"@plain\",\"@selected\",\"&attrs\",\"@icon\",\"@image\",\"@title\",\"@subtitle\",\"&custom-icon\",\"&actions\"],false,[\"if\",\"has-block\",\"yield\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
+    "id": "UZbypG6V",
+    "block": "[[[11,0],[16,0,[29,[\"upf-banner \",[52,[30,1],\"background-color-gray-50\",\"background-color-white\"],\" \",[52,[30,2],\"upf-banner--selected\"],\"\\n            \",[52,[30,3],\"upf-banner--disabled\"],\" fx-1 fx-row padding-px-18 fx-xalign-center fx-gap-px-12\"]]],[17,4],[12],[1,\"\\n\"],[41,[48,[30,9]],[[[1,\"    \"],[10,0],[12],[18,9,null],[13],[1,\"\\n\"]],[]],[[[41,[30,5],[[[1,\"    \"],[8,[39,3],[[24,0,\"upf-badge upf-badge--shape-round upf-badge--size-md\"]],[[\"@style\",\"@icon\"],[[28,[37,4],[[30,5]],null],[28,[37,5],[[30,5]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,6],[[[1,\"    \"],[10,\"img\"],[14,0,\"upf-badge upf-badge--size-md upf-badge--shape-round\"],[15,\"src\",[30,6]],[14,\"alt\",\"banner\"],[12],[13],[1,\"\\n  \"]],[]],null]],[]]]],[]]],[1,\"  \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-3\"],[12],[1,\"\\n\"],[41,[30,7],[[[1,\"      \"],[10,1],[14,0,\"font-weight-semibold text-size-5 font-color-gray-900\"],[12],[1,[30,7]],[13],[1,\"\\n\"]],[]],null],[41,[30,8],[[[1,\"      \"],[10,1],[14,0,\"text-size-4 font-color-gray-500\"],[12],[1,[30,8]],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[48,[30,10]],[[[1,\"    \"],[10,0],[12],[18,10,null],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"@plain\",\"@selected\",\"@disabled\",\"&attrs\",\"@icon\",\"@image\",\"@title\",\"@subtitle\",\"&custom-icon\",\"&actions\"],false,[\"if\",\"has-block\",\"yield\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/banner.hbs",
     "isStrictMode": false
   });
@@ -86916,6 +87099,20 @@ define("@upfluence/oss-components/components/o-s-s/badge", ["exports", "@ember/c
         control: {
           type: 'boolean'
         }
+      },
+      disabled: {
+        description: 'Display the disabled version of the banner with background and text color updated',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
       }
     },
     parameters: {
@@ -86934,7 +87131,8 @@ define("@upfluence/oss-components/components/o-s-s/badge", ["exports", "@ember/c
     icon: undefined,
     image: undefined,
     plain: false,
-    selected: false
+    selected: false,
+    disabled: false
   };
 
   var Template = function Template(args) {
@@ -86943,12 +87141,12 @@ define("@upfluence/oss-components/components/o-s-s/badge", ["exports", "@ember/c
       /*
         
             <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
-                         @image={{this.image}} @selected={{this.selected}} />
+                         @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} />
         
       */
       {
-        "id": "dG0DNnVz",
-        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@icon\",\"@plain\",\"@image\",\"@selected\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"icon\"]],[30,0,[\"plain\"]],[30,0,[\"image\"]],[30,0,[\"selected\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/banner\"]]",
+        "id": "YUxUPA4x",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@icon\",\"@plain\",\"@image\",\"@selected\",\"@disabled\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"icon\"]],[30,0,[\"plain\"]],[30,0,[\"image\"]],[30,0,[\"selected\"]],[30,0,[\"disabled\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/banner\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -86962,7 +87160,7 @@ define("@upfluence/oss-components/components/o-s-s/badge", ["exports", "@ember/c
       /*
         
             <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
-                         @image={{this.image}} @selected={{this.selected}}>
+                         @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} >
               <:custom-icon>
                 <OSS::Badge @icon="fas fa-check" />
               </:custom-icon>
@@ -86970,8 +87168,8 @@ define("@upfluence/oss-components/components/o-s-s/badge", ["exports", "@ember/c
         
       */
       {
-        "id": "gZSZjoky",
-        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@icon\",\"@plain\",\"@image\",\"@selected\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"icon\"]],[30,0,[\"plain\"]],[30,0,[\"image\"]],[30,0,[\"selected\"]]]],[[\"custom-icon\"],[[[[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\"],[\"fas fa-check\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/banner\",\"o-s-s/badge\"]]",
+        "id": "1jzWyjw4",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@icon\",\"@plain\",\"@image\",\"@selected\",\"@disabled\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"icon\"]],[30,0,[\"plain\"]],[30,0,[\"image\"]],[30,0,[\"selected\"]],[30,0,[\"disabled\"]]]],[[\"custom-icon\"],[[[[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\"],[\"fas fa-check\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/banner\",\"o-s-s/badge\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -86985,7 +87183,7 @@ define("@upfluence/oss-components/components/o-s-s/badge", ["exports", "@ember/c
       /*
         
             <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
-                         @image={{this.image}} @selected={{this.selected}}>
+                         @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} >
               <:actions>
                 <OSS::Button @label="Click me" />
               </:actions>
@@ -86993,8 +87191,8 @@ define("@upfluence/oss-components/components/o-s-s/badge", ["exports", "@ember/c
         
       */
       {
-        "id": "ywRQaj6n",
-        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@icon\",\"@plain\",\"@image\",\"@selected\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"icon\"]],[30,0,[\"plain\"]],[30,0,[\"image\"]],[30,0,[\"selected\"]]]],[[\"actions\"],[[[[1,\"\\n          \"],[8,[39,1],null,[[\"@label\"],[\"Click me\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/banner\",\"o-s-s/button\"]]",
+        "id": "aYx4lvjI",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@icon\",\"@plain\",\"@image\",\"@selected\",\"@disabled\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"icon\"]],[30,0,[\"plain\"]],[30,0,[\"image\"]],[30,0,[\"selected\"]],[30,0,[\"disabled\"]]]],[[\"actions\"],[[[[1,\"\\n          \"],[8,[39,1],null,[[\"@label\"],[\"Click me\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/banner\",\"o-s-s/button\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -109470,36 +109668,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-2062mADTsW1v99sr/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-2062mADTsW1v99sr/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2062mADTsW1v99sr/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-2062mADTsW1v99sr/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-2062mADTsW1v99sr/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2062mADTsW1v99sr/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-2062mADTsW1v99sr/cache-275-bundler/staging/l.js /tmp/broccoli-2062mADTsW1v99sr/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/l.js /tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-2062mADTsW1v99sr/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-2062mADTsW1v99sr/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-2062mADTsW1v99sr/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-2062mADTsW1v99sr/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-2062mADTsW1v99sr/cache-275-bundler/staging/l.js_/tmp/broccoli-2062mADTsW1v99sr/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/l.js_/tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
