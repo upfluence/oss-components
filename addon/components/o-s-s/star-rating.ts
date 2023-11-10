@@ -1,6 +1,6 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
-import { action } from '@ember/object';
+import { action, set } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
 interface OSSStarRatingArgs {
@@ -44,14 +44,6 @@ export default class OSSStarRating extends Component<OSSStarRatingArgs> {
     );
   }
 
-  private generateStarsArray(): any[] {
-    const result = [];
-    for (let i = 0; i < this.args.totalStars; i++) {
-      result.push({ type: i < this.args.rating ? 'solid' : 'regular' });
-    }
-    return result;
-  }
-
   get activeColorClass(): string {
     return `color-${this.args.activeColor || 'yellow'}`;
   }
@@ -67,18 +59,23 @@ export default class OSSStarRating extends Component<OSSStarRatingArgs> {
 
   @action
   onMouseEnter(index: number): void {
-    if (index + 1 !== this.args.rating) {
-      const updatedStars = this.stars.map((_star, i) => {
-        return { type: i <= index ? 'solid' : 'regular' };
-      });
-      this.stars = updatedStars;
-      this.args.onChange?.(index + 1);
+    if (this.args.onChange && index + 1 !== this.args.rating) {
+      for (let i = 0; i < this.args.totalStars; ++i) {
+        set(this.stars[i], 'type', i <= index ? 'solid' : 'regular');
+      }
     }
   }
 
   @action
   onMouseLeave(): void {
     this.stars = this.generateStarsArray();
-    console.log(this.stars);
+  }
+
+  private generateStarsArray(): any[] {
+    const result = [];
+    for (let i = 0; i < this.args.totalStars; i++) {
+      result.push({ type: i < this.args.rating ? 'solid' : 'regular' });
+    }
+    return result;
   }
 }
