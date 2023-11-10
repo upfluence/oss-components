@@ -13,6 +13,13 @@ export default {
       control: { type: 'text' },
       type: { required: true }
     },
+    value: {
+      description: 'The value that should be displayed. Will default to a dash if non is filled.',
+      table: {
+        defaultValue: { summary: '-' }
+      },
+      control: { type: 'text' }
+    },
     removeTooltip: {
       description: 'Overwrites the default "Remove" tooltip that is visible on component hover',
       table: {
