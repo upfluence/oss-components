@@ -1,5 +1,5 @@
 <div class="upf-banner {{if @plain "background-color-gray-50" "background-color-white"}} {{if @selected "upf-banner--selected"}}
-            fx-1 fx-row padding-px-18 fx-xalign-center fx-gap-px-12" ...attributes>
+            {{if @disabled "upf-banner--disabled"}} fx-1 fx-row padding-px-18 fx-xalign-center fx-gap-px-12" ...attributes>
   {{#if (has-block "custom-icon")}}
     <div>{{yield to="custom-icon"}}</div>
   {{else if @icon}}
