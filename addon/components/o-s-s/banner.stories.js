@@ -63,6 +63,16 @@ export default {
       control: {
         type: 'boolean'
       }
+    },
+    disabled: {
+      description: 'Display the disabled version of the banner with background and text color updated',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
+      },
+      control: {
+        type: 'boolean'
+      }
     }
   },
   parameters: {
@@ -81,13 +91,14 @@ const defaultArgs = {
   icon: undefined,
   image: undefined,
   plain: false,
-  selected: false
+  selected: false,
+  disabled: false
 };
 
 const Template = (args) => ({
   template: hbs`
       <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
-                   @image={{this.image}} @selected={{this.selected}} />
+                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} />
   `,
   context: args
 });
@@ -95,7 +106,7 @@ const Template = (args) => ({
 const CustomIconTemplate = (args) => ({
   template: hbs`
       <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
-                   @image={{this.image}} @selected={{this.selected}}>
+                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} >
         <:custom-icon>
           <OSS::Badge @icon="fas fa-check" />
         </:custom-icon>
@@ -107,7 +118,7 @@ const CustomIconTemplate = (args) => ({
 const ActionTemplate = (args) => ({
   template: hbs`
       <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
-                   @image={{this.image}} @selected={{this.selected}}>
+                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} >
         <:actions>
           <OSS::Button @label="Click me" />
         </:actions>

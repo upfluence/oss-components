@@ -73,6 +73,23 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
     });
   });
 
+  module('when passing a disable in the @disabled parameter', function () {
+    test('when value is truthy, it adds upf-banner--disabled class', async function (assert) {
+      await render(hbs`<OSS::Banner @disabled={{true}} />`);
+      assert.dom('.upf-banner.upf-banner--disabled').exists();
+    });
+
+    test("when value is falsy, it doesn't add upf-banner--disabled class", async function (assert) {
+      await render(hbs`<OSS::Banner @disabled={{false}} />`);
+      assert.dom('.upf-banner.upf-banner--disabled').doesNotExist();
+    });
+
+    test("when value is undefined, it doesn't add upf-banner--disabled class", async function (assert) {
+      await render(hbs`<OSS::Banner />`);
+      assert.dom('.upf-banner.upf-banner--disabled').doesNotExist();
+    });
+  });
+
   test('passing a custom-icon named block, renders inside the component', async function (assert) {
     await render(hbs`
       <OSS::Banner @subtitle="Test subtitle">
