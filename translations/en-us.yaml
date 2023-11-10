@@ -63,6 +63,7 @@ oss-components:
     cancel: Cancel
   attribute:
     country: Country
+    phone_number: Phone number
     email:
       label: Email address
       lock_tooltip: Reveal email
