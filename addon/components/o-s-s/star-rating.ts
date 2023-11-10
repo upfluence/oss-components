@@ -45,11 +45,11 @@ export default class OSSStarRating extends Component<OSSStarRatingArgs> {
   }
 
   get activeColorClass(): string {
-    return `color-${this.args.activeColor || 'yellow'}`;
+    return `${this.args.onChange && 'oss-star-rating'} color-${this.args.activeColor || 'yellow'}`;
   }
 
   get passiveColorClass(): string {
-    return `color-${this.args.passiveColor || 'grey'}`;
+    return `${this.args.onChange && 'oss-star-rating'} color-${this.args.passiveColor || 'grey'}`;
   }
 
   @action

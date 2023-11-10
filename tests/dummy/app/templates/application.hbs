@@ -23,7 +23,8 @@
   <div style="width:100%; height:100vh; overflow: auto; background-color: var(--color-gray-50)">
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
       <OSS::StarRating @rating={{3}} @totalStars={{5}} @onChange={{this.onRatingClick}} />
-      <OSS::StarRating @rating={{12}} @totalStars={{15}} @activeColor="red" @passiveColor="blue" @onChange={{this.onRatingClick}} />
+      <OSS::StarRating @rating={{12}} @totalStars={{15}} @activeColor="red" @passiveColor="blue"
+                       @onChange={{this.onRatingClick}} />
     </div>
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
       <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}}>
