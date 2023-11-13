@@ -12,7 +12,7 @@ interface OSSStarRatingArgs {
   activeColor: StarColor;
   passiveColor: StarColor;
   passiveStyle?: StarType;
-  onChange?: (rating: number) => void;
+  onChange?(rating: number): void;
 }
 
 export enum StarColor {
@@ -74,8 +74,8 @@ export default class OSSStarRating extends Component<OSSStarRatingArgs> {
     this.stars = this.generateStarsArray();
   }
 
-  private generateStarsArray(): any[] {
-    const result = [];
+  private generateStarsArray(): Star[] {
+    const result: Star[] = [];
     for (let i = 0; i < this.args.totalStars; i++) {
       result.push({ type: i < this.args.rating ? 'solid' : 'regular' });
     }
