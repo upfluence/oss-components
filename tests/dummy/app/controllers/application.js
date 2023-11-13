@@ -161,6 +161,17 @@ export default class ApplicationController extends Controller {
   }
 
   @action
+  onRemove() {
+    console.log('on remove');
+    return new Promise((res) => {
+      setTimeout(() => {
+        this.revealed = true;
+        return res('success');
+      }, 1000);
+    });
+  }
+
+  @action
   redirectTo(route) {
     console.log('Redirect to', route);
   }

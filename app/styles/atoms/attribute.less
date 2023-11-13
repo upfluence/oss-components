@@ -38,4 +38,20 @@
   &__copy {
     margin-left: auto;
   }
+
+  &--auto-height {
+    height: auto;
+    max-height: max-content;
+    
+    .oss-attribute__label {
+      align-self: flex-start;
+      height: 24px;
+    }
+  }
+
+  &--no-hover-effect {
+    &:hover {
+      background: initial;
+    }
+  }
 }
