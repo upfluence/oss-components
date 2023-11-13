@@ -1,8 +1,9 @@
 <div class="star-rating fx-row">
-  {{#each this.activeStars}}
-    <OSS::Icon @style="solid" @icon="fa-star" class={{this.activeColorClass}} />
-  {{/each}}
-  {{#each this.passiveStars}}
-    <OSS::Icon @style="solid" @icon="fa-star" class={{this.passiveColorClass}} />
+  {{#each this.stars as |star index|}}
+    <OSS::Icon class={{concat (if @disablePointerCursor "no-pointer-cursor ") this.activeColorClass}}
+               @style={{star.type}}
+               @icon="fa-star"
+               {{on "mouseenter" (fn this.onMouseEnter index)}}
+               {{on "mouseleave" (fn this.onMouseLeave)}} />
   {{/each}}
 </div>

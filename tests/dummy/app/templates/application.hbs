@@ -22,6 +22,11 @@
 
   <div style="width:100%; height:100vh; overflow: auto; background-color: var(--color-gray-50)">
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
+      <OSS::StarRating @rating={{3}} @totalStars={{5}} @onChange={{this.onRatingClick}} />
+      <OSS::StarRating @rating={{12}} @totalStars={{15}} @activeColor="red" @passiveColor="blue"
+                       @onChange={{this.onRatingClick}} />
+    </div>
+    <div class="fx-row fx-1 fx-gap-px-10 margin-md">
       <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}}>
         <:prefix>
           <OSS::Icon @icon="fa-search" class="font-color-gray-500" />
@@ -67,6 +72,16 @@
             <OSS::Attribute::PhoneNumber @countryCode="FR" @prefix="+33" @number="642424242" />
             <OSS::Attribute::PhoneNumber @countryCode="nope" @number="+33642424242" />
             <OSS::Attribute::PhoneNumber @prefix="+33" />
+            <OSS::Attribute::RevealableEmail @lockTooltip="This will fail"
+                                             @onRevealEmail={{this.onRevealEmailError}} />
+
+            <OSS::Attribute::Country @countryCode="US" />
+            <OSS::Attribute::Country @countryCode="" />
+            <OSS::Attribute::Rating
+                                    @label="Rating"
+                                    @rating={{this.starRatingValue}}
+                                    @onChange={{this.onRatingClick}} />
+            <OSS::Attribute::Rating @label="Rating not provided" />
           </div>
         </:view-mode>
         <:edition-mode>
@@ -542,10 +557,6 @@
       <div class="fx-row fx-1">
         <OSS::PhoneNumberInput @prefix={{this.phonePrefix}} @number={{this.phoneNumber}}
                                @onChange={{this.onPhoneNumberChange}} />
-      </div>
-      <div class="fx-col">
-        <OSS::StarRating @rating={{3}} @totalStars={{5}} />
-        <OSS::StarRating @rating={{12}} @totalStars={{15}} @activeColor="red" @passiveColor="blue" />
       </div>
       <div class="fx-col fx-gap-px-12">
         <OSS::Banner @icon="fas fa-box-open" @title="Shopify" @selected={{true}}

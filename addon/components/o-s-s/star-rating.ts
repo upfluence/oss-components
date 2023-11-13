@@ -1,11 +1,18 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
+import { action, set } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
+
+type StarType = 'solid' | 'regular';
+type Star = { type: StarType };
 
 interface OSSStarRatingArgs {
   rating: number;
   totalStars: number;
   activeColor: StarColor;
   passiveColor: StarColor;
+  passiveStyle?: StarType;
+  onChange?(rating: number): void;
 }
 
 export enum StarColor {
@@ -24,8 +31,11 @@ export enum StarColor {
 }
 
 export default class OSSStarRating extends Component<OSSStarRatingArgs> {
+  @tracked stars: Star[] = [];
+
   constructor(owner: unknown, args: OSSStarRatingArgs) {
     super(owner, args);
+    this.stars = this.generateStarsArray();
 
     assert(
       `[component][OSS::StarRating] @rating argument is mandatory and must be a number`,
@@ -45,11 +55,30 @@ export default class OSSStarRating extends Component<OSSStarRatingArgs> {
     return `color-${this.args.passiveColor || 'grey'}`;
   }
 
-  get activeStars(): any[] {
-    return new Array(this.args.rating);
+  @action
+  setRating(val1: number, val2: number = 0): void {
+    this.args.onChange?.(val1 + val2 + 1);
   }
 
-  get passiveStars(): any[] {
-    return new Array(Math.max(0, this.args.totalStars - this.args.rating));
+  @action
+  onMouseEnter(index: number): void {
+    if (this.args.onChange && index + 1 !== this.args.rating) {
+      for (let i = 0; i < this.args.totalStars; ++i) {
+        set(this.stars[i], 'type', i <= index ? 'solid' : 'regular');
+      }
+    }
+  }
+
+  @action
+  onMouseLeave(): void {
+    this.stars = this.generateStarsArray();
+  }
+
+  private generateStarsArray(): Star[] {
+    const result: Star[] = [];
+    for (let i = 0; i < this.args.totalStars; i++) {
+      result.push({ type: i < this.args.rating ? 'solid' : 'regular' });
+    }
+    return result;
   }
 }

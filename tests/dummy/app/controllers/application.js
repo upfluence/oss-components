@@ -79,6 +79,7 @@ export default class ApplicationController extends Controller {
   @tracked togglable = false;
   @tracked emailInputValue = '';
   @tracked revealed = false;
+  @tracked starRatingValue = 3;
 
   @tracked media = [
     {
@@ -227,6 +228,11 @@ export default class ApplicationController extends Controller {
     const owner = getOwner(this);
     owner.register('service:mock-uploader', MockUploader);
     this.mockUploader = owner.lookup('service:mock-uploader');
+  }
+
+  @action
+  onRatingClick(rating) {
+    console.log('You have rated with: ' + rating);
   }
 
   @action

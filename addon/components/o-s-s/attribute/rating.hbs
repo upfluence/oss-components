@@ -1,0 +1,13 @@
+<OSS::Attribute::Base class="oss-attribute--no-hover-effect" data-control-name="attribute-rating" ...attributes>
+  <:label>
+    <span>{{@label}}</span>
+  </:label>
+  <:value>
+    {{#if @rating}}
+      <OSS::StarRating @rating={{@rating}} @totalStars={{5}} @activeColor="yellow"
+                       @passiveColor="yellow" @passiveStyle="regular" @disablePointerCursor={{true}} />
+    {{else}}
+      -
+    {{/if}}
+  </:value>
+</OSS::Attribute::Base>
