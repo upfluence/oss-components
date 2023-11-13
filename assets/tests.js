@@ -2744,6 +2744,461 @@ define("dummy/tests/integration/components/o-s-s/attribute/phone-number-test", [
     }());
   });
 });
+define("dummy/tests/integration/components/o-s-s/attribute/rating-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers"], function (_templateFactory, _qunit, _emberQunit, _testHelpers) {
+  "use strict";
+
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+  function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+  (0, _qunit.module)('Integration | Component | o-s-s/attribute/rating', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.testRating = 3;
+    });
+    (0, _qunit.test)('it renders', /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(assert) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::Rating @label="Hello" @rating={{this.testRating}}/>
+                */
+                {
+                  "id": "jknsI8u5",
+                  "block": "[[[8,[39,0],null,[[\"@label\",\"@rating\"],[\"Hello\",[30,0,[\"testRating\"]]]],null]],[],false,[\"o-s-s/attribute/rating\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('[data-control-name="attribute-rating"]').exists();
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('it displays a dash when no @rating is provided', /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::Rating @label="Hello" />
+                */
+                {
+                  "id": "YSJnQeEP",
+                  "block": "[[[8,[39,0],null,[[\"@label\"],[\"Hello\"]],null]],[],false,[\"o-s-s/attribute/rating\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-attribute__value').hasText('-');
+
+              case 3:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function (_x2) {
+        return _ref3.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('it displays the proper number of stars when @rating is provided', /*#__PURE__*/function () {
+      var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::Rating @label="Hello" @rating={{this.testRating}}/>
+                */
+                {
+                  "id": "jknsI8u5",
+                  "block": "[[[8,[39,0],null,[[\"@label\",\"@rating\"],[\"Hello\",[30,0,[\"testRating\"]]]],null]],[],false,[\"o-s-s/attribute/rating\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.fas.fa-star.color-yellow').exists({
+                  count: this.testRating
+                });
+
+              case 3:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      return function (_x3) {
+        return _ref4.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('it displays a label when @label is provided', /*#__PURE__*/function () {
+      var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
+        return regeneratorRuntime.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::Rating @label="Hello" @rating={{this.testRating}}/>
+                */
+                {
+                  "id": "jknsI8u5",
+                  "block": "[[[8,[39,0],null,[[\"@label\",\"@rating\"],[\"Hello\",[30,0,[\"testRating\"]]]],null]],[],false,[\"o-s-s/attribute/rating\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-attribute__label').hasText('Hello');
+
+              case 3:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }));
+
+      return function (_x4) {
+        return _ref5.apply(this, arguments);
+      };
+    }());
+  });
+});
+define("dummy/tests/integration/components/o-s-s/attribute/removable-text-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "sinon"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _sinon) {
+  "use strict";
+
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+  function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+  (0, _qunit.module)('Integration | Component | o-s-s/attribute/removable-text', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.onRemove = _sinon.default.stub().resolves();
+    });
+    (0, _qunit.test)('it renders', /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(assert) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::RemovableText @label="label" @onRemove={{this.onRemove}} />
+                */
+                {
+                  "id": "1i5tf3mI",
+                  "block": "[[[8,[39,0],null,[[\"@label\",\"@onRemove\"],[\"label\",[30,0,[\"onRemove\"]]]],null]],[],false,[\"o-s-s/attribute/removable-text\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('[data-control-name="attribute-removable-text"]').exists();
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('It displays the @label', /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::RemovableText @label="city" @onRemove={{this.onRemove}} />
+                */
+                {
+                  "id": "c0taKd/L",
+                  "block": "[[[8,[39,0],null,[[\"@label\",\"@onRemove\"],[\"city\",[30,0,[\"onRemove\"]]]],null]],[],false,[\"o-s-s/attribute/removable-text\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-attribute__label').hasText('city');
+
+              case 3:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function (_x2) {
+        return _ref3.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('If the value is provided, it is displayed', /*#__PURE__*/function () {
+      var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                _context3.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::RemovableText @label="city" @value="Lyon" @onRemove={{this.onRemove}} />
+                */
+                {
+                  "id": "F/4XJXsA",
+                  "block": "[[[8,[39,0],null,[[\"@label\",\"@value\",\"@onRemove\"],[\"city\",\"Lyon\",[30,0,[\"onRemove\"]]]],null]],[],false,[\"o-s-s/attribute/removable-text\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-attribute__value').hasText('Lyon');
+
+              case 3:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3);
+      }));
+
+      return function (_x3) {
+        return _ref4.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('If the value is not provided, it displays a dash', /*#__PURE__*/function () {
+      var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
+        return regeneratorRuntime.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::RemovableText @label="city" @onRemove={{this.onRemove}} />
+                */
+                {
+                  "id": "c0taKd/L",
+                  "block": "[[[8,[39,0],null,[[\"@label\",\"@onRemove\"],[\"city\",[30,0,[\"onRemove\"]]]],null]],[],false,[\"o-s-s/attribute/removable-text\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-attribute__value').hasText('-');
+
+              case 3:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }));
+
+      return function (_x4) {
+        return _ref5.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.module)('Remove tooltip', function () {
+      (0, _qunit.test)('If the @removeTooltip paramater is passed, the string contents are used as tooltip for the lock icon', /*#__PURE__*/function () {
+        var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(assert) {
+          return regeneratorRuntime.wrap(function _callee5$(_context5) {
+            while (1) {
+              switch (_context5.prev = _context5.next) {
+                case 0:
+                  _context5.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Attribute::RemovableText @label="city" @onRemove={{this.onRemove}} @removeTooltip="Click to remove" />
+                  */
+                  {
+                    "id": "YQKMgk6u",
+                    "block": "[[[8,[39,0],null,[[\"@label\",\"@onRemove\",\"@removeTooltip\"],[\"city\",[30,0,[\"onRemove\"]],\"Click to remove\"]],null]],[],false,[\"o-s-s/attribute/removable-text\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  _context5.next = 4;
+                  return (0, _testHelpers.triggerEvent)('.oss-attribute', 'mouseenter');
+
+                case 4:
+                  _context5.next = 6;
+                  return assert.tooltip('.fa-trash').hasTitle('Click to remove');
+
+                case 6:
+                case "end":
+                  return _context5.stop();
+              }
+            }
+          }, _callee5);
+        }));
+
+        return function (_x5) {
+          return _ref6.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('If the @removeTooltip paramater is not passed, the default text is used', /*#__PURE__*/function () {
+        var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(assert) {
+          return regeneratorRuntime.wrap(function _callee6$(_context6) {
+            while (1) {
+              switch (_context6.prev = _context6.next) {
+                case 0:
+                  _context6.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Attribute::RemovableText @label="city" @onRemove={{this.onRemove}} />
+                  */
+                  {
+                    "id": "c0taKd/L",
+                    "block": "[[[8,[39,0],null,[[\"@label\",\"@onRemove\"],[\"city\",[30,0,[\"onRemove\"]]]],null]],[],false,[\"o-s-s/attribute/removable-text\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  _context6.next = 4;
+                  return (0, _testHelpers.triggerEvent)('.oss-attribute', 'mouseenter');
+
+                case 4:
+                  _context6.next = 6;
+                  return assert.tooltip('.fa-trash').hasTitle('Remove');
+
+                case 6:
+                case "end":
+                  return _context6.stop();
+              }
+            }
+          }, _callee6);
+        }));
+
+        return function (_x6) {
+          return _ref7.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.test)('Clicking on the trash icon calls the @onRemove method', /*#__PURE__*/function () {
+      var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(assert) {
+        return regeneratorRuntime.wrap(function _callee7$(_context7) {
+          while (1) {
+            switch (_context7.prev = _context7.next) {
+              case 0:
+                _context7.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::RemovableText @label="city" @value="Lyon" @onRemove={{this.onRemove}} />
+                */
+                {
+                  "id": "F/4XJXsA",
+                  "block": "[[[8,[39,0],null,[[\"@label\",\"@value\",\"@onRemove\"],[\"city\",\"Lyon\",[30,0,[\"onRemove\"]]]],null]],[],false,[\"o-s-s/attribute/removable-text\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                _context7.next = 4;
+                return (0, _testHelpers.triggerEvent)('.oss-attribute', 'mouseenter');
+
+              case 4:
+                _context7.next = 6;
+                return (0, _testHelpers.click)('.fa-trash');
+
+              case 6:
+                assert.true(this.onRemove.calledOnce);
+
+              case 7:
+              case "end":
+                return _context7.stop();
+            }
+          }
+        }, _callee7, this);
+      }));
+
+      return function (_x7) {
+        return _ref8.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('Clicking on the trash icon displays a loader', /*#__PURE__*/function () {
+      var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
+        return regeneratorRuntime.wrap(function _callee8$(_context8) {
+          while (1) {
+            switch (_context8.prev = _context8.next) {
+              case 0:
+                this.onRemove.returns(new Promise(function () {}));
+                _context8.next = 3;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::RemovableText @label="city" @value="Lyon" @onRemove={{this.onRemove}} />
+                */
+                {
+                  "id": "F/4XJXsA",
+                  "block": "[[[8,[39,0],null,[[\"@label\",\"@value\",\"@onRemove\"],[\"city\",\"Lyon\",[30,0,[\"onRemove\"]]]],null]],[],false,[\"o-s-s/attribute/removable-text\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 3:
+                _context8.next = 5;
+                return (0, _testHelpers.triggerEvent)('.oss-attribute', 'mouseenter');
+
+              case 5:
+                _context8.next = 7;
+                return (0, _testHelpers.click)('.fa-trash');
+
+              case 7:
+                assert.dom('.fa-circle-notch.fa-spin').exists();
+
+              case 8:
+              case "end":
+                return _context8.stop();
+            }
+          }
+        }, _callee8, this);
+      }));
+
+      return function (_x8) {
+        return _ref9.apply(this, arguments);
+      };
+    }());
+  });
+});
 define("dummy/tests/integration/components/o-s-s/attribute/revealable-email-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "sinon"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _sinon) {
   "use strict";
 
@@ -3018,6 +3473,153 @@ define("dummy/tests/integration/components/o-s-s/attribute/revealable-email-test
 
       return function (_x7) {
         return _ref8.apply(this, arguments);
+      };
+    }());
+  });
+});
+define("dummy/tests/integration/components/o-s-s/attribute/tag-array-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "@ember/test-helpers/dom/find-all"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _findAll) {
+  "use strict";
+
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+  function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+  (0, _qunit.module)('Integration | Component | o-s-s/attribute/tag-array', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(assert) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::TagArray @label="Fruits" />
+                */
+                {
+                  "id": "B5NwGVBv",
+                  "block": "[[[8,[39,0],null,[[\"@label\"],[\"Fruits\"]],null]],[],false,[\"o-s-s/attribute/tag-array\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('[data-control-name="attribute-tag-array"]').exists();
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('it displays the @label parameter', /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::TagArray @label="Fruits" />
+                */
+                {
+                  "id": "B5NwGVBv",
+                  "block": "[[[8,[39,0],null,[[\"@label\"],[\"Fruits\"]],null]],[],false,[\"o-s-s/attribute/tag-array\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-attribute__label').hasText('Fruits');
+
+              case 3:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function (_x2) {
+        return _ref3.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('If @tags are passed to the component, they are displayed', /*#__PURE__*/function () {
+      var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
+        var allUpfTags;
+        return regeneratorRuntime.wrap(function _callee3$(_context3) {
+          while (1) {
+            switch (_context3.prev = _context3.next) {
+              case 0:
+                this.tags = ['watermelon', 'vodkamelon', 'whiskeymelon', 'tequilamelon'];
+                _context3.next = 3;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::TagArray @label="Fruits" @tags={{this.tags}} />
+                */
+                {
+                  "id": "lh1xouUz",
+                  "block": "[[[8,[39,0],null,[[\"@label\",\"@tags\"],[\"Fruits\",[30,0,[\"tags\"]]]],null]],[],false,[\"o-s-s/attribute/tag-array\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 3:
+                assert.dom('.oss-attribute__value .fx-row.fx-wrap').exists();
+                allUpfTags = (0, _findAll.default)('.upf-tag');
+                assert.equal(allUpfTags.length, this.tags.length);
+
+              case 6:
+              case "end":
+                return _context3.stop();
+            }
+          }
+        }, _callee3, this);
+      }));
+
+      return function (_x3) {
+        return _ref4.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('If @tags are not passed to the component, a dash is displayed', /*#__PURE__*/function () {
+      var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
+        return regeneratorRuntime.wrap(function _callee4$(_context4) {
+          while (1) {
+            switch (_context4.prev = _context4.next) {
+              case 0:
+                _context4.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Attribute::TagArray @label="Fruits" />
+                */
+                {
+                  "id": "B5NwGVBv",
+                  "block": "[[[8,[39,0],null,[[\"@label\"],[\"Fruits\"]],null]],[],false,[\"o-s-s/attribute/tag-array\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-attribute__value').hasText('-');
+
+              case 3:
+              case "end":
+                return _context4.stop();
+            }
+          }
+        }, _callee4);
+      }));
+
+      return function (_x4) {
+        return _ref5.apply(this, arguments);
       };
     }());
   });
@@ -19147,41 +19749,43 @@ define("dummy/tests/integration/components/o-s-s/star-rating-test", ["@ember/tem
     }());
 
     var _loop = function _loop(starColor) {
-      (0, _qunit.test)('Passing @activeColor and @passiveColor applies the correct classes to the component', /*#__PURE__*/function () {
-        var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
-          return regeneratorRuntime.wrap(function _callee4$(_context4) {
+      (0, _qunit.test)('Passing @activeColor, @passiveColor & @activeStyle applies the correct classes to the component', /*#__PURE__*/function () {
+        var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(assert) {
+          return regeneratorRuntime.wrap(function _callee5$(_context5) {
             while (1) {
-              switch (_context4.prev = _context4.next) {
+              switch (_context5.prev = _context5.next) {
                 case 0:
                   this.activeColor = starColor;
                   this.passiveColor = starColor;
-                  _context4.next = 4;
+                  _context5.next = 4;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     <OSS::StarRating @rating={{5}} @totalStars={{8}}
                                                           @activeColor={{this.activeColor}}
+                                                          @passiveStyle='regular'
                                                           @passiveColor={{this.passiveColor}} />
                   */
                   {
-                    "id": "MDSTYj6y",
-                    "block": "[[[8,[39,0],null,[[\"@rating\",\"@totalStars\",\"@activeColor\",\"@passiveColor\"],[5,8,[30,0,[\"activeColor\"]],[30,0,[\"passiveColor\"]]]],null]],[],false,[\"o-s-s/star-rating\"]]",
+                    "id": "WYldT9Zw",
+                    "block": "[[[8,[39,0],null,[[\"@rating\",\"@totalStars\",\"@activeColor\",\"@passiveStyle\",\"@passiveColor\"],[5,8,[30,0,[\"activeColor\"]],\"regular\",[30,0,[\"passiveColor\"]]]],null]],[],false,[\"o-s-s/star-rating\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
 
                 case 4:
                   assert.dom('.fas').hasClass("color-".concat(starColor));
+                  assert.dom('.far').hasClass("color-".concat(starColor));
 
-                case 5:
+                case 6:
                 case "end":
-                  return _context4.stop();
+                  return _context5.stop();
               }
             }
-          }, _callee4, this);
+          }, _callee5, this);
         }));
 
-        return function (_x4) {
-          return _ref5.apply(this, arguments);
+        return function (_x5) {
+          return _ref6.apply(this, arguments);
         };
       }());
     };
@@ -19190,17 +19794,55 @@ define("dummy/tests/integration/components/o-s-s/star-rating-test", ["@ember/tem
       _loop(starColor);
     }
 
+    (0, _qunit.test)('The number of stars displayed is consistent with the provided @rating', /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::StarRating @rating={{3}} @totalStars={{8}} @passiveStyle='regular'
+                                                        @activeColor={{this.activeColor}}
+                                                        @passiveColor={{this.passiveColor}}
+                                                        @onChange={{this.onChange}} />
+                */
+                {
+                  "id": "XoKO9NW6",
+                  "block": "[[[8,[39,0],null,[[\"@rating\",\"@totalStars\",\"@passiveStyle\",\"@activeColor\",\"@passiveColor\",\"@onChange\"],[3,8,\"regular\",[30,0,[\"activeColor\"]],[30,0,[\"passiveColor\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/star-rating\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.fas.fa-star.color-yellow').exists({
+                  count: 3
+                });
+
+              case 3:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function (_x2) {
+        return _ref3.apply(this, arguments);
+      };
+    }());
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('failing to pass @rating throws an error', /*#__PURE__*/function () {
-        var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
-          return regeneratorRuntime.wrap(function _callee2$(_context2) {
+        var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
+          return regeneratorRuntime.wrap(function _callee3$(_context3) {
             while (1) {
-              switch (_context2.prev = _context2.next) {
+              switch (_context3.prev = _context3.next) {
                 case 0:
                   (0, _testHelpers.setupOnerror)(function (err) {
                     assert.equal(err.message, 'Assertion Failed: [component][OSS::StarRating] @rating argument is mandatory and must be a number');
                   });
-                  _context2.next = 3;
+                  _context3.next = 3;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     <OSS::StarRating @totalStars={{5}} />
@@ -19208,39 +19850,6 @@ define("dummy/tests/integration/components/o-s-s/star-rating-test", ["@ember/tem
                   {
                     "id": "fCY6vEEq",
                     "block": "[[[8,[39,0],null,[[\"@totalStars\"],[5]],null]],[],false,[\"o-s-s/star-rating\"]]",
-                    "moduleName": "(unknown template module)",
-                    "isStrictMode": false
-                  }));
-
-                case 3:
-                case "end":
-                  return _context2.stop();
-              }
-            }
-          }, _callee2);
-        }));
-
-        return function (_x2) {
-          return _ref3.apply(this, arguments);
-        };
-      }());
-      (0, _qunit.test)('failing to pass @totalStart throws an error', /*#__PURE__*/function () {
-        var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
-          return regeneratorRuntime.wrap(function _callee3$(_context3) {
-            while (1) {
-              switch (_context3.prev = _context3.next) {
-                case 0:
-                  (0, _testHelpers.setupOnerror)(function (err) {
-                    assert.equal(err.message, 'Assertion Failed: [component][OSS::StarRating] @totalStars argument is mandatory and must be a number');
-                  });
-                  _context3.next = 3;
-                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-                  /*
-                    <OSS::StarRating @rating={{5}} />
-                  */
-                  {
-                    "id": "Qss8skQP",
-                    "block": "[[[8,[39,0],null,[[\"@rating\"],[5]],null]],[],false,[\"o-s-s/star-rating\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
@@ -19255,6 +19864,39 @@ define("dummy/tests/integration/components/o-s-s/star-rating-test", ["@ember/tem
 
         return function (_x3) {
           return _ref4.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('failing to pass @totalStart throws an error', /*#__PURE__*/function () {
+        var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
+          return regeneratorRuntime.wrap(function _callee4$(_context4) {
+            while (1) {
+              switch (_context4.prev = _context4.next) {
+                case 0:
+                  (0, _testHelpers.setupOnerror)(function (err) {
+                    assert.equal(err.message, 'Assertion Failed: [component][OSS::StarRating] @totalStars argument is mandatory and must be a number');
+                  });
+                  _context4.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::StarRating @rating={{5}} />
+                  */
+                  {
+                    "id": "Qss8skQP",
+                    "block": "[[[8,[39,0],null,[[\"@rating\"],[5]],null]],[],false,[\"o-s-s/star-rating\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                case "end":
+                  return _context4.stop();
+              }
+            }
+          }, _callee4);
+        }));
+
+        return function (_x4) {
+          return _ref5.apply(this, arguments);
         };
       }());
     });

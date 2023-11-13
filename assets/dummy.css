@@ -11645,6 +11645,12 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
 .star-rating .color-red {
   color: var(--color-error-500);
 }
+.star-rating .fa-star {
+  cursor: pointer;
+}
+.star-rating .no-pointer-cursor {
+  cursor: auto;
+}
 /*!*****************************************************
 Freak Flags, Copyright ©2022 Michael P. Cohen. Freak flags is licenced under the MIT licence.  
 For complete information visit: www.freakflagsprite.com 
@@ -12712,6 +12718,17 @@ For complete information visit: www.freakflagsprite.com
 }
 .oss-attribute__copy {
   margin-left: auto;
+}
+.oss-attribute--auto-height {
+  height: auto;
+  max-height: max-content;
+}
+.oss-attribute--auto-height .oss-attribute__label {
+  align-self: flex-start;
+  height: 24px;
+}
+.oss-attribute--no-hover-effect:hover {
+  background: initial;
 }
 .upf-square-btn {
   height: 24px;

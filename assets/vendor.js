@@ -85684,6 +85684,397 @@ define("@upfluence/oss-components/components/o-s-s/attribute/phone-number", ["ex
 });
 ;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+define("@upfluence/oss-components/components/o-s-s/attribute/rating", ["exports", "@ember/component", "@ember/template-factory", "@ember/debug", "@glimmer/component"], function (_exports, _component, _templateFactory, _debug, _component2) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+  function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <OSS::Attribute::Base class="oss-attribute--no-hover-effect" data-control-name="attribute-rating" ...attributes>
+    <:label>
+      <span>{{@label}}</span>
+    </:label>
+    <:value>
+      {{#if @rating}}
+        <OSS::StarRating @rating={{@rating}} @totalStars={{5}} @activeColor="yellow"
+                         @passiveColor="yellow" @passiveStyle="regular" @disablePointerCursor={{true}} />
+      {{else}}
+        -
+      {{/if}}
+    </:value>
+  </OSS::Attribute::Base>
+  
+  */
+  {
+    "id": "kH5EgEtb",
+    "block": "[[[8,[39,0],[[24,0,\"oss-attribute--no-hover-effect\"],[24,\"data-control-name\",\"attribute-rating\"],[17,1]],null,[[\"label\",\"value\"],[[[[1,\"\\n    \"],[10,1],[12],[1,[30,2]],[13],[1,\"\\n  \"]],[]],[[[1,\"\\n\"],[41,[30,3],[[[1,\"      \"],[8,[39,2],null,[[\"@rating\",\"@totalStars\",\"@activeColor\",\"@passiveColor\",\"@passiveStyle\",\"@disablePointerCursor\"],[[30,3],5,\"yellow\",\"yellow\",\"regular\",true]],null],[1,\"\\n\"]],[]],[[[1,\"      -\\n\"]],[]]],[1,\"  \"]],[]]]]],[1,\"\\n\"]],[\"&attrs\",\"@label\",\"@rating\"],false,[\"o-s-s/attribute/base\",\"if\",\"o-s-s/star-rating\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/attribute/rating.hbs",
+    "isStrictMode": false
+  });
+
+  var OSSAttributeRating = /*#__PURE__*/function (_Component) {
+    _inherits(OSSAttributeRating, _Component);
+
+    var _super = _createSuper(OSSAttributeRating);
+
+    function OSSAttributeRating(owner, args) {
+      var _this;
+
+      _classCallCheck(this, OSSAttributeRating);
+
+      _this = _super.call(this, owner, args);
+      (true && !(typeof args.label === 'string') && (0, _debug.assert)('[component][OSS::Attribute::Rating] @label is required', typeof args.label === 'string'));
+      return _this;
+    }
+
+    return _createClass(OSSAttributeRating);
+  }(_component2.default);
+
+  _exports.default = OSSAttributeRating;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSAttributeRating);
+});
+;define("@upfluence/oss-components/components/o-s-s/attribute/rating.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.Default = _exports.default = void 0;
+  var _default = {
+    title: 'Components/OSS::Attribute::Rating',
+    component: 'rating',
+    argTypes: {
+      label: {
+        type: {
+          required: true
+        },
+        description: 'The value of the label',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      rating: {
+        description: 'The value of the rating',
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'number'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'Member of the Attribute displays. The OSS::Attribute::Rating is a component that displays a label & a star rating'
+        },
+        iframeHeight: 150
+      }
+    }
+  };
+  _exports.default = _default;
+  var defaultArgs = {
+    label: 'Label',
+    rating: 3
+  };
+
+  var BasicUsageTemplate = function BasicUsageTemplate(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <div style="padding: 12px; background: white">
+             <OSS::Attribute::Rating  @label={{this.label}}
+                                      @rating={{this.rating}} />
+          </div>
+        
+      */
+      {
+        "id": "tmMkDIfB",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"padding: 12px; background: white\"],[12],[1,\"\\n       \"],[8,[39,0],null,[[\"@label\",\"@rating\"],[[30,0,[\"label\"]],[30,0,[\"rating\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/attribute/rating\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+
+  var Default = BasicUsageTemplate.bind({});
+  _exports.Default = Default;
+  Default.args = defaultArgs;
+});
+;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+define("@upfluence/oss-components/components/o-s-s/attribute/removable-text", ["exports", "@ember/component", "@ember/template-factory", "@ember/utils", "@glimmer/component", "@ember/service", "@ember/object", "@glimmer/tracking", "@ember/debug"], function (_exports, _component, _templateFactory, _utils, _component2, _service, _object, _tracking, _debug) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _class, _descriptor, _descriptor2;
+
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+  function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'proposal-class-properties is enabled and runs after the decorators transform.'); }
+
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <OSS::Attribute::Base @copyable={{false}} data-control-name="attribute-removable-text"
+                        {{on "mouseenter" (fn (mut this.displayRemoveIcon) true)}}
+                        {{on "mouseleave" (fn (mut this.displayRemoveIcon) false)}}
+                        ...attributes>
+    <:label>
+      <span>{{@label}}</span>
+    </:label>
+    <:value>
+      <div class="fx-row fx-xalign-center fx-gap-px-6">
+        <span class="fx-1">{{this.value}}</span>
+        {{#if this.loading}}
+          <OSS::Icon @icon="fa-circle-notch fa-spin" />
+        {{else if this.displayRemoveIcon}}
+          <OSS::Icon @icon="fa-trash" {{on "click" this.onRemove}} role="button"
+                     {{enable-tooltip title=this.removeTooltip placement="top"}} />
+        {{/if}}
+      </div>
+    </:value>
+  </OSS::Attribute::Base>
+  
+  */
+  {
+    "id": "a11r7CQ4",
+    "block": "[[[8,[39,0],[[24,\"data-control-name\",\"attribute-removable-text\"],[17,1],[4,[38,1],[\"mouseenter\",[28,[37,2],[[28,[37,3],[[30,0,[\"displayRemoveIcon\"]]],null],true],null]],null],[4,[38,1],[\"mouseleave\",[28,[37,2],[[28,[37,3],[[30,0,[\"displayRemoveIcon\"]]],null],false],null]],null]],[[\"@copyable\"],[false]],[[\"label\",\"value\"],[[[[1,\"\\n    \"],[10,1],[12],[1,[30,2]],[13],[1,\"\\n  \"]],[]],[[[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-6\"],[12],[1,\"\\n      \"],[10,1],[14,0,\"fx-1\"],[12],[1,[30,0,[\"value\"]]],[13],[1,\"\\n\"],[41,[30,0,[\"loading\"]],[[[1,\"        \"],[8,[39,5],null,[[\"@icon\"],[\"fa-circle-notch fa-spin\"]],null],[1,\"\\n\"]],[]],[[[41,[30,0,[\"displayRemoveIcon\"]],[[[1,\"        \"],[8,[39,5],[[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,0,[\"onRemove\"]]],null],[4,[38,6],null,[[\"title\",\"placement\"],[[30,0,[\"removeTooltip\"]],\"top\"]]]],[[\"@icon\"],[\"fa-trash\"]],null],[1,\"\\n      \"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"]],[]]]]],[1,\"\\n\"]],[\"&attrs\",\"@label\"],false,[\"o-s-s/attribute/base\",\"on\",\"fn\",\"mut\",\"if\",\"o-s-s/icon\",\"enable-tooltip\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/attribute/removable-text.hbs",
+    "isStrictMode": false
+  });
+
+  var OSSAttributeRemovableText = (_class = /*#__PURE__*/function (_Component) {
+    _inherits(OSSAttributeRemovableText, _Component);
+
+    var _super = _createSuper(OSSAttributeRemovableText);
+
+    function OSSAttributeRemovableText(owner, args) {
+      var _this;
+
+      _classCallCheck(this, OSSAttributeRemovableText);
+
+      _this = _super.call(this, owner, args);
+
+      _initializerDefineProperty(_assertThisInitialized(_this), "intl", _descriptor, _assertThisInitialized(_this));
+
+      _initializerDefineProperty(_assertThisInitialized(_this), "loading", _descriptor2, _assertThisInitialized(_this));
+
+      (true && !(typeof args.label === 'string') && (0, _debug.assert)('[component][OSS::Attribute::RemovableText] @label parameter is required', typeof args.label === 'string'));
+      (true && !(typeof args.onRemove === 'function') && (0, _debug.assert)('[component][OSS::Attribute::RemovableText] @onRemove method is required', typeof args.onRemove === 'function'));
+      return _this;
+    }
+
+    _createClass(OSSAttributeRemovableText, [{
+      key: "value",
+      get: function get() {
+        return (0, _utils.isBlank)(this.args.value) ? '-' : this.args.value;
+      }
+    }, {
+      key: "removeTooltip",
+      get: function get() {
+        var _this$args$removeTool;
+
+        return (_this$args$removeTool = this.args.removeTooltip) !== null && _this$args$removeTool !== void 0 ? _this$args$removeTool : this.intl.t('oss-components.attribute.removable_text.remove_tooltip');
+      }
+    }, {
+      key: "onRemove",
+      value: function onRemove() {
+        var _this2 = this;
+
+        this.loading = true;
+        this.args.onRemove().finally(function () {
+          return _this2.loading = false;
+        });
+      }
+    }]);
+
+    return OSSAttributeRemovableText;
+  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "loading", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "onRemove", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onRemove"), _class.prototype)), _class);
+  _exports.default = OSSAttributeRemovableText;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSAttributeRemovableText);
+});
+;define("@upfluence/oss-components/components/o-s-s/attribute/removable-text.stories", ["exports", "@ember/template-factory", "@storybook/addon-actions"], function (_exports, _templateFactory, _addonActions) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.Default = _exports.default = void 0;
+  var _default = {
+    title: 'Components/OSS::Attribute::RemovableText',
+    component: 'removable-text',
+    argTypes: {
+      label: {
+        description: 'The label of the component.',
+        table: {
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        },
+        type: {
+          required: true
+        }
+      },
+      value: {
+        description: 'The value that should be displayed. Will default to a dash if non is filled.',
+        table: {
+          defaultValue: {
+            summary: '-'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      removeTooltip: {
+        description: 'Overwrites the default "Remove" tooltip that is visible on component hover',
+        table: {
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      onRemove: {
+        description: 'The callback method triggered when a user clicks on the trash icon. It should return a promise which allows the spinner to stop being displayed when needed',
+        type: {
+          required: true
+        },
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'onRemove(): Promise<void>'
+          }
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'Member of the Attribute displays. The OSS::Attribute::RemovableText displays a label, a value and a remove icon on hover.'
+        }
+      }
+    }
+  };
+  _exports.default = _default;
+  var defaultArgs = {
+    label: 'City',
+    value: 'Paris',
+    removeTooltip: undefined,
+    onRemove: (0, _addonActions.action)('onRemove')
+  };
+
+  var Template = function Template(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <div style="padding: 12px; background: white">
+            <OSS::Attribute::RemovableText @label={{this.label}} @value={{this.value}}
+                                          @removeTooltip={{this.lockTooltip}} @onRemove={{this.onRemove}} />
+          </div>
+        
+      */
+      {
+        "id": "lh5X0e8O",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"padding: 12px; background: white\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@label\",\"@value\",\"@removeTooltip\",\"@onRemove\"],[[30,0,[\"label\"]],[30,0,[\"value\"]],[30,0,[\"lockTooltip\"]],[30,0,[\"onRemove\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/attribute/removable-text\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+
+  var Default = Template.bind({});
+  _exports.Default = Default;
+  Default.args = defaultArgs;
+});
+;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 define("@upfluence/oss-components/components/o-s-s/attribute/revealable-email", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@ember/service", "@ember/object", "@glimmer/tracking", "@ember/debug"], function (_exports, _component, _templateFactory, _component2, _service, _object, _tracking, _debug) {
   "use strict";
 
@@ -85887,6 +86278,173 @@ define("@upfluence/oss-components/components/o-s-s/attribute/revealable-email", 
       {
         "id": "8qYN7Z7J",
         "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"padding: 12px; background: white\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@tooltip\",\"@lockTooltip\",\"@onRevealEmail\"],[[30,0,[\"tooltip\"]],[30,0,[\"lockTooltip\"]],[30,0,[\"onRevealEmail\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/attribute/revealable-email\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+
+  var Default = Template.bind({});
+  _exports.Default = Default;
+  Default.args = defaultArgs;
+});
+;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+define("@upfluence/oss-components/components/o-s-s/attribute/tag-array", ["exports", "@ember/component", "@ember/template-factory", "@ember/debug", "@glimmer/component"], function (_exports, _component, _templateFactory, _debug, _component2) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+  function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <OSS::Attribute::Base class="oss-attribute--auto-height oss-attribute--no-hover-effect"
+                        data-control-name="attribute-tag-array" ...attributes>
+    <:label>
+      <span>{{@label}}</span>
+    </:label>
+    <:value>
+      {{#if this.displayTags}}
+        <div class="fx-row fx-wrap fx-gap-px-3">
+          {{#each @tags as |tagLabel|}}
+            <OSS::Tag @label={{tagLabel}} @skin="secondary" />
+          {{/each}}
+        </div>
+      {{else}}
+        <span>-</span>
+      {{/if}}
+    </:value>
+  </OSS::Attribute::Base>
+  
+  */
+  {
+    "id": "UdaBqbDy",
+    "block": "[[[8,[39,0],[[24,0,\"oss-attribute--auto-height oss-attribute--no-hover-effect\"],[24,\"data-control-name\",\"attribute-tag-array\"],[17,1]],null,[[\"label\",\"value\"],[[[[1,\"\\n    \"],[10,1],[12],[1,[30,2]],[13],[1,\"\\n  \"]],[]],[[[1,\"\\n\"],[41,[30,0,[\"displayTags\"]],[[[1,\"      \"],[10,0],[14,0,\"fx-row fx-wrap fx-gap-px-3\"],[12],[1,\"\\n\"],[42,[28,[37,3],[[28,[37,3],[[30,3]],null]],null],null,[[[1,\"          \"],[8,[39,4],null,[[\"@label\",\"@skin\"],[[30,4],\"secondary\"]],null],[1,\"\\n\"]],[4]],null],[1,\"      \"],[13],[1,\"\\n\"]],[]],[[[1,\"      \"],[10,1],[12],[1,\"-\"],[13],[1,\"\\n\"]],[]]],[1,\"  \"]],[]]]]],[1,\"\\n\"]],[\"&attrs\",\"@label\",\"@tags\",\"tagLabel\"],false,[\"o-s-s/attribute/base\",\"if\",\"each\",\"-track-array\",\"o-s-s/tag\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/attribute/tag-array.hbs",
+    "isStrictMode": false
+  });
+
+  var OSSAttributeTagArray = /*#__PURE__*/function (_Component) {
+    _inherits(OSSAttributeTagArray, _Component);
+
+    var _super = _createSuper(OSSAttributeTagArray);
+
+    function OSSAttributeTagArray(owner, args) {
+      var _this;
+
+      _classCallCheck(this, OSSAttributeTagArray);
+
+      _this = _super.call(this, owner, args);
+      (true && !(typeof args.label === 'string') && (0, _debug.assert)('[component][OSS::Attribute::TagArray] @label parameter is required', typeof args.label === 'string'));
+      return _this;
+    }
+
+    _createClass(OSSAttributeTagArray, [{
+      key: "displayTags",
+      get: function get() {
+        return (this.args.tags || []).length > 0;
+      }
+    }]);
+
+    return OSSAttributeTagArray;
+  }(_component2.default);
+
+  _exports.default = OSSAttributeTagArray;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSAttributeTagArray);
+});
+;define("@upfluence/oss-components/components/o-s-s/attribute/tag-array.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.Default = _exports.default = void 0;
+  var _default = {
+    title: 'Components/OSS::Attribute::TagArray',
+    component: 'tag-array',
+    argTypes: {
+      label: {
+        description: 'The label of the component.',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        },
+        type: {
+          required: true
+        }
+      },
+      tags: {
+        description: 'An array of tags which will be displayed next to the label.',
+        table: {
+          type: {
+            summary: 'string[]'
+          },
+          defaultValue: {
+            summary: '[]'
+          }
+        },
+        control: {
+          type: 'array'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'Member of the Attribute displays. The OSS::Attribute::TagArray displays all the tags that are provided in the @tags parameter.'
+        }
+      }
+    }
+  };
+  _exports.default = _default;
+  var defaultArgs = {
+    label: 'Fruits',
+    tags: ['watermelon', 'vodkamelon', 'whiskeymelon', 'tequilamelon']
+  };
+
+  var Template = function Template(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <div style="padding: 12px; background: white">
+            <OSS::Attribute::TagArray @label={{this.label}} @tags={{this.tags}} />
+          </div>
+        
+      */
+      {
+        "id": "PHxnpTo0",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"padding: 12px; background: white\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@label\",\"@tags\"],[[30,0,[\"label\"]],[30,0,[\"tags\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/attribute/tag-array\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -95981,13 +96539,17 @@ define("@upfluence/oss-components/components/o-s-s/split-modal", ["exports", "@e
 });
 ;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
-define("@upfluence/oss-components/components/o-s-s/star-rating", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@ember/debug"], function (_exports, _component, _templateFactory, _component2, _debug) {
+define("@upfluence/oss-components/components/o-s-s/star-rating", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@ember/debug", "@ember/object", "@glimmer/tracking"], function (_exports, _component, _templateFactory, _component2, _debug, _object, _tracking) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = _exports.StarColor = void 0;
+
+  var _class, _descriptor;
+
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
 
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -96009,21 +96571,28 @@ define("@upfluence/oss-components/components/o-s-s/star-rating", ["exports", "@e
 
   function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
 
+  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'proposal-class-properties is enabled and runs after the decorators transform.'); }
+
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class="star-rating fx-row">
-    {{#each this.activeStars}}
-      <OSS::Icon @style="solid" @icon="fa-star" class={{this.activeColorClass}} />
-    {{/each}}
-    {{#each this.passiveStars}}
-      <OSS::Icon @style="solid" @icon="fa-star" class={{this.passiveColorClass}} />
+    {{#each this.stars as |star index|}}
+      <OSS::Icon class={{concat (if @disablePointerCursor "no-pointer-cursor ") this.activeColorClass}}
+                 @style={{star.type}}
+                 @icon="fa-star"
+                 {{on "mouseenter" (fn this.onMouseEnter index)}}
+                 {{on "mouseleave" (fn this.onMouseLeave)}} />
     {{/each}}
   </div>
   
   */
   {
-    "id": "8M6Zj6M0",
-    "block": "[[[10,0],[14,0,\"star-rating fx-row\"],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,0,[\"activeStars\"]]],null]],null],null,[[[1,\"    \"],[8,[39,2],[[16,0,[30,0,[\"activeColorClass\"]]]],[[\"@style\",\"@icon\"],[\"solid\",\"fa-star\"]],null],[1,\"\\n\"]],[]],null],[42,[28,[37,1],[[28,[37,1],[[30,0,[\"passiveStars\"]]],null]],null],null,[[[1,\"    \"],[8,[39,2],[[16,0,[30,0,[\"passiveColorClass\"]]]],[[\"@style\",\"@icon\"],[\"solid\",\"fa-star\"]],null],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[],false,[\"each\",\"-track-array\",\"o-s-s/icon\"]]",
+    "id": "GEQHuCR9",
+    "block": "[[[10,0],[14,0,\"star-rating fx-row\"],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,0,[\"stars\"]]],null]],null],null,[[[1,\"    \"],[8,[39,2],[[16,0,[28,[37,3],[[52,[30,3],\"no-pointer-cursor \"],[30,0,[\"activeColorClass\"]]],null]],[4,[38,5],[\"mouseenter\",[28,[37,6],[[30,0,[\"onMouseEnter\"]],[30,2]],null]],null],[4,[38,5],[\"mouseleave\",[28,[37,6],[[30,0,[\"onMouseLeave\"]]],null]],null]],[[\"@style\",\"@icon\"],[[30,1,[\"type\"]],\"fa-star\"]],null],[1,\"\\n\"]],[1,2]],null],[13],[1,\"\\n\"]],[\"star\",\"index\",\"@disablePointerCursor\"],false,[\"each\",\"-track-array\",\"o-s-s/icon\",\"concat\",\"if\",\"on\",\"fn\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/star-rating.hbs",
     "isStrictMode": false
   });
@@ -96046,7 +96615,7 @@ define("@upfluence/oss-components/components/o-s-s/star-rating", ["exports", "@e
     StarColor[StarColor["red"] = 11] = "red";
   })(StarColor || (_exports.StarColor = StarColor = {}));
 
-  var OSSStarRating = /*#__PURE__*/function (_Component) {
+  var OSSStarRating = (_class = /*#__PURE__*/function (_Component) {
     _inherits(OSSStarRating, _Component);
 
     var _super = _createSuper(OSSStarRating);
@@ -96057,6 +96626,10 @@ define("@upfluence/oss-components/components/o-s-s/star-rating", ["exports", "@e
       _classCallCheck(this, OSSStarRating);
 
       _this = _super.call(this, owner, args);
+
+      _initializerDefineProperty(_assertThisInitialized(_this), "stars", _descriptor, _assertThisInitialized(_this));
+
+      _this.stars = _this.generateStarsArray();
       (true && !(typeof args.rating === 'number') && (0, _debug.assert)("[component][OSS::StarRating] @rating argument is mandatory and must be a number", typeof args.rating === 'number'));
       (true && !(typeof args.totalStars === 'number') && (0, _debug.assert)("[component][OSS::StarRating] @totalStars argument is mandatory and must be a number", typeof args.totalStars === 'number'));
       return _this;
@@ -96073,20 +96646,51 @@ define("@upfluence/oss-components/components/o-s-s/star-rating", ["exports", "@e
         return "color-".concat(this.args.passiveColor || 'grey');
       }
     }, {
-      key: "activeStars",
-      get: function get() {
-        return new Array(this.args.rating);
+      key: "setRating",
+      value: function setRating(val1) {
+        var _this$args$onChange, _this$args;
+
+        var val2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+        (_this$args$onChange = (_this$args = this.args).onChange) === null || _this$args$onChange === void 0 ? void 0 : _this$args$onChange.call(_this$args, val1 + val2 + 1);
       }
     }, {
-      key: "passiveStars",
-      get: function get() {
-        return new Array(Math.max(0, this.args.totalStars - this.args.rating));
+      key: "onMouseEnter",
+      value: function onMouseEnter(index) {
+        if (this.args.onChange && index + 1 !== this.args.rating) {
+          for (var i = 0; i < this.args.totalStars; ++i) {
+            (0, _object.set)(this.stars[i], 'type', i <= index ? 'solid' : 'regular');
+          }
+        }
+      }
+    }, {
+      key: "onMouseLeave",
+      value: function onMouseLeave() {
+        this.stars = this.generateStarsArray();
+      }
+    }, {
+      key: "generateStarsArray",
+      value: function generateStarsArray() {
+        var result = [];
+
+        for (var i = 0; i < this.args.totalStars; i++) {
+          result.push({
+            type: i < this.args.rating ? 'solid' : 'regular'
+          });
+        }
+
+        return result;
       }
     }]);
 
     return OSSStarRating;
-  }(_component2.default);
-
+  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "stars", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return [];
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "setRating", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setRating"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onMouseEnter", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onMouseEnter"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onMouseLeave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onMouseLeave"), _class.prototype)), _class);
   _exports.default = OSSStarRating;
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSStarRating);
 });
@@ -109668,36 +110272,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-1998SqCoAgXey4Sk/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-1998SqCoAgXey4Sk/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1998SqCoAgXey4Sk/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-1998SqCoAgXey4Sk/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-1998SqCoAgXey4Sk/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1998SqCoAgXey4Sk/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/l.js /tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-1998SqCoAgXey4Sk/cache-275-bundler/staging/l.js /tmp/broccoli-1998SqCoAgXey4Sk/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/l.js_/tmp/broccoli-2120Dfu7PxTChnjh/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-1998SqCoAgXey4Sk/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1998SqCoAgXey4Sk/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1998SqCoAgXey4Sk/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1998SqCoAgXey4Sk/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1998SqCoAgXey4Sk/cache-275-bundler/staging/l.js_/tmp/broccoli-1998SqCoAgXey4Sk/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
