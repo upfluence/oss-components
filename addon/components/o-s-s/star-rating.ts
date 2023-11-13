@@ -3,13 +3,16 @@ import { assert } from '@ember/debug';
 import { action, set } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
+type StarType = 'solid' | 'regular';
+type Star = { type: StarType };
+
 interface OSSStarRatingArgs {
   rating: number;
   totalStars: number;
   activeColor: StarColor;
   passiveColor: StarColor;
-  passiveStyle?: 'solid' | 'regular';
-  onChange?: (rating: OSSStarRatingArgs['rating']) => void;
+  passiveStyle?: StarType;
+  onChange?: (rating: number) => void;
 }
 
 export enum StarColor {
@@ -28,7 +31,7 @@ export enum StarColor {
 }
 
 export default class OSSStarRating extends Component<OSSStarRatingArgs> {
-  @tracked stars: any[] = [];
+  @tracked stars: Star[] = [];
 
   constructor(owner: unknown, args: OSSStarRatingArgs) {
     super(owner, args);
@@ -45,11 +48,11 @@ export default class OSSStarRating extends Component<OSSStarRatingArgs> {
   }
 
   get activeColorClass(): string {
-    return `${this.args.onChange && 'oss-star-rating'} color-${this.args.activeColor || 'yellow'}`;
+    return `color-${this.args.activeColor || 'yellow'}`;
   }
 
   get passiveColorClass(): string {
-    return `${this.args.onChange && 'oss-star-rating'} color-${this.args.passiveColor || 'grey'}`;
+    return `color-${this.args.passiveColor || 'grey'}`;
   }
 
   @action
