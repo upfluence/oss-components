@@ -9143,18 +9143,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
         return _ref3.apply(this, arguments);
       };
     }());
-    (0, _qunit.module)('If @value is passed', function (hooks) {
-      hooks.beforeEach(function () {
-        this.initValue = {
-          id: 'FR',
-          alpha2: 'FR',
-          alpha3: 'FRA',
-          countryCallingCodes: ['33'],
-          currencies: ['EUR'],
-          name: 'France',
-          showOnTop: true
-        };
-      });
+    (0, _qunit.module)('If @value is passed', function () {
       (0, _qunit.test)('If the value matches an entry from the sourceList, then the input is set to the value', /*#__PURE__*/function () {
         var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
           return regeneratorRuntime.wrap(function _callee3$(_context3) {
@@ -9164,11 +9153,11 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
                   _context3.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
-                    <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @value={{this.initValue.alpha2}} />
+                    <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @value="FR" />
                   */
                   {
-                    "id": "ixOMxNmF",
-                    "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\",\"@value\"],[[30,0,[\"onchange\"]],[30,0,[\"countries\"]],[30,0,[\"initValue\",\"alpha2\"]]]],null]],[],false,[\"o-s-s/country-selector\"]]",
+                    "id": "hVmZIwMw",
+                    "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\",\"@value\"],[[30,0,[\"onchange\"]],[30,0,[\"countries\"]],\"FR\"]],null]],[],false,[\"o-s-s/country-selector\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
@@ -9188,45 +9177,41 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
           return _ref4.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('If the value matches an entry from the sourceList, the @onChange function is triggered', /*#__PURE__*/function () {
+      (0, _qunit.test)('If the component is in country mode, an alpha2 code will be matched in the @sourceList', /*#__PURE__*/function () {
         var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
           return regeneratorRuntime.wrap(function _callee4$(_context4) {
             while (1) {
               switch (_context4.prev = _context4.next) {
                 case 0:
-                  this.onchange = _sinon.default.spy();
-                  _context4.next = 3;
+                  _context4.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
-                    <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @value={{this.initValue.alpha2}} />
+                    <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @value="US" />
                   */
                   {
-                    "id": "ixOMxNmF",
-                    "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\",\"@value\"],[[30,0,[\"onchange\"]],[30,0,[\"countries\"]],[30,0,[\"initValue\",\"alpha2\"]]]],null]],[],false,[\"o-s-s/country-selector\"]]",
+                    "id": "biChmx1h",
+                    "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\",\"@value\"],[[30,0,[\"onchange\"]],[30,0,[\"countries\"]],\"US\"]],null]],[],false,[\"o-s-s/country-selector\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
 
-                case 3:
-                  assert.ok(this.onchange.calledOnceWith(this.initValue));
+                case 2:
+                  assert.dom('[data-control-name="country-selector-input"]').hasText('United States');
 
-                case 4:
+                case 3:
                 case "end":
                   return _context4.stop();
               }
             }
-          }, _callee4, this);
+          }, _callee4);
         }));
 
         return function (_x4) {
           return _ref5.apply(this, arguments);
         };
       }());
-    });
-    (0, _qunit.module)('Dropdown menu', function () {
-      (0, _qunit.test)('It displays all items from the @sourceList parameter', /*#__PURE__*/function () {
+      (0, _qunit.test)('If the component is in province mode, a code as @value will be matched in the @sourceList', /*#__PURE__*/function () {
         var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(assert) {
-          var rows;
           return regeneratorRuntime.wrap(function _callee5$(_context5) {
             while (1) {
               switch (_context5.prev = _context5.next) {
@@ -9234,36 +9219,31 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
                   _context5.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
-                    <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} />
+                    <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.provinces}} @value="AL" />
                   */
                   {
-                    "id": "pidsqG4b",
-                    "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\"],[[30,0,[\"onchange\"]],[30,0,[\"countries\"]]]],null]],[],false,[\"o-s-s/country-selector\"]]",
+                    "id": "N9viSXvT",
+                    "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\",\"@value\"],[[30,0,[\"onchange\"]],[30,0,[\"provinces\"]],\"AL\"]],null]],[],false,[\"o-s-s/country-selector\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
 
                 case 2:
-                  _context5.next = 4;
-                  return (0, _testHelpers.click)('[data-control-name="country-selector-input"]');
+                  assert.dom('[data-control-name="country-selector-input"]').hasText('Alabama');
 
-                case 4:
-                  rows = (0, _testHelpers.findAll)('.upf-infinite-select__item');
-                  assert.equal(rows.length, this.countries.length);
-
-                case 6:
+                case 3:
                 case "end":
                   return _context5.stop();
               }
             }
-          }, _callee5, this);
+          }, _callee5);
         }));
 
         return function (_x5) {
           return _ref6.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('if @sourceList contain ids, then country icons are displayed', /*#__PURE__*/function () {
+      (0, _qunit.test)('If the component is in province mode, a province name as @value will be matched in the @sourceList', /*#__PURE__*/function () {
         var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(assert) {
           return regeneratorRuntime.wrap(function _callee6$(_context6) {
             while (1) {
@@ -9272,23 +9252,19 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
                   _context6.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
-                    <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} />
+                    <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.provinces}} @value="Alaska" />
                   */
                   {
-                    "id": "pidsqG4b",
-                    "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\"],[[30,0,[\"onchange\"]],[30,0,[\"countries\"]]]],null]],[],false,[\"o-s-s/country-selector\"]]",
+                    "id": "TGppdeXR",
+                    "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\",\"@value\"],[[30,0,[\"onchange\"]],[30,0,[\"provinces\"]],\"Alaska\"]],null]],[],false,[\"o-s-s/country-selector\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
 
                 case 2:
-                  _context6.next = 4;
-                  return (0, _testHelpers.click)('[data-control-name="country-selector-input"]');
+                  assert.dom('[data-control-name="country-selector-input"]').hasText('Alaska');
 
-                case 4:
-                  assert.dom('.upf-infinite-select__item' + ' .fflag.fflag-US').exists();
-
-                case 5:
+                case 3:
                 case "end":
                   return _context6.stop();
               }
@@ -9300,14 +9276,134 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
           return _ref7.apply(this, arguments);
         };
       }());
+      (0, _qunit.test)('If the value matches an entry from the sourceList, the @onChange function is triggered', /*#__PURE__*/function () {
+        var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(assert) {
+          return regeneratorRuntime.wrap(function _callee7$(_context7) {
+            while (1) {
+              switch (_context7.prev = _context7.next) {
+                case 0:
+                  this.onchange = _sinon.default.spy();
+                  _context7.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @value="FR" />
+                  */
+                  {
+                    "id": "hVmZIwMw",
+                    "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\",\"@value\"],[[30,0,[\"onchange\"]],[30,0,[\"countries\"]],\"FR\"]],null]],[],false,[\"o-s-s/country-selector\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  assert.ok(this.onchange.calledOnceWith({
+                    id: 'FR',
+                    alpha2: 'FR',
+                    alpha3: 'FRA',
+                    countryCallingCodes: ['33'],
+                    currencies: ['EUR'],
+                    name: 'France',
+                    showOnTop: true
+                  }));
+
+                case 4:
+                case "end":
+                  return _context7.stop();
+              }
+            }
+          }, _callee7, this);
+        }));
+
+        return function (_x7) {
+          return _ref8.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('Dropdown menu', function () {
+      (0, _qunit.test)('It displays all items from the @sourceList parameter', /*#__PURE__*/function () {
+        var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
+          var rows;
+          return regeneratorRuntime.wrap(function _callee8$(_context8) {
+            while (1) {
+              switch (_context8.prev = _context8.next) {
+                case 0:
+                  _context8.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} />
+                  */
+                  {
+                    "id": "pidsqG4b",
+                    "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\"],[[30,0,[\"onchange\"]],[30,0,[\"countries\"]]]],null]],[],false,[\"o-s-s/country-selector\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  _context8.next = 4;
+                  return (0, _testHelpers.click)('[data-control-name="country-selector-input"]');
+
+                case 4:
+                  rows = (0, _testHelpers.findAll)('.upf-infinite-select__item');
+                  assert.equal(rows.length, this.countries.length);
+
+                case 6:
+                case "end":
+                  return _context8.stop();
+              }
+            }
+          }, _callee8, this);
+        }));
+
+        return function (_x8) {
+          return _ref9.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('if @sourceList contain ids, then country icons are displayed', /*#__PURE__*/function () {
+        var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(assert) {
+          return regeneratorRuntime.wrap(function _callee9$(_context9) {
+            while (1) {
+              switch (_context9.prev = _context9.next) {
+                case 0:
+                  _context9.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} />
+                  */
+                  {
+                    "id": "pidsqG4b",
+                    "block": "[[[8,[39,0],null,[[\"@onChange\",\"@sourceList\"],[[30,0,[\"onchange\"]],[30,0,[\"countries\"]]]],null]],[],false,[\"o-s-s/country-selector\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  _context9.next = 4;
+                  return (0, _testHelpers.click)('[data-control-name="country-selector-input"]');
+
+                case 4:
+                  assert.dom('.upf-infinite-select__item' + ' .fflag.fflag-US').exists();
+
+                case 5:
+                case "end":
+                  return _context9.stop();
+              }
+            }
+          }, _callee9);
+        }));
+
+        return function (_x9) {
+          return _ref10.apply(this, arguments);
+        };
+      }());
     });
     (0, _qunit.test)('If @sourceList contains ids, then the country placeholder is displayed', /*#__PURE__*/function () {
-      var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(assert) {
-        return regeneratorRuntime.wrap(function _callee7$(_context7) {
+      var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(assert) {
+        return regeneratorRuntime.wrap(function _callee10$(_context10) {
           while (1) {
-            switch (_context7.prev = _context7.next) {
+            switch (_context10.prev = _context10.next) {
               case 0:
-                _context7.next = 2;
+                _context10.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} />
@@ -9324,23 +9420,23 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
 
               case 3:
               case "end":
-                return _context7.stop();
+                return _context10.stop();
             }
           }
-        }, _callee7);
+        }, _callee10);
       }));
 
-      return function (_x7) {
-        return _ref8.apply(this, arguments);
+      return function (_x10) {
+        return _ref11.apply(this, arguments);
       };
     }());
     (0, _qunit.test)('if sourceList does not contain ids, then the placeholder is for provinces', /*#__PURE__*/function () {
-      var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
-        return regeneratorRuntime.wrap(function _callee8$(_context8) {
+      var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(assert) {
+        return regeneratorRuntime.wrap(function _callee11$(_context11) {
           while (1) {
-            switch (_context8.prev = _context8.next) {
+            switch (_context11.prev = _context11.next) {
               case 0:
-                _context8.next = 2;
+                _context11.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.provinces}} />
@@ -9357,24 +9453,24 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
 
               case 3:
               case "end":
-                return _context8.stop();
+                return _context11.stop();
             }
           }
-        }, _callee8);
+        }, _callee11);
       }));
 
-      return function (_x8) {
-        return _ref9.apply(this, arguments);
+      return function (_x11) {
+        return _ref12.apply(this, arguments);
       };
     }());
     (0, _qunit.module)('When clicking on an item', function () {
       (0, _qunit.test)('When selecting an item, the dropdown is closed', /*#__PURE__*/function () {
-        var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(assert) {
-          return regeneratorRuntime.wrap(function _callee9$(_context9) {
+        var _ref13 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(assert) {
+          return regeneratorRuntime.wrap(function _callee12$(_context12) {
             while (1) {
-              switch (_context9.prev = _context9.next) {
+              switch (_context12.prev = _context12.next) {
                 case 0:
-                  _context9.next = 2;
+                  _context12.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.provinces}} />
@@ -9387,11 +9483,11 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
                   }));
 
                 case 2:
-                  _context9.next = 4;
+                  _context12.next = 4;
                   return (0, _testHelpers.click)('[data-control-name="country-selector-input"]');
 
                 case 4:
-                  _context9.next = 6;
+                  _context12.next = 6;
                   return (0, _testHelpers.click)('.upf-infinite-select__item:nth-child(1)');
 
                 case 6:
@@ -9399,23 +9495,23 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
 
                 case 7:
                 case "end":
-                  return _context9.stop();
+                  return _context12.stop();
               }
             }
-          }, _callee9);
+          }, _callee12);
         }));
 
-        return function (_x9) {
-          return _ref10.apply(this, arguments);
+        return function (_x12) {
+          return _ref13.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('When clicking outside of the dropdown, the dropdown is closed', /*#__PURE__*/function () {
-        var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(assert) {
-          return regeneratorRuntime.wrap(function _callee10$(_context10) {
+        var _ref14 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13(assert) {
+          return regeneratorRuntime.wrap(function _callee13$(_context13) {
             while (1) {
-              switch (_context10.prev = _context10.next) {
+              switch (_context13.prev = _context13.next) {
                 case 0:
-                  _context10.next = 2;
+                  _context13.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.provinces}} />
@@ -9428,11 +9524,11 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
                   }));
 
                 case 2:
-                  _context10.next = 4;
+                  _context13.next = 4;
                   return (0, _testHelpers.click)('[data-control-name="country-selector-input"]');
 
                 case 4:
-                  _context10.next = 6;
+                  _context13.next = 6;
                   return (0, _testHelpers.click)('[data-control-name="country-selector-input"]');
 
                 case 6:
@@ -9440,23 +9536,23 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
 
                 case 7:
                 case "end":
-                  return _context10.stop();
+                  return _context13.stop();
               }
             }
-          }, _callee10);
+          }, _callee13);
         }));
 
-        return function (_x10) {
-          return _ref11.apply(this, arguments);
+        return function (_x13) {
+          return _ref14.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('the input is updated with the value', /*#__PURE__*/function () {
-        var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(assert) {
-          return regeneratorRuntime.wrap(function _callee11$(_context11) {
+        var _ref15 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee14(assert) {
+          return regeneratorRuntime.wrap(function _callee14$(_context14) {
             while (1) {
-              switch (_context11.prev = _context11.next) {
+              switch (_context14.prev = _context14.next) {
                 case 0:
-                  _context11.next = 2;
+                  _context14.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     <OSS::CountrySelector @value={{this.value}} @onChange={{this.onchange}} @sourceList={{this.countries}} />
@@ -9469,11 +9565,11 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
                   }));
 
                 case 2:
-                  _context11.next = 4;
+                  _context14.next = 4;
                   return (0, _testHelpers.click)('[data-control-name="country-selector-input"]');
 
                 case 4:
-                  _context11.next = 6;
+                  _context14.next = 6;
                   return (0, _testHelpers.click)('.upf-infinite-select__item:nth-child(1)');
 
                 case 6:
@@ -9481,24 +9577,24 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
 
                 case 7:
                 case "end":
-                  return _context11.stop();
+                  return _context14.stop();
               }
             }
-          }, _callee11);
+          }, _callee14);
         }));
 
-        return function (_x11) {
-          return _ref12.apply(this, arguments);
+        return function (_x14) {
+          return _ref15.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('the @onChange method is triggered with the selected value', /*#__PURE__*/function () {
-        var _ref13 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(assert) {
-          return regeneratorRuntime.wrap(function _callee12$(_context12) {
+        var _ref16 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15(assert) {
+          return regeneratorRuntime.wrap(function _callee15$(_context15) {
             while (1) {
-              switch (_context12.prev = _context12.next) {
+              switch (_context15.prev = _context15.next) {
                 case 0:
                   this.onchange = _sinon.default.spy();
-                  _context12.next = 3;
+                  _context15.next = 3;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     <OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} />
@@ -9511,11 +9607,11 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
                   }));
 
                 case 3:
-                  _context12.next = 5;
+                  _context15.next = 5;
                   return (0, _testHelpers.click)('[data-control-name="country-selector-input"]');
 
                 case 5:
-                  _context12.next = 7;
+                  _context15.next = 7;
                   return (0, _testHelpers.click)('.upf-infinite-select__item:nth-child(2)');
 
                 case 7:
@@ -9531,23 +9627,23 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
 
                 case 8:
                 case "end":
-                  return _context12.stop();
+                  return _context15.stop();
               }
             }
-          }, _callee12, this);
+          }, _callee15, this);
         }));
 
-        return function (_x12) {
-          return _ref13.apply(this, arguments);
+        return function (_x15) {
+          return _ref16.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('If the component is using Countries as @sourceList, the flag icon is visible in the input', /*#__PURE__*/function () {
-        var _ref14 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13(assert) {
-          return regeneratorRuntime.wrap(function _callee13$(_context13) {
+        var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(assert) {
+          return regeneratorRuntime.wrap(function _callee16$(_context16) {
             while (1) {
-              switch (_context13.prev = _context13.next) {
+              switch (_context16.prev = _context16.next) {
                 case 0:
-                  _context13.next = 2;
+                  _context16.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     <OSS::CountrySelector @value={{this.value}} @onChange={{this.onchange}} @sourceList={{this.countries}} />
@@ -9560,11 +9656,11 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
                   }));
 
                 case 2:
-                  _context13.next = 4;
+                  _context16.next = 4;
                   return (0, _testHelpers.click)('[data-control-name="country-selector-input"]');
 
                 case 4:
-                  _context13.next = 6;
+                  _context16.next = 6;
                   return (0, _testHelpers.click)('.upf-infinite-select__item:nth-child(1)');
 
                 case 6:
@@ -9573,23 +9669,23 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
 
                 case 8:
                 case "end":
-                  return _context13.stop();
+                  return _context16.stop();
               }
             }
-          }, _callee13);
+          }, _callee16);
         }));
 
-        return function (_x13) {
-          return _ref14.apply(this, arguments);
+        return function (_x16) {
+          return _ref17.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('If the component is using Provinces as @sourceList, the flag icon is not visible in the input', /*#__PURE__*/function () {
-        var _ref15 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee14(assert) {
+        var _ref18 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17(assert) {
           var _this2 = this;
 
-          return regeneratorRuntime.wrap(function _callee14$(_context14) {
+          return regeneratorRuntime.wrap(function _callee17$(_context17) {
             while (1) {
-              switch (_context14.prev = _context14.next) {
+              switch (_context17.prev = _context17.next) {
                 case 0:
                   this.province = '';
 
@@ -9597,7 +9693,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
                     (0, _object.set)(_this2, 'province', value.name);
                   };
 
-                  _context14.next = 4;
+                  _context17.next = 4;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     <OSS::CountrySelector @value={{this.province}} @onChange={{this.onProvinceChange}} @sourceList={{this.provinces}} />
@@ -9610,11 +9706,11 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
                   }));
 
                 case 4:
-                  _context14.next = 6;
+                  _context17.next = 6;
                   return (0, _testHelpers.click)('[data-control-name="country-selector-input"]');
 
                 case 6:
-                  _context14.next = 8;
+                  _context17.next = 8;
                   return (0, _testHelpers.click)('.upf-infinite-select__item:nth-child(1)');
 
                 case 8:
@@ -9623,31 +9719,31 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
 
                 case 10:
                 case "end":
-                  return _context14.stop();
+                  return _context17.stop();
               }
             }
-          }, _callee14, this);
+          }, _callee17, this);
         }));
 
-        return function (_x14) {
-          return _ref15.apply(this, arguments);
+        return function (_x17) {
+          return _ref18.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.module)('Keyboard control management', function () {
       (0, _qunit.test)('on keydown Enter should open the dropdown', /*#__PURE__*/function () {
-        var _ref16 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15(assert) {
+        var _ref19 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee18(assert) {
           var _this3 = this;
 
-          return regeneratorRuntime.wrap(function _callee15$(_context15) {
+          return regeneratorRuntime.wrap(function _callee18$(_context18) {
             while (1) {
-              switch (_context15.prev = _context15.next) {
+              switch (_context18.prev = _context18.next) {
                 case 0:
                   this.onProvinceChange = function (value) {
                     (0, _object.set)(_this3, 'province', value.name);
                   };
 
-                  _context15.next = 3;
+                  _context18.next = 3;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     <OSS::CountrySelector @value={{this.province}} @onChange={{this.onProvinceChange}} @sourceList={{this.provinces}} />
@@ -9661,7 +9757,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
 
                 case 3:
                   assert.dom('.upf-infinite-select').doesNotExist();
-                  _context15.next = 6;
+                  _context18.next = 6;
                   return (0, _triggerKeyEvent.default)('[data-control-name="country-selector-input"]', 'keydown', 'Enter');
 
                 case 6:
@@ -9669,28 +9765,28 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
 
                 case 7:
                 case "end":
-                  return _context15.stop();
+                  return _context18.stop();
               }
             }
-          }, _callee15, this);
+          }, _callee18, this);
         }));
 
-        return function (_x15) {
-          return _ref16.apply(this, arguments);
+        return function (_x18) {
+          return _ref19.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.module)('error management', function () {
       (0, _qunit.test)('it throws an error if @sourceList is not provided', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(assert) {
-          return regeneratorRuntime.wrap(function _callee16$(_context16) {
+        var _ref20 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee19(assert) {
+          return regeneratorRuntime.wrap(function _callee19$(_context19) {
             while (1) {
-              switch (_context16.prev = _context16.next) {
+              switch (_context19.prev = _context19.next) {
                 case 0:
                   (0, _setupOnerror.default)(function (err) {
                     assert.equal(err.message, 'Assertion Failed: [component][OSS::CountrySelector] The parameter @sourceList of type object is mandatory');
                   });
-                  _context16.next = 3;
+                  _context19.next = 3;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     <OSS::CountrySelector @onChange={{this.onchange}} />
@@ -9703,31 +9799,31 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
                   }));
 
                 case 3:
-                  _context16.next = 5;
+                  _context19.next = 5;
                   return (0, _settled.default)();
 
                 case 5:
                 case "end":
-                  return _context16.stop();
+                  return _context19.stop();
               }
             }
-          }, _callee16);
+          }, _callee19);
         }));
 
-        return function (_x16) {
-          return _ref17.apply(this, arguments);
+        return function (_x19) {
+          return _ref20.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('it throws an error if @onChange is not provided', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17(assert) {
-          return regeneratorRuntime.wrap(function _callee17$(_context17) {
+        var _ref21 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee20(assert) {
+          return regeneratorRuntime.wrap(function _callee20$(_context20) {
             while (1) {
-              switch (_context17.prev = _context17.next) {
+              switch (_context20.prev = _context20.next) {
                 case 0:
                   (0, _setupOnerror.default)(function (err) {
                     assert.equal(err.message, 'Assertion Failed: [component][OSS::CountrySelector] The @onChange parameter is mandatory');
                   });
-                  _context17.next = 3;
+                  _context20.next = 3;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     <OSS::CountrySelector @sourceList={{this.countries}} />
@@ -9740,19 +9836,19 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
                   }));
 
                 case 3:
-                  _context17.next = 5;
+                  _context20.next = 5;
                   return (0, _settled.default)();
 
                 case 5:
                 case "end":
-                  return _context17.stop();
+                  return _context20.stop();
               }
             }
-          }, _callee17);
+          }, _callee20);
         }));
 
-        return function (_x17) {
-          return _ref18.apply(this, arguments);
+        return function (_x20) {
+          return _ref21.apply(this, arguments);
         };
       }());
     });
