@@ -46,30 +46,55 @@ module('Integration | Component | o-s-s/country-selector', function (hooks) {
     assert.dom('.upf-infinite-select').exists();
   });
 
-  module('If @value is passed', function (hooks) {
-    hooks.beforeEach(function () {
-      this.initValue = {
-        id: 'FR',
-        alpha2: 'FR',
-        alpha3: 'FRA',
-        countryCallingCodes: ['33'],
-        currencies: ['EUR'],
-        name: 'France',
-        showOnTop: true
-      };
-    });
+  module('If @value is passed', function () {
     test('If the value matches an entry from the sourceList, then the input is set to the value', async function (assert) {
       await render(
-        hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @value={{this.initValue.alpha2}} />`
+        hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @value="FR" />`
       );
       assert.dom('[data-control-name="country-selector-input"]').hasText('France');
     });
+
+    test('If the component is in country mode, an alpha2 code will be matched in the @sourceList', async function (assert) {
+      await render(
+        hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @value="US" />`
+      );
+
+      assert.dom('[data-control-name="country-selector-input"]').hasText('United States');
+    });
+
+    test('If the component is in province mode, a code as @value will be matched in the @sourceList', async function (assert) {
+      await render(
+        hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.provinces}} @value="AL" />`
+      );
+
+      assert.dom('[data-control-name="country-selector-input"]').hasText('Alabama');
+    });
+
+    test('If the component is in province mode, a province name as @value will be matched in the @sourceList', async function (assert) {
+      await render(
+        hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.provinces}} @value="Alaska" />`
+      );
+
+      assert.dom('[data-control-name="country-selector-input"]').hasText('Alaska');
+    });
+
     test('If the value matches an entry from the sourceList, the @onChange function is triggered', async function (assert) {
       this.onchange = sinon.spy();
       await render(
-        hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @value={{this.initValue.alpha2}} />`
+        hbs`<OSS::CountrySelector @onChange={{this.onchange}} @sourceList={{this.countries}} @value="FR" />`
       );
-      assert.ok(this.onchange.calledOnceWith(this.initValue));
+
+      assert.ok(
+        this.onchange.calledOnceWith({
+          id: 'FR',
+          alpha2: 'FR',
+          alpha3: 'FRA',
+          countryCallingCodes: ['33'],
+          currencies: ['EUR'],
+          name: 'France',
+          showOnTop: true
+        })
+      );
     });
   });
 

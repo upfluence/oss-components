@@ -58,6 +58,11 @@ export default class OSSCountrySelector extends Component<OSSCountrySelectorArgs
       : this.intl.t('oss-components.country-selector.placeholder.province');
   }
 
+  get selectedCountry(): Item | null {
+    const matchOn = this.isCountry ? ['alpha2'] : ['name', 'code'];
+    return this.args.sourceList.find((item: any) => matchOn.map((key) => item[key]).includes(this.args.value)) || null;
+  }
+
   @action
   handleKeyEvent(e: KeyboardEvent): void {
     if (e.key === 'Enter') {
@@ -91,12 +96,6 @@ export default class OSSCountrySelector extends Component<OSSCountrySelectorArgs
   onItemSelected(value: Item): void {
     this.closeDropdown();
     this.args.onChange(value);
-  }
-
-  get selectedCountry(): Item | null {
-    return (
-      this.args.sourceList.find((item: Item) => item[this.isCountry ? 'alpha2' : 'name'] === this.args.value) || null
-    );
   }
 
   private _matchValueWithSourceList(): void {

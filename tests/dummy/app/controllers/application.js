@@ -54,6 +54,7 @@ export default class ApplicationController extends Controller {
 
   @tracked selectedItems = ['toto'];
   @tracked selectedCountry = null;
+  @tracked selectedProvince = null;
   @tracked superHeroes = ['Iron Man', 'Thor', 'Loki', 'Hulk'];
   @tracked loading = false;
   @tracked phonePrefix = '+33';
@@ -270,7 +271,7 @@ export default class ApplicationController extends Controller {
   @action
   onCountrySelected(value) {
     console.log('selected country value : ', value);
-    this.selectedCountry = value.id;
+    this.selectedCountry = value;
   }
 
   @action
