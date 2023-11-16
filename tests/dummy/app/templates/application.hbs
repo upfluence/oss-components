@@ -38,7 +38,7 @@
 
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
       <OSS::StarRating @rating={{3}} @totalStars={{5}} @onChange={{this.onRatingClick}} />
-      <OSS::StarRating @rating={{12}} @totalStars={{15}} @activeColor="red" @passiveColor="blue"
+      <OSS::StarRating @rating={{this.rating}} @totalStars={{15}} @activeColor="red" @passiveColor="blue"
                        @onChange={{this.onRatingClick}} />
     </div>
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
@@ -92,10 +92,8 @@
 
             <OSS::Attribute::Country @countryCode="US" />
             <OSS::Attribute::Country @countryCode="" />
-            <OSS::Attribute::Rating
-                                    @label="Rating"
-                                    @rating={{this.starRatingValue}}
-                                    @onChange={{this.onRatingClick}} />
+            <OSS::Attribute::Rating @label="Rating"
+                                    @rating={{this.starRatingValue}} />
             <OSS::Attribute::Rating @label="Rating not provided" />
           </div>
         </:view-mode>

@@ -56,8 +56,8 @@ export default class OSSStarRating extends Component<OSSStarRatingArgs> {
   }
 
   @action
-  setRating(val1: number, val2: number = 0): void {
-    this.args.onChange?.(val1 + val2 + 1);
+  setRating(value: number): void {
+    this.args.onChange?.(value + 1);
   }
 
   @action
