@@ -81,6 +81,7 @@ export default class ApplicationController extends Controller {
   @tracked emailInputValue = '';
   @tracked revealed = false;
   @tracked starRatingValue = 3;
+  @tracked rating = 3;
 
   @tracked media = [
     {
@@ -234,6 +235,7 @@ export default class ApplicationController extends Controller {
   @action
   onRatingClick(rating) {
     console.log('You have rated with: ' + rating);
+    this.rating = rating;
   }
 
   @action

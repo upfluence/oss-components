@@ -3,6 +3,7 @@
     <OSS::Icon class={{concat (if @disablePointerCursor "no-pointer-cursor ") this.activeColorClass}}
                @style={{star.type}}
                @icon="fa-star"
+               {{on "click" (fn this.setRating index)}}
                {{on "mouseenter" (fn this.onMouseEnter index)}}
                {{on "mouseleave" (fn this.onMouseLeave)}} />
   {{/each}}

@@ -1,8 +1,9 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, setupOnerror } from '@ember/test-helpers';
+import { click, render, setupOnerror } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import { StarColor } from '@upfluence/oss-components/components/o-s-s/star-rating';
+import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/star-rating', function (hooks) {
   setupRenderingTest(hooks);
@@ -28,10 +29,19 @@ module('Integration | Component | o-s-s/star-rating', function (hooks) {
 
   test('The number of stars displayed is consistent with the provided @rating', async function (assert) {
     await render(hbs`<OSS::StarRating @rating={{3}} @totalStars={{8}} @passiveStyle='regular'
-                                        @activeColor={{this.activeColor}}
-                                        @passiveColor={{this.passiveColor}}
-                                        @onChange={{this.onChange}} />`);
+                                      @activeColor={{this.activeColor}}
+                                      @passiveColor={{this.passiveColor}} />`);
     assert.dom('.fas.fa-star.color-yellow').exists({ count: 3 });
+  });
+
+  test('When @onChange parameter is passed, the method is called when a click is made on a star', async function (assert) {
+    this.onChange = sinon.stub();
+    await render(hbs`<OSS::StarRating @rating={{3}} @totalStars={{8}} @passiveStyle='regular'
+                                      @activeColor={{this.activeColor}}
+                                      @passiveColor={{this.passiveColor}}
+                                      @onChange={{this.onChange}} />`);
+    await click('.fa-star:nth-of-type(4)');
+    assert.true(this.onChange.calledOnceWithExactly(4));
   });
 
   module('Error management', function () {
