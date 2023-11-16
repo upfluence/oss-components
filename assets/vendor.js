@@ -96587,6 +96587,7 @@ define("@upfluence/oss-components/components/o-s-s/star-rating", ["exports", "@e
       <OSS::Icon class={{concat (if @disablePointerCursor "no-pointer-cursor ") this.activeColorClass}}
                  @style={{star.type}}
                  @icon="fa-star"
+                 {{on "click" (fn this.setRating index)}}
                  {{on "mouseenter" (fn this.onMouseEnter index)}}
                  {{on "mouseleave" (fn this.onMouseLeave)}} />
     {{/each}}
@@ -96594,8 +96595,8 @@ define("@upfluence/oss-components/components/o-s-s/star-rating", ["exports", "@e
   
   */
   {
-    "id": "GEQHuCR9",
-    "block": "[[[10,0],[14,0,\"star-rating fx-row\"],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,0,[\"stars\"]]],null]],null],null,[[[1,\"    \"],[8,[39,2],[[16,0,[28,[37,3],[[52,[30,3],\"no-pointer-cursor \"],[30,0,[\"activeColorClass\"]]],null]],[4,[38,5],[\"mouseenter\",[28,[37,6],[[30,0,[\"onMouseEnter\"]],[30,2]],null]],null],[4,[38,5],[\"mouseleave\",[28,[37,6],[[30,0,[\"onMouseLeave\"]]],null]],null]],[[\"@style\",\"@icon\"],[[30,1,[\"type\"]],\"fa-star\"]],null],[1,\"\\n\"]],[1,2]],null],[13],[1,\"\\n\"]],[\"star\",\"index\",\"@disablePointerCursor\"],false,[\"each\",\"-track-array\",\"o-s-s/icon\",\"concat\",\"if\",\"on\",\"fn\"]]",
+    "id": "VOM590GI",
+    "block": "[[[10,0],[14,0,\"star-rating fx-row\"],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,0,[\"stars\"]]],null]],null],null,[[[1,\"    \"],[8,[39,2],[[16,0,[28,[37,3],[[52,[30,3],\"no-pointer-cursor \"],[30,0,[\"activeColorClass\"]]],null]],[4,[38,5],[\"click\",[28,[37,6],[[30,0,[\"setRating\"]],[30,2]],null]],null],[4,[38,5],[\"mouseenter\",[28,[37,6],[[30,0,[\"onMouseEnter\"]],[30,2]],null]],null],[4,[38,5],[\"mouseleave\",[28,[37,6],[[30,0,[\"onMouseLeave\"]]],null]],null]],[[\"@style\",\"@icon\"],[[30,1,[\"type\"]],\"fa-star\"]],null],[1,\"\\n\"]],[1,2]],null],[13],[1,\"\\n\"]],[\"star\",\"index\",\"@disablePointerCursor\"],false,[\"each\",\"-track-array\",\"o-s-s/icon\",\"concat\",\"if\",\"on\",\"fn\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/star-rating.hbs",
     "isStrictMode": false
   });
@@ -96650,11 +96651,10 @@ define("@upfluence/oss-components/components/o-s-s/star-rating", ["exports", "@e
       }
     }, {
       key: "setRating",
-      value: function setRating(val1) {
+      value: function setRating(value) {
         var _this$args$onChange, _this$args;
 
-        var val2 = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
-        (_this$args$onChange = (_this$args = this.args).onChange) === null || _this$args$onChange === void 0 ? void 0 : _this$args$onChange.call(_this$args, val1 + val2 + 1);
+        (_this$args$onChange = (_this$args = this.args).onChange) === null || _this$args$onChange === void 0 ? void 0 : _this$args$onChange.call(_this$args, value + 1);
       }
     }, {
       key: "onMouseEnter",
@@ -110275,36 +110275,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-2051rczFEUyqusbJ/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-202427w6YQdZ2LY1/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-2051rczFEUyqusbJ/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-202427w6YQdZ2LY1/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2051rczFEUyqusbJ/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-202427w6YQdZ2LY1/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-2051rczFEUyqusbJ/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-202427w6YQdZ2LY1/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-2051rczFEUyqusbJ/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-202427w6YQdZ2LY1/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2051rczFEUyqusbJ/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-202427w6YQdZ2LY1/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-2051rczFEUyqusbJ/cache-275-bundler/staging/l.js /tmp/broccoli-2051rczFEUyqusbJ/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-202427w6YQdZ2LY1/cache-275-bundler/staging/l.js /tmp/broccoli-202427w6YQdZ2LY1/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-2051rczFEUyqusbJ/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-2051rczFEUyqusbJ/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-2051rczFEUyqusbJ/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-2051rczFEUyqusbJ/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-2051rczFEUyqusbJ/cache-275-bundler/staging/l.js_/tmp/broccoli-2051rczFEUyqusbJ/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-202427w6YQdZ2LY1/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-202427w6YQdZ2LY1/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-202427w6YQdZ2LY1/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-202427w6YQdZ2LY1/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-202427w6YQdZ2LY1/cache-275-bundler/staging/l.js_/tmp/broccoli-202427w6YQdZ2LY1/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
