@@ -3,15 +3,10 @@
 
 const mergeTrees = require('broccoli-merge-trees');
 const Funnel = require('broccoli-funnel');
-const fs = require('fs');
 const cacheKeyForTree = require('calculate-cache-key-for-tree');
 const { name, version } = require('./package');
 
-let faPath = 'node_modules/@fortawesome/fontawesome-pro';
-
-if (!fs.existsSync(faPath)) {
-  faPath = 'node_modules/@fortawesome/fontawesome-free';
-}
+const faPath = 'node_modules/@fortawesome/fontawesome-pro';
 
 module.exports = {
   name,
