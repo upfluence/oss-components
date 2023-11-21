@@ -2531,15 +2531,10 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fortawesome/fontawesome-free@^5.x":
-  version "5.15.4"
-  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-free/-/5.15.4/fontawesome-free-5.15.4.tgz#ecda5712b61ac852c760d8b3c79c96adca5554e5"
-  integrity sha512-eYm8vijH/hpzr/6/1CJ/V/Eb1xQFW2nnUKArb3z+yUWv7HTwj6M7SP957oMjfZjAHU6qpoNc2wQvIxBLWYa/Jg==
-
-"@fortawesome/fontawesome-pro@^5.15.4":
-  version "5.15.4"
-  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-pro/-/5.15.4/fontawesome-pro-5.15.4.tgz#aae79a86621a79ae972772ad2906a13ade650a06"
-  integrity sha512-ApOqpDdKgA79xfLZH3B5PucZxj+TZyQUSrZ4bKkbJCR+zjmveQ4/gp/uXc5bNNhsdtJUy16BYJ/lAVydca2Y5Q==
+"@fortawesome/fontawesome-pro@^6.4.2":
+  version "6.4.2"
+  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-pro/-/6.4.2/fontawesome-pro-6.4.2.tgz#1acc12423b4b35885c96423cf896ae73e1b9b85a"
+  integrity sha512-b7VtzrgoASuCbnWJ1A17Sw3wemaFGukyBk0Y2ks/rgcnhlJ1uzdyv2uM3QbEaq9OgyZAKGJD1Tli6qHRI68zSQ==
 
 "@gar/promisify@^1.0.1":
   version "1.1.2"

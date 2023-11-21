@@ -36,8 +36,7 @@
   "dependencies": {
     "@ember/render-modifiers": "^2.1.0",
     "@embroider/macros": "^1.7.1",
-    "@fortawesome/fontawesome-free": "^5.x",
-    "@fortawesome/fontawesome-pro": "^5.15.4",
+    "@fortawesome/fontawesome-pro": "^6.4.2",
     "babel-plugin-debug-macros": "^0.3.1",
     "bootstrap": "^3.3.7",
     "calculate-cache-key-for-tree": "^2.0.0",
