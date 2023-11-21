@@ -3,7 +3,8 @@
                disabled={{this.isMinDisabled}} {{enable-tooltip title=this.minTooltipTitle placement="top"}} />
   {{! template-lint-disable no-triple-curlies}}
   <OSS::InputContainer @value={{this.localValue}} @onChange={{this.checkUserInput}} style={{{this.dynamicWidth}}}
-                       {{on "keydown" this.keyParser}} {{on "blur" this.checkUserInput}} />
+                       {{on "keydown" this.keyParser}} {{on "blur" this.checkUserInput}}
+                       {{did-insert this.getInputElement}} />
   <OSS::Button @square={{true}} @size="md" @icon="far fa-plus" {{on "click" this.increaseValue}}
                disabled={{this.isMaxDisabled}} {{enable-tooltip title=this.maxTooltipTitle placement="top"}} />
 </div>

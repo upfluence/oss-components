@@ -1,57 +1,79 @@
 .number-input {
   .border-radius-default;
   height: 36px;
+  transition: all 250ms ease-in-out;
+
+  &:hover {
+    .upf-square-btn {
+      border-color: var(--color-gray-300);
+
+      &:not(:disabled, .disabled) {
+        &:nth-of-type(1) {
+          border-right-color: var(--color-border-default);
+        }
+
+        &:nth-of-type(2) {
+          border-left-color: var(--color-border-default);
+        }
+
+        &:hover {
+          border-color: var(--color-gray-300);
+          background-color: var(--color-gray-50);
+        }
+      }
+    }
+
+    .oss-input-container input {
+      border-color: var(--color-gray-300);
+      background-color: var(--color-gray-100);
+    }
+  }
 
   &:active {
     .input-state-active;
     border: none;
 
-    .oss-input-container input {
-      border: none;
-      box-shadow: none !important;
+    .oss-input-container input:active {
+      .reset-box-shadow;
     }
   }
 
-  &:hover {
+  &:focus-within {
+    .input-state-active;
+    border: none;
+
     .oss-input-container input,
-    .upf-square-btn {
-      border-color: var(--color-gray-300);
-    }
-
-    .oss-input-container input {
-      background-color: var(--color-gray-100);
+    .oss-input-container .upf-input:focus {
+      .reset-box-shadow;
+      border-color: var(--color-border-default);
     }
   }
 
-  .oss-input-container input,
-  .oss-input-container input:hover {
-    border-left: none !important;
-    border-right: none !important;
+  .oss-input-container .upf-input,
+  .oss-input-container .upf-input:focus,
+  .oss-input-container .upf-input:hover {
+    border-left: none;
+    border-right: none;
   }
 
   .upf-square-btn {
     border: 1px solid var(--color-border-default);
     outline: 0;
     box-shadow: none;
-  }
 
-  .upf-square-btn:hover {
-    background-color: var(--color-white);
-  }
+    &:disabled {
+      .input-state-disabled;
+    }
 
-  .upf-square-btn:disabled {
-    .input-state-disabled;
-  }
+    &:nth-of-type(1) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
 
-  .upf-square-btn:nth-of-type(1) {
-    // border-right: 1px solid var(--color-border-default);
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-  .upf-square-btn:nth-of-type(2) {
-    // border-left: 1px solid var(--color-border-default);
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
+    &:nth-of-type(2) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
   }
 
   .oss-input-container {
@@ -69,14 +91,10 @@
   }
 
   &:focus-within {
-    .upf-square-btn:nth-of-type(1) {
-      border-color: var(--color-gray-200);
-    }
-    .upf-square-btn:nth-of-type(2) {
-      border-color: var(--color-gray-200);
-    }
+    .upf-square-btn:nth-of-type(1),
+    .upf-square-btn:nth-of-type(2),
     .upf-input {
-      border-color: var(--color-gray-200);
+      border-color: var(--color-border-default);
     }
   }
 }

@@ -18,12 +18,18 @@
   box-shadow: 0px 0px 0px 2px #fee2e2, 0px 1px 3px 0px #0000001a, 0px 1px 2px 0px #0000000f;
 }
 
+.reset-box-shadow {
+  box-shadow: none;
+}
+
 .input-state-focus {
+  .input-state-active;
   border: 1px solid var(--color-gray-300);
   background-color: var(--color-white);
 }
 
 .input-state-error-focus {
+  .input-state-error-active;
   .border-color-error;
   background-color: var(--color-white);
 }
@@ -40,6 +46,8 @@
   .yielded-input input,
   .upf-input {
     width: 100%;
+
+    transition: all 250ms ease-in-out;
 
     border: 1px solid var(--color-border-default);
     color: var(--color-gray-900);
