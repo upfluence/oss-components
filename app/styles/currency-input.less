@@ -1,66 +1,39 @@
 .currency-input-container {
   position: relative;
 
-  &--errored {
-    .currency-input {
-      .border;
-      .border-color-error;
-      .border-radius-default;
-
-      input:focus {
-        .border-color-error !important;
-        outline: none;
-      }
-    }
-
-    .currency-input.upf-input:focus-within {
-      .border-color-error;
-    }
-  }
-
-  .upf-infinite-select {
-    max-width: 100%;
-    min-width: 150px;
-    .padding-xx-sm;
-
-    .upf-infinite-select__item {
-      padding: 0;
-      .padding-top-xxx-sm;
-      .padding-bottom-xxx-sm;
-    }
-
-    .row-selected span {
-      .text-color-default;
-    }
-  }
-
-  .symbol {
-    .font-weight-semibold;
-    width: 22px;
-  }
-
   .currency-input {
-    .currency-selector {
-      border-right: 1px solid var(--color-border-default);
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--color-border-default);
+    overflow: hidden;
+    height: 36px;
+
+    transition: all 250ms ease-in-out;
+
+    & > div,
+    & > input {
       height: 100%;
-      display: flex;
-      align-items: center;
-      padding-right: var(--spacing-px-12);
-      margin-right: var(--spacing-px-12);
     }
 
     input {
       border: none;
-      background-color: transparent;
-    }
-
-    input:focus {
-      border: none;
       outline: none;
+
+      padding: var(--spacing-px-3) var(--spacing-px-12);
+      background-color: var(--color-white);
     }
 
-    &:focus-within {
-      border: 1px solid var(--color-border-default);
+    &:not(.disabled, :disabled) {
+      &:hover {
+        .input-state-hover;
+      }
+
+      &:active {
+        .input-state-active;
+      }
+
+      &:focus-within {
+        .input-state-focus;
+      }
     }
   }
 
@@ -71,6 +44,71 @@
       border-right: none;
       margin-right: 0;
       width: 100%;
+
+      background-color: var(--color-white);
     }
+
+    &.active {
+      .input-state-active;
+    }
+  }
+
+  &--errored {
+    .currency-input {
+      .border-color-error;
+
+      &:not(.disabled, :disabled) {
+        &:hover {
+          .input-state-error-hover;
+        }
+
+        &:active {
+          .input-state-error-active;
+        }
+
+        &:focus-within {
+          .input-state-error-focus;
+        }
+      }
+    }
+
+    .onlycurrency {
+      &.active {
+        .input-state-error-active;
+      }
+    }
+  }
+
+  .currency-selector {
+    display: flex;
+
+    gap: var(--spacing-px-9);
+    padding: var(--spacing-px-3) var(--spacing-px-12);
+    background-color: var(--color-gray-50);
+    color: var(--color-gray-500);
+
+    border-right: 1px solid var(--color-border-default);
+  }
+
+  .upf-infinite-select {
+    margin-top: var(--spacing-px-6);
+    max-width: 100%;
+    min-width: 150px;
+    padding: var(--spacing-px-12);
+
+    .upf-infinite-select__item {
+      padding: 0;
+      padding-top: var(--spacing-px-6);
+      padding-bottom: var(--spacing-px-6);
+    }
+
+    .row-selected span {
+      color: var(--color-gray-900);
+    }
+  }
+
+  .symbol {
+    .font-weight-semibold;
+    width: 22px;
   }
 }
