@@ -36,6 +36,15 @@
       {{/if}}
     </div>
 
+    <div class="fx-row">
+      <OSS::ProgressBar @value={{31}} />
+    </div>
+    <div class="fx-row">
+      <OSS::ProgressBar @skin="success"
+                        @value={{100}}
+                        @valueIsVisible={{true}}
+                        @label="Hello" />
+    </div>
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
       <OSS::StarRating @rating={{3}} @totalStars={{5}} @onChange={{this.onRatingClick}} />
       <OSS::StarRating @rating={{12}} @totalStars={{15}} @activeColor="red" @passiveColor="blue"
