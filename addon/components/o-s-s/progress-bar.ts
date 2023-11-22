@@ -12,6 +12,7 @@ interface OSSProgressBarArgs {
   label?: string;
   valueIsVisible?: boolean;
   skin?: ProgressBarSkins;
+  small?: boolean;
 }
 
 export default class OSSProgressBar extends Component<OSSProgressBarArgs> {

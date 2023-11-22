@@ -37,6 +37,16 @@ export default {
       },
       control: { type: 'boolean' }
     },
+    small: {
+      description: 'Boolean to adjust height of progress bar',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: true }
+      },
+      control: { type: 'boolean' }
+    },
     skin: {
       description: 'Adjust appearance',
       table: {
@@ -62,7 +72,8 @@ const defaultArgs = {
   value: 30,
   label: 'Hello',
   valueIsVisible: true,
-  skin: 'primary'
+  skin: 'primary',
+  small: true
 };
 
 const BasicUsageTemplate = (args) => ({
@@ -70,7 +81,8 @@ const BasicUsageTemplate = (args) => ({
       <OSS::ProgressBar @value={{this.value}}
                        @label={{this.label}}
                        @valueIsVisible={{this.valueIsVisible}}
-                       @skin={{this.skin}} />
+                       @skin={{this.skin}}
+                       @small={{this.small}}  />
   `,
   context: args
 });
