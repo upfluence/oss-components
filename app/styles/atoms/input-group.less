@@ -3,105 +3,83 @@
     border-radius: var(--border-radius-sm);
     transition: all 250ms ease-in-out;
 
+    border: 1px solid var(--color-border-default);
+    overflow: hidden;
+    height: 36px;
+
+    & > div {
+      height: 100%;
+    }
+
+    &-prefix,
+    &-suffix,
+    input {
+      border-radius: 0;
+      border: none;
+    }
+
     &-prefix,
     &-suffix {
       display: flex;
       align-items: center;
-      height: 36px;
+
       padding: var(--spacing-px-3) var(--spacing-px-12);
 
       color: var(--color-gray-500);
       background-color: var(--color-gray-100);
-      border: 1px solid var(--color-border-default);
       transition: all 250ms ease-in-out;
+    }
+
+    &-prefix {
+      border-right: 1px solid var(--color-border-default);
+    }
+
+    &-suffix {
+      border-left: 1px solid var(--color-border-default);
     }
 
     .oss-input-container input::placeholder {
       color: var(--color-gray-400);
     }
 
-    &-prefix {
-      border-top-left-radius: var(--border-radius-sm);
-      border-bottom-left-radius: var(--border-radius-sm);
-    }
-
-    &-suffix {
-      border-top-right-radius: var(--border-radius-sm);
-      border-bottom-right-radius: var(--border-radius-sm);
-    }
-
-    .suffix-radius-fix input {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-
-    .prefix-radius-fix input {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
-    }
-
-    .oss-input-container.prefix-radius-fix {
-      .upf-input,
-      .upf-input:focus,
-      .upf-input:hover {
-        border-left: none;
-      }
-    }
-
-    .oss-input-container.suffix-radius-fix {
-      .upf-input,
-      .upf-input:focus,
-      .upf-input:hover {
-        border-right: none;
-      }
-    }
-
     &:not(.disabled, :disabled) {
       &:hover {
-        .oss-input-group-row-prefix,
-        .oss-input-group-row-suffix,
-        .oss-input-container input {
-          border-color: var(--color-gray-300);
-          background-color: var(--color-gray-100);
+        .oss-input-container .upf-input,
+        .oss-input-container .upf-input:hover {
+          .input-state-hover;
+          border: none;
         }
       }
 
       &:active {
         .input-state-active;
-        border: none;
+        border-color: var(--color-border-default);
 
-        .oss-input-container input:active {
+        .oss-input-container .upf-input:active {
           .reset-box-shadow;
+          .input-state-active;
+          border: none;
         }
       }
 
       &:focus-within {
         .input-state-active;
-        border: none;
+        border-color: var(--color-border-default);
 
         .oss-input-container input,
-        .oss-input-group-row-prefix,
-        .oss-input-group-row-suffix,
         .oss-input-container .upf-input:focus {
+          .input-state-focus;
           .reset-box-shadow;
-          border-color: var(--color-border-default);
+          border: none;
         }
       }
     }
 
     &--error {
+      .border-color-error;
+
       &:not(.disabled, :disabled) {
         &:hover {
-          .oss-input-group-row-prefix {
-            .input-state-error-hover;
-            border-right-color: var(--color-border-default);
-          }
-
-          .oss-input-group-row-suffix {
-            .input-state-error-hover;
-            border-left-color: var(--color-border-default);
-          }
-
           .oss-input-container input {
             .input-state-error-hover;
           }
@@ -109,56 +87,16 @@
 
         &:active {
           .input-state-error-active;
-
-          .oss-input-group-row-prefix {
-            .input-state-error-hover;
-            border-right-color: var(--color-border-default);
-          }
-
-          .oss-input-group-row-suffix {
-            .input-state-error-hover;
-            border-left-color: var(--color-border-default);
-          }
-
-          .oss-input-container input,
-          .oss-input-container input:active {
-            .border-color-error;
-          }
         }
 
         &:focus-within {
           .input-state-error-focus;
 
-          .oss-input-group-row-prefix {
-            .input-state-error-hover;
-            border-right-color: var(--color-border-default);
-          }
-
-          .oss-input-group-row-suffix {
-            .input-state-error-hover;
-            border-left-color: var(--color-border-default);
-          }
-
           .oss-input-container input,
           .oss-input-container .upf-input:focus {
-            .input-state-error-focus;
             .reset-box-shadow;
           }
         }
-      }
-
-      input {
-        .border-color-error;
-      }
-
-      .oss-input-group-row-prefix {
-        .border-color-error;
-        border-right-color: var(--color-border-default);
-      }
-
-      .oss-input-group-row-suffix {
-        .border-color-error;
-        border-left-color: var(--color-border-default);
       }
     }
   }

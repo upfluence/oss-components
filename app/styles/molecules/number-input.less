@@ -1,78 +1,69 @@
 .number-input {
   .border-radius-default;
+
+  border: 1px solid var(--color-border-default);
+  overflow: hidden;
+
   height: 36px;
   transition: all 250ms ease-in-out;
 
+  .upf-square-btn,
+  .oss-input-container .upf-input {
+    border: none;
+    height: auto;
+  }
+
   &:hover {
-    .upf-square-btn {
+    border-color: var(--color-gray-300);
+
+    .upf-square-btn:not(:disabled, .disabled):hover {
       border-color: var(--color-gray-300);
-
-      &:not(:disabled, .disabled) {
-        &:nth-of-type(1) {
-          border-right-color: var(--color-border-default);
-        }
-
-        &:nth-of-type(2) {
-          border-left-color: var(--color-border-default);
-        }
-
-        &:hover {
-          border-color: var(--color-gray-300);
-          background-color: var(--color-gray-50);
-        }
-      }
-    }
-
-    .oss-input-container input {
-      border-color: var(--color-gray-300);
-      background-color: var(--color-gray-100);
+      background-color: var(--color-gray-50);
     }
   }
 
   &:active {
     .input-state-active;
-    border: none;
-
-    .oss-input-container input:active {
-      .reset-box-shadow;
-    }
+    border: 1px solid var(--color-border-default);
   }
 
   &:focus-within {
     .input-state-active;
-    border: none;
+    border: 1px solid var(--color-border-default);
 
-    .oss-input-container input,
-    .oss-input-container .upf-input:focus {
-      .reset-box-shadow;
+    .upf-square-btn:not(:disabled, .disabled):hover {
       border-color: var(--color-border-default);
     }
   }
 
   .oss-input-container .upf-input,
+  .oss-input-container .upf-input:active,
   .oss-input-container .upf-input:focus,
   .oss-input-container .upf-input:hover {
+    .reset-box-shadow;
+
     border-left: none;
     border-right: none;
+    border: none;
   }
 
   .upf-square-btn {
-    border: 1px solid var(--color-border-default);
     outline: 0;
     box-shadow: none;
 
-    &:disabled {
-      .input-state-disabled;
-    }
+    border-radius: 0;
 
     &:nth-of-type(1) {
-      border-top-right-radius: 0;
-      border-bottom-right-radius: 0;
+      border-right: 1px solid var(--color-border-default);
     }
 
     &:nth-of-type(2) {
-      border-top-left-radius: 0;
-      border-bottom-left-radius: 0;
+      border-left: 1px solid var(--color-border-default);
+    }
+
+    &:disabled {
+      .input-state-disabled;
+      border: none;
     }
   }
 
@@ -88,13 +79,5 @@
     align-items: center;
     line-height: 34px;
     text-align: center;
-  }
-
-  &:focus-within {
-    .upf-square-btn:nth-of-type(1),
-    .upf-square-btn:nth-of-type(2),
-    .upf-input {
-      border-color: var(--color-border-default);
-    }
   }
 }
