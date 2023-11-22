@@ -1,7 +1,9 @@
 <div class="upf-power-select fx-1 fx-col" ...attributes
      {{did-insert (fn this.ensureBlockPresence (has-block "selected-item") (has-block "option-item"))}}>
-  <div class="upf-power-select__array-container" role="button" {{on "click" this.toggleSelect}}>
-    <div class="array-input-container fx-row padding-top-px-6 padding-bottom-px-6" {{scroll-shadow color="field"}}>
+  <div class="upf-power-select__array-container" role="button"
+       {{on "click" this.toggleSelect}}>
+    <div class="array-input-container fx-row padding-top-px-6 padding-bottom-px-6 {{if this.displaySelect "active"}}"
+         {{scroll-shadow color="field"}}>
       <div class="fx-row fx-xalign-center fx-1 padding-left-px-6 fx-gap-px-6 fx-wrap">
         {{#each @selectedItems as |selectedItem|}}
           {{yield selectedItem to="selected-item"}}
@@ -11,12 +13,8 @@
           </span>
         {{/each}}
       </div>
-
-      {{#if this.displaySelect}}
-        <OSS::Icon @icon="fa-chevron-up" class="margin-left-px-6 margin-right-px-6 margin-top-px-6" />
-      {{else}}
-        <OSS::Icon @icon="fa-chevron-down" class="margin-left-px-6 margin-right-px-6 margin-top-px-6" />
-      {{/if}}
+      <OSS::Icon @icon={{if this.displaySelect "fa-chevron-up" "fa-chevron-down"}}
+                 class="margin-left-px-6 margin-right-px-6 margin-top-px-6" />
     </div>
   </div>
 

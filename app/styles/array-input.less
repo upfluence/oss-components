@@ -20,6 +20,8 @@
   background-color: white;
   border: 1px solid var(--color-border-default);
 
+  transition: all 250ms ease-in-out;
+
   &--disabled {
     .input-state-disabled;
 
@@ -34,8 +36,10 @@
       .input-state-hover;
     }
 
-    &:active  {
+    &:active,
+    &.active {
       .input-state-active;
+      background-color: var(--color-white);
     }
 
     &:focus-within {
