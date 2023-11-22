@@ -23,6 +23,17 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
       '[component][OSS::ProgressBar] You must pass a numbered value between 0 and 100',
       0 <= args.value && args.value <= 100
     );
+
+    const stylesheet = document.styleSheets[0];
+    const keyframesRule = `@keyframes oss-progress-bar-animation {
+      from {
+        width: 0;
+      }
+      to {
+        width: ${this.args.value}%;
+      }
+    }`;
+    stylesheet.insertRule(keyframesRule, stylesheet.cssRules.length);
   }
 
   get skin() {
