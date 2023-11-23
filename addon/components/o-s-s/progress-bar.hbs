@@ -5,9 +5,10 @@
     </p>
   {{/if}}
   <div class="oss-progress-bar">
-    <div class={{concat "oss-progress-bar--inner " this.computedStyles (if @small " oss-progress-bar--inner--small") }}
-         role="progressbar" aria-valuenow={{@value}}
-         aria-valuemin='0' aria-valuemax='100' style={{progressBarInnerStyle}}>
+    <div 
+      class={{concat "oss-progress-bar--inner " this.computedStyles (if @small " oss-progress-bar--inner--small") }}
+      role="progressbar" aria-valuenow={{@value}}
+      aria-valuemin='0' aria-valuemax='100' style={{progressBarInnerStyle}}>
     </div>
   </div>
   {{#if @valueIsVisible}}
