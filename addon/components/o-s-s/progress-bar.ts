@@ -1,11 +1,7 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 
-enum ProgressBarSkins {
-  'primary',
-  'warning',
-  'success'
-}
+type ProgressBarSkins = 'primary' | 'warning' | 'success';
 
 interface OSSProgressBarArgs {
   value: number;
@@ -19,10 +15,7 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
   constructor(owner: unknown, args: OSSProgressBarArgs) {
     super(owner, args);
 
-    assert(
-      '[component][OSS::ProgressBar] You must pass a numbered value between 0 and 100',
-      0 <= args.value && args.value <= 100
-    );
+    assert('[component][OSS::ProgressBar] You must pass a numbered value between 0 and 100', args.value <= 100);
 
     const stylesheet = document.styleSheets[0];
     const keyframesRule = `@keyframes oss-progress-bar-animation {

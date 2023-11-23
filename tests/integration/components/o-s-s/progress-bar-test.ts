@@ -16,14 +16,6 @@ module('Integration | Component | o-s-s/progress-bar', function (hooks) {
       assert.dom('.oss-progress-bar').exists();
     });
 
-    test('it renders only the progressBar when only @value is specified', async function (assert) {
-      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} />`);
-
-      assert.dom('.oss-progress-bar').exists();
-      assert.dom('.oss-progress-bar--label').doesNotExist();
-      assert.dom('.oss-progress-bar--value').doesNotExist();
-    });
-
     test('It renders the progress bar inner when the @value is specified', async function (assert) {
       await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} />`);
 
@@ -33,63 +25,89 @@ module('Integration | Component | o-s-s/progress-bar', function (hooks) {
     });
   });
 
-  module('@value behaviour', function () {
+  module('@value arg behaviour', function () {
     test('It renders the progress bar inner with the correct width when @value is specified', async function (assert) {
       await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} />`);
 
       assert.dom('.oss-progress-bar').exists();
-      const innerBar = this.element.querySelector('.oss-progress-bar--inner');
-      if (innerBar) {
-        const inlineStyle = innerBar.getAttribute('style');
-        assert.ok(inlineStyle?.includes(this.checkedValue), 'The inline style attribute is set to the proper value');
-      }
+      const innerBar = this.element.querySelector('.oss-progress-bar--inner') as Element;
+      const inlineStyle = innerBar.getAttribute('style');
+      assert.ok(inlineStyle?.includes(this.checkedValue), 'The inline style attribute is set to the proper value');
     });
 
     test('It renders the progress bar inner with the correct width when @value is updated from one value to another', async function (assert) {
       await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} />`);
 
       assert.dom('.oss-progress-bar').exists();
-      const innerBar = this.element.querySelector('.oss-progress-bar--inner');
-      if (innerBar) {
-        const inlineStyle = innerBar.getAttribute('style');
-        assert.ok(inlineStyle?.includes(this.checkedValue), 'The inline style attribute is set to the proper value');
-      }
+      const innerBar = this.element.querySelector('.oss-progress-bar--inner') as Element;
+
+      let inlineStyle = innerBar.getAttribute('style');
+      assert.ok(inlineStyle?.includes(this.checkedValue), 'The inline style attribute is set to the proper value');
       this.set('checkedValue', 100);
-      if (innerBar) {
-        const inlineStyle = innerBar.getAttribute('style');
-        assert.ok(inlineStyle?.includes('100'), 'The inline style attribute is set to the proper value');
-      }
+      inlineStyle = innerBar.getAttribute('style');
+      assert.ok(inlineStyle?.includes('100'), 'The inline style attribute is set to the proper value');
     });
   });
 
-  module('other args behaviour', function () {
-    test('It renders the small progress bar inner when the @small attribute is specified', async function (assert) {
+  module('@small arg behaviour', function () {
+    test('if the value is true, the progress bar height is the proper height', async function (assert) {
       await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @small={{true}} />`);
 
       assert.dom('.oss-progress-bar').exists();
-      const innerBar = this.element.querySelector('.oss-progress-bar--inner');
-      assert.dom(innerBar).exists();
-      if (innerBar) {
-        assert.equal(
-          innerBar.clientHeight,
-          4,
-          'Element has the correct height (replace 100 with your expected height)'
-        );
-      }
+      const innerBar = this.element.querySelector('.oss-progress-bar--inner') as Element;
+      assert.equal(innerBar.clientHeight, 4, 'Element has the correct height');
     });
 
-    test('It renders the label when @label is specified', async function (assert) {
+    test('if the value is false, the progress bar height is the proper height', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @small={{false}}/>`);
+
+      assert.dom('.oss-progress-bar').exists();
+      const innerBar = this.element.querySelector('.oss-progress-bar--inner') as Element;
+      assert.equal(innerBar.clientHeight, 10, 'Element has the correct height');
+    });
+
+    test('if the value is unspecified, the progress bar height is the proper height', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} />`);
+
+      assert.dom('.oss-progress-bar').exists();
+      const innerBar = this.element.querySelector('.oss-progress-bar--inner') as Element;
+      assert.equal(innerBar.clientHeight, 10, 'Element has the correct height');
+    });
+  });
+
+  module('@label arg behaviour', function () {
+    test('if the value is specified, the label is displayed', async function (assert) {
       await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @label="Hello"/>`);
 
       assert.dom('.oss-progress-bar--label').exists();
       assert.dom('.oss-progress-bar--label').hasText('Hello');
     });
 
-    test('It renders the value when @valueIsVisible is specified', async function (assert) {
+    test('if the value is not specified, the label is not displayed', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}}/>`);
+
+      assert.dom('.oss-progress-bar--label').doesNotExist();
+    });
+  });
+
+  module('@valueIsVisible arg behaviour', function () {
+    test('if the value is true, the value is displayed', async function (assert) {
       await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @label="Hello" @valueIsVisible={{true}}/>`);
 
       assert.dom('.oss-progress-bar--value').exists();
       assert.dom('.oss-progress-bar--value').hasText(this.checkedValue + '%');
+    });
+
+    test('if the value is false, the value is not displayed', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @label="Hello" @valueIsVisible={{false}}/>`);
+
+      assert.dom('.oss-progress-bar--value').doesNotExist();
+    });
+
+    test('if the value is unspecified, the value is not displayed', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @label="Hello" />`);
+
+      assert.dom('.oss-progress-bar--value').doesNotExist();
     });
   });
 });

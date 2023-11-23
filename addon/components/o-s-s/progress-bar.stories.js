@@ -13,7 +13,7 @@ export default {
         type: {
           summary: 'number'
         },
-        defaultValue: { summary: 'undefined' }
+        defaultValue: { summary: 42 }
       },
       control: { type: 'number' }
     },
@@ -23,7 +23,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: 'Hello' }
+        defaultValue: { summary: undefined }
       },
       control: { type: 'text' }
     },
@@ -33,7 +33,7 @@ export default {
         type: {
           summary: 'boolean'
         },
-        defaultValue: { summary: true }
+        defaultValue: { summary: undefined }
       },
       control: { type: 'boolean' }
     },
@@ -43,7 +43,7 @@ export default {
         type: {
           summary: 'boolean'
         },
-        defaultValue: { summary: true }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'boolean' }
     },

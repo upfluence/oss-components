@@ -1,8 +1,8 @@
 <div class="oss-progress-bar--wrapper">
   {{#if @label}}
-    <p class="oss-progress-bar--label">
+    <span class="oss-progress-bar--label">
       {{@label}}
-    </p>
+    </span>
   {{/if}}
   <div class="oss-progress-bar">
     <div 
@@ -12,8 +12,8 @@
     </div>
   </div>
   {{#if @valueIsVisible}}
-    <p class="oss-progress-bar--value">
+    <span class="oss-progress-bar--value">
       {{@value}}%
-    </p>
+    </span>
   {{/if}}
 </div>
