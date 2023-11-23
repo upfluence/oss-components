@@ -19,12 +19,12 @@
 
   {{#if this.displaySelect}}
     <OSS::InfiniteSelect
-                         @items={{@items}}
-                         @onSearch={{this.onSearch}}
-                         @onSelect={{this.onSelect}}
-                         @searchEnabled={{this.searchEnabled}}
-                         @searchPlaceholder={{this.searchPlaceholder}}
-                         {{on-click-outside this.onClickOutside useCapture=true}}>
+      @items={{@items}}
+      @onSearch={{this.onSearch}}
+      @onSelect={{this.onSelect}}
+      @searchEnabled={{this.searchEnabled}}
+      @searchPlaceholder={{this.searchPlaceholder}}
+      {{on-click-outside this.onClickOutside useCapture=true}}>
       <:option as |item|>
         <div class="item-wrapper fx-row fx-xalign-center fx-malign-space-between {{if (eq @value item) 'selected'}}">
           {{#if (has-block "option")}}
