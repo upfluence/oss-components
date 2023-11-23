@@ -17,7 +17,7 @@ const DEFAULT_VALUE = 0;
 const AUTHORIZED_KEYS = ['Backspace', 'Delete', 'Tab', 'Shift', 'Control', '-'];
 const INCREASE_VALUE_KEYS = ['ArrowUp', 'ArrowRight'];
 const DECREASE_VALUE_KEYS = ['ArrowDown', 'ArrowLeft'];
-const BASE_INPUT_PIXEL_WIDTH = 35;
+const BASE_INPUT_PIXEL_WIDTH = 40;
 const CHAR_PIXEL_WIDTH = 7;
 
 export default class OSSNumberInput extends Component<OSSNumberInputArgs> {
