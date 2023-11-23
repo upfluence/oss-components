@@ -25,6 +25,16 @@ export default {
       },
       control: { type: 'text' }
     },
+    placeholder: {
+      description: 'Value of the placeholder',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: '000 0000' }
+      },
+      control: { type: 'text' }
+    },
     onChange: {
       description: 'A callback that sends the modifications of the prefix & the phone number',
       table: {
@@ -56,6 +66,7 @@ export default {
 const defaultArgs = {
   prefix: '+33',
   number: '742424242',
+  placeholder: '000 0000',
   onChange: action('onChange'),
   validates: action('validates')
 };
@@ -63,7 +74,7 @@ const defaultArgs = {
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
       <OSS::PhoneNumberInput @prefix={{this.prefix}} @number={{this.number}} @onChange={{this.onChange}}
-                             @validates={{this.validates}} />
+                             @validates={{this.validates}} @placeholder={{this.placeholder}} />
   `,
   context: args
 });
