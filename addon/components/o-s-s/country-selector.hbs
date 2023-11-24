@@ -9,7 +9,7 @@
       {{/if}}
       <span class="{{unless this.selectedCountry 'text-color-default-light'}}">{{this.inputLabel}}</span>
     </div>
-    <OSS::Icon @icon="fa-chevron-{{if this.dropdownVisibility "up" "down"}}" />
+    <OSS::Icon @icon="fa-chevron-{{if this.dropdownVisibility 'up' 'down'}}" />
   </div>
   {{#if this.dropdownVisibility}}
     <OSS::InfiniteSelect @items={{this.filteredItems}} @onSearch={{this.search}}

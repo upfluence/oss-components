@@ -50,7 +50,7 @@ export default class OSSNumberInput extends Component<OSSNumberInputArgs> {
   }
 
   @action
-  getInputElement(el: HTMLElement) {
+  registerInputElement(el: HTMLElement): void {
     this.inputElement = el.querySelector('input');
   }
 

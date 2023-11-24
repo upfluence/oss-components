@@ -23,7 +23,7 @@ export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputAr
   @tracked countrySelectorShown: boolean = false;
   @tracked filteredCountries: CountryData[] = this._countries;
   @tracked placeholder: string = this.args.placeholder || '(415) 000 0000';
-  @tracked el: HTMLElement | undefined = undefined;
+  @tracked inputElement: HTMLElement | undefined = undefined;
 
   constructor(owner: unknown, args: OSSPhoneNumberInputArgs) {
     super(owner, args);
@@ -113,11 +113,11 @@ export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputAr
 
   @action
   focusInput(): void {
-    this.el?.focus();
+    this.inputElement?.focus();
   }
 
   @action
-  getInput(el: HTMLElement): void {
-    this.el = el;
+  registerInputElement(el: HTMLElement): void {
+    this.inputElement = el;
   }
 }

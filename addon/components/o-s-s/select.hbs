@@ -1,7 +1,7 @@
 <div class={{this.classNames}}
      {{did-insert (fn this.ensureBlockPresence (has-block "option"))}}
      ...attributes>
-  <div class="upf-input {{if this.this.displaySelect "active"}} fx-row fx-1 fx-xalign-center" role="button"
+  <div class="upf-input {{if this.displaySelect 'active'}} fx-row fx-1 fx-xalign-center" role="button"
        {{on "click" this.toggleSelector}}>
     <div class="fx-row fx-1 fx-malign-space-between fx-xalign-center">
       {{#if @value}}
@@ -13,7 +13,7 @@
       {{else}}
         <span class="upf-input--placeholder">{{this.placeholder}}</span>
       {{/if}}
-      <OSS::Icon @icon={{if this.this.displaySelect "fa-chevron-up" "fa-chevron-down"}} class="margin-left-px-6" />
+      <OSS::Icon @icon="fa-chevron-{{if this.displaySelect 'up' 'down'}}" class="margin-left-px-6" />
     </div>
   </div>
 

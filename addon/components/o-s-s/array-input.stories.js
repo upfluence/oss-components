@@ -26,7 +26,7 @@ export default {
       control: { type: 'text' }
     },
     disabled: {
-      description: 'Disable the default input (when not passing an input named block)',
+      description: 'Disables the default input (when not passing an input named block)',
       table: {
         type: {
           summary: 'boolean'

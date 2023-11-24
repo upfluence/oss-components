@@ -36,7 +36,7 @@ export default {
       control: { type: 'text' }
     },
     disabled: {
-      description: 'Whether or not the input is disable',
+      description: 'Whether or not the input is disabled',
       table: {
         type: {
           summary: 'boolean'
