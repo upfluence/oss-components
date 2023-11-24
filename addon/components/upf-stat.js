@@ -10,6 +10,7 @@ export default Component.extend({
   data: null,
   dataClass: null,
   label: null,
+  tooltip: null,
 
   icon: null,
   iconPlacement: 'top',
