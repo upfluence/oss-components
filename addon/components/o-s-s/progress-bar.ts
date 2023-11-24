@@ -20,16 +20,7 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
       typeof args.value === 'number' && args.value >= 0 && args.value <= 100
     );
 
-    const stylesheet = document.styleSheets[0];
-    const keyframesRule = `@keyframes oss-progress-bar-animation {
-      from {
-        width: 0;
-      }
-      to {
-        width: ${this.args.value}%;
-      }
-    }`;
-    stylesheet.insertRule(keyframesRule, stylesheet.cssRules.length);
+    document.documentElement.style.setProperty('--progress-bar-animation-width', `${args.value}%`);
   }
 
   get skin(): string {
