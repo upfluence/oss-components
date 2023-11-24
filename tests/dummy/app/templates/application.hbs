@@ -35,14 +35,10 @@
         </div>
       {{/if}}
     </div>
-
-    <div class="fx-row">
-      <OSS::ProgressBar @value={{31}} @small={{true}} />
-    </div>
-    <div class="fx-row">
+    <div class="fx-row fx-1 fx-gap-px-10 margin-md width-px-200">
       <OSS::ProgressBar @skin="success"
-                        @value={{100}}
-                        @valueIsVisible={{true}}
+                        @value={{42}}
+                        @displayValue={{true}}
                         @label="Hello" />
     </div>
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">

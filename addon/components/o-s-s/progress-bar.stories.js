@@ -27,7 +27,7 @@ export default {
       },
       control: { type: 'text' }
     },
-    valueIsVisible: {
+    displayValue: {
       description: 'Boolean to check if @value should be displayed on the right side of the bar',
       table: {
         type: {
@@ -38,7 +38,7 @@ export default {
       control: { type: 'boolean' }
     },
     small: {
-      description: 'Boolean to adjust height of progress bar',
+      description: 'If true, the height will be 4px. The default height is 10px',
       table: {
         type: {
           summary: 'boolean'
@@ -71,18 +71,21 @@ export default {
 const defaultArgs = {
   value: 30,
   label: 'Hello',
-  valueIsVisible: true,
+  displayValue: true,
   skin: 'primary',
   small: true
 };
 
 const BasicUsageTemplate = (args) => ({
   template: hbs`
-      <OSS::ProgressBar @value={{this.value}}
-                       @label={{this.label}}
-                       @valueIsVisible={{this.valueIsVisible}}
-                       @skin={{this.skin}}
-                       @small={{this.small}}  />
+    <div style="background-color: #1c1c1c;width:200px">
+      <OSS::ProgressBar 
+        @value={{this.value}}
+        @label={{this.label}}
+        @displayValue={{this.displayValue}}
+        @skin={{this.skin}}
+        @small={{this.small}}  />
+    </div>
   `,
   context: args
 });
