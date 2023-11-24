@@ -1,4 +1,4 @@
-.oss-progress-bar--wrapper {
+.oss-progress-bar {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -9,10 +9,10 @@
   }
 }
 
-.oss-progress-bar {
+.oss-progress-bar--outter {
   width: 100%;
   border-radius: var(--border-radius-sm);
-  background-color: #e5e5e5;
+  background-color: var(--color-gray-200);
   margin-bottom: 0;
   overflow: hidden;
 
@@ -21,10 +21,13 @@
     animation: oss-progress-bar-animation 1s forwards;
     border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm);
     transition: width 0.6s ease;
-    height: 10px;
 
-    &--small {
+    &--sm {
       height: 4px;
+    }
+
+    &--lg {
+      height: 10px;
     }
 
     &--primary {

@@ -1,6 +1,7 @@
 import hbs from 'htmlbars-inline-precompile';
 
 const ProgressBarSkins = ['primary', 'warning', 'success'];
+const ProgressBarSizes = ['sm', 'lg'];
 
 export default {
   title: 'Components/OSS::ProgressBar',
@@ -37,15 +38,16 @@ export default {
       },
       control: { type: 'boolean' }
     },
-    small: {
-      description: 'If true, the height will be 4px. The default height is 10px',
+    size: {
+      description: 'Adjust size',
       table: {
         type: {
-          summary: 'boolean'
+          summary: ProgressBarSizes.join('|')
         },
-        defaultValue: { summary: 'undefined' }
+        defaultValue: { summary: 'sm' }
       },
-      control: { type: 'boolean' }
+      options: ProgressBarSizes,
+      control: { type: 'select' }
     },
     skin: {
       description: 'Adjust appearance',
@@ -73,7 +75,7 @@ const defaultArgs = {
   label: 'Hello',
   displayValue: true,
   skin: 'primary',
-  small: true
+  size: 'sm'
 };
 
 const BasicUsageTemplate = (args) => ({
@@ -84,7 +86,7 @@ const BasicUsageTemplate = (args) => ({
         @label={{this.label}}
         @displayValue={{this.displayValue}}
         @skin={{this.skin}}
-        @small={{this.small}}  />
+        @size={{this.size}}  />
     </div>
   `,
   context: args
