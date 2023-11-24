@@ -41,7 +41,7 @@ export default {
         type: {
           summary: 'boolean'
         },
-        defaultValue: { summary: true }
+        defaultValue: { summary: 'undefined' }
       },
       control: { type: 'boolean' }
     },

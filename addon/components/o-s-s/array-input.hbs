@@ -1,4 +1,4 @@
-<div class="fx-1 fx-col">
+<div class="fx-1 fx-col fx-gap-px-6">
   <div class={{this.computedClasses}}
        ...attributes>
     {{#each this.items as |item index|}}
@@ -7,5 +7,5 @@
     <Input @value={{this.currentValue}} placeholder={{@placeholder}} autocomplete="off" disabled={{@disabled}}
            {{on "keydown" this.keyListener}} {{on "blur" this.validateTagOnClickOutside}} />
   </div>
-  <span class="text-color-error margin-top-xxx-sm">{{@errorMessage}}</span>
+  <span class="font-color-error-500">{{@errorMessage}}</span>
 </div>

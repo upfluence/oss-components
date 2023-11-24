@@ -31,7 +31,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: '000 0000' }
+        defaultValue: { summary: '(415) 000 0000' }
       },
       control: { type: 'text' }
     },
@@ -66,7 +66,7 @@ export default {
 const defaultArgs = {
   prefix: '+33',
   number: '742424242',
-  placeholder: '000 0000',
+  placeholder: '(415) 000 0000',
   onChange: action('onChange'),
   validates: action('validates')
 };
