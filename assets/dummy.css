@@ -9640,6 +9640,9 @@ label {
   color: #e0e0e0;
 }
 .upf-stat__label {
+  display: flex;
+  gap: var(--spacing-px-6);
+  align-items: center;
   color: #8a95a0;
 }
 .upf-stat--small .upf-stat__data {
