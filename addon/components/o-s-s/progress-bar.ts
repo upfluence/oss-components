@@ -9,7 +9,6 @@ interface OSSProgressBarArgs {
   label?: string;
   displayValue?: boolean;
   skin?: ProgressBarSkins;
-  small?: boolean;
   size?: ProgressBarSizes;
 }
 
