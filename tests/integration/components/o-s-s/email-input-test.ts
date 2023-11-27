@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, setupOnerror, typeIn } from '@ember/test-helpers';
+import { render, setupOnerror, typeIn, triggerKeyEvent } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import sinon from 'sinon';
 
@@ -62,13 +62,20 @@ module('Integration | Component | o-s-s/email-input', function (hooks) {
       this.onChange = sinon.stub();
     });
 
-    test('it calls after type in new char', async function (assert) {
+    test('it is called when a new character is typed', async function (assert) {
       await render(hbs`<OSS::EmailInput @value={{this.value}} @onChange={{this.onChange}} />`);
       await typeIn('input', 'a');
       assert.true(this.onChange.calledOnceWithExactly('a'));
     });
 
-    test('it sets to lower case the result', async function (assert) {
+    test('it returns null value', async function (assert) {
+      this.value = null;
+      await render(hbs`<OSS::EmailInput @value={{this.value}} @onChange={{this.onChange}} />`);
+      await triggerKeyEvent('input', 'keyup', 'Backspace');
+      assert.true(this.onChange.calledOnceWithExactly(null));
+    });
+
+    test('if defined, it transforms the result to lowercase', async function (assert) {
       await render(hbs`<OSS::EmailInput @value={{this.value}} @onChange={{this.onChange}} />`);
       await typeIn('input', 'A');
       assert.true(this.onChange.calledOnceWithExactly('a'));
