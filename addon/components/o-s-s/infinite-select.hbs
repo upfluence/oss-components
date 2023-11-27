@@ -8,7 +8,7 @@
         </:prefix>
         <:input>
           <Input @value={{this._searchKeyword}} {{on "keyup" this.updateSearchKeyword}} type="text"
-                 class="form-control upf-input" placeholder={{this.searchPlaceholder}}
+                 class="upf-input" placeholder={{this.searchPlaceholder}}
                  {{on "keydown" this.handleKeyEventInput}} />
         </:input>
       </OSS::InputContainer>

@@ -8,7 +8,7 @@ import { countries, CountryData } from '@upfluence/oss-components/utils/country-
 interface OSSPhoneNumberInputArgs {
   prefix: string;
   number: string;
-  placeholder: string;
+  placeholder?: string;
   onChange(prefix: string, number: string): void;
   validates?(isPassing: boolean): void;
 }
@@ -22,7 +22,7 @@ export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputAr
   @tracked selectedCountry: CountryData;
   @tracked countrySelectorShown: boolean = false;
   @tracked filteredCountries: CountryData[] = this._countries;
-  @tracked placeholder: string = this.args.placeholder || '(415) 000 0000';
+  @tracked placeholder: string = this.args.placeholder ?? '(415) 000 0000';
   @tracked inputElement: HTMLElement | undefined = undefined;
 
   constructor(owner: unknown, args: OSSPhoneNumberInputArgs) {
