@@ -44,7 +44,7 @@ export default {
         type: {
           summary: ProgressBarSizes.join('|')
         },
-        defaultValue: { summary: 'sm' }
+        defaultValue: { summary: 'lg' }
       },
       options: ProgressBarSizes,
       control: { type: 'select' }
@@ -75,7 +75,7 @@ const defaultArgs = {
   label: 'Hello',
   displayValue: true,
   skin: 'primary',
-  size: 'sm'
+  size: 'lg'
 };
 
 const BasicUsageTemplate = (args) => ({

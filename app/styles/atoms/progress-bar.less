@@ -3,42 +3,48 @@
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  span {
+
+  &__label {
     font-weight: 200;
-    margin: 0 var(--spacing-px-6);
+    margin-right: var(--spacing-px-6);
   }
-}
 
-.oss-progress-bar--outter {
-  width: 100%;
-  border-radius: var(--border-radius-sm);
-  background-color: var(--color-gray-200);
-  margin-bottom: 0;
-  overflow: hidden;
+  &__value {
+    font-weight: 200;
+    margin-left: var(--spacing-px-6);
+  }
 
-  .oss-progress-bar--inner {
+  &__outer {
+    width: 100%;
+    border-radius: var(--border-radius-sm);
+    background-color: var(--color-gray-200);
+    margin-bottom: 0;
+    overflow: hidden;
+  }
+
+  &__inner {
     width: 0;
     animation: oss-progress-bar-animation 1s forwards;
     border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm);
     transition: width 0.6s ease;
 
-    &--sm {
+    &__sm {
       height: 4px;
     }
 
-    &--lg {
+    &__lg {
       height: 10px;
     }
 
-    &--primary {
+    &__primary {
       background-color: var(--color-primary-500);
     }
 
-    &--warning {
+    &__warning {
       background-color: var(--color-warning-500);
     }
 
-    &--success {
+    &__success {
       background-color: var(--color-success-500);
     }
   }

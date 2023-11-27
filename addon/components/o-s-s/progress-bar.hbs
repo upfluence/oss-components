@@ -1,18 +1,18 @@
 <div class='oss-progress-bar'>
   {{#if @label}}
-    <span class='oss-progress-bar--label'>
+    <span class='oss-progress-bar__label'>
       {{@label}}
     </span>
   {{/if}}
-  <div class='oss-progress-bar--outter'>
+  <div class='oss-progress-bar__outer'>
     <div
-         class={{concat 'oss-progress-bar--inner ' this.computedStyles (concat ' oss-progress-bar--inner--' this.size)}}
+         class={{concat 'oss-progress-bar__inner ' this.computedStyles}}
          role='progressbar' aria-valuenow={{@value}}
-         aria-valuemin='0' aria-valuemax='100' style={{progressBarInnerStyle}}>
+         aria-valuemin='0' aria-valuemax='100' style={{progressBarWidthStyle}}>
     </div>
   </div>
   {{#if @displayValue}}
-    <span class='oss-progress-bar--value'>
+    <span class='oss-progress-bar__value'>
       {{@value}}%
     </span>
   {{/if}}

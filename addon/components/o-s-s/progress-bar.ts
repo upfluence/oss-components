@@ -34,10 +34,10 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
   }
 
   get computedStyles(): string {
-    return 'oss-progress-bar--inner--' + this.skin;
+    return 'oss-progress-bar__inner__' + this.skin + ' oss-progress-bar__inner__' + this.size;
   }
 
-  get progressBarInnerStyle(): string {
+  get progressBarWidthStyle(): string {
     return `width: ${this.args.value + '%'}`;
   }
 }
