@@ -4,7 +4,7 @@ import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { isEmpty } from '@ember/utils';
 
-type Currency = {
+export type Currency = {
   code: string;
   symbol: string;
 };
