@@ -56,11 +56,22 @@ module('Integration | Component | o-s-s/email-input', function (hooks) {
     await render(hbs`<OSS::EmailInput />`);
   });
 
-  test('it calls the @onChange method', async function (assert) {
-    this.value = '';
-    this.onChange = sinon.stub();
-    await render(hbs`<OSS::EmailInput @value={{this.value}} @onChange={{this.onChange}} />`);
-    await typeIn('input', 'a');
-    assert.true(this.onChange.calledOnceWithExactly('a'));
+  module('for the @onChange method', (hooks) => {
+    hooks.beforeEach(function () {
+      this.value = '';
+      this.onChange = sinon.stub();
+    });
+
+    test('it calls after type in new char', async function (assert) {
+      await render(hbs`<OSS::EmailInput @value={{this.value}} @onChange={{this.onChange}} />`);
+      await typeIn('input', 'a');
+      assert.true(this.onChange.calledOnceWithExactly('a'));
+    });
+
+    test('it sets to lower case the result', async function (assert) {
+      await render(hbs`<OSS::EmailInput @value={{this.value}} @onChange={{this.onChange}} />`);
+      await typeIn('input', 'A');
+      assert.true(this.onChange.calledOnceWithExactly('a'));
+    });
   });
 });

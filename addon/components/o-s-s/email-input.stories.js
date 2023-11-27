@@ -56,14 +56,14 @@ export default {
       description: 'A callback that sends the new value to the parent component when the input is changed',
       table: {
         category: 'Actions',
-        type: { summary: 'onChange?(value: string | null): void' }
+        type: { summary: 'onChange?(value: string | undefined): void' }
       }
     }
   },
   parameters: {
     docs: {
       description: {
-        component: 'A dedicated email input that checks the validity of the inputed text.'
+        component: 'A dedicated email input that checks the validity of the inputted text.'
       }
     }
   }
