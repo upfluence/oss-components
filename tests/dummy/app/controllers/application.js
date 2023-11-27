@@ -124,6 +124,10 @@ export default class ApplicationController extends Controller {
 
   code4CodeBlock = testScript;
   countries = countries;
+  allowedCurrencies = [
+    { code: 'USD', symbol: '$' },
+    { code: 'EUR', symbol: '€' }
+  ];
 
   subdomainRegex = /^[a-zA-Z0-9]+[a-zA-Z0-9-._]*[a-zA-Z0-9]+$/;
   urlRegex = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/;

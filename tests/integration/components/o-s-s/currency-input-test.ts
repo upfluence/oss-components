@@ -1,15 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import {
-  render,
-  setupOnerror,
-  settled,
-  click,
-  findAll,
-  typeIn,
-  triggerKeyEvent,
-  triggerEvent
-} from '@ember/test-helpers';
+import { render, setupOnerror, click, findAll, typeIn, triggerKeyEvent, triggerEvent } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import sinon from 'sinon';
 
@@ -56,6 +47,7 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       await click('.currency-selector');
       assert.dom('.upf-infinite-select').exists();
     });
+
     test('Selecting a new currency in the Currency selector triggers the onChange method', async function (assert) {
       this.currency = '';
       await render(hbs`<OSS::CurrencyInput @currency={{this.currency}} @value="" @onChange={{this.onChange}} />`);
@@ -64,7 +56,8 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       await click(clickableRows[4]);
       assert.true(this.onChange.calledOnceWithExactly('AUD', 0));
     });
-    test('Selecting a new currency in the Currency selector triggers the onChange method with currency only', async function (assert) {
+
+    test('Selecting a new currency in the selector triggers the onChange method', async function (assert) {
       this.currency = '';
       await render(
         hbs`<OSS::CurrencyInput @onlyCurrency={{true}} @currency={{this.currency}} @value="" @onChange={{this.onChange}} />`
@@ -74,6 +67,7 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       await click(clickableRows[4]);
       assert.true(this.onChange.calledOnceWithExactly('AUD', 0));
     });
+
     test('Typing in the search input filters the results', async function (assert) {
       await render(hbs`<OSS::CurrencyInput @currency="" @value="" @onChange={{this.onChange}} />`);
       await click('.currency-selector');
@@ -83,6 +77,7 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       assert.equal(clickableRows.length, 1);
       assert.dom(clickableRows[0]).hasText('$ USD');
     });
+
     test('Searching by currency symbol works', async function (assert) {
       await render(hbs`<OSS::CurrencyInput @currency="" @value="" @onChange={{this.onChange}} />`);
       await click('.currency-selector');
@@ -92,6 +87,7 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       assert.equal(clickableRows.length, 1);
       assert.dom(clickableRows[0]).hasText('€ EUR');
     });
+
     test('The passed @currency parameter changes are properly tracked in the input', async function (assert) {
       this.currency = 'USD';
       await render(hbs`<OSS::CurrencyInput @currency={{this.currency}} @value="" @onChange={{this.onChange}} />`);
@@ -99,7 +95,8 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       this.set('currency', 'EUR');
       assert.dom('.currency-selector').hasText('€');
     });
-    test('the selection is disabled if @allowCurrencyUpdate is falsy', async function (assert) {
+
+    test('The currency selection is disabled if @allowCurrencyUpdate is falsy', async function (assert) {
       this.currency = 'USD';
       await render(
         hbs`<OSS::CurrencyInput @currency={{this.currency}} @value="" @onChange={{this.onChange}} @allowCurrencyUpdate={{false}} />`
@@ -107,6 +104,18 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       assert.dom('.currency-selector .far.fa-chevron-down').doesNotExist();
       await click('.currency-selector');
       assert.dom('.upf-infinite-select').doesNotExist();
+    });
+
+    test('Passing the @allowedCurrencies parameter overwrites the selectable options', async function (assert) {
+      this.allowedCurrencies = [
+        { code: 'USD', symbol: '$' },
+        { code: 'EUR', symbol: '€' }
+      ];
+      await render(hbs`<OSS::CurrencyInput @currency={{this.currency}} @value="" @onChange={{this.onChange}}
+                                         @allowedCurrencies={{this.allowedCurrencies}} />`);
+      await click('.currency-selector');
+      const clickableRows = findAll('.upf-infinite-select__item');
+      assert.equal(clickableRows.length, 2);
     });
   });
 
@@ -135,44 +144,20 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
     });
   });
 
-  module('Currency only mode', () => {
-    test('it renders currency only', async function (assert) {
-      await render(hbs`<OSS::CurrencyInput @currency="USD" @onlyCurrency={{true}} @onChange={{this.onChange}} />`);
-      assert.dom('.currency-input-container').exists();
-      assert.dom('.currency-selector').exists();
-      assert.dom('.currency-selector').hasText('$ USD');
-      assert.dom('.currency-input input').doesNotExist();
-    });
-
-    test('it renders currency only with empty currency param', async function (assert) {
-      await render(
-        hbs`<OSS::CurrencyInput @currency={{undefined}} @onlyCurrency={{true}} @onChange={{this.onChange}} />`
-      );
-      assert.dom('.currency-input-container').exists();
-      assert.dom('.currency-selector').exists();
-      assert.dom('.currency-selector').hasText('$ USD');
-      assert.dom('.currency-input input').doesNotExist();
-    });
+  test('When @onlyCurrency is truthy, only the currency is displayed', async function (assert) {
+    await render(hbs`<OSS::CurrencyInput @currency="USD" @onlyCurrency={{true}} @onChange={{this.onChange}} />`);
+    assert.dom('.currency-input-container').exists();
+    assert.dom('.currency-selector').hasText('$ USD');
+    assert.dom('.currency-input input').doesNotExist();
   });
 
-  test('It throws an error if @onChange is not passed', async function (assert) {
-    setupOnerror((err: any) => {
-      assert.equal(
-        err.message,
-        'Assertion Failed: [component][OSS::CurrencyInput] The parameter @onChange of type function is mandatory'
-      );
-    });
-    await render(hbs`<OSS::CurrencyInput />`);
-    await settled();
-  });
-
-  module('When paste event is received', function (hooks) {
-    hooks.beforeEach(async function () {
+  module('When the paste event is received', function (hooks) {
+    hooks.beforeEach(function () {
       this.value = '1234567890';
-      await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @value={{this.value}} />`);
     });
 
-    test('The value stored in clipboard is inserted in the input', async function (assert) {
+    test('The value stored in the clipboard is inserted in the input', async function (assert) {
+      await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @value={{this.value}} />`);
       assert.dom('input').hasValue('1234567890');
       await triggerEvent('input', 'paste', {
         clipboardData: {
@@ -184,6 +169,7 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
     });
 
     test('The non-numeric characters are escaped', async function (assert) {
+      await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @value={{this.value}} />`);
       assert.dom('input').hasValue('1234567890');
       await triggerEvent('input', 'paste', {
         clipboardData: {
@@ -195,6 +181,7 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
     });
 
     test('When selection is applied, it replaces the selection', async function (assert) {
+      await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @value={{this.value}} />`);
       assert.dom('input').hasValue('1234567890');
       let input = document.querySelector('input.ember-text-field') as HTMLInputElement;
       input.setSelectionRange(4, 6);
@@ -206,5 +193,15 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
 
       assert.dom('input').hasValue('123407890');
     });
+  });
+
+  test('It throws an error if @onChange is not passed', async function (assert) {
+    setupOnerror((err: any) => {
+      assert.equal(
+        err.message,
+        'Assertion Failed: [component][OSS::CurrencyInput] The parameter @onChange of type function is mandatory'
+      );
+    });
+    await render(hbs`<OSS::CurrencyInput />`);
   });
 });

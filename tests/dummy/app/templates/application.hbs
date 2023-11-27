@@ -22,6 +22,20 @@
 
   <div style="width:100%; height:100vh; overflow: auto; background-color: var(--color-gray-50)">
     <div class="fx-row fx-gap-px-10 margin-md">
+      <OSS::CurrencyInput @currency={{this.currency}} @value={{this.currencyValue}}
+                          @onChange={{this.onCurrencyInputChange}}
+                          @errorMessage="This is an error message" />
+      <OSS::CurrencyInput @currency={{this.currency}} @value={{this.currencyValue}} @allowCurrencyUpdate={{false}}
+                          @onChange={{this.onCurrencyInputChange}} />
+      <OSS::CurrencyInput @currency={{this.currency}} @value={{this.currencyValue}}
+                          @onChange={{this.onCurrencyInputChange}} @allowedCurrencies={{this.allowedCurrencies}} />
+      <OSS::CurrencyInput @currency={{this.currency}} @value={{this.currencyValue}}
+                          @onChange={{this.onCurrencyInputChange}}
+                          @onlyCurrency={{true}} />
+      <OSS::CurrencyInput @currency={{this.currencyOnly}} @onChange={{this.onCurrencyOnlyChange}}
+                          @onlyCurrency={{true}} @allowedCurrencies={{this.allowedCurrencies}} />
+    </div>
+    <div class="fx-row fx-gap-px-10 margin-md">
       <div class="fx-col fx-1 fx-gap-px-5">
         <span>Country</span>
         <OSS::CountrySelector @value={{this.selectedCountry.id}} @sourceList={{this.countries}}
@@ -314,30 +328,6 @@
             {{item.name}}
           </:option>
         </OSS::Select>
-      </div>
-    </div>
-    <div class="fx-row fx-1 margin-md">
-      <OSS::CurrencyInput @currency={{this.currency}} @value={{this.currencyValue}}
-                          @onChange={{this.onCurrencyInputChange}}
-                          @errorMessage="This is an error message" />
-    </div>
-    <div class="fx-row fx-1 margin-md">
-      <OSS::CurrencyInput @currency={{this.currency}} @value={{this.currencyValue}} @allowCurrencyUpdate={{false}}
-                          @onChange={{this.onCurrencyInputChange}} />
-    </div>
-    <div class="fx-row fx-1 margin-md">
-      <OSS::CurrencyInput @currency={{this.currency}} @value={{this.currencyValue}}
-                          @onChange={{this.onCurrencyInputChange}} />
-    </div>
-    <div class="fx-row fx-1 margin-md">
-      <OSS::CurrencyInput @currency={{this.currency}} @value={{this.currencyValue}}
-                          @onChange={{this.onCurrencyInputChange}}
-                          @onlyCurrency={{true}} />
-    </div>
-    <div class="fx-row fx-1 margin-md">
-      <div class="fx-col">
-        <OSS::CurrencyInput @currency={{this.currencyOnly}} @onChange={{this.onCurrencyOnlyChange}}
-                            @onlyCurrency={{true}} />
       </div>
     </div>
     <div class="fx-row fx-1 margin-md">
