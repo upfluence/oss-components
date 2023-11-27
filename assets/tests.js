@@ -17595,6 +17595,415 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["@ember/te
     });
   });
 });
+define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers"], function (_templateFactory, _qunit, _emberQunit, _testHelpers) {
+  "use strict";
+
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+  function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+  (0, _qunit.module)('Integration | Component | o-s-s/progress-bar', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.checkedValue = 42;
+    });
+    (0, _qunit.test)('it renders', /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(assert) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::ProgressBar @value={{this.checkedValue}} />
+                */
+                {
+                  "id": "77bSs4vw",
+                  "block": "[[[8,[39,0],null,[[\"@value\"],[[30,0,[\"checkedValue\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.oss-progress-bar').exists();
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.module)('@value arg behaviour', function () {
+      (0, _qunit.test)('It renders the progress-bar--inner with the correct width when @value is specified', /*#__PURE__*/function () {
+        var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
+          var innerBar, inlineStyle;
+          return regeneratorRuntime.wrap(function _callee2$(_context2) {
+            while (1) {
+              switch (_context2.prev = _context2.next) {
+                case 0:
+                  _context2.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::ProgressBar @value={{this.checkedValue}} />
+                  */
+                  {
+                    "id": "77bSs4vw",
+                    "block": "[[[8,[39,0],null,[[\"@value\"],[[30,0,[\"checkedValue\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.oss-progress-bar').exists();
+                  innerBar = this.element.querySelector('.oss-progress-bar__inner');
+                  inlineStyle = innerBar.getAttribute('style');
+                  assert.ok(inlineStyle === null || inlineStyle === void 0 ? void 0 : inlineStyle.includes(this.checkedValue), 'The inline style attribute is set to the proper value');
+
+                case 6:
+                case "end":
+                  return _context2.stop();
+              }
+            }
+          }, _callee2, this);
+        }));
+
+        return function (_x2) {
+          return _ref3.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('It renders the progress-bar--inner with the correct width when @value is updated from one value to another', /*#__PURE__*/function () {
+        var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
+          var _inlineStyle, _inlineStyle2;
+
+          var innerBar, inlineStyle;
+          return regeneratorRuntime.wrap(function _callee3$(_context3) {
+            while (1) {
+              switch (_context3.prev = _context3.next) {
+                case 0:
+                  _context3.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::ProgressBar @value={{this.checkedValue}} />
+                  */
+                  {
+                    "id": "77bSs4vw",
+                    "block": "[[[8,[39,0],null,[[\"@value\"],[[30,0,[\"checkedValue\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.oss-progress-bar').exists();
+                  innerBar = this.element.querySelector('.oss-progress-bar__inner');
+                  inlineStyle = innerBar.getAttribute('style');
+                  assert.ok((_inlineStyle = inlineStyle) === null || _inlineStyle === void 0 ? void 0 : _inlineStyle.includes(this.checkedValue), 'The inline style attribute is set to the proper value');
+                  this.set('checkedValue', 100);
+                  inlineStyle = innerBar.getAttribute('style');
+                  assert.ok((_inlineStyle2 = inlineStyle) === null || _inlineStyle2 === void 0 ? void 0 : _inlineStyle2.includes('100'), 'The inline style attribute is set to the proper value');
+
+                case 9:
+                case "end":
+                  return _context3.stop();
+              }
+            }
+          }, _callee3, this);
+        }));
+
+        return function (_x3) {
+          return _ref4.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('@size arg behaviour', function () {
+      (0, _qunit.test)('if the value is "sm", the progress bar height is the proper height', /*#__PURE__*/function () {
+        var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
+          var innerBar;
+          return regeneratorRuntime.wrap(function _callee4$(_context4) {
+            while (1) {
+              switch (_context4.prev = _context4.next) {
+                case 0:
+                  _context4.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::ProgressBar @value={{this.checkedValue}} @size="sm" />
+                  */
+                  {
+                    "id": "SE2W/1c5",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@size\"],[[30,0,[\"checkedValue\"]],\"sm\"]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.oss-progress-bar').exists();
+                  innerBar = this.element.querySelector('.oss-progress-bar__inner');
+                  assert.equal(innerBar.clientHeight, 4, 'Element has the correct height');
+
+                case 5:
+                case "end":
+                  return _context4.stop();
+              }
+            }
+          }, _callee4, this);
+        }));
+
+        return function (_x4) {
+          return _ref5.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('if the value is "lg", the progress bar height is the proper height', /*#__PURE__*/function () {
+        var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(assert) {
+          var innerBar;
+          return regeneratorRuntime.wrap(function _callee5$(_context5) {
+            while (1) {
+              switch (_context5.prev = _context5.next) {
+                case 0:
+                  _context5.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::ProgressBar @value={{this.checkedValue}} @size="lg" />
+                  */
+                  {
+                    "id": "i/YoN1y0",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@size\"],[[30,0,[\"checkedValue\"]],\"lg\"]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.oss-progress-bar').exists();
+                  innerBar = this.element.querySelector('.oss-progress-bar__inner');
+                  assert.equal(innerBar.clientHeight, 10, 'Element has the correct height');
+
+                case 5:
+                case "end":
+                  return _context5.stop();
+              }
+            }
+          }, _callee5, this);
+        }));
+
+        return function (_x5) {
+          return _ref6.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('if the value is unspecified, the progress bar height is the proper height', /*#__PURE__*/function () {
+        var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(assert) {
+          var innerBar;
+          return regeneratorRuntime.wrap(function _callee6$(_context6) {
+            while (1) {
+              switch (_context6.prev = _context6.next) {
+                case 0:
+                  _context6.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::ProgressBar @value={{this.checkedValue}} />
+                  */
+                  {
+                    "id": "77bSs4vw",
+                    "block": "[[[8,[39,0],null,[[\"@value\"],[[30,0,[\"checkedValue\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.oss-progress-bar').exists();
+                  innerBar = this.element.querySelector('.oss-progress-bar__inner');
+                  assert.equal(innerBar.clientHeight, 10, 'Element has the correct height');
+
+                case 5:
+                case "end":
+                  return _context6.stop();
+              }
+            }
+          }, _callee6, this);
+        }));
+
+        return function (_x6) {
+          return _ref7.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('@label arg behaviour', function () {
+      (0, _qunit.test)('if the value is specified, the label is displayed', /*#__PURE__*/function () {
+        var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(assert) {
+          return regeneratorRuntime.wrap(function _callee7$(_context7) {
+            while (1) {
+              switch (_context7.prev = _context7.next) {
+                case 0:
+                  _context7.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::ProgressBar @value={{this.checkedValue}} @label="Hello"/>
+                  */
+                  {
+                    "id": "xsZb4Wkk",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@label\"],[[30,0,[\"checkedValue\"]],\"Hello\"]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.oss-progress-bar__label').exists();
+                  assert.dom('.oss-progress-bar__label').hasText('Hello');
+
+                case 4:
+                case "end":
+                  return _context7.stop();
+              }
+            }
+          }, _callee7);
+        }));
+
+        return function (_x7) {
+          return _ref8.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('if the value is not specified, the label is not displayed', /*#__PURE__*/function () {
+        var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
+          return regeneratorRuntime.wrap(function _callee8$(_context8) {
+            while (1) {
+              switch (_context8.prev = _context8.next) {
+                case 0:
+                  _context8.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::ProgressBar @value={{this.checkedValue}}/>
+                  */
+                  {
+                    "id": "77bSs4vw",
+                    "block": "[[[8,[39,0],null,[[\"@value\"],[[30,0,[\"checkedValue\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.oss-progress-bar__label').doesNotExist();
+
+                case 3:
+                case "end":
+                  return _context8.stop();
+              }
+            }
+          }, _callee8);
+        }));
+
+        return function (_x8) {
+          return _ref9.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('@displayValue arg behaviour', function () {
+      (0, _qunit.test)('if the value is true, the value is displayed', /*#__PURE__*/function () {
+        var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(assert) {
+          return regeneratorRuntime.wrap(function _callee9$(_context9) {
+            while (1) {
+              switch (_context9.prev = _context9.next) {
+                case 0:
+                  _context9.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::ProgressBar @value={{this.checkedValue}} @label="Hello" @displayValue={{true}}/>
+                  */
+                  {
+                    "id": "nobYWUcp",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@label\",\"@displayValue\"],[[30,0,[\"checkedValue\"]],\"Hello\",true]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.oss-progress-bar__value').exists();
+                  assert.dom('.oss-progress-bar__value').hasText(this.checkedValue + '%');
+
+                case 4:
+                case "end":
+                  return _context9.stop();
+              }
+            }
+          }, _callee9, this);
+        }));
+
+        return function (_x9) {
+          return _ref10.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('if the value is false, the value is not displayed', /*#__PURE__*/function () {
+        var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(assert) {
+          return regeneratorRuntime.wrap(function _callee10$(_context10) {
+            while (1) {
+              switch (_context10.prev = _context10.next) {
+                case 0:
+                  _context10.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::ProgressBar @value={{this.checkedValue}} @label="Hello" @displayValue={{false}}/>
+                  */
+                  {
+                    "id": "2GuqZpEb",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@label\",\"@displayValue\"],[[30,0,[\"checkedValue\"]],\"Hello\",false]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.oss-progress-bar__value').doesNotExist();
+
+                case 3:
+                case "end":
+                  return _context10.stop();
+              }
+            }
+          }, _callee10);
+        }));
+
+        return function (_x10) {
+          return _ref11.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('if the value is unspecified, the value is not displayed', /*#__PURE__*/function () {
+        var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(assert) {
+          return regeneratorRuntime.wrap(function _callee11$(_context11) {
+            while (1) {
+              switch (_context11.prev = _context11.next) {
+                case 0:
+                  _context11.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::ProgressBar @value={{this.checkedValue}} @label="Hello" />
+                  */
+                  {
+                    "id": "xsZb4Wkk",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@label\"],[[30,0,[\"checkedValue\"]],\"Hello\"]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.oss-progress-bar__value').doesNotExist();
+
+                case 3:
+                case "end":
+                  return _context11.stop();
+              }
+            }
+          }, _callee11);
+        }));
+
+        return function (_x11) {
+          return _ref12.apply(this, arguments);
+        };
+      }());
+    });
+  });
+});
 define("dummy/tests/integration/components/o-s-s/radio-button-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/test-helpers/dom/click"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _sinon, _click) {
   "use strict";
 

@@ -95262,6 +95262,235 @@ define("@upfluence/oss-components/components/o-s-s/private/base-modal", ["export
 });
 ;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+define("@upfluence/oss-components/components/o-s-s/progress-bar", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@ember/debug"], function (_exports, _component, _templateFactory, _component2, _debug) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+  function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class={{this.computedStyles}} ...attributes>
+    {{#if @label}}
+      <span class="oss-progress-bar__label">
+        {{@label}}
+      </span>
+    {{/if}}
+    <div class="oss-progress-bar__outer">
+      <div class="oss-progress-bar__inner"
+           role="progressbar" aria-valuenow={{@value}}
+           aria-valuemin="0" aria-valuemax="100" style={{progressBarWidthStyle}}>
+      </div>
+    </div>
+    {{#if @displayValue}}
+      <span class="oss-progress-bar__value">
+        {{@value}}%
+      </span>
+    {{/if}}
+  </div>
+  
+  */
+  {
+    "id": "iUdd2nGb",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedStyles\"]]],[17,1],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[10,1],[14,0,\"oss-progress-bar__label\"],[12],[1,\"\\n      \"],[1,[30,2]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"oss-progress-bar__outer\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"oss-progress-bar__inner\"],[14,\"role\",\"progressbar\"],[15,\"aria-valuenow\",[30,3]],[14,\"aria-valuemin\",\"0\"],[14,\"aria-valuemax\",\"100\"],[15,5,[36,1]],[12],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,4],[[[1,\"    \"],[10,1],[14,0,\"oss-progress-bar__value\"],[12],[1,\"\\n      \"],[1,[30,3]],[1,\"%\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@label\",\"@value\",\"@displayValue\"],false,[\"if\",\"progressBarWidthStyle\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/progress-bar.hbs",
+    "isStrictMode": false
+  });
+
+  var OSSProgressBar = /*#__PURE__*/function (_Component) {
+    _inherits(OSSProgressBar, _Component);
+
+    var _super = _createSuper(OSSProgressBar);
+
+    function OSSProgressBar(owner, args) {
+      var _this;
+
+      _classCallCheck(this, OSSProgressBar);
+
+      _this = _super.call(this, owner, args);
+      (true && !(typeof args.value === 'number' && args.value >= 0 && args.value <= 100) && (0, _debug.assert)('[component][OSS::ProgressBar] You must pass a numbered value between 0 and 100', typeof args.value === 'number' && args.value >= 0 && args.value <= 100));
+      return _this;
+    }
+
+    _createClass(OSSProgressBar, [{
+      key: "computedStyles",
+      get: function get() {
+        var classes = ['oss-progress-bar'];
+
+        if (this.args.size) {
+          classes.push('oss-progress-bar--' + this.args.size);
+        }
+
+        if (this.args.skin) {
+          classes.push('oss-progress-bar--' + this.args.skin);
+        }
+
+        return classes.join(' ');
+      }
+    }, {
+      key: "progressBarWidthStyle",
+      get: function get() {
+        return "width: ".concat(this.args.value + '%', "; --progress-bar-animation-width: ").concat(this.args.value + '%', ";");
+      }
+    }]);
+
+    return OSSProgressBar;
+  }(_component2.default);
+
+  _exports.default = OSSProgressBar;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSProgressBar);
+});
+;define("@upfluence/oss-components/components/o-s-s/progress-bar.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.Usage = _exports.default = void 0;
+  var ProgressBarSkins = ['warning', 'success'];
+  var ProgressBarSizes = ['sm'];
+  var _default = {
+    title: 'Components/OSS::ProgressBar',
+    component: 'progress-bar',
+    argTypes: {
+      value: {
+        type: {
+          required: true
+        },
+        description: 'Numbered value between 0 & 100',
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: 42
+          }
+        },
+        control: {
+          type: 'number'
+        }
+      },
+      label: {
+        description: 'Displayed label',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: undefined
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      displayValue: {
+        description: 'Boolean to check if @value should be displayed on the right side of the bar',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: undefined
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      size: {
+        description: 'Adjust size',
+        table: {
+          type: {
+            summary: ProgressBarSizes.join('|')
+          }
+        },
+        options: ProgressBarSizes,
+        control: {
+          type: 'select'
+        }
+      },
+      skin: {
+        description: 'Adjust appearance',
+        table: {
+          type: {
+            summary: ProgressBarSkins.join('|')
+          }
+        },
+        options: ProgressBarSkins,
+        control: {
+          type: 'select'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'Configurable component that can be used to display progression in a bar'
+        }
+      }
+    }
+  };
+  _exports.default = _default;
+  var defaultArgs = {
+    value: 30,
+    label: 'Hello',
+    displayValue: true
+  };
+
+  var BasicUsageTemplate = function BasicUsageTemplate(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <div style="background-color: #1c1c1c;width:200px">
+            <OSS::ProgressBar 
+              @value={{this.value}}
+              @label={{this.label}}
+              @displayValue={{this.displayValue}}
+              @skin={{this.skin}}
+              @size={{this.size}}  />
+          </div>
+        
+      */
+      {
+        "id": "lkuf/+MN",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"background-color: #1c1c1c;width:200px\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@value\",\"@label\",\"@displayValue\",\"@skin\",\"@size\"],[[30,0,[\"value\"]],[30,0,[\"label\"]],[30,0,[\"displayValue\"]],[30,0,[\"skin\"]],[30,0,[\"size\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/progress-bar\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+
+  var Usage = BasicUsageTemplate.bind({});
+  _exports.Usage = Usage;
+  Usage.args = defaultArgs;
+});
+;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 define("@upfluence/oss-components/components/o-s-s/radio-button", ["exports", "@ember/component", "@ember/template-factory", "@ember/object", "@glimmer/component"], function (_exports, _component, _templateFactory, _object, _component2) {
   "use strict";
 
@@ -110276,36 +110505,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-1993dvefhmntEC32/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-1993dvefhmntEC32/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1993dvefhmntEC32/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-1993dvefhmntEC32/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-1993dvefhmntEC32/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1993dvefhmntEC32/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-1993dvefhmntEC32/cache-275-bundler/staging/l.js /tmp/broccoli-1993dvefhmntEC32/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/l.js /tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-1993dvefhmntEC32/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1993dvefhmntEC32/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1993dvefhmntEC32/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1993dvefhmntEC32/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1993dvefhmntEC32/cache-275-bundler/staging/l.js_/tmp/broccoli-1993dvefhmntEC32/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/l.js_/tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
