@@ -26,11 +26,11 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
   }
 
   get computedSize(): string {
-    return this.args.size ? 'oss-progress-bar__' + this.args.size : '';
+    return this.args.size ? 'oss-progress-bar--' + this.args.size : '';
   }
 
   get computedStyles(): string {
-    return this.args.skin ? 'oss-progress-bar__' + this.args.skin : '';
+    return this.args.skin ? 'oss-progress-bar__inner--' + this.args.skin : '';
   }
 
   get progressBarWidthStyle(): string {
