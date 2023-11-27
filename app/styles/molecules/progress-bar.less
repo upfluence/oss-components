@@ -4,6 +4,12 @@
   justify-content: space-between;
   align-items: center;
 
+  &__sm {
+    .oss-progress-bar__inner {
+      height: 4px;
+    }
+  }
+
   &__label {
     font-weight: 200;
     margin-right: var(--spacing-px-6);
@@ -24,21 +30,11 @@
 
   &__inner {
     width: 0;
+    height: 10px;
     animation: oss-progress-bar-animation 1s forwards;
     border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm);
     transition: width 0.6s ease;
-
-    &__sm {
-      height: 4px;
-    }
-
-    &__lg {
-      height: 10px;
-    }
-
-    &__primary {
-      background-color: var(--color-primary-500);
-    }
+    background-color: var(--color-primary-500);
 
     &__warning {
       background-color: var(--color-warning-500);

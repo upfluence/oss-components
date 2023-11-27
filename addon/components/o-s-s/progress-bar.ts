@@ -1,8 +1,8 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 
-type ProgressBarSkins = 'primary' | 'warning' | 'success';
-type ProgressBarSizes = 'sm' | 'lg';
+type ProgressBarSkins = 'warning' | 'success';
+type ProgressBarSizes = 'sm';
 
 interface OSSProgressBarArgs {
   value: number;
@@ -25,16 +25,12 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
     document.documentElement.style.setProperty('--progress-bar-animation-width', `${args.value}%`);
   }
 
-  get skin(): string {
-    return this.args.skin || 'primary';
-  }
-
-  get size(): string {
-    return this.args.size || 'lg';
+  get computedSize(): string {
+    return this.args.size ? 'oss-progress-bar__' + this.args.size : '';
   }
 
   get computedStyles(): string {
-    return 'oss-progress-bar__inner__' + this.skin + ' oss-progress-bar__inner__' + this.size;
+    return this.args.skin ? 'oss-progress-bar__' + this.args.skin : '';
   }
 
   get progressBarWidthStyle(): string {

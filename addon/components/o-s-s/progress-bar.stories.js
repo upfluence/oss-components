@@ -1,7 +1,7 @@
 import hbs from 'htmlbars-inline-precompile';
 
-const ProgressBarSkins = ['primary', 'warning', 'success'];
-const ProgressBarSizes = ['sm', 'lg'];
+const ProgressBarSkins = ['warning', 'success'];
+const ProgressBarSizes = ['sm'];
 
 export default {
   title: 'Components/OSS::ProgressBar',
@@ -43,8 +43,7 @@ export default {
       table: {
         type: {
           summary: ProgressBarSizes.join('|')
-        },
-        defaultValue: { summary: 'lg' }
+        }
       },
       options: ProgressBarSizes,
       control: { type: 'select' }
@@ -54,8 +53,7 @@ export default {
       table: {
         type: {
           summary: ProgressBarSkins.join('|')
-        },
-        defaultValue: { summary: 'primary' }
+        }
       },
       options: ProgressBarSkins,
       control: { type: 'select' }
@@ -73,9 +71,7 @@ export default {
 const defaultArgs = {
   value: 30,
   label: 'Hello',
-  displayValue: true,
-  skin: 'primary',
-  size: 'lg'
+  displayValue: true
 };
 
 const BasicUsageTemplate = (args) => ({
