@@ -21,8 +21,6 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
       '[component][OSS::ProgressBar] You must pass a numbered value between 0 and 100',
       typeof args.value === 'number' && args.value >= 0 && args.value <= 100
     );
-
-    document.documentElement.style.setProperty('--progress-bar-animation-width', `${args.value}%`);
   }
 
   get computedStyles(): string {
@@ -40,6 +38,6 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
   }
 
   get progressBarWidthStyle(): string {
-    return `width: ${this.args.value + '%'}`;
+    return `width: ${this.args.value + '%'}; --progress-bar-animation-width: ${this.args.value + '%'};`;
   }
 }
