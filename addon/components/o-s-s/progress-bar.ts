@@ -25,12 +25,18 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
     document.documentElement.style.setProperty('--progress-bar-animation-width', `${args.value}%`);
   }
 
-  get computedSize(): string {
-    return this.args.size ? 'oss-progress-bar--' + this.args.size : '';
-  }
-
   get computedStyles(): string {
-    return this.args.skin ? 'oss-progress-bar__inner--' + this.args.skin : '';
+    const classes = ['oss-progress-bar'];
+
+    if (this.args.size) {
+      classes.push('oss-progress-bar--' + this.args.size);
+    }
+
+    if (this.args.skin) {
+      classes.push('oss-progress-bar--' + this.args.skin);
+    }
+
+    return classes.join(' ');
   }
 
   get progressBarWidthStyle(): string {

@@ -10,6 +10,18 @@
     }
   }
 
+  &--warning {
+    .oss-progress-bar__inner {
+      background-color: var(--color-warning-500);
+    }
+  }
+
+  &--success {
+    .oss-progress-bar__inner {
+      background-color: var(--color-success-500);
+    }
+  }
+
   &__label {
     font-weight: 200;
     margin-right: var(--spacing-px-6);
@@ -35,14 +47,6 @@
     border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm);
     transition: width 0.6s ease;
     background-color: var(--color-primary-500);
-
-    &--warning {
-      background-color: var(--color-warning-500);
-    }
-
-    &--success {
-      background-color: var(--color-success-500);
-    }
   }
 }
 

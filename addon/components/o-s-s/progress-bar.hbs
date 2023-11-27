@@ -1,11 +1,11 @@
-<div class={{concat "oss-progress-bar " this.computedSize}} ...attributes>
+<div class={{this.computedStyles}} ...attributes>
   {{#if @label}}
     <span class="oss-progress-bar__label">
       {{@label}}
     </span>
   {{/if}}
   <div class="oss-progress-bar__outer">
-    <div class={{concat "oss-progress-bar__inner " this.computedStyles}}
+    <div class={{concat "oss-progress-bar__inner"}}
          role="progressbar" aria-valuenow={{@value}}
          aria-valuemin="0" aria-valuemax="100" style={{progressBarWidthStyle}}>
     </div>
