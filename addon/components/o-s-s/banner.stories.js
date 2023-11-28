@@ -1,11 +1,13 @@
 import hbs from 'htmlbars-inline-precompile';
 
+const COMPONENT_SIZES = ['sm', 'md'];
+
 export default {
   title: 'Components/OSS::Banner',
   component: 'banner',
   argTypes: {
     title: {
-      description: 'Banner title',
+      description: "Sets the component's title",
       table: {
         type: {
           summary: 'string'
@@ -15,7 +17,7 @@ export default {
       control: { type: 'text' }
     },
     subtitle: {
-      description: 'Banner subtitle',
+      description: "Sets the component's subtitle",
       table: {
         type: {
           summary: 'string'
@@ -45,7 +47,7 @@ export default {
       control: { type: 'text' }
     },
     plain: {
-      description: 'Display the plain version of the banner, if true will show in background-color-gray-50',
+      description: 'Displays the plain version of the banner, if true will show in background-color-gray-50',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' }
@@ -55,7 +57,8 @@ export default {
       }
     },
     selected: {
-      description: 'Display the selected version of the banner with border and background color updated',
+      description:
+        'Displays the selected version of the banner with border and background colors using shades of the primary color',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' }
@@ -65,13 +68,25 @@ export default {
       }
     },
     disabled: {
-      description: 'Display the disabled version of the banner with background and text color updated',
+      description: 'Displays the disabled version of the banner with background and text color in grey',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' }
       },
       control: {
         type: 'boolean'
+      }
+    },
+    size: {
+      description:
+        'Allows to adjust the size of the component. Currently available options are `sm` and `md`. Defaults to `md`.',
+      table: {
+        type: COMPONENT_SIZES.join('|'),
+        defaultValue: { summary: 'md' }
+      },
+      options: COMPONENT_SIZES,
+      control: {
+        type: 'select'
       }
     }
   },
@@ -92,13 +107,14 @@ const defaultArgs = {
   image: undefined,
   plain: false,
   selected: false,
-  disabled: false
+  disabled: false,
+  size: undefined
 };
 
 const Template = (args) => ({
   template: hbs`
       <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
-                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} />
+                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}} />
   `,
   context: args
 });
@@ -106,7 +122,7 @@ const Template = (args) => ({
 const CustomIconTemplate = (args) => ({
   template: hbs`
       <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
-                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} >
+                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}>
         <:custom-icon>
           <OSS::Badge @icon="fas fa-check" />
         </:custom-icon>
@@ -118,7 +134,7 @@ const CustomIconTemplate = (args) => ({
 const ActionTemplate = (args) => ({
   template: hbs`
       <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
-                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} >
+                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}>
         <:actions>
           <OSS::Button @label="Click me" />
         </:actions>
