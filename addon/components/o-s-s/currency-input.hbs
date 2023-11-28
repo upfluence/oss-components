@@ -1,7 +1,10 @@
 <div class="currency-input-container fx-1 {{if @errorMessage 'currency-input-container--errored'}}" ...attributes>
   <div class="currency-input {{if @onlyCurrency 'onlycurrency'}} upf-input fx-row fx-1 fx-xalign-center">
-    <div class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between" role="button"
-         {{on "click" this.toggleCurrencySelector}}>
+    <div
+      class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between"
+      role="button"
+      {{on "click" this.toggleCurrencySelector}}
+    >
       <div class="fx-col">
         <div class="fx-row fx-gap-px-9">
           <span>{{this.selectedCurrencySymbol}}</span>
@@ -21,20 +24,32 @@
     </div>
     {{#unless @onlyCurrency}}
       <Input
-        class="fx-1" type="number" @value={{this.localValue}} min="0" autocomplete="off" placeholder={{this.placeholder}}
-        {{on "keydown" this.onlyNumeric}} {{on "keyup" this.notifyChanges}} {{on "paste" this.handlePaste}} />
+        @value={{this.localValue}}
+        class="fx-1"
+        type="number"
+        min="0"
+        autocomplete="off"
+        placeholder={{this.placeholder}}
+        {{on "keydown" this.onlyNumeric}}
+        {{on "keyup" this.notifyChanges}}
+        {{on "paste" this.handlePaste}}
+      />
     {{/unless}}
   </div>
   {{#if @errorMessage}}
     <div class="font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center">
-      <OSS::Icon @icon="fa-exclamation-triangle" /> {{@errorMessage}}
+      <OSS::Icon @icon="fa-exclamation-triangle" />
+      {{@errorMessage}}
     </div>
   {{/if}}
   {{#if this.currencySelectorShown}}
-    <OSS::InfiniteSelect @items={{this.filteredCurrencies}} @onSearch={{this.onSearch}}
-                         @onSelect={{this.onSelect}}
-                         @searchPlaceholder={{t "oss-components.currency-input.search"}}
-                         {{on-click-outside this.hideCurrencySelector}}>
+    <OSS::InfiniteSelect
+      @items={{this.filteredCurrencies}}
+      @onSearch={{this.onSearch}}
+      @onSelect={{this.onSelect}}
+      @searchPlaceholder={{t "oss-components.currency-input.search"}}
+      {{on-click-outside this.hideCurrencySelector}}
+    >
       <:option as |currency|>
         <div class="fx-row fx-xalign-center {{if (eq this.selectedCurrency currency) 'row-selected'}}">
           <span class="symbol text-color-default-light margin-left-xx-sm">{{currency.symbol}}</span>

@@ -4,6 +4,11 @@ import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { isEmpty } from '@ember/utils';
 
+export type Currency = {
+  code: string;
+  symbol: string;
+};
+
 interface OSSCurrencyInputArgs {
   currency: string;
   value: number;
@@ -12,15 +17,57 @@ interface OSSCurrencyInputArgs {
   onlyCurrency?: boolean;
   placeholder?: string;
   errorMessage?: string;
+  allowedCurrencies?: Currency[];
 }
 
-const NUMERIC_ONLY = /^[0-9]$/i;
+const NUMERIC_ONLY = /^\d$/i;
 const NOT_NUMERIC_FLOAT = /[^0-9,.]/g;
+const PLATFORM_CURRENCIES: Currency[] = [
+  { code: 'USD', symbol: '$' },
+  { code: 'EUR', symbol: '€' },
+  { code: 'JPY', symbol: '¥' },
+  { code: 'GBP', symbol: '£' },
+  { code: 'AUD', symbol: 'A$' },
+  { code: 'CAD', symbol: 'C$' },
+  { code: 'CHF', symbol: 'Fr' },
+  { code: 'CNY', symbol: '¥' },
+  { code: 'SEK', symbol: 'kr' },
+  { code: 'NZD', symbol: 'NZ$' },
+  { code: 'MXN', symbol: '$' },
+  { code: 'SGD', symbol: 'S$' },
+  { code: 'HKD', symbol: 'HK$' },
+  { code: 'NOK', symbol: 'kr' },
+  { code: 'KRW', symbol: '₩' },
+  { code: 'TRY', symbol: '₺' },
+  { code: 'RUB', symbol: '₽' },
+  { code: 'INR', symbol: '₹' },
+  { code: 'BRL', symbol: 'R$' },
+  { code: 'ZAR', symbol: 'R' },
+  { code: 'IDR', symbol: 'Rp' },
+  { code: 'PHP', symbol: '₱' },
+  { code: 'THB', symbol: '฿' },
+  { code: 'DKK', symbol: 'kr' },
+  { code: 'PLN', symbol: 'zł' }
+];
+const AUTHORIZED_INPUTS = [
+  'Backspace',
+  'Delete',
+  'ArrowLeft',
+  'ArrowRight',
+  'Tab',
+  'Shift',
+  'Control',
+  '.',
+  ',',
+  'ArrowUp',
+  'ArrowDown'
+];
 
 export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
-  private _currencies = usedCurrencies;
+  private currencies = this.args.allowedCurrencies ?? PLATFORM_CURRENCIES;
+
   @tracked currencySelectorShown: boolean = false;
-  @tracked filteredCurrencies: Currency[] = this._currencies;
+  @tracked filteredCurrencies: Currency[] = this.currencies;
   @tracked localValue: number = this.args.value;
 
   constructor(owner: unknown, args: OSSCurrencyInputArgs) {
@@ -50,43 +97,40 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
 
   get selectedCurrency(): Currency {
     if (isEmpty(this.args.currency)) {
-      return this._currencies[0];
+      return this.currencies[0];
     }
-    return this._currencies.find((currency: Currency) => currency.code === this.args.currency) || this._currencies[0];
+    return this.currencies.find((currency: Currency) => currency.code === this.args.currency) ?? this.currencies[0];
   }
 
   get placeholder(): string {
-    return this.args.placeholder || '0';
+    return this.args.placeholder ?? '0';
   }
 
   @action
   onlyNumeric(event: KeyboardEvent): void {
-    const authorizedInputs = [
-      'Backspace',
-      'Delete',
-      'ArrowLeft',
-      'ArrowRight',
-      'Tab',
-      'Shift',
-      'Control',
-      '.',
-      ',',
-      'ArrowUp',
-      'ArrowDown'
-    ];
-
     if (['c', 'v'].includes(event.key) && (event.metaKey || event.ctrlKey)) {
       return;
     }
 
-    if (!NUMERIC_ONLY.test(event.key) && !authorizedInputs.find((key: string) => key === event.key)) {
+    if (!NUMERIC_ONLY.test(event.key) && !AUTHORIZED_INPUTS.find((key: string) => key === event.key)) {
       event.preventDefault();
     }
   }
 
   @action
   handlePaste(event: ClipboardEvent): void {
-    this._handlePaste(event);
+    event.preventDefault();
+
+    const paste = (event.clipboardData?.getData('text') ?? '').replace(NOT_NUMERIC_FLOAT, '');
+    const target = event.target as HTMLInputElement;
+    const initialSelectionStart = target.selectionStart ?? 0;
+    const finalSelectionPosition = initialSelectionStart + paste.length;
+
+    target.setRangeText(paste, initialSelectionStart, target.selectionEnd ?? initialSelectionStart);
+    target.setSelectionRange(finalSelectionPosition, finalSelectionPosition);
+
+    this.localValue = target.value as unknown as number;
+    this.notifyChanges();
   }
 
   @action
@@ -96,7 +140,7 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
 
   @action
   onSearch(keyword: any): void {
-    this.filteredCurrencies = this._currencies.filter((currency: Currency) => {
+    this.filteredCurrencies = this.currencies.filter((currency: Currency) => {
       return (
         currency.code.toLowerCase().indexOf(keyword.toLowerCase()) !== -1 || currency.symbol.indexOf(keyword) !== -1
       );
@@ -120,56 +164,6 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
   @action
   hideCurrencySelector(): void {
     this.currencySelectorShown = false;
-    this.filteredCurrencies = this._currencies;
-  }
-
-  private _handlePaste(event: ClipboardEvent): void {
-    event.preventDefault();
-
-    let paste = event.clipboardData?.getData('text') || '';
-    paste = paste.replace(NOT_NUMERIC_FLOAT, '');
-
-    const target = event.target as HTMLInputElement;
-    const initialSelectionStart = target.selectionStart || 0;
-    const finalSelectionPosition = initialSelectionStart + paste.length;
-
-    target.setRangeText(paste, initialSelectionStart, target.selectionEnd || initialSelectionStart);
-    target.setSelectionRange(finalSelectionPosition, finalSelectionPosition);
-
-    this.localValue = target.value as unknown as number;
-    this.notifyChanges();
+    this.filteredCurrencies = this.currencies;
   }
 }
-
-type Currency = {
-  code: string;
-  symbol: string;
-};
-
-const usedCurrencies: Currency[] = [
-  { code: 'USD', symbol: '$' },
-  { code: 'EUR', symbol: '€' },
-  { code: 'JPY', symbol: '¥' },
-  { code: 'GBP', symbol: '£' },
-  { code: 'AUD', symbol: 'A$' },
-  { code: 'CAD', symbol: 'C$' },
-  { code: 'CHF', symbol: 'Fr' },
-  { code: 'CNY', symbol: '¥' },
-  { code: 'SEK', symbol: 'kr' },
-  { code: 'NZD', symbol: 'NZ$' },
-  { code: 'MXN', symbol: '$' },
-  { code: 'SGD', symbol: 'S$' },
-  { code: 'HKD', symbol: 'HK$' },
-  { code: 'NOK', symbol: 'kr' },
-  { code: 'KRW', symbol: '₩' },
-  { code: 'TRY', symbol: '₺' },
-  { code: 'RUB', symbol: '₽' },
-  { code: 'INR', symbol: '₹' },
-  { code: 'BRL', symbol: 'R$' },
-  { code: 'ZAR', symbol: 'R' },
-  { code: 'IDR', symbol: 'Rp' },
-  { code: 'PHP', symbol: '₱' },
-  { code: 'THB', symbol: '฿' },
-  { code: 'DKK', symbol: 'kr' },
-  { code: 'PLN', symbol: 'zł' }
-];

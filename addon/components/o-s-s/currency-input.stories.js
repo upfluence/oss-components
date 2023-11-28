@@ -72,6 +72,16 @@ export default {
         category: 'Actions',
         type: { summary: 'onChange(currency: string, value: number): void' }
       }
+    },
+    allowedCurrencies: {
+      description: 'Allows passing a custom set of selectable currencies to the component.',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'array' }
     }
   },
   parameters: {
@@ -89,14 +99,19 @@ const defaultArgs = {
   currency: 'USD',
   onlyCurrency: false,
   errorMessage: '',
-  onChange: action('onChange')
+  onChange: action('onChange'),
+  allowCurrencyUpdate: true,
+  allowedCurrencies: undefined,
+  placeholder: undefined
 };
 
 const Template = (args) => ({
   template: hbs`
       <div style="width:270px">
         <OSS::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}}
-                            @onlyCurrency={{this.onlyCurrency}} @errorMessage={{this.errorMessage}} />
+                            @onlyCurrency={{this.onlyCurrency}} @errorMessage={{this.errorMessage}}
+                            @allowCurrencyUpdate={{this.allowCurrencyUpdate}} @allowedCurrencies={{this.allowedCurrencies}}
+                            @placeholder={{this.placeholder}} />
       </div>
   `,
   context: args
