@@ -12,11 +12,11 @@
     {{#if @title}}
       <span class="font-weight-semibold text-size-5 font-color-gray-900">{{@title}}</span>
     {{/if}}
-    {{#if (has-block "secondary-actions")}}
-      <div>{{yield to="secondary-actions"}}</div>
-    {{/if}}
     {{#if @subtitle}}
       <span class="text-size-4 font-color-gray-500">{{@subtitle}}</span>
+    {{/if}}
+    {{#if (has-block "secondary-actions")}}
+      {{yield to="secondary-actions"}}
     {{/if}}
   </div>
   {{#if (has-block "actions")}}

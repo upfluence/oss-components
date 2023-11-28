@@ -86,7 +86,7 @@ export default {
       },
       options: COMPONENT_SIZES,
       control: {
-        control: { type: 'radio' }
+        type: 'select'
       }
     }
   },
