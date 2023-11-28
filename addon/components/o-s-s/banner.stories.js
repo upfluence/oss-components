@@ -1,5 +1,7 @@
 import hbs from 'htmlbars-inline-precompile';
 
+const COMPONENT_SIZES = ['sm', 'md'];
+
 export default {
   title: 'Components/OSS::Banner',
   component: 'banner',
@@ -79,11 +81,12 @@ export default {
       description:
         'Allows to adjust the size of the component. Currently available options are `sm` and `md`. Defaults to `md`.',
       table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'false' }
+        type: COMPONENT_SIZES.join('|'),
+        defaultValue: { summary: 'md' }
       },
+      options: COMPONENT_SIZES,
       control: {
-        type: 'string'
+        control: { type: 'radio' }
       }
     }
   },

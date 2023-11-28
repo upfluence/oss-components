@@ -14,7 +14,8 @@
     {{/if}}
     {{#if (has-block "secondary-actions")}}
       <div>{{yield to="secondary-actions"}}</div>
-    {{else if @subtitle}}
+    {{/if}}
+    {{#if @subtitle}}
       <span class="text-size-4 font-color-gray-500">{{@subtitle}}</span>
     {{/if}}
   </div>
