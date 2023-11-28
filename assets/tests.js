@@ -5583,7 +5583,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["@ember/template
         return _ref2.apply(this, arguments);
       };
     }());
-    (0, _qunit.test)('passing a font-awesome icon in the @icon parameter, displays the icon in a rounded badge', /*#__PURE__*/function () {
+    (0, _qunit.test)('passing a font-awesome icon in the @icon parameter displays the icon in a rounded badge', /*#__PURE__*/function () {
       var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
         return regeneratorRuntime.wrap(function _callee2$(_context2) {
           while (1) {
@@ -5616,7 +5616,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["@ember/template
         return _ref3.apply(this, arguments);
       };
     }());
-    (0, _qunit.test)('passing an image url in the @image parameter, displays the image in a rounded badge', /*#__PURE__*/function () {
+    (0, _qunit.test)('passing an image url in the @image parameter displays the image in a rounded badge', /*#__PURE__*/function () {
       var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee3(assert) {
         return regeneratorRuntime.wrap(function _callee3$(_context3) {
           while (1) {
@@ -5651,7 +5651,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["@ember/template
         return _ref4.apply(this, arguments);
       };
     }());
-    (0, _qunit.test)('passing a title in the @title parameter, displays the title in the component', /*#__PURE__*/function () {
+    (0, _qunit.test)('passing a title in the @title parameter displays the title in the component', /*#__PURE__*/function () {
       var _ref5 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(assert) {
         return regeneratorRuntime.wrap(function _callee4$(_context4) {
           while (1) {
@@ -5684,7 +5684,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["@ember/template
         return _ref5.apply(this, arguments);
       };
     }());
-    (0, _qunit.test)('passing a subtitle in the @subtitle parameter, displays the title in the component', /*#__PURE__*/function () {
+    (0, _qunit.test)('passing a subtitle in the @subtitle parameter displays the title in the component', /*#__PURE__*/function () {
       var _ref6 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee5(assert) {
         return regeneratorRuntime.wrap(function _callee5$(_context5) {
           while (1) {
@@ -5717,8 +5717,8 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["@ember/template
         return _ref6.apply(this, arguments);
       };
     }());
-    (0, _qunit.module)('when passing a plain in the @plain parameter', function () {
-      (0, _qunit.test)('when value is truthy, it sets gray-50 background', /*#__PURE__*/function () {
+    (0, _qunit.module)('@plain parameter', function () {
+      (0, _qunit.test)('when the value is truthy, it sets gray-50 background', /*#__PURE__*/function () {
         var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(assert) {
           return regeneratorRuntime.wrap(function _callee6$(_context6) {
             while (1) {
@@ -5751,7 +5751,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["@ember/template
           return _ref7.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('when value is falsy, it sets white background', /*#__PURE__*/function () {
+      (0, _qunit.test)('when the value is falsy, it sets white background', /*#__PURE__*/function () {
         var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(assert) {
           return regeneratorRuntime.wrap(function _callee7$(_context7) {
             while (1) {
@@ -5784,7 +5784,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["@ember/template
           return _ref8.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('when value is undefined, it sets white background', /*#__PURE__*/function () {
+      (0, _qunit.test)('when the value is undefined, it sets white background', /*#__PURE__*/function () {
         var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
           return regeneratorRuntime.wrap(function _callee8$(_context8) {
             while (1) {
@@ -5818,8 +5818,8 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["@ember/template
         };
       }());
     });
-    (0, _qunit.module)('when passing a selected in the @selected parameter', function () {
-      (0, _qunit.test)('when value is truthy, it adds upf-banner--selected class', /*#__PURE__*/function () {
+    (0, _qunit.module)('@selected parameter', function () {
+      (0, _qunit.test)('when the value is truthy, it adds upf-banner--selected class', /*#__PURE__*/function () {
         var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(assert) {
           return regeneratorRuntime.wrap(function _callee9$(_context9) {
             while (1) {
@@ -5852,7 +5852,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["@ember/template
           return _ref10.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)("when value is falsy, it doesn't add upf-banner--selected class", /*#__PURE__*/function () {
+      (0, _qunit.test)("when the value is falsy, it doesn't add upf-banner--selected class", /*#__PURE__*/function () {
         var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(assert) {
           return regeneratorRuntime.wrap(function _callee10$(_context10) {
             while (1) {
@@ -5885,7 +5885,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["@ember/template
           return _ref11.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)("when value is undefined, it doesn't add upf-banner--selected class", /*#__PURE__*/function () {
+      (0, _qunit.test)("when the value is undefined, it doesn't add upf-banner--selected class", /*#__PURE__*/function () {
         var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(assert) {
           return regeneratorRuntime.wrap(function _callee11$(_context11) {
             while (1) {
@@ -5919,8 +5919,8 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["@ember/template
         };
       }());
     });
-    (0, _qunit.module)('when passing a disable in the @disabled parameter', function () {
-      (0, _qunit.test)('when value is truthy, it adds upf-banner--disabled class', /*#__PURE__*/function () {
+    (0, _qunit.module)('@disabled parameter', function () {
+      (0, _qunit.test)('when the value is truthy, it adds upf-banner--disabled class', /*#__PURE__*/function () {
         var _ref13 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(assert) {
           return regeneratorRuntime.wrap(function _callee12$(_context12) {
             while (1) {
@@ -5953,7 +5953,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["@ember/template
           return _ref13.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)("when value is falsy, it doesn't add upf-banner--disabled class", /*#__PURE__*/function () {
+      (0, _qunit.test)("when the value is falsy, it doesn't add upf-banner--disabled class", /*#__PURE__*/function () {
         var _ref14 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13(assert) {
           return regeneratorRuntime.wrap(function _callee13$(_context13) {
             while (1) {
@@ -5986,7 +5986,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["@ember/template
           return _ref14.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)("when value is undefined, it doesn't add upf-banner--disabled class", /*#__PURE__*/function () {
+      (0, _qunit.test)("when the value is undefined, it doesn't add upf-banner--disabled class", /*#__PURE__*/function () {
         var _ref15 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee14(assert) {
           return regeneratorRuntime.wrap(function _callee14$(_context14) {
             while (1) {
@@ -6020,7 +6020,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["@ember/template
         };
       }());
     });
-    (0, _qunit.test)('passing a custom-icon named block, renders inside the component', /*#__PURE__*/function () {
+    (0, _qunit.test)('passing a custom-icon named block renders inside the component', /*#__PURE__*/function () {
       var _ref16 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15(assert) {
         return regeneratorRuntime.wrap(function _callee15$(_context15) {
           while (1) {
@@ -6059,7 +6059,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["@ember/template
         return _ref16.apply(this, arguments);
       };
     }());
-    (0, _qunit.test)('passing an actions named block, renders inside the component', /*#__PURE__*/function () {
+    (0, _qunit.test)('passing an actions named block renders inside the component', /*#__PURE__*/function () {
       var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(assert) {
         return regeneratorRuntime.wrap(function _callee16$(_context16) {
           while (1) {
@@ -6098,6 +6098,140 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["@ember/template
         return _ref17.apply(this, arguments);
       };
     }());
+    (0, _qunit.module)('@size parameter', function () {
+      (0, _qunit.test)("when the value is 'sm', it adds the upf-banner--size-sm class", /*#__PURE__*/function () {
+        var _ref18 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17(assert) {
+          return regeneratorRuntime.wrap(function _callee17$(_context17) {
+            while (1) {
+              switch (_context17.prev = _context17.next) {
+                case 0:
+                  _context17.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Banner @size="sm" />
+                  */
+                  {
+                    "id": "NcXIJow/",
+                    "block": "[[[8,[39,0],null,[[\"@size\"],[\"sm\"]],null]],[],false,[\"o-s-s/banner\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.upf-banner.upf-banner--size-sm').exists();
+
+                case 3:
+                case "end":
+                  return _context17.stop();
+              }
+            }
+          }, _callee17);
+        }));
+
+        return function (_x17) {
+          return _ref18.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)("when the value is 'sm' and an @icon is defined, a small icon class is used", /*#__PURE__*/function () {
+        var _ref19 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee18(assert) {
+          return regeneratorRuntime.wrap(function _callee18$(_context18) {
+            while (1) {
+              switch (_context18.prev = _context18.next) {
+                case 0:
+                  _context18.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Banner @size="sm" @icon="fa-child-combatant" />
+                  */
+                  {
+                    "id": "yUmdg4Pf",
+                    "block": "[[[8,[39,0],null,[[\"@size\",\"@icon\"],[\"sm\",\"fa-child-combatant\"]],null]],[],false,[\"o-s-s/banner\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.upf-badge--size-sm').exists();
+
+                case 3:
+                case "end":
+                  return _context18.stop();
+              }
+            }
+          }, _callee18);
+        }));
+
+        return function (_x18) {
+          return _ref19.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)("when the value is anything but 'sm', it doesn't add the upf-banner--size-sm class", /*#__PURE__*/function () {
+        var _ref20 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee19(assert) {
+          return regeneratorRuntime.wrap(function _callee19$(_context19) {
+            while (1) {
+              switch (_context19.prev = _context19.next) {
+                case 0:
+                  _context19.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Banner @size="md" />
+                  */
+                  {
+                    "id": "qeOOOhYO",
+                    "block": "[[[8,[39,0],null,[[\"@size\"],[\"md\"]],null]],[],false,[\"o-s-s/banner\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.upf-banner.upf-banner--size-sm').doesNotExist();
+
+                case 3:
+                case "end":
+                  return _context19.stop();
+              }
+            }
+          }, _callee19);
+        }));
+
+        return function (_x19) {
+          return _ref20.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)("when the value is undefined, it doesn't add the upf-banner--size-sm class", /*#__PURE__*/function () {
+        var _ref21 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee20(assert) {
+          return regeneratorRuntime.wrap(function _callee20$(_context20) {
+            while (1) {
+              switch (_context20.prev = _context20.next) {
+                case 0:
+                  _context20.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::Banner />
+                  */
+                  {
+                    "id": "Dkwyjpto",
+                    "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/banner\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('.upf-banner.upf-banner--size-sm').doesNotExist();
+
+                case 3:
+                case "end":
+                  return _context20.stop();
+              }
+            }
+          }, _callee20);
+        }));
+
+        return function (_x20) {
+          return _ref21.apply(this, arguments);
+        };
+      }());
+    });
   });
 });
 define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "sinon"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _sinon) {
