@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, setupOnerror, typeIn } from '@ember/test-helpers';
+import { render, setupOnerror, typeIn, triggerKeyEvent } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 import sinon from 'sinon';
 
@@ -56,11 +56,29 @@ module('Integration | Component | o-s-s/email-input', function (hooks) {
     await render(hbs`<OSS::EmailInput />`);
   });
 
-  test('it calls the @onChange method', async function (assert) {
-    this.value = '';
-    this.onChange = sinon.stub();
-    await render(hbs`<OSS::EmailInput @value={{this.value}} @onChange={{this.onChange}} />`);
-    await typeIn('input', 'a');
-    assert.true(this.onChange.calledOnceWithExactly('a'));
+  module('for the @onChange method', (hooks) => {
+    hooks.beforeEach(function () {
+      this.value = '';
+      this.onChange = sinon.stub();
+    });
+
+    test('it is called when a new character is typed', async function (assert) {
+      await render(hbs`<OSS::EmailInput @value={{this.value}} @onChange={{this.onChange}} />`);
+      await typeIn('input', 'a');
+      assert.true(this.onChange.calledOnceWithExactly('a'));
+    });
+
+    test('it returns null value', async function (assert) {
+      this.value = null;
+      await render(hbs`<OSS::EmailInput @value={{this.value}} @onChange={{this.onChange}} />`);
+      await triggerKeyEvent('input', 'keyup', 'Backspace');
+      assert.true(this.onChange.calledOnceWithExactly(null));
+    });
+
+    test('if defined, it transforms the result to lowercase', async function (assert) {
+      await render(hbs`<OSS::EmailInput @value={{this.value}} @onChange={{this.onChange}} />`);
+      await typeIn('input', 'A');
+      assert.true(this.onChange.calledOnceWithExactly('a'));
+    });
   });
 });
