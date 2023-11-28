@@ -1,7 +1,8 @@
 <div class="currency-input-container fx-1 {{if @errorMessage 'currency-input-container--errored'}}" ...attributes>
-  <div class="currency-input {{if @onlyCurrency "onlycurrency"}} {{if this.currencySelectorShown "active"}} 
+  <div class="currency-input {{if @onlyCurrency 'onlycurrency'}} {{if this.currencySelectorShown 'currency-input--active'}}
               fx-row fx-1 fx-xalign-center">
-    <div class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center" role="button"
+    <div class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center"
+         role={{if this.allowCurrencyUpdate 'button' 'img'}}
          {{on "click" this.toggleCurrencySelector}}>
       <div class="fx-col">
         <div class="fx-row fx-gap-px-9">

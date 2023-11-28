@@ -1,3 +1,54 @@
+.upf-input {
+  border: 1px solid var(--color-border-default);
+  color: var(--color-gray-900);
+  background-color: var(--color-white);
+
+  transition: all 250ms ease-in-out;
+
+  &::placeholder {
+    color: var(--color-gray-400);
+  }
+
+  &:not(:disabled, .disabled) {
+    &:hover {
+      .input-state-hover;
+    }
+
+    &:active {
+      .input-state-active;
+    }
+
+    &:focus {
+      .input-state-focus;
+    }
+  }
+
+  &.disabled,
+  &:disabled {
+    .input-state-disabled;
+  }
+}
+
+.upf-input--errored {
+  .border;
+  .border-color-error;
+  .border-radius-default;
+
+  &:not(:disabled, .disabled) {
+    &:hover {
+      .input-state-error-hover;
+    }
+
+    &:active {
+      .input-state-error-active;
+    }
+
+    &:focus {
+      .input-state-error-focus;
+    }
+  }
+}
+
 .input-state-hover {
   border: 1px solid var(--color-gray-300);
   background-color: var(--color-gray-100);
@@ -36,6 +87,7 @@
 
 .input-state-disabled {
   cursor: not-allowed;
+  pointer-events: none;
   color: var(--color-gray-400);
   background-color: var(--color-gray-200);
 }
@@ -43,60 +95,19 @@
 .oss-input-container {
   position: relative;
 
-  .yielded-input input,
+  .yielded-input input {
+    .upf-input;
+    width: 100%;
+  }
+
   .upf-input {
     width: 100%;
-
-    transition: all 250ms ease-in-out;
-
-    border: 1px solid var(--color-border-default);
-    color: var(--color-gray-900);
-    background-color: var(--color-white);
-
-    &::placeholder {
-      color: var(--color-gray-400);
-    }
-
-    &:not(:disabled, .disabled) {
-      &:hover {
-        .input-state-hover;
-      }
-
-      &:active {
-        .input-state-active;
-      }
-
-      &:focus {
-        .input-state-focus;
-      }
-    }
-
-    &.disabled,
-    &:disabled {
-      .input-state-disabled;
-    }
   }
 
   &--errored {
     .yielded-input input,
     .upf-input {
-      .border;
-      .border-color-error;
-      .border-radius-default;
-
-      &:not(:disabled, .disabled) {
-        &:hover {
-          .input-state-error-hover;
-        }
-
-        &:active {
-          .input-state-error-active;
-        }
-
-        &:focus {
-          .input-state-error-focus;
-        }
-      }
+      .upf-input--errored;
     }
   }
 

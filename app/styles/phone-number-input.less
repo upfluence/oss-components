@@ -49,8 +49,13 @@
 
       display: flex;
       align-items: center;
-      gap: var(--spacing-px-9);
+      gap: var(--spacing-px-3);
       padding: var(--spacing-px-3) var(--spacing-px-12);
+
+      &:hover {
+        border: none;
+        background-color: transparent;
+      }
     }
 
     .phone-prefix {
@@ -72,9 +77,14 @@
       .input-state-hover;
     }
 
-    &:active {
+    &:active,
+    &--active {
       .input-state-active;
       border-color: var(--color-border-default);
+
+      &:hover {
+        background-color: transparent;
+      }
     }
 
     &:focus-within {
