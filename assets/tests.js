@@ -11090,45 +11090,124 @@ define("dummy/tests/integration/components/o-s-s/email-input-test", ["@ember/tem
         return _ref8.apply(this, arguments);
       };
     }());
-    (0, _qunit.test)('it calls the @onChange method', /*#__PURE__*/function () {
-      var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
-        return regeneratorRuntime.wrap(function _callee8$(_context8) {
-          while (1) {
-            switch (_context8.prev = _context8.next) {
-              case 0:
-                this.value = '';
-                this.onChange = _sinon.default.stub();
-                _context8.next = 4;
-                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-                /*
-                  <OSS::EmailInput @value={{this.value}} @onChange={{this.onChange}} />
-                */
-                {
-                  "id": "d06cBB/s",
-                  "block": "[[[8,[39,0],null,[[\"@value\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/email-input\"]]",
-                  "moduleName": "(unknown template module)",
-                  "isStrictMode": false
-                }));
+    (0, _qunit.module)('for the @onChange method', function (hooks) {
+      hooks.beforeEach(function () {
+        this.value = '';
+        this.onChange = _sinon.default.stub();
+      });
+      (0, _qunit.test)('it is called when a new character is typed', /*#__PURE__*/function () {
+        var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
+          return regeneratorRuntime.wrap(function _callee8$(_context8) {
+            while (1) {
+              switch (_context8.prev = _context8.next) {
+                case 0:
+                  _context8.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::EmailInput @value={{this.value}} @onChange={{this.onChange}} />
+                  */
+                  {
+                    "id": "d06cBB/s",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/email-input\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
 
-              case 4:
-                _context8.next = 6;
-                return (0, _testHelpers.typeIn)('input', 'a');
+                case 2:
+                  _context8.next = 4;
+                  return (0, _testHelpers.typeIn)('input', 'a');
 
-              case 6:
-                assert.true(this.onChange.calledOnceWithExactly('a'));
+                case 4:
+                  assert.true(this.onChange.calledOnceWithExactly('a'));
 
-              case 7:
-              case "end":
-                return _context8.stop();
+                case 5:
+                case "end":
+                  return _context8.stop();
+              }
             }
-          }
-        }, _callee8, this);
-      }));
+          }, _callee8, this);
+        }));
 
-      return function (_x8) {
-        return _ref9.apply(this, arguments);
-      };
-    }());
+        return function (_x8) {
+          return _ref9.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('it returns null value', /*#__PURE__*/function () {
+        var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(assert) {
+          return regeneratorRuntime.wrap(function _callee9$(_context9) {
+            while (1) {
+              switch (_context9.prev = _context9.next) {
+                case 0:
+                  this.value = null;
+                  _context9.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::EmailInput @value={{this.value}} @onChange={{this.onChange}} />
+                  */
+                  {
+                    "id": "d06cBB/s",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/email-input\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  _context9.next = 5;
+                  return (0, _testHelpers.triggerKeyEvent)('input', 'keyup', 'Backspace');
+
+                case 5:
+                  assert.true(this.onChange.calledOnceWithExactly(null));
+
+                case 6:
+                case "end":
+                  return _context9.stop();
+              }
+            }
+          }, _callee9, this);
+        }));
+
+        return function (_x9) {
+          return _ref10.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('if defined, it transforms the result to lowercase', /*#__PURE__*/function () {
+        var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(assert) {
+          return regeneratorRuntime.wrap(function _callee10$(_context10) {
+            while (1) {
+              switch (_context10.prev = _context10.next) {
+                case 0:
+                  _context10.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::EmailInput @value={{this.value}} @onChange={{this.onChange}} />
+                  */
+                  {
+                    "id": "d06cBB/s",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/email-input\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  _context10.next = 4;
+                  return (0, _testHelpers.typeIn)('input', 'A');
+
+                case 4:
+                  assert.true(this.onChange.calledOnceWithExactly('a'));
+
+                case 5:
+                case "end":
+                  return _context10.stop();
+              }
+            }
+          }, _callee10, this);
+        }));
+
+        return function (_x10) {
+          return _ref11.apply(this, arguments);
+        };
+      }());
+    });
   });
 });
 define("dummy/tests/integration/components/o-s-s/icon-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers"], function (_templateFactory, _qunit, _emberQunit, _testHelpers) {
