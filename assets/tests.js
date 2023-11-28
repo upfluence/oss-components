@@ -10117,7 +10117,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["@ember/
           return _ref8.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('Selecting a new currency in the Currency selector triggers the onChange method with currency only', /*#__PURE__*/function () {
+      (0, _qunit.test)('Selecting a new currency in the selector triggers the onChange method', /*#__PURE__*/function () {
         var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
           var clickableRows;
           return regeneratorRuntime.wrap(function _callee8$(_context8) {
@@ -10287,7 +10287,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["@ember/
           return _ref12.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('the selection is disabled if @allowCurrencyUpdate is falsy', /*#__PURE__*/function () {
+      (0, _qunit.test)('The currency selection is disabled if @allowCurrencyUpdate is falsy', /*#__PURE__*/function () {
         var _ref13 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(assert) {
           return regeneratorRuntime.wrap(function _callee12$(_context12) {
             while (1) {
@@ -10326,35 +10326,42 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["@ember/
           return _ref13.apply(this, arguments);
         };
       }());
-    });
-    (0, _qunit.module)('Currency Input', function () {
-      (0, _qunit.test)('Typing numbers in the currency input triggers the onChange method', /*#__PURE__*/function () {
+      (0, _qunit.test)('Passing the @allowedCurrencies parameter overwrites the selectable options', /*#__PURE__*/function () {
         var _ref14 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13(assert) {
+          var clickableRows;
           return regeneratorRuntime.wrap(function _callee13$(_context13) {
             while (1) {
               switch (_context13.prev = _context13.next) {
                 case 0:
-                  _context13.next = 2;
+                  this.allowedCurrencies = [{
+                    code: 'USD',
+                    symbol: '$'
+                  }, {
+                    code: 'EUR',
+                    symbol: '€'
+                  }];
+                  _context13.next = 3;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
-                    <OSS::CurrencyInput @currency="" @value="" @onChange={{this.onChange}} />
+                    <OSS::CurrencyInput @currency={{this.currency}} @value="" @onChange={{this.onChange}}
+                                                           @allowedCurrencies={{this.allowedCurrencies}} />
                   */
                   {
-                    "id": "9MBQx8DN",
-                    "block": "[[[8,[39,0],null,[[\"@currency\",\"@value\",\"@onChange\"],[\"\",\"\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
+                    "id": "GbmyG37x",
+                    "block": "[[[8,[39,0],null,[[\"@currency\",\"@value\",\"@onChange\",\"@allowedCurrencies\"],[[30,0,[\"currency\"]],\"\",[30,0,[\"onChange\"]],[30,0,[\"allowedCurrencies\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
 
-                case 2:
-                  _context13.next = 4;
-                  return (0, _testHelpers.typeIn)('input', '8');
+                case 3:
+                  _context13.next = 5;
+                  return (0, _testHelpers.click)('.currency-selector');
 
-                case 4:
-                  assert.ok(this.onChange.calledOnce);
-                  assert.dom('input').hasValue('08');
+                case 5:
+                  clickableRows = (0, _testHelpers.findAll)('.upf-infinite-select__item');
+                  assert.equal(clickableRows.length, 2);
 
-                case 6:
+                case 7:
                 case "end":
                   return _context13.stop();
               }
@@ -10366,7 +10373,9 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["@ember/
           return _ref14.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('Typing non-numeric characters does not apply changes', /*#__PURE__*/function () {
+    });
+    (0, _qunit.module)('Currency Input', function () {
+      (0, _qunit.test)('Typing numbers in the currency input triggers the onChange method', /*#__PURE__*/function () {
         var _ref15 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee14(assert) {
           return regeneratorRuntime.wrap(function _callee14$(_context14) {
             while (1) {
@@ -10389,17 +10398,10 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["@ember/
                   return (0, _testHelpers.typeIn)('input', '8');
 
                 case 4:
-                  assert.ok(this.onChange.calledOnce); // @ts-ignore
-
-                  _context14.next = 7;
-                  return (0, _testHelpers.triggerKeyEvent)('input', 'keydown', 'A', {
-                    code: 'a'
-                  });
-
-                case 7:
+                  assert.ok(this.onChange.calledOnce);
                   assert.dom('input').hasValue('08');
 
-                case 8:
+                case 6:
                 case "end":
                   return _context14.stop();
               }
@@ -10411,13 +10413,58 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["@ember/
           return _ref15.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('Placeholder is correctly displayed when provided', /*#__PURE__*/function () {
+      (0, _qunit.test)('Typing non-numeric characters does not apply changes', /*#__PURE__*/function () {
         var _ref16 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15(assert) {
           return regeneratorRuntime.wrap(function _callee15$(_context15) {
             while (1) {
               switch (_context15.prev = _context15.next) {
                 case 0:
                   _context15.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::CurrencyInput @currency="" @value="" @onChange={{this.onChange}} />
+                  */
+                  {
+                    "id": "9MBQx8DN",
+                    "block": "[[[8,[39,0],null,[[\"@currency\",\"@value\",\"@onChange\"],[\"\",\"\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  _context15.next = 4;
+                  return (0, _testHelpers.typeIn)('input', '8');
+
+                case 4:
+                  assert.ok(this.onChange.calledOnce); // @ts-ignore
+
+                  _context15.next = 7;
+                  return (0, _testHelpers.triggerKeyEvent)('input', 'keydown', 'A', {
+                    code: 'a'
+                  });
+
+                case 7:
+                  assert.dom('input').hasValue('08');
+
+                case 8:
+                case "end":
+                  return _context15.stop();
+              }
+            }
+          }, _callee15, this);
+        }));
+
+        return function (_x15) {
+          return _ref16.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('Placeholder is correctly displayed when provided', /*#__PURE__*/function () {
+        var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(assert) {
+          return regeneratorRuntime.wrap(function _callee16$(_context16) {
+            while (1) {
+              switch (_context16.prev = _context16.next) {
+                case 0:
+                  _context16.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     <OSS::CurrencyInput @currency="" @value="" @placeholder="foobar" @onChange={{this.onChange}} />
@@ -10434,44 +10481,6 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["@ember/
 
                 case 3:
                 case "end":
-                  return _context15.stop();
-              }
-            }
-          }, _callee15);
-        }));
-
-        return function (_x15) {
-          return _ref16.apply(this, arguments);
-        };
-      }());
-    });
-    (0, _qunit.module)('Currency only mode', function () {
-      (0, _qunit.test)('it renders currency only', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(assert) {
-          return regeneratorRuntime.wrap(function _callee16$(_context16) {
-            while (1) {
-              switch (_context16.prev = _context16.next) {
-                case 0:
-                  _context16.next = 2;
-                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-                  /*
-                    <OSS::CurrencyInput @currency="USD" @onlyCurrency={{true}} @onChange={{this.onChange}} />
-                  */
-                  {
-                    "id": "g6yukpR6",
-                    "block": "[[[8,[39,0],null,[[\"@currency\",\"@onlyCurrency\",\"@onChange\"],[\"USD\",true,[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
-                    "moduleName": "(unknown template module)",
-                    "isStrictMode": false
-                  }));
-
-                case 2:
-                  assert.dom('.currency-input-container').exists();
-                  assert.dom('.currency-selector').exists();
-                  assert.dom('.currency-selector').hasText('$ USD');
-                  assert.dom('.currency-input input').doesNotExist();
-
-                case 6:
-                case "end":
                   return _context16.stop();
               }
             }
@@ -10482,53 +10491,186 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["@ember/
           return _ref17.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('it renders currency only with empty currency param', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17(assert) {
-          return regeneratorRuntime.wrap(function _callee17$(_context17) {
+    });
+    (0, _qunit.test)('When @onlyCurrency is truthy, only the currency is displayed', /*#__PURE__*/function () {
+      var _ref18 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17(assert) {
+        return regeneratorRuntime.wrap(function _callee17$(_context17) {
+          while (1) {
+            switch (_context17.prev = _context17.next) {
+              case 0:
+                _context17.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::CurrencyInput @currency="USD" @onlyCurrency={{true}} @onChange={{this.onChange}} />
+                */
+                {
+                  "id": "g6yukpR6",
+                  "block": "[[[8,[39,0],null,[[\"@currency\",\"@onlyCurrency\",\"@onChange\"],[\"USD\",true,[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('.currency-input-container').exists();
+                assert.dom('.currency-selector').hasText('$ USD');
+                assert.dom('.currency-input input').doesNotExist();
+
+              case 5:
+              case "end":
+                return _context17.stop();
+            }
+          }
+        }, _callee17);
+      }));
+
+      return function (_x17) {
+        return _ref18.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.module)('When the paste event is received', function (hooks) {
+      hooks.beforeEach(function () {
+        this.value = '1234567890';
+      });
+      (0, _qunit.test)('The value stored in the clipboard is inserted in the input', /*#__PURE__*/function () {
+        var _ref19 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee18(assert) {
+          return regeneratorRuntime.wrap(function _callee18$(_context18) {
             while (1) {
-              switch (_context17.prev = _context17.next) {
+              switch (_context18.prev = _context18.next) {
                 case 0:
-                  _context17.next = 2;
+                  _context18.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
-                    <OSS::CurrencyInput @currency={{undefined}} @onlyCurrency={{true}} @onChange={{this.onChange}} />
+                    <OSS::CurrencyInput @onChange={{this.onChange}} @value={{this.value}} />
                   */
                   {
-                    "id": "P0mpH7Wn",
-                    "block": "[[[8,[39,0],null,[[\"@currency\",\"@onlyCurrency\",\"@onChange\"],[[27],true,[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
+                    "id": "e0hCyllX",
+                    "block": "[[[8,[39,0],null,[[\"@onChange\",\"@value\"],[[30,0,[\"onChange\"]],[30,0,[\"value\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
 
                 case 2:
-                  assert.dom('.currency-input-container').exists();
-                  assert.dom('.currency-selector').exists();
-                  assert.dom('.currency-selector').hasText('$ USD');
-                  assert.dom('.currency-input input').doesNotExist();
+                  assert.dom('input').hasValue('1234567890');
+                  _context18.next = 5;
+                  return (0, _testHelpers.triggerEvent)('input', 'paste', {
+                    clipboardData: {
+                      getData: _sinon.default.stub().returns('123')
+                    }
+                  });
+
+                case 5:
+                  assert.dom('input').hasValue('1234567890123');
 
                 case 6:
                 case "end":
-                  return _context17.stop();
+                  return _context18.stop();
               }
             }
-          }, _callee17);
+          }, _callee18);
         }));
 
-        return function (_x17) {
-          return _ref18.apply(this, arguments);
+        return function (_x18) {
+          return _ref19.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('The non-numeric characters are escaped', /*#__PURE__*/function () {
+        var _ref20 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee19(assert) {
+          return regeneratorRuntime.wrap(function _callee19$(_context19) {
+            while (1) {
+              switch (_context19.prev = _context19.next) {
+                case 0:
+                  _context19.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::CurrencyInput @onChange={{this.onChange}} @value={{this.value}} />
+                  */
+                  {
+                    "id": "e0hCyllX",
+                    "block": "[[[8,[39,0],null,[[\"@onChange\",\"@value\"],[[30,0,[\"onChange\"]],[30,0,[\"value\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('input').hasValue('1234567890');
+                  _context19.next = 5;
+                  return (0, _testHelpers.triggerEvent)('input', 'paste', {
+                    clipboardData: {
+                      getData: _sinon.default.stub().returns('1withletter0')
+                    }
+                  });
+
+                case 5:
+                  assert.dom('input').hasValue('123456789010');
+
+                case 6:
+                case "end":
+                  return _context19.stop();
+              }
+            }
+          }, _callee19);
+        }));
+
+        return function (_x19) {
+          return _ref20.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('When selection is applied, it replaces the selection', /*#__PURE__*/function () {
+        var _ref21 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee20(assert) {
+          var input;
+          return regeneratorRuntime.wrap(function _callee20$(_context20) {
+            while (1) {
+              switch (_context20.prev = _context20.next) {
+                case 0:
+                  _context20.next = 2;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::CurrencyInput @onChange={{this.onChange}} @value={{this.value}} />
+                  */
+                  {
+                    "id": "e0hCyllX",
+                    "block": "[[[8,[39,0],null,[[\"@onChange\",\"@value\"],[[30,0,[\"onChange\"]],[30,0,[\"value\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 2:
+                  assert.dom('input').hasValue('1234567890');
+                  input = document.querySelector('input.ember-text-field');
+                  input.setSelectionRange(4, 6);
+                  _context20.next = 7;
+                  return (0, _testHelpers.triggerEvent)('input', 'paste', {
+                    clipboardData: {
+                      getData: _sinon.default.stub().returns('0')
+                    }
+                  });
+
+                case 7:
+                  assert.dom('input').hasValue('123407890');
+
+                case 8:
+                case "end":
+                  return _context20.stop();
+              }
+            }
+          }, _callee20);
+        }));
+
+        return function (_x20) {
+          return _ref21.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.test)('It throws an error if @onChange is not passed', /*#__PURE__*/function () {
-      var _ref19 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee18(assert) {
-        return regeneratorRuntime.wrap(function _callee18$(_context18) {
+      var _ref22 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee21(assert) {
+        return regeneratorRuntime.wrap(function _callee21$(_context21) {
           while (1) {
-            switch (_context18.prev = _context18.next) {
+            switch (_context21.prev = _context21.next) {
               case 0:
                 (0, _testHelpers.setupOnerror)(function (err) {
                   assert.equal(err.message, 'Assertion Failed: [component][OSS::CurrencyInput] The parameter @onChange of type function is mandatory');
                 });
-                _context18.next = 3;
+                _context21.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::CurrencyInput />
@@ -10541,138 +10683,17 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["@ember/
                 }));
 
               case 3:
-                _context18.next = 5;
-                return (0, _testHelpers.settled)();
-
-              case 5:
               case "end":
-                return _context18.stop();
+                return _context21.stop();
             }
           }
-        }, _callee18);
+        }, _callee21);
       }));
 
-      return function (_x18) {
-        return _ref19.apply(this, arguments);
+      return function (_x21) {
+        return _ref22.apply(this, arguments);
       };
     }());
-    (0, _qunit.module)('When paste event is received', function (hooks) {
-      hooks.beforeEach( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee19() {
-        return regeneratorRuntime.wrap(function _callee19$(_context19) {
-          while (1) {
-            switch (_context19.prev = _context19.next) {
-              case 0:
-                this.value = '1234567890';
-                _context19.next = 3;
-                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-                /*
-                  <OSS::CurrencyInput @onChange={{this.onChange}} @value={{this.value}} />
-                */
-                {
-                  "id": "e0hCyllX",
-                  "block": "[[[8,[39,0],null,[[\"@onChange\",\"@value\"],[[30,0,[\"onChange\"]],[30,0,[\"value\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
-                  "moduleName": "(unknown template module)",
-                  "isStrictMode": false
-                }));
-
-              case 3:
-              case "end":
-                return _context19.stop();
-            }
-          }
-        }, _callee19, this);
-      })));
-      (0, _qunit.test)('The value stored in clipboard is inserted in the input', /*#__PURE__*/function () {
-        var _ref21 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee20(assert) {
-          return regeneratorRuntime.wrap(function _callee20$(_context20) {
-            while (1) {
-              switch (_context20.prev = _context20.next) {
-                case 0:
-                  assert.dom('input').hasValue('1234567890');
-                  _context20.next = 3;
-                  return (0, _testHelpers.triggerEvent)('input', 'paste', {
-                    clipboardData: {
-                      getData: _sinon.default.stub().returns('123')
-                    }
-                  });
-
-                case 3:
-                  assert.dom('input').hasValue('1234567890123');
-
-                case 4:
-                case "end":
-                  return _context20.stop();
-              }
-            }
-          }, _callee20);
-        }));
-
-        return function (_x19) {
-          return _ref21.apply(this, arguments);
-        };
-      }());
-      (0, _qunit.test)('The non-numeric characters are escaped', /*#__PURE__*/function () {
-        var _ref22 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee21(assert) {
-          return regeneratorRuntime.wrap(function _callee21$(_context21) {
-            while (1) {
-              switch (_context21.prev = _context21.next) {
-                case 0:
-                  assert.dom('input').hasValue('1234567890');
-                  _context21.next = 3;
-                  return (0, _testHelpers.triggerEvent)('input', 'paste', {
-                    clipboardData: {
-                      getData: _sinon.default.stub().returns('1withletter0')
-                    }
-                  });
-
-                case 3:
-                  assert.dom('input').hasValue('123456789010');
-
-                case 4:
-                case "end":
-                  return _context21.stop();
-              }
-            }
-          }, _callee21);
-        }));
-
-        return function (_x20) {
-          return _ref22.apply(this, arguments);
-        };
-      }());
-      (0, _qunit.test)('When selection is applied, it replaces the selection', /*#__PURE__*/function () {
-        var _ref23 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee22(assert) {
-          var input;
-          return regeneratorRuntime.wrap(function _callee22$(_context22) {
-            while (1) {
-              switch (_context22.prev = _context22.next) {
-                case 0:
-                  assert.dom('input').hasValue('1234567890');
-                  input = document.querySelector('input.ember-text-field');
-                  input.setSelectionRange(4, 6);
-                  _context22.next = 5;
-                  return (0, _testHelpers.triggerEvent)('input', 'paste', {
-                    clipboardData: {
-                      getData: _sinon.default.stub().returns('0')
-                    }
-                  });
-
-                case 5:
-                  assert.dom('input').hasValue('123407890');
-
-                case 6:
-                case "end":
-                  return _context22.stop();
-              }
-            }
-          }, _callee22);
-        }));
-
-        return function (_x21) {
-          return _ref23.apply(this, arguments);
-        };
-      }());
-    });
   });
 });
 define("dummy/tests/integration/components/o-s-s/email-input-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "sinon"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _sinon) {

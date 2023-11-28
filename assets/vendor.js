@@ -90036,8 +90036,11 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
   /*
     <div class="currency-input-container fx-1 {{if @errorMessage 'currency-input-container--errored'}}" ...attributes>
     <div class="currency-input {{if @onlyCurrency 'onlycurrency'}} upf-input fx-row fx-1 fx-xalign-center">
-      <div class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between" role="button"
-           {{on "click" this.toggleCurrencySelector}}>
+      <div
+        class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between"
+        role="button"
+        {{on "click" this.toggleCurrencySelector}}
+      >
         <div class="fx-col">
           <div class="fx-row fx-gap-px-9">
             <span>{{this.selectedCurrencySymbol}}</span>
@@ -90057,20 +90060,32 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
       </div>
       {{#unless @onlyCurrency}}
         <Input
-          class="fx-1" type="number" @value={{this.localValue}} min="0" autocomplete="off" placeholder={{this.placeholder}}
-          {{on "keydown" this.onlyNumeric}} {{on "keyup" this.notifyChanges}} {{on "paste" this.handlePaste}} />
+          @value={{this.localValue}}
+          class="fx-1"
+          type="number"
+          min="0"
+          autocomplete="off"
+          placeholder={{this.placeholder}}
+          {{on "keydown" this.onlyNumeric}}
+          {{on "keyup" this.notifyChanges}}
+          {{on "paste" this.handlePaste}}
+        />
       {{/unless}}
     </div>
     {{#if @errorMessage}}
       <div class="font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center">
-        <OSS::Icon @icon="fa-exclamation-triangle" /> {{@errorMessage}}
+        <OSS::Icon @icon="fa-exclamation-triangle" />
+        {{@errorMessage}}
       </div>
     {{/if}}
     {{#if this.currencySelectorShown}}
-      <OSS::InfiniteSelect @items={{this.filteredCurrencies}} @onSearch={{this.onSearch}}
-                           @onSelect={{this.onSelect}}
-                           @searchPlaceholder={{t "oss-components.currency-input.search"}}
-                           {{on-click-outside this.hideCurrencySelector}}>
+      <OSS::InfiniteSelect
+        @items={{this.filteredCurrencies}}
+        @onSearch={{this.onSearch}}
+        @onSelect={{this.onSelect}}
+        @searchPlaceholder={{t "oss-components.currency-input.search"}}
+        {{on-click-outside this.hideCurrencySelector}}
+      >
         <:option as |currency|>
           <div class="fx-row fx-xalign-center {{if (eq this.selectedCurrency currency) 'row-selected'}}">
             <span class="symbol text-color-default-light margin-left-xx-sm">{{currency.symbol}}</span>
@@ -90083,174 +90098,17 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
       </OSS::InfiniteSelect>
     {{/if}}
   </div>
-  
   */
   {
-    "id": "W/ESQ4Nc",
-    "block": "[[[11,0],[16,0,[29,[\"currency-input-container fx-1 \",[52,[30,1],\"currency-input-container--errored\"]]]],[17,2],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"currency-input \",[52,[30,3],\"onlycurrency\"],\" upf-input fx-row fx-1 fx-xalign-center\"]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"currency-selector fx-row fx-gap-px-12 fx-malign-space-between\"],[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,0,[\"toggleCurrencySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-9\"],[12],[1,\"\\n          \"],[10,1],[12],[1,[30,0,[\"selectedCurrencySymbol\"]]],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"            \"],[10,1],[14,0,\"margin-right-px-12\"],[12],[1,[30,0,[\"selectedCurrencyCode\"]]],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"allowCurrencyUpdate\"]],[[[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"          \"],[8,[39,2],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[\"fa-chevron-up\"]],null],[1,\"\\n\"]],[]],[[[1,\"          \"],[8,[39,2],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[\"fa-chevron-down\"]],null],[1,\"\\n\"]],[]]]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[51,[30,3]],[[[1,\"      \"],[8,[39,4],[[24,0,\"fx-1\"],[24,\"min\",\"0\"],[24,\"autocomplete\",\"off\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,4,\"number\"],[4,[38,1],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,1],[\"keyup\",[30,0,[\"notifyChanges\"]]],null],[4,[38,1],[\"paste\",[30,0,[\"handlePaste\"]]],null]],[[\"@value\"],[[30,0,[\"localValue\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,1],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\" \"],[1,[30,1]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"    \"],[8,[39,5],[[4,[38,7],[[30,0,[\"hideCurrencySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCurrencies\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[28,[37,6],[\"oss-components.currency-input.search\"],null]]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,8],[[30,0,[\"selectedCurrency\"]],[30,4]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,1],[14,0,\"symbol text-color-default-light margin-left-xx-sm\"],[12],[1,[30,4,[\"symbol\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm fx-1\"],[12],[1,[30,4,[\"code\"]]],[13],[1,\"\\n\"],[41,[28,[37,8],[[30,0,[\"selectedCurrency\"]],[30,4]],null],[[[1,\"            \"],[8,[39,2],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"@errorMessage\",\"&attrs\",\"@onlyCurrency\",\"currency\"],false,[\"if\",\"on\",\"o-s-s/icon\",\"unless\",\"input\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\",\"eq\"]]",
+    "id": "r7EvGJjY",
+    "block": "[[[11,0],[16,0,[29,[\"currency-input-container fx-1 \",[52,[30,1],\"currency-input-container--errored\"]]]],[17,2],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"currency-input \",[52,[30,3],\"onlycurrency\"],\" upf-input fx-row fx-1 fx-xalign-center\"]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"currency-selector fx-row fx-gap-px-12 fx-malign-space-between\"],[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,0,[\"toggleCurrencySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-9\"],[12],[1,\"\\n          \"],[10,1],[12],[1,[30,0,[\"selectedCurrencySymbol\"]]],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"            \"],[10,1],[14,0,\"margin-right-px-12\"],[12],[1,[30,0,[\"selectedCurrencyCode\"]]],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"allowCurrencyUpdate\"]],[[[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"          \"],[8,[39,2],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[\"fa-chevron-up\"]],null],[1,\"\\n\"]],[]],[[[1,\"          \"],[8,[39,2],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[\"fa-chevron-down\"]],null],[1,\"\\n\"]],[]]]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[51,[30,3]],[[[1,\"      \"],[8,[39,4],[[24,0,\"fx-1\"],[24,\"min\",\"0\"],[24,\"autocomplete\",\"off\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,4,\"number\"],[4,[38,1],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,1],[\"keyup\",[30,0,[\"notifyChanges\"]]],null],[4,[38,1],[\"paste\",[30,0,[\"handlePaste\"]]],null]],[[\"@value\"],[[30,0,[\"localValue\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,1],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\"\\n      \"],[1,[30,1]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"    \"],[8,[39,5],[[4,[38,7],[[30,0,[\"hideCurrencySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCurrencies\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[28,[37,6],[\"oss-components.currency-input.search\"],null]]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,8],[[30,0,[\"selectedCurrency\"]],[30,4]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,1],[14,0,\"symbol text-color-default-light margin-left-xx-sm\"],[12],[1,[30,4,[\"symbol\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm fx-1\"],[12],[1,[30,4,[\"code\"]]],[13],[1,\"\\n\"],[41,[28,[37,8],[[30,0,[\"selectedCurrency\"]],[30,4]],null],[[[1,\"            \"],[8,[39,2],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[13]],[\"@errorMessage\",\"&attrs\",\"@onlyCurrency\",\"currency\"],false,[\"if\",\"on\",\"o-s-s/icon\",\"unless\",\"input\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\",\"eq\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/currency-input.hbs",
     "isStrictMode": false
   });
 
-  var NUMERIC_ONLY = /^[0-9]$/i;
+  var NUMERIC_ONLY = /^\d$/i;
   var NOT_NUMERIC_FLOAT = /[^0-9,.]/g;
-  var OSSCurrencyInput = (_class = /*#__PURE__*/function (_Component) {
-    _inherits(OSSCurrencyInput, _Component);
-
-    var _super = _createSuper(OSSCurrencyInput);
-
-    function OSSCurrencyInput(owner, args) {
-      var _this;
-
-      _classCallCheck(this, OSSCurrencyInput);
-
-      _this = _super.call(this, owner, args);
-
-      _defineProperty(_assertThisInitialized(_this), "_currencies", usedCurrencies);
-
-      _initializerDefineProperty(_assertThisInitialized(_this), "currencySelectorShown", _descriptor, _assertThisInitialized(_this));
-
-      _initializerDefineProperty(_assertThisInitialized(_this), "filteredCurrencies", _descriptor2, _assertThisInitialized(_this));
-
-      _initializerDefineProperty(_assertThisInitialized(_this), "localValue", _descriptor3, _assertThisInitialized(_this));
-
-      if (!_this.args.value && !_this.args.placeholder) {
-        _this.localValue = 0;
-      }
-
-      (true && !(typeof _this.args.onChange === 'function') && (0, _debug.assert)('[component][OSS::CurrencyInput] The parameter @onChange of type function is mandatory', typeof _this.args.onChange === 'function'));
-      return _this;
-    }
-
-    _createClass(OSSCurrencyInput, [{
-      key: "allowCurrencyUpdate",
-      get: function get() {
-        var _this$args$allowCurre;
-
-        return (_this$args$allowCurre = this.args.allowCurrencyUpdate) !== null && _this$args$allowCurre !== void 0 ? _this$args$allowCurre : true;
-      }
-    }, {
-      key: "selectedCurrencySymbol",
-      get: function get() {
-        return this.selectedCurrency.symbol || '—';
-      }
-    }, {
-      key: "selectedCurrencyCode",
-      get: function get() {
-        return this.selectedCurrency.code || '—';
-      }
-    }, {
-      key: "selectedCurrency",
-      get: function get() {
-        var _this2 = this;
-
-        if ((0, _utils.isEmpty)(this.args.currency)) {
-          return this._currencies[0];
-        }
-
-        return this._currencies.find(function (currency) {
-          return currency.code === _this2.args.currency;
-        }) || this._currencies[0];
-      }
-    }, {
-      key: "placeholder",
-      get: function get() {
-        return this.args.placeholder || '0';
-      }
-    }, {
-      key: "onlyNumeric",
-      value: function onlyNumeric(event) {
-        var authorizedInputs = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift', 'Control', '.', ',', 'ArrowUp', 'ArrowDown'];
-
-        if (['c', 'v'].includes(event.key) && (event.metaKey || event.ctrlKey)) {
-          return;
-        }
-
-        if (!NUMERIC_ONLY.test(event.key) && !authorizedInputs.find(function (key) {
-          return key === event.key;
-        })) {
-          event.preventDefault();
-        }
-      }
-    }, {
-      key: "handlePaste",
-      value: function handlePaste(event) {
-        this._handlePaste(event);
-      }
-    }, {
-      key: "notifyChanges",
-      value: function notifyChanges() {
-        this.args.onChange(this.selectedCurrency.code, this.localValue);
-      }
-    }, {
-      key: "onSearch",
-      value: function onSearch(keyword) {
-        this.filteredCurrencies = this._currencies.filter(function (currency) {
-          return currency.code.toLowerCase().indexOf(keyword.toLowerCase()) !== -1 || currency.symbol.indexOf(keyword) !== -1;
-        });
-      }
-    }, {
-      key: "onSelect",
-      value: function onSelect(value) {
-        this.args.onChange(value.code, this.localValue);
-        this.hideCurrencySelector();
-      }
-    }, {
-      key: "toggleCurrencySelector",
-      value: function toggleCurrencySelector(e) {
-        e.stopPropagation();
-        if (!this.allowCurrencyUpdate) return;
-        this.currencySelectorShown = !this.currencySelectorShown;
-      }
-    }, {
-      key: "hideCurrencySelector",
-      value: function hideCurrencySelector() {
-        this.currencySelectorShown = false;
-        this.filteredCurrencies = this._currencies;
-      }
-    }, {
-      key: "_handlePaste",
-      value: function _handlePaste(event) {
-        var _event$clipboardData;
-
-        event.preventDefault();
-        var paste = ((_event$clipboardData = event.clipboardData) === null || _event$clipboardData === void 0 ? void 0 : _event$clipboardData.getData('text')) || '';
-        paste = paste.replace(NOT_NUMERIC_FLOAT, '');
-        var target = event.target;
-        var initialSelectionStart = target.selectionStart || 0;
-        var finalSelectionPosition = initialSelectionStart + paste.length;
-        target.setRangeText(paste, initialSelectionStart, target.selectionEnd || initialSelectionStart);
-        target.setSelectionRange(finalSelectionPosition, finalSelectionPosition);
-        this.localValue = target.value;
-        this.notifyChanges();
-      }
-    }]);
-
-    return OSSCurrencyInput;
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "currencySelectorShown", [_tracking.tracked], {
-    configurable: true,
-    enumerable: true,
-    writable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "filteredCurrencies", [_tracking.tracked], {
-    configurable: true,
-    enumerable: true,
-    writable: true,
-    initializer: function initializer() {
-      return this._currencies;
-    }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "localValue", [_tracking.tracked], {
-    configurable: true,
-    enumerable: true,
-    writable: true,
-    initializer: function initializer() {
-      return this.args.value;
-    }
-  }), _applyDecoratedDescriptor(_class.prototype, "onlyNumeric", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onlyNumeric"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handlePaste", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handlePaste"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "notifyChanges", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "notifyChanges"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleCurrencySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleCurrencySelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "hideCurrencySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "hideCurrencySelector"), _class.prototype)), _class);
-  _exports.default = OSSCurrencyInput;
-  var usedCurrencies = [{
+  var PLATFORM_CURRENCIES = [{
     code: 'USD',
     symbol: '$'
   }, {
@@ -90326,6 +90184,160 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
     code: 'PLN',
     symbol: 'zł'
   }];
+  var AUTHORIZED_INPUTS = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift', 'Control', '.', ',', 'ArrowUp', 'ArrowDown'];
+  var OSSCurrencyInput = (_class = /*#__PURE__*/function (_Component) {
+    _inherits(OSSCurrencyInput, _Component);
+
+    var _super = _createSuper(OSSCurrencyInput);
+
+    function OSSCurrencyInput(owner, args) {
+      var _this$args$allowedCur;
+
+      var _this;
+
+      _classCallCheck(this, OSSCurrencyInput);
+
+      _this = _super.call(this, owner, args);
+
+      _defineProperty(_assertThisInitialized(_this), "currencies", (_this$args$allowedCur = _this.args.allowedCurrencies) !== null && _this$args$allowedCur !== void 0 ? _this$args$allowedCur : PLATFORM_CURRENCIES);
+
+      _initializerDefineProperty(_assertThisInitialized(_this), "currencySelectorShown", _descriptor, _assertThisInitialized(_this));
+
+      _initializerDefineProperty(_assertThisInitialized(_this), "filteredCurrencies", _descriptor2, _assertThisInitialized(_this));
+
+      _initializerDefineProperty(_assertThisInitialized(_this), "localValue", _descriptor3, _assertThisInitialized(_this));
+
+      if (!_this.args.value && !_this.args.placeholder) {
+        _this.localValue = 0;
+      }
+
+      (true && !(typeof _this.args.onChange === 'function') && (0, _debug.assert)('[component][OSS::CurrencyInput] The parameter @onChange of type function is mandatory', typeof _this.args.onChange === 'function'));
+      return _this;
+    }
+
+    _createClass(OSSCurrencyInput, [{
+      key: "allowCurrencyUpdate",
+      get: function get() {
+        var _this$args$allowCurre;
+
+        return (_this$args$allowCurre = this.args.allowCurrencyUpdate) !== null && _this$args$allowCurre !== void 0 ? _this$args$allowCurre : true;
+      }
+    }, {
+      key: "selectedCurrencySymbol",
+      get: function get() {
+        return this.selectedCurrency.symbol || '—';
+      }
+    }, {
+      key: "selectedCurrencyCode",
+      get: function get() {
+        return this.selectedCurrency.code || '—';
+      }
+    }, {
+      key: "selectedCurrency",
+      get: function get() {
+        var _this$currencies$find,
+            _this2 = this;
+
+        if ((0, _utils.isEmpty)(this.args.currency)) {
+          return this.currencies[0];
+        }
+
+        return (_this$currencies$find = this.currencies.find(function (currency) {
+          return currency.code === _this2.args.currency;
+        })) !== null && _this$currencies$find !== void 0 ? _this$currencies$find : this.currencies[0];
+      }
+    }, {
+      key: "placeholder",
+      get: function get() {
+        var _this$args$placeholde;
+
+        return (_this$args$placeholde = this.args.placeholder) !== null && _this$args$placeholde !== void 0 ? _this$args$placeholde : '0';
+      }
+    }, {
+      key: "onlyNumeric",
+      value: function onlyNumeric(event) {
+        if (['c', 'v'].includes(event.key) && (event.metaKey || event.ctrlKey)) {
+          return;
+        }
+
+        if (!NUMERIC_ONLY.test(event.key) && !AUTHORIZED_INPUTS.find(function (key) {
+          return key === event.key;
+        })) {
+          event.preventDefault();
+        }
+      }
+    }, {
+      key: "handlePaste",
+      value: function handlePaste(event) {
+        var _event$clipboardData$, _event$clipboardData, _target$selectionStar, _target$selectionEnd;
+
+        event.preventDefault();
+        var paste = ((_event$clipboardData$ = (_event$clipboardData = event.clipboardData) === null || _event$clipboardData === void 0 ? void 0 : _event$clipboardData.getData('text')) !== null && _event$clipboardData$ !== void 0 ? _event$clipboardData$ : '').replace(NOT_NUMERIC_FLOAT, '');
+        var target = event.target;
+        var initialSelectionStart = (_target$selectionStar = target.selectionStart) !== null && _target$selectionStar !== void 0 ? _target$selectionStar : 0;
+        var finalSelectionPosition = initialSelectionStart + paste.length;
+        target.setRangeText(paste, initialSelectionStart, (_target$selectionEnd = target.selectionEnd) !== null && _target$selectionEnd !== void 0 ? _target$selectionEnd : initialSelectionStart);
+        target.setSelectionRange(finalSelectionPosition, finalSelectionPosition);
+        this.localValue = target.value;
+        this.notifyChanges();
+      }
+    }, {
+      key: "notifyChanges",
+      value: function notifyChanges() {
+        this.args.onChange(this.selectedCurrency.code, this.localValue);
+      }
+    }, {
+      key: "onSearch",
+      value: function onSearch(keyword) {
+        this.filteredCurrencies = this.currencies.filter(function (currency) {
+          return currency.code.toLowerCase().indexOf(keyword.toLowerCase()) !== -1 || currency.symbol.indexOf(keyword) !== -1;
+        });
+      }
+    }, {
+      key: "onSelect",
+      value: function onSelect(value) {
+        this.args.onChange(value.code, this.localValue);
+        this.hideCurrencySelector();
+      }
+    }, {
+      key: "toggleCurrencySelector",
+      value: function toggleCurrencySelector(e) {
+        e.stopPropagation();
+        if (!this.allowCurrencyUpdate) return;
+        this.currencySelectorShown = !this.currencySelectorShown;
+      }
+    }, {
+      key: "hideCurrencySelector",
+      value: function hideCurrencySelector() {
+        this.currencySelectorShown = false;
+        this.filteredCurrencies = this.currencies;
+      }
+    }]);
+
+    return OSSCurrencyInput;
+  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "currencySelectorShown", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "filteredCurrencies", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return this.currencies;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "localValue", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return this.args.value;
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "onlyNumeric", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onlyNumeric"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handlePaste", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handlePaste"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "notifyChanges", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "notifyChanges"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleCurrencySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleCurrencySelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "hideCurrencySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "hideCurrencySelector"), _class.prototype)), _class);
+  _exports.default = OSSCurrencyInput;
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSCurrencyInput);
 });
 ;define("@upfluence/oss-components/components/o-s-s/currency-input.stories", ["exports", "@ember/template-factory", "@storybook/addon-actions"], function (_exports, _templateFactory, _addonActions) {
@@ -90434,6 +90446,20 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
             summary: 'onChange(currency: string, value: number): void'
           }
         }
+      },
+      allowedCurrencies: {
+        description: 'Allows passing a custom set of selectable currencies to the component.',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'array'
+        }
       }
     },
     parameters: {
@@ -90451,7 +90477,10 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
     currency: 'USD',
     onlyCurrency: false,
     errorMessage: '',
-    onChange: (0, _addonActions.action)('onChange')
+    onChange: (0, _addonActions.action)('onChange'),
+    allowCurrencyUpdate: true,
+    allowedCurrencies: undefined,
+    placeholder: undefined
   };
 
   var Template = function Template(args) {
@@ -90461,13 +90490,15 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
         
             <div style="width:270px">
               <OSS::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}}
-                                  @onlyCurrency={{this.onlyCurrency}} @errorMessage={{this.errorMessage}} />
+                                  @onlyCurrency={{this.onlyCurrency}} @errorMessage={{this.errorMessage}}
+                                  @allowCurrencyUpdate={{this.allowCurrencyUpdate}} @allowedCurrencies={{this.allowedCurrencies}}
+                                  @placeholder={{this.placeholder}} />
             </div>
         
       */
       {
-        "id": "DD+/L6Jb",
-        "block": "[[[1,\"\\n      \"],[10,0],[14,5,\"width:270px\"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@value\",\"@currency\",\"@onChange\",\"@onlyCurrency\",\"@errorMessage\"],[[30,0,[\"value\"]],[30,0,[\"currency\"]],[30,0,[\"onChange\"]],[30,0,[\"onlyCurrency\"]],[30,0,[\"errorMessage\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/currency-input\"]]",
+        "id": "uTQnLt3b",
+        "block": "[[[1,\"\\n      \"],[10,0],[14,5,\"width:270px\"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@value\",\"@currency\",\"@onChange\",\"@onlyCurrency\",\"@errorMessage\",\"@allowCurrencyUpdate\",\"@allowedCurrencies\",\"@placeholder\"],[[30,0,[\"value\"]],[30,0,[\"currency\"]],[30,0,[\"onChange\"]],[30,0,[\"onlyCurrency\"]],[30,0,[\"errorMessage\"]],[30,0,[\"allowCurrencyUpdate\"]],[30,0,[\"allowedCurrencies\"]],[30,0,[\"placeholder\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/currency-input\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -110505,36 +110536,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-199231ajsTTdHsC1/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-199231ajsTTdHsC1/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-199231ajsTTdHsC1/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-199231ajsTTdHsC1/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-199231ajsTTdHsC1/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-199231ajsTTdHsC1/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/l.js /tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-199231ajsTTdHsC1/cache-275-bundler/staging/l.js /tmp/broccoli-199231ajsTTdHsC1/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/l.js_/tmp/broccoli-2008if7aAGRl2rLn/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-199231ajsTTdHsC1/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-199231ajsTTdHsC1/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-199231ajsTTdHsC1/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-199231ajsTTdHsC1/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-199231ajsTTdHsC1/cache-275-bundler/staging/l.js_/tmp/broccoli-199231ajsTTdHsC1/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
