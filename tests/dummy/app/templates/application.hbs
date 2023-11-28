@@ -22,6 +22,58 @@
 
   <div style="width:100%; height:100vh; overflow: auto; background-color: var(--color-gray-50)">
     <div class="fx-row fx-gap-px-10 margin-md">
+      <OSS::Banner @icon="fas fa-box-open" @title="Shopify" @selected={{true}}
+                   @subtitle="Identify influencers in your Shopify customers database">
+        <:actions>
+          <OSS::RadioButton @selected={{true}} />
+        </:actions>
+      </OSS::Banner>
+      <OSS::Banner @icon="fas fa-box-open" @title="Import creators inside your campaign"
+                   @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file. ">
+        <:custom-icon>
+          <OSS::Badge @text="2x" @size="lg" />
+        </:custom-icon>
+        <:actions>
+          <OSS::Button @skin="primary" @label="browse" @icon="fas fa-box-open" @size="md" />
+          <OSS::Button @skin="secondary" @label="test" @icon="fas fa-box-open" @size="md" />
+        </:actions>
+      </OSS::Banner>
+    </div>
+    <div class="fx-row fx-gap-px-10 margin-md">
+      <OSS::Banner @icon="fas fa-box-open" @title="Import creators inside your campaign"
+                   @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file." />
+      <OSS::Banner @title="Banner without icon"
+                   @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file." />
+      <OSS::Bruce
+                  @image="https://thepressfree.com/wp-content/uploads/2021/11/Voici-pourquoi-Bruce-Banner-netait-plus-Smart-Hulk-dans-la-800x445.jpg"
+                  @title="Import creators inside your campaign" @plain={{true}}
+                  @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file. ">
+        <:actions>
+          <OSS::Button @skin="secondary" @label="action" @icon="fas fa-box-open" @size="md" />
+        </:actions>
+      </OSS::Bruce>
+    </div>
+    <div class="fx-row fx-gap-px-10 margin-md">
+      <OSS::Banner @icon="fas fa-biohazard" @title="BioHazard" @selected={{true}} @size="sm">
+        <:actions>
+          <OSS::Checkbox @checked={{true}} @onChange={{this.onCheck}} @size="sm" />
+        </:actions>
+      </OSS::Banner>
+      <OSS::Banner @icon="fas fa-helicopter" @title="Helicopter" @size="sm" @disabled={{true}}>
+        <:actions>
+          <OSS::Icon @icon="fa-ban" />
+        </:actions>
+        <:secondary-actions>
+          <OSS::Link @label="Configure" />
+        </:secondary-actions>
+      </OSS::Banner>
+      <OSS::Banner @icon="fas fa-user-injured" @title="Injured" @selected={{false}} @size="sm">
+        <:actions>
+          <OSS::Checkbox @checked={{false}} @onChange={{this.onCheck}} @size="sm" />
+        </:actions>
+      </OSS::Banner>
+    </div>
+    <div class="fx-row fx-gap-px-10 margin-md">
       <OSS::CurrencyInput @currency={{this.currency}} @value={{this.currencyValue}}
                           @onChange={{this.onCurrencyInputChange}}
                           @errorMessage="This is an error message" />
@@ -556,36 +608,6 @@
       <div class="fx-row fx-1">
         <OSS::PhoneNumberInput @prefix={{this.phonePrefix}} @number={{this.phoneNumber}}
                                @onChange={{this.onPhoneNumberChange}} />
-      </div>
-      <div class="fx-col fx-gap-px-12">
-        <OSS::Banner @icon="fas fa-box-open" @title="Shopify" @selected={{true}}
-                     @subtitle="Identify influencers in your Shopify customers database">
-          <:actions>
-            <OSS::RadioButton @selected={{true}} />
-          </:actions>
-        </OSS::Banner>
-        <OSS::Banner @icon="fas fa-box-open" @title="Import creators inside your campaign"
-                     @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file. ">
-          <:custom-icon>
-            <OSS::Badge @text="2x" @size="lg" />
-          </:custom-icon>
-          <:actions>
-            <OSS::Button @skin="primary" @label="browse" @icon="fas fa-box-open" @size="md" />
-            <OSS::Button @skin="secondary" @label="test" @icon="fas fa-box-open" @size="md" />
-          </:actions>
-        </OSS::Banner>
-        <OSS::Banner @icon="fas fa-box-open" @title="Import creators inside your campaign"
-                     @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file." />
-        <OSS::Banner @title="Banner without icon"
-                     @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file." />
-        <OSS::Bruce
-                    @image="https://thepressfree.com/wp-content/uploads/2021/11/Voici-pourquoi-Bruce-Banner-netait-plus-Smart-Hulk-dans-la-800x445.jpg"
-                    @title="Import creators inside your campaign" @plain={{true}}
-                    @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file. ">
-          <:actions>
-            <OSS::Button @skin="secondary" @label="action" @icon="fas fa-box-open" @size="md" />
-          </:actions>
-        </OSS::Bruce>
       </div>
     </div>
 
