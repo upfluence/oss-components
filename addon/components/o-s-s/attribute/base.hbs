@@ -12,8 +12,8 @@
       {{@value}}
     </span>
   {{/if}}
-  {{#if (and this.displayCopyBtn this.isCopyable)}}
-    <div class="oss-attribute__copy">
+  {{#if this.isCopyable}}
+    <div class="oss-attribute__copy {{if this.displayCopyBtn 'oss-attribute__copy--visible'}}">
       <OSS::Copy @value={{@value}} @inline={{true}} />
     </div>
   {{/if}}

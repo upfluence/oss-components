@@ -45,7 +45,7 @@ export default class OSSSkeleton extends Component<OSSSkeletonArgs> {
   }
 
   get computedClass(): string {
-    let style: String[] = [`fx-gap-px-${this.gap}`];
+    let style: string[] = [`fx-gap-px-${this.gap}`];
 
     this.direction === 'row' ? style.push('fx-row') : style.push('fx-col');
 
