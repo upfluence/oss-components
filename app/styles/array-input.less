@@ -13,11 +13,6 @@
   max-height: 90px;
   overflow-y: auto;
 
-  background-color: var(--color-white);
-  border: 1px solid var(--color-border-default);
-
-  transition: all 250ms ease-in-out;
-
   &:not(&--disabled) {
     &:hover {
       .input-state-hover;
@@ -30,6 +25,20 @@
 
     &:focus-within {
       .input-state-focus;
+    }
+  }
+
+  &--transparent {
+    background-color: transparent;
+    border: none;
+
+    &:not(&.array-input-container--disabled) {
+      &:hover,
+      &:active,
+      &.active,
+      &:focus-within {
+        .input-state-reset;
+      }
     }
   }
 

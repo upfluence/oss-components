@@ -55,7 +55,7 @@ module('Integration | Component | o-s-s/text-area', function (hooks) {
     test('Default height', async function (assert) {
       await render(hbs`<OSS::TextArea />`);
 
-      assert.equal(document.querySelector(this.textareaSelector).offsetHeight, 52);
+      assert.equal(document.querySelector(this.textareaSelector).offsetHeight, 40);
     });
 
     test('Row change height', async function (assert) {
@@ -89,7 +89,8 @@ module('Integration | Component | o-s-s/text-area', function (hooks) {
 
     test('passing data-control-name works', async function (assert) {
       await render(hbs`<OSS::TextArea data-control-name="description-input" />`);
-      let inputWrapper: Element | null = document.querySelector('.fx-1');
+      let inputWrapper: Element | null = document.querySelector('.oss-textarea-container');
+
       assert.equal(inputWrapper?.getAttribute('data-control-name'), 'description-input');
     });
   });

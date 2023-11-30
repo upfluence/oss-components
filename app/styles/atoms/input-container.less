@@ -29,6 +29,12 @@
   }
 }
 
+.input-state-reset {
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+}
+
 .upf-input--errored {
   .border;
   .border-color-error;
@@ -104,6 +110,21 @@
     width: 100%;
   }
 
+  &--transparent {
+    background-color: transparent;
+
+    &:not(:disabled, .disabled) {
+      .yielded-input input,
+      .upf-input {
+        &:hover,
+        &:active,
+        &:focus {
+          .input-state-reset;
+        }
+      }
+    }
+  }
+
   &--errored {
     .yielded-input input,
     .upf-input {
@@ -128,7 +149,8 @@
     .morpheme;
     right: 0;
     i,
-    div {
+    div,
+    span {
       padding-right: 12px;
       padding-left: 12px;
       height: 100%;
