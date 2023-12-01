@@ -56,7 +56,6 @@ export default class ApplicationController extends Controller {
   @tracked selectedCountry = null;
   @tracked selectedProvince = null;
   @tracked superHeroes = ['Iron Man', 'Thor', 'Loki', 'Hulk'];
-  @tracked selection = [];
   @tracked loading = false;
   @tracked phonePrefix = '+33';
   @tracked phoneNumber = '782828282';
@@ -322,11 +321,6 @@ export default class ApplicationController extends Controller {
   @action
   onPowerSelectChange(item, operation) {
     console.log('onPowerSelectChange :', item, operation);
-
-    if (operation === 'selection') {
-      console.log('je suis ici');
-      this.selection.push(item);
-    }
   }
 
   @action
