@@ -1,109 +1,25 @@
-.upf-input {
-  border: 1px solid var(--color-border-default);
-  color: var(--color-gray-900);
-  background-color: var(--color-white);
+.oss-input-container {
+  position: relative;
 
-  transition: all 250ms ease-in-out;
+  .yielded-input input {
+    &:extend(.upf-input);
+    width: 100%;
 
-  &::placeholder {
-    color: var(--color-gray-400);
-  }
-
-  &:not(:disabled, .disabled) {
     &:hover {
       .input-state-hover;
+    }
+
+    &:focus {
+      .input-state-focus;
     }
 
     &:active {
       .input-state-active;
     }
 
-    &:focus {
-      .input-state-focus;
+    &:disabled {
+      .input-state-disabled;
     }
-  }
-
-  &.disabled,
-  &:disabled {
-    .input-state-disabled;
-  }
-}
-
-.input-state-reset {
-  border: none;
-  background-color: transparent;
-  box-shadow: none;
-}
-
-.upf-input--errored {
-  .border;
-  .border-color-error;
-  .border-radius-default;
-
-  &:not(:disabled, .disabled) {
-    &:hover {
-      .input-state-error-hover;
-    }
-
-    &:active {
-      .input-state-error-active;
-    }
-
-    &:focus {
-      .input-state-error-focus;
-    }
-  }
-}
-
-.input-state-hover {
-  border: 1px solid var(--color-gray-300);
-  background-color: var(--color-gray-100);
-}
-
-.input-state-error-hover {
-  .border-color-error;
-  background-color: var(--color-gray-100);
-}
-
-.input-state-active {
-  border: 1px solid var(--color-gray-100);
-  box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
-  background-color: var(--color-white);
-}
-
-.input-state-error-active {
-  .border-color-error;
-  box-shadow: 0px 0px 0px 2px var(--color-error-100), var(--box-shadow-xs);
-  background-color: var(--color-white);
-}
-
-.reset-box-shadow {
-  box-shadow: none;
-}
-
-.input-state-focus {
-  .input-state-active;
-  border: 1px solid var(--color-gray-300);
-}
-
-.input-state-error-focus {
-  .input-state-error-active;
-  .border-color-error;
-}
-
-.input-state-disabled {
-  cursor: not-allowed;
-  pointer-events: none;
-  color: var(--color-gray-400);
-  background-color: var(--color-gray-200);
-}
-
-.oss-input-container {
-  position: relative;
-
-  .yielded-input input {
-    .upf-input;
-    width: 100%;
   }
 
   .upf-input {
