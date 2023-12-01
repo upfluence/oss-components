@@ -12726,6 +12726,11 @@ For complete information visit: www.freakflagsprite.com
 }
 .oss-attribute__copy {
   margin-left: auto;
+  opacity: 0;
+  transition: opacity 0.25s ease-in-out;
+}
+.oss-attribute__copy--visible {
+  opacity: 1;
 }
 .oss-attribute--auto-height {
   height: auto;

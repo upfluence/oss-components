@@ -3811,7 +3811,6 @@ define("dummy/tests/integration/components/o-s-s/attribute/text-test", ["@ember/
       (0, _qunit.module)('Copy action', function (hooks) {
         hooks.beforeEach(function () {
           this.textForCopy = 'copied value';
-          this.displayCopyBtn = true;
         });
         (0, _qunit.test)('The copy icon is not visible before hovering', /*#__PURE__*/function () {
           var _ref7 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee6(assert) {
@@ -3832,7 +3831,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/text-test", ["@ember/
                     }));
 
                   case 2:
-                    assert.dom('.oss-attribute__copy').doesNotExist();
+                    assert.dom('.oss-attribute__copy--visible').doesNotExist();
 
                   case 3:
                   case "end":
@@ -3906,7 +3905,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/text-test", ["@ember/
                     return (0, _triggerEvent.default)('.oss-attribute', 'mouseenter');
 
                   case 4:
-                    assert.dom('.oss-attribute__copy').exists();
+                    assert.dom('.oss-attribute__copy--visible').exists();
 
                   case 5:
                   case "end":
@@ -22082,7 +22081,7 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["@ember/
               switch (_context8.prev = _context8.next) {
                 case 0:
                   (0, _setupOnerror.default)(function (err) {
-                    assert.equal(err.message, 'Assertion Failed: [component][OSS::ToggleButtons] The @selectedToggle parameter of type string is mandatory');
+                    assert.equal(err.message, 'Assertion Failed: [component][OSS::ToggleButtons] The @selectedToggle parameter of type string or null is mandatory');
                   });
                   _context8.next = 3;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -22120,7 +22119,7 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["@ember/
                 case 0:
                   this.selectedToggle = 'toto';
                   (0, _setupOnerror.default)(function (err) {
-                    assert.equal(err.message, 'Assertion Failed: [component][OSS::ToggleButtons] The @selectedToggle parameter should be a value of toggles');
+                    assert.equal(err.message, 'Assertion Failed: [component][OSS::ToggleButtons] The @selectedToggle parameter should be null or a value of toggles');
                   });
                   _context9.next = 4;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(

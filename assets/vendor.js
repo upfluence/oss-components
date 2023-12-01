@@ -85292,8 +85292,8 @@ define("@upfluence/oss-components/components/o-s-s/attribute/base", ["exports", 
         {{@value}}
       </span>
     {{/if}}
-    {{#if (and this.displayCopyBtn this.isCopyable)}}
-      <div class="oss-attribute__copy">
+    {{#if this.isCopyable}}
+      <div class="oss-attribute__copy {{if this.displayCopyBtn 'oss-attribute__copy--visible'}}">
         <OSS::Copy @value={{@value}} @inline={{true}} />
       </div>
     {{/if}}
@@ -85301,8 +85301,8 @@ define("@upfluence/oss-components/components/o-s-s/attribute/base", ["exports", 
   
   */
   {
-    "id": "rIdM3+CQ",
-    "block": "[[[11,0],[24,0,\"oss-attribute\"],[17,1],[4,[38,0],[\"mouseenter\",[28,[37,1],[[28,[37,2],[[30,0,[\"displayCopyBtn\"]]],null],true],null]],null],[4,[38,0],[\"mouseleave\",[28,[37,1],[[28,[37,2],[[30,0,[\"displayCopyBtn\"]]],null],false],null]],null],[12],[1,\"\\n\"],[41,[48,[30,3]],[[[1,\"    \"],[10,0],[14,0,\"oss-attribute__label\"],[12],[18,3,null],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,4]],[[[1,\"    \"],[10,0],[14,0,\"oss-attribute__value\"],[12],[18,4,null],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[10,1],[14,0,\"oss-attribute__value\"],[12],[1,\"\\n      \"],[1,[30,2]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]]],[41,[28,[37,6],[[30,0,[\"displayCopyBtn\"]],[30,0,[\"isCopyable\"]]],null],[[[1,\"    \"],[10,0],[14,0,\"oss-attribute__copy\"],[12],[1,\"\\n      \"],[8,[39,7],null,[[\"@value\",\"@inline\"],[[30,2],true]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@value\",\"&label\",\"&value\"],false,[\"on\",\"fn\",\"mut\",\"if\",\"has-block\",\"yield\",\"and\",\"o-s-s/copy\"]]",
+    "id": "wEEMAQy4",
+    "block": "[[[11,0],[24,0,\"oss-attribute\"],[17,1],[4,[38,0],[\"mouseenter\",[28,[37,1],[[28,[37,2],[[30,0,[\"displayCopyBtn\"]]],null],true],null]],null],[4,[38,0],[\"mouseleave\",[28,[37,1],[[28,[37,2],[[30,0,[\"displayCopyBtn\"]]],null],false],null]],null],[12],[1,\"\\n\"],[41,[48,[30,3]],[[[1,\"    \"],[10,0],[14,0,\"oss-attribute__label\"],[12],[18,3,null],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,4]],[[[1,\"    \"],[10,0],[14,0,\"oss-attribute__value\"],[12],[18,4,null],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[10,1],[14,0,\"oss-attribute__value\"],[12],[1,\"\\n      \"],[1,[30,2]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]]],[41,[30,0,[\"isCopyable\"]],[[[1,\"    \"],[10,0],[15,0,[29,[\"oss-attribute__copy \",[52,[30,0,[\"displayCopyBtn\"]],\"oss-attribute__copy--visible\"]]]],[12],[1,\"\\n      \"],[8,[39,6],null,[[\"@value\",\"@inline\"],[[30,2],true]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@value\",\"&label\",\"&value\"],false,[\"on\",\"fn\",\"mut\",\"if\",\"has-block\",\"yield\",\"o-s-s/copy\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/attribute/base.hbs",
     "isStrictMode": false
   });
@@ -96694,7 +96694,7 @@ define("@upfluence/oss-components/components/o-s-s/social-post-badge", ["exports
         table: {
           category: 'Actions',
           type: {
-            summary: 'onToggle(postType: String): void'
+            summary: 'onToggle(postType: string): void'
           }
         }
       }
@@ -97912,17 +97912,17 @@ define("@upfluence/oss-components/components/o-s-s/toggle-buttons", ["exports", 
   /*
     <div class="oss-toggle-buttons-container" ...attributes>
     {{#each @toggles as |toggle|}}
-    <div class="oss-toggle-buttons-btn {{if (eq @selectedToggle toggle.value) " oss-toggle-buttons-btn--selected"}}"
-      role="button" {{on "click" (fn this.onSelectToggle toggle.value)}}>
-      {{toggle.label}}
-    </div>
+      <div class="oss-toggle-buttons-btn {{if (eq @selectedToggle toggle.value) " oss-toggle-buttons-btn--selected"}}"
+        role="button" {{on "click" (fn this.onSelectToggle toggle.value)}}>
+        {{toggle.label}}
+      </div>
     {{/each}}
   </div>
   
   */
   {
-    "id": "vcJSudDw",
-    "block": "[[[11,0],[24,0,\"oss-toggle-buttons-container\"],[17,1],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,2]],null]],null],null,[[[1,\"  \"],[11,0],[16,0,[29,[\"oss-toggle-buttons-btn \",[52,[28,[37,3],[[30,4],[30,3,[\"value\"]]],null],\" oss-toggle-buttons-btn--selected\"]]]],[24,\"role\",\"button\"],[4,[38,4],[\"click\",[28,[37,5],[[30,0,[\"onSelectToggle\"]],[30,3,[\"value\"]]],null]],null],[12],[1,\"\\n    \"],[1,[30,3,[\"label\"]]],[1,\"\\n  \"],[13],[1,\"\\n\"]],[3]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@toggles\",\"toggle\",\"@selectedToggle\"],false,[\"each\",\"-track-array\",\"if\",\"eq\",\"on\",\"fn\"]]",
+    "id": "SXkkoW0o",
+    "block": "[[[11,0],[24,0,\"oss-toggle-buttons-container\"],[17,1],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,2]],null]],null],null,[[[1,\"    \"],[11,0],[16,0,[29,[\"oss-toggle-buttons-btn \",[52,[28,[37,3],[[30,4],[30,3,[\"value\"]]],null],\" oss-toggle-buttons-btn--selected\"]]]],[24,\"role\",\"button\"],[4,[38,4],[\"click\",[28,[37,5],[[30,0,[\"onSelectToggle\"]],[30,3,[\"value\"]]],null]],null],[12],[1,\"\\n      \"],[1,[30,3,[\"label\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[3]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@toggles\",\"toggle\",\"@selectedToggle\"],false,[\"each\",\"-track-array\",\"if\",\"eq\",\"on\",\"fn\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/toggle-buttons.hbs",
     "isStrictMode": false
   });
@@ -97940,10 +97940,10 @@ define("@upfluence/oss-components/components/o-s-s/toggle-buttons", ["exports", 
       _this = _super.call(this, owner, args);
       (true && !(_this.args.toggles instanceof Array) && (0, _debug.assert)('[component][OSS::ToggleButtons] The @toggles parameter of type Toggle[] is mandatory', _this.args.toggles instanceof Array));
       (true && !(typeof args.onSelection === 'function') && (0, _debug.assert)('[component][OSS::ToggleButtons] The @onSelection parameter of type function is mandatory', typeof args.onSelection === 'function'));
-      (true && !(typeof args.selectedToggle === 'string') && (0, _debug.assert)('[component][OSS::ToggleButtons] The @selectedToggle parameter of type string is mandatory', typeof args.selectedToggle === 'string'));
-      (true && !(args.toggles.map(function (item) {
+      (true && !(args.selectedToggle === null || typeof args.selectedToggle === 'string') && (0, _debug.assert)('[component][OSS::ToggleButtons] The @selectedToggle parameter of type string or null is mandatory', args.selectedToggle === null || typeof args.selectedToggle === 'string'));
+      (true && !(args.selectedToggle === null || args.toggles.map(function (item) {
         return item.value;
-      }).includes(args.selectedToggle)) && (0, _debug.assert)('[component][OSS::ToggleButtons] The @selectedToggle parameter should be a value of toggles', args.toggles.map(function (item) {
+      }).includes(args.selectedToggle)) && (0, _debug.assert)('[component][OSS::ToggleButtons] The @selectedToggle parameter should be null or a value of toggles', args.selectedToggle === null || args.toggles.map(function (item) {
         return item.value;
       }).includes(args.selectedToggle)));
       return _this;
@@ -97983,8 +97983,7 @@ define("@upfluence/oss-components/components/o-s-s/toggle-buttons", ["exports", 
         description: 'An array of toggles passed to the component',
         table: {
           type: {
-            summary: 'toggles',
-            object: 'test'
+            summary: '{value: string, label: string}[]'
           },
           defaultValue: {
             summary: 'undefined'
@@ -98001,14 +98000,14 @@ define("@upfluence/oss-components/components/o-s-s/toggle-buttons", ["exports", 
         description: 'Value selected',
         table: {
           type: {
-            summary: 'selectedToggle'
+            summary: 'string | null'
           },
           defaultValue: {
             summary: 'undefined'
           }
         },
         control: {
-          type: 'object'
+          type: 'text'
         }
       },
       onSelection: {
@@ -98019,7 +98018,7 @@ define("@upfluence/oss-components/components/o-s-s/toggle-buttons", ["exports", 
         table: {
           category: 'Actions',
           type: {
-            summary: 'onSelection(selectedToggle: String): void'
+            summary: 'onSelection(selectedToggle: string): void'
           }
         }
       }
@@ -110623,36 +110622,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-2033aUrsnfrXlzZ2/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-2012UvOXCE9F0vTK/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-2033aUrsnfrXlzZ2/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-2012UvOXCE9F0vTK/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2033aUrsnfrXlzZ2/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2012UvOXCE9F0vTK/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-2033aUrsnfrXlzZ2/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-2012UvOXCE9F0vTK/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-2033aUrsnfrXlzZ2/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-2012UvOXCE9F0vTK/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2033aUrsnfrXlzZ2/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2012UvOXCE9F0vTK/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-2033aUrsnfrXlzZ2/cache-275-bundler/staging/l.js /tmp/broccoli-2033aUrsnfrXlzZ2/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-2012UvOXCE9F0vTK/cache-275-bundler/staging/l.js /tmp/broccoli-2012UvOXCE9F0vTK/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-2033aUrsnfrXlzZ2/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-2033aUrsnfrXlzZ2/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-2033aUrsnfrXlzZ2/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-2033aUrsnfrXlzZ2/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-2033aUrsnfrXlzZ2/cache-275-bundler/staging/l.js_/tmp/broccoli-2033aUrsnfrXlzZ2/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-2012UvOXCE9F0vTK/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-2012UvOXCE9F0vTK/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-2012UvOXCE9F0vTK/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-2012UvOXCE9F0vTK/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-2012UvOXCE9F0vTK/cache-275-bundler/staging/l.js_/tmp/broccoli-2012UvOXCE9F0vTK/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
