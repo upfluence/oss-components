@@ -1,8 +1,8 @@
 <div class="oss-toggle-buttons-container" ...attributes>
   {{#each @toggles as |toggle|}}
-  <div class="oss-toggle-buttons-btn {{if (eq @selectedToggle toggle.value) " oss-toggle-buttons-btn--selected"}}"
-    role="button" {{on "click" (fn this.onSelectToggle toggle.value)}}>
-    {{toggle.label}}
-  </div>
+    <div class="oss-toggle-buttons-btn {{if (eq @selectedToggle toggle.value) " oss-toggle-buttons-btn--selected"}}"
+      role="button" {{on "click" (fn this.onSelectToggle toggle.value)}}>
+      {{toggle.label}}
+    </div>
   {{/each}}
 </div>

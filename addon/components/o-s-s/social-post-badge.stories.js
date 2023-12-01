@@ -54,7 +54,7 @@ export default {
       table: {
         category: 'Actions',
         type: {
-          summary: 'onToggle(postType: String): void'
+          summary: 'onToggle(postType: string): void'
         }
       }
     }

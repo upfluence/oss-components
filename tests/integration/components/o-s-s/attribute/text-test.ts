@@ -44,12 +44,11 @@ module('Integration | Component | o-s-s/attribute/text', function (hooks) {
     module('Copy action', function (hooks) {
       hooks.beforeEach(function () {
         this.textForCopy = 'copied value';
-        this.displayCopyBtn = true;
       });
 
       test('The copy icon is not visible before hovering', async function (assert) {
         await render(hbs`<OSS::Attribute::Text @label="Hello" @value={{this.textForCopy}} />`);
-        assert.dom('.oss-attribute__copy').doesNotExist();
+        assert.dom('.oss-attribute__copy--visible').doesNotExist();
       });
 
       test('The text is copyable by default', async function (assert) {
@@ -62,7 +61,7 @@ module('Integration | Component | o-s-s/attribute/text', function (hooks) {
       test('The text is copyable if the @copyable argument is truthy', async function (assert) {
         await render(hbs`<OSS::Attribute::Text @label="Hello" @value={{this.textForCopy}} @copyable={{true}} />`);
         await triggerEvent('.oss-attribute', 'mouseenter');
-        assert.dom('.oss-attribute__copy').exists();
+        assert.dom('.oss-attribute__copy--visible').exists();
       });
 
       test('The text is not copyable (no copy button) if the argument is falsy', async function (assert) {

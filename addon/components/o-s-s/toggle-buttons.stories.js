@@ -10,8 +10,7 @@ export default {
       description: 'An array of toggles passed to the component',
       table: {
         type: {
-          summary: 'toggles',
-          object: 'test'
+          summary: '{value: string, label: string}[]'
         },
         defaultValue: { summary: 'undefined' }
       },
@@ -22,11 +21,11 @@ export default {
       description: 'Value selected',
       table: {
         type: {
-          summary: 'selectedToggle'
+          summary: 'string | null'
         },
         defaultValue: { summary: 'undefined' }
       },
-      control: { type: 'object' }
+      control: { type: 'text' }
     },
     onSelection: {
       type: { required: true },
@@ -34,7 +33,7 @@ export default {
       table: {
         category: 'Actions',
         type: {
-          summary: 'onSelection(selectedToggle: String): void'
+          summary: 'onSelection(selectedToggle: string): void'
         }
       }
     }

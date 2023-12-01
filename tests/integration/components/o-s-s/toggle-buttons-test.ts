@@ -111,7 +111,7 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
       setupOnerror((err: any) => {
         assert.equal(
           err.message,
-          'Assertion Failed: [component][OSS::ToggleButtons] The @selectedToggle parameter of type string is mandatory'
+          'Assertion Failed: [component][OSS::ToggleButtons] The @selectedToggle parameter of type string or null is mandatory'
         );
       });
       await render(hbs`<OSS::ToggleButtons @toggles={{this.toggles}} @onSelection={{this.onSelection}}  />`);
@@ -124,7 +124,7 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
       setupOnerror((err: any) => {
         assert.equal(
           err.message,
-          'Assertion Failed: [component][OSS::ToggleButtons] The @selectedToggle parameter should be a value of toggles'
+          'Assertion Failed: [component][OSS::ToggleButtons] The @selectedToggle parameter should be null or a value of toggles'
         );
       });
       await render(
