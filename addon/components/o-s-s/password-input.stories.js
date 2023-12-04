@@ -54,6 +54,15 @@ export default {
           summary: 'validates?(isPassing: boolean): void'
         }
       }
+    },
+    validatorSet: {
+      description:
+        'An optional parameter that allows to overwrite the Validator set that is used by the component. The original set is exported and is available for external usage.',
+      table: {
+        type: {
+          summary: 'validatorSet: { [key: string]: { labelKey: string; regex: RegExp } };'
+        }
+      }
     }
   },
   parameters: {
@@ -70,13 +79,14 @@ const defaultArgs = {
   disabled: false,
   placeholder: '*****',
   errorMessage: undefined,
-  validates: action('validates')
+  validates: action('validates'),
+  validatorSet: undefined
 };
 
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
       <OSS::PasswordInput @value={{this.value}} @placeholder={{this.placeholder}} @validates={{this.validates}}
-                          @disabled={{this.disabled}} />
+                          @disabled={{this.disabled}} @validatorSet={{this.validatorSet}} />
   `,
   context: args
 });

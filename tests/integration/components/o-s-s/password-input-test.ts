@@ -125,6 +125,43 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
     });
   });
 
+  module('Passing a @validorSet sets uses the custom validators', (hooks) => {
+    hooks.beforeEach(function () {
+      this.validatorSet = {
+        lowercase: { labelKey: 'oss-components.password-input.validators.lowercase', regex: /(?=.*[a-z]).*/ }
+      };
+    });
+
+    test('The custom validator is visible', async function (assert) {
+      this.value = '';
+      await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}}
+                                           @validatorSet={{this.validatorSet}} />`);
+      assert.dom('[data-control-name="password-input-validator-lowercase"]').exists();
+    });
+
+    test('Lowercase - if no lowercase character is inputed, a validator error is shown', async function (assert) {
+      this.value = 'AZE';
+      await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}}
+                                           @validatorSet={{this.validatorSet}} />`);
+      assert.dom('[data-control-name="password-input-validator-lowercase"]').hasClass('font-color-error-500');
+    });
+
+    test('Lowercase - if an lowercase character is inputed, a validator success is shown', async function (assert) {
+      this.value = 'aze';
+      await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}}
+                                           @validatorSet={{this.validatorSet}} />`);
+      assert.dom('[data-control-name="password-input-validator-lowercase"]').hasClass('font-color-success-500');
+    });
+
+    test('When all validators are matched, the @validates method sends a truthy argument', async function (assert) {
+      this.value = '123azeAZE';
+      await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}}
+                                           @validatorSet={{this.validatorSet}} />`);
+      await typeIn('input', 'a');
+      assert.true(this.validates.calledOnceWith(true));
+    });
+  });
+
   test('it throws an error when the @value parameter is missing', async function (assert) {
     setupOnerror((err: any) => {
       assert.equal(err.message, 'Assertion Failed: [component][OSS::PasswordInput] The @value parameter is mandatory');

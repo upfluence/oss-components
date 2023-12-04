@@ -6,12 +6,20 @@ import { assert } from '@ember/debug';
 import { isEmpty } from '@ember/utils';
 import { helper } from '@ember/component/helper';
 
+export type ValidatorSet = { [key: string]: { labelKey: string; regex: RegExp } };
+export const INPUT_VALIDATORS: ValidatorSet = {
+  uppercase: { labelKey: 'oss-components.password-input.validators.uppercase', regex: /(?=.*[A-Z]).*/ },
+  number: { labelKey: 'oss-components.password-input.validators.number', regex: /(?=.*\d).*/ },
+  length: { labelKey: 'oss-components.password-input.validators.length', regex: /.{8,}/ }
+};
+
 interface OSSPasswordInputArgs {
   value: string | null;
   placeholder?: string;
   errorMessage?: string;
   disabled?: boolean;
   validates?(isPassing: boolean): void;
+  validatorSet?: ValidatorSet;
 }
 
 type InputValidator = 'uppercase' | 'number' | 'length';
@@ -24,11 +32,6 @@ type ValidationTemplateAttributes = {
   labelKey: string;
 };
 
-const INPUT_VALIDATORS: { [key: string]: { labelKey: string; regex: RegExp } } = {
-  uppercase: { labelKey: 'oss-components.password-input.validators.uppercase', regex: /(?=.*[A-Z]).*/ },
-  number: { labelKey: 'oss-components.password-input.validators.number', regex: /(?=.*\d).*/ },
-  length: { labelKey: 'oss-components.password-input.validators.length', regex: /.{8,}/ }
-};
 const STATE_CLASS_MAPPING: { [key: string]: ValidationStateClass } = {
   default: 'font-color-gray-500',
   success: 'font-color-success-500',
@@ -55,8 +58,12 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
     this.placeholder = args.placeholder || this.intl.t('oss-components.password-input.placeholder');
   }
 
+  get validatorSet(): ValidatorSet {
+    return this.args.validatorSet ?? INPUT_VALIDATORS;
+  }
+
   get inputValidators(): string[] {
-    return Object.keys(INPUT_VALIDATORS);
+    return Object.keys(this.validatorSet);
   }
 
   get visibilityIcon(): 'fa-eye' | 'fa-eye-slash' {
@@ -67,7 +74,7 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
   }
 
   get errorMessage(): string | null {
-    return this.args.validates ? null : this.args.errorMessage ?? this.regexError ?? null;
+    return this.args.validates ? null : this.args.errorMessage ?? this.regexError;
   }
 
   get validationIcons(): { state: ValidationState; icon: ValidationStateIcon }[] {
@@ -80,9 +87,9 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
   }
 
   validatorAttributes = helper((_, { type }: { type: InputValidator }): ValidationTemplateAttributes => {
-    const state = this.validationStateFromRegex(INPUT_VALIDATORS[type].regex);
+    const state = this.validationStateFromRegex(this.validatorSet[type].regex);
     return {
-      labelKey: INPUT_VALIDATORS[type].labelKey,
+      labelKey: this.validatorSet[type].labelKey,
       class: STATE_CLASS_MAPPING[state],
       state
     };
@@ -116,19 +123,11 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
   }
 
   private testAllValidators(): boolean {
-    let passesAllTests = true;
-    this.inputValidators.forEach((index: InputValidator) => {
-      if (!INPUT_VALIDATORS[index].regex.test(this.args.value!)) passesAllTests = false;
-    });
-    return passesAllTests;
+    return this.inputValidators.every((index: InputValidator) => this.validatorSet[index].regex.test(this.args.value!));
   }
 
   private validationStateFromRegex(regex: RegExp): ValidationState {
     if (isEmpty(this.args.value)) return 'default';
-    else if (regex.test(this.args.value!)) {
-      return 'success';
-    } else {
-      return 'error';
-    }
+    return regex.test(this.args.value!) ? 'success' : 'error';
   }
 }
