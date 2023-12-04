@@ -45,18 +45,9 @@ export default {
       },
       control: { type: 'boolean' }
     },
-    validateFormat: {
-      description: 'Whether or not to validate the password format with the RegEx',
-      table: {
-        type: {
-          summary: 'boolean'
-        },
-        defaultValue: { summary: true }
-      },
-      control: { type: 'boolean' }
-    },
     validates: {
-      description: 'A callback that indicates whether or not the current input matches the regex',
+      description:
+        'A callback that indicates whether or not the current input matches the regex. It also enables the input validation.',
       table: {
         category: 'Actions',
         type: {
@@ -79,13 +70,12 @@ const defaultArgs = {
   disabled: false,
   placeholder: '*****',
   errorMessage: undefined,
-  validateFormat: true,
   validates: action('validates')
 };
 
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
-      <OSS::PasswordInput @value={{this.value}} @placeholder={{this.placeholder}} @validateFormat={{this.validateFormat}} @validates={{this.validates}}
+      <OSS::PasswordInput @value={{this.value}} @placeholder={{this.placeholder}} @validates={{this.validates}}
                           @disabled={{this.disabled}} />
   `,
   context: args

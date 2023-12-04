@@ -2,9 +2,14 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror, click, typeIn } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
+import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/password-input', function (hooks) {
   setupRenderingTest(hooks);
+
+  hooks.beforeEach(function () {
+    this.validates = sinon.stub();
+  });
 
   test('it renders', async function (assert) {
     await render(hbs`<OSS::PasswordInput @value="" />`);
@@ -43,17 +48,6 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
     assert.dom('input').hasAttribute('type', 'password');
   });
 
-  test('If the password regex isnt matched, then the error message is displayed', async function (assert) {
-    this.value = '';
-    await render(hbs`<OSS::PasswordInput @value={{this.value}} />`);
-    await typeIn('input', 'az');
-    assert
-      .dom('.text-color-error')
-      .hasText(
-        'Your password should have at least 8 characters with at least one lower-case character, one upper-case character and one digit.'
-      );
-  });
-
   test('If the password regex is matched, and the @validates method is passed, then the status of the validation is returned', async function (assert) {
     this.value = '1Aaaaaa';
     this.validates = (x: boolean) => {
@@ -70,6 +64,65 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
     };
     await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
     await typeIn('input', 'a');
+  });
+
+  test('The password validation is not enabled if the @validates method is not passed', async function (assert) {
+    this.value = '';
+    await render(hbs`<OSS::PasswordInput @value={{this.value}} />`);
+    await typeIn('input', 'az');
+    assert.dom('.text-color-error').doesNotExist();
+    assert.dom('[data-control-name="password-input-validators"]').doesNotExist();
+  });
+
+  test('If the @validates method is passed, the validators states are visible', async function (assert) {
+    this.value = '';
+    await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
+    assert.dom('[data-control-name="password-input-validators"]').exists();
+  });
+
+  module('Validators', () => {
+    test('Uppercase - if no uppercase character is inputed, a validator error is shown', async function (assert) {
+      this.value = 'aze';
+      await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
+      assert.dom('[data-control-name="password-input-validator-uppercase"]').hasClass('font-color-error-500');
+    });
+
+    test('Uppercase - if an uppercase character is inputed, a validator success is shown', async function (assert) {
+      this.value = 'AZE';
+      await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
+      assert.dom('[data-control-name="password-input-validator-uppercase"]').hasClass('font-color-success-500');
+    });
+
+    test('Number - if no number is inputed, a validator error is shown', async function (assert) {
+      this.value = 'aze';
+      await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
+      assert.dom('[data-control-name="password-input-validator-number"]').hasClass('font-color-error-500');
+    });
+
+    test('Uppercase - if a number is inputed, a validator success is shown', async function (assert) {
+      this.value = '123';
+      await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
+      assert.dom('[data-control-name="password-input-validator-number"]').hasClass('font-color-success-500');
+    });
+
+    test('Length - if the password is not at least 8 characters long, a validator error is shown', async function (assert) {
+      this.value = '123';
+      await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
+      assert.dom('[data-control-name="password-input-validator-length"]').hasClass('font-color-error-500');
+    });
+
+    test('Length - if the password has 8 characters, a validator success is shown', async function (assert) {
+      this.value = '12345678';
+      await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
+      assert.dom('[data-control-name="password-input-validator-length"]').hasClass('font-color-success-500');
+    });
+
+    test('When all validators are matched, the @validates method sends a truthy argument', async function (assert) {
+      this.value = '123azeAZE';
+      await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
+      await typeIn('input', 'a');
+      assert.true(this.validates.calledOnceWith(true));
+    });
   });
 
   test('it throws an error when the @value parameter is missing', async function (assert) {
