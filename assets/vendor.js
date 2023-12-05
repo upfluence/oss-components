@@ -87554,10 +87554,13 @@ define("@upfluence/oss-components/components/o-s-s/banner", ["exports", "@ember/
       <img class="upf-badge upf-badge--size-md upf-badge--shape-round" src={{@image}} alt="banner" />
     {{/if}}
     <div class="fx-col fx-1 {{if (not-eq @size 'sm') 'fx-gap-px-3'}}">
-      {{#if (has-block "title")}}
-        {{yield to="title"}}
-      {{else if @title}}
-        <span class="font-weight-semibold text-size-5 font-color-gray-900">{{@title}}</span>
+      {{#if @title}}
+        <div class="fx-row fx-xalign-center">
+          <span class="font-weight-semibold text-size-5 font-color-gray-900">{{@title}}</span>
+          {{#if (has-block "title-suffix")}}
+            {{yield to="title-suffix"}}
+          {{/if}}
+        </div>
       {{/if}}
       {{#if @subtitle}}
         <span class="text-size-4 font-color-gray-500">{{@subtitle}}</span>
@@ -87573,8 +87576,8 @@ define("@upfluence/oss-components/components/o-s-s/banner", ["exports", "@ember/
   
   */
   {
-    "id": "+JFXrFwN",
-    "block": "[[[11,0],[16,0,[29,[\"upf-banner fx-1 fx-row fx-xalign-center fx-gap-px-12 \",[30,0,[\"modifierClasses\"]]]]],[17,1],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"    \"],[10,0],[12],[18,7,null],[13],[1,\"\\n\"]],[]],[[[41,[30,2],[[[1,\"    \"],[8,[39,3],[[16,0,[29,[\"upf-badge upf-badge--shape-round \",[30,0,[\"iconSizeClass\"]]]]]],[[\"@style\",\"@icon\"],[[28,[37,4],[[30,2]],null],[28,[37,5],[[30,2]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,3],[[[1,\"    \"],[10,\"img\"],[14,0,\"upf-badge upf-badge--size-md upf-badge--shape-round\"],[15,\"src\",[30,3]],[14,\"alt\",\"banner\"],[12],[13],[1,\"\\n  \"]],[]],null]],[]]]],[]]],[1,\"  \"],[10,0],[15,0,[29,[\"fx-col fx-1 \",[52,[28,[37,6],[[30,4],\"sm\"],null],\"fx-gap-px-3\"]]]],[12],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"      \"],[18,8,null],[1,\"\\n\"]],[]],[[[41,[30,5],[[[1,\"      \"],[10,1],[14,0,\"font-weight-semibold text-size-5 font-color-gray-900\"],[12],[1,[30,5]],[13],[1,\"\\n    \"]],[]],null]],[]]],[41,[30,6],[[[1,\"      \"],[10,1],[14,0,\"text-size-4 font-color-gray-500\"],[12],[1,[30,6]],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,9]],[[[1,\"      \"],[18,9,null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[48,[30,10]],[[[1,\"    \"],[10,0],[12],[18,10,null],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@image\",\"@size\",\"@title\",\"@subtitle\",\"&custom-icon\",\"&title\",\"&secondary-actions\",\"&actions\"],false,[\"if\",\"has-block\",\"yield\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"not-eq\"]]",
+    "id": "637zxfOu",
+    "block": "[[[11,0],[16,0,[29,[\"upf-banner fx-1 fx-row fx-xalign-center fx-gap-px-12 \",[30,0,[\"modifierClasses\"]]]]],[17,1],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"    \"],[10,0],[12],[18,7,null],[13],[1,\"\\n\"]],[]],[[[41,[30,2],[[[1,\"    \"],[8,[39,3],[[16,0,[29,[\"upf-badge upf-badge--shape-round \",[30,0,[\"iconSizeClass\"]]]]]],[[\"@style\",\"@icon\"],[[28,[37,4],[[30,2]],null],[28,[37,5],[[30,2]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,3],[[[1,\"    \"],[10,\"img\"],[14,0,\"upf-badge upf-badge--size-md upf-badge--shape-round\"],[15,\"src\",[30,3]],[14,\"alt\",\"banner\"],[12],[13],[1,\"\\n  \"]],[]],null]],[]]]],[]]],[1,\"  \"],[10,0],[15,0,[29,[\"fx-col fx-1 \",[52,[28,[37,6],[[30,4],\"sm\"],null],\"fx-gap-px-3\"]]]],[12],[1,\"\\n\"],[41,[30,5],[[[1,\"      \"],[10,0],[14,0,\"fx-row fx-xalign-center\"],[12],[1,\"\\n        \"],[10,1],[14,0,\"font-weight-semibold text-size-5 font-color-gray-900\"],[12],[1,[30,5]],[13],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"          \"],[18,8,null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n\"]],[]],null],[41,[30,6],[[[1,\"      \"],[10,1],[14,0,\"text-size-4 font-color-gray-500\"],[12],[1,[30,6]],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,9]],[[[1,\"      \"],[18,9,null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[48,[30,10]],[[[1,\"    \"],[10,0],[12],[18,10,null],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@image\",\"@size\",\"@title\",\"@subtitle\",\"&custom-icon\",\"&title-suffix\",\"&secondary-actions\",\"&actions\"],false,[\"if\",\"has-block\",\"yield\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"not-eq\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/banner.hbs",
     "isStrictMode": false
   });
@@ -87806,19 +87809,19 @@ define("@upfluence/oss-components/components/o-s-s/banner", ["exports", "@ember/
       template: (0, _templateFactory.createTemplateFactory)(
       /*
         
-            <OSS::Banner @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
+            <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
                          @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}>
-              <:title>
+              <:title-suffix>
                 <div class="fx-row fx-gap-px-6 fx-xalign-center">
                   <OSS::Icon @icon="fa-users" /> <span class="font-color-gray-500">Custom title</span>
                 </div>
-              </:title>
+              </:title-suffix>
             </OSS::Banner>
         
       */
       {
-        "id": "QTuRufdq",
-        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@subtitle\",\"@icon\",\"@plain\",\"@image\",\"@selected\",\"@disabled\",\"@size\"],[[30,0,[\"subtitle\"]],[30,0,[\"icon\"]],[30,0,[\"plain\"]],[30,0,[\"image\"]],[30,0,[\"selected\"]],[30,0,[\"disabled\"]],[30,0,[\"size\"]]]],[[\"title\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n            \"],[8,[39,1],null,[[\"@icon\"],[\"fa-users\"]],null],[1,\" \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,\"Custom title\"],[13],[1,\"\\n          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/banner\",\"o-s-s/icon\"]]",
+        "id": "QJwY/hJP",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@icon\",\"@plain\",\"@image\",\"@selected\",\"@disabled\",\"@size\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"icon\"]],[30,0,[\"plain\"]],[30,0,[\"image\"]],[30,0,[\"selected\"]],[30,0,[\"disabled\"]],[30,0,[\"size\"]]]],[[\"title-suffix\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n            \"],[8,[39,1],null,[[\"@icon\"],[\"fa-users\"]],null],[1,\" \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,\"Custom title\"],[13],[1,\"\\n          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/banner\",\"o-s-s/icon\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -110652,36 +110655,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-2002hJzyip6727PO/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-2002hJzyip6727PO/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2002hJzyip6727PO/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-2002hJzyip6727PO/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-2002hJzyip6727PO/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2002hJzyip6727PO/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-2002hJzyip6727PO/cache-275-bundler/staging/l.js /tmp/broccoli-2002hJzyip6727PO/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/l.js /tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-2002hJzyip6727PO/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-2002hJzyip6727PO/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-2002hJzyip6727PO/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-2002hJzyip6727PO/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-2002hJzyip6727PO/cache-275-bundler/staging/l.js_/tmp/broccoli-2002hJzyip6727PO/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/l.js_/tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
