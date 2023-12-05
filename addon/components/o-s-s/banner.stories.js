@@ -119,6 +119,20 @@ const Template = (args) => ({
   context: args
 });
 
+const CustomTitleTemplate = (args) => ({
+  template: hbs`
+      <OSS::Banner @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
+                   @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}>
+        <:title>
+          <div class="fx-row fx-gap-px-6 fx-xalign-center">
+            <OSS::Icon @icon="fa-users" /> <span class="font-color-gray-500">Custom title</span>
+          </div>
+        </:title>
+      </OSS::Banner>
+  `,
+  context: args
+});
+
 const CustomIconTemplate = (args) => ({
   template: hbs`
       <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
@@ -163,3 +177,6 @@ UsageWithCustomIcon.args = defaultArgs;
 
 export const UsageWithActionsBlock = ActionTemplate.bind({});
 UsageWithActionsBlock.args = defaultArgs;
+
+export const UsageWithCustomTitle = CustomTitleTemplate.bind({});
+UsageWithCustomTitle.args = defaultArgs;

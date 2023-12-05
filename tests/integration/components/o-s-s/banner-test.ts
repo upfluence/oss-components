@@ -33,6 +33,14 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
     assert.dom('.upf-banner .font-weight-semibold').hasText('Test Title');
   });
 
+  test('passing a title named block uses it where the @title arg should be in the component', async function (assert) {
+    await render(hbs`<OSS::Banner><:title><div class="title-named-block">foo</div></:title></OSS::Banner>`);
+
+    assert.dom('.upf-banner .font-weight-semibold').doesNotExist();
+    assert.dom('.upf-banner .title-named-block').exists();
+    assert.dom('.upf-banner .title-named-block').hasText('foo');
+  });
+
   test('passing a subtitle in the @subtitle parameter displays the title in the component', async function (assert) {
     await render(hbs`<OSS::Banner @subtitle="Test subtitle" />`);
 
