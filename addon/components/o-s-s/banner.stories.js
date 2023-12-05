@@ -121,13 +121,13 @@ const Template = (args) => ({
 
 const CustomTitleTemplate = (args) => ({
   template: hbs`
-      <OSS::Banner @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
+      <OSS::Banner @title={{this.title}} @subtitle={{this.subtitle}} @icon={{this.icon}} @plain={{this.plain}}
                    @image={{this.image}} @selected={{this.selected}} @disabled={{this.disabled}} @size={{this.size}}>
-        <:title>
+        <:title-suffix>
           <div class="fx-row fx-gap-px-6 fx-xalign-center">
             <OSS::Icon @icon="fa-users" /> <span class="font-color-gray-500">Custom title</span>
           </div>
-        </:title>
+        </:title-suffix>
       </OSS::Banner>
   `,
   context: args
