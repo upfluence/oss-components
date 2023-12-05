@@ -43,6 +43,15 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
     assert.dom('.upf-banner .title-named-block').hasText('foo');
   });
 
+  test('passing a title-suffix named block without a @title arg does not display it at all', async function (assert) {
+    await render(
+      hbs`<OSS::Banner><:title-suffix><div class="title-named-block">foo</div></:title-suffix></OSS::Banner>`
+    );
+
+    assert.dom('.upf-banner .font-weight-semibold').hasText('Test Title');
+    assert.dom('.upf-banner .title-named-block').doesNotExist();
+  });
+
   test('passing a subtitle in the @subtitle parameter displays the title in the component', async function (assert) {
     await render(hbs`<OSS::Banner @subtitle="Test subtitle" />`);
 
