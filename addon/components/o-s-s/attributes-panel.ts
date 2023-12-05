@@ -9,6 +9,7 @@ interface OSSAttributesPanelArgs {
   title: string;
   icon?: string;
   isSaveDisabled?: boolean;
+  customEditIcon?: string;
   onSave(): Promise<void>;
   onEdit?(): void;
   onCancel?(): void;
@@ -25,9 +26,18 @@ export default class OSSAttributesPanel extends Component<OSSAttributesPanelArgs
     assert('[component][OSS::AttributesPanel] The @onSave parameter is mandatory', typeof args.onSave === 'function');
   }
 
+  get editIcon(): string {
+    return this.args.customEditIcon ?? 'fa-pen';
+  }
+
   @action
   toggleMode(): void {
     this.modeSelected = this.modeSelected === 'view' ? 'edition' : 'view';
+  }
+
+  @action
+  onEdit(): void {
+    this.toggleMode();
     this.args.onEdit?.();
   }
 
