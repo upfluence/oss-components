@@ -33,12 +33,23 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
     assert.dom('.upf-banner .font-weight-semibold').hasText('Test Title');
   });
 
-  test('passing a title named block uses it where the @title arg should be in the component', async function (assert) {
-    await render(hbs`<OSS::Banner><:title><div class="title-named-block">foo</div></:title></OSS::Banner>`);
+  test('passing a title-suffix named block uses it in a addition to the @title arg ', async function (assert) {
+    await render(
+      hbs`<OSS::Banner @title="Test Title"><:title-suffix><div class="title-named-block">foo</div></:title-suffix></OSS::Banner>`
+    );
 
-    assert.dom('.upf-banner .font-weight-semibold').doesNotExist();
+    assert.dom('.upf-banner .font-weight-semibold').hasText('Test Title');
     assert.dom('.upf-banner .title-named-block').exists();
     assert.dom('.upf-banner .title-named-block').hasText('foo');
+  });
+
+  test('passing a title-suffix named block without a @title arg does not display it at all', async function (assert) {
+    await render(
+      hbs`<OSS::Banner><:title-suffix><div class="title-named-block">foo</div></:title-suffix></OSS::Banner>`
+    );
+
+    assert.dom('.upf-banner .font-weight-semibold').doesNotExist();
+    assert.dom('.upf-banner .title-named-block').doesNotExist();
   });
 
   test('passing a subtitle in the @subtitle parameter displays the title in the component', async function (assert) {
