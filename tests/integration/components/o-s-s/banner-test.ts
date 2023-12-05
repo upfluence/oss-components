@@ -48,7 +48,7 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
       hbs`<OSS::Banner><:title-suffix><div class="title-named-block">foo</div></:title-suffix></OSS::Banner>`
     );
 
-    assert.dom('.upf-banner .font-weight-semibold').hasText('Test Title');
+    assert.dom('.upf-banner .font-weight-semibold').doesNotExist();
     assert.dom('.upf-banner .title-named-block').doesNotExist();
   });
 
