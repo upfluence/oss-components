@@ -55,7 +55,7 @@ module('Integration | Component | o-s-s/text-area', function (hooks) {
     test('Default height', async function (assert) {
       await render(hbs`<OSS::TextArea />`);
 
-      assert.equal(document.querySelector(this.textareaSelector).offsetHeight, 40);
+      assert.equal(document.querySelector(this.textareaSelector).offsetHeight, 52);
     });
 
     test('Row change height', async function (assert) {
