@@ -13,7 +13,7 @@
         {{#if (has-block "contextual-action")}}
           {{yield to="contextual-action"}}
         {{/if}}
-        <OSS::Button @icon={{this.editIcon}} @square={{true}} {{on "click" this.onEdit}}
+        <OSS::Button @icon={{this.editIcon}} @square={{true}} @size="sm" {{on "click" this.onEdit}}
                      data-control-name="attributes-panel-mode-switch-button" />
       </div>
     {{/if}}

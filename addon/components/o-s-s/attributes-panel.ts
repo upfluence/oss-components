@@ -36,7 +36,9 @@ export default class OSSAttributesPanel extends Component<OSSAttributesPanelArgs
   }
 
   @action
-  onEdit(): void {
+  onEdit(event: MouseEvent): void {
+    event.stopPropagation();
+
     this.toggleMode();
     this.args.onEdit?.();
   }
