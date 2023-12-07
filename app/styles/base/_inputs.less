@@ -10,35 +10,117 @@ label {
   font-weight: 100;
 }
 
-
 // Base styles
 // This class can be applied on Input elements, Textareas, or selects.
 // --------------------------------------------------
 
+.input-state-reset {
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.upf-input--errored {
+  .border;
+  .border-color-error;
+  .border-radius-default;
+
+  &:not(:disabled, .disabled) {
+    &:hover {
+      .input-state-error-hover;
+    }
+
+    &:active {
+      .input-state-error-active;
+    }
+
+    &:focus {
+      .input-state-error-focus;
+    }
+  }
+}
+
+.input-state-hover {
+  border: 1px solid var(--color-gray-300);
+  background-color: var(--color-gray-100);
+}
+
+.input-state-error-hover {
+  .border-color-error;
+  background-color: var(--color-gray-100);
+}
+
+.input-state-active {
+  border: 1px solid var(--color-gray-100);
+  box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+}
+
+.input-state-error-active {
+  .border-color-error;
+  box-shadow: 0px 0px 0px 2px var(--color-error-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+}
+
+.reset-box-shadow {
+  box-shadow: none;
+}
+
+.input-state-focus {
+  .input-state-active;
+  border: 1px solid var(--color-gray-300);
+}
+
+.input-state-error-focus {
+  .input-state-error-active;
+  .border-color-error;
+}
+
+.input-state-disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  color: var(--color-gray-400);
+  background-color: var(--color-gray-200);
+}
+
 .upf-input {
-  border: 1px solid transparent;
+  border: 1px solid var(--color-border-default);
+  color: var(--color-gray-900);
+  background-color: var(--color-white);
+
+  transition: all 250ms ease-in-out;
   border-radius: var(--border-radius-sm);
   height: var(--spacing-px-36);
   padding: 0 1em;
-  color: @color-text;
-  background-color: @field-background-color;
   box-shadow: none;
-
-  &:focus {
-    .remove-outline;
-    border: 1px solid var(--color-gray-300);
-  }
-
-  &::placeholder { color: @color-text-lighter }
+  outline: none;
 
   &--inverse {
     background-color: var(--color-white);
   }
-}
 
-.upf-input:disabled, .upf-input.disabled {
-  color: var(--color-gray-400);
-  cursor: not-allowed;
+  &::placeholder {
+    color: var(--color-gray-400);
+  }
+
+  &:not(:disabled, .disabled) {
+    &:hover {
+      .input-state-hover;
+    }
+
+    &:active {
+      .input-state-active;
+    }
+
+    &:focus {
+      .input-state-focus;
+    }
+  }
+
+  &.disabled,
+  &:disabled {
+    .input-state-disabled;
+  }
 }
 
 // Alternate user inputs
@@ -74,11 +156,11 @@ label {
   appearance: none;
 }
 
-
 // Input Sizes
 // --------------------------------------------------
 
-.upf-input--small, .upf-select--small {
+.upf-input--small,
+.upf-select--small {
   height: var(--spacing-px-24);
 }
 
@@ -142,12 +224,12 @@ label {
 .upf-input-container--errorful {
   .upf-input-container--has-feedback;
 
-
   .input-group {
     .setup-input-group-addon(var(--color-error-500));
   }
 
-  .upf-input, .upf-input:focus {
+  .upf-input,
+  .upf-input:focus {
     border: 1px solid var(--color-error-500);
   }
 

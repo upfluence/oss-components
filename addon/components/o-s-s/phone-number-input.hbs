@@ -1,16 +1,15 @@
 <div class="phone-number-container fx-1" ...attributes>
-  <div class="phone-number-input upf-input fx-row fx-1 fx-xalign-center">
+  <div class="phone-number-input {{if this.countrySelectorShown 'phone-number-input--active'}} fx-row fx-1 fx-xalign-center">
     <div class="country-selector fx-row" role="button" {{on "click" this.toggleCountrySelector}}>
-      <div class="fflag fflag-{{this.selectedCountry.id}} ff-sm ff-rounded"></div>
-      {{#if this.countrySelectorShown}}
-        <OSS::Icon @icon="fa-chevron-up" class="margin-left-px-6" />
-      {{else}}
-        <OSS::Icon @icon="fa-chevron-down" class="margin-left-px-6" />
-      {{/if}}
+      <div class="fflag fflag-{{this.selectedCountry.id}} ff-sm ff-round"></div>
+      <OSS::Icon @icon="fa-chevron-{{if this.countrySelectorShown 'up' 'down'}}" />
     </div>
-    <span class="phone-prefix">{{@prefix}}</span>
-    <Input class="fx-1" type="tel" @value={{@number}} placeholder="81726354"
-           {{on "keydown" this.onlyNumeric}} {{on "blur" this.onlyNumeric}} />
+    <div class="fx-1 fx-row upf-input" {{on "click" this.focusInput}}>
+      <span class="fx-row fx-xalign-center phone-prefix">{{@prefix}}</span>
+      <Input class="fx-1" type="tel" @value={{@number}} placeholder={{this.placeholder}}
+             {{on "keydown" this.onlyNumeric}} {{on "blur" this.onlyNumeric}} {{did-insert this.registerInputElement}} />
+    </div>
+
   </div>
 
   {{#if this.invalidInputError}}

@@ -2,11 +2,16 @@
      {{did-insert this.onRender}} ...attributes>
   {{#if this.searchEnabled}}
     <InputWrapper>
-      <Input
-             value={{this._searchKeyword}} {{on "keyup" this.updateSearchKeyword}} type="text"
-             class="form-control upf-input" placeholder={{this.searchPlaceholder}}
-             {{on "keydown" this.handleKeyEventInput}} />
-
+      <OSS::InputContainer>
+        <:prefix>
+          <OSS::Icon class="font-color-gray-500" @icon="fa-search" />
+        </:prefix>
+        <:input>
+          <Input @value={{this._searchKeyword}} {{on "keyup" this.updateSearchKeyword}} type="text"
+                 class="upf-input" placeholder={{this.searchPlaceholder}}
+                 {{on "keydown" this.handleKeyEventInput}} />
+        </:input>
+      </OSS::InputContainer>
     </InputWrapper>
   {{/if}}
   <div class="upf-infinite-select__container">

@@ -25,6 +25,26 @@ export default {
       },
       control: { type: 'text' }
     },
+    disabled: {
+      description: 'Disables the default input (when not passing an input named block)',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: false }
+      },
+      control: { type: 'boolean' }
+    },
+    errorMessage: {
+      description: 'An error message that will be displayed below the input-group.',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'text' }
+    },
     keyboardTriggers: {
       description:
         'An array of keyboard event keys that can be used to trigger an entry validation in addition to Enter',
@@ -70,7 +90,8 @@ export default {
 
 const DefaultUsageTemplate = (args) => ({
   template: hbs`<div style="display: flex; justify-content: center">
-      <OSS::ArrayInput @values={{this.values}} @onChange={{this.onChange}} @placeholder={{this.placeholder}} @validator={{this.validator}} />
+      <OSS::ArrayInput @values={{this.values}} @onChange={{this.onChange}} @placeholder={{this.placeholder}} @validator={{this.validator}}
+                       @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} />
     </div>
   `,
   context: args
@@ -79,6 +100,8 @@ export const BasicUsage = DefaultUsageTemplate.bind({});
 BasicUsage.args = {
   values: ['Iron Man', 'Thor', 'Loki', 'Hulk'],
   placeholder: 'Enter a super hero name',
+  errorMessage: '',
+  disabled: false,
   onChange: action('onChange'),
   validator: action('validator')
 };

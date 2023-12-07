@@ -5,6 +5,8 @@ import { tracked } from '@glimmer/tracking';
 interface OSSArrayInputArgs {
   values?: string[];
   keyboardTriggers?: string[];
+  errorMessage?: string;
+  disabled?: boolean;
   validator?: (value: string) => boolean;
   onChange?: (values: string[]) => void;
   placeholder?: string;
@@ -21,6 +23,20 @@ export default class OSSArrayInput extends Component<OSSArrayInputArgs> {
     if (this.args.values) {
       this.items = this.args.values;
     }
+  }
+
+  get computedClasses(): string {
+    let arr: string[] = ['array-input-container'];
+
+    if (this.args.disabled) {
+      arr.push('array-input-container--disabled');
+    }
+
+    if (this.args.errorMessage) {
+      arr.push('array-input-container--errored');
+    }
+
+    return arr.join(' ');
   }
 
   get keyboardTriggers(): string[] {

@@ -1,10 +1,9 @@
 <div class="currency-input-container fx-1 {{if @errorMessage 'currency-input-container--errored'}}" ...attributes>
-  <div class="currency-input {{if @onlyCurrency 'onlycurrency'}} upf-input fx-row fx-1 fx-xalign-center">
-    <div
-      class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between"
-      role="button"
-      {{on "click" this.toggleCurrencySelector}}
-    >
+  <div class="currency-input {{if @onlyCurrency 'onlycurrency'}} {{if this.currencySelectorShown 'currency-input--active'}}
+              fx-row fx-1 fx-xalign-center">
+    <div class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center"
+         role={{if this.allowCurrencyUpdate 'button' 'img'}}
+         {{on "click" this.toggleCurrencySelector}}>
       <div class="fx-col">
         <div class="fx-row fx-gap-px-9">
           <span>{{this.selectedCurrencySymbol}}</span>
@@ -15,25 +14,14 @@
       </div>
 
       {{#if this.allowCurrencyUpdate}}
-        {{#if this.currencySelectorShown}}
-          <OSS::Icon @icon="fa-chevron-up" class="margin-left-px-6" />
-        {{else}}
-          <OSS::Icon @icon="fa-chevron-down" class="margin-left-px-6" />
-        {{/if}}
+        <OSS::Icon @icon="{{if this.currencySelectorShown "fa-chevron-up" "fa-chevron-down"}}"
+                   class="margin-left-px-6" />
       {{/if}}
     </div>
     {{#unless @onlyCurrency}}
-      <Input
-        @value={{this.localValue}}
-        class="fx-1"
-        type="number"
-        min="0"
-        autocomplete="off"
-        placeholder={{this.placeholder}}
-        {{on "keydown" this.onlyNumeric}}
-        {{on "keyup" this.notifyChanges}}
-        {{on "paste" this.handlePaste}}
-      />
+      <Input class="fx-1" type="number" @value={{this.localValue}} min="0" autocomplete="off"
+             placeholder={{this.placeholder}}
+             {{on "keydown" this.onlyNumeric}} {{on "keyup" this.notifyChanges}} {{on "paste" this.handlePaste}} />
     {{/unless}}
   </div>
   {{#if @errorMessage}}

@@ -3,47 +3,93 @@
 
   .upf-infinite-select {
     max-width: 100%;
-    .padding-xx-sm;
+    padding: var(--spacing-px-12);
+    margin-top: var(--spacing-px-6);
 
     .upf-infinite-select__item {
-      padding: 0;
-      .padding-top-xxx-sm;
-      .padding-bottom-xxx-sm;
+      padding: var(--spacing-px-6);
     }
 
     .row-selected span {
-      .text-color-default;
+      color: var(--color-gray-900);
     }
   }
 
   .phone-number-input {
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--color-border-default);
+
+    overflow: hidden;
+    background-color: white;
+
+    height: 36px;
+
+    & > div {
+      height: 100%;
+    }
+
     .country-selector {
-      border-right: 1px solid @border-color;
+      border-right: 1px solid var(--color-border-default);
       height: 100%;
       display: flex;
       align-items: center;
-      padding-right: 12px;
-      margin-right: 12px;
+
+      background-color: var(--color-gray-100);
+
+      gap: var(--spacing-px-9);
+      padding: var(--spacing-px-3) var(--spacing-px-12);
+    }
+
+    .upf-input {
+      border: none;
+      border-radius: 0;
+      background-color: transparent;
+
+      cursor: text;
+
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-px-3);
+      padding: var(--spacing-px-3) var(--spacing-px-12);
+
+      &:hover {
+        border: none;
+        background-color: transparent;
+      }
     }
 
     .phone-prefix {
       white-space: nowrap;
-      .text-color-default-light;
-      .margin-right-xxx-sm;
+      user-select: none;
+
+      display: flex;
+      align-items: center;
     }
 
     input {
       border: none;
       background-color: transparent;
-    }
-
-    input:focus {
       border: none;
       outline: none;
     }
 
+    &:hover {
+      .input-state-hover;
+    }
+
+    &:active,
+    &--active {
+      .input-state-active;
+      border-color: var(--color-border-default);
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+
     &:focus-within {
-      border: 1px solid @upf-gray;
+      .input-state-focus;
+      border-color: var(--color-border-default);
     }
   }
 }

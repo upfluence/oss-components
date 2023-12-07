@@ -2,16 +2,79 @@
   position: relative;
 
   .upf-input {
-    background-color: var(--color-gray-100);
+    background-color: var(--color-white);
     user-select: none;
+
+    border: 1px solid var(--color-border-default);
+    border-radius: var(--border-radius-sm);
+    overflow: hidden;
+
+    transition: all 250ms ease-in-out;
+    color: var(--color-gray-900);
+
+    &--placeholder {
+      color: var(--color-gray-400);
+    }
   }
 
-  .far.fa-chevron-down,
-  .far.fa-chevron-up {
-    color: var(--color-gray-900);
+  &--disabled .upf-input {
+    .input-state-disabled;
+  }
+
+  &:not(.oss-select-container--disabled, .oss-select-container--errorful, .oss-select-container--successful)
+    .upf-input {
+    &:hover {
+      .input-state-hover;
+    }
+
+    &:active,
+    &.active {
+      .input-state-active;
+    }
+
+    &:focus {
+      .input-state-focus;
+    }
+  }
+
+  :not(&--disabled)&--errorful .upf-input {
+    .border-color-error;
+    &:hover {
+      .input-state-error-hover;
+    }
+
+    &:active,
+    &.active {
+      .input-state-error-active;
+    }
+
+    &:focus {
+      .input-state-error-focus;
+    }
+  }
+
+  :not(&--disabled)&--successful .upf-input {
+    border: 1px solid var(--color-success-500);
+    &:hover {
+      .input-state-hover;
+      border: 1px solid var(--color-success-500);
+    }
+
+    &:active,
+    &.active {
+      .input-state-active;
+      border-color: var(--color-success-500);
+      box-shadow: 0px 0px 0px 2px var(--color-success-100), var(--box-shadow-xs);
+    }
+
+    &:focus {
+      .input-state-focus;
+      border-color: var(--color-success-500);
+    }
   }
 
   .upf-infinite-select {
+    margin-top: var(--spacing-px-6);
     max-width: 100%;
     min-width: 100%;
     padding: var(--spacing-px-12);
@@ -27,63 +90,6 @@
           background-color: var(--color-gray-100);
         }
       }
-    }
-  }
-
-  &:hover {
-    .upf-input {
-      background-color: var(--color-gray-100);
-    }
-  }
-
-  &:active .upf-input {
-    background-color: var(--color-gray-100);
-    color: var(--color-gray-900);
-  }
-
-  &--disabled {
-    .upf-input {
-      color: var(--color-gray-400);
-      background-color: var(--color-gray-200);
-
-      &:active {
-        background-color: var(--color-gray-200);
-        color: var(--color-gray-400);
-      }
-    }
-
-    &:hover {
-      .upf-input {
-        background-color: var(--color-gray-200);
-      }
-
-      div {
-        cursor: not-allowed;
-      }
-    }
-  }
-
-  &--errorful,
-  &--errorful:hover,
-  &--errorful:active {
-    &:hover .upf-input,
-    .upf-input,
-    .upf-input:hover {
-      border-color: var(--color-error-500);
-      background-color: var(--color-error-50);
-      color: var(--color-error-500);
-    }
-  }
-
-  &--successful,
-  &--successful:hover,
-  &--successful:active {
-    &:hover .upf-input,
-    .upf-input,
-    .upf-input:hover {
-      border-color: var(--color-success-500);
-      background-color: var(--color-success-50);
-      color: var(--color-success-500);
     }
   }
 }

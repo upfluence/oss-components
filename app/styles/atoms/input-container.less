@@ -1,14 +1,28 @@
 .oss-input-container {
   position: relative;
 
-  &--errored {
-    input,
-    .yielded-input input,
-    input:focus,
-    .yielded-input input:focus {
-      .border;
-      .border-color-error;
-      .border-radius-default;
+  .yielded-input input {
+    &:extend(.upf-input);
+    width: 100%;
+
+    &::placeholder {
+      color: var(--color-gray-400);
+    }
+
+    &:hover {
+      .input-state-hover;
+    }
+
+    &:focus {
+      .input-state-focus;
+    }
+
+    &:active {
+      .input-state-active;
+    }
+
+    &:disabled {
+      .input-state-disabled;
     }
   }
 
@@ -16,22 +30,31 @@
     width: 100%;
   }
 
+  &--transparent {
+    background-color: transparent;
+
+    &:not(:disabled, .disabled) {
+      .yielded-input input,
+      .upf-input {
+        &:hover,
+        &:active,
+        &:focus {
+          .input-state-reset;
+        }
+      }
+    }
+  }
+
+  &--errored {
+    .yielded-input input,
+    .upf-input {
+      .upf-input--errored;
+    }
+  }
+
   textarea.upf-input {
     max-width: 100%;
     height: var(--height-pc-100);
-  }
-
-  .yielded-input input {
-    &:extend(.upf-input);
-    width: 100%;
-  }
-
-  .yielded-input input:focus {
-    &:extend(.upf-input:focus);
-  }
-
-  .yielded-input input:disabled {
-    &:extend(.upf-input:disabled);
   }
 
   .morpheme {
@@ -46,7 +69,8 @@
     .morpheme;
     right: 0;
     i,
-    div {
+    div,
+    span {
       padding-right: 12px;
       padding-left: 12px;
       height: 100%;

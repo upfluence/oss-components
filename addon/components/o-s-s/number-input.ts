@@ -17,12 +17,13 @@ const DEFAULT_VALUE = 0;
 const AUTHORIZED_KEYS = ['Backspace', 'Delete', 'Tab', 'Shift', 'Control', '-'];
 const INCREASE_VALUE_KEYS = ['ArrowUp', 'ArrowRight'];
 const DECREASE_VALUE_KEYS = ['ArrowDown', 'ArrowLeft'];
-const BASE_INPUT_PIXEL_WIDTH = 35;
+const BASE_INPUT_PIXEL_WIDTH = 40;
 const CHAR_PIXEL_WIDTH = 7;
 
 export default class OSSNumberInput extends Component<OSSNumberInputArgs> {
   @tracked localValue: number = this.args.value || DEFAULT_VALUE;
   @tracked reachedTooltip: string | null = null;
+  @tracked inputElement: HTMLElement | null = null;
 
   get step(): number {
     return this.args.step || 1;
@@ -49,12 +50,19 @@ export default class OSSNumberInput extends Component<OSSNumberInputArgs> {
   }
 
   @action
+  registerInputElement(el: HTMLElement): void {
+    this.inputElement = el.querySelector('input');
+  }
+
+  @action
   keyParser(event: KeyboardEvent): void {
     if (INCREASE_VALUE_KEYS.find((key: string) => key === event.key)) {
       this.increaseValue(event);
+      event.preventDefault();
       return;
     } else if (DECREASE_VALUE_KEYS.find((key: string) => key === event.key)) {
       this.decreaseValue(event);
+      event.preventDefault();
       return;
     }
     if (!NUMERIC_ONLY.test(event.key) && !AUTHORIZED_KEYS.find((key: string) => key === event.key)) {
@@ -77,6 +85,7 @@ export default class OSSNumberInput extends Component<OSSNumberInputArgs> {
 
   @action
   increaseValue(event: PointerEvent | KeyboardEvent): void {
+    if (this.inputElement) this.inputElement.focus();
     if (this.args.max === undefined || Number(this.localValue) + this.step <= this.args.max) {
       this.localValue = Number(this.localValue) + (event.shiftKey ? this.step * 2 : this.step);
       this.checkUserInput();
@@ -85,6 +94,7 @@ export default class OSSNumberInput extends Component<OSSNumberInputArgs> {
 
   @action
   decreaseValue(event: PointerEvent | KeyboardEvent): void {
+    if (this.inputElement) this.inputElement.focus();
     if (this.args.min === undefined || Number(this.localValue) - this.step >= this.args.min) {
       this.localValue = Number(this.localValue) - (event.shiftKey ? this.step * 2 : this.step);
       this.checkUserInput();

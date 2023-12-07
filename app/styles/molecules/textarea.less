@@ -1,19 +1,47 @@
 .oss-textarea-container {
   position: relative;
 
-  &--errored {
-    textarea,
-    textarea:focus {
-      .border;
-      .border-color-error;
-      .border-radius-default;
+  .oss-textarea {
+    .upf-input;
+    width: 100%;
+    min-height: var(--spacing-px-36);
+    padding: var(--spacing-px-6) var(--spacing-px-12);
+    height: auto;
+  }
+
+  &--transparent {
+    .oss-textarea {
+      background-color: transparent;
+      border: none;
+
+      &:not(:disabled, .disabled) {
+        &:hover,
+        &:active,
+        &:focus {
+          .input-state-reset;
+        }
+      }
     }
   }
 
-  .oss-textarea {
-    width: 100%;
-    min-height: var(--spacing-px-36);
-    height: auto;
+  &--errored {
+    .oss-textarea {
+      .border;
+      .border-color-error;
+      .border-radius-default;
+
+      &:not(:disabled, .disabled) {
+        &:hover {
+          .input-state-error-hover;
+        }
+        &:active {
+          .input-state-error-active;
+        }
+        &:focus {
+          .input-state-error-focus;
+        }
+      }
+    }
   }
 }
 
