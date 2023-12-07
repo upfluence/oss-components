@@ -84,37 +84,39 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
     test('Uppercase - if no uppercase character is inputed, a validator error is shown', async function (assert) {
       this.value = 'aze';
       await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
-      assert.dom('[data-control-name="password-input-validator-uppercase"]').hasClass('font-color-error-500');
+      assert.dom('[data-control-name="password-input-validator-uppercase"] i.visible').hasClass('font-color-error-500');
     });
 
     test('Uppercase - if an uppercase character is inputed, a validator success is shown', async function (assert) {
       this.value = 'AZE';
       await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
-      assert.dom('[data-control-name="password-input-validator-uppercase"]').hasClass('font-color-success-500');
+      assert
+        .dom('[data-control-name="password-input-validator-uppercase"] i.visible')
+        .hasClass('font-color-success-500');
     });
 
     test('Number - if no number is inputed, a validator error is shown', async function (assert) {
       this.value = 'aze';
       await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
-      assert.dom('[data-control-name="password-input-validator-number"]').hasClass('font-color-error-500');
+      assert.dom('[data-control-name="password-input-validator-number"] i.visible').hasClass('font-color-error-500');
     });
 
     test('Uppercase - if a number is inputed, a validator success is shown', async function (assert) {
       this.value = '123';
       await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
-      assert.dom('[data-control-name="password-input-validator-number"]').hasClass('font-color-success-500');
+      assert.dom('[data-control-name="password-input-validator-number"] i.visible').hasClass('font-color-success-500');
     });
 
     test('Length - if the password is not at least 8 characters long, a validator error is shown', async function (assert) {
       this.value = '123';
       await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
-      assert.dom('[data-control-name="password-input-validator-length"]').hasClass('font-color-error-500');
+      assert.dom('[data-control-name="password-input-validator-length"] i.visible').hasClass('font-color-error-500');
     });
 
     test('Length - if the password has 8 characters, a validator success is shown', async function (assert) {
       this.value = '12345678';
       await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
-      assert.dom('[data-control-name="password-input-validator-length"]').hasClass('font-color-success-500');
+      assert.dom('[data-control-name="password-input-validator-length"] i.visible').hasClass('font-color-success-500');
     });
 
     test('When all validators are matched, the @validates method sends a truthy argument', async function (assert) {
@@ -143,14 +145,16 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
       this.value = 'AZE';
       await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}}
                                            @validatorSet={{this.validatorSet}} />`);
-      assert.dom('[data-control-name="password-input-validator-lowercase"]').hasClass('font-color-error-500');
+      assert.dom('[data-control-name="password-input-validator-lowercase"] i.visible').hasClass('font-color-error-500');
     });
 
     test('Lowercase - if an lowercase character is inputed, a validator success is shown', async function (assert) {
       this.value = 'aze';
       await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}}
                                            @validatorSet={{this.validatorSet}} />`);
-      assert.dom('[data-control-name="password-input-validator-lowercase"]').hasClass('font-color-success-500');
+      assert
+        .dom('[data-control-name="password-input-validator-lowercase"] i.visible')
+        .hasClass('font-color-success-500');
     });
 
     test('When all validators are matched, the @validates method sends a truthy argument', async function (assert) {

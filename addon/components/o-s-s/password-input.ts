@@ -27,15 +27,21 @@ type ValidationState = 'default' | 'error' | 'success';
 type ValidationStateClass = 'font-color-gray-500' | 'font-color-success-500' | 'font-color-error-500';
 type ValidationStateIcon = 'fa-circle-dashed' | 'fa-times' | 'fa-check';
 type ValidationTemplateAttributes = {
-  class: ValidationStateClass;
   state: ValidationState;
   labelKey: string;
+  labelClass: ValidationStateClass;
+  iconClass: ValidationStateClass;
 };
 
-const STATE_CLASS_MAPPING: { [key: string]: ValidationStateClass } = {
+const STATE_ICON_CLASS_MAPPING: { [key: string]: ValidationStateClass } = {
   default: 'font-color-gray-500',
   success: 'font-color-success-500',
   error: 'font-color-error-500'
+};
+const STATE_FONT_CLASS_MAPPING: { [key: string]: ValidationStateClass } = {
+  default: 'font-color-gray-500',
+  success: 'font-color-success-500',
+  error: 'font-color-gray-500'
 };
 const STATE_ICON_MAPPING: { [key: string]: ValidationStateIcon } = {
   default: 'fa-circle-dashed',
@@ -90,7 +96,8 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
     const state = this.validationStateFromRegex(this.validatorSet[type].regex);
     return {
       labelKey: this.validatorSet[type].labelKey,
-      class: STATE_CLASS_MAPPING[state],
+      labelClass: STATE_FONT_CLASS_MAPPING[state],
+      iconClass: STATE_ICON_CLASS_MAPPING[state],
       state
     };
   });
