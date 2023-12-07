@@ -16323,7 +16323,7 @@ define("dummy/tests/integration/components/o-s-s/panel-test", ["@ember/template-
     }());
   });
 });
-define("dummy/tests/integration/components/o-s-s/password-input-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers"], function (_templateFactory, _qunit, _emberQunit, _testHelpers) {
+define("dummy/tests/integration/components/o-s-s/password-input-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "sinon"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _sinon) {
   "use strict";
 
   function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -16332,6 +16332,9 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["@ember/
 
   (0, _qunit.module)('Integration | Component | o-s-s/password-input', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.validates = _sinon.default.stub();
+    });
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
       var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(assert) {
         return regeneratorRuntime.wrap(function _callee$(_context) {
@@ -16546,31 +16549,33 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["@ember/
         return _ref7.apply(this, arguments);
       };
     }());
-    (0, _qunit.test)('If the password regex isnt matched, then the error message is displayed', /*#__PURE__*/function () {
+    (0, _qunit.test)('If the password regex is matched, and the @validates method is passed, then the status of the validation is returned', /*#__PURE__*/function () {
       var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(assert) {
         return regeneratorRuntime.wrap(function _callee7$(_context7) {
           while (1) {
             switch (_context7.prev = _context7.next) {
               case 0:
-                this.value = '';
-                _context7.next = 3;
+                this.value = '1Aaaaaa';
+
+                this.validates = function (x) {
+                  assert.equal(x, true);
+                };
+
+                _context7.next = 4;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
-                  <OSS::PasswordInput @value={{this.value}} />
+                  <OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />
                 */
                 {
-                  "id": "zF+lggiu",
-                  "block": "[[[8,[39,0],null,[[\"@value\"],[[30,0,[\"value\"]]]],null]],[],false,[\"o-s-s/password-input\"]]",
+                  "id": "nAOSYrA9",
+                  "block": "[[[8,[39,0],null,[[\"@value\",\"@validates\"],[[30,0,[\"value\"]],[30,0,[\"validates\"]]]],null]],[],false,[\"o-s-s/password-input\"]]",
                   "moduleName": "(unknown template module)",
                   "isStrictMode": false
                 }));
 
-              case 3:
-                _context7.next = 5;
-                return (0, _testHelpers.typeIn)('input', 'az');
-
-              case 5:
-                assert.dom('.text-color-error').hasText('Your password should have at least 8 characters with at least one lower-case character, one upper-case character and one digit.');
+              case 4:
+                _context7.next = 6;
+                return (0, _testHelpers.typeIn)('input', 'a');
 
               case 6:
               case "end":
@@ -16584,16 +16589,16 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["@ember/
         return _ref8.apply(this, arguments);
       };
     }());
-    (0, _qunit.test)('If the password regex is matched, and the @validates method is passed, then the status of the validation is returned', /*#__PURE__*/function () {
+    (0, _qunit.test)('If the password regex isnt matched, and the @validates method is passed, then the status of the validation is returned', /*#__PURE__*/function () {
       var _ref9 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee8(assert) {
         return regeneratorRuntime.wrap(function _callee8$(_context8) {
           while (1) {
             switch (_context8.prev = _context8.next) {
               case 0:
-                this.value = '1Aaaaaa';
+                this.value = '1A';
 
                 this.validates = function (x) {
-                  assert.equal(x, true);
+                  assert.equal(x, false);
                 };
 
                 _context8.next = 4;
@@ -16624,35 +16629,34 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["@ember/
         return _ref9.apply(this, arguments);
       };
     }());
-    (0, _qunit.test)('If the password regex isnt matched, and the @validates method is passed, then the status of the validation is returned', /*#__PURE__*/function () {
+    (0, _qunit.test)('The password validation is not enabled if the @validates method is not passed', /*#__PURE__*/function () {
       var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(assert) {
         return regeneratorRuntime.wrap(function _callee9$(_context9) {
           while (1) {
             switch (_context9.prev = _context9.next) {
               case 0:
-                this.value = '1A';
-
-                this.validates = function (x) {
-                  assert.equal(x, false);
-                };
-
-                _context9.next = 4;
+                this.value = '';
+                _context9.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
-                  <OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />
+                  <OSS::PasswordInput @value={{this.value}} />
                 */
                 {
-                  "id": "nAOSYrA9",
-                  "block": "[[[8,[39,0],null,[[\"@value\",\"@validates\"],[[30,0,[\"value\"]],[30,0,[\"validates\"]]]],null]],[],false,[\"o-s-s/password-input\"]]",
+                  "id": "zF+lggiu",
+                  "block": "[[[8,[39,0],null,[[\"@value\"],[[30,0,[\"value\"]]]],null]],[],false,[\"o-s-s/password-input\"]]",
                   "moduleName": "(unknown template module)",
                   "isStrictMode": false
                 }));
 
-              case 4:
-                _context9.next = 6;
-                return (0, _testHelpers.typeIn)('input', 'a');
+              case 3:
+                _context9.next = 5;
+                return (0, _testHelpers.typeIn)('input', 'az');
 
-              case 6:
+              case 5:
+                assert.dom('.text-color-error').doesNotExist();
+                assert.dom('[data-control-name="password-input-validators"]').doesNotExist();
+
+              case 7:
               case "end":
                 return _context9.stop();
             }
@@ -16664,16 +16668,448 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["@ember/
         return _ref10.apply(this, arguments);
       };
     }());
-    (0, _qunit.test)('it throws an error when the @value parameter is missing', /*#__PURE__*/function () {
+    (0, _qunit.test)('If the @validates method is passed, the validators states are visible', /*#__PURE__*/function () {
       var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(assert) {
         return regeneratorRuntime.wrap(function _callee10$(_context10) {
           while (1) {
             switch (_context10.prev = _context10.next) {
               case 0:
+                this.value = '';
+                _context10.next = 3;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />
+                */
+                {
+                  "id": "nAOSYrA9",
+                  "block": "[[[8,[39,0],null,[[\"@value\",\"@validates\"],[[30,0,[\"value\"]],[30,0,[\"validates\"]]]],null]],[],false,[\"o-s-s/password-input\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 3:
+                assert.dom('[data-control-name="password-input-validators"]').exists();
+
+              case 4:
+              case "end":
+                return _context10.stop();
+            }
+          }
+        }, _callee10, this);
+      }));
+
+      return function (_x10) {
+        return _ref11.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.module)('Validators', function () {
+      (0, _qunit.test)('Uppercase - if no uppercase character is inputed, a validator error is shown', /*#__PURE__*/function () {
+        var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(assert) {
+          return regeneratorRuntime.wrap(function _callee11$(_context11) {
+            while (1) {
+              switch (_context11.prev = _context11.next) {
+                case 0:
+                  this.value = 'aze';
+                  _context11.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />
+                  */
+                  {
+                    "id": "nAOSYrA9",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@validates\"],[[30,0,[\"value\"]],[30,0,[\"validates\"]]]],null]],[],false,[\"o-s-s/password-input\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  assert.dom('[data-control-name="password-input-validator-uppercase"] i.visible').hasClass('font-color-error-500');
+
+                case 4:
+                case "end":
+                  return _context11.stop();
+              }
+            }
+          }, _callee11, this);
+        }));
+
+        return function (_x11) {
+          return _ref12.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('Uppercase - if an uppercase character is inputed, a validator success is shown', /*#__PURE__*/function () {
+        var _ref13 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(assert) {
+          return regeneratorRuntime.wrap(function _callee12$(_context12) {
+            while (1) {
+              switch (_context12.prev = _context12.next) {
+                case 0:
+                  this.value = 'AZE';
+                  _context12.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />
+                  */
+                  {
+                    "id": "nAOSYrA9",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@validates\"],[[30,0,[\"value\"]],[30,0,[\"validates\"]]]],null]],[],false,[\"o-s-s/password-input\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  assert.dom('[data-control-name="password-input-validator-uppercase"] i.visible').hasClass('font-color-success-500');
+
+                case 4:
+                case "end":
+                  return _context12.stop();
+              }
+            }
+          }, _callee12, this);
+        }));
+
+        return function (_x12) {
+          return _ref13.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('Number - if no number is inputed, a validator error is shown', /*#__PURE__*/function () {
+        var _ref14 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13(assert) {
+          return regeneratorRuntime.wrap(function _callee13$(_context13) {
+            while (1) {
+              switch (_context13.prev = _context13.next) {
+                case 0:
+                  this.value = 'aze';
+                  _context13.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />
+                  */
+                  {
+                    "id": "nAOSYrA9",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@validates\"],[[30,0,[\"value\"]],[30,0,[\"validates\"]]]],null]],[],false,[\"o-s-s/password-input\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  assert.dom('[data-control-name="password-input-validator-number"] i.visible').hasClass('font-color-error-500');
+
+                case 4:
+                case "end":
+                  return _context13.stop();
+              }
+            }
+          }, _callee13, this);
+        }));
+
+        return function (_x13) {
+          return _ref14.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('Uppercase - if a number is inputed, a validator success is shown', /*#__PURE__*/function () {
+        var _ref15 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee14(assert) {
+          return regeneratorRuntime.wrap(function _callee14$(_context14) {
+            while (1) {
+              switch (_context14.prev = _context14.next) {
+                case 0:
+                  this.value = '123';
+                  _context14.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />
+                  */
+                  {
+                    "id": "nAOSYrA9",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@validates\"],[[30,0,[\"value\"]],[30,0,[\"validates\"]]]],null]],[],false,[\"o-s-s/password-input\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  assert.dom('[data-control-name="password-input-validator-number"] i.visible').hasClass('font-color-success-500');
+
+                case 4:
+                case "end":
+                  return _context14.stop();
+              }
+            }
+          }, _callee14, this);
+        }));
+
+        return function (_x14) {
+          return _ref15.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('Length - if the password is not at least 8 characters long, a validator error is shown', /*#__PURE__*/function () {
+        var _ref16 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15(assert) {
+          return regeneratorRuntime.wrap(function _callee15$(_context15) {
+            while (1) {
+              switch (_context15.prev = _context15.next) {
+                case 0:
+                  this.value = '123';
+                  _context15.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />
+                  */
+                  {
+                    "id": "nAOSYrA9",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@validates\"],[[30,0,[\"value\"]],[30,0,[\"validates\"]]]],null]],[],false,[\"o-s-s/password-input\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  assert.dom('[data-control-name="password-input-validator-length"] i.visible').hasClass('font-color-error-500');
+
+                case 4:
+                case "end":
+                  return _context15.stop();
+              }
+            }
+          }, _callee15, this);
+        }));
+
+        return function (_x15) {
+          return _ref16.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('Length - if the password has 8 characters, a validator success is shown', /*#__PURE__*/function () {
+        var _ref17 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee16(assert) {
+          return regeneratorRuntime.wrap(function _callee16$(_context16) {
+            while (1) {
+              switch (_context16.prev = _context16.next) {
+                case 0:
+                  this.value = '12345678';
+                  _context16.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />
+                  */
+                  {
+                    "id": "nAOSYrA9",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@validates\"],[[30,0,[\"value\"]],[30,0,[\"validates\"]]]],null]],[],false,[\"o-s-s/password-input\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  assert.dom('[data-control-name="password-input-validator-length"] i.visible').hasClass('font-color-success-500');
+
+                case 4:
+                case "end":
+                  return _context16.stop();
+              }
+            }
+          }, _callee16, this);
+        }));
+
+        return function (_x16) {
+          return _ref17.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('When all validators are matched, the @validates method sends a truthy argument', /*#__PURE__*/function () {
+        var _ref18 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee17(assert) {
+          return regeneratorRuntime.wrap(function _callee17$(_context17) {
+            while (1) {
+              switch (_context17.prev = _context17.next) {
+                case 0:
+                  this.value = '123azeAZE';
+                  _context17.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />
+                  */
+                  {
+                    "id": "nAOSYrA9",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@validates\"],[[30,0,[\"value\"]],[30,0,[\"validates\"]]]],null]],[],false,[\"o-s-s/password-input\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  _context17.next = 5;
+                  return (0, _testHelpers.typeIn)('input', 'a');
+
+                case 5:
+                  assert.true(this.validates.calledOnceWith(true));
+
+                case 6:
+                case "end":
+                  return _context17.stop();
+              }
+            }
+          }, _callee17, this);
+        }));
+
+        return function (_x17) {
+          return _ref18.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('Passing a @validorSet sets uses the custom validators', function (hooks) {
+      hooks.beforeEach(function () {
+        this.validatorSet = {
+          lowercase: {
+            labelKey: 'oss-components.password-input.validators.lowercase',
+            regex: /(?=.*[a-z]).*/
+          }
+        };
+      });
+      (0, _qunit.test)('The custom validator is visible', /*#__PURE__*/function () {
+        var _ref19 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee18(assert) {
+          return regeneratorRuntime.wrap(function _callee18$(_context18) {
+            while (1) {
+              switch (_context18.prev = _context18.next) {
+                case 0:
+                  this.value = '';
+                  _context18.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::PasswordInput @value={{this.value}} @validates={{this.validates}}
+                                                             @validatorSet={{this.validatorSet}} />
+                  */
+                  {
+                    "id": "ieEJuD/0",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@validates\",\"@validatorSet\"],[[30,0,[\"value\"]],[30,0,[\"validates\"]],[30,0,[\"validatorSet\"]]]],null]],[],false,[\"o-s-s/password-input\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  assert.dom('[data-control-name="password-input-validator-lowercase"]').exists();
+
+                case 4:
+                case "end":
+                  return _context18.stop();
+              }
+            }
+          }, _callee18, this);
+        }));
+
+        return function (_x18) {
+          return _ref19.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('Lowercase - if no lowercase character is inputed, a validator error is shown', /*#__PURE__*/function () {
+        var _ref20 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee19(assert) {
+          return regeneratorRuntime.wrap(function _callee19$(_context19) {
+            while (1) {
+              switch (_context19.prev = _context19.next) {
+                case 0:
+                  this.value = 'AZE';
+                  _context19.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::PasswordInput @value={{this.value}} @validates={{this.validates}}
+                                                             @validatorSet={{this.validatorSet}} />
+                  */
+                  {
+                    "id": "ieEJuD/0",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@validates\",\"@validatorSet\"],[[30,0,[\"value\"]],[30,0,[\"validates\"]],[30,0,[\"validatorSet\"]]]],null]],[],false,[\"o-s-s/password-input\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  assert.dom('[data-control-name="password-input-validator-lowercase"] i.visible').hasClass('font-color-error-500');
+
+                case 4:
+                case "end":
+                  return _context19.stop();
+              }
+            }
+          }, _callee19, this);
+        }));
+
+        return function (_x19) {
+          return _ref20.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('Lowercase - if an lowercase character is inputed, a validator success is shown', /*#__PURE__*/function () {
+        var _ref21 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee20(assert) {
+          return regeneratorRuntime.wrap(function _callee20$(_context20) {
+            while (1) {
+              switch (_context20.prev = _context20.next) {
+                case 0:
+                  this.value = 'aze';
+                  _context20.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::PasswordInput @value={{this.value}} @validates={{this.validates}}
+                                                             @validatorSet={{this.validatorSet}} />
+                  */
+                  {
+                    "id": "ieEJuD/0",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@validates\",\"@validatorSet\"],[[30,0,[\"value\"]],[30,0,[\"validates\"]],[30,0,[\"validatorSet\"]]]],null]],[],false,[\"o-s-s/password-input\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  assert.dom('[data-control-name="password-input-validator-lowercase"] i.visible').hasClass('font-color-success-500');
+
+                case 4:
+                case "end":
+                  return _context20.stop();
+              }
+            }
+          }, _callee20, this);
+        }));
+
+        return function (_x20) {
+          return _ref21.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('When all validators are matched, the @validates method sends a truthy argument', /*#__PURE__*/function () {
+        var _ref22 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee21(assert) {
+          return regeneratorRuntime.wrap(function _callee21$(_context21) {
+            while (1) {
+              switch (_context21.prev = _context21.next) {
+                case 0:
+                  this.value = '123azeAZE';
+                  _context21.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    <OSS::PasswordInput @value={{this.value}} @validates={{this.validates}}
+                                                             @validatorSet={{this.validatorSet}} />
+                  */
+                  {
+                    "id": "ieEJuD/0",
+                    "block": "[[[8,[39,0],null,[[\"@value\",\"@validates\",\"@validatorSet\"],[[30,0,[\"value\"]],[30,0,[\"validates\"]],[30,0,[\"validatorSet\"]]]],null]],[],false,[\"o-s-s/password-input\"]]",
+                    "moduleName": "(unknown template module)",
+                    "isStrictMode": false
+                  }));
+
+                case 3:
+                  _context21.next = 5;
+                  return (0, _testHelpers.typeIn)('input', 'a');
+
+                case 5:
+                  assert.true(this.validates.calledOnceWith(true));
+
+                case 6:
+                case "end":
+                  return _context21.stop();
+              }
+            }
+          }, _callee21, this);
+        }));
+
+        return function (_x21) {
+          return _ref22.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.test)('it throws an error when the @value parameter is missing', /*#__PURE__*/function () {
+      var _ref23 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee22(assert) {
+        return regeneratorRuntime.wrap(function _callee22$(_context22) {
+          while (1) {
+            switch (_context22.prev = _context22.next) {
+              case 0:
                 (0, _testHelpers.setupOnerror)(function (err) {
                   assert.equal(err.message, 'Assertion Failed: [component][OSS::PasswordInput] The @value parameter is mandatory');
                 });
-                _context10.next = 3;
+                _context22.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::PasswordInput />
@@ -16687,14 +17123,14 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["@ember/
 
               case 3:
               case "end":
-                return _context10.stop();
+                return _context22.stop();
             }
           }
-        }, _callee10);
+        }, _callee22);
       }));
 
-      return function (_x10) {
-        return _ref11.apply(this, arguments);
+      return function (_x22) {
+        return _ref23.apply(this, arguments);
       };
     }());
   });

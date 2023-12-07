@@ -15235,6 +15235,40 @@ a.upf-btn--sm {
     opacity: 1;
   }
 }
+.password-input-validator {
+  transition: all 250ms ease-in-out;
+}
+.password-input-validator .validator-icon-container {
+  position: relative;
+  width: var(--spacing-px-12);
+  display: flex;
+  align-items: center;
+}
+.password-input-validator .validator-icon-container .validator-icon {
+  position: absolute;
+  display: flex;
+  width: var(--spacing-px-12);
+  height: var(--spacing-px-12);
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: transform 300ms ease-in-out;
+}
+.password-input-validator .validator-icon-container .validator-icon:last-of-type {
+  opacity: 0;
+  transform: scale(0.8) rotate(225deg);
+}
+.password-input-validator .validator-icon-container .validator-icon.visible:first-of-type {
+  transform: rotate(135deg);
+}
+.password-input-validator .validator-icon-container .validator-icon.visible {
+  opacity: 1;
+  transform: scale(1) rotate(1turn);
+}
+.password-input-validator .validator-icon-container .validator-icon.invisible {
+  opacity: 0;
+  transform: scale(1) rotate(-1turn);
+}
 .upf-table-v2 {
   border: 1px solid var(--color-border-default);
   border-radius: var(--border-radius-md);
