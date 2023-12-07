@@ -84552,7 +84552,7 @@ define("@upfluence/oss-components/components/o-s-s/access-panel", ["exports", "@
           </:prefix>
   
           <:input>
-            <Input
+            <Input class="upf-input"
               @value={{this.searchKeyword}} placeholder={{t "oss-components.access-panel.search_placeholder"}}
               {{on "keyup" this.onSearch}} />
           </:input>
@@ -84600,8 +84600,8 @@ define("@upfluence/oss-components/components/o-s-s/access-panel", ["exports", "@
   </div>
   */
   {
-    "id": "jWxFoKhl",
-    "block": "[[[11,0],[24,0,\"oss-access-panel-backdrop\"],[24,\"role\",\"button\"],[4,[38,0],[\"click\",[30,1]],null],[12],[13],[1,\"\\n\"],[11,0],[24,0,\"oss-access-panel-container\"],[17,2],[4,[38,1],[[30,0,[\"setupAnimation\"]]],null],[12],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"    \"],[10,0],[14,0,\"oss-access-panel-container__header\"],[12],[1,\"\\n      \"],[18,8,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,5],[[30,0,[\"displayEmptyState\"]],[30,0,[\"hasNoKeyword\"]]],null],[[[1,\"    \"],[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n      \"],[18,9,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[10,0],[14,0,\"padding-top-px-18 padding-bottom-px-18 padding-left-px-18 padding-right-px-18\"],[12],[1,\"\\n      \"],[8,[39,6],null,null,[[\"prefix\",\"input\"],[[[[1,\"\\n          \"],[8,[39,7],null,[[\"@icon\"],[\"fa-search\"]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[8,[39,8],[[16,\"placeholder\",[28,[37,9],[\"oss-components.access-panel.search_placeholder\"],null]],[4,[38,0],[\"keyup\",[30,0,[\"onSearch\"]]],null]],[[\"@value\"],[[30,0,[\"searchKeyword\"]]]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"oss-access-panel-container__content-wrapper fx-col height-pc-100\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"oss-access-panel-container__rows-header\"],[12],[1,\"\\n        \"],[18,10,null],[1,\"\\n      \"],[13],[1,\"\\n\\n      \"],[10,\"hr\"],[12],[13],[1,\"\\n\\n\"],[41,[28,[37,5],[[30,0,[\"displayEmptyState\"]],[30,0,[\"searchKeyword\"]]],null],[[[1,\"        \"],[18,11,null],[1,\"\\n\"]],[]],[[[1,\"        \"],[11,0],[24,0,\"oss-access-panel-container__rows-container\"],[4,[38,10],[[30,3]],null],[12],[1,\"\\n\"],[41,[28,[37,5],[[30,4],[30,5]],null],[[[42,[28,[37,12],[[28,[37,12],[[30,0,[\"loadingRows\"]]],null]],null],null,[[[1,\"              \"],[10,0],[14,0,\"oss-access-panel-container__row fx-malign-space-between\"],[12],[1,\"\\n                \"],[8,[39,13],null,[[\"@height\",\"@width\"],[12,150]],null],[1,\"\\n                \"],[8,[39,13],null,[[\"@height\",\"@width\"],[12,36]],null],[1,\"\\n              \"],[13],[1,\"\\n\"]],[]],null]],[]],[[[42,[28,[37,12],[[28,[37,12],[[30,6]],null]],null],null,[[[1,\"              \"],[10,0],[15,0,[28,[37,14],[\"oss-access-panel-container__row\",[52,[30,7,[\"_accessPanel\",\"active\"]],\" oss-access-panel-container__row--active\"]],null]],[12],[1,\"\\n                \"],[18,12,[[30,7]]],[1,\"\\n              \"],[13],[1,\"\\n\"]],[7]],null],[1,\"\\n\"],[41,[30,4],[[[42,[28,[37,12],[[28,[37,12],[[30,0,[\"loadingMoreRows\"]]],null]],null],null,[[[1,\"                \"],[10,0],[14,0,\"oss-access-panel-container__row fx-malign-space-between\"],[12],[1,\"\\n                  \"],[8,[39,13],null,[[\"@height\",\"@width\"],[12,150]],null],[1,\"\\n                  \"],[8,[39,13],null,[[\"@height\",\"@width\"],[12,36]],null],[1,\"\\n                \"],[13],[1,\"\\n\"]],[]],null]],[]],null]],[]]],[1,\"        \"],[13],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n\"]],[]]],[13]],[\"@onClose\",\"&attrs\",\"@onBottomReached\",\"@loading\",\"@initialLoad\",\"@records\",\"record\",\"&header\",\"&empty-state\",\"&columns\",\"&no-results\",\"&row\"],false,[\"on\",\"did-insert\",\"if\",\"has-block\",\"yield\",\"and\",\"o-s-s/input-container\",\"o-s-s/icon\",\"input\",\"t\",\"on-bottom-reached\",\"each\",\"-track-array\",\"o-s-s/skeleton\",\"concat\"]]",
+    "id": "AcXd/HFL",
+    "block": "[[[11,0],[24,0,\"oss-access-panel-backdrop\"],[24,\"role\",\"button\"],[4,[38,0],[\"click\",[30,1]],null],[12],[13],[1,\"\\n\"],[11,0],[24,0,\"oss-access-panel-container\"],[17,2],[4,[38,1],[[30,0,[\"setupAnimation\"]]],null],[12],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"    \"],[10,0],[14,0,\"oss-access-panel-container__header\"],[12],[1,\"\\n      \"],[18,8,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,5],[[30,0,[\"displayEmptyState\"]],[30,0,[\"hasNoKeyword\"]]],null],[[[1,\"    \"],[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n      \"],[18,9,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[10,0],[14,0,\"padding-top-px-18 padding-bottom-px-18 padding-left-px-18 padding-right-px-18\"],[12],[1,\"\\n      \"],[8,[39,6],null,null,[[\"prefix\",\"input\"],[[[[1,\"\\n          \"],[8,[39,7],null,[[\"@icon\"],[\"fa-search\"]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[8,[39,8],[[24,0,\"upf-input\"],[16,\"placeholder\",[28,[37,9],[\"oss-components.access-panel.search_placeholder\"],null]],[4,[38,0],[\"keyup\",[30,0,[\"onSearch\"]]],null]],[[\"@value\"],[[30,0,[\"searchKeyword\"]]]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"oss-access-panel-container__content-wrapper fx-col height-pc-100\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"oss-access-panel-container__rows-header\"],[12],[1,\"\\n        \"],[18,10,null],[1,\"\\n      \"],[13],[1,\"\\n\\n      \"],[10,\"hr\"],[12],[13],[1,\"\\n\\n\"],[41,[28,[37,5],[[30,0,[\"displayEmptyState\"]],[30,0,[\"searchKeyword\"]]],null],[[[1,\"        \"],[18,11,null],[1,\"\\n\"]],[]],[[[1,\"        \"],[11,0],[24,0,\"oss-access-panel-container__rows-container\"],[4,[38,10],[[30,3]],null],[12],[1,\"\\n\"],[41,[28,[37,5],[[30,4],[30,5]],null],[[[42,[28,[37,12],[[28,[37,12],[[30,0,[\"loadingRows\"]]],null]],null],null,[[[1,\"              \"],[10,0],[14,0,\"oss-access-panel-container__row fx-malign-space-between\"],[12],[1,\"\\n                \"],[8,[39,13],null,[[\"@height\",\"@width\"],[12,150]],null],[1,\"\\n                \"],[8,[39,13],null,[[\"@height\",\"@width\"],[12,36]],null],[1,\"\\n              \"],[13],[1,\"\\n\"]],[]],null]],[]],[[[42,[28,[37,12],[[28,[37,12],[[30,6]],null]],null],null,[[[1,\"              \"],[10,0],[15,0,[28,[37,14],[\"oss-access-panel-container__row\",[52,[30,7,[\"_accessPanel\",\"active\"]],\" oss-access-panel-container__row--active\"]],null]],[12],[1,\"\\n                \"],[18,12,[[30,7]]],[1,\"\\n              \"],[13],[1,\"\\n\"]],[7]],null],[1,\"\\n\"],[41,[30,4],[[[42,[28,[37,12],[[28,[37,12],[[30,0,[\"loadingMoreRows\"]]],null]],null],null,[[[1,\"                \"],[10,0],[14,0,\"oss-access-panel-container__row fx-malign-space-between\"],[12],[1,\"\\n                  \"],[8,[39,13],null,[[\"@height\",\"@width\"],[12,150]],null],[1,\"\\n                  \"],[8,[39,13],null,[[\"@height\",\"@width\"],[12,36]],null],[1,\"\\n                \"],[13],[1,\"\\n\"]],[]],null]],[]],null]],[]]],[1,\"        \"],[13],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n\"]],[]]],[13]],[\"@onClose\",\"&attrs\",\"@onBottomReached\",\"@loading\",\"@initialLoad\",\"@records\",\"record\",\"&header\",\"&empty-state\",\"&columns\",\"&no-results\",\"&row\"],false,[\"on\",\"did-insert\",\"if\",\"has-block\",\"yield\",\"and\",\"o-s-s/input-container\",\"o-s-s/icon\",\"input\",\"t\",\"on-bottom-reached\",\"each\",\"-track-array\",\"o-s-s/skeleton\",\"concat\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/access-panel.hbs",
     "isStrictMode": false
   });
@@ -85003,18 +85003,22 @@ define("@upfluence/oss-components/components/o-s-s/array-input", ["exports", "@e
 
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="array-input-container fx-row fx-xalign-center fx-gap-px-6 padding-left-px-6 padding-right-px-6" ...attributes>
-    {{#each this.items as |item index|}}
-      <OSS::Chip @label={{item}} @onRemove={{fn this.removeItem index}} />
-    {{/each}}
-    <Input @value={{this.currentValue}} placeholder={{@placeholder}} autocomplete="off"
-           {{on "keydown" this.keyListener}} {{on "blur" this.validateTagOnClickOutside}} />
+    <div class="fx-1 fx-col fx-gap-px-6">
+    <div class={{this.computedClasses}}
+         ...attributes>
+      {{#each this.items as |item index|}}
+        <OSS::Chip @label={{item}} @onRemove={{fn this.removeItem index}} />
+      {{/each}}
+      <Input @value={{this.currentValue}} placeholder={{@placeholder}} autocomplete="off" disabled={{@disabled}}
+             {{on "keydown" this.keyListener}} {{on "blur" this.validateTagOnClickOutside}} />
+    </div>
+    <span class="font-color-error-500">{{@errorMessage}}</span>
   </div>
   
   */
   {
-    "id": "TVaI8U4f",
-    "block": "[[[11,0],[24,0,\"array-input-container fx-row fx-xalign-center fx-gap-px-6 padding-left-px-6 padding-right-px-6\"],[17,1],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"    \"],[8,[39,2],null,[[\"@label\",\"@onRemove\"],[[30,2],[28,[37,3],[[30,0,[\"removeItem\"]],[30,3]],null]]],null],[1,\"\\n\"]],[2,3]],null],[1,\"  \"],[8,[39,4],[[16,\"placeholder\",[30,4]],[24,\"autocomplete\",\"off\"],[4,[38,5],[\"keydown\",[30,0,[\"keyListener\"]]],null],[4,[38,5],[\"blur\",[30,0,[\"validateTagOnClickOutside\"]]],null]],[[\"@value\"],[[30,0,[\"currentValue\"]]]],null],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"item\",\"index\",\"@placeholder\"],false,[\"each\",\"-track-array\",\"o-s-s/chip\",\"fn\",\"input\",\"on\"]]",
+    "id": "13Dd3EH9",
+    "block": "[[[10,0],[14,0,\"fx-1 fx-col fx-gap-px-6\"],[12],[1,\"\\n  \"],[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"      \"],[8,[39,2],null,[[\"@label\",\"@onRemove\"],[[30,2],[28,[37,3],[[30,0,[\"removeItem\"]],[30,3]],null]]],null],[1,\"\\n\"]],[2,3]],null],[1,\"    \"],[8,[39,4],[[16,\"placeholder\",[30,4]],[24,\"autocomplete\",\"off\"],[16,\"disabled\",[30,5]],[4,[38,5],[\"keydown\",[30,0,[\"keyListener\"]]],null],[4,[38,5],[\"blur\",[30,0,[\"validateTagOnClickOutside\"]]],null]],[[\"@value\"],[[30,0,[\"currentValue\"]]]],null],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,1],[14,0,\"font-color-error-500\"],[12],[1,[30,6]],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"item\",\"index\",\"@placeholder\",\"@disabled\",\"@errorMessage\"],false,[\"each\",\"-track-array\",\"o-s-s/chip\",\"fn\",\"input\",\"on\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/array-input.hbs",
     "isStrictMode": false
   });
@@ -85044,6 +85048,21 @@ define("@upfluence/oss-components/components/o-s-s/array-input", ["exports", "@e
     }
 
     _createClass(OSSArrayInput, [{
+      key: "computedClasses",
+      get: function get() {
+        var arr = ['array-input-container'];
+
+        if (this.args.disabled) {
+          arr.push('array-input-container--disabled');
+        }
+
+        if (this.args.errorMessage) {
+          arr.push('array-input-container--errored');
+        }
+
+        return arr.join(' ');
+      }
+    }, {
       key: "keyboardTriggers",
       get: function get() {
         return DEFAULT_KEYBOARD_TRIGGERS.concat(this.args.keyboardTriggers || []);
@@ -85174,6 +85193,34 @@ define("@upfluence/oss-components/components/o-s-s/array-input", ["exports", "@e
           type: 'text'
         }
       },
+      disabled: {
+        description: 'Disables the default input (when not passing an input named block)',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      errorMessage: {
+        description: 'An error message that will be displayed below the input-group.',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
       keyboardTriggers: {
         description: 'An array of keyboard event keys that can be used to trigger an entry validation in addition to Enter',
         table: {
@@ -85223,13 +85270,14 @@ define("@upfluence/oss-components/components/o-s-s/array-input", ["exports", "@e
       template: (0, _templateFactory.createTemplateFactory)(
       /*
         <div style="display: flex; justify-content: center">
-            <OSS::ArrayInput @values={{this.values}} @onChange={{this.onChange}} @placeholder={{this.placeholder}} @validator={{this.validator}} />
+            <OSS::ArrayInput @values={{this.values}} @onChange={{this.onChange}} @placeholder={{this.placeholder}} @validator={{this.validator}}
+                             @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} />
           </div>
         
       */
       {
-        "id": "hkZC0V6Y",
-        "block": "[[[10,0],[14,5,\"display: flex; justify-content: center\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@values\",\"@onChange\",\"@placeholder\",\"@validator\"],[[30,0,[\"values\"]],[30,0,[\"onChange\"]],[30,0,[\"placeholder\"]],[30,0,[\"validator\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/array-input\"]]",
+        "id": "SwSTPnAk",
+        "block": "[[[10,0],[14,5,\"display: flex; justify-content: center\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@values\",\"@onChange\",\"@placeholder\",\"@validator\",\"@disabled\",\"@errorMessage\"],[[30,0,[\"values\"]],[30,0,[\"onChange\"]],[30,0,[\"placeholder\"]],[30,0,[\"validator\"]],[30,0,[\"disabled\"]],[30,0,[\"errorMessage\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/array-input\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -85242,6 +85290,8 @@ define("@upfluence/oss-components/components/o-s-s/array-input", ["exports", "@e
   BasicUsage.args = {
     values: ['Iron Man', 'Thor', 'Loki', 'Hulk'],
     placeholder: 'Enter a super hero name',
+    errorMessage: '',
+    disabled: false,
     onChange: (0, _addonActions.action)('onChange'),
     validator: (0, _addonActions.action)('validator')
   };
@@ -89776,7 +89826,7 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div id={{this.elementId}} class="country-selector-container fx-1" ...attributes>
-    <div class="upf-input fx-row fx-1 fx-malign-space-between fx-xalign-center"
+    <div class="upf-input fx-row fx-1 fx-malign-space-between fx-xalign-center {{if this.dropdownVisibility 'active'}}"
          {{on "click" this.toggleDropdown}} role="button"
          {{on "keydown" this.handleKeyEvent}}
          data-control-name="country-selector-input" tabindex="0">
@@ -89786,11 +89836,7 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
         {{/if}}
         <span class="{{unless this.selectedCountry 'text-color-default-light'}}">{{this.inputLabel}}</span>
       </div>
-      {{#if this.dropdownVisibility}}
-        <OSS::Icon @icon="fa-chevron-up" />
-      {{else}}
-        <OSS::Icon @icon="fa-chevron-down" />
-      {{/if}}
+      <OSS::Icon @icon="fa-chevron-{{if this.dropdownVisibility 'up' 'down'}}" />
     </div>
     {{#if this.dropdownVisibility}}
       <OSS::InfiniteSelect @items={{this.filteredItems}} @onSearch={{this.search}}
@@ -89817,8 +89863,8 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
   
   */
   {
-    "id": "9sFOQSwo",
-    "block": "[[[11,0],[16,1,[30,0,[\"elementId\"]]],[24,0,\"country-selector-container fx-1\"],[17,1],[12],[1,\"\\n  \"],[11,0],[24,0,\"upf-input fx-row fx-1 fx-malign-space-between fx-xalign-center\"],[24,\"role\",\"button\"],[24,\"data-control-name\",\"country-selector-input\"],[24,\"tabindex\",\"0\"],[4,[38,0],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[4,[38,0],[\"keydown\",[30,0,[\"handleKeyEvent\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-10\"],[12],[1,\"\\n\"],[41,[30,0,[\"selectedCountry\",\"id\"]],[[[1,\"        \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"selectedCountry\",\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[15,0,[29,[[52,[51,[30,0,[\"selectedCountry\"]]],\"text-color-default-light\"]]]],[12],[1,[30,0,[\"inputLabel\"]]],[13],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[30,0,[\"dropdownVisibility\"]],[[[1,\"      \"],[8,[39,3],null,[[\"@icon\"],[\"fa-chevron-up\"]],null],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,3],null,[[\"@icon\"],[\"fa-chevron-down\"]],null],[1,\"\\n\"]],[]]],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,0,[\"dropdownVisibility\"]],[[[1,\"    \"],[8,[39,4],[[4,[38,6],[[30,0,[\"closeDropdown\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\",\"@onClose\",\"@enableKeyboard\"],[[30,0,[\"filteredItems\"]],[30,0,[\"search\"]],[30,0,[\"onItemSelected\"]],[28,[37,5],[\"oss-components.country-selector.search\"],null],[30,0,[\"closeDropdown\"]],true]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,2]],null],\"row-selected\"]]]],[12],[1,\"\\n\"],[41,[30,2,[\"id\"]],[[[1,\"            \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,2,[\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm\"],[12],[1,[30,2,[\"name\"]]],[13],[1,\"\\n\"],[41,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,2]],null],[[[1,\"            \"],[10,0],[14,0,\"fx-1\"],[12],[13],[1,\"\\n            \"],[8,[39,3],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[2]]]]],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"item\"],false,[\"on\",\"if\",\"unless\",\"o-s-s/icon\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\",\"eq\"]]",
+    "id": "SpbywEGZ",
+    "block": "[[[11,0],[16,1,[30,0,[\"elementId\"]]],[24,0,\"country-selector-container fx-1\"],[17,1],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"upf-input fx-row fx-1 fx-malign-space-between fx-xalign-center \",[52,[30,0,[\"dropdownVisibility\"]],\"active\"]]]],[24,\"role\",\"button\"],[24,\"data-control-name\",\"country-selector-input\"],[24,\"tabindex\",\"0\"],[4,[38,1],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[4,[38,1],[\"keydown\",[30,0,[\"handleKeyEvent\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-10\"],[12],[1,\"\\n\"],[41,[30,0,[\"selectedCountry\",\"id\"]],[[[1,\"        \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"selectedCountry\",\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[15,0,[29,[[52,[51,[30,0,[\"selectedCountry\"]]],\"text-color-default-light\"]]]],[12],[1,[30,0,[\"inputLabel\"]]],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[8,[39,3],null,[[\"@icon\"],[[29,[\"fa-chevron-\",[52,[30,0,[\"dropdownVisibility\"]],\"up\",\"down\"]]]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"dropdownVisibility\"]],[[[1,\"    \"],[8,[39,4],[[4,[38,6],[[30,0,[\"closeDropdown\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\",\"@onClose\",\"@enableKeyboard\"],[[30,0,[\"filteredItems\"]],[30,0,[\"search\"]],[30,0,[\"onItemSelected\"]],[28,[37,5],[\"oss-components.country-selector.search\"],null],[30,0,[\"closeDropdown\"]],true]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,2]],null],\"row-selected\"]]]],[12],[1,\"\\n\"],[41,[30,2,[\"id\"]],[[[1,\"            \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,2,[\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm\"],[12],[1,[30,2,[\"name\"]]],[13],[1,\"\\n\"],[41,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,2]],null],[[[1,\"            \"],[10,0],[14,0,\"fx-1\"],[12],[13],[1,\"\\n            \"],[8,[39,3],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[2]]]]],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"item\"],false,[\"if\",\"on\",\"unless\",\"o-s-s/icon\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\",\"eq\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/country-selector.hbs",
     "isStrictMode": false
   });
@@ -90155,12 +90201,11 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class="currency-input-container fx-1 {{if @errorMessage 'currency-input-container--errored'}}" ...attributes>
-    <div class="currency-input {{if @onlyCurrency 'onlycurrency'}} upf-input fx-row fx-1 fx-xalign-center">
-      <div
-        class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between"
-        role="button"
-        {{on "click" this.toggleCurrencySelector}}
-      >
+    <div class="currency-input {{if @onlyCurrency 'onlycurrency'}} {{if this.currencySelectorShown 'currency-input--active'}}
+                fx-row fx-1 fx-xalign-center">
+      <div class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center"
+           role={{if this.allowCurrencyUpdate 'button' 'img'}}
+           {{on "click" this.toggleCurrencySelector}}>
         <div class="fx-col">
           <div class="fx-row fx-gap-px-9">
             <span>{{this.selectedCurrencySymbol}}</span>
@@ -90171,25 +90216,14 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
         </div>
   
         {{#if this.allowCurrencyUpdate}}
-          {{#if this.currencySelectorShown}}
-            <OSS::Icon @icon="fa-chevron-up" class="margin-left-px-6" />
-          {{else}}
-            <OSS::Icon @icon="fa-chevron-down" class="margin-left-px-6" />
-          {{/if}}
+          <OSS::Icon @icon="{{if this.currencySelectorShown "fa-chevron-up" "fa-chevron-down"}}"
+                     class="margin-left-px-6" />
         {{/if}}
       </div>
       {{#unless @onlyCurrency}}
-        <Input
-          @value={{this.localValue}}
-          class="fx-1"
-          type="number"
-          min="0"
-          autocomplete="off"
-          placeholder={{this.placeholder}}
-          {{on "keydown" this.onlyNumeric}}
-          {{on "keyup" this.notifyChanges}}
-          {{on "paste" this.handlePaste}}
-        />
+        <Input class="fx-1" type="number" @value={{this.localValue}} min="0" autocomplete="off"
+               placeholder={{this.placeholder}}
+               {{on "keydown" this.onlyNumeric}} {{on "keyup" this.notifyChanges}} {{on "paste" this.handlePaste}} />
       {{/unless}}
     </div>
     {{#if @errorMessage}}
@@ -90220,8 +90254,8 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
   </div>
   */
   {
-    "id": "r7EvGJjY",
-    "block": "[[[11,0],[16,0,[29,[\"currency-input-container fx-1 \",[52,[30,1],\"currency-input-container--errored\"]]]],[17,2],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"currency-input \",[52,[30,3],\"onlycurrency\"],\" upf-input fx-row fx-1 fx-xalign-center\"]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"currency-selector fx-row fx-gap-px-12 fx-malign-space-between\"],[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,0,[\"toggleCurrencySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-9\"],[12],[1,\"\\n          \"],[10,1],[12],[1,[30,0,[\"selectedCurrencySymbol\"]]],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"            \"],[10,1],[14,0,\"margin-right-px-12\"],[12],[1,[30,0,[\"selectedCurrencyCode\"]]],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"allowCurrencyUpdate\"]],[[[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"          \"],[8,[39,2],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[\"fa-chevron-up\"]],null],[1,\"\\n\"]],[]],[[[1,\"          \"],[8,[39,2],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[\"fa-chevron-down\"]],null],[1,\"\\n\"]],[]]]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[51,[30,3]],[[[1,\"      \"],[8,[39,4],[[24,0,\"fx-1\"],[24,\"min\",\"0\"],[24,\"autocomplete\",\"off\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,4,\"number\"],[4,[38,1],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,1],[\"keyup\",[30,0,[\"notifyChanges\"]]],null],[4,[38,1],[\"paste\",[30,0,[\"handlePaste\"]]],null]],[[\"@value\"],[[30,0,[\"localValue\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,1],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\"\\n      \"],[1,[30,1]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"    \"],[8,[39,5],[[4,[38,7],[[30,0,[\"hideCurrencySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCurrencies\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[28,[37,6],[\"oss-components.currency-input.search\"],null]]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,8],[[30,0,[\"selectedCurrency\"]],[30,4]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,1],[14,0,\"symbol text-color-default-light margin-left-xx-sm\"],[12],[1,[30,4,[\"symbol\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm fx-1\"],[12],[1,[30,4,[\"code\"]]],[13],[1,\"\\n\"],[41,[28,[37,8],[[30,0,[\"selectedCurrency\"]],[30,4]],null],[[[1,\"            \"],[8,[39,2],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[13]],[\"@errorMessage\",\"&attrs\",\"@onlyCurrency\",\"currency\"],false,[\"if\",\"on\",\"o-s-s/icon\",\"unless\",\"input\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\",\"eq\"]]",
+    "id": "NPbYCLLt",
+    "block": "[[[11,0],[16,0,[29,[\"currency-input-container fx-1 \",[52,[30,1],\"currency-input-container--errored\"]]]],[17,2],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"currency-input \",[52,[30,3],\"onlycurrency\"],\" \",[52,[30,0,[\"currencySelectorShown\"]],\"currency-input--active\"],\"\\n              fx-row fx-1 fx-xalign-center\"]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center\"],[16,\"role\",[52,[30,0,[\"allowCurrencyUpdate\"]],\"button\",\"img\"]],[4,[38,1],[\"click\",[30,0,[\"toggleCurrencySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-9\"],[12],[1,\"\\n          \"],[10,1],[12],[1,[30,0,[\"selectedCurrencySymbol\"]]],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"            \"],[10,1],[14,0,\"margin-right-px-12\"],[12],[1,[30,0,[\"selectedCurrencyCode\"]]],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"allowCurrencyUpdate\"]],[[[1,\"        \"],[8,[39,2],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[[29,[[52,[30,0,[\"currencySelectorShown\"]],\"fa-chevron-up\",\"fa-chevron-down\"]]]]],null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[51,[30,3]],[[[1,\"      \"],[8,[39,4],[[24,0,\"fx-1\"],[24,\"min\",\"0\"],[24,\"autocomplete\",\"off\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,4,\"number\"],[4,[38,1],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,1],[\"keyup\",[30,0,[\"notifyChanges\"]]],null],[4,[38,1],[\"paste\",[30,0,[\"handlePaste\"]]],null]],[[\"@value\"],[[30,0,[\"localValue\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,1],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\"\\n      \"],[1,[30,1]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"    \"],[8,[39,5],[[4,[38,7],[[30,0,[\"hideCurrencySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCurrencies\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[28,[37,6],[\"oss-components.currency-input.search\"],null]]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,8],[[30,0,[\"selectedCurrency\"]],[30,4]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,1],[14,0,\"symbol text-color-default-light margin-left-xx-sm\"],[12],[1,[30,4,[\"symbol\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm fx-1\"],[12],[1,[30,4,[\"code\"]]],[13],[1,\"\\n\"],[41,[28,[37,8],[[30,0,[\"selectedCurrency\"]],[30,4]],null],[[[1,\"            \"],[8,[39,2],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[13]],[\"@errorMessage\",\"&attrs\",\"@onlyCurrency\",\"currency\"],false,[\"if\",\"on\",\"o-s-s/icon\",\"unless\",\"input\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\",\"eq\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/currency-input.hbs",
     "isStrictMode": false
   });
@@ -91407,11 +91441,16 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
        {{did-insert this.onRender}} ...attributes>
     {{#if this.searchEnabled}}
       <InputWrapper>
-        <Input
-               value={{this._searchKeyword}} {{on "keyup" this.updateSearchKeyword}} type="text"
-               class="form-control upf-input" placeholder={{this.searchPlaceholder}}
-               {{on "keydown" this.handleKeyEventInput}} />
-  
+        <OSS::InputContainer>
+          <:prefix>
+            <OSS::Icon class="font-color-gray-500" @icon="fa-search" />
+          </:prefix>
+          <:input>
+            <Input @value={{this._searchKeyword}} {{on "keyup" this.updateSearchKeyword}} type="text"
+                   class="upf-input" placeholder={{this.searchPlaceholder}}
+                   {{on "keydown" this.handleKeyEventInput}} />
+          </:input>
+        </OSS::InputContainer>
       </InputWrapper>
     {{/if}}
     <div class="upf-infinite-select__container">
@@ -91460,8 +91499,8 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
   
   */
   {
-    "id": "pr5XSC6a",
-    "block": "[[[11,0],[16,1,[30,0,[\"elementId\"]]],[16,0,[29,[\"fx-col upf-infinite-select \",[52,[51,[30,0,[\"inline\"]]],\"upf-infinite-select--absolute\"]]]],[17,1],[4,[38,1],[[30,0,[\"onRender\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"searchEnabled\"]],[[[1,\"    \"],[8,[39,3],null,null,[[\"default\"],[[[[1,\"\\n      \"],[8,[39,4],[[16,2,[30,0,[\"_searchKeyword\"]]],[24,0,\"form-control upf-input\"],[16,\"placeholder\",[30,0,[\"searchPlaceholder\"]]],[24,4,\"text\"],[4,[38,5],[\"keyup\",[30,0,[\"updateSearchKeyword\"]]],null],[4,[38,5],[\"keydown\",[30,0,[\"handleKeyEventInput\"]]],null]],null,null],[1,\"\\n\\n    \"]],[]]]]],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"upf-infinite-select__container\"],[12],[1,\"\\n    \"],[11,\"ul\"],[16,0,[29,[\"upf-infinite-select__items-container\\n               \",[52,[28,[37,6],[[30,0,[\"items\",\"length\"]],0],null],\"upf-infinite-select__items-container--empty\"]]]],[4,[38,7],[[30,0,[\"onBottomReached\"]]],null],[4,[38,8],null,null],[4,[38,5],[\"keydown\",[30,0,[\"handleKeyEvent\"]]],null],[12],[1,\"\\n\"],[41,[28,[37,9],[[30,2],[28,[37,10],[[30,3]],null]],null],[[[1,\"        \"],[8,[39,11],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",5,\"col\"]],null],[1,\"\\n\"]],[]],[[[42,[28,[37,13],[[28,[37,13],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"          \"],[11,\"li\"],[24,0,\"upf-infinite-select__item\"],[24,\"role\",\"button\"],[24,\"tabindex\",\"0\"],[4,[38,5],[\"click\",[28,[37,14],[[30,0,[\"didSelectItem\"]],[30,4]],null]],null],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"              \"],[18,5,[[30,4]]],[1,\"\\n\"]],[]],[[[1,\"              \"],[1,[28,[35,17],[[30,4],[30,0,[\"itemLabel\"]]],null]],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[4]],[[[1,\"          \"],[10,0],[14,0,\"fx-col fx-xalign-center\"],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"              \"],[18,6,null],[1,\"\\n\"]],[]],[[[1,\"              \"],[8,[39,18],null,[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null],[1,\"\\n              \"],[10,0],[14,0,\"margin-top-xx-sm text-color-default upf-align--center\"],[12],[1,\"\\n\"],[41,[30,0,[\"_searchKeyword\"]],[[[1,\"                  \"],[10,2],[12],[1,[28,[35,19],[\"oss-components.infinite-select.no-match.title\"],null]],[13],[1,\"\\n                  \"],[10,2],[14,0,\"text-color-default-light\"],[12],[1,\"\\n                    \"],[1,[28,[35,19],[\"oss-components.infinite-select.no-match.description\"],null]],[1,\"\\n                  \"],[13],[1,\"\\n\"]],[]],[[[1,\"                  \"],[1,[28,[35,19],[\"oss-components.infinite-select.empty\"],null]],[1,\"\\n\"]],[]]],[1,\"              \"],[13],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,3],[[[1,\"          \"],[8,[39,11],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",3,\"col\"]],null],[1,\"\\n\"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@loading\",\"@loadingMore\",\"item\",\"&option\",\"&empty-state\"],false,[\"unless\",\"did-insert\",\"if\",\"input-wrapper\",\"input\",\"on\",\"eq\",\"on-bottom-reached\",\"scroll-shadow\",\"and\",\"not\",\"o-s-s/skeleton\",\"each\",\"-track-array\",\"fn\",\"has-block\",\"yield\",\"get\",\"o-s-s/illustration\",\"t\"]]",
+    "id": "5iiGI097",
+    "block": "[[[11,0],[16,1,[30,0,[\"elementId\"]]],[16,0,[29,[\"fx-col upf-infinite-select \",[52,[51,[30,0,[\"inline\"]]],\"upf-infinite-select--absolute\"]]]],[17,1],[4,[38,1],[[30,0,[\"onRender\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"searchEnabled\"]],[[[1,\"    \"],[8,[39,3],null,null,[[\"default\"],[[[[1,\"\\n      \"],[8,[39,4],null,null,[[\"prefix\",\"input\"],[[[[1,\"\\n          \"],[8,[39,5],[[24,0,\"font-color-gray-500\"]],[[\"@icon\"],[\"fa-search\"]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[8,[39,6],[[24,0,\"upf-input\"],[16,\"placeholder\",[30,0,[\"searchPlaceholder\"]]],[24,4,\"text\"],[4,[38,7],[\"keyup\",[30,0,[\"updateSearchKeyword\"]]],null],[4,[38,7],[\"keydown\",[30,0,[\"handleKeyEventInput\"]]],null]],[[\"@value\"],[[30,0,[\"_searchKeyword\"]]]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"]],[]]]]],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"upf-infinite-select__container\"],[12],[1,\"\\n    \"],[11,\"ul\"],[16,0,[29,[\"upf-infinite-select__items-container\\n               \",[52,[28,[37,8],[[30,0,[\"items\",\"length\"]],0],null],\"upf-infinite-select__items-container--empty\"]]]],[4,[38,9],[[30,0,[\"onBottomReached\"]]],null],[4,[38,10],null,null],[4,[38,7],[\"keydown\",[30,0,[\"handleKeyEvent\"]]],null],[12],[1,\"\\n\"],[41,[28,[37,11],[[30,2],[28,[37,12],[[30,3]],null]],null],[[[1,\"        \"],[8,[39,13],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",5,\"col\"]],null],[1,\"\\n\"]],[]],[[[42,[28,[37,15],[[28,[37,15],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"          \"],[11,\"li\"],[24,0,\"upf-infinite-select__item\"],[24,\"role\",\"button\"],[24,\"tabindex\",\"0\"],[4,[38,7],[\"click\",[28,[37,16],[[30,0,[\"didSelectItem\"]],[30,4]],null]],null],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"              \"],[18,5,[[30,4]]],[1,\"\\n\"]],[]],[[[1,\"              \"],[1,[28,[35,19],[[30,4],[30,0,[\"itemLabel\"]]],null]],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[4]],[[[1,\"          \"],[10,0],[14,0,\"fx-col fx-xalign-center\"],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"              \"],[18,6,null],[1,\"\\n\"]],[]],[[[1,\"              \"],[8,[39,20],null,[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null],[1,\"\\n              \"],[10,0],[14,0,\"margin-top-xx-sm text-color-default upf-align--center\"],[12],[1,\"\\n\"],[41,[30,0,[\"_searchKeyword\"]],[[[1,\"                  \"],[10,2],[12],[1,[28,[35,21],[\"oss-components.infinite-select.no-match.title\"],null]],[13],[1,\"\\n                  \"],[10,2],[14,0,\"text-color-default-light\"],[12],[1,\"\\n                    \"],[1,[28,[35,21],[\"oss-components.infinite-select.no-match.description\"],null]],[1,\"\\n                  \"],[13],[1,\"\\n\"]],[]],[[[1,\"                  \"],[1,[28,[35,21],[\"oss-components.infinite-select.empty\"],null]],[1,\"\\n\"]],[]]],[1,\"              \"],[13],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,3],[[[1,\"          \"],[8,[39,13],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",3,\"col\"]],null],[1,\"\\n\"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@loading\",\"@loadingMore\",\"item\",\"&option\",\"&empty-state\"],false,[\"unless\",\"did-insert\",\"if\",\"input-wrapper\",\"o-s-s/input-container\",\"o-s-s/icon\",\"input\",\"on\",\"eq\",\"on-bottom-reached\",\"scroll-shadow\",\"and\",\"not\",\"o-s-s/skeleton\",\"each\",\"-track-array\",\"fn\",\"has-block\",\"yield\",\"get\",\"o-s-s/illustration\",\"t\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/infinite-select.hbs",
     "isStrictMode": false
   });
@@ -92280,8 +92319,9 @@ define("@upfluence/oss-components/components/o-s-s/input-group", ["exports", "@e
 
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="oss-input-group fx-1 fx-col" ...attributes>
-    <div class="fx-1 fx-row fx-xalign-center oss-input-group-row {{if @errorMessage 'oss-input-group-row--error'}}">
+    <div class="oss-input-group fx-1" ...attributes>
+    <div class="fx-1 fx-row fx-xalign-center oss-input-group-row {{if @disabled 'disabled'}}
+                {{if @errorMessage 'oss-input-group-row--error'}}">
       {{#if @prefix}}
         <div class="oss-input-group-row-prefix">{{@prefix}}</div>
       {{/if}}
@@ -92301,8 +92341,8 @@ define("@upfluence/oss-components/components/o-s-s/input-group", ["exports", "@e
   
   */
   {
-    "id": "gMU9iQp2",
-    "block": "[[[11,0],[24,0,\"oss-input-group fx-1 fx-col\"],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"fx-1 fx-row fx-xalign-center oss-input-group-row \",[52,[30,2],\"oss-input-group-row--error\"]]]],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"      \"],[10,0],[14,0,\"oss-input-group-row-prefix\"],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n      \"],[8,[39,1],[[16,0,[29,[[52,[30,3],\"prefix-radius-fix\"],\" \",[52,[30,4],\"suffix-radius-fix\"]]]]],[[\"@value\",\"@disabled\",\"@placeholder\",\"@onChange\"],[[30,5],[30,6],[30,7],[30,8]]],null],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[30,4],[[[1,\"      \"],[10,0],[14,0,\"oss-input-group-row-suffix\"],[12],[1,[30,4]],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[10,1],[14,0,\"text-color-error margin-top-xxx-sm\"],[12],[1,[30,2]],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@errorMessage\",\"@prefix\",\"@suffix\",\"@value\",\"@disabled\",\"@placeholder\",\"@onChange\"],false,[\"if\",\"o-s-s/input-container\"]]",
+    "id": "KbhZ2QNX",
+    "block": "[[[11,0],[24,0,\"oss-input-group fx-1\"],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"fx-1 fx-row fx-xalign-center oss-input-group-row \",[52,[30,2],\"disabled\"],\"\\n              \",[52,[30,3],\"oss-input-group-row--error\"]]]],[12],[1,\"\\n\"],[41,[30,4],[[[1,\"      \"],[10,0],[14,0,\"oss-input-group-row-prefix\"],[12],[1,[30,4]],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n      \"],[8,[39,1],[[16,0,[29,[[52,[30,4],\"prefix-radius-fix\"],\" \",[52,[30,5],\"suffix-radius-fix\"]]]]],[[\"@value\",\"@disabled\",\"@placeholder\",\"@onChange\"],[[30,6],[30,2],[30,7],[30,8]]],null],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[30,5],[[[1,\"      \"],[10,0],[14,0,\"oss-input-group-row-suffix\"],[12],[1,[30,5]],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,1],[14,0,\"text-color-error margin-top-xxx-sm\"],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@disabled\",\"@errorMessage\",\"@prefix\",\"@suffix\",\"@value\",\"@placeholder\",\"@onChange\"],false,[\"if\",\"o-s-s/input-container\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/input-group.hbs",
     "isStrictMode": false
   });
@@ -93834,7 +93874,7 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
   });
   _exports.default = void 0;
 
-  var _class, _descriptor, _descriptor2;
+  var _class, _descriptor, _descriptor2, _descriptor3;
 
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
 
@@ -93871,15 +93911,16 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
                  disabled={{this.isMinDisabled}} {{enable-tooltip title=this.minTooltipTitle placement="top"}} />
     {{! template-lint-disable no-triple-curlies}}
     <OSS::InputContainer @value={{this.localValue}} @onChange={{this.checkUserInput}} style={{{this.dynamicWidth}}}
-                         {{on "keydown" this.keyParser}} {{on "blur" this.checkUserInput}} />
+                         {{on "keydown" this.keyParser}} {{on "blur" this.checkUserInput}}
+                         {{did-insert this.registerInputElement}} />
     <OSS::Button @square={{true}} @size="md" @icon="far fa-plus" {{on "click" this.increaseValue}}
                  disabled={{this.isMaxDisabled}} {{enable-tooltip title=this.maxTooltipTitle placement="top"}} />
   </div>
   
   */
   {
-    "id": "aI5/sNSz",
-    "block": "[[[10,0],[14,0,\"number-input fx-row\"],[12],[1,\"\\n  \"],[8,[39,0],[[16,\"disabled\",[30,0,[\"isMinDisabled\"]]],[4,[38,1],[\"click\",[30,0,[\"decreaseValue\"]]],null],[4,[38,2],null,[[\"title\",\"placement\"],[[30,0,[\"minTooltipTitle\"]],\"top\"]]]],[[\"@square\",\"@size\",\"@icon\"],[true,\"md\",\"far fa-minus\"]],null],[1,\"\\n\"],[1,\"  \"],[8,[39,3],[[23,5,[30,0,[\"dynamicWidth\"]]],[4,[38,1],[\"keydown\",[30,0,[\"keyParser\"]]],null],[4,[38,1],[\"blur\",[30,0,[\"checkUserInput\"]]],null]],[[\"@value\",\"@onChange\"],[[30,0,[\"localValue\"]],[30,0,[\"checkUserInput\"]]]],null],[1,\"\\n  \"],[8,[39,0],[[16,\"disabled\",[30,0,[\"isMaxDisabled\"]]],[4,[38,1],[\"click\",[30,0,[\"increaseValue\"]]],null],[4,[38,2],null,[[\"title\",\"placement\"],[[30,0,[\"maxTooltipTitle\"]],\"top\"]]]],[[\"@square\",\"@size\",\"@icon\"],[true,\"md\",\"far fa-plus\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"]],[],false,[\"o-s-s/button\",\"on\",\"enable-tooltip\",\"o-s-s/input-container\"]]",
+    "id": "V9AbsB8s",
+    "block": "[[[10,0],[14,0,\"number-input fx-row\"],[12],[1,\"\\n  \"],[8,[39,0],[[16,\"disabled\",[30,0,[\"isMinDisabled\"]]],[4,[38,1],[\"click\",[30,0,[\"decreaseValue\"]]],null],[4,[38,2],null,[[\"title\",\"placement\"],[[30,0,[\"minTooltipTitle\"]],\"top\"]]]],[[\"@square\",\"@size\",\"@icon\"],[true,\"md\",\"far fa-minus\"]],null],[1,\"\\n\"],[1,\"  \"],[8,[39,3],[[23,5,[30,0,[\"dynamicWidth\"]]],[4,[38,1],[\"keydown\",[30,0,[\"keyParser\"]]],null],[4,[38,1],[\"blur\",[30,0,[\"checkUserInput\"]]],null],[4,[38,4],[[30,0,[\"registerInputElement\"]]],null]],[[\"@value\",\"@onChange\"],[[30,0,[\"localValue\"]],[30,0,[\"checkUserInput\"]]]],null],[1,\"\\n  \"],[8,[39,0],[[16,\"disabled\",[30,0,[\"isMaxDisabled\"]]],[4,[38,1],[\"click\",[30,0,[\"increaseValue\"]]],null],[4,[38,2],null,[[\"title\",\"placement\"],[[30,0,[\"maxTooltipTitle\"]],\"top\"]]]],[[\"@square\",\"@size\",\"@icon\"],[true,\"md\",\"far fa-plus\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"]],[],false,[\"o-s-s/button\",\"on\",\"enable-tooltip\",\"o-s-s/input-container\",\"did-insert\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/number-input.hbs",
     "isStrictMode": false
   });
@@ -93889,7 +93930,7 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
   var AUTHORIZED_KEYS = ['Backspace', 'Delete', 'Tab', 'Shift', 'Control', '-'];
   var INCREASE_VALUE_KEYS = ['ArrowUp', 'ArrowRight'];
   var DECREASE_VALUE_KEYS = ['ArrowDown', 'ArrowLeft'];
-  var BASE_INPUT_PIXEL_WIDTH = 35;
+  var BASE_INPUT_PIXEL_WIDTH = 40;
   var CHAR_PIXEL_WIDTH = 7;
   var OSSNumberInput = (_class = /*#__PURE__*/function (_Component) {
     _inherits(OSSNumberInput, _Component);
@@ -93910,6 +93951,8 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
       _initializerDefineProperty(_assertThisInitialized(_this), "localValue", _descriptor, _assertThisInitialized(_this));
 
       _initializerDefineProperty(_assertThisInitialized(_this), "reachedTooltip", _descriptor2, _assertThisInitialized(_this));
+
+      _initializerDefineProperty(_assertThisInitialized(_this), "inputElement", _descriptor3, _assertThisInitialized(_this));
 
       return _this;
     }
@@ -93945,17 +93988,24 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
         return Number(this.localValue) === this.args.max ? this.args.maxReachedTooltip : undefined;
       }
     }, {
+      key: "registerInputElement",
+      value: function registerInputElement(el) {
+        this.inputElement = el.querySelector('input');
+      }
+    }, {
       key: "keyParser",
       value: function keyParser(event) {
         if (INCREASE_VALUE_KEYS.find(function (key) {
           return key === event.key;
         })) {
           this.increaseValue(event);
+          event.preventDefault();
           return;
         } else if (DECREASE_VALUE_KEYS.find(function (key) {
           return key === event.key;
         })) {
           this.decreaseValue(event);
+          event.preventDefault();
           return;
         }
 
@@ -93983,6 +94033,8 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
     }, {
       key: "increaseValue",
       value: function increaseValue(event) {
+        if (this.inputElement) this.inputElement.focus();
+
         if (this.args.max === undefined || Number(this.localValue) + this.step <= this.args.max) {
           this.localValue = Number(this.localValue) + (event.shiftKey ? this.step * 2 : this.step);
           this.checkUserInput();
@@ -93991,6 +94043,8 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
     }, {
       key: "decreaseValue",
       value: function decreaseValue(event) {
+        if (this.inputElement) this.inputElement.focus();
+
         if (this.args.min === undefined || Number(this.localValue) - this.step >= this.args.min) {
           this.localValue = Number(this.localValue) - (event.shiftKey ? this.step * 2 : this.step);
           this.checkUserInput();
@@ -94020,7 +94074,14 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
     initializer: function initializer() {
       return null;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "keyParser", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "keyParser"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "checkUserInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "checkUserInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "increaseValue", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "increaseValue"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "decreaseValue", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "decreaseValue"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "notifyChanges", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "notifyChanges"), _class.prototype)), _class);
+  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "inputElement", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return null;
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "registerInputElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerInputElement"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "keyParser", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "keyParser"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "checkUserInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "checkUserInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "increaseValue", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "increaseValue"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "decreaseValue", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "decreaseValue"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "notifyChanges", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "notifyChanges"), _class.prototype)), _class);
   _exports.default = OSSNumberInput;
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSNumberInput);
 });
@@ -94350,19 +94411,24 @@ define("@upfluence/oss-components/components/o-s-s/password-input", ["exports", 
       <Input class="upf-input"
              @value={{@value}}
              @type={{this.visibility}}
+             disabled={{@disabled}}
              placeholder={{this.placeholder}}
              autocomplete="current-password"
              {{on "keyup" this.validateInput}} />
     </:input>
     <:suffix>
-      <i role="button" class="font-color-gray-500 far {{this.visibilityIcon}}" {{on "click" this.toggleVisibility}}></i>
+      {{#if @disabled}}
+        <OSS::Icon class="font-color-gray-500" @icon={{this.visibilityIcon}} />
+      {{else}}
+        <OSS::Button class="margin-px-6" @icon={{this.visibilityIcon}} @square={{true}} {{on "click" this.toggleVisibility}} />
+      {{/if}}
     </:suffix>
   </OSS::InputContainer>
   
   */
   {
-    "id": "eocS2/ZY",
-    "block": "[[[8,[39,0],[[17,1]],[[\"@errorMessage\"],[[30,0,[\"errorMessage\"]]]],[[\"input\",\"suffix\"],[[[[1,\"\\n    \"],[8,[39,1],[[24,0,\"upf-input\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,\"autocomplete\",\"current-password\"],[4,[38,2],[\"keyup\",[30,0,[\"validateInput\"]]],null]],[[\"@value\",\"@type\"],[[30,2],[30,0,[\"visibility\"]]]],null],[1,\"\\n  \"]],[]],[[[1,\"\\n    \"],[11,\"i\"],[24,\"role\",\"button\"],[16,0,[29,[\"font-color-gray-500 far \",[30,0,[\"visibilityIcon\"]]]]],[4,[38,2],[\"click\",[30,0,[\"toggleVisibility\"]]],null],[12],[13],[1,\"\\n  \"]],[]]]]],[1,\"\\n\"]],[\"&attrs\",\"@value\"],false,[\"o-s-s/input-container\",\"input\",\"on\"]]",
+    "id": "rFhmWoQT",
+    "block": "[[[8,[39,0],[[17,1]],[[\"@errorMessage\"],[[30,0,[\"errorMessage\"]]]],[[\"input\",\"suffix\"],[[[[1,\"\\n    \"],[8,[39,1],[[24,0,\"upf-input\"],[16,\"disabled\",[30,2]],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,\"autocomplete\",\"current-password\"],[4,[38,2],[\"keyup\",[30,0,[\"validateInput\"]]],null]],[[\"@value\",\"@type\"],[[30,3],[30,0,[\"visibility\"]]]],null],[1,\"\\n  \"]],[]],[[[1,\"\\n\"],[41,[30,2],[[[1,\"      \"],[8,[39,4],[[24,0,\"font-color-gray-500\"]],[[\"@icon\"],[[30,0,[\"visibilityIcon\"]]]],null],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,5],[[24,0,\"margin-px-6\"],[4,[38,2],[\"click\",[30,0,[\"toggleVisibility\"]]],null]],[[\"@icon\",\"@square\"],[[30,0,[\"visibilityIcon\"]],true]],null],[1,\"\\n\"]],[]]],[1,\"  \"]],[]]]]],[1,\"\\n\"]],[\"&attrs\",\"@disabled\",\"@value\"],false,[\"o-s-s/input-container\",\"input\",\"on\",\"if\",\"o-s-s/icon\",\"o-s-s/button\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/password-input.hbs",
     "isStrictMode": false
   });
@@ -94524,6 +94590,20 @@ define("@upfluence/oss-components/components/o-s-s/password-input", ["exports", 
           type: 'text'
         }
       },
+      disabled: {
+        description: 'Whether or not the input is disabled',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
       validateFormat: {
         description: 'Whether or not to validate the password format with the RegEx',
         table: {
@@ -94559,6 +94639,7 @@ define("@upfluence/oss-components/components/o-s-s/password-input", ["exports", 
   _exports.default = _default;
   var defaultArgs = {
     value: 'myPassword',
+    disabled: false,
     placeholder: '*****',
     errorMessage: undefined,
     validateFormat: true,
@@ -94570,12 +94651,13 @@ define("@upfluence/oss-components/components/o-s-s/password-input", ["exports", 
       template: (0, _templateFactory.createTemplateFactory)(
       /*
         
-            <OSS::PasswordInput @value={{this.value}} @placeholder={{this.placeholder}} @validateFormat={{this.validateFormat}} @validates={{this.validates}} />
+            <OSS::PasswordInput @value={{this.value}} @placeholder={{this.placeholder}} @validateFormat={{this.validateFormat}} @validates={{this.validates}}
+                                @disabled={{this.disabled}} />
         
       */
       {
-        "id": "E52uwbKl",
-        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@value\",\"@placeholder\",\"@validateFormat\",\"@validates\"],[[30,0,[\"value\"]],[30,0,[\"placeholder\"]],[30,0,[\"validateFormat\"]],[30,0,[\"validates\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/password-input\"]]",
+        "id": "YimArN9r",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@value\",\"@placeholder\",\"@validateFormat\",\"@validates\",\"@disabled\"],[[30,0,[\"value\"]],[30,0,[\"placeholder\"]],[30,0,[\"validateFormat\"]],[30,0,[\"validates\"]],[30,0,[\"disabled\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/password-input\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -94597,7 +94679,7 @@ define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["export
   });
   _exports.default = void 0;
 
-  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
+  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7;
 
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
 
@@ -94630,18 +94712,17 @@ define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["export
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class="phone-number-container fx-1" ...attributes>
-    <div class="phone-number-input upf-input fx-row fx-1 fx-xalign-center">
+    <div class="phone-number-input {{if this.countrySelectorShown 'phone-number-input--active'}} fx-row fx-1 fx-xalign-center">
       <div class="country-selector fx-row" role="button" {{on "click" this.toggleCountrySelector}}>
-        <div class="fflag fflag-{{this.selectedCountry.id}} ff-sm ff-rounded"></div>
-        {{#if this.countrySelectorShown}}
-          <OSS::Icon @icon="fa-chevron-up" class="margin-left-px-6" />
-        {{else}}
-          <OSS::Icon @icon="fa-chevron-down" class="margin-left-px-6" />
-        {{/if}}
+        <div class="fflag fflag-{{this.selectedCountry.id}} ff-sm ff-round"></div>
+        <OSS::Icon @icon="fa-chevron-{{if this.countrySelectorShown 'up' 'down'}}" />
       </div>
-      <span class="phone-prefix">{{@prefix}}</span>
-      <Input class="fx-1" type="tel" @value={{@number}} placeholder="81726354"
-             {{on "keydown" this.onlyNumeric}} {{on "blur" this.onlyNumeric}} />
+      <div class="fx-1 fx-row upf-input" {{on "click" this.focusInput}}>
+        <span class="fx-row fx-xalign-center phone-prefix">{{@prefix}}</span>
+        <Input class="fx-1" type="tel" @value={{@number}} placeholder={{this.placeholder}}
+               {{on "keydown" this.onlyNumeric}} {{on "blur" this.onlyNumeric}} {{did-insert this.registerInputElement}} />
+      </div>
+  
     </div>
   
     {{#if this.invalidInputError}}
@@ -94671,8 +94752,8 @@ define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["export
   
   */
   {
-    "id": "cOU5iMFy",
-    "block": "[[[11,0],[24,0,\"phone-number-container fx-1\"],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"phone-number-input upf-input fx-row fx-1 fx-xalign-center\"],[12],[1,\"\\n    \"],[11,0],[24,0,\"country-selector fx-row\"],[24,\"role\",\"button\"],[4,[38,0],[\"click\",[30,0,[\"toggleCountrySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"selectedCountry\",\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n\"],[41,[30,0,[\"countrySelectorShown\"]],[[[1,\"        \"],[8,[39,2],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[\"fa-chevron-up\"]],null],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,2],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[\"fa-chevron-down\"]],null],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n    \"],[10,1],[14,0,\"phone-prefix\"],[12],[1,[30,2]],[13],[1,\"\\n    \"],[8,[39,3],[[24,0,\"fx-1\"],[24,\"placeholder\",\"81726354\"],[24,4,\"tel\"],[4,[38,0],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,0],[\"blur\",[30,0,[\"onlyNumeric\"]]],null]],[[\"@value\"],[[30,3]]],null],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"invalidInputError\"]],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,\"\\n      \"],[1,[30,0,[\"invalidInputError\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,0,[\"countrySelectorShown\"]],[[[1,\"    \"],[8,[39,4],[[4,[38,5],[[30,0,[\"hideCountrySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCountries\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],\"Search\"]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,6],[[30,0,[\"selectedCountry\"]],[30,4]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,4,[\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm\"],[12],[1,[30,4,[\"name\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xxx-sm fx-1\"],[12],[1,\"(+\"],[1,[28,[35,7],[[30,4,[\"countryCallingCodes\"]],0],null]],[1,\")\"],[13],[1,\"\\n\"],[41,[28,[37,6],[[30,0,[\"selectedCountry\"]],[30,4]],null],[[[1,\"            \"],[8,[39,2],[[24,0,\"font-color-primary-500\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@prefix\",\"@number\",\"country\"],false,[\"on\",\"if\",\"o-s-s/icon\",\"input\",\"o-s-s/infinite-select\",\"on-click-outside\",\"eq\",\"get\"]]",
+    "id": "+OJGGzmZ",
+    "block": "[[[11,0],[24,0,\"phone-number-container fx-1\"],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"phone-number-input \",[52,[30,0,[\"countrySelectorShown\"]],\"phone-number-input--active\"],\" fx-row fx-1 fx-xalign-center\"]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"country-selector fx-row\"],[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,0,[\"toggleCountrySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"selectedCountry\",\"id\"]],\" ff-sm ff-round\"]]],[12],[13],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\"],[[29,[\"fa-chevron-\",[52,[30,0,[\"countrySelectorShown\"]],\"up\",\"down\"]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[11,0],[24,0,\"fx-1 fx-row upf-input\"],[4,[38,1],[\"click\",[30,0,[\"focusInput\"]]],null],[12],[1,\"\\n      \"],[10,1],[14,0,\"fx-row fx-xalign-center phone-prefix\"],[12],[1,[30,2]],[13],[1,\"\\n      \"],[8,[39,3],[[24,0,\"fx-1\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,4,\"tel\"],[4,[38,1],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,1],[\"blur\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,4],[[30,0,[\"registerInputElement\"]]],null]],[[\"@value\"],[[30,3]]],null],[1,\"\\n    \"],[13],[1,\"\\n\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"invalidInputError\"]],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,\"\\n      \"],[1,[30,0,[\"invalidInputError\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,0,[\"countrySelectorShown\"]],[[[1,\"    \"],[8,[39,5],[[4,[38,6],[[30,0,[\"hideCountrySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCountries\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],\"Search\"]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,4]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,4,[\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm\"],[12],[1,[30,4,[\"name\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xxx-sm fx-1\"],[12],[1,\"(+\"],[1,[28,[35,8],[[30,4,[\"countryCallingCodes\"]],0],null]],[1,\")\"],[13],[1,\"\\n\"],[41,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,4]],null],[[[1,\"            \"],[8,[39,2],[[24,0,\"font-color-primary-500\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@prefix\",\"@number\",\"country\"],false,[\"if\",\"on\",\"o-s-s/icon\",\"input\",\"did-insert\",\"o-s-s/infinite-select\",\"on-click-outside\",\"eq\",\"get\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/phone-number-input.hbs",
     "isStrictMode": false
   });
@@ -94700,6 +94781,10 @@ define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["export
       _initializerDefineProperty(_assertThisInitialized(_this), "countrySelectorShown", _descriptor4, _assertThisInitialized(_this));
 
       _initializerDefineProperty(_assertThisInitialized(_this), "filteredCountries", _descriptor5, _assertThisInitialized(_this));
+
+      _initializerDefineProperty(_assertThisInitialized(_this), "placeholder", _descriptor6, _assertThisInitialized(_this));
+
+      _initializerDefineProperty(_assertThisInitialized(_this), "inputElement", _descriptor7, _assertThisInitialized(_this));
 
       (true && !(typeof _this.args.prefix === 'string') && (0, _debug.assert)('[component][OSS::PhoneNumberInput] The parameter @prefix of type string is mandatory', typeof _this.args.prefix === 'string'));
       (true && !(typeof _this.args.number === 'string') && (0, _debug.assert)('[component][OSS::PhoneNumberInput] The parameter @number of type string is mandatory', typeof _this.args.number === 'string'));
@@ -94778,6 +94863,18 @@ define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["export
         this.countrySelectorShown = false;
         this.filteredCountries = this._countries;
       }
+    }, {
+      key: "focusInput",
+      value: function focusInput() {
+        var _this$inputElement;
+
+        (_this$inputElement = this.inputElement) === null || _this$inputElement === void 0 ? void 0 : _this$inputElement.focus();
+      }
+    }, {
+      key: "registerInputElement",
+      value: function registerInputElement(el) {
+        this.inputElement = el;
+      }
     }]);
 
     return OSSPhoneNumberInput;
@@ -94812,7 +94909,23 @@ define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["export
     initializer: function initializer() {
       return this._countries;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "onlyNumeric", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onlyNumeric"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleCountrySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleCountrySelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "hideCountrySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "hideCountrySelector"), _class.prototype)), _class);
+  }), _descriptor6 = _applyDecoratedDescriptor(_class.prototype, "placeholder", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      var _this$args$placeholde;
+
+      return (_this$args$placeholde = this.args.placeholder) !== null && _this$args$placeholde !== void 0 ? _this$args$placeholde : '(415) 000 0000';
+    }
+  }), _descriptor7 = _applyDecoratedDescriptor(_class.prototype, "inputElement", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return undefined;
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "onlyNumeric", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onlyNumeric"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleCountrySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleCountrySelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "hideCountrySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "hideCountrySelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "focusInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "focusInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerInputElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerInputElement"), _class.prototype)), _class);
   _exports.default = OSSPhoneNumberInput;
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSPhoneNumberInput);
 });
@@ -94855,6 +94968,20 @@ define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["export
           type: 'text'
         }
       },
+      placeholder: {
+        description: 'Value of the placeholder',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: '(415) 000 0000'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
       onChange: {
         description: 'A callback that sends the modifications of the prefix & the phone number',
         table: {
@@ -94886,6 +95013,7 @@ define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["export
   var defaultArgs = {
     prefix: '+33',
     number: '742424242',
+    placeholder: '(415) 000 0000',
     onChange: (0, _addonActions.action)('onChange'),
     validates: (0, _addonActions.action)('validates')
   };
@@ -94896,12 +95024,12 @@ define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["export
       /*
         
             <OSS::PhoneNumberInput @prefix={{this.prefix}} @number={{this.number}} @onChange={{this.onChange}}
-                                   @validates={{this.validates}} />
+                                   @validates={{this.validates}} @placeholder={{this.placeholder}} />
         
       */
       {
-        "id": "EoTsFQPD",
-        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@prefix\",\"@number\",\"@onChange\",\"@validates\"],[[30,0,[\"prefix\"]],[30,0,[\"number\"]],[30,0,[\"onChange\"]],[30,0,[\"validates\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/phone-number-input\"]]",
+        "id": "CZqkBYIm",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@prefix\",\"@number\",\"@onChange\",\"@validates\",\"@placeholder\"],[[30,0,[\"prefix\"]],[30,0,[\"number\"]],[30,0,[\"onChange\"]],[30,0,[\"validates\"]],[30,0,[\"placeholder\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/phone-number-input\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -94957,9 +95085,10 @@ define("@upfluence/oss-components/components/o-s-s/power-select", ["exports", "@
   /*
     <div class="upf-power-select fx-1 fx-col" ...attributes
        {{did-insert (fn this.ensureBlockPresence (has-block "selected-item") (has-block "option-item"))}}>
-    <div class="upf-power-select__array-container" role="button" {{on "click" this.toggleSelect}}>
-      <div class="array-input-container fx-row padding-top-px-6 padding-bottom-px-6" {{scroll-shadow color="field"}}>
-        <div class="fx-row fx-xalign-center fx-1 padding-left-px-6 fx-gap-px-6 fx-wrap">
+    <div class="upf-power-select__array-container" role="button"
+         {{on "click" this.toggleSelect}}>
+      <div class="array-input-container fx-row padding-px-6 {{if this.displaySelect 'active'}}" >
+        <div class="fx-row fx-xalign-center fx-1 padding-left-px-6 padding-right-px-24 fx-gap-px-6 fx-wrap">
           {{#each @selectedItems as |selectedItem|}}
             {{yield selectedItem to="selected-item"}}
           {{else}}
@@ -94968,12 +95097,8 @@ define("@upfluence/oss-components/components/o-s-s/power-select", ["exports", "@
             </span>
           {{/each}}
         </div>
-  
-        {{#if this.displaySelect}}
-          <OSS::Icon @icon="fa-chevron-up" class="margin-left-px-6 margin-right-px-6 margin-top-px-6" />
-        {{else}}
-          <OSS::Icon @icon="fa-chevron-down" class="margin-left-px-6 margin-right-px-6 margin-top-px-6" />
-        {{/if}}
+          <OSS::Icon @icon={{if this.displaySelect "fa-chevron-up" "fa-chevron-down"}}
+              class="dropdown-icon" />
       </div>
     </div>
   
@@ -95006,8 +95131,8 @@ define("@upfluence/oss-components/components/o-s-s/power-select", ["exports", "@
   
   */
   {
-    "id": "gxcDQAWT",
-    "block": "[[[11,0],[24,0,\"upf-power-select fx-1 fx-col\"],[17,1],[4,[38,0],[[28,[37,1],[[30,0,[\"ensureBlockPresence\"]],[48,[30,12]],[48,[30,13]]],null]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"upf-power-select__array-container\"],[24,\"role\",\"button\"],[4,[38,3],[\"click\",[30,0,[\"toggleSelect\"]]],null],[12],[1,\"\\n    \"],[11,0],[24,0,\"array-input-container fx-row padding-top-px-6 padding-bottom-px-6\"],[4,[38,4],null,[[\"color\"],[\"field\"]]],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-1 padding-left-px-6 fx-gap-px-6 fx-wrap\"],[12],[1,\"\\n\"],[42,[28,[37,6],[[28,[37,6],[[30,2]],null]],null],null,[[[1,\"          \"],[18,12,[[30,3]]],[1,\"\\n\"]],[3]],[[[1,\"          \"],[10,1],[14,0,\"text-size-5 text-color-default-light\"],[12],[1,\"\\n            \"],[1,[30,0,[\"placeholder\"]]],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]]],[1,\"      \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displaySelect\"]],[[[1,\"        \"],[8,[39,9],[[24,0,\"margin-left-px-6 margin-right-px-6 margin-top-px-6\"]],[[\"@icon\"],[\"fa-chevron-up\"]],null],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,9],[[24,0,\"margin-left-px-6 margin-right-px-6 margin-top-px-6\"]],[[\"@icon\"],[\"fa-chevron-down\"]],null],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displaySelect\"]],[[[41,[48,[30,14]],[[[1,\"      \"],[8,[39,10],[[4,[38,11],[[30,0,[\"hideSelect\"]]],null]],[[\"@items\",\"@onSearch\",\"@inline\",\"@onSelect\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\"],[[30,4],[30,5],false,[30,0,[\"onSelect\"]],[30,6],[30,7],[30,8],[30,9]]],[[\"option\",\"empty-state\"],[[[[1,\"\\n          \"],[18,13,[[30,10]]],[1,\"\\n        \"]],[10]],[[[1,\"\\n          \"],[18,14,null],[1,\"\\n        \"]],[]]]]],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,10],[[4,[38,11],[[30,0,[\"hideSelect\"]]],null]],[[\"@items\",\"@onSearch\",\"@inline\",\"@onSelect\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\"],[[30,4],[30,5],false,[30,0,[\"onSelect\"]],[30,6],[30,7],[30,8],[30,9]]],[[\"option\"],[[[[1,\"\\n          \"],[18,13,[[30,11]]],[1,\"\\n        \"]],[11]]]]],[1,\"\\n\"]],[]]]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@selectedItems\",\"selectedItem\",\"@items\",\"@onSearch\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\",\"item\",\"item\",\"&selected-item\",\"&option-item\",\"&empty-state\"],false,[\"did-insert\",\"fn\",\"has-block\",\"on\",\"scroll-shadow\",\"each\",\"-track-array\",\"yield\",\"if\",\"o-s-s/icon\",\"o-s-s/infinite-select\",\"on-click-outside\"]]",
+    "id": "Y7W23qjr",
+    "block": "[[[11,0],[24,0,\"upf-power-select fx-1 fx-col\"],[17,1],[4,[38,0],[[28,[37,1],[[30,0,[\"ensureBlockPresence\"]],[48,[30,12]],[48,[30,13]]],null]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"upf-power-select__array-container\"],[24,\"role\",\"button\"],[4,[38,3],[\"click\",[30,0,[\"toggleSelect\"]]],null],[12],[1,\"\\n    \"],[10,0],[15,0,[29,[\"array-input-container fx-row padding-px-6 \",[52,[30,0,[\"displaySelect\"]],\"active\"]]]],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-1 padding-left-px-6 padding-right-px-24 fx-gap-px-6 fx-wrap\"],[12],[1,\"\\n\"],[42,[28,[37,6],[[28,[37,6],[[30,2]],null]],null],null,[[[1,\"          \"],[18,12,[[30,3]]],[1,\"\\n\"]],[3]],[[[1,\"          \"],[10,1],[14,0,\"text-size-5 text-color-default-light\"],[12],[1,\"\\n            \"],[1,[30,0,[\"placeholder\"]]],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]]],[1,\"      \"],[13],[1,\"\\n        \"],[8,[39,8],[[24,0,\"dropdown-icon\"]],[[\"@icon\"],[[52,[30,0,[\"displaySelect\"]],\"fa-chevron-up\",\"fa-chevron-down\"]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displaySelect\"]],[[[41,[48,[30,14]],[[[1,\"      \"],[8,[39,9],[[4,[38,10],[[30,0,[\"hideSelect\"]]],null]],[[\"@items\",\"@onSearch\",\"@inline\",\"@onSelect\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\"],[[30,4],[30,5],false,[30,0,[\"onSelect\"]],[30,6],[30,7],[30,8],[30,9]]],[[\"option\",\"empty-state\"],[[[[1,\"\\n          \"],[18,13,[[30,10]]],[1,\"\\n        \"]],[10]],[[[1,\"\\n          \"],[18,14,null],[1,\"\\n        \"]],[]]]]],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,9],[[4,[38,10],[[30,0,[\"hideSelect\"]]],null]],[[\"@items\",\"@onSearch\",\"@inline\",\"@onSelect\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\"],[[30,4],[30,5],false,[30,0,[\"onSelect\"]],[30,6],[30,7],[30,8],[30,9]]],[[\"option\"],[[[[1,\"\\n          \"],[18,13,[[30,11]]],[1,\"\\n        \"]],[11]]]]],[1,\"\\n\"]],[]]]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@selectedItems\",\"selectedItem\",\"@items\",\"@onSearch\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\",\"item\",\"item\",\"&selected-item\",\"&option-item\",\"&empty-state\"],false,[\"did-insert\",\"fn\",\"has-block\",\"on\",\"if\",\"each\",\"-track-array\",\"yield\",\"o-s-s/icon\",\"o-s-s/infinite-select\",\"on-click-outside\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/power-select.hbs",
     "isStrictMode": false
   });
@@ -95846,8 +95971,9 @@ define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/
     <div class={{this.classNames}}
        {{did-insert (fn this.ensureBlockPresence (has-block "option"))}}
        ...attributes>
-    <div class="upf-input fx-row fx-1 fx-xalign-center">
-      <div class="fx-row fx-1 fx-malign-space-between fx-xalign-center" role="button" {{on "click" this.toggleSelector}}>
+    <div class="upf-input {{if this.displaySelect 'active'}} fx-row fx-1 fx-xalign-center" role="button"
+         {{on "click" this.toggleSelector}}>
+      <div class="fx-row fx-1 fx-malign-space-between fx-xalign-center">
         {{#if @value}}
           {{#if (has-block "selected")}}
             {{yield @value to="selected"}}
@@ -95855,13 +95981,9 @@ define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/
             <span>{{get @value this.targetValue}}</span>
           {{/if}}
         {{else}}
-          <span class="text-color-default-light">{{this.placeholder}}</span>
+          <span class="upf-input--placeholder">{{this.placeholder}}</span>
         {{/if}}
-        {{#if this.displaySelect}}
-          <OSS::Icon @icon="fa-chevron-up" class="margin-left-px-6" />
-        {{else}}
-          <OSS::Icon @icon="fa-chevron-down" class="margin-left-px-6" />
-        {{/if}}
+        <OSS::Icon @icon="fa-chevron-{{if this.displaySelect 'up' 'down'}}" class="margin-left-px-6" />
       </div>
     </div>
   
@@ -95902,8 +96024,8 @@ define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/
   
   */
   {
-    "id": "yIDs62MW",
-    "block": "[[[11,0],[16,0,[30,0,[\"classNames\"]]],[17,1],[4,[38,0],[[28,[37,1],[[30,0,[\"ensureBlockPresence\"]],[48,[30,7]]],null]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"upf-input fx-row fx-1 fx-xalign-center\"],[12],[1,\"\\n    \"],[11,0],[24,0,\"fx-row fx-1 fx-malign-space-between fx-xalign-center\"],[24,\"role\",\"button\"],[4,[38,3],[\"click\",[30,0,[\"toggleSelector\"]]],null],[12],[1,\"\\n\"],[41,[30,2],[[[41,[48,[30,8]],[[[1,\"          \"],[18,8,[[30,2]]],[1,\"\\n\"]],[]],[[[1,\"          \"],[10,1],[12],[1,[28,[35,6],[[30,2],[30,0,[\"targetValue\"]]],null]],[13],[1,\"\\n\"]],[]]]],[]],[[[1,\"        \"],[10,1],[14,0,\"text-color-default-light\"],[12],[1,[30,0,[\"placeholder\"]]],[13],[1,\"\\n\"]],[]]],[41,[30,0,[\"displaySelect\"]],[[[1,\"        \"],[8,[39,7],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[\"fa-chevron-up\"]],null],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,7],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[\"fa-chevron-down\"]],null],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displaySelect\"]],[[[1,\"    \"],[8,[39,8],[[4,[38,9],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[true]]]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchEnabled\",\"@searchPlaceholder\"],[[30,3],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"searchPlaceholder\"]]]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"item-wrapper fx-row fx-xalign-center fx-malign-space-between \",[52,[28,[37,10],[[30,2],[30,4]],null],\"selected\"]]]],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"            \"],[18,7,[[30,4]]],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,10],[[30,2],[30,4]],null],[[[1,\"            \"],[8,[39,7],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,5],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,7],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\" \"],[1,[30,5]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,6],[[[1,\"    \"],[10,0],[14,0,\"font-color-success-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,7],null,[[\"@icon\"],[\"fa-check-circle\"]],null],[1,\" \"],[1,[30,6]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@value\",\"@items\",\"item\",\"@errorMessage\",\"@successMessage\",\"&option\",\"&selected\"],false,[\"did-insert\",\"fn\",\"has-block\",\"on\",\"if\",\"yield\",\"get\",\"o-s-s/icon\",\"o-s-s/infinite-select\",\"on-click-outside\",\"eq\"]]",
+    "id": "O5fmGIOT",
+    "block": "[[[11,0],[16,0,[30,0,[\"classNames\"]]],[17,1],[4,[38,0],[[28,[37,1],[[30,0,[\"ensureBlockPresence\"]],[48,[30,7]]],null]],null],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"upf-input \",[52,[30,0,[\"displaySelect\"]],\"active\"],\" fx-row fx-1 fx-xalign-center\"]]],[24,\"role\",\"button\"],[4,[38,4],[\"click\",[30,0,[\"toggleSelector\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-malign-space-between fx-xalign-center\"],[12],[1,\"\\n\"],[41,[30,2],[[[41,[48,[30,8]],[[[1,\"          \"],[18,8,[[30,2]]],[1,\"\\n\"]],[]],[[[1,\"          \"],[10,1],[12],[1,[28,[35,6],[[30,2],[30,0,[\"targetValue\"]]],null]],[13],[1,\"\\n\"]],[]]]],[]],[[[1,\"        \"],[10,1],[14,0,\"upf-input--placeholder\"],[12],[1,[30,0,[\"placeholder\"]]],[13],[1,\"\\n\"]],[]]],[1,\"      \"],[8,[39,7],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[[29,[\"fa-chevron-\",[52,[30,0,[\"displaySelect\"]],\"up\",\"down\"]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displaySelect\"]],[[[1,\"    \"],[8,[39,8],[[4,[38,9],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[true]]]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchEnabled\",\"@searchPlaceholder\"],[[30,3],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"searchPlaceholder\"]]]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"item-wrapper fx-row fx-xalign-center fx-malign-space-between \",[52,[28,[37,10],[[30,2],[30,4]],null],\"selected\"]]]],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"            \"],[18,7,[[30,4]]],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,10],[[30,2],[30,4]],null],[[[1,\"            \"],[8,[39,7],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,5],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,7],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\" \"],[1,[30,5]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,6],[[[1,\"    \"],[10,0],[14,0,\"font-color-success-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,7],null,[[\"@icon\"],[\"fa-check-circle\"]],null],[1,\" \"],[1,[30,6]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@value\",\"@items\",\"item\",\"@errorMessage\",\"@successMessage\",\"&option\",\"&selected\"],false,[\"did-insert\",\"fn\",\"has-block\",\"if\",\"on\",\"yield\",\"get\",\"o-s-s/icon\",\"o-s-s/infinite-select\",\"on-click-outside\",\"eq\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/select.hbs",
     "isStrictMode": false
   });
@@ -97470,8 +97592,8 @@ define("@upfluence/oss-components/components/o-s-s/text-area", ["exports", "@emb
 
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="fx-1" ...attributes>
-    <div class="oss-textarea-container {{if @errorMessage ' oss-textarea-container--errored'}}">
+    <div class="fx-1">
+    <div class="oss-textarea-container {{if @errorMessage ' oss-textarea-container--errored'}}" ...attributes>
       <Textarea {{on "keyup" (fn this._onChange @value)}} @value={{@value}} placeholder={{@placeholder}}
                 disabled={{@disabled}} class="oss-textarea {{this.computedClass}}" rows={{this.rows}} />
     </div>
@@ -97482,8 +97604,8 @@ define("@upfluence/oss-components/components/o-s-s/text-area", ["exports", "@emb
   
   */
   {
-    "id": "jv0SRHrp",
-    "block": "[[[11,0],[24,0,\"fx-1\"],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"oss-textarea-container \",[52,[30,2],\" oss-textarea-container--errored\"]]]],[12],[1,\"\\n    \"],[8,[39,1],[[16,\"placeholder\",[30,3]],[16,\"disabled\",[30,4]],[16,0,[29,[\"oss-textarea \",[30,0,[\"computedClass\"]]]]],[16,\"rows\",[30,0,[\"rows\"]]],[4,[38,2],[\"keyup\",[28,[37,3],[[30,0,[\"_onChange\"]],[30,5]],null]],null]],[[\"@value\"],[[30,5]]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[10,1],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,[30,2]],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@errorMessage\",\"@placeholder\",\"@disabled\",\"@value\"],false,[\"if\",\"textarea\",\"on\",\"fn\"]]",
+    "id": "cq0V/ucw",
+    "block": "[[[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-textarea-container \",[52,[30,1],\" oss-textarea-container--errored\"]]]],[17,2],[12],[1,\"\\n    \"],[8,[39,1],[[16,\"placeholder\",[30,3]],[16,\"disabled\",[30,4]],[16,0,[29,[\"oss-textarea \",[30,0,[\"computedClass\"]]]]],[16,\"rows\",[30,0,[\"rows\"]]],[4,[38,2],[\"keyup\",[28,[37,3],[[30,0,[\"_onChange\"]],[30,5]],null]],null]],[[\"@value\"],[[30,5]]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,1],[[[1,\"    \"],[10,1],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,[30,1]],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"@errorMessage\",\"&attrs\",\"@placeholder\",\"@disabled\",\"@value\"],false,[\"if\",\"textarea\",\"on\",\"fn\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/text-area.hbs",
     "isStrictMode": false
   });
@@ -110655,36 +110777,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-2001GQsB1rvyGdvz/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-2001GQsB1rvyGdvz/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2001GQsB1rvyGdvz/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-2001GQsB1rvyGdvz/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-2001GQsB1rvyGdvz/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2001GQsB1rvyGdvz/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/l.js /tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-2001GQsB1rvyGdvz/cache-275-bundler/staging/l.js /tmp/broccoli-2001GQsB1rvyGdvz/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/l.js_/tmp/broccoli-1987hDCvbVSOo3HD/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-2001GQsB1rvyGdvz/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-2001GQsB1rvyGdvz/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-2001GQsB1rvyGdvz/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-2001GQsB1rvyGdvz/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-2001GQsB1rvyGdvz/cache-275-bundler/staging/l.js_/tmp/broccoli-2001GQsB1rvyGdvz/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 

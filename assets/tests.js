@@ -13207,17 +13207,11 @@ define("dummy/tests/integration/components/o-s-s/input-group-test", ["@ember/tem
 
               case 2:
                 assert.dom('.oss-input-group-row--error').exists();
-                assert.dom('input').hasStyle({
+                assert.dom('.oss-input-group-row--error').hasStyle({
                   borderColor: 'rgb(239, 68, 68)'
                 });
-                assert.dom('.oss-input-group-row-prefix').hasStyle({
-                  borderColor: 'rgb(239, 68, 68) rgb(27, 30, 33) rgb(239, 68, 68) rgb(239, 68, 68)'
-                });
-                assert.dom('.oss-input-group-row-suffix').hasStyle({
-                  borderColor: 'rgb(239, 68, 68) rgb(239, 68, 68) rgb(239, 68, 68) rgb(27, 30, 33)'
-                });
 
-              case 6:
+              case 4:
               case "end":
                 return _context6.stop();
             }
@@ -21410,7 +21404,7 @@ define("dummy/tests/integration/components/o-s-s/text-area-test", ["@ember/templ
                   }));
 
                 case 2:
-                  inputWrapper = document.querySelector('.fx-1');
+                  inputWrapper = document.querySelector('.oss-textarea-container');
                   assert.equal(inputWrapper === null || inputWrapper === void 0 ? void 0 : inputWrapper.getAttribute('data-control-name'), 'description-input');
 
                 case 4:
