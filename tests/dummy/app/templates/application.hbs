@@ -22,6 +22,12 @@
 
   <div style="width:100%; height:100vh; overflow: auto; background-color: var(--color-gray-50)">
     <div class="fx-row fx-gap-px-10 margin-md">
+      <OSS::PasswordInput
+        @value={{this.password}}
+        @validates={{this.onPasswordValidation}}
+      />
+    </div>
+    <div class="fx-row fx-gap-px-10 margin-md">
       <OSS::Banner @icon="fas fa-box-open" @title="Shopify" @selected={{true}}
                    @subtitle="Identify influencers in your Shopify customers database">
         <:actions>

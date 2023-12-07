@@ -82,6 +82,7 @@ export default class ApplicationController extends Controller {
   @tracked revealed = false;
   @tracked starRatingValue = 3;
   @tracked rating = 3;
+  @tracked password = '';
 
   @tracked media = [
     {
@@ -144,6 +145,11 @@ export default class ApplicationController extends Controller {
       label: 'Second'
     }
   ];
+
+  @action
+  onPasswordValidation(isValid: boolean) {
+    console.log('isValid ? ', isValid);
+  }
 
   @action
   onRevealEmailError() {
