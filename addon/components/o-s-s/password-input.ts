@@ -3,15 +3,51 @@ import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
+import { isEmpty } from '@ember/utils';
+import { helper } from '@ember/component/helper';
+
+export type ValidatorSet = { [key: string]: { labelKey: string; regex: RegExp } };
+export const INPUT_VALIDATORS: ValidatorSet = {
+  uppercase: { labelKey: 'oss-components.password-input.validators.uppercase', regex: /(?=.*[A-Z]).*/ },
+  number: { labelKey: 'oss-components.password-input.validators.number', regex: /(?=.*\d).*/ },
+  length: { labelKey: 'oss-components.password-input.validators.length', regex: /.{8,}/ }
+};
 
 interface OSSPasswordInputArgs {
   value: string | null;
   placeholder?: string;
   errorMessage?: string;
-  validateFormat?: boolean;
   disabled?: boolean;
   validates?(isPassing: boolean): void;
+  validatorSet?: ValidatorSet;
 }
+
+type InputValidator = 'uppercase' | 'number' | 'length';
+type ValidationState = 'default' | 'error' | 'success';
+type ValidationStateClass = 'font-color-gray-500' | 'font-color-success-500' | 'font-color-error-500';
+type ValidationStateIcon = 'fa-circle-dashed' | 'fa-times' | 'fa-check';
+type ValidationTemplateAttributes = {
+  state: ValidationState;
+  labelKey: string;
+  labelClass: ValidationStateClass;
+  iconClass: ValidationStateClass;
+};
+
+const STATE_ICON_CLASS_MAPPING: { [key: string]: ValidationStateClass } = {
+  default: 'font-color-gray-500',
+  success: 'font-color-success-500',
+  error: 'font-color-error-500'
+};
+const STATE_FONT_CLASS_MAPPING: { [key: string]: ValidationStateClass } = {
+  default: 'font-color-gray-500',
+  success: 'font-color-success-500',
+  error: 'font-color-gray-500'
+};
+const STATE_ICON_MAPPING: { [key: string]: ValidationStateIcon } = {
+  default: 'fa-circle-dashed',
+  success: 'fa-check',
+  error: 'fa-times'
+};
 
 export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
   @service intl: any;
@@ -19,19 +55,21 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
   @tracked visibility: 'text' | 'password' = 'password';
   @tracked placeholder: string | undefined;
 
-  private _pwRegex: RegExp = new RegExp(/(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/);
-  private _runValidation: boolean = true;
+  private runValidation: boolean = typeof this.args.validates === 'function';
 
   constructor(owner: unknown, args: OSSPasswordInputArgs) {
     super(owner, args);
 
     assert('[component][OSS::PasswordInput] The @value parameter is mandatory', typeof this.args.value !== 'undefined');
-
-    if (typeof args.validateFormat !== 'undefined') {
-      this._runValidation = args.validateFormat;
-    }
-
     this.placeholder = args.placeholder || this.intl.t('oss-components.password-input.placeholder');
+  }
+
+  get validatorSet(): ValidatorSet {
+    return this.args.validatorSet ?? INPUT_VALIDATORS;
+  }
+
+  get inputValidators(): string[] {
+    return Object.keys(this.validatorSet);
   }
 
   get visibilityIcon(): 'fa-eye' | 'fa-eye-slash' {
@@ -42,15 +80,43 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
   }
 
   get errorMessage(): string | null {
-    return this.args.errorMessage || this.regexError || null;
+    return this.args.validates ? null : this.args.errorMessage ?? this.regexError;
   }
+
+  get validationIcons(): { state: ValidationState; icon: ValidationStateIcon }[] {
+    return Object.keys(STATE_ICON_MAPPING).map((state: ValidationState) => {
+      return {
+        state: state,
+        icon: STATE_ICON_MAPPING[state]
+      };
+    });
+  }
+
+  validatorAttributes = helper((_, { type }: { type: InputValidator }): ValidationTemplateAttributes => {
+    const state = this.validationStateFromRegex(this.validatorSet[type].regex);
+    return {
+      labelKey: this.validatorSet[type].labelKey,
+      labelClass: STATE_FONT_CLASS_MAPPING[state],
+      iconClass: STATE_ICON_CLASS_MAPPING[state],
+      state
+    };
+  });
+
+  validationIconVisibility = helper(
+    (
+      _,
+      { validator, state }: { validator: ValidationTemplateAttributes; state: ValidationState }
+    ): 'visible' | 'invisible' => {
+      return validator.state === state ? 'visible' : 'invisible';
+    }
+  );
 
   @action
   validateInput(): void {
     this.regexError = '';
-    if (!this._runValidation || !this.args.value) {
+    if (!this.runValidation || !this.args.value) {
       this.args.validates?.(true);
-    } else if (!this._pwRegex.test(this.args.value)) {
+    } else if (!this.testAllValidators()) {
       this.regexError = this.intl.t('oss-components.password-input.regex_error');
       this.args.validates?.(false);
     } else {
@@ -61,5 +127,14 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
   @action
   toggleVisibility(): void {
     this.visibility = this.visibility === 'password' ? 'text' : 'password';
+  }
+
+  private testAllValidators(): boolean {
+    return this.inputValidators.every((index: InputValidator) => this.validatorSet[index].regex.test(this.args.value!));
+  }
+
+  private validationStateFromRegex(regex: RegExp): ValidationState {
+    if (isEmpty(this.args.value)) return 'default';
+    return regex.test(this.args.value!) ? 'success' : 'error';
   }
 }

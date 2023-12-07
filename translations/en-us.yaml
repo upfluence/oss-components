@@ -10,6 +10,11 @@ oss-components:
     empty: Nothing to see here.
     empty_img_alt: Empty content
   password-input:
+    validators:
+      uppercase: Uppercase
+      number: Number
+      length: Min. 8 char.
+      lowercase: Lowercase
     regex_error: 'Your password should have at least 8 characters with at least one lower-case character, one upper-case character and one digit.'
     placeholder: Enter your password
   phone-input:
