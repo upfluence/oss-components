@@ -147,7 +147,7 @@ export default class ApplicationController extends Controller {
   ];
 
   @action
-  onPasswordValidation(isValid: boolean) {
+  onPasswordValidation(isValid) {
     console.log('isValid ? ', isValid);
   }
 
