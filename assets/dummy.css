@@ -13018,6 +13018,9 @@ For complete information visit: www.freakflagsprite.com
 .oss-attribute__value {
   color: var(--color-gray-900);
   flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .oss-attribute:hover {
   background: var(--color-gray-50);
