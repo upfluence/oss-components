@@ -86756,7 +86756,7 @@ define("@upfluence/oss-components/components/o-s-s/attributes-panel", ["exports"
           {{#if (has-block "contextual-action")}}
             {{yield to="contextual-action"}}
           {{/if}}
-          <OSS::Button @icon="fa-pen" @square={{true}} {{on "click" this.toggleMode}}
+          <OSS::Button @icon={{this.editIcon}} @square={{true}} @size="sm" {{on "click" this.onEdit}}
                        data-control-name="attributes-panel-mode-switch-button" />
         </div>
       {{/if}}
@@ -86785,8 +86785,8 @@ define("@upfluence/oss-components/components/o-s-s/attributes-panel", ["exports"
   
   */
   {
-    "id": "4hRnCTNb",
-    "block": "[[[11,0],[24,0,\"attributes-panel\"],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"fx-row fx-malign-space-between\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"        \"],[8,[39,1],[[24,0,\"font-color-primary-500\"]],[[\"@icon\"],[[30,2]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n        \"],[1,[30,3]],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[28,[37,2],[[30,0,[\"modeSelected\"]],\"view\"],null],[[[1,\"      \"],[10,0],[14,0,\"fx-row fx-gap-px-6\"],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"          \"],[18,5,null],[1,\"\\n\"]],[]],null],[1,\"        \"],[8,[39,5],[[24,\"data-control-name\",\"attributes-panel-mode-switch-button\"],[4,[38,6],[\"click\",[30,0,[\"toggleMode\"]]],null]],[[\"@icon\",\"@square\"],[\"fa-pen\",true]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\\n  \"],[10,0],[15,0,[28,[37,7],[\"attributes-panel__container attributes-panel__container--\",[30,0,[\"modeSelected\"]]],null]],[12],[1,\"\\n\"],[41,[28,[37,2],[[30,0,[\"modeSelected\"]],\"view\"],null],[[[41,[48,[30,6]],[[[1,\"        \"],[18,6,null],[1,\"\\n\"]],[]],null]],[]],[[[41,[48,[30,7]],[[[1,\"        \"],[10,0],[14,0,\"fx-col fx-gap-px-18\"],[12],[1,\"\\n          \"],[18,7,null],[1,\"\\n          \"],[10,0],[14,0,\"fx-row fx-gap-px-18 fx-malign-end\"],[12],[1,\"\\n            \"],[8,[39,5],[[24,\"data-control-name\",\"attributes-panel-cancel-button\"],[4,[38,6],[\"click\",[30,0,[\"onCancel\"]]],null]],[[\"@label\"],[[28,[37,8],[\"oss-components.attributes_panel.cancel\"],null]]],null],[1,\"\\n            \"],[8,[39,5],[[16,\"disabled\",[30,4]],[24,\"data-control-name\",\"attributes-panel-save-button\"],[4,[38,6],[\"click\",[30,0,[\"onSave\"]]],null]],[[\"@skin\",\"@label\",\"@loading\"],[\"primary\",[28,[37,8],[\"oss-components.attributes_panel.save\"],null],[30,0,[\"isLoading\"]]]],null],[1,\"\\n          \"],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null]],[]]],[1,\"  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@title\",\"@isSaveDisabled\",\"&contextual-action\",\"&view-mode\",\"&edition-mode\"],false,[\"if\",\"o-s-s/icon\",\"eq\",\"has-block\",\"yield\",\"o-s-s/button\",\"on\",\"concat\",\"t\"]]",
+    "id": "dOq+FVvS",
+    "block": "[[[11,0],[24,0,\"attributes-panel\"],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"fx-row fx-malign-space-between\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"        \"],[8,[39,1],[[24,0,\"font-color-primary-500\"]],[[\"@icon\"],[[30,2]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n        \"],[1,[30,3]],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[28,[37,2],[[30,0,[\"modeSelected\"]],\"view\"],null],[[[1,\"      \"],[10,0],[14,0,\"fx-row fx-gap-px-6\"],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"          \"],[18,5,null],[1,\"\\n\"]],[]],null],[1,\"        \"],[8,[39,5],[[24,\"data-control-name\",\"attributes-panel-mode-switch-button\"],[4,[38,6],[\"click\",[30,0,[\"onEdit\"]]],null]],[[\"@icon\",\"@square\",\"@size\"],[[30,0,[\"editIcon\"]],true,\"sm\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\\n  \"],[10,0],[15,0,[28,[37,7],[\"attributes-panel__container attributes-panel__container--\",[30,0,[\"modeSelected\"]]],null]],[12],[1,\"\\n\"],[41,[28,[37,2],[[30,0,[\"modeSelected\"]],\"view\"],null],[[[41,[48,[30,6]],[[[1,\"        \"],[18,6,null],[1,\"\\n\"]],[]],null]],[]],[[[41,[48,[30,7]],[[[1,\"        \"],[10,0],[14,0,\"fx-col fx-gap-px-18\"],[12],[1,\"\\n          \"],[18,7,null],[1,\"\\n          \"],[10,0],[14,0,\"fx-row fx-gap-px-18 fx-malign-end\"],[12],[1,\"\\n            \"],[8,[39,5],[[24,\"data-control-name\",\"attributes-panel-cancel-button\"],[4,[38,6],[\"click\",[30,0,[\"onCancel\"]]],null]],[[\"@label\"],[[28,[37,8],[\"oss-components.attributes_panel.cancel\"],null]]],null],[1,\"\\n            \"],[8,[39,5],[[16,\"disabled\",[30,4]],[24,\"data-control-name\",\"attributes-panel-save-button\"],[4,[38,6],[\"click\",[30,0,[\"onSave\"]]],null]],[[\"@skin\",\"@label\",\"@loading\"],[\"primary\",[28,[37,8],[\"oss-components.attributes_panel.save\"],null],[30,0,[\"isLoading\"]]]],null],[1,\"\\n          \"],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null]],[]]],[1,\"  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@title\",\"@isSaveDisabled\",\"&contextual-action\",\"&view-mode\",\"&edition-mode\"],false,[\"if\",\"o-s-s/icon\",\"eq\",\"has-block\",\"yield\",\"o-s-s/button\",\"on\",\"concat\",\"t\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/attributes-panel.hbs",
     "isStrictMode": false
   });
@@ -86813,11 +86813,24 @@ define("@upfluence/oss-components/components/o-s-s/attributes-panel", ["exports"
     }
 
     _createClass(OSSAttributesPanel, [{
+      key: "editIcon",
+      get: function get() {
+        var _this$args$customEdit;
+
+        return (_this$args$customEdit = this.args.customEditIcon) !== null && _this$args$customEdit !== void 0 ? _this$args$customEdit : 'fa-pen';
+      }
+    }, {
       key: "toggleMode",
       value: function toggleMode() {
+        this.modeSelected = this.modeSelected === 'view' ? 'edition' : 'view';
+      }
+    }, {
+      key: "onEdit",
+      value: function onEdit(event) {
         var _this$args$onEdit, _this$args;
 
-        this.modeSelected = this.modeSelected === 'view' ? 'edition' : 'view';
+        event.stopPropagation();
+        this.toggleMode();
         (_this$args$onEdit = (_this$args = this.args).onEdit) === null || _this$args$onEdit === void 0 ? void 0 : _this$args$onEdit.call(_this$args);
       }
     }, {
@@ -86833,12 +86846,14 @@ define("@upfluence/oss-components/components/o-s-s/attributes-panel", ["exports"
       value: function onSave() {
         var _this2 = this;
 
-        this.isLoading = true;
-        this.args.onSave().then(function () {
-          _this2.toggleMode();
-        }).catch(function () {}).finally(function () {
-          return _this2.isLoading = false;
-        });
+        if (!this.isLoading) {
+          this.isLoading = true;
+          this.args.onSave().then(function () {
+            _this2.toggleMode();
+          }).catch(function () {}).finally(function () {
+            return _this2.isLoading = false;
+          });
+        }
       }
     }]);
 
@@ -86857,7 +86872,7 @@ define("@upfluence/oss-components/components/o-s-s/attributes-panel", ["exports"
     initializer: function initializer() {
       return false;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "toggleMode", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleMode"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onCancel", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onCancel"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSave"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "toggleMode", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleMode"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onEdit", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onEdit"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onCancel", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onCancel"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSave"), _class.prototype)), _class);
   _exports.default = OSSAttributesPanel;
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSAttributesPanel);
 });
@@ -86897,6 +86912,20 @@ define("@upfluence/oss-components/components/o-s-s/attributes-panel", ["exports"
           },
           defaultValue: {
             summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      customEditIcon: {
+        description: 'The icon rendered inside the button to switch to edit mode',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'fa-pen'
           }
         },
         control: {
@@ -86961,6 +86990,7 @@ define("@upfluence/oss-components/components/o-s-s/attributes-panel", ["exports"
     title: 'Title',
     icon: 'fa-laptop-code',
     isSaveDisabled: false,
+    customEditIcon: 'fa-pen',
     onSave: (0, _addonActions.action)('onSave'),
     onCancel: (0, _addonActions.action)('onCancel'),
     onEdit: (0, _addonActions.action)('onEdit')
@@ -86973,7 +87003,8 @@ define("@upfluence/oss-components/components/o-s-s/attributes-panel", ["exports"
         
           <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
             <OSS::AttributesPanel @title={{this.title}} @icon={{this.icon}} @onSave={{this.onSave}}
-                                  @onCancel={{this.onCancel}} @onEdit={{this.onEdit}} @isSaveDisabled={{this.isSaveDisabled}} >
+                                  @onCancel={{this.onCancel}} @onEdit={{this.onEdit}} @isSaveDisabled={{this.isSaveDisabled}} 
+                                  @customEditIcon={{this.customEditIcon}}>
                 <:view-mode>
                   View mode
                 </:view-mode>
@@ -86985,8 +87016,8 @@ define("@upfluence/oss-components/components/o-s-s/attributes-panel", ["exports"
         
       */
       {
-        "id": "EVlqCZNF",
-        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@icon\",\"@onSave\",\"@onCancel\",\"@onEdit\",\"@isSaveDisabled\"],[[30,0,[\"title\"]],[30,0,[\"icon\"]],[30,0,[\"onSave\"]],[30,0,[\"onCancel\"]],[30,0,[\"onEdit\"]],[30,0,[\"isSaveDisabled\"]]]],[[\"view-mode\",\"edition-mode\"],[[[[1,\"\\n            View mode\\n          \"]],[]],[[[1,\"\\n            Edition mode\\n          \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/attributes-panel\"]]",
+        "id": "AGeHDIw0",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@icon\",\"@onSave\",\"@onCancel\",\"@onEdit\",\"@isSaveDisabled\",\"@customEditIcon\"],[[30,0,[\"title\"]],[30,0,[\"icon\"]],[30,0,[\"onSave\"]],[30,0,[\"onCancel\"]],[30,0,[\"onEdit\"]],[30,0,[\"isSaveDisabled\"]],[30,0,[\"customEditIcon\"]]]],[[\"view-mode\",\"edition-mode\"],[[[[1,\"\\n            View mode\\n          \"]],[]],[[[1,\"\\n            Edition mode\\n          \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/attributes-panel\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -87001,7 +87032,8 @@ define("@upfluence/oss-components/components/o-s-s/attributes-panel", ["exports"
         
           <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
             <OSS::AttributesPanel @title={{this.title}} @icon={{this.icon}} @onSave={{this.onSave}}
-                                  @onCancel={{this.onCancel}} @onEdit={{this.onEdit}} @isSaveDisabled={{this.isSaveDisabled}}>
+                                  @onCancel={{this.onCancel}} @onEdit={{this.onEdit}} @isSaveDisabled={{this.isSaveDisabled}}
+                                  @customEditIcon={{this.customEditIcon}}>
                 <:contextual-action>
                   <OSS::Button @icon="fa-plus" @square={{true}} />
                 </:contextual-action>
@@ -87016,8 +87048,8 @@ define("@upfluence/oss-components/components/o-s-s/attributes-panel", ["exports"
         
       */
       {
-        "id": "7LdvucLb",
-        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@icon\",\"@onSave\",\"@onCancel\",\"@onEdit\",\"@isSaveDisabled\"],[[30,0,[\"title\"]],[30,0,[\"icon\"]],[30,0,[\"onSave\"]],[30,0,[\"onCancel\"]],[30,0,[\"onEdit\"]],[30,0,[\"isSaveDisabled\"]]]],[[\"contextual-action\",\"view-mode\",\"edition-mode\"],[[[[1,\"\\n            \"],[8,[39,1],null,[[\"@icon\",\"@square\"],[\"fa-plus\",true]],null],[1,\"\\n          \"]],[]],[[[1,\"\\n            View mode\\n          \"]],[]],[[[1,\"\\n            Edition mode\\n          \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/attributes-panel\",\"o-s-s/button\"]]",
+        "id": "QdBOyBIN",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@icon\",\"@onSave\",\"@onCancel\",\"@onEdit\",\"@isSaveDisabled\",\"@customEditIcon\"],[[30,0,[\"title\"]],[30,0,[\"icon\"]],[30,0,[\"onSave\"]],[30,0,[\"onCancel\"]],[30,0,[\"onEdit\"]],[30,0,[\"isSaveDisabled\"]],[30,0,[\"customEditIcon\"]]]],[[\"contextual-action\",\"view-mode\",\"edition-mode\"],[[[[1,\"\\n            \"],[8,[39,1],null,[[\"@icon\",\"@square\"],[\"fa-plus\",true]],null],[1,\"\\n          \"]],[]],[[[1,\"\\n            View mode\\n          \"]],[]],[[[1,\"\\n            Edition mode\\n          \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/attributes-panel\",\"o-s-s/button\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -110873,36 +110905,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-19904YhnRQJpIsEn/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-2047co7voahm10DG/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-19904YhnRQJpIsEn/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-2047co7voahm10DG/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-19904YhnRQJpIsEn/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2047co7voahm10DG/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-19904YhnRQJpIsEn/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-2047co7voahm10DG/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-19904YhnRQJpIsEn/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-2047co7voahm10DG/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-19904YhnRQJpIsEn/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2047co7voahm10DG/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-19904YhnRQJpIsEn/cache-275-bundler/staging/l.js /tmp/broccoli-19904YhnRQJpIsEn/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-2047co7voahm10DG/cache-275-bundler/staging/l.js /tmp/broccoli-2047co7voahm10DG/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-19904YhnRQJpIsEn/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-19904YhnRQJpIsEn/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-19904YhnRQJpIsEn/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-19904YhnRQJpIsEn/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-19904YhnRQJpIsEn/cache-275-bundler/staging/l.js_/tmp/broccoli-19904YhnRQJpIsEn/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-2047co7voahm10DG/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-2047co7voahm10DG/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-2047co7voahm10DG/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-2047co7voahm10DG/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-2047co7voahm10DG/cache-275-bundler/staging/l.js_/tmp/broccoli-2047co7voahm10DG/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
