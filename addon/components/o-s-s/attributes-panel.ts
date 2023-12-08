@@ -51,13 +51,15 @@ export default class OSSAttributesPanel extends Component<OSSAttributesPanelArgs
 
   @action
   onSave(): void {
-    this.isLoading = true;
-    this.args
-      .onSave()
-      .then(() => {
-        this.toggleMode();
-      })
-      .catch(() => {})
-      .finally(() => (this.isLoading = false));
+    if (!this.isLoading) {
+      this.isLoading = true;
+      this.args
+        .onSave()
+        .then(() => {
+          this.toggleMode();
+        })
+        .catch(() => {})
+        .finally(() => (this.isLoading = false));
+    }
   }
 }
