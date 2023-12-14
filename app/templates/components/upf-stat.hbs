@@ -29,7 +29,7 @@
 </span>
 
 {{#if label}}
-  <span class="upf-stat__label">
+  <span class={{(if tooltip 'upf-stat__label--with-tooltip' 'upf-stat__label')}}>
     {{{label}}}
     {{#if tooltip}}
       <OSS::Icon @icon="fa-info-circle" {{enable-tooltip title=tooltip}} />
