@@ -9744,10 +9744,13 @@ label {
   color: #e0e0e0;
 }
 .upf-stat__label {
+  color: var(--color-gray-500);
+}
+.upf-stat__label--with-tooltip {
   display: flex;
   gap: var(--spacing-px-6);
   align-items: center;
-  color: #8a95a0;
+  color: var(--color-gray-500);
 }
 .upf-stat--small .upf-stat__data {
   font-size: 2.5rem;
