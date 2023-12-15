@@ -1,38 +1,38 @@
-<span class="upf-stat__name">
+<span class='upf-stat__name'>
   {{name}}
 
   {{#if icon}}
-    {{#if (eq iconPlacement "top")}}
-      <span class="upf-stat__icon" {{enable-tooltip title=this.iconLabel}}>
+    {{#if (eq iconPlacement 'top')}}
+      <span class='upf-stat__icon' {{enable-tooltip title=this.iconLabel}}>
         {{#if iconUrl}}
-          <a href="{{iconUrl}}" target="_blank" rel="noopener noreferrer">
-            <i class="fa fa-{{icon}} {{iconClass}}"></i>
+          <a href='{{iconUrl}}' target='_blank' rel='noopener noreferrer'>
+            <i class='fa fa-{{icon}} {{iconClass}}'></i>
           </a>
         {{else}}
-          <i class="fa fa-{{icon}} {{iconClass}}"></i>
+          <i class='fa fa-{{icon}} {{iconClass}}'></i>
         {{/if}}
       </span>
     {{/if}}
   {{/if}}
 </span>
 
-<span class={{concat "upf-stat__data " dataClass (unless data " upf-stat__data--null")}}>
+<span class={{concat 'upf-stat__data ' dataClass (unless data ' upf-stat__data--null')}}>
   {{data}}
 
   {{#if icon}}
-    {{#if (eq iconPlacement "right")}}
-      <span class="upf-stat__icon" {{enable-tooltip title=this.iconLabel}}>
-        <i class="fa fa-{{icon}} {{iconClass}}"></i>
+    {{#if (eq iconPlacement 'right')}}
+      <span class='upf-stat__icon' {{enable-tooltip title=this.iconLabel}}>
+        <i class='fa fa-{{icon}} {{iconClass}}'></i>
       </span>
     {{/if}}
   {{/if}}
 </span>
 
 {{#if label}}
-  <span class="upf-stat__label">
+  <span class={{if tooltip 'upf-stat__label--with-tooltip' 'upf-stat__label'}}>
     {{{label}}}
     {{#if tooltip}}
-      <OSS::Icon @icon="fa-info-circle" {{enable-tooltip title=tooltip}} />
+      <OSS::Icon @icon='fa-info-circle' {{enable-tooltip title=tooltip}} />
     {{/if}}
   </span>
 {{/if}}

@@ -37,10 +37,13 @@
 }
 
 .upf-stat__label {
-  display: flex;
-  gap: var(--spacing-px-6);
-  align-items: center;
-  color: @color-text-light;
+  color: var(--color-gray-500);
+  &--with-tooltip {
+    display: flex;
+    gap: var(--spacing-px-6);
+    align-items: center;
+    color: var(--color-gray-500);
+  }
 }
 
 .upf-stat--small {
