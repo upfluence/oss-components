@@ -9750,6 +9750,7 @@ label {
   display: flex;
   gap: var(--spacing-px-6);
   align-items: center;
+  justify-content: center;
   color: var(--color-gray-500);
 }
 .upf-stat--small .upf-stat__data {
