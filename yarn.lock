@@ -2531,10 +2531,9 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
-"@fortawesome/fontawesome-pro@^6.4.2":
-  version "6.4.2"
-  resolved "https://npm.fontawesome.com/@fortawesome/fontawesome-pro/-/6.4.2/fontawesome-pro-6.4.2.tgz#1acc12423b4b35885c96423cf896ae73e1b9b85a"
-  integrity sha512-b7VtzrgoASuCbnWJ1A17Sw3wemaFGukyBk0Y2ks/rgcnhlJ1uzdyv2uM3QbEaq9OgyZAKGJD1Tli6qHRI68zSQ==
+"@fortawesome/fontawesome-pro@git+ssh://git@github.com/upfluence/fontawesome-pro.git":
+  version "6.5.1"
+  resolved "git+ssh://git@github.com/upfluence/fontawesome-pro.git#2151d30ec8f1c1db594035ee504ea985b4e962c9"
 
 "@gar/promisify@^1.0.1":
   version "1.1.2"

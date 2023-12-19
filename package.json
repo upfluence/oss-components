@@ -36,7 +36,7 @@
   "dependencies": {
     "@ember/render-modifiers": "^2.1.0",
     "@embroider/macros": "^1.7.1",
-    "@fortawesome/fontawesome-pro": "^6.4.2",
+    "@fortawesome/fontawesome-pro": "git+ssh://git@github.com/upfluence/fontawesome-pro.git",
     "babel-plugin-debug-macros": "^0.3.1",
     "bootstrap": "^3.3.7",
     "calculate-cache-key-for-tree": "^2.0.0",
