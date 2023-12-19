@@ -14078,7 +14078,7 @@ define("dummy/tests/integration/components/o-s-s/link-test", ["@ember/template-f
     }());
   });
 });
-define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/test-helpers/dom/click"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _sinon, _click) {
+define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/test-helpers/dom/click", "@ember/object"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _sinon, _click, _object) {
   "use strict";
 
   function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
@@ -14377,17 +14377,279 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["@ember/te
         return _ref9.apply(this, arguments);
       };
     }());
+    (0, _qunit.module)('Queue management - if the @enqueue param is truthy', function () {
+      (0, _qunit.module)('When rendering two modals', function () {
+        (0, _qunit.test)('The second modal is not displayed', /*#__PURE__*/function () {
+          var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(assert) {
+            return regeneratorRuntime.wrap(function _callee9$(_context9) {
+              while (1) {
+                switch (_context9.prev = _context9.next) {
+                  case 0:
+                    _context9.next = 2;
+                    return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                    /*
+                      <OSS::ModalDialog @title="MODAL A" @subtitle="subtitle" @close={{this.closeModal}} @enqueue={{true}}
+                                                  data-control-name="modal-a" />
+                                  <OSS::ModalDialog @title="MODAL B" @subtitle="subtitle" @close={{this.closeModal}} @enqueue={{true}}
+                                                  data-control-name="modal-b" />
+                    */
+                    {
+                      "id": "dOMwIZp5",
+                      "block": "[[[8,[39,0],[[24,\"data-control-name\",\"modal-a\"]],[[\"@title\",\"@subtitle\",\"@close\",\"@enqueue\"],[\"MODAL A\",\"subtitle\",[30,0,[\"closeModal\"]],true]],null],[1,\"\\n              \"],[8,[39,0],[[24,\"data-control-name\",\"modal-b\"]],[[\"@title\",\"@subtitle\",\"@close\",\"@enqueue\"],[\"MODAL B\",\"subtitle\",[30,0,[\"closeModal\"]],true]],null]],[],false,[\"o-s-s/modal-dialog\"]]",
+                      "moduleName": "(unknown template module)",
+                      "isStrictMode": false
+                    }));
+
+                  case 2:
+                    assert.dom('[data-control-name="modal-a"]').exists();
+                    assert.dom('[data-control-name="modal-b"]').doesNotExist();
+
+                  case 4:
+                  case "end":
+                    return _context9.stop();
+                }
+              }
+            }, _callee9);
+          }));
+
+          return function (_x9) {
+            return _ref10.apply(this, arguments);
+          };
+        }());
+        (0, _qunit.test)('When Modal A is closed, Modal B is displayed', /*#__PURE__*/function () {
+          var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(assert) {
+            return regeneratorRuntime.wrap(function _callee10$(_context10) {
+              while (1) {
+                switch (_context10.prev = _context10.next) {
+                  case 0:
+                    this.helper = _object.default.create({
+                      displayModalA: true
+                    });
+                    _context10.next = 3;
+                    return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                    /*
+                      
+                              {{#if this.helper.displayModalA}}
+                                <OSS::ModalDialog @title="MODAL A" @subtitle="subtitle" @close={{this.closeModal}} @enqueue={{true}}
+                                                  data-control-name="modal-a" />
+                              {{/if}}
+                              <OSS::ModalDialog @title="MODAL B" @subtitle="subtitle" @close={{this.closeModal}} @enqueue={{true}}
+                                                data-control-name="modal-b" />
+                    */
+                    {
+                      "id": "su4Vj0Zu",
+                      "block": "[[[1,\"\\n\"],[41,[30,0,[\"helper\",\"displayModalA\"]],[[[1,\"            \"],[8,[39,1],[[24,\"data-control-name\",\"modal-a\"]],[[\"@title\",\"@subtitle\",\"@close\",\"@enqueue\"],[\"MODAL A\",\"subtitle\",[30,0,[\"closeModal\"]],true]],null],[1,\"\\n\"]],[]],null],[1,\"          \"],[8,[39,1],[[24,\"data-control-name\",\"modal-b\"]],[[\"@title\",\"@subtitle\",\"@close\",\"@enqueue\"],[\"MODAL B\",\"subtitle\",[30,0,[\"closeModal\"]],true]],null]],[],false,[\"if\",\"o-s-s/modal-dialog\"]]",
+                      "moduleName": "(unknown template module)",
+                      "isStrictMode": false
+                    }));
+
+                  case 3:
+                    assert.dom('[data-control-name="modal-a"]').exists();
+                    assert.dom('[data-control-name="modal-b"]').doesNotExist();
+                    _context10.next = 7;
+                    return (0, _click.default)('.fa-times');
+
+                  case 7:
+                    assert.ok(this.closeModal.calledOnce);
+                    this.helper.set('displayModalA', false);
+                    _context10.next = 11;
+                    return (0, _testHelpers.waitFor)('[data-control-name="modal-b"]', {
+                      timeout: 1000
+                    });
+
+                  case 11:
+                    assert.dom('[data-control-name="modal-a"]').doesNotExist();
+                    assert.dom('[data-control-name="modal-b"]').exists();
+
+                  case 13:
+                  case "end":
+                    return _context10.stop();
+                }
+              }
+            }, _callee10, this);
+          }));
+
+          return function (_x10) {
+            return _ref11.apply(this, arguments);
+          };
+        }());
+      });
+      (0, _qunit.module)('When rendering multiple modals', function () {
+        (0, _qunit.test)('Only the first modal is displayed', /*#__PURE__*/function () {
+          var _ref12 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee11(assert) {
+            return regeneratorRuntime.wrap(function _callee11$(_context11) {
+              while (1) {
+                switch (_context11.prev = _context11.next) {
+                  case 0:
+                    _context11.next = 2;
+                    return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                    /*
+                      <OSS::ModalDialog @title="MODAL C" @subtitle="subtitle" @close={{this.closeModal}} @enqueue={{true}}
+                                                  data-control-name="modal-c" />
+                                  <OSS::ModalDialog @title="MODAL B" @subtitle="subtitle" @close={{this.closeModal}} @enqueue={{true}}
+                                                    data-control-name="modal-b" />
+                                  <OSS::ModalDialog @title="MODAL A" @subtitle="subtitle" @close={{this.closeModal}} @enqueue={{true}}
+                                                    data-control-name="modal-a" />
+                    */
+                    {
+                      "id": "W8iKpBcg",
+                      "block": "[[[8,[39,0],[[24,\"data-control-name\",\"modal-c\"]],[[\"@title\",\"@subtitle\",\"@close\",\"@enqueue\"],[\"MODAL C\",\"subtitle\",[30,0,[\"closeModal\"]],true]],null],[1,\"\\n              \"],[8,[39,0],[[24,\"data-control-name\",\"modal-b\"]],[[\"@title\",\"@subtitle\",\"@close\",\"@enqueue\"],[\"MODAL B\",\"subtitle\",[30,0,[\"closeModal\"]],true]],null],[1,\"\\n              \"],[8,[39,0],[[24,\"data-control-name\",\"modal-a\"]],[[\"@title\",\"@subtitle\",\"@close\",\"@enqueue\"],[\"MODAL A\",\"subtitle\",[30,0,[\"closeModal\"]],true]],null]],[],false,[\"o-s-s/modal-dialog\"]]",
+                      "moduleName": "(unknown template module)",
+                      "isStrictMode": false
+                    }));
+
+                  case 2:
+                    assert.dom('[data-control-name="modal-c"]').exists();
+                    assert.dom('[data-control-name="modal-a"]').doesNotExist();
+                    assert.dom('[data-control-name="modal-b"]').doesNotExist();
+
+                  case 5:
+                  case "end":
+                    return _context11.stop();
+                }
+              }
+            }, _callee11);
+          }));
+
+          return function (_x11) {
+            return _ref12.apply(this, arguments);
+          };
+        }());
+        (0, _qunit.test)('Open & close modal flow check', /*#__PURE__*/function () {
+          var _ref13 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee12(assert) {
+            return regeneratorRuntime.wrap(function _callee12$(_context12) {
+              while (1) {
+                switch (_context12.prev = _context12.next) {
+                  case 0:
+                    this.helper = _object.default.create({
+                      displayModalA: true,
+                      displayModalB: true,
+                      displayModalC: true
+                    });
+                    _context12.next = 3;
+                    return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                    /*
+                      
+                                {{#if this.helper.displayModalA}}
+                                  <OSS::ModalDialog @title="MODAL A" @subtitle="subtitle" @close={{this.closeModal}} @enqueue={{true}}
+                                                    data-control-name="modal-a" />
+                                {{/if}}
+                                {{#if this.helper.displayModalB}}
+                                  <OSS::ModalDialog @title="MODAL B" @subtitle="subtitle" @close={{this.closeModal}} @enqueue={{true}}
+                                                    data-control-name="modal-b" />
+                                {{/if}}
+                                {{#if this.helper.displayModalC}}
+                                  <OSS::ModalDialog @title="MODAL C" @subtitle="subtitle" @close={{this.closeModal}} @enqueue={{true}}
+                                                    data-control-name="modal-c" />
+                                {{/if}}
+                              
+                    */
+                    {
+                      "id": "CfXv864V",
+                      "block": "[[[1,\"\\n\"],[41,[30,0,[\"helper\",\"displayModalA\"]],[[[1,\"              \"],[8,[39,1],[[24,\"data-control-name\",\"modal-a\"]],[[\"@title\",\"@subtitle\",\"@close\",\"@enqueue\"],[\"MODAL A\",\"subtitle\",[30,0,[\"closeModal\"]],true]],null],[1,\"\\n\"]],[]],null],[41,[30,0,[\"helper\",\"displayModalB\"]],[[[1,\"              \"],[8,[39,1],[[24,\"data-control-name\",\"modal-b\"]],[[\"@title\",\"@subtitle\",\"@close\",\"@enqueue\"],[\"MODAL B\",\"subtitle\",[30,0,[\"closeModal\"]],true]],null],[1,\"\\n\"]],[]],null],[41,[30,0,[\"helper\",\"displayModalC\"]],[[[1,\"              \"],[8,[39,1],[[24,\"data-control-name\",\"modal-c\"]],[[\"@title\",\"@subtitle\",\"@close\",\"@enqueue\"],[\"MODAL C\",\"subtitle\",[30,0,[\"closeModal\"]],true]],null],[1,\"\\n\"]],[]],null],[1,\"          \"]],[],false,[\"if\",\"o-s-s/modal-dialog\"]]",
+                      "moduleName": "(unknown template module)",
+                      "isStrictMode": false
+                    }));
+
+                  case 3:
+                    assert.dom('[data-control-name="modal-a"]').exists();
+                    assert.dom('[data-control-name="modal-b"]').doesNotExist();
+                    assert.dom('[data-control-name="modal-c"]').doesNotExist();
+                    _context12.next = 8;
+                    return (0, _click.default)('.fa-times');
+
+                  case 8:
+                    assert.ok(this.closeModal.calledOnce);
+                    this.helper.set('displayModalA', false);
+                    assert.false(this.helper.displayModalA);
+                    _context12.next = 13;
+                    return (0, _testHelpers.waitFor)('[data-control-name="modal-b"]', {
+                      timeout: 1000
+                    });
+
+                  case 13:
+                    assert.dom('[data-control-name="modal-a"]').doesNotExist();
+                    assert.dom('[data-control-name="modal-b"]').exists();
+                    assert.dom('[data-control-name="modal-c"]').doesNotExist();
+                    _context12.next = 18;
+                    return (0, _click.default)('.fa-times');
+
+                  case 18:
+                    assert.ok(this.closeModal.calledTwice);
+                    this.helper.set('displayModalB', false);
+                    assert.false(this.helper.displayModalB);
+                    _context12.next = 23;
+                    return (0, _testHelpers.waitFor)('[data-control-name="modal-c"]', {
+                      timeout: 1000
+                    });
+
+                  case 23:
+                    assert.dom('[data-control-name="modal-a"]').doesNotExist();
+                    assert.dom('[data-control-name="modal-b"]').doesNotExist();
+                    assert.dom('[data-control-name="modal-c"]').exists();
+
+                  case 26:
+                  case "end":
+                    return _context12.stop();
+                }
+              }
+            }, _callee12, this);
+          }));
+
+          return function (_x12) {
+            return _ref13.apply(this, arguments);
+          };
+        }());
+      });
+    });
+    (0, _qunit.test)('If the enqueue parameter is falsy, rendering multiple modals opens all of them', /*#__PURE__*/function () {
+      var _ref14 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee13(assert) {
+        return regeneratorRuntime.wrap(function _callee13$(_context13) {
+          while (1) {
+            switch (_context13.prev = _context13.next) {
+              case 0:
+                _context13.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::ModalDialog @title="MODAL A" @subtitle="subtitle" @close={{this.closeModal}}
+                                            data-control-name="modal-a" />
+                          <OSS::ModalDialog @title="MODAL B" @subtitle="subtitle" @close={{this.closeModal}}
+                                            data-control-name="modal-b" />
+                */
+                {
+                  "id": "mBFmuz22",
+                  "block": "[[[8,[39,0],[[24,\"data-control-name\",\"modal-a\"]],[[\"@title\",\"@subtitle\",\"@close\"],[\"MODAL A\",\"subtitle\",[30,0,[\"closeModal\"]]]],null],[1,\"\\n          \"],[8,[39,0],[[24,\"data-control-name\",\"modal-b\"]],[[\"@title\",\"@subtitle\",\"@close\"],[\"MODAL B\",\"subtitle\",[30,0,[\"closeModal\"]]]],null]],[],false,[\"o-s-s/modal-dialog\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('[data-control-name="modal-a"]').exists();
+                assert.dom('[data-control-name="modal-b"]').exists();
+
+              case 4:
+              case "end":
+                return _context13.stop();
+            }
+          }
+        }, _callee13);
+      }));
+
+      return function (_x13) {
+        return _ref14.apply(this, arguments);
+      };
+    }());
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('The component throws an error if the title parameter is not passed', /*#__PURE__*/function () {
-        var _ref10 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee9(assert) {
-          return regeneratorRuntime.wrap(function _callee9$(_context9) {
+        var _ref15 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee14(assert) {
+          return regeneratorRuntime.wrap(function _callee14$(_context14) {
             while (1) {
-              switch (_context9.prev = _context9.next) {
+              switch (_context14.prev = _context14.next) {
                 case 0:
                   (0, _testHelpers.setupOnerror)(function (err) {
                     assert.equal(err.message, 'Assertion Failed: [component][OSS::ModalDialog] The title parameter is mandatory');
                   });
-                  _context9.next = 3;
+                  _context14.next = 3;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     <OSS::ModalDialog @close={{this.closeModal}}></OSS::ModalDialog>
@@ -14401,26 +14663,26 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["@ember/te
 
                 case 3:
                 case "end":
-                  return _context9.stop();
+                  return _context14.stop();
               }
             }
-          }, _callee9);
+          }, _callee14);
         }));
 
-        return function (_x9) {
-          return _ref10.apply(this, arguments);
+        return function (_x14) {
+          return _ref15.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('The component throws an error if the close parameter is not passed', /*#__PURE__*/function () {
-        var _ref11 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee10(assert) {
-          return regeneratorRuntime.wrap(function _callee10$(_context10) {
+        var _ref16 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee15(assert) {
+          return regeneratorRuntime.wrap(function _callee15$(_context15) {
             while (1) {
-              switch (_context10.prev = _context10.next) {
+              switch (_context15.prev = _context15.next) {
                 case 0:
                   (0, _testHelpers.setupOnerror)(function (err) {
                     assert.equal(err.message, 'Assertion Failed: [component][OSS::ModalDialog] The close function is mandatory');
                   });
-                  _context10.next = 3;
+                  _context15.next = 3;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     <OSS::ModalDialog @title="Test"></OSS::ModalDialog>
@@ -14434,14 +14696,14 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["@ember/te
 
                 case 3:
                 case "end":
-                  return _context10.stop();
+                  return _context15.stop();
               }
             }
-          }, _callee10);
+          }, _callee15);
         }));
 
-        return function (_x10) {
-          return _ref11.apply(this, arguments);
+        return function (_x15) {
+          return _ref16.apply(this, arguments);
         };
       }());
     });
