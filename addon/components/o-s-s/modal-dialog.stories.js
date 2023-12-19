@@ -46,6 +46,17 @@ export default {
           summary: 'close(): void'
         }
       }
+    },
+    enqueue: {
+      description:
+        'Checks if an instance of oss-modal-dialog is already running and, if true, waits until the previous instance is closed before displaying the current one.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'boolean' }
     }
   },
   parameters: {
@@ -64,13 +75,14 @@ const defaultArgs = {
   title: 'Modal Dialog',
   subtitle: 'This is a subtitle',
   size: 'sm',
-  close: action('close')
+  close: action('close'),
+  enqueue: undefined
 };
 
 const BasicUsageTemplate = (args) => ({
   template: hbs`
       <OSS::ModalDialog @title={{this.title}} @close={{this.close}} @subtitle={{this.subtitle}} @size={{this.size}} 
-                        @close={{this.close}}>
+                        @enqueue={{this.enqueue}}>
         <:content>
           Content goes here
         </:content>
@@ -85,7 +97,7 @@ const BasicUsageTemplate = (args) => ({
 const WithIllustrationTemplate = (args) => ({
   template: hbs`
       <OSS::ModalDialog @title={{this.title}} @close={{this.close}} @subtitle={{this.subtitle}} @size={{this.size}} 
-                        @close={{this.close}}>
+                        @enqueue={{this.enqueue}}>
         <:illustration>
           This will contain an illustration.
         </:illustration>
