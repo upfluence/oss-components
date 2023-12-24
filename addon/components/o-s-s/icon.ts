@@ -6,7 +6,7 @@ export type IconStyle = 'solid' | 'regular' | 'light' | 'duotone' | 'brand';
 
 interface OSSIconSignature {
   Args: {
-    icon: keyof typeof IconNames | string;
+    icon: keyof typeof IconNames | string; // TODO: See https://github.com/FortAwesome/Font-Awesome/blob/6.x/js-packages/%40fortawesome/fontawesome-common-types/index.d.ts.
     style?: IconStyle;
   };
   Element: HTMLElement;
