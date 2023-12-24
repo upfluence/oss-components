@@ -4,17 +4,20 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 
-interface OSSAttributeRevealableEmailArgs {
-  tooltip?: string;
-  lockTooltip?: string;
-  onRevealEmail(): Promise<unknown>;
+interface OSSAttributeRevealableEmailSignature {
+  Args: {
+    tooltip?: string;
+    lockTooltip?: string;
+    onRevealEmail(): Promise<unknown>;
+  };
+  Element: HTMLElement;
 }
 
-export default class OSSAttributeRevealableEmail extends Component<OSSAttributeRevealableEmailArgs> {
+export default class OSSAttributeRevealableEmailComponent extends Component<OSSAttributeRevealableEmailSignature> {
   @service declare intl: any;
   @tracked loading: boolean = false;
 
-  constructor(owner: unknown, args: OSSAttributeRevealableEmailArgs) {
+  constructor(owner: unknown, args: OSSAttributeRevealableEmailSignature['Args']) {
     super(owner, args);
     assert(
       '[component][OSS::Attribute::RevealableEmail] @onRevealEmail method is required',
@@ -30,5 +33,12 @@ export default class OSSAttributeRevealableEmail extends Component<OSSAttributeR
   onRevealEmail(): void {
     this.loading = true;
     this.args.onRevealEmail().finally(() => (this.loading = false));
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::Attribute::RevealableEmail': typeof OSSAttributeRevealableEmailComponent;
+    'o-s-s/attribute/revealable-email': typeof OSSAttributeRevealableEmailComponent;
   }
 }

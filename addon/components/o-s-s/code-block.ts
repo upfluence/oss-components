@@ -4,21 +4,24 @@ import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import ToastService from '@upfluence/oss-components/services/toast';
 
-interface OSSCodeBlockArgs {
-  content: string;
-  copyable?: boolean;
-  scrollable?: boolean;
-  collapseHeight?: number;
-  onCopyMessage?: string;
+interface OSSCodeBlockSignature {
+  Args: {
+    content: string;
+    copyable?: boolean;
+    scrollable?: boolean;
+    collapseHeight?: number;
+    onCopyMessage?: string;
+  };
+  Element: HTMLDivElement;
 }
 
-export default class OSSCodeBlock extends Component<OSSCodeBlockArgs> {
+export default class OSSCodeBlockComponent extends Component<OSSCodeBlockSignature> {
   @tracked collapsable: boolean = false;
   @tracked collapsed: boolean = true;
   @tracked componentHeight: number = 0;
   @service declare toast: ToastService;
 
-  constructor(owner: unknown, args: OSSCodeBlockArgs) {
+  constructor(owner: unknown, args: OSSCodeBlockSignature['Args']) {
     super(owner, args);
     if (this.args.collapseHeight) {
       this.componentHeight = this.args.collapseHeight;
@@ -55,5 +58,12 @@ export default class OSSCodeBlock extends Component<OSSCodeBlockArgs> {
   uncollapse(): void {
     this.collapsed = false;
     this.componentHeight = this.componentHeight * 2;
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::CodeBlock': typeof OSSCodeBlockComponent;
+    'o-s-s/code-block': typeof OSSCodeBlockComponent;
   }
 }

@@ -5,16 +5,22 @@ type skinType = 'success' | 'error' | 'warning';
 
 const DEFAULT_SKIN = 'info';
 
-interface OSSAlertArgs {
-  skin?: skinType;
-  title?: string;
-  subtitle?: string;
-  plain?: boolean;
-  closable?: boolean;
-  onClose?(): void;
+interface OSSAlertSignature {
+  Args: {
+    skin?: skinType;
+    title?: string;
+    subtitle?: string;
+    plain?: boolean;
+    closable?: boolean;
+    onClose?(): void;
+  };
+  Blocks: {
+    'extra-content': [];
+  };
+  Element: HTMLDivElement;
 }
 
-export default class OSSAlert extends Component<OSSAlertArgs> {
+export default class OSSAlertComponent extends Component<OSSAlertSignature> {
   private declare _DOMElement: HTMLElement;
 
   get skinClass(): string {
@@ -48,5 +54,12 @@ export default class OSSAlert extends Component<OSSAlertArgs> {
     event.stopPropagation();
     this.args.onClose?.();
     this._DOMElement?.remove();
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::Alert': typeof OSSAlertComponent;
+    'o-s-s/alert': typeof OSSAlertComponent;
   }
 }

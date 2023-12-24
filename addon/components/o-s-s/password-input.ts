@@ -13,13 +13,16 @@ export const INPUT_VALIDATORS: ValidatorSet = {
   length: { labelKey: 'oss-components.password-input.validators.length', regex: /.{8,}/ }
 };
 
-interface OSSPasswordInputArgs {
-  value: string | null;
-  placeholder?: string;
-  errorMessage?: string;
-  disabled?: boolean;
-  validates?(isPassing: boolean): void;
-  validatorSet?: ValidatorSet;
+interface OSSPasswordInputSignature {
+  Args: {
+    value: string | null;
+    placeholder?: string;
+    errorMessage?: string;
+    disabled?: boolean;
+    validates?(isPassing: boolean): void;
+    validatorSet?: ValidatorSet;
+  };
+  Element: HTMLElement;
 }
 
 type InputValidator = 'uppercase' | 'number' | 'length';
@@ -49,7 +52,7 @@ const STATE_ICON_MAPPING: Record<ValidationState, ValidationStateIcon> = {
   error: 'fa-times'
 };
 
-export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
+export default class OSSPasswordInputComponent extends Component<OSSPasswordInputSignature> {
   @service intl: any;
   @tracked regexError: string | null = null;
   @tracked visibility: 'text' | 'password' = 'password';
@@ -57,7 +60,7 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
 
   private runValidation: boolean = typeof this.args.validates === 'function';
 
-  constructor(owner: unknown, args: OSSPasswordInputArgs) {
+  constructor(owner: unknown, args: OSSPasswordInputSignature['Args']) {
     super(owner, args);
 
     assert('[component][OSS::PasswordInput] The @value parameter is mandatory', typeof this.args.value !== 'undefined');
@@ -139,5 +142,12 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
   private validationStateFromRegex(regex: RegExp): ValidationState {
     if (isEmpty(this.args.value)) return 'default';
     return regex.test(this.args.value!) ? 'success' : 'error';
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::PasswordInput': typeof OSSPasswordInputComponent;
+    'o-s-s/password-input': typeof OSSPasswordInputComponent;
   }
 }

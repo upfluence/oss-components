@@ -3,11 +3,13 @@ import { run } from '@ember/runloop';
 import { isTesting } from '@embroider/macros';
 import Component from '@glimmer/component';
 
-export interface BaseModalArgs {
-  close(): void;
+export interface OSSPrivateBaseModalSignature {
+  Args: {
+    close(): void;
+  };
 }
 
-export default class BaseModal extends Component<BaseModalArgs> {
+export default class OSSPrivateBaseModalComponent extends Component<OSSPrivateBaseModalSignature> {
   private declare _elem: HTMLElement;
   private declare _parent: HTMLElement;
   private prevBodyOverflow: string | null = null;
@@ -57,5 +59,12 @@ export default class BaseModal extends Component<BaseModalArgs> {
 
   private scrollbarVisible(): boolean {
     return window.innerWidth > document.documentElement.clientWidth;
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::Private::BaseModal': typeof OSSPrivateBaseModalComponent;
+    'o-s-s/private/base-modal': typeof OSSPrivateBaseModalComponent;
   }
 }

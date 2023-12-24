@@ -37,16 +37,19 @@ export const SkinDefinition: SkinDefType = {
   'chat-gpt': 'chat-gpt'
 };
 
-interface OSSTagArgs {
-  label?: string;
-  skin?: string;
-  icon?: string;
-  hasEllipsis?: boolean;
-  plain?: boolean;
+interface OSSTagSignature {
+  Args: {
+    label?: string;
+    skin?: string;
+    icon?: string;
+    hasEllipsis?: boolean;
+    plain?: boolean;
+  };
+  Element: HTMLDivElement;
 }
 
-export default class OSSTag extends Component<OSSTagArgs> {
-  constructor(owner: unknown, args: OSSTagArgs) {
+export default class OSSTagComponent extends Component<OSSTagSignature> {
+  constructor(owner: unknown, args: OSSTagSignature['Args']) {
     super(owner, args);
 
     assert('[component][OSS::Tag] You must pass either a @label or an @icon argument.', args.icon || args.label);
@@ -72,5 +75,12 @@ export default class OSSTag extends Component<OSSTagArgs> {
     }
 
     return classes.join(' ');
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::Tag': typeof OSSTagComponent;
+    'o-s-s/tag': typeof OSSTagComponent;
   }
 }

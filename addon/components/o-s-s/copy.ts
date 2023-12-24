@@ -5,12 +5,15 @@ import { inject as service } from '@ember/service';
 
 import ToastService from '@upfluence/oss-components/services/toast';
 
-interface OSSCopyArgs {
-  value: string;
-  inline?: boolean;
+interface OSSCopySignature {
+  Args: {
+    value: string;
+    inline?: boolean;
+  };
+  Element: HTMLElement;
 }
 
-export default class OSSCopy extends Component<OSSCopyArgs> {
+export default class OSSCopyComponent extends Component<OSSCopySignature> {
   @service intl: any;
   @service declare toast: ToastService;
   @tracked inline: boolean = this.args.inline ?? false;
@@ -33,5 +36,12 @@ export default class OSSCopy extends Component<OSSCopyArgs> {
           this.intl.t('oss-components.copy.error.title')
         );
       });
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::Copy': typeof OSSCopyComponent;
+    'o-s-s/copy': typeof OSSCopyComponent;
   }
 }

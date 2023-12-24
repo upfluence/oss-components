@@ -34,17 +34,20 @@ export const SkinDefinition: SkinDefType = {
   'xtd-violet': 'upf-badge--extended-violet'
 };
 
-interface OSSBadgeArgs {
-  icon: string;
-  image: string;
-  text: string;
-  skin?: SkinType;
-  plain?: boolean;
-  size?: SizeType;
+interface OSSBadgeSignature {
+  Args: {
+    icon: string;
+    image: string;
+    text: string;
+    skin?: SkinType;
+    plain?: boolean;
+    size?: SizeType;
+  };
+  Element: HTMLDivElement;
 }
 
-export default class OSSBadge extends Component<OSSBadgeArgs> {
-  constructor(owner: unknown, args: OSSBadgeArgs) {
+export default class OSSBadgeComponent extends Component<OSSBadgeSignature> {
+  constructor(owner: unknown, args: OSSBadgeSignature['Args']) {
     super(owner, args);
 
     const contentArguments = [args.icon, args.image, args.text].filter((arg: string) => arg);
@@ -91,5 +94,12 @@ export default class OSSBadge extends Component<OSSBadgeArgs> {
     }
 
     return classes.join(' ');
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::Badge': typeof OSSBadgeComponent;
+    'o-s-s/badge': typeof OSSBadgeComponent;
   }
 }

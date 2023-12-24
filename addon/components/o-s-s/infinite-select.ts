@@ -5,21 +5,27 @@ import { action } from '@ember/object';
 
 import { guidFor } from '@ember/object/internals';
 
-interface InfiniteSelectArgs {
-  searchEnabled: boolean;
-  loading: boolean;
-  loadingMore: boolean;
-  itemLabel: string;
-  searchPlaceholder: string;
-  items: InfinityItem[];
-  inline: boolean;
-  enableKeyboard?: boolean;
-
-  onSelect: (item: InfinityItem) => void;
-  onSearch?: (keyword: string) => void;
-  onBottomReached?: () => void;
-  onClose?: () => void;
-  didRender?: () => void;
+interface OSSInfiniteSelectSignature {
+  Args: {
+    searchEnabled: boolean;
+    loading: boolean;
+    loadingMore: boolean;
+    itemLabel: string;
+    searchPlaceholder: string;
+    items: InfinityItem[];
+    inline: boolean;
+    enableKeyboard?: boolean;
+    onSelect: (item: InfinityItem) => void;
+    onSearch?: (keyword: string) => void;
+    onBottomReached?: () => void;
+    onClose?: () => void;
+    didRender?: () => void;
+  };
+  Blocks: {
+    'empty-state': [];
+    option: [unknown];
+  };
+  Element: HTMLDivElement;
 }
 
 type InfinityItem = {
@@ -28,13 +34,13 @@ type InfinityItem = {
 
 const DEFAULT_ITEM_LABEL = 'name';
 
-export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
+export default class OSSInfiniteSelectComponent extends Component<OSSInfiniteSelectSignature> {
   @tracked _searchKeyword: string = '';
   @tracked _focusElement: number = 0;
 
   @tracked elementId: string = guidFor(this);
 
-  constructor(owner: unknown, args: InfiniteSelectArgs) {
+  constructor(owner: unknown, args: OSSInfiniteSelectSignature['Args']) {
     super(owner, args);
 
     assert(
@@ -189,5 +195,12 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   private focusFirstItem(self: any, e: KeyboardEvent): void {
     self._focusElementAt(self._focusElement);
     e.preventDefault();
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::InfiniteSelect': typeof OSSInfiniteSelectComponent;
+    'o-s-s/infinite-select': typeof OSSInfiniteSelectComponent;
   }
 }
