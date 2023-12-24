@@ -11,7 +11,7 @@ module('Integration | Component | o-s-s/attribute/rating', function (hooks) {
   });
 
   test('it renders', async function (assert) {
-    await render(hbs`<OSS::Attribute::Rating @label="Hello" @rating={{this.testRating}}/>`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Attribute::Rating @label="Hello" @rating={{this.testRating}}/>`);
     assert.dom('[data-control-name="attribute-rating"]').exists();
   });
 
@@ -21,12 +21,12 @@ module('Integration | Component | o-s-s/attribute/rating', function (hooks) {
   });
 
   test('it displays the proper number of stars when @rating is provided', async function (assert) {
-    await render(hbs`<OSS::Attribute::Rating @label="Hello" @rating={{this.testRating}}/>`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Attribute::Rating @label="Hello" @rating={{this.testRating}}/>`);
     assert.dom('.fas.fa-star.color-yellow').exists({ count: this.testRating });
   });
 
   test('it displays a label when @label is provided', async function (assert) {
-    await render(hbs`<OSS::Attribute::Rating @label="Hello" @rating={{this.testRating}}/>`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Attribute::Rating @label="Hello" @rating={{this.testRating}}/>`);
     assert.dom('.oss-attribute__label').hasText('Hello');
   });
 });

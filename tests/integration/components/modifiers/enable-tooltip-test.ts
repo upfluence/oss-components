@@ -15,6 +15,7 @@ module('Integration | Component | modifiers/enable-tooltip', function (hooks) {
 
   async function renderTooltip() {
     await render(hbs`
+      {{! @glint-nocheck: not typesafe yet }}
       <div class="test-container" style="height: 20px; width: 40px"
            {{enable-tooltip title=this.title subtitle=this.subtitle placement=this.placement icon=this.icon trigger=this.trigger html=this.html}}>
       </div>

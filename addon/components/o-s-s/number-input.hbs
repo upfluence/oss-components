@@ -1,3 +1,4 @@
+{{! @glint-nocheck: not typesafe yet }}
 <div class="number-input fx-row">
   <OSS::Button @square={{true}} @size="md" @icon="far fa-minus" {{on "click" this.decreaseValue}}
                disabled={{this.isMinDisabled}} {{enable-tooltip title=this.minTooltipTitle placement="top"}} />

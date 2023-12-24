@@ -13,7 +13,7 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
   });
 
   test('passing a font-awesome icon in the @icon parameter displays the icon in a rounded badge', async function (assert) {
-    await render(hbs`<OSS::Banner @icon="fas fa-check" />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Banner @icon="fas fa-check" />`);
 
     assert.dom('.upf-banner .fa-check').exists();
   });
@@ -21,21 +21,21 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
   test('passing an image url in the @image parameter displays the image in a rounded badge', async function (assert) {
     this.url =
       'https://thepressfree.com/wp-content/uploads/2021/11/Voici-pourquoi-Bruce-Banner-netait-plus-Smart-Hulk-dans-la-800x445.jpg';
-    await render(hbs`<OSS::Banner @image={{this.url}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Banner @image={{this.url}} />`);
 
     assert.dom('.upf-banner img').exists();
     assert.dom('img').hasAttribute('src', this.url);
   });
 
   test('passing a title in the @title parameter displays the title in the component', async function (assert) {
-    await render(hbs`<OSS::Banner @title="Test Title" />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Banner @title="Test Title" />`);
 
     assert.dom('.upf-banner .font-weight-semibold').hasText('Test Title');
   });
 
   test('passing a title-suffix named block uses it in a addition to the @title arg ', async function (assert) {
     await render(
-      hbs`<OSS::Banner @title="Test Title"><:title-suffix><div class="title-named-block">foo</div></:title-suffix></OSS::Banner>`
+      hbs`{{! @glint-nocheck }}<OSS::Banner @title="Test Title"><:title-suffix><div class="title-named-block">foo</div></:title-suffix></OSS::Banner>`
     );
 
     assert.dom('.upf-banner .font-weight-semibold').hasText('Test Title');
@@ -53,7 +53,7 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
   });
 
   test('passing a subtitle in the @subtitle parameter displays the title in the component', async function (assert) {
-    await render(hbs`<OSS::Banner @subtitle="Test subtitle" />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Banner @subtitle="Test subtitle" />`);
 
     assert.dom('.upf-banner .font-color-gray-500.text-size-4').hasText('Test subtitle');
   });
@@ -111,6 +111,7 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
 
   test('passing a custom-icon named block renders inside the component', async function (assert) {
     await render(hbs`
+      {{! @glint-nocheck: not typesafe yet }}
       <OSS::Banner @subtitle="Test subtitle">
         <:custom-icon>
           <OSS::Badge @text="2x" />
@@ -123,6 +124,7 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
 
   test('passing an actions named block renders inside the component', async function (assert) {
     await render(hbs`
+      {{! @glint-nocheck: not typesafe yet }}
       <OSS::Banner @subtitle="Test subtitle">
         <:actions>
           <OSS::Button @skin="primary" @label="browse" @icon="fas fa-box-open" @size="md" />
@@ -140,7 +142,7 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
     });
 
     test("when the value is 'sm' and an @icon is defined, a small icon class is used", async function (assert) {
-      await render(hbs`<OSS::Banner @size="sm" @icon="fa-child-combatant" />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Banner @size="sm" @icon="fa-child-combatant" />`);
       assert.dom('.upf-badge--size-sm').exists();
     });
 

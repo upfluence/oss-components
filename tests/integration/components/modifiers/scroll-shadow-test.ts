@@ -22,6 +22,7 @@ module('Integration | Component | modifiers/scroll-shadow', function (hooks) {
 
     test('it should have scroll shadow class', async function (assert) {
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <div style="position: relative">
           <div class="items-container" style="max-height: 80px;overflow: auto;" {{scroll-shadow}}>
             {{#each this.itemNumbers as |itemNumber|}}
@@ -38,6 +39,7 @@ module('Integration | Component | modifiers/scroll-shadow', function (hooks) {
     module('when using color', function () {
       test('with default color', async function (assert) {
         await render(hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <div style="position: relative">
             <div class="items-container" style="max-height: 80px;overflow: auto;" {{scroll-shadow}}>
               {{#each this.itemNumbers as |itemNumber|}}
@@ -53,6 +55,7 @@ module('Integration | Component | modifiers/scroll-shadow', function (hooks) {
 
       test('with field color', async function (assert) {
         await render(hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <div style="position: relative">
             <div class="items-container" style="max-height: 80px;overflow: auto;" {{scroll-shadow color="field"}}>
               {{#each this.itemNumbers as |itemNumber|}}
@@ -75,6 +78,7 @@ module('Integration | Component | modifiers/scroll-shadow', function (hooks) {
 
     test('it should not have scroll shadow classes', async function (assert) {
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <div style="position: relative">
           <div class="items-container" {{scroll-shadow}}>
             {{#each this.itemNumbers as |itemNumber|}}
@@ -99,6 +103,7 @@ module('Integration | Component | modifiers/scroll-shadow', function (hooks) {
       window.ResizeObserver = ResizeObserverMock;
 
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <div style="position: relative">
           <div class="items-container" {{scroll-shadow}}>
             {{#each this.itemNumbers as |itemNumber|}}

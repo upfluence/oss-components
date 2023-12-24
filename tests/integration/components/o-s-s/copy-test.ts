@@ -8,18 +8,18 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    await render(hbs`<OSS::Copy />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Copy />`);
 
     assert.dom('.upf-btn--default').exists();
   });
 
   test('it renders when inline value is specified', async function (assert) {
-    await render(hbs`<OSS::Copy @inline={{true}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Copy @inline={{true}} />`);
     assert.dom('.oss-copy--inline').exists();
   });
 
   test('the tooltip has correct wording', async function (assert) {
-    await render(hbs`<OSS::Copy />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Copy />`);
 
     await assert.tooltip('.upf-btn--default').hasTitle('Copy');
   });
@@ -58,7 +58,7 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
       sinon.stub(this.toastService, 'info').resolves();
       this.textForCopy = 'test';
 
-      await render(hbs`<OSS::Copy @value={{this.textForCopy}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Copy @value={{this.textForCopy}} />`);
       await click('.upf-btn--default');
 
       assert.true(writeTextStub.calledOnceWithExactly(this.textForCopy));

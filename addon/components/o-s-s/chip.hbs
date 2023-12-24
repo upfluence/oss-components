@@ -1,3 +1,4 @@
+{{! @glint-nocheck: not typesafe yet }}
 <div class={{this.computedClass}} ...attributes {{on "click" this.stopPropagation}}>
   <span class="font-weight-semibold {{if @maxDisplayWidth "chip-ellipsis"}}"
         style={{if @maxDisplayWidth this.ellipsisStyle}}

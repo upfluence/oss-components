@@ -7,7 +7,7 @@ module('Integration | Component | o-s-s/layout/sidebar', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    await render(hbs`<OSS::Layout::Sidebar />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Layout::Sidebar />`);
 
     assert.dom('.oss-sidebar--containers').exists();
   });
@@ -17,6 +17,7 @@ module('Integration | Component | o-s-s/layout/sidebar', function (hooks) {
 
     await render(
       hbs`
+      {{! @glint-nocheck: not typesafe yet }}
       <OSS::Layout::Sidebar @logo={{this.logo}}/>`
     );
 
@@ -30,6 +31,7 @@ module('Integration | Component | o-s-s/layout/sidebar', function (hooks) {
     test('The content named-block is properly displayed', async function (assert) {
       await render(
         hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::Layout::Sidebar>
           <:content>
             <p>This is the content</p>
@@ -42,6 +44,7 @@ module('Integration | Component | o-s-s/layout/sidebar', function (hooks) {
     test('The footer named-block is properly displayed', async function (assert) {
       await render(
         hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::Layout::Sidebar>
           <:footer>
             footer content
@@ -55,12 +58,12 @@ module('Integration | Component | o-s-s/layout/sidebar', function (hooks) {
 
   module('Extra attributes', () => {
     test('passing an extra class is applied to the component', async function (assert) {
-      await render(hbs`<OSS::Layout::Sidebar class="my-extra-class" />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Layout::Sidebar class="my-extra-class" />`);
       assert.dom('.my-extra-class').exists();
     });
 
     test('passing data-control-name works', async function (assert) {
-      await render(hbs`<OSS::Layout::Sidebar data-control-name="layout-sidebar" />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Layout::Sidebar data-control-name="layout-sidebar" />`);
       let inputWrapper: Element | null = find('.oss-sidebar--containers');
       assert.equal(inputWrapper?.getAttribute('data-control-name'), 'layout-sidebar');
     });

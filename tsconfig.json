@@ -8,6 +8,7 @@
     "moduleResolution": "node",
     "strictFunctionTypes": false,
     "noPropertyAccessFromIndexSignature": false,
+    "allowJs": true,
     "paths": {
       "dummy/tests/*": ["tests/*"],
       "dummy/*": ["tests/dummy/app/*", "app/*"],

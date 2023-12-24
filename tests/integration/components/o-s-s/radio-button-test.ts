@@ -9,7 +9,7 @@ module('Integration | Component | o-s-s/radio-button', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    await render(hbs`<OSS::RadioButton />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::RadioButton />`);
 
     assert.dom('.oss-radio-btn').exists();
   });
@@ -40,7 +40,7 @@ module('Integration | Component | o-s-s/radio-button', function (hooks) {
 
   test('It triggers the onChange method on click when the @disabled parameter is false', async function (assert) {
     this.onChange = sinon.stub();
-    await render(hbs`<OSS::RadioButton @selected={{false}} @onChange={{this.onChange}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::RadioButton @selected={{false}} @onChange={{this.onChange}} />`);
     assert.dom('.oss-radio-btn').exists();
     await click('.oss-radio-btn');
     assert.true(this.onChange.calledOnceWithExactly(true));
@@ -48,7 +48,7 @@ module('Integration | Component | o-s-s/radio-button', function (hooks) {
 
   test('It triggers the onChange method on click when the @disabled parameter is true', async function (assert) {
     this.onChange = sinon.stub();
-    await render(hbs`<OSS::RadioButton @selected={{true}} @onChange={{this.onChange}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::RadioButton @selected={{true}} @onChange={{this.onChange}} />`);
     assert.dom('.oss-radio-btn').exists();
     await click('.oss-radio-btn');
     assert.true(this.onChange.calledOnceWithExactly(false));
@@ -56,7 +56,7 @@ module('Integration | Component | o-s-s/radio-button', function (hooks) {
 
   test("It doesn't trigger the onChange method on click when the @disabled parameter is true", async function (assert) {
     this.onChange = sinon.stub();
-    await render(hbs`<OSS::RadioButton @selected={{false}} @disabled={{true}} @onChange={{this.onChange}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::RadioButton @selected={{false}} @disabled={{true}} @onChange={{this.onChange}} />`);
     await click('.oss-radio-btn');
     assert.true(this.onChange.notCalled);
   });

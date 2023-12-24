@@ -12,25 +12,25 @@ module('Integration | Component | o-s-s/attribute/removable-text', function (hoo
   });
 
   test('it renders', async function (assert) {
-    await render(hbs`<OSS::Attribute::RemovableText @label="label" @onRemove={{this.onRemove}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Attribute::RemovableText @label="label" @onRemove={{this.onRemove}} />`);
 
     assert.dom('[data-control-name="attribute-removable-text"]').exists();
   });
 
   test('It displays the @label', async function (assert) {
-    await render(hbs`<OSS::Attribute::RemovableText @label="city" @onRemove={{this.onRemove}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Attribute::RemovableText @label="city" @onRemove={{this.onRemove}} />`);
 
     assert.dom('.oss-attribute__label').hasText('city');
   });
 
   test('If the value is provided, it is displayed', async function (assert) {
-    await render(hbs`<OSS::Attribute::RemovableText @label="city" @value="Lyon" @onRemove={{this.onRemove}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Attribute::RemovableText @label="city" @value="Lyon" @onRemove={{this.onRemove}} />`);
 
     assert.dom('.oss-attribute__value').hasText('Lyon');
   });
 
   test('If the value is not provided, it displays a dash', async function (assert) {
-    await render(hbs`<OSS::Attribute::RemovableText @label="city" @onRemove={{this.onRemove}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Attribute::RemovableText @label="city" @onRemove={{this.onRemove}} />`);
 
     assert.dom('.oss-attribute__value').hasText('-');
   });
@@ -38,7 +38,7 @@ module('Integration | Component | o-s-s/attribute/removable-text', function (hoo
   module('Remove tooltip', () => {
     test('If the @removeTooltip paramater is passed, the string contents are used as tooltip for the lock icon', async function (assert) {
       await render(
-        hbs`<OSS::Attribute::RemovableText @label="city" @onRemove={{this.onRemove}} @removeTooltip="Click to remove" />`
+        hbs`{{! @glint-nocheck }}<OSS::Attribute::RemovableText @label="city" @onRemove={{this.onRemove}} @removeTooltip="Click to remove" />`
       );
 
       await triggerEvent('.oss-attribute', 'mouseenter');
@@ -46,7 +46,7 @@ module('Integration | Component | o-s-s/attribute/removable-text', function (hoo
     });
 
     test('If the @removeTooltip paramater is not passed, the default text is used', async function (assert) {
-      await render(hbs`<OSS::Attribute::RemovableText @label="city" @onRemove={{this.onRemove}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Attribute::RemovableText @label="city" @onRemove={{this.onRemove}} />`);
 
       await triggerEvent('.oss-attribute', 'mouseenter');
       await assert.tooltip('.fa-trash').hasTitle('Remove');
@@ -54,7 +54,7 @@ module('Integration | Component | o-s-s/attribute/removable-text', function (hoo
   });
 
   test('Clicking on the trash icon calls the @onRemove method', async function (assert) {
-    await render(hbs`<OSS::Attribute::RemovableText @label="city" @value="Lyon" @onRemove={{this.onRemove}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Attribute::RemovableText @label="city" @value="Lyon" @onRemove={{this.onRemove}} />`);
 
     await triggerEvent('.oss-attribute', 'mouseenter');
     await click('.fa-trash');
@@ -63,7 +63,7 @@ module('Integration | Component | o-s-s/attribute/removable-text', function (hoo
 
   test('Clicking on the trash icon displays a loader', async function (assert) {
     this.onRemove.returns(new Promise(() => {}));
-    await render(hbs`<OSS::Attribute::RemovableText @label="city" @value="Lyon" @onRemove={{this.onRemove}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Attribute::RemovableText @label="city" @value="Lyon" @onRemove={{this.onRemove}} />`);
 
     await triggerEvent('.oss-attribute', 'mouseenter');
     await click('.fa-trash');
