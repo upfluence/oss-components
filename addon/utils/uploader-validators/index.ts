@@ -1,4 +1,4 @@
-import { UploadRequest, FileValidator, FileSizeRule, FileTypeRule } from '@upfluence/oss-components/types/uploader';
+import { type UploadRequest, type FileValidator, type FileSizeRule, type FileTypeRule } from '@upfluence/oss-components/types/uploader';
 import parseFilesize from '@upfluence/oss-components/utils/filesize-parser';
 
 export interface Validator {
@@ -45,7 +45,7 @@ export class FileTypeValidator implements Validator {
       },
       passes: this.deconstructedFiletypes
         .map((f: string) => f.toLowerCase())
-        .includes(filename.split('.')[filename.split('.').length - 1].toLowerCase())
+        .includes((filename.split('.')[filename.split('.').length - 1] || '').toLowerCase())
     };
   }
 
@@ -54,7 +54,7 @@ export class FileTypeValidator implements Validator {
       let filetypes = [filetype];
 
       if (Object.keys(this.filetypeTemplates).includes(filetype)) {
-        filetypes = this.filetypeTemplates[filetype];
+        filetypes = this.filetypeTemplates[filetype]!;
       }
 
       acc = acc.concat(filetypes);

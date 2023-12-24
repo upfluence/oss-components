@@ -1,22 +1,25 @@
 import Component from '@glimmer/component';
+import { isBlank } from '@ember/utils';
 
 export const extractCSSVars = (): string[] => {
-  return (
-    Array.from(document.styleSheets)
-      .filter((styleSheet) => {
-        try {
-          return styleSheet.cssRules;
-        } catch (e) {
-          return false;
-        }
-      })
-      .map((styleSheet) => Array.from(styleSheet.cssRules))
-      .flat()
-      .filter((cssRule: CSSStyleRule) => cssRule.selectorText === ':root')
-      .map((cssRule: CSSStyleRule) => cssRule.cssText.split('{')[1].split('}')[0].trim().split(';'))
-      .flat()
-      .filter((text) => text !== '')
-  );
+  return Array.from(document.styleSheets)
+    .filter((styleSheet) => {
+      try {
+        return styleSheet.cssRules;
+      } catch (e) {
+        return false;
+      }
+    })
+    .map((styleSheet) => Array.from(styleSheet.cssRules))
+    .flat()
+    .filter((cssRule: CSSStyleRule) => cssRule.selectorText === ':root')
+    .map((cssRule: CSSStyleRule) => {
+      const cssVars = cssRule.cssText.split('{')[1];
+      if (!cssVars) return [];
+      return (cssVars.split('}')?.[0] || '').trim().split(';');
+    })
+    .flat()
+    .filter((text) => !isBlank(text));
 };
 
 interface OSSIllustrationArgs {

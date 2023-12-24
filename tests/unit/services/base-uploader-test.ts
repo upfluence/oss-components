@@ -136,7 +136,7 @@ module('Unit | Service | base-uploader', function (hooks) {
   test('calling the `url` getter throws throws a NotImplemented error', function (assert: Assert) {
     try {
       this.service.url;
-    } catch (err) {
+    } catch (err: any) {
       assert.equal(
         err.message,
         '[@upfluence/oss-components::uploader] NotImpemented: Please extend this service and inherit this method.'
@@ -164,7 +164,7 @@ module('Unit | Service | base-uploader', function (hooks) {
         },
         []
       );
-    } catch (err) {
+    } catch (err: any) {
       assert.equal(
         err.message,
         '[@upfluence/oss-components::uploader] NotImpemented: Please extend this service and inherit this method.'

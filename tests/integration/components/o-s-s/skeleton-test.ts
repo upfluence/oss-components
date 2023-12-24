@@ -1,7 +1,7 @@
+import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, find, findAll, setupOnerror } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
 
 module('Integration | Component | o-s-s/skeleton', function (hooks) {
   setupRenderingTest(hooks);
@@ -79,7 +79,7 @@ module('Integration | Component | o-s-s/skeleton', function (hooks) {
     });
   });
 
-  module('@randomize parameters', () => {
+  module('@randomize parameters', (hooks) => {
     hooks.beforeEach(function () {
       this.multiple = 4;
       this.width = 200;

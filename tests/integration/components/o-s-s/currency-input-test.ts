@@ -1,7 +1,7 @@
+import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror, click, findAll, typeIn, triggerKeyEvent, triggerEvent } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
 import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/currency-input', function (hooks) {
@@ -52,8 +52,7 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       this.currency = '';
       await render(hbs`<OSS::CurrencyInput @currency={{this.currency}} @value="" @onChange={{this.onChange}} />`);
       await click('.currency-selector');
-      const clickableRows = findAll('.upf-infinite-select__item');
-      await click(clickableRows[4]);
+      await click('.upf-infinite-select__item:nth-child(5)');
       assert.true(this.onChange.calledOnceWithExactly('AUD', 0));
     });
 
@@ -63,8 +62,7 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
         hbs`<OSS::CurrencyInput @onlyCurrency={{true}} @currency={{this.currency}} @value="" @onChange={{this.onChange}} />`
       );
       await click('.currency-selector');
-      const clickableRows = findAll('.upf-infinite-select__item');
-      await click(clickableRows[4]);
+      await click('.upf-infinite-select__item:nth-child(5)');
       assert.true(this.onChange.calledOnceWithExactly('AUD', 0));
     });
 

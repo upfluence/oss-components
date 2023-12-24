@@ -57,14 +57,14 @@ export default class extends Component<OSSButtonDropdownArgs> {
 
   @action
   setupChildrenClickHandler(element: HTMLElement): void {
-    element.querySelectorAll('.oss-button-dropdown__item').forEach((child: HTMLElement) => {
+    element.querySelectorAll('.oss-button-dropdown__item').forEach((child: Element) => {
       child.addEventListener('click', this.closeDropdown);
     });
   }
 
   @action
   teardownChildrenClickHandler(element: HTMLElement): void {
-    element.querySelectorAll('.oss-button-dropdown__item').forEach((child: HTMLElement) => {
+    element.querySelectorAll('.oss-button-dropdown__item').forEach((child: Element) => {
       child.removeEventListener('click', this.closeDropdown);
     });
   }

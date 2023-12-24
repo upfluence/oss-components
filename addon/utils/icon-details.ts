@@ -1,7 +1,7 @@
 export type IconStyle = 'solid' | 'regular' | 'light' | 'duotone' | 'brand';
 
 const FA_ICON_PREFIX = 'fa-';
-const STYLE_MATCHER: { [key: string]: IconStyle } = {
+const STYLE_MATCHER: Record<string, IconStyle> = {
   fas: 'solid',
   far: 'regular',
   fal: 'light',
@@ -10,13 +10,14 @@ const STYLE_MATCHER: { [key: string]: IconStyle } = {
 };
 
 export function getIconStyle(fontAwesomeIcon: string): IconStyle {
-  let iconStyle: IconStyle = STYLE_MATCHER.far;
+  let iconStyle: IconStyle = STYLE_MATCHER.far as IconStyle;
 
   Object.keys(STYLE_MATCHER).forEach((style: string) => {
     if (fontAwesomeIcon.includes(style)) {
-      iconStyle = STYLE_MATCHER[style];
+      iconStyle = STYLE_MATCHER[style]!;
     }
   });
+
   return iconStyle;
 }
 

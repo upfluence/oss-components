@@ -2,7 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
-import { Placement } from '@upfluence/oss-components/test-support/custom-assertions/tooltip';
+import { type Placement } from '@upfluence/oss-components/test-support/custom-assertions/tooltip';
 
 const PLACEMENTS: Placement[] = [undefined, 'top', 'bottom', 'left', 'right'];
 

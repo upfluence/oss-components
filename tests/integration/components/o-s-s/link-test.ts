@@ -1,7 +1,8 @@
+import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror, click } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
+import type RouterService from '@ember/routing/router-service';
 import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/link', function (hooks) {
@@ -31,7 +32,7 @@ module('Integration | Component | o-s-s/link', function (hooks) {
     let windowOpenStub = sinon.stub(window, 'open');
 
     await render(hbs`
-      <OSS::Link @icon="fab fa-facebook" @label="Facebook" 
+      <OSS::Link @icon="fab fa-facebook" @label="Facebook"
                  @link={{hash href="https://www.google.fr" target="_blank"}} />
     `);
 
@@ -41,9 +42,10 @@ module('Integration | Component | o-s-s/link', function (hooks) {
   });
 
   test('it transits to the route', async function (assert: Assert) {
-    let transitionToStub = sinon.stub(this.owner.lookup('service:router'), 'transitionTo');
+    const router = this.owner.lookup('service:router') as RouterService;
+    let transitionToStub = sinon.stub(router, 'transitionTo' as keyof RouterService);
 
-    await render(hbs`<OSS::Link @icon="fab fa-facebook" @label="Facebook" @transitionTo={{"workflow.create"}} />`);
+    await render(hbs`<OSS::Link @icon="fab fa-facebook" @label="Facebook" @transitionTo="workflow.create" />`);
 
     await click('.upf-link');
     assert.true(transitionToStub.calledOnceWithExactly('workflow.create'));

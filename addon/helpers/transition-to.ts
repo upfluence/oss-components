@@ -1,6 +1,7 @@
 import { getOwner } from '@ember/application';
 import Helper from '@ember/component/helper';
 import { assert } from '@ember/debug';
+import type RouterService from '@ember/routing/router-service';
 
 type TransitionToHelperArgs = {
   route: string;
@@ -23,7 +24,7 @@ export default class extends Helper {
       queryParams ? typeof queryParams === 'object' : true
     );
 
-    const router = getOwner(this).lookup('service:router');
+    const router = getOwner(this).lookup('service:router') as RouterService;
 
     return () => {
       if (model) {

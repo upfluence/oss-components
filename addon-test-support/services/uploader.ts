@@ -1,8 +1,9 @@
 import BaseUploader from '@upfluence/oss-components/services/base-uploader';
-import UploaderInterface, {
-  UploadRequest,
-  FileValidator,
-  ValidationResponse
+import {
+  type default as UploaderInterface,
+  type UploadRequest,
+  type FileValidator,
+  type ValidationResponse
 } from '@upfluence/oss-components/types/uploader';
 
 export default class extends BaseUploader implements UploaderInterface {
