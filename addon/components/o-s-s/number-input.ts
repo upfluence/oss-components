@@ -2,14 +2,16 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
-interface OSSNumberInputArgs {
-  value?: number;
-  min?: number;
-  max?: number;
-  step?: number;
-  minReachedTooltip?: string;
-  maxReachedTooltip?: string;
-  onChange?(value: number): void;
+interface OSSNumberInputSignature {
+  Args: {
+    value?: number;
+    min?: number;
+    max?: number;
+    step?: number;
+    minReachedTooltip?: string;
+    maxReachedTooltip?: string;
+    onChange?(value: number): void;
+  };
 }
 
 const NUMERIC_ONLY = /^[0-9]$/i;
@@ -20,7 +22,7 @@ const DECREASE_VALUE_KEYS = ['ArrowDown', 'ArrowLeft'];
 const BASE_INPUT_PIXEL_WIDTH = 40;
 const CHAR_PIXEL_WIDTH = 7;
 
-export default class OSSNumberInput extends Component<OSSNumberInputArgs> {
+export default class OSSNumberInputComponent extends Component<OSSNumberInputSignature> {
   @tracked localValue: number = this.args.value || DEFAULT_VALUE;
   @tracked reachedTooltip: string | null = null;
   @tracked inputElement: HTMLElement | null = null;
@@ -104,5 +106,12 @@ export default class OSSNumberInput extends Component<OSSNumberInputArgs> {
   @action
   notifyChanges(): void {
     this.args.onChange?.(Number(this.localValue));
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::NumberInput': typeof OSSNumberInputComponent;
+    'o-s-s/number-input': typeof OSSNumberInputComponent;
   }
 }

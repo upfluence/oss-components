@@ -5,24 +5,31 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 
-interface OSSSelectArgs {
-  value: any;
-  items: any[];
-  targetLabel?: string;
-  placeholder?: string;
-  disabled?: boolean;
-  errorMessage?: string;
-  successMessage?: string;
-  onChange(value: any): void;
-  onSearch?(keyword: string): void;
+interface OSSSelectSignature {
+  Args: {
+    value: any;
+    items: any[];
+    targetLabel?: string;
+    placeholder?: string;
+    disabled?: boolean;
+    errorMessage?: string;
+    successMessage?: string;
+    onChange(value: any): void;
+    onSearch?(keyword: string): void;
+  };
+  Blocks: {
+    option: [unknown];
+    selected: [unknown];
+  };
+  Element: HTMLDivElement;
 }
 
-export default class OSSSelect extends Component<OSSSelectArgs> {
+export default class OSSSelectComponent extends Component<OSSSelectSignature> {
   @service declare intl: any;
 
   @tracked displaySelect: boolean = false;
 
-  constructor(owner: unknown, args: OSSSelectArgs) {
+  constructor(owner: unknown, args: OSSSelectSignature['Args']) {
     super(owner, args);
 
     assert(
@@ -104,5 +111,12 @@ export default class OSSSelect extends Component<OSSSelectArgs> {
   @action
   ensureBlockPresence(hasOptionItem: boolean): void {
     assert(`[component][OSS::Select] You must pass option named block`, hasOptionItem);
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::Select': typeof OSSSelectComponent;
+    'o-s-s/select': typeof OSSSelectComponent;
   }
 }

@@ -3,16 +3,22 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { assert } from '@ember/debug';
 
-interface OSSButtonDropdownArgs {
-  icon?: string;
-  label?: string;
-  mainAction?(): void;
+interface OSSButtonDropdownSignature {
+  Args: {
+    icon?: string;
+    label?: string;
+    mainAction?(): void;
+  };
+  Blocks: {
+    items: [];
+  };
+  Element: HTMLDivElement;
 }
 
-export default class extends Component<OSSButtonDropdownArgs> {
+export default class OSSButtonDropdownComponent extends Component<OSSButtonDropdownSignature> {
   @tracked displayDropdown: boolean = false;
 
-  constructor(owner: unknown, args: OSSButtonDropdownArgs) {
+  constructor(owner: unknown, args: OSSButtonDropdownSignature['Args']) {
     super(owner, args);
 
     assert(
@@ -71,5 +77,12 @@ export default class extends Component<OSSButtonDropdownArgs> {
 
   private closeDropdown(): void {
     this.displayDropdown = false;
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::ButtonDropdown': typeof OSSButtonDropdownComponent;
+    'o-s-s/button-dropdown': typeof OSSButtonDropdownComponent;
   }
 }

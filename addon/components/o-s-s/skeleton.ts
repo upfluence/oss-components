@@ -1,19 +1,22 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 
-interface OSSSkeletonArgs {
-  width?: number | string;
-  height?: number;
-  multiple?: number;
-  direction?: 'row' | 'column' | 'col';
-  gap?: number;
-  randomize?: boolean;
+interface OSSSkeletonSignature {
+  Args: {
+    width?: number | string;
+    height?: number;
+    multiple?: number;
+    direction?: 'row' | 'column' | 'col';
+    gap?: number;
+    randomize?: boolean;
+  };
+  Element: HTMLDivElement;
 }
 
 const RANGE_PERCENTAGE: number = 15;
 
-export default class OSSSkeleton extends Component<OSSSkeletonArgs> {
-  constructor(owner: unknown, args: OSSSkeletonArgs) {
+export default class OSSSkeletonComponent extends Component<OSSSkeletonSignature> {
+  constructor(owner: unknown, args: OSSSkeletonSignature['Args']) {
     super(owner, args);
 
     if (this.args.direction) {
@@ -67,5 +70,12 @@ export default class OSSSkeleton extends Component<OSSSkeletonArgs> {
     }
 
     return rows;
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::Skeleton': typeof OSSSkeletonComponent;
+    'o-s-s/skeleton': typeof OSSSkeletonComponent;
   }
 }

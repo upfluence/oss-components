@@ -4,9 +4,12 @@ import { IconNames } from './iconName.enum';
 
 export type IconStyle = 'solid' | 'regular' | 'light' | 'duotone' | 'brand';
 
-interface OSSIconArgs {
-  icon: keyof typeof IconNames | string;
-  style?: IconStyle;
+interface OSSIconSignature {
+  Args: {
+    icon: keyof typeof IconNames | string;
+    style?: IconStyle;
+  };
+  Element: HTMLElement;
 }
 
 export const STYLE_CLASSES = {
@@ -17,8 +20,8 @@ export const STYLE_CLASSES = {
   brand: 'fab'
 };
 
-export default class OSSIcon extends Component<OSSIconArgs> {
-  constructor(owner: unknown, args: OSSIconArgs) {
+export default class OSSIconComponent extends Component<OSSIconSignature> {
+  constructor(owner: unknown, args: OSSIconSignature['Args']) {
     super(owner, args);
     assert('[component][OSS::Icon] The @icon parameter is mandatory', typeof args.icon !== 'undefined');
   }
@@ -35,5 +38,12 @@ export default class OSSIcon extends Component<OSSIconArgs> {
     classes.push(STYLE_CLASSES[this.args.style ?? 'regular']);
     classes.push(this.iconClass);
     return classes.join(' ');
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::Icon': typeof OSSIconComponent;
+    'o-s-s/icon': typeof OSSIconComponent;
   }
 }

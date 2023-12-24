@@ -14,31 +14,32 @@ import {
   FilePrivacy
 } from '@upfluence/oss-components/types/uploader';
 
-interface OSSUploadAreaArgs {
-  uploader: Uploader;
-  subtitle?: string;
-  disabled?: boolean;
-  privacy?: FilePrivacy;
-  scope?: string;
-  rules?: FileValidator[];
-  artifact?: FileArtifact;
-  size?: 'lg' | 'md';
-  multiple?: boolean;
-  displayPreview?: boolean;
-
-  onUploadSuccess(artifact: FileArtifact): void;
-  onUploadFailure?(error: FailedUploadResponse): void;
-  onVerificationFailure?(): void;
-  onHandleFileUpload?(): void;
-  onFileDeletion?(): void;
-
-  // In multiple mode
-  onUploadSuccess(index: number, artifact: FileArtifact): void;
-  onUploadFailure?(index: number, error: FailedUploadResponse): void;
-  onFileDeletion?(index: number): void;
+interface OSSUploadAreaSignature {
+  Args: {
+    uploader: Uploader;
+    subtitle?: string;
+    disabled?: boolean;
+    privacy?: FilePrivacy;
+    scope?: string;
+    rules?: FileValidator[];
+    artifact?: FileArtifact;
+    size?: 'lg' | 'md';
+    multiple?: boolean;
+    displayPreview?: boolean;
+    onUploadSuccess(artifact: FileArtifact): void;
+    onUploadFailure?(error: FailedUploadResponse): void;
+    onVerificationFailure?(): void;
+    onHandleFileUpload?(): void;
+    onFileDeletion?(): void;
+    // In multiple mode
+    onUploadSuccess(index: number, artifact: FileArtifact): void;
+    onUploadFailure?(index: number, error: FailedUploadResponse): void;
+    onFileDeletion?(index: number): void;
+  };
+  Element: HTMLDivElement;
 }
 
-export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
+export default class OSSUploadAreaComponent extends Component<OSSUploadAreaSignature> {
   @service declare intl: any;
   @service declare toast: ToastService;
 
@@ -51,7 +52,7 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   @tracked hover: boolean = false;
   @tracked alreadyTriggerAnimation: boolean = false;
 
-  constructor(owner: unknown, args: OSSUploadAreaArgs) {
+  constructor(owner: unknown, args: OSSUploadAreaSignature['Args']) {
     super(owner, args);
 
     assert('[OSS::UploadArea] The uploader argument is mandatory', args.uploader);
@@ -265,5 +266,12 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
 
     this.args.onVerificationFailure?.();
     return false;
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::UploadArea': typeof OSSUploadAreaComponent;
+    'o-s-s/upload-area': typeof OSSUploadAreaComponent;
   }
 }

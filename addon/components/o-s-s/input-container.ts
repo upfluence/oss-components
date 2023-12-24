@@ -1,19 +1,34 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 
-interface OSSInputContainerArgs {
-  value?: string;
-  disabled?: boolean;
-  errorMessage?: string;
-  placeholder?: string;
-  onChange?(value: string): void;
+interface OSSInputContainerSignature {
+  Args: {
+    value?: string;
+    disabled?: boolean;
+    errorMessage?: string;
+    placeholder?: string;
+    onChange?(value: string): void;
+  };
+  Blocks: {
+    input: [];
+    prefix: [];
+    suffix: [];
+  };
+  Element: HTMLDivElement;
 }
 
-export default class OSSInputContainer extends Component<OSSInputContainerArgs> {
+export default class OSSInputContainerComponent extends Component<OSSInputContainerSignature> {
   @action
   _onChange(value: string): void {
     if (this.args.onChange) {
       this.args.onChange(value);
     }
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::InputContainer': typeof OSSInputContainerComponent;
+    'o-s-s/input-container': typeof OSSInputContainerComponent;
   }
 }

@@ -69,28 +69,31 @@ const SQUARE_CLASS = 'upf-square-btn';
 const DEFAULT_COUNTER_TIME = 5000;
 const DEFAULT_STEP_COUNTER_TIME = 1000;
 
-interface ButtonArgs {
-  skin?: string;
-  size?: string;
-  loading?: boolean;
-  icon?: string;
-  label?: string;
-  theme?: string;
-  square?: boolean;
-  countDown?: {
-    callback: () => {};
-    time?: number;
-    step?: number;
+interface OSSButtonSignature {
+  Args: {
+    skin?: string;
+    size?: string;
+    loading?: boolean;
+    icon?: string;
+    label?: string;
+    theme?: string;
+    square?: boolean;
+    countDown?: {
+      callback: () => {};
+      time?: number;
+      step?: number;
+    };
   };
+  Element: HTMLButtonElement;
 }
 
-export default class OSSButton extends Component<ButtonArgs> {
+export default class OSSButtonComponent extends Component<OSSButtonSignature> {
   @tracked DOMElement: HTMLElement | undefined;
   @tracked intervalID: ReturnType<typeof setInterval> | undefined;
   @tracked intervalState: boolean = false;
   @tracked counterTimeLeft: number = 0;
 
-  constructor(owner: unknown, args: ButtonArgs) {
+  constructor(owner: unknown, args: OSSButtonSignature['Args']) {
     super(owner, args);
 
     assert('[component][OSS::Button] You must pass either a @label or an @icon argument.', args.label || args.icon);
@@ -192,5 +195,12 @@ export default class OSSButton extends Component<ButtonArgs> {
     clearInterval(intervalID);
     this.intervalID = undefined;
     this.intervalState = false;
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::Button': typeof OSSButtonComponent;
+    'o-s-s/button': typeof OSSButtonComponent;
   }
 }

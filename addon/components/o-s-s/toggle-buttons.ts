@@ -7,14 +7,17 @@ export type Toggle = {
   label: string;
 };
 
-interface OSSToggleButtonsArgs {
-  toggles: Toggle[];
-  selectedToggle: string | null;
-  onSelection(selectedToggle: string): void;
+interface OSSToggleButtonsSignature {
+  Args: {
+    toggles: Toggle[];
+    selectedToggle: string | null;
+    onSelection(selectedToggle: string): void;
+  };
+  Element: HTMLDivElement;
 }
 
-export default class OSSToggleButtons extends Component<OSSToggleButtonsArgs> {
-  constructor(owner: unknown, args: OSSToggleButtonsArgs) {
+export default class OSSToggleButtonsComponent extends Component<OSSToggleButtonsSignature> {
+  constructor(owner: unknown, args: OSSToggleButtonsSignature['Args']) {
     super(owner, args);
 
     assert(
@@ -44,5 +47,12 @@ export default class OSSToggleButtons extends Component<OSSToggleButtonsArgs> {
     if (this.args.selectedToggle !== selectedToggle) {
       this.args.onSelection(selectedToggle);
     }
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::ToggleButtons': typeof OSSToggleButtonsComponent;
+    'o-s-s/toggle-buttons': typeof OSSToggleButtonsComponent;
   }
 }

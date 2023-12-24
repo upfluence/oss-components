@@ -3,14 +3,23 @@ import Component from '@glimmer/component';
 
 type SizeType = 'sm' | 'md';
 
-interface OSSBannerArgs {
-  size?: SizeType;
-  plain?: boolean;
-  selected?: boolean;
-  disabled?: boolean;
+interface OSSBannerSignature {
+  Args: {
+    size?: SizeType;
+    plain?: boolean;
+    selected?: boolean;
+    disabled?: boolean;
+  };
+  Blocks: {
+    actions: [];
+    'custom-icon': [];
+    'secondary-actions': [];
+    'title-suffix': [];
+  };
+  Element: HTMLDivElement;
 }
 
-export default class OSSBanner extends Component<OSSBannerArgs> {
+export default class OSSBannerComponent extends Component<OSSBannerSignature> {
   get disabledClass(): string {
     return this.args.disabled ? 'upf-banner--disabled' : '';
   }
@@ -35,5 +44,12 @@ export default class OSSBanner extends Component<OSSBannerArgs> {
     return [this.disabledClass, this.selectedClass, this.plainClass, this.sizeClass]
       .filter((mc) => !isBlank(mc))
       .join(' ');
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::Banner': typeof OSSBannerComponent;
+    'o-s-s/banner': typeof OSSBannerComponent;
   }
 }

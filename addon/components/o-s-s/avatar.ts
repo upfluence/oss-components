@@ -12,19 +12,22 @@ export const SizeDefinition: SizeDefType = {
   lg: 'upf-avatar--lg'
 };
 
-interface OSSAvatarArgs {
-  image?: string;
-  initials?: string;
-  size?: SizeType;
+interface OSSAvatarSignature {
+  Args: {
+    image?: string;
+    initials?: string;
+    size?: SizeType;
+  };
+  Element: HTMLDivElement;
 }
 
 export const DEFAULT_IMAGE_URL: string = '/assets/images/upfluence-white-logo.svg';
 
-export default class OSSAvatar extends Component<OSSAvatarArgs> {
+export default class OSSAvatarComponent extends Component<OSSAvatarSignature> {
   @tracked hasError: boolean = false;
   @tracked displayInitials: boolean = false;
 
-  constructor(owner: unknown, args: OSSAvatarArgs) {
+  constructor(owner: unknown, args: OSSAvatarSignature['Args']) {
     super(owner, args);
     if (!args.image && args.initials) this.displayInitials = true;
   }
@@ -57,5 +60,12 @@ export default class OSSAvatar extends Component<OSSAvatarArgs> {
     }
     (<HTMLImageElement>event.target).src = DEFAULT_IMAGE_URL;
     this.hasError = true;
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::Avatar': typeof OSSAvatarComponent;
+    'o-s-s/avatar': typeof OSSAvatarComponent;
   }
 }

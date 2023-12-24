@@ -6,13 +6,15 @@ import { tracked } from '@glimmer/tracking';
 type StarType = 'solid' | 'regular';
 type Star = { type: StarType };
 
-interface OSSStarRatingArgs {
-  rating: number;
-  totalStars: number;
-  activeColor: StarColor;
-  passiveColor: StarColor;
-  passiveStyle?: StarType;
-  onChange?(rating: number): void;
+interface OSSStarRatingSignature {
+  Args: {
+    rating: number;
+    totalStars: number;
+    activeColor: StarColor;
+    passiveColor: StarColor;
+    passiveStyle?: StarType;
+    onChange?(rating: number): void;
+  };
 }
 
 export enum StarColor {
@@ -30,10 +32,10 @@ export enum StarColor {
   'red'
 }
 
-export default class OSSStarRating extends Component<OSSStarRatingArgs> {
+export default class OSSStarRatingComponent extends Component<OSSStarRatingSignature> {
   @tracked stars: Star[] = [];
 
-  constructor(owner: unknown, args: OSSStarRatingArgs) {
+  constructor(owner: unknown, args: OSSStarRatingSignature['Args']) {
     super(owner, args);
     this.stars = this.generateStarsArray();
 
@@ -80,5 +82,12 @@ export default class OSSStarRating extends Component<OSSStarRatingArgs> {
       result.push({ type: i < this.args.rating ? 'solid' : 'regular' });
     }
     return result;
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::StarRating': typeof OSSStarRatingComponent;
+    'o-s-s/star-rating': typeof OSSStarRatingComponent;
   }
 }

@@ -9,15 +9,18 @@ export type Currency = {
   symbol: string;
 };
 
-interface OSSCurrencyInputArgs {
-  currency: string;
-  value: number;
-  onChange(currency: string, value: number): void;
-  allowCurrencyUpdate?: boolean;
-  onlyCurrency?: boolean;
-  placeholder?: string;
-  errorMessage?: string;
-  allowedCurrencies?: Currency[];
+interface OSSCurrencyInputSignature {
+  Args: {
+    currency: string;
+    value: number;
+    onChange(currency: string, value: number): void;
+    allowCurrencyUpdate?: boolean;
+    onlyCurrency?: boolean;
+    placeholder?: string;
+    errorMessage?: string;
+    allowedCurrencies?: Currency[];
+  };
+  Element: HTMLDivElement;
 }
 
 const NUMERIC_ONLY = /^\d$/i;
@@ -63,14 +66,14 @@ const AUTHORIZED_INPUTS = [
   'ArrowDown'
 ];
 
-export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
+export default class OSSCurrencyInputComponent extends Component<OSSCurrencyInputSignature> {
   private currencies = this.args.allowedCurrencies ?? PLATFORM_CURRENCIES;
 
   @tracked currencySelectorShown: boolean = false;
   @tracked filteredCurrencies: Currency[] = this.currencies;
   @tracked localValue: number = this.args.value;
 
-  constructor(owner: unknown, args: OSSCurrencyInputArgs) {
+  constructor(owner: unknown, args: OSSCurrencyInputSignature['Args']) {
     super(owner, args);
 
     if (!this.args.value && !this.args.placeholder) {
@@ -165,5 +168,12 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
   hideCurrencySelector(): void {
     this.currencySelectorShown = false;
     this.filteredCurrencies = this.currencies;
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::CurrencyInput': typeof OSSCurrencyInputComponent;
+    'o-s-s/currency-input': typeof OSSCurrencyInputComponent;
   }
 }

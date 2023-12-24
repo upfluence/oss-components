@@ -5,21 +5,29 @@ import { action } from '@ember/object';
 
 type OperationType = 'selection' | 'deletion';
 
-interface OSSPowerSelectArgs {
-  items: any[];
-  selectedItems: any[];
-  loading?: boolean;
-  loadingMore?: boolean;
-  placeholder?: string;
-  searchPlaceholder?: string;
-  onChange: (item: any, operation: OperationType) => void;
-  onSearch?: (keyword: string) => void;
-  onBottomReached?: () => void;
+interface OSSPowerSelectSignature {
+  Args: {
+    items: any[];
+    selectedItems: any[];
+    loading?: boolean;
+    loadingMore?: boolean;
+    placeholder?: string;
+    searchPlaceholder?: string;
+    onChange: (item: any, operation: OperationType) => void;
+    onSearch?: (keyword: string) => void;
+    onBottomReached?: () => void;
+  };
+  Blocks: {
+    'empty-state': [];
+    'option-item': [unknown];
+    'selected-item': [unknown];
+  };
+  Element: HTMLDivElement;
 }
 
 const DEFAULT_PLACEHOLDER = 'Select an item';
 
-export default class OSSPowerSelect extends Component<OSSPowerSelectArgs> {
+export default class OSSPowerSelectComponent extends Component<OSSPowerSelectSignature> {
   @tracked displaySelect: boolean = false;
 
   get placeholder(): string {
@@ -52,5 +60,12 @@ export default class OSSPowerSelect extends Component<OSSPowerSelectArgs> {
     event.stopPropagation();
     this.displaySelect = false;
     this.args.onSearch?.('');
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::PowerSelect': typeof OSSPowerSelectComponent;
+    'o-s-s/power-select': typeof OSSPowerSelectComponent;
   }
 }
