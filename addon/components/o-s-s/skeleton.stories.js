@@ -1,4 +1,4 @@
-import hbs from 'htmlbars-inline-precompile';
+import { hbs } from 'ember-cli-htmlbars';
 
 const DirectionTypes = ['row', 'col', 'column'];
 
@@ -89,7 +89,7 @@ const defaultArgs = {
 const Template = (args) => ({
   template: hbs`
     <div class="bg-color-white padding-px-6">
-      <OSS::Skeleton @height={{this.height}} @width={{this.width}} @multiple={{this.multiple}} @gap={{this.gap}} 
+      <OSS::Skeleton @height={{this.height}} @width={{this.width}} @multiple={{this.multiple}} @gap={{this.gap}}
                      @direction={{this.direction}}
                      @randomize={{this.randomize}}/>
     </div>

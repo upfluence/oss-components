@@ -1,4 +1,4 @@
-import hbs from 'htmlbars-inline-precompile';
+import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
 
 export default {
@@ -73,7 +73,7 @@ const Template = (args) => ({
       </div>
 
       <div class="modal-footer">
-        <OSS::Button @skin="primary" @label="Action button" /> 
+        <OSS::Button @skin="primary" @label="Action button" />
       </div>
     </OSS::Modal>
   `,
