@@ -2,9 +2,8 @@ import Helper from '@ember/component/helper';
 import { assert } from '@ember/debug';
 import { getIconStyle, type IconStyle } from '../utils/icon-details';
 
-type PositionalArgs = Array<string>;
-
-export interface FaIconStyleSignature {
+type PositionalArgs = string[];
+interface FaIconStyleSignature {
   Args: {
     Positional: PositionalArgs;
   };
