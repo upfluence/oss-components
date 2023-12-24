@@ -28,7 +28,6 @@ module.exports = {
     app.options.lessOptions = lessOptions;
   },
 
-
   options: {
     autoImport: {
       exclude: ['@storybook/addon-actions']
