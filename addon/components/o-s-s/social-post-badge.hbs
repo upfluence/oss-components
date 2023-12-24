@@ -1,7 +1,4 @@
-{{! @glint-nocheck: not typesafe yet }}
-<div class={{this.computedClasses}} role="button"
-     {{on "click" this.onPostTypeClick}}
-     ...attributes>
+<div class={{this.computedClasses}} role="button" {{on "click" this.onPostTypeClick}} ...attributes>
   <div class="icon-container">
     <OSS::Icon @style={{fa-icon-style this.iconDefinition}} @icon={{fa-icon-value this.iconDefinition}} />
   </div>
