@@ -62,6 +62,7 @@
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^3.2.1",
     "@embroider/test-setup": "^0.48.1",
+    "@gavant/glint-template-types": "^0.3.6",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "@glint/core": "^1.2.1",
