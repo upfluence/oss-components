@@ -1,4 +1,4 @@
-import hbs from 'htmlbars-inline-precompile';
+import { hbs } from 'ember-cli-htmlbars';
 
 const ProgressBarSkins = ['warning', 'success'];
 const ProgressBarSizes = ['sm'];
@@ -77,7 +77,7 @@ const defaultArgs = {
 const BasicUsageTemplate = (args) => ({
   template: hbs`
     <div style="background-color: #1c1c1c;width:200px">
-      <OSS::ProgressBar 
+      <OSS::ProgressBar
         @value={{this.value}}
         @label={{this.label}}
         @displayValue={{this.displayValue}}

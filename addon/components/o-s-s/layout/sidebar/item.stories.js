@@ -1,4 +1,4 @@
-import hbs from 'htmlbars-inline-precompile';
+import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
 
 export default {
@@ -76,7 +76,7 @@ const defaultArgs = {
 const Template = (args) => ({
   template: hbs`
     <div style="background: var(--sidebar-bg-color)">
-      <OSS::Layout::Sidebar::Item @icon={{this.icon}} @locked={{this.locked}} 
+      <OSS::Layout::Sidebar::Item @icon={{this.icon}} @locked={{this.locked}}
                                   @hasNotifications={{this.hasNotifications}}
                                   @link={{this.link}}
                                   @lockedAction={{this.lockedAction}}/>

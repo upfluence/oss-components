@@ -1,4 +1,4 @@
-import hbs from 'htmlbars-inline-precompile';
+import { hbs } from 'ember-cli-htmlbars';
 
 const PlacementDefinitions = ['bottom', 'top', 'left', 'right'];
 const TriggerDefinitions = ['hover focus', 'hover', 'focus'];
@@ -74,7 +74,7 @@ const DefaultUsageTemplate = (args) => ({
   template: hbs`
     <div class="fx-col" style="justify-content: center; height: 200px; width: 750px; background-color: white">
       <div class="fx-row" style="justify-content: center;">
-        <span style="color: var(--color-gray-900)" {{enable-tooltip title=this.title subtitle=this.subtitle icon=this.icon 
+        <span style="color: var(--color-gray-900)" {{enable-tooltip title=this.title subtitle=this.subtitle icon=this.icon
                                                                     placement=this.placement trigger=this.triggerValue}}>
           I have a tooltip
         </span>
