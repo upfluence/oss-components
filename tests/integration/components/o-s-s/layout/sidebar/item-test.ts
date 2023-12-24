@@ -49,7 +49,7 @@ module('Integration | Component | oss/layout/sidebar/item', function (hooks) {
 
     test('OnClick defaultAction is triggered', async function (assert) {
       await render(
-        hbs`<OSS::Layout::Sidebar::Item @icon="far fa-search" @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}}/>`
+        hbs`{{! @glint-nocheck }}<OSS::Layout::Sidebar::Item @icon="far fa-search" @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}}/>`
       );
       await click('.oss-sidebar-item');
 
@@ -59,7 +59,7 @@ module('Integration | Component | oss/layout/sidebar/item', function (hooks) {
 
     test('When locked is true lockedAction is triggered', async function (assert) {
       await render(
-        hbs`<OSS::Layout::Sidebar::Item @icon="far fa-search" @locked={{true}} @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}}/>`
+        hbs`{{! @glint-nocheck }}<OSS::Layout::Sidebar::Item @icon="far fa-search" @locked={{true}} @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}}/>`
       );
       await click('.oss-sidebar-item');
 

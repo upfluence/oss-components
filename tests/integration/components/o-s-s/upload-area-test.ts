@@ -32,6 +32,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
     module('browse action', function () {
       test('the browse text is contained in a link', async function (assert) {
         await render(hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
             @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
@@ -45,6 +46,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
 
       test('clicking on browse text opens the hidden file input', async function (assert) {
         await render(hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
             @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
@@ -62,6 +64,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
     module('size', function () {
       test('it renders in the default size when no size arg is provided', async function (assert) {
         await render(hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
             @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
@@ -73,6 +76,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
       test('it renders in the default size when no valid size is provided', async function (assert) {
         this.size = 'foo';
         await render(hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
             @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
@@ -84,6 +88,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
       test('it renders in the provided size when it is a valid one', async function (assert) {
         this.size = 'lg';
         await render(hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
             @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
@@ -98,6 +103,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         this.subtitle = null;
 
         await render(hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
             @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
@@ -111,6 +117,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
 
       test('it renders the subtitle when provided', async function (assert) {
         await render(hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
             @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
@@ -127,6 +134,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
     module('disabled mode', function () {
       test('the right class is applied on the component', async function (assert) {
         await render(hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
             @disabled={{true}} @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
@@ -137,6 +145,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
 
       test('the browse word is not actionable', async function (assert) {
         await render(hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
             @disabled={{true}} @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
@@ -153,6 +162,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
     module('disabled mode', function () {
       test('dragging a file over the component does not do nothing', async function (assert) {
         await render(hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
             @disabled={{true}} @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
@@ -170,6 +180,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
 
       test('dragging a file over the component applies the right class', async function (assert) {
         await render(hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
             @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
@@ -183,6 +194,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         sinon.spy(this.mockUploader, 'validate');
 
         await render(hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
             @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
@@ -212,6 +224,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         const toastStub = sinon.stub(this.owner.lookup('service:toast'), 'error');
 
         await render(hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
             @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
@@ -237,6 +250,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
 
       test('the uploaded file is displayed if the dropped file passes the validation', async function (assert) {
         await render(hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
             @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
@@ -251,6 +265,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
 
       test('clicking on the remove button in the upload item moves back to the upload state', async function (assert) {
         await render(hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
             @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} @onFileDeletion={{this.onFileDeletion}} />
@@ -267,6 +282,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
 
       test('clicking on the edit button in the upload item opens the hidden file input', async function (assert) {
         await render(hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
             @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
@@ -293,6 +309,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
 
     test('the file is displayed using an upload-item', async function (assert) {
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::UploadArea
           @uploader={{this.mockUploader}} @artifact={{this.artifact}} @rules={{this.validationRules}} @size={{this.size}}
           @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
@@ -305,6 +322,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
 
     test('clicking on the remove button in the upload item moves back to the upload state', async function (assert) {
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::UploadArea
           @uploader={{this.mockUploader}} @artifact={{this.artifact}} @rules={{this.validationRules}} @size={{this.size}}
           @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} @onFileDeletion={{this.onFileDeletion}} />
@@ -318,6 +336,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
 
     test('clicking on the edit button in the upload item opens the hidden file input', async function (assert) {
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::UploadArea
           @uploader={{this.mockUploader}} @artifact={{this.artifact}} @rules={{this.validationRules}} @size={{this.size}}
           @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
@@ -335,6 +354,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
   module('allow multiple files', function () {
     test('it allows the user to upload more than one file', async function (assert) {
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::UploadArea
           @uploader={{this.mockUploader}} @multiple={{true}} @rules={{this.validationRules}}
           @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
@@ -348,6 +368,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
 
     test('the user can remove a specific uploaded item', async function (assert) {
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::UploadArea
           @uploader={{this.mockUploader}} @multiple={{true}} @rules={{this.validationRules}}
           @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />

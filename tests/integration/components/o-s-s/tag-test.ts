@@ -35,7 +35,7 @@ module('Integration | Component | o-s-s/tag', function (hooks) {
 
   module('@hasEllipsis', () => {
     test('When the param is true then the ellipsis is shown', async function (assert) {
-      await render(hbs`<OSS::Tag @label='Test with a huge label sentence' @hasEllipsis='true' />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Tag @label='Test with a huge label sentence' @hasEllipsis='true' />`);
 
       assert.dom('.upf-tag').exists({ count: 1 });
       assert.dom('.upf-tag span').hasStyle({
@@ -58,7 +58,7 @@ module('Integration | Component | o-s-s/tag', function (hooks) {
   Object.keys(SkinDefinition).forEach((skin) => {
     test(`it sets the right class when using a supported skin: ${skin}`, async function (assert: Assert) {
       this.skin = skin;
-      await render(hbs`<OSS::Tag @skin={{this.skin}} @label="Test Skin" />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Tag @skin={{this.skin}} @label="Test Skin" />`);
 
       assert.dom('.upf-tag').exists();
       assert.dom('.upf-tag').hasClass(`upf-tag--${SkinDefinition[this.skin as SkinType]}`);

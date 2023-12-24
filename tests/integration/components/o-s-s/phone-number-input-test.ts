@@ -13,21 +13,21 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
 
   test('it renders', async function (assert) {
     this.onChange = () => {};
-    await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
 
     assert.dom('.phone-number-container').exists();
   });
 
   test('The passed @number parameter is properly displayed in the input', async function (assert) {
     this.onChange = () => {};
-    await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="12341234" @onChange={{this.onChange}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::PhoneNumberInput @prefix="" @number="12341234" @onChange={{this.onChange}} />`);
 
     assert.dom('input').hasValue('12341234');
   });
 
   test('It properly loads the correct country when the @prefix parameter is defined', async function (assert) {
     this.onChange = () => {};
-    await render(hbs`<OSS::PhoneNumberInput @prefix="+33" @number="" @onChange={{this.onChange}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::PhoneNumberInput @prefix="+33" @number="" @onChange={{this.onChange}} />`);
 
     assert.dom('.country-selector .fflag.fflag-FR').exists();
   });
@@ -35,7 +35,7 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
   module('Country selector', () => {
     test('Clicking on the Flag button opens the country selector', async function (assert) {
       this.onChange = () => {};
-      await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
 
       await click('.country-selector');
       assert.dom('.upf-infinite-select').exists();
@@ -43,7 +43,7 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
 
     test('Selecting a new country in the Country selector triggers the onChange method', async function (assert) {
       this.onChange = sinon.spy();
-      await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
 
       await click('.country-selector');
       await click('.upf-infinite-select__item:nth-child(5)');
@@ -53,7 +53,7 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
 
     test('Typing in the search input filters the results', async function (assert) {
       this.onChange = sinon.spy();
-      await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
 
       await click('.country-selector');
       assert.dom('.upf-infinite-select').exists();
@@ -65,7 +65,7 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
 
     test('Searching by Country Code Prefix works', async function (assert) {
       this.onChange = sinon.spy();
-      await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
 
       await click('.country-selector');
       assert.dom('.upf-infinite-select').exists();
@@ -81,7 +81,7 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
       this.onChange = sinon.spy();
       this.onValidation = sinon.spy();
       await render(
-        hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} @validates={{this.onValidation}} />`
+        hbs`{{! @glint-nocheck }}<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} @validates={{this.onValidation}} />`
       );
       await typeIn('input', '8');
       assert.ok(this.onChange.calledOnce);
@@ -93,7 +93,7 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
       this.onChange = sinon.spy();
       this.onValidation = sinon.spy();
       await render(
-        hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} @validates={{this.onValidation}} />`
+        hbs`{{! @glint-nocheck }}<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} @validates={{this.onValidation}} />`
       );
       await typeIn('input', '8');
       assert.ok(this.onChange.calledOnce);
@@ -114,7 +114,7 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
       this.onValidation = sinon.spy();
 
       await render(
-        hbs`<OSS::PhoneNumberInput @prefix={{this.prefix}} @number={{this.number}} @onChange={{this.onChange}} @validates={{this.onValidation}} />`
+        hbs`{{! @glint-nocheck }}<OSS::PhoneNumberInput @prefix={{this.prefix}} @number={{this.number}} @onChange={{this.onChange}} @validates={{this.onValidation}} />`
       );
       await typeIn('input', '+1');
       await settled();
@@ -133,7 +133,7 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
         );
       });
       this.onChange = () => {};
-      await render(hbs`<OSS::PhoneNumberInput @number="" @onChange={{this.onChange}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::PhoneNumberInput @number="" @onChange={{this.onChange}} />`);
       await settled();
     });
 
@@ -145,7 +145,7 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
         );
       });
       this.onChange = () => {};
-      await render(hbs`<OSS::PhoneNumberInput @prefix="" @onChange={{this.onChange}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::PhoneNumberInput @prefix="" @onChange={{this.onChange}} />`);
       await settled();
     });
 
@@ -157,7 +157,7 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
         );
       });
       this.onChange = () => {};
-      await render(hbs`<OSS::PhoneNumberInput @number="" @prefix="" />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::PhoneNumberInput @number="" @prefix="" />`);
       await settled();
     });
   });

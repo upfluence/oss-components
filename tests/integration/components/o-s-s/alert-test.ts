@@ -31,7 +31,7 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
     test(`it renders ${skin} skin correctly`, async function (assert) {
       this.skin = skin;
       await render(
-        hbs`<OSS::Alert @skin={{this.skin}} @title={{concat "Title " this.skin}} @subtitle={{concat "Subitle " this.skin}} />`
+        hbs`{{! @glint-nocheck }}<OSS::Alert @skin={{this.skin}} @title={{concat "Title " this.skin}} @subtitle={{concat "Subitle " this.skin}} />`
       );
 
       assert.dom('.upf-alert .icon i').hasClass('far');
@@ -90,7 +90,7 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
 
     test('clicking the cross icon also calls the onClose argument provided', async function (assert) {
       this.onClose = sinon.stub();
-      await render(hbs`<div><OSS::Alert @closable={{true}} @onClose={{this.onClose}} /></div>`);
+      await render(hbs`{{! @glint-nocheck }}<div><OSS::Alert @closable={{true}} @onClose={{this.onClose}} /></div>`);
       await click('.upf-alert .main-container .fx-col i');
       assert.ok(this.onClose.calledOnce);
       assert.dom('.upf-alert').doesNotExist();

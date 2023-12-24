@@ -56,7 +56,8 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
 
     test("Hasn't inner border separator", async function (assert) {
       await render(
-        hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}>
+        hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}>
               <:items>
                 <div class="oss-button-dropdown__item">foo</div>
               </:items>
@@ -76,7 +77,7 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
 
     test('Clicking on the button should not open the dropdown', async function (assert) {
       await render(
-        hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
+        hbs`{{! @glint-nocheck }}<OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
       );
 
       assert.dom('.oss-button-dropdown__items').doesNotExist();
@@ -88,7 +89,7 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
 
     test('Clicking on the left part should trigger mainAction', async function (assert) {
       await render(
-        hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
+        hbs`{{! @glint-nocheck }}<OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
       );
 
       assert.ok(this.mainAction.notCalled);
@@ -100,7 +101,7 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
 
     test('Clicking on the caret container part opens the dropdown', async function (assert) {
       await render(
-        hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
+        hbs`{{! @glint-nocheck }}<OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
       );
 
       assert.dom('.oss-button-dropdown__items').doesNotExist();
@@ -115,7 +116,7 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
 
     test('Has inner border separator', async function (assert) {
       await render(
-        hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
+        hbs`{{! @glint-nocheck }}<OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
       );
 
       assert
@@ -131,7 +132,8 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
 
     test('Clicking on an item should close the dropdown', async function (assert) {
       await render(
-        hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}>
+        hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}>
               <:items>
                 <div class="oss-button-dropdown__item">foo</div>
               </:items>
@@ -150,7 +152,8 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
       };
 
       await render(
-        hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}>
+        hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}>
               <:items>
                 <div class="oss-button-dropdown__item" {{on "click" this.stopPropagation}}>bar</div>
               </:items>
@@ -187,7 +190,7 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
       });
 
       await render(
-        hbs`<OSS::ButtonDropdown  @label="test" @mainAction="foo" ><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
+        hbs`{{! @glint-nocheck }}<OSS::ButtonDropdown  @label="test" @mainAction="foo" ><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
       );
     });
   });

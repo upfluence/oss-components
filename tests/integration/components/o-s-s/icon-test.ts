@@ -32,7 +32,7 @@ module('Integration | Component | o-s-s/icon', function (hooks) {
   for (const [key, value] of Object.entries(STYLE_CLASSES)) {
     test(`it renders the correct style ${key} class`, async function (assert) {
       this.style = key;
-      await render(hbs`<OSS::Icon @icon="fa-code-merge" @style={{this.style}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Icon @icon="fa-code-merge" @style={{this.style}} />`);
       assert.dom('i').hasClass(value);
     });
   }
@@ -42,6 +42,6 @@ module('Integration | Component | o-s-s/icon', function (hooks) {
       assert.equal(error.message, 'Assertion Failed: [component][OSS::Icon] The @icon parameter is mandatory');
     });
 
-    await render(hbs`<OSS::Icon />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Icon />`);
   });
 });

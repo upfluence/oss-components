@@ -53,7 +53,7 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
     Object.keys(SizeDefinition).forEach((size) => {
       test(`it sets the right class when using a supported size: ${size}`, async function (assert: Assert) {
         this.size = size;
-        await render(hbs`<OSS::Avatar @size={{this.size}} />`);
+        await render(hbs`{{! @glint-nocheck }}<OSS::Avatar @size={{this.size}} />`);
 
         assert.dom('.upf-avatar').exists();
         assert.dom('.upf-avatar').hasClass(`upf-avatar--${size}`);
@@ -72,7 +72,7 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::Avatar @size="test" />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Avatar @size="test" />`);
     });
 
     test('it displays the initials when both initials and image are provided and the image fails to load', async function (assert) {

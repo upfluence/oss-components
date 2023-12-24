@@ -14,7 +14,7 @@ module('Integration | Component | o-s-s/chip', function (hooks) {
 
   module('Default behavior', () => {
     test('basic render', async function (assert) {
-      await render(hbs`<OSS::Chip @label={{this.label}} @onRemove={{this.onRemove}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Chip @label={{this.label}} @onRemove={{this.onRemove}} />`);
 
       assert.dom('.upf-chip').exists();
       assert.dom('.upf-chip span').exists();
@@ -25,14 +25,14 @@ module('Integration | Component | o-s-s/chip', function (hooks) {
     });
 
     test('it renders the proper label when @label is passed', async function (assert) {
-      await render(hbs`<OSS::Chip @label={{this.label}} @onRemove={{this.onRemove}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Chip @label={{this.label}} @onRemove={{this.onRemove}} />`);
 
       assert.dom('.upf-chip').exists({ count: 1 });
       assert.dom('.upf-chip').hasText('Test');
     });
 
     test('The component is disabled if the @disabled parameter is truthy', async function (assert) {
-      await render(hbs`<OSS::Chip @label={{this.label}} @onRemove={{this.onRemove}} @disabled={{true}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Chip @label={{this.label}} @onRemove={{this.onRemove}} @disabled={{true}} />`);
 
       assert.dom('.upf-chip').exists({ count: 1 });
       assert.dom('.upf-chip').hasClass('upf-chip--disabled');
@@ -41,7 +41,7 @@ module('Integration | Component | o-s-s/chip', function (hooks) {
   module('@maxDisplayWidth', () => {
     test('The component adds an ellispsis if the label is wider than @maxDisplayWidth', async function (assert) {
       await render(
-        hbs`<OSS::Chip @label="Test with a huge label sentence" @onRemove={{this.onRemove}} @maxDisplayWidth={{100}} />`
+        hbs`{{! @glint-nocheck }}<OSS::Chip @label="Test with a huge label sentence" @onRemove={{this.onRemove}} @maxDisplayWidth={{100}} />`
       );
 
       assert.dom('.upf-chip').exists({ count: 1 });
@@ -54,7 +54,7 @@ module('Integration | Component | o-s-s/chip', function (hooks) {
     });
 
     test('When the param is not set', async function (assert) {
-      await render(hbs`<OSS::Chip @label="Test with a huge label sentence" @onRemove={{this.onRemove}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Chip @label="Test with a huge label sentence" @onRemove={{this.onRemove}} />`);
 
       assert.dom('.upf-chip').exists({ count: 1 });
       assert.dom('.upf-chip span').doesNotHaveAttribute('style');
@@ -67,13 +67,13 @@ module('Integration | Component | o-s-s/chip', function (hooks) {
       this.onRemove = sinon.stub();
     });
     test('When clicking on the close icon, the component triggers the @onRemove method', async function (assert) {
-      await render(hbs`<OSS::Chip @label={{this.label}} @onRemove={{this.onRemove}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Chip @label={{this.label}} @onRemove={{this.onRemove}} />`);
       await click('.upf-chip i');
       assert.true(this.onRemove.calledOnce);
     });
 
     test('When @disabled is true and clicking on the close icon, the component no triggers the @onRemove method', async function (assert) {
-      await render(hbs`<OSS::Chip @label={{this.label}} @onRemove={{this.onRemove}} @disabled={{true}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Chip @label={{this.label}} @onRemove={{this.onRemove}} @disabled={{true}} />`);
       await click('.upf-chip i');
       assert.true(this.onRemove.notCalled);
     });
@@ -82,7 +82,7 @@ module('Integration | Component | o-s-s/chip', function (hooks) {
   Object.keys(SkinDefinition).forEach((skin) => {
     test(`it sets the right class when using a supported skin: ${skin}`, async function (assert: Assert) {
       this.skin = skin;
-      await render(hbs`<OSS::Chip @skin={{this.skin}} @label={{this.label}} @onRemove={{this.onRemove}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Chip @skin={{this.skin}} @label={{this.label}} @onRemove={{this.onRemove}} />`);
 
       assert.dom('.upf-chip').exists();
       assert.dom('.upf-chip').hasClass(`upf-chip--${SkinDefinition[this.skin as SkinType]}`);
@@ -97,14 +97,14 @@ module('Integration | Component | o-s-s/chip', function (hooks) {
           'Assertion Failed: [component][OSS::Chip] The parameter @onRemove of type function is mandatory'
         );
       });
-      await render(hbs`<OSS::Chip @label={{this.label}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Chip @label={{this.label}} />`);
     });
 
     test('It throws an error if @label is not passed', async function (assert) {
       setupOnerror((err: any) => {
         assert.equal(err.message, 'Assertion Failed: [component][OSS::Chip] The @label parameter is mandatory');
       });
-      await render(hbs`<OSS::Chip @onRemove={{this.onRemove}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Chip @onRemove={{this.onRemove}} />`);
     });
   });
 });

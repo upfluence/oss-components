@@ -20,6 +20,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
       this.value = this.items[0];
       await render(
         hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}}>
             <:option as |item|>
               {{item.name}}
@@ -38,6 +39,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
     test('the option block properly displays each item', async function (assert) {
       await render(
         hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}}>
             <:option as |item|>
               {{item.name}}
@@ -59,6 +61,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
       this.value = null;
       await render(
         hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}}>
             <:option as |item|>
               {{item.name}}
@@ -74,6 +77,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
       this.value = null;
       await render(
         hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @placeholder="my placeholder">
             <:option as |item|>
               {{item.name}}
@@ -89,6 +93,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
       this.value = this.items[0];
       await render(
         hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @placeholder="my placeholder">
             <:option as |item|>
               {{item.name}}
@@ -104,6 +109,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
       this.value = this.items[0];
       await render(
         hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @placeholder="my placeholder" @targetLabel="name">
             <:option as |item|>
               {{item.name}}
@@ -119,6 +125,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
       this.value = this.items[0];
       await render(
         hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @placeholder="my placeholder" @targetLabel="name">
             <:option as |item|>
               {{item.name}}
@@ -136,6 +143,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
       this.value = this.items[0];
       await render(
         hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @placeholder="my placeholder">
             <:selected as |value|>
               Selected value: {{value.name}}
@@ -155,6 +163,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
     test('the dropdown does not open when the select is clicked', async function (assert) {
       await render(
         hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @disabled={{true}}>
             <:option as |item|>
               {{item.name}}
@@ -173,6 +182,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
       test('the right class is applied to the select container', async function (assert) {
         await render(
           hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @errorMessage="error !">
             <:option as |item|>
               {{item.name}}
@@ -187,6 +197,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
       test('the error message is displayed under the select field', async function (assert) {
         await render(
           hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @errorMessage="error !">
             <:option as |item|>
               {{item.name}}
@@ -203,6 +214,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
       test('the right class is applied to the select container', async function (assert) {
         await render(
           hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @successMessage="good !">
             <:option as |item|>
               {{item.name}}
@@ -217,6 +229,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
       test('the error message is displayed under the select field', async function (assert) {
         await render(
           hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @successMessage="good !">
             <:option as |item|>
               {{item.name}}
@@ -235,6 +248,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
       this.value = this.items[0];
       await render(
         hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}}>
             <:option as |item|>
               {{item.name}}
@@ -263,6 +277,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
 
       await render(
         hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::Select @onChange={{this.onChange}} @onSearch={{this.onSearch}} @items={{this.items}} @value={{this.value}}>
             <:option as |item|>
               {{item.name}}
@@ -288,7 +303,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::Select />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Select />`);
     });
 
     test('it throws an error if the component is invoked with no option named blocked', async function (assert) {
@@ -296,7 +311,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
         assert.equal(err.message, 'Assertion Failed: [component][OSS::Select] You must pass option named block');
       });
 
-      await render(hbs`<OSS::Select @onChange={{this.onChange}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Select @onChange={{this.onChange}} />`);
     });
   });
 });
