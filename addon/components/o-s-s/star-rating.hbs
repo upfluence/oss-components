@@ -1,12 +1,12 @@
-<div class="star-rating fx-row">
+<div class='star-rating fx-row'>
   {{#each this.stars as |star index|}}
     <OSS::Icon
       class={{this.activeColorClass}}
       @style={{star.type}}
-      @icon="fa-star"
-      {{on "click" (fn this.setRating index)}}
-      {{on "mouseenter" (fn this.onMouseEnter index)}}
-      {{on "mouseleave" this.onMouseLeave}}
+      @icon='fa-star'
+      {{on 'click' (fn this.setRating index)}}
+      {{on 'mouseenter' (fn this.onMouseEnter index)}}
+      {{on 'mouseleave' this.onMouseLeave}}
     />
   {{/each}}
 </div>
