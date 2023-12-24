@@ -4,7 +4,7 @@ import { run } from '@ember/runloop';
 
 type State = {
   element: Element;
-  handler: (...args: unknown[]) => unknown;
+  handler: (event: Event) => unknown;
 };
 
 const TRIGGER_OFFSET = 20;
@@ -28,7 +28,7 @@ export default setModifierManager(
       const [callback] = positional;
       state.element = element;
 
-      state.handler = (_: Event) => {
+      state.handler = (_: Event): void => {
         if (
           Math.ceil(state.element.scrollTop) + state.element.clientHeight >=
           state.element.scrollHeight - TRIGGER_OFFSET

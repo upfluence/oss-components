@@ -1,6 +1,6 @@
 // @ts-ignore
 import { setModifierManager, capabilities } from '@ember/modifier';
-import Dope, { Placement } from '@upfluence/oss-components/utils/dope';
+import Dope, { type Placement } from '@upfluence/oss-components/utils/dope';
 import { run } from '@ember/runloop';
 import { createAnimation } from '@upfluence/oss-components/utils/animation-manager';
 import { isTesting } from '@embroider/macros';

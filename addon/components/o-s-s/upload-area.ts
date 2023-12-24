@@ -5,12 +5,13 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 
 import ToastService from '@upfluence/oss-components/services/toast';
-import Uploader, {
-  FileArtifact,
-  FileValidator,
-  FilePrivacy,
-  UploadRequest,
-  FailedUploadResponse
+import {
+  type default as Uploader,
+  type FileArtifact,
+  type FileValidator,
+  type UploadRequest,
+  type FailedUploadResponse,
+  FilePrivacy
 } from '@upfluence/oss-components/types/uploader';
 
 interface OSSUploadAreaArgs {
@@ -128,7 +129,9 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
 
   @action
   onFileSelected(event: Event): void {
-    this._handleFileUpload(((<HTMLInputElement>event.target).files || [])[0]);
+    const files = (<HTMLInputElement>event.target).files || [];
+    if (files.length === 0) return;
+    this._handleFileUpload(files[0]!);
     (<HTMLInputElement>event.target).value = '';
   }
 

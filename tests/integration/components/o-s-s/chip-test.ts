@@ -1,8 +1,8 @@
+import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { click, render, setupOnerror } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
-import { SkinDefinition, SkinType } from '@upfluence/oss-components/components/o-s-s/chip';
+import { SkinDefinition, type SkinType } from '@upfluence/oss-components/components/o-s-s/chip';
 import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/chip', function (hooks) {

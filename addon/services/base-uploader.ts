@@ -1,12 +1,17 @@
 import Service from '@ember/service';
 import { isEmpty } from '@ember/utils';
 
-import UploaderInterface, {
-  UploadRequest,
-  FileValidator,
-  ValidationResponse
+import {
+  type default as UploaderInterface,
+  type UploadRequest,
+  type FileValidator,
+  type ValidationResponse
 } from '@upfluence/oss-components/types/uploader';
-import { FileSizeValidator, FileTypeValidator, Validator } from '@upfluence/oss-components/utils/uploader-validators';
+import {
+  FileSizeValidator,
+  FileTypeValidator,
+  type Validator
+} from '@upfluence/oss-components/utils/uploader-validators';
 
 const AVAILABLE_VALIDATORS = [FileSizeValidator, FileTypeValidator];
 

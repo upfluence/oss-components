@@ -1,7 +1,7 @@
+import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror, triggerKeyEvent } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
 import click from '@ember/test-helpers/dom/click';
 import sinon from 'sinon';
 import findAll from '@ember/test-helpers/dom/find-all';
@@ -46,8 +46,7 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
       await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
 
       await click('.country-selector');
-      const clickableRows = findAll('.upf-infinite-select__item');
-      await click(clickableRows[4]);
+      await click('.upf-infinite-select__item:nth-child(5)');
       assert.ok(this.onChange.calledOnce);
       assert.dom('.country-selector .fflag.fflag-CH').exists();
     });

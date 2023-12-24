@@ -1,7 +1,7 @@
+import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { click, render, setupOnerror } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
 import { StarColor } from '@upfluence/oss-components/components/o-s-s/star-rating';
 import sinon from 'sinon';
 

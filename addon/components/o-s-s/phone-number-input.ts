@@ -3,7 +3,7 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { countries, CountryData } from '@upfluence/oss-components/utils/country-codes';
+import { countries, type CountryData } from '@upfluence/oss-components/utils/country-codes';
 
 interface OSSPhoneNumberInputArgs {
   prefix: string;
@@ -41,7 +41,7 @@ export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputAr
       typeof this.args.onChange === 'function'
     );
 
-    this.selectedCountry = this._countries[0];
+    this.selectedCountry = this._countries[0]!;
     this._loadExistingNumber();
   }
 
@@ -50,7 +50,7 @@ export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputAr
       const purePrefix = this.args.prefix.replace(/\D/g, '');
       this.selectedCountry =
         this._countries.find((country: CountryData) => country.countryCallingCodes[0] === purePrefix) ||
-        this._countries[0];
+        this._countries[0]!;
     }
   }
 
