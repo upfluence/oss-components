@@ -9,13 +9,13 @@ module('Integration | Component | o-s-s/link', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders with icon only', async function (assert: Assert) {
-    await render(hbs`<OSS::Link @icon="fab fa-facebook" />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Link @icon="fab fa-facebook" />`);
 
     assert.dom('.upf-link i').hasClass('fa-facebook');
   });
 
   test('it renders with label only', async function (assert: Assert) {
-    await render(hbs`<OSS::Link @label="Super Label" />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Link @label="Super Label" />`);
 
     assert.dom('.upf-link span').hasText('Super Label');
   });
