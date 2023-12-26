@@ -12,7 +12,7 @@ interface OSSIconSignature {
   Element: HTMLElement;
 }
 
-export const STYLE_CLASSES = {
+export const STYLE_CLASSES: Record<IconStyle, string> = {
   solid: 'fas',
   regular: 'far',
   light: 'fal',
