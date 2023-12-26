@@ -35,13 +35,14 @@ export default {
         type: 'boolean'
       }
     },
-    defaultAction: {
-      description: 'Function to be called on click per default',
+    link: {
+      description: 'Url or Route to redirect on click',
       table: {
-        category: 'Actions',
-        type: {
-          summary: 'defaultAction(): void'
-        }
+        type: { summary: 'string' },
+        defaultValue: { summary: '' }
+      },
+      control: {
+        type: 'text'
       }
     },
     lockedAction: {
@@ -68,7 +69,7 @@ const defaultArgs = {
   icon: 'far fa-search',
   hasNotifications: false,
   locked: false,
-  defaultAction: action('defaultAction'),
+  link: 'http://upfluence.com',
   lockedAction: action('lockedAction')
 };
 
@@ -77,7 +78,7 @@ const Template = (args) => ({
     <div style="background: var(--sidebar-bg-color)">
       <OSS::Layout::Sidebar::Item @icon={{this.icon}} @locked={{this.locked}} 
                                   @hasNotifications={{this.hasNotifications}}
-                                  @defaultAction={{this.defaultAction}}
+                                  @link={{this.link}}
                                   @lockedAction={{this.lockedAction}}/>
     </div>
   `,

@@ -47,14 +47,15 @@ module('Integration | Component | oss/layout/sidebar/item', function (hooks) {
       this.lockedAction = sinon.spy();
     });
 
-    test('OnClick defaultAction is triggered', async function (assert) {
+    test('OnClick it redirect to the @link attribute', async function (assert) {
+      const router = this.owner.lookup('service:router');
       await render(
-        hbs`<OSS::Layout::Sidebar::Item @icon="far fa-search" @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}}/>`
+        hbs`<OSS::Layout::Sidebar::Item @icon="far fa-search" @link="index" @lockedAction={{this.lockedAction}}/>`
       );
-      await click('.oss-sidebar-item');
 
-      assert.ok(this.defaultAction.calledOnce);
-      assert.ok(this.lockedAction.notCalled);
+      assert.equal(router.currentRouteName, null);
+      await click('.oss-sidebar-item');
+      assert.equal(router.currentRouteName, 'index');
     });
 
     test('When locked is true lockedAction is triggered', async function (assert) {

@@ -5,7 +5,7 @@ interface OSSLayoutSidebarItemArgs {
   icon: string;
   locked?: boolean;
   hasNotifications?: boolean;
-  defaultAction?(): void;
+  link: string;
   lockedAction?(): void;
 }
 
@@ -19,12 +19,11 @@ export default class OSSLayoutSidebarItem extends Component<OSSLayoutSidebarItem
   }
 
   @action
-  onClick(event: MouseEvent): void {
+  prevent(event: MouseEvent): void {
     event?.stopPropagation();
 
     if (this.locked) {
-      return this.args.lockedAction?.();
+      this.args.lockedAction?.();
     }
-    return this.args.defaultAction?.();
   }
 }
