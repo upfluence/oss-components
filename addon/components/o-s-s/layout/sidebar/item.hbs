@@ -1,19 +1,19 @@
 <OSS::Anchor
   @link={{unless this.locked @link}}
-  {{on 'click' this.prevent}}
-  class='oss-sidebar-item'
-  disabled={{if this.locked 'disabled'}}
+  {{on "click" this.prevent}}
+  class="oss-sidebar-item"
+  disabled={{if this.locked "disabled"}}
   ...attributes
 >
   {{#if this.locked}}
-    <div class='oss-sidebar-item--locked'>
-      <OSS::Icon @style='light' @icon='fa-lock' />
+    <div class="oss-sidebar-item--locked">
+      <OSS::Icon @style="light" @icon="fa-lock" />
     </div>
   {{/if}}
-  <div class='oss-sidebar-item--icon'>
+  <div class="oss-sidebar-item--icon">
     <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
   </div>
   {{#if this.hasNotifications}}
-    <span class='oss-sidebar-item--notification' />
+    <span class="oss-sidebar-item--notification" />
   {{/if}}
 </OSS::Anchor>
