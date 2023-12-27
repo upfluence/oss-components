@@ -43,6 +43,10 @@
   }
 }
 
+a.oss-sidebar-item:focus {
+  color: var(--sidebar-font-color);
+}
+
 .oss-sidebar-item {
   position: relative;
 
@@ -83,8 +87,7 @@
     }
   }
 
-  &.active,
-  &.ember-transitioning-in {
+  &.active {
     color: var(--sidebar-item-active-font-color);
     background-color: var(--sidebar-item-active-bg-color);
     border: 1px solid var(--sidebar-inner-border-color);

@@ -39,7 +39,7 @@ export default {
     docs: {
       description: {
         component:
-          'A component for automaticaly wrap link into an anchor element or a LinkTo helper based on application router knowledge.'
+          'A component to automaticaly wrap link into an anchor element or a LinkTo helper based on application router knowledge.'
       },
       iframeHeight: 100
     }
