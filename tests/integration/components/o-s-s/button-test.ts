@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, click, setupOnerror, waitUntil } from '@ember/test-helpers';
+import { render, click, setupOnerror, waitUntil, type TestContext, setupRenderingContext } from '@ember/test-helpers';
 
 import sinon from 'sinon';
 
@@ -114,7 +114,7 @@ module('Integration | Component | o-s-s/button', function (hooks) {
 
   module('it renders with loading state', function () {
     test('when using default loading', async function (assert) {
-      await render(hbs`{{! @glint-nocheck }}<OSS::Button @size="sm" @loading="true" @label="Test" />`);
+      await render<TestContext>(hbs`<OSS::Button @size="sm" @loading={{true}} @label="Test" />`);
       assert.dom('.upf-btn i.fas').exists();
       assert.dom('.upf-btn i.fas').hasClass('fa-circle-notch');
       assert.dom('.upf-btn i.fas').hasClass('fa-spin');
@@ -123,7 +123,7 @@ module('Integration | Component | o-s-s/button', function (hooks) {
 
   module('it renders a square button', function () {
     test('when setting the square parameter to true', async function (assert) {
-      await render(hbs`{{! @glint-nocheck }}<OSS::Button @square="true" @label="Test" />`);
+      await render(hbs`<OSS::Button @square={{true}} @label="Test" />`);
 
       assert.dom('.upf-square-btn').exists();
     });
@@ -142,9 +142,9 @@ module('Integration | Component | o-s-s/button', function (hooks) {
       this.intlService = this.owner.lookup('service:intl');
     });
 
-    test('when clicking, it trigger the countdown', async function (assert) {
+    test('when clicking, it trigger the countdown', async function (this: TestContext, assert) {
       this.callback = () => {};
-      await render(hbs`{{! @glint-nocheck }}<OSS::Button @label="Test" @countDown={{hash callback=this.callback}} />`);
+      await render<TestContext>(hbs`<OSS::Button @label="Test" @countDown={{hash callback=this.callback}} />`);
       await click('.upf-btn--default');
 
       assert.dom('.upf-btn--default').hasText(this.intlService.t('oss-components.button.cancel_message', { time: 5 }));
@@ -152,7 +152,9 @@ module('Integration | Component | o-s-s/button', function (hooks) {
 
     test('when clicking, it executes callback at the end of the countdown', async function (assert) {
       this.callback = sinon.stub().callsFake(() => {});
-      await render(hbs`{{! @glint-nocheck }}<OSS::Button @label="Test" @countDown={{hash callback=this.callback time=50 step=10}} />`);
+      await render<TestContext>(
+        hbs`<OSS::Button @label="Test" @countDown={{hash callback=this.callback time=50 step=10}} />`
+      );
       await click('.upf-btn--default');
 
       await waitUntil(
@@ -167,7 +169,7 @@ module('Integration | Component | o-s-s/button', function (hooks) {
 
     test('when clicking again, it cancels the countdown', async function (assert) {
       this.callback = () => {};
-      await render(hbs`{{! @glint-nocheck }}<OSS::Button @label="Test" @countDown={{hash callback=this.callback}} />`);
+      await render<TestContext>(hbs`<OSS::Button @label="Test" @countDown={{hash callback=this.callback}} />`);
       await click('.upf-btn--default');
       await click('.upf-btn--default');
 
@@ -195,7 +197,12 @@ module('Integration | Component | o-s-s/button', function (hooks) {
         );
       });
 
-      await render(hbs`{{! @glint-nocheck }}<OSS::Button @label="Test" @countDown={{hash time=1000}} />`);
+      this.countDownConfig = {
+        time: 1000,
+        callback: null
+      };
+
+      await render<TestContext>(hbs`<OSS::Button @label="Test" @countDown={{this.countDownConfig}} />`);
     });
   });
 });
