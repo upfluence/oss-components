@@ -15512,6 +15512,9 @@ a.upf-btn--sm {
   margin-right: -1px;
   padding: var(--spacing-px-12) var(--spacing-px-9);
 }
+a.oss-sidebar-item:focus {
+  color: var(--sidebar-font-color);
+}
 .oss-sidebar-item {
   position: relative;
   display: flex;

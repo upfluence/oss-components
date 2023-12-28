@@ -1457,6 +1457,87 @@ define("dummy/tests/integration/components/o-s-s/alert-test", ["@ember/template-
     }());
   });
 });
+define("dummy/tests/integration/components/o-s-s/anchor-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "sinon"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _sinon) {
+  "use strict";
+
+  function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+  function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+  (0, _qunit.module)('Integration | Component | o-s-s/anchor', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.router = this.owner.lookup('service:router');
+      this.transitionToStub = _sinon.default.stub(this.router, 'transitionTo');
+    });
+    (0, _qunit.test)('When link is registered in router it render as a anchor element', /*#__PURE__*/function () {
+      var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(assert) {
+        return regeneratorRuntime.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Anchor @link="http://www.google.fr" target="_blank" >test</OSS::Anchor>
+                */
+                {
+                  "id": "MPoXTcCS",
+                  "block": "[[[8,[39,0],[[24,\"target\",\"_blank\"]],[[\"@link\"],[\"http://www.google.fr\"]],[[\"default\"],[[[[1,\"test\"]],[]]]]]],[],false,[\"o-s-s/anchor\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('a').hasNoClass('ember-view');
+
+              case 3:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function (_x) {
+        return _ref2.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('When link is registered in router it render as a linkTo helper', /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(assert) {
+        return regeneratorRuntime.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                _context2.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Anchor @link="index" >test</OSS::Anchor>
+                */
+                {
+                  "id": "0RIYP6ik",
+                  "block": "[[[8,[39,0],null,[[\"@link\"],[\"index\"]],[[\"default\"],[[[[1,\"test\"]],[]]]]]],[],false,[\"o-s-s/anchor\"]]",
+                  "moduleName": "(unknown template module)",
+                  "isStrictMode": false
+                }));
+
+              case 2:
+                assert.dom('a').hasClass('ember-view');
+
+              case 3:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      return function (_x2) {
+        return _ref3.apply(this, arguments);
+      };
+    }());
+  });
+});
 define("dummy/tests/integration/components/o-s-s/array-input-test", ["@ember/template-factory", "qunit", "ember-qunit", "@ember/test-helpers", "sinon"], function (_templateFactory, _qunit, _emberQunit, _testHelpers, _sinon) {
   "use strict";
 
@@ -13701,33 +13782,35 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["@e
         this.defaultAction = _sinon.default.spy();
         this.lockedAction = _sinon.default.spy();
       });
-      (0, _qunit.test)('OnClick defaultAction is triggered', /*#__PURE__*/function () {
+      (0, _qunit.test)('OnClick it redirect to the @link attribute', /*#__PURE__*/function () {
         var _ref8 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee7(assert) {
+          var router;
           return regeneratorRuntime.wrap(function _callee7$(_context7) {
             while (1) {
               switch (_context7.prev = _context7.next) {
                 case 0:
-                  _context7.next = 2;
+                  router = this.owner.lookup('service:router');
+                  _context7.next = 3;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
-                    <OSS::Layout::Sidebar::Item @icon="far fa-search" @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}}/>
+                    <OSS::Layout::Sidebar::Item @icon="far fa-search" @link="index" @lockedAction={{this.lockedAction}}/>
                   */
                   {
-                    "id": "0MWtuUPe",
-                    "block": "[[[8,[39,0],null,[[\"@icon\",\"@defaultAction\",\"@lockedAction\"],[\"far fa-search\",[30,0,[\"defaultAction\"]],[30,0,[\"lockedAction\"]]]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+                    "id": "DJdPmwMu",
+                    "block": "[[[8,[39,0],null,[[\"@icon\",\"@link\",\"@lockedAction\"],[\"far fa-search\",\"index\",[30,0,[\"lockedAction\"]]]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
                     "moduleName": "(unknown template module)",
                     "isStrictMode": false
                   }));
 
-                case 2:
-                  _context7.next = 4;
+                case 3:
+                  assert.equal(router.currentRouteName, null);
+                  _context7.next = 6;
                   return (0, _testHelpers.click)('.oss-sidebar-item');
 
-                case 4:
-                  assert.ok(this.defaultAction.calledOnce);
-                  assert.ok(this.lockedAction.notCalled);
-
                 case 6:
+                  assert.equal(router.currentRouteName, 'index');
+
+                case 7:
                 case "end":
                   return _context7.stop();
               }

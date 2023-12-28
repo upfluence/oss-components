@@ -457,6 +457,19 @@ define("dummy/app", ["exports", "@ember/application", "ember-resolver", "ember-l
     }
   });
 });
+;define("dummy/components/o-s-s/anchor", ["exports", "@upfluence/oss-components/components/o-s-s/anchor"], function (_exports, _anchor) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function get() {
+      return _anchor.default;
+    }
+  });
+});
 ;define("dummy/components/o-s-s/array-input", ["exports", "@upfluence/oss-components/components/o-s-s/array-input"], function (_exports, _arrayInput) {
   "use strict";
 

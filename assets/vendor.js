@@ -84963,6 +84963,224 @@ define("@upfluence/oss-components/components/o-s-s/alert", ["exports", "@ember/c
 });
 ;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
+define("@upfluence/oss-components/components/o-s-s/anchor", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@ember/service"], function (_exports, _component, _templateFactory, _component2, _service) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+
+  var _class, _descriptor;
+
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+  function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = _getPrototypeOf(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
+
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+  function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); return true; } catch (e) { return false; } }
+
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+  function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'proposal-class-properties is enabled and runs after the decorators transform.'); }
+
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    {{#if this.isInternalRoute}}
+    <LinkTo @route={{@link}} rel={{this.rel}} ...attributes>{{yield}}</LinkTo>
+  {{else}}
+    <a href={{@link}} rel={{this.rel}} ...attributes>{{yield}}</a>
+  {{/if}}
+  */
+  {
+    "id": "wuDU6zWA",
+    "block": "[[[41,[30,0,[\"isInternalRoute\"]],[[[1,\"  \"],[8,[39,1],[[16,\"rel\",[30,0,[\"rel\"]]],[17,1]],[[\"@route\"],[[30,2]]],[[\"default\"],[[[[18,3,null]],[]]]]],[1,\"\\n\"]],[]],[[[1,\"  \"],[11,3],[16,6,[30,2]],[16,\"rel\",[30,0,[\"rel\"]]],[17,1],[12],[18,3,null],[13],[1,\"\\n\"]],[]]]],[\"&attrs\",\"@link\",\"&default\"],false,[\"if\",\"link-to\",\"yield\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/anchor.hbs",
+    "isStrictMode": false
+  });
+
+  var OSSAnchor = (_class = /*#__PURE__*/function (_Component) {
+    _inherits(OSSAnchor, _Component);
+
+    var _super = _createSuper(OSSAnchor);
+
+    function OSSAnchor() {
+      var _this;
+
+      _classCallCheck(this, OSSAnchor);
+
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+
+      _this = _super.call.apply(_super, [this].concat(args));
+
+      _initializerDefineProperty(_assertThisInitialized(_this), "router", _descriptor, _assertThisInitialized(_this));
+
+      return _this;
+    }
+
+    _createClass(OSSAnchor, [{
+      key: "noopener",
+      get: function get() {
+        var _this$args$noopener;
+
+        return (_this$args$noopener = this.args.noopener) !== null && _this$args$noopener !== void 0 ? _this$args$noopener : true;
+      }
+    }, {
+      key: "noreferrer",
+      get: function get() {
+        var _this$args$noreferrer;
+
+        return (_this$args$noreferrer = this.args.noreferrer) !== null && _this$args$noreferrer !== void 0 ? _this$args$noreferrer : true;
+      }
+    }, {
+      key: "rel",
+      get: function get() {
+        var relations = [];
+
+        if (this.noopener) {
+          relations.push('noopener');
+        }
+
+        if (this.noreferrer) {
+          relations.push('noreferrer');
+        }
+
+        return relations.join(' ');
+      }
+    }, {
+      key: "isInternalRoute",
+      get: function get() {
+        try {
+          return Boolean(this.router.urlFor(this.args.link));
+        } catch (error) {
+          return false;
+        }
+      }
+    }]);
+
+    return OSSAnchor;
+  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "router", [_service.inject], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  })), _class);
+  _exports.default = OSSAnchor;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSAnchor);
+});
+;define("@upfluence/oss-components/components/o-s-s/anchor.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.BasicUsage = _exports.default = void 0;
+  var _default = {
+    title: 'Components/OSS::Anchor',
+    component: 'anchor',
+    argTypes: {
+      link: {
+        description: 'Url or Route to redirect on click',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: ''
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      noreferrer: {
+        description: 'Enables the noreferrer rel attribute',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: true
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      noopener: {
+        description: 'Enables the noopener rel attribute',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: true
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'A component to automaticaly wrap link into an anchor element or a LinkTo helper based on application router knowledge.'
+        },
+        iframeHeight: 100
+      }
+    }
+  };
+  _exports.default = _default;
+
+  var DefaultUsageTemplate = function DefaultUsageTemplate(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        <div style="display: flex; justify-content: center">
+            <OSS::Anchor @link={{this.link}} @noopener={{this.noopener}} @noreferrer={{this.noreferrer}}>link</OSS::Anchor>
+          </div>
+        
+      */
+      {
+        "id": "iKyE98cz",
+        "block": "[[[10,0],[14,5,\"display: flex; justify-content: center\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@link\",\"@noopener\",\"@noreferrer\"],[[30,0,[\"link\"]],[30,0,[\"noopener\"]],[30,0,[\"noreferrer\"]]]],[[\"default\"],[[[[1,\"link\"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/anchor\"]]",
+        "moduleName": "(unknown template module)",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+
+  var BasicUsage = DefaultUsageTemplate.bind({});
+  _exports.BasicUsage = BasicUsage;
+  BasicUsage.args = {
+    link: 'https://www.upfluence.com',
+    noopener: true,
+    noreferrer: true
+  };
+});
+;function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 define("@upfluence/oss-components/components/o-s-s/array-input", ["exports", "@ember/component", "@ember/template-factory", "@glimmer/component", "@ember/object", "@glimmer/tracking"], function (_exports, _component, _templateFactory, _component2, _object, _tracking) {
   "use strict";
 
@@ -92587,11 +92805,9 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar", ["exports", 
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class="oss-sidebar--containers fx-col" ...attributes>
-    <div class="logo-container">
-      <div {{on "click" this.onHomeAction}} role="button">
-        <img src={{@logo}} alt="brand" />
-      </div>
-    </div>
+    <OSS::Anchor @link={{@homeURL}} class="logo-container">
+      <img src={{@logo}} alt="brand" />
+    </OSS::Anchor>
     <div class="oss-sidebar--content fx-1 fx-col fx-xalign-center fx-gap-px-9">
       {{yield to="content"}}
     </div>
@@ -92601,11 +92817,10 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar", ["exports", 
       </div>
     {{/if}}
   </div>
-  
   */
   {
-    "id": "RtHLrGB9",
-    "block": "[[[11,0],[24,0,\"oss-sidebar--containers fx-col\"],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"logo-container\"],[12],[1,\"\\n    \"],[11,0],[24,\"role\",\"button\"],[4,[38,0],[\"click\",[30,0,[\"onHomeAction\"]]],null],[12],[1,\"\\n      \"],[10,\"img\"],[15,\"src\",[30,2]],[14,\"alt\",\"brand\"],[12],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,0],[14,0,\"oss-sidebar--content fx-1 fx-col fx-xalign-center fx-gap-px-9\"],[12],[1,\"\\n    \"],[18,3,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[48,[30,4]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar--footer fx-col fx-xalign-center fx-gap-px-9\"],[12],[1,\"\\n      \"],[18,4,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@logo\",\"&content\",\"&footer\"],false,[\"on\",\"yield\",\"if\",\"has-block\"]]",
+    "id": "fP66MHx4",
+    "block": "[[[11,0],[24,0,\"oss-sidebar--containers fx-col\"],[17,1],[12],[1,\"\\n  \"],[8,[39,0],[[24,0,\"logo-container\"]],[[\"@link\"],[[30,2]]],[[\"default\"],[[[[1,\"\\n    \"],[10,\"img\"],[15,\"src\",[30,3]],[14,\"alt\",\"brand\"],[12],[13],[1,\"\\n  \"]],[]]]]],[1,\"\\n  \"],[10,0],[14,0,\"oss-sidebar--content fx-1 fx-col fx-xalign-center fx-gap-px-9\"],[12],[1,\"\\n    \"],[18,4,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar--footer fx-col fx-xalign-center fx-gap-px-9\"],[12],[1,\"\\n      \"],[18,5,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@homeURL\",\"@logo\",\"&content\",\"&footer\"],false,[\"o-s-s/anchor\",\"yield\",\"if\",\"has-block\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/layout/sidebar.hbs",
     "isStrictMode": false
   });
@@ -92755,8 +92970,13 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["expor
 
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="oss-sidebar-item" disabled={{if this.locked "disabled"}} {{on "click" this.onClick}} role="button"
-       ...attributes>
+    <OSS::Anchor
+    @link={{unless this.locked @link}}
+    {{on "click" this.prevent}}
+    class="oss-sidebar-item"
+    disabled={{if this.locked "disabled"}}
+    ...attributes
+  >
     {{#if this.locked}}
       <div class="oss-sidebar-item--locked">
         <OSS::Icon @style="light" @icon="fa-lock" />
@@ -92768,12 +92988,11 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["expor
     {{#if this.hasNotifications}}
       <span class="oss-sidebar-item--notification" />
     {{/if}}
-  </div>
-  
+  </OSS::Anchor>
   */
   {
-    "id": "TeRjIGk0",
-    "block": "[[[11,0],[24,0,\"oss-sidebar-item\"],[16,\"disabled\",[52,[30,0,[\"locked\"]],\"disabled\"]],[24,\"role\",\"button\"],[17,1],[4,[38,1],[\"click\",[30,0,[\"onClick\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"locked\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-item--locked\"],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@style\",\"@icon\"],[\"light\",\"fa-lock\"]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"oss-sidebar-item--icon\"],[12],[1,\"\\n    \"],[8,[39,2],null,[[\"@style\",\"@icon\"],[[28,[37,3],[[30,2]],null],[28,[37,4],[[30,2]],null]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"hasNotifications\"]],[[[1,\"    \"],[10,1],[14,0,\"oss-sidebar-item--notification\"],[12],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\"],false,[\"if\",\"on\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
+    "id": "nnHnnHxR",
+    "block": "[[[8,[39,0],[[24,0,\"oss-sidebar-item\"],[16,\"disabled\",[52,[30,0,[\"locked\"]],\"disabled\"]],[17,1],[4,[38,3],[\"click\",[30,0,[\"prevent\"]]],null]],[[\"@link\"],[[52,[51,[30,0,[\"locked\"]]],[30,2]]]],[[\"default\"],[[[[1,\"\\n\"],[41,[30,0,[\"locked\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-item--locked\"],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[\"light\",\"fa-lock\"]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"oss-sidebar-item--icon\"],[12],[1,\"\\n    \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[[28,[37,5],[[30,3]],null],[28,[37,6],[[30,3]],null]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"hasNotifications\"]],[[[1,\"    \"],[10,1],[14,0,\"oss-sidebar-item--notification\"],[12],[13],[1,\"\\n\"]],[]],null]],[]]]]]],[\"&attrs\",\"@link\",\"@icon\"],false,[\"o-s-s/anchor\",\"if\",\"unless\",\"on\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/layout/sidebar/item.hbs",
     "isStrictMode": false
   });
@@ -92800,24 +93019,20 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["expor
         return this.args.hasNotifications || false;
       }
     }, {
-      key: "onClick",
-      value: function onClick(event) {
-        var _this$args$defaultAct, _this$args2;
-
+      key: "prevent",
+      value: function prevent(event) {
         event === null || event === void 0 ? void 0 : event.stopPropagation();
 
         if (this.locked) {
           var _this$args$lockedActi, _this$args;
 
-          return (_this$args$lockedActi = (_this$args = this.args).lockedAction) === null || _this$args$lockedActi === void 0 ? void 0 : _this$args$lockedActi.call(_this$args);
+          (_this$args$lockedActi = (_this$args = this.args).lockedAction) === null || _this$args$lockedActi === void 0 ? void 0 : _this$args$lockedActi.call(_this$args);
         }
-
-        return (_this$args$defaultAct = (_this$args2 = this.args).defaultAction) === null || _this$args$defaultAct === void 0 ? void 0 : _this$args$defaultAct.call(_this$args2);
       }
     }]);
 
     return OSSLayoutSidebarItem;
-  }(_component2.default), (_applyDecoratedDescriptor(_class.prototype, "onClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClick"), _class.prototype)), _class);
+  }(_component2.default), (_applyDecoratedDescriptor(_class.prototype, "prevent", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "prevent"), _class.prototype)), _class);
   _exports.default = OSSLayoutSidebarItem;
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSLayoutSidebarItem);
 });
@@ -92874,13 +93089,18 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["expor
           type: 'boolean'
         }
       },
-      defaultAction: {
-        description: 'Function to be called on click per default',
+      link: {
+        description: 'Url or Route to redirect on click',
         table: {
-          category: 'Actions',
           type: {
-            summary: 'defaultAction(): void'
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: ''
           }
+        },
+        control: {
+          type: 'text'
         }
       },
       lockedAction: {
@@ -92907,7 +93127,7 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["expor
     icon: 'far fa-search',
     hasNotifications: false,
     locked: false,
-    defaultAction: (0, _addonActions.action)('defaultAction'),
+    link: 'http://upfluence.com',
     lockedAction: (0, _addonActions.action)('lockedAction')
   };
 
@@ -92919,14 +93139,14 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["expor
           <div style="background: var(--sidebar-bg-color)">
             <OSS::Layout::Sidebar::Item @icon={{this.icon}} @locked={{this.locked}} 
                                         @hasNotifications={{this.hasNotifications}}
-                                        @defaultAction={{this.defaultAction}}
+                                        @link={{this.link}}
                                         @lockedAction={{this.lockedAction}}/>
           </div>
         
       */
       {
-        "id": "Mevqube1",
-        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"background: var(--sidebar-bg-color)\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@icon\",\"@locked\",\"@hasNotifications\",\"@defaultAction\",\"@lockedAction\"],[[30,0,[\"icon\"]],[30,0,[\"locked\"]],[30,0,[\"hasNotifications\"]],[30,0,[\"defaultAction\"]],[30,0,[\"lockedAction\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+        "id": "B7fVuqmY",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"background: var(--sidebar-bg-color)\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@icon\",\"@locked\",\"@hasNotifications\",\"@link\",\"@lockedAction\"],[[30,0,[\"icon\"]],[30,0,[\"locked\"]],[30,0,[\"hasNotifications\"]],[30,0,[\"link\"]],[30,0,[\"lockedAction\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
         "moduleName": "(unknown template module)",
         "isStrictMode": false
       }),
@@ -97278,14 +97498,14 @@ define("@upfluence/oss-components/components/o-s-s/star-rating", ["exports", "@e
                  @icon="fa-star"
                  {{on "click" (fn this.setRating index)}}
                  {{on "mouseenter" (fn this.onMouseEnter index)}}
-                 {{on "mouseleave" (fn this.onMouseLeave)}} />
+                 {{on "mouseleave" this.onMouseLeave}} />
     {{/each}}
   </div>
   
   */
   {
-    "id": "VOM590GI",
-    "block": "[[[10,0],[14,0,\"star-rating fx-row\"],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,0,[\"stars\"]]],null]],null],null,[[[1,\"    \"],[8,[39,2],[[16,0,[28,[37,3],[[52,[30,3],\"no-pointer-cursor \"],[30,0,[\"activeColorClass\"]]],null]],[4,[38,5],[\"click\",[28,[37,6],[[30,0,[\"setRating\"]],[30,2]],null]],null],[4,[38,5],[\"mouseenter\",[28,[37,6],[[30,0,[\"onMouseEnter\"]],[30,2]],null]],null],[4,[38,5],[\"mouseleave\",[28,[37,6],[[30,0,[\"onMouseLeave\"]]],null]],null]],[[\"@style\",\"@icon\"],[[30,1,[\"type\"]],\"fa-star\"]],null],[1,\"\\n\"]],[1,2]],null],[13],[1,\"\\n\"]],[\"star\",\"index\",\"@disablePointerCursor\"],false,[\"each\",\"-track-array\",\"o-s-s/icon\",\"concat\",\"if\",\"on\",\"fn\"]]",
+    "id": "zP6ImJBa",
+    "block": "[[[10,0],[14,0,\"star-rating fx-row\"],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,0,[\"stars\"]]],null]],null],null,[[[1,\"    \"],[8,[39,2],[[16,0,[28,[37,3],[[52,[30,3],\"no-pointer-cursor \"],[30,0,[\"activeColorClass\"]]],null]],[4,[38,5],[\"click\",[28,[37,6],[[30,0,[\"setRating\"]],[30,2]],null]],null],[4,[38,5],[\"mouseenter\",[28,[37,6],[[30,0,[\"onMouseEnter\"]],[30,2]],null]],null],[4,[38,5],[\"mouseleave\",[30,0,[\"onMouseLeave\"]]],null]],[[\"@style\",\"@icon\"],[[30,1,[\"type\"]],\"fa-star\"]],null],[1,\"\\n\"]],[1,2]],null],[13],[1,\"\\n\"]],[\"star\",\"index\",\"@disablePointerCursor\"],false,[\"each\",\"-track-array\",\"o-s-s/icon\",\"concat\",\"if\",\"on\",\"fn\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/star-rating.hbs",
     "isStrictMode": false
   });
@@ -110964,36 +111184,36 @@ var __ember_auto_import__ =
 /************************************************************************/
 /******/ ({
 
-/***/ "../../../../../tmp/broccoli-2020IHyNfERsxpma/cache-275-bundler/staging/app.js":
+/***/ "../../../../../tmp/broccoli-1888KnXFSGktmEwf/cache-275-bundler/staging/app.js":
 /*!***********************************************************************!*\
-  !*** /tmp/broccoli-2020IHyNfERsxpma/cache-275-bundler/staging/app.js ***!
+  !*** /tmp/broccoli-1888KnXFSGktmEwf/cache-275-bundler/staging/app.js ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2020IHyNfERsxpma/cache-275-bundler/staging/app.js?");
+eval("\nif (typeof document !== 'undefined') {\n  __webpack_require__.p = (function(){\n    var scripts = document.querySelectorAll('script');\n    return scripts[scripts.length - 1].src.replace(/\\/[^/]*$/, '/');\n  })();\n}\n\nmodule.exports = (function(){\n  var d = _eai_d;\n  var r = _eai_r;\n  window.emberAutoImportDynamic = function(specifier) {\n    if (arguments.length === 1) {\n      return r('_eai_dyn_' + specifier);\n    } else {\n      return r('_eai_dynt_' + specifier)(Array.prototype.slice.call(arguments, 1))\n    }\n  };\n    d('@ember-intl/intl-messageformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-messageformat/index.js */ \"./node_modules/@ember-intl/intl-messageformat/index.js\"); });\n    d('@ember-intl/intl-relativeformat', [], function() { return __webpack_require__(/*! ./node_modules/@ember-intl/intl-relativeformat/index.js */ \"./node_modules/@ember-intl/intl-relativeformat/index.js\"); });\n    d('fast-memoize', [], function() { return __webpack_require__(/*! ./node_modules/fast-memoize/src/index.js */ \"./node_modules/fast-memoize/src/index.js\"); });\n})();\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1888KnXFSGktmEwf/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
-/***/ "../../../../../tmp/broccoli-2020IHyNfERsxpma/cache-275-bundler/staging/l.js":
+/***/ "../../../../../tmp/broccoli-1888KnXFSGktmEwf/cache-275-bundler/staging/l.js":
 /*!*********************************************************************!*\
-  !*** /tmp/broccoli-2020IHyNfERsxpma/cache-275-bundler/staging/l.js ***!
+  !*** /tmp/broccoli-1888KnXFSGktmEwf/cache-275-bundler/staging/l.js ***!
   \*********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-2020IHyNfERsxpma/cache-275-bundler/staging/l.js?");
+eval("\nwindow._eai_r = require;\nwindow._eai_d = define;\n\n\n//# sourceURL=webpack://__ember_auto_import__//tmp/broccoli-1888KnXFSGktmEwf/cache-275-bundler/staging/l.js?");
 
 /***/ }),
 
 /***/ 0:
 /*!*******************************************************************************************************************************************!*\
-  !*** multi /tmp/broccoli-2020IHyNfERsxpma/cache-275-bundler/staging/l.js /tmp/broccoli-2020IHyNfERsxpma/cache-275-bundler/staging/app.js ***!
+  !*** multi /tmp/broccoli-1888KnXFSGktmEwf/cache-275-bundler/staging/l.js /tmp/broccoli-1888KnXFSGktmEwf/cache-275-bundler/staging/app.js ***!
   \*******************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("__webpack_require__(/*! /tmp/broccoli-2020IHyNfERsxpma/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-2020IHyNfERsxpma/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-2020IHyNfERsxpma/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-2020IHyNfERsxpma/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-2020IHyNfERsxpma/cache-275-bundler/staging/l.js_/tmp/broccoli-2020IHyNfERsxpma/cache-275-bundler/staging/app.js?");
+eval("__webpack_require__(/*! /tmp/broccoli-1888KnXFSGktmEwf/cache-275-bundler/staging/l.js */\"../../../../../tmp/broccoli-1888KnXFSGktmEwf/cache-275-bundler/staging/l.js\");\nmodule.exports = __webpack_require__(/*! /tmp/broccoli-1888KnXFSGktmEwf/cache-275-bundler/staging/app.js */\"../../../../../tmp/broccoli-1888KnXFSGktmEwf/cache-275-bundler/staging/app.js\");\n\n\n//# sourceURL=webpack://__ember_auto_import__/multi_/tmp/broccoli-1888KnXFSGktmEwf/cache-275-bundler/staging/l.js_/tmp/broccoli-1888KnXFSGktmEwf/cache-275-bundler/staging/app.js?");
 
 /***/ }),
 
