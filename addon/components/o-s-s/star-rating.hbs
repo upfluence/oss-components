@@ -5,6 +5,6 @@
                @icon="fa-star"
                {{on "click" (fn this.setRating index)}}
                {{on "mouseenter" (fn this.onMouseEnter index)}}
-               {{on "mouseleave" (fn this.onMouseLeave)}} />
+               {{on "mouseleave" this.onMouseLeave}} />
   {{/each}}
 </div>

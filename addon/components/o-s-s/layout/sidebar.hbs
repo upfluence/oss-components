@@ -1,9 +1,7 @@
 <div class="oss-sidebar--containers fx-col" ...attributes>
-  <div class="logo-container">
-    <div {{on "click" this.onHomeAction}} role="button">
-      <img src={{@logo}} alt="brand" />
-    </div>
-  </div>
+  <OSS::Anchor @link={{@homeURL}} class="logo-container">
+    <img src={{@logo}} alt="brand" />
+  </OSS::Anchor>
   <div class="oss-sidebar--content fx-1 fx-col fx-xalign-center fx-gap-px-9">
     {{yield to="content"}}
   </div>

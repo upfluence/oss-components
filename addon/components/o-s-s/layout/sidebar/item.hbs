@@ -1,5 +1,10 @@
-<div class="oss-sidebar-item" disabled={{if this.locked "disabled"}} {{on "click" this.onClick}} role="button"
-     ...attributes>
+<OSS::Anchor
+  @link={{unless this.locked @link}}
+  {{on "click" this.prevent}}
+  class="oss-sidebar-item"
+  disabled={{if this.locked "disabled"}}
+  ...attributes
+>
   {{#if this.locked}}
     <div class="oss-sidebar-item--locked">
       <OSS::Icon @style="light" @icon="fa-lock" />
@@ -11,4 +16,4 @@
   {{#if this.hasNotifications}}
     <span class="oss-sidebar-item--notification" />
   {{/if}}
-</div>
+</OSS::Anchor>
