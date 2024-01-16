@@ -3,9 +3,9 @@ import Component from '@glimmer/component';
 
 interface OSSInputContainerSignature {
   Args: {
-    value?: string;
+    value?: string | null;
     disabled?: boolean;
-    errorMessage?: string;
+    errorMessage?: string | null;
     placeholder?: string;
     onChange?(value: string): void;
   };

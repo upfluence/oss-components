@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, click } from '@ember/test-helpers';
+import { render, click, type TestContext } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import sinon from 'sinon';
 
@@ -30,8 +30,8 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
   ALERT_SKINS.forEach((skin) => {
     test(`it renders ${skin} skin correctly`, async function (assert) {
       this.skin = skin;
-      await render(
-        hbs`{{! @glint-nocheck }}<OSS::Alert @skin={{this.skin}} @title={{concat "Title " this.skin}} @subtitle={{concat "Subitle " this.skin}} />`
+      await render<TestContext>(
+        hbs`<OSS::Alert @skin={{this.skin}} @title={{concat "Title " this.skin}} @subtitle={{concat "Subitle " this.skin}} />`
       );
 
       assert.dom('.upf-alert .icon i').hasClass('far');
@@ -90,7 +90,7 @@ module('Integration | Component | o-s-s/alert', function (hooks) {
 
     test('clicking the cross icon also calls the onClose argument provided', async function (assert) {
       this.onClose = sinon.stub();
-      await render(hbs`{{! @glint-nocheck }}<div><OSS::Alert @closable={{true}} @onClose={{this.onClose}} /></div>`);
+      await render<TestContext>(hbs`<div><OSS::Alert @closable={{true}} @onClose={{this.onClose}} /></div>`);
       await click('.upf-alert .main-container .fx-col i');
       assert.ok(this.onClose.calledOnce);
       assert.dom('.upf-alert').doesNotExist();

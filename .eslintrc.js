@@ -24,7 +24,6 @@ module.exports = {
     'ember/no-mixins': 'off',
     'ember/no-get': 'off',
     'ember/avoid-leaking-state-in-ember-objects': 'off',
-    'ember/no-global-jquery': 'off',
     'ember/no-classic-classes': 'off',
     'ember/no-classic-components': 'off',
     'ember/require-tagless-components': 'off',

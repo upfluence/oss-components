@@ -36,9 +36,9 @@ export const SkinDefinition: SkinDefType = {
 
 interface OSSBadgeSignature {
   Args: {
-    icon: string;
-    image: string;
-    text: string;
+    icon?: string;
+    image?: string;
+    text?: string;
     skin?: SkinType;
     plain?: boolean;
     size?: SizeType;

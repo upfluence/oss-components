@@ -1,26 +1,25 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, click } from '@ember/test-helpers';
+import { render, click, type TestContext } from '@ember/test-helpers';
 import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/copy', function (hooks) {
   setupRenderingTest(hooks);
 
   test('it renders', async function (assert) {
-    await render(hbs`{{! @glint-nocheck }}<OSS::Copy />`);
+    await render(hbs`<OSS::Copy @value="foo" />`);
 
     assert.dom('.upf-btn--default').exists();
   });
 
   test('it renders when inline value is specified', async function (assert) {
-    await render(hbs`{{! @glint-nocheck }}<OSS::Copy @inline={{true}} />`);
+    await render(hbs`<OSS::Copy @value="foo" @inline={{true}} />`);
     assert.dom('.oss-copy--inline').exists();
   });
 
   test('the tooltip has correct wording', async function (assert) {
-    await render(hbs`{{! @glint-nocheck }}<OSS::Copy />`);
-
+    await render(hbs`<OSS::Copy @value="foo" />`);
     await assert.tooltip('.upf-btn--default').hasTitle('Copy');
   });
 
@@ -58,7 +57,7 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
       sinon.stub(this.toastService, 'info').resolves();
       this.textForCopy = 'test';
 
-      await render(hbs`{{! @glint-nocheck }}<OSS::Copy @value={{this.textForCopy}} />`);
+      await render<TestContext>(hbs`<OSS::Copy @value={{this.textForCopy}} />`);
       await click('.upf-btn--default');
 
       assert.true(writeTextStub.calledOnceWithExactly(this.textForCopy));

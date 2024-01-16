@@ -1,11 +1,12 @@
-{{! @glint-nocheck: not typesafe yet }}
 <div class="star-rating fx-row">
   {{#each this.stars as |star index|}}
-    <OSS::Icon class={{concat (if @disablePointerCursor "no-pointer-cursor ") this.activeColorClass}}
-               @style={{star.type}}
-               @icon="fa-star"
-               {{on "click" (fn this.setRating index)}}
-               {{on "mouseenter" (fn this.onMouseEnter index)}}
-               {{on "mouseleave" this.onMouseLeave}} />
+    <OSS::Icon
+      class={{this.activeColorClass}}
+      @style={{star.type}}
+      @icon="fa-star"
+      {{on "click" (fn this.setRating index)}}
+      {{on "mouseenter" (fn this.onMouseEnter index)}}
+      {{on "mouseleave" this.onMouseLeave}}
+    />
   {{/each}}
 </div>

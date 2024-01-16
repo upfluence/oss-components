@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, setupOnerror } from '@ember/test-helpers';
+import { render, setupOnerror, type TestContext } from '@ember/test-helpers';
 
 import { SkinDefinition } from '@upfluence/oss-components/components/o-s-s/badge';
 
@@ -10,14 +10,14 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
 
   module('sizes', function () {
     test('it sets the right class when usng a supported size', async function (assert: Assert) {
-      await render(hbs`{{! @glint-nocheck }}<OSS::Badge @size="lg" @text="2x" />`);
+      await render(hbs`<OSS::Badge @size="lg" @text="2x" />`);
 
       assert.dom('.upf-badge').exists();
       assert.dom('.upf-badge').hasClass('upf-badge--size-lg');
     });
 
     test('it defaults to md size if none is passed', async function (assert: Assert) {
-      await render(hbs`{{! @glint-nocheck }}<OSS::Badge @text="2x" />`);
+      await render(hbs`<OSS::Badge @text="2x" />`);
 
       assert.dom('.upf-badge').exists();
       assert.dom('.upf-badge').hasClass('upf-badge--size-md');
@@ -28,7 +28,7 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
     Object.keys(SkinDefinition).forEach((skin) => {
       test(`it sets the right class when using a supported skin: ${skin}`, async function (assert: Assert) {
         this.skin = skin;
-        await render(hbs`{{! @glint-nocheck }}<OSS::Badge @skin={{this.skin}} @text="2x" />`);
+        await render<TestContext>(hbs`<OSS::Badge @skin={{this.skin}} @text="2x" />`);
 
         assert.dom('.upf-badge').exists();
         assert
@@ -38,7 +38,7 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
     });
 
     test('it adds the plain class when passed', async function (assert: Assert) {
-      await render(hbs`{{! @glint-nocheck }}<OSS::Badge @skin="primary" @plain={{true}} @text="2x" />`);
+      await render(hbs`<OSS::Badge @skin="primary" @plain={{true}} @text="2x" />`);
 
       assert.dom('.upf-badge').hasClass('upf-badge--plain');
     });
@@ -46,14 +46,14 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
 
   module('content args', function () {
     test('it displays the right icon when using the @icon arg', async function (assert: Assert) {
-      await render(hbs`{{! @glint-nocheck }}<OSS::Badge @icon="fas fa-users" />`);
+      await render(hbs`<OSS::Badge @icon="fas fa-users" />`);
 
       assert.dom('.upf-badge').exists();
       assert.dom('.upf-badge i').hasAttribute('class', 'fas fa-users');
     });
 
     test('it displays the right text when using the @text arg', async function (assert: Assert) {
-      await render(hbs`{{! @glint-nocheck }}<OSS::Badge @text="2x" />`);
+      await render(hbs`<OSS::Badge @text="2x" />`);
 
       assert.dom('.upf-badge').exists();
       assert.dom('.upf-badge .upf-badge__text').exists();
@@ -61,7 +61,7 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
     });
 
     test('it displays the right image when using the @image arg', async function (assert: Assert) {
-      await render(hbs`{{! @glint-nocheck }}<OSS::Badge @image="http://foo.co/bar.png" />`);
+      await render(hbs`<OSS::Badge @image="http://foo.co/bar.png" />`);
 
       assert.dom('.upf-badge').exists();
       assert.dom('.upf-badge img').exists();
@@ -78,7 +78,7 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
         );
       });
 
-      await render(hbs`{{! @glint-nocheck }}<OSS::Badge @skin="foo" @text="2x" />`);
+      await render(hbs`{{!-- @glint-nocheck --}}<OSS::Badge @skin="foo" @text="2x" />`);
     });
 
     test('it throws an error when an unsupported size is passed', async function (assert: Assert) {
@@ -89,7 +89,7 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
         );
       });
 
-      await render(hbs`{{! @glint-nocheck }}<OSS::Badge @size="foo" @text="2x" />`);
+      await render(hbs`{{!-- @glint-nocheck --}}<OSS::Badge @size="foo" @text="2x" />`);
     });
 
     test('it throws an error if no argument is passed', async function (assert: Assert) {
@@ -100,7 +100,7 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
         );
       });
 
-      await render(hbs`{{! @glint-nocheck }}<OSS::Badge />`);
+      await render(hbs`<OSS::Badge />`);
     });
 
     test('it throws an error if more than one content argument is passed', async function (assert: Assert) {
@@ -111,7 +111,7 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
         );
       });
 
-      await render(hbs`{{! @glint-nocheck }}<OSS::Badge @icon="fas fa-users" @text="2x" />`);
+      await render(hbs`<OSS::Badge @icon="fas fa-users" @text="2x" />`);
     });
   });
 });

@@ -11,8 +11,8 @@ export type LinkType = {
 
 interface OSSLinkSignature {
   Args: {
-    icon: string;
-    label: string;
+    label?: string;
+    icon?: string;
     link?: LinkType;
     transitionTo?: string;
   };

@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, setupOnerror, typeIn, triggerKeyEvent } from '@ember/test-helpers';
+import { render, setupOnerror, typeIn, triggerKeyEvent, type TestContext } from '@ember/test-helpers';
 import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/email-input', function (hooks) {
@@ -25,7 +25,7 @@ module('Integration | Component | o-s-s/email-input', function (hooks) {
 
   test('If the email regex isnt matched, then the error message is displayed', async function (assert) {
     this.value = '';
-    await render(hbs`{{! @glint-nocheck }}<OSS::EmailInput @value={{this.value}} />`);
+    await render<TestContext>(hbs`<OSS::EmailInput @value={{this.value}} />`);
     await typeIn('input', 'foo@f');
     assert.dom('.text-color-error').hasText('Please enter a valid email address.');
   });
@@ -35,7 +35,7 @@ module('Integration | Component | o-s-s/email-input', function (hooks) {
     this.validates = (x: boolean) => {
       assert.equal(x, true);
     };
-    await render(hbs`{{! @glint-nocheck }}<OSS::EmailInput @value={{this.value}} @validates={{this.validates}} />`);
+    await render<TestContext>(hbs`<OSS::EmailInput @value={{this.value}} @validates={{this.validates}} />`);
     await typeIn('input', 'a');
   });
 
@@ -44,7 +44,7 @@ module('Integration | Component | o-s-s/email-input', function (hooks) {
     this.validates = (x: boolean) => {
       assert.equal(x, false);
     };
-    await render(hbs`{{! @glint-nocheck }}<OSS::EmailInput @value={{this.value}} @validates={{this.validates}} />`);
+    await render<TestContext>(hbs`}<OSS::EmailInput @value={{this.value}} @validates={{this.validates}} />`);
     await typeIn('input', 'a');
   });
 
@@ -63,20 +63,20 @@ module('Integration | Component | o-s-s/email-input', function (hooks) {
     });
 
     test('it is called when a new character is typed', async function (assert) {
-      await render(hbs`{{! @glint-nocheck }}<OSS::EmailInput @value={{this.value}} @onChange={{this.onChange}} />`);
+      await render<TestContext>(hbs`<OSS::EmailInput @value={{this.value}} @onChange={{this.onChange}} />`);
       await typeIn('input', 'a');
       assert.true(this.onChange.calledOnceWithExactly('a'));
     });
 
     test('it returns null value', async function (assert) {
       this.value = null;
-      await render(hbs`{{! @glint-nocheck }}<OSS::EmailInput @value={{this.value}} @onChange={{this.onChange}} />`);
+      await render<TestContext>(hbs`<OSS::EmailInput @value={{this.value}} @onChange={{this.onChange}} />`);
       await triggerKeyEvent('input', 'keyup', 'Backspace');
       assert.true(this.onChange.calledOnceWithExactly(null));
     });
 
     test('if defined, it transforms the result to lowercase', async function (assert) {
-      await render(hbs`{{! @glint-nocheck }}<OSS::EmailInput @value={{this.value}} @onChange={{this.onChange}} />`);
+      await render<TestContext>(hbs`<OSS::EmailInput @value={{this.value}} @onChange={{this.onChange}} />`);
       await typeIn('input', 'A');
       assert.true(this.onChange.calledOnceWithExactly('a'));
     });

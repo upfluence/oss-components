@@ -61,10 +61,3 @@ export default class OSSPrivateBaseModalComponent extends Component<OSSPrivateBa
     return window.innerWidth > document.documentElement.clientWidth;
   }
 }
-
-declare module '@glint/environment-ember-loose/registry' {
-  export default interface Registry {
-    'OSS::Private::BaseModal': typeof OSSPrivateBaseModalComponent;
-    'o-s-s/private/base-modal': typeof OSSPrivateBaseModalComponent;
-  }
-}
