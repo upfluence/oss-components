@@ -10,8 +10,8 @@ interface OSSStarRatingSignature {
   Args: {
     rating: number;
     totalStars: number;
-    activeColor: StarColor;
-    passiveColor: StarColor;
+    activeColor?: StarColor;
+    passiveColor?: StarColor;
     passiveStyle?: StarType;
     onChange?(rating: number): void;
   };

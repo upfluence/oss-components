@@ -2,14 +2,13 @@ import templateOnlyComponent from '@ember/component/template-only';
 
 interface OSSPanelRowSignature {
   Args: {
-    icon: unknown;
-    label: unknown;
+    icon: string;
+    label: string;
   };
   Element: HTMLDivElement;
 }
 
-const OSSPanelRowComponent =
-  templateOnlyComponent<OSSPanelRowSignature>();
+const OSSPanelRowComponent = templateOnlyComponent<OSSPanelRowSignature>();
 
 export default OSSPanelRowComponent;
 

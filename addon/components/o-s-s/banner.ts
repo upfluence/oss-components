@@ -6,6 +6,10 @@ type SizeType = 'sm' | 'md';
 interface OSSBannerSignature {
   Args: {
     size?: SizeType;
+    icon?: string;
+    image?: string;
+    title?: string;
+    subtitle?: string;
     plain?: boolean;
     selected?: boolean;
     disabled?: boolean;
