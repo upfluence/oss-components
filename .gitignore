@@ -19,7 +19,6 @@ storybook-static
 /libpeerconnection.log
 npm-debug.log
 testem.log
-/yarn-error.log
 /package-lock.json
 ember-modules-codemod.*
 
@@ -34,3 +33,13 @@ doc
 # storybook
 preview-head.html
 app/styles/core/fonts/
+
+# yarn
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+/yarn-error.log
