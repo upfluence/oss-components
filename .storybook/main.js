@@ -34,11 +34,10 @@ module.exports = {
 
     config.module.rules.push({
       test: /\.less$/i,
-      use: ['style-loader', 'css-loader', 'less-loader']
+      use: ['style-loader', { loader: 'css-loader', options: { url: false } }, 'less-loader']
     });
 
     config.resolve.alias = Object.assign(config.resolve.alias, {
-      'bootstrap.less': path.resolve(node_modules, 'bootstrap/less/bootstrap'),
       '@upfluence/oss-components': path.resolve(addon_path),
       dummy: path.resolve(dummy_path)
     });
