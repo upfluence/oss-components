@@ -9,16 +9,16 @@ all:	clear upfluence yarn_link_ls echo start ## Runs yarn_link_ls & starts the d
 clear:
 	@clear
 
-install: ## Runs 'yarn' to install dependencies
+install: ## Install dependencies
 	@echo 'Installing dependencies'
-	yarn
+	pnpm install
 	@echo ""; echo "\n-------------------------------\n"; echo ""
 
 echo:
 	@echo Starting OSS-Components
 
 start: ## Starts the dev server
-	yarn run ember serve --port 0
+	pnpm ember serve --port 0
 
 clean: ## Cleans ./node_modules && ./dist
 	@echo "Cleaning up ./node_modules & ./dist folders"
@@ -30,11 +30,11 @@ re:	clean install echo start ## Reinstalls dependencies & starts the dev server
 
 tests: ## Runs tests once
 	@echo "Running tests once"
-	yarn run ember test --silent -r dot
+	pnpm ember test --silent -r dot
 
 testserver: ## Runs the test server
 	@echo "Starting Test Server"
-	yarn run ember test -s
+	pnpm ember test -s
 
 yarn_link_ls: ## Displays all the current projects linked using 'yarn link'
 	@echo Checking for yarn-links
@@ -44,12 +44,12 @@ yarn_link_ls: ## Displays all the current projects linked using 'yarn link'
 enable_pre_hook: ## Enables git pre-hook on the project. Will run Linter & Tests before pushing.
 	@echo "Installing git pre-push hook"
 	@echo ""; echo "-------------------------------"; echo ""
-	yarn install-pre-push-hook
+	pnpm install-pre-push-hook
 
 disable_pre_hook: ## Disables the git pre-push hook.
 	@echo "Removing git pre-push hook"
 	@echo ""; echo "-------------------------------"; echo ""
-	yarn remove-pre-push-hook
+	pnpm remove-pre-push-hook
 
 help: clear upfluence ## Displays the help message
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
