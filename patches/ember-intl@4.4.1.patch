@@ -1,0 +1,89 @@
+diff --git a/addon/services/intl.js b/addon/services/intl.js
+index 2978d8424212ee721466ec11815d9942ff29ef35..e1c4e11d9bdf3458050669904e1af8512bfb1cc0 100644
+--- a/addon/services/intl.js
++++ b/addon/services/intl.js
+@@ -7,6 +7,7 @@ import IntlRelativeFormat from '@ember-intl/intl-relativeformat';
+ import IntlMessageFormat from '@ember-intl/intl-messageformat';
+ import { getOwner } from '@ember/application';
+ import { computed, get, set } from '@ember/object';
++import { readOnly } from '@ember/object/computed';
+ import Evented from '@ember/object/evented';
+ import { assert, warn } from '@ember/debug';
+ import { makeArray } from '@ember/array';
+@@ -52,7 +53,7 @@ export default Service.extend(Evented, {
+     },
+     get() {
+       return this._locale;
+-    }
++    },
+   }),
+ 
+   /**
+@@ -61,7 +62,7 @@ export default Service.extend(Evented, {
+    * @property primaryLocale
+    * @public
+    */
+-  primaryLocale: computed.readOnly('locale.0'),
++  primaryLocale: readOnly('locale.0'),
+ 
+   /** @public **/
+   formatRelative: formatter('relative'),
+@@ -84,7 +85,7 @@ export default Service.extend(Evented, {
+    * @property locales
+    * @public
+    */
+-  locales: computed.readOnly('_adapter.locales'),
++  locales: readOnly('_adapter.locales'),
+ 
+   /** @public **/
+   init() {
+@@ -92,7 +93,7 @@ export default Service.extend(Evented, {
+ 
+     if (typeof Intl === 'undefined') {
+       warn(`[ember-intl] Intl API was not found.\nSee: ${links.polyfill}`, false, {
+-        id: 'ember-intl-undefined-intljs'
++        id: 'ember-intl-undefined-intljs',
+       });
+     }
+ 
+@@ -107,7 +108,7 @@ export default Service.extend(Evented, {
+       relative: new FormatRelative(),
+       number: new FormatNumber(),
+       time: new FormatTime(),
+-      date: new FormatDate()
++      date: new FormatDate(),
+     };
+ 
+     if (!this.formats) {
+@@ -171,7 +172,7 @@ export default Service.extend(Evented, {
+ 
+     assert(`[ember-intl] locale is unset, cannot lookup '${key}'`, Array.isArray(localeNames) && localeNames.length);
+ 
+-    return localeNames.some(localeName => this._adapter.has(localeName, key));
++    return localeNames.some((localeName) => this._adapter.has(localeName, key));
+   },
+ 
+   /** @public */
+@@ -237,11 +238,11 @@ export default Service.extend(Evented, {
+       const html = dom.documentElement;
+       html.setAttribute('lang', primaryLocale);
+     }
+-  }
++  },
+ });
+ 
+ function formatter(name) {
+-  return function(value, options, formats) {
++  return function (value, options, formats) {
+     let formatOptions = options;
+ 
+     if (options && typeof options.format === 'string') {
+@@ -250,7 +251,7 @@ function formatter(name) {
+ 
+     return this._formatters[name].format(value, formatOptions, {
+       formats: formats || this.formats,
+-      locale: this.localeWithDefault(formatOptions && formatOptions.locale)
++      locale: this.localeWithDefault(formatOptions && formatOptions.locale),
+     });
+   };
+ }
