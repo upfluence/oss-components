@@ -100,7 +100,7 @@
     "babel-loader": "^8.1.0",
     "ember-cli": "~3.28.6",
     "ember-cli-inject-live-reload": "^2.1.0",
-    "ember-cli-typescript-blueprints": "muziejus/ember-cli-typescript-blueprints#ember-4-update",
+    "ember-cli-typescript-blueprints": "upfluence/ember-cli-typescript-blueprints#ember-4-update",
     "ember-disable-prototype-extensions": "^1.1.3",
     "ember-qunit": "6.1.1",
     "ember-resolver": "8.0.3",

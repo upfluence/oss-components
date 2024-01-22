@@ -77,8 +77,7 @@ const defaultArgs = {
 
 const Template = (args) => ({
   template: hbs`
-    <OSS::SocialPostBadge @postType={{this.postType}} @onToggle={{this.onToggle}} @selected={{this.selected}}
-                           @plain={{this.plain}}/>
+    <OSS::SocialPostBadge @postType={{this.postType}} @onToggle={{this.onToggle}} @selected={{this.selected}} @plain={{this.plain}}/>
   `,
   context: args
 });
