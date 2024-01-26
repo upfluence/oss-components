@@ -19,7 +19,6 @@ storybook-static
 /libpeerconnection.log
 npm-debug.log
 testem.log
-/yarn-error.log
 /package-lock.json
 ember-modules-codemod.*
 

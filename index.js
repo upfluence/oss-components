@@ -4,9 +4,12 @@
 const mergeTrees = require('broccoli-merge-trees');
 const Funnel = require('broccoli-funnel');
 const cacheKeyForTree = require('calculate-cache-key-for-tree');
+const path = require('path');
 const { name, version } = require('./package');
 
-const faPath = 'node_modules/@fortawesome/fontawesome-pro';
+const faPath = path.dirname(require.resolve('@fortawesome/fontawesome-pro/package.json'));
+const bootstrapPath = path.dirname(require.resolve('bootstrap/package.json'));
+const rangesliderPath = path.dirname(require.resolve('ion-rangeslider/package.json'));
 
 module.exports = {
   name,
@@ -16,35 +19,18 @@ module.exports = {
     return true;
   },
 
-  _registerLessDependencies(app) {
-    let lessOptions = app.options.lessOptions || {};
-
-    if (!lessOptions.paths) {
-      lessOptions.paths = [];
-    }
-
-    lessOptions.paths.push('node_modules/bootstrap/less');
-
-    app.options.lessOptions = lessOptions;
-  },
-
   options: {
     autoImport: {
       exclude: ['@storybook/addon-actions']
     }
   },
 
-  included: function (app) {
-    this._super.included.apply(this, app);
+  included() {
+    this._super.included.apply(this, arguments);
 
-    this._registerLessDependencies(app);
-
-    this.import('node_modules/bootstrap/dist/js/bootstrap.min.js');
-    this.import('node_modules/ion-rangeslider/js/ion.rangeSlider.min.js');
-    this.import('node_modules/ion-rangeslider/css/ion.rangeSlider.min.css');
-
-    this.import(`${faPath}/css/all.css`);
-    this.import(`${faPath}/css/v4-shims.min.css`);
+    this.import(`${bootstrapPath}/dist/js/bootstrap.min.js`);
+    this.import(`${rangesliderPath}/js/ion.rangeSlider.min.js`);
+    this.import(`${rangesliderPath}/css/ion.rangeSlider.min.css`);
   },
 
   treeForPublic() {

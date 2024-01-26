@@ -5,7 +5,7 @@ echo ""
 echo ""
 
 echo "[1/2] Running the linter"
-yarn lint:js
+pnpm lint:js
 if [ $? -ne 0 ]; then
  echo "[1/2] KO: Linter failed."
  echo "Aborting commit."
