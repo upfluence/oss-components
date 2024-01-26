@@ -2,6 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { click, render, triggerEvent, waitFor } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import { setupIntl } from 'ember-intl/test-support';
 import sinon from 'sinon';
 
 import MockUploader from '@upfluence/oss-components/test-support/services/uploader';
@@ -14,6 +15,7 @@ const file = new File(
 
 module('Integration | Component | o-s-s/upload-area', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
 
   hooks.beforeEach(function () {
     this.owner.register('service:uploader', MockUploader);
@@ -208,7 +210,6 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         ];
 
         const toastStub = sinon.stub(this.owner.lookup('service:toast'), 'error');
-        const intlService = this.owner.lookup('service:intl');
 
         await render(hbs`
           <OSS::UploadArea
@@ -221,15 +222,15 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
 
         assert.ok(
           toastStub.calledWith(
-            intlService.t(`oss-components.upload-area.errors.filetype.description`),
-            intlService.t(`oss-components.upload-area.errors.filetype.title`)
+            this.intl.t(`oss-components.upload-area.errors.filetype.description`),
+            this.intl.t(`oss-components.upload-area.errors.filetype.title`)
           )
         );
 
         assert.ok(
           toastStub.calledWith(
-            intlService.t(`oss-components.upload-area.errors.filesize.description`, { max_filesize: '1B' }),
-            intlService.t(`oss-components.upload-area.errors.filesize.title`)
+            this.intl.t('oss-components.upload-area.errors.filesize.description', { max_filesize: '1B' }),
+            this.intl.t('oss-components.upload-area.errors.filesize.title')
           )
         );
       });

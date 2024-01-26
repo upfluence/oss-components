@@ -1,7 +1,7 @@
+import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
 import triggerEvent from '@ember/test-helpers/dom/trigger-event';
 
 module('Integration | Component | o-s-s/attribute/text', function (hooks) {

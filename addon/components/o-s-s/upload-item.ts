@@ -2,12 +2,13 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
-import Uploader, {
-  FailedUploadResponse,
-  FileArtifact,
-  FilePrivacy,
-  FileValidator,
-  UploadRequest
+import {
+  type default as Uploader,
+  type FailedUploadResponse,
+  type FileArtifact,
+  type FilePrivacy,
+  type FileValidator,
+  type UploadRequest
 } from '@upfluence/oss-components/types/uploader';
 import { humanizeFilesize } from '@upfluence/oss-components/utils/filesize-parser';
 
@@ -61,7 +62,7 @@ export default class OSSUploadItem extends Component<OSSUploadItemArgs> {
 
   get icon(): string {
     const filetypeIconCategory = this._extractFileTypeCategory();
-    return filetypeIconCategory ? FA_ICON_PER_TYPE[filetypeIconCategory] : DEFAULT_FA_ICON;
+    return filetypeIconCategory ? FA_ICON_PER_TYPE[filetypeIconCategory]! : DEFAULT_FA_ICON;
   }
 
   get filename(): string {

@@ -3,12 +3,14 @@ import { setupRenderingTest } from 'ember-qunit';
 import { click, render, setupOnerror } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import sinon from 'sinon';
+import type RouterService from '@ember/routing/router-service';
 
 module('Integration | Helper | transition-to', function (hooks) {
   setupRenderingTest(hooks);
 
   hooks.beforeEach(function () {
-    this.transitionToStub = sinon.stub(this.owner.lookup('service:router'), 'transitionTo');
+    const router = this.owner.lookup('service:router') as RouterService;
+    this.transitionToStub = sinon.stub(router, 'transitionTo');
   });
 
   module('only a route has been passed', function () {

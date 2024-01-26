@@ -63,9 +63,9 @@ export default class OSSStarRating extends Component<OSSStarRatingArgs> {
   @action
   onMouseEnter(index: number): void {
     if (this.args.onChange && index + 1 !== this.args.rating) {
-      for (let i = 0; i < this.args.totalStars; ++i) {
-        set(this.stars[i], 'type', i <= index ? 'solid' : 'regular');
-      }
+      this.stars.forEach((star: Star, i: number) => {
+        set(star, 'type', i <= index ? 'solid' : 'regular');
+      });
     }
   }
 

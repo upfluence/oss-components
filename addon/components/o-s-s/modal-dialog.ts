@@ -1,7 +1,7 @@
 import { assert } from '@ember/debug';
 import { tracked } from '@glimmer/tracking';
 import Component from '@glimmer/component';
-import BaseModal, { BaseModalArgs } from './private/base-modal';
+import BaseModal, { type BaseModalArgs } from './private/base-modal';
 
 export interface OSSModalDialogArgs extends BaseModalArgs {
   title: string;

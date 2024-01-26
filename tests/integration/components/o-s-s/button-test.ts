@@ -1,7 +1,7 @@
+import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, click, setupOnerror, waitUntil } from '@ember/test-helpers';
-import hbs from 'htmlbars-inline-precompile';
 
 import sinon from 'sinon';
 
@@ -115,9 +115,9 @@ module('Integration | Component | o-s-s/button', function (hooks) {
   module('it renders with loading state', function () {
     test('when using default loading', async function (assert) {
       await render(hbs`<OSS::Button @size="sm" @loading="true" @label="Test" />`);
-      const btn = document.querySelector('.upf-btn');
-
-      assert.equal(btn?.children[0].className, 'fas fa-circle-notch fa-spin');
+      assert.dom('.upf-btn i.fas').exists();
+      assert.dom('.upf-btn i.fas').hasClass('fa-circle-notch');
+      assert.dom('.upf-btn i.fas').hasClass('fa-spin');
     });
   });
 
