@@ -4,7 +4,7 @@
 
 SHELL := /bin/bash
 
-all:	clear upfluence yarn_link_ls echo start ## Runs yarn_link_ls & starts the dev server
+all:	clear upfluence echo start ## Starts the dev server
 
 clear:
 	@clear
@@ -35,11 +35,6 @@ tests: ## Runs tests once
 testserver: ## Runs the test server
 	@echo "Starting Test Server"
 	pnpm ember test -s
-
-yarn_link_ls: ## Displays all the current projects linked using 'yarn link'
-	@echo Checking for yarn-links
-	@echo $(shell a=`find node_modules node_modules/\@* -maxdepth 1 -type l -print`; if [[ -n $$a ]]; then echo $$a; else echo "There are no linked modules."; fi)
-	@echo ""; echo "-------------------------------"; echo ""
 
 enable_pre_hook: ## Enables git pre-hook on the project. Will run Linter & Tests before pushing.
 	@echo "Installing git pre-push hook"
