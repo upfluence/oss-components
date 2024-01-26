@@ -5,21 +5,29 @@ import { assert } from '@ember/debug';
 
 type Mode = 'view' | 'edition';
 
-interface OSSAttributesPanelArgs {
-  title: string;
-  icon?: string;
-  isSaveDisabled?: boolean;
-  customEditIcon?: string;
-  onSave(): Promise<void>;
-  onEdit?(): void;
-  onCancel?(): void;
+interface OSSAttributesPanelSignature {
+  Args: {
+    title: string;
+    icon?: string;
+    isSaveDisabled?: boolean;
+    customEditIcon?: string;
+    onSave(): Promise<void>;
+    onEdit?(): void;
+    onCancel?(): void;
+  };
+  Blocks: {
+    'contextual-action': [];
+    'edition-mode': [];
+    'view-mode': [];
+  };
+  Element: HTMLDivElement;
 }
 
-export default class OSSAttributesPanel extends Component<OSSAttributesPanelArgs> {
+export default class OSSAttributesPanelComponent extends Component<OSSAttributesPanelSignature> {
   @tracked modeSelected: Mode = 'view';
   @tracked isLoading: boolean = false;
 
-  constructor(owner: unknown, args: OSSAttributesPanelArgs) {
+  constructor(owner: unknown, args: OSSAttributesPanelSignature['Args']) {
     super(owner, args);
 
     assert('[component][OSS::AttributesPanel] The @title parameter is mandatory', typeof args.title === 'string');
@@ -61,5 +69,12 @@ export default class OSSAttributesPanel extends Component<OSSAttributesPanelArgs
         .catch(() => {})
         .finally(() => (this.isLoading = false));
     }
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::AttributesPanel': typeof OSSAttributesPanelComponent;
+    'o-s-s/attributes-panel': typeof OSSAttributesPanelComponent;
   }
 }

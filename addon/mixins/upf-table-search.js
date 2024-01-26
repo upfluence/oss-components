@@ -18,7 +18,7 @@ export default Mixin.create({
           });
         let collection = get(this, this.get('searchCollection')).filterBy('isNew', false);
 
-        if (searchWords === []) {
+        if (searchWords.length === 0) {
           return collection;
         }
 

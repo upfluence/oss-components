@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, setupOnerror } from '@ember/test-helpers';
+import { render, setupOnerror, type TestContext } from '@ember/test-helpers';
 
 import { SkinDefinition } from '@upfluence/oss-components/components/o-s-s/badge';
 
@@ -28,7 +28,7 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
     Object.keys(SkinDefinition).forEach((skin) => {
       test(`it sets the right class when using a supported skin: ${skin}`, async function (assert: Assert) {
         this.skin = skin;
-        await render(hbs`<OSS::Badge @skin={{this.skin}} @text="2x" />`);
+        await render<TestContext>(hbs`<OSS::Badge @skin={{this.skin}} @text="2x" />`);
 
         assert.dom('.upf-badge').exists();
         assert
@@ -78,7 +78,7 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::Badge @skin="foo" @text="2x" />`);
+      await render(hbs`{{!-- @glint-nocheck --}}<OSS::Badge @skin="foo" @text="2x" />`);
     });
 
     test('it throws an error when an unsupported size is passed', async function (assert: Assert) {
@@ -89,7 +89,7 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::Badge @size="foo" @text="2x" />`);
+      await render(hbs`{{!-- @glint-nocheck --}}<OSS::Badge @size="foo" @text="2x" />`);
     });
 
     test('it throws an error if no argument is passed', async function (assert: Assert) {

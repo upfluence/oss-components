@@ -14,13 +14,16 @@ type Item = {
   code?: string;
 };
 
-interface OSSCountrySelectorArgs {
-  sourceList: Item[];
-  value?: string;
-  onChange(item: Item | null): void;
+interface OSSCountrySelectorSignature {
+  Args: {
+    sourceList: Item[];
+    value?: string;
+    onChange(item: Item | null): void;
+  };
+  Element: HTMLDivElement;
 }
 
-export default class OSSCountrySelector extends Component<OSSCountrySelectorArgs> {
+export default class OSSCountrySelectorComponent extends Component<OSSCountrySelectorSignature> {
   @service intl: any;
 
   @tracked dropdownVisibility: boolean = false;
@@ -28,7 +31,7 @@ export default class OSSCountrySelector extends Component<OSSCountrySelectorArgs
 
   @tracked elementId: string = guidFor(this);
 
-  constructor(owner: unknown, args: OSSCountrySelectorArgs) {
+  constructor(owner: unknown, args: OSSCountrySelectorSignature['Args']) {
     super(owner, args);
 
     assert(
@@ -100,5 +103,12 @@ export default class OSSCountrySelector extends Component<OSSCountrySelectorArgs
 
   private _matchValueWithSourceList(): void {
     if (this.selectedCountry) this.onItemSelected(this.selectedCountry);
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::CountrySelector': typeof OSSCountrySelectorComponent;
+    'o-s-s/country-selector': typeof OSSCountrySelectorComponent;
   }
 }

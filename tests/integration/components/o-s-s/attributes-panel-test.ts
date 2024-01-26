@@ -17,22 +17,23 @@ module('Integration | Component | o-s-s/attributes-panel', function (hooks) {
   });
 
   test('it renders', async function (assert) {
-    await render(hbs`<OSS::AttributesPanel @icon={{this.icon}} @title={{this.title}} @onSave={{this.onSave}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::AttributesPanel @icon={{this.icon}} @title={{this.title}} @onSave={{this.onSave}} />`);
     assert.dom('.attributes-panel').exists();
   });
 
   test('it renders the icon', async function (assert) {
-    await render(hbs`<OSS::AttributesPanel @icon={{this.icon}} @title={{this.title}} @onSave={{this.onSave}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::AttributesPanel @icon={{this.icon}} @title={{this.title}} @onSave={{this.onSave}} />`);
     assert.dom('.attributes-panel .fa-laptop-code').exists();
   });
 
   test('it renders the title', async function (assert) {
-    await render(hbs`<OSS::AttributesPanel @icon={{this.icon}} @title={{this.title}} @onSave={{this.onSave}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::AttributesPanel @icon={{this.icon}} @title={{this.title}} @onSave={{this.onSave}} />`);
     assert.dom('.attributes-panel span').hasText('Title');
   });
 
   test('it renders the contextual-action named block', async function (assert) {
     await render(hbs`
+      {{! @glint-nocheck: not typesafe yet }}
       <OSS::AttributesPanel @icon={{this.icon}} @title={{this.title}} @onSave={{this.onSave}}>
         <:contextual-action>
           <OSS::Button @icon="fa-plus" @square={{true}} />
@@ -73,6 +74,7 @@ module('Integration | Component | o-s-s/attributes-panel', function (hooks) {
 
     async function renderComponent() {
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::AttributesPanel @icon={{this.icon}} @title={{this.title}} @onSave={{this.onSave}} @onEdit={{this.onEdit}}>
           <:view-mode>
             <div class="custom-view-mode">View mode</div>
@@ -179,6 +181,7 @@ module('Integration | Component | o-s-s/attributes-panel', function (hooks) {
 
     async function renderComponentAndClickOnEdit() {
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::AttributesPanel @icon={{this.icon}} @title={{this.title}} @onSave={{this.onSave}} @onEdit={{this.onEdit}}
                               @onCancel={{this.onCancel}} @isSaveDisabled={{this.isSaveDisabled}}>
           <:contextual-action><div class="custom-contextual-action"></div></:contextual-action>
@@ -198,7 +201,7 @@ module('Integration | Component | o-s-s/attributes-panel', function (hooks) {
         'Assertion Failed: [component][OSS::AttributesPanel] The @title parameter is mandatory'
       );
     });
-    await render(hbs`<OSS::AttributesPanel @onSave={{this.onSave}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::AttributesPanel @onSave={{this.onSave}} />`);
   });
 
   test('it throws an error if @onSave is missing', async function (assert) {
@@ -208,6 +211,6 @@ module('Integration | Component | o-s-s/attributes-panel', function (hooks) {
         'Assertion Failed: [component][OSS::AttributesPanel] The @onSave parameter is mandatory'
       );
     });
-    await render(hbs`<OSS::AttributesPanel @title={{this.title}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::AttributesPanel @title={{this.title}} />`);
   });
 });

@@ -24,7 +24,7 @@ module('Integration | Helper | stop-propagation', function (hooks) {
       assert.ok(event instanceof MouseEvent)
     };
 
-    await render(hbs`<button {{on "click" (stop-propagation (fn this.onClick "foo"))}}>stop propagation</button>`);
+    await render(hbs`{{! @glint-nocheck }}<button {{on "click" (stop-propagation (fn this.onClick "foo"))}}>stop propagation</button>`);
     await click('button');
     assert.expect(3);
   });

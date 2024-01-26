@@ -19,7 +19,8 @@ module('Integration | Component | o-s-s/access-panel', function(hooks) {
 
   async function renderComponent() {
     await render(
-      hbs`<OSS::AccessPanel
+      hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::AccessPanel
           @records={{this.records}} @loading={{this.loading}} @initialLoad={{this.initialLoad}}
           @onBottomReached={{this.loadMore}} @onSearch={{this.onSearch}} @onClose={{this.onClose}}>
             <:header>Header</:header>

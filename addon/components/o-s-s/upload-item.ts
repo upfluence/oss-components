@@ -12,17 +12,19 @@ import {
 } from '@upfluence/oss-components/types/uploader';
 import { humanizeFilesize } from '@upfluence/oss-components/utils/filesize-parser';
 
-interface OSSUploadItemArgs {
-  uploader: Uploader;
-  file: File | FileArtifact;
-  rules: FileValidator[];
-  privacy: FilePrivacy;
-  scope: string;
-  displayPreview?: boolean;
-  onEdition(): void;
-  onDeletion(): void;
-  onUploadSuccess(artifact: FileArtifact): void;
-  onUploadFailure?(error: FailedUploadResponse): void;
+interface OSSUploadItemSignature {
+  Args: {
+    uploader: Uploader;
+    file: File | FileArtifact;
+    rules: FileValidator[];
+    privacy: FilePrivacy;
+    scope: string;
+    displayPreview?: boolean;
+    onEdition(): void;
+    onDeletion(): void;
+    onUploadSuccess(artifact: FileArtifact): void;
+    onUploadFailure?(error: FailedUploadResponse): void;
+  };
 }
 
 const FA_ICON_PER_TYPE: { [key: string]: string } = {
@@ -33,7 +35,7 @@ const FA_ICON_PER_TYPE: { [key: string]: string } = {
 
 const DEFAULT_FA_ICON = 'far fa-file-alt';
 
-export default class OSSUploadItem extends Component<OSSUploadItemArgs> {
+export default class OSSUploadItemComponent extends Component<OSSUploadItemSignature> {
   @tracked fileUrl: string = '';
   @tracked uploading: boolean = false;
   @tracked uploadProgress: number = 0;
@@ -41,7 +43,7 @@ export default class OSSUploadItem extends Component<OSSUploadItemArgs> {
 
   request?: UploadRequest;
 
-  constructor(owner: unknown, args: OSSUploadItemArgs) {
+  constructor(owner: unknown, args: OSSUploadItemSignature['Args']) {
     super(owner, args);
 
     if (args.file instanceof File) {
@@ -131,5 +133,12 @@ export default class OSSUploadItem extends Component<OSSUploadItemArgs> {
     if (mimetype === 'application/pdf') return 'pdf';
 
     return null;
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::UploadItem': typeof OSSUploadItemComponent;
+    'o-s-s/upload-item': typeof OSSUploadItemComponent;
   }
 }

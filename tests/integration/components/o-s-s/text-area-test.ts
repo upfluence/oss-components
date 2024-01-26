@@ -14,7 +14,7 @@ module('Integration | Component | o-s-s/text-area', function (hooks) {
   });
 
   test('it renders', async function (assert) {
-    await render(hbs`<OSS::TextArea @label='test' />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::TextArea @label='test' />`);
     assert.dom('.oss-textarea-container').exists();
   });
 
@@ -28,7 +28,7 @@ module('Integration | Component | o-s-s/text-area', function (hooks) {
 
     test('When resize is vertical should have class resize-v', async function (assert) {
       this.resize = 'vertical';
-      await render(hbs`<OSS::TextArea @resize={{this.resize}}/>`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::TextArea @resize={{this.resize}}/>`);
       assert.dom(this.textareaSelector).hasClass('oss-textarea--resize-v');
       assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-h');
       assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-none');
@@ -36,7 +36,7 @@ module('Integration | Component | o-s-s/text-area', function (hooks) {
 
     test('When resize is horizontal should have class resize-h', async function (assert) {
       this.resize = 'horizontal';
-      await render(hbs`<OSS::TextArea @resize={{this.resize}}/>`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::TextArea @resize={{this.resize}}/>`);
       assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-v');
       assert.dom(this.textareaSelector).hasClass('oss-textarea--resize-h');
       assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-none');
@@ -44,7 +44,7 @@ module('Integration | Component | o-s-s/text-area', function (hooks) {
 
     test('When resize is none should have class resize-none', async function (assert) {
       this.resize = 'none';
-      await render(hbs`<OSS::TextArea @resize={{this.resize}}/>`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::TextArea @resize={{this.resize}}/>`);
       assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-v');
       assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-h');
       assert.dom(this.textareaSelector).hasClass('oss-textarea--resize-none');
@@ -60,7 +60,7 @@ module('Integration | Component | o-s-s/text-area', function (hooks) {
 
     test('Row change height', async function (assert) {
       this.rows = 2;
-      await render(hbs`<OSS::TextArea @rows={{this.rows}}/>`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::TextArea @rows={{this.rows}}/>`);
 
       const twoRowHeight = document.querySelector(this.textareaSelector).offsetHeight;
       assert.ok(twoRowHeight > 36);
@@ -75,7 +75,7 @@ module('Integration | Component | o-s-s/text-area', function (hooks) {
   test('When the field is updated, the @onChange method is called', async function (assert) {
     this.onChange = sinon.spy();
 
-    await render(hbs`<OSS::TextArea @value={{this.value}} @onChange={{this.onChange}}/>`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::TextArea @value={{this.value}} @onChange={{this.onChange}}/>`);
     await typeIn(this.textareaSelector, 'b');
 
     assert.ok(this.onChange.calledOnceWithExactly('Datab'));
@@ -105,7 +105,7 @@ module('Integration | Component | o-s-s/text-area', function (hooks) {
       });
 
       this.resize = 'NotACorrectValue';
-      await render(hbs`<OSS::TextArea @resize={{this.resize}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::TextArea @resize={{this.resize}} />`);
     });
   });
 });

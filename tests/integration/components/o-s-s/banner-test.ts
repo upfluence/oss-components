@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { render, type TestContext } from '@ember/test-helpers';
 
 module('Integration | Component | o-s-s/banner', function (hooks) {
   setupRenderingTest(hooks);
@@ -21,7 +21,7 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
   test('passing an image url in the @image parameter displays the image in a rounded badge', async function (assert) {
     this.url =
       'https://thepressfree.com/wp-content/uploads/2021/11/Voici-pourquoi-Bruce-Banner-netait-plus-Smart-Hulk-dans-la-800x445.jpg';
-    await render(hbs`<OSS::Banner @image={{this.url}} />`);
+    await render<TestContext>(hbs`<OSS::Banner @image={{this.url}} />`);
 
     assert.dom('.upf-banner img').exists();
     assert.dom('img').hasAttribute('src', this.url);

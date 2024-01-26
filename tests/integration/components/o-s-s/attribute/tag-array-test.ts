@@ -21,7 +21,7 @@ module('Integration | Component | o-s-s/attribute/tag-array', function (hooks) {
 
   test('If @tags are passed to the component, they are displayed', async function (assert) {
     this.tags = ['watermelon', 'vodkamelon', 'whiskeymelon', 'tequilamelon'];
-    await render(hbs`<OSS::Attribute::TagArray @label="Fruits" @tags={{this.tags}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Attribute::TagArray @label="Fruits" @tags={{this.tags}} />`);
 
     assert.dom('.oss-attribute__value .fx-row.fx-wrap').exists();
     const allUpfTags = findAll('.upf-tag');

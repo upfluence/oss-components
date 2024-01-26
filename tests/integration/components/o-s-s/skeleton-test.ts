@@ -21,7 +21,7 @@ module('Integration | Component | o-s-s/skeleton', function (hooks) {
     test('The style height should correspond to parameter value', async function (assert) {
       this.height = 400;
 
-      await render(hbs`<OSS::Skeleton @height={{this.height}}/>`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Skeleton @height={{this.height}}/>`);
 
       assert.dom('.upf-skeleton-effect').hasStyle({ height: '400px' });
     });
@@ -37,7 +37,7 @@ module('Integration | Component | o-s-s/skeleton', function (hooks) {
     test('The style width should correspond to parameter value', async function (assert) {
       this.width = 400;
 
-      await render(hbs`<OSS::Skeleton @width={{this.width}}/>`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Skeleton @width={{this.width}}/>`);
 
       assert.dom('.upf-skeleton-effect').hasStyle({ width: '400px' });
     });
@@ -53,7 +53,7 @@ module('Integration | Component | o-s-s/skeleton', function (hooks) {
     test('The has class corresponding to gap', async function (assert) {
       this.gap = 12;
 
-      await render(hbs`<OSS::Skeleton @gap={{this.gap}} @multiple={{2}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Skeleton @gap={{this.gap}} @multiple={{2}} />`);
 
       assert.dom('.fx-1').hasClass('fx-gap-px-12');
     });
@@ -71,7 +71,7 @@ module('Integration | Component | o-s-s/skeleton', function (hooks) {
     test('The content has multiple skeleton effect', async function (assert) {
       this.multiple = 4;
 
-      await render(hbs`<OSS::Skeleton @multiple={{this.multiple}}/>`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Skeleton @multiple={{this.multiple}}/>`);
 
       let items = findAll('.upf-skeleton-effect');
 
@@ -86,7 +86,7 @@ module('Integration | Component | o-s-s/skeleton', function (hooks) {
     });
 
     test('Default randomize is false', async function (assert) {
-      await render(hbs`<OSS::Skeleton @width={{this.width}}/>`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Skeleton @width={{this.width}}/>`);
 
       let item = find('.upf-skeleton-effect') as HTMLElement;
 
@@ -94,7 +94,7 @@ module('Integration | Component | o-s-s/skeleton', function (hooks) {
     });
 
     test('Randomize width is within a 15% range', async function (assert) {
-      await render(hbs`<OSS::Skeleton @multiple={{this.multiple}} @width={{this.width}} @randomize={{true}}/>`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Skeleton @multiple={{this.multiple}} @width={{this.width}} @randomize={{true}}/>`);
 
       let item = find('.upf-skeleton-effect') as HTMLElement;
 
@@ -103,13 +103,13 @@ module('Integration | Component | o-s-s/skeleton', function (hooks) {
   });
 
   test('@direction default value is row', async function (assert) {
-    await render(hbs`<OSS::Skeleton @multiple="3" />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Skeleton @multiple="3" />`);
 
     assert.dom('.fx-1').hasClass(`fx-row`);
   });
 
   test('@direction value is column if specified', async function (assert) {
-    await render(hbs`<OSS::Skeleton @direction="column" @multiple="2" />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Skeleton @direction="column" @multiple="2" />`);
 
     assert.dom('.fx-1').hasClass(`fx-col`);
   });
@@ -135,7 +135,7 @@ module('Integration | Component | o-s-s/skeleton', function (hooks) {
           'Assertion Failed: [component][OSS::Skeleton] The @direction argument should be a value of row,column,col'
         );
       });
-      await render(hbs`<OSS::Skeleton @direction="toto"/>`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::Skeleton @direction="toto"/>`);
     });
   });
 });

@@ -19,7 +19,8 @@ module('Integration | Component | o-s-s/togglable-section', function (hooks) {
   });
 
   test('it renders', async function (assert) {
-    await render(hbs`<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
+    await render(hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
                                                  @iconUrl={{this.iconUrl}} @toggled={{this.toggled}}
                                                  @onChange={{this.onChange}} />`);
     assert.dom('.togglable-section').exists();
@@ -29,7 +30,8 @@ module('Integration | Component | o-s-s/togglable-section', function (hooks) {
     setupOnerror((err: any) => {
       assert.equal(err.message, 'Assertion Failed: [OSS::TogglableSection] The @title parameter is mandatory');
     });
-    await render(hbs`<OSS::TogglableSection @subtitle={{this.subtitle}}
+    await render(hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::TogglableSection @subtitle={{this.subtitle}}
                                                  @iconUrl={{this.iconUrl}} @toggled={{this.toggled}}
                                                  @onChange={{this.onChange}} />`);
   });
@@ -38,7 +40,8 @@ module('Integration | Component | o-s-s/togglable-section', function (hooks) {
     setupOnerror((err: any) => {
       assert.equal(err.message, 'Assertion Failed: [OSS::TogglableSection] The @toggled parameter is mandatory');
     });
-    await render(hbs`<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
+    await render(hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
                                                  @iconUrl={{this.iconUrl}}
                                                  @onChange={{this.onChange}} />`);
   });
@@ -47,12 +50,14 @@ module('Integration | Component | o-s-s/togglable-section', function (hooks) {
     setupOnerror((err: any) => {
       assert.equal(err.message, 'Assertion Failed: [OSS::TogglableSection] The @onChange function is mandatory');
     });
-    await render(hbs`<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
+    await render(hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
                                                  @iconUrl={{this.iconUrl}} @toggled={{this.toggled}} />`);
   });
 
   test('It displays no image if @iconUrl param is not passed', async function (assert) {
-    await render(hbs`<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
+    await render(hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
                                                  @toggled={{this.toggled}}
                                                  @onChange={{this.onChange}} />`);
     assert.dom('img').doesNotExist();
@@ -60,14 +65,15 @@ module('Integration | Component | o-s-s/togglable-section', function (hooks) {
 
   test('It displays a font-awesome icon if the @icon parameter is filled in', async function (assert) {
     await render(
-      hbs`<OSS::TogglableSection @title="title" @icon="far fa-hourglass" @onChange={{this.onChange}} @toggled={{false}} />`
+      hbs`{{! @glint-nocheck }}<OSS::TogglableSection @title="title" @icon="far fa-hourglass" @onChange={{this.onChange}} @toggled={{false}} />`
     );
     assert.dom('.far.fa-hourglass').exists();
   });
 
   module('Toggle behavior', () => {
     async function renderComponent() {
-      await render(hbs`<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
+      await render(hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
                                               @iconUrl={{this.iconUrl}} @toggled={{this.toggled}}
                                               @onChange={{this.onChange}}>
                         <:contents>

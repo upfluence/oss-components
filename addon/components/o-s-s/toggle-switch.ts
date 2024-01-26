@@ -2,8 +2,17 @@ import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 
-export default class OSSToggleSwitchComponent extends Component {
-  constructor(owner, args) {
+interface OSSToggleSwitchSignature {
+  Args: {
+    value: boolean;
+    disabled?: boolean;
+    onChange(value: boolean, event: PointerEvent): void;
+  };
+  Element: HTMLDivElement;
+}
+
+export default class OSSToggleSwitchComponent extends Component<OSSToggleSwitchSignature> {
+  constructor(owner: unknown, args: OSSToggleSwitchSignature['Args']) {
     super(owner, args);
 
     assert('[component][OSS::ToggleSwitch] Please provide an onChange action', args.onChange);
@@ -18,9 +27,15 @@ export default class OSSToggleSwitchComponent extends Component {
   }
 
   @action
-  switchState(event) {
+  switchState(event: PointerEvent) {
     if (!this.args.disabled) {
       this.args.onChange(!this.args.value, event);
     }
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::ToggleSwitch': typeof OSSToggleSwitchComponent;
   }
 }

@@ -53,7 +53,7 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
     this.validates = (x: boolean) => {
       assert.equal(x, true);
     };
-    await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
     await typeIn('input', 'a');
   });
 
@@ -62,13 +62,13 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
     this.validates = (x: boolean) => {
       assert.equal(x, false);
     };
-    await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
     await typeIn('input', 'a');
   });
 
   test('The password validation is not enabled if the @validates method is not passed', async function (assert) {
     this.value = '';
-    await render(hbs`<OSS::PasswordInput @value={{this.value}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::PasswordInput @value={{this.value}} />`);
     await typeIn('input', 'az');
     assert.dom('.text-color-error').doesNotExist();
     assert.dom('[data-control-name="password-input-validators"]').doesNotExist();
@@ -76,20 +76,20 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
 
   test('If the @validates method is passed, the validators states are visible', async function (assert) {
     this.value = '';
-    await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
     assert.dom('[data-control-name="password-input-validators"]').exists();
   });
 
   module('Validators', () => {
     test('Uppercase - if no uppercase character is inputed, a validator error is shown', async function (assert) {
       this.value = 'aze';
-      await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
       assert.dom('[data-control-name="password-input-validator-uppercase"] i.visible').hasClass('font-color-error-500');
     });
 
     test('Uppercase - if an uppercase character is inputed, a validator success is shown', async function (assert) {
       this.value = 'AZE';
-      await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
       assert
         .dom('[data-control-name="password-input-validator-uppercase"] i.visible')
         .hasClass('font-color-success-500');
@@ -97,31 +97,31 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
 
     test('Number - if no number is inputed, a validator error is shown', async function (assert) {
       this.value = 'aze';
-      await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
       assert.dom('[data-control-name="password-input-validator-number"] i.visible').hasClass('font-color-error-500');
     });
 
     test('Uppercase - if a number is inputed, a validator success is shown', async function (assert) {
       this.value = '123';
-      await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
       assert.dom('[data-control-name="password-input-validator-number"] i.visible').hasClass('font-color-success-500');
     });
 
     test('Length - if the password is not at least 8 characters long, a validator error is shown', async function (assert) {
       this.value = '123';
-      await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
       assert.dom('[data-control-name="password-input-validator-length"] i.visible').hasClass('font-color-error-500');
     });
 
     test('Length - if the password has 8 characters, a validator success is shown', async function (assert) {
       this.value = '12345678';
-      await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
       assert.dom('[data-control-name="password-input-validator-length"] i.visible').hasClass('font-color-success-500');
     });
 
     test('When all validators are matched, the @validates method sends a truthy argument', async function (assert) {
       this.value = '123azeAZE';
-      await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}} />`);
       await typeIn('input', 'a');
       assert.true(this.validates.calledOnceWith(true));
     });
@@ -136,21 +136,24 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
 
     test('The custom validator is visible', async function (assert) {
       this.value = '';
-      await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}}
+      await render(hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}}
                                            @validatorSet={{this.validatorSet}} />`);
       assert.dom('[data-control-name="password-input-validator-lowercase"]').exists();
     });
 
     test('Lowercase - if no lowercase character is inputed, a validator error is shown', async function (assert) {
       this.value = 'AZE';
-      await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}}
+      await render(hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}}
                                            @validatorSet={{this.validatorSet}} />`);
       assert.dom('[data-control-name="password-input-validator-lowercase"] i.visible').hasClass('font-color-error-500');
     });
 
     test('Lowercase - if an lowercase character is inputed, a validator success is shown', async function (assert) {
       this.value = 'aze';
-      await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}}
+      await render(hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}}
                                            @validatorSet={{this.validatorSet}} />`);
       assert
         .dom('[data-control-name="password-input-validator-lowercase"] i.visible')
@@ -159,7 +162,8 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
 
     test('When all validators are matched, the @validates method sends a truthy argument', async function (assert) {
       this.value = '123azeAZE';
-      await render(hbs`<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}}
+      await render(hbs`{{! @glint-nocheck: not typesafe yet }}
+<OSS::PasswordInput @value={{this.value}} @validates={{this.validates}}
                                            @validatorSet={{this.validatorSet}} />`);
       await typeIn('input', 'a');
       assert.true(this.validates.calledOnceWith(true));
@@ -171,6 +175,6 @@ module('Integration | Component | o-s-s/password-input', function (hooks) {
       assert.equal(err.message, 'Assertion Failed: [component][OSS::PasswordInput] The @value parameter is mandatory');
     });
 
-    await render(hbs`<OSS::PasswordInput />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::PasswordInput />`);
   });
 });

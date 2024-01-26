@@ -28,15 +28,18 @@ export const skinMatching: skinDefinitionType = {
   twitch_stream: 'fab fa-twitch'
 };
 
-interface OSSSocialPostBadgeArgs {
-  postType: SocialPostType;
-  selected?: boolean;
-  plain?: boolean;
-  onToggle?(postType: string): void;
+interface OSSSocialPostBadgeSignature {
+  Args: {
+    postType: SocialPostType;
+    selected?: boolean;
+    plain?: boolean;
+    onToggle?(postType: string): void;
+  };
+  Element: HTMLDivElement;
 }
 
-export default class OSSSocialPostBadge extends Component<OSSSocialPostBadgeArgs> {
-  constructor(owner: unknown, args: OSSSocialPostBadgeArgs) {
+export default class OSSSocialPostBadgeComponent extends Component<OSSSocialPostBadgeSignature> {
+  constructor(owner: unknown, args: OSSSocialPostBadgeSignature['Args']) {
     super(owner, args);
 
     assert(
@@ -73,5 +76,12 @@ export default class OSSSocialPostBadge extends Component<OSSSocialPostBadgeArgs
     event.stopPropagation();
 
     this.args.onToggle?.(this.args.postType);
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::SocialPostBadge': typeof OSSSocialPostBadgeComponent;
+    'o-s-s/social-post-badge': typeof OSSSocialPostBadgeComponent;
   }
 }

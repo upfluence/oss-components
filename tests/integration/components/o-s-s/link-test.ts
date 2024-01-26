@@ -59,6 +59,6 @@ module('Integration | Component | o-s-s/link', function (hooks) {
       );
     });
 
-    await render(hbs`<OSS::Link />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::Link />`);
   });
 });

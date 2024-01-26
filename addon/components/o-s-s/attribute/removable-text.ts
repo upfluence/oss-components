@@ -5,18 +5,21 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 
-interface OSSAttributeRemovableTextArgs {
-  label: string;
-  value?: string;
-  removeTooltip?: string;
-  onRemove(): Promise<unknown>;
+interface OSSAttributeRemovableTextSignature {
+  Args: {
+    label: string;
+    value?: string;
+    removeTooltip?: string;
+    onRemove(): Promise<unknown>;
+  };
+  Element: HTMLElement;
 }
 
-export default class OSSAttributeRemovableText extends Component<OSSAttributeRemovableTextArgs> {
+export default class OSSAttributeRemovableTextComponent extends Component<OSSAttributeRemovableTextSignature> {
   @service declare intl: any;
   @tracked loading: boolean = false;
 
-  constructor(owner: unknown, args: OSSAttributeRemovableTextArgs) {
+  constructor(owner: unknown, args: OSSAttributeRemovableTextSignature['Args']) {
     super(owner, args);
     assert('[component][OSS::Attribute::RemovableText] @label parameter is required', typeof args.label === 'string');
     assert(
@@ -37,5 +40,12 @@ export default class OSSAttributeRemovableText extends Component<OSSAttributeRem
   onRemove(): void {
     this.loading = true;
     this.args.onRemove().finally(() => (this.loading = false));
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::Attribute::RemovableText': typeof OSSAttributeRemovableTextComponent;
+    'o-s-s/attribute/removable-text': typeof OSSAttributeRemovableTextComponent;
   }
 }

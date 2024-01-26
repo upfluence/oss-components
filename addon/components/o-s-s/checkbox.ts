@@ -10,16 +10,19 @@ const SizeDefinition: SizeDefType = {
   sm: 'upf-checkbox--sm'
 };
 
-interface OSSCheckboxArgs {
-  checked: boolean;
-  partial?: boolean;
-  disabled?: boolean;
-  size?: SizeType;
-  onChange(value: boolean): void;
+interface OSSCheckboxSignature {
+  Args: {
+    checked: boolean;
+    partial?: boolean;
+    disabled?: boolean;
+    size?: SizeType;
+    onChange(value: boolean): void;
+  };
+  Element: HTMLDivElement;
 }
 
-export default class OSSCheckbox extends Component<OSSCheckboxArgs> {
-  constructor(owner: unknown, args: OSSCheckboxArgs) {
+export default class OSSCheckboxComponent extends Component<OSSCheckboxSignature> {
+  constructor(owner: unknown, args: OSSCheckboxSignature['Args']) {
     super(owner, args);
 
     assert('[component][OSS::Checkbox] Boolean @checked argument is mandatory.', typeof args.checked === 'boolean');
@@ -62,5 +65,12 @@ export default class OSSCheckbox extends Component<OSSCheckboxArgs> {
     if (!this.args.disabled) {
       this.args.onChange(!this.args.checked);
     }
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::Checkbox': typeof OSSCheckboxComponent;
+    'o-s-s/checkbox': typeof OSSCheckboxComponent;
   }
 }

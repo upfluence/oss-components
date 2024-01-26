@@ -143,7 +143,7 @@ module('Integration | Component | o-s-s/number-input', function (hooks) {
 
   test('The @onChange method receives the updated value', async function (assert) {
     this.onChange = sinon.stub();
-    await render(hbs`<OSS::NumberInput @value={{0}} @onChange={{this.onChange}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::NumberInput @value={{0}} @onChange={{this.onChange}} />`);
     await click('.upf-square-btn:nth-of-type(2)');
     assert.true(this.onChange.calledOnceWithExactly(1));
   });

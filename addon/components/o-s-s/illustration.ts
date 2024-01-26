@@ -22,11 +22,13 @@ export const extractCSSVars = (): string[] => {
     .filter((text) => !isBlank(text));
 };
 
-interface OSSIllustrationArgs {
-  src: string;
+interface OSSIllustrationSignature {
+  Args: {
+    src: string;
+  };
 }
 
-export default class OSSIllustration extends Component<OSSIllustrationArgs> {
+export default class OSSIllustrationComponent extends Component<OSSIllustrationSignature> {
   setupCSSVars(event: Event): void {
     const svgDocument = (<HTMLObjectElement>event.target).contentDocument?.querySelector('svg');
 
@@ -35,5 +37,12 @@ export default class OSSIllustration extends Component<OSSIllustrationArgs> {
       style.textContent = `:root { ${extractCSSVars().join(';')} }`;
       svgDocument.append(style);
     }
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::Illustration': typeof OSSIllustrationComponent;
+    'o-s-s/illustration': typeof OSSIllustrationComponent;
   }
 }

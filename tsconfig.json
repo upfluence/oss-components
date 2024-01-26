@@ -8,6 +8,7 @@
     "moduleResolution": "node",
     "strictFunctionTypes": false,
     "noPropertyAccessFromIndexSignature": false,
+    "allowJs": true,
     "paths": {
       "dummy/tests/*": ["tests/*"],
       "dummy/*": ["tests/dummy/app/*", "app/*"],
@@ -18,5 +19,11 @@
       "*": ["types/*"]
     }
   },
-  "include": ["app/**/*", "addon/**/*", "tests/**/*", "types/**/*", "test-support/**/*", "addon-test-support/**/*"]
+  "include": ["app/**/*", "addon/**/*", "tests/**/*", "types/**/*", "test-support/**/*", "addon-test-support/**/*"],
+  "glint": {
+    "environment": "ember-loose",
+    // Skip template-only components for the moment
+    // See: https://typed-ember.gitbook.io/glint/using-glint/_index#checkstandalonetemplates
+    "checkStandaloneTemplates": false
+  }
 }

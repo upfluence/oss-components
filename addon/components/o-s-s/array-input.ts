@@ -2,23 +2,26 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
-interface OSSArrayInputArgs {
-  values?: string[];
-  keyboardTriggers?: string[];
-  errorMessage?: string;
-  disabled?: boolean;
-  validator?: (value: string) => boolean;
-  onChange?: (values: string[]) => void;
-  placeholder?: string;
+interface OSSArrayInputSignature {
+  Args: {
+    values?: string[];
+    keyboardTriggers?: string[];
+    errorMessage?: string;
+    disabled?: boolean;
+    validator?: (value: string) => boolean;
+    onChange?: (values: string[]) => void;
+    placeholder?: string;
+  };
+  Element: HTMLDivElement;
 }
 
 const DEFAULT_KEYBOARD_TRIGGERS = ['Enter'];
 
-export default class OSSArrayInput extends Component<OSSArrayInputArgs> {
+export default class OSSArrayInputComponent extends Component<OSSArrayInputSignature> {
   @tracked currentValue = '';
   @tracked items: string[] = [];
 
-  constructor(owner: unknown, args: OSSArrayInputArgs) {
+  constructor(owner: unknown, args: OSSArrayInputSignature['Args']) {
     super(owner, args);
     if (this.args.values) {
       this.items = this.args.values;
@@ -95,5 +98,12 @@ export default class OSSArrayInput extends Component<OSSArrayInputArgs> {
     this.items.splice(index, 1);
     this._triggerComponentRedraw();
     this._onChange();
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::ArrayInput': typeof OSSArrayInputComponent;
+    'o-s-s/array-input': typeof OSSArrayInputComponent;
   }
 }

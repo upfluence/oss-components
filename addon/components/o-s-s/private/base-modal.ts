@@ -3,11 +3,13 @@ import { run } from '@ember/runloop';
 import { isTesting } from '@embroider/macros';
 import Component from '@glimmer/component';
 
-export interface BaseModalArgs {
-  close(): void;
+export interface OSSPrivateBaseModalSignature {
+  Args: {
+    close(): void;
+  };
 }
 
-export default class BaseModal extends Component<BaseModalArgs> {
+export default class OSSPrivateBaseModalComponent extends Component<OSSPrivateBaseModalSignature> {
   private declare _elem: HTMLElement;
   private declare _parent: HTMLElement;
   private prevBodyOverflow: string | null = null;

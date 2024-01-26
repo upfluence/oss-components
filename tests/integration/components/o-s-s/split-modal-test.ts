@@ -13,12 +13,12 @@ module('Integration | Component | o-s-s/split-modal', function (hooks) {
 
   test('it renders', async function (assert) {
     this.set('closeModal', sinon.stub());
-    await render(hbs`<OSS::SplitModal @close={{this.closeModal}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::SplitModal @close={{this.closeModal}} />`);
     assert.dom('.split-modal').exists();
   });
 
   test('The cross button at the top right of the modal closes the modal', async function (assert) {
-    await render(hbs`<OSS::SplitModal @close={{this.closeModal}} />`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::SplitModal @close={{this.closeModal}} />`);
 
     await click('.fa-times');
     assert.ok(this.closeModal.calledOnce);
@@ -27,6 +27,7 @@ module('Integration | Component | o-s-s/split-modal', function (hooks) {
   test('The content named-block is properly displayed', async function (assert) {
     await render(
       hbs`
+      {{! @glint-nocheck: not typesafe yet }}
       <OSS::SplitModal @close={{this.closeModal}}>
         <:content>
           <p>This is the content</p>
@@ -40,6 +41,7 @@ module('Integration | Component | o-s-s/split-modal', function (hooks) {
   test('The footer named-block is properly displayed', async function (assert) {
     await render(
       hbs`
+      {{! @glint-nocheck: not typesafe yet }}
       <OSS::SplitModal @close={{this.closeModal}}>
         <:footer>
           footer content
@@ -53,6 +55,7 @@ module('Integration | Component | o-s-s/split-modal', function (hooks) {
   test('The preview named-block is properly displayed', async function (assert) {
     await render(
       hbs`
+      {{! @glint-nocheck: not typesafe yet }}
       <OSS::SplitModal @close={{this.closeModal}}>
         <:preview>
           preview content
@@ -64,7 +67,7 @@ module('Integration | Component | o-s-s/split-modal', function (hooks) {
   });
 
   test('When the escape button is triggered, the modal is closed', async function (assert) {
-    await render(hbs`<OSS::SplitModal @close={{this.closeModal}}></OSS::SplitModal>`);
+    await render(hbs`{{! @glint-nocheck }}<OSS::SplitModal @close={{this.closeModal}}></OSS::SplitModal>`);
     await triggerKeyEvent('.oss-modal-dialog', 'keyup', 27);
     assert.true(this.closeModal.calledOnce);
   });
@@ -75,7 +78,7 @@ module('Integration | Component | o-s-s/split-modal', function (hooks) {
         assert.equal(err.message, 'Assertion Failed: [component][OSS::SplitModal] The close function is mandatory');
       });
 
-      await render(hbs`<OSS::SplitModal />`);
+      await render(hbs`{{! @glint-nocheck }}<OSS::SplitModal />`);
     });
   });
 });

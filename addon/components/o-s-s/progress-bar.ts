@@ -4,16 +4,19 @@ import { assert } from '@ember/debug';
 type ProgressBarSkins = 'warning' | 'success';
 type ProgressBarSizes = 'sm';
 
-interface OSSProgressBarArgs {
-  value: number;
-  label?: string;
-  displayValue?: boolean;
-  skin?: ProgressBarSkins;
-  size?: ProgressBarSizes;
+interface OSSProgressBarSignature {
+  Args: {
+    value: number;
+    label?: string;
+    displayValue?: boolean;
+    skin?: ProgressBarSkins;
+    size?: ProgressBarSizes;
+  };
+  Element: HTMLDivElement;
 }
 
-export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
-  constructor(owner: unknown, args: OSSProgressBarArgs) {
+export default class OSSProgressBarComponent extends Component<OSSProgressBarSignature> {
+  constructor(owner: unknown, args: OSSProgressBarSignature['Args']) {
     super(owner, args);
 
     assert(
@@ -38,5 +41,12 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
 
   get progressBarWidthStyle(): string {
     return `width: ${this.args.value + '%'}; --progress-bar-animation-width: ${this.args.value + '%'};`;
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::ProgressBar': typeof OSSProgressBarComponent;
+    'o-s-s/progress-bar': typeof OSSProgressBarComponent;
   }
 }

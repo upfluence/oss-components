@@ -2,18 +2,21 @@ import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 
-interface OSSTextAreaArgs {
-  rows?: number;
-  resize?: 'vertical' | 'horizontal' | 'none';
-  value?: string;
-  disabled?: boolean;
-  errorMessage?: string;
-  placeholder?: string;
-  onChange?(value: string): void;
+interface OSSTextAreaSignature {
+  Args: {
+    rows?: number;
+    resize?: 'vertical' | 'horizontal' | 'none';
+    value?: string;
+    disabled?: boolean;
+    errorMessage?: string;
+    placeholder?: string;
+    onChange?(value: string): void;
+  };
+  Element: HTMLDivElement;
 }
 
-export default class OSSTextArea extends Component<OSSTextAreaArgs> {
-  constructor(owner: unknown, args: OSSTextAreaArgs) {
+export default class OSSTextAreaComponent extends Component<OSSTextAreaSignature> {
+  constructor(owner: unknown, args: OSSTextAreaSignature['Args']) {
     super(owner, args);
 
     if (this.args.resize) {
@@ -40,5 +43,12 @@ export default class OSSTextArea extends Component<OSSTextAreaArgs> {
   @action
   _onChange(value: string): void {
     this.args.onChange?.(value);
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::TextArea': typeof OSSTextAreaComponent;
+    'o-s-s/text-area': typeof OSSTextAreaComponent;
   }
 }

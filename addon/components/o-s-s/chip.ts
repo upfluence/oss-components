@@ -17,16 +17,19 @@ export const SkinDefinition: SkinDefType = {
 };
 
 const BASE_CLASS_CHIP: string = 'upf-chip';
-interface OSSChipArgs {
-  skin?: string;
-  label: string;
-  disabled?: boolean;
-  maxDisplayWidth?: number;
-  onRemove(): void;
+interface OSSChipSignature {
+  Args: {
+    skin?: string;
+    label: string;
+    disabled?: boolean;
+    maxDisplayWidth?: number;
+    onRemove(): void;
+  };
+  Element: HTMLDivElement;
 }
 
-export default class OSSChip extends Component<OSSChipArgs> {
-  constructor(owner: unknown, args: OSSChipArgs) {
+export default class OSSChipComponent extends Component<OSSChipSignature> {
+  constructor(owner: unknown, args: OSSChipSignature['Args']) {
     super(owner, args);
 
     assert(
@@ -71,5 +74,12 @@ export default class OSSChip extends Component<OSSChipArgs> {
       return;
     }
     this.args.onRemove();
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::Chip': typeof OSSChipComponent;
+    'o-s-s/chip': typeof OSSChipComponent;
   }
 }

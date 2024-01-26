@@ -46,6 +46,7 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
         this.file.content_type = spec.contentType;
 
         await render(hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::UploadItem
             @uploader={{this.uploader}} @file={{this.file}}
             @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
@@ -60,6 +61,7 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
 
     test('its name is rendered properly', async function (assert) {
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::UploadItem
           @uploader={{this.uploader}} @file={{this.file}}
           @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
@@ -73,6 +75,7 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
     test('its size is rendered properly if present', async function (assert) {
       this.file.size = 100;
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::UploadItem
           @uploader={{this.uploader}} @file={{this.file}}
           @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
@@ -85,6 +88,7 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
 
     test('its size is not displayed if missing', async function (assert) {
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::UploadItem
           @uploader={{this.uploader}} @file={{this.file}}
           @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
@@ -98,6 +102,7 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
     test('clicking the view button opens the file url', async function (assert) {
       const windowOpenStub = sinon.stub(window, 'open');
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::UploadItem
           @uploader={{this.uploader}} @file={{this.file}}
           @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
@@ -128,6 +133,7 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
         this.file = buildFile('my-file', spec.contentType);
 
         await render(hbs`
+          {{! @glint-nocheck: not typesafe yet }}
           <OSS::UploadItem
             @uploader={{this.uploader}} @file={{this.file}}
             @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
@@ -142,6 +148,7 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
 
     test('its name is rendered properly', async function (assert) {
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::UploadItem
           @uploader={{this.uploader}} @file={{this.file}}
           @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
@@ -154,6 +161,7 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
 
     test('its size is rendered properly if present', async function (assert) {
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::UploadItem
           @uploader={{this.uploader}} @file={{this.file}}
           @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
@@ -168,6 +176,7 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
       const uploadStub = sinon.stub(this.uploader, 'upload');
 
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::UploadItem
           @uploader={{this.uploader}} @file={{this.file}}
           @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
@@ -195,6 +204,7 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
       this.onUploadFailure = sinon.stub();
 
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::UploadItem
           @uploader={{this.uploader}} @file={{this.file}}
           @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
@@ -227,6 +237,7 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
   module('common actions', function () {
     test('clicking the edit button triggers the onEdition action', async function (assert) {
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::UploadItem
           @uploader={{this.uploader}} @file={{this.file}}
           @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
@@ -239,6 +250,7 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
 
     test('clicking the remove button triggers the onDeletion action', async function (assert) {
       await render(hbs`
+        {{! @glint-nocheck: not typesafe yet }}
         <OSS::UploadItem
           @uploader={{this.uploader}} @file={{this.file}}
           @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}

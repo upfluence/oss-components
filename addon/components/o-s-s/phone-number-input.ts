@@ -5,15 +5,18 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { countries, type CountryData } from '@upfluence/oss-components/utils/country-codes';
 
-interface OSSPhoneNumberInputArgs {
-  prefix: string;
-  number: string;
-  placeholder?: string;
-  onChange(prefix: string, number: string): void;
-  validates?(isPassing: boolean): void;
+interface OSSPhoneNumberInputSignature {
+  Args: {
+    prefix: string;
+    number: string;
+    placeholder?: string;
+    onChange(prefix: string, number: string): void;
+    validates?(isPassing: boolean): void;
+  };
+  Element: HTMLDivElement;
 }
 
-export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputArgs> {
+export default class OSSPhoneNumberInputComponent extends Component<OSSPhoneNumberInputSignature> {
   @service declare intl: any;
 
   private _countries = countries;
@@ -25,7 +28,7 @@ export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputAr
   @tracked placeholder: string = this.args.placeholder ?? '(415) 000 0000';
   @tracked inputElement: HTMLElement | undefined = undefined;
 
-  constructor(owner: unknown, args: OSSPhoneNumberInputArgs) {
+  constructor(owner: unknown, args: OSSPhoneNumberInputSignature['Args']) {
     super(owner, args);
 
     assert(
@@ -119,5 +122,12 @@ export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputAr
   @action
   registerInputElement(el: HTMLElement): void {
     this.inputElement = el;
+  }
+}
+
+declare module '@glint/environment-ember-loose/registry' {
+  export default interface Registry {
+    'OSS::PhoneNumberInput': typeof OSSPhoneNumberInputComponent;
+    'o-s-s/phone-number-input': typeof OSSPhoneNumberInputComponent;
   }
 }
