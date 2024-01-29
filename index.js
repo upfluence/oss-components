@@ -5,11 +5,10 @@ const mergeTrees = require('broccoli-merge-trees');
 const Funnel = require('broccoli-funnel');
 const cacheKeyForTree = require('calculate-cache-key-for-tree');
 const path = require('path');
+const resolve = require('resolve');
 const { name, version } = require('./package');
 
 const faPath = path.dirname(require.resolve('@fortawesome/fontawesome-pro/package.json'));
-const bootstrapPath = path.dirname(require.resolve('bootstrap/package.json'));
-const rangesliderPath = path.dirname(require.resolve('ion-rangeslider/package.json'));
 
 module.exports = {
   name,
@@ -23,14 +22,6 @@ module.exports = {
     autoImport: {
       exclude: ['@storybook/addon-actions']
     }
-  },
-
-  included() {
-    this._super.included.apply(this, arguments);
-
-    this.import(`${bootstrapPath}/dist/js/bootstrap.min.js`);
-    this.import(`${rangesliderPath}/js/ion.rangeSlider.min.js`);
-    this.import(`${rangesliderPath}/css/ion.rangeSlider.min.css`);
   },
 
   treeForPublic() {
@@ -64,7 +55,39 @@ module.exports = {
     return mergeTrees(trees);
   },
 
+  included() {
+    this._super.included.apply(this, arguments);
+
+    this.import('vendor/bootstrap/bootstrap.min.js');
+    this.import('vendor/ion-rangeslider/js/ion.rangeSlider.min.js');
+    this.import('vendor/ion-rangeslider/css/ion.rangeSlider.min.css');
+  },
+
+  treeForVendor(tree) {
+    const trees = [tree];
+
+    trees.push(
+      new Funnel(this._resolvePackagePath('bootstrap/dist/js'), { destDir: 'bootstrap' }),
+      new Funnel(this._resolvePackagePath('ion-rangeslider'), { destDir: 'ion-rangeslider' })
+    );
+
+    return mergeTrees(trees, { overwrite: true });
+  },
+
   cacheKeyForTree(treeType) {
     return cacheKeyForTree(treeType, this, this.pkg);
+  },
+
+  _resolvePackagePath(pkgPath) {
+    let parts = pkgPath.split('/');
+    let pkg = parts[0];
+    let result = path.dirname(resolve.sync(`${pkg}/package.json`, { basedir: this.project.root }));
+
+    // add sub folders to path
+    if (parts.length > 1) {
+      let args = parts.map((part, i) => (i === 0 ? result : part));
+      result = path.join.apply(path, args);
+    }
+    return result;
   }
 };
