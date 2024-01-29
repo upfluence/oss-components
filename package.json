@@ -35,7 +35,6 @@
     "postpack": "ember ts:clean"
   },
   "dependencies": {
-    "@ember/jquery": "^2.0.0",
     "@ember/render-modifiers": "^2.1.0",
     "@embroider/macros": "^1.13.4",
     "@fortawesome/fontawesome-pro": "git+ssh://git@github.com/upfluence/fontawesome-pro.git",
@@ -61,6 +60,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
+    "@ember/jquery": "^2.0.0",
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^3.2.1",
     "@embroider/test-setup": "^0.48.1",

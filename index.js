@@ -24,6 +24,14 @@ module.exports = {
     }
   },
 
+  included() {
+    this._super.included.apply(this, arguments);
+
+    this.import('vendor/bootstrap/bootstrap.min.js');
+    this.import('vendor/ion-rangeslider/js/ion.rangeSlider.min.js');
+    this.import('vendor/ion-rangeslider/css/ion.rangeSlider.min.css');
+  },
+
   treeForPublic() {
     const publicTree = this._super.treeForPublic.apply(this, arguments);
     const trees = [];
@@ -53,14 +61,6 @@ module.exports = {
     );
 
     return mergeTrees(trees);
-  },
-
-  included() {
-    this._super.included.apply(this, arguments);
-
-    this.import('vendor/bootstrap/bootstrap.min.js');
-    this.import('vendor/ion-rangeslider/js/ion.rangeSlider.min.js');
-    this.import('vendor/ion-rangeslider/css/ion.rangeSlider.min.css');
   },
 
   treeForVendor(tree) {
