@@ -81,8 +81,7 @@ module.exports = {
   _resolvePackagePath(pkgPath) {
     let parts = pkgPath.split('/');
     let pkg = parts[0];
-    console.log('===>', this.project.root, this.root, this.parent.pkg);
-    const basedir = parentIsAddon(this.parent.pkg) ? this.root : this.project.root;
+    let basedir = parentIsAddon(this.parent.pkg) ? this.root : this.project.root;
     let result = path.dirname(resolve.sync(`${pkg}/package.json`, { basedir }));
 
     // add sub folders to path
