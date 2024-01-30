@@ -71,7 +71,7 @@ module.exports = {
       new Funnel(this._resolvePackagePath('ion-rangeslider'), { destDir: 'ion-rangeslider' })
     );
 
-    return mergeTrees(trees, { overwrite: true });
+    return mergeTrees(trees.filter(Boolean), { overwrite: true });
   },
 
   cacheKeyForTree(treeType) {
