@@ -81,7 +81,9 @@ module.exports = {
   _resolvePackagePath(pkgPath) {
     let parts = pkgPath.split('/');
     let pkg = parts[0];
-    let result = path.dirname(resolve.sync(`${pkg}/package.json`, { basedir: this.project.root }));
+    console.log('===>', this.project.root, this.root, this.parent.pkg);
+    const basedir = parentIsAddon(this.parent.pkg) ? this.root : this.project.root;
+    let result = path.dirname(resolve.sync(`${pkg}/package.json`, { basedir }));
 
     // add sub folders to path
     if (parts.length > 1) {
@@ -91,3 +93,7 @@ module.exports = {
     return result;
   }
 };
+
+function parentIsAddon(parentPkg) {
+  return parentPkg.keywords && parentPkg.keywords.includes('ember-addon');
+}
