@@ -4,6 +4,7 @@ import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
+import type IntlService from 'ember-intl/services/intl';
 
 interface OSSSelectArgs {
   value: any;
@@ -18,7 +19,7 @@ interface OSSSelectArgs {
 }
 
 export default class OSSSelect extends Component<OSSSelectArgs> {
-  @service declare intl: any;
+  @service declare intl: IntlService;
 
   @tracked displaySelect: boolean = false;
 

@@ -1,12 +1,14 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
+import { setupIntl } from 'ember-intl/test-support';
 import { render, setupOnerror } from '@ember/test-helpers';
 
 import { SkinDefinition } from '@upfluence/oss-components/components/o-s-s/badge';
 
 module('Integration | Component | o-s-s/badge', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
 
   module('sizes', function () {
     test('it sets the right class when usng a supported size', async function (assert: Assert) {

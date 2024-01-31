@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { countries, type CountryData } from '@upfluence/oss-components/utils/country-codes';
+import type IntlService from 'ember-intl/services/intl';
 
 interface OSSPhoneNumberInputArgs {
   prefix: string;
@@ -14,7 +15,7 @@ interface OSSPhoneNumberInputArgs {
 }
 
 export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputArgs> {
-  @service declare intl: any;
+  @service declare intl: IntlService;
 
   private _countries = countries;
 

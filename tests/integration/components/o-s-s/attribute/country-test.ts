@@ -1,10 +1,12 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
+import { setupIntl } from 'ember-intl/test-support';
 import { render } from '@ember/test-helpers';
 
 module('Integration | Component | o-s-s/attribute/country', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
 
   test('it renders', async function (assert) {
     await render(hbs`<OSS::Attribute::Country />`);

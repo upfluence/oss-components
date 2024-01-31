@@ -1,6 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
+import { setupIntl } from 'ember-intl/test-support';
 import { click, typeIn, render, scrollTo, setupOnerror, triggerKeyEvent } from '@ember/test-helpers';
 import sinon from 'sinon';
 
@@ -24,6 +25,7 @@ const FAKE_DATA = [
 
 module('Integration | Component | o-s-s/infinite-select', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
 
   module('search is enabled', function () {
     module('with onSearch hook', function () {

@@ -1,22 +1,25 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
+import { setupIntl } from 'ember-intl/test-support';
 import { render, setupOnerror, findAll, click, typeIn, scrollTo } from '@ember/test-helpers';
 import sinon from 'sinon';
 
-module('Integration | Component | o-s-s/power-select', function(hooks) {
+module('Integration | Component | o-s-s/power-select', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
+
   const onSearch = sinon.stub();
   const onChange = sinon.stub();
 
-  hooks.beforeEach(function() {
+  hooks.beforeEach(function () {
     this.selectedItems = [];
     this.items = [];
     this.onSearch = onSearch;
   });
 
   module('it renders', () => {
-    test('with all required named blocks', async function(assert) {
+    test('with all required named blocks', async function (assert) {
       await render(hbs`
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}}>
@@ -36,7 +39,7 @@ module('Integration | Component | o-s-s/power-select', function(hooks) {
       assert.dom('.upf-infinite-select').exists();
     });
 
-    test('custom empty state is properly rendered', async function(assert) {
+    test('custom empty state is properly rendered', async function (assert) {
       await render(hbs`
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}}>
@@ -63,7 +66,7 @@ module('Integration | Component | o-s-s/power-select', function(hooks) {
   });
 
   module('with @selectedItems', () => {
-    test('Passing @selectedItems parameter displays the items', async function(assert) {
+    test('Passing @selectedItems parameter displays the items', async function (assert) {
       this.selectedItems = ['value1', 'value2'];
 
       await render(hbs`
@@ -83,7 +86,7 @@ module('Integration | Component | o-s-s/power-select', function(hooks) {
       assert.dom(domTags[1]).hasText('value2');
     });
 
-    test('Passing empty @selectedItems parameter displays nothing', async function(assert) {
+    test('Passing empty @selectedItems parameter displays nothing', async function (assert) {
       await render(hbs`
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}}>
@@ -99,7 +102,7 @@ module('Integration | Component | o-s-s/power-select', function(hooks) {
       assert.dom('.array-input-container #selectedItemTest').doesNotExist();
     });
 
-    test('Passing empty @selectedItems and @placeholder parameters displays placeholder', async function(assert) {
+    test('Passing empty @selectedItems and @placeholder parameters displays placeholder', async function (assert) {
       await render(hbs`
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}} @placeholder="placeholder">
@@ -117,11 +120,11 @@ module('Integration | Component | o-s-s/power-select', function(hooks) {
   });
 
   module('with @items', (hooks) => {
-    hooks.beforeEach(function() {
+    hooks.beforeEach(function () {
       this.items = ['value1', 'value2'];
     });
 
-    test('Passing @items parameter displays the items in InfiniteSelect', async function(assert) {
+    test('Passing @items parameter displays the items in InfiniteSelect', async function (assert) {
       await render(hbs`
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}}>
@@ -142,13 +145,13 @@ module('Integration | Component | o-s-s/power-select', function(hooks) {
   });
 
   module('with @onChange', (hooks) => {
-    hooks.beforeEach(function() {
+    hooks.beforeEach(function () {
       this.selectedItems = ['value1', 'value2'];
       this.items = ['value1', 'value2'];
       this.onChange = onChange;
     });
 
-    test('selecting item triggers onChange with selection operation', async function(assert) {
+    test('selecting item triggers onChange with selection operation', async function (assert) {
       await render(hbs`
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}} @onChange={{this.onChange}}>
@@ -169,7 +172,7 @@ module('Integration | Component | o-s-s/power-select', function(hooks) {
   });
 
   module('with @searchPlaceholder', () => {
-    test('Passing @items parameter displays the items in InfiniteSelect', async function(assert) {
+    test('Passing @items parameter displays the items in InfiniteSelect', async function (assert) {
       await render(hbs`
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}} @searchPlaceholder='searchPlaceholder'>
@@ -188,7 +191,7 @@ module('Integration | Component | o-s-s/power-select', function(hooks) {
   });
 
   module('with @onSearch', () => {
-    test('search is correctly called', async function(assert) {
+    test('search is correctly called', async function (assert) {
       await render(hbs`
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}}>
@@ -209,7 +212,7 @@ module('Integration | Component | o-s-s/power-select', function(hooks) {
   });
 
   module('with @onBottomReached', (hooks) => {
-    hooks.beforeEach(function() {
+    hooks.beforeEach(function () {
       this.items = ['value1', 'value2', 'value3'];
       this.loadingMore = false;
       this.onBottomReached = sinon.stub().callsFake(() => {
@@ -217,7 +220,7 @@ module('Integration | Component | o-s-s/power-select', function(hooks) {
       });
     });
 
-    test('search is correctly call', async function(assert) {
+    test('search is correctly call', async function (assert) {
       await render(hbs`
         <div style="height:150px">
           <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}} @loadingMore={{this.loadingMore}}
@@ -242,7 +245,7 @@ module('Integration | Component | o-s-s/power-select', function(hooks) {
   });
 
   module('Error management', () => {
-    test('without selected-item named block', async function(assert) {
+    test('without selected-item named block', async function (assert) {
       setupOnerror((err: any) => {
         assert.equal(
           err.message,
@@ -255,7 +258,7 @@ module('Integration | Component | o-s-s/power-select', function(hooks) {
       `);
     });
 
-    test('without option-item named block', async function(assert) {
+    test('without option-item named block', async function (assert) {
       setupOnerror((err: any) => {
         assert.equal(
           err.message,
