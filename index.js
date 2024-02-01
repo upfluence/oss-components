@@ -81,7 +81,7 @@ module.exports = {
   _resolvePackagePath(pkgPath) {
     let parts = pkgPath.split('/');
     let pkg = parts[0];
-    let basedir = parentIsAddon(this.parent.pkg) ? this.root : this.project.root;
+    let basedir = parentIsAddon(this.parent.pkg) || pnpmCompatible(this.parent.pkg) ? this.root : this.project.root;
     let result = path.dirname(resolve.sync(`${pkg}/package.json`, { basedir }));
 
     // add sub folders to path
@@ -93,6 +93,11 @@ module.exports = {
   }
 };
 
+//TODO: will be deleted at the end for pnpm migration
 function parentIsAddon(parentPkg) {
   return parentPkg.keywords && parentPkg.keywords.includes('ember-addon');
+}
+
+function pnpmCompatible(parentPkg) {
+  return parentPkg.packageManager && parentPkg.packageManager.startsWith('pnpm');
 }
