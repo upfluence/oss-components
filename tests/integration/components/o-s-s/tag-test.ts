@@ -55,6 +55,21 @@ module('Integration | Component | o-s-s/tag', function (hooks) {
     });
   });
 
+  module('@htmlSafe', () => {
+    test('Setting the param to true allows html to be rendered in the @label', async function (assert) {
+      await render(hbs`<OSS::Tag @label='<div class="custom-html">Text content</div>' @htmlSafe={{true}} />`);
+
+      assert.dom('.upf-tag .custom-html').hasText('Text content');
+    });
+
+    test('When the param is falsy, html content is rendered as basic string', async function (assert) {
+      await render(hbs`<OSS::Tag @label='<div class="custom-html">Text content</div>' />`);
+
+      assert.dom('.upf-tag .custom-html').doesNotExist();
+      assert.dom('.upf-tag').hasText('<div class="custom-html">Text content</div>');
+    });
+  });
+
   Object.keys(SkinDefinition).forEach((skin) => {
     test(`it sets the right class when using a supported skin: ${skin}`, async function (assert: Assert) {
       this.skin = skin;

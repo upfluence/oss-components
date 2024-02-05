@@ -70,6 +70,16 @@ export default {
       control: {
         type: 'boolean'
       }
+    },
+    htmlSafe: {
+      description: "Allows html code to be passed in the @label argument. Bypasses the tag's default styling.",
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
+      },
+      control: {
+        type: 'boolean'
+      }
     }
   }
 };
@@ -78,12 +88,15 @@ const defaultArgs = {
   skin: 'primary',
   label: 'Label',
   icon: 'far fa-thumbs-up',
-  hasEllipsis: false
+  hasEllipsis: false,
+  plain: false,
+  htmlSafe: false
 };
 
 const Template = (args) => ({
   template: hbs`
-    <OSS::Tag @skin={{this.skin}} @label={{this.label}} @icon={{this.icon}} @hasEllipsis={{this.hasEllipsis}}/>
+    <OSS::Tag @skin={{this.skin}} @label={{this.label}} @icon={{this.icon}} @hasEllipsis={{this.hasEllipsis}}
+              @plain={{this.plain}} @htmlsafe={{this.htmlSafe}} />
   `,
   context: args
 });
