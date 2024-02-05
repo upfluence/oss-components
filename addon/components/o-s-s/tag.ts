@@ -1,5 +1,7 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
+import { htmlSafe } from '@ember/template';
+import type { SafeString } from '@ember/template/-private/handlebars';
 
 export type SkinType =
   | 'primary'
@@ -43,6 +45,7 @@ interface OSSTagArgs {
   icon?: string;
   hasEllipsis?: boolean;
   plain?: boolean;
+  htmlSafe?: boolean;
 }
 
 export default class OSSTag extends Component<OSSTagArgs> {
@@ -72,5 +75,9 @@ export default class OSSTag extends Component<OSSTagArgs> {
     }
 
     return classes.join(' ');
+  }
+
+  get safeLabel(): SafeString {
+    return htmlSafe(this.args.label ?? '');
   }
 }

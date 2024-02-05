@@ -4,12 +4,16 @@
   {{/if}}
 
   {{#if @label}}
-    <div class="text-style-semibold fx-row">
-      {{#if @hasEllipsis}}
-        <span>{{@label}}</span>
-      {{else}}
-        {{@label}}
-      {{/if}}
-    </div>
+    {{#if @htmlSafe}}
+      {{this.safeLabel}}
+    {{else}}
+      <div class="text-style-semibold fx-row">
+        {{#if @hasEllipsis}}
+          <span>{{@label}}</span>
+        {{else}}
+          {{@label}}
+        {{/if}}
+      </div>
+    {{/if}}
   {{/if}}
 </div>
