@@ -4,6 +4,7 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
+import type IntlService from 'ember-intl/services/intl';
 
 interface OSSAttributeRemovableTextArgs {
   label: string;
@@ -13,7 +14,7 @@ interface OSSAttributeRemovableTextArgs {
 }
 
 export default class OSSAttributeRemovableText extends Component<OSSAttributeRemovableTextArgs> {
-  @service declare intl: any;
+  @service declare intl: IntlService;
   @tracked loading: boolean = false;
 
   constructor(owner: unknown, args: OSSAttributeRemovableTextArgs) {

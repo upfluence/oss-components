@@ -1,5 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
+import { setupIntl } from 'ember-intl/test-support';
 import { click, render, waitFor } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import sinon from 'sinon';
@@ -17,6 +18,7 @@ const buildFile = (name = '1px.png', type = 'image/png') => {
 
 module('Integration | Component | o-s-s/upload-item', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
 
   hooks.beforeEach(function () {
     this.owner.register('service:uploader', MockUploader);

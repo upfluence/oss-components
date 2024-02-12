@@ -1,14 +1,16 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
+import { setupIntl } from 'ember-intl/test-support';
 import { fillIn, render, typeIn } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import sinon from 'sinon';
 import { set } from '@ember/object';
 
-module('Integration | Component | o-s-s/access-panel', function(hooks) {
+module('Integration | Component | o-s-s/access-panel', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
 
-  hooks.beforeEach(function() {
+  hooks.beforeEach(function () {
     this.records = [{ label: 'foo' }, { label: 'bar' }];
     this.loading = false;
     this.initialLoad = false;
@@ -32,7 +34,7 @@ module('Integration | Component | o-s-s/access-panel', function(hooks) {
     );
   }
 
-  test('it renders the right empty state when no records are found and there is no ongoing search', async function(assert) {
+  test('it renders the right empty state when no records are found and there is no ongoing search', async function (assert) {
     this.records = [];
     await renderComponent();
 
@@ -40,7 +42,7 @@ module('Integration | Component | o-s-s/access-panel', function(hooks) {
     assert.dom('.empty-state').hasText('empty state');
   });
 
-  test('the initial loading state is correctly displayed', async function(assert) {
+  test('the initial loading state is correctly displayed', async function (assert) {
     this.loading = true;
     this.initialLoad = true;
     await renderComponent();
@@ -48,7 +50,7 @@ module('Integration | Component | o-s-s/access-panel', function(hooks) {
     assert.dom('.oss-access-panel-container__row .upf-skeleton-effect').exists({ count: 24 });
   });
 
-  test('the initial loading state is correctly displayed', async function(assert) {
+  test('the initial loading state is correctly displayed', async function (assert) {
     this.loading = true;
     this.initialLoad = false;
     await renderComponent();
@@ -57,34 +59,34 @@ module('Integration | Component | o-s-s/access-panel', function(hooks) {
     assert.dom('.oss-access-panel-container__row .upf-skeleton-effect').exists({ count: 6 });
   });
 
-  test('The header named block is correctly filled', async function(assert) {
+  test('The header named block is correctly filled', async function (assert) {
     await renderComponent();
     assert.dom('.oss-access-panel-container__header').exists();
     assert.dom('.oss-access-panel-container__header').hasText('Header');
   });
 
-  test('The columns named block is correctly filled', async function(assert) {
+  test('The columns named block is correctly filled', async function (assert) {
     await renderComponent();
     assert.dom('.oss-access-panel-container__rows-header').exists();
     assert.dom('.oss-access-panel-container__rows-header').hasText('Columns');
   });
 
-  test('The records are correctly displayed using the row named block', async function(assert) {
+  test('The records are correctly displayed using the row named block', async function (assert) {
     await renderComponent();
     assert.dom('.oss-access-panel-container__row').exists({ count: 2 });
     assert.dom('.oss-access-panel-container__row:first-child').hasText('row display: foo');
     assert.dom('.oss-access-panel-container__row:last-child').hasText('row display: bar');
   });
 
-  module('Search', function() {
-    test('it calls the onSearch arg when a keyword is typed', async function(assert) {
+  module('Search', function () {
+    test('it calls the onSearch arg when a keyword is typed', async function (assert) {
       await renderComponent();
       await fillIn('.oss-input-container input', 'fo');
       await typeIn('.oss-input-container input', 'o', { delay: 0 });
       assert.ok(this.onSearch.calledOnceWithExactly('foo'));
     });
 
-    test('it renders the right empty state when no records are found and there is an ongoing search', async function(assert) {
+    test('it renders the right empty state when no records are found and there is an ongoing search', async function (assert) {
       this.onSearch = sinon.stub().callsFake(() => {
         set(this, 'records', []);
       });

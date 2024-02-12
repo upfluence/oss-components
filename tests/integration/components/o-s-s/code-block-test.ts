@@ -1,11 +1,13 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
+import { setupIntl } from 'ember-intl/test-support';
 import { click, findAll, render } from '@ember/test-helpers';
 import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/code-block', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
 
   hooks.beforeEach(function () {
     this.codeBlock = codeExample;

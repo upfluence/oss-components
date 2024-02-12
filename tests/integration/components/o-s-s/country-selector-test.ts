@@ -4,6 +4,7 @@ import settled from '@ember/test-helpers/settled';
 import sinon from 'sinon';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
+import { setupIntl } from 'ember-intl/test-support';
 import { click, findAll, render } from '@ember/test-helpers';
 import { countries } from '@upfluence/oss-components/utils/country-codes';
 import { set } from '@ember/object';
@@ -11,6 +12,7 @@ import triggerKeyEvent from '@ember/test-helpers/dom/trigger-key-event';
 
 module('Integration | Component | o-s-s/country-selector', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
 
   hooks.beforeEach(function () {
     this.value = '';

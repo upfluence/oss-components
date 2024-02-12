@@ -1,11 +1,13 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
+import { setupIntl } from 'ember-intl/test-support';
 import { render } from '@ember/test-helpers';
 import triggerEvent from '@ember/test-helpers/dom/trigger-event';
 
 module('Integration | Component | o-s-s/attribute/base', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
 
   test('It renders', async function (assert) {
     await render(hbs`<OSS::Attribute::Base />`);

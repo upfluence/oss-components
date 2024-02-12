@@ -3,6 +3,7 @@ import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
+import type IntlService from 'ember-intl/services/intl';
 
 interface OSSAttributeRevealableEmailArgs {
   tooltip?: string;
@@ -11,7 +12,7 @@ interface OSSAttributeRevealableEmailArgs {
 }
 
 export default class OSSAttributeRevealableEmail extends Component<OSSAttributeRevealableEmailArgs> {
-  @service declare intl: any;
+  @service declare intl: IntlService;
   @tracked loading: boolean = false;
 
   constructor(owner: unknown, args: OSSAttributeRevealableEmailArgs) {
