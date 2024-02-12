@@ -41,315 +41,6 @@
     return _createClass(App);
   }(_application.default);
 });
-;define("dummy/cldrs/en", ["exports"], function (_exports) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
-  /*jslint eqeq: true*/
-  var _default = _exports.default = [{
-    "locale": "en-US",
-    "parentLocale": "en"
-  }, {
-    "locale": "en",
-    "pluralRuleFunction": function pluralRuleFunction(n, ord) {
-      var s = String(n).split("."),
-        v0 = !s[1],
-        t0 = Number(s[0]) == n,
-        n10 = t0 && s[0].slice(-1),
-        n100 = t0 && s[0].slice(-2);
-      if (ord) return n10 == 1 && n100 != 11 ? "one" : n10 == 2 && n100 != 12 ? "two" : n10 == 3 && n100 != 13 ? "few" : "other";
-      return n == 1 && v0 ? "one" : "other";
-    },
-    "fields": {
-      "year": {
-        "displayName": "year",
-        "relative": {
-          "0": "this year",
-          "1": "next year",
-          "-1": "last year"
-        },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} year",
-            "other": "in {0} years"
-          },
-          "past": {
-            "one": "{0} year ago",
-            "other": "{0} years ago"
-          }
-        }
-      },
-      "year-short": {
-        "displayName": "yr.",
-        "relative": {
-          "0": "this yr.",
-          "1": "next yr.",
-          "-1": "last yr."
-        },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} yr.",
-            "other": "in {0} yr."
-          },
-          "past": {
-            "one": "{0} yr. ago",
-            "other": "{0} yr. ago"
-          }
-        }
-      },
-      "month": {
-        "displayName": "month",
-        "relative": {
-          "0": "this month",
-          "1": "next month",
-          "-1": "last month"
-        },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} month",
-            "other": "in {0} months"
-          },
-          "past": {
-            "one": "{0} month ago",
-            "other": "{0} months ago"
-          }
-        }
-      },
-      "month-short": {
-        "displayName": "mo.",
-        "relative": {
-          "0": "this mo.",
-          "1": "next mo.",
-          "-1": "last mo."
-        },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} mo.",
-            "other": "in {0} mo."
-          },
-          "past": {
-            "one": "{0} mo. ago",
-            "other": "{0} mo. ago"
-          }
-        }
-      },
-      "day": {
-        "displayName": "day",
-        "relative": {
-          "0": "today",
-          "1": "tomorrow",
-          "-1": "yesterday"
-        },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} day",
-            "other": "in {0} days"
-          },
-          "past": {
-            "one": "{0} day ago",
-            "other": "{0} days ago"
-          }
-        }
-      },
-      "day-short": {
-        "displayName": "day",
-        "relative": {
-          "0": "today",
-          "1": "tomorrow",
-          "-1": "yesterday"
-        },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} day",
-            "other": "in {0} days"
-          },
-          "past": {
-            "one": "{0} day ago",
-            "other": "{0} days ago"
-          }
-        }
-      },
-      "hour": {
-        "displayName": "hour",
-        "relative": {
-          "0": "this hour"
-        },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} hour",
-            "other": "in {0} hours"
-          },
-          "past": {
-            "one": "{0} hour ago",
-            "other": "{0} hours ago"
-          }
-        }
-      },
-      "hour-short": {
-        "displayName": "hr.",
-        "relative": {
-          "0": "this hour"
-        },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} hr.",
-            "other": "in {0} hr."
-          },
-          "past": {
-            "one": "{0} hr. ago",
-            "other": "{0} hr. ago"
-          }
-        }
-      },
-      "minute": {
-        "displayName": "minute",
-        "relative": {
-          "0": "this minute"
-        },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} minute",
-            "other": "in {0} minutes"
-          },
-          "past": {
-            "one": "{0} minute ago",
-            "other": "{0} minutes ago"
-          }
-        }
-      },
-      "minute-short": {
-        "displayName": "min.",
-        "relative": {
-          "0": "this minute"
-        },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} min.",
-            "other": "in {0} min."
-          },
-          "past": {
-            "one": "{0} min. ago",
-            "other": "{0} min. ago"
-          }
-        }
-      },
-      "second": {
-        "displayName": "second",
-        "relative": {
-          "0": "now"
-        },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} second",
-            "other": "in {0} seconds"
-          },
-          "past": {
-            "one": "{0} second ago",
-            "other": "{0} seconds ago"
-          }
-        }
-      },
-      "second-short": {
-        "displayName": "sec.",
-        "relative": {
-          "0": "now"
-        },
-        "relativeTime": {
-          "future": {
-            "one": "in {0} sec.",
-            "other": "in {0} sec."
-          },
-          "past": {
-            "one": "{0} sec. ago",
-            "other": "{0} sec. ago"
-          }
-        }
-      }
-    },
-    "numbers": {
-      "decimal": {
-        "long": [[1000, {
-          "one": ["0 thousand", 1],
-          "other": ["0 thousand", 1]
-        }], [10000, {
-          "one": ["00 thousand", 2],
-          "other": ["00 thousand", 2]
-        }], [100000, {
-          "one": ["000 thousand", 3],
-          "other": ["000 thousand", 3]
-        }], [1000000, {
-          "one": ["0 million", 1],
-          "other": ["0 million", 1]
-        }], [10000000, {
-          "one": ["00 million", 2],
-          "other": ["00 million", 2]
-        }], [100000000, {
-          "one": ["000 million", 3],
-          "other": ["000 million", 3]
-        }], [1000000000, {
-          "one": ["0 billion", 1],
-          "other": ["0 billion", 1]
-        }], [10000000000, {
-          "one": ["00 billion", 2],
-          "other": ["00 billion", 2]
-        }], [100000000000, {
-          "one": ["000 billion", 3],
-          "other": ["000 billion", 3]
-        }], [1000000000000, {
-          "one": ["0 trillion", 1],
-          "other": ["0 trillion", 1]
-        }], [10000000000000, {
-          "one": ["00 trillion", 2],
-          "other": ["00 trillion", 2]
-        }], [100000000000000, {
-          "one": ["000 trillion", 3],
-          "other": ["000 trillion", 3]
-        }]],
-        "short": [[1000, {
-          "one": ["0K", 1],
-          "other": ["0K", 1]
-        }], [10000, {
-          "one": ["00K", 2],
-          "other": ["00K", 2]
-        }], [100000, {
-          "one": ["000K", 3],
-          "other": ["000K", 3]
-        }], [1000000, {
-          "one": ["0M", 1],
-          "other": ["0M", 1]
-        }], [10000000, {
-          "one": ["00M", 2],
-          "other": ["00M", 2]
-        }], [100000000, {
-          "one": ["000M", 3],
-          "other": ["000M", 3]
-        }], [1000000000, {
-          "one": ["0B", 1],
-          "other": ["0B", 1]
-        }], [10000000000, {
-          "one": ["00B", 2],
-          "other": ["00B", 2]
-        }], [100000000000, {
-          "one": ["000B", 3],
-          "other": ["000B", 3]
-        }], [1000000000000, {
-          "one": ["0T", 1],
-          "other": ["0T", 1]
-        }], [10000000000000, {
-          "one": ["00T", 2],
-          "other": ["00T", 2]
-        }], [100000000000000, {
-          "one": ["000T", 3],
-          "other": ["000T", 3]
-        }]]
-      }
-    }
-  }];
-});
 ;define("dummy/component-managers/glimmer", ["exports", "@glimmer/component/-private/ember-component-manager"], function (_exports, _emberComponentManager) {
   "use strict";
 
@@ -2313,10 +2004,20 @@
     }
   });
   0; //eaimeta@70e063a35619d71f0,"ember-intl/helpers/format-date"eaimeta@70e063a35619d71f
-  /**
-   * Copyright 2015, Yahoo! Inc.
-   * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
-   */
+});
+;define("dummy/helpers/format-list", ["exports", "ember-intl/helpers/format-list"], function (_exports, _formatList) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function get() {
+      return _formatList.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"ember-intl/helpers/format-list"eaimeta@70e063a35619d71f
 });
 ;define("dummy/helpers/format-message", ["exports", "ember-intl/helpers/format-message"], function (_exports, _formatMessage) {
   "use strict";
@@ -2331,10 +2032,6 @@
     }
   });
   0; //eaimeta@70e063a35619d71f0,"ember-intl/helpers/format-message"eaimeta@70e063a35619d71f
-  /**
-   * Copyright 2015, Yahoo! Inc.
-   * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
-   */
 });
 ;define("dummy/helpers/format-money", ["exports", "@upfluence/oss-components/helpers/format-money"], function (_exports, _formatMoney) {
   "use strict";
@@ -2369,10 +2066,6 @@
     }
   });
   0; //eaimeta@70e063a35619d71f0,"ember-intl/helpers/format-number"eaimeta@70e063a35619d71f
-  /**
-   * Copyright 2015, Yahoo! Inc.
-   * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
-   */
 });
 ;define("dummy/helpers/format-numeric", ["exports", "@upfluence/oss-components/helpers/format-numeric"], function (_exports, _formatNumeric) {
   "use strict";
@@ -2407,10 +2100,6 @@
     }
   });
   0; //eaimeta@70e063a35619d71f0,"ember-intl/helpers/format-relative"eaimeta@70e063a35619d71f
-  /**
-   * Copyright 2015, Yahoo! Inc.
-   * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
-   */
 });
 ;define("dummy/helpers/format-time", ["exports", "ember-intl/helpers/format-time"], function (_exports, _formatTime) {
   "use strict";
@@ -2425,10 +2114,6 @@
     }
   });
   0; //eaimeta@70e063a35619d71f0,"ember-intl/helpers/format-time"eaimeta@70e063a35619d71f
-  /**
-   * Copyright 2015, Yahoo! Inc.
-   * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
-   */
 });
 ;define("dummy/helpers/gt", ["exports", "ember-truth-helpers/helpers/gt"], function (_exports, _gt) {
   "use strict";
@@ -2677,10 +2362,6 @@
     }
   });
   0; //eaimeta@70e063a35619d71f0,"ember-intl/helpers/t"eaimeta@70e063a35619d71f
-  /**
-   * Copyright 2015, Yahoo! Inc.
-   * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
-   */
 });
 ;define("dummy/helpers/transition-to", ["exports", "@upfluence/oss-components/helpers/transition-to"], function (_exports, _transitionTo) {
   "use strict";
@@ -2976,34 +2657,56 @@
   Router.map(function () {});
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-define("dummy/routes/application", ["exports", "@ember/routing/route"], function (_exports, _route) {
+define("dummy/routes/application", ["exports", "@ember/routing/route", "@ember/service"], function (_exports, _route, _service) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"@ember/routing/route"eaimeta@70e063a35619d71f
+  var _class, _descriptor;
+  0; //eaimeta@70e063a35619d71f0,"@ember/routing/route",0,"@ember/service"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
   function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
   function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
-  function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
   function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
   function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
   function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
   function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
   function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
   function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
-  var Application = _exports.default = /*#__PURE__*/function (_Route) {
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  var Application = _exports.default = (_class = /*#__PURE__*/function (_Route) {
     _inherits(Application, _Route);
     function Application() {
+      var _this;
       _classCallCheck(this, Application);
-      return _callSuper(this, Application, arguments);
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+      _this = _callSuper(this, Application, [].concat(args));
+      _initializerDefineProperty(_assertThisInitialized(_this), "intl", _descriptor, _assertThisInitialized(_this));
+      return _this;
     }
-    return _createClass(Application);
-  }(_route.default);
+    _createClass(Application, [{
+      key: "beforeModel",
+      value: function beforeModel() {
+        this.intl.setLocale('en-us');
+      }
+    }]);
+    return Application;
+  }(_route.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  })), _class);
 });
 ;define("dummy/services/asset-map", ["exports", "ember-cli-ifa/services/asset-map"], function (_exports, _assetMap) {
   "use strict";
@@ -3042,10 +2745,6 @@ define("dummy/routes/application", ["exports", "@ember/routing/route"], function
     }
   });
   0; //eaimeta@70e063a35619d71f0,"ember-intl/services/intl"eaimeta@70e063a35619d71f
-  /**
-   * Copyright 2015, Yahoo! Inc.
-   * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
-   */
 });
 ;define("dummy/services/toast", ["exports", "@upfluence/oss-components/services/toast"], function (_exports, _toast) {
   "use strict";
@@ -4279,122 +3978,6 @@ define("dummy/routes/application", ["exports", "@ember/routing/route"], function
     "isStrictMode": false
   });
 });
-;define("dummy/translations/en-us", ["exports"], function (_exports) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
-  var _default = _exports.default = {
-    "oss-components": {
-      "access-panel": {
-        "search_placeholder": "Search..."
-      },
-      "attribute": {
-        "country": "Country",
-        "email": {
-          "label": "Email address",
-          "lock_tooltip": "Reveal email"
-        },
-        "phone_number": "Phone number",
-        "removable_text": {
-          "remove_tooltip": "Remove"
-        }
-      },
-      "attributes_panel": {
-        "cancel": "Cancel",
-        "save": "Save"
-      },
-      "badge": {
-        "image_alt": "Badge Icon"
-      },
-      "button": {
-        "cancel_message": "Click to cancel {time}s..."
-      },
-      "code-block": {
-        "collapse": "Collapse",
-        "copy": "Copy",
-        "uncollapse": "Uncollapse"
-      },
-      "copy": {
-        "error": {
-          "subtitle": "Failed to copy to your clipboard. Please try again.",
-          "title": "Error"
-        },
-        "success": {
-          "subtitle": "Successfully copied to your clipboard.",
-          "title": "Copied to clipboard"
-        },
-        "tooltip": "Copy"
-      },
-      "country-selector": {
-        "placeholder": {
-          "country": "Select your country",
-          "province": "Select your province/state"
-        },
-        "search": "Search"
-      },
-      "currency-input": {
-        "search": "Search"
-      },
-      "email-input": {
-        "regex_error": "Please enter a valid email address."
-      },
-      "infinite-select": {
-        "empty": "Nothing to see here.",
-        "empty_img_alt": "Empty content",
-        "no-match": {
-          "description": "Try adjusting your search to find what you’re looking for.",
-          "title": "No matching results"
-        }
-      },
-      "password-input": {
-        "placeholder": "Enter your password",
-        "regex_error": "Your password should have at least 8 characters with at least one lower-case character, one upper-case character and one digit.",
-        "validators": {
-          "length": "Min. 8 char.",
-          "lowercase": "Lowercase",
-          "number": "Number",
-          "uppercase": "Uppercase"
-        }
-      },
-      "phone-input": {
-        "invalid_input": "Please select your country from the selector"
-      },
-      "select": {
-        "placeholder": "Select",
-        "search": "Search"
-      },
-      "upf-table": {
-        "pagination": "{from} to {to} out of {total} {item_name}"
-      },
-      "upload-area": {
-        "browse": "browse",
-        "drop_file": {
-          "default": "Drop your file here, or",
-          "disabled": "Drop your file here, or browse"
-        },
-        "errors": {
-          "filesize": {
-            "description": "The maximum file size is {max_filesize}",
-            "title": "File size too large"
-          },
-          "filetype": {
-            "description": "The uploaded file format is not allowed",
-            "title": "Unsupported format"
-          },
-          "server": "Upload failed, please try again",
-          "try_again": "Try again"
-        }
-      },
-      "url-input": {
-        "default_format_error": "This is not a valid URL."
-      }
-    }
-  };
-});
 ;define("dummy/utils/easter-eggs", ["exports", "@upfluence/oss-components/utils/easter-eggs"], function (_exports, _easterEggs) {
   "use strict";
 
@@ -4429,7 +4012,7 @@ define("dummy/routes/application", ["exports", "@ember/routing/route"], function
   });
   0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/utils/filesize-parser"eaimeta@70e063a35619d71f
 });
-;define("dummy/utils/intl/missing-message", ["exports", "ember-intl/utils/missing-message"], function (_exports, _missingMessage) {
+;define("dummy/utils/intl/missing-message", ["exports", "ember-intl/-private/utils/missing-message"], function (_exports, _missingMessage) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -4441,7 +4024,7 @@ define("dummy/routes/application", ["exports", "@ember/routing/route"], function
       return _missingMessage.default;
     }
   });
-  0; //eaimeta@70e063a35619d71f0,"ember-intl/utils/missing-message"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-intl/-private/utils/missing-message"eaimeta@70e063a35619d71f
 });
 ;define("dummy/utils/upf-local-storage", ["exports", "@upfluence/oss-components/utils/upf-local-storage"], function (_exports, _upfLocalStorage) {
   "use strict";
