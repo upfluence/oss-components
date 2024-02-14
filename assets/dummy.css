@@ -15395,6 +15395,10 @@ a.upf-btn--sm {
   background-color: var(--color-white);
   box-shadow: var(--box-shadow-xs);
 }
+.togglable-section {
+  padding: 0;
+  height: fit-content;
+}
 .togglable-section .inner-header {
   border-top-right-radius: var(--border-radius-md);
   border-top-left-radius: var(--border-radius-md);

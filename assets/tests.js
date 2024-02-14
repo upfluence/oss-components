@@ -19400,16 +19400,44 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
         return _ref6.apply(this, arguments);
       };
     }());
+    (0, _qunit.test)('It displays a default badge with an icon if @badgeIcon is passed', /*#__PURE__*/function () {
+      var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+          while (1) switch (_context7.prev = _context7.next) {
+            case 0:
+              _context7.next = 2;
+              return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+              /*
+                <OSS::TogglableSection @title="title" @badgeIcon="far fa-hourglass" @onChange={{this.onChange}} @toggled={{false}} />
+              */
+              {
+                "id": "qFSsRhR1",
+                "block": "[[[8,[39,0],null,[[\"@title\",\"@badgeIcon\",\"@onChange\",\"@toggled\"],[\"title\",\"far fa-hourglass\",[30,0,[\"onChange\"]],false]],null]],[],false,[\"o-s-s/togglable-section\"]]",
+                "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/togglable-section-test.ts",
+                "isStrictMode": false
+              }));
+            case 2:
+              assert.dom('.upf-badge .far.fa-hourglass').exists();
+            case 3:
+            case "end":
+              return _context7.stop();
+          }
+        }, _callee7);
+      }));
+      return function (_x7) {
+        return _ref7.apply(this, arguments);
+      };
+    }());
     (0, _qunit.module)('Toggle behavior', function () {
       function renderComponent() {
         return _renderComponent.apply(this, arguments);
       }
       function _renderComponent() {
-        _renderComponent = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11() {
-          return _regeneratorRuntime().wrap(function _callee11$(_context11) {
-            while (1) switch (_context11.prev = _context11.next) {
+        _renderComponent = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12() {
+          return _regeneratorRuntime().wrap(function _callee12$(_context12) {
+            while (1) switch (_context12.prev = _context12.next) {
               case 0:
-                _context11.next = 2;
+                _context12.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
@@ -19428,36 +19456,13 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
                 }));
               case 2:
               case "end":
-                return _context11.stop();
+                return _context12.stop();
             }
-          }, _callee11);
+          }, _callee12);
         }));
         return _renderComponent.apply(this, arguments);
       }
       (0, _qunit.test)('When the toggle is enabled, the named-block contents are displayed', /*#__PURE__*/function () {
-        var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
-          return _regeneratorRuntime().wrap(function _callee7$(_context7) {
-            while (1) switch (_context7.prev = _context7.next) {
-              case 0:
-                _context7.next = 2;
-                return renderComponent();
-              case 2:
-                assert.dom('.togglable-section').doesNotContainText('contents named block');
-                _context7.next = 5;
-                return (0, _testHelpers.click)('.upf-toggle');
-              case 5:
-                assert.dom('.togglable-section').hasTextContaining('contents named block');
-              case 6:
-              case "end":
-                return _context7.stop();
-            }
-          }, _callee7);
-        }));
-        return function (_x7) {
-          return _ref7.apply(this, arguments);
-        };
-      }());
-      (0, _qunit.test)('When the toggle is enabled, the header part turns grey', /*#__PURE__*/function () {
         var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
@@ -19465,11 +19470,11 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
                 _context8.next = 2;
                 return renderComponent();
               case 2:
-                assert.dom('.inner-header').doesNotHaveClass('background-color-gray-50');
+                assert.dom('.togglable-section').doesNotContainText('contents named block');
                 _context8.next = 5;
                 return (0, _testHelpers.click)('.upf-toggle');
               case 5:
-                assert.dom('.inner-header').hasClass('background-color-gray-50');
+                assert.dom('.togglable-section').hasTextContaining('contents named block');
               case 6:
               case "end":
                 return _context8.stop();
@@ -19480,46 +19485,44 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
           return _ref8.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('When the toggle is disabled, the named-block contents are displayed', /*#__PURE__*/function () {
+      (0, _qunit.test)('When the toggle is enabled, the header part turns grey', /*#__PURE__*/function () {
         var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
-                this.toggled = true;
-                _context9.next = 3;
+                _context9.next = 2;
                 return renderComponent();
-              case 3:
-                assert.dom('.togglable-section').hasTextContaining('contents named block');
-                _context9.next = 6;
+              case 2:
+                assert.dom('.inner-header').doesNotHaveClass('background-color-gray-50');
+                _context9.next = 5;
                 return (0, _testHelpers.click)('.upf-toggle');
+              case 5:
+                assert.dom('.inner-header').hasClass('background-color-gray-50');
               case 6:
-                assert.dom('.togglable-section').doesNotContainText('contents named block');
-              case 7:
               case "end":
                 return _context9.stop();
             }
-          }, _callee9, this);
+          }, _callee9);
         }));
         return function (_x9) {
           return _ref9.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('When the toggle is clicked, the @onChange method is called', /*#__PURE__*/function () {
+      (0, _qunit.test)('When the toggle is disabled, the named-block contents are displayed', /*#__PURE__*/function () {
         var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
-                this.onChange = _sinon.default.stub();
+                this.toggled = true;
                 _context10.next = 3;
                 return renderComponent();
               case 3:
-                _context10.next = 5;
+                assert.dom('.togglable-section').hasTextContaining('contents named block');
+                _context10.next = 6;
                 return (0, _testHelpers.click)('.upf-toggle');
-              case 5:
-                assert.true(this.onChange.calledOnceWithExactly(true, _sinon.default.match(function (propablyEvent) {
-                  return propablyEvent instanceof Event;
-                })));
               case 6:
+                assert.dom('.togglable-section').doesNotContainText('contents named block');
+              case 7:
               case "end":
                 return _context10.stop();
             }
@@ -19527,6 +19530,31 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
         }));
         return function (_x10) {
           return _ref10.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('When the toggle is clicked, the @onChange method is called', /*#__PURE__*/function () {
+        var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+          return _regeneratorRuntime().wrap(function _callee11$(_context11) {
+            while (1) switch (_context11.prev = _context11.next) {
+              case 0:
+                this.onChange = _sinon.default.stub();
+                _context11.next = 3;
+                return renderComponent();
+              case 3:
+                _context11.next = 5;
+                return (0, _testHelpers.click)('.upf-toggle');
+              case 5:
+                assert.true(this.onChange.calledOnceWithExactly(true, _sinon.default.match(function (propablyEvent) {
+                  return propablyEvent instanceof Event;
+                })));
+              case 6:
+              case "end":
+                return _context11.stop();
+            }
+          }, _callee11, this);
+        }));
+        return function (_x11) {
+          return _ref11.apply(this, arguments);
         };
       }());
     });
