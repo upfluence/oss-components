@@ -44,6 +44,16 @@ export default {
         type: 'text'
       }
     },
+    badgeIcon: {
+      description: 'Displays a font-awesome icon in a default OSS::Badge',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: {
+        type: 'text'
+      }
+    },
     toggled: {
       description: 'Whether the section is toggled on or not',
       table: {
@@ -79,6 +89,7 @@ const defaultArgs = {
   subtitle: '',
   toggled: false,
   iconUrl: '',
+  badgeIcon: undefined,
   icon: '',
   onChange: action('onChange')
 };
@@ -87,7 +98,7 @@ const Template = (args) => ({
   template: hbs`
     <OSS::TogglableSection
       @title={{this.title}} @subtitle={{this.subtitle}} @toggled={{this.toggled}} @iconUrl={{this.iconUrl}}
-      @icon={{this.icon}} @onChange={{this.onChange}}>
+      @badgeIcon={{this.badgeIcon}} @icon={{this.icon}} @onChange={{this.onChange}}>
       <:contents>
         Setting content
       </:contents>

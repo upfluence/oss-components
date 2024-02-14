@@ -190,10 +190,16 @@
       <OSS::Copy @value="I am the value copied" @inline={{true}} />
       <OSS::Copy @value="I am the value copied" />
     </div>
-    <div class="fx-row fx-1 fx-gap-px-10 margin-md">
+    <div class="fx-row fx-1 fx-gap-px-10 margin-md padding-md" style="background: white">
       <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
       <OSS::TogglableSection @title="This is a title" @subtitle="This is a subtitle" @toggled={{this.togglable}}
                              @icon="far fa-hourglass" @onChange={{this.onToggle}}>
+        <:contents>
+          <span>This is a Contents named block</span>
+        </:contents>
+      </OSS::TogglableSection>
+      <OSS::TogglableSection @title="This is a title" @subtitle="This is a subtitle" @toggled={{this.togglable}}
+                             @badgeIcon="far fa-hourglass" @onChange={{this.onToggle}}>
         <:contents>
           <span>This is a Contents named block</span>
         </:contents>
