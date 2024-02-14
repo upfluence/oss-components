@@ -7560,11 +7560,11 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: #1b1e21;
 }
 b {
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 body {
   color: var(--color-gray-900);
@@ -8527,6 +8527,7 @@ label {
   --font-size-heading-4: 15px;
   --font-text-line-height: 1.6;
   --font-heading-line-height: 1.6;
+  --font-weight-semibold: 600;
   --font-family-stack: Inter, 'Helvetica Neue', Helvetica, sans-serif;
 }
 .font-size-xs {
@@ -8558,7 +8559,7 @@ label {
   font-size: var(--font-size-heading-4);
 }
 .font-weight-semibold {
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 .remove-outline {
   outline: none !important;
@@ -8861,7 +8862,7 @@ label {
   padding: 4px;
 }
 .upf-radio-group.upf-radio-group--block .btn.upf-radio-btn.active::before {
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   background-color: var(--color-primary-500);
 }
 .upf-card {
@@ -9867,7 +9868,7 @@ label {
   transition: opacity 0.3s ease;
 }
 .upf-slider .irs--round .irs-single .fa {
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 .upf-slider .irs--round .irs-single:before {
   border-top-color: black;
@@ -9881,7 +9882,7 @@ label {
   text-align: center;
 }
 .upf-stat__name {
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--color-primary-500);
   font-size: 1.5rem;
 }
@@ -9892,7 +9893,7 @@ label {
   margin-left: 6px;
 }
 .upf-stat__data {
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--color-primary-500);
   font-size: 6rem;
   line-height: 6rem;
@@ -10601,7 +10602,7 @@ label {
 }
 .split-settings__info .title {
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   margin-bottom: 6px;
 }
 .split-settings__info .description {
@@ -10787,10 +10788,10 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
   font-style: normal;
 }
 .text-style-semibold {
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 .text-style-bold {
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 .text-style-italic {
   font-style: italic;
@@ -11832,7 +11833,7 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
   gap: 3px;
 }
 .toasts-container .toast .text-container .title {
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 .toasts-container .toast .text-container .subtitle {
   color: var(--color-gray-500);
@@ -13056,7 +13057,7 @@ For complete information visit: www.freakflagsprite.com
   color: var(--color-gray-900);
 }
 .currency-input-container .symbol {
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   width: 22px;
 }
 .upf-alert {
@@ -13086,7 +13087,7 @@ For complete information visit: www.freakflagsprite.com
   font-size: 1.33333333rem;
 }
 .upf-alert .text-container .title {
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 .upf-alert .text-container .subtitle {
   color: var(--color-gray-500);
@@ -13817,7 +13818,7 @@ a.upf-btn--sm {
   object-fit: cover;
 }
 .upf-badge .upf-badge__text {
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--color-primary-500);
   font-size: 1.16666667rem;
 }
@@ -14811,7 +14812,7 @@ a.upf-btn--sm {
   width: 100%;
 }
 .oss-topbar__app-name {
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
   color: var(--color-gray-600);
   transition: color 0.3s ease;
 }
@@ -15478,7 +15479,7 @@ a.upf-btn--sm {
 }
 .upf-table-v2 .upf-table__header .upf-table__cell {
   color: var(--color-gray-500);
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 .upf-table-v2 .upf-table__header .upf-table__cell > i {
   color: var(--color-gray-500);
@@ -15568,7 +15569,7 @@ a.upf-btn--sm {
 }
 .oss-modal-dialog header .title {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: var(--font-weight-semibold);
 }
 .oss-modal-dialog header .subtitle {
   font-size: 12px;
