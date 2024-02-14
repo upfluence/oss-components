@@ -65,6 +65,13 @@ module('Integration | Component | o-s-s/togglable-section', function (hooks) {
     assert.dom('.far.fa-hourglass').exists();
   });
 
+  test('It displays a default badge with an icon if @badgeIcon is passed', async function (assert) {
+    await render(
+      hbs`<OSS::TogglableSection @title="title" @badgeIcon="far fa-hourglass" @onChange={{this.onChange}} @toggled={{false}} />`
+    );
+    assert.dom('.upf-badge .far.fa-hourglass').exists();
+  });
+
   module('Toggle behavior', () => {
     async function renderComponent() {
       await render(hbs`<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}

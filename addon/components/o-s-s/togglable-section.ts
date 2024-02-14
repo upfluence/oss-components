@@ -6,6 +6,7 @@ interface CampaignTogglableSectionArgs {
   toggled: boolean;
   iconUrl?: string;
   icon?: string;
+  badgeIcon?: string;
   subtitle?: string;
   onChange(value: boolean): void;
 }
