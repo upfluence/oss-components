@@ -1,7 +1,7 @@
 import { isBlank } from '@ember/utils';
 import Component from '@glimmer/component';
 
-type SizeType = 'sm' | 'md';
+type SizeType = 'sm' | 'md' | 'lg';
 
 interface OSSBannerArgs {
   size?: SizeType;
@@ -9,6 +9,11 @@ interface OSSBannerArgs {
   selected?: boolean;
   disabled?: boolean;
 }
+
+const SIZE_CLASSES: Record<string, string> = {
+  sm: 'upf-banner--size-sm',
+  lg: 'upf-banner--size-lg'
+};
 
 export default class OSSBanner extends Component<OSSBannerArgs> {
   get disabledClass(): string {
@@ -24,7 +29,7 @@ export default class OSSBanner extends Component<OSSBannerArgs> {
   }
 
   get sizeClass(): string {
-    return this.args.size === 'sm' ? 'upf-banner--size-sm' : '';
+    return SIZE_CLASSES[this.args.size ?? 'md'] ?? '';
   }
 
   get iconSizeClass(): string {

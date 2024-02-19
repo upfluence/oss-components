@@ -1,6 +1,6 @@
 import { hbs } from 'ember-cli-htmlbars';
 
-const COMPONENT_SIZES = ['sm', 'md'];
+const COMPONENT_SIZES = ['sm', 'md', 'lg'];
 
 export default {
   title: 'Components/OSS::Banner',
@@ -79,7 +79,7 @@ export default {
     },
     size: {
       description:
-        'Allows to adjust the size of the component. Currently available options are `sm` and `md`. Defaults to `md`.',
+        'Allows to adjust the size of the component. Currently available options are `sm`, `md` and `lg`. Defaults to `md`.',
       table: {
         type: COMPONENT_SIZES.join('|'),
         defaultValue: { summary: 'md' }
