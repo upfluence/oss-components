@@ -76597,6 +76597,10 @@ define("@upfluence/oss-components/components/o-s-s/banner", ["exports", "@ember/
     "moduleName": "@upfluence/oss-components/components/o-s-s/banner.hbs",
     "isStrictMode": false
   });
+  var SIZE_CLASSES = {
+    sm: 'upf-banner--size-sm',
+    lg: 'upf-banner--size-lg'
+  };
   var OSSBanner = _exports.default = /*#__PURE__*/function (_Component) {
     _inherits(OSSBanner, _Component);
     function OSSBanner() {
@@ -76621,7 +76625,8 @@ define("@upfluence/oss-components/components/o-s-s/banner", ["exports", "@ember/
     }, {
       key: "sizeClass",
       get: function get() {
-        return this.args.size === 'sm' ? 'upf-banner--size-sm' : '';
+        var _SIZE_CLASSES, _this$args$size;
+        return (_SIZE_CLASSES = SIZE_CLASSES[(_this$args$size = this.args.size) !== null && _this$args$size !== void 0 ? _this$args$size : 'md']) !== null && _SIZE_CLASSES !== void 0 ? _SIZE_CLASSES : '';
       }
     }, {
       key: "iconSizeClass",
@@ -76654,7 +76659,7 @@ define("@upfluence/oss-components/components/o-s-s/banner", ["exports", "@ember/
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
   function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-  var COMPONENT_SIZES = ['sm', 'md'];
+  var COMPONENT_SIZES = ['sm', 'md', 'lg'];
   var _default = _exports.default = {
     title: 'Components/OSS::Banner',
     component: 'banner',
@@ -76758,7 +76763,7 @@ define("@upfluence/oss-components/components/o-s-s/banner", ["exports", "@ember/
         }
       },
       size: {
-        description: 'Allows to adjust the size of the component. Currently available options are `sm` and `md`. Defaults to `md`.',
+        description: 'Allows to adjust the size of the component. Currently available options are `sm`, `md` and `lg`. Defaults to `md`.',
         table: {
           type: COMPONENT_SIZES.join('|'),
           defaultValue: {

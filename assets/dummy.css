@@ -11903,8 +11903,10 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
   color: var(--color-gray-400);
 }
 .upf-banner--size-sm {
-  height: 52px;
-  padding: 0 var(--spacing-px-9);
+  padding: var(--spacing-px-12);
+}
+.upf-banner--size-lg {
+  padding: var(--spacing-px-24);
 }
 .bg-color-white {
   background-color: var(--color-white);
