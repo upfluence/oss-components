@@ -144,14 +144,26 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
       assert.dom('.upf-badge--size-sm').exists();
     });
 
-    test("when the value is anything but 'sm', it doesn't add the upf-banner--size-sm class", async function (assert) {
-      await render(hbs`<OSS::Banner @size="md" />`);
-      assert.dom('.upf-banner.upf-banner--size-sm').doesNotExist();
+    test("when the value is 'lg', it adds the upf-banner--size-lg class", async function (assert) {
+      await render(hbs`<OSS::Banner @size="lg" />`);
+      assert.dom('.upf-banner.upf-banner--size-lg').exists();
     });
 
-    test("when the value is undefined, it doesn't add the upf-banner--size-sm class", async function (assert) {
+    test("when the value is 'lg' and an @icon is defined, a medium icon class is used", async function (assert) {
+      await render(hbs`<OSS::Banner @size="lg" @icon="fa-child-combatant" />`);
+      assert.dom('.upf-badge--size-md').exists();
+    });
+
+    test("when the value is anything but 'sm', it doesn't add size class", async function (assert) {
+      await render(hbs`<OSS::Banner @size="md" />`);
+      assert.dom('.upf-banner.upf-banner--size-sm').doesNotExist();
+      assert.dom('.upf-banner.upf-banner--size-lg').doesNotExist();
+    });
+
+    test("when the value is undefined, it doesn't add the size class", async function (assert) {
       await render(hbs`<OSS::Banner />`);
       assert.dom('.upf-banner.upf-banner--size-sm').doesNotExist();
+      assert.dom('.upf-banner.upf-banner--size-lg').doesNotExist();
     });
   });
 });
