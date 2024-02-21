@@ -38,7 +38,7 @@ export default {
         type: {
           summary: Sizes.join('|')
         },
-        defaultValue: { summary: 'primary' }
+        defaultValue: { summary: 'undefined' }
       },
       options: Sizes,
       control: { type: 'select' }
