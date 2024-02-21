@@ -10097,6 +10097,14 @@ label {
   background-clip: text;
   -webkit-background-clip: text;
 }
+.upf-tag--xs {
+  padding: 0 var(--spacing-px-6);
+  height: var(--spacing-px-18);
+  gap: var(--spacing-px-3);
+}
+.upf-tag--xs i {
+  font-size: var(--font-size-xs);
+}
 /*
  * Transitions
  */
@@ -15396,6 +15404,13 @@ a.upf-btn--sm {
 .oss-toggle-buttons-container .oss-toggle-buttons-btn--selected {
   background-color: var(--color-white);
   box-shadow: var(--box-shadow-xs);
+}
+.oss-toggle-buttons-container--disabled {
+  gap: var(--spacing-px-3);
+}
+.oss-toggle-buttons-container--disabled .oss-toggle-buttons-btn {
+  background-color: var(--color-gray-200);
+  color: var(--color-gray-400);
 }
 .togglable-section {
   padding: 0;

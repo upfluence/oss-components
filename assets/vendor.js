@@ -85450,6 +85450,9 @@ define("@upfluence/oss-components/components/o-s-s/tag", ["exports", "@ember/com
         if (this.args.plain) {
           classes.push('upf-tag--plain');
         }
+        if (this.args.size === 'xs') {
+          classes.push('upf-tag--xs');
+        }
         return classes.join(' ');
       }
     }, {
@@ -85472,6 +85475,7 @@ define("@upfluence/oss-components/components/o-s-s/tag", ["exports", "@ember/com
   _exports.default = _exports.Default = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
   var SkinTypes = ['primary', 'primary-gradient', 'success', 'warning', 'danger', 'secondary', 'xtd-orange', 'xtd-cyan', 'xtd-yellow', 'xtd-blue', 'xtd-violet', 'xtd-lime', 'chat-gpt'];
+  var Sizes = [null, 'xs'];
   var _default = _exports.default = {
     title: 'Components/OSS::Tag',
     component: 'tag',
@@ -85487,6 +85491,21 @@ define("@upfluence/oss-components/components/o-s-s/tag", ["exports", "@ember/com
           }
         },
         options: SkinTypes,
+        control: {
+          type: 'select'
+        }
+      },
+      size: {
+        description: 'Adjust size',
+        table: {
+          type: {
+            summary: Sizes.join('|')
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        options: Sizes,
         control: {
           type: 'select'
         }
@@ -85569,7 +85588,8 @@ define("@upfluence/oss-components/components/o-s-s/tag", ["exports", "@ember/com
     icon: 'far fa-thumbs-up',
     hasEllipsis: false,
     plain: false,
-    htmlSafe: false
+    htmlSafe: false,
+    size: undefined
   };
   var Template = function Template(args) {
     return {
@@ -85577,12 +85597,12 @@ define("@upfluence/oss-components/components/o-s-s/tag", ["exports", "@ember/com
       /*
         
           <OSS::Tag @skin={{this.skin}} @label={{this.label}} @icon={{this.icon}} @hasEllipsis={{this.hasEllipsis}}
-                    @plain={{this.plain}} @htmlsafe={{this.htmlSafe}} />
+                    @plain={{this.plain}} @htmlsafe={{this.htmlSafe}} @size={{this.size}} />
         
       */
       {
-        "id": "5A0IQkGI",
-        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@hasEllipsis\",\"@plain\",\"@htmlsafe\"],[[30,0,[\"skin\"]],[30,0,[\"label\"]],[30,0,[\"icon\"]],[30,0,[\"hasEllipsis\"]],[30,0,[\"plain\"]],[30,0,[\"htmlSafe\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/tag\"]]",
+        "id": "mw+lxmWw",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@hasEllipsis\",\"@plain\",\"@htmlsafe\",\"@size\"],[[30,0,[\"skin\"]],[30,0,[\"label\"]],[30,0,[\"icon\"]],[30,0,[\"hasEllipsis\"]],[30,0,[\"plain\"]],[30,0,[\"htmlSafe\"]],[30,0,[\"size\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/tag\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/tag.stories.js",
         "isStrictMode": false
       }),
@@ -86060,19 +86080,24 @@ define("@upfluence/oss-components/components/o-s-s/toggle-buttons", ["exports", 
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="oss-toggle-buttons-container" ...attributes>
+    <div
+    class={{concat 'oss-toggle-buttons-container ' (if @disabled 'oss-toggle-buttons-container--disabled')}}
+    ...attributes
+  >
     {{#each @toggles as |toggle|}}
-      <div class="oss-toggle-buttons-btn {{if (eq @selectedToggle toggle.value) " oss-toggle-buttons-btn--selected"}}"
-        role="button" {{on "click" (fn this.onSelectToggle toggle.value)}}>
+      <div
+        class='oss-toggle-buttons-btn {{if (eq @selectedToggle toggle.value) " oss-toggle-buttons-btn--selected"}}'
+        role='button'
+        {{on 'click' (fn this.onSelectToggle toggle.value)}}
+      >
         {{toggle.label}}
       </div>
     {{/each}}
   </div>
-  
   */
   {
-    "id": "1xJTlJVm",
-    "block": "[[[11,0],[24,0,\"oss-toggle-buttons-container\"],[17,1],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,2]],null]],null],null,[[[1,\"    \"],[11,0],[16,0,[29,[\"oss-toggle-buttons-btn \",[52,[28,[37,3],[[30,4],[30,3,[\"value\"]]],null],\" oss-toggle-buttons-btn--selected\"]]]],[24,\"role\",\"button\"],[4,[38,4],[\"click\",[28,[37,5],[[30,0,[\"onSelectToggle\"]],[30,3,[\"value\"]]],null]],null],[12],[1,\"\\n      \"],[1,[30,3,[\"label\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[3]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@toggles\",\"toggle\",\"@selectedToggle\"],false,[\"each\",\"-track-array\",\"if\",\"eq\",\"on\",\"fn\"]]",
+    "id": "fS6BjukL",
+    "block": "[[[11,0],[16,0,[28,[37,0],[\"oss-toggle-buttons-container \",[52,[30,1],\"oss-toggle-buttons-container--disabled\"]],null]],[17,2],[12],[1,\"\\n\"],[42,[28,[37,3],[[28,[37,3],[[30,3]],null]],null],null,[[[1,\"    \"],[11,0],[16,0,[29,[\"oss-toggle-buttons-btn \",[52,[28,[37,4],[[30,5],[30,4,[\"value\"]]],null],\" oss-toggle-buttons-btn--selected\"]]]],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[28,[37,6],[[30,0,[\"onSelectToggle\"]],[30,4,[\"value\"]]],null]],null],[12],[1,\"\\n      \"],[1,[30,4,[\"label\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[4]],null],[13]],[\"@disabled\",\"&attrs\",\"@toggles\",\"toggle\",\"@selectedToggle\"],false,[\"concat\",\"if\",\"each\",\"-track-array\",\"eq\",\"on\",\"fn\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/toggle-buttons.hbs",
     "isStrictMode": false
   });
@@ -86096,6 +86121,7 @@ define("@upfluence/oss-components/components/o-s-s/toggle-buttons", ["exports", 
       key: "onSelectToggle",
       value: function onSelectToggle(selectedToggle, event) {
         event.stopPropagation();
+        if (this.args.disabled) return;
         if (this.args.selectedToggle !== selectedToggle) {
           this.args.onSelection(selectedToggle);
         }
@@ -86151,6 +86177,23 @@ define("@upfluence/oss-components/components/o-s-s/toggle-buttons", ["exports", 
           type: 'text'
         }
       },
+      disabled: {
+        type: {
+          required: false
+        },
+        description: 'Disabled state',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
       onSelection: {
         type: {
           required: true
@@ -86182,21 +86225,22 @@ define("@upfluence/oss-components/components/o-s-s/toggle-buttons", ["exports", 
       label: 'Products'
     }],
     selectedToggle: 'categories',
-    onSelection: (0, _addonActions.action)('onSelection')
+    onSelection: (0, _addonActions.action)('onSelection'),
+    disabled: false
   };
   var DefaultUsageTemplate = function DefaultUsageTemplate(args) {
     return {
       template: (0, _templateFactory.createTemplateFactory)(
       /*
         
-            <div style="width: 250px">
-              <OSS::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}} @onSelection={{this.onSelection}}/>
-            </div>
+          <div style="width: 250px">
+            <OSS::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}} @onSelection={{this.onSelection}} @disabled={{this.disabled}} />
+          </div>
         
       */
       {
-        "id": "O+jq6dCM",
-        "block": "[[[1,\"\\n      \"],[10,0],[14,5,\"width: 250px\"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@toggles\",\"@selectedToggle\",\"@onSelection\"],[[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]],[30,0,[\"onSelection\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/toggle-buttons\"]]",
+        "id": "8GS+iYQy",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 250px\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@toggles\",\"@selectedToggle\",\"@onSelection\",\"@disabled\"],[[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]],[30,0,[\"onSelection\"]],[30,0,[\"disabled\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/toggle-buttons\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/toggle-buttons.stories.js",
         "isStrictMode": false
       }),
