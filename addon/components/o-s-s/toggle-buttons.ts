@@ -10,6 +10,7 @@ export type Toggle = {
 interface OSSToggleButtonsArgs {
   toggles: Toggle[];
   selectedToggle: string | null;
+  disabled?: boolean;
   onSelection(selectedToggle: string): void;
 }
 
@@ -41,6 +42,7 @@ export default class OSSToggleButtons extends Component<OSSToggleButtonsArgs> {
   @action
   onSelectToggle(selectedToggle: string, event: PointerEvent): void {
     event.stopPropagation();
+    if (this.args.disabled) return;
     if (this.args.selectedToggle !== selectedToggle) {
       this.args.onSelection(selectedToggle);
     }
