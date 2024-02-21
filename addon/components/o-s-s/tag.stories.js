@@ -15,6 +15,7 @@ const SkinTypes = [
   'xtd-lime',
   'chat-gpt'
 ];
+const Sizes = [null, 'xs'];
 
 export default {
   title: 'Components/OSS::Tag',
@@ -29,6 +30,17 @@ export default {
         defaultValue: { summary: 'primary' }
       },
       options: SkinTypes,
+      control: { type: 'select' }
+    },
+    size: {
+      description: 'Adjust size',
+      table: {
+        type: {
+          summary: Sizes.join('|')
+        },
+        defaultValue: { summary: 'primary' }
+      },
+      options: Sizes,
       control: { type: 'select' }
     },
     label: {
@@ -90,13 +102,14 @@ const defaultArgs = {
   icon: 'far fa-thumbs-up',
   hasEllipsis: false,
   plain: false,
-  htmlSafe: false
+  htmlSafe: false,
+  size: undefined
 };
 
 const Template = (args) => ({
   template: hbs`
     <OSS::Tag @skin={{this.skin}} @label={{this.label}} @icon={{this.icon}} @hasEllipsis={{this.hasEllipsis}}
-              @plain={{this.plain}} @htmlsafe={{this.htmlSafe}} />
+              @plain={{this.plain}} @htmlsafe={{this.htmlSafe}} @size={{this.size}} />
   `,
   context: args
 });

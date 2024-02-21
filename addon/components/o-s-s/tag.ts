@@ -46,6 +46,7 @@ interface OSSTagArgs {
   hasEllipsis?: boolean;
   plain?: boolean;
   htmlSafe?: boolean;
+  size?: 'xs';
 }
 
 export default class OSSTag extends Component<OSSTagArgs> {
@@ -72,6 +73,10 @@ export default class OSSTag extends Component<OSSTagArgs> {
 
     if (this.args.plain) {
       classes.push('upf-tag--plain');
+    }
+
+    if (this.args.size === 'xs') {
+      classes.push('upf-tag--xs');
     }
 
     return classes.join(' ');

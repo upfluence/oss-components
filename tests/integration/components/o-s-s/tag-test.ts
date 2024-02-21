@@ -80,6 +80,12 @@ module('Integration | Component | o-s-s/tag', function (hooks) {
     });
   });
 
+  test('it properly sets up the xs size', async function (assert) {
+    await render(hbs`<OSS::Tag @skin={{this.skin}} @label="Test Skin" @size="xs" />`);
+    assert.dom('.upf-tag').exists();
+    assert.dom('.upf-tag').hasClass('upf-tag--xs');
+  });
+
   test('it fails if @label and @icon are missing', async function (assert) {
     setupOnerror((err: { message: string }) => {
       assert.equal(
