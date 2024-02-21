@@ -27,6 +27,15 @@ export default {
       },
       control: { type: 'text' }
     },
+    disabled: {
+      type: { required: false },
+      description: 'Disabled state',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'boolean' }
+    },
     onSelection: {
       type: { required: true },
       description: 'Action triggered when selecting a new toggle',
@@ -54,13 +63,14 @@ const defaultArgs = {
     { value: 'products', label: 'Products' }
   ],
   selectedToggle: 'categories',
-  onSelection: action('onSelection')
+  onSelection: action('onSelection'),
+  disabled: false
 };
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
-      <div style="width: 250px">
-        <OSS::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}} @onSelection={{this.onSelection}}/>
-      </div>
+    <div style="width: 250px">
+      <OSS::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}} @onSelection={{this.onSelection}} @disabled={{this.disabled}} />
+    </div>
   `,
   context: args
 });

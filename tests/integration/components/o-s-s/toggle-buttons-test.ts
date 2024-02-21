@@ -35,6 +35,15 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
     assert.dom('.oss-toggle-buttons-container').exists();
   });
 
+  test('the right class is applied when the @disabled arg is truthy', async function (assert) {
+    await render(
+      hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}} @disabled={{true}}/>`
+    );
+
+    assert.dom('.oss-toggle-buttons-container').exists();
+    assert.dom('.oss-toggle-buttons-container').hasClass('oss-toggle-buttons-container--disabled');
+  });
+
   module('If @selectedToggle is passed', function () {
     test('If the selectedToggle matches an entry from the toggles, then the toggle is set to selected', async function (assert) {
       this.selectedToggle = 'second';
@@ -64,6 +73,17 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
 
       await render(
         hbs`<OSS::ToggleButtons @onSelection={{this.onSelectionStub}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+      );
+
+      await click('.oss-toggle-buttons-btn:first-child');
+      assert.ok(this.onSelectionStub.notCalled);
+    });
+
+    test('the @onSelection method is not triggered if the component is disabled', async function (assert) {
+      this.onSelectionStub = sinon.stub();
+
+      await render(
+        hbs`<OSS::ToggleButtons @onSelection={{this.onSelectionStub}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}} @disabled={{true}} />`
       );
 
       await click('.oss-toggle-buttons-btn:first-child');
