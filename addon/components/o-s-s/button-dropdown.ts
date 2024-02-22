@@ -69,7 +69,8 @@ export default class extends Component<OSSButtonDropdownArgs> {
     });
   }
 
-  private closeDropdown(): void {
+  @action
+  closeDropdown(): void {
     this.displayDropdown = false;
   }
 }
