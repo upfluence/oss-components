@@ -70,7 +70,8 @@ export default class extends Component<OSSButtonDropdownArgs> {
   }
 
   @action
-  closeDropdown(): void {
+  closeDropdown(e?: Event): void {
+    event?.stopPropagation();
     this.displayDropdown = false;
   }
 }

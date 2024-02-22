@@ -146,7 +146,7 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
 
     test('Clicking on an item with stopPropagation should keep the dropdown opened', async function (assert) {
       this.stopPropagation = function (e: MouseEvent) {
-        e.stopPropagation();
+        e.stopImmediatePropagation();
       };
 
       await render(
