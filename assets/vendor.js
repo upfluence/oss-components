@@ -77016,7 +77016,9 @@ define("@upfluence/oss-components/components/o-s-s/button-dropdown", ["exports",
       }
     }, {
       key: "closeDropdown",
-      value: function closeDropdown() {
+      value: function closeDropdown(e) {
+        var _event;
+        (_event = event) === null || _event === void 0 || _event.stopPropagation();
         this.displayDropdown = false;
       }
     }]);
@@ -77028,7 +77030,7 @@ define("@upfluence/oss-components/components/o-s-s/button-dropdown", ["exports",
     initializer: function initializer() {
       return false;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "onMainAction", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onMainAction"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onDropdownClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onDropdownClick"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setupChildrenClickHandler", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setupChildrenClickHandler"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "teardownChildrenClickHandler", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "teardownChildrenClickHandler"), _class.prototype)), _class));
+  }), _applyDecoratedDescriptor(_class.prototype, "onMainAction", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onMainAction"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onDropdownClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onDropdownClick"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setupChildrenClickHandler", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setupChildrenClickHandler"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "teardownChildrenClickHandler", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "teardownChildrenClickHandler"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeDropdown"), _class.prototype)), _class));
 });
 ;define("@upfluence/oss-components/components/o-s-s/button-dropdown.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
   "use strict";

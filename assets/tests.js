@@ -5887,7 +5887,7 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
             while (1) switch (_context11.prev = _context11.next) {
               case 0:
                 this.stopPropagation = function (e) {
-                  e.stopPropagation();
+                  e.stopImmediatePropagation();
                 };
                 _context11.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
