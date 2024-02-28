@@ -5,6 +5,8 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 import type IntlService from 'ember-intl/services/intl';
+import { scheduleOnce } from '@ember/runloop';
+import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
 
 interface OSSSelectArgs {
   value: any;
@@ -22,6 +24,10 @@ export default class OSSSelect extends Component<OSSSelectArgs> {
   @service declare intl: IntlService;
 
   @tracked displaySelect: boolean = false;
+
+  cleanupDrodpownAutoplacement?: () => void;
+
+  declare container: HTMLElement;
 
   constructor(owner: unknown, args: OSSSelectArgs) {
     super(owner, args);
@@ -87,6 +93,17 @@ export default class OSSSelect extends Component<OSSSelectArgs> {
       this.hideSelector();
     } else {
       this.displaySelect = true;
+      scheduleOnce('afterRender', this, () => {
+        const referenceTarget = this.container.querySelector('.upf-input');
+        const floatingTarget = this.container.querySelector('.upf-infinite-select');
+
+        if (referenceTarget && floatingTarget) {
+          this.cleanupDrodpownAutoplacement = attachDropdown(
+            referenceTarget as HTMLElement,
+            floatingTarget as HTMLElement
+          );
+        }
+      });
     }
   }
 
@@ -100,10 +117,16 @@ export default class OSSSelect extends Component<OSSSelectArgs> {
   hideSelector(): void {
     this.displaySelect = false;
     this.args.onSearch?.('');
+    this.cleanupDrodpownAutoplacement?.();
   }
 
   @action
   ensureBlockPresence(hasOptionItem: boolean): void {
     assert(`[component][OSS::Select] You must pass option named block`, hasOptionItem);
+  }
+
+  @action
+  registerContainer(element: HTMLElement): void {
+    this.container = element;
   }
 }
