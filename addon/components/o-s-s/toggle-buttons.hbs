@@ -8,6 +8,9 @@
       role='button'
       {{on 'click' (fn this.onSelectToggle toggle.value)}}
     >
+      {{#if toggle.icon}}
+        <OSS::Icon @style={{fa-icon-style toggle.icon}} @icon={{fa-icon-value toggle.icon}} />
+      {{/if}}
       {{toggle.label}}
     </div>
   {{/each}}

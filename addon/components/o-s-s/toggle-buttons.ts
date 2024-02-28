@@ -5,6 +5,7 @@ import { action } from '@ember/object';
 export type Toggle = {
   value: string;
   label: string;
+  icon?: string;
 };
 
 interface OSSToggleButtonsArgs {
