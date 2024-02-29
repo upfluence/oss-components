@@ -22,7 +22,7 @@ interface OSSCurrencyInputArgs {
 
 const NUMERIC_ONLY = /^\d$/i;
 const NOT_NUMERIC_FLOAT = /[^0-9,.]/g;
-const PLATFORM_CURRENCIES: Currency[] = [
+export const PLATFORM_CURRENCIES: Currency[] = [
   { code: 'USD', symbol: '$' },
   { code: 'EUR', symbol: '€' },
   { code: 'JPY', symbol: '¥' },
