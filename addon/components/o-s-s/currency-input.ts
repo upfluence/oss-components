@@ -47,7 +47,8 @@ const PLATFORM_CURRENCIES: Currency[] = [
   { code: 'PHP', symbol: '₱' },
   { code: 'THB', symbol: '฿' },
   { code: 'DKK', symbol: 'kr' },
-  { code: 'PLN', symbol: 'zł' }
+  { code: 'PLN', symbol: 'zł' },
+  { code: 'CZK', symbol: 'Kč' }
 ];
 const AUTHORIZED_INPUTS = [
   'Backspace',
