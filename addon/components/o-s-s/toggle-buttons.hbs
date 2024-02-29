@@ -1,12 +1,12 @@
 <div
-  class={{concat 'oss-toggle-buttons-container ' (if @disabled 'oss-toggle-buttons-container--disabled')}}
+  class={{concat "oss-toggle-buttons-container " (if @disabled "oss-toggle-buttons-container--disabled")}}
   ...attributes
 >
   {{#each @toggles as |toggle|}}
     <div
-      class='oss-toggle-buttons-btn {{if (eq @selectedToggle toggle.value) " oss-toggle-buttons-btn--selected"}}'
-      role='button'
-      {{on 'click' (fn this.onSelectToggle toggle.value)}}
+      class="oss-toggle-buttons-btn {{if (eq @selectedToggle toggle.value) ' oss-toggle-buttons-btn--selected'}}"
+      role="button"
+      {{on "click" (fn this.onSelectToggle toggle.value)}}
     >
       {{#if toggle.icon}}
         <OSS::Icon @style={{fa-icon-style toggle.icon}} @icon={{fa-icon-value toggle.icon}} />

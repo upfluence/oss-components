@@ -1,25 +1,25 @@
 <div
   class={{this.classNames}}
-  {{did-insert (fn this.ensureBlockPresence (has-block 'option'))}}
+  {{did-insert (fn this.ensureBlockPresence (has-block "option"))}}
   {{did-insert this.registerContainer}}
   ...attributes
 >
   <div
-    class='upf-input {{if this.displaySelect "active"}} fx-row fx-1 fx-xalign-center'
-    role='button'
-    {{on 'click' this.toggleSelector}}
+    class="upf-input {{if this.displaySelect 'active'}} fx-row fx-1 fx-xalign-center"
+    role="button"
+    {{on "click" this.toggleSelector}}
   >
-    <div class='fx-row fx-1 fx-malign-space-between fx-xalign-center'>
+    <div class="fx-row fx-1 fx-malign-space-between fx-xalign-center">
       {{#if @value}}
-        {{#if (has-block 'selected')}}
-          {{yield @value to='selected'}}
+        {{#if (has-block "selected")}}
+          {{yield @value to="selected"}}
         {{else}}
           <span>{{get @value this.targetValue}}</span>
         {{/if}}
       {{else}}
-        <span class='upf-input--placeholder'>{{this.placeholder}}</span>
+        <span class="upf-input--placeholder">{{this.placeholder}}</span>
       {{/if}}
-      <OSS::Icon @icon='fa-chevron-{{if this.displaySelect "up" "down"}}' class='margin-left-px-6' />
+      <OSS::Icon @icon="fa-chevron-{{if this.displaySelect 'up' 'down'}}" class="margin-left-px-6" />
     </div>
   </div>
 
@@ -33,13 +33,13 @@
       {{on-click-outside this.onClickOutside useCapture=true}}
     >
       <:option as |item|>
-        <div class='item-wrapper fx-row fx-xalign-center fx-malign-space-between {{if (eq @value item) "selected"}}'>
-          {{#if (has-block 'option')}}
-            {{yield item to='option'}}
+        <div class="item-wrapper fx-row fx-xalign-center fx-malign-space-between {{if (eq @value item) 'selected'}}">
+          {{#if (has-block "option")}}
+            {{yield item to="option"}}
           {{/if}}
 
           {{#if (eq @value item)}}
-            <OSS::Icon @icon='fa-check' class='font-color-primary-500 padding-right-px-6' />
+            <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
           {{/if}}
         </div>
       </:option>
@@ -47,15 +47,15 @@
   {{/if}}
 
   {{#if @errorMessage}}
-    <div class='font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center'>
-      <OSS::Icon @icon='fa-exclamation-triangle' />
+    <div class="font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center">
+      <OSS::Icon @icon="fa-exclamation-triangle" />
       {{@errorMessage}}
     </div>
   {{/if}}
 
   {{#if @successMessage}}
-    <div class='font-color-success-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center'>
-      <OSS::Icon @icon='fa-check-circle' />
+    <div class="font-color-success-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center">
+      <OSS::Icon @icon="fa-check-circle" />
       {{@successMessage}}
     </div>
   {{/if}}

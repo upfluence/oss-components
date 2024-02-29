@@ -1,26 +1,26 @@
 <div
-  class='upf-power-select fx-1 fx-col'
+  class="upf-power-select fx-1 fx-col"
   {{did-insert this.registerContainer}}
+  {{did-insert (fn this.ensureBlockPresence (has-block "selected-item") (has-block "option-item"))}}
   ...attributes
-  {{did-insert (fn this.ensureBlockPresence (has-block 'selected-item') (has-block 'option-item'))}}
 >
-  <div class='upf-power-select__array-container' role='button' {{on 'click' this.toggleSelect}}>
-    <div class='array-input-container fx-row padding-px-6 {{if this.displaySelect "active"}}'>
-      <div class='fx-row fx-xalign-center fx-1 padding-left-px-6 padding-right-px-24 fx-gap-px-6 fx-wrap'>
+  <div class="upf-power-select__array-container" role="button" {{on "click" this.toggleSelect}}>
+    <div class="array-input-container fx-row padding-px-6 {{if this.displaySelect 'active'}}">
+      <div class="fx-row fx-xalign-center fx-1 padding-left-px-6 padding-right-px-24 fx-gap-px-6 fx-wrap">
         {{#each @selectedItems as |selectedItem|}}
-          {{yield selectedItem to='selected-item'}}
+          {{yield selectedItem to="selected-item"}}
         {{else}}
-          <span class='text-size-5 text-color-default-light'>
+          <span class="text-size-5 text-color-default-light">
             {{this.placeholder}}
           </span>
         {{/each}}
       </div>
-      <OSS::Icon @icon={{if this.displaySelect 'fa-chevron-up' 'fa-chevron-down'}} class='dropdown-icon' />
+      <OSS::Icon @icon={{if this.displaySelect "fa-chevron-up" "fa-chevron-down"}} class="dropdown-icon" />
     </div>
   </div>
 
   {{#if this.displaySelect}}
-    {{#if (has-block 'empty-state')}}
+    {{#if (has-block "empty-state")}}
       <OSS::InfiniteSelect
         @items={{@items}}
         @onSearch={{@onSearch}}
@@ -33,11 +33,11 @@
         {{on-click-outside this.hideSelect useCapture=true}}
       >
         <:option as |item|>
-          {{yield item to='option-item'}}
+          {{yield item to="option-item"}}
         </:option>
 
         <:empty-state>
-          {{yield to='empty-state'}}
+          {{yield to="empty-state"}}
         </:empty-state>
       </OSS::InfiniteSelect>
     {{else}}
@@ -53,7 +53,7 @@
         {{on-click-outside this.hideSelect useCapture=true}}
       >
         <:option as |item|>
-          {{yield item to='option-item'}}
+          {{yield item to="option-item"}}
         </:option>
       </OSS::InfiniteSelect>
     {{/if}}
