@@ -30,7 +30,7 @@
         @loading={{@loading}}
         @loadingMore={{@loadingMore}}
         @onBottomReached={{@onBottomReached}}
-        {{on-click-outside this.hideSelect}}
+        {{on-click-outside this.hideSelect useCapture=true}}
       >
         <:option as |item|>
           {{yield item to='option-item'}}
@@ -50,7 +50,7 @@
         @loading={{@loading}}
         @loadingMore={{@loadingMore}}
         @onBottomReached={{@onBottomReached}}
-        {{on-click-outside this.hideSelect}}
+        {{on-click-outside this.hideSelect useCapture=true}}
       >
         <:option as |item|>
           {{yield item to='option-item'}}
