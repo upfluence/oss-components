@@ -78853,7 +78853,7 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = void 0;
+  _exports.default = _exports.PLATFORM_CURRENCIES = void 0;
   var _class, _descriptor, _descriptor2, _descriptor3;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/debug",0,"@ember/object",0,"@ember/utils",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -78935,7 +78935,7 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
   });
   var NUMERIC_ONLY = /^\d$/i;
   var NOT_NUMERIC_FLOAT = /[^0-9,.]/g;
-  var PLATFORM_CURRENCIES = [{
+  var PLATFORM_CURRENCIES = _exports.PLATFORM_CURRENCIES = [{
     code: 'USD',
     symbol: '$'
   }, {
