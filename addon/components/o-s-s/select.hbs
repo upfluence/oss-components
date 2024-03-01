@@ -23,28 +23,33 @@
     </div>
   </div>
 
-  {{#if this.displaySelect}}
-    <OSS::InfiniteSelect
-      @items={{@items}}
-      @onSearch={{this.onSearch}}
-      @onSelect={{this.onSelect}}
-      @searchEnabled={{this.searchEnabled}}
-      @searchPlaceholder={{this.searchPlaceholder}}
-      {{on-click-outside this.onClickOutside useCapture=true}}
-    >
-      <:option as |item|>
-        <div class="item-wrapper fx-row fx-xalign-center fx-malign-space-between {{if (eq @value item) 'selected'}}">
-          {{#if (has-block "option")}}
-            {{yield item to="option"}}
-          {{/if}}
+  {{#in-element this.portalTarget insertBefore=null}}
+    {{#if this.displaySelect}}
+      <OSS::InfiniteSelect
+        @items={{@items}}
+        @onSearch={{this.onSearch}}
+        @onSelect={{this.onSelect}}
+        @searchEnabled={{this.searchEnabled}}
+        @searchPlaceholder={{this.searchPlaceholder}}
+        id={{this.portalId}}
+        class="margin-top-px-0"
+        {{on-click-outside this.onClickOutside}}
+        {{on "click" this.noop}}
+      >
+        <:option as |item|>
+          <div class="item-wrapper fx-row fx-xalign-center fx-malign-space-between {{if (eq @value item) 'selected'}}">
+            {{#if (has-block "option")}}
+              {{yield item to="option"}}
+            {{/if}}
 
-          {{#if (eq @value item)}}
-            <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
-          {{/if}}
-        </div>
-      </:option>
-    </OSS::InfiniteSelect>
-  {{/if}}
+            {{#if (eq @value item)}}
+              <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
+            {{/if}}
+          </div>
+        </:option>
+      </OSS::InfiniteSelect>
+    {{/if}}
+  {{/in-element}}
 
   {{#if @errorMessage}}
     <div class="font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center">

@@ -2,8 +2,10 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
+import { guidFor } from '@ember/object/internals';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
+
 import type IntlService from 'ember-intl/services/intl';
 import { scheduleOnce } from '@ember/runloop';
 import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
@@ -26,6 +28,8 @@ export default class OSSSelect extends Component<OSSSelectArgs> {
   @tracked displaySelect: boolean = false;
 
   cleanupDrodpownAutoplacement?: () => void;
+  portalTarget: HTMLElement = document.body;
+  portalId: string = guidFor(this);
 
   declare container: HTMLElement;
 
@@ -72,6 +76,10 @@ export default class OSSSelect extends Component<OSSSelectArgs> {
     return classes.join(' ');
   }
 
+  noop(event: Event): void {
+    event.stopPropagation();
+  }
+
   @action
   onSelect(value: any): void {
     this.args.onChange(value);
@@ -95,7 +103,7 @@ export default class OSSSelect extends Component<OSSSelectArgs> {
       this.displaySelect = true;
       scheduleOnce('afterRender', this, () => {
         const referenceTarget = this.container.querySelector('.upf-input');
-        const floatingTarget = this.container.querySelector('.upf-infinite-select');
+        const floatingTarget = document.querySelector(`#${this.portalId}`);
 
         if (referenceTarget && floatingTarget) {
           this.cleanupDrodpownAutoplacement = attachDropdown(
