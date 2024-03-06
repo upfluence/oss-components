@@ -1,7 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { setupIntl } from 'ember-intl/test-support';
-import { click, find, findAll, render, setupOnerror, typeIn } from '@ember/test-helpers';
+import { click, render, setupOnerror, typeIn } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import sinon from 'sinon';
 
@@ -31,7 +31,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
       );
 
       await click('.upf-input div');
-      await click(document.querySelector('.upf-infinite-select .upf-infinite-select__item:last-child')!);
+      await click('.upf-infinite-select .upf-infinite-select__item:last-child');
       assert.ok(this.onChange.calledOnceWithExactly(this.items[1]));
     });
   });
@@ -49,10 +49,10 @@ module('Integration | Component | o-s-s/select', function (hooks) {
       );
 
       await click('.upf-input div');
-      assert.dom(document.querySelector('.upf-infinite-select')).exists();
-      assert.equal(document.querySelectorAll('.upf-infinite-select .upf-infinite-select__item').length, 2);
-      assert.dom(document.querySelector('.upf-infinite-select .upf-infinite-select__item:first-child')).hasText('foo');
-      assert.dom(document.querySelector('.upf-infinite-select .upf-infinite-select__item:last-child')).hasText('bar');
+      assert.dom('.upf-infinite-select').exists();
+      assert.dom('.upf-infinite-select .upf-infinite-select__item').exists({ count: 2 });
+      assert.dom('.upf-infinite-select .upf-infinite-select__item:first-child').hasText('foo');
+      assert.dom('.upf-infinite-select .upf-infinite-select__item:last-child').hasText('bar');
     });
   });
 
@@ -130,16 +130,8 @@ module('Integration | Component | o-s-s/select', function (hooks) {
       );
 
       await click('.upf-input div');
-      assert.true(
-        document
-          .querySelector('.upf-infinite-select .upf-infinite-select__item:first-child .item-wrapper')
-          ?.classList.contains('selected')
-      );
-      assert.true(
-        document.querySelector(
-          '.upf-infinite-select .upf-infinite-select__item:first-child .item-wrapper i.far.fa-check'
-        ) instanceof Element
-      );
+      assert.dom('.upf-infinite-select .upf-infinite-select__item:first-child .item-wrapper').hasClass('selected');
+      assert.dom('.upf-infinite-select .upf-infinite-select__item:first-child .item-wrapper i.far.fa-check').exists();
     });
 
     test('the selected value is displayed using the selected named block if provided', async function (assert) {
@@ -174,7 +166,7 @@ module('Integration | Component | o-s-s/select', function (hooks) {
       );
 
       await click('.upf-input div');
-      assert.dom(find('.upf-infinite-select')).doesNotExist();
+      assert.dom('.upf-infinite-select').doesNotExist();
     });
   });
 
@@ -282,10 +274,10 @@ module('Integration | Component | o-s-s/select', function (hooks) {
       );
 
       await click('.upf-input div');
-      assert.dom(document.querySelector('.upf-infinite-select .upf-input')).exists();
-      await typeIn(document.querySelector('.upf-infinite-select .upf-input')!, 'F');
-      assert.equal(document.querySelectorAll('.upf-infinite-select .upf-infinite-select__item').length, 1);
-      assert.dom(document.querySelector('.upf-infinite-select .upf-infinite-select__item')).hasText('foo');
+      assert.dom('.upf-infinite-select .upf-input').exists();
+      await typeIn('.upf-infinite-select .upf-input', 'F');
+      assert.dom('.upf-infinite-select .upf-infinite-select__item').exists({ count: 1 });
+      assert.dom('.upf-infinite-select .upf-infinite-select__item').hasText('foo');
     });
   });
 
