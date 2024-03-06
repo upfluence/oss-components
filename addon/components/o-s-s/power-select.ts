@@ -5,6 +5,7 @@ import { action } from '@ember/object';
 import { scheduleOnce } from '@ember/runloop';
 
 import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
+import BaseDropdown from './private/base-dropdown';
 
 type OperationType = 'selection' | 'deletion';
 
@@ -22,12 +23,8 @@ interface OSSPowerSelectArgs {
 
 const DEFAULT_PLACEHOLDER = 'Select an item';
 
-export default class OSSPowerSelect extends Component<OSSPowerSelectArgs> {
-  @tracked displaySelect: boolean = false;
-
+export default class OSSPowerSelect extends BaseDropdown<OSSPowerSelectArgs> {
   cleanupDrodpownAutoplacement?: () => void;
-
-  declare container: HTMLElement;
 
   get placeholder(): string {
     return this.args.placeholder ?? DEFAULT_PLACEHOLDER;
@@ -45,13 +42,11 @@ export default class OSSPowerSelect extends Component<OSSPowerSelectArgs> {
   }
 
   @action
-  toggleSelect(event: MouseEvent): void {
-    event.stopPropagation();
-    this.displaySelect = !this.displaySelect;
+  toggleDropdown(event: MouseEvent): void {
+    super.toggleDropdown(event);
 
-    if (!this.displaySelect) {
+    if (!this.isOpen) {
       this.args.onSearch?.('');
-      this.cleanupDrodpownAutoplacement?.();
       return;
     }
 
@@ -69,15 +64,9 @@ export default class OSSPowerSelect extends Component<OSSPowerSelectArgs> {
   }
 
   @action
-  hideSelect(_: HTMLElement, event: MouseEvent): void {
-    event.stopPropagation();
-    this.displaySelect = false;
+  onClickOutside(_: HTMLElement, event: MouseEvent): void {
+    super.onClickOutside(_, event);
     this.cleanupDrodpownAutoplacement?.();
     this.args.onSearch?.('');
-  }
-
-  @action
-  registerContainer(element: HTMLElement): void {
-    this.container = element;
   }
 }

@@ -1,11 +1,12 @@
-<div
+<details
   class="upf-power-select fx-1 fx-col"
+  data-toggle="oss-dropdown"
   {{did-insert this.registerContainer}}
   {{did-insert (fn this.ensureBlockPresence (has-block "selected-item") (has-block "option-item"))}}
   ...attributes
 >
-  <div class="upf-power-select__array-container" role="button" {{on "click" this.toggleSelect}}>
-    <div class="array-input-container fx-row padding-px-6 {{if this.displaySelect 'active'}}">
+  <summary class="upf-power-select__array-container" role="button" {{on "click" this.toggleDropdown}}>
+    <div class="array-input-container fx-row padding-px-6 {{if this.isOpen 'active'}}">
       <div class="fx-row fx-xalign-center fx-1 padding-left-px-6 padding-right-px-24 fx-gap-px-6 fx-wrap">
         {{#each @selectedItems as |selectedItem|}}
           {{yield selectedItem to="selected-item"}}
@@ -15,47 +16,45 @@
           </span>
         {{/each}}
       </div>
-      <OSS::Icon @icon={{if this.displaySelect "fa-chevron-up" "fa-chevron-down"}} class="dropdown-icon" />
+      <OSS::Icon @icon={{if this.isOpen "fa-chevron-up" "fa-chevron-down"}} class="dropdown-icon" />
     </div>
-  </div>
+  </summary>
 
-  {{#if this.displaySelect}}
-    {{#if (has-block "empty-state")}}
-      <OSS::InfiniteSelect
-        @items={{@items}}
-        @onSearch={{@onSearch}}
-        @inline={{false}}
-        @onSelect={{this.onSelect}}
-        @searchPlaceholder={{@searchPlaceholder}}
-        @loading={{@loading}}
-        @loadingMore={{@loadingMore}}
-        @onBottomReached={{@onBottomReached}}
-        {{on-click-outside this.hideSelect useCapture=true}}
-      >
-        <:option as |item|>
-          {{yield item to="option-item"}}
-        </:option>
+  {{#if (has-block "empty-state")}}
+    <OSS::InfiniteSelect
+      @items={{@items}}
+      @onSearch={{@onSearch}}
+      @inline={{false}}
+      @onSelect={{this.onSelect}}
+      @searchPlaceholder={{@searchPlaceholder}}
+      @loading={{@loading}}
+      @loadingMore={{@loadingMore}}
+      @onBottomReached={{@onBottomReached}}
+      {{on-click-outside this.onClickOutside}}
+    >
+      <:option as |item|>
+        {{yield item to="option-item"}}
+      </:option>
 
-        <:empty-state>
-          {{yield to="empty-state"}}
-        </:empty-state>
-      </OSS::InfiniteSelect>
-    {{else}}
-      <OSS::InfiniteSelect
-        @items={{@items}}
-        @onSearch={{@onSearch}}
-        @inline={{false}}
-        @onSelect={{this.onSelect}}
-        @searchPlaceholder={{@searchPlaceholder}}
-        @loading={{@loading}}
-        @loadingMore={{@loadingMore}}
-        @onBottomReached={{@onBottomReached}}
-        {{on-click-outside this.hideSelect useCapture=true}}
-      >
-        <:option as |item|>
-          {{yield item to="option-item"}}
-        </:option>
-      </OSS::InfiniteSelect>
-    {{/if}}
+      <:empty-state>
+        {{yield to="empty-state"}}
+      </:empty-state>
+    </OSS::InfiniteSelect>
+  {{else}}
+    <OSS::InfiniteSelect
+      @items={{@items}}
+      @onSearch={{@onSearch}}
+      @inline={{false}}
+      @onSelect={{this.onSelect}}
+      @searchPlaceholder={{@searchPlaceholder}}
+      @loading={{@loading}}
+      @loadingMore={{@loadingMore}}
+      @onBottomReached={{@onBottomReached}}
+      {{on-click-outside this.onClickOutside}}
+    >
+      <:option as |item|>
+        {{yield item to="option-item"}}
+      </:option>
+    </OSS::InfiniteSelect>
   {{/if}}
-</div>
+</details>
