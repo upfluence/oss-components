@@ -32,10 +32,6 @@ export default class OSSBanner extends Component<OSSBannerArgs> {
     return SIZE_CLASSES[this.args.size ?? 'md'] ?? '';
   }
 
-  get iconSizeClass(): string {
-    return this.args.size === 'sm' ? 'upf-badge--size-sm' : 'upf-badge--size-md';
-  }
-
   get modifierClasses(): string {
     return [this.disabledClass, this.selectedClass, this.plainClass, this.sizeClass]
       .filter((mc) => !isBlank(mc))
