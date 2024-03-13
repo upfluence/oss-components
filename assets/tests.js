@@ -19316,8 +19316,8 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
               return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
               /*
                 <OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
-                                                               @iconUrl={{this.iconUrl}} @toggled={{this.toggled}}
-                                                               @onChange={{this.onChange}} />
+                                                          @iconUrl={{this.iconUrl}} @toggled={{this.toggled}}
+                                                          @onChange={{this.onChange}} />
               */
               {
                 "id": "XS9TTW/N",
@@ -19631,9 +19631,7 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
                 _context11.next = 5;
                 return (0, _testHelpers.click)('.upf-toggle');
               case 5:
-                assert.true(this.onChange.calledOnceWithExactly(true, _sinon.default.match(function (propablyEvent) {
-                  return propablyEvent instanceof Event;
-                })));
+                assert.true(this.onChange.calledOnceWithExactly(true));
               case 6:
               case "end":
                 return _context11.stop();
@@ -19642,6 +19640,207 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
         }));
         return function (_x11) {
           return _ref11.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('Size behavior', function () {
+      (0, _qunit.test)('If the @size param is not passed, the default size is md', /*#__PURE__*/function () {
+        var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+          return _regeneratorRuntime().wrap(function _callee13$(_context13) {
+            while (1) switch (_context13.prev = _context13.next) {
+              case 0:
+                _context13.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  
+                        <OSS::TogglableSection @title={{this.title}} @toggled={{this.toggled}} @onChange={{this.onChange}}>
+                          <:contents>
+                            <div>contents named block</div>
+                          </:contents>
+                        </OSS::TogglableSection>
+                */
+                {
+                  "id": "8psQNTYz",
+                  "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@toggled\",\"@onChange\"],[[30,0,[\"title\"]],[30,0,[\"toggled\"]],[30,0,[\"onChange\"]]]],[[\"contents\"],[[[[1,\"\\n            \"],[10,0],[12],[1,\"contents named block\"],[13],[1,\"\\n          \"]],[]]]]]],[],false,[\"o-s-s/togglable-section\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/togglable-section-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.togglable-section .header-block').hasClass('padding-px-18');
+                _context13.next = 5;
+                return (0, _testHelpers.click)('.upf-toggle');
+              case 5:
+                assert.dom('.togglable-section .content-block').hasClass('padding-px-18');
+              case 6:
+              case "end":
+                return _context13.stop();
+            }
+          }, _callee13);
+        }));
+        return function (_x12) {
+          return _ref12.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('If the @size param is set to sm, the size is sm', /*#__PURE__*/function () {
+        var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
+          return _regeneratorRuntime().wrap(function _callee14$(_context14) {
+            while (1) switch (_context14.prev = _context14.next) {
+              case 0:
+                _context14.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  
+                        <OSS::TogglableSection @title={{this.title}} @toggled={{this.toggled}} @onChange={{this.onChange}} @size="sm">
+                          <:contents>
+                            <div>contents named block</div>
+                          </:contents>
+                        </OSS::TogglableSection>
+                */
+                {
+                  "id": "CMxVr6bI",
+                  "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@toggled\",\"@onChange\",\"@size\"],[[30,0,[\"title\"]],[30,0,[\"toggled\"]],[30,0,[\"onChange\"]],\"sm\"]],[[\"contents\"],[[[[1,\"\\n            \"],[10,0],[12],[1,\"contents named block\"],[13],[1,\"\\n          \"]],[]]]]]],[],false,[\"o-s-s/togglable-section\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/togglable-section-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.togglable-section .header-block').hasClass('padding-px-12');
+                _context14.next = 5;
+                return (0, _testHelpers.click)('.upf-toggle');
+              case 5:
+                assert.dom('.togglable-section .content-block').hasClass('padding-px-12');
+              case 6:
+              case "end":
+                return _context14.stop();
+            }
+          }, _callee14);
+        }));
+        return function (_x13) {
+          return _ref13.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('If the @size param is set to md, the size is md', /*#__PURE__*/function () {
+        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+          return _regeneratorRuntime().wrap(function _callee15$(_context15) {
+            while (1) switch (_context15.prev = _context15.next) {
+              case 0:
+                _context15.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  
+                        <OSS::TogglableSection @title={{this.title}} @toggled={{this.toggled}} @onChange={{this.onChange}} @size="md">
+                          <:contents>
+                            <div>contents named block</div>
+                          </:contents>
+                        </OSS::TogglableSection>
+                */
+                {
+                  "id": "bTi1nl3o",
+                  "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@toggled\",\"@onChange\",\"@size\"],[[30,0,[\"title\"]],[30,0,[\"toggled\"]],[30,0,[\"onChange\"]],\"md\"]],[[\"contents\"],[[[[1,\"\\n            \"],[10,0],[12],[1,\"contents named block\"],[13],[1,\"\\n          \"]],[]]]]]],[],false,[\"o-s-s/togglable-section\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/togglable-section-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.togglable-section .header-block').hasClass('padding-px-18');
+                _context15.next = 5;
+                return (0, _testHelpers.click)('.upf-toggle');
+              case 5:
+                assert.dom('.togglable-section .content-block').hasClass('padding-px-18');
+              case 6:
+              case "end":
+                return _context15.stop();
+            }
+          }, _callee15);
+        }));
+        return function (_x14) {
+          return _ref14.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('@Disabled behaviour', function () {
+      (0, _qunit.test)('If @disabled is truthy, the toggle is disabled', /*#__PURE__*/function () {
+        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
+          return _regeneratorRuntime().wrap(function _callee16$(_context16) {
+            while (1) switch (_context16.prev = _context16.next) {
+              case 0:
+                _context16.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::TogglableSection @title={{this.title}} @toggled={{this.toggled}} @onChange={{this.onChange}} @disabled={{true}} />
+                */
+                {
+                  "id": "Pz2dJFmd",
+                  "block": "[[[8,[39,0],null,[[\"@title\",\"@toggled\",\"@onChange\",\"@disabled\"],[[30,0,[\"title\"]],[30,0,[\"toggled\"]],[30,0,[\"onChange\"]],true]],null]],[],false,[\"o-s-s/togglable-section\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/togglable-section-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.upf-toggle').hasClass('upf-toggle--disabled');
+              case 3:
+              case "end":
+                return _context16.stop();
+            }
+          }, _callee16);
+        }));
+        return function (_x15) {
+          return _ref15.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('If @disabled is falsy, the toggle is enabled', /*#__PURE__*/function () {
+        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
+          return _regeneratorRuntime().wrap(function _callee17$(_context17) {
+            while (1) switch (_context17.prev = _context17.next) {
+              case 0:
+                _context17.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::TogglableSection @title={{this.title}} @toggled={{this.toggled}} @onChange={{this.onChange}} @disabled={{false}} />
+                */
+                {
+                  "id": "LpmeZJoU",
+                  "block": "[[[8,[39,0],null,[[\"@title\",\"@toggled\",\"@onChange\",\"@disabled\"],[[30,0,[\"title\"]],[30,0,[\"toggled\"]],[30,0,[\"onChange\"]],false]],null]],[],false,[\"o-s-s/togglable-section\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/togglable-section-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.upf-toggle').doesNotHaveClass('upf-toggle--disabled');
+              case 3:
+              case "end":
+                return _context17.stop();
+            }
+          }, _callee17);
+        }));
+        return function (_x16) {
+          return _ref16.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('If @disabled is truthy, the toggle can still be active', /*#__PURE__*/function () {
+        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
+          return _regeneratorRuntime().wrap(function _callee18$(_context18) {
+            while (1) switch (_context18.prev = _context18.next) {
+              case 0:
+                this.toggled = true;
+                _context18.next = 3;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::TogglableSection @title={{this.title}} @toggled={{this.toggled}} @onChange={{this.onChange}} @disabled={{true}} />
+                */
+                {
+                  "id": "Pz2dJFmd",
+                  "block": "[[[8,[39,0],null,[[\"@title\",\"@toggled\",\"@onChange\",\"@disabled\"],[[30,0,[\"title\"]],[30,0,[\"toggled\"]],[30,0,[\"onChange\"]],true]],null]],[],false,[\"o-s-s/togglable-section\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/togglable-section-test.ts",
+                  "isStrictMode": false
+                }));
+              case 3:
+                assert.dom('.upf-toggle').hasClass('upf-toggle--disabled');
+                assert.dom('.upf-toggle').hasClass('upf-toggle--toggled');
+              case 5:
+              case "end":
+                return _context18.stop();
+            }
+          }, _callee18, this);
+        }));
+        return function (_x17) {
+          return _ref17.apply(this, arguments);
         };
       }());
     });

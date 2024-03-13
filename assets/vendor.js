@@ -85841,19 +85841,20 @@ define("@upfluence/oss-components/components/o-s-s/text-area", ["exports", "@emb
   BasicUsage.args = defaultArgs;
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-define("@upfluence/oss-components/components/o-s-s/togglable-section", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _templateFactory) {
+define("@upfluence/oss-components/components/o-s-s/togglable-section", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@ember/object", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _object, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/debug",0,"@ember/component"eaimeta@70e063a35619d71f
+  var _class;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/debug",0,"@ember/object",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
   function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
   function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
   function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
   function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
   function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
   function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
@@ -85861,11 +85862,12 @@ define("@upfluence/oss-components/components/o-s-s/togglable-section", ["exports
   function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
   function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
   function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class="togglable-section fx-1 fx-col border fx-xalign-center" ...attributes>
-    <div class="fx-row fx-gap-px-12 fx-xalign-center width-pc-100 padding-px-18 inner-header
-                {{if @toggled "background-color-gray-50"}}">
+    <div class="header-block fx-row {{this.paddingClass}} fx-gap-px-12 fx-xalign-center width-pc-100 inner-header
+                {{if @toggled "background-color-gray-50"}}" {{on "click" this.onHeaderClick}} role="button">
       {{#if @iconUrl}}
         <img class="upf-badge upf-badge--size-md upf-badge--shape-round" src={{@iconUrl}} alt={{@title}} />
       {{else if @icon}}
@@ -85877,11 +85879,11 @@ define("@upfluence/oss-components/components/o-s-s/togglable-section", ["exports
         <span class="font-weight-semibold font-size-md font-color-gray-900">{{@title}}</span>
         <span class="font-color-gray-500">{{@subtitle}}</span>
       </div>
-      <OSS::ToggleSwitch @value={{@toggled}} @onChange={{@onChange}} />
+      <OSS::ToggleSwitch @value={{@toggled}} @onChange={{this.noop}} @disabled={{@disabled}} />
     </div>
     {{#if (and (has-block "contents") @toggled)}}
       <hr class="margin-px-0 width-pc-100" />
-      <div class="width-pc-100 padding-px-18 content-block">
+      <div class="width-pc-100 {{this.paddingClass}} content-block">
         {{yield to="contents"}}
       </div>
     {{/if}}
@@ -85889,12 +85891,12 @@ define("@upfluence/oss-components/components/o-s-s/togglable-section", ["exports
   
   */
   {
-    "id": "gthldVuC",
-    "block": "[[[11,0],[24,0,\"togglable-section fx-1 fx-col border fx-xalign-center\"],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"fx-row fx-gap-px-12 fx-xalign-center width-pc-100 padding-px-18 inner-header\\n              \",[52,[30,2],\"background-color-gray-50\"]]]],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"      \"],[10,\"img\"],[14,0,\"upf-badge upf-badge--size-md upf-badge--shape-round\"],[15,\"src\",[30,3]],[15,\"alt\",[30,4]],[12],[13],[1,\"\\n\"]],[]],[[[41,[30,5],[[[1,\"      \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[[28,[37,2],[[30,5]],null],[28,[37,3],[[30,5]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,6],[[[1,\"      \"],[8,[39,4],null,[[\"@icon\"],[[30,6]]],null],[1,\"\\n    \"]],[]],null]],[]]]],[]]],[1,\"    \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-3\"],[12],[1,\"\\n      \"],[10,1],[14,0,\"font-weight-semibold font-size-md font-color-gray-900\"],[12],[1,[30,4]],[13],[1,\"\\n      \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,[30,7]],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[8,[39,5],null,[[\"@value\",\"@onChange\"],[[30,2],[30,8]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[28,[37,6],[[48,[30,9]],[30,2]],null],[[[1,\"    \"],[10,\"hr\"],[14,0,\"margin-px-0 width-pc-100\"],[12],[13],[1,\"\\n    \"],[10,0],[14,0,\"width-pc-100 padding-px-18 content-block\"],[12],[1,\"\\n      \"],[18,9,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@toggled\",\"@iconUrl\",\"@title\",\"@icon\",\"@badgeIcon\",\"@subtitle\",\"@onChange\",\"&contents\"],false,[\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"o-s-s/badge\",\"o-s-s/toggle-switch\",\"and\",\"has-block\",\"yield\"]]",
+    "id": "cCgQP4E/",
+    "block": "[[[11,0],[24,0,\"togglable-section fx-1 fx-col border fx-xalign-center\"],[17,1],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"header-block fx-row \",[30,0,[\"paddingClass\"]],\" fx-gap-px-12 fx-xalign-center width-pc-100 inner-header\\n              \",[52,[30,2],\"background-color-gray-50\"]]]],[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,0,[\"onHeaderClick\"]]],null],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"      \"],[10,\"img\"],[14,0,\"upf-badge upf-badge--size-md upf-badge--shape-round\"],[15,\"src\",[30,3]],[15,\"alt\",[30,4]],[12],[13],[1,\"\\n\"]],[]],[[[41,[30,5],[[[1,\"      \"],[8,[39,2],null,[[\"@style\",\"@icon\"],[[28,[37,3],[[30,5]],null],[28,[37,4],[[30,5]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,6],[[[1,\"      \"],[8,[39,5],null,[[\"@icon\"],[[30,6]]],null],[1,\"\\n    \"]],[]],null]],[]]]],[]]],[1,\"    \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-3\"],[12],[1,\"\\n      \"],[10,1],[14,0,\"font-weight-semibold font-size-md font-color-gray-900\"],[12],[1,[30,4]],[13],[1,\"\\n      \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,[30,7]],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[8,[39,6],null,[[\"@value\",\"@onChange\",\"@disabled\"],[[30,2],[30,0,[\"noop\"]],[30,8]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[28,[37,7],[[48,[30,9]],[30,2]],null],[[[1,\"    \"],[10,\"hr\"],[14,0,\"margin-px-0 width-pc-100\"],[12],[13],[1,\"\\n    \"],[10,0],[15,0,[29,[\"width-pc-100 \",[30,0,[\"paddingClass\"]],\" content-block\"]]],[12],[1,\"\\n      \"],[18,9,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@toggled\",\"@iconUrl\",\"@title\",\"@icon\",\"@badgeIcon\",\"@subtitle\",\"@disabled\",\"&contents\"],false,[\"if\",\"on\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"o-s-s/badge\",\"o-s-s/toggle-switch\",\"and\",\"has-block\",\"yield\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/togglable-section.hbs",
     "isStrictMode": false
   });
-  var CampaignTogglableSection = _exports.default = /*#__PURE__*/function (_Component) {
+  var CampaignTogglableSection = _exports.default = (_class = /*#__PURE__*/function (_Component) {
     _inherits(CampaignTogglableSection, _Component);
     function CampaignTogglableSection(owner, args) {
       var _this;
@@ -85905,8 +85907,23 @@ define("@upfluence/oss-components/components/o-s-s/togglable-section", ["exports
       (true && !(args.onChange) && (0, _debug.assert)('[OSS::TogglableSection] The @onChange function is mandatory', args.onChange));
       return _this;
     }
-    return _createClass(CampaignTogglableSection);
-  }(_component2.default);
+    _createClass(CampaignTogglableSection, [{
+      key: "paddingClass",
+      get: function get() {
+        return this.args.size === 'sm' ? 'padding-px-12' : 'padding-px-18';
+      }
+    }, {
+      key: "onHeaderClick",
+      value: function onHeaderClick() {
+        if (this.args.disabled) return;
+        this.args.onChange(!this.args.toggled);
+      }
+    }, {
+      key: "noop",
+      value: function noop() {}
+    }]);
+    return CampaignTogglableSection;
+  }(_component2.default), (_applyDecoratedDescriptor(_class.prototype, "onHeaderClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onHeaderClick"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "noop", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "noop"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, CampaignTogglableSection);
 });
 ;define("@upfluence/oss-components/components/o-s-s/togglable-section.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -85917,8 +85934,9 @@ define("@upfluence/oss-components/components/o-s-s/togglable-section", ["exports
   });
   _exports.default = _exports.Default = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
+  var COMPONENT_SIZES = ['sm', 'md'];
   var _default = _exports.default = {
-    title: 'Components/OSS::ToggableSection',
+    title: 'Components/OSS::TogglableSection',
     argTypes: {
       title: {
         description: 'Title',
@@ -86006,6 +86024,30 @@ define("@upfluence/oss-components/components/o-s-s/togglable-section", ["exports
           type: 'boolean'
         }
       },
+      disabled: {
+        description: 'Whether the toggle is disabled or not',
+        table: {
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      size: {
+        description: 'Adjust the size of the component. Currently available options are `sm` and `md`. Defaults to `md`.',
+        table: {
+          type: COMPONENT_SIZES.join('|'),
+          defaultValue: {
+            summary: 'md'
+          }
+        },
+        options: COMPONENT_SIZES,
+        control: {
+          type: 'select'
+        }
+      },
       onChange: {
         description: 'Action to run when a user toggles on/off the section',
         table: {
@@ -86027,11 +86069,13 @@ define("@upfluence/oss-components/components/o-s-s/togglable-section", ["exports
   };
   var defaultArgs = {
     title: 'Settings',
-    subtitle: '',
+    subtitle: 'Subtitle string',
     toggled: false,
     iconUrl: '',
-    badgeIcon: undefined,
+    badgeIcon: 'fa-search',
     icon: '',
+    size: undefined,
+    disabled: undefined,
     onChange: (0, _addonActions.action)('onChange')
   };
   var Template = function Template(args) {
@@ -86041,7 +86085,8 @@ define("@upfluence/oss-components/components/o-s-s/togglable-section", ["exports
         
           <OSS::TogglableSection
             @title={{this.title}} @subtitle={{this.subtitle}} @toggled={{this.toggled}} @iconUrl={{this.iconUrl}}
-            @badgeIcon={{this.badgeIcon}} @icon={{this.icon}} @onChange={{this.onChange}}>
+            @badgeIcon={{this.badgeIcon}} @icon={{this.icon}} @onChange={{this.onChange}}
+            @disabled={{this.disabled}} @size={{this.size}}>
             <:contents>
               Setting content
             </:contents>
@@ -86049,8 +86094,8 @@ define("@upfluence/oss-components/components/o-s-s/togglable-section", ["exports
         
       */
       {
-        "id": "GXcpbQ57",
-        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@toggled\",\"@iconUrl\",\"@badgeIcon\",\"@icon\",\"@onChange\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"toggled\"]],[30,0,[\"iconUrl\"]],[30,0,[\"badgeIcon\"]],[30,0,[\"icon\"]],[30,0,[\"onChange\"]]]],[[\"contents\"],[[[[1,\"\\n        Setting content\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/togglable-section\"]]",
+        "id": "aclJcqtc",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@toggled\",\"@iconUrl\",\"@badgeIcon\",\"@icon\",\"@onChange\",\"@disabled\",\"@size\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"toggled\"]],[30,0,[\"iconUrl\"]],[30,0,[\"badgeIcon\"]],[30,0,[\"icon\"]],[30,0,[\"onChange\"]],[30,0,[\"disabled\"]],[30,0,[\"size\"]]]],[[\"contents\"],[[[[1,\"\\n        Setting content\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/togglable-section\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/togglable-section.stories.js",
         "isStrictMode": false
       }),
