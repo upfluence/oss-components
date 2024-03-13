@@ -37,6 +37,7 @@
   "dependencies": {
     "@ember/render-modifiers": "^2.1.0",
     "@embroider/macros": "^1.13.4",
+    "@floating-ui/dom": "^1.6.3",
     "@fortawesome/fontawesome-pro": "git+ssh://git@github.com/upfluence/fontawesome-pro.git",
     "babel-plugin-debug-macros": "^0.3.1",
     "bootstrap": "^3.3.7",
