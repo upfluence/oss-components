@@ -1,6 +1,6 @@
 <div class="togglable-section fx-1 fx-col border fx-xalign-center" ...attributes>
-  <div class="fx-row fx-gap-px-12 fx-xalign-center width-pc-100 padding-px-18 inner-header
-              {{if @toggled "background-color-gray-50"}}">
+  <div class="header-block fx-row {{this.paddingClass}} fx-gap-px-12 fx-xalign-center width-pc-100 inner-header
+              {{if @toggled "background-color-gray-50"}}" {{on "click" this.onHeaderClick}} role="button">
     {{#if @iconUrl}}
       <img class="upf-badge upf-badge--size-md upf-badge--shape-round" src={{@iconUrl}} alt={{@title}} />
     {{else if @icon}}
@@ -12,11 +12,11 @@
       <span class="font-weight-semibold font-size-md font-color-gray-900">{{@title}}</span>
       <span class="font-color-gray-500">{{@subtitle}}</span>
     </div>
-    <OSS::ToggleSwitch @value={{@toggled}} @onChange={{@onChange}} />
+    <OSS::ToggleSwitch @value={{@toggled}} @onChange={{this.noop}} @disabled={{@disabled}} />
   </div>
   {{#if (and (has-block "contents") @toggled)}}
     <hr class="margin-px-0 width-pc-100" />
-    <div class="width-pc-100 padding-px-18 content-block">
+    <div class="width-pc-100 {{this.paddingClass}} content-block">
       {{yield to="contents"}}
     </div>
   {{/if}}

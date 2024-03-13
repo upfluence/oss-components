@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
+import { action } from '@ember/object';
 
 interface CampaignTogglableSectionArgs {
   title: string;
@@ -8,6 +9,8 @@ interface CampaignTogglableSectionArgs {
   icon?: string;
   badgeIcon?: string;
   subtitle?: string;
+  size?: 'sm' | 'md';
+  disabled?: boolean;
   onChange(value: boolean): void;
 }
 
@@ -19,4 +22,17 @@ export default class CampaignTogglableSection extends Component<CampaignTogglabl
     assert('[OSS::TogglableSection] The @toggled parameter is mandatory', typeof args.toggled === 'boolean');
     assert('[OSS::TogglableSection] The @onChange function is mandatory', args.onChange);
   }
+
+  get paddingClass(): 'padding-px-12' | 'padding-px-18' {
+    return this.args.size === 'sm' ? 'padding-px-12' : 'padding-px-18';
+  }
+
+  @action
+  onHeaderClick(): void {
+    if (this.args.disabled) return;
+    this.args.onChange(!this.args.toggled);
+  }
+
+  @action
+  noop(): void {}
 }

@@ -1,16 +1,25 @@
 .togglable-section {
-  &:extend(.upf-banner);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--border-radius-md);
   padding: 0;
   height: fit-content;
-
-  .inner-header {
-    border-top-right-radius: var(--border-radius-md);
-    border-top-left-radius: var(--border-radius-md);
-    transition: background-color 300ms linear, border-radius 300ms linear;
-  }
+  overflow: hidden;
+  background-color: var(--color-white);
 
   .content-block {
     animation: append-animation 300ms linear;
+  }
+
+  .header-block:hover {
+    background-color: var(--color-gray-50);
+  }
+
+  &--size-sm {
+    padding: var(--spacing-px-12);
+  }
+
+  &--size-md {
+    padding: var(--spacing-px-18);
   }
 
   @keyframes append-animation {

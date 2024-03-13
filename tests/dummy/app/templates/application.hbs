@@ -27,6 +27,32 @@
         @validates={{this.onPasswordValidation}}
       />
     </div>
+    <div class="fx-row fx-gap-px-10 margin-md padding-md" style="background-color:sandybrown">
+      <OSS::TogglableSection @title="This is a title" @subtitle="This is a subtitle" @toggled={{this.togglable}}
+                             @icon="far fa-hourglass" @onChange={{this.onToggle}}>
+        <:contents>
+          <span>This is a Contents named block</span>
+        </:contents>
+      </OSS::TogglableSection>
+      <OSS::TogglableSection @title="This is a title" @subtitle="This is a subtitle" @toggled={{this.togglable}}
+                             @icon="far fa-hourglass" @onChange={{this.onToggle}} @size="sm">
+        <:contents>
+          <span>This is a Contents named block</span>
+        </:contents>
+      </OSS::TogglableSection>
+    </div>
+    <div class="fx-row fx-gap-px-10 margin-md padding-md" style="background-color:sandybrown">
+      <OSS::TogglableSection @title="This is a title" @subtitle="This is a subtitle" @toggled={{this.togglable}}
+                             @badgeIcon="far fa-hourglass" @onChange={{this.onToggle}} />
+      <OSS::TogglableSection @title="This is a title" @subtitle="This is a subtitle" @toggled={{this.togglable}}
+                             @badgeIcon="far fa-hourglass" @onChange={{this.onToggle}} @size="sm" />
+    </div>
+    <div class="fx-row fx-gap-px-10 margin-md padding-md" style="background-color:sandybrown">
+      <OSS::TogglableSection @title="This is a title" @subtitle="This is a subtitle" @toggled={{this.togglable}}
+                             @badgeIcon="far fa-hourglass" @onChange={{this.onToggle}} @disabled={{true}} />
+      <OSS::TogglableSection @title="This is a title" @subtitle="This is a subtitle" @toggled={{this.togglable}}
+                             @badgeIcon="far fa-hourglass" @onChange={{this.onToggle}} @disabled={{true}} @size="sm" />
+    </div>
     <div class="fx-row fx-gap-px-10 margin-md">
       <OSS::Banner @icon="fas fa-box-open" @title="Shopify" @selected={{true}}
                    @subtitle="Identify influencers in your Shopify customers database">
@@ -192,18 +218,6 @@
     </div>
     <div class="fx-row fx-1 fx-gap-px-10 margin-md padding-md" style="background: white">
       <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
-      <OSS::TogglableSection @title="This is a title" @subtitle="This is a subtitle" @toggled={{this.togglable}}
-                             @icon="far fa-hourglass" @onChange={{this.onToggle}}>
-        <:contents>
-          <span>This is a Contents named block</span>
-        </:contents>
-      </OSS::TogglableSection>
-      <OSS::TogglableSection @title="This is a title" @subtitle="This is a subtitle" @toggled={{this.togglable}}
-                             @badgeIcon="far fa-hourglass" @onChange={{this.onToggle}}>
-        <:contents>
-          <span>This is a Contents named block</span>
-        </:contents>
-      </OSS::TogglableSection>
     </div>
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
       <OSS::Skeleton @width="70%" />

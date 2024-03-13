@@ -20,8 +20,8 @@ module('Integration | Component | o-s-s/togglable-section', function (hooks) {
 
   test('it renders', async function (assert) {
     await render(hbs`<OSS::TogglableSection @title={{this.title}} @subtitle={{this.subtitle}}
-                                                 @iconUrl={{this.iconUrl}} @toggled={{this.toggled}}
-                                                 @onChange={{this.onChange}} />`);
+                                            @iconUrl={{this.iconUrl}} @toggled={{this.toggled}}
+                                            @onChange={{this.onChange}} />`);
     assert.dom('.togglable-section').exists();
   });
 
@@ -109,14 +109,70 @@ module('Integration | Component | o-s-s/togglable-section', function (hooks) {
       this.onChange = sinon.stub();
       await renderComponent();
       await click('.upf-toggle');
-      assert.true(
-        this.onChange.calledOnceWithExactly(
-          true,
-          sinon.match((propablyEvent: unknown) => {
-            return propablyEvent instanceof Event;
-          })
-        )
+      assert.true(this.onChange.calledOnceWithExactly(true));
+    });
+  });
+
+  module('Size behavior', () => {
+    test('If the @size param is not passed, the default size is md', async function (assert) {
+      await render(hbs`
+        <OSS::TogglableSection @title={{this.title}} @toggled={{this.toggled}} @onChange={{this.onChange}}>
+          <:contents>
+            <div>contents named block</div>
+          </:contents>
+        </OSS::TogglableSection>`);
+      assert.dom('.togglable-section .header-block').hasClass('padding-px-18');
+      await click('.upf-toggle');
+      assert.dom('.togglable-section .content-block').hasClass('padding-px-18');
+    });
+
+    test('If the @size param is set to sm, the size is sm', async function (assert) {
+      await render(hbs`
+        <OSS::TogglableSection @title={{this.title}} @toggled={{this.toggled}} @onChange={{this.onChange}} @size="sm">
+          <:contents>
+            <div>contents named block</div>
+          </:contents>
+        </OSS::TogglableSection>`);
+      assert.dom('.togglable-section .header-block').hasClass('padding-px-12');
+      await click('.upf-toggle');
+      assert.dom('.togglable-section .content-block').hasClass('padding-px-12');
+    });
+
+    test('If the @size param is set to md, the size is md', async function (assert) {
+      await render(hbs`
+        <OSS::TogglableSection @title={{this.title}} @toggled={{this.toggled}} @onChange={{this.onChange}} @size="md">
+          <:contents>
+            <div>contents named block</div>
+          </:contents>
+        </OSS::TogglableSection>`);
+      assert.dom('.togglable-section .header-block').hasClass('padding-px-18');
+      await click('.upf-toggle');
+      assert.dom('.togglable-section .content-block').hasClass('padding-px-18');
+    });
+  });
+
+  module('@Disabled behaviour', () => {
+    test('If @disabled is truthy, the toggle is disabled', async function (assert) {
+      await render(
+        hbs`<OSS::TogglableSection @title={{this.title}} @toggled={{this.toggled}} @onChange={{this.onChange}} @disabled={{true}} />`
       );
+      assert.dom('.upf-toggle').hasClass('upf-toggle--disabled');
+    });
+
+    test('If @disabled is falsy, the toggle is enabled', async function (assert) {
+      await render(
+        hbs`<OSS::TogglableSection @title={{this.title}} @toggled={{this.toggled}} @onChange={{this.onChange}} @disabled={{false}} />`
+      );
+      assert.dom('.upf-toggle').doesNotHaveClass('upf-toggle--disabled');
+    });
+
+    test('If @disabled is truthy, the toggle can still be active', async function (assert) {
+      this.toggled = true;
+      await render(
+        hbs`<OSS::TogglableSection @title={{this.title}} @toggled={{this.toggled}} @onChange={{this.onChange}} @disabled={{true}} />`
+      );
+      assert.dom('.upf-toggle').hasClass('upf-toggle--disabled');
+      assert.dom('.upf-toggle').hasClass('upf-toggle--toggled');
     });
   });
 });
