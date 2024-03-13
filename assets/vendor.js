@@ -89651,6 +89651,58 @@ define("@upfluence/oss-components/services/base-uploader", ["exports", "@ember/s
     return animation;
   }
 });
+;define("@upfluence/oss-components/utils/attach-dropdown", ["exports", "@floating-ui/dom"], function (_exports, _dom) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = attachDropdown;
+  0; //eaimeta@70e063a35619d71f0,"@floating-ui/dom"eaimeta@70e063a35619d71f
+  var DEFAULT_ATTACHMENT_OPTIONS = {
+    offset: 12,
+    width: undefined,
+    placement: 'bottom'
+  };
+  function attachDropdown(referenceTarget, floatingTarget) {
+    var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : DEFAULT_ATTACHMENT_OPTIONS;
+    var updatePosition = function updatePosition() {
+      var _options$placement, _options$offset;
+      (0, _dom.computePosition)(referenceTarget, floatingTarget, {
+        placement: (_options$placement = options.placement) !== null && _options$placement !== void 0 ? _options$placement : 'bottom',
+        middleware: [(0, _dom.offset)((_options$offset = options.offset) !== null && _options$offset !== void 0 ? _options$offset : 0), (0, _dom.flip)({
+          fallbackPlacements: ['top', 'bottom']
+        }), (0, _dom.size)({
+          apply: function apply(_ref) {
+            var _options$width;
+            var rects = _ref.rects,
+              elements = _ref.elements;
+            var desiredWidth = (_options$width = options.width) !== null && _options$width !== void 0 ? _options$width : rects.reference.width;
+            Object.assign(elements.floating.style, {
+              maxWidth: "".concat(desiredWidth, "px"),
+              minWidth: "".concat(desiredWidth, "px"),
+              width: "".concat(desiredWidth, "px")
+            });
+          }
+        }), (0, _dom.hide)()]
+      }).then(function (_ref2) {
+        var x = _ref2.x,
+          y = _ref2.y,
+          middlewareData = _ref2.middlewareData;
+        Object.assign(floatingTarget.style, {
+          left: "".concat(x, "px"),
+          top: "".concat(y, "px")
+        });
+        if (middlewareData.hide) {
+          Object.assign(floatingTarget.style, {
+            visibility: middlewareData.hide.referenceHidden ? 'hidden' : 'visible'
+          });
+        }
+      });
+    };
+    return (0, _dom.autoUpdate)(referenceTarget, floatingTarget, updatePosition);
+  }
+});
 ;define("@upfluence/oss-components/utils/country-codes", ["exports"], function (_exports) {
   "use strict";
 

@@ -3984,6 +3984,20 @@ define("dummy/routes/application", ["exports", "@ember/routing/route", "@ember/s
     "isStrictMode": false
   });
 });
+;define("dummy/utils/attach-dropdown", ["exports", "@upfluence/oss-components/utils/attach-dropdown"], function (_exports, _attachDropdown) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function get() {
+      return _attachDropdown.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/utils/attach-dropdown"eaimeta@70e063a35619d71f
+});
 ;define("dummy/utils/easter-eggs", ["exports", "@upfluence/oss-components/utils/easter-eggs"], function (_exports, _easterEggs) {
   "use strict";
 
