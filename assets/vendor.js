@@ -76565,7 +76565,7 @@ define("@upfluence/oss-components/components/o-s-s/banner", ["exports", "@ember/
       <div>{{yield to="custom-icon"}}</div>
     {{else if @icon}}
       <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}}
-                 class="upf-badge upf-badge--shape-round {{this.iconSizeClass}}" />
+                 class="upf-badge upf-badge--shape-round upf-badge--size-md" />
     {{else if @image}}
       <img class="upf-badge upf-badge--size-md upf-badge--shape-round" src={{@image}} alt="banner" />
     {{/if}}
@@ -76592,8 +76592,8 @@ define("@upfluence/oss-components/components/o-s-s/banner", ["exports", "@ember/
   
   */
   {
-    "id": "IJB6JKax",
-    "block": "[[[11,0],[16,0,[29,[\"upf-banner fx-1 fx-row fx-xalign-center fx-gap-px-12 \",[30,0,[\"modifierClasses\"]]]]],[17,1],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"    \"],[10,0],[12],[18,7,null],[13],[1,\"\\n\"]],[]],[[[41,[30,2],[[[1,\"    \"],[8,[39,3],[[16,0,[29,[\"upf-badge upf-badge--shape-round \",[30,0,[\"iconSizeClass\"]]]]]],[[\"@style\",\"@icon\"],[[28,[37,4],[[30,2]],null],[28,[37,5],[[30,2]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,3],[[[1,\"    \"],[10,\"img\"],[14,0,\"upf-badge upf-badge--size-md upf-badge--shape-round\"],[15,\"src\",[30,3]],[14,\"alt\",\"banner\"],[12],[13],[1,\"\\n  \"]],[]],null]],[]]]],[]]],[1,\"  \"],[10,0],[15,0,[29,[\"fx-col fx-1 \",[52,[28,[37,6],[[30,4],\"sm\"],null],\"fx-gap-px-3\"]]]],[12],[1,\"\\n\"],[41,[30,5],[[[1,\"      \"],[10,0],[14,0,\"fx-row fx-xalign-center\"],[12],[1,\"\\n        \"],[10,1],[14,0,\"font-weight-semibold text-size-5 font-color-gray-900\"],[12],[1,[30,5]],[13],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"          \"],[18,8,null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n\"]],[]],null],[41,[30,6],[[[1,\"      \"],[10,1],[14,0,\"text-size-4 font-color-gray-500\"],[12],[1,[30,6]],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,9]],[[[1,\"      \"],[18,9,null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[48,[30,10]],[[[1,\"    \"],[10,0],[12],[18,10,null],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@image\",\"@size\",\"@title\",\"@subtitle\",\"&custom-icon\",\"&title-suffix\",\"&secondary-actions\",\"&actions\"],false,[\"if\",\"has-block\",\"yield\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"not-eq\"]]",
+    "id": "Mzp7ZBRp",
+    "block": "[[[11,0],[16,0,[29,[\"upf-banner fx-1 fx-row fx-xalign-center fx-gap-px-12 \",[30,0,[\"modifierClasses\"]]]]],[17,1],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"    \"],[10,0],[12],[18,7,null],[13],[1,\"\\n\"]],[]],[[[41,[30,2],[[[1,\"    \"],[8,[39,3],[[24,0,\"upf-badge upf-badge--shape-round upf-badge--size-md\"]],[[\"@style\",\"@icon\"],[[28,[37,4],[[30,2]],null],[28,[37,5],[[30,2]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,3],[[[1,\"    \"],[10,\"img\"],[14,0,\"upf-badge upf-badge--size-md upf-badge--shape-round\"],[15,\"src\",[30,3]],[14,\"alt\",\"banner\"],[12],[13],[1,\"\\n  \"]],[]],null]],[]]]],[]]],[1,\"  \"],[10,0],[15,0,[29,[\"fx-col fx-1 \",[52,[28,[37,6],[[30,4],\"sm\"],null],\"fx-gap-px-3\"]]]],[12],[1,\"\\n\"],[41,[30,5],[[[1,\"      \"],[10,0],[14,0,\"fx-row fx-xalign-center\"],[12],[1,\"\\n        \"],[10,1],[14,0,\"font-weight-semibold text-size-5 font-color-gray-900\"],[12],[1,[30,5]],[13],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"          \"],[18,8,null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n\"]],[]],null],[41,[30,6],[[[1,\"      \"],[10,1],[14,0,\"text-size-4 font-color-gray-500\"],[12],[1,[30,6]],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,9]],[[[1,\"      \"],[18,9,null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[48,[30,10]],[[[1,\"    \"],[10,0],[12],[18,10,null],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@image\",\"@size\",\"@title\",\"@subtitle\",\"&custom-icon\",\"&title-suffix\",\"&secondary-actions\",\"&actions\"],false,[\"if\",\"has-block\",\"yield\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"not-eq\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/banner.hbs",
     "isStrictMode": false
   });
@@ -76627,11 +76627,6 @@ define("@upfluence/oss-components/components/o-s-s/banner", ["exports", "@ember/
       get: function get() {
         var _SIZE_CLASSES, _this$args$size;
         return (_SIZE_CLASSES = SIZE_CLASSES[(_this$args$size = this.args.size) !== null && _this$args$size !== void 0 ? _this$args$size : 'md']) !== null && _SIZE_CLASSES !== void 0 ? _SIZE_CLASSES : '';
-      }
-    }, {
-      key: "iconSizeClass",
-      get: function get() {
-        return this.args.size === 'sm' ? 'upf-badge--size-sm' : 'upf-badge--size-md';
       }
     }, {
       key: "modifierClasses",
