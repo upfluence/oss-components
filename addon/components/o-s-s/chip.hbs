@@ -1,8 +1,14 @@
 <div class={{this.computedClass}} ...attributes {{on "click" this.stopPropagation}}>
-  <span class="font-weight-semibold {{if @maxDisplayWidth "chip-ellipsis"}}"
-        style={{if @maxDisplayWidth this.ellipsisStyle}}
-        {{enable-tooltip title=(if @maxDisplayWidth @label '') placement='top'}}>
+  {{#if (has-block "prefix")}}
+    {{yield to="prefix"}}
+  {{/if}}
+
+  <span
+    class="font-weight-semibold {{if @maxDisplayWidth 'chip-ellipsis'}}"
+    style={{if @maxDisplayWidth this.ellipsisStyle}}
+    {{enable-tooltip title=(if @maxDisplayWidth @label "") placement="top"}}
+  >
     {{@label}}
   </span>
-  <OSS::Icon @icon="fa-times-circle" role={{unless @disabled 'button'}} {{on "click" this.onCrossClick}} />
+  <OSS::Icon @icon="fa-times-circle" role={{unless @disabled "button"}} {{on "click" this.onCrossClick}} />
 </div>

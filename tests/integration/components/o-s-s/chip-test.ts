@@ -38,6 +38,7 @@ module('Integration | Component | o-s-s/chip', function (hooks) {
       assert.dom('.upf-chip').hasClass('upf-chip--disabled');
     });
   });
+
   module('@maxDisplayWidth', () => {
     test('The component adds an ellispsis if the label is wider than @maxDisplayWidth', async function (assert) {
       await render(
@@ -86,6 +87,16 @@ module('Integration | Component | o-s-s/chip', function (hooks) {
 
       assert.dom('.upf-chip').exists();
       assert.dom('.upf-chip').hasClass(`upf-chip--${SkinDefinition[this.skin as SkinType]}`);
+    });
+  });
+
+  module('prefix named-block', () => {
+    test('When the prefix named-block is passed, it renders the block', async function (assert) {
+      await render(
+        hbs`<OSS::Chip @skin={{this.skin}} @label={{this.label}} @onRemove={{this.onRemove}}><:prefix><OSS::Icon @icon="fa-users" /></:prefix></OSS::Chip>`
+      );
+      assert.dom('.upf-chip').exists();
+      assert.dom('.upf-chip i.far.fa-users').exists();
     });
   });
 
