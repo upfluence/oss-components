@@ -77787,18 +77787,23 @@ define("@upfluence/oss-components/components/o-s-s/chip", ["exports", "@ember/co
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class={{this.computedClass}} ...attributes {{on "click" this.stopPropagation}}>
-    <span class="font-weight-semibold {{if @maxDisplayWidth "chip-ellipsis"}}"
-          style={{if @maxDisplayWidth this.ellipsisStyle}}
-          {{enable-tooltip title=(if @maxDisplayWidth @label '') placement='top'}}>
+    {{#if (has-block "prefix")}}
+      {{yield to="prefix"}}
+    {{/if}}
+  
+    <span
+      class="font-weight-semibold {{if @maxDisplayWidth 'chip-ellipsis'}}"
+      style={{if @maxDisplayWidth this.ellipsisStyle}}
+      {{enable-tooltip title=(if @maxDisplayWidth @label "") placement="top"}}
+    >
       {{@label}}
     </span>
-    <OSS::Icon @icon="fa-times-circle" role={{unless @disabled 'button'}} {{on "click" this.onCrossClick}} />
+    <OSS::Icon @icon="fa-times-circle" role={{unless @disabled "button"}} {{on "click" this.onCrossClick}} />
   </div>
-  
   */
   {
-    "id": "XclCHF4x",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[4,[38,0],[\"click\",[30,0,[\"stopPropagation\"]]],null],[12],[1,\"\\n  \"],[11,1],[16,0,[29,[\"font-weight-semibold \",[52,[30,2],\"chip-ellipsis\"]]]],[16,5,[52,[30,2],[30,0,[\"ellipsisStyle\"]]]],[4,[38,2],null,[[\"title\",\"placement\"],[[52,[30,2],[30,3],\"\"],\"top\"]]],[12],[1,\"\\n    \"],[1,[30,3]],[1,\"\\n  \"],[13],[1,\"\\n  \"],[8,[39,3],[[16,\"role\",[52,[51,[30,4]],\"button\"]],[4,[38,0],[\"click\",[30,0,[\"onCrossClick\"]]],null]],[[\"@icon\"],[\"fa-times-circle\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@maxDisplayWidth\",\"@label\",\"@disabled\"],false,[\"on\",\"if\",\"enable-tooltip\",\"o-s-s/icon\",\"unless\"]]",
+    "id": "Cuh4pEPd",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[4,[38,0],[\"click\",[30,0,[\"stopPropagation\"]]],null],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"    \"],[18,5,null],[1,\"\\n\"]],[]],null],[1,\"\\n  \"],[11,1],[16,0,[29,[\"font-weight-semibold \",[52,[30,2],\"chip-ellipsis\"]]]],[16,5,[52,[30,2],[30,0,[\"ellipsisStyle\"]]]],[4,[38,4],null,[[\"title\",\"placement\"],[[52,[30,2],[30,3],\"\"],\"top\"]]],[12],[1,\"\\n    \"],[1,[30,3]],[1,\"\\n  \"],[13],[1,\"\\n  \"],[8,[39,5],[[16,\"role\",[52,[51,[30,4]],\"button\"]],[4,[38,0],[\"click\",[30,0,[\"onCrossClick\"]]],null]],[[\"@icon\"],[\"fa-times-circle\"]],null],[1,\"\\n\"],[13]],[\"&attrs\",\"@maxDisplayWidth\",\"@label\",\"@disabled\",\"&prefix\"],false,[\"on\",\"if\",\"has-block\",\"yield\",\"enable-tooltip\",\"o-s-s/icon\",\"unless\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/chip.hbs",
     "isStrictMode": false
   });
@@ -77867,7 +77872,7 @@ define("@upfluence/oss-components/components/o-s-s/chip", ["exports", "@ember/co
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = _exports.Default = void 0;
+  _exports.default = _exports.UsageWithPrefix = _exports.Default = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
   var SkinTypes = ['default', 'primary', 'success', 'danger'];
   var _default = _exports.default = {
@@ -77972,8 +77977,31 @@ define("@upfluence/oss-components/components/o-s-s/chip", ["exports", "@ember/co
       context: args
     };
   };
+  var WithPrefixTemplate = function WithPrefixTemplate(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <OSS::Chip @skin={{this.skin}} @label={{this.label}} @onRemove={{this.onRemove}} @disabled={{this.disabled}} @maxDisplayWidth={{this.maxDisplayWidth}}>
+            <:prefix>
+              <OSS::Icon @icon="fa-check" />
+            </:prefix>
+          </OSS::Chip>
+        
+      */
+      {
+        "id": "z5xJXLWl",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@onRemove\",\"@disabled\",\"@maxDisplayWidth\"],[[30,0,[\"skin\"]],[30,0,[\"label\"]],[30,0,[\"onRemove\"]],[30,0,[\"disabled\"]],[30,0,[\"maxDisplayWidth\"]]]],[[\"prefix\"],[[[[1,\"\\n        \"],[8,[39,1],null,[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/chip\",\"o-s-s/icon\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/chip.stories.js",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
   var Default = _exports.Default = Template.bind({});
   Default.args = defaultArgs;
+  var UsageWithPrefix = _exports.UsageWithPrefix = WithPrefixTemplate.bind({});
+  UsageWithPrefix.args = defaultArgs;
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("@upfluence/oss-components/components/o-s-s/code-block", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@ember/service", "@glimmer/tracking", "@ember/template-factory"], function (_exports, _component, _component2, _object, _service, _tracking, _templateFactory) {

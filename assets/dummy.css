@@ -14086,10 +14086,10 @@ a.upf-btn--sm {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.upf-chip i {
+.upf-chip i.fa-times-circle {
   opacity: 0.4;
 }
-.upf-chip i:hover {
+.upf-chip i.fa-times-circle:hover {
   opacity: 1;
 }
 .upf-chip--default {

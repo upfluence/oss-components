@@ -7270,16 +7270,47 @@ define("dummy/tests/integration/components/o-s-s/chip-test", ["qunit", "ember-qu
         };
       }());
     });
-    (0, _qunit.module)('Error management', function () {
-      (0, _qunit.test)('It throws an error if @onRemove is not passed', /*#__PURE__*/function () {
+    (0, _qunit.module)('prefix named-block', function () {
+      (0, _qunit.test)('When the prefix named-block is passed, it renders the block', /*#__PURE__*/function () {
         var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
+                _context9.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Chip @skin={{this.skin}} @label={{this.label}} @onRemove={{this.onRemove}}><:prefix><OSS::Icon @icon="fa-users" /></:prefix></OSS::Chip>
+                */
+                {
+                  "id": "qiZQiw/b",
+                  "block": "[[[8,[39,0],null,[[\"@skin\",\"@label\",\"@onRemove\"],[[30,0,[\"skin\"]],[30,0,[\"label\"]],[30,0,[\"onRemove\"]]]],[[\"prefix\"],[[[[8,[39,1],null,[[\"@icon\"],[\"fa-users\"]],null]],[]]]]]],[],false,[\"o-s-s/chip\",\"o-s-s/icon\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/chip-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.upf-chip').exists();
+                assert.dom('.upf-chip i.far.fa-users').exists();
+              case 4:
+              case "end":
+                return _context9.stop();
+            }
+          }, _callee9);
+        }));
+        return function (_x9) {
+          return _ref9.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('Error management', function () {
+      (0, _qunit.test)('It throws an error if @onRemove is not passed', /*#__PURE__*/function () {
+        var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+          return _regeneratorRuntime().wrap(function _callee10$(_context10) {
+            while (1) switch (_context10.prev = _context10.next) {
+              case 0:
                 (0, _testHelpers.setupOnerror)(function (err) {
                   assert.equal(err.message, 'Assertion Failed: [component][OSS::Chip] The parameter @onRemove of type function is mandatory');
                 });
-                _context9.next = 3;
+                _context10.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Chip @label={{this.label}} />
@@ -7292,23 +7323,23 @@ define("dummy/tests/integration/components/o-s-s/chip-test", ["qunit", "ember-qu
                 }));
               case 3:
               case "end":
-                return _context9.stop();
+                return _context10.stop();
             }
-          }, _callee9);
+          }, _callee10);
         }));
-        return function (_x9) {
-          return _ref9.apply(this, arguments);
+        return function (_x10) {
+          return _ref10.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('It throws an error if @label is not passed', /*#__PURE__*/function () {
-        var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
-          return _regeneratorRuntime().wrap(function _callee10$(_context10) {
-            while (1) switch (_context10.prev = _context10.next) {
+        var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+          return _regeneratorRuntime().wrap(function _callee11$(_context11) {
+            while (1) switch (_context11.prev = _context11.next) {
               case 0:
                 (0, _testHelpers.setupOnerror)(function (err) {
                   assert.equal(err.message, 'Assertion Failed: [component][OSS::Chip] The @label parameter is mandatory');
                 });
-                _context10.next = 3;
+                _context11.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Chip @onRemove={{this.onRemove}} />
@@ -7321,12 +7352,12 @@ define("dummy/tests/integration/components/o-s-s/chip-test", ["qunit", "ember-qu
                 }));
               case 3:
               case "end":
-                return _context10.stop();
+                return _context11.stop();
             }
-          }, _callee10);
+          }, _callee11);
         }));
-        return function (_x10) {
-          return _ref10.apply(this, arguments);
+        return function (_x11) {
+          return _ref11.apply(this, arguments);
         };
       }());
     });
