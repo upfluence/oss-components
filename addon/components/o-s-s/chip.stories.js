@@ -80,5 +80,19 @@ const Template = (args) => ({
   context: args
 });
 
+const WithPrefixTemplate = (args) => ({
+  template: hbs`
+    <OSS::Chip @skin={{this.skin}} @label={{this.label}} @onRemove={{this.onRemove}} @disabled={{this.disabled}} @maxDisplayWidth={{this.maxDisplayWidth}}>
+      <:prefix>
+        <OSS::Icon @icon="fa-check" />
+      </:prefix>
+    </OSS::Chip>
+  `,
+  context: args
+});
+
 export const Default = Template.bind({});
 Default.args = defaultArgs;
+
+export const UsageWithPrefix = WithPrefixTemplate.bind({});
+UsageWithPrefix.args = defaultArgs;
