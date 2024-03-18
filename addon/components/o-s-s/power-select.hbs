@@ -3,6 +3,7 @@
   data-toggle='oss-dropdown'
   {{did-insert this.registerContainer}}
   {{did-insert (fn this.ensureBlockPresence (has-block 'selected-item') (has-block 'option-item'))}}
+  {{on 'toggle' this.onToggle}}
   ...attributes
 >
   <summary class='upf-power-select__array-container' role='button' {{on 'click' this.toggleDropdown}}>
@@ -32,6 +33,7 @@
           @loading={{@loading}}
           @loadingMore={{@loadingMore}}
           @onBottomReached={{@onBottomReached}}
+          class='margin-top-px-0'
           id={{this.portalId}}
           {{on-click-outside this.onClickOutside}}
         >
@@ -53,6 +55,7 @@
           @loading={{@loading}}
           @loadingMore={{@loadingMore}}
           @onBottomReached={{@onBottomReached}}
+          class='margin-top-px-0'
           id={{this.portalId}}
           {{on-click-outside this.onClickOutside}}
         >

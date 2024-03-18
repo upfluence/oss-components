@@ -46,6 +46,13 @@ export default class OSSPowerSelect extends BaseDropdown<OSSPowerSelectArgs> {
   }
 
   @action
+  onToggle(event: ToggleEvent & { target: HTMLDetailsElement }) {
+    if (!event.target.open && document.querySelector(`#${this.portalId}`)) {
+      document.querySelector(`#${this.portalId}`)!.remove();
+    }
+  }
+
+  @action
   toggleDropdown(event: MouseEvent): void {
     super.toggleDropdown(event);
 
