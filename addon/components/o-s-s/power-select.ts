@@ -34,6 +34,10 @@ export default class OSSPowerSelect extends BaseDropdown<OSSPowerSelectArgs> {
     return this.args.placeholder ?? DEFAULT_PLACEHOLDER;
   }
 
+  noop(event: Event): void {
+    event.stopPropagation();
+  }
+
   @action
   ensureBlockPresence(hasSelectedItem: boolean, hasOptionItem: boolean): void | never {
     assert(`[component][OSS::PowerSelect] You must pass selected-item named block`, hasSelectedItem);
@@ -46,9 +50,10 @@ export default class OSSPowerSelect extends BaseDropdown<OSSPowerSelectArgs> {
   }
 
   @action
-  onToggle(event: ToggleEvent & { target: HTMLDetailsElement }) {
+  handleSelectorClose(event: ToggleEvent & { target: HTMLDetailsElement }) {
     if (!event.target.open && document.querySelector(`#${this.portalId}`)) {
       document.querySelector(`#${this.portalId}`)!.remove();
+      this.cleanupDrodpownAutoplacement?.();
     }
   }
 

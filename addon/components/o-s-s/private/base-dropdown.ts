@@ -37,7 +37,7 @@ export default class OSSBaseDropdown<T> extends Component<T> {
     this.isOpen = false;
   }
 
-  private clearExistingDropdowns(): void {
+  clearExistingDropdowns(): void {
     const openedDetails = document.querySelectorAll('details[data-toggle="oss-dropdown"][open]');
 
     openedDetails.forEach((details: HTMLDetailsElement) => {
