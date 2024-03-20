@@ -54,6 +54,7 @@ export default class OSSPowerSelect extends BaseDropdown<OSSPowerSelectArgs> {
     if (!event.target.open && document.querySelector(`#${this.portalId}`)) {
       document.querySelector(`#${this.portalId}`)!.remove();
       this.cleanupDrodpownAutoplacement?.();
+      this.closeDropdown();
     }
   }
 
