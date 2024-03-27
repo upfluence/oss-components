@@ -1,0 +1,5 @@
+<div class={{concat 'fx-row fx-gap-px-6 fx-xalign-center border-radius-md oss-navbar-item' (if @active '--active' '')}}>
+  <OSS::Icon @icon={{@icon}} class='font-color-gray-500' />
+  <span class='font-color-gray-600 font-size-sm'>{{@label}}</span>
+  {{yield to='extra'}}
+</div>
