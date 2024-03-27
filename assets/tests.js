@@ -15566,11 +15566,11 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
                 assert.dom('.upf-power-select__array-container').exists({
                   count: 1
                 });
-                assert.dom('.upf-infinite-select').doesNotExist();
+                assert.dom('.upf-power-select').hasNoAttribute('open');
                 _context.next = 7;
                 return (0, _testHelpers.click)('.upf-power-select__array-container');
               case 7:
-                assert.dom('.upf-infinite-select').exists();
+                assert.dom('.upf-power-select').hasAttribute('open');
               case 8:
               case "end":
                 return _context.stop();
@@ -15617,11 +15617,11 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
                 assert.dom('.upf-power-select__array-container').exists({
                   count: 1
                 });
-                assert.dom('.upf-infinite-select').doesNotExist();
+                assert.dom('.upf-power-select').hasNoAttribute('open');
                 _context2.next = 7;
                 return (0, _testHelpers.click)('.upf-power-select__array-container');
               case 7:
-                assert.dom('.upf-infinite-select').exists();
+                assert.dom('.upf-power-select').hasAttribute('open');
                 assert.dom('.foobar').exists();
                 assert.dom('.foobar').hasText('custom empty state');
               case 10:
@@ -19842,7 +19842,8 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
         label: 'First'
       }, {
         value: 'second',
-        label: 'Second'
+        label: 'Second',
+        icon: 'far fa-2'
       }];
     });
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
@@ -19902,14 +19903,44 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
         return _ref2.apply(this, arguments);
       };
     }());
+    (0, _qunit.test)('the toggle icon is displayed when provided', /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              _context3.next = 2;
+              return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+              /*
+                <OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>
+              */
+              {
+                "id": "4zYkewO0",
+                "block": "[[[8,[39,0],null,[[\"@onSelection\",\"@toggles\",\"@selectedToggle\"],[[30,0,[\"onSelection\"]],[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]]]],null]],[],false,[\"o-s-s/toggle-buttons\"]]",
+                "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/toggle-buttons-test.ts",
+                "isStrictMode": false
+              }));
+            case 2:
+              assert.dom('.oss-toggle-buttons-btn:first-child i.far').doesNotExist();
+              assert.dom('.oss-toggle-buttons-btn:last-child i.far').exists();
+              assert.dom('.oss-toggle-buttons-btn:last-child i.far').hasClass('fa-2');
+            case 5:
+            case "end":
+              return _context3.stop();
+          }
+        }, _callee3);
+      }));
+      return function (_x3) {
+        return _ref3.apply(this, arguments);
+      };
+    }());
     (0, _qunit.module)('If @selectedToggle is passed', function () {
       (0, _qunit.test)('If the selectedToggle matches an entry from the toggles, then the toggle is set to selected', /*#__PURE__*/function () {
-        var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
-          return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-            while (1) switch (_context3.prev = _context3.next) {
+        var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+          return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+            while (1) switch (_context4.prev = _context4.next) {
               case 0:
                 this.selectedToggle = 'second';
-                _context3.next = 3;
+                _context4.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>
@@ -19924,22 +19955,22 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
                 assert.dom('.oss-toggle-buttons-btn--selected').hasText('Second');
               case 4:
               case "end":
-                return _context3.stop();
+                return _context4.stop();
             }
-          }, _callee3, this);
+          }, _callee4, this);
         }));
-        return function (_x3) {
-          return _ref3.apply(this, arguments);
+        return function (_x4) {
+          return _ref4.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.module)('When clicking on an item', function () {
       (0, _qunit.test)('the toggle is selected', /*#__PURE__*/function () {
-        var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
-          return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-            while (1) switch (_context4.prev = _context4.next) {
+        var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+          return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+            while (1) switch (_context5.prev = _context5.next) {
               case 0:
-                _context4.next = 2;
+                _context5.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>
@@ -19951,57 +19982,25 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
                   "isStrictMode": false
                 }));
               case 2:
-                _context4.next = 4;
+                _context5.next = 4;
                 return (0, _testHelpers.click)('.oss-toggle-buttons-btn:first-child');
               case 4:
                 assert.dom('.oss-toggle-buttons-btn--selected').hasText('First');
-                _context4.next = 7;
+                _context5.next = 7;
                 return (0, _testHelpers.click)('.oss-toggle-buttons-btn:last-child');
               case 7:
                 assert.dom('.oss-toggle-buttons-btn--selected').hasText('Second');
               case 8:
               case "end":
-                return _context4.stop();
-            }
-          }, _callee4);
-        }));
-        return function (_x4) {
-          return _ref4.apply(this, arguments);
-        };
-      }());
-      (0, _qunit.test)('the @onSelection method is not triggered if the item is already selected', /*#__PURE__*/function () {
-        var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
-          return _regeneratorRuntime().wrap(function _callee5$(_context5) {
-            while (1) switch (_context5.prev = _context5.next) {
-              case 0:
-                this.onSelectionStub = _sinon.default.stub();
-                _context5.next = 3;
-                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-                /*
-                  <OSS::ToggleButtons @onSelection={{this.onSelectionStub}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>
-                */
-                {
-                  "id": "F4TJ4o5S",
-                  "block": "[[[8,[39,0],null,[[\"@onSelection\",\"@toggles\",\"@selectedToggle\"],[[30,0,[\"onSelectionStub\"]],[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]]]],null]],[],false,[\"o-s-s/toggle-buttons\"]]",
-                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/toggle-buttons-test.ts",
-                  "isStrictMode": false
-                }));
-              case 3:
-                _context5.next = 5;
-                return (0, _testHelpers.click)('.oss-toggle-buttons-btn:first-child');
-              case 5:
-                assert.ok(this.onSelectionStub.notCalled);
-              case 6:
-              case "end":
                 return _context5.stop();
             }
-          }, _callee5, this);
+          }, _callee5);
         }));
         return function (_x5) {
           return _ref5.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('the @onSelection method is not triggered if the component is disabled', /*#__PURE__*/function () {
+      (0, _qunit.test)('the @onSelection method is not triggered if the item is already selected', /*#__PURE__*/function () {
         var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
@@ -20010,11 +20009,11 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
                 _context6.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
-                  <OSS::ToggleButtons @onSelection={{this.onSelectionStub}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}} @disabled={{true}} />
+                  <OSS::ToggleButtons @onSelection={{this.onSelectionStub}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>
                 */
                 {
-                  "id": "AcYeVB5x",
-                  "block": "[[[8,[39,0],null,[[\"@onSelection\",\"@toggles\",\"@selectedToggle\",\"@disabled\"],[[30,0,[\"onSelectionStub\"]],[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]],true]],null]],[],false,[\"o-s-s/toggle-buttons\"]]",
+                  "id": "F4TJ4o5S",
+                  "block": "[[[8,[39,0],null,[[\"@onSelection\",\"@toggles\",\"@selectedToggle\"],[[30,0,[\"onSelectionStub\"]],[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]]]],null]],[],false,[\"o-s-s/toggle-buttons\"]]",
                   "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/toggle-buttons-test.ts",
                   "isStrictMode": false
                 }));
@@ -20033,13 +20032,45 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
           return _ref6.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('the @onSelection method is triggered with the selected value', /*#__PURE__*/function () {
+      (0, _qunit.test)('the @onSelection method is not triggered if the component is disabled', /*#__PURE__*/function () {
         var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
-                this.onSelection = _sinon.default.spy();
+                this.onSelectionStub = _sinon.default.stub();
                 _context7.next = 3;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::ToggleButtons @onSelection={{this.onSelectionStub}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}} @disabled={{true}} />
+                */
+                {
+                  "id": "AcYeVB5x",
+                  "block": "[[[8,[39,0],null,[[\"@onSelection\",\"@toggles\",\"@selectedToggle\",\"@disabled\"],[[30,0,[\"onSelectionStub\"]],[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]],true]],null]],[],false,[\"o-s-s/toggle-buttons\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/toggle-buttons-test.ts",
+                  "isStrictMode": false
+                }));
+              case 3:
+                _context7.next = 5;
+                return (0, _testHelpers.click)('.oss-toggle-buttons-btn:first-child');
+              case 5:
+                assert.ok(this.onSelectionStub.notCalled);
+              case 6:
+              case "end":
+                return _context7.stop();
+            }
+          }, _callee7, this);
+        }));
+        return function (_x7) {
+          return _ref7.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('the @onSelection method is triggered with the selected value', /*#__PURE__*/function () {
+        var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+          return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+            while (1) switch (_context8.prev = _context8.next) {
+              case 0:
+                this.onSelection = _sinon.default.spy();
+                _context8.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>
@@ -20051,31 +20082,31 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
                   "isStrictMode": false
                 }));
               case 3:
-                _context7.next = 5;
+                _context8.next = 5;
                 return (0, _testHelpers.click)('.oss-toggle-buttons-btn:last-child');
               case 5:
                 assert.ok(this.onSelection.calledWith('second'));
               case 6:
               case "end":
-                return _context7.stop();
+                return _context8.stop();
             }
-          }, _callee7, this);
+          }, _callee8, this);
         }));
-        return function (_x7) {
-          return _ref7.apply(this, arguments);
+        return function (_x8) {
+          return _ref8.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it throws an error if @toggles is not provided', /*#__PURE__*/function () {
-        var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
-          return _regeneratorRuntime().wrap(function _callee8$(_context8) {
-            while (1) switch (_context8.prev = _context8.next) {
+        var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+          return _regeneratorRuntime().wrap(function _callee9$(_context9) {
+            while (1) switch (_context9.prev = _context9.next) {
               case 0:
                 (0, _setupOnerror.default)(function (err) {
                   assert.equal(err.message, 'Assertion Failed: [component][OSS::ToggleButtons] The @toggles parameter of type Toggle[] is mandatory');
                 });
-                _context8.next = 3;
+                _context9.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::ToggleButtons @onSelection={{this.onSelection}} @selectedToggle={{this.selectedToggle}}/>
@@ -20083,38 +20114,6 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
                 {
                   "id": "uBS5BSIx",
                   "block": "[[[8,[39,0],null,[[\"@onSelection\",\"@selectedToggle\"],[[30,0,[\"onSelection\"]],[30,0,[\"selectedToggle\"]]]],null]],[],false,[\"o-s-s/toggle-buttons\"]]",
-                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/toggle-buttons-test.ts",
-                  "isStrictMode": false
-                }));
-              case 3:
-                _context8.next = 5;
-                return (0, _settled.default)();
-              case 5:
-              case "end":
-                return _context8.stop();
-            }
-          }, _callee8);
-        }));
-        return function (_x8) {
-          return _ref8.apply(this, arguments);
-        };
-      }());
-      (0, _qunit.test)('it throws an error if @onSelection is not provided', /*#__PURE__*/function () {
-        var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
-          return _regeneratorRuntime().wrap(function _callee9$(_context9) {
-            while (1) switch (_context9.prev = _context9.next) {
-              case 0:
-                (0, _setupOnerror.default)(function (err) {
-                  assert.equal(err.message, 'Assertion Failed: [component][OSS::ToggleButtons] The @onSelection parameter of type function is mandatory');
-                });
-                _context9.next = 3;
-                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-                /*
-                  <OSS::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>
-                */
-                {
-                  "id": "/0i7s+RT",
-                  "block": "[[[8,[39,0],null,[[\"@toggles\",\"@selectedToggle\"],[[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]]]],null]],[],false,[\"o-s-s/toggle-buttons\"]]",
                   "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/toggle-buttons-test.ts",
                   "isStrictMode": false
                 }));
@@ -20131,22 +20130,22 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
           return _ref9.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('it throws an error if @selectedToggle is not provided', /*#__PURE__*/function () {
+      (0, _qunit.test)('it throws an error if @onSelection is not provided', /*#__PURE__*/function () {
         var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
                 (0, _setupOnerror.default)(function (err) {
-                  assert.equal(err.message, 'Assertion Failed: [component][OSS::ToggleButtons] The @selectedToggle parameter of type string or null is mandatory');
+                  assert.equal(err.message, 'Assertion Failed: [component][OSS::ToggleButtons] The @onSelection parameter of type function is mandatory');
                 });
                 _context10.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
-                  <OSS::ToggleButtons @toggles={{this.toggles}} @onSelection={{this.onSelection}}  />
+                  <OSS::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>
                 */
                 {
-                  "id": "uuJ4YkbU",
-                  "block": "[[[8,[39,0],null,[[\"@toggles\",\"@onSelection\"],[[30,0,[\"toggles\"]],[30,0,[\"onSelection\"]]]],null]],[],false,[\"o-s-s/toggle-buttons\"]]",
+                  "id": "/0i7s+RT",
+                  "block": "[[[8,[39,0],null,[[\"@toggles\",\"@selectedToggle\"],[[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]]]],null]],[],false,[\"o-s-s/toggle-buttons\"]]",
                   "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/toggle-buttons-test.ts",
                   "isStrictMode": false
                 }));
@@ -20163,16 +20162,48 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
           return _ref10.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('it throws an error if @selectedToggle is not a value of toggles', /*#__PURE__*/function () {
+      (0, _qunit.test)('it throws an error if @selectedToggle is not provided', /*#__PURE__*/function () {
         var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
+              case 0:
+                (0, _setupOnerror.default)(function (err) {
+                  assert.equal(err.message, 'Assertion Failed: [component][OSS::ToggleButtons] The @selectedToggle parameter of type string or null is mandatory');
+                });
+                _context11.next = 3;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::ToggleButtons @toggles={{this.toggles}} @onSelection={{this.onSelection}}  />
+                */
+                {
+                  "id": "uuJ4YkbU",
+                  "block": "[[[8,[39,0],null,[[\"@toggles\",\"@onSelection\"],[[30,0,[\"toggles\"]],[30,0,[\"onSelection\"]]]],null]],[],false,[\"o-s-s/toggle-buttons\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/toggle-buttons-test.ts",
+                  "isStrictMode": false
+                }));
+              case 3:
+                _context11.next = 5;
+                return (0, _settled.default)();
+              case 5:
+              case "end":
+                return _context11.stop();
+            }
+          }, _callee11);
+        }));
+        return function (_x11) {
+          return _ref11.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('it throws an error if @selectedToggle is not a value of toggles', /*#__PURE__*/function () {
+        var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+          return _regeneratorRuntime().wrap(function _callee12$(_context12) {
+            while (1) switch (_context12.prev = _context12.next) {
               case 0:
                 this.selectedToggle = 'toto';
                 (0, _setupOnerror.default)(function (err) {
                   assert.equal(err.message, 'Assertion Failed: [component][OSS::ToggleButtons] The @selectedToggle parameter should be null or a value of toggles');
                 });
-                _context11.next = 4;
+                _context12.next = 4;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::ToggleButtons @toggles={{this.toggles}} @onSelection={{this.onSelection}} @selectedToggle={{this.selectedToggle}}/>
@@ -20184,16 +20215,16 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
                   "isStrictMode": false
                 }));
               case 4:
-                _context11.next = 6;
+                _context12.next = 6;
                 return (0, _settled.default)();
               case 6:
               case "end":
-                return _context11.stop();
+                return _context12.stop();
             }
-          }, _callee11, this);
+          }, _callee12, this);
         }));
-        return function (_x11) {
-          return _ref11.apply(this, arguments);
+        return function (_x12) {
+          return _ref12.apply(this, arguments);
         };
       }());
     });
