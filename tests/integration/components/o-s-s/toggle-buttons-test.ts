@@ -22,7 +22,8 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
       },
       {
         value: 'second',
-        label: 'Second'
+        label: 'Second',
+        icon: 'far fa-2'
       }
     ];
   });
@@ -42,6 +43,16 @@ module('Integration | Component | o-s-s/toggle-buttons', function (hooks) {
 
     assert.dom('.oss-toggle-buttons-container').exists();
     assert.dom('.oss-toggle-buttons-container').hasClass('oss-toggle-buttons-container--disabled');
+  });
+
+  test('the toggle icon is displayed when provided', async function (assert) {
+    await render(
+      hbs`<OSS::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+    );
+
+    assert.dom('.oss-toggle-buttons-btn:first-child i.far').doesNotExist();
+    assert.dom('.oss-toggle-buttons-btn:last-child i.far').exists();
+    assert.dom('.oss-toggle-buttons-btn:last-child i.far').hasClass('fa-2');
   });
 
   module('If @selectedToggle is passed', function () {

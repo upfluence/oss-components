@@ -65,6 +65,9 @@ dependencies:
   money-formatter:
     specifier: ^0.1.4
     version: 0.1.4
+  resolve:
+    specifier: ^1.22.8
+    version: 1.22.8
 
 devDependencies:
   '@babel/core':
