@@ -17,7 +17,6 @@ interface OSSAvatarArgs {
   initials?: string;
   size?: SizeType;
   loading?: boolean;
-  isPlaceholder?: boolean;
 }
 
 export const DEFAULT_IMAGE_URL: string = '/assets/images/upfluence-white-logo.svg';
@@ -42,10 +41,6 @@ export default class OSSAvatar extends Component<OSSAvatarArgs> {
   get computedClass(): string {
     let classes = 'upf-avatar ';
     const size: SizeType = this.args.size || 'md';
-
-    if (this.args.isPlaceholder) {
-      classes = classes.concat('upf-avatar--placeholder ');
-    }
 
     if (this.args.loading) {
       classes = classes.concat('upf-avatar--loading ');

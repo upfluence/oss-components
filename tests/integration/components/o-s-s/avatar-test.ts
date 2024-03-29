@@ -61,11 +61,6 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
     });
   });
 
-  test('When @isPlaceholder is thruthy, the right class is applied on the component', async function (assert) {
-    await render(hbs`<OSS::Avatar @isPlaceholder={{true}} />`);
-    assert.dom('.upf-avatar').hasClass('upf-avatar--placeholder');
-  });
-
   test('When @loading is thruthy, the right class is applied on the component', async function (assert) {
     await render(hbs`<OSS::Avatar @loading={{true}} />`);
     assert.dom('.upf-avatar').hasClass('upf-avatar--loading');

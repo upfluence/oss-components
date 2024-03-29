@@ -1,4 +1,4 @@
-<div class='oss-avatar-group'>
+<div class={{concat "oss-avatar-group " (if (gt this.remainingCount 0) "oss-avatar-group--has-remaining")}}>
   {{#if @loading}}
     {{#each this.loadingAvatars}}
       <OSS::Avatar @loading={{true}} @size={{this.size}} />
@@ -10,6 +10,6 @@
   {{/if}}
 
   {{#if (gt this.remainingCount 0)}}
-    <OSS::Avatar @initials={{concat '+' this.remainingCount}} @isPlaceholder={{true}} @size={{this.size}} />
+    <OSS::Avatar @initials={{concat "+" this.remainingCount}} @size={{this.size}} />
   {{/if}}
 </div>

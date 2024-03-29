@@ -50,16 +50,6 @@ export default {
         defaultValue: { summary: 'false' }
       },
       control: { type: 'boolean' }
-    },
-    isPlaceholder: {
-      description: 'Display placeholder state',
-      table: {
-        type: {
-          summary: 'boolean'
-        },
-        defaultValue: { summary: 'false' }
-      },
-      control: { type: 'boolean' }
     }
   }
 };
@@ -68,13 +58,12 @@ const defaultArgs = {
   size: 'md',
   image: undefined,
   initials: undefined,
-  loading: false,
-  isPlaceholder: false
+  loading: false
 };
 
 const Template = (args) => ({
   template: hbs`
-    <OSS::Avatar @image={{this.image}} @initials={{this.initials}} @size={{this.size}} @loading={{this.loading}} @isPlaceholder={{this.isPlaceholder}} />
+    <OSS::Avatar @image={{this.image}} @initials={{this.initials}} @size={{this.size}} @loading={{this.loading}} />
   `,
   context: args
 });
