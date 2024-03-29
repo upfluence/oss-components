@@ -1,0 +1,15 @@
+<div class='oss-avatar-group'>
+  {{#if @loading}}
+    {{#each this.loadingAvatars}}
+      <OSS::Avatar @loading={{true}} @size={{this.size}} />
+    {{/each}}
+  {{else}}
+    {{#each this.avatars as |avatar|}}
+      <OSS::Avatar @image={{avatar.image}} @initials={{avatar.initials}} @size={{this.size}} />
+    {{/each}}
+  {{/if}}
+
+  {{#if (gt this.remainingCount 0)}}
+    <OSS::Avatar @initials={{concat '+' this.remainingCount}} @isPlaceholder={{true}} @size={{this.size}} />
+  {{/if}}
+</div>
