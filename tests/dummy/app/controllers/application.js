@@ -55,7 +55,18 @@ export default class ApplicationController extends Controller {
   @tracked selectedItems = ['toto'];
   @tracked selectedCountry = null;
   @tracked selectedProvince = null;
-  @tracked superHeroes = ['Iron Man', 'Thor', 'Loki', 'Hulk', 'Captain America', 'Black Widow', 'Hawkeye', 'Spiderman', 'Black Panther', 'Doctor Strange'];
+  @tracked superHeroes = [
+    'Iron Man',
+    'Thor',
+    'Loki',
+    'Hulk',
+    'Captain America',
+    'Black Widow',
+    'Hawkeye',
+    'Spiderman',
+    'Black Panther',
+    'Doctor Strange'
+  ];
   @tracked loading = false;
   @tracked phonePrefix = '+33';
   @tracked phoneNumber = '782828282';
