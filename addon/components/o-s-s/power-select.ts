@@ -74,7 +74,8 @@ export default class OSSPowerSelect extends BaseDropdown<OSSPowerSelectArgs> {
       if (referenceTarget && floatingTarget) {
         this.cleanupDrodpownAutoplacement = attachDropdown(
           referenceTarget as HTMLElement,
-          floatingTarget as HTMLElement
+          floatingTarget as HTMLElement,
+          { maxHeight: 300 }
         );
       }
     });

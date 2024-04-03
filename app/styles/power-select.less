@@ -40,3 +40,17 @@
     padding-bottom: @spacing-x-sm;
   }
 }
+
+.power-select--child {
+  overflow: hidden;
+
+  .upf-infinite-select__container {
+    max-height: var(--floating-max-height);
+  }
+
+  &:has(.upf-input) {
+    .upf-infinite-select__items-container {
+      max-height: calc(var(--floating-max-height) - 62px);
+    }
+  }
+}
