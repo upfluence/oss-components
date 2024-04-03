@@ -40,6 +40,16 @@ export default {
       control: {
         type: 'text'
       }
+    },
+    loading: {
+      description: 'Display loading state',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'false' }
+      },
+      control: { type: 'boolean' }
     }
   }
 };
@@ -47,12 +57,13 @@ export default {
 const defaultArgs = {
   size: 'md',
   image: undefined,
-  initials: undefined
+  initials: undefined,
+  loading: false
 };
 
 const Template = (args) => ({
   template: hbs`
-    <OSS::Avatar @image={{this.image}} @initials={{this.initials}} @size={{this.size}} />
+    <OSS::Avatar @image={{this.image}} @initials={{this.initials}} @size={{this.size}} @loading={{this.loading}} />
   `,
   context: args
 });

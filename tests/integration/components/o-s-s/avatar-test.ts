@@ -61,6 +61,11 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
     });
   });
 
+  test('When @loading is thruthy, the right class is applied on the component', async function (assert) {
+    await render(hbs`<OSS::Avatar @loading={{true}} />`);
+    assert.dom('.upf-avatar').hasClass('upf-avatar--loading');
+  });
+
   module('Error behavior', function () {
     test('it throws an error if the wrong size argument is passed', async function (assert: Assert) {
       setupOnerror((err: Error) => {

@@ -1,0 +1,20 @@
+.oss-avatar-group {
+  display: flex;
+
+  & > .upf-avatar {
+    border: 1px solid var(--color-white);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-right: calc(-1 * var(--spacing-px-6));
+    position: relative;
+  }
+
+  &--has-remaining {
+    .upf-avatar:last-child {
+      background-color: var(--color-gray-100);
+    }
+  }
+}

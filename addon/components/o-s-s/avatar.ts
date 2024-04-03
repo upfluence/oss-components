@@ -3,8 +3,8 @@ import { assert } from '@ember/debug';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
-type SizeType = 'xs' | 'sm' | 'md' | 'lg';
 type SizeDefType = { [key in SizeType]: string };
+export type SizeType = 'xs' | 'sm' | 'md' | 'lg';
 export const SizeDefinition: SizeDefType = {
   xs: 'upf-avatar--xs',
   sm: 'upf-avatar--sm',
@@ -16,6 +16,7 @@ interface OSSAvatarArgs {
   image?: string;
   initials?: string;
   size?: SizeType;
+  loading?: boolean;
 }
 
 export const DEFAULT_IMAGE_URL: string = '/assets/images/upfluence-white-logo.svg';
@@ -38,8 +39,12 @@ export default class OSSAvatar extends Component<OSSAvatarArgs> {
   }
 
   get computedClass(): string {
-    const classes = 'upf-avatar ';
+    let classes = 'upf-avatar ';
     const size: SizeType = this.args.size || 'md';
+
+    if (this.args.loading) {
+      classes = classes.concat('upf-avatar--loading ');
+    }
 
     assert(
       `[component][OSS::Avatar] Unknown size. Available sizes are: ${Object.keys(SizeDefinition).join(', ')}`,

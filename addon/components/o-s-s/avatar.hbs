@@ -1,8 +1,9 @@
 <div class={{this.computedClass}} ...attributes>
-  {{#if this.displayInitials}}
-    <span class="text-style-uppercase">{{@initials}}</span>
-  {{else}}
-    <img src={{this.image}} alt="avatar" class={{this.imageClass}}
-         onerror={{this.imageLoadError}} loading="lazy" />
-  {{/if}}
+  {{#unless @loading}}
+    {{#if this.displayInitials}}
+      <span class="text-style-uppercase">{{@initials}}</span>
+    {{else}}
+      <img src={{this.image}} alt="avatar" class={{this.imageClass}} onerror={{this.imageLoadError}} loading="lazy" />
+    {{/if}}
+  {{/unless}}
 </div>
