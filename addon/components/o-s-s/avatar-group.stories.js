@@ -61,6 +61,15 @@ export default {
         type: 'number'
       }
     }
+  },
+  parameters: {
+    docs: {
+      description: {
+        component:
+          'UI component that displays a collection of user or entity avatars grouped together in a visually cohesive manner. It typically showcases profile pictures or initials representing multiple individuals or entities, arranged horizontally. They provide a quick and intuitive way for users to identify and associate individuals within a group context, fostering a sense of community and connection.'
+      },
+      iframeHeight: 100
+    }
   }
 };
 
