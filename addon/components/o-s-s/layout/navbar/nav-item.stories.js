@@ -6,7 +6,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'Layout component to display an item in a navbar , which may be active.'
+        component: 'Layout component to display an item in a navbar, which may be active.'
       },
       iframeHeight: 120
     }
