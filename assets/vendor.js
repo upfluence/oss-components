@@ -76074,6 +76074,221 @@ define("@upfluence/oss-components/components/o-s-s/attributes-panel", ["exports"
   WithContextualAction.args = defaultArgs;
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+define("@upfluence/oss-components/components/o-s-s/avatar-group", ["exports", "@ember/component", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _component2, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+  function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class={{concat "oss-avatar-group " (if (gt this.remainingCount 0) "oss-avatar-group--has-remaining")}}>
+    {{#if @loading}}
+      {{#each this.loadingAvatars}}
+        <OSS::Avatar @loading={{true}} @size={{this.size}} />
+      {{/each}}
+    {{else}}
+      {{#each this.avatars as |avatar|}}
+        <OSS::Avatar @image={{avatar.image}} @initials={{avatar.initials}} @size={{this.size}} />
+      {{/each}}
+    {{/if}}
+  
+    {{#if (gt this.remainingCount 0)}}
+      <OSS::Avatar @initials={{concat "+" this.remainingCount}} @size={{this.size}} />
+    {{/if}}
+  </div>
+  */
+  {
+    "id": "5cdQnuBc",
+    "block": "[[[10,0],[15,0,[28,[37,0],[\"oss-avatar-group \",[52,[28,[37,2],[[30,0,[\"remainingCount\"]],0],null],\"oss-avatar-group--has-remaining\"]],null]],[12],[1,\"\\n\"],[41,[30,1],[[[42,[28,[37,4],[[28,[37,4],[[30,0,[\"loadingAvatars\"]]],null]],null],null,[[[1,\"      \"],[8,[39,5],null,[[\"@loading\",\"@size\"],[true,[30,0,[\"size\"]]]],null],[1,\"\\n\"]],[]],null]],[]],[[[42,[28,[37,4],[[28,[37,4],[[30,0,[\"avatars\"]]],null]],null],null,[[[1,\"      \"],[8,[39,5],null,[[\"@image\",\"@initials\",\"@size\"],[[30,2,[\"image\"]],[30,2,[\"initials\"]],[30,0,[\"size\"]]]],null],[1,\"\\n\"]],[2]],null]],[]]],[1,\"\\n\"],[41,[28,[37,2],[[30,0,[\"remainingCount\"]],0],null],[[[1,\"    \"],[8,[39,5],null,[[\"@initials\",\"@size\"],[[28,[37,0],[\"+\",[30,0,[\"remainingCount\"]]],null],[30,0,[\"size\"]]]],null],[1,\"\\n\"]],[]],null],[13]],[\"@loading\",\"avatar\"],false,[\"concat\",\"if\",\"gt\",\"each\",\"-track-array\",\"o-s-s/avatar\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/avatar-group.hbs",
+    "isStrictMode": false
+  });
+  var DEFAULT_LOADING_COUNT = 3;
+  var OSSAvatarGroupComponent = _exports.default = /*#__PURE__*/function (_Component) {
+    _inherits(OSSAvatarGroupComponent, _Component);
+    function OSSAvatarGroupComponent() {
+      _classCallCheck(this, OSSAvatarGroupComponent);
+      return _callSuper(this, OSSAvatarGroupComponent, arguments);
+    }
+    _createClass(OSSAvatarGroupComponent, [{
+      key: "avatars",
+      get: function get() {
+        return this.args.max ? this.args.avatars.slice(0, this.args.max) : this.args.avatars;
+      }
+    }, {
+      key: "remainingCount",
+      get: function get() {
+        return this.args.max ? this.args.avatars.length - this.args.max : 0;
+      }
+    }, {
+      key: "size",
+      get: function get() {
+        var _this$args$size;
+        return (_this$args$size = this.args.size) !== null && _this$args$size !== void 0 ? _this$args$size : 'md';
+      }
+    }, {
+      key: "loadingCount",
+      get: function get() {
+        var _this$args$loadingCou;
+        return (_this$args$loadingCou = this.args.loadingCount) !== null && _this$args$loadingCou !== void 0 ? _this$args$loadingCou : DEFAULT_LOADING_COUNT;
+      }
+    }, {
+      key: "loadingAvatars",
+      get: function get() {
+        return new Array(this.loadingCount);
+      }
+    }]);
+    return OSSAvatarGroupComponent;
+  }(_component2.default);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSAvatarGroupComponent);
+});
+;define("@upfluence/oss-components/components/o-s-s/avatar-group.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.Default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+  function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+  function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  var SizeTypes = ['xs', 'sm', 'md', 'lg'];
+  var _default = _exports.default = {
+    title: 'Components/OSS::AvatarGroup',
+    argTypes: {
+      avatars: {
+        description: 'Avatars to display',
+        table: {
+          type: {
+            summary: '{ image?: string, initials?: string }[]'
+          }
+        },
+        control: {
+          type: '{ image?: string, initials?: string }[]'
+        }
+      },
+      size: {
+        description: 'Adjust the size of the avatars',
+        table: {
+          type: {
+            summary: SizeTypes.join('|')
+          },
+          defaultValue: {
+            summary: 'md'
+          }
+        },
+        options: SizeTypes,
+        control: {
+          type: 'select'
+        }
+      },
+      max: {
+        description: 'Maximum number of avatars to display',
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'number'
+        }
+      },
+      loading: {
+        description: 'Display loading state',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      loadingCount: {
+        description: 'Maximum number of avatars to display',
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'number'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'UI component that displays a collection of user or entity avatars grouped together in a visually cohesive manner. It typically showcases profile pictures or initials representing multiple individuals or entities, arranged horizontally. They provide a quick and intuitive way for users to identify and associate individuals within a group context, fostering a sense of community and connection.'
+        },
+        iframeHeight: 100
+      }
+    }
+  };
+  var defaultArgs = {
+    avatars: [{
+      image: 'https://images.frandroid.com/wp-content/uploads/2019/11/jony-ive-apple.jpg',
+      initials: 'JI'
+    }, {
+      image: 'https://cdn.dribbble.com/users/485347/screenshots/2983299/8_most_influential_people_dribble-01.jpg',
+      initials: 'SF'
+    }],
+    size: 'md',
+    max: null,
+    loading: false,
+    loadingCount: null
+  };
+  var Template = function Template(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <OSS::AvatarGroup @avatars={{this.avatars}} @size={{this.size}} @max={{this.max}} @loading={{this.loading}} @loadingCount={{this.loadingCount}} />
+        
+      */
+      {
+        "id": "VETZIHAB",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@avatars\",\"@size\",\"@max\",\"@loading\",\"@loadingCount\"],[[30,0,[\"avatars\"]],[30,0,[\"size\"]],[30,0,[\"max\"]],[30,0,[\"loading\"]],[30,0,[\"loadingCount\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/avatar-group\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/avatar-group.stories.js",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+  var Default = _exports.Default = Template.bind({});
+  Default.args = _objectSpread(_objectSpread({}, defaultArgs), {
+    image: 'https://images.frandroid.com/wp-content/uploads/2019/11/jony-ive-apple.jpg'
+  });
+});
+;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("@upfluence/oss-components/components/o-s-s/avatar", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@glimmer/tracking", "@ember/object", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _tracking, _object, _templateFactory) {
   "use strict";
 
@@ -76102,18 +76317,18 @@ define("@upfluence/oss-components/components/o-s-s/avatar", ["exports", "@ember/
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class={{this.computedClass}} ...attributes>
-    {{#if this.displayInitials}}
-      <span class="text-style-uppercase">{{@initials}}</span>
-    {{else}}
-      <img src={{this.image}} alt="avatar" class={{this.imageClass}}
-           onerror={{this.imageLoadError}} loading="lazy" />
-    {{/if}}
+    {{#unless @loading}}
+      {{#if this.displayInitials}}
+        <span class="text-style-uppercase">{{@initials}}</span>
+      {{else}}
+        <img src={{this.image}} alt="avatar" class={{this.imageClass}} onerror={{this.imageLoadError}} loading="lazy" />
+      {{/if}}
+    {{/unless}}
   </div>
-  
   */
   {
-    "id": "OqRtlcF3",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[12],[1,\"\\n\"],[41,[30,0,[\"displayInitials\"]],[[[1,\"    \"],[10,1],[14,0,\"text-style-uppercase\"],[12],[1,[30,2]],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[10,\"img\"],[15,\"src\",[30,0,[\"image\"]]],[14,\"alt\",\"avatar\"],[15,0,[30,0,[\"imageClass\"]]],[15,\"onerror\",[30,0,[\"imageLoadError\"]]],[14,\"loading\",\"lazy\"],[12],[13],[1,\"\\n\"]],[]]],[13],[1,\"\\n\"]],[\"&attrs\",\"@initials\"],false,[\"if\"]]",
+    "id": "Fmq0vUUa",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[12],[1,\"\\n\"],[41,[51,[30,2]],[[[41,[30,0,[\"displayInitials\"]],[[[1,\"      \"],[10,1],[14,0,\"text-style-uppercase\"],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],[[[1,\"      \"],[10,\"img\"],[15,\"src\",[30,0,[\"image\"]]],[14,\"alt\",\"avatar\"],[15,0,[30,0,[\"imageClass\"]]],[15,\"onerror\",[30,0,[\"imageLoadError\"]]],[14,\"loading\",\"lazy\"],[12],[13],[1,\"\\n\"]],[]]]],[]],null],[13]],[\"&attrs\",\"@loading\",\"@initials\"],false,[\"unless\",\"if\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/avatar.hbs",
     "isStrictMode": false
   });
@@ -76151,6 +76366,9 @@ define("@upfluence/oss-components/components/o-s-s/avatar", ["exports", "@ember/
       get: function get() {
         var classes = 'upf-avatar ';
         var size = this.args.size || 'md';
+        if (this.args.loading) {
+          classes = classes.concat('upf-avatar--loading ');
+        }
         (true && !(Object.keys(SizeDefinition).includes(size)) && (0, _debug.assert)("[component][OSS::Avatar] Unknown size. Available sizes are: ".concat(Object.keys(SizeDefinition).join(', ')), Object.keys(SizeDefinition).includes(size)));
         return classes.concat(SizeDefinition[size]);
       }
@@ -76244,25 +76462,40 @@ define("@upfluence/oss-components/components/o-s-s/avatar", ["exports", "@ember/
         control: {
           type: 'text'
         }
+      },
+      loading: {
+        description: 'Display loading state',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
       }
     }
   };
   var defaultArgs = {
     size: 'md',
     image: undefined,
-    initials: undefined
+    initials: undefined,
+    loading: false
   };
   var Template = function Template(args) {
     return {
       template: (0, _templateFactory.createTemplateFactory)(
       /*
         
-          <OSS::Avatar @image={{this.image}} @initials={{this.initials}} @size={{this.size}} />
+          <OSS::Avatar @image={{this.image}} @initials={{this.initials}} @size={{this.size}} @loading={{this.loading}} />
         
       */
       {
-        "id": "/EwxntZy",
-        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@image\",\"@initials\",\"@size\"],[[30,0,[\"image\"]],[30,0,[\"initials\"]],[30,0,[\"size\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/avatar\"]]",
+        "id": "jfRQhme7",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@image\",\"@initials\",\"@size\",\"@loading\"],[[30,0,[\"image\"]],[30,0,[\"initials\"]],[30,0,[\"size\"]],[30,0,[\"loading\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/avatar\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/avatar.stories.js",
         "isStrictMode": false
       }),

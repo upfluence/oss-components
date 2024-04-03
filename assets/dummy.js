@@ -295,6 +295,20 @@
   });
   0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/attributes-panel"eaimeta@70e063a35619d71f
 });
+;define("dummy/components/o-s-s/avatar-group", ["exports", "@upfluence/oss-components/components/o-s-s/avatar-group"], function (_exports, _avatarGroup) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function get() {
+      return _avatarGroup.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/avatar-group"eaimeta@70e063a35619d71f
+});
 ;define("dummy/components/o-s-s/avatar", ["exports", "@upfluence/oss-components/components/o-s-s/avatar"], function (_exports, _avatar) {
   "use strict";
 
