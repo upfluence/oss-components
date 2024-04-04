@@ -1,0 +1,46 @@
+.oss-navbar-item {
+  .border-radius-md;
+  padding: var(--spacing-px-6) var(--spacing-px-12);
+  display: flex;
+  gap: var(--spacing-px-12);
+  align-items: center;
+  transition: background-color 300ms ease-in-out;
+  cursor: pointer;
+
+  i,
+  span {
+    transition: color 300ms ease-in-out;
+  }
+
+  &--icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+  }
+
+  &--active {
+    background-color: var(--color-primary-50);
+    padding: var(--spacing-px-6) var(--spacing-px-12);
+
+    i {
+      color: var(--color-primary-500);
+    }
+
+    span {
+      color: var(--color-primary-500);
+    }
+  }
+
+  &:hover {
+    background-color: var(--color-primary-50);
+
+    i {
+      color: var(--color-primary-500);
+    }
+
+    span {
+      color: var(--color-primary-900);
+    }
+  }
+}
