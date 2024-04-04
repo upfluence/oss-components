@@ -1,15 +1,10 @@
+import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
-import { guidFor } from '@ember/object/internals';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
-import { scheduleOnce } from '@ember/runloop';
-import { isTesting } from '@embroider/macros';
-
 import type IntlService from 'ember-intl/services/intl';
-import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
-import BaseDropdown from './private/base-dropdown';
 
 interface OSSSelectArgs {
   value: any;
@@ -23,15 +18,10 @@ interface OSSSelectArgs {
   onSearch?(keyword: string): void;
 }
 
-export default class OSSSelect extends BaseDropdown<OSSSelectArgs> {
+export default class OSSSelect extends Component<OSSSelectArgs> {
   @service declare intl: IntlService;
 
   @tracked displaySelect: boolean = false;
-
-  cleanupDrodpownAutoplacement?: () => void;
-  portalId: string = guidFor(this);
-
-  declare portalTarget: HTMLElement;
 
   constructor(owner: unknown, args: OSSSelectArgs) {
     super(owner, args);
@@ -76,10 +66,6 @@ export default class OSSSelect extends BaseDropdown<OSSSelectArgs> {
     return classes.join(' ');
   }
 
-  noop(event: Event): void {
-    event.stopPropagation();
-  }
-
   @action
   onSelect(value: any): void {
     this.args.onChange(value);
@@ -92,27 +78,16 @@ export default class OSSSelect extends BaseDropdown<OSSSelectArgs> {
   }
 
   @action
-  toggleDropdown(event: PointerEvent): void {
+  toggleSelector(event: PointerEvent): void {
+    event.stopPropagation();
+
     if (this.args.disabled) return;
 
-    super.toggleDropdown(event);
-
-    if (!this.isOpen) {
-      this.args.onSearch?.('');
-      return;
+    if (this.displaySelect) {
+      this.hideSelector();
+    } else {
+      this.displaySelect = true;
     }
-
-    scheduleOnce('afterRender', this, () => {
-      const referenceTarget = this.container.querySelector('.upf-input');
-      const floatingTarget = document.querySelector(`#${this.portalId}`);
-
-      if (referenceTarget && floatingTarget) {
-        this.cleanupDrodpownAutoplacement = attachDropdown(
-          referenceTarget as HTMLElement,
-          floatingTarget as HTMLElement
-        );
-      }
-    });
   }
 
   @action
@@ -123,23 +98,8 @@ export default class OSSSelect extends BaseDropdown<OSSSelectArgs> {
 
   @action
   hideSelector(): void {
-    this.closeDropdown();
+    this.displaySelect = false;
     this.args.onSearch?.('');
-    this.cleanupDrodpownAutoplacement?.();
-    document.querySelector(`#${this.portalId}`)?.remove();
-  }
-
-  @action
-  handleSelectorClose(event: ToggleEvent & { target: HTMLDetailsElement }): void {
-    if (!event.target.open) {
-      this.hideSelector();
-    }
-  }
-
-  @action
-  registerContainer(element: HTMLDetailsElement): void {
-    super.registerContainer(element);
-    this.portalTarget = isTesting() ? this.container : document.body;
   }
 
   @action

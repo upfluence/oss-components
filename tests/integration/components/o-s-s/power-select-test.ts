@@ -34,9 +34,9 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
 
       assert.dom('.upf-power-select').exists({ count: 1 });
       assert.dom('.upf-power-select__array-container').exists({ count: 1 });
-      assert.dom('.upf-power-select').hasNoAttribute('open');
+      assert.dom('.upf-infinite-select').doesNotExist();
       await click('.upf-power-select__array-container');
-      assert.dom('.upf-power-select').hasAttribute('open');
+      assert.dom('.upf-infinite-select').exists();
     });
 
     test('custom empty state is properly rendered', async function (assert) {
@@ -57,9 +57,9 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
 
       assert.dom('.upf-power-select').exists({ count: 1 });
       assert.dom('.upf-power-select__array-container').exists({ count: 1 });
-      assert.dom('.upf-power-select').hasNoAttribute('open');
+      assert.dom('.upf-infinite-select').doesNotExist();
       await click('.upf-power-select__array-container');
-      assert.dom('.upf-power-select').hasAttribute('open');
+      assert.dom('.upf-infinite-select').exists();
       assert.dom('.foobar').exists();
       assert.dom('.foobar').hasText('custom empty state');
     });
