@@ -21,6 +21,12 @@
   </OSS::Layout::Sidebar>
 
   <div style="width:100%; height:100vh; overflow: auto; background-color: var(--color-gray-50)">
+    <div class='fx-col fx-gap-px-10 margin-md width-pc-20'>
+      <OSS::Layout::Navbar::NavItem @icon='fa-cog' @label='azeazeaze' />
+      <OSS::Layout::Navbar::NavItem @icon='fa-code-branch' @label='azeazeaze' @active={{true}} />
+      <OSS::Layout::Navbar::NavItem @icon='fa-code-branch' @label='azeazeaze' @active={{true}} />
+    </div>
+
     <div class="fx-row fx-gap-px-10 margin-md">
       <OSS::PasswordInput
         @value={{this.password}}

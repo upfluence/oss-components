@@ -1,5 +1,9 @@
 <div class="oss-navbar-item fx-1 {{if @active "oss-navbar-item--active"}}" ...attributes>
-  <OSS::Icon @icon={{@icon}} class="font-color-gray-500" />
+  <div class="oss-navbar-item--icon-container">
+    <OSS::Icon @icon={{@icon}} class="font-color-gray-500" />
+  </div>
   <span class="font-color-gray-600 font-size-sm">{{@label}}</span>
-  {{yield to="extra"}}
+  {{#if (has-block "extra")}}
+    {{yield to="extra"}}
+  {{/if}}
 </div>

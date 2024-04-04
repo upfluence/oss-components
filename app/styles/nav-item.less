@@ -3,8 +3,22 @@
   padding: var(--spacing-px-6) var(--spacing-px-12);
   display: flex;
   flex-direction: row;
-  gap: var(--spacing-px-6);
+  gap: var(--spacing-px-12);
   align-items: center;
+  transition: background-color 300ms ease-in-out;
+  cursor: pointer;
+
+  i,
+  span {
+    transition: color 300ms ease-in-out;
+  }
+
+  &--icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15px;
+  }
 
   &--active {
     background-color: var(--color-primary-50);
