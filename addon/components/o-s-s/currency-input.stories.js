@@ -77,7 +77,7 @@ export default {
       description: 'Allows passing a custom set of selectable currencies to the component.',
       table: {
         type: {
-          summary: 'string'
+          summary: '{ code: string, symbol: string }[]'
         },
         defaultValue: { summary: 'undefined' }
       },
