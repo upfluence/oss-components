@@ -15802,11 +15802,11 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
                 assert.dom('.upf-power-select__array-container').exists({
                   count: 1
                 });
-                assert.dom('.upf-power-select').hasNoAttribute('open');
+                assert.dom('.upf-infinite-select').doesNotExist();
                 _context.next = 7;
                 return (0, _testHelpers.click)('.upf-power-select__array-container');
               case 7:
-                assert.dom('.upf-power-select').hasAttribute('open');
+                assert.dom('.upf-infinite-select').exists();
               case 8:
               case "end":
                 return _context.stop();
@@ -15853,11 +15853,11 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
                 assert.dom('.upf-power-select__array-container').exists({
                   count: 1
                 });
-                assert.dom('.upf-power-select').hasNoAttribute('open');
+                assert.dom('.upf-infinite-select').doesNotExist();
                 _context2.next = 7;
                 return (0, _testHelpers.click)('.upf-power-select__array-container');
               case 7:
-                assert.dom('.upf-power-select').hasAttribute('open');
+                assert.dom('.upf-infinite-select').exists();
                 assert.dom('.foobar').exists();
                 assert.dom('.foobar').hasText('custom empty state');
               case 10:

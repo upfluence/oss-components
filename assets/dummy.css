@@ -10224,7 +10224,7 @@ label {
   padding: 6px;
   position: absolute;
   z-index: 1100;
-  height: auto;
+  height: inherit;
 }
 .upf-infinite-select--absolute ul {
   padding: 0;
@@ -11753,6 +11753,7 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
 }
 .upf-power-select {
   height: 100%;
+  position: relative;
 }
 .upf-power-select .upf-power-select__array-container {
   position: relative;
@@ -11767,12 +11768,11 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
   padding: var(--spacing-px-12) var(--spacing-px-12);
 }
 .upf-power-select .upf-infinite-select {
-  top: 0;
-  left: 0;
   height: auto;
-  width: max-content;
-  margin-top: 0;
+  max-width: 100%;
+  min-width: 100%;
   padding: var(--spacing-px-12);
+  top: var(--spacing-px-36);
 }
 .upf-power-select .upf-power-infinite-select-container {
   position: relative;
