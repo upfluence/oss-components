@@ -11633,6 +11633,44 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
 .upf-toggle.upf-toggle--disabled > div {
   cursor: not-allowed;
 }
+.oss-navbar-item {
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-px-6) var(--spacing-px-12);
+  display: flex;
+  gap: var(--spacing-px-12);
+  align-items: center;
+  transition: background-color 300ms ease-in-out;
+  cursor: pointer;
+}
+.oss-navbar-item i,
+.oss-navbar-item span {
+  transition: color 300ms ease-in-out;
+}
+.oss-navbar-item--icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15px;
+}
+.oss-navbar-item--active {
+  background-color: var(--color-primary-50);
+  padding: var(--spacing-px-6) var(--spacing-px-12);
+}
+.oss-navbar-item--active i {
+  color: var(--color-primary-500);
+}
+.oss-navbar-item--active span {
+  color: var(--color-primary-500);
+}
+.oss-navbar-item:hover {
+  background-color: var(--color-primary-50);
+}
+.oss-navbar-item:hover i {
+  color: var(--color-primary-500);
+}
+.oss-navbar-item:hover span {
+  color: var(--color-primary-900);
+}
 .array-input-container {
   border: 1px solid var(--color-border-default);
   color: var(--color-gray-900);

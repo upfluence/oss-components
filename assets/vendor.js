@@ -81235,6 +81235,137 @@ define("@upfluence/oss-components/components/o-s-s/input-group", ["exports", "@e
   BasicUsage.args = defaultArgs;
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+define("@upfluence/oss-components/components/o-s-s/layout/navbar/nav-item", ["exports", "@ember/component", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _component2, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+  function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="oss-navbar-item fx-1 {{if @active "oss-navbar-item--active"}}" ...attributes>
+    <div class="oss-navbar-item--icon-container">
+      <OSS::Icon @icon={{@icon}} class="font-color-gray-500" />
+    </div>
+    <span class="font-color-gray-600 font-size-sm">{{@label}}</span>
+    {{#if (has-block "extra")}}
+      {{yield to="extra"}}
+    {{/if}}
+  </div>
+  */
+  {
+    "id": "VmTkKnXB",
+    "block": "[[[11,0],[16,0,[29,[\"oss-navbar-item fx-1 \",[52,[30,1],\"oss-navbar-item--active\"]]]],[17,2],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-navbar-item--icon-container\"],[12],[1,\"\\n    \"],[8,[39,1],[[24,0,\"font-color-gray-500\"]],[[\"@icon\"],[[30,3]]],null],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,1],[14,0,\"font-color-gray-600 font-size-sm\"],[12],[1,[30,4]],[13],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"    \"],[18,5,null],[1,\"\\n\"]],[]],null],[13]],[\"@active\",\"&attrs\",\"@icon\",\"@label\",\"&extra\"],false,[\"if\",\"o-s-s/icon\",\"has-block\",\"yield\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/layout/navbar/nav-item.hbs",
+    "isStrictMode": false
+  });
+  // eslint-disable-next-line ember/no-empty-glimmer-component-classes
+  var OSSLayoutNavbarNavItem = _exports.default = /*#__PURE__*/function (_Component) {
+    _inherits(OSSLayoutNavbarNavItem, _Component);
+    function OSSLayoutNavbarNavItem() {
+      _classCallCheck(this, OSSLayoutNavbarNavItem);
+      return _callSuper(this, OSSLayoutNavbarNavItem, arguments);
+    }
+    return _createClass(OSSLayoutNavbarNavItem);
+  }(_component2.default);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSLayoutNavbarNavItem);
+});
+;define("@upfluence/oss-components/components/o-s-s/layout/navbar/nav-item.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.BasicUsage = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::Layout::Navbar::NavItem',
+    component: 'navbar item',
+    parameters: {
+      docs: {
+        description: {
+          component: 'Layout component to display an item in a navbar, which may be active.'
+        },
+        iframeHeight: 120
+      }
+    },
+    argTypes: {
+      icon: {
+        description: 'Font Awesome class, for example: far fa-envelope-open',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      label: {
+        description: 'Text content of the navbar item',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      }
+    }
+  };
+  var Template = function Template(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <div style="height:100vh; padding:5px;">
+           <OSS::Layout::Navbar::NavItem @icon={{this.icon}} @label={{this.label}} @active={{this.active}}>
+            <:extra>
+                <OSS::Link @label="Extra content link" />
+            </:extra>
+           </OSS::Layout::Navbar::NavItem>
+          </div>
+        
+      */
+      {
+        "id": "MmwTwTG+",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"height:100vh; padding:5px;\"],[12],[1,\"\\n     \"],[8,[39,0],null,[[\"@icon\",\"@label\",\"@active\"],[[30,0,[\"icon\"]],[30,0,[\"label\"]],[30,0,[\"active\"]]]],[[\"extra\"],[[[[1,\"\\n          \"],[8,[39,1],null,[[\"@label\"],[\"Extra content link\"]],null],[1,\"\\n      \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/layout/navbar/nav-item\",\"o-s-s/link\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/layout/navbar/nav-item.stories.js",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+  var defaultArgs = {
+    icon: 'fa-laptop-code',
+    label: 'Label',
+    active: false
+  };
+  var BasicUsage = _exports.BasicUsage = Template.bind({});
+  BasicUsage.args = defaultArgs;
+});
+;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("@upfluence/oss-components/components/o-s-s/layout/sidebar", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@ember/template-factory"], function (_exports, _component, _component2, _object, _templateFactory) {
   "use strict";
 
