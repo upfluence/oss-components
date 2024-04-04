@@ -1,15 +1,8 @@
-<details
-  class={{this.classNames}}
-  data-toggle="oss-dropdown"
-  {{did-insert (fn this.ensureBlockPresence (has-block "option"))}}
-  {{did-insert this.registerContainer}}
-  {{on "toggle" this.handleSelectorClose}}
-  ...attributes
->
-  <summary
-    class="upf-input {{if this.isOpen 'active'}} fx-row fx-1 fx-xalign-center"
-    {{on "click" this.toggleDropdown}}
-  >
+<div class={{this.classNames}}
+     {{did-insert (fn this.ensureBlockPresence (has-block "option"))}}
+     ...attributes>
+  <div class="upf-input {{if this.displaySelect 'active'}} fx-row fx-1 fx-xalign-center" role="button"
+       {{on "click" this.toggleSelector}}>
     <div class="fx-row fx-1 fx-malign-space-between fx-xalign-center">
       {{#if @value}}
         {{#if (has-block "selected")}}
@@ -20,49 +13,41 @@
       {{else}}
         <span class="upf-input--placeholder">{{this.placeholder}}</span>
       {{/if}}
-      <OSS::Icon @icon="fa-chevron-{{if this.isOpen 'up' 'down'}}" class="margin-left-px-6" />
+      <OSS::Icon @icon="fa-chevron-{{if this.displaySelect 'up' 'down'}}" class="margin-left-px-6" />
     </div>
-  </summary>
+  </div>
 
-  {{#if this.isOpen}}
-    {{#in-element this.portalTarget insertBefore=null}}
-      <OSS::InfiniteSelect
-        @items={{@items}}
-        @onSearch={{this.onSearch}}
-        @onSelect={{this.onSelect}}
-        @searchEnabled={{this.searchEnabled}}
-        @searchPlaceholder={{this.searchPlaceholder}}
-        id={{this.portalId}}
-        class="margin-top-px-0"
-        {{on-click-outside this.onClickOutside}}
-        {{on "click" this.noop}}
-      >
-        <:option as |item|>
-          <div class="item-wrapper fx-row fx-xalign-center fx-malign-space-between {{if (eq @value item) 'selected'}}">
-            {{#if (has-block "option")}}
-              {{yield item to="option"}}
-            {{/if}}
+  {{#if this.displaySelect}}
+    <OSS::InfiniteSelect
+      @items={{@items}}
+      @onSearch={{this.onSearch}}
+      @onSelect={{this.onSelect}}
+      @searchEnabled={{this.searchEnabled}}
+      @searchPlaceholder={{this.searchPlaceholder}}
+      {{on-click-outside this.onClickOutside useCapture=true}}>
+      <:option as |item|>
+        <div class="item-wrapper fx-row fx-xalign-center fx-malign-space-between {{if (eq @value item) 'selected'}}">
+          {{#if (has-block "option")}}
+            {{yield item to="option"}}
+          {{/if}}
 
-            {{#if (eq @value item)}}
-              <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
-            {{/if}}
-          </div>
-        </:option>
-      </OSS::InfiniteSelect>
-    {{/in-element}}
+          {{#if (eq @value item)}}
+            <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
+          {{/if}}
+        </div>
+      </:option>
+    </OSS::InfiniteSelect>
   {{/if}}
 
   {{#if @errorMessage}}
     <div class="font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center">
-      <OSS::Icon @icon="fa-exclamation-triangle" />
-      {{@errorMessage}}
+      <OSS::Icon @icon="fa-exclamation-triangle" /> {{@errorMessage}}
     </div>
   {{/if}}
 
   {{#if @successMessage}}
     <div class="font-color-success-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center">
-      <OSS::Icon @icon="fa-check-circle" />
-      {{@successMessage}}
+      <OSS::Icon @icon="fa-check-circle" /> {{@successMessage}}
     </div>
   {{/if}}
-</details>
+</div>
