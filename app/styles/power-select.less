@@ -16,15 +16,6 @@
     }
   }
 
-  .upf-infinite-select {
-    top: 0;
-    left: 0;
-    height: auto;
-    width: max-content;
-    margin-top: 0;
-    padding: var(--spacing-px-12);
-  }
-
   .upf-power-infinite-select-container {
     position: relative;
     height: 100%;
@@ -38,5 +29,19 @@
 
   .has-overflow {
     padding-bottom: @spacing-x-sm;
+  }
+}
+
+.upf-power-select__dropdown {
+  overflow: hidden;
+
+  .upf-infinite-select__container {
+    max-height: var(--floating-max-height);
+  }
+
+  &:has(.upf-input) {
+    .upf-infinite-select__items-container {
+      max-height: calc(var(--floating-max-height) - 62px);
+    }
   }
 }

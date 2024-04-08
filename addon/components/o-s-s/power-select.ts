@@ -16,6 +16,7 @@ interface OSSPowerSelectArgs {
   loadingMore?: boolean;
   placeholder?: string;
   searchPlaceholder?: string;
+  addressableAs?: string;
   onChange: (item: any, operation: OperationType) => void;
   onSearch?: (keyword: string) => void;
   onBottomReached?: () => void;
@@ -32,6 +33,10 @@ export default class OSSPowerSelect extends BaseDropdown<OSSPowerSelectArgs> {
 
   get placeholder(): string {
     return this.args.placeholder ?? DEFAULT_PLACEHOLDER;
+  }
+
+  get dropdownAddressableClass(): string {
+    return this.args.addressableAs ? `${this.args.addressableAs}__dropdown` : '';
   }
 
   noop(event: Event): void {
@@ -74,7 +79,8 @@ export default class OSSPowerSelect extends BaseDropdown<OSSPowerSelectArgs> {
       if (referenceTarget && floatingTarget) {
         this.cleanupDrodpownAutoplacement = attachDropdown(
           referenceTarget as HTMLElement,
-          floatingTarget as HTMLElement
+          floatingTarget as HTMLElement,
+          { maxHeight: 300 }
         );
       }
     });

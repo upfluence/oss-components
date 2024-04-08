@@ -1,12 +1,13 @@
-<details
+<div
   class="upf-power-select fx-1 fx-col"
   data-toggle="oss-dropdown"
+  open={{this.isOpen}}
   {{did-insert this.registerContainer}}
   {{did-insert (fn this.ensureBlockPresence (has-block "selected-item") (has-block "option-item"))}}
   {{on "toggle" this.handleSelectorClose}}
   ...attributes
 >
-  <summary class="upf-power-select__array-container" role="button" {{on "click" this.toggleDropdown}}>
+  <div class="upf-power-select__array-container" role="button" {{on "click" this.toggleDropdown}}>
     <div class="array-input-container fx-row padding-px-6 {{if this.isOpen 'active'}}">
       <div class="fx-row fx-xalign-center fx-1 padding-left-px-6 padding-right-px-24 fx-gap-px-6 fx-wrap">
         {{#each @selectedItems as |selectedItem|}}
@@ -19,7 +20,7 @@
       </div>
       <OSS::Icon @icon={{if this.isOpen "fa-chevron-up" "fa-chevron-down"}} class="dropdown-icon" />
     </div>
-  </summary>
+  </div>
 
   {{#if this.isOpen}}
     {{#in-element this.portalTarget insertBefore=null}}
@@ -33,7 +34,7 @@
           @loading={{@loading}}
           @loadingMore={{@loadingMore}}
           @onBottomReached={{@onBottomReached}}
-          class="margin-top-px-0"
+          class={{concat "margin-top-px-0 upf-power-select__dropdown " this.dropdownAddressableClass}}
           id={{this.portalId}}
           {{on "click" this.noop}}
           {{on-click-outside this.onClickOutside}}
@@ -56,7 +57,7 @@
           @loading={{@loading}}
           @loadingMore={{@loadingMore}}
           @onBottomReached={{@onBottomReached}}
-          class="margin-top-px-0"
+          class={{concat "margin-top-px-0 upf-power-select__dropdown " this.dropdownAddressableClass}}
           id={{this.portalId}}
           {{on "click" this.noop}}
           {{on-click-outside this.onClickOutside}}
@@ -68,4 +69,4 @@
       {{/if}}
     {{/in-element}}
   {{/if}}
-</details>
+</div>

@@ -3,7 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 export default class OSSBaseDropdown<T> extends Component<T> {
-  declare container: HTMLDetailsElement;
+  declare container: HTMLElement & { open?: boolean };
 
   @tracked isOpen: boolean = false;
 
@@ -28,7 +28,7 @@ export default class OSSBaseDropdown<T> extends Component<T> {
   }
 
   @action
-  registerContainer(element: HTMLDetailsElement): void {
+  registerContainer(element: HTMLElement): void {
     this.container = element;
   }
 
@@ -38,7 +38,7 @@ export default class OSSBaseDropdown<T> extends Component<T> {
   }
 
   clearExistingDropdowns(): void {
-    const openedDetails = document.querySelectorAll('details[data-toggle="oss-dropdown"][open]');
+    const openedDetails = document.querySelectorAll('[data-toggle="oss-dropdown"][open]');
 
     openedDetails.forEach((details: HTMLDetailsElement) => {
       if (details !== this.container) {

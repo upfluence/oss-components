@@ -244,6 +244,31 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
     });
   });
 
+  module('with @addressableAs', (hooks) => {
+    hooks.beforeEach(function () {
+      this.items = ['value1', 'value2', 'value3'];
+    });
+
+    test('the dropdown has the right class assigned to it', async function (assert) {
+      await render(hbs`
+        <div style="height:150px">
+          <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}} @onSearch={{this.onSearch}} @addressableAs="foobar-select">
+            <:selected-item as |selectedItem|>
+              {{selectedItem}}
+            </:selected-item>
+            <:option-item as |item|>
+              {{item}}
+            </:option-item>
+          </OSS::PowerSelect>
+        </div>
+      `);
+
+      await click('.upf-power-select__array-container');
+      assert.dom('.upf-infinite-select').exists();
+      assert.dom('.upf-infinite-select').hasClass('foobar-select__dropdown');
+    });
+  });
+
   module('Error management', () => {
     test('without selected-item named block', async function (assert) {
       setupOnerror((err: any) => {

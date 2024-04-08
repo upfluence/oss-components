@@ -12,12 +12,14 @@ import {
 export type AttachmentOptions = {
   offset?: number;
   width?: number;
+  maxHeight?: number;
   placement?: Placement;
 };
 
 const DEFAULT_ATTACHMENT_OPTIONS: AttachmentOptions = {
   offset: 12,
   width: undefined,
+  maxHeight: undefined,
   placement: 'bottom'
 };
 
@@ -26,22 +28,31 @@ export default function attachDropdown(
   floatingTarget: HTMLElement,
   options: AttachmentOptions = DEFAULT_ATTACHMENT_OPTIONS
 ) {
+  const mergedOptions = { ...DEFAULT_ATTACHMENT_OPTIONS, ...(options || {}) };
+
   const updatePosition = () => {
     computePosition(referenceTarget, floatingTarget, {
-      placement: options.placement ?? 'bottom',
+      placement: mergedOptions.placement ?? 'bottom',
       middleware: [
-        offset(options.offset ?? 0),
+        offset(mergedOptions.offset ?? 0),
         flip({
           fallbackPlacements: ['top', 'bottom']
         }),
         size({
           apply({ rects, elements }: MiddlewareState) {
-            const desiredWidth = options.width ?? rects.reference.width;
-            Object.assign(elements.floating.style, {
+            const desiredWidth = mergedOptions.width ?? rects.reference.width;
+            const floatingStyle: Record<string, string> = {
               maxWidth: `${desiredWidth}px`,
               minWidth: `${desiredWidth}px`,
               width: `${desiredWidth}px`
-            });
+            };
+
+            if (mergedOptions.maxHeight) {
+              floatingStyle.maxHeight = `${floatingStyle.maxHeight}px`;
+              elements.floating.style.setProperty('--floating-max-height', `${mergedOptions.maxHeight}px`);
+            }
+
+            Object.assign(elements.floating.style, floatingStyle);
           }
         }),
         hide()
