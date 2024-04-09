@@ -130,10 +130,8 @@ export default class OSSSelect extends BaseDropdown<OSSSelectArgs> {
   }
 
   @action
-  handleSelectorClose(event: ToggleEvent & { target: HTMLDetailsElement }): void {
-    if (!event.target.open) {
-      this.hideSelector();
-    }
+  handleSelectorClose(): void {
+    this.hideSelector();
   }
 
   @action

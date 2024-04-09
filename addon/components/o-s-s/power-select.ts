@@ -55,8 +55,8 @@ export default class OSSPowerSelect extends BaseDropdown<OSSPowerSelectArgs> {
   }
 
   @action
-  handleSelectorClose(event: ToggleEvent & { target: HTMLDetailsElement }): void {
-    if (!event.target.open && document.querySelector(`#${this.portalId}`)) {
+  handleSelectorClose(): void {
+    if (!this.container.open && document.querySelector(`#${this.portalId}`)) {
       document.querySelector(`#${this.portalId}`)!.remove();
       this.cleanupDrodpownAutoplacement?.();
       this.closeDropdown();
@@ -95,7 +95,7 @@ export default class OSSPowerSelect extends BaseDropdown<OSSPowerSelectArgs> {
   }
 
   @action
-  registerContainer(element: HTMLDetailsElement): void {
+  registerContainer(element: HTMLElement): void {
     super.registerContainer(element);
     this.portalTarget = isTesting() ? this.container : document.body;
   }
