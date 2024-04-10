@@ -1,15 +1,13 @@
-<details
+<div
   class={{this.classNames}}
   data-toggle="oss-dropdown"
+  open={{this.isOpen}}
   {{did-insert (fn this.ensureBlockPresence (has-block "option"))}}
   {{did-insert this.registerContainer}}
-  {{on "toggle" this.handleSelectorClose}}
+  {{will-destroy this.disconnectObserver}}
   ...attributes
 >
-  <summary
-    class="upf-input {{if this.isOpen 'active'}} fx-row fx-1 fx-xalign-center"
-    {{on "click" this.toggleDropdown}}
-  >
+  <div class="upf-input {{if this.isOpen 'active'}} fx-row fx-1 fx-xalign-center" {{on "click" this.toggleDropdown}}>
     <div class="fx-row fx-1 fx-malign-space-between fx-xalign-center">
       {{#if @value}}
         {{#if (has-block "selected")}}
@@ -22,7 +20,7 @@
       {{/if}}
       <OSS::Icon @icon="fa-chevron-{{if this.isOpen 'up' 'down'}}" class="margin-left-px-6" />
     </div>
-  </summary>
+  </div>
 
   {{#if this.isOpen}}
     {{#in-element this.portalTarget insertBefore=null}}
@@ -33,7 +31,7 @@
         @searchEnabled={{this.searchEnabled}}
         @searchPlaceholder={{this.searchPlaceholder}}
         id={{this.portalId}}
-        class="margin-top-px-0"
+        class={{concat "margin-top-px-0 oss-select-container__dropdown " this.dropdownAddressableClass}}
         {{on-click-outside this.onClickOutside}}
         {{on "click" this.noop}}
       >
@@ -65,4 +63,4 @@
       {{@successMessage}}
     </div>
   {{/if}}
-</details>
+</div>

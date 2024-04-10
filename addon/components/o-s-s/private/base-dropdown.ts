@@ -50,7 +50,7 @@ export default class OSSBaseDropdown<T> extends Component<T> {
 
   @action
   disconnectObserver(): void {
-    this.observer.disconnect();
+    this.observer?.disconnect();
   }
 
   clearExistingDropdowns(): void {

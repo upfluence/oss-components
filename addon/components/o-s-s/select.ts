@@ -19,6 +19,7 @@ interface OSSSelectArgs {
   disabled?: boolean;
   errorMessage?: string;
   successMessage?: string;
+  addressableAs?: string;
   onChange(value: any): void;
   onSearch?(keyword: string): void;
 }
@@ -74,6 +75,10 @@ export default class OSSSelect extends BaseDropdown<OSSSelectArgs> {
     }
 
     return classes.join(' ');
+  }
+
+  get dropdownAddressableClass(): string {
+    return this.args.addressableAs ? `${this.args.addressableAs}__dropdown` : '';
   }
 
   noop(event: Event): void {
@@ -135,7 +140,7 @@ export default class OSSSelect extends BaseDropdown<OSSSelectArgs> {
   }
 
   @action
-  registerContainer(element: HTMLDetailsElement): void {
+  registerContainer(element: HTMLElement): void {
     super.registerContainer(element);
     this.portalTarget = isTesting() ? this.container : document.body;
   }
