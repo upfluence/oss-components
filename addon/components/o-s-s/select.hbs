@@ -1,7 +1,6 @@
 <div
   class={{this.classNames}}
   data-toggle="oss-dropdown"
-  open={{this.isOpen}}
   {{did-insert (fn this.ensureBlockPresence (has-block "option"))}}
   {{did-insert this.registerContainer}}
   {{will-destroy this.disconnectObserver}}

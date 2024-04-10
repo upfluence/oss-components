@@ -17,13 +17,17 @@ export default class OSSBaseDropdown<T> extends Component<T> {
     event.stopPropagation();
     event.preventDefault();
 
-    this.isOpen = !this.isOpen;
+    if (this.container.hasAttribute('open')) {
+      this.container.removeAttribute('open');
+    } else {
+      this.container.setAttribute('open', '');
+    }
+
+    this.isOpen = this.container.hasAttribute('open');
 
     if (this.isOpen) {
       this.clearExistingDropdowns();
     }
-
-    this.container.open = this.isOpen;
   }
 
   @action
@@ -36,7 +40,9 @@ export default class OSSBaseDropdown<T> extends Component<T> {
   registerContainer(element: HTMLElement): void {
     this.container = element;
     this.observer = new MutationObserver(() => {
-      if (!this.container.open) {
+      this.isOpen = this.container.hasAttribute('open');
+
+      if (!this.container.hasAttribute('open')) {
         this.handleSelectorClose();
       }
     });
@@ -44,7 +50,6 @@ export default class OSSBaseDropdown<T> extends Component<T> {
   }
 
   closeDropdown(): void {
-    this.container.open = false;
     this.isOpen = false;
   }
 
@@ -56,9 +61,9 @@ export default class OSSBaseDropdown<T> extends Component<T> {
   clearExistingDropdowns(): void {
     const openedDetails = document.querySelectorAll('[data-toggle="oss-dropdown"][open]');
 
-    openedDetails.forEach((details: HTMLDetailsElement) => {
+    openedDetails.forEach((details: HTMLElement & { open?: boolean }) => {
       if (details !== this.container) {
-        details.open = false;
+        details.removeAttribute('open');
       }
     });
   }
