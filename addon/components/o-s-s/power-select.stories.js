@@ -97,6 +97,15 @@ export default {
           summary: 'onBottomReached(): void'
         }
       }
+    },
+    addressableAs: {
+      description:
+        'A string to use as base to target the portaled-dropdown component in CSS. When provided, you will be able to use `${addressableAs}__dropdown` in CSS.',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      }
     }
   },
   parameters: {
@@ -116,6 +125,7 @@ const defaultArgs = {
   loadingMore: false,
   placeholder: 'My placeholder',
   searchPlaceholder: 'My search placeholder',
+  addressableAs: undefined,
   onSearch: action('onSearch'),
   onChange: action('onChange', { allowFunction: true }),
   onBottomReached: action('onBottomReached')
@@ -127,7 +137,7 @@ const Template = (args) => ({
       <OSS::PowerSelect class='padding-sm' @selectedItems={{this.selectedItems}} @items={{this.items}}
                         @onSearch={{this.onSearch}} @onChange={{this.onChange}} @loading={{this.loading}}
                         @loadingMore={{this.loadingMore}} @placeholder={{this.placeholder}} @searchPlaceholder={{this.searchPlaceholder}}
-                        @onBottomReached={{this.onBottomReached}}>
+                        @onBottomReached={{this.onBottomReached}} @addressableAs={{this.addressableAs}}>
         <:selected-item as |selectedItem|>
           {{selectedItem}}
         </:selected-item>
