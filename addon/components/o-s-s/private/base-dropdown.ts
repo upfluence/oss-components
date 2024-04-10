@@ -50,7 +50,7 @@ export default class OSSBaseDropdown<T> extends Component<T> {
   }
 
   closeDropdown(): void {
-    this.isOpen = false;
+    this.container.removeAttribute('open');
   }
 
   @action
