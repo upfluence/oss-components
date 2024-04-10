@@ -4,7 +4,6 @@
   {{did-insert this.registerContainer}}
   {{did-insert (fn this.ensureBlockPresence (has-block "selected-item") (has-block "option-item"))}}
   {{will-destroy this.disconnectObserver}}
-  {{on "toggle" this.handleSelectorClose}}
   ...attributes
 >
   <div class="upf-power-select__array-container" role="button" {{on "click" this.toggleDropdown}}>

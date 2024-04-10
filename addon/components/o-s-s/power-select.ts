@@ -56,7 +56,7 @@ export default class OSSPowerSelect extends BaseDropdown<OSSPowerSelectArgs> {
 
   @action
   handleSelectorClose(): void {
-    if (!this.container.open && document.querySelector(`#${this.portalId}`)) {
+    if (!this.container.hasAttribute('open') && document.querySelector(`#${this.portalId}`)) {
       document.querySelector(`#${this.portalId}`)!.remove();
       this.cleanupDrodpownAutoplacement?.();
       this.closeDropdown();
