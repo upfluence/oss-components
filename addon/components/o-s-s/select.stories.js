@@ -106,7 +106,7 @@ export default {
     },
     addressableAs: {
       description:
-        'A string to use as base to target the portaled-dropdown component in CSS. When provided, you will be able to use `${addressableAs}__dropdown` in CSS.',
+        'A string identifier to use as base to target the portaled-dropdown component in CSS. When provided, you will be able to use `${addressableAs}__dropdown` in CSS.',
       table: {
         type: {
           summary: 'string'
