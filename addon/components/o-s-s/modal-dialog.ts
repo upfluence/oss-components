@@ -1,6 +1,7 @@
-import { assert } from '@ember/debug';
 import { tracked } from '@glimmer/tracking';
-import Component from '@glimmer/component';
+import { assert } from '@ember/debug';
+import { action } from '@ember/object';
+
 import BaseModal, { type BaseModalArgs } from './private/base-modal';
 
 export interface OSSModalDialogArgs extends BaseModalArgs {
@@ -10,11 +11,10 @@ export interface OSSModalDialogArgs extends BaseModalArgs {
   enqueue?: boolean;
 }
 
-export default class OSSModalDialog extends (BaseModal as typeof Component)<OSSModalDialogArgs> {
+export default class OSSModalDialog extends BaseModal<OSSModalDialogArgs> {
   @tracked displayModal: boolean = true;
 
   constructor(owner: unknown, args: OSSModalDialogArgs) {
-    // eslint-disable-next-line constructor-super
     super(owner, args);
 
     assert('[component][OSS::ModalDialog] The close function is mandatory', args.close);
