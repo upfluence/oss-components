@@ -1,10 +1,14 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import { guidFor } from '@ember/object/internals';
+import { isTesting } from '@embroider/macros';
 
 export default class OSSBaseDropdown<T> extends Component<T> {
   declare container: HTMLElement & { open?: boolean };
   declare observer: MutationObserver;
+  declare portalTarget: HTMLElement;
+  portalId: string = guidFor(this);
 
   @tracked isOpen: boolean = false;
 
@@ -39,6 +43,7 @@ export default class OSSBaseDropdown<T> extends Component<T> {
   @action
   registerContainer(element: HTMLElement): void {
     this.container = element;
+    this.portalTarget = isTesting() ? this.container : document.body;
     this.observer = new MutationObserver(() => {
       this.isOpen = this.container.hasAttribute('open');
 
@@ -49,16 +54,20 @@ export default class OSSBaseDropdown<T> extends Component<T> {
     this.observer.observe(this.container, { attributes: true, attributeFilter: ['open'] });
   }
 
-  closeDropdown(): void {
-    this.container.removeAttribute('open');
-  }
-
   @action
   disconnectObserver(): void {
     this.observer?.disconnect();
   }
 
-  clearExistingDropdowns(): void {
+  noop(event: Event): void {
+    event.stopPropagation();
+  }
+
+  closeDropdown(): void {
+    this.container.removeAttribute('open');
+  }
+
+  private clearExistingDropdowns(): void {
     const openedDetails = document.querySelectorAll('[data-toggle="oss-dropdown"][open]');
 
     openedDetails.forEach((details: HTMLElement & { open?: boolean }) => {

@@ -1,6 +1,5 @@
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
-import { guidFor } from '@ember/object/internals';
 import { scheduleOnce } from '@ember/runloop';
 import { isTesting } from '@embroider/macros';
 
@@ -27,20 +26,12 @@ const DEFAULT_PLACEHOLDER = 'Select an item';
 export default class OSSPowerSelect extends BaseDropdown<OSSPowerSelectArgs> {
   cleanupDrodpownAutoplacement?: () => void;
 
-  portalId: string = guidFor(this);
-
-  declare portalTarget: HTMLElement;
-
   get placeholder(): string {
     return this.args.placeholder ?? DEFAULT_PLACEHOLDER;
   }
 
   get dropdownAddressableClass(): string {
     return this.args.addressableAs ? `${this.args.addressableAs}__dropdown` : '';
-  }
-
-  noop(event: Event): void {
-    event.stopPropagation();
   }
 
   @action
@@ -92,11 +83,5 @@ export default class OSSPowerSelect extends BaseDropdown<OSSPowerSelectArgs> {
     this.cleanupDrodpownAutoplacement?.();
     this.args.onSearch?.('');
     document.querySelector(`#${this.portalId}`)?.remove();
-  }
-
-  @action
-  registerContainer(element: HTMLElement): void {
-    super.registerContainer(element);
-    this.portalTarget = isTesting() ? this.container : document.body;
   }
 }

@@ -1,7 +1,6 @@
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
-import { guidFor } from '@ember/object/internals';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 import { scheduleOnce } from '@ember/runloop';
@@ -30,9 +29,6 @@ export default class OSSSelect extends BaseDropdown<OSSSelectArgs> {
   @tracked displaySelect: boolean = false;
 
   cleanupDrodpownAutoplacement?: () => void;
-  portalId: string = guidFor(this);
-
-  declare portalTarget: HTMLElement;
 
   constructor(owner: unknown, args: OSSSelectArgs) {
     super(owner, args);
@@ -79,10 +75,6 @@ export default class OSSSelect extends BaseDropdown<OSSSelectArgs> {
 
   get dropdownAddressableClass(): string {
     return this.args.addressableAs ? `${this.args.addressableAs}__dropdown` : '';
-  }
-
-  noop(event: Event): void {
-    event.stopPropagation();
   }
 
   @action
@@ -137,12 +129,6 @@ export default class OSSSelect extends BaseDropdown<OSSSelectArgs> {
   @action
   handleSelectorClose(): void {
     this.hideSelector();
-  }
-
-  @action
-  registerContainer(element: HTMLElement): void {
-    super.registerContainer(element);
-    this.portalTarget = isTesting() ? this.container : document.body;
   }
 
   @action
