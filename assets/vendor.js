@@ -83736,38 +83736,43 @@ define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["export
   BasicUsage.args = defaultArgs;
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-define("@upfluence/oss-components/components/o-s-s/power-select", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/debug", "@ember/object", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _debug, _object, _templateFactory) {
+define("@upfluence/oss-components/components/o-s-s/power-select", ["exports", "@ember/component", "@ember/debug", "@ember/object", "@ember/runloop", "@upfluence/oss-components/utils/attach-dropdown", "@upfluence/oss-components/components/o-s-s/private/base-dropdown", "@ember/template-factory"], function (_exports, _component, _debug, _object, _runloop, _attachDropdown, _baseDropdown, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  var _class, _descriptor;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/debug",0,"@ember/object",0,"@ember/component"eaimeta@70e063a35619d71f
-  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  var _class;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@ember/object",0,"@ember/runloop",0,"@upfluence/oss-components/utils/attach-dropdown",0,"@upfluence/oss-components/components/o-s-s/private/base-dropdown",0,"@ember/component"eaimeta@70e063a35619d71f
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
   function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
   function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
   function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
   function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
   function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
-  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
   function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+  function _get() { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get.bind(); } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(arguments.length < 3 ? target : receiver); } return desc.value; }; } return _get.apply(this, arguments); }
+  function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
   function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
   function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
   function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
-  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="upf-power-select fx-1 fx-col" ...attributes
-       {{did-insert (fn this.ensureBlockPresence (has-block "selected-item") (has-block "option-item"))}}>
-    <div class="upf-power-select__array-container" role="button"
-         {{on "click" this.toggleSelect}}>
-      <div class="array-input-container fx-row padding-px-6 {{if this.displaySelect 'active'}}" >
+    <div
+    class="upf-power-select fx-1 fx-col"
+    data-toggle="oss-dropdown"
+    {{did-insert this.registerContainer}}
+    {{did-insert (fn this.ensureBlockPresence (has-block "selected-item") (has-block "option-item"))}}
+    {{will-destroy this.disconnectObserver}}
+    ...attributes
+  >
+    <div class="upf-power-select__array-container" role="button" {{on "click" this.toggleDropdown}}>
+      <div class="array-input-container fx-row padding-px-6 {{if this.isOpen 'active'}}">
         <div class="fx-row fx-xalign-center fx-1 padding-left-px-6 padding-right-px-24 fx-gap-px-6 fx-wrap">
           {{#each @selectedItems as |selectedItem|}}
             {{yield selectedItem to="selected-item"}}
@@ -83777,48 +83782,68 @@ define("@upfluence/oss-components/components/o-s-s/power-select", ["exports", "@
             </span>
           {{/each}}
         </div>
-          <OSS::Icon @icon={{if this.displaySelect "fa-chevron-up" "fa-chevron-down"}}
-              class="dropdown-icon" />
+        <OSS::Icon @icon={{if this.isOpen "fa-chevron-up" "fa-chevron-down"}} class="dropdown-icon" />
       </div>
     </div>
   
-    {{#if this.displaySelect}}
-      {{#if (has-block "empty-state")}}
-        <OSS::InfiniteSelect @items={{@items}} @onSearch={{@onSearch}} @inline={{false}} @onSelect={{this.onSelect}}
-                             @searchPlaceholder={{@searchPlaceholder}} @loading={{@loading}} @loadingMore={{@loadingMore}}
-                             @onBottomReached={{@onBottomReached}}
-                             {{on-click-outside this.hideSelect}}>
-          <:option as |item|>
-            {{yield item to="option-item"}}
-          </:option>
+    {{#if this.isOpen}}
+      {{#in-element this.portalTarget insertBefore=null}}
+        {{#if (has-block "empty-state")}}
+          <OSS::InfiniteSelect
+            @items={{@items}}
+            @onSearch={{@onSearch}}
+            @inline={{false}}
+            @onSelect={{this.onSelect}}
+            @searchPlaceholder={{@searchPlaceholder}}
+            @loading={{@loading}}
+            @loadingMore={{@loadingMore}}
+            @onBottomReached={{@onBottomReached}}
+            class={{concat "margin-top-px-0 upf-power-select__dropdown " this.dropdownAddressableClass}}
+            id={{this.portalId}}
+            {{on "click" this.noop}}
+            {{on-click-outside this.onClickOutside}}
+          >
+            <:option as |item|>
+              {{yield item to="option-item"}}
+            </:option>
   
-          <:empty-state>
-            {{yield to="empty-state"}}
-          </:empty-state>
-        </OSS::InfiniteSelect>
-      {{else}}
-        <OSS::InfiniteSelect @items={{@items}} @onSearch={{@onSearch}} @inline={{false}} @onSelect={{this.onSelect}}
-                             @searchPlaceholder={{@searchPlaceholder}} @loading={{@loading}} @loadingMore={{@loadingMore}}
-                             @onBottomReached={{@onBottomReached}}
-                             {{on-click-outside this.hideSelect}}>
-          <:option as |item|>
-            {{yield item to="option-item"}}
-          </:option>
-        </OSS::InfiniteSelect>
-      {{/if}}
+            <:empty-state>
+              {{yield to="empty-state"}}
+            </:empty-state>
+          </OSS::InfiniteSelect>
+        {{else}}
+          <OSS::InfiniteSelect
+            @items={{@items}}
+            @onSearch={{@onSearch}}
+            @inline={{false}}
+            @onSelect={{this.onSelect}}
+            @searchPlaceholder={{@searchPlaceholder}}
+            @loading={{@loading}}
+            @loadingMore={{@loadingMore}}
+            @onBottomReached={{@onBottomReached}}
+            class={{concat "margin-top-px-0 upf-power-select__dropdown " this.dropdownAddressableClass}}
+            id={{this.portalId}}
+            {{on "click" this.noop}}
+            {{on-click-outside this.onClickOutside}}
+          >
+            <:option as |item|>
+              {{yield item to="option-item"}}
+            </:option>
+          </OSS::InfiniteSelect>
+        {{/if}}
+      {{/in-element}}
     {{/if}}
   </div>
-  
   */
   {
-    "id": "bULDiVKr",
-    "block": "[[[11,0],[24,0,\"upf-power-select fx-1 fx-col\"],[17,1],[4,[38,0],[[28,[37,1],[[30,0,[\"ensureBlockPresence\"]],[48,[30,12]],[48,[30,13]]],null]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"upf-power-select__array-container\"],[24,\"role\",\"button\"],[4,[38,3],[\"click\",[30,0,[\"toggleSelect\"]]],null],[12],[1,\"\\n    \"],[10,0],[15,0,[29,[\"array-input-container fx-row padding-px-6 \",[52,[30,0,[\"displaySelect\"]],\"active\"]]]],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-1 padding-left-px-6 padding-right-px-24 fx-gap-px-6 fx-wrap\"],[12],[1,\"\\n\"],[42,[28,[37,6],[[28,[37,6],[[30,2]],null]],null],null,[[[1,\"          \"],[18,12,[[30,3]]],[1,\"\\n\"]],[3]],[[[1,\"          \"],[10,1],[14,0,\"text-size-5 text-color-default-light\"],[12],[1,\"\\n            \"],[1,[30,0,[\"placeholder\"]]],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]]],[1,\"      \"],[13],[1,\"\\n        \"],[8,[39,8],[[24,0,\"dropdown-icon\"]],[[\"@icon\"],[[52,[30,0,[\"displaySelect\"]],\"fa-chevron-up\",\"fa-chevron-down\"]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displaySelect\"]],[[[41,[48,[30,14]],[[[1,\"      \"],[8,[39,9],[[4,[38,10],[[30,0,[\"hideSelect\"]]],null]],[[\"@items\",\"@onSearch\",\"@inline\",\"@onSelect\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\"],[[30,4],[30,5],false,[30,0,[\"onSelect\"]],[30,6],[30,7],[30,8],[30,9]]],[[\"option\",\"empty-state\"],[[[[1,\"\\n          \"],[18,13,[[30,10]]],[1,\"\\n        \"]],[10]],[[[1,\"\\n          \"],[18,14,null],[1,\"\\n        \"]],[]]]]],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,9],[[4,[38,10],[[30,0,[\"hideSelect\"]]],null]],[[\"@items\",\"@onSearch\",\"@inline\",\"@onSelect\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\"],[[30,4],[30,5],false,[30,0,[\"onSelect\"]],[30,6],[30,7],[30,8],[30,9]]],[[\"option\"],[[[[1,\"\\n          \"],[18,13,[[30,11]]],[1,\"\\n        \"]],[11]]]]],[1,\"\\n\"]],[]]]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@selectedItems\",\"selectedItem\",\"@items\",\"@onSearch\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\",\"item\",\"item\",\"&selected-item\",\"&option-item\",\"&empty-state\"],false,[\"did-insert\",\"fn\",\"has-block\",\"on\",\"if\",\"each\",\"-track-array\",\"yield\",\"o-s-s/icon\",\"o-s-s/infinite-select\",\"on-click-outside\"]]",
+    "id": "VpbL4dEN",
+    "block": "[[[11,0],[24,0,\"upf-power-select fx-1 fx-col\"],[24,\"data-toggle\",\"oss-dropdown\"],[17,1],[4,[38,0],[[30,0,[\"registerContainer\"]]],null],[4,[38,0],[[28,[37,1],[[30,0,[\"ensureBlockPresence\"]],[48,[30,12]],[48,[30,13]]],null]],null],[4,[38,3],[[30,0,[\"disconnectObserver\"]]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"upf-power-select__array-container\"],[24,\"role\",\"button\"],[4,[38,4],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n    \"],[10,0],[15,0,[29,[\"array-input-container fx-row padding-px-6 \",[52,[30,0,[\"isOpen\"]],\"active\"]]]],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-1 padding-left-px-6 padding-right-px-24 fx-gap-px-6 fx-wrap\"],[12],[1,\"\\n\"],[42,[28,[37,7],[[28,[37,7],[[30,2]],null]],null],null,[[[1,\"          \"],[18,12,[[30,3]]],[1,\"\\n\"]],[3]],[[[1,\"          \"],[10,1],[14,0,\"text-size-5 text-color-default-light\"],[12],[1,\"\\n            \"],[1,[30,0,[\"placeholder\"]]],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]]],[1,\"      \"],[13],[1,\"\\n      \"],[8,[39,9],[[24,0,\"dropdown-icon\"]],[[\"@icon\"],[[52,[30,0,[\"isOpen\"]],\"fa-chevron-up\",\"fa-chevron-down\"]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"isOpen\"]],[[[40,[[[41,[48,[30,14]],[[[1,\"        \"],[8,[39,12],[[16,0,[28,[37,13],[\"margin-top-px-0 upf-power-select__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[16,1,[30,0,[\"portalId\"]]],[4,[38,4],[\"click\",[30,0,[\"noop\"]]],null],[4,[38,14],[[30,0,[\"onClickOutside\"]]],null]],[[\"@items\",\"@onSearch\",\"@inline\",\"@onSelect\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\"],[[30,4],[30,5],false,[30,0,[\"onSelect\"]],[30,6],[30,7],[30,8],[30,9]]],[[\"option\",\"empty-state\"],[[[[1,\"\\n            \"],[18,13,[[30,10]]],[1,\"\\n          \"]],[10]],[[[1,\"\\n            \"],[18,14,null],[1,\"\\n          \"]],[]]]]],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,12],[[16,0,[28,[37,13],[\"margin-top-px-0 upf-power-select__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[16,1,[30,0,[\"portalId\"]]],[4,[38,4],[\"click\",[30,0,[\"noop\"]]],null],[4,[38,14],[[30,0,[\"onClickOutside\"]]],null]],[[\"@items\",\"@onSearch\",\"@inline\",\"@onSelect\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\"],[[30,4],[30,5],false,[30,0,[\"onSelect\"]],[30,6],[30,7],[30,8],[30,9]]],[[\"option\"],[[[[1,\"\\n            \"],[18,13,[[30,11]]],[1,\"\\n          \"]],[11]]]]],[1,\"\\n\"]],[]]]],[]],\"%cursor:0%\",[28,[37,11],[[30,0,[\"portalTarget\"]]],null],null]],[]],null],[13]],[\"&attrs\",\"@selectedItems\",\"selectedItem\",\"@items\",\"@onSearch\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\",\"item\",\"item\",\"&selected-item\",\"&option-item\",\"&empty-state\"],false,[\"did-insert\",\"fn\",\"has-block\",\"will-destroy\",\"on\",\"if\",\"each\",\"-track-array\",\"yield\",\"o-s-s/icon\",\"in-element\",\"-in-el-null\",\"o-s-s/infinite-select\",\"concat\",\"on-click-outside\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/power-select.hbs",
     "isStrictMode": false
   });
   var DEFAULT_PLACEHOLDER = 'Select an item';
-  var OSSPowerSelect = _exports.default = (_class = /*#__PURE__*/function (_Component) {
-    _inherits(OSSPowerSelect, _Component);
+  var OSSPowerSelect = _exports.default = (_class = /*#__PURE__*/function (_BaseDropdown) {
+    _inherits(OSSPowerSelect, _BaseDropdown);
     function OSSPowerSelect() {
       var _this;
       _classCallCheck(this, OSSPowerSelect);
@@ -83826,7 +83851,7 @@ define("@upfluence/oss-components/components/o-s-s/power-select", ["exports", "@
         args[_key] = arguments[_key];
       }
       _this = _callSuper(this, OSSPowerSelect, [].concat(args));
-      _initializerDefineProperty(_assertThisInitialized(_this), "displaySelect", _descriptor, _assertThisInitialized(_this));
+      _defineProperty(_assertThisInitialized(_this), "cleanupDrodpownAutoplacement", void 0);
       return _this;
     }
     _createClass(OSSPowerSelect, [{
@@ -83834,6 +83859,11 @@ define("@upfluence/oss-components/components/o-s-s/power-select", ["exports", "@
       get: function get() {
         var _this$args$placeholde;
         return (_this$args$placeholde = this.args.placeholder) !== null && _this$args$placeholde !== void 0 ? _this$args$placeholde : DEFAULT_PLACEHOLDER;
+      }
+    }, {
+      key: "dropdownAddressableClass",
+      get: function get() {
+        return this.args.addressableAs ? "".concat(this.args.addressableAs, "__dropdown") : '';
       }
     }, {
       key: "ensureBlockPresence",
@@ -83847,33 +83877,47 @@ define("@upfluence/oss-components/components/o-s-s/power-select", ["exports", "@
         this.args.onChange(item, 'selection');
       }
     }, {
-      key: "toggleSelect",
-      value: function toggleSelect(event) {
-        event.stopPropagation();
-        this.displaySelect = !this.displaySelect;
-        if (!this.displaySelect) {
-          var _this$args$onSearch, _this$args;
-          (_this$args$onSearch = (_this$args = this.args).onSearch) === null || _this$args$onSearch === void 0 || _this$args$onSearch.call(_this$args, '');
+      key: "handleSelectorClose",
+      value: function handleSelectorClose() {
+        if (!this.container.hasAttribute('open') && document.querySelector("#".concat(this.portalId))) {
+          var _this$cleanupDrodpown;
+          document.querySelector("#".concat(this.portalId)).remove();
+          (_this$cleanupDrodpown = this.cleanupDrodpownAutoplacement) === null || _this$cleanupDrodpown === void 0 || _this$cleanupDrodpown.call(this);
+          this.closeDropdown();
         }
       }
     }, {
-      key: "hideSelect",
-      value: function hideSelect(_, event) {
-        var _this$args$onSearch2, _this$args2;
-        event.stopPropagation();
-        this.displaySelect = false;
+      key: "toggleDropdown",
+      value: function toggleDropdown(event) {
+        var _this2 = this;
+        _get(_getPrototypeOf(OSSPowerSelect.prototype), "toggleDropdown", this).call(this, event);
+        if (!this.isOpen) {
+          var _this$args$onSearch, _this$args;
+          (_this$args$onSearch = (_this$args = this.args).onSearch) === null || _this$args$onSearch === void 0 || _this$args$onSearch.call(_this$args, '');
+          return;
+        }
+        (0, _runloop.scheduleOnce)('afterRender', this, function () {
+          var referenceTarget = _this2.container.querySelector('.upf-power-select__array-container');
+          var floatingTarget = document.querySelector("#".concat(_this2.portalId));
+          if (referenceTarget && floatingTarget) {
+            _this2.cleanupDrodpownAutoplacement = (0, _attachDropdown.default)(referenceTarget, floatingTarget, {
+              maxHeight: 300
+            });
+          }
+        });
+      }
+    }, {
+      key: "onClickOutside",
+      value: function onClickOutside(_, event) {
+        var _this$cleanupDrodpown2, _this$args$onSearch2, _this$args2, _document$querySelect;
+        _get(_getPrototypeOf(OSSPowerSelect.prototype), "onClickOutside", this).call(this, _, event);
+        (_this$cleanupDrodpown2 = this.cleanupDrodpownAutoplacement) === null || _this$cleanupDrodpown2 === void 0 || _this$cleanupDrodpown2.call(this);
         (_this$args$onSearch2 = (_this$args2 = this.args).onSearch) === null || _this$args$onSearch2 === void 0 || _this$args$onSearch2.call(_this$args2, '');
+        (_document$querySelect = document.querySelector("#".concat(this.portalId))) === null || _document$querySelect === void 0 || _document$querySelect.remove();
       }
     }]);
     return OSSPowerSelect;
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "displaySelect", [_tracking.tracked], {
-    configurable: true,
-    enumerable: true,
-    writable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _applyDecoratedDescriptor(_class.prototype, "ensureBlockPresence", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "ensureBlockPresence"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "hideSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "hideSelect"), _class.prototype)), _class);
+  }(_baseDropdown.default), (_applyDecoratedDescriptor(_class.prototype, "ensureBlockPresence", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "ensureBlockPresence"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleSelectorClose", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleSelectorClose"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSPowerSelect);
 });
 ;define("@upfluence/oss-components/components/o-s-s/power-select.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -84015,6 +84059,14 @@ define("@upfluence/oss-components/components/o-s-s/power-select", ["exports", "@
             summary: 'onBottomReached(): void'
           }
         }
+      },
+      addressableAs: {
+        description: 'A string identifier to use as base to target the portaled-dropdown component in CSS. When provided, you will be able to use `${addressableAs}__dropdown` in CSS.',
+        table: {
+          type: {
+            summary: 'string'
+          }
+        }
       }
     },
     parameters: {
@@ -84033,6 +84085,7 @@ define("@upfluence/oss-components/components/o-s-s/power-select", ["exports", "@
     loadingMore: false,
     placeholder: 'My placeholder',
     searchPlaceholder: 'My search placeholder',
+    addressableAs: undefined,
     onSearch: (0, _addonActions.action)('onSearch'),
     onChange: (0, _addonActions.action)('onChange', {
       allowFunction: true
@@ -84048,7 +84101,7 @@ define("@upfluence/oss-components/components/o-s-s/power-select", ["exports", "@
             <OSS::PowerSelect class='padding-sm' @selectedItems={{this.selectedItems}} @items={{this.items}}
                               @onSearch={{this.onSearch}} @onChange={{this.onChange}} @loading={{this.loading}}
                               @loadingMore={{this.loadingMore}} @placeholder={{this.placeholder}} @searchPlaceholder={{this.searchPlaceholder}}
-                              @onBottomReached={{this.onBottomReached}}>
+                              @onBottomReached={{this.onBottomReached}} @addressableAs={{this.addressableAs}}>
               <:selected-item as |selectedItem|>
                 {{selectedItem}}
               </:selected-item>
@@ -84060,8 +84113,8 @@ define("@upfluence/oss-components/components/o-s-s/power-select", ["exports", "@
         
       */
       {
-        "id": "7RTDOEwZ",
-        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"display: flex; justify-content: center; background-color: white; border-radius: 4px\"],[12],[1,\"\\n      \"],[8,[39,0],[[24,0,\"padding-sm\"]],[[\"@selectedItems\",\"@items\",\"@onSearch\",\"@onChange\",\"@loading\",\"@loadingMore\",\"@placeholder\",\"@searchPlaceholder\",\"@onBottomReached\"],[[30,0,[\"selectedItems\"]],[30,0,[\"items\"]],[30,0,[\"onSearch\"]],[30,0,[\"onChange\"]],[30,0,[\"loading\"]],[30,0,[\"loadingMore\"]],[30,0,[\"placeholder\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"onBottomReached\"]]]],[[\"selected-item\",\"option-item\"],[[[[1,\"\\n          \"],[1,[30,1]],[1,\"\\n        \"]],[1]],[[[1,\"\\n          \"],[1,[30,2]],[1,\"\\n        \"]],[2]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[\"selectedItem\",\"item\"],false,[\"o-s-s/power-select\"]]",
+        "id": "lonCeSUH",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"display: flex; justify-content: center; background-color: white; border-radius: 4px\"],[12],[1,\"\\n      \"],[8,[39,0],[[24,0,\"padding-sm\"]],[[\"@selectedItems\",\"@items\",\"@onSearch\",\"@onChange\",\"@loading\",\"@loadingMore\",\"@placeholder\",\"@searchPlaceholder\",\"@onBottomReached\",\"@addressableAs\"],[[30,0,[\"selectedItems\"]],[30,0,[\"items\"]],[30,0,[\"onSearch\"]],[30,0,[\"onChange\"]],[30,0,[\"loading\"]],[30,0,[\"loadingMore\"]],[30,0,[\"placeholder\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"addressableAs\"]]]],[[\"selected-item\",\"option-item\"],[[[[1,\"\\n          \"],[1,[30,1]],[1,\"\\n        \"]],[1]],[[[1,\"\\n          \"],[1,[30,2]],[1,\"\\n        \"]],[2]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[\"selectedItem\",\"item\"],false,[\"o-s-s/power-select\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/power-select.stories.js",
         "isStrictMode": false
       }),
@@ -84074,6 +84127,126 @@ define("@upfluence/oss-components/components/o-s-s/power-select", ["exports", "@
   WithoutSelectedItem.args = _objectSpread(_objectSpread({}, defaultArgs), {
     selectedItems: []
   });
+});
+;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+define("@upfluence/oss-components/components/o-s-s/private/base-dropdown", ["exports", "@glimmer/component", "@glimmer/tracking", "@ember/object", "@ember/object/internals", "@embroider/macros/runtime"], function (_exports, _component, _tracking, _object, _internals, _runtime) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor;
+  0; //eaimeta@70e063a35619d71f0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/object",0,"@ember/object/internals",0,"@embroider/macros"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+  function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+  function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  var OSSBaseDropdown = _exports.default = (_class = /*#__PURE__*/function (_Component) {
+    _inherits(OSSBaseDropdown, _Component);
+    function OSSBaseDropdown() {
+      var _this;
+      _classCallCheck(this, OSSBaseDropdown);
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+      _this = _callSuper(this, OSSBaseDropdown, [].concat(args));
+      _defineProperty(_assertThisInitialized(_this), "portalId", (0, _internals.guidFor)(_assertThisInitialized(_this)));
+      _initializerDefineProperty(_assertThisInitialized(_this), "isOpen", _descriptor, _assertThisInitialized(_this));
+      return _this;
+    }
+    _createClass(OSSBaseDropdown, [{
+      key: "handleSelectorClose",
+      value: function handleSelectorClose() {
+        throw new Error('[component][OSS::BaseDropdown] You must implement handleSelectorClose method on the child class');
+      }
+    }, {
+      key: "toggleDropdown",
+      value: function toggleDropdown(event) {
+        event.stopPropagation();
+        event.preventDefault();
+        if (this.container.hasAttribute('open')) {
+          this.container.removeAttribute('open');
+        } else {
+          this.container.setAttribute('open', '');
+        }
+        this.isOpen = this.container.hasAttribute('open');
+        if (this.isOpen) {
+          this.clearExistingDropdowns();
+        }
+      }
+    }, {
+      key: "onClickOutside",
+      value: function onClickOutside(_, event) {
+        event.stopPropagation();
+        this.closeDropdown();
+      }
+    }, {
+      key: "registerContainer",
+      value: function registerContainer(element) {
+        var _this2 = this;
+        this.container = element;
+        this.portalTarget = (0, _runtime.isTesting)() ? this.container : document.body;
+        this.observer = new MutationObserver(function () {
+          _this2.isOpen = _this2.container.hasAttribute('open');
+          if (!_this2.container.hasAttribute('open')) {
+            _this2.handleSelectorClose();
+          }
+        });
+        this.observer.observe(this.container, {
+          attributes: true,
+          attributeFilter: ['open']
+        });
+      }
+    }, {
+      key: "disconnectObserver",
+      value: function disconnectObserver() {
+        var _this$observer;
+        (_this$observer = this.observer) === null || _this$observer === void 0 || _this$observer.disconnect();
+      }
+    }, {
+      key: "noop",
+      value: function noop(event) {
+        event.stopPropagation();
+      }
+    }, {
+      key: "closeDropdown",
+      value: function closeDropdown() {
+        this.container.removeAttribute('open');
+      }
+    }, {
+      key: "clearExistingDropdowns",
+      value: function clearExistingDropdowns() {
+        var _this3 = this;
+        var openedDetails = document.querySelectorAll('[data-toggle="oss-dropdown"][open]');
+        openedDetails.forEach(function (details) {
+          if (details !== _this3.container) {
+            details.removeAttribute('open');
+          }
+        });
+      }
+    }]);
+    return OSSBaseDropdown;
+  }(_component.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "isOpen", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerContainer", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerContainer"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "disconnectObserver", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "disconnectObserver"), _class.prototype)), _class);
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("@upfluence/oss-components/components/o-s-s/private/base-modal", ["exports", "@ember/object", "@ember/runloop", "@glimmer/component", "@embroider/macros/runtime"], function (_exports, _object, _runloop, _component, _runtime) {
@@ -84509,7 +84682,7 @@ define("@upfluence/oss-components/components/o-s-s/radio-button", ["exports", "@
   BasicUsage.args = defaultArgs;
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/debug", "@ember/object", "@ember/service", "@ember/utils", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _debug, _object, _service, _utils, _templateFactory) {
+define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/component", "@glimmer/tracking", "@ember/debug", "@ember/object", "@ember/service", "@ember/utils", "@ember/runloop", "@upfluence/oss-components/utils/attach-dropdown", "@upfluence/oss-components/components/o-s-s/private/base-dropdown", "@ember/template-factory"], function (_exports, _component, _tracking, _debug, _object, _service, _utils, _runloop, _attachDropdown, _baseDropdown, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -84517,7 +84690,7 @@ define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/
   });
   _exports.default = void 0;
   var _class, _descriptor, _descriptor2;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/debug",0,"@ember/object",0,"@ember/service",0,"@ember/utils",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/tracking",0,"@ember/debug",0,"@ember/object",0,"@ember/service",0,"@ember/utils",0,"@ember/runloop",0,"@upfluence/oss-components/utils/attach-dropdown",0,"@upfluence/oss-components/components/o-s-s/private/base-dropdown",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
   function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -84525,8 +84698,10 @@ define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/
   function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
   function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
   function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
-  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
   function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+  function _get() { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get.bind(); } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(arguments.length < 3 ? target : receiver); } return desc.value; }; } return _get.apply(this, arguments); }
+  function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
   function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
   function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -84536,11 +84711,15 @@ define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class={{this.classNames}}
-       {{did-insert (fn this.ensureBlockPresence (has-block "option"))}}
-       ...attributes>
-    <div class="upf-input {{if this.displaySelect 'active'}} fx-row fx-1 fx-xalign-center" role="button"
-         {{on "click" this.toggleSelector}}>
+    <div
+    class={{this.classNames}}
+    data-toggle="oss-dropdown"
+    {{did-insert (fn this.ensureBlockPresence (has-block "option"))}}
+    {{did-insert this.registerContainer}}
+    {{will-destroy this.disconnectObserver}}
+    ...attributes
+  >
+    <div class="upf-input {{if this.isOpen 'active'}} fx-row fx-1 fx-xalign-center" {{on "click" this.toggleDropdown}}>
       <div class="fx-row fx-1 fx-malign-space-between fx-xalign-center">
         {{#if @value}}
           {{#if (has-block "selected")}}
@@ -84551,60 +84730,68 @@ define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/
         {{else}}
           <span class="upf-input--placeholder">{{this.placeholder}}</span>
         {{/if}}
-        <OSS::Icon @icon="fa-chevron-{{if this.displaySelect 'up' 'down'}}" class="margin-left-px-6" />
+        <OSS::Icon @icon="fa-chevron-{{if this.isOpen 'up' 'down'}}" class="margin-left-px-6" />
       </div>
     </div>
   
-    {{#if this.displaySelect}}
-      <OSS::InfiniteSelect
-        @items={{@items}}
-        @onSearch={{this.onSearch}}
-        @onSelect={{this.onSelect}}
-        @searchEnabled={{this.searchEnabled}}
-        @searchPlaceholder={{this.searchPlaceholder}}
-        {{on-click-outside this.onClickOutside useCapture=true}}>
-        <:option as |item|>
-          <div class="item-wrapper fx-row fx-xalign-center fx-malign-space-between {{if (eq @value item) 'selected'}}">
-            {{#if (has-block "option")}}
-              {{yield item to="option"}}
-            {{/if}}
+    {{#if this.isOpen}}
+      {{#in-element this.portalTarget insertBefore=null}}
+        <OSS::InfiniteSelect
+          @items={{@items}}
+          @onSearch={{this.onSearch}}
+          @onSelect={{this.onSelect}}
+          @searchEnabled={{this.searchEnabled}}
+          @searchPlaceholder={{this.searchPlaceholder}}
+          id={{this.portalId}}
+          class={{concat "margin-top-px-0 oss-select-container__dropdown " this.dropdownAddressableClass}}
+          {{on-click-outside this.onClickOutside}}
+          {{on "click" this.noop}}
+        >
+          <:option as |item|>
+            <div class="item-wrapper fx-row fx-xalign-center fx-malign-space-between {{if (eq @value item) 'selected'}}">
+              {{#if (has-block "option")}}
+                {{yield item to="option"}}
+              {{/if}}
   
-            {{#if (eq @value item)}}
-              <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
-            {{/if}}
-          </div>
-        </:option>
-      </OSS::InfiniteSelect>
+              {{#if (eq @value item)}}
+                <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
+              {{/if}}
+            </div>
+          </:option>
+        </OSS::InfiniteSelect>
+      {{/in-element}}
     {{/if}}
   
     {{#if @errorMessage}}
       <div class="font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center">
-        <OSS::Icon @icon="fa-exclamation-triangle" /> {{@errorMessage}}
+        <OSS::Icon @icon="fa-exclamation-triangle" />
+        {{@errorMessage}}
       </div>
     {{/if}}
   
     {{#if @successMessage}}
       <div class="font-color-success-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center">
-        <OSS::Icon @icon="fa-check-circle" /> {{@successMessage}}
+        <OSS::Icon @icon="fa-check-circle" />
+        {{@successMessage}}
       </div>
     {{/if}}
   </div>
-  
   */
   {
-    "id": "7ynIhKoX",
-    "block": "[[[11,0],[16,0,[30,0,[\"classNames\"]]],[17,1],[4,[38,0],[[28,[37,1],[[30,0,[\"ensureBlockPresence\"]],[48,[30,7]]],null]],null],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"upf-input \",[52,[30,0,[\"displaySelect\"]],\"active\"],\" fx-row fx-1 fx-xalign-center\"]]],[24,\"role\",\"button\"],[4,[38,4],[\"click\",[30,0,[\"toggleSelector\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-malign-space-between fx-xalign-center\"],[12],[1,\"\\n\"],[41,[30,2],[[[41,[48,[30,8]],[[[1,\"          \"],[18,8,[[30,2]]],[1,\"\\n\"]],[]],[[[1,\"          \"],[10,1],[12],[1,[28,[35,6],[[30,2],[30,0,[\"targetValue\"]]],null]],[13],[1,\"\\n\"]],[]]]],[]],[[[1,\"        \"],[10,1],[14,0,\"upf-input--placeholder\"],[12],[1,[30,0,[\"placeholder\"]]],[13],[1,\"\\n\"]],[]]],[1,\"      \"],[8,[39,7],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[[29,[\"fa-chevron-\",[52,[30,0,[\"displaySelect\"]],\"up\",\"down\"]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displaySelect\"]],[[[1,\"    \"],[8,[39,8],[[4,[38,9],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[true]]]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchEnabled\",\"@searchPlaceholder\"],[[30,3],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"searchPlaceholder\"]]]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"item-wrapper fx-row fx-xalign-center fx-malign-space-between \",[52,[28,[37,10],[[30,2],[30,4]],null],\"selected\"]]]],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"            \"],[18,7,[[30,4]]],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,10],[[30,2],[30,4]],null],[[[1,\"            \"],[8,[39,7],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,5],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,7],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\" \"],[1,[30,5]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,6],[[[1,\"    \"],[10,0],[14,0,\"font-color-success-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,7],null,[[\"@icon\"],[\"fa-check-circle\"]],null],[1,\" \"],[1,[30,6]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@value\",\"@items\",\"item\",\"@errorMessage\",\"@successMessage\",\"&option\",\"&selected\"],false,[\"did-insert\",\"fn\",\"has-block\",\"if\",\"on\",\"yield\",\"get\",\"o-s-s/icon\",\"o-s-s/infinite-select\",\"on-click-outside\",\"eq\"]]",
+    "id": "4GE/cwl/",
+    "block": "[[[11,0],[16,0,[30,0,[\"classNames\"]]],[24,\"data-toggle\",\"oss-dropdown\"],[17,1],[4,[38,0],[[28,[37,1],[[30,0,[\"ensureBlockPresence\"]],[48,[30,7]]],null]],null],[4,[38,0],[[30,0,[\"registerContainer\"]]],null],[4,[38,3],[[30,0,[\"disconnectObserver\"]]],null],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"upf-input \",[52,[30,0,[\"isOpen\"]],\"active\"],\" fx-row fx-1 fx-xalign-center\"]]],[4,[38,5],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-malign-space-between fx-xalign-center\"],[12],[1,\"\\n\"],[41,[30,2],[[[41,[48,[30,8]],[[[1,\"          \"],[18,8,[[30,2]]],[1,\"\\n\"]],[]],[[[1,\"          \"],[10,1],[12],[1,[28,[35,7],[[30,2],[30,0,[\"targetValue\"]]],null]],[13],[1,\"\\n\"]],[]]]],[]],[[[1,\"        \"],[10,1],[14,0,\"upf-input--placeholder\"],[12],[1,[30,0,[\"placeholder\"]]],[13],[1,\"\\n\"]],[]]],[1,\"      \"],[8,[39,8],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[[29,[\"fa-chevron-\",[52,[30,0,[\"isOpen\"]],\"up\",\"down\"]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"isOpen\"]],[[[40,[[[1,\"      \"],[8,[39,11],[[16,1,[30,0,[\"portalId\"]]],[16,0,[28,[37,12],[\"margin-top-px-0 oss-select-container__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[4,[38,13],[[30,0,[\"onClickOutside\"]]],null],[4,[38,5],[\"click\",[30,0,[\"noop\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchEnabled\",\"@searchPlaceholder\"],[[30,3],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"searchPlaceholder\"]]]],[[\"option\"],[[[[1,\"\\n          \"],[10,0],[15,0,[29,[\"item-wrapper fx-row fx-xalign-center fx-malign-space-between \",[52,[28,[37,14],[[30,2],[30,4]],null],\"selected\"]]]],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"              \"],[18,7,[[30,4]]],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,14],[[30,2],[30,4]],null],[[[1,\"              \"],[8,[39,8],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"          \"],[13],[1,\"\\n        \"]],[4]]]]],[1,\"\\n\"]],[]],\"%cursor:0%\",[28,[37,10],[[30,0,[\"portalTarget\"]]],null],null]],[]],null],[1,\"\\n\"],[41,[30,5],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,8],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\"\\n      \"],[1,[30,5]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,6],[[[1,\"    \"],[10,0],[14,0,\"font-color-success-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,8],null,[[\"@icon\"],[\"fa-check-circle\"]],null],[1,\"\\n      \"],[1,[30,6]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@value\",\"@items\",\"item\",\"@errorMessage\",\"@successMessage\",\"&option\",\"&selected\"],false,[\"did-insert\",\"fn\",\"has-block\",\"will-destroy\",\"if\",\"on\",\"yield\",\"get\",\"o-s-s/icon\",\"in-element\",\"-in-el-null\",\"o-s-s/infinite-select\",\"concat\",\"on-click-outside\",\"eq\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/select.hbs",
     "isStrictMode": false
   });
-  var OSSSelect = _exports.default = (_class = /*#__PURE__*/function (_Component) {
-    _inherits(OSSSelect, _Component);
+  var OSSSelect = _exports.default = (_class = /*#__PURE__*/function (_BaseDropdown) {
+    _inherits(OSSSelect, _BaseDropdown);
     function OSSSelect(owner, args) {
       var _this;
       _classCallCheck(this, OSSSelect);
       _this = _callSuper(this, OSSSelect, [owner, args]);
       _initializerDefineProperty(_assertThisInitialized(_this), "intl", _descriptor, _assertThisInitialized(_this));
       _initializerDefineProperty(_assertThisInitialized(_this), "displaySelect", _descriptor2, _assertThisInitialized(_this));
+      _defineProperty(_assertThisInitialized(_this), "cleanupDrodpownAutoplacement", void 0);
       (true && !(typeof _this.args.onChange === 'function') && (0, _debug.assert)('[component][OSS::Select] The parameter @onChange of type function is mandatory', typeof _this.args.onChange === 'function'));
       return _this;
     }
@@ -84644,6 +84831,11 @@ define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/
         return classes.join(' ');
       }
     }, {
+      key: "dropdownAddressableClass",
+      get: function get() {
+        return this.args.addressableAs ? "".concat(this.args.addressableAs, "__dropdown") : '';
+      }
+    }, {
       key: "onSelect",
       value: function onSelect(value) {
         this.args.onChange(value);
@@ -84656,15 +84848,23 @@ define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/
         (_this$args$onSearch = (_this$args = this.args).onSearch) === null || _this$args$onSearch === void 0 || _this$args$onSearch.call(_this$args, keyword);
       }
     }, {
-      key: "toggleSelector",
-      value: function toggleSelector(event) {
-        event.stopPropagation();
+      key: "toggleDropdown",
+      value: function toggleDropdown(event) {
+        var _this2 = this;
         if (this.args.disabled) return;
-        if (this.displaySelect) {
-          this.hideSelector();
-        } else {
-          this.displaySelect = true;
+        _get(_getPrototypeOf(OSSSelect.prototype), "toggleDropdown", this).call(this, event);
+        if (!this.isOpen) {
+          var _this$args$onSearch2, _this$args2;
+          (_this$args$onSearch2 = (_this$args2 = this.args).onSearch) === null || _this$args$onSearch2 === void 0 || _this$args$onSearch2.call(_this$args2, '');
+          return;
         }
+        (0, _runloop.scheduleOnce)('afterRender', this, function () {
+          var referenceTarget = _this2.container.querySelector('.upf-input');
+          var floatingTarget = document.querySelector("#".concat(_this2.portalId));
+          if (referenceTarget && floatingTarget) {
+            _this2.cleanupDrodpownAutoplacement = (0, _attachDropdown.default)(referenceTarget, floatingTarget);
+          }
+        });
       }
     }, {
       key: "onClickOutside",
@@ -84675,9 +84875,16 @@ define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/
     }, {
       key: "hideSelector",
       value: function hideSelector() {
-        var _this$args$onSearch2, _this$args2;
-        this.displaySelect = false;
-        (_this$args$onSearch2 = (_this$args2 = this.args).onSearch) === null || _this$args$onSearch2 === void 0 || _this$args$onSearch2.call(_this$args2, '');
+        var _this$args$onSearch3, _this$args3, _this$cleanupDrodpown, _document$querySelect;
+        this.closeDropdown();
+        (_this$args$onSearch3 = (_this$args3 = this.args).onSearch) === null || _this$args$onSearch3 === void 0 || _this$args$onSearch3.call(_this$args3, '');
+        (_this$cleanupDrodpown = this.cleanupDrodpownAutoplacement) === null || _this$cleanupDrodpown === void 0 || _this$cleanupDrodpown.call(this);
+        (_document$querySelect = document.querySelector("#".concat(this.portalId))) === null || _document$querySelect === void 0 || _document$querySelect.remove();
+      }
+    }, {
+      key: "handleSelectorClose",
+      value: function handleSelectorClose() {
+        this.hideSelector();
       }
     }, {
       key: "ensureBlockPresence",
@@ -84686,7 +84893,7 @@ define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/
       }
     }]);
     return OSSSelect;
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+  }(_baseDropdown.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -84698,7 +84905,7 @@ define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/
     initializer: function initializer() {
       return false;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleSelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleSelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "hideSelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "hideSelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "ensureBlockPresence", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "ensureBlockPresence"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "hideSelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "hideSelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleSelectorClose", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleSelectorClose"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "ensureBlockPresence", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "ensureBlockPresence"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSelect);
 });
 ;define("@upfluence/oss-components/components/o-s-s/select.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -84853,6 +85060,14 @@ define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/
             summary: 'onSearch(keyword: string): void'
           }
         }
+      },
+      addressableAs: {
+        description: 'A string identifier to use as base to target the portaled-dropdown component in CSS. When provided, you will be able to use `${addressableAs}__dropdown` in CSS.',
+        table: {
+          type: {
+            summary: 'string'
+          }
+        }
       }
     },
     parameters: {
@@ -84872,6 +85087,7 @@ define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/
     disabled: false,
     errorMessage: undefined,
     successMessage: undefined,
+    addressableAs: undefined,
     onSearch: (0, _addonActions.action)('onSearch'),
     onChange: (0, _addonActions.action)('onChange')
   };
@@ -84910,7 +85126,7 @@ define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/
           <OSS::Select
             @items={{this.items}} @value={{this.value}} @placeholder={{this.placeholder}}
             @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} @successMessage={{this.successMessage}}
-            @onSearch={{this.onSearch}} @onChange={{this.onChange}}>
+            @onSearch={{this.onSearch}} @onChange={{this.onChange}} @addressableAs={{this.addressableAs}}>
             <:selected as |option|>
               With named block — {{option.name}}
             </:selected>
@@ -84922,8 +85138,8 @@ define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/
         
       */
       {
-        "id": "zkpKazAX",
-        "block": "[[[1,\"\\n  \"],[10,0],[14,5,\"width: 250px\"],[12],[1,\"\\n    \"],[8,[39,0],null,[[\"@items\",\"@value\",\"@placeholder\",\"@disabled\",\"@errorMessage\",\"@successMessage\",\"@onSearch\",\"@onChange\"],[[30,0,[\"items\"]],[30,0,[\"value\"]],[30,0,[\"placeholder\"]],[30,0,[\"disabled\"]],[30,0,[\"errorMessage\"]],[30,0,[\"successMessage\"]],[30,0,[\"onSearch\"]],[30,0,[\"onChange\"]]]],[[\"selected\",\"option\"],[[[[1,\"\\n        With named block — \"],[1,[30,1,[\"name\"]]],[1,\"\\n      \"]],[1]],[[[1,\"\\n        \"],[1,[30,2,[\"name\"]]],[1,\"\\n      \"]],[2]]]]],[1,\"\\n  \"],[13],[1,\"\\n  \"]],[\"option\",\"item\"],false,[\"o-s-s/select\"]]",
+        "id": "LieuspXr",
+        "block": "[[[1,\"\\n  \"],[10,0],[14,5,\"width: 250px\"],[12],[1,\"\\n    \"],[8,[39,0],null,[[\"@items\",\"@value\",\"@placeholder\",\"@disabled\",\"@errorMessage\",\"@successMessage\",\"@onSearch\",\"@onChange\",\"@addressableAs\"],[[30,0,[\"items\"]],[30,0,[\"value\"]],[30,0,[\"placeholder\"]],[30,0,[\"disabled\"]],[30,0,[\"errorMessage\"]],[30,0,[\"successMessage\"]],[30,0,[\"onSearch\"]],[30,0,[\"onChange\"]],[30,0,[\"addressableAs\"]]]],[[\"selected\",\"option\"],[[[[1,\"\\n        With named block — \"],[1,[30,1,[\"name\"]]],[1,\"\\n      \"]],[1]],[[[1,\"\\n        \"],[1,[30,2,[\"name\"]]],[1,\"\\n      \"]],[2]]]]],[1,\"\\n  \"],[13],[1,\"\\n  \"]],[\"option\",\"item\"],false,[\"o-s-s/select\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/select.stories.js",
         "isStrictMode": false
       }),
@@ -90094,30 +90310,43 @@ define("@upfluence/oss-components/services/base-uploader", ["exports", "@ember/s
   });
   _exports.default = attachDropdown;
   0; //eaimeta@70e063a35619d71f0,"@floating-ui/dom"eaimeta@70e063a35619d71f
+  function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+  function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+  function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
   var DEFAULT_ATTACHMENT_OPTIONS = {
     offset: 12,
     width: undefined,
+    maxHeight: undefined,
     placement: 'bottom'
   };
   function attachDropdown(referenceTarget, floatingTarget) {
     var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : DEFAULT_ATTACHMENT_OPTIONS;
+    var mergedOptions = _objectSpread(_objectSpread({}, DEFAULT_ATTACHMENT_OPTIONS), options || {});
     var updatePosition = function updatePosition() {
-      var _options$placement, _options$offset;
+      var _mergedOptions$placem, _mergedOptions$offset;
       (0, _dom.computePosition)(referenceTarget, floatingTarget, {
-        placement: (_options$placement = options.placement) !== null && _options$placement !== void 0 ? _options$placement : 'bottom',
-        middleware: [(0, _dom.offset)((_options$offset = options.offset) !== null && _options$offset !== void 0 ? _options$offset : 0), (0, _dom.flip)({
+        placement: (_mergedOptions$placem = mergedOptions.placement) !== null && _mergedOptions$placem !== void 0 ? _mergedOptions$placem : 'bottom',
+        middleware: [(0, _dom.offset)((_mergedOptions$offset = mergedOptions.offset) !== null && _mergedOptions$offset !== void 0 ? _mergedOptions$offset : 0), (0, _dom.flip)({
           fallbackPlacements: ['top', 'bottom']
         }), (0, _dom.size)({
           apply: function apply(_ref) {
-            var _options$width;
+            var _mergedOptions$width;
             var rects = _ref.rects,
               elements = _ref.elements;
-            var desiredWidth = (_options$width = options.width) !== null && _options$width !== void 0 ? _options$width : rects.reference.width;
-            Object.assign(elements.floating.style, {
+            var desiredWidth = (_mergedOptions$width = mergedOptions.width) !== null && _mergedOptions$width !== void 0 ? _mergedOptions$width : rects.reference.width;
+            var floatingStyle = {
               maxWidth: "".concat(desiredWidth, "px"),
               minWidth: "".concat(desiredWidth, "px"),
               width: "".concat(desiredWidth, "px")
-            });
+            };
+            if (mergedOptions.maxHeight) {
+              floatingStyle.maxHeight = "".concat(floatingStyle.maxHeight, "px");
+              elements.floating.style.setProperty('--floating-max-height', "".concat(mergedOptions.maxHeight, "px"));
+            }
+            Object.assign(elements.floating.style, floatingStyle);
           }
         }), (0, _dom.hide)()]
       }).then(function (_ref2) {

@@ -15986,11 +15986,11 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
                 assert.dom('.upf-power-select__array-container').exists({
                   count: 1
                 });
-                assert.dom('.upf-infinite-select').doesNotExist();
+                assert.dom('.upf-power-select').hasNoAttribute('open');
                 _context.next = 7;
                 return (0, _testHelpers.click)('.upf-power-select__array-container');
               case 7:
-                assert.dom('.upf-infinite-select').exists();
+                assert.dom('.upf-power-select').hasAttribute('open');
               case 8:
               case "end":
                 return _context.stop();
@@ -16037,11 +16037,11 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
                 assert.dom('.upf-power-select__array-container').exists({
                   count: 1
                 });
-                assert.dom('.upf-infinite-select').doesNotExist();
+                assert.dom('.upf-power-select').hasNoAttribute('open');
                 _context2.next = 7;
                 return (0, _testHelpers.click)('.upf-power-select__array-container');
               case 7:
-                assert.dom('.upf-infinite-select').exists();
+                assert.dom('.upf-power-select').hasAttribute('open');
                 assert.dom('.foobar').exists();
                 assert.dom('.foobar').hasText('custom empty state');
               case 10:
@@ -16424,16 +16424,64 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
         };
       }());
     });
-    (0, _qunit.module)('Error management', function () {
-      (0, _qunit.test)('without selected-item named block', /*#__PURE__*/function () {
+    (0, _qunit.module)('with @addressableAs', function (hooks) {
+      hooks.beforeEach(function () {
+        this.items = ['value1', 'value2', 'value3'];
+      });
+      (0, _qunit.test)('the dropdown has the right class assigned to it', /*#__PURE__*/function () {
         var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
               case 0:
+                _context11.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  
+                        <div style="height:150px">
+                          <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}} @onSearch={{this.onSearch}} @addressableAs="foobar-select">
+                            <:selected-item as |selectedItem|>
+                              {{selectedItem}}
+                            </:selected-item>
+                            <:option-item as |item|>
+                              {{item}}
+                            </:option-item>
+                          </OSS::PowerSelect>
+                        </div>
+                      
+                */
+                {
+                  "id": "ukgZeCsF",
+                  "block": "[[[1,\"\\n        \"],[10,0],[14,5,\"height:150px\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@selectedItems\",\"@items\",\"@onSearch\",\"@addressableAs\"],[[30,0,[\"selectedItems\"]],[30,0,[\"items\"]],[30,0,[\"onSearch\"]],\"foobar-select\"]],[[\"selected-item\",\"option-item\"],[[[[1,\"\\n              \"],[1,[30,1]],[1,\"\\n            \"]],[1]],[[[1,\"\\n              \"],[1,[30,2]],[1,\"\\n            \"]],[2]]]]],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[\"selectedItem\",\"item\"],false,[\"o-s-s/power-select\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/power-select-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                _context11.next = 4;
+                return (0, _testHelpers.click)('.upf-power-select__array-container');
+              case 4:
+                assert.dom('.upf-infinite-select').exists();
+                assert.dom('.upf-infinite-select').hasClass('foobar-select__dropdown');
+              case 6:
+              case "end":
+                return _context11.stop();
+            }
+          }, _callee11);
+        }));
+        return function (_x11) {
+          return _ref11.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('Error management', function () {
+      (0, _qunit.test)('without selected-item named block', /*#__PURE__*/function () {
+        var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+          return _regeneratorRuntime().wrap(function _callee12$(_context12) {
+            while (1) switch (_context12.prev = _context12.next) {
+              case 0:
                 (0, _testHelpers.setupOnerror)(function (err) {
                   assert.equal(err.message, 'Assertion Failed: [component][OSS::PowerSelect] You must pass selected-item named block');
                 });
-                _context11.next = 3;
+                _context12.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   
@@ -16448,23 +16496,23 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
                 }));
               case 3:
               case "end":
-                return _context11.stop();
+                return _context12.stop();
             }
-          }, _callee11);
+          }, _callee12);
         }));
-        return function (_x11) {
-          return _ref11.apply(this, arguments);
+        return function (_x12) {
+          return _ref12.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('without option-item named block', /*#__PURE__*/function () {
-        var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
-          return _regeneratorRuntime().wrap(function _callee12$(_context12) {
-            while (1) switch (_context12.prev = _context12.next) {
+        var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+          return _regeneratorRuntime().wrap(function _callee13$(_context13) {
+            while (1) switch (_context13.prev = _context13.next) {
               case 0:
                 (0, _testHelpers.setupOnerror)(function (err) {
                   assert.equal(err.message, 'Assertion Failed: [component][OSS::PowerSelect] You must pass option-item named block');
                 });
-                _context12.next = 3;
+                _context13.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   
@@ -16483,12 +16531,12 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
                 }));
               case 3:
               case "end":
-                return _context12.stop();
+                return _context13.stop();
             }
-          }, _callee12);
+          }, _callee13);
         }));
-        return function (_x12) {
-          return _ref12.apply(this, arguments);
+        return function (_x13) {
+          return _ref13.apply(this, arguments);
         };
       }());
     });
@@ -17703,16 +17751,56 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
         };
       }());
     });
-    (0, _qunit.module)('Error management', function () {
-      (0, _qunit.test)('it throws an error if no @onChange arg is passed', /*#__PURE__*/function () {
+    (0, _qunit.module)('with @addressableAs', function () {
+      (0, _qunit.test)('the dropdown has the right class assigned to it', /*#__PURE__*/function () {
         var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
           return _regeneratorRuntime().wrap(function _callee16$(_context16) {
             while (1) switch (_context16.prev = _context16.next) {
               case 0:
+                _context16.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  
+                          <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @addressableAs="foobar-select">
+                            <:option as |item|>
+                              {{item.name}}
+                            </:option>
+                          </OSS::Select>
+                        
+                */
+                {
+                  "id": "op+B8jIa",
+                  "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@onChange\",\"@items\",\"@value\",\"@addressableAs\"],[[30,0,[\"onChange\"]],[30,0,[\"items\"]],[30,0,[\"value\"]],\"foobar-select\"]],[[\"option\"],[[[[1,\"\\n              \"],[1,[30,1,[\"name\"]]],[1,\"\\n            \"]],[1]]]]],[1,\"\\n        \"]],[\"item\"],false,[\"o-s-s/select\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/select-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                _context16.next = 4;
+                return (0, _testHelpers.click)('.upf-input div');
+              case 4:
+                assert.dom('.upf-infinite-select').exists();
+                assert.dom('.upf-infinite-select').hasClass('foobar-select__dropdown');
+              case 6:
+              case "end":
+                return _context16.stop();
+            }
+          }, _callee16);
+        }));
+        return function (_x16) {
+          return _ref16.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('Error management', function () {
+      (0, _qunit.test)('it throws an error if no @onChange arg is passed', /*#__PURE__*/function () {
+        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
+          return _regeneratorRuntime().wrap(function _callee17$(_context17) {
+            while (1) switch (_context17.prev = _context17.next) {
+              case 0:
                 (0, _testHelpers.setupOnerror)(function (err) {
                   assert.equal(err.message, 'Assertion Failed: [component][OSS::Select] The parameter @onChange of type function is mandatory');
                 });
-                _context16.next = 3;
+                _context17.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Select />
@@ -17725,23 +17813,23 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
                 }));
               case 3:
               case "end":
-                return _context16.stop();
+                return _context17.stop();
             }
-          }, _callee16);
+          }, _callee17);
         }));
-        return function (_x16) {
-          return _ref16.apply(this, arguments);
+        return function (_x17) {
+          return _ref17.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('it throws an error if the component is invoked with no option named blocked', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
-          return _regeneratorRuntime().wrap(function _callee17$(_context17) {
-            while (1) switch (_context17.prev = _context17.next) {
+        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
+          return _regeneratorRuntime().wrap(function _callee18$(_context18) {
+            while (1) switch (_context18.prev = _context18.next) {
               case 0:
                 (0, _testHelpers.setupOnerror)(function (err) {
                   assert.equal(err.message, 'Assertion Failed: [component][OSS::Select] You must pass option named block');
                 });
-                _context17.next = 3;
+                _context18.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Select @onChange={{this.onChange}} />
@@ -17754,12 +17842,12 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
                 }));
               case 3:
               case "end":
-                return _context17.stop();
+                return _context18.stop();
             }
-          }, _callee17);
+          }, _callee18);
         }));
-        return function (_x17) {
-          return _ref17.apply(this, arguments);
+        return function (_x18) {
+          return _ref18.apply(this, arguments);
         };
       }());
     });

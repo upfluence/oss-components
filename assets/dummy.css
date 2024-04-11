@@ -10224,7 +10224,7 @@ label {
   padding: 6px;
   position: absolute;
   z-index: 1100;
-  height: inherit;
+  height: auto;
 }
 .upf-infinite-select--absolute ul {
   padding: 0;
@@ -11791,7 +11791,6 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
 }
 .upf-power-select {
   height: 100%;
-  position: relative;
 }
 .upf-power-select .upf-power-select__array-container {
   position: relative;
@@ -11804,13 +11803,6 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
   top: 0;
   right: 0;
   padding: var(--spacing-px-12) var(--spacing-px-12);
-}
-.upf-power-select .upf-infinite-select {
-  height: auto;
-  max-width: 100%;
-  min-width: 100%;
-  padding: var(--spacing-px-12);
-  top: var(--spacing-px-36);
 }
 .upf-power-select .upf-power-infinite-select-container {
   position: relative;
@@ -11825,6 +11817,15 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
 }
 .upf-power-select .has-overflow {
   padding-bottom: 18px;
+}
+.upf-power-select__dropdown {
+  overflow: hidden;
+}
+.upf-power-select__dropdown .upf-infinite-select__container {
+  max-height: var(--floating-max-height);
+}
+.upf-power-select__dropdown:has(.upf-input) .upf-infinite-select__items-container {
+  max-height: calc(var(--floating-max-height) - 62px);
 }
 @keyframes slide-in {
   from {
@@ -14796,20 +14797,19 @@ a.upf-btn--sm {
   border: 1px solid var(--color-gray-300);
   border-color: var(--color-success-500);
 }
-.oss-select-container .upf-infinite-select {
-  margin-top: var(--spacing-px-6);
+.oss-select-container__dropdown {
   max-width: 100%;
   min-width: 100%;
   padding: var(--spacing-px-12);
 }
-.oss-select-container .upf-infinite-select .upf-infinite-select__item {
+.oss-select-container__dropdown .upf-infinite-select__item {
   padding: 0;
 }
-.oss-select-container .upf-infinite-select .upf-infinite-select__item .item-wrapper {
+.oss-select-container__dropdown .upf-infinite-select__item .item-wrapper {
   padding: var(--spacing-px-6) var(--spacing-px-6);
   border-radius: var(--border-radius-sm);
 }
-.oss-select-container .upf-infinite-select .upf-infinite-select__item .item-wrapper.selected {
+.oss-select-container__dropdown .upf-infinite-select__item .item-wrapper.selected {
   background-color: var(--color-gray-100);
 }
 .tab-container {
