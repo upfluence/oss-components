@@ -103,6 +103,15 @@ export default {
           summary: 'onSearch(keyword: string): void'
         }
       }
+    },
+    addressableAs: {
+      description:
+        'A string identifier to use as base to target the portaled-dropdown component in CSS. When provided, you will be able to use `${addressableAs}__dropdown` in CSS.',
+      table: {
+        type: {
+          summary: 'string'
+        }
+      }
     }
   },
   parameters: {
@@ -123,6 +132,7 @@ const defaultArgs = {
   disabled: false,
   errorMessage: undefined,
   successMessage: undefined,
+  addressableAs: undefined,
   onSearch: action('onSearch'),
   onChange: action('onChange')
 };
@@ -149,7 +159,7 @@ const WithSelectedNamedBlockTemplate = (args) => ({
     <OSS::Select
       @items={{this.items}} @value={{this.value}} @placeholder={{this.placeholder}}
       @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} @successMessage={{this.successMessage}}
-      @onSearch={{this.onSearch}} @onChange={{this.onChange}}>
+      @onSearch={{this.onSearch}} @onChange={{this.onChange}} @addressableAs={{this.addressableAs}}>
       <:selected as |option|>
         With named block — {{option.name}}
       </:selected>

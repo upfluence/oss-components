@@ -34,9 +34,9 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
 
       assert.dom('.upf-power-select').exists({ count: 1 });
       assert.dom('.upf-power-select__array-container').exists({ count: 1 });
-      assert.dom('.upf-infinite-select').doesNotExist();
+      assert.dom('.upf-power-select').hasNoAttribute('open');
       await click('.upf-power-select__array-container');
-      assert.dom('.upf-infinite-select').exists();
+      assert.dom('.upf-power-select').hasAttribute('open');
     });
 
     test('custom empty state is properly rendered', async function (assert) {
@@ -57,9 +57,9 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
 
       assert.dom('.upf-power-select').exists({ count: 1 });
       assert.dom('.upf-power-select__array-container').exists({ count: 1 });
-      assert.dom('.upf-infinite-select').doesNotExist();
+      assert.dom('.upf-power-select').hasNoAttribute('open');
       await click('.upf-power-select__array-container');
-      assert.dom('.upf-infinite-select').exists();
+      assert.dom('.upf-power-select').hasAttribute('open');
       assert.dom('.foobar').exists();
       assert.dom('.foobar').hasText('custom empty state');
     });
@@ -241,6 +241,31 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
       await scrollTo('.upf-infinite-select__items-container', 0, 1500);
 
       assert.ok(this.onBottomReached.calledTwice);
+    });
+  });
+
+  module('with @addressableAs', (hooks) => {
+    hooks.beforeEach(function () {
+      this.items = ['value1', 'value2', 'value3'];
+    });
+
+    test('the dropdown has the right class assigned to it', async function (assert) {
+      await render(hbs`
+        <div style="height:150px">
+          <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}} @onSearch={{this.onSearch}} @addressableAs="foobar-select">
+            <:selected-item as |selectedItem|>
+              {{selectedItem}}
+            </:selected-item>
+            <:option-item as |item|>
+              {{item}}
+            </:option-item>
+          </OSS::PowerSelect>
+        </div>
+      `);
+
+      await click('.upf-power-select__array-container');
+      assert.dom('.upf-infinite-select').exists();
+      assert.dom('.upf-infinite-select').hasClass('foobar-select__dropdown');
     });
   });
 

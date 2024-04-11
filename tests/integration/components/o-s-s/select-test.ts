@@ -281,6 +281,24 @@ module('Integration | Component | o-s-s/select', function (hooks) {
     });
   });
 
+  module('with @addressableAs', () => {
+    test('the dropdown has the right class assigned to it', async function (assert) {
+      await render(
+        hbs`
+          <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}} @addressableAs="foobar-select">
+            <:option as |item|>
+              {{item.name}}
+            </:option>
+          </OSS::Select>
+        `
+      );
+
+      await click('.upf-input div');
+      assert.dom('.upf-infinite-select').exists();
+      assert.dom('.upf-infinite-select').hasClass('foobar-select__dropdown');
+    });
+  });
+
   module('Error management', function () {
     test('it throws an error if no @onChange arg is passed', async function (assert) {
       setupOnerror((err: Error) => {

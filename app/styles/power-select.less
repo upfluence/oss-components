@@ -1,6 +1,5 @@
 .upf-power-select {
   height: 100%;
-  position: relative;
 
   .upf-power-select__array-container {
     position: relative;
@@ -17,14 +16,6 @@
     }
   }
 
-  .upf-infinite-select {
-    height: auto;
-    max-width: 100%;
-    min-width: 100%;
-    padding: var(--spacing-px-12);
-    top: var(--spacing-px-36);
-  }
-
   .upf-power-infinite-select-container {
     position: relative;
     height: 100%;
@@ -38,5 +29,19 @@
 
   .has-overflow {
     padding-bottom: @spacing-x-sm;
+  }
+}
+
+.upf-power-select__dropdown {
+  overflow: hidden;
+
+  .upf-infinite-select__container {
+    max-height: var(--floating-max-height);
+  }
+
+  &:has(.upf-input) {
+    .upf-infinite-select__items-container {
+      max-height: calc(var(--floating-max-height) - 62px);
+    }
   }
 }
