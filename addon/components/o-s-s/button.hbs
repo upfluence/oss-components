@@ -7,10 +7,12 @@
   {{else}}
     {{#if @icon}}
       <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
+    {{else if @iconUrl}}
+      <img src={{@iconUrl}} alt='icon' />
     {{/if}}
 
     {{#if @label}}
-      <span class={{if @icon "margin-left-xxx-sm"}}>{{@label}}</span>
+      <span class={{if (or @icon @iconUrl) "margin-left-px-6"}}>{{@label}}</span>
     {{/if}}
   {{/if}}
 </button>
