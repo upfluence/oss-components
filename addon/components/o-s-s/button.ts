@@ -74,6 +74,7 @@ interface ButtonArgs {
   size?: string;
   loading?: boolean;
   icon?: string;
+  iconUrl?: string;
   label?: string;
   theme?: string;
   square?: boolean;
@@ -93,7 +94,10 @@ export default class OSSButton extends Component<ButtonArgs> {
   constructor(owner: unknown, args: ButtonArgs) {
     super(owner, args);
 
-    assert('[component][OSS::Button] You must pass either a @label or an @icon argument.', args.label || args.icon);
+    assert(
+      '[component][OSS::Button] You must pass either a @label, an @icon or an @iconUrl argument.',
+      args.label || args.icon || args.iconUrl
+    );
     assert(
       "[component][OSS::Button] You must pass either a hash with 'callback' value to @countDown argument.",
       args.countDown ? args.countDown.callback : true

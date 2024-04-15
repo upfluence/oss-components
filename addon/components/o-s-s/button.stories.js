@@ -77,6 +77,16 @@ export default {
         type: 'text'
       }
     },
+    iconUrl: {
+      description: 'Url of an icon that will be shown within the button',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: {
+        type: 'text'
+      }
+    },
     square: {
       description: 'Displays the button as a square. Useful for icon buttons.',
       table: {
@@ -130,14 +140,16 @@ const defaultArgs = {
   icon: 'far fa-envelope-open',
   theme: 'light',
   square: false,
-  countDown: undefined
+  countDown: undefined,
+  iconUrl: undefined
 };
 
 const Template = (args) => ({
   template: hbs`
     <OSS::Button
       @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
-      @theme={{this.theme}} @square={{this.square}} @countDown={{this.countDown}} @theme={{this.theme}} />
+      @theme={{this.theme}} @square={{this.square}} @countDown={{this.countDown}} @theme={{this.theme}} 
+      @iconUrl={{this.iconUrl}}/>
   `,
   context: args
 });
@@ -155,5 +167,14 @@ WithCountDown.args = {
       },
       time: 3000
     }
+  }
+};
+
+export const WithIconUrl = Template.bind({});
+WithIconUrl.args = {
+  ...defaultArgs,
+  ...{
+    icon: undefined,
+    iconUrl: '/@upfluence/oss-components/assets/heart.svg'
   }
 };

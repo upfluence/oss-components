@@ -14,12 +14,32 @@ module('Integration | Component | o-s-s/button', function (hooks) {
     assert.dom('.upf-btn i').hasClass('fa-facebook');
   });
 
+  test('it renders the iconUrl when present', async function (assert) {
+    await render(hbs`<OSS::Button @iconUrl="/@upfluence/oss-components/assets/heart.svg" />`);
+    assert.dom('.upf-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/heart.svg');
+  });
+
   test('it renders the icon and label when present', async function (assert) {
     await render(hbs`<OSS::Button @icon="fab fa-facebook" @label="Label" />`);
 
     assert.dom('.upf-btn i').hasClass('fa-facebook');
-    assert.dom('.upf-btn span').hasClass('margin-left-xxx-sm');
+    assert.dom('.upf-btn span').hasClass('margin-left-px-6');
     assert.dom('.upf-btn span').hasText('Label');
+  });
+
+  test('it renders the iconUrl and label when present', async function (assert) {
+    await render(hbs`<OSS::Button @iconUrl="/@upfluence/oss-components/assets/heart.svg" @label="Label" />`);
+
+    assert.dom('.upf-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/heart.svg');
+    assert.dom('.upf-btn span').hasClass('margin-left-px-6');
+    assert.dom('.upf-btn span').hasText('Label');
+  });
+
+  test('when icon and iconUrl are present, it only renders the icon', async function (assert) {
+    await render(hbs`<OSS::Button @icon="fab fa-facebook" @iconUrl="/@upfluence/oss-components/assets/heart.svg" />`);
+
+    assert.dom('.upf-btn i').hasClass('fa-facebook');
+    assert.dom('.upf-btn img').doesNotExist();
   });
 
   test('it renders the default button', async function (assert) {
@@ -176,11 +196,11 @@ module('Integration | Component | o-s-s/button', function (hooks) {
   });
 
   module('Error management', function () {
-    test('it fails if @label and @icon are missing', async function (assert) {
+    test('it fails if @label, @icon and @iconUrl are missing', async function (assert) {
       setupOnerror((err: { message: string }) => {
         assert.equal(
           err.message,
-          'Assertion Failed: [component][OSS::Button] You must pass either a @label or an @icon argument.'
+          'Assertion Failed: [component][OSS::Button] You must pass either a @label, an @icon or an @iconUrl argument.'
         );
       });
 
