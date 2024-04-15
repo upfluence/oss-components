@@ -13323,8 +13323,13 @@ For complete information visit: www.freakflagsprite.com
   transition: background-color 0.25s ease-in-out, border-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
 .upf-btn i,
-.upf-btn span {
+.upf-btn span,
+.upf-btn img {
   transition: background-color 0.25s ease-in-out, border-color 0.25s ease-in-out, color 0.25s ease-in-out;
+}
+.upf-btn img {
+  max-width: 12px;
+  max-height: 12px;
 }
 .upf-btn:focus,
 .upf-btn:active {

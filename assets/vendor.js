@@ -77397,18 +77397,20 @@ define("@upfluence/oss-components/components/o-s-s/button", ["exports", "@ember/
     {{else}}
       {{#if @icon}}
         <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
+      {{else if @iconUrl}}
+        <img src={{@iconUrl}} alt='icon' />
       {{/if}}
   
       {{#if @label}}
-        <span class={{if @icon "margin-left-xxx-sm"}}>{{@label}}</span>
+        <span class={{if (or @icon @iconUrl) "margin-left-px-6"}}>{{@label}}</span>
       {{/if}}
     {{/if}}
   </button>
   
   */
   {
-    "id": "rDLHu+MI",
-    "block": "[[[11,\"button\"],[24,4,\"button\"],[16,0,[30,0,[\"computedClass\"]]],[17,1],[4,[38,0],[[30,0,[\"didInsert\"]]],null],[4,[38,1],[\"click\",[30,0,[\"onclick\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"intervalState\"]],[[[1,\"    \"],[1,[28,[35,3],[\"oss-components.button.cancel_message\"],[[\"time\"],[[30,0,[\"counterTimeLeftSecond\"]]]]]],[1,\"\\n\"]],[]],[[[41,[30,0,[\"loadingState\"]],[[[1,\"    \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-circle-notch fa-spin\"]],null],[1,\"\\n\"]],[]],[[[41,[30,2],[[[1,\"      \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[[28,[37,5],[[30,2]],null],[28,[37,6],[[30,2]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,3],[[[1,\"      \"],[10,1],[15,0,[52,[30,2],\"margin-left-xxx-sm\"]],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[1,\"  \"]],[]]]],[]]],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@label\"],false,[\"did-insert\",\"on\",\"if\",\"t\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
+    "id": "FcWCrHeT",
+    "block": "[[[11,\"button\"],[24,4,\"button\"],[16,0,[30,0,[\"computedClass\"]]],[17,1],[4,[38,0],[[30,0,[\"didInsert\"]]],null],[4,[38,1],[\"click\",[30,0,[\"onclick\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"intervalState\"]],[[[1,\"    \"],[1,[28,[35,3],[\"oss-components.button.cancel_message\"],[[\"time\"],[[30,0,[\"counterTimeLeftSecond\"]]]]]],[1,\"\\n\"]],[]],[[[41,[30,0,[\"loadingState\"]],[[[1,\"    \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-circle-notch fa-spin\"]],null],[1,\"\\n\"]],[]],[[[41,[30,2],[[[1,\"      \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[[28,[37,5],[[30,2]],null],[28,[37,6],[[30,2]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,3],[[[1,\"      \"],[10,\"img\"],[15,\"src\",[30,3]],[14,\"alt\",\"icon\"],[12],[13],[1,\"\\n    \"]],[]],null]],[]]],[1,\"\\n\"],[41,[30,4],[[[1,\"      \"],[10,1],[15,0,[52,[28,[37,7],[[30,2],[30,3]],null],\"margin-left-px-6\"]],[12],[1,[30,4]],[13],[1,\"\\n\"]],[]],null],[1,\"  \"]],[]]]],[]]],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@iconUrl\",\"@label\"],false,[\"did-insert\",\"on\",\"if\",\"t\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"or\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/button.hbs",
     "isStrictMode": false
   });
@@ -77453,7 +77455,7 @@ define("@upfluence/oss-components/components/o-s-s/button", ["exports", "@ember/
       _initializerDefineProperty(_assertThisInitialized(_this), "intervalID", _descriptor2, _assertThisInitialized(_this));
       _initializerDefineProperty(_assertThisInitialized(_this), "intervalState", _descriptor3, _assertThisInitialized(_this));
       _initializerDefineProperty(_assertThisInitialized(_this), "counterTimeLeft", _descriptor4, _assertThisInitialized(_this));
-      (true && !(args.label || args.icon) && (0, _debug.assert)('[component][OSS::Button] You must pass either a @label or an @icon argument.', args.label || args.icon));
+      (true && !(args.label || args.icon || args.iconUrl) && (0, _debug.assert)('[component][OSS::Button] You must pass either a @label, an @icon or an @iconUrl argument.', args.label || args.icon || args.iconUrl));
       (true && !(args.countDown ? args.countDown.callback : true) && (0, _debug.assert)("[component][OSS::Button] You must pass either a hash with 'callback' value to @countDown argument.", args.countDown ? args.countDown.callback : true));
       return _this;
     }
@@ -77599,7 +77601,7 @@ define("@upfluence/oss-components/components/o-s-s/button", ["exports", "@ember/
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = _exports.WithCountDown = _exports.Default = void 0;
+  _exports.default = _exports.WithIconUrl = _exports.WithCountDown = _exports.Default = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
   function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
   function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
@@ -77686,6 +77688,20 @@ define("@upfluence/oss-components/components/o-s-s/button", ["exports", "@ember/
           type: 'text'
         }
       },
+      iconUrl: {
+        description: 'Url of an icon that will be shown within the button',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
       square: {
         description: 'Displays the button as a square. Useful for icon buttons.',
         table: {
@@ -77746,7 +77762,8 @@ define("@upfluence/oss-components/components/o-s-s/button", ["exports", "@ember/
     icon: 'far fa-envelope-open',
     theme: 'light',
     square: false,
-    countDown: undefined
+    countDown: undefined,
+    iconUrl: undefined
   };
   var Template = function Template(args) {
     return {
@@ -77755,12 +77772,13 @@ define("@upfluence/oss-components/components/o-s-s/button", ["exports", "@ember/
         
           <OSS::Button
             @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
-            @theme={{this.theme}} @square={{this.square}} @countDown={{this.countDown}} @theme={{this.theme}} />
+            @theme={{this.theme}} @square={{this.square}} @countDown={{this.countDown}} @theme={{this.theme}} 
+            @iconUrl={{this.iconUrl}}/>
         
       */
       {
-        "id": "ydi575gz",
-        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@skin\",\"@size\",\"@loading\",\"@label\",\"@icon\",\"@theme\",\"@square\",\"@countDown\",\"@theme\"],[[30,0,[\"skin\"]],[30,0,[\"size\"]],[30,0,[\"loading\"]],[30,0,[\"label\"]],[30,0,[\"icon\"]],[30,0,[\"theme\"]],[30,0,[\"square\"]],[30,0,[\"countDown\"]],[30,0,[\"theme\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/button\"]]",
+        "id": "+zH8FdSv",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@skin\",\"@size\",\"@loading\",\"@label\",\"@icon\",\"@theme\",\"@square\",\"@countDown\",\"@theme\",\"@iconUrl\"],[[30,0,[\"skin\"]],[30,0,[\"size\"]],[30,0,[\"loading\"]],[30,0,[\"label\"]],[30,0,[\"icon\"]],[30,0,[\"theme\"]],[30,0,[\"square\"]],[30,0,[\"countDown\"]],[30,0,[\"theme\"]],[30,0,[\"iconUrl\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/button\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/button.stories.js",
         "isStrictMode": false
       }),
@@ -77777,6 +77795,11 @@ define("@upfluence/oss-components/components/o-s-s/button", ["exports", "@ember/
       },
       time: 3000
     }
+  });
+  var WithIconUrl = _exports.WithIconUrl = Template.bind({});
+  WithIconUrl.args = _objectSpread(_objectSpread({}, defaultArgs), {
+    icon: undefined,
+    iconUrl: '/@upfluence/oss-components/assets/heart.svg'
   });
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
