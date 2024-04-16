@@ -86,6 +86,11 @@ module('Integration | Component | o-s-s/access-panel', function (hooks) {
       assert.ok(this.onSearch.calledOnceWithExactly('foo'));
     });
 
+    test('it is autofocus', async function (assert) {
+      await renderComponent();
+      assert.dom('.oss-input-container input').isFocused();
+    });
+
     test('it renders the right empty state when no records are found and there is an ongoing search', async function (assert) {
       this.onSearch = sinon.stub().callsFake(() => {
         set(this, 'records', []);
