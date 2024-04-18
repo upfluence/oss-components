@@ -27,10 +27,19 @@ export default class OSSAccessPanel extends Component<OSSAccessPanelArgs> {
   }
 
   @action
+  focusSearch(element: HTMLElement): void {
+    element.focus();
+  }
+
+  @action
   setupAnimation(element: HTMLDivElement): void {
-    later(this, () => {
-      element.classList.add('oss-access-panel-container--visible');
-    }, 0);
+    later(
+      this,
+      () => {
+        element.classList.add('oss-access-panel-container--visible');
+      },
+      0
+    );
   }
 
   @action
