@@ -661,11 +661,11 @@ define("dummy/tests/integration/components/o-s-s/access-panel-test", ["qunit", "
       return _renderComponent.apply(this, arguments);
     }
     function _renderComponent() {
-      _renderComponent = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9() {
-        return _regeneratorRuntime().wrap(function _callee9$(_context9) {
-          while (1) switch (_context9.prev = _context9.next) {
+      _renderComponent = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10() {
+        return _regeneratorRuntime().wrap(function _callee10$(_context10) {
+          while (1) switch (_context10.prev = _context10.next) {
             case 0:
-              _context9.next = 2;
+              _context10.next = 2;
               return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
               /*
                 <OSS::AccessPanel
@@ -687,9 +687,9 @@ define("dummy/tests/integration/components/o-s-s/access-panel-test", ["qunit", "
               }));
             case 2:
             case "end":
-              return _context9.stop();
+              return _context10.stop();
           }
-        }, _callee9);
+        }, _callee10);
       }));
       return _renderComponent.apply(this, arguments);
     }
@@ -857,22 +857,41 @@ define("dummy/tests/integration/components/o-s-s/access-panel-test", ["qunit", "
           return _ref7.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('it renders the right empty state when no records are found and there is an ongoing search', /*#__PURE__*/function () {
+      (0, _qunit.test)('it is autofocus', /*#__PURE__*/function () {
         var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
-          var _this = this;
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
+              case 0:
+                _context8.next = 2;
+                return renderComponent();
+              case 2:
+                assert.dom('.oss-input-container input').isFocused();
+              case 3:
+              case "end":
+                return _context8.stop();
+            }
+          }, _callee8);
+        }));
+        return function (_x8) {
+          return _ref8.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('it renders the right empty state when no records are found and there is an ongoing search', /*#__PURE__*/function () {
+        var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+          var _this = this;
+          return _regeneratorRuntime().wrap(function _callee9$(_context9) {
+            while (1) switch (_context9.prev = _context9.next) {
               case 0:
                 this.onSearch = _sinon.default.stub().callsFake(function () {
                   (0, _object.set)(_this, 'records', []);
                 });
-                _context8.next = 3;
+                _context9.next = 3;
                 return renderComponent();
               case 3:
-                _context8.next = 5;
+                _context9.next = 5;
                 return (0, _testHelpers.fillIn)('.oss-input-container input', 'fo');
               case 5:
-                _context8.next = 7;
+                _context9.next = 7;
                 return (0, _testHelpers.typeIn)('.oss-input-container input', 'o', {
                   delay: 0
                 });
@@ -881,12 +900,12 @@ define("dummy/tests/integration/components/o-s-s/access-panel-test", ["qunit", "
                 assert.dom('.no-results').hasText('no search results');
               case 9:
               case "end":
-                return _context8.stop();
+                return _context9.stop();
             }
-          }, _callee8, this);
+          }, _callee9, this);
         }));
-        return function (_x8) {
-          return _ref8.apply(this, arguments);
+        return function (_x9) {
+          return _ref9.apply(this, arguments);
         };
       }());
     });
