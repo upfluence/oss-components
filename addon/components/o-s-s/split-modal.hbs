@@ -1,6 +1,9 @@
-<div class="split-modal oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center"
-     {{will-destroy this.destroy}} ...attributes>
-  <div class="oss-modal-dialog fx-row" {{on-click-outside @close}} {{did-insert this.init}}>
+<div
+  class="split-modal oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center"
+  {{will-destroy this.destroy}}
+  ...attributes
+>
+  <div class="oss-modal-dialog fx-row" {{on-click-outside this.onClickOutside}} {{did-insert this.init}}>
     <div class="split-modal__content fx-col fx-1">
       <div class="oss-modal-dialog--content fx-1 fx-col fx-gap-px-18">
         {{yield to="content"}}
@@ -12,8 +15,13 @@
       {{/if}}
     </div>
     <div class="split-modal__preview">
-      <OSS::Icon @style="solid" @icon="fa-times" class="close-modal-icon" role="button"
-                 {{on "click" this.closeModal}} />
+      <OSS::Icon
+        @style="solid"
+        @icon="fa-times"
+        class="close-modal-icon"
+        role="button"
+        {{on "click" this.closeModal}}
+      />
       {{yield to="preview"}}
     </div>
   </div>
