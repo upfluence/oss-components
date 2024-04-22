@@ -81920,7 +81920,7 @@ define("@upfluence/oss-components/components/o-s-s/link", ["exports", "@ember/co
   BasicUsage.args = defaultArgs;
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@ember/component", "@ember/debug", "@glimmer/tracking", "@upfluence/oss-components/components/o-s-s/private/base-modal", "@ember/template-factory"], function (_exports, _component, _debug, _tracking, _baseModal, _templateFactory) {
+define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@ember/component", "@glimmer/tracking", "@ember/debug", "@upfluence/oss-components/components/o-s-s/private/base-modal", "@ember/template-factory"], function (_exports, _component, _tracking, _debug, _baseModal, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -81928,7 +81928,7 @@ define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@
   });
   _exports.default = void 0;
   var _class, _descriptor;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@glimmer/tracking",0,"@upfluence/oss-components/components/o-s-s/private/base-modal",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/tracking",0,"@ember/debug",0,"@upfluence/oss-components/components/o-s-s/private/base-modal",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
   function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -81948,16 +81948,29 @@ define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     {{#if this.displayModal}}
-    <div class="oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center"
-        {{will-destroy this.destroy}} ...attributes>
-      <div class="oss-modal-dialog fx-col {{this.modalSize}}" {{on-click-outside this.closeModal}} {{did-insert this.init}}>
+    <div
+      class="oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center"
+      {{will-destroy this.destroy}}
+      ...attributes
+    >
+      <div
+        class="oss-modal-dialog fx-col {{this.modalSize}}"
+        {{on-click-outside this.onClickOutside}}
+        {{did-insert this.init}}
+      >
         <header class="fx-row">
           <div class="fx-1 fx-col fx-malign-center">
             <span class="title">{{@title}}</span>
             <span class="subtitle">{{@subtitle}}</span>
           </div>
-          <OSS::Icon @style="solid" @icon="fa-times" class="padding-px-12" {{on "click" this.closeModal}} role="button"
-                    data-control-name="close-modal-button" />
+          <OSS::Icon
+            @style="solid"
+            @icon="fa-times"
+            class="padding-px-12"
+            {{on "click" this.closeModal}}
+            role="button"
+            data-control-name="close-modal-button"
+          />
         </header>
   
         {{#if (has-block "illustration")}}
@@ -81977,20 +81990,18 @@ define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@
       </div>
     </div>
   {{/if}}
-  
   */
   {
-    "id": "5lc468TZ",
-    "block": "[[[41,[30,0,[\"displayModal\"]],[[[1,\"  \"],[11,0],[24,0,\"oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center\"],[17,1],[4,[38,1],[[30,0,[\"destroy\"]]],null],[12],[1,\"\\n    \"],[11,0],[16,0,[29,[\"oss-modal-dialog fx-col \",[30,0,[\"modalSize\"]]]]],[4,[38,2],[[30,0,[\"closeModal\"]]],null],[4,[38,3],[[30,0,[\"init\"]]],null],[12],[1,\"\\n      \"],[10,\"header\"],[14,0,\"fx-row\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-1 fx-col fx-malign-center\"],[12],[1,\"\\n          \"],[10,1],[14,0,\"title\"],[12],[1,[30,2]],[13],[1,\"\\n          \"],[10,1],[14,0,\"subtitle\"],[12],[1,[30,3]],[13],[1,\"\\n        \"],[13],[1,\"\\n        \"],[8,[39,4],[[24,0,\"padding-px-12\"],[24,\"role\",\"button\"],[24,\"data-control-name\",\"close-modal-button\"],[4,[38,5],[\"click\",[30,0,[\"closeModal\"]]],null]],[[\"@style\",\"@icon\"],[\"solid\",\"fa-times\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[48,[30,4]],[[[1,\"        \"],[18,4,null],[1,\"\\n\"]],[]],null],[1,\"\\n      \"],[10,0],[14,0,\"oss-modal-dialog--content fx-1\"],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"          \"],[18,5,null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n      \"],[10,\"footer\"],[14,0,\"fx-row fx-xalign-center\"],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"          \"],[18,6,null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"]],[]],null]],[\"&attrs\",\"@title\",\"@subtitle\",\"&illustration\",\"&content\",\"&footer\"],false,[\"if\",\"will-destroy\",\"on-click-outside\",\"did-insert\",\"o-s-s/icon\",\"on\",\"has-block\",\"yield\"]]",
+    "id": "CmmfewtS",
+    "block": "[[[41,[30,0,[\"displayModal\"]],[[[1,\"  \"],[11,0],[24,0,\"oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center\"],[17,1],[4,[38,1],[[30,0,[\"destroy\"]]],null],[12],[1,\"\\n    \"],[11,0],[16,0,[29,[\"oss-modal-dialog fx-col \",[30,0,[\"modalSize\"]]]]],[4,[38,2],[[30,0,[\"onClickOutside\"]]],null],[4,[38,3],[[30,0,[\"init\"]]],null],[12],[1,\"\\n      \"],[10,\"header\"],[14,0,\"fx-row\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-1 fx-col fx-malign-center\"],[12],[1,\"\\n          \"],[10,1],[14,0,\"title\"],[12],[1,[30,2]],[13],[1,\"\\n          \"],[10,1],[14,0,\"subtitle\"],[12],[1,[30,3]],[13],[1,\"\\n        \"],[13],[1,\"\\n        \"],[8,[39,4],[[24,0,\"padding-px-12\"],[24,\"role\",\"button\"],[24,\"data-control-name\",\"close-modal-button\"],[4,[38,5],[\"click\",[30,0,[\"closeModal\"]]],null]],[[\"@style\",\"@icon\"],[\"solid\",\"fa-times\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[48,[30,4]],[[[1,\"        \"],[18,4,null],[1,\"\\n\"]],[]],null],[1,\"\\n      \"],[10,0],[14,0,\"oss-modal-dialog--content fx-1\"],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"          \"],[18,5,null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n      \"],[10,\"footer\"],[14,0,\"fx-row fx-xalign-center\"],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"          \"],[18,6,null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"]],[]],null]],[\"&attrs\",\"@title\",\"@subtitle\",\"&illustration\",\"&content\",\"&footer\"],false,[\"if\",\"will-destroy\",\"on-click-outside\",\"did-insert\",\"o-s-s/icon\",\"on\",\"has-block\",\"yield\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/modal-dialog.hbs",
     "isStrictMode": false
   });
-  var OSSModalDialog = _exports.default = (_class = /*#__PURE__*/function (_ref) {
-    _inherits(OSSModalDialog, _ref);
+  var OSSModalDialog = _exports.default = (_class = /*#__PURE__*/function (_BaseModal) {
+    _inherits(OSSModalDialog, _BaseModal);
     function OSSModalDialog(owner, args) {
       var _this;
       _classCallCheck(this, OSSModalDialog);
-      // eslint-disable-next-line constructor-super
       _this = _callSuper(this, OSSModalDialog, [owner, args]);
       _initializerDefineProperty(_assertThisInitialized(_this), "displayModal", _descriptor, _assertThisInitialized(_this));
       (true && !(args.close) && (0, _debug.assert)('[component][OSS::ModalDialog] The close function is mandatory', args.close));
@@ -84322,6 +84333,7 @@ define("@upfluence/oss-components/components/o-s-s/private/base-modal", ["export
         (_this$_parent = this._parent) === null || _this$_parent === void 0 || _this$_parent.remove();
         (0, _runloop.run)(function () {
           document.removeEventListener('keyup', _this2.closeOnEscape);
+          document.removeEventListener('mousedown', _this2.trackInitialTarget);
         });
         document.body.style.overflow = this.prevBodyOverflow || 'auto';
         document.body.style.paddingRight = this.prevBodyPadding || '0';
@@ -84332,6 +84344,7 @@ define("@upfluence/oss-components/components/o-s-s/private/base-modal", ["export
         var _this3 = this;
         (0, _runloop.run)(function () {
           document.addEventListener('keyup', _this3.closeOnEscape);
+          document.addEventListener('mousedown', _this3.trackInitialTarget);
         });
         elem.classList.add('show-modal');
         if (this.scrollbarVisible()) {
@@ -84360,13 +84373,25 @@ define("@upfluence/oss-components/components/o-s-s/private/base-modal", ["export
         }
       }
     }, {
+      key: "trackInitialTarget",
+      value: function trackInitialTarget(event) {
+        this.initialTarget = event.target;
+      }
+    }, {
+      key: "onClickOutside",
+      value: function onClickOutside(_, event) {
+        if (event.target === this.initialTarget) {
+          this.closeModal();
+        }
+      }
+    }, {
       key: "scrollbarVisible",
       value: function scrollbarVisible() {
         return window.innerWidth > document.documentElement.clientWidth;
       }
     }]);
     return BaseModal;
-  }(_component.default), (_applyDecoratedDescriptor(_class.prototype, "destroy", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "destroy"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "init", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "init"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeModal", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeModal"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeOnEscape", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeOnEscape"), _class.prototype)), _class);
+  }(_component.default), (_applyDecoratedDescriptor(_class.prototype, "destroy", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "destroy"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "init", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "init"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeModal", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeModal"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeOnEscape", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeOnEscape"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "trackInitialTarget", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "trackInitialTarget"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype)), _class);
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("@upfluence/oss-components/components/o-s-s/progress-bar", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _templateFactory) {
@@ -85646,9 +85671,12 @@ define("@upfluence/oss-components/components/o-s-s/split-modal", ["exports", "@e
   function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="split-modal oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center"
-       {{will-destroy this.destroy}} ...attributes>
-    <div class="oss-modal-dialog fx-row" {{on-click-outside @close}} {{did-insert this.init}}>
+    <div
+    class="split-modal oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center"
+    {{will-destroy this.destroy}}
+    ...attributes
+  >
+    <div class="oss-modal-dialog fx-row" {{on-click-outside this.onClickOutside}} {{did-insert this.init}}>
       <div class="split-modal__content fx-col fx-1">
         <div class="oss-modal-dialog--content fx-1 fx-col fx-gap-px-18">
           {{yield to="content"}}
@@ -85660,26 +85688,29 @@ define("@upfluence/oss-components/components/o-s-s/split-modal", ["exports", "@e
         {{/if}}
       </div>
       <div class="split-modal__preview">
-        <OSS::Icon @style="solid" @icon="fa-times" class="close-modal-icon" role="button"
-                   {{on "click" this.closeModal}} />
+        <OSS::Icon
+          @style="solid"
+          @icon="fa-times"
+          class="close-modal-icon"
+          role="button"
+          {{on "click" this.closeModal}}
+        />
         {{yield to="preview"}}
       </div>
     </div>
   </div>
-  
   */
   {
-    "id": "OG64A4Ls",
-    "block": "[[[11,0],[24,0,\"split-modal oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center\"],[17,1],[4,[38,0],[[30,0,[\"destroy\"]]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"oss-modal-dialog fx-row\"],[4,[38,1],[[30,2]],null],[4,[38,2],[[30,0,[\"init\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"split-modal__content fx-col fx-1\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"oss-modal-dialog--content fx-1 fx-col fx-gap-px-18\"],[12],[1,\"\\n        \"],[18,3,null],[1,\"\\n      \"],[13],[1,\"\\n\"],[41,[48,[30,4]],[[[1,\"        \"],[10,\"footer\"],[14,0,\"fx-row fx-malign-center fx-xalign-space-between\"],[12],[1,\"\\n          \"],[18,4,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"split-modal__preview\"],[12],[1,\"\\n      \"],[8,[39,6],[[24,0,\"close-modal-icon\"],[24,\"role\",\"button\"],[4,[38,7],[\"click\",[30,0,[\"closeModal\"]]],null]],[[\"@style\",\"@icon\"],[\"solid\",\"fa-times\"]],null],[1,\"\\n      \"],[18,5,null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@close\",\"&content\",\"&footer\",\"&preview\"],false,[\"will-destroy\",\"on-click-outside\",\"did-insert\",\"yield\",\"if\",\"has-block\",\"o-s-s/icon\",\"on\"]]",
+    "id": "HmrdPsL5",
+    "block": "[[[11,0],[24,0,\"split-modal oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center\"],[17,1],[4,[38,0],[[30,0,[\"destroy\"]]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"oss-modal-dialog fx-row\"],[4,[38,1],[[30,0,[\"onClickOutside\"]]],null],[4,[38,2],[[30,0,[\"init\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"split-modal__content fx-col fx-1\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"oss-modal-dialog--content fx-1 fx-col fx-gap-px-18\"],[12],[1,\"\\n        \"],[18,2,null],[1,\"\\n      \"],[13],[1,\"\\n\"],[41,[48,[30,3]],[[[1,\"        \"],[10,\"footer\"],[14,0,\"fx-row fx-malign-center fx-xalign-space-between\"],[12],[1,\"\\n          \"],[18,3,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"split-modal__preview\"],[12],[1,\"\\n      \"],[8,[39,6],[[24,0,\"close-modal-icon\"],[24,\"role\",\"button\"],[4,[38,7],[\"click\",[30,0,[\"closeModal\"]]],null]],[[\"@style\",\"@icon\"],[\"solid\",\"fa-times\"]],null],[1,\"\\n      \"],[18,4,null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"&content\",\"&footer\",\"&preview\"],false,[\"will-destroy\",\"on-click-outside\",\"did-insert\",\"yield\",\"if\",\"has-block\",\"o-s-s/icon\",\"on\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/split-modal.hbs",
     "isStrictMode": false
   });
-  var OSSSplitModal = _exports.default = /*#__PURE__*/function (_ref) {
-    _inherits(OSSSplitModal, _ref);
+  var OSSSplitModal = _exports.default = /*#__PURE__*/function (_BaseModal) {
+    _inherits(OSSSplitModal, _BaseModal);
     function OSSSplitModal(owner, args) {
       var _this;
       _classCallCheck(this, OSSSplitModal);
-      // eslint-disable-next-line constructor-super
       _this = _callSuper(this, OSSSplitModal, [owner, args]);
       (true && !(args.close) && (0, _debug.assert)('[component][OSS::SplitModal] The close function is mandatory', args.close));
       return _this;
