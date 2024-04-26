@@ -10168,7 +10168,7 @@ label {
   display: flex;
   flex-direction: column;
   overflow: hidden auto;
-  max-height: 250px;
+  max-height: var(--floating-max-height, 250px);
   max-width: 350px;
   margin-top: 12px;
   padding: 6px;
@@ -10218,7 +10218,7 @@ label {
   display: flex;
   flex-direction: column;
   overflow: hidden auto;
-  max-height: 250px;
+  max-height: var(--floating-max-height, 250px);
   max-width: 350px;
   margin-top: 12px;
   padding: 6px;
@@ -10245,7 +10245,6 @@ label {
 }
 .upf-infinite-select__container {
   position: relative;
-  margin-bottom: 12px;
 }
 .upf-infinite-select__items-container {
   margin: 0;
@@ -11821,11 +11820,8 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
 .upf-power-select__dropdown {
   overflow: hidden;
 }
-.upf-power-select__dropdown .upf-infinite-select__container {
-  max-height: var(--floating-max-height);
-}
 .upf-power-select__dropdown:has(.upf-input) .upf-infinite-select__items-container {
-  max-height: calc(var(--floating-max-height) - 62px);
+  max-height: calc(var(--floating-max-height) - 78px);
 }
 @keyframes slide-in {
   from {
