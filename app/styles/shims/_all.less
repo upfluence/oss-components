@@ -96,7 +96,7 @@
 @upf-primary-orange-dark: darken(@upf-primary-orange, 10%);
 @upf-bright-orange: #ff4331;
 @upf-primary-bright-purple-light: lighten(@upf-primary-bright-purple, 10%);
-@upf-primary-bright-purple-dark: #1B00B7;
+@upf-primary-bright-purple-dark: #1b00b7;
 @upf-primary-rock-blue-light: lighten(@upf-primary-rock-blue, 10%);
 @upf-primary-rock-blue-dark: darken(@upf-primary-rock-blue, 10%);
 
@@ -105,7 +105,7 @@
 // the user: informations, help, error, success, alerts, etc.
 // --------------------------------------------------
 
-@upf-feedback-success: #22B473;
+@upf-feedback-success: #22b473;
 @upf-feedback-error: @upf-primary-orange;
 @upf-feedback-alert: #eda448;
 @upf-feedback-info: @upf-primary-rock-blue;
@@ -125,12 +125,11 @@
 
 .text-size(@id, @size) {
   .text-size-@{id} {
-    font-size: @size/@rem;
+    font-size: @size / @rem;
   }
 }
 
 .text-size-loop(@counter, @size, @max) when (@counter < @max) {
-
   & when (@size >= @breaking_size) {
     .text-size-loop(@counter+1, @size+6, @max);
   }
@@ -160,7 +159,7 @@
 @font-text-body: var(--font-family-stack);
 
 // Default size
-@font-size-body: 12;  // in px
+@font-size-body: 12; // in px
 @rem: @font-size-body*1rem;
 
 //
@@ -195,16 +194,5 @@
 @spacing-lg: 36px;
 @spacing-x-lg: 48px;
 @spacing-xx-lg: 60px;
-
-//
-// Brand Colors
-//
-@facebook-brand-color: #3b5998;
-@pinterest-brand-color: #bd081c;
-@instagram-brand-color: #bc2a8d;
-@youtube-brand-color: #cd201f;
-@twitter-brand-color: #1da1f2;
-@twitch-brand-color: #6441a5;
-@tiktok-brand-color: #333333;
 
 @box-shadow: 0 1px 3px rgba(151, 159, 169, 0.15);
