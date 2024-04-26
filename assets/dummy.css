@@ -9711,7 +9711,7 @@ label {
   align-self: center;
 }
 .upf-contextual-nav {
-  background-color: #1B00B7;
+  background-color: #1b00b7;
   display: flex;
   align-items: center;
   list-style-type: none;
@@ -10777,19 +10777,25 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
   color: var(--color-error-500);
 }
 .text-color-facebook {
-  color: #3b5998;
+  color: var(--color-facebook-500);
 }
 .text-color-pinterest {
-  color: #bd081c;
+  color: var(--color-pinterest-500);
 }
 .text-color-instagram {
-  color: #bc2a8d;
+  color: var(--color-instagram-500);
 }
 .text-color-youtube {
-  color: #cd201f;
+  color: var(--color-youtube-500);
 }
 .text-color-twitter {
-  color: #1da1f2;
+  color: var(--color-twitter-500);
+}
+.text-color-twitch {
+  color: var(--color-twitch-500);
+}
+.text-color-tiktok {
+  color: var(--color-tiktok-500);
 }
 .text-style-normal {
   font-style: normal;
