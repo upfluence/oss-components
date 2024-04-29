@@ -86064,11 +86064,15 @@ define("@upfluence/oss-components/components/o-s-s/tag", ["exports", "@ember/com
         </div>
       {{/if}}
     {{/if}}
+  
+    {{#if @suffixIcon}}
+      <OSS::Icon @style={{fa-icon-style @suffixIcon}} @icon={{fa-icon-value @suffixIcon}} />
+    {{/if}}
   </div>
   */
   {
-    "id": "A26Atl6K",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[[28,[37,2],[[30,2]],null],[28,[37,3],[[30,2]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,3],[[[41,[30,4],[[[1,\"      \"],[1,[30,0,[\"safeLabel\"]]],[1,\"\\n\"]],[]],[[[1,\"      \"],[10,0],[14,0,\"text-style-semibold fx-row\"],[12],[1,\"\\n\"],[41,[30,5],[[[1,\"          \"],[10,1],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],[[[1,\"          \"],[1,[30,3]],[1,\"\\n\"]],[]]],[1,\"      \"],[13],[1,\"\\n\"]],[]]]],[]],null],[13]],[\"&attrs\",\"@icon\",\"@label\",\"@htmlSafe\",\"@hasEllipsis\"],false,[\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
+    "id": "4xiiv/JF",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[[28,[37,2],[[30,2]],null],[28,[37,3],[[30,2]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,3],[[[41,[30,4],[[[1,\"      \"],[1,[30,0,[\"safeLabel\"]]],[1,\"\\n\"]],[]],[[[1,\"      \"],[10,0],[14,0,\"text-style-semibold fx-row\"],[12],[1,\"\\n\"],[41,[30,5],[[[1,\"          \"],[10,1],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],[[[1,\"          \"],[1,[30,3]],[1,\"\\n\"]],[]]],[1,\"      \"],[13],[1,\"\\n\"]],[]]]],[]],null],[1,\"\\n\"],[41,[30,6],[[[1,\"    \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[[28,[37,2],[[30,6]],null],[28,[37,3],[[30,6]],null]]],null],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@icon\",\"@label\",\"@htmlSafe\",\"@hasEllipsis\",\"@suffixIcon\"],false,[\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/tag.hbs",
     "isStrictMode": false
   });
@@ -86193,7 +86197,21 @@ define("@upfluence/oss-components/components/o-s-s/tag", ["exports", "@ember/com
         }
       },
       icon: {
-        description: 'Font Awesome class, for example: far fa-envelope-open',
+        description: 'Icon placed before the label if any. Font Awesome class, for example: far fa-envelope-open',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      suffixIcon: {
+        description: 'Icon placed after the label if any. Font Awesome class, for example: far fa-envelope-open',
         table: {
           type: {
             summary: 'string'
@@ -86254,6 +86272,7 @@ define("@upfluence/oss-components/components/o-s-s/tag", ["exports", "@ember/com
     skin: 'primary',
     label: 'Label',
     icon: 'far fa-thumbs-up',
+    suffixIcon: null,
     hasEllipsis: false,
     plain: false,
     htmlSafe: false,
@@ -86265,12 +86284,12 @@ define("@upfluence/oss-components/components/o-s-s/tag", ["exports", "@ember/com
       /*
         
           <OSS::Tag @skin={{this.skin}} @label={{this.label}} @icon={{this.icon}} @hasEllipsis={{this.hasEllipsis}}
-                    @plain={{this.plain}} @htmlsafe={{this.htmlSafe}} @size={{this.size}} />
+                    @plain={{this.plain}} @htmlsafe={{this.htmlSafe}} @size={{this.size}} @suffixIcon={{this.suffixIcon}} />
         
       */
       {
-        "id": "mw+lxmWw",
-        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@hasEllipsis\",\"@plain\",\"@htmlsafe\",\"@size\"],[[30,0,[\"skin\"]],[30,0,[\"label\"]],[30,0,[\"icon\"]],[30,0,[\"hasEllipsis\"]],[30,0,[\"plain\"]],[30,0,[\"htmlSafe\"]],[30,0,[\"size\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/tag\"]]",
+        "id": "9cFbDaAw",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@hasEllipsis\",\"@plain\",\"@htmlsafe\",\"@size\",\"@suffixIcon\"],[[30,0,[\"skin\"]],[30,0,[\"label\"]],[30,0,[\"icon\"]],[30,0,[\"hasEllipsis\"]],[30,0,[\"plain\"]],[30,0,[\"htmlSafe\"]],[30,0,[\"size\"]],[30,0,[\"suffixIcon\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/tag\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/tag.stories.js",
         "isStrictMode": false
       }),
@@ -88520,31 +88539,6 @@ define("@upfluence/oss-components/components/o-s-s/url-input", ["exports", "@emb
       this._super();
       this.element.style.backgroundImage = "url(\"".concat(this.src, "\"), url(\"assets/images/no-image.svg\")");
     }
-  });
-});
-;define("@upfluence/oss-components/components/upf-numeric-range", ["exports", "@ember/component", "@ember/object", "@ember/object/computed"], function (_exports, _component, _object, _computed) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"@ember/component",0,"@ember/object",0,"@ember/object/computed"eaimeta@70e063a35619d71f
-  var DEFAULT_OPTIONS = {
-    min: null,
-    max: null,
-    fromPlaceholder: 'From',
-    toPlaceholder: 'To'
-  };
-  var _default = _exports.default = _component.default.extend({
-    classNames: ['upf-numeric-range'],
-    classNameBindings: ['sizeSmall:upf-numeric-range--small'],
-    attributeBindings: ['data-control-name'],
-    size: null,
-    sizeSmall: (0, _computed.equal)('size', 'small'),
-    _options: (0, _object.computed)('options', function () {
-      return Object.assign({}, DEFAULT_OPTIONS, this.options);
-    })
   });
 });
 ;define("@upfluence/oss-components/components/upf-progress", ["exports", "@ember/component", "@ember/object"], function (_exports, _component, _object) {

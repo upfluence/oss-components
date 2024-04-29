@@ -19266,13 +19266,45 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qun
         return _ref3.apply(this, arguments);
       };
     }());
+    (0, _qunit.test)('it renders the proper suffix icon when @suffixIcon is passed', /*#__PURE__*/function () {
+      var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+          while (1) switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+              /*
+                <OSS::Tag @icon="far fa-thumbs-up" @suffixIcon="far fa-arrow-trend-up" />
+              */
+              {
+                "id": "PAHsX9z1",
+                "block": "[[[8,[39,0],null,[[\"@icon\",\"@suffixIcon\"],[\"far fa-thumbs-up\",\"far fa-arrow-trend-up\"]],null]],[],false,[\"o-s-s/tag\"]]",
+                "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/tag-test.ts",
+                "isStrictMode": false
+              }));
+            case 2:
+              assert.dom('.upf-tag i').exists({
+                count: 2
+              });
+              assert.dom('.upf-tag i:first-child').hasClass('fa-thumbs-up');
+              assert.dom('.upf-tag i:last-child').hasClass('fa-arrow-trend-up');
+            case 5:
+            case "end":
+              return _context4.stop();
+          }
+        }, _callee4);
+      }));
+      return function (_x4) {
+        return _ref4.apply(this, arguments);
+      };
+    }());
     (0, _qunit.module)('@plain', function () {
       (0, _qunit.test)('the right class is applied on the tag', /*#__PURE__*/function () {
-        var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
-          return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-            while (1) switch (_context4.prev = _context4.next) {
+        var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+          return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+            while (1) switch (_context5.prev = _context5.next) {
               case 0:
-                _context4.next = 2;
+                _context5.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Tag @icon="far fa-thumbs-up" @plain={{true}} />
@@ -19287,22 +19319,22 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qun
                 assert.dom('.upf-tag').hasClass('upf-tag--plain');
               case 3:
               case "end":
-                return _context4.stop();
+                return _context5.stop();
             }
-          }, _callee4);
+          }, _callee5);
         }));
-        return function (_x4) {
-          return _ref4.apply(this, arguments);
+        return function (_x5) {
+          return _ref5.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.module)('@hasEllipsis', function () {
       (0, _qunit.test)('When the param is true then the ellipsis is shown', /*#__PURE__*/function () {
-        var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
-          return _regeneratorRuntime().wrap(function _callee5$(_context5) {
-            while (1) switch (_context5.prev = _context5.next) {
+        var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+          return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+            while (1) switch (_context6.prev = _context6.next) {
               case 0:
-                _context5.next = 2;
+                _context6.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Tag @label='Test with a huge label sentence' @hasEllipsis='true' />
@@ -19325,20 +19357,20 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qun
                 });
               case 4:
               case "end":
-                return _context5.stop();
+                return _context6.stop();
             }
-          }, _callee5);
+          }, _callee6);
         }));
-        return function (_x5) {
-          return _ref5.apply(this, arguments);
+        return function (_x6) {
+          return _ref6.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('When the param is false then the ellipsis is shown', /*#__PURE__*/function () {
-        var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
-          return _regeneratorRuntime().wrap(function _callee6$(_context6) {
-            while (1) switch (_context6.prev = _context6.next) {
+        var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+          return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+            while (1) switch (_context7.prev = _context7.next) {
               case 0:
-                _context6.next = 2;
+                _context7.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Tag @label='Test with a huge label sentence' />
@@ -19357,22 +19389,22 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qun
                 assert.dom('.upf-tag').hasText('Test with a huge label sentence');
               case 5:
               case "end":
-                return _context6.stop();
+                return _context7.stop();
             }
-          }, _callee6);
+          }, _callee7);
         }));
-        return function (_x6) {
-          return _ref6.apply(this, arguments);
+        return function (_x7) {
+          return _ref7.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.module)('@htmlSafe', function () {
       (0, _qunit.test)('Setting the param to true allows html to be rendered in the @label', /*#__PURE__*/function () {
-        var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
-          return _regeneratorRuntime().wrap(function _callee7$(_context7) {
-            while (1) switch (_context7.prev = _context7.next) {
+        var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+          return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+            while (1) switch (_context8.prev = _context8.next) {
               case 0:
-                _context7.next = 2;
+                _context8.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Tag @label='<div class="custom-html">Text content</div>' @htmlSafe={{true}} />
@@ -19387,20 +19419,20 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qun
                 assert.dom('.upf-tag .custom-html').hasText('Text content');
               case 3:
               case "end":
-                return _context7.stop();
+                return _context8.stop();
             }
-          }, _callee7);
+          }, _callee8);
         }));
-        return function (_x7) {
-          return _ref7.apply(this, arguments);
+        return function (_x8) {
+          return _ref8.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('When the param is falsy, html content is rendered as basic string', /*#__PURE__*/function () {
-        var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
-          return _regeneratorRuntime().wrap(function _callee8$(_context8) {
-            while (1) switch (_context8.prev = _context8.next) {
+        var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+          return _regeneratorRuntime().wrap(function _callee9$(_context9) {
+            while (1) switch (_context9.prev = _context9.next) {
               case 0:
-                _context8.next = 2;
+                _context9.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Tag @label='<div class="custom-html">Text content</div>' />
@@ -19416,23 +19448,23 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qun
                 assert.dom('.upf-tag').hasText('<div class="custom-html">Text content</div>');
               case 4:
               case "end":
-                return _context8.stop();
+                return _context9.stop();
             }
-          }, _callee8);
+          }, _callee9);
         }));
-        return function (_x8) {
-          return _ref8.apply(this, arguments);
+        return function (_x9) {
+          return _ref9.apply(this, arguments);
         };
       }());
     });
     Object.keys(_tag.SkinDefinition).forEach(function (skin) {
       (0, _qunit.test)("it sets the right class when using a supported skin: ".concat(skin), /*#__PURE__*/function () {
-        var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
-          return _regeneratorRuntime().wrap(function _callee9$(_context9) {
-            while (1) switch (_context9.prev = _context9.next) {
+        var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+          return _regeneratorRuntime().wrap(function _callee10$(_context10) {
+            while (1) switch (_context10.prev = _context10.next) {
               case 0:
                 this.skin = skin;
-                _context9.next = 3;
+                _context10.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Tag @skin={{this.skin}} @label="Test Skin" />
@@ -19448,21 +19480,21 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qun
                 assert.dom('.upf-tag').hasClass("upf-tag--".concat(_tag.SkinDefinition[this.skin]));
               case 5:
               case "end":
-                return _context9.stop();
+                return _context10.stop();
             }
-          }, _callee9, this);
+          }, _callee10, this);
         }));
-        return function (_x9) {
-          return _ref9.apply(this, arguments);
+        return function (_x10) {
+          return _ref10.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.test)('it properly sets up the xs size', /*#__PURE__*/function () {
-      var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
-        return _regeneratorRuntime().wrap(function _callee10$(_context10) {
-          while (1) switch (_context10.prev = _context10.next) {
+      var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        return _regeneratorRuntime().wrap(function _callee11$(_context11) {
+          while (1) switch (_context11.prev = _context11.next) {
             case 0:
-              _context10.next = 2;
+              _context11.next = 2;
               return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
               /*
                 <OSS::Tag @skin={{this.skin}} @label="Test Skin" @size="xs" />
@@ -19478,23 +19510,23 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qun
               assert.dom('.upf-tag').hasClass('upf-tag--xs');
             case 4:
             case "end":
-              return _context10.stop();
+              return _context11.stop();
           }
-        }, _callee10);
+        }, _callee11);
       }));
-      return function (_x10) {
-        return _ref10.apply(this, arguments);
+      return function (_x11) {
+        return _ref11.apply(this, arguments);
       };
     }());
     (0, _qunit.test)('it fails if @label and @icon are missing', /*#__PURE__*/function () {
-      var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
-        return _regeneratorRuntime().wrap(function _callee11$(_context11) {
-          while (1) switch (_context11.prev = _context11.next) {
+      var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+        return _regeneratorRuntime().wrap(function _callee12$(_context12) {
+          while (1) switch (_context12.prev = _context12.next) {
             case 0:
               (0, _testHelpers.setupOnerror)(function (err) {
                 assert.equal(err.message, 'Assertion Failed: [component][OSS::Tag] You must pass either a @label or an @icon argument.');
               });
-              _context11.next = 3;
+              _context12.next = 3;
               return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
               /*
                 <OSS::Tag />
@@ -19507,12 +19539,12 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qun
               }));
             case 3:
             case "end":
-              return _context11.stop();
+              return _context12.stop();
           }
-        }, _callee11);
+        }, _callee12);
       }));
-      return function (_x11) {
-        return _ref11.apply(this, arguments);
+      return function (_x12) {
+        return _ref12.apply(this, arguments);
       };
     }());
   });

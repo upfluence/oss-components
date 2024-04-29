@@ -1065,20 +1065,6 @@
   });
   0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/upf-image"eaimeta@70e063a35619d71f
 });
-;define("dummy/components/upf-numeric-range", ["exports", "@upfluence/oss-components/components/upf-numeric-range"], function (_exports, _upfNumericRange) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  Object.defineProperty(_exports, "default", {
-    enumerable: true,
-    get: function get() {
-      return _upfNumericRange.default;
-    }
-  });
-  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/upf-numeric-range"eaimeta@70e063a35619d71f
-});
 ;define("dummy/components/upf-progress", ["exports", "@upfluence/oss-components/components/upf-progress"], function (_exports, _upfProgress) {
   "use strict";
 
@@ -3695,42 +3681,6 @@ define("dummy/routes/application", ["exports", "@ember/routing/route", "@ember/s
     "id": "w4WIIZew",
     "block": "[[[10,0],[14,0,\"upf-card__icon\"],[12],[1,\"\\n  \"],[10,\"img\"],[15,\"src\",[36,0]],[12],[13],[1,\"\\n\"],[13],[1,\"\\n\\n\"],[10,0],[14,0,\"upf-card__title text-size-8 text-color-default\"],[12],[1,\"\\n  \"],[1,[34,1]],[1,\"\\n\"],[13],[1,\"\\n\\n\"],[10,0],[14,0,\"upf-card__description text-size-5 text-color-default-light\"],[12],[1,\"\\n  \"],[2,[36,2]],[1,\"\\n\"],[13],[1,\"\\n\"]],[],false,[\"imageSrc\",\"title\",\"description\"]]",
     "moduleName": "dummy/templates/components/upf-card.hbs",
-    "isStrictMode": false
-  });
-});
-;define("dummy/templates/components/upf-numeric-range", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
-  var _default = _exports.default = (0, _templateFactory.createTemplateFactory)(
-  /*
-    {{input
-    type="number" placeholder=_options.fromPlaceholder arrowless=true value=from
-    step=_options.step min=_options.min max=_options.max
-    class=(concat
-           "upf-numeric-range__from form-control upf-input"
-           (if size (concat " upf-input--" size)))}}
-  
-  <div class="upf-numeric-range__separator">
-    —
-  </div>
-  
-  {{input
-    type="number" placeholder=_options.toPlaceholder arrowless=true value=to
-    step=_options.step min=_options.min max=_options.max
-    class=(concat
-           "upf-numeric-range__to form-control upf-input"
-           (if size (concat " upf-input--" size)))}}
-  
-  */
-  {
-    "id": "7kMDLLro",
-    "block": "[[[1,[28,[35,0],null,[[\"type\",\"placeholder\",\"arrowless\",\"value\",\"step\",\"min\",\"max\",\"class\"],[\"number\",[33,1,[\"fromPlaceholder\"]],true,[33,2],[33,1,[\"step\"]],[33,1,[\"min\"]],[33,1,[\"max\"]],[28,[37,3],[\"upf-numeric-range__from form-control upf-input\",[52,[33,5],[28,[37,3],[\" upf-input--\",[33,5]],null]]],null]]]]],[1,\"\\n\\n\"],[10,0],[14,0,\"upf-numeric-range__separator\"],[12],[1,\"\\n  —\\n\"],[13],[1,\"\\n\\n\"],[1,[28,[35,0],null,[[\"type\",\"placeholder\",\"arrowless\",\"value\",\"step\",\"min\",\"max\",\"class\"],[\"number\",[33,1,[\"toPlaceholder\"]],true,[33,6],[33,1,[\"step\"]],[33,1,[\"min\"]],[33,1,[\"max\"]],[28,[37,3],[\"upf-numeric-range__to form-control upf-input\",[52,[33,5],[28,[37,3],[\" upf-input--\",[33,5]],null]]],null]]]]],[1,\"\\n\"]],[],false,[\"input\",\"_options\",\"from\",\"concat\",\"if\",\"size\",\"to\"]]",
-    "moduleName": "dummy/templates/components/upf-numeric-range.hbs",
     "isStrictMode": false
   });
 });

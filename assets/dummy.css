@@ -9501,39 +9501,6 @@ label {
   background-color: #8a95a0;
   color: #ffffff;
 }
-.upf-numeric-range {
-  display: flex;
-}
-.upf-numeric-range.upf-numeric-range--small .upf-numeric-range__separator {
-  height: 36px;
-}
-.upf-numeric-range__from,
-.upf-numeric-range__to {
-  -moz-appearance: textfield;
-}
-.upf-numeric-range__from::-webkit-outer-spin-button,
-.upf-numeric-range__to::-webkit-outer-spin-button,
-.upf-numeric-range__from::-webkit-inner-spin-button,
-.upf-numeric-range__to::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
-.upf-numeric-range__from {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-}
-.upf-numeric-range__to {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-.upf-numeric-range__separator {
-  background-color: #f1f2f3;
-  cursor: default;
-  display: flex;
-  align-items: center;
-  height: 36px;
-  padding: 0 12px;
-}
 .upf-link-base {
   color: var(--color-blue-500);
 }
