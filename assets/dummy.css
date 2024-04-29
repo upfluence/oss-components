@@ -13296,13 +13296,16 @@ For complete information visit: www.freakflagsprite.com
 .upf-square-btn span {
   transition: background-color 0.25s ease-in-out, border-color 0.25s ease-in-out, color 0.25s ease-in-out;
 }
+.upf-square-btn.disabled:not(.js-btn--loading),
 .upf-square-btn:disabled:not(.js-btn--loading) {
   border: 1px solid var(--color-gray-200);
   background-color: var(--color-gray-200);
   color: var(--color-gray-400);
   cursor: not-allowed;
 }
+.upf-square-btn.disabled:not(.js-btn--loading) i,
 .upf-square-btn:disabled:not(.js-btn--loading) i,
+.upf-square-btn.disabled:not(.js-btn--loading) span,
 .upf-square-btn:disabled:not(.js-btn--loading) span {
   color: var(--color-gray-400);
 }
