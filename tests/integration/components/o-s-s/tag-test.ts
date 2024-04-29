@@ -26,6 +26,14 @@ module('Integration | Component | o-s-s/tag', function (hooks) {
     assert.dom('.upf-tag i').hasClass('fa-thumbs-up');
   });
 
+  test('it renders the proper suffix icon when @suffixIcon is passed', async function (assert) {
+    await render(hbs`<OSS::Tag @icon="far fa-thumbs-up" @suffixIcon="far fa-arrow-trend-up" />`);
+
+    assert.dom('.upf-tag i').exists({ count: 2 });
+    assert.dom('.upf-tag i:first-child').hasClass('fa-thumbs-up');
+    assert.dom('.upf-tag i:last-child').hasClass('fa-arrow-trend-up');
+  });
+
   module('@plain', () => {
     test('the right class is applied on the tag', async function (assert) {
       await render(hbs`<OSS::Tag @icon="far fa-thumbs-up" @plain={{true}} />`);
