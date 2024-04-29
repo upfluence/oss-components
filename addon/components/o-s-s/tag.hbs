@@ -16,4 +16,8 @@
       </div>
     {{/if}}
   {{/if}}
+
+  {{#if @suffixIcon}}
+    <OSS::Icon @style={{fa-icon-style @suffixIcon}} @icon={{fa-icon-value @suffixIcon}} />
+  {{/if}}
 </div>

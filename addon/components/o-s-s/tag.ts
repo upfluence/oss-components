@@ -43,6 +43,7 @@ interface OSSTagArgs {
   label?: string;
   skin?: string;
   icon?: string;
+  suffixIcon?: string;
   hasEllipsis?: boolean;
   plain?: boolean;
   htmlSafe?: boolean;

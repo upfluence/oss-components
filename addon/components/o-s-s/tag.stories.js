@@ -54,7 +54,17 @@ export default {
       }
     },
     icon: {
-      description: 'Font Awesome class, for example: far fa-envelope-open',
+      description: 'Icon placed before the label if any. Font Awesome class, for example: far fa-envelope-open',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: {
+        type: 'text'
+      }
+    },
+    suffixIcon: {
+      description: 'Icon placed after the label if any. Font Awesome class, for example: far fa-envelope-open',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'undefined' }
@@ -100,6 +110,7 @@ const defaultArgs = {
   skin: 'primary',
   label: 'Label',
   icon: 'far fa-thumbs-up',
+  suffixIcon: null,
   hasEllipsis: false,
   plain: false,
   htmlSafe: false,
@@ -109,7 +120,7 @@ const defaultArgs = {
 const Template = (args) => ({
   template: hbs`
     <OSS::Tag @skin={{this.skin}} @label={{this.label}} @icon={{this.icon}} @hasEllipsis={{this.hasEllipsis}}
-              @plain={{this.plain}} @htmlsafe={{this.htmlSafe}} @size={{this.size}} />
+              @plain={{this.plain}} @htmlsafe={{this.htmlSafe}} @size={{this.size}} @suffixIcon={{this.suffixIcon}} />
   `,
   context: args
 });
