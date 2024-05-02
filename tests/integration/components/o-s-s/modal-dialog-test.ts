@@ -205,6 +205,30 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
     assert.dom('[data-control-name="modal-b"]').exists();
   });
 
+  module('Clicking outside', function () {
+    test('It triggers the close action', async function (assert) {
+      await render(
+        hbs`<OSS::ModalDialog @title="MODAL A" @subtitle="subtitle" @close={{this.closeModal}}
+                              data-control-name="modal-a" />`
+      );
+
+      assert.ok(this.closeModal.notCalled);
+      await click('.oss-modal-dialog-backdrop');
+      assert.ok(this.closeModal.calledOnce);
+    });
+
+    test('If the disableClickOutside parameter is truthy, it does not trigger the close action', async function (assert) {
+      await render(
+        hbs`<OSS::ModalDialog @title="MODAL A" @subtitle="subtitle" @close={{this.closeModal}}
+                              data-control-name="modal-a" @disableClickOutside={{true}}/>`
+      );
+
+      assert.ok(this.closeModal.notCalled);
+      await click('.oss-modal-dialog-backdrop');
+      assert.ok(this.closeModal.notCalled);
+    });
+  });
+
   module('Error management', function () {
     test('The component throws an error if the title parameter is not passed', async function (assert) {
       setupOnerror((err: any) => {

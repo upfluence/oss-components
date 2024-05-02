@@ -5,6 +5,7 @@ import Component from '@glimmer/component';
 
 export interface BaseModalArgs {
   close(): void;
+  disableClickOutside?: boolean;
 }
 
 export default class BaseModal<T extends BaseModalArgs> extends Component<T> {
@@ -65,6 +66,8 @@ export default class BaseModal<T extends BaseModalArgs> extends Component<T> {
 
   @action
   onClickOutside(_: any, event: Event): void {
+    if (this.args.disableClickOutside) return;
+
     if (event.target === this.initialTarget) {
       this.closeModal();
     }

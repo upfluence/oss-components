@@ -13,6 +13,17 @@ export default {
           summary: 'close(): void'
         }
       }
+    },
+    disableClickOutside: {
+      description:
+        '[OPTIONAL] Disable or not the ability to close the modal when clicking outside of the modal dialog.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'false' }
+      },
+      control: { type: 'boolean' }
     }
   },
   parameters: {
@@ -32,12 +43,13 @@ export default {
 };
 
 const defaultArgs = {
-  close: action('close')
+  close: action('close'),
+  disableClickOutside: false
 };
 
 const BasicUsageTemplate = (args) => ({
   template: hbs`
-      <OSS::SplitModal @close={{this.close}}>
+      <OSS::SplitModal @close={{this.close}} @disableClickOutside={{this.disableClickOutside}}>
         <:content>
           Content goes here
         </:content>
