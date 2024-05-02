@@ -13184,16 +13184,84 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["qunit", "
         return _ref13.apply(this, arguments);
       };
     }());
-    (0, _qunit.module)('Error management', function () {
-      (0, _qunit.test)('The component throws an error if the title parameter is not passed', /*#__PURE__*/function () {
+    (0, _qunit.module)('Clicking outside', function () {
+      (0, _qunit.test)('It triggers the close action', /*#__PURE__*/function () {
         var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
           return _regeneratorRuntime().wrap(function _callee14$(_context14) {
             while (1) switch (_context14.prev = _context14.next) {
               case 0:
+                _context14.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::ModalDialog @title="MODAL A" @subtitle="subtitle" @close={{this.closeModal}}
+                                              data-control-name="modal-a" />
+                */
+                {
+                  "id": "h+YrkwMS",
+                  "block": "[[[8,[39,0],[[24,\"data-control-name\",\"modal-a\"]],[[\"@title\",\"@subtitle\",\"@close\"],[\"MODAL A\",\"subtitle\",[30,0,[\"closeModal\"]]]],null]],[],false,[\"o-s-s/modal-dialog\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/modal-dialog-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.ok(this.closeModal.notCalled);
+                _context14.next = 5;
+                return (0, _click.default)('.oss-modal-dialog-backdrop');
+              case 5:
+                assert.ok(this.closeModal.calledOnce);
+              case 6:
+              case "end":
+                return _context14.stop();
+            }
+          }, _callee14, this);
+        }));
+        return function (_x14) {
+          return _ref14.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('If the disableClickOutside parameter is truthy, it does not trigger the close action', /*#__PURE__*/function () {
+        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+          return _regeneratorRuntime().wrap(function _callee15$(_context15) {
+            while (1) switch (_context15.prev = _context15.next) {
+              case 0:
+                _context15.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::ModalDialog @title="MODAL A" @subtitle="subtitle" @close={{this.closeModal}}
+                                              data-control-name="modal-a" @disableClickOutside={{true}}/>
+                */
+                {
+                  "id": "hWzwkqmN",
+                  "block": "[[[8,[39,0],[[24,\"data-control-name\",\"modal-a\"]],[[\"@title\",\"@subtitle\",\"@close\",\"@disableClickOutside\"],[\"MODAL A\",\"subtitle\",[30,0,[\"closeModal\"]],true]],null]],[],false,[\"o-s-s/modal-dialog\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/modal-dialog-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.ok(this.closeModal.notCalled);
+                _context15.next = 5;
+                return (0, _click.default)('.oss-modal-dialog-backdrop');
+              case 5:
+                assert.ok(this.closeModal.notCalled);
+              case 6:
+              case "end":
+                return _context15.stop();
+            }
+          }, _callee15, this);
+        }));
+        return function (_x15) {
+          return _ref15.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('Error management', function () {
+      (0, _qunit.test)('The component throws an error if the title parameter is not passed', /*#__PURE__*/function () {
+        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
+          return _regeneratorRuntime().wrap(function _callee16$(_context16) {
+            while (1) switch (_context16.prev = _context16.next) {
+              case 0:
                 (0, _testHelpers.setupOnerror)(function (err) {
                   assert.equal(err.message, 'Assertion Failed: [component][OSS::ModalDialog] The title parameter is mandatory');
                 });
-                _context14.next = 3;
+                _context16.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::ModalDialog @close={{this.closeModal}}></OSS::ModalDialog>
@@ -13206,23 +13274,23 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["qunit", "
                 }));
               case 3:
               case "end":
-                return _context14.stop();
+                return _context16.stop();
             }
-          }, _callee14);
+          }, _callee16);
         }));
-        return function (_x14) {
-          return _ref14.apply(this, arguments);
+        return function (_x16) {
+          return _ref16.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('The component throws an error if the close parameter is not passed', /*#__PURE__*/function () {
-        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
-          return _regeneratorRuntime().wrap(function _callee15$(_context15) {
-            while (1) switch (_context15.prev = _context15.next) {
+        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
+          return _regeneratorRuntime().wrap(function _callee17$(_context17) {
+            while (1) switch (_context17.prev = _context17.next) {
               case 0:
                 (0, _testHelpers.setupOnerror)(function (err) {
                   assert.equal(err.message, 'Assertion Failed: [component][OSS::ModalDialog] The close function is mandatory');
                 });
-                _context15.next = 3;
+                _context17.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::ModalDialog @title="Test"></OSS::ModalDialog>
@@ -13235,12 +13303,12 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["qunit", "
                 }));
               case 3:
               case "end":
-                return _context15.stop();
+                return _context17.stop();
             }
-          }, _callee15);
+          }, _callee17);
         }));
-        return function (_x15) {
-          return _ref15.apply(this, arguments);
+        return function (_x17) {
+          return _ref17.apply(this, arguments);
         };
       }());
     });
@@ -18927,16 +18995,82 @@ define("dummy/tests/integration/components/o-s-s/split-modal-test", ["qunit", "e
         return _ref6.apply(this, arguments);
       };
     }());
-    (0, _qunit.module)('Error management', function () {
-      (0, _qunit.test)('The component throws an error if the close parameter is not passed', /*#__PURE__*/function () {
+    (0, _qunit.module)('Clicking outside', function () {
+      (0, _qunit.test)('It triggers the close action', /*#__PURE__*/function () {
         var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
+                _context7.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::SplitModal @close={{this.closeModal}}></OSS::SplitModal>
+                */
+                {
+                  "id": "UMaxA6C/",
+                  "block": "[[[8,[39,0],null,[[\"@close\"],[[30,0,[\"closeModal\"]]]],[[\"default\"],[[[],[]]]]]],[],false,[\"o-s-s/split-modal\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/split-modal-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.ok(this.closeModal.notCalled);
+                _context7.next = 5;
+                return (0, _testHelpers.click)('.oss-modal-dialog-backdrop');
+              case 5:
+                assert.ok(this.closeModal.calledOnce);
+              case 6:
+              case "end":
+                return _context7.stop();
+            }
+          }, _callee7, this);
+        }));
+        return function (_x7) {
+          return _ref7.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('If the disableClickOutside parameter is truthy, it does not trigger the close action', /*#__PURE__*/function () {
+        var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+          return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+            while (1) switch (_context8.prev = _context8.next) {
+              case 0:
+                _context8.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::SplitModal @close={{this.closeModal}} @disableClickOutside={{true}}></OSS::SplitModal>
+                */
+                {
+                  "id": "oeabTqOw",
+                  "block": "[[[8,[39,0],null,[[\"@close\",\"@disableClickOutside\"],[[30,0,[\"closeModal\"]],true]],[[\"default\"],[[[],[]]]]]],[],false,[\"o-s-s/split-modal\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/split-modal-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.ok(this.closeModal.notCalled);
+                _context8.next = 5;
+                return (0, _testHelpers.click)('.oss-modal-dialog-backdrop');
+              case 5:
+                assert.ok(this.closeModal.notCalled);
+              case 6:
+              case "end":
+                return _context8.stop();
+            }
+          }, _callee8, this);
+        }));
+        return function (_x8) {
+          return _ref8.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('Error management', function () {
+      (0, _qunit.test)('The component throws an error if the close parameter is not passed', /*#__PURE__*/function () {
+        var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+          return _regeneratorRuntime().wrap(function _callee9$(_context9) {
+            while (1) switch (_context9.prev = _context9.next) {
+              case 0:
                 (0, _testHelpers.setupOnerror)(function (err) {
                   assert.equal(err.message, 'Assertion Failed: [component][OSS::SplitModal] The close function is mandatory');
                 });
-                _context7.next = 3;
+                _context9.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::SplitModal />
@@ -18949,12 +19083,12 @@ define("dummy/tests/integration/components/o-s-s/split-modal-test", ["qunit", "e
                 }));
               case 3:
               case "end":
-                return _context7.stop();
+                return _context9.stop();
             }
-          }, _callee7);
+          }, _callee9);
         }));
-        return function (_x7) {
-          return _ref7.apply(this, arguments);
+        return function (_x9) {
+          return _ref9.apply(this, arguments);
         };
       }());
     });

@@ -82123,6 +82123,20 @@ define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@
         control: {
           type: 'boolean'
         }
+      },
+      disableClickOutside: {
+        description: '[OPTIONAL] Disable or not the ability to close the modal when clicking outside of the modal dialog.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
       }
     },
     parameters: {
@@ -82138,7 +82152,8 @@ define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@
     subtitle: 'This is a subtitle',
     size: 'sm',
     close: (0, _addonActions.action)('close'),
-    enqueue: undefined
+    enqueue: undefined,
+    disableClickOutside: undefined
   };
   var BasicUsageTemplate = function BasicUsageTemplate(args) {
     return {
@@ -82146,7 +82161,7 @@ define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@
       /*
         
             <OSS::ModalDialog @title={{this.title}} @close={{this.close}} @subtitle={{this.subtitle}} @size={{this.size}} 
-                              @enqueue={{this.enqueue}}>
+                              @enqueue={{this.enqueue}} @disableClickOutside={{this.disableClickOutside}}>
               <:content>
                 Content goes here
               </:content>
@@ -82157,8 +82172,8 @@ define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@
         
       */
       {
-        "id": "DdfDfhFh",
-        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@close\",\"@subtitle\",\"@size\",\"@enqueue\"],[[30,0,[\"title\"]],[30,0,[\"close\"]],[30,0,[\"subtitle\"]],[30,0,[\"size\"]],[30,0,[\"enqueue\"]]]],[[\"content\",\"footer\"],[[[[1,\"\\n          Content goes here\\n        \"]],[]],[[[1,\"\\n          Footer goes here\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/modal-dialog\"]]",
+        "id": "TDLdxTGZ",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@close\",\"@subtitle\",\"@size\",\"@enqueue\",\"@disableClickOutside\"],[[30,0,[\"title\"]],[30,0,[\"close\"]],[30,0,[\"subtitle\"]],[30,0,[\"size\"]],[30,0,[\"enqueue\"]],[30,0,[\"disableClickOutside\"]]]],[[\"content\",\"footer\"],[[[[1,\"\\n          Content goes here\\n        \"]],[]],[[[1,\"\\n          Footer goes here\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/modal-dialog\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/modal-dialog.stories.js",
         "isStrictMode": false
       }),
@@ -82171,7 +82186,7 @@ define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@
       /*
         
             <OSS::ModalDialog @title={{this.title}} @close={{this.close}} @subtitle={{this.subtitle}} @size={{this.size}} 
-                              @enqueue={{this.enqueue}}>
+                              @enqueue={{this.enqueue}} @disableClickOutside={{this.disableClickOutside}}>
               <:illustration>
                 This will contain an illustration.
               </:illustration>
@@ -82185,8 +82200,8 @@ define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@
         
       */
       {
-        "id": "YmX0woCW",
-        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@close\",\"@subtitle\",\"@size\",\"@enqueue\"],[[30,0,[\"title\"]],[30,0,[\"close\"]],[30,0,[\"subtitle\"]],[30,0,[\"size\"]],[30,0,[\"enqueue\"]]]],[[\"illustration\",\"content\",\"footer\"],[[[[1,\"\\n          This will contain an illustration.\\n        \"]],[]],[[[1,\"\\n          Content goes here\\n        \"]],[]],[[[1,\"\\n          Footer goes here\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/modal-dialog\"]]",
+        "id": "pW14ZMc+",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@close\",\"@subtitle\",\"@size\",\"@enqueue\",\"@disableClickOutside\"],[[30,0,[\"title\"]],[30,0,[\"close\"]],[30,0,[\"subtitle\"]],[30,0,[\"size\"]],[30,0,[\"enqueue\"]],[30,0,[\"disableClickOutside\"]]]],[[\"illustration\",\"content\",\"footer\"],[[[[1,\"\\n          This will contain an illustration.\\n        \"]],[]],[[[1,\"\\n          Content goes here\\n        \"]],[]],[[[1,\"\\n          Footer goes here\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/modal-dialog\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/modal-dialog.stories.js",
         "isStrictMode": false
       }),
@@ -84380,6 +84395,7 @@ define("@upfluence/oss-components/components/o-s-s/private/base-modal", ["export
     }, {
       key: "onClickOutside",
       value: function onClickOutside(_, event) {
+        if (this.args.disableClickOutside) return;
         if (event.target === this.initialTarget) {
           this.closeModal();
         }
@@ -85739,6 +85755,20 @@ define("@upfluence/oss-components/components/o-s-s/split-modal", ["exports", "@e
             summary: 'close(): void'
           }
         }
+      },
+      disableClickOutside: {
+        description: '[OPTIONAL] Disable or not the ability to close the modal when clicking outside of the modal dialog.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
       }
     },
     parameters: {
@@ -85750,14 +85780,15 @@ define("@upfluence/oss-components/components/o-s-s/split-modal", ["exports", "@e
     }
   };
   var defaultArgs = {
-    close: (0, _addonActions.action)('close')
+    close: (0, _addonActions.action)('close'),
+    disableClickOutside: false
   };
   var BasicUsageTemplate = function BasicUsageTemplate(args) {
     return {
       template: (0, _templateFactory.createTemplateFactory)(
       /*
         
-            <OSS::SplitModal @close={{this.close}}>
+            <OSS::SplitModal @close={{this.close}} @disableClickOutside={{this.disableClickOutside}}>
               <:content>
                 Content goes here
               </:content>
@@ -85771,8 +85802,8 @@ define("@upfluence/oss-components/components/o-s-s/split-modal", ["exports", "@e
         
       */
       {
-        "id": "3JLURr1q",
-        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@close\"],[[30,0,[\"close\"]]]],[[\"content\",\"footer\",\"preview\"],[[[[1,\"\\n          Content goes here\\n        \"]],[]],[[[1,\"\\n          Footer goes here\\n        \"]],[]],[[[1,\"\\n          Preview goes here\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/split-modal\"]]",
+        "id": "GxRm0v8x",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@close\",\"@disableClickOutside\"],[[30,0,[\"close\"]],[30,0,[\"disableClickOutside\"]]]],[[\"content\",\"footer\",\"preview\"],[[[[1,\"\\n          Content goes here\\n        \"]],[]],[[[1,\"\\n          Footer goes here\\n        \"]],[]],[[[1,\"\\n          Preview goes here\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/split-modal\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/split-modal.stories.js",
         "isStrictMode": false
       }),
