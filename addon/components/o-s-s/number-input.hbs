@@ -1,4 +1,4 @@
-<div class="number-input fx-row">
+<div class="number-input fx-row" ...attributes>
   <OSS::Button @square={{true}} @size="md" @icon="far fa-minus" {{on "click" this.decreaseValue}}
                disabled={{or this.isMinDisabled @disabled}} {{enable-tooltip title=this.minTooltipTitle placement="top"}} />
   {{! template-lint-disable no-triple-curlies}}
