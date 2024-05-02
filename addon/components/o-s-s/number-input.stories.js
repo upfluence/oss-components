@@ -65,6 +65,16 @@ export default {
       },
       control: { type: 'text' }
     },
+    disabled: {
+      description: '[OPTIONAL] Disables all the buttons and the input field. Defaults to false.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'boolean' }
+    },
     onChange: {
       description: '[OPTIONAL] A callback that sends back the new value of the input',
       table: {
@@ -88,7 +98,7 @@ export default {
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
     <OSS::NumberInput @value={{this.value}} @min={{this.min}} @max={{this.max}} @step={{this.step}} @onChange={{this.onChange}}
-                      @minReachedTooltip={{this.minReachedTooltip}} @maxReachedTooltip={{this.maxReachedTooltip}} />
+                      @minReachedTooltip={{this.minReachedTooltip}} @maxReachedTooltip={{this.maxReachedTooltip}} @disabled={{this.disabled}} />
   `,
   context: args
 });
@@ -100,5 +110,6 @@ BasicUsage.args = {
   step: 3,
   minReachedTooltip: '',
   maxReachedTooltip: '',
+  disabled: false,
   onChange: action('onChange')
 };

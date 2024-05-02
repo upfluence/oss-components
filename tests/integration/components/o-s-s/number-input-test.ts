@@ -147,4 +147,12 @@ module('Integration | Component | o-s-s/number-input', function (hooks) {
     await click('.upf-square-btn:nth-of-type(2)');
     assert.true(this.onChange.calledOnceWithExactly(1));
   });
+
+  test('The buttons and the input are disabled when the @disabled parameter is truthy', async function (assert) {
+    await render(hbs`<OSS::NumberInput @disabled={{true}} />`);
+
+    assert.dom('.number-input input').isDisabled();
+    assert.dom('.upf-square-btn:nth-of-type(1)').isDisabled();
+    assert.dom('.upf-square-btn:nth-of-type(2)').isDisabled();
+  });
 });

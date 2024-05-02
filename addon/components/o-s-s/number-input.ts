@@ -9,6 +9,7 @@ interface OSSNumberInputArgs {
   step?: number;
   minReachedTooltip?: string;
   maxReachedTooltip?: string;
+  disabled?: boolean;
   onChange?(value: number): void;
 }
 
