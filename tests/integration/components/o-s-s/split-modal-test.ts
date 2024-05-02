@@ -69,6 +69,24 @@ module('Integration | Component | o-s-s/split-modal', function (hooks) {
     assert.true(this.closeModal.calledOnce);
   });
 
+  module('Clicking outside', function () {
+    test('It triggers the close action', async function (assert) {
+      await render(hbs`<OSS::SplitModal @close={{this.closeModal}}></OSS::SplitModal>`);
+
+      assert.ok(this.closeModal.notCalled);
+      await click('.oss-modal-dialog-backdrop');
+      assert.ok(this.closeModal.calledOnce);
+    });
+
+    test('If the disableClickOutside parameter is truthy, it does not trigger the close action', async function (assert) {
+      await render(hbs`<OSS::SplitModal @close={{this.closeModal}} @disableClickOutside={{true}}></OSS::SplitModal>`);
+
+      assert.ok(this.closeModal.notCalled);
+      await click('.oss-modal-dialog-backdrop');
+      assert.ok(this.closeModal.notCalled);
+    });
+  });
+
   module('Error management', function () {
     test('The component throws an error if the close parameter is not passed', async function (assert) {
       setupOnerror((err: any) => {

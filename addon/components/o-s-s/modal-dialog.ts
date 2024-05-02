@@ -1,6 +1,5 @@
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
-import { action } from '@ember/object';
 
 import BaseModal, { type BaseModalArgs } from './private/base-modal';
 
@@ -9,7 +8,6 @@ export interface OSSModalDialogArgs extends BaseModalArgs {
   subtitle?: string;
   size?: 'sm' | 'md';
   enqueue?: boolean;
-  disableClickOutside?: boolean;
 }
 
 export default class OSSModalDialog extends BaseModal<OSSModalDialogArgs> {
@@ -43,12 +41,5 @@ export default class OSSModalDialog extends BaseModal<OSSModalDialogArgs> {
       return;
     }
     this.displayModal = true;
-  }
-
-  @action
-  onClickOutside(_: any, event: Event): void {
-    if (!this.args.disableClickOutside) {
-      super.onClickOutside(_, event);
-    }
   }
 }

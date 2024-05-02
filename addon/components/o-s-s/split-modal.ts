@@ -1,10 +1,8 @@
 import { assert } from '@ember/debug';
 
-import BaseModal from './private/base-modal';
+import BaseModal, { type BaseModalArgs } from './private/base-modal';
 
-interface OSSSplitModalArgs {
-  close(): void;
-}
+interface OSSSplitModalArgs extends BaseModalArgs {}
 
 export default class OSSSplitModal extends BaseModal<OSSSplitModalArgs> {
   constructor(owner: unknown, args: OSSSplitModalArgs) {
