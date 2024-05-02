@@ -501,7 +501,7 @@
     <div class="fx-col fx-gap-px-12 margin-md">
       <OSS::Button @skin="primary" @size="md" @label="Open MODAL" @icon="fa fa-unicorn" {{on "click" this.openModal}} />
       {{#if this.showModal}}
-        <OSS::ModalDialog @title="Example modal" @subtitle="subtitle" @close={{this.closeModal}} @size="md">
+        <OSS::ModalDialog @title="Example modal" @subtitle="subtitle" @close={{this.closeModal}} @disableClickOutside={{true}} @size="md">
           <:content>
             <div style="height: 200px; background-color: white">
               azeazeazeaze

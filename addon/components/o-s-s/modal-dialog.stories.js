@@ -57,6 +57,17 @@ export default {
         defaultValue: { summary: 'undefined' }
       },
       control: { type: 'boolean' }
+    },
+    disableClickOutside: {
+      description:
+        '[OPTIONAL] Disable or not the ability to close the modal when clicking outside of the modal dialog.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'false' }
+      },
+      control: { type: 'boolean' }
     }
   },
   parameters: {
@@ -76,13 +87,14 @@ const defaultArgs = {
   subtitle: 'This is a subtitle',
   size: 'sm',
   close: action('close'),
-  enqueue: undefined
+  enqueue: undefined,
+  disableClickOutside: undefined
 };
 
 const BasicUsageTemplate = (args) => ({
   template: hbs`
       <OSS::ModalDialog @title={{this.title}} @close={{this.close}} @subtitle={{this.subtitle}} @size={{this.size}} 
-                        @enqueue={{this.enqueue}}>
+                        @enqueue={{this.enqueue}} @disableClickOutside={{this.disableClickOutside}}>
         <:content>
           Content goes here
         </:content>
@@ -97,7 +109,7 @@ const BasicUsageTemplate = (args) => ({
 const WithIllustrationTemplate = (args) => ({
   template: hbs`
       <OSS::ModalDialog @title={{this.title}} @close={{this.close}} @subtitle={{this.subtitle}} @size={{this.size}} 
-                        @enqueue={{this.enqueue}}>
+                        @enqueue={{this.enqueue}} @disableClickOutside={{this.disableClickOutside}}>
         <:illustration>
           This will contain an illustration.
         </:illustration>
