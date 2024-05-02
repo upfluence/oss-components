@@ -82679,21 +82679,21 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="number-input fx-row">
+    <div class="number-input fx-row" ...attributes>
     <OSS::Button @square={{true}} @size="md" @icon="far fa-minus" {{on "click" this.decreaseValue}}
-                 disabled={{this.isMinDisabled}} {{enable-tooltip title=this.minTooltipTitle placement="top"}} />
+                 disabled={{or this.isMinDisabled @disabled}} {{enable-tooltip title=this.minTooltipTitle placement="top"}} />
     {{! template-lint-disable no-triple-curlies}}
-    <OSS::InputContainer @value={{this.localValue}} @onChange={{this.checkUserInput}} style={{{this.dynamicWidth}}}
+    <OSS::InputContainer @value={{this.localValue}} @onChange={{this.checkUserInput}} @disabled={{@disabled}} style={{{this.dynamicWidth}}}
                          {{on "keydown" this.keyParser}} {{on "blur" this.checkUserInput}}
                          {{did-insert this.registerInputElement}} />
     <OSS::Button @square={{true}} @size="md" @icon="far fa-plus" {{on "click" this.increaseValue}}
-                 disabled={{this.isMaxDisabled}} {{enable-tooltip title=this.maxTooltipTitle placement="top"}} />
+                 disabled={{or this.isMaxDisabled @disabled}} {{enable-tooltip title=this.maxTooltipTitle placement="top"}} />
   </div>
   
   */
   {
-    "id": "sBgJ1o4e",
-    "block": "[[[10,0],[14,0,\"number-input fx-row\"],[12],[1,\"\\n  \"],[8,[39,0],[[16,\"disabled\",[30,0,[\"isMinDisabled\"]]],[4,[38,1],[\"click\",[30,0,[\"decreaseValue\"]]],null],[4,[38,2],null,[[\"title\",\"placement\"],[[30,0,[\"minTooltipTitle\"]],\"top\"]]]],[[\"@square\",\"@size\",\"@icon\"],[true,\"md\",\"far fa-minus\"]],null],[1,\"\\n\"],[1,\"  \"],[8,[39,3],[[23,5,[30,0,[\"dynamicWidth\"]]],[4,[38,1],[\"keydown\",[30,0,[\"keyParser\"]]],null],[4,[38,1],[\"blur\",[30,0,[\"checkUserInput\"]]],null],[4,[38,4],[[30,0,[\"registerInputElement\"]]],null]],[[\"@value\",\"@onChange\"],[[30,0,[\"localValue\"]],[30,0,[\"checkUserInput\"]]]],null],[1,\"\\n  \"],[8,[39,0],[[16,\"disabled\",[30,0,[\"isMaxDisabled\"]]],[4,[38,1],[\"click\",[30,0,[\"increaseValue\"]]],null],[4,[38,2],null,[[\"title\",\"placement\"],[[30,0,[\"maxTooltipTitle\"]],\"top\"]]]],[[\"@square\",\"@size\",\"@icon\"],[true,\"md\",\"far fa-plus\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"]],[],false,[\"o-s-s/button\",\"on\",\"enable-tooltip\",\"o-s-s/input-container\",\"did-insert\"]]",
+    "id": "POZ7QwXl",
+    "block": "[[[11,0],[24,0,\"number-input fx-row\"],[17,1],[12],[1,\"\\n  \"],[8,[39,0],[[16,\"disabled\",[28,[37,1],[[30,0,[\"isMinDisabled\"]],[30,2]],null]],[4,[38,2],[\"click\",[30,0,[\"decreaseValue\"]]],null],[4,[38,3],null,[[\"title\",\"placement\"],[[30,0,[\"minTooltipTitle\"]],\"top\"]]]],[[\"@square\",\"@size\",\"@icon\"],[true,\"md\",\"far fa-minus\"]],null],[1,\"\\n\"],[1,\"  \"],[8,[39,4],[[23,5,[30,0,[\"dynamicWidth\"]]],[4,[38,2],[\"keydown\",[30,0,[\"keyParser\"]]],null],[4,[38,2],[\"blur\",[30,0,[\"checkUserInput\"]]],null],[4,[38,5],[[30,0,[\"registerInputElement\"]]],null]],[[\"@value\",\"@onChange\",\"@disabled\"],[[30,0,[\"localValue\"]],[30,0,[\"checkUserInput\"]],[30,2]]],null],[1,\"\\n  \"],[8,[39,0],[[16,\"disabled\",[28,[37,1],[[30,0,[\"isMaxDisabled\"]],[30,2]],null]],[4,[38,2],[\"click\",[30,0,[\"increaseValue\"]]],null],[4,[38,3],null,[[\"title\",\"placement\"],[[30,0,[\"maxTooltipTitle\"]],\"top\"]]]],[[\"@square\",\"@size\",\"@icon\"],[true,\"md\",\"far fa-plus\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@disabled\"],false,[\"o-s-s/button\",\"or\",\"on\",\"enable-tooltip\",\"o-s-s/input-container\",\"did-insert\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/number-input.hbs",
     "isStrictMode": false
   });
@@ -82934,6 +82934,20 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
           type: 'text'
         }
       },
+      disabled: {
+        description: '[OPTIONAL] Disables all the buttons and the input field. Defaults to false.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
       onChange: {
         description: '[OPTIONAL] A callback that sends back the new value of the input',
         table: {
@@ -82958,12 +82972,12 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
       /*
         
           <OSS::NumberInput @value={{this.value}} @min={{this.min}} @max={{this.max}} @step={{this.step}} @onChange={{this.onChange}}
-                            @minReachedTooltip={{this.minReachedTooltip}} @maxReachedTooltip={{this.maxReachedTooltip}} />
+                            @minReachedTooltip={{this.minReachedTooltip}} @maxReachedTooltip={{this.maxReachedTooltip}} @disabled={{this.disabled}} />
         
       */
       {
-        "id": "lcKUnrnf",
-        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@value\",\"@min\",\"@max\",\"@step\",\"@onChange\",\"@minReachedTooltip\",\"@maxReachedTooltip\"],[[30,0,[\"value\"]],[30,0,[\"min\"]],[30,0,[\"max\"]],[30,0,[\"step\"]],[30,0,[\"onChange\"]],[30,0,[\"minReachedTooltip\"]],[30,0,[\"maxReachedTooltip\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/number-input\"]]",
+        "id": "tGcq7+cR",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@value\",\"@min\",\"@max\",\"@step\",\"@onChange\",\"@minReachedTooltip\",\"@maxReachedTooltip\",\"@disabled\"],[[30,0,[\"value\"]],[30,0,[\"min\"]],[30,0,[\"max\"]],[30,0,[\"step\"]],[30,0,[\"onChange\"]],[30,0,[\"minReachedTooltip\"]],[30,0,[\"maxReachedTooltip\"]],[30,0,[\"disabled\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/number-input\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/number-input.stories.js",
         "isStrictMode": false
       }),
@@ -82978,6 +82992,7 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
     step: 3,
     minReachedTooltip: '',
     maxReachedTooltip: '',
+    disabled: false,
     onChange: (0, _addonActions.action)('onChange')
   };
 });

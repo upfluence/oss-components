@@ -14574,6 +14574,36 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
         return _ref19.apply(this, arguments);
       };
     }());
+    (0, _qunit.test)('The buttons and the input are disabled when the @disabled parameter is truthy', /*#__PURE__*/function () {
+      var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
+        return _regeneratorRuntime().wrap(function _callee20$(_context20) {
+          while (1) switch (_context20.prev = _context20.next) {
+            case 0:
+              _context20.next = 2;
+              return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+              /*
+                <OSS::NumberInput @disabled={{true}} />
+              */
+              {
+                "id": "uT0hQEeF",
+                "block": "[[[8,[39,0],null,[[\"@disabled\"],[true]],null]],[],false,[\"o-s-s/number-input\"]]",
+                "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/number-input-test.ts",
+                "isStrictMode": false
+              }));
+            case 2:
+              assert.dom('.number-input input').isDisabled();
+              assert.dom('.upf-square-btn:nth-of-type(1)').isDisabled();
+              assert.dom('.upf-square-btn:nth-of-type(2)').isDisabled();
+            case 5:
+            case "end":
+              return _context20.stop();
+          }
+        }, _callee20);
+      }));
+      return function (_x20) {
+        return _ref20.apply(this, arguments);
+      };
+    }());
   });
 });
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
