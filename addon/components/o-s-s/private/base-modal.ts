@@ -16,7 +16,7 @@ export default class BaseModal<T extends BaseModalArgs> extends Component<T> {
   private prevBodyPadding: string | null = null;
 
   @action
-  destroy(): void {
+  onDestroy(): void {
     this._parent?.remove();
     run(() => {
       document.removeEventListener('keyup', this.closeOnEscape);
@@ -27,11 +27,13 @@ export default class BaseModal<T extends BaseModalArgs> extends Component<T> {
   }
 
   @action
-  init(elem: HTMLElement): void {
-    run(() => {
-      document.addEventListener('keyup', this.closeOnEscape);
-      document.addEventListener('mousedown', this.trackInitialTarget);
-    });
+  initialize(elem: HTMLElement, enableListeners: boolean = true): void {
+    if (enableListeners) {
+      run(() => {
+        document.addEventListener('keyup', this.closeOnEscape);
+        document.addEventListener('mousedown', this.trackInitialTarget);
+      });
+    }
     elem.classList.add('show-modal');
     if (this.scrollbarVisible()) {
       this.prevBodyOverflow = document.body.style.overflow;

@@ -1,9 +1,9 @@
 <div
   class="split-modal oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center"
-  {{will-destroy this.destroy}}
+  {{will-destroy this.onDestroy}}
   ...attributes
 >
-  <div class="oss-modal-dialog fx-row" {{on-click-outside this.onClickOutside}} {{did-insert this.init}}>
+  <div class="oss-modal-dialog fx-row" {{on-click-outside this.onClickOutside}} {{did-insert this.initialize}}>
     <div class="split-modal__content fx-col fx-1">
       <div class="oss-modal-dialog--content fx-1 fx-col fx-gap-px-18">
         {{yield to="content"}}

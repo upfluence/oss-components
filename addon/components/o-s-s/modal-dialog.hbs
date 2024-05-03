@@ -1,13 +1,13 @@
 {{#if this.displayModal}}
   <div
     class="oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center"
-    {{will-destroy this.destroy}}
+    {{will-destroy this.onDestroy}}
     ...attributes
   >
     <div
       class="oss-modal-dialog fx-col {{this.modalSize}}"
       {{on-click-outside this.onClickOutside}}
-      {{did-insert this.init}}
+      {{did-insert this.initialize}}
     >
       <header class="fx-row">
         <div class="fx-1 fx-col fx-malign-center">
