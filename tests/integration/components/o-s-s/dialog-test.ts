@@ -32,7 +32,7 @@ module('Integration | Component | o-s-s/dialog', function (hooks) {
       hbs`<OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />`
     );
 
-    assert.dom('.oss-dialog--header').hasText(this.title);
+    assert.dom('.oss-dialog__header').hasText(this.title);
   });
 
   test('The dialog displays the main action button', async function (assert) {
@@ -40,7 +40,7 @@ module('Integration | Component | o-s-s/dialog', function (hooks) {
       hbs`<OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />`
     );
 
-    assert.dom('.oss-dialog--footer .upf-btn--alert').hasText(this.mainAction.label);
+    assert.dom('.oss-dialog__footer .upf-btn--alert').hasText(this.mainAction.label);
   });
 
   test('The dialog displays the secondary action button', async function (assert) {
@@ -48,7 +48,7 @@ module('Integration | Component | o-s-s/dialog', function (hooks) {
       hbs`<OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />`
     );
 
-    assert.dom('.oss-dialog--footer .upf-btn--default').hasText(this.secondaryAction.label);
+    assert.dom('.oss-dialog__footer .upf-btn--default').hasText(this.secondaryAction.label);
   });
 
   test('The dialog calls the main action when the main action button is clicked', async function (assert) {
@@ -65,7 +65,7 @@ module('Integration | Component | o-s-s/dialog', function (hooks) {
       hbs`<OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />`
     );
 
-    await click('.oss-dialog--footer .upf-btn--default');
+    await click('.oss-dialog__footer .upf-btn--default');
     assert.true(this.secondaryAction.action.calledOnce);
   });
 
