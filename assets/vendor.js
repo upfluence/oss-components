@@ -79601,6 +79601,162 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
   var BasicUsage = _exports.BasicUsage = Template.bind({});
   BasicUsage.args = defaultArgs;
 });
+;define("@upfluence/oss-components/components/o-s-s/dialog", ["exports", "@ember/component", "@upfluence/oss-components/components/o-s-s/private/base-modal", "@ember/object", "@ember/debug", "@ember/template-factory"], function (_exports, _component, _baseModal, _object, _debug, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@upfluence/oss-components/components/o-s-s/private/base-modal",0,"@ember/object",0,"@ember/debug",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+  function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="oss-dialog__backdrop fx-row fx-malign-center fx-xalign-center" {{will-destroy this.onDestroy}}>
+    <div class="oss-dialog fx-col" {{did-insert this.onInit}} ...attributes>
+      <div class="oss-dialog__header">
+        <OSS::Badge @icon="fa-warning" @skin="alert" />
+        <span class="font-weight-semibold font-size-md">{{@title}}</span>
+      </div>
+      <div class="oss-dialog__footer">
+        <OSS::Button @skin="alert" @label={{@mainAction.label}} {{on "click" @mainAction.action}} />
+        <OSS::Button @label={{@secondaryAction.label}} {{on "click" @secondaryAction.action}} />
+      </div>
+    </div>
+  </div>
+  */
+  {
+    "id": "5V0DYdr5",
+    "block": "[[[11,0],[24,0,\"oss-dialog__backdrop fx-row fx-malign-center fx-xalign-center\"],[4,[38,0],[[30,0,[\"onDestroy\"]]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"oss-dialog fx-col\"],[17,1],[4,[38,1],[[30,0,[\"onInit\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"oss-dialog__header\"],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@skin\"],[\"fa-warning\",\"alert\"]],null],[1,\"\\n      \"],[10,1],[14,0,\"font-weight-semibold font-size-md\"],[12],[1,[30,2]],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"oss-dialog__footer\"],[12],[1,\"\\n      \"],[8,[39,3],[[4,[38,4],[\"click\",[30,3,[\"action\"]]],null]],[[\"@skin\",\"@label\"],[\"alert\",[30,3,[\"label\"]]]],null],[1,\"\\n      \"],[8,[39,3],[[4,[38,4],[\"click\",[30,4,[\"action\"]]],null]],[[\"@label\"],[[30,4,[\"label\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@title\",\"@mainAction\",\"@secondaryAction\"],false,[\"will-destroy\",\"did-insert\",\"o-s-s/badge\",\"o-s-s/button\",\"on\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/dialog.hbs",
+    "isStrictMode": false
+  });
+  var OSSDialog = _exports.default = (_class = /*#__PURE__*/function (_BaseModal) {
+    _inherits(OSSDialog, _BaseModal);
+    function OSSDialog(owner, args) {
+      var _this;
+      _classCallCheck(this, OSSDialog);
+      _this = _callSuper(this, OSSDialog, [owner, args]);
+      (true && !(typeof args.title === 'string') && (0, _debug.assert)('[component][OSS::Dialog] The title parameter is mandatory', typeof args.title === 'string'));
+      (true && !(_typeof(args.mainAction) === 'object') && (0, _debug.assert)('[component][OSS::Dialog] The mainAction parameter is mandatory', _typeof(args.mainAction) === 'object'));
+      (true && !(_typeof(args.secondaryAction) === 'object') && (0, _debug.assert)('[component][OSS::Dialog] The secondaryAction parameter is mandatory', _typeof(args.secondaryAction) === 'object'));
+      return _this;
+    }
+    _createClass(OSSDialog, [{
+      key: "onInit",
+      value: function onInit(elem) {
+        this.initialize(elem, false);
+      }
+    }]);
+    return OSSDialog;
+  }(_baseModal.default), (_applyDecoratedDescriptor(_class.prototype, "onInit", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onInit"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSDialog);
+});
+;define("@upfluence/oss-components/components/o-s-s/dialog.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.Usage = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::Dialog',
+    component: 'dialog',
+    argTypes: {
+      title: {
+        description: 'The dialog title',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      mainAction: {
+        description: 'A hash with the main action button properties',
+        table: {
+          type: {
+            summary: '{ label: string, action: () => unknown }[]'
+          }
+        },
+        control: {
+          type: '{ label: string, action: () => unknown }[]'
+        }
+      },
+      secondaryAction: {
+        description: 'A hash with the secondary action button properties',
+        table: {
+          type: {
+            summary: '{ label: string, action: () => unknown }[]'
+          }
+        },
+        control: {
+          type: '{ label: string, action: () => unknown }[]'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'A component that displays a dialog with a title and two buttons.'
+        }
+      }
+    }
+  };
+  var defaultArgs = {
+    title: 'You are about to discard your changes',
+    mainAction: {
+      label: 'Discard',
+      action: (0, _addonActions.action)('discard')
+    },
+    secondaryAction: {
+      label: 'Cancel',
+      action: (0, _addonActions.action)('cancel')
+    }
+  };
+  var BasicUsageTemplate = function BasicUsageTemplate(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <OSS::Dialog
+            @title={{this.title}}
+            @mainAction={{this.mainAction}}
+            @secondaryAction={{this.secondaryAction}} />
+        
+      */
+      {
+        "id": "b3yikAeC",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@title\",\"@mainAction\",\"@secondaryAction\"],[[30,0,[\"title\"]],[30,0,[\"mainAction\"]],[30,0,[\"secondaryAction\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/dialog\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/dialog.stories.js",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+  var Usage = _exports.Usage = BasicUsageTemplate.bind({});
+  Usage.args = defaultArgs;
+});
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("@upfluence/oss-components/components/o-s-s/email-input", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/debug", "@ember/object", "@ember/service", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _debug, _object, _service, _templateFactory) {
   "use strict";
@@ -81950,13 +82106,13 @@ define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@
     {{#if this.displayModal}}
     <div
       class="oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center"
-      {{will-destroy this.destroy}}
+      {{will-destroy this.onDestroy}}
       ...attributes
     >
       <div
         class="oss-modal-dialog fx-col {{this.modalSize}}"
         {{on-click-outside this.onClickOutside}}
-        {{did-insert this.init}}
+        {{did-insert this.initialize}}
       >
         <header class="fx-row">
           <div class="fx-1 fx-col fx-malign-center">
@@ -81992,8 +82148,8 @@ define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@
   {{/if}}
   */
   {
-    "id": "CmmfewtS",
-    "block": "[[[41,[30,0,[\"displayModal\"]],[[[1,\"  \"],[11,0],[24,0,\"oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center\"],[17,1],[4,[38,1],[[30,0,[\"destroy\"]]],null],[12],[1,\"\\n    \"],[11,0],[16,0,[29,[\"oss-modal-dialog fx-col \",[30,0,[\"modalSize\"]]]]],[4,[38,2],[[30,0,[\"onClickOutside\"]]],null],[4,[38,3],[[30,0,[\"init\"]]],null],[12],[1,\"\\n      \"],[10,\"header\"],[14,0,\"fx-row\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-1 fx-col fx-malign-center\"],[12],[1,\"\\n          \"],[10,1],[14,0,\"title\"],[12],[1,[30,2]],[13],[1,\"\\n          \"],[10,1],[14,0,\"subtitle\"],[12],[1,[30,3]],[13],[1,\"\\n        \"],[13],[1,\"\\n        \"],[8,[39,4],[[24,0,\"padding-px-12\"],[24,\"role\",\"button\"],[24,\"data-control-name\",\"close-modal-button\"],[4,[38,5],[\"click\",[30,0,[\"closeModal\"]]],null]],[[\"@style\",\"@icon\"],[\"solid\",\"fa-times\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[48,[30,4]],[[[1,\"        \"],[18,4,null],[1,\"\\n\"]],[]],null],[1,\"\\n      \"],[10,0],[14,0,\"oss-modal-dialog--content fx-1\"],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"          \"],[18,5,null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n      \"],[10,\"footer\"],[14,0,\"fx-row fx-xalign-center\"],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"          \"],[18,6,null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"]],[]],null]],[\"&attrs\",\"@title\",\"@subtitle\",\"&illustration\",\"&content\",\"&footer\"],false,[\"if\",\"will-destroy\",\"on-click-outside\",\"did-insert\",\"o-s-s/icon\",\"on\",\"has-block\",\"yield\"]]",
+    "id": "A4DUKD3O",
+    "block": "[[[41,[30,0,[\"displayModal\"]],[[[1,\"  \"],[11,0],[24,0,\"oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center\"],[17,1],[4,[38,1],[[30,0,[\"onDestroy\"]]],null],[12],[1,\"\\n    \"],[11,0],[16,0,[29,[\"oss-modal-dialog fx-col \",[30,0,[\"modalSize\"]]]]],[4,[38,2],[[30,0,[\"onClickOutside\"]]],null],[4,[38,3],[[30,0,[\"initialize\"]]],null],[12],[1,\"\\n      \"],[10,\"header\"],[14,0,\"fx-row\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-1 fx-col fx-malign-center\"],[12],[1,\"\\n          \"],[10,1],[14,0,\"title\"],[12],[1,[30,2]],[13],[1,\"\\n          \"],[10,1],[14,0,\"subtitle\"],[12],[1,[30,3]],[13],[1,\"\\n        \"],[13],[1,\"\\n        \"],[8,[39,4],[[24,0,\"padding-px-12\"],[24,\"role\",\"button\"],[24,\"data-control-name\",\"close-modal-button\"],[4,[38,5],[\"click\",[30,0,[\"closeModal\"]]],null]],[[\"@style\",\"@icon\"],[\"solid\",\"fa-times\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[48,[30,4]],[[[1,\"        \"],[18,4,null],[1,\"\\n\"]],[]],null],[1,\"\\n      \"],[10,0],[14,0,\"oss-modal-dialog--content fx-1\"],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"          \"],[18,5,null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n      \"],[10,\"footer\"],[14,0,\"fx-row fx-xalign-center\"],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"          \"],[18,6,null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"]],[]],null]],[\"&attrs\",\"@title\",\"@subtitle\",\"&illustration\",\"&content\",\"&footer\"],false,[\"if\",\"will-destroy\",\"on-click-outside\",\"did-insert\",\"o-s-s/icon\",\"on\",\"has-block\",\"yield\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/modal-dialog.hbs",
     "isStrictMode": false
   });
@@ -84356,8 +84512,8 @@ define("@upfluence/oss-components/components/o-s-s/private/base-modal", ["export
       return _this;
     }
     _createClass(BaseModal, [{
-      key: "destroy",
-      value: function destroy() {
+      key: "onDestroy",
+      value: function onDestroy() {
         var _this$_parent,
           _this2 = this;
         (_this$_parent = this._parent) === null || _this$_parent === void 0 || _this$_parent.remove();
@@ -84369,13 +84525,16 @@ define("@upfluence/oss-components/components/o-s-s/private/base-modal", ["export
         document.body.style.paddingRight = this.prevBodyPadding || '0';
       }
     }, {
-      key: "init",
-      value: function init(elem) {
+      key: "initialize",
+      value: function initialize(elem) {
         var _this3 = this;
-        (0, _runloop.run)(function () {
-          document.addEventListener('keyup', _this3.closeOnEscape);
-          document.addEventListener('mousedown', _this3.trackInitialTarget);
-        });
+        var enableListeners = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : true;
+        if (enableListeners) {
+          (0, _runloop.run)(function () {
+            document.addEventListener('keyup', _this3.closeOnEscape);
+            document.addEventListener('mousedown', _this3.trackInitialTarget);
+          });
+        }
         elem.classList.add('show-modal');
         if (this.scrollbarVisible()) {
           this.prevBodyOverflow = document.body.style.overflow;
@@ -84422,7 +84581,7 @@ define("@upfluence/oss-components/components/o-s-s/private/base-modal", ["export
       }
     }]);
     return BaseModal;
-  }(_component.default), (_applyDecoratedDescriptor(_class.prototype, "destroy", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "destroy"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "init", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "init"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeModal", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeModal"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeOnEscape", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeOnEscape"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "trackInitialTarget", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "trackInitialTarget"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype)), _class);
+  }(_component.default), (_applyDecoratedDescriptor(_class.prototype, "onDestroy", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onDestroy"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "initialize", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initialize"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeModal", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeModal"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeOnEscape", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeOnEscape"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "trackInitialTarget", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "trackInitialTarget"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype)), _class);
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("@upfluence/oss-components/components/o-s-s/progress-bar", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _templateFactory) {
@@ -85704,10 +85863,10 @@ define("@upfluence/oss-components/components/o-s-s/split-modal", ["exports", "@e
   /*
     <div
     class="split-modal oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center"
-    {{will-destroy this.destroy}}
+    {{will-destroy this.onDestroy}}
     ...attributes
   >
-    <div class="oss-modal-dialog fx-row" {{on-click-outside this.onClickOutside}} {{did-insert this.init}}>
+    <div class="oss-modal-dialog fx-row" {{on-click-outside this.onClickOutside}} {{did-insert this.initialize}}>
       <div class="split-modal__content fx-col fx-1">
         <div class="oss-modal-dialog--content fx-1 fx-col fx-gap-px-18">
           {{yield to="content"}}
@@ -85732,8 +85891,8 @@ define("@upfluence/oss-components/components/o-s-s/split-modal", ["exports", "@e
   </div>
   */
   {
-    "id": "HmrdPsL5",
-    "block": "[[[11,0],[24,0,\"split-modal oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center\"],[17,1],[4,[38,0],[[30,0,[\"destroy\"]]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"oss-modal-dialog fx-row\"],[4,[38,1],[[30,0,[\"onClickOutside\"]]],null],[4,[38,2],[[30,0,[\"init\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"split-modal__content fx-col fx-1\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"oss-modal-dialog--content fx-1 fx-col fx-gap-px-18\"],[12],[1,\"\\n        \"],[18,2,null],[1,\"\\n      \"],[13],[1,\"\\n\"],[41,[48,[30,3]],[[[1,\"        \"],[10,\"footer\"],[14,0,\"fx-row fx-malign-center fx-xalign-space-between\"],[12],[1,\"\\n          \"],[18,3,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"split-modal__preview\"],[12],[1,\"\\n      \"],[8,[39,6],[[24,0,\"close-modal-icon\"],[24,\"role\",\"button\"],[4,[38,7],[\"click\",[30,0,[\"closeModal\"]]],null]],[[\"@style\",\"@icon\"],[\"solid\",\"fa-times\"]],null],[1,\"\\n      \"],[18,4,null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"&content\",\"&footer\",\"&preview\"],false,[\"will-destroy\",\"on-click-outside\",\"did-insert\",\"yield\",\"if\",\"has-block\",\"o-s-s/icon\",\"on\"]]",
+    "id": "TRtIVCP6",
+    "block": "[[[11,0],[24,0,\"split-modal oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center\"],[17,1],[4,[38,0],[[30,0,[\"onDestroy\"]]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"oss-modal-dialog fx-row\"],[4,[38,1],[[30,0,[\"onClickOutside\"]]],null],[4,[38,2],[[30,0,[\"initialize\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"split-modal__content fx-col fx-1\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"oss-modal-dialog--content fx-1 fx-col fx-gap-px-18\"],[12],[1,\"\\n        \"],[18,2,null],[1,\"\\n      \"],[13],[1,\"\\n\"],[41,[48,[30,3]],[[[1,\"        \"],[10,\"footer\"],[14,0,\"fx-row fx-malign-center fx-xalign-space-between\"],[12],[1,\"\\n          \"],[18,3,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"split-modal__preview\"],[12],[1,\"\\n      \"],[8,[39,6],[[24,0,\"close-modal-icon\"],[24,\"role\",\"button\"],[4,[38,7],[\"click\",[30,0,[\"closeModal\"]]],null]],[[\"@style\",\"@icon\"],[\"solid\",\"fa-times\"]],null],[1,\"\\n      \"],[18,4,null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"&content\",\"&footer\",\"&preview\"],false,[\"will-destroy\",\"on-click-outside\",\"did-insert\",\"yield\",\"if\",\"has-block\",\"o-s-s/icon\",\"on\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/split-modal.hbs",
     "isStrictMode": false
   });
