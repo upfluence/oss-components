@@ -429,6 +429,20 @@ export default class ApplicationController extends Controller {
   onAttributePanelEdit(mode) {
     console.log(`Attributes panel edition ${mode}`);
   }
+
+  @tracked showDialog = false;
+
+  @action
+  onMainAction() {
+    console.log('Discard changes');
+    this.showDialog = false;
+  }
+
+  @action
+  onSecondaryAction() {
+    console.log('Keep editing');
+    this.showDialog = false;
+  }
 }
 
 const testScript = `import { module, test } from 'qunit';

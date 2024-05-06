@@ -1,0 +1,12 @@
+<div class="oss-dialog__backdrop fx-row fx-malign-center fx-xalign-center" {{will-destroy this.onDestroy}}>
+  <div class="oss-dialog fx-col" {{did-insert this.onInit}} ...attributes>
+    <div class="oss-dialog__header">
+      <OSS::Badge @icon="fa-warning" @skin="alert" />
+      <span class="font-weight-semibold font-size-md">{{@title}}</span>
+    </div>
+    <div class="oss-dialog__footer">
+      <OSS::Button @skin="alert" @label={{@mainAction.label}} {{on "click" @mainAction.action}} />
+      <OSS::Button @label={{@secondaryAction.label}} {{on "click" @secondaryAction.action}} />
+    </div>
+  </div>
+</div>
