@@ -56,7 +56,7 @@ module('Integration | Component | o-s-s/dialog', function (hooks) {
       hbs`<OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />`
     );
 
-    await click('.oss-dialog--footer .upf-btn--alert');
+    await click('.oss-dialog__footer .upf-btn--alert');
     assert.true(this.mainAction.action.calledOnce);
   });
 
