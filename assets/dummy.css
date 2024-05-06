@@ -15629,6 +15629,7 @@ a.upf-btn--sm {
   padding: var(--spacing-px-24);
   border-bottom: 1px solid var(--color-border-default);
   align-items: center;
+  text-align: center;
 }
 .oss-dialog__footer {
   padding: var(--spacing-px-12);
