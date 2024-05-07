@@ -1,6 +1,6 @@
 <OSS::Anchor
-  @link={{unless this.locked @link}}
-  {{on "click" this.prevent}}
+  @link={{@link}}
+  {{on "click" this.onClick}}
   class="oss-sidebar-item"
   disabled={{if this.locked "disabled"}}
   ...attributes
