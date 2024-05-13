@@ -15450,11 +15450,18 @@ a.upf-btn--sm {
   border-radius: var(--border-radius-md);
   padding: 0;
   height: fit-content;
-  overflow: hidden;
   background-color: var(--color-white);
 }
 .togglable-section .content-block {
   animation: append-animation 300ms linear;
+}
+.togglable-section .header-block {
+  border-top-left-radius: var(--border-radius-md);
+  border-top-right-radius: var(--border-radius-md);
+}
+.togglable-section:not(:has(.content-block)) .header-block {
+  border-bottom-left-radius: var(--border-radius-md);
+  border-bottom-right-radius: var(--border-radius-md);
 }
 .togglable-section .header-block:hover {
   background-color: var(--color-gray-50);
