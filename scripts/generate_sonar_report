@@ -1,0 +1,40 @@
+#!/bin/bash
+## This script automates the flow to generate a new activity report in sonarqube
+
+echo "[Generating a sonar report.]"
+echo ""
+echo ""
+
+## Check that sonarqube property file exists
+echo "[Step1] Check for sonar-project.properties file existence:"
+if test -f "./sonar-project.properties"; then
+  echo "File exists."
+else
+  echo "File is missing. Check your configuration."
+  exit 1
+fi
+
+## Run ember test & generate code coverage with [ember-cli-code-coverage]
+echo ""
+echo ""
+echo "[Step2] Run ember test - dot reporter to generate lcovinfo file"
+COVERAGE=true ember test --silent -r dot
+
+## Check that coverage folder has been generated
+echo ""
+echo ""
+echo "[Step3] Check that coverage folder has been generated"
+if [ -d "./coverage" ]; then
+  echo "./coverage directory successfully created."
+else
+  echo "./coverage directory not found. Check your configuration."
+  exit 1
+fi
+
+## Run sonar-scanner with the proper project version
+echo ""
+echo ""
+echo "[Step4] Run sonar-scanner"
+sonar-scanner -Dsonar.projectVersion=$(git describe --tags --abbrev=0) -Dsonar.login=$SONARCLOUD_FRONTEND_TOKEN
+
+echo "[Success]"

@@ -21,6 +21,9 @@ module.exports = {
   options: {
     autoImport: {
       exclude: ['@storybook/addon-actions']
+    },
+    babel: {
+      plugins: [...require('ember-cli-code-coverage').buildBabelPlugin()]
     }
   },
 
