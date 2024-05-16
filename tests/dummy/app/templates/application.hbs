@@ -35,15 +35,38 @@
       <OSS::Layout::Navbar::NavItem @icon='fa-code-branch' @label='Third Label' @active={{true}} />
     </div>
 
-    <div class='fx-row fx-gap-px-10 margin-md'>
-      <div
-        class='fx-col fx-gap-px-6 fx-xalign-center'
-        data-content={{'zezerzer'}}
+    <div class='fx-col fx-gap-px-10 margin-md fx-xalign-center'>
+      <p
+        data-content={{'right'}}
         data-title={{'azeazeaze'}}
         data-placement='right'
         data-html='true'
         {{(modifier 'enable-popover')}}
-      >azeazeazeazeaze</div>
+      >right</p>
+
+      <p
+        data-content={{'bottom'}}
+        data-title={{'azeazeaze'}}
+        data-placement='bottom'
+        data-html='true'
+        {{(modifier 'enable-popover')}}
+      >bottom</p>
+
+      <p
+        data-content={{'top'}}
+        data-title={{'azeazeaze'}}
+        data-placement='top'
+        data-html='true'
+        {{(modifier 'enable-popover')}}
+      >top</p>
+
+      <p
+        data-content={{'left'}}
+        data-title={{'azeazeaze'}}
+        data-placement='left'
+        data-html='true'
+        {{(modifier 'enable-popover')}}
+      >left</p>
       <OSS::PasswordInput @value={{this.password}} @validates={{this.onPasswordValidation}} />
     </div>
     <div class='fx-row fx-gap-px-10 margin-md padding-md' style='background-color:sandybrown'>

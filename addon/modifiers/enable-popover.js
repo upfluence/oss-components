@@ -17,9 +17,10 @@ export default setModifierManager(
 
       const handleMouseEnter = () => {
         const popover = document.createElement('div');
-        popover.textContent = 'azeazeazeaze new';
         popover.classList.add('oss--popover');
         popover.setAttribute('role', 'tooltip');
+
+        const placement = element.getAttribute('data-placement') || 'top';
 
         if (element.getAttribute('data-title')) {
           const titleNode = document.createTextNode(element.getAttribute('data-title'));
@@ -35,6 +36,37 @@ export default setModifierManager(
         }
 
         element.appendChild(popover);
+
+        const parentRect = element.getBoundingClientRect();
+        const popoverRect = popover.getBoundingClientRect();
+
+        let left, top;
+
+        switch (placement) {
+          case 'top':
+            top = parentRect.top - popoverRect.height;
+            left = parentRect.left + parentRect.width / 2 - popoverRect.width / 2;
+            break;
+          case 'bottom':
+            top = parentRect.bottom;
+            left = parentRect.left + parentRect.width / 2 - popoverRect.width / 2;
+            break;
+          case 'left':
+            top = parentRect.top + parentRect.height / 2 - popoverRect.height / 2;
+            left = parentRect.left - popoverRect.width;
+            break;
+          case 'right':
+            top = parentRect.top + parentRect.height / 2 - popoverRect.height / 2;
+            left = parentRect.right;
+            break;
+          default:
+            top = parentRect.top - popoverRect.height;
+            left = parentRect.left + parentRect.width / 2 - popoverRect.width / 2;
+            break;
+        }
+
+        popover.style.left = left + 'px';
+        popover.style.top = top + 'px';
 
         state.handleMouseLeave = () => {
           popover.remove();
