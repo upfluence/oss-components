@@ -64,3 +64,6 @@ upfluence: ## Displays the UPF logo :)
 	@sh ./scripts/upf_logo
 	@echo ""
 	@echo ""
+
+sonar-report: ## Runs a bunch of commands that will finally lead to a new report in sonarqube
+	./scripts/generate_sonar_report

@@ -8,9 +8,15 @@ import { start } from 'ember-qunit';
 import 'qunit-dom';
 
 import registerAssertions from '@upfluence/oss-components/test-support/register-assertions';
+import { forceModulesToBeLoaded, sendCoverage } from 'ember-cli-code-coverage/test-support';
 
 registerAssertions(QUnit.assert);
 setup(QUnit.assert);
+QUnit.done(async function () {
+  forceModulesToBeLoaded();
+  await sendCoverage();
+});
+
 setApplication(Application.create(config.APP));
 
 start();

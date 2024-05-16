@@ -101,6 +101,7 @@
     "babel-loader": "^8.1.0",
     "css-loader": "^5.2.7",
     "ember-cli": "~3.28.6",
+    "ember-cli-code-coverage": "^3.0.0",
     "ember-cli-inject-live-reload": "^2.1.0",
     "ember-cli-typescript-blueprints": "upfluence/ember-cli-typescript-blueprints#ember-4-update",
     "ember-disable-prototype-extensions": "^1.1.3",

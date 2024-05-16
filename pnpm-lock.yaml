@@ -190,6 +190,9 @@ devDependencies:
   ember-cli:
     specifier: ~3.28.6
     version: 3.28.6(react-dom@17.0.2)(react@17.0.2)
+  ember-cli-code-coverage:
+    specifier: ^3.0.0
+    version: 3.0.0
   ember-cli-inject-live-reload:
     specifier: ^2.1.0
     version: 2.1.0
@@ -677,7 +680,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.12.9
-      '@babel/helper-plugin-utils': 7.10.4
+      '@babel/helper-plugin-utils': 7.22.5
       '@babel/plugin-syntax-object-rest-spread': 7.8.3(@babel/core@7.12.9)
       '@babel/plugin-transform-parameters': 7.23.3(@babel/core@7.12.9)
     dev: true
@@ -8532,6 +8535,33 @@ packages:
       - supports-color
     dev: false
 
+  /ember-cli-code-coverage@3.0.0:
+    resolution: {integrity: sha512-IAVET5oKS0IkEAPUTKOzHlNk1Z+986//8LZmfqhkSGkGJ76tFLw8AAS+BloUctX7J/xCUNn/1voBVqb5oabMPw==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      '@embroider/compat': ^0.47.0 || ^1.0.0 || ^2.0.0 || >=3.0.0
+      '@embroider/core': ^0.47.0 || ^1.0.0 || ^2.0.0 || >=3.0.0
+    peerDependenciesMeta:
+      '@embroider/compat':
+        optional: true
+      '@embroider/core':
+        optional: true
+    dependencies:
+      babel-plugin-istanbul: 6.1.1
+      body-parser: 1.20.1
+      ember-cli-babel: 7.26.11
+      express: 4.18.2
+      fs-extra: 9.1.0
+      istanbul-lib-coverage: 3.2.2
+      istanbul-lib-report: 3.0.1
+      istanbul-lib-source-maps: 4.0.1
+      istanbul-reports: 3.1.7
+      node-dir: 0.1.17
+      walk-sync: 2.2.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /ember-cli-get-component-path-option@1.0.0:
     resolution: {integrity: sha512-k47TDwcJ2zPideBCZE8sCiShSxQSpebY2BHcX2DdipMmBox5gsfyVrbKJWIHeSTTKyEUgmBIvQkqTOozEziCZA==}
 
@@ -11162,6 +11192,10 @@ packages:
     resolution: {integrity: sha512-igBTJcNNNhvZFRtm8uA6xMY6xYleeDwn3PeBCkDz7tHttv4F2hsDI2aPgNERWzvRcNYHNT3ymRaQzllmXj4YsQ==}
     dev: true
 
+  /html-escaper@2.0.2:
+    resolution: {integrity: sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==}
+    dev: true
+
   /html-minifier-terser@5.1.1:
     resolution: {integrity: sha512-ZPr5MNObqnV/T9akshPKbVgyOqLmy+Bxo7juKCfTfnjNniTAMdy4hz21YQqoofMBJD2kdREaqPPdThoR78Tgxg==}
     engines: {node: '>=6'}
@@ -11895,6 +11929,34 @@ packages:
       - supports-color
     dev: true
 
+  /istanbul-lib-report@3.0.1:
+    resolution: {integrity: sha512-GCfE1mtsHGOELCU8e/Z7YWzpmybrx/+dSTfLrvY8qRmaY6zXTKWn6WQIjaAFw069icm6GVMNkgu0NzI4iPZUNw==}
+    engines: {node: '>=10'}
+    dependencies:
+      istanbul-lib-coverage: 3.2.2
+      make-dir: 4.0.0
+      supports-color: 7.2.0
+    dev: true
+
+  /istanbul-lib-source-maps@4.0.1:
+    resolution: {integrity: sha512-n3s8EwkdFIJCG3BPKBYvskgXGoy88ARzvegkitk60NxRdwltLOTaH7CUiMRXvwYorl0Q712iEjcWB+fK/MrWVw==}
+    engines: {node: '>=10'}
+    dependencies:
+      debug: 4.3.4
+      istanbul-lib-coverage: 3.2.2
+      source-map: 0.6.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /istanbul-reports@3.1.7:
+    resolution: {integrity: sha512-BewmUXImeuRk2YY0PVbxgKAysvhRPUQE0h5QRM++nVWyubKGV0l8qQ5op8+B2DOmwSe63Jivj0BjkPQVf8fP5g==}
+    engines: {node: '>=8'}
+    dependencies:
+      html-escaper: 2.0.2
+      istanbul-lib-report: 3.0.1
+    dev: true
+
   /istextorbinary@2.1.0:
     resolution: {integrity: sha512-kT1g2zxZ5Tdabtpp9VSdOzW9lb6LXImyWbzbQeTxoRtHhurC9Ej9Wckngr2+uepPL09ky/mJHmN9jeJPML5t6A==}
     engines: {node: '>=0.12'}
@@ -12571,6 +12633,13 @@ packages:
     dependencies:
       semver: 6.3.1
 
+  /make-dir@4.0.0:
+    resolution: {integrity: sha512-hXdUTZYIVOt1Ex//jAQi+wTZZpUpwBj/0QsOzqegb3rGMMeJiSEu5xLHnYfBrRV4RH2+OCSOO95Is/7x1WJ4bw==}
+    engines: {node: '>=10'}
+    dependencies:
+      semver: 7.6.0
+    dev: true
+
   /makeerror@1.0.12:
     resolution: {integrity: sha512-JmqCvUhmt43madlpFzG4BQzG2Z3m6tvQDNKdClZnO3VbIudJYmxsT0FNJMeiB2+JTSlTQTSbU8QdesVmwJcmLg==}
     dependencies:
@@ -13152,6 +13221,13 @@ packages:
     dependencies:
       lower-case: 2.0.2
       tslib: 2.6.2
+    dev: true
+
+  /node-dir@0.1.17:
+    resolution: {integrity: sha512-tmPX422rYgofd4epzrNoOXiE8XFZYOcCq1vD7MAXCDO+O+zndlA2ztdKKMa+EeuBG5tHETpr4ml4RGgpqDCCAg==}
+    engines: {node: '>= 0.10.5'}
+    dependencies:
+      minimatch: 3.1.2
     dev: true
 
   /node-fetch@2.7.0:
@@ -14492,7 +14568,6 @@ packages:
       react: 16.14.0
       scheduler: 0.19.1
     dev: true
-    bundledDependencies: false
 
   /react-dom@17.0.2(react@17.0.2):
     resolution: {integrity: sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==}
@@ -14770,7 +14845,6 @@ packages:
       object-assign: 4.1.1
       prop-types: 15.8.1
     dev: true
-    bundledDependencies: false
 
   /react@17.0.2:
     resolution: {integrity: sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==}
