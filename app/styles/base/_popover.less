@@ -1,9 +1,11 @@
 .oss--popover {
   position: absolute;
-  background-color: white;
+  border-radius: var(--border-radius-md);
+  background-color: var(--color-white);
   z-index: 9999;
   padding: var(--spacing-px-12);
   border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-lg);
 
   &::after {
     content: '';
@@ -12,7 +14,7 @@
     height: 0;
     border-left: var(--spacing-px-12) solid transparent;
     border-right: var(--spacing-px-12) solid transparent;
-    border-bottom: var(--spacing-px-12) solid #fff;
+    border-bottom: var(--spacing-px-6) solid white;
   }
 
   &.right::after {
@@ -21,4 +23,38 @@
     right: calc(100% - var(--spacing-px-12));
     transform: translateY(-50%) rotate(-90deg);
   }
+
+  &.bottom::after {
+    top: auto;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) rotate(0deg);
+  }
+
+  &.left::after {
+    top: 50%;
+    right: auto;
+    left: calc(100% - var(--spacing-px-12));
+    transform: translateY(-50%) rotate(90deg);
+  }
+
+  &.top::after {
+    bottom: auto;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) rotate(180deg);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.2s ease-in-out;
 }
