@@ -11,7 +11,7 @@ interface OSSInputContainerArgs {
 }
 
 export default class OSSInputContainer extends Component<OSSInputContainerArgs> {
-  get displayRedBorder(): boolean {
+  get displayErrorStyle(): boolean {
     return Boolean(this.args.errorMessage) || Boolean(this.args.hasError);
   }
 

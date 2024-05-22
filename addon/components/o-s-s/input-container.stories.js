@@ -47,7 +47,7 @@ export default {
     },
     hasError: {
       description:
-        'Allows setting a red border on the input without showing an error message. Useful for form validation.',
+        'Allows setting the error style on the input without showing an error message. Useful for form validation.',
       table: {
         type: {
           summary: 'boolean'
