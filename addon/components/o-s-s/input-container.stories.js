@@ -45,6 +45,17 @@ export default {
       },
       control: { type: 'text' }
     },
+    hasError: {
+      description:
+        'Allows setting the error style on the input without showing an error message. Useful for form validation.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'boolean' }
+    },
     onChange: {
       description: 'Method called every time the input is updated',
       table: {

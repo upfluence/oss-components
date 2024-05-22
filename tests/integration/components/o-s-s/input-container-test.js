@@ -79,6 +79,41 @@ module('Integration | Component | o-s-s/input-container', function (hooks) {
     });
   });
 
+  module('Error States', () => {
+    test('Passing an @errorMessage parameter displays an error message and sets the input border to red', async function (assert) {
+      await render(hbs`<OSS::InputContainer @errorMessage="This is an error message" />`);
+      assert.dom('.oss-input-container').hasClass('oss-input-container--errored');
+      assert.dom('.text-color-error').hasText('This is an error message');
+    });
+
+    test('Setting @errorMessage parameter to an empty string does not display an error message', async function (assert) {
+      await render(hbs`<OSS::InputContainer @errorMessage="" />`);
+      assert.dom('.oss-input-container').doesNotHaveClass('oss-input-container--errored');
+      assert.dom('.text-color-error').doesNotExist();
+    });
+
+    test('Passing a @hasError parameter displays a red border around the input', async function (assert) {
+      await render(hbs`<OSS::InputContainer @hasError={{true}} />`);
+      assert.dom('.oss-input-container').hasClass('oss-input-container--errored');
+    });
+
+    test('Setting @hasError parameter to false does not display a red border around the input', async function (assert) {
+      await render(hbs`<OSS::InputContainer @hasError={{false}} />`);
+      assert.dom('.oss-input-container').doesNotHaveClass('oss-input-container--errored');
+    });
+
+    test('Setting @hasError parameter to undefined does not display a red border around the input', async function (assert) {
+      await render(hbs`<OSS::InputContainer @hasError={{undefined}} />`);
+      assert.dom('.oss-input-container').doesNotHaveClass('oss-input-container--errored');
+    });
+
+    test('Having both @errorMessage and @hasError parameters set to true displays the error message', async function (assert) {
+      await render(hbs`<OSS::InputContainer @errorMessage="This is an error message" @hasError={{true}} />`);
+      assert.dom('.oss-input-container').hasClass('oss-input-container--errored');
+      assert.dom('.text-color-error').hasText('This is an error message');
+    });
+  });
+
   module('Extra attributes', () => {
     test('passing an extra class is applied to the component', async function (assert) {
       await render(hbs`<OSS::InputContainer class="my-extra-class" />`);

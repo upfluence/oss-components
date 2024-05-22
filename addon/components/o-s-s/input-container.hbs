@@ -1,5 +1,5 @@
 <div class="fx-col">
-  <div class="oss-input-container {{if @errorMessage ' oss-input-container--errored'}}
+  <div class="oss-input-container {{if this.displayErrorStyle ' oss-input-container--errored'}}
               {{if (has-block "prefix") ' has-prefix'}}
               {{if (has-block "suffix") ' has-suffix'}}"
        ...attributes>
@@ -21,6 +21,6 @@
     {{/if}}
   </div>
   {{#if @errorMessage}}
-    <span class="text-color-error margin-top-xxx-sm">{{@errorMessage}}</span>
+    <span class="text-color-error margin-top-px-6">{{@errorMessage}}</span>
   {{/if}}
 </div>
