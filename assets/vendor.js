@@ -81007,7 +81007,7 @@ define("@upfluence/oss-components/components/o-s-s/input-container", ["exports",
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class="fx-col">
-    <div class="oss-input-container {{if @errorMessage ' oss-input-container--errored'}}
+    <div class="oss-input-container {{if this.displayErrorStyle ' oss-input-container--errored'}}
                 {{if (has-block "prefix") ' has-prefix'}}
                 {{if (has-block "suffix") ' has-suffix'}}"
          ...attributes>
@@ -81029,14 +81029,14 @@ define("@upfluence/oss-components/components/o-s-s/input-container", ["exports",
       {{/if}}
     </div>
     {{#if @errorMessage}}
-      <span class="text-color-error margin-top-xxx-sm">{{@errorMessage}}</span>
+      <span class="text-color-error margin-top-px-6">{{@errorMessage}}</span>
     {{/if}}
   </div>
   
   */
   {
-    "id": "M3bwL791",
-    "block": "[[[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-input-container \",[52,[30,1],\" oss-input-container--errored\"],\"\\n              \",[52,[48,[30,6]],\" has-prefix\"],\"\\n              \",[52,[48,[30,7]],\" has-suffix\"]]]],[17,2],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"      \"],[10,0],[14,0,\"prefix\"],[12],[18,6,null],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"      \"],[10,0],[14,0,\"yielded-input\"],[12],[1,\"\\n        \"],[18,8,null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,3],[[16,\"placeholder\",[30,3]],[16,\"disabled\",[30,4]],[24,0,\"upf-input\"],[4,[38,4],[\"keyup\",[28,[37,5],[[30,0,[\"_onChange\"]],[30,5]],null]],null]],[[\"@value\"],[[30,5]]],null],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"      \"],[10,0],[14,0,\"suffix\"],[12],[18,7,null],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,1],[[[1,\"    \"],[10,1],[14,0,\"text-color-error margin-top-xxx-sm\"],[12],[1,[30,1]],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"@errorMessage\",\"&attrs\",\"@placeholder\",\"@disabled\",\"@value\",\"&prefix\",\"&suffix\",\"&input\"],false,[\"if\",\"has-block\",\"yield\",\"input\",\"on\",\"fn\"]]",
+    "id": "FDJR1uQD",
+    "block": "[[[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-input-container \",[52,[30,0,[\"displayErrorStyle\"]],\" oss-input-container--errored\"],\"\\n              \",[52,[48,[30,6]],\" has-prefix\"],\"\\n              \",[52,[48,[30,7]],\" has-suffix\"]]]],[17,1],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"      \"],[10,0],[14,0,\"prefix\"],[12],[18,6,null],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"      \"],[10,0],[14,0,\"yielded-input\"],[12],[1,\"\\n        \"],[18,8,null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,3],[[16,\"placeholder\",[30,2]],[16,\"disabled\",[30,3]],[24,0,\"upf-input\"],[4,[38,4],[\"keyup\",[28,[37,5],[[30,0,[\"_onChange\"]],[30,4]],null]],null]],[[\"@value\"],[[30,4]]],null],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"      \"],[10,0],[14,0,\"suffix\"],[12],[18,7,null],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,5],[[[1,\"    \"],[10,1],[14,0,\"text-color-error margin-top-px-6\"],[12],[1,[30,5]],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@placeholder\",\"@disabled\",\"@value\",\"@errorMessage\",\"&prefix\",\"&suffix\",\"&input\"],false,[\"if\",\"has-block\",\"yield\",\"input\",\"on\",\"fn\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/input-container.hbs",
     "isStrictMode": false
   });
@@ -81047,6 +81047,11 @@ define("@upfluence/oss-components/components/o-s-s/input-container", ["exports",
       return _callSuper(this, OSSInputContainer, arguments);
     }
     _createClass(OSSInputContainer, [{
+      key: "displayErrorStyle",
+      get: function get() {
+        return Boolean(this.args.errorMessage) || Boolean(this.args.hasError);
+      }
+    }, {
       key: "_onChange",
       value: function _onChange(value) {
         if (this.args.onChange) {
@@ -81124,6 +81129,20 @@ define("@upfluence/oss-components/components/o-s-s/input-container", ["exports",
         },
         control: {
           type: 'text'
+        }
+      },
+      hasError: {
+        description: 'Allows setting the error style on the input without showing an error message. Useful for form validation.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'boolean'
         }
       },
       onChange: {
