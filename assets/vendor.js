@@ -81738,8 +81738,8 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["expor
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <OSS::Anchor
-    @link={{unless this.locked @link}}
-    {{on "click" this.prevent}}
+    @link={{@link}}
+    {{on "click" this.onClick}}
     class="oss-sidebar-item"
     disabled={{if this.locked "disabled"}}
     ...attributes
@@ -81758,8 +81758,8 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["expor
   </OSS::Anchor>
   */
   {
-    "id": "cpn6FglU",
-    "block": "[[[8,[39,0],[[24,0,\"oss-sidebar-item\"],[16,\"disabled\",[52,[30,0,[\"locked\"]],\"disabled\"]],[17,1],[4,[38,3],[\"click\",[30,0,[\"prevent\"]]],null]],[[\"@link\"],[[52,[51,[30,0,[\"locked\"]]],[30,2]]]],[[\"default\"],[[[[1,\"\\n\"],[41,[30,0,[\"locked\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-item--locked\"],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[\"light\",\"fa-lock\"]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"oss-sidebar-item--icon\"],[12],[1,\"\\n    \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[[28,[37,5],[[30,3]],null],[28,[37,6],[[30,3]],null]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"hasNotifications\"]],[[[1,\"    \"],[10,1],[14,0,\"oss-sidebar-item--notification\"],[12],[13],[1,\"\\n\"]],[]],null]],[]]]]]],[\"&attrs\",\"@link\",\"@icon\"],false,[\"o-s-s/anchor\",\"if\",\"unless\",\"on\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
+    "id": "3td8Q5CN",
+    "block": "[[[8,[39,0],[[24,0,\"oss-sidebar-item\"],[16,\"disabled\",[52,[30,0,[\"locked\"]],\"disabled\"]],[17,1],[4,[38,2],[\"click\",[30,0,[\"onClick\"]]],null]],[[\"@link\"],[[30,2]]],[[\"default\"],[[[[1,\"\\n\"],[41,[30,0,[\"locked\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-item--locked\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@style\",\"@icon\"],[\"light\",\"fa-lock\"]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"oss-sidebar-item--icon\"],[12],[1,\"\\n    \"],[8,[39,3],null,[[\"@style\",\"@icon\"],[[28,[37,4],[[30,3]],null],[28,[37,5],[[30,3]],null]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"hasNotifications\"]],[[[1,\"    \"],[10,1],[14,0,\"oss-sidebar-item--notification\"],[12],[13],[1,\"\\n\"]],[]],null]],[]]]]]],[\"&attrs\",\"@link\",\"@icon\"],false,[\"o-s-s/anchor\",\"if\",\"on\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/layout/sidebar/item.hbs",
     "isStrictMode": false
   });
@@ -81780,9 +81780,8 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["expor
         return this.args.hasNotifications || false;
       }
     }, {
-      key: "prevent",
-      value: function prevent(event) {
-        event === null || event === void 0 || event.stopPropagation();
+      key: "onClick",
+      value: function onClick() {
         if (this.locked) {
           var _this$args$lockedActi, _this$args;
           (_this$args$lockedActi = (_this$args = this.args).lockedAction) === null || _this$args$lockedActi === void 0 || _this$args$lockedActi.call(_this$args);
@@ -81790,7 +81789,7 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["expor
       }
     }]);
     return OSSLayoutSidebarItem;
-  }(_component2.default), (_applyDecoratedDescriptor(_class.prototype, "prevent", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "prevent"), _class.prototype)), _class);
+  }(_component2.default), (_applyDecoratedDescriptor(_class.prototype, "onClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClick"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSLayoutSidebarItem);
 });
 ;define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
