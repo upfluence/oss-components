@@ -73586,20 +73586,22 @@ define("@glimmer/component/index", ["exports", "@ember/component", "@glimmer/com
   0; //eaimeta@70e063a35619d71f0,"@ember/component"eaimeta@70e063a35619d71f
   var _default = _exports.default = _component.default.extend({});
 });
-;define("@upfluence/oss-components/components/app-header", ["exports", "@ember/component", "@ember/object", "@upfluence/oss-components/mixins/header-style"], function (_exports, _component, _object, _headerStyle) {
+;define("@upfluence/oss-components/components/app-header", ["exports", "@ember/component", "@ember/object"], function (_exports, _component, _object) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"@ember/component",0,"@ember/object",0,"@upfluence/oss-components/mixins/header-style"eaimeta@70e063a35619d71f
-  var _default = _exports.default = _component.default.extend(_headerStyle.default, {
+  0; //eaimeta@70e063a35619d71f0,"@ember/component",0,"@ember/object"eaimeta@70e063a35619d71f
+  var _default = _exports.default = _component.default.extend({
     tagName: 'nav',
     classNameBindings: ['headerStyleClass'],
     logo: null,
     //TODO: check if used somewhere
     indexRoute: 'index',
+    isSidebarStyle: _object.computed.equal('headerStyle', 'sidebar'),
+    isTopbarStyle: _object.computed.not('isSidebarStyle'),
     headerStyleClass: (0, _object.computed)('headerStyle', 'isSidebarStyle', function () {
       if (this.get('isSidebarStyle')) {
         return 'col-xs-1 app-header--sidebar';
@@ -89490,75 +89492,6 @@ define("@upfluence/oss-components/helpers/redirect-to", ["exports", "@ember/comp
     }]);
     return _default;
   }(_helper.default);
-});
-;define("@upfluence/oss-components/mixins/header-style", ["exports", "@ember/object", "@ember/object/mixin"], function (_exports, _object, _mixin) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"@ember/object",0,"@ember/object/mixin"eaimeta@70e063a35619d71f
-  var _default = _exports.default = _mixin.default.create({
-    isSidebarStyle: _object.computed.equal('headerStyle', 'sidebar'),
-    isTopbarStyle: _object.computed.not('isSidebarStyle')
-  });
-});
-;define("@upfluence/oss-components/mixins/upf-table-search", ["exports", "@ember/object/mixin", "@ember/object"], function (_exports, _mixin, _object) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"@ember/object/mixin",0,"@ember/object"eaimeta@70e063a35619d71f
-  var _default = _exports.default = _mixin.default.create({
-    searchCollection: 'model',
-    searchQuery: '',
-    init: function init() {
-      this._super();
-      (0, _object.defineProperty)(this, 'filteredCollection', (0, _object.computed)('searchQuery', 'searchAttribute', 'searchCollection', this.get('searchCollection'), function () {
-        var _this = this;
-        var searchWords = this.get('searchQuery').split(' ').map(function (x) {
-          return x.toLowerCase();
-        });
-        var collection = (0, _object.get)(this, this.get('searchCollection')).filterBy('isNew', false);
-        if (searchWords === []) {
-          return collection;
-        }
-        return collection.filter(function (item) {
-          var _item$get;
-          var itemName = ((_item$get = item.get(_this.get('searchAttribute'))) !== null && _item$get !== void 0 ? _item$get : '').toLowerCase();
-          var i;
-          for (i = 0; i < searchWords.length; i++) {
-            var searchMatch = itemName.includes(searchWords[i]);
-            if (searchMatch) {
-              return true;
-            }
-          }
-        });
-      }));
-    },
-    actions: {
-      performSearch: function performSearch(s) {
-        this.set('page', 1);
-        this.set('searchQuery', s);
-      }
-    }
-  });
-});
-;define("@upfluence/oss-components/mixins/upf-table-selection", ["exports", "@ember/object/computed", "@ember/object/mixin"], function (_exports, _computed, _mixin) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"@ember/object/computed",0,"@ember/object/mixin"eaimeta@70e063a35619d71f
-  var _default = _exports.default = _mixin.default.create({
-    selectedItems: (0, _computed.filterBy)('collection', 'selected', true),
-    emptySelection: (0, _computed.equal)('selectedItems.length', 0)
-  });
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("@upfluence/oss-components/modifiers/enable-dropdown", ["exports", "@ember/modifier", "jquery"], function (_exports, _modifier, _jquery) {

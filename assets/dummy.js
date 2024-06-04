@@ -2501,44 +2501,6 @@
     }
   };
 });
-;define("dummy/mixins/header-style", ["exports", "@upfluence/oss-components/mixins/header-style"], function (_exports, _headerStyle) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/mixins/header-style"eaimeta@70e063a35619d71f
-  var _default = _exports.default = _headerStyle.default;
-});
-;define("dummy/mixins/upf-table-search", ["exports", "@upfluence/oss-components/mixins/upf-table-search"], function (_exports, _upfTableSearch) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  Object.defineProperty(_exports, "default", {
-    enumerable: true,
-    get: function get() {
-      return _upfTableSearch.default;
-    }
-  });
-  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/mixins/upf-table-search"eaimeta@70e063a35619d71f
-});
-;define("dummy/mixins/upf-table-selection", ["exports", "@upfluence/oss-components/mixins/upf-table-selection"], function (_exports, _upfTableSelection) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  Object.defineProperty(_exports, "default", {
-    enumerable: true,
-    get: function get() {
-      return _upfTableSelection.default;
-    }
-  });
-  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/mixins/upf-table-selection"eaimeta@70e063a35619d71f
-});
 ;define("dummy/modifiers/did-insert", ["exports", "@ember/render-modifiers/modifiers/did-insert"], function (_exports, _didInsert) {
   "use strict";
 
