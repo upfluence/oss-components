@@ -14,6 +14,8 @@ interface OSSPhoneNumberInputArgs {
   validates?(isPassing: boolean): void;
 }
 
+const NOT_NUMERIC_FLOAT = /[^0-9,.]/g;
+
 export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputArgs> {
   @service declare intl: IntlService;
 
@@ -69,18 +71,35 @@ export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputAr
   @action
   onlyNumeric(event: KeyboardEvent | FocusEvent): void {
     const authorizedInputs = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift'];
+    const isAuthorizedKey = authorizedInputs.find((key: string) => key === (event as KeyboardEvent).key);
+    const isSupportedCombo =
+      event instanceof KeyboardEvent &&
+      ((event as KeyboardEvent).metaKey ||
+        ((navigator as any).userAgentData?.platform === 'Windows' && event.ctrlKey)) &&
+      ['v', 'a', 'z', 'c'].includes(event.key);
 
-    if (
-      event instanceof FocusEvent ||
-      /^[0-9]$/i.test(event.key) ||
-      authorizedInputs.find((key: string) => key === event.key)
-    ) {
+    if (event instanceof FocusEvent || /^[0-9]$/i.test(event.key) || isSupportedCombo || isAuthorizedKey) {
       this.args.onChange('+' + this.selectedCountry.countryCallingCodes[0], this.args.number);
     } else {
       event.preventDefault();
     }
 
     this.validateInput();
+  }
+
+  @action
+  handlePaste(event: ClipboardEvent): void {
+    event.preventDefault();
+
+    const paste = (event.clipboardData?.getData('text') ?? '').replace(NOT_NUMERIC_FLOAT, '');
+    const target = event.target as HTMLInputElement;
+    const initialSelectionStart = target.selectionStart ?? 0;
+    const finalSelectionPosition = initialSelectionStart + paste.length;
+
+    target.setRangeText(paste, initialSelectionStart, target.selectionEnd ?? initialSelectionStart);
+    target.setSelectionRange(finalSelectionPosition, finalSelectionPosition);
+
+    this.args.onChange('+' + this.selectedCountry.countryCallingCodes[0], target.value);
   }
 
   @action

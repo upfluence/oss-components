@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, setupOnerror, triggerKeyEvent } from '@ember/test-helpers';
+import { render, setupOnerror, triggerEvent, triggerKeyEvent } from '@ember/test-helpers';
 import click from '@ember/test-helpers/dom/click';
 import sinon from 'sinon';
 import findAll from '@ember/test-helpers/dom/find-all';
@@ -121,6 +121,58 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
 
       assert.ok(this.onValidation.calledWithExactly(false));
       assert.dom('.font-color-error-500').exists();
+    });
+
+    module('When the paste event is received', function (hooks) {
+      hooks.beforeEach(function () {
+        this.onChange = () => {};
+        this.onValidation = sinon.spy();
+        this.number = '1234567890';
+      });
+
+      test('The value stored in the clipboard is inserted in the input', async function (assert) {
+        await render(
+          hbs`<OSS::PhoneNumberInput @prefix="" @number={{this.number}} @onChange={{this.onChange}} @validates={{this.onValidation}} />`
+        );
+        assert.dom('input').hasValue('1234567890');
+        await triggerEvent('input', 'paste', {
+          clipboardData: {
+            getData: sinon.stub().returns('123')
+          }
+        });
+
+        assert.dom('input').hasValue('1234567890123');
+      });
+
+      test('The non-numeric characters are escaped', async function (assert) {
+        await render(
+          hbs`<OSS::PhoneNumberInput @prefix="" @number={{this.number}} @onChange={{this.onChange}} @validates={{this.onValidation}} />`
+        );
+        assert.dom('input').hasValue('1234567890');
+        await triggerEvent('input', 'paste', {
+          clipboardData: {
+            getData: sinon.stub().returns('1withletter0')
+          }
+        });
+
+        assert.dom('input').hasValue('123456789010');
+      });
+
+      test('When selection is applied, it replaces the selection', async function (assert) {
+        await render(
+          hbs`<OSS::PhoneNumberInput @prefix="" @number={{this.number}} @onChange={{this.onChange}} @validates={{this.onValidation}} />`
+        );
+        assert.dom('input').hasValue('1234567890');
+        let input = document.querySelector('input.ember-text-field') as HTMLInputElement;
+        input.setSelectionRange(4, 6);
+        await triggerEvent('input', 'paste', {
+          clipboardData: {
+            getData: sinon.stub().returns('0')
+          }
+        });
+
+        assert.dom('input').hasValue('123407890');
+      });
     });
   });
 
