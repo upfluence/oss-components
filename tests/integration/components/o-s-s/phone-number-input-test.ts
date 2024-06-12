@@ -7,9 +7,11 @@ import sinon from 'sinon';
 import findAll from '@ember/test-helpers/dom/find-all';
 import typeIn from '@ember/test-helpers/dom/type-in';
 import settled from '@ember/test-helpers/settled';
+import { setupIntl } from 'ember-intl/test-support';
 
 module('Integration | Component | o-s-s/phone-number', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
 
   test('it renders', async function (assert) {
     this.onChange = () => {};
