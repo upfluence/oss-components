@@ -3,8 +3,10 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
-import { countries, type CountryData } from '@upfluence/oss-components/utils/country-codes';
 import type IntlService from 'ember-intl/services/intl';
+
+import { countries, type CountryData } from '@upfluence/oss-components/utils/country-codes';
+import { NUMERIC_FLOAT } from './currency-input';
 
 interface OSSPhoneNumberInputArgs {
   prefix: string;
@@ -13,8 +15,6 @@ interface OSSPhoneNumberInputArgs {
   onChange(prefix: string, number: string): void;
   validates?(isPassing: boolean): void;
 }
-
-const NOT_NUMERIC_FLOAT = /[^0-9,.]/g;
 
 export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputArgs> {
   @service declare intl: IntlService;
@@ -91,7 +91,7 @@ export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputAr
   handlePaste(event: ClipboardEvent): void {
     event.preventDefault();
 
-    const paste = (event.clipboardData?.getData('text') ?? '').replace(NOT_NUMERIC_FLOAT, '');
+    const paste = (event.clipboardData?.getData('text') ?? '').replace(NUMERIC_FLOAT, '');
     const target = event.target as HTMLInputElement;
     const initialSelectionStart = target.selectionStart ?? 0;
     const finalSelectionPosition = initialSelectionStart + paste.length;

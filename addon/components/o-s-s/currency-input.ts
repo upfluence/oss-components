@@ -21,7 +21,7 @@ interface OSSCurrencyInputArgs {
 }
 
 const NUMERIC_ONLY = /^\d$/i;
-const NOT_NUMERIC_FLOAT = /[^0-9,.]/g;
+export const NUMERIC_FLOAT = /[^0-9,.]/g;
 export const PLATFORM_CURRENCIES: Currency[] = [
   { code: 'USD', symbol: '$' },
   { code: 'EUR', symbol: '€' },
@@ -122,7 +122,7 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
   handlePaste(event: ClipboardEvent): void {
     event.preventDefault();
 
-    const paste = (event.clipboardData?.getData('text') ?? '').replace(NOT_NUMERIC_FLOAT, '');
+    const paste = (event.clipboardData?.getData('text') ?? '').replace(NUMERIC_FLOAT, '');
     const target = event.target as HTMLInputElement;
     const initialSelectionStart = target.selectionStart ?? 0;
     const finalSelectionPosition = initialSelectionStart + paste.length;
