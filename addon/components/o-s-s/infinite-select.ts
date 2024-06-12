@@ -2,8 +2,10 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
-
 import { guidFor } from '@ember/object/internals';
+import { inject as service } from '@ember/service';
+
+import type { IntlService } from 'ember-intl';
 
 interface InfiniteSelectArgs {
   searchEnabled: boolean;
@@ -29,6 +31,8 @@ type InfinityItem = {
 const DEFAULT_ITEM_LABEL = 'name';
 
 export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
+  @service declare intl: IntlService;
+
   @tracked _searchKeyword: string = '';
   @tracked _focusElement: number = 0;
 
@@ -54,7 +58,7 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   }
 
   get searchPlaceholder(): string {
-    return this.args.searchPlaceholder ?? 'Search...';
+    return this.args.searchPlaceholder ?? this.intl.t('oss-components.infinite-select.search.placeholder');
   }
 
   get itemLabel(): string {
