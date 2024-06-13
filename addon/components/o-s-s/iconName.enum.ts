@@ -103,7 +103,7 @@ export enum IconNames {
   TrashAlt = 'fa-trash-alt',
   Truck = 'fa-truck',
   Twitch = 'fa-twitch',
-  Twitter = 'fa-twitter',
+  Twitter = 'fa-x-twitter',
   Unlink = 'fa-unlink',
   Upload = 'fa-upload',
   User = 'fa-user',

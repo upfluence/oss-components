@@ -22,7 +22,7 @@ export const skinMatching: skinDefinitionType = {
   instagram_media: 'fab fa-instagram',
   tiktok_video: 'fab fa-tiktok',
   story: 'far fa-circle-notch',
-  tweet: 'fab fa-twitter',
+  tweet: 'fab fa-x-twitter',
   pin: 'fab fa-pinterest',
   youtube_video: 'fab fa-youtube',
   twitch_stream: 'fab fa-twitch'
