@@ -4,6 +4,7 @@ import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 
 import ToastService from '@upfluence/oss-components/services/toast';
+import type { IntlService } from 'ember-intl';
 
 interface OSSCopyArgs {
   value: string;
@@ -11,9 +12,22 @@ interface OSSCopyArgs {
 }
 
 export default class OSSCopy extends Component<OSSCopyArgs> {
-  @service intl: any;
+  @service declare intl: IntlService;
   @service declare toast: ToastService;
+
+  @tracked accessibleClipboard: boolean = false;
   @tracked inline: boolean = this.args.inline ?? false;
+
+  constructor(owner: unknown, args: OSSCopyArgs) {
+    super(owner, args);
+
+    navigator.permissions
+      .query({ name: 'clipboard-write' as PermissionName })
+      .then(({ state }) => {
+        this.accessibleClipboard = state === 'granted';
+      })
+      .catch(() => {});
+  }
 
   @action
   copy(event: PointerEvent) {

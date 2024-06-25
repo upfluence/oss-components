@@ -26,6 +26,26 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
     await assert.tooltip('.upf-btn--default').hasTitle('Copy');
   });
 
+  module('the clipboard-write permission is not granted', function (hooks) {
+    hooks.beforeEach(function () {
+      this.permissionQueryStub = sinon
+        .stub(navigator.permissions, 'query')
+        .resolves({ name: 'clipboard-write', state: 'denied' } as PermissionStatus);
+    });
+
+    hooks.afterEach(function () {
+      this.permissionQueryStub.restore();
+    });
+
+    test('nothing is rendered', async function (assert) {
+      await render(hbs`<OSS::Copy />`);
+
+      assert.ok(this.permissionQueryStub.calledOnceWithExactly({ name: 'clipboard-write' as PermissionName }));
+      assert.dom('.oss-copy--inline').doesNotExist();
+      assert.dom('.upf-btn--default').doesNotExist();
+    });
+  });
+
   module('when clicking', function (hooks) {
     hooks.beforeEach(function () {
       this.toastService = this.owner.lookup('service:toast');
