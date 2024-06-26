@@ -9,6 +9,16 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks);
 
+  hooks.beforeEach(function () {
+    this.permissionQueryStub = sinon
+      .stub(navigator.permissions, 'query')
+      .resolves({ name: 'clipboard-write', state: 'granted' } as PermissionStatus);
+  });
+
+  hooks.afterEach(function () {
+    this.permissionQueryStub.restore();
+  });
+
   test('it renders', async function (assert) {
     await render(hbs`<OSS::Copy />`);
 
@@ -28,13 +38,10 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
 
   module('the clipboard-write permission is not granted', function (hooks) {
     hooks.beforeEach(function () {
+      this.permissionQueryStub.restore();
       this.permissionQueryStub = sinon
         .stub(navigator.permissions, 'query')
         .resolves({ name: 'clipboard-write', state: 'denied' } as PermissionStatus);
-    });
-
-    hooks.afterEach(function () {
-      this.permissionQueryStub.restore();
     });
 
     test('nothing is rendered', async function (assert) {
