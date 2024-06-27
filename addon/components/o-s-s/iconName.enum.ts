@@ -104,6 +104,7 @@ export enum IconNames {
   Truck = 'fa-truck',
   Twitch = 'fa-twitch',
   Twitter = 'fa-twitter',
+  XTwitter = 'fa-x-twitter',
   Unlink = 'fa-unlink',
   Upload = 'fa-upload',
   User = 'fa-user',
