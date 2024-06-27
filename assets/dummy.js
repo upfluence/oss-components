@@ -687,20 +687,6 @@
   });
   0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/modal-dialog"eaimeta@70e063a35619d71f
 });
-;define("dummy/components/o-s-s/modal", ["exports", "@upfluence/oss-components/components/o-s-s/modal"], function (_exports, _modal) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  Object.defineProperty(_exports, "default", {
-    enumerable: true,
-    get: function get() {
-      return _modal.default;
-    }
-  });
-  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/modal"eaimeta@70e063a35619d71f
-});
 ;define("dummy/components/o-s-s/multi-select", ["exports", "@upfluence/oss-components/components/o-s-s/power-select"], function (_exports, _powerSelect) {
   "use strict";
 
