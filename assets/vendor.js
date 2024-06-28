@@ -82390,6 +82390,140 @@ define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@
   Usage.args = defaultArgs;
   WithIlllustration.args = defaultArgs;
 });
+;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+define("@upfluence/oss-components/components/o-s-s/modal", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "jquery", "@ember/runloop", "@ember/template-factory", "@embroider/macros/runtime"], function (_exports, _component, _component2, _object, _jquery, _runloop, _templateFactory, _runtime) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/object",0,"jquery",0,"@embroider/macros",0,"@ember/runloop",0,"@ember/component"eaimeta@70e063a35619d71f
+  function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+  function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+  function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+  function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="modal fade" tabindex={{this.options.tabindex}} {{did-insert this.setup}} {{will-destroy this.teardown}} ...attributes>
+    <div class="modal-dialog {{if this.options.centered 'modal-dialog--centered'}} {{this.options.modalClass}}" role="document">
+      <div class="modal-content">
+        {{#if this.options.header}}
+          <div class="modal-header {{if this.options.borderlessHeader 'modal-header__borderless'}}">
+            {{#if @title}}
+              <div class="modal-title">
+                {{@title}}
+              </div>
+            {{/if}}
+  
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close-x" {{on "click" this.close}}>
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        {{/if}}
+  
+        {{yield}}
+      </div>
+    </div>
+  </div>
+  
+  */
+  {
+    "id": "Nc8jz3/M",
+    "block": "[[[11,0],[24,0,\"modal fade\"],[16,\"tabindex\",[30,0,[\"options\",\"tabindex\"]]],[17,1],[4,[38,0],[[30,0,[\"setup\"]]],null],[4,[38,1],[[30,0,[\"teardown\"]]],null],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"modal-dialog \",[52,[30,0,[\"options\",\"centered\"]],\"modal-dialog--centered\"],\" \",[30,0,[\"options\",\"modalClass\"]]]]],[14,\"role\",\"document\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"modal-content\"],[12],[1,\"\\n\"],[41,[30,0,[\"options\",\"header\"]],[[[1,\"        \"],[10,0],[15,0,[29,[\"modal-header \",[52,[30,0,[\"options\",\"borderlessHeader\"]],\"modal-header__borderless\"]]]],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"            \"],[10,0],[14,0,\"modal-title\"],[12],[1,\"\\n              \"],[1,[30,2]],[1,\"\\n            \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n          \"],[11,\"button\"],[24,0,\"close\"],[24,\"data-dismiss\",\"modal\"],[24,\"aria-label\",\"Close\"],[24,1,\"close-x\"],[24,4,\"button\"],[4,[38,3],[\"click\",[30,0,[\"close\"]]],null],[12],[1,\"\\n            \"],[10,1],[14,\"aria-hidden\",\"true\"],[12],[1,\"×\"],[13],[1,\"\\n          \"],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n      \"],[18,3,null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@title\",\"&default\"],false,[\"did-insert\",\"will-destroy\",\"if\",\"on\",\"yield\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/modal.hbs",
+    "isStrictMode": false
+  });
+  var DEFAULT_OPTIONS = {
+    centered: false,
+    container: null,
+    modalClass: null,
+    header: true,
+    borderlessHeader: false,
+    tabindex: -1
+  };
+  var OssModalComponent = _exports.default = (_class = /*#__PURE__*/function (_Component) {
+    _inherits(OssModalComponent, _Component);
+    function OssModalComponent() {
+      var _this;
+      _classCallCheck(this, OssModalComponent);
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+      _this = _callSuper(this, OssModalComponent, [].concat(args));
+      _defineProperty(_assertThisInitialized(_this), "element", null);
+      return _this;
+    }
+    _createClass(OssModalComponent, [{
+      key: "options",
+      get: function get() {
+        return _objectSpread(_objectSpread({}, DEFAULT_OPTIONS), this.args.options || {});
+      }
+    }, {
+      key: "container",
+      get: function get() {
+        return (0, _runtime.isTesting)() ? null : this.options.container;
+      }
+    }, {
+      key: "_handleEscapeKey",
+      value: function _handleEscapeKey(event) {
+        if (event.key === 'Escape') {
+          this.close(event);
+        }
+      }
+    }, {
+      key: "setup",
+      value: function setup(element) {
+        var _this2 = this;
+        this.element = element;
+        var modal = (0, _jquery.default)(this.element).modal({
+          backdrop: 'static'
+        });
+        if (this.options.container) {
+          modal.appendTo(this.container);
+        }
+        (0, _runloop.run)(function () {
+          _this2.element.addEventListener('keydown', _this2._handleEscapeKey.bind(_this2));
+        });
+      }
+    }, {
+      key: "teardown",
+      value: function teardown() {
+        var _this3 = this;
+        (0, _jquery.default)(this.element).modal('hide');
+        if (this.isDestroying || this.isDestroyed) return;
+        (0, _runloop.run)(function () {
+          _this3.element.removeEventListener('keydown', _this3._handleEscapeKey.bind(_this3));
+        });
+        this.element.remove();
+      }
+    }, {
+      key: "close",
+      value: function close(e) {
+        e === null || e === void 0 || e.preventDefault();
+        if (this.args.onClose) {
+          this.args.onClose();
+        }
+        (0, _jquery.default)(this.element).modal('hide');
+      }
+    }]);
+    return OssModalComponent;
+  }(_component2.default), (_applyDecoratedDescriptor(_class.prototype, "setup", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setup"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "teardown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "teardown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "close", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "close"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OssModalComponent);
+});
 ;define("@upfluence/oss-components/components/o-s-s/modal.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
   "use strict";
 
