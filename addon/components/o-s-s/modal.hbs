@@ -1,0 +1,21 @@
+<div class="modal fade" tabindex={{this.options.tabindex}} {{did-insert this.setup}} {{will-destroy this.teardown}} ...attributes>
+  <div class="modal-dialog {{if this.options.centered 'modal-dialog--centered'}} {{this.options.modalClass}}" role="document">
+    <div class="modal-content">
+      {{#if this.options.header}}
+        <div class="modal-header {{if this.options.borderlessHeader 'modal-header__borderless'}}">
+          {{#if @title}}
+            <div class="modal-title">
+              {{@title}}
+            </div>
+          {{/if}}
+
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="close-x" {{on "click" this.close}}>
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      {{/if}}
+
+      {{yield}}
+    </div>
+  </div>
+</div>
