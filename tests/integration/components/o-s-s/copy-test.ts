@@ -9,6 +9,16 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks);
 
+  hooks.beforeEach(function () {
+    this.permissionQueryStub = sinon
+      .stub(navigator.permissions, 'query')
+      .resolves({ name: 'clipboard-write', state: 'granted' } as PermissionStatus);
+  });
+
+  hooks.afterEach(function () {
+    this.permissionQueryStub.restore();
+  });
+
   test('it renders', async function (assert) {
     await render(hbs`<OSS::Copy />`);
 
@@ -24,6 +34,23 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
     await render(hbs`<OSS::Copy />`);
 
     await assert.tooltip('.upf-btn--default').hasTitle('Copy');
+  });
+
+  module('the clipboard-write permission is not granted', function (hooks) {
+    hooks.beforeEach(function () {
+      this.permissionQueryStub.restore();
+      this.permissionQueryStub = sinon
+        .stub(navigator.permissions, 'query')
+        .resolves({ name: 'clipboard-write', state: 'denied' } as PermissionStatus);
+    });
+
+    test('nothing is rendered', async function (assert) {
+      await render(hbs`<OSS::Copy />`);
+
+      assert.ok(this.permissionQueryStub.calledOnceWithExactly({ name: 'clipboard-write' as PermissionName }));
+      assert.dom('.oss-copy--inline').doesNotExist();
+      assert.dom('.upf-btn--default').doesNotExist();
+    });
   });
 
   module('when clicking', function (hooks) {
