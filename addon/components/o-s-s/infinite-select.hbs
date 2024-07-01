@@ -1,5 +1,10 @@
-<div id={{this.elementId}} class="fx-col upf-infinite-select {{unless this.inline 'upf-infinite-select--absolute'}}"
-     {{did-insert this.onRender}} ...attributes>
+<div
+  id={{this.elementId}}
+  data-internal-id={{this.elementId}}
+  class="fx-col upf-infinite-select {{unless this.inline 'upf-infinite-select--absolute'}}"
+  {{did-insert this.onRender}}
+  ...attributes
+>
   {{#if this.searchEnabled}}
     <InputWrapper>
       <OSS::InputContainer>
@@ -7,18 +12,26 @@
           <OSS::Icon class="font-color-gray-500" @icon="fa-search" />
         </:prefix>
         <:input>
-          <Input @value={{this._searchKeyword}} {{on "keyup" this.updateSearchKeyword}} type="text"
-                 class="upf-input" placeholder={{this.searchPlaceholder}}
-                 {{on "keydown" this.handleKeyEventInput}} />
+          <Input
+            @value={{this._searchKeyword}}
+            {{on "keyup" this.updateSearchKeyword}}
+            type="text"
+            class="upf-input"
+            placeholder={{this.searchPlaceholder}}
+            {{on "keydown" this.handleKeyEventInput}}
+          />
         </:input>
       </OSS::InputContainer>
     </InputWrapper>
   {{/if}}
   <div class="upf-infinite-select__container">
-    <ul class="upf-infinite-select__items-container
-               {{if (eq this.items.length 0) 'upf-infinite-select__items-container--empty'}}"
-        {{on-bottom-reached this.onBottomReached}} {{scroll-shadow}}
-        {{on "keydown" this.handleKeyEvent}}>
+    <ul
+      class="upf-infinite-select__items-container
+        {{if (eq this.items.length 0) 'upf-infinite-select__items-container--empty'}}"
+      {{on-bottom-reached this.onBottomReached}}
+      {{scroll-shadow}}
+      {{on "keydown" this.handleKeyEvent}}
+    >
       {{#if (and @loading (not @loadingMore))}}
         <OSS::Skeleton @width="100%" @height="18" @multiple={{5}} @direction="col" />
       {{else}}
