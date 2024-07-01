@@ -136,14 +136,14 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   }
 
   private _focusElementAt(index: number): void {
-    const el = document.querySelectorAll(`#${this.elementId} .upf-infinite-select__items-container li`)[
-      index
-    ] as HTMLElement;
+    const el = document.querySelectorAll(
+      `[data-internal-id="${this.elementId}"] .upf-infinite-select__items-container li`
+    )[index] as HTMLElement;
     el?.focus();
   }
 
   private _focusInput(): void {
-    const el = document.querySelector(`#${this.elementId} input`) as HTMLElement;
+    const el = document.querySelector(`[data-internal-id="${this.elementId}"] input`) as HTMLElement;
     el?.focus();
   }
 
