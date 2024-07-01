@@ -78631,7 +78631,7 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
     value: true
   });
   _exports.default = void 0;
-  var _class, _descriptor, _descriptor2, _descriptor3;
+  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/object",0,"@glimmer/tracking",0,"@ember/service",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -78651,35 +78651,51 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
+    {{#if this.accessibleClipboard}}
     {{#if this.inline}}
-    <OSS::Icon @icon="fa-copy" class="oss-copy--inline" {{on "click" this.copy}}
-               {{enable-tooltip placement="top" title=(t "oss-components.copy.tooltip") trigger="hover"}}
-               data-control-name="copy-content-button" ...attributes />
-  {{else}}
-    <OSS::Button @icon="far fa-copy" @square={{true}} @size="sm" {{on "click" this.copy}}
-                 {{enable-tooltip placement="top" title=(t "oss-components.copy.tooltip") trigger="hover"}}
-                 data-control-name="copy-content-button" ...attributes />
-  {{/if }}
-  
+      <OSS::Icon
+        @icon="fa-copy"
+        class="oss-copy--inline"
+        {{on "click" this.copy}}
+        {{enable-tooltip placement="top" title=(t "oss-components.copy.tooltip") trigger="hover"}}
+        data-control-name="copy-content-button"
+        ...attributes
+      />
+    {{else}}
+      <OSS::Button
+        @icon="far fa-copy"
+        @square={{true}}
+        @size="sm"
+        {{on "click" this.copy}}
+        {{enable-tooltip placement="top" title=(t "oss-components.copy.tooltip") trigger="hover"}}
+        data-control-name="copy-content-button"
+        ...attributes
+      />
+    {{/if}}
+  {{/if}}
   */
   {
-    "id": "vLbubTj/",
-    "block": "[[[41,[30,0,[\"inline\"]],[[[1,\"  \"],[8,[39,1],[[24,0,\"oss-copy--inline\"],[24,\"data-control-name\",\"copy-content-button\"],[17,1],[4,[38,2],[\"click\",[30,0,[\"copy\"]]],null],[4,[38,3],null,[[\"placement\",\"title\",\"trigger\"],[\"top\",[28,[37,4],[\"oss-components.copy.tooltip\"],null],\"hover\"]]]],[[\"@icon\"],[\"fa-copy\"]],null],[1,\"\\n\"]],[]],[[[1,\"  \"],[8,[39,5],[[24,\"data-control-name\",\"copy-content-button\"],[17,1],[4,[38,2],[\"click\",[30,0,[\"copy\"]]],null],[4,[38,3],null,[[\"placement\",\"title\",\"trigger\"],[\"top\",[28,[37,4],[\"oss-components.copy.tooltip\"],null],\"hover\"]]]],[[\"@icon\",\"@square\",\"@size\"],[\"far fa-copy\",true,\"sm\"]],null],[1,\"\\n\"]],[]]]],[\"&attrs\"],false,[\"if\",\"o-s-s/icon\",\"on\",\"enable-tooltip\",\"t\",\"o-s-s/button\"]]",
+    "id": "QWevLuZY",
+    "block": "[[[41,[30,0,[\"accessibleClipboard\"]],[[[41,[30,0,[\"inline\"]],[[[1,\"    \"],[8,[39,1],[[24,0,\"oss-copy--inline\"],[24,\"data-control-name\",\"copy-content-button\"],[17,1],[4,[38,2],[\"click\",[30,0,[\"copy\"]]],null],[4,[38,3],null,[[\"placement\",\"title\",\"trigger\"],[\"top\",[28,[37,4],[\"oss-components.copy.tooltip\"],null],\"hover\"]]]],[[\"@icon\"],[\"fa-copy\"]],null],[1,\"\\n\"]],[]],[[[1,\"    \"],[8,[39,5],[[24,\"data-control-name\",\"copy-content-button\"],[17,1],[4,[38,2],[\"click\",[30,0,[\"copy\"]]],null],[4,[38,3],null,[[\"placement\",\"title\",\"trigger\"],[\"top\",[28,[37,4],[\"oss-components.copy.tooltip\"],null],\"hover\"]]]],[[\"@icon\",\"@square\",\"@size\"],[\"far fa-copy\",true,\"sm\"]],null],[1,\"\\n\"]],[]]]],[]],null]],[\"&attrs\"],false,[\"if\",\"o-s-s/icon\",\"on\",\"enable-tooltip\",\"t\",\"o-s-s/button\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/copy.hbs",
     "isStrictMode": false
   });
   var OSSCopy = _exports.default = (_class = /*#__PURE__*/function (_Component) {
     _inherits(OSSCopy, _Component);
-    function OSSCopy() {
+    function OSSCopy(owner, args) {
       var _this;
       _classCallCheck(this, OSSCopy);
-      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-      _this = _callSuper(this, OSSCopy, [].concat(args));
+      _this = _callSuper(this, OSSCopy, [owner, args]);
       _initializerDefineProperty(_assertThisInitialized(_this), "intl", _descriptor, _assertThisInitialized(_this));
       _initializerDefineProperty(_assertThisInitialized(_this), "toast", _descriptor2, _assertThisInitialized(_this));
-      _initializerDefineProperty(_assertThisInitialized(_this), "inline", _descriptor3, _assertThisInitialized(_this));
+      _initializerDefineProperty(_assertThisInitialized(_this), "accessibleClipboard", _descriptor3, _assertThisInitialized(_this));
+      _initializerDefineProperty(_assertThisInitialized(_this), "inline", _descriptor4, _assertThisInitialized(_this));
+      navigator.permissions.query({
+        name: 'clipboard-write'
+      }).then(function (_ref) {
+        var state = _ref.state;
+        _this.accessibleClipboard = state === 'granted';
+      }).catch(function () {});
       return _this;
     }
     _createClass(OSSCopy, [{
@@ -78705,7 +78721,14 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
     enumerable: true,
     writable: true,
     initializer: null
-  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "inline", [_tracking.tracked], {
+  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "accessibleClipboard", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, "inline", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,

@@ -8180,6 +8180,15 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["qunit", "ember-qu
   (0, _qunit.module)('Integration | Component | o-s-s/copy', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _testSupport.setupIntl)(hooks);
+    hooks.beforeEach(function () {
+      this.permissionQueryStub = _sinon.default.stub(navigator.permissions, 'query').resolves({
+        name: 'clipboard-write',
+        state: 'granted'
+      });
+    });
+    hooks.afterEach(function () {
+      this.permissionQueryStub.restore();
+    });
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
@@ -8265,38 +8274,37 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["qunit", "ember-qu
         return _ref3.apply(this, arguments);
       };
     }());
-    (0, _qunit.module)('when clicking', function (hooks) {
+    (0, _qunit.module)('the clipboard-write permission is not granted', function (hooks) {
       hooks.beforeEach(function () {
-        this.toastService = this.owner.lookup('service:toast');
+        this.permissionQueryStub.restore();
+        this.permissionQueryStub = _sinon.default.stub(navigator.permissions, 'query').resolves({
+          name: 'clipboard-write',
+          state: 'denied'
+        });
       });
-      hooks.afterEach(function () {
-        _sinon.default.restore();
-      });
-      (0, _qunit.test)('the info toast is rendered', /*#__PURE__*/function () {
+      (0, _qunit.test)('nothing is rendered', /*#__PURE__*/function () {
         var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
-          var toastInfoStub;
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
-                _sinon.default.stub(navigator.clipboard, 'writeText').resolves();
-                toastInfoStub = _sinon.default.stub(this.toastService, 'info').resolves();
-                _context4.next = 4;
+                _context4.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
-                  <OSS::Copy @value="test" />
+                  <OSS::Copy />
                 */
                 {
-                  "id": "ZkAdrg36",
-                  "block": "[[[8,[39,0],null,[[\"@value\"],[\"test\"]],null]],[],false,[\"o-s-s/copy\"]]",
+                  "id": "ViKCo+F5",
+                  "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/copy\"]]",
                   "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/copy-test.ts",
                   "isStrictMode": false
                 }));
-              case 4:
-                _context4.next = 6;
-                return (0, _testHelpers.click)('.upf-btn--default');
-              case 6:
-                assert.true(toastInfoStub.calledOnceWithExactly('Successfully copied to your clipboard.', 'Copied to clipboard'));
-              case 7:
+              case 2:
+                assert.ok(this.permissionQueryStub.calledOnceWithExactly({
+                  name: 'clipboard-write'
+                }));
+                assert.dom('.oss-copy--inline').doesNotExist();
+                assert.dom('.upf-btn--default').doesNotExist();
+              case 5:
               case "end":
                 return _context4.stop();
             }
@@ -8306,14 +8314,22 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["qunit", "ember-qu
           return _ref4.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('the error toast is rendered', /*#__PURE__*/function () {
+    });
+    (0, _qunit.module)('when clicking', function (hooks) {
+      hooks.beforeEach(function () {
+        this.toastService = this.owner.lookup('service:toast');
+      });
+      hooks.afterEach(function () {
+        _sinon.default.restore();
+      });
+      (0, _qunit.test)('the info toast is rendered', /*#__PURE__*/function () {
         var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
-          var toastErrorStub;
+          var toastInfoStub;
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
-                _sinon.default.stub(navigator.clipboard, 'writeText').rejects();
-                toastErrorStub = _sinon.default.stub(this.toastService, 'error').resolves();
+                _sinon.default.stub(navigator.clipboard, 'writeText').resolves();
+                toastInfoStub = _sinon.default.stub(this.toastService, 'info').resolves();
                 _context5.next = 4;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
@@ -8329,7 +8345,7 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["qunit", "ember-qu
                 _context5.next = 6;
                 return (0, _testHelpers.click)('.upf-btn--default');
               case 6:
-                assert.true(toastErrorStub.calledOnceWithExactly('Failed to copy to your clipboard. Please try again.', 'Error'));
+                assert.true(toastInfoStub.calledOnceWithExactly('Successfully copied to your clipboard.', 'Copied to clipboard'));
               case 7:
               case "end":
                 return _context5.stop();
@@ -8340,16 +8356,50 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["qunit", "ember-qu
           return _ref5.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('the clipboard writeText method is called', /*#__PURE__*/function () {
+      (0, _qunit.test)('the error toast is rendered', /*#__PURE__*/function () {
         var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
-          var writeTextStub;
+          var toastErrorStub;
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
+              case 0:
+                _sinon.default.stub(navigator.clipboard, 'writeText').rejects();
+                toastErrorStub = _sinon.default.stub(this.toastService, 'error').resolves();
+                _context6.next = 4;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Copy @value="test" />
+                */
+                {
+                  "id": "ZkAdrg36",
+                  "block": "[[[8,[39,0],null,[[\"@value\"],[\"test\"]],null]],[],false,[\"o-s-s/copy\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/copy-test.ts",
+                  "isStrictMode": false
+                }));
+              case 4:
+                _context6.next = 6;
+                return (0, _testHelpers.click)('.upf-btn--default');
+              case 6:
+                assert.true(toastErrorStub.calledOnceWithExactly('Failed to copy to your clipboard. Please try again.', 'Error'));
+              case 7:
+              case "end":
+                return _context6.stop();
+            }
+          }, _callee6, this);
+        }));
+        return function (_x6) {
+          return _ref6.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('the clipboard writeText method is called', /*#__PURE__*/function () {
+        var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+          var writeTextStub;
+          return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+            while (1) switch (_context7.prev = _context7.next) {
               case 0:
                 writeTextStub = _sinon.default.stub(navigator.clipboard, 'writeText').resolves();
                 _sinon.default.stub(this.toastService, 'info').resolves();
                 this.textForCopy = 'test';
-                _context6.next = 5;
+                _context7.next = 5;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Copy @value={{this.textForCopy}} />
@@ -8361,18 +8411,18 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["qunit", "ember-qu
                   "isStrictMode": false
                 }));
               case 5:
-                _context6.next = 7;
+                _context7.next = 7;
                 return (0, _testHelpers.click)('.upf-btn--default');
               case 7:
                 assert.true(writeTextStub.calledOnceWithExactly(this.textForCopy));
               case 8:
               case "end":
-                return _context6.stop();
+                return _context7.stop();
             }
-          }, _callee6, this);
+          }, _callee7, this);
         }));
-        return function (_x6) {
-          return _ref6.apply(this, arguments);
+        return function (_x7) {
+          return _ref7.apply(this, arguments);
         };
       }());
     });
