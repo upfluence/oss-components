@@ -14,11 +14,11 @@
         <:input>
           <Input
             @value={{this._searchKeyword}}
-            {{on "keyup" this.updateSearchKeyword}}
             type="text"
             class="upf-input"
             placeholder={{this.searchPlaceholder}}
             {{on "keydown" this.handleKeyEventInput}}
+            {{on "keyup" this.updateSearchKeyword}}
           />
         </:input>
       </OSS::InputContainer>
