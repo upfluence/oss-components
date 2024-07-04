@@ -10239,6 +10239,12 @@ label {
 .upf-infinite-select__item:hover {
   background-color: var(--color-gray-100);
 }
+.upf-infinite-select__item:focus {
+  background-color: var(--color-gray-100);
+}
+.upf-infinite-select__item:focus-visible {
+  outline: none;
+}
 .modal .modal-content {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
   border-radius: var(--border-radius-sm);
