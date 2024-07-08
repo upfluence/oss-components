@@ -14665,6 +14665,9 @@ a.upf-btn--sm {
   justify-content: space-between;
   align-items: center;
 }
+.oss-progress-bar--xs .oss-progress-bar__inner {
+  height: 1px;
+}
 .oss-progress-bar--sm .oss-progress-bar__inner {
   height: 4px;
 }

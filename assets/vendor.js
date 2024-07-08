@@ -84730,7 +84730,7 @@ define("@upfluence/oss-components/components/o-s-s/progress-bar", ["exports", "@
   _exports.default = _exports.Usage = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
   var ProgressBarSkins = ['warning', 'success'];
-  var ProgressBarSizes = ['sm'];
+  var ProgressBarSizes = ['xs', 'sm'];
   var _default = _exports.default = {
     title: 'Components/OSS::ProgressBar',
     component: 'progress-bar',
