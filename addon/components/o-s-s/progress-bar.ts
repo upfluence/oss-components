@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 
 type ProgressBarSkins = 'warning' | 'success';
-type ProgressBarSizes = 'sm' | 'xs';
+type ProgressBarSizes = 'xs' | 'sm';
 
 interface OSSProgressBarArgs {
   value: number;
