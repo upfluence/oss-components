@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 
 const ProgressBarSkins = ['warning', 'success'];
-const ProgressBarSizes = ['sm'];
+const ProgressBarSizes = ['xs', 'sm'];
 
 export default {
   title: 'Components/OSS::ProgressBar',
