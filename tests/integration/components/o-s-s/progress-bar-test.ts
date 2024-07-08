@@ -56,6 +56,14 @@ module('Integration | Component | o-s-s/progress-bar', function (hooks) {
       assert.equal(innerBar.clientHeight, 10, 'Element has the correct height');
     });
 
+    test('if the value is "xs", the progress bar height is the proper height', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @size="xs" />`);
+
+      assert.dom('.oss-progress-bar').exists();
+      const innerBar = this.element.querySelector('.oss-progress-bar__inner') as Element;
+      assert.equal(innerBar.clientHeight, 1, 'Element has the correct height');
+    });
+
     test('if the value is unspecified, the progress bar height is the proper height', async function (assert) {
       await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} />`);
 
