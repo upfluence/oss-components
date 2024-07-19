@@ -1,6 +1,4 @@
 oss-components:
-  upf-table:
-    pagination: '{from} to {to} out of {total} {item_name}'
   badge:
     image_alt: Badge Icon
   infinite-select:
