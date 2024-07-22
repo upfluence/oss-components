@@ -79323,6 +79323,9 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
   }, {
     code: 'CZK',
     symbol: 'Kč'
+  }, {
+    code: 'RON',
+    symbol: 'lei'
   }];
   var AUTHORIZED_INPUTS = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift', 'Control', '.', ',', 'ArrowUp', 'ArrowDown'];
   var OSSCurrencyInput = _exports.default = (_class = /*#__PURE__*/function (_Component) {
