@@ -30,6 +30,15 @@ export default {
         type: { summary: 'string' },
         defaultValue: { summary: '%' }
       }
+    },
+    disabled: {
+      control: 'boolean',
+      description: 'The unit of the slider value',
+      defaultValue: false,
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      }
     }
   },
   parameters: {
@@ -44,7 +53,8 @@ export default {
 const defaultArgs = {
   value: 30,
   displayInputValue: false,
-  unit: '%'
+  unit: '%',
+  disabled: false
 };
 
 const Template = (args) => ({
@@ -52,6 +62,7 @@ const Template = (args) => ({
     <OSS::Slider @value={{this.value}}
                  @displayInputValue={{this.displayInputValue}}
                  @unit={{this.unit}}
+                 @disabled={{this.disabled}}
     />
   `,
   context: args
