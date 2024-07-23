@@ -1,46 +1,34 @@
-<div class="oss-slider--container">
-  <div class="audience-instagram-gender--slider fx-col fx-1 fx-gap-px-12">
-    <div class="fx-row fx-gap-px-6 fx-xalign-center fx-malign-space-between">
-      <span class="font-color-gray-500 fx-xalign-center">
-        {{@label}}
-        <OSS::Icon
-          @icon="fa-info-circle"
-          class="font-color-gray-500"
-          {{enable-tooltip placement="top" title=@tooltipLabel}}
-        />
-      </span>
-      <OSS::ToggleButtons
-        @toggles={{@toggles}}
-        @selectedToggle={{this.selectedToggle}}
-        class="width-px-126"
-        @onSelection={{this.onSwitch}}
-      />
-    </div>
-    <div class="fx-row fx-gap-px-6 fx-xalign-center fx-malign-space-between">
-      <div
-        class="oss-slider--range-container"
-        {{enable-tooltip placement="bottom" title=(concat this.currentRangeFilter "%")}}
-      >
-        <input
-          class="custom-range"
-          type="range"
-          min={{this.sliderOptions.min}}
-          max={{this.sliderOptions.max}}
-          value={{this.currentRangeFilter}}
-          step="1"
-          {{on "input" this.onRangeInput}}
-          {{did-insert this.initializeSlider}}
-        />
-      </div>
+<div class="oss-slider--container fx-gap-px-12 fx-xalign-center fx-malign-space-between">
+  <div
+    class="oss-slider--range-container"
+    {{enable-tooltip placement="bottom" title=(concat this.currentRangeValue "%")}}
+  >
+    <input
+      class="oss-slider--custom-range"
+      type="range"
+      min={{this.sliderOptions.min}}
+      max={{this.sliderOptions.max}}
+      value={{this.currentRangeValue}}
+      step="1"
+      {{on "input" this.onRangeInput}}
+      {{did-insert this.initializeSlider}}
+    />
+  </div>
+  {{#if @displayInputValue}}
+    <div class="fx-row fx-xalign-center {{unless @unit 'border-radius-md'}}">
       <input
-        class="custom-number"
+        class="oss-slider--number-input {{unless @unit 'border-radius-md'}}"
         type="number"
         min={{this.sliderOptions.min}}
         max={{this.sliderOptions.max}}
-        value={{this.currentRangeFilter}}
+        value={{this.currentRangeValue}}
         {{on "input" this.onTextInput}}
       />
+      {{#if @unit}}
+        <span class="oss-slider--unit-container">
+          {{@unit}}
+        </span>
+      {{/if}}
     </div>
-  </div>
-
+  {{/if}}
 </div>

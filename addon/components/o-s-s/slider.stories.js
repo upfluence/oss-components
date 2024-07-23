@@ -3,7 +3,35 @@ import { hbs } from 'ember-cli-htmlbars';
 export default {
   title: 'Components/OSS::Slider',
   component: 'slider',
-  argTypes: {},
+  argTypes: {
+    value: {
+      control: 'number',
+      description: 'The value of the slider',
+      defaultValue: 30,
+      table: {
+        type: { summary: 'number' },
+        defaultValue: { summary: 30 }
+      }
+    },
+    displayInputValue: {
+      control: 'boolean',
+      description: 'Flag to display input value',
+      defaultValue: false,
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      }
+    },
+    unit: {
+      control: 'text',
+      description: 'The unit of the slider value',
+      defaultValue: '%',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '%' }
+      }
+    }
+  },
   parameters: {
     docs: {
       description: {
@@ -15,22 +43,15 @@ export default {
 
 const defaultArgs = {
   value: 30,
-  toggles: [
-    { value: 'categories', label: 'Categories' },
-    { value: 'products', label: 'Products' }
-  ],
-  label: 'Title here',
-  labelInfoTooltip: 'Tooltip  here',
-  onSwitchToggle: 'azeaze'
+  displayInputValue: false,
+  unit: '%'
 };
 
 const Template = (args) => ({
   template: hbs`
     <OSS::Slider @value={{this.value}}
-                  @label={{this.label}}
-                  @labelInfoTooltip={{this.labelInfoTooltip}}
-                  @toggles={{this.toggles}}
-                  @onSwitchToggle={{this.onSwitchToggle}}
+                 @displayInputValue={{this.displayInputValue}}
+                 @unit={{this.unit}}
     />
   `,
   context: args
