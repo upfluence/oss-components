@@ -1,13 +1,46 @@
 .oss-slider {
   &--container {
-    display: flex;
-    align-items: center;
     width: 100%;
 
     input[type='number']::-webkit-inner-spin-button,
     input[type='number']::-webkit-outer-spin-button {
       -webkit-appearance: none;
       margin: 0;
+    }
+
+    &--disabled {
+      .oss-slider {
+        &--custom-range {
+          cursor: not-allowed;
+          background: linear-gradient(
+            to right,
+            var(--color-gray-400) var(--range-percentage),
+            var(--color-gray-200) var(--range-percentage)
+          );
+        }
+
+        &--custom-range::-webkit-slider-thumb {
+          cursor: not-allowed;
+          background-color: var(--color-gray-100);
+          color: var(--color-gray-400);
+          box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.06), 0px 1px 2px 0px rgba(0, 0, 0, 0.04);
+
+          &:hover {
+            border: 1px solid var(--color-gray-200);
+          }
+        }
+
+        &--number-input {
+          cursor: not-allowed;
+          background-color: var(--color-gray-200);
+          border: 1px solid var(--color-gray-200);
+          color: var(--color-gray-400);
+        }
+
+        &--unit-container {
+          color: var(--color-gray-400);
+        }
+      }
     }
   }
 
@@ -16,7 +49,7 @@
     width: 100%;
     height: 3px;
     position: relative;
-    border-radius: 5px;
+    border-radius: 3px;
     outline: none;
     transition: background 1s;
     background: linear-gradient(
@@ -31,11 +64,22 @@
     appearance: none;
     width: var(--spacing-px-12);
     height: var(--spacing-px-12);
-    background: var(--color-white);
+    background-color: var(--color-white);
     cursor: pointer;
     border: 1px solid var(--color-gray-200);
     border-radius: 50%;
-    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.06), 0px 1px 2px 0px rgba(0, 0, 0, 0.04);
+  }
+
+  &--custom-range::-webkit-slider-thumb:hover {
+    border: 1px solid var(--color-primary-500);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.06), 0px 1px 2px 0px rgba(0, 0, 0, 0.04);
+  }
+
+  &--custom-range::-webkit-slider-thumb:focus,
+  &--custom-range::-webkit-slider-thumb:active {
+    box-shadow: 0px 0px 0px 1px rgba(208, 217, 255, 0.7), 0px 1px 2.25px 0px rgba(0, 0, 0, 0.1),
+      0px 1px 1.5px 0px rgba(0, 0, 0, 0.06);
   }
 
   &--custom-range::-moz-range-thumb {

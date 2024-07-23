@@ -25,6 +25,24 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
     assert.dom('.oss-slider--range-container').exists();
   });
 
+  test('it renders the slider as disabled when @disabled is truthy', async function (assert) {
+    this.displayInputValue = true;
+    await render(
+      hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} @disabled={{true}}/>`
+    );
+
+    assert.dom('.oss-slider--custom-range').isDisabled();
+  });
+
+  test('it renders the number input as disabled when @disabled is truthy', async function (assert) {
+    this.displayInputValue = true;
+    await render(
+      hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} @disabled={{true}}/>`
+    );
+
+    assert.dom('.oss-slider--number-input').isDisabled();
+  });
+
   test('it renders the slider width to the proper size', async function (assert) {
     await render(
       hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} />`
@@ -43,6 +61,19 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
 
     await fillIn('.oss-slider--number-input', '10');
     await assert.tooltip('.oss-slider--custom-range').hasTitle('10%');
+  });
+
+  test('the tooltip is rendered without unit when @unit is not provided', async function (assert) {
+    this.displayInputValue = true;
+    this.onChange = sinon.stub();
+    this.unit = '';
+
+    await render(
+      hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} />`
+    );
+
+    await fillIn('.oss-slider--number-input', '10');
+    await assert.tooltip('.oss-slider--custom-range').hasTitle('10');
   });
 
   test('the @onChange method is called with the proper value', async function (assert) {

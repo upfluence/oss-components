@@ -1,7 +1,9 @@
-<div class="oss-slider--container fx-gap-px-12 fx-xalign-center fx-malign-space-between">
+<div
+  class="oss-slider--container fx-gap-px-12 fx-row fx-xalign-center {{if @disabled 'oss-slider--container--disabled'}}"
+>
   <div
     class="oss-slider--range-container"
-    {{enable-tooltip placement="bottom" title=(concat this.currentRangeValue "%")}}
+    {{enable-tooltip placement="bottom" title=(concat this.currentRangeValue @unit)}}
   >
     <input
       class="oss-slider--custom-range"
@@ -10,8 +12,9 @@
       max={{this.sliderOptions.max}}
       value={{this.currentRangeValue}}
       step="1"
-      {{on "input" this.onRangeInput}}
+      {{on "input" this.onRangeChange}}
       {{did-insert this.initializeSlider}}
+      disabled={{@disabled}}
     />
   </div>
   {{#if @displayInputValue}}
@@ -22,7 +25,8 @@
         min={{this.sliderOptions.min}}
         max={{this.sliderOptions.max}}
         value={{this.currentRangeValue}}
-        {{on "input" this.onTextInput}}
+        disabled={{@disabled}}
+        {{on "input" this.onNumberInput}}
       />
       {{#if @unit}}
         <span class="oss-slider--unit-container">

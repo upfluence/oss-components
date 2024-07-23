@@ -8,6 +8,7 @@ interface SliderComponentArgs {
   onChange?: (value: number) => void;
   displayInputValue?: boolean;
   unit?: string;
+  disabled?: boolean;
 }
 
 export default class SliderComponent extends Component<SliderComponentArgs> {
@@ -26,13 +27,13 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
   }
 
   @action
-  onRangeInput(event: InputEvent) {
+  onRangeChange(event: InputEvent) {
     let value = (event.target as HTMLInputElement).valueAsNumber;
     this.updateValue(value);
   }
 
   @action
-  onTextInput(event: InputEvent) {
+  onNumberInput(event: InputEvent) {
     let value = (event.target as HTMLInputElement).valueAsNumber;
     if (isNaN(value)) {
       value = this.sliderOptions.min;
