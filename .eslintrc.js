@@ -20,7 +20,6 @@ module.exports = {
 
     'ember/no-jquery': 'off',
     'ember/no-get': 'off',
-    'ember/avoid-leaking-state-in-ember-objects': 'off',
     'ember/no-classic-classes': 'off',
     'ember/no-classic-components': 'off',
     'ember/require-tagless-components': 'off',
