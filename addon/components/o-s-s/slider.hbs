@@ -1,10 +1,7 @@
 <div
   class="oss-slider--container fx-gap-px-12 fx-row fx-xalign-center {{if @disabled 'oss-slider--container--disabled'}}"
 >
-  <div
-    class="oss-slider--range-container"
-    {{enable-tooltip placement="bottom" title=(concat this.currentRangeValue @unit)}}
-  >
+  <div class="oss-slider--range-container fx-1">
     <input
       class="oss-slider--custom-range"
       type="range"
@@ -16,6 +13,9 @@
       {{did-insert this.initializeSlider}}
       disabled={{@disabled}}
     />
+    <div class="upf-tooltip oss-slider--tooltip">
+      <span>{{concat this.currentRangeValue @unit}}</span>
+    </div>
   </div>
   {{#if @displayInputValue}}
     <div class="fx-row fx-xalign-center {{unless @unit 'border-radius-md'}}">

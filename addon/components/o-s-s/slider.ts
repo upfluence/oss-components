@@ -44,19 +44,49 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
   updateValue(value: number) {
     this.currentRangeValue = value;
     this.updateBackgroundSize(value);
+    this.updateTooltipPosition(value);
     if (this.args.onChange) {
       this.args.onChange(value);
     }
   }
 
   updateBackgroundSize(value: number) {
-    let percentage = ((value - this.sliderOptions.min) / (this.sliderOptions.max - this.sliderOptions.min)) * 100;
+    let percentage = this.getPercentage(value) * 100;
     const customRangeElement = document.querySelector('.oss-slider--custom-range') as HTMLElement;
     customRangeElement.style.setProperty('--range-percentage', `${percentage}%`);
   }
 
+  updateTooltipPosition(value: number) {
+    const tooltip = document.querySelector('.oss-slider--tooltip') as HTMLElement;
+
+    const sliderElement = document.querySelector('.oss-slider--custom-range') as HTMLElement;
+
+    if (sliderElement && tooltip) {
+      const sliderRect = sliderElement.getBoundingClientRect();
+      const tooltipRect = tooltip.getBoundingClientRect();
+
+      const percentage = this.getPercentage(value);
+
+      const handleTooltipHorizontalPosition = percentage * sliderRect.width;
+
+      const tooltipWidth = tooltipRect.width;
+      const tooltipLeftPosition = handleTooltipHorizontalPosition - tooltipWidth / 2;
+
+      tooltip.style.left = `${tooltipLeftPosition}px`;
+    } else {
+      console.error('Tooltip or Slider elements not found');
+    }
+  }
+
   @action
   initializeSlider() {
-    this.updateBackgroundSize(this.currentRangeValue);
+    requestAnimationFrame(() => {
+      this.updateBackgroundSize(this.currentRangeValue);
+      this.updateTooltipPosition(this.currentRangeValue);
+    });
+  }
+
+  private getPercentage(value: number): number {
+    return (value - this.sliderOptions.min) / (this.sliderOptions.max - this.sliderOptions.min);
   }
 }
