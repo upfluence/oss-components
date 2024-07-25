@@ -1,6 +1,19 @@
 .oss-slider {
+  &--range-container {
+    .oss-slider--tooltip {
+      left: var(--tooltip-left-position);
+      top: 30px;
+      &:before {
+        left: 50%;
+        transform: translateX(-50%) rotate(180deg);
+        top: -3px;
+      }
+    }
+  }
+
   &--container {
     width: 100%;
+    position: relative;
 
     input[type='number']::-webkit-inner-spin-button,
     input[type='number']::-webkit-outer-spin-button {
