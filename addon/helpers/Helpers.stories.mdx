@@ -10,6 +10,8 @@ import { Meta } from '@storybook/addon-docs/blocks';
 
 # Helpers
 
+Helper functions are JavaScript functions that you can call from a template when you need to compute something.
+
 ## transition-to
 
 Transition to a valid Ember JS router
@@ -53,17 +55,21 @@ Usage:
 With route only
 <OSS::Button
   @label='Button that opens link on current tab'
-  {{on 'click' (redirect-to url='https://github.com/upfluence/oss-components')}} />
+  {{on 'click' (redirect-to url='https://github.com/upfluence/oss-components')}}
+/>
 
 <OSS::Button
   @label='Button that opens link on target'
-  {{on 'click' (redirect-to url='https://github.com/upfluence/oss-components' target="_blank")}} />
+  {{on 'click' (redirect-to url='https://github.com/upfluence/oss-components' target='_blank')}}
+/>
 ```
 
 ## fa-icon-value
+
 Get the value from a font-awesome icon string
 e.g. "far fa-hourglass" will return "fa-hourglass"
 
 ## fa-icon-style
+
 Get the style from a font-awesome icon string
 e.g. "far fa-hourglass" will return "regular"

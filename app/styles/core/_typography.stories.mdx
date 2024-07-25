@@ -1,4 +1,4 @@
-import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { Meta, Typeset, ColorPalette, ColorItem, Canvas } from '@storybook/addon-docs/blocks';
 
 <Meta
   title="Core/Typography"
@@ -8,43 +8,263 @@ import { Meta, Canvas } from '@storybook/addon-docs/blocks';
   }}
 />
 
+export const typography = {
+  type: {
+    primary: getComputedStyle(document.documentElement).getPropertyValue('--font-family-stack')
+  },
+  weight: {
+    regular: '400',
+    semibold: '600'
+  },
+  fontSizes: {
+    xs: 10,
+    sm: 12,
+    md: 14,
+    lg: 16,
+    h1: 30,
+    h2: 25,
+    h3: 20,
+    h4: 15
+  }
+};
+
+export const SampleText = 'The quick brown fox jumps over a lazy dog.';
+
 # Typography
 
-Headers size are defined from `h1` to `h5` :
-- h1 (3rem, 30px)
-- h2 (2.5rem, 25px)
-- h3 (2rem, 20px)
-- h4 (1.5rem, 15px)
-- h5 (1.166666667rem)
+Typography helps establish hierarchy and communicate important content by
+creating clear visual patterns.
+
+## Product Font
+
+**[Inter](https://fonts.google.com/specimen/Inter)** is the primary typeface accross Upfluence products and can be used
+in 2 different weights:
+
+| Name     | Weight | Class                 |
+| -------- | ------ | --------------------- |
+| Regular  | 400    | -                     |
+| Semibold | 600    | .font-weight-semibold |
+
+## Type styles
+
+Throughout our products, we can distinguish two type styles: body and heading.
+Each has a default set of variants along with a set of options to allow for
+flexibility and a wide range of applications within the user interface.
+
+### Body styles
+
+<div class="fx-row fx-gap-px-30">
+  <div>
+    <table class="margin-bottom-px-30">
+      <thead>
+        <tr>
+          <th>Font size</th>
+          <th>Class</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>10px</td>
+          <td>.font-size-xs</td>
+        </tr>
+        <tr>
+          <td>12px</td>
+          <td>.font-size-sm</td>
+        </tr>
+        <tr>
+          <td>14px</td>
+          <td>.font-size-md</td>
+        </tr>
+        <tr>
+          <td>16px</td>
+          <td>.font-size-lg</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <p>Body styles are used within components and blocks of text.</p>
+    <p>
+      The default body text font size is: <strong>12px</strong>.
+    </p>
+  </div>
+</div>
+
+<div class="fx-row fx-gap-px-12">
+  <div class="fx-1">
+    <div class="fx-col">
+      <span>Regular</span>
+      <Typeset
+        fontSizes={[typography.fontSizes.xs, typography.fontSizes.sm, typography.fontSizes.md, typography.fontSizes.lg]}
+        fontWeight={typography.weight.regular}
+        sampleText={SampleText}
+        fontFamily={typography.type.primary}
+      />
+    </div>
+  </div>
+  <div class="fx-1">
+    <div class="fx-col">
+      <span>Semibold</span>
+      <Typeset
+        fontSizes={[typography.fontSizes.xs, typography.fontSizes.sm, typography.fontSizes.md, typography.fontSizes.lg]}
+        fontWeight={typography.weight.semibold}
+        sampleText={SampleText}
+        fontFamily={typography.type.primary}
+      />
+    </div>
+  </div>
+</div>
+
+#### Migrating legacy body styles
+
+<div class="margin-bottom-px-48">
+  <table>
+    <thead>
+      <tr>
+        <th>Legacy class</th>
+        <th>New class</th>
+        <th>New CSS variable</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>.text-size-6</td>
+        <td>.font-size-lg</td>
+        <td>var(--font-size-lg)</td>
+      </tr>
+      <tr>
+        <td>.text-size-5</td>
+        <td>.font-size-md</td>
+        <td>var(--font-size-md)</td>
+      </tr>
+      <tr>
+        <td>.text-size-4</td>
+        <td>.font-size-sm</td>
+        <td>var(--font-size-sm)</td>
+      </tr>
+      <tr>
+        <td>.text-size-3</td>
+        <td>.font-size-xs</td>
+        <td>var(--font-size-xs)</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+### Header styles
+
+Header sizes are defined from `h1` to `h4` :
+
+<div class="fx-row fx-gap-px-12">
+  <div class="margin-top-px-12">
+    <table>
+      <thead>
+        <tr>
+          <th>Header type</th>
+          <th>Font size</th>
+          <th>Class</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>h1</td>
+          <td>30px</td>
+          <td>.font-size-heading-1</td>
+        </tr>
+        <tr>
+          <td>h2</td>
+          <td>25px</td>
+          <td>.font-size-heading-2</td>
+        </tr>
+        <tr>
+          <td>h3</td>
+          <td>20px</td>
+          <td>.font-size-heading-3</td>
+        </tr>
+        <tr>
+          <td>h4</td>
+          <td>15px</td>
+          <td>.font-size-heading-4</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="fx-1">
+    <Typeset
+      fontSizes={[
+        Number(typography.fontSizes.h1),
+        Number(typography.fontSizes.h2),
+        Number(typography.fontSizes.h3),
+        Number(typography.fontSizes.h4)
+      ]}
+      fontWeight={typography.weight.regular}
+      sampleText={SampleText}
+      fontFamily={typography.type.primary}
+    />
+  </div>
+</div>
+
+## Color
+
+Mixing colors can be used to add contrast and reinforce the hierarchy between
+text.
+
+For example, one way to distinguish between a title and a subtitle is to apply
+`.font-color-gray-900` to the title, and `.font-color-gray-500` to the subtitle.
+
+Using a lighter color for secondary information provides contrast between the
+text and helps reinforce hierarchy even when the text is the same size and
+weight.
+
+<ColorPalette>
+  <ColorItem
+    title="Gray 900"
+    subtitle="This is the default text color and can be used for any content that does not have any particular hierarchy."
+    colors={{
+      '.font-color-gray-900 / var(--color-gray-900)': getComputedStyle(document.documentElement).getPropertyValue(
+        '--color-gray-900'
+      )
+    }}
+  />
+  <ColorItem
+    title="Gray 500"
+    subtitle="This lighter color can be used to de-emphasize secondary content, sub-sections, labels, etc."
+    colors={{
+      '.font-color-gray-500 / var(--color-gray-500)': getComputedStyle(document.documentElement).getPropertyValue(
+        '--color-gray-500'
+      )
+    }}
+  />
+  <ColorItem
+    title="Gray 400"
+    subtitle="Our lightest font color, usable when a 3rd level of hierarchy is needed"
+    colors={{
+      '.font-color-gray-400 / var(--color-gray-400)': getComputedStyle(document.documentElement).getPropertyValue(
+        '--color-gray-400'
+      )
+    }}
+  />
+</ColorPalette>
+
+## Text-ellipsis
+
+In an application, it is not always possible to display all the text. In this case, the text need to be cut and the
+excess of text is replaced by `...`.
+
+Different attributes in CSS are used to have this result: `max-width`, `overflow`, `text-overflow` and
+`white-space`. Built around the `text-ellipsis` class, the text overflow can be applied simply on `<p>` or `<span>`.
+
+The `text-ellipsis` class has multiple variants to determine the max length of the text. It can be used by adding a value in px for `max-width`, such as `text-ellipsis-80`. The range starts at `80` and ends at `400`, with increments of `20`.
 
 <Canvas>
-  <p>
-    <span>
-      <h1>Lorem ipsum dolor sit amet.</h1>
-    </span>
-    <span>
-      <h2>Lorem ipsum dolor sit amet.</h2>
-    </span>
-    <span>
-      <h3>Lorem ipsum dolor sit amet.</h3>
-    </span>
-    <span>
-      <h4>Lorem ipsum dolor sit amet.</h4>
-    </span>
-    <span>
-      <h5>Lorem ipsum dolor sit amet.</h5>
-    </span>
-  </p>
-</Canvas>
-
-`label` definition
-
-<Canvas>
-  <label>Lorem ipsum dolor sit amet.</label>
-</Canvas>
-
-Default body text definition
-
-<Canvas>
-  Lorem ipsum dolor sit amet.
+  <div class="flex-column">
+    <span class="text-ellipsis-80">Ellipsis 80px with text too long to read</span>
+    <span class="text-ellipsis-100">Ellipsis 100px with text too long to read</span>
+    <span class="text-ellipsis-120">Ellipsis 120px with text too long to read</span>
+    <span class="text-ellipsis-140">Ellipsis 140px with text too long to read</span>
+    <span class="text-ellipsis-160">Ellipsis 160px with text too long to read</span>
+    <span class="text-ellipsis-180">Ellipsis 180px with text too long to read</span>
+    <span class="text-ellipsis-200">Ellipsis 200px with text too long to read</span>
+    <span>With no ellipsis, you can read all this text</span>
+  </div>
 </Canvas>

@@ -1,45 +1,4 @@
-@import '_fonts';
-@import '_upf-icons';
+@import '_colors';
+@import '_variables';
 @import '_typography';
-
-* {
-  &::-webkit-scrollbar {
-    width: 16px;
-    background-color: @field-background-color;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    border-radius: 8px;
-    border: 4px solid transparent;
-    background-clip: content-box;
-    background-color: @upf-gray;
-
-    &:hover{
-      background-color: @upf-gray-dark;
-    }
-  }
-}
-
-.upf-icon { .upf-icon--; }
-
-[class*="upf-icon--"]:before {
-  color: inherit;
-}
-
-.fa-tiktok,
-.fa-reel,
-.fa-igtv {
-  &:extend(.upf-icon);
-}
-
-.fa-tiktok:before {
-  &:extend(.upf-icon--tiktok:before);
-}
-
-.fa-reel:before {
-  &:extend(.upf-icon--reel:before);
-}
-
-.fa-igtv:before {
-  &:extend(.upf-icon--igtv:before);
-}
+@import '_flex';

@@ -1,7 +1,7 @@
-import { Meta, ColorPalette, ColorItem } from '@storybook/addon-docs';
+import { Meta, ColorPalette, ColorItem, Canvas } from '@storybook/addon-docs';
 
 <Meta
-  title="CoreV2/Colors"
+  title="Core/Colors"
   parameters={{
     viewMode: 'docs',
     previewTabs: { canvas: { hidden: true } }
@@ -24,21 +24,27 @@ export const buildColors = (colors) => {
 
 # Colors
 
-New color palette use CSS variables.
+The new color palette uses CSS variables, such as `--color-primary-900`.
 
-Note: The most important variables can be used as html classes, calling them as `background-color-[color]-[weight]`.
+The most important variables can be used as html classes:
 
-E.G. `<div class="background-color-primary-50 font-color-gray-900">`
+- for background color with `background-color-[color]-[weight]`
+- for font color with `font-color-[color]-[weight]`
+
+Example: `<div class="background-color-primary-500 font-color-primary-50">`
+
+<Canvas>
+  <div class="background-color-primary-500 font-color-primary-50">
+    <p>Lorem ipsum dolor sit amet.</p>
+  </div>
+</Canvas>
 
 ## Brand
 
 Use for primary actions or elements that communicate the Upfluence brand.
 
 <ColorPalette>
-  <ColorItem
-    title="Primary Color"
-    colors={{ 'Primary 500': getComputedStyle(document.documentElement).getPropertyValue('--color-primary-500') }}
-  />
+  <ColorItem title="Primary Color" colors={buildColors(['color-primary-500'])} />
   <ColorItem
     title="Primary Scale"
     subtitle="Primary color"
@@ -51,6 +57,7 @@ Use for primary actions or elements that communicate the Upfluence brand.
       'color-primary-900'
     ])}
   />
+  <ColorItem title="Accent Color" colors={buildColors(['color-accent'])} />
 </ColorPalette>
 
 ## Neutral Colors
@@ -145,6 +152,7 @@ All other type of colors
     title="Orange"
     colors={buildColors([
       'color-orange-50',
+      'color-orange-100',
       'color-orange-400',
       'color-orange-500',
       'color-orange-600',
@@ -155,6 +163,7 @@ All other type of colors
     title="Yellow"
     colors={buildColors([
       'color-yellow-50',
+      'color-yellow-100',
       'color-yellow-400',
       'color-yellow-500',
       'color-yellow-600',
@@ -221,15 +230,30 @@ All other type of colors
 ## Social Media
 
 <ColorPalette>
-  <ColorItem
-    title="Instagram"
-    colors={buildColors(['color-instagram-50', 'color-instagram-500', 'color-instagram-accent'])}
-  />
   <ColorItem title="Facebook" colors={buildColors(['color-facebook-50', 'color-facebook-500'])} />
   <ColorItem title="Youtube" colors={buildColors(['color-youtube-50', 'color-youtube-500'])} />
-  <ColorItem title="X" colors={buildColors(['color-twitter-50', 'color-twitter-500'])} />
+  <ColorItem title="X / Twitter" colors={buildColors(['color-twitter-50', 'color-twitter-500'])} />
   <ColorItem title="Tiktok" colors={buildColors(['color-tiktok-50', 'color-tiktok-500'])} />
   <ColorItem title="Blog" colors={buildColors(['color-blog-50', 'color-blog-500'])} />
   <ColorItem title="Twitch" colors={buildColors(['color-twitch-50', 'color-twitch-500'])} />
   <ColorItem title="Pinterest" colors={buildColors(['color-pinterest-50', 'color-pinterest-500'])} />
+  <ColorItem
+    title="Instagram"
+    colors={buildColors(['color-instagram-50', 'color-instagram-500', 'color-instagram-accent'])}
+  />
+</ColorPalette>
+
+## Smart Gradient
+
+<ColorPalette>
+  <ColorItem
+    title="Background Gradient"
+    colors={buildColors([
+      'color-smart-gradient-50',
+      'color-smart-gradient-400',
+      'color-smart-gradient-500',
+      'color-smart-gradient-600'
+    ])}
+  />
+  <ColorItem title="Font Gradient" colors={buildColors(['font-color-smart-gradient'])} />
 </ColorPalette>

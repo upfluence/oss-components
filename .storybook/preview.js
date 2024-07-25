@@ -11,12 +11,11 @@ export const parameters = {
         'Getting Started',
         ['Introduction', 'Developer Guidelines'],
         'Core',
-        ['Colors', 'Typography', 'Icons', 'Variables'],
-        'CoreV2',
-        ['Colors', 'Variables'],
-        'Components',
+        ['Typography', 'Variables', 'Colors', 'Flexbox'],
         'Helpers & Modifiers',
-        'Utilities'
+        'Components',
+        'Deprecated',
+        ['Typography', 'Icons', 'Variables']
       ]
     }
   },
