@@ -1,4 +1,4 @@
-import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import { Meta } from '@storybook/addon-docs/blocks';
 
 <Meta
   title="Core/Variables"
@@ -10,89 +10,76 @@ import { Meta, Canvas } from '@storybook/addon-docs/blocks';
 
 # Variables
 
-Variables are used in .less files to standardize css values. This is an exemple how to use
+Variables are used in .less files to standardize css values. They are represented by css variables.
+
+This is an example how to use
 Upfluence css variables:
 
-`
-.your-css-class {
-css-attribute: @custom-vaiables
-}
-`
+`.your-css-class {
+css-attribute: var(--custom-vaiables);
+}`
+`<div class="your-css-class"></div>`
 
-## Text Color
+## Box shadow
 
-In case you need to display some text on a bright background, the following variables
-might come handy.
+The following values represent box shadow level. The following values represent the 4 different box-shadow levels: xs, sm, md, lg.
 
-|  Name                       | Value                 | HTML class          |
-| --------------------------- | --------------------- | ------------------- |
-| color-text                  | rgba(0, 0, 0, 87%)    | text-color-default  |
-| color-text-light            | rgba(0, 0, 0, 54%)    | text-color-light    |
-| color-text-lighter          | rgba(0, 0, 0, 46%)    | text-color-lighter  |
+| Name            | Class          |
+| --------------- | -------------- |
+| --box-shadow-xs | .box-shadow-xs |
+| --box-shadow-sm | .box-shadow-sm |
+| --box-shadow-md | .box-shadow-md |
+| --box-shadow-lg | .box-shadow-lg |
 
-<Canvas>
-  <span class="text-color-default"> color-text </span>
-  <span class="text-color-default-light"> color-text-light </span>
-  <span class="text-color-default-lighter"> color-text-lighter </span>
-</Canvas>
+## Border color
 
-In case you need the displayed text to contrast with a dark or colorful background, these
-are the one you might need.
+The default border color used in all components. The content separator color is used to separate different elements, for example
+to separate lines of a table.
 
-|  Name                       | Value                     | HTML class                   |
-| --------------------------- | ------------------------- | ---------------------------- |
-| color-text-contrast         | rgba(255, 255, 255, 100%) | text-color-contrast          |
-| color-text-contrast-light   | rgba(255, 255, 255, 70%)  | text-color-contrast-light    |
-| color-text-contrast-lighter | rgba(255, 255, 255, 50%)  | text-color-contrast-lighter  |
+| Name                      | Value                 |
+| ------------------------- | --------------------- |
+| --color-border-default    | var(--color-gray-200) |
+| --color-content-separator | var(--color-gray-100) |
 
-<Canvas>
-  <span class="text-color-contrast dark"> color-text-contrast </span>
-  <span class="text-color-contrast-light dark"> color-text-contrast-light </span>
-  <span class="text-color-contrast-lighter dark"> color-text-contrast-lighter </span>
-</Canvas>
+## Border radius
 
-## Input size
+The following values represent border radius level. There are 2 types of levels: sm, md.
 
-In case you need to custom the height of an input, these are the one you might need.
+| Name               | Value | Class                  |
+| ------------------ | ----- | ---------------------- |
+| --border-radius-sm | 4px   | .border-radius-default |
+| --border-radius-md | 8px   | .border-radius-md      |
 
-|  Name                       | Value     |
-| --------------------------- | --------- |
-| input-size-default          | 36px      |
+## Spacers
 
-<Canvas>
-  <input type="text" class="upf-input" placeholder="input-size-default" />
-  <input type="text" class="input-size-sm" placeholder="input-size-sm" />
-</Canvas>
+These are variables that can be used alongside size css attributes (padding, margin, etc.).
 
-## Borders
+They range from 0 to 60 incremented each time by 6 (for more precision, 3 and 9 are also available).
 
-In case you need to custom values of border, these are the one you might need.
+| Variable        | Value                                               |
+| --------------- | --------------------------------------------------- |
+| --spacing-px-XX | Where XX is a number that represents the pixel size |
 
-|  Name                  | Value     |
-| ---------------------- | --------- |
-| default-radius         | 4px       |
-| border-color           | #bfc5cb   |
+These spacers are also used to define margin & padding classes to use directly in the templates :
 
-<Canvas>
-  <div class="border-box">
-    Border: 1px solid; <br/>
-    Border Radius: @default-radius; <br/>
-    Border Color: @border-color;
-  </div>
-</Canvas>
+| Class                 | Value                                               |
+| --------------------- | --------------------------------------------------- |
+| .margin-px-XX         | Where XX is a number that represents the pixel size |
+| .margin-right-px-XX   |                                                     |
+| .margin-left-px-XX    |                                                     |
+| .margin-top-px-XX     |                                                     |
+| .margin-bottom-px-XX  |                                                     |
+| .padding-px-XX        |                                                     |
+| .padding-left-px-XX   |                                                     |
+| .padding-right-px-XX  |                                                     |
+| .padding-top-px-XX    |                                                     |
+| .padding-bottom-px-XX |                                                     |
 
-## Spacing
-Create some spacing with `spacing-<size modifier>`. This is really useful when modifying custom properties for example `padding: @spacing-xxx-sm @spacing-x-sm;`.
-Here is a range of size modifiers and their respective values.
+## Width/Height percentage classes
 
-|  Name                  | Value     |
-| ---------------------- | --------- |
-| spacing-none           | 0         |
-| spacing-xxx-sm         | 0.5em     |
-| spacing-xx-sm          | 1em       |
-| spacing-x-sm           | 1.5em     |
-| spacing-sm             | 2em       |
-| spacing-md             | 2.5em     |
-| spacing-lg             | 3em       |
-| spacing-x-lg           | 4em       |
-| spacing-xx-lg          | 5em       |
+Helper classes to specify a percentage of space to use for width & height in steps of 10%
+
+| Class         | Value                                                |
+| ------------- | ---------------------------------------------------- |
+| .width-pc-XX  | Where XX is a number that reprensents the pixel size |
+| .height-pc-XX |                                                      |
