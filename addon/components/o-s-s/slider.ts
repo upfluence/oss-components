@@ -7,7 +7,7 @@ interface SliderComponentArgs {
   value: number;
   onChange?: (value: number) => void;
   displayInputValue?: boolean;
-  unit?: string;
+  unit?: 'percentage' | 'number';
   disabled?: boolean;
 }
 
@@ -18,6 +18,7 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
   };
 
   @tracked currentRangeValue: number;
+  @tracked displayTooltip: boolean = false;
 
   elementId = `slider-${guidFor(this)}`;
 
@@ -26,10 +27,30 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
     this.currentRangeValue = this.args.value;
   }
 
+  get unitIcon(): string | null {
+    if (this.args.unit === 'percentage') {
+      return 'fa-percent';
+    } else if (this.args.unit === 'number') {
+      return 'fa-hashtag';
+    } else {
+      return null;
+    }
+  }
+
   @action
   onRangeChange(event: InputEvent) {
     let value = (event.target as HTMLInputElement).valueAsNumber;
     this.updateValue(value);
+  }
+
+  @action
+  showTooltip() {
+    this.displayTooltip = true;
+  }
+
+  @action
+  removeTooltip() {
+    this.displayTooltip = false;
   }
 
   @action
@@ -52,25 +73,25 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
 
   updateBackgroundSize(value: number) {
     let percentage = this.getPercentage(value) * 100;
-    const customRangeElement = document.querySelector('.oss-slider--custom-range') as HTMLElement;
+    const customRangeElement = document.querySelector('.oss-slider--range') as HTMLElement;
     customRangeElement.style.setProperty('--range-percentage', `${percentage}%`);
   }
 
   updateTooltipPosition(value: number) {
     const tooltip = document.querySelector('.oss-slider--tooltip') as HTMLElement;
-
-    const sliderElement = document.querySelector('.oss-slider--custom-range') as HTMLElement;
+    const sliderElement = document.querySelector('.oss-slider--range') as HTMLElement;
 
     if (sliderElement && tooltip) {
       const sliderRect = sliderElement.getBoundingClientRect();
-      const tooltipRect = tooltip.getBoundingClientRect();
-
       const percentage = this.getPercentage(value);
 
-      const handleTooltipHorizontalPosition = percentage * sliderRect.width;
+      const handleWidth = 12;
+      const correctedSliderWidth = sliderRect.width - handleWidth;
 
-      const tooltipWidth = tooltipRect.width;
-      const tooltipLeftPosition = handleTooltipHorizontalPosition - tooltipWidth / 2;
+      const handleTooltipHorizontalPosition = percentage * correctedSliderWidth;
+
+      const tooltipWidth = tooltip.offsetWidth;
+      const tooltipLeftPosition = handleTooltipHorizontalPosition - tooltipWidth / 2 + handleWidth / 2;
 
       tooltip.style.left = `${tooltipLeftPosition}px`;
     } else {
