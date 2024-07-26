@@ -3,18 +3,20 @@
 >
   <div class="oss-slider--range-container fx-1">
     <input
-      class="oss-slider--custom-range"
+      class="oss-slider--range"
       type="range"
       min={{this.sliderOptions.min}}
       max={{this.sliderOptions.max}}
       value={{this.currentRangeValue}}
       step="1"
       {{on "input" this.onRangeChange}}
+      {{on "mouseenter" this.showTooltip}}
+      {{on "mouseleave" this.removeTooltip}}
       {{did-insert this.initializeSlider}}
       disabled={{@disabled}}
     />
-    <div class="upf-tooltip oss-slider--tooltip">
-      <span>{{concat this.currentRangeValue @unit}}</span>
+    <div class="upf-tooltip oss-slider--tooltip {{unless this.displayTooltip 'oss-slider--tooltip--hidden'}}">
+      <span>{{concat this.currentRangeValue (if (eq @unit "percentage") "%")}}</span>
     </div>
   </div>
   {{#if @displayInputValue}}
@@ -30,7 +32,11 @@
       />
       {{#if @unit}}
         <span class="oss-slider--unit-container">
-          {{@unit}}
+          {{#if this.unitIcon}}
+            <OSS::Icon @icon={{this.unitIcon}} class="color-gray-400" />
+          {{else}}
+            {{@unit}}
+          {{/if}}
         </span>
       {{/if}}
     </div>
