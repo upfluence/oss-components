@@ -1,4 +1,5 @@
 .currency-input-container {
+  flex: 1;
   position: relative;
 
   .currency-input {
@@ -51,6 +52,21 @@
 
     &.currency-input--active {
       .input-state-active;
+    }
+  }
+
+  &--disabled {
+    .currency-input {
+      cursor: not-allowed;
+
+      input {
+        .input-state-disabled;
+      }
+
+      .currency-selector {
+        cursor: not-allowed;
+        background-color: var(--color-gray-100);
+      }
     }
   }
 

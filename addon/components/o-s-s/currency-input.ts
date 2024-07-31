@@ -13,6 +13,7 @@ interface OSSCurrencyInputArgs {
   currency: string;
   value: number;
   onChange(currency: string, value: number): void;
+  disabled?: boolean;
   allowCurrencyUpdate?: boolean;
   onlyCurrency?: boolean;
   placeholder?: string;
@@ -108,6 +109,21 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
     return this.args.placeholder ?? '0';
   }
 
+  get disabled(): boolean {
+    return this.args.disabled ?? false;
+  }
+
+  get computedClasses(): string {
+    const classes = ['currency-input-container'];
+    if (this.disabled) {
+      classes.push('currency-input-container--disabled');
+    }
+    if (this.args.errorMessage) {
+      classes.push('currency-input-container--errored');
+    }
+    return classes.join(' ');
+  }
+
   @action
   onlyNumeric(event: KeyboardEvent): void {
     if (['c', 'v'].includes(event.key) && (event.metaKey || event.ctrlKey)) {
@@ -159,7 +175,7 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
   toggleCurrencySelector(e: any): void {
     e.stopPropagation();
 
-    if (!this.allowCurrencyUpdate) return;
+    if (!this.allowCurrencyUpdate || this.disabled) return;
     this.currencySelectorShown = !this.currencySelectorShown;
   }
 

@@ -14,22 +14,17 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
   });
 
   test('it renders', async function (assert) {
-    this.value = 0;
-    this.currency = '';
     await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} />`);
-
     assert.dom('.currency-input-container').exists();
   });
 
   test('The passed @value parameter is properly displayed in the input', async function (assert) {
     await render(hbs`<OSS::CurrencyInput @value="12341234" @onChange={{this.onChange}} />`);
-
     assert.dom('input').hasValue('12341234');
   });
 
   test('It properly loads the correct currency when the @currency parameter is defined', async function (assert) {
     await render(hbs`<OSS::CurrencyInput @currency="EUR" @onChange={{this.onChange}} />`);
-
     assert.dom('.currency-selector').hasText('€');
   });
 
@@ -149,6 +144,23 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
     assert.dom('.currency-input-container').exists();
     assert.dom('.currency-selector').hasText('$ USD');
     assert.dom('.currency-input input').doesNotExist();
+  });
+
+  module('For @disabled argument', () => {
+    test("The disabled class isn't here for undefined value", async function (assert) {
+      await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} />`);
+      assert.dom('.currency-input-container--disabled').doesNotExist();
+    });
+
+    test("The disabled class isn't here for false value", async function (assert) {
+      await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @disabled={{false}} />`);
+      assert.dom('.currency-input-container--disabled').doesNotExist();
+    });
+
+    test('The disabled class is here for true value', async function (assert) {
+      await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @disabled={{true}} />`);
+      assert.dom('.currency-input-container--disabled').exists();
+    });
   });
 
   module('When the paste event is received', function (hooks) {
