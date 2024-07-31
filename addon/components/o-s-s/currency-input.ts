@@ -113,6 +113,17 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
     return this.args.disabled ?? false;
   }
 
+  get computedClasses(): string {
+    const classes = ['currency-input-container'];
+    if (this.disabled) {
+      classes.push('currency-input-container--disabled');
+    }
+    if (this.args.errorMessage) {
+      classes.push('currency-input-container--errored');
+    }
+    return classes.join(' ');
+  }
+
   @action
   onlyNumeric(event: KeyboardEvent): void {
     if (['c', 'v'].includes(event.key) && (event.metaKey || event.ctrlKey)) {
