@@ -54,6 +54,21 @@
     }
   }
 
+  &--disabled {
+    .currency-input {
+      cursor: not-allowed;
+
+      input {
+        .input-state-disabled;
+      }
+
+      .currency-selector {
+        cursor: not-allowed;
+        background-color: var(--color-gray-100);
+      }
+    }
+  }
+
   &--errored {
     .currency-input {
       .border-color-error;

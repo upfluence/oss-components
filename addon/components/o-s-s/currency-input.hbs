@@ -1,4 +1,4 @@
-<div class="currency-input-container fx-1 {{if @errorMessage 'currency-input-container--errored'}}" ...attributes>
+<div class="currency-input-container fx-1  {{if this.disabled 'currency-input-container--disabled'}} {{if @errorMessage 'currency-input-container--errored'}}" ...attributes>
   <div class="currency-input {{if @onlyCurrency 'onlycurrency'}} {{if this.currencySelectorShown 'currency-input--active'}}
               fx-row fx-1 fx-xalign-center">
     <div class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center"
@@ -13,7 +13,7 @@
         </div>
       </div>
 
-      {{#if this.allowCurrencyUpdate}}
+      {{#if (and this.allowCurrencyUpdate (not this.disabled))}}
         <OSS::Icon @icon="{{if this.currencySelectorShown "fa-chevron-up" "fa-chevron-down"}}"
                    class="margin-left-px-6" />
       {{/if}}

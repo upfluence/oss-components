@@ -25,6 +25,16 @@ export default {
       },
       control: { type: 'number' }
     },
+    disabled: {
+      description: 'Disabled state of the component',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
     onlyCurrency: {
       description: 'Display only the currency dropdown',
       table: {
@@ -97,6 +107,7 @@ export default {
 const defaultArgs = {
   value: 42,
   currency: 'USD',
+  disabled: false,
   onlyCurrency: false,
   errorMessage: '',
   onChange: action('onChange'),
@@ -111,7 +122,7 @@ const Template = (args) => ({
         <OSS::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}}
                             @onlyCurrency={{this.onlyCurrency}} @errorMessage={{this.errorMessage}}
                             @allowCurrencyUpdate={{this.allowCurrencyUpdate}} @allowedCurrencies={{this.allowedCurrencies}}
-                            @placeholder={{this.placeholder}} />
+                            @placeholder={{this.placeholder}} @disabled={{this.disabled}} />
       </div>
   `,
   context: args
