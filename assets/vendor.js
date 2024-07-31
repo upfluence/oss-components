@@ -73576,44 +73576,6 @@ define("@glimmer/component/index", ["exports", "@ember/component", "@glimmer/com
   }
   var _default = _exports.default = GlimmerComponent;
 });
-;define("@upfluence/oss-components/components/app-base", ["exports", "@ember/component"], function (_exports, _component) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"@ember/component"eaimeta@70e063a35619d71f
-  var _default = _exports.default = _component.default.extend({});
-});
-;define("@upfluence/oss-components/components/app-header", ["exports", "@ember/component", "@ember/object"], function (_exports, _component, _object) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"@ember/component",0,"@ember/object"eaimeta@70e063a35619d71f
-  var _default = _exports.default = _component.default.extend({
-    tagName: 'nav',
-    classNameBindings: ['headerStyleClass'],
-    logo: null,
-    //TODO: check if used somewhere
-    indexRoute: 'index',
-    isSidebarStyle: _object.computed.equal('headerStyle', 'sidebar'),
-    isTopbarStyle: _object.computed.not('isSidebarStyle'),
-    headerStyleClass: (0, _object.computed)('headerStyle', 'isSidebarStyle', function () {
-      if (this.get('isSidebarStyle')) {
-        return 'col-xs-1 app-header--sidebar';
-      } else {
-        return 'col-xs-12 app-header--topbar';
-      }
-    }),
-    hasLogo: (0, _object.computed)('logo', function () {
-      return this.get('logo') !== null;
-    })
-  });
-});
 ;define("@upfluence/oss-components/components/input-wrapper", ["exports", "@ember/component", "@ember/object"], function (_exports, _component, _object) {
   "use strict";
 
@@ -79184,9 +79146,9 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="currency-input-container fx-1 {{if @errorMessage 'currency-input-container--errored'}}" ...attributes>
-    <div class="currency-input {{if @onlyCurrency 'onlycurrency'}} {{if this.currencySelectorShown 'currency-input--active'}}
-                fx-row fx-1 fx-xalign-center">
+    <div class={{this.computedClasses}} ...attributes>
+    <div class="currency-input fx-row fx-1 fx-xalign-center
+                {{if @onlyCurrency 'onlycurrency'}} {{if this.currencySelectorShown 'currency-input--active'}}">
       <div class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center"
            role={{if this.allowCurrencyUpdate 'button' 'img'}}
            {{on "click" this.toggleCurrencySelector}}>
@@ -79199,7 +79161,7 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
           </div>
         </div>
   
-        {{#if this.allowCurrencyUpdate}}
+        {{#if (and this.allowCurrencyUpdate (not this.disabled))}}
           <OSS::Icon @icon="{{if this.currencySelectorShown "fa-chevron-up" "fa-chevron-down"}}"
                      class="margin-left-px-6" />
         {{/if}}
@@ -79238,8 +79200,8 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
   </div>
   */
   {
-    "id": "kW8DViH2",
-    "block": "[[[11,0],[16,0,[29,[\"currency-input-container fx-1 \",[52,[30,1],\"currency-input-container--errored\"]]]],[17,2],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"currency-input \",[52,[30,3],\"onlycurrency\"],\" \",[52,[30,0,[\"currencySelectorShown\"]],\"currency-input--active\"],\"\\n              fx-row fx-1 fx-xalign-center\"]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center\"],[16,\"role\",[52,[30,0,[\"allowCurrencyUpdate\"]],\"button\",\"img\"]],[4,[38,1],[\"click\",[30,0,[\"toggleCurrencySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-9\"],[12],[1,\"\\n          \"],[10,1],[12],[1,[30,0,[\"selectedCurrencySymbol\"]]],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"            \"],[10,1],[14,0,\"margin-right-px-12\"],[12],[1,[30,0,[\"selectedCurrencyCode\"]]],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"allowCurrencyUpdate\"]],[[[1,\"        \"],[8,[39,2],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[[29,[[52,[30,0,[\"currencySelectorShown\"]],\"fa-chevron-up\",\"fa-chevron-down\"]]]]],null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[51,[30,3]],[[[1,\"      \"],[8,[39,4],[[24,0,\"fx-1\"],[24,\"min\",\"0\"],[24,\"autocomplete\",\"off\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,4,\"number\"],[4,[38,1],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,1],[\"keyup\",[30,0,[\"notifyChanges\"]]],null],[4,[38,1],[\"paste\",[30,0,[\"handlePaste\"]]],null]],[[\"@value\"],[[30,0,[\"localValue\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,1],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\"\\n      \"],[1,[30,1]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"    \"],[8,[39,5],[[4,[38,7],[[30,0,[\"hideCurrencySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCurrencies\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[28,[37,6],[\"oss-components.currency-input.search\"],null]]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,8],[[30,0,[\"selectedCurrency\"]],[30,4]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,1],[14,0,\"symbol text-color-default-light margin-left-xx-sm\"],[12],[1,[30,4,[\"symbol\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm fx-1\"],[12],[1,[30,4,[\"code\"]]],[13],[1,\"\\n\"],[41,[28,[37,8],[[30,0,[\"selectedCurrency\"]],[30,4]],null],[[[1,\"            \"],[8,[39,2],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[13]],[\"@errorMessage\",\"&attrs\",\"@onlyCurrency\",\"currency\"],false,[\"if\",\"on\",\"o-s-s/icon\",\"unless\",\"input\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\",\"eq\"]]",
+    "id": "U6ZCwJ4x",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"currency-input fx-row fx-1 fx-xalign-center\\n              \",[52,[30,2],\"onlycurrency\"],\" \",[52,[30,0,[\"currencySelectorShown\"]],\"currency-input--active\"]]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center\"],[16,\"role\",[52,[30,0,[\"allowCurrencyUpdate\"]],\"button\",\"img\"]],[4,[38,1],[\"click\",[30,0,[\"toggleCurrencySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-9\"],[12],[1,\"\\n          \"],[10,1],[12],[1,[30,0,[\"selectedCurrencySymbol\"]]],[13],[1,\"\\n\"],[41,[30,2],[[[1,\"            \"],[10,1],[14,0,\"margin-right-px-12\"],[12],[1,[30,0,[\"selectedCurrencyCode\"]]],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[28,[37,2],[[30,0,[\"allowCurrencyUpdate\"]],[28,[37,3],[[30,0,[\"disabled\"]]],null]],null],[[[1,\"        \"],[8,[39,4],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[[29,[[52,[30,0,[\"currencySelectorShown\"]],\"fa-chevron-up\",\"fa-chevron-down\"]]]]],null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[51,[30,2]],[[[1,\"      \"],[8,[39,6],[[24,0,\"fx-1\"],[24,\"min\",\"0\"],[24,\"autocomplete\",\"off\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,4,\"number\"],[4,[38,1],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,1],[\"keyup\",[30,0,[\"notifyChanges\"]]],null],[4,[38,1],[\"paste\",[30,0,[\"handlePaste\"]]],null]],[[\"@value\"],[[30,0,[\"localValue\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\"\\n      \"],[1,[30,3]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"    \"],[8,[39,7],[[4,[38,9],[[30,0,[\"hideCurrencySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCurrencies\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[28,[37,8],[\"oss-components.currency-input.search\"],null]]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,10],[[30,0,[\"selectedCurrency\"]],[30,4]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,1],[14,0,\"symbol text-color-default-light margin-left-xx-sm\"],[12],[1,[30,4,[\"symbol\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm fx-1\"],[12],[1,[30,4,[\"code\"]]],[13],[1,\"\\n\"],[41,[28,[37,10],[[30,0,[\"selectedCurrency\"]],[30,4]],null],[[[1,\"            \"],[8,[39,4],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@onlyCurrency\",\"@errorMessage\",\"currency\"],false,[\"if\",\"on\",\"and\",\"not\",\"o-s-s/icon\",\"unless\",\"input\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\",\"eq\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/currency-input.hbs",
     "isStrictMode": false
   });
@@ -79380,6 +79342,24 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
         return (_this$args$placeholde = this.args.placeholder) !== null && _this$args$placeholde !== void 0 ? _this$args$placeholde : '0';
       }
     }, {
+      key: "disabled",
+      get: function get() {
+        var _this$args$disabled;
+        return (_this$args$disabled = this.args.disabled) !== null && _this$args$disabled !== void 0 ? _this$args$disabled : false;
+      }
+    }, {
+      key: "computedClasses",
+      get: function get() {
+        var classes = ['currency-input-container'];
+        if (this.disabled) {
+          classes.push('currency-input-container--disabled');
+        }
+        if (this.args.errorMessage) {
+          classes.push('currency-input-container--errored');
+        }
+        return classes.join(' ');
+      }
+    }, {
       key: "onlyNumeric",
       value: function onlyNumeric(event) {
         if (['c', 'v'].includes(event.key) && (event.metaKey || event.ctrlKey)) {
@@ -79427,7 +79407,7 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
       key: "toggleCurrencySelector",
       value: function toggleCurrencySelector(e) {
         e.stopPropagation();
-        if (!this.allowCurrencyUpdate) return;
+        if (!this.allowCurrencyUpdate || this.disabled) return;
         this.currencySelectorShown = !this.currencySelectorShown;
       }
     }, {
@@ -79500,6 +79480,20 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
         },
         control: {
           type: 'number'
+        }
+      },
+      disabled: {
+        description: 'Disabled state of the component',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
         }
       },
       onlyCurrency: {
@@ -79597,6 +79591,7 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
   var defaultArgs = {
     value: 42,
     currency: 'USD',
+    disabled: false,
     onlyCurrency: false,
     errorMessage: '',
     onChange: (0, _addonActions.action)('onChange'),
@@ -79613,13 +79608,13 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
               <OSS::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}}
                                   @onlyCurrency={{this.onlyCurrency}} @errorMessage={{this.errorMessage}}
                                   @allowCurrencyUpdate={{this.allowCurrencyUpdate}} @allowedCurrencies={{this.allowedCurrencies}}
-                                  @placeholder={{this.placeholder}} />
+                                  @placeholder={{this.placeholder}} @disabled={{this.disabled}} />
             </div>
         
       */
       {
-        "id": "2IAQqv1H",
-        "block": "[[[1,\"\\n      \"],[10,0],[14,5,\"width:270px\"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@value\",\"@currency\",\"@onChange\",\"@onlyCurrency\",\"@errorMessage\",\"@allowCurrencyUpdate\",\"@allowedCurrencies\",\"@placeholder\"],[[30,0,[\"value\"]],[30,0,[\"currency\"]],[30,0,[\"onChange\"]],[30,0,[\"onlyCurrency\"]],[30,0,[\"errorMessage\"]],[30,0,[\"allowCurrencyUpdate\"]],[30,0,[\"allowedCurrencies\"]],[30,0,[\"placeholder\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/currency-input\"]]",
+        "id": "aArYGEVN",
+        "block": "[[[1,\"\\n      \"],[10,0],[14,5,\"width:270px\"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@value\",\"@currency\",\"@onChange\",\"@onlyCurrency\",\"@errorMessage\",\"@allowCurrencyUpdate\",\"@allowedCurrencies\",\"@placeholder\",\"@disabled\"],[[30,0,[\"value\"]],[30,0,[\"currency\"]],[30,0,[\"onChange\"]],[30,0,[\"onlyCurrency\"]],[30,0,[\"errorMessage\"]],[30,0,[\"allowCurrencyUpdate\"]],[30,0,[\"allowedCurrencies\"]],[30,0,[\"placeholder\"]],[30,0,[\"disabled\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/currency-input\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/currency-input.stories.js",
         "isStrictMode": false
       }),

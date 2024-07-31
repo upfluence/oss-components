@@ -8247,21 +8247,21 @@ button.close {
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfMZg.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuLyfMZg.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 600;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuGKYMZg.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuGKYMZg.ttf) format('truetype');
 }
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
   font-display: swap;
-  src: url(https://fonts.gstatic.com/s/inter/v13/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuFuYMZg.ttf) format('truetype');
+  src: url(https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIw2boKoduKmMEVuFuYMZg.ttf) format('truetype');
 }
 /* cyrillic-ext */
 @font-face {
@@ -10894,197 +10894,6 @@ label {
 .upf-status-page__error-reason {
   color: var(--color-error-500);
 }
-.app-header {
-  background-color: #060666;
-}
-.app-header .logo-container {
-  position: relative;
-  width: 100%;
-  padding: 6px 6px;
-}
-.app-header .logo-container a,
-.app-header .logo-container a:hover {
-  /*.reset-link;*/
-}
-.app-header .logo-container a.active {
-  padding-bottom: 0;
-  border: none;
-}
-.app-header .header-item {
-  cursor: pointer;
-  font-size: 1.2em;
-  text-align: center;
-}
-.app-header .header-item a,
-.app-header .header-item i {
-  color: #ffffff;
-  text-decoration: none !important;
-}
-.app-header--sidebar {
-  background-color: #060666;
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-  height: 100vh;
-  position: fixed;
-  padding: 0;
-  top: 0;
-  width: 5em;
-  box-shadow: 10px 0 10px -10px rgba(0, 0, 0, 0.1);
-}
-.app-header--sidebar .logo-container {
-  position: relative;
-  width: 100%;
-  padding: 6px 6px;
-}
-.app-header--sidebar .logo-container a,
-.app-header--sidebar .logo-container a:hover {
-  /*.reset-link;*/
-}
-.app-header--sidebar .logo-container a.active {
-  padding-bottom: 0;
-  border: none;
-}
-.app-header--sidebar .header-item {
-  cursor: pointer;
-  font-size: 1.2em;
-  text-align: center;
-}
-.app-header--sidebar .header-item a,
-.app-header--sidebar .header-item i {
-  color: #ffffff;
-  text-decoration: none !important;
-}
-.app-header--sidebar .logo-container {
-  margin-top: 0;
-  text-align: center;
-  padding: 12px 12px 12px 12px;
-}
-.app-header--sidebar .logo-container img {
-  width: 100%;
-}
-.app-header--sidebar .header-item {
-  font-size: 1.5em;
-  margin-top: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-.app-header--sidebar .header-item a {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  border-radius: var(--border-radius-sm);
-  max-width: 24px;
-  height: 24px;
-  padding: 24px;
-  color: #c3c3fc;
-}
-.app-header--sidebar .header-item a img {
-  flex: 1;
-  max-width: 18px;
-  height: 18px;
-  align: middle;
-}
-.app-header--sidebar .header-item a:hover {
-  background-color: rgba(13, 13, 230, 0.4);
-  transition: all 0.2s ease;
-}
-.app-header--sidebar .header-item a:active img {
-  opacity: 0.8;
-}
-.app-header--sidebar .header-item a.active,
-.app-header--sidebar .header-item a.active i,
-.app-header--sidebar .header-item a.active .upf-icon {
-  color: var(--color-white);
-  border-bottom: none;
-  background-color: var(--color-primary-500);
-  transition: all 0.5s ease;
-}
-.app-header--sidebar .app-header__bottom {
-  bottom: 0;
-  position: absolute;
-  width: 100%;
-}
-@media screen and (max-height: 400px) {
-  .app-header--sidebar .app-header__bottom {
-    display: none;
-  }
-}
-.app-header--topbar {
-  background-color: #060666;
-  background-color: transparent;
-  height: 10em;
-  display: inline-flex;
-  position: absolute;
-}
-.app-header--topbar .logo-container {
-  position: relative;
-  width: 100%;
-  padding: 6px 6px;
-}
-.app-header--topbar .logo-container a,
-.app-header--topbar .logo-container a:hover {
-  /*.reset-link;*/
-}
-.app-header--topbar .logo-container a.active {
-  padding-bottom: 0;
-  border: none;
-}
-.app-header--topbar .header-item {
-  cursor: pointer;
-  font-size: 1.2em;
-  text-align: center;
-}
-.app-header--topbar .header-item a,
-.app-header--topbar .header-item i {
-  color: #ffffff;
-  text-decoration: none !important;
-}
-.app-header--topbar .app-header__left-side,
-.app-header--topbar .app-header__right-side {
-  display: flex;
-  align-items: center;
-}
-.app-header--topbar .app-header__left-side .header-item,
-.app-header--topbar .app-header__right-side .header-item {
-  font-size: 1.2em;
-  margin-left: 1em;
-}
-.app-header--topbar .app-header__right-side {
-  height: 100%;
-  position: absolute;
-  right: 1em;
-}
-.app-header--topbar .logo-container {
-  left: 20%;
-  top: 50%;
-  position: absolute;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-  width: 150px;
-}
-.app-header--topbar .logo-container a {
-  text-align: center;
-  display: block;
-}
-.app-header--topbar .logo-container a img {
-  vertical-align: baseline;
-}
-.app-main {
-  position: inherit;
-  padding: 0;
-}
-.app-main--along-sidebar {
-  position: inherit;
-  padding: 0;
-  margin-left: 5em;
-}
-.app-main--below-topbar {
-  position: inherit;
-  padding: 0;
-}
 .split-settings {
   display: flex;
   flex-wrap: wrap;
@@ -12775,6 +12584,7 @@ For complete information visit: www.freakflagsprite.com
   border-color: var(--color-border-default);
 }
 .currency-input-container {
+  flex: 1;
   position: relative;
 }
 .currency-input-container .currency-input {
@@ -12823,6 +12633,19 @@ For complete information visit: www.freakflagsprite.com
   border: 1px solid var(--color-gray-100);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
+}
+.currency-input-container--disabled .currency-input {
+  cursor: not-allowed;
+}
+.currency-input-container--disabled .currency-input input {
+  cursor: not-allowed;
+  pointer-events: none;
+  color: var(--color-gray-400);
+  background-color: var(--color-gray-200);
+}
+.currency-input-container--disabled .currency-input .currency-selector {
+  cursor: not-allowed;
+  background-color: var(--color-gray-100);
 }
 .currency-input-container--errored .currency-input {
   border-color: var(--color-error-500);

@@ -9136,9 +9136,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              this.value = 0;
-              this.currency = '';
-              _context.next = 4;
+              _context.next = 2;
               return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
               /*
                 <OSS::CurrencyInput @onChange={{this.onChange}} />
@@ -9149,13 +9147,13 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
                 "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
                 "isStrictMode": false
               }));
-            case 4:
+            case 2:
               assert.dom('.currency-input-container').exists();
-            case 5:
+            case 3:
             case "end":
               return _context.stop();
           }
-        }, _callee, this);
+        }, _callee);
       }));
       return function (_x) {
         return _ref.apply(this, arguments);
@@ -9689,11 +9687,8 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         return _ref17.apply(this, arguments);
       };
     }());
-    (0, _qunit.module)('When the paste event is received', function (hooks) {
-      hooks.beforeEach(function () {
-        this.value = '1234567890';
-      });
-      (0, _qunit.test)('The value stored in the clipboard is inserted in the input', /*#__PURE__*/function () {
+    (0, _qunit.module)('For @disabled argument', function () {
+      (0, _qunit.test)("The disabled class isn't here for undefined value", /*#__PURE__*/function () {
         var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
           return _regeneratorRuntime().wrap(function _callee18$(_context18) {
             while (1) switch (_context18.prev = _context18.next) {
@@ -9701,25 +9696,17 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
                 _context18.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
-                  <OSS::CurrencyInput @onChange={{this.onChange}} @value={{this.value}} />
+                  <OSS::CurrencyInput @onChange={{this.onChange}} />
                 */
                 {
-                  "id": "sMw0Bgtw",
-                  "block": "[[[8,[39,0],null,[[\"@onChange\",\"@value\"],[[30,0,[\"onChange\"]],[30,0,[\"value\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
+                  "id": "VZbpOfOA",
+                  "block": "[[[8,[39,0],null,[[\"@onChange\"],[[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
                   "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
                   "isStrictMode": false
                 }));
               case 2:
-                assert.dom('input').hasValue('1234567890');
-                _context18.next = 5;
-                return (0, _testHelpers.triggerEvent)('input', 'paste', {
-                  clipboardData: {
-                    getData: _sinon.default.stub().returns('123')
-                  }
-                });
-              case 5:
-                assert.dom('input').hasValue('1234567890123');
-              case 6:
+                assert.dom('.currency-input-container--disabled').doesNotExist();
+              case 3:
               case "end":
                 return _context18.stop();
             }
@@ -9729,12 +9716,73 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
           return _ref18.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('The non-numeric characters are escaped', /*#__PURE__*/function () {
+      (0, _qunit.test)("The disabled class isn't here for false value", /*#__PURE__*/function () {
         var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
           return _regeneratorRuntime().wrap(function _callee19$(_context19) {
             while (1) switch (_context19.prev = _context19.next) {
               case 0:
                 _context19.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::CurrencyInput @onChange={{this.onChange}} @disabled={{false}} />
+                */
+                {
+                  "id": "cnv46fEg",
+                  "block": "[[[8,[39,0],null,[[\"@onChange\",\"@disabled\"],[[30,0,[\"onChange\"]],false]],null]],[],false,[\"o-s-s/currency-input\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.currency-input-container--disabled').doesNotExist();
+              case 3:
+              case "end":
+                return _context19.stop();
+            }
+          }, _callee19);
+        }));
+        return function (_x19) {
+          return _ref19.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('The disabled class is here for true value', /*#__PURE__*/function () {
+        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
+          return _regeneratorRuntime().wrap(function _callee20$(_context20) {
+            while (1) switch (_context20.prev = _context20.next) {
+              case 0:
+                _context20.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::CurrencyInput @onChange={{this.onChange}} @disabled={{true}} />
+                */
+                {
+                  "id": "6egcLOp0",
+                  "block": "[[[8,[39,0],null,[[\"@onChange\",\"@disabled\"],[[30,0,[\"onChange\"]],true]],null]],[],false,[\"o-s-s/currency-input\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.currency-input-container--disabled').exists();
+              case 3:
+              case "end":
+                return _context20.stop();
+            }
+          }, _callee20);
+        }));
+        return function (_x20) {
+          return _ref20.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('When the paste event is received', function (hooks) {
+      hooks.beforeEach(function () {
+        this.value = '1234567890';
+      });
+      (0, _qunit.test)('The value stored in the clipboard is inserted in the input', /*#__PURE__*/function () {
+        var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee21(assert) {
+          return _regeneratorRuntime().wrap(function _callee21$(_context21) {
+            while (1) switch (_context21.prev = _context21.next) {
+              case 0:
+                _context21.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::CurrencyInput @onChange={{this.onChange}} @value={{this.value}} />
@@ -9747,7 +9795,43 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
                 }));
               case 2:
                 assert.dom('input').hasValue('1234567890');
-                _context19.next = 5;
+                _context21.next = 5;
+                return (0, _testHelpers.triggerEvent)('input', 'paste', {
+                  clipboardData: {
+                    getData: _sinon.default.stub().returns('123')
+                  }
+                });
+              case 5:
+                assert.dom('input').hasValue('1234567890123');
+              case 6:
+              case "end":
+                return _context21.stop();
+            }
+          }, _callee21);
+        }));
+        return function (_x21) {
+          return _ref21.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('The non-numeric characters are escaped', /*#__PURE__*/function () {
+        var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee22(assert) {
+          return _regeneratorRuntime().wrap(function _callee22$(_context22) {
+            while (1) switch (_context22.prev = _context22.next) {
+              case 0:
+                _context22.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::CurrencyInput @onChange={{this.onChange}} @value={{this.value}} />
+                */
+                {
+                  "id": "sMw0Bgtw",
+                  "block": "[[[8,[39,0],null,[[\"@onChange\",\"@value\"],[[30,0,[\"onChange\"]],[30,0,[\"value\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('input').hasValue('1234567890');
+                _context22.next = 5;
                 return (0, _testHelpers.triggerEvent)('input', 'paste', {
                   clipboardData: {
                     getData: _sinon.default.stub().returns('1withletter0')
@@ -9757,21 +9841,21 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
                 assert.dom('input').hasValue('123456789010');
               case 6:
               case "end":
-                return _context19.stop();
+                return _context22.stop();
             }
-          }, _callee19);
+          }, _callee22);
         }));
-        return function (_x19) {
-          return _ref19.apply(this, arguments);
+        return function (_x22) {
+          return _ref22.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('When selection is applied, it replaces the selection', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
+        var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee23(assert) {
           var input;
-          return _regeneratorRuntime().wrap(function _callee20$(_context20) {
-            while (1) switch (_context20.prev = _context20.next) {
+          return _regeneratorRuntime().wrap(function _callee23$(_context23) {
+            while (1) switch (_context23.prev = _context23.next) {
               case 0:
-                _context20.next = 2;
+                _context23.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::CurrencyInput @onChange={{this.onChange}} @value={{this.value}} />
@@ -9786,7 +9870,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
                 assert.dom('input').hasValue('1234567890');
                 input = document.querySelector('input.ember-text-field');
                 input.setSelectionRange(4, 6);
-                _context20.next = 7;
+                _context23.next = 7;
                 return (0, _testHelpers.triggerEvent)('input', 'paste', {
                   clipboardData: {
                     getData: _sinon.default.stub().returns('0')
@@ -9796,24 +9880,24 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
                 assert.dom('input').hasValue('123407890');
               case 8:
               case "end":
-                return _context20.stop();
+                return _context23.stop();
             }
-          }, _callee20);
+          }, _callee23);
         }));
-        return function (_x20) {
-          return _ref20.apply(this, arguments);
+        return function (_x23) {
+          return _ref23.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.test)('It throws an error if @onChange is not passed', /*#__PURE__*/function () {
-      var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee21(assert) {
-        return _regeneratorRuntime().wrap(function _callee21$(_context21) {
-          while (1) switch (_context21.prev = _context21.next) {
+      var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee24(assert) {
+        return _regeneratorRuntime().wrap(function _callee24$(_context24) {
+          while (1) switch (_context24.prev = _context24.next) {
             case 0:
               (0, _testHelpers.setupOnerror)(function (err) {
                 assert.equal(err.message, 'Assertion Failed: [component][OSS::CurrencyInput] The parameter @onChange of type function is mandatory');
               });
-              _context21.next = 3;
+              _context24.next = 3;
               return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
               /*
                 <OSS::CurrencyInput />
@@ -9826,12 +9910,12 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
               }));
             case 3:
             case "end":
-              return _context21.stop();
+              return _context24.stop();
           }
-        }, _callee21);
+        }, _callee24);
       }));
-      return function (_x21) {
-        return _ref21.apply(this, arguments);
+      return function (_x24) {
+        return _ref24.apply(this, arguments);
       };
     }());
   });
