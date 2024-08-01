@@ -9706,7 +9706,8 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
                 }));
               case 2:
                 assert.dom('.currency-input-container--disabled').doesNotExist();
-              case 3:
+                assert.dom('.currency-input input').isNotDisabled();
+              case 4:
               case "end":
                 return _context18.stop();
             }
@@ -9734,7 +9735,8 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
                 }));
               case 2:
                 assert.dom('.currency-input-container--disabled').doesNotExist();
-              case 3:
+                assert.dom('.currency-input input').isNotDisabled();
+              case 4:
               case "end":
                 return _context19.stop();
             }
@@ -9762,7 +9764,8 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
                 }));
               case 2:
                 assert.dom('.currency-input-container--disabled').exists();
-              case 3:
+                assert.dom('.currency-input input').isDisabled();
+              case 4:
               case "end":
                 return _context20.stop();
             }

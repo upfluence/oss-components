@@ -79168,7 +79168,7 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
       </div>
       {{#unless @onlyCurrency}}
         <Input class="fx-1" type="number" @value={{this.localValue}} min="0" autocomplete="off"
-               placeholder={{this.placeholder}}
+               placeholder={{this.placeholder}} disabled={{this.disabled}}
                {{on "keydown" this.onlyNumeric}} {{on "keyup" this.notifyChanges}} {{on "paste" this.handlePaste}} />
       {{/unless}}
     </div>
@@ -79200,8 +79200,8 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
   </div>
   */
   {
-    "id": "U6ZCwJ4x",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"currency-input fx-row fx-1 fx-xalign-center\\n              \",[52,[30,2],\"onlycurrency\"],\" \",[52,[30,0,[\"currencySelectorShown\"]],\"currency-input--active\"]]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center\"],[16,\"role\",[52,[30,0,[\"allowCurrencyUpdate\"]],\"button\",\"img\"]],[4,[38,1],[\"click\",[30,0,[\"toggleCurrencySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-9\"],[12],[1,\"\\n          \"],[10,1],[12],[1,[30,0,[\"selectedCurrencySymbol\"]]],[13],[1,\"\\n\"],[41,[30,2],[[[1,\"            \"],[10,1],[14,0,\"margin-right-px-12\"],[12],[1,[30,0,[\"selectedCurrencyCode\"]]],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[28,[37,2],[[30,0,[\"allowCurrencyUpdate\"]],[28,[37,3],[[30,0,[\"disabled\"]]],null]],null],[[[1,\"        \"],[8,[39,4],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[[29,[[52,[30,0,[\"currencySelectorShown\"]],\"fa-chevron-up\",\"fa-chevron-down\"]]]]],null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[51,[30,2]],[[[1,\"      \"],[8,[39,6],[[24,0,\"fx-1\"],[24,\"min\",\"0\"],[24,\"autocomplete\",\"off\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,4,\"number\"],[4,[38,1],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,1],[\"keyup\",[30,0,[\"notifyChanges\"]]],null],[4,[38,1],[\"paste\",[30,0,[\"handlePaste\"]]],null]],[[\"@value\"],[[30,0,[\"localValue\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\"\\n      \"],[1,[30,3]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"    \"],[8,[39,7],[[4,[38,9],[[30,0,[\"hideCurrencySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCurrencies\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[28,[37,8],[\"oss-components.currency-input.search\"],null]]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,10],[[30,0,[\"selectedCurrency\"]],[30,4]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,1],[14,0,\"symbol text-color-default-light margin-left-xx-sm\"],[12],[1,[30,4,[\"symbol\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm fx-1\"],[12],[1,[30,4,[\"code\"]]],[13],[1,\"\\n\"],[41,[28,[37,10],[[30,0,[\"selectedCurrency\"]],[30,4]],null],[[[1,\"            \"],[8,[39,4],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@onlyCurrency\",\"@errorMessage\",\"currency\"],false,[\"if\",\"on\",\"and\",\"not\",\"o-s-s/icon\",\"unless\",\"input\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\",\"eq\"]]",
+    "id": "KjqJnMLi",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"currency-input fx-row fx-1 fx-xalign-center\\n              \",[52,[30,2],\"onlycurrency\"],\" \",[52,[30,0,[\"currencySelectorShown\"]],\"currency-input--active\"]]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center\"],[16,\"role\",[52,[30,0,[\"allowCurrencyUpdate\"]],\"button\",\"img\"]],[4,[38,1],[\"click\",[30,0,[\"toggleCurrencySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-9\"],[12],[1,\"\\n          \"],[10,1],[12],[1,[30,0,[\"selectedCurrencySymbol\"]]],[13],[1,\"\\n\"],[41,[30,2],[[[1,\"            \"],[10,1],[14,0,\"margin-right-px-12\"],[12],[1,[30,0,[\"selectedCurrencyCode\"]]],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[28,[37,2],[[30,0,[\"allowCurrencyUpdate\"]],[28,[37,3],[[30,0,[\"disabled\"]]],null]],null],[[[1,\"        \"],[8,[39,4],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[[29,[[52,[30,0,[\"currencySelectorShown\"]],\"fa-chevron-up\",\"fa-chevron-down\"]]]]],null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[51,[30,2]],[[[1,\"      \"],[8,[39,6],[[24,0,\"fx-1\"],[24,\"min\",\"0\"],[24,\"autocomplete\",\"off\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[16,\"disabled\",[30,0,[\"disabled\"]]],[24,4,\"number\"],[4,[38,1],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,1],[\"keyup\",[30,0,[\"notifyChanges\"]]],null],[4,[38,1],[\"paste\",[30,0,[\"handlePaste\"]]],null]],[[\"@value\"],[[30,0,[\"localValue\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\"\\n      \"],[1,[30,3]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"    \"],[8,[39,7],[[4,[38,9],[[30,0,[\"hideCurrencySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCurrencies\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[28,[37,8],[\"oss-components.currency-input.search\"],null]]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,10],[[30,0,[\"selectedCurrency\"]],[30,4]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,1],[14,0,\"symbol text-color-default-light margin-left-xx-sm\"],[12],[1,[30,4,[\"symbol\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm fx-1\"],[12],[1,[30,4,[\"code\"]]],[13],[1,\"\\n\"],[41,[28,[37,10],[[30,0,[\"selectedCurrency\"]],[30,4]],null],[[[1,\"            \"],[8,[39,4],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@onlyCurrency\",\"@errorMessage\",\"currency\"],false,[\"if\",\"on\",\"and\",\"not\",\"o-s-s/icon\",\"unless\",\"input\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\",\"eq\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/currency-input.hbs",
     "isStrictMode": false
   });
@@ -84669,9 +84669,14 @@ define("@upfluence/oss-components/components/o-s-s/progress-bar", ["exports", "@
       </span>
     {{/if}}
     <div class="oss-progress-bar__outer">
-      <div class="oss-progress-bar__inner"
-           role="progressbar" aria-valuenow={{@value}}
-           aria-valuemin="0" aria-valuemax="100" style={{progressBarWidthStyle}}>
+      <div
+        class="oss-progress-bar__inner"
+        role="progressbar"
+        aria-valuenow={{@value}}
+        aria-valuemin="0"
+        aria-valuemax="100"
+        style={{this.progressBarWidthStyle}}
+      >
       </div>
     </div>
     {{#if @displayValue}}
@@ -84680,11 +84685,10 @@ define("@upfluence/oss-components/components/o-s-s/progress-bar", ["exports", "@
       </span>
     {{/if}}
   </div>
-  
   */
   {
-    "id": "JJEv29Ik",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedStyles\"]]],[17,1],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[10,1],[14,0,\"oss-progress-bar__label\"],[12],[1,\"\\n      \"],[1,[30,2]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"oss-progress-bar__outer\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"oss-progress-bar__inner\"],[14,\"role\",\"progressbar\"],[15,\"aria-valuenow\",[30,3]],[14,\"aria-valuemin\",\"0\"],[14,\"aria-valuemax\",\"100\"],[15,5,[36,1]],[12],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,4],[[[1,\"    \"],[10,1],[14,0,\"oss-progress-bar__value\"],[12],[1,\"\\n      \"],[1,[30,3]],[1,\"%\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@label\",\"@value\",\"@displayValue\"],false,[\"if\",\"progressBarWidthStyle\"]]",
+    "id": "umeoeTiz",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedStyles\"]]],[17,1],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[10,1],[14,0,\"oss-progress-bar__label\"],[12],[1,\"\\n      \"],[1,[30,2]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"oss-progress-bar__outer\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"oss-progress-bar__inner\"],[14,\"role\",\"progressbar\"],[15,\"aria-valuenow\",[30,3]],[14,\"aria-valuemin\",\"0\"],[14,\"aria-valuemax\",\"100\"],[15,5,[30,0,[\"progressBarWidthStyle\"]]],[12],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,4],[[[1,\"    \"],[10,1],[14,0,\"oss-progress-bar__value\"],[12],[1,\"\\n      \"],[1,[30,3]],[1,\"%\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@label\",\"@value\",\"@displayValue\"],false,[\"if\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/progress-bar.hbs",
     "isStrictMode": false
   });
@@ -88741,12 +88745,11 @@ define("@upfluence/oss-components/components/o-s-s/url-input", ["exports", "@emb
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/component",0,"@ember/object",0,"@ember/component"eaimeta@70e063a35619d71f
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <input type="radio" name="options" value={{value}} checked={{isChecked}}> {{label}}
-  
+    <input type="radio" name="options" value={{this.value}} checked={{this.isChecked}} /> {{this.label}}
   */
   {
-    "id": "zTKC2wGX",
-    "block": "[[[10,\"input\"],[14,3,\"options\"],[15,2,[36,0]],[15,\"checked\",[36,1]],[14,4,\"radio\"],[12],[13],[1,\" \"],[1,[34,2]],[1,\"\\n\"]],[],false,[\"value\",\"isChecked\",\"label\"]]",
+    "id": "ARwsiFNq",
+    "block": "[[[10,\"input\"],[14,3,\"options\"],[15,2,[30,0,[\"value\"]]],[15,\"checked\",[30,0,[\"isChecked\"]]],[14,4,\"radio\"],[12],[13],[1,\" \"],[1,[30,0,[\"label\"]]]],[],false,[]]",
     "moduleName": "@upfluence/oss-components/components/radio-button.hbs",
     "isStrictMode": false
   });
@@ -88770,21 +88773,6 @@ define("@upfluence/oss-components/components/o-s-s/url-input", ["exports", "@emb
       }
     }
   }));
-});
-;define("@upfluence/oss-components/components/upf-card", ["exports", "@ember/component"], function (_exports, _component) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"@ember/component"eaimeta@70e063a35619d71f
-  var _default = _exports.default = _component.default.extend({
-    classNames: ['upf-card'],
-    imageSrc: null,
-    title: null,
-    description: null
-  });
 });
 ;define("@upfluence/oss-components/components/upf-image", ["exports", "@ember/component"], function (_exports, _component) {
   "use strict";
