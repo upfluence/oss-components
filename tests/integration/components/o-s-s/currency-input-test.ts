@@ -150,16 +150,19 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
     test("The disabled class isn't here for undefined value", async function (assert) {
       await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} />`);
       assert.dom('.currency-input-container--disabled').doesNotExist();
+      assert.dom('.currency-input input').isNotDisabled();
     });
 
     test("The disabled class isn't here for false value", async function (assert) {
       await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @disabled={{false}} />`);
       assert.dom('.currency-input-container--disabled').doesNotExist();
+      assert.dom('.currency-input input').isNotDisabled();
     });
 
     test('The disabled class is here for true value', async function (assert) {
       await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @disabled={{true}} />`);
       assert.dom('.currency-input-container--disabled').exists();
+      assert.dom('.currency-input input').isDisabled();
     });
   });
 
