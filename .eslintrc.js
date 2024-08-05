@@ -19,7 +19,6 @@ module.exports = {
     'no-multiple-empty-lines': [2, { max: 1 }],
 
     'ember/no-jquery': 'off',
-    'ember/no-get': 'off',
     'ember/no-classic-classes': 'off',
     'ember/no-classic-components': 'off',
     'ember/require-tagless-components': 'off',
