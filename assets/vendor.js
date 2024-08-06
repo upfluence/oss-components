@@ -79256,8 +79256,8 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
     code: 'TRY',
     symbol: '₺'
   }, {
-    code: 'RUB',
-    symbol: '₽'
+    code: 'MYR',
+    symbol: 'RM'
   }, {
     code: 'INR',
     symbol: '₹'
