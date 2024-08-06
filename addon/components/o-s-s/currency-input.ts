@@ -40,7 +40,7 @@ export const PLATFORM_CURRENCIES: Currency[] = [
   { code: 'NOK', symbol: 'kr' },
   { code: 'KRW', symbol: '₩' },
   { code: 'TRY', symbol: '₺' },
-  { code: 'RUB', symbol: '₽' },
+  { code: 'MYR', symbol: 'RM' },
   { code: 'INR', symbol: '₹' },
   { code: 'BRL', symbol: 'R$' },
   { code: 'ZAR', symbol: 'R' },
