@@ -73591,13 +73591,13 @@ define("@glimmer/component/index", ["exports", "@ember/component", "@glimmer/com
     classNames: ['form-group', 'upf-input-container'],
     classNameBindings: ['errorful', 'hasHelp'],
     errorful: (0, _object.computed)('error', function () {
-      if (this.get('error') != null) {
+      if (this.error !== null) {
         return 'upf-input-container--errorful';
       }
       return '';
     }),
     hasHelp: (0, _object.computed)('help', function () {
-      if (this.get('help') != null) {
+      if (this.help !== null) {
         return 'upf-input-container--has-help';
       }
       return '';
@@ -88735,45 +88735,6 @@ define("@upfluence/oss-components/components/o-s-s/url-input", ["exports", "@emb
   var BasicUsage = _exports.BasicUsage = DefaultUsageTemplate.bind({});
   BasicUsage.args = defaultArgs;
 });
-;define("@upfluence/oss-components/components/radio-button", ["exports", "@ember/component", "@ember/object", "@ember/template-factory"], function (_exports, _component, _object, _templateFactory) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/component",0,"@ember/object",0,"@ember/component"eaimeta@70e063a35619d71f
-  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
-  /*
-    <input type="radio" name="options" value={{this.value}} checked={{this.isChecked}} /> {{this.label}}
-  */
-  {
-    "id": "ARwsiFNq",
-    "block": "[[[10,\"input\"],[14,3,\"options\"],[15,2,[30,0,[\"value\"]]],[15,\"checked\",[30,0,[\"isChecked\"]]],[14,4,\"radio\"],[12],[13],[1,\" \"],[1,[30,0,[\"label\"]]]],[],false,[]]",
-    "moduleName": "@upfluence/oss-components/components/radio-button.hbs",
-    "isStrictMode": false
-  });
-  var _default = _exports.default = (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, _component.default.extend({
-    tagName: 'label',
-    classNames: ['btn', 'upf-radio-btn'],
-    classNameBindings: ['isChecked:active', 'disabled'],
-    attributeBindings: ['style', 'data-control-name'],
-    style: (0, _object.computed)('options', 'fixedWidth', function () {
-      if (this.fixedWidth) return;
-      return "width: ".concat(100 / Object.keys(this.get('options')).length, "%;");
-    }),
-    isChecked: (0, _object.computed)('value', 'currentValue', 'disabled', function () {
-      return this.value === this.currentValue;
-    }),
-    click: function click(e) {
-      e.stopPropagation();
-      if (!this.disabled) {
-        // eslint-disable-next-line ember/closure-actions
-        this.sendAction('onCheck', this.value);
-      }
-    }
-  }));
-});
 ;define("@upfluence/oss-components/components/upf-image", ["exports", "@ember/component"], function (_exports, _component) {
   "use strict";
 
@@ -88805,7 +88766,7 @@ define("@upfluence/oss-components/components/o-s-s/url-input", ["exports", "@emb
     value: null,
     colorClass: null,
     maxWidthStyle: (0, _object.computed)('value', function () {
-      return "max-width: ".concat(this.get('value'), "%");
+      return "max-width: ".concat(this.value, "%");
     })
   });
 });
