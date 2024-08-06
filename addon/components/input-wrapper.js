@@ -10,14 +10,14 @@ export default Component.extend({
   classNameBindings: ['errorful', 'hasHelp'],
 
   errorful: computed('error', function () {
-    if (this.get('error') != null) {
+    if (this.error !== null) {
       return 'upf-input-container--errorful';
     }
     return '';
   }),
 
   hasHelp: computed('help', function () {
-    if (this.get('help') != null) {
+    if (this.help !== null) {
       return 'upf-input-container--has-help';
     }
     return '';

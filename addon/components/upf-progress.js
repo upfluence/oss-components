@@ -9,6 +9,6 @@ export default Component.extend({
   colorClass: null,
 
   maxWidthStyle: computed('value', function () {
-    return `max-width: ${this.get('value')}%`;
+    return `max-width: ${this.value}%`;
   })
 });
