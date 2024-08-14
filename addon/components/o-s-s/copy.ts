@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
+import { isTesting } from '@embroider/macros';
 
 import ToastService from '@upfluence/oss-components/services/toast';
 import type { IntlService } from 'ember-intl';
@@ -21,7 +22,7 @@ export default class OSSCopy extends Component<OSSCopyArgs> {
   constructor(owner: unknown, args: OSSCopyArgs) {
     super(owner, args);
 
-    if (!(window as any).chrome) {
+    if (!(window as any).chrome && !isTesting()) {
       this.accessibleClipboard = true;
       return;
     }
