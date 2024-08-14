@@ -11,7 +11,13 @@
     >
       <header class="fx-row">
         <div class="fx-1 fx-col fx-malign-center">
-          <span class="title">{{@title}}</span>
+          <div class="fx-row fx-gap-px-6 fx-xalign-center">
+            {{#if @icon}}
+              <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
+            {{/if}}
+
+            <span class="title">{{@title}}</span>
+          </div>
           <span class="subtitle">{{@subtitle}}</span>
         </div>
         <OSS::Icon
