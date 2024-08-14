@@ -21,6 +21,11 @@ export default class OSSCopy extends Component<OSSCopyArgs> {
   constructor(owner: unknown, args: OSSCopyArgs) {
     super(owner, args);
 
+    if (!(window as any).chrome) {
+      this.accessibleClipboard = true;
+      return;
+    }
+
     navigator.permissions
       .query({ name: 'clipboard-write' as PermissionName })
       .then(({ state }) => {
