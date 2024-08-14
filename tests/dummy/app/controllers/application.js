@@ -67,6 +67,7 @@ export default class ApplicationController extends Controller {
   @tracked currencyValue = 42.13;
   @tracked numberValue = 42;
   @tracked showModal = false;
+  @tracked showSidePanel = false;
   @tracked showSplitModal = false;
   @tracked items = [
     { name: 'foo', label: 'foo' },
@@ -265,6 +266,12 @@ export default class ApplicationController extends Controller {
   }
 
   @action
+  openSidePanel(e) {
+    e.stopPropagation();
+    this.showSidePanel = true;
+  }
+
+  @action
   openSplitModal(e) {
     e.stopPropagation();
     this.showSplitModal = true;
@@ -273,6 +280,11 @@ export default class ApplicationController extends Controller {
   @action
   closeModal() {
     this.showModal = false;
+  }
+
+  @action
+  closeSidePanel() {
+    this.showSidePanel = false;
   }
 
   @action
@@ -442,6 +454,10 @@ export default class ApplicationController extends Controller {
   onSecondaryAction() {
     console.log('Keep editing');
     this.showDialog = false;
+  }
+
+  @action onReturn() {
+    console.log('Function onReturn was called');
   }
 }
 
