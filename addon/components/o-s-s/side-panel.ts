@@ -38,11 +38,6 @@ export default class OssSidePanel extends Component<OssSidePanelArgs> {
   }
 
   @action
-  trackInitialTarget(event: MouseEvent): void {
-    this.initialTarget = event.target as HTMLElement;
-  }
-
-  @action
   onClickOutside(_: any, event: Event): void {
     const sidePanelElement = document.querySelector('.oss-side-panel');
     if (sidePanelElement?.contains(event.target as Node)) return;
@@ -50,5 +45,10 @@ export default class OssSidePanel extends Component<OssSidePanelArgs> {
     if (event.target === this.initialTarget) {
       this.args.onClose();
     }
+  }
+
+  @action
+  private trackInitialTarget(event: MouseEvent): void {
+    this.initialTarget = event.target as HTMLElement;
   }
 }

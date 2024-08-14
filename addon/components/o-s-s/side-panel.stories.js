@@ -8,7 +8,7 @@ export default {
   component: 'side-panel',
   argTypes: {
     visible: {
-      description: 'The side panel visibility state',
+      description: 'The side panel visibility state. True displays the side panel, false closes it.',
       table: {
         type: {
           summary: 'boolean'
@@ -18,7 +18,7 @@ export default {
       control: { type: 'boolean' }
     },
     backdrop: {
-      description: 'The side panel backdrop state',
+      description: 'Whether or not to display a backdrop behind the side-panel.',
       table: {
         type: {
           summary: 'boolean'
@@ -28,7 +28,7 @@ export default {
       control: { type: 'boolean' }
     },
     size: {
-      description: `The size of the side panel sm (480px) or md (540px). Defaults to sm.`,
+      description: `The width of the side panel: sm (480px) or md (540px). Defaults to sm.`,
       table: {
         type: {
           summary: 'string'
@@ -39,7 +39,7 @@ export default {
       control: { type: 'select' }
     },
     onClose: {
-      description: 'The callback that closes the side panel',
+      description: 'A callback triggered when the backdrop has been clicked.',
       table: {
         category: 'Actions',
         type: {
@@ -51,7 +51,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: `A side panel to display various contents.`
+        component: `A side panel to display various contents. Features a header, a content and a footer named blocks.`
       }
     }
   }
@@ -66,17 +66,17 @@ const defaultArgs = {
 
 const BasicUsageTemplate = (args) => ({
   template: hbs`
-      <OSS::SidePanel @visible={{this.visible}} @backdrop={{this.backdrop}} @size={{this.size}} @onClose={{this.onClose}} >
-        <:header>
-          Header goes here
-        </:header>
-          <:content>
-          Content goes here
-        </:content>
-        <:footer>
-          Footer goes here
-        </:footer>
-      </OSS::SidePanel>
+    <OSS::SidePanel @visible={{this.visible}} @backdrop={{this.backdrop}} @size={{this.size}} @onClose={{this.onClose}} >
+      <:header>
+        Header goes here
+      </:header>
+        <:content>
+        Content goes here
+      </:content>
+      <:footer>
+        Footer goes here
+      </:footer>
+    </OSS::SidePanel>
   `,
   context: args
 });

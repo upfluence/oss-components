@@ -16,7 +16,7 @@ module('Integration | Component | o-s-s/side-panel/header', function (hooks) {
     assert.dom('.oss-side-panel__header__content').exists();
   });
 
-  test('Clicking on the close button closes the side panel', async function (assert) {
+  test('Clicking on the close button triggers the @onClose callback', async function (assert) {
     await render(hbs`<OSS::SidePanel::Header @title="Sidepanel header" @onClose={{this.onClose}} />`);
     assert.dom('.fa-xmark').exists();
     await click('.fa-xmark');

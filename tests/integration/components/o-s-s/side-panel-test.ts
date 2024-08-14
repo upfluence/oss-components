@@ -22,11 +22,11 @@ module('Integration | Component | o-s-s/side-panel', function (hooks) {
     test('The header named-block is properly displayed', async function (assert) {
       await render(
         hbs`
-      <OSS::SidePanel @title="Sidepanel" @visible={{true}} @backdrop={{true}} @size="sm" @onClose={{this.onClose}}>
-        <:header>
-          <p>This is the header</p>
-        </:header>
-      </OSS::SidePanel>`
+          <OSS::SidePanel @title="Sidepanel" @visible={{true}} @backdrop={{true}} @size="sm" @onClose={{this.onClose}}>
+            <:header>
+              <p>This is the header</p>
+            </:header>
+          </OSS::SidePanel>`
       );
 
       assert.dom('.oss-side-panel__header').hasText('This is the header');
@@ -35,11 +35,11 @@ module('Integration | Component | o-s-s/side-panel', function (hooks) {
     test('The content named-block is properly displayed', async function (assert) {
       await render(
         hbs`
-      <OSS::SidePanel @title="Sidepanel" @visible={{true}} @backdrop={{true}} @size="sm" @onClose={{this.onClose}}>
-        <:content>
-          <p>This is the content</p>
-        </:content>
-      </OSS::SidePanel>`
+          <OSS::SidePanel @title="Sidepanel" @visible={{true}} @backdrop={{true}} @size="sm" @onClose={{this.onClose}}>
+            <:content>
+              <p>This is the content</p>
+            </:content>
+          </OSS::SidePanel>`
       );
 
       assert.dom('.oss-side-panel__content').hasText('This is the content');
@@ -48,11 +48,11 @@ module('Integration | Component | o-s-s/side-panel', function (hooks) {
     test('The footer named-block is properly displayed', async function (assert) {
       await render(
         hbs`
-      <OSS::SidePanel @title="Sidepanel" @visible={{true}} @backdrop={{true}} @size="sm" @onClose={{this.onClose}}>
-        <:footer>
-          <p>This is the footer</p>
-        </:footer>
-      </OSS::SidePanel>`
+          <OSS::SidePanel @title="Sidepanel" @visible={{true}} @backdrop={{true}} @size="sm" @onClose={{this.onClose}}>
+            <:footer>
+              <p>This is the footer</p>
+            </:footer>
+          </OSS::SidePanel>`
       );
 
       assert.dom('.oss-side-panel__footer').hasText('This is the footer');
@@ -110,7 +110,7 @@ module('Integration | Component | o-s-s/side-panel', function (hooks) {
     });
   });
 
-  module('Clicking outside the side panel closes it', function () {
+  module('Clicking outside the side panel (or clicking on the background) triggers the @onClose callback', function () {
     test('When the backdrop is visible', async function (assert) {
       await render(
         hbs`<OSS::SidePanel @title="Sidepanel" @visible={{true}} @backdrop={{true}} @size="sm" @onClose={{this.onClose}} />`

@@ -16,7 +16,7 @@ export default {
       control: { type: 'text' }
     },
     onClose: {
-      description: 'The callback that closes the side panel',
+      description: 'The callback called when the cross button is pressed.',
       table: {
         category: 'Actions',
         type: {
@@ -25,7 +25,7 @@ export default {
       }
     },
     onReturn: {
-      description: 'The callback that returns to the previous side panel',
+      description: 'The callback triggered when the return button is pressed.',
       table: {
         category: 'Actions',
         type: {
