@@ -38,7 +38,24 @@
     <div class="fx-col fx-gap-px-10 margin-md width-pc-20">
       <OSS::Button @skin="primary" @label="Open Dialog" {{on "click" (fn (mut this.showDialog) true)}} />
       <OSS::Button @skin="primary" @label="Open Modal" {{on "click" (fn (mut this.showModal) true)}} />
+      <OSS::Button @skin="primary" @label="Open Side Panel" {{on "click" this.openSidePanel}} />
     </div>
+
+    <OSS::SidePanel @onClose={{this.closeSidePanel}} @backdrop={{true}} @visible={{this.showSidePanel}}>
+      <:header>
+        <OSS::SidePanel::Header
+          @onClose={{this.closeSidePanel}}
+          @onReturn={{this.onReturn}}
+          @title="This is the side panel's header."
+        />
+      </:header>
+      <:content>
+        <span>This is the side panel's content.</span>
+      </:content>
+      <:footer>
+        <span>This is the side panel's footer.</span>
+      </:footer>
+    </OSS::SidePanel>
 
     <div class="fx-row fx-gap-px-10 margin-md">
       <OSS::PasswordInput @value={{this.password}} @validates={{this.onPasswordValidation}} />
