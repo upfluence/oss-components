@@ -18,8 +18,8 @@ module('Integration | Component | o-s-s/side-panel/header', function (hooks) {
 
   test('Clicking on the close button triggers the @onClose callback', async function (assert) {
     await render(hbs`<OSS::SidePanel::Header @title="Sidepanel header" @onClose={{this.onClose}} />`);
-    assert.dom('.fa-xmark').exists();
-    await click('.fa-xmark');
+    assert.dom('.fa-times').exists();
+    await click('.fa-times');
     assert.ok(this.onClose.calledOnce, 'Clicked on the close button so the side panel closes.');
   });
 
