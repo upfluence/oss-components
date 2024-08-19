@@ -24127,6 +24127,20 @@ define("@upfluence/oss-components/test-support/custom-assertions/tooltip", ["exp
   assertion.__name__ = 'tooltip';
   var _default = _exports.default = assertion;
 });
+define("@upfluence/oss-components/test-support/index", ["exports", "@upfluence/oss-components/test-support/setup-clipboard"], function (_exports, _setupClipboard) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "setupClipboard", {
+    enumerable: true,
+    get: function get() {
+      return _setupClipboard.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/test-support/setup-clipboard"eaimeta@70e063a35619d71f
+});
 define("@upfluence/oss-components/test-support/register-assertions", ["exports", "@upfluence/oss-components/test-support/custom-assertions/tooltip"], function (_exports, _tooltip) {
   "use strict";
 
@@ -24225,6 +24239,26 @@ define("@upfluence/oss-components/test-support/services/uploader", ["exports", "
     }]);
     return _default;
   }(_baseUploader.default);
+});
+define("@upfluence/oss-components/test-support/setup-clipboard", ["exports", "sinon"], function (_exports, _sinon) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = setupClipboard;
+  0; //eaimeta@70e063a35619d71f0,"sinon"eaimeta@70e063a35619d71f
+  function setupClipboard(hooks) {
+    hooks.beforeEach(function () {
+      this.permissionQueryStub = _sinon.default.stub(navigator.permissions, 'query').resolves({
+        name: 'clipboard-write',
+        state: 'granted'
+      });
+    });
+    hooks.afterEach(function () {
+      this.permissionQueryStub.restore();
+    });
+  }
 });
 define("ember-cli-code-coverage/test-support/index", ["exports"], function (_exports) {
   "use strict";

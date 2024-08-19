@@ -78586,7 +78586,7 @@ define("@upfluence/oss-components/components/o-s-s/content-panel", ["exports", "
   BasicUsage.args = defaultArgs;
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@glimmer/tracking", "@ember/service", "@ember/template-factory"], function (_exports, _component, _component2, _object, _tracking, _service, _templateFactory) {
+define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@glimmer/tracking", "@ember/service", "@ember/template-factory", "@embroider/macros/runtime"], function (_exports, _component, _component2, _object, _tracking, _service, _templateFactory, _runtime) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -78594,7 +78594,7 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
   });
   _exports.default = void 0;
   var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/object",0,"@glimmer/tracking",0,"@ember/service",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/object",0,"@glimmer/tracking",0,"@ember/service",0,"@embroider/macros",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
   function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -78652,6 +78652,10 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
       _initializerDefineProperty(_assertThisInitialized(_this), "toast", _descriptor2, _assertThisInitialized(_this));
       _initializerDefineProperty(_assertThisInitialized(_this), "accessibleClipboard", _descriptor3, _assertThisInitialized(_this));
       _initializerDefineProperty(_assertThisInitialized(_this), "inline", _descriptor4, _assertThisInitialized(_this));
+      if (!window.chrome && !(0, _runtime.isTesting)()) {
+        _this.accessibleClipboard = true;
+        return _possibleConstructorReturn(_this);
+      }
       navigator.permissions.query({
         name: 'clipboard-write'
       }).then(function (_ref) {
@@ -82170,7 +82174,13 @@ define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@
       >
         <header class="fx-row">
           <div class="fx-1 fx-col fx-malign-center">
-            <span class="title">{{@title}}</span>
+            <div class="fx-row fx-gap-px-6 fx-xalign-center">
+              {{#if @icon}}
+                <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
+              {{/if}}
+  
+              <span class="title">{{@title}}</span>
+            </div>
             <span class="subtitle">{{@subtitle}}</span>
           </div>
           <OSS::Icon
@@ -82202,8 +82212,8 @@ define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@
   {{/if}}
   */
   {
-    "id": "A4DUKD3O",
-    "block": "[[[41,[30,0,[\"displayModal\"]],[[[1,\"  \"],[11,0],[24,0,\"oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center\"],[17,1],[4,[38,1],[[30,0,[\"onDestroy\"]]],null],[12],[1,\"\\n    \"],[11,0],[16,0,[29,[\"oss-modal-dialog fx-col \",[30,0,[\"modalSize\"]]]]],[4,[38,2],[[30,0,[\"onClickOutside\"]]],null],[4,[38,3],[[30,0,[\"initialize\"]]],null],[12],[1,\"\\n      \"],[10,\"header\"],[14,0,\"fx-row\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-1 fx-col fx-malign-center\"],[12],[1,\"\\n          \"],[10,1],[14,0,\"title\"],[12],[1,[30,2]],[13],[1,\"\\n          \"],[10,1],[14,0,\"subtitle\"],[12],[1,[30,3]],[13],[1,\"\\n        \"],[13],[1,\"\\n        \"],[8,[39,4],[[24,0,\"padding-px-12\"],[24,\"role\",\"button\"],[24,\"data-control-name\",\"close-modal-button\"],[4,[38,5],[\"click\",[30,0,[\"closeModal\"]]],null]],[[\"@style\",\"@icon\"],[\"solid\",\"fa-times\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[48,[30,4]],[[[1,\"        \"],[18,4,null],[1,\"\\n\"]],[]],null],[1,\"\\n      \"],[10,0],[14,0,\"oss-modal-dialog--content fx-1\"],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"          \"],[18,5,null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n      \"],[10,\"footer\"],[14,0,\"fx-row fx-xalign-center\"],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"          \"],[18,6,null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"]],[]],null]],[\"&attrs\",\"@title\",\"@subtitle\",\"&illustration\",\"&content\",\"&footer\"],false,[\"if\",\"will-destroy\",\"on-click-outside\",\"did-insert\",\"o-s-s/icon\",\"on\",\"has-block\",\"yield\"]]",
+    "id": "O4NdRwA/",
+    "block": "[[[41,[30,0,[\"displayModal\"]],[[[1,\"  \"],[11,0],[24,0,\"oss-modal-dialog-backdrop fx-row fx-malign-center fx-xalign-center\"],[17,1],[4,[38,1],[[30,0,[\"onDestroy\"]]],null],[12],[1,\"\\n    \"],[11,0],[16,0,[29,[\"oss-modal-dialog fx-col \",[30,0,[\"modalSize\"]]]]],[4,[38,2],[[30,0,[\"onClickOutside\"]]],null],[4,[38,3],[[30,0,[\"initialize\"]]],null],[12],[1,\"\\n      \"],[10,\"header\"],[14,0,\"fx-row\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-1 fx-col fx-malign-center\"],[12],[1,\"\\n          \"],[10,0],[14,0,\"fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"              \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[[28,[37,5],[[30,2]],null],[28,[37,6],[[30,2]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"\\n            \"],[10,1],[14,0,\"title\"],[12],[1,[30,3]],[13],[1,\"\\n          \"],[13],[1,\"\\n          \"],[10,1],[14,0,\"subtitle\"],[12],[1,[30,4]],[13],[1,\"\\n        \"],[13],[1,\"\\n        \"],[8,[39,4],[[24,0,\"padding-px-12\"],[24,\"role\",\"button\"],[24,\"data-control-name\",\"close-modal-button\"],[4,[38,7],[\"click\",[30,0,[\"closeModal\"]]],null]],[[\"@style\",\"@icon\"],[\"solid\",\"fa-times\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[48,[30,5]],[[[1,\"        \"],[18,5,null],[1,\"\\n\"]],[]],null],[1,\"\\n      \"],[10,0],[14,0,\"oss-modal-dialog--content fx-1\"],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"          \"],[18,6,null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n      \"],[10,\"footer\"],[14,0,\"fx-row fx-xalign-center\"],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"          \"],[18,7,null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"]],[]],null]],[\"&attrs\",\"@icon\",\"@title\",\"@subtitle\",\"&illustration\",\"&content\",\"&footer\"],false,[\"if\",\"will-destroy\",\"on-click-outside\",\"did-insert\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"on\",\"has-block\",\"yield\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/modal-dialog.hbs",
     "isStrictMode": false
   });
@@ -82296,6 +82306,20 @@ define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@
           type: 'text'
         }
       },
+      icon: {
+        description: 'Font Awesome class, for example: far fa-envelope-open',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
       size: {
         description: "[OPTIONAL] The size of the modal sm (600px) or md (700px). Defaults to sm.",
         table: {
@@ -82361,6 +82385,7 @@ define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@
     title: 'Modal Dialog',
     subtitle: 'This is a subtitle',
     size: 'sm',
+    icon: null,
     close: (0, _addonActions.action)('close'),
     enqueue: undefined,
     disableClickOutside: undefined
@@ -82370,8 +82395,8 @@ define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@
       template: (0, _templateFactory.createTemplateFactory)(
       /*
         
-            <OSS::ModalDialog @title={{this.title}} @close={{this.close}} @subtitle={{this.subtitle}} @size={{this.size}} 
-                              @enqueue={{this.enqueue}} @disableClickOutside={{this.disableClickOutside}}>
+            <OSS::ModalDialog @title={{this.title}} @icon={{this.icon}} @close={{this.close}} @subtitle={{this.subtitle}}
+                              @size={{this.size}} @enqueue={{this.enqueue}} @disableClickOutside={{this.disableClickOutside}}>
               <:content>
                 Content goes here
               </:content>
@@ -82382,8 +82407,8 @@ define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@
         
       */
       {
-        "id": "TDLdxTGZ",
-        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@close\",\"@subtitle\",\"@size\",\"@enqueue\",\"@disableClickOutside\"],[[30,0,[\"title\"]],[30,0,[\"close\"]],[30,0,[\"subtitle\"]],[30,0,[\"size\"]],[30,0,[\"enqueue\"]],[30,0,[\"disableClickOutside\"]]]],[[\"content\",\"footer\"],[[[[1,\"\\n          Content goes here\\n        \"]],[]],[[[1,\"\\n          Footer goes here\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/modal-dialog\"]]",
+        "id": "5iIYiMn3",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@icon\",\"@close\",\"@subtitle\",\"@size\",\"@enqueue\",\"@disableClickOutside\"],[[30,0,[\"title\"]],[30,0,[\"icon\"]],[30,0,[\"close\"]],[30,0,[\"subtitle\"]],[30,0,[\"size\"]],[30,0,[\"enqueue\"]],[30,0,[\"disableClickOutside\"]]]],[[\"content\",\"footer\"],[[[[1,\"\\n          Content goes here\\n        \"]],[]],[[[1,\"\\n          Footer goes here\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/modal-dialog\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/modal-dialog.stories.js",
         "isStrictMode": false
       }),
@@ -82395,8 +82420,8 @@ define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@
       template: (0, _templateFactory.createTemplateFactory)(
       /*
         
-            <OSS::ModalDialog @title={{this.title}} @close={{this.close}} @subtitle={{this.subtitle}} @size={{this.size}} 
-                              @enqueue={{this.enqueue}} @disableClickOutside={{this.disableClickOutside}}>
+            <OSS::ModalDialog @title={{this.title}} @close={{this.close}} @subtitle={{this.subtitle}} @size={{this.size}}
+                              @icon={{this.icon}} @enqueue={{this.enqueue}} @disableClickOutside={{this.disableClickOutside}}>
               <:illustration>
                 This will contain an illustration.
               </:illustration>
@@ -82410,8 +82435,8 @@ define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@
         
       */
       {
-        "id": "pW14ZMc+",
-        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@close\",\"@subtitle\",\"@size\",\"@enqueue\",\"@disableClickOutside\"],[[30,0,[\"title\"]],[30,0,[\"close\"]],[30,0,[\"subtitle\"]],[30,0,[\"size\"]],[30,0,[\"enqueue\"]],[30,0,[\"disableClickOutside\"]]]],[[\"illustration\",\"content\",\"footer\"],[[[[1,\"\\n          This will contain an illustration.\\n        \"]],[]],[[[1,\"\\n          Content goes here\\n        \"]],[]],[[[1,\"\\n          Footer goes here\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/modal-dialog\"]]",
+        "id": "TNyKF0Xy",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@close\",\"@subtitle\",\"@size\",\"@icon\",\"@enqueue\",\"@disableClickOutside\"],[[30,0,[\"title\"]],[30,0,[\"close\"]],[30,0,[\"subtitle\"]],[30,0,[\"size\"]],[30,0,[\"icon\"]],[30,0,[\"enqueue\"]],[30,0,[\"disableClickOutside\"]]]],[[\"illustration\",\"content\",\"footer\"],[[[[1,\"\\n          This will contain an illustration.\\n        \"]],[]],[[[1,\"\\n          Content goes here\\n        \"]],[]],[[[1,\"\\n          Footer goes here\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/modal-dialog\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/modal-dialog.stories.js",
         "isStrictMode": false
       }),
@@ -88190,7 +88215,7 @@ define("@upfluence/oss-components/components/o-s-s/upload-item", ["exports", "@e
     }, {
       key: "filename",
       get: function get() {
-        return this.args.file instanceof File ? this.args.file.name : this.args.file.filename;
+        return decodeURI(this.args.file instanceof File ? this.args.file.name : this.args.file.filename);
       }
     }, {
       key: "filesize",
