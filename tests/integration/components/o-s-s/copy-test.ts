@@ -5,19 +5,12 @@ import { setupIntl } from 'ember-intl/test-support';
 import { render, click } from '@ember/test-helpers';
 import sinon from 'sinon';
 
+import { setupClipboard } from '@upfluence/oss-components/test-support';
+
 module('Integration | Component | o-s-s/copy', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks);
-
-  hooks.beforeEach(function () {
-    this.permissionQueryStub = sinon
-      .stub(navigator.permissions, 'query')
-      .resolves({ name: 'clipboard-write', state: 'granted' } as PermissionStatus);
-  });
-
-  hooks.afterEach(function () {
-    this.permissionQueryStub.restore();
-  });
+  setupClipboard(hooks);
 
   test('it renders', async function (assert) {
     await render(hbs`<OSS::Copy />`);
@@ -34,6 +27,17 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
     await render(hbs`<OSS::Copy />`);
 
     await assert.tooltip('.upf-btn--default').hasTitle('Copy');
+  });
+
+  module('on non-Chrome browsers the button is always displayed', function (hooks) {
+    hooks.beforeEach(function () {
+      (window as any).chrome = null;
+    });
+
+    test('nothing is rendered', async function (assert) {
+      await render(hbs`<OSS::Copy />`);
+      assert.dom('.upf-btn--default').exists();
+    });
   });
 
   module('the clipboard-write permission is not granted', function (hooks) {

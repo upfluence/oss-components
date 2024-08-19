@@ -66,7 +66,7 @@ export default class OSSUploadItem extends Component<OSSUploadItemArgs> {
   }
 
   get filename(): string {
-    return this.args.file instanceof File ? this.args.file.name : this.args.file.filename;
+    return decodeURI(this.args.file instanceof File ? this.args.file.name : this.args.file.filename);
   }
 
   get filesize(): string | null {

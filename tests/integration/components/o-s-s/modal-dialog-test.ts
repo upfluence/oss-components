@@ -54,6 +54,14 @@ module('Integration | Component | o-s-s/modal-dialog', function (hooks) {
     assert.dom('.oss-modal-dialog .subtitle').hasText('Subtitle');
   });
 
+  test('The icon parameter is properly displayed', async function (assert) {
+    await render(
+      hbs`<OSS::ModalDialog @title="Example modal" @icon="fab fa-instagram" @close={{this.closeModal}} @size="md" />`
+    );
+
+    assert.dom('.oss-modal-dialog header i.fab').hasClass('fa-instagram');
+  });
+
   test('The illustration named-block is properly displayed', async function (assert) {
     await render(
       hbs`

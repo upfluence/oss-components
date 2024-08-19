@@ -27,6 +27,14 @@ export default {
       },
       control: { type: 'text' }
     },
+    icon: {
+      description: 'Font Awesome class, for example: far fa-envelope-open',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'text' }
+    },
     size: {
       description: `[OPTIONAL] The size of the modal sm (600px) or md (700px). Defaults to sm.`,
       table: {
@@ -86,6 +94,7 @@ const defaultArgs = {
   title: 'Modal Dialog',
   subtitle: 'This is a subtitle',
   size: 'sm',
+  icon: null,
   close: action('close'),
   enqueue: undefined,
   disableClickOutside: undefined
@@ -93,8 +102,8 @@ const defaultArgs = {
 
 const BasicUsageTemplate = (args) => ({
   template: hbs`
-      <OSS::ModalDialog @title={{this.title}} @close={{this.close}} @subtitle={{this.subtitle}} @size={{this.size}} 
-                        @enqueue={{this.enqueue}} @disableClickOutside={{this.disableClickOutside}}>
+      <OSS::ModalDialog @title={{this.title}} @icon={{this.icon}} @close={{this.close}} @subtitle={{this.subtitle}}
+                        @size={{this.size}} @enqueue={{this.enqueue}} @disableClickOutside={{this.disableClickOutside}}>
         <:content>
           Content goes here
         </:content>
@@ -108,8 +117,8 @@ const BasicUsageTemplate = (args) => ({
 
 const WithIllustrationTemplate = (args) => ({
   template: hbs`
-      <OSS::ModalDialog @title={{this.title}} @close={{this.close}} @subtitle={{this.subtitle}} @size={{this.size}} 
-                        @enqueue={{this.enqueue}} @disableClickOutside={{this.disableClickOutside}}>
+      <OSS::ModalDialog @title={{this.title}} @close={{this.close}} @subtitle={{this.subtitle}} @size={{this.size}}
+                        @icon={{this.icon}} @enqueue={{this.enqueue}} @disableClickOutside={{this.disableClickOutside}}>
         <:illustration>
           This will contain an illustration.
         </:illustration>

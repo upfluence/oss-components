@@ -6,6 +6,7 @@ import BaseModal, { type BaseModalArgs } from './private/base-modal';
 export interface OSSModalDialogArgs extends BaseModalArgs {
   title: string;
   subtitle?: string;
+  icon?: string;
   size?: 'sm' | 'md';
   enqueue?: boolean;
 }
