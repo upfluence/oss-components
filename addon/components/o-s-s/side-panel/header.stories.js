@@ -51,9 +51,9 @@ const defaultArgs = {
 
 const BasicUsageTemplate = (args) => ({
   template: hbs`
-      <div class="fx-row fx-xalign-center background-color-white" style={{"width: 480px; padding: 18px 24px;"}}>
-        <OSS::SidePanel::Header @title={{this.title}} @onClose={{this.onClose}} @onReturn={{this.onReturn}} />
-      </div>
+    <div class="fx-row fx-xalign-center background-color-white" style={{"width: 480px; padding: 18px 24px;"}}>
+      <OSS::SidePanel::Header @title={{this.title}} @onClose={{this.onClose}} @onReturn={{this.onReturn}} />
+    </div>
   `,
   context: args
 });
