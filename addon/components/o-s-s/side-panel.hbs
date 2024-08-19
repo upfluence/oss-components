@@ -1,22 +1,19 @@
-<div
-  class="oss-side-panel__container {{if @visible 'oss-side-panel__container--visible'}}"
-  {{will-destroy this.onDestroy}}
->
+<div class="oss-side-panel {{if @visible 'oss-side-panel--visible'}}" {{will-destroy this.onDestroy}}>
   <div
     class="oss-side-panel__backdrop {{unless @backdrop 'oss-side-panel__backdrop--transparent'}}"
     {{on "click" @onClose}}
     {{on-click-outside this.onClickOutside}}
     {{did-insert this.initialize}}
   />
-  <div class="oss-side-panel {{this.sidePanelSize}} {{unless @visible 'oss-side-panel--closed'}}">
+  <div class="oss-side-panel__content {{this.sidePanelSize}} {{unless @visible 'oss-side-panel__content--closed'}}">
     {{#if (has-block "header")}}
       <header class="oss-side-panel__header">
         {{yield to="header"}}
       </header>
     {{/if}}
-    {{#if (has-block "content")}}
-      <div class="oss-side-panel__content fx-col fx-1">
-        {{yield to="content"}}
+    {{#if (has-block "main")}}
+      <div class="oss-side-panel__main fx-col fx-1">
+        {{yield to="main"}}
       </div>
     {{/if}}
     {{#if (has-block "footer")}}

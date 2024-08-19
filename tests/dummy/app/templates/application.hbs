@@ -41,7 +41,7 @@
       <OSS::Button @skin="primary" @label="Open Side Panel" {{on "click" this.openSidePanel}} />
     </div>
 
-    <OSS::SidePanel @onClose={{this.closeSidePanel}} @backdrop={{true}} @visible={{this.showSidePanel}} @size="sm">
+    <OSS::SidePanel @onClose={{this.closeSidePanel}} @backdrop={{true}} @visible={{this.showSidePanel}}>
       <:header>
         <OSS::SidePanel::Header
           @onClose={{this.closeSidePanel}}

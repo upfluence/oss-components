@@ -15,7 +15,7 @@ module('Integration | Component | o-s-s/side-panel', function (hooks) {
     await render(
       hbs`<OSS::SidePanel @title="Sidepanel" @visible={{true}} @backdrop={{true}} @size="sm" @onClose={{this.onClose}} />`
     );
-    assert.dom('.oss-side-panel__container').exists();
+    assert.dom('.oss-side-panel').exists();
   });
 
   module('Named-blocks', function () {
@@ -32,17 +32,17 @@ module('Integration | Component | o-s-s/side-panel', function (hooks) {
       assert.dom('.oss-side-panel__header').hasText('This is the header');
     });
 
-    test('The content named-block is properly displayed', async function (assert) {
+    test('The main named-block is properly displayed', async function (assert) {
       await render(
         hbs`
           <OSS::SidePanel @title="Sidepanel" @visible={{true}} @backdrop={{true}} @size="sm" @onClose={{this.onClose}}>
-            <:content>
+            <:main>
               <p>This is the content</p>
-            </:content>
+            </:main>
           </OSS::SidePanel>`
       );
 
-      assert.dom('.oss-side-panel__content').hasText('This is the content');
+      assert.dom('.oss-side-panel__main').hasText('This is the content');
     });
 
     test('The footer named-block is properly displayed', async function (assert) {
@@ -64,7 +64,7 @@ module('Integration | Component | o-s-s/side-panel', function (hooks) {
       await render(
         hbs`<OSS::SidePanel @title="Sidepanel" @visible={{true}} @backdrop={{true}} @onClose={{this.onClose}} />`
       );
-      assert.dom('.oss-side-panel__container.oss-side-panel__container--visible').hasStyle({
+      assert.dom('.oss-side-panel.oss-side-panel--visible').hasStyle({
         opacity: '1',
         visibility: 'visible'
       });
@@ -74,7 +74,7 @@ module('Integration | Component | o-s-s/side-panel', function (hooks) {
       await render(
         hbs`<OSS::SidePanel @title="Sidepanel" @visible={{false}} @backdrop={{true}} @onClose={{this.onClose}} />`
       );
-      assert.dom('.oss-side-panel__container').hasStyle({
+      assert.dom('.oss-side-panel').hasStyle({
         opacity: '0',
         visibility: 'hidden'
       });
@@ -86,7 +86,7 @@ module('Integration | Component | o-s-s/side-panel', function (hooks) {
       await render(
         hbs`<OSS::SidePanel @title="Sidepanel" @visible={{true}} @backdrop={{true}} @size="sm" @onClose={{this.onClose}} />`
       );
-      assert.dom('.oss-side-panel').hasStyle({
+      assert.dom('.oss-side-panel__content').hasStyle({
         width: '480px'
       });
     });
@@ -95,7 +95,7 @@ module('Integration | Component | o-s-s/side-panel', function (hooks) {
       await render(
         hbs`<OSS::SidePanel @title="Sidepanel" @visible={{true}} @backdrop={{true}} @size="md" @onClose={{this.onClose}} />`
       );
-      assert.dom('.oss-side-panel').hasStyle({
+      assert.dom('.oss-side-panel__content').hasStyle({
         width: '540px'
       });
     });
@@ -104,7 +104,7 @@ module('Integration | Component | o-s-s/side-panel', function (hooks) {
       await render(
         hbs`<OSS::SidePanel @title="Sidepanel" @visible={{true}} @backdrop={{true}} @onClose={{this.onClose}} />`
       );
-      assert.dom('.oss-side-panel').hasStyle({
+      assert.dom('.oss-side-panel__content').hasStyle({
         width: '480px'
       });
     });

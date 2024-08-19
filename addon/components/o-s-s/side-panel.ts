@@ -22,10 +22,10 @@ export default class OssSidePanel extends Component<OssSidePanelArgs> {
   }
 
   get sidePanelSize(): string {
-    if (this.args.size) {
-      return `oss-side-panel--${this.args.size}`;
+    if (this.args.size && ['sm', 'md'].includes(this.args.size)) {
+      return `oss-side-panel__content--${this.args.size}`;
     }
-    return 'oss-side-panel--sm';
+    return 'oss-side-panel__content--sm';
   }
 
   @action
