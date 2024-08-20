@@ -77,6 +77,9 @@ jobs:
     if: contains(github.ref, 'refs/tags/v')
     timeout-minutes: 10
     steps:
+      - uses: webfactory/ssh-agent@v0.5.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
       - uses: actions/checkout@v3
       - uses: pnpm/action-setup@v4
         with:
