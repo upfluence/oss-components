@@ -1,4 +1,4 @@
-<div class="oss-side-panel {{if @visible 'oss-side-panel--visible'}}" {{will-destroy this.onDestroy}}>
+<div class="oss-side-panel {{if @visible 'oss-side-panel--visible'}}" {{will-destroy this.onDestroy}} ...attributes>
   <div
     class="oss-side-panel__backdrop {{unless @backdrop 'oss-side-panel__backdrop--transparent'}}"
     {{on "click" @onClose}}
