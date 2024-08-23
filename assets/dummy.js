@@ -1572,7 +1572,7 @@
         console.log('Function onReturn was called');
       }
     }]);
-  }(_controller.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "toast", [_service.inject], {
+  }(_controller.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "toast", [_service.inject], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -1879,7 +1879,7 @@
     initializer: function initializer() {
       return false;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "onMainAction", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onMainAction"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSecondaryAction", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSecondaryAction"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onReturn", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onReturn"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "onMainAction", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onMainAction"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSecondaryAction", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSecondaryAction"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onReturn", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onReturn"), _class.prototype), _class);
   var testScript = "import { module, test } from 'qunit';\nimport { setupRenderingTest } from 'ember-qunit';\nimport { render } from '@ember/test-helpers';\nimport { hbs } from 'ember-cli-htmlbars';\n\nmodule('Integration | Component | o-s-s/code-block', function(hooks) {\n  setupRenderingTest(hooks);\n\n  test('it renders', async function(assert) {\n    // Set any properties with this.set('myProperty', 'value');\n    // Handle any actions with this.set('myAction', function(val) { ... });\n    assert.equal(this.element.textContent.trim(), '');\n    assert.equal(this.element.textContent.trim(), 'template block text');\n  });\n\n  test('it renders', async function(assert) {\n    // Set any properties with this.set('myProperty', 'value');\n    // Handle any actions with this.set('myAction', function(val) { ... });\n    assert.equal(this.element.textContent.trim(), '');\n    assert.equal(this.element.textContent.trim(), 'template block text');\n  });\n\n  test('it renders', async function(assert) {\n    // Set any properties with this.set('myProperty', 'value');\n    // Handle any actions with this.set('myAction', function(val) { ... });\n    assert.equal(this.element.textContent.trim(), '');\n    assert.equal(this.element.textContent.trim(), 'template block text');\n  });\n\n  test('it renders', async function(assert) {\n    // Set any properties with this.set('myProperty', 'value');\n    // Handle any actions with this.set('myAction', function(val) { ... });\n    assert.equal(this.element.textContent.trim(), '');\n    assert.equal(this.element.textContent.trim(), 'template block text');\n  });\n});";
 });
 ;define("dummy/helpers/and", ["exports", "ember-truth-helpers/helpers/and"], function (_exports, _and) {
@@ -2643,12 +2643,12 @@ define("dummy/routes/application", ["exports", "@ember/routing/route", "@ember/s
         this.intl.setLocale('en-us');
       }
     }]);
-  }(_route.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+  }(_route.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: null
-  })), _class);
+  }), _class);
 });
 ;define("dummy/services/asset-map", ["exports", "ember-cli-ifa/services/asset-map"], function (_exports, _assetMap) {
   "use strict";

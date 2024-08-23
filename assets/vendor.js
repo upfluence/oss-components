@@ -73716,12 +73716,12 @@ define("@upfluence/oss-components/components/o-s-s/access-panel", ["exports", "@
         this.args.onSearch(this.searchKeyword);
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "searchKeyword", [_tracking.tracked], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "searchKeyword", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: null
-  }), _applyDecoratedDescriptor(_class.prototype, "focusSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "focusSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setupAnimation", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setupAnimation"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "focusSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "focusSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setupAnimation", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setupAnimation"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSAccessPanel);
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -73827,7 +73827,7 @@ define("@upfluence/oss-components/components/o-s-s/alert", ["exports", "@ember/c
         (_this$_DOMElement = this._DOMElement) === null || _this$_DOMElement === void 0 || _this$_DOMElement.remove();
       }
     }]);
-  }(_component2.default), (_applyDecoratedDescriptor(_class.prototype, "initSelf", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initSelf"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "removeSelf", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "removeSelf"), _class.prototype)), _class);
+  }(_component2.default), _applyDecoratedDescriptor(_class.prototype, "initSelf", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initSelf"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "removeSelf", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "removeSelf"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSAlert);
 });
 ;define("@upfluence/oss-components/components/o-s-s/alert.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -74075,12 +74075,12 @@ define("@upfluence/oss-components/components/o-s-s/anchor", ["exports", "@ember/
         }
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "router", [_service.inject], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "router", [_service.inject], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: null
-  })), _class);
+  }), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSAnchor);
 });
 ;define("@upfluence/oss-components/components/o-s-s/anchor.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
@@ -74309,7 +74309,7 @@ define("@upfluence/oss-components/components/o-s-s/array-input", ["exports", "@e
         this._onChange();
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "currentValue", [_tracking.tracked], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "currentValue", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -74323,7 +74323,7 @@ define("@upfluence/oss-components/components/o-s-s/array-input", ["exports", "@e
     initializer: function initializer() {
       return [];
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "validateTagOnClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "validateTagOnClickOutside"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "keyListener", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "keyListener"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "removeItem", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "removeItem"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "validateTagOnClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "validateTagOnClickOutside"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "keyListener", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "keyListener"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "removeItem", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "removeItem"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSArrayInput);
 });
 ;define("@upfluence/oss-components/components/o-s-s/array-input.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -74599,14 +74599,14 @@ define("@upfluence/oss-components/components/o-s-s/attribute/country", ["exports
         })) === null || _this$countryDictionn === void 0 ? void 0 : _this$countryDictionn.name) || '-';
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "displayCopyBtn", [_tracking.tracked], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "displayCopyBtn", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function initializer() {
       return false;
     }
-  })), _class);
+  }), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSAttributeCountry);
 });
 ;define("@upfluence/oss-components/components/o-s-s/attribute/country.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
@@ -75046,7 +75046,7 @@ define("@upfluence/oss-components/components/o-s-s/attribute/removable-text", ["
         });
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -75058,7 +75058,7 @@ define("@upfluence/oss-components/components/o-s-s/attribute/removable-text", ["
     initializer: function initializer() {
       return false;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "onRemove", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onRemove"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "onRemove", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onRemove"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSAttributeRemovableText);
 });
 ;define("@upfluence/oss-components/components/o-s-s/attribute/removable-text.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -75245,7 +75245,7 @@ define("@upfluence/oss-components/components/o-s-s/attribute/revealable-email", 
         });
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -75257,7 +75257,7 @@ define("@upfluence/oss-components/components/o-s-s/attribute/revealable-email", 
     initializer: function initializer() {
       return false;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "onRevealEmail", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onRevealEmail"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "onRevealEmail", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onRevealEmail"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSAttributeRevealableEmail);
 });
 ;define("@upfluence/oss-components/components/o-s-s/attribute/revealable-email.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -75786,7 +75786,7 @@ define("@upfluence/oss-components/components/o-s-s/attributes-panel", ["exports"
         }
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "modeSelected", [_tracking.tracked], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "modeSelected", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -75800,7 +75800,7 @@ define("@upfluence/oss-components/components/o-s-s/attributes-panel", ["exports"
     initializer: function initializer() {
       return false;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "toggleMode", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleMode"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onEdit", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onEdit"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onCancel", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onCancel"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSave"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "toggleMode", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleMode"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onEdit", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onEdit"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onCancel", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onCancel"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSave"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSAttributesPanel);
 });
 ;define("@upfluence/oss-components/components/o-s-s/attributes-panel.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -76295,7 +76295,7 @@ define("@upfluence/oss-components/components/o-s-s/avatar", ["exports", "@ember/
         this.hasError = true;
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "hasError", [_tracking.tracked], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "hasError", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -76309,7 +76309,7 @@ define("@upfluence/oss-components/components/o-s-s/avatar", ["exports", "@ember/
     initializer: function initializer() {
       return false;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "imageLoadError", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "imageLoadError"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "imageLoadError", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "imageLoadError"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSAvatar);
 });
 ;define("@upfluence/oss-components/components/o-s-s/avatar.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
@@ -77159,14 +77159,14 @@ define("@upfluence/oss-components/components/o-s-s/button-dropdown", ["exports",
         this.displayDropdown = false;
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "displayDropdown", [_tracking.tracked], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "displayDropdown", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function initializer() {
       return false;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "onMainAction", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onMainAction"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onDropdownClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onDropdownClick"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setupChildrenClickHandler", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setupChildrenClickHandler"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "teardownChildrenClickHandler", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "teardownChildrenClickHandler"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeDropdown"), _class.prototype)), _class));
+  }), _applyDecoratedDescriptor(_class.prototype, "onMainAction", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onMainAction"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onDropdownClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onDropdownClick"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setupChildrenClickHandler", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setupChildrenClickHandler"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "teardownChildrenClickHandler", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "teardownChildrenClickHandler"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeDropdown"), _class.prototype), _class));
 });
 ;define("@upfluence/oss-components/components/o-s-s/button-dropdown.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
   "use strict";
@@ -77475,7 +77475,7 @@ define("@upfluence/oss-components/components/o-s-s/button", ["exports", "@ember/
         this.intervalState = false;
       })
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "DOMElement", [_tracking.tracked], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "DOMElement", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -77499,7 +77499,7 @@ define("@upfluence/oss-components/components/o-s-s/button", ["exports", "@ember/
     initializer: function initializer() {
       return 0;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "didInsert", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "didInsert"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onclick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onclick"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "didInsert", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "didInsert"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onclick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onclick"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSButton);
 });
 ;define("@upfluence/oss-components/components/o-s-s/button.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
@@ -77799,7 +77799,7 @@ define("@upfluence/oss-components/components/o-s-s/checkbox", ["exports", "@embe
         }
       }
     }]);
-  }(_component2.default), (_applyDecoratedDescriptor(_class.prototype, "updateValue", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateValue"), _class.prototype)), _class);
+  }(_component2.default), _applyDecoratedDescriptor(_class.prototype, "updateValue", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateValue"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSCheckbox);
 });
 ;define("@upfluence/oss-components/components/o-s-s/checkbox.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -78024,7 +78024,7 @@ define("@upfluence/oss-components/components/o-s-s/chip", ["exports", "@ember/co
         this.args.onRemove();
       }
     }]);
-  }(_component2.default), (_applyDecoratedDescriptor(_class.prototype, "stopPropagation", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "stopPropagation"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onCrossClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onCrossClick"), _class.prototype)), _class);
+  }(_component2.default), _applyDecoratedDescriptor(_class.prototype, "stopPropagation", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "stopPropagation"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onCrossClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onCrossClick"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSChip);
 });
 ;define("@upfluence/oss-components/components/o-s-s/chip.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -78278,7 +78278,7 @@ define("@upfluence/oss-components/components/o-s-s/code-block", ["exports", "@em
         this.componentHeight = this.componentHeight * 2;
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "collapsable", [_tracking.tracked], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "collapsable", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -78304,7 +78304,7 @@ define("@upfluence/oss-components/components/o-s-s/code-block", ["exports", "@em
     enumerable: true,
     writable: true,
     initializer: null
-  }), _applyDecoratedDescriptor(_class.prototype, "copyToClipboard", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "copyToClipboard"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "collapse", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "collapse"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "uncollapse", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "uncollapse"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "copyToClipboard", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "copyToClipboard"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "collapse", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "collapse"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "uncollapse", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "uncollapse"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSCodeBlock);
 });
 ;define("@upfluence/oss-components/components/o-s-s/code-block.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
@@ -78610,7 +78610,7 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
         });
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -78635,7 +78635,7 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
       var _this$args$inline;
       return (_this$args$inline = this.args.inline) !== null && _this$args$inline !== void 0 ? _this$args$inline : false;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "copy", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "copy"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "copy", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "copy"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSCopy);
 });
 ;define("@upfluence/oss-components/components/o-s-s/copy.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
@@ -78866,7 +78866,7 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
         if (this.selectedCountry) this.onItemSelected(this.selectedCountry);
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -78892,7 +78892,7 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
     initializer: function initializer() {
       return (0, _internals.guidFor)(this);
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "handleKeyEvent", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleKeyEvent"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "search", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "search"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onItemSelected", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onItemSelected"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "handleKeyEvent", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleKeyEvent"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "search", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "search"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onItemSelected", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onItemSelected"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSCountrySelector);
 });
 ;define("@upfluence/oss-components/components/o-s-s/country-selector.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -79353,7 +79353,7 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
         this.filteredCurrencies = this.currencies;
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "currencySelectorShown", [_tracking.tracked], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "currencySelectorShown", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -79374,7 +79374,7 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
     initializer: function initializer() {
       return this.args.value;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "onlyNumeric", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onlyNumeric"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handlePaste", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handlePaste"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "notifyChanges", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "notifyChanges"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleCurrencySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleCurrencySelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "hideCurrencySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "hideCurrencySelector"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "onlyNumeric", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onlyNumeric"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handlePaste", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handlePaste"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "notifyChanges", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "notifyChanges"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleCurrencySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleCurrencySelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "hideCurrencySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "hideCurrencySelector"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSCurrencyInput);
 });
 ;define("@upfluence/oss-components/components/o-s-s/currency-input.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -79620,7 +79620,7 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
         this.initialize(elem, false);
       }
     }]);
-  }(_baseModal.default), (_applyDecoratedDescriptor(_class.prototype, "onInit", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onInit"), _class.prototype)), _class);
+  }(_baseModal.default), _applyDecoratedDescriptor(_class.prototype, "onInit", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onInit"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSDialog);
 });
 ;define("@upfluence/oss-components/components/o-s-s/dialog.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -79800,7 +79800,7 @@ define("@upfluence/oss-components/components/o-s-s/email-input", ["exports", "@e
         }
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -79812,7 +79812,7 @@ define("@upfluence/oss-components/components/o-s-s/email-input", ["exports", "@e
     initializer: function initializer() {
       return null;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "validateInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "validateInput"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "validateInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "validateInput"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSEmailInput);
 });
 ;define("@upfluence/oss-components/components/o-s-s/email-input.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -80638,7 +80638,7 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
         e.preventDefault();
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "_searchKeyword", [_tracking.tracked], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "_searchKeyword", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -80659,7 +80659,7 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
     initializer: function initializer() {
       return (0, _internals.guidFor)(this);
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "onRender", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onRender"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "updateSearchKeyword", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateSearchKeyword"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onBottomReached", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onBottomReached"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "didSelectItem", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "didSelectItem"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "autoFocus", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "autoFocus"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleKeyEventInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleKeyEventInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleKeyEvent", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleKeyEvent"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "onRender", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onRender"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "updateSearchKeyword", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "updateSearchKeyword"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onBottomReached", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onBottomReached"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "didSelectItem", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "didSelectItem"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "autoFocus", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "autoFocus"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleKeyEventInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleKeyEventInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleKeyEvent", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleKeyEvent"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSInfiniteSelect);
 });
 ;define("@upfluence/oss-components/components/o-s-s/infinite-select.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -81025,7 +81025,7 @@ define("@upfluence/oss-components/components/o-s-s/input-container", ["exports",
         }
       }
     }]);
-  }(_component2.default), (_applyDecoratedDescriptor(_class.prototype, "_onChange", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_onChange"), _class.prototype)), _class);
+  }(_component2.default), _applyDecoratedDescriptor(_class.prototype, "_onChange", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_onChange"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSInputContainer);
 });
 ;define("@upfluence/oss-components/components/o-s-s/input-container.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -81592,7 +81592,7 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar", ["exports", 
         return (_this$args$homeAction = (_this$args = this.args).homeAction) === null || _this$args$homeAction === void 0 ? void 0 : _this$args$homeAction.call(_this$args);
       }
     }]);
-  }(_component2.default), (_applyDecoratedDescriptor(_class.prototype, "onHomeAction", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onHomeAction"), _class.prototype)), _class);
+  }(_component2.default), _applyDecoratedDescriptor(_class.prototype, "onHomeAction", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onHomeAction"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSLayoutSidebar);
 });
 ;define("@upfluence/oss-components/components/o-s-s/layout/sidebar.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -81752,7 +81752,7 @@ define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["expor
         }
       }
     }]);
-  }(_component2.default), (_applyDecoratedDescriptor(_class.prototype, "onClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClick"), _class.prototype)), _class);
+  }(_component2.default), _applyDecoratedDescriptor(_class.prototype, "onClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClick"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSLayoutSidebarItem);
 });
 ;define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -81941,12 +81941,12 @@ define("@upfluence/oss-components/components/o-s-s/link", ["exports", "@ember/co
         }
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "router", [_service.inject], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "router", [_service.inject], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: null
-  }), _applyDecoratedDescriptor(_class.prototype, "goTo", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "goTo"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "goTo", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "goTo"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSLink);
 });
 ;define("@upfluence/oss-components/components/o-s-s/link.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
@@ -82176,14 +82176,14 @@ define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@
         this.displayModal = true;
       }
     }]);
-  }(_baseModal.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "displayModal", [_tracking.tracked], {
+  }(_baseModal.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "displayModal", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function initializer() {
       return true;
     }
-  })), _class);
+  }), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSModalDialog);
 });
 ;define("@upfluence/oss-components/components/o-s-s/modal-dialog.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -82499,7 +82499,7 @@ define("@upfluence/oss-components/components/o-s-s/modal", ["exports", "@ember/c
         (0, _jquery.default)(this.element).modal('hide');
       }
     }]);
-  }(_component2.default), (_applyDecoratedDescriptor(_class.prototype, "setup", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setup"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "teardown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "teardown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "close", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "close"), _class.prototype)), _class);
+  }(_component2.default), _applyDecoratedDescriptor(_class.prototype, "setup", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setup"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "teardown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "teardown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "close", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "close"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OssModalComponent);
 });
 ;define("@upfluence/oss-components/components/o-s-s/modal.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -82698,7 +82698,7 @@ define("@upfluence/oss-components/components/o-s-s/nav-tab", ["exports", "@ember
         this.args.onSelection(selectedTab);
       }
     }]);
-  }(_component2.default), (_applyDecoratedDescriptor(_class.prototype, "onSelectTab", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelectTab"), _class.prototype)), _class);
+  }(_component2.default), _applyDecoratedDescriptor(_class.prototype, "onSelectTab", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelectTab"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSNavTab);
 });
 ;define("@upfluence/oss-components/components/o-s-s/nav-tab.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -82967,7 +82967,7 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
         (_this$args$onChange = (_this$args = this.args).onChange) === null || _this$args$onChange === void 0 || _this$args$onChange.call(_this$args, Number(this.localValue));
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "localValue", [_tracking.tracked], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "localValue", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -82988,7 +82988,7 @@ define("@upfluence/oss-components/components/o-s-s/number-input", ["exports", "@
     initializer: function initializer() {
       return null;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "registerInputElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerInputElement"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "keyParser", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "keyParser"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "checkUserInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "checkUserInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "increaseValue", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "increaseValue"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "decreaseValue", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "decreaseValue"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "notifyChanges", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "notifyChanges"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "registerInputElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerInputElement"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "keyParser", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "keyParser"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "checkUserInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "checkUserInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "increaseValue", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "increaseValue"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "decreaseValue", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "decreaseValue"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "notifyChanges", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "notifyChanges"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSNumberInput);
 });
 ;define("@upfluence/oss-components/components/o-s-s/number-input.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -83479,7 +83479,7 @@ define("@upfluence/oss-components/components/o-s-s/password-input", ["exports", 
         return regex.test(this.args.value) ? 'success' : 'error';
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -83503,7 +83503,7 @@ define("@upfluence/oss-components/components/o-s-s/password-input", ["exports", 
     enumerable: true,
     writable: true,
     initializer: null
-  }), _applyDecoratedDescriptor(_class.prototype, "validateInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "validateInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleVisibility", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleVisibility"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "validateInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "validateInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleVisibility", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleVisibility"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSPasswordInput);
 });
 ;define("@upfluence/oss-components/components/o-s-s/password-input.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -83798,7 +83798,7 @@ define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["export
         this.inputElement = el;
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -83844,7 +83844,7 @@ define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["export
     initializer: function initializer() {
       return undefined;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "onlyNumeric", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onlyNumeric"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleCountrySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleCountrySelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "hideCountrySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "hideCountrySelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "focusInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "focusInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerInputElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerInputElement"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "onlyNumeric", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onlyNumeric"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleCountrySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleCountrySelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "hideCountrySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "hideCountrySelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "focusInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "focusInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerInputElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerInputElement"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSPhoneNumberInput);
 });
 ;define("@upfluence/oss-components/components/o-s-s/phone-number-input.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -84140,7 +84140,7 @@ define("@upfluence/oss-components/components/o-s-s/power-select", ["exports", "@
         (_document$querySelect = document.querySelector("#".concat(this.portalId))) === null || _document$querySelect === void 0 || _document$querySelect.remove();
       }
     }]);
-  }(_baseDropdown.default), (_applyDecoratedDescriptor(_class.prototype, "ensureBlockPresence", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "ensureBlockPresence"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleSelectorClose", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleSelectorClose"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype)), _class);
+  }(_baseDropdown.default), _applyDecoratedDescriptor(_class.prototype, "ensureBlockPresence", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "ensureBlockPresence"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleSelectorClose", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleSelectorClose"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSPowerSelect);
 });
 ;define("@upfluence/oss-components/components/o-s-s/power-select.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -84461,14 +84461,14 @@ define("@upfluence/oss-components/components/o-s-s/private/base-dropdown", ["exp
         });
       }
     }]);
-  }(_component.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "isOpen", [_tracking.tracked], {
+  }(_component.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "isOpen", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function initializer() {
       return false;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerContainer", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerContainer"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "disconnectObserver", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "disconnectObserver"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerContainer", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerContainer"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "disconnectObserver", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "disconnectObserver"), _class.prototype), _class);
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("@upfluence/oss-components/components/o-s-s/private/base-modal", ["exports", "@ember/object", "@ember/runloop", "@glimmer/component", "@embroider/macros/runtime"], function (_exports, _object, _runloop, _component, _runtime) {
@@ -84576,7 +84576,7 @@ define("@upfluence/oss-components/components/o-s-s/private/base-modal", ["export
         return window.innerWidth > document.documentElement.clientWidth;
       }
     }]);
-  }(_component.default), (_applyDecoratedDescriptor(_class.prototype, "onDestroy", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onDestroy"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "initialize", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initialize"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeModal", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeModal"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeOnEscape", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeOnEscape"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "trackInitialTarget", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "trackInitialTarget"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype)), _class);
+  }(_component.default), _applyDecoratedDescriptor(_class.prototype, "onDestroy", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onDestroy"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "initialize", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initialize"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeModal", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeModal"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeOnEscape", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeOnEscape"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "trackInitialTarget", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "trackInitialTarget"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype), _class);
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("@upfluence/oss-components/components/o-s-s/progress-bar", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _templateFactory) {
@@ -84836,7 +84836,7 @@ define("@upfluence/oss-components/components/o-s-s/radio-button", ["exports", "@
         }
       }
     }]);
-  }(_component2.default), (_applyDecoratedDescriptor(_class.prototype, "onSelection", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelection"), _class.prototype)), _class);
+  }(_component2.default), _applyDecoratedDescriptor(_class.prototype, "onSelection", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelection"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSRadioButton);
 });
 ;define("@upfluence/oss-components/components/o-s-s/radio-button.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -85135,7 +85135,7 @@ define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/
         (true && !(hasOptionItem) && (0, _debug.assert)("[component][OSS::Select] You must pass option named block", hasOptionItem));
       }
     }]);
-  }(_baseDropdown.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+  }(_baseDropdown.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -85147,7 +85147,7 @@ define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/
     initializer: function initializer() {
       return false;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "hideSelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "hideSelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleSelectorClose", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleSelectorClose"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "ensureBlockPresence", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "ensureBlockPresence"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "hideSelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "hideSelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleSelectorClose", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleSelectorClose"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "ensureBlockPresence", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "ensureBlockPresence"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSelect);
 });
 ;define("@upfluence/oss-components/components/o-s-s/select.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -85505,14 +85505,14 @@ define("@upfluence/oss-components/components/o-s-s/side-panel", ["exports", "@em
         this.initialTarget = event.target;
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "showReturnButton", [_tracking.tracked], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "showReturnButton", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function initializer() {
       return false;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "onDestroy", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onDestroy"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "initialize", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initialize"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "trackInitialTarget", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "trackInitialTarget"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "onDestroy", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onDestroy"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "initialize", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initialize"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "trackInitialTarget", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "trackInitialTarget"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OssSidePanel);
 });
 ;define("@upfluence/oss-components/components/o-s-s/side-panel.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -85648,7 +85648,7 @@ define("@upfluence/oss-components/components/o-s-s/side-panel/header", ["exports
   function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="oss-side-panel__header__content fx-row fx-xalign-center">
+    <div class="oss-side-panel__header__content fx-row fx-xalign-center" ...attributes>
     {{#if @onReturn}}
       <OSS::Icon @icon="fa-solid fa-arrow-left" role="button" class="margin-right-px-12" {{on "click" @onReturn}} />
     {{/if}}
@@ -85657,8 +85657,8 @@ define("@upfluence/oss-components/components/o-s-s/side-panel/header", ["exports
   </div>
   */
   {
-    "id": "Zo4bbsbA",
-    "block": "[[[10,0],[14,0,\"oss-side-panel__header__content fx-row fx-xalign-center\"],[12],[1,\"\\n\"],[41,[30,1],[[[1,\"    \"],[8,[39,1],[[24,\"role\",\"button\"],[24,0,\"margin-right-px-12\"],[4,[38,2],[\"click\",[30,1]],null]],[[\"@icon\"],[\"fa-solid fa-arrow-left\"]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,1],[14,0,\"fx-1 font-weight-semibold font-size-h4\"],[12],[1,[30,2]],[13],[1,\"\\n  \"],[8,[39,3],[[4,[38,2],[\"click\",[30,3]],null]],[[\"@size\",\"@icon\",\"@square\"],[\"sm\",\"fa-times\",true]],null],[1,\"\\n\"],[13]],[\"@onReturn\",\"@title\",\"@onClose\"],false,[\"if\",\"o-s-s/icon\",\"on\",\"o-s-s/button\"]]",
+    "id": "JhO88gUt",
+    "block": "[[[11,0],[24,0,\"oss-side-panel__header__content fx-row fx-xalign-center\"],[17,1],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[8,[39,1],[[24,\"role\",\"button\"],[24,0,\"margin-right-px-12\"],[4,[38,2],[\"click\",[30,2]],null]],[[\"@icon\"],[\"fa-solid fa-arrow-left\"]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,1],[14,0,\"fx-1 font-weight-semibold font-size-h4\"],[12],[1,[30,3]],[13],[1,\"\\n  \"],[8,[39,3],[[4,[38,2],[\"click\",[30,4]],null]],[[\"@size\",\"@icon\",\"@square\"],[\"sm\",\"fa-times\",true]],null],[1,\"\\n\"],[13]],[\"&attrs\",\"@onReturn\",\"@title\",\"@onClose\"],false,[\"if\",\"o-s-s/icon\",\"on\",\"o-s-s/button\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/side-panel/header.hbs",
     "isStrictMode": false
   });
@@ -86085,7 +86085,7 @@ define("@upfluence/oss-components/components/o-s-s/social-post-badge", ["exports
         (_this$args$onToggle = (_this$args = this.args).onToggle) === null || _this$args$onToggle === void 0 || _this$args$onToggle.call(_this$args, this.args.postType);
       }
     }]);
-  }(_component2.default), (_applyDecoratedDescriptor(_class.prototype, "onPostTypeClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onPostTypeClick"), _class.prototype)), _class);
+  }(_component2.default), _applyDecoratedDescriptor(_class.prototype, "onPostTypeClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onPostTypeClick"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSocialPostBadge);
 });
 ;define("@upfluence/oss-components/components/o-s-s/social-post-badge.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
@@ -86458,14 +86458,14 @@ define("@upfluence/oss-components/components/o-s-s/star-rating", ["exports", "@e
         return result;
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "stars", [_tracking.tracked], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "stars", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function initializer() {
       return [];
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "setRating", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setRating"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onMouseEnter", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onMouseEnter"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onMouseLeave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onMouseLeave"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "setRating", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setRating"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onMouseEnter", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onMouseEnter"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onMouseLeave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onMouseLeave"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSStarRating);
 });
 ;define("@upfluence/oss-components/components/o-s-s/star-rating.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
@@ -86930,7 +86930,7 @@ define("@upfluence/oss-components/components/o-s-s/text-area", ["exports", "@emb
         (_this$args$onChange = (_this$args = this.args).onChange) === null || _this$args$onChange === void 0 || _this$args$onChange.call(_this$args, value);
       }
     }]);
-  }(_component2.default), (_applyDecoratedDescriptor(_class.prototype, "_onChange", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_onChange"), _class.prototype)), _class);
+  }(_component2.default), _applyDecoratedDescriptor(_class.prototype, "_onChange", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_onChange"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSTextArea);
 });
 ;define("@upfluence/oss-components/components/o-s-s/text-area.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -87162,7 +87162,7 @@ define("@upfluence/oss-components/components/o-s-s/togglable-section", ["exports
       key: "noop",
       value: function noop() {}
     }]);
-  }(_component2.default), (_applyDecoratedDescriptor(_class.prototype, "onHeaderClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onHeaderClick"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "noop", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "noop"), _class.prototype)), _class);
+  }(_component2.default), _applyDecoratedDescriptor(_class.prototype, "onHeaderClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onHeaderClick"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "noop", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "noop"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, CampaignTogglableSection);
 });
 ;define("@upfluence/oss-components/components/o-s-s/togglable-section.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -87419,7 +87419,7 @@ define("@upfluence/oss-components/components/o-s-s/toggle-buttons", ["exports", 
         }
       }
     }]);
-  }(_component2.default), (_applyDecoratedDescriptor(_class.prototype, "onSelectToggle", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelectToggle"), _class.prototype)), _class);
+  }(_component2.default), _applyDecoratedDescriptor(_class.prototype, "onSelectToggle", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelectToggle"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSToggleButtons);
 });
 ;define("@upfluence/oss-components/components/o-s-s/toggle-buttons.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -87598,7 +87598,7 @@ define("@upfluence/oss-components/components/o-s-s/toggle-buttons", ["exports", 
         }
       }
     }]);
-  }(_component2.default), (_applyDecoratedDescriptor(_class.prototype, "switchState", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "switchState"), _class.prototype)), _class);
+  }(_component2.default), _applyDecoratedDescriptor(_class.prototype, "switchState", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "switchState"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSToggleSwitchComponent);
 });
 ;define("@upfluence/oss-components/components/o-s-s/toggle-switch.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -88023,7 +88023,7 @@ define("@upfluence/oss-components/components/o-s-s/upload-area", ["exports", "@e
         return false;
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -88061,7 +88061,7 @@ define("@upfluence/oss-components/components/o-s-s/upload-area", ["exports", "@e
     initializer: function initializer() {
       return false;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "init", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "init"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "assignFileInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "assignFileInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "triggerFileBrowser", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "triggerFileBrowser"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onFileSelected", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onFileSelected"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onFileEdition", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onFileEdition"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_allowDropEvent", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_allowDropEvent"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_onDragEnter", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_onDragEnter"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_onDragLeave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_onDragLeave"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_onDrop", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_onDrop"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_mouseEnter", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_mouseEnter"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_mouseLeave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_mouseLeave"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onFileDeletion", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onFileDeletion"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onUploadSuccess", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onUploadSuccess"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onUploadFailure", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onUploadFailure"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "init", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "init"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "assignFileInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "assignFileInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "triggerFileBrowser", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "triggerFileBrowser"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onFileSelected", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onFileSelected"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onFileEdition", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onFileEdition"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_allowDropEvent", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_allowDropEvent"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_onDragEnter", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_onDragEnter"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_onDragLeave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_onDragLeave"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_onDrop", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_onDrop"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_mouseEnter", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_mouseEnter"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "_mouseLeave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "_mouseLeave"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onFileDeletion", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onFileDeletion"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onUploadSuccess", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onUploadSuccess"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onUploadFailure", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onUploadFailure"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSUploadArea);
 });
 ;define("@upfluence/oss-components/components/o-s-s/upload-area.stories", ["exports", "@storybook/addon-actions", "dummy/controllers/application", "@ember/template-factory"], function (_exports, _addonActions, _application, _templateFactory) {
@@ -88547,7 +88547,7 @@ define("@upfluence/oss-components/components/o-s-s/upload-item", ["exports", "@e
         return null;
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "fileUrl", [_tracking.tracked], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "fileUrl", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -88573,7 +88573,7 @@ define("@upfluence/oss-components/components/o-s-s/upload-item", ["exports", "@e
     enumerable: true,
     writable: true,
     initializer: null
-  }), _applyDecoratedDescriptor(_class.prototype, "onUploadSuccess", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onUploadSuccess"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onUploadFailure", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onUploadFailure"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onProgress", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onProgress"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "performUpload", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "performUpload"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "onUploadSuccess", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onUploadSuccess"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onUploadFailure", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onUploadFailure"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onProgress", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onProgress"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "performUpload", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "performUpload"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSUploadItem);
 });
 ;define("@upfluence/oss-components/components/o-s-s/upload-item.stories", ["exports", "@storybook/addon-actions", "dummy/controllers/application", "@ember/template-factory"], function (_exports, _addonActions, _application, _templateFactory) {
@@ -88839,7 +88839,7 @@ define("@upfluence/oss-components/components/o-s-s/url-input", ["exports", "@emb
         (_this$args$onChange = (_this$args2 = this.args).onChange) === null || _this$args$onChange === void 0 || _this$args$onChange.call(_this$args2, newValue, this.validInput);
       }
     }]);
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -88851,7 +88851,7 @@ define("@upfluence/oss-components/components/o-s-s/url-input", ["exports", "@emb
     initializer: function initializer() {
       return true;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "onInputChanged", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onInputChanged"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "onInputChanged", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onInputChanged"), _class.prototype), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSUrlInput);
 });
 ;define("@upfluence/oss-components/components/o-s-s/url-input.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -96730,12 +96730,12 @@ define("ember-intl/helpers/format-date", ["exports", "@ember/component/helper", 
         return this.intl.formatDate(value, options);
       }
     }]);
-  }(_helper.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+  }(_helper.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: null
-  })), _class);
+  }), _class);
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("ember-intl/helpers/format-list", ["exports", "@ember/component/helper", "@ember/service", "@ember/utils"], function (_exports, _helper, _service, _utils) {
@@ -96802,12 +96802,12 @@ define("ember-intl/helpers/format-list", ["exports", "@ember/component/helper", 
         return this.intl.formatList(value, options);
       }
     }]);
-  }(_helper.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+  }(_helper.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: null
-  })), _class);
+  }), _class);
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("ember-intl/helpers/format-message", ["exports", "@ember/component/helper", "@ember/service", "@ember/utils"], function (_exports, _helper, _service, _utils) {
@@ -96874,12 +96874,12 @@ define("ember-intl/helpers/format-message", ["exports", "@ember/component/helper
         return this.intl.formatMessage(value, options);
       }
     }]);
-  }(_helper.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+  }(_helper.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: null
-  })), _class);
+  }), _class);
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("ember-intl/helpers/format-number", ["exports", "@ember/component/helper", "@ember/service", "@ember/utils"], function (_exports, _helper, _service, _utils) {
@@ -96946,12 +96946,12 @@ define("ember-intl/helpers/format-number", ["exports", "@ember/component/helper"
         return this.intl.formatNumber(value, options);
       }
     }]);
-  }(_helper.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+  }(_helper.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: null
-  })), _class);
+  }), _class);
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("ember-intl/helpers/format-relative", ["exports", "@ember/component/helper", "@ember/service", "@ember/utils"], function (_exports, _helper, _service, _utils) {
@@ -97018,12 +97018,12 @@ define("ember-intl/helpers/format-relative", ["exports", "@ember/component/helpe
         return this.intl.formatRelative(value, options);
       }
     }]);
-  }(_helper.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+  }(_helper.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: null
-  })), _class);
+  }), _class);
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("ember-intl/helpers/format-time", ["exports", "@ember/component/helper", "@ember/service", "@ember/utils"], function (_exports, _helper, _service, _utils) {
@@ -97090,12 +97090,12 @@ define("ember-intl/helpers/format-time", ["exports", "@ember/component/helper", 
         return this.intl.formatTime(value, options);
       }
     }]);
-  }(_helper.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+  }(_helper.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: null
-  })), _class);
+  }), _class);
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("ember-intl/helpers/t", ["exports", "@ember/component/helper", "@ember/service", "@ember/utils"], function (_exports, _helper, _service, _utils) {
@@ -97162,12 +97162,12 @@ define("ember-intl/helpers/t", ["exports", "@ember/component/helper", "@ember/se
         return this.intl.t(value, options);
       }
     }]);
-  }(_helper.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+  }(_helper.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: null
-  })), _class);
+  }), _class);
 });
 ;define("ember-intl/index", ["exports", "ember-intl/helpers/format-date", "ember-intl/helpers/format-list", "ember-intl/helpers/format-message", "ember-intl/helpers/format-number", "ember-intl/helpers/format-relative", "ember-intl/helpers/format-time", "ember-intl/helpers/t"], function (_exports, _formatDate, _formatList, _formatMessage, _formatNumber, _formatRelative, _formatTime, _t) {
   "use strict";
@@ -97710,7 +97710,7 @@ define("ember-intl/helpers/t", ["exports", "@ember/component/helper", "@ember/se
         });
       }
     }]);
-  }(_service.default), (_applyDecoratedDescriptor(_class.prototype, "locale", [_compat.dependentKeyCompat], Object.getOwnPropertyDescriptor(_class.prototype, "locale"), _class.prototype), _descriptor = _applyDecoratedDescriptor(_class.prototype, "_locale", [_tracking.tracked], {
+  }(_service.default), _applyDecoratedDescriptor(_class.prototype, "locale", [_compat.dependentKeyCompat], Object.getOwnPropertyDescriptor(_class.prototype, "locale"), _class.prototype), _descriptor = _applyDecoratedDescriptor(_class.prototype, "_locale", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -97724,7 +97724,7 @@ define("ember-intl/helpers/t", ["exports", "@ember/component/helper", "@ember/se
     initializer: function initializer() {
       return null;
     }
-  })), _class);
+  }), _class);
   function createFormatterProxy(name) {
     return function serviceFormatterProxy(value, formatOptions) {
       var locale;
