@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 
-type ProgressBarSkins = 'warning' | 'success';
+type ProgressBarSkins = 'warning' | 'success' | 'danger';
 type ProgressBarSizes = 'xs' | 'sm';
 
 interface OSSProgressBarArgs {
@@ -10,6 +10,7 @@ interface OSSProgressBarArgs {
   displayValue?: boolean;
   skin?: ProgressBarSkins;
   size?: ProgressBarSizes;
+  coloredBackground?: boolean;
 }
 
 export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
@@ -31,6 +32,10 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
 
     if (this.args.skin) {
       classes.push('oss-progress-bar--' + this.args.skin);
+    }
+
+    if (this.args.coloredBackground) {
+      classes.push('oss-progress-bar--colored-background');
     }
 
     return classes.join(' ');

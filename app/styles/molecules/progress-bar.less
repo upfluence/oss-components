@@ -20,11 +20,36 @@
     .oss-progress-bar__inner {
       background-color: var(--color-warning-500);
     }
+
+    &.oss-progress-bar--colored-background {
+      .oss-progress-bar__outer {
+        background-color: var(--color-warning-100);
+      }
+    }
   }
 
   &--success {
     .oss-progress-bar__inner {
       background-color: var(--color-success-500);
+    }
+
+
+    &.oss-progress-bar--colored-background {
+      .oss-progress-bar__outer {
+        background-color: var(--color-success-100);
+      }
+    }
+  }
+
+  &--danger {
+    .oss-progress-bar__inner {
+      background-color: var(--color-error-500);
+    }
+
+    &.oss-progress-bar--colored-background {
+      .oss-progress-bar__outer {
+        background-color: var(--color-error-100);
+      }
     }
   }
 
@@ -54,12 +79,19 @@
     transition: width 0.6s ease;
     background-color: var(--color-primary-500);
   }
+
+  &--colored-background {
+    .oss-progress-bar__outer {
+      background-color: var(--color-primary-100);
+    }
+  }
 }
 
 @keyframes oss-progress-bar-animation {
   from {
     width: 0;
   }
+
   to {
     width: var(--progress-bar-animation-width);
   }
