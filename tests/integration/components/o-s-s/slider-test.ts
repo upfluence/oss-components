@@ -4,9 +4,16 @@ import { fillIn, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import sinon from 'sinon';
 
-function getSliderWidth(element: any): string {
-  const computedStyle = getComputedStyle(element);
-  return computedStyle.getPropertyValue('--range-percentage').trim();
+async function getSliderWidth(element: any): Promise<string | null> {
+  const computedStyle = await getComputedStyle(element);
+  const rangePercentage = computedStyle.getPropertyValue('--range-percentage').trim();
+
+  if (rangePercentage.endsWith('%')) {
+    return rangePercentage;
+  }
+
+  console.warn('The value of --range-percentage is not a percentage:', rangePercentage);
+  return null;
 }
 
 module('Integration | Component | o-s-s/slider', function (hooks) {
@@ -42,12 +49,14 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
   });
 
   test('it renders the slider width to the proper size', async function (assert) {
+    this.displayInputValue = true;
     await render(
       hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} />`
     );
+    await fillIn('.oss-slider--number-input', '10');
     let element = this.element.querySelector('.oss-slider--range');
     assert.dom(element).exists();
-    assert.strictEqual(getSliderWidth(element), '10%');
+    assert.strictEqual(await getSliderWidth(element), '10%');
   });
 
   test('the tooltip has the proper value', async function (assert) {
@@ -96,7 +105,8 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
       assert.dom('.oss-slider--number-input').exists().hasText('');
       let element = this.element.querySelector('.oss-slider--range');
       assert.dom(element).exists();
-      assert.strictEqual(getSliderWidth(element), '0%');
+      console.log(await getSliderWidth(element));
+      assert.strictEqual(await getSliderWidth(element), '0%');
     });
 
     test('it does not render the number input when @displayInputValue is falsy', async function (assert) {

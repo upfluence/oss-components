@@ -74,7 +74,7 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
   updateBackgroundSize(value: number) {
     let percentage = this.getPercentage(value) * 100;
     const customRangeElement = document.querySelector('.oss-slider--range') as HTMLElement;
-    customRangeElement.style.setProperty('--range-percentage', `${percentage}%`);
+    if (customRangeElement) customRangeElement.style.setProperty('--range-percentage', `${percentage}%`);
   }
 
   updateTooltipPosition(value: number) {
