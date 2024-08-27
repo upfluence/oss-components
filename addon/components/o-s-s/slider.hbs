@@ -8,7 +8,7 @@
       min={{this.sliderOptions.min}}
       max={{this.sliderOptions.max}}
       value={{this.currentRangeValue}}
-      step="1"
+      step={{this.sliderOptions.step}}
       {{on "input" this.onRangeChange}}
       {{on "mouseenter" this.showTooltip}}
       {{on "mouseleave" this.removeTooltip}}
@@ -26,6 +26,7 @@
         type="number"
         min={{this.sliderOptions.min}}
         max={{this.sliderOptions.max}}
+        step={{this.sliderOptions.step}}
         value={{this.currentRangeValue}}
         disabled={{@disabled}}
         {{on "input" this.onNumberInput}}

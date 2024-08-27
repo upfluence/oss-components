@@ -11,8 +11,6 @@ async function getSliderWidth(element: any): Promise<string | null> {
   if (rangePercentage.endsWith('%')) {
     return rangePercentage;
   }
-
-  console.warn('The value of --range-percentage is not a percentage:', rangePercentage);
   return null;
 }
 
@@ -21,6 +19,9 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
 
   hooks.beforeEach(function () {
     this.value = 10;
+    this.min = 0;
+    this.max = 100;
+    this.step = 1;
     this.displayInputValue = false;
     this.unit = 'percentage';
   });
@@ -105,7 +106,6 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
       assert.dom('.oss-slider--number-input').exists().hasText('');
       let element = this.element.querySelector('.oss-slider--range');
       assert.dom(element).exists();
-      console.log(await getSliderWidth(element));
       assert.strictEqual(await getSliderWidth(element), '0%');
     });
 
@@ -141,6 +141,34 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
         hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} />`
       );
       assert.dom('.oss-slider--unit-container .fa-percent').exists();
+    });
+  });
+
+  module('slider option args', function () {
+    test('it renders the slider with a minimum value when @min is provided', async function (assert) {
+      const minValue = 10;
+      this.min = minValue;
+      await render(
+        hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{true}} @min={{this.min}} @max={{this.max}} @step={{this.step}} />`
+      );
+
+      await fillIn('.oss-slider--number-input', `${minValue}`);
+
+      assert.strictEqual(this.min, this.value);
+      let element = this.element.querySelector('.oss-slider--range');
+      assert.strictEqual(await getSliderWidth(element), '0%');
+    });
+
+    test('it renders the slider with a maximum value when @min is provided', async function (assert) {
+      const maxValue = 1000;
+      this.max = maxValue;
+      await render(
+        hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{true}} @min={{this.min}} @max={{this.max}} @step={{this.step}} @unit="percentage" />`
+      );
+
+      await fillIn('.oss-slider--number-input', `${maxValue}`);
+      let element = this.element.querySelector('.oss-slider--range');
+      assert.strictEqual(await getSliderWidth(element), `${maxValue / 10}%`);
     });
   });
 });

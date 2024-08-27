@@ -9,13 +9,17 @@ interface SliderComponentArgs {
   displayInputValue?: boolean;
   unit?: 'percentage' | 'number';
   disabled?: boolean;
+  min?: number;
+  max?: number;
+  step?: number;
 }
 
 const HANDLE_WIDTH = 12;
 export default class SliderComponent extends Component<SliderComponentArgs> {
   sliderOptions = {
-    min: 0,
-    max: 100
+    min: this.args.min ?? 0,
+    max: this.args.max ?? 100,
+    step: this.args.step ?? 1
   };
 
   @tracked currentRangeValue: number = this.args.value;
