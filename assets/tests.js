@@ -17408,7 +17408,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
       this.checkedValue = 42;
     });
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -17432,12 +17432,12 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
         }, _callee);
       }));
       return function (_x) {
-        return _ref13.apply(this, arguments);
+        return _ref20.apply(this, arguments);
       };
     }());
     (0, _qunit.module)('@value arg behaviour', function () {
       (0, _qunit.test)('It renders the progress-bar--inner with the correct width when @value is specified', /*#__PURE__*/function () {
-        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+        var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
           var innerBar, inlineStyle;
           return _regeneratorRuntime().wrap(function _callee2$(_context2) {
             while (1) switch (_context2.prev = _context2.next) {
@@ -17465,11 +17465,11 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
           }, _callee2, this);
         }));
         return function (_x2) {
-          return _ref14.apply(this, arguments);
+          return _ref21.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('It renders the progress-bar--inner with the correct width when @value is updated from one value to another', /*#__PURE__*/function () {
-        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           var _inlineStyle, _inlineStyle2;
           var innerBar, inlineStyle;
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
@@ -17501,13 +17501,13 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
           }, _callee3, this);
         }));
         return function (_x3) {
-          return _ref15.apply(this, arguments);
+          return _ref22.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.module)('@size arg behaviour', function () {
       (0, _qunit.test)('if the value is "xs", the progress bar height is the proper height', /*#__PURE__*/function () {
-        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           var innerBar;
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
@@ -17534,11 +17534,11 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
           }, _callee4, this);
         }));
         return function (_x4) {
-          return _ref16.apply(this, arguments);
+          return _ref23.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('if the value is "sm", the progress bar height is the proper height', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           var innerBar;
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
@@ -17565,11 +17565,11 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
           }, _callee5, this);
         }));
         return function (_x5) {
-          return _ref17.apply(this, arguments);
+          return _ref24.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('if the value is "lg", the progress bar height is the proper height', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref25 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           var innerBar;
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
@@ -17596,11 +17596,11 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
           }, _callee6, this);
         }));
         return function (_x6) {
-          return _ref18.apply(this, arguments);
+          return _ref25.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('if the value is unspecified, the progress bar height is the proper height', /*#__PURE__*/function () {
-        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref26 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           var innerBar;
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
@@ -17627,13 +17627,13 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
           }, _callee7, this);
         }));
         return function (_x7) {
-          return _ref19.apply(this, arguments);
+          return _ref26.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.module)('@label arg behaviour', function () {
       (0, _qunit.test)('if the value is specified, the label is displayed', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref27 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -17658,11 +17658,11 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
           }, _callee8);
         }));
         return function (_x8) {
-          return _ref20.apply(this, arguments);
+          return _ref27.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('if the value is not specified, the label is not displayed', /*#__PURE__*/function () {
-        var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref28 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -17686,13 +17686,13 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
           }, _callee9);
         }));
         return function (_x9) {
-          return _ref21.apply(this, arguments);
+          return _ref28.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.module)('@displayValue arg behaviour', function () {
       (0, _qunit.test)('if the value is true, the value is displayed', /*#__PURE__*/function () {
-        var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref29 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
@@ -17717,11 +17717,11 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
           }, _callee10, this);
         }));
         return function (_x10) {
-          return _ref22.apply(this, arguments);
+          return _ref29.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('if the value is false, the value is not displayed', /*#__PURE__*/function () {
-        var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        var _ref30 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
               case 0:
@@ -17745,11 +17745,11 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
           }, _callee11);
         }));
         return function (_x11) {
-          return _ref23.apply(this, arguments);
+          return _ref30.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('if the value is unspecified, the value is not displayed', /*#__PURE__*/function () {
-        var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+        var _ref31 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
           return _regeneratorRuntime().wrap(function _callee12$(_context12) {
             while (1) switch (_context12.prev = _context12.next) {
               case 0:
@@ -17773,7 +17773,207 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
           }, _callee12);
         }));
         return function (_x12) {
-          return _ref24.apply(this, arguments);
+          return _ref31.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('@skin arg behaviour', function () {
+      (0, _qunit.test)('if the value is "warning", the progress bar has the correct class', /*#__PURE__*/function () {
+        var _ref32 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+          return _regeneratorRuntime().wrap(function _callee13$(_context13) {
+            while (1) switch (_context13.prev = _context13.next) {
+              case 0:
+                _context13.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::ProgressBar @value={{this.checkedValue}} @skin="warning" />
+                */
+                {
+                  "id": "YdHWrJsS",
+                  "block": "[[[8,[39,0],null,[[\"@value\",\"@skin\"],[[30,0,[\"checkedValue\"]],\"warning\"]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--warning');
+              case 3:
+              case "end":
+                return _context13.stop();
+            }
+          }, _callee13);
+        }));
+        return function (_x13) {
+          return _ref32.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('if the value is "success", the progress bar has the correct class', /*#__PURE__*/function () {
+        var _ref33 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
+          return _regeneratorRuntime().wrap(function _callee14$(_context14) {
+            while (1) switch (_context14.prev = _context14.next) {
+              case 0:
+                _context14.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::ProgressBar @value={{this.checkedValue}} @skin="success" />
+                */
+                {
+                  "id": "TK64izJq",
+                  "block": "[[[8,[39,0],null,[[\"@value\",\"@skin\"],[[30,0,[\"checkedValue\"]],\"success\"]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--success');
+              case 3:
+              case "end":
+                return _context14.stop();
+            }
+          }, _callee14);
+        }));
+        return function (_x14) {
+          return _ref33.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('if the value is "danger", the progress bar has the correct class', /*#__PURE__*/function () {
+        var _ref34 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+          return _regeneratorRuntime().wrap(function _callee15$(_context15) {
+            while (1) switch (_context15.prev = _context15.next) {
+              case 0:
+                _context15.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::ProgressBar @value={{this.checkedValue}} @skin="danger" />
+                */
+                {
+                  "id": "wXRB769H",
+                  "block": "[[[8,[39,0],null,[[\"@value\",\"@skin\"],[[30,0,[\"checkedValue\"]],\"danger\"]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--danger');
+              case 3:
+              case "end":
+                return _context15.stop();
+            }
+          }, _callee15);
+        }));
+        return function (_x15) {
+          return _ref34.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('if the value is unspecified, the progress bar has the correct class', /*#__PURE__*/function () {
+        var _ref35 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
+          return _regeneratorRuntime().wrap(function _callee16$(_context16) {
+            while (1) switch (_context16.prev = _context16.next) {
+              case 0:
+                _context16.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::ProgressBar @value={{this.checkedValue}} />
+                */
+                {
+                  "id": "KZFzVx3f",
+                  "block": "[[[8,[39,0],null,[[\"@value\"],[[30,0,[\"checkedValue\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.oss-progress-bar').hasClass('oss-progress-bar');
+              case 3:
+              case "end":
+                return _context16.stop();
+            }
+          }, _callee16);
+        }));
+        return function (_x16) {
+          return _ref35.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('@coloredBackground arg behaviour', function () {
+      (0, _qunit.test)('if the value is true, the colored-background class is added', /*#__PURE__*/function () {
+        var _ref36 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
+          return _regeneratorRuntime().wrap(function _callee17$(_context17) {
+            while (1) switch (_context17.prev = _context17.next) {
+              case 0:
+                _context17.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::ProgressBar @value={{this.checkedValue}} @coloredBackground={{true}} />
+                */
+                {
+                  "id": "79RZdO53",
+                  "block": "[[[8,[39,0],null,[[\"@value\",\"@coloredBackground\"],[[30,0,[\"checkedValue\"]],true]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--colored-background');
+              case 3:
+              case "end":
+                return _context17.stop();
+            }
+          }, _callee17);
+        }));
+        return function (_x17) {
+          return _ref36.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('if the value is false, the colored-background class is not added', /*#__PURE__*/function () {
+        var _ref37 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
+          return _regeneratorRuntime().wrap(function _callee18$(_context18) {
+            while (1) switch (_context18.prev = _context18.next) {
+              case 0:
+                _context18.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::ProgressBar @value={{this.checkedValue}} @coloredBackground={{false}} />
+                */
+                {
+                  "id": "d8FBxw4f",
+                  "block": "[[[8,[39,0],null,[[\"@value\",\"@coloredBackground\"],[[30,0,[\"checkedValue\"]],false]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.oss-progress-bar').doesNotHaveClass('oss-progress-bar--colored-background');
+              case 3:
+              case "end":
+                return _context18.stop();
+            }
+          }, _callee18);
+        }));
+        return function (_x18) {
+          return _ref37.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('if the value is unspecified, the colored-background class is not added', /*#__PURE__*/function () {
+        var _ref38 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
+          return _regeneratorRuntime().wrap(function _callee19$(_context19) {
+            while (1) switch (_context19.prev = _context19.next) {
+              case 0:
+                _context19.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::ProgressBar @value={{this.checkedValue}} />
+                */
+                {
+                  "id": "KZFzVx3f",
+                  "block": "[[[8,[39,0],null,[[\"@value\"],[[30,0,[\"checkedValue\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.oss-progress-bar').doesNotHaveClass('oss-progress-bar--colored-background');
+              case 3:
+              case "end":
+                return _context19.stop();
+            }
+          }, _callee19);
+        }));
+        return function (_x19) {
+          return _ref38.apply(this, arguments);
         };
       }());
     });

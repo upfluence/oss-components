@@ -84650,6 +84650,9 @@ define("@upfluence/oss-components/components/o-s-s/progress-bar", ["exports", "@
         if (this.args.skin) {
           classes.push('oss-progress-bar--' + this.args.skin);
         }
+        if (this.args.coloredBackground) {
+          classes.push('oss-progress-bar--colored-background');
+        }
         return classes.join(' ');
       }
     }, {
@@ -84669,7 +84672,7 @@ define("@upfluence/oss-components/components/o-s-s/progress-bar", ["exports", "@
   });
   _exports.default = _exports.Usage = void 0;
   0; //eaimeta@70e063a35619d71f0,"@ember/template-factory"eaimeta@70e063a35619d71f
-  var ProgressBarSkins = ['warning', 'success'];
+  var ProgressBarSkins = ['warning', 'success', 'danger'];
   var ProgressBarSizes = ['xs', 'sm'];
   var _default = _exports.default = {
     title: 'Components/OSS::ProgressBar',
@@ -84743,6 +84746,20 @@ define("@upfluence/oss-components/components/o-s-s/progress-bar", ["exports", "@
         control: {
           type: 'select'
         }
+      },
+      coloredBackground: {
+        description: 'Shows a lighter colored background matching the selected skin.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: undefined
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
       }
     },
     parameters: {
@@ -84756,7 +84773,8 @@ define("@upfluence/oss-components/components/o-s-s/progress-bar", ["exports", "@
   var defaultArgs = {
     value: 30,
     label: 'Hello',
-    displayValue: true
+    displayValue: true,
+    coloredBackground: false
   };
   var BasicUsageTemplate = function BasicUsageTemplate(args) {
     return {
@@ -84769,13 +84787,14 @@ define("@upfluence/oss-components/components/o-s-s/progress-bar", ["exports", "@
               @label={{this.label}}
               @displayValue={{this.displayValue}}
               @skin={{this.skin}}
-              @size={{this.size}}  />
+              @size={{this.size}}
+              @coloredBackground={{this.coloredBackground}} />
           </div>
         
       */
       {
-        "id": "TxTcDIoF",
-        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"background-color: #1c1c1c;width:200px\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@value\",\"@label\",\"@displayValue\",\"@skin\",\"@size\"],[[30,0,[\"value\"]],[30,0,[\"label\"]],[30,0,[\"displayValue\"]],[30,0,[\"skin\"]],[30,0,[\"size\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/progress-bar\"]]",
+        "id": "8SzRS/3Z",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"background-color: #1c1c1c;width:200px\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@value\",\"@label\",\"@displayValue\",\"@skin\",\"@size\",\"@coloredBackground\"],[[30,0,[\"value\"]],[30,0,[\"label\"]],[30,0,[\"displayValue\"]],[30,0,[\"skin\"]],[30,0,[\"size\"]],[30,0,[\"coloredBackground\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/progress-bar\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/progress-bar.stories.js",
         "isStrictMode": false
       }),
@@ -85604,9 +85623,9 @@ define("@upfluence/oss-components/components/o-s-s/side-panel", ["exports", "@em
             <:header>
               Header goes here
             </:header>
-              <:content>
+            <:main>
               Content goes here
-            </:content>
+            </:main>
             <:footer>
               Footer goes here
             </:footer>
@@ -85614,8 +85633,8 @@ define("@upfluence/oss-components/components/o-s-s/side-panel", ["exports", "@em
         
       */
       {
-        "id": "pmKszPBF",
-        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@visible\",\"@backdrop\",\"@size\",\"@onClose\"],[[30,0,[\"visible\"]],[30,0,[\"backdrop\"]],[30,0,[\"size\"]],[30,0,[\"onClose\"]]]],[[\"header\",\"content\",\"footer\"],[[[[1,\"\\n        Header goes here\\n      \"]],[]],[[[1,\"\\n        Content goes here\\n      \"]],[]],[[[1,\"\\n        Footer goes here\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/side-panel\"]]",
+        "id": "XJQyTPdX",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@visible\",\"@backdrop\",\"@size\",\"@onClose\"],[[30,0,[\"visible\"]],[30,0,[\"backdrop\"]],[30,0,[\"size\"]],[30,0,[\"onClose\"]]]],[[\"header\",\"main\",\"footer\"],[[[[1,\"\\n        Header goes here\\n      \"]],[]],[[[1,\"\\n        Content goes here\\n      \"]],[]],[[[1,\"\\n        Footer goes here\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/side-panel\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/side-panel.stories.js",
         "isStrictMode": false
       }),

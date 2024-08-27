@@ -14081,8 +14081,20 @@ a.upf-btn--sm {
 .oss-progress-bar--warning .oss-progress-bar__inner {
   background-color: var(--color-warning-500);
 }
+.oss-progress-bar--warning.oss-progress-bar--colored-background .oss-progress-bar__outer {
+  background-color: var(--color-warning-100);
+}
 .oss-progress-bar--success .oss-progress-bar__inner {
   background-color: var(--color-success-500);
+}
+.oss-progress-bar--success.oss-progress-bar--colored-background .oss-progress-bar__outer {
+  background-color: var(--color-success-100);
+}
+.oss-progress-bar--danger .oss-progress-bar__inner {
+  background-color: var(--color-error-500);
+}
+.oss-progress-bar--danger.oss-progress-bar--colored-background .oss-progress-bar__outer {
+  background-color: var(--color-error-100);
 }
 .oss-progress-bar__label {
   font-weight: 200;
@@ -14106,6 +14118,9 @@ a.upf-btn--sm {
   border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm);
   transition: width 0.6s ease;
   background-color: var(--color-primary-500);
+}
+.oss-progress-bar--colored-background .oss-progress-bar__outer {
+  background-color: var(--color-primary-100);
 }
 @keyframes oss-progress-bar-animation {
   from {
