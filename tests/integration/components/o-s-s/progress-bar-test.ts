@@ -108,4 +108,50 @@ module('Integration | Component | o-s-s/progress-bar', function (hooks) {
       assert.dom('.oss-progress-bar__value').doesNotExist();
     });
   });
+
+  module('@skin arg behaviour', function () {
+    test('if the value is "warning", the progress bar has the correct class', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skin="warning" />`);
+
+      assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--warning');
+    });
+
+    test('if the value is "success", the progress bar has the correct class', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skin="success" />`);
+
+      assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--success');
+    });
+
+    test('if the value is "danger", the progress bar has the correct class', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skin="danger" />`);
+
+      assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--danger');
+    });
+
+    test('if the value is unspecified, the progress bar has the correct class', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} />`);
+
+      assert.dom('.oss-progress-bar').hasClass('oss-progress-bar');
+    });
+  });
+
+  module('@coloredBackground arg behaviour', function () {
+    test('if the value is true, the colored-background class is added', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @coloredBackground={{true}} />`);
+
+      assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--colored-background');
+    });
+
+    test('if the value is false, the colored-background class is not added', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @coloredBackground={{false}} />`);
+
+      assert.dom('.oss-progress-bar').doesNotHaveClass('oss-progress-bar--colored-background');
+    });
+
+    test('if the value is unspecified, the colored-background class is not added', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} />`);
+
+      assert.dom('.oss-progress-bar').doesNotHaveClass('oss-progress-bar--colored-background');
+    });
+  });
 });

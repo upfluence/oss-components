@@ -1,6 +1,6 @@
 import { hbs } from 'ember-cli-htmlbars';
 
-const ProgressBarSkins = ['warning', 'success'];
+const ProgressBarSkins = ['warning', 'success', 'danger'];
 const ProgressBarSizes = ['xs', 'sm'];
 
 export default {
@@ -57,6 +57,16 @@ export default {
       },
       options: ProgressBarSkins,
       control: { type: 'select' }
+    },
+    coloredBackground: {
+      description: 'Shows a lighter colored background matching the selected skin.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: undefined }
+      },
+      control: { type: 'boolean' }
     }
   },
   parameters: {
@@ -71,7 +81,8 @@ export default {
 const defaultArgs = {
   value: 30,
   label: 'Hello',
-  displayValue: true
+  displayValue: true,
+  coloredBackground: false
 };
 
 const BasicUsageTemplate = (args) => ({
@@ -82,7 +93,8 @@ const BasicUsageTemplate = (args) => ({
         @label={{this.label}}
         @displayValue={{this.displayValue}}
         @skin={{this.skin}}
-        @size={{this.size}}  />
+        @size={{this.size}}
+        @coloredBackground={{this.coloredBackground}} />
     </div>
   `,
   context: args
