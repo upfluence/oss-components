@@ -70,9 +70,9 @@ const BasicUsageTemplate = (args) => ({
       <:header>
         Header goes here
       </:header>
-        <:content>
+      <:main>
         Content goes here
-      </:content>
+      </:main>
       <:footer>
         Footer goes here
       </:footer>
