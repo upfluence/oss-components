@@ -87,12 +87,12 @@
     cursor: pointer;
     border: 1px solid var(--color-gray-200);
     border-radius: 50%;
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.06), 0px 1px 2px 0px rgba(0, 0, 0, 0.04);
+    box-shadow: var(--box-shadow-xs);
   }
 
   &--range::-webkit-slider-thumb:hover {
     border: 1px solid var(--color-primary-500);
-    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.06), 0px 1px 2px 0px rgba(0, 0, 0, 0.04);
+    box-shadow: var(--box-shadow-xs);
   }
 
   &--range::-webkit-slider-thumb:focus,
@@ -146,8 +146,6 @@
     border-left: 0;
   }
 }
-
-// KILL LATER
 
 .upf-slider {
   display: flex;
