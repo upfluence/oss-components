@@ -22,7 +22,7 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
     step: this.args.step ?? 1
   };
 
-  @tracked currentRangeValue: number = this.args.value;
+  @tracked currentRangeValue: number = this.args.value ?? 50;
   @tracked displayTooltip: boolean = false;
 
   elementId = `slider-${guidFor(this)}`;
