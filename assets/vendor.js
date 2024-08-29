@@ -15121,7 +15121,7 @@ define("@ember/-internals/glimmer/index", ["exports", "ember-babel", "@ember/pol
             eventNames.push(methodName);
           }
         } // If in a tagless component, assert that no event handlers are defined
-        (true && !(!eventNames.length) && (0, _debug.assert)( // tslint:disable-next-line:max-line-length
+        (true && !(!eventNames.length) && (0, _debug.assert)(// tslint:disable-next-line:max-line-length
         "You can not define `" + eventNames + "` function(s) to handle DOM event in the `" + this + "` tagless component since it doesn't have any DOM element.", !eventNames.length));
       }
       (true && !(this.mouseEnter === undefined) && (0, _debug.deprecate)(this + ": Using `mouseEnter` event handler methods in components has been deprecated.", this.mouseEnter === undefined, {
@@ -23812,7 +23812,7 @@ define("@ember/-internals/metal/index", ["exports", "ember-babel", "@ember/-inte
         descriptorForDecorator(this).enumerable = value;
       }
     }]);
-  }( /*#__PURE__*/(0, _emberBabel.wrapNativeSuper)(Function));
+  }(/*#__PURE__*/(0, _emberBabel.wrapNativeSuper)(Function));
   function computed() {
     for (var _len2 = arguments.length, args = new Array(_len2), _key3 = 0; _key3 < _len2; _key3++) {
       args[_key3] = arguments[_key3];
@@ -23880,7 +23880,7 @@ define("@ember/-internals/metal/index", ["exports", "ember-babel", "@ember/-inte
       }
     };
     return AliasDecoratorImpl;
-  }( /*#__PURE__*/(0, _emberBabel.wrapNativeSuper)(Function));
+  }(/*#__PURE__*/(0, _emberBabel.wrapNativeSuper)(Function));
   var AliasedProperty = /*#__PURE__*/function (_ComputedDescriptor2) {
     function AliasedProperty(altKey) {
       var _this3;
@@ -73355,7 +73355,7 @@ define("@glimmer/component/-private/ember-component-manager", ["exports", "ember
   function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
   function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
   function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
-  function _superPropGet(t, e, r, o) { var p = _get(_getPrototypeOf(1 & o ? t.prototype : t), e, r); return 2 & o ? function (t) { return p.apply(r, t); } : p; }
+  function _superPropGet(t, e, o, r) { var p = _get(_getPrototypeOf(1 & r ? t.prototype : t), e, o); return 2 & r && "function" == typeof p ? function (t) { return p.apply(o, t); } : p; }
   function _get() { return _get = "undefined" != typeof Reflect && Reflect.get ? Reflect.get.bind() : function (e, t, r) { var p = _superPropBase(e, t); if (p) { var n = Object.getOwnPropertyDescriptor(p, t); return n.get ? n.get.call(arguments.length < 3 ? e : r) : n.value; } }, _get.apply(null, arguments); }
   function _superPropBase(t, o) { for (; !{}.hasOwnProperty.call(t, o) && null !== (t = _getPrototypeOf(t));); return t; }
   function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
@@ -83973,7 +83973,7 @@ define("@upfluence/oss-components/components/o-s-s/power-select", ["exports", "@
   function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
   function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
   function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
-  function _superPropGet(t, e, r, o) { var p = _get(_getPrototypeOf(1 & o ? t.prototype : t), e, r); return 2 & o ? function (t) { return p.apply(r, t); } : p; }
+  function _superPropGet(t, e, o, r) { var p = _get(_getPrototypeOf(1 & r ? t.prototype : t), e, o); return 2 & r && "function" == typeof p ? function (t) { return p.apply(o, t); } : p; }
   function _get() { return _get = "undefined" != typeof Reflect && Reflect.get ? Reflect.get.bind() : function (e, t, r) { var p = _superPropBase(e, t); if (p) { var n = Object.getOwnPropertyDescriptor(p, t); return n.get ? n.get.call(arguments.length < 3 ? e : r) : n.value; } }, _get.apply(null, arguments); }
   function _superPropBase(t, o) { for (; !{}.hasOwnProperty.call(t, o) && null !== (t = _getPrototypeOf(t));); return t; }
   function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
@@ -84959,7 +84959,7 @@ define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/
   function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
   function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
   function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
-  function _superPropGet(t, e, r, o) { var p = _get(_getPrototypeOf(1 & o ? t.prototype : t), e, r); return 2 & o ? function (t) { return p.apply(r, t); } : p; }
+  function _superPropGet(t, e, o, r) { var p = _get(_getPrototypeOf(1 & r ? t.prototype : t), e, o); return 2 & r && "function" == typeof p ? function (t) { return p.apply(o, t); } : p; }
   function _get() { return _get = "undefined" != typeof Reflect && Reflect.get ? Reflect.get.bind() : function (e, t, r) { var p = _superPropBase(e, t); if (p) { var n = Object.getOwnPropertyDescriptor(p, t); return n.get ? n.get.call(arguments.length < 3 ? e : r) : n.value; } }, _get.apply(null, arguments); }
   function _superPropBase(t, o) { for (; !{}.hasOwnProperty.call(t, o) && null !== (t = _getPrototypeOf(t));); return t; }
   function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
@@ -86010,6 +86010,358 @@ define("@upfluence/oss-components/components/o-s-s/skeleton", ["exports", "@embe
         "id": "PAoR4ZJ5",
         "block": "[[[1,\"\\n    \"],[10,0],[14,0,\"bg-color-white padding-px-6\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@height\",\"@width\",\"@multiple\",\"@gap\",\"@direction\",\"@randomize\"],[[30,0,[\"height\"]],[30,0,[\"width\"]],[30,0,[\"multiple\"]],[30,0,[\"gap\"]],[30,0,[\"direction\"]],[30,0,[\"randomize\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/skeleton\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/skeleton.stories.js",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+  var Default = _exports.Default = Template.bind({});
+  Default.args = defaultArgs;
+});
+;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+define("@upfluence/oss-components/components/o-s-s/slider", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@glimmer/tracking", "@ember/object/internals", "@ember/template-factory"], function (_exports, _component, _component2, _object, _tracking, _internals, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor, _descriptor2;
+  0; //eaimeta@70e063a35619d71f0,"@glimmer/component",0,"@ember/object",0,"@glimmer/tracking",0,"@ember/object/internals",0,"@ember/template-factory",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(e, i, r, l) { r && Object.defineProperty(e, i, { enumerable: r.enumerable, configurable: r.configurable, writable: r.writable, value: r.initializer ? r.initializer.call(l) : void 0 }); }
+  function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+  function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+  function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+  function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+  function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
+  function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
+  function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+  function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
+  function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
+  function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
+  function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+  function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(i, e, r, n, l) { var a = {}; return Object.keys(n).forEach(function (i) { a[i] = n[i]; }), a.enumerable = !!a.enumerable, a.configurable = !!a.configurable, ("value" in a || a.initializer) && (a.writable = !0), a = r.slice().reverse().reduce(function (r, n) { return n(i, e, r) || r; }, a), l && void 0 !== a.initializer && (a.value = a.initializer ? a.initializer.call(l) : void 0, a.initializer = void 0), void 0 === a.initializer ? (Object.defineProperty(i, e, a), null) : a; }
+  function _initializerWarningHelper(r, e) { throw Error("Decorating class property failed. Please ensure that transform-class-properties is enabled and runs after the decorators transform."); }
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div
+    class="oss-slider--container fx-gap-px-12 fx-row fx-xalign-center {{if @disabled 'oss-slider--container--disabled'}}"
+  >
+    <div class="oss-slider--range-container fx-1">
+      <input
+        class="oss-slider--range"
+        type="range"
+        min={{this.sliderOptions.min}}
+        max={{this.sliderOptions.max}}
+        value={{this.currentRangeValue}}
+        step={{this.sliderOptions.step}}
+        {{on "input" this.onRangeChange}}
+        {{on "mouseenter" this.showTooltip}}
+        {{on "mouseleave" this.removeTooltip}}
+        {{did-insert this.initializeSlider}}
+        disabled={{@disabled}}
+      />
+      <div class="upf-tooltip oss-slider--tooltip {{unless this.displayTooltip 'oss-slider--tooltip--hidden'}}">
+        <span>{{concat this.currentRangeValue (if (eq @unit "percentage") "%")}}</span>
+      </div>
+    </div>
+    {{#if @displayInputValue}}
+      <div class="fx-row fx-xalign-center {{unless @unit 'border-radius-md'}}">
+        <input
+          class="oss-slider--number-input {{unless @unit 'border-radius-md'}}"
+          type="number"
+          min={{this.sliderOptions.min}}
+          max={{this.sliderOptions.max}}
+          step={{this.sliderOptions.step}}
+          value={{this.currentRangeValue}}
+          disabled={{@disabled}}
+          {{on "input" this.onNumberInput}}
+        />
+        {{#if @unit}}
+          <span class="oss-slider--unit-container">
+            {{#if this.unitIcon}}
+              <OSS::Icon @icon={{this.unitIcon}} class="color-gray-400" />
+            {{else}}
+              {{@unit}}
+            {{/if}}
+          </span>
+        {{/if}}
+      </div>
+    {{/if}}
+  </div>
+  */
+  {
+    "id": "UuttP+oB",
+    "block": "[[[10,0],[15,0,[29,[\"oss-slider--container fx-gap-px-12 fx-row fx-xalign-center \",[52,[30,1],\"oss-slider--container--disabled\"]]]],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-slider--range-container fx-1\"],[12],[1,\"\\n    \"],[11,\"input\"],[24,0,\"oss-slider--range\"],[16,\"min\",[30,0,[\"sliderOptions\",\"min\"]]],[16,\"max\",[30,0,[\"sliderOptions\",\"max\"]]],[16,2,[30,0,[\"currentRangeValue\"]]],[16,\"step\",[30,0,[\"sliderOptions\",\"step\"]]],[16,\"disabled\",[30,1]],[24,4,\"range\"],[4,[38,1],[\"input\",[30,0,[\"onRangeChange\"]]],null],[4,[38,1],[\"mouseenter\",[30,0,[\"showTooltip\"]]],null],[4,[38,1],[\"mouseleave\",[30,0,[\"removeTooltip\"]]],null],[4,[38,2],[[30,0,[\"initializeSlider\"]]],null],[12],[13],[1,\"\\n    \"],[10,0],[15,0,[29,[\"upf-tooltip oss-slider--tooltip \",[52,[51,[30,0,[\"displayTooltip\"]]],\"oss-slider--tooltip--hidden\"]]]],[12],[1,\"\\n      \"],[10,1],[12],[1,[28,[35,4],[[30,0,[\"currentRangeValue\"]],[52,[28,[37,5],[[30,2],\"percentage\"],null],\"%\"]],null]],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[51,[30,2]],\"border-radius-md\"]]]],[12],[1,\"\\n      \"],[11,\"input\"],[16,0,[29,[\"oss-slider--number-input \",[52,[51,[30,2]],\"border-radius-md\"]]]],[16,\"min\",[30,0,[\"sliderOptions\",\"min\"]]],[16,\"max\",[30,0,[\"sliderOptions\",\"max\"]]],[16,\"step\",[30,0,[\"sliderOptions\",\"step\"]]],[16,2,[30,0,[\"currentRangeValue\"]]],[16,\"disabled\",[30,1]],[24,4,\"number\"],[4,[38,1],[\"input\",[30,0,[\"onNumberInput\"]]],null],[12],[13],[1,\"\\n\"],[41,[30,2],[[[1,\"        \"],[10,1],[14,0,\"oss-slider--unit-container\"],[12],[1,\"\\n\"],[41,[30,0,[\"unitIcon\"]],[[[1,\"            \"],[8,[39,6],[[24,0,\"color-gray-400\"]],[[\"@icon\"],[[30,0,[\"unitIcon\"]]]],null],[1,\"\\n\"]],[]],[[[1,\"            \"],[1,[30,2]],[1,\"\\n\"]],[]]],[1,\"        \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"@disabled\",\"@unit\",\"@displayInputValue\"],false,[\"if\",\"on\",\"did-insert\",\"unless\",\"concat\",\"eq\",\"o-s-s/icon\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/slider.hbs",
+    "isStrictMode": false
+  });
+  var HANDLE_WIDTH = 12;
+  var SliderComponent = _exports.default = (_class = /*#__PURE__*/function (_Component) {
+    function SliderComponent() {
+      var _this$args$min, _this$args$max, _this$args$step;
+      var _this;
+      _classCallCheck(this, SliderComponent);
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+      _this = _callSuper(this, SliderComponent, [].concat(args));
+      _defineProperty(_this, "sliderOptions", {
+        min: (_this$args$min = _this.args.min) !== null && _this$args$min !== void 0 ? _this$args$min : 0,
+        max: (_this$args$max = _this.args.max) !== null && _this$args$max !== void 0 ? _this$args$max : 100,
+        step: (_this$args$step = _this.args.step) !== null && _this$args$step !== void 0 ? _this$args$step : 1
+      });
+      _initializerDefineProperty(_this, "currentRangeValue", _descriptor, _this);
+      _initializerDefineProperty(_this, "displayTooltip", _descriptor2, _this);
+      _defineProperty(_this, "elementId", "slider-".concat((0, _internals.guidFor)(_this)));
+      return _this;
+    }
+    _inherits(SliderComponent, _Component);
+    return _createClass(SliderComponent, [{
+      key: "unitIcon",
+      get: function get() {
+        if (this.args.unit === 'percentage') {
+          return 'fa-percent';
+        } else if (this.args.unit === 'number') {
+          return 'fa-hashtag';
+        } else {
+          return null;
+        }
+      }
+    }, {
+      key: "onRangeChange",
+      value: function onRangeChange(event) {
+        var value = event.target.valueAsNumber;
+        this.updateValue(value);
+      }
+    }, {
+      key: "showTooltip",
+      value: function showTooltip() {
+        this.displayTooltip = true;
+      }
+    }, {
+      key: "removeTooltip",
+      value: function removeTooltip() {
+        this.displayTooltip = false;
+      }
+    }, {
+      key: "onNumberInput",
+      value: function onNumberInput(event) {
+        var value = event.target.valueAsNumber;
+        if (isNaN(value)) {
+          value = this.sliderOptions.min;
+        }
+        this.updateValue(value);
+      }
+    }, {
+      key: "initializeSlider",
+      value: function initializeSlider() {
+        var _this2 = this;
+        requestAnimationFrame(function () {
+          _this2.updateBackgroundSize(_this2.currentRangeValue);
+          _this2.updateTooltipPosition(_this2.currentRangeValue);
+        });
+      }
+    }, {
+      key: "getPercentage",
+      value: function getPercentage(value) {
+        return (value - this.sliderOptions.min) / (this.sliderOptions.max - this.sliderOptions.min);
+      }
+    }, {
+      key: "updateValue",
+      value: function updateValue(value) {
+        this.currentRangeValue = value;
+        this.updateBackgroundSize(value);
+        this.updateTooltipPosition(value);
+        if (this.args.onChange) {
+          this.args.onChange(value);
+        }
+      }
+    }, {
+      key: "updateBackgroundSize",
+      value: function updateBackgroundSize(value) {
+        var percentage = this.getPercentage(value) * 100;
+        var customRangeElement = document.querySelector('.oss-slider--range');
+        if (customRangeElement) customRangeElement.style.setProperty('--range-percentage', "".concat(percentage, "%"));
+      }
+    }, {
+      key: "updateTooltipPosition",
+      value: function updateTooltipPosition(value) {
+        var tooltip = document.querySelector('.oss-slider--tooltip');
+        var sliderElement = document.querySelector('.oss-slider--range');
+        if (sliderElement && tooltip) {
+          var sliderRect = sliderElement.getBoundingClientRect();
+          var percentage = this.getPercentage(value);
+          var correctedSliderWidth = sliderRect.width - HANDLE_WIDTH;
+          var handleTooltipHorizontalPosition = percentage * correctedSliderWidth;
+          var tooltipWidth = tooltip.offsetWidth;
+          var tooltipLeftPosition = handleTooltipHorizontalPosition - tooltipWidth / 2 + HANDLE_WIDTH / 2;
+          tooltip.style.left = "".concat(tooltipLeftPosition, "px");
+        } else {
+          console.error('Tooltip or Slider elements not found');
+        }
+      }
+    }]);
+  }(_component2.default), _descriptor = _applyDecoratedDescriptor(_class.prototype, "currentRangeValue", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      var _this$args$value;
+      return (_this$args$value = this.args.value) !== null && _this$args$value !== void 0 ? _this$args$value : 50;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "displayTooltip", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "onRangeChange", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onRangeChange"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "showTooltip", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "showTooltip"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "removeTooltip", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "removeTooltip"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onNumberInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onNumberInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "initializeSlider", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initializeSlider"), _class.prototype), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, SliderComponent);
+});
+;define("@upfluence/oss-components/components/o-s-s/slider.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.Default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"@ember/template-factory"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::Slider',
+    component: 'slider',
+    argTypes: {
+      value: {
+        control: 'number',
+        description: 'The value of the slider',
+        defaultValue: 30,
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: 30
+          }
+        }
+      },
+      min: {
+        control: 'number',
+        description: 'The minimal value of the slider',
+        defaultValue: 0,
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: 0
+          }
+        }
+      },
+      max: {
+        control: 'number',
+        description: 'The maximum value of the slider',
+        defaultValue: 100,
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: 100
+          }
+        }
+      },
+      step: {
+        control: 'number',
+        description: 'The used increment value for the slider',
+        defaultValue: 1,
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: 1
+          }
+        }
+      },
+      displayInputValue: {
+        control: 'boolean',
+        description: 'Flag to display input value',
+        defaultValue: false,
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        }
+      },
+      unit: {
+        control: 'text',
+        description: 'The unit of the slider value',
+        defaultValue: '%',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: '%'
+          }
+        }
+      },
+      disabled: {
+        control: 'boolean',
+        description: 'The unit of the slider value',
+        defaultValue: false,
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'Displays a slider.'
+        }
+      }
+    }
+  };
+  var defaultArgs = {
+    value: 30,
+    min: 0,
+    max: 100,
+    step: 1,
+    displayInputValue: false,
+    unit: 'percentage',
+    disabled: false
+  };
+  var Template = function Template(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <OSS::Slider @value={{this.value}}
+                       @min={{this.min}}
+                       @max={{this.max}}
+                       @step={{this.step}}
+                       @displayInputValue={{this.displayInputValue}}
+                       @unit={{this.unit}}
+                       @disabled={{this.disabled}}
+          />
+        
+      */
+      {
+        "id": "vCmLajzb",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@value\",\"@min\",\"@max\",\"@step\",\"@displayInputValue\",\"@unit\",\"@disabled\"],[[30,0,[\"value\"]],[30,0,[\"min\"]],[30,0,[\"max\"]],[30,0,[\"step\"]],[30,0,[\"displayInputValue\"]],[30,0,[\"unit\"]],[30,0,[\"disabled\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/slider\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/slider.stories.js",
         "isStrictMode": false
       }),
       context: args
@@ -97436,7 +97788,7 @@ define("ember-intl/helpers/t", ["exports", "@ember/component/helper", "@ember/se
   function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
   function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
   function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
-  function _superPropGet(t, e, r, o) { var p = _get(_getPrototypeOf(1 & o ? t.prototype : t), e, r); return 2 & o ? function (t) { return p.apply(r, t); } : p; }
+  function _superPropGet(t, e, o, r) { var p = _get(_getPrototypeOf(1 & r ? t.prototype : t), e, o); return 2 & r && "function" == typeof p ? function (t) { return p.apply(o, t); } : p; }
   function _get() { return _get = "undefined" != typeof Reflect && Reflect.get ? Reflect.get.bind() : function (e, t, r) { var p = _superPropBase(e, t); if (p) { var n = Object.getOwnPropertyDescriptor(p, t); return n.get ? n.get.call(arguments.length < 3 ? e : r) : n.value; } }, _get.apply(null, arguments); }
   function _superPropBase(t, o) { for (; !{}.hasOwnProperty.call(t, o) && null !== (t = _getPrototypeOf(t));); return t; }
   function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }

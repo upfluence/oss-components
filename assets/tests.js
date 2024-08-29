@@ -18,7 +18,7 @@ define("dummy/tests/integration/components/modifiers/enable-tooltip-test", ["qun
       return _renderTooltip.apply(this, arguments);
     }
     function _renderTooltip() {
-      _renderTooltip = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14() {
+      _renderTooltip = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee14() {
         return _regeneratorRuntime().wrap(function _callee14$(_context14) {
           while (1) switch (_context14.prev = _context14.next) {
             case 0:
@@ -46,7 +46,7 @@ define("dummy/tests/integration/components/modifiers/enable-tooltip-test", ["qun
       return _renderTooltip.apply(this, arguments);
     }
     (0, _qunit.test)("it doesn't render when the title is empty", /*#__PURE__*/function () {
-      var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -67,7 +67,7 @@ define("dummy/tests/integration/components/modifiers/enable-tooltip-test", ["qun
       };
     }());
     (0, _qunit.test)('it renders the correct title', /*#__PURE__*/function () {
-      var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -88,7 +88,7 @@ define("dummy/tests/integration/components/modifiers/enable-tooltip-test", ["qun
     }());
     (0, _qunit.module)('icon attribute', function () {
       (0, _qunit.test)('it renders the correct icon', /*#__PURE__*/function () {
-        var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
               case 0:
@@ -109,7 +109,7 @@ define("dummy/tests/integration/components/modifiers/enable-tooltip-test", ["qun
         };
       }());
       (0, _qunit.test)("it doesn't render the icon", /*#__PURE__*/function () {
-        var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref5 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -131,7 +131,7 @@ define("dummy/tests/integration/components/modifiers/enable-tooltip-test", ["qun
     });
     (0, _qunit.module)('subtitle attribute', function () {
       (0, _qunit.test)('it renders the correct subtitle', /*#__PURE__*/function () {
-        var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref6 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -152,7 +152,7 @@ define("dummy/tests/integration/components/modifiers/enable-tooltip-test", ["qun
         };
       }());
       (0, _qunit.test)("it doesn't render the subtitle", /*#__PURE__*/function () {
-        var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref7 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -175,7 +175,7 @@ define("dummy/tests/integration/components/modifiers/enable-tooltip-test", ["qun
     (0, _qunit.module)('placement attribute', function () {
       PLACEMENTS.forEach(function (placement) {
         (0, _qunit.test)("it renders the correct placement ".concat(placement), /*#__PURE__*/function () {
-          var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+          var _ref8 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
             return _regeneratorRuntime().wrap(function _callee7$(_context7) {
               while (1) switch (_context7.prev = _context7.next) {
                 case 0:
@@ -199,7 +199,7 @@ define("dummy/tests/integration/components/modifiers/enable-tooltip-test", ["qun
     });
     (0, _qunit.module)('trigger attribute', function () {
       (0, _qunit.test)('it renders when hovering and focusing the element with undefined trigger', /*#__PURE__*/function () {
-        var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -222,7 +222,7 @@ define("dummy/tests/integration/components/modifiers/enable-tooltip-test", ["qun
         };
       }());
       (0, _qunit.test)('it renders when hovering the element', /*#__PURE__*/function () {
-        var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -243,7 +243,7 @@ define("dummy/tests/integration/components/modifiers/enable-tooltip-test", ["qun
         };
       }());
       (0, _qunit.test)('it renders when focusing the element', /*#__PURE__*/function () {
-        var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref11 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
@@ -266,7 +266,7 @@ define("dummy/tests/integration/components/modifiers/enable-tooltip-test", ["qun
     });
     (0, _qunit.module)('html attribute', function () {
       (0, _qunit.test)("it doesn't render the html safe by default", /*#__PURE__*/function () {
-        var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
               case 0:
@@ -286,7 +286,7 @@ define("dummy/tests/integration/components/modifiers/enable-tooltip-test", ["qun
         };
       }());
       (0, _qunit.test)('it renders the html safe when the value is true', /*#__PURE__*/function () {
-        var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+        var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
           return _regeneratorRuntime().wrap(function _callee12$(_context12) {
             while (1) switch (_context12.prev = _context12.next) {
               case 0:
@@ -307,7 +307,7 @@ define("dummy/tests/integration/components/modifiers/enable-tooltip-test", ["qun
         };
       }());
       (0, _qunit.test)("it doesn't render the html safe when the value is false", /*#__PURE__*/function () {
-        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+        var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
           return _regeneratorRuntime().wrap(function _callee13$(_context13) {
             while (1) switch (_context13.prev = _context13.next) {
               case 0:
@@ -341,7 +341,7 @@ define("dummy/tests/integration/components/modifiers/on-bottom-reached-test", ["
   (0, _qunit.module)('Integration | Component | modifiers/on-bottom-reached', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it triggers the callback when the bottom of the div is reached', /*#__PURE__*/function () {
-      var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -417,7 +417,7 @@ define("dummy/tests/integration/components/modifiers/scroll-shadow-test", ["quni
         this.itemNumbers = itemNumbers;
       });
       (0, _qunit.test)('it should have scroll shadow class', /*#__PURE__*/function () {
-        var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+        var _ref6 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
           return _regeneratorRuntime().wrap(function _callee$(_context) {
             while (1) switch (_context.prev = _context.next) {
               case 0:
@@ -459,7 +459,7 @@ define("dummy/tests/integration/components/modifiers/scroll-shadow-test", ["quni
       }());
       (0, _qunit.module)('when using color', function () {
         (0, _qunit.test)('with default color', /*#__PURE__*/function () {
-          var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+          var _ref7 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
             return _regeneratorRuntime().wrap(function _callee2$(_context2) {
               while (1) switch (_context2.prev = _context2.next) {
                 case 0:
@@ -500,7 +500,7 @@ define("dummy/tests/integration/components/modifiers/scroll-shadow-test", ["quni
           };
         }());
         (0, _qunit.test)('with field color', /*#__PURE__*/function () {
-          var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+          var _ref8 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
             return _regeneratorRuntime().wrap(function _callee3$(_context3) {
               while (1) switch (_context3.prev = _context3.next) {
                 case 0:
@@ -547,7 +547,7 @@ define("dummy/tests/integration/components/modifiers/scroll-shadow-test", ["quni
         this.itemNumbers = itemNumbers;
       });
       (0, _qunit.test)('it should not have scroll shadow classes', /*#__PURE__*/function () {
-        var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -589,7 +589,7 @@ define("dummy/tests/integration/components/modifiers/scroll-shadow-test", ["quni
         this.itemNumbers = itemNumbers;
       });
       (0, _qunit.test)('it should call ResizeObserver', /*#__PURE__*/function () {
-        var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           var resizeObserverStub, container;
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
@@ -660,7 +660,7 @@ define("dummy/tests/integration/components/o-s-s/access-panel-test", ["qunit", "
       return _renderComponent.apply(this, arguments);
     }
     function _renderComponent() {
-      _renderComponent = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10() {
+      _renderComponent = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10() {
         return _regeneratorRuntime().wrap(function _callee10$(_context10) {
           while (1) switch (_context10.prev = _context10.next) {
             case 0:
@@ -693,7 +693,7 @@ define("dummy/tests/integration/components/o-s-s/access-panel-test", ["qunit", "
       return _renderComponent.apply(this, arguments);
     }
     (0, _qunit.test)('it renders the right empty state when no records are found and there is no ongoing search', /*#__PURE__*/function () {
-      var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -714,7 +714,7 @@ define("dummy/tests/integration/components/o-s-s/access-panel-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('the initial loading state is correctly displayed', /*#__PURE__*/function () {
-      var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -740,7 +740,7 @@ define("dummy/tests/integration/components/o-s-s/access-panel-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('the initial loading state is correctly displayed', /*#__PURE__*/function () {
-      var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -766,7 +766,7 @@ define("dummy/tests/integration/components/o-s-s/access-panel-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('The header named block is correctly filled', /*#__PURE__*/function () {
-      var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref5 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
@@ -786,7 +786,7 @@ define("dummy/tests/integration/components/o-s-s/access-panel-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('The columns named block is correctly filled', /*#__PURE__*/function () {
-      var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+      var _ref6 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
@@ -806,7 +806,7 @@ define("dummy/tests/integration/components/o-s-s/access-panel-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('The records are correctly displayed using the row named block', /*#__PURE__*/function () {
-      var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+      var _ref7 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
         return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
@@ -830,7 +830,7 @@ define("dummy/tests/integration/components/o-s-s/access-panel-test", ["qunit", "
     }());
     (0, _qunit.module)('Search', function () {
       (0, _qunit.test)('it calls the onSearch arg when a keyword is typed', /*#__PURE__*/function () {
-        var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref8 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
@@ -857,7 +857,7 @@ define("dummy/tests/integration/components/o-s-s/access-panel-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('it is autofocus', /*#__PURE__*/function () {
-        var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -876,7 +876,7 @@ define("dummy/tests/integration/components/o-s-s/access-panel-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('it renders the right empty state when no records are found and there is an ongoing search', /*#__PURE__*/function () {
-        var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           var _this = this;
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
@@ -928,7 +928,7 @@ define("dummy/tests/integration/components/o-s-s/alert-test", ["qunit", "ember-q
   (0, _qunit.module)('Integration | Component | o-s-s/alert', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -958,7 +958,7 @@ define("dummy/tests/integration/components/o-s-s/alert-test", ["qunit", "ember-q
       };
     }());
     (0, _qunit.test)('it sets info as default if no skin is specified', /*#__PURE__*/function () {
-      var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -987,7 +987,7 @@ define("dummy/tests/integration/components/o-s-s/alert-test", ["qunit", "ember-q
     }());
     ALERT_SKINS.forEach(function (skin) {
       (0, _qunit.test)("it renders ".concat(skin, " skin correctly"), /*#__PURE__*/function () {
-        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
               case 0:
@@ -1021,7 +1021,7 @@ define("dummy/tests/integration/components/o-s-s/alert-test", ["qunit", "ember-q
     });
     (0, _qunit.module)('@plain parameter', function () {
       (0, _qunit.test)('if true, the background-color is grey', /*#__PURE__*/function () {
-        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -1049,7 +1049,7 @@ define("dummy/tests/integration/components/o-s-s/alert-test", ["qunit", "ember-q
         };
       }());
       (0, _qunit.test)('if false, the background-color is white', /*#__PURE__*/function () {
-        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -1077,7 +1077,7 @@ define("dummy/tests/integration/components/o-s-s/alert-test", ["qunit", "ember-q
         };
       }());
       (0, _qunit.test)('if undefined, the background-color is grey', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -1107,7 +1107,7 @@ define("dummy/tests/integration/components/o-s-s/alert-test", ["qunit", "ember-q
     });
     (0, _qunit.module)('@closable parameter', function () {
       (0, _qunit.test)('if true, display the cross icon which delete alert when you click on it', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
@@ -1141,7 +1141,7 @@ define("dummy/tests/integration/components/o-s-s/alert-test", ["qunit", "ember-q
         };
       }());
       (0, _qunit.test)('if false, the cross icon is not displayed', /*#__PURE__*/function () {
-        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -1170,7 +1170,7 @@ define("dummy/tests/integration/components/o-s-s/alert-test", ["qunit", "ember-q
         };
       }());
       (0, _qunit.test)('if undefined, the cross icon is not displayed', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -1199,7 +1199,7 @@ define("dummy/tests/integration/components/o-s-s/alert-test", ["qunit", "ember-q
         };
       }());
       (0, _qunit.test)('clicking the cross icon also calls the onClose argument provided', /*#__PURE__*/function () {
-        var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
@@ -1233,7 +1233,7 @@ define("dummy/tests/integration/components/o-s-s/alert-test", ["qunit", "ember-q
       }());
     });
     (0, _qunit.test)('it renders the extra-content named block', /*#__PURE__*/function () {
-      var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+      var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
         return _regeneratorRuntime().wrap(function _callee11$(_context11) {
           while (1) switch (_context11.prev = _context11.next) {
             case 0:
@@ -1277,7 +1277,7 @@ define("dummy/tests/integration/components/o-s-s/anchor-test", ["qunit", "ember-
       this.transitionToStub = _sinon.default.stub(this.router, 'transitionTo');
     });
     (0, _qunit.test)('When link is registered in router it render as a anchor element', /*#__PURE__*/function () {
-      var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -1305,7 +1305,7 @@ define("dummy/tests/integration/components/o-s-s/anchor-test", ["qunit", "ember-
       };
     }());
     (0, _qunit.test)('When link is registered in router it render as a linkTo helper', /*#__PURE__*/function () {
-      var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -1350,7 +1350,7 @@ define("dummy/tests/integration/components/o-s-s/array-input-test", ["qunit", "e
       return _fillInputAndValidate.apply(this, arguments);
     }
     function _fillInputAndValidate() {
-      _fillInputAndValidate = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13() {
+      _fillInputAndValidate = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee13() {
         var keyword,
           input,
           _args13 = arguments;
@@ -1375,7 +1375,7 @@ define("dummy/tests/integration/components/o-s-s/array-input-test", ["qunit", "e
       return _fillInputAndValidate.apply(this, arguments);
     }
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -1407,7 +1407,7 @@ define("dummy/tests/integration/components/o-s-s/array-input-test", ["qunit", "e
         this.loadedValues = ['value1', 'value2'];
       });
       (0, _qunit.test)('Passing @values parameter displays the items', /*#__PURE__*/function () {
-        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+        var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
           var domTags;
           return _regeneratorRuntime().wrap(function _callee2$(_context2) {
             while (1) switch (_context2.prev = _context2.next) {
@@ -1446,7 +1446,7 @@ define("dummy/tests/integration/components/o-s-s/array-input-test", ["qunit", "e
         this.onChange = onChange;
       });
       (0, _qunit.test)('it is triggered on keyword addition', /*#__PURE__*/function () {
-        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
               case 0:
@@ -1477,7 +1477,7 @@ define("dummy/tests/integration/components/o-s-s/array-input-test", ["qunit", "e
         };
       }());
       (0, _qunit.test)('it is triggered on keyword deletion', /*#__PURE__*/function () {
-        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -1513,7 +1513,7 @@ define("dummy/tests/integration/components/o-s-s/array-input-test", ["qunit", "e
         };
       }());
       (0, _qunit.test)('it is triggered on keyword edition', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -1556,7 +1556,7 @@ define("dummy/tests/integration/components/o-s-s/array-input-test", ["qunit", "e
         this.validator = validator;
       });
       (0, _qunit.test)('it is triggered on keyword addition', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -1587,7 +1587,7 @@ define("dummy/tests/integration/components/o-s-s/array-input-test", ["qunit", "e
         };
       }());
       (0, _qunit.test)('WHEN the validator is truthy, the value is added as a tag', /*#__PURE__*/function () {
-        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
@@ -1622,7 +1622,7 @@ define("dummy/tests/integration/components/o-s-s/array-input-test", ["qunit", "e
         };
       }());
       (0, _qunit.test)('WHEN the validator is falsy, the value is not added', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -1658,7 +1658,7 @@ define("dummy/tests/integration/components/o-s-s/array-input-test", ["qunit", "e
     });
     (0, _qunit.module)('WHEN the user presses on the Backspace key', function () {
       (0, _qunit.test)('If there are no tags, nothing happens', /*#__PURE__*/function () {
-        var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -1693,7 +1693,7 @@ define("dummy/tests/integration/components/o-s-s/array-input-test", ["qunit", "e
         };
       }());
       (0, _qunit.test)('If there are tags, the last one is removed and is passed to edit mode', /*#__PURE__*/function () {
-        var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           var domTags;
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
@@ -1735,7 +1735,7 @@ define("dummy/tests/integration/components/o-s-s/array-input-test", ["qunit", "e
     });
     (0, _qunit.module)('Keyboard validation', function () {
       (0, _qunit.test)('entries are validated when one of the extra keyboard trigger is hit', /*#__PURE__*/function () {
-        var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        var _ref23 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           var input;
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
@@ -1773,7 +1773,7 @@ define("dummy/tests/integration/components/o-s-s/array-input-test", ["qunit", "e
       }());
     });
     (0, _qunit.test)('Clicking on the remove icon suppresses the target entry', /*#__PURE__*/function () {
-      var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+      var _ref24 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
         var domTagsRemove;
         return _regeneratorRuntime().wrap(function _callee12$(_context12) {
           while (1) switch (_context12.prev = _context12.next) {
@@ -1823,7 +1823,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/base-test", ["qunit",
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _testSupport.setupIntl)(hooks);
     (0, _qunit.test)('It renders', /*#__PURE__*/function () {
-      var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -1851,7 +1851,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/base-test", ["qunit",
       };
     }());
     (0, _qunit.test)('The splattributes argument is set on the component', /*#__PURE__*/function () {
-      var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref11 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -1879,7 +1879,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/base-test", ["qunit",
       };
     }());
     (0, _qunit.test)('It displays the label named-block when passed', /*#__PURE__*/function () {
-      var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -1910,7 +1910,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/base-test", ["qunit",
     }());
     (0, _qunit.module)('Value handling', function () {
       (0, _qunit.test)('It displays the value when passed', /*#__PURE__*/function () {
-        var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -1938,7 +1938,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/base-test", ["qunit",
         };
       }());
       (0, _qunit.test)('It displays the value named-block when passed', /*#__PURE__*/function () {
-        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -1975,7 +1975,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/base-test", ["qunit",
     });
     (0, _qunit.module)('Copy button behaviour', function () {
       (0, _qunit.test)('The text is copyable by default if a value is passed', /*#__PURE__*/function () {
-        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -2006,7 +2006,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/base-test", ["qunit",
         };
       }());
       (0, _qunit.test)('The text is not copyable if the value is blank', /*#__PURE__*/function () {
-        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
@@ -2037,7 +2037,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/base-test", ["qunit",
         };
       }());
       (0, _qunit.test)('The text is not copyable if the value is undefined', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -2068,7 +2068,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/base-test", ["qunit",
         };
       }());
       (0, _qunit.test)('The text is not copyable if the @copyable parameter is set to false', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -2113,7 +2113,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/country-test", ["quni
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _testSupport.setupIntl)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref6 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -2142,7 +2142,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/country-test", ["quni
     }());
     (0, _qunit.module)('If the @countryCode matches a dictionnary entry', function () {
       (0, _qunit.test)('The flag icon is displayed', /*#__PURE__*/function () {
-        var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+        var _ref7 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
           return _regeneratorRuntime().wrap(function _callee2$(_context2) {
             while (1) switch (_context2.prev = _context2.next) {
               case 0:
@@ -2170,7 +2170,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/country-test", ["quni
         };
       }());
       (0, _qunit.test)('The country name is displayed', /*#__PURE__*/function () {
-        var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref8 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
               case 0:
@@ -2200,7 +2200,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/country-test", ["quni
     });
     (0, _qunit.module)('If the @countryCode does not match a dictionnary entry', function () {
       (0, _qunit.test)('The flag icon is not displayed', /*#__PURE__*/function () {
-        var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -2228,7 +2228,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/country-test", ["quni
         };
       }());
       (0, _qunit.test)('The empty state is displayed', /*#__PURE__*/function () {
-        var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -2270,7 +2270,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/phone-number-test", [
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _testSupport.setupIntl)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref7 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -2298,7 +2298,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/phone-number-test", [
       };
     }());
     (0, _qunit.test)('If the number is passed, it is displayed', /*#__PURE__*/function () {
-      var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref8 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -2326,7 +2326,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/phone-number-test", [
       };
     }());
     (0, _qunit.test)('If the number is undefined, a dash is displayed', /*#__PURE__*/function () {
-      var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -2354,7 +2354,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/phone-number-test", [
       };
     }());
     (0, _qunit.test)('If the prefix is passed with a number, they are both displayed', /*#__PURE__*/function () {
-      var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
@@ -2382,7 +2382,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/phone-number-test", [
       };
     }());
     (0, _qunit.test)('If the countryCode matches one in the dictionary, a flag is displayed', /*#__PURE__*/function () {
-      var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+      var _ref11 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
@@ -2411,7 +2411,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/phone-number-test", [
       };
     }());
     (0, _qunit.test)("If the countryCode doesn't match one in the dictionary, no flag is displayed", /*#__PURE__*/function () {
-      var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+      var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
         return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
@@ -2455,7 +2455,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/rating-test", ["qunit
       this.testRating = 3;
     });
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref5 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -2483,7 +2483,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/rating-test", ["qunit
       };
     }());
     (0, _qunit.test)('it displays a dash when no @rating is provided', /*#__PURE__*/function () {
-      var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref6 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -2511,7 +2511,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/rating-test", ["qunit
       };
     }());
     (0, _qunit.test)('it displays the proper number of stars when @rating is provided', /*#__PURE__*/function () {
-      var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref7 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -2541,7 +2541,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/rating-test", ["qunit
       };
     }());
     (0, _qunit.test)('it displays a label when @label is provided', /*#__PURE__*/function () {
-      var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref8 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
@@ -2585,7 +2585,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/removable-text-test",
       this.onRemove = _sinon.default.stub().resolves();
     });
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -2613,7 +2613,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/removable-text-test",
       };
     }());
     (0, _qunit.test)('It displays the @label', /*#__PURE__*/function () {
-      var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -2641,7 +2641,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/removable-text-test",
       };
     }());
     (0, _qunit.test)('If the value is provided, it is displayed', /*#__PURE__*/function () {
-      var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref11 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -2669,7 +2669,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/removable-text-test",
       };
     }());
     (0, _qunit.test)('If the value is not provided, it displays a dash', /*#__PURE__*/function () {
-      var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
@@ -2698,7 +2698,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/removable-text-test",
     }());
     (0, _qunit.module)('Remove tooltip', function () {
       (0, _qunit.test)('If the @removeTooltip paramater is passed, the string contents are used as tooltip for the lock icon', /*#__PURE__*/function () {
-        var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -2730,7 +2730,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/removable-text-test",
         };
       }());
       (0, _qunit.test)('If the @removeTooltip paramater is not passed, the default text is used', /*#__PURE__*/function () {
-        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -2763,7 +2763,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/removable-text-test",
       }());
     });
     (0, _qunit.test)('Clicking on the trash icon calls the @onRemove method', /*#__PURE__*/function () {
-      var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+      var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
         return _regeneratorRuntime().wrap(function _callee7$(_context7) {
           while (1) switch (_context7.prev = _context7.next) {
             case 0:
@@ -2797,7 +2797,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/removable-text-test",
       };
     }());
     (0, _qunit.test)('Clicking on the trash icon displays a loader', /*#__PURE__*/function () {
-      var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+      var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
         return _regeneratorRuntime().wrap(function _callee8$(_context8) {
           while (1) switch (_context8.prev = _context8.next) {
             case 0:
@@ -2848,7 +2848,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/revealable-email-test
       this.onRevealStub = _sinon.default.stub().resolves();
     });
     (0, _qunit.test)('It renders', /*#__PURE__*/function () {
-      var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref8 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -2877,7 +2877,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/revealable-email-test
     }());
     (0, _qunit.module)('Label tooltip', function () {
       (0, _qunit.test)('If the @tooltip paramater is passed, the info icon is displayed', /*#__PURE__*/function () {
-        var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+        var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
           return _regeneratorRuntime().wrap(function _callee2$(_context2) {
             while (1) switch (_context2.prev = _context2.next) {
               case 0:
@@ -2906,7 +2906,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/revealable-email-test
         };
       }());
       (0, _qunit.test)('If the @tooltip paramater is not passed, the info icon is not visible', /*#__PURE__*/function () {
-        var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
               case 0:
@@ -2937,7 +2937,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/revealable-email-test
     });
     (0, _qunit.module)('Lock tooltip', function () {
       (0, _qunit.test)('If the @lockTooltip paramater is passed, the string contents are used as tooltip for the lock icon', /*#__PURE__*/function () {
-        var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref11 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -2969,7 +2969,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/revealable-email-test
         };
       }());
       (0, _qunit.test)('If the @lockTooltip paramater is not passed, the default text is used', /*#__PURE__*/function () {
-        var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -3002,7 +3002,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/revealable-email-test
       }());
     });
     (0, _qunit.test)('Clicking on the lock icon calls the @onRevealEmail method', /*#__PURE__*/function () {
-      var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+      var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
         return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
@@ -3036,7 +3036,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/revealable-email-test
       };
     }());
     (0, _qunit.test)('Clicking on the lock icon displays a loader', /*#__PURE__*/function () {
-      var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+      var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
         return _regeneratorRuntime().wrap(function _callee7$(_context7) {
           while (1) switch (_context7.prev = _context7.next) {
             case 0:
@@ -3083,7 +3083,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/tag-array-test", ["qu
   (0, _qunit.module)('Integration | Component | o-s-s/attribute/tag-array', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref5 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -3111,7 +3111,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/tag-array-test", ["qu
       };
     }());
     (0, _qunit.test)('it displays the @label parameter', /*#__PURE__*/function () {
-      var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref6 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -3139,7 +3139,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/tag-array-test", ["qu
       };
     }());
     (0, _qunit.test)('If @tags are passed to the component, they are displayed', /*#__PURE__*/function () {
-      var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref7 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         var allUpfTags;
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
@@ -3171,7 +3171,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/tag-array-test", ["qu
       };
     }());
     (0, _qunit.test)('If @tags are not passed to the component, a dash is displayed', /*#__PURE__*/function () {
-      var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref8 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
@@ -3214,7 +3214,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/text-test", ["qunit",
     (0, _qunit.module)('Default behavior', function () {
       (0, _qunit.module)('Render conditions', function () {
         (0, _qunit.test)('It renders', /*#__PURE__*/function () {
-          var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+          var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
             return _regeneratorRuntime().wrap(function _callee$(_context) {
               while (1) switch (_context.prev = _context.next) {
                 case 0:
@@ -3244,7 +3244,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/text-test", ["qunit",
           };
         }());
         (0, _qunit.test)('It renders when the @value is undefined', /*#__PURE__*/function () {
-          var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+          var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
             return _regeneratorRuntime().wrap(function _callee2$(_context2) {
               while (1) switch (_context2.prev = _context2.next) {
                 case 0:
@@ -3273,7 +3273,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/text-test", ["qunit",
           };
         }());
         (0, _qunit.test)('It renders with a tooltip when specified', /*#__PURE__*/function () {
-          var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+          var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
             return _regeneratorRuntime().wrap(function _callee3$(_context3) {
               while (1) switch (_context3.prev = _context3.next) {
                 case 0:
@@ -3303,7 +3303,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/text-test", ["qunit",
           };
         }());
         (0, _qunit.test)('It renders a dash as value when no value is specified', /*#__PURE__*/function () {
-          var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+          var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
             return _regeneratorRuntime().wrap(function _callee4$(_context4) {
               while (1) switch (_context4.prev = _context4.next) {
                 case 0:
@@ -3332,7 +3332,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/text-test", ["qunit",
           };
         }());
         (0, _qunit.test)('it renders a dash as value when @value is empty', /*#__PURE__*/function () {
-          var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+          var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
             return _regeneratorRuntime().wrap(function _callee5$(_context5) {
               while (1) switch (_context5.prev = _context5.next) {
                 case 0:
@@ -3366,7 +3366,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/text-test", ["qunit",
           this.textForCopy = 'copied value';
         });
         (0, _qunit.test)('The copy icon is not visible before hovering', /*#__PURE__*/function () {
-          var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+          var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
             return _regeneratorRuntime().wrap(function _callee6$(_context6) {
               while (1) switch (_context6.prev = _context6.next) {
                 case 0:
@@ -3394,7 +3394,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/text-test", ["qunit",
           };
         }());
         (0, _qunit.test)('The text is copyable by default', /*#__PURE__*/function () {
-          var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+          var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
             return _regeneratorRuntime().wrap(function _callee7$(_context7) {
               while (1) switch (_context7.prev = _context7.next) {
                 case 0:
@@ -3425,7 +3425,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/text-test", ["qunit",
           };
         }());
         (0, _qunit.test)('The text is copyable if the @copyable argument is truthy', /*#__PURE__*/function () {
-          var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+          var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
             return _regeneratorRuntime().wrap(function _callee8$(_context8) {
               while (1) switch (_context8.prev = _context8.next) {
                 case 0:
@@ -3456,7 +3456,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/text-test", ["qunit",
           };
         }());
         (0, _qunit.test)('The text is not copyable (no copy button) if the argument is falsy', /*#__PURE__*/function () {
-          var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+          var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
             return _regeneratorRuntime().wrap(function _callee9$(_context9) {
               while (1) switch (_context9.prev = _context9.next) {
                 case 0:
@@ -3487,7 +3487,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/text-test", ["qunit",
           };
         }());
         (0, _qunit.test)("The text is not copyable if text value isn't specified", /*#__PURE__*/function () {
-          var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+          var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
             return _regeneratorRuntime().wrap(function _callee10$(_context10) {
               while (1) switch (_context10.prev = _context10.next) {
                 case 0:
@@ -3518,7 +3518,7 @@ define("dummy/tests/integration/components/o-s-s/attribute/text-test", ["qunit",
           };
         }());
         (0, _qunit.test)('The text is not copyable if text value is specified but the value is empty', /*#__PURE__*/function () {
-          var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+          var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
             return _regeneratorRuntime().wrap(function _callee11$(_context11) {
               while (1) switch (_context11.prev = _context11.next) {
                 case 0:
@@ -3572,7 +3572,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
       this.onEdit = _sinon.default.stub();
     });
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -3600,7 +3600,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
       };
     }());
     (0, _qunit.test)('it renders the icon', /*#__PURE__*/function () {
-      var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -3628,7 +3628,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
       };
     }());
     (0, _qunit.test)('it renders the title', /*#__PURE__*/function () {
-      var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref11 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -3656,7 +3656,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
       };
     }());
     (0, _qunit.test)('it renders the contextual-action named block', /*#__PURE__*/function () {
-      var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
@@ -3691,7 +3691,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
     }());
     (0, _qunit.module)('for view mode', function () {
       (0, _qunit.test)('it renders the view-mode named block', /*#__PURE__*/function () {
-        var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -3711,7 +3711,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
         };
       }());
       (0, _qunit.test)('it renders edition button', /*#__PURE__*/function () {
-        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -3731,7 +3731,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
       }());
       (0, _qunit.module)('when clicking on edit button', function () {
         (0, _qunit.test)('it changes to edition mode container', /*#__PURE__*/function () {
-          var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+          var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
             return _regeneratorRuntime().wrap(function _callee7$(_context7) {
               while (1) switch (_context7.prev = _context7.next) {
                 case 0:
@@ -3754,7 +3754,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
           };
         }());
         (0, _qunit.test)('it calls the @onEdit', /*#__PURE__*/function () {
-          var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+          var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
             return _regeneratorRuntime().wrap(function _callee8$(_context8) {
               while (1) switch (_context8.prev = _context8.next) {
                 case 0:
@@ -3780,7 +3780,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
         return _renderComponent.apply(this, arguments);
       }
       function _renderComponent() {
-        _renderComponent = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9() {
+        _renderComponent = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9() {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -3812,7 +3812,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
     });
     (0, _qunit.module)('for edition mode', function () {
       (0, _qunit.test)('it renders the view-mode named block', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
@@ -3832,7 +3832,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
         };
       }());
       (0, _qunit.test)("it doesn't renders edition button", /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
               case 0:
@@ -3851,7 +3851,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
         };
       }());
       (0, _qunit.test)("it doesn't renders contextual-action named block", /*#__PURE__*/function () {
-        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+        var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
           return _regeneratorRuntime().wrap(function _callee12$(_context12) {
             while (1) switch (_context12.prev = _context12.next) {
               case 0:
@@ -3870,7 +3870,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
         };
       }());
       (0, _qunit.test)('it renders the save and cancel button', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+        var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
           return _regeneratorRuntime().wrap(function _callee13$(_context13) {
             while (1) switch (_context13.prev = _context13.next) {
               case 0:
@@ -3891,7 +3891,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
       }());
       (0, _qunit.module)('when clicking on cancel button', function () {
         (0, _qunit.test)('it switches to view mode', /*#__PURE__*/function () {
-          var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
+          var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
             return _regeneratorRuntime().wrap(function _callee14$(_context14) {
               while (1) switch (_context14.prev = _context14.next) {
                 case 0:
@@ -3914,7 +3914,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
           };
         }());
         (0, _qunit.test)('it calls the @onCancel', /*#__PURE__*/function () {
-          var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+          var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
             return _regeneratorRuntime().wrap(function _callee15$(_context15) {
               while (1) switch (_context15.prev = _context15.next) {
                 case 0:
@@ -3938,7 +3938,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
       });
       (0, _qunit.module)('when clicking on save button', function () {
         (0, _qunit.test)('it switches to view mode', /*#__PURE__*/function () {
-          var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
+          var _ref23 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
             return _regeneratorRuntime().wrap(function _callee16$(_context16) {
               while (1) switch (_context16.prev = _context16.next) {
                 case 0:
@@ -3962,7 +3962,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
           };
         }());
         (0, _qunit.test)("it doesn't switch to the view mode", /*#__PURE__*/function () {
-          var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
+          var _ref24 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
             return _regeneratorRuntime().wrap(function _callee17$(_context17) {
               while (1) switch (_context17.prev = _context17.next) {
                 case 0:
@@ -3986,7 +3986,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
           };
         }());
         (0, _qunit.test)('it render a loading state', /*#__PURE__*/function () {
-          var _ref25 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
+          var _ref25 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
             return _regeneratorRuntime().wrap(function _callee18$(_context18) {
               while (1) switch (_context18.prev = _context18.next) {
                 case 0:
@@ -4009,7 +4009,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
           };
         }());
         (0, _qunit.test)('it calls the @onSave', /*#__PURE__*/function () {
-          var _ref26 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
+          var _ref26 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
             return _regeneratorRuntime().wrap(function _callee19$(_context19) {
               while (1) switch (_context19.prev = _context19.next) {
                 case 0:
@@ -4034,7 +4034,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
       });
       (0, _qunit.module)('when @isSaveDisabled', function () {
         (0, _qunit.test)('is undefined, the save button is not disabled', /*#__PURE__*/function () {
-          var _ref27 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
+          var _ref27 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
             return _regeneratorRuntime().wrap(function _callee20$(_context20) {
               while (1) switch (_context20.prev = _context20.next) {
                 case 0:
@@ -4053,7 +4053,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
           };
         }());
         (0, _qunit.test)('is true, the save button is disabled', /*#__PURE__*/function () {
-          var _ref28 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee21(assert) {
+          var _ref28 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee21(assert) {
             return _regeneratorRuntime().wrap(function _callee21$(_context21) {
               while (1) switch (_context21.prev = _context21.next) {
                 case 0:
@@ -4073,7 +4073,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
           };
         }());
         (0, _qunit.test)('is false, the save button is not disabled', /*#__PURE__*/function () {
-          var _ref29 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee22(assert) {
+          var _ref29 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee22(assert) {
             return _regeneratorRuntime().wrap(function _callee22$(_context22) {
               while (1) switch (_context22.prev = _context22.next) {
                 case 0:
@@ -4097,7 +4097,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
         return _renderComponentAndClickOnEdit.apply(this, arguments);
       }
       function _renderComponentAndClickOnEdit() {
-        _renderComponentAndClickOnEdit = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee23() {
+        _renderComponentAndClickOnEdit = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee23() {
           return _regeneratorRuntime().wrap(function _callee23$(_context23) {
             while (1) switch (_context23.prev = _context23.next) {
               case 0:
@@ -4133,7 +4133,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
       }
     });
     (0, _qunit.test)('it throws an error if @title is missing', /*#__PURE__*/function () {
-      var _ref30 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee24(assert) {
+      var _ref30 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee24(assert) {
         return _regeneratorRuntime().wrap(function _callee24$(_context24) {
           while (1) switch (_context24.prev = _context24.next) {
             case 0:
@@ -4162,7 +4162,7 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
       };
     }());
     (0, _qunit.test)('it throws an error if @onSave is missing', /*#__PURE__*/function () {
-      var _ref31 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee25(assert) {
+      var _ref31 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee25(assert) {
         return _regeneratorRuntime().wrap(function _callee25$(_context25) {
           while (1) switch (_context25.prev = _context25.next) {
             case 0:
@@ -4212,7 +4212,7 @@ define("dummy/tests/integration/components/o-s-s/avatar-group-test", ["qunit", "
       }];
     });
     (0, _qunit.test)('it displays the right number of avatars', /*#__PURE__*/function () {
-      var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref7 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -4244,7 +4244,7 @@ define("dummy/tests/integration/components/o-s-s/avatar-group-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('if no @size arg is provided, it should default to "md"', /*#__PURE__*/function () {
-      var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref8 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -4273,7 +4273,7 @@ define("dummy/tests/integration/components/o-s-s/avatar-group-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('if a @size arg is provided, it should be used for all displayed avatars', /*#__PURE__*/function () {
-      var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -4302,7 +4302,7 @@ define("dummy/tests/integration/components/o-s-s/avatar-group-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('if a @max arg is provided, we should display maximum that number of avatars and display remaining ones using a placeholder', /*#__PURE__*/function () {
-      var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
@@ -4335,7 +4335,7 @@ define("dummy/tests/integration/components/o-s-s/avatar-group-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('if a @loading arg is provided w/ no @loadingCount arg, we should display 3 avatars in loading state', /*#__PURE__*/function () {
-      var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+      var _ref11 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
@@ -4368,7 +4368,7 @@ define("dummy/tests/integration/components/o-s-s/avatar-group-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('if a @loading arg is provided w/ @loadingCount arg, we should display {{@loadingCount}} avatars in loading state', /*#__PURE__*/function () {
-      var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+      var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
         return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
@@ -4412,7 +4412,7 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.module)('Default behavior', function () {
       (0, _qunit.test)('it displays the image when it is provided', /*#__PURE__*/function () {
-        var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+        var _ref11 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
           return _regeneratorRuntime().wrap(function _callee$(_context) {
             while (1) switch (_context.prev = _context.next) {
               case 0:
@@ -4442,7 +4442,7 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('it displays the initials when they are provided', /*#__PURE__*/function () {
-        var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+        var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
           return _regeneratorRuntime().wrap(function _callee2$(_context2) {
             while (1) switch (_context2.prev = _context2.next) {
               case 0:
@@ -4472,7 +4472,7 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('it displays the default image when initials and image are not provided', /*#__PURE__*/function () {
-        var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
               case 0:
@@ -4502,7 +4502,7 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('it displays the image when image and initials are provided', /*#__PURE__*/function () {
-        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -4534,7 +4534,7 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
     });
     (0, _qunit.module)('Sizes', function () {
       (0, _qunit.test)('it sets the right default class when size is not provided', /*#__PURE__*/function () {
-        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -4564,7 +4564,7 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
       }());
       Object.keys(_avatar.SizeDefinition).forEach(function (size) {
         (0, _qunit.test)("it sets the right class when using a supported size: ".concat(size), /*#__PURE__*/function () {
-          var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+          var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
             return _regeneratorRuntime().wrap(function _callee6$(_context6) {
               while (1) switch (_context6.prev = _context6.next) {
                 case 0:
@@ -4596,7 +4596,7 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
       });
     });
     (0, _qunit.test)('When @loading is thruthy, the right class is applied on the component', /*#__PURE__*/function () {
-      var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+      var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
         return _regeneratorRuntime().wrap(function _callee7$(_context7) {
           while (1) switch (_context7.prev = _context7.next) {
             case 0:
@@ -4625,7 +4625,7 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
     }());
     (0, _qunit.module)('Error behavior', function () {
       (0, _qunit.test)('it throws an error if the wrong size argument is passed', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -4654,7 +4654,7 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('it displays the initials when both initials and image are provided and the image fails to load', /*#__PURE__*/function () {
-        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -4687,7 +4687,7 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('it displays the placeholder image when the image provided in parameters fails to load', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
@@ -4738,7 +4738,7 @@ define("dummy/tests/integration/components/o-s-s/badge-test", ["qunit", "ember-q
     (0, _testSupport.setupIntl)(hooks);
     (0, _qunit.module)('sizes', function () {
       (0, _qunit.test)('it sets the right class when usng a supported size', /*#__PURE__*/function () {
-        var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+        var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
           return _regeneratorRuntime().wrap(function _callee$(_context) {
             while (1) switch (_context.prev = _context.next) {
               case 0:
@@ -4767,7 +4767,7 @@ define("dummy/tests/integration/components/o-s-s/badge-test", ["qunit", "ember-q
         };
       }());
       (0, _qunit.test)('it defaults to md size if none is passed', /*#__PURE__*/function () {
-        var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+        var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
           return _regeneratorRuntime().wrap(function _callee2$(_context2) {
             while (1) switch (_context2.prev = _context2.next) {
               case 0:
@@ -4799,7 +4799,7 @@ define("dummy/tests/integration/components/o-s-s/badge-test", ["qunit", "ember-q
     (0, _qunit.module)('skins', function () {
       Object.keys(_badge.SkinDefinition).forEach(function (skin) {
         (0, _qunit.test)("it sets the right class when using a supported skin: ".concat(skin), /*#__PURE__*/function () {
-          var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+          var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
             return _regeneratorRuntime().wrap(function _callee3$(_context3) {
               while (1) switch (_context3.prev = _context3.next) {
                 case 0:
@@ -4830,7 +4830,7 @@ define("dummy/tests/integration/components/o-s-s/badge-test", ["qunit", "ember-q
         }());
       });
       (0, _qunit.test)('it adds the plain class when passed', /*#__PURE__*/function () {
-        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -4860,7 +4860,7 @@ define("dummy/tests/integration/components/o-s-s/badge-test", ["qunit", "ember-q
     });
     (0, _qunit.module)('content args', function () {
       (0, _qunit.test)('it displays the right icon when using the @icon arg', /*#__PURE__*/function () {
-        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -4889,7 +4889,7 @@ define("dummy/tests/integration/components/o-s-s/badge-test", ["qunit", "ember-q
         };
       }());
       (0, _qunit.test)('it displays the right text when using the @text arg', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -4919,7 +4919,7 @@ define("dummy/tests/integration/components/o-s-s/badge-test", ["qunit", "ember-q
         };
       }());
       (0, _qunit.test)('it displays the right image when using the @image arg', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
@@ -4951,7 +4951,7 @@ define("dummy/tests/integration/components/o-s-s/badge-test", ["qunit", "ember-q
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it throws an error when an unsupported skin is passed', /*#__PURE__*/function () {
-        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -4980,7 +4980,7 @@ define("dummy/tests/integration/components/o-s-s/badge-test", ["qunit", "ember-q
         };
       }());
       (0, _qunit.test)('it throws an error when an unsupported size is passed', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -5009,7 +5009,7 @@ define("dummy/tests/integration/components/o-s-s/badge-test", ["qunit", "ember-q
         };
       }());
       (0, _qunit.test)('it throws an error if no argument is passed', /*#__PURE__*/function () {
-        var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
@@ -5038,7 +5038,7 @@ define("dummy/tests/integration/components/o-s-s/badge-test", ["qunit", "ember-q
         };
       }());
       (0, _qunit.test)('it throws an error if more than one content argument is passed', /*#__PURE__*/function () {
-        var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
               case 0:
@@ -5080,7 +5080,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
   (0, _qunit.module)('Integration | Component | o-s-s/banner', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref23 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -5108,7 +5108,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
       };
     }());
     (0, _qunit.test)('passing a font-awesome icon in the @icon parameter displays the icon in a rounded badge', /*#__PURE__*/function () {
-      var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref24 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -5136,7 +5136,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
       };
     }());
     (0, _qunit.test)('passing an image url in the @image parameter displays the image in a rounded badge', /*#__PURE__*/function () {
-      var _ref25 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref25 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -5166,7 +5166,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
       };
     }());
     (0, _qunit.test)('passing a title in the @title parameter displays the title in the component', /*#__PURE__*/function () {
-      var _ref26 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref26 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
@@ -5194,7 +5194,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
       };
     }());
     (0, _qunit.test)('passing a title-suffix named block uses it in a addition to the @title arg ', /*#__PURE__*/function () {
-      var _ref27 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+      var _ref27 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
@@ -5224,7 +5224,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
       };
     }());
     (0, _qunit.test)('passing a title-suffix named block without a @title arg does not display it at all', /*#__PURE__*/function () {
-      var _ref28 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+      var _ref28 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
         return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
@@ -5253,7 +5253,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
       };
     }());
     (0, _qunit.test)('passing a subtitle in the @subtitle parameter displays the title in the component', /*#__PURE__*/function () {
-      var _ref29 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+      var _ref29 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
         return _regeneratorRuntime().wrap(function _callee7$(_context7) {
           while (1) switch (_context7.prev = _context7.next) {
             case 0:
@@ -5282,7 +5282,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
     }());
     (0, _qunit.module)('@plain parameter', function () {
       (0, _qunit.test)('when the value is truthy, it sets gray-50 background', /*#__PURE__*/function () {
-        var _ref30 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref30 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -5310,7 +5310,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('when the value is falsy, it sets white background', /*#__PURE__*/function () {
-        var _ref31 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref31 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -5338,7 +5338,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('when the value is undefined, it sets white background', /*#__PURE__*/function () {
-        var _ref32 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref32 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
@@ -5368,7 +5368,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
     });
     (0, _qunit.module)('@selected parameter', function () {
       (0, _qunit.test)('when the value is truthy, it adds upf-banner--selected class', /*#__PURE__*/function () {
-        var _ref33 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        var _ref33 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
               case 0:
@@ -5396,7 +5396,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)("when the value is falsy, it doesn't add upf-banner--selected class", /*#__PURE__*/function () {
-        var _ref34 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+        var _ref34 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
           return _regeneratorRuntime().wrap(function _callee12$(_context12) {
             while (1) switch (_context12.prev = _context12.next) {
               case 0:
@@ -5424,7 +5424,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)("when the value is undefined, it doesn't add upf-banner--selected class", /*#__PURE__*/function () {
-        var _ref35 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+        var _ref35 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
           return _regeneratorRuntime().wrap(function _callee13$(_context13) {
             while (1) switch (_context13.prev = _context13.next) {
               case 0:
@@ -5454,7 +5454,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
     });
     (0, _qunit.module)('@disabled parameter', function () {
       (0, _qunit.test)('when the value is truthy, it adds upf-banner--disabled class', /*#__PURE__*/function () {
-        var _ref36 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
+        var _ref36 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
           return _regeneratorRuntime().wrap(function _callee14$(_context14) {
             while (1) switch (_context14.prev = _context14.next) {
               case 0:
@@ -5482,7 +5482,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)("when the value is falsy, it doesn't add upf-banner--disabled class", /*#__PURE__*/function () {
-        var _ref37 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+        var _ref37 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
           return _regeneratorRuntime().wrap(function _callee15$(_context15) {
             while (1) switch (_context15.prev = _context15.next) {
               case 0:
@@ -5510,7 +5510,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)("when the value is undefined, it doesn't add upf-banner--disabled class", /*#__PURE__*/function () {
-        var _ref38 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
+        var _ref38 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
           return _regeneratorRuntime().wrap(function _callee16$(_context16) {
             while (1) switch (_context16.prev = _context16.next) {
               case 0:
@@ -5539,7 +5539,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
       }());
     });
     (0, _qunit.test)('passing a custom-icon named block renders inside the component', /*#__PURE__*/function () {
-      var _ref39 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
+      var _ref39 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
         return _regeneratorRuntime().wrap(function _callee17$(_context17) {
           while (1) switch (_context17.prev = _context17.next) {
             case 0:
@@ -5573,7 +5573,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
       };
     }());
     (0, _qunit.test)('passing an actions named block renders inside the component', /*#__PURE__*/function () {
-      var _ref40 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
+      var _ref40 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
         return _regeneratorRuntime().wrap(function _callee18$(_context18) {
           while (1) switch (_context18.prev = _context18.next) {
             case 0:
@@ -5608,7 +5608,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
     }());
     (0, _qunit.module)('@size parameter', function () {
       (0, _qunit.test)("when the value is 'sm', it adds the upf-banner--size-sm class", /*#__PURE__*/function () {
-        var _ref41 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
+        var _ref41 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
           return _regeneratorRuntime().wrap(function _callee19$(_context19) {
             while (1) switch (_context19.prev = _context19.next) {
               case 0:
@@ -5636,7 +5636,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)("when the value is 'lg', it adds the upf-banner--size-lg class", /*#__PURE__*/function () {
-        var _ref42 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
+        var _ref42 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
           return _regeneratorRuntime().wrap(function _callee20$(_context20) {
             while (1) switch (_context20.prev = _context20.next) {
               case 0:
@@ -5664,7 +5664,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)("when the value is anything but 'sm', it doesn't add size class", /*#__PURE__*/function () {
-        var _ref43 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee21(assert) {
+        var _ref43 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee21(assert) {
           return _regeneratorRuntime().wrap(function _callee21$(_context21) {
             while (1) switch (_context21.prev = _context21.next) {
               case 0:
@@ -5693,7 +5693,7 @@ define("dummy/tests/integration/components/o-s-s/banner-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)("when the value is undefined, it doesn't add the size class", /*#__PURE__*/function () {
-        var _ref44 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee22(assert) {
+        var _ref44 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee22(assert) {
           return _regeneratorRuntime().wrap(function _callee22$(_context22) {
             while (1) switch (_context22.prev = _context22.next) {
               case 0:
@@ -5735,7 +5735,7 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
   (0, _qunit.module)('Integration | Component | o-s-s/button-dropdown', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('the icon is not displayed if not provided', /*#__PURE__*/function () {
-      var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -5763,7 +5763,7 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
       };
     }());
     (0, _qunit.test)('the label is not displayed if not provided', /*#__PURE__*/function () {
-      var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -5791,7 +5791,7 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
       };
     }());
     (0, _qunit.test)('the icon and label are displayed correctly when provided', /*#__PURE__*/function () {
-      var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -5824,7 +5824,7 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
     }());
     (0, _qunit.module)('If @mainAction is undefined', function () {
       (0, _qunit.test)('Clicking on the button opens the dropdown', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -5865,7 +5865,7 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
         };
       }());
       (0, _qunit.test)("Hasn't inner border separator", /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -5904,7 +5904,7 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
         this.mainAction = _sinon.default.stub();
       });
       (0, _qunit.test)('Clicking on the button should not open the dropdown', /*#__PURE__*/function () {
-        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -5937,7 +5937,7 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
         };
       }());
       (0, _qunit.test)('Clicking on the left part should trigger mainAction', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
@@ -5970,7 +5970,7 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
         };
       }());
       (0, _qunit.test)('Clicking on the caret container part opens the dropdown', /*#__PURE__*/function () {
-        var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -6007,7 +6007,7 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
         };
       }());
       (0, _qunit.test)('Has inner border separator', /*#__PURE__*/function () {
-        var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -6042,7 +6042,7 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
         this.mainAction = _sinon.default.stub();
       });
       (0, _qunit.test)('Clicking on an item should close the dropdown', /*#__PURE__*/function () {
-        var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref23 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
@@ -6080,7 +6080,7 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
         };
       }());
       (0, _qunit.test)('Clicking on an item with stopPropagation should keep the dropdown opened', /*#__PURE__*/function () {
-        var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        var _ref24 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
               case 0:
@@ -6123,7 +6123,7 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it throws an error if no icon or label args is provided', /*#__PURE__*/function () {
-        var _ref25 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+        var _ref25 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
           return _regeneratorRuntime().wrap(function _callee12$(_context12) {
             while (1) switch (_context12.prev = _context12.next) {
               case 0:
@@ -6152,7 +6152,7 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
         };
       }());
       (0, _qunit.test)('it throws an error if mainAction exists and is not a function', /*#__PURE__*/function () {
-        var _ref26 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+        var _ref26 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
           return _regeneratorRuntime().wrap(function _callee13$(_context13) {
             while (1) switch (_context13.prev = _context13.next) {
               case 0:
@@ -6194,7 +6194,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
   (0, _qunit.module)('Integration | Component | o-s-s/button', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders the icon when present', /*#__PURE__*/function () {
-      var _ref28 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref28 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -6222,7 +6222,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
       };
     }());
     (0, _qunit.test)('it renders the iconUrl when present', /*#__PURE__*/function () {
-      var _ref29 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref29 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -6250,7 +6250,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
       };
     }());
     (0, _qunit.test)('it renders the icon and label when present', /*#__PURE__*/function () {
-      var _ref30 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref30 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -6280,7 +6280,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
       };
     }());
     (0, _qunit.test)('it renders the iconUrl and label when present', /*#__PURE__*/function () {
-      var _ref31 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref31 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
@@ -6310,7 +6310,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
       };
     }());
     (0, _qunit.test)('when icon and iconUrl are present, it only renders the icon', /*#__PURE__*/function () {
-      var _ref32 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+      var _ref32 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
@@ -6339,7 +6339,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
       };
     }());
     (0, _qunit.test)('it renders the default button', /*#__PURE__*/function () {
-      var _ref33 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+      var _ref33 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
         return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
@@ -6372,7 +6372,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
     }());
     (0, _qunit.module)('it render with the correct skin', function () {
       (0, _qunit.test)('when using an unknown skin, it is set to default', /*#__PURE__*/function () {
-        var _ref34 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref34 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
@@ -6400,7 +6400,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('when using primary skin', /*#__PURE__*/function () {
-        var _ref35 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref35 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -6428,7 +6428,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('when using secondary skin', /*#__PURE__*/function () {
-        var _ref36 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref36 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -6456,7 +6456,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('when using destructive skin', /*#__PURE__*/function () {
-        var _ref37 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref37 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
@@ -6484,7 +6484,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('when using alert skin', /*#__PURE__*/function () {
-        var _ref38 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        var _ref38 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
               case 0:
@@ -6512,7 +6512,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('when using success skin', /*#__PURE__*/function () {
-        var _ref39 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+        var _ref39 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
           return _regeneratorRuntime().wrap(function _callee12$(_context12) {
             while (1) switch (_context12.prev = _context12.next) {
               case 0:
@@ -6540,7 +6540,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('when using social-instagram skin', /*#__PURE__*/function () {
-        var _ref40 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+        var _ref40 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
           return _regeneratorRuntime().wrap(function _callee13$(_context13) {
             while (1) switch (_context13.prev = _context13.next) {
               case 0:
@@ -6568,7 +6568,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('when using social-facebook skin', /*#__PURE__*/function () {
-        var _ref41 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
+        var _ref41 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
           return _regeneratorRuntime().wrap(function _callee14$(_context14) {
             while (1) switch (_context14.prev = _context14.next) {
               case 0:
@@ -6596,7 +6596,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('when using social-youtube skin', /*#__PURE__*/function () {
-        var _ref42 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+        var _ref42 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
           return _regeneratorRuntime().wrap(function _callee15$(_context15) {
             while (1) switch (_context15.prev = _context15.next) {
               case 0:
@@ -6626,7 +6626,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
     });
     (0, _qunit.module)('it render with the right size', function () {
       (0, _qunit.test)('when using xs', /*#__PURE__*/function () {
-        var _ref43 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
+        var _ref43 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
           return _regeneratorRuntime().wrap(function _callee16$(_context16) {
             while (1) switch (_context16.prev = _context16.next) {
               case 0:
@@ -6654,7 +6654,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('when using sm', /*#__PURE__*/function () {
-        var _ref44 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
+        var _ref44 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
           return _regeneratorRuntime().wrap(function _callee17$(_context17) {
             while (1) switch (_context17.prev = _context17.next) {
               case 0:
@@ -6682,7 +6682,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('when using md', /*#__PURE__*/function () {
-        var _ref45 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
+        var _ref45 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
           return _regeneratorRuntime().wrap(function _callee18$(_context18) {
             while (1) switch (_context18.prev = _context18.next) {
               case 0:
@@ -6710,7 +6710,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('when using lg', /*#__PURE__*/function () {
-        var _ref46 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
+        var _ref46 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
           return _regeneratorRuntime().wrap(function _callee19$(_context19) {
             while (1) switch (_context19.prev = _context19.next) {
               case 0:
@@ -6740,7 +6740,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
     });
     (0, _qunit.module)('it renders with loading state', function () {
       (0, _qunit.test)('when using default loading', /*#__PURE__*/function () {
-        var _ref47 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
+        var _ref47 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
           return _regeneratorRuntime().wrap(function _callee20$(_context20) {
             while (1) switch (_context20.prev = _context20.next) {
               case 0:
@@ -6772,7 +6772,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
     });
     (0, _qunit.module)('it renders a square button', function () {
       (0, _qunit.test)('when setting the square parameter to true', /*#__PURE__*/function () {
-        var _ref48 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee21(assert) {
+        var _ref48 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee21(assert) {
           return _regeneratorRuntime().wrap(function _callee21$(_context21) {
             while (1) switch (_context21.prev = _context21.next) {
               case 0:
@@ -6802,7 +6802,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
     });
     (0, _qunit.module)('it renders with the right theme', function () {
       (0, _qunit.test)('it adds the right class for usage on dark theme', /*#__PURE__*/function () {
-        var _ref49 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee22(assert) {
+        var _ref49 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee22(assert) {
           return _regeneratorRuntime().wrap(function _callee22$(_context22) {
             while (1) switch (_context22.prev = _context22.next) {
               case 0:
@@ -6835,7 +6835,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
         this.intlService = this.owner.lookup('service:intl');
       });
       (0, _qunit.test)('when clicking, it trigger the countdown', /*#__PURE__*/function () {
-        var _ref50 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee23(assert) {
+        var _ref50 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee23(assert) {
           return _regeneratorRuntime().wrap(function _callee23$(_context23) {
             while (1) switch (_context23.prev = _context23.next) {
               case 0:
@@ -6869,7 +6869,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('when clicking, it executes callback at the end of the countdown', /*#__PURE__*/function () {
-        var _ref51 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee24(assert) {
+        var _ref51 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee24(assert) {
           return _regeneratorRuntime().wrap(function _callee24$(_context24) {
             while (1) switch (_context24.prev = _context24.next) {
               case 0:
@@ -6909,7 +6909,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('when clicking again, it cancels the countdown', /*#__PURE__*/function () {
-        var _ref52 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee25(assert) {
+        var _ref52 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee25(assert) {
           return _regeneratorRuntime().wrap(function _callee25$(_context25) {
             while (1) switch (_context25.prev = _context25.next) {
               case 0:
@@ -6946,7 +6946,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it fails if @label, @icon and @iconUrl are missing', /*#__PURE__*/function () {
-        var _ref53 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee26(assert) {
+        var _ref53 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee26(assert) {
           return _regeneratorRuntime().wrap(function _callee26$(_context26) {
             while (1) switch (_context26.prev = _context26.next) {
               case 0:
@@ -6975,7 +6975,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('it fails if callback missing for @countDown argument', /*#__PURE__*/function () {
-        var _ref54 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee27(assert) {
+        var _ref54 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee27(assert) {
           return _regeneratorRuntime().wrap(function _callee27$(_context27) {
             while (1) switch (_context27.prev = _context27.next) {
               case 0:
@@ -7020,7 +7020,7 @@ define("dummy/tests/integration/components/o-s-s/checkbox-test", ["qunit", "embe
       this.onChange = function () {};
     });
     (0, _qunit.test)('it renders correctly', /*#__PURE__*/function () {
-      var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref11 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -7049,7 +7049,7 @@ define("dummy/tests/integration/components/o-s-s/checkbox-test", ["qunit", "embe
       };
     }());
     (0, _qunit.test)('the size arg is handled correctly', /*#__PURE__*/function () {
-      var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -7077,7 +7077,7 @@ define("dummy/tests/integration/components/o-s-s/checkbox-test", ["qunit", "embe
       };
     }());
     (0, _qunit.test)('it is correctly updated when the checked argument changes', /*#__PURE__*/function () {
-      var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -7107,7 +7107,7 @@ define("dummy/tests/integration/components/o-s-s/checkbox-test", ["qunit", "embe
       };
     }());
     (0, _qunit.test)('disabled state is handled correctly', /*#__PURE__*/function () {
-      var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         var onChangeSpy;
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
@@ -7141,7 +7141,7 @@ define("dummy/tests/integration/components/o-s-s/checkbox-test", ["qunit", "embe
       };
     }());
     (0, _qunit.test)('the onChange hooks is called with the new value', /*#__PURE__*/function () {
-      var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+      var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
@@ -7177,7 +7177,7 @@ define("dummy/tests/integration/components/o-s-s/checkbox-test", ["qunit", "embe
     }());
     (0, _qunit.module)('@partial argument', function () {
       (0, _qunit.test)('it is correctly updated when the partial argument changes', /*#__PURE__*/function () {
-        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -7210,7 +7210,7 @@ define("dummy/tests/integration/components/o-s-s/checkbox-test", ["qunit", "embe
         };
       }());
       (0, _qunit.test)('if checked is truthy and partial is truthy, the checkbox is partially checked', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
@@ -7240,7 +7240,7 @@ define("dummy/tests/integration/components/o-s-s/checkbox-test", ["qunit", "embe
         };
       }());
       (0, _qunit.test)('if checked is truthy and partial is falsy, the checkbox is totally checked', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -7272,7 +7272,7 @@ define("dummy/tests/integration/components/o-s-s/checkbox-test", ["qunit", "embe
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it throws an error if checked argument is missing', /*#__PURE__*/function () {
-        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -7301,7 +7301,7 @@ define("dummy/tests/integration/components/o-s-s/checkbox-test", ["qunit", "embe
         };
       }());
       (0, _qunit.test)('it throws an error if checked argument is missing', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
@@ -7348,7 +7348,7 @@ define("dummy/tests/integration/components/o-s-s/chip-test", ["qunit", "ember-qu
     });
     (0, _qunit.module)('Default behavior', function () {
       (0, _qunit.test)('basic render', /*#__PURE__*/function () {
-        var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+        var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
           return _regeneratorRuntime().wrap(function _callee$(_context) {
             while (1) switch (_context.prev = _context.next) {
               case 0:
@@ -7380,7 +7380,7 @@ define("dummy/tests/integration/components/o-s-s/chip-test", ["qunit", "ember-qu
         };
       }());
       (0, _qunit.test)('it renders the proper label when @label is passed', /*#__PURE__*/function () {
-        var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+        var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
           return _regeneratorRuntime().wrap(function _callee2$(_context2) {
             while (1) switch (_context2.prev = _context2.next) {
               case 0:
@@ -7411,7 +7411,7 @@ define("dummy/tests/integration/components/o-s-s/chip-test", ["qunit", "ember-qu
         };
       }());
       (0, _qunit.test)('The component is disabled if the @disabled parameter is truthy', /*#__PURE__*/function () {
-        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
               case 0:
@@ -7444,7 +7444,7 @@ define("dummy/tests/integration/components/o-s-s/chip-test", ["qunit", "ember-qu
     });
     (0, _qunit.module)('@maxDisplayWidth', function () {
       (0, _qunit.test)('The component adds an ellispsis if the label is wider than @maxDisplayWidth', /*#__PURE__*/function () {
-        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -7480,7 +7480,7 @@ define("dummy/tests/integration/components/o-s-s/chip-test", ["qunit", "ember-qu
         };
       }());
       (0, _qunit.test)('When the param is not set', /*#__PURE__*/function () {
-        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -7517,7 +7517,7 @@ define("dummy/tests/integration/components/o-s-s/chip-test", ["qunit", "ember-qu
         this.onRemove = _sinon.default.stub();
       });
       (0, _qunit.test)('When clicking on the close icon, the component triggers the @onRemove method', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -7548,7 +7548,7 @@ define("dummy/tests/integration/components/o-s-s/chip-test", ["qunit", "ember-qu
         };
       }());
       (0, _qunit.test)('When @disabled is true and clicking on the close icon, the component no triggers the @onRemove method', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
@@ -7581,7 +7581,7 @@ define("dummy/tests/integration/components/o-s-s/chip-test", ["qunit", "ember-qu
     });
     Object.keys(_chip.SkinDefinition).forEach(function (skin) {
       (0, _qunit.test)("it sets the right class when using a supported skin: ".concat(skin), /*#__PURE__*/function () {
-        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -7613,7 +7613,7 @@ define("dummy/tests/integration/components/o-s-s/chip-test", ["qunit", "ember-qu
     });
     (0, _qunit.module)('prefix named-block', function () {
       (0, _qunit.test)('When the prefix named-block is passed, it renders the block', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -7644,7 +7644,7 @@ define("dummy/tests/integration/components/o-s-s/chip-test", ["qunit", "ember-qu
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('It throws an error if @onRemove is not passed', /*#__PURE__*/function () {
-        var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
@@ -7673,7 +7673,7 @@ define("dummy/tests/integration/components/o-s-s/chip-test", ["qunit", "ember-qu
         };
       }());
       (0, _qunit.test)('It throws an error if @label is not passed', /*#__PURE__*/function () {
-        var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
               case 0:
@@ -7719,7 +7719,7 @@ define("dummy/tests/integration/components/o-s-s/code-block-test", ["qunit", "em
       this.codeBlock = codeExample;
     });
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -7747,7 +7747,7 @@ define("dummy/tests/integration/components/o-s-s/code-block-test", ["qunit", "em
       };
     }());
     (0, _qunit.test)('The code content is displayed properly', /*#__PURE__*/function () {
-      var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         var codeLines;
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
@@ -7780,7 +7780,7 @@ define("dummy/tests/integration/components/o-s-s/code-block-test", ["qunit", "em
       };
     }());
     (0, _qunit.test)('If copyable parameter is set, the copy button is visible', /*#__PURE__*/function () {
-      var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -7808,7 +7808,7 @@ define("dummy/tests/integration/components/o-s-s/code-block-test", ["qunit", "em
       };
     }());
     (0, _qunit.test)('Clicking on the copy button copies the code into the users clipboard', /*#__PURE__*/function () {
-      var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         var stubClipboard;
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
@@ -7842,7 +7842,7 @@ define("dummy/tests/integration/components/o-s-s/code-block-test", ["qunit", "em
       };
     }());
     (0, _qunit.test)('if onCopyMessage is set, it shows a toast message when the code is copied', /*#__PURE__*/function () {
-      var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+      var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
         var stubToast;
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
@@ -7877,7 +7877,7 @@ define("dummy/tests/integration/components/o-s-s/code-block-test", ["qunit", "em
       };
     }());
     (0, _qunit.test)('If scrollable parameter is set, the component is scrollable', /*#__PURE__*/function () {
-      var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+      var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
         return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
@@ -7905,7 +7905,7 @@ define("dummy/tests/integration/components/o-s-s/code-block-test", ["qunit", "em
       };
     }());
     (0, _qunit.test)('If scrollable parameter is unset, the component shows the bottom shadow', /*#__PURE__*/function () {
-      var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+      var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
         return _regeneratorRuntime().wrap(function _callee7$(_context7) {
           while (1) switch (_context7.prev = _context7.next) {
             case 0:
@@ -7933,7 +7933,7 @@ define("dummy/tests/integration/components/o-s-s/code-block-test", ["qunit", "em
       };
     }());
     (0, _qunit.test)('If collapseHeight is set, the height of the component is equal to the param size', /*#__PURE__*/function () {
-      var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+      var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
         return _regeneratorRuntime().wrap(function _callee8$(_context8) {
           while (1) switch (_context8.prev = _context8.next) {
             case 0:
@@ -7963,7 +7963,7 @@ define("dummy/tests/integration/components/o-s-s/code-block-test", ["qunit", "em
       };
     }());
     (0, _qunit.test)('If collapseHeight is set, the uncollapse button is visible', /*#__PURE__*/function () {
-      var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+      var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
         return _regeneratorRuntime().wrap(function _callee9$(_context9) {
           while (1) switch (_context9.prev = _context9.next) {
             case 0:
@@ -7992,7 +7992,7 @@ define("dummy/tests/integration/components/o-s-s/code-block-test", ["qunit", "em
       };
     }());
     (0, _qunit.test)('Clicking on the uncollapse button doubles the components height', /*#__PURE__*/function () {
-      var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+      var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
         return _regeneratorRuntime().wrap(function _callee10$(_context10) {
           while (1) switch (_context10.prev = _context10.next) {
             case 0:
@@ -8025,7 +8025,7 @@ define("dummy/tests/integration/components/o-s-s/code-block-test", ["qunit", "em
       };
     }());
     (0, _qunit.test)('Clicking on the collapse button resets the height to the original collapseHeight parameter height', /*#__PURE__*/function () {
-      var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+      var _ref23 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
         return _regeneratorRuntime().wrap(function _callee11$(_context11) {
           while (1) switch (_context11.prev = _context11.next) {
             case 0:
@@ -8064,7 +8064,7 @@ define("dummy/tests/integration/components/o-s-s/code-block-test", ["qunit", "em
       };
     }());
     (0, _qunit.test)('Clicking on the uncollapse button show the collapse button', /*#__PURE__*/function () {
-      var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+      var _ref24 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
         return _regeneratorRuntime().wrap(function _callee12$(_context12) {
           while (1) switch (_context12.prev = _context12.next) {
             case 0:
@@ -8108,7 +8108,7 @@ define("dummy/tests/integration/components/o-s-s/content-panel-test", ["qunit", 
   (0, _qunit.module)('Integration | Component | o-s-s/content-panel', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -8136,7 +8136,7 @@ define("dummy/tests/integration/components/o-s-s/content-panel-test", ["qunit", 
       };
     }());
     (0, _qunit.test)('The content named-block is properly displayed', /*#__PURE__*/function () {
-      var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -8181,7 +8181,7 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["qunit", "ember-qu
     (0, _testSupport.setupIntl)(hooks);
     (0, _testSupport2.setupClipboard)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -8209,7 +8209,7 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["qunit", "ember-qu
       };
     }());
     (0, _qunit.test)('it renders when inline value is specified', /*#__PURE__*/function () {
-      var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -8237,7 +8237,7 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["qunit", "ember-qu
       };
     }());
     (0, _qunit.test)('the tooltip has correct wording', /*#__PURE__*/function () {
-      var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref11 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -8270,7 +8270,7 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["qunit", "ember-qu
         window.chrome = null;
       });
       (0, _qunit.test)('nothing is rendered', /*#__PURE__*/function () {
-        var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -8307,7 +8307,7 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["qunit", "ember-qu
         });
       });
       (0, _qunit.test)('nothing is rendered', /*#__PURE__*/function () {
-        var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -8347,7 +8347,7 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["qunit", "ember-qu
         _sinon.default.restore();
       });
       (0, _qunit.test)('the info toast is rendered', /*#__PURE__*/function () {
-        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           var toastInfoStub;
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
@@ -8381,7 +8381,7 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["qunit", "ember-qu
         };
       }());
       (0, _qunit.test)('the error toast is rendered', /*#__PURE__*/function () {
-        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           var toastErrorStub;
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
@@ -8415,7 +8415,7 @@ define("dummy/tests/integration/components/o-s-s/copy-test", ["qunit", "ember-qu
         };
       }());
       (0, _qunit.test)('the clipboard writeText method is called', /*#__PURE__*/function () {
-        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           var writeTextStub;
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
@@ -8482,7 +8482,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
       }];
     });
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -8510,7 +8510,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
       };
     }());
     (0, _qunit.test)('When clicking on the input, the dropdown menu opens', /*#__PURE__*/function () {
-      var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -8542,7 +8542,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
     }());
     (0, _qunit.module)('If @value is passed', function () {
       (0, _qunit.test)('If the value matches an entry from the sourceList, then the input is set to the value', /*#__PURE__*/function () {
-        var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref23 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
               case 0:
@@ -8570,7 +8570,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
         };
       }());
       (0, _qunit.test)('If the component is in country mode, an alpha2 code will be matched in the @sourceList', /*#__PURE__*/function () {
-        var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref24 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -8598,7 +8598,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
         };
       }());
       (0, _qunit.test)('If the component is in province mode, a code as @value will be matched in the @sourceList', /*#__PURE__*/function () {
-        var _ref25 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref25 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -8626,7 +8626,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
         };
       }());
       (0, _qunit.test)('If the component is in province mode, a province name as @value will be matched in the @sourceList', /*#__PURE__*/function () {
-        var _ref26 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref26 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -8654,7 +8654,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
         };
       }());
       (0, _qunit.test)('If the value matches an entry from the sourceList, the @onChange function is triggered', /*#__PURE__*/function () {
-        var _ref27 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref27 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
@@ -8693,7 +8693,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
     });
     (0, _qunit.module)('Dropdown menu', function () {
       (0, _qunit.test)('It displays all items from the @sourceList parameter', /*#__PURE__*/function () {
-        var _ref28 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref28 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           var rows;
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
@@ -8726,7 +8726,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
         };
       }());
       (0, _qunit.test)('if @sourceList contain ids, then country icons are displayed', /*#__PURE__*/function () {
-        var _ref29 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref29 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -8758,7 +8758,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
       }());
     });
     (0, _qunit.test)('If @sourceList contains ids, then the country placeholder is displayed', /*#__PURE__*/function () {
-      var _ref30 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+      var _ref30 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
         return _regeneratorRuntime().wrap(function _callee10$(_context10) {
           while (1) switch (_context10.prev = _context10.next) {
             case 0:
@@ -8786,7 +8786,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
       };
     }());
     (0, _qunit.test)('if sourceList does not contain ids, then the placeholder is for provinces', /*#__PURE__*/function () {
-      var _ref31 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+      var _ref31 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
         return _regeneratorRuntime().wrap(function _callee11$(_context11) {
           while (1) switch (_context11.prev = _context11.next) {
             case 0:
@@ -8815,7 +8815,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
     }());
     (0, _qunit.module)('When clicking on an item', function () {
       (0, _qunit.test)('When selecting an item, the dropdown is closed', /*#__PURE__*/function () {
-        var _ref32 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+        var _ref32 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
           return _regeneratorRuntime().wrap(function _callee12$(_context12) {
             while (1) switch (_context12.prev = _context12.next) {
               case 0:
@@ -8849,7 +8849,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
         };
       }());
       (0, _qunit.test)('When clicking outside of the dropdown, the dropdown is closed', /*#__PURE__*/function () {
-        var _ref33 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+        var _ref33 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
           return _regeneratorRuntime().wrap(function _callee13$(_context13) {
             while (1) switch (_context13.prev = _context13.next) {
               case 0:
@@ -8883,7 +8883,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
         };
       }());
       (0, _qunit.test)('the input is updated with the value', /*#__PURE__*/function () {
-        var _ref34 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
+        var _ref34 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
           return _regeneratorRuntime().wrap(function _callee14$(_context14) {
             while (1) switch (_context14.prev = _context14.next) {
               case 0:
@@ -8917,7 +8917,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
         };
       }());
       (0, _qunit.test)('the @onChange method is triggered with the selected value', /*#__PURE__*/function () {
-        var _ref35 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+        var _ref35 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
           return _regeneratorRuntime().wrap(function _callee15$(_context15) {
             while (1) switch (_context15.prev = _context15.next) {
               case 0:
@@ -8960,7 +8960,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
         };
       }());
       (0, _qunit.test)('If the component is using Countries as @sourceList, the flag icon is visible in the input', /*#__PURE__*/function () {
-        var _ref36 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
+        var _ref36 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
           return _regeneratorRuntime().wrap(function _callee16$(_context16) {
             while (1) switch (_context16.prev = _context16.next) {
               case 0:
@@ -8995,7 +8995,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
         };
       }());
       (0, _qunit.test)('If the component is using Provinces as @sourceList, the flag icon is not visible in the input', /*#__PURE__*/function () {
-        var _ref37 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
+        var _ref37 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
           var _this2 = this;
           return _regeneratorRuntime().wrap(function _callee17$(_context17) {
             while (1) switch (_context17.prev = _context17.next) {
@@ -9037,7 +9037,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
     });
     (0, _qunit.module)('Keyboard control management', function () {
       (0, _qunit.test)('on keydown Enter should open the dropdown', /*#__PURE__*/function () {
-        var _ref38 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
+        var _ref38 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
           var _this3 = this;
           return _regeneratorRuntime().wrap(function _callee18$(_context18) {
             while (1) switch (_context18.prev = _context18.next) {
@@ -9075,7 +9075,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
     });
     (0, _qunit.module)('error management', function () {
       (0, _qunit.test)('it throws an error if @sourceList is not provided', /*#__PURE__*/function () {
-        var _ref39 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
+        var _ref39 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
           return _regeneratorRuntime().wrap(function _callee19$(_context19) {
             while (1) switch (_context19.prev = _context19.next) {
               case 0:
@@ -9107,7 +9107,7 @@ define("dummy/tests/integration/components/o-s-s/country-selector-test", ["@embe
         };
       }());
       (0, _qunit.test)('it throws an error if @onChange is not provided', /*#__PURE__*/function () {
-        var _ref40 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
+        var _ref40 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
           return _regeneratorRuntime().wrap(function _callee20$(_context20) {
             while (1) switch (_context20.prev = _context20.next) {
               case 0:
@@ -9156,7 +9156,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
       this.onChange = _sinon.default.stub();
     });
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref25 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref25 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -9184,7 +9184,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
       };
     }());
     (0, _qunit.test)('The passed @value parameter is properly displayed in the input', /*#__PURE__*/function () {
-      var _ref26 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref26 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -9212,7 +9212,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
       };
     }());
     (0, _qunit.test)('It properly loads the correct currency when the @currency parameter is defined', /*#__PURE__*/function () {
-      var _ref27 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref27 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -9240,7 +9240,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
       };
     }());
     (0, _qunit.test)('It displays an error message below the component if @errorMessage is passed', /*#__PURE__*/function () {
-      var _ref28 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref28 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
@@ -9268,7 +9268,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
       };
     }());
     (0, _qunit.test)('It displays an red border around the component if @errorMessage exists', /*#__PURE__*/function () {
-      var _ref29 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+      var _ref29 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
@@ -9299,7 +9299,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
     }());
     (0, _qunit.module)('Currency selector', function () {
       (0, _qunit.test)('Clicking on the currency symbol button opens the currency selector', /*#__PURE__*/function () {
-        var _ref30 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref30 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -9330,7 +9330,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         };
       }());
       (0, _qunit.test)('Selecting a new currency in the Currency selector triggers the onChange method', /*#__PURE__*/function () {
-        var _ref31 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref31 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
@@ -9365,7 +9365,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         };
       }());
       (0, _qunit.test)('Selecting a new currency in the selector triggers the onChange method', /*#__PURE__*/function () {
-        var _ref32 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref32 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -9400,7 +9400,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         };
       }());
       (0, _qunit.test)('Typing in the search input filters the results', /*#__PURE__*/function () {
-        var _ref33 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref33 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           var clickableRows;
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
@@ -9438,7 +9438,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         };
       }());
       (0, _qunit.test)('Searching by currency symbol works', /*#__PURE__*/function () {
-        var _ref34 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref34 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           var clickableRows;
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
@@ -9476,7 +9476,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         };
       }());
       (0, _qunit.test)('The passed @currency parameter changes are properly tracked in the input', /*#__PURE__*/function () {
-        var _ref35 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        var _ref35 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
               case 0:
@@ -9507,7 +9507,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         };
       }());
       (0, _qunit.test)('The currency selection is disabled if @allowCurrencyUpdate is falsy', /*#__PURE__*/function () {
-        var _ref36 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+        var _ref36 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
           return _regeneratorRuntime().wrap(function _callee12$(_context12) {
             while (1) switch (_context12.prev = _context12.next) {
               case 0:
@@ -9540,7 +9540,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         };
       }());
       (0, _qunit.test)('Passing the @allowedCurrencies parameter overwrites the selectable options', /*#__PURE__*/function () {
-        var _ref37 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+        var _ref37 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
           var clickableRows;
           return _regeneratorRuntime().wrap(function _callee13$(_context13) {
             while (1) switch (_context13.prev = _context13.next) {
@@ -9583,7 +9583,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
     });
     (0, _qunit.module)('Currency Input', function () {
       (0, _qunit.test)('Typing numbers in the currency input triggers the onChange method', /*#__PURE__*/function () {
-        var _ref38 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
+        var _ref38 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
           return _regeneratorRuntime().wrap(function _callee14$(_context14) {
             while (1) switch (_context14.prev = _context14.next) {
               case 0:
@@ -9615,7 +9615,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         };
       }());
       (0, _qunit.test)('Typing non-numeric characters does not apply changes', /*#__PURE__*/function () {
-        var _ref39 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+        var _ref39 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
           return _regeneratorRuntime().wrap(function _callee15$(_context15) {
             while (1) switch (_context15.prev = _context15.next) {
               case 0:
@@ -9653,7 +9653,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         };
       }());
       (0, _qunit.test)('Placeholder is correctly displayed when provided', /*#__PURE__*/function () {
-        var _ref40 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
+        var _ref40 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
           return _regeneratorRuntime().wrap(function _callee16$(_context16) {
             while (1) switch (_context16.prev = _context16.next) {
               case 0:
@@ -9682,7 +9682,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
       }());
     });
     (0, _qunit.test)('When @onlyCurrency is truthy, only the currency is displayed', /*#__PURE__*/function () {
-      var _ref41 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
+      var _ref41 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
         return _regeneratorRuntime().wrap(function _callee17$(_context17) {
           while (1) switch (_context17.prev = _context17.next) {
             case 0:
@@ -9713,7 +9713,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
     }());
     (0, _qunit.module)('For @disabled argument', function () {
       (0, _qunit.test)("The disabled class isn't here for undefined value", /*#__PURE__*/function () {
-        var _ref42 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
+        var _ref42 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
           return _regeneratorRuntime().wrap(function _callee18$(_context18) {
             while (1) switch (_context18.prev = _context18.next) {
               case 0:
@@ -9742,7 +9742,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         };
       }());
       (0, _qunit.test)("The disabled class isn't here for false value", /*#__PURE__*/function () {
-        var _ref43 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
+        var _ref43 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
           return _regeneratorRuntime().wrap(function _callee19$(_context19) {
             while (1) switch (_context19.prev = _context19.next) {
               case 0:
@@ -9771,7 +9771,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         };
       }());
       (0, _qunit.test)('The disabled class is here for true value', /*#__PURE__*/function () {
-        var _ref44 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
+        var _ref44 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
           return _regeneratorRuntime().wrap(function _callee20$(_context20) {
             while (1) switch (_context20.prev = _context20.next) {
               case 0:
@@ -9805,7 +9805,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         this.value = '1234567890';
       });
       (0, _qunit.test)('The value stored in the clipboard is inserted in the input', /*#__PURE__*/function () {
-        var _ref45 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee21(assert) {
+        var _ref45 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee21(assert) {
           return _regeneratorRuntime().wrap(function _callee21$(_context21) {
             while (1) switch (_context21.prev = _context21.next) {
               case 0:
@@ -9841,7 +9841,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         };
       }());
       (0, _qunit.test)('The non-numeric characters are escaped', /*#__PURE__*/function () {
-        var _ref46 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee22(assert) {
+        var _ref46 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee22(assert) {
           return _regeneratorRuntime().wrap(function _callee22$(_context22) {
             while (1) switch (_context22.prev = _context22.next) {
               case 0:
@@ -9877,7 +9877,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         };
       }());
       (0, _qunit.test)('When selection is applied, it replaces the selection', /*#__PURE__*/function () {
-        var _ref47 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee23(assert) {
+        var _ref47 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee23(assert) {
           var input;
           return _regeneratorRuntime().wrap(function _callee23$(_context23) {
             while (1) switch (_context23.prev = _context23.next) {
@@ -9917,7 +9917,7 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
       }());
     });
     (0, _qunit.test)('It throws an error if @onChange is not passed', /*#__PURE__*/function () {
-      var _ref48 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee24(assert) {
+      var _ref48 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee24(assert) {
         return _regeneratorRuntime().wrap(function _callee24$(_context24) {
           while (1) switch (_context24.prev = _context24.next) {
             case 0:
@@ -9969,7 +9969,7 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
       };
     });
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -9997,7 +9997,7 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
       };
     }());
     (0, _qunit.test)('The dialog displays the title', /*#__PURE__*/function () {
-      var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref11 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -10025,7 +10025,7 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
       };
     }());
     (0, _qunit.test)('The dialog displays the main action button', /*#__PURE__*/function () {
-      var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -10053,7 +10053,7 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
       };
     }());
     (0, _qunit.test)('The dialog displays the secondary action button', /*#__PURE__*/function () {
-      var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
@@ -10081,7 +10081,7 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
       };
     }());
     (0, _qunit.test)('The dialog calls the main action when the main action button is clicked', /*#__PURE__*/function () {
-      var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+      var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
@@ -10112,7 +10112,7 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
       };
     }());
     (0, _qunit.test)('The dialog calls the secondary action when the secondary action button is clicked', /*#__PURE__*/function () {
-      var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+      var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
         return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
@@ -10144,7 +10144,7 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
     }());
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('The component throws an error if the @title parameter is not passed', /*#__PURE__*/function () {
-        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
@@ -10173,7 +10173,7 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('The component throws an error if the @mainAction parameter is not passed', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -10202,7 +10202,7 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('The component throws an error if the @secondaryAction parameter is not passed', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -10244,7 +10244,7 @@ define("dummy/tests/integration/components/o-s-s/email-input-test", ["qunit", "e
   (0, _qunit.module)('Integration | Component | o-s-s/email-input', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref11 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -10272,7 +10272,7 @@ define("dummy/tests/integration/components/o-s-s/email-input-test", ["qunit", "e
       };
     }());
     (0, _qunit.test)('it renders the @placeholder', /*#__PURE__*/function () {
-      var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -10300,7 +10300,7 @@ define("dummy/tests/integration/components/o-s-s/email-input-test", ["qunit", "e
       };
     }());
     (0, _qunit.test)('it displays the error message when the @errorMessage is non-empty', /*#__PURE__*/function () {
-      var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -10329,7 +10329,7 @@ define("dummy/tests/integration/components/o-s-s/email-input-test", ["qunit", "e
       };
     }());
     (0, _qunit.test)('If the email regex isnt matched, then the error message is displayed', /*#__PURE__*/function () {
-      var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
@@ -10361,7 +10361,7 @@ define("dummy/tests/integration/components/o-s-s/email-input-test", ["qunit", "e
       };
     }());
     (0, _qunit.test)('If the email regex is matched, and the @validates method is passed, then the status of the validation is returned', /*#__PURE__*/function () {
-      var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+      var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
@@ -10394,7 +10394,7 @@ define("dummy/tests/integration/components/o-s-s/email-input-test", ["qunit", "e
       };
     }());
     (0, _qunit.test)('If the email regex isnt matched, and the @validates method is passed, then the status of the validation is returned', /*#__PURE__*/function () {
-      var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+      var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
         return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
@@ -10427,7 +10427,7 @@ define("dummy/tests/integration/components/o-s-s/email-input-test", ["qunit", "e
       };
     }());
     (0, _qunit.test)('it throws an error when the @value parameter is missing', /*#__PURE__*/function () {
-      var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+      var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
         return _regeneratorRuntime().wrap(function _callee7$(_context7) {
           while (1) switch (_context7.prev = _context7.next) {
             case 0:
@@ -10461,7 +10461,7 @@ define("dummy/tests/integration/components/o-s-s/email-input-test", ["qunit", "e
         this.onChange = _sinon.default.stub();
       });
       (0, _qunit.test)('it is called when a new character is typed', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -10492,7 +10492,7 @@ define("dummy/tests/integration/components/o-s-s/email-input-test", ["qunit", "e
         };
       }());
       (0, _qunit.test)('it returns null value', /*#__PURE__*/function () {
-        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -10524,7 +10524,7 @@ define("dummy/tests/integration/components/o-s-s/email-input-test", ["qunit", "e
         };
       }());
       (0, _qunit.test)('if defined, it transforms the result to lowercase', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
@@ -10581,7 +10581,7 @@ define("dummy/tests/integration/components/o-s-s/icon-test", ["qunit", "ember-qu
   (0, _qunit.module)('Integration | Component | o-s-s/icon', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref6 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -10609,7 +10609,7 @@ define("dummy/tests/integration/components/o-s-s/icon-test", ["qunit", "ember-qu
       };
     }());
     (0, _qunit.test)('it renders the correct icon class', /*#__PURE__*/function () {
-      var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref7 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -10637,7 +10637,7 @@ define("dummy/tests/integration/components/o-s-s/icon-test", ["qunit", "ember-qu
       };
     }());
     (0, _qunit.test)("it renders the correct default style class", /*#__PURE__*/function () {
-      var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref8 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -10669,7 +10669,7 @@ define("dummy/tests/integration/components/o-s-s/icon-test", ["qunit", "ember-qu
         key = _Object$entries$_i[0],
         value = _Object$entries$_i[1];
       (0, _qunit.test)("it renders the correct style ".concat(key, " class"), /*#__PURE__*/function () {
-        var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -10702,7 +10702,7 @@ define("dummy/tests/integration/components/o-s-s/icon-test", ["qunit", "ember-qu
       _loop();
     }
     (0, _qunit.test)('it throws an error if icon argument is missing', /*#__PURE__*/function () {
-      var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+      var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
@@ -10743,7 +10743,7 @@ define("dummy/tests/integration/components/o-s-s/illustration-test", ["qunit", "
   (0, _qunit.module)('Integration | Component | o-s-s/illustration', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -10771,7 +10771,7 @@ define("dummy/tests/integration/components/o-s-s/illustration-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('the style is inserted', /*#__PURE__*/function () {
-      var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         var _querySelector;
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
@@ -10861,7 +10861,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
     (0, _qunit.module)('search is enabled', function () {
       (0, _qunit.module)('with onSearch hook', function () {
         (0, _qunit.test)('it calls the onSearch hook with the typed keyword', /*#__PURE__*/function () {
-          var _ref25 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+          var _ref25 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
             return _regeneratorRuntime().wrap(function _callee$(_context) {
               while (1) switch (_context.prev = _context.next) {
                 case 0:
@@ -10896,7 +10896,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
           };
         }());
         (0, _qunit.test)('it uses the passed placeholder when present', /*#__PURE__*/function () {
-          var _ref26 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+          var _ref26 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
             return _regeneratorRuntime().wrap(function _callee2$(_context2) {
               while (1) switch (_context2.prev = _context2.next) {
                 case 0:
@@ -10935,7 +10935,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
     (0, _qunit.module)('item selection', function () {
       (0, _qunit.module)('onSelect is passed', function () {
         (0, _qunit.test)('it calls the onSelect hook with the clicked item', /*#__PURE__*/function () {
-          var _ref27 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+          var _ref27 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
             return _regeneratorRuntime().wrap(function _callee3$(_context3) {
               while (1) switch (_context3.prev = _context3.next) {
                 case 0:
@@ -10972,7 +10972,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
     (0, _qunit.module)('loading states', function () {
       (0, _qunit.module)('full content loading', function () {
         (0, _qunit.test)('should display rows of skeleton loading in place of the content', /*#__PURE__*/function () {
-          var _ref28 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+          var _ref28 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
             return _regeneratorRuntime().wrap(function _callee4$(_context4) {
               while (1) switch (_context4.prev = _context4.next) {
                 case 0:
@@ -11007,7 +11007,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
       });
       (0, _qunit.module)('additional content loading', function () {
         (0, _qunit.test)('should display rows of skeleton loading after the existing content', /*#__PURE__*/function () {
-          var _ref29 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+          var _ref29 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
             return _regeneratorRuntime().wrap(function _callee5$(_context5) {
               while (1) switch (_context5.prev = _context5.next) {
                 case 0:
@@ -11046,7 +11046,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
     (0, _qunit.module)('it renders', function () {
       (0, _qunit.module)('with itemLabel', function () {
         (0, _qunit.test)('it uses the passed itemLabel argument as display key', /*#__PURE__*/function () {
-          var _ref30 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+          var _ref30 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
             var displayedNames;
             return _regeneratorRuntime().wrap(function _callee6$(_context6) {
               while (1) switch (_context6.prev = _context6.next) {
@@ -11088,7 +11088,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
       });
       (0, _qunit.module)('with option block', function () {
         (0, _qunit.test)('it uses the passed block to display options', /*#__PURE__*/function () {
-          var _ref31 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+          var _ref31 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
             var displayedNames;
             return _regeneratorRuntime().wrap(function _callee7$(_context7) {
               while (1) switch (_context7.prev = _context7.next) {
@@ -11136,7 +11136,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
       });
       (0, _qunit.module)('with empty items', function () {
         (0, _qunit.test)('it should render the empty state', /*#__PURE__*/function () {
-          var _ref32 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+          var _ref32 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
             return _regeneratorRuntime().wrap(function _callee8$(_context8) {
               while (1) switch (_context8.prev = _context8.next) {
                 case 0:
@@ -11169,7 +11169,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
       });
       (0, _qunit.module)('with inline', function () {
         (0, _qunit.test)('it should render with undefined arg', /*#__PURE__*/function () {
-          var _ref33 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+          var _ref33 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
             return _regeneratorRuntime().wrap(function _callee9$(_context9) {
               while (1) switch (_context9.prev = _context9.next) {
                 case 0:
@@ -11201,7 +11201,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
           };
         }());
         (0, _qunit.test)('it should render with falsy arg', /*#__PURE__*/function () {
-          var _ref34 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+          var _ref34 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
             return _regeneratorRuntime().wrap(function _callee10$(_context10) {
               while (1) switch (_context10.prev = _context10.next) {
                 case 0:
@@ -11233,7 +11233,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
           };
         }());
         (0, _qunit.test)('it should render with truthy arg', /*#__PURE__*/function () {
-          var _ref35 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+          var _ref35 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
             return _regeneratorRuntime().wrap(function _callee11$(_context11) {
               while (1) switch (_context11.prev = _context11.next) {
                 case 0:
@@ -11269,7 +11269,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
     });
     (0, _qunit.module)('with onBottomReached', function () {
       (0, _qunit.test)('it should trigger onBottomReach function', /*#__PURE__*/function () {
-        var _ref36 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+        var _ref36 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
           var _this = this;
           return _regeneratorRuntime().wrap(function _callee12$(_context12) {
             while (1) switch (_context12.prev = _context12.next) {
@@ -11322,7 +11322,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
       });
       (0, _qunit.module)('If keyboard is disabled', function () {
         (0, _qunit.test)('The first element should not be focused on load', /*#__PURE__*/function () {
-          var _ref37 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+          var _ref37 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
             return _regeneratorRuntime().wrap(function _callee13$(_context13) {
               while (1) switch (_context13.prev = _context13.next) {
                 case 0:
@@ -11350,7 +11350,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
           };
         }());
         (0, _qunit.test)('The keyboard controls are disabled', /*#__PURE__*/function () {
-          var _ref38 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
+          var _ref38 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
             return _regeneratorRuntime().wrap(function _callee14$(_context14) {
               while (1) switch (_context14.prev = _context14.next) {
                 case 0:
@@ -11389,7 +11389,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
         });
         (0, _qunit.module)('If Search is enabled', function () {
           (0, _qunit.test)('Search input should be focused', /*#__PURE__*/function () {
-            var _ref39 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+            var _ref39 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
               return _regeneratorRuntime().wrap(function _callee15$(_context15) {
                 while (1) switch (_context15.prev = _context15.next) {
                   case 0:
@@ -11419,7 +11419,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
             };
           }());
           (0, _qunit.test)('On keydown Enter it should focus the first element', /*#__PURE__*/function () {
-            var _ref40 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
+            var _ref40 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
               return _regeneratorRuntime().wrap(function _callee16$(_context16) {
                 while (1) switch (_context16.prev = _context16.next) {
                   case 0:
@@ -11453,7 +11453,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
             };
           }());
           (0, _qunit.test)('On keydown ArrowDown it should focus the first element', /*#__PURE__*/function () {
-            var _ref41 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
+            var _ref41 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
               return _regeneratorRuntime().wrap(function _callee17$(_context17) {
                 while (1) switch (_context17.prev = _context17.next) {
                   case 0:
@@ -11487,7 +11487,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
             };
           }());
           (0, _qunit.test)('On keydown Enter it should call the onClose action', /*#__PURE__*/function () {
-            var _ref42 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
+            var _ref42 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
               return _regeneratorRuntime().wrap(function _callee18$(_context18) {
                 while (1) switch (_context18.prev = _context18.next) {
                   case 0:
@@ -11523,7 +11523,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
           }());
         });
         (0, _qunit.test)('The first element should be focuses on load', /*#__PURE__*/function () {
-          var _ref43 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
+          var _ref43 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
             return _regeneratorRuntime().wrap(function _callee19$(_context19) {
               while (1) switch (_context19.prev = _context19.next) {
                 case 0:
@@ -11552,7 +11552,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
           };
         }());
         (0, _qunit.test)('On keydown ArrowUp & ArrowDown it should control the focused element', /*#__PURE__*/function () {
-          var _ref44 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
+          var _ref44 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
             return _regeneratorRuntime().wrap(function _callee20$(_context20) {
               while (1) switch (_context20.prev = _context20.next) {
                 case 0:
@@ -11591,7 +11591,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
           };
         }());
         (0, _qunit.test)('On keydown Enter it should select the focused element', /*#__PURE__*/function () {
-          var _ref45 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee21(assert) {
+          var _ref45 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee21(assert) {
             var el;
             return _regeneratorRuntime().wrap(function _callee21$(_context21) {
               while (1) switch (_context21.prev = _context21.next) {
@@ -11628,7 +11628,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
           };
         }());
         (0, _qunit.test)('On keydown Tab/Escape it should call the onClose action', /*#__PURE__*/function () {
-          var _ref46 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee22(assert) {
+          var _ref46 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee22(assert) {
             return _regeneratorRuntime().wrap(function _callee22$(_context22) {
               while (1) switch (_context22.prev = _context22.next) {
                 case 0:
@@ -11670,7 +11670,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.module)('On item selection, if onSelect is not passed', function () {
         (0, _qunit.test)('it should throw an error', /*#__PURE__*/function () {
-          var _ref47 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee23(assert) {
+          var _ref47 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee23(assert) {
             return _regeneratorRuntime().wrap(function _callee23$(_context23) {
               while (1) switch (_context23.prev = _context23.next) {
                 case 0:
@@ -11701,7 +11701,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
       });
       (0, _qunit.module)('When the search is enabled, if no onSearch hook has been passed', function () {
         (0, _qunit.test)('should throw an error', /*#__PURE__*/function () {
-          var _ref48 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee24(assert) {
+          var _ref48 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee24(assert) {
             return _regeneratorRuntime().wrap(function _callee24$(_context24) {
               while (1) switch (_context24.prev = _context24.next) {
                 case 0:
@@ -11744,7 +11744,7 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
   (0, _qunit.module)('Integration | Component | o-s-s/input-container', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -11776,7 +11776,7 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
         return _renderComponentWithPrefixSuffix.apply(this, arguments);
       }
       function _renderComponentWithPrefixSuffix() {
-        _renderComponentWithPrefixSuffix = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
+        _renderComponentWithPrefixSuffix = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5() {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -11811,7 +11811,7 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
         return _renderComponentWithPrefixSuffix.apply(this, arguments);
       }
       (0, _qunit.test)('Passing a :prefix named-block renders the block properly', /*#__PURE__*/function () {
-        var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+        var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
           return _regeneratorRuntime().wrap(function _callee2$(_context2) {
             while (1) switch (_context2.prev = _context2.next) {
               case 0:
@@ -11830,7 +11830,7 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
         };
       }());
       (0, _qunit.test)('Passing a :suffix named-block renders the block properly', /*#__PURE__*/function () {
-        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
               case 0:
@@ -11849,7 +11849,7 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
         };
       }());
       (0, _qunit.test)('Passing an :input named-block overloads the default input', /*#__PURE__*/function () {
-        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -11880,7 +11880,7 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
         return _renderComponentWithParameters.apply(this, arguments);
       }
       function _renderComponentWithParameters() {
-        _renderComponentWithParameters = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9() {
+        _renderComponentWithParameters = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9() {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -11907,7 +11907,7 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
         return _renderComponentWithParameters.apply(this, arguments);
       }
       (0, _qunit.test)('Passing a @value parameter works', /*#__PURE__*/function () {
-        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -11926,7 +11926,7 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
         };
       }());
       (0, _qunit.test)('Passing a @placeholder parameter works', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           var inputElement;
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
@@ -11947,7 +11947,7 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
         };
       }());
       (0, _qunit.test)('Passing an @onChange method works and is triggered on input changes', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           var inputElement;
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
@@ -11973,7 +11973,7 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
     });
     (0, _qunit.module)('Error States', function () {
       (0, _qunit.test)('Passing an @errorMessage parameter displays an error message and sets the input border to red', /*#__PURE__*/function () {
-        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
@@ -12002,7 +12002,7 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
         };
       }());
       (0, _qunit.test)('Setting @errorMessage parameter to an empty string does not display an error message', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
               case 0:
@@ -12031,7 +12031,7 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
         };
       }());
       (0, _qunit.test)('Passing a @hasError parameter displays a red border around the input', /*#__PURE__*/function () {
-        var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+        var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
           return _regeneratorRuntime().wrap(function _callee12$(_context12) {
             while (1) switch (_context12.prev = _context12.next) {
               case 0:
@@ -12059,7 +12059,7 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
         };
       }());
       (0, _qunit.test)('Setting @hasError parameter to false does not display a red border around the input', /*#__PURE__*/function () {
-        var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+        var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
           return _regeneratorRuntime().wrap(function _callee13$(_context13) {
             while (1) switch (_context13.prev = _context13.next) {
               case 0:
@@ -12087,7 +12087,7 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
         };
       }());
       (0, _qunit.test)('Setting @hasError parameter to undefined does not display a red border around the input', /*#__PURE__*/function () {
-        var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
+        var _ref23 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
           return _regeneratorRuntime().wrap(function _callee14$(_context14) {
             while (1) switch (_context14.prev = _context14.next) {
               case 0:
@@ -12115,7 +12115,7 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
         };
       }());
       (0, _qunit.test)('Having both @errorMessage and @hasError parameters set to true displays the error message', /*#__PURE__*/function () {
-        var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+        var _ref24 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
           return _regeneratorRuntime().wrap(function _callee15$(_context15) {
             while (1) switch (_context15.prev = _context15.next) {
               case 0:
@@ -12146,7 +12146,7 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
     });
     (0, _qunit.module)('Extra attributes', function () {
       (0, _qunit.test)('passing an extra class is applied to the component', /*#__PURE__*/function () {
-        var _ref25 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
+        var _ref25 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
           return _regeneratorRuntime().wrap(function _callee16$(_context16) {
             while (1) switch (_context16.prev = _context16.next) {
               case 0:
@@ -12174,7 +12174,7 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
         };
       }());
       (0, _qunit.test)('passing data-control-name works', /*#__PURE__*/function () {
-        var _ref26 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
+        var _ref26 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
           var inputWrapper;
           return _regeneratorRuntime().wrap(function _callee17$(_context17) {
             while (1) switch (_context17.prev = _context17.next) {
@@ -12217,7 +12217,7 @@ define("dummy/tests/integration/components/o-s-s/input-group-test", ["qunit", "e
   (0, _qunit.module)('Integration | Component | o-s-s/input-group', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref8 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -12245,7 +12245,7 @@ define("dummy/tests/integration/components/o-s-s/input-group-test", ["qunit", "e
       };
     }());
     (0, _qunit.test)('Passing the @prefix parameter displays the input prefix', /*#__PURE__*/function () {
-      var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -12273,7 +12273,7 @@ define("dummy/tests/integration/components/o-s-s/input-group-test", ["qunit", "e
       };
     }());
     (0, _qunit.test)('Passing the @suffix parameter displays the input suffix', /*#__PURE__*/function () {
-      var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -12301,7 +12301,7 @@ define("dummy/tests/integration/components/o-s-s/input-group-test", ["qunit", "e
       };
     }());
     (0, _qunit.test)('Passing the @suffix parameter displays the input suffix', /*#__PURE__*/function () {
-      var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref11 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
@@ -12330,7 +12330,7 @@ define("dummy/tests/integration/components/o-s-s/input-group-test", ["qunit", "e
       };
     }());
     (0, _qunit.test)('Passing the @errorMessage parameter displays the error message', /*#__PURE__*/function () {
-      var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+      var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
@@ -12359,7 +12359,7 @@ define("dummy/tests/integration/components/o-s-s/input-group-test", ["qunit", "e
       };
     }());
     (0, _qunit.test)('Passing the @errorMessage sets an error border on the whole compoenent', /*#__PURE__*/function () {
-      var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+      var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
         return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
@@ -12390,7 +12390,7 @@ define("dummy/tests/integration/components/o-s-s/input-group-test", ["qunit", "e
       };
     }());
     (0, _qunit.test)('it fails if no prefix or suffix parameters are passed', /*#__PURE__*/function () {
-      var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+      var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
         return _regeneratorRuntime().wrap(function _callee7$(_context7) {
           while (1) switch (_context7.prev = _context7.next) {
             case 0:
@@ -12431,7 +12431,7 @@ define("dummy/tests/integration/components/o-s-s/layout/navbar/nav-item-test", [
   (0, _qunit.module)('Integration | Component | o-s-s/layout/navbar/navitem', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref6 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -12464,7 +12464,7 @@ define("dummy/tests/integration/components/o-s-s/layout/navbar/nav-item-test", [
       };
     }());
     (0, _qunit.test)('it renders the icon', /*#__PURE__*/function () {
-      var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref7 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -12497,7 +12497,7 @@ define("dummy/tests/integration/components/o-s-s/layout/navbar/nav-item-test", [
       };
     }());
     (0, _qunit.test)('it renders the label', /*#__PURE__*/function () {
-      var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref8 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -12530,7 +12530,7 @@ define("dummy/tests/integration/components/o-s-s/layout/navbar/nav-item-test", [
       };
     }());
     (0, _qunit.test)('it renders the extra content block content', /*#__PURE__*/function () {
-      var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
@@ -12569,7 +12569,7 @@ define("dummy/tests/integration/components/o-s-s/layout/navbar/nav-item-test", [
       };
     }());
     (0, _qunit.test)('it has the extra right classes when @active is provided', /*#__PURE__*/function () {
-      var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+      var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
@@ -12615,7 +12615,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar-test", ["qunit",
   (0, _qunit.module)('Integration | Component | o-s-s/layout/sidebar', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref7 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -12643,7 +12643,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar-test", ["qunit",
       };
     }());
     (0, _qunit.test)('it renders the logo when present', /*#__PURE__*/function () {
-      var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref8 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         var _document$querySelect;
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
@@ -12675,7 +12675,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar-test", ["qunit",
     }());
     (0, _qunit.module)('Named block', function () {
       (0, _qunit.test)('The content named-block is properly displayed', /*#__PURE__*/function () {
-        var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
               case 0:
@@ -12708,7 +12708,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar-test", ["qunit",
         };
       }());
       (0, _qunit.test)('The footer named-block is properly displayed', /*#__PURE__*/function () {
-        var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -12743,7 +12743,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar-test", ["qunit",
     });
     (0, _qunit.module)('Extra attributes', function () {
       (0, _qunit.test)('passing an extra class is applied to the component', /*#__PURE__*/function () {
-        var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref11 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -12771,7 +12771,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar-test", ["qunit",
         };
       }());
       (0, _qunit.test)('passing data-control-name works', /*#__PURE__*/function () {
-        var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           var inputWrapper;
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
@@ -12814,7 +12814,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
   (0, _qunit.module)('Integration | Component | oss/layout/sidebar/item', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref11 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -12842,7 +12842,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
       };
     }());
     (0, _qunit.test)('it renders the icon when present', /*#__PURE__*/function () {
-      var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -12871,7 +12871,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
     }());
     (0, _qunit.module)('Arguments', function () {
       (0, _qunit.test)('Default value for locked is false', /*#__PURE__*/function () {
-        var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
               case 0:
@@ -12899,7 +12899,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
         };
       }());
       (0, _qunit.test)('When locked is true', /*#__PURE__*/function () {
-        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -12927,7 +12927,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
         };
       }());
       (0, _qunit.test)('Default value for hasNotification is false', /*#__PURE__*/function () {
-        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -12955,7 +12955,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
         };
       }());
       (0, _qunit.test)('When hasNotification is true', /*#__PURE__*/function () {
-        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -12989,7 +12989,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
         this.lockedAction = _sinon.default.spy();
       });
       (0, _qunit.test)('OnClick it redirect to the @link attribute', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           var router;
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
@@ -13023,7 +13023,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
         };
       }());
       (0, _qunit.test)('When locked is true lockedAction is triggered', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -13057,7 +13057,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
     });
     (0, _qunit.module)('Extra attributes', function () {
       (0, _qunit.test)('passing an extra class is applied to the component', /*#__PURE__*/function () {
-        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -13085,7 +13085,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
         };
       }());
       (0, _qunit.test)('passing data-control-name works', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           var inputWrapper;
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
@@ -13128,7 +13128,7 @@ define("dummy/tests/integration/components/o-s-s/link-test", ["qunit", "ember-qu
   (0, _qunit.module)('Integration | Component | o-s-s/link', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders with icon only', /*#__PURE__*/function () {
-      var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref7 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -13156,7 +13156,7 @@ define("dummy/tests/integration/components/o-s-s/link-test", ["qunit", "ember-qu
       };
     }());
     (0, _qunit.test)('it renders with label only', /*#__PURE__*/function () {
-      var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref8 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -13184,7 +13184,7 @@ define("dummy/tests/integration/components/o-s-s/link-test", ["qunit", "ember-qu
       };
     }());
     (0, _qunit.test)('it renders with both label and icon', /*#__PURE__*/function () {
-      var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -13214,7 +13214,7 @@ define("dummy/tests/integration/components/o-s-s/link-test", ["qunit", "ember-qu
       };
     }());
     (0, _qunit.test)('it opens link with href and target', /*#__PURE__*/function () {
-      var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         var windowOpenStub;
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
@@ -13251,7 +13251,7 @@ define("dummy/tests/integration/components/o-s-s/link-test", ["qunit", "ember-qu
       };
     }());
     (0, _qunit.test)('it transits to the route', /*#__PURE__*/function () {
-      var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+      var _ref11 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
         var router, transitionToStub;
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
@@ -13285,7 +13285,7 @@ define("dummy/tests/integration/components/o-s-s/link-test", ["qunit", "ember-qu
       };
     }());
     (0, _qunit.test)('it fails if no label nor icon argument are present', /*#__PURE__*/function () {
-      var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+      var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
         return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
@@ -13329,7 +13329,7 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["qunit", "
       this.closeModal = _sinon.default.stub();
     });
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -13357,7 +13357,7 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('On escape button the modal is closed', /*#__PURE__*/function () {
-      var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -13388,7 +13388,7 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('The cross button at the top right of the modal closes the modal', /*#__PURE__*/function () {
-      var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -13419,7 +13419,7 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('The title parameter is properly displayed', /*#__PURE__*/function () {
-      var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
@@ -13447,7 +13447,7 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('The subtitle parameter is properly displayed', /*#__PURE__*/function () {
-      var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+      var _ref23 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
@@ -13475,7 +13475,7 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('The icon parameter is properly displayed', /*#__PURE__*/function () {
-      var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+      var _ref24 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
         return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
@@ -13503,7 +13503,7 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('The illustration named-block is properly displayed', /*#__PURE__*/function () {
-      var _ref25 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+      var _ref25 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
         return _regeneratorRuntime().wrap(function _callee7$(_context7) {
           while (1) switch (_context7.prev = _context7.next) {
             case 0:
@@ -13536,7 +13536,7 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('The content named-block is properly displayed', /*#__PURE__*/function () {
-      var _ref26 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+      var _ref26 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
         return _regeneratorRuntime().wrap(function _callee8$(_context8) {
           while (1) switch (_context8.prev = _context8.next) {
             case 0:
@@ -13569,7 +13569,7 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('The footer named-block is properly displayed', /*#__PURE__*/function () {
-      var _ref27 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+      var _ref27 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
         return _regeneratorRuntime().wrap(function _callee9$(_context9) {
           while (1) switch (_context9.prev = _context9.next) {
             case 0:
@@ -13604,7 +13604,7 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["qunit", "
     (0, _qunit.module)('Queue management - if the @enqueue param is truthy', function () {
       (0, _qunit.module)('When rendering two modals', function () {
         (0, _qunit.test)('The second modal is not displayed', /*#__PURE__*/function () {
-          var _ref28 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+          var _ref28 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
             return _regeneratorRuntime().wrap(function _callee10$(_context10) {
               while (1) switch (_context10.prev = _context10.next) {
                 case 0:
@@ -13636,7 +13636,7 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["qunit", "
           };
         }());
         (0, _qunit.test)('When Modal A is closed, Modal B is displayed', /*#__PURE__*/function () {
-          var _ref29 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+          var _ref29 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
             return _regeneratorRuntime().wrap(function _callee11$(_context11) {
               while (1) switch (_context11.prev = _context11.next) {
                 case 0:
@@ -13688,7 +13688,7 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["qunit", "
       });
       (0, _qunit.module)('When rendering multiple modals', function () {
         (0, _qunit.test)('Only the first modal is displayed', /*#__PURE__*/function () {
-          var _ref30 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+          var _ref30 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
             return _regeneratorRuntime().wrap(function _callee12$(_context12) {
               while (1) switch (_context12.prev = _context12.next) {
                 case 0:
@@ -13723,7 +13723,7 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["qunit", "
           };
         }());
         (0, _qunit.test)('Open & close modal flow check', /*#__PURE__*/function () {
-          var _ref31 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+          var _ref31 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
             return _regeneratorRuntime().wrap(function _callee13$(_context13) {
               while (1) switch (_context13.prev = _context13.next) {
                 case 0:
@@ -13801,7 +13801,7 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["qunit", "
       });
     });
     (0, _qunit.test)('If the enqueue parameter is falsy, rendering multiple modals opens all of them', /*#__PURE__*/function () {
-      var _ref32 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
+      var _ref32 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
         return _regeneratorRuntime().wrap(function _callee14$(_context14) {
           while (1) switch (_context14.prev = _context14.next) {
             case 0:
@@ -13834,7 +13834,7 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["qunit", "
     }());
     (0, _qunit.module)('Clicking outside', function () {
       (0, _qunit.test)('It triggers the close action', /*#__PURE__*/function () {
-        var _ref33 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+        var _ref33 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
           return _regeneratorRuntime().wrap(function _callee15$(_context15) {
             while (1) switch (_context15.prev = _context15.next) {
               case 0:
@@ -13867,7 +13867,7 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('If the disableClickOutside parameter is truthy, it does not trigger the close action', /*#__PURE__*/function () {
-        var _ref34 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
+        var _ref34 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
           return _regeneratorRuntime().wrap(function _callee16$(_context16) {
             while (1) switch (_context16.prev = _context16.next) {
               case 0:
@@ -13902,7 +13902,7 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["qunit", "
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('The component throws an error if the title parameter is not passed', /*#__PURE__*/function () {
-        var _ref35 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
+        var _ref35 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
           return _regeneratorRuntime().wrap(function _callee17$(_context17) {
             while (1) switch (_context17.prev = _context17.next) {
               case 0:
@@ -13931,7 +13931,7 @@ define("dummy/tests/integration/components/o-s-s/modal-dialog-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('The component throws an error if the close parameter is not passed', /*#__PURE__*/function () {
-        var _ref36 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
+        var _ref36 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
           return _regeneratorRuntime().wrap(function _callee18$(_context18) {
             while (1) switch (_context18.prev = _context18.next) {
               case 0:
@@ -13973,7 +13973,7 @@ define("dummy/tests/integration/components/o-s-s/modal-test", ["qunit", "ember-q
   (0, _qunit.module)('Integration | Component | o-s-s/modal', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref7 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -14013,7 +14013,7 @@ define("dummy/tests/integration/components/o-s-s/modal-test", ["qunit", "ember-q
     (0, _qunit.module)('available options', function () {
       (0, _qunit.module)('centered', function () {
         (0, _qunit.test)('it should set the centered class on the modal dialog', /*#__PURE__*/function () {
-          var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+          var _ref8 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
             return _regeneratorRuntime().wrap(function _callee2$(_context2) {
               while (1) switch (_context2.prev = _context2.next) {
                 case 0:
@@ -14053,7 +14053,7 @@ define("dummy/tests/integration/components/o-s-s/modal-test", ["qunit", "ember-q
       });
       (0, _qunit.module)('additional classes on the modal-dialog', function () {
         (0, _qunit.test)('it should add the passed class on the modal dialog', /*#__PURE__*/function () {
-          var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+          var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
             return _regeneratorRuntime().wrap(function _callee3$(_context3) {
               while (1) switch (_context3.prev = _context3.next) {
                 case 0:
@@ -14093,7 +14093,7 @@ define("dummy/tests/integration/components/o-s-s/modal-test", ["qunit", "ember-q
       });
       (0, _qunit.module)('borderless header', function () {
         (0, _qunit.test)('it should add the good class on the modal dialog', /*#__PURE__*/function () {
-          var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+          var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
             return _regeneratorRuntime().wrap(function _callee4$(_context4) {
               while (1) switch (_context4.prev = _context4.next) {
                 case 0:
@@ -14133,7 +14133,7 @@ define("dummy/tests/integration/components/o-s-s/modal-test", ["qunit", "ember-q
       });
       (0, _qunit.module)('no header', function () {
         (0, _qunit.test)('no header container is present', /*#__PURE__*/function () {
-          var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+          var _ref11 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
             return _regeneratorRuntime().wrap(function _callee5$(_context5) {
               while (1) switch (_context5.prev = _context5.next) {
                 case 0:
@@ -14174,7 +14174,7 @@ define("dummy/tests/integration/components/o-s-s/modal-test", ["qunit", "ember-q
     });
     (0, _qunit.module)('keyboard shortcut', function () {
       (0, _qunit.test)('it closes the modal on Escape key', /*#__PURE__*/function () {
-        var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           var _this = this;
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
@@ -14241,7 +14241,7 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
     });
     (0, _qunit.module)('Default behavior', function () {
       (0, _qunit.test)('basic render', /*#__PURE__*/function () {
-        var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+        var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
           return _regeneratorRuntime().wrap(function _callee$(_context) {
             while (1) switch (_context.prev = _context.next) {
               case 0:
@@ -14275,7 +14275,7 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
         };
       }());
       (0, _qunit.test)('Tab Icon displays properly', /*#__PURE__*/function () {
-        var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+        var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
           return _regeneratorRuntime().wrap(function _callee2$(_context2) {
             while (1) switch (_context2.prev = _context2.next) {
               case 0:
@@ -14312,7 +14312,7 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
         };
       }());
       (0, _qunit.test)('Tab info-circle displays properly', /*#__PURE__*/function () {
-        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
               case 0:
@@ -14349,7 +14349,7 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
         };
       }());
       (0, _qunit.test)('Tab notification dot displays properly', /*#__PURE__*/function () {
-        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -14383,7 +14383,7 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
         };
       }());
       (0, _qunit.test)('Tab displays selected state properly', /*#__PURE__*/function () {
-        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -14419,7 +14419,7 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
         };
       }());
       (0, _qunit.test)('Tab displays disabled state properly', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -14456,7 +14456,7 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
       }());
     });
     (0, _qunit.test)('When clicking on Tab element, the component triggers the @onSelection method', /*#__PURE__*/function () {
-      var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+      var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
         return _regeneratorRuntime().wrap(function _callee7$(_context7) {
           while (1) switch (_context7.prev = _context7.next) {
             case 0:
@@ -14492,7 +14492,7 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
     }());
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('It throws an error if @onSelection is not passed', /*#__PURE__*/function () {
-        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -14521,7 +14521,7 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
         };
       }());
       (0, _qunit.test)('It throws an error if @tabArray is not passed', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -14565,7 +14565,7 @@ define("dummy/tests/integration/components/o-s-s/nav-tab-test", ["qunit", "ember
         };
       }());
       (0, _qunit.test)('It throws an error if @label and @icon is missing for any element in @tabArray', /*#__PURE__*/function () {
-        var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
@@ -14611,7 +14611,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
   (0, _qunit.module)('Integration | Component | o-s-s/number-input', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -14640,7 +14640,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
     }());
     (0, _qunit.module)('@value parameter', function () {
       (0, _qunit.test)('If none present, the default value is 0', /*#__PURE__*/function () {
-        var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+        var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
           return _regeneratorRuntime().wrap(function _callee2$(_context2) {
             while (1) switch (_context2.prev = _context2.next) {
               case 0:
@@ -14668,7 +14668,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('If the value is passed, it is set in the input', /*#__PURE__*/function () {
-        var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref23 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
               case 0:
@@ -14698,7 +14698,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
     });
     (0, _qunit.module)('@step parameter', function () {
       (0, _qunit.test)('If none present, the default step is 1', /*#__PURE__*/function () {
-        var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref24 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -14730,7 +14730,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('If the step is passed, it is used when increasing the value', /*#__PURE__*/function () {
-        var _ref25 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref25 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -14762,7 +14762,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('If the step is passed, it is used when decreasing the value', /*#__PURE__*/function () {
-        var _ref26 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref26 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -14796,7 +14796,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
     });
     (0, _qunit.module)('Value increase', function () {
       (0, _qunit.test)('+ button increases the value by the step', /*#__PURE__*/function () {
-        var _ref27 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref27 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
@@ -14828,7 +14828,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('Up arrow increases the value by the step', /*#__PURE__*/function () {
-        var _ref28 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref28 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -14863,7 +14863,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('Right arrow increases the value by the step', /*#__PURE__*/function () {
-        var _ref29 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref29 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -14898,7 +14898,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('If @max parameter is set, increasing the value sets the max value', /*#__PURE__*/function () {
-        var _ref30 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref30 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
@@ -14927,7 +14927,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('If @max & @maxReachedTooltip parameter are set, it renders the tooltip', /*#__PURE__*/function () {
-        var _ref31 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        var _ref31 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           var _document$querySelect;
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
@@ -14962,7 +14962,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
     });
     (0, _qunit.module)('Value decrease', function () {
       (0, _qunit.test)('- button increases the value by the step', /*#__PURE__*/function () {
-        var _ref32 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+        var _ref32 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
           return _regeneratorRuntime().wrap(function _callee12$(_context12) {
             while (1) switch (_context12.prev = _context12.next) {
               case 0:
@@ -14994,7 +14994,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('Down arrow increases the value by the step', /*#__PURE__*/function () {
-        var _ref33 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+        var _ref33 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
           return _regeneratorRuntime().wrap(function _callee13$(_context13) {
             while (1) switch (_context13.prev = _context13.next) {
               case 0:
@@ -15029,7 +15029,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('Left arrow increases the value by the step', /*#__PURE__*/function () {
-        var _ref34 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
+        var _ref34 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
           return _regeneratorRuntime().wrap(function _callee14$(_context14) {
             while (1) switch (_context14.prev = _context14.next) {
               case 0:
@@ -15064,7 +15064,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('If @min parameter is set, decreasing the value sets the min value', /*#__PURE__*/function () {
-        var _ref35 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+        var _ref35 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
           return _regeneratorRuntime().wrap(function _callee15$(_context15) {
             while (1) switch (_context15.prev = _context15.next) {
               case 0:
@@ -15093,7 +15093,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('If @min & @minReachedTooltip parameter are set, it renders the tooltip', /*#__PURE__*/function () {
-        var _ref36 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
+        var _ref36 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
           var _document$querySelect2;
           return _regeneratorRuntime().wrap(function _callee16$(_context16) {
             while (1) switch (_context16.prev = _context16.next) {
@@ -15128,7 +15128,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
     });
     (0, _qunit.module)('On user input', function () {
       (0, _qunit.test)('if the inputed value is above the max value, the max value is set', /*#__PURE__*/function () {
-        var _ref37 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
+        var _ref37 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
           return _regeneratorRuntime().wrap(function _callee17$(_context17) {
             while (1) switch (_context17.prev = _context17.next) {
               case 0:
@@ -15159,7 +15159,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('if the inputed value is below the min value, the min value is set', /*#__PURE__*/function () {
-        var _ref38 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
+        var _ref38 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
           return _regeneratorRuntime().wrap(function _callee18$(_context18) {
             while (1) switch (_context18.prev = _context18.next) {
               case 0:
@@ -15191,7 +15191,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
       }());
     });
     (0, _qunit.test)('The @onChange method receives the updated value', /*#__PURE__*/function () {
-      var _ref39 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
+      var _ref39 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
         return _regeneratorRuntime().wrap(function _callee19$(_context19) {
           while (1) switch (_context19.prev = _context19.next) {
             case 0:
@@ -15223,7 +15223,7 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('The buttons and the input are disabled when the @disabled parameter is truthy', /*#__PURE__*/function () {
-      var _ref40 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
+      var _ref40 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
         return _regeneratorRuntime().wrap(function _callee20$(_context20) {
           while (1) switch (_context20.prev = _context20.next) {
             case 0:
@@ -15265,7 +15265,7 @@ define("dummy/tests/integration/components/o-s-s/panel-row-test", ["qunit", "emb
   (0, _qunit.module)('Integration | Component | o-s-s/panel-row', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -15293,7 +15293,7 @@ define("dummy/tests/integration/components/o-s-s/panel-row-test", ["qunit", "emb
       };
     }());
     (0, _qunit.test)('It renders the @icon properly', /*#__PURE__*/function () {
-      var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref5 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -15321,7 +15321,7 @@ define("dummy/tests/integration/components/o-s-s/panel-row-test", ["qunit", "emb
       };
     }());
     (0, _qunit.test)('it renders the @label properly', /*#__PURE__*/function () {
-      var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref6 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -15361,7 +15361,7 @@ define("dummy/tests/integration/components/o-s-s/panel-test", ["qunit", "ember-q
   (0, _qunit.module)('Integration | Component | o-s-s/panel', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -15394,7 +15394,7 @@ define("dummy/tests/integration/components/o-s-s/panel-test", ["qunit", "ember-q
       };
     }());
     (0, _qunit.test)('it should render the content separator if the header exists', /*#__PURE__*/function () {
-      var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -15427,7 +15427,7 @@ define("dummy/tests/integration/components/o-s-s/panel-test", ["qunit", "ember-q
       };
     }());
     (0, _qunit.test)('it should render the footer separator if the content exists', /*#__PURE__*/function () {
-      var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref11 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -15461,7 +15461,7 @@ define("dummy/tests/integration/components/o-s-s/panel-test", ["qunit", "ember-q
       };
     }());
     (0, _qunit.test)('it should not render the content separator if the header does not exist', /*#__PURE__*/function () {
-      var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
@@ -15494,7 +15494,7 @@ define("dummy/tests/integration/components/o-s-s/panel-test", ["qunit", "ember-q
       };
     }());
     (0, _qunit.test)('it should not render the footer separator if the content does not exist', /*#__PURE__*/function () {
-      var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+      var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
@@ -15526,7 +15526,7 @@ define("dummy/tests/integration/components/o-s-s/panel-test", ["qunit", "ember-q
       };
     }());
     (0, _qunit.test)('If the header named-block is defined, it is properly rendered', /*#__PURE__*/function () {
-      var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+      var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
         return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
@@ -15558,7 +15558,7 @@ define("dummy/tests/integration/components/o-s-s/panel-test", ["qunit", "ember-q
       };
     }());
     (0, _qunit.test)('If the content named-block is defined, it is properly rendered', /*#__PURE__*/function () {
-      var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+      var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
         return _regeneratorRuntime().wrap(function _callee7$(_context7) {
           while (1) switch (_context7.prev = _context7.next) {
             case 0:
@@ -15590,7 +15590,7 @@ define("dummy/tests/integration/components/o-s-s/panel-test", ["qunit", "ember-q
       };
     }());
     (0, _qunit.test)('If the footer named-block is defined, it is properly rendered', /*#__PURE__*/function () {
-      var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+      var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
         return _regeneratorRuntime().wrap(function _callee8$(_context8) {
           while (1) switch (_context8.prev = _context8.next) {
             case 0:
@@ -15637,7 +15637,7 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
       this.validates = _sinon.default.stub();
     });
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref23 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -15665,7 +15665,7 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
       };
     }());
     (0, _qunit.test)('it renders the @placeholder', /*#__PURE__*/function () {
-      var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref24 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -15693,7 +15693,7 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
       };
     }());
     (0, _qunit.test)('it displays the error message when the @errorMessage is non-empty', /*#__PURE__*/function () {
-      var _ref25 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref25 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -15722,7 +15722,7 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
       };
     }());
     (0, _qunit.test)('The input is set to password, thus hiding characters, by default', /*#__PURE__*/function () {
-      var _ref26 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref26 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
@@ -15750,7 +15750,7 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
       };
     }());
     (0, _qunit.test)('Clicking on the eye icon sets the input type to text, thus making the text readable', /*#__PURE__*/function () {
-      var _ref27 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+      var _ref27 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
@@ -15782,7 +15782,7 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
       };
     }());
     (0, _qunit.test)('Clicking on the eye-slash icon sets the input type to password, thus hiding the text', /*#__PURE__*/function () {
-      var _ref28 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+      var _ref28 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
         return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
@@ -15818,7 +15818,7 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
       };
     }());
     (0, _qunit.test)('If the password regex is matched, and the @validates method is passed, then the status of the validation is returned', /*#__PURE__*/function () {
-      var _ref29 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+      var _ref29 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
         return _regeneratorRuntime().wrap(function _callee7$(_context7) {
           while (1) switch (_context7.prev = _context7.next) {
             case 0:
@@ -15851,7 +15851,7 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
       };
     }());
     (0, _qunit.test)('If the password regex isnt matched, and the @validates method is passed, then the status of the validation is returned', /*#__PURE__*/function () {
-      var _ref30 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+      var _ref30 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
         return _regeneratorRuntime().wrap(function _callee8$(_context8) {
           while (1) switch (_context8.prev = _context8.next) {
             case 0:
@@ -15884,7 +15884,7 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
       };
     }());
     (0, _qunit.test)('The password validation is not enabled if the @validates method is not passed', /*#__PURE__*/function () {
-      var _ref31 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+      var _ref31 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
         return _regeneratorRuntime().wrap(function _callee9$(_context9) {
           while (1) switch (_context9.prev = _context9.next) {
             case 0:
@@ -15917,7 +15917,7 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
       };
     }());
     (0, _qunit.test)('If the @validates method is passed, the validators states are visible', /*#__PURE__*/function () {
-      var _ref32 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+      var _ref32 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
         return _regeneratorRuntime().wrap(function _callee10$(_context10) {
           while (1) switch (_context10.prev = _context10.next) {
             case 0:
@@ -15947,7 +15947,7 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
     }());
     (0, _qunit.module)('Validators', function () {
       (0, _qunit.test)('Uppercase - if no uppercase character is inputed, a validator error is shown', /*#__PURE__*/function () {
-        var _ref33 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        var _ref33 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
               case 0:
@@ -15976,7 +15976,7 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
         };
       }());
       (0, _qunit.test)('Uppercase - if an uppercase character is inputed, a validator success is shown', /*#__PURE__*/function () {
-        var _ref34 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+        var _ref34 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
           return _regeneratorRuntime().wrap(function _callee12$(_context12) {
             while (1) switch (_context12.prev = _context12.next) {
               case 0:
@@ -16005,7 +16005,7 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
         };
       }());
       (0, _qunit.test)('Number - if no number is inputed, a validator error is shown', /*#__PURE__*/function () {
-        var _ref35 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+        var _ref35 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
           return _regeneratorRuntime().wrap(function _callee13$(_context13) {
             while (1) switch (_context13.prev = _context13.next) {
               case 0:
@@ -16034,7 +16034,7 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
         };
       }());
       (0, _qunit.test)('Uppercase - if a number is inputed, a validator success is shown', /*#__PURE__*/function () {
-        var _ref36 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
+        var _ref36 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
           return _regeneratorRuntime().wrap(function _callee14$(_context14) {
             while (1) switch (_context14.prev = _context14.next) {
               case 0:
@@ -16063,7 +16063,7 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
         };
       }());
       (0, _qunit.test)('Length - if the password is not at least 8 characters long, a validator error is shown', /*#__PURE__*/function () {
-        var _ref37 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+        var _ref37 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
           return _regeneratorRuntime().wrap(function _callee15$(_context15) {
             while (1) switch (_context15.prev = _context15.next) {
               case 0:
@@ -16092,7 +16092,7 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
         };
       }());
       (0, _qunit.test)('Length - if the password has 8 characters, a validator success is shown', /*#__PURE__*/function () {
-        var _ref38 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
+        var _ref38 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
           return _regeneratorRuntime().wrap(function _callee16$(_context16) {
             while (1) switch (_context16.prev = _context16.next) {
               case 0:
@@ -16121,7 +16121,7 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
         };
       }());
       (0, _qunit.test)('When all validators are matched, the @validates method sends a truthy argument', /*#__PURE__*/function () {
-        var _ref39 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
+        var _ref39 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
           return _regeneratorRuntime().wrap(function _callee17$(_context17) {
             while (1) switch (_context17.prev = _context17.next) {
               case 0:
@@ -16163,7 +16163,7 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
         };
       });
       (0, _qunit.test)('The custom validator is visible', /*#__PURE__*/function () {
-        var _ref40 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
+        var _ref40 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
           return _regeneratorRuntime().wrap(function _callee18$(_context18) {
             while (1) switch (_context18.prev = _context18.next) {
               case 0:
@@ -16193,7 +16193,7 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
         };
       }());
       (0, _qunit.test)('Lowercase - if no lowercase character is inputed, a validator error is shown', /*#__PURE__*/function () {
-        var _ref41 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
+        var _ref41 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
           return _regeneratorRuntime().wrap(function _callee19$(_context19) {
             while (1) switch (_context19.prev = _context19.next) {
               case 0:
@@ -16223,7 +16223,7 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
         };
       }());
       (0, _qunit.test)('Lowercase - if an lowercase character is inputed, a validator success is shown', /*#__PURE__*/function () {
-        var _ref42 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
+        var _ref42 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
           return _regeneratorRuntime().wrap(function _callee20$(_context20) {
             while (1) switch (_context20.prev = _context20.next) {
               case 0:
@@ -16253,7 +16253,7 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
         };
       }());
       (0, _qunit.test)('When all validators are matched, the @validates method sends a truthy argument', /*#__PURE__*/function () {
-        var _ref43 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee21(assert) {
+        var _ref43 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee21(assert) {
           return _regeneratorRuntime().wrap(function _callee21$(_context21) {
             while (1) switch (_context21.prev = _context21.next) {
               case 0:
@@ -16287,7 +16287,7 @@ define("dummy/tests/integration/components/o-s-s/password-input-test", ["qunit",
       }());
     });
     (0, _qunit.test)('it throws an error when the @value parameter is missing', /*#__PURE__*/function () {
-      var _ref44 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee22(assert) {
+      var _ref44 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee22(assert) {
         return _regeneratorRuntime().wrap(function _callee22$(_context22) {
           while (1) switch (_context22.prev = _context22.next) {
             case 0:
@@ -16328,7 +16328,7 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
   (0, _qunit.module)('Integration | Component | o-s-s/phone-number', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -16357,7 +16357,7 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
       };
     }());
     (0, _qunit.test)('The passed @number parameter is properly displayed in the input', /*#__PURE__*/function () {
-      var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -16386,7 +16386,7 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
       };
     }());
     (0, _qunit.test)('It properly loads the correct country when the @prefix parameter is defined', /*#__PURE__*/function () {
-      var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -16416,7 +16416,7 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
     }());
     (0, _qunit.module)('Country selector', function () {
       (0, _qunit.test)('Clicking on the Flag button opens the country selector', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -16448,7 +16448,7 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
         };
       }());
       (0, _qunit.test)('Selecting a new country in the Country selector triggers the onChange method', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -16484,7 +16484,7 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
         };
       }());
       (0, _qunit.test)('Typing in the search input filters the results', /*#__PURE__*/function () {
-        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           var clickableRows;
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
@@ -16523,7 +16523,7 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
         };
       }());
       (0, _qunit.test)('Searching by Country Code Prefix works', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           var clickableRows;
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
@@ -16564,7 +16564,7 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
     });
     (0, _qunit.module)('Phone Number Input', function () {
       (0, _qunit.test)('Typing numbers in the Phone input triggers the onChange method', /*#__PURE__*/function () {
-        var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -16599,7 +16599,7 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
         };
       }());
       (0, _qunit.test)('Typing non-numeric characters does not apply changes', /*#__PURE__*/function () {
-        var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -16640,7 +16640,7 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
         };
       }());
       (0, _qunit.test)('it displays an error if the number contains a + symbol', /*#__PURE__*/function () {
-        var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref23 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           var _this = this;
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
@@ -16685,7 +16685,7 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('It throws an error if @prefix is not passed', /*#__PURE__*/function () {
-        var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        var _ref24 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
               case 0:
@@ -16718,7 +16718,7 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
         };
       }());
       (0, _qunit.test)('It throws an error if @number is not passed', /*#__PURE__*/function () {
-        var _ref25 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+        var _ref25 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
           return _regeneratorRuntime().wrap(function _callee12$(_context12) {
             while (1) switch (_context12.prev = _context12.next) {
               case 0:
@@ -16751,7 +16751,7 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
         };
       }());
       (0, _qunit.test)('It throws an error if @onChange is not passed', /*#__PURE__*/function () {
-        var _ref26 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+        var _ref26 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
           return _regeneratorRuntime().wrap(function _callee13$(_context13) {
             while (1) switch (_context13.prev = _context13.next) {
               case 0:
@@ -16806,7 +16806,7 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
     });
     (0, _qunit.module)('it renders', function () {
       (0, _qunit.test)('with all required named blocks', /*#__PURE__*/function () {
-        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+        var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
           return _regeneratorRuntime().wrap(function _callee$(_context) {
             while (1) switch (_context.prev = _context.next) {
               case 0:
@@ -16854,7 +16854,7 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('custom empty state is properly rendered', /*#__PURE__*/function () {
-        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+        var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
           return _regeneratorRuntime().wrap(function _callee2$(_context2) {
             while (1) switch (_context2.prev = _context2.next) {
               case 0:
@@ -16909,7 +16909,7 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
     });
     (0, _qunit.module)('with @selectedItems', function () {
       (0, _qunit.test)('Passing @selectedItems parameter displays the items', /*#__PURE__*/function () {
-        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           var domTags;
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
@@ -16951,7 +16951,7 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('Passing empty @selectedItems parameter displays nothing', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -16989,7 +16989,7 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('Passing empty @selectedItems and @placeholder parameters displays placeholder', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -17032,7 +17032,7 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
         this.items = ['value1', 'value2'];
       });
       (0, _qunit.test)('Passing @items parameter displays the items in InfiniteSelect', /*#__PURE__*/function () {
-        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           var domTags;
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
@@ -17083,7 +17083,7 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
         this.onChange = onChange;
       });
       (0, _qunit.test)('selecting item triggers onChange with selection operation', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
@@ -17129,7 +17129,7 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
     });
     (0, _qunit.module)('with @searchPlaceholder', function () {
       (0, _qunit.test)('Passing @items parameter displays the items in InfiniteSelect', /*#__PURE__*/function () {
-        var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -17172,7 +17172,7 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
     });
     (0, _qunit.module)('with @onSearch', function () {
       (0, _qunit.test)('search is correctly called', /*#__PURE__*/function () {
-        var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -17226,7 +17226,7 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
         });
       });
       (0, _qunit.test)('search is correctly call', /*#__PURE__*/function () {
-        var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref23 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
@@ -17281,7 +17281,7 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
         this.items = ['value1', 'value2', 'value3'];
       });
       (0, _qunit.test)('the dropdown has the right class assigned to it', /*#__PURE__*/function () {
-        var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        var _ref24 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
               case 0:
@@ -17326,7 +17326,7 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('without selected-item named block', /*#__PURE__*/function () {
-        var _ref25 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+        var _ref25 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
           return _regeneratorRuntime().wrap(function _callee12$(_context12) {
             while (1) switch (_context12.prev = _context12.next) {
               case 0:
@@ -17357,7 +17357,7 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('without option-item named block', /*#__PURE__*/function () {
-        var _ref26 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+        var _ref26 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
           return _regeneratorRuntime().wrap(function _callee13$(_context13) {
             while (1) switch (_context13.prev = _context13.next) {
               case 0:
@@ -17408,7 +17408,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
       this.checkedValue = 42;
     });
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -17437,7 +17437,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
     }());
     (0, _qunit.module)('@value arg behaviour', function () {
       (0, _qunit.test)('It renders the progress-bar--inner with the correct width when @value is specified', /*#__PURE__*/function () {
-        var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+        var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
           var innerBar, inlineStyle;
           return _regeneratorRuntime().wrap(function _callee2$(_context2) {
             while (1) switch (_context2.prev = _context2.next) {
@@ -17469,7 +17469,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('It renders the progress-bar--inner with the correct width when @value is updated from one value to another', /*#__PURE__*/function () {
-        var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           var _inlineStyle, _inlineStyle2;
           var innerBar, inlineStyle;
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
@@ -17507,7 +17507,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
     });
     (0, _qunit.module)('@size arg behaviour', function () {
       (0, _qunit.test)('if the value is "xs", the progress bar height is the proper height', /*#__PURE__*/function () {
-        var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref23 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           var innerBar;
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
@@ -17538,7 +17538,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('if the value is "sm", the progress bar height is the proper height', /*#__PURE__*/function () {
-        var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref24 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           var innerBar;
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
@@ -17569,7 +17569,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('if the value is "lg", the progress bar height is the proper height', /*#__PURE__*/function () {
-        var _ref25 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref25 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           var innerBar;
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
@@ -17600,7 +17600,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('if the value is unspecified, the progress bar height is the proper height', /*#__PURE__*/function () {
-        var _ref26 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref26 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           var innerBar;
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
@@ -17633,7 +17633,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
     });
     (0, _qunit.module)('@label arg behaviour', function () {
       (0, _qunit.test)('if the value is specified, the label is displayed', /*#__PURE__*/function () {
-        var _ref27 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref27 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -17662,7 +17662,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('if the value is not specified, the label is not displayed', /*#__PURE__*/function () {
-        var _ref28 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref28 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -17692,7 +17692,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
     });
     (0, _qunit.module)('@displayValue arg behaviour', function () {
       (0, _qunit.test)('if the value is true, the value is displayed', /*#__PURE__*/function () {
-        var _ref29 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref29 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
@@ -17721,7 +17721,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('if the value is false, the value is not displayed', /*#__PURE__*/function () {
-        var _ref30 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        var _ref30 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
               case 0:
@@ -17749,7 +17749,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('if the value is unspecified, the value is not displayed', /*#__PURE__*/function () {
-        var _ref31 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+        var _ref31 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
           return _regeneratorRuntime().wrap(function _callee12$(_context12) {
             while (1) switch (_context12.prev = _context12.next) {
               case 0:
@@ -17779,7 +17779,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
     });
     (0, _qunit.module)('@skin arg behaviour', function () {
       (0, _qunit.test)('if the value is "warning", the progress bar has the correct class', /*#__PURE__*/function () {
-        var _ref32 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+        var _ref32 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
           return _regeneratorRuntime().wrap(function _callee13$(_context13) {
             while (1) switch (_context13.prev = _context13.next) {
               case 0:
@@ -17807,7 +17807,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('if the value is "success", the progress bar has the correct class', /*#__PURE__*/function () {
-        var _ref33 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
+        var _ref33 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
           return _regeneratorRuntime().wrap(function _callee14$(_context14) {
             while (1) switch (_context14.prev = _context14.next) {
               case 0:
@@ -17835,7 +17835,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('if the value is "danger", the progress bar has the correct class', /*#__PURE__*/function () {
-        var _ref34 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+        var _ref34 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
           return _regeneratorRuntime().wrap(function _callee15$(_context15) {
             while (1) switch (_context15.prev = _context15.next) {
               case 0:
@@ -17863,7 +17863,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('if the value is unspecified, the progress bar has the correct class', /*#__PURE__*/function () {
-        var _ref35 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
+        var _ref35 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
           return _regeneratorRuntime().wrap(function _callee16$(_context16) {
             while (1) switch (_context16.prev = _context16.next) {
               case 0:
@@ -17893,7 +17893,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
     });
     (0, _qunit.module)('@coloredBackground arg behaviour', function () {
       (0, _qunit.test)('if the value is true, the colored-background class is added', /*#__PURE__*/function () {
-        var _ref36 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
+        var _ref36 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
           return _regeneratorRuntime().wrap(function _callee17$(_context17) {
             while (1) switch (_context17.prev = _context17.next) {
               case 0:
@@ -17921,7 +17921,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('if the value is false, the colored-background class is not added', /*#__PURE__*/function () {
-        var _ref37 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
+        var _ref37 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
           return _regeneratorRuntime().wrap(function _callee18$(_context18) {
             while (1) switch (_context18.prev = _context18.next) {
               case 0:
@@ -17949,7 +17949,7 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
         };
       }());
       (0, _qunit.test)('if the value is unspecified, the colored-background class is not added', /*#__PURE__*/function () {
-        var _ref38 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
+        var _ref38 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
           return _regeneratorRuntime().wrap(function _callee19$(_context19) {
             while (1) switch (_context19.prev = _context19.next) {
               case 0:
@@ -17990,7 +17990,7 @@ define("dummy/tests/integration/components/o-s-s/radio-button-test", ["qunit", "
   (0, _qunit.module)('Integration | Component | o-s-s/radio-button', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -18018,7 +18018,7 @@ define("dummy/tests/integration/components/o-s-s/radio-button-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('It shows the selected state if the @selected parameter is true', /*#__PURE__*/function () {
-      var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -18046,7 +18046,7 @@ define("dummy/tests/integration/components/o-s-s/radio-button-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('It shows the empty state if the @selected parameter is false', /*#__PURE__*/function () {
-      var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref11 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -18075,7 +18075,7 @@ define("dummy/tests/integration/components/o-s-s/radio-button-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('It shows the selected/disabled state if the @selected parameter is true and the @disabled parameter is true', /*#__PURE__*/function () {
-      var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
@@ -18104,7 +18104,7 @@ define("dummy/tests/integration/components/o-s-s/radio-button-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('It shows the empty/disabled state if the @selected parameter is false and the @disabled parameter is true', /*#__PURE__*/function () {
-      var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+      var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
@@ -18134,7 +18134,7 @@ define("dummy/tests/integration/components/o-s-s/radio-button-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('It triggers the onChange method on click when the @disabled parameter is false', /*#__PURE__*/function () {
-      var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+      var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
         return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
@@ -18167,7 +18167,7 @@ define("dummy/tests/integration/components/o-s-s/radio-button-test", ["qunit", "
       };
     }());
     (0, _qunit.test)('It triggers the onChange method on click when the @disabled parameter is true', /*#__PURE__*/function () {
-      var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+      var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
         return _regeneratorRuntime().wrap(function _callee7$(_context7) {
           while (1) switch (_context7.prev = _context7.next) {
             case 0:
@@ -18200,7 +18200,7 @@ define("dummy/tests/integration/components/o-s-s/radio-button-test", ["qunit", "
       };
     }());
     (0, _qunit.test)("It doesn't trigger the onChange method on click when the @disabled parameter is true", /*#__PURE__*/function () {
-      var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+      var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
         return _regeneratorRuntime().wrap(function _callee8$(_context8) {
           while (1) switch (_context8.prev = _context8.next) {
             case 0:
@@ -18256,7 +18256,7 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
     });
     (0, _qunit.module)('value changes', function () {
       (0, _qunit.test)('the onChange function is called with the selected item', /*#__PURE__*/function () {
-        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+        var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
           return _regeneratorRuntime().wrap(function _callee$(_context) {
             while (1) switch (_context.prev = _context.next) {
               case 0:
@@ -18299,7 +18299,7 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
     });
     (0, _qunit.module)('items display', function () {
       (0, _qunit.test)('the option block properly displays each item', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+        var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
           return _regeneratorRuntime().wrap(function _callee2$(_context2) {
             while (1) switch (_context2.prev = _context2.next) {
               case 0:
@@ -18343,7 +18343,7 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
     });
     (0, _qunit.module)('selected value display', function () {
       (0, _qunit.test)('the default placeholder is displayed if the @value arg is null-ish', /*#__PURE__*/function () {
-        var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
               case 0:
@@ -18378,7 +18378,7 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('the passed @placeholder arg is displayed if the @value arg is null-ish', /*#__PURE__*/function () {
-        var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -18413,7 +18413,7 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)("the current value's label attr is displayed", /*#__PURE__*/function () {
-        var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref23 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -18448,7 +18448,7 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)("the current value's is displayed with the targetLabel arg when passed", /*#__PURE__*/function () {
-        var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref24 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -18483,7 +18483,7 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)("the current value's is displayed with the right class and active icon in the options", /*#__PURE__*/function () {
-        var _ref25 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref25 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
@@ -18522,7 +18522,7 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('the selected value is displayed using the selected named block if provided', /*#__PURE__*/function () {
-        var _ref26 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref26 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -18562,7 +18562,7 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
     });
     (0, _qunit.module)('disabled state', function () {
       (0, _qunit.test)('the dropdown does not open when the select is clicked', /*#__PURE__*/function () {
-        var _ref27 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref27 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -18602,7 +18602,7 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
     (0, _qunit.module)('feedback states', function () {
       (0, _qunit.module)('errorful state', function () {
         (0, _qunit.test)('the right class is applied to the select container', /*#__PURE__*/function () {
-          var _ref28 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+          var _ref28 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
             return _regeneratorRuntime().wrap(function _callee10$(_context10) {
               while (1) switch (_context10.prev = _context10.next) {
                 case 0:
@@ -18636,7 +18636,7 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
           };
         }());
         (0, _qunit.test)('the error message is displayed under the select field', /*#__PURE__*/function () {
-          var _ref29 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+          var _ref29 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
             return _regeneratorRuntime().wrap(function _callee11$(_context11) {
               while (1) switch (_context11.prev = _context11.next) {
                 case 0:
@@ -18672,7 +18672,7 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
       });
       (0, _qunit.module)('successful state', function () {
         (0, _qunit.test)('the right class is applied to the select container', /*#__PURE__*/function () {
-          var _ref30 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+          var _ref30 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
             return _regeneratorRuntime().wrap(function _callee12$(_context12) {
               while (1) switch (_context12.prev = _context12.next) {
                 case 0:
@@ -18706,7 +18706,7 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
           };
         }());
         (0, _qunit.test)('the error message is displayed under the select field', /*#__PURE__*/function () {
-          var _ref31 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+          var _ref31 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
             return _regeneratorRuntime().wrap(function _callee13$(_context13) {
               while (1) switch (_context13.prev = _context13.next) {
                 case 0:
@@ -18743,7 +18743,7 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
     });
     (0, _qunit.module)('searching through the options', function () {
       (0, _qunit.test)('the search is not displayed if no onSearch arg is provided', /*#__PURE__*/function () {
-        var _ref32 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
+        var _ref32 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
           return _regeneratorRuntime().wrap(function _callee14$(_context14) {
             while (1) switch (_context14.prev = _context14.next) {
               case 0:
@@ -18781,7 +18781,7 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('the search is displayed if the @onSearch arg is provided', /*#__PURE__*/function () {
-        var _ref33 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+        var _ref33 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
           var _this = this;
           return _regeneratorRuntime().wrap(function _callee15$(_context15) {
             while (1) switch (_context15.prev = _context15.next) {
@@ -18836,7 +18836,7 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
     });
     (0, _qunit.module)('with @addressableAs', function () {
       (0, _qunit.test)('the dropdown has the right class assigned to it', /*#__PURE__*/function () {
-        var _ref34 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
+        var _ref34 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
           return _regeneratorRuntime().wrap(function _callee16$(_context16) {
             while (1) switch (_context16.prev = _context16.next) {
               case 0:
@@ -18876,7 +18876,7 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it throws an error if no @onChange arg is passed', /*#__PURE__*/function () {
-        var _ref35 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
+        var _ref35 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
           return _regeneratorRuntime().wrap(function _callee17$(_context17) {
             while (1) switch (_context17.prev = _context17.next) {
               case 0:
@@ -18905,7 +18905,7 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
         };
       }());
       (0, _qunit.test)('it throws an error if the component is invoked with no option named blocked', /*#__PURE__*/function () {
-        var _ref36 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
+        var _ref36 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
           return _regeneratorRuntime().wrap(function _callee18$(_context18) {
             while (1) switch (_context18.prev = _context18.next) {
               case 0:
@@ -18950,7 +18950,7 @@ define("dummy/tests/integration/components/o-s-s/side-panel-test", ["qunit", "em
       this.onClose = _sinon.default.stub();
     });
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -18979,7 +18979,7 @@ define("dummy/tests/integration/components/o-s-s/side-panel-test", ["qunit", "em
     }());
     (0, _qunit.module)('Named-blocks', function () {
       (0, _qunit.test)('The header named-block is properly displayed', /*#__PURE__*/function () {
-        var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+        var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
           return _regeneratorRuntime().wrap(function _callee2$(_context2) {
             while (1) switch (_context2.prev = _context2.next) {
               case 0:
@@ -19012,7 +19012,7 @@ define("dummy/tests/integration/components/o-s-s/side-panel-test", ["qunit", "em
         };
       }());
       (0, _qunit.test)('The main named-block is properly displayed', /*#__PURE__*/function () {
-        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
               case 0:
@@ -19045,7 +19045,7 @@ define("dummy/tests/integration/components/o-s-s/side-panel-test", ["qunit", "em
         };
       }());
       (0, _qunit.test)('The footer named-block is properly displayed', /*#__PURE__*/function () {
-        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -19080,7 +19080,7 @@ define("dummy/tests/integration/components/o-s-s/side-panel-test", ["qunit", "em
     });
     (0, _qunit.module)('The visibility of the side panel varies', function () {
       (0, _qunit.test)('When @visible is truthy, the side panel is visible', /*#__PURE__*/function () {
-        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -19111,7 +19111,7 @@ define("dummy/tests/integration/components/o-s-s/side-panel-test", ["qunit", "em
         };
       }());
       (0, _qunit.test)('When @visible is falsy, the side panel is not visible', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -19144,7 +19144,7 @@ define("dummy/tests/integration/components/o-s-s/side-panel-test", ["qunit", "em
     });
     (0, _qunit.module)('The width of the side panel varies', function () {
       (0, _qunit.test)('When @size is sm, the width is small', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
@@ -19174,7 +19174,7 @@ define("dummy/tests/integration/components/o-s-s/side-panel-test", ["qunit", "em
         };
       }());
       (0, _qunit.test)('When @size is md, the width is medium', /*#__PURE__*/function () {
-        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -19204,7 +19204,7 @@ define("dummy/tests/integration/components/o-s-s/side-panel-test", ["qunit", "em
         };
       }());
       (0, _qunit.test)('When @size is not defined, the default width is small', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -19236,7 +19236,7 @@ define("dummy/tests/integration/components/o-s-s/side-panel-test", ["qunit", "em
     });
     (0, _qunit.module)('Clicking outside the side panel (or clicking on the background) triggers the @onClose callback', function () {
       (0, _qunit.test)('When the backdrop is visible', /*#__PURE__*/function () {
-        var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
@@ -19270,7 +19270,7 @@ define("dummy/tests/integration/components/o-s-s/side-panel-test", ["qunit", "em
         };
       }());
       (0, _qunit.test)('When the backdrop is transparent', /*#__PURE__*/function () {
-        var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
               case 0:
@@ -19320,7 +19320,7 @@ define("dummy/tests/integration/components/o-s-s/side-panel/header-test", ["quni
       this.onClose = _sinon.default.stub();
     });
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref6 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -19348,7 +19348,7 @@ define("dummy/tests/integration/components/o-s-s/side-panel/header-test", ["quni
       };
     }());
     (0, _qunit.test)('Clicking on the close button triggers the @onClose callback', /*#__PURE__*/function () {
-      var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref7 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -19384,7 +19384,7 @@ define("dummy/tests/integration/components/o-s-s/side-panel/header-test", ["quni
         this.onReturn = _sinon.default.stub();
       });
       (0, _qunit.test)('When @onReturn is truthy, it displays the return arrow button', /*#__PURE__*/function () {
-        var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref8 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
               case 0:
@@ -19412,7 +19412,7 @@ define("dummy/tests/integration/components/o-s-s/side-panel/header-test", ["quni
         };
       }());
       (0, _qunit.test)('When @onReturn is falsy, it does not display the return arrow button', /*#__PURE__*/function () {
-        var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -19440,7 +19440,7 @@ define("dummy/tests/integration/components/o-s-s/side-panel/header-test", ["quni
         };
       }());
       (0, _qunit.test)('When the return button is clicked, @onReturn is called once', /*#__PURE__*/function () {
-        var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -19484,7 +19484,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
   (0, _qunit.module)('Integration | Component | o-s-s/skeleton', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -19513,7 +19513,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
     }());
     (0, _qunit.module)('@height parameters', function () {
       (0, _qunit.test)('Default height', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+        var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
           return _regeneratorRuntime().wrap(function _callee2$(_context2) {
             while (1) switch (_context2.prev = _context2.next) {
               case 0:
@@ -19543,7 +19543,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
         };
       }());
       (0, _qunit.test)('The style height should correspond to parameter value', /*#__PURE__*/function () {
-        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
               case 0:
@@ -19576,7 +19576,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
     });
     (0, _qunit.module)('@width parameters', function () {
       (0, _qunit.test)('Default width', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -19606,7 +19606,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
         };
       }());
       (0, _qunit.test)('The style width should correspond to parameter value', /*#__PURE__*/function () {
-        var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -19639,7 +19639,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
     });
     (0, _qunit.module)('@gap parameters', function () {
       (0, _qunit.test)('Default gap', /*#__PURE__*/function () {
-        var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -19667,7 +19667,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
         };
       }());
       (0, _qunit.test)('The has class corresponding to gap', /*#__PURE__*/function () {
-        var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref23 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
@@ -19698,7 +19698,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
     });
     (0, _qunit.module)('@multiple parameters', function () {
       (0, _qunit.test)('Default has one skeleton effect', /*#__PURE__*/function () {
-        var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref24 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           var items;
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
@@ -19728,7 +19728,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
         };
       }());
       (0, _qunit.test)('The content has multiple skeleton effect', /*#__PURE__*/function () {
-        var _ref25 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref25 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           var items;
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
@@ -19765,7 +19765,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
         this.width = 200;
       });
       (0, _qunit.test)('Default randomize is false', /*#__PURE__*/function () {
-        var _ref26 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref26 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           var item;
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
@@ -19795,7 +19795,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
         };
       }());
       (0, _qunit.test)('Randomize width is within a 15% range', /*#__PURE__*/function () {
-        var _ref27 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        var _ref27 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           var item;
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
@@ -19826,7 +19826,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
       }());
     });
     (0, _qunit.test)('@direction default value is row', /*#__PURE__*/function () {
-      var _ref28 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+      var _ref28 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
         return _regeneratorRuntime().wrap(function _callee12$(_context12) {
           while (1) switch (_context12.prev = _context12.next) {
             case 0:
@@ -19854,7 +19854,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
       };
     }());
     (0, _qunit.test)('@direction value is column if specified', /*#__PURE__*/function () {
-      var _ref29 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+      var _ref29 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
         return _regeneratorRuntime().wrap(function _callee13$(_context13) {
           while (1) switch (_context13.prev = _context13.next) {
             case 0:
@@ -19883,7 +19883,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
     }());
     (0, _qunit.module)('Extra attributes', function () {
       (0, _qunit.test)('passing an extra class is applied to the component', /*#__PURE__*/function () {
-        var _ref30 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
+        var _ref30 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
           return _regeneratorRuntime().wrap(function _callee14$(_context14) {
             while (1) switch (_context14.prev = _context14.next) {
               case 0:
@@ -19911,7 +19911,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
         };
       }());
       (0, _qunit.test)('passing data-control-name works', /*#__PURE__*/function () {
-        var _ref31 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+        var _ref31 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
           var inputWrapper;
           return _regeneratorRuntime().wrap(function _callee15$(_context15) {
             while (1) switch (_context15.prev = _context15.next) {
@@ -19943,7 +19943,7 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it throws an error if @direct is provided and does not match required values', /*#__PURE__*/function () {
-        var _ref32 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
+        var _ref32 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
           return _regeneratorRuntime().wrap(function _callee16$(_context16) {
             while (1) switch (_context16.prev = _context16.next) {
               case 0:
@@ -19975,6 +19975,555 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
   });
 });
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+define("dummy/tests/integration/components/o-s-s/slider-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"sinon",0,"@ember/template-factory"eaimeta@70e063a35619d71f
+  function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator.return && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, catch: function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
+  function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
+  function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+  function getSliderWidth(_x) {
+    return _getSliderWidth.apply(this, arguments);
+  }
+  function _getSliderWidth() {
+    _getSliderWidth = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee16(element) {
+      var computedStyle, rangePercentage;
+      return _regeneratorRuntime().wrap(function _callee16$(_context16) {
+        while (1) switch (_context16.prev = _context16.next) {
+          case 0:
+            _context16.next = 2;
+            return getComputedStyle(element);
+          case 2:
+            computedStyle = _context16.sent;
+            rangePercentage = computedStyle.getPropertyValue('--range-percentage').trim();
+            if (!rangePercentage.endsWith('%')) {
+              _context16.next = 6;
+              break;
+            }
+            return _context16.abrupt("return", rangePercentage);
+          case 6:
+            return _context16.abrupt("return", null);
+          case 7:
+          case "end":
+            return _context16.stop();
+        }
+      }, _callee16);
+    }));
+    return _getSliderWidth.apply(this, arguments);
+  }
+  (0, _qunit.module)('Integration | Component | o-s-s/slider', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.value = 10;
+      this.min = 0;
+      this.max = 100;
+      this.step = 1;
+      this.displayInputValue = false;
+      this.unit = 'percentage';
+    });
+    (0, _qunit.test)('it renders', /*#__PURE__*/function () {
+      var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+        return _regeneratorRuntime().wrap(function _callee$(_context) {
+          while (1) switch (_context.prev = _context.next) {
+            case 0:
+              _context.next = 2;
+              return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+              /*
+                <OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} />
+              */
+              {
+                "id": "pi+Z3J5r",
+                "block": "[[[8,[39,0],null,[[\"@value\",\"@displayInputValue\",\"@unit\"],[[30,0,[\"value\"]],[30,0,[\"displayInputValue\"]],[30,0,[\"unit\"]]]],null]],[],false,[\"o-s-s/slider\"]]",
+                "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/slider-test.ts",
+                "isStrictMode": false
+              }));
+            case 2:
+              assert.dom('.oss-slider--range-container').exists();
+            case 3:
+            case "end":
+              return _context.stop();
+          }
+        }, _callee);
+      }));
+      return function (_x2) {
+        return _ref16.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('it renders the slider as disabled when @disabled is truthy', /*#__PURE__*/function () {
+      var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+          while (1) switch (_context2.prev = _context2.next) {
+            case 0:
+              this.displayInputValue = true;
+              _context2.next = 3;
+              return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+              /*
+                <OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} @disabled={{true}}/>
+              */
+              {
+                "id": "SuJRXXKM",
+                "block": "[[[8,[39,0],null,[[\"@value\",\"@displayInputValue\",\"@unit\",\"@disabled\"],[[30,0,[\"value\"]],[30,0,[\"displayInputValue\"]],[30,0,[\"unit\"]],true]],null]],[],false,[\"o-s-s/slider\"]]",
+                "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/slider-test.ts",
+                "isStrictMode": false
+              }));
+            case 3:
+              assert.dom('.oss-slider--range').isDisabled();
+            case 4:
+            case "end":
+              return _context2.stop();
+          }
+        }, _callee2, this);
+      }));
+      return function (_x3) {
+        return _ref17.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('it renders the number input as disabled when @disabled is truthy', /*#__PURE__*/function () {
+      var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              this.displayInputValue = true;
+              _context3.next = 3;
+              return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+              /*
+                <OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} @disabled={{true}}/>
+              */
+              {
+                "id": "SuJRXXKM",
+                "block": "[[[8,[39,0],null,[[\"@value\",\"@displayInputValue\",\"@unit\",\"@disabled\"],[[30,0,[\"value\"]],[30,0,[\"displayInputValue\"]],[30,0,[\"unit\"]],true]],null]],[],false,[\"o-s-s/slider\"]]",
+                "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/slider-test.ts",
+                "isStrictMode": false
+              }));
+            case 3:
+              assert.dom('.oss-slider--number-input').isDisabled();
+            case 4:
+            case "end":
+              return _context3.stop();
+          }
+        }, _callee3, this);
+      }));
+      return function (_x4) {
+        return _ref18.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('it renders the slider width to the proper size', /*#__PURE__*/function () {
+      var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var element;
+        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+          while (1) switch (_context4.prev = _context4.next) {
+            case 0:
+              this.displayInputValue = true;
+              _context4.next = 3;
+              return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+              /*
+                <OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} />
+              */
+              {
+                "id": "pi+Z3J5r",
+                "block": "[[[8,[39,0],null,[[\"@value\",\"@displayInputValue\",\"@unit\"],[[30,0,[\"value\"]],[30,0,[\"displayInputValue\"]],[30,0,[\"unit\"]]]],null]],[],false,[\"o-s-s/slider\"]]",
+                "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/slider-test.ts",
+                "isStrictMode": false
+              }));
+            case 3:
+              _context4.next = 5;
+              return (0, _testHelpers.fillIn)('.oss-slider--number-input', '10');
+            case 5:
+              element = this.element.querySelector('.oss-slider--range');
+              assert.dom(element).exists();
+              _context4.t0 = assert;
+              _context4.next = 10;
+              return getSliderWidth(element);
+            case 10:
+              _context4.t1 = _context4.sent;
+              _context4.t0.strictEqual.call(_context4.t0, _context4.t1, '10%');
+            case 12:
+            case "end":
+              return _context4.stop();
+          }
+        }, _callee4, this);
+      }));
+      return function (_x5) {
+        return _ref19.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('the tooltip has the proper value', /*#__PURE__*/function () {
+      var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+          while (1) switch (_context5.prev = _context5.next) {
+            case 0:
+              this.displayInputValue = true;
+              this.onChange = _sinon.default.stub();
+              _context5.next = 4;
+              return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+              /*
+                <OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} />
+              */
+              {
+                "id": "pi+Z3J5r",
+                "block": "[[[8,[39,0],null,[[\"@value\",\"@displayInputValue\",\"@unit\"],[[30,0,[\"value\"]],[30,0,[\"displayInputValue\"]],[30,0,[\"unit\"]]]],null]],[],false,[\"o-s-s/slider\"]]",
+                "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/slider-test.ts",
+                "isStrictMode": false
+              }));
+            case 4:
+              _context5.next = 6;
+              return (0, _testHelpers.fillIn)('.oss-slider--number-input', '10');
+            case 6:
+              assert.dom('.oss-slider--tooltip').hasText('10%');
+            case 7:
+            case "end":
+              return _context5.stop();
+          }
+        }, _callee5, this);
+      }));
+      return function (_x6) {
+        return _ref20.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('the tooltip is rendered without unit when @unit is not provided', /*#__PURE__*/function () {
+      var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+          while (1) switch (_context6.prev = _context6.next) {
+            case 0:
+              this.displayInputValue = true;
+              this.onChange = _sinon.default.stub();
+              _context6.next = 4;
+              return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+              /*
+                <OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} />
+              */
+              {
+                "id": "AV3dQ/4z",
+                "block": "[[[8,[39,0],null,[[\"@value\",\"@displayInputValue\"],[[30,0,[\"value\"]],[30,0,[\"displayInputValue\"]]]],null]],[],false,[\"o-s-s/slider\"]]",
+                "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/slider-test.ts",
+                "isStrictMode": false
+              }));
+            case 4:
+              _context6.next = 6;
+              return (0, _testHelpers.fillIn)('.oss-slider--number-input', '10');
+            case 6:
+              assert.dom('.oss-slider--tooltip').hasText('10');
+            case 7:
+            case "end":
+              return _context6.stop();
+          }
+        }, _callee6, this);
+      }));
+      return function (_x7) {
+        return _ref21.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('the @onChange method is called with the proper value', /*#__PURE__*/function () {
+      var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+          while (1) switch (_context7.prev = _context7.next) {
+            case 0:
+              this.displayInputValue = true;
+              this.onChange = _sinon.default.stub();
+              _context7.next = 4;
+              return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+              /*
+                <OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} @onChange={{this.onChange}}/>
+              */
+              {
+                "id": "kJwFiQCH",
+                "block": "[[[8,[39,0],null,[[\"@value\",\"@displayInputValue\",\"@unit\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"displayInputValue\"]],[30,0,[\"unit\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/slider\"]]",
+                "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/slider-test.ts",
+                "isStrictMode": false
+              }));
+            case 4:
+              _context7.next = 6;
+              return (0, _testHelpers.fillIn)('.oss-slider--number-input', '10');
+            case 6:
+              assert.ok(this.onChange.calledWith(10));
+            case 7:
+            case "end":
+              return _context7.stop();
+          }
+        }, _callee7, this);
+      }));
+      return function (_x8) {
+        return _ref22.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.module)('value number input', function () {
+      (0, _qunit.test)('it renders the number input when @displayInputValue is truthy', /*#__PURE__*/function () {
+        var _ref23 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+          return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+            while (1) switch (_context8.prev = _context8.next) {
+              case 0:
+                this.displayInputValue = true;
+                _context8.next = 3;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} />
+                */
+                {
+                  "id": "pi+Z3J5r",
+                  "block": "[[[8,[39,0],null,[[\"@value\",\"@displayInputValue\",\"@unit\"],[[30,0,[\"value\"]],[30,0,[\"displayInputValue\"]],[30,0,[\"unit\"]]]],null]],[],false,[\"o-s-s/slider\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/slider-test.ts",
+                  "isStrictMode": false
+                }));
+              case 3:
+                assert.dom('.oss-slider--number-input').exists();
+              case 4:
+              case "end":
+                return _context8.stop();
+            }
+          }, _callee8, this);
+        }));
+        return function (_x9) {
+          return _ref23.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('it renders the slider with a value of 0 when @value is not a number', /*#__PURE__*/function () {
+        var _ref24 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+          var element;
+          return _regeneratorRuntime().wrap(function _callee9$(_context9) {
+            while (1) switch (_context9.prev = _context9.next) {
+              case 0:
+                this.displayInputValue = true;
+                _context9.next = 3;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} />
+                */
+                {
+                  "id": "pi+Z3J5r",
+                  "block": "[[[8,[39,0],null,[[\"@value\",\"@displayInputValue\",\"@unit\"],[[30,0,[\"value\"]],[30,0,[\"displayInputValue\"]],[30,0,[\"unit\"]]]],null]],[],false,[\"o-s-s/slider\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/slider-test.ts",
+                  "isStrictMode": false
+                }));
+              case 3:
+                _context9.next = 5;
+                return (0, _testHelpers.fillIn)('.oss-slider--number-input', '');
+              case 5:
+                assert.dom('.oss-slider--number-input').exists().hasText('');
+                element = this.element.querySelector('.oss-slider--range');
+                assert.dom(element).exists();
+                _context9.t0 = assert;
+                _context9.next = 11;
+                return getSliderWidth(element);
+              case 11:
+                _context9.t1 = _context9.sent;
+                _context9.t0.strictEqual.call(_context9.t0, _context9.t1, '0%');
+              case 13:
+              case "end":
+                return _context9.stop();
+            }
+          }, _callee9, this);
+        }));
+        return function (_x10) {
+          return _ref24.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('it does not render the number input when @displayInputValue is falsy', /*#__PURE__*/function () {
+        var _ref25 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+          return _regeneratorRuntime().wrap(function _callee10$(_context10) {
+            while (1) switch (_context10.prev = _context10.next) {
+              case 0:
+                this.displayInputValue = false;
+                _context10.next = 3;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} />
+                */
+                {
+                  "id": "pi+Z3J5r",
+                  "block": "[[[8,[39,0],null,[[\"@value\",\"@displayInputValue\",\"@unit\"],[[30,0,[\"value\"]],[30,0,[\"displayInputValue\"]],[30,0,[\"unit\"]]]],null]],[],false,[\"o-s-s/slider\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/slider-test.ts",
+                  "isStrictMode": false
+                }));
+              case 3:
+                assert.dom('.oss-slider--number-input').doesNotExist();
+              case 4:
+              case "end":
+                return _context10.stop();
+            }
+          }, _callee10, this);
+        }));
+        return function (_x11) {
+          return _ref25.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('Unit container', function () {
+      hooks.beforeEach(function () {
+        this.displayInputValue = false;
+      });
+      (0, _qunit.test)('it does not render the unit container if @unit is undefined', /*#__PURE__*/function () {
+        var _ref26 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+          return _regeneratorRuntime().wrap(function _callee11$(_context11) {
+            while (1) switch (_context11.prev = _context11.next) {
+              case 0:
+                _context11.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Slider @value={{this.value}} @displayInputValue={{true}} />
+                */
+                {
+                  "id": "HuESlqfi",
+                  "block": "[[[8,[39,0],null,[[\"@value\",\"@displayInputValue\"],[[30,0,[\"value\"]],true]],null]],[],false,[\"o-s-s/slider\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/slider-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.oss-slider--unit-container').doesNotExist();
+              case 3:
+              case "end":
+                return _context11.stop();
+            }
+          }, _callee11);
+        }));
+        return function (_x12) {
+          return _ref26.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('it does not render the unit container if @displayInputValue is falsy', /*#__PURE__*/function () {
+        var _ref27 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+          return _regeneratorRuntime().wrap(function _callee12$(_context12) {
+            while (1) switch (_context12.prev = _context12.next) {
+              case 0:
+                _context12.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} />
+                */
+                {
+                  "id": "pi+Z3J5r",
+                  "block": "[[[8,[39,0],null,[[\"@value\",\"@displayInputValue\",\"@unit\"],[[30,0,[\"value\"]],[30,0,[\"displayInputValue\"]],[30,0,[\"unit\"]]]],null]],[],false,[\"o-s-s/slider\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/slider-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.oss-slider--unit-container').doesNotExist();
+              case 3:
+              case "end":
+                return _context12.stop();
+            }
+          }, _callee12);
+        }));
+        return function (_x13) {
+          return _ref27.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('it renders the unit container with the proper unit when @unit is defined', /*#__PURE__*/function () {
+        var _ref28 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+          return _regeneratorRuntime().wrap(function _callee13$(_context13) {
+            while (1) switch (_context13.prev = _context13.next) {
+              case 0:
+                this.displayInputValue = true;
+                _context13.next = 3;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} />
+                */
+                {
+                  "id": "pi+Z3J5r",
+                  "block": "[[[8,[39,0],null,[[\"@value\",\"@displayInputValue\",\"@unit\"],[[30,0,[\"value\"]],[30,0,[\"displayInputValue\"]],[30,0,[\"unit\"]]]],null]],[],false,[\"o-s-s/slider\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/slider-test.ts",
+                  "isStrictMode": false
+                }));
+              case 3:
+                assert.dom('.oss-slider--unit-container .fa-percent').exists();
+              case 4:
+              case "end":
+                return _context13.stop();
+            }
+          }, _callee13, this);
+        }));
+        return function (_x14) {
+          return _ref28.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('slider option args', function () {
+      (0, _qunit.test)('it renders the slider with a minimum value when @min is provided', /*#__PURE__*/function () {
+        var _ref29 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
+          var minValue, element;
+          return _regeneratorRuntime().wrap(function _callee14$(_context14) {
+            while (1) switch (_context14.prev = _context14.next) {
+              case 0:
+                minValue = 10;
+                this.min = minValue;
+                _context14.next = 4;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Slider @value={{this.value}} @displayInputValue={{true}} @min={{this.min}} @max={{this.max}} @step={{this.step}} />
+                */
+                {
+                  "id": "jJX4qALu",
+                  "block": "[[[8,[39,0],null,[[\"@value\",\"@displayInputValue\",\"@min\",\"@max\",\"@step\"],[[30,0,[\"value\"]],true,[30,0,[\"min\"]],[30,0,[\"max\"]],[30,0,[\"step\"]]]],null]],[],false,[\"o-s-s/slider\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/slider-test.ts",
+                  "isStrictMode": false
+                }));
+              case 4:
+                _context14.next = 6;
+                return (0, _testHelpers.fillIn)('.oss-slider--number-input', "".concat(minValue));
+              case 6:
+                assert.strictEqual(this.min, this.value);
+                element = this.element.querySelector('.oss-slider--range');
+                _context14.t0 = assert;
+                _context14.next = 11;
+                return getSliderWidth(element);
+              case 11:
+                _context14.t1 = _context14.sent;
+                _context14.t0.strictEqual.call(_context14.t0, _context14.t1, '0%');
+              case 13:
+              case "end":
+                return _context14.stop();
+            }
+          }, _callee14, this);
+        }));
+        return function (_x15) {
+          return _ref29.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('it renders the slider with a maximum value when @min is provided', /*#__PURE__*/function () {
+        var _ref30 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+          var maxValue, element;
+          return _regeneratorRuntime().wrap(function _callee15$(_context15) {
+            while (1) switch (_context15.prev = _context15.next) {
+              case 0:
+                maxValue = 1000;
+                this.max = maxValue;
+                _context15.next = 4;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Slider @value={{this.value}} @displayInputValue={{true}} @min={{this.min}} @max={{this.max}} @step={{this.step}} @unit="percentage" />
+                */
+                {
+                  "id": "qnsUEqmo",
+                  "block": "[[[8,[39,0],null,[[\"@value\",\"@displayInputValue\",\"@min\",\"@max\",\"@step\",\"@unit\"],[[30,0,[\"value\"]],true,[30,0,[\"min\"]],[30,0,[\"max\"]],[30,0,[\"step\"]],\"percentage\"]],null]],[],false,[\"o-s-s/slider\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/slider-test.ts",
+                  "isStrictMode": false
+                }));
+              case 4:
+                _context15.next = 6;
+                return (0, _testHelpers.fillIn)('.oss-slider--number-input', "".concat(maxValue));
+              case 6:
+                element = this.element.querySelector('.oss-slider--range');
+                _context15.t0 = assert;
+                _context15.next = 10;
+                return getSliderWidth(element);
+              case 10:
+                _context15.t1 = _context15.sent;
+                _context15.t2 = "".concat(maxValue / 10, "%");
+                _context15.t0.strictEqual.call(_context15.t0, _context15.t1, _context15.t2);
+              case 13:
+              case "end":
+                return _context15.stop();
+            }
+          }, _callee15, this);
+        }));
+        return function (_x16) {
+          return _ref30.apply(this, arguments);
+        };
+      }());
+    });
+  });
+});
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("dummy/tests/integration/components/o-s-s/social-post-badge-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
   "use strict";
 
@@ -19995,7 +20544,7 @@ define("dummy/tests/integration/components/o-s-s/social-post-badge-test", ["quni
       };
     });
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -20024,7 +20573,7 @@ define("dummy/tests/integration/components/o-s-s/social-post-badge-test", ["quni
     }());
     (0, _qunit.module)('@plain', function () {
       (0, _qunit.test)('When @plain is not set class is not added', /*#__PURE__*/function () {
-        var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+        var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
           return _regeneratorRuntime().wrap(function _callee2$(_context2) {
             while (1) switch (_context2.prev = _context2.next) {
               case 0:
@@ -20052,7 +20601,7 @@ define("dummy/tests/integration/components/o-s-s/social-post-badge-test", ["quni
         };
       }());
       (0, _qunit.test)('When @plain is true class is added', /*#__PURE__*/function () {
-        var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref11 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
               case 0:
@@ -20083,7 +20632,7 @@ define("dummy/tests/integration/components/o-s-s/social-post-badge-test", ["quni
     });
     (0, _qunit.module)('@selected', function () {
       (0, _qunit.test)('When @selected is not set class is not added', /*#__PURE__*/function () {
-        var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -20111,7 +20660,7 @@ define("dummy/tests/integration/components/o-s-s/social-post-badge-test", ["quni
         };
       }());
       (0, _qunit.test)('When @selected is true class is added', /*#__PURE__*/function () {
-        var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -20142,7 +20691,7 @@ define("dummy/tests/integration/components/o-s-s/social-post-badge-test", ["quni
     });
     (0, _qunit.module)('When clicking on an item', function () {
       (0, _qunit.test)('Then the @onToggle method is triggered', /*#__PURE__*/function () {
-        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -20177,7 +20726,7 @@ define("dummy/tests/integration/components/o-s-s/social-post-badge-test", ["quni
     });
     (0, _qunit.module)('error management', function () {
       (0, _qunit.test)('it throws an error if @selectedToggle is not provided', /*#__PURE__*/function () {
-        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
@@ -20206,7 +20755,7 @@ define("dummy/tests/integration/components/o-s-s/social-post-badge-test", ["quni
         };
       }());
       (0, _qunit.test)('it throws an error if @postType is not a value of SocialPostType', /*#__PURE__*/function () {
-        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -20252,7 +20801,7 @@ define("dummy/tests/integration/components/o-s-s/split-modal-test", ["qunit", "e
       this.closeModal = _sinon.default.stub();
     });
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -20281,7 +20830,7 @@ define("dummy/tests/integration/components/o-s-s/split-modal-test", ["qunit", "e
       };
     }());
     (0, _qunit.test)('The cross button at the top right of the modal closes the modal', /*#__PURE__*/function () {
-      var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref11 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -20312,7 +20861,7 @@ define("dummy/tests/integration/components/o-s-s/split-modal-test", ["qunit", "e
       };
     }());
     (0, _qunit.test)('The content named-block is properly displayed', /*#__PURE__*/function () {
-      var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -20345,7 +20894,7 @@ define("dummy/tests/integration/components/o-s-s/split-modal-test", ["qunit", "e
       };
     }());
     (0, _qunit.test)('The footer named-block is properly displayed', /*#__PURE__*/function () {
-      var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
@@ -20378,7 +20927,7 @@ define("dummy/tests/integration/components/o-s-s/split-modal-test", ["qunit", "e
       };
     }());
     (0, _qunit.test)('The preview named-block is properly displayed', /*#__PURE__*/function () {
-      var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+      var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
@@ -20411,7 +20960,7 @@ define("dummy/tests/integration/components/o-s-s/split-modal-test", ["qunit", "e
       };
     }());
     (0, _qunit.test)('When the escape button is triggered, the modal is closed', /*#__PURE__*/function () {
-      var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+      var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
         return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
@@ -20443,7 +20992,7 @@ define("dummy/tests/integration/components/o-s-s/split-modal-test", ["qunit", "e
     }());
     (0, _qunit.module)('Clicking outside', function () {
       (0, _qunit.test)('It triggers the close action', /*#__PURE__*/function () {
-        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
@@ -20475,7 +21024,7 @@ define("dummy/tests/integration/components/o-s-s/split-modal-test", ["qunit", "e
         };
       }());
       (0, _qunit.test)('If the disableClickOutside parameter is truthy, it does not trigger the close action', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -20509,7 +21058,7 @@ define("dummy/tests/integration/components/o-s-s/split-modal-test", ["qunit", "e
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('The component throws an error if the close parameter is not passed', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -20551,7 +21100,7 @@ define("dummy/tests/integration/components/o-s-s/star-rating-test", ["qunit", "e
   (0, _qunit.module)('Integration | Component | o-s-s/star-rating', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref7 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -20580,7 +21129,7 @@ define("dummy/tests/integration/components/o-s-s/star-rating-test", ["qunit", "e
     }());
     var _loop = function _loop(starColor) {
       (0, _qunit.test)('Passing @activeColor, @passiveColor & @activeStyle applies the correct classes to the component', /*#__PURE__*/function () {
-        var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -20618,7 +21167,7 @@ define("dummy/tests/integration/components/o-s-s/star-rating-test", ["qunit", "e
       _loop(starColor);
     }
     (0, _qunit.test)('The number of stars displayed is consistent with the provided @rating', /*#__PURE__*/function () {
-      var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref8 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -20650,7 +21199,7 @@ define("dummy/tests/integration/components/o-s-s/star-rating-test", ["qunit", "e
       };
     }());
     (0, _qunit.test)('When @onChange parameter is passed, the method is called when a click is made on a star', /*#__PURE__*/function () {
-      var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -20686,7 +21235,7 @@ define("dummy/tests/integration/components/o-s-s/star-rating-test", ["qunit", "e
     }());
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('failing to pass @rating throws an error', /*#__PURE__*/function () {
-        var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -20715,7 +21264,7 @@ define("dummy/tests/integration/components/o-s-s/star-rating-test", ["qunit", "e
         };
       }());
       (0, _qunit.test)('failing to pass @totalStart throws an error', /*#__PURE__*/function () {
-        var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref11 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -20757,7 +21306,7 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qun
   (0, _qunit.module)('Integration | Component | o-s-s/tag', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -20785,7 +21334,7 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qun
       };
     }());
     (0, _qunit.test)('it renders the proper label when @label is passed', /*#__PURE__*/function () {
-      var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -20816,7 +21365,7 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qun
       };
     }());
     (0, _qunit.test)('it renders the proper icon when @icon is passed', /*#__PURE__*/function () {
-      var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -20847,7 +21396,7 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qun
       };
     }());
     (0, _qunit.test)('it renders the proper suffix icon when @suffixIcon is passed', /*#__PURE__*/function () {
-      var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
@@ -20880,7 +21429,7 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qun
     }());
     (0, _qunit.module)('@plain', function () {
       (0, _qunit.test)('the right class is applied on the tag', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -20910,7 +21459,7 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qun
     });
     (0, _qunit.module)('@hasEllipsis', function () {
       (0, _qunit.test)('When the param is true then the ellipsis is shown', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -20946,7 +21495,7 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qun
         };
       }());
       (0, _qunit.test)('When the param is false then the ellipsis is shown', /*#__PURE__*/function () {
-        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
@@ -20980,7 +21529,7 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qun
     });
     (0, _qunit.module)('@htmlSafe', function () {
       (0, _qunit.test)('Setting the param to true allows html to be rendered in the @label', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -21008,7 +21557,7 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qun
         };
       }());
       (0, _qunit.test)('When the param is falsy, html content is rendered as basic string', /*#__PURE__*/function () {
-        var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -21039,7 +21588,7 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qun
     });
     Object.keys(_tag.SkinDefinition).forEach(function (skin) {
       (0, _qunit.test)("it sets the right class when using a supported skin: ".concat(skin), /*#__PURE__*/function () {
-        var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
@@ -21070,7 +21619,7 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qun
       }());
     });
     (0, _qunit.test)('it properly sets up the xs size', /*#__PURE__*/function () {
-      var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+      var _ref23 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
         return _regeneratorRuntime().wrap(function _callee11$(_context11) {
           while (1) switch (_context11.prev = _context11.next) {
             case 0:
@@ -21099,7 +21648,7 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qun
       };
     }());
     (0, _qunit.test)('it fails if @label and @icon are missing', /*#__PURE__*/function () {
-      var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+      var _ref24 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
         return _regeneratorRuntime().wrap(function _callee12$(_context12) {
           while (1) switch (_context12.prev = _context12.next) {
             case 0:
@@ -21144,7 +21693,7 @@ define("dummy/tests/integration/components/o-s-s/text-area-test", ["qunit", "emb
       this.textareaSelector = '.oss-textarea-container  .oss-textarea';
     });
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -21173,7 +21722,7 @@ define("dummy/tests/integration/components/o-s-s/text-area-test", ["qunit", "emb
     }());
     (0, _qunit.module)('@resize', function () {
       (0, _qunit.test)('Default has no class resize', /*#__PURE__*/function () {
-        var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+        var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
           return _regeneratorRuntime().wrap(function _callee2$(_context2) {
             while (1) switch (_context2.prev = _context2.next) {
               case 0:
@@ -21203,7 +21752,7 @@ define("dummy/tests/integration/components/o-s-s/text-area-test", ["qunit", "emb
         };
       }());
       (0, _qunit.test)('When resize is vertical should have class resize-v', /*#__PURE__*/function () {
-        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
               case 0:
@@ -21234,7 +21783,7 @@ define("dummy/tests/integration/components/o-s-s/text-area-test", ["qunit", "emb
         };
       }());
       (0, _qunit.test)('When resize is horizontal should have class resize-h', /*#__PURE__*/function () {
-        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -21265,7 +21814,7 @@ define("dummy/tests/integration/components/o-s-s/text-area-test", ["qunit", "emb
         };
       }());
       (0, _qunit.test)('When resize is none should have class resize-none', /*#__PURE__*/function () {
-        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -21298,7 +21847,7 @@ define("dummy/tests/integration/components/o-s-s/text-area-test", ["qunit", "emb
     });
     (0, _qunit.module)('@rows', function () {
       (0, _qunit.test)('Default height', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -21326,7 +21875,7 @@ define("dummy/tests/integration/components/o-s-s/text-area-test", ["qunit", "emb
         };
       }());
       (0, _qunit.test)('Row change height', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           var twoRowHeight, heightRowHeight;
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
@@ -21363,7 +21912,7 @@ define("dummy/tests/integration/components/o-s-s/text-area-test", ["qunit", "emb
       }());
     });
     (0, _qunit.test)('When the field is updated, the @onChange method is called', /*#__PURE__*/function () {
-      var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+      var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
         return _regeneratorRuntime().wrap(function _callee8$(_context8) {
           while (1) switch (_context8.prev = _context8.next) {
             case 0:
@@ -21396,7 +21945,7 @@ define("dummy/tests/integration/components/o-s-s/text-area-test", ["qunit", "emb
     }());
     (0, _qunit.module)('Extra attributes', function () {
       (0, _qunit.test)('passing an extra class is applied to the component', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -21424,7 +21973,7 @@ define("dummy/tests/integration/components/o-s-s/text-area-test", ["qunit", "emb
         };
       }());
       (0, _qunit.test)('passing data-control-name works', /*#__PURE__*/function () {
-        var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           var inputWrapper;
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
@@ -21456,7 +22005,7 @@ define("dummy/tests/integration/components/o-s-s/text-area-test", ["qunit", "emb
     });
     (0, _qunit.module)('error management', function () {
       (0, _qunit.test)('it throws an error if @resize is not a correct value', /*#__PURE__*/function () {
-        var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
               case 0:
@@ -21509,7 +22058,7 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
       };
     });
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -21539,7 +22088,7 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
       };
     }());
     (0, _qunit.test)('It throws an error if the @title param is not passed', /*#__PURE__*/function () {
-      var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -21570,7 +22119,7 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
       };
     }());
     (0, _qunit.test)('It throws an error if the @toggled param is not passed', /*#__PURE__*/function () {
-      var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -21601,7 +22150,7 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
       };
     }());
     (0, _qunit.test)('It throws an error if the @onChange function is not passed', /*#__PURE__*/function () {
-      var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+      var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
         return _regeneratorRuntime().wrap(function _callee4$(_context4) {
           while (1) switch (_context4.prev = _context4.next) {
             case 0:
@@ -21631,7 +22180,7 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
       };
     }());
     (0, _qunit.test)('It displays no image if @iconUrl param is not passed', /*#__PURE__*/function () {
-      var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+      var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
         return _regeneratorRuntime().wrap(function _callee5$(_context5) {
           while (1) switch (_context5.prev = _context5.next) {
             case 0:
@@ -21661,7 +22210,7 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
       };
     }());
     (0, _qunit.test)('It displays a font-awesome icon if the @icon parameter is filled in', /*#__PURE__*/function () {
-      var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+      var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
         return _regeneratorRuntime().wrap(function _callee6$(_context6) {
           while (1) switch (_context6.prev = _context6.next) {
             case 0:
@@ -21689,7 +22238,7 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
       };
     }());
     (0, _qunit.test)('It displays a default badge with an icon if @badgeIcon is passed', /*#__PURE__*/function () {
-      var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+      var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
         return _regeneratorRuntime().wrap(function _callee7$(_context7) {
           while (1) switch (_context7.prev = _context7.next) {
             case 0:
@@ -21721,7 +22270,7 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
         return _renderComponent.apply(this, arguments);
       }
       function _renderComponent() {
-        _renderComponent = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12() {
+        _renderComponent = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12() {
           return _regeneratorRuntime().wrap(function _callee12$(_context12) {
             while (1) switch (_context12.prev = _context12.next) {
               case 0:
@@ -21751,7 +22300,7 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
         return _renderComponent.apply(this, arguments);
       }
       (0, _qunit.test)('When the toggle is enabled, the named-block contents are displayed', /*#__PURE__*/function () {
-        var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -21774,7 +22323,7 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
         };
       }());
       (0, _qunit.test)('When the toggle is enabled, the header part turns grey', /*#__PURE__*/function () {
-        var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref23 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -21797,7 +22346,7 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
         };
       }());
       (0, _qunit.test)('When the toggle is disabled, the named-block contents are displayed', /*#__PURE__*/function () {
-        var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref24 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
@@ -21821,7 +22370,7 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
         };
       }());
       (0, _qunit.test)('When the toggle is clicked, the @onChange method is called', /*#__PURE__*/function () {
-        var _ref25 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        var _ref25 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
               case 0:
@@ -21846,7 +22395,7 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
     });
     (0, _qunit.module)('Size behavior', function () {
       (0, _qunit.test)('If the @size param is not passed, the default size is md', /*#__PURE__*/function () {
-        var _ref26 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+        var _ref26 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
           return _regeneratorRuntime().wrap(function _callee13$(_context13) {
             while (1) switch (_context13.prev = _context13.next) {
               case 0:
@@ -21883,7 +22432,7 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
         };
       }());
       (0, _qunit.test)('If the @size param is set to sm, the size is sm', /*#__PURE__*/function () {
-        var _ref27 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
+        var _ref27 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
           return _regeneratorRuntime().wrap(function _callee14$(_context14) {
             while (1) switch (_context14.prev = _context14.next) {
               case 0:
@@ -21920,7 +22469,7 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
         };
       }());
       (0, _qunit.test)('If the @size param is set to md, the size is md', /*#__PURE__*/function () {
-        var _ref28 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+        var _ref28 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
           return _regeneratorRuntime().wrap(function _callee15$(_context15) {
             while (1) switch (_context15.prev = _context15.next) {
               case 0:
@@ -21959,7 +22508,7 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
     });
     (0, _qunit.module)('@Disabled behaviour', function () {
       (0, _qunit.test)('If @disabled is truthy, the toggle is disabled', /*#__PURE__*/function () {
-        var _ref29 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
+        var _ref29 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
           return _regeneratorRuntime().wrap(function _callee16$(_context16) {
             while (1) switch (_context16.prev = _context16.next) {
               case 0:
@@ -21987,7 +22536,7 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
         };
       }());
       (0, _qunit.test)('If @disabled is falsy, the toggle is enabled', /*#__PURE__*/function () {
-        var _ref30 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
+        var _ref30 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
           return _regeneratorRuntime().wrap(function _callee17$(_context17) {
             while (1) switch (_context17.prev = _context17.next) {
               case 0:
@@ -22015,7 +22564,7 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
         };
       }());
       (0, _qunit.test)('If @disabled is truthy, the toggle can still be active', /*#__PURE__*/function () {
-        var _ref31 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
+        var _ref31 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
           return _regeneratorRuntime().wrap(function _callee18$(_context18) {
             while (1) switch (_context18.prev = _context18.next) {
               case 0:
@@ -22073,7 +22622,7 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
       }];
     });
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -22101,7 +22650,7 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
       };
     }());
     (0, _qunit.test)('the right class is applied when the @disabled arg is truthy', /*#__PURE__*/function () {
-      var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -22130,7 +22679,7 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
       };
     }());
     (0, _qunit.test)('the toggle icon is displayed when provided', /*#__PURE__*/function () {
-      var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
@@ -22161,7 +22710,7 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
     }());
     (0, _qunit.module)('If @selectedToggle is passed', function () {
       (0, _qunit.test)('If the selectedToggle matches an entry from the toggles, then the toggle is set to selected', /*#__PURE__*/function () {
-        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -22192,7 +22741,7 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
     });
     (0, _qunit.module)('When clicking on an item', function () {
       (0, _qunit.test)('the toggle is selected', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -22227,7 +22776,7 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
         };
       }());
       (0, _qunit.test)('the @onSelection method is not triggered if the item is already selected', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -22259,7 +22808,7 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
         };
       }());
       (0, _qunit.test)('the @onSelection method is not triggered if the component is disabled', /*#__PURE__*/function () {
-        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
@@ -22291,7 +22840,7 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
         };
       }());
       (0, _qunit.test)('the @onSelection method is triggered with the selected value', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -22325,7 +22874,7 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it throws an error if @toggles is not provided', /*#__PURE__*/function () {
-        var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
               case 0:
@@ -22357,7 +22906,7 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
         };
       }());
       (0, _qunit.test)('it throws an error if @onSelection is not provided', /*#__PURE__*/function () {
-        var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
@@ -22389,7 +22938,7 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
         };
       }());
       (0, _qunit.test)('it throws an error if @selectedToggle is not provided', /*#__PURE__*/function () {
-        var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        var _ref23 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
               case 0:
@@ -22421,7 +22970,7 @@ define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit",
         };
       }());
       (0, _qunit.test)('it throws an error if @selectedToggle is not a value of toggles', /*#__PURE__*/function () {
-        var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+        var _ref24 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
           return _regeneratorRuntime().wrap(function _callee12$(_context12) {
             while (1) switch (_context12.prev = _context12.next) {
               case 0:
@@ -22467,7 +23016,7 @@ define("dummy/tests/integration/components/o-s-s/toggle-switch-test", ["qunit", 
   (0, _qunit.module)('Integration | Component | o-s-s/toggle-switch', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _qunit.test)('it applies the right class on the toggle switch depending on the value', /*#__PURE__*/function () {
-      var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref6 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         var _this = this;
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
@@ -22504,7 +23053,7 @@ define("dummy/tests/integration/components/o-s-s/toggle-switch-test", ["qunit", 
       };
     }());
     (0, _qunit.test)('it triggers the onChange action when clicking the button', /*#__PURE__*/function () {
-      var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref7 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -22539,7 +23088,7 @@ define("dummy/tests/integration/components/o-s-s/toggle-switch-test", ["qunit", 
     }());
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it throws an error if no onChange action is passed', /*#__PURE__*/function () {
-        var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref8 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
               case 0:
@@ -22568,7 +23117,7 @@ define("dummy/tests/integration/components/o-s-s/toggle-switch-test", ["qunit", 
         };
       }());
       (0, _qunit.test)('it throws an error if no value is passed', /*#__PURE__*/function () {
-        var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -22598,7 +23147,7 @@ define("dummy/tests/integration/components/o-s-s/toggle-switch-test", ["qunit", 
         };
       }());
       (0, _qunit.test)('it throws an error if passed value is not a boolean', /*#__PURE__*/function () {
-        var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -22659,7 +23208,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
     (0, _qunit.module)('rendering', function () {
       (0, _qunit.module)('browse action', function () {
         (0, _qunit.test)('the browse text is contained in a link', /*#__PURE__*/function () {
-          var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+          var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
             return _regeneratorRuntime().wrap(function _callee$(_context) {
               while (1) switch (_context.prev = _context.next) {
                 case 0:
@@ -22692,7 +23241,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
           };
         }());
         (0, _qunit.test)('clicking on browse text opens the hidden file input', /*#__PURE__*/function () {
-          var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+          var _ref23 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
             var fileInput, fileInputClickStub;
             return _regeneratorRuntime().wrap(function _callee2$(_context2) {
               while (1) switch (_context2.prev = _context2.next) {
@@ -22733,7 +23282,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
       });
       (0, _qunit.module)('size', function () {
         (0, _qunit.test)('it renders in the default size when no size arg is provided', /*#__PURE__*/function () {
-          var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+          var _ref24 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
             return _regeneratorRuntime().wrap(function _callee3$(_context3) {
               while (1) switch (_context3.prev = _context3.next) {
                 case 0:
@@ -22765,7 +23314,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
           };
         }());
         (0, _qunit.test)('it renders in the default size when no valid size is provided', /*#__PURE__*/function () {
-          var _ref25 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+          var _ref25 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
             return _regeneratorRuntime().wrap(function _callee4$(_context4) {
               while (1) switch (_context4.prev = _context4.next) {
                 case 0:
@@ -22798,7 +23347,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
           };
         }());
         (0, _qunit.test)('it renders in the provided size when it is a valid one', /*#__PURE__*/function () {
-          var _ref26 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+          var _ref26 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
             return _regeneratorRuntime().wrap(function _callee5$(_context5) {
               while (1) switch (_context5.prev = _context5.next) {
                 case 0:
@@ -22833,7 +23382,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
       });
       (0, _qunit.module)('subtitle', function () {
         (0, _qunit.test)('it renders only the title when no subtitle is provided', /*#__PURE__*/function () {
-          var _ref27 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+          var _ref27 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
             return _regeneratorRuntime().wrap(function _callee6$(_context6) {
               while (1) switch (_context6.prev = _context6.next) {
                 case 0:
@@ -22867,7 +23416,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
           };
         }());
         (0, _qunit.test)('it renders the subtitle when provided', /*#__PURE__*/function () {
-          var _ref28 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+          var _ref28 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
             return _regeneratorRuntime().wrap(function _callee7$(_context7) {
               while (1) switch (_context7.prev = _context7.next) {
                 case 0:
@@ -22903,7 +23452,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
       });
       (0, _qunit.module)('disabled mode', function () {
         (0, _qunit.test)('the right class is applied on the component', /*#__PURE__*/function () {
-          var _ref29 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+          var _ref29 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
             return _regeneratorRuntime().wrap(function _callee8$(_context8) {
               while (1) switch (_context8.prev = _context8.next) {
                 case 0:
@@ -22935,7 +23484,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
           };
         }());
         (0, _qunit.test)('the browse word is not actionable', /*#__PURE__*/function () {
-          var _ref30 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+          var _ref30 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
             return _regeneratorRuntime().wrap(function _callee9$(_context9) {
               while (1) switch (_context9.prev = _context9.next) {
                 case 0:
@@ -22971,7 +23520,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
     (0, _qunit.module)('drag and drop support', function () {
       (0, _qunit.module)('disabled mode', function () {
         (0, _qunit.test)('dragging a file over the component does not do nothing', /*#__PURE__*/function () {
-          var _ref31 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+          var _ref31 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
             return _regeneratorRuntime().wrap(function _callee10$(_context10) {
               while (1) switch (_context10.prev = _context10.next) {
                 case 0:
@@ -23011,7 +23560,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
           this.file = file;
         });
         (0, _qunit.test)('dragging a file over the component applies the right class', /*#__PURE__*/function () {
-          var _ref32 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+          var _ref32 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
             return _regeneratorRuntime().wrap(function _callee11$(_context11) {
               while (1) switch (_context11.prev = _context11.next) {
                 case 0:
@@ -23046,7 +23595,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
           };
         }());
         (0, _qunit.test)('dropped file is validated', /*#__PURE__*/function () {
-          var _ref33 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+          var _ref33 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
             return _regeneratorRuntime().wrap(function _callee12$(_context12) {
               while (1) switch (_context12.prev = _context12.next) {
                 case 0:
@@ -23090,7 +23639,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
           };
         }());
         (0, _qunit.test)('error toasts are displayed if the dropped file does not pass the validation rules', /*#__PURE__*/function () {
-          var _ref34 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+          var _ref34 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
             var toastStub;
             return _regeneratorRuntime().wrap(function _callee13$(_context13) {
               while (1) switch (_context13.prev = _context13.next) {
@@ -23141,7 +23690,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
           };
         }());
         (0, _qunit.test)('the uploaded file is displayed if the dropped file passes the validation', /*#__PURE__*/function () {
-          var _ref35 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
+          var _ref35 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
             return _regeneratorRuntime().wrap(function _callee14$(_context14) {
               while (1) switch (_context14.prev = _context14.next) {
                 case 0:
@@ -23181,7 +23730,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
           };
         }());
         (0, _qunit.test)('clicking on the remove button in the upload item moves back to the upload state', /*#__PURE__*/function () {
-          var _ref36 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+          var _ref36 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
             return _regeneratorRuntime().wrap(function _callee15$(_context15) {
               while (1) switch (_context15.prev = _context15.next) {
                 case 0:
@@ -23228,7 +23777,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
           };
         }());
         (0, _qunit.test)('clicking on the edit button in the upload item opens the hidden file input', /*#__PURE__*/function () {
-          var _ref37 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
+          var _ref37 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
             var fileInput, fileInputClickStub;
             return _regeneratorRuntime().wrap(function _callee16$(_context16) {
               while (1) switch (_context16.prev = _context16.next) {
@@ -23286,7 +23835,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
         };
       });
       (0, _qunit.test)('the file is displayed using an upload-item', /*#__PURE__*/function () {
-        var _ref38 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
+        var _ref38 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
           return _regeneratorRuntime().wrap(function _callee17$(_context17) {
             while (1) switch (_context17.prev = _context17.next) {
               case 0:
@@ -23320,7 +23869,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
         };
       }());
       (0, _qunit.test)('clicking on the remove button in the upload item moves back to the upload state', /*#__PURE__*/function () {
-        var _ref39 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
+        var _ref39 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
           return _regeneratorRuntime().wrap(function _callee18$(_context18) {
             while (1) switch (_context18.prev = _context18.next) {
               case 0:
@@ -23357,7 +23906,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
         };
       }());
       (0, _qunit.test)('clicking on the edit button in the upload item opens the hidden file input', /*#__PURE__*/function () {
-        var _ref40 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
+        var _ref40 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
           var fileInput, fileInputClickStub;
           return _regeneratorRuntime().wrap(function _callee19$(_context19) {
             while (1) switch (_context19.prev = _context19.next) {
@@ -23397,7 +23946,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
     });
     (0, _qunit.module)('allow multiple files', function () {
       (0, _qunit.test)('it allows the user to upload more than one file', /*#__PURE__*/function () {
-        var _ref41 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
+        var _ref41 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
           return _regeneratorRuntime().wrap(function _callee20$(_context20) {
             while (1) switch (_context20.prev = _context20.next) {
               case 0:
@@ -23446,7 +23995,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
         };
       }());
       (0, _qunit.test)('the user can remove a specific uploaded item', /*#__PURE__*/function () {
-        var _ref42 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee21(assert) {
+        var _ref42 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee21(assert) {
           return _regeneratorRuntime().wrap(function _callee21$(_context21) {
             while (1) switch (_context21.prev = _context21.next) {
               case 0:
@@ -23562,7 +24111,7 @@ define("dummy/tests/integration/components/o-s-s/upload-item-test", ["qunit", "e
         expected: 'fa-file-alt'
       }].forEach(function (spec) {
         (0, _qunit.test)("a badge with a matching icon is used when the file content type is: ".concat(spec.contentType || 'empty'), /*#__PURE__*/function () {
-          var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+          var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
             return _regeneratorRuntime().wrap(function _callee$(_context) {
               while (1) switch (_context.prev = _context.next) {
                 case 0:
@@ -23599,7 +24148,7 @@ define("dummy/tests/integration/components/o-s-s/upload-item-test", ["qunit", "e
         }());
       });
       (0, _qunit.test)('its name is rendered properly', /*#__PURE__*/function () {
-        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+        var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
           return _regeneratorRuntime().wrap(function _callee2$(_context2) {
             while (1) switch (_context2.prev = _context2.next) {
               case 0:
@@ -23633,7 +24182,7 @@ define("dummy/tests/integration/components/o-s-s/upload-item-test", ["qunit", "e
         };
       }());
       (0, _qunit.test)('its size is rendered properly if present', /*#__PURE__*/function () {
-        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref15 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
               case 0:
@@ -23668,7 +24217,7 @@ define("dummy/tests/integration/components/o-s-s/upload-item-test", ["qunit", "e
         };
       }());
       (0, _qunit.test)('its size is not displayed if missing', /*#__PURE__*/function () {
-        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref16 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -23702,7 +24251,7 @@ define("dummy/tests/integration/components/o-s-s/upload-item-test", ["qunit", "e
         };
       }());
       (0, _qunit.test)('clicking the view button opens the file url', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref17 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           var windowOpenStub;
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
@@ -23763,7 +24312,7 @@ define("dummy/tests/integration/components/o-s-s/upload-item-test", ["qunit", "e
         expected: 'fa-file-alt'
       }].forEach(function (spec) {
         (0, _qunit.test)("a badge with a matching icon is used when the file content type is: ".concat(spec.contentType || 'empty'), /*#__PURE__*/function () {
-          var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+          var _ref18 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
             return _regeneratorRuntime().wrap(function _callee6$(_context6) {
               while (1) switch (_context6.prev = _context6.next) {
                 case 0:
@@ -23800,7 +24349,7 @@ define("dummy/tests/integration/components/o-s-s/upload-item-test", ["qunit", "e
         }());
       });
       (0, _qunit.test)('its name is rendered properly', /*#__PURE__*/function () {
-        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref19 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
@@ -23834,7 +24383,7 @@ define("dummy/tests/integration/components/o-s-s/upload-item-test", ["qunit", "e
         };
       }());
       (0, _qunit.test)('its size is rendered properly if present', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref20 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
@@ -23868,7 +24417,7 @@ define("dummy/tests/integration/components/o-s-s/upload-item-test", ["qunit", "e
         };
       }());
       (0, _qunit.test)('the file is immediately uploaded', /*#__PURE__*/function () {
-        var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref21 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           var uploadStub;
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
@@ -23911,7 +24460,7 @@ define("dummy/tests/integration/components/o-s-s/upload-item-test", ["qunit", "e
         };
       }());
       (0, _qunit.test)('it enters error mode if the upload failed', /*#__PURE__*/function () {
-        var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref22 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
@@ -23969,7 +24518,7 @@ define("dummy/tests/integration/components/o-s-s/upload-item-test", ["qunit", "e
     });
     (0, _qunit.module)('common actions', function () {
       (0, _qunit.test)('clicking the edit button triggers the onEdition action', /*#__PURE__*/function () {
-        var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        var _ref23 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           return _regeneratorRuntime().wrap(function _callee11$(_context11) {
             while (1) switch (_context11.prev = _context11.next) {
               case 0:
@@ -24006,7 +24555,7 @@ define("dummy/tests/integration/components/o-s-s/upload-item-test", ["qunit", "e
         };
       }());
       (0, _qunit.test)('clicking the remove button triggers the onDeletion action', /*#__PURE__*/function () {
-        var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+        var _ref24 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
           return _regeneratorRuntime().wrap(function _callee12$(_context12) {
             while (1) switch (_context12.prev = _context12.next) {
               case 0:
@@ -24057,7 +24606,7 @@ define("dummy/tests/integration/components/o-s-s/url-input-test", ["qunit", "emb
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _testSupport.setupIntl)(hooks);
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref6 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -24086,7 +24635,7 @@ define("dummy/tests/integration/components/o-s-s/url-input-test", ["qunit", "emb
     }());
     (0, _qunit.module)('With @validationRegex parameter', function () {
       (0, _qunit.test)('When the text matches the Regex, the onChange function has the newValue and the isValid parameter is set to true', /*#__PURE__*/function () {
-        var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+        var _ref7 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
           return _regeneratorRuntime().wrap(function _callee2$(_context2) {
             while (1) switch (_context2.prev = _context2.next) {
               case 0:
@@ -24126,7 +24675,7 @@ define("dummy/tests/integration/components/o-s-s/url-input-test", ["qunit", "emb
       }());
       (0, _qunit.module)("When the text doesn't match the Regex", function () {
         (0, _qunit.test)('The onChange function has the newValue and the isValid parameter is set to false', /*#__PURE__*/function () {
-          var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+          var _ref8 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
             return _regeneratorRuntime().wrap(function _callee3$(_context3) {
               while (1) switch (_context3.prev = _context3.next) {
                 case 0:
@@ -24162,7 +24711,7 @@ define("dummy/tests/integration/components/o-s-s/url-input-test", ["qunit", "emb
           };
         }());
         (0, _qunit.test)('If no error message has been specified by the parent, a default one is displayed', /*#__PURE__*/function () {
-          var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+          var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
             return _regeneratorRuntime().wrap(function _callee4$(_context4) {
               while (1) switch (_context4.prev = _context4.next) {
                 case 0:
@@ -24197,7 +24746,7 @@ define("dummy/tests/integration/components/o-s-s/url-input-test", ["qunit", "emb
           };
         }());
         (0, _qunit.test)('If an error message has been specified by the parent, it is displayed', /*#__PURE__*/function () {
-          var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+          var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
             return _regeneratorRuntime().wrap(function _callee5$(_context5) {
               while (1) switch (_context5.prev = _context5.next) {
                 case 0:
@@ -24250,7 +24799,7 @@ define("dummy/tests/integration/helpers/redirect-to-test", ["qunit", "ember-quni
       this.url = 'https://github.com/upfluence/oss-components';
     });
     (0, _qunit.test)('it redirects to the url on the current tab if not target is passed', /*#__PURE__*/function () {
-      var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref5 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -24283,7 +24832,7 @@ define("dummy/tests/integration/helpers/redirect-to-test", ["qunit", "ember-quni
       };
     }());
     (0, _qunit.test)('it redirects to the url on the provided target', /*#__PURE__*/function () {
-      var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref6 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
             case 0:
@@ -24317,7 +24866,7 @@ define("dummy/tests/integration/helpers/redirect-to-test", ["qunit", "ember-quni
     }());
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it throws an error if the url argument is missing', /*#__PURE__*/function () {
-        var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref7 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
               case 0:
@@ -24346,7 +24895,7 @@ define("dummy/tests/integration/helpers/redirect-to-test", ["qunit", "ember-quni
         };
       }());
       (0, _qunit.test)('it throws an error if the target is not a valid one', /*#__PURE__*/function () {
-        var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref8 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -24394,7 +24943,7 @@ define("dummy/tests/integration/helpers/stop-propagation-test", ["qunit", "ember
       Event.prototype.stopPropagation = this.nativeStopPropagation;
     });
     (0, _qunit.test)('it renders', /*#__PURE__*/function () {
-      var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+      var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
@@ -24449,7 +24998,7 @@ define("dummy/tests/integration/helpers/transition-to-test", ["qunit", "ember-qu
     });
     (0, _qunit.module)('only a route has been passed', function () {
       (0, _qunit.test)('it triggers the RouterService#transitionTo method with the route only', /*#__PURE__*/function () {
-        var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+        var _ref8 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
           return _regeneratorRuntime().wrap(function _callee$(_context) {
             while (1) switch (_context.prev = _context.next) {
               case 0:
@@ -24484,7 +25033,7 @@ define("dummy/tests/integration/helpers/transition-to-test", ["qunit", "ember-qu
     });
     (0, _qunit.module)('a model has been passed to the transition', function () {
       (0, _qunit.test)('it triggers the RouterService#transitionTo method with the route only', /*#__PURE__*/function () {
-        var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+        var _ref9 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
           return _regeneratorRuntime().wrap(function _callee2$(_context2) {
             while (1) switch (_context2.prev = _context2.next) {
               case 0:
@@ -24519,7 +25068,7 @@ define("dummy/tests/integration/helpers/transition-to-test", ["qunit", "ember-qu
     });
     (0, _qunit.module)('multiple models have been passed to the transition', function () {
       (0, _qunit.test)('it triggers the RouterService#transitionTo method with the route only', /*#__PURE__*/function () {
-        var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        var _ref10 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
           return _regeneratorRuntime().wrap(function _callee3$(_context3) {
             while (1) switch (_context3.prev = _context3.next) {
               case 0:
@@ -24554,7 +25103,7 @@ define("dummy/tests/integration/helpers/transition-to-test", ["qunit", "ember-qu
     });
     (0, _qunit.module)('with queryParams', function () {
       (0, _qunit.test)('it triggers the RouterService#transitionTo method with the route and queryParams', /*#__PURE__*/function () {
-        var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref11 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
@@ -24591,7 +25140,7 @@ define("dummy/tests/integration/helpers/transition-to-test", ["qunit", "ember-qu
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it throws an error if the route argument is missing', /*#__PURE__*/function () {
-        var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref12 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
@@ -24620,7 +25169,7 @@ define("dummy/tests/integration/helpers/transition-to-test", ["qunit", "ember-qu
         };
       }());
       (0, _qunit.test)('it throws an error if both models and model arguments are passed', /*#__PURE__*/function () {
-        var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref13 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
               case 0:
@@ -24649,7 +25198,7 @@ define("dummy/tests/integration/helpers/transition-to-test", ["qunit", "ember-qu
         };
       }());
       (0, _qunit.test)('it throws an error if queryParams argument is passed but is not an object', /*#__PURE__*/function () {
-        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+        var _ref14 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
           return _regeneratorRuntime().wrap(function _callee7$(_context7) {
             while (1) switch (_context7.prev = _context7.next) {
               case 0:
@@ -24690,7 +25239,7 @@ define("dummy/tests/test-helper", ["dummy/app", "dummy/config/environment", "@em
   function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; } // @ts-nocheck
   (0, _registerAssertions.default)(QUnit.assert);
   (0, _qunitDom.setup)(QUnit.assert);
-  QUnit.done( /*#__PURE__*/_asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
+  QUnit.done(/*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
@@ -24881,7 +25430,7 @@ define("dummy/tests/unit/services/toast-test", ["qunit", "ember-qunit", "@ember/
     (0, _qunit.module)('public methods', function () {
       TOAST_TYPES.forEach(function (type) {
         (0, _qunit.test)("".concat(type), /*#__PURE__*/function () {
-          var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
+          var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
             var toast;
             return _regeneratorRuntime().wrap(function _callee$(_context) {
               while (1) switch (_context.prev = _context.next) {
@@ -24907,7 +25456,7 @@ define("dummy/tests/unit/services/toast-test", ["qunit", "ember-qunit", "@ember/
       });
     });
     (0, _qunit.test)('it should close the toast when clicking on the button', /*#__PURE__*/function () {
-      var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
+      var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
         var toast, buttonElement, animation;
         return _regeneratorRuntime().wrap(function _callee2$(_context2) {
           while (1) switch (_context2.prev = _context2.next) {
@@ -24940,7 +25489,7 @@ define("dummy/tests/unit/services/toast-test", ["qunit", "ember-qunit", "@ember/
       };
     }());
     (0, _qunit.test)('the onclick function is called when the toast is clicked', /*#__PURE__*/function () {
-      var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+      var _ref3 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         var toast;
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
@@ -24967,7 +25516,7 @@ define("dummy/tests/unit/services/toast-test", ["qunit", "ember-qunit", "@ember/
     }());
     (0, _qunit.module)('badge options', function () {
       (0, _qunit.test)('it should display icon', /*#__PURE__*/function () {
-        var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        var _ref4 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           var toast, badge;
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
@@ -24992,7 +25541,7 @@ define("dummy/tests/unit/services/toast-test", ["qunit", "ember-qunit", "@ember/
         };
       }());
       (0, _qunit.test)('it should display img', /*#__PURE__*/function () {
-        var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        var _ref5 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           var url, toast, badge;
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
@@ -25017,7 +25566,7 @@ define("dummy/tests/unit/services/toast-test", ["qunit", "ember-qunit", "@ember/
         };
       }());
       (0, _qunit.test)('it should display text', /*#__PURE__*/function () {
-        var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        var _ref6 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
           var toast, badge;
           return _regeneratorRuntime().wrap(function _callee6$(_context6) {
             while (1) switch (_context6.prev = _context6.next) {
