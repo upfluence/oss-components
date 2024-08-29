@@ -1,0 +1,45 @@
+<div
+  class="oss-slider--container fx-gap-px-12 fx-row fx-xalign-center {{if @disabled 'oss-slider--container--disabled'}}"
+>
+  <div class="oss-slider--range-container fx-1">
+    <input
+      class="oss-slider--range"
+      type="range"
+      min={{this.sliderOptions.min}}
+      max={{this.sliderOptions.max}}
+      value={{this.currentRangeValue}}
+      step={{this.sliderOptions.step}}
+      {{on "input" this.onRangeChange}}
+      {{on "mouseenter" this.showTooltip}}
+      {{on "mouseleave" this.removeTooltip}}
+      {{did-insert this.initializeSlider}}
+      disabled={{@disabled}}
+    />
+    <div class="upf-tooltip oss-slider--tooltip {{unless this.displayTooltip 'oss-slider--tooltip--hidden'}}">
+      <span>{{concat this.currentRangeValue (if (eq @unit "percentage") "%")}}</span>
+    </div>
+  </div>
+  {{#if @displayInputValue}}
+    <div class="fx-row fx-xalign-center {{unless @unit 'border-radius-md'}}">
+      <input
+        class="oss-slider--number-input {{unless @unit 'border-radius-md'}}"
+        type="number"
+        min={{this.sliderOptions.min}}
+        max={{this.sliderOptions.max}}
+        step={{this.sliderOptions.step}}
+        value={{this.currentRangeValue}}
+        disabled={{@disabled}}
+        {{on "input" this.onNumberInput}}
+      />
+      {{#if @unit}}
+        <span class="oss-slider--unit-container">
+          {{#if this.unitIcon}}
+            <OSS::Icon @icon={{this.unitIcon}} class="color-gray-400" />
+          {{else}}
+            {{@unit}}
+          {{/if}}
+        </span>
+      {{/if}}
+    </div>
+  {{/if}}
+</div>
