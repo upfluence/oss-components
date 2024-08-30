@@ -5,13 +5,13 @@ export default setModifierManager(
   () => ({
     capabilities: capabilities('3.22'),
 
-    createModifier() {
+    createModifier(): object {
       return {
         element: null
       };
     },
 
-    installModifier(state: any, element: HTMLElement) {
+    installModifier(state: any, element: HTMLElement): void {
       state.element = element;
       const localElement =
         element.tagName.toLowerCase() === 'input'
@@ -26,10 +26,7 @@ export default setModifierManager(
       }
     },
 
-    destroyModifier() {
-      // We don't need to do anything here, but a function
-      // still has to be here so we'll leave it blank.
-    }
+    destroyModifier(): void {} // keep even if empty
   }),
   class EnableInputAutofocusModifierManager {}
 );

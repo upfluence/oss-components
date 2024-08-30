@@ -5,7 +5,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'A modifier to autofocus on selected input or first non-disabled input child.'
+        component: 'A modifier to autofocus on the selected input or the first non-disabled input child.'
       }
     }
   }
