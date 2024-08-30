@@ -89992,6 +89992,87 @@ define("@upfluence/oss-components/modifiers/enable-dropdown", ["exports", "@embe
   }));
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+define("@upfluence/oss-components/modifiers/enable-input-autofocus", ["exports", "@ember/modifier"], function (_exports, _modifier) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"@ember/modifier"eaimeta@70e063a35619d71f
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } } // @ts-ignore
+  var _default = _exports.default = (0, _modifier.setModifierManager)(function () {
+    return {
+      capabilities: (0, _modifier.capabilities)('3.22'),
+      createModifier: function createModifier() {
+        return {
+          element: null
+        };
+      },
+      installModifier: function installModifier(state, element) {
+        state.element = element;
+        var localElement = element.tagName.toLowerCase() === 'input' ? element : element.querySelector('input:not([disabled])');
+        if (!localElement.disabled) {
+          localElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+          });
+          localElement.focus({
+            preventScroll: true
+          });
+        } else {
+          return;
+        }
+      },
+      destroyModifier: function destroyModifier() {} // keep even if empty
+    };
+  }, /*#__PURE__*/_createClass(function EnableInputAutofocusModifierManager() {
+    _classCallCheck(this, EnableInputAutofocusModifierManager);
+  }));
+});
+;define("@upfluence/oss-components/modifiers/enable-input-autofocus.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.BasicUsage = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Helpers & Modifiers/Modifiers/Input-Autofocus/Definition',
+    parameters: {
+      docs: {
+        description: {
+          component: 'A modifier to autofocus on the selected input or the first non-disabled input child.'
+        }
+      }
+    }
+  };
+  var DefaultUsageTemplate = function DefaultUsageTemplate() {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <div class="fx-col" style="justify-content: center; height: 200px; width: 750px; background-color: white">
+            <OSS::InputContainer @value="Hello World" {{enable-input-autofocus}}/>
+          </div>
+        
+      */
+      {
+        "id": "k53DExZj",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,0,\"fx-col\"],[14,5,\"justify-content: center; height: 200px; width: 750px; background-color: white\"],[12],[1,\"\\n      \"],[8,[39,0],[[4,[38,1],null,null]],[[\"@value\"],[\"Hello World\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/input-container\",\"enable-input-autofocus\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/modifiers/enable-input-autofocus.stories.js",
+        "isStrictMode": false
+      })
+    };
+  };
+  var BasicUsage = _exports.BasicUsage = DefaultUsageTemplate.bind({});
+});
+;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("@upfluence/oss-components/modifiers/enable-popover", ["exports", "@ember/modifier", "jquery"], function (_exports, _modifier, _jquery) {
   "use strict";
 

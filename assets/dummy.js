@@ -2477,6 +2477,20 @@
   });
   0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/modifiers/enable-dropdown"eaimeta@70e063a35619d71f
 });
+;define("dummy/modifiers/enable-input-autofocus", ["exports", "@upfluence/oss-components/modifiers/enable-input-autofocus"], function (_exports, _enableInputAutofocus) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function get() {
+      return _enableInputAutofocus.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/modifiers/enable-input-autofocus"eaimeta@70e063a35619d71f
+});
 ;define("dummy/modifiers/enable-popover", ["exports", "@upfluence/oss-components/modifiers/enable-popover"], function (_exports, _enablePopover) {
   "use strict";
 
