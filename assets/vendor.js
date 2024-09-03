@@ -79656,22 +79656,26 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
     <div class="oss-dialog__backdrop fx-row fx-malign-center fx-xalign-center" {{will-destroy this.onDestroy}}>
     <div class="oss-dialog fx-col" {{did-insert this.onInit}} ...attributes>
       <div class="oss-dialog__header">
-        <OSS::Badge @icon="fa-warning" @skin="alert" />
+        <OSS::Badge @icon="fa-warning" @skin={{this.skin}} />
         <span class="font-weight-semibold font-size-md">{{@title}}</span>
       </div>
       <div class="oss-dialog__footer">
-        <OSS::Button @skin="alert" @label={{@mainAction.label}} {{on "click" @mainAction.action}} />
+        <OSS::Button @skin={{this.skinBtn}} @label={{@mainAction.label}} {{on "click" @mainAction.action}} />
         <OSS::Button @label={{@secondaryAction.label}} {{on "click" @secondaryAction.action}} />
       </div>
     </div>
   </div>
   */
   {
-    "id": "5V0DYdr5",
-    "block": "[[[11,0],[24,0,\"oss-dialog__backdrop fx-row fx-malign-center fx-xalign-center\"],[4,[38,0],[[30,0,[\"onDestroy\"]]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"oss-dialog fx-col\"],[17,1],[4,[38,1],[[30,0,[\"onInit\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"oss-dialog__header\"],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@skin\"],[\"fa-warning\",\"alert\"]],null],[1,\"\\n      \"],[10,1],[14,0,\"font-weight-semibold font-size-md\"],[12],[1,[30,2]],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"oss-dialog__footer\"],[12],[1,\"\\n      \"],[8,[39,3],[[4,[38,4],[\"click\",[30,3,[\"action\"]]],null]],[[\"@skin\",\"@label\"],[\"alert\",[30,3,[\"label\"]]]],null],[1,\"\\n      \"],[8,[39,3],[[4,[38,4],[\"click\",[30,4,[\"action\"]]],null]],[[\"@label\"],[[30,4,[\"label\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@title\",\"@mainAction\",\"@secondaryAction\"],false,[\"will-destroy\",\"did-insert\",\"o-s-s/badge\",\"o-s-s/button\",\"on\"]]",
+    "id": "t2PolTDM",
+    "block": "[[[11,0],[24,0,\"oss-dialog__backdrop fx-row fx-malign-center fx-xalign-center\"],[4,[38,0],[[30,0,[\"onDestroy\"]]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"oss-dialog fx-col\"],[17,1],[4,[38,1],[[30,0,[\"onInit\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"oss-dialog__header\"],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@skin\"],[\"fa-warning\",[30,0,[\"skin\"]]]],null],[1,\"\\n      \"],[10,1],[14,0,\"font-weight-semibold font-size-md\"],[12],[1,[30,2]],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"oss-dialog__footer\"],[12],[1,\"\\n      \"],[8,[39,3],[[4,[38,4],[\"click\",[30,3,[\"action\"]]],null]],[[\"@skin\",\"@label\"],[[30,0,[\"skinBtn\"]],[30,3,[\"label\"]]]],null],[1,\"\\n      \"],[8,[39,3],[[4,[38,4],[\"click\",[30,4,[\"action\"]]],null]],[[\"@label\"],[[30,4,[\"label\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@title\",\"@mainAction\",\"@secondaryAction\"],false,[\"will-destroy\",\"did-insert\",\"o-s-s/badge\",\"o-s-s/button\",\"on\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/dialog.hbs",
     "isStrictMode": false
   });
+  var BTN_STYLE_MATCHER = {
+    alert: 'alert',
+    error: 'destructive'
+  };
   var OSSDialog = _exports.default = (_class = /*#__PURE__*/function (_BaseModal) {
     _inherits(OSSDialog, _BaseModal);
     function OSSDialog(owner, args) {
@@ -79684,6 +79688,17 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
       return _this;
     }
     _createClass(OSSDialog, [{
+      key: "skin",
+      get: function get() {
+        var _this$args$skin;
+        return (_this$args$skin = this.args.skin) !== null && _this$args$skin !== void 0 ? _this$args$skin : 'alert';
+      }
+    }, {
+      key: "skinBtn",
+      get: function get() {
+        return BTN_STYLE_MATCHER[this.skin];
+      }
+    }, {
       key: "onInit",
       value: function onInit(elem) {
         this.initialize(elem, false);
@@ -79701,11 +79716,15 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
   });
   _exports.default = _exports.Usage = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
+  var SizeTypes = ['alert', 'error'];
   var _default = _exports.default = {
     title: 'Components/OSS::Dialog',
     component: 'dialog',
     argTypes: {
       title: {
+        type: {
+          required: true
+        },
         description: 'The dialog title',
         table: {
           type: {
@@ -79719,26 +79738,53 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
           type: 'text'
         }
       },
+      skin: {
+        description: 'The dialog skin',
+        table: {
+          type: {
+            summary: SizeTypes.join('|')
+          },
+          defaultValue: {
+            summary: 'alert'
+          }
+        },
+        options: SizeTypes,
+        control: {
+          type: 'select'
+        }
+      },
       mainAction: {
+        type: {
+          required: true
+        },
         description: 'A hash with the main action button properties',
         table: {
           type: {
-            summary: '{ label: string, action: () => unknown }[]'
+            summary: '{ label: string, action: () => unknown }'
+          },
+          defaultValue: {
+            summary: 'undefined'
           }
         },
         control: {
-          type: '{ label: string, action: () => unknown }[]'
+          type: 'object'
         }
       },
       secondaryAction: {
+        type: {
+          required: true
+        },
         description: 'A hash with the secondary action button properties',
         table: {
           type: {
-            summary: '{ label: string, action: () => unknown }[]'
+            summary: '{ label: string, action: () => unknown }'
+          },
+          defaultValue: {
+            summary: 'undefined'
           }
         },
         control: {
-          type: '{ label: string, action: () => unknown }[]'
+          type: 'object'
         }
       }
     },
@@ -79752,6 +79798,7 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
   };
   var defaultArgs = {
     title: 'You are about to discard your changes',
+    skin: undefined,
     mainAction: {
       label: 'Discard',
       action: (0, _addonActions.action)('discard')
@@ -79768,13 +79815,14 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
         
           <OSS::Dialog
             @title={{this.title}}
+            @skin={{this.skin}}
             @mainAction={{this.mainAction}}
             @secondaryAction={{this.secondaryAction}} />
         
       */
       {
-        "id": "b3yikAeC",
-        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@title\",\"@mainAction\",\"@secondaryAction\"],[[30,0,[\"title\"]],[30,0,[\"mainAction\"]],[30,0,[\"secondaryAction\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/dialog\"]]",
+        "id": "JxRClD3i",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@title\",\"@skin\",\"@mainAction\",\"@secondaryAction\"],[[30,0,[\"title\"]],[30,0,[\"skin\"]],[30,0,[\"mainAction\"]],[30,0,[\"secondaryAction\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/dialog\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/dialog.stories.js",
         "isStrictMode": false
       }),
