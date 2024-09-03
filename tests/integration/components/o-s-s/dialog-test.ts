@@ -19,7 +19,7 @@ module('Integration | Component | o-s-s/dialog', function (hooks) {
     };
   });
 
-  test('it renders', async function (assert) {
+  test('It renders', async function (assert) {
     await render(
       hbs`<OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />`
     );
@@ -35,7 +35,36 @@ module('Integration | Component | o-s-s/dialog', function (hooks) {
     assert.dom('.oss-dialog__header').hasText(this.title);
   });
 
-  test('The dialog displays the main action button', async function (assert) {
+  module('For @skin', () => {
+    test('When the value is undefined, skins are correct', async function (assert) {
+      await render(
+        hbs`<OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />`
+      );
+
+      assert.dom('.oss-dialog__footer .upf-btn--alert').exists();
+      assert.dom('.oss-dialog__header .upf-badge--alert').exists();
+    });
+
+    test('When the value is alert, skins are correct', async function (assert) {
+      await render(
+        hbs`<OSS::Dialog @title={{this.title}} @skin="alert" @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />`
+      );
+
+      assert.dom('.oss-dialog__footer .upf-btn--alert').exists();
+      assert.dom('.oss-dialog__header .upf-badge--alert').exists();
+    });
+
+    test('When the value is error, skins are correct', async function (assert) {
+      await render(
+        hbs`<OSS::Dialog @title={{this.title}} @skin="error" @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />`
+      );
+
+      assert.dom('.oss-dialog__footer .upf-btn--destructive').exists();
+      assert.dom('.oss-dialog__header .upf-badge--error').exists();
+    });
+  });
+
+  test('The main action button label is displayed', async function (assert) {
     await render(
       hbs`<OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />`
     );
@@ -43,7 +72,7 @@ module('Integration | Component | o-s-s/dialog', function (hooks) {
     assert.dom('.oss-dialog__footer .upf-btn--alert').hasText(this.mainAction.label);
   });
 
-  test('The dialog displays the secondary action button', async function (assert) {
+  test('The secondary action button label is displayed', async function (assert) {
     await render(
       hbs`<OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />`
     );
