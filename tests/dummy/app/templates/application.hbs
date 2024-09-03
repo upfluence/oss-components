@@ -50,9 +50,9 @@
           @title="This is the side panel's header."
         />
       </:header>
-      <:content>
+      <:main>
         <span>This is the side panel's content.</span>
-      </:content>
+      </:main>
       <:footer>
         <span>This is the side panel's footer.</span>
       </:footer>
@@ -260,12 +260,7 @@
         @label="Hello"
         @coloredBackground={{true}}
       />
-      <OSS::ProgressBar
-        @value={{78}}
-        @displayValue={{true}}
-        @label="Hello"
-        @coloredBackground={{false}}
-      />
+      <OSS::ProgressBar @value={{78}} @displayValue={{true}} @label="Hello" @coloredBackground={{false}} />
     </div>
     <div class="fx-row fx-1 fx-gap-px-10 margin-md">
       <OSS::StarRating @rating={{3}} @totalStars={{5}} @onChange={{this.onRatingClick}} />

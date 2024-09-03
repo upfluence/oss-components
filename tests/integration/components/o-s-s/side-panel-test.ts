@@ -19,6 +19,19 @@ module('Integration | Component | o-s-s/side-panel', function (hooks) {
   });
 
   module('Named-blocks', function () {
+    test('The global named-block is properly displayed', async function (assert) {
+      await render(
+        hbs`
+          <OSS::SidePanel @title="Sidepanel" @visible={{true}} @backdrop={{true}} @size="sm" @onClose={{this.onClose}}>
+            <:global>
+              <p>This is the global content</p>
+            </:global>
+          </OSS::SidePanel>`
+      );
+
+      assert.dom('p').hasText('This is the global content');
+    });
+
     test('The header named-block is properly displayed', async function (assert) {
       await render(
         hbs`
