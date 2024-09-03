@@ -85584,27 +85584,31 @@ define("@upfluence/oss-components/components/o-s-s/side-panel", ["exports", "@em
       {{did-insert this.initialize}}
     />
     <div class="oss-side-panel__content {{this.sidePanelSize}} {{unless @visible 'oss-side-panel__content--closed'}}">
-      {{#if (has-block "header")}}
-        <header class="oss-side-panel__header">
-          {{yield to="header"}}
-        </header>
-      {{/if}}
-      {{#if (has-block "main")}}
-        <div class="oss-side-panel__main fx-col fx-1">
-          {{yield to="main"}}
-        </div>
-      {{/if}}
-      {{#if (has-block "footer")}}
-        <footer class="oss-side-panel__footer fx-row fx-xalign-center">
-          {{yield to="footer"}}
-        </footer>
+      {{#if (has-block "global")}}
+        {{yield to="global"}}
+      {{else}}
+        {{#if (has-block "header")}}
+          <header class="oss-side-panel__header">
+            {{yield to="header"}}
+          </header>
+        {{/if}}
+        {{#if (has-block "main")}}
+          <div class="oss-side-panel__main fx-col fx-1">
+            {{yield to="main"}}
+          </div>
+        {{/if}}
+        {{#if (has-block "footer")}}
+          <footer class="oss-side-panel__footer fx-row fx-xalign-center">
+            {{yield to="footer"}}
+          </footer>
+        {{/if}}
       {{/if}}
     </div>
   </div>
   */
   {
-    "id": "ni9Qpdy3",
-    "block": "[[[11,0],[16,0,[29,[\"oss-side-panel \",[52,[30,1],\"oss-side-panel--visible\"]]]],[17,2],[4,[38,1],[[30,0,[\"onDestroy\"]]],null],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-side-panel__backdrop \",[52,[51,[30,3]],\"oss-side-panel__backdrop--transparent\"]]]],[4,[38,3],[\"click\",[30,4]],null],[4,[38,4],[[30,0,[\"onClickOutside\"]]],null],[4,[38,5],[[30,0,[\"initialize\"]]],null],[12],[13],[1,\"\\n  \"],[10,0],[15,0,[29,[\"oss-side-panel__content \",[30,0,[\"sidePanelSize\"]],\" \",[52,[51,[30,1]],\"oss-side-panel__content--closed\"]]]],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"      \"],[10,\"header\"],[14,0,\"oss-side-panel__header\"],[12],[1,\"\\n        \"],[18,5,null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,6]],[[[1,\"      \"],[10,0],[14,0,\"oss-side-panel__main fx-col fx-1\"],[12],[1,\"\\n        \"],[18,6,null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,7]],[[[1,\"      \"],[10,\"footer\"],[14,0,\"oss-side-panel__footer fx-row fx-xalign-center\"],[12],[1,\"\\n        \"],[18,7,null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[13]],[\"@visible\",\"&attrs\",\"@backdrop\",\"@onClose\",\"&header\",\"&main\",\"&footer\"],false,[\"if\",\"will-destroy\",\"unless\",\"on\",\"on-click-outside\",\"did-insert\",\"has-block\",\"yield\"]]",
+    "id": "tCUZFzGL",
+    "block": "[[[11,0],[16,0,[29,[\"oss-side-panel \",[52,[30,1],\"oss-side-panel--visible\"]]]],[17,2],[4,[38,1],[[30,0,[\"onDestroy\"]]],null],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-side-panel__backdrop \",[52,[51,[30,3]],\"oss-side-panel__backdrop--transparent\"]]]],[4,[38,3],[\"click\",[30,4]],null],[4,[38,4],[[30,0,[\"onClickOutside\"]]],null],[4,[38,5],[[30,0,[\"initialize\"]]],null],[12],[13],[1,\"\\n  \"],[10,0],[15,0,[29,[\"oss-side-panel__content \",[30,0,[\"sidePanelSize\"]],\" \",[52,[51,[30,1]],\"oss-side-panel__content--closed\"]]]],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"      \"],[18,5,null],[1,\"\\n\"]],[]],[[[41,[48,[30,6]],[[[1,\"        \"],[10,\"header\"],[14,0,\"oss-side-panel__header\"],[12],[1,\"\\n          \"],[18,6,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,7]],[[[1,\"        \"],[10,0],[14,0,\"oss-side-panel__main fx-col fx-1\"],[12],[1,\"\\n          \"],[18,7,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,8]],[[[1,\"        \"],[10,\"footer\"],[14,0,\"oss-side-panel__footer fx-row fx-xalign-center\"],[12],[1,\"\\n          \"],[18,8,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null]],[]]],[1,\"  \"],[13],[1,\"\\n\"],[13]],[\"@visible\",\"&attrs\",\"@backdrop\",\"@onClose\",\"&global\",\"&header\",\"&main\",\"&footer\"],false,[\"if\",\"will-destroy\",\"unless\",\"on\",\"on-click-outside\",\"did-insert\",\"has-block\",\"yield\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/side-panel.hbs",
     "isStrictMode": false
   });

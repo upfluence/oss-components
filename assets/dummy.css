@@ -15574,7 +15574,7 @@ a.oss-sidebar-item:focus {
   padding: var(--spacing-px-18) var(--spacing-px-24);
   border-bottom: 1px solid var(--color-border-default);
 }
-.oss-side-panel .oss-side-panel__content .oss-side-panel__content {
+.oss-side-panel .oss-side-panel__content .oss-side-panel__main {
   padding: var(--spacing-px-24);
 }
 .oss-side-panel .oss-side-panel__content .oss-side-panel__footer {
