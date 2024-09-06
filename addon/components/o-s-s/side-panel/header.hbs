@@ -1,6 +1,8 @@
 <div class="oss-side-panel__header__content fx-row fx-xalign-center" ...attributes>
   {{#if @onReturn}}
-    <OSS::Icon @icon="fa-solid fa-arrow-left" role="button" class="margin-right-px-12" {{on "click" @onReturn}} />
+    <div class="padding-px-6" {{on "click" @onReturn}} role="button">
+      <OSS::Icon @icon="fa-solid fa-arrow-left" />
+    </div>
   {{/if}}
   <span class="fx-1 font-weight-semibold font-size-h4">{{@title}}</span>
   <OSS::Button @size="sm" @icon="fa-times" @square={{true}} {{on "click" @onClose}} />
