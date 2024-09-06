@@ -85810,15 +85810,17 @@ define("@upfluence/oss-components/components/o-s-s/side-panel/header", ["exports
   /*
     <div class="oss-side-panel__header__content fx-row fx-xalign-center" ...attributes>
     {{#if @onReturn}}
-      <OSS::Icon @icon="fa-solid fa-arrow-left" role="button" class="margin-right-px-12" {{on "click" @onReturn}} />
+      <div class="padding-px-6" {{on "click" @onReturn}} role="button">
+        <OSS::Icon @icon="fa-solid fa-arrow-left" />
+      </div>
     {{/if}}
     <span class="fx-1 font-weight-semibold font-size-h4">{{@title}}</span>
     <OSS::Button @size="sm" @icon="fa-times" @square={{true}} {{on "click" @onClose}} />
   </div>
   */
   {
-    "id": "JhO88gUt",
-    "block": "[[[11,0],[24,0,\"oss-side-panel__header__content fx-row fx-xalign-center\"],[17,1],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[8,[39,1],[[24,\"role\",\"button\"],[24,0,\"margin-right-px-12\"],[4,[38,2],[\"click\",[30,2]],null]],[[\"@icon\"],[\"fa-solid fa-arrow-left\"]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,1],[14,0,\"fx-1 font-weight-semibold font-size-h4\"],[12],[1,[30,3]],[13],[1,\"\\n  \"],[8,[39,3],[[4,[38,2],[\"click\",[30,4]],null]],[[\"@size\",\"@icon\",\"@square\"],[\"sm\",\"fa-times\",true]],null],[1,\"\\n\"],[13]],[\"&attrs\",\"@onReturn\",\"@title\",\"@onClose\"],false,[\"if\",\"o-s-s/icon\",\"on\",\"o-s-s/button\"]]",
+    "id": "gIw3NF35",
+    "block": "[[[11,0],[24,0,\"oss-side-panel__header__content fx-row fx-xalign-center\"],[17,1],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[11,0],[24,0,\"padding-px-6\"],[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,2]],null],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\"],[\"fa-solid fa-arrow-left\"]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,1],[14,0,\"fx-1 font-weight-semibold font-size-h4\"],[12],[1,[30,3]],[13],[1,\"\\n  \"],[8,[39,3],[[4,[38,1],[\"click\",[30,4]],null]],[[\"@size\",\"@icon\",\"@square\"],[\"sm\",\"fa-times\",true]],null],[1,\"\\n\"],[13]],[\"&attrs\",\"@onReturn\",\"@title\",\"@onClose\"],false,[\"if\",\"on\",\"o-s-s/icon\",\"o-s-s/button\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/side-panel/header.hbs",
     "isStrictMode": false
   });
