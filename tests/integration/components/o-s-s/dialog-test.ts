@@ -62,6 +62,33 @@ module('Integration | Component | o-s-s/dialog', function (hooks) {
       assert.dom('.oss-dialog__footer .upf-btn--destructive').exists();
       assert.dom('.oss-dialog__header .upf-badge--error').exists();
     });
+
+    test('When the value is primary, skins are correct', async function (assert) {
+      await render(
+        hbs`<OSS::Dialog @title={{this.title}} @skin="primary" @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />`
+      );
+
+      assert.dom('.oss-dialog__footer .upf-btn--primary').exists();
+      assert.dom('.oss-dialog__header .upf-badge--primary').exists();
+    });
+  });
+
+  module('For @icon', () => {
+    test('When the value is undefined, icon is correct', async function (assert) {
+      await render(
+        hbs`<OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />`
+      );
+
+      assert.dom('.oss-dialog__header .upf-badge--alert .fa-warning').exists();
+    });
+
+    test('When the value is defined, icon is correct', async function (assert) {
+      await render(
+        hbs`<OSS::Dialog @title={{this.title}} @icon="fa-otter" @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />`
+      );
+
+      assert.dom('.oss-dialog__header .upf-badge--alert .fa-otter').exists();
+    });
   });
 
   test('The main action button label is displayed', async function (assert) {
