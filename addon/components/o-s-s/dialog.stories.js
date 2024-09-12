@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
 
-const SizeTypes = ['alert', 'error', 'primary'];
+const SkinTypes = ['alert', 'error', 'primary'];
 
 export default {
   title: 'Components/OSS::Dialog',
@@ -22,11 +22,11 @@ export default {
       description: 'The dialog skin',
       table: {
         type: {
-          summary: SizeTypes.join('|')
+          summary: SkinTypes.join('|')
         },
         defaultValue: { summary: 'alert' }
       },
-      options: SizeTypes,
+      options: SkinTypes,
       control: { type: 'select' }
     },
     icon: {
