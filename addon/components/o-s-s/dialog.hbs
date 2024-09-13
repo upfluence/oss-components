@@ -1,7 +1,7 @@
 <div class="oss-dialog__backdrop fx-row fx-malign-center fx-xalign-center" {{will-destroy this.onDestroy}}>
   <div class="oss-dialog fx-col" {{did-insert this.onInit}} ...attributes>
     <div class="oss-dialog__header">
-      <OSS::Badge @icon="fa-warning" @skin={{this.skin}} />
+      <OSS::Badge @icon={{this.icon}} @skin={{this.skin}} />
       <span class="font-weight-semibold font-size-md">{{@title}}</span>
     </div>
     <div class="oss-dialog__footer">

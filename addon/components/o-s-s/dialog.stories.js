@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
 
-const SizeTypes = ['alert', 'error'];
+const SkinTypes = ['alert', 'error', 'primary'];
 
 export default {
   title: 'Components/OSS::Dialog',
@@ -22,12 +22,22 @@ export default {
       description: 'The dialog skin',
       table: {
         type: {
-          summary: SizeTypes.join('|')
+          summary: SkinTypes.join('|')
         },
         defaultValue: { summary: 'alert' }
       },
-      options: SizeTypes,
+      options: SkinTypes,
       control: { type: 'select' }
+    },
+    icon: {
+      description: 'The dialog icon',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'fa-warning' }
+      },
+      control: { type: 'text' }
     },
     mainAction: {
       type: { required: true },
@@ -68,6 +78,7 @@ export default {
 const defaultArgs = {
   title: 'You are about to discard your changes',
   skin: undefined,
+  icon: 'fa-warning',
   mainAction: {
     label: 'Discard',
     action: action('discard')
@@ -83,6 +94,7 @@ const BasicUsageTemplate = (args) => ({
     <OSS::Dialog
       @title={{this.title}}
       @skin={{this.skin}}
+      @icon={{this.icon}}
       @mainAction={{this.mainAction}}
       @secondaryAction={{this.secondaryAction}} />
   `,
