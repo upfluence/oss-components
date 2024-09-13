@@ -2,19 +2,18 @@
   --flatpickr-padding: 0px;
   --flatpickr-day-size: 34px;
   --flatpickr-day-margin: 3px;
+  --flatpickr-width: calc(
+    var(--flatpickr-day-size) * 7 + var(--flatpickr-day-margin) * 14 + var(--flatpickr-padding) * 2 + 2px
+  );
 }
 
 .flatpickr-calendar,
 .flatpickr-rContainer,
 .flatpickr-rContainer .flatpickr-days,
 .flatpickr-rContainer .dayContainer {
-  width: calc(var(--flatpickr-day-size) * 7 + var(--flatpickr-day-margin) * 14 + var(--flatpickr-padding) * 2 + 2px);
-  max-width: calc(
-    var(--flatpickr-day-size) * 7 + var(--flatpickr-day-margin) * 14 + var(--flatpickr-padding) * 2 + 2px
-  );
-  min-width: calc(
-    var(--flatpickr-day-size) * 7 + var(--flatpickr-day-margin) * 14 + var(--flatpickr-padding) * 2 + 2px
-  );
+  width: var(--flatpickr-width);
+  max-width: var(--flatpickr-width);
+  min-width: var(--flatpickr-width);
 }
 
 .flatpickr-calendar {
