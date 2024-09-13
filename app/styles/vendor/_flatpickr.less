@@ -1,0 +1,183 @@
+:root {
+  --flatpickr-padding: 0px;
+  --flatpickr-day-size: 34px;
+  --flatpickr-day-margin: 3px;
+}
+
+.flatpickr-calendar,
+.flatpickr-rContainer,
+.flatpickr-rContainer .flatpickr-days,
+.flatpickr-rContainer .dayContainer {
+  width: calc(var(--flatpickr-day-size) * 7 + var(--flatpickr-day-margin) * 14 + var(--flatpickr-padding) * 2 + 2px);
+  max-width: calc(
+    var(--flatpickr-day-size) * 7 + var(--flatpickr-day-margin) * 14 + var(--flatpickr-padding) * 2 + 2px
+  );
+  min-width: calc(
+    var(--flatpickr-day-size) * 7 + var(--flatpickr-day-margin) * 14 + var(--flatpickr-padding) * 2 + 2px
+  );
+}
+
+.flatpickr-calendar {
+  .flatpickr-months {
+    .flatpickr-prev-month,
+    .flatpickr-next-month {
+      svg {
+        height: 12px;
+        width: 12px;
+        stroke: var(--color-gray-600);
+        transition: stroke 300ms ease-in-out;
+      }
+    }
+
+    .flatpickr-prev-month:hover svg,
+    .flatpickr-next-month:hover svg {
+      stroke: var(--color-gray-900);
+    }
+
+    .flatpickr-current-month {
+      padding-top: 10px;
+
+      select,
+      input.cur-year {
+        color: var(--color-gray-900);
+        font-size: var(--font-size-md);
+        font-weight: var(--font-weight-semibold);
+      }
+
+      select {
+        text-align: right;
+        margin-right: var(--spacing-px-12);
+
+        &:hover {
+          background: none;
+        }
+      }
+
+      .numInputWrapper {
+        border-radius: var(--border-radius-sm);
+
+        &:hover {
+          background: none;
+        }
+
+        input.cur-year {
+          height: 22px;
+
+          &:hover {
+            .input-state-hover;
+            border-radius: var(--border-radius-sm);
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+          }
+
+          &:focus {
+            border-radius: var(--border-radius-sm);
+            .input-state-focus;
+          }
+        }
+      }
+    }
+  }
+
+  .flatpickr-weekdaycontainer {
+    span.flatpickr-weekday {
+      color: var(--color-gray-900);
+      font-size: var(--font-size-xs);
+      font-weight: normal;
+    }
+  }
+
+  .flatpickr-day {
+    border-width: 0px;
+    color: var(--color-gray-600);
+    font-size: var(--font-size-sm);
+    line-height: var(--flatpickr-day-size);
+
+    height: var(--flatpickr-day-size);
+    width: var(--flatpickr-day-size);
+    max-height: var(--flatpickr-day-size);
+    max-width: var(--flatpickr-day-size);
+
+    margin: var(--flatpickr-day-margin);
+
+    .rangeMode .flatpickr-day {
+      margin-top: unset;
+    }
+
+    &:not(.startRange):not(.endRange):not(.selected):not(.inRange):hover {
+      background-color: var(--color-gray-200);
+      border-radius: 50%;
+      color: var(--color-gray-600);
+    }
+
+    &.today:not(.startRange):not(.endRange):not(.selected):not(.inRange) {
+      border-width: 1px;
+      border-color: var(--color-border-default);
+      color: var(--color-primary-500);
+    }
+
+    &.nextMonthDay {
+      color: var(--color-gray-400);
+    }
+
+    &.startRange,
+    &.endRange {
+      background-color: var(--color-primary-500);
+      border-radius: 50%;
+      position: relative;
+      color: var(--color-white);
+    }
+
+    &.startRange:not(.endRange):before {
+      content: '';
+      height: 38px;
+      width: 41px;
+      position: absolute;
+      z-index: -1;
+      top: -2px;
+      left: -3px;
+      border-radius: 50% 0 0 50%;
+      background-color: var(--color-primary-100);
+    }
+
+    &.endRange:not(.startRange):hover:before,
+    &.endRange:not(.startRange):before {
+      content: '';
+      height: 38px;
+      width: 41px;
+      position: absolute;
+      z-index: -1;
+      top: -2px;
+      right: -3px;
+      border-radius: 0 50% 50% 0;
+      background-color: var(--color-primary-100);
+    }
+
+    &.inRange {
+      background-color: var(--color-primary-100);
+      box-shadow: none;
+      -webkit-box-shadow: none;
+      position: relative;
+      border: none;
+
+      &:before {
+        content: '';
+        background-color: red;
+        background-color: var(--color-primary-100);
+        position: absolute;
+        top: -2px;
+        left: -5px;
+        height: 38px;
+        width: 45px;
+        z-index: -1;
+      }
+    }
+  }
+
+  .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n + 1)),
+  .flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n + 1)),
+  .flatpickr-day.endRange.startRange + .endRange:not(:nth-child(7n + 1)) {
+    box-shadow: none;
+    -webkit-box-shadow: none;
+  }
+}
