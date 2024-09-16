@@ -78616,20 +78616,20 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
     {{#if this.accessibleClipboard}}
     {{#if this.inline}}
       <OSS::Icon
-        @icon="fa-copy"
+        @icon={{this.icon}}
         class="oss-copy--inline"
         {{on "click" this.copy}}
-        {{enable-tooltip placement="top" title=(t "oss-components.copy.tooltip") trigger="hover"}}
+        {{enable-tooltip placement="top" title=this.tooltip trigger="hover"}}
         data-control-name="copy-content-button"
         ...attributes
       />
     {{else}}
       <OSS::Button
-        @icon="far fa-copy"
+        @icon={{this.icon}}
         @square={{true}}
         @size="sm"
         {{on "click" this.copy}}
-        {{enable-tooltip placement="top" title=(t "oss-components.copy.tooltip") trigger="hover"}}
+        {{enable-tooltip placement="top" title=this.tooltip trigger="hover"}}
         data-control-name="copy-content-button"
         ...attributes
       />
@@ -78637,8 +78637,8 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
   {{/if}}
   */
   {
-    "id": "QWevLuZY",
-    "block": "[[[41,[30,0,[\"accessibleClipboard\"]],[[[41,[30,0,[\"inline\"]],[[[1,\"    \"],[8,[39,1],[[24,0,\"oss-copy--inline\"],[24,\"data-control-name\",\"copy-content-button\"],[17,1],[4,[38,2],[\"click\",[30,0,[\"copy\"]]],null],[4,[38,3],null,[[\"placement\",\"title\",\"trigger\"],[\"top\",[28,[37,4],[\"oss-components.copy.tooltip\"],null],\"hover\"]]]],[[\"@icon\"],[\"fa-copy\"]],null],[1,\"\\n\"]],[]],[[[1,\"    \"],[8,[39,5],[[24,\"data-control-name\",\"copy-content-button\"],[17,1],[4,[38,2],[\"click\",[30,0,[\"copy\"]]],null],[4,[38,3],null,[[\"placement\",\"title\",\"trigger\"],[\"top\",[28,[37,4],[\"oss-components.copy.tooltip\"],null],\"hover\"]]]],[[\"@icon\",\"@square\",\"@size\"],[\"far fa-copy\",true,\"sm\"]],null],[1,\"\\n\"]],[]]]],[]],null]],[\"&attrs\"],false,[\"if\",\"o-s-s/icon\",\"on\",\"enable-tooltip\",\"t\",\"o-s-s/button\"]]",
+    "id": "hJuw17eP",
+    "block": "[[[41,[30,0,[\"accessibleClipboard\"]],[[[41,[30,0,[\"inline\"]],[[[1,\"    \"],[8,[39,1],[[24,0,\"oss-copy--inline\"],[24,\"data-control-name\",\"copy-content-button\"],[17,1],[4,[38,2],[\"click\",[30,0,[\"copy\"]]],null],[4,[38,3],null,[[\"placement\",\"title\",\"trigger\"],[\"top\",[30,0,[\"tooltip\"]],\"hover\"]]]],[[\"@icon\"],[[30,0,[\"icon\"]]]],null],[1,\"\\n\"]],[]],[[[1,\"    \"],[8,[39,4],[[24,\"data-control-name\",\"copy-content-button\"],[17,1],[4,[38,2],[\"click\",[30,0,[\"copy\"]]],null],[4,[38,3],null,[[\"placement\",\"title\",\"trigger\"],[\"top\",[30,0,[\"tooltip\"]],\"hover\"]]]],[[\"@icon\",\"@square\",\"@size\"],[[30,0,[\"icon\"]],true,\"sm\"]],null],[1,\"\\n\"]],[]]]],[]],null]],[\"&attrs\"],false,[\"if\",\"o-s-s/icon\",\"on\",\"enable-tooltip\",\"o-s-s/button\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/copy.hbs",
     "isStrictMode": false
   });
@@ -78665,6 +78665,18 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
       return _this;
     }
     _createClass(OSSCopy, [{
+      key: "icon",
+      get: function get() {
+        var _this$args$icon;
+        return (_this$args$icon = this.args.icon) !== null && _this$args$icon !== void 0 ? _this$args$icon : 'far fa-copy';
+      }
+    }, {
+      key: "tooltip",
+      get: function get() {
+        var _this$args$tooltip;
+        return (_this$args$tooltip = this.args.tooltip) !== null && _this$args$tooltip !== void 0 ? _this$args$tooltip : this.intl.t('oss-components.copy.tooltip');
+      }
+    }, {
       key: "copy",
       value: function copy(event) {
         var _this2 = this;
@@ -78750,6 +78762,40 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
         control: {
           type: 'boolean'
         }
+      },
+      icon: {
+        type: {
+          name: 'string'
+        },
+        description: 'Set the custom icon',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'far fa-copy'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      tooltip: {
+        type: {
+          name: 'string'
+        },
+        description: 'Set the custom tooltip value',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'Copy'
+          }
+        },
+        control: {
+          type: 'text'
+        }
       }
     },
     parameters: {
@@ -78763,17 +78809,22 @@ define("@upfluence/oss-components/components/o-s-s/copy", ["exports", "@ember/co
   };
   var defaultArgs = {
     value: 'Your copied value',
-    inline: false
+    inline: false,
+    icon: undefined,
+    tooltip: undefined
   };
   var BasicUsageTemplate = function BasicUsageTemplate(args) {
     return {
       template: (0, _templateFactory.createTemplateFactory)(
       /*
-        <div class="fx-col"><OSS::Copy @value={{this.value}} @inline={{this.inline}}/></div>
+        
+          <div class="fx-col">
+            <OSS::Copy @value={{this.value}} @inline={{this.inline}} @icon={{this.icon}} @tooltip={{this.tooltip}} />
+          </div>
       */
       {
-        "id": "MEq3U0+7",
-        "block": "[[[10,0],[14,0,\"fx-col\"],[12],[8,[39,0],null,[[\"@value\",\"@inline\"],[[30,0,[\"value\"]],[30,0,[\"inline\"]]]],null],[13]],[],false,[\"o-s-s/copy\"]]",
+        "id": "00f6QLbr",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@value\",\"@inline\",\"@icon\",\"@tooltip\"],[[30,0,[\"value\"]],[30,0,[\"inline\"]],[30,0,[\"icon\"]],[30,0,[\"tooltip\"]]]],null],[1,\"\\n    \"],[13]],[],false,[\"o-s-s/copy\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/copy.stories.js",
         "isStrictMode": false
       }),
