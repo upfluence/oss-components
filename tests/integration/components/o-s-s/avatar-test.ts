@@ -81,7 +81,7 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
     });
 
     test('it displays the initials when both initials and image are provided and the image fails to load', async function (assert) {
-      await render(hbs`<OSS::Avatar @image="http://foo.co/bar.p" @initials="TS" />`);
+      await render(hbs`<OSS::Avatar @image="/foo.co/bar.p" @initials="TS" />`);
       await waitFor('.upf-avatar span');
 
       assert.dom('.upf-avatar').exists();
@@ -90,7 +90,7 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
     });
 
     test('it displays the placeholder image when the image provided in parameters fails to load', async function (assert) {
-      await render(hbs`<OSS::Avatar @image="http://foo.co/bar.p" />`);
+      await render(hbs`<OSS::Avatar @image="/foo.co/bar.p" />`);
       await waitUntil(function () {
         return find('.upf-avatar img')?.getAttribute('src') === DEFAULT_IMAGE_URL;
       });

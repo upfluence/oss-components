@@ -23,10 +23,29 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
     assert.dom('.oss-copy--inline').exists();
   });
 
-  test('the tooltip has correct wording', async function (assert) {
-    await render(hbs`<OSS::Copy />`);
+  module('for @icon', () => {
+    test('when value is undefined, it renders the default icon', async function (assert) {
+      await render(hbs`<OSS::Copy />`);
+      assert.dom('i.fa-copy').exists();
+    });
 
-    await assert.tooltip('.upf-btn--default').hasTitle('Copy');
+    test('when value is defined, it renders the specified icon', async function (assert) {
+      await render(hbs`<OSS::Copy @icon="far fa-jedi" />`);
+      assert.dom('i.fa-jedi').exists();
+    });
+  });
+
+  module('for @tooltip', () => {
+    test('when value is undefined, it renders the default', async function (assert) {
+      await render(hbs`<OSS::Copy />`);
+      await assert.tooltip('.upf-btn--default').hasTitle('Copy');
+    });
+
+    test('when value is defined, it renders the specified tooltip', async function (assert) {
+      this.tooltip = 'Custom tooltip';
+      await render(hbs`<OSS::Copy @tooltip={{this.tooltip}} />`);
+      await assert.tooltip('.upf-btn--default').hasTitle(this.tooltip);
+    });
   });
 
   module('on non-Chrome browsers the button is always displayed', function (hooks) {

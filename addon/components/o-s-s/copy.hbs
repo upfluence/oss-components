@@ -1,20 +1,20 @@
 {{#if this.accessibleClipboard}}
   {{#if this.inline}}
     <OSS::Icon
-      @icon="fa-copy"
+      @icon={{this.icon}}
       class="oss-copy--inline"
       {{on "click" this.copy}}
-      {{enable-tooltip placement="top" title=(t "oss-components.copy.tooltip") trigger="hover"}}
+      {{enable-tooltip placement="top" title=this.tooltip trigger="hover"}}
       data-control-name="copy-content-button"
       ...attributes
     />
   {{else}}
     <OSS::Button
-      @icon="far fa-copy"
+      @icon={{this.icon}}
       @square={{true}}
       @size="sm"
       {{on "click" this.copy}}
-      {{enable-tooltip placement="top" title=(t "oss-components.copy.tooltip") trigger="hover"}}
+      {{enable-tooltip placement="top" title=this.tooltip trigger="hover"}}
       data-control-name="copy-content-button"
       ...attributes
     />
