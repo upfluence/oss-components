@@ -23,6 +23,18 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
     assert.dom('.oss-copy--inline').exists();
   });
 
+  module('for @icon', () => {
+    test('when value is undefined, it renders the default icon', async function (assert) {
+      await render(hbs`<OSS::Copy />`);
+      assert.dom('i.fa-copy').exists();
+    });
+
+    test('when value is defined, it renders the specified icon', async function (assert) {
+      await render(hbs`<OSS::Copy @icon="far fa-jedi" />`);
+      assert.dom('i.fa-jedi').exists();
+    });
+  });
+
   test('the tooltip has correct wording', async function (assert) {
     await render(hbs`<OSS::Copy />`);
 

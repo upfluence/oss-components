@@ -29,17 +29,21 @@
   </OSS::Layout::Sidebar>
 
   <div style="width:100%; height:100vh; overflow: auto; background-color: var(--color-gray-50)">
-    <OSS::Slider @value={{10}} />
-    <div class="fx-col fx-gap-px-10 margin-md width-pc-20">
-      <OSS::Layout::Navbar::NavItem @icon="fa-cog" @label="First Label" />
-      <OSS::Layout::Navbar::NavItem @icon="fa-code-branch" @label="Second Label" @active={{true}} />
-      <OSS::Layout::Navbar::NavItem @icon="fa-code-branch" @label="Third Label" @active={{true}} />
+    <div class="fx-row fx-gap-px-10 margin-md">
+      <OSS::Copy @value="I am the value copied" @inline={{true}} />
+      <OSS::Copy @value="I am the value copied" />
+      <OSS::Copy @value="I am the value copied" @icon="far fa-jedi" />
+      <OSS::Copy @value="I am the value copied" @icon="fab fa-empire" @inline={{true}} />
+      <OSS::Slider @value={{10}} />
     </div>
 
-    <div class="fx-col fx-gap-px-10 margin-md width-pc-20">
+    <div class="fx-row fx-gap-px-10 margin-md">
       <OSS::Button @skin="primary" @label="Open Dialog" {{on "click" (fn (mut this.showDialog) true)}} />
       <OSS::Button @skin="primary" @label="Open Modal" {{on "click" (fn (mut this.showModal) true)}} />
       <OSS::Button @skin="primary" @label="Open Side Panel" {{on "click" this.openSidePanel}} />
+      <OSS::Layout::Navbar::NavItem @icon="fa-cog" @label="First Label" />
+      <OSS::Layout::Navbar::NavItem @icon="fa-code-branch" @label="Second Label" @active={{true}} />
+      <OSS::Layout::Navbar::NavItem @icon="fa-code-branch" @label="Third Label" @active={{true}} />
     </div>
 
     <OSS::SidePanel @onClose={{this.closeSidePanel}} @backdrop={{true}} @visible={{this.showSidePanel}}>

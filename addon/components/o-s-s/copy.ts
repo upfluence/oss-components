@@ -10,6 +10,7 @@ import type { IntlService } from 'ember-intl';
 interface OSSCopyArgs {
   value: string;
   inline?: boolean;
+  icon?: string;
 }
 
 export default class OSSCopy extends Component<OSSCopyArgs> {
@@ -33,6 +34,10 @@ export default class OSSCopy extends Component<OSSCopyArgs> {
         this.accessibleClipboard = state === 'granted';
       })
       .catch(() => {});
+  }
+
+  get icon(): string {
+    return this.args.icon ?? 'far fa-copy';
   }
 
   @action
