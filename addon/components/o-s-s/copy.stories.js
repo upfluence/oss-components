@@ -33,7 +33,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: 'undefined' }
+        defaultValue: { summary: 'far fa-copy' }
       },
       control: { type: 'text' }
     },
@@ -44,7 +44,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: 'undefined' }
+        defaultValue: { summary: 'Copy' }
       },
       control: { type: 'text' }
     }
