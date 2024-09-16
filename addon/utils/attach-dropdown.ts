@@ -16,7 +16,7 @@ export type AttachmentOptions = {
   placement?: Placement;
 };
 
-const DEFAULT_ATTACHMENT_OPTIONS: AttachmentOptions = {
+export const DEFAULT_ATTACHMENT_OPTIONS: AttachmentOptions = {
   offset: 12,
   width: undefined,
   maxHeight: undefined,
