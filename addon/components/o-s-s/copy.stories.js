@@ -36,6 +36,17 @@ export default {
         defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
+    },
+    tooltip: {
+      type: { name: 'string' },
+      description: 'Set the custom tooltip value',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'text' }
     }
   },
   parameters: {
@@ -51,11 +62,15 @@ export default {
 const defaultArgs = {
   value: 'Your copied value',
   inline: false,
-  icon: undefined
+  icon: undefined,
+  tooltip: undefined
 };
 
 const BasicUsageTemplate = (args) => ({
-  template: hbs`<div class="fx-col"><OSS::Copy @value={{this.value}} @inline={{this.inline}} @icon={{this.icon}}/></div>`,
+  template: hbs`
+    <div class="fx-col">
+      <OSS::Copy @value={{this.value}} @inline={{this.inline}} @icon={{this.icon}} @tooltip={{this.tooltip}} />
+    </div>`,
   context: args
 });
 

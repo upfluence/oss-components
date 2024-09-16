@@ -11,6 +11,7 @@ interface OSSCopyArgs {
   value: string;
   inline?: boolean;
   icon?: string;
+  tooltip?: string;
 }
 
 export default class OSSCopy extends Component<OSSCopyArgs> {
@@ -38,6 +39,10 @@ export default class OSSCopy extends Component<OSSCopyArgs> {
 
   get icon(): string {
     return this.args.icon ?? 'far fa-copy';
+  }
+
+  get tooltip(): string {
+    return this.args.tooltip ?? this.intl.t('oss-components.copy.tooltip');
   }
 
   @action

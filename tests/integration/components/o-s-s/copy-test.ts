@@ -35,10 +35,17 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
     });
   });
 
-  test('the tooltip has correct wording', async function (assert) {
-    await render(hbs`<OSS::Copy />`);
+  module('for @tooltip', () => {
+    test('when value is undefined, it renders the default', async function (assert) {
+      await render(hbs`<OSS::Copy />`);
+      await assert.tooltip('.upf-btn--default').hasTitle('Copy');
+    });
 
-    await assert.tooltip('.upf-btn--default').hasTitle('Copy');
+    test('when value is defined, it renders the specified tooltip', async function (assert) {
+      this.tooltip = 'Custom tooltip';
+      await render(hbs`<OSS::Copy @tooltip={{this.tooltip}} />`);
+      await assert.tooltip('.upf-btn--default').hasTitle(this.tooltip);
+    });
   });
 
   module('on non-Chrome browsers the button is always displayed', function (hooks) {
