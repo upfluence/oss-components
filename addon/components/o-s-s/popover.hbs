@@ -1,0 +1,26 @@
+<div class="oss-popover oss-popover--{{this.size}}">
+  {{#if (has-block "illustration")}}
+    <div class="oss-popover__illustration">
+      {{yield to="illustration"}}
+    </div>
+  {{/if}}
+  <div class="oss-popover__body">
+    <div class="oss-popover__title-line">
+      <span class="oss-popover__title">{{@title}}</span>
+      {{#if (has-block "contextual-actions")}}
+        <span class="oss-popover__contextualactions">
+          {{yield to="contextual-actions"}}
+        </span>
+      {{/if}}
+    </div>
+    {{#if @subtitle}}
+      <span class="oss-popover__subtitle">{{@subtitle}}</span>
+    {{/if}}
+    {{#if (has-block "content")}}
+      <div class="oss-popover__content">
+        {{yield to="content"}}
+      </div>
+    {{/if}}
+  </div>
+  <div class="oss-popover__arrow oss-popover__arrow--{{@arrowplacement}}"></div>
+</div>
