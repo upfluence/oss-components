@@ -1051,7 +1051,7 @@
 
 {{#if this.showDialog}}
   <OSS::Dialog
-    @title="You are about to discard your changes"
+    @title={{t "oss-components.dialog.title" htmlSafe=true}}
     @mainAction={{hash action=this.onMainAction label="Discard changes"}}
     @secondaryAction={{hash action=this.onSecondaryAction label="Keep editing"}}
     @icon="fa-circle-info"
