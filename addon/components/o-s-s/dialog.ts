@@ -52,6 +52,6 @@ export default class OSSDialog extends BaseModal<OSSDialogArgs> {
   }
 
   private isSafeString(data: any): boolean {
-    return data.constructor.name === 'SafeString';
+    return data?.constructor?.name === 'SafeString';
   }
 }
