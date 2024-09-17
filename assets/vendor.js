@@ -79734,7 +79734,7 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
       var _this;
       _classCallCheck(this, OSSDialog);
       _this = _callSuper(this, OSSDialog, [owner, args]);
-      (true && !(typeof args.title === 'string') && (0, _debug.assert)('[component][OSS::Dialog] The title parameter is mandatory', typeof args.title === 'string'));
+      (true && !(typeof args.title === 'string' || _this.isSafeString(args.title)) && (0, _debug.assert)('[component][OSS::Dialog] The title parameter is mandatory', typeof args.title === 'string' || _this.isSafeString(args.title)));
       (true && !(_typeof(args.mainAction) === 'object') && (0, _debug.assert)('[component][OSS::Dialog] The mainAction parameter is mandatory', _typeof(args.mainAction) === 'object'));
       (true && !(_typeof(args.secondaryAction) === 'object') && (0, _debug.assert)('[component][OSS::Dialog] The secondaryAction parameter is mandatory', _typeof(args.secondaryAction) === 'object'));
       return _this;
@@ -79761,6 +79761,12 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
       value: function onInit(elem) {
         this.initialize(elem, false);
       }
+    }, {
+      key: "isSafeString",
+      value: function isSafeString(data) {
+        var _data$constructor;
+        return (data === null || data === void 0 || (_data$constructor = data.constructor) === null || _data$constructor === void 0 ? void 0 : _data$constructor.name) === 'SafeString';
+      }
     }]);
     return OSSDialog;
   }(_baseModal.default), (_applyDecoratedDescriptor(_class.prototype, "onInit", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onInit"), _class.prototype)), _class);
@@ -79786,7 +79792,7 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
         description: 'The dialog title',
         table: {
           type: {
-            summary: 'string'
+            summary: 'string | SafeString'
           },
           defaultValue: {
             summary: 'undefined'
