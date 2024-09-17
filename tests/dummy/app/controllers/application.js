@@ -3,6 +3,8 @@ import Controller from '@ember/controller';
 import { action, set } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
+import { htmlSafe } from '@ember/template';
+
 import { countries } from '@upfluence/oss-components/utils/country-codes';
 import BaseUploader from '@upfluence/oss-components/services/base-uploader';
 
@@ -241,6 +243,10 @@ export default class ApplicationController extends Controller {
     const owner = getOwner(this);
     owner.register('service:mock-uploader', MockUploader);
     this.mockUploader = owner.lookup('service:mock-uploader');
+  }
+
+  get translatedHTMLTitle() {
+    return htmlSafe('This title can take a <em>string</em> or a <em>safeString</em>');
   }
 
   @action

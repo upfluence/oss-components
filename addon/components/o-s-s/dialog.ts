@@ -1,7 +1,7 @@
 import BaseModal, { type BaseModalArgs } from './private/base-modal';
 import { action } from '@ember/object';
 import { assert } from '@ember/debug';
-import { isEmpty } from '@ember/utils';
+import { htmlSafe } from '@ember/template';
 
 type Skin = 'alert' | 'primary' | 'error';
 
@@ -52,6 +52,6 @@ export default class OSSDialog extends BaseModal<OSSDialogArgs> {
   }
 
   private isSafeString(data: any): boolean {
-    return typeof data === 'object' && !isEmpty(data.string);
+    return data.constructor.name === 'SafeString';
   }
 }

@@ -12,7 +12,7 @@ export default {
       description: 'The dialog title',
       table: {
         type: {
-          summary: 'string | safeString'
+          summary: 'string | SafeString'
         },
         defaultValue: { summary: 'undefined' }
       },
