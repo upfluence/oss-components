@@ -1,10 +1,8 @@
 // @ts-ignore
 import { setModifierManager, capabilities } from '@ember/modifier';
+import { scheduleOnce } from '@ember/runloop';
 
-import attachDropdown, {
-  DEFAULT_ATTACHMENT_OPTIONS,
-  type AttachmentOptions
-} from '@upfluence/oss-components/utils/attach-dropdown';
+import attachDropdown, { type AttachmentOptions } from '@upfluence/oss-components/utils/attach-dropdown';
 
 type AttachElementArgs = {
   named: {
@@ -21,23 +19,26 @@ const setupModifier = (state: AttachElementState, element: HTMLElement, args: At
   state.referenceTarget = args.named.to instanceof HTMLElement ? args.named.to : document.querySelector(args.named.to);
   state.attachedElement = element;
 
-  const attachmentOptions = {
-    ...DEFAULT_ATTACHMENT_OPTIONS,
-    ...Object.keys(args.named).reduce((acc: AttachmentOptions, key: string) => {
-      if (key !== 'to' && args.named[key as keyof AttachElementArgs['named']] !== undefined) {
-        acc = {
-          ...acc,
-          ...{ [key as keyof AttachmentOptions]: args.named[key as keyof Omit<AttachElementArgs['named'], 'to'>] }
-        };
-      }
+  if (!state.referenceTarget || !state.attachedElement) return;
 
-      return acc;
-    }, {})
-  };
+  const attachmentOptions = Object.keys(args.named).reduce((acc: AttachmentOptions, key: string) => {
+    if (key !== 'to' && args.named[key as keyof AttachElementArgs['named']] !== undefined) {
+      acc = {
+        ...acc,
+        ...{ [key as keyof AttachmentOptions]: args.named[key as keyof Omit<AttachElementArgs['named'], 'to'>] }
+      };
+    }
 
-  if (state.referenceTarget) {
-    state.cleanupDrodpownAutoplacement = attachDropdown(state.referenceTarget, element, attachmentOptions);
-  }
+    return acc;
+  }, {});
+
+  scheduleOnce('afterRender', this, () => {
+    state.cleanupDrodpownAutoplacement = attachDropdown(
+      state.referenceTarget!,
+      state.attachedElement!,
+      attachmentOptions
+    );
+  });
 };
 
 export default setModifierManager(
@@ -62,7 +63,7 @@ export default setModifierManager(
     },
 
     destroyModifier(state: AttachElementState) {
-      state.cleanupDrodpownAutoplacement = undefined;
+      state.cleanupDrodpownAutoplacement?.();
     }
   }),
 
