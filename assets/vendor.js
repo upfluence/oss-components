@@ -84169,6 +84169,247 @@ define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["export
   BasicUsage.args = defaultArgs;
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+define("@upfluence/oss-components/components/o-s-s/popover", ["exports", "@ember/component", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _component2, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+  function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+  function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    {{#in-element this.portalTarget insertBefore=null}}
+    <div class="oss-popover oss-popover--{{this.size}}" ...attributes>
+      {{#if (has-block "illustration")}}
+        <div class="oss-popover__illustration">
+          {{yield to="illustration"}}
+        </div>
+      {{/if}}
+      <div class="oss-popover__body">
+        <div class="oss-popover__title-line">
+          <span class="oss-popover__title">{{@title}}</span>
+          {{#if (has-block "contextual-actions")}}
+            <span class="oss-popover__contextualactions">
+              {{yield to="contextual-actions"}}
+            </span>
+          {{/if}}
+        </div>
+        {{#if @subtitle}}
+          <span class="oss-popover__subtitle">{{@subtitle}}</span>
+        {{/if}}
+        {{#if (has-block "content")}}
+          <div class="oss-popover__content">
+            {{yield to="content"}}
+          </div>
+        {{/if}}
+      </div>
+  
+      {{#if this.enableArrow}}
+        <div class="oss-popover__arrow" data-floating-arrow></div>
+      {{/if}}
+    </div>
+  {{/in-element}}
+  */
+  {
+    "id": "voY5MAYK",
+    "block": "[[[40,[[[1,\"  \"],[11,0],[16,0,[29,[\"oss-popover oss-popover--\",[30,0,[\"size\"]]]]],[17,1],[12],[1,\"\\n\"],[41,[48,[30,4]],[[[1,\"      \"],[10,0],[14,0,\"oss-popover__illustration\"],[12],[1,\"\\n        \"],[18,4,null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[10,0],[14,0,\"oss-popover__body\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"oss-popover__title-line\"],[12],[1,\"\\n        \"],[10,1],[14,0,\"oss-popover__title\"],[12],[1,[30,2]],[13],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"          \"],[10,1],[14,0,\"oss-popover__contextualactions\"],[12],[1,\"\\n            \"],[18,5,null],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"        \"],[10,1],[14,0,\"oss-popover__subtitle\"],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,6]],[[[1,\"        \"],[10,0],[14,0,\"oss-popover__content\"],[12],[1,\"\\n          \"],[18,6,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"enableArrow\"]],[[[1,\"      \"],[10,0],[14,0,\"oss-popover__arrow\"],[14,\"data-floating-arrow\",\"\"],[12],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"]],[]],\"%cursor:0%\",[28,[37,1],[[30,0,[\"portalTarget\"]]],null],null]],[\"&attrs\",\"@title\",\"@subtitle\",\"&illustration\",\"&contextual-actions\",\"&content\"],false,[\"in-element\",\"-in-el-null\",\"if\",\"has-block\",\"yield\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/popover.hbs",
+    "isStrictMode": false
+  });
+  var _default = _exports.default = (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, /*#__PURE__*/function (_Component) {
+    _inherits(_class, _Component);
+    function _class() {
+      var _this;
+      _classCallCheck(this, _class);
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+      _this = _callSuper(this, _class, [].concat(args));
+      _defineProperty(_assertThisInitialized(_this), "portalTarget", document.body);
+      return _this;
+    }
+    _createClass(_class, [{
+      key: "size",
+      get: function get() {
+        var _this$args$size;
+        return (_this$args$size = this.args.size) !== null && _this$args$size !== void 0 ? _this$args$size : 'sm';
+      }
+    }, {
+      key: "enableArrow",
+      get: function get() {
+        var _this$args$enableArro;
+        return (_this$args$enableArro = this.args.enableArrow) !== null && _this$args$enableArro !== void 0 ? _this$args$enableArro : false;
+      }
+    }]);
+    return _class;
+  }(_component2.default));
+});
+;define("@upfluence/oss-components/components/o-s-s/popover.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.WithIllustration = _exports.WithContextualActions = _exports.Default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  var Placements = ['top', 'right', 'bottom', 'left'];
+  var Sizes = [null, 'sm', 'md'];
+  var _default = _exports.default = {
+    title: 'Components/OSS::Popover',
+    argTypes: {
+      arrowPlacement: {
+        description: 'The arrow placement definition',
+        table: {
+          type: {
+            summary: Placements.join(' | ')
+          },
+          defaultValue: {
+            summary: null
+          }
+        },
+        options: Placements,
+        control: {
+          type: 'select'
+        }
+      },
+      size: {
+        description: 'Adjust size',
+        table: {
+          type: {
+            summary: Sizes.join('|')
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        options: Sizes,
+        control: {
+          type: 'select'
+        }
+      },
+      title: {
+        description: 'Title of the popover',
+        table: {
+          type: {
+            summary: 'string'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      subtitle: {
+        table: {
+          description: 'Subtitle of the popover (optional)',
+          type: {
+            summary: 'string'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      }
+    }
+  };
+  var defaultArgs = {
+    arrowPlacement: 'top',
+    title: 'Popover Title',
+    subtitle: 'Subtitle',
+    size: 'sm'
+  };
+  var Template = function Template(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <OSS::Popover @arrowPlacement={{this.arrowPlacement}} @title={{this.title}} @subtitle={{this.subtitle}} @size={{this.size}}>
+            <:content>
+              Popover content
+            </:content>
+          </OSS::Popover>
+        
+      */
+      {
+        "id": "yaBn1dsB",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@arrowPlacement\",\"@title\",\"@subtitle\",\"@size\"],[[30,0,[\"arrowPlacement\"]],[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"size\"]]]],[[\"content\"],[[[[1,\"\\n        Popover content\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/popover\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/popover.stories.js",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+  var WithContextualActionsTemplate = function WithContextualActionsTemplate(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <OSS::Popover @arrowPlacement={{this.arrowPlacement}} @title={{this.title}} @subtitle={{this.subtitle}} @size={{this.size}}>
+            <:contextual-actions>
+              Contextual Actions
+            </:contextual-actions>
+      
+            <:content>
+              Popover content
+            </:content>
+          </OSS::Popover>
+        
+      */
+      {
+        "id": "fLTAJJUA",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@arrowPlacement\",\"@title\",\"@subtitle\",\"@size\"],[[30,0,[\"arrowPlacement\"]],[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"size\"]]]],[[\"contextual-actions\",\"content\"],[[[[1,\"\\n        Contextual Actions\\n      \"]],[]],[[[1,\"\\n        Popover content\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/popover\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/popover.stories.js",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+  var WithIllustrationTemplate = function WithIllustrationTemplate(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <OSS::Popover @arrowPlacement={{this.arrowPlacement}} @title={{this.title}} @subtitle={{this.subtitle}} @size={{this.size}}>
+            <:illustration>
+              Illustration
+            </:illustration>
+      
+            <:content>
+              Popover content
+            </:content>
+          </OSS::Popover>
+        
+      */
+      {
+        "id": "ZBuiVQhF",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@arrowPlacement\",\"@title\",\"@subtitle\",\"@size\"],[[30,0,[\"arrowPlacement\"]],[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"size\"]]]],[[\"illustration\",\"content\"],[[[[1,\"\\n        Illustration\\n      \"]],[]],[[[1,\"\\n        Popover content\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/popover\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/popover.stories.js",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+  var Default = _exports.Default = Template.bind({});
+  Default.args = defaultArgs;
+  var WithContextualActions = _exports.WithContextualActions = WithContextualActionsTemplate.bind({});
+  WithContextualActions.args = defaultArgs;
+  var WithIllustration = _exports.WithIllustration = WithIllustrationTemplate.bind({});
+  WithIllustration.args = defaultArgs;
+});
+;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("@upfluence/oss-components/components/o-s-s/power-select", ["exports", "@ember/component", "@ember/debug", "@ember/object", "@ember/runloop", "@upfluence/oss-components/utils/attach-dropdown", "@upfluence/oss-components/components/o-s-s/private/base-dropdown", "@ember/template-factory"], function (_exports, _component, _debug, _object, _runloop, _attachDropdown, _baseDropdown, _templateFactory) {
   "use strict";
 
@@ -90092,6 +90333,178 @@ define("@upfluence/oss-components/helpers/redirect-to", ["exports", "@ember/comp
   }(_helper.default);
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+define("@upfluence/oss-components/modifiers/attach-element", ["exports", "@ember/modifier", "@ember/runloop", "@upfluence/oss-components/utils/attach-dropdown"], function (_exports, _modifier, _runloop, _attachDropdown) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _this = void 0; // @ts-ignore
+  0; //eaimeta@70e063a35619d71f0,"@ember/modifier",0,"@ember/runloop",0,"@upfluence/oss-components/utils/attach-dropdown"eaimeta@70e063a35619d71f
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+  function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  var setupModifier = function setupModifier(state, element, args) {
+    state.referenceTarget = args.named.to instanceof HTMLElement ? args.named.to : document.querySelector(args.named.to);
+    state.attachedElement = element;
+    if (!state.referenceTarget || !state.attachedElement) return;
+    var attachmentOptions = Object.keys(args.named).reduce(function (acc, key) {
+      if (key !== 'to' && args.named[key] !== undefined) {
+        acc = _objectSpread(_objectSpread({}, acc), _defineProperty({}, key, args.named[key]));
+      }
+      return acc;
+    }, {});
+    (0, _runloop.scheduleOnce)('afterRender', _this, function () {
+      state.cleanupDrodpownAutoplacement = (0, _attachDropdown.default)(state.referenceTarget, state.attachedElement, attachmentOptions);
+    });
+  };
+  var _default = _exports.default = (0, _modifier.setModifierManager)(function () {
+    return {
+      capabilities: (0, _modifier.capabilities)('3.22'),
+      createModifier: function createModifier() {
+        return {
+          cleanupDrodpownAutoplacement: undefined,
+          referenceTarget: null,
+          attachedElement: null
+        };
+      },
+      installModifier: function installModifier(state, element, args) {
+        setupModifier(state, element, args);
+      },
+      updateModifier: function updateModifier(state, args) {
+        if (!state.attachedElement) return;
+        setupModifier(state, state.attachedElement, args);
+      },
+      destroyModifier: function destroyModifier(state) {
+        var _state$cleanupDrodpow;
+        (_state$cleanupDrodpow = state.cleanupDrodpownAutoplacement) === null || _state$cleanupDrodpow === void 0 || _state$cleanupDrodpow.call(state);
+      }
+    };
+  }, /*#__PURE__*/_createClass(function AttachElementModifierNewManager() {
+    _classCallCheck(this, AttachElementModifierNewManager);
+  }));
+});
+;define("@upfluence/oss-components/modifiers/attach-element.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.BasicUsage = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  var PlacementDefinitions = ['bottom', 'top', 'left', 'right', 'bottom-start', 'top-start', 'left-start', 'right-start', 'bottom-end', 'top-end', 'left-end', 'right-end'];
+  'top' | 'right' | 'bottom' | 'left';
+  var _default = _exports.default = {
+    title: 'Helpers & Modifiers/Modifiers/Attach Element/Definition',
+    argTypes: {
+      placement: {
+        description: 'The placement definition',
+        table: {
+          type: {
+            summary: PlacementDefinitions.join('|')
+          },
+          defaultValue: {
+            summary: 'bottom'
+          }
+        },
+        options: PlacementDefinitions,
+        control: {
+          type: 'select'
+        }
+      },
+      offset: {
+        description: 'Distance between the attached element and the reference element',
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'number'
+        }
+      },
+      width: {
+        description: 'Width of the attached element',
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'number'
+        }
+      },
+      maxHeight: {
+        description: 'Max-Height of the attached element',
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'number'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'A modifier to attach a floating element to another'
+        }
+      }
+    }
+  };
+  var DefaultUsageTemplate = function DefaultUsageTemplate(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <div class="fx-col" style="justify-content: center; height: 500px; width: 750px; background-color: white">
+            <div class="fx-row" style="justify-content: center;">
+              <span style="color: var(--color-gray-900)" class="attached-element-reference">
+                I am the reference element
+              </span>
+      
+              <div style="background-color: var(--color-primary-500); color: var(--color-white); position: absolute;" {{attach-element to=".attached-element-reference" placement=this.placement}}>
+                Floating element
+              </div>
+            </div>
+          </div>
+        
+      */
+      {
+        "id": "ab1T4TxJ",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,0,\"fx-col\"],[14,5,\"justify-content: center; height: 500px; width: 750px; background-color: white\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row\"],[14,5,\"justify-content: center;\"],[12],[1,\"\\n        \"],[10,1],[14,5,\"color: var(--color-gray-900)\"],[14,0,\"attached-element-reference\"],[12],[1,\"\\n          I am the reference element\\n        \"],[13],[1,\"\\n\\n        \"],[11,0],[24,5,\"background-color: var(--color-primary-500); color: var(--color-white); position: absolute;\"],[4,[38,0],null,[[\"to\",\"placement\"],[\".attached-element-reference\",[30,0,[\"placement\"]]]]],[12],[1,\"\\n          Floating element\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"attach-element\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/modifiers/attach-element.stories.js",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+  var BasicUsage = _exports.BasicUsage = DefaultUsageTemplate.bind({});
+  BasicUsage.args = {
+    placement: 'bottom',
+    offset: null,
+    width: null,
+    maxHeight: null
+  };
+});
+;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("@upfluence/oss-components/modifiers/enable-dropdown", ["exports", "@ember/modifier", "jquery"], function (_exports, _modifier, _jquery) {
   "use strict";
 
@@ -91197,6 +91610,7 @@ define("@upfluence/oss-components/services/base-uploader", ["exports", "@ember/s
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
+  _exports.DEFAULT_ATTACHMENT_OPTIONS = void 0;
   _exports.default = attachDropdown;
   0; //eaimeta@70e063a35619d71f0,"@floating-ui/dom"eaimeta@70e063a35619d71f
   function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
@@ -91205,42 +91619,61 @@ define("@upfluence/oss-components/services/base-uploader", ["exports", "@ember/s
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
   function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-  var DEFAULT_ATTACHMENT_OPTIONS = {
+  var DEFAULT_ATTACHMENT_OPTIONS = _exports.DEFAULT_ATTACHMENT_OPTIONS = {
     offset: 12,
     width: undefined,
     maxHeight: undefined,
-    placement: 'bottom'
+    placement: 'bottom',
+    enableArrow: false
+  };
+  var RELATIVE_ARROW_PLACEMENT = {
+    top: 'bottom',
+    right: 'left',
+    bottom: 'top',
+    left: 'right'
   };
   function attachDropdown(referenceTarget, floatingTarget) {
+    var _mergedOptions$offset;
     var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : DEFAULT_ATTACHMENT_OPTIONS;
     var mergedOptions = _objectSpread(_objectSpread({}, DEFAULT_ATTACHMENT_OPTIONS), options || {});
+    var middlewares = [(0, _dom.offset)((_mergedOptions$offset = mergedOptions.offset) !== null && _mergedOptions$offset !== void 0 ? _mergedOptions$offset : 0), (0, _dom.flip)({
+      fallbackPlacements: ['top', 'bottom']
+    }), (0, _dom.size)({
+      apply: function apply(_ref) {
+        var _mergedOptions$width;
+        var rects = _ref.rects,
+          elements = _ref.elements;
+        var desiredWidth = (_mergedOptions$width = mergedOptions.width) !== null && _mergedOptions$width !== void 0 ? _mergedOptions$width : rects.reference.width;
+        var floatingStyle = {
+          maxWidth: "".concat(desiredWidth, "px"),
+          minWidth: "".concat(desiredWidth, "px"),
+          width: "".concat(desiredWidth, "px")
+        };
+        if (mergedOptions.maxHeight) {
+          floatingStyle.maxHeight = "".concat(floatingStyle.maxHeight, "px");
+          elements.floating.style.setProperty('--floating-max-height', "".concat(mergedOptions.maxHeight, "px"));
+        }
+        Object.assign(elements.floating.style, floatingStyle);
+      }
+    }), (0, _dom.hide)()];
+    var arrowEl = floatingTarget.querySelector('[data-floating-arrow]');
+    if (mergedOptions.enableArrow) {
+      if (!arrowEl) {
+        throw new Error('Arrow support is enabled but no [data-floating-arrow] element was found.');
+      }
+      middlewares.push((0, _dom.arrow)({
+        element: arrowEl
+      }));
+    }
     var updatePosition = function updatePosition() {
-      var _mergedOptions$placem, _mergedOptions$offset;
+      var _mergedOptions$placem;
       (0, _dom.computePosition)(referenceTarget, floatingTarget, {
         placement: (_mergedOptions$placem = mergedOptions.placement) !== null && _mergedOptions$placem !== void 0 ? _mergedOptions$placem : 'bottom',
-        middleware: [(0, _dom.offset)((_mergedOptions$offset = mergedOptions.offset) !== null && _mergedOptions$offset !== void 0 ? _mergedOptions$offset : 0), (0, _dom.flip)({
-          fallbackPlacements: ['top', 'bottom']
-        }), (0, _dom.size)({
-          apply: function apply(_ref) {
-            var _mergedOptions$width;
-            var rects = _ref.rects,
-              elements = _ref.elements;
-            var desiredWidth = (_mergedOptions$width = mergedOptions.width) !== null && _mergedOptions$width !== void 0 ? _mergedOptions$width : rects.reference.width;
-            var floatingStyle = {
-              maxWidth: "".concat(desiredWidth, "px"),
-              minWidth: "".concat(desiredWidth, "px"),
-              width: "".concat(desiredWidth, "px")
-            };
-            if (mergedOptions.maxHeight) {
-              floatingStyle.maxHeight = "".concat(floatingStyle.maxHeight, "px");
-              elements.floating.style.setProperty('--floating-max-height', "".concat(mergedOptions.maxHeight, "px"));
-            }
-            Object.assign(elements.floating.style, floatingStyle);
-          }
-        }), (0, _dom.hide)()]
+        middleware: middlewares
       }).then(function (_ref2) {
         var x = _ref2.x,
           y = _ref2.y,
+          placement = _ref2.placement,
           middlewareData = _ref2.middlewareData;
         Object.assign(floatingTarget.style, {
           left: "".concat(x, "px"),
@@ -91250,6 +91683,18 @@ define("@upfluence/oss-components/services/base-uploader", ["exports", "@ember/s
           Object.assign(floatingTarget.style, {
             visibility: middlewareData.hide.referenceHidden ? 'hidden' : 'visible'
           });
+        }
+        if (middlewareData.arrow) {
+          var _middlewareData$arrow = middlewareData.arrow,
+            arrowX = _middlewareData$arrow.x,
+            arrowY = _middlewareData$arrow.y;
+          var staticSide = RELATIVE_ARROW_PLACEMENT[placement.split('-')[0]];
+          Object.assign(arrowEl.style, _defineProperty({
+            left: arrowX != null ? "".concat(arrowX, "px") : '',
+            top: arrowY != null ? "".concat(arrowY, "px") : '',
+            right: '',
+            bottom: ''
+          }, staticSide, '-4px'));
         }
       });
     };

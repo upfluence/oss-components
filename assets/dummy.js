@@ -779,6 +779,20 @@
   });
   0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/phone-number-input"eaimeta@70e063a35619d71f
 });
+;define("dummy/components/o-s-s/popover", ["exports", "@upfluence/oss-components/components/o-s-s/popover"], function (_exports, _popover) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function get() {
+      return _popover.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/popover"eaimeta@70e063a35619d71f
+});
 ;define("dummy/components/o-s-s/power-select", ["exports", "@upfluence/oss-components/components/o-s-s/power-select"], function (_exports, _powerSelect) {
   "use strict";
 
@@ -2439,6 +2453,20 @@
       app.register('container-debug-adapter:main', _containerDebugAdapter.default);
     }
   };
+});
+;define("dummy/modifiers/attach-element", ["exports", "@upfluence/oss-components/modifiers/attach-element"], function (_exports, _attachElement) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function get() {
+      return _attachElement.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/modifiers/attach-element"eaimeta@70e063a35619d71f
 });
 ;define("dummy/modifiers/did-insert", ["exports", "@ember/render-modifiers/modifiers/did-insert"], function (_exports, _didInsert) {
   "use strict";
