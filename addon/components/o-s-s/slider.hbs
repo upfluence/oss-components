@@ -1,4 +1,8 @@
-<div id={{this.elementId}} class="oss-slider__container {{if @disabled 'oss-slider__container--disabled'}}">
+<div
+  id={{this.elementId}}
+  class="oss-slider__container {{if @disabled 'oss-slider__container--disabled'}}"
+  ...attributes
+>
   <div class="oss-slider__range-container">
     <input
       class="oss-slider__range"
