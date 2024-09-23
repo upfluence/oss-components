@@ -86,6 +86,9 @@ export default class ApplicationController extends Controller {
   @tracked starRatingValue = 3;
   @tracked rating = 3;
   @tracked password = '';
+  @tracked sliderValue = 15;
+  @tracked sliderValue2 = 60;
+  @tracked sliderValue3 = 30;
 
   @tracked media = [
     {
@@ -464,6 +467,18 @@ export default class ApplicationController extends Controller {
 
   @action onReturn() {
     console.log('Function onReturn was called');
+  }
+
+  @action onChangeSlider(value) {
+    this.sliderValue = value;
+  }
+
+  @action onChangeSlider2(value) {
+    this.sliderValue2 = value;
+  }
+
+  @action onChangeSlider3(value) {
+    this.sliderValue3 = value;
   }
 }
 

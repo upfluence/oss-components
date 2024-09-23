@@ -1,44 +1,44 @@
-<div
-  class="oss-slider--container fx-gap-px-12 fx-row fx-xalign-center {{if @disabled 'oss-slider--container--disabled'}}"
->
-  <div class="oss-slider--range-container fx-1">
+<div id={{this.elementId}} class="oss-slider__container {{if @disabled 'oss-slider__container--disabled'}}">
+  <div class="oss-slider__range-container">
     <input
-      class="oss-slider--range"
+      class="oss-slider__range"
       type="range"
       min={{this.sliderOptions.min}}
       max={{this.sliderOptions.max}}
-      value={{this.currentRangeValue}}
+      value={{or @value 0}}
       step={{this.sliderOptions.step}}
+      disabled={{@disabled}}
       {{on "input" this.onRangeChange}}
       {{on "mouseenter" this.showTooltip}}
       {{on "mouseleave" this.removeTooltip}}
       {{did-insert this.initializeSlider}}
-      disabled={{@disabled}}
     />
-    <div class="upf-tooltip oss-slider--tooltip {{unless this.displayTooltip 'oss-slider--tooltip--hidden'}}">
+    <div class="upf-tooltip oss-slider__tooltip {{unless this.displayTooltip 'oss-slider__tooltip--hidden'}}">
       <span>{{concat this.currentRangeValue (if (eq @unit "percentage") "%")}}</span>
     </div>
   </div>
   {{#if @displayInputValue}}
-    <div class="fx-row fx-xalign-center {{unless @unit 'border-radius-md'}}">
-      <input
-        class="oss-slider--number-input {{unless @unit 'border-radius-md'}}"
-        type="number"
-        min={{this.sliderOptions.min}}
-        max={{this.sliderOptions.max}}
-        step={{this.sliderOptions.step}}
-        value={{this.currentRangeValue}}
-        disabled={{@disabled}}
-        {{on "input" this.onNumberInput}}
-      />
+    <div class="oss-slider__number-input">
       {{#if @unit}}
-        <span class="oss-slider--unit-container">
-          {{#if this.unitIcon}}
-            <OSS::Icon @icon={{this.unitIcon}} class="color-gray-400" />
-          {{else}}
-            {{@unit}}
-          {{/if}}
-        </span>
+        <OSS::InputGroup
+          @value={{@value}}
+          @suffix={{this.unitIcon}}
+          @placeholder="0"
+          @disabled={{@disabled}}
+          {{on "input" this.onNumberInput}}
+        />
+      {{else}}
+        <Input
+          class="upf-input"
+          @type="number"
+          @value={{@value}}
+          @step={{this.sliderOptions.step}}
+          @min={{this.sliderOptions.min}}
+          @max={{this.sliderOptions.max}}
+          placeholder="0"
+          disabled={{@disabled}}
+          {{on "input" this.onNumberInput}}
+        />
       {{/if}}
     </div>
   {{/if}}
