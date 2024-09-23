@@ -33,8 +33,11 @@ export default class OSSIllustration extends Component<OSSIllustrationArgs> {
 
   constructor(owner: unknown, args: OSSIllustrationArgs) {
     super(owner, args);
+    this.fetchAndPatchSVG();
+  }
 
-    fetch(args.src).then((response) => {
+  private fetchAndPatchSVG(): void {
+    fetch(this.args.src).then((response) => {
       if (response.ok) {
         if (response.headers.get('Content-Type') !== 'image/svg+xml') {
           console.error('Illustration component only supports SVG files');
