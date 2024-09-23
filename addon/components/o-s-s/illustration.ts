@@ -58,7 +58,6 @@ export default class OSSIllustration extends Component<OSSIllustrationArgs> {
 
     const style = document.createElement('style');
     style.textContent = `:root { ${extractCSSVars().join(';')} }`;
-    console.log('<<<', style);
     this.svgDocument.append(style);
   }
 }
