@@ -8,6 +8,7 @@ interface OSSInputGroupArgs {
   placeholder?: string;
   prefix?: string;
   suffix?: string;
+  type?: string;
   onChange?(value: string): void;
 }
 

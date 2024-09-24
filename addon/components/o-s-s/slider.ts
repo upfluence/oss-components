@@ -31,7 +31,8 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
   get currentRangeValue(): number {
     this.updateBackgroundSize();
     this.updateTooltipPosition();
-    return this.args.value ?? 0;
+
+    return isNaN(this.args.value) ? 0 : this.args.value;
   }
 
   get unitIcon(): SafeString | string {
@@ -45,16 +46,13 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
 
   @action
   onRangeChange(event: InputEvent): void {
-    let value = (event.target as HTMLInputElement).valueAsNumber;
+    const value = (event.target as HTMLInputElement).valueAsNumber;
     this.updateValue(value);
   }
 
   @action
   onNumberInput(event: InputEvent): void {
-    let value: number | null = parseInt((event.target as HTMLInputElement).value);
-    if (isNaN(value)) {
-      value = null;
-    }
+    const value = (event.target as HTMLInputElement).valueAsNumber;
     this.updateValue(value);
   }
 
@@ -85,7 +83,7 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
   }
 
   private updateBackgroundSize(): void {
-    const percentage = this.getPercentage(this.args.value ?? 0) * 100;
+    const percentage = this.getPercentage(isNaN(this.args.value) ? 0 : this.args.value) * 100;
     const customRangeElement = document.querySelector(`#${this.elementId} .oss-slider__range`) as HTMLElement;
     customRangeElement?.style.setProperty('--range-percentage', `${percentage}%`);
   }
@@ -95,8 +93,9 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
     const sliderElement = document.querySelector(`#${this.elementId} .oss-slider__range`) as HTMLElement;
 
     if (!sliderElement || !tooltip) return;
+
     const sliderRect = sliderElement.getBoundingClientRect();
-    const percentage = this.getPercentage(this.args.value ?? 0);
+    const percentage = this.getPercentage(isNaN(this.args.value) ? 0 : this.args.value);
     const correctedSliderWidth = sliderRect.width - HANDLE_WIDTH;
 
     const handleTooltipHorizontalPosition = percentage * correctedSliderWidth;

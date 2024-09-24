@@ -1,8 +1,11 @@
 <div class="fx-col">
-  <div class="oss-input-container {{if this.displayErrorStyle ' oss-input-container--errored'}}
-              {{if (has-block "prefix") ' has-prefix'}}
-              {{if (has-block "suffix") ' has-suffix'}}"
-       ...attributes>
+  <div
+    class="oss-input-container
+      {{if this.displayErrorStyle ' oss-input-container--errored'}}
+      {{if (has-block 'prefix') ' has-prefix'}}
+      {{if (has-block 'suffix') ' has-suffix'}}"
+    ...attributes
+  >
     {{#if (has-block "prefix")}}
       <div class="prefix">{{yield to="prefix"}}</div>
     {{/if}}
@@ -12,8 +15,14 @@
         {{yield to="input"}}
       </div>
     {{else}}
-      <Input {{on "keyup" (fn this._onChange @value)}} @value={{@value}}
-             placeholder={{@placeholder}} disabled={{@disabled}} class="upf-input" />
+      <Input
+        {{on "keyup" (fn this._onChange @value)}}
+        @value={{@value}}
+        @type={{this.type}}
+        placeholder={{@placeholder}}
+        disabled={{@disabled}}
+        class="upf-input"
+      />
     {{/if}}
 
     {{#if (has-block "suffix")}}

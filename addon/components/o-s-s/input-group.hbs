@@ -1,13 +1,21 @@
 <div class="oss-input-group fx-1" ...attributes>
-  <div class="fx-1 fx-row fx-xalign-center oss-input-group-row {{if @disabled 'disabled'}}
-              {{if @errorMessage 'oss-input-group-row--error'}}">
+  <div
+    class="fx-1 fx-row fx-xalign-center oss-input-group-row
+      {{if @disabled 'disabled'}}
+      {{if @errorMessage 'oss-input-group-row--error'}}"
+  >
     {{#if @prefix}}
       <div class="oss-input-group-row-prefix">{{@prefix}}</div>
     {{/if}}
     <div class="fx-1">
-      <OSS::InputContainer @value={{@value}} @disabled={{@disabled}}
-                           @placeholder={{@placeholder}} @onChange={{@onChange}}
-                           class="{{if @prefix 'prefix-radius-fix'}} {{if @suffix 'suffix-radius-fix'}}" />
+      <OSS::InputContainer
+        @value={{@value}}
+        @disabled={{@disabled}}
+        @type={{@type}}
+        @placeholder={{@placeholder}}
+        @onChange={{@onChange}}
+        class="{{if @prefix 'prefix-radius-fix'}} {{if @suffix 'suffix-radius-fix'}}"
+      />
     </div>
     {{#if @suffix}}
       <div class="oss-input-group-row-suffix">{{@suffix}}</div>
