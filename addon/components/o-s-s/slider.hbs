@@ -1,23 +1,24 @@
-<div
-  id={{this.elementId}}
-  class="oss-slider__container {{if @disabled 'oss-slider__container--disabled'}}"
-  ...attributes
->
+<div class="oss-slider__container {{if @disabled 'oss-slider__container--disabled'}}" ...attributes>
   <div class="oss-slider__range-container">
     <input
       class="oss-slider__range"
       type="range"
       min={{this.sliderOptions.min}}
       max={{this.sliderOptions.max}}
-      value={{or @value 0}}
+      value={{this.currentRangeValue}}
       step={{this.sliderOptions.step}}
       disabled={{@disabled}}
+      style={{this.activeBackgroundWidth}}
       {{on "input" this.onRangeChange}}
       {{on "mouseenter" this.showTooltip}}
       {{on "mouseleave" this.removeTooltip}}
-      {{did-insert this.initializeSlider}}
+      {{did-insert this.initializeSliderInput}}
     />
-    <div class="upf-tooltip oss-slider__tooltip {{unless this.displayTooltip 'oss-slider__tooltip--hidden'}}">
+    <div
+      class="upf-tooltip oss-slider__tooltip {{unless this.displayTooltip 'oss-slider__tooltip--hidden'}}"
+      style={{this.tooltipPositionStyle}}
+      {{did-insert this.initializeTooltip}}
+    >
       <span>{{concat this.currentRangeValue (if (eq @unit "percentage") "%")}}</span>
     </div>
   </div>
@@ -28,7 +29,7 @@
           @value={{@value}}
           @type="number"
           @suffix={{this.unitIcon}}
-          @placeholder="0"
+          @placeholder={{this.currentRangeValue}}
           @disabled={{@disabled}}
           {{on "input" this.onNumberInput}}
         />
@@ -40,7 +41,7 @@
           @step={{this.sliderOptions.step}}
           @min={{this.sliderOptions.min}}
           @max={{this.sliderOptions.max}}
-          placeholder="0"
+          placeholder={{this.currentRangeValue}}
           disabled={{@disabled}}
           {{on "input" this.onNumberInput}}
         />

@@ -86,7 +86,7 @@ export default class ApplicationController extends Controller {
   @tracked starRatingValue = 3;
   @tracked rating = 3;
   @tracked password = '';
-  @tracked sliderValue = 15;
+  @tracked sliderValue = undefined;
   @tracked sliderValue2 = 60;
   @tracked sliderValue3 = 30;
 

@@ -37,7 +37,12 @@
       <OSS::Copy @value="I am the value copied" @icon="fab fa-empire" @inline={{true}} />
     </div>
     <div class="fx-row fx-gap-px-10 margin-md">
-      <OSS::Slider @value={{this.sliderValue}} @displayInputValue={{true}} @onChange={{this.onChangeSlider}} />
+      <OSS::Slider
+        @value={{this.sliderValue}}
+        @defaultValue="0"
+        @displayInputValue={{true}}
+        @onChange={{this.onChangeSlider}}
+      />
       <OSS::Slider
         @value={{this.sliderValue}}
         @unit="percentage"
@@ -76,10 +81,13 @@
     <div class="fx-row fx-gap-px-10 margin-md">
       <OSS::Slider
         @value={{this.sliderValue3}}
-        @min={{20}}
-        @max={{150}}
+        @inputOptions={{hash min=0 max=999}}
+        @min={{0}}
+        @max={{200}}
         @step={{10}}
+        @unit="percentage"
         @onChange={{this.onChangeSlider3}}
+        @displayInputValue={{true}}
       />
     </div>
 

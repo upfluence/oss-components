@@ -21,4 +21,8 @@ export default class OSSInputGroup extends Component<OSSInputGroupArgs> {
       args.prefix || args.suffix
     );
   }
+
+  get type(): string {
+    return this.args.type ?? 'text';
+  }
 }
