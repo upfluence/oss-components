@@ -1,20 +1,25 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
-import { guidFor } from '@ember/object/internals';
+import { htmlSafe } from '@ember/template';
+import { isBlank } from '@ember/utils';
 
 interface SliderComponentArgs {
-  value: number;
-  onChange?: (value: number) => void;
+  value: string;
+  defaultValue?: string;
   displayInputValue?: boolean;
   unit?: 'percentage' | 'number';
   disabled?: boolean;
   min?: number;
   max?: number;
   step?: number;
+  inputOptions?: { max?: number; min?: number };
+  onChange(value: number | null): void;
 }
 
-const HANDLE_WIDTH = 12;
+const HANDLE_WIDTH: number = 12;
+const DEFAULT_VALUE: string = '50';
+
 export default class SliderComponent extends Component<SliderComponentArgs> {
   sliderOptions = {
     min: this.args.min ?? 0,
@@ -22,25 +27,59 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
     step: this.args.step ?? 1
   };
 
-  @tracked currentRangeValue: number = this.args.value ?? 50;
   @tracked displayTooltip: boolean = false;
+  @tracked inputRangeElement: HTMLElement | null = null;
+  @tracked tooltipElement: HTMLElement | null = null;
 
-  elementId = `slider-${guidFor(this)}`;
+  get defaultValue(): string {
+    return this.args.defaultValue ?? DEFAULT_VALUE;
+  }
 
-  get unitIcon(): string | null {
-    if (this.args.unit === 'percentage') {
-      return 'fa-percent';
-    } else if (this.args.unit === 'number') {
-      return 'fa-hashtag';
-    } else {
-      return null;
+  get currentRangeValue(): string {
+    if (this.args.value === undefined || this.args.value === null) {
+      return this.defaultValue;
     }
+    return isBlank(this.args.value) ? '0' : this.args.value;
+  }
+
+  get unitIcon(): ReturnType<typeof htmlSafe> | string {
+    if (this.args.unit === 'percentage') {
+      return htmlSafe('<i class="far fa-percent"></i>');
+    } else if (this.args.unit === 'number') {
+      return htmlSafe('<i class="far fa-hashtag"></i>');
+    }
+    return '';
+  }
+
+  get tooltipPositionStyle(): string | null {
+    if (!this.tooltipElement && !this.inputRangeElement) return null;
+
+    const sliderRect = this.inputRangeElement!.getBoundingClientRect();
+    const percentage = this.getPercentage(this.currentRangeValue);
+    const correctedSliderWidth = sliderRect.width - HANDLE_WIDTH;
+
+    const handleTooltipHorizontalPosition = percentage * correctedSliderWidth;
+    const tooltipWidth = this.tooltipElement!.offsetWidth;
+    const tooltipLeftPosition = handleTooltipHorizontalPosition - tooltipWidth / 2 + HANDLE_WIDTH / 2;
+
+    return `left:${tooltipLeftPosition}px`;
+  }
+
+  get activeBackgroundWidth(): string {
+    const percentage = Math.round(this.getPercentage(this.args.value ?? '0') * 100);
+    return `--range-percentage: ${percentage}%`;
   }
 
   @action
   onRangeChange(event: InputEvent): void {
-    let value = (event.target as HTMLInputElement).valueAsNumber;
-    this.updateValue(value);
+    const value = (event.target as HTMLInputElement).value;
+    this.args.onChange(parseFloat(value));
+  }
+
+  @action
+  onNumberInput(event: InputEvent): void {
+    const value = (event.target as HTMLInputElement).value;
+    this.checkUserInput(value);
   }
 
   @action
@@ -54,59 +93,40 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
   }
 
   @action
-  onNumberInput(event: InputEvent): void {
-    let value = (event.target as HTMLInputElement).valueAsNumber;
-    if (isNaN(value)) {
-      value = this.sliderOptions.min;
-    }
-    this.updateValue(value);
+  initializeSliderInput(element: HTMLElement): void {
+    this.inputRangeElement = element;
   }
 
   @action
-  initializeSlider(): void {
-    requestAnimationFrame(() => {
-      this.updateBackgroundSize(this.currentRangeValue);
-      this.updateTooltipPosition(this.currentRangeValue);
-    });
+  initializeTooltip(element: HTMLElement): void {
+    this.tooltipElement = element;
   }
 
-  private getPercentage(value: number): number {
-    return (value - this.sliderOptions.min) / (this.sliderOptions.max - this.sliderOptions.min);
-  }
+  private getPercentage(value: string): number {
+    let correction = 0;
+    const convertedValue = parseFloat(isBlank(value) ? '0' : value);
 
-  private updateValue(value: number): void {
-    this.currentRangeValue = value;
-    this.updateBackgroundSize(value);
-    this.updateTooltipPosition(value);
-    if (this.args.onChange) {
-      this.args.onChange(value);
+    if (this.args.step) {
+      correction =
+        convertedValue % this.args.step >= this.args.step / 2
+          ? this.args.step - (convertedValue % this.args.step)
+          : -value % this.args.step;
     }
+
+    return Math.min(
+      Math.max(convertedValue + correction - this.sliderOptions.min, 0) /
+        (this.sliderOptions.max - this.sliderOptions.min),
+      1
+    );
   }
 
-  private updateBackgroundSize(value: number): void {
-    let percentage = this.getPercentage(value) * 100;
-    const customRangeElement = document.querySelector('.oss-slider--range') as HTMLElement;
-    if (customRangeElement) customRangeElement.style.setProperty('--range-percentage', `${percentage}%`);
-  }
-
-  private updateTooltipPosition(value: number): void {
-    const tooltip = document.querySelector('.oss-slider--tooltip') as HTMLElement;
-    const sliderElement = document.querySelector('.oss-slider--range') as HTMLElement;
-
-    if (sliderElement && tooltip) {
-      const sliderRect = sliderElement.getBoundingClientRect();
-      const percentage = this.getPercentage(value);
-
-      const correctedSliderWidth = sliderRect.width - HANDLE_WIDTH;
-
-      const handleTooltipHorizontalPosition = percentage * correctedSliderWidth;
-
-      const tooltipWidth = tooltip.offsetWidth;
-      const tooltipLeftPosition = handleTooltipHorizontalPosition - tooltipWidth / 2 + HANDLE_WIDTH / 2;
-
-      tooltip.style.left = `${tooltipLeftPosition}px`;
+  private checkUserInput(value: string | null): void {
+    if (this.args.inputOptions?.min !== undefined && Number(value) < this.args.inputOptions.min) {
+      this.args.onChange(this.args.inputOptions.min);
+    } else if (this.args.inputOptions?.max !== undefined && Number(value) > this.args.inputOptions.max) {
+      this.args.onChange(this.args.inputOptions.max);
     } else {
-      console.error('Tooltip or Slider elements not found');
+      this.args.onChange(value ? parseFloat(value) : null);
     }
   }
 }

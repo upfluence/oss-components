@@ -15,6 +15,16 @@ export default {
       },
       control: { type: 'text' }
     },
+    type: {
+      description: 'The input type',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'text' }
+      },
+      control: { type: 'text' }
+    },
     disabled: {
       description: 'Disable the default input (when not passing an input named block)',
       table: {
@@ -78,6 +88,7 @@ export default {
 const defaultArgs = {
   value: 'John',
   disabled: false,
+  type: undefined,
   placeholder: 'this is the placeholder',
   errorMessage: undefined,
   onChange: action('onChange')
@@ -85,7 +96,7 @@ const defaultArgs = {
 
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
-      <OSS::InputContainer @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}}
+      <OSS::InputContainer @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}} @type={{this.type}}
                            @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} />
   `,
   context: args

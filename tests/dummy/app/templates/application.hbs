@@ -35,7 +35,60 @@
       <OSS::Copy @value="I am the value copied" @tooltip="Custom tooltip" />
       <OSS::Copy @value="I am the value copied" @icon="far fa-jedi" />
       <OSS::Copy @value="I am the value copied" @icon="fab fa-empire" @inline={{true}} />
-      <OSS::Slider @value={{10}} />
+    </div>
+    <div class="fx-row fx-gap-px-10 margin-md">
+      <OSS::Slider
+        @value={{this.sliderValue}}
+        @defaultValue="0"
+        @displayInputValue={{true}}
+        @onChange={{this.onChangeSlider}}
+      />
+      <OSS::Slider
+        @value={{this.sliderValue}}
+        @unit="percentage"
+        @displayInputValue={{true}}
+        @onChange={{this.onChangeSlider}}
+      />
+      <OSS::Slider
+        @value={{this.sliderValue}}
+        @unit="number"
+        @displayInputValue={{true}}
+        @onChange={{this.onChangeSlider}}
+      />
+    </div>
+    <div class="fx-row fx-gap-px-10 margin-md">
+      <OSS::Slider
+        @value={{this.sliderValue2}}
+        @disabled={{true}}
+        @displayInputValue={{true}}
+        @onChange={{this.onChangeSlider2}}
+      />
+      <OSS::Slider
+        @value={{this.sliderValue2}}
+        @disabled={{true}}
+        @unit="percentage"
+        @displayInputValue={{true}}
+        @onChange={{this.onChangeSlider2}}
+      />
+      <OSS::Slider
+        @value={{this.sliderValue2}}
+        @disabled={{true}}
+        @unit="number"
+        @displayInputValue={{true}}
+        @onChange={{this.onChangeSlider2}}
+      />
+    </div>
+    <div class="fx-row fx-gap-px-10 margin-md">
+      <OSS::Slider
+        @value={{this.sliderValue3}}
+        @inputOptions={{hash min=0 max=999}}
+        @min={{0}}
+        @max={{200}}
+        @step={{10}}
+        @unit="percentage"
+        @onChange={{this.onChangeSlider3}}
+        @displayInputValue={{true}}
+      />
     </div>
 
     <div class="fx-row fx-gap-px-10 margin-md">

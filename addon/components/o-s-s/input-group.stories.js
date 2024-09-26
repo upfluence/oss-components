@@ -15,6 +15,16 @@ export default {
       },
       control: { type: 'text' }
     },
+    type: {
+      description: 'The input type',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'text' }
+      },
+      control: { type: 'text' }
+    },
     disabled: {
       description: 'Disable the default input (when not passing an input named block)',
       table: {
@@ -89,6 +99,7 @@ export default {
 const defaultArgs = {
   value: 'John',
   disabled: false,
+  type: undefined,
   prefix: 'email',
   suffix: '@domain.com',
   errorMessage: undefined,
@@ -98,7 +109,7 @@ const defaultArgs = {
 
 const Template = (args) => ({
   template: hbs`
-      <OSS::InputGroup @prefix={{this.prefix}} @disabled={{this.disabled}} @suffix={{this.suffix}} @value={{this.value}}
+      <OSS::InputGroup @prefix={{this.prefix}} @disabled={{this.disabled}} @suffix={{this.suffix}} @type={{this.type}} @value={{this.value}}
                        @errorMessage={{this.errorMessage}} @placeholder={{this.placeholder}} @onChange={{this.onChange}} />
   `,
   context: args

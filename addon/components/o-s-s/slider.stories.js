@@ -1,10 +1,12 @@
 import { hbs } from 'ember-cli-htmlbars';
+import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'Components/OSS::Slider',
   component: 'slider',
   argTypes: {
     value: {
+      type: { required: true },
       control: 'number',
       description: 'The value of the slider',
       defaultValue: 30,
@@ -66,6 +68,25 @@ export default {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
       }
+    },
+    defaultValue: {
+      control: 'text',
+      description: 'The default value when no value is provided',
+      defaultValue: 50,
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '50' }
+      }
+    },
+    onChange: {
+      type: { required: true },
+      description: 'Method called every time the input / range is updated',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'onChange(value: number | null): void'
+        }
+      }
     }
   },
   parameters: {
@@ -82,9 +103,11 @@ const defaultArgs = {
   min: 0,
   max: 100,
   step: 1,
+  defaultValue: undefined,
   displayInputValue: false,
   unit: 'percentage',
-  disabled: false
+  disabled: false,
+  onChange: action('onChange')
 };
 
 const Template = (args) => ({
@@ -93,9 +116,11 @@ const Template = (args) => ({
                  @min={{this.min}}
                  @max={{this.max}}
                  @step={{this.step}}
+                 @defaultValue={{this.defaultValue}}
                  @displayInputValue={{this.displayInputValue}}
                  @unit={{this.unit}}
                  @disabled={{this.disabled}}
+                 @onChange={{this.onChange}}
     />
   `,
   context: args

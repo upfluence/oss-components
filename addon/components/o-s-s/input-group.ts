@@ -8,6 +8,7 @@ interface OSSInputGroupArgs {
   placeholder?: string;
   prefix?: string;
   suffix?: string;
+  type?: string;
   onChange?(value: string): void;
 }
 
@@ -19,5 +20,9 @@ export default class OSSInputGroup extends Component<OSSInputGroupArgs> {
       '[component][OSS::InputGroup] No @prefix or @suffix parameter were passed. If you are not going to use any, you should use an OSS::InputContainer.',
       args.prefix || args.suffix
     );
+  }
+
+  get type(): string {
+    return this.args.type ?? 'text';
   }
 }
