@@ -81224,10 +81224,13 @@ define("@upfluence/oss-components/components/o-s-s/input-container", ["exports",
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class="fx-col">
-    <div class="oss-input-container {{if this.displayErrorStyle ' oss-input-container--errored'}}
-                {{if (has-block "prefix") ' has-prefix'}}
-                {{if (has-block "suffix") ' has-suffix'}}"
-         ...attributes>
+    <div
+      class="oss-input-container
+        {{if this.displayErrorStyle ' oss-input-container--errored'}}
+        {{if (has-block 'prefix') ' has-prefix'}}
+        {{if (has-block 'suffix') ' has-suffix'}}"
+      ...attributes
+    >
       {{#if (has-block "prefix")}}
         <div class="prefix">{{yield to="prefix"}}</div>
       {{/if}}
@@ -81237,8 +81240,14 @@ define("@upfluence/oss-components/components/o-s-s/input-container", ["exports",
           {{yield to="input"}}
         </div>
       {{else}}
-        <Input {{on "keyup" (fn this._onChange @value)}} @value={{@value}}
-               placeholder={{@placeholder}} disabled={{@disabled}} class="upf-input" />
+        <Input
+          {{on "keyup" (fn this._onChange @value)}}
+          @value={{@value}}
+          @type={{this.type}}
+          placeholder={{@placeholder}}
+          disabled={{@disabled}}
+          class="upf-input"
+        />
       {{/if}}
   
       {{#if (has-block "suffix")}}
@@ -81249,11 +81258,10 @@ define("@upfluence/oss-components/components/o-s-s/input-container", ["exports",
       <span class="text-color-error margin-top-px-6">{{@errorMessage}}</span>
     {{/if}}
   </div>
-  
   */
   {
-    "id": "FDJR1uQD",
-    "block": "[[[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-input-container \",[52,[30,0,[\"displayErrorStyle\"]],\" oss-input-container--errored\"],\"\\n              \",[52,[48,[30,6]],\" has-prefix\"],\"\\n              \",[52,[48,[30,7]],\" has-suffix\"]]]],[17,1],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"      \"],[10,0],[14,0,\"prefix\"],[12],[18,6,null],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"      \"],[10,0],[14,0,\"yielded-input\"],[12],[1,\"\\n        \"],[18,8,null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,3],[[16,\"placeholder\",[30,2]],[16,\"disabled\",[30,3]],[24,0,\"upf-input\"],[4,[38,4],[\"keyup\",[28,[37,5],[[30,0,[\"_onChange\"]],[30,4]],null]],null]],[[\"@value\"],[[30,4]]],null],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"      \"],[10,0],[14,0,\"suffix\"],[12],[18,7,null],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,5],[[[1,\"    \"],[10,1],[14,0,\"text-color-error margin-top-px-6\"],[12],[1,[30,5]],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@placeholder\",\"@disabled\",\"@value\",\"@errorMessage\",\"&prefix\",\"&suffix\",\"&input\"],false,[\"if\",\"has-block\",\"yield\",\"input\",\"on\",\"fn\"]]",
+    "id": "tHNcpg2L",
+    "block": "[[[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-input-container\\n      \",[52,[30,0,[\"displayErrorStyle\"]],\" oss-input-container--errored\"],\"\\n      \",[52,[48,[30,6]],\" has-prefix\"],\"\\n      \",[52,[48,[30,7]],\" has-suffix\"]]]],[17,1],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"      \"],[10,0],[14,0,\"prefix\"],[12],[18,6,null],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"      \"],[10,0],[14,0,\"yielded-input\"],[12],[1,\"\\n        \"],[18,8,null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,3],[[16,\"placeholder\",[30,2]],[16,\"disabled\",[30,3]],[24,0,\"upf-input\"],[4,[38,4],[\"keyup\",[28,[37,5],[[30,0,[\"_onChange\"]],[30,4]],null]],null]],[[\"@value\",\"@type\"],[[30,4],[30,0,[\"type\"]]]],null],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"      \"],[10,0],[14,0,\"suffix\"],[12],[18,7,null],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,5],[[[1,\"    \"],[10,1],[14,0,\"text-color-error margin-top-px-6\"],[12],[1,[30,5]],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@placeholder\",\"@disabled\",\"@value\",\"@errorMessage\",\"&prefix\",\"&suffix\",\"&input\"],false,[\"if\",\"has-block\",\"yield\",\"input\",\"on\",\"fn\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/input-container.hbs",
     "isStrictMode": false
   });
@@ -81267,6 +81275,12 @@ define("@upfluence/oss-components/components/o-s-s/input-container", ["exports",
       key: "displayErrorStyle",
       get: function get() {
         return Boolean(this.args.errorMessage) || Boolean(this.args.hasError);
+      }
+    }, {
+      key: "type",
+      get: function get() {
+        var _this$args$type;
+        return (_this$args$type = this.args.type) !== null && _this$args$type !== void 0 ? _this$args$type : 'text';
       }
     }, {
       key: "_onChange",
@@ -81300,6 +81314,20 @@ define("@upfluence/oss-components/components/o-s-s/input-container", ["exports",
           },
           defaultValue: {
             summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      type: {
+        description: 'The input type',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'text'
           }
         },
         control: {
@@ -81383,6 +81411,7 @@ define("@upfluence/oss-components/components/o-s-s/input-container", ["exports",
   var defaultArgs = {
     value: 'John',
     disabled: false,
+    type: undefined,
     placeholder: 'this is the placeholder',
     errorMessage: undefined,
     onChange: (0, _addonActions.action)('onChange')
@@ -81392,13 +81421,13 @@ define("@upfluence/oss-components/components/o-s-s/input-container", ["exports",
       template: (0, _templateFactory.createTemplateFactory)(
       /*
         
-            <OSS::InputContainer @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}}
+            <OSS::InputContainer @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}} @type={{this.type}}
                                  @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} />
         
       */
       {
-        "id": "kNagOTM4",
-        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@value\",\"@disabled\",\"@placeholder\",\"@errorMessage\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"disabled\"]],[30,0,[\"placeholder\"]],[30,0,[\"errorMessage\"]],[30,0,[\"onChange\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/input-container\"]]",
+        "id": "vQ0NyWK5",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@value\",\"@disabled\",\"@placeholder\",\"@type\",\"@errorMessage\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"disabled\"]],[30,0,[\"placeholder\"]],[30,0,[\"type\"]],[30,0,[\"errorMessage\"]],[30,0,[\"onChange\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/input-container\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/input-container.stories.js",
         "isStrictMode": false
       }),
@@ -81454,11 +81483,11 @@ define("@upfluence/oss-components/components/o-s-s/input-group", ["exports", "@e
   });
   _exports.default = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/debug",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
   function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
   function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
   function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
   function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
   function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
   function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
@@ -81469,15 +81498,23 @@ define("@upfluence/oss-components/components/o-s-s/input-group", ["exports", "@e
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class="oss-input-group fx-1" ...attributes>
-    <div class="fx-1 fx-row fx-xalign-center oss-input-group-row {{if @disabled 'disabled'}}
-                {{if @errorMessage 'oss-input-group-row--error'}}">
+    <div
+      class="fx-1 fx-row fx-xalign-center oss-input-group-row
+        {{if @disabled 'disabled'}}
+        {{if @errorMessage 'oss-input-group-row--error'}}"
+    >
       {{#if @prefix}}
         <div class="oss-input-group-row-prefix">{{@prefix}}</div>
       {{/if}}
       <div class="fx-1">
-        <OSS::InputContainer @value={{@value}} @disabled={{@disabled}}
-                             @placeholder={{@placeholder}} @onChange={{@onChange}}
-                             class="{{if @prefix 'prefix-radius-fix'}} {{if @suffix 'suffix-radius-fix'}}" />
+        <OSS::InputContainer
+          @value={{@value}}
+          @disabled={{@disabled}}
+          @type={{this.type}}
+          @placeholder={{@placeholder}}
+          @onChange={{@onChange}}
+          class="{{if @prefix 'prefix-radius-fix'}} {{if @suffix 'suffix-radius-fix'}}"
+        />
       </div>
       {{#if @suffix}}
         <div class="oss-input-group-row-suffix">{{@suffix}}</div>
@@ -81487,11 +81524,10 @@ define("@upfluence/oss-components/components/o-s-s/input-group", ["exports", "@e
       <span class="text-color-error margin-top-xxx-sm">{{@errorMessage}}</span>
     {{/if}}
   </div>
-  
   */
   {
-    "id": "rprwCbAk",
-    "block": "[[[11,0],[24,0,\"oss-input-group fx-1\"],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"fx-1 fx-row fx-xalign-center oss-input-group-row \",[52,[30,2],\"disabled\"],\"\\n              \",[52,[30,3],\"oss-input-group-row--error\"]]]],[12],[1,\"\\n\"],[41,[30,4],[[[1,\"      \"],[10,0],[14,0,\"oss-input-group-row-prefix\"],[12],[1,[30,4]],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n      \"],[8,[39,1],[[16,0,[29,[[52,[30,4],\"prefix-radius-fix\"],\" \",[52,[30,5],\"suffix-radius-fix\"]]]]],[[\"@value\",\"@disabled\",\"@placeholder\",\"@onChange\"],[[30,6],[30,2],[30,7],[30,8]]],null],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[30,5],[[[1,\"      \"],[10,0],[14,0,\"oss-input-group-row-suffix\"],[12],[1,[30,5]],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,1],[14,0,\"text-color-error margin-top-xxx-sm\"],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@disabled\",\"@errorMessage\",\"@prefix\",\"@suffix\",\"@value\",\"@placeholder\",\"@onChange\"],false,[\"if\",\"o-s-s/input-container\"]]",
+    "id": "sgz24B8g",
+    "block": "[[[11,0],[24,0,\"oss-input-group fx-1\"],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"fx-1 fx-row fx-xalign-center oss-input-group-row\\n      \",[52,[30,2],\"disabled\"],\"\\n      \",[52,[30,3],\"oss-input-group-row--error\"]]]],[12],[1,\"\\n\"],[41,[30,4],[[[1,\"      \"],[10,0],[14,0,\"oss-input-group-row-prefix\"],[12],[1,[30,4]],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n      \"],[8,[39,1],[[16,0,[29,[[52,[30,4],\"prefix-radius-fix\"],\" \",[52,[30,5],\"suffix-radius-fix\"]]]]],[[\"@value\",\"@disabled\",\"@type\",\"@placeholder\",\"@onChange\"],[[30,6],[30,2],[30,0,[\"type\"]],[30,7],[30,8]]],null],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[30,5],[[[1,\"      \"],[10,0],[14,0,\"oss-input-group-row-suffix\"],[12],[1,[30,5]],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,1],[14,0,\"text-color-error margin-top-xxx-sm\"],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@disabled\",\"@errorMessage\",\"@prefix\",\"@suffix\",\"@value\",\"@placeholder\",\"@onChange\"],false,[\"if\",\"o-s-s/input-container\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/input-group.hbs",
     "isStrictMode": false
   });
@@ -81504,7 +81540,14 @@ define("@upfluence/oss-components/components/o-s-s/input-group", ["exports", "@e
       (true && !(args.prefix || args.suffix) && (0, _debug.assert)('[component][OSS::InputGroup] No @prefix or @suffix parameter were passed. If you are not going to use any, you should use an OSS::InputContainer.', args.prefix || args.suffix));
       return _this;
     }
-    return _createClass(OSSInputGroup);
+    _createClass(OSSInputGroup, [{
+      key: "type",
+      get: function get() {
+        var _this$args$type;
+        return (_this$args$type = this.args.type) !== null && _this$args$type !== void 0 ? _this$args$type : 'text';
+      }
+    }]);
+    return OSSInputGroup;
   }(_component2.default);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSInputGroup);
 });
@@ -81528,6 +81571,20 @@ define("@upfluence/oss-components/components/o-s-s/input-group", ["exports", "@e
           },
           defaultValue: {
             summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      type: {
+        description: 'The input type',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'text'
           }
         },
         control: {
@@ -81628,6 +81685,7 @@ define("@upfluence/oss-components/components/o-s-s/input-group", ["exports", "@e
   var defaultArgs = {
     value: 'John',
     disabled: false,
+    type: undefined,
     prefix: 'email',
     suffix: '@domain.com',
     errorMessage: undefined,
@@ -81639,13 +81697,13 @@ define("@upfluence/oss-components/components/o-s-s/input-group", ["exports", "@e
       template: (0, _templateFactory.createTemplateFactory)(
       /*
         
-            <OSS::InputGroup @prefix={{this.prefix}} @disabled={{this.disabled}} @suffix={{this.suffix}} @value={{this.value}}
+            <OSS::InputGroup @prefix={{this.prefix}} @disabled={{this.disabled}} @suffix={{this.suffix}} @type={{this.type}} @value={{this.value}}
                              @errorMessage={{this.errorMessage}} @placeholder={{this.placeholder}} @onChange={{this.onChange}} />
         
       */
       {
-        "id": "dGYNFoxg",
-        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@prefix\",\"@disabled\",\"@suffix\",\"@value\",\"@errorMessage\",\"@placeholder\",\"@onChange\"],[[30,0,[\"prefix\"]],[30,0,[\"disabled\"]],[30,0,[\"suffix\"]],[30,0,[\"value\"]],[30,0,[\"errorMessage\"]],[30,0,[\"placeholder\"]],[30,0,[\"onChange\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/input-group\"]]",
+        "id": "mrYafALh",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@prefix\",\"@disabled\",\"@suffix\",\"@type\",\"@value\",\"@errorMessage\",\"@placeholder\",\"@onChange\"],[[30,0,[\"prefix\"]],[30,0,[\"disabled\"]],[30,0,[\"suffix\"]],[30,0,[\"type\"]],[30,0,[\"value\"]],[30,0,[\"errorMessage\"]],[30,0,[\"placeholder\"]],[30,0,[\"onChange\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/input-group\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/input-group.stories.js",
         "isStrictMode": false
       }),
@@ -86533,15 +86591,15 @@ define("@upfluence/oss-components/components/o-s-s/skeleton", ["exports", "@embe
   Default.args = defaultArgs;
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-define("@upfluence/oss-components/components/o-s-s/slider", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@glimmer/tracking", "@ember/object/internals", "@ember/template-factory"], function (_exports, _component, _component2, _object, _tracking, _internals, _templateFactory) {
+define("@upfluence/oss-components/components/o-s-s/slider", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@glimmer/tracking", "@ember/template", "@ember/utils", "@ember/template-factory"], function (_exports, _component, _component2, _object, _tracking, _template, _utils, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  var _class, _descriptor, _descriptor2;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/object",0,"@glimmer/tracking",0,"@ember/object/internals",0,"@ember/component"eaimeta@70e063a35619d71f
+  var _class, _descriptor, _descriptor2, _descriptor3;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/object",0,"@glimmer/tracking",0,"@ember/template",0,"@ember/utils",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
   function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
@@ -86560,59 +86618,66 @@ define("@upfluence/oss-components/components/o-s-s/slider", ["exports", "@ember/
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div
-    class="oss-slider--container fx-gap-px-12 fx-row fx-xalign-center {{if @disabled 'oss-slider--container--disabled'}}"
-  >
-    <div class="oss-slider--range-container fx-1">
+    <div class="oss-slider__container {{if @disabled 'oss-slider__container--disabled'}}" ...attributes>
+    <div class="oss-slider__range-container">
       <input
-        class="oss-slider--range"
+        class="oss-slider__range"
         type="range"
         min={{this.sliderOptions.min}}
         max={{this.sliderOptions.max}}
         value={{this.currentRangeValue}}
         step={{this.sliderOptions.step}}
+        disabled={{@disabled}}
+        style={{this.activeBackgroundWidth}}
         {{on "input" this.onRangeChange}}
         {{on "mouseenter" this.showTooltip}}
         {{on "mouseleave" this.removeTooltip}}
-        {{did-insert this.initializeSlider}}
-        disabled={{@disabled}}
+        {{did-insert this.initializeSliderInput}}
       />
-      <div class="upf-tooltip oss-slider--tooltip {{unless this.displayTooltip 'oss-slider--tooltip--hidden'}}">
+      <div
+        class="upf-tooltip oss-slider__tooltip {{unless this.displayTooltip 'oss-slider__tooltip--hidden'}}"
+        style={{this.tooltipPositionStyle}}
+        {{did-insert this.initializeTooltip}}
+      >
         <span>{{concat this.currentRangeValue (if (eq @unit "percentage") "%")}}</span>
       </div>
     </div>
     {{#if @displayInputValue}}
-      <div class="fx-row fx-xalign-center {{unless @unit 'border-radius-md'}}">
-        <input
-          class="oss-slider--number-input {{unless @unit 'border-radius-md'}}"
-          type="number"
-          min={{this.sliderOptions.min}}
-          max={{this.sliderOptions.max}}
-          step={{this.sliderOptions.step}}
-          value={{this.currentRangeValue}}
-          disabled={{@disabled}}
-          {{on "input" this.onNumberInput}}
-        />
+      <div class="oss-slider__number-input">
         {{#if @unit}}
-          <span class="oss-slider--unit-container">
-            {{#if this.unitIcon}}
-              <OSS::Icon @icon={{this.unitIcon}} class="color-gray-400" />
-            {{else}}
-              {{@unit}}
-            {{/if}}
-          </span>
+          <OSS::InputGroup
+            @value={{@value}}
+            @type="number"
+            @suffix={{this.unitIcon}}
+            @placeholder={{this.currentRangeValue}}
+            @disabled={{@disabled}}
+            {{on "input" this.onNumberInput}}
+          />
+        {{else}}
+          <Input
+            class="upf-input"
+            @type="number"
+            @value={{@value}}
+            @step={{this.sliderOptions.step}}
+            @min={{this.sliderOptions.min}}
+            @max={{this.sliderOptions.max}}
+            placeholder={{this.currentRangeValue}}
+            disabled={{@disabled}}
+            {{on "input" this.onNumberInput}}
+          />
         {{/if}}
       </div>
     {{/if}}
   </div>
   */
   {
-    "id": "UuttP+oB",
-    "block": "[[[10,0],[15,0,[29,[\"oss-slider--container fx-gap-px-12 fx-row fx-xalign-center \",[52,[30,1],\"oss-slider--container--disabled\"]]]],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-slider--range-container fx-1\"],[12],[1,\"\\n    \"],[11,\"input\"],[24,0,\"oss-slider--range\"],[16,\"min\",[30,0,[\"sliderOptions\",\"min\"]]],[16,\"max\",[30,0,[\"sliderOptions\",\"max\"]]],[16,2,[30,0,[\"currentRangeValue\"]]],[16,\"step\",[30,0,[\"sliderOptions\",\"step\"]]],[16,\"disabled\",[30,1]],[24,4,\"range\"],[4,[38,1],[\"input\",[30,0,[\"onRangeChange\"]]],null],[4,[38,1],[\"mouseenter\",[30,0,[\"showTooltip\"]]],null],[4,[38,1],[\"mouseleave\",[30,0,[\"removeTooltip\"]]],null],[4,[38,2],[[30,0,[\"initializeSlider\"]]],null],[12],[13],[1,\"\\n    \"],[10,0],[15,0,[29,[\"upf-tooltip oss-slider--tooltip \",[52,[51,[30,0,[\"displayTooltip\"]]],\"oss-slider--tooltip--hidden\"]]]],[12],[1,\"\\n      \"],[10,1],[12],[1,[28,[35,4],[[30,0,[\"currentRangeValue\"]],[52,[28,[37,5],[[30,2],\"percentage\"],null],\"%\"]],null]],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[51,[30,2]],\"border-radius-md\"]]]],[12],[1,\"\\n      \"],[11,\"input\"],[16,0,[29,[\"oss-slider--number-input \",[52,[51,[30,2]],\"border-radius-md\"]]]],[16,\"min\",[30,0,[\"sliderOptions\",\"min\"]]],[16,\"max\",[30,0,[\"sliderOptions\",\"max\"]]],[16,\"step\",[30,0,[\"sliderOptions\",\"step\"]]],[16,2,[30,0,[\"currentRangeValue\"]]],[16,\"disabled\",[30,1]],[24,4,\"number\"],[4,[38,1],[\"input\",[30,0,[\"onNumberInput\"]]],null],[12],[13],[1,\"\\n\"],[41,[30,2],[[[1,\"        \"],[10,1],[14,0,\"oss-slider--unit-container\"],[12],[1,\"\\n\"],[41,[30,0,[\"unitIcon\"]],[[[1,\"            \"],[8,[39,6],[[24,0,\"color-gray-400\"]],[[\"@icon\"],[[30,0,[\"unitIcon\"]]]],null],[1,\"\\n\"]],[]],[[[1,\"            \"],[1,[30,2]],[1,\"\\n\"]],[]]],[1,\"        \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"@disabled\",\"@unit\",\"@displayInputValue\"],false,[\"if\",\"on\",\"did-insert\",\"unless\",\"concat\",\"eq\",\"o-s-s/icon\"]]",
+    "id": "Qnd3JKnJ",
+    "block": "[[[11,0],[16,0,[29,[\"oss-slider__container \",[52,[30,1],\"oss-slider__container--disabled\"]]]],[17,2],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-slider__range-container\"],[12],[1,\"\\n    \"],[11,\"input\"],[24,0,\"oss-slider__range\"],[16,\"min\",[30,0,[\"sliderOptions\",\"min\"]]],[16,\"max\",[30,0,[\"sliderOptions\",\"max\"]]],[16,2,[30,0,[\"currentRangeValue\"]]],[16,\"step\",[30,0,[\"sliderOptions\",\"step\"]]],[16,\"disabled\",[30,1]],[16,5,[30,0,[\"activeBackgroundWidth\"]]],[24,4,\"range\"],[4,[38,1],[\"input\",[30,0,[\"onRangeChange\"]]],null],[4,[38,1],[\"mouseenter\",[30,0,[\"showTooltip\"]]],null],[4,[38,1],[\"mouseleave\",[30,0,[\"removeTooltip\"]]],null],[4,[38,2],[[30,0,[\"initializeSliderInput\"]]],null],[12],[13],[1,\"\\n    \"],[11,0],[16,0,[29,[\"upf-tooltip oss-slider__tooltip \",[52,[51,[30,0,[\"displayTooltip\"]]],\"oss-slider__tooltip--hidden\"]]]],[16,5,[30,0,[\"tooltipPositionStyle\"]]],[4,[38,2],[[30,0,[\"initializeTooltip\"]]],null],[12],[1,\"\\n      \"],[10,1],[12],[1,[28,[35,4],[[30,0,[\"currentRangeValue\"]],[52,[28,[37,5],[[30,3],\"percentage\"],null],\"%\"]],null]],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,4],[[[1,\"    \"],[10,0],[14,0,\"oss-slider__number-input\"],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"        \"],[8,[39,6],[[4,[38,1],[\"input\",[30,0,[\"onNumberInput\"]]],null]],[[\"@value\",\"@type\",\"@suffix\",\"@placeholder\",\"@disabled\"],[[30,5],\"number\",[30,0,[\"unitIcon\"]],[30,0,[\"currentRangeValue\"]],[30,1]]],null],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,7],[[24,0,\"upf-input\"],[16,\"placeholder\",[30,0,[\"currentRangeValue\"]]],[16,\"disabled\",[30,1]],[4,[38,1],[\"input\",[30,0,[\"onNumberInput\"]]],null]],[[\"@type\",\"@value\",\"@step\",\"@min\",\"@max\"],[\"number\",[30,5],[30,0,[\"sliderOptions\",\"step\"]],[30,0,[\"sliderOptions\",\"min\"]],[30,0,[\"sliderOptions\",\"max\"]]]],null],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"@disabled\",\"&attrs\",\"@unit\",\"@displayInputValue\",\"@value\"],false,[\"if\",\"on\",\"did-insert\",\"unless\",\"concat\",\"eq\",\"o-s-s/input-group\",\"input\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/slider.hbs",
     "isStrictMode": false
   });
   var HANDLE_WIDTH = 12;
+  var DEFAULT_VALUE = '50';
   var SliderComponent = _exports.default = (_class = /*#__PURE__*/function (_Component) {
     _inherits(SliderComponent, _Component);
     function SliderComponent() {
@@ -86628,27 +86693,65 @@ define("@upfluence/oss-components/components/o-s-s/slider", ["exports", "@ember/
         max: (_this$args$max = _this.args.max) !== null && _this$args$max !== void 0 ? _this$args$max : 100,
         step: (_this$args$step = _this.args.step) !== null && _this$args$step !== void 0 ? _this$args$step : 1
       });
-      _initializerDefineProperty(_assertThisInitialized(_this), "currentRangeValue", _descriptor, _assertThisInitialized(_this));
-      _initializerDefineProperty(_assertThisInitialized(_this), "displayTooltip", _descriptor2, _assertThisInitialized(_this));
-      _defineProperty(_assertThisInitialized(_this), "elementId", "slider-".concat((0, _internals.guidFor)(_assertThisInitialized(_this))));
+      _initializerDefineProperty(_assertThisInitialized(_this), "displayTooltip", _descriptor, _assertThisInitialized(_this));
+      _initializerDefineProperty(_assertThisInitialized(_this), "inputRangeElement", _descriptor2, _assertThisInitialized(_this));
+      _initializerDefineProperty(_assertThisInitialized(_this), "tooltipElement", _descriptor3, _assertThisInitialized(_this));
       return _this;
     }
     _createClass(SliderComponent, [{
+      key: "defaultValue",
+      get: function get() {
+        var _this$args$defaultVal;
+        return (_this$args$defaultVal = this.args.defaultValue) !== null && _this$args$defaultVal !== void 0 ? _this$args$defaultVal : DEFAULT_VALUE;
+      }
+    }, {
+      key: "currentRangeValue",
+      get: function get() {
+        if (this.args.value === undefined || this.args.value === null) {
+          return this.defaultValue;
+        }
+        return (0, _utils.isBlank)(this.args.value) ? '0' : this.args.value;
+      }
+    }, {
       key: "unitIcon",
       get: function get() {
         if (this.args.unit === 'percentage') {
-          return 'fa-percent';
+          return (0, _template.htmlSafe)('<i class="far fa-percent"></i>');
         } else if (this.args.unit === 'number') {
-          return 'fa-hashtag';
-        } else {
-          return null;
+          return (0, _template.htmlSafe)('<i class="far fa-hashtag"></i>');
         }
+        return '';
+      }
+    }, {
+      key: "tooltipPositionStyle",
+      get: function get() {
+        if (!this.tooltipElement && !this.inputRangeElement) return null;
+        var sliderRect = this.inputRangeElement.getBoundingClientRect();
+        var percentage = this.getPercentage(this.currentRangeValue);
+        var correctedSliderWidth = sliderRect.width - HANDLE_WIDTH;
+        var handleTooltipHorizontalPosition = percentage * correctedSliderWidth;
+        var tooltipWidth = this.tooltipElement.offsetWidth;
+        var tooltipLeftPosition = handleTooltipHorizontalPosition - tooltipWidth / 2 + HANDLE_WIDTH / 2;
+        return "left:".concat(tooltipLeftPosition, "px");
+      }
+    }, {
+      key: "activeBackgroundWidth",
+      get: function get() {
+        var _this$args$value;
+        var percentage = Math.round(this.getPercentage((_this$args$value = this.args.value) !== null && _this$args$value !== void 0 ? _this$args$value : '0') * 100);
+        return "--range-percentage: ".concat(percentage, "%");
       }
     }, {
       key: "onRangeChange",
       value: function onRangeChange(event) {
-        var value = event.target.valueAsNumber;
-        this.updateValue(value);
+        var value = event.target.value;
+        this.args.onChange(parseFloat(value));
+      }
+    }, {
+      key: "onNumberInput",
+      value: function onNumberInput(event) {
+        var value = event.target.value;
+        this.checkUserInput(value);
       }
     }, {
       key: "showTooltip",
@@ -86661,95 +86764,79 @@ define("@upfluence/oss-components/components/o-s-s/slider", ["exports", "@ember/
         this.displayTooltip = false;
       }
     }, {
-      key: "onNumberInput",
-      value: function onNumberInput(event) {
-        var value = event.target.valueAsNumber;
-        if (isNaN(value)) {
-          value = this.sliderOptions.min;
-        }
-        this.updateValue(value);
+      key: "initializeSliderInput",
+      value: function initializeSliderInput(element) {
+        this.inputRangeElement = element;
       }
     }, {
-      key: "initializeSlider",
-      value: function initializeSlider() {
-        var _this2 = this;
-        requestAnimationFrame(function () {
-          _this2.updateBackgroundSize(_this2.currentRangeValue);
-          _this2.updateTooltipPosition(_this2.currentRangeValue);
-        });
+      key: "initializeTooltip",
+      value: function initializeTooltip(element) {
+        this.tooltipElement = element;
       }
     }, {
       key: "getPercentage",
       value: function getPercentage(value) {
-        return (value - this.sliderOptions.min) / (this.sliderOptions.max - this.sliderOptions.min);
-      }
-    }, {
-      key: "updateValue",
-      value: function updateValue(value) {
-        this.currentRangeValue = value;
-        this.updateBackgroundSize(value);
-        this.updateTooltipPosition(value);
-        if (this.args.onChange) {
-          this.args.onChange(value);
+        var correction = 0;
+        var convertedValue = parseFloat((0, _utils.isBlank)(value) ? '0' : value);
+        if (this.args.step) {
+          correction = convertedValue % this.args.step >= this.args.step / 2 ? this.args.step - convertedValue % this.args.step : -value % this.args.step;
         }
+        return Math.min(Math.max(convertedValue + correction - this.sliderOptions.min, 0) / (this.sliderOptions.max - this.sliderOptions.min), 1);
       }
     }, {
-      key: "updateBackgroundSize",
-      value: function updateBackgroundSize(value) {
-        var percentage = this.getPercentage(value) * 100;
-        var customRangeElement = document.querySelector('.oss-slider--range');
-        if (customRangeElement) customRangeElement.style.setProperty('--range-percentage', "".concat(percentage, "%"));
-      }
-    }, {
-      key: "updateTooltipPosition",
-      value: function updateTooltipPosition(value) {
-        var tooltip = document.querySelector('.oss-slider--tooltip');
-        var sliderElement = document.querySelector('.oss-slider--range');
-        if (sliderElement && tooltip) {
-          var sliderRect = sliderElement.getBoundingClientRect();
-          var percentage = this.getPercentage(value);
-          var correctedSliderWidth = sliderRect.width - HANDLE_WIDTH;
-          var handleTooltipHorizontalPosition = percentage * correctedSliderWidth;
-          var tooltipWidth = tooltip.offsetWidth;
-          var tooltipLeftPosition = handleTooltipHorizontalPosition - tooltipWidth / 2 + HANDLE_WIDTH / 2;
-          tooltip.style.left = "".concat(tooltipLeftPosition, "px");
+      key: "checkUserInput",
+      value: function checkUserInput(value) {
+        var _this$args$inputOptio, _this$args$inputOptio2;
+        if (((_this$args$inputOptio = this.args.inputOptions) === null || _this$args$inputOptio === void 0 ? void 0 : _this$args$inputOptio.min) !== undefined && Number(value) < this.args.inputOptions.min) {
+          this.args.onChange(this.args.inputOptions.min);
+        } else if (((_this$args$inputOptio2 = this.args.inputOptions) === null || _this$args$inputOptio2 === void 0 ? void 0 : _this$args$inputOptio2.max) !== undefined && Number(value) > this.args.inputOptions.max) {
+          this.args.onChange(this.args.inputOptions.max);
         } else {
-          console.error('Tooltip or Slider elements not found');
+          this.args.onChange(value ? parseFloat(value) : null);
         }
       }
     }]);
     return SliderComponent;
-  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "currentRangeValue", [_tracking.tracked], {
-    configurable: true,
-    enumerable: true,
-    writable: true,
-    initializer: function initializer() {
-      var _this$args$value;
-      return (_this$args$value = this.args.value) !== null && _this$args$value !== void 0 ? _this$args$value : 50;
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "displayTooltip", [_tracking.tracked], {
+  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "displayTooltip", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function initializer() {
       return false;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "onRangeChange", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onRangeChange"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "showTooltip", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "showTooltip"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "removeTooltip", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "removeTooltip"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onNumberInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onNumberInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "initializeSlider", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initializeSlider"), _class.prototype)), _class);
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "inputRangeElement", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return null;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "tooltipElement", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return null;
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "onRangeChange", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onRangeChange"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onNumberInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onNumberInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "showTooltip", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "showTooltip"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "removeTooltip", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "removeTooltip"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "initializeSliderInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initializeSliderInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "initializeTooltip", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initializeTooltip"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, SliderComponent);
 });
-;define("@upfluence/oss-components/components/o-s-s/slider.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/slider.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = _exports.Default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
   var _default = _exports.default = {
     title: 'Components/OSS::Slider',
     component: 'slider',
     argTypes: {
       value: {
+        type: {
+          required: true
+        },
         control: 'number',
         description: 'The value of the slider',
         defaultValue: 30,
@@ -86839,6 +86926,31 @@ define("@upfluence/oss-components/components/o-s-s/slider", ["exports", "@ember/
             summary: false
           }
         }
+      },
+      defaultValue: {
+        control: 'text',
+        description: 'The default value when no value is provided',
+        defaultValue: 50,
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: '50'
+          }
+        }
+      },
+      onChange: {
+        type: {
+          required: true
+        },
+        description: 'Method called every time the input / range is updated',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'onChange(value: number | null): void'
+          }
+        }
       }
     },
     parameters: {
@@ -86854,9 +86966,11 @@ define("@upfluence/oss-components/components/o-s-s/slider", ["exports", "@ember/
     min: 0,
     max: 100,
     step: 1,
+    defaultValue: undefined,
     displayInputValue: false,
     unit: 'percentage',
-    disabled: false
+    disabled: false,
+    onChange: (0, _addonActions.action)('onChange')
   };
   var Template = function Template(args) {
     return {
@@ -86867,15 +86981,17 @@ define("@upfluence/oss-components/components/o-s-s/slider", ["exports", "@ember/
                        @min={{this.min}}
                        @max={{this.max}}
                        @step={{this.step}}
+                       @defaultValue={{this.defaultValue}}
                        @displayInputValue={{this.displayInputValue}}
                        @unit={{this.unit}}
                        @disabled={{this.disabled}}
+                       @onChange={{this.onChange}}
           />
         
       */
       {
-        "id": "vCmLajzb",
-        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@value\",\"@min\",\"@max\",\"@step\",\"@displayInputValue\",\"@unit\",\"@disabled\"],[[30,0,[\"value\"]],[30,0,[\"min\"]],[30,0,[\"max\"]],[30,0,[\"step\"]],[30,0,[\"displayInputValue\"]],[30,0,[\"unit\"]],[30,0,[\"disabled\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/slider\"]]",
+        "id": "43Z5Mlkq",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@value\",\"@min\",\"@max\",\"@step\",\"@defaultValue\",\"@displayInputValue\",\"@unit\",\"@disabled\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"min\"]],[30,0,[\"max\"]],[30,0,[\"step\"]],[30,0,[\"defaultValue\"]],[30,0,[\"displayInputValue\"]],[30,0,[\"unit\"]],[30,0,[\"disabled\"]],[30,0,[\"onChange\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/slider\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/slider.stories.js",
         "isStrictMode": false
       }),
