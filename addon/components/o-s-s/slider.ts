@@ -14,11 +14,11 @@ interface SliderComponentArgs {
   max?: number;
   step?: number;
   inputOptions?: { max?: number; min?: number };
-  onChange?: (value: string | null) => void;
+  onChange(value: number | null): void;
 }
 
-const HANDLE_WIDTH = 12;
-const DEFAULT_VALUE = '50';
+const HANDLE_WIDTH: number = 12;
+const DEFAULT_VALUE: string = '50';
 
 export default class SliderComponent extends Component<SliderComponentArgs> {
   sliderOptions = {
@@ -73,7 +73,7 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
   @action
   onRangeChange(event: InputEvent): void {
     const value = (event.target as HTMLInputElement).value;
-    this.args.onChange?.(value);
+    this.args.onChange(parseFloat(value));
   }
 
   @action
@@ -122,11 +122,11 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
 
   private checkUserInput(value: string | null): void {
     if (this.args.inputOptions?.min !== undefined && Number(value) < this.args.inputOptions.min) {
-      this.args.onChange?.(this.args.inputOptions.min.toString());
+      this.args.onChange(this.args.inputOptions.min);
     } else if (this.args.inputOptions?.max !== undefined && Number(value) > this.args.inputOptions.max) {
-      this.args.onChange?.(this.args.inputOptions.max.toString());
+      this.args.onChange(this.args.inputOptions.max);
     } else {
-      this.args.onChange?.(value);
+      this.args.onChange(value ? parseFloat(value) : null);
     }
   }
 }

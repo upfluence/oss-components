@@ -19,21 +19,21 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
 
   test('it renders', async function (assert) {
     await render(
-      hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} />`
+      hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} @onChange={{this.onChange}} />`
     );
     assert.dom('.oss-slider__container .oss-slider__range-container').exists();
   });
 
   test('it renders the slider as disabled when @disabled is truthy', async function (assert) {
     await render(
-      hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} @disabled={{true}}/>`
+      hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} @disabled={{true}} @onChange={{this.onChange}} />`
     );
     assert.dom('.oss-slider__container--disabled .oss-slider__range').isDisabled();
   });
 
   test('it renders the number input as disabled when @disabled is truthy', async function (assert) {
     await render(
-      hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} @disabled={{true}}/>`
+      hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} @disabled={{true}} @onChange={{this.onChange}} />`
     );
     assert.dom('.oss-slider__number-input input').isDisabled();
   });
@@ -41,7 +41,7 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
   module('for the slider width', () => {
     test('it renders it properly', async function (assert) {
       await render(
-        hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} />`
+        hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} @onChange={{this.onChange}} />`
       );
       const element = this.element.querySelector('.oss-slider__range');
       assert.dom(element).exists();
@@ -52,7 +52,7 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
       test('it renders it properly with the value rounded down', async function (assert) {
         this.value = '14';
         await render(
-          hbs`<OSS::Slider @step={{10}} @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} />`
+          hbs`<OSS::Slider @step={{10}} @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} @onChange={{this.onChange}} />`
         );
         const element = this.element.querySelector('.oss-slider__range');
         assert.dom(element).exists();
@@ -62,7 +62,7 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
       test('it renders it properly with the value rounded up', async function (assert) {
         this.value = '16';
         await render(
-          hbs`<OSS::Slider @step={{10}} @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} />`
+          hbs`<OSS::Slider @step={{10}} @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} @onChange={{this.onChange}} />`
         );
         const element = this.element.querySelector('.oss-slider__range');
         assert.dom(element).exists();
@@ -73,13 +73,15 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
 
   test('the tooltip has the proper value', async function (assert) {
     await render(
-      hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} />`
+      hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} @onChange={{this.onChange}} />`
     );
     assert.dom('.oss-slider__tooltip').hasText('10%');
   });
 
   test('the tooltip is rendered without unit when @unit is not provided', async function (assert) {
-    await render(hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} />`);
+    await render(
+      hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @onChange={{this.onChange}} />`
+    );
     assert.dom('.oss-slider__tooltip').hasText('10');
   });
 
@@ -91,7 +93,7 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
     test('when it is defined, it renders the correct value & placeholder', async function (assert) {
       this.defaultValue = '20';
       await render(
-        hbs`<OSS::Slider @value={{this.value}} @defaultValue={{this.defaultValue}} @displayInputValue={{this.displayInputValue}} />`
+        hbs`<OSS::Slider @value={{this.value}} @defaultValue={{this.defaultValue}} @displayInputValue={{this.displayInputValue}} @onChange={{this.onChange}} />`
       );
       assert.dom('.oss-slider__range').hasValue('20');
       assert.dom('.oss-slider__number-input input').hasValue('');
@@ -99,7 +101,9 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
     });
 
     test('when it is undefined, it renders the correct value & placeholder', async function (assert) {
-      await render(hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} />`);
+      await render(
+        hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @onChange={{this.onChange}} />`
+      );
       assert.dom('.oss-slider__range').hasValue('50');
       assert.dom('.oss-slider__number-input input').hasValue('');
       assert.dom('.oss-slider__number-input input').hasAttribute('placeholder', '50');
@@ -112,21 +116,21 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
     });
 
     test("when the min is defined, the user can't set value under the minimum", async function (assert) {
-      this.inputOptions = { min: '20' };
+      this.inputOptions = { min: 20 };
       await render(
         hbs`<OSS::Slider @value={{this.value}} @inputOptions={{this.inputOptions}} @displayInputValue={{this.displayInputValue}} @onChange={{this.onChange}} />`
       );
       await fillIn('.oss-slider__number-input input', '10');
-      assert.ok(this.onChange.calledWith('20'));
+      assert.ok(this.onChange.calledWith(20));
     });
 
     test("when the min is defined, the user can't set value under the minimum", async function (assert) {
-      this.inputOptions = { max: '20' };
+      this.inputOptions = { max: 20 };
       await render(
         hbs`<OSS::Slider @value={{this.value}} @inputOptions={{this.inputOptions}} @displayInputValue={{this.displayInputValue}} @onChange={{this.onChange}} />`
       );
       await fillIn('.oss-slider__number-input input', '30');
-      assert.ok(this.onChange.calledWith('20'));
+      assert.ok(this.onChange.calledWith(20));
     });
   });
 
@@ -135,20 +139,20 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
       hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} @onChange={{this.onChange}} />`
     );
     await fillIn('.oss-slider__number-input input', '36');
-    assert.ok(this.onChange.calledWith('36'));
+    assert.ok(this.onChange.calledWith(36));
   });
 
   module('value number input', function () {
     test('it renders the number input when @displayInputValue is truthy', async function (assert) {
       await render(
-        hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} />`
+        hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} @onChange={{this.onChange}} />`
       );
       assert.dom('.oss-slider__number-input').exists();
     });
 
     test('it renders the slider with a value of 0 when @value is not a number', async function (assert) {
       await render(
-        hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} />`
+        hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} @onChange={{this.onChange}} />`
       );
       await fillIn('.oss-slider__number-input input', '');
       assert.dom('.oss-slider__number-input').exists().hasText('');
@@ -160,7 +164,7 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
     test('it does not render the number input when @displayInputValue is falsy', async function (assert) {
       this.displayInputValue = false;
       await render(
-        hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} />`
+        hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} @onChange={{this.onChange}} />`
       );
       assert.dom('.oss-slider__number-input').doesNotExist();
     });
@@ -175,14 +179,14 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
     test('it does not render the unit container if @displayInputValue is falsy', async function (assert) {
       this.displayInputValue = false;
       await render(
-        hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} />`
+        hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} @onChange={{this.onChange}} />`
       );
       assert.dom('.oss-slider__unit-container').doesNotExist();
     });
 
     test('it renders the unit container with the proper unit when @unit is defined', async function (assert) {
       await render(
-        hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} />`
+        hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} @onChange={{this.onChange}} />`
       );
       assert.dom('.oss-slider__number-input .fa-percent').exists();
     });
@@ -192,7 +196,7 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
     test('it renders the slider with a minimum value when @min is provided', async function (assert) {
       this.min = 30;
       await render(
-        hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{true}} @min={{this.min}} @max={{this.max}} @step={{this.step}} />`
+        hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{true}} @min={{this.min}} @max={{this.max}} @step={{this.step}} @onChange={{this.onChange}} />`
       );
 
       await fillIn('.oss-slider__number-input input', '30');
@@ -205,7 +209,7 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
     test('it renders the slider with a maximum value when @min is provided', async function (assert) {
       this.max = 1000;
       await render(
-        hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{true}} @min={{this.min}} @max={{this.max}} @step={{this.step}} @unit="percentage" />`
+        hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{true}} @min={{this.min}} @max={{this.max}} @step={{this.step}} @unit="percentage" @onChange={{this.onChange}} />`
       );
 
       await fillIn('.oss-slider__number-input input', '1000');
