@@ -1,1 +1,7 @@
-<object type="image/svg+xml" data={{@src}} {{on "load" this.setupCSSVars}}></object>
+<div class="fx-1" ...attributes>
+  {{#if this.preloaded}}
+    {{{this.svgDocument}}}
+  {{else}}
+    <OSS::Skeleton @width="100%" />
+  {{/if}}
+</div>

@@ -1,4 +1,5 @@
 import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 import { isBlank } from '@ember/utils';
 
 export const extractCSSVars = (): string[] => {
@@ -27,13 +28,39 @@ interface OSSIllustrationArgs {
 }
 
 export default class OSSIllustration extends Component<OSSIllustrationArgs> {
-  setupCSSVars(event: Event): void {
-    const svgDocument = (<HTMLObjectElement>event.target).contentDocument?.querySelector('svg');
+  @tracked preloaded: boolean = false;
+  @tracked svgDocument: SVGSVGElement | null = null;
 
-    if (svgDocument) {
-      const style = document.createElement('style');
-      style.textContent = `:root { ${extractCSSVars().join(';')} }`;
-      svgDocument.append(style);
-    }
+  constructor(owner: unknown, args: OSSIllustrationArgs) {
+    super(owner, args);
+    this.fetchAndPatchSVG();
+  }
+
+  private fetchAndPatchSVG(): void {
+    fetch(this.args.src).then((response) => {
+      if (response.ok) {
+        if (response.headers.get('Content-Type') !== 'image/svg+xml') {
+          console.error('Illustration component only supports SVG files');
+          return;
+        }
+
+        response.text().then((text) => {
+          this.svgDocument = new DOMParser().parseFromString(text, 'image/svg+xml').querySelector('svg');
+
+          if (this.svgDocument) {
+            this.preloaded = true;
+            this.setupCSSVars();
+          }
+        });
+      }
+    });
+  }
+
+  private setupCSSVars(): void {
+    if (!this.svgDocument) return;
+
+    const style = document.createElement('style');
+    style.textContent = `:root { ${extractCSSVars().join(';')} }`;
+    this.svgDocument.append(style);
   }
 }
