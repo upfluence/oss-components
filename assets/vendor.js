@@ -80424,34 +80424,44 @@ define("@upfluence/oss-components/components/o-s-s/icon", ["exports", "@ember/co
   }({});
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-define("@upfluence/oss-components/components/o-s-s/illustration", ["exports", "@ember/component", "@glimmer/component", "@ember/utils", "@ember/template-factory"], function (_exports, _component, _component2, _utils, _templateFactory) {
+define("@upfluence/oss-components/components/o-s-s/illustration", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/utils", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _utils, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.extractCSSVars = _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/utils",0,"@ember/component"eaimeta@70e063a35619d71f
+  var _class, _descriptor, _descriptor2;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/utils",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
   function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
   function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
-  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
-  function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
   function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
   function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
-  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
   function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
   function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
   function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
   function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <object type="image/svg+xml" data={{@src}} {{on "load" this.setupCSSVars}}></object>
-  
+    <div class="fx-1" ...attributes>
+    {{#if this.preloaded}}
+      {{{this.svgDocument}}}
+    {{else}}
+      <OSS::Skeleton @width="100%" />
+    {{/if}}
+  </div>
   */
   {
-    "id": "PMgg7Bam",
-    "block": "[[[11,\"object\"],[16,\"data\",[30,1]],[24,4,\"image/svg+xml\"],[4,[38,0],[\"load\",[30,0,[\"setupCSSVars\"]]],null],[12],[13],[1,\"\\n\"]],[\"@src\"],false,[\"on\"]]",
+    "id": "KnQmoPSv",
+    "block": "[[[11,0],[24,0,\"fx-1\"],[17,1],[12],[1,\"\\n\"],[41,[30,0,[\"preloaded\"]],[[[1,\"    \"],[2,[30,0,[\"svgDocument\"]]],[1,\"\\n\"]],[]],[[[1,\"    \"],[8,[39,1],null,[[\"@width\"],[\"100%\"]],null],[1,\"\\n\"]],[]]],[13]],[\"&attrs\"],false,[\"if\",\"o-s-s/skeleton\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/illustration.hbs",
     "isStrictMode": false
   });
@@ -80475,26 +80485,62 @@ define("@upfluence/oss-components/components/o-s-s/illustration", ["exports", "@
       return !(0, _utils.isBlank)(text);
     });
   };
-  var OSSIllustration = _exports.default = /*#__PURE__*/function (_Component) {
+  var OSSIllustration = _exports.default = (_class = /*#__PURE__*/function (_Component) {
     _inherits(OSSIllustration, _Component);
-    function OSSIllustration() {
+    function OSSIllustration(owner, args) {
+      var _this;
       _classCallCheck(this, OSSIllustration);
-      return _callSuper(this, OSSIllustration, arguments);
+      _this = _callSuper(this, OSSIllustration, [owner, args]);
+      _initializerDefineProperty(_assertThisInitialized(_this), "preloaded", _descriptor, _assertThisInitialized(_this));
+      _initializerDefineProperty(_assertThisInitialized(_this), "svgDocument", _descriptor2, _assertThisInitialized(_this));
+      _this.fetchAndPatchSVG();
+      return _this;
     }
     _createClass(OSSIllustration, [{
+      key: "fetchAndPatchSVG",
+      value: function fetchAndPatchSVG() {
+        var _this2 = this;
+        fetch(this.args.src).then(function (response) {
+          if (response.ok) {
+            if (response.headers.get('Content-Type') !== 'image/svg+xml') {
+              console.error('Illustration component only supports SVG files');
+              return;
+            }
+            response.text().then(function (text) {
+              _this2.svgDocument = new DOMParser().parseFromString(text, 'image/svg+xml').querySelector('svg');
+              if (_this2.svgDocument) {
+                _this2.preloaded = true;
+                _this2.setupCSSVars();
+              }
+            });
+          }
+        });
+      }
+    }, {
       key: "setupCSSVars",
-      value: function setupCSSVars(event) {
-        var _contentDocument;
-        var svgDocument = (_contentDocument = event.target.contentDocument) === null || _contentDocument === void 0 ? void 0 : _contentDocument.querySelector('svg');
-        if (svgDocument) {
-          var style = document.createElement('style');
-          style.textContent = ":root { ".concat(extractCSSVars().join(';'), " }");
-          svgDocument.append(style);
-        }
+      value: function setupCSSVars() {
+        if (!this.svgDocument) return;
+        var style = document.createElement('style');
+        style.textContent = ":root { ".concat(extractCSSVars().join(';'), " }");
+        this.svgDocument.append(style);
       }
     }]);
     return OSSIllustration;
-  }(_component2.default);
+  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "preloaded", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "svgDocument", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return null;
+    }
+  })), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSIllustration);
 });
 ;define("@upfluence/oss-components/components/o-s-s/illustration.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
@@ -80632,7 +80678,10 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
               {{#if (has-block "empty-state")}}
                 {{yield to="empty-state"}}
               {{else}}
-                <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
+                <OSS::Illustration
+                  @src="/@upfluence/oss-components/assets/images/no-records.svg"
+                  data-control-name="infinite-select-empty-state-illustration"
+                />
                 <div class="margin-top-xx-sm text-color-default upf-align--center">
                   {{#if this._searchKeyword}}
                     <p>{{t "oss-components.infinite-select.no-match.title"}}</p>
@@ -80656,8 +80705,8 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
   </div>
   */
   {
-    "id": "cKt1bzv/",
-    "block": "[[[11,0],[16,1,[30,0,[\"elementId\"]]],[16,\"data-internal-id\",[30,0,[\"elementId\"]]],[16,0,[29,[\"fx-col upf-infinite-select \",[52,[51,[30,0,[\"inline\"]]],\"upf-infinite-select--absolute\"]]]],[17,1],[4,[38,1],[[30,0,[\"onRender\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"searchEnabled\"]],[[[1,\"    \"],[8,[39,3],null,null,[[\"default\"],[[[[1,\"\\n      \"],[8,[39,4],null,null,[[\"prefix\",\"input\"],[[[[1,\"\\n          \"],[8,[39,5],[[24,0,\"font-color-gray-500\"]],[[\"@icon\"],[\"fa-search\"]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[8,[39,6],[[24,0,\"upf-input\"],[16,\"placeholder\",[30,0,[\"searchPlaceholder\"]]],[24,4,\"text\"],[4,[38,7],[\"keydown\",[30,0,[\"handleKeyEventInput\"]]],null],[4,[38,7],[\"keyup\",[30,0,[\"updateSearchKeyword\"]]],null]],[[\"@value\"],[[30,0,[\"_searchKeyword\"]]]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"]],[]]]]],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"upf-infinite-select__container\"],[12],[1,\"\\n    \"],[11,\"ul\"],[16,0,[29,[\"upf-infinite-select__items-container\\n        \",[52,[28,[37,8],[[30,0,[\"items\",\"length\"]],0],null],\"upf-infinite-select__items-container--empty\"]]]],[4,[38,9],[[30,0,[\"onBottomReached\"]]],null],[4,[38,10],null,null],[4,[38,7],[\"keydown\",[30,0,[\"handleKeyEvent\"]]],null],[12],[1,\"\\n\"],[41,[28,[37,11],[[30,2],[28,[37,12],[[30,3]],null]],null],[[[1,\"        \"],[8,[39,13],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",5,\"col\"]],null],[1,\"\\n\"]],[]],[[[42,[28,[37,15],[[28,[37,15],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"          \"],[11,\"li\"],[24,0,\"upf-infinite-select__item\"],[24,\"role\",\"button\"],[24,\"tabindex\",\"0\"],[4,[38,7],[\"click\",[28,[37,16],[[30,0,[\"didSelectItem\"]],[30,4]],null]],null],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"              \"],[18,5,[[30,4]]],[1,\"\\n\"]],[]],[[[1,\"              \"],[1,[28,[35,19],[[30,4],[30,0,[\"itemLabel\"]]],null]],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[4]],[[[1,\"          \"],[10,0],[14,0,\"fx-col fx-xalign-center\"],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"              \"],[18,6,null],[1,\"\\n\"]],[]],[[[1,\"              \"],[8,[39,20],null,[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null],[1,\"\\n              \"],[10,0],[14,0,\"margin-top-xx-sm text-color-default upf-align--center\"],[12],[1,\"\\n\"],[41,[30,0,[\"_searchKeyword\"]],[[[1,\"                  \"],[10,2],[12],[1,[28,[35,21],[\"oss-components.infinite-select.no-match.title\"],null]],[13],[1,\"\\n                  \"],[10,2],[14,0,\"text-color-default-light\"],[12],[1,\"\\n                    \"],[1,[28,[35,21],[\"oss-components.infinite-select.no-match.description\"],null]],[1,\"\\n                  \"],[13],[1,\"\\n\"]],[]],[[[1,\"                  \"],[1,[28,[35,21],[\"oss-components.infinite-select.empty\"],null]],[1,\"\\n\"]],[]]],[1,\"              \"],[13],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,3],[[[1,\"          \"],[8,[39,13],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",3,\"col\"]],null],[1,\"\\n\"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@loading\",\"@loadingMore\",\"item\",\"&option\",\"&empty-state\"],false,[\"unless\",\"did-insert\",\"if\",\"input-wrapper\",\"o-s-s/input-container\",\"o-s-s/icon\",\"input\",\"on\",\"eq\",\"on-bottom-reached\",\"scroll-shadow\",\"and\",\"not\",\"o-s-s/skeleton\",\"each\",\"-track-array\",\"fn\",\"has-block\",\"yield\",\"get\",\"o-s-s/illustration\",\"t\"]]",
+    "id": "vhSPPCPP",
+    "block": "[[[11,0],[16,1,[30,0,[\"elementId\"]]],[16,\"data-internal-id\",[30,0,[\"elementId\"]]],[16,0,[29,[\"fx-col upf-infinite-select \",[52,[51,[30,0,[\"inline\"]]],\"upf-infinite-select--absolute\"]]]],[17,1],[4,[38,1],[[30,0,[\"onRender\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"searchEnabled\"]],[[[1,\"    \"],[8,[39,3],null,null,[[\"default\"],[[[[1,\"\\n      \"],[8,[39,4],null,null,[[\"prefix\",\"input\"],[[[[1,\"\\n          \"],[8,[39,5],[[24,0,\"font-color-gray-500\"]],[[\"@icon\"],[\"fa-search\"]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[8,[39,6],[[24,0,\"upf-input\"],[16,\"placeholder\",[30,0,[\"searchPlaceholder\"]]],[24,4,\"text\"],[4,[38,7],[\"keydown\",[30,0,[\"handleKeyEventInput\"]]],null],[4,[38,7],[\"keyup\",[30,0,[\"updateSearchKeyword\"]]],null]],[[\"@value\"],[[30,0,[\"_searchKeyword\"]]]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"]],[]]]]],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"upf-infinite-select__container\"],[12],[1,\"\\n    \"],[11,\"ul\"],[16,0,[29,[\"upf-infinite-select__items-container\\n        \",[52,[28,[37,8],[[30,0,[\"items\",\"length\"]],0],null],\"upf-infinite-select__items-container--empty\"]]]],[4,[38,9],[[30,0,[\"onBottomReached\"]]],null],[4,[38,10],null,null],[4,[38,7],[\"keydown\",[30,0,[\"handleKeyEvent\"]]],null],[12],[1,\"\\n\"],[41,[28,[37,11],[[30,2],[28,[37,12],[[30,3]],null]],null],[[[1,\"        \"],[8,[39,13],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",5,\"col\"]],null],[1,\"\\n\"]],[]],[[[42,[28,[37,15],[[28,[37,15],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"          \"],[11,\"li\"],[24,0,\"upf-infinite-select__item\"],[24,\"role\",\"button\"],[24,\"tabindex\",\"0\"],[4,[38,7],[\"click\",[28,[37,16],[[30,0,[\"didSelectItem\"]],[30,4]],null]],null],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"              \"],[18,5,[[30,4]]],[1,\"\\n\"]],[]],[[[1,\"              \"],[1,[28,[35,19],[[30,4],[30,0,[\"itemLabel\"]]],null]],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[4]],[[[1,\"          \"],[10,0],[14,0,\"fx-col fx-xalign-center\"],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"              \"],[18,6,null],[1,\"\\n\"]],[]],[[[1,\"              \"],[8,[39,20],[[24,\"data-control-name\",\"infinite-select-empty-state-illustration\"]],[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null],[1,\"\\n              \"],[10,0],[14,0,\"margin-top-xx-sm text-color-default upf-align--center\"],[12],[1,\"\\n\"],[41,[30,0,[\"_searchKeyword\"]],[[[1,\"                  \"],[10,2],[12],[1,[28,[35,21],[\"oss-components.infinite-select.no-match.title\"],null]],[13],[1,\"\\n                  \"],[10,2],[14,0,\"text-color-default-light\"],[12],[1,\"\\n                    \"],[1,[28,[35,21],[\"oss-components.infinite-select.no-match.description\"],null]],[1,\"\\n                  \"],[13],[1,\"\\n\"]],[]],[[[1,\"                  \"],[1,[28,[35,21],[\"oss-components.infinite-select.empty\"],null]],[1,\"\\n\"]],[]]],[1,\"              \"],[13],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,3],[[[1,\"          \"],[8,[39,13],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",3,\"col\"]],null],[1,\"\\n\"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@loading\",\"@loadingMore\",\"item\",\"&option\",\"&empty-state\"],false,[\"unless\",\"did-insert\",\"if\",\"input-wrapper\",\"o-s-s/input-container\",\"o-s-s/icon\",\"input\",\"on\",\"eq\",\"on-bottom-reached\",\"scroll-shadow\",\"and\",\"not\",\"o-s-s/skeleton\",\"each\",\"-track-array\",\"fn\",\"has-block\",\"yield\",\"get\",\"o-s-s/illustration\",\"t\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/infinite-select.hbs",
     "isStrictMode": false
   });

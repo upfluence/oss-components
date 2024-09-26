@@ -11167,12 +11167,13 @@ define("dummy/tests/integration/components/o-s-s/illustration-test", ["qunit", "
   function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
   (0, _qunit.module)('Integration | Component | o-s-s/illustration', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
-    (0, _qunit.test)('it renders', /*#__PURE__*/function () {
+    (0, _qunit.test)('the style is inserted in the fetched svg', /*#__PURE__*/function () {
       var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(assert) {
         return _regeneratorRuntime().wrap(function _callee$(_context) {
           while (1) switch (_context.prev = _context.next) {
             case 0:
-              _context.next = 2;
+              this.extractedCSSVars = (0, _illustration.extractCSSVars)().join(';');
+              _context.next = 3;
               return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
               /*
                 <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
@@ -11183,54 +11184,21 @@ define("dummy/tests/integration/components/o-s-s/illustration-test", ["qunit", "
                 "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/illustration-test.ts",
                 "isStrictMode": false
               }));
-            case 2:
-              assert.dom('object').hasAttribute('data', '/@upfluence/oss-components/assets/images/no-records.svg');
             case 3:
+              _context.next = 5;
+              return (0, _testHelpers.waitUntil)(function () {
+                return (0, _testHelpers.find)('svg');
+              });
+            case 5:
+              assert.deepEqual((0, _testHelpers.find)('svg style').textContent.trim(), ":root { ".concat(this.extractedCSSVars, " }").trim());
+            case 6:
             case "end":
               return _context.stop();
           }
-        }, _callee);
+        }, _callee, this);
       }));
       return function (_x) {
         return _ref.apply(this, arguments);
-      };
-    }());
-    (0, _qunit.test)('the style is inserted', /*#__PURE__*/function () {
-      var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(assert) {
-        var _querySelector;
-        return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-          while (1) switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.next = 2;
-              return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-              /*
-                <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
-              */
-              {
-                "id": "VzXz5vu3",
-                "block": "[[[8,[39,0],null,[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null]],[],false,[\"o-s-s/illustration\"]]",
-                "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/illustration-test.ts",
-                "isStrictMode": false
-              }));
-            case 2:
-              _context2.next = 4;
-              return (0, _testHelpers.waitUntil)(function () {
-                var _contentDocument;
-                return (_contentDocument = (0, _testHelpers.find)('object').contentDocument) === null || _contentDocument === void 0 ? void 0 : _contentDocument.querySelector('svg');
-              });
-            case 4:
-              _context2.next = 6;
-              return (0, _testHelpers.settled)();
-            case 6:
-              assert.equal((_querySelector = (0, _testHelpers.find)('object').contentDocument.querySelector('svg style')) === null || _querySelector === void 0 ? void 0 : _querySelector.textContent, ":root { ".concat((0, _illustration.extractCSSVars)().join(';'), " }"));
-            case 7:
-            case "end":
-              return _context2.stop();
-          }
-        }, _callee2);
-      }));
-      return function (_x2) {
-        return _ref2.apply(this, arguments);
       };
     }());
   });
@@ -11580,7 +11548,7 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
                   }));
                 case 4:
                   assert.dom('.upf-infinite-select__items-container').hasClass('upf-infinite-select__items-container--empty');
-                  assert.dom('.upf-infinite-select__items-container object').hasAttribute('data', '/@upfluence/oss-components/assets/images/no-records.svg');
+                  assert.dom('.upf-infinite-select__items-container [data-control-name="infinite-select-empty-state-illustration"]');
                 case 6:
                 case "end":
                   return _context8.stop();
