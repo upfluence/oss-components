@@ -16,7 +16,7 @@ export default {
       control: { type: 'text' }
     },
     square: {
-      description: 'An argument that makes the button shape squared',
+      description: 'Optional - An argument that makes the button shape squared',
       table: {
         type: {
           summary: 'boolean'
