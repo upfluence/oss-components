@@ -1,25 +1,33 @@
 <div class="oss-button-dropdown">
-  <div class="oss-button-dropdown__trigger fx-row fx-xalign-center" role={{unless @mainAction "button"}}
-       {{on "click" this.onDropdownClick}} ...attributes>
+  <div
+    class="oss-button-dropdown__trigger {{if @square 'oss-button-dropdown__trigger-square'}} fx-row fx-xalign-center"
+    role={{unless @mainAction "button"}}
+    {{on "click" this.onDropdownClick}}
+    ...attributes
+  >
     <div class="fx-row fx-xalign-center fx-gap-px-6" role={{if @mainAction "button"}} {{on "click" this.onMainAction}}>
       {{#if @icon}}
         <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
       {{/if}}
-      {{#if @label}}
+      {{#if (and @label (not @square))}}
         <span>{{@label}}</span>
       {{/if}}
     </div>
-    <div class="fx-row fx-xalign-center" role={{if @mainAction "button"}} {{on "click" this.toggleDropdown}}>
-      <OSS::Icon @icon="fa-caret-{{if this.displayDropdown 'up' 'down'}}" />
-    </div>
+    {{#unless @square}}
+      <div class="fx-row fx-xalign-center" role={{if @mainAction "button"}} {{on "click" this.toggleDropdown}}>
+        <OSS::Icon @icon="fa-caret-{{if this.displayDropdown 'up' 'down'}}" />
+      </div>
+    {{/unless}}
   </div>
 
   {{#if this.displayDropdown}}
-    <div class="oss-button-dropdown__items"
-         {{on "click" this.toggleDropdown}}
-         {{did-insert this.setupChildrenClickHandler}}
-         {{will-destroy this.teardownChildrenClickHandler}}
-         {{on-click-outside this.onClickOutside useCapture=true}}>
+    <div
+      class="oss-button-dropdown__items"
+      {{on "click" this.toggleDropdown}}
+      {{did-insert this.setupChildrenClickHandler}}
+      {{will-destroy this.teardownChildrenClickHandler}}
+      {{on-click-outside this.onClickOutside useCapture=true}}
+    >
       {{yield to="items"}}
     </div>
   {{/if}}

@@ -1,6 +1,19 @@
 .oss-button-dropdown {
   position: relative;
 
+  .oss-button-dropdown__trigger-square {
+    width: var(--spacing-px-36);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div {
+      &:last-child {
+        padding: 0;
+      }
+    }
+  }
+
   &__trigger {
     background-color: var(--color-white);
     border: 1px solid var(--color-gray-200);

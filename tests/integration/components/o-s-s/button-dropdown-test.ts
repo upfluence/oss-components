@@ -23,6 +23,14 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
     assert.dom('.oss-button-dropdown__trigger .fx-row:first-child span').doesNotExist();
   });
 
+  test('the button is displayed as square when @square is provided', async function (assert) {
+    await render(
+      hbs`<OSS::ButtonDropdown @icon="far fa-users" @square={{true}}><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
+    );
+
+    assert.dom('.oss-button-dropdown__trigger-square').exists();
+  });
+
   test('the icon and label are displayed correctly when provided', async function (assert) {
     await render(
       hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label"><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
