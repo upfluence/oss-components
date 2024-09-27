@@ -31,6 +31,16 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
     assert.dom('.oss-button-dropdown__trigger-square').exists();
   });
 
+  test('the button is hidden when @hideArrow is provided', async function (assert) {
+    await render(
+      hbs`<OSS::ButtonDropdown @icon="far fa-users" @square={{true}} @hideArrow={{true}}>
+            <:items><div class="oss-button-dropdown__item">foo</div></:items>
+          </OSS::ButtonDropdown>`
+    );
+
+    assert.dom('.fa-caret-down').doesNotExist();
+  });
+
   test('the icon and label are displayed correctly when provided', async function (assert) {
     await render(
       hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label"><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`

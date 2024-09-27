@@ -13,7 +13,7 @@
         <span>{{@label}}</span>
       {{/if}}
     </div>
-    {{#unless @square}}
+    {{#unless @hideArrow}}
       <div class="fx-row fx-xalign-center" role={{if @mainAction "button"}} {{on "click" this.toggleDropdown}}>
         <OSS::Icon @icon="fa-caret-{{if this.displayDropdown 'up' 'down'}}" />
       </div>

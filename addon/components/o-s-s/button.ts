@@ -78,6 +78,7 @@ interface ButtonArgs {
   label?: string;
   theme?: string;
   square?: boolean;
+  displayArrow?: boolean;
   countDown?: {
     callback: () => {};
     time?: number;
