@@ -16,7 +16,7 @@ export default {
       control: { type: 'text' }
     },
     square: {
-      description: 'An arg that makes the button shape squared',
+      description: 'An argument that makes the button shape squared',
       table: {
         type: {
           summary: 'boolean'
@@ -74,7 +74,7 @@ const Template = (args) => ({
   template: hbs`
     <OSS::ButtonDropdown @icon={{this.icon}} @label={{this.label}} @mainAction={{this.mainAction}} @square={{this.square}}>
       <:items>
-        <div class="oss-button-dropdown__item">
+        <div class="oss-button-dropdown__item font-color-gray-900">
           <OSS::Icon @style="solid" @icon="fa-share" /> Share
         </div>
       </:items>
