@@ -1,10 +1,10 @@
-<div class="oss-panel-content--row" ...attributes>
+<div class="oss-panel-content--row {{if @disabled 'oss-panel-content--row-disabled'}}" ...attributes>
   {{#if @icon}}
     <div class="oss-panel-content--row--icon-wrapper">
       <OSS::Icon @icon={{@icon}} />
     </div>
   {{/if}}
-  <span class="font-color-gray-500">
+  <span class="font-color-gray-500 oss-panel-content--row--text">
     {{@label}}
   </span>
 </div>

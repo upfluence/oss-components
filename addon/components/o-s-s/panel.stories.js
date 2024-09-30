@@ -17,13 +17,13 @@ const Template = (args) => ({
     <OSS::Panel
     >
       <:header>
-        <span>Header named-block</span>
+        <OSS::Panel::Row @label="Header named-block" @icon="fa-cog" />
       </:header>
       <:content>
-        <span>Content named-block</span>
+        <OSS::Panel::Row @label="Content named-block" @icon="fa-search" />
       </:content>
       <:footer>
-        <span>Footer named-block</span>
+        <OSS::Panel::Row @label="Footer named-block" @icon="fa-sign-out" @disabled={{true}} />
       </:footer>
     </OSS::Panel>
   `,

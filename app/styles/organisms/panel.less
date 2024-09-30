@@ -8,6 +8,7 @@
   width: 200px;
   flex-direction: column;
   align-items: flex-start;
+  overflow: hidden;
 
   .oss-panel-content--row {
     display: inline-flex;
@@ -20,6 +21,25 @@
     gap: var(--spacing-px-9);
     flex-shrink: 0;
     background: var(--color-white);
+
+    &-disabled {
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: var(--color-gray-50);
+        transition: background-color 0.3s ease;
+
+        .oss-panel-content--row--icon-wrapper i,
+        .oss-panel-content--row--text {
+          color: var(--color-gray-400);
+        }
+      }
+
+      .oss-panel-content--row--icon-wrapper i,
+      .oss-panel-content--row--text {
+        color: var(--color-gray-400);
+      }
+    }
 
     .far {
       color: var(--color-gray-400);
