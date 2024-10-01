@@ -71,13 +71,13 @@ const defaultArgs = {
   label: 'Actions',
   square: false,
   hideArrow: false,
-  mainAction: null
+  mainAction: action('mainAction')
 };
 
 const withMainActionArgs = {
   icon: 'far fa-user',
   label: 'Actions',
-  square: false,
+  square: true,
   hideArrow: false,
   mainAction: action('mainAction')
 };

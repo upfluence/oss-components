@@ -4,13 +4,23 @@
   .oss-button-dropdown__trigger-square {
     width: var(--spacing-px-36);
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    gap: var(--spacing-px-3);
     align-items: center;
 
     div {
       padding-left: 0;
+
+      &[role='button'] {
+        padding-right: 0;
+      }
+
       &:last-child {
         padding: 0;
+        &[role='button'] {
+          border-left: 0;
+          padding: 0;
+        }
       }
     }
   }

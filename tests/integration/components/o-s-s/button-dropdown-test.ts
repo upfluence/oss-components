@@ -31,7 +31,7 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
     assert.dom('.oss-button-dropdown__trigger-square').exists();
   });
 
-  test('the button is hidden when @hideArrow is provided', async function (assert) {
+  test('the arrow is hidden when @hideArrow is provided', async function (assert) {
     await render(
       hbs`<OSS::ButtonDropdown @icon="far fa-users" @square={{true}} @hideArrow={{true}}>
             <:items><div class="oss-button-dropdown__item">foo</div></:items>
