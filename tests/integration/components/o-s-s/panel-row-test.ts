@@ -22,7 +22,7 @@ module('Integration | Component | o-s-s/panel-row', function (hooks) {
   });
 
   test('it renders as disabled when @disabled is provided', async function (assert) {
-    await render(hbs`<OSS::Panel::Row @icon={{"fa-cog"}} @label={{'Your Label'l}} @disabled={{true}}/>`);
+    await render(hbs`<OSS::Panel::Row @icon={{"fa-cog"}} @label={{'Your Label'}} @disabled={{true}}/>`);
     assert.dom('.oss-panel-content--row-disabled').exists();
   });
 });
