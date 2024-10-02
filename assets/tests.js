@@ -5949,12 +5949,70 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
         return _ref2.apply(this, arguments);
       };
     }());
-    (0, _qunit.test)('the icon and label are displayed correctly when provided', /*#__PURE__*/function () {
+    (0, _qunit.test)('the button is displayed as square when @square is provided', /*#__PURE__*/function () {
       var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
         return _regeneratorRuntime().wrap(function _callee3$(_context3) {
           while (1) switch (_context3.prev = _context3.next) {
             case 0:
               _context3.next = 2;
+              return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+              /*
+                <OSS::ButtonDropdown @icon="far fa-users" @square={{true}}><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>
+              */
+              {
+                "id": "0kP8W6El",
+                "block": "[[[8,[39,0],null,[[\"@icon\",\"@square\"],[\"far fa-users\",true]],[[\"items\"],[[[[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"foo\"],[13]],[]]]]]],[],false,[\"o-s-s/button-dropdown\"]]",
+                "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/button-dropdown-test.ts",
+                "isStrictMode": false
+              }));
+            case 2:
+              assert.dom('.oss-button-dropdown__trigger-square').exists();
+            case 3:
+            case "end":
+              return _context3.stop();
+          }
+        }, _callee3);
+      }));
+      return function (_x3) {
+        return _ref3.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('the arrow is hidden when @hideArrow is provided', /*#__PURE__*/function () {
+      var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+          while (1) switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+              /*
+                <OSS::ButtonDropdown @icon="far fa-users" @square={{true}} @hideArrow={{true}}>
+                          <:items><div class="oss-button-dropdown__item">foo</div></:items>
+                        </OSS::ButtonDropdown>
+              */
+              {
+                "id": "jxDQyf2+",
+                "block": "[[[8,[39,0],null,[[\"@icon\",\"@square\",\"@hideArrow\"],[\"far fa-users\",true,true]],[[\"items\"],[[[[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"foo\"],[13]],[]]]]]],[],false,[\"o-s-s/button-dropdown\"]]",
+                "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/button-dropdown-test.ts",
+                "isStrictMode": false
+              }));
+            case 2:
+              assert.dom('.fa-caret-down').doesNotExist();
+            case 3:
+            case "end":
+              return _context4.stop();
+          }
+        }, _callee4);
+      }));
+      return function (_x4) {
+        return _ref4.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('the icon and label are displayed correctly when provided', /*#__PURE__*/function () {
+      var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+        return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+          while (1) switch (_context5.prev = _context5.next) {
+            case 0:
+              _context5.next = 2;
               return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
               /*
                 <OSS::ButtonDropdown @icon="far fa-users" @label="label"><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>
@@ -5973,21 +6031,21 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
               assert.dom('.oss-button-dropdown__trigger .fx-row:first-child span').hasText('label');
             case 7:
             case "end":
-              return _context3.stop();
+              return _context5.stop();
           }
-        }, _callee3);
+        }, _callee5);
       }));
-      return function (_x3) {
-        return _ref3.apply(this, arguments);
+      return function (_x5) {
+        return _ref5.apply(this, arguments);
       };
     }());
     (0, _qunit.module)('If @mainAction is undefined', function () {
       (0, _qunit.test)('Clicking on the button opens the dropdown', /*#__PURE__*/function () {
-        var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
-          return _regeneratorRuntime().wrap(function _callee4$(_context4) {
-            while (1) switch (_context4.prev = _context4.next) {
+        var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+          return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+            while (1) switch (_context6.prev = _context6.next) {
               case 0:
-                _context4.next = 2;
+                _context6.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::ButtonDropdown @icon="far fa-users" @label="label">
@@ -6005,7 +6063,7 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
               case 2:
                 assert.dom('.oss-button-dropdown__items').doesNotExist();
                 assert.dom('.oss-button-dropdown__trigger').hasAttribute('role', 'button');
-                _context4.next = 6;
+                _context6.next = 6;
                 return (0, _testHelpers.click)('.oss-button-dropdown__trigger');
               case 6:
                 assert.dom('.oss-button-dropdown__items').exists();
@@ -6015,20 +6073,20 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
                 assert.dom('.oss-button-dropdown__items .oss-button-dropdown__item').hasText('foo');
               case 9:
               case "end":
-                return _context4.stop();
+                return _context6.stop();
             }
-          }, _callee4);
+          }, _callee6);
         }));
-        return function (_x4) {
-          return _ref4.apply(this, arguments);
+        return function (_x6) {
+          return _ref6.apply(this, arguments);
         };
       }());
       (0, _qunit.test)("Hasn't inner border separator", /*#__PURE__*/function () {
-        var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
-          return _regeneratorRuntime().wrap(function _callee5$(_context5) {
-            while (1) switch (_context5.prev = _context5.next) {
+        var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+          return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+            while (1) switch (_context7.prev = _context7.next) {
               case 0:
-                _context5.next = 2;
+                _context7.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}>
@@ -6049,12 +6107,12 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
                 });
               case 3:
               case "end":
-                return _context5.stop();
+                return _context7.stop();
             }
-          }, _callee5);
+          }, _callee7);
         }));
-        return function (_x5) {
-          return _ref5.apply(this, arguments);
+        return function (_x7) {
+          return _ref7.apply(this, arguments);
         };
       }());
     });
@@ -6063,72 +6121,6 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
         this.mainAction = _sinon.default.stub();
       });
       (0, _qunit.test)('Clicking on the button should not open the dropdown', /*#__PURE__*/function () {
-        var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
-          return _regeneratorRuntime().wrap(function _callee6$(_context6) {
-            while (1) switch (_context6.prev = _context6.next) {
-              case 0:
-                _context6.next = 2;
-                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-                /*
-                  <OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>
-                */
-                {
-                  "id": "dOvhz4cr",
-                  "block": "[[[8,[39,0],null,[[\"@icon\",\"@label\",\"@mainAction\"],[\"far fa-users\",\"label\",[30,0,[\"mainAction\"]]]],[[\"items\"],[[[[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"foo\"],[13]],[]]]]]],[],false,[\"o-s-s/button-dropdown\"]]",
-                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/button-dropdown-test.ts",
-                  "isStrictMode": false
-                }));
-              case 2:
-                assert.dom('.oss-button-dropdown__items').doesNotExist();
-                assert.dom('.oss-button-dropdown__trigger').hasNoAttribute('role', 'button');
-                _context6.next = 6;
-                return (0, _testHelpers.click)('.oss-button-dropdown__trigger');
-              case 6:
-                assert.dom('.oss-button-dropdown__items').doesNotExist();
-              case 7:
-              case "end":
-                return _context6.stop();
-            }
-          }, _callee6);
-        }));
-        return function (_x6) {
-          return _ref6.apply(this, arguments);
-        };
-      }());
-      (0, _qunit.test)('Clicking on the left part should trigger mainAction', /*#__PURE__*/function () {
-        var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
-          return _regeneratorRuntime().wrap(function _callee7$(_context7) {
-            while (1) switch (_context7.prev = _context7.next) {
-              case 0:
-                _context7.next = 2;
-                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-                /*
-                  <OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>
-                */
-                {
-                  "id": "dOvhz4cr",
-                  "block": "[[[8,[39,0],null,[[\"@icon\",\"@label\",\"@mainAction\"],[\"far fa-users\",\"label\",[30,0,[\"mainAction\"]]]],[[\"items\"],[[[[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"foo\"],[13]],[]]]]]],[],false,[\"o-s-s/button-dropdown\"]]",
-                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/button-dropdown-test.ts",
-                  "isStrictMode": false
-                }));
-              case 2:
-                assert.ok(this.mainAction.notCalled);
-                assert.dom('.oss-button-dropdown__trigger .fx-row:first-child').hasAttribute('role', 'button');
-                _context7.next = 6;
-                return (0, _testHelpers.click)('.oss-button-dropdown__trigger .fx-row:first-child');
-              case 6:
-                assert.ok(this.mainAction.calledOnce);
-              case 7:
-              case "end":
-                return _context7.stop();
-            }
-          }, _callee7, this);
-        }));
-        return function (_x7) {
-          return _ref7.apply(this, arguments);
-        };
-      }());
-      (0, _qunit.test)('Clicking on the caret container part opens the dropdown', /*#__PURE__*/function () {
         var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
           return _regeneratorRuntime().wrap(function _callee8$(_context8) {
             while (1) switch (_context8.prev = _context8.next) {
@@ -6146,16 +6138,12 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
                 }));
               case 2:
                 assert.dom('.oss-button-dropdown__items').doesNotExist();
-                assert.dom('.oss-button-dropdown__trigger .fx-row:last-child').hasAttribute('role', 'button');
+                assert.dom('.oss-button-dropdown__trigger').hasNoAttribute('role', 'button');
                 _context8.next = 6;
-                return (0, _testHelpers.click)('.oss-button-dropdown__trigger .fx-row:last-child');
+                return (0, _testHelpers.click)('.oss-button-dropdown__trigger');
               case 6:
-                assert.dom('.oss-button-dropdown__items').exists();
-                assert.dom('.oss-button-dropdown__items .oss-button-dropdown__item').exists({
-                  count: 1
-                });
-                assert.dom('.oss-button-dropdown__items .oss-button-dropdown__item').hasText('foo');
-              case 9:
+                assert.dom('.oss-button-dropdown__items').doesNotExist();
+              case 7:
               case "end":
                 return _context8.stop();
             }
@@ -6165,7 +6153,7 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
           return _ref8.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('Has inner border separator', /*#__PURE__*/function () {
+      (0, _qunit.test)('Clicking on the left part should trigger mainAction', /*#__PURE__*/function () {
         var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
           return _regeneratorRuntime().wrap(function _callee9$(_context9) {
             while (1) switch (_context9.prev = _context9.next) {
@@ -6182,17 +6170,87 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
                   "isStrictMode": false
                 }));
               case 2:
+                assert.ok(this.mainAction.notCalled);
+                assert.dom('.oss-button-dropdown__trigger .fx-row:first-child').hasAttribute('role', 'button');
+                _context9.next = 6;
+                return (0, _testHelpers.click)('.oss-button-dropdown__trigger .fx-row:first-child');
+              case 6:
+                assert.ok(this.mainAction.calledOnce);
+              case 7:
+              case "end":
+                return _context9.stop();
+            }
+          }, _callee9, this);
+        }));
+        return function (_x9) {
+          return _ref9.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('Clicking on the caret container part opens the dropdown', /*#__PURE__*/function () {
+        var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+          return _regeneratorRuntime().wrap(function _callee10$(_context10) {
+            while (1) switch (_context10.prev = _context10.next) {
+              case 0:
+                _context10.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>
+                */
+                {
+                  "id": "dOvhz4cr",
+                  "block": "[[[8,[39,0],null,[[\"@icon\",\"@label\",\"@mainAction\"],[\"far fa-users\",\"label\",[30,0,[\"mainAction\"]]]],[[\"items\"],[[[[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"foo\"],[13]],[]]]]]],[],false,[\"o-s-s/button-dropdown\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/button-dropdown-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.oss-button-dropdown__items').doesNotExist();
+                assert.dom('.oss-button-dropdown__trigger .fx-row:last-child').hasAttribute('role', 'button');
+                _context10.next = 6;
+                return (0, _testHelpers.click)('.oss-button-dropdown__trigger .fx-row:last-child');
+              case 6:
+                assert.dom('.oss-button-dropdown__items').exists();
+                assert.dom('.oss-button-dropdown__items .oss-button-dropdown__item').exists({
+                  count: 1
+                });
+                assert.dom('.oss-button-dropdown__items .oss-button-dropdown__item').hasText('foo');
+              case 9:
+              case "end":
+                return _context10.stop();
+            }
+          }, _callee10);
+        }));
+        return function (_x10) {
+          return _ref10.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('Has inner border separator', /*#__PURE__*/function () {
+        var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+          return _regeneratorRuntime().wrap(function _callee11$(_context11) {
+            while (1) switch (_context11.prev = _context11.next) {
+              case 0:
+                _context11.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>
+                */
+                {
+                  "id": "dOvhz4cr",
+                  "block": "[[[8,[39,0],null,[[\"@icon\",\"@label\",\"@mainAction\"],[\"far fa-users\",\"label\",[30,0,[\"mainAction\"]]]],[[\"items\"],[[[[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"foo\"],[13]],[]]]]]],[],false,[\"o-s-s/button-dropdown\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/button-dropdown-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
                 assert.dom('.oss-button-dropdown__trigger .fx-row:last-child').hasStyle({
                   'border-left': '1px solid rgb(229, 231, 235)'
                 });
               case 3:
               case "end":
-                return _context9.stop();
+                return _context11.stop();
             }
-          }, _callee9);
+          }, _callee11);
         }));
-        return function (_x9) {
-          return _ref9.apply(this, arguments);
+        return function (_x11) {
+          return _ref11.apply(this, arguments);
         };
       }());
     });
@@ -6201,11 +6259,11 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
         this.mainAction = _sinon.default.stub();
       });
       (0, _qunit.test)('Clicking on an item should close the dropdown', /*#__PURE__*/function () {
-        var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
-          return _regeneratorRuntime().wrap(function _callee10$(_context10) {
-            while (1) switch (_context10.prev = _context10.next) {
+        var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+          return _regeneratorRuntime().wrap(function _callee12$(_context12) {
+            while (1) switch (_context12.prev = _context12.next) {
               case 0:
-                _context10.next = 2;
+                _context12.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}>
@@ -6221,32 +6279,32 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
                   "isStrictMode": false
                 }));
               case 2:
-                _context10.next = 4;
+                _context12.next = 4;
                 return (0, _testHelpers.click)('.oss-button-dropdown__trigger .fx-row:last-child');
               case 4:
-                _context10.next = 6;
+                _context12.next = 6;
                 return (0, _testHelpers.click)('.oss-button-dropdown__items .oss-button-dropdown__item');
               case 6:
                 assert.dom('.oss-button-dropdown__items .oss-button-dropdown__item').doesNotExist();
               case 7:
               case "end":
-                return _context10.stop();
+                return _context12.stop();
             }
-          }, _callee10);
+          }, _callee12);
         }));
-        return function (_x10) {
-          return _ref10.apply(this, arguments);
+        return function (_x12) {
+          return _ref12.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('Clicking on an item with stopPropagation should keep the dropdown opened', /*#__PURE__*/function () {
-        var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
-          return _regeneratorRuntime().wrap(function _callee11$(_context11) {
-            while (1) switch (_context11.prev = _context11.next) {
+        var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+          return _regeneratorRuntime().wrap(function _callee13$(_context13) {
+            while (1) switch (_context13.prev = _context13.next) {
               case 0:
                 this.stopPropagation = function (e) {
                   e.stopImmediatePropagation();
                 };
-                _context11.next = 3;
+                _context13.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::ButtonDropdown @icon="far fa-users" @label="label" @mainAction={{this.mainAction}}>
@@ -6262,34 +6320,34 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
                   "isStrictMode": false
                 }));
               case 3:
-                _context11.next = 5;
+                _context13.next = 5;
                 return (0, _testHelpers.click)('.oss-button-dropdown__trigger .fx-row:last-child');
               case 5:
-                _context11.next = 7;
+                _context13.next = 7;
                 return (0, _testHelpers.click)('.oss-button-dropdown__items .oss-button-dropdown__item');
               case 7:
                 assert.dom('.oss-button-dropdown__items .oss-button-dropdown__item').exists();
               case 8:
               case "end":
-                return _context11.stop();
+                return _context13.stop();
             }
-          }, _callee11, this);
+          }, _callee13, this);
         }));
-        return function (_x11) {
-          return _ref11.apply(this, arguments);
+        return function (_x13) {
+          return _ref13.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it throws an error if no icon or label args is provided', /*#__PURE__*/function () {
-        var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
-          return _regeneratorRuntime().wrap(function _callee12$(_context12) {
-            while (1) switch (_context12.prev = _context12.next) {
+        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
+          return _regeneratorRuntime().wrap(function _callee14$(_context14) {
+            while (1) switch (_context14.prev = _context14.next) {
               case 0:
                 (0, _testHelpers.setupOnerror)(function (err) {
                   assert.equal(err.message, 'Assertion Failed: [component][OSS::ButtonDropdown] You must pass either a @label or an @icon argument.');
                 });
-                _context12.next = 3;
+                _context14.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::ButtonDropdown><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>
@@ -6302,23 +6360,23 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
                 }));
               case 3:
               case "end":
-                return _context12.stop();
+                return _context14.stop();
             }
-          }, _callee12);
+          }, _callee14);
         }));
-        return function (_x12) {
-          return _ref12.apply(this, arguments);
+        return function (_x14) {
+          return _ref14.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('it throws an error if mainAction exists and is not a function', /*#__PURE__*/function () {
-        var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
-          return _regeneratorRuntime().wrap(function _callee13$(_context13) {
-            while (1) switch (_context13.prev = _context13.next) {
+        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+          return _regeneratorRuntime().wrap(function _callee15$(_context15) {
+            while (1) switch (_context15.prev = _context15.next) {
               case 0:
                 (0, _testHelpers.setupOnerror)(function (err) {
                   assert.equal(err.message, 'Assertion Failed: [component][OSS::ButtonDropdown] The parameter @mainAction should be a function.');
                 });
-                _context13.next = 3;
+                _context15.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::ButtonDropdown  @label="test" @mainAction="foo" ><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>
@@ -6331,12 +6389,12 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
                 }));
               case 3:
               case "end":
-                return _context13.stop();
+                return _context15.stop();
             }
-          }, _callee13);
+          }, _callee15);
         }));
-        return function (_x13) {
-          return _ref13.apply(this, arguments);
+        return function (_x15) {
+          return _ref15.apply(this, arguments);
         };
       }());
     });
@@ -15739,6 +15797,34 @@ define("dummy/tests/integration/components/o-s-s/panel-row-test", ["qunit", "emb
       }));
       return function (_x3) {
         return _ref3.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('it renders as disabled when @disabled is provided', /*#__PURE__*/function () {
+      var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
+        return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+          while (1) switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+              /*
+                <OSS::Panel::Row @icon={{"fa-cog"}} @label={{'Your Label'}} @disabled={{true}}/>
+              */
+              {
+                "id": "A2L1Z3xo",
+                "block": "[[[8,[39,0],null,[[\"@icon\",\"@label\",\"@disabled\"],[\"fa-cog\",\"Your Label\",true]],null]],[],false,[\"o-s-s/panel/row\"]]",
+                "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/panel-row-test.ts",
+                "isStrictMode": false
+              }));
+            case 2:
+              assert.dom('.oss-panel-content--row-disabled').exists();
+            case 3:
+            case "end":
+              return _context4.stop();
+          }
+        }, _callee4);
+      }));
+      return function (_x4) {
+        return _ref4.apply(this, arguments);
       };
     }());
   });
