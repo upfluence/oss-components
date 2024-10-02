@@ -15,6 +15,26 @@ export default {
       },
       control: { type: 'text' }
     },
+    square: {
+      description: 'Optional - An argument that makes the button shape squared',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'false' }
+      },
+      control: { type: 'boolean' }
+    },
+    hideArrow: {
+      description: 'Optional - An argument that displays the dropdown arrow icon',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'false' }
+      },
+      control: { type: 'boolean' }
+    },
     label: {
       description: 'The label of the button label',
       table: {
@@ -49,20 +69,24 @@ export default {
 const defaultArgs = {
   icon: 'far fa-user',
   label: 'Actions',
-  mainAction: null
+  square: false,
+  hideArrow: false,
+  mainAction: action('mainAction')
 };
 
 const withMainActionArgs = {
   icon: 'far fa-user',
   label: 'Actions',
+  square: true,
+  hideArrow: false,
   mainAction: action('mainAction')
 };
 
 const Template = (args) => ({
   template: hbs`
-    <OSS::ButtonDropdown @icon={{this.icon}} @label={{this.label}} @mainAction={{this.mainAction}}>
+    <OSS::ButtonDropdown @icon={{this.icon}} @label={{this.label}} @mainAction={{this.mainAction}} @square={{this.square}} @hideArrow={{this.hideArrow}}>
       <:items>
-        <div class="oss-button-dropdown__item">
+        <div class="oss-button-dropdown__item font-color-gray-900">
           <OSS::Icon @style="solid" @icon="fa-share" /> Share
         </div>
       </:items>

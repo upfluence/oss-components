@@ -5,6 +5,8 @@ import { assert } from '@ember/debug';
 
 interface OSSButtonDropdownArgs {
   icon?: string;
+  square?: boolean;
+  hideArrow?: boolean;
   label?: string;
   mainAction?(): void;
 }
