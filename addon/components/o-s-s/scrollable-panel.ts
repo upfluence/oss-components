@@ -13,14 +13,21 @@ export default class OSSScrollablePanelComponent extends Component<OSSScrollable
   initScrollListener(element: HTMLElement): void {
     this.parentElement = element;
     this.displayBottomShadow();
-    element.addEventListener('scroll', () => {
-      if (element.scrollTop > 0) {
-        this.shadowTopVisible = true;
-      } else {
-        this.shadowTopVisible = false;
-      }
-      this.displayBottomShadow();
-    });
+    element.addEventListener('scroll', this.scrollListener.bind(this));
+  }
+
+  @action
+  willDestroy(): void {
+    this.parentElement.removeEventListener('scroll', this.scrollListener.bind(this));
+  }
+
+  private scrollListener(): void {
+    if (this.parentElement.scrollTop > 0) {
+      this.shadowTopVisible = true;
+    } else {
+      this.shadowTopVisible = false;
+    }
+    this.displayBottomShadow();
   }
 
   private displayBottomShadow(): void {
