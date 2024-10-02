@@ -38,6 +38,16 @@ export default {
       options: SizeTypes,
       control: { type: 'select' }
     },
+    noPadding: {
+      description: 'Remove the default padding on each section.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'false' }
+      },
+      control: { type: 'boolean' }
+    },
     onClose: {
       description: 'A callback triggered when the backdrop has been clicked.',
       table: {
@@ -61,12 +71,19 @@ const defaultArgs = {
   visible: true,
   backdrop: true,
   size: 'sm',
+  noPadding: false,
   onClose: action('onClose')
 };
 
 const BasicUsageTemplate = (args) => ({
   template: hbs`
-    <OSS::SidePanel @visible={{this.visible}} @backdrop={{this.backdrop}} @size={{this.size}} @onClose={{this.onClose}} >
+    <OSS::SidePanel 
+      @visible={{this.visible}} 
+      @backdrop={{this.backdrop}} 
+      @size={{this.size}} 
+      @onClose={{this.onClose}} 
+      @noPadding={{this.noPadding}}
+    >
       <:header>
         Header goes here
       </:header>
