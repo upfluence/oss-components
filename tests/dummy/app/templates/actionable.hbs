@@ -1,0 +1,25 @@
+<div class="fx-col fx-gap-px-12 padding-px-18">
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Toggle switch
+    </div>
+
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <div class="fx-1 fx-col fx-gap-px-12">
+        Active
+        <OSS::ToggleSwitch @value={{this.toggleValue}} @onChange={{fn (mut this.toggleValue)}} />
+      </div>
+      <div class="fx-1 fx-col fx-gap-px-12">
+        Disabled
+        <OSS::ToggleSwitch
+          @value={{this.toggleValue}}
+          @onChange={{fn (mut this.toggleValue)}}
+          @disabled={{this.disabled}}
+        />
+      </div>
+
+    </div>
+  </div>
+</div>

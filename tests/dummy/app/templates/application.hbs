@@ -12,6 +12,11 @@
         @link="scrollable"
       />
       <OSS::Layout::Sidebar::Item
+        @icon="far fa-arrow-pointer"
+        class={{if (eq this.router.currentRouteName "actionable") "active"}}
+        @link="actionable"
+      />
+      <OSS::Layout::Sidebar::Item
         @icon="far fa-lock"
         @locked={{true}}
         @defaultAction={{fn this.redirectTo "credit-card"}}
