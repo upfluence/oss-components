@@ -1,0 +1,60 @@
+<div class="oss-calendar">
+  <div class="calendar-header fx-row fx-gap-px-3">
+    {{#if (eq this.currentCalendarView "month")}}
+      <OSS::Button @icon="fa-left" {{on "click" this.previousMonth}} />
+      <h2 {{on "click" this.showMonthsView}}>{{this.currentMonthName}} {{this.currentYear}}</h2>
+      <OSS::Button @icon="fa-right" {{on "click" this.nextMonth}} />
+    {{else}}
+      <div>
+        {{log this.yearsRange}}
+        <OSS::Select @value={{this.currentYear}} @items={{this.yearsRange}} @onChange={{this.changeYear}}>
+          <:selected as |option|>
+            <span value="{{this.currentYear}}" style="color:blue">{{this.currentYear}}</span>
+          </:selected>
+          <:option as |year|>
+            {{log year}}
+            <span value="{{year}}" selected={{eq year this.currentYear}}>{{year}}</span>
+          </:option>
+        </OSS::Select>
+      </div>
+    {{/if}}
+  </div>
+
+  {{#if (eq this.currentCalendarView "month")}}
+    <div class="calendar-table">
+      <div class="calendar-weekdays">
+        {{#each this.weekDays as |day|}}
+          <div class="calendar-weekday">{{day}}</div>
+        {{/each}}
+      </div>
+
+      <div class="calendar-days">
+        {{#each this.calendarDays as |week|}}
+          <div class="calendar-week">
+            {{#each week as |dayObj|}}
+              {{log dayObj}}
+              <div
+                class="calendar-day
+                  {{if (not dayObj.isCurrentMonth) 'opacified'}}
+                  {{if dayObj.isToday 'highlight'}}
+                  {{if dayObj.isSelected 'selected'}}"
+                {{on "click" (fn this.selectDate dayObj)}}
+              >
+                {{dayObj.day}}
+              </div>
+            {{/each}}
+          </div>
+        {{/each}}
+      </div>
+    </div>
+
+  {{else if (eq this.currentCalendarView "months")}}
+    <div class="months-picker">
+      {{#each this.monthsOfYear as |month index|}}
+        <div class="month-item" {{on "click" (fn this.selectMonth index)}}>
+          {{month}}
+        </div>
+      {{/each}}
+    </div>
+  {{/if}}
+</div>
