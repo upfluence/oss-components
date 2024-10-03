@@ -9,6 +9,7 @@ interface OssSidePanelArgs {
   backdrop: boolean;
   size?: 'sm' | 'md';
   onClose(): void;
+  noPadding?: boolean;
 }
 
 export default class OssSidePanel extends Component<OssSidePanelArgs> {

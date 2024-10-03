@@ -1,0 +1,29 @@
+.oss-scrollable-panel-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: auto;
+
+  .oss-scrollable-panel-content {
+    height: inherit;
+    overflow: auto;
+  }
+
+  .oss-scrollable-panel--shadow {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    width: inherit;
+    height: 60px;
+    pointer-events: none;
+
+    &__top {
+      background: linear-gradient(to bottom, var(--color-gray-50), transparent 40px);
+    }
+
+    &__bottom {
+      bottom: 0;
+      background: linear-gradient(to top, var(--color-gray-50), transparent 40px);
+    }
+  }
+}

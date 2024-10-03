@@ -1,6 +1,6 @@
 <div class="oss-side-panel {{if @visible 'oss-side-panel--visible'}}" {{will-destroy this.onDestroy}} ...attributes>
   <div
-    class="oss-side-panel__backdrop {{unless @backdrop 'oss-side-panel__backdrop--transparent'}}"
+    class="oss-side-panel__backdrop {{unless @backdrop 'oss-side-panel__backdrop--transparent'}} "
     {{on "click" @onClose}}
     {{on-click-outside this.onClickOutside}}
     {{did-insert this.initialize}}
@@ -10,17 +10,17 @@
       {{yield to="global"}}
     {{else}}
       {{#if (has-block "header")}}
-        <header class="oss-side-panel__header">
+        <header class="oss-side-panel__header {{if @noPadding 'padding-none'}}">
           {{yield to="header"}}
         </header>
       {{/if}}
       {{#if (has-block "main")}}
-        <div class="oss-side-panel__main fx-col fx-1">
+        <div class="oss-side-panel__main fx-col fx-1 {{if @noPadding 'padding-none'}}">
           {{yield to="main"}}
         </div>
       {{/if}}
       {{#if (has-block "footer")}}
-        <footer class="oss-side-panel__footer fx-row fx-xalign-center">
+        <footer class="oss-side-panel__footer fx-row fx-xalign-center {{if @noPadding 'padding-none'}}">
           {{yield to="footer"}}
         </footer>
       {{/if}}

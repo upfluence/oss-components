@@ -70,6 +70,28 @@ module('Integration | Component | o-s-s/side-panel', function (hooks) {
 
       assert.dom('.oss-side-panel__footer').hasText('This is the footer');
     });
+
+    test('When noPadding is set to true, it set the default padding of each section to 0', async function (assert) {
+      await render(
+        hbs`
+          <OSS::SidePanel @title="Sidepanel" @visible={{true}} @backdrop={{true}} @size="sm" @onClose={{this.onClose}}
+                          @noPadding={{true}}>
+            <:header>
+              <p>This is the header</p>
+            </:header>
+            <:main>
+              <p>This is the content</p>
+            </:main>
+            <:footer>
+              <p>This is the footer</p>
+            </:footer>
+          </OSS::SidePanel>`
+      );
+
+      assert.dom('.oss-side-panel__header').hasClass('padding-none');
+      assert.dom('.oss-side-panel__main').hasClass('padding-none');
+      assert.dom('.oss-side-panel__footer').hasClass('padding-none');
+    });
   });
 
   module('The visibility of the side panel varies', function () {
