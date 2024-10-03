@@ -15269,6 +15269,31 @@ a.upf-btn--sm {
   border: 1px solid var(--color-border-default);
   padding: var(--spacing-px-36);
 }
+.oss-scrollable-panel-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: auto;
+}
+.oss-scrollable-panel-container .oss-scrollable-panel-content {
+  height: inherit;
+  overflow: auto;
+}
+.oss-scrollable-panel-container .oss-scrollable-panel--shadow {
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  width: inherit;
+  height: 60px;
+  pointer-events: none;
+}
+.oss-scrollable-panel-container .oss-scrollable-panel--shadow__top {
+  background: linear-gradient(to bottom, var(--color-gray-50), transparent 40px);
+}
+.oss-scrollable-panel-container .oss-scrollable-panel--shadow__bottom {
+  bottom: 0;
+  background: linear-gradient(to top, var(--color-gray-50), transparent 40px);
+}
 @media screen and (-webkit-device-pixel-ratio: 1) {
   .oss-sidebar-item--locked {
     padding-left: 1px;
@@ -15586,13 +15611,31 @@ a.oss-sidebar-item:focus {
 .oss-side-panel .oss-side-panel__content .oss-side-panel__header {
   padding: var(--spacing-px-18) var(--spacing-px-24);
   border-bottom: 1px solid var(--color-border-default);
+  height: 60px;
 }
 .oss-side-panel .oss-side-panel__content .oss-side-panel__main {
+  height: 100vh;
   padding: var(--spacing-px-24);
 }
+.oss-side-panel .oss-side-panel__content .oss-side-panel__main.padding-none {
+  padding: 0;
+}
 .oss-side-panel .oss-side-panel__content .oss-side-panel__footer {
+  height: 60px;
   padding: var(--spacing-px-18) var(--spacing-px-24);
   border-top: 1px solid var(--color-border-default);
+}
+.oss-side-panel .oss-side-panel__content .oss-side-panel__header.padding-none,
+.oss-side-panel .oss-side-panel__content .oss-side-panel__main.padding-none,
+.oss-side-panel .oss-side-panel__content .oss-side-panel__footer.padding-none {
+  padding: 0;
+}
+.oss-side-panel .oss-side-panel__content:has(.oss-side-panel__header) .oss-side-panel__main,
+.oss-side-panel .oss-side-panel__content:has(.oss-side-panel__footer) .oss-side-panel__main {
+  height: calc(100vh - 60px);
+}
+.oss-side-panel .oss-side-panel__content:has(.oss-side-panel__header):has(.oss-side-panel__footer) .oss-side-panel__main {
+  height: calc(100vh - 120px);
 }
 .oss-popover {
   border-radius: var(--border-radius-md);

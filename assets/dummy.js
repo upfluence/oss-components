@@ -849,6 +849,20 @@
   });
   0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/radio-button"eaimeta@70e063a35619d71f
 });
+;define("dummy/components/o-s-s/scrollable-panel", ["exports", "@upfluence/oss-components/components/o-s-s/scrollable-panel"], function (_exports, _scrollablePanel) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function get() {
+      return _scrollablePanel.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/scrollable-panel"eaimeta@70e063a35619d71f
+});
 ;define("dummy/components/o-s-s/select", ["exports", "@upfluence/oss-components/components/o-s-s/select"], function (_exports, _select) {
   "use strict";
 
@@ -1115,7 +1129,65 @@
   });
   0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/upf-stat"eaimeta@70e063a35619d71f
 });
-;define("dummy/controllers/application", ["exports", "@ember/application", "@ember/controller", "@ember/object", "@ember/service", "@glimmer/tracking", "@ember/template", "@upfluence/oss-components/utils/country-codes", "@upfluence/oss-components/services/base-uploader"], function (_exports, _application, _controller, _object, _service, _tracking, _template, _countryCodes, _baseUploader) {
+;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+define("dummy/controllers/application", ["exports", "@ember/controller", "@ember/object", "@ember/service"], function (_exports, _controller, _object, _service) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor, _descriptor2;
+  0; //eaimeta@70e063a35619d71f0,"@ember/controller",0,"@ember/object",0,"@ember/service"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+  function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+  function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  var ApplicationController = _exports.default = (_class = /*#__PURE__*/function (_Controller) {
+    _inherits(ApplicationController, _Controller);
+    function ApplicationController() {
+      var _this;
+      _classCallCheck(this, ApplicationController);
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+      _this = _callSuper(this, ApplicationController, [].concat(args));
+      _initializerDefineProperty(_assertThisInitialized(_this), "toast", _descriptor, _assertThisInitialized(_this));
+      _initializerDefineProperty(_assertThisInitialized(_this), "router", _descriptor2, _assertThisInitialized(_this));
+      return _this;
+    }
+    _createClass(ApplicationController, [{
+      key: "redirectTo",
+      value: function redirectTo(route) {
+        console.log('redirectTo', route);
+      }
+    }]);
+    return ApplicationController;
+  }(_controller.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "toast", [_service.inject], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "router", [_service.inject], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _applyDecoratedDescriptor(_class.prototype, "redirectTo", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "redirectTo"), _class.prototype)), _class);
+});
+;define("dummy/controllers/index", ["exports", "@ember/application", "@ember/controller", "@ember/object", "@ember/service", "@glimmer/tracking", "@ember/template", "@upfluence/oss-components/utils/country-codes", "@upfluence/oss-components/services/base-uploader"], function (_exports, _application, _controller, _object, _service, _tracking, _template, _countryCodes, _baseUploader) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -1941,6 +2013,85 @@
   }), _applyDecoratedDescriptor(_class.prototype, "onMainAction", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onMainAction"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSecondaryAction", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSecondaryAction"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onReturn", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onReturn"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onChangeSlider", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onChangeSlider"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onChangeSlider2", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onChangeSlider2"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onChangeSlider3", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onChangeSlider3"), _class.prototype)), _class);
   var testScript = "import { module, test } from 'qunit';\nimport { setupRenderingTest } from 'ember-qunit';\nimport { render } from '@ember/test-helpers';\nimport { hbs } from 'ember-cli-htmlbars';\n\nmodule('Integration | Component | o-s-s/code-block', function(hooks) {\n  setupRenderingTest(hooks);\n\n  test('it renders', async function(assert) {\n    // Set any properties with this.set('myProperty', 'value');\n    // Handle any actions with this.set('myAction', function(val) { ... });\n    assert.equal(this.element.textContent.trim(), '');\n    assert.equal(this.element.textContent.trim(), 'template block text');\n  });\n\n  test('it renders', async function(assert) {\n    // Set any properties with this.set('myProperty', 'value');\n    // Handle any actions with this.set('myAction', function(val) { ... });\n    assert.equal(this.element.textContent.trim(), '');\n    assert.equal(this.element.textContent.trim(), 'template block text');\n  });\n\n  test('it renders', async function(assert) {\n    // Set any properties with this.set('myProperty', 'value');\n    // Handle any actions with this.set('myAction', function(val) { ... });\n    assert.equal(this.element.textContent.trim(), '');\n    assert.equal(this.element.textContent.trim(), 'template block text');\n  });\n\n  test('it renders', async function(assert) {\n    // Set any properties with this.set('myProperty', 'value');\n    // Handle any actions with this.set('myAction', function(val) { ... });\n    assert.equal(this.element.textContent.trim(), '');\n    assert.equal(this.element.textContent.trim(), 'template block text');\n  });\n});";
 });
+;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+define("dummy/controllers/scrollable", ["exports", "@ember/controller", "@ember/object", "@glimmer/tracking"], function (_exports, _controller, _object, _tracking) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor, _descriptor2;
+  0; //eaimeta@70e063a35619d71f0,"@ember/controller",0,"@ember/object",0,"@glimmer/tracking"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+  function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+  function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  var ScrollableController = _exports.default = (_class = /*#__PURE__*/function (_Controller) {
+    _inherits(ScrollableController, _Controller);
+    function ScrollableController() {
+      var _this;
+      _classCallCheck(this, ScrollableController);
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+      _this = _callSuper(this, ScrollableController, [].concat(args));
+      _initializerDefineProperty(_assertThisInitialized(_this), "displayModal", _descriptor, _assertThisInitialized(_this));
+      _initializerDefineProperty(_assertThisInitialized(_this), "displaySidePanel", _descriptor2, _assertThisInitialized(_this));
+      _defineProperty(_assertThisInitialized(_this), "loop", Array(30));
+      return _this;
+    }
+    _createClass(ScrollableController, [{
+      key: "openModal",
+      value: function openModal() {
+        this.displayModal = true;
+      }
+    }, {
+      key: "closeModal",
+      value: function closeModal() {
+        this.displayModal = false;
+      }
+    }, {
+      key: "openSidePanel",
+      value: function openSidePanel(event) {
+        event === null || event === void 0 || event.stopPropagation();
+        this.displaySidePanel = true;
+      }
+    }, {
+      key: "closeSidePanel",
+      value: function closeSidePanel() {
+        this.displaySidePanel = false;
+      }
+    }]);
+    return ScrollableController;
+  }(_controller.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "displayModal", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "displaySidePanel", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "openModal", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "openModal"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeModal", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeModal"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "openSidePanel", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "openSidePanel"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeSidePanel", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeSidePanel"), _class.prototype)), _class);
+});
 ;define("dummy/helpers/and", ["exports", "ember-truth-helpers/helpers/and"], function (_exports, _and) {
   "use strict";
 
@@ -2684,7 +2835,9 @@
     }
     return _createClass(Router);
   }(_router.default);
-  Router.map(function () {});
+  Router.map(function () {
+    this.route('scrollable');
+  });
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("dummy/routes/application", ["exports", "@ember/routing/route", "@ember/service"], function (_exports, _route, _service) {
@@ -2737,6 +2890,38 @@ define("dummy/routes/application", ["exports", "@ember/routing/route", "@ember/s
     writable: true,
     initializer: null
   })), _class);
+});
+;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+define("dummy/routes/scrollable", ["exports", "@ember/routing/route"], function (_exports, _route) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"@ember/routing/route"eaimeta@70e063a35619d71f
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+  function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+  var Scrollable = _exports.default = /*#__PURE__*/function (_Route$extend) {
+    _inherits(Scrollable, _Route$extend);
+    function Scrollable() {
+      _classCallCheck(this, Scrollable);
+      return _callSuper(this, Scrollable, arguments);
+    }
+    return _createClass(Scrollable);
+  }(_route.default.extend({
+    // anything which *must* be merged to prototype here
+  }));
 });
 ;define("dummy/services/asset-map", ["exports", "ember-cli-ifa/services/asset-map"], function (_exports, _assetMap) {
   "use strict";
@@ -2803,22 +2988,26 @@ define("dummy/routes/application", ["exports", "@ember/routing/route", "@ember/s
     <div class="fx-row">
     <OSS::Layout::Sidebar @logo="/assets/images/upfluence-white-logo.svg" @homeAction={{fn this.redirectTo "/"}}>
       <:content>
-        <OSS::Layout::Sidebar::Item @icon="far fa-search" class="active" @defaultAction={{fn this.redirectTo "search"}} />
-        <OSS::Layout::Sidebar::Item @icon="far fa-list" @defaultAction={{fn this.redirectTo "list"}} />
-        <OSS::Layout::Sidebar::Item @icon="far fa-envelope" @defaultAction={{fn this.redirectTo "envelope"}} />
-        <OSS::Layout::Sidebar::Item @icon="far fa-bullhorn" @defaultAction={{fn this.redirectTo "bullhorn"}} />
         <OSS::Layout::Sidebar::Item
-          @icon="far fa-credit-card"
+          @icon="far fa-search"
+          class={{if (eq this.router.currentRouteName "index") "active"}}
+          @link="index"
+        />
+        <OSS::Layout::Sidebar::Item
+          @icon="far fa-computer-mouse-scrollwheel"
+          class={{if (eq this.router.currentRouteName "scrollable") "active"}}
+          @link="scrollable"
+        />
+        <OSS::Layout::Sidebar::Item
+          @icon="far fa-lock"
           @locked={{true}}
           @defaultAction={{fn this.redirectTo "credit-card"}}
           @lockedAction={{fn this.redirectTo "locked credit-card"}}
         />
-        <OSS::Layout::Sidebar::Item @icon="far fa-project-diagram" @defaultAction={{fn this.redirectTo "diagram"}} />
-        <OSS::Layout::Sidebar::Item @icon="far fa-chart-pie" @defaultAction={{fn this.redirectTo "pie"}} />
         <OSS::Layout::Sidebar::Item
-          @icon="far fa-bullseye-pointer"
-          @hasNotifications={{true}}
+          @icon="far fa-bullhorn"
           @defaultAction={{fn this.redirectTo "pointer"}}
+          @hasNotifications={{true}}
         />
       </:content>
       <:footer>
@@ -2831,1092 +3020,13 @@ define("dummy/routes/application", ["exports", "@ember/routing/route", "@ember/s
     </OSS::Layout::Sidebar>
   
     <div style="width:100%; height:100vh; overflow: auto; background-color: var(--color-gray-50)">
-      <div class="fx-row fx-gap-px-10 margin-md">
-        <OSS::Copy @value="I am the value copied" @inline={{true}} />
-        <OSS::Copy @value="I am the value copied" />
-        <OSS::Copy @value="I am the value copied" @tooltip="Custom tooltip" />
-        <OSS::Copy @value="I am the value copied" @icon="far fa-jedi" />
-        <OSS::Copy @value="I am the value copied" @icon="fab fa-empire" @inline={{true}} />
-      </div>
-      <div class="fx-row fx-gap-px-10 margin-md">
-        <OSS::Slider
-          @value={{this.sliderValue}}
-          @defaultValue="0"
-          @displayInputValue={{true}}
-          @onChange={{this.onChangeSlider}}
-        />
-        <OSS::Slider
-          @value={{this.sliderValue}}
-          @unit="percentage"
-          @displayInputValue={{true}}
-          @onChange={{this.onChangeSlider}}
-        />
-        <OSS::Slider
-          @value={{this.sliderValue}}
-          @unit="number"
-          @displayInputValue={{true}}
-          @onChange={{this.onChangeSlider}}
-        />
-      </div>
-      <div class="fx-row fx-gap-px-10 margin-md">
-        <OSS::Slider
-          @value={{this.sliderValue2}}
-          @disabled={{true}}
-          @displayInputValue={{true}}
-          @onChange={{this.onChangeSlider2}}
-        />
-        <OSS::Slider
-          @value={{this.sliderValue2}}
-          @disabled={{true}}
-          @unit="percentage"
-          @displayInputValue={{true}}
-          @onChange={{this.onChangeSlider2}}
-        />
-        <OSS::Slider
-          @value={{this.sliderValue2}}
-          @disabled={{true}}
-          @unit="number"
-          @displayInputValue={{true}}
-          @onChange={{this.onChangeSlider2}}
-        />
-      </div>
-      <div class="fx-row fx-gap-px-10 margin-md">
-        <OSS::Slider
-          @value={{this.sliderValue3}}
-          @inputOptions={{hash min=0 max=999}}
-          @min={{0}}
-          @max={{200}}
-          @step={{10}}
-          @unit="percentage"
-          @onChange={{this.onChangeSlider3}}
-          @displayInputValue={{true}}
-        />
-      </div>
-  
-      <div class="fx-row fx-gap-px-10 margin-md">
-        <OSS::Button @skin="primary" @label="Open Dialog" {{on "click" (fn (mut this.showDialog) true)}} />
-        <OSS::Button @skin="primary" @label="Open Modal" {{on "click" (fn (mut this.showModal) true)}} />
-        <OSS::Button @skin="primary" @label="Open Side Panel" {{on "click" this.openSidePanel}} />
-        <OSS::Layout::Navbar::NavItem @icon="fa-cog" @label="First Label" />
-        <OSS::Layout::Navbar::NavItem @icon="fa-code-branch" @label="Second Label" @active={{true}} />
-        <OSS::Layout::Navbar::NavItem @icon="fa-code-branch" @label="Third Label" @active={{true}} />
-      </div>
-  
-      <OSS::SidePanel @onClose={{this.closeSidePanel}} @backdrop={{true}} @visible={{this.showSidePanel}}>
-        <:header>
-          <OSS::SidePanel::Header
-            @onClose={{this.closeSidePanel}}
-            @onReturn={{this.onReturn}}
-            @title="This is the side panel's header."
-          />
-        </:header>
-        <:main>
-          <span>This is the side panel's content.</span>
-        </:main>
-        <:footer>
-          <span>This is the side panel's footer.</span>
-        </:footer>
-      </OSS::SidePanel>
-  
-      <div class="fx-row fx-gap-px-10 margin-md">
-        <OSS::PasswordInput @value={{this.password}} @validates={{this.onPasswordValidation}} />
-      </div>
-      <div class="fx-row fx-gap-px-10 margin-md padding-md" style="background-color:sandybrown">
-        <OSS::TogglableSection
-          @title="This is a title"
-          @subtitle="This is a subtitle"
-          @toggled={{this.togglable}}
-          @icon="far fa-hourglass"
-          @onChange={{this.onToggle}}
-        >
-          <:contents>
-            <span>This is a Contents named block</span>
-          </:contents>
-        </OSS::TogglableSection>
-        <OSS::TogglableSection
-          @title="This is a title"
-          @subtitle="This is a subtitle"
-          @toggled={{this.togglable}}
-          @icon="far fa-hourglass"
-          @onChange={{this.onToggle}}
-          @size="sm"
-        >
-          <:contents>
-            <span>This is a Contents named block</span>
-          </:contents>
-        </OSS::TogglableSection>
-      </div>
-      <div class="fx-row fx-gap-px-10 margin-md padding-md" style="background-color:sandybrown">
-        <OSS::TogglableSection
-          @title="This is a title"
-          @subtitle="This is a subtitle"
-          @toggled={{this.togglable}}
-          @badgeIcon="far fa-hourglass"
-          @onChange={{this.onToggle}}
-        />
-        <OSS::TogglableSection
-          @title="This is a title"
-          @subtitle="This is a subtitle"
-          @toggled={{this.togglable}}
-          @badgeIcon="far fa-hourglass"
-          @onChange={{this.onToggle}}
-          @size="sm"
-        />
-      </div>
-      <div class="fx-row fx-gap-px-10 margin-md padding-md" style="background-color:sandybrown">
-        <OSS::TogglableSection
-          @title="This is a title"
-          @subtitle="This is a subtitle"
-          @toggled={{this.togglable}}
-          @badgeIcon="far fa-hourglass"
-          @onChange={{this.onToggle}}
-          @disabled={{true}}
-        />
-        <OSS::TogglableSection
-          @title="This is a title"
-          @subtitle="This is a subtitle"
-          @toggled={{this.togglable}}
-          @badgeIcon="far fa-hourglass"
-          @onChange={{this.onToggle}}
-          @disabled={{true}}
-          @size="sm"
-        />
-      </div>
-      <div class="fx-row fx-gap-px-10 margin-md">
-        <OSS::Banner
-          @icon="fas fa-box-open"
-          @title="Shopify"
-          @selected={{true}}
-          @subtitle="Identify influencers in your Shopify customers database"
-        >
-          <:actions>
-            <OSS::RadioButton @selected={{true}} />
-          </:actions>
-        </OSS::Banner>
-        <OSS::Banner
-          @icon="fas fa-box-open"
-          @title="Import creators inside your campaign"
-          @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file. "
-        >
-          <:custom-icon>
-            <OSS::Badge @text="2x" @size="lg" />
-          </:custom-icon>
-          <:actions>
-            <OSS::Button @skin="primary" @label="browse" @icon="fas fa-box-open" @size="md" />
-            <OSS::Button @skin="secondary" @label="test" @icon="fas fa-box-open" @size="md" />
-          </:actions>
-        </OSS::Banner>
-      </div>
-      <div class="fx-row fx-gap-px-10 margin-md">
-        <OSS::Banner
-          @icon="fas fa-box-open"
-          @title="Import creators inside your campaign"
-          @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file."
-        />
-        <OSS::Banner
-          @title="Banner without icon"
-          @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file."
-        />
-        <OSS::Bruce
-          @image="https://thepressfree.com/wp-content/uploads/2021/11/Voici-pourquoi-Bruce-Banner-netait-plus-Smart-Hulk-dans-la-800x445.jpg"
-          @title="Import creators inside your campaign"
-          @plain={{true}}
-          @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file. "
-        >
-          <:actions>
-            <OSS::Button @skin="secondary" @label="action" @icon="fas fa-box-open" @size="md" />
-          </:actions>
-        </OSS::Bruce>
-      </div>
-      <div class="fx-row fx-gap-px-10 margin-md">
-        <OSS::Banner @icon="fas fa-biohazard" @title="BioHazard" @selected={{true}} @size="sm">
-          <:actions>
-            <OSS::Checkbox @checked={{true}} @onChange={{this.onCheck}} @size="sm" />
-          </:actions>
-        </OSS::Banner>
-        <OSS::Banner @icon="fas fa-helicopter" @title="Helicopter" @size="sm" @disabled={{true}}>
-          <:actions>
-            <OSS::Icon @icon="fa-ban" />
-          </:actions>
-          <:secondary-actions>
-            <OSS::Link @label="Configure" />
-          </:secondary-actions>
-        </OSS::Banner>
-        <OSS::Banner @icon="fas fa-user-injured" @title="Injured" @selected={{false}} @size="sm">
-          <:actions>
-            <OSS::Checkbox @checked={{false}} @onChange={{this.onCheck}} @size="sm" />
-          </:actions>
-        </OSS::Banner>
-      </div>
-      <div class="fx-row fx-gap-px-10 margin-md">
-        <OSS::CurrencyInput
-          @currency={{this.currency}}
-          @value={{this.currencyValue}}
-          @onChange={{this.onCurrencyInputChange}}
-          @disabled={{true}}
-        />
-        <OSS::CurrencyInput
-          @currency={{this.currency}}
-          @value={{this.currencyValue}}
-          @onChange={{this.onCurrencyInputChange}}
-          @errorMessage="This is an error message"
-        />
-        <OSS::CurrencyInput
-          @currency={{this.currency}}
-          @value={{this.currencyValue}}
-          @allowCurrencyUpdate={{false}}
-          @onChange={{this.onCurrencyInputChange}}
-        />
-        <OSS::CurrencyInput
-          @currency={{this.currency}}
-          @value={{this.currencyValue}}
-          @onChange={{this.onCurrencyInputChange}}
-          @allowedCurrencies={{this.allowedCurrencies}}
-        />
-        <OSS::CurrencyInput
-          @currency={{this.currency}}
-          @value={{this.currencyValue}}
-          @onChange={{this.onCurrencyInputChange}}
-          @onlyCurrency={{true}}
-        />
-        <OSS::CurrencyInput
-          @currency={{this.currencyOnly}}
-          @onChange={{this.onCurrencyOnlyChange}}
-          @onlyCurrency={{true}}
-          @allowedCurrencies={{this.allowedCurrencies}}
-        />
-      </div>
-      <div class="fx-row fx-gap-px-10 margin-md">
-        <div class="fx-col fx-1 fx-gap-px-5">
-          <span>Country</span>
-          <OSS::CountrySelector
-            @value={{this.selectedCountry.id}}
-            @sourceList={{this.countries}}
-            @onChange={{this.onCountrySelected}}
-          />
-        </div>
-        {{this.selectedCountry.provinces.length}}
-        {{#if (gt this.selectedCountry.provinces.length 0)}}
-          <div class="fx-col fx-1 fx-gap-px-5">
-            <span>Province</span>
-            <OSS::CountrySelector @sourceList={{this.selectedCountry.provinces}} @onChange={{this.onProvinceSelected}} />
-          </div>
-        {{/if}}
-      </div>
-      <div class="fx-col fx-1 fx-gap-px-10 margin-md width-px-200">
-        <OSS::ProgressBar @skin="success" @value={{42}} @displayValue={{true}} @label="Hello" @size="xs" />
-        <OSS::ProgressBar @skin="warning" @value={{21}} @displayValue={{true}} @label="Hello" />
-        <OSS::ProgressBar
-          @skin="danger"
-          @value={{78}}
-          @displayValue={{true}}
-          @label="Hello"
-          @coloredBackground={{true}}
-        />
-        <OSS::ProgressBar
-          @skin="success"
-          @value={{78}}
-          @displayValue={{true}}
-          @label="Hello"
-          @coloredBackground={{true}}
-        />
-        <OSS::ProgressBar @value={{78}} @displayValue={{true}} @label="Hello" @coloredBackground={{false}} />
-      </div>
-      <div class="fx-row fx-1 fx-gap-px-10 margin-md">
-        <OSS::StarRating @rating={{3}} @totalStars={{5}} @onChange={{this.onRatingClick}} />
-        <OSS::StarRating
-          @rating={{this.rating}}
-          @totalStars={{15}}
-          @activeColor="red"
-          @passiveColor="blue"
-          @onChange={{this.onRatingClick}}
-        />
-      </div>
-      <div class="fx-row fx-1 fx-gap-px-10 margin-md">
-        <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}}>
-          <:prefix>
-            <OSS::Icon @icon="fa-search" class="font-color-gray-500" />
-          </:prefix>
-          <:suffix>
-            {{#if (gt this.shopUrl.length 0)}}
-              <OSS::Icon
-                @icon="fa-times"
-                class="font-color-gray-500"
-                role="button"
-                {{on "click" (fn (mut this.shopUrl) "")}}
-              />
-            {{/if}}
-          </:suffix>
-        </OSS::InputContainer>
-        <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}} />
-        <OSS::PasswordInput @value="azeaze" />
-      </div>
-      <div class="fx-row fx-1 fx-gap-px-10 margin-md width-pc-50">
-        <OSS::AttributesPanel
-          @title="Title"
-          @icon="fa-laptop-code"
-          @onSave={{this.onAttributePanelSave}}
-          @onCancel={{this.onAttributePanelCancel}}
-          @onEdit={{this.onAttributePanelEdit}}
-        >
-          <:contextual-action>
-            <OSS::Button @icon="fa-plus" @square={{true}} />
-          </:contextual-action>
-          <:view-mode>
-            <div class="fx-col fx-gap-px-9">
-              <OSS::Attribute::RemovableText @label="city" @onRemove={{this.onRemove}} @removeTooltip="Click to delete" />
-              <OSS::Attribute::RemovableText @label="city" @value="Paris" @onRemove={{this.onRemove}} />
-              <OSS::Attribute::TagArray
-                @label="Pies"
-                @tags={{array "Apple pie" "Pecan pie" "Pumpkin pie" "Raspberry PI"}}
-              />
-              <OSS::Attribute::TagArray
-                @label="Fruits"
-                @tags={{array
-                  "apple"
-                  "banana"
-                  "pitaya"
-                  "jackfruit"
-                  "mango"
-                  "orange"
-                  "blueberry"
-                  "papaya"
-                  "pineapple"
-                  "watermelon"
-                  "vodkamelon"
-                }}
-              />
-              <OSS::Attribute::TagArray @label="Fruits" />
-              <OSS::Attribute::RevealableEmail @lockTooltip="This will fail" @onRevealEmail={{this.onRevealEmailError}} />
-              {{#if this.revealed}}
-                <OSS::Attribute::Text @label="Email address" @value="john.doe@gmail.com" />
-              {{else}}
-                <OSS::Attribute::RevealableEmail
-                  @tooltip="Click on lock to reveal"
-                  @onRevealEmail={{this.onRevealEmailSuccess}}
-                />
-              {{/if}}
-              <OSS::Attribute::Country @countryCode="US" />
-              <OSS::Attribute::Country @countryCode="" />
-              <OSS::Attribute::Text @label="Label with tooltip copyable" @value="Hello World" @tooltip="Hello World" />
-              <OSS::Attribute::Text @label="Label not copyable" @value="Hello World" @copyable={{false}} />
-              <OSS::Attribute::PhoneNumber @countryCode="FR" @prefix="+33" @number="642424242" />
-              <OSS::Attribute::PhoneNumber @countryCode="nope" @number="+33642424242" />
-              <OSS::Attribute::PhoneNumber @prefix="+33" />
-              <OSS::Attribute::RevealableEmail @lockTooltip="This will fail" @onRevealEmail={{this.onRevealEmailError}} />
-  
-              <OSS::Attribute::Country @countryCode="US" />
-              <OSS::Attribute::Country @countryCode="" />
-              <OSS::Attribute::Rating @label="Rating" @rating={{this.starRatingValue}} />
-              <OSS::Attribute::Rating @label="Rating not provided" />
-            </div>
-          </:view-mode>
-          <:edition-mode>
-            Edition mode
-          </:edition-mode>
-        </OSS::AttributesPanel>
-      </div>
-      <div class="fx-row fx-1 fx-gap-px-10 margin-md">
-        <OSS::EmailInput @value={{this.emailInputValue}} @onChange={{this.onEmailInputChange}} />
-      </div>
-      <div class="fx-row fx-1 fx-gap-px-10 margin-md">
-        <OSS::Copy @value="I am the value copied" @inline={{true}} />
-        <OSS::Copy @value="I am the value copied" />
-      </div>
-      <div class="fx-row fx-1 fx-gap-px-10 margin-md padding-md" style="background: white">
-        <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
-      </div>
-      <div class="fx-row fx-1 fx-gap-px-10 margin-md">
-        <OSS::Skeleton @width="70%" />
-        <OSS::Skeleton @width={{20}} />
-      </div>
-      <div class="fx-row fx-1 fx-gap-px-10 margin-md">
-        <OSS::Skeleton @direction="column" @width="60%" @gap="12" @multiple="3" @randomize={{true}} />
-      </div>
-      <div class="fx-row fx-1 fx-gap-px-10 margin-md">
-        <OSS::Skeleton @width="10%" @multiple="3" @direction="row" @randomize="true" />
-      </div>
-      <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
-        <OSS::Icon @icon="LaptopCode" />
-        <OSS::Icon @icon="LaptopCode" @style="solid" />
-        <OSS::Icon @icon="LaptopCode" @style="regular" />
-        <OSS::Icon @icon="LaptopCode" @style="light" />
-        <OSS::Icon @icon="LaptopCode" @style="duotone" />
-        <OSS::Icon @icon="FacebookSquare" @style="brand" />
-      </div>
-      <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
-        <OSS::TextArea
-          @value={{this.numberValue}}
-          @onChange={{this.handleNumberInput}}
-          @errorMessage="This is an error message"
-          @rows={{8}}
-          @resize="vertical"
-        />
-        <OSS::TextArea @value={{this.numberValue}} @onChange={{this.handleNumberInput}} @rows={{1}} />
-      </div>
-  
-      <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
-        <OSS::Button @label="Open split modal" {{on "click" this.openSplitModal}} />
-        <OSS::ButtonDropdown
-          @icon="far fa-credit-card"
-          @label="Dropdown button"
-          @mainAction={{fn this.redirectTo "test"}}
-        >
-          <:items>
-            <div class="oss-button-dropdown__item">
-              <OSS::Icon @style="solid" @icon="fa-share" />
-              Share
-            </div>
-          </:items>
-        </OSS::ButtonDropdown>
-        <OSS::ButtonDropdown @icon="far fa-hourglass" @label="Dropdown button">
-          <:items>
-            <div class="oss-button-dropdown__item">
-              <OSS::Icon @style="solid" @icon="fa-share" />
-              Share
-            </div>
-          </:items>
-        </OSS::ButtonDropdown>
-        <OSS::Button @label="loading" @loading={{true}} />
-        {{#if this.showSplitModal}}
-          <OSS::SplitModal @close={{this.closeSplitModal}}>
-            <:content>
-              Content goes here
-            </:content>
-            <:footer>
-              <OSS::Button @label="Close" {{on "click" this.closeSplitModal}} />
-            </:footer>
-          </OSS::SplitModal>
-        {{/if}}
-      </div>
-      <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
-        OSS:Checkbox:
-        <OSS::Checkbox @checked={{this.isChecked}} @onChange={{this.onCheck}} />
-        <OSS::Checkbox @checked={{this.isChecked}} @disabled={{true}} @onChange={{this.onCheck}} />
-        <OSS::Checkbox @checked={{this.isChecked}} @disabled={{true}} @partial={{true}} @onChange={{this.onCheck}} />
-        <OSS::Checkbox @checked={{this.isChecked}} @partial={{true}} @onChange={{this.onCheck}} />
-        <OSS::Checkbox @checked={{this.isChecked}} @size="sm" @onChange={{this.onCheck}} />
-        <OSS::Checkbox @checked={{this.isChecked}} @size="sm" @partial={{true}} @onChange={{this.onCheck}} />
-      </div>
-      <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
-        <OSS::ToggleButtons
-          @toggles={{this.toggles}}
-          @selectedToggle={{this.selectedToggle}}
-          @onSelection={{this.triggerSelection}}
-        />
-      </div>
-      <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
-        <OSS::NumberInput @value={{this.numberValue}} @onChange={{this.handleNumberInput}} />
-        <OSS::NumberInput @min={{0}} @max={{15}} @step={{5}} @onChange={{this.handleNumberInput}} />
-        <OSS::NumberInput
-          @min={{0}}
-          @max={{15}}
-          @step={{5}}
-          @minReachedTooltip="Hello"
-          @maxReachedTooltip="you"
-          @onChange={{this.handleNumberInput}}
-        />
-      </div>
-      <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
-        <OSS::UrlInput
-          @value={{this.shopifyDomain}}
-          @prefix="https://"
-          @placeholder="shopname"
-          @suffix=".myshopify.com"
-          @errorMessage="Not a valid shopify domain"
-          @validationRegex={{this.subdomainRegex}}
-          @onChange={{this.onUrlInputChange}}
-        />
-        <OSS::UrlInput
-          @prefix="https://"
-          @placeholder="No regex specified"
-          @onChange={{this.onUrlInputChange}}
-          @value={{this.shopifyDomain}}
-        />
-        <OSS::UrlInput
-          @value={{this.shopUrl}}
-          @prefix="https://"
-          @placeholder="shop url"
-          @errorMessage="Please enter a valid URL"
-          @validationRegex={{this.urlRegex}}
-          @onChange={{this.onUrlInputChange}}
-        />
-      </div>
-      <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
-        <OSS::InputGroup
-          @value={{this.inputValue}}
-          @prefix="This"
-          @placeholder="makes no"
-          @suffix="sense"
-          @errorMessage="This is an error message"
-        />
-        <OSS::InputGroup @value={{this.inputValue}} @prefix="@" @placeholder="Username" />
-        <OSS::InputGroup @value={{this.inputValue}} @suffix="@example.com" @placeholder="john.doe" />
-      </div>
-      <div class="fx-row fx-gap-px-10 margin-md">
-        <OSS::RadioButton @selected={{this.radio1}} @onChange={{fn this.onRadioBtnChange "radio1"}} />
-        <OSS::RadioButton @selected={{this.radio2}} @onChange={{fn this.onRadioBtnChange "radio2"}} />
-        <OSS::RadioButton @selected={{true}} @disabled={{true}} />
-        <OSS::RadioButton @selected={{false}} @disabled={{true}} />
-        <OSS::Copy @value="I am the value copied" />
-      </div>
-      <div class="fx-row fx-gap-px-10 margin-md fx-xalign-center">
-        <OSS::Avatar
-          @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
-          @initials="Ts"
-        />
-        <OSS::Avatar @initials="MI" />
-        <OSS::Avatar />
-  
-        <OSS::Avatar @size="xs" />
-        <OSS::Avatar @size="sm" />
-        <OSS::Avatar @size="md" />
-        <OSS::Avatar @size="lg" />
-      </div>
-  
-      <div class="fx-row fx-gap-px-10 margin-md">
-        <OSS::PowerSelect
-          @items={{null}}
-          @selectedItems={{this.superHeroes}}
-          @onChange={{this.onPowerSelectChange}}
-          @onSearch={{this.onPowerSelectSearch}}
-        >
-          <:selected-item as |selectedProduct|>
-            <OSS::Chip @label={{selectedProduct}} @onRemove={{this.onPowerSelectChange}} @maxDisplayWidth={{100}} />
-          </:selected-item>
-          <:option-item as |item|>
-            {{item}}
-          </:option-item>
-        </OSS::PowerSelect>
-  
-        <OSS::PowerSelect
-          @items={{null}}
-          @selectedItems={{this.superHeroes}}
-          @onChange={{this.onPowerSelectChange}}
-          @onSearch={{this.onPowerSelectSearch}}
-        >
-          <:selected-item as |selectedProduct|>
-            <OSS::Chip @label={{selectedProduct}} @onRemove={{this.onPowerSelectChange}} @maxDisplayWidth={{100}} />
-          </:selected-item>
-          <:option-item as |item|>
-            {{item}}
-          </:option-item>
-          <:empty-state>
-            Custom empty state
-          </:empty-state>
-        </OSS::PowerSelect>
-  
-        <OSS::PowerSelect
-          @items={{this.superHeroes}}
-          @selectedItems={{null}}
-          @onChange={{this.onPowerSelectChange}}
-          @onSearch={{this.onPowerSelectSearch}}
-        >
-          <:selected-item as |selectedProduct|>
-            <OSS::Chip @label={{selectedProduct}} @onRemove={{this.onPowerSelectChange}} @maxDisplayWidth={{100}} />
-          </:selected-item>
-          <:option-item as |item|>
-            {{item}}
-          </:option-item>
-        </OSS::PowerSelect>
-      </div>
-      <div class="fx-row fx-gap-px-10 margin-md">
-        <OSS::NavTab @onSelection={{this.onSelectionNavTab}} @tabArray={{this.tabArrayNavTab}} />
-      </div>
-  
-      <div class="fx-row fx-gap-px-10 margin-md">
-        <OSS::Chip @label="Chip" @onRemove={{this.onCrossChipClick}} />
-        <OSS::Chip @skin="default" @label="Chip" @onRemove={{this.onCrossChipClick}} />
-        <OSS::Chip @skin="primary" @label="Chip" @onRemove={{this.onCrossChipClick}} />
-        <OSS::Chip @skin="success" @label="Chip" @onRemove={{this.onCrossChipClick}} />
-        <OSS::Chip @skin="danger" @label="Chip" @onRemove={{this.onCrossChipClick}} />
-        <OSS::Chip @skin="danger" @label="Chip" @disabled={{true}} @onRemove={{this.onCrossChipClick}} />
-        <OSS::Chip
-          @skin="success"
-          @label="Chip with a huge label"
-          @disabled={{false}}
-          @maxDisplayWidth={{100}}
-          @onRemove={{this.onCrossChipClick}}
-        />
-        <OSS::Chip
-          @skin="danger"
-          @label="Chip with a huge label"
-          @disabled={{false}}
-          @maxDisplayWidth={{160}}
-          @onRemove={{this.onCrossChipClick}}
-        />
-        <OSS::ChipNFish
-          @skin="danger"
-          @label="Chip with a huge label"
-          @disabled={{true}}
-          @onRemove={{this.onCrossChipClick}}
-          @maxDisplayWidth={{50}}
-        />
-      </div>
-  
-      <div class="fx-row fx-1 margin-md fx-gap-px-12">
-        <div class="fx-col fx-1 fx-gap-px-12">
-          <OSS::Select @value={{null}} @items={{this.items}} @onChange={{this.onSelect}}>
-            <:option as |item|>
-              {{item.name}}
-            </:option>
-          </OSS::Select>
-  
-          <OSS::Select @value={{this.selectedItem}} @items={{this.items}} @onChange={{this.onSelect}}>
-            <:option as |item|>
-              {{item.name}}
-            </:option>
-          </OSS::Select>
-  
-          <OSS::Select
-            @value={{this.selectedItem}}
-            @items={{this.items}}
-            @onChange={{this.onSelect}}
-            @errorMessage="This is an error"
-          >
-            <:option as |item|>
-              {{item.name}}
-            </:option>
-          </OSS::Select>
-  
-          <OSS::Select
-            @value={{this.selectedItem}}
-            @items={{this.items}}
-            @onChange={{this.onSelect}}
-            @successMessage="It works"
-          >
-            <:option as |item|>
-              {{item.name}}
-            </:option>
-          </OSS::Select>
-        </div>
-  
-        <div class="fx-col fx-1 fx-gap-px-12">
-          <OSS::Select @value={{this.selectedItem}} @items={{this.items}} @onChange={{this.onSelect}} @disabled={{true}}>
-            <:option as |item|>
-              {{item.name}}
-            </:option>
-          </OSS::Select>
-        </div>
-      </div>
-      <div class="fx-row fx-1 margin-md">
-        <OSS::ArrayInput
-          @values={{this.superHeroes}}
-          @onChange={{this.updateSuperHeroes}}
-          class="fx-1"
-          data-control-name="mailing-edit-template-ccs-input"
-        />
-      </div>
-      <div class="fx-row fx-gap-px-12 margin-md">
-        <OSS::Tag @label="Tag" @skin="primary" @icon="far fa-thumbs-up" />
-        <OSS::Tag @label="Tag" @skin="success" @icon="far fa-thumbs-up" />
-        <OSS::Tag @label="Tag" @skin="warning" @icon="far fa-thumbs-up" />
-        <OSS::Tag @label="Tag" @skin="danger" @icon="far fa-thumbs-up" />
-        <OSS::Tag @label="Tag" @skin="secondary" @icon="far fa-thumbs-up" />
-        <OSS::Tag @label="Tag" @icon="far fa-thumbs-up" />
-        <OSS::Tag @label="Tag" @skin="secondary" />
-        <OSS::Tag @icon="far fa-thumbs-up" />
-        <OSS::Tag @label="Tag" @skin="xtd-orange" />
-        <OSS::Tag @label="Tag" @skin="xtd-cyan" />
-        <OSS::Tag @label="Tag" @skin="xtd-yellow" />
-        <OSS::Tag @label="Tag" @skin="xtd-blue" />
-        <OSS::Tag @label="Tag" @skin="xtd-violet" />
-        <OSS::Tag @label="Tag" @skin="xtd-lime" />
-        <OSS::Tag @label="Test with a huge label sentence" @skin="danger" @icon="far fa-thumbs-up" />
-        <OSS::Tag
-          @label="Test with a huge label sentence"
-          {{enable-tooltip title="Test with a huge label sentence" placement="top"}}
-          @skin="danger"
-          @icon="far fa-thumbs-up"
-          @hasEllipsis={{true}}
-        />
-      </div>
-  
-      <div class="fx-row fx-gap-px-12 margin-md">
-        <OSS::Tag @label="Tag" @skin="primary" @icon="far fa-thumbs-up" @plain={{true}} />
-        <OSS::Tag @label="Tag" @skin="success" @icon="far fa-thumbs-up" @plain={{true}} />
-        <OSS::Tag @label="Tag" @skin="warning" @icon="far fa-thumbs-up" @plain={{true}} />
-        <OSS::Tag @label="Tag" @skin="danger" @icon="far fa-thumbs-up" @plain={{true}} />
-        <OSS::Tag @label="Tag" @skin="secondary" @icon="far fa-thumbs-up" @plain={{true}} />
-        <OSS::Tag @label="Tag" @icon="far fa-thumbs-up" @plain={{true}} />
-        <OSS::Tag @label="Tag" @skin="secondary" @plain={{true}} />
-        <OSS::Tag @icon="far fa-thumbs-up" @plain={{true}} />
-        <OSS::Tag @label="Tag" @skin="xtd-orange" @plain={{true}} />
-        <OSS::Tag @label="Tag" @skin="xtd-cyan" @plain={{true}} />
-        <OSS::Tag @label="Tag" @skin="xtd-yellow" @plain={{true}} />
-        <OSS::Tag @label="Tag" @skin="xtd-blue" @plain={{true}} />
-        <OSS::Tag @label="Tag" @skin="xtd-violet" @plain={{true}} />
-        <OSS::Tag @label="Tag" @skin="xtd-lime" @plain={{true}} />
-        <OSS::Tag @label="Test with a huge label sentence" @skin="danger" @icon="far fa-thumbs-up" @plain={{true}} />
-        <OSS::Tag
-          @label="Test with a huge label sentence"
-          {{enable-tooltip title="Test with a huge label sentence" placement="top"}}
-          @skin="danger"
-          @icon="far fa-thumbs-up"
-          @hasEllipsis={{true}}
-          @plain={{true}}
-        />
-        <OSS::Tag
-          @label="normal text - <b>bold text</b>"
-          @skin="danger"
-          @icon="far fa-thumbs-up"
-          @plain={{true}}
-          @htmlSafe={{true}}
-        />
-      </div>
-  
-      <div class="fx-row fx-gap-px-12 margin-md">
-        <OSS::Alert @title="Title" @subtitle="Subtitle">
-          <:extra-content>
-            <div class="fx-row fx-gap-px-12">
-              <OSS::Link @label="Super Label" @icon="fas fa-hourglass" />
-              <OSS::Link @label="Super Label 2" />
-            </div>
-          </:extra-content>
-        </OSS::Alert>
-      </div>
-      <div class="fx-row fx-gap-px-12 margin-md">
-        <OSS::Alert @title="TitleTest" @subtitle="SubtitleTest" @plain={{false}} @closable={{true}} />
-        <OSS::Alert @title="Title" @subtitle="Subtitle" />
-        <OSS::Alert @skin="error" @title="Title" @subtitle="Subtitle" />
-      </div>
-      <div class="fx-row fx-gap-px-12 margin-md">
-        <OSS::Alert @skin="success" @title="Title" />
-        <OSS::Alert @skin="warning" @subtitle="Subtitle" />
-      </div>
-      <div class="fx-row fx-gap-px-12 margin-md">
-        <OSS::Button @label="Info" @size="md" {{on "click" (fn this.triggerToast "info")}} />
-        <OSS::Button @label="Success" @size="md" {{on "click" (fn this.triggerToast "success")}} />
-        <OSS::Button @label="Warning" @size="md" {{on "click" (fn this.triggerToast "warning")}} />
-        <OSS::Button @label="Error" @size="md" {{on "click" (fn this.triggerToast "error")}} />
-      </div>
-      <div class="fx-col fx-gap-px-12 margin-md">
-        <OSS::CodeBlock
-          @content={{this.code4CodeBlock}}
-          @scrollable={{true}}
-          @copyable={{true}}
-          @collapseHeight={{200}}
-          @onCopyMessage="Copied to clipboard!"
-        />
-      </div>
-      <div class="fx-col fx-gap-px-12 margin-md">
-        <OSS::Button @skin="primary" @size="md" @label="Open MODAL" @icon="fa fa-unicorn" {{on "click" this.openModal}} />
-        {{#if this.showModal}}
-          <OSS::ModalDialog
-            @title="Example modal"
-            @subtitle="subtitle"
-            @close={{this.closeModal}}
-            @disableClickOutside={{false}}
-            @size="md"
-          >
-            <:content>
-              <div style="height: 200px; background-color: white">
-                azeazeazeaze
-              </div>
-            </:content>
-            <:footer>
-              <div class="fx-1">
-                <OSS::Icon @icon="fa-info" /><a href="">More info</a>
-              </div>
-              <div class="fx-row fx-gap-px-12">
-                <OSS::Button @skin="default" @label="Close" {{on "click" this.closeModal}} />
-                <OSS::Button @skin="secondary" @label="Save" />
-              </div>
-            </:footer>
-          </OSS::ModalDialog>
-        {{/if}}
-      </div>
-      <div class="fx-col fx-gap-px-12 margin-md">
-        <div class="fx-row fx-gap-px-12">
-          <div class="fx-col fx-gap-px-12">
-            <OSS::Button @skin="destructive" @label="destructive" @icon="fas fa-box-open" @size="md" />
-            <OSS::Button @skin="destructive" @square="true" @icon="fas fa-box-open" @size="md" />
-          </div>
-          <div class="fx-col fx-gap-px-12">
-            <OSS::Button @skin="alert" @label="alert" @icon="fas fa-box-open" @size="md" />
-            <OSS::Button @skin="alert" @square="true" @icon="fas fa-box-open" @size="md" />
-          </div>
-          <div class="fx-col fx-gap-px-12">
-            <OSS::Button @skin="secondary" @label="secondary" @icon="fas fa-box-open" @size="md" />
-            <OSS::Button @skin="secondary" @square="true" @icon="fas fa-box-open" @size="md" />
-          </div>
-          <div class="fx-col fx-gap-px-12">
-            <OSS::Button @skin="default" @label="default" @icon="fas fa-box-open" @size="md" />
-            <OSS::Button @skin="default" @square="true" @icon="fas fa-box-open" @size="md" />
-          </div>
-          <div class="fx-col fx-gap-px-12">
-            <OSS::Button @skin="success" @label="success" @icon="fas fa-box-open" @size="md" />
-            <OSS::Button @skin="success" @square="true" @icon="fas fa-box-open" @size="md" />
-          </div>
-        </div>
-        <div class="fx-row fx-gap-px-12">
-          <div class="fx-col fx-gap-px-12">
-            <OSS::Button @skin="xtd-orange" @label="Extended orange" @icon="fas fa-plus" @size="md" />
-            <OSS::Button @skin="xtd-orange" @square="true" @icon="fas fa-plus" @size="md" />
-          </div>
-          <div class="fx-col fx-gap-px-12">
-            <OSS::Button @skin="xtd-yellow" @label="Extended yellow" @icon="fas fa-plus" @size="md" />
-            <OSS::Button @skin="xtd-yellow" @square="true" @icon="fas fa-plus" @size="md" />
-          </div>
-          <div class="fx-col fx-gap-px-12">
-            <OSS::Button @skin="xtd-lime" @label="Extended lime" @icon="fas fa-plus" @size="md" />
-            <OSS::Button @skin="xtd-lime" @square="true" @icon="fas fa-plus" @size="md" />
-          </div>
-          <div class="fx-col fx-gap-px-12">
-            <OSS::Button @skin="xtd-cyan" @label="Extended Cyan" @icon="fas fa-plus" @size="md" />
-            <OSS::Button @skin="xtd-cyan" @square="true" @icon="fas fa-plus" @size="md" />
-          </div>
-          <div class="fx-col fx-gap-px-12">
-            <OSS::Button @skin="xtd-blue" @label="Extended blue" @icon="fas fa-plus" @size="md" />
-            <OSS::Button @skin="xtd-blue" @square="true" @icon="fas fa-plus" @size="md" />
-          </div>
-          <div class="fx-col fx-gap-px-12">
-            <OSS::Button @skin="xtd-violet" @label="Extended violet" @icon="fas fa-plus" @size="md" />
-            <OSS::Button @skin="xtd-violet" @square="true" @icon="fas fa-plus" @size="md" />
-          </div>
-        </div>
-        <div class="fx-row fx-gap-px-12">
-          <OSS::Button @skin="primary" @size="xs" @label="XS" @icon="far fa-envelope-open" />
-          <OSS::Button @skin="primary" @size="sm" @label="SM" @icon="far fa-envelope-open" />
-          <OSS::Button @skin="primary" @size="md" @label="MD" @icon="far fa-envelope-open" />
-          <OSS::Button @skin="primary" @size="lg" @label="LG" @icon="far fa-envelope-open" />
-        </div>
-        <div class="fx-row fx-gap-px-12">
-          <OSS::Button @square="true" @skin="primary" @size="sm" @icon="far fa-envelope-open" />
-          <OSS::Button @square="true" @skin="primary" @size="md" @icon="far fa-envelope-open" />
-          <OSS::Button @square="true" @skin="primary" @size="lg" @icon="far fa-envelope-open" />
-        </div>
-  
-        <div class="fx-row fx-gap-px-12 fx-xalign-center">
-          <OSS::Badge @icon="fas fa-box-open" @size="lg" />
-          <OSS::Badge @icon="fas fa-box-open" />
-          <OSS::Badge @size="md" @icon="fas fa-box-open" />
-          <OSS::Badge @size="sm" @icon="fas fa-box-open" />
-        </div>
-  
-        <div class="fx-row fx-gap-px-12 fx-xalign-center">
-          <OSS::Badge @icon="fas fa-box-open" @skin="primary" />
-          <OSS::Badge @icon="fas fa-box-open" @skin="primary" @plain={{true}} />
-          <OSS::Badge @icon="fas fa-box-open" @skin="success" />
-          <OSS::Badge @icon="fas fa-box-open" @skin="success" @plain={{true}} />
-          <OSS::Badge @icon="fas fa-box-open" @skin="alert" />
-          <OSS::Badge @icon="fas fa-box-open" @skin="alert" @plain={{true}} />
-          <OSS::Badge @icon="fas fa-box-open" @skin="error" />
-          <OSS::Badge @icon="fas fa-box-open" @skin="error" @plain={{true}} />
-          <OSS::Badge @icon="fas fa-box-open" @skin="xtd-orange" />
-          <OSS::Badge @icon="fas fa-box-open" @skin="xtd-orange" @plain={{true}} />
-          <OSS::Badge @icon="fas fa-box-open" @skin="xtd-yellow" />
-          <OSS::Badge @icon="fas fa-box-open" @skin="xtd-yellow" @plain={{true}} />
-          <OSS::Badge @icon="fas fa-box-open" @skin="xtd-lime" />
-          <OSS::Badge @icon="fas fa-box-open" @skin="xtd-lime" @plain={{true}} />
-          <OSS::Badge @icon="fas fa-box-open" @skin="xtd-cyan" />
-          <OSS::Badge @icon="fas fa-box-open" @skin="xtd-cyan" @plain={{true}} />
-          <OSS::Badge @icon="fas fa-box-open" @skin="xtd-blue" />
-          <OSS::Badge @icon="fas fa-box-open" @skin="xtd-blue" @plain={{true}} />
-          <OSS::Badge @icon="fas fa-box-open" @skin="xtd-violet" />
-          <OSS::Badge @icon="fas fa-box-open" @skin="xtd-violet" @plain={{true}} />
-        </div>
-  
-        <div class="fx-row fx-gap-px-12 fx-xalign-center">
-          <OSS::Badge @text="2x" @size="lg" />
-          <OSS::Badge @text="2x" />
-          <OSS::Badge @text="2x" @size="sm" />
-        </div>
-  
-        <div class="fx-row fx-gap-px-12 fx-xalign-center">
-          <OSS::Badge
-            @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
-            @size="lg"
-          />
-          <OSS::Badge
-            @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
-          />
-          <OSS::Badge
-            @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
-            @size="sm"
-          />
-        </div>
-  
-        <div class="fx-row fx-gap-px-12 fx-xalign-center">
-          {{#each this.media as |socialMedia|}}
-            <OSS::SocialPostBadge
-              @postType={{socialMedia.key}}
-              @selected={{socialMedia.active}}
-              @plain={{socialMedia.active}}
-              @onToggle={{this.toggleMedia}}
-            />
-          {{/each}}
-        </div>
-  
-        <div class="fx-row fx-gap-px-12">
-          <div class="fx-col fx-gap-px-12">
-            <OSS::Button
-              @skin="destructive"
-              @label="Count down"
-              @icon="far fa-hourglass"
-              @size="md"
-              @countDown={{hash callback=this.countDownAction}}
-            />
-          </div>
-        </div>
-        <div class="fx-row fx-1">
-          <OSS::PhoneNumberInput
-            @prefix={{this.phonePrefix}}
-            @number={{this.phoneNumber}}
-            @onChange={{this.onPhoneNumberChange}}
-          />
-        </div>
-      </div>
-  
-      <div class="upf-table-v2 margin-md">
-        <div class="upf-table__header">
-          {{#each this.tableDemo.header as |header|}}
-            <div class="upf-table__cell {{header.class}}">
-              {{header.title}}
-            </div>
-          {{/each}}
-        </div>
-  
-        <div class="upf-table__content">
-          {{#each this.tableDemo.header as |header index|}}
-            <div class="upf-table__row">
-              {{#each this.tableDemo.header as |header index|}}
-                <div class="upf-table__cell {{header.class}}">
-                  {{#if header.title}}
-                    <OSS::Tag @skin="primary" @label="Hello" />
-                  {{else}}
-                    <OSS::Icon @icon="fa-chevron-right" />
-                  {{/if}}
-                </div>
-              {{/each}}
-            </div>
-          {{/each}}
-        </div>
-      </div>
-  
-      <div class="upf-table-v2 upf-table-v2--clickable margin-md">
-        <div class="upf-table__header">
-          {{#each this.tableDemo.header as |header|}}
-            <div class="upf-table__cell {{header.class}}">
-              {{header.title}}
-            </div>
-          {{/each}}
-        </div>
-  
-        <div class="upf-table__content">
-          {{#each this.tableDemo.header as |header index|}}
-            <div class="upf-table__row" role="button">
-              {{#each this.tableDemo.header as |header index|}}
-                <div class="upf-table__cell {{header.class}}">
-                  {{#if header.title}}
-                    Content
-                    {{index}}
-                  {{else}}
-                    <OSS::Icon @icon="fa-chevron-right" />
-                  {{/if}}
-                </div>
-              {{/each}}
-            </div>
-          {{/each}}
-        </div>
-      </div>
-  
-      <div class="fx-col fx-gap-px-12 padding-px-24">
-        <div class="fx-row fx-gap-px-12">
-          <OSS::UploadArea
-            @uploader={{this.mockUploader}}
-            @rules={{array (hash type="filesize" value="8MB")}}
-            @size="lg"
-            @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)"
-            @onUploadSuccess={{this.onUploadSuccess}}
-          />
-  
-          <OSS::UploadArea
-            @uploader={{this.mockUploader}}
-            @rules={{array (hash type="filesize" value="8MB")}}
-            @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)"
-            @onUploadSuccess={{this.onUploadSuccess}}
-            @displayPreview={{true}}
-          />
-        </div>
-  
-        <div class="fx-col fx-gap-px-12">
-          <OSS::UploadArea
-            @uploader={{this.mockUploader}}
-            @rules={{array (hash type="filesize" value="8MB")}}
-            @size="lg"
-            @disabled={{true}}
-            @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)"
-            @onUploadSuccess={{this.onUploadSuccess}}
-          />
-  
-          <OSS::UploadArea
-            @uploader={{this.mockUploader}}
-            @rules={{array (hash type="filesize" value="8MB")}}
-            @disabled={{true}}
-            @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)"
-            @onUploadSuccess={{this.onUploadSuccess}}
-          />
-        </div>
-      </div>
-      <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
-        <OSS::ContentPanel class="fx-col fx-1">
-          <span class="text-style-semibold">Title</span>
-          <span class="font-color-gray-500">Subtitle</span>
-          <hr class="width-pc-100" />
-          <span>Content</span>
-        </OSS::ContentPanel>
-        <OSS::ContentPanel class="fx-row fx-1 fx-gap-px-10">
-          <OSS::UrlInput
-            @value={{this.shopifyDomain}}
-            @prefix="https://"
-            @placeholder="shopname"
-            @suffix=".myshopify.com"
-            @errorMessage="Not a valid shopify domain"
-            @validationRegex={{this.subdomainRegex}}
-            @onChange={{this.onUrlInputChange}}
-          />
-          <OSS::UrlInput
-            @prefix="https://"
-            @placeholder="No regex specified"
-            @onChange={{this.onUrlInputChange}}
-            @value={{this.shopifyDomain}}
-          />
-        </OSS::ContentPanel>
-      </div>
-      <div class="fx-col fx-gap-px-12 padding-px-24">
-        <OSS::Panel @icon="/assets/images/upfluence-white-logo.svg">
-          <:header>
-            <OSS::Avatar
-              @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
-            />
-          </:header>
-          <:content>
-            <OSS::Panel::Row @label="First Label" @icon="fa-search" />
-            <OSS::Panel::Row @label="Second Label" @icon="fa-cog" />
-            <OSS::Panel::Row @label="Third Label" @icon="fa-search" />
-          </:content>
-          <:footer>
-            <OSS::Panel::Row @label="Logout" @icon="fa-sign-out" />
-          </:footer>
-        </OSS::Panel>
-      </div>
+      {{outlet}}
     </div>
   </div>
-  
-  {{#if this.showDialog}}
-    <OSS::Dialog
-      @title={{this.translatedHTMLTitle}}
-      @mainAction={{hash action=this.onMainAction label="Discard changes"}}
-      @secondaryAction={{hash action=this.onSecondaryAction label="Keep editing"}}
-      @icon="fa-circle-info"
-      @skin="error"
-    />
-  {{/if}}
   */
   {
-    "id": "beflcWm7",
-    "block": "[[[10,0],[14,0,\"fx-row\"],[12],[1,\"\\n  \"],[8,[39,0],null,[[\"@logo\",\"@homeAction\"],[\"/assets/images/upfluence-white-logo.svg\",[28,[37,1],[[30,0,[\"redirectTo\"]],\"/\"],null]]],[[\"content\",\"footer\"],[[[[1,\"\\n      \"],[8,[39,2],[[24,0,\"active\"]],[[\"@icon\",\"@defaultAction\"],[\"far fa-search\",[28,[37,1],[[30,0,[\"redirectTo\"]],\"search\"],null]]],null],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@defaultAction\"],[\"far fa-list\",[28,[37,1],[[30,0,[\"redirectTo\"]],\"list\"],null]]],null],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@defaultAction\"],[\"far fa-envelope\",[28,[37,1],[[30,0,[\"redirectTo\"]],\"envelope\"],null]]],null],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@defaultAction\"],[\"far fa-bullhorn\",[28,[37,1],[[30,0,[\"redirectTo\"]],\"bullhorn\"],null]]],null],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@locked\",\"@defaultAction\",\"@lockedAction\"],[\"far fa-credit-card\",true,[28,[37,1],[[30,0,[\"redirectTo\"]],\"credit-card\"],null],[28,[37,1],[[30,0,[\"redirectTo\"]],\"locked credit-card\"],null]]],null],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@defaultAction\"],[\"far fa-project-diagram\",[28,[37,1],[[30,0,[\"redirectTo\"]],\"diagram\"],null]]],null],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@defaultAction\"],[\"far fa-chart-pie\",[28,[37,1],[[30,0,[\"redirectTo\"]],\"pie\"],null]]],null],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@hasNotifications\",\"@defaultAction\"],[\"far fa-bullseye-pointer\",true,[28,[37,1],[[30,0,[\"redirectTo\"]],\"pointer\"],null]]],null],[1,\"\\n    \"]],[]],[[[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\"],[\"fal fa-info-circle\"]],null],[1,\"\\n      \"],[8,[39,3],null,[[\"@image\",\"@initials\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"Ts\"]],null],[1,\"\\n    \"]],[]]]]],[1,\"\\n\\n  \"],[10,0],[14,5,\"width:100%; height:100vh; overflow: auto; background-color: var(--color-gray-50)\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@value\",\"@inline\"],[\"I am the value copied\",true]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@value\"],[\"I am the value copied\"]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@value\",\"@tooltip\"],[\"I am the value copied\",\"Custom tooltip\"]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@value\",\"@icon\"],[\"I am the value copied\",\"far fa-jedi\"]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@value\",\"@icon\",\"@inline\"],[\"I am the value copied\",\"fab fa-empire\",true]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,5],null,[[\"@value\",\"@defaultValue\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue\"]],\"0\",true,[30,0,[\"onChangeSlider\"]]]],null],[1,\"\\n      \"],[8,[39,5],null,[[\"@value\",\"@unit\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue\"]],\"percentage\",true,[30,0,[\"onChangeSlider\"]]]],null],[1,\"\\n      \"],[8,[39,5],null,[[\"@value\",\"@unit\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue\"]],\"number\",true,[30,0,[\"onChangeSlider\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,5],null,[[\"@value\",\"@disabled\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue2\"]],true,true,[30,0,[\"onChangeSlider2\"]]]],null],[1,\"\\n      \"],[8,[39,5],null,[[\"@value\",\"@disabled\",\"@unit\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue2\"]],true,\"percentage\",true,[30,0,[\"onChangeSlider2\"]]]],null],[1,\"\\n      \"],[8,[39,5],null,[[\"@value\",\"@disabled\",\"@unit\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue2\"]],true,\"number\",true,[30,0,[\"onChangeSlider2\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,5],null,[[\"@value\",\"@inputOptions\",\"@min\",\"@max\",\"@step\",\"@unit\",\"@onChange\",\"@displayInputValue\"],[[30,0,[\"sliderValue3\"]],[28,[37,6],null,[[\"min\",\"max\"],[0,999]]],0,200,10,\"percentage\",[30,0,[\"onChangeSlider3\"]],true]],null],[1,\"\\n    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,7],[[4,[38,8],[\"click\",[28,[37,1],[[28,[37,9],[[30,0,[\"showDialog\"]]],null],true],null]],null]],[[\"@skin\",\"@label\"],[\"primary\",\"Open Dialog\"]],null],[1,\"\\n      \"],[8,[39,7],[[4,[38,8],[\"click\",[28,[37,1],[[28,[37,9],[[30,0,[\"showModal\"]]],null],true],null]],null]],[[\"@skin\",\"@label\"],[\"primary\",\"Open Modal\"]],null],[1,\"\\n      \"],[8,[39,7],[[4,[38,8],[\"click\",[30,0,[\"openSidePanel\"]]],null]],[[\"@skin\",\"@label\"],[\"primary\",\"Open Side Panel\"]],null],[1,\"\\n      \"],[8,[39,10],null,[[\"@icon\",\"@label\"],[\"fa-cog\",\"First Label\"]],null],[1,\"\\n      \"],[8,[39,10],null,[[\"@icon\",\"@label\",\"@active\"],[\"fa-code-branch\",\"Second Label\",true]],null],[1,\"\\n      \"],[8,[39,10],null,[[\"@icon\",\"@label\",\"@active\"],[\"fa-code-branch\",\"Third Label\",true]],null],[1,\"\\n    \"],[13],[1,\"\\n\\n    \"],[8,[39,11],null,[[\"@onClose\",\"@backdrop\",\"@visible\"],[[30,0,[\"closeSidePanel\"]],true,[30,0,[\"showSidePanel\"]]]],[[\"header\",\"main\",\"footer\"],[[[[1,\"\\n        \"],[8,[39,12],null,[[\"@onClose\",\"@onReturn\",\"@title\"],[[30,0,[\"closeSidePanel\"]],[30,0,[\"onReturn\"]],\"This is the side panel's header.\"]],null],[1,\"\\n      \"]],[]],[[[1,\"\\n        \"],[10,1],[12],[1,\"This is the side panel's content.\"],[13],[1,\"\\n      \"]],[]],[[[1,\"\\n        \"],[10,1],[12],[1,\"This is the side panel's footer.\"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,13],null,[[\"@value\",\"@validates\"],[[30,0,[\"password\"]],[30,0,[\"onPasswordValidation\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md padding-md\"],[14,5,\"background-color:sandybrown\"],[12],[1,\"\\n      \"],[8,[39,14],null,[[\"@title\",\"@subtitle\",\"@toggled\",\"@icon\",\"@onChange\"],[\"This is a title\",\"This is a subtitle\",[30,0,[\"togglable\"]],\"far fa-hourglass\",[30,0,[\"onToggle\"]]]],[[\"contents\"],[[[[1,\"\\n          \"],[10,1],[12],[1,\"This is a Contents named block\"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[8,[39,14],null,[[\"@title\",\"@subtitle\",\"@toggled\",\"@icon\",\"@onChange\",\"@size\"],[\"This is a title\",\"This is a subtitle\",[30,0,[\"togglable\"]],\"far fa-hourglass\",[30,0,[\"onToggle\"]],\"sm\"]],[[\"contents\"],[[[[1,\"\\n          \"],[10,1],[12],[1,\"This is a Contents named block\"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md padding-md\"],[14,5,\"background-color:sandybrown\"],[12],[1,\"\\n      \"],[8,[39,14],null,[[\"@title\",\"@subtitle\",\"@toggled\",\"@badgeIcon\",\"@onChange\"],[\"This is a title\",\"This is a subtitle\",[30,0,[\"togglable\"]],\"far fa-hourglass\",[30,0,[\"onToggle\"]]]],null],[1,\"\\n      \"],[8,[39,14],null,[[\"@title\",\"@subtitle\",\"@toggled\",\"@badgeIcon\",\"@onChange\",\"@size\"],[\"This is a title\",\"This is a subtitle\",[30,0,[\"togglable\"]],\"far fa-hourglass\",[30,0,[\"onToggle\"]],\"sm\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md padding-md\"],[14,5,\"background-color:sandybrown\"],[12],[1,\"\\n      \"],[8,[39,14],null,[[\"@title\",\"@subtitle\",\"@toggled\",\"@badgeIcon\",\"@onChange\",\"@disabled\"],[\"This is a title\",\"This is a subtitle\",[30,0,[\"togglable\"]],\"far fa-hourglass\",[30,0,[\"onToggle\"]],true]],null],[1,\"\\n      \"],[8,[39,14],null,[[\"@title\",\"@subtitle\",\"@toggled\",\"@badgeIcon\",\"@onChange\",\"@disabled\",\"@size\"],[\"This is a title\",\"This is a subtitle\",[30,0,[\"togglable\"]],\"far fa-hourglass\",[30,0,[\"onToggle\"]],true,\"sm\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,15],null,[[\"@icon\",\"@title\",\"@selected\",\"@subtitle\"],[\"fas fa-box-open\",\"Shopify\",true,\"Identify influencers in your Shopify customers database\"]],[[\"actions\"],[[[[1,\"\\n          \"],[8,[39,16],null,[[\"@selected\"],[true]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[8,[39,15],null,[[\"@icon\",\"@title\",\"@subtitle\"],[\"fas fa-box-open\",\"Import creators inside your campaign\",\"Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file. \"]],[[\"custom-icon\",\"actions\"],[[[[1,\"\\n          \"],[8,[39,17],null,[[\"@text\",\"@size\"],[\"2x\",\"lg\"]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"primary\",\"browse\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"secondary\",\"test\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,15],null,[[\"@icon\",\"@title\",\"@subtitle\"],[\"fas fa-box-open\",\"Import creators inside your campaign\",\"Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file.\"]],null],[1,\"\\n      \"],[8,[39,15],null,[[\"@title\",\"@subtitle\"],[\"Banner without icon\",\"Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file.\"]],null],[1,\"\\n      \"],[8,[39,18],null,[[\"@image\",\"@title\",\"@plain\",\"@subtitle\"],[\"https://thepressfree.com/wp-content/uploads/2021/11/Voici-pourquoi-Bruce-Banner-netait-plus-Smart-Hulk-dans-la-800x445.jpg\",\"Import creators inside your campaign\",true,\"Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file. \"]],[[\"actions\"],[[[[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"secondary\",\"action\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,15],null,[[\"@icon\",\"@title\",\"@selected\",\"@size\"],[\"fas fa-biohazard\",\"BioHazard\",true,\"sm\"]],[[\"actions\"],[[[[1,\"\\n          \"],[8,[39,19],null,[[\"@checked\",\"@onChange\",\"@size\"],[true,[30,0,[\"onCheck\"]],\"sm\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[8,[39,15],null,[[\"@icon\",\"@title\",\"@size\",\"@disabled\"],[\"fas fa-helicopter\",\"Helicopter\",\"sm\",true]],[[\"actions\",\"secondary-actions\"],[[[[1,\"\\n          \"],[8,[39,20],null,[[\"@icon\"],[\"fa-ban\"]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[8,[39,21],null,[[\"@label\"],[\"Configure\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[8,[39,15],null,[[\"@icon\",\"@title\",\"@selected\",\"@size\"],[\"fas fa-user-injured\",\"Injured\",false,\"sm\"]],[[\"actions\"],[[[[1,\"\\n          \"],[8,[39,19],null,[[\"@checked\",\"@onChange\",\"@size\"],[false,[30,0,[\"onCheck\"]],\"sm\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,22],null,[[\"@currency\",\"@value\",\"@onChange\",\"@disabled\"],[[30,0,[\"currency\"]],[30,0,[\"currencyValue\"]],[30,0,[\"onCurrencyInputChange\"]],true]],null],[1,\"\\n      \"],[8,[39,22],null,[[\"@currency\",\"@value\",\"@onChange\",\"@errorMessage\"],[[30,0,[\"currency\"]],[30,0,[\"currencyValue\"]],[30,0,[\"onCurrencyInputChange\"]],\"This is an error message\"]],null],[1,\"\\n      \"],[8,[39,22],null,[[\"@currency\",\"@value\",\"@allowCurrencyUpdate\",\"@onChange\"],[[30,0,[\"currency\"]],[30,0,[\"currencyValue\"]],false,[30,0,[\"onCurrencyInputChange\"]]]],null],[1,\"\\n      \"],[8,[39,22],null,[[\"@currency\",\"@value\",\"@onChange\",\"@allowedCurrencies\"],[[30,0,[\"currency\"]],[30,0,[\"currencyValue\"]],[30,0,[\"onCurrencyInputChange\"]],[30,0,[\"allowedCurrencies\"]]]],null],[1,\"\\n      \"],[8,[39,22],null,[[\"@currency\",\"@value\",\"@onChange\",\"@onlyCurrency\"],[[30,0,[\"currency\"]],[30,0,[\"currencyValue\"]],[30,0,[\"onCurrencyInputChange\"]],true]],null],[1,\"\\n      \"],[8,[39,22],null,[[\"@currency\",\"@onChange\",\"@onlyCurrency\",\"@allowedCurrencies\"],[[30,0,[\"currencyOnly\"]],[30,0,[\"onCurrencyOnlyChange\"]],true,[30,0,[\"allowedCurrencies\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-5\"],[12],[1,\"\\n        \"],[10,1],[12],[1,\"Country\"],[13],[1,\"\\n        \"],[8,[39,23],null,[[\"@value\",\"@sourceList\",\"@onChange\"],[[30,0,[\"selectedCountry\",\"id\"]],[30,0,[\"countries\"]],[30,0,[\"onCountrySelected\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[1,[30,0,[\"selectedCountry\",\"provinces\",\"length\"]]],[1,\"\\n\"],[41,[28,[37,25],[[30,0,[\"selectedCountry\",\"provinces\",\"length\"]],0],null],[[[1,\"        \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-5\"],[12],[1,\"\\n          \"],[10,1],[12],[1,\"Province\"],[13],[1,\"\\n          \"],[8,[39,23],null,[[\"@sourceList\",\"@onChange\"],[[30,0,[\"selectedCountry\",\"provinces\"]],[30,0,[\"onProvinceSelected\"]]]],null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-10 margin-md width-px-200\"],[12],[1,\"\\n      \"],[8,[39,26],null,[[\"@skin\",\"@value\",\"@displayValue\",\"@label\",\"@size\"],[\"success\",42,true,\"Hello\",\"xs\"]],null],[1,\"\\n      \"],[8,[39,26],null,[[\"@skin\",\"@value\",\"@displayValue\",\"@label\"],[\"warning\",21,true,\"Hello\"]],null],[1,\"\\n      \"],[8,[39,26],null,[[\"@skin\",\"@value\",\"@displayValue\",\"@label\",\"@coloredBackground\"],[\"danger\",78,true,\"Hello\",true]],null],[1,\"\\n      \"],[8,[39,26],null,[[\"@skin\",\"@value\",\"@displayValue\",\"@label\",\"@coloredBackground\"],[\"success\",78,true,\"Hello\",true]],null],[1,\"\\n      \"],[8,[39,26],null,[[\"@value\",\"@displayValue\",\"@label\",\"@coloredBackground\"],[78,true,\"Hello\",false]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,27],null,[[\"@rating\",\"@totalStars\",\"@onChange\"],[3,5,[30,0,[\"onRatingClick\"]]]],null],[1,\"\\n      \"],[8,[39,27],null,[[\"@rating\",\"@totalStars\",\"@activeColor\",\"@passiveColor\",\"@onChange\"],[[30,0,[\"rating\"]],15,\"red\",\"blue\",[30,0,[\"onRatingClick\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,28],null,[[\"@placeholder\",\"@value\"],[\"search\",[30,0,[\"shopUrl\"]]]],[[\"prefix\",\"suffix\"],[[[[1,\"\\n          \"],[8,[39,20],[[24,0,\"font-color-gray-500\"]],[[\"@icon\"],[\"fa-search\"]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n\"],[41,[28,[37,25],[[30,0,[\"shopUrl\",\"length\"]],0],null],[[[1,\"            \"],[8,[39,20],[[24,0,\"font-color-gray-500\"],[24,\"role\",\"button\"],[4,[38,8],[\"click\",[28,[37,1],[[28,[37,9],[[30,0,[\"shopUrl\"]]],null],\"\"],null]],null]],[[\"@icon\"],[\"fa-times\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"]],[]]]]],[1,\"\\n      \"],[8,[39,28],null,[[\"@placeholder\",\"@value\"],[\"search\",[30,0,[\"shopUrl\"]]]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@value\"],[\"azeaze\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10 margin-md width-pc-50\"],[12],[1,\"\\n      \"],[8,[39,29],null,[[\"@title\",\"@icon\",\"@onSave\",\"@onCancel\",\"@onEdit\"],[\"Title\",\"fa-laptop-code\",[30,0,[\"onAttributePanelSave\"]],[30,0,[\"onAttributePanelCancel\"]],[30,0,[\"onAttributePanelEdit\"]]]],[[\"contextual-action\",\"view-mode\",\"edition-mode\"],[[[[1,\"\\n          \"],[8,[39,7],null,[[\"@icon\",\"@square\"],[\"fa-plus\",true]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[10,0],[14,0,\"fx-col fx-gap-px-9\"],[12],[1,\"\\n            \"],[8,[39,30],null,[[\"@label\",\"@onRemove\",\"@removeTooltip\"],[\"city\",[30,0,[\"onRemove\"]],\"Click to delete\"]],null],[1,\"\\n            \"],[8,[39,30],null,[[\"@label\",\"@value\",\"@onRemove\"],[\"city\",\"Paris\",[30,0,[\"onRemove\"]]]],null],[1,\"\\n            \"],[8,[39,31],null,[[\"@label\",\"@tags\"],[\"Pies\",[28,[37,32],[\"Apple pie\",\"Pecan pie\",\"Pumpkin pie\",\"Raspberry PI\"],null]]],null],[1,\"\\n            \"],[8,[39,31],null,[[\"@label\",\"@tags\"],[\"Fruits\",[28,[37,32],[\"apple\",\"banana\",\"pitaya\",\"jackfruit\",\"mango\",\"orange\",\"blueberry\",\"papaya\",\"pineapple\",\"watermelon\",\"vodkamelon\"],null]]],null],[1,\"\\n            \"],[8,[39,31],null,[[\"@label\"],[\"Fruits\"]],null],[1,\"\\n            \"],[8,[39,33],null,[[\"@lockTooltip\",\"@onRevealEmail\"],[\"This will fail\",[30,0,[\"onRevealEmailError\"]]]],null],[1,\"\\n\"],[41,[30,0,[\"revealed\"]],[[[1,\"              \"],[8,[39,34],null,[[\"@label\",\"@value\"],[\"Email address\",\"john.doe@gmail.com\"]],null],[1,\"\\n\"]],[]],[[[1,\"              \"],[8,[39,33],null,[[\"@tooltip\",\"@onRevealEmail\"],[\"Click on lock to reveal\",[30,0,[\"onRevealEmailSuccess\"]]]],null],[1,\"\\n\"]],[]]],[1,\"            \"],[8,[39,35],null,[[\"@countryCode\"],[\"US\"]],null],[1,\"\\n            \"],[8,[39,35],null,[[\"@countryCode\"],[\"\"]],null],[1,\"\\n            \"],[8,[39,34],null,[[\"@label\",\"@value\",\"@tooltip\"],[\"Label with tooltip copyable\",\"Hello World\",\"Hello World\"]],null],[1,\"\\n            \"],[8,[39,34],null,[[\"@label\",\"@value\",\"@copyable\"],[\"Label not copyable\",\"Hello World\",false]],null],[1,\"\\n            \"],[8,[39,36],null,[[\"@countryCode\",\"@prefix\",\"@number\"],[\"FR\",\"+33\",\"642424242\"]],null],[1,\"\\n            \"],[8,[39,36],null,[[\"@countryCode\",\"@number\"],[\"nope\",\"+33642424242\"]],null],[1,\"\\n            \"],[8,[39,36],null,[[\"@prefix\"],[\"+33\"]],null],[1,\"\\n            \"],[8,[39,33],null,[[\"@lockTooltip\",\"@onRevealEmail\"],[\"This will fail\",[30,0,[\"onRevealEmailError\"]]]],null],[1,\"\\n\\n            \"],[8,[39,35],null,[[\"@countryCode\"],[\"US\"]],null],[1,\"\\n            \"],[8,[39,35],null,[[\"@countryCode\"],[\"\"]],null],[1,\"\\n            \"],[8,[39,37],null,[[\"@label\",\"@rating\"],[\"Rating\",[30,0,[\"starRatingValue\"]]]],null],[1,\"\\n            \"],[8,[39,37],null,[[\"@label\"],[\"Rating not provided\"]],null],[1,\"\\n          \"],[13],[1,\"\\n        \"]],[]],[[[1,\"\\n          Edition mode\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,38],null,[[\"@value\",\"@onChange\"],[[30,0,[\"emailInputValue\"]],[30,0,[\"onEmailInputChange\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@value\",\"@inline\"],[\"I am the value copied\",true]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@value\"],[\"I am the value copied\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10 margin-md padding-md\"],[14,5,\"background: white\"],[12],[1,\"\\n      \"],[8,[39,39],null,[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,40],null,[[\"@width\"],[\"70%\"]],null],[1,\"\\n      \"],[8,[39,40],null,[[\"@width\"],[20]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,40],null,[[\"@direction\",\"@width\",\"@gap\",\"@multiple\",\"@randomize\"],[\"column\",\"60%\",\"12\",\"3\",true]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,40],null,[[\"@width\",\"@multiple\",\"@direction\",\"@randomize\"],[\"10%\",\"3\",\"row\",\"true\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,20],null,[[\"@icon\"],[\"LaptopCode\"]],null],[1,\"\\n      \"],[8,[39,20],null,[[\"@icon\",\"@style\"],[\"LaptopCode\",\"solid\"]],null],[1,\"\\n      \"],[8,[39,20],null,[[\"@icon\",\"@style\"],[\"LaptopCode\",\"regular\"]],null],[1,\"\\n      \"],[8,[39,20],null,[[\"@icon\",\"@style\"],[\"LaptopCode\",\"light\"]],null],[1,\"\\n      \"],[8,[39,20],null,[[\"@icon\",\"@style\"],[\"LaptopCode\",\"duotone\"]],null],[1,\"\\n      \"],[8,[39,20],null,[[\"@icon\",\"@style\"],[\"FacebookSquare\",\"brand\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,41],null,[[\"@value\",\"@onChange\",\"@errorMessage\",\"@rows\",\"@resize\"],[[30,0,[\"numberValue\"]],[30,0,[\"handleNumberInput\"]],\"This is an error message\",8,\"vertical\"]],null],[1,\"\\n      \"],[8,[39,41],null,[[\"@value\",\"@onChange\",\"@rows\"],[[30,0,[\"numberValue\"]],[30,0,[\"handleNumberInput\"]],1]],null],[1,\"\\n    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,7],[[4,[38,8],[\"click\",[30,0,[\"openSplitModal\"]]],null]],[[\"@label\"],[\"Open split modal\"]],null],[1,\"\\n      \"],[8,[39,42],null,[[\"@icon\",\"@label\",\"@mainAction\"],[\"far fa-credit-card\",\"Dropdown button\",[28,[37,1],[[30,0,[\"redirectTo\"]],\"test\"],null]]],[[\"items\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"\\n            \"],[8,[39,20],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-share\"]],null],[1,\"\\n            Share\\n          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[8,[39,42],null,[[\"@icon\",\"@label\"],[\"far fa-hourglass\",\"Dropdown button\"]],[[\"items\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"\\n            \"],[8,[39,20],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-share\"]],null],[1,\"\\n            Share\\n          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[8,[39,7],null,[[\"@label\",\"@loading\"],[\"loading\",true]],null],[1,\"\\n\"],[41,[30,0,[\"showSplitModal\"]],[[[1,\"        \"],[8,[39,43],null,[[\"@close\"],[[30,0,[\"closeSplitModal\"]]]],[[\"content\",\"footer\"],[[[[1,\"\\n            Content goes here\\n          \"]],[]],[[[1,\"\\n            \"],[8,[39,7],[[4,[38,8],[\"click\",[30,0,[\"closeSplitModal\"]]],null]],[[\"@label\"],[\"Close\"]],null],[1,\"\\n          \"]],[]]]]],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10 margin-md\"],[12],[1,\"\\n      OSS:Checkbox:\\n      \"],[8,[39,19],null,[[\"@checked\",\"@onChange\"],[[30,0,[\"isChecked\"]],[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,19],null,[[\"@checked\",\"@disabled\",\"@onChange\"],[[30,0,[\"isChecked\"]],true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,19],null,[[\"@checked\",\"@disabled\",\"@partial\",\"@onChange\"],[[30,0,[\"isChecked\"]],true,true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,19],null,[[\"@checked\",\"@partial\",\"@onChange\"],[[30,0,[\"isChecked\"]],true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,19],null,[[\"@checked\",\"@size\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,19],null,[[\"@checked\",\"@size\",\"@partial\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,44],null,[[\"@toggles\",\"@selectedToggle\",\"@onSelection\"],[[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]],[30,0,[\"triggerSelection\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,45],null,[[\"@value\",\"@onChange\"],[[30,0,[\"numberValue\"]],[30,0,[\"handleNumberInput\"]]]],null],[1,\"\\n      \"],[8,[39,45],null,[[\"@min\",\"@max\",\"@step\",\"@onChange\"],[0,15,5,[30,0,[\"handleNumberInput\"]]]],null],[1,\"\\n      \"],[8,[39,45],null,[[\"@min\",\"@max\",\"@step\",\"@minReachedTooltip\",\"@maxReachedTooltip\",\"@onChange\"],[0,15,5,\"Hello\",\"you\",[30,0,[\"handleNumberInput\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,46],null,[[\"@value\",\"@prefix\",\"@placeholder\",\"@suffix\",\"@errorMessage\",\"@validationRegex\",\"@onChange\"],[[30,0,[\"shopifyDomain\"]],\"https://\",\"shopname\",\".myshopify.com\",\"Not a valid shopify domain\",[30,0,[\"subdomainRegex\"]],[30,0,[\"onUrlInputChange\"]]]],null],[1,\"\\n      \"],[8,[39,46],null,[[\"@prefix\",\"@placeholder\",\"@onChange\",\"@value\"],[\"https://\",\"No regex specified\",[30,0,[\"onUrlInputChange\"]],[30,0,[\"shopifyDomain\"]]]],null],[1,\"\\n      \"],[8,[39,46],null,[[\"@value\",\"@prefix\",\"@placeholder\",\"@errorMessage\",\"@validationRegex\",\"@onChange\"],[[30,0,[\"shopUrl\"]],\"https://\",\"shop url\",\"Please enter a valid URL\",[30,0,[\"urlRegex\"]],[30,0,[\"onUrlInputChange\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,47],null,[[\"@value\",\"@prefix\",\"@placeholder\",\"@suffix\",\"@errorMessage\"],[[30,0,[\"inputValue\"]],\"This\",\"makes no\",\"sense\",\"This is an error message\"]],null],[1,\"\\n      \"],[8,[39,47],null,[[\"@value\",\"@prefix\",\"@placeholder\"],[[30,0,[\"inputValue\"]],\"@\",\"Username\"]],null],[1,\"\\n      \"],[8,[39,47],null,[[\"@value\",\"@suffix\",\"@placeholder\"],[[30,0,[\"inputValue\"]],\"@example.com\",\"john.doe\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,16],null,[[\"@selected\",\"@onChange\"],[[30,0,[\"radio1\"]],[28,[37,1],[[30,0,[\"onRadioBtnChange\"]],\"radio1\"],null]]],null],[1,\"\\n      \"],[8,[39,16],null,[[\"@selected\",\"@onChange\"],[[30,0,[\"radio2\"]],[28,[37,1],[[30,0,[\"onRadioBtnChange\"]],\"radio2\"],null]]],null],[1,\"\\n      \"],[8,[39,16],null,[[\"@selected\",\"@disabled\"],[true,true]],null],[1,\"\\n      \"],[8,[39,16],null,[[\"@selected\",\"@disabled\"],[false,true]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@value\"],[\"I am the value copied\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@image\",\"@initials\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"Ts\"]],null],[1,\"\\n      \"],[8,[39,3],null,[[\"@initials\"],[\"MI\"]],null],[1,\"\\n      \"],[8,[39,3],null,null,null],[1,\"\\n\\n      \"],[8,[39,3],null,[[\"@size\"],[\"xs\"]],null],[1,\"\\n      \"],[8,[39,3],null,[[\"@size\"],[\"sm\"]],null],[1,\"\\n      \"],[8,[39,3],null,[[\"@size\"],[\"md\"]],null],[1,\"\\n      \"],[8,[39,3],null,[[\"@size\"],[\"lg\"]],null],[1,\"\\n    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,48],null,[[\"@items\",\"@selectedItems\",\"@onChange\",\"@onSearch\"],[null,[30,0,[\"superHeroes\"]],[30,0,[\"onPowerSelectChange\"]],[30,0,[\"onPowerSelectSearch\"]]]],[[\"selected-item\",\"option-item\"],[[[[1,\"\\n          \"],[8,[39,49],null,[[\"@label\",\"@onRemove\",\"@maxDisplayWidth\"],[[30,1],[30,0,[\"onPowerSelectChange\"]],100]],null],[1,\"\\n        \"]],[1]],[[[1,\"\\n          \"],[1,[30,2]],[1,\"\\n        \"]],[2]]]]],[1,\"\\n\\n      \"],[8,[39,48],null,[[\"@items\",\"@selectedItems\",\"@onChange\",\"@onSearch\"],[null,[30,0,[\"superHeroes\"]],[30,0,[\"onPowerSelectChange\"]],[30,0,[\"onPowerSelectSearch\"]]]],[[\"selected-item\",\"option-item\",\"empty-state\"],[[[[1,\"\\n          \"],[8,[39,49],null,[[\"@label\",\"@onRemove\",\"@maxDisplayWidth\"],[[30,3],[30,0,[\"onPowerSelectChange\"]],100]],null],[1,\"\\n        \"]],[3]],[[[1,\"\\n          \"],[1,[30,4]],[1,\"\\n        \"]],[4]],[[[1,\"\\n          Custom empty state\\n        \"]],[]]]]],[1,\"\\n\\n      \"],[8,[39,48],null,[[\"@items\",\"@selectedItems\",\"@onChange\",\"@onSearch\"],[[30,0,[\"superHeroes\"]],null,[30,0,[\"onPowerSelectChange\"]],[30,0,[\"onPowerSelectSearch\"]]]],[[\"selected-item\",\"option-item\"],[[[[1,\"\\n          \"],[8,[39,49],null,[[\"@label\",\"@onRemove\",\"@maxDisplayWidth\"],[[30,5],[30,0,[\"onPowerSelectChange\"]],100]],null],[1,\"\\n        \"]],[5]],[[[1,\"\\n          \"],[1,[30,6]],[1,\"\\n        \"]],[6]]]]],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,50],null,[[\"@onSelection\",\"@tabArray\"],[[30,0,[\"onSelectionNavTab\"]],[30,0,[\"tabArrayNavTab\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,49],null,[[\"@label\",\"@onRemove\"],[\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,49],null,[[\"@skin\",\"@label\",\"@onRemove\"],[\"default\",\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,49],null,[[\"@skin\",\"@label\",\"@onRemove\"],[\"primary\",\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,49],null,[[\"@skin\",\"@label\",\"@onRemove\"],[\"success\",\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,49],null,[[\"@skin\",\"@label\",\"@onRemove\"],[\"danger\",\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,49],null,[[\"@skin\",\"@label\",\"@disabled\",\"@onRemove\"],[\"danger\",\"Chip\",true,[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,49],null,[[\"@skin\",\"@label\",\"@disabled\",\"@maxDisplayWidth\",\"@onRemove\"],[\"success\",\"Chip with a huge label\",false,100,[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,49],null,[[\"@skin\",\"@label\",\"@disabled\",\"@maxDisplayWidth\",\"@onRemove\"],[\"danger\",\"Chip with a huge label\",false,160,[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,51],null,[[\"@skin\",\"@label\",\"@disabled\",\"@onRemove\",\"@maxDisplayWidth\"],[\"danger\",\"Chip with a huge label\",true,[30,0,[\"onCrossChipClick\"]],50]],null],[1,\"\\n    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"fx-row fx-1 margin-md fx-gap-px-12\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,52],null,[[\"@value\",\"@items\",\"@onChange\"],[null,[30,0,[\"items\"]],[30,0,[\"onSelect\"]]]],[[\"option\"],[[[[1,\"\\n            \"],[1,[30,7,[\"name\"]]],[1,\"\\n          \"]],[7]]]]],[1,\"\\n\\n        \"],[8,[39,52],null,[[\"@value\",\"@items\",\"@onChange\"],[[30,0,[\"selectedItem\"]],[30,0,[\"items\"]],[30,0,[\"onSelect\"]]]],[[\"option\"],[[[[1,\"\\n            \"],[1,[30,8,[\"name\"]]],[1,\"\\n          \"]],[8]]]]],[1,\"\\n\\n        \"],[8,[39,52],null,[[\"@value\",\"@items\",\"@onChange\",\"@errorMessage\"],[[30,0,[\"selectedItem\"]],[30,0,[\"items\"]],[30,0,[\"onSelect\"]],\"This is an error\"]],[[\"option\"],[[[[1,\"\\n            \"],[1,[30,9,[\"name\"]]],[1,\"\\n          \"]],[9]]]]],[1,\"\\n\\n        \"],[8,[39,52],null,[[\"@value\",\"@items\",\"@onChange\",\"@successMessage\"],[[30,0,[\"selectedItem\"]],[30,0,[\"items\"]],[30,0,[\"onSelect\"]],\"It works\"]],[[\"option\"],[[[[1,\"\\n            \"],[1,[30,10,[\"name\"]]],[1,\"\\n          \"]],[10]]]]],[1,\"\\n      \"],[13],[1,\"\\n\\n      \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,52],null,[[\"@value\",\"@items\",\"@onChange\",\"@disabled\"],[[30,0,[\"selectedItem\"]],[30,0,[\"items\"]],[30,0,[\"onSelect\"]],true]],[[\"option\"],[[[[1,\"\\n            \"],[1,[30,11,[\"name\"]]],[1,\"\\n          \"]],[11]]]]],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 margin-md\"],[12],[1,\"\\n      \"],[8,[39,53],[[24,0,\"fx-1\"],[24,\"data-control-name\",\"mailing-edit-template-ccs-input\"]],[[\"@values\",\"@onChange\"],[[30,0,[\"superHeroes\"]],[30,0,[\"updateSuperHeroes\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-12 margin-md\"],[12],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"primary\",\"far fa-thumbs-up\"]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"success\",\"far fa-thumbs-up\"]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"warning\",\"far fa-thumbs-up\"]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"danger\",\"far fa-thumbs-up\"]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"secondary\",\"far fa-thumbs-up\"]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@icon\"],[\"Tag\",\"far fa-thumbs-up\"]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\"],[\"Tag\",\"secondary\"]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@icon\"],[\"far fa-thumbs-up\"]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-orange\"]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-cyan\"]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-yellow\"]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-blue\"]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-violet\"]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-lime\"]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Test with a huge label sentence\",\"danger\",\"far fa-thumbs-up\"]],null],[1,\"\\n      \"],[8,[39,54],[[4,[38,55],null,[[\"title\",\"placement\"],[\"Test with a huge label sentence\",\"top\"]]]],[[\"@label\",\"@skin\",\"@icon\",\"@hasEllipsis\"],[\"Test with a huge label sentence\",\"danger\",\"far fa-thumbs-up\",true]],null],[1,\"\\n    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-12 margin-md\"],[12],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"primary\",\"far fa-thumbs-up\",true]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"success\",\"far fa-thumbs-up\",true]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"warning\",\"far fa-thumbs-up\",true]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"danger\",\"far fa-thumbs-up\",true]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"secondary\",\"far fa-thumbs-up\",true]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@icon\",\"@plain\"],[\"Tag\",\"far fa-thumbs-up\",true]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"secondary\",true]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@icon\",\"@plain\"],[\"far fa-thumbs-up\",true]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-orange\",true]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-cyan\",true]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-yellow\",true]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-blue\",true]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-violet\",true]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-lime\",true]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Test with a huge label sentence\",\"danger\",\"far fa-thumbs-up\",true]],null],[1,\"\\n      \"],[8,[39,54],[[4,[38,55],null,[[\"title\",\"placement\"],[\"Test with a huge label sentence\",\"top\"]]]],[[\"@label\",\"@skin\",\"@icon\",\"@hasEllipsis\",\"@plain\"],[\"Test with a huge label sentence\",\"danger\",\"far fa-thumbs-up\",true,true]],null],[1,\"\\n      \"],[8,[39,54],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\",\"@htmlSafe\"],[\"normal text - <b>bold text</b>\",\"danger\",\"far fa-thumbs-up\",true,true]],null],[1,\"\\n    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-12 margin-md\"],[12],[1,\"\\n      \"],[8,[39,56],null,[[\"@title\",\"@subtitle\"],[\"Title\",\"Subtitle\"]],[[\"extra-content\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n            \"],[8,[39,21],null,[[\"@label\",\"@icon\"],[\"Super Label\",\"fas fa-hourglass\"]],null],[1,\"\\n            \"],[8,[39,21],null,[[\"@label\"],[\"Super Label 2\"]],null],[1,\"\\n          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-12 margin-md\"],[12],[1,\"\\n      \"],[8,[39,56],null,[[\"@title\",\"@subtitle\",\"@plain\",\"@closable\"],[\"TitleTest\",\"SubtitleTest\",false,true]],null],[1,\"\\n      \"],[8,[39,56],null,[[\"@title\",\"@subtitle\"],[\"Title\",\"Subtitle\"]],null],[1,\"\\n      \"],[8,[39,56],null,[[\"@skin\",\"@title\",\"@subtitle\"],[\"error\",\"Title\",\"Subtitle\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-12 margin-md\"],[12],[1,\"\\n      \"],[8,[39,56],null,[[\"@skin\",\"@title\"],[\"success\",\"Title\"]],null],[1,\"\\n      \"],[8,[39,56],null,[[\"@skin\",\"@subtitle\"],[\"warning\",\"Subtitle\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-12 margin-md\"],[12],[1,\"\\n      \"],[8,[39,7],[[4,[38,8],[\"click\",[28,[37,1],[[30,0,[\"triggerToast\"]],\"info\"],null]],null]],[[\"@label\",\"@size\"],[\"Info\",\"md\"]],null],[1,\"\\n      \"],[8,[39,7],[[4,[38,8],[\"click\",[28,[37,1],[[30,0,[\"triggerToast\"]],\"success\"],null]],null]],[[\"@label\",\"@size\"],[\"Success\",\"md\"]],null],[1,\"\\n      \"],[8,[39,7],[[4,[38,8],[\"click\",[28,[37,1],[[30,0,[\"triggerToast\"]],\"warning\"],null]],null]],[[\"@label\",\"@size\"],[\"Warning\",\"md\"]],null],[1,\"\\n      \"],[8,[39,7],[[4,[38,8],[\"click\",[28,[37,1],[[30,0,[\"triggerToast\"]],\"error\"],null]],null]],[[\"@label\",\"@size\"],[\"Error\",\"md\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-12 margin-md\"],[12],[1,\"\\n      \"],[8,[39,57],null,[[\"@content\",\"@scrollable\",\"@copyable\",\"@collapseHeight\",\"@onCopyMessage\"],[[30,0,[\"code4CodeBlock\"]],true,true,200,\"Copied to clipboard!\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-12 margin-md\"],[12],[1,\"\\n      \"],[8,[39,7],[[4,[38,8],[\"click\",[30,0,[\"openModal\"]]],null]],[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"primary\",\"md\",\"Open MODAL\",\"fa fa-unicorn\"]],null],[1,\"\\n\"],[41,[30,0,[\"showModal\"]],[[[1,\"        \"],[8,[39,58],null,[[\"@title\",\"@subtitle\",\"@close\",\"@disableClickOutside\",\"@size\"],[\"Example modal\",\"subtitle\",[30,0,[\"closeModal\"]],false,\"md\"]],[[\"content\",\"footer\"],[[[[1,\"\\n            \"],[10,0],[14,5,\"height: 200px; background-color: white\"],[12],[1,\"\\n              azeazeazeaze\\n            \"],[13],[1,\"\\n          \"]],[]],[[[1,\"\\n            \"],[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n              \"],[8,[39,20],null,[[\"@icon\"],[\"fa-info\"]],null],[10,3],[14,6,\"\"],[12],[1,\"More info\"],[13],[1,\"\\n            \"],[13],[1,\"\\n            \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n              \"],[8,[39,7],[[4,[38,8],[\"click\",[30,0,[\"closeModal\"]]],null]],[[\"@skin\",\"@label\"],[\"default\",\"Close\"]],null],[1,\"\\n              \"],[8,[39,7],null,[[\"@skin\",\"@label\"],[\"secondary\",\"Save\"]],null],[1,\"\\n            \"],[13],[1,\"\\n          \"]],[]]]]],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-12 margin-md\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"destructive\",\"destructive\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"destructive\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"alert\",\"alert\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"alert\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"secondary\",\"secondary\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"secondary\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"default\",\"default\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"default\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"success\",\"success\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"success\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-orange\",\"Extended orange\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-orange\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-yellow\",\"Extended yellow\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-yellow\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-lime\",\"Extended lime\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-lime\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-cyan\",\"Extended Cyan\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-cyan\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-blue\",\"Extended blue\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-blue\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-violet\",\"Extended violet\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-violet\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,7],null,[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"primary\",\"xs\",\"XS\",\"far fa-envelope-open\"]],null],[1,\"\\n        \"],[8,[39,7],null,[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"primary\",\"sm\",\"SM\",\"far fa-envelope-open\"]],null],[1,\"\\n        \"],[8,[39,7],null,[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"primary\",\"md\",\"MD\",\"far fa-envelope-open\"]],null],[1,\"\\n        \"],[8,[39,7],null,[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"primary\",\"lg\",\"LG\",\"far fa-envelope-open\"]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,7],null,[[\"@square\",\"@skin\",\"@size\",\"@icon\"],[\"true\",\"primary\",\"sm\",\"far fa-envelope-open\"]],null],[1,\"\\n        \"],[8,[39,7],null,[[\"@square\",\"@skin\",\"@size\",\"@icon\"],[\"true\",\"primary\",\"md\",\"far fa-envelope-open\"]],null],[1,\"\\n        \"],[8,[39,7],null,[[\"@square\",\"@skin\",\"@size\",\"@icon\"],[\"true\",\"primary\",\"lg\",\"far fa-envelope-open\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,17],null,[[\"@icon\",\"@size\"],[\"fas fa-box-open\",\"lg\"]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@icon\"],[\"fas fa-box-open\"]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@size\",\"@icon\"],[\"md\",\"fas fa-box-open\"]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@size\",\"@icon\"],[\"sm\",\"fas fa-box-open\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,17],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"primary\"]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"primary\",true]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"success\"]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"success\",true]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"alert\"]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"alert\",true]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"error\"]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"error\",true]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-orange\"]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-orange\",true]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-yellow\"]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-yellow\",true]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-lime\"]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-lime\",true]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-cyan\"]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-cyan\",true]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-blue\"]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-blue\",true]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-violet\"]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-violet\",true]],null],[1,\"\\n      \"],[13],[1,\"\\n\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,17],null,[[\"@text\",\"@size\"],[\"2x\",\"lg\"]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@text\"],[\"2x\"]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@text\",\"@size\"],[\"2x\",\"sm\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,17],null,[[\"@image\",\"@size\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"lg\"]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@image\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\"]],null],[1,\"\\n        \"],[8,[39,17],null,[[\"@image\",\"@size\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"sm\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n\"],[42,[28,[37,60],[[28,[37,60],[[30,0,[\"media\"]]],null]],null],null,[[[1,\"          \"],[8,[39,61],null,[[\"@postType\",\"@selected\",\"@plain\",\"@onToggle\"],[[30,12,[\"key\"]],[30,12,[\"active\"]],[30,12,[\"active\"]],[30,0,[\"toggleMedia\"]]]],null],[1,\"\\n\"]],[12]],null],[1,\"      \"],[13],[1,\"\\n\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,7],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\",\"@countDown\"],[\"destructive\",\"Count down\",\"far fa-hourglass\",\"md\",[28,[37,6],null,[[\"callback\"],[[30,0,[\"countDownAction\"]]]]]]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-1\"],[12],[1,\"\\n        \"],[8,[39,62],null,[[\"@prefix\",\"@number\",\"@onChange\"],[[30,0,[\"phonePrefix\"]],[30,0,[\"phoneNumber\"]],[30,0,[\"onPhoneNumberChange\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"upf-table-v2 margin-md\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"upf-table__header\"],[12],[1,\"\\n\"],[42,[28,[37,60],[[28,[37,60],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"          \"],[10,0],[15,0,[29,[\"upf-table__cell \",[30,13,[\"class\"]]]]],[12],[1,\"\\n            \"],[1,[30,13,[\"title\"]]],[1,\"\\n          \"],[13],[1,\"\\n\"]],[13]],null],[1,\"      \"],[13],[1,\"\\n\\n      \"],[10,0],[14,0,\"upf-table__content\"],[12],[1,\"\\n\"],[42,[28,[37,60],[[28,[37,60],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"          \"],[10,0],[14,0,\"upf-table__row\"],[12],[1,\"\\n\"],[42,[28,[37,60],[[28,[37,60],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"              \"],[10,0],[15,0,[29,[\"upf-table__cell \",[30,16,[\"class\"]]]]],[12],[1,\"\\n\"],[41,[30,16,[\"title\"]],[[[1,\"                  \"],[8,[39,54],null,[[\"@skin\",\"@label\"],[\"primary\",\"Hello\"]],null],[1,\"\\n\"]],[]],[[[1,\"                  \"],[8,[39,20],null,[[\"@icon\"],[\"fa-chevron-right\"]],null],[1,\"\\n\"]],[]]],[1,\"              \"],[13],[1,\"\\n\"]],[16,17]],null],[1,\"          \"],[13],[1,\"\\n\"]],[14,15]],null],[1,\"      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"upf-table-v2 upf-table-v2--clickable margin-md\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"upf-table__header\"],[12],[1,\"\\n\"],[42,[28,[37,60],[[28,[37,60],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"          \"],[10,0],[15,0,[29,[\"upf-table__cell \",[30,18,[\"class\"]]]]],[12],[1,\"\\n            \"],[1,[30,18,[\"title\"]]],[1,\"\\n          \"],[13],[1,\"\\n\"]],[18]],null],[1,\"      \"],[13],[1,\"\\n\\n      \"],[10,0],[14,0,\"upf-table__content\"],[12],[1,\"\\n\"],[42,[28,[37,60],[[28,[37,60],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"          \"],[10,0],[14,0,\"upf-table__row\"],[14,\"role\",\"button\"],[12],[1,\"\\n\"],[42,[28,[37,60],[[28,[37,60],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"              \"],[10,0],[15,0,[29,[\"upf-table__cell \",[30,21,[\"class\"]]]]],[12],[1,\"\\n\"],[41,[30,21,[\"title\"]],[[[1,\"                  Content\\n                  \"],[1,[30,22]],[1,\"\\n\"]],[]],[[[1,\"                  \"],[8,[39,20],null,[[\"@icon\"],[\"fa-chevron-right\"]],null],[1,\"\\n\"]],[]]],[1,\"              \"],[13],[1,\"\\n\"]],[21,22]],null],[1,\"          \"],[13],[1,\"\\n\"]],[19,20]],null],[1,\"      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-24\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,63],null,[[\"@uploader\",\"@rules\",\"@size\",\"@subtitle\",\"@onUploadSuccess\"],[[30,0,[\"mockUploader\"]],[28,[37,32],[[28,[37,6],null,[[\"type\",\"value\"],[\"filesize\",\"8MB\"]]]],null],\"lg\",\"JPG, PNG, PDF (Max 800x400px - 2MB)\",[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n\\n        \"],[8,[39,63],null,[[\"@uploader\",\"@rules\",\"@subtitle\",\"@onUploadSuccess\",\"@displayPreview\"],[[30,0,[\"mockUploader\"]],[28,[37,32],[[28,[37,6],null,[[\"type\",\"value\"],[\"filesize\",\"8MB\"]]]],null],\"JPG, PNG, PDF (Max 800x400px - 2MB)\",[30,0,[\"onUploadSuccess\"]],true]],null],[1,\"\\n      \"],[13],[1,\"\\n\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,63],null,[[\"@uploader\",\"@rules\",\"@size\",\"@disabled\",\"@subtitle\",\"@onUploadSuccess\"],[[30,0,[\"mockUploader\"]],[28,[37,32],[[28,[37,6],null,[[\"type\",\"value\"],[\"filesize\",\"8MB\"]]]],null],\"lg\",true,\"JPG, PNG, PDF (Max 800x400px - 2MB)\",[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n\\n        \"],[8,[39,63],null,[[\"@uploader\",\"@rules\",\"@disabled\",\"@subtitle\",\"@onUploadSuccess\"],[[30,0,[\"mockUploader\"]],[28,[37,32],[[28,[37,6],null,[[\"type\",\"value\"],[\"filesize\",\"8MB\"]]]],null],true,\"JPG, PNG, PDF (Max 800x400px - 2MB)\",[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10 margin-md\"],[12],[1,\"\\n      \"],[8,[39,64],[[24,0,\"fx-col fx-1\"]],null,[[\"default\"],[[[[1,\"\\n        \"],[10,1],[14,0,\"text-style-semibold\"],[12],[1,\"Title\"],[13],[1,\"\\n        \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,\"Subtitle\"],[13],[1,\"\\n        \"],[10,\"hr\"],[14,0,\"width-pc-100\"],[12],[13],[1,\"\\n        \"],[10,1],[12],[1,\"Content\"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n      \"],[8,[39,64],[[24,0,\"fx-row fx-1 fx-gap-px-10\"]],null,[[\"default\"],[[[[1,\"\\n        \"],[8,[39,46],null,[[\"@value\",\"@prefix\",\"@placeholder\",\"@suffix\",\"@errorMessage\",\"@validationRegex\",\"@onChange\"],[[30,0,[\"shopifyDomain\"]],\"https://\",\"shopname\",\".myshopify.com\",\"Not a valid shopify domain\",[30,0,[\"subdomainRegex\"]],[30,0,[\"onUrlInputChange\"]]]],null],[1,\"\\n        \"],[8,[39,46],null,[[\"@prefix\",\"@placeholder\",\"@onChange\",\"@value\"],[\"https://\",\"No regex specified\",[30,0,[\"onUrlInputChange\"]],[30,0,[\"shopifyDomain\"]]]],null],[1,\"\\n      \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-24\"],[12],[1,\"\\n      \"],[8,[39,65],null,[[\"@icon\"],[\"/assets/images/upfluence-white-logo.svg\"]],[[\"header\",\"content\",\"footer\"],[[[[1,\"\\n          \"],[8,[39,3],null,[[\"@image\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\"]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[8,[39,66],null,[[\"@label\",\"@icon\"],[\"First Label\",\"fa-search\"]],null],[1,\"\\n          \"],[8,[39,66],null,[[\"@label\",\"@icon\"],[\"Second Label\",\"fa-cog\"]],null],[1,\"\\n          \"],[8,[39,66],null,[[\"@label\",\"@icon\"],[\"Third Label\",\"fa-search\"]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[8,[39,66],null,[[\"@label\",\"@icon\"],[\"Logout\",\"fa-sign-out\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"showDialog\"]],[[[1,\"  \"],[8,[39,67],null,[[\"@title\",\"@mainAction\",\"@secondaryAction\",\"@icon\",\"@skin\"],[[30,0,[\"translatedHTMLTitle\"]],[28,[37,6],null,[[\"action\",\"label\"],[[30,0,[\"onMainAction\"]],\"Discard changes\"]]],[28,[37,6],null,[[\"action\",\"label\"],[[30,0,[\"onSecondaryAction\"]],\"Keep editing\"]]],\"fa-circle-info\",\"error\"]],null],[1,\"\\n\"]],[]],null]],[\"selectedProduct\",\"item\",\"selectedProduct\",\"item\",\"selectedProduct\",\"item\",\"item\",\"item\",\"item\",\"item\",\"item\",\"socialMedia\",\"header\",\"header\",\"index\",\"header\",\"index\",\"header\",\"header\",\"index\",\"header\",\"index\"],false,[\"o-s-s/layout/sidebar\",\"fn\",\"o-s-s/layout/sidebar/item\",\"o-s-s/avatar\",\"o-s-s/copy\",\"o-s-s/slider\",\"hash\",\"o-s-s/button\",\"on\",\"mut\",\"o-s-s/layout/navbar/nav-item\",\"o-s-s/side-panel\",\"o-s-s/side-panel/header\",\"o-s-s/password-input\",\"o-s-s/togglable-section\",\"o-s-s/banner\",\"o-s-s/radio-button\",\"o-s-s/badge\",\"o-s-s/bruce\",\"o-s-s/checkbox\",\"o-s-s/icon\",\"o-s-s/link\",\"o-s-s/currency-input\",\"o-s-s/country-selector\",\"if\",\"gt\",\"o-s-s/progress-bar\",\"o-s-s/star-rating\",\"o-s-s/input-container\",\"o-s-s/attributes-panel\",\"o-s-s/attribute/removable-text\",\"o-s-s/attribute/tag-array\",\"array\",\"o-s-s/attribute/revealable-email\",\"o-s-s/attribute/text\",\"o-s-s/attribute/country\",\"o-s-s/attribute/phone-number\",\"o-s-s/attribute/rating\",\"o-s-s/email-input\",\"o-s-s/illustration\",\"o-s-s/skeleton\",\"o-s-s/text-area\",\"o-s-s/button-dropdown\",\"o-s-s/split-modal\",\"o-s-s/toggle-buttons\",\"o-s-s/number-input\",\"o-s-s/url-input\",\"o-s-s/input-group\",\"o-s-s/power-select\",\"o-s-s/chip\",\"o-s-s/nav-tab\",\"o-s-s/chip-n-fish\",\"o-s-s/select\",\"o-s-s/array-input\",\"o-s-s/tag\",\"enable-tooltip\",\"o-s-s/alert\",\"o-s-s/code-block\",\"o-s-s/modal-dialog\",\"each\",\"-track-array\",\"o-s-s/social-post-badge\",\"o-s-s/phone-number-input\",\"o-s-s/upload-area\",\"o-s-s/content-panel\",\"o-s-s/panel\",\"o-s-s/panel/row\",\"o-s-s/dialog\"]]",
+    "id": "Ii2Pz5+J",
+    "block": "[[[10,0],[14,0,\"fx-row\"],[12],[1,\"\\n  \"],[8,[39,0],null,[[\"@logo\",\"@homeAction\"],[\"/assets/images/upfluence-white-logo.svg\",[28,[37,1],[[30,0,[\"redirectTo\"]],\"/\"],null]]],[[\"content\",\"footer\"],[[[[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"index\"],null],\"active\"]]],[[\"@icon\",\"@link\"],[\"far fa-search\",\"index\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"scrollable\"],null],\"active\"]]],[[\"@icon\",\"@link\"],[\"far fa-computer-mouse-scrollwheel\",\"scrollable\"]],null],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@locked\",\"@defaultAction\",\"@lockedAction\"],[\"far fa-lock\",true,[28,[37,1],[[30,0,[\"redirectTo\"]],\"credit-card\"],null],[28,[37,1],[[30,0,[\"redirectTo\"]],\"locked credit-card\"],null]]],null],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@defaultAction\",\"@hasNotifications\"],[\"far fa-bullhorn\",[28,[37,1],[[30,0,[\"redirectTo\"]],\"pointer\"],null],true]],null],[1,\"\\n    \"]],[]],[[[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\"],[\"fal fa-info-circle\"]],null],[1,\"\\n      \"],[8,[39,5],null,[[\"@image\",\"@initials\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"Ts\"]],null],[1,\"\\n    \"]],[]]]]],[1,\"\\n\\n  \"],[10,0],[14,5,\"width:100%; height:100vh; overflow: auto; background-color: var(--color-gray-50)\"],[12],[1,\"\\n    \"],[46,[28,[37,7],null,null],null,null,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[],false,[\"o-s-s/layout/sidebar\",\"fn\",\"o-s-s/layout/sidebar/item\",\"if\",\"eq\",\"o-s-s/avatar\",\"component\",\"-outlet\"]]",
     "moduleName": "dummy/templates/application.hbs",
     "isStrictMode": false
   });
@@ -4080,12 +3190,1158 @@ define("dummy/routes/application", ["exports", "@ember/routing/route", "@ember/s
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
   var _default = _exports.default = (0, _templateFactory.createTemplateFactory)(
   /*
-    
+    <div class="fx-row fx-gap-px-10 margin-md">
+    <OSS::Copy @value="I am the value copied" @inline={{true}} />
+    <OSS::Copy @value="I am the value copied" />
+    <OSS::Copy @value="I am the value copied" @tooltip="Custom tooltip" />
+    <OSS::Copy @value="I am the value copied" @icon="far fa-jedi" />
+    <OSS::Copy @value="I am the value copied" @icon="fab fa-empire" @inline={{true}} />
+  </div>
+  <div class="fx-row fx-gap-px-10 margin-md">
+    <OSS::Slider
+      @value={{this.sliderValue}}
+      @defaultValue="0"
+      @displayInputValue={{true}}
+      @onChange={{this.onChangeSlider}}
+    />
+    <OSS::Slider
+      @value={{this.sliderValue}}
+      @unit="percentage"
+      @displayInputValue={{true}}
+      @onChange={{this.onChangeSlider}}
+    />
+    <OSS::Slider
+      @value={{this.sliderValue}}
+      @unit="number"
+      @displayInputValue={{true}}
+      @onChange={{this.onChangeSlider}}
+    />
+  </div>
+  <div class="fx-row fx-gap-px-10 margin-md">
+    <OSS::Slider
+      @value={{this.sliderValue2}}
+      @disabled={{true}}
+      @displayInputValue={{true}}
+      @onChange={{this.onChangeSlider2}}
+    />
+    <OSS::Slider
+      @value={{this.sliderValue2}}
+      @disabled={{true}}
+      @unit="percentage"
+      @displayInputValue={{true}}
+      @onChange={{this.onChangeSlider2}}
+    />
+    <OSS::Slider
+      @value={{this.sliderValue2}}
+      @disabled={{true}}
+      @unit="number"
+      @displayInputValue={{true}}
+      @onChange={{this.onChangeSlider2}}
+    />
+  </div>
+  <div class="fx-row fx-gap-px-10 margin-md">
+    <OSS::Slider
+      @value={{this.sliderValue3}}
+      @inputOptions={{hash min=0 max=999}}
+      @min={{0}}
+      @max={{200}}
+      @step={{10}}
+      @unit="percentage"
+      @onChange={{this.onChangeSlider3}}
+      @displayInputValue={{true}}
+    />
+  </div>
+  
+  <div class="fx-row fx-gap-px-10 margin-md">
+    <OSS::Button @skin="primary" @label="Open Dialog" {{on "click" (fn (mut this.showDialog) true)}} />
+    <OSS::Button @skin="primary" @label="Open Modal" {{on "click" (fn (mut this.showModal) true)}} />
+    <OSS::Button @skin="primary" @label="Open Side Panel" {{on "click" this.openSidePanel}} />
+    <OSS::Layout::Navbar::NavItem @icon="fa-cog" @label="First Label" />
+    <OSS::Layout::Navbar::NavItem @icon="fa-code-branch" @label="Second Label" @active={{true}} />
+    <OSS::Layout::Navbar::NavItem @icon="fa-code-branch" @label="Third Label" @active={{true}} />
+  </div>
+  
+  <OSS::SidePanel @onClose={{this.closeSidePanel}} @backdrop={{true}} @visible={{this.showSidePanel}}>
+    <:header>
+      <OSS::SidePanel::Header
+        @onClose={{this.closeSidePanel}}
+        @onReturn={{this.onReturn}}
+        @title="This is the side panel's header."
+      />
+    </:header>
+    <:main>
+      <span>This is the side panel's content.</span>
+    </:main>
+    <:footer>
+      <span>This is the side panel's footer.</span>
+    </:footer>
+  </OSS::SidePanel>
+  
+  <div class="fx-row fx-gap-px-10 margin-md">
+    <OSS::PasswordInput @value={{this.password}} @validates={{this.onPasswordValidation}} />
+  </div>
+  <div class="fx-row fx-gap-px-10 margin-md padding-md" style="background-color:sandybrown">
+    <OSS::TogglableSection
+      @title="This is a title"
+      @subtitle="This is a subtitle"
+      @toggled={{this.togglable}}
+      @icon="far fa-hourglass"
+      @onChange={{this.onToggle}}
+    >
+      <:contents>
+        <span>This is a Contents named block</span>
+      </:contents>
+    </OSS::TogglableSection>
+    <OSS::TogglableSection
+      @title="This is a title"
+      @subtitle="This is a subtitle"
+      @toggled={{this.togglable}}
+      @icon="far fa-hourglass"
+      @onChange={{this.onToggle}}
+      @size="sm"
+    >
+      <:contents>
+        <span>This is a Contents named block</span>
+      </:contents>
+    </OSS::TogglableSection>
+  </div>
+  <div class="fx-row fx-gap-px-10 margin-md padding-md" style="background-color:sandybrown">
+    <OSS::TogglableSection
+      @title="This is a title"
+      @subtitle="This is a subtitle"
+      @toggled={{this.togglable}}
+      @badgeIcon="far fa-hourglass"
+      @onChange={{this.onToggle}}
+    />
+    <OSS::TogglableSection
+      @title="This is a title"
+      @subtitle="This is a subtitle"
+      @toggled={{this.togglable}}
+      @badgeIcon="far fa-hourglass"
+      @onChange={{this.onToggle}}
+      @size="sm"
+    />
+  </div>
+  <div class="fx-row fx-gap-px-10 margin-md padding-md" style="background-color:sandybrown">
+    <OSS::TogglableSection
+      @title="This is a title"
+      @subtitle="This is a subtitle"
+      @toggled={{this.togglable}}
+      @badgeIcon="far fa-hourglass"
+      @onChange={{this.onToggle}}
+      @disabled={{true}}
+    />
+    <OSS::TogglableSection
+      @title="This is a title"
+      @subtitle="This is a subtitle"
+      @toggled={{this.togglable}}
+      @badgeIcon="far fa-hourglass"
+      @onChange={{this.onToggle}}
+      @disabled={{true}}
+      @size="sm"
+    />
+  </div>
+  <div class="fx-row fx-gap-px-10 margin-md">
+    <OSS::Banner
+      @icon="fas fa-box-open"
+      @title="Shopify"
+      @selected={{true}}
+      @subtitle="Identify influencers in your Shopify customers database"
+    >
+      <:actions>
+        <OSS::RadioButton @selected={{true}} />
+      </:actions>
+    </OSS::Banner>
+    <OSS::Banner
+      @icon="fas fa-box-open"
+      @title="Import creators inside your campaign"
+      @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file. "
+    >
+      <:custom-icon>
+        <OSS::Badge @text="2x" @size="lg" />
+      </:custom-icon>
+      <:actions>
+        <OSS::Button @skin="primary" @label="browse" @icon="fas fa-box-open" @size="md" />
+        <OSS::Button @skin="secondary" @label="test" @icon="fas fa-box-open" @size="md" />
+      </:actions>
+    </OSS::Banner>
+  </div>
+  <div class="fx-row fx-gap-px-10 margin-md">
+    <OSS::Banner
+      @icon="fas fa-box-open"
+      @title="Import creators inside your campaign"
+      @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file."
+    />
+    <OSS::Banner
+      @title="Banner without icon"
+      @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file."
+    />
+    <OSS::Bruce
+      @image="https://thepressfree.com/wp-content/uploads/2021/11/Voici-pourquoi-Bruce-Banner-netait-plus-Smart-Hulk-dans-la-800x445.jpg"
+      @title="Import creators inside your campaign"
+      @plain={{true}}
+      @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file. "
+    >
+      <:actions>
+        <OSS::Button @skin="secondary" @label="action" @icon="fas fa-box-open" @size="md" />
+      </:actions>
+    </OSS::Bruce>
+  </div>
+  <div class="fx-row fx-gap-px-10 margin-md">
+    <OSS::Banner @icon="fas fa-biohazard" @title="BioHazard" @selected={{true}} @size="sm">
+      <:actions>
+        <OSS::Checkbox @checked={{true}} @onChange={{this.onCheck}} @size="sm" />
+      </:actions>
+    </OSS::Banner>
+    <OSS::Banner @icon="fas fa-helicopter" @title="Helicopter" @size="sm" @disabled={{true}}>
+      <:actions>
+        <OSS::Icon @icon="fa-ban" />
+      </:actions>
+      <:secondary-actions>
+        <OSS::Link @label="Configure" />
+      </:secondary-actions>
+    </OSS::Banner>
+    <OSS::Banner @icon="fas fa-user-injured" @title="Injured" @selected={{false}} @size="sm">
+      <:actions>
+        <OSS::Checkbox @checked={{false}} @onChange={{this.onCheck}} @size="sm" />
+      </:actions>
+    </OSS::Banner>
+  </div>
+  <div class="fx-row fx-gap-px-10 margin-md">
+    <OSS::CurrencyInput
+      @currency={{this.currency}}
+      @value={{this.currencyValue}}
+      @onChange={{this.onCurrencyInputChange}}
+      @disabled={{true}}
+    />
+    <OSS::CurrencyInput
+      @currency={{this.currency}}
+      @value={{this.currencyValue}}
+      @onChange={{this.onCurrencyInputChange}}
+      @errorMessage="This is an error message"
+    />
+    <OSS::CurrencyInput
+      @currency={{this.currency}}
+      @value={{this.currencyValue}}
+      @allowCurrencyUpdate={{false}}
+      @onChange={{this.onCurrencyInputChange}}
+    />
+    <OSS::CurrencyInput
+      @currency={{this.currency}}
+      @value={{this.currencyValue}}
+      @onChange={{this.onCurrencyInputChange}}
+      @allowedCurrencies={{this.allowedCurrencies}}
+    />
+    <OSS::CurrencyInput
+      @currency={{this.currency}}
+      @value={{this.currencyValue}}
+      @onChange={{this.onCurrencyInputChange}}
+      @onlyCurrency={{true}}
+    />
+    <OSS::CurrencyInput
+      @currency={{this.currencyOnly}}
+      @onChange={{this.onCurrencyOnlyChange}}
+      @onlyCurrency={{true}}
+      @allowedCurrencies={{this.allowedCurrencies}}
+    />
+  </div>
+  <div class="fx-row fx-gap-px-10 margin-md">
+    <div class="fx-col fx-1 fx-gap-px-5">
+      <span>Country</span>
+      <OSS::CountrySelector
+        @value={{this.selectedCountry.id}}
+        @sourceList={{this.countries}}
+        @onChange={{this.onCountrySelected}}
+      />
+    </div>
+    {{this.selectedCountry.provinces.length}}
+    {{#if (gt this.selectedCountry.provinces.length 0)}}
+      <div class="fx-col fx-1 fx-gap-px-5">
+        <span>Province</span>
+        <OSS::CountrySelector @sourceList={{this.selectedCountry.provinces}} @onChange={{this.onProvinceSelected}} />
+      </div>
+    {{/if}}
+  </div>
+  <div class="fx-col fx-1 fx-gap-px-10 margin-md width-px-200">
+    <OSS::ProgressBar @skin="success" @value={{42}} @displayValue={{true}} @label="Hello" @size="xs" />
+    <OSS::ProgressBar @skin="warning" @value={{21}} @displayValue={{true}} @label="Hello" />
+    <OSS::ProgressBar @skin="danger" @value={{78}} @displayValue={{true}} @label="Hello" @coloredBackground={{true}} />
+    <OSS::ProgressBar @skin="success" @value={{78}} @displayValue={{true}} @label="Hello" @coloredBackground={{true}} />
+    <OSS::ProgressBar @value={{78}} @displayValue={{true}} @label="Hello" @coloredBackground={{false}} />
+  </div>
+  <div class="fx-row fx-1 fx-gap-px-10 margin-md">
+    <OSS::StarRating @rating={{3}} @totalStars={{5}} @onChange={{this.onRatingClick}} />
+    <OSS::StarRating
+      @rating={{this.rating}}
+      @totalStars={{15}}
+      @activeColor="red"
+      @passiveColor="blue"
+      @onChange={{this.onRatingClick}}
+    />
+  </div>
+  <div class="fx-row fx-1 fx-gap-px-10 margin-md">
+    <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}}>
+      <:prefix>
+        <OSS::Icon @icon="fa-search" class="font-color-gray-500" />
+      </:prefix>
+      <:suffix>
+        {{#if (gt this.shopUrl.length 0)}}
+          <OSS::Icon
+            @icon="fa-times"
+            class="font-color-gray-500"
+            role="button"
+            {{on "click" (fn (mut this.shopUrl) "")}}
+          />
+        {{/if}}
+      </:suffix>
+    </OSS::InputContainer>
+    <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}} />
+    <OSS::PasswordInput @value="azeaze" />
+  </div>
+  <div class="fx-row fx-1 fx-gap-px-10 margin-md width-pc-50">
+    <OSS::AttributesPanel
+      @title="Title"
+      @icon="fa-laptop-code"
+      @onSave={{this.onAttributePanelSave}}
+      @onCancel={{this.onAttributePanelCancel}}
+      @onEdit={{this.onAttributePanelEdit}}
+    >
+      <:contextual-action>
+        <OSS::Button @icon="fa-plus" @square={{true}} />
+      </:contextual-action>
+      <:view-mode>
+        <div class="fx-col fx-gap-px-9">
+          <OSS::Attribute::RemovableText @label="city" @onRemove={{this.onRemove}} @removeTooltip="Click to delete" />
+          <OSS::Attribute::RemovableText @label="city" @value="Paris" @onRemove={{this.onRemove}} />
+          <OSS::Attribute::TagArray @label="Pies" @tags={{array "Apple pie" "Pecan pie" "Pumpkin pie" "Raspberry PI"}} />
+          <OSS::Attribute::TagArray
+            @label="Fruits"
+            @tags={{array
+              "apple"
+              "banana"
+              "pitaya"
+              "jackfruit"
+              "mango"
+              "orange"
+              "blueberry"
+              "papaya"
+              "pineapple"
+              "watermelon"
+              "vodkamelon"
+            }}
+          />
+          <OSS::Attribute::TagArray @label="Fruits" />
+          <OSS::Attribute::RevealableEmail @lockTooltip="This will fail" @onRevealEmail={{this.onRevealEmailError}} />
+          {{#if this.revealed}}
+            <OSS::Attribute::Text @label="Email address" @value="john.doe@gmail.com" />
+          {{else}}
+            <OSS::Attribute::RevealableEmail
+              @tooltip="Click on lock to reveal"
+              @onRevealEmail={{this.onRevealEmailSuccess}}
+            />
+          {{/if}}
+          <OSS::Attribute::Country @countryCode="US" />
+          <OSS::Attribute::Country @countryCode="" />
+          <OSS::Attribute::Text @label="Label with tooltip copyable" @value="Hello World" @tooltip="Hello World" />
+          <OSS::Attribute::Text @label="Label not copyable" @value="Hello World" @copyable={{false}} />
+          <OSS::Attribute::PhoneNumber @countryCode="FR" @prefix="+33" @number="642424242" />
+          <OSS::Attribute::PhoneNumber @countryCode="nope" @number="+33642424242" />
+          <OSS::Attribute::PhoneNumber @prefix="+33" />
+          <OSS::Attribute::RevealableEmail @lockTooltip="This will fail" @onRevealEmail={{this.onRevealEmailError}} />
+  
+          <OSS::Attribute::Country @countryCode="US" />
+          <OSS::Attribute::Country @countryCode="" />
+          <OSS::Attribute::Rating @label="Rating" @rating={{this.starRatingValue}} />
+          <OSS::Attribute::Rating @label="Rating not provided" />
+        </div>
+      </:view-mode>
+      <:edition-mode>
+        Edition mode
+      </:edition-mode>
+    </OSS::AttributesPanel>
+  </div>
+  <div class="fx-row fx-1 fx-gap-px-10 margin-md">
+    <OSS::EmailInput @value={{this.emailInputValue}} @onChange={{this.onEmailInputChange}} />
+  </div>
+  <div class="fx-row fx-1 fx-gap-px-10 margin-md">
+    <OSS::Copy @value="I am the value copied" @inline={{true}} />
+    <OSS::Copy @value="I am the value copied" />
+  </div>
+  <div class="fx-row fx-1 fx-gap-px-10 margin-md padding-md" style="background: white">
+    <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
+  </div>
+  <div class="fx-row fx-1 fx-gap-px-10 margin-md">
+    <OSS::Skeleton @width="70%" />
+    <OSS::Skeleton @width={{20}} />
+  </div>
+  <div class="fx-row fx-1 fx-gap-px-10 margin-md">
+    <OSS::Skeleton @direction="column" @width="60%" @gap="12" @multiple="3" @randomize={{true}} />
+  </div>
+  <div class="fx-row fx-1 fx-gap-px-10 margin-md">
+    <OSS::Skeleton @width="10%" @multiple="3" @direction="row" @randomize="true" />
+  </div>
+  <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
+    <OSS::Icon @icon="LaptopCode" />
+    <OSS::Icon @icon="LaptopCode" @style="solid" />
+    <OSS::Icon @icon="LaptopCode" @style="regular" />
+    <OSS::Icon @icon="LaptopCode" @style="light" />
+    <OSS::Icon @icon="LaptopCode" @style="duotone" />
+    <OSS::Icon @icon="FacebookSquare" @style="brand" />
+  </div>
+  <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
+    <OSS::TextArea
+      @value={{this.numberValue}}
+      @onChange={{this.handleNumberInput}}
+      @errorMessage="This is an error message"
+      @rows={{8}}
+      @resize="vertical"
+    />
+    <OSS::TextArea @value={{this.numberValue}} @onChange={{this.handleNumberInput}} @rows={{1}} />
+  </div>
+  
+  <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
+    <OSS::Button @label="Open split modal" {{on "click" this.openSplitModal}} />
+    <OSS::ButtonDropdown @icon="far fa-credit-card" @label="Dropdown button" @mainAction={{fn this.redirectTo "test"}}>
+      <:items>
+        <div class="oss-button-dropdown__item">
+          <OSS::Icon @style="solid" @icon="fa-share" />
+          Share
+        </div>
+      </:items>
+    </OSS::ButtonDropdown>
+    <OSS::ButtonDropdown @icon="far fa-hourglass" @label="Dropdown button">
+      <:items>
+        <div class="oss-button-dropdown__item">
+          <OSS::Icon @style="solid" @icon="fa-share" />
+          Share
+        </div>
+      </:items>
+    </OSS::ButtonDropdown>
+    <OSS::Button @label="loading" @loading={{true}} />
+    {{#if this.showSplitModal}}
+      <OSS::SplitModal @close={{this.closeSplitModal}}>
+        <:content>
+          Content goes here
+        </:content>
+        <:footer>
+          <OSS::Button @label="Close" {{on "click" this.closeSplitModal}} />
+        </:footer>
+      </OSS::SplitModal>
+    {{/if}}
+  </div>
+  <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
+    OSS:Checkbox:
+    <OSS::Checkbox @checked={{this.isChecked}} @onChange={{this.onCheck}} />
+    <OSS::Checkbox @checked={{this.isChecked}} @disabled={{true}} @onChange={{this.onCheck}} />
+    <OSS::Checkbox @checked={{this.isChecked}} @disabled={{true}} @partial={{true}} @onChange={{this.onCheck}} />
+    <OSS::Checkbox @checked={{this.isChecked}} @partial={{true}} @onChange={{this.onCheck}} />
+    <OSS::Checkbox @checked={{this.isChecked}} @size="sm" @onChange={{this.onCheck}} />
+    <OSS::Checkbox @checked={{this.isChecked}} @size="sm" @partial={{true}} @onChange={{this.onCheck}} />
+  </div>
+  <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
+    <OSS::ToggleButtons
+      @toggles={{this.toggles}}
+      @selectedToggle={{this.selectedToggle}}
+      @onSelection={{this.triggerSelection}}
+    />
+  </div>
+  <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
+    <OSS::NumberInput @value={{this.numberValue}} @onChange={{this.handleNumberInput}} />
+    <OSS::NumberInput @min={{0}} @max={{15}} @step={{5}} @onChange={{this.handleNumberInput}} />
+    <OSS::NumberInput
+      @min={{0}}
+      @max={{15}}
+      @step={{5}}
+      @minReachedTooltip="Hello"
+      @maxReachedTooltip="you"
+      @onChange={{this.handleNumberInput}}
+    />
+  </div>
+  <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
+    <OSS::UrlInput
+      @value={{this.shopifyDomain}}
+      @prefix="https://"
+      @placeholder="shopname"
+      @suffix=".myshopify.com"
+      @errorMessage="Not a valid shopify domain"
+      @validationRegex={{this.subdomainRegex}}
+      @onChange={{this.onUrlInputChange}}
+    />
+    <OSS::UrlInput
+      @prefix="https://"
+      @placeholder="No regex specified"
+      @onChange={{this.onUrlInputChange}}
+      @value={{this.shopifyDomain}}
+    />
+    <OSS::UrlInput
+      @value={{this.shopUrl}}
+      @prefix="https://"
+      @placeholder="shop url"
+      @errorMessage="Please enter a valid URL"
+      @validationRegex={{this.urlRegex}}
+      @onChange={{this.onUrlInputChange}}
+    />
+  </div>
+  <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
+    <OSS::InputGroup
+      @value={{this.inputValue}}
+      @prefix="This"
+      @placeholder="makes no"
+      @suffix="sense"
+      @errorMessage="This is an error message"
+    />
+    <OSS::InputGroup @value={{this.inputValue}} @prefix="@" @placeholder="Username" />
+    <OSS::InputGroup @value={{this.inputValue}} @suffix="@example.com" @placeholder="john.doe" />
+  </div>
+  <div class="fx-row fx-gap-px-10 margin-md">
+    <OSS::RadioButton @selected={{this.radio1}} @onChange={{fn this.onRadioBtnChange "radio1"}} />
+    <OSS::RadioButton @selected={{this.radio2}} @onChange={{fn this.onRadioBtnChange "radio2"}} />
+    <OSS::RadioButton @selected={{true}} @disabled={{true}} />
+    <OSS::RadioButton @selected={{false}} @disabled={{true}} />
+    <OSS::Copy @value="I am the value copied" />
+  </div>
+  <div class="fx-row fx-gap-px-10 margin-md fx-xalign-center">
+    <OSS::Avatar
+      @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
+      @initials="Ts"
+    />
+    <OSS::Avatar @initials="MI" />
+    <OSS::Avatar />
+  
+    <OSS::Avatar @size="xs" />
+    <OSS::Avatar @size="sm" />
+    <OSS::Avatar @size="md" />
+    <OSS::Avatar @size="lg" />
+  </div>
+  
+  <div class="fx-row fx-gap-px-10 margin-md">
+    <OSS::PowerSelect
+      @items={{null}}
+      @selectedItems={{this.superHeroes}}
+      @onChange={{this.onPowerSelectChange}}
+      @onSearch={{this.onPowerSelectSearch}}
+    >
+      <:selected-item as |selectedProduct|>
+        <OSS::Chip @label={{selectedProduct}} @onRemove={{this.onPowerSelectChange}} @maxDisplayWidth={{100}} />
+      </:selected-item>
+      <:option-item as |item|>
+        {{item}}
+      </:option-item>
+    </OSS::PowerSelect>
+  
+    <OSS::PowerSelect
+      @items={{null}}
+      @selectedItems={{this.superHeroes}}
+      @onChange={{this.onPowerSelectChange}}
+      @onSearch={{this.onPowerSelectSearch}}
+    >
+      <:selected-item as |selectedProduct|>
+        <OSS::Chip @label={{selectedProduct}} @onRemove={{this.onPowerSelectChange}} @maxDisplayWidth={{100}} />
+      </:selected-item>
+      <:option-item as |item|>
+        {{item}}
+      </:option-item>
+      <:empty-state>
+        Custom empty state
+      </:empty-state>
+    </OSS::PowerSelect>
+  
+    <OSS::PowerSelect
+      @items={{this.superHeroes}}
+      @selectedItems={{null}}
+      @onChange={{this.onPowerSelectChange}}
+      @onSearch={{this.onPowerSelectSearch}}
+    >
+      <:selected-item as |selectedProduct|>
+        <OSS::Chip @label={{selectedProduct}} @onRemove={{this.onPowerSelectChange}} @maxDisplayWidth={{100}} />
+      </:selected-item>
+      <:option-item as |item|>
+        {{item}}
+      </:option-item>
+    </OSS::PowerSelect>
+  </div>
+  <div class="fx-row fx-gap-px-10 margin-md">
+    <OSS::NavTab @onSelection={{this.onSelectionNavTab}} @tabArray={{this.tabArrayNavTab}} />
+  </div>
+  
+  <div class="fx-row fx-gap-px-10 margin-md">
+    <OSS::Chip @label="Chip" @onRemove={{this.onCrossChipClick}} />
+    <OSS::Chip @skin="default" @label="Chip" @onRemove={{this.onCrossChipClick}} />
+    <OSS::Chip @skin="primary" @label="Chip" @onRemove={{this.onCrossChipClick}} />
+    <OSS::Chip @skin="success" @label="Chip" @onRemove={{this.onCrossChipClick}} />
+    <OSS::Chip @skin="danger" @label="Chip" @onRemove={{this.onCrossChipClick}} />
+    <OSS::Chip @skin="danger" @label="Chip" @disabled={{true}} @onRemove={{this.onCrossChipClick}} />
+    <OSS::Chip
+      @skin="success"
+      @label="Chip with a huge label"
+      @disabled={{false}}
+      @maxDisplayWidth={{100}}
+      @onRemove={{this.onCrossChipClick}}
+    />
+    <OSS::Chip
+      @skin="danger"
+      @label="Chip with a huge label"
+      @disabled={{false}}
+      @maxDisplayWidth={{160}}
+      @onRemove={{this.onCrossChipClick}}
+    />
+    <OSS::ChipNFish
+      @skin="danger"
+      @label="Chip with a huge label"
+      @disabled={{true}}
+      @onRemove={{this.onCrossChipClick}}
+      @maxDisplayWidth={{50}}
+    />
+  </div>
+  
+  <div class="fx-row fx-1 margin-md fx-gap-px-12">
+    <div class="fx-col fx-1 fx-gap-px-12">
+      <OSS::Select @value={{null}} @items={{this.items}} @onChange={{this.onSelect}}>
+        <:option as |item|>
+          {{item.name}}
+        </:option>
+      </OSS::Select>
+  
+      <OSS::Select @value={{this.selectedItem}} @items={{this.items}} @onChange={{this.onSelect}}>
+        <:option as |item|>
+          {{item.name}}
+        </:option>
+      </OSS::Select>
+  
+      <OSS::Select
+        @value={{this.selectedItem}}
+        @items={{this.items}}
+        @onChange={{this.onSelect}}
+        @errorMessage="This is an error"
+      >
+        <:option as |item|>
+          {{item.name}}
+        </:option>
+      </OSS::Select>
+  
+      <OSS::Select
+        @value={{this.selectedItem}}
+        @items={{this.items}}
+        @onChange={{this.onSelect}}
+        @successMessage="It works"
+      >
+        <:option as |item|>
+          {{item.name}}
+        </:option>
+      </OSS::Select>
+    </div>
+  
+    <div class="fx-col fx-1 fx-gap-px-12">
+      <OSS::Select @value={{this.selectedItem}} @items={{this.items}} @onChange={{this.onSelect}} @disabled={{true}}>
+        <:option as |item|>
+          {{item.name}}
+        </:option>
+      </OSS::Select>
+    </div>
+  </div>
+  <div class="fx-row fx-1 margin-md">
+    <OSS::ArrayInput
+      @values={{this.superHeroes}}
+      @onChange={{this.updateSuperHeroes}}
+      class="fx-1"
+      data-control-name="mailing-edit-template-ccs-input"
+    />
+  </div>
+  <div class="fx-row fx-gap-px-12 margin-md">
+    <OSS::Tag @label="Tag" @skin="primary" @icon="far fa-thumbs-up" />
+    <OSS::Tag @label="Tag" @skin="success" @icon="far fa-thumbs-up" />
+    <OSS::Tag @label="Tag" @skin="warning" @icon="far fa-thumbs-up" />
+    <OSS::Tag @label="Tag" @skin="danger" @icon="far fa-thumbs-up" />
+    <OSS::Tag @label="Tag" @skin="secondary" @icon="far fa-thumbs-up" />
+    <OSS::Tag @label="Tag" @icon="far fa-thumbs-up" />
+    <OSS::Tag @label="Tag" @skin="secondary" />
+    <OSS::Tag @icon="far fa-thumbs-up" />
+    <OSS::Tag @label="Tag" @skin="xtd-orange" />
+    <OSS::Tag @label="Tag" @skin="xtd-cyan" />
+    <OSS::Tag @label="Tag" @skin="xtd-yellow" />
+    <OSS::Tag @label="Tag" @skin="xtd-blue" />
+    <OSS::Tag @label="Tag" @skin="xtd-violet" />
+    <OSS::Tag @label="Tag" @skin="xtd-lime" />
+    <OSS::Tag @label="Test with a huge label sentence" @skin="danger" @icon="far fa-thumbs-up" />
+    <OSS::Tag
+      @label="Test with a huge label sentence"
+      {{enable-tooltip title="Test with a huge label sentence" placement="top"}}
+      @skin="danger"
+      @icon="far fa-thumbs-up"
+      @hasEllipsis={{true}}
+    />
+  </div>
+  
+  <div class="fx-row fx-gap-px-12 margin-md">
+    <OSS::Tag @label="Tag" @skin="primary" @icon="far fa-thumbs-up" @plain={{true}} />
+    <OSS::Tag @label="Tag" @skin="success" @icon="far fa-thumbs-up" @plain={{true}} />
+    <OSS::Tag @label="Tag" @skin="warning" @icon="far fa-thumbs-up" @plain={{true}} />
+    <OSS::Tag @label="Tag" @skin="danger" @icon="far fa-thumbs-up" @plain={{true}} />
+    <OSS::Tag @label="Tag" @skin="secondary" @icon="far fa-thumbs-up" @plain={{true}} />
+    <OSS::Tag @label="Tag" @icon="far fa-thumbs-up" @plain={{true}} />
+    <OSS::Tag @label="Tag" @skin="secondary" @plain={{true}} />
+    <OSS::Tag @icon="far fa-thumbs-up" @plain={{true}} />
+    <OSS::Tag @label="Tag" @skin="xtd-orange" @plain={{true}} />
+    <OSS::Tag @label="Tag" @skin="xtd-cyan" @plain={{true}} />
+    <OSS::Tag @label="Tag" @skin="xtd-yellow" @plain={{true}} />
+    <OSS::Tag @label="Tag" @skin="xtd-blue" @plain={{true}} />
+    <OSS::Tag @label="Tag" @skin="xtd-violet" @plain={{true}} />
+    <OSS::Tag @label="Tag" @skin="xtd-lime" @plain={{true}} />
+    <OSS::Tag @label="Test with a huge label sentence" @skin="danger" @icon="far fa-thumbs-up" @plain={{true}} />
+    <OSS::Tag
+      @label="Test with a huge label sentence"
+      {{enable-tooltip title="Test with a huge label sentence" placement="top"}}
+      @skin="danger"
+      @icon="far fa-thumbs-up"
+      @hasEllipsis={{true}}
+      @plain={{true}}
+    />
+    <OSS::Tag
+      @label="normal text - <b>bold text</b>"
+      @skin="danger"
+      @icon="far fa-thumbs-up"
+      @plain={{true}}
+      @htmlSafe={{true}}
+    />
+  </div>
+  
+  <div class="fx-row fx-gap-px-12 margin-md">
+    <OSS::Alert @title="Title" @subtitle="Subtitle">
+      <:extra-content>
+        <div class="fx-row fx-gap-px-12">
+          <OSS::Link @label="Super Label" @icon="fas fa-hourglass" />
+          <OSS::Link @label="Super Label 2" />
+        </div>
+      </:extra-content>
+    </OSS::Alert>
+  </div>
+  <div class="fx-row fx-gap-px-12 margin-md">
+    <OSS::Alert @title="TitleTest" @subtitle="SubtitleTest" @plain={{false}} @closable={{true}} />
+    <OSS::Alert @title="Title" @subtitle="Subtitle" />
+    <OSS::Alert @skin="error" @title="Title" @subtitle="Subtitle" />
+  </div>
+  <div class="fx-row fx-gap-px-12 margin-md">
+    <OSS::Alert @skin="success" @title="Title" />
+    <OSS::Alert @skin="warning" @subtitle="Subtitle" />
+  </div>
+  <div class="fx-row fx-gap-px-12 margin-md">
+    <OSS::Button @label="Info" @size="md" {{on "click" (fn this.triggerToast "info")}} />
+    <OSS::Button @label="Success" @size="md" {{on "click" (fn this.triggerToast "success")}} />
+    <OSS::Button @label="Warning" @size="md" {{on "click" (fn this.triggerToast "warning")}} />
+    <OSS::Button @label="Error" @size="md" {{on "click" (fn this.triggerToast "error")}} />
+  </div>
+  <div class="fx-col fx-gap-px-12 margin-md">
+    <OSS::CodeBlock
+      @content={{this.code4CodeBlock}}
+      @scrollable={{true}}
+      @copyable={{true}}
+      @collapseHeight={{200}}
+      @onCopyMessage="Copied to clipboard!"
+    />
+  </div>
+  <div class="fx-col fx-gap-px-12 margin-md">
+    <OSS::Button @skin="primary" @size="md" @label="Open MODAL" @icon="fa fa-unicorn" {{on "click" this.openModal}} />
+    {{#if this.showModal}}
+      <OSS::ModalDialog
+        @title="Example modal"
+        @subtitle="subtitle"
+        @close={{this.closeModal}}
+        @disableClickOutside={{false}}
+        @size="md"
+      >
+        <:content>
+          <div style="height: 200px; background-color: white">
+            azeazeazeaze
+          </div>
+        </:content>
+        <:footer>
+          <div class="fx-1">
+            <OSS::Icon @icon="fa-info" /><a href="">More info</a>
+          </div>
+          <div class="fx-row fx-gap-px-12">
+            <OSS::Button @skin="default" @label="Close" {{on "click" this.closeModal}} />
+            <OSS::Button @skin="secondary" @label="Save" />
+          </div>
+        </:footer>
+      </OSS::ModalDialog>
+    {{/if}}
+  </div>
+  <div class="fx-col fx-gap-px-12 margin-md">
+    <div class="fx-row fx-gap-px-12">
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Button @skin="destructive" @label="destructive" @icon="fas fa-box-open" @size="md" />
+        <OSS::Button @skin="destructive" @square="true" @icon="fas fa-box-open" @size="md" />
+      </div>
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Button @skin="alert" @label="alert" @icon="fas fa-box-open" @size="md" />
+        <OSS::Button @skin="alert" @square="true" @icon="fas fa-box-open" @size="md" />
+      </div>
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Button @skin="secondary" @label="secondary" @icon="fas fa-box-open" @size="md" />
+        <OSS::Button @skin="secondary" @square="true" @icon="fas fa-box-open" @size="md" />
+      </div>
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Button @skin="default" @label="default" @icon="fas fa-box-open" @size="md" />
+        <OSS::Button @skin="default" @square="true" @icon="fas fa-box-open" @size="md" />
+      </div>
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Button @skin="success" @label="success" @icon="fas fa-box-open" @size="md" />
+        <OSS::Button @skin="success" @square="true" @icon="fas fa-box-open" @size="md" />
+      </div>
+    </div>
+    <div class="fx-row fx-gap-px-12">
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Button @skin="xtd-orange" @label="Extended orange" @icon="fas fa-plus" @size="md" />
+        <OSS::Button @skin="xtd-orange" @square="true" @icon="fas fa-plus" @size="md" />
+      </div>
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Button @skin="xtd-yellow" @label="Extended yellow" @icon="fas fa-plus" @size="md" />
+        <OSS::Button @skin="xtd-yellow" @square="true" @icon="fas fa-plus" @size="md" />
+      </div>
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Button @skin="xtd-lime" @label="Extended lime" @icon="fas fa-plus" @size="md" />
+        <OSS::Button @skin="xtd-lime" @square="true" @icon="fas fa-plus" @size="md" />
+      </div>
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Button @skin="xtd-cyan" @label="Extended Cyan" @icon="fas fa-plus" @size="md" />
+        <OSS::Button @skin="xtd-cyan" @square="true" @icon="fas fa-plus" @size="md" />
+      </div>
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Button @skin="xtd-blue" @label="Extended blue" @icon="fas fa-plus" @size="md" />
+        <OSS::Button @skin="xtd-blue" @square="true" @icon="fas fa-plus" @size="md" />
+      </div>
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Button @skin="xtd-violet" @label="Extended violet" @icon="fas fa-plus" @size="md" />
+        <OSS::Button @skin="xtd-violet" @square="true" @icon="fas fa-plus" @size="md" />
+      </div>
+    </div>
+    <div class="fx-row fx-gap-px-12">
+      <OSS::Button @skin="primary" @size="xs" @label="XS" @icon="far fa-envelope-open" />
+      <OSS::Button @skin="primary" @size="sm" @label="SM" @icon="far fa-envelope-open" />
+      <OSS::Button @skin="primary" @size="md" @label="MD" @icon="far fa-envelope-open" />
+      <OSS::Button @skin="primary" @size="lg" @label="LG" @icon="far fa-envelope-open" />
+    </div>
+    <div class="fx-row fx-gap-px-12">
+      <OSS::Button @square="true" @skin="primary" @size="sm" @icon="far fa-envelope-open" />
+      <OSS::Button @square="true" @skin="primary" @size="md" @icon="far fa-envelope-open" />
+      <OSS::Button @square="true" @skin="primary" @size="lg" @icon="far fa-envelope-open" />
+    </div>
+  
+    <div class="fx-row fx-gap-px-12 fx-xalign-center">
+      <OSS::Badge @icon="fas fa-box-open" @size="lg" />
+      <OSS::Badge @icon="fas fa-box-open" />
+      <OSS::Badge @size="md" @icon="fas fa-box-open" />
+      <OSS::Badge @size="sm" @icon="fas fa-box-open" />
+    </div>
+  
+    <div class="fx-row fx-gap-px-12 fx-xalign-center">
+      <OSS::Badge @icon="fas fa-box-open" @skin="primary" />
+      <OSS::Badge @icon="fas fa-box-open" @skin="primary" @plain={{true}} />
+      <OSS::Badge @icon="fas fa-box-open" @skin="success" />
+      <OSS::Badge @icon="fas fa-box-open" @skin="success" @plain={{true}} />
+      <OSS::Badge @icon="fas fa-box-open" @skin="alert" />
+      <OSS::Badge @icon="fas fa-box-open" @skin="alert" @plain={{true}} />
+      <OSS::Badge @icon="fas fa-box-open" @skin="error" />
+      <OSS::Badge @icon="fas fa-box-open" @skin="error" @plain={{true}} />
+      <OSS::Badge @icon="fas fa-box-open" @skin="xtd-orange" />
+      <OSS::Badge @icon="fas fa-box-open" @skin="xtd-orange" @plain={{true}} />
+      <OSS::Badge @icon="fas fa-box-open" @skin="xtd-yellow" />
+      <OSS::Badge @icon="fas fa-box-open" @skin="xtd-yellow" @plain={{true}} />
+      <OSS::Badge @icon="fas fa-box-open" @skin="xtd-lime" />
+      <OSS::Badge @icon="fas fa-box-open" @skin="xtd-lime" @plain={{true}} />
+      <OSS::Badge @icon="fas fa-box-open" @skin="xtd-cyan" />
+      <OSS::Badge @icon="fas fa-box-open" @skin="xtd-cyan" @plain={{true}} />
+      <OSS::Badge @icon="fas fa-box-open" @skin="xtd-blue" />
+      <OSS::Badge @icon="fas fa-box-open" @skin="xtd-blue" @plain={{true}} />
+      <OSS::Badge @icon="fas fa-box-open" @skin="xtd-violet" />
+      <OSS::Badge @icon="fas fa-box-open" @skin="xtd-violet" @plain={{true}} />
+    </div>
+  
+    <div class="fx-row fx-gap-px-12 fx-xalign-center">
+      <OSS::Badge @text="2x" @size="lg" />
+      <OSS::Badge @text="2x" />
+      <OSS::Badge @text="2x" @size="sm" />
+    </div>
+  
+    <div class="fx-row fx-gap-px-12 fx-xalign-center">
+      <OSS::Badge
+        @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
+        @size="lg"
+      />
+      <OSS::Badge @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png" />
+      <OSS::Badge
+        @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
+        @size="sm"
+      />
+    </div>
+  
+    <div class="fx-row fx-gap-px-12 fx-xalign-center">
+      {{#each this.media as |socialMedia|}}
+        <OSS::SocialPostBadge
+          @postType={{socialMedia.key}}
+          @selected={{socialMedia.active}}
+          @plain={{socialMedia.active}}
+          @onToggle={{this.toggleMedia}}
+        />
+      {{/each}}
+    </div>
+  
+    <div class="fx-row fx-gap-px-12">
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Button
+          @skin="destructive"
+          @label="Count down"
+          @icon="far fa-hourglass"
+          @size="md"
+          @countDown={{hash callback=this.countDownAction}}
+        />
+      </div>
+    </div>
+    <div class="fx-row fx-1">
+      <OSS::PhoneNumberInput
+        @prefix={{this.phonePrefix}}
+        @number={{this.phoneNumber}}
+        @onChange={{this.onPhoneNumberChange}}
+      />
+    </div>
+  </div>
+  
+  <div class="upf-table-v2 margin-md">
+    <div class="upf-table__header">
+      {{#each this.tableDemo.header as |header|}}
+        <div class="upf-table__cell {{header.class}}">
+          {{header.title}}
+        </div>
+      {{/each}}
+    </div>
+  
+    <div class="upf-table__content">
+      {{#each this.tableDemo.header as |header index|}}
+        <div class="upf-table__row">
+          {{#each this.tableDemo.header as |header index|}}
+            <div class="upf-table__cell {{header.class}}">
+              {{#if header.title}}
+                <OSS::Tag @skin="primary" @label="Hello" />
+              {{else}}
+                <OSS::Icon @icon="fa-chevron-right" />
+              {{/if}}
+            </div>
+          {{/each}}
+        </div>
+      {{/each}}
+    </div>
+  </div>
+  
+  <div class="upf-table-v2 upf-table-v2--clickable margin-md">
+    <div class="upf-table__header">
+      {{#each this.tableDemo.header as |header|}}
+        <div class="upf-table__cell {{header.class}}">
+          {{header.title}}
+        </div>
+      {{/each}}
+    </div>
+  
+    <div class="upf-table__content">
+      {{#each this.tableDemo.header as |header index|}}
+        <div class="upf-table__row" role="button">
+          {{#each this.tableDemo.header as |header index|}}
+            <div class="upf-table__cell {{header.class}}">
+              {{#if header.title}}
+                Content
+                {{index}}
+              {{else}}
+                <OSS::Icon @icon="fa-chevron-right" />
+              {{/if}}
+            </div>
+          {{/each}}
+        </div>
+      {{/each}}
+    </div>
+  </div>
+  
+  <div class="fx-col fx-gap-px-12 padding-px-24">
+    <div class="fx-row fx-gap-px-12">
+      <OSS::UploadArea
+        @uploader={{this.mockUploader}}
+        @rules={{array (hash type="filesize" value="8MB")}}
+        @size="lg"
+        @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)"
+        @onUploadSuccess={{this.onUploadSuccess}}
+      />
+  
+      <OSS::UploadArea
+        @uploader={{this.mockUploader}}
+        @rules={{array (hash type="filesize" value="8MB")}}
+        @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)"
+        @onUploadSuccess={{this.onUploadSuccess}}
+        @displayPreview={{true}}
+      />
+    </div>
+  
+    <div class="fx-col fx-gap-px-12">
+      <OSS::UploadArea
+        @uploader={{this.mockUploader}}
+        @rules={{array (hash type="filesize" value="8MB")}}
+        @size="lg"
+        @disabled={{true}}
+        @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)"
+        @onUploadSuccess={{this.onUploadSuccess}}
+      />
+  
+      <OSS::UploadArea
+        @uploader={{this.mockUploader}}
+        @rules={{array (hash type="filesize" value="8MB")}}
+        @disabled={{true}}
+        @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)"
+        @onUploadSuccess={{this.onUploadSuccess}}
+      />
+    </div>
+  </div>
+  <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
+    <OSS::ContentPanel class="fx-col fx-1">
+      <span class="text-style-semibold">Title</span>
+      <span class="font-color-gray-500">Subtitle</span>
+      <hr class="width-pc-100" />
+      <span>Content</span>
+    </OSS::ContentPanel>
+    <OSS::ContentPanel class="fx-row fx-1 fx-gap-px-10">
+      <OSS::UrlInput
+        @value={{this.shopifyDomain}}
+        @prefix="https://"
+        @placeholder="shopname"
+        @suffix=".myshopify.com"
+        @errorMessage="Not a valid shopify domain"
+        @validationRegex={{this.subdomainRegex}}
+        @onChange={{this.onUrlInputChange}}
+      />
+      <OSS::UrlInput
+        @prefix="https://"
+        @placeholder="No regex specified"
+        @onChange={{this.onUrlInputChange}}
+        @value={{this.shopifyDomain}}
+      />
+    </OSS::ContentPanel>
+  </div>
+  <div class="fx-col fx-gap-px-12 padding-px-24">
+    <OSS::Panel @icon="/assets/images/upfluence-white-logo.svg">
+      <:header>
+        <OSS::Avatar @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png" />
+      </:header>
+      <:content>
+        <OSS::Panel::Row @label="First Label" @icon="fa-search" />
+        <OSS::Panel::Row @label="Second Label" @icon="fa-cog" />
+        <OSS::Panel::Row @label="Third Label" @icon="fa-search" />
+      </:content>
+      <:footer>
+        <OSS::Panel::Row @label="Logout" @icon="fa-sign-out" />
+      </:footer>
+    </OSS::Panel>
+  </div>
+  
+  {{#if this.showDialog}}
+    <OSS::Dialog
+      @title={{this.translatedHTMLTitle}}
+      @mainAction={{hash action=this.onMainAction label="Discard changes"}}
+      @secondaryAction={{hash action=this.onSecondaryAction label="Keep editing"}}
+      @icon="fa-circle-info"
+      @skin="error"
+    />
+  {{/if}}
   */
   {
-    "id": "dg/saejw",
-    "block": "[[],[],false,[]]",
+    "id": "E8RiC0MN",
+    "block": "[[[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,0],null,[[\"@value\",\"@inline\"],[\"I am the value copied\",true]],null],[1,\"\\n  \"],[8,[39,0],null,[[\"@value\"],[\"I am the value copied\"]],null],[1,\"\\n  \"],[8,[39,0],null,[[\"@value\",\"@tooltip\"],[\"I am the value copied\",\"Custom tooltip\"]],null],[1,\"\\n  \"],[8,[39,0],null,[[\"@value\",\"@icon\"],[\"I am the value copied\",\"far fa-jedi\"]],null],[1,\"\\n  \"],[8,[39,0],null,[[\"@value\",\"@icon\",\"@inline\"],[\"I am the value copied\",\"fab fa-empire\",true]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,1],null,[[\"@value\",\"@defaultValue\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue\"]],\"0\",true,[30,0,[\"onChangeSlider\"]]]],null],[1,\"\\n  \"],[8,[39,1],null,[[\"@value\",\"@unit\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue\"]],\"percentage\",true,[30,0,[\"onChangeSlider\"]]]],null],[1,\"\\n  \"],[8,[39,1],null,[[\"@value\",\"@unit\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue\"]],\"number\",true,[30,0,[\"onChangeSlider\"]]]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,1],null,[[\"@value\",\"@disabled\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue2\"]],true,true,[30,0,[\"onChangeSlider2\"]]]],null],[1,\"\\n  \"],[8,[39,1],null,[[\"@value\",\"@disabled\",\"@unit\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue2\"]],true,\"percentage\",true,[30,0,[\"onChangeSlider2\"]]]],null],[1,\"\\n  \"],[8,[39,1],null,[[\"@value\",\"@disabled\",\"@unit\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue2\"]],true,\"number\",true,[30,0,[\"onChangeSlider2\"]]]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,1],null,[[\"@value\",\"@inputOptions\",\"@min\",\"@max\",\"@step\",\"@unit\",\"@onChange\",\"@displayInputValue\"],[[30,0,[\"sliderValue3\"]],[28,[37,2],null,[[\"min\",\"max\"],[0,999]]],0,200,10,\"percentage\",[30,0,[\"onChangeSlider3\"]],true]],null],[1,\"\\n\"],[13],[1,\"\\n\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,3],[[4,[38,4],[\"click\",[28,[37,5],[[28,[37,6],[[30,0,[\"showDialog\"]]],null],true],null]],null]],[[\"@skin\",\"@label\"],[\"primary\",\"Open Dialog\"]],null],[1,\"\\n  \"],[8,[39,3],[[4,[38,4],[\"click\",[28,[37,5],[[28,[37,6],[[30,0,[\"showModal\"]]],null],true],null]],null]],[[\"@skin\",\"@label\"],[\"primary\",\"Open Modal\"]],null],[1,\"\\n  \"],[8,[39,3],[[4,[38,4],[\"click\",[30,0,[\"openSidePanel\"]]],null]],[[\"@skin\",\"@label\"],[\"primary\",\"Open Side Panel\"]],null],[1,\"\\n  \"],[8,[39,7],null,[[\"@icon\",\"@label\"],[\"fa-cog\",\"First Label\"]],null],[1,\"\\n  \"],[8,[39,7],null,[[\"@icon\",\"@label\",\"@active\"],[\"fa-code-branch\",\"Second Label\",true]],null],[1,\"\\n  \"],[8,[39,7],null,[[\"@icon\",\"@label\",\"@active\"],[\"fa-code-branch\",\"Third Label\",true]],null],[1,\"\\n\"],[13],[1,\"\\n\\n\"],[8,[39,8],null,[[\"@onClose\",\"@backdrop\",\"@visible\"],[[30,0,[\"closeSidePanel\"]],true,[30,0,[\"showSidePanel\"]]]],[[\"header\",\"main\",\"footer\"],[[[[1,\"\\n    \"],[8,[39,9],null,[[\"@onClose\",\"@onReturn\",\"@title\"],[[30,0,[\"closeSidePanel\"]],[30,0,[\"onReturn\"]],\"This is the side panel's header.\"]],null],[1,\"\\n  \"]],[]],[[[1,\"\\n    \"],[10,1],[12],[1,\"This is the side panel's content.\"],[13],[1,\"\\n  \"]],[]],[[[1,\"\\n    \"],[10,1],[12],[1,\"This is the side panel's footer.\"],[13],[1,\"\\n  \"]],[]]]]],[1,\"\\n\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,10],null,[[\"@value\",\"@validates\"],[[30,0,[\"password\"]],[30,0,[\"onPasswordValidation\"]]]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md padding-md\"],[14,5,\"background-color:sandybrown\"],[12],[1,\"\\n  \"],[8,[39,11],null,[[\"@title\",\"@subtitle\",\"@toggled\",\"@icon\",\"@onChange\"],[\"This is a title\",\"This is a subtitle\",[30,0,[\"togglable\"]],\"far fa-hourglass\",[30,0,[\"onToggle\"]]]],[[\"contents\"],[[[[1,\"\\n      \"],[10,1],[12],[1,\"This is a Contents named block\"],[13],[1,\"\\n    \"]],[]]]]],[1,\"\\n  \"],[8,[39,11],null,[[\"@title\",\"@subtitle\",\"@toggled\",\"@icon\",\"@onChange\",\"@size\"],[\"This is a title\",\"This is a subtitle\",[30,0,[\"togglable\"]],\"far fa-hourglass\",[30,0,[\"onToggle\"]],\"sm\"]],[[\"contents\"],[[[[1,\"\\n      \"],[10,1],[12],[1,\"This is a Contents named block\"],[13],[1,\"\\n    \"]],[]]]]],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md padding-md\"],[14,5,\"background-color:sandybrown\"],[12],[1,\"\\n  \"],[8,[39,11],null,[[\"@title\",\"@subtitle\",\"@toggled\",\"@badgeIcon\",\"@onChange\"],[\"This is a title\",\"This is a subtitle\",[30,0,[\"togglable\"]],\"far fa-hourglass\",[30,0,[\"onToggle\"]]]],null],[1,\"\\n  \"],[8,[39,11],null,[[\"@title\",\"@subtitle\",\"@toggled\",\"@badgeIcon\",\"@onChange\",\"@size\"],[\"This is a title\",\"This is a subtitle\",[30,0,[\"togglable\"]],\"far fa-hourglass\",[30,0,[\"onToggle\"]],\"sm\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md padding-md\"],[14,5,\"background-color:sandybrown\"],[12],[1,\"\\n  \"],[8,[39,11],null,[[\"@title\",\"@subtitle\",\"@toggled\",\"@badgeIcon\",\"@onChange\",\"@disabled\"],[\"This is a title\",\"This is a subtitle\",[30,0,[\"togglable\"]],\"far fa-hourglass\",[30,0,[\"onToggle\"]],true]],null],[1,\"\\n  \"],[8,[39,11],null,[[\"@title\",\"@subtitle\",\"@toggled\",\"@badgeIcon\",\"@onChange\",\"@disabled\",\"@size\"],[\"This is a title\",\"This is a subtitle\",[30,0,[\"togglable\"]],\"far fa-hourglass\",[30,0,[\"onToggle\"]],true,\"sm\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,12],null,[[\"@icon\",\"@title\",\"@selected\",\"@subtitle\"],[\"fas fa-box-open\",\"Shopify\",true,\"Identify influencers in your Shopify customers database\"]],[[\"actions\"],[[[[1,\"\\n      \"],[8,[39,13],null,[[\"@selected\"],[true]],null],[1,\"\\n    \"]],[]]]]],[1,\"\\n  \"],[8,[39,12],null,[[\"@icon\",\"@title\",\"@subtitle\"],[\"fas fa-box-open\",\"Import creators inside your campaign\",\"Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file. \"]],[[\"custom-icon\",\"actions\"],[[[[1,\"\\n      \"],[8,[39,14],null,[[\"@text\",\"@size\"],[\"2x\",\"lg\"]],null],[1,\"\\n    \"]],[]],[[[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"primary\",\"browse\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"secondary\",\"test\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n    \"]],[]]]]],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,12],null,[[\"@icon\",\"@title\",\"@subtitle\"],[\"fas fa-box-open\",\"Import creators inside your campaign\",\"Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file.\"]],null],[1,\"\\n  \"],[8,[39,12],null,[[\"@title\",\"@subtitle\"],[\"Banner without icon\",\"Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file.\"]],null],[1,\"\\n  \"],[8,[39,15],null,[[\"@image\",\"@title\",\"@plain\",\"@subtitle\"],[\"https://thepressfree.com/wp-content/uploads/2021/11/Voici-pourquoi-Bruce-Banner-netait-plus-Smart-Hulk-dans-la-800x445.jpg\",\"Import creators inside your campaign\",true,\"Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file. \"]],[[\"actions\"],[[[[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"secondary\",\"action\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n    \"]],[]]]]],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,12],null,[[\"@icon\",\"@title\",\"@selected\",\"@size\"],[\"fas fa-biohazard\",\"BioHazard\",true,\"sm\"]],[[\"actions\"],[[[[1,\"\\n      \"],[8,[39,16],null,[[\"@checked\",\"@onChange\",\"@size\"],[true,[30,0,[\"onCheck\"]],\"sm\"]],null],[1,\"\\n    \"]],[]]]]],[1,\"\\n  \"],[8,[39,12],null,[[\"@icon\",\"@title\",\"@size\",\"@disabled\"],[\"fas fa-helicopter\",\"Helicopter\",\"sm\",true]],[[\"actions\",\"secondary-actions\"],[[[[1,\"\\n      \"],[8,[39,17],null,[[\"@icon\"],[\"fa-ban\"]],null],[1,\"\\n    \"]],[]],[[[1,\"\\n      \"],[8,[39,18],null,[[\"@label\"],[\"Configure\"]],null],[1,\"\\n    \"]],[]]]]],[1,\"\\n  \"],[8,[39,12],null,[[\"@icon\",\"@title\",\"@selected\",\"@size\"],[\"fas fa-user-injured\",\"Injured\",false,\"sm\"]],[[\"actions\"],[[[[1,\"\\n      \"],[8,[39,16],null,[[\"@checked\",\"@onChange\",\"@size\"],[false,[30,0,[\"onCheck\"]],\"sm\"]],null],[1,\"\\n    \"]],[]]]]],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,19],null,[[\"@currency\",\"@value\",\"@onChange\",\"@disabled\"],[[30,0,[\"currency\"]],[30,0,[\"currencyValue\"]],[30,0,[\"onCurrencyInputChange\"]],true]],null],[1,\"\\n  \"],[8,[39,19],null,[[\"@currency\",\"@value\",\"@onChange\",\"@errorMessage\"],[[30,0,[\"currency\"]],[30,0,[\"currencyValue\"]],[30,0,[\"onCurrencyInputChange\"]],\"This is an error message\"]],null],[1,\"\\n  \"],[8,[39,19],null,[[\"@currency\",\"@value\",\"@allowCurrencyUpdate\",\"@onChange\"],[[30,0,[\"currency\"]],[30,0,[\"currencyValue\"]],false,[30,0,[\"onCurrencyInputChange\"]]]],null],[1,\"\\n  \"],[8,[39,19],null,[[\"@currency\",\"@value\",\"@onChange\",\"@allowedCurrencies\"],[[30,0,[\"currency\"]],[30,0,[\"currencyValue\"]],[30,0,[\"onCurrencyInputChange\"]],[30,0,[\"allowedCurrencies\"]]]],null],[1,\"\\n  \"],[8,[39,19],null,[[\"@currency\",\"@value\",\"@onChange\",\"@onlyCurrency\"],[[30,0,[\"currency\"]],[30,0,[\"currencyValue\"]],[30,0,[\"onCurrencyInputChange\"]],true]],null],[1,\"\\n  \"],[8,[39,19],null,[[\"@currency\",\"@onChange\",\"@onlyCurrency\",\"@allowedCurrencies\"],[[30,0,[\"currencyOnly\"]],[30,0,[\"onCurrencyOnlyChange\"]],true,[30,0,[\"allowedCurrencies\"]]]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-5\"],[12],[1,\"\\n    \"],[10,1],[12],[1,\"Country\"],[13],[1,\"\\n    \"],[8,[39,20],null,[[\"@value\",\"@sourceList\",\"@onChange\"],[[30,0,[\"selectedCountry\",\"id\"]],[30,0,[\"countries\"]],[30,0,[\"onCountrySelected\"]]]],null],[1,\"\\n  \"],[13],[1,\"\\n  \"],[1,[30,0,[\"selectedCountry\",\"provinces\",\"length\"]]],[1,\"\\n\"],[41,[28,[37,22],[[30,0,[\"selectedCountry\",\"provinces\",\"length\"]],0],null],[[[1,\"    \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-5\"],[12],[1,\"\\n      \"],[10,1],[12],[1,\"Province\"],[13],[1,\"\\n      \"],[8,[39,20],null,[[\"@sourceList\",\"@onChange\"],[[30,0,[\"selectedCountry\",\"provinces\"]],[30,0,[\"onProvinceSelected\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-10 margin-md width-px-200\"],[12],[1,\"\\n  \"],[8,[39,23],null,[[\"@skin\",\"@value\",\"@displayValue\",\"@label\",\"@size\"],[\"success\",42,true,\"Hello\",\"xs\"]],null],[1,\"\\n  \"],[8,[39,23],null,[[\"@skin\",\"@value\",\"@displayValue\",\"@label\"],[\"warning\",21,true,\"Hello\"]],null],[1,\"\\n  \"],[8,[39,23],null,[[\"@skin\",\"@value\",\"@displayValue\",\"@label\",\"@coloredBackground\"],[\"danger\",78,true,\"Hello\",true]],null],[1,\"\\n  \"],[8,[39,23],null,[[\"@skin\",\"@value\",\"@displayValue\",\"@label\",\"@coloredBackground\"],[\"success\",78,true,\"Hello\",true]],null],[1,\"\\n  \"],[8,[39,23],null,[[\"@value\",\"@displayValue\",\"@label\",\"@coloredBackground\"],[78,true,\"Hello\",false]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,24],null,[[\"@rating\",\"@totalStars\",\"@onChange\"],[3,5,[30,0,[\"onRatingClick\"]]]],null],[1,\"\\n  \"],[8,[39,24],null,[[\"@rating\",\"@totalStars\",\"@activeColor\",\"@passiveColor\",\"@onChange\"],[[30,0,[\"rating\"]],15,\"red\",\"blue\",[30,0,[\"onRatingClick\"]]]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,25],null,[[\"@placeholder\",\"@value\"],[\"search\",[30,0,[\"shopUrl\"]]]],[[\"prefix\",\"suffix\"],[[[[1,\"\\n      \"],[8,[39,17],[[24,0,\"font-color-gray-500\"]],[[\"@icon\"],[\"fa-search\"]],null],[1,\"\\n    \"]],[]],[[[1,\"\\n\"],[41,[28,[37,22],[[30,0,[\"shopUrl\",\"length\"]],0],null],[[[1,\"        \"],[8,[39,17],[[24,0,\"font-color-gray-500\"],[24,\"role\",\"button\"],[4,[38,4],[\"click\",[28,[37,5],[[28,[37,6],[[30,0,[\"shopUrl\"]]],null],\"\"],null]],null]],[[\"@icon\"],[\"fa-times\"]],null],[1,\"\\n\"]],[]],null],[1,\"    \"]],[]]]]],[1,\"\\n  \"],[8,[39,25],null,[[\"@placeholder\",\"@value\"],[\"search\",[30,0,[\"shopUrl\"]]]],null],[1,\"\\n  \"],[8,[39,10],null,[[\"@value\"],[\"azeaze\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10 margin-md width-pc-50\"],[12],[1,\"\\n  \"],[8,[39,26],null,[[\"@title\",\"@icon\",\"@onSave\",\"@onCancel\",\"@onEdit\"],[\"Title\",\"fa-laptop-code\",[30,0,[\"onAttributePanelSave\"]],[30,0,[\"onAttributePanelCancel\"]],[30,0,[\"onAttributePanelEdit\"]]]],[[\"contextual-action\",\"view-mode\",\"edition-mode\"],[[[[1,\"\\n      \"],[8,[39,3],null,[[\"@icon\",\"@square\"],[\"fa-plus\",true]],null],[1,\"\\n    \"]],[]],[[[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-9\"],[12],[1,\"\\n        \"],[8,[39,27],null,[[\"@label\",\"@onRemove\",\"@removeTooltip\"],[\"city\",[30,0,[\"onRemove\"]],\"Click to delete\"]],null],[1,\"\\n        \"],[8,[39,27],null,[[\"@label\",\"@value\",\"@onRemove\"],[\"city\",\"Paris\",[30,0,[\"onRemove\"]]]],null],[1,\"\\n        \"],[8,[39,28],null,[[\"@label\",\"@tags\"],[\"Pies\",[28,[37,29],[\"Apple pie\",\"Pecan pie\",\"Pumpkin pie\",\"Raspberry PI\"],null]]],null],[1,\"\\n        \"],[8,[39,28],null,[[\"@label\",\"@tags\"],[\"Fruits\",[28,[37,29],[\"apple\",\"banana\",\"pitaya\",\"jackfruit\",\"mango\",\"orange\",\"blueberry\",\"papaya\",\"pineapple\",\"watermelon\",\"vodkamelon\"],null]]],null],[1,\"\\n        \"],[8,[39,28],null,[[\"@label\"],[\"Fruits\"]],null],[1,\"\\n        \"],[8,[39,30],null,[[\"@lockTooltip\",\"@onRevealEmail\"],[\"This will fail\",[30,0,[\"onRevealEmailError\"]]]],null],[1,\"\\n\"],[41,[30,0,[\"revealed\"]],[[[1,\"          \"],[8,[39,31],null,[[\"@label\",\"@value\"],[\"Email address\",\"john.doe@gmail.com\"]],null],[1,\"\\n\"]],[]],[[[1,\"          \"],[8,[39,30],null,[[\"@tooltip\",\"@onRevealEmail\"],[\"Click on lock to reveal\",[30,0,[\"onRevealEmailSuccess\"]]]],null],[1,\"\\n\"]],[]]],[1,\"        \"],[8,[39,32],null,[[\"@countryCode\"],[\"US\"]],null],[1,\"\\n        \"],[8,[39,32],null,[[\"@countryCode\"],[\"\"]],null],[1,\"\\n        \"],[8,[39,31],null,[[\"@label\",\"@value\",\"@tooltip\"],[\"Label with tooltip copyable\",\"Hello World\",\"Hello World\"]],null],[1,\"\\n        \"],[8,[39,31],null,[[\"@label\",\"@value\",\"@copyable\"],[\"Label not copyable\",\"Hello World\",false]],null],[1,\"\\n        \"],[8,[39,33],null,[[\"@countryCode\",\"@prefix\",\"@number\"],[\"FR\",\"+33\",\"642424242\"]],null],[1,\"\\n        \"],[8,[39,33],null,[[\"@countryCode\",\"@number\"],[\"nope\",\"+33642424242\"]],null],[1,\"\\n        \"],[8,[39,33],null,[[\"@prefix\"],[\"+33\"]],null],[1,\"\\n        \"],[8,[39,30],null,[[\"@lockTooltip\",\"@onRevealEmail\"],[\"This will fail\",[30,0,[\"onRevealEmailError\"]]]],null],[1,\"\\n\\n        \"],[8,[39,32],null,[[\"@countryCode\"],[\"US\"]],null],[1,\"\\n        \"],[8,[39,32],null,[[\"@countryCode\"],[\"\"]],null],[1,\"\\n        \"],[8,[39,34],null,[[\"@label\",\"@rating\"],[\"Rating\",[30,0,[\"starRatingValue\"]]]],null],[1,\"\\n        \"],[8,[39,34],null,[[\"@label\"],[\"Rating not provided\"]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"]],[]],[[[1,\"\\n      Edition mode\\n    \"]],[]]]]],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,35],null,[[\"@value\",\"@onChange\"],[[30,0,[\"emailInputValue\"]],[30,0,[\"onEmailInputChange\"]]]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,0],null,[[\"@value\",\"@inline\"],[\"I am the value copied\",true]],null],[1,\"\\n  \"],[8,[39,0],null,[[\"@value\"],[\"I am the value copied\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10 margin-md padding-md\"],[14,5,\"background: white\"],[12],[1,\"\\n  \"],[8,[39,36],null,[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,37],null,[[\"@width\"],[\"70%\"]],null],[1,\"\\n  \"],[8,[39,37],null,[[\"@width\"],[20]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,37],null,[[\"@direction\",\"@width\",\"@gap\",\"@multiple\",\"@randomize\"],[\"column\",\"60%\",\"12\",\"3\",true]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,37],null,[[\"@width\",\"@multiple\",\"@direction\",\"@randomize\"],[\"10%\",\"3\",\"row\",\"true\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,17],null,[[\"@icon\"],[\"LaptopCode\"]],null],[1,\"\\n  \"],[8,[39,17],null,[[\"@icon\",\"@style\"],[\"LaptopCode\",\"solid\"]],null],[1,\"\\n  \"],[8,[39,17],null,[[\"@icon\",\"@style\"],[\"LaptopCode\",\"regular\"]],null],[1,\"\\n  \"],[8,[39,17],null,[[\"@icon\",\"@style\"],[\"LaptopCode\",\"light\"]],null],[1,\"\\n  \"],[8,[39,17],null,[[\"@icon\",\"@style\"],[\"LaptopCode\",\"duotone\"]],null],[1,\"\\n  \"],[8,[39,17],null,[[\"@icon\",\"@style\"],[\"FacebookSquare\",\"brand\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,38],null,[[\"@value\",\"@onChange\",\"@errorMessage\",\"@rows\",\"@resize\"],[[30,0,[\"numberValue\"]],[30,0,[\"handleNumberInput\"]],\"This is an error message\",8,\"vertical\"]],null],[1,\"\\n  \"],[8,[39,38],null,[[\"@value\",\"@onChange\",\"@rows\"],[[30,0,[\"numberValue\"]],[30,0,[\"handleNumberInput\"]],1]],null],[1,\"\\n\"],[13],[1,\"\\n\\n\"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,3],[[4,[38,4],[\"click\",[30,0,[\"openSplitModal\"]]],null]],[[\"@label\"],[\"Open split modal\"]],null],[1,\"\\n  \"],[8,[39,39],null,[[\"@icon\",\"@label\",\"@mainAction\"],[\"far fa-credit-card\",\"Dropdown button\",[28,[37,5],[[30,0,[\"redirectTo\"]],\"test\"],null]]],[[\"items\"],[[[[1,\"\\n      \"],[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"\\n        \"],[8,[39,17],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-share\"]],null],[1,\"\\n        Share\\n      \"],[13],[1,\"\\n    \"]],[]]]]],[1,\"\\n  \"],[8,[39,39],null,[[\"@icon\",\"@label\"],[\"far fa-hourglass\",\"Dropdown button\"]],[[\"items\"],[[[[1,\"\\n      \"],[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"\\n        \"],[8,[39,17],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-share\"]],null],[1,\"\\n        Share\\n      \"],[13],[1,\"\\n    \"]],[]]]]],[1,\"\\n  \"],[8,[39,3],null,[[\"@label\",\"@loading\"],[\"loading\",true]],null],[1,\"\\n\"],[41,[30,0,[\"showSplitModal\"]],[[[1,\"    \"],[8,[39,40],null,[[\"@close\"],[[30,0,[\"closeSplitModal\"]]]],[[\"content\",\"footer\"],[[[[1,\"\\n        Content goes here\\n      \"]],[]],[[[1,\"\\n        \"],[8,[39,3],[[4,[38,4],[\"click\",[30,0,[\"closeSplitModal\"]]],null]],[[\"@label\"],[\"Close\"]],null],[1,\"\\n      \"]],[]]]]],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10 margin-md\"],[12],[1,\"\\n  OSS:Checkbox:\\n  \"],[8,[39,16],null,[[\"@checked\",\"@onChange\"],[[30,0,[\"isChecked\"]],[30,0,[\"onCheck\"]]]],null],[1,\"\\n  \"],[8,[39,16],null,[[\"@checked\",\"@disabled\",\"@onChange\"],[[30,0,[\"isChecked\"]],true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n  \"],[8,[39,16],null,[[\"@checked\",\"@disabled\",\"@partial\",\"@onChange\"],[[30,0,[\"isChecked\"]],true,true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n  \"],[8,[39,16],null,[[\"@checked\",\"@partial\",\"@onChange\"],[[30,0,[\"isChecked\"]],true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n  \"],[8,[39,16],null,[[\"@checked\",\"@size\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",[30,0,[\"onCheck\"]]]],null],[1,\"\\n  \"],[8,[39,16],null,[[\"@checked\",\"@size\",\"@partial\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,41],null,[[\"@toggles\",\"@selectedToggle\",\"@onSelection\"],[[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]],[30,0,[\"triggerSelection\"]]]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,42],null,[[\"@value\",\"@onChange\"],[[30,0,[\"numberValue\"]],[30,0,[\"handleNumberInput\"]]]],null],[1,\"\\n  \"],[8,[39,42],null,[[\"@min\",\"@max\",\"@step\",\"@onChange\"],[0,15,5,[30,0,[\"handleNumberInput\"]]]],null],[1,\"\\n  \"],[8,[39,42],null,[[\"@min\",\"@max\",\"@step\",\"@minReachedTooltip\",\"@maxReachedTooltip\",\"@onChange\"],[0,15,5,\"Hello\",\"you\",[30,0,[\"handleNumberInput\"]]]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,43],null,[[\"@value\",\"@prefix\",\"@placeholder\",\"@suffix\",\"@errorMessage\",\"@validationRegex\",\"@onChange\"],[[30,0,[\"shopifyDomain\"]],\"https://\",\"shopname\",\".myshopify.com\",\"Not a valid shopify domain\",[30,0,[\"subdomainRegex\"]],[30,0,[\"onUrlInputChange\"]]]],null],[1,\"\\n  \"],[8,[39,43],null,[[\"@prefix\",\"@placeholder\",\"@onChange\",\"@value\"],[\"https://\",\"No regex specified\",[30,0,[\"onUrlInputChange\"]],[30,0,[\"shopifyDomain\"]]]],null],[1,\"\\n  \"],[8,[39,43],null,[[\"@value\",\"@prefix\",\"@placeholder\",\"@errorMessage\",\"@validationRegex\",\"@onChange\"],[[30,0,[\"shopUrl\"]],\"https://\",\"shop url\",\"Please enter a valid URL\",[30,0,[\"urlRegex\"]],[30,0,[\"onUrlInputChange\"]]]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,44],null,[[\"@value\",\"@prefix\",\"@placeholder\",\"@suffix\",\"@errorMessage\"],[[30,0,[\"inputValue\"]],\"This\",\"makes no\",\"sense\",\"This is an error message\"]],null],[1,\"\\n  \"],[8,[39,44],null,[[\"@value\",\"@prefix\",\"@placeholder\"],[[30,0,[\"inputValue\"]],\"@\",\"Username\"]],null],[1,\"\\n  \"],[8,[39,44],null,[[\"@value\",\"@suffix\",\"@placeholder\"],[[30,0,[\"inputValue\"]],\"@example.com\",\"john.doe\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,13],null,[[\"@selected\",\"@onChange\"],[[30,0,[\"radio1\"]],[28,[37,5],[[30,0,[\"onRadioBtnChange\"]],\"radio1\"],null]]],null],[1,\"\\n  \"],[8,[39,13],null,[[\"@selected\",\"@onChange\"],[[30,0,[\"radio2\"]],[28,[37,5],[[30,0,[\"onRadioBtnChange\"]],\"radio2\"],null]]],null],[1,\"\\n  \"],[8,[39,13],null,[[\"@selected\",\"@disabled\"],[true,true]],null],[1,\"\\n  \"],[8,[39,13],null,[[\"@selected\",\"@disabled\"],[false,true]],null],[1,\"\\n  \"],[8,[39,0],null,[[\"@value\"],[\"I am the value copied\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md fx-xalign-center\"],[12],[1,\"\\n  \"],[8,[39,45],null,[[\"@image\",\"@initials\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"Ts\"]],null],[1,\"\\n  \"],[8,[39,45],null,[[\"@initials\"],[\"MI\"]],null],[1,\"\\n  \"],[8,[39,45],null,null,null],[1,\"\\n\\n  \"],[8,[39,45],null,[[\"@size\"],[\"xs\"]],null],[1,\"\\n  \"],[8,[39,45],null,[[\"@size\"],[\"sm\"]],null],[1,\"\\n  \"],[8,[39,45],null,[[\"@size\"],[\"md\"]],null],[1,\"\\n  \"],[8,[39,45],null,[[\"@size\"],[\"lg\"]],null],[1,\"\\n\"],[13],[1,\"\\n\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,46],null,[[\"@items\",\"@selectedItems\",\"@onChange\",\"@onSearch\"],[null,[30,0,[\"superHeroes\"]],[30,0,[\"onPowerSelectChange\"]],[30,0,[\"onPowerSelectSearch\"]]]],[[\"selected-item\",\"option-item\"],[[[[1,\"\\n      \"],[8,[39,47],null,[[\"@label\",\"@onRemove\",\"@maxDisplayWidth\"],[[30,1],[30,0,[\"onPowerSelectChange\"]],100]],null],[1,\"\\n    \"]],[1]],[[[1,\"\\n      \"],[1,[30,2]],[1,\"\\n    \"]],[2]]]]],[1,\"\\n\\n  \"],[8,[39,46],null,[[\"@items\",\"@selectedItems\",\"@onChange\",\"@onSearch\"],[null,[30,0,[\"superHeroes\"]],[30,0,[\"onPowerSelectChange\"]],[30,0,[\"onPowerSelectSearch\"]]]],[[\"selected-item\",\"option-item\",\"empty-state\"],[[[[1,\"\\n      \"],[8,[39,47],null,[[\"@label\",\"@onRemove\",\"@maxDisplayWidth\"],[[30,3],[30,0,[\"onPowerSelectChange\"]],100]],null],[1,\"\\n    \"]],[3]],[[[1,\"\\n      \"],[1,[30,4]],[1,\"\\n    \"]],[4]],[[[1,\"\\n      Custom empty state\\n    \"]],[]]]]],[1,\"\\n\\n  \"],[8,[39,46],null,[[\"@items\",\"@selectedItems\",\"@onChange\",\"@onSearch\"],[[30,0,[\"superHeroes\"]],null,[30,0,[\"onPowerSelectChange\"]],[30,0,[\"onPowerSelectSearch\"]]]],[[\"selected-item\",\"option-item\"],[[[[1,\"\\n      \"],[8,[39,47],null,[[\"@label\",\"@onRemove\",\"@maxDisplayWidth\"],[[30,5],[30,0,[\"onPowerSelectChange\"]],100]],null],[1,\"\\n    \"]],[5]],[[[1,\"\\n      \"],[1,[30,6]],[1,\"\\n    \"]],[6]]]]],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,48],null,[[\"@onSelection\",\"@tabArray\"],[[30,0,[\"onSelectionNavTab\"]],[30,0,[\"tabArrayNavTab\"]]]],null],[1,\"\\n\"],[13],[1,\"\\n\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,47],null,[[\"@label\",\"@onRemove\"],[\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n  \"],[8,[39,47],null,[[\"@skin\",\"@label\",\"@onRemove\"],[\"default\",\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n  \"],[8,[39,47],null,[[\"@skin\",\"@label\",\"@onRemove\"],[\"primary\",\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n  \"],[8,[39,47],null,[[\"@skin\",\"@label\",\"@onRemove\"],[\"success\",\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n  \"],[8,[39,47],null,[[\"@skin\",\"@label\",\"@onRemove\"],[\"danger\",\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n  \"],[8,[39,47],null,[[\"@skin\",\"@label\",\"@disabled\",\"@onRemove\"],[\"danger\",\"Chip\",true,[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n  \"],[8,[39,47],null,[[\"@skin\",\"@label\",\"@disabled\",\"@maxDisplayWidth\",\"@onRemove\"],[\"success\",\"Chip with a huge label\",false,100,[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n  \"],[8,[39,47],null,[[\"@skin\",\"@label\",\"@disabled\",\"@maxDisplayWidth\",\"@onRemove\"],[\"danger\",\"Chip with a huge label\",false,160,[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n  \"],[8,[39,49],null,[[\"@skin\",\"@label\",\"@disabled\",\"@onRemove\",\"@maxDisplayWidth\"],[\"danger\",\"Chip with a huge label\",true,[30,0,[\"onCrossChipClick\"]],50]],null],[1,\"\\n\"],[13],[1,\"\\n\\n\"],[10,0],[14,0,\"fx-row fx-1 margin-md fx-gap-px-12\"],[12],[1,\"\\n  \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-12\"],[12],[1,\"\\n    \"],[8,[39,50],null,[[\"@value\",\"@items\",\"@onChange\"],[null,[30,0,[\"items\"]],[30,0,[\"onSelect\"]]]],[[\"option\"],[[[[1,\"\\n        \"],[1,[30,7,[\"name\"]]],[1,\"\\n      \"]],[7]]]]],[1,\"\\n\\n    \"],[8,[39,50],null,[[\"@value\",\"@items\",\"@onChange\"],[[30,0,[\"selectedItem\"]],[30,0,[\"items\"]],[30,0,[\"onSelect\"]]]],[[\"option\"],[[[[1,\"\\n        \"],[1,[30,8,[\"name\"]]],[1,\"\\n      \"]],[8]]]]],[1,\"\\n\\n    \"],[8,[39,50],null,[[\"@value\",\"@items\",\"@onChange\",\"@errorMessage\"],[[30,0,[\"selectedItem\"]],[30,0,[\"items\"]],[30,0,[\"onSelect\"]],\"This is an error\"]],[[\"option\"],[[[[1,\"\\n        \"],[1,[30,9,[\"name\"]]],[1,\"\\n      \"]],[9]]]]],[1,\"\\n\\n    \"],[8,[39,50],null,[[\"@value\",\"@items\",\"@onChange\",\"@successMessage\"],[[30,0,[\"selectedItem\"]],[30,0,[\"items\"]],[30,0,[\"onSelect\"]],\"It works\"]],[[\"option\"],[[[[1,\"\\n        \"],[1,[30,10,[\"name\"]]],[1,\"\\n      \"]],[10]]]]],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-12\"],[12],[1,\"\\n    \"],[8,[39,50],null,[[\"@value\",\"@items\",\"@onChange\",\"@disabled\"],[[30,0,[\"selectedItem\"]],[30,0,[\"items\"]],[30,0,[\"onSelect\"]],true]],[[\"option\"],[[[[1,\"\\n        \"],[1,[30,11,[\"name\"]]],[1,\"\\n      \"]],[11]]]]],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-1 margin-md\"],[12],[1,\"\\n  \"],[8,[39,51],[[24,0,\"fx-1\"],[24,\"data-control-name\",\"mailing-edit-template-ccs-input\"]],[[\"@values\",\"@onChange\"],[[30,0,[\"superHeroes\"]],[30,0,[\"updateSuperHeroes\"]]]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-12 margin-md\"],[12],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"primary\",\"far fa-thumbs-up\"]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"success\",\"far fa-thumbs-up\"]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"warning\",\"far fa-thumbs-up\"]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"danger\",\"far fa-thumbs-up\"]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"secondary\",\"far fa-thumbs-up\"]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@icon\"],[\"Tag\",\"far fa-thumbs-up\"]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\"],[\"Tag\",\"secondary\"]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@icon\"],[\"far fa-thumbs-up\"]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-orange\"]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-cyan\"]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-yellow\"]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-blue\"]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-violet\"]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-lime\"]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Test with a huge label sentence\",\"danger\",\"far fa-thumbs-up\"]],null],[1,\"\\n  \"],[8,[39,52],[[4,[38,53],null,[[\"title\",\"placement\"],[\"Test with a huge label sentence\",\"top\"]]]],[[\"@label\",\"@skin\",\"@icon\",\"@hasEllipsis\"],[\"Test with a huge label sentence\",\"danger\",\"far fa-thumbs-up\",true]],null],[1,\"\\n\"],[13],[1,\"\\n\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-12 margin-md\"],[12],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"primary\",\"far fa-thumbs-up\",true]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"success\",\"far fa-thumbs-up\",true]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"warning\",\"far fa-thumbs-up\",true]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"danger\",\"far fa-thumbs-up\",true]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"secondary\",\"far fa-thumbs-up\",true]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@icon\",\"@plain\"],[\"Tag\",\"far fa-thumbs-up\",true]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"secondary\",true]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@icon\",\"@plain\"],[\"far fa-thumbs-up\",true]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-orange\",true]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-cyan\",true]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-yellow\",true]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-blue\",true]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-violet\",true]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-lime\",true]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Test with a huge label sentence\",\"danger\",\"far fa-thumbs-up\",true]],null],[1,\"\\n  \"],[8,[39,52],[[4,[38,53],null,[[\"title\",\"placement\"],[\"Test with a huge label sentence\",\"top\"]]]],[[\"@label\",\"@skin\",\"@icon\",\"@hasEllipsis\",\"@plain\"],[\"Test with a huge label sentence\",\"danger\",\"far fa-thumbs-up\",true,true]],null],[1,\"\\n  \"],[8,[39,52],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\",\"@htmlSafe\"],[\"normal text - <b>bold text</b>\",\"danger\",\"far fa-thumbs-up\",true,true]],null],[1,\"\\n\"],[13],[1,\"\\n\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-12 margin-md\"],[12],[1,\"\\n  \"],[8,[39,54],null,[[\"@title\",\"@subtitle\"],[\"Title\",\"Subtitle\"]],[[\"extra-content\"],[[[[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,18],null,[[\"@label\",\"@icon\"],[\"Super Label\",\"fas fa-hourglass\"]],null],[1,\"\\n        \"],[8,[39,18],null,[[\"@label\"],[\"Super Label 2\"]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"]],[]]]]],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-12 margin-md\"],[12],[1,\"\\n  \"],[8,[39,54],null,[[\"@title\",\"@subtitle\",\"@plain\",\"@closable\"],[\"TitleTest\",\"SubtitleTest\",false,true]],null],[1,\"\\n  \"],[8,[39,54],null,[[\"@title\",\"@subtitle\"],[\"Title\",\"Subtitle\"]],null],[1,\"\\n  \"],[8,[39,54],null,[[\"@skin\",\"@title\",\"@subtitle\"],[\"error\",\"Title\",\"Subtitle\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-12 margin-md\"],[12],[1,\"\\n  \"],[8,[39,54],null,[[\"@skin\",\"@title\"],[\"success\",\"Title\"]],null],[1,\"\\n  \"],[8,[39,54],null,[[\"@skin\",\"@subtitle\"],[\"warning\",\"Subtitle\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-gap-px-12 margin-md\"],[12],[1,\"\\n  \"],[8,[39,3],[[4,[38,4],[\"click\",[28,[37,5],[[30,0,[\"triggerToast\"]],\"info\"],null]],null]],[[\"@label\",\"@size\"],[\"Info\",\"md\"]],null],[1,\"\\n  \"],[8,[39,3],[[4,[38,4],[\"click\",[28,[37,5],[[30,0,[\"triggerToast\"]],\"success\"],null]],null]],[[\"@label\",\"@size\"],[\"Success\",\"md\"]],null],[1,\"\\n  \"],[8,[39,3],[[4,[38,4],[\"click\",[28,[37,5],[[30,0,[\"triggerToast\"]],\"warning\"],null]],null]],[[\"@label\",\"@size\"],[\"Warning\",\"md\"]],null],[1,\"\\n  \"],[8,[39,3],[[4,[38,4],[\"click\",[28,[37,5],[[30,0,[\"triggerToast\"]],\"error\"],null]],null]],[[\"@label\",\"@size\"],[\"Error\",\"md\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-col fx-gap-px-12 margin-md\"],[12],[1,\"\\n  \"],[8,[39,55],null,[[\"@content\",\"@scrollable\",\"@copyable\",\"@collapseHeight\",\"@onCopyMessage\"],[[30,0,[\"code4CodeBlock\"]],true,true,200,\"Copied to clipboard!\"]],null],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-col fx-gap-px-12 margin-md\"],[12],[1,\"\\n  \"],[8,[39,3],[[4,[38,4],[\"click\",[30,0,[\"openModal\"]]],null]],[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"primary\",\"md\",\"Open MODAL\",\"fa fa-unicorn\"]],null],[1,\"\\n\"],[41,[30,0,[\"showModal\"]],[[[1,\"    \"],[8,[39,56],null,[[\"@title\",\"@subtitle\",\"@close\",\"@disableClickOutside\",\"@size\"],[\"Example modal\",\"subtitle\",[30,0,[\"closeModal\"]],false,\"md\"]],[[\"content\",\"footer\"],[[[[1,\"\\n        \"],[10,0],[14,5,\"height: 200px; background-color: white\"],[12],[1,\"\\n          azeazeazeaze\\n        \"],[13],[1,\"\\n      \"]],[]],[[[1,\"\\n        \"],[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n          \"],[8,[39,17],null,[[\"@icon\"],[\"fa-info\"]],null],[10,3],[14,6,\"\"],[12],[1,\"More info\"],[13],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,3],[[4,[38,4],[\"click\",[30,0,[\"closeModal\"]]],null]],[[\"@skin\",\"@label\"],[\"default\",\"Close\"]],null],[1,\"\\n          \"],[8,[39,3],null,[[\"@skin\",\"@label\"],[\"secondary\",\"Save\"]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-col fx-gap-px-12 margin-md\"],[12],[1,\"\\n  \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"destructive\",\"destructive\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"destructive\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"alert\",\"alert\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"alert\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"secondary\",\"secondary\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"secondary\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"default\",\"default\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"default\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"success\",\"success\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"success\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-orange\",\"Extended orange\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-orange\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-yellow\",\"Extended yellow\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-yellow\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-lime\",\"Extended lime\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-lime\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-cyan\",\"Extended Cyan\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-cyan\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-blue\",\"Extended blue\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-blue\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-violet\",\"Extended violet\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-violet\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n    \"],[8,[39,3],null,[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"primary\",\"xs\",\"XS\",\"far fa-envelope-open\"]],null],[1,\"\\n    \"],[8,[39,3],null,[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"primary\",\"sm\",\"SM\",\"far fa-envelope-open\"]],null],[1,\"\\n    \"],[8,[39,3],null,[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"primary\",\"md\",\"MD\",\"far fa-envelope-open\"]],null],[1,\"\\n    \"],[8,[39,3],null,[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"primary\",\"lg\",\"LG\",\"far fa-envelope-open\"]],null],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n    \"],[8,[39,3],null,[[\"@square\",\"@skin\",\"@size\",\"@icon\"],[\"true\",\"primary\",\"sm\",\"far fa-envelope-open\"]],null],[1,\"\\n    \"],[8,[39,3],null,[[\"@square\",\"@skin\",\"@size\",\"@icon\"],[\"true\",\"primary\",\"md\",\"far fa-envelope-open\"]],null],[1,\"\\n    \"],[8,[39,3],null,[[\"@square\",\"@skin\",\"@size\",\"@icon\"],[\"true\",\"primary\",\"lg\",\"far fa-envelope-open\"]],null],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n    \"],[8,[39,14],null,[[\"@icon\",\"@size\"],[\"fas fa-box-open\",\"lg\"]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@icon\"],[\"fas fa-box-open\"]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@size\",\"@icon\"],[\"md\",\"fas fa-box-open\"]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@size\",\"@icon\"],[\"sm\",\"fas fa-box-open\"]],null],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n    \"],[8,[39,14],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"primary\"]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"primary\",true]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"success\"]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"success\",true]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"alert\"]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"alert\",true]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"error\"]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"error\",true]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-orange\"]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-orange\",true]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-yellow\"]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-yellow\",true]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-lime\"]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-lime\",true]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-cyan\"]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-cyan\",true]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-blue\"]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-blue\",true]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-violet\"]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-violet\",true]],null],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n    \"],[8,[39,14],null,[[\"@text\",\"@size\"],[\"2x\",\"lg\"]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@text\"],[\"2x\"]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@text\",\"@size\"],[\"2x\",\"sm\"]],null],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n    \"],[8,[39,14],null,[[\"@image\",\"@size\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"lg\"]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@image\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\"]],null],[1,\"\\n    \"],[8,[39,14],null,[[\"@image\",\"@size\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"sm\"]],null],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n\"],[42,[28,[37,58],[[28,[37,58],[[30,0,[\"media\"]]],null]],null],null,[[[1,\"      \"],[8,[39,59],null,[[\"@postType\",\"@selected\",\"@plain\",\"@onToggle\"],[[30,12,[\"key\"]],[30,12,[\"active\"]],[30,12,[\"active\"]],[30,0,[\"toggleMedia\"]]]],null],[1,\"\\n\"]],[12]],null],[1,\"  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\",\"@countDown\"],[\"destructive\",\"Count down\",\"far fa-hourglass\",\"md\",[28,[37,2],null,[[\"callback\"],[[30,0,[\"countDownAction\"]]]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,0],[14,0,\"fx-row fx-1\"],[12],[1,\"\\n    \"],[8,[39,60],null,[[\"@prefix\",\"@number\",\"@onChange\"],[[30,0,[\"phonePrefix\"]],[30,0,[\"phoneNumber\"]],[30,0,[\"onPhoneNumberChange\"]]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\\n\"],[10,0],[14,0,\"upf-table-v2 margin-md\"],[12],[1,\"\\n  \"],[10,0],[14,0,\"upf-table__header\"],[12],[1,\"\\n\"],[42,[28,[37,58],[[28,[37,58],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"      \"],[10,0],[15,0,[29,[\"upf-table__cell \",[30,13,[\"class\"]]]]],[12],[1,\"\\n        \"],[1,[30,13,[\"title\"]]],[1,\"\\n      \"],[13],[1,\"\\n\"]],[13]],null],[1,\"  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"upf-table__content\"],[12],[1,\"\\n\"],[42,[28,[37,58],[[28,[37,58],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"      \"],[10,0],[14,0,\"upf-table__row\"],[12],[1,\"\\n\"],[42,[28,[37,58],[[28,[37,58],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"          \"],[10,0],[15,0,[29,[\"upf-table__cell \",[30,16,[\"class\"]]]]],[12],[1,\"\\n\"],[41,[30,16,[\"title\"]],[[[1,\"              \"],[8,[39,52],null,[[\"@skin\",\"@label\"],[\"primary\",\"Hello\"]],null],[1,\"\\n\"]],[]],[[[1,\"              \"],[8,[39,17],null,[[\"@icon\"],[\"fa-chevron-right\"]],null],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[16,17]],null],[1,\"      \"],[13],[1,\"\\n\"]],[14,15]],null],[1,\"  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\\n\"],[10,0],[14,0,\"upf-table-v2 upf-table-v2--clickable margin-md\"],[12],[1,\"\\n  \"],[10,0],[14,0,\"upf-table__header\"],[12],[1,\"\\n\"],[42,[28,[37,58],[[28,[37,58],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"      \"],[10,0],[15,0,[29,[\"upf-table__cell \",[30,18,[\"class\"]]]]],[12],[1,\"\\n        \"],[1,[30,18,[\"title\"]]],[1,\"\\n      \"],[13],[1,\"\\n\"]],[18]],null],[1,\"  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"upf-table__content\"],[12],[1,\"\\n\"],[42,[28,[37,58],[[28,[37,58],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"      \"],[10,0],[14,0,\"upf-table__row\"],[14,\"role\",\"button\"],[12],[1,\"\\n\"],[42,[28,[37,58],[[28,[37,58],[[30,0,[\"tableDemo\",\"header\"]]],null]],null],null,[[[1,\"          \"],[10,0],[15,0,[29,[\"upf-table__cell \",[30,21,[\"class\"]]]]],[12],[1,\"\\n\"],[41,[30,21,[\"title\"]],[[[1,\"              Content\\n              \"],[1,[30,22]],[1,\"\\n\"]],[]],[[[1,\"              \"],[8,[39,17],null,[[\"@icon\"],[\"fa-chevron-right\"]],null],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[21,22]],null],[1,\"      \"],[13],[1,\"\\n\"]],[19,20]],null],[1,\"  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\\n\"],[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-24\"],[12],[1,\"\\n  \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n    \"],[8,[39,61],null,[[\"@uploader\",\"@rules\",\"@size\",\"@subtitle\",\"@onUploadSuccess\"],[[30,0,[\"mockUploader\"]],[28,[37,29],[[28,[37,2],null,[[\"type\",\"value\"],[\"filesize\",\"8MB\"]]]],null],\"lg\",\"JPG, PNG, PDF (Max 800x400px - 2MB)\",[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n\\n    \"],[8,[39,61],null,[[\"@uploader\",\"@rules\",\"@subtitle\",\"@onUploadSuccess\",\"@displayPreview\"],[[30,0,[\"mockUploader\"]],[28,[37,29],[[28,[37,2],null,[[\"type\",\"value\"],[\"filesize\",\"8MB\"]]]],null],\"JPG, PNG, PDF (Max 800x400px - 2MB)\",[30,0,[\"onUploadSuccess\"]],true]],null],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n    \"],[8,[39,61],null,[[\"@uploader\",\"@rules\",\"@size\",\"@disabled\",\"@subtitle\",\"@onUploadSuccess\"],[[30,0,[\"mockUploader\"]],[28,[37,29],[[28,[37,2],null,[[\"type\",\"value\"],[\"filesize\",\"8MB\"]]]],null],\"lg\",true,\"JPG, PNG, PDF (Max 800x400px - 2MB)\",[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n\\n    \"],[8,[39,61],null,[[\"@uploader\",\"@rules\",\"@disabled\",\"@subtitle\",\"@onUploadSuccess\"],[[30,0,[\"mockUploader\"]],[28,[37,29],[[28,[37,2],null,[[\"type\",\"value\"],[\"filesize\",\"8MB\"]]]],null],true,\"JPG, PNG, PDF (Max 800x400px - 2MB)\",[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10 margin-md\"],[12],[1,\"\\n  \"],[8,[39,62],[[24,0,\"fx-col fx-1\"]],null,[[\"default\"],[[[[1,\"\\n    \"],[10,1],[14,0,\"text-style-semibold\"],[12],[1,\"Title\"],[13],[1,\"\\n    \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,\"Subtitle\"],[13],[1,\"\\n    \"],[10,\"hr\"],[14,0,\"width-pc-100\"],[12],[13],[1,\"\\n    \"],[10,1],[12],[1,\"Content\"],[13],[1,\"\\n  \"]],[]]]]],[1,\"\\n  \"],[8,[39,62],[[24,0,\"fx-row fx-1 fx-gap-px-10\"]],null,[[\"default\"],[[[[1,\"\\n    \"],[8,[39,43],null,[[\"@value\",\"@prefix\",\"@placeholder\",\"@suffix\",\"@errorMessage\",\"@validationRegex\",\"@onChange\"],[[30,0,[\"shopifyDomain\"]],\"https://\",\"shopname\",\".myshopify.com\",\"Not a valid shopify domain\",[30,0,[\"subdomainRegex\"]],[30,0,[\"onUrlInputChange\"]]]],null],[1,\"\\n    \"],[8,[39,43],null,[[\"@prefix\",\"@placeholder\",\"@onChange\",\"@value\"],[\"https://\",\"No regex specified\",[30,0,[\"onUrlInputChange\"]],[30,0,[\"shopifyDomain\"]]]],null],[1,\"\\n  \"]],[]]]]],[1,\"\\n\"],[13],[1,\"\\n\"],[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-24\"],[12],[1,\"\\n  \"],[8,[39,63],null,[[\"@icon\"],[\"/assets/images/upfluence-white-logo.svg\"]],[[\"header\",\"content\",\"footer\"],[[[[1,\"\\n      \"],[8,[39,45],null,[[\"@image\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\"]],null],[1,\"\\n    \"]],[]],[[[1,\"\\n      \"],[8,[39,64],null,[[\"@label\",\"@icon\"],[\"First Label\",\"fa-search\"]],null],[1,\"\\n      \"],[8,[39,64],null,[[\"@label\",\"@icon\"],[\"Second Label\",\"fa-cog\"]],null],[1,\"\\n      \"],[8,[39,64],null,[[\"@label\",\"@icon\"],[\"Third Label\",\"fa-search\"]],null],[1,\"\\n    \"]],[]],[[[1,\"\\n      \"],[8,[39,64],null,[[\"@label\",\"@icon\"],[\"Logout\",\"fa-sign-out\"]],null],[1,\"\\n    \"]],[]]]]],[1,\"\\n\"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"showDialog\"]],[[[1,\"  \"],[8,[39,65],null,[[\"@title\",\"@mainAction\",\"@secondaryAction\",\"@icon\",\"@skin\"],[[30,0,[\"translatedHTMLTitle\"]],[28,[37,2],null,[[\"action\",\"label\"],[[30,0,[\"onMainAction\"]],\"Discard changes\"]]],[28,[37,2],null,[[\"action\",\"label\"],[[30,0,[\"onSecondaryAction\"]],\"Keep editing\"]]],\"fa-circle-info\",\"error\"]],null],[1,\"\\n\"]],[]],null]],[\"selectedProduct\",\"item\",\"selectedProduct\",\"item\",\"selectedProduct\",\"item\",\"item\",\"item\",\"item\",\"item\",\"item\",\"socialMedia\",\"header\",\"header\",\"index\",\"header\",\"index\",\"header\",\"header\",\"index\",\"header\",\"index\"],false,[\"o-s-s/copy\",\"o-s-s/slider\",\"hash\",\"o-s-s/button\",\"on\",\"fn\",\"mut\",\"o-s-s/layout/navbar/nav-item\",\"o-s-s/side-panel\",\"o-s-s/side-panel/header\",\"o-s-s/password-input\",\"o-s-s/togglable-section\",\"o-s-s/banner\",\"o-s-s/radio-button\",\"o-s-s/badge\",\"o-s-s/bruce\",\"o-s-s/checkbox\",\"o-s-s/icon\",\"o-s-s/link\",\"o-s-s/currency-input\",\"o-s-s/country-selector\",\"if\",\"gt\",\"o-s-s/progress-bar\",\"o-s-s/star-rating\",\"o-s-s/input-container\",\"o-s-s/attributes-panel\",\"o-s-s/attribute/removable-text\",\"o-s-s/attribute/tag-array\",\"array\",\"o-s-s/attribute/revealable-email\",\"o-s-s/attribute/text\",\"o-s-s/attribute/country\",\"o-s-s/attribute/phone-number\",\"o-s-s/attribute/rating\",\"o-s-s/email-input\",\"o-s-s/illustration\",\"o-s-s/skeleton\",\"o-s-s/text-area\",\"o-s-s/button-dropdown\",\"o-s-s/split-modal\",\"o-s-s/toggle-buttons\",\"o-s-s/number-input\",\"o-s-s/url-input\",\"o-s-s/input-group\",\"o-s-s/avatar\",\"o-s-s/power-select\",\"o-s-s/chip\",\"o-s-s/nav-tab\",\"o-s-s/chip-n-fish\",\"o-s-s/select\",\"o-s-s/array-input\",\"o-s-s/tag\",\"enable-tooltip\",\"o-s-s/alert\",\"o-s-s/code-block\",\"o-s-s/modal-dialog\",\"each\",\"-track-array\",\"o-s-s/social-post-badge\",\"o-s-s/phone-number-input\",\"o-s-s/upload-area\",\"o-s-s/content-panel\",\"o-s-s/panel\",\"o-s-s/panel/row\",\"o-s-s/dialog\"]]",
     "moduleName": "dummy/templates/index.hbs",
+    "isStrictMode": false
+  });
+});
+;define("dummy/templates/scrollable", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  var _default = _exports.default = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="fx-col fx-gap-px-6 padding-px-18">
+    <div class="fx-row fx-gap-px-6">
+      <OSS::Button @label="Open modal" {{on "click" this.openModal}} />
+      <OSS::Button @label="Open sidepanel" {{on "click" this.openSidePanel}} />
+    </div>
+  
+    <div style="height: 500px; width:100%">
+      <OSS::ScrollablePanel>
+        <div class="fx-col fx-gap-px-6">
+          {{#each this.loop}}
+            <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}} />
+          {{/each}}
+        </div>
+      </OSS::ScrollablePanel>
+    </div>
+  </div>
+  
+  {{#if this.displayModal}}
+    <OSS::ModalDialog
+      @title="Example modal"
+      @subtitle="subtitle"
+      @close={{this.closeModal}}
+      @disableClickOutside={{false}}
+      @size="md"
+    >
+      <:content>
+        <OSS::ScrollablePanel style="height: 280px">
+          <div class="fx-col fx-gap-px-6">
+            {{#each this.loop}}
+              <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}} />
+            {{/each}}
+          </div>
+        </OSS::ScrollablePanel>
+      </:content>
+      <:footer>
+        <div class="fx-1">
+          <OSS::Icon @icon="fa-info" /><a href="">More info</a>
+        </div>
+        <div class="fx-row fx-gap-px-12">
+          <OSS::Button @skin="default" @label="Close" {{on "click" this.closeModal}} />
+          <OSS::Button @skin="secondary" @label="Save" />
+        </div>
+      </:footer>
+    </OSS::ModalDialog>
+  {{/if}}
+  
+  <OSS::SidePanel
+    @onClose={{this.closeSidePanel}}
+    @backdrop={{true}}
+    @visible={{this.displaySidePanel}}
+    @noPadding={{true}}
+  >
+    <:header>
+      <OSS::SidePanel::Header
+        @onClose={{this.closeSidePanel}}
+        @onReturn={{this.onReturn}}
+        @title="This is the side panel's header."
+      />
+    </:header>
+    <:main>
+      <OSS::ScrollablePanel>
+        <div class="fx-col fx-gap-px-6">
+          {{#each this.loop}}
+            <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}} />
+          {{/each}}
+        </div>
+      </OSS::ScrollablePanel>
+    </:main>
+    <:footer>
+      <span>This is the side panel's footer.</span>
+    </:footer>
+  </OSS::SidePanel>
+  */
+  {
+    "id": "lZS07/Ke",
+    "block": "[[[10,0],[14,0,\"fx-col fx-gap-px-6 padding-px-18\"],[12],[1,\"\\n  \"],[10,0],[14,0,\"fx-row fx-gap-px-6\"],[12],[1,\"\\n    \"],[8,[39,0],[[4,[38,1],[\"click\",[30,0,[\"openModal\"]]],null]],[[\"@label\"],[\"Open modal\"]],null],[1,\"\\n    \"],[8,[39,0],[[4,[38,1],[\"click\",[30,0,[\"openSidePanel\"]]],null]],[[\"@label\"],[\"Open sidepanel\"]],null],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,5,\"height: 500px; width:100%\"],[12],[1,\"\\n    \"],[8,[39,2],null,null,[[\"default\"],[[[[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-6\"],[12],[1,\"\\n\"],[42,[28,[37,4],[[28,[37,4],[[30,0,[\"loop\"]]],null]],null],null,[[[1,\"          \"],[8,[39,5],null,[[\"@placeholder\",\"@value\"],[\"search\",[30,0,[\"shopUrl\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n    \"]],[]]]]],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displayModal\"]],[[[1,\"  \"],[8,[39,7],null,[[\"@title\",\"@subtitle\",\"@close\",\"@disableClickOutside\",\"@size\"],[\"Example modal\",\"subtitle\",[30,0,[\"closeModal\"]],false,\"md\"]],[[\"content\",\"footer\"],[[[[1,\"\\n      \"],[8,[39,2],[[24,5,\"height: 280px\"]],null,[[\"default\"],[[[[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-6\"],[12],[1,\"\\n\"],[42,[28,[37,4],[[28,[37,4],[[30,0,[\"loop\"]]],null]],null],null,[[[1,\"            \"],[8,[39,5],null,[[\"@placeholder\",\"@value\"],[\"search\",[30,0,[\"shopUrl\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n    \"]],[]],[[[1,\"\\n      \"],[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n        \"],[8,[39,8],null,[[\"@icon\"],[\"fa-info\"]],null],[10,3],[14,6,\"\"],[12],[1,\"More info\"],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,0],[[4,[38,1],[\"click\",[30,0,[\"closeModal\"]]],null]],[[\"@skin\",\"@label\"],[\"default\",\"Close\"]],null],[1,\"\\n        \"],[8,[39,0],null,[[\"@skin\",\"@label\"],[\"secondary\",\"Save\"]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"]],[]]]]],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[8,[39,9],null,[[\"@onClose\",\"@backdrop\",\"@visible\",\"@noPadding\"],[[30,0,[\"closeSidePanel\"]],true,[30,0,[\"displaySidePanel\"]],true]],[[\"header\",\"main\",\"footer\"],[[[[1,\"\\n    \"],[8,[39,10],null,[[\"@onClose\",\"@onReturn\",\"@title\"],[[30,0,[\"closeSidePanel\"]],[30,0,[\"onReturn\"]],\"This is the side panel's header.\"]],null],[1,\"\\n  \"]],[]],[[[1,\"\\n    \"],[8,[39,2],null,null,[[\"default\"],[[[[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-6\"],[12],[1,\"\\n\"],[42,[28,[37,4],[[28,[37,4],[[30,0,[\"loop\"]]],null]],null],null,[[[1,\"          \"],[8,[39,5],null,[[\"@placeholder\",\"@value\"],[\"search\",[30,0,[\"shopUrl\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n    \"]],[]]]]],[1,\"\\n  \"]],[]],[[[1,\"\\n    \"],[10,1],[12],[1,\"This is the side panel's footer.\"],[13],[1,\"\\n  \"]],[]]]]]],[],false,[\"o-s-s/button\",\"on\",\"o-s-s/scrollable-panel\",\"each\",\"-track-array\",\"o-s-s/input-container\",\"if\",\"o-s-s/modal-dialog\",\"o-s-s/icon\",\"o-s-s/side-panel\",\"o-s-s/side-panel/header\"]]",
+    "moduleName": "dummy/templates/scrollable.hbs",
     "isStrictMode": false
   });
 });

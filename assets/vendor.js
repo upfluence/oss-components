@@ -85636,6 +85636,172 @@ define("@upfluence/oss-components/components/o-s-s/radio-button", ["exports", "@
   BasicUsage.args = defaultArgs;
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+define("@upfluence/oss-components/components/o-s-s/scrollable-panel", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@glimmer/tracking", "@ember/template-factory"], function (_exports, _component, _component2, _object, _tracking, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor, _descriptor2, _descriptor3;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/object",0,"@glimmer/tracking",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+  function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+  function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="oss-scrollable-panel-container" ...attributes>
+    {{#if this.shadowTopVisible}}
+      <div class="oss-scrollable-panel--shadow oss-scrollable-panel--shadow__top"></div>
+    {{/if}}
+    <div class="oss-scrollable-panel-content" {{did-insert this.initScrollListener}}>
+      {{yield}}
+    </div>
+    {{#if this.shadowBottomVisible}}
+      <div class="oss-scrollable-panel--shadow oss-scrollable-panel--shadow__bottom"></div>
+    {{/if}}
+  </div>
+  */
+  {
+    "id": "2FGEe9TU",
+    "block": "[[[11,0],[24,0,\"oss-scrollable-panel-container\"],[17,1],[12],[1,\"\\n\"],[41,[30,0,[\"shadowTopVisible\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-scrollable-panel--shadow oss-scrollable-panel--shadow__top\"],[12],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[11,0],[24,0,\"oss-scrollable-panel-content\"],[4,[38,1],[[30,0,[\"initScrollListener\"]]],null],[12],[1,\"\\n    \"],[18,2,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"shadowBottomVisible\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-scrollable-panel--shadow oss-scrollable-panel--shadow__bottom\"],[12],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"&default\"],false,[\"if\",\"did-insert\",\"yield\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/scrollable-panel.hbs",
+    "isStrictMode": false
+  });
+  var OSSScrollablePanelComponent = _exports.default = (_class = /*#__PURE__*/function (_Component) {
+    _inherits(OSSScrollablePanelComponent, _Component);
+    function OSSScrollablePanelComponent() {
+      var _this;
+      _classCallCheck(this, OSSScrollablePanelComponent);
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+      _this = _callSuper(this, OSSScrollablePanelComponent, [].concat(args));
+      _initializerDefineProperty(_assertThisInitialized(_this), "parentElement", _descriptor, _assertThisInitialized(_this));
+      _initializerDefineProperty(_assertThisInitialized(_this), "shadowTopVisible", _descriptor2, _assertThisInitialized(_this));
+      _initializerDefineProperty(_assertThisInitialized(_this), "shadowBottomVisible", _descriptor3, _assertThisInitialized(_this));
+      return _this;
+    }
+    _createClass(OSSScrollablePanelComponent, [{
+      key: "initScrollListener",
+      value: function initScrollListener(element) {
+        this.parentElement = element;
+        this.displayBottomShadow();
+        element.addEventListener('scroll', this.scrollListener.bind(this));
+      }
+    }, {
+      key: "willDestroy",
+      value: function willDestroy() {
+        this.parentElement.removeEventListener('scroll', this.scrollListener.bind(this));
+      }
+    }, {
+      key: "scrollListener",
+      value: function scrollListener() {
+        if (this.parentElement.scrollTop > 0) {
+          this.shadowTopVisible = true;
+        } else {
+          this.shadowTopVisible = false;
+        }
+        this.displayBottomShadow();
+      }
+    }, {
+      key: "displayBottomShadow",
+      value: function displayBottomShadow() {
+        if (this.parentElement.scrollTop + this.parentElement.clientHeight >= this.parentElement.scrollHeight - 1) {
+          this.shadowBottomVisible = false;
+        } else {
+          this.shadowBottomVisible = true;
+        }
+      }
+    }]);
+    return OSSScrollablePanelComponent;
+  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "parentElement", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "shadowTopVisible", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "shadowBottomVisible", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "initScrollListener", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initScrollListener"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "willDestroy", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "willDestroy"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSScrollablePanelComponent);
+});
+;define("@upfluence/oss-components/components/o-s-s/scrollable-panel.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.BasicUsage = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::ScrollablePanel',
+    component: 'scrollable-panel',
+    argTypes: {},
+    parameters: {
+      docs: {
+        description: {
+          component: 'Container which automatically handle scroll behavior with top and bottom shadow'
+        }
+      }
+    }
+  };
+  var defaultArgs = {};
+  var Template = function Template(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <div style="height:200px; width: 300px; background-color: white; " >
+              <OSS::ScrollablePanel>
+                <div class="fx-col fx-gap-px-12 padding-px-12">
+                  <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
+                  <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
+                  <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
+                  <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
+                  <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
+                </div>
+              </OSS::ScrollablePanel>
+            </div>
+        
+      */
+      {
+        "id": "kbpxTEet",
+        "block": "[[[1,\"\\n      \"],[10,0],[14,5,\"height:200px; width: 300px; background-color: white; \"],[12],[1,\"\\n        \"],[8,[39,0],null,null,[[\"default\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-12\"],[12],[1,\"\\n            \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n            \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n            \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n            \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n            \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/scrollable-panel\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/scrollable-panel.stories.js",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+  var BasicUsage = _exports.BasicUsage = Template.bind({});
+  BasicUsage.args = defaultArgs;
+});
+;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/component", "@glimmer/tracking", "@ember/debug", "@ember/object", "@ember/service", "@ember/utils", "@ember/runloop", "@upfluence/oss-components/utils/attach-dropdown", "@upfluence/oss-components/components/o-s-s/private/base-dropdown", "@ember/template-factory"], function (_exports, _component, _tracking, _debug, _object, _service, _utils, _runloop, _attachDropdown, _baseDropdown, _templateFactory) {
   "use strict";
 
@@ -86136,7 +86302,7 @@ define("@upfluence/oss-components/components/o-s-s/side-panel", ["exports", "@em
   /*
     <div class="oss-side-panel {{if @visible 'oss-side-panel--visible'}}" {{will-destroy this.onDestroy}} ...attributes>
     <div
-      class="oss-side-panel__backdrop {{unless @backdrop 'oss-side-panel__backdrop--transparent'}}"
+      class="oss-side-panel__backdrop {{unless @backdrop 'oss-side-panel__backdrop--transparent'}} "
       {{on "click" @onClose}}
       {{on-click-outside this.onClickOutside}}
       {{did-insert this.initialize}}
@@ -86146,17 +86312,17 @@ define("@upfluence/oss-components/components/o-s-s/side-panel", ["exports", "@em
         {{yield to="global"}}
       {{else}}
         {{#if (has-block "header")}}
-          <header class="oss-side-panel__header">
+          <header class="oss-side-panel__header {{if @noPadding 'padding-none'}}">
             {{yield to="header"}}
           </header>
         {{/if}}
         {{#if (has-block "main")}}
-          <div class="oss-side-panel__main fx-col fx-1">
+          <div class="oss-side-panel__main fx-col fx-1 {{if @noPadding 'padding-none'}}">
             {{yield to="main"}}
           </div>
         {{/if}}
         {{#if (has-block "footer")}}
-          <footer class="oss-side-panel__footer fx-row fx-xalign-center">
+          <footer class="oss-side-panel__footer fx-row fx-xalign-center {{if @noPadding 'padding-none'}}">
             {{yield to="footer"}}
           </footer>
         {{/if}}
@@ -86165,8 +86331,8 @@ define("@upfluence/oss-components/components/o-s-s/side-panel", ["exports", "@em
   </div>
   */
   {
-    "id": "tCUZFzGL",
-    "block": "[[[11,0],[16,0,[29,[\"oss-side-panel \",[52,[30,1],\"oss-side-panel--visible\"]]]],[17,2],[4,[38,1],[[30,0,[\"onDestroy\"]]],null],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-side-panel__backdrop \",[52,[51,[30,3]],\"oss-side-panel__backdrop--transparent\"]]]],[4,[38,3],[\"click\",[30,4]],null],[4,[38,4],[[30,0,[\"onClickOutside\"]]],null],[4,[38,5],[[30,0,[\"initialize\"]]],null],[12],[13],[1,\"\\n  \"],[10,0],[15,0,[29,[\"oss-side-panel__content \",[30,0,[\"sidePanelSize\"]],\" \",[52,[51,[30,1]],\"oss-side-panel__content--closed\"]]]],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"      \"],[18,5,null],[1,\"\\n\"]],[]],[[[41,[48,[30,6]],[[[1,\"        \"],[10,\"header\"],[14,0,\"oss-side-panel__header\"],[12],[1,\"\\n          \"],[18,6,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,7]],[[[1,\"        \"],[10,0],[14,0,\"oss-side-panel__main fx-col fx-1\"],[12],[1,\"\\n          \"],[18,7,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,8]],[[[1,\"        \"],[10,\"footer\"],[14,0,\"oss-side-panel__footer fx-row fx-xalign-center\"],[12],[1,\"\\n          \"],[18,8,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null]],[]]],[1,\"  \"],[13],[1,\"\\n\"],[13]],[\"@visible\",\"&attrs\",\"@backdrop\",\"@onClose\",\"&global\",\"&header\",\"&main\",\"&footer\"],false,[\"if\",\"will-destroy\",\"unless\",\"on\",\"on-click-outside\",\"did-insert\",\"has-block\",\"yield\"]]",
+    "id": "Mtf67Pem",
+    "block": "[[[11,0],[16,0,[29,[\"oss-side-panel \",[52,[30,1],\"oss-side-panel--visible\"]]]],[17,2],[4,[38,1],[[30,0,[\"onDestroy\"]]],null],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-side-panel__backdrop \",[52,[51,[30,3]],\"oss-side-panel__backdrop--transparent\"],\" \"]]],[4,[38,3],[\"click\",[30,4]],null],[4,[38,4],[[30,0,[\"onClickOutside\"]]],null],[4,[38,5],[[30,0,[\"initialize\"]]],null],[12],[13],[1,\"\\n  \"],[10,0],[15,0,[29,[\"oss-side-panel__content \",[30,0,[\"sidePanelSize\"]],\" \",[52,[51,[30,1]],\"oss-side-panel__content--closed\"]]]],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"      \"],[18,6,null],[1,\"\\n\"]],[]],[[[41,[48,[30,7]],[[[1,\"        \"],[10,\"header\"],[15,0,[29,[\"oss-side-panel__header \",[52,[30,5],\"padding-none\"]]]],[12],[1,\"\\n          \"],[18,7,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,8]],[[[1,\"        \"],[10,0],[15,0,[29,[\"oss-side-panel__main fx-col fx-1 \",[52,[30,5],\"padding-none\"]]]],[12],[1,\"\\n          \"],[18,8,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,9]],[[[1,\"        \"],[10,\"footer\"],[15,0,[29,[\"oss-side-panel__footer fx-row fx-xalign-center \",[52,[30,5],\"padding-none\"]]]],[12],[1,\"\\n          \"],[18,9,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null]],[]]],[1,\"  \"],[13],[1,\"\\n\"],[13]],[\"@visible\",\"&attrs\",\"@backdrop\",\"@onClose\",\"@noPadding\",\"&global\",\"&header\",\"&main\",\"&footer\"],false,[\"if\",\"will-destroy\",\"unless\",\"on\",\"on-click-outside\",\"did-insert\",\"has-block\",\"yield\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/side-panel.hbs",
     "isStrictMode": false
   });
@@ -86289,6 +86455,20 @@ define("@upfluence/oss-components/components/o-s-s/side-panel", ["exports", "@em
           type: 'select'
         }
       },
+      noPadding: {
+        description: 'Remove the default padding on each section.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
       onClose: {
         description: 'A callback triggered when the backdrop has been clicked.',
         table: {
@@ -86311,6 +86491,7 @@ define("@upfluence/oss-components/components/o-s-s/side-panel", ["exports", "@em
     visible: true,
     backdrop: true,
     size: 'sm',
+    noPadding: false,
     onClose: (0, _addonActions.action)('onClose')
   };
   var BasicUsageTemplate = function BasicUsageTemplate(args) {
@@ -86318,7 +86499,13 @@ define("@upfluence/oss-components/components/o-s-s/side-panel", ["exports", "@em
       template: (0, _templateFactory.createTemplateFactory)(
       /*
         
-          <OSS::SidePanel @visible={{this.visible}} @backdrop={{this.backdrop}} @size={{this.size}} @onClose={{this.onClose}} >
+          <OSS::SidePanel 
+            @visible={{this.visible}} 
+            @backdrop={{this.backdrop}} 
+            @size={{this.size}} 
+            @onClose={{this.onClose}} 
+            @noPadding={{this.noPadding}}
+          >
             <:header>
               Header goes here
             </:header>
@@ -86332,8 +86519,8 @@ define("@upfluence/oss-components/components/o-s-s/side-panel", ["exports", "@em
         
       */
       {
-        "id": "XJQyTPdX",
-        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@visible\",\"@backdrop\",\"@size\",\"@onClose\"],[[30,0,[\"visible\"]],[30,0,[\"backdrop\"]],[30,0,[\"size\"]],[30,0,[\"onClose\"]]]],[[\"header\",\"main\",\"footer\"],[[[[1,\"\\n        Header goes here\\n      \"]],[]],[[[1,\"\\n        Content goes here\\n      \"]],[]],[[[1,\"\\n        Footer goes here\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/side-panel\"]]",
+        "id": "OFu8J1CA",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@visible\",\"@backdrop\",\"@size\",\"@onClose\",\"@noPadding\"],[[30,0,[\"visible\"]],[30,0,[\"backdrop\"]],[30,0,[\"size\"]],[30,0,[\"onClose\"]],[30,0,[\"noPadding\"]]]],[[\"header\",\"main\",\"footer\"],[[[[1,\"\\n        Header goes here\\n      \"]],[]],[[[1,\"\\n        Content goes here\\n      \"]],[]],[[[1,\"\\n        Footer goes here\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/side-panel\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/side-panel.stories.js",
         "isStrictMode": false
       }),
