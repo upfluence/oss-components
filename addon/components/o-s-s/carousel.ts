@@ -2,6 +2,9 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
+const DEFAULT_BUTTON_ICON = 'fas fa-circle';
+const ANIMATION_TIME = 500;
+
 interface OSSCarouselArgs {
   buttonIcon?: string;
   animationStyle?: 'shift' | 'slide';
@@ -9,9 +12,6 @@ interface OSSCarouselArgs {
   showControls?: 'overlay' | 'outside';
   autoPlay?: number;
 }
-
-const DEFAULT_BUTTON_ICON = 'fas fa-circle';
-const ANIMATION_TIME = 500;
 
 interface AnimationHandler {
   (page: HTMLElement, executeAfterAnimation: (...args: any) => any): void;
@@ -23,6 +23,8 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
   @tracked declare currentPageIndex: number;
   @tracked declare prevPageIndex: number;
   @tracked ongoingAnimation = false;
+
+  private declare autoPlayInterval: number;
 
   get buttonIcon() {
     return this.args.buttonIcon ?? DEFAULT_BUTTON_ICON;
@@ -44,10 +46,14 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
   initialize(element: HTMLElement): void {
     this.element = element;
     this.pages = Array.from(this.element.querySelectorAll('.page'));
+    // if this pages is empty, throw an error
+    if (this.pages.length === 0) {
+      throw new Error('[component][OSS::Carousel] No pages found in the carousel');
+    }
     this.pages[0]!.classList.add('page--active');
     this.currentPageIndex = 0;
     if (this.args.autoPlay) {
-      setInterval(() => {
+      this.autoPlayInterval = setInterval(() => {
         this.nextPage();
       }, this.args.autoPlay);
     }
@@ -93,6 +99,11 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
     page.classList.add('page--active');
     this.prevPageIndex = this.currentPageIndex;
     this.currentPageIndex = this.pages.indexOf(page);
+  }
+
+  willDestroy() {
+    super.willDestroy();
+    clearInterval(this.autoPlayInterval);
   }
 
   private get animationStyle(): 'shift' | 'slide' {
