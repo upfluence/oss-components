@@ -26,15 +26,15 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
 
   private declare autoPlayInterval: number;
 
-  get buttonIcon() {
+  get buttonIcon(): string {
     return this.args.buttonIcon ?? DEFAULT_BUTTON_ICON;
   }
 
-  get showIndicators() {
+  get showIndicators(): boolean {
     return this.args.showIndicators ?? true;
   }
 
-  get showControls() {
+  get showControls(): boolean {
     return !!this.args.showControls ?? false;
   }
 
