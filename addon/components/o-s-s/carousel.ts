@@ -82,19 +82,7 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
       return;
     }
     this.ongoingAnimation = true;
-
-    if (this.animationStyle === 'slide') {
-      this.slideAnimationHandler(page, (classesToCleanup: string[]) => {
-        this.pages[this.prevPageIndex ?? 0]!.classList.remove('page--active');
-        this.pages.forEach((p) => p.classList.remove(...classesToCleanup));
-        this.ongoingAnimation = false;
-      });
-    } else if (this.animationStyle === 'shift') {
-      this.shiftAnimationHandler(page, () => {
-        this.ongoingAnimation = false;
-      });
-    }
-
+    this.triggerAnimation(page);
     page.classList.add('page--active');
     this.prevPageIndex = this.currentPageIndex;
     this.currentPageIndex = this.pages.indexOf(page);
@@ -107,6 +95,20 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
 
   private get animationStyle(): 'shift' | 'slide' {
     return this.args.animationStyle ?? 'shift';
+  }
+
+  private triggerAnimation(page: HTMLElement): void {
+    if (this.animationStyle === 'slide') {
+      this.slideAnimationHandler(page, (classesToCleanup: string[]) => {
+        this.pages[this.prevPageIndex ?? 0]!.classList.remove('page--active');
+        this.pages.forEach((p) => p.classList.remove(...classesToCleanup));
+        this.ongoingAnimation = false;
+      });
+    } else if (this.animationStyle === 'shift') {
+      this.shiftAnimationHandler(page, () => {
+        this.ongoingAnimation = false;
+      });
+    }
   }
 
   private slideAnimationHandler: AnimationHandler = (
