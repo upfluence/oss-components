@@ -46,7 +46,6 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
   initialize(element: HTMLElement): void {
     this.element = element;
     this.pages = Array.from(this.element.querySelectorAll('.page'));
-    // if this pages is empty, throw an error
     if (this.pages.length === 0) {
       throw new Error('[component][OSS::Carousel] No pages found in the carousel');
     }
