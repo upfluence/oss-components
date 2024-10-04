@@ -88,7 +88,7 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
     this.currentPageIndex = this.pages.indexOf(page);
   }
 
-  willDestroy() {
+  willDestroy(): void {
     super.willDestroy();
     clearInterval(this.autoPlayInterval);
   }
