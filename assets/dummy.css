@@ -10455,31 +10455,33 @@ label {
   opacity: 1;
 }
 .upf-toggle {
-  background-color: #c9c9c9;
-  border: 1px solid #c9c9c9;
+  background-color: var(--color-gray-200);
+  border: 1px solid var(--color-border-default);
+  padding: 1px;
   border-radius: 20px;
   height: 20px;
-  width: 40px;
+  width: 36px;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   position: relative;
 }
 .upf-toggle .upf-toggle__switch {
-  height: 18px;
-  width: 18px;
+  height: 16px;
+  width: 16px;
   border-radius: 50%;
   cursor: pointer;
   position: absolute;
-  background-color: #fff;
+  background-color: var(--color-white);
   transition: transform 0.4s;
+  box-shadow: var(--box-shadow-xs);
 }
 .upf-toggle.upf-toggle--toggled {
   background-color: var(--color-primary-500);
   border: 1px solid var(--color-primary-500);
 }
 .upf-toggle.upf-toggle--toggled .upf-toggle__switch {
-  transform: translateX(110%);
+  transform: translateX(100%);
 }
 @keyframes openDropdown {
   0% {
@@ -11053,16 +11055,34 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
 .scroll-shadow--field::after {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #f1f2f3 100%);
 }
-.upf-toggle.upf-toggle--disabled {
-  background-color: #efefef;
-  border-color: #efefef;
-}
 .upf-toggle.upf-toggle--disabled .upf-toggle__switch {
-  background-color: #d9d9d9;
+  background-color: var(--color-gray-400);
+}
+.upf-toggle.upf-toggle--disabled {
+  background-color: var(--color-gray-200);
+  border-color: var(--color-gray-200);
 }
 .upf-toggle.upf-toggle--disabled,
 .upf-toggle.upf-toggle--disabled > div {
   cursor: not-allowed;
+}
+.upf-toggle:not(.upf-toggle--disabled):hover {
+  box-shadow: var(--box-shadow-xs), 0px 0px 0px 2px var(--color-gray-100);
+  background-color: var(--color-gray-300);
+  border-color: var(--color-gray-300);
+}
+.upf-toggle:not(.upf-toggle--disabled):hover.upf-toggle--toggled {
+  background-color: var(--color-primary-600);
+  border-color: var(--color-primary-600);
+}
+.upf-toggle:not(.upf-toggle--disabled):active {
+  box-shadow: var(--box-shadow-xs), 0px 0px 0px 2px var(--color-gray-100);
+  background-color: var(--color-gray-100);
+  border-color: var(--color-gray-100);
+}
+.upf-toggle:not(.upf-toggle--disabled):active.upf-toggle--toggled {
+  background-color: var(--color-primary-400);
+  border-color: var(--color-primary-400);
 }
 .oss-navbar-item {
   border-radius: var(--border-radius-md);
