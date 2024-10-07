@@ -38,9 +38,9 @@
           class="upf-input"
           @type="number"
           @value={{@value}}
-          @step={{this.sliderOptions.step}}
-          @min={{this.sliderOptions.min}}
-          @max={{this.sliderOptions.max}}
+          step={{this.sliderOptions.step}}
+          min={{this.sliderOptions.min}}
+          max={{this.sliderOptions.max}}
           placeholder={{this.currentRangeValue}}
           disabled={{@disabled}}
           {{on "input" this.onNumberInput}}
