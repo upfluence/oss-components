@@ -14191,7 +14191,7 @@ a.upf-btn--sm {
 .oss-progress-bar__inner {
   width: 0;
   height: 10px;
-  animation: oss-progress-bar-animation 1s forwards;
+  animation: oss-progress-bar-animation 1s;
   border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm);
   transition: width 0.6s ease;
   background-color: var(--color-primary-500);
