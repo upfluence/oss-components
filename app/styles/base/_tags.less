@@ -143,6 +143,18 @@
     i {
       .font-color-smart-gradient;
     }
+
+    &.upf-tag--plain {
+      background: var(--color-smart-gradient-500);
+
+      div,
+      i {
+        background: var(--color-white);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+      }
+    }
   }
 
   &--xs {
