@@ -10433,6 +10433,16 @@ label {
   background-clip: text;
   -webkit-background-clip: text;
 }
+.upf-tag--chat-gpt.upf-tag--plain {
+  background: var(--color-smart-gradient-500);
+}
+.upf-tag--chat-gpt.upf-tag--plain div,
+.upf-tag--chat-gpt.upf-tag--plain i {
+  background: var(--color-white);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
 .upf-tag--xs {
   padding: 0 var(--spacing-px-6);
   height: var(--spacing-px-18);
@@ -14191,7 +14201,7 @@ a.upf-btn--sm {
 .oss-progress-bar__inner {
   width: 0;
   height: 10px;
-  animation: oss-progress-bar-animation 1s;
+  animation: oss-progress-bar-animation 1s forwards;
   border-radius: var(--border-radius-sm) 0 0 var(--border-radius-sm);
   transition: width 0.6s ease;
   background-color: var(--color-primary-500);
