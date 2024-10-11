@@ -7,6 +7,8 @@ oss-components:
       description: Try adjusting your search to find what you’re looking for.
     empty: Nothing to see here.
     empty_img_alt: Empty content
+    search:
+      placeholder: Search...
   password-input:
     validators:
       uppercase: Uppercase
