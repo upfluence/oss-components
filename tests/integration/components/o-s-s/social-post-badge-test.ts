@@ -4,6 +4,20 @@ import { setupRenderingTest } from 'ember-qunit';
 import { click, render, setupOnerror } from '@ember/test-helpers';
 import sinon from 'sinon';
 
+const ICONS_MATCHING: Record<string, string> = {
+  article: '.fab.fa-wordpress',
+  facebook_status: '.fab.fa-facebook-f',
+  instagram_media: '.fab.fa-instagram',
+  tiktok_video: '.fab.fa-tiktok',
+  tweet: '.fab.fa-x-twitter',
+  pin: '.fab.fa-pinterest',
+  youtube_video: '.fab.fa-youtube',
+  twitch_stream: '.fab.fa-twitch'
+};
+const IMG_MATCHING: Record<string, string> = {
+  story: 'story.svg'
+};
+
 module('Integration | Component | o-s-s/social-post-badge', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -23,6 +37,30 @@ module('Integration | Component | o-s-s/social-post-badge', function (hooks) {
     );
 
     assert.dom('.oss-social-post-badge').exists();
+  });
+
+  Object.keys(ICONS_MATCHING).forEach((media) => {
+    test(`for ${media}, it renders the correct icon`, async function (assert) {
+      this.postType = media;
+      await render(
+        hbs`<OSS::SocialPostBadge @postType={{this.postType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
+      );
+
+      assert.dom(`.oss-social-post-badge i${ICONS_MATCHING[media]}`).exists();
+    });
+  });
+
+  Object.keys(IMG_MATCHING).forEach((media) => {
+    test(`for ${media}, it renders the correct image`, async function (assert) {
+      this.postType = media;
+      await render(
+        hbs`<OSS::SocialPostBadge @postType={{this.postType}} @plain={{this.plain}} @selected={{this.selected}} @onToggle={{this.onToggle}}/>`
+      );
+
+      assert
+        .dom('.oss-social-post-badge img')
+        .hasAttribute('src', `/@upfluence/oss-components/assets/upf-icons/${IMG_MATCHING[media]}`);
+    });
   });
 
   module('@plain', () => {

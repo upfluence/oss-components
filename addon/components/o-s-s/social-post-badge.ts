@@ -21,7 +21,7 @@ export const skinMatching: skinDefinitionType = {
   facebook_status: 'fab fa-facebook-f',
   instagram_media: 'fab fa-instagram',
   tiktok_video: 'fab fa-tiktok',
-  story: 'far fa-circle-notch',
+  story: 'story.svg',
   tweet: 'fab fa-x-twitter',
   pin: 'fab fa-pinterest',
   youtube_video: 'fab fa-youtube',
@@ -66,6 +66,10 @@ export default class OSSSocialPostBadge extends Component<OSSSocialPostBadgeArgs
 
   get iconDefinition(): string {
     return skinMatching[this.args.postType];
+  }
+
+  get isIcon(): boolean {
+    return this.iconDefinition.startsWith('fab');
   }
 
   @action
