@@ -25,6 +25,12 @@ module('Integration | Component | o-s-s/skeleton', function (hooks) {
 
       assert.dom('.upf-skeleton-effect').hasStyle({ height: '400px' });
     });
+
+    test('The style percentage height should correspond to parameter value', async function (assert) {
+      this.height = '100%';
+      await render(hbs`<div style="height:250px"><OSS::Skeleton @height={{this.height}}/></div>`);
+      assert.dom('.upf-skeleton-effect').hasStyle({ height: '250px' });
+    });
   });
 
   module('@width parameters', () => {
@@ -40,6 +46,12 @@ module('Integration | Component | o-s-s/skeleton', function (hooks) {
       await render(hbs`<OSS::Skeleton @width={{this.width}}/>`);
 
       assert.dom('.upf-skeleton-effect').hasStyle({ width: '400px' });
+    });
+
+    test('The style percentage width should correspond to parameter value', async function (assert) {
+      this.width = '100%';
+      await render(hbs`<div style="width:250px"><OSS::Skeleton @width={{this.width}}/></div>`);
+      assert.dom('.upf-skeleton-effect').hasStyle({ width: '250px' });
     });
   });
 
