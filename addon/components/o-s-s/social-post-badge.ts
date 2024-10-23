@@ -68,7 +68,7 @@ export default class OSSSocialPostBadge extends Component<OSSSocialPostBadgeArgs
     return skinMatching[this.args.postType];
   }
 
-  get isIcon(): boolean {
+  get isFontAwesomeIcon(): boolean {
     return this.iconDefinition.startsWith('fab');
   }
 
