@@ -12,7 +12,7 @@
         {{#if (has-block "selected")}}
           {{yield @value to="selected"}}
         {{else}}
-          <span>{{get @value this.targetValue}}</span>
+          <span class="text-ellipsis">{{get @value this.targetValue}}</span>
         {{/if}}
       {{else}}
         <span class="upf-input--placeholder">{{this.placeholder}}</span>
