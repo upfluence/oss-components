@@ -3,7 +3,7 @@ import { assert } from '@ember/debug';
 
 interface OSSSkeletonArgs {
   width?: number | string;
-  height?: number;
+  height?: number | string;
   multiple?: number;
   direction?: 'row' | 'column' | 'col';
   gap?: number;
@@ -25,15 +25,19 @@ export default class OSSSkeleton extends Component<OSSSkeletonArgs> {
   }
 
   get height(): number {
-    return this.args.height || 36;
+    return parseInt((this.args.height || '36') as string);
   }
 
   get width(): number {
-    return parseInt((this.args.width || 36) as string);
+    return parseInt((this.args.width || '36') as string);
   }
 
-  get pxOrPc(): 'px' | '%' {
+  get widthPxOrPc(): 'px' | '%' {
     return (this.args.width as string)?.includes?.('%') ? '%' : 'px';
+  }
+
+  get heightPxOrPc(): 'px' | '%' {
+    return (this.args.height as string)?.includes?.('%') ? '%' : 'px';
   }
 
   get gap(): number {
@@ -63,7 +67,7 @@ export default class OSSSkeleton extends Component<OSSSkeletonArgs> {
         const randomValue = Math.ceil(Math.random() * randomizeInRange) * (Math.round(Math.random()) ? 1 : -1);
         width = this.width + randomValue;
       }
-      rows.push(`min-height: ${this.height}px; width: ${width}${this.pxOrPc}`);
+      rows.push(`min-height: ${this.height}${this.heightPxOrPc}; width: ${width}${this.widthPxOrPc}`);
     }
 
     return rows;
