@@ -1,7 +1,9 @@
-<div class={{this.computedClasses}} role="button"
-     {{on "click" this.onPostTypeClick}}
-     ...attributes>
+<div class={{this.computedClasses}} role="button" {{on "click" this.onPostTypeClick}} ...attributes>
   <div class="icon-container">
-    <OSS::Icon @style={{fa-icon-style this.iconDefinition}} @icon={{fa-icon-value this.iconDefinition}} />
+    {{#if this.isFontAwesomeIcon}}
+      <OSS::Icon @style={{fa-icon-style this.iconDefinition}} @icon={{fa-icon-value this.iconDefinition}} />
+    {{else}}
+      <img src={{asset-map (concat "@upfluence/oss-components/assets/upf-icons/" this.iconDefinition)}} alt="icon" />
+    {{/if}}
   </div>
 </div>
