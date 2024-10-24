@@ -86717,18 +86717,24 @@ define("@upfluence/oss-components/components/o-s-s/skeleton", ["exports", "@embe
     _createClass(OSSSkeleton, [{
       key: "height",
       get: function get() {
-        return this.args.height || 36;
+        return parseInt(this.args.height || '36');
       }
     }, {
       key: "width",
       get: function get() {
-        return parseInt(this.args.width || 36);
+        return parseInt(this.args.width || '36');
       }
     }, {
-      key: "pxOrPc",
+      key: "widthPxOrPc",
       get: function get() {
         var _this$args$width, _this$args$width$incl;
         return (_this$args$width = this.args.width) !== null && _this$args$width !== void 0 && (_this$args$width$incl = _this$args$width.includes) !== null && _this$args$width$incl !== void 0 && _this$args$width$incl.call(_this$args$width, '%') ? '%' : 'px';
+      }
+    }, {
+      key: "heightPxOrPc",
+      get: function get() {
+        var _this$args$height, _this$args$height$inc;
+        return (_this$args$height = this.args.height) !== null && _this$args$height !== void 0 && (_this$args$height$inc = _this$args$height.includes) !== null && _this$args$height$inc !== void 0 && _this$args$height$inc.call(_this$args$height, '%') ? '%' : 'px';
       }
     }, {
       key: "gap",
@@ -86759,7 +86765,7 @@ define("@upfluence/oss-components/components/o-s-s/skeleton", ["exports", "@embe
             var randomValue = Math.ceil(Math.random() * randomizeInRange) * (Math.round(Math.random()) ? 1 : -1);
             width = this.width + randomValue;
           }
-          rows.push("min-height: ".concat(this.height, "px; width: ").concat(width).concat(this.pxOrPc));
+          rows.push("min-height: ".concat(this.height).concat(this.heightPxOrPc, "; width: ").concat(width).concat(this.widthPxOrPc));
         }
         return rows;
       }

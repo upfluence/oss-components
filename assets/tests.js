@@ -20532,14 +20532,45 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
           return _ref3.apply(this, arguments);
         };
       }());
-    });
-    (0, _qunit.module)('@width parameters', function () {
-      (0, _qunit.test)('Default width', /*#__PURE__*/function () {
+      (0, _qunit.test)('The style percentage height should correspond to parameter value', /*#__PURE__*/function () {
         var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
               case 0:
-                _context4.next = 2;
+                this.height = '100%';
+                _context4.next = 3;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <div style="height:250px"><OSS::Skeleton @height={{this.height}}/></div>
+                */
+                {
+                  "id": "mw9prhyQ",
+                  "block": "[[[10,0],[14,5,\"height:250px\"],[12],[8,[39,0],null,[[\"@height\"],[[30,0,[\"height\"]]]],null],[13]],[],false,[\"o-s-s/skeleton\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/skeleton-test.ts",
+                  "isStrictMode": false
+                }));
+              case 3:
+                assert.dom('.upf-skeleton-effect').hasStyle({
+                  height: '250px'
+                });
+              case 4:
+              case "end":
+                return _context4.stop();
+            }
+          }, _callee4, this);
+        }));
+        return function (_x4) {
+          return _ref4.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('@width parameters', function () {
+      (0, _qunit.test)('Default width', /*#__PURE__*/function () {
+        var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
+          return _regeneratorRuntime().wrap(function _callee5$(_context5) {
+            while (1) switch (_context5.prev = _context5.next) {
+              case 0:
+                _context5.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Skeleton/>
@@ -20556,21 +20587,21 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
                 });
               case 3:
               case "end":
-                return _context4.stop();
+                return _context5.stop();
             }
-          }, _callee4);
+          }, _callee5);
         }));
-        return function (_x4) {
-          return _ref4.apply(this, arguments);
+        return function (_x5) {
+          return _ref5.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('The style width should correspond to parameter value', /*#__PURE__*/function () {
-        var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
-          return _regeneratorRuntime().wrap(function _callee5$(_context5) {
-            while (1) switch (_context5.prev = _context5.next) {
+        var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+          return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+            while (1) switch (_context6.prev = _context6.next) {
               case 0:
                 this.width = 400;
-                _context5.next = 3;
+                _context6.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Skeleton @width={{this.width}}/>
@@ -20587,22 +20618,53 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
                 });
               case 4:
               case "end":
-                return _context5.stop();
+                return _context6.stop();
             }
-          }, _callee5, this);
+          }, _callee6, this);
         }));
-        return function (_x5) {
-          return _ref5.apply(this, arguments);
+        return function (_x6) {
+          return _ref6.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('The style percentage width should correspond to parameter value', /*#__PURE__*/function () {
+        var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+          return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+            while (1) switch (_context7.prev = _context7.next) {
+              case 0:
+                this.width = '100%';
+                _context7.next = 3;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <div style="width:250px"><OSS::Skeleton @width={{this.width}}/></div>
+                */
+                {
+                  "id": "Mk3S7zHG",
+                  "block": "[[[10,0],[14,5,\"width:250px\"],[12],[8,[39,0],null,[[\"@width\"],[[30,0,[\"width\"]]]],null],[13]],[],false,[\"o-s-s/skeleton\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/skeleton-test.ts",
+                  "isStrictMode": false
+                }));
+              case 3:
+                assert.dom('.upf-skeleton-effect').hasStyle({
+                  width: '250px'
+                });
+              case 4:
+              case "end":
+                return _context7.stop();
+            }
+          }, _callee7, this);
+        }));
+        return function (_x7) {
+          return _ref7.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.module)('@gap parameters', function () {
       (0, _qunit.test)('Default gap', /*#__PURE__*/function () {
-        var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
-          return _regeneratorRuntime().wrap(function _callee6$(_context6) {
-            while (1) switch (_context6.prev = _context6.next) {
+        var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+          return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+            while (1) switch (_context8.prev = _context8.next) {
               case 0:
-                _context6.next = 2;
+                _context8.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Skeleton @multiple={{2}} />
@@ -20617,21 +20679,21 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
                 assert.dom('.fx-1').hasClass('fx-gap-px-9');
               case 3:
               case "end":
-                return _context6.stop();
+                return _context8.stop();
             }
-          }, _callee6);
+          }, _callee8);
         }));
-        return function (_x6) {
-          return _ref6.apply(this, arguments);
+        return function (_x8) {
+          return _ref8.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('The has class corresponding to gap', /*#__PURE__*/function () {
-        var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
-          return _regeneratorRuntime().wrap(function _callee7$(_context7) {
-            while (1) switch (_context7.prev = _context7.next) {
+        var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+          return _regeneratorRuntime().wrap(function _callee9$(_context9) {
+            while (1) switch (_context9.prev = _context9.next) {
               case 0:
                 this.gap = 12;
-                _context7.next = 3;
+                _context9.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Skeleton @gap={{this.gap}} @multiple={{2}} />
@@ -20646,23 +20708,23 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
                 assert.dom('.fx-1').hasClass('fx-gap-px-12');
               case 4:
               case "end":
-                return _context7.stop();
+                return _context9.stop();
             }
-          }, _callee7, this);
+          }, _callee9, this);
         }));
-        return function (_x7) {
-          return _ref7.apply(this, arguments);
+        return function (_x9) {
+          return _ref9.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.module)('@multiple parameters', function () {
       (0, _qunit.test)('Default has one skeleton effect', /*#__PURE__*/function () {
-        var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           var items;
-          return _regeneratorRuntime().wrap(function _callee8$(_context8) {
-            while (1) switch (_context8.prev = _context8.next) {
+          return _regeneratorRuntime().wrap(function _callee10$(_context10) {
+            while (1) switch (_context10.prev = _context10.next) {
               case 0:
-                _context8.next = 2;
+                _context10.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Skeleton/>
@@ -20678,22 +20740,22 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
                 assert.ok(items.length === 1);
               case 4:
               case "end":
-                return _context8.stop();
+                return _context10.stop();
             }
-          }, _callee8);
+          }, _callee10);
         }));
-        return function (_x8) {
-          return _ref8.apply(this, arguments);
+        return function (_x10) {
+          return _ref10.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('The content has multiple skeleton effect', /*#__PURE__*/function () {
-        var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+        var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
           var items;
-          return _regeneratorRuntime().wrap(function _callee9$(_context9) {
-            while (1) switch (_context9.prev = _context9.next) {
+          return _regeneratorRuntime().wrap(function _callee11$(_context11) {
+            while (1) switch (_context11.prev = _context11.next) {
               case 0:
                 this.multiple = 4;
-                _context9.next = 3;
+                _context11.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Skeleton @multiple={{this.multiple}}/>
@@ -20709,12 +20771,12 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
                 assert.ok(items.length === 4);
               case 5:
               case "end":
-                return _context9.stop();
+                return _context11.stop();
             }
-          }, _callee9, this);
+          }, _callee11, this);
         }));
-        return function (_x9) {
-          return _ref9.apply(this, arguments);
+        return function (_x11) {
+          return _ref11.apply(this, arguments);
         };
       }());
     });
@@ -20724,12 +20786,12 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
         this.width = 200;
       });
       (0, _qunit.test)('Default randomize is false', /*#__PURE__*/function () {
-        var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+        var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
           var item;
-          return _regeneratorRuntime().wrap(function _callee10$(_context10) {
-            while (1) switch (_context10.prev = _context10.next) {
+          return _regeneratorRuntime().wrap(function _callee12$(_context12) {
+            while (1) switch (_context12.prev = _context12.next) {
               case 0:
-                _context10.next = 2;
+                _context12.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Skeleton @width={{this.width}}/>
@@ -20745,21 +20807,21 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
                 assert.ok(this.width == (item === null || item === void 0 ? void 0 : item.offsetWidth));
               case 4:
               case "end":
-                return _context10.stop();
+                return _context12.stop();
             }
-          }, _callee10, this);
+          }, _callee12, this);
         }));
-        return function (_x10) {
-          return _ref10.apply(this, arguments);
+        return function (_x12) {
+          return _ref12.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('Randomize width is within a 15% range', /*#__PURE__*/function () {
-        var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+        var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
           var item;
-          return _regeneratorRuntime().wrap(function _callee11$(_context11) {
-            while (1) switch (_context11.prev = _context11.next) {
+          return _regeneratorRuntime().wrap(function _callee13$(_context13) {
+            while (1) switch (_context13.prev = _context13.next) {
               case 0:
-                _context11.next = 2;
+                _context13.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Skeleton @multiple={{this.multiple}} @width={{this.width}} @randomize={{true}}/>
@@ -20775,21 +20837,21 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
                 assert.ok(item.offsetWidth <= 230 && item.offsetWidth >= 170);
               case 4:
               case "end":
-                return _context11.stop();
+                return _context13.stop();
             }
-          }, _callee11);
+          }, _callee13);
         }));
-        return function (_x11) {
-          return _ref11.apply(this, arguments);
+        return function (_x13) {
+          return _ref13.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.test)('@direction default value is row', /*#__PURE__*/function () {
-      var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
-        return _regeneratorRuntime().wrap(function _callee12$(_context12) {
-          while (1) switch (_context12.prev = _context12.next) {
+      var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
+        return _regeneratorRuntime().wrap(function _callee14$(_context14) {
+          while (1) switch (_context14.prev = _context14.next) {
             case 0:
-              _context12.next = 2;
+              _context14.next = 2;
               return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
               /*
                 <OSS::Skeleton @multiple="3" />
@@ -20804,20 +20866,20 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
               assert.dom('.fx-1').hasClass("fx-row");
             case 3:
             case "end":
-              return _context12.stop();
+              return _context14.stop();
           }
-        }, _callee12);
+        }, _callee14);
       }));
-      return function (_x12) {
-        return _ref12.apply(this, arguments);
+      return function (_x14) {
+        return _ref14.apply(this, arguments);
       };
     }());
     (0, _qunit.test)('@direction value is column if specified', /*#__PURE__*/function () {
-      var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
-        return _regeneratorRuntime().wrap(function _callee13$(_context13) {
-          while (1) switch (_context13.prev = _context13.next) {
+      var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+        return _regeneratorRuntime().wrap(function _callee15$(_context15) {
+          while (1) switch (_context15.prev = _context15.next) {
             case 0:
-              _context13.next = 2;
+              _context15.next = 2;
               return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
               /*
                 <OSS::Skeleton @direction="column" @multiple="2" />
@@ -20832,21 +20894,21 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
               assert.dom('.fx-1').hasClass("fx-col");
             case 3:
             case "end":
-              return _context13.stop();
+              return _context15.stop();
           }
-        }, _callee13);
+        }, _callee15);
       }));
-      return function (_x13) {
-        return _ref13.apply(this, arguments);
+      return function (_x15) {
+        return _ref15.apply(this, arguments);
       };
     }());
     (0, _qunit.module)('Extra attributes', function () {
       (0, _qunit.test)('passing an extra class is applied to the component', /*#__PURE__*/function () {
-        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
-          return _regeneratorRuntime().wrap(function _callee14$(_context14) {
-            while (1) switch (_context14.prev = _context14.next) {
+        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
+          return _regeneratorRuntime().wrap(function _callee16$(_context16) {
+            while (1) switch (_context16.prev = _context16.next) {
               case 0:
-                _context14.next = 2;
+                _context16.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Skeleton class="my-extra-class" />
@@ -20861,21 +20923,21 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
                 assert.dom('.my-extra-class').exists();
               case 3:
               case "end":
-                return _context14.stop();
+                return _context16.stop();
             }
-          }, _callee14);
+          }, _callee16);
         }));
-        return function (_x14) {
-          return _ref14.apply(this, arguments);
+        return function (_x16) {
+          return _ref16.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('passing data-control-name works', /*#__PURE__*/function () {
-        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
           var inputWrapper;
-          return _regeneratorRuntime().wrap(function _callee15$(_context15) {
-            while (1) switch (_context15.prev = _context15.next) {
+          return _regeneratorRuntime().wrap(function _callee17$(_context17) {
+            while (1) switch (_context17.prev = _context17.next) {
               case 0:
-                _context15.next = 2;
+                _context17.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Skeleton data-control-name="layout-sidebar" />
@@ -20891,25 +20953,25 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
                 assert.equal(inputWrapper === null || inputWrapper === void 0 ? void 0 : inputWrapper.getAttribute('data-control-name'), 'layout-sidebar');
               case 4:
               case "end":
-                return _context15.stop();
+                return _context17.stop();
             }
-          }, _callee15);
+          }, _callee17);
         }));
-        return function (_x15) {
-          return _ref15.apply(this, arguments);
+        return function (_x17) {
+          return _ref17.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it throws an error if @direct is provided and does not match required values', /*#__PURE__*/function () {
-        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
-          return _regeneratorRuntime().wrap(function _callee16$(_context16) {
-            while (1) switch (_context16.prev = _context16.next) {
+        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
+          return _regeneratorRuntime().wrap(function _callee18$(_context18) {
+            while (1) switch (_context18.prev = _context18.next) {
               case 0:
                 (0, _testHelpers.setupOnerror)(function (err) {
                   assert.equal(err.message, 'Assertion Failed: [component][OSS::Skeleton] The @direction argument should be a value of row,column,col');
                 });
-                _context16.next = 3;
+                _context18.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Skeleton @direction="toto"/>
@@ -20922,12 +20984,12 @@ define("dummy/tests/integration/components/o-s-s/skeleton-test", ["qunit", "embe
                 }));
               case 3:
               case "end":
-                return _context16.stop();
+                return _context18.stop();
             }
-          }, _callee16);
+          }, _callee18);
         }));
-        return function (_x16) {
-          return _ref16.apply(this, arguments);
+        return function (_x18) {
+          return _ref18.apply(this, arguments);
         };
       }());
     });
