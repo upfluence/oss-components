@@ -14097,31 +14097,37 @@ a.upf-btn--sm {
   background-color: var(--color-facebook-500);
 }
 .oss-social-post-badge--instagram_media,
+.oss-social-post-badge--instagram_reel,
 .oss-social-post-badge--story {
   background: var(--color-instagram-accent);
   border: none;
   color: var(--color-white);
 }
 .oss-social-post-badge--instagram_media .icon-container,
+.oss-social-post-badge--instagram_reel .icon-container,
 .oss-social-post-badge--story .icon-container {
   width: calc(100% - 2px);
   height: calc(100% - 2px);
 }
 .oss-social-post-badge--instagram_media .icon-container i,
+.oss-social-post-badge--instagram_reel .icon-container i,
 .oss-social-post-badge--story .icon-container i {
   background: var(--color-instagram-accent);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 .oss-social-post-badge--instagram_media.oss-social-post-badge--plain,
+.oss-social-post-badge--instagram_reel.oss-social-post-badge--plain,
 .oss-social-post-badge--story.oss-social-post-badge--plain {
   background: var(--color-instagram-accent);
 }
 .oss-social-post-badge--instagram_media.oss-social-post-badge--plain .icon-container,
+.oss-social-post-badge--instagram_reel.oss-social-post-badge--plain .icon-container,
 .oss-social-post-badge--story.oss-social-post-badge--plain .icon-container {
   background: transparent;
 }
 .oss-social-post-badge--instagram_media.oss-social-post-badge--plain .icon-container i,
+.oss-social-post-badge--instagram_reel.oss-social-post-badge--plain .icon-container i,
 .oss-social-post-badge--story.oss-social-post-badge--plain .icon-container i {
   background: var(--color-white);
   -webkit-background-clip: text;

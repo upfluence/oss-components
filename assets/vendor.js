@@ -87343,18 +87343,19 @@ define("@upfluence/oss-components/components/o-s-s/social-post-badge", ["exports
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class={{this.computedClasses}} role="button"
-       {{on "click" this.onPostTypeClick}}
-       ...attributes>
+    <div class={{this.computedClasses}} role="button" {{on "click" this.onPostTypeClick}} ...attributes>
     <div class="icon-container">
-      <OSS::Icon @style={{fa-icon-style this.iconDefinition}} @icon={{fa-icon-value this.iconDefinition}} />
+      {{#if this.isFontAwesomeIcon}}
+        <OSS::Icon @style={{fa-icon-style this.iconDefinition}} @icon={{fa-icon-value this.iconDefinition}} />
+      {{else}}
+        <img src={{asset-map (concat "@upfluence/oss-components/assets/upf-icons/" this.iconDefinition)}} alt="icon" />
+      {{/if}}
     </div>
   </div>
-  
   */
   {
-    "id": "PBFMoco0",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[24,\"role\",\"button\"],[17,1],[4,[38,0],[\"click\",[30,0,[\"onPostTypeClick\"]]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"icon-container\"],[12],[1,\"\\n    \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[[28,[37,2],[[30,0,[\"iconDefinition\"]]],null],[28,[37,3],[[30,0,[\"iconDefinition\"]]],null]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\"],false,[\"on\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
+    "id": "d/3TYJZZ",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[24,\"role\",\"button\"],[17,1],[4,[38,0],[\"click\",[30,0,[\"onPostTypeClick\"]]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"icon-container\"],[12],[1,\"\\n\"],[41,[30,0,[\"isFontAwesomeIcon\"]],[[[1,\"      \"],[8,[39,2],null,[[\"@style\",\"@icon\"],[[28,[37,3],[[30,0,[\"iconDefinition\"]]],null],[28,[37,4],[[30,0,[\"iconDefinition\"]]],null]]],null],[1,\"\\n\"]],[]],[[[1,\"      \"],[10,\"img\"],[15,\"src\",[28,[37,5],[[28,[37,6],[\"@upfluence/oss-components/assets/upf-icons/\",[30,0,[\"iconDefinition\"]]],null]],null]],[14,\"alt\",\"icon\"],[12],[13],[1,\"\\n\"]],[]]],[1,\"  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\"],false,[\"on\",\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"asset-map\",\"concat\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/social-post-badge.hbs",
     "isStrictMode": false
   });
@@ -87362,6 +87363,7 @@ define("@upfluence/oss-components/components/o-s-s/social-post-badge", ["exports
     article: 'fab fa-wordpress',
     facebook_status: 'fab fa-facebook-f',
     instagram_media: 'fab fa-instagram',
+    instagram_reel: 'instagram-reel.svg',
     tiktok_video: 'fab fa-tiktok',
     story: 'far fa-circle-notch',
     tweet: 'fab fa-x-twitter',
@@ -87395,6 +87397,11 @@ define("@upfluence/oss-components/components/o-s-s/social-post-badge", ["exports
       key: "iconDefinition",
       get: function get() {
         return skinMatching[this.args.postType];
+      }
+    }, {
+      key: "isFontAwesomeIcon",
+      get: function get() {
+        return !this.iconDefinition.includes('.svg');
       }
     }, {
       key: "onPostTypeClick",
