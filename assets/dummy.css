@@ -10150,8 +10150,10 @@ label {
 .oss-slider__container input[type='number']::-webkit-inner-spin-button,
 .oss-slider__container input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
-  -moz-appearance: none;
   margin: 0;
+}
+.oss-slider__container input[type='number'] {
+  -moz-appearance: textfield;
 }
 .oss-slider__container--disabled .oss-slider__range {
   cursor: not-allowed;
