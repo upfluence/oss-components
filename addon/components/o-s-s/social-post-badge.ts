@@ -7,6 +7,7 @@ export type SocialPostType =
   | 'article'
   | 'facebook_status'
   | 'instagram_media'
+  | 'instagram_reel'
   | 'tiktok_video'
   | 'story'
   | 'tweet'
@@ -20,8 +21,9 @@ export const skinMatching: skinDefinitionType = {
   article: 'fab fa-wordpress',
   facebook_status: 'fab fa-facebook-f',
   instagram_media: 'fab fa-instagram',
+  instagram_reel: 'instagram-reel.svg',
   tiktok_video: 'fab fa-tiktok',
-  story: 'story.svg',
+  story: 'far fa-circle-notch',
   tweet: 'fab fa-x-twitter',
   pin: 'fab fa-pinterest',
   youtube_video: 'fab fa-youtube',
@@ -69,7 +71,7 @@ export default class OSSSocialPostBadge extends Component<OSSSocialPostBadgeArgs
   }
 
   get isFontAwesomeIcon(): boolean {
-    return this.iconDefinition.startsWith('fab');
+    return !this.iconDefinition.includes('.svg');
   }
 
   @action

@@ -9,13 +9,14 @@ const ICONS_MATCHING: Record<string, string> = {
   facebook_status: '.fab.fa-facebook-f',
   instagram_media: '.fab.fa-instagram',
   tiktok_video: '.fab.fa-tiktok',
+  story: '.far.fa-circle-notch',
   tweet: '.fab.fa-x-twitter',
   pin: '.fab.fa-pinterest',
   youtube_video: '.fab.fa-youtube',
   twitch_stream: '.fab.fa-twitch'
 };
 const IMG_MATCHING: Record<string, string> = {
-  story: 'story.svg'
+  instagram_reel: 'instagram-reel.svg'
 };
 
 module('Integration | Component | o-s-s/social-post-badge', function (hooks) {
