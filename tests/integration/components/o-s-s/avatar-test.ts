@@ -40,6 +40,19 @@ module('Integration | Component | o-s-s/avatar', function (hooks) {
       assert.dom('.upf-avatar img').exists();
       assert.dom('.upf-avatar img').hasAttribute('src', 'http://foo.co/bar.png');
     });
+
+    test('it updates the image when a new @image is provided', async function (assert) {
+      this.updatedImage = null;
+      await render(hbs`<OSS::Avatar @image={{this.updatedImage}} @initials="TS" />`);
+
+      assert.ok(this.updatedImage === null);
+      assert.dom('.upf-avatar').exists();
+      assert.dom('.upf-avatar img').doesNotExist();
+      assert.dom('.upf-avatar span').hasText('TS');
+      this.set('updatedImage', 'https://via.placeholder.com/150');
+      assert.dom('.upf-avatar span').doesNotExist();
+      assert.dom('.upf-avatar img').hasAttribute('src', 'https://via.placeholder.com/150');
+    });
   });
 
   module('Sizes', function () {
