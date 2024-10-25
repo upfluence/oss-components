@@ -23,11 +23,9 @@ export const DEFAULT_IMAGE_URL: string = '/assets/images/upfluence-white-logo.sv
 
 export default class OSSAvatar extends Component<OSSAvatarArgs> {
   @tracked hasError: boolean = false;
-  @tracked displayInitials: boolean = false;
 
-  constructor(owner: unknown, args: OSSAvatarArgs) {
-    super(owner, args);
-    if (!args.image && args.initials) this.displayInitials = true;
+  get displayInitials(): boolean {
+    return (!this.args.image || this.hasError) && !!this.args.initials;
   }
 
   get image(): string | undefined {
@@ -56,10 +54,6 @@ export default class OSSAvatar extends Component<OSSAvatarArgs> {
 
   @action
   imageLoadError(event: Event): void {
-    if (this.args.initials) {
-      this.displayInitials = true;
-      return;
-    }
     (<HTMLImageElement>event.target).src = DEFAULT_IMAGE_URL;
     this.hasError = true;
   }
