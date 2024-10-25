@@ -76266,7 +76266,7 @@ define("@upfluence/oss-components/components/o-s-s/avatar", ["exports", "@ember/
     value: true
   });
   _exports.default = _exports.SizeDefinition = _exports.DEFAULT_IMAGE_URL = void 0;
-  var _class, _descriptor, _descriptor2;
+  var _class, _descriptor;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/debug",0,"@glimmer/tracking",0,"@ember/object",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -76311,16 +76311,22 @@ define("@upfluence/oss-components/components/o-s-s/avatar", ["exports", "@ember/
   var DEFAULT_IMAGE_URL = _exports.DEFAULT_IMAGE_URL = '/assets/images/upfluence-white-logo.svg';
   var OSSAvatar = _exports.default = (_class = /*#__PURE__*/function (_Component) {
     _inherits(OSSAvatar, _Component);
-    function OSSAvatar(owner, args) {
+    function OSSAvatar() {
       var _this;
       _classCallCheck(this, OSSAvatar);
-      _this = _callSuper(this, OSSAvatar, [owner, args]);
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+      _this = _callSuper(this, OSSAvatar, [].concat(args));
       _initializerDefineProperty(_assertThisInitialized(_this), "hasError", _descriptor, _assertThisInitialized(_this));
-      _initializerDefineProperty(_assertThisInitialized(_this), "displayInitials", _descriptor2, _assertThisInitialized(_this));
-      if (!args.image && args.initials) _this.displayInitials = true;
       return _this;
     }
     _createClass(OSSAvatar, [{
+      key: "displayInitials",
+      get: function get() {
+        return (!this.args.image || this.hasError) && !!this.args.initials;
+      }
+    }, {
       key: "image",
       get: function get() {
         var _this$args$image;
@@ -76345,23 +76351,12 @@ define("@upfluence/oss-components/components/o-s-s/avatar", ["exports", "@ember/
     }, {
       key: "imageLoadError",
       value: function imageLoadError(event) {
-        if (this.args.initials) {
-          this.displayInitials = true;
-          return;
-        }
         event.target.src = DEFAULT_IMAGE_URL;
         this.hasError = true;
       }
     }]);
     return OSSAvatar;
   }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "hasError", [_tracking.tracked], {
-    configurable: true,
-    enumerable: true,
-    writable: true,
-    initializer: function initializer() {
-      return false;
-    }
-  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "displayInitials", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,

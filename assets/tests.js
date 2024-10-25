@@ -4690,14 +4690,49 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
           return _ref4.apply(this, arguments);
         };
       }());
-    });
-    (0, _qunit.module)('Sizes', function () {
-      (0, _qunit.test)('it sets the right default class when size is not provided', /*#__PURE__*/function () {
+      (0, _qunit.test)('it updates the image when a new @image is provided', /*#__PURE__*/function () {
         var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
-                _context5.next = 2;
+                this.updatedImage = null;
+                _context5.next = 3;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Avatar @image={{this.updatedImage}} @initials="TS" />
+                */
+                {
+                  "id": "Z1eYc/rS",
+                  "block": "[[[8,[39,0],null,[[\"@image\",\"@initials\"],[[30,0,[\"updatedImage\"]],\"TS\"]],null]],[],false,[\"o-s-s/avatar\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/avatar-test.ts",
+                  "isStrictMode": false
+                }));
+              case 3:
+                assert.ok(this.updatedImage === null);
+                assert.dom('.upf-avatar').exists();
+                assert.dom('.upf-avatar img').doesNotExist();
+                assert.dom('.upf-avatar span').hasText('TS');
+                this.set('updatedImage', 'https://via.placeholder.com/150');
+                assert.dom('.upf-avatar span').doesNotExist();
+                assert.dom('.upf-avatar img').hasAttribute('src', 'https://via.placeholder.com/150');
+              case 10:
+              case "end":
+                return _context5.stop();
+            }
+          }, _callee5, this);
+        }));
+        return function (_x5) {
+          return _ref5.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('Sizes', function () {
+      (0, _qunit.test)('it sets the right default class when size is not provided', /*#__PURE__*/function () {
+        var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+          return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+            while (1) switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Avatar />
@@ -4713,22 +4748,22 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
                 assert.dom('.upf-avatar').hasClass("upf-avatar--md");
               case 4:
               case "end":
-                return _context5.stop();
+                return _context6.stop();
             }
-          }, _callee5);
+          }, _callee6);
         }));
-        return function (_x5) {
-          return _ref5.apply(this, arguments);
+        return function (_x6) {
+          return _ref6.apply(this, arguments);
         };
       }());
       Object.keys(_avatar.SizeDefinition).forEach(function (size) {
         (0, _qunit.test)("it sets the right class when using a supported size: ".concat(size), /*#__PURE__*/function () {
-          var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
-            return _regeneratorRuntime().wrap(function _callee6$(_context6) {
-              while (1) switch (_context6.prev = _context6.next) {
+          var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+            return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+              while (1) switch (_context7.prev = _context7.next) {
                 case 0:
                   this.size = size;
-                  _context6.next = 3;
+                  _context7.next = 3;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     <OSS::Avatar @size={{this.size}} />
@@ -4744,22 +4779,22 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
                   assert.dom('.upf-avatar').hasClass("upf-avatar--".concat(size));
                 case 5:
                 case "end":
-                  return _context6.stop();
+                  return _context7.stop();
               }
-            }, _callee6, this);
+            }, _callee7, this);
           }));
-          return function (_x6) {
-            return _ref6.apply(this, arguments);
+          return function (_x7) {
+            return _ref7.apply(this, arguments);
           };
         }());
       });
     });
     (0, _qunit.test)('When @loading is thruthy, the right class is applied on the component', /*#__PURE__*/function () {
-      var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
-        return _regeneratorRuntime().wrap(function _callee7$(_context7) {
-          while (1) switch (_context7.prev = _context7.next) {
+      var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+        return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+          while (1) switch (_context8.prev = _context8.next) {
             case 0:
-              _context7.next = 2;
+              _context8.next = 2;
               return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
               /*
                 <OSS::Avatar @loading={{true}} />
@@ -4774,24 +4809,24 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
               assert.dom('.upf-avatar').hasClass('upf-avatar--loading');
             case 3:
             case "end":
-              return _context7.stop();
+              return _context8.stop();
           }
-        }, _callee7);
+        }, _callee8);
       }));
-      return function (_x7) {
-        return _ref7.apply(this, arguments);
+      return function (_x8) {
+        return _ref8.apply(this, arguments);
       };
     }());
     (0, _qunit.module)('Error behavior', function () {
       (0, _qunit.test)('it throws an error if the wrong size argument is passed', /*#__PURE__*/function () {
-        var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
-          return _regeneratorRuntime().wrap(function _callee8$(_context8) {
-            while (1) switch (_context8.prev = _context8.next) {
+        var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+          return _regeneratorRuntime().wrap(function _callee9$(_context9) {
+            while (1) switch (_context9.prev = _context9.next) {
               case 0:
                 (0, _testHelpers.setupOnerror)(function (err) {
                   assert.equal(err.message, "Assertion Failed: [component][OSS::Avatar] Unknown size. Available sizes are: ".concat(Object.keys(_avatar.SizeDefinition).join(', ')));
                 });
-                _context8.next = 3;
+                _context9.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Avatar @size="test" />
@@ -4804,20 +4839,20 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
                 }));
               case 3:
               case "end":
-                return _context8.stop();
+                return _context9.stop();
             }
-          }, _callee8);
+          }, _callee9);
         }));
-        return function (_x8) {
-          return _ref8.apply(this, arguments);
+        return function (_x9) {
+          return _ref9.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('it displays the initials when both initials and image are provided and the image fails to load', /*#__PURE__*/function () {
-        var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
-          return _regeneratorRuntime().wrap(function _callee9$(_context9) {
-            while (1) switch (_context9.prev = _context9.next) {
+        var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
+          return _regeneratorRuntime().wrap(function _callee10$(_context10) {
+            while (1) switch (_context10.prev = _context10.next) {
               case 0:
-                _context9.next = 2;
+                _context10.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Avatar @image="/foo.co/bar.p" @initials="TS" />
@@ -4829,7 +4864,7 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
                   "isStrictMode": false
                 }));
               case 2:
-                _context9.next = 4;
+                _context10.next = 4;
                 return (0, _testHelpers.waitFor)('.upf-avatar span');
               case 4:
                 assert.dom('.upf-avatar').exists();
@@ -4837,20 +4872,20 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
                 assert.dom('.upf-avatar span').hasText('TS');
               case 7:
               case "end":
-                return _context9.stop();
+                return _context10.stop();
             }
-          }, _callee9);
+          }, _callee10);
         }));
-        return function (_x9) {
-          return _ref9.apply(this, arguments);
+        return function (_x10) {
+          return _ref10.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('it displays the placeholder image when the image provided in parameters fails to load', /*#__PURE__*/function () {
-        var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
-          return _regeneratorRuntime().wrap(function _callee10$(_context10) {
-            while (1) switch (_context10.prev = _context10.next) {
+        var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+          return _regeneratorRuntime().wrap(function _callee11$(_context11) {
+            while (1) switch (_context11.prev = _context11.next) {
               case 0:
-                _context10.next = 2;
+                _context11.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Avatar @image="/foo.co/bar.p" />
@@ -4862,7 +4897,7 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
                   "isStrictMode": false
                 }));
               case 2:
-                _context10.next = 4;
+                _context11.next = 4;
                 return (0, _testHelpers.waitUntil)(function () {
                   var _find;
                   return ((_find = (0, _testHelpers.find)('.upf-avatar img')) === null || _find === void 0 ? void 0 : _find.getAttribute('src')) === _avatar.DEFAULT_IMAGE_URL;
@@ -4873,12 +4908,12 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
                 assert.dom('.upf-avatar img').hasAttribute('src', _avatar.DEFAULT_IMAGE_URL);
               case 7:
               case "end":
-                return _context10.stop();
+                return _context11.stop();
             }
-          }, _callee10);
+          }, _callee11);
         }));
-        return function (_x10) {
-          return _ref10.apply(this, arguments);
+        return function (_x11) {
+          return _ref11.apply(this, arguments);
         };
       }());
     });
