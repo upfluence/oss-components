@@ -15332,6 +15332,12 @@ a.upf-btn--sm {
   bottom: 0;
   background: linear-gradient(to top, var(--color-gray-50), transparent 40px);
 }
+.oss-scrollable-panel-container--plain .oss-scrollable-panel--shadow__top {
+  background: linear-gradient(to bottom, var(--color-white), transparent 40px);
+}
+.oss-scrollable-panel-container--plain .oss-scrollable-panel--shadow__bottom {
+  background: linear-gradient(to top, var(--color-white), transparent 40px);
+}
 @media screen and (-webkit-device-pixel-ratio: 1) {
   .oss-sidebar-item--locked {
     padding-left: 1px;

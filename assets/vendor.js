@@ -85647,8 +85647,10 @@ define("@upfluence/oss-components/components/o-s-s/scrollable-panel", ["exports"
   function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
   function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
   function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
-  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
   function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+  function _get() { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get.bind(); } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(arguments.length < 3 ? target : receiver); } return desc.value; }; } return _get.apply(this, arguments); }
+  function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
   function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
   function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -85658,7 +85660,7 @@ define("@upfluence/oss-components/components/o-s-s/scrollable-panel", ["exports"
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="oss-scrollable-panel-container" ...attributes>
+    <div class="oss-scrollable-panel-container {{if @plain 'oss-scrollable-panel-container--plain'}}" ...attributes>
     {{#if this.shadowTopVisible}}
       <div class="oss-scrollable-panel--shadow oss-scrollable-panel--shadow__top"></div>
     {{/if}}
@@ -85671,8 +85673,8 @@ define("@upfluence/oss-components/components/o-s-s/scrollable-panel", ["exports"
   </div>
   */
   {
-    "id": "2FGEe9TU",
-    "block": "[[[11,0],[24,0,\"oss-scrollable-panel-container\"],[17,1],[12],[1,\"\\n\"],[41,[30,0,[\"shadowTopVisible\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-scrollable-panel--shadow oss-scrollable-panel--shadow__top\"],[12],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[11,0],[24,0,\"oss-scrollable-panel-content\"],[4,[38,1],[[30,0,[\"initScrollListener\"]]],null],[12],[1,\"\\n    \"],[18,2,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"shadowBottomVisible\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-scrollable-panel--shadow oss-scrollable-panel--shadow__bottom\"],[12],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"&default\"],false,[\"if\",\"did-insert\",\"yield\"]]",
+    "id": "ru+Er+Vo",
+    "block": "[[[11,0],[16,0,[29,[\"oss-scrollable-panel-container \",[52,[30,1],\"oss-scrollable-panel-container--plain\"]]]],[17,2],[12],[1,\"\\n\"],[41,[30,0,[\"shadowTopVisible\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-scrollable-panel--shadow oss-scrollable-panel--shadow__top\"],[12],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[11,0],[24,0,\"oss-scrollable-panel-content\"],[4,[38,1],[[30,0,[\"initScrollListener\"]]],null],[12],[1,\"\\n    \"],[18,3,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"shadowBottomVisible\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-scrollable-panel--shadow oss-scrollable-panel--shadow__bottom\"],[12],[13],[1,\"\\n\"]],[]],null],[13]],[\"@plain\",\"&attrs\",\"&default\"],false,[\"if\",\"did-insert\",\"yield\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/scrollable-panel.hbs",
     "isStrictMode": false
   });
@@ -85701,6 +85703,7 @@ define("@upfluence/oss-components/components/o-s-s/scrollable-panel", ["exports"
       key: "willDestroy",
       value: function willDestroy() {
         this.parentElement.removeEventListener('scroll', this.scrollListener.bind(this));
+        _get(_getPrototypeOf(OSSScrollablePanelComponent.prototype), "willDestroy", this).call(this);
       }
     }, {
       key: "scrollListener",
@@ -85756,7 +85759,22 @@ define("@upfluence/oss-components/components/o-s-s/scrollable-panel", ["exports"
   var _default = _exports.default = {
     title: 'Components/OSS::ScrollablePanel',
     component: 'scrollable-panel',
-    argTypes: {},
+    argTypes: {
+      plain: {
+        description: 'When plain is true, the top and bottom shadows are displayed in white, otherwise in grey',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      }
+    },
     parameters: {
       docs: {
         description: {
@@ -85765,14 +85783,16 @@ define("@upfluence/oss-components/components/o-s-s/scrollable-panel", ["exports"
       }
     }
   };
-  var defaultArgs = {};
+  var defaultArgs = {
+    plain: false
+  };
   var Template = function Template(args) {
     return {
       template: (0, _templateFactory.createTemplateFactory)(
       /*
         
             <div style="height:200px; width: 300px; background-color: white; " >
-              <OSS::ScrollablePanel>
+              <OSS::ScrollablePanel @plain={{this.plain}}>
                 <div class="fx-col fx-gap-px-12 padding-px-12">
                   <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
                   <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
@@ -85785,8 +85805,8 @@ define("@upfluence/oss-components/components/o-s-s/scrollable-panel", ["exports"
         
       */
       {
-        "id": "kbpxTEet",
-        "block": "[[[1,\"\\n      \"],[10,0],[14,5,\"height:200px; width: 300px; background-color: white; \"],[12],[1,\"\\n        \"],[8,[39,0],null,null,[[\"default\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-12\"],[12],[1,\"\\n            \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n            \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n            \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n            \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n            \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/scrollable-panel\"]]",
+        "id": "OTsvYXEM",
+        "block": "[[[1,\"\\n      \"],[10,0],[14,5,\"height:200px; width: 300px; background-color: white; \"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@plain\"],[[30,0,[\"plain\"]]]],[[\"default\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-12\"],[12],[1,\"\\n            \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n            \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n            \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n            \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n            \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/scrollable-panel\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/scrollable-panel.stories.js",
         "isStrictMode": false
       }),
