@@ -2,7 +2,9 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
-interface OSSScrollablePanelComponentSignature {}
+interface OSSScrollablePanelComponentSignature {
+  plain?: boolean;
+}
 
 export default class OSSScrollablePanelComponent extends Component<OSSScrollablePanelComponentSignature> {
   @tracked declare parentElement: HTMLElement;
@@ -19,6 +21,7 @@ export default class OSSScrollablePanelComponent extends Component<OSSScrollable
   @action
   willDestroy(): void {
     this.parentElement.removeEventListener('scroll', this.scrollListener.bind(this));
+    super.willDestroy();
   }
 
   private scrollListener(): void {

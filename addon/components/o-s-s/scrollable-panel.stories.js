@@ -3,7 +3,18 @@ import { hbs } from 'ember-cli-htmlbars';
 export default {
   title: 'Components/OSS::ScrollablePanel',
   component: 'scrollable-panel',
-  argTypes: {},
+  argTypes: {
+    plain: {
+      description: 'When plain is true, the top and bottom shadows are displayed in white, otherwise in grey',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
+      },
+      control: {
+        type: 'boolean'
+      }
+    }
+  },
   parameters: {
     docs: {
       description: {
@@ -13,12 +24,14 @@ export default {
   }
 };
 
-const defaultArgs = {};
+const defaultArgs = {
+  plain: false
+};
 
 const Template = (args) => ({
   template: hbs`
       <div style="height:200px; width: 300px; background-color: white; " >
-        <OSS::ScrollablePanel>
+        <OSS::ScrollablePanel @plain={{this.plain}}>
           <div class="fx-col fx-gap-px-12 padding-px-12">
             <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
             <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
