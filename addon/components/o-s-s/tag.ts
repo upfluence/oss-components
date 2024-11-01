@@ -39,7 +39,7 @@ export const SkinDefinition: SkinDefType = {
   'chat-gpt': 'chat-gpt'
 };
 
-interface OSSTagArgs {
+export interface OSSTagArgs {
   label?: string;
   skin?: string;
   icon?: string;
