@@ -77807,6 +77807,391 @@ define("@upfluence/oss-components/components/o-s-s/button", ["exports", "@ember/
   });
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+define("@upfluence/oss-components/components/o-s-s/carousel", ["exports", "@ember/component", "@ember/object", "@glimmer/component", "@glimmer/tracking", "@ember/template-factory"], function (_exports, _component, _object, _component2, _tracking, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+  function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+  function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+  function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+  function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+  function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+  function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+  function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+  function _get() { if (typeof Reflect !== "undefined" && Reflect.get) { _get = Reflect.get.bind(); } else { _get = function _get(target, property, receiver) { var base = _superPropBase(target, property); if (!base) return; var desc = Object.getOwnPropertyDescriptor(base, property); if (desc.get) { return desc.get.call(arguments.length < 3 ? target : receiver); } return desc.value; }; } return _get.apply(this, arguments); }
+  function _superPropBase(object, property) { while (!Object.prototype.hasOwnProperty.call(object, property)) { object = _getPrototypeOf(object); if (object === null) break; } return object; }
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="oss-carousel" {{did-insert this.initialize}} ...attributes>
+    {{#if this.showIndicators}}
+      <div class="fx-row">
+        {{#each this.pages as |page index|}}
+          <div class="page-btn" role="button" {{on "click" (fn this.displayPage page)}}>
+            <i class="{{this.buttonIcon}} {{if (eq index this.currentPageIndex) 'page-btn--active'}}"></i>
+          </div>
+        {{/each}}
+      </div>
+    {{/if}}
+    <div class="page-container {{if this.displaySidePadding 'page-container--side-padding'}}">
+      {{#if this.showControls}}
+        <div class="carousel-control carousel-control--left" {{on "click" this.previousPage}} role="button">
+          <i class="far fa-chevron-left"></i>
+        </div>
+        <div class="carousel-control carousel-control--right" {{on "click" this.nextPage}} role="button">
+          <i class="far fa-chevron-right"></i>
+        </div>
+      {{/if}}
+      {{yield to="pages"}}
+    </div>
+  </div>
+  */
+  {
+    "id": "iToN/7PP",
+    "block": "[[[11,0],[24,0,\"oss-carousel\"],[17,1],[4,[38,0],[[30,0,[\"initialize\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"showIndicators\"]],[[[1,\"    \"],[10,0],[14,0,\"fx-row\"],[12],[1,\"\\n\"],[42,[28,[37,3],[[28,[37,3],[[30,0,[\"pages\"]]],null]],null],null,[[[1,\"        \"],[11,0],[24,0,\"page-btn\"],[24,\"role\",\"button\"],[4,[38,4],[\"click\",[28,[37,5],[[30,0,[\"displayPage\"]],[30,2]],null]],null],[12],[1,\"\\n          \"],[10,\"i\"],[15,0,[29,[[30,0,[\"buttonIcon\"]],\" \",[52,[28,[37,6],[[30,3],[30,0,[\"currentPageIndex\"]]],null],\"page-btn--active\"]]]],[12],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[2,3]],null],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[15,0,[29,[\"page-container \",[52,[30,0,[\"displaySidePadding\"]],\"page-container--side-padding\"]]]],[12],[1,\"\\n\"],[41,[30,0,[\"showControls\"]],[[[1,\"      \"],[11,0],[24,0,\"carousel-control carousel-control--left\"],[24,\"role\",\"button\"],[4,[38,4],[\"click\",[30,0,[\"previousPage\"]]],null],[12],[1,\"\\n        \"],[10,\"i\"],[14,0,\"far fa-chevron-left\"],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[11,0],[24,0,\"carousel-control carousel-control--right\"],[24,\"role\",\"button\"],[4,[38,4],[\"click\",[30,0,[\"nextPage\"]]],null],[12],[1,\"\\n        \"],[10,\"i\"],[14,0,\"far fa-chevron-right\"],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[18,4,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"page\",\"index\",\"&pages\"],false,[\"did-insert\",\"if\",\"each\",\"-track-array\",\"on\",\"fn\",\"eq\",\"yield\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/carousel.hbs",
+    "isStrictMode": false
+  });
+  var DEFAULT_BUTTON_ICON = 'fas fa-circle';
+  var ANIMATION_TIME = 500;
+  var OSSCarousel = _exports.default = (_class = /*#__PURE__*/function (_Component) {
+    _inherits(OSSCarousel, _Component);
+    function OSSCarousel() {
+      var _this;
+      _classCallCheck(this, OSSCarousel);
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+      _this = _callSuper(this, OSSCarousel, [].concat(args));
+      _initializerDefineProperty(_assertThisInitialized(_this), "element", _descriptor, _assertThisInitialized(_this));
+      _initializerDefineProperty(_assertThisInitialized(_this), "pages", _descriptor2, _assertThisInitialized(_this));
+      _initializerDefineProperty(_assertThisInitialized(_this), "currentPageIndex", _descriptor3, _assertThisInitialized(_this));
+      _initializerDefineProperty(_assertThisInitialized(_this), "prevPageIndex", _descriptor4, _assertThisInitialized(_this));
+      _initializerDefineProperty(_assertThisInitialized(_this), "ongoingAnimation", _descriptor5, _assertThisInitialized(_this));
+      _defineProperty(_assertThisInitialized(_this), "slideAnimationHandler", function (page, executeAfterAnimation) {
+        var classesToCleanup = ['animate--slide-from-left', 'animate--slide-from-right', 'animate--slide-to-left', 'animate--slide-to-right'];
+        _this.pages.forEach(function (p) {
+          var _p$classList;
+          return (_p$classList = p.classList).remove.apply(_p$classList, classesToCleanup);
+        });
+        setTimeout(function () {
+          return executeAfterAnimation(classesToCleanup);
+        }, ANIMATION_TIME);
+        if (_this.pages.indexOf(page) > _this.currentPageIndex) {
+          var _this$currentPageInde;
+          _this.pages[(_this$currentPageInde = _this.currentPageIndex) !== null && _this$currentPageInde !== void 0 ? _this$currentPageInde : 0].classList.add('animate--slide-to-left');
+          page.classList.add('animate--slide-from-left');
+        } else {
+          var _this$currentPageInde2;
+          _this.pages[(_this$currentPageInde2 = _this.currentPageIndex) !== null && _this$currentPageInde2 !== void 0 ? _this$currentPageInde2 : 0].classList.add('animate--slide-to-right');
+          page.classList.add('animate--slide-from-right');
+        }
+      });
+      _defineProperty(_assertThisInitialized(_this), "shiftAnimationHandler", function (page, executeAfterAnimation) {
+        var classesToCleanup = ['animate--shift-from-left', 'animate--shift-from-right', 'page--active'];
+        _this.pages.forEach(function (p) {
+          var _p$classList2;
+          return (_p$classList2 = p.classList).remove.apply(_p$classList2, classesToCleanup);
+        });
+        if (_this.pages.indexOf(page) > _this.currentPageIndex) {
+          page.classList.add('animate--shift-from-left');
+        } else {
+          page.classList.add('animate--shift-from-right');
+        }
+        setTimeout(function () {
+          return executeAfterAnimation();
+        }, ANIMATION_TIME);
+      });
+      return _this;
+    }
+    _createClass(OSSCarousel, [{
+      key: "buttonIcon",
+      get: function get() {
+        var _this$args$buttonIcon;
+        return (_this$args$buttonIcon = this.args.buttonIcon) !== null && _this$args$buttonIcon !== void 0 ? _this$args$buttonIcon : DEFAULT_BUTTON_ICON;
+      }
+    }, {
+      key: "showIndicators",
+      get: function get() {
+        var _this$args$showIndica;
+        return (_this$args$showIndica = this.args.showIndicators) !== null && _this$args$showIndica !== void 0 ? _this$args$showIndica : true;
+      }
+    }, {
+      key: "showControls",
+      get: function get() {
+        var _this$args$showContro;
+        return (_this$args$showContro = !!this.args.showControls) !== null && _this$args$showContro !== void 0 ? _this$args$showContro : false;
+      }
+    }, {
+      key: "displaySidePadding",
+      get: function get() {
+        return this.args.showControls === 'outside';
+      }
+    }, {
+      key: "initialize",
+      value: function initialize(element) {
+        var _this2 = this;
+        this.element = element;
+        this.pages = Array.from(this.element.querySelectorAll('.page'));
+        if (this.pages.length === 0) {
+          throw new Error('[component][OSS::Carousel] No pages found in the carousel');
+        }
+        this.pages[0].classList.add('page--active');
+        this.currentPageIndex = 0;
+        if (this.args.autoPlay) {
+          this.autoPlayInterval = setInterval(function () {
+            _this2.nextPage();
+          }, this.args.autoPlay);
+        }
+      }
+    }, {
+      key: "previousPage",
+      value: function previousPage() {
+        if (this.currentPageIndex === 0) {
+          this.displayPage(this.pages[this.pages.length - 1]);
+          return;
+        }
+        this.displayPage(this.pages[this.currentPageIndex - 1]);
+      }
+    }, {
+      key: "nextPage",
+      value: function nextPage() {
+        if (this.currentPageIndex === this.pages.length - 1) {
+          this.displayPage(this.pages[0]);
+          return;
+        }
+        this.displayPage(this.pages[this.currentPageIndex + 1]);
+      }
+    }, {
+      key: "displayPage",
+      value: function displayPage(page) {
+        if (this.pages.indexOf(page) === this.currentPageIndex || this.ongoingAnimation) {
+          return;
+        }
+        this.ongoingAnimation = true;
+        this.triggerAnimation(page);
+        page.classList.add('page--active');
+        this.prevPageIndex = this.currentPageIndex;
+        this.currentPageIndex = this.pages.indexOf(page);
+      }
+    }, {
+      key: "willDestroy",
+      value: function willDestroy() {
+        _get(_getPrototypeOf(OSSCarousel.prototype), "willDestroy", this).call(this);
+        clearInterval(this.autoPlayInterval);
+      }
+    }, {
+      key: "animationStyle",
+      get: function get() {
+        var _this$args$animationS;
+        return (_this$args$animationS = this.args.animationStyle) !== null && _this$args$animationS !== void 0 ? _this$args$animationS : 'shift';
+      }
+    }, {
+      key: "triggerAnimation",
+      value: function triggerAnimation(page) {
+        var _this3 = this;
+        if (this.animationStyle === 'slide') {
+          this.slideAnimationHandler(page, function (classesToCleanup) {
+            var _this3$prevPageIndex;
+            _this3.pages[(_this3$prevPageIndex = _this3.prevPageIndex) !== null && _this3$prevPageIndex !== void 0 ? _this3$prevPageIndex : 0].classList.remove('page--active');
+            _this3.pages.forEach(function (p) {
+              var _p$classList3;
+              return (_p$classList3 = p.classList).remove.apply(_p$classList3, _toConsumableArray(classesToCleanup));
+            });
+            _this3.ongoingAnimation = false;
+          });
+        } else if (this.animationStyle === 'shift') {
+          this.shiftAnimationHandler(page, function () {
+            _this3.ongoingAnimation = false;
+          });
+        }
+      }
+    }]);
+    return OSSCarousel;
+  }(_component2.default), (_descriptor = _applyDecoratedDescriptor(_class.prototype, "element", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "pages", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "currentPageIndex", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, "prevPageIndex", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _descriptor5 = _applyDecoratedDescriptor(_class.prototype, "ongoingAnimation", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function initializer() {
+      return false;
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "initialize", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initialize"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "previousPage", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "previousPage"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "nextPage", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "nextPage"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "displayPage", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "displayPage"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSCarousel);
+});
+;define("@upfluence/oss-components/components/o-s-s/carousel.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.Default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::Carousel',
+    component: 'carousel',
+    argTypes: {
+      buttonIcon: {
+        description: 'Allows setting a custom icon for the button. The icon should be a FontAwesome icon, e.g. "fas fa-robot".',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'fas fa-circle'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      animationStyle: {
+        description: 'The style of the animation. Can be either shift or slide.',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'shift'
+          }
+        },
+        options: ['shift', 'slide'],
+        control: {
+          type: 'select'
+        }
+      },
+      showIndicators: {
+        description: 'Whether to show the indicators or not. The "indicators" are the bullet points above the carousel.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'true'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      showControls: {
+        description: 'Whether to show the controls or not. The "controls" are the arrows/chevrons on the sides of the carousel. Overlay displays within the carousel, outside displays outside the carousel by adding padding around the pages.',
+        table: {
+          type: {
+            summary: 'text'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        options: [undefined, 'overlay', 'outside'],
+        control: {
+          type: 'select'
+        }
+      },
+      autoPlay: {
+        description: 'Allows the carousel to automatically play through the slides. The parameter is the time in milliseconds between slides.',
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'number'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'An OSS-components implementation of a Carousel component.<br/>The `:page` named-block should be use to yield the pages that will be displayed.<br/>Each page requires a `page` class.'
+        }
+      }
+    }
+  };
+  var defaultArgs = {
+    buttonIcon: undefined,
+    animationStyle: undefined,
+    showIndicators: undefined,
+    showControls: undefined,
+    autoPlay: undefined
+  };
+  var Template = function Template(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <OSS::Carousel @showIndicators={{this.showIndicators}} @showControls={{this.showControls}}
+                         @animationStyle={{this.animationStyle}} @buttonIcon={{this.buttonIcon}}
+                         @autoPlay={{this.autoPlay}}>
+            <:pages>
+              <div class="page">
+                <OSS::Banner @icon="fas fa-image" @title="PAGE 1"/>
+              </div>
+              <div class="page">
+                <OSS::Banner @icon="fas fa-image" @title="PAGE 2"/>
+              </div>
+              <div class="page">
+                <OSS::Banner @icon="fas fa-image" @title="PAGE 1"/>
+              </div>
+            </:pages>
+          </OSS::Carousel>
+        
+      */
+      {
+        "id": "8jwfaCwB",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@showIndicators\",\"@showControls\",\"@animationStyle\",\"@buttonIcon\",\"@autoPlay\"],[[30,0,[\"showIndicators\"]],[30,0,[\"showControls\"]],[30,0,[\"animationStyle\"]],[30,0,[\"buttonIcon\"]],[30,0,[\"autoPlay\"]]]],[[\"pages\"],[[[[1,\"\\n        \"],[10,0],[14,0,\"page\"],[12],[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\",\"@title\"],[\"fas fa-image\",\"PAGE 1\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"page\"],[12],[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\",\"@title\"],[\"fas fa-image\",\"PAGE 2\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"page\"],[12],[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\",\"@title\"],[\"fas fa-image\",\"PAGE 1\"]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/carousel\",\"o-s-s/banner\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/carousel.stories.js",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+  var Default = _exports.Default = Template.bind({});
+  Default.args = defaultArgs;
+});
+;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("@upfluence/oss-components/components/o-s-s/checkbox", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@ember/object", "@ember/object/internals", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _object, _internals, _templateFactory) {
   "use strict";
 
