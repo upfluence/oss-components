@@ -1,3 +1,82 @@
+<div class="fx-col fx-gap-px-10 margin-md">
+  <OSS::Button @label="Toggle carousel" {{on "click" (fn (mut this.displayCarousel) (not this.displayCarousel))}} />
+  <OSS::Carousel @buttonIcon="fas fa-robot" @animationStyle="shift" @showIndicators={{true}} @showControls="outside">
+    <:pages>
+      <div class="page">
+        <OSS::Banner
+          @icon="fas fa-box-open"
+          @title="Import creators inside your campaign"
+          @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file."
+        />
+      </div>
+      <div class="page">
+        <OSS::Banner
+          @title="Banner without icon"
+          @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file."
+        />
+      </div>
+      <div class="page">
+        <OSS::Banner
+          @icon="fas fa-box-open"
+          @title="Import creators inside your campaign"
+          @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file."
+        />
+      </div>
+      <div class="page">
+        <OSS::Banner
+          @title="Banner without icon"
+          @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file."
+        />
+      </div>
+      <div class="page">
+        <OSS::Banner
+          @icon="fas fa-box-open"
+          @title="Import creators inside your campaign"
+          @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file."
+        />
+      </div>
+      <div class="page">
+        <OSS::Banner
+          @title="Banner without icon"
+          @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file."
+        />
+      </div>
+      <div class="page">
+        <OSS::Banner
+          @icon="fas fa-box-open"
+          @title="Import creators inside your campaign"
+          @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file."
+        />
+      </div>
+      <div class="page">
+        <OSS::Banner
+          @title="Banner without icon"
+          @subtitle="Choose the creators you want to import from a list, emailing, stream, Live capture or upload an existing .CSV file."
+        />
+      </div>
+    </:pages>
+  </OSS::Carousel>
+  <OSS::Carousel @buttonIcon="fas fa-robot" @animationStyle="shift" @showIndicators={{true}} @showControls="outside">
+    <:pages>
+      <div class="page">
+        <img
+          src="https://sm.pcmag.com/pcmag_au/how-to/c/consolidat/consolidate-your-data-how-to-combine-multiple-storage-drives_zvnz.jpg"
+        />
+      </div>
+      <div class="page">
+        <img
+          src="https://sm.pcmag.com/pcmag_au/how-to/c/consolidat/consolidate-your-data-how-to-combine-multiple-storage-drives_zvnz.jpg"
+        />
+      </div>
+      <div class="page">
+        <img
+          src="https://sm.pcmag.com/pcmag_au/how-to/c/consolidat/consolidate-your-data-how-to-combine-multiple-storage-drives_zvnz.jpg"
+        />
+      </div>
+    </:pages>
+  </OSS::Carousel>
+</div>
+
 <div class="fx-row fx-gap-px-10 margin-md">
   <OSS::SocialPostBadge @postType="story" plain={{false}} />
   <OSS::SocialPostBadge @postType="instagram_reel" plain={{false}} />
