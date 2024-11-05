@@ -1,5 +1,4 @@
 @import '_fonts';
-@import '_upf-icons';
 @import '_typography';
 
 * {
@@ -18,30 +17,4 @@
       background-color: @upf-gray-dark;
     }
   }
-}
-
-.upf-icon {
-  .upf-icon--;
-}
-
-[class*='upf-icon--']:before {
-  color: inherit;
-}
-
-.fa-tiktok,
-.fa-reel,
-.fa-igtv {
-  &:extend(.upf-icon);
-}
-
-.fa-tiktok:before {
-  &:extend(.upf-icon--tiktok:before);
-}
-
-.fa-reel:before {
-  &:extend(.upf-icon--reel:before);
-}
-
-.fa-igtv:before {
-  &:extend(.upf-icon--igtv:before);
 }

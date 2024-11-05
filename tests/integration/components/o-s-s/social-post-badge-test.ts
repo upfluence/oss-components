@@ -60,7 +60,7 @@ module('Integration | Component | o-s-s/social-post-badge', function (hooks) {
 
       assert
         .dom('.oss-social-post-badge img')
-        .hasAttribute('src', `/@upfluence/oss-components/assets/upf-icons/${IMG_MATCHING[media]}`);
+        .hasAttribute('src', `/@upfluence/oss-components/assets/icons/${IMG_MATCHING[media]}`);
     });
   });
 
