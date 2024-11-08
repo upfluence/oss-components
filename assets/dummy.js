@@ -3193,19 +3193,19 @@ define("dummy/routes/scrollable", ["exports", "@ember/routing/route"], function 
     {{yield}}
   
   {{#if this.error}}
-    <span class="col-xs-12 upf-input-feedback upf-input-feedback--error">
+    <span class="upf-input-feedback upf-input-feedback--error">
       <OSS::Icon @icon="fa-exclamation-circle" aria-label={{this.error}} />
     </span>
   {{else if this.help}}
-    <span class="col-xs-12 upf-input-feedback upf-input-feedback--help">
+    <span class="upf-input-feedback upf-input-feedback--help">
       <OSS::Icon @icon="fa-question-circle" aria-label={{this.help}} />
     </span>
   {{/if}}
   
   */
   {
-    "id": "REZ/IyT4",
-    "block": "[[[18,1,null],[1,\"\\n\\n\"],[41,[30,0,[\"error\"]],[[[1,\"  \"],[10,1],[14,0,\"col-xs-12 upf-input-feedback upf-input-feedback--error\"],[12],[1,\"\\n    \"],[8,[39,2],[[16,\"aria-label\",[30,0,[\"error\"]]]],[[\"@icon\"],[\"fa-exclamation-circle\"]],null],[1,\"\\n  \"],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"help\"]],[[[1,\"  \"],[10,1],[14,0,\"col-xs-12 upf-input-feedback upf-input-feedback--help\"],[12],[1,\"\\n    \"],[8,[39,2],[[16,\"aria-label\",[30,0,[\"help\"]]]],[[\"@icon\"],[\"fa-question-circle\"]],null],[1,\"\\n  \"],[13],[1,\"\\n\"]],[]],null]],[]]]],[\"&default\"],false,[\"yield\",\"if\",\"o-s-s/icon\"]]",
+    "id": "6RBLmdQJ",
+    "block": "[[[18,1,null],[1,\"\\n\\n\"],[41,[30,0,[\"error\"]],[[[1,\"  \"],[10,1],[14,0,\"upf-input-feedback upf-input-feedback--error\"],[12],[1,\"\\n    \"],[8,[39,2],[[16,\"aria-label\",[30,0,[\"error\"]]]],[[\"@icon\"],[\"fa-exclamation-circle\"]],null],[1,\"\\n  \"],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"help\"]],[[[1,\"  \"],[10,1],[14,0,\"upf-input-feedback upf-input-feedback--help\"],[12],[1,\"\\n    \"],[8,[39,2],[[16,\"aria-label\",[30,0,[\"help\"]]]],[[\"@icon\"],[\"fa-question-circle\"]],null],[1,\"\\n  \"],[13],[1,\"\\n\"]],[]],null]],[]]]],[\"&default\"],false,[\"yield\",\"if\",\"o-s-s/icon\"]]",
     "moduleName": "dummy/templates/components/input-wrapper.hbs",
     "isStrictMode": false
   });

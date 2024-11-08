@@ -9887,6 +9887,13 @@ label {
 .upf-input-container--has-feedback {
   position: relative;
 }
+.upf-input-container--has-feedback .upf-input-feedback {
+  position: relative;
+  padding-right: var(--spacing-px-12);
+  padding-left: var(--spacing-px-12);
+  float: left;
+  width: 100%;
+}
 .upf-input-container--has-feedback .upf-input-feedback i {
   display: block;
   font-size: 1.5em;
@@ -9908,6 +9915,13 @@ label {
 }
 .upf-input-container--errorful {
   position: relative;
+}
+.upf-input-container--errorful .upf-input-feedback {
+  position: relative;
+  padding-right: var(--spacing-px-12);
+  padding-left: var(--spacing-px-12);
+  float: left;
+  width: 100%;
 }
 .upf-input-container--errorful .upf-input-feedback i {
   display: block;
@@ -9954,6 +9968,13 @@ label {
 }
 .upf-input-container--has-help {
   position: relative;
+}
+.upf-input-container--has-help .upf-input-feedback {
+  position: relative;
+  padding-right: var(--spacing-px-12);
+  padding-left: var(--spacing-px-12);
+  float: left;
+  width: 100%;
 }
 .upf-input-container--has-help .upf-input-feedback i {
   display: block;
