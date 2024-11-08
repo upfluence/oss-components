@@ -1,11 +1,11 @@
 {{yield}}
 
 {{#if this.error}}
-  <span class="col-xs-12 upf-input-feedback upf-input-feedback--error">
+  <span class="upf-input-feedback upf-input-feedback--error">
     <OSS::Icon @icon="fa-exclamation-circle" aria-label={{this.error}} />
   </span>
 {{else if this.help}}
-  <span class="col-xs-12 upf-input-feedback upf-input-feedback--help">
+  <span class="upf-input-feedback upf-input-feedback--help">
     <OSS::Icon @icon="fa-question-circle" aria-label={{this.help}} />
   </span>
 {{/if}}
