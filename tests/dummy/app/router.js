@@ -7,6 +7,7 @@ export default class Router extends EmberRouter {
 }
 
 Router.map(function () {
-  this.route('scrollable');
-  this.route('actionable');
+  this.route('input');
+  this.route('visual');
+  this.route('data');
 });
