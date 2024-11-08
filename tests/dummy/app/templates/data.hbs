@@ -1,0 +1,162 @@
+<div class="fx-col fx-gap-px-12 padding-px-18">
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Panel
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <OSS::Panel @icon="/assets/images/upfluence-white-logo.svg">
+        <:header>
+          <OSS::Avatar
+            @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
+          />
+        </:header>
+        <:content>
+          <OSS::Panel::Row @label="First Label" @icon="fa-search" />
+          <OSS::Panel::Row @label="Second Label" @icon="fa-cog" />
+          <OSS::Panel::Row @label="Third Label" @icon="fa-search" />
+        </:content>
+        <:footer>
+          <OSS::Panel::Row @label="Logout" @icon="fa-sign-out" />
+        </:footer>
+      </OSS::Panel>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Scrollable panel
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <div class="fx-row fx-gap-px-24 fx-xalign-start" style="height: 300px; width: 500px;">
+        <OSS::ScrollablePanel>
+          <div class="fx-col fx-gap-px-6">
+            {{#each this.loop}}
+              <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}} />
+            {{/each}}
+          </div>
+        </OSS::ScrollablePanel>
+      </div>
+      <div class="fx-row fx-gap-px-24 fx-xalign-start" style="height: 300px; width: 500px;">
+        <OSS::ScrollablePanel @plain={{true}}>
+          <div class="fx-col fx-gap-px-6">
+            {{#each this.loop}}
+              <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}} />
+            {{/each}}
+          </div>
+        </OSS::ScrollablePanel>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Content panel
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <OSS::ContentPanel class="fx-col fx-1">
+        <span class="text-style-semibold">Title</span>
+        <span class="font-color-gray-500">Subtitle</span>
+        <hr class="width-pc-100" />
+        <span>Content</span>
+      </OSS::ContentPanel>
+      <OSS::ContentPanel class="fx-row fx-1 fx-gap-px-10">
+        <OSS::UrlInput
+          @value={{this.shopifyDomain}}
+          @prefix="https://"
+          @placeholder="shopname"
+          @suffix=".myshopify.com"
+          @errorMessage="Not a valid shopify domain"
+          @validationRegex={{this.subdomainRegex}}
+          @onChange={{this.onUrlInputChange}}
+        />
+        <OSS::UrlInput
+          @prefix="https://"
+          @placeholder="No regex specified"
+          @onChange={{this.onUrlInputChange}}
+          @value={{this.shopifyDomain}}
+        />
+      </OSS::ContentPanel>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Attributes panel
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <OSS::AttributesPanel
+        @title="Title"
+        @icon="fa-laptop-code"
+        @onSave={{this.onAttributePanelSave}}
+        @onCancel={{this.onAttributePanelCancel}}
+        @onEdit={{this.onAttributePanelEdit}}
+      >
+        <:contextual-action>
+          <OSS::Button @icon="fa-plus" @square={{true}} />
+        </:contextual-action>
+        <:view-mode>
+          <div class="fx-col fx-gap-px-9">
+            <OSS::Attribute::RemovableText @label="city" @onRemove={{this.onRemove}} @removeTooltip="Click to delete" />
+            <OSS::Attribute::RemovableText @label="city" @value="Paris" @onRemove={{this.onRemove}} />
+            <OSS::Attribute::TagArray
+              @label="Pies"
+              @tags={{array "Apple pie" "Pecan pie" "Pumpkin pie" "Raspberry PI"}}
+            />
+            <OSS::Attribute::TagArray
+              @label="Fruits"
+              @tags={{array
+                "apple"
+                "banana"
+                "pitaya"
+                "jackfruit"
+                "mango"
+                "orange"
+                "blueberry"
+                "papaya"
+                "pineapple"
+                "watermelon"
+                "vodkamelon"
+              }}
+            />
+            <OSS::Attribute::TagArray @label="Fruits" />
+            <OSS::Attribute::RevealableEmail @lockTooltip="This will fail" @onRevealEmail={{this.onRevealEmailError}} />
+            {{#if this.revealed}}
+              <OSS::Attribute::Text @label="Email address" @value="john.doe@gmail.com" />
+            {{else}}
+              <OSS::Attribute::RevealableEmail
+                @tooltip="Click on lock to reveal"
+                @onRevealEmail={{this.onRevealEmailSuccess}}
+              />
+            {{/if}}
+            <OSS::Attribute::Country @countryCode="US" />
+            <OSS::Attribute::Country @countryCode="" />
+            <OSS::Attribute::Text @label="Label with tooltip copyable" @value="Hello World" @tooltip="Hello World" />
+            <OSS::Attribute::Text @label="Label not copyable" @value="Hello World" @copyable={{false}} />
+            <OSS::Attribute::PhoneNumber @countryCode="FR" @prefix="+33" @number="642424242" />
+            <OSS::Attribute::PhoneNumber @countryCode="nope" @number="+33642424242" />
+            <OSS::Attribute::PhoneNumber @prefix="+33" />
+            <OSS::Attribute::RevealableEmail @lockTooltip="This will fail" @onRevealEmail={{this.onRevealEmailError}} />
+
+            <OSS::Attribute::Country @countryCode="US" />
+            <OSS::Attribute::Country @countryCode="" />
+            <OSS::Attribute::Rating @label="Rating" @rating={{this.starRatingValue}} />
+            <OSS::Attribute::Rating @label="Rating not provided" />
+          </div>
+        </:view-mode>
+        <:edition-mode>
+          Edition mode
+        </:edition-mode>
+      </OSS::AttributesPanel>
+    </div>
+  </div>
+
+</div>

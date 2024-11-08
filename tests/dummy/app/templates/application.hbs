@@ -8,13 +8,18 @@
       />
       <OSS::Layout::Sidebar::Item
         @icon="far fa-computer-mouse-scrollwheel"
-        class={{if (eq this.router.currentRouteName "scrollable") "active"}}
-        @link="scrollable"
+        class={{if (eq this.router.currentRouteName "input") "active"}}
+        @link="input"
       />
       <OSS::Layout::Sidebar::Item
         @icon="far fa-arrow-pointer"
-        class={{if (eq this.router.currentRouteName "actionable") "active"}}
-        @link="actionable"
+        class={{if (eq this.router.currentRouteName "visual") "active"}}
+        @link="visual"
+      />
+      <OSS::Layout::Sidebar::Item
+        @icon="far fa-arrow-pointer"
+        class={{if (eq this.router.currentRouteName "data") "active"}}
+        @link="data"
       />
       <OSS::Layout::Sidebar::Item
         @icon="far fa-lock"

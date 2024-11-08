@@ -55,160 +55,160 @@ export default class ApplicationController extends Controller {
   @service toast;
 
   @tracked selectedItems = ['toto'];
-  @tracked selectedCountry = null;
-  @tracked selectedProvince = null;
-  @tracked superHeroes = ['Iron Man', 'Thor', 'Loki', 'Hulk'];
+  // @tracked selectedCountry = null;
+  // @tracked selectedProvince = null;
+  // @tracked superHeroes = ['Iron Man', 'Thor', 'Loki', 'Hulk'];
   @tracked loading = false;
-  @tracked phonePrefix = '+33';
-  @tracked phoneNumber = '782828282';
-  @tracked inputValue = '';
-  @tracked shopifyDomain = '';
-  @tracked shopUrl = '';
+  // @tracked phonePrefix = '+33';
+  // @tracked phoneNumber = '782828282';
+  // @tracked inputValue = '';
+  // @tracked shopifyDomain = '';
+  // @tracked shopUrl = '';
   @tracked testText = '';
-  @tracked currency = 'EUR';
-  @tracked currencyValue = 42.13;
-  @tracked numberValue = 42;
+  // @tracked currency = 'EUR';
+  // @tracked currencyValue = 42.13;
+  // @tracked numberValue = 42;
   @tracked showModal = false;
   @tracked showSidePanel = false;
   @tracked showSplitModal = false;
-  @tracked items = [
-    { name: 'foo', label: 'foo' },
-    { name: 'bar', label: 'bar' }
-  ];
-  @tracked selectedItem = this.items[0];
-  @tracked currencyOnly = null;
-  @tracked radio1 = true;
-  @tracked radio2 = false;
+  // @tracked items = [
+  //   { name: 'foo', label: 'foo' },
+  //   { name: 'bar', label: 'bar' }
+  // ];
+  // @tracked selectedItem = this.items[0];
+  // @tracked currencyOnly = null;
+  // @tracked radio1 = true;
+  // @tracked radio2 = false;
   @tracked isChecked = true;
   @tracked togglable = false;
-  @tracked emailInputValue = '';
-  @tracked revealed = false;
-  @tracked starRatingValue = 3;
-  @tracked rating = 3;
-  @tracked password = '';
-  @tracked sliderValue = undefined;
-  @tracked sliderValue2 = 60;
-  @tracked sliderValue3 = 30;
+  // @tracked emailInputValue = '';
+  // @tracked revealed = false;
+  // @tracked starRatingValue = 3;
+  // @tracked rating = 3;
+  // @tracked password = '';
+  // @tracked sliderValue = undefined;
+  // @tracked sliderValue2 = 60;
+  // @tracked sliderValue3 = 30;
 
-  @tracked media = [
-    {
-      key: 'article',
-      active: false
-    },
-    {
-      key: 'pin',
-      active: false
-    },
-    {
-      key: 'tweet',
-      active: false
-    },
-    {
-      key: 'instagram_media',
-      active: false
-    },
-    {
-      key: 'story',
-      active: false
-    },
-    {
-      key: 'youtube_video',
-      active: false
-    },
-    {
-      key: 'twitch_stream',
-      active: false
-    },
-    {
-      key: 'tiktok_video',
-      active: false
-    },
-    {
-      key: 'facebook_status',
-      active: false
-    }
-  ];
+  // @tracked media = [
+  //   {
+  //     key: 'article',
+  //     active: false
+  //   },
+  //   {
+  //     key: 'pin',
+  //     active: false
+  //   },
+  //   {
+  //     key: 'tweet',
+  //     active: false
+  //   },
+  //   {
+  //     key: 'instagram_media',
+  //     active: false
+  //   },
+  //   {
+  //     key: 'story',
+  //     active: false
+  //   },
+  //   {
+  //     key: 'youtube_video',
+  //     active: false
+  //   },
+  //   {
+  //     key: 'twitch_stream',
+  //     active: false
+  //   },
+  //   {
+  //     key: 'tiktok_video',
+  //     active: false
+  //   },
+  //   {
+  //     key: 'facebook_status',
+  //     active: false
+  //   }
+  // ];
 
   code4CodeBlock = testScript;
-  countries = countries;
-  allowedCurrencies = [
-    { code: 'USD', symbol: '$' },
-    { code: 'EUR', symbol: '€' }
-  ];
+  // countries = countries;
+  // allowedCurrencies = [
+  //   { code: 'USD', symbol: '$' },
+  //   { code: 'EUR', symbol: '€' }
+  // ];
 
-  subdomainRegex = /^[a-zA-Z0-9]+[a-zA-Z0-9-._]*[a-zA-Z0-9]+$/;
-  urlRegex = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/;
+  // subdomainRegex = /^[a-zA-Z0-9]+[a-zA-Z0-9-._]*[a-zA-Z0-9]+$/;
+  // urlRegex = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_+.~#?&//=]*)/;
 
-  @tracked selectedToggle = 'second';
+  // @tracked selectedToggle = 'second';
 
-  toggles = [
-    {
-      value: 'first',
-      label: 'First'
-    },
-    {
-      value: 'second',
-      label: 'Second'
-    }
-  ];
+  // toggles = [
+  //   {
+  //     value: 'first',
+  //     label: 'First'
+  //   },
+  //   {
+  //     value: 'second',
+  //     label: 'Second'
+  //   }
+  // ];
 
-  @action
-  onPasswordValidation(isValid) {
-    console.log('isValid ? ', isValid);
-  }
+  // @action
+  // onPasswordValidation(isValid) {
+  //   console.log('isValid ? ', isValid);
+  // }
 
-  @action
-  onRevealEmailError() {
-    console.log('on reveal email error');
-    return new Promise((res, rej) => {
-      setTimeout(() => {
-        this.toast.error('There was an error retrieving the email address. Try again later.', 'Error');
-        return rej('failed');
-      }, 1000);
-    });
-  }
+  // @action
+  // onRevealEmailError() {
+  //   console.log('on reveal email error');
+  //   return new Promise((res, rej) => {
+  //     setTimeout(() => {
+  //       this.toast.error('There was an error retrieving the email address. Try again later.', 'Error');
+  //       return rej('failed');
+  //     }, 1000);
+  //   });
+  // }
 
-  @action
-  onRevealEmailSuccess() {
-    console.log('on reveal email success');
-    return new Promise((res) => {
-      setTimeout(() => {
-        this.revealed = true;
-        return res('success');
-      }, 1000);
-    });
-  }
+  // @action
+  // onRevealEmailSuccess() {
+  //   console.log('on reveal email success');
+  //   return new Promise((res) => {
+  //     setTimeout(() => {
+  //       this.revealed = true;
+  //       return res('success');
+  //     }, 1000);
+  //   });
+  // }
 
-  @action
-  onRemove() {
-    console.log('on remove');
-    return new Promise((res) => {
-      setTimeout(() => {
-        this.revealed = true;
-        return res('success');
-      }, 1000);
-    });
-  }
+  // @action
+  // onRemove() {
+  //   console.log('on remove');
+  //   return new Promise((res) => {
+  //     setTimeout(() => {
+  //       this.revealed = true;
+  //       return res('success');
+  //     }, 1000);
+  //   });
+  // }
 
-  @action
-  redirectTo(route) {
-    console.log('Redirect to', route);
-  }
+  // @action
+  // redirectTo(route) {
+  //   console.log('Redirect to', route);
+  // }
 
-  @action
-  toggleMedia(key) {
-    console.log('toggled key', key);
+  // @action
+  // toggleMedia(key) {
+  //   console.log('toggled key', key);
 
-    const index = this.media.findIndex((el) => el.key === key);
-    set(this.media[index], 'active', !this.media[index].active);
-  }
+  //   const index = this.media.findIndex((el) => el.key === key);
+  //   set(this.media[index], 'active', !this.media[index].active);
+  // }
 
-  @action
-  triggerSelection(value) {
-    console.log('selected toggle value : ', value);
+  // @action
+  // triggerSelection(value) {
+  //   console.log('selected toggle value : ', value);
 
-    this.selectedToggle = value;
-  }
+  //   this.selectedToggle = value;
+  // }
 
   tableDemo = {
     header: [
@@ -252,17 +252,17 @@ export default class ApplicationController extends Controller {
     return htmlSafe('This title can take a <em>string</em> or a <em>safeString</em>');
   }
 
-  @action
-  onRatingClick(rating) {
-    console.log('You have rated with: ' + rating);
-    this.rating = rating;
-  }
+  // @action
+  // onRatingClick(rating) {
+  //   console.log('You have rated with: ' + rating);
+  //   this.rating = rating;
+  // }
 
-  @action
-  handleNumberInput(newValue) {
-    console.log('new value = ' + newValue);
-    this.numberValue = newValue;
-  }
+  // @action
+  // handleNumberInput(newValue) {
+  //   console.log('new value = ' + newValue);
+  //   this.numberValue = newValue;
+  // }
 
   @action
   openModal(e) {
@@ -301,71 +301,71 @@ export default class ApplicationController extends Controller {
     this.showSplitModal = false;
   }
 
-  @action
-  onCountrySelected(value) {
-    console.log('selected country value : ', value);
-    this.selectedCountry = value;
-  }
+  // @action
+  // onCountrySelected(value) {
+  //   console.log('selected country value : ', value);
+  //   this.selectedCountry = value;
+  // }
 
-  @action
-  onSelect(value) {
-    this.selectedItem = value;
-  }
+  // @action
+  // onSelect(value) {
+  //   this.selectedItem = value;
+  // }
 
-  @action
-  updateSuperHeroes(newArray) {
-    console.log('updateSuperHeroes', newArray);
-    this.superHeroes = newArray;
-  }
+  // @action
+  // updateSuperHeroes(newArray) {
+  //   console.log('updateSuperHeroes', newArray);
+  //   this.superHeroes = newArray;
+  // }
 
-  @action
-  onProvinceSelected(value) {
-    console.log('selected province value : ', value);
-  }
+  // @action
+  // onProvinceSelected(value) {
+  //   console.log('selected province value : ', value);
+  // }
 
   @action
   onToggle(value) {
     this.togglable = value;
   }
 
-  @action
-  onCurrencyInputChange(currency, value) {
-    console.log('onCurrencyInputChange', currency, value);
-    this.currency = currency;
-    this.currencyValue = value;
-  }
+  // @action
+  // onCurrencyInputChange(currency, value) {
+  //   console.log('onCurrencyInputChange', currency, value);
+  //   this.currency = currency;
+  //   this.currencyValue = value;
+  // }
 
-  @action
-  onCurrencyOnlyChange(currency) {
-    this.currencyOnly = currency;
-  }
+  // @action
+  // onCurrencyOnlyChange(currency) {
+  //   this.currencyOnly = currency;
+  // }
 
   @action
   onCrossChipClick() {
     console.log('onCrossChipClick');
   }
 
-  @action
-  onPowerSelectChange(item, operation) {
-    console.log('onPowerSelectChange :', item, operation);
-  }
+  // @action
+  // onPowerSelectChange(item, operation) {
+  //   console.log('onPowerSelectChange :', item, operation);
+  // }
 
-  @action
-  onPowerSelectSearch(keyword) {
-    console.log('onPowerSelectSearch :', keyword);
-  }
+  // @action
+  // onPowerSelectSearch(keyword) {
+  //   console.log('onPowerSelectSearch :', keyword);
+  // }
 
-  @action
-  onPhoneNumberChange(prefix, phoneNumber) {
-    console.log('onPhoneNumberChange', prefix, phoneNumber);
-    this.phonePrefix = prefix;
-    this.phoneNumber = phoneNumber;
-  }
+  // @action
+  // onPhoneNumberChange(prefix, phoneNumber) {
+  //   console.log('onPhoneNumberChange', prefix, phoneNumber);
+  //   this.phonePrefix = prefix;
+  //   this.phoneNumber = phoneNumber;
+  // }
 
-  @action
-  onEmailInputChange(value) {
-    console.log('onEmailInputChange', value);
-  }
+  // @action
+  // onEmailInputChange(value) {
+  //   console.log('onEmailInputChange', value);
+  // }
 
   @action
   triggerToast(type) {
@@ -418,38 +418,38 @@ export default class ApplicationController extends Controller {
     set(this, radioBtnKey, newValue);
   }
 
-  @action
-  onUrlInputChange(newValue, isValid) {
-    console.log('newValue : ' + newValue);
-    console.log('Value test against regext valid ? ' + isValid);
-    if (isValid) {
-      this.shopUrl = newValue.replace('https://', '').replace('http://', '');
-    }
-  }
+  // @action
+  // onUrlInputChange(newValue, isValid) {
+  //   console.log('newValue : ' + newValue);
+  //   console.log('Value test against regext valid ? ' + isValid);
+  //   if (isValid) {
+  //     this.shopUrl = newValue.replace('https://', '').replace('http://', '');
+  //   }
+  // }
 
   @action
   onCheck(value) {
     this.isChecked = value;
   }
 
-  @action
-  onAttributePanelSave() {
-    return new Promise((resolve) => {
-      setTimeout(() => {
-        resolve();
-      }, 300);
-    });
-  }
+  // @action
+  // onAttributePanelSave() {
+  //   return new Promise((resolve) => {
+  //     setTimeout(() => {
+  //       resolve();
+  //     }, 300);
+  //   });
+  // }
 
-  @action
-  onAttributePanelCancel() {
-    console.log('Attributes panel cancel');
-  }
+  // @action
+  // onAttributePanelCancel() {
+  //   console.log('Attributes panel cancel');
+  // }
 
-  @action
-  onAttributePanelEdit(mode) {
-    console.log(`Attributes panel edition ${mode}`);
-  }
+  // @action
+  // onAttributePanelEdit(mode) {
+  //   console.log(`Attributes panel edition ${mode}`);
+  // }
 
   @tracked showDialog = false;
 
@@ -469,17 +469,17 @@ export default class ApplicationController extends Controller {
     console.log('Function onReturn was called');
   }
 
-  @action onChangeSlider(value) {
-    this.sliderValue = value;
-  }
+  // @action onChangeSlider(value) {
+  //   this.sliderValue = value;
+  // }
 
-  @action onChangeSlider2(value) {
-    this.sliderValue2 = value;
-  }
+  // @action onChangeSlider2(value) {
+  //   this.sliderValue2 = value;
+  // }
 
-  @action onChangeSlider3(value) {
-    this.sliderValue3 = value;
-  }
+  // @action onChangeSlider3(value) {
+  //   this.sliderValue3 = value;
+  // }
 }
 
 const testScript = `import { module, test } from 'qunit';
