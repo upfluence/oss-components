@@ -43,6 +43,7 @@ export default function attachDropdown(
   const mergedOptions = { ...DEFAULT_ATTACHMENT_OPTIONS, ...(options || {}) };
   const middlewares = [
     offset(mergedOptions.offset ?? 0),
+    // Allow different placement strategies, flip being the default
     autoPlacement({
       allowedPlacements: ['top', 'bottom']
     }),
