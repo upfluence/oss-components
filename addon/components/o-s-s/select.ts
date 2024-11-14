@@ -4,7 +4,6 @@ import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 import { scheduleOnce } from '@ember/runloop';
-import { isTesting } from '@embroider/macros';
 
 import type IntlService from 'ember-intl/services/intl';
 import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
@@ -106,7 +105,8 @@ export default class OSSSelect extends BaseDropdown<OSSSelectArgs> {
       if (referenceTarget && floatingTarget) {
         this.cleanupDrodpownAutoplacement = attachDropdown(
           referenceTarget as HTMLElement,
-          floatingTarget as HTMLElement
+          floatingTarget as HTMLElement,
+          { placementStrategy: 'auto' }
         );
       }
     });

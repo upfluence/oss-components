@@ -1,7 +1,6 @@
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { scheduleOnce } from '@ember/runloop';
-import { isTesting } from '@embroider/macros';
 
 import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
 import BaseDropdown from './private/base-dropdown';
@@ -71,7 +70,7 @@ export default class OSSPowerSelect extends BaseDropdown<OSSPowerSelectArgs> {
         this.cleanupDrodpownAutoplacement = attachDropdown(
           referenceTarget as HTMLElement,
           floatingTarget as HTMLElement,
-          { maxHeight: 300 }
+          { maxHeight: 300, placementStrategy: 'auto' }
         );
       }
     });

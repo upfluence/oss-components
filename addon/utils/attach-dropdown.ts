@@ -18,6 +18,7 @@ export type AttachmentOptions = {
   maxHeight?: number;
   placement?: Placement;
   enableArrow?: boolean;
+  placementStrategy?: 'auto' | 'flip';
 };
 
 export const DEFAULT_ATTACHMENT_OPTIONS: AttachmentOptions = {
@@ -43,13 +44,6 @@ export default function attachDropdown(
   const mergedOptions = { ...DEFAULT_ATTACHMENT_OPTIONS, ...(options || {}) };
   const middlewares = [
     offset(mergedOptions.offset ?? 0),
-    // Allow different placement strategies, flip being the default
-    autoPlacement({
-      allowedPlacements: ['top', 'bottom']
-    }),
-    //flip({
-    //fallbackPlacements: ['top', 'bottom']
-    //}),
     size({
       apply({ rects, elements }: MiddlewareState) {
         const desiredWidth = mergedOptions.width ?? rects.reference.width;
@@ -69,6 +63,20 @@ export default function attachDropdown(
     }),
     hide()
   ];
+
+  if (options.placementStrategy === 'auto') {
+    middlewares.push(
+      autoPlacement({
+        allowedPlacements: ['top', 'bottom']
+      })
+    );
+  } else {
+    middlewares.push(
+      flip({
+        fallbackPlacements: ['top', 'bottom']
+      })
+    );
+  }
 
   let arrowEl = floatingTarget.querySelector('[data-floating-arrow]');
 
