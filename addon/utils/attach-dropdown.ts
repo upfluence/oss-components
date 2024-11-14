@@ -6,6 +6,7 @@ import {
   offset,
   size,
   hide,
+  autoPlacement,
   type MiddlewareState,
   type Placement,
   type Side
@@ -42,9 +43,12 @@ export default function attachDropdown(
   const mergedOptions = { ...DEFAULT_ATTACHMENT_OPTIONS, ...(options || {}) };
   const middlewares = [
     offset(mergedOptions.offset ?? 0),
-    flip({
-      fallbackPlacements: ['top', 'bottom']
+    autoPlacement({
+      allowedPlacements: ['top', 'bottom']
     }),
+    //flip({
+    //fallbackPlacements: ['top', 'bottom']
+    //}),
     size({
       apply({ rects, elements }: MiddlewareState) {
         const desiredWidth = mergedOptions.width ?? rects.reference.width;
