@@ -13,6 +13,16 @@ export default {
       control: {
         type: 'boolean'
       }
+    },
+    disableShadows: {
+      description: 'When disableShadows is true, the top and bottom shadows are not displayed',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
+      },
+      control: {
+        type: 'boolean'
+      }
     }
   },
   parameters: {
@@ -25,22 +35,23 @@ export default {
 };
 
 const defaultArgs = {
-  plain: false
+  plain: false,
+  disableShadows: false
 };
 
 const Template = (args) => ({
   template: hbs`
-      <div style="height:200px; width: 300px; background-color: white; " >
-        <OSS::ScrollablePanel @plain={{this.plain}}>
-          <div class="fx-col fx-gap-px-12 padding-px-12">
-            <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
-            <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
-            <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
-            <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
-            <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
-          </div>
-        </OSS::ScrollablePanel>
-      </div>
+    <div style="height:200px; width: 300px; background-color: white; " >
+      <OSS::ScrollablePanel @plain={{this.plain}} @disableShadows={{this.disableShadows}}>
+        <div class="fx-col fx-gap-px-12 padding-px-12">
+          <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
+          <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
+          <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
+          <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
+          <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
+        </div>
+      </OSS::ScrollablePanel>
+    </div>
   `,
 
   context: args

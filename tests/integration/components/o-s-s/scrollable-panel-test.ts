@@ -12,7 +12,7 @@ module('Integration | Component | o-s-s/scrollable-panel', function (hooks) {
 
   const renderScrollableContent = hbs`
   <div class="background-color-gray-50" style="height:300px; width: 500px">
-    <OSS::ScrollablePanel>
+    <OSS::ScrollablePanel @disableShadows={{this.disableShadows}}>
       <div class="fx-col fx-gap-px-12 padding-px-12">
         <div class="background-color-gray-200" style="height: 50px; width: 100%;" id="start-element"/>
         <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
@@ -85,5 +85,16 @@ module('Integration | Component | o-s-s/scrollable-panel', function (hooks) {
       assert.dom('.oss-scrollable-panel--shadow__top').doesNotExist();
       assert.dom('.oss-scrollable-panel--shadow__bottom').exists();
     });
+  });
+
+  test('When @disableShadows is enabled, the top & bottom shadows are not displayed', async function (assert) {
+    this.disableShadows = true;
+    await render(renderScrollableContent);
+
+    scrollIntoView('center-element');
+
+    assert.dom('.oss-scrollable-panel-content').exists();
+    assert.dom('.oss-scrollable-panel--shadow__top').doesNotExist();
+    assert.dom('.oss-scrollable-panel--shadow__bottom').doesNotExist();
   });
 });
