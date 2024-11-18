@@ -89148,8 +89148,7 @@ define("@upfluence/oss-components/components/o-s-s/toggle-buttons", ["exports", 
     }
     _createClass(OSSToggleButtons, [{
       key: "onSelectToggle",
-      value: function onSelectToggle(selectedToggle, event) {
-        event.stopPropagation();
+      value: function onSelectToggle(selectedToggle) {
         if (this.args.disabled) return;
         if (this.args.selectedToggle !== selectedToggle) {
           this.args.onSelection(selectedToggle);
