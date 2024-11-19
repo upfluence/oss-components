@@ -19341,7 +19341,7 @@ define("dummy/tests/integration/components/o-s-s/scrollable-panel-test", ["qunit
     /*
       
       <div class="background-color-gray-50" style="height:300px; width: 500px">
-        <OSS::ScrollablePanel>
+        <OSS::ScrollablePanel @disableShadows={{this.disableShadows}}>
           <div class="fx-col fx-gap-px-12 padding-px-12">
             <div class="background-color-gray-200" style="height: 50px; width: 100%;" id="start-element"/>
             <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
@@ -19354,8 +19354,8 @@ define("dummy/tests/integration/components/o-s-s/scrollable-panel-test", ["qunit
     
     */
     {
-      "id": "oDnd6/5w",
-      "block": "[[[1,\"\\n  \"],[10,0],[14,0,\"background-color-gray-50\"],[14,5,\"height:300px; width: 500px\"],[12],[1,\"\\n    \"],[8,[39,0],null,null,[[\"default\"],[[[[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-12\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"start-element\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"center-element\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"end-element\"],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"]],[]]]]],[1,\"\\n  \"],[13],[1,\"\\n\"]],[],false,[\"o-s-s/scrollable-panel\"]]",
+      "id": "GvX/Lzyf",
+      "block": "[[[1,\"\\n  \"],[10,0],[14,0,\"background-color-gray-50\"],[14,5,\"height:300px; width: 500px\"],[12],[1,\"\\n    \"],[8,[39,0],null,[[\"@disableShadows\"],[[30,0,[\"disableShadows\"]]]],[[\"default\"],[[[[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-12\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"start-element\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"center-element\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"end-element\"],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"]],[]]]]],[1,\"\\n  \"],[13],[1,\"\\n\"]],[],false,[\"o-s-s/scrollable-panel\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/scrollable-panel-test.ts",
       "isStrictMode": false
     });
@@ -19505,6 +19505,29 @@ define("dummy/tests/integration/components/o-s-s/scrollable-panel-test", ["qunit
         };
       }());
     });
+    (0, _qunit.test)('When @disableShadows is enabled, the top & bottom shadows are not displayed', /*#__PURE__*/function () {
+      var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+        return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+          while (1) switch (_context6.prev = _context6.next) {
+            case 0:
+              this.disableShadows = true;
+              _context6.next = 3;
+              return (0, _testHelpers.render)(renderScrollableContent);
+            case 3:
+              scrollIntoView('center-element');
+              assert.dom('.oss-scrollable-panel-content').exists();
+              assert.dom('.oss-scrollable-panel--shadow__top').doesNotExist();
+              assert.dom('.oss-scrollable-panel--shadow__bottom').doesNotExist();
+            case 7:
+            case "end":
+              return _context6.stop();
+          }
+        }, _callee6, this);
+      }));
+      return function (_x6) {
+        return _ref6.apply(this, arguments);
+      };
+    }());
   });
 });
 function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }

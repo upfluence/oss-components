@@ -86046,20 +86046,20 @@ define("@upfluence/oss-components/components/o-s-s/scrollable-panel", ["exports"
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class="oss-scrollable-panel-container {{if @plain 'oss-scrollable-panel-container--plain'}}" ...attributes>
-    {{#if this.shadowTopVisible}}
+    {{#if (and this.shadowTopVisible (not @disableShadows))}}
       <div class="oss-scrollable-panel--shadow oss-scrollable-panel--shadow__top"></div>
     {{/if}}
     <div class="oss-scrollable-panel-content" {{did-insert this.initScrollListener}}>
       {{yield}}
     </div>
-    {{#if this.shadowBottomVisible}}
+    {{#if (and this.shadowBottomVisible (not @disableShadows))}}
       <div class="oss-scrollable-panel--shadow oss-scrollable-panel--shadow__bottom"></div>
     {{/if}}
   </div>
   */
   {
-    "id": "ru+Er+Vo",
-    "block": "[[[11,0],[16,0,[29,[\"oss-scrollable-panel-container \",[52,[30,1],\"oss-scrollable-panel-container--plain\"]]]],[17,2],[12],[1,\"\\n\"],[41,[30,0,[\"shadowTopVisible\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-scrollable-panel--shadow oss-scrollable-panel--shadow__top\"],[12],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[11,0],[24,0,\"oss-scrollable-panel-content\"],[4,[38,1],[[30,0,[\"initScrollListener\"]]],null],[12],[1,\"\\n    \"],[18,3,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"shadowBottomVisible\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-scrollable-panel--shadow oss-scrollable-panel--shadow__bottom\"],[12],[13],[1,\"\\n\"]],[]],null],[13]],[\"@plain\",\"&attrs\",\"&default\"],false,[\"if\",\"did-insert\",\"yield\"]]",
+    "id": "PqpA2yMZ",
+    "block": "[[[11,0],[16,0,[29,[\"oss-scrollable-panel-container \",[52,[30,1],\"oss-scrollable-panel-container--plain\"]]]],[17,2],[12],[1,\"\\n\"],[41,[28,[37,1],[[30,0,[\"shadowTopVisible\"]],[28,[37,2],[[30,3]],null]],null],[[[1,\"    \"],[10,0],[14,0,\"oss-scrollable-panel--shadow oss-scrollable-panel--shadow__top\"],[12],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[11,0],[24,0,\"oss-scrollable-panel-content\"],[4,[38,3],[[30,0,[\"initScrollListener\"]]],null],[12],[1,\"\\n    \"],[18,4,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[28,[37,1],[[30,0,[\"shadowBottomVisible\"]],[28,[37,2],[[30,3]],null]],null],[[[1,\"    \"],[10,0],[14,0,\"oss-scrollable-panel--shadow oss-scrollable-panel--shadow__bottom\"],[12],[13],[1,\"\\n\"]],[]],null],[13]],[\"@plain\",\"&attrs\",\"@disableShadows\",\"&default\"],false,[\"if\",\"and\",\"not\",\"did-insert\",\"yield\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/scrollable-panel.hbs",
     "isStrictMode": false
   });
@@ -86158,6 +86158,20 @@ define("@upfluence/oss-components/components/o-s-s/scrollable-panel", ["exports"
         control: {
           type: 'boolean'
         }
+      },
+      disableShadows: {
+        description: 'When disableShadows is true, the top and bottom shadows are not displayed',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
       }
     },
     parameters: {
@@ -86169,29 +86183,30 @@ define("@upfluence/oss-components/components/o-s-s/scrollable-panel", ["exports"
     }
   };
   var defaultArgs = {
-    plain: false
+    plain: false,
+    disableShadows: false
   };
   var Template = function Template(args) {
     return {
       template: (0, _templateFactory.createTemplateFactory)(
       /*
         
-            <div style="height:200px; width: 300px; background-color: white; " >
-              <OSS::ScrollablePanel @plain={{this.plain}}>
-                <div class="fx-col fx-gap-px-12 padding-px-12">
-                  <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
-                  <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
-                  <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
-                  <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
-                  <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
-                </div>
-              </OSS::ScrollablePanel>
-            </div>
+          <div style="height:200px; width: 300px; background-color: white; " >
+            <OSS::ScrollablePanel @plain={{this.plain}} @disableShadows={{this.disableShadows}}>
+              <div class="fx-col fx-gap-px-12 padding-px-12">
+                <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
+                <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
+                <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
+                <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
+                <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
+              </div>
+            </OSS::ScrollablePanel>
+          </div>
         
       */
       {
-        "id": "OTsvYXEM",
-        "block": "[[[1,\"\\n      \"],[10,0],[14,5,\"height:200px; width: 300px; background-color: white; \"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@plain\"],[[30,0,[\"plain\"]]]],[[\"default\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-12\"],[12],[1,\"\\n            \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n            \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n            \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n            \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n            \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/scrollable-panel\"]]",
+        "id": "rsh4g3SX",
+        "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"height:200px; width: 300px; background-color: white; \"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@plain\",\"@disableShadows\"],[[30,0,[\"plain\"]],[30,0,[\"disableShadows\"]]]],[[\"default\"],[[[[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-12\"],[12],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/scrollable-panel\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/scrollable-panel.stories.js",
         "isStrictMode": false
       }),
