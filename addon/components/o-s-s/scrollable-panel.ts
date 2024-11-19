@@ -4,6 +4,7 @@ import { tracked } from '@glimmer/tracking';
 
 interface OSSScrollablePanelComponentSignature {
   plain?: boolean;
+  disableShadows?: boolean;
 }
 
 export default class OSSScrollablePanelComponent extends Component<OSSScrollablePanelComponentSignature> {

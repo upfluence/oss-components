@@ -1,11 +1,11 @@
 <div class="oss-scrollable-panel-container {{if @plain 'oss-scrollable-panel-container--plain'}}" ...attributes>
-  {{#if this.shadowTopVisible}}
+  {{#if (and this.shadowTopVisible (not @disableShadows))}}
     <div class="oss-scrollable-panel--shadow oss-scrollable-panel--shadow__top"></div>
   {{/if}}
   <div class="oss-scrollable-panel-content" {{did-insert this.initScrollListener}}>
     {{yield}}
   </div>
-  {{#if this.shadowBottomVisible}}
+  {{#if (and this.shadowBottomVisible (not @disableShadows))}}
     <div class="oss-scrollable-panel--shadow oss-scrollable-panel--shadow__bottom"></div>
   {{/if}}
 </div>
