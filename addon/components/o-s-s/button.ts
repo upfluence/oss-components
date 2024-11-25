@@ -148,7 +148,7 @@ export default class OSSButton extends Component<ButtonArgs> {
       return false;
     }
 
-    if (this.args.loading && !this.args.loadingOptions.showLabel) {
+    if (this.args.loading && !this.args.loadingOptions?.showLabel) {
       this.DOMElement.style.width = `${this.DOMElement?.offsetWidth}px`;
     } else {
       this.DOMElement.style.removeProperty('width');
