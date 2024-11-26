@@ -80127,18 +80127,33 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
     <div class="oss-dialog fx-col" {{did-insert this.onInit}} ...attributes>
       <div class="oss-dialog__header">
         <OSS::Badge @icon={{this.icon}} @skin={{this.skin}} />
-        <span class="font-weight-semibold font-size-md">{{@title}}</span>
+        <div class="fx-col fx-gap-px-3">
+          <span class="font-weight-semibold font-size-md">{{@title}}</span>
+          {{#if @subtitle}}
+            <span class="font-color-gray-900 font-size-sm">{{@subtitle}}</span>
+          {{/if}}
+        </div>
       </div>
       <div class="oss-dialog__footer">
-        <OSS::Button @skin={{this.skinBtn}} @label={{@mainAction.label}} {{on "click" @mainAction.action}} />
-        <OSS::Button @label={{@secondaryAction.label}} {{on "click" @secondaryAction.action}} />
+        <OSS::Button
+          @skin={{this.skinBtn}}
+          @label={{@mainAction.label}}
+          {{on "click" @mainAction.action}}
+          @loading={{@mainAction.loading}}
+          data-control-name="dialog-primary-action-button"
+        />
+        <OSS::Button
+          @label={{@secondaryAction.label}}
+          {{on "click" @secondaryAction.action}}
+          data-control-name="dialog-secondary-action-button"
+        />
       </div>
     </div>
   </div>
   */
   {
-    "id": "shvALqnf",
-    "block": "[[[11,0],[24,0,\"oss-dialog__backdrop fx-row fx-malign-center fx-xalign-center\"],[4,[38,0],[[30,0,[\"onDestroy\"]]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"oss-dialog fx-col\"],[17,1],[4,[38,1],[[30,0,[\"onInit\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"oss-dialog__header\"],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@skin\"],[[30,0,[\"icon\"]],[30,0,[\"skin\"]]]],null],[1,\"\\n      \"],[10,1],[14,0,\"font-weight-semibold font-size-md\"],[12],[1,[30,2]],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"oss-dialog__footer\"],[12],[1,\"\\n      \"],[8,[39,3],[[4,[38,4],[\"click\",[30,3,[\"action\"]]],null]],[[\"@skin\",\"@label\"],[[30,0,[\"skinBtn\"]],[30,3,[\"label\"]]]],null],[1,\"\\n      \"],[8,[39,3],[[4,[38,4],[\"click\",[30,4,[\"action\"]]],null]],[[\"@label\"],[[30,4,[\"label\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@title\",\"@mainAction\",\"@secondaryAction\"],false,[\"will-destroy\",\"did-insert\",\"o-s-s/badge\",\"o-s-s/button\",\"on\"]]",
+    "id": "ZdgqabEh",
+    "block": "[[[11,0],[24,0,\"oss-dialog__backdrop fx-row fx-malign-center fx-xalign-center\"],[4,[38,0],[[30,0,[\"onDestroy\"]]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"oss-dialog fx-col\"],[17,1],[4,[38,1],[[30,0,[\"onInit\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"oss-dialog__header\"],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@skin\"],[[30,0,[\"icon\"]],[30,0,[\"skin\"]]]],null],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-3\"],[12],[1,\"\\n        \"],[10,1],[14,0,\"font-weight-semibold font-size-md\"],[12],[1,[30,2]],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"          \"],[10,1],[14,0,\"font-color-gray-900 font-size-sm\"],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"oss-dialog__footer\"],[12],[1,\"\\n      \"],[8,[39,4],[[24,\"data-control-name\",\"dialog-primary-action-button\"],[4,[38,5],[\"click\",[30,4,[\"action\"]]],null]],[[\"@skin\",\"@label\",\"@loading\"],[[30,0,[\"skinBtn\"]],[30,4,[\"label\"]],[30,4,[\"loading\"]]]],null],[1,\"\\n      \"],[8,[39,4],[[24,\"data-control-name\",\"dialog-secondary-action-button\"],[4,[38,5],[\"click\",[30,5,[\"action\"]]],null]],[[\"@label\"],[[30,5,[\"label\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@title\",\"@subtitle\",\"@mainAction\",\"@secondaryAction\"],false,[\"will-destroy\",\"did-insert\",\"o-s-s/badge\",\"if\",\"o-s-s/button\",\"on\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/dialog.hbs",
     "isStrictMode": false
   });
@@ -80221,6 +80236,23 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
           type: 'text'
         }
       },
+      subtitle: {
+        type: {
+          required: false
+        },
+        description: 'An optional subtitle that will be displayed below the title',
+        table: {
+          type: {
+            summary: 'string | SafeString'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
       skin: {
         description: 'The dialog skin',
         table: {
@@ -80257,7 +80289,7 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
         description: 'A hash with the main action button properties',
         table: {
           type: {
-            summary: '{ label: string, action: () => unknown }'
+            summary: '{ label: string, action: () => unknown; loading?: boolean }'
           },
           defaultValue: {
             summary: 'undefined'
@@ -80299,7 +80331,8 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
     icon: 'fa-warning',
     mainAction: {
       label: 'Discard',
-      action: (0, _addonActions.action)('discard')
+      action: (0, _addonActions.action)('discard'),
+      loading: false
     },
     secondaryAction: {
       label: 'Cancel',

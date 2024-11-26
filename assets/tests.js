@@ -10721,37 +10721,37 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
         return _ref2.apply(this, arguments);
       };
     }());
+    (0, _qunit.test)('If a @subtitle is passed, it is displayed', /*#__PURE__*/function () {
+      var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
+        return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+          while (1) switch (_context3.prev = _context3.next) {
+            case 0:
+              this.subtitle = 'This is a subtitle';
+              _context3.next = 3;
+              return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+              /*
+                <OSS::Dialog @title={{this.title}} @subtitle={{this.subtitle}} @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />
+              */
+              {
+                "id": "A93D8lfA",
+                "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@mainAction\",\"@secondaryAction\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"mainAction\"]],[30,0,[\"secondaryAction\"]]]],null]],[],false,[\"o-s-s/dialog\"]]",
+                "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/dialog-test.ts",
+                "isStrictMode": false
+              }));
+            case 3:
+              assert.dom('.font-color-gray-900.font-size-sm').hasText("".concat(this.subtitle));
+            case 4:
+            case "end":
+              return _context3.stop();
+          }
+        }, _callee3, this);
+      }));
+      return function (_x3) {
+        return _ref3.apply(this, arguments);
+      };
+    }());
     (0, _qunit.module)('For @skin', function () {
       (0, _qunit.test)('When the value is undefined, the default skin is displayed', /*#__PURE__*/function () {
-        var _ref3 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(assert) {
-          return _regeneratorRuntime().wrap(function _callee3$(_context3) {
-            while (1) switch (_context3.prev = _context3.next) {
-              case 0:
-                _context3.next = 2;
-                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-                /*
-                  <OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />
-                */
-                {
-                  "id": "ETnwaB00",
-                  "block": "[[[8,[39,0],null,[[\"@title\",\"@mainAction\",\"@secondaryAction\"],[[30,0,[\"title\"]],[30,0,[\"mainAction\"]],[30,0,[\"secondaryAction\"]]]],null]],[],false,[\"o-s-s/dialog\"]]",
-                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/dialog-test.ts",
-                  "isStrictMode": false
-                }));
-              case 2:
-                assert.dom('.oss-dialog__footer .upf-btn--alert').exists();
-                assert.dom('.oss-dialog__header .upf-badge--alert').exists();
-              case 4:
-              case "end":
-                return _context3.stop();
-            }
-          }, _callee3);
-        }));
-        return function (_x3) {
-          return _ref3.apply(this, arguments);
-        };
-      }());
-      (0, _qunit.test)('When the value is "alert", the corresponding skin is displayed', /*#__PURE__*/function () {
         var _ref4 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4(assert) {
           return _regeneratorRuntime().wrap(function _callee4$(_context4) {
             while (1) switch (_context4.prev = _context4.next) {
@@ -10759,11 +10759,11 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
                 _context4.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
-                  <OSS::Dialog @title={{this.title}} @skin="alert" @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />
+                  <OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />
                 */
                 {
-                  "id": "PEpwtywO",
-                  "block": "[[[8,[39,0],null,[[\"@title\",\"@skin\",\"@mainAction\",\"@secondaryAction\"],[[30,0,[\"title\"]],\"alert\",[30,0,[\"mainAction\"]],[30,0,[\"secondaryAction\"]]]],null]],[],false,[\"o-s-s/dialog\"]]",
+                  "id": "ETnwaB00",
+                  "block": "[[[8,[39,0],null,[[\"@title\",\"@mainAction\",\"@secondaryAction\"],[[30,0,[\"title\"]],[30,0,[\"mainAction\"]],[30,0,[\"secondaryAction\"]]]],null]],[],false,[\"o-s-s/dialog\"]]",
                   "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/dialog-test.ts",
                   "isStrictMode": false
                 }));
@@ -10780,12 +10780,41 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
           return _ref4.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('When the value is "error", the corresponding skin is displayed', /*#__PURE__*/function () {
+      (0, _qunit.test)('When the value is "alert", the corresponding skin is displayed', /*#__PURE__*/function () {
         var _ref5 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee5(assert) {
           return _regeneratorRuntime().wrap(function _callee5$(_context5) {
             while (1) switch (_context5.prev = _context5.next) {
               case 0:
                 _context5.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Dialog @title={{this.title}} @skin="alert" @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />
+                */
+                {
+                  "id": "PEpwtywO",
+                  "block": "[[[8,[39,0],null,[[\"@title\",\"@skin\",\"@mainAction\",\"@secondaryAction\"],[[30,0,[\"title\"]],\"alert\",[30,0,[\"mainAction\"]],[30,0,[\"secondaryAction\"]]]],null]],[],false,[\"o-s-s/dialog\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/dialog-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.oss-dialog__footer .upf-btn--alert').exists();
+                assert.dom('.oss-dialog__header .upf-badge--alert').exists();
+              case 4:
+              case "end":
+                return _context5.stop();
+            }
+          }, _callee5);
+        }));
+        return function (_x5) {
+          return _ref5.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('When the value is "error", the corresponding skin is displayed', /*#__PURE__*/function () {
+        var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
+          return _regeneratorRuntime().wrap(function _callee6$(_context6) {
+            while (1) switch (_context6.prev = _context6.next) {
+              case 0:
+                _context6.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Dialog @title={{this.title}} @skin="error" @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />
@@ -10801,20 +10830,20 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
                 assert.dom('.oss-dialog__header .upf-badge--error').exists();
               case 4:
               case "end":
-                return _context5.stop();
+                return _context6.stop();
             }
-          }, _callee5);
+          }, _callee6);
         }));
-        return function (_x5) {
-          return _ref5.apply(this, arguments);
+        return function (_x6) {
+          return _ref6.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('When the value is "primary", the corresponding skin is displayed', /*#__PURE__*/function () {
-        var _ref6 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee6(assert) {
-          return _regeneratorRuntime().wrap(function _callee6$(_context6) {
-            while (1) switch (_context6.prev = _context6.next) {
+        var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
+          return _regeneratorRuntime().wrap(function _callee7$(_context7) {
+            while (1) switch (_context7.prev = _context7.next) {
               case 0:
-                _context6.next = 2;
+                _context7.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Dialog @title={{this.title}} @skin="primary" @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />
@@ -10830,22 +10859,22 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
                 assert.dom('.oss-dialog__header .upf-badge--primary').exists();
               case 4:
               case "end":
-                return _context6.stop();
+                return _context7.stop();
             }
-          }, _callee6);
+          }, _callee7);
         }));
-        return function (_x6) {
-          return _ref6.apply(this, arguments);
+        return function (_x7) {
+          return _ref7.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.module)('For @icon', function () {
       (0, _qunit.test)('When the value is undefined, the default icon is displayed', /*#__PURE__*/function () {
-        var _ref7 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee7(assert) {
-          return _regeneratorRuntime().wrap(function _callee7$(_context7) {
-            while (1) switch (_context7.prev = _context7.next) {
+        var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
+          return _regeneratorRuntime().wrap(function _callee8$(_context8) {
+            while (1) switch (_context8.prev = _context8.next) {
               case 0:
-                _context7.next = 2;
+                _context8.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />
@@ -10860,20 +10889,20 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
                 assert.dom('.oss-dialog__header .upf-badge--alert .fa-warning').exists();
               case 3:
               case "end":
-                return _context7.stop();
+                return _context8.stop();
             }
-          }, _callee7);
+          }, _callee8);
         }));
-        return function (_x7) {
-          return _ref7.apply(this, arguments);
+        return function (_x8) {
+          return _ref8.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('When the value is defined, the corresponding icon is displayed', /*#__PURE__*/function () {
-        var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee8(assert) {
-          return _regeneratorRuntime().wrap(function _callee8$(_context8) {
-            while (1) switch (_context8.prev = _context8.next) {
+        var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
+          return _regeneratorRuntime().wrap(function _callee9$(_context9) {
+            while (1) switch (_context9.prev = _context9.next) {
               case 0:
-                _context8.next = 2;
+                _context9.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Dialog @title={{this.title}} @icon="fa-otter" @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />
@@ -10888,44 +10917,16 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
                 assert.dom('.oss-dialog__header .upf-badge--alert .fa-otter').exists();
               case 3:
               case "end":
-                return _context8.stop();
+                return _context9.stop();
             }
-          }, _callee8);
+          }, _callee9);
         }));
-        return function (_x8) {
-          return _ref8.apply(this, arguments);
+        return function (_x9) {
+          return _ref9.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.test)('The main action button label is displayed', /*#__PURE__*/function () {
-      var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee9(assert) {
-        return _regeneratorRuntime().wrap(function _callee9$(_context9) {
-          while (1) switch (_context9.prev = _context9.next) {
-            case 0:
-              _context9.next = 2;
-              return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-              /*
-                <OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />
-              */
-              {
-                "id": "ETnwaB00",
-                "block": "[[[8,[39,0],null,[[\"@title\",\"@mainAction\",\"@secondaryAction\"],[[30,0,[\"title\"]],[30,0,[\"mainAction\"]],[30,0,[\"secondaryAction\"]]]],null]],[],false,[\"o-s-s/dialog\"]]",
-                "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/dialog-test.ts",
-                "isStrictMode": false
-              }));
-            case 2:
-              assert.dom('.oss-dialog__footer .upf-btn--alert').hasText(this.mainAction.label);
-            case 3:
-            case "end":
-              return _context9.stop();
-          }
-        }, _callee9, this);
-      }));
-      return function (_x9) {
-        return _ref9.apply(this, arguments);
-      };
-    }());
-    (0, _qunit.test)('The secondary action button label is displayed', /*#__PURE__*/function () {
       var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
         return _regeneratorRuntime().wrap(function _callee10$(_context10) {
           while (1) switch (_context10.prev = _context10.next) {
@@ -10942,7 +10943,7 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
                 "isStrictMode": false
               }));
             case 2:
-              assert.dom('.oss-dialog__footer .upf-btn--default').hasText(this.secondaryAction.label);
+              assert.dom('.oss-dialog__footer .upf-btn--alert').hasText(this.mainAction.label);
             case 3:
             case "end":
               return _context10.stop();
@@ -10953,12 +10954,13 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
         return _ref10.apply(this, arguments);
       };
     }());
-    (0, _qunit.test)('When clicking on the main action button, the main action is called', /*#__PURE__*/function () {
+    (0, _qunit.test)('When the main action button has the loading property set to true, the button shows a spinner', /*#__PURE__*/function () {
       var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
         return _regeneratorRuntime().wrap(function _callee11$(_context11) {
           while (1) switch (_context11.prev = _context11.next) {
             case 0:
-              _context11.next = 2;
+              this.mainAction.loading = true;
+              _context11.next = 3;
               return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
               /*
                 <OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />
@@ -10969,12 +10971,9 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
                 "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/dialog-test.ts",
                 "isStrictMode": false
               }));
-            case 2:
-              _context11.next = 4;
-              return (0, _testHelpers.click)('.oss-dialog__footer .upf-btn--alert');
+            case 3:
+              assert.dom('[data-control-name="dialog-primary-action-button"] .fa-circle-notch').exists();
             case 4:
-              assert.true(this.mainAction.action.calledOnce);
-            case 5:
             case "end":
               return _context11.stop();
           }
@@ -10984,7 +10983,7 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
         return _ref11.apply(this, arguments);
       };
     }());
-    (0, _qunit.test)('When clicking on the secondary action button, the secondary action is called', /*#__PURE__*/function () {
+    (0, _qunit.test)('The secondary action button label is displayed', /*#__PURE__*/function () {
       var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
         return _regeneratorRuntime().wrap(function _callee12$(_context12) {
           while (1) switch (_context12.prev = _context12.next) {
@@ -11001,11 +11000,8 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
                 "isStrictMode": false
               }));
             case 2:
-              _context12.next = 4;
-              return (0, _testHelpers.click)('.oss-dialog__footer .upf-btn--default');
-            case 4:
-              assert.true(this.secondaryAction.action.calledOnce);
-            case 5:
+              assert.dom('.oss-dialog__footer .upf-btn--default').hasText(this.secondaryAction.label);
+            case 3:
             case "end":
               return _context12.stop();
           }
@@ -11015,16 +11011,78 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
         return _ref12.apply(this, arguments);
       };
     }());
+    (0, _qunit.test)('When clicking on the main action button, the main action is called', /*#__PURE__*/function () {
+      var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+        return _regeneratorRuntime().wrap(function _callee13$(_context13) {
+          while (1) switch (_context13.prev = _context13.next) {
+            case 0:
+              _context13.next = 2;
+              return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+              /*
+                <OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />
+              */
+              {
+                "id": "ETnwaB00",
+                "block": "[[[8,[39,0],null,[[\"@title\",\"@mainAction\",\"@secondaryAction\"],[[30,0,[\"title\"]],[30,0,[\"mainAction\"]],[30,0,[\"secondaryAction\"]]]],null]],[],false,[\"o-s-s/dialog\"]]",
+                "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/dialog-test.ts",
+                "isStrictMode": false
+              }));
+            case 2:
+              _context13.next = 4;
+              return (0, _testHelpers.click)('.oss-dialog__footer .upf-btn--alert');
+            case 4:
+              assert.true(this.mainAction.action.calledOnce);
+            case 5:
+            case "end":
+              return _context13.stop();
+          }
+        }, _callee13, this);
+      }));
+      return function (_x13) {
+        return _ref13.apply(this, arguments);
+      };
+    }());
+    (0, _qunit.test)('When clicking on the secondary action button, the secondary action is called', /*#__PURE__*/function () {
+      var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
+        return _regeneratorRuntime().wrap(function _callee14$(_context14) {
+          while (1) switch (_context14.prev = _context14.next) {
+            case 0:
+              _context14.next = 2;
+              return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+              /*
+                <OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />
+              */
+              {
+                "id": "ETnwaB00",
+                "block": "[[[8,[39,0],null,[[\"@title\",\"@mainAction\",\"@secondaryAction\"],[[30,0,[\"title\"]],[30,0,[\"mainAction\"]],[30,0,[\"secondaryAction\"]]]],null]],[],false,[\"o-s-s/dialog\"]]",
+                "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/dialog-test.ts",
+                "isStrictMode": false
+              }));
+            case 2:
+              _context14.next = 4;
+              return (0, _testHelpers.click)('.oss-dialog__footer .upf-btn--default');
+            case 4:
+              assert.true(this.secondaryAction.action.calledOnce);
+            case 5:
+            case "end":
+              return _context14.stop();
+          }
+        }, _callee14, this);
+      }));
+      return function (_x14) {
+        return _ref14.apply(this, arguments);
+      };
+    }());
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('The component throws an error if the @title parameter is not passed', /*#__PURE__*/function () {
-        var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
-          return _regeneratorRuntime().wrap(function _callee13$(_context13) {
-            while (1) switch (_context13.prev = _context13.next) {
+        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+          return _regeneratorRuntime().wrap(function _callee15$(_context15) {
+            while (1) switch (_context15.prev = _context15.next) {
               case 0:
                 (0, _testHelpers.setupOnerror)(function (err) {
                   assert.equal(err.message, 'Assertion Failed: [component][OSS::Dialog] The title parameter is mandatory');
                 });
-                _context13.next = 3;
+                _context15.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Dialog @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />
@@ -11037,23 +11095,23 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
                 }));
               case 3:
               case "end":
-                return _context13.stop();
+                return _context15.stop();
             }
-          }, _callee13);
+          }, _callee15);
         }));
-        return function (_x13) {
-          return _ref13.apply(this, arguments);
+        return function (_x15) {
+          return _ref15.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('The component throws an error if the @mainAction parameter is not passed', /*#__PURE__*/function () {
-        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
-          return _regeneratorRuntime().wrap(function _callee14$(_context14) {
-            while (1) switch (_context14.prev = _context14.next) {
+        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
+          return _regeneratorRuntime().wrap(function _callee16$(_context16) {
+            while (1) switch (_context16.prev = _context16.next) {
               case 0:
                 (0, _testHelpers.setupOnerror)(function (err) {
                   assert.equal(err.message, 'Assertion Failed: [component][OSS::Dialog] The mainAction parameter is mandatory');
                 });
-                _context14.next = 3;
+                _context16.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Dialog @title={{this.title}} @secondaryAction={{this.secondaryAction}} />
@@ -11066,23 +11124,23 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
                 }));
               case 3:
               case "end":
-                return _context14.stop();
+                return _context16.stop();
             }
-          }, _callee14);
+          }, _callee16);
         }));
-        return function (_x14) {
-          return _ref14.apply(this, arguments);
+        return function (_x16) {
+          return _ref16.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('The component throws an error if the @secondaryAction parameter is not passed', /*#__PURE__*/function () {
-        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
-          return _regeneratorRuntime().wrap(function _callee15$(_context15) {
-            while (1) switch (_context15.prev = _context15.next) {
+        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
+          return _regeneratorRuntime().wrap(function _callee17$(_context17) {
+            while (1) switch (_context17.prev = _context17.next) {
               case 0:
                 (0, _testHelpers.setupOnerror)(function (err) {
                   assert.equal(err.message, 'Assertion Failed: [component][OSS::Dialog] The secondaryAction parameter is mandatory');
                 });
-                _context15.next = 3;
+                _context17.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} />
@@ -11095,12 +11153,12 @@ define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-
                 }));
               case 3:
               case "end":
-                return _context15.stop();
+                return _context17.stop();
             }
-          }, _callee15);
+          }, _callee17);
         }));
-        return function (_x15) {
-          return _ref15.apply(this, arguments);
+        return function (_x17) {
+          return _ref17.apply(this, arguments);
         };
       }());
     });
