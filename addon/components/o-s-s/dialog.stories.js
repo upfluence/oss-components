@@ -18,6 +18,17 @@ export default {
       },
       control: { type: 'text' }
     },
+    subtitle: {
+      type: { required: false },
+      description: 'An optional subtitle that will be displayed below the title',
+      table: {
+        type: {
+          summary: 'string | SafeString'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'text' }
+    },
     skin: {
       description: 'The dialog skin',
       table: {
@@ -44,7 +55,7 @@ export default {
       description: 'A hash with the main action button properties',
       table: {
         type: {
-          summary: '{ label: string, action: () => unknown }'
+          summary: '{ label: string, action: () => unknown; loading?: boolean }'
         },
         defaultValue: { summary: 'undefined' }
       },
@@ -81,7 +92,8 @@ const defaultArgs = {
   icon: 'fa-warning',
   mainAction: {
     label: 'Discard',
-    action: action('discard')
+    action: action('discard'),
+    loading: false
   },
   secondaryAction: {
     label: 'Cancel',

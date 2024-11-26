@@ -5,12 +5,15 @@ import { htmlSafe } from '@ember/template';
 
 type Skin = 'alert' | 'primary' | 'error';
 
+export type ButtonDefinition = { label: string; action: () => unknown; loading?: boolean };
+
 export interface OSSDialogArgs extends BaseModalArgs {
   title: string;
+  subtitle?: string;
   skin?: Skin;
   icon?: string;
-  mainAction: { label: string; action: () => unknown };
-  secondaryAction: { label: string; action: () => unknown };
+  mainAction: ButtonDefinition;
+  secondaryAction: ButtonDefinition;
 }
 
 const BTN_STYLE_MATCHER: Record<Skin, string> = {

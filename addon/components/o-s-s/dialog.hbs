@@ -2,11 +2,26 @@
   <div class="oss-dialog fx-col" {{did-insert this.onInit}} ...attributes>
     <div class="oss-dialog__header">
       <OSS::Badge @icon={{this.icon}} @skin={{this.skin}} />
-      <span class="font-weight-semibold font-size-md">{{@title}}</span>
+      <div class="fx-col fx-gap-px-3">
+        <span class="font-weight-semibold font-size-md">{{@title}}</span>
+        {{#if @subtitle}}
+          <span class="font-color-gray-900 font-size-sm">{{@subtitle}}</span>
+        {{/if}}
+      </div>
     </div>
     <div class="oss-dialog__footer">
-      <OSS::Button @skin={{this.skinBtn}} @label={{@mainAction.label}} {{on "click" @mainAction.action}} />
-      <OSS::Button @label={{@secondaryAction.label}} {{on "click" @secondaryAction.action}} />
+      <OSS::Button
+        @skin={{this.skinBtn}}
+        @label={{@mainAction.label}}
+        {{on "click" @mainAction.action}}
+        @loading={{@mainAction.loading}}
+        data-control-name="dialog-primary-action-button"
+      />
+      <OSS::Button
+        @label={{@secondaryAction.label}}
+        {{on "click" @secondaryAction.action}}
+        data-control-name="dialog-secondary-action-button"
+      />
     </div>
   </div>
 </div>
