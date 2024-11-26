@@ -12,7 +12,7 @@ clear:
 install: ## Install dependencies
 	@echo 'Installing dependencies'
 	pnpm install
-	@echo ""; echo "\n-------------------------------\n"; echo ""
+	@echo ""; echo "-------------------------------"; echo ""
 
 echo:
 	@echo Starting OSS-Components

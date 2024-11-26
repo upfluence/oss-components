@@ -35,6 +35,16 @@ module('Integration | Component | o-s-s/dialog', function (hooks) {
     assert.dom('.oss-dialog__header').hasText(this.title);
   });
 
+  test('If a @subtitle is passed, it is displayed', async function (assert) {
+    this.subtitle = 'This is a subtitle';
+
+    await render(
+      hbs`<OSS::Dialog @title={{this.title}} @subtitle={{this.subtitle}} @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />`
+    );
+
+    assert.dom('.font-color-gray-900.font-size-sm').hasText(`${this.subtitle}`);
+  });
+
   module('For @skin', () => {
     test('When the value is undefined, the default skin is displayed', async function (assert) {
       await render(
@@ -97,6 +107,15 @@ module('Integration | Component | o-s-s/dialog', function (hooks) {
     );
 
     assert.dom('.oss-dialog__footer .upf-btn--alert').hasText(this.mainAction.label);
+  });
+
+  test('When the main action button has the loading property set to true, the button shows a spinner', async function (assert) {
+    this.mainAction.loading = true;
+
+    await render(
+      hbs`<OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />`
+    );
+    assert.dom('[data-control-name="dialog-primary-action-button"] .fa-circle-notch').exists();
   });
 
   test('The secondary action button label is displayed', async function (assert) {
