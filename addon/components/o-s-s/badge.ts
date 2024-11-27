@@ -19,7 +19,8 @@ type SkinType =
   | 'xtd-yellow'
   | 'xtd-lime'
   | 'xtd-blue'
-  | 'xtd-violet';
+  | 'xtd-violet'
+  | 'xtd-smart';
 type SkinDefType = { [key in SkinType]: string };
 export const SkinDefinition: SkinDefType = {
   primary: 'upf-badge--primary',
@@ -31,7 +32,8 @@ export const SkinDefinition: SkinDefType = {
   'xtd-yellow': 'upf-badge--extended-yellow',
   'xtd-lime': 'upf-badge--extended-lime',
   'xtd-blue': 'upf-badge--extended-blue',
-  'xtd-violet': 'upf-badge--extended-violet'
+  'xtd-violet': 'upf-badge--extended-violet',
+  'xtd-smart': 'upf-badge--extended-smart'
 };
 
 interface OSSBadgeArgs {
