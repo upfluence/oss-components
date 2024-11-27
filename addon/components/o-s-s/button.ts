@@ -74,7 +74,6 @@ interface ButtonArgs {
   skin?: string;
   size?: string;
   loading?: boolean;
-  showLabelOnLoad?: boolean;
   loadingOptions?: LoadingOptions;
   icon?: string;
   iconUrl?: string;
