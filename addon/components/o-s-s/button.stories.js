@@ -57,6 +57,16 @@ export default {
       },
       control: { type: 'boolean' }
     },
+    loadingOptions: {
+      description: 'Options to configure the loading state',
+      table: {
+        type: {
+          summary: '{ showLabel?: boolean }'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'object' }
+    },
     label: {
       description: 'Text content of the button',
       table: {
@@ -141,6 +151,7 @@ const defaultArgs = {
   theme: 'light',
   square: false,
   countDown: undefined,
+  loadingOptions: undefined,
   iconUrl: undefined
 };
 
@@ -148,8 +159,8 @@ const Template = (args) => ({
   template: hbs`
     <OSS::Button
       @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
-      @theme={{this.theme}} @square={{this.square}} @countDown={{this.countDown}} @theme={{this.theme}} 
-      @iconUrl={{this.iconUrl}}/>
+      @theme={{this.theme}} @square={{this.square}} @countDown={{this.countDown}}
+      @iconUrl={{this.iconUrl}} @loadingOptions={{this.loadingOptions}} />
   `,
   context: args
 });
