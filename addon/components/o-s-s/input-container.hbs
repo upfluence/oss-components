@@ -1,7 +1,7 @@
 <div class="fx-col">
   <div
     class="oss-input-container
-      {{if this.hasStyleKey (concat ' oss-input-container--' this.styleKey)}}
+      {{if this.hasMessage (concat ' oss-input-container--' this.MessageType)}}
       {{if (has-block 'prefix') ' has-prefix'}}
       {{if (has-block 'suffix') ' has-suffix'}}"
     ...attributes
@@ -30,15 +30,15 @@
     {{/if}}
   </div>
   {{#if @successMessage}}
-    <span class="text-color-success margin-top-px-6">
+    <span class="font-color-success-500 margin-top-px-6">
       <OSS::Icon @icon="fa-check-circle" />
       <span>{{@successMessage}}</span>
     </span>
   {{/if}}
-  {{#if @alertMessage}}
-    <span class="text-color-alert margin-top-px-6">
+  {{#if @warningMessage}}
+    <span class="font-color-warning-500 margin-top-px-6">
       <OSS::Icon @icon="fa-exclamation-circle" />
-      <span>{{@alertMessage}}</span>
+      <span>{{@warningMessage}}</span>
     </span>
   {{/if}}
   {{#if @errorMessage}}

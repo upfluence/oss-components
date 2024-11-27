@@ -55,8 +55,8 @@ export default {
       },
       control: { type: 'text' }
     },
-    alertMessage: {
-      description: 'An alert message that will be displayed below the input-group.',
+    warningMessage: {
+      description: 'A warning message that will be displayed below the input-group.',
       table: {
         type: {
           summary: 'string'

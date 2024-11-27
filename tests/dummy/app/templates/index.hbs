@@ -394,7 +394,11 @@
 </div>
 <div class="fx-row fx-1 fx-gap-px-10 margin-md">
   <OSS::InputContainer @placeholder="Success !" @value={{this.shopUrl}} @successMessage="This is a success message !" />
-  <OSS::InputContainer @placeholder="Alert !" @value={{this.shopUrl}} @alertMessage="This is an alert message !" />
+  <OSS::InputContainer
+    @placeholder="Warning !"
+    @value={{this.shopUrl}}
+    @warningMessage="This is an warning message !"
+  />
   <OSS::InputContainer @placeholder="Error !" @value={{this.shopUrl}} @errorMessage="This is an error message !" />
 </div>
 <div class="fx-row fx-1 fx-gap-px-10 margin-md width-pc-50">

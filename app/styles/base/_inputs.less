@@ -40,27 +40,27 @@ label {
   }
 }
 
-.upf-input--alert {
+.upf-input--warning {
   .border;
-  .border-color-alert;
+  .border-color-warning;
   .border-radius-default;
 
   &:not(:disabled, .disabled) {
     &:hover {
-      .input-state-alert-hover;
+      .input-state-warning-hover;
     }
 
     &:active {
-      .input-state-alert-active;
+      .input-state-warning-active;
     }
 
     &:focus {
-      .input-state-alert-focus;
+      .input-state-warning-focus;
     }
   }
 }
 
-.upf-input--error {
+.upf-input--errored {
   .border;
   .border-color-error;
   .border-radius-default;
@@ -90,8 +90,8 @@ label {
   background-color: var(--color-gray-100);
 }
 
-.input-state-alert-hover {
-  .border-color-alert;
+.input-state-warning-hover {
+  .border-color-warning;
   background-color: var(--color-gray-100);
 }
 
@@ -112,9 +112,9 @@ label {
   background-color: var(--color-white);
 }
 
-.input-state-alert-active {
-  .border-color-alert;
-  box-shadow: 0px 0px 0px 2px var(--color-alert-100), var(--box-shadow-xs);
+.input-state-warning-active {
+  .border-color-warning;
+  box-shadow: 0px 0px 0px 2px var(--color-warning-100), var(--box-shadow-xs);
   background-color: var(--color-white);
 }
 
@@ -138,9 +138,9 @@ label {
   .border-color-success;
 }
 
-.input-state-alert-focus {
-  .input-state-alert-active;
-  .border-color-alert;
+.input-state-warning-focus {
+  .input-state-warning-active;
+  .border-color-warning;
 }
 
 .input-state-error-focus {

@@ -19,7 +19,7 @@ module('Integration | Component | o-s-s/email-input', function (hooks) {
 
   test('it displays the error message when the @errorMessage is non-empty', async function (assert) {
     await render(hbs`<OSS::EmailInput @value="" @errorMessage="This is the error message" />`);
-    assert.dom('.oss-input-container').hasClass('oss-input-container--error');
+    assert.dom('.oss-input-container').hasClass('oss-input-container--errored');
     assert.dom('.text-color-error').hasText('This is the error message');
   });
 
