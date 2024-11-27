@@ -1,9 +1,13 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 
+type MessageType = 'error' | 'alert' | 'success';
+
 interface OSSInputContainerArgs {
   value?: string;
   disabled?: boolean;
+  successMessage?: string;
+  alertMessage?: string;
   errorMessage?: string;
   hasError?: boolean;
   placeholder?: string;
@@ -12,8 +16,15 @@ interface OSSInputContainerArgs {
 }
 
 export default class OSSInputContainer extends Component<OSSInputContainerArgs> {
-  get displayErrorStyle(): boolean {
-    return Boolean(this.args.errorMessage) || Boolean(this.args.hasError);
+  get hasStyleKey(): boolean {
+    return Boolean(this.styleKey);
+  }
+
+  get styleKey(): MessageType | null {
+    if (Boolean(this.args.errorMessage) || Boolean(this.args.hasError)) return 'error';
+    if (Boolean(this.args.alertMessage)) return 'alert';
+    if (Boolean(this.args.successMessage)) return 'success';
+    return null;
   }
 
   get type(): string {

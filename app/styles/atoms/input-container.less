@@ -45,10 +45,24 @@
     }
   }
 
-  &--errored {
+  &--success {
     .yielded-input input,
     .upf-input {
-      .upf-input--errored;
+      .upf-input--success;
+    }
+  }
+
+  &--alert {
+    .yielded-input input,
+    .upf-input {
+      .upf-input--alert;
+    }
+  }
+
+  &--error {
+    .yielded-input input,
+    .upf-input {
+      .upf-input--error;
     }
   }
 

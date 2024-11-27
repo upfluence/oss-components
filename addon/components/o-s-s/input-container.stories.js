@@ -45,6 +45,26 @@ export default {
       },
       control: { type: 'text' }
     },
+    successMessage: {
+      description: 'A success message that will be displayed below the input-group.',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'text' }
+    },
+    alertMessage: {
+      description: 'An alert message that will be displayed below the input-group.',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'text' }
+    },
     errorMessage: {
       description: 'An error message that will be displayed below the input-group.',
       table: {

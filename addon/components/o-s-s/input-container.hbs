@@ -1,7 +1,7 @@
 <div class="fx-col">
   <div
     class="oss-input-container
-      {{if this.displayErrorStyle ' oss-input-container--errored'}}
+      {{if this.hasStyleKey (concat ' oss-input-container--' this.styleKey)}}
       {{if (has-block 'prefix') ' has-prefix'}}
       {{if (has-block 'suffix') ' has-suffix'}}"
     ...attributes
@@ -29,6 +29,18 @@
       <div class="suffix">{{yield to="suffix"}}</div>
     {{/if}}
   </div>
+  {{#if @successMessage}}
+    <span class="text-color-success margin-top-px-6">
+      <OSS::Icon @icon="fa-check-circle" />
+      <span>{{@successMessage}}</span>
+    </span>
+  {{/if}}
+  {{#if @alertMessage}}
+    <span class="text-color-alert margin-top-px-6">
+      <OSS::Icon @icon="fa-exclamation-circle" />
+      <span>{{@alertMessage}}</span>
+    </span>
+  {{/if}}
   {{#if @errorMessage}}
     <span class="text-color-error margin-top-px-6">{{@errorMessage}}</span>
   {{/if}}
