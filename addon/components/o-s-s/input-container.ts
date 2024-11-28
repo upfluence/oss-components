@@ -1,9 +1,8 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 
-type FeedbackMessageType = 'error' | 'warning' | 'success';
 type FeedbackMessage = {
-  type: FeedbackMessageType;
+  type: 'error' | 'warning' | 'success';
   value: string;
 };
 
