@@ -1,7 +1,7 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 
-type FeedbackMessage = {
+export type FeedbackMessage = {
   type: 'error' | 'warning' | 'success';
   value: string;
 };
