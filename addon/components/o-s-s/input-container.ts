@@ -1,13 +1,16 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 
-type FeedbackMessageType = 'errored' | 'warning' | 'success';
+type FeedbackMessageType = 'error' | 'warning' | 'success';
 
 interface OSSInputContainerArgs {
   value?: string;
   disabled?: boolean;
-  successMessage?: string;
-  warningMessage?: string;
+  message?: string;
+  feedbackMessage?: {
+    type: FeedbackMessageType;
+    value: string;
+  };
   errorMessage?: string;
   hasError?: boolean;
   placeholder?: string;
@@ -16,15 +19,10 @@ interface OSSInputContainerArgs {
 }
 
 export default class OSSInputContainer extends Component<OSSInputContainerArgs> {
-  get hasMessage(): boolean {
-    return Boolean(this.MessageType);
-  }
-
-  get MessageType(): FeedbackMessageType | null {
-    if (Boolean(this.args.errorMessage) || Boolean(this.args.hasError)) return 'errored';
-    if (Boolean(this.args.warningMessage)) return 'warning';
-    if (Boolean(this.args.successMessage)) return 'success';
-    return null;
+  get messageIcon(): string | undefined {
+    if (this.args.feedbackMessage?.type === 'success') return 'fa-check-circle';
+    if (this.args.feedbackMessage?.type === 'warning') return 'fa-exclamation-circle';
+    return undefined;
   }
 
   get type(): string {

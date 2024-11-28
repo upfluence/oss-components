@@ -393,13 +393,22 @@
   <OSS::PasswordInput @value="azeaze" />
 </div>
 <div class="fx-row fx-1 fx-gap-px-10 margin-md">
-  <OSS::InputContainer @placeholder="Success !" @value={{this.shopUrl}} @successMessage="This is a success message !" />
+  <OSS::InputContainer
+    @placeholder="Success !"
+    @value={{this.shopUrl}}
+    @feedbackMessage={{hash type="success" value="This is a success message !"}}
+  />
   <OSS::InputContainer
     @placeholder="Warning !"
     @value={{this.shopUrl}}
-    @warningMessage="This is an warning message !"
+    @feedbackMessage={{hash type="warning" value="This is an warning message !"}}
   />
   <OSS::InputContainer @placeholder="Error !" @value={{this.shopUrl}} @errorMessage="This is an error message !" />
+  <OSS::InputContainer
+    @placeholder="Error !"
+    @value={{this.shopUrl}}
+    @feedbackMessage={{hash type="error" value="This is also an error message !"}}
+  />
 </div>
 <div class="fx-row fx-1 fx-gap-px-10 margin-md width-pc-50">
   <OSS::AttributesPanel

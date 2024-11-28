@@ -1,7 +1,8 @@
 <div class="fx-col">
   <div
     class="oss-input-container
-      {{if this.hasMessage (concat ' oss-input-container--' this.MessageType)}}
+      {{if (or @errorMessage @hasError) ' oss-input-container--errored'}}
+      {{if @feedbackMessage (concat ' oss-input-container--' @feedbackMessage.type)}}
       {{if (has-block 'prefix') ' has-prefix'}}
       {{if (has-block 'suffix') ' has-suffix'}}"
     ...attributes
@@ -29,19 +30,14 @@
       <div class="suffix">{{yield to="suffix"}}</div>
     {{/if}}
   </div>
-  {{#if @successMessage}}
-    <span class="font-color-success-500 margin-top-px-6">
-      <OSS::Icon @icon="fa-check-circle" />
-      <span>{{@successMessage}}</span>
-    </span>
-  {{/if}}
-  {{#if @warningMessage}}
-    <span class="font-color-warning-500 margin-top-px-6">
-      <OSS::Icon @icon="fa-exclamation-circle" />
-      <span>{{@warningMessage}}</span>
-    </span>
-  {{/if}}
   {{#if @errorMessage}}
     <span class="text-color-error margin-top-px-6">{{@errorMessage}}</span>
+  {{else if @feedbackMessage}}
+    <span class={{concat "margin-top-px-6 font-color-" @feedbackMessage.type "-500"}}>
+      {{#unless (eq @feedbackMessage.type "error")}}
+        <OSS::Icon @icon={{this.messageIcon}} />
+      {{/unless}}
+      <span>{{@feedbackMessage.value}}</span>
+    </span>
   {{/if}}
 </div>
