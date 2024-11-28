@@ -5150,7 +5150,7 @@ define("dummy/tests/integration/components/o-s-s/badge-test", ["qunit", "ember-q
             while (1) switch (_context8.prev = _context8.next) {
               case 0:
                 (0, _testHelpers.setupOnerror)(function (err) {
-                  assert.equal(err.message, 'Assertion Failed: [component][OSS::Badge] Unknown skin. Available skins are: primary, success, alert, error, xtd-cyan, xtd-orange, xtd-yellow, xtd-lime, xtd-blue, xtd-violet');
+                  assert.equal(err.message, 'Assertion Failed: [component][OSS::Badge] Unknown skin. Available skins are: primary, success, alert, error, xtd-cyan, xtd-orange, xtd-yellow, xtd-lime, xtd-blue, xtd-violet, xtd-smart');
                 });
                 _context8.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -12870,13 +12870,136 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
         };
       }());
     });
-    (0, _qunit.module)('Error States', function () {
-      (0, _qunit.test)('Passing an @errorMessage parameter displays an error message and sets the input border to red', /*#__PURE__*/function () {
+    (0, _qunit.module)('feedback messages', function () {
+      (0, _qunit.test)('Passing success as @feedbackMessage.type displays the success message and sets the border to green', /*#__PURE__*/function () {
         var _ref8 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee10(assert) {
           return _regeneratorRuntime().wrap(function _callee10$(_context10) {
             while (1) switch (_context10.prev = _context10.next) {
               case 0:
                 _context10.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::InputContainer @feedbackMessage={{hash type="success" value="This is a success message"}} />
+                */
+                {
+                  "id": "uLNYThG4",
+                  "block": "[[[8,[39,0],null,[[\"@feedbackMessage\"],[[28,[37,1],null,[[\"type\",\"value\"],[\"success\",\"This is a success message\"]]]]],null]],[],false,[\"o-s-s/input-container\",\"hash\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.js",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.oss-input-container').hasClass('oss-input-container--success');
+                assert.dom('i.far').hasClass('fa-check-circle');
+                assert.dom('.font-color-success-500').hasText('This is a success message');
+              case 5:
+              case "end":
+                return _context10.stop();
+            }
+          }, _callee10);
+        }));
+        return function (_x8) {
+          return _ref8.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('Passing warning as @feedbackMessage.type displays the warning message and sets the border to yellow', /*#__PURE__*/function () {
+        var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
+          return _regeneratorRuntime().wrap(function _callee11$(_context11) {
+            while (1) switch (_context11.prev = _context11.next) {
+              case 0:
+                _context11.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::InputContainer @feedbackMessage={{hash type="warning" value="This is a warning message"}} />
+                */
+                {
+                  "id": "XZd22ntW",
+                  "block": "[[[8,[39,0],null,[[\"@feedbackMessage\"],[[28,[37,1],null,[[\"type\",\"value\"],[\"warning\",\"This is a warning message\"]]]]],null]],[],false,[\"o-s-s/input-container\",\"hash\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.js",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.oss-input-container').hasClass('oss-input-container--warning');
+                assert.dom('i.far').hasClass('fa-exclamation-circle');
+                assert.dom('.font-color-warning-500').hasText('This is a warning message');
+              case 5:
+              case "end":
+                return _context11.stop();
+            }
+          }, _callee11);
+        }));
+        return function (_x9) {
+          return _ref9.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('Passing error as @feedbackMessage.type displays the error message and sets the border to red', /*#__PURE__*/function () {
+        var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
+          return _regeneratorRuntime().wrap(function _callee12$(_context12) {
+            while (1) switch (_context12.prev = _context12.next) {
+              case 0:
+                _context12.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::InputContainer @feedbackMessage={{hash type="error" value="This is an error message"}} />
+                */
+                {
+                  "id": "SdspPatn",
+                  "block": "[[[8,[39,0],null,[[\"@feedbackMessage\"],[[28,[37,1],null,[[\"type\",\"value\"],[\"error\",\"This is an error message\"]]]]],null]],[],false,[\"o-s-s/input-container\",\"hash\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.js",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.oss-input-container').hasClass('oss-input-container--error');
+                assert.dom('.font-color-error-500').hasText('This is an error message');
+              case 4:
+              case "end":
+                return _context12.stop();
+            }
+          }, _callee12);
+        }));
+        return function (_x10) {
+          return _ref10.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)("Passing an invalid feedbackMessage type doesn't display any message", /*#__PURE__*/function () {
+        var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
+          return _regeneratorRuntime().wrap(function _callee13$(_context13) {
+            while (1) switch (_context13.prev = _context13.next) {
+              case 0:
+                _context13.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::InputContainer @feedbackMessage={{hash type="invalid" value="This is an invalid message"}} />
+                */
+                {
+                  "id": "Iz4Fl5KU",
+                  "block": "[[[8,[39,0],null,[[\"@feedbackMessage\"],[[28,[37,1],null,[[\"type\",\"value\"],[\"invalid\",\"This is an invalid message\"]]]]],null]],[],false,[\"o-s-s/input-container\",\"hash\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.js",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.upf-input').exists();
+                assert.dom('.font-color-success-500').doesNotExist();
+                assert.dom('.font-color-warning-500').doesNotExist();
+                assert.dom('.font-color-error-500').doesNotExist();
+                assert.dom('.oss-input-container').doesNotHaveTextContaining('This is an invalid message');
+              case 7:
+              case "end":
+                return _context13.stop();
+            }
+          }, _callee13);
+        }));
+        return function (_x11) {
+          return _ref11.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('Error States', function () {
+      (0, _qunit.test)('Passing an @errorMessage parameter displays an error message and sets the input border to red', /*#__PURE__*/function () {
+        var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
+          return _regeneratorRuntime().wrap(function _callee14$(_context14) {
+            while (1) switch (_context14.prev = _context14.next) {
+              case 0:
+                _context14.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::InputContainer @errorMessage="This is an error message" />
@@ -12892,20 +13015,20 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
                 assert.dom('.text-color-error').hasText('This is an error message');
               case 4:
               case "end":
-                return _context10.stop();
+                return _context14.stop();
             }
-          }, _callee10);
+          }, _callee14);
         }));
-        return function (_x8) {
-          return _ref8.apply(this, arguments);
+        return function (_x12) {
+          return _ref12.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('Setting @errorMessage parameter to an empty string does not display an error message', /*#__PURE__*/function () {
-        var _ref9 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee11(assert) {
-          return _regeneratorRuntime().wrap(function _callee11$(_context11) {
-            while (1) switch (_context11.prev = _context11.next) {
+        var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+          return _regeneratorRuntime().wrap(function _callee15$(_context15) {
+            while (1) switch (_context15.prev = _context15.next) {
               case 0:
-                _context11.next = 2;
+                _context15.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::InputContainer @errorMessage="" />
@@ -12921,20 +13044,20 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
                 assert.dom('.text-color-error').doesNotExist();
               case 4:
               case "end":
-                return _context11.stop();
+                return _context15.stop();
             }
-          }, _callee11);
+          }, _callee15);
         }));
-        return function (_x9) {
-          return _ref9.apply(this, arguments);
+        return function (_x13) {
+          return _ref13.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('Passing a @hasError parameter displays a red border around the input', /*#__PURE__*/function () {
-        var _ref10 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee12(assert) {
-          return _regeneratorRuntime().wrap(function _callee12$(_context12) {
-            while (1) switch (_context12.prev = _context12.next) {
+        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
+          return _regeneratorRuntime().wrap(function _callee16$(_context16) {
+            while (1) switch (_context16.prev = _context16.next) {
               case 0:
-                _context12.next = 2;
+                _context16.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::InputContainer @hasError={{true}} />
@@ -12949,20 +13072,20 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
                 assert.dom('.oss-input-container').hasClass('oss-input-container--errored');
               case 3:
               case "end":
-                return _context12.stop();
+                return _context16.stop();
             }
-          }, _callee12);
+          }, _callee16);
         }));
-        return function (_x10) {
-          return _ref10.apply(this, arguments);
+        return function (_x14) {
+          return _ref14.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('Setting @hasError parameter to false does not display a red border around the input', /*#__PURE__*/function () {
-        var _ref11 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee13(assert) {
-          return _regeneratorRuntime().wrap(function _callee13$(_context13) {
-            while (1) switch (_context13.prev = _context13.next) {
+        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
+          return _regeneratorRuntime().wrap(function _callee17$(_context17) {
+            while (1) switch (_context17.prev = _context17.next) {
               case 0:
-                _context13.next = 2;
+                _context17.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::InputContainer @hasError={{false}} />
@@ -12977,20 +13100,20 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
                 assert.dom('.oss-input-container').doesNotHaveClass('oss-input-container--errored');
               case 3:
               case "end":
-                return _context13.stop();
+                return _context17.stop();
             }
-          }, _callee13);
+          }, _callee17);
         }));
-        return function (_x11) {
-          return _ref11.apply(this, arguments);
+        return function (_x15) {
+          return _ref15.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('Setting @hasError parameter to undefined does not display a red border around the input', /*#__PURE__*/function () {
-        var _ref12 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
-          return _regeneratorRuntime().wrap(function _callee14$(_context14) {
-            while (1) switch (_context14.prev = _context14.next) {
+        var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
+          return _regeneratorRuntime().wrap(function _callee18$(_context18) {
+            while (1) switch (_context18.prev = _context18.next) {
               case 0:
-                _context14.next = 2;
+                _context18.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::InputContainer @hasError={{undefined}} />
@@ -13005,20 +13128,20 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
                 assert.dom('.oss-input-container').doesNotHaveClass('oss-input-container--errored');
               case 3:
               case "end":
-                return _context14.stop();
+                return _context18.stop();
             }
-          }, _callee14);
+          }, _callee18);
         }));
-        return function (_x12) {
-          return _ref12.apply(this, arguments);
+        return function (_x16) {
+          return _ref16.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('Having both @errorMessage and @hasError parameters set to true displays the error message', /*#__PURE__*/function () {
-        var _ref13 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
-          return _regeneratorRuntime().wrap(function _callee15$(_context15) {
-            while (1) switch (_context15.prev = _context15.next) {
+        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
+          return _regeneratorRuntime().wrap(function _callee19$(_context19) {
+            while (1) switch (_context19.prev = _context19.next) {
               case 0:
-                _context15.next = 2;
+                _context19.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::InputContainer @errorMessage="This is an error message" @hasError={{true}} />
@@ -13034,22 +13157,22 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
                 assert.dom('.text-color-error').hasText('This is an error message');
               case 4:
               case "end":
-                return _context15.stop();
+                return _context19.stop();
             }
-          }, _callee15);
+          }, _callee19);
         }));
-        return function (_x13) {
-          return _ref13.apply(this, arguments);
+        return function (_x17) {
+          return _ref17.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.module)('Extra attributes', function () {
       (0, _qunit.test)('passing an extra class is applied to the component', /*#__PURE__*/function () {
-        var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
-          return _regeneratorRuntime().wrap(function _callee16$(_context16) {
-            while (1) switch (_context16.prev = _context16.next) {
+        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
+          return _regeneratorRuntime().wrap(function _callee20$(_context20) {
+            while (1) switch (_context20.prev = _context20.next) {
               case 0:
-                _context16.next = 2;
+                _context20.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::InputContainer class="my-extra-class" />
@@ -13064,21 +13187,21 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
                 assert.dom('.my-extra-class').exists();
               case 3:
               case "end":
-                return _context16.stop();
+                return _context20.stop();
             }
-          }, _callee16);
+          }, _callee20);
         }));
-        return function (_x14) {
-          return _ref14.apply(this, arguments);
+        return function (_x18) {
+          return _ref18.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('passing data-control-name works', /*#__PURE__*/function () {
-        var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
+        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee21(assert) {
           var inputWrapper;
-          return _regeneratorRuntime().wrap(function _callee17$(_context17) {
-            while (1) switch (_context17.prev = _context17.next) {
+          return _regeneratorRuntime().wrap(function _callee21$(_context21) {
+            while (1) switch (_context21.prev = _context21.next) {
               case 0:
-                _context17.next = 2;
+                _context21.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::InputContainer data-control-name="firstname-input" />
@@ -13094,12 +13217,12 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
                 assert.equal(inputWrapper.getAttribute('data-control-name'), 'firstname-input');
               case 4:
               case "end":
-                return _context17.stop();
+                return _context21.stop();
             }
-          }, _callee17);
+          }, _callee21);
         }));
-        return function (_x15) {
-          return _ref15.apply(this, arguments);
+        return function (_x19) {
+          return _ref19.apply(this, arguments);
         };
       }());
     });

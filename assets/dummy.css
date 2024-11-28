@@ -9717,6 +9717,46 @@ label {
   background-color: transparent;
   box-shadow: none;
 }
+.upf-input--success {
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--color-success-500);
+  border-radius: var(--border-radius-sm);
+}
+.upf-input--success:not(:disabled, .disabled):hover {
+  border-color: var(--color-success-500);
+  background-color: var(--color-gray-100);
+}
+.upf-input--success:not(:disabled, .disabled):active {
+  border-color: var(--color-success-500);
+  box-shadow: 0px 0px 0px 2px var(--color-success-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+}
+.upf-input--success:not(:disabled, .disabled):focus {
+  box-shadow: 0px 0px 0px 2px var(--color-success-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+  border-color: var(--color-success-500);
+}
+.upf-input--warning {
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--color-warning-500);
+  border-radius: var(--border-radius-sm);
+}
+.upf-input--warning:not(:disabled, .disabled):hover {
+  border-color: var(--color-warning-500);
+  background-color: var(--color-gray-100);
+}
+.upf-input--warning:not(:disabled, .disabled):active {
+  border-color: var(--color-warning-500);
+  box-shadow: 0px 0px 0px 2px var(--color-warning-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+}
+.upf-input--warning:not(:disabled, .disabled):focus {
+  box-shadow: 0px 0px 0px 2px var(--color-warning-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+  border-color: var(--color-warning-500);
+}
 .upf-input--errored {
   border-width: 1px;
   border-style: solid;
@@ -9741,6 +9781,14 @@ label {
   border: 1px solid var(--color-gray-300);
   background-color: var(--color-gray-100);
 }
+.input-state-success-hover {
+  border-color: var(--color-success-500);
+  background-color: var(--color-gray-100);
+}
+.input-state-warning-hover {
+  border-color: var(--color-warning-500);
+  background-color: var(--color-gray-100);
+}
 .input-state-error-hover {
   border-color: var(--color-error-500);
   background-color: var(--color-gray-100);
@@ -9748,6 +9796,16 @@ label {
 .input-state-active {
   border: 1px solid var(--color-gray-100);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+}
+.input-state-success-active {
+  border-color: var(--color-success-500);
+  box-shadow: 0px 0px 0px 2px var(--color-success-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+}
+.input-state-warning-active {
+  border-color: var(--color-warning-500);
+  box-shadow: 0px 0px 0px 2px var(--color-warning-100), var(--box-shadow-xs);
   background-color: var(--color-white);
 }
 .input-state-error-active {
@@ -9763,6 +9821,16 @@ label {
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
   border: 1px solid var(--color-gray-300);
+}
+.input-state-success-focus {
+  box-shadow: 0px 0px 0px 2px var(--color-success-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+  border-color: var(--color-success-500);
+}
+.input-state-warning-focus {
+  box-shadow: 0px 0px 0px 2px var(--color-warning-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+  border-color: var(--color-warning-500);
 }
 .input-state-error-focus {
   box-shadow: 0px 0px 0px 2px var(--color-error-100), var(--box-shadow-xs);
@@ -13613,6 +13681,34 @@ a.upf-btn--sm {
 .upf-badge.upf-badge--extended-violet.upf-badge--plain .upf-badge__text {
   color: var(--color-white);
 }
+.upf-badge.upf-badge--extended-smart {
+  background: var(--color-smart-gradient-50) padding-box, var(--color-smart-gradient-500) border-box;
+  border-radius: 50%;
+  border: 1px solid transparent;
+}
+.upf-badge.upf-badge--extended-smart i,
+.upf-badge.upf-badge--extended-smart span {
+  background: var(--font-color-smart-gradient);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+.upf-badge.upf-badge--extended-smart .upf-badge__text {
+  background: var(--font-color-smart-gradient);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+.upf-badge.upf-badge--extended-smart.upf-badge--plain {
+  background: var(--color-smart-gradient-500);
+}
+.upf-badge.upf-badge--extended-smart.upf-badge--plain span,
+.upf-badge.upf-badge--extended-smart.upf-badge--plain i {
+  background: var(--color-white);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
 .upf-chip {
   display: flex;
   align-items: center;
@@ -13844,26 +13940,82 @@ a.upf-btn--sm {
   background-color: transparent;
   box-shadow: none;
 }
+.oss-input-container--success .yielded-input input,
+.oss-input-container--success .upf-input {
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--color-success-500);
+  border-radius: var(--border-radius-sm);
+}
+.oss-input-container--success .yielded-input input:not(:disabled, .disabled):hover,
+.oss-input-container--success .upf-input:not(:disabled, .disabled):hover {
+  border-color: var(--color-success-500);
+  background-color: var(--color-gray-100);
+}
+.oss-input-container--success .yielded-input input:not(:disabled, .disabled):active,
+.oss-input-container--success .upf-input:not(:disabled, .disabled):active {
+  border-color: var(--color-success-500);
+  box-shadow: 0px 0px 0px 2px var(--color-success-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+}
+.oss-input-container--success .yielded-input input:not(:disabled, .disabled):focus,
+.oss-input-container--success .upf-input:not(:disabled, .disabled):focus {
+  box-shadow: 0px 0px 0px 2px var(--color-success-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+  border-color: var(--color-success-500);
+}
+.oss-input-container--warning .yielded-input input,
+.oss-input-container--warning .upf-input {
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--color-warning-500);
+  border-radius: var(--border-radius-sm);
+}
+.oss-input-container--warning .yielded-input input:not(:disabled, .disabled):hover,
+.oss-input-container--warning .upf-input:not(:disabled, .disabled):hover {
+  border-color: var(--color-warning-500);
+  background-color: var(--color-gray-100);
+}
+.oss-input-container--warning .yielded-input input:not(:disabled, .disabled):active,
+.oss-input-container--warning .upf-input:not(:disabled, .disabled):active {
+  border-color: var(--color-warning-500);
+  box-shadow: 0px 0px 0px 2px var(--color-warning-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+}
+.oss-input-container--warning .yielded-input input:not(:disabled, .disabled):focus,
+.oss-input-container--warning .upf-input:not(:disabled, .disabled):focus {
+  box-shadow: 0px 0px 0px 2px var(--color-warning-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+  border-color: var(--color-warning-500);
+}
 .oss-input-container--errored .yielded-input input,
-.oss-input-container--errored .upf-input {
+.oss-input-container--error .yielded-input input,
+.oss-input-container--errored .upf-input,
+.oss-input-container--error .upf-input {
   border-width: 1px;
   border-style: solid;
   border-color: var(--color-error-500);
   border-radius: var(--border-radius-sm);
 }
 .oss-input-container--errored .yielded-input input:not(:disabled, .disabled):hover,
-.oss-input-container--errored .upf-input:not(:disabled, .disabled):hover {
+.oss-input-container--error .yielded-input input:not(:disabled, .disabled):hover,
+.oss-input-container--errored .upf-input:not(:disabled, .disabled):hover,
+.oss-input-container--error .upf-input:not(:disabled, .disabled):hover {
   border-color: var(--color-error-500);
   background-color: var(--color-gray-100);
 }
 .oss-input-container--errored .yielded-input input:not(:disabled, .disabled):active,
-.oss-input-container--errored .upf-input:not(:disabled, .disabled):active {
+.oss-input-container--error .yielded-input input:not(:disabled, .disabled):active,
+.oss-input-container--errored .upf-input:not(:disabled, .disabled):active,
+.oss-input-container--error .upf-input:not(:disabled, .disabled):active {
   border-color: var(--color-error-500);
   box-shadow: 0px 0px 0px 2px var(--color-error-100), var(--box-shadow-xs);
   background-color: var(--color-white);
 }
 .oss-input-container--errored .yielded-input input:not(:disabled, .disabled):focus,
-.oss-input-container--errored .upf-input:not(:disabled, .disabled):focus {
+.oss-input-container--error .yielded-input input:not(:disabled, .disabled):focus,
+.oss-input-container--errored .upf-input:not(:disabled, .disabled):focus,
+.oss-input-container--error .upf-input:not(:disabled, .disabled):focus {
   box-shadow: 0px 0px 0px 2px var(--color-error-100), var(--box-shadow-xs);
   background-color: var(--color-white);
   border-color: var(--color-error-500);

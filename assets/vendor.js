@@ -76533,7 +76533,8 @@ define("@upfluence/oss-components/components/o-s-s/badge", ["exports", "@ember/c
     'xtd-yellow': 'upf-badge--extended-yellow',
     'xtd-lime': 'upf-badge--extended-lime',
     'xtd-blue': 'upf-badge--extended-blue',
-    'xtd-violet': 'upf-badge--extended-violet'
+    'xtd-violet': 'upf-badge--extended-violet',
+    'xtd-smart': 'upf-badge--extended-smart'
   };
   var OSSBadge = _exports.default = /*#__PURE__*/function (_Component) {
     _inherits(OSSBadge, _Component);
@@ -76595,7 +76596,7 @@ define("@upfluence/oss-components/components/o-s-s/badge", ["exports", "@ember/c
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
   function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
   var SizeTypes = ['sm', 'md', 'lg'];
-  var SkinTypes = ['primary', 'success', 'alert', 'error', 'xtd-cyan', 'xtd-orange', 'xtd-yellow', 'xtd-lime', 'xtd-blue', 'xtd-violet'];
+  var SkinTypes = ['primary', 'success', 'alert', 'error', 'xtd-cyan', 'xtd-orange', 'xtd-yellow', 'xtd-lime', 'xtd-blue', 'xtd-violet', 'xtd-smart'];
   var _default = _exports.default = {
     title: 'Components/OSS::Badge',
     component: 'badge',
@@ -81678,7 +81679,7 @@ define("@upfluence/oss-components/components/o-s-s/input-container", ["exports",
     <div class="fx-col">
     <div
       class="oss-input-container
-        {{if this.displayErrorStyle ' oss-input-container--errored'}}
+        {{this.containerClass}}
         {{if (has-block 'prefix') ' has-prefix'}}
         {{if (has-block 'suffix') ' has-suffix'}}"
       ...attributes
@@ -81708,12 +81709,19 @@ define("@upfluence/oss-components/components/o-s-s/input-container", ["exports",
     </div>
     {{#if @errorMessage}}
       <span class="text-color-error margin-top-px-6">{{@errorMessage}}</span>
+    {{else if this.feedbackMessage}}
+      <span class={{concat "margin-top-px-6 font-color-" this.feedbackMessage.type "-500"}}>
+        {{#unless (eq this.feedbackMessage.type "error")}}
+          <OSS::Icon @icon={{this.messageIcon}} />
+        {{/unless}}
+        <span>{{this.feedbackMessage.value}}</span>
+      </span>
     {{/if}}
   </div>
   */
   {
-    "id": "tHNcpg2L",
-    "block": "[[[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-input-container\\n      \",[52,[30,0,[\"displayErrorStyle\"]],\" oss-input-container--errored\"],\"\\n      \",[52,[48,[30,6]],\" has-prefix\"],\"\\n      \",[52,[48,[30,7]],\" has-suffix\"]]]],[17,1],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"      \"],[10,0],[14,0,\"prefix\"],[12],[18,6,null],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"      \"],[10,0],[14,0,\"yielded-input\"],[12],[1,\"\\n        \"],[18,8,null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,3],[[16,\"placeholder\",[30,2]],[16,\"disabled\",[30,3]],[24,0,\"upf-input\"],[4,[38,4],[\"keyup\",[28,[37,5],[[30,0,[\"_onChange\"]],[30,4]],null]],null]],[[\"@value\",\"@type\"],[[30,4],[30,0,[\"type\"]]]],null],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"      \"],[10,0],[14,0,\"suffix\"],[12],[18,7,null],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,5],[[[1,\"    \"],[10,1],[14,0,\"text-color-error margin-top-px-6\"],[12],[1,[30,5]],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@placeholder\",\"@disabled\",\"@value\",\"@errorMessage\",\"&prefix\",\"&suffix\",\"&input\"],false,[\"if\",\"has-block\",\"yield\",\"input\",\"on\",\"fn\"]]",
+    "id": "4Uh4qlx3",
+    "block": "[[[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-input-container\\n      \",[30,0,[\"containerClass\"]],\"\\n      \",[52,[48,[30,6]],\" has-prefix\"],\"\\n      \",[52,[48,[30,7]],\" has-suffix\"]]]],[17,1],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"      \"],[10,0],[14,0,\"prefix\"],[12],[18,6,null],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"      \"],[10,0],[14,0,\"yielded-input\"],[12],[1,\"\\n        \"],[18,8,null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,3],[[16,\"placeholder\",[30,2]],[16,\"disabled\",[30,3]],[24,0,\"upf-input\"],[4,[38,4],[\"keyup\",[28,[37,5],[[30,0,[\"_onChange\"]],[30,4]],null]],null]],[[\"@value\",\"@type\"],[[30,4],[30,0,[\"type\"]]]],null],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"      \"],[10,0],[14,0,\"suffix\"],[12],[18,7,null],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,5],[[[1,\"    \"],[10,1],[14,0,\"text-color-error margin-top-px-6\"],[12],[1,[30,5]],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"feedbackMessage\"]],[[[1,\"    \"],[10,1],[15,0,[28,[37,6],[\"margin-top-px-6 font-color-\",[30,0,[\"feedbackMessage\",\"type\"]],\"-500\"],null]],[12],[1,\"\\n\"],[41,[51,[28,[37,8],[[30,0,[\"feedbackMessage\",\"type\"]],\"error\"],null]],[[[1,\"        \"],[8,[39,9],null,[[\"@icon\"],[[30,0,[\"messageIcon\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[12],[1,[30,0,[\"feedbackMessage\",\"value\"]]],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],null]],[]]],[13]],[\"&attrs\",\"@placeholder\",\"@disabled\",\"@value\",\"@errorMessage\",\"&prefix\",\"&suffix\",\"&input\"],false,[\"if\",\"has-block\",\"yield\",\"input\",\"on\",\"fn\",\"concat\",\"unless\",\"eq\",\"o-s-s/icon\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/input-container.hbs",
     "isStrictMode": false
   });
@@ -81724,9 +81732,27 @@ define("@upfluence/oss-components/components/o-s-s/input-container", ["exports",
       return _callSuper(this, OSSInputContainer, arguments);
     }
     _createClass(OSSInputContainer, [{
-      key: "displayErrorStyle",
+      key: "feedbackMessage",
       get: function get() {
-        return Boolean(this.args.errorMessage) || Boolean(this.args.hasError);
+        if (this.args.feedbackMessage && ['error', 'warning', 'success'].includes(this.args.feedbackMessage.type)) {
+          return this.args.feedbackMessage;
+        }
+        return undefined;
+      }
+    }, {
+      key: "messageIcon",
+      get: function get() {
+        var _this$args$feedbackMe, _this$args$feedbackMe2;
+        if (((_this$args$feedbackMe = this.args.feedbackMessage) === null || _this$args$feedbackMe === void 0 ? void 0 : _this$args$feedbackMe.type) === 'success') return 'fa-check-circle';
+        if (((_this$args$feedbackMe2 = this.args.feedbackMessage) === null || _this$args$feedbackMe2 === void 0 ? void 0 : _this$args$feedbackMe2.type) === 'warning') return 'fa-exclamation-circle';
+        return undefined;
+      }
+    }, {
+      key: "containerClass",
+      get: function get() {
+        if (this.args.errorMessage || this.args.hasError) return ' oss-input-container--errored';
+        if (this.feedbackMessage) return " oss-input-container--".concat(this.feedbackMessage.type);
+        return undefined;
       }
     }, {
       key: "type",
@@ -81812,6 +81838,20 @@ define("@upfluence/oss-components/components/o-s-s/input-container", ["exports",
         },
         control: {
           type: 'text'
+        }
+      },
+      feedbackMessage: {
+        description: 'A success, warning or error message that will be displayed below the input-group.',
+        table: {
+          type: {
+            summary: '{ type: string, value: string }'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'object'
         }
       },
       errorMessage: {
