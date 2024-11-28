@@ -45,7 +45,22 @@
     }
   }
 
-  &--errored {
+  &--success {
+    .yielded-input input,
+    .upf-input {
+      .upf-input--success;
+    }
+  }
+
+  &--warning {
+    .yielded-input input,
+    .upf-input {
+      .upf-input--warning;
+    }
+  }
+
+  &--errored,
+  &--error {
     .yielded-input input,
     .upf-input {
       .upf-input--errored;

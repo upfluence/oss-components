@@ -79,6 +79,45 @@ module('Integration | Component | o-s-s/input-container', function (hooks) {
     });
   });
 
+  module('feedback messages', () => {
+    test('Passing success as @feedbackMessage.type displays the success message and sets the border to green', async function (assert) {
+      await render(
+        hbs`<OSS::InputContainer @feedbackMessage={{hash type="success" value="This is a success message"}} />`
+      );
+      assert.dom('.oss-input-container').hasClass('oss-input-container--success');
+      assert.dom('i.far').hasClass('fa-check-circle');
+      assert.dom('.font-color-success-500').hasText('This is a success message');
+    });
+
+    test('Passing warning as @feedbackMessage.type displays the warning message and sets the border to yellow', async function (assert) {
+      await render(
+        hbs`<OSS::InputContainer @feedbackMessage={{hash type="warning" value="This is a warning message"}} />`
+      );
+      assert.dom('.oss-input-container').hasClass('oss-input-container--warning');
+      assert.dom('i.far').hasClass('fa-exclamation-circle');
+      assert.dom('.font-color-warning-500').hasText('This is a warning message');
+    });
+
+    test('Passing error as @feedbackMessage.type displays the error message and sets the border to red', async function (assert) {
+      await render(
+        hbs`<OSS::InputContainer @feedbackMessage={{hash type="error" value="This is an error message"}} />`
+      );
+      assert.dom('.oss-input-container').hasClass('oss-input-container--error');
+      assert.dom('.font-color-error-500').hasText('This is an error message');
+    });
+
+    test("Passing an invalid feedbackMessage type doesn't display any message", async function (assert) {
+      await render(
+        hbs`<OSS::InputContainer @feedbackMessage={{hash type="invalid" value="This is an invalid message"}} />`
+      );
+      assert.dom('.upf-input').exists();
+      assert.dom('.font-color-success-500').doesNotExist();
+      assert.dom('.font-color-warning-500').doesNotExist();
+      assert.dom('.font-color-error-500').doesNotExist();
+      assert.dom('.oss-input-container').doesNotHaveTextContaining('This is an invalid message');
+    });
+  });
+
   module('Error States', () => {
     test('Passing an @errorMessage parameter displays an error message and sets the input border to red', async function (assert) {
       await render(hbs`<OSS::InputContainer @errorMessage="This is an error message" />`);

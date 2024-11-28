@@ -45,6 +45,16 @@ export default {
       },
       control: { type: 'text' }
     },
+    feedbackMessage: {
+      description: 'A success, warning or error message that will be displayed below the input-group.',
+      table: {
+        type: {
+          summary: '{ type: string, value: string }'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'object' }
+    },
     errorMessage: {
       description: 'An error message that will be displayed below the input-group.',
       table: {

@@ -76,7 +76,7 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
       setupOnerror((err: Error) => {
         assert.equal(
           err.message,
-          'Assertion Failed: [component][OSS::Badge] Unknown skin. Available skins are: primary, success, alert, error, xtd-cyan, xtd-orange, xtd-yellow, xtd-lime, xtd-blue, xtd-violet'
+          'Assertion Failed: [component][OSS::Badge] Unknown skin. Available skins are: primary, success, alert, error, xtd-cyan, xtd-orange, xtd-yellow, xtd-lime, xtd-blue, xtd-violet, xtd-smart'
         );
       });
 

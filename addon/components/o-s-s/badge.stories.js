@@ -11,7 +11,8 @@ const SkinTypes = [
   'xtd-yellow',
   'xtd-lime',
   'xtd-blue',
-  'xtd-violet'
+  'xtd-violet',
+  'xtd-smart'
 ];
 
 export default {

@@ -20,6 +20,46 @@ label {
   box-shadow: none;
 }
 
+.upf-input--success {
+  .border;
+  .border-color-success;
+  .border-radius-default;
+
+  &:not(:disabled, .disabled) {
+    &:hover {
+      .input-state-success-hover;
+    }
+
+    &:active {
+      .input-state-success-active;
+    }
+
+    &:focus {
+      .input-state-success-focus;
+    }
+  }
+}
+
+.upf-input--warning {
+  .border;
+  .border-color-alert;
+  .border-radius-default;
+
+  &:not(:disabled, .disabled) {
+    &:hover {
+      .input-state-warning-hover;
+    }
+
+    &:active {
+      .input-state-warning-active;
+    }
+
+    &:focus {
+      .input-state-warning-focus;
+    }
+  }
+}
+
 .upf-input--errored {
   .border;
   .border-color-error;
@@ -45,6 +85,16 @@ label {
   background-color: var(--color-gray-100);
 }
 
+.input-state-success-hover {
+  .border-color-success;
+  background-color: var(--color-gray-100);
+}
+
+.input-state-warning-hover {
+  .border-color-alert;
+  background-color: var(--color-gray-100);
+}
+
 .input-state-error-hover {
   .border-color-error;
   background-color: var(--color-gray-100);
@@ -53,6 +103,18 @@ label {
 .input-state-active {
   border: 1px solid var(--color-gray-100);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+}
+
+.input-state-success-active {
+  .border-color-success;
+  box-shadow: 0px 0px 0px 2px var(--color-success-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+}
+
+.input-state-warning-active {
+  .border-color-alert;
+  box-shadow: 0px 0px 0px 2px var(--color-warning-100), var(--box-shadow-xs);
   background-color: var(--color-white);
 }
 
@@ -69,6 +131,16 @@ label {
 .input-state-focus {
   .input-state-active;
   border: 1px solid var(--color-gray-300);
+}
+
+.input-state-success-focus {
+  .input-state-success-active;
+  .border-color-success;
+}
+
+.input-state-warning-focus {
+  .input-state-warning-active;
+  .border-color-alert;
 }
 
 .input-state-error-focus {

@@ -107,17 +107,33 @@
   }
 }
 
-.upf-badge.upf-badge--primary { .build-badge(primary); }
-.upf-badge.upf-badge--primary.upf-badge--plain { .build-plain-badge(var(--color-primary-500)); }
+.upf-badge.upf-badge--primary {
+  .build-badge(primary);
+}
+.upf-badge.upf-badge--primary.upf-badge--plain {
+  .build-plain-badge(var(--color-primary-500));
+}
 
-.upf-badge.upf-badge--alert { .build-badge(warning); }
-.upf-badge.upf-badge--alert.upf-badge--plain { .build-plain-badge(var(--color-warning-500)); }
+.upf-badge.upf-badge--alert {
+  .build-badge(warning);
+}
+.upf-badge.upf-badge--alert.upf-badge--plain {
+  .build-plain-badge(var(--color-warning-500));
+}
 
-.upf-badge.upf-badge--error { .build-badge(error); }
-.upf-badge.upf-badge--error.upf-badge--plain { .build-plain-badge(var(--color-error-500)); }
+.upf-badge.upf-badge--error {
+  .build-badge(error);
+}
+.upf-badge.upf-badge--error.upf-badge--plain {
+  .build-plain-badge(var(--color-error-500));
+}
 
-.upf-badge.upf-badge--success { .build-badge(success); }
-.upf-badge.upf-badge--success.upf-badge--plain { .build-plain-badge(var(--color-success-500)); }
+.upf-badge.upf-badge--success {
+  .build-badge(success);
+}
+.upf-badge.upf-badge--success.upf-badge--plain {
+  .build-plain-badge(var(--color-success-500));
+}
 
 .upf-badge.upf-badge--extended-orange {
   .generate-extended-palette-badge(orange);
@@ -154,4 +170,29 @@
 }
 .upf-badge.upf-badge--extended-violet.upf-badge--plain {
   .generate-extended-palette-plain-badge(violet);
+}
+.upf-badge.upf-badge--extended-smart {
+  background: var(--color-smart-gradient-50) padding-box, var(--color-smart-gradient-500) border-box;
+  border-radius: 50%;
+  border: 1px solid transparent;
+
+  i,
+  span {
+    .font-color-smart-gradient;
+  }
+
+  .upf-badge__text {
+    .font-color-smart-gradient;
+  }
+}
+.upf-badge.upf-badge--extended-smart.upf-badge--plain {
+  background: var(--color-smart-gradient-500);
+
+  span,
+  i {
+    background: var(--color-white);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+  }
 }
