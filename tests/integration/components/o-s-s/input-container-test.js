@@ -105,6 +105,17 @@ module('Integration | Component | o-s-s/input-container', function (hooks) {
       assert.dom('.oss-input-container').hasClass('oss-input-container--error');
       assert.dom('.font-color-error-500').hasText('This is an error message');
     });
+
+    test("Passing an invalid feedbackMessage type doesn't display any message", async function (assert) {
+      await render(
+        hbs`<OSS::InputContainer @feedbackMessage={{hash type="invalid" value="This is an invalid message"}} />`
+      );
+      assert.dom('.upf-input').exists();
+      assert.dom('.font-color-success-500').doesNotExist();
+      assert.dom('.font-color-warning-500').doesNotExist();
+      assert.dom('.font-color-error-500').doesNotExist();
+      assert.dom('.oss-input-container').doesNotHaveTextContaining('This is an invalid message');
+    });
   });
 
   module('Error States', () => {

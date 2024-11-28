@@ -31,12 +31,12 @@
   </div>
   {{#if @errorMessage}}
     <span class="text-color-error margin-top-px-6">{{@errorMessage}}</span>
-  {{else if @feedbackMessage}}
-    <span class={{concat "margin-top-px-6 font-color-" this.feedbackMessageType "-500"}}>
-      {{#unless (eq this.feedbackMessageType "error")}}
+  {{else if this.feedbackMessage}}
+    <span class={{concat "margin-top-px-6 font-color-" this.feedbackMessage.type "-500"}}>
+      {{#unless (eq this.feedbackMessage.type "error")}}
         <OSS::Icon @icon={{this.messageIcon}} />
       {{/unless}}
-      <span>{{@feedbackMessage.value}}</span>
+      <span>{{this.feedbackMessage.value}}</span>
     </span>
   {{/if}}
 </div>

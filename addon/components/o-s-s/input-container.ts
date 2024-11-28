@@ -2,14 +2,15 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 
 type FeedbackMessageType = 'error' | 'warning' | 'success';
+type FeedbackMessage = {
+  type: FeedbackMessageType;
+  value: string;
+};
 
 interface OSSInputContainerArgs {
   value?: string;
   disabled?: boolean;
-  feedbackMessage?: {
-    type: FeedbackMessageType;
-    value: string;
-  };
+  feedbackMessage?: FeedbackMessage;
   errorMessage?: string;
   hasError?: boolean;
   placeholder?: string;
@@ -18,9 +19,9 @@ interface OSSInputContainerArgs {
 }
 
 export default class OSSInputContainer extends Component<OSSInputContainerArgs> {
-  get feedbackMessageType(): FeedbackMessageType | undefined {
+  get feedbackMessage(): FeedbackMessage | undefined {
     if (this.args.feedbackMessage && ['error', 'warning', 'success'].includes(this.args.feedbackMessage.type)) {
-      return this.args.feedbackMessage.type;
+      return this.args.feedbackMessage;
     }
 
     return undefined;
@@ -34,7 +35,7 @@ export default class OSSInputContainer extends Component<OSSInputContainerArgs> 
 
   get containerClass(): string | undefined {
     if (this.args.errorMessage || this.args.hasError) return ' oss-input-container--errored';
-    if (this.feedbackMessageType) return ` oss-input-container--${this.feedbackMessageType}`;
+    if (this.feedbackMessage) return ` oss-input-container--${this.feedbackMessage.type}`;
     return undefined;
   }
 
