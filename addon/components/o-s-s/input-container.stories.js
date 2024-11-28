@@ -45,25 +45,15 @@ export default {
       },
       control: { type: 'text' }
     },
-    successMessage: {
-      description: 'A success message that will be displayed below the input-group.',
+    feedbackMessage: {
+      description: 'A success, warning or error message that will be displayed below the input-group.',
       table: {
         type: {
-          summary: 'string'
+          summary: '{ type: string, value: string }'
         },
         defaultValue: { summary: 'undefined' }
       },
-      control: { type: 'text' }
-    },
-    warningMessage: {
-      description: 'A warning message that will be displayed below the input-group.',
-      table: {
-        type: {
-          summary: 'string'
-        },
-        defaultValue: { summary: 'undefined' }
-      },
-      control: { type: 'text' }
+      control: { type: 'object' }
     },
     errorMessage: {
       description: 'An error message that will be displayed below the input-group.',

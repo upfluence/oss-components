@@ -1,8 +1,7 @@
 <div class="fx-col">
   <div
     class="oss-input-container
-      {{if (or @errorMessage @hasError) ' oss-input-container--errored'}}
-      {{if @feedbackMessage (concat ' oss-input-container--' @feedbackMessage.type)}}
+      {{this.containerClass}}
       {{if (has-block 'prefix') ' has-prefix'}}
       {{if (has-block 'suffix') ' has-suffix'}}"
     ...attributes
@@ -33,8 +32,8 @@
   {{#if @errorMessage}}
     <span class="text-color-error margin-top-px-6">{{@errorMessage}}</span>
   {{else if @feedbackMessage}}
-    <span class={{concat "margin-top-px-6 font-color-" @feedbackMessage.type "-500"}}>
-      {{#unless (eq @feedbackMessage.type "error")}}
+    <span class={{concat "margin-top-px-6 font-color-" this.feedbackMessageType "-500"}}>
+      {{#unless (eq this.feedbackMessageType "error")}}
         <OSS::Icon @icon={{this.messageIcon}} />
       {{/unless}}
       <span>{{@feedbackMessage.value}}</span>
