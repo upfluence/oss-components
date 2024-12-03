@@ -134,10 +134,22 @@ module('Integration | Component | o-s-s/button', function (hooks) {
 
   module('it renders with loading state', function () {
     test('when using default loading', async function (assert) {
-      await render(hbs`<OSS::Button @size="sm" @loading="true" @label="Test" />`);
+      await render(hbs`<OSS::Button @size="sm" @loading={{true}} @label="Test" />`);
       assert.dom('.upf-btn i.fas').exists();
       assert.dom('.upf-btn i.fas').hasClass('fa-circle-notch');
       assert.dom('.upf-btn i.fas').hasClass('fa-spin');
+      assert.dom('.upf-btn span.margin-left-px-6').doesNotExist();
+    });
+
+    test('when loading and the showLabel loading option is truthy, the label is displayed', async function (assert) {
+      await render(
+        hbs`<OSS::Button @size="sm" @loading={{true}} @label="Test" @loadingOptions={{hash showLabel=true}} />`
+      );
+      assert.dom('.upf-btn i.fas').exists();
+      assert.dom('.upf-btn i.fas').hasClass('fa-circle-notch');
+      assert.dom('.upf-btn i.fas').hasClass('fa-spin');
+      assert.dom('.upf-btn span.margin-left-px-6').exists();
+      assert.dom('.upf-btn span.margin-left-px-6').hasText('Test');
     });
   });
 
