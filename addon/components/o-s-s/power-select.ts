@@ -3,11 +3,11 @@ import { action } from '@ember/object';
 import { scheduleOnce } from '@ember/runloop';
 
 import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
-import BaseDropdown from './private/base-dropdown';
+import BaseDropdown, { type BaseDropdownArgs } from './private/base-dropdown';
 
 type OperationType = 'selection' | 'deletion';
 
-interface OSSPowerSelectArgs {
+interface OSSPowerSelectArgs extends BaseDropdownArgs {
   items: any[];
   selectedItems: any[];
   loading?: boolean;

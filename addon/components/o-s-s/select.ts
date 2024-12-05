@@ -7,9 +7,9 @@ import { scheduleOnce } from '@ember/runloop';
 
 import type IntlService from 'ember-intl/services/intl';
 import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
-import BaseDropdown from './private/base-dropdown';
+import BaseDropdown, { type BaseDropdownArgs } from './private/base-dropdown';
 
-interface OSSSelectArgs {
+interface OSSSelectArgs extends BaseDropdownArgs {
   value: any;
   items: any[];
   targetLabel?: string;
