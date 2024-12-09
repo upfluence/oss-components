@@ -75,7 +75,7 @@ export default class OSSBaseDropdown<T extends BaseDropdownArgs> extends Compone
 
   @action
   scrollIntoView(): void {
-    this.container.scrollIntoView({ block: 'nearest', inline: 'center' });
+    this.container.scrollIntoView({ block: 'nearest', inline: 'nearest' });
   }
 
   noop(event: Event): void {
