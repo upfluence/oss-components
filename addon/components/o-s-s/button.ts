@@ -34,6 +34,7 @@ type ThemeType = 'light' | 'dark';
 type ThemeDefType = {
   [key in ThemeType]?: string;
 };
+type LoadingOptions = { showLabel?: boolean };
 
 const SkinDefinition: SkinDefType = {
   default: 'default',
@@ -73,6 +74,7 @@ interface ButtonArgs {
   skin?: string;
   size?: string;
   loading?: boolean;
+  loadingOptions?: LoadingOptions;
   icon?: string;
   iconUrl?: string;
   label?: string;
@@ -145,7 +147,7 @@ export default class OSSButton extends Component<ButtonArgs> {
       return false;
     }
 
-    if (this.args.loading) {
+    if (this.args.loading && !this.args.loadingOptions?.showLabel) {
       this.DOMElement.style.width = `${this.DOMElement?.offsetWidth}px`;
     } else {
       this.DOMElement.style.removeProperty('width');
