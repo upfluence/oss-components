@@ -77394,16 +77394,26 @@ define("@upfluence/oss-components/components/o-s-s/button", ["exports", "@ember/
   var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     {{! template-lint-disable u-template-lint/no-bare-button}}
-  <button type="button" class={{this.computedClass}} {{did-insert this.didInsert}} {{on "click" this.onclick}} ...attributes>
+  <button
+    type="button"
+    class={{this.computedClass}}
+    {{did-insert this.didInsert}}
+    {{on "click" this.onclick}}
+    ...attributes
+  >
     {{#if this.intervalState}}
       {{t "oss-components.button.cancel_message" time=this.counterTimeLeftSecond}}
     {{else if this.loadingState}}
       <OSS::Icon @style="solid" @icon="fa-circle-notch fa-spin" />
+  
+      {{#if (and @label @loadingOptions.showLabel)}}
+        <span class="margin-left-px-6">{{@label}}</span>
+      {{/if}}
     {{else}}
       {{#if @icon}}
         <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
       {{else if @iconUrl}}
-        <img src={{@iconUrl}} alt='icon' />
+        <img src={{@iconUrl}} alt="icon" />
       {{/if}}
   
       {{#if @label}}
@@ -77411,11 +77421,10 @@ define("@upfluence/oss-components/components/o-s-s/button", ["exports", "@ember/
       {{/if}}
     {{/if}}
   </button>
-  
   */
   {
-    "id": "FcWCrHeT",
-    "block": "[[[11,\"button\"],[24,4,\"button\"],[16,0,[30,0,[\"computedClass\"]]],[17,1],[4,[38,0],[[30,0,[\"didInsert\"]]],null],[4,[38,1],[\"click\",[30,0,[\"onclick\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"intervalState\"]],[[[1,\"    \"],[1,[28,[35,3],[\"oss-components.button.cancel_message\"],[[\"time\"],[[30,0,[\"counterTimeLeftSecond\"]]]]]],[1,\"\\n\"]],[]],[[[41,[30,0,[\"loadingState\"]],[[[1,\"    \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-circle-notch fa-spin\"]],null],[1,\"\\n\"]],[]],[[[41,[30,2],[[[1,\"      \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[[28,[37,5],[[30,2]],null],[28,[37,6],[[30,2]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,3],[[[1,\"      \"],[10,\"img\"],[15,\"src\",[30,3]],[14,\"alt\",\"icon\"],[12],[13],[1,\"\\n    \"]],[]],null]],[]]],[1,\"\\n\"],[41,[30,4],[[[1,\"      \"],[10,1],[15,0,[52,[28,[37,7],[[30,2],[30,3]],null],\"margin-left-px-6\"]],[12],[1,[30,4]],[13],[1,\"\\n\"]],[]],null],[1,\"  \"]],[]]]],[]]],[13],[1,\"\\n\"]],[\"&attrs\",\"@icon\",\"@iconUrl\",\"@label\"],false,[\"did-insert\",\"on\",\"if\",\"t\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"or\"]]",
+    "id": "oQbxSiWl",
+    "block": "[[[11,\"button\"],[24,4,\"button\"],[16,0,[30,0,[\"computedClass\"]]],[17,1],[4,[38,0],[[30,0,[\"didInsert\"]]],null],[4,[38,1],[\"click\",[30,0,[\"onclick\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"intervalState\"]],[[[1,\"    \"],[1,[28,[35,3],[\"oss-components.button.cancel_message\"],[[\"time\"],[[30,0,[\"counterTimeLeftSecond\"]]]]]],[1,\"\\n\"]],[]],[[[41,[30,0,[\"loadingState\"]],[[[1,\"    \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-circle-notch fa-spin\"]],null],[1,\"\\n\\n\"],[41,[28,[37,5],[[30,2],[30,3,[\"showLabel\"]]],null],[[[1,\"      \"],[10,1],[14,0,\"margin-left-px-6\"],[12],[1,[30,2]],[13],[1,\"\\n\"]],[]],null]],[]],[[[41,[30,4],[[[1,\"      \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[[28,[37,6],[[30,4]],null],[28,[37,7],[[30,4]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,5],[[[1,\"      \"],[10,\"img\"],[15,\"src\",[30,5]],[14,\"alt\",\"icon\"],[12],[13],[1,\"\\n    \"]],[]],null]],[]]],[1,\"\\n\"],[41,[30,2],[[[1,\"      \"],[10,1],[15,0,[52,[28,[37,8],[[30,4],[30,5]],null],\"margin-left-px-6\"]],[12],[1,[30,2]],[13],[1,\"\\n\"]],[]],null],[1,\"  \"]],[]]]],[]]],[13]],[\"&attrs\",\"@label\",\"@loadingOptions\",\"@icon\",\"@iconUrl\"],false,[\"did-insert\",\"on\",\"if\",\"t\",\"o-s-s/icon\",\"and\",\"fa-icon-style\",\"fa-icon-value\",\"or\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/button.hbs",
     "isStrictMode": false
   });
@@ -77504,10 +77513,11 @@ define("@upfluence/oss-components/components/o-s-s/button", ["exports", "@ember/
     }, {
       key: "loadingState",
       get: function get() {
+        var _this$args$loadingOpt;
         if (!this.DOMElement) {
           return false;
         }
-        if (this.args.loading) {
+        if (this.args.loading && !((_this$args$loadingOpt = this.args.loadingOptions) !== null && _this$args$loadingOpt !== void 0 && _this$args$loadingOpt.showLabel)) {
           var _this$DOMElement;
           this.DOMElement.style.width = "".concat((_this$DOMElement = this.DOMElement) === null || _this$DOMElement === void 0 ? void 0 : _this$DOMElement.offsetWidth, "px");
         } else {
@@ -77665,6 +77675,20 @@ define("@upfluence/oss-components/components/o-s-s/button", ["exports", "@ember/
           type: 'boolean'
         }
       },
+      loadingOptions: {
+        description: 'Options to configure the loading state',
+        table: {
+          type: {
+            summary: '{ showLabel?: boolean }'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'object'
+        }
+      },
       label: {
         description: 'Text content of the button',
         table: {
@@ -77768,6 +77792,7 @@ define("@upfluence/oss-components/components/o-s-s/button", ["exports", "@ember/
     theme: 'light',
     square: false,
     countDown: undefined,
+    loadingOptions: undefined,
     iconUrl: undefined
   };
   var Template = function Template(args) {
@@ -77777,13 +77802,13 @@ define("@upfluence/oss-components/components/o-s-s/button", ["exports", "@ember/
         
           <OSS::Button
             @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
-            @theme={{this.theme}} @square={{this.square}} @countDown={{this.countDown}} @theme={{this.theme}} 
-            @iconUrl={{this.iconUrl}}/>
+            @theme={{this.theme}} @square={{this.square}} @countDown={{this.countDown}}
+            @iconUrl={{this.iconUrl}} @loadingOptions={{this.loadingOptions}} />
         
       */
       {
-        "id": "+zH8FdSv",
-        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@skin\",\"@size\",\"@loading\",\"@label\",\"@icon\",\"@theme\",\"@square\",\"@countDown\",\"@theme\",\"@iconUrl\"],[[30,0,[\"skin\"]],[30,0,[\"size\"]],[30,0,[\"loading\"]],[30,0,[\"label\"]],[30,0,[\"icon\"]],[30,0,[\"theme\"]],[30,0,[\"square\"]],[30,0,[\"countDown\"]],[30,0,[\"theme\"]],[30,0,[\"iconUrl\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/button\"]]",
+        "id": "mdt+ZR2p",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@skin\",\"@size\",\"@loading\",\"@label\",\"@icon\",\"@theme\",\"@square\",\"@countDown\",\"@iconUrl\",\"@loadingOptions\"],[[30,0,[\"skin\"]],[30,0,[\"size\"]],[30,0,[\"loading\"]],[30,0,[\"label\"]],[30,0,[\"icon\"]],[30,0,[\"theme\"]],[30,0,[\"square\"]],[30,0,[\"countDown\"]],[30,0,[\"iconUrl\"]],[30,0,[\"loadingOptions\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/button\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/button.stories.js",
         "isStrictMode": false
       }),
@@ -85267,7 +85292,8 @@ define("@upfluence/oss-components/components/o-s-s/power-select", ["exports", "@
           var floatingTarget = document.querySelector("#".concat(_this2.portalId));
           if (referenceTarget && floatingTarget) {
             _this2.cleanupDrodpownAutoplacement = (0, _attachDropdown.default)(referenceTarget, floatingTarget, {
-              maxHeight: 300
+              maxHeight: 300,
+              placementStrategy: 'auto'
             });
           }
         });
@@ -85575,12 +85601,28 @@ define("@upfluence/oss-components/components/o-s-s/private/base-dropdown", ["exp
           attributes: true,
           attributeFilter: ['open']
         });
+        if (this.args.focusOnOpen) {
+          var _this$container$query;
+          (_this$container$query = this.container.querySelector('.upf-power-select__array-container')) === null || _this$container$query === void 0 || _this$container$query.addEventListener('click', this.scrollIntoView);
+        }
       }
     }, {
       key: "disconnectObserver",
       value: function disconnectObserver() {
         var _this$observer;
         (_this$observer = this.observer) === null || _this$observer === void 0 || _this$observer.disconnect();
+        if (this.args.focusOnOpen) {
+          var _this$container$query2;
+          (_this$container$query2 = this.container.querySelector('.upf-power-select__array-container')) === null || _this$container$query2 === void 0 || _this$container$query2.removeEventListener('click', this.scrollIntoView);
+        }
+      }
+    }, {
+      key: "scrollIntoView",
+      value: function scrollIntoView() {
+        this.container.scrollIntoView({
+          block: 'nearest',
+          inline: 'center'
+        });
       }
     }, {
       key: "noop",
@@ -85612,7 +85654,7 @@ define("@upfluence/oss-components/components/o-s-s/private/base-dropdown", ["exp
     initializer: function initializer() {
       return false;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerContainer", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerContainer"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "disconnectObserver", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "disconnectObserver"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerContainer", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerContainer"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "disconnectObserver", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "disconnectObserver"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "scrollIntoView", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "scrollIntoView"), _class.prototype)), _class);
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("@upfluence/oss-components/components/o-s-s/private/base-modal", ["exports", "@ember/object", "@ember/runloop", "@glimmer/component", "@embroider/macros/runtime"], function (_exports, _object, _runloop, _component, _runtime) {
@@ -86471,7 +86513,9 @@ define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/
           var referenceTarget = _this2.container.querySelector('.upf-input');
           var floatingTarget = document.querySelector("#".concat(_this2.portalId));
           if (referenceTarget && floatingTarget) {
-            _this2.cleanupDrodpownAutoplacement = (0, _attachDropdown.default)(referenceTarget, floatingTarget);
+            _this2.cleanupDrodpownAutoplacement = (0, _attachDropdown.default)(referenceTarget, floatingTarget, {
+              placementStrategy: 'auto'
+            });
           }
         });
       }
@@ -92618,9 +92662,7 @@ define("@upfluence/oss-components/services/base-uploader", ["exports", "@ember/s
     var _mergedOptions$offset;
     var options = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : DEFAULT_ATTACHMENT_OPTIONS;
     var mergedOptions = _objectSpread(_objectSpread({}, DEFAULT_ATTACHMENT_OPTIONS), options || {});
-    var middlewares = [(0, _dom.offset)((_mergedOptions$offset = mergedOptions.offset) !== null && _mergedOptions$offset !== void 0 ? _mergedOptions$offset : 0), (0, _dom.flip)({
-      fallbackPlacements: ['top', 'bottom']
-    }), (0, _dom.size)({
+    var middlewares = [(0, _dom.offset)((_mergedOptions$offset = mergedOptions.offset) !== null && _mergedOptions$offset !== void 0 ? _mergedOptions$offset : 0), (0, _dom.size)({
       apply: function apply(_ref) {
         var _mergedOptions$width;
         var rects = _ref.rects,
@@ -92638,6 +92680,15 @@ define("@upfluence/oss-components/services/base-uploader", ["exports", "@ember/s
         Object.assign(elements.floating.style, floatingStyle);
       }
     }), (0, _dom.hide)()];
+    if (options.placementStrategy === 'auto') {
+      middlewares.push((0, _dom.autoPlacement)({
+        allowedPlacements: ['top', 'bottom']
+      }));
+    } else {
+      middlewares.push((0, _dom.flip)({
+        fallbackPlacements: ['top', 'bottom']
+      }));
+    }
     var arrowEl = floatingTarget.querySelector('[data-floating-arrow]');
     if (mergedOptions.enableArrow) {
       if (!arrowEl) {

@@ -6999,11 +6999,11 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
                 _context20.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
-                  <OSS::Button @size="sm" @loading="true" @label="Test" />
+                  <OSS::Button @size="sm" @loading={{true}} @label="Test" />
                 */
                 {
-                  "id": "zR/j7SUF",
-                  "block": "[[[8,[39,0],null,[[\"@size\",\"@loading\",\"@label\"],[\"sm\",\"true\",\"Test\"]],null]],[],false,[\"o-s-s/button\"]]",
+                  "id": "PXx2pGBu",
+                  "block": "[[[8,[39,0],null,[[\"@size\",\"@loading\",\"@label\"],[\"sm\",true,\"Test\"]],null]],[],false,[\"o-s-s/button\"]]",
                   "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/button-test.ts",
                   "isStrictMode": false
                 }));
@@ -7011,7 +7011,8 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
                 assert.dom('.upf-btn i.fas').exists();
                 assert.dom('.upf-btn i.fas').hasClass('fa-circle-notch');
                 assert.dom('.upf-btn i.fas').hasClass('fa-spin');
-              case 5:
+                assert.dom('.upf-btn span.margin-left-px-6').doesNotExist();
+              case 6:
               case "end":
                 return _context20.stop();
             }
@@ -7021,14 +7022,46 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
           return _ref20.apply(this, arguments);
         };
       }());
-    });
-    (0, _qunit.module)('it renders a square button', function () {
-      (0, _qunit.test)('when setting the square parameter to true', /*#__PURE__*/function () {
+      (0, _qunit.test)('when loading and the showLabel loading option is truthy, the label is displayed', /*#__PURE__*/function () {
         var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee21(assert) {
           return _regeneratorRuntime().wrap(function _callee21$(_context21) {
             while (1) switch (_context21.prev = _context21.next) {
               case 0:
                 _context21.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  <OSS::Button @size="sm" @loading={{true}} @label="Test" @loadingOptions={{hash showLabel=true}} />
+                */
+                {
+                  "id": "4uoz6IhT",
+                  "block": "[[[8,[39,0],null,[[\"@size\",\"@loading\",\"@label\",\"@loadingOptions\"],[\"sm\",true,\"Test\",[28,[37,1],null,[[\"showLabel\"],[true]]]]],null]],[],false,[\"o-s-s/button\",\"hash\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/button-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                assert.dom('.upf-btn i.fas').exists();
+                assert.dom('.upf-btn i.fas').hasClass('fa-circle-notch');
+                assert.dom('.upf-btn i.fas').hasClass('fa-spin');
+                assert.dom('.upf-btn span.margin-left-px-6').exists();
+                assert.dom('.upf-btn span.margin-left-px-6').hasText('Test');
+              case 7:
+              case "end":
+                return _context21.stop();
+            }
+          }, _callee21);
+        }));
+        return function (_x21) {
+          return _ref21.apply(this, arguments);
+        };
+      }());
+    });
+    (0, _qunit.module)('it renders a square button', function () {
+      (0, _qunit.test)('when setting the square parameter to true', /*#__PURE__*/function () {
+        var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee22(assert) {
+          return _regeneratorRuntime().wrap(function _callee22$(_context22) {
+            while (1) switch (_context22.prev = _context22.next) {
+              case 0:
+                _context22.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Button @square="true" @label="Test" />
@@ -7043,22 +7076,22 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
                 assert.dom('.upf-square-btn').exists();
               case 3:
               case "end":
-                return _context21.stop();
+                return _context22.stop();
             }
-          }, _callee21);
+          }, _callee22);
         }));
-        return function (_x21) {
-          return _ref21.apply(this, arguments);
+        return function (_x22) {
+          return _ref22.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.module)('it renders with the right theme', function () {
       (0, _qunit.test)('it adds the right class for usage on dark theme', /*#__PURE__*/function () {
-        var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee22(assert) {
-          return _regeneratorRuntime().wrap(function _callee22$(_context22) {
-            while (1) switch (_context22.prev = _context22.next) {
+        var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee23(assert) {
+          return _regeneratorRuntime().wrap(function _callee23$(_context23) {
+            while (1) switch (_context23.prev = _context23.next) {
               case 0:
-                _context22.next = 2;
+                _context23.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Button @label="Test" @theme="dark" />
@@ -7073,12 +7106,12 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
                 assert.dom('.upf-btn').hasClass('upf-btn--dark-bg');
               case 3:
               case "end":
-                return _context22.stop();
+                return _context23.stop();
             }
-          }, _callee22);
+          }, _callee23);
         }));
-        return function (_x22) {
-          return _ref22.apply(this, arguments);
+        return function (_x23) {
+          return _ref23.apply(this, arguments);
         };
       }());
     });
@@ -7087,12 +7120,12 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
         this.intlService = this.owner.lookup('service:intl');
       });
       (0, _qunit.test)('when clicking, it trigger the countdown', /*#__PURE__*/function () {
-        var _ref23 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee23(assert) {
-          return _regeneratorRuntime().wrap(function _callee23$(_context23) {
-            while (1) switch (_context23.prev = _context23.next) {
+        var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee24(assert) {
+          return _regeneratorRuntime().wrap(function _callee24$(_context24) {
+            while (1) switch (_context24.prev = _context24.next) {
               case 0:
                 this.callback = function () {};
-                _context23.next = 3;
+                _context24.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Button @label="Test" @countDown={{hash callback=this.callback}} />
@@ -7104,7 +7137,7 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
                   "isStrictMode": false
                 }));
               case 3:
-                _context23.next = 5;
+                _context24.next = 5;
                 return (0, _testHelpers.click)('.upf-btn--default');
               case 5:
                 assert.dom('.upf-btn--default').hasText(this.intlService.t('oss-components.button.cancel_message', {
@@ -7112,21 +7145,21 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
                 }));
               case 6:
               case "end":
-                return _context23.stop();
+                return _context24.stop();
             }
-          }, _callee23, this);
+          }, _callee24, this);
         }));
-        return function (_x23) {
-          return _ref23.apply(this, arguments);
+        return function (_x24) {
+          return _ref24.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('when clicking, it executes callback at the end of the countdown', /*#__PURE__*/function () {
-        var _ref24 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee24(assert) {
-          return _regeneratorRuntime().wrap(function _callee24$(_context24) {
-            while (1) switch (_context24.prev = _context24.next) {
+        var _ref25 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee25(assert) {
+          return _regeneratorRuntime().wrap(function _callee25$(_context25) {
+            while (1) switch (_context25.prev = _context25.next) {
               case 0:
                 this.callback = _sinon.default.stub().callsFake(function () {});
-                _context24.next = 3;
+                _context25.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Button @label="Test" @countDown={{hash callback=this.callback time=50 step=10}} />
@@ -7138,10 +7171,10 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
                   "isStrictMode": false
                 }));
               case 3:
-                _context24.next = 5;
+                _context25.next = 5;
                 return (0, _testHelpers.click)('.upf-btn--default');
               case 5:
-                _context24.next = 7;
+                _context25.next = 7;
                 return (0, _testHelpers.waitUntil)(function () {
                   var _document$querySelect;
                   return (_document$querySelect = document.querySelector('.upf-btn--default')) === null || _document$querySelect === void 0 || (_document$querySelect = _document$querySelect.textContent) === null || _document$querySelect === void 0 ? void 0 : _document$querySelect.includes('Test');
@@ -7152,21 +7185,21 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
                 assert.true(this.callback.calledOnce);
               case 8:
               case "end":
-                return _context24.stop();
+                return _context25.stop();
             }
-          }, _callee24, this);
+          }, _callee25, this);
         }));
-        return function (_x24) {
-          return _ref24.apply(this, arguments);
+        return function (_x25) {
+          return _ref25.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('when clicking again, it cancels the countdown', /*#__PURE__*/function () {
-        var _ref25 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee25(assert) {
-          return _regeneratorRuntime().wrap(function _callee25$(_context25) {
-            while (1) switch (_context25.prev = _context25.next) {
+        var _ref26 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee26(assert) {
+          return _regeneratorRuntime().wrap(function _callee26$(_context26) {
+            while (1) switch (_context26.prev = _context26.next) {
               case 0:
                 this.callback = function () {};
-                _context25.next = 3;
+                _context26.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Button @label="Test" @countDown={{hash callback=this.callback}} />
@@ -7178,34 +7211,34 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
                   "isStrictMode": false
                 }));
               case 3:
-                _context25.next = 5;
+                _context26.next = 5;
                 return (0, _testHelpers.click)('.upf-btn--default');
               case 5:
-                _context25.next = 7;
+                _context26.next = 7;
                 return (0, _testHelpers.click)('.upf-btn--default');
               case 7:
                 assert.dom('.upf-btn--default').hasText('Test');
               case 8:
               case "end":
-                return _context25.stop();
+                return _context26.stop();
             }
-          }, _callee25, this);
+          }, _callee26, this);
         }));
-        return function (_x25) {
-          return _ref25.apply(this, arguments);
+        return function (_x26) {
+          return _ref26.apply(this, arguments);
         };
       }());
     });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it fails if @label, @icon and @iconUrl are missing', /*#__PURE__*/function () {
-        var _ref26 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee26(assert) {
-          return _regeneratorRuntime().wrap(function _callee26$(_context26) {
-            while (1) switch (_context26.prev = _context26.next) {
+        var _ref27 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee27(assert) {
+          return _regeneratorRuntime().wrap(function _callee27$(_context27) {
+            while (1) switch (_context27.prev = _context27.next) {
               case 0:
                 (0, _testHelpers.setupOnerror)(function (err) {
                   assert.equal(err.message, 'Assertion Failed: [component][OSS::Button] You must pass either a @label, an @icon or an @iconUrl argument.');
                 });
-                _context26.next = 3;
+                _context27.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Button />
@@ -7218,23 +7251,23 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
                 }));
               case 3:
               case "end":
-                return _context26.stop();
+                return _context27.stop();
             }
-          }, _callee26);
+          }, _callee27);
         }));
-        return function (_x26) {
-          return _ref26.apply(this, arguments);
+        return function (_x27) {
+          return _ref27.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('it fails if callback missing for @countDown argument', /*#__PURE__*/function () {
-        var _ref27 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee27(assert) {
-          return _regeneratorRuntime().wrap(function _callee27$(_context27) {
-            while (1) switch (_context27.prev = _context27.next) {
+        var _ref28 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee28(assert) {
+          return _regeneratorRuntime().wrap(function _callee28$(_context28) {
+            while (1) switch (_context28.prev = _context28.next) {
               case 0:
                 (0, _testHelpers.setupOnerror)(function (err) {
                   assert.equal(err.message, "Assertion Failed: [component][OSS::Button] You must pass either a hash with 'callback' value to @countDown argument.");
                 });
-                _context27.next = 3;
+                _context28.next = 3;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   <OSS::Button @label="Test" @countDown={{hash time=1000}} />
@@ -7247,12 +7280,12 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
                 }));
               case 3:
               case "end":
-                return _context27.stop();
+                return _context28.stop();
             }
-          }, _callee27);
+          }, _callee28);
         }));
-        return function (_x27) {
-          return _ref27.apply(this, arguments);
+        return function (_x28) {
+          return _ref28.apply(this, arguments);
         };
       }());
     });
