@@ -77,20 +77,20 @@
   </OSS::Carousel>
 </div>
 
-<div class="fx-row fx-gap-px-10 margin-md">
+{{!-- <div class="fx-row fx-gap-px-10 margin-md">
   <OSS::SocialPostBadge @postType="story" plain={{false}} />
   <OSS::SocialPostBadge @postType="instagram_reel" plain={{false}} />
   <OSS::SocialPostBadge @postType="instagram_media" plain={{false}} />
   <OSS::SocialPostBadge @postType="tweet" plain={{false}} />
-</div>
-<div class="fx-row fx-gap-px-10 margin-md">
+</div> --}}
+{{!-- <div class="fx-row fx-gap-px-10 margin-md">
   <OSS::Copy @value="I am the value copied" @inline={{true}} />
   <OSS::Copy @value="I am the value copied" />
   <OSS::Copy @value="I am the value copied" @tooltip="Custom tooltip" />
   <OSS::Copy @value="I am the value copied" @icon="far fa-jedi" />
   <OSS::Copy @value="I am the value copied" @icon="fab fa-empire" @inline={{true}} />
-</div>
-<div class="fx-row fx-gap-px-10 margin-md">
+</div> --}}
+{{!-- <div class="fx-row fx-gap-px-10 margin-md">
   <OSS::Slider
     @value={{this.sliderValue}}
     @defaultValue="0"
@@ -143,7 +143,7 @@
     @onChange={{this.onChangeSlider3}}
     @displayInputValue={{true}}
   />
-</div>
+</div> --}}
 
 <div class="fx-row fx-gap-px-10 margin-md">
   <OSS::Button @skin="primary" @label="Open Dialog" {{on "click" (fn (mut this.showDialog) true)}} />
@@ -170,9 +170,9 @@
   </:footer>
 </OSS::SidePanel>
 
-<div class="fx-row fx-gap-px-10 margin-md">
+{{!-- <div class="fx-row fx-gap-px-10 margin-md">
   <OSS::PasswordInput @value={{this.password}} @validates={{this.onPasswordValidation}} />
-</div>
+</div> --}}
 <div class="fx-row fx-gap-px-10 margin-md padding-md" style="background-color:sandybrown">
   <OSS::TogglableSection
     @title="This is a title"
@@ -301,7 +301,7 @@
     </:actions>
   </OSS::Banner>
 </div>
-<div class="fx-row fx-gap-px-10 margin-md">
+{{!-- <div class="fx-row fx-gap-px-10 margin-md">
   <OSS::CurrencyInput
     @currency={{this.currency}}
     @value={{this.currencyValue}}
@@ -338,8 +338,8 @@
     @onlyCurrency={{true}}
     @allowedCurrencies={{this.allowedCurrencies}}
   />
-</div>
-<div class="fx-row fx-gap-px-10 margin-md">
+</div> --}}
+{{!-- <div class="fx-row fx-gap-px-10 margin-md">
   <div class="fx-col fx-1 fx-gap-px-5">
     <span>Country</span>
     <OSS::CountrySelector
@@ -355,15 +355,15 @@
       <OSS::CountrySelector @sourceList={{this.selectedCountry.provinces}} @onChange={{this.onProvinceSelected}} />
     </div>
   {{/if}}
-</div>
-<div class="fx-col fx-1 fx-gap-px-10 margin-md width-px-200">
+</div> --}}
+{{!-- <div class="fx-col fx-1 fx-gap-px-10 margin-md width-px-200">
   <OSS::ProgressBar @skin="success" @value={{42}} @displayValue={{true}} @label="Hello" @size="xs" />
   <OSS::ProgressBar @skin="warning" @value={{21}} @displayValue={{true}} @label="Hello" />
   <OSS::ProgressBar @skin="danger" @value={{78}} @displayValue={{true}} @label="Hello" @coloredBackground={{true}} />
   <OSS::ProgressBar @skin="success" @value={{78}} @displayValue={{true}} @label="Hello" @coloredBackground={{true}} />
   <OSS::ProgressBar @value={{78}} @displayValue={{true}} @label="Hello" @coloredBackground={{false}} />
-</div>
-<div class="fx-row fx-1 fx-gap-px-10 margin-md">
+</div> --}}
+{{!-- <div class="fx-row fx-1 fx-gap-px-10 margin-md">
   <OSS::StarRating @rating={{3}} @totalStars={{5}} @onChange={{this.onRatingClick}} />
   <OSS::StarRating
     @rating={{this.rating}}
@@ -372,9 +372,9 @@
     @passiveColor="blue"
     @onChange={{this.onRatingClick}}
   />
-</div>
+</div> --}}
 <div class="fx-row fx-1 fx-gap-px-10 margin-md">
-  <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}}>
+  {{!-- <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}}>
     <:prefix>
       <OSS::Icon @icon="fa-search" class="font-color-gray-500" />
     </:prefix>
@@ -389,8 +389,8 @@
       {{/if}}
     </:suffix>
   </OSS::InputContainer>
-  <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}} />
-  <OSS::PasswordInput @value="azeaze" />
+  <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}} /> --}}
+  {{! <OSS::PasswordInput @value="azeaze" /> }}
 </div>
 <div class="fx-row fx-1 fx-gap-px-10 margin-md">
   <OSS::InputContainer
@@ -410,7 +410,7 @@
     @feedbackMessage={{hash type="error" value="This is also an error message !"}}
   />
 </div>
-<div class="fx-row fx-1 fx-gap-px-10 margin-md width-pc-50">
+{{!-- <div class="fx-row fx-1 fx-gap-px-10 margin-md width-pc-50">
   <OSS::AttributesPanel
     @title="Title"
     @icon="fa-laptop-code"
@@ -471,14 +471,14 @@
       Edition mode
     </:edition-mode>
   </OSS::AttributesPanel>
-</div>
-<div class="fx-row fx-1 fx-gap-px-10 margin-md">
+</div> --}}
+{{!-- <div class="fx-row fx-1 fx-gap-px-10 margin-md">
   <OSS::EmailInput @value={{this.emailInputValue}} @onChange={{this.onEmailInputChange}} />
-</div>
-<div class="fx-row fx-1 fx-gap-px-10 margin-md">
+</div> --}}
+{{!-- <div class="fx-row fx-1 fx-gap-px-10 margin-md">
   <OSS::Copy @value="I am the value copied" @inline={{true}} />
   <OSS::Copy @value="I am the value copied" />
-</div>
+</div> --}}
 <div class="fx-row fx-1 fx-gap-px-10 margin-md padding-md" style="background: white">
   <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
 </div>
@@ -492,15 +492,15 @@
 <div class="fx-row fx-1 fx-gap-px-10 margin-md">
   <OSS::Skeleton @width="10%" @multiple="3" @direction="row" @randomize="true" />
 </div>
-<div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
+{{! <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
   <OSS::Icon @icon="LaptopCode" />
   <OSS::Icon @icon="LaptopCode" @style="solid" />
   <OSS::Icon @icon="LaptopCode" @style="regular" />
   <OSS::Icon @icon="LaptopCode" @style="light" />
   <OSS::Icon @icon="LaptopCode" @style="duotone" />
   <OSS::Icon @icon="FacebookSquare" @style="brand" />
-</div>
-<div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
+</div> }}
+{{!-- <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
   <OSS::TextArea
     @value={{this.numberValue}}
     @onChange={{this.handleNumberInput}}
@@ -509,11 +509,11 @@
     @resize="vertical"
   />
   <OSS::TextArea @value={{this.numberValue}} @onChange={{this.handleNumberInput}} @rows={{1}} />
-</div>
+</div> --}}
 
 <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
   <OSS::Button @label="Open split modal" {{on "click" this.openSplitModal}} />
-  <OSS::ButtonDropdown @icon="far fa-credit-card" @label="Dropdown button" @mainAction={{fn this.redirectTo "test"}}>
+  {{!-- <OSS::ButtonDropdown @icon="far fa-credit-card" @label="Dropdown button" @mainAction={{fn this.redirectTo "test"}}>
     <:items>
       <div class="oss-button-dropdown__item">
         <OSS::Icon @style="solid" @icon="fa-share" />
@@ -528,7 +528,7 @@
         Share
       </div>
     </:items>
-  </OSS::ButtonDropdown>
+  </OSS::ButtonDropdown> --}}
   <OSS::Button @label="loading" @loading={{true}} />
   {{#if this.showSplitModal}}
     <OSS::SplitModal @close={{this.closeSplitModal}}>
@@ -541,7 +541,7 @@
     </OSS::SplitModal>
   {{/if}}
 </div>
-<div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
+{{!-- <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
   OSS:Checkbox:
   <OSS::Checkbox @checked={{this.isChecked}} @onChange={{this.onCheck}} />
   <OSS::Checkbox @checked={{this.isChecked}} @disabled={{true}} @onChange={{this.onCheck}} />
@@ -549,15 +549,15 @@
   <OSS::Checkbox @checked={{this.isChecked}} @partial={{true}} @onChange={{this.onCheck}} />
   <OSS::Checkbox @checked={{this.isChecked}} @size="sm" @onChange={{this.onCheck}} />
   <OSS::Checkbox @checked={{this.isChecked}} @size="sm" @partial={{true}} @onChange={{this.onCheck}} />
-</div>
-<div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
+</div> --}}
+{{!-- <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
   <OSS::ToggleButtons
     @toggles={{this.toggles}}
     @selectedToggle={{this.selectedToggle}}
     @onSelection={{this.triggerSelection}}
   />
-</div>
-<div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
+</div> --}}
+{{!-- <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
   <OSS::NumberInput @value={{this.numberValue}} @onChange={{this.handleNumberInput}} />
   <OSS::NumberInput @min={{0}} @max={{15}} @step={{5}} @onChange={{this.handleNumberInput}} />
   <OSS::NumberInput
@@ -568,8 +568,8 @@
     @maxReachedTooltip="you"
     @onChange={{this.handleNumberInput}}
   />
-</div>
-<div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
+</div> --}}
+{{!-- <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
   <OSS::UrlInput
     @value={{this.shopifyDomain}}
     @prefix="https://"
@@ -593,8 +593,8 @@
     @validationRegex={{this.urlRegex}}
     @onChange={{this.onUrlInputChange}}
   />
-</div>
-<div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
+</div> --}}
+{{!-- <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
   <OSS::InputGroup
     @value={{this.inputValue}}
     @prefix="This"
@@ -604,15 +604,15 @@
   />
   <OSS::InputGroup @value={{this.inputValue}} @prefix="@" @placeholder="Username" />
   <OSS::InputGroup @value={{this.inputValue}} @suffix="@example.com" @placeholder="john.doe" />
-</div>
-<div class="fx-row fx-gap-px-10 margin-md">
+</div> --}}
+{{!-- <div class="fx-row fx-gap-px-10 margin-md">
   <OSS::RadioButton @selected={{this.radio1}} @onChange={{fn this.onRadioBtnChange "radio1"}} />
   <OSS::RadioButton @selected={{this.radio2}} @onChange={{fn this.onRadioBtnChange "radio2"}} />
   <OSS::RadioButton @selected={{true}} @disabled={{true}} />
   <OSS::RadioButton @selected={{false}} @disabled={{true}} />
   <OSS::Copy @value="I am the value copied" />
-</div>
-<div class="fx-row fx-gap-px-10 margin-md fx-xalign-center">
+</div> --}}
+{{! <div class="fx-row fx-gap-px-10 margin-md fx-xalign-center">
   <OSS::Avatar
     @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
     @initials="Ts"
@@ -624,9 +624,9 @@
   <OSS::Avatar @size="sm" />
   <OSS::Avatar @size="md" />
   <OSS::Avatar @size="lg" />
-</div>
+</div> }}
 
-<div class="fx-row fx-gap-px-10 margin-md">
+{{!-- <div class="fx-row fx-gap-px-10 margin-md">
   <OSS::PowerSelect
     @items={{null}}
     @selectedItems={{this.superHeroes}}
@@ -671,12 +671,12 @@
       {{item}}
     </:option-item>
   </OSS::PowerSelect>
-</div>
+</div> --}}
 <div class="fx-row fx-gap-px-10 margin-md">
   <OSS::NavTab @onSelection={{this.onSelectionNavTab}} @tabArray={{this.tabArrayNavTab}} />
 </div>
 
-<div class="fx-row fx-gap-px-10 margin-md">
+{{!-- <div class="fx-row fx-gap-px-10 margin-md">
   <OSS::Chip @label="Chip" @onRemove={{this.onCrossChipClick}} />
   <OSS::Chip @skin="default" @label="Chip" @onRemove={{this.onCrossChipClick}} />
   <OSS::Chip @skin="primary" @label="Chip" @onRemove={{this.onCrossChipClick}} />
@@ -704,9 +704,9 @@
     @onRemove={{this.onCrossChipClick}}
     @maxDisplayWidth={{50}}
   />
-</div>
+</div> --}}
 
-<div class="fx-row fx-1 margin-md fx-gap-px-12">
+{{!-- <div class="fx-row fx-1 margin-md fx-gap-px-12">
   <div class="fx-col fx-1 fx-gap-px-12">
     <OSS::Select @value={{null}} @items={{this.items}} @onChange={{this.onSelect}}>
       <:option as |item|>
@@ -750,16 +750,16 @@
       </:option>
     </OSS::Select>
   </div>
-</div>
-<div class="fx-row fx-1 margin-md">
+</div> --}}
+{{!-- <div class="fx-row fx-1 margin-md">
   <OSS::ArrayInput
     @values={{this.superHeroes}}
     @onChange={{this.updateSuperHeroes}}
     class="fx-1"
     data-control-name="mailing-edit-template-ccs-input"
   />
-</div>
-<div class="fx-row fx-gap-px-12 margin-md">
+</div> --}}
+{{!-- <div class="fx-row fx-gap-px-12 margin-md">
   <OSS::Tag @label="Tag" @skin="primary" @icon="far fa-thumbs-up" />
   <OSS::Tag @label="Tag" @skin="success" @icon="far fa-thumbs-up" />
   <OSS::Tag @label="Tag" @skin="warning" @icon="far fa-thumbs-up" />
@@ -783,9 +783,9 @@
     @icon="far fa-thumbs-up"
     @hasEllipsis={{true}}
   />
-</div>
+</div> --}}
 
-<div class="fx-row fx-gap-px-12 margin-md">
+{{!-- <div class="fx-row fx-gap-px-12 margin-md">
   <OSS::Tag @label="Tag" @skin="primary" @icon="far fa-thumbs-up" @plain={{true}} />
   <OSS::Tag @label="Tag" @skin="success" @icon="far fa-thumbs-up" @plain={{true}} />
   <OSS::Tag @label="Tag" @skin="warning" @icon="far fa-thumbs-up" @plain={{true}} />
@@ -817,7 +817,7 @@
     @plain={{true}}
     @htmlSafe={{true}}
   />
-</div>
+</div> --}}
 
 <div class="fx-row fx-gap-px-12 margin-md">
   <OSS::Alert @title="Title" @subtitle="Subtitle">
@@ -881,7 +881,7 @@
   {{/if}}
 </div>
 <div class="fx-col fx-gap-px-12 margin-md">
-  <div class="fx-row fx-gap-px-12">
+  {{! <div class="fx-row fx-gap-px-12">
     <div class="fx-col fx-gap-px-12">
       <OSS::Button @skin="destructive" @label="destructive" @icon="fas fa-box-open" @size="md" />
       <OSS::Button @skin="destructive" @square="true" @icon="fas fa-box-open" @size="md" />
@@ -939,9 +939,9 @@
     <OSS::Button @square="true" @skin="primary" @size="sm" @icon="far fa-envelope-open" />
     <OSS::Button @square="true" @skin="primary" @size="md" @icon="far fa-envelope-open" />
     <OSS::Button @square="true" @skin="primary" @size="lg" @icon="far fa-envelope-open" />
-  </div>
+  </div> }}
 
-  <div class="fx-row fx-gap-px-12 fx-xalign-center">
+  {{!-- <div class="fx-row fx-gap-px-12 fx-xalign-center">
     <OSS::Badge @icon="fas fa-box-open" @size="lg" />
     <OSS::Badge @icon="fas fa-box-open" />
     <OSS::Badge @size="md" @icon="fas fa-box-open" />
@@ -989,9 +989,9 @@
       @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
       @size="sm"
     />
-  </div>
+  </div> --}}
 
-  <div class="fx-row fx-gap-px-12 fx-xalign-center">
+  {{!-- <div class="fx-row fx-gap-px-12 fx-xalign-center">
     {{#each this.media as |socialMedia|}}
       <OSS::SocialPostBadge
         @postType={{socialMedia.key}}
@@ -1000,7 +1000,7 @@
         @onToggle={{this.toggleMedia}}
       />
     {{/each}}
-  </div>
+  </div> --}}
 
   <div class="fx-row fx-gap-px-12">
     <div class="fx-col fx-gap-px-12">
@@ -1013,13 +1013,13 @@
       />
     </div>
   </div>
-  <div class="fx-row fx-1">
+  {{!-- <div class="fx-row fx-1">
     <OSS::PhoneNumberInput
       @prefix={{this.phonePrefix}}
       @number={{this.phoneNumber}}
       @onChange={{this.onPhoneNumberChange}}
     />
-  </div>
+  </div> --}}
 </div>
 
 <div class="upf-table-v2 margin-md">
@@ -1113,7 +1113,7 @@
     />
   </div>
 </div>
-<div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
+{{!-- <div class="fx-row fx-xalign-start fx-gap-px-10 margin-md">
   <OSS::ContentPanel class="fx-col fx-1">
     <span class="text-style-semibold">Title</span>
     <span class="font-color-gray-500">Subtitle</span>
@@ -1137,8 +1137,8 @@
       @value={{this.shopifyDomain}}
     />
   </OSS::ContentPanel>
-</div>
-<div class="fx-col fx-gap-px-12 padding-px-24">
+</div> --}}
+{{! <div class="fx-col fx-gap-px-12 padding-px-24">
   <OSS::Panel @icon="/assets/images/upfluence-white-logo.svg">
     <:header>
       <OSS::Avatar @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png" />
@@ -1152,7 +1152,7 @@
       <OSS::Panel::Row @label="Logout" @icon="fa-sign-out" />
     </:footer>
   </OSS::Panel>
-</div>
+</div> }}
 
 {{#if this.showDialog}}
   <OSS::Dialog
