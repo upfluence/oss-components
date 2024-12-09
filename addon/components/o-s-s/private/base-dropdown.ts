@@ -4,7 +4,11 @@ import { action } from '@ember/object';
 import { guidFor } from '@ember/object/internals';
 import { isTesting } from '@embroider/macros';
 
-export default class OSSBaseDropdown<T> extends Component<T> {
+export interface BaseDropdownArgs {
+  focusOnOpen?: boolean;
+}
+
+export default class OSSBaseDropdown<T extends BaseDropdownArgs> extends Component<T> {
   declare container: HTMLElement & { open?: boolean };
   declare observer: MutationObserver;
   declare portalTarget: HTMLElement;
@@ -52,11 +56,26 @@ export default class OSSBaseDropdown<T> extends Component<T> {
       }
     });
     this.observer.observe(this.container, { attributes: true, attributeFilter: ['open'] });
+    if (this.args.focusOnOpen) {
+      this.container
+        .querySelector('.upf-power-select__array-container')
+        ?.addEventListener('click', this.scrollIntoView);
+    }
   }
 
   @action
   disconnectObserver(): void {
     this.observer?.disconnect();
+    if (this.args.focusOnOpen) {
+      this.container
+        .querySelector('.upf-power-select__array-container')
+        ?.removeEventListener('click', this.scrollIntoView);
+    }
+  }
+
+  @action
+  scrollIntoView(): void {
+    this.container.scrollIntoView({ block: 'nearest', inline: 'center' });
   }
 
   noop(event: Event): void {
