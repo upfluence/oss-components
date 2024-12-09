@@ -85621,7 +85621,7 @@ define("@upfluence/oss-components/components/o-s-s/private/base-dropdown", ["exp
       value: function scrollIntoView() {
         this.container.scrollIntoView({
           block: 'nearest',
-          inline: 'center'
+          inline: 'nearest'
         });
       }
     }, {
