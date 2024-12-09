@@ -72,8 +72,15 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
 
   @action
   onRangeChange(event: InputEvent): void {
-    const value = (event.target as HTMLInputElement).value;
-    this.args.onChange(parseFloat(value));
+    const value = parseFloat((event.target as HTMLInputElement).value);
+    const max = this.args.inputOptions?.max ?? this.sliderOptions.max;
+
+    if (value > max) {
+      (event.target as HTMLInputElement).value = String(max);
+      this.args.onChange(max);
+    } else {
+      this.args.onChange(value);
+    }
   }
 
   @action
