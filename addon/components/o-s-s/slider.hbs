@@ -19,7 +19,13 @@
       style={{this.tooltipPositionStyle}}
       {{did-insert this.initializeTooltip}}
     >
-      <span>{{concat this.currentRangeValue (if (eq @unit "percentage") "%")}}</span>
+      <span>
+        {{#if @tooltipLabel}}
+          {{@tooltipLabel}}
+        {{else}}
+          {{concat this.currentRangeValue (if (eq @unit "percentage") "%")}}
+        {{/if}}
+      </span>
     </div>
   </div>
   {{#if @displayInputValue}}

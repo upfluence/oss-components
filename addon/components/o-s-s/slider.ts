@@ -13,6 +13,7 @@ interface SliderComponentArgs {
   min?: number;
   max?: number;
   step?: number;
+  tooltipLabel?: string;
   inputOptions?: { max?: number; min?: number };
   onChange(value: number | null): void;
 }
@@ -72,8 +73,19 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
 
   @action
   onRangeChange(event: InputEvent): void {
-    const value = (event.target as HTMLInputElement).value;
-    this.args.onChange(parseFloat(value));
+    const value = parseFloat((event.target as HTMLInputElement).value);
+    const max = this.args.inputOptions?.max ?? this.sliderOptions.max;
+    const min = this.args.inputOptions?.min ?? this.sliderOptions.min;
+
+    if (value > max) {
+      (event.target as HTMLInputElement).value = String(max);
+      this.args.onChange(max);
+    } else if (value < min) {
+      (event.target as HTMLInputElement).value = String(min);
+      this.args.onChange(min);
+    } else {
+      this.args.onChange(value);
+    }
   }
 
   @action

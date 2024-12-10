@@ -31,8 +31,6 @@ module.exports = {
     this._super.included.apply(this, arguments);
 
     this.import('vendor/bootstrap/bootstrap.min.js');
-    this.import('vendor/ion-rangeslider/js/ion.rangeSlider.min.js');
-    this.import('vendor/ion-rangeslider/css/ion.rangeSlider.min.css');
   },
 
   treeForPublic() {
@@ -69,10 +67,7 @@ module.exports = {
   treeForVendor(tree) {
     const trees = [tree];
 
-    trees.push(
-      new Funnel(this._resolvePackagePath('bootstrap/dist/js'), { destDir: 'bootstrap' }),
-      new Funnel(this._resolvePackagePath('ion-rangeslider'), { destDir: 'ion-rangeslider' })
-    );
+    trees.push(new Funnel(this._resolvePackagePath('bootstrap/dist/js'), { destDir: 'bootstrap' }));
 
     return mergeTrees(trees.filter(Boolean), { overwrite: true });
   },
