@@ -82,7 +82,7 @@ export default {
     tooltiplabel: {
       control: 'text',
       description: 'Specific tooltip label for the slider handle',
-      defaultValue: `Value : ${defaultArgs.defaultValue}%, or apples if you want`,
+      defaultValue: `Value : ${defaultArgs.defaultValue}%`,
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: '50' }

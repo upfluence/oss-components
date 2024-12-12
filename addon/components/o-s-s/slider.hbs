@@ -15,7 +15,9 @@
       {{did-insert this.initializeSliderInput}}
     />
     <div
-      class="upf-tooltip oss-slider__tooltip {{unless this.displayTooltip 'oss-slider__tooltip--hidden'}}"
+      class="upf-tooltip oss-slider__tooltip
+        {{unless this.displayTooltip 'oss-slider__tooltip--hidden'}}
+        {{if (eq @displayInputValue false) 'oss-slider__tooltip__without_input'}}"
       style={{this.tooltipPositionStyle}}
       {{did-insert this.initializeTooltip}}
     >

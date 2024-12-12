@@ -1,14 +1,12 @@
 .oss-slider {
   &__range-container {
     flex: 1;
-
     .oss-slider__tooltip {
       text-align: center;
       white-space: nowrap;
       left: var(--tooltip-left-position);
       top: 30px;
       transition: opacity 300ms;
-      z-index: 1000;
 
       &:before {
         left: 50%;
@@ -18,6 +16,10 @@
 
       &--hidden {
         opacity: 0;
+      }
+
+      &__without_input {
+        top: 12px;
       }
     }
   }
