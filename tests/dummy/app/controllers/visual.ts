@@ -9,7 +9,18 @@ export default class Visual extends Controller {
   @tracked isChecked: boolean = true;
   @tracked radio1: boolean = true;
   @tracked radio2: boolean = false;
-  @tracked media: any[] = [
+  @tracked avatars: { image: string; initials: string }[] = [
+    {
+      image: 'https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png',
+      initials: 'TS'
+    },
+    { image: 'https://images.frandroid.com/wp-content/uploads/2019/11/jony-ive-apple.jpg', initials: 'JI' },
+    {
+      image: 'https://cdn.dribbble.com/users/485347/screenshots/2983299/8_most_influential_people_dribble-01.jpg',
+      initials: 'SF'
+    }
+  ];
+  @tracked media: { key: string; active: boolean }[] = [
     {
       key: 'article',
       active: false
@@ -52,11 +63,10 @@ export default class Visual extends Controller {
     }
   ];
   @tracked rating: number = 3;
-  @tracked sliderValue: any = undefined;
+  @tracked sliderValue: number | undefined = undefined;
   @tracked sliderValue2: number = 60;
   @tracked sliderValue3: number = 30;
-
-  toggles = [
+  @tracked toggles: { value: string; label: string }[] = [
     {
       value: 'first',
       label: 'First'
@@ -68,59 +78,58 @@ export default class Visual extends Controller {
   ];
 
   @action
-  redirectTo(route: string) {
+  redirectTo(route: string): void {
     console.log('Redirect to', route);
   }
 
   @action
-  triggerSelection(value: string) {
+  triggerSelection(value: string): void {
     console.log('selected toggle value : ', value);
     this.selectedToggle = value;
   }
 
   @action
-  onCheck(value: boolean) {
+  onCheck(value: boolean): void {
     this.isChecked = value;
   }
 
   @action
-  onRadioBtnChange(radioBtnKey: any, newValue: string) {
-    set(this, radioBtnKey, newValue);
+  onRadioBtnChange(radioBtnKey: 'radio1' | 'radio2', newValue: boolean): void {
+    this[radioBtnKey] = newValue;
   }
 
   @action
-  toggleMedia(key: string) {
+  toggleMedia(key: string): void {
     console.log('toggled key', key);
     const index = this.media.findIndex((el) => el.key === key) as number;
-    this.media[index].active = !this.media[index]?.active;
+    this.media[index]!.active = !this.media[index]?.active;
   }
 
   @action
-  onCrossChipClick() {
+  onCrossChipClick(): void {
     console.log('onCrossChipClick');
   }
 
   @action
-  onRatingClick(rating: number) {
+  onRatingClick(rating: number): void {
     console.log('You have rated with: ' + rating);
     this.rating = rating;
   }
 
-  @action onChangeSlider(value: number) {
+  @action onChangeSlider(value: number): void {
     this.sliderValue = value;
   }
 
-  @action onChangeSlider2(value: number) {
+  @action onChangeSlider2(value: number): void {
     this.sliderValue2 = value;
   }
 
-  @action onChangeSlider3(value: number) {
+  @action onChangeSlider3(value: number): void {
     this.sliderValue3 = value;
   }
-}
 
-declare module '@ember/controller' {
-  interface Registry {
-    visual: Visual;
+  @action
+  countDownAction(): void {
+    console.log('countDownAction');
   }
 }

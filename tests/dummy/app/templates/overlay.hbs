@@ -1,0 +1,122 @@
+<div class="fx-col fx-gap-px-12 padding-px-18">
+  <div class="page-title-container">
+    <span class="font-size-h2 font-weight-semibold">Overlay</span>
+    <span class="font-color-gray-500">Components used to display information on the foreground</span>
+    <span class="font-color-gray-500 font-size-xs text-style-italic">(c'est qui qu'est over laid ?)</span>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Dialog
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <OSS::Button @skin="primary" @label="Open dialog" {{on "click" this.openDialog}} />
+      {{#if this.showDialog}}
+        <OSS::Dialog
+          @title={{this.translatedHTMLTitle}}
+          @mainAction={{hash action=this.onDialogMainAction label="Discard changes"}}
+          @secondaryAction={{hash action=this.onDialogSecondaryAction label="Keep editing"}}
+          @icon="fa-circle-info"
+          @skin="error"
+        />
+      {{/if}}
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Modal dialog
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <OSS::Button @skin="primary" @label="Open modal dialog" {{on "click" this.openModalDialog}} />
+      {{#if this.showModalDialog}}
+        <OSS::ModalDialog
+          @title="Example modal"
+          @subtitle="Subtitle"
+          @close={{this.closeModalDialog}}
+          @disableClickOutside={{false}}
+          @size="md"
+        >
+          <:content>
+            <div style="height: 200px; background-color: white">
+              This is the content of the modal.
+            </div>
+          </:content>
+          <:footer>
+            <div class="fx-1">
+              <OSS::Icon @icon="fa-circle-info" />
+              <a href="">More info</a>
+            </div>
+            <div class="fx-row fx-gap-px-12">
+              <OSS::Button @skin="default" @label="Close" {{on "click" this.closeModalDialog}} />
+              <OSS::Button @skin="secondary" @label="Save" {{on "click" this.saveModalDialog}} />
+            </div>
+          </:footer>
+        </OSS::ModalDialog>
+      {{/if}}
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Modal
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <span class="text-style-italic">Deprecated, recommended to use ModalDialog component instead.</span>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Split modal
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <OSS::Button @label="Open split modal" @skin="primary" {{on "click" this.openSplitModal}} />
+      {{#if this.showSplitModal}}
+        <OSS::SplitModal @close={{this.closeSplitModal}}>
+          <:content>
+            Content goes here
+          </:content>
+          <:footer>
+            <OSS::Button @label="Close" {{on "click" this.closeSplitModal}} />
+          </:footer>
+        </OSS::SplitModal>
+      {{/if}}
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Side panel
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <OSS::Button @skin="primary" @label="Open side panel" {{on "click" this.openSidePanel}} />
+      <OSS::SidePanel @onClose={{this.closeSidePanel}} @backdrop={{true}} @visible={{this.showSidePanel}}>
+        <:header>
+          <OSS::SidePanel::Header
+            @onClose={{this.closeSidePanel}}
+            @onReturn={{this.onReturn}}
+            @title="This is the side panel's header."
+          />
+        </:header>
+        <:main>
+          <span>This is the side panel's content.</span>
+        </:main>
+        <:footer>
+          <span>This is the side panel's footer.</span>
+        </:footer>
+      </OSS::SidePanel>
+    </div>
+  </div>
+
+</div>

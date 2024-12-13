@@ -1,4 +1,37 @@
 <div class="fx-col fx-gap-px-12 padding-px-18">
+  <div class="page-title-container">
+    <span class="font-size-h2 font-weight-semibold">Data</span>
+    <span class="font-color-gray-500">Components used to display data in clear ways</span>
+    <span class="font-color-gray-500 font-size-xs text-style-italic">(or stalk people, probably)</span>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+    style="max-height: 250px; min-height: 250px"
+  >
+    <div id="popover-attachment" class="font-size-md font-weight-semibold">
+      Popover
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <OSS::Popover
+        @arrowPlacement="bottom"
+        @title="Popover title"
+        @subtitle="Subtitle"
+        @size="md"
+        {{attach-element to="#popover-attachment" placement="bottom-start" width="400px"}}
+      >
+        <:illustration>
+          <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
+        </:illustration>
+        <:contextual-actions>
+          Contextual Actions
+        </:contextual-actions>
+        <:content>
+          Write to your content
+        </:content>
+      </OSS::Popover>
+    </div>
+  </div>
 
   <div
     class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
@@ -156,6 +189,69 @@
           Edition mode
         </:edition-mode>
       </OSS::AttributesPanel>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Table
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      {{! hypertable }}
+      <div class="upf-table-v2 margin-md">
+        <div class="upf-table__header">
+          {{#each this.tableDemo.header as |header|}}
+            <div class="upf-table__cell {{header.class}}">
+              {{header.title}}
+            </div>
+          {{/each}}
+        </div>
+
+        <div class="upf-table__content">
+          {{#each this.tableDemo.header as |header index|}}
+            <div class="upf-table__row">
+              {{#each this.tableDemo.header as |header index|}}
+                <div class="upf-table__cell {{header.class}}">
+                  {{#if header.title}}
+                    <OSS::Tag @skin="primary" @label="Hello" />
+                  {{else}}
+                    <OSS::Icon @icon="fa-chevron-right" />
+                  {{/if}}
+                </div>
+              {{/each}}
+            </div>
+          {{/each}}
+        </div>
+      </div>
+      {{! hypertable v2 }}
+      <div class="upf-table-v2 upf-table-v2--clickable margin-md">
+        <div class="upf-table__header">
+          {{#each this.tableDemo.header as |header|}}
+            <div class="upf-table__cell {{header.class}}">
+              {{header.title}}
+            </div>
+          {{/each}}
+        </div>
+
+        <div class="upf-table__content">
+          {{#each this.tableDemo.header as |header index|}}
+            <div class="upf-table__row" role="button">
+              {{#each this.tableDemo.header as |header index|}}
+                <div class="upf-table__cell {{header.class}}">
+                  {{#if header.title}}
+                    Content
+                    {{index}}
+                  {{else}}
+                    <OSS::Icon @icon="fa-chevron-right" />
+                  {{/if}}
+                </div>
+              {{/each}}
+            </div>
+          {{/each}}
+        </div>
+      </div>
     </div>
   </div>
 

@@ -1,4 +1,9 @@
 <div class="fx-col fx-gap-px-12 padding-px-18">
+  <div class="page-title-container">
+    <span class="font-size-h2 font-weight-semibold">Visual</span>
+    <span class="font-color-gray-500">Components used to display information or actions in a simple and visual way</span>
+    <span class="font-color-gray-500 font-size-xs text-style-italic">(this one might work for people who can't read 👍)</span>
+  </div>
 
   <div
     class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
@@ -65,6 +70,16 @@
         <OSS::Button @square="true" @skin="primary" @size="sm" @icon="far fa-envelope-open" />
         <OSS::Button @square="true" @skin="primary" @size="md" @icon="far fa-envelope-open" />
         <OSS::Button @square="true" @skin="primary" @size="lg" @icon="far fa-envelope-open" />
+      </div>
+      <div class="fx-row fx-gap-px-12">
+        <OSS::Button @label="loading" @loading={{true}} />
+        <OSS::Button
+          @skin="destructive"
+          @label="Count down"
+          @icon="far fa-hourglass"
+          @size="md"
+          @countDown={{hash callback=this.countDownAction}}
+        />
       </div>
     </div>
   </div>
@@ -212,7 +227,6 @@
     </div>
   </div>
 
-  {{! !TO DO }}
   <div
     class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
   >
@@ -221,13 +235,10 @@
       Avatar group
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-center">
-      {{!-- <OSS::AvatarGroup
-        @avatars={{this.avatars}}
-        @size={{this.size}}
-        @max={{this.max}}
-        @loading={{this.loading}}
-        @loadingCount={{this.loadingCount}}
-      /> --}}
+      <OSS::AvatarGroup @avatars={{this.avatars}} @size="lg" />
+      <OSS::AvatarGroup @avatars={{this.avatars}} @size="md" />
+      <OSS::AvatarGroup @avatars={{this.avatars}} @size="sm" />
+      <OSS::AvatarGroup @avatars={{this.avatars}} @size="xs" />
     </div>
   </div>
 
@@ -490,7 +501,7 @@
       Slider
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-center">
-      <div class="fx-row fx-gap-px-10 margin-md">
+      <div class="fx-row fx-gap-px-10">
         <OSS::Slider
           @value={{this.sliderValue}}
           @defaultValue="0"
@@ -510,7 +521,7 @@
           @onChange={{this.onChangeSlider}}
         />
       </div>
-      <div class="fx-row fx-gap-px-10 margin-md">
+      <div class="fx-row fx-gap-px-10">
         <OSS::Slider
           @value={{this.sliderValue2}}
           @disabled={{true}}
@@ -532,7 +543,7 @@
           @onChange={{this.onChangeSlider2}}
         />
       </div>
-      <div class="fx-row fx-gap-px-10 margin-md">
+      <div class="fx-row fx-gap-px-10">
         <OSS::Slider
           @value={{this.sliderValue3}}
           @inputOptions={{hash min=0 max=999}}

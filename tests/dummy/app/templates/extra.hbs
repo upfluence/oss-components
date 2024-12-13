@@ -1,0 +1,148 @@
+<div class="fx-col fx-gap-px-12 padding-px-18">
+  <div class="page-title-container">
+    <span class="font-size-h2 font-weight-semibold">Extra</span>
+    <span class="font-color-gray-500">Extra components used for extra things</span>
+    <span class="font-color-gray-500 font-size-xs text-style-italic">(they're extra useful, I think)</span>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Link
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <OSS::Link @label="Link" @icon="fa fa-sword" />
+      <OSS::Link @label="Zelda" />
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Anchor
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <OSS::Anchor @link="https://shorturl.at/0c8jr" @noopener={{true}} @noreferrer={{true}}>
+        Absolutely not suspicious link
+      </OSS::Anchor>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Nav tab
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <OSS::NavTab @onSelection={{this.onSelectionNavTab}} @tabArray={{this.tabArrayNavTab}} />
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Nav item
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <OSS::Layout::Navbar::NavItem @icon="fa-cog" @label="First Label" />
+      <OSS::Layout::Navbar::NavItem @icon="fa-code-branch" @label="Second Label" @active={{true}} />
+      <OSS::Layout::Navbar::NavItem @icon="fa-code-branch" @label="Third Label" @active={{true}} />
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Illustration
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Upload item
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <OSS::UploadItem
+        @uploader={{this.uploader}}
+        @file={{this.file}}
+        @onEdition={{this.onEdition}}
+        @onDeletion={{this.onDeletion}}
+        @onUploadSuccess={{this.onUploadSuccess}}
+      />
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Upload area
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <div class="fx-row fx-gap-px-12">
+        <OSS::UploadArea
+          @uploader={{this.uploader}}
+          @rules={{array (hash type="filesize" value="8MB")}}
+          @size="lg"
+          @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)"
+          @onUploadSuccess={{this.onUploadSuccess}}
+        />
+
+        <OSS::UploadArea
+          @uploader={{this.uploader}}
+          @rules={{array (hash type="filesize" value="8MB")}}
+          @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)"
+          @onUploadSuccess={{this.onUploadSuccess}}
+          @displayPreview={{true}}
+        />
+      </div>
+      <div class="fx-row fx-gap-px-12">
+        <OSS::UploadArea
+          @uploader={{this.uploader}}
+          @rules={{array (hash type="filesize" value="8MB")}}
+          @size="lg"
+          @disabled={{true}}
+          @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)"
+          @onUploadSuccess={{this.onUploadSuccess}}
+        />
+
+        <OSS::UploadArea
+          @uploader={{this.uploader}}
+          @rules={{array (hash type="filesize" value="8MB")}}
+          @disabled={{true}}
+          @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)"
+          @onUploadSuccess={{this.onUploadSuccess}}
+        />
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Skeleton
+    </div>
+    <div class="fx-row fx-1 fx-gap-px-10">
+      <OSS::Skeleton @width="70%" />
+      <OSS::Skeleton @width={{20}} />
+    </div>
+    <div class="fx-row fx-1 fx-gap-px-10">
+      <OSS::Skeleton @direction="column" @width="60%" @gap="12" @multiple="3" @randomize={{true}} />
+    </div>
+    <div class="fx-row fx-1 fx-gap-px-10">
+      <OSS::Skeleton @width="10%" @multiple="3" @direction="row" @randomize="true" />
+    </div>
+  </div>
+
+</div>

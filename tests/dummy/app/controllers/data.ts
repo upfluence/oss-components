@@ -5,20 +5,42 @@ import { inject as service } from '@ember/service';
 
 import ToastService from '@upfluence/oss-components/services/toast';
 
+type TableData = {
+  header: { title: string; class?: string }[];
+  data: { content: string; class?: string }[];
+};
+
 export default class Data extends Controller {
   @service declare toast: ToastService;
 
-  @tracked shopUrl = '';
+  @tracked shopUrl: string = '';
   @tracked shopifyDomain: string = '';
-  @tracked revealed = false;
-  @tracked starRatingValue = 3;
+  @tracked revealed: boolean = false;
+  @tracked starRatingValue: number = 3;
 
-  loop = Array(15);
+  loop: null[] = Array(15);
 
-  subdomainRegex = /^[a-zA-Z0-9]+[a-zA-Z0-9-._]*[a-zA-Z0-9]+$/;
+  subdomainRegex: RegExp = /^[a-zA-Z0-9]+[a-zA-Z0-9-._]*[a-zA-Z0-9]+$/;
+
+  tableDemo: TableData = {
+    header: [
+      { title: 'Title 0' },
+      { title: 'Title 1', class: 'upf-table__cell--fixed upf-table__tag-cell' },
+      { title: 'Title 2', class: 'upf-table__cell--fixed' },
+      { title: 'Title 3', class: 'upf-table__cell--fixed' },
+      { title: '', class: 'upf-table__cell--action' }
+    ],
+    data: [
+      { content: 'Content 1' },
+      { content: 'Content 2' },
+      { content: 'Content 3' },
+      { content: 'Content 4', class: 'upf-table__cell--fixed' },
+      { content: '', class: 'upf-table__cell--action' }
+    ]
+  };
 
   @action
-  onUrlInputChange(newValue: string, isValid: boolean) {
+  onUrlInputChange(newValue: string, isValid: boolean): void {
     console.log('newValue : ' + newValue);
     console.log('Value test against regext valid ? ' + isValid);
     if (isValid) {
@@ -27,7 +49,7 @@ export default class Data extends Controller {
   }
 
   @action
-  onAttributePanelSave() {
+  onAttributePanelSave(): Promise<void> {
     return new Promise<void>((resolve) => {
       setTimeout(() => {
         resolve();
@@ -36,17 +58,17 @@ export default class Data extends Controller {
   }
 
   @action
-  onAttributePanelCancel() {
+  onAttributePanelCancel(): void {
     console.log('Attributes panel cancel');
   }
 
   @action
-  onAttributePanelEdit() {
+  onAttributePanelEdit(): void {
     console.log('Attributes panel edition');
   }
 
   @action
-  onRemove() {
+  onRemove(): Promise<string> {
     console.log('on remove');
     return new Promise((res) => {
       setTimeout(() => {
@@ -57,7 +79,7 @@ export default class Data extends Controller {
   }
 
   @action
-  onRevealEmailError() {
+  onRevealEmailError(): Promise<string> {
     console.log('on reveal email error');
     return new Promise((res, rej) => {
       setTimeout(() => {
@@ -68,7 +90,7 @@ export default class Data extends Controller {
   }
 
   @action
-  onRevealEmailSuccess() {
+  onRevealEmailSuccess(): Promise<string> {
     console.log('on reveal email success');
     return new Promise((res) => {
       setTimeout(() => {

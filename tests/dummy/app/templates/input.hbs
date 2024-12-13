@@ -1,4 +1,9 @@
 <div class="fx-col fx-gap-px-12 padding-px-18">
+  <div class="page-title-container">
+    <span class="font-size-h2 font-weight-semibold">Input</span>
+    <span class="font-color-gray-500">Components used to gather user information</span>
+    <span class="font-color-gray-500 font-size-xs text-style-italic">(including their mom's credit card info)</span>
+  </div>
 
   <div
     class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
@@ -18,6 +23,13 @@
           <:option as |item|>
             {{item.name}}
           </:option>
+        </OSS::Select>
+
+        <OSS::Select @value={{this.selectedItem}} @items={{this.items}} @onChange={{this.onSelect}} @disabled={{true}}>
+          <:option as |item|>
+            {{item.name}}
+          </:option>
+
         </OSS::Select>
 
         <OSS::Select
@@ -41,16 +53,11 @@
             {{item.name}}
           </:option>
         </OSS::Select>
-        <OSS::Select @value={{this.selectedItem}} @items={{this.items}} @onChange={{this.onSelect}} @disabled={{true}}>
-          <:option as |item|>
-            {{item.name}}
-          </:option>
-        </OSS::Select>
+
       </div>
     </div>
   </div>
 
-  {{! //TODO }}
   <div
     class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
   >
@@ -58,7 +65,8 @@
       Infinite select
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-start">
-      {{! Insert component here }}
+        <OSS::InfiniteSelect
+        @items={{this.items}} @searchEnabled={{true}} @onSearch={{this.onInfiniteSelectSearch}} @searchPlaceholder="Enter a keyword" @onSelect={{this.onInfiniteSelectChange}}  style="position: relative; margin: 0"/>
     </div>
   </div>
 
@@ -138,23 +146,43 @@
     <div class="font-size-md font-weight-semibold">
       Input container
     </div>
-    <div class="fx-row fx-gap-px-24 fx-xalign-center">
-      <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}}>
-        <:prefix>
-          <OSS::Icon @icon="fa-search" class="font-color-gray-500" />
-        </:prefix>
-        <:suffix>
-          {{#if (gt this.shopUrl.length 0)}}
-            <OSS::Icon
-              @icon="fa-times"
-              class="font-color-gray-500"
-              role="button"
-              {{on "click" (fn (mut this.shopUrl) "")}}
-            />
-          {{/if}}
-        </:suffix>
-      </OSS::InputContainer>
-      <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}} />
+    <div class="fx-col fx-gap-px-12 fx-malign-start">
+      <div class="fx-row fx-gap-px-24">
+        <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}}>
+          <:prefix>
+            <OSS::Icon @icon="fa-search" class="font-color-gray-500" />
+          </:prefix>
+          <:suffix>
+            {{#if (gt this.shopUrl.length 0)}}
+              <OSS::Icon
+                @icon="fa-times"
+                class="font-color-gray-500"
+                role="button"
+                {{on "click" (fn (mut this.shopUrl) "")}}
+              />
+            {{/if}}
+          </:suffix>
+        </OSS::InputContainer>
+        <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}} />
+        <OSS::InputContainer @placeholder="Error" @value={{this.shopUrl}} @errorMessage="This is an error message" />
+      </div>
+      <div class="fx-row fx-gap-px-24">
+        <OSS::InputContainer
+          @placeholder="Success !"
+          @value={{this.shopUrl}}
+          @feedbackMessage={{hash type="success" value="This is a success message !"}}
+        />
+        <OSS::InputContainer
+          @placeholder="Warning !"
+          @value={{this.shopUrl}}
+          @feedbackMessage={{hash type="warning" value="This is an warning message !"}}
+        />
+        <OSS::InputContainer
+          @placeholder="Error !"
+          @value={{this.shopUrl}}
+          @feedbackMessage={{hash type="error" value="This is also an error message !"}}
+        />
+      </div>
     </div>
   </div>
 
@@ -165,6 +193,8 @@
       Input group
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <OSS::InputGroup @value={{this.inputValue}} @prefix="@" @placeholder="Username" />
+      <OSS::InputGroup @value={{this.inputValue}} @suffix="@example.com" @placeholder="john.doe" />
       <OSS::InputGroup
         @value={{this.inputValue}}
         @prefix="This"
@@ -172,8 +202,6 @@
         @suffix="sense"
         @errorMessage="This is an error message"
       />
-      <OSS::InputGroup @value={{this.inputValue}} @prefix="@" @placeholder="Username" />
-      <OSS::InputGroup @value={{this.inputValue}} @suffix="@example.com" @placeholder="john.doe" />
     </div>
   </div>
 
@@ -184,14 +212,14 @@
       Text area
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <OSS::TextArea @value={{this.textAreaValue}} @onChange={{this.handleTextAreaInput}} @rows={{6}} />
       <OSS::TextArea
         @value={{this.textAreaValue}}
         @onChange={{this.handleTextAreaInput}}
         @errorMessage="This is an error message"
-        @rows={{8}}
+        @rows={{5}}
         @resize="vertical"
       />
-      <OSS::TextArea @value={{this.textAreaValue}} @onChange={{this.handleTextAreaInput}} @rows={{1}} />
     </div>
   </div>
 

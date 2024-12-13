@@ -10,4 +10,6 @@ Router.map(function () {
   this.route('input');
   this.route('visual');
   this.route('data');
+  this.route('overlay');
+  this.route('extra');
 });
