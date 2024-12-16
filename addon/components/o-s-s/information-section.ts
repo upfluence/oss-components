@@ -2,7 +2,7 @@ import Component from '@glimmer/component';
 import type { IconNames } from './iconName.enum';
 
 interface InformationSectionArgs {
-  imageBadge: keyof typeof IconNames | string;
+  badgeIcon: keyof typeof IconNames;
   svgIcon?: string;
   title: string;
   subtitle?: string;

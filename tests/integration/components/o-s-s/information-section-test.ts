@@ -96,7 +96,7 @@ module('Integration | Component | o-s-s/information-section', function (hooks) {
   });
 
   module('content named block', function () {
-    test('it renders the badge with badge named block', async function (assert) {
+    test('it renders the badge with content named block', async function (assert) {
       await render(hbs` <OSS::InformationSection @title={{this.title}}>
                           <:content>
                           <p data-control-name='content-named-block'>{{this.namedBlockContent}}</p>
