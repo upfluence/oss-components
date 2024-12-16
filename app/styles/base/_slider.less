@@ -1,9 +1,9 @@
 .oss-slider {
   &__range-container {
     flex: 1;
-
     .oss-slider__tooltip {
       text-align: center;
+      white-space: nowrap;
       left: var(--tooltip-left-position);
       top: 30px;
       transition: opacity 300ms;
@@ -16,6 +16,10 @@
 
       &--hidden {
         opacity: 0;
+      }
+
+      &__without_input {
+        top: 12px;
       }
     }
   }
@@ -115,69 +119,6 @@
     input {
       max-width: 48px;
       min-width: 48px;
-    }
-  }
-}
-
-.upf-slider {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-evenly;
-
-  .min-max-value {
-    min-width: 20px;
-  }
-
-  .min-value {
-    text-align: right;
-  }
-
-  .irs-handle {
-    transition: background-color 0.3s ease;
-  }
-
-  .irs--round {
-    height: 7px;
-    width: 100%;
-    margin-right: 15px;
-    margin-left: 15px;
-
-    .irs-line,
-    .irs-bar {
-      height: 7px;
-      top: 0px;
-      background-color: @field-background-color;
-    }
-
-    .irs-handle {
-      border: none;
-      top: -6px;
-      width: 18px;
-      height: 18px;
-      box-shadow: none;
-      background-color: @upf-primary-rock-blue;
-    }
-
-    .irs-single {
-      opacity: 0;
-      top: -42px;
-      padding: 8px 10px;
-      background-color: black;
-      transition: opacity 0.3s ease;
-
-      .fa {
-        .font-weight-semibold;
-      }
-
-      &:before {
-        border-top-color: black;
-      }
-    }
-
-    &:hover {
-      .irs-single {
-        opacity: 1;
-      }
     }
   }
 }

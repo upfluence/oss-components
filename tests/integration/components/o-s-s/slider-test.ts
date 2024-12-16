@@ -38,6 +38,15 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
     assert.dom('.oss-slider__number-input input').isDisabled();
   });
 
+  test('it renders with a specific tooltip label when specified', async function (assert) {
+    this.tooltipLabel = 'this is a specific tooltip label';
+    await render(
+      hbs`<OSS::Slider @value={{this.value}} @tooltipLabel={{this.tooltipLabel}} @displayInputValue={{this.displayInputValue}} @unit={{this.unit}} @disabled={{true}} @onChange={{this.onChange}} />`
+    );
+
+    assert.dom('.oss-slider__tooltip').hasText(this.tooltipLabel);
+  });
+
   module('for the slider width', () => {
     test('it renders it properly', async function (assert) {
       await render(

@@ -78,6 +78,16 @@ export default {
         defaultValue: { summary: '50' }
       }
     },
+
+    tooltiplabel: {
+      control: 'text',
+      description: 'Specific tooltip label for the slider handle',
+      defaultValue: `Value : ${defaultArgs.defaultValue}%`,
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '50' }
+      }
+    },
     onChange: {
       type: { required: true },
       description: 'Method called every time the input / range is updated',
@@ -105,6 +115,7 @@ const defaultArgs = {
   step: 1,
   defaultValue: undefined,
   displayInputValue: false,
+  tooltipLabel: `Value of ${defaultArgs.value}`,
   unit: 'percentage',
   disabled: false,
   onChange: action('onChange')
@@ -116,6 +127,7 @@ const Template = (args) => ({
                  @min={{this.min}}
                  @max={{this.max}}
                  @step={{this.step}}
+                 @tooltipLabel={{this.tooltipLabel}}
                  @defaultValue={{this.defaultValue}}
                  @displayInputValue={{this.displayInputValue}}
                  @unit={{this.unit}}
