@@ -1115,20 +1115,6 @@
   });
   0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/upf-image"eaimeta@70e063a35619d71f
 });
-;define("dummy/components/upf-slider", ["exports", "@upfluence/oss-components/components/upf-slider"], function (_exports, _upfSlider) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  Object.defineProperty(_exports, "default", {
-    enumerable: true,
-    get: function get() {
-      return _upfSlider.default;
-    }
-  });
-  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/upf-slider"eaimeta@70e063a35619d71f
-});
 ;define("dummy/components/upf-stat", ["exports", "@upfluence/oss-components/components/upf-stat"], function (_exports, _upfStat) {
   "use strict";
 
@@ -3233,43 +3219,6 @@ define("dummy/routes/scrollable", ["exports", "@ember/routing/route"], function 
     "id": "yEyBgX6k",
     "block": "[[[10,0],[14,0,\"upf-align--center\"],[12],[1,\"\\n  \"],[10,0],[14,0,\"spinner\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"bounce1\"],[12],[13],[1,\"\\n    \"],[10,0],[14,0,\"bounce2\"],[12],[13],[1,\"\\n    \"],[10,0],[14,0,\"bounce3\"],[12],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[],false,[]]",
     "moduleName": "dummy/templates/components/loading-state.hbs",
-    "isStrictMode": false
-  });
-});
-;define("dummy/templates/components/upf-slider", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
-  "use strict";
-
-  Object.defineProperty(_exports, "__esModule", {
-    value: true
-  });
-  _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
-  var _default = _exports.default = (0, _templateFactory.createTemplateFactory)(
-  /*
-    <span class="min-max-value min-value">{{or options.minLabel options.min}}</span>
-  <input type="text" class="slider"/>
-  <span class="min-max-value max-value">{{or options.maxLabel options.max}}</span>
-  
-  {{!-- Usage Example --}}
-  {{!-- {{upf-slider class="custom-class" options=sliderOptions}} --}}
-  
-  {{!-- sliderOptions: {
-    min: 0,
-    max: 100,
-    lowValue: 50,
-    mediumValue: 79,
-    lowClass: "low",
-    mediumClass: "medium",
-    highClass: "high",
-    onChange: (sliderValue) => {
-      console.log(sliderValue);
-    }
-  }, --}}
-  */
-  {
-    "id": "4iP4mcwV",
-    "block": "[[[10,1],[14,0,\"min-max-value min-value\"],[12],[1,[28,[35,0],[[33,1,[\"minLabel\"]],[33,1,[\"min\"]]],null]],[13],[1,\"\\n\"],[10,\"input\"],[14,0,\"slider\"],[14,4,\"text\"],[12],[13],[1,\"\\n\"],[10,1],[14,0,\"min-max-value max-value\"],[12],[1,[28,[35,0],[[33,1,[\"maxLabel\"]],[33,1,[\"max\"]]],null]],[13],[1,\"\\n\\n\"],[1,\"\\n\"]],[],false,[\"or\",\"options\"]]",
-    "moduleName": "dummy/templates/components/upf-slider.hbs",
     "isStrictMode": false
   });
 });

@@ -10217,6 +10217,7 @@ label {
 }
 .oss-slider__range-container .oss-slider__tooltip {
   text-align: center;
+  white-space: nowrap;
   left: var(--tooltip-left-position);
   top: 30px;
   transition: opacity 300ms;
@@ -10228,6 +10229,9 @@ label {
 }
 .oss-slider__range-container .oss-slider__tooltip--hidden {
   opacity: 0;
+}
+.oss-slider__range-container .oss-slider__tooltip__without_input {
+  top: 12px;
 }
 .oss-slider__container {
   display: flex;
@@ -10299,56 +10303,6 @@ label {
 .oss-slider__number-input input {
   max-width: 48px;
   min-width: 48px;
-}
-.upf-slider {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-evenly;
-}
-.upf-slider .min-max-value {
-  min-width: 20px;
-}
-.upf-slider .min-value {
-  text-align: right;
-}
-.upf-slider .irs-handle {
-  transition: background-color 0.3s ease;
-}
-.upf-slider .irs--round {
-  height: 7px;
-  width: 100%;
-  margin-right: 15px;
-  margin-left: 15px;
-}
-.upf-slider .irs--round .irs-line,
-.upf-slider .irs--round .irs-bar {
-  height: 7px;
-  top: 0px;
-  background-color: #f1f2f3;
-}
-.upf-slider .irs--round .irs-handle {
-  border: none;
-  top: -6px;
-  width: 18px;
-  height: 18px;
-  box-shadow: none;
-  background-color: #8a95a0;
-}
-.upf-slider .irs--round .irs-single {
-  opacity: 0;
-  top: -42px;
-  padding: 8px 10px;
-  background-color: black;
-  transition: opacity 0.3s ease;
-}
-.upf-slider .irs--round .irs-single .fa {
-  font-weight: var(--font-weight-semibold);
-}
-.upf-slider .irs--round .irs-single:before {
-  border-top-color: black;
-}
-.upf-slider .irs--round:hover .irs-single {
-  opacity: 1;
 }
 .upf-stat {
   display: flex;
