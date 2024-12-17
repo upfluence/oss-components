@@ -4,15 +4,14 @@
   ...attributes
 >
   <div
-    class="fx-row fx-malign-space-between fx-xalign-center padding-px-18
-      {{if @plain 'background-color-white' 'background-color-gray-50'}}"
+    class="fx-row fx-malign-space-between fx-xalign-center padding-px-18 {{this.plainClass}}"
     data-control-name="information-section--header"
   >
     <div class="fx-row fx-gap-px-12 fx-xalign-center fx-malign-center">
       {{#if @badgeIcon}}
         <OSS::Badge @icon={{@badgeIcon}} class="border-color-primary-200" />
-      {{else if @svgIcon}}
-        <OSS::Badge @image={{@svgIcon}} class="border-color-primary-200" />
+      {{else if @imageUrl}}
+        <OSS::Badge @image={{@imageUrl}} class="border-color-primary-200" />
       {{else}}
         {{yield to="badge"}}
       {{/if}}
@@ -34,7 +33,7 @@
     {{yield to="action"}}
   </div>
   {{#if (has-block "content")}}
-    <hr class="oss-information-section--separator" />
+    <hr class="oss--information-section__separator" />
     <div class="padding-px-18 background-color-white">
       {{yield to="content"}}
     </div>

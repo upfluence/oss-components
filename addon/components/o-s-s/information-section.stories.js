@@ -4,20 +4,55 @@ export default {
   title: 'Components/OSS::InformationSection',
   argTypes: {
     title: {
-      control: 'text',
-      description: 'The title of the section'
+      description: 'The title of the section',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'Title' }
+      },
+      control: {
+        type: 'text'
+      }
     },
     subtitle: {
-      control: 'text',
-      description: 'The subtitle of the section (optional)'
+      description: 'The subtitle of the section (optional)',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'Subtitle' }
+      },
+      control: {
+        type: 'text'
+      }
     },
     badgeIcon: {
-      control: 'text',
-      description: 'The icon for the badge (SVG or FontAwesome class)'
+      description: 'The icon for the badge (SVG or FontAwesome class)',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'fa-pen' }
+      },
+      control: {
+        type: 'text'
+      }
+    },
+
+    imageUrl: {
+      description: 'The image url for the badge',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: '/assets/images/upfluence-white-logo.svg' }
+      },
+      control: {
+        type: 'text'
+      }
     },
     plain: {
-      control: 'boolean',
-      description: 'Sets the header background to plain gray or white based on context'
+      description: 'Sets the header background to plain gray or white based on context',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
+      },
+      control: {
+        type: 'boolean'
+      }
     }
   },
   parameters: {
@@ -33,7 +68,7 @@ export default {
 const defaultArgs = {
   title: 'Title',
   subtitle: 'Subtitle',
-  svgIcon: '/assets/images/upfluence-white-logo.svg',
+  imageUrl: '/assets/images/upfluence-white-logo.svg',
   badgeIcon: 'fa-pen',
   plain: true
 };
@@ -43,6 +78,7 @@ const Template = (args) => ({
     <OSS::InformationSection
       @title={{this.title}}
       @badgeIcon={{this.badgeIcon}}
+      @imageUrl={{this.imageUrl}}
       @subtitle={{this.subtitle}}
       @plain={{this.plain}}
     />
@@ -74,11 +110,11 @@ const ActionBlockTemplate = (args) => ({
       @subtitle={{this.subtitle}}
       @plain={{this.plain}}
     >
-     <:action>
-      <div class="fx-row fx-gap-px-6">
-        <OSS::Tag @label="Hello" @skin="primary" />
-        <OSS::Button @size="sm" @label="Action Button"/>
-      </div>
+      <:action>
+        <div class="fx-row fx-gap-px-6">
+          <OSS::Tag @label="Hello" @skin="primary" />
+          <OSS::Button @size="sm" @label="Action Button"/>
+        </div>
       </:action>
     </OSS::InformationSection>
   `,
