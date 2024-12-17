@@ -1,0 +1,41 @@
+<div
+  data-control-name="information-section"
+  class="oss--information-section border-radius-md border-color-gray-200 box-shadow-md"
+  ...attributes
+>
+  <div
+    class="fx-row fx-malign-space-between fx-xalign-center padding-px-18 {{this.plainClass}}"
+    data-control-name="information-section--header"
+  >
+    <div class="fx-row fx-gap-px-12 fx-xalign-center fx-malign-center">
+      {{#if @badgeIcon}}
+        <OSS::Badge @icon={{@badgeIcon}} class="border-color-primary-200" />
+      {{else if @imageUrl}}
+        <OSS::Badge @image={{@imageUrl}} class="border-color-primary-200" />
+      {{else}}
+        {{yield to="badge"}}
+      {{/if}}
+
+      <div class="fx-col fx-gap-px-3">
+        <span
+          data-control-name="information-section--title"
+          class="font-color-gray-900 font-size-md font-weight-semibold"
+        >
+          {{@title}}
+        </span>
+
+        {{#if @subtitle}}
+          <span data-control-name="information-section--subtitle" class="font-color-gray-500">{{@subtitle}}</span>
+        {{/if}}
+      </div>
+    </div>
+
+    {{yield to="action"}}
+  </div>
+  {{#if (has-block "content")}}
+    <hr class="oss--information-section__separator" />
+    <div class="padding-px-18 background-color-white">
+      {{yield to="content"}}
+    </div>
+  {{/if}}
+</div>
