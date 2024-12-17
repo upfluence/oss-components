@@ -1,0 +1,561 @@
+<div class="fx-col fx-gap-px-12 padding-px-18">
+  <div class="page-title-container">
+    <span class="font-size-h2 font-weight-semibold">Visual</span>
+    <span class="font-color-gray-500">Components used to display information or actions in a simple and visual way</span>
+    <span class="font-color-gray-500 font-size-xs text-style-italic">(this one might work for people who can't read 👍)</span>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Button
+    </div>
+    <div class="fx-col fx-gap-px-24 fx-xalign-start">
+      <div class="fx-row fx-gap-px-12">
+        <div class="fx-col fx-gap-px-12">
+          <OSS::Button @skin="destructive" @label="destructive" @icon="fas fa-box-open" @size="md" />
+          <OSS::Button @skin="destructive" @square="true" @icon="fas fa-box-open" @size="md" />
+        </div>
+        <div class="fx-col fx-gap-px-12">
+          <OSS::Button @skin="alert" @label="alert" @icon="fas fa-box-open" @size="md" />
+          <OSS::Button @skin="alert" @square="true" @icon="fas fa-box-open" @size="md" />
+        </div>
+        <div class="fx-col fx-gap-px-12">
+          <OSS::Button @skin="secondary" @label="secondary" @icon="fas fa-box-open" @size="md" />
+          <OSS::Button @skin="secondary" @square="true" @icon="fas fa-box-open" @size="md" />
+        </div>
+        <div class="fx-col fx-gap-px-12">
+          <OSS::Button @skin="default" @label="default" @icon="fas fa-box-open" @size="md" />
+          <OSS::Button @skin="default" @square="true" @icon="fas fa-box-open" @size="md" />
+        </div>
+        <div class="fx-col fx-gap-px-12">
+          <OSS::Button @skin="success" @label="success" @icon="fas fa-box-open" @size="md" />
+          <OSS::Button @skin="success" @square="true" @icon="fas fa-box-open" @size="md" />
+        </div>
+      </div>
+      <div class="fx-row fx-gap-px-12">
+        <div class="fx-col fx-gap-px-12">
+          <OSS::Button @skin="xtd-orange" @label="Extended orange" @icon="fas fa-plus" @size="md" />
+          <OSS::Button @skin="xtd-orange" @square="true" @icon="fas fa-plus" @size="md" />
+        </div>
+        <div class="fx-col fx-gap-px-12">
+          <OSS::Button @skin="xtd-yellow" @label="Extended yellow" @icon="fas fa-plus" @size="md" />
+          <OSS::Button @skin="xtd-yellow" @square="true" @icon="fas fa-plus" @size="md" />
+        </div>
+        <div class="fx-col fx-gap-px-12">
+          <OSS::Button @skin="xtd-lime" @label="Extended lime" @icon="fas fa-plus" @size="md" />
+          <OSS::Button @skin="xtd-lime" @square="true" @icon="fas fa-plus" @size="md" />
+        </div>
+        <div class="fx-col fx-gap-px-12">
+          <OSS::Button @skin="xtd-cyan" @label="Extended Cyan" @icon="fas fa-plus" @size="md" />
+          <OSS::Button @skin="xtd-cyan" @square="true" @icon="fas fa-plus" @size="md" />
+        </div>
+        <div class="fx-col fx-gap-px-12">
+          <OSS::Button @skin="xtd-blue" @label="Extended blue" @icon="fas fa-plus" @size="md" />
+          <OSS::Button @skin="xtd-blue" @square="true" @icon="fas fa-plus" @size="md" />
+        </div>
+        <div class="fx-col fx-gap-px-12">
+          <OSS::Button @skin="xtd-violet" @label="Extended violet" @icon="fas fa-plus" @size="md" />
+          <OSS::Button @skin="xtd-violet" @square="true" @icon="fas fa-plus" @size="md" />
+        </div>
+      </div>
+      <div class="fx-row fx-gap-px-12">
+        <OSS::Button @skin="primary" @size="xs" @label="XS" @icon="far fa-envelope-open" />
+        <OSS::Button @skin="primary" @size="sm" @label="SM" @icon="far fa-envelope-open" />
+        <OSS::Button @skin="primary" @size="md" @label="MD" @icon="far fa-envelope-open" />
+        <OSS::Button @skin="primary" @size="lg" @label="LG" @icon="far fa-envelope-open" />
+      </div>
+      <div class="fx-row fx-gap-px-12">
+        <OSS::Button @square="true" @skin="primary" @size="sm" @icon="far fa-envelope-open" />
+        <OSS::Button @square="true" @skin="primary" @size="md" @icon="far fa-envelope-open" />
+        <OSS::Button @square="true" @skin="primary" @size="lg" @icon="far fa-envelope-open" />
+      </div>
+      <div class="fx-row fx-gap-px-12">
+        <OSS::Button @label="loading" @loading={{true}} />
+        <OSS::Button
+          @skin="destructive"
+          @label="Count down"
+          @icon="far fa-hourglass"
+          @size="md"
+          @countDown={{hash callback=this.countDownAction}}
+        />
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Button dropdown
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <OSS::ButtonDropdown
+        @icon="far fa-credit-card"
+        @label="Dropdown button"
+        @mainAction={{fn this.redirectTo "test"}}
+      >
+        <:items>
+          <div class="oss-button-dropdown__item">
+            <OSS::Icon @style="solid" @icon="fa-share" />
+            Share
+          </div>
+        </:items>
+      </OSS::ButtonDropdown>
+      <OSS::ButtonDropdown @icon="far fa-hourglass" @label="Dropdown button">
+        <:items>
+          <div class="oss-button-dropdown__item">
+            <OSS::Icon @style="solid" @icon="fa-share" />
+            Share
+          </div>
+        </:items>
+      </OSS::ButtonDropdown>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Toggle buttons
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <div class="fx-row fx-xalign-start fx-gap-px-10">
+        <OSS::ToggleButtons
+          @toggles={{this.toggles}}
+          @selectedToggle={{this.selectedToggle}}
+          @onSelection={{this.triggerSelection}}
+        />
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Toggle switch
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <div class="fx-1 fx-col fx-gap-px-12">
+        Active
+        <OSS::ToggleSwitch @value={{this.toggleValue}} @onChange={{fn (mut this.toggleValue)}} />
+      </div>
+      <div class="fx-1 fx-col fx-gap-px-12">
+        Disabled
+        <OSS::ToggleSwitch
+          @value={{this.toggleValue}}
+          @onChange={{fn (mut this.toggleValue)}}
+          @disabled={{this.disabled}}
+        />
+      </div>
+
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Checkbox
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <OSS::Checkbox @checked={{this.isChecked}} @onChange={{this.onCheck}} />
+      <OSS::Checkbox @checked={{this.isChecked}} @disabled={{true}} @onChange={{this.onCheck}} />
+      <OSS::Checkbox @checked={{this.isChecked}} @partial={{true}} @onChange={{this.onCheck}} />
+      <OSS::Checkbox @checked={{this.isChecked}} @disabled={{true}} @partial={{true}} @onChange={{this.onCheck}} />
+      <OSS::Checkbox @checked={{this.isChecked}} @size="sm" @onChange={{this.onCheck}} />
+      <OSS::Checkbox @checked={{this.isChecked}} @size="sm" @disabled={{true}} @onChange={{this.onCheck}} />
+      <OSS::Checkbox @checked={{this.isChecked}} @size="sm" @partial={{true}} @onChange={{this.onCheck}} />
+      <OSS::Checkbox
+        @checked={{this.isChecked}}
+        @size="sm"
+        @disabled={{true}}
+        @partial={{true}}
+        @onChange={{this.onCheck}}
+      />
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Radio button
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <OSS::RadioButton @selected={{this.radio1}} @onChange={{fn this.onRadioBtnChange "radio1"}} />
+      <OSS::RadioButton @selected={{this.radio2}} @onChange={{fn this.onRadioBtnChange "radio2"}} />
+      <OSS::RadioButton @selected={{true}} @disabled={{true}} />
+      <OSS::RadioButton @selected={{false}} @disabled={{true}} />
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Copy button
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <OSS::Copy @value="I am the value copied" @inline={{true}} />
+      <OSS::Copy @value="I am the value copied" />
+      <OSS::Copy @value="I am the value copied" @tooltip="Custom tooltip" />
+      <OSS::Copy @value="I am the value copied" @icon="far fa-jedi" />
+      <OSS::Copy @value="I am the value copied" @icon="fab fa-empire" @inline={{true}} />
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Avatar
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <OSS::Avatar
+        @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
+        @initials="Ts"
+      />
+      <OSS::Avatar @initials="MI" />
+      <OSS::Avatar />
+      <OSS::Avatar @size="xs" />
+      <OSS::Avatar @size="sm" />
+      <OSS::Avatar @size="md" />
+      <OSS::Avatar @size="lg" />
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+
+    <div class="font-size-md font-weight-semibold">
+      Avatar group
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <OSS::AvatarGroup @avatars={{this.avatars}} @size="lg" />
+      <OSS::AvatarGroup @avatars={{this.avatars}} @size="md" />
+      <OSS::AvatarGroup @avatars={{this.avatars}} @size="sm" />
+      <OSS::AvatarGroup @avatars={{this.avatars}} @size="xs" />
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Badge
+    </div>
+    <div class="fx-col fx-gap-px-24 fx-xalign-start">
+      <div class="fx-row fx-gap-px-12 fx-xalign-center">
+        <OSS::Badge @icon="fas fa-box-open" @size="lg" />
+        <OSS::Badge @icon="fas fa-box-open" />
+        <OSS::Badge @size="md" @icon="fas fa-box-open" />
+        <OSS::Badge @size="sm" @icon="fas fa-box-open" />
+      </div>
+      <div class="fx-row fx-gap-px-12 fx-xalign-center">
+        <OSS::Badge @icon="fas fa-box-open" @skin="primary" />
+        <OSS::Badge @icon="fas fa-box-open" @skin="primary" @plain={{true}} />
+        <OSS::Badge @icon="fas fa-box-open" @skin="success" />
+        <OSS::Badge @icon="fas fa-box-open" @skin="success" @plain={{true}} />
+        <OSS::Badge @icon="fas fa-box-open" @skin="alert" />
+        <OSS::Badge @icon="fas fa-box-open" @skin="alert" @plain={{true}} />
+        <OSS::Badge @icon="fas fa-box-open" @skin="error" />
+        <OSS::Badge @icon="fas fa-box-open" @skin="error" @plain={{true}} />
+        <OSS::Badge @icon="fas fa-box-open" @skin="xtd-orange" />
+        <OSS::Badge @icon="fas fa-box-open" @skin="xtd-orange" @plain={{true}} />
+        <OSS::Badge @icon="fas fa-box-open" @skin="xtd-yellow" />
+        <OSS::Badge @icon="fas fa-box-open" @skin="xtd-yellow" @plain={{true}} />
+        <OSS::Badge @icon="fas fa-box-open" @skin="xtd-lime" />
+        <OSS::Badge @icon="fas fa-box-open" @skin="xtd-lime" @plain={{true}} />
+        <OSS::Badge @icon="fas fa-box-open" @skin="xtd-cyan" />
+        <OSS::Badge @icon="fas fa-box-open" @skin="xtd-cyan" @plain={{true}} />
+        <OSS::Badge @icon="fas fa-box-open" @skin="xtd-blue" />
+        <OSS::Badge @icon="fas fa-box-open" @skin="xtd-blue" @plain={{true}} />
+        <OSS::Badge @icon="fas fa-box-open" @skin="xtd-violet" />
+        <OSS::Badge @icon="fas fa-box-open" @skin="xtd-violet" @plain={{true}} />
+      </div>
+      <div class="fx-row fx-gap-px-12 fx-xalign-center">
+        <OSS::Badge @text="2x" @size="lg" />
+        <OSS::Badge @text="2x" />
+        <OSS::Badge @text="2x" @size="sm" />
+      </div>
+      <div class="fx-row fx-gap-px-12 fx-xalign-center">
+        <OSS::Badge
+          @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
+          @size="lg"
+        />
+        <OSS::Badge
+          @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
+        />
+        <OSS::Badge
+          @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
+          @size="sm"
+        />
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Social post badge
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      {{#each this.media as |socialMedia|}}
+        <OSS::SocialPostBadge
+          @postType={{socialMedia.key}}
+          @selected={{socialMedia.active}}
+          @plain={{socialMedia.active}}
+          @onToggle={{this.toggleMedia}}
+        />
+      {{/each}}
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Icon
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <OSS::Icon @icon="LaptopCode" />
+      <OSS::Icon @icon="LaptopCode" @style="solid" />
+      <OSS::Icon @icon="LaptopCode" @style="regular" />
+      <OSS::Icon @icon="LaptopCode" @style="light" />
+      <OSS::Icon @icon="LaptopCode" @style="duotone" />
+      <OSS::Icon @icon="FacebookSquare" @style="brand" />
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Tag
+    </div>
+    <div class="fx-row fx-gap-px-69">
+      <div class="fx-col fx-gap-px-24 fx-xalign-start">
+        <div class="fx-row fx-gap-px-12">
+          <OSS::Tag @label="Tag" @skin="primary" @icon="far fa-thumbs-up" />
+          <OSS::Tag @label="Tag" @skin="success" @icon="far fa-thumbs-up" />
+          <OSS::Tag @label="Tag" @skin="warning" @icon="far fa-thumbs-up" />
+          <OSS::Tag @label="Tag" @skin="danger" @icon="far fa-thumbs-up" />
+          <OSS::Tag @label="Tag" @skin="secondary" @icon="far fa-thumbs-up" />
+          <OSS::Tag @label="Tag" @icon="far fa-thumbs-up" />
+          <OSS::Tag @icon="far fa-thumbs-up" />
+        </div>
+        <div class="fx-row fx-gap-px-12">
+          <OSS::Tag @label="Tag" @skin="secondary" />
+          <OSS::Tag @label="Tag" @skin="xtd-orange" />
+          <OSS::Tag @label="Tag" @skin="xtd-cyan" />
+          <OSS::Tag @label="Tag" @skin="xtd-yellow" />
+          <OSS::Tag @label="Tag" @skin="xtd-blue" />
+          <OSS::Tag @label="Tag" @skin="xtd-violet" />
+          <OSS::Tag @label="Tag" @skin="xtd-lime" />
+          <OSS::Tag @label="Tag" @skin="chat-gpt" />
+        </div>
+        <div class="fx-row fx-gap-px-12">
+          <OSS::Tag @label="Test with a huge label sentence" @skin="danger" @icon="far fa-thumbs-up" />
+          <OSS::Tag
+            @label="Test with a huge label sentence"
+            {{enable-tooltip title="Test with a huge label sentence" placement="top"}}
+            @skin="danger"
+            @icon="far fa-thumbs-up"
+            @hasEllipsis={{true}}
+          />
+        </div>
+      </div>
+      <div class="fx-col fx-gap-px-24 fx-xalign-start">
+        <div class="fx-row fx-gap-px-12">
+          <OSS::Tag @label="Tag" @skin="primary" @icon="far fa-thumbs-up" @plain={{true}} />
+          <OSS::Tag @label="Tag" @skin="success" @icon="far fa-thumbs-up" @plain={{true}} />
+          <OSS::Tag @label="Tag" @skin="warning" @icon="far fa-thumbs-up" @plain={{true}} />
+          <OSS::Tag @label="Tag" @skin="danger" @icon="far fa-thumbs-up" @plain={{true}} />
+          <OSS::Tag @label="Tag" @skin="secondary" @icon="far fa-thumbs-up" @plain={{true}} />
+          <OSS::Tag @label="Tag" @icon="far fa-thumbs-up" @plain={{true}} />
+          <OSS::Tag @icon="far fa-thumbs-up" @plain={{true}} />
+        </div>
+        <div class="fx-row fx-gap-px-12">
+          <OSS::Tag @label="Tag" @skin="secondary" @plain={{true}} />
+          <OSS::Tag @label="Tag" @skin="xtd-orange" @plain={{true}} />
+          <OSS::Tag @label="Tag" @skin="xtd-cyan" @plain={{true}} />
+          <OSS::Tag @label="Tag" @skin="xtd-yellow" @plain={{true}} />
+          <OSS::Tag @label="Tag" @skin="xtd-blue" @plain={{true}} />
+          <OSS::Tag @label="Tag" @skin="xtd-violet" @plain={{true}} />
+          <OSS::Tag @label="Tag" @skin="xtd-lime" @plain={{true}} />
+          <OSS::Tag @label="Tag" @skin="chat-gpt" @plain={{true}} />
+        </div>
+        <div class="fx-row fx-gap-px-12">
+          <OSS::Tag @label="Test with a huge label sentence" @skin="danger" @icon="far fa-thumbs-up" @plain={{true}} />
+          <OSS::Tag
+            @label="Test with a huge label sentence"
+            {{enable-tooltip title="Test with a huge label sentence" placement="top"}}
+            @skin="danger"
+            @icon="far fa-thumbs-up"
+            @hasEllipsis={{true}}
+            @plain={{true}}
+          />
+          <OSS::Tag
+            @label="normal text - <b>bold text</b>"
+            @skin="danger"
+            @icon="far fa-thumbs-up"
+            @plain={{true}}
+            @htmlSafe={{true}}
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Chip
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <OSS::Chip @label="Chip" @onRemove={{this.onCrossChipClick}} />
+      <OSS::Chip @skin="default" @label="Chip" @onRemove={{this.onCrossChipClick}} />
+      <OSS::Chip @skin="primary" @label="Chip" @onRemove={{this.onCrossChipClick}} />
+      <OSS::Chip @skin="success" @label="Chip" @onRemove={{this.onCrossChipClick}} />
+      <OSS::Chip @skin="danger" @label="Chip" @onRemove={{this.onCrossChipClick}} />
+      <OSS::Chip @skin="danger" @label="Chip" @disabled={{true}} @onRemove={{this.onCrossChipClick}} />
+      <OSS::Chip
+        @skin="success"
+        @label="Chip with a huge label"
+        @disabled={{false}}
+        @maxDisplayWidth={{100}}
+        @onRemove={{this.onCrossChipClick}}
+      />
+      <OSS::Chip
+        @skin="danger"
+        @label="Chip with a huge label"
+        @disabled={{false}}
+        @maxDisplayWidth={{160}}
+        @onRemove={{this.onCrossChipClick}}
+      />
+      <OSS::ChipNFish
+        @skin="danger"
+        @label="Chip with a huge label"
+        @disabled={{true}}
+        @onRemove={{this.onCrossChipClick}}
+        @maxDisplayWidth={{50}}
+      />
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Star rating
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <OSS::StarRating @rating={{3}} @totalStars={{5}} @onChange={{this.onRatingClick}} />
+      <OSS::StarRating
+        @rating={{this.rating}}
+        @totalStars={{15}}
+        @activeColor="red"
+        @passiveColor="blue"
+        @onChange={{this.onRatingClick}}
+      />
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Progress bar
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <OSS::ProgressBar @skin="success" @value={{42}} @displayValue={{true}} @label="Hello" @size="xs" />
+      <OSS::ProgressBar @skin="warning" @value={{21}} @displayValue={{true}} @label="Hello" />
+      <OSS::ProgressBar
+        @skin="danger"
+        @value={{78}}
+        @displayValue={{true}}
+        @label="Hello"
+        @coloredBackground={{true}}
+      />
+      <OSS::ProgressBar
+        @skin="success"
+        @value={{78}}
+        @displayValue={{true}}
+        @label="Hello"
+        @coloredBackground={{true}}
+      />
+      <OSS::ProgressBar @value={{78}} @displayValue={{true}} @label="Hello" @coloredBackground={{false}} />
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Slider
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <div class="fx-row fx-gap-px-10">
+        <OSS::Slider
+          @value={{this.sliderValue}}
+          @defaultValue="0"
+          @displayInputValue={{true}}
+          @onChange={{this.onChangeSlider}}
+        />
+        <OSS::Slider
+          @value={{this.sliderValue}}
+          @unit="percentage"
+          @displayInputValue={{true}}
+          @onChange={{this.onChangeSlider}}
+        />
+        <OSS::Slider
+          @value={{this.sliderValue}}
+          @unit="number"
+          @displayInputValue={{true}}
+          @onChange={{this.onChangeSlider}}
+        />
+      </div>
+      <div class="fx-row fx-gap-px-10">
+        <OSS::Slider
+          @value={{this.sliderValue2}}
+          @disabled={{true}}
+          @displayInputValue={{true}}
+          @onChange={{this.onChangeSlider2}}
+        />
+        <OSS::Slider
+          @value={{this.sliderValue2}}
+          @disabled={{true}}
+          @unit="percentage"
+          @displayInputValue={{true}}
+          @onChange={{this.onChangeSlider2}}
+        />
+        <OSS::Slider
+          @value={{this.sliderValue2}}
+          @disabled={{true}}
+          @unit="number"
+          @displayInputValue={{true}}
+          @onChange={{this.onChangeSlider2}}
+        />
+      </div>
+      <div class="fx-row fx-gap-px-10">
+        <OSS::Slider
+          @value={{this.sliderValue3}}
+          @inputOptions={{hash min=0 max=999}}
+          @min={{0}}
+          @max={{200}}
+          @step={{10}}
+          @unit="percentage"
+          @onChange={{this.onChangeSlider3}}
+          @displayInputValue={{true}}
+        />
+      </div>
+    </div>
+  </div>
+
+</div>

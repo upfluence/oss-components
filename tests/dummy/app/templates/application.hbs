@@ -2,19 +2,34 @@
   <OSS::Layout::Sidebar @logo="/assets/images/upfluence-white-logo.svg" @homeAction={{fn this.redirectTo "/"}}>
     <:content>
       <OSS::Layout::Sidebar::Item
-        @icon="far fa-search"
+        @icon="far fa-message-plus"
         class={{if (eq this.router.currentRouteName "index") "active"}}
         @link="index"
       />
       <OSS::Layout::Sidebar::Item
-        @icon="far fa-computer-mouse-scrollwheel"
-        class={{if (eq this.router.currentRouteName "scrollable") "active"}}
-        @link="scrollable"
+        @icon="far fa-input-text"
+        class={{if (eq this.router.currentRouteName "input") "active"}}
+        @link="input"
       />
       <OSS::Layout::Sidebar::Item
-        @icon="far fa-arrow-pointer"
-        class={{if (eq this.router.currentRouteName "actionable") "active"}}
-        @link="actionable"
+        @icon="far fa-toggle-on"
+        class={{if (eq this.router.currentRouteName "visual") "active"}}
+        @link="visual"
+      />
+      <OSS::Layout::Sidebar::Item
+        @icon="far fa-line-columns"
+        class={{if (eq this.router.currentRouteName "data") "active"}}
+        @link="data"
+      />
+      <OSS::Layout::Sidebar::Item
+        @icon="far fa-window-restore"
+        class={{if (eq this.router.currentRouteName "overlay") "active"}}
+        @link="overlay"
+      />
+      <OSS::Layout::Sidebar::Item
+        @icon="far fa-link"
+        class={{if (eq this.router.currentRouteName "extra") "active"}}
+        @link="extra"
       />
       <OSS::Layout::Sidebar::Item
         @icon="far fa-lock"
