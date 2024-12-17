@@ -7,7 +7,7 @@ export default {
       description: 'The title of the section',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'Title' }
+        defaultValue: { summary: 'undefined' }
       },
       control: {
         type: 'text'
@@ -17,7 +17,7 @@ export default {
       description: 'The subtitle of the section (optional)',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'Subtitle' }
+        defaultValue: { summary: 'undefined' }
       },
       control: {
         type: 'text'
@@ -27,7 +27,7 @@ export default {
       description: 'The icon for the badge (SVG or FontAwesome class)',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: 'fa-pen' }
+        defaultValue: { summary: 'undefined' }
       },
       control: {
         type: 'text'
@@ -38,7 +38,7 @@ export default {
       description: 'The image url for the badge',
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '/assets/images/upfluence-white-logo.svg' }
+        defaultValue: { summary: 'undefined' }
       },
       control: {
         type: 'text'
@@ -48,7 +48,7 @@ export default {
       description: 'Sets the header background to plain gray or white based on context',
       table: {
         type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' }
+        defaultValue: { summary: 'undefined' }
       },
       control: {
         type: 'boolean'

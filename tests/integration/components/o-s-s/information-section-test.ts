@@ -63,7 +63,7 @@ module('Integration | Component | o-s-s/information-section', function (hooks) {
     });
 
     test('it renders the badge with badge named block', async function (assert) {
-      await render(hbs` <OSS::InformationSection @title={{this.title}}>
+      await render(hbs`<OSS::InformationSection @title={{this.title}}>
                           <:badge>
                             <OSS::Badge
                               data-control-name="test-badge"
@@ -77,7 +77,7 @@ module('Integration | Component | o-s-s/information-section', function (hooks) {
 
   module('actions named block', function () {
     test('it renders', async function (assert) {
-      await render(hbs` <OSS::InformationSection @title={{this.title}}>
+      await render(hbs`<OSS::InformationSection @title={{this.title}}>
                           <:action>
                             <div data-control-name="actions-named-block">
                               <OSS::Button
@@ -94,7 +94,7 @@ module('Integration | Component | o-s-s/information-section', function (hooks) {
 
   module('content named block', function () {
     test('it renders', async function (assert) {
-      await render(hbs` <OSS::InformationSection @title={{this.title}}>
+      await render(hbs`<OSS::InformationSection @title={{this.title}}>
                           <:content>
                             <p data-control-name='content-named-block'>{{this.namedBlockContent}}</p>
                           </:content>
