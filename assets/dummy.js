@@ -583,6 +583,20 @@
   });
   0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/infinite-select"eaimeta@70e063a35619d71f
 });
+;define("dummy/components/o-s-s/information-section", ["exports", "@upfluence/oss-components/components/o-s-s/information-section"], function (_exports, _informationSection) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function get() {
+      return _informationSection.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/information-section"eaimeta@70e063a35619d71f
+});
 ;define("dummy/components/o-s-s/input-container", ["exports", "@upfluence/oss-components/components/o-s-s/input-container"], function (_exports, _inputContainer) {
   "use strict";
 

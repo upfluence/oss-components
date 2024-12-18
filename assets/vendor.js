@@ -81675,6 +81675,302 @@ define("@upfluence/oss-components/components/o-s-s/infinite-select", ["exports",
   });
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+define("@upfluence/oss-components/components/o-s-s/information-section", ["exports", "@ember/component", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _component2, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+  function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
+  function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+  function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } else if (call !== void 0) { throw new TypeError("Derived constructors may only return object or undefined"); } return _assertThisInitialized(self); }
+  function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+  function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+  function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+  function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
+  function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+  var __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div data-control-name="information-section" class="oss-information-section" ...attributes>
+    <div class={{this.headerComputedClasses}} data-control-name="information-section-header">
+      <div class="fx-row fx-gap-px-12 fx-xalign-center fx-malign-center">
+        <div class="oss-information-section__default-badge">
+          {{#if @badgeIcon}}
+            <OSS::Badge @icon={{@badgeIcon}} />
+          {{else if @imageUrl}}
+            <OSS::Badge @image={{@imageUrl}} />
+          {{/if}}
+        </div>
+        {{#if (has-block "badge")}}
+          {{yield to="badge"}}
+        {{/if}}
+  
+        <div class="fx-col fx-gap-px-3">
+          <span class="font-color-gray-900 font-size-md font-weight-semibold">
+            {{@title}}
+          </span>
+  
+          {{#if @subtitle}}
+            <span class="font-color-gray-500">{{@subtitle}}</span>
+          {{/if}}
+        </div>
+      </div>
+  
+      {{yield to="action"}}
+    </div>
+    {{#if (has-block "content")}}
+      <hr class="oss-information-section__separator" />
+      <div class="padding-px-18 background-color-white">
+        {{yield to="content"}}
+      </div>
+    {{/if}}
+  </div>
+  */
+  {
+    "id": "myO+3Jl7",
+    "block": "[[[11,0],[24,\"data-control-name\",\"information-section\"],[24,0,\"oss-information-section\"],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[30,0,[\"headerComputedClasses\"]]],[14,\"data-control-name\",\"information-section-header\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center fx-malign-center\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"oss-information-section__default-badge\"],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"          \"],[8,[39,1],null,[[\"@icon\"],[[30,2]]],null],[1,\"\\n\"]],[]],[[[41,[30,3],[[[1,\"          \"],[8,[39,1],null,[[\"@image\"],[[30,3]]],null],[1,\"\\n        \"]],[]],null]],[]]],[1,\"      \"],[13],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"        \"],[18,6,null],[1,\"\\n\"]],[]],null],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-3\"],[12],[1,\"\\n        \"],[10,1],[14,0,\"font-color-gray-900 font-size-md font-weight-semibold\"],[12],[1,\"\\n          \"],[1,[30,4]],[1,\"\\n        \"],[13],[1,\"\\n\\n\"],[41,[30,5],[[[1,\"          \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,[30,5]],[13],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\\n    \"],[18,7,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"    \"],[10,\"hr\"],[14,0,\"oss-information-section__separator\"],[12],[13],[1,\"\\n    \"],[10,0],[14,0,\"padding-px-18 background-color-white\"],[12],[1,\"\\n      \"],[18,8,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@badgeIcon\",\"@imageUrl\",\"@title\",\"@subtitle\",\"&badge\",\"&action\",\"&content\"],false,[\"if\",\"o-s-s/badge\",\"has-block\",\"yield\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/information-section.hbs",
+    "isStrictMode": false
+  });
+  var OSSInformationSection = _exports.default = /*#__PURE__*/function (_Component) {
+    _inherits(OSSInformationSection, _Component);
+    function OSSInformationSection() {
+      _classCallCheck(this, OSSInformationSection);
+      return _callSuper(this, OSSInformationSection, arguments);
+    }
+    _createClass(OSSInformationSection, [{
+      key: "headerComputedClasses",
+      get: function get() {
+        var plainClass = this.args.plain === false ? 'background-color-gray-50' : 'background-color-white';
+        return 'fx-row fx-malign-space-between fx-xalign-center padding-px-18 ' + plainClass;
+      }
+    }]);
+    return OSSInformationSection;
+  }(_component2.default);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSInformationSection);
+});
+;define("@upfluence/oss-components/components/o-s-s/information-section.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.WithCustomContent = _exports.WithCustomBadge = _exports.WithCustomAction = _exports.Default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::InformationSection',
+    argTypes: {
+      title: {
+        description: 'The title of the section',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        },
+        type: {
+          required: true
+        }
+      },
+      subtitle: {
+        description: 'The subtitle of the section (optional)',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      badgeIcon: {
+        description: 'The icon for the badge (SVG or FontAwesome class)',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      imageUrl: {
+        description: 'The image url for the badge',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      plain: {
+        description: 'Sets the header background to plain gray or white based on context',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'A component that renders a banner with a header and content section for displaying data. The header can include a badge, title, subtitle, and optional action buttons.'
+        }
+      }
+    }
+  };
+  var defaultArgs = {
+    title: 'Title',
+    subtitle: 'Subtitle',
+    imageUrl: '/assets/images/upfluence-white-logo.svg',
+    badgeIcon: 'fa-pen',
+    plain: true
+  };
+  var Template = function Template(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <OSS::InformationSection
+            @title={{this.title}}
+            @badgeIcon={{this.badgeIcon}}
+            @imageUrl={{this.imageUrl}}
+            @subtitle={{this.subtitle}}
+            @plain={{this.plain}}
+          />
+        
+      */
+      {
+        "id": "4xgC5XiA",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@title\",\"@badgeIcon\",\"@imageUrl\",\"@subtitle\",\"@plain\"],[[30,0,[\"title\"]],[30,0,[\"badgeIcon\"]],[30,0,[\"imageUrl\"]],[30,0,[\"subtitle\"]],[30,0,[\"plain\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/information-section\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/information-section.stories.js",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+  var BadgeBlockTemplate = function BadgeBlockTemplate(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <OSS::InformationSection
+            @title={{this.title}}
+            @badgeIcon={{this.badgeIcon}}
+            @subtitle={{this.subtitle}}
+            @plain={{this.plain}}
+          >
+            <:badge>
+              <span>Custom Badge Content</span>
+            </:badge>
+          </OSS::InformationSection>
+        
+      */
+      {
+        "id": "Q6YzEwf0",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@title\",\"@badgeIcon\",\"@subtitle\",\"@plain\"],[[30,0,[\"title\"]],[30,0,[\"badgeIcon\"]],[30,0,[\"subtitle\"]],[30,0,[\"plain\"]]]],[[\"badge\"],[[[[1,\"\\n        \"],[10,1],[12],[1,\"Custom Badge Content\"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/information-section\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/information-section.stories.js",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+  var ActionBlockTemplate = function ActionBlockTemplate(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <OSS::InformationSection
+            @title={{this.title}}
+            @badgeIcon={{this.badgeIcon}}
+            @subtitle={{this.subtitle}}
+            @plain={{this.plain}}
+          >
+            <:action>
+              <div class="fx-row fx-gap-px-6">
+                <OSS::Tag @label="Hello" @skin="primary" />
+                <OSS::Button @size="sm" @label="Action Button"/>
+              </div>
+            </:action>
+          </OSS::InformationSection>
+        
+      */
+      {
+        "id": "LNxk/X5T",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@title\",\"@badgeIcon\",\"@subtitle\",\"@plain\"],[[30,0,[\"title\"]],[30,0,[\"badgeIcon\"]],[30,0,[\"subtitle\"]],[30,0,[\"plain\"]]]],[[\"action\"],[[[[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-6\"],[12],[1,\"\\n          \"],[8,[39,1],null,[[\"@label\",\"@skin\"],[\"Hello\",\"primary\"]],null],[1,\"\\n          \"],[8,[39,2],null,[[\"@size\",\"@label\"],[\"sm\",\"Action Button\"]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/information-section\",\"o-s-s/tag\",\"o-s-s/button\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/information-section.stories.js",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+  var ContentBlockTemplate = function ContentBlockTemplate(args) {
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+          <OSS::InformationSection
+            @title={{this.title}}
+            @badgeIcon={{this.badgeIcon}}
+            @subtitle={{this.subtitle}}
+            @plain={{this.plain}}
+          >
+            <:content>
+              <div>
+                <p>Detailed custom content goes here.</p>
+              </div>
+            </:content>
+          </OSS::InformationSection>
+        
+      */
+      {
+        "id": "iMSJrofU",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@title\",\"@badgeIcon\",\"@subtitle\",\"@plain\"],[[30,0,[\"title\"]],[30,0,[\"badgeIcon\"]],[30,0,[\"subtitle\"]],[30,0,[\"plain\"]]]],[[\"content\"],[[[[1,\"\\n        \"],[10,0],[12],[1,\"\\n          \"],[10,2],[12],[1,\"Detailed custom content goes here.\"],[13],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/information-section\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/information-section.stories.js",
+        "isStrictMode": false
+      }),
+      context: args
+    };
+  };
+  var Default = _exports.Default = Template.bind({});
+  Default.args = defaultArgs;
+  var WithCustomBadge = _exports.WithCustomBadge = BadgeBlockTemplate.bind({});
+  WithCustomBadge.args = defaultArgs;
+  var WithCustomAction = _exports.WithCustomAction = ActionBlockTemplate.bind({});
+  WithCustomAction.args = defaultArgs;
+  var WithCustomContent = _exports.WithCustomContent = ContentBlockTemplate.bind({});
+  WithCustomContent.args = defaultArgs;
+});
+;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
 define("@upfluence/oss-components/components/o-s-s/input-container", ["exports", "@ember/component", "@ember/object", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _object, _component2, _templateFactory) {
   "use strict";
 

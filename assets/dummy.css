@@ -4405,6 +4405,7 @@ button.close {
 :root {
   --color-primary-50: #f1f3ff;
   --color-primary-100: #d0d9ff;
+  --color-primary-200: #afbbfd;
   --color-primary-400: #535efc;
   --color-primary-500: #0d0de6;
   --color-primary-600: #0505b8;
@@ -10841,6 +10842,18 @@ a.upf-btn--sm {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+.oss-information-section {
+  overflow: hidden;
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-md);
+}
+.oss-information-section__separator {
+  margin: 0;
+}
+.oss-information-section__default-badge .upf-badge {
+  border: 1px solid var(--color-primary-200);
 }
 .oss-input-container {
   position: relative;
