@@ -56,7 +56,8 @@ export default class OSSStarRating extends Component<OSSStarRatingArgs> {
   }
 
   @action
-  setRating(value: number): void {
+  setRating(value: number, event: PointerEvent): void {
+    event.stopPropagation();
     this.args.onChange?.(value + 1);
   }
 
