@@ -1,0 +1,34 @@
+<div data-control-name="information-section" class="oss-information-section" ...attributes>
+  <div class={{this.headerComputedClasses}} data-control-name="information-section-header">
+    <div class="fx-row fx-gap-px-12 fx-xalign-center fx-malign-center">
+      <div class="oss-information-section__default-badge">
+        {{#if @badgeIcon}}
+          <OSS::Badge @icon={{@badgeIcon}} />
+        {{else if @imageUrl}}
+          <OSS::Badge @image={{@imageUrl}} />
+        {{/if}}
+      </div>
+      {{#if (has-block "badge")}}
+        {{yield to="badge"}}
+      {{/if}}
+
+      <div class="fx-col fx-gap-px-3">
+        <span class="font-color-gray-900 font-size-md font-weight-semibold">
+          {{@title}}
+        </span>
+
+        {{#if @subtitle}}
+          <span class="font-color-gray-500">{{@subtitle}}</span>
+        {{/if}}
+      </div>
+    </div>
+
+    {{yield to="action"}}
+  </div>
+  {{#if (has-block "content")}}
+    <hr class="oss-information-section__separator" />
+    <div class="padding-px-18 background-color-white">
+      {{yield to="content"}}
+    </div>
+  {{/if}}
+</div>
