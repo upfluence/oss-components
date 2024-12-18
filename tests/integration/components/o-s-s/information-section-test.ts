@@ -26,28 +26,28 @@ module('Integration | Component | o-s-s/information-section', function (hooks) {
 
   test('it renders the @title arg', async function (assert) {
     await render(hbs`<OSS::InformationSection @title={{this.title}}/>`);
-    assert.dom("[data-control-name='information-section--title']").hasText(this.title);
+    assert.dom("[data-control-name='information-section-title']").hasText(this.title);
   });
 
   test('it renders the @subtitle arg', async function (assert) {
     await render(hbs`<OSS::InformationSection @title={{this.title}} @subtitle={{this.subtitle}}/>`);
-    assert.dom("[data-control-name='information-section--subtitle']").hasText(this.subtitle);
+    assert.dom("[data-control-name='information-section-subtitle']").hasText(this.subtitle);
   });
 
   module('plain arg', function () {
     test('it renders the header with a grey background when @plain is false', async function (assert) {
       await render(hbs`<OSS::InformationSection @title={{this.title}} @plain={{false}}/>`);
-      assert.dom("[data-control-name='information-section--header']").hasClass('background-color-gray-50');
+      assert.dom("[data-control-name='information-section-header']").hasClass('background-color-gray-50');
     });
 
     test('it renders the header with a white background when @plain is true', async function (assert) {
       await render(hbs`<OSS::InformationSection @title={{this.title}} @plain={{true}}/>`);
-      assert.dom("[data-control-name='information-section--header']").hasClass('background-color-white');
+      assert.dom("[data-control-name='information-section-header']").hasClass('background-color-white');
     });
 
     test('it renders the header with a white background when @plain is unspecified', async function (assert) {
       await render(hbs`<OSS::InformationSection @title={{this.title}} />`);
-      assert.dom("[data-control-name='information-section--header']").hasClass('background-color-white');
+      assert.dom("[data-control-name='information-section-header']").hasClass('background-color-white');
     });
   });
 

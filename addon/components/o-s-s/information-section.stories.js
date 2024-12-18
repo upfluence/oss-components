@@ -11,7 +11,8 @@ export default {
       },
       control: {
         type: 'text'
-      }
+      },
+      type: { required: true }
     },
     subtitle: {
       description: 'The subtitle of the section (optional)',
