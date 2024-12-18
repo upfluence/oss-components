@@ -88621,8 +88621,9 @@ define("@upfluence/oss-components/components/o-s-s/star-rating", ["exports", "@e
       }
     }, {
       key: "setRating",
-      value: function setRating(value) {
+      value: function setRating(value, event) {
         var _this$args$onChange, _this$args;
+        event.stopPropagation();
         (_this$args$onChange = (_this$args = this.args).onChange) === null || _this$args$onChange === void 0 || _this$args$onChange.call(_this$args, value + 1);
       }
     }, {
