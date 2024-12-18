@@ -26,12 +26,12 @@ module('Integration | Component | o-s-s/information-section', function (hooks) {
 
   test('it renders the @title arg', async function (assert) {
     await render(hbs`<OSS::InformationSection @title={{this.title}}/>`);
-    assert.dom("[data-control-name='information-section-title']").hasText(this.title);
+    assert.dom('.font-color-gray-900.font-size-md.font-weight-semibold').hasText(this.title);
   });
 
   test('it renders the @subtitle arg', async function (assert) {
     await render(hbs`<OSS::InformationSection @title={{this.title}} @subtitle={{this.subtitle}}/>`);
-    assert.dom("[data-control-name='information-section-subtitle']").hasText(this.subtitle);
+    assert.dom('.font-color-gray-500').hasText(this.subtitle);
   });
 
   module('plain arg', function () {
