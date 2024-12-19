@@ -16,7 +16,8 @@ const ICONS_MATCHING: Record<string, string> = {
   twitch_stream: '.fab.fa-twitch'
 };
 const IMG_MATCHING: Record<string, string> = {
-  instagram_reel: 'instagram-reel.svg'
+  instagram_reel: 'instagram-reel.svg',
+  youtube_short: 'youtube-short.svg'
 };
 
 module('Integration | Component | o-s-s/social-post-badge', function (hooks) {

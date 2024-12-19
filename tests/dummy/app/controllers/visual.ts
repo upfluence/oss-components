@@ -50,6 +50,10 @@ export default class Visual extends Controller {
       active: false
     },
     {
+      key: 'youtube_short',
+      active: false
+    },
+    {
       key: 'twitch_stream',
       active: false
     },

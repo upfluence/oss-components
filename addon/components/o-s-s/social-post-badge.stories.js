@@ -4,11 +4,13 @@ const SocialPostTypes = [
   'article',
   'facebook_status',
   'instagram_media',
+  'instagram_reel',
   'tiktok_video',
   'story',
   'tweet',
   'pin',
   'youtube_video',
+  'youtube_short',
   'twitch_stream'
 ];
 
