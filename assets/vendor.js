@@ -90186,6 +90186,10 @@ define("@upfluence/oss-components/components/o-s-s/upload-area", ["exports", "@e
         var _this$args$onHandleFi, _this$args5;
         (_this$args$onHandleFi = (_this$args5 = this.args).onHandleFileUpload) === null || _this$args$onHandleFi === void 0 || _this$args$onHandleFi.call(_this$args5);
         if (this._validateFile(file)) {
+          if (this.args.onDryRun) {
+            this.args.onDryRun(file);
+            return;
+          }
           if (this.editingFileIndex !== undefined) {
             this.selectedFiles[this.editingFileIndex] = file;
             this.selectedFiles = this.selectedFiles;
@@ -90469,6 +90473,15 @@ define("@upfluence/oss-components/components/o-s-s/upload-area", ["exports", "@e
           category: 'Actions',
           type: {
             summary: 'onHandleFileUpload(): void'
+          }
+        }
+      },
+      onDryRun: {
+        description: 'Action allowing the user to stop just before the actual upload and get the file directly.',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'onDryRun?(): void'
           }
         }
       }

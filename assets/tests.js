@@ -25937,12 +25937,56 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
             return _ref13.apply(this, arguments);
           };
         }());
-        (0, _qunit.test)('the uploaded file is displayed if the dropped file passes the validation', /*#__PURE__*/function () {
+        (0, _qunit.test)('if onDryRun is passed, the uploaded file is passed to it if validated and no upload item is displayed', /*#__PURE__*/function () {
           var _ref14 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee14(assert) {
             return _regeneratorRuntime().wrap(function _callee14$(_context14) {
               while (1) switch (_context14.prev = _context14.next) {
                 case 0:
-                  _context14.next = 2;
+                  this.onDryRun = _sinon.default.stub();
+                  _context14.next = 3;
+                  return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                  /*
+                    
+                            <OSS::UploadArea
+                              @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+                              @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} @onDryRun={{this.onDryRun}} />
+                          
+                  */
+                  {
+                    "id": "hnyirku5",
+                    "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@uploader\",\"@rules\",\"@size\",\"@subtitle\",\"@onUploadSuccess\",\"@onDryRun\"],[[30,0,[\"mockUploader\"]],[30,0,[\"validationRules\"]],[30,0,[\"size\"]],[30,0,[\"subtitle\"]],[30,0,[\"onUploadSuccess\"]],[30,0,[\"onDryRun\"]]]],null],[1,\"\\n        \"]],[],false,[\"o-s-s/upload-area\"]]",
+                    "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-area-test.ts",
+                    "isStrictMode": false
+                  }));
+                case 3:
+                  _context14.next = 5;
+                  return (0, _testHelpers.triggerEvent)('.oss-upload-area', 'drop', {
+                    dataTransfer: {
+                      files: [this.file]
+                    }
+                  });
+                case 5:
+                  assert.dom('.oss-upload-item').doesNotExist();
+                  assert.dom('.oss-upload-area').exists();
+                  assert.ok(this.onDryRun.calledOnceWithExactly(_sinon.default.match(function (file) {
+                    return file instanceof File;
+                  })));
+                case 8:
+                case "end":
+                  return _context14.stop();
+              }
+            }, _callee14, this);
+          }));
+          return function (_x14) {
+            return _ref14.apply(this, arguments);
+          };
+        }());
+        (0, _qunit.test)('the uploaded file is displayed if the dropped file passes the validation', /*#__PURE__*/function () {
+          var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
+            return _regeneratorRuntime().wrap(function _callee15$(_context15) {
+              while (1) switch (_context15.prev = _context15.next) {
+                case 0:
+                  _context15.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     
@@ -25958,7 +26002,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
                     "isStrictMode": false
                   }));
                 case 2:
-                  _context14.next = 4;
+                  _context15.next = 4;
                   return (0, _testHelpers.triggerEvent)('.oss-upload-area', 'drop', {
                     dataTransfer: {
                       files: [this.file]
@@ -25969,20 +26013,20 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
                   assert.dom('.oss-upload-area').doesNotExist();
                 case 6:
                 case "end":
-                  return _context14.stop();
+                  return _context15.stop();
               }
-            }, _callee14, this);
+            }, _callee15, this);
           }));
-          return function (_x14) {
-            return _ref14.apply(this, arguments);
+          return function (_x15) {
+            return _ref15.apply(this, arguments);
           };
         }());
         (0, _qunit.test)('clicking on the remove button in the upload item moves back to the upload state', /*#__PURE__*/function () {
-          var _ref15 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee15(assert) {
-            return _regeneratorRuntime().wrap(function _callee15$(_context15) {
-              while (1) switch (_context15.prev = _context15.next) {
+          var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
+            return _regeneratorRuntime().wrap(function _callee16$(_context16) {
+              while (1) switch (_context16.prev = _context16.next) {
                 case 0:
-                  _context15.next = 2;
+                  _context16.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     
@@ -25998,17 +26042,17 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
                     "isStrictMode": false
                   }));
                 case 2:
-                  _context15.next = 4;
+                  _context16.next = 4;
                   return (0, _testHelpers.triggerEvent)('.oss-upload-area', 'drop', {
                     dataTransfer: {
                       files: [this.file]
                     }
                   });
                 case 4:
-                  _context15.next = 6;
+                  _context16.next = 6;
                   return (0, _testHelpers.waitFor)('.oss-upload-item [data-control-name="upload-item-remove-button"]');
                 case 6:
-                  _context15.next = 8;
+                  _context16.next = 8;
                   return (0, _testHelpers.click)('.oss-upload-item [data-control-name="upload-item-remove-button"]');
                 case 8:
                   assert.dom('.oss-upload-item').doesNotExist();
@@ -26016,21 +26060,21 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
                   assert.ok(this.onFileDeletion.calledOnce);
                 case 11:
                 case "end":
-                  return _context15.stop();
+                  return _context16.stop();
               }
-            }, _callee15, this);
+            }, _callee16, this);
           }));
-          return function (_x15) {
-            return _ref15.apply(this, arguments);
+          return function (_x16) {
+            return _ref16.apply(this, arguments);
           };
         }());
         (0, _qunit.test)('clicking on the edit button in the upload item opens the hidden file input', /*#__PURE__*/function () {
-          var _ref16 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee16(assert) {
+          var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
             var fileInput, fileInputClickStub;
-            return _regeneratorRuntime().wrap(function _callee16$(_context16) {
-              while (1) switch (_context16.prev = _context16.next) {
+            return _regeneratorRuntime().wrap(function _callee17$(_context17) {
+              while (1) switch (_context17.prev = _context17.next) {
                 case 0:
-                  _context16.next = 2;
+                  _context17.next = 2;
                   return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                   /*
                     
@@ -26046,7 +26090,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
                     "isStrictMode": false
                   }));
                 case 2:
-                  _context16.next = 4;
+                  _context17.next = 4;
                   return (0, _testHelpers.triggerEvent)('.oss-upload-area', 'drop', {
                     dataTransfer: {
                       files: [this.file]
@@ -26055,21 +26099,21 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
                 case 4:
                   fileInput = document.querySelector('.oss-upload-area-container input[type="file"]');
                   fileInputClickStub = _sinon.default.stub(fileInput, 'click');
-                  _context16.next = 8;
+                  _context17.next = 8;
                   return (0, _testHelpers.waitFor)('.oss-upload-item [data-control-name="upload-item-edit-button"]');
                 case 8:
-                  _context16.next = 10;
+                  _context17.next = 10;
                   return (0, _testHelpers.click)('.oss-upload-item [data-control-name="upload-item-edit-button"]');
                 case 10:
                   assert.ok(fileInputClickStub.calledOnce);
                 case 11:
                 case "end":
-                  return _context16.stop();
+                  return _context17.stop();
               }
-            }, _callee16, this);
+            }, _callee17, this);
           }));
-          return function (_x16) {
-            return _ref16.apply(this, arguments);
+          return function (_x17) {
+            return _ref17.apply(this, arguments);
           };
         }());
       });
@@ -26083,11 +26127,11 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
         };
       });
       (0, _qunit.test)('the file is displayed using an upload-item', /*#__PURE__*/function () {
-        var _ref17 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee17(assert) {
-          return _regeneratorRuntime().wrap(function _callee17$(_context17) {
-            while (1) switch (_context17.prev = _context17.next) {
+        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
+          return _regeneratorRuntime().wrap(function _callee18$(_context18) {
+            while (1) switch (_context18.prev = _context18.next) {
               case 0:
-                _context17.next = 2;
+                _context18.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   
@@ -26108,20 +26152,20 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
                 assert.dom('.oss-upload-item [data-control-name="upload-item-filename"]').hasText('foo.png');
               case 5:
               case "end":
-                return _context17.stop();
+                return _context18.stop();
             }
-          }, _callee17);
+          }, _callee18);
         }));
-        return function (_x17) {
-          return _ref17.apply(this, arguments);
+        return function (_x18) {
+          return _ref18.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('clicking on the remove button in the upload item moves back to the upload state', /*#__PURE__*/function () {
-        var _ref18 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee18(assert) {
-          return _regeneratorRuntime().wrap(function _callee18$(_context18) {
-            while (1) switch (_context18.prev = _context18.next) {
+        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
+          return _regeneratorRuntime().wrap(function _callee19$(_context19) {
+            while (1) switch (_context19.prev = _context19.next) {
               case 0:
-                _context18.next = 2;
+                _context19.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   
@@ -26137,7 +26181,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
                   "isStrictMode": false
                 }));
               case 2:
-                _context18.next = 4;
+                _context19.next = 4;
                 return (0, _testHelpers.click)('.oss-upload-item [data-control-name="upload-item-remove-button"]');
               case 4:
                 assert.dom('.oss-upload-item').doesNotExist();
@@ -26145,21 +26189,21 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
                 assert.ok(this.onFileDeletion.calledOnce);
               case 7:
               case "end":
-                return _context18.stop();
+                return _context19.stop();
             }
-          }, _callee18, this);
+          }, _callee19, this);
         }));
-        return function (_x18) {
-          return _ref18.apply(this, arguments);
+        return function (_x19) {
+          return _ref19.apply(this, arguments);
         };
       }());
       (0, _qunit.test)('clicking on the edit button in the upload item opens the hidden file input', /*#__PURE__*/function () {
-        var _ref19 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee19(assert) {
+        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
           var fileInput, fileInputClickStub;
-          return _regeneratorRuntime().wrap(function _callee19$(_context19) {
-            while (1) switch (_context19.prev = _context19.next) {
+          return _regeneratorRuntime().wrap(function _callee20$(_context20) {
+            while (1) switch (_context20.prev = _context20.next) {
               case 0:
-                _context19.next = 2;
+                _context20.next = 2;
                 return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
                 /*
                   
@@ -26177,62 +26221,11 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
               case 2:
                 fileInput = document.querySelector('.oss-upload-area-container input[type="file"]');
                 fileInputClickStub = _sinon.default.stub(fileInput, 'click');
-                _context19.next = 6;
+                _context20.next = 6;
                 return (0, _testHelpers.click)('.oss-upload-item [data-control-name="upload-item-edit-button"]');
               case 6:
                 assert.ok(fileInputClickStub.calledOnce);
               case 7:
-              case "end":
-                return _context19.stop();
-            }
-          }, _callee19);
-        }));
-        return function (_x19) {
-          return _ref19.apply(this, arguments);
-        };
-      }());
-    });
-    (0, _qunit.module)('allow multiple files', function () {
-      (0, _qunit.test)('it allows the user to upload more than one file', /*#__PURE__*/function () {
-        var _ref20 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee20(assert) {
-          return _regeneratorRuntime().wrap(function _callee20$(_context20) {
-            while (1) switch (_context20.prev = _context20.next) {
-              case 0:
-                _context20.next = 2;
-                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-                /*
-                  
-                        <OSS::UploadArea
-                          @uploader={{this.mockUploader}} @multiple={{true}} @rules={{this.validationRules}}
-                          @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
-                      
-                */
-                {
-                  "id": "EnHKdy1N",
-                  "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@uploader\",\"@multiple\",\"@rules\",\"@subtitle\",\"@onUploadSuccess\"],[[30,0,[\"mockUploader\"]],true,[30,0,[\"validationRules\"]],[30,0,[\"subtitle\"]],[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/upload-area\"]]",
-                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-area-test.ts",
-                  "isStrictMode": false
-                }));
-              case 2:
-                _context20.next = 4;
-                return (0, _testHelpers.triggerEvent)('.oss-upload-area', 'drop', {
-                  dataTransfer: {
-                    files: [file]
-                  }
-                });
-              case 4:
-                _context20.next = 6;
-                return (0, _testHelpers.triggerEvent)('.oss-upload-area', 'drop', {
-                  dataTransfer: {
-                    files: [file]
-                  }
-                });
-              case 6:
-                assert.dom('.oss-upload-area').exists();
-                assert.dom('.oss-upload-item').exists({
-                  count: 2
-                });
-              case 8:
               case "end":
                 return _context20.stop();
             }
@@ -26242,7 +26235,9 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
           return _ref20.apply(this, arguments);
         };
       }());
-      (0, _qunit.test)('the user can remove a specific uploaded item', /*#__PURE__*/function () {
+    });
+    (0, _qunit.module)('allow multiple files', function () {
+      (0, _qunit.test)('it allows the user to upload more than one file', /*#__PURE__*/function () {
         var _ref21 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee21(assert) {
           return _regeneratorRuntime().wrap(function _callee21$(_context21) {
             while (1) switch (_context21.prev = _context21.next) {
@@ -26277,19 +26272,11 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
                   }
                 });
               case 6:
+                assert.dom('.oss-upload-area').exists();
                 assert.dom('.oss-upload-item').exists({
                   count: 2
                 });
-                _context21.next = 9;
-                return (0, _testHelpers.waitFor)('.oss-upload-item:first-child [data-control-name="upload-item-remove-button"]');
-              case 9:
-                _context21.next = 11;
-                return (0, _testHelpers.click)('.oss-upload-item:first-child [data-control-name="upload-item-remove-button"]');
-              case 11:
-                assert.dom('.oss-upload-item').exists({
-                  count: 1
-                });
-              case 12:
+              case 8:
               case "end":
                 return _context21.stop();
             }
@@ -26297,6 +26284,63 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
         }));
         return function (_x21) {
           return _ref21.apply(this, arguments);
+        };
+      }());
+      (0, _qunit.test)('the user can remove a specific uploaded item', /*#__PURE__*/function () {
+        var _ref22 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee22(assert) {
+          return _regeneratorRuntime().wrap(function _callee22$(_context22) {
+            while (1) switch (_context22.prev = _context22.next) {
+              case 0:
+                _context22.next = 2;
+                return (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+                /*
+                  
+                        <OSS::UploadArea
+                          @uploader={{this.mockUploader}} @multiple={{true}} @rules={{this.validationRules}}
+                          @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
+                      
+                */
+                {
+                  "id": "EnHKdy1N",
+                  "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@uploader\",\"@multiple\",\"@rules\",\"@subtitle\",\"@onUploadSuccess\"],[[30,0,[\"mockUploader\"]],true,[30,0,[\"validationRules\"]],[30,0,[\"subtitle\"]],[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/upload-area\"]]",
+                  "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-area-test.ts",
+                  "isStrictMode": false
+                }));
+              case 2:
+                _context22.next = 4;
+                return (0, _testHelpers.triggerEvent)('.oss-upload-area', 'drop', {
+                  dataTransfer: {
+                    files: [file]
+                  }
+                });
+              case 4:
+                _context22.next = 6;
+                return (0, _testHelpers.triggerEvent)('.oss-upload-area', 'drop', {
+                  dataTransfer: {
+                    files: [file]
+                  }
+                });
+              case 6:
+                assert.dom('.oss-upload-item').exists({
+                  count: 2
+                });
+                _context22.next = 9;
+                return (0, _testHelpers.waitFor)('.oss-upload-item:first-child [data-control-name="upload-item-remove-button"]');
+              case 9:
+                _context22.next = 11;
+                return (0, _testHelpers.click)('.oss-upload-item:first-child [data-control-name="upload-item-remove-button"]');
+              case 11:
+                assert.dom('.oss-upload-item').exists({
+                  count: 1
+                });
+              case 12:
+              case "end":
+                return _context22.stop();
+            }
+          }, _callee22);
+        }));
+        return function (_x22) {
+          return _ref22.apply(this, arguments);
         };
       }());
     });
