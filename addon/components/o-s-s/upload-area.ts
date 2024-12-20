@@ -26,14 +26,13 @@ interface OSSUploadAreaArgs {
   size?: 'lg' | 'md';
   multiple?: boolean;
   displayPreview?: boolean;
-  dryRun?: boolean;
 
   onUploadSuccess(artifact: FileArtifact): void;
   onUploadFailure?(error: FailedUploadResponse): void;
   onVerificationFailure?(): void;
   onHandleFileUpload?(): void;
   onFileDeletion?(): void;
-  onFileSelected?(file: File): void;
+  onDryRun?(file: File): void;
 
   // In multiple mode
   onUploadSuccess(index: number, artifact: FileArtifact): void;
@@ -228,8 +227,8 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   private _handleFileUpload(file: File): void {
     this.args.onHandleFileUpload?.();
     if (this._validateFile(file)) {
-      if (this.args.dryRun && this.args.onFileSelected) {
-        this.args.onFileSelected(file);
+      if (this.args.onDryRun) {
+        this.args.onDryRun(file);
         return;
       }
 

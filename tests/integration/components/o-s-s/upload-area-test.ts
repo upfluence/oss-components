@@ -235,6 +235,23 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         );
       });
 
+      test('if onDryRun is passed, the uploaded file is passed to it if validated and no upload item is displayed', async function (assert) {
+        this.onDryRun = sinon.stub();
+
+        await render(hbs`
+          <OSS::UploadArea
+            @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+            @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} @onDryRun={{this.onDryRun}} />
+        `);
+        await triggerEvent('.oss-upload-area', 'drop', {
+          dataTransfer: { files: [this.file] }
+        });
+
+        assert.dom('.oss-upload-item').doesNotExist();
+        assert.dom('.oss-upload-area').exists();
+        assert.ok(this.onDryRun.calledOnceWithExactly(sinon.match((file: unknown) => file instanceof File)));
+      });
+
       test('the uploaded file is displayed if the dropped file passes the validation', async function (assert) {
         await render(hbs`
           <OSS::UploadArea
