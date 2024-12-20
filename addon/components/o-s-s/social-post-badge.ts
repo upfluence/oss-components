@@ -13,6 +13,7 @@ export type SocialPostType =
   | 'tweet'
   | 'pin'
   | 'youtube_video'
+  | 'youtube_short'
   | 'twitch_stream';
 
 type skinDefinitionType = { [key in SocialPostType]: string };
@@ -27,6 +28,7 @@ export const skinMatching: skinDefinitionType = {
   tweet: 'fab fa-x-twitter',
   pin: 'fab fa-pinterest',
   youtube_video: 'fab fa-youtube',
+  youtube_short: 'youtube-short.svg',
   twitch_stream: 'fab fa-twitch'
 };
 
