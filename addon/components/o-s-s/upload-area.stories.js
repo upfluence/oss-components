@@ -165,6 +165,15 @@ export default {
           summary: 'onHandleFileUpload(): void'
         }
       }
+    },
+    onDryRun: {
+      description: 'Action allowing the user to stop just before the actual upload and get the file directly.',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'onDryRun?(): void'
+        }
+      }
     }
   },
   parameters: {
