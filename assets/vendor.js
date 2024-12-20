@@ -88235,6 +88235,7 @@ define("@upfluence/oss-components/components/o-s-s/social-post-badge", ["exports
     tweet: 'fab fa-x-twitter',
     pin: 'fab fa-pinterest',
     youtube_video: 'fab fa-youtube',
+    youtube_short: 'youtube-short.svg',
     twitch_stream: 'fab fa-twitch'
   };
   var OSSSocialPostBadge = _exports.default = (_class = /*#__PURE__*/function (_Component) {
@@ -88289,7 +88290,7 @@ define("@upfluence/oss-components/components/o-s-s/social-post-badge", ["exports
   });
   _exports.default = _exports.Default = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
-  var SocialPostTypes = ['article', 'facebook_status', 'instagram_media', 'tiktok_video', 'story', 'tweet', 'pin', 'youtube_video', 'twitch_stream'];
+  var SocialPostTypes = ['article', 'facebook_status', 'instagram_media', 'instagram_reel', 'tiktok_video', 'story', 'tweet', 'pin', 'youtube_video', 'youtube_short', 'twitch_stream'];
   var _default = _exports.default = {
     title: 'Components/OSS::SocialPostBadge',
     component: 'socialPostBadge',

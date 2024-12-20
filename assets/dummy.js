@@ -2304,6 +2304,9 @@ define("dummy/controllers/visual", ["exports", "@ember/controller", "@glimmer/tr
         key: 'youtube_video',
         active: false
       }, {
+        key: 'youtube_short',
+        active: false
+      }, {
         key: 'twitch_stream',
         active: false
       }, {

@@ -11192,12 +11192,15 @@ a.upf-btn--sm {
 .oss-social-post-badge--tiktok_video.oss-social-post-badge--plain .icon-container {
   background-color: var(--color-tiktok-500);
 }
-.oss-social-post-badge--youtube_video {
+.oss-social-post-badge--youtube_video,
+.oss-social-post-badge--youtube_short {
   border: 1px solid var(--color-youtube-500);
   color: var(--color-youtube-500);
 }
 .oss-social-post-badge--youtube_video.oss-social-post-badge--plain,
-.oss-social-post-badge--youtube_video.oss-social-post-badge--plain .icon-container {
+.oss-social-post-badge--youtube_short.oss-social-post-badge--plain,
+.oss-social-post-badge--youtube_video.oss-social-post-badge--plain .icon-container,
+.oss-social-post-badge--youtube_short.oss-social-post-badge--plain .icon-container {
   background-color: var(--color-youtube-500);
 }
 .oss-social-post-badge--twitch_stream {

@@ -22714,7 +22714,8 @@ define("dummy/tests/integration/components/o-s-s/social-post-badge-test", ["quni
     twitch_stream: '.fab.fa-twitch'
   };
   var IMG_MATCHING = {
-    instagram_reel: 'instagram-reel.svg'
+    instagram_reel: 'instagram-reel.svg',
+    youtube_short: 'youtube-short.svg'
   };
   (0, _qunit.module)('Integration | Component | o-s-s/social-post-badge', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
