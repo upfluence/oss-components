@@ -27,7 +27,7 @@ module.exports = {
   included(parent) {
     this._super.included.apply(this, arguments);
 
-    if (parent.name === 'dummy') {
+    if (parent.project.pkg.name === name) {
       this.options.babel.plugins.push(...require('ember-cli-code-coverage').buildBabelPlugin());
     }
 
