@@ -21,14 +21,15 @@ module.exports = {
   options: {
     autoImport: {
       exclude: ['@storybook/addon-actions']
-    },
-    babel: {
-      plugins: [...require('ember-cli-code-coverage').buildBabelPlugin()]
     }
   },
 
-  included() {
+  included(parent) {
     this._super.included.apply(this, arguments);
+
+    if (parent.name === 'dummy') {
+      this.options.babel.plugins.push(...require('ember-cli-code-coverage').buildBabelPlugin());
+    }
 
     this.import('vendor/bootstrap/bootstrap.min.js');
   },
