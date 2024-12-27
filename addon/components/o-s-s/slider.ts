@@ -52,7 +52,7 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
     return '';
   }
 
-  get tooltipPositionStyle(): string | null {
+  get tooltipPositionStyle(): ReturnType<typeof htmlSafe> | null {
     if (!this.tooltipElement && !this.inputRangeElement) return null;
 
     const sliderRect = this.inputRangeElement!.getBoundingClientRect();
@@ -63,12 +63,12 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
     const tooltipWidth = this.tooltipElement!.offsetWidth;
     const tooltipLeftPosition = handleTooltipHorizontalPosition - tooltipWidth / 2 + HANDLE_WIDTH / 2;
 
-    return `left:${tooltipLeftPosition}px`;
+    return htmlSafe(`left:${tooltipLeftPosition}px`);
   }
 
-  get activeBackgroundWidth(): string {
+  get activeBackgroundWidth(): ReturnType<typeof htmlSafe> {
     const percentage = Math.round(this.getPercentage(this.args.value ?? '0') * 100);
-    return `--range-percentage: ${percentage}%`;
+    return htmlSafe(`--range-percentage: ${percentage}%`);
   }
 
   @action
