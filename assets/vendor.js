@@ -84500,7 +84500,7 @@ define("@upfluence/oss-components/components/o-s-s/password-input", ["exports", 
     value: true
   });
   _exports.default = _exports.INPUT_VALIDATORS = void 0;
-  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+  var _class, _descriptor, _descriptor2, _descriptor3;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@ember/service",0,"@glimmer/tracking",0,"@glimmer/component",0,"@ember/debug",0,"@ember/utils",0,"@ember/component/helper",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -84605,7 +84605,6 @@ define("@upfluence/oss-components/components/o-s-s/password-input", ["exports", 
       _initializerDefineProperty(_assertThisInitialized(_this), "intl", _descriptor, _assertThisInitialized(_this));
       _initializerDefineProperty(_assertThisInitialized(_this), "regexError", _descriptor2, _assertThisInitialized(_this));
       _initializerDefineProperty(_assertThisInitialized(_this), "visibility", _descriptor3, _assertThisInitialized(_this));
-      _initializerDefineProperty(_assertThisInitialized(_this), "placeholder", _descriptor4, _assertThisInitialized(_this));
       _defineProperty(_assertThisInitialized(_this), "runValidation", typeof _this.args.validates === 'function');
       _defineProperty(_assertThisInitialized(_this), "validatorAttributes", (0, _helper.helper)(function (_, _ref) {
         var type = _ref.type;
@@ -84623,10 +84622,15 @@ define("@upfluence/oss-components/components/o-s-s/password-input", ["exports", 
         return validator.state === state ? 'visible' : 'invisible';
       }));
       (true && !(typeof _this.args.value !== 'undefined') && (0, _debug.assert)('[component][OSS::PasswordInput] The @value parameter is mandatory', typeof _this.args.value !== 'undefined'));
-      _this.placeholder = args.placeholder || _this.intl.t('oss-components.password-input.placeholder');
       return _this;
     }
     _createClass(OSSPasswordInput, [{
+      key: "placeholder",
+      get: function get() {
+        var _this$args$placeholde;
+        return (_this$args$placeholde = this.args.placeholder) !== null && _this$args$placeholde !== void 0 ? _this$args$placeholde : this.intl.t('oss-components.password-input.placeholder');
+      }
+    }, {
       key: "validatorSet",
       get: function get() {
         var _this$args$validatorS;
@@ -84718,11 +84722,6 @@ define("@upfluence/oss-components/components/o-s-s/password-input", ["exports", 
     initializer: function initializer() {
       return 'password';
     }
-  }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, "placeholder", [_tracking.tracked], {
-    configurable: true,
-    enumerable: true,
-    writable: true,
-    initializer: null
   }), _applyDecoratedDescriptor(_class.prototype, "validateInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "validateInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleVisibility", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleVisibility"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSPasswordInput);
 });
@@ -86060,14 +86059,14 @@ define("@upfluence/oss-components/components/o-s-s/private/base-modal", ["export
   }(_component.default), (_applyDecoratedDescriptor(_class.prototype, "onDestroy", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onDestroy"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "initialize", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initialize"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeModal", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeModal"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeOnEscape", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeOnEscape"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "trackInitialTarget", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "trackInitialTarget"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype)), _class);
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-define("@upfluence/oss-components/components/o-s-s/progress-bar", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _templateFactory) {
+define("@upfluence/oss-components/components/o-s-s/progress-bar", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@ember/template", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _template, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/debug",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/debug",0,"@ember/template",0,"@ember/component"eaimeta@70e063a35619d71f
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
   function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
   function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
@@ -86139,7 +86138,7 @@ define("@upfluence/oss-components/components/o-s-s/progress-bar", ["exports", "@
     }, {
       key: "progressBarWidthStyle",
       get: function get() {
-        return "width: ".concat(this.args.value + '%', "; --progress-bar-animation-width: ").concat(this.args.value + '%', ";");
+        return (0, _template.htmlSafe)("width: ".concat(this.args.value + '%', "; --progress-bar-animation-width: ").concat(this.args.value + '%', ";"));
       }
     }]);
     return OSSProgressBar;
@@ -87487,14 +87486,14 @@ define("@upfluence/oss-components/components/o-s-s/side-panel/header", ["exports
   Usage.args = defaultArgs;
 });
 ;function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-define("@upfluence/oss-components/components/o-s-s/skeleton", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _templateFactory) {
+define("@upfluence/oss-components/components/o-s-s/skeleton", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@ember/template", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _template, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/debug",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/debug",0,"@ember/template",0,"@ember/component"eaimeta@70e063a35619d71f
   function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
   function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, _toPropertyKey(descriptor.key), descriptor); } }
   function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
@@ -87591,7 +87590,7 @@ define("@upfluence/oss-components/components/o-s-s/skeleton", ["exports", "@embe
             var randomValue = Math.ceil(Math.random() * randomizeInRange) * (Math.round(Math.random()) ? 1 : -1);
             width = this.width + randomValue;
           }
-          rows.push("min-height: ".concat(this.height).concat(this.heightPxOrPc, "; width: ").concat(width).concat(this.widthPxOrPc));
+          rows.push((0, _template.htmlSafe)("min-height: ".concat(this.height).concat(this.heightPxOrPc, "; width: ").concat(width).concat(this.widthPxOrPc)));
         }
         return rows;
       }
@@ -87889,14 +87888,14 @@ define("@upfluence/oss-components/components/o-s-s/slider", ["exports", "@ember/
         var handleTooltipHorizontalPosition = percentage * correctedSliderWidth;
         var tooltipWidth = this.tooltipElement.offsetWidth;
         var tooltipLeftPosition = handleTooltipHorizontalPosition - tooltipWidth / 2 + HANDLE_WIDTH / 2;
-        return "left:".concat(tooltipLeftPosition, "px");
+        return (0, _template.htmlSafe)("left:".concat(tooltipLeftPosition, "px"));
       }
     }, {
       key: "activeBackgroundWidth",
       get: function get() {
         var _this$args$value;
         var percentage = Math.round(this.getPercentage((_this$args$value = this.args.value) !== null && _this$args$value !== void 0 ? _this$args$value : '0') * 100);
-        return "--range-percentage: ".concat(percentage, "%");
+        return (0, _template.htmlSafe)("--range-percentage: ".concat(percentage, "%"));
       }
     }, {
       key: "onRangeChange",
