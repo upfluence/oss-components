@@ -23,7 +23,7 @@ module('Integration | Component | o-s-s/side-panel/header', function (hooks) {
     assert.ok(this.onClose.calledOnce, 'Clicked on the close button so the side panel closes.');
   });
 
-  module('Return arrow button', function () {
+  module('Return arrow button', function (hooks) {
     hooks.beforeEach(function () {
       this.onReturn = sinon.stub();
     });

@@ -53,7 +53,6 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
   @service intl: any;
   @tracked regexError: string | null = null;
   @tracked visibility: 'text' | 'password' = 'password';
-  @tracked placeholder: string | undefined;
 
   private runValidation: boolean = typeof this.args.validates === 'function';
 
@@ -61,7 +60,10 @@ export default class OSSPasswordInput extends Component<OSSPasswordInputArgs> {
     super(owner, args);
 
     assert('[component][OSS::PasswordInput] The @value parameter is mandatory', typeof this.args.value !== 'undefined');
-    this.placeholder = args.placeholder || this.intl.t('oss-components.password-input.placeholder');
+  }
+
+  get placeholder(): string {
+    return this.args.placeholder ?? this.intl.t('oss-components.password-input.placeholder');
   }
 
   get validatorSet(): ValidatorSet {

@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
+import { htmlSafe } from '@ember/template';
 
 type ProgressBarSkins = 'warning' | 'success' | 'danger';
 type ProgressBarSizes = 'xs' | 'sm';
@@ -41,7 +42,7 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
     return classes.join(' ');
   }
 
-  get progressBarWidthStyle(): string {
-    return `width: ${this.args.value + '%'}; --progress-bar-animation-width: ${this.args.value + '%'};`;
+  get progressBarWidthStyle(): ReturnType<typeof htmlSafe> {
+    return htmlSafe(`width: ${this.args.value + '%'}; --progress-bar-animation-width: ${this.args.value + '%'};`);
   }
 }

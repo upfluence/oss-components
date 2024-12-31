@@ -13,7 +13,9 @@ import { forceModulesToBeLoaded, sendCoverage } from 'ember-cli-code-coverage/te
 registerAssertions(QUnit.assert);
 setup(QUnit.assert);
 QUnit.done(async function () {
-  forceModulesToBeLoaded();
+  forceModulesToBeLoaded((_, moduleName) => {
+    return !moduleName.endsWith('.stories');
+  });
   await sendCoverage();
 });
 
