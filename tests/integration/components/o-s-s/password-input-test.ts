@@ -3,9 +3,11 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror, click, typeIn } from '@ember/test-helpers';
 import sinon from 'sinon';
+import { setupIntl } from 'ember-intl/test-support';
 
 module('Integration | Component | o-s-s/password-input', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
 
   hooks.beforeEach(function () {
     this.validates = sinon.stub();

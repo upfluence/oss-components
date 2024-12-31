@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
+import { htmlSafe } from '@ember/template';
 
 interface OSSSkeletonArgs {
   width?: number | string;
@@ -56,9 +57,9 @@ export default class OSSSkeleton extends Component<OSSSkeletonArgs> {
     return style.join(' ');
   }
 
-  get rows(): string[] {
+  get rows(): ReturnType<typeof htmlSafe>[] {
     const randomizeInRange: number = this.width * (RANGE_PERCENTAGE / 100);
-    let rows: string[] = [];
+    let rows: ReturnType<typeof htmlSafe>[] = [];
     let multiple = this.args.multiple || 1;
 
     for (let i = 0; i < multiple; ++i) {
@@ -67,7 +68,7 @@ export default class OSSSkeleton extends Component<OSSSkeletonArgs> {
         const randomValue = Math.ceil(Math.random() * randomizeInRange) * (Math.round(Math.random()) ? 1 : -1);
         width = this.width + randomValue;
       }
-      rows.push(`min-height: ${this.height}${this.heightPxOrPc}; width: ${width}${this.widthPxOrPc}`);
+      rows.push(htmlSafe(`min-height: ${this.height}${this.heightPxOrPc}; width: ${width}${this.widthPxOrPc}`));
     }
 
     return rows;
