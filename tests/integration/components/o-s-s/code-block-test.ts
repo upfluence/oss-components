@@ -5,9 +5,12 @@ import { setupIntl } from 'ember-intl/test-support';
 import { click, findAll, render } from '@ember/test-helpers';
 import sinon from 'sinon';
 
+import { setupToast } from '@upfluence/oss-components/test-support';
+
 module('Integration | Component | o-s-s/code-block', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks);
+  setupToast(hooks);
 
   hooks.beforeEach(function () {
     this.codeBlock = codeExample;
@@ -48,9 +51,8 @@ module('Integration | Component | o-s-s/code-block', function (hooks) {
   test('if onCopyMessage is set, it shows a toast message when the code is copied', async function (assert) {
     sinon.stub(navigator.clipboard, 'writeText');
     await render(hbs`<OSS::CodeBlock @content={{this.codeBlock}} @copyable={{true}} @onCopyMessage={{'Copied!'}} />`);
-    const stubToast = sinon.stub(this.owner.lookup('service:toast'), 'success');
     await click('.code-block .floating-copy-btn .upf-btn');
-    assert.ok(stubToast.calledOnceWithExactly('Copied!', ''));
+    assert.ok(this.toastSuccessStub.calledOnceWithExactly('Copied!', ''));
     sinon.restore();
   });
 
