@@ -1,11 +1,9 @@
 import BaseModal, { type BaseModalArgs } from './private/base-modal';
 import { action } from '@ember/object';
 import { assert } from '@ember/debug';
-import { htmlSafe } from '@ember/template';
 
-type Skin = 'alert' | 'primary' | 'error';
-
-export type ButtonDefinition = { label: string; action: () => unknown; loading?: boolean };
+export type Skin = 'alert' | 'primary' | 'error';
+export type ButtonDefinition = { label: string; action: () => unknown; loading?: boolean; icon?: string };
 
 export interface OSSDialogArgs extends BaseModalArgs {
   title: string;

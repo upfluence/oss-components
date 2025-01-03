@@ -55,7 +55,7 @@ export default {
       description: 'A hash with the main action button properties',
       table: {
         type: {
-          summary: '{ label: string, action: () => unknown; loading?: boolean }'
+          summary: '{ label: string, action: () => unknown; loading?: boolean; icon?: string }'
         },
         defaultValue: { summary: 'undefined' }
       },
@@ -68,7 +68,7 @@ export default {
       description: 'A hash with the secondary action button properties',
       table: {
         type: {
-          summary: '{ label: string, action: () => unknown }'
+          summary: '{ label: string, action: () => unknown; icon?: string }'
         },
         defaultValue: { summary: 'undefined' }
       },
@@ -93,11 +93,13 @@ const defaultArgs = {
   mainAction: {
     label: 'Discard',
     action: action('discard'),
-    loading: false
+    loading: false,
+    icon: null
   },
   secondaryAction: {
     label: 'Cancel',
-    action: action('cancel')
+    action: action('cancel'),
+    icon: null
   }
 };
 

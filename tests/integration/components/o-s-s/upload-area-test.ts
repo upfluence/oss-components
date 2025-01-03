@@ -6,6 +6,7 @@ import { setupIntl } from 'ember-intl/test-support';
 import sinon from 'sinon';
 
 import MockUploader from '@upfluence/oss-components/test-support/services/uploader';
+import { setupToast } from '@upfluence/oss-components/test-support';
 
 const file = new File(
   [new Blob(['iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=='])],
@@ -16,6 +17,7 @@ const file = new File(
 module('Integration | Component | o-s-s/upload-area', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks);
+  setupToast(hooks);
 
   hooks.beforeEach(function () {
     this.owner.register('service:uploader', MockUploader);
@@ -209,8 +211,6 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
           { type: 'filetype', value: ['pdf'] }
         ];
 
-        const toastStub = sinon.stub(this.owner.lookup('service:toast'), 'error');
-
         await render(hbs`
           <OSS::UploadArea
             @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
@@ -221,14 +221,14 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         });
 
         assert.ok(
-          toastStub.calledWith(
+          this.toastErrorStub.calledWith(
             this.intl.t(`oss-components.upload-area.errors.filetype.description`),
             this.intl.t(`oss-components.upload-area.errors.filetype.title`)
           )
         );
 
         assert.ok(
-          toastStub.calledWith(
+          this.toastErrorStub.calledWith(
             this.intl.t('oss-components.upload-area.errors.filesize.description', { max_filesize: '1B' }),
             this.intl.t('oss-components.upload-area.errors.filesize.title')
           )

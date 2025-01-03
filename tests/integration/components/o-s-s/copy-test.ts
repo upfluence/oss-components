@@ -5,12 +5,13 @@ import { setupIntl } from 'ember-intl/test-support';
 import { render, click } from '@ember/test-helpers';
 import sinon from 'sinon';
 
-import { setupClipboard } from '@upfluence/oss-components/test-support';
+import { setupClipboard, setupToast } from '@upfluence/oss-components/test-support';
 
 module('Integration | Component | o-s-s/copy', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks);
   setupClipboard(hooks);
+  setupToast(hooks);
 
   test('it renders', async function (assert) {
     await render(hbs`<OSS::Copy />`);
@@ -77,37 +78,35 @@ module('Integration | Component | o-s-s/copy', function (hooks) {
   });
 
   module('when clicking', function (hooks) {
-    hooks.beforeEach(function () {
-      this.toastService = this.owner.lookup('service:toast');
-    });
-
     hooks.afterEach(function () {
       sinon.restore();
     });
 
     test('the info toast is rendered', async function (assert) {
       sinon.stub(navigator.clipboard, 'writeText').resolves();
-      const toastInfoStub = sinon.stub(this.toastService, 'info').resolves();
 
       await render(hbs`<OSS::Copy @value="test" />`);
       await click('.upf-btn--default');
 
-      assert.true(toastInfoStub.calledOnceWithExactly('Successfully copied to your clipboard.', 'Copied to clipboard'));
+      assert.true(
+        this.toastInfoStub.calledOnceWithExactly('Successfully copied to your clipboard.', 'Copied to clipboard')
+      );
     });
 
     test('the error toast is rendered', async function (assert) {
       sinon.stub(navigator.clipboard, 'writeText').rejects();
-      const toastErrorStub = sinon.stub(this.toastService, 'error').resolves();
 
       await render(hbs`<OSS::Copy @value="test" />`);
       await click('.upf-btn--default');
 
-      assert.true(toastErrorStub.calledOnceWithExactly('Failed to copy to your clipboard. Please try again.', 'Error'));
+      assert.true(
+        this.toastErrorStub.calledOnceWithExactly('Failed to copy to your clipboard. Please try again.', 'Error')
+      );
     });
 
     test('the clipboard writeText method is called', async function (assert) {
       const writeTextStub = sinon.stub(navigator.clipboard, 'writeText').resolves();
-      sinon.stub(this.toastService, 'info').resolves();
+      this.toastInfoStub.resolves();
       this.textForCopy = 'test';
 
       await render(hbs`<OSS::Copy @value={{this.textForCopy}} />`);
