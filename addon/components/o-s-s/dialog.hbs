@@ -11,16 +11,18 @@
     </div>
     <div class="oss-dialog__footer">
       <OSS::Button
+        @icon={{@mainAction.icon}}
         @skin={{this.skinBtn}}
         @label={{@mainAction.label}}
-        {{on "click" @mainAction.action}}
         @loading={{@mainAction.loading}}
         data-control-name="dialog-primary-action-button"
+        {{on "click" @mainAction.action}}
       />
       <OSS::Button
+        @icon={{@secondaryAction.icon}}
         @label={{@secondaryAction.label}}
-        {{on "click" @secondaryAction.action}}
         data-control-name="dialog-secondary-action-button"
+        {{on "click" @secondaryAction.action}}
       />
     </div>
   </div>
