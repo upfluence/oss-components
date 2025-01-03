@@ -3,7 +3,6 @@ import { action } from '@ember/object';
 import { assert } from '@ember/debug';
 
 export type Skin = 'alert' | 'primary' | 'error';
-
 export type ButtonDefinition = { label: string; action: () => unknown; loading?: boolean; icon?: string };
 
 export interface OSSDialogArgs extends BaseModalArgs {
