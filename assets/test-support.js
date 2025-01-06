@@ -24127,7 +24127,7 @@ define("@upfluence/oss-components/test-support/custom-assertions/tooltip", ["exp
   assertion.__name__ = 'tooltip';
   var _default = _exports.default = assertion;
 });
-define("@upfluence/oss-components/test-support/index", ["exports", "@upfluence/oss-components/test-support/setup-clipboard"], function (_exports, _setupClipboard) {
+define("@upfluence/oss-components/test-support/index", ["exports", "@upfluence/oss-components/test-support/setup-clipboard", "@upfluence/oss-components/test-support/setup-toast"], function (_exports, _setupClipboard, _setupToast) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -24139,7 +24139,13 @@ define("@upfluence/oss-components/test-support/index", ["exports", "@upfluence/o
       return _setupClipboard.default;
     }
   });
-  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/test-support/setup-clipboard"eaimeta@70e063a35619d71f
+  Object.defineProperty(_exports, "setupToast", {
+    enumerable: true,
+    get: function get() {
+      return _setupToast.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/test-support/setup-clipboard",0,"@upfluence/oss-components/test-support/setup-toast"eaimeta@70e063a35619d71f
 });
 define("@upfluence/oss-components/test-support/register-assertions", ["exports", "@upfluence/oss-components/test-support/custom-assertions/tooltip"], function (_exports, _tooltip) {
   "use strict";
@@ -24257,6 +24263,24 @@ define("@upfluence/oss-components/test-support/setup-clipboard", ["exports", "si
     });
     hooks.afterEach(function () {
       this.permissionQueryStub.restore();
+    });
+  }
+});
+define("@upfluence/oss-components/test-support/setup-toast", ["exports", "sinon"], function (_exports, _sinon) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = setupToast;
+  0; //eaimeta@70e063a35619d71f0,"sinon"eaimeta@70e063a35619d71f
+  function setupToast(hooks) {
+    hooks.beforeEach(function () {
+      this.toastService = this.owner.lookup('service:toast');
+      this.toastSuccessStub = _sinon.default.stub(this.toastService, 'success');
+      this.toastErrorStub = _sinon.default.stub(this.toastService, 'error');
+      this.toastInfoStub = _sinon.default.stub(this.toastService, 'info');
+      this.toastWarningStub = _sinon.default.stub(this.toastService, 'warning');
     });
   }
 });

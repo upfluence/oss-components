@@ -80160,24 +80160,26 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
       </div>
       <div class="oss-dialog__footer">
         <OSS::Button
+          @icon={{@mainAction.icon}}
           @skin={{this.skinBtn}}
           @label={{@mainAction.label}}
-          {{on "click" @mainAction.action}}
           @loading={{@mainAction.loading}}
           data-control-name="dialog-primary-action-button"
+          {{on "click" @mainAction.action}}
         />
         <OSS::Button
+          @icon={{@secondaryAction.icon}}
           @label={{@secondaryAction.label}}
-          {{on "click" @secondaryAction.action}}
           data-control-name="dialog-secondary-action-button"
+          {{on "click" @secondaryAction.action}}
         />
       </div>
     </div>
   </div>
   */
   {
-    "id": "ZdgqabEh",
-    "block": "[[[11,0],[24,0,\"oss-dialog__backdrop fx-row fx-malign-center fx-xalign-center\"],[4,[38,0],[[30,0,[\"onDestroy\"]]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"oss-dialog fx-col\"],[17,1],[4,[38,1],[[30,0,[\"onInit\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"oss-dialog__header\"],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@skin\"],[[30,0,[\"icon\"]],[30,0,[\"skin\"]]]],null],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-3\"],[12],[1,\"\\n        \"],[10,1],[14,0,\"font-weight-semibold font-size-md\"],[12],[1,[30,2]],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"          \"],[10,1],[14,0,\"font-color-gray-900 font-size-sm\"],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"oss-dialog__footer\"],[12],[1,\"\\n      \"],[8,[39,4],[[24,\"data-control-name\",\"dialog-primary-action-button\"],[4,[38,5],[\"click\",[30,4,[\"action\"]]],null]],[[\"@skin\",\"@label\",\"@loading\"],[[30,0,[\"skinBtn\"]],[30,4,[\"label\"]],[30,4,[\"loading\"]]]],null],[1,\"\\n      \"],[8,[39,4],[[24,\"data-control-name\",\"dialog-secondary-action-button\"],[4,[38,5],[\"click\",[30,5,[\"action\"]]],null]],[[\"@label\"],[[30,5,[\"label\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@title\",\"@subtitle\",\"@mainAction\",\"@secondaryAction\"],false,[\"will-destroy\",\"did-insert\",\"o-s-s/badge\",\"if\",\"o-s-s/button\",\"on\"]]",
+    "id": "Y4f6cz/2",
+    "block": "[[[11,0],[24,0,\"oss-dialog__backdrop fx-row fx-malign-center fx-xalign-center\"],[4,[38,0],[[30,0,[\"onDestroy\"]]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"oss-dialog fx-col\"],[17,1],[4,[38,1],[[30,0,[\"onInit\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"oss-dialog__header\"],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@skin\"],[[30,0,[\"icon\"]],[30,0,[\"skin\"]]]],null],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-3\"],[12],[1,\"\\n        \"],[10,1],[14,0,\"font-weight-semibold font-size-md\"],[12],[1,[30,2]],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"          \"],[10,1],[14,0,\"font-color-gray-900 font-size-sm\"],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"oss-dialog__footer\"],[12],[1,\"\\n      \"],[8,[39,4],[[24,\"data-control-name\",\"dialog-primary-action-button\"],[4,[38,5],[\"click\",[30,4,[\"action\"]]],null]],[[\"@icon\",\"@skin\",\"@label\",\"@loading\"],[[30,4,[\"icon\"]],[30,0,[\"skinBtn\"]],[30,4,[\"label\"]],[30,4,[\"loading\"]]]],null],[1,\"\\n      \"],[8,[39,4],[[24,\"data-control-name\",\"dialog-secondary-action-button\"],[4,[38,5],[\"click\",[30,5,[\"action\"]]],null]],[[\"@icon\",\"@label\"],[[30,5,[\"icon\"]],[30,5,[\"label\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@title\",\"@subtitle\",\"@mainAction\",\"@secondaryAction\"],false,[\"will-destroy\",\"did-insert\",\"o-s-s/badge\",\"if\",\"o-s-s/button\",\"on\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/dialog.hbs",
     "isStrictMode": false
   });
@@ -80313,7 +80315,7 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
         description: 'A hash with the main action button properties',
         table: {
           type: {
-            summary: '{ label: string, action: () => unknown; loading?: boolean }'
+            summary: '{ label: string, action: () => unknown; loading?: boolean; icon?: string }'
           },
           defaultValue: {
             summary: 'undefined'
@@ -80330,7 +80332,7 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
         description: 'A hash with the secondary action button properties',
         table: {
           type: {
-            summary: '{ label: string, action: () => unknown }'
+            summary: '{ label: string, action: () => unknown; icon?: string }'
           },
           defaultValue: {
             summary: 'undefined'
@@ -80356,11 +80358,13 @@ define("@upfluence/oss-components/components/o-s-s/currency-input", ["exports", 
     mainAction: {
       label: 'Discard',
       action: (0, _addonActions.action)('discard'),
-      loading: false
+      loading: false,
+      icon: null
     },
     secondaryAction: {
       label: 'Cancel',
-      action: (0, _addonActions.action)('cancel')
+      action: (0, _addonActions.action)('cancel'),
+      icon: null
     }
   };
   var BasicUsageTemplate = function BasicUsageTemplate(args) {
