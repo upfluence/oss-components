@@ -1,0 +1,44 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title="Testing/Test helpers"
+  parameters={{
+    viewMode: 'docs',
+    previewTabs: { canvas: { hidden: true } }
+  }}
+/>
+
+# Test helpers
+
+`@upfluence/oss-components` provides a few test helpers, so that you can check
+easily setup frequently used stubs in a few lines of code.
+
+## setupToast
+
+This test helper allows you to setup the Toast service and its various methods
+so you can easily spy on them in your tests. It defines a `this.toastService`
+property that is available in your tests as well as the following stubs:
+
+- `this.toastSuccessStub`
+- `this.toastErrorStub`
+- `this.toastInfoStub`
+- `this.toastWarningStub`
+
+All the stubbing is done using
+[`Sinon`](https://sinonjs.org/releases/v19/stubs/) if you want to know more
+about the methods available on them.
+
+Usage:
+
+```typescript
+module('Integration | Component | o-s-s/my-component', function (hooks) {
+  setupRenderingTest(hooks);
+  setupToast(hooks);
+
+  test('it renders a toast when clicked', function(assert) {
+    await render(hbs`<OSS::MyComponent />`)
+    await click('.button-that-triggers-a-toast')
+    assert.ok(this.toastSuccessStub.calledOnce);
+  })
+});
+```
