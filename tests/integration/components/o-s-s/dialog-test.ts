@@ -118,12 +118,30 @@ module('Integration | Component | o-s-s/dialog', function (hooks) {
     assert.dom('[data-control-name="dialog-primary-action-button"] .fa-circle-notch').exists();
   });
 
+  test('When the main action button has the icon property provided, the button shows it', async function (assert) {
+    this.mainAction.icon = 'far fa-robot';
+
+    await render(
+      hbs`<OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />`
+    );
+    assert.dom('[data-control-name="dialog-primary-action-button"] .fa-robot').exists();
+  });
+
   test('The secondary action button label is displayed', async function (assert) {
     await render(
       hbs`<OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />`
     );
 
     assert.dom('.oss-dialog__footer .upf-btn--default').hasText(this.secondaryAction.label);
+  });
+
+  test('When the secondary action button has the icon property provided, the button shows it', async function (assert) {
+    this.secondaryAction.icon = 'far fa-robot';
+
+    await render(
+      hbs`<OSS::Dialog @title={{this.title}} @mainAction={{this.mainAction}} @secondaryAction={{this.secondaryAction}} />`
+    );
+    assert.dom('[data-control-name="dialog-secondary-action-button"] .fa-robot').exists();
   });
 
   test('When clicking on the main action button, the main action is called', async function (assert) {

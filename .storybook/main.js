@@ -15,7 +15,7 @@ module.exports = {
     '../addon/modifiers/**/*.stories.@(js|jsx|ts|tsx)',
     '../addon/helpers/**/*.stories.mdx',
     '../addon/helpers/**/*.stories.@(js|jsx|ts|tsx)',
-    '../addon-test-support/custom-assertions/**/*.stories.mdx',
+    '../addon-test-support/**/*.stories.mdx',
     '../app/styles/**/*.stories.mdx'
   ],
 
