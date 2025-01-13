@@ -88217,14 +88217,14 @@ define("@upfluence/oss-components/components/o-s-s/social-post-badge", ["exports
       {{#if this.isFontAwesomeIcon}}
         <OSS::Icon @style={{fa-icon-style this.iconDefinition}} @icon={{fa-icon-value this.iconDefinition}} />
       {{else}}
-        <img src={{asset-map (concat "@upfluence/oss-components/assets/upf-icons/" this.iconDefinition)}} alt="icon" />
+        <img src={{asset-map (concat "@upfluence/oss-components/assets/icons/" this.iconDefinition)}} alt="icon" />
       {{/if}}
     </div>
   </div>
   */
   {
-    "id": "d/3TYJZZ",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[24,\"role\",\"button\"],[17,1],[4,[38,0],[\"click\",[30,0,[\"onPostTypeClick\"]]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"icon-container\"],[12],[1,\"\\n\"],[41,[30,0,[\"isFontAwesomeIcon\"]],[[[1,\"      \"],[8,[39,2],null,[[\"@style\",\"@icon\"],[[28,[37,3],[[30,0,[\"iconDefinition\"]]],null],[28,[37,4],[[30,0,[\"iconDefinition\"]]],null]]],null],[1,\"\\n\"]],[]],[[[1,\"      \"],[10,\"img\"],[15,\"src\",[28,[37,5],[[28,[37,6],[\"@upfluence/oss-components/assets/upf-icons/\",[30,0,[\"iconDefinition\"]]],null]],null]],[14,\"alt\",\"icon\"],[12],[13],[1,\"\\n\"]],[]]],[1,\"  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\"],false,[\"on\",\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"asset-map\",\"concat\"]]",
+    "id": "66XKC7zC",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[24,\"role\",\"button\"],[17,1],[4,[38,0],[\"click\",[30,0,[\"onPostTypeClick\"]]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"icon-container\"],[12],[1,\"\\n\"],[41,[30,0,[\"isFontAwesomeIcon\"]],[[[1,\"      \"],[8,[39,2],null,[[\"@style\",\"@icon\"],[[28,[37,3],[[30,0,[\"iconDefinition\"]]],null],[28,[37,4],[[30,0,[\"iconDefinition\"]]],null]]],null],[1,\"\\n\"]],[]],[[[1,\"      \"],[10,\"img\"],[15,\"src\",[28,[37,5],[[28,[37,6],[\"@upfluence/oss-components/assets/icons/\",[30,0,[\"iconDefinition\"]]],null]],null]],[14,\"alt\",\"icon\"],[12],[13],[1,\"\\n\"]],[]]],[1,\"  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\"],false,[\"on\",\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"asset-map\",\"concat\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/social-post-badge.hbs",
     "isStrictMode": false
   });

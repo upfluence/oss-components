@@ -6142,89 +6142,6 @@ button.close {
   font-display: swap;
   src: url(https://fonts.gstatic.com/s/opensans/v40/memSYaGs126MiZpBA-UvWbX2vVnXBbObj2OVZyOOSr4dVJWUgsg-1y4n.ttf) format('truetype');
 }
-@font-face {
-  font-family: 'upf-icons';
-  src: url('fonts/upf-icons.eot?q3y53d');
-  src: url('fonts/upf-icons.eot?q3y53d#iefix') format('embedded-opentype'), url('fonts/upf-icons.ttf?q3y53d') format('truetype'), url('fonts/upf-icons.woff?q3y53d') format('woff'), url('fonts/upf-icons.svg?q3y53d#upf-icons') format('svg');
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-}
-.upf-icon-- {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'upf-icons' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.upf-icon--reel:before,
-.fa-reel:before {
-  content: "\e907";
-  color: #bc2a8d;
-}
-.upf-icon--igtv:before,
-.fa-igtv:before {
-  content: "\e906";
-  color: #bc2a8d;
-}
-.upf-icon--search:before {
-  content: "\e800";
-}
-.upf-icon--monitor:before {
-  content: "\e801";
-}
-.upf-icon--finance:before {
-  content: "\e802";
-}
-.upf-icon--list:before {
-  content: "\e803";
-}
-.upf-icon--help:before {
-  content: "\e804";
-}
-.upf-icon--workflow:before {
-  content: "\e805";
-}
-.upf-icon--inbox:before {
-  content: "\e806";
-}
-.upf-icon--cog:before {
-  content: "\e807";
-}
-.upf-icon--exit:before {
-  content: "\e808";
-}
-.upf-icon--influencers:before {
-  content: "\e809";
-}
-.upf-icon--messages:before {
-  content: "\e810";
-}
-.upf-icon--tiktok:before,
-.fa-tiktok:before {
-  content: "\e900";
-}
-.upf-icon--check:before {
-  content: "\e901";
-}
-.upf-icon--cross:before {
-  content: "\e902";
-}
-.upf-icon--cloud:before {
-  content: "\e903";
-}
-.upf-icon--crm:before {
-  content: "\e904";
-}
-.upf-icon--acquisition:before {
-  content: "\e905";
-}
 h1 {
   font-size: 3rem;
 }
@@ -6273,25 +6190,6 @@ label {
 }
 *::-webkit-scrollbar-thumb:hover {
   background-color: #969696;
-}
-.upf-icon,
-.fa-tiktok,
-.fa-reel,
-.fa-igtv {
-  /* use !important to prevent issues with browser extensions that change fonts */
-  font-family: 'upf-icons' !important;
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  /* Better Font Rendering =========== */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-[class*="upf-icon--"]:before {
-  color: inherit;
 }
 .remove-outline {
   outline: none !important;
@@ -12098,7 +11996,7 @@ a.upf-btn--sm {
   border-bottom-right-radius: var(--border-radius-sm);
 }
 .oss-textarea::-webkit-resizer {
-  background: right bottom no-repeat url('/assets/upf-icons/resizer.svg');
+  background: right bottom no-repeat url('/assets/icons/resizer.svg');
   border-bottom-right-radius: var(--border-radius-sm);
 }
 .oss-toggle-buttons-container {

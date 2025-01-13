@@ -22859,7 +22859,7 @@ define("dummy/tests/integration/components/o-s-s/social-post-badge-test", ["quni
                   "isStrictMode": false
                 }));
               case 3:
-                assert.dom('.oss-social-post-badge img').hasAttribute('src', "/@upfluence/oss-components/assets/upf-icons/".concat(IMG_MATCHING[media]));
+                assert.dom('.oss-social-post-badge img').hasAttribute('src', "/@upfluence/oss-components/assets/icons/".concat(IMG_MATCHING[media]));
               case 4:
               case "end":
                 return _context3.stop();
