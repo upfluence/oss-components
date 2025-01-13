@@ -42,7 +42,7 @@ module.exports = {
       trees.push(publicTree);
     }
 
-    const publicAssets = ['images', 'fonts', 'upf-icons'];
+    const publicAssets = ['images', 'fonts', 'icons'];
     const srcAssetsPath =
       this.parent.pkg['name'] === '@upfluence/oss-components' ? '' : 'node_modules/@upfluence/oss-components/';
     publicAssets.forEach((assetType) => {

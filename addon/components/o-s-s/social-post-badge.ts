@@ -42,7 +42,6 @@ interface OSSSocialPostBadgeArgs {
 export default class OSSSocialPostBadge extends Component<OSSSocialPostBadgeArgs> {
   constructor(owner: unknown, args: OSSSocialPostBadgeArgs) {
     super(owner, args);
-
     assert(
       '[component][OSS::SocialPostBadge] The @postType parameter of type String is mandatory',
       typeof this.args.postType === 'string'
