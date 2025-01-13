@@ -25,6 +25,10 @@ export default class Input extends Controller {
   @tracked currencyValue: number = 42.13;
   @tracked currencyOnly: string = '';
 
+  @tracked successFeedbackMessage: Object = { type: 'success', value: 'This is a success message !' };
+  @tracked warningFeedbackMessage: Object = { type: 'warning', value: 'This is a warning message !' };
+  @tracked errorFeedbackMessage: Object = { type: 'error', value: 'This is a error message !' };
+
   countries: CountryData[] = countries;
   allowedCurrencies: { code: string; symbol: string }[] = [
     { code: 'USD', symbol: '$' },

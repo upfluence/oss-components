@@ -25,8 +25,9 @@ module('Integration | Component | o-s-s/modal', function (hooks) {
   module('available options', function () {
     module('centered', function () {
       test('it should set the centered class on the modal dialog', async function (assert) {
+        this.modalOptions = { centered: true };
         await render(hbs`
-          <OSS::Modal @title="Test Modal" @options={{hash centered=true}}>
+          <OSS::Modal @title="Test Modal" @options={{this.modalOptions}}>
             <div class="modal-body">
               Foo
             </div>
@@ -43,8 +44,9 @@ module('Integration | Component | o-s-s/modal', function (hooks) {
 
     module('additional classes on the modal-dialog', function () {
       test('it should add the passed class on the modal dialog', async function (assert) {
+        this.modalOptions = { modalClass: 'foobar' };
         await render(hbs`
-          <OSS::Modal @title="Test Modal" @options={{hash modalClass="foobar"}}>
+          <OSS::Modal @title="Test Modal" @options={{this.modalOptions}}>
             <div class="modal-body">
               Foo
             </div>
@@ -61,8 +63,9 @@ module('Integration | Component | o-s-s/modal', function (hooks) {
 
     module('borderless header', function () {
       test('it should add the good class on the modal dialog', async function (assert) {
+        this.modalOptions = { borderlessHeader: true };
         await render(hbs`
-          <OSS::Modal @title="Test Modal" @options={{hash borderlessHeader=true}}>
+          <OSS::Modal @title="Test Modal" @options={{this.modalOptions}}>
             <div class="modal-body">
               Foo
             </div>
@@ -79,8 +82,9 @@ module('Integration | Component | o-s-s/modal', function (hooks) {
 
     module('no header', function () {
       test('no header container is present', async function (assert) {
+        this.modalOptions = { header: false };
         await render(hbs`
-          <OSS::Modal @options={{hash header=false}}>
+          <OSS::Modal @options={{this.modalOptions}}>
             <div class="modal-body">
               Foo
             </div>

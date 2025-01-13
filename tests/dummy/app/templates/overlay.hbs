@@ -16,8 +16,8 @@
       {{#if this.showDialog}}
         <OSS::Dialog
           @title={{this.translatedHTMLTitle}}
-          @mainAction={{hash action=this.onDialogMainAction label="Discard changes"}}
-          @secondaryAction={{hash action=this.onDialogSecondaryAction label="Keep editing"}}
+          @mainAction={{this.overlayMainAction}}
+          @secondaryAction={{this.overlaySecondaryAction}}
           @icon="fa-circle-info"
           @skin="error"
         />

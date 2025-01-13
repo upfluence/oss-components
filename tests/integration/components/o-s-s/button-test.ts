@@ -142,8 +142,9 @@ module('Integration | Component | o-s-s/button', function (hooks) {
     });
 
     test('when loading and the showLabel loading option is truthy, the label is displayed', async function (assert) {
+      this.loadingOptions = { showLabel: true };
       await render(
-        hbs`<OSS::Button @size="sm" @loading={{true}} @label="Test" @loadingOptions={{hash showLabel=true}} />`
+        hbs`<OSS::Button @size="sm" @loading={{true}} @label="Test" @loadingOptions={{this.loadingOptions}} />`
       );
       assert.dom('.upf-btn i.fas').exists();
       assert.dom('.upf-btn i.fas').hasClass('fa-circle-notch');
@@ -176,7 +177,8 @@ module('Integration | Component | o-s-s/button', function (hooks) {
 
     test('when clicking, it trigger the countdown', async function (assert) {
       this.callback = () => {};
-      await render(hbs`<OSS::Button @label="Test" @countDown={{hash callback=this.callback}} />`);
+      this.countDown = { callback: this.callback };
+      await render(hbs`<OSS::Button @label="Test" @countDown={{this.countDown}} />`);
       await click('.upf-btn--default');
 
       assert.dom('.upf-btn--default').hasText(this.intlService.t('oss-components.button.cancel_message', { time: 5 }));
@@ -184,7 +186,9 @@ module('Integration | Component | o-s-s/button', function (hooks) {
 
     test('when clicking, it executes callback at the end of the countdown', async function (assert) {
       this.callback = sinon.stub().callsFake(() => {});
-      await render(hbs`<OSS::Button @label="Test" @countDown={{hash callback=this.callback time=50 step=10}} />`);
+      this.countDown = { callback: this.callback, time: 50, step: 10 };
+
+      await render(hbs`<OSS::Button @label="Test" @countDown={{this.countDown}} />`);
       await click('.upf-btn--default');
 
       await waitUntil(
@@ -199,7 +203,8 @@ module('Integration | Component | o-s-s/button', function (hooks) {
 
     test('when clicking again, it cancels the countdown', async function (assert) {
       this.callback = () => {};
-      await render(hbs`<OSS::Button @label="Test" @countDown={{hash callback=this.callback}} />`);
+      this.countDown = { callback: this.callback };
+      await render(hbs`<OSS::Button @label="Test" @countDown={{this.countDown}} />`);
       await click('.upf-btn--default');
       await click('.upf-btn--default');
 
@@ -227,7 +232,9 @@ module('Integration | Component | o-s-s/button', function (hooks) {
         );
       });
 
-      await render(hbs`<OSS::Button @label="Test" @countDown={{hash time=1000}} />`);
+      this.countDown = { time: 1000 };
+
+      await render(hbs`<OSS::Button @label="Test" @countDown={{this.countDown}} />`);
     });
   });
 });

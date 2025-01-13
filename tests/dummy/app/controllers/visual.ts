@@ -81,6 +81,9 @@ export default class Visual extends Controller {
     }
   ];
 
+  @tracked countdownAction: { callback: Function } = { callback: this.countDownAction };
+  @tracked sliderInputOptions: { min: number; max: number } = { min: 0, max: 200 };
+
   @action
   redirectTo(route: string): void {
     console.log('Redirect to', route);

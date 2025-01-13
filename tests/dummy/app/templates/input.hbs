@@ -65,8 +65,14 @@
       Infinite select
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-start">
-        <OSS::InfiniteSelect
-        @items={{this.items}} @searchEnabled={{true}} @onSearch={{this.onInfiniteSelectSearch}} @searchPlaceholder="Enter a keyword" @onSelect={{this.onInfiniteSelectChange}}  style="position: relative; margin: 0"/>
+      <OSS::InfiniteSelect
+        @items={{this.items}}
+        @searchEnabled={{true}}
+        @onSearch={{this.onInfiniteSelectSearch}}
+        @searchPlaceholder="Enter a keyword"
+        @onSelect={{this.onInfiniteSelectChange}}
+        style="position: relative; margin: 0"
+      />
     </div>
   </div>
 
@@ -170,17 +176,17 @@
         <OSS::InputContainer
           @placeholder="Success !"
           @value={{this.shopUrl}}
-          @feedbackMessage={{hash type="success" value="This is a success message !"}}
+          @feedbackMessage={{this.successFeedbackMessage}}
         />
         <OSS::InputContainer
           @placeholder="Warning !"
           @value={{this.shopUrl}}
-          @feedbackMessage={{hash type="warning" value="This is an warning message !"}}
+          @feedbackMessage={{this.warningFeedbackMessage}}
         />
         <OSS::InputContainer
           @placeholder="Error !"
           @value={{this.shopUrl}}
-          @feedbackMessage={{hash type="error" value="This is also an error message !"}}
+          @feedbackMessage={{this.errorFeedbackMessage}}
         />
       </div>
     </div>

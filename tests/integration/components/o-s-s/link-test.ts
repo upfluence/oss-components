@@ -30,10 +30,10 @@ module('Integration | Component | o-s-s/link', function (hooks) {
 
   test('it opens link with href and target', async function (assert: Assert) {
     let windowOpenStub = sinon.stub(window, 'open');
-
+    this.link = { href: 'https://www.google.fr', target: '_blank' };
     await render(hbs`
       <OSS::Link @icon="fab fa-facebook" @label="Facebook"
-                 @link={{hash href="https://www.google.fr" target="_blank"}} />
+                 @link={{this.link}} />
     `);
 
     await click('.upf-link');

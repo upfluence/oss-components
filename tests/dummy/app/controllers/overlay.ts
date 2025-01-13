@@ -11,6 +11,9 @@ export default class Overlay extends Controller {
   @tracked showSplitModal: boolean = false;
   @tracked showSidePanel: boolean = false;
 
+  @tracked overlayMainAction: Object = { action: this.onDialogMainAction, label: 'Discard changes' };
+  @tracked overlaySecondaryAction: Object = { action: this.onDialogSecondaryAction, label: 'Keep editing' };
+
   get translatedHTMLTitle(): SafeString {
     return htmlSafe('This title can take a <em>string</em> or a <em>safeString</em>');
   }

@@ -54,7 +54,7 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
       );
       const element = this.element.querySelector('.oss-slider__range');
       assert.dom(element).exists();
-      assert.strictEqual(element.style.getPropertyValue('--range-percentage'), '10%');
+      assert.strictEqual(element.style.getPropertyValue('--range-percentage').trim(), '10%');
     });
 
     module('with @step', () => {
@@ -65,7 +65,7 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
         );
         const element = this.element.querySelector('.oss-slider__range');
         assert.dom(element).exists();
-        assert.strictEqual(element.style.getPropertyValue('--range-percentage'), '10%');
+        assert.strictEqual(element.style.getPropertyValue('--range-percentage').trim(), '10%');
       });
 
       test('it renders it properly with the value rounded up', async function (assert) {
@@ -75,7 +75,7 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
         );
         const element = this.element.querySelector('.oss-slider__range');
         assert.dom(element).exists();
-        assert.strictEqual(element.style.getPropertyValue('--range-percentage'), '20%');
+        assert.strictEqual(element.style.getPropertyValue('--range-percentage').trim(), '20%');
       });
     });
   });
@@ -167,7 +167,7 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
       assert.dom('.oss-slider__number-input').exists().hasText('');
       const element = this.element.querySelector('.oss-slider__range');
       assert.dom(element).exists();
-      assert.strictEqual(element.style.getPropertyValue('--range-percentage'), '0%');
+      assert.strictEqual(element.style.getPropertyValue('--range-percentage').trim(), '0%');
     });
 
     test('it does not render the number input when @displayInputValue is falsy', async function (assert) {
@@ -212,7 +212,7 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
 
       assert.equal(this.min, this.value);
       const element = this.element.querySelector('.oss-slider__range');
-      assert.strictEqual(element.style.getPropertyValue('--range-percentage'), '0%');
+      assert.strictEqual(element.style.getPropertyValue('--range-percentage').trim(), '0%');
     });
 
     test('it renders the slider with a maximum value when @min is provided', async function (assert) {
@@ -223,7 +223,7 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
 
       await fillIn('.oss-slider__number-input input', '1000');
       const element = this.element.querySelector('.oss-slider__range');
-      assert.strictEqual(element.style.getPropertyValue('--range-percentage'), '100%');
+      assert.strictEqual(element.style.getPropertyValue('--range-percentage').trim(), '100%');
     });
   });
 });

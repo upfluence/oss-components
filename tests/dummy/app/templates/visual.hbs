@@ -78,7 +78,7 @@
           @label="Count down"
           @icon="far fa-hourglass"
           @size="md"
-          @countDown={{hash callback=this.countDownAction}}
+          @countDown={{this.countdownAction}}
         />
       </div>
     </div>
@@ -546,7 +546,7 @@
       <div class="fx-row fx-gap-px-10">
         <OSS::Slider
           @value={{this.sliderValue3}}
-          @inputOptions={{hash min=0 max=999}}
+          @inputOptions={{this.sliderInputOptions}}
           @min={{0}}
           @max={{200}}
           @step={{10}}
