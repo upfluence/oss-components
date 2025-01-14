@@ -17,7 +17,7 @@ export default {
     },
     min: {
       control: 'number',
-      description: 'The minimal value of the slider',
+      description: 'The minimal value of the slider. If inputOptions is defined, this value is ignored',
       defaultValue: 0,
       table: {
         type: { summary: 'number' },
@@ -26,7 +26,7 @@ export default {
     },
     max: {
       control: 'number',
-      description: 'The maximum value of the slider',
+      description: 'The maximum value of the slider. If inputOptions is defined, this value is ignored',
       defaultValue: 100,
       table: {
         type: { summary: 'number' },
@@ -78,15 +78,21 @@ export default {
         defaultValue: { summary: '50' }
       }
     },
-
-    tooltiplabel: {
+    tooltipLabel: {
       control: 'text',
       description: 'Specific tooltip label for the slider handle',
-      defaultValue: `Value : ${defaultArgs.defaultValue}%`,
       table: {
         type: { summary: 'string' },
-        defaultValue: { summary: '50' }
+        defaultValue: { summary: 'undefined' }
       }
+    },
+    inputOptions: {
+      description: 'Options min and max for the input field and slider',
+      table: {
+        type: { summary: 'object' },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'object' }
     },
     onChange: {
       type: { required: true },
@@ -115,9 +121,10 @@ const defaultArgs = {
   step: 1,
   defaultValue: undefined,
   displayInputValue: false,
-  tooltipLabel: `Value of ${defaultArgs.value}`,
+  tooltipLabel: undefined,
   unit: 'percentage',
   disabled: false,
+  inputOptions: { min: 0, max: 100 },
   onChange: action('onChange')
 };
 
@@ -132,6 +139,7 @@ const Template = (args) => ({
                  @displayInputValue={{this.displayInputValue}}
                  @unit={{this.unit}}
                  @disabled={{this.disabled}}
+                 @inputOptions={{this.inputOptions}}
                  @onChange={{this.onChange}}
     />
   `,
