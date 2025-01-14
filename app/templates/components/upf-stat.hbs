@@ -1,38 +1,40 @@
-<span class="upf-stat__name">
-  {{this.name}}
+<div class={{this.computedClasses}}>
+  <span class="upf-stat__name">
+    {{this.name}}
 
-  {{#if this.icon}}
-    {{#if (eq this.iconPlacement "top")}}
-      <span class="upf-stat__icon" {{enable-tooltip title=this.iconLabel}}>
-        {{#if this.iconUrl}}
-          <a href="{{this.iconUrl}}" target="_blank" rel="noopener noreferrer">
+    {{#if this.icon}}
+      {{#if (eq this.iconPlacement "top")}}
+        <span class="upf-stat__icon" {{enable-tooltip title=this.iconLabel}}>
+          {{#if this.iconUrl}}
+            <a href="{{this.iconUrl}}" target="_blank" rel="noopener noreferrer">
+              <i class="fa fa-{{this.icon}} {{this.iconClass}}"></i>
+            </a>
+          {{else}}
             <i class="fa fa-{{this.icon}} {{this.iconClass}}"></i>
-          </a>
-        {{else}}
-          <i class="fa fa-{{this.icon}} {{this.iconClass}}"></i>
-        {{/if}}
-      </span>
-    {{/if}}
-  {{/if}}
-</span>
-
-<span class={{concat "upf-stat__data " this.dataClass (unless this.data " upf-stat__data--null")}}>
-  {{this.data}}
-
-  {{#if this.icon}}
-    {{#if (eq this.iconPlacement "right")}}
-      <span class="upf-stat__icon" {{enable-tooltip title=this.iconLabel}}>
-        <i class="fa fa-{{this.icon}} {{this.iconClass}}"></i>
-      </span>
-    {{/if}}
-  {{/if}}
-</span>
-
-{{#if this.label}}
-  <span class={{if this.tooltip "upf-stat__label--with-tooltip" "upf-stat__label"}}>
-    {{{this.label}}}
-    {{#if this.tooltip}}
-      <OSS::Icon @icon="fa-info-circle" {{enable-tooltip title=this.tooltip}} />
+          {{/if}}
+        </span>
+      {{/if}}
     {{/if}}
   </span>
-{{/if}}
+
+  <span class={{concat "upf-stat__data " this.dataClass (unless this.data " upf-stat__data--null")}}>
+    {{this.data}}
+
+    {{#if this.icon}}
+      {{#if (eq this.iconPlacement "right")}}
+        <span class="upf-stat__icon" {{enable-tooltip title=this.iconLabel}}>
+          <i class="fa fa-{{this.icon}} {{this.iconClass}}"></i>
+        </span>
+      {{/if}}
+    {{/if}}
+  </span>
+
+  {{#if this.label}}
+    <span class={{if this.tooltip "upf-stat__label--with-tooltip" "upf-stat__label"}}>
+      {{{this.label}}}
+      {{#if this.tooltip}}
+        <OSS::Icon @icon="fa-info-circle" {{enable-tooltip title=this.tooltip}} />
+      {{/if}}
+    </span>
+  {{/if}}
+</div>
