@@ -88022,7 +88022,7 @@ define("@upfluence/oss-components/components/o-s-s/slider", ["exports", "@ember/
       },
       min: {
         control: 'number',
-        description: 'The minimal value of the slider',
+        description: 'The minimal value of the slider. If inputOptions is defined, this value is ignored',
         defaultValue: 0,
         table: {
           type: {
@@ -88035,7 +88035,7 @@ define("@upfluence/oss-components/components/o-s-s/slider", ["exports", "@ember/
       },
       max: {
         control: 'number',
-        description: 'The maximum value of the slider',
+        description: 'The maximum value of the slider. If inputOptions is defined, this value is ignored',
         defaultValue: 100,
         table: {
           type: {
@@ -88111,17 +88111,30 @@ define("@upfluence/oss-components/components/o-s-s/slider", ["exports", "@ember/
           }
         }
       },
-      tooltiplabel: {
+      tooltipLabel: {
         control: 'text',
         description: 'Specific tooltip label for the slider handle',
-        defaultValue: "Value : ".concat(defaultArgs.defaultValue, "%"),
         table: {
           type: {
             summary: 'string'
           },
           defaultValue: {
-            summary: '50'
+            summary: 'undefined'
           }
+        }
+      },
+      inputOptions: {
+        description: 'Options min and max for the input field and slider',
+        table: {
+          type: {
+            summary: 'object'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'object'
         }
       },
       onChange: {
@@ -88152,9 +88165,13 @@ define("@upfluence/oss-components/components/o-s-s/slider", ["exports", "@ember/
     step: 1,
     defaultValue: undefined,
     displayInputValue: false,
-    tooltipLabel: "Value of ".concat(defaultArgs.value),
+    tooltipLabel: undefined,
     unit: 'percentage',
     disabled: false,
+    inputOptions: {
+      min: 0,
+      max: 100
+    },
     onChange: (0, _addonActions.action)('onChange')
   };
   var Template = function Template(args) {
@@ -88171,13 +88188,14 @@ define("@upfluence/oss-components/components/o-s-s/slider", ["exports", "@ember/
                        @displayInputValue={{this.displayInputValue}}
                        @unit={{this.unit}}
                        @disabled={{this.disabled}}
+                       @inputOptions={{this.inputOptions}}
                        @onChange={{this.onChange}}
           />
         
       */
       {
-        "id": "ZxtiB0mY",
-        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@value\",\"@min\",\"@max\",\"@step\",\"@tooltipLabel\",\"@defaultValue\",\"@displayInputValue\",\"@unit\",\"@disabled\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"min\"]],[30,0,[\"max\"]],[30,0,[\"step\"]],[30,0,[\"tooltipLabel\"]],[30,0,[\"defaultValue\"]],[30,0,[\"displayInputValue\"]],[30,0,[\"unit\"]],[30,0,[\"disabled\"]],[30,0,[\"onChange\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/slider\"]]",
+        "id": "gQ5HxwYT",
+        "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@value\",\"@min\",\"@max\",\"@step\",\"@tooltipLabel\",\"@defaultValue\",\"@displayInputValue\",\"@unit\",\"@disabled\",\"@inputOptions\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"min\"]],[30,0,[\"max\"]],[30,0,[\"step\"]],[30,0,[\"tooltipLabel\"]],[30,0,[\"defaultValue\"]],[30,0,[\"displayInputValue\"]],[30,0,[\"unit\"]],[30,0,[\"disabled\"]],[30,0,[\"inputOptions\"]],[30,0,[\"onChange\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/slider\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/slider.stories.js",
         "isStrictMode": false
       }),
