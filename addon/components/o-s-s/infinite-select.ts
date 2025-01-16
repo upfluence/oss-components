@@ -31,6 +31,7 @@ const DEFAULT_ITEM_LABEL = 'name';
 export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   @tracked _searchKeyword: string = '';
   @tracked _focusElement: number = 0;
+  @tracked focusStylesDisabled: boolean = true;
 
   @tracked elementId: string = guidFor(this);
 
@@ -109,6 +110,12 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
 
   @action
   handleKeyEventInput(e: KeyboardEvent): void {
+    if (this.focusStylesDisabled === true) {
+      this.focusStylesDisabled = false;
+      return;
+    }
+
+    this.focusStylesDisabled = false;
     const actionsForKeys: Record<string, (self: any, e: KeyboardEvent) => void> = {
       ArrowDown: this.focusFirstItem,
       Enter: this.focusFirstItem,
@@ -122,6 +129,7 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
 
   @action
   handleKeyEvent(e: KeyboardEvent): void {
+    this.focusStylesDisabled = false;
     const actionsForKeys: Record<string, (self: any, e: KeyboardEvent) => void> = {
       ArrowDown: this.handleArrowDown,
       ArrowUp: this.handleArrowUp,
@@ -133,6 +141,17 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
     if (this.enableKeyboard) {
       actionsForKeys[e.key]?.(this, e);
     }
+  }
+
+  @action
+  handleItemHover(index: number) {
+    this._focusElementAt(index);
+    this.focusStylesDisabled = this._focusElement === index ? false : true;
+  }
+
+  @action
+  clearHoverState(): void {
+    this.focusStylesDisabled = false;
   }
 
   private _focusElementAt(index: number): void {
