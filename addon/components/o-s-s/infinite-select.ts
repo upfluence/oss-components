@@ -110,12 +110,15 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
 
   @action
   handleKeyEventInput(e: KeyboardEvent): void {
-    if (this.focusStylesDisabled === true) {
+    if (!this.searchEnabled && this.enableKeyboard) {
+      if (this.focusStylesDisabled === true) {
+        this.focusStylesDisabled = false;
+        return;
+      }
+
       this.focusStylesDisabled = false;
-      return;
     }
 
-    this.focusStylesDisabled = false;
     const actionsForKeys: Record<string, (self: any, e: KeyboardEvent) => void> = {
       ArrowDown: this.focusFirstItem,
       Enter: this.focusFirstItem,
@@ -129,7 +132,10 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
 
   @action
   handleKeyEvent(e: KeyboardEvent): void {
-    this.focusStylesDisabled = false;
+    if (!this.searchEnabled && this.enableKeyboard) {
+      this.focusStylesDisabled = false;
+    }
+
     const actionsForKeys: Record<string, (self: any, e: KeyboardEvent) => void> = {
       ArrowDown: this.handleArrowDown,
       ArrowUp: this.handleArrowUp,
@@ -146,6 +152,8 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   @action
   handleItemHover(index: number) {
     this._focusElementAt(index);
+    this._focusElement = index;
+    console.log(this._focusElement, index);
     this.focusStylesDisabled = this._focusElement === index ? false : true;
   }
 
