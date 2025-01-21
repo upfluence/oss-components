@@ -73,6 +73,27 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./storybook-static/
           cname: storybook.upfluence.co
+  deploy_preview:
+    runs-on: ubuntu-20.04
+    timeout-minutes: 5
+    if: github.event_name == 'pull_request' && contains(github.event.pull_request.labels.*.name, 'actions/fe-deploy-preview')
+    steps:
+      - uses: upfluence/gh-downloader@master
+        with:
+          repo: upfluence/frontend-deployer
+          github-token: ${{ secrets.PAT_TOKEN }}
+          asset: gh-action-linux-amd64
+          output: gh-action
+          mode: 0777
+      - run: ./gh-action dependency-preview-deployment --target upfluence-web
+        shell: bash
+        env:
+          OKTA_CLIENT_ID: ${{ secrets.OKTA_CLIENT_ID }}
+          OKTA_CLIENT_SECRET: ${{ secrets.OKTA_CLIENT_SECRET }}
+      - name: Clean up deployment label
+        uses: andymckay/labeler@master
+        with:
+          remove-labels: 'actions/fe-deploy-preview'
   release:
     name: Release Package
     runs-on: ubuntu-20.04
