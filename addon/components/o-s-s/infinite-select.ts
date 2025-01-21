@@ -150,7 +150,7 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   }
 
   @action
-  handleItemHover(index: number) {
+  handleItemHover(index: number): void {
     this._focusElementAt(index);
     this._focusElement = index;
     console.log(this._focusElement, index);
