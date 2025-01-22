@@ -7561,6 +7561,10 @@ label {
 .upf-infinite-select__item:focus-visible {
   outline: none;
 }
+.upf-infinite-select__item--disabled-focus:focus {
+  outline: none;
+  background-color: var(--color-white);
+}
 .modal .modal-content {
   box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
   border-radius: var(--border-radius-sm);
@@ -11349,9 +11353,6 @@ a.upf-btn--sm {
 .oss-select-container__dropdown .upf-infinite-select__item .item-wrapper {
   padding: var(--spacing-px-6) var(--spacing-px-6);
   border-radius: var(--border-radius-sm);
-}
-.oss-select-container__dropdown .upf-infinite-select__item .item-wrapper.selected {
-  background-color: var(--color-gray-100);
 }
 .tab-container {
   border-bottom: 1px solid var(--color-border-default);
