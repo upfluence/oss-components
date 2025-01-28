@@ -1,25 +1,19 @@
 import Component from '@ember/component';
-import { computed } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
-export default Component.extend({
-  error: null,
-  help: null,
+export default class InputWrapper extends Component {
+  @tracked error = null;
+  @tracked help = null;
 
-  tagName: 'div',
-  classNames: ['form-group', 'upf-input-container'],
-  classNameBindings: ['errorful', 'hasHelp'],
-
-  errorful: computed('error', function () {
+  get computedClasses() {
+    const classes = ['upf-input-container', 'form-group'];
     if (this.error !== null) {
-      return 'upf-input-container--errorful';
+      classes.push('upf-input-container--errorful');
     }
-    return '';
-  }),
-
-  hasHelp: computed('help', function () {
     if (this.help !== null) {
-      return 'upf-input-container--has-help';
+      classes.push('upf-input-container--has-help');
     }
-    return '';
-  })
-});
+
+    return classes.join(' ');
+  }
+}

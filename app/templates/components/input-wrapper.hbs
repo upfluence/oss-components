@@ -1,11 +1,13 @@
-{{yield}}
+<div class={{this.computedClasses}} ...attributes>
+  {{yield}}
 
-{{#if this.error}}
-  <span class="upf-input-feedback upf-input-feedback--error">
-    <OSS::Icon @icon="fa-exclamation-circle" aria-label={{this.error}} />
-  </span>
-{{else if this.help}}
-  <span class="upf-input-feedback upf-input-feedback--help">
-    <OSS::Icon @icon="fa-question-circle" aria-label={{this.help}} />
-  </span>
-{{/if}}
+  {{#if this.error}}
+    <span class="upf-input-feedback upf-input-feedback--error">
+      <OSS::Icon @icon="fa-exclamation-circle" aria-label={{this.error}} />
+    </span>
+  {{else if this.help}}
+    <span class="upf-input-feedback upf-input-feedback--help">
+      <OSS::Icon @icon="fa-question-circle" aria-label={{this.help}} />
+    </span>
+  {{/if}}
+</div>
