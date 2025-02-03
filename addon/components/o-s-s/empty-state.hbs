@@ -1,0 +1,13 @@
+<div>
+  <div>
+    {{@title}}
+  </div>
+  <div>
+    {{@subtitle}}
+  </div>
+  {{#if (has-block "actions")}}
+    <span class="">
+      {{yield to="actions"}}
+    </span>
+  {{/if}}
+</div>
