@@ -65,8 +65,14 @@
       Infinite select
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-start">
-        <OSS::InfiniteSelect
-        @items={{this.items}} @searchEnabled={{true}} @onSearch={{this.onInfiniteSelectSearch}} @searchPlaceholder="Enter a keyword" @onSelect={{this.onInfiniteSelectChange}}  style="position: relative; margin: 0"/>
+      <OSS::InfiniteSelect
+        @items={{this.items}}
+        @searchEnabled={{true}}
+        @onSearch={{this.onInfiniteSelectSearch}}
+        @searchPlaceholder="Enter a keyword"
+        @onSelect={{this.onInfiniteSelectChange}}
+        style="position: relative; margin: 0"
+      />
     </div>
   </div>
 
@@ -339,6 +345,23 @@
         @prefix={{this.phonePrefix}}
         @number={{this.phoneNumber}}
         @onChange={{this.onPhoneNumberChange}}
+      />
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <OSS::PhoneNumberInput
+        @prefix={{this.phonePrefix}}
+        @number={{this.phoneNumber}}
+        @onChange={{this.onPhoneNumberChange}}
+        @errorMessage="This is an error message"
+      />
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <OSS::PhoneNumberInput
+        @prefix={{this.phonePrefix}}
+        @number={{this.phoneNumber}}
+        @onChange={{this.onPhoneNumberChange}}
+        @errorMessage=""
+        @hasError={{true}}
       />
     </div>
   </div>
