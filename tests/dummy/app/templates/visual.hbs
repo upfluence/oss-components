@@ -558,4 +558,28 @@
     </div>
   </div>
 
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Mode switch
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <div class="fx-row fx-gap-px-10">
+        <OSS::ModeSwitch
+          @options={{this.modeSwitchOptions1}}
+          @selected={{this.modeSwitchSelected1}}
+          @onSelect={{this.onChangeMode1}}
+        />
+        <OSS::ModeSwitch
+          @options={{this.modeSwitchOptions2}}
+          @selected={{this.modeSwitchSelected2}}
+          @onSelect={{this.onChangeMode2}}
+          @plain={{true}}
+          @size="xs"
+        />
+      </div>
+    </div>
+  </div>
+
 </div>
