@@ -9392,6 +9392,9 @@ For complete information visit: www.freakflagsprite.com
   border: 1px solid var(--color-gray-300);
   background-color: var(--color-gray-100);
 }
+.phone-number-container .phone-number-input--error {
+  border-color: var(--color-error-500);
+}
 .phone-number-container .phone-number-input:active,
 .phone-number-container .phone-number-input--active {
   border: 1px solid var(--color-gray-100);

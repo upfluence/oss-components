@@ -9007,8 +9007,10 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"@ember/test-helpers/dom/click",0,"sinon",0,"@ember/test-helpers/dom/find-all",0,"@ember/test-helpers/dom/type-in",0,"@ember/test-helpers/settled"eaimeta@70e063a35619d71f
   (0, _qunit.module)('Integration | Component | o-s-s/phone-number', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.onChange = _sinon.default.stub();
+    });
     (0, _qunit.test)('it renders', async function (assert) {
-      this.onChange = () => {};
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
         <OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />
@@ -9022,7 +9024,6 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
       assert.dom('.phone-number-container').exists();
     });
     (0, _qunit.test)('The passed @number parameter is properly displayed in the input', async function (assert) {
-      this.onChange = () => {};
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
         <OSS::PhoneNumberInput @prefix="" @number="12341234" @onChange={{this.onChange}} />
@@ -9036,7 +9037,6 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
       assert.dom('input').hasValue('12341234');
     });
     (0, _qunit.test)('It properly loads the correct country when the @prefix parameter is defined', async function (assert) {
-      this.onChange = () => {};
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
         <OSS::PhoneNumberInput @prefix="+33" @number="" @onChange={{this.onChange}} />
@@ -9051,7 +9051,6 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
     });
     (0, _qunit.module)('Country selector', () => {
       (0, _qunit.test)('Clicking on the Flag button opens the country selector', async function (assert) {
-        this.onChange = () => {};
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />
@@ -9066,7 +9065,6 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
         assert.dom('.upf-infinite-select').exists();
       });
       (0, _qunit.test)('Selecting a new country in the Country selector triggers the onChange method', async function (assert) {
-        this.onChange = _sinon.default.spy();
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />
@@ -9083,7 +9081,6 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
         assert.dom('.country-selector .fflag.fflag-CH').exists();
       });
       (0, _qunit.test)('Typing in the search input filters the results', async function (assert) {
-        this.onChange = _sinon.default.spy();
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />
@@ -9102,7 +9099,6 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
         assert.dom(clickableRows[0]).hasText('France (+33)');
       });
       (0, _qunit.test)('Searching by Country Code Prefix works', async function (assert) {
-        this.onChange = _sinon.default.spy();
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />
@@ -9121,10 +9117,11 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
         assert.dom(clickableRows[0]).hasText('France (+33)');
       });
     });
-    (0, _qunit.module)('Phone Number Input', () => {
+    (0, _qunit.module)('Phone Number Input', hooks => {
+      hooks.beforeEach(function () {
+        this.onValidation = _sinon.default.stub();
+      });
       (0, _qunit.test)('Typing numbers in the Phone input triggers the onChange method', async function (assert) {
-        this.onChange = _sinon.default.spy();
-        this.onValidation = _sinon.default.spy();
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} @validates={{this.onValidation}} />
@@ -9141,8 +9138,6 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
         assert.dom('input').hasValue('8');
       });
       (0, _qunit.test)('Typing non-numeric characters does not apply changes', async function (assert) {
-        this.onChange = _sinon.default.spy();
-        this.onValidation = _sinon.default.spy();
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} @validates={{this.onValidation}} />
@@ -9165,11 +9160,6 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
       (0, _qunit.test)('it displays an error if the number contains a + symbol', async function (assert) {
         this.prefix = '+1';
         this.number = '';
-        this.onChange = (prefix, number) => {
-          this.set('prefix', prefix);
-          this.set('number', number);
-        };
-        this.onValidation = _sinon.default.spy();
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::PhoneNumberInput @prefix={{this.prefix}} @number={{this.number}} @onChange={{this.onChange}} @validates={{this.onValidation}} />
@@ -9184,6 +9174,78 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
         await (0, _settled.default)();
         assert.ok(this.onValidation.calledWithExactly(false));
         assert.dom('.font-color-error-500').exists();
+      });
+    });
+    (0, _qunit.module)('@hasError parameter', () => {
+      (0, _qunit.test)('A red border is displayed if the parameter is true', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::PhoneNumberInput @prefix="" @number="" @hasError={{true}}
+                                                      @onChange={{this.onChange}} />
+        */
+        {
+          "id": "+JxfRGmX",
+          "block": "[[[8,[39,0],null,[[\"@prefix\",\"@number\",\"@hasError\",\"@onChange\"],[\"\",\"\",true,[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/phone-number-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/phone-number-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.phone-number-input').hasClass('phone-number-input--error');
+      });
+      (0, _qunit.test)('No border is displayed if the parameter is not passed', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />
+        */
+        {
+          "id": "v6OgIA+r",
+          "block": "[[[8,[39,0],null,[[\"@prefix\",\"@number\",\"@onChange\"],[\"\",\"\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/phone-number-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/phone-number-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.phone-number-input').doesNotHaveClass('phone-number-input--error');
+      });
+    });
+    (0, _qunit.module)('@errorMessage parameter', () => {
+      (0, _qunit.test)('It displays the error message if the parameter is passed', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::PhoneNumberInput @prefix="" @number="" @errorMessage="This is an error"
+                                                      @onChange={{this.onChange}} />
+        */
+        {
+          "id": "vfh758l0",
+          "block": "[[[8,[39,0],null,[[\"@prefix\",\"@number\",\"@errorMessage\",\"@onChange\"],[\"\",\"\",\"This is an error\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/phone-number-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/phone-number-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.font-color-error-500').hasText('This is an error');
+      });
+      (0, _qunit.test)('A red border is displayed if the parameter is true', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::PhoneNumberInput @prefix="" @number="" @errorMessage="This is an error"
+                                                      @onChange={{this.onChange}} />
+        */
+        {
+          "id": "vfh758l0",
+          "block": "[[[8,[39,0],null,[[\"@prefix\",\"@number\",\"@errorMessage\",\"@onChange\"],[\"\",\"\",\"This is an error\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/phone-number-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/phone-number-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.phone-number-input').hasClass('phone-number-input--error');
+      });
+      (0, _qunit.test)('It does not display the error message if the parameter is not passed', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />
+        */
+        {
+          "id": "v6OgIA+r",
+          "block": "[[[8,[39,0],null,[[\"@prefix\",\"@number\",\"@onChange\"],[\"\",\"\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/phone-number-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/phone-number-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.font-color-error-500').doesNotExist();
       });
     });
     (0, _qunit.module)('Error management', function () {

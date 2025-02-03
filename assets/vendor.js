@@ -82342,6 +82342,34 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
         control: {
           type: 'text'
         }
+      },
+      errorMessage: {
+        description: 'An error message that will be displayed below the input-group.',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      hasError: {
+        description: 'Allows setting the error style on the input without showing an error message. Useful for form validation.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
       }
     },
     parameters: {
@@ -82355,20 +82383,23 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
   const defaultArgs = {
     countryCode: 'FR',
     prefix: '+33',
-    number: '6 12 34 56 78'
+    number: '612345678',
+    hasError: false,
+    errorMessage: ''
   };
   const Template = args => ({
     template: (0, _templateFactory.createTemplateFactory)(
     /*
       
         <div style="padding: 12px; background: white">
-          <OSS::Attribute::PhoneNumber @countryCode={{this.countryCode}} @prefix={{this.prefix}} @number={{this.number}} />
+          <OSS::Attribute::PhoneNumber @countryCode={{this.countryCode}} @prefix={{this.prefix}} @number={{this.number}}
+                                       @hasError={{this.hasError}} @errorMessage={{this.errorMessage}} />
         </div>
       
     */
     {
-      "id": "TuzlqoKC",
-      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"padding: 12px; background: white\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@countryCode\",\"@prefix\",\"@number\"],[[30,0,[\"countryCode\"]],[30,0,[\"prefix\"]],[30,0,[\"number\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/attribute/phone-number\"]]",
+      "id": "Asi5ReUu",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"padding: 12px; background: white\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@countryCode\",\"@prefix\",\"@number\",\"@hasError\",\"@errorMessage\"],[[30,0,[\"countryCode\"]],[30,0,[\"prefix\"]],[30,0,[\"number\"]],[30,0,[\"hasError\"]],[30,0,[\"errorMessage\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/attribute/phone-number\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/attribute/phone-number.stories.js",
       "isStrictMode": false
     }),
@@ -91150,7 +91181,7 @@ interface OSSCodeBlockArgs {
   const BasicUsage = _exports.BasicUsage = DefaultUsageTemplate.bind({});
   BasicUsage.args = defaultArgs;
 });
-;define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["exports", "@ember/component", "@ember/debug", "@ember/object", "@ember/service", "@glimmer/component", "@glimmer/tracking", "@upfluence/oss-components/utils/country-codes", "@ember/template-factory"], function (_exports, _component, _debug, _object, _service, _component2, _tracking, _countryCodes, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["exports", "@ember/component", "@ember/debug", "@ember/object", "@ember/service", "@ember/utils", "@glimmer/component", "@glimmer/tracking", "@upfluence/oss-components/utils/country-codes", "@ember/template-factory"], function (_exports, _component, _debug, _object, _service, _utils, _component2, _tracking, _countryCodes, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -91158,7 +91189,7 @@ interface OSSCodeBlockArgs {
   });
   _exports.default = void 0;
   var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@ember/object",0,"@ember/service",0,"@glimmer/component",0,"@glimmer/tracking",0,"@upfluence/oss-components/utils/country-codes",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@ember/object",0,"@ember/service",0,"@ember/utils",0,"@glimmer/component",0,"@glimmer/tracking",0,"@upfluence/oss-components/utils/country-codes",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
@@ -91168,30 +91199,44 @@ interface OSSCodeBlockArgs {
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class="phone-number-container fx-1" ...attributes>
-    <div class="phone-number-input {{if this.countrySelectorShown 'phone-number-input--active'}} fx-row fx-1 fx-xalign-center">
+    <div class="phone-number-input fx-row fx-1 fx-xalign-center {{this.interactiveClasses}}">
       <div class="country-selector fx-row" role="button" {{on "click" this.toggleCountrySelector}}>
         <div class="fflag fflag-{{this.selectedCountry.id}} ff-sm ff-round"></div>
         <OSS::Icon @icon="fa-chevron-{{if this.countrySelectorShown 'up' 'down'}}" />
       </div>
       <div class="fx-1 fx-row upf-input" {{on "click" this.focusInput}}>
         <span class="fx-row fx-xalign-center phone-prefix">{{@prefix}}</span>
-        <Input class="fx-1" type="tel" @value={{@number}} placeholder={{this.placeholder}}
-               {{on "keydown" this.onlyNumeric}} {{on "blur" this.onlyNumeric}} {{did-insert this.registerInputElement}} />
+        <Input
+          @value={{@number}}
+          class="fx-1"
+          type="tel"
+          name="telephone"
+          placeholder={{this.placeholder}}
+          {{on "keydown" this.onlyNumeric}}
+          {{on "blur" this.onlyNumeric}}
+          {{did-insert this.registerInputElement}}
+        />
       </div>
-  
     </div>
   
     {{#if this.invalidInputError}}
       <div class="font-color-error-500 margin-top-px-6">
         {{this.invalidInputError}}
       </div>
+    {{else if @errorMessage}}
+      <div class="font-color-error-500 margin-top-px-6">
+        {{@errorMessage}}
+      </div>
     {{/if}}
   
     {{#if this.countrySelectorShown}}
-      <OSS::InfiniteSelect @items={{this.filteredCountries}} @onSearch={{this.onSearch}}
-                           @onSelect={{this.onSelect}}
-                           @searchPlaceholder="Search"
-                           {{on-click-outside this.hideCountrySelector}}>
+      <OSS::InfiniteSelect
+        @items={{this.filteredCountries}}
+        @onSearch={{this.onSearch}}
+        @onSelect={{this.onSelect}}
+        @searchPlaceholder="Search"
+        {{on-click-outside this.hideCountrySelector}}
+      >
         <:option as |country|>
           <div class="fx-row fx-xalign-center {{if (eq this.selectedCountry country) 'row-selected'}}">
             <div class="fflag fflag-{{country.id}} ff-sm ff-rounded"></div>
@@ -91205,11 +91250,10 @@ interface OSSCodeBlockArgs {
       </OSS::InfiniteSelect>
     {{/if}}
   </div>
-  
   */
   {
-    "id": "AtoHJMeq",
-    "block": "[[[11,0],[24,0,\"phone-number-container fx-1\"],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"phone-number-input \",[52,[30,0,[\"countrySelectorShown\"]],\"phone-number-input--active\"],\" fx-row fx-1 fx-xalign-center\"]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"country-selector fx-row\"],[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,0,[\"toggleCountrySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"selectedCountry\",\"id\"]],\" ff-sm ff-round\"]]],[12],[13],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\"],[[29,[\"fa-chevron-\",[52,[30,0,[\"countrySelectorShown\"]],\"up\",\"down\"]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[11,0],[24,0,\"fx-1 fx-row upf-input\"],[4,[38,1],[\"click\",[30,0,[\"focusInput\"]]],null],[12],[1,\"\\n      \"],[10,1],[14,0,\"fx-row fx-xalign-center phone-prefix\"],[12],[1,[30,2]],[13],[1,\"\\n      \"],[8,[39,3],[[24,0,\"fx-1\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,4,\"tel\"],[4,[38,1],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,1],[\"blur\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,4],[[30,0,[\"registerInputElement\"]]],null]],[[\"@value\"],[[30,3]]],null],[1,\"\\n    \"],[13],[1,\"\\n\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"invalidInputError\"]],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,\"\\n      \"],[1,[30,0,[\"invalidInputError\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,0,[\"countrySelectorShown\"]],[[[1,\"    \"],[8,[39,5],[[4,[38,6],[[30,0,[\"hideCountrySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCountries\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],\"Search\"]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,4]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,4,[\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm\"],[12],[1,[30,4,[\"name\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xxx-sm fx-1\"],[12],[1,\"(+\"],[1,[28,[35,8],[[30,4,[\"countryCallingCodes\"]],0],null]],[1,\")\"],[13],[1,\"\\n\"],[41,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,4]],null],[[[1,\"            \"],[8,[39,2],[[24,0,\"font-color-primary-500\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@prefix\",\"@number\",\"country\"],false,[\"if\",\"on\",\"o-s-s/icon\",\"input\",\"did-insert\",\"o-s-s/infinite-select\",\"on-click-outside\",\"eq\",\"get\"]]",
+    "id": "SP2iy7Z3",
+    "block": "[[[11,0],[24,0,\"phone-number-container fx-1\"],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"phone-number-input fx-row fx-1 fx-xalign-center \",[30,0,[\"interactiveClasses\"]]]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"country-selector fx-row\"],[24,\"role\",\"button\"],[4,[38,0],[\"click\",[30,0,[\"toggleCountrySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"selectedCountry\",\"id\"]],\" ff-sm ff-round\"]]],[12],[13],[1,\"\\n      \"],[8,[39,1],null,[[\"@icon\"],[[29,[\"fa-chevron-\",[52,[30,0,[\"countrySelectorShown\"]],\"up\",\"down\"]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[11,0],[24,0,\"fx-1 fx-row upf-input\"],[4,[38,0],[\"click\",[30,0,[\"focusInput\"]]],null],[12],[1,\"\\n      \"],[10,1],[14,0,\"fx-row fx-xalign-center phone-prefix\"],[12],[1,[30,2]],[13],[1,\"\\n      \"],[8,[39,3],[[24,0,\"fx-1\"],[24,3,\"telephone\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,4,\"tel\"],[4,[38,0],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,0],[\"blur\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,4],[[30,0,[\"registerInputElement\"]]],null]],[[\"@value\"],[[30,3]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"invalidInputError\"]],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,\"\\n      \"],[1,[30,0,[\"invalidInputError\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[41,[30,4],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,\"\\n      \"],[1,[30,4]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],null]],[]]],[1,\"\\n\"],[41,[30,0,[\"countrySelectorShown\"]],[[[1,\"    \"],[8,[39,5],[[4,[38,6],[[30,0,[\"hideCountrySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCountries\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],\"Search\"]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,5]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,5,[\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm\"],[12],[1,[30,5,[\"name\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xxx-sm fx-1\"],[12],[1,\"(+\"],[1,[28,[35,8],[[30,5,[\"countryCallingCodes\"]],0],null]],[1,\")\"],[13],[1,\"\\n\"],[41,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,5]],null],[[[1,\"            \"],[8,[39,1],[[24,0,\"font-color-primary-500\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[5]]]]],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@prefix\",\"@number\",\"@errorMessage\",\"country\"],false,[\"on\",\"o-s-s/icon\",\"if\",\"input\",\"did-insert\",\"o-s-s/infinite-select\",\"on-click-outside\",\"eq\",\"get\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/phone-number-input.hbs",
     "isStrictMode": false
   });
@@ -91228,22 +91272,20 @@ interface OSSCodeBlockArgs {
       (true && !(typeof this.args.number === 'string') && (0, _debug.assert)('[component][OSS::PhoneNumberInput] The parameter @number of type string is mandatory', typeof this.args.number === 'string'));
       (true && !(typeof this.args.onChange === 'function') && (0, _debug.assert)('[component][OSS::PhoneNumberInput] The parameter @onChange of type function is mandatory', typeof this.args.onChange === 'function'));
       this.selectedCountry = this._countries[0];
-      this._loadExistingNumber();
+      this.loadExistingNumber();
     }
-    _loadExistingNumber() {
-      if (this.args.prefix) {
-        const purePrefix = this.args.prefix.replace(/\D/g, '');
-        this.selectedCountry = this._countries.find(country => country.countryCallingCodes[0] === purePrefix) || this._countries[0];
-      }
+    get displayErrorBorder() {
+      return this.args.hasError || !(0, _utils.isBlank)(this.args.errorMessage);
     }
-    validateInput() {
-      this.invalidInputError = '';
-      if (this.args.number.startsWith('+')) {
-        this.invalidInputError = this.intl.t('oss-components.phone-input.invalid_input');
-        this.args.validates?.(false);
-      } else {
-        this.args.validates?.(true);
+    get interactiveClasses() {
+      let classArray = [];
+      if (this.countrySelectorShown) {
+        classArray.push('phone-number-input--active');
       }
+      if (this.displayErrorBorder) {
+        classArray.push('phone-number-input--error');
+      }
+      return classArray.join(' ');
     }
     onlyNumeric(event) {
       const authorizedInputs = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift'];
@@ -91277,6 +91319,21 @@ interface OSSCodeBlockArgs {
     }
     registerInputElement(el) {
       this.inputElement = el;
+    }
+    validateInput() {
+      this.invalidInputError = '';
+      if (this.args.number.startsWith('+')) {
+        this.invalidInputError = this.intl.t('oss-components.phone-input.invalid_input');
+        this.args.validates?.(false);
+      } else {
+        this.args.validates?.(true);
+      }
+    }
+    loadExistingNumber() {
+      if (this.args.prefix) {
+        const purePrefix = this.args.prefix.replace(/\D/g, '');
+        this.selectedCountry = this._countries.find(country => country.countryCallingCodes[0] === purePrefix) || this._countries[0];
+      }
     }
   }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,
