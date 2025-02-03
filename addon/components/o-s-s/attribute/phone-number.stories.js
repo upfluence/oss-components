@@ -25,6 +25,27 @@ export default {
         defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
+    },
+    errorMessage: {
+      description: 'An error message that will be displayed below the input-group.',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'text' }
+    },
+    hasError: {
+      description:
+        'Allows setting the error style on the input without showing an error message. Useful for form validation.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'boolean' }
     }
   },
   parameters: {
@@ -40,13 +61,16 @@ export default {
 const defaultArgs = {
   countryCode: 'FR',
   prefix: '+33',
-  number: '6 12 34 56 78'
+  number: '612345678',
+  hasError: false,
+  errorMessage: ''
 };
 
 const Template = (args) => ({
   template: hbs`
     <div style="padding: 12px; background: white">
-      <OSS::Attribute::PhoneNumber @countryCode={{this.countryCode}} @prefix={{this.prefix}} @number={{this.number}} />
+      <OSS::Attribute::PhoneNumber @countryCode={{this.countryCode}} @prefix={{this.prefix}} @number={{this.number}}
+                                   @hasError={{this.hasError}} @errorMessage={{this.errorMessage}} />
     </div>
   `,
   context: args
