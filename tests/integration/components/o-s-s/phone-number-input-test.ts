@@ -11,22 +11,23 @@ import settled from '@ember/test-helpers/settled';
 module('Integration | Component | o-s-s/phone-number', function (hooks) {
   setupRenderingTest(hooks);
 
+  hooks.beforeEach(function () {
+    this.onChange = sinon.stub();
+  });
+
   test('it renders', async function (assert) {
-    this.onChange = () => {};
     await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
 
     assert.dom('.phone-number-container').exists();
   });
 
   test('The passed @number parameter is properly displayed in the input', async function (assert) {
-    this.onChange = () => {};
     await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="12341234" @onChange={{this.onChange}} />`);
 
     assert.dom('input').hasValue('12341234');
   });
 
   test('It properly loads the correct country when the @prefix parameter is defined', async function (assert) {
-    this.onChange = () => {};
     await render(hbs`<OSS::PhoneNumberInput @prefix="+33" @number="" @onChange={{this.onChange}} />`);
 
     assert.dom('.country-selector .fflag.fflag-FR').exists();
@@ -34,7 +35,6 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
 
   module('Country selector', () => {
     test('Clicking on the Flag button opens the country selector', async function (assert) {
-      this.onChange = () => {};
       await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
 
       await click('.country-selector');
@@ -42,7 +42,6 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
     });
 
     test('Selecting a new country in the Country selector triggers the onChange method', async function (assert) {
-      this.onChange = sinon.spy();
       await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
 
       await click('.country-selector');
@@ -52,7 +51,6 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
     });
 
     test('Typing in the search input filters the results', async function (assert) {
-      this.onChange = sinon.spy();
       await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
 
       await click('.country-selector');
@@ -64,7 +62,6 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
     });
 
     test('Searching by Country Code Prefix works', async function (assert) {
-      this.onChange = sinon.spy();
       await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
 
       await click('.country-selector');
@@ -76,10 +73,12 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
     });
   });
 
-  module('Phone Number Input', () => {
+  module('Phone Number Input', (hooks) => {
+    hooks.beforeEach(function () {
+      this.onValidation = sinon.stub();
+    });
+
     test('Typing numbers in the Phone input triggers the onChange method', async function (assert) {
-      this.onChange = sinon.spy();
-      this.onValidation = sinon.spy();
       await render(
         hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} @validates={{this.onValidation}} />`
       );
@@ -90,8 +89,6 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
     });
 
     test('Typing non-numeric characters does not apply changes', async function (assert) {
-      this.onChange = sinon.spy();
-      this.onValidation = sinon.spy();
       await render(
         hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} @validates={{this.onValidation}} />`
       );
@@ -107,12 +104,6 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
       this.prefix = '+1';
       this.number = '';
 
-      this.onChange = (prefix: string, number: number) => {
-        this.set('prefix', prefix);
-        this.set('number', number);
-      };
-      this.onValidation = sinon.spy();
-
       await render(
         hbs`<OSS::PhoneNumberInput @prefix={{this.prefix}} @number={{this.number}} @onChange={{this.onChange}} @validates={{this.onValidation}} />`
       );
@@ -121,6 +112,38 @@ module('Integration | Component | o-s-s/phone-number', function (hooks) {
 
       assert.ok(this.onValidation.calledWithExactly(false));
       assert.dom('.font-color-error-500').exists();
+    });
+  });
+
+  module('@hasError parameter', () => {
+    test('A red border is displayed if the parameter is true', async function (assert) {
+      await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="" @hasError={{true}}
+                                              @onChange={{this.onChange}} />`);
+      assert.dom('.phone-number-input').hasClass('phone-number-input--error');
+    });
+
+    test('No border is displayed if the parameter is not passed', async function (assert) {
+      await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
+      assert.dom('.phone-number-input').doesNotHaveClass('phone-number-input--error');
+    });
+  });
+
+  module('@errorMessage parameter', () => {
+    test('It displays the error message if the parameter is passed', async function (assert) {
+      await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="" @errorMessage="This is an error"
+                                              @onChange={{this.onChange}} />`);
+      assert.dom('.font-color-error-500').hasText('This is an error');
+    });
+
+    test('A red border is displayed if the parameter is true', async function (assert) {
+      await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="" @errorMessage="This is an error"
+                                              @onChange={{this.onChange}} />`);
+      assert.dom('.phone-number-input').hasClass('phone-number-input--error');
+    });
+
+    test('It does not display the error message if the parameter is not passed', async function (assert) {
+      await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
+      assert.dom('.font-color-error-500').doesNotExist();
     });
   });
 
