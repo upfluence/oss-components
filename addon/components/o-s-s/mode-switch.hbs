@@ -1,0 +1,32 @@
+<div class={{this.computedClass}} {{did-insert this.registerContainerDiv}} style={{this.computedStyles}} ...attributes>
+  {{#each @options as |option|}}
+    <input
+      type="radio"
+      name={{this.guid}}
+      id={{concat this.guid "-" option.key}}
+      checked={{eq this.selectedOptionKey option.key}}
+      {{on "change" (fn @onSelect option.key)}}
+      data-control-name={{concat option.key "-input"}}
+    />
+    <label
+      for={{concat this.guid "-" option.key}}
+      tabindex="0"
+      {{on "keydown" (fn this.onKeyDown option.key)}}
+      data-control-name={{concat option.key "-label"}}
+    >
+      {{#if option.icon}}
+        <OSS::Icon @style={{fa-icon-style option.icon}} @icon={{fa-icon-value option.icon}} />
+      {{/if}}
+      {{option.label}}
+      {{#if option.tag}}
+        <OSS::Tag
+          @skin={{option.tag.skin}}
+          @plain={{option.tag.plain}}
+          @label={{option.tag.label}}
+          @size={{option.tag.size}}
+        />
+      {{/if}}
+    </label>
+  {{/each}}
+  <div class="mode-switch__background" {{did-insert this.registerBackgroundElement}} />
+</div>

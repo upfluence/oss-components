@@ -1,6 +1,7 @@
 import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
 import { action, set } from '@ember/object';
+import type { ModeSwitchOption } from '@upfluence/oss-components/components/o-s-s/mode-switch';
 
 export default class Visual extends Controller {
   @tracked toggleValue: boolean = false;
@@ -81,6 +82,30 @@ export default class Visual extends Controller {
     }
   ];
 
+  modeSwitchOptions1: ModeSwitchOption[] = [
+    {
+      key: 'default',
+      label: 'Default',
+      icon: 'fa-exclamation-circle'
+    },
+    {
+      key: 'smart_results_v1',
+      label: 'Smart results',
+      tag: {
+        label: 'Tag',
+        skin: 'chat-gpt',
+        plain: true,
+        size: 'xs'
+      }
+    }
+  ];
+  @tracked modeSwitchSelected1: string = 'default';
+  modeSwitchOptions2: ModeSwitchOption[] = [
+    { key: 'or', label: 'OR', skin: 'xtd-blue' },
+    { key: 'and', label: 'AND', skin: 'xtd-violet', icon: 'fa-exclamation-circle' }
+  ];
+  @tracked modeSwitchSelected2: string = 'or';
+
   @action
   redirectTo(route: string): void {
     console.log('Redirect to', route);
@@ -135,5 +160,12 @@ export default class Visual extends Controller {
   @action
   countDownAction(): void {
     console.log('countDownAction');
+  }
+
+  @action onChangeMode1(selectedMode: string): void {
+    this.modeSwitchSelected1 = selectedMode;
+  }
+  @action onChangeMode2(selectedMode: string): void {
+    this.modeSwitchSelected2 = selectedMode;
   }
 }
