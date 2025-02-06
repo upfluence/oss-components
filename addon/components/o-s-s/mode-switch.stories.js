@@ -9,9 +9,9 @@ export default {
       description: 'The options of the switch',
       table: {
         type: {
-          summary: ''
+          summary: 'object'
         },
-        defaultValue: { summary: '' }
+        defaultValue: { summary: 'undefined' }
       },
       options: '',
       control: { type: 'object' }
@@ -49,11 +49,11 @@ export default {
       description: 'Changes the size of the switch',
       table: {
         type: {
-          summary: 'string'
+          summary: 'xs' | null
         },
-        defaultValue: { summary: 'sm' }
+        defaultValue: { summary: 'undefined' }
       },
-      options: 'xs' | 'sm',
+      options: ['xs', null],
       control: { type: 'select' }
     }
   }
@@ -73,29 +73,4 @@ Default.args = {
   selected: 'option1',
   plain: false,
   size: undefined
-};
-
-export const Plain = Template.bind({});
-Plain.args = {
-  ...Default.args,
-  plain: true
-};
-
-export const Small = Template.bind({});
-Small.args = {
-  ...Default.args,
-  size: 'xs'
-};
-
-export const DifferentSkins = Template.bind({});
-DifferentSkins.args = {
-  options: [
-    { key: 'blue', label: 'Blue', skin: 'xtd-blue' },
-    { key: 'cyan', label: 'Cyan', skin: 'xtd-cyan' },
-    { key: 'lime', label: 'Lime', skin: 'xtd-lime' },
-    { key: 'orange', label: 'Orange', skin: 'xtd-orange' },
-    { key: 'violet', label: 'Violet', skin: 'xtd-violet' },
-    { key: 'yellow', label: 'Yellow', skin: 'xtd-yellow' }
-  ],
-  selected: 'blue'
 };
