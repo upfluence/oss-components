@@ -90210,6 +90210,248 @@ interface OSSCodeBlockArgs {
     }
   };
 });
+;define("@upfluence/oss-components/components/o-s-s/mode-switch", ["exports", "@ember/component", "@ember/object", "@ember/object/internals", "@ember/runloop", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _object, _internals, _runloop, _component2, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@ember/object/internals",0,"@ember/runloop",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class={{this.computedClass}} {{did-insert this.registerContainerDiv}} style={{this.computedStyles}} ...attributes>
+    {{#each @options as |option|}}
+      <input
+        type="radio"
+        name={{this.guid}}
+        id={{concat this.guid "-" option.key}}
+        checked={{eq this.selectedOptionKey option.key}}
+        {{on "change" (fn @onSelect option.key)}}
+        data-control-name={{concat option.key "-input"}}
+      />
+      <label
+        for={{concat this.guid "-" option.key}}
+        tabindex="0"
+        {{on "keydown" (fn this.onKeyDown option.key)}}
+        data-control-name={{concat option.key "-label"}}
+      >
+        {{#if option.icon}}
+          <OSS::Icon @style={{fa-icon-style option.icon}} @icon={{fa-icon-value option.icon}} />
+        {{/if}}
+        {{option.label}}
+        {{#if option.tag}}
+          <OSS::Tag
+            @skin={{option.tag.skin}}
+            @plain={{option.tag.plain}}
+            @label={{option.tag.label}}
+            @size={{option.tag.size}}
+          />
+        {{/if}}
+      </label>
+    {{/each}}
+    <div class="mode-switch__background" {{did-insert this.registerBackgroundElement}} />
+  </div>
+  */
+  {
+    "id": "Txc+BxIy",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[16,5,[30,0,[\"computedStyles\"]]],[17,1],[4,[38,0],[[30,0,[\"registerContainerDiv\"]]],null],[12],[1,\"\\n\"],[42,[28,[37,2],[[28,[37,2],[[30,2]],null]],null],null,[[[1,\"    \"],[11,\"input\"],[16,3,[30,0,[\"guid\"]]],[16,1,[28,[37,3],[[30,0,[\"guid\"]],\"-\",[30,3,[\"key\"]]],null]],[16,\"checked\",[28,[37,4],[[30,0,[\"selectedOptionKey\"]],[30,3,[\"key\"]]],null]],[16,\"data-control-name\",[28,[37,3],[[30,3,[\"key\"]],\"-input\"],null]],[24,4,\"radio\"],[4,[38,5],[\"change\",[28,[37,6],[[30,4],[30,3,[\"key\"]]],null]],null],[12],[13],[1,\"\\n    \"],[11,\"label\"],[16,\"for\",[28,[37,3],[[30,0,[\"guid\"]],\"-\",[30,3,[\"key\"]]],null]],[24,\"tabindex\",\"0\"],[16,\"data-control-name\",[28,[37,3],[[30,3,[\"key\"]],\"-label\"],null]],[4,[38,5],[\"keydown\",[28,[37,6],[[30,0,[\"onKeyDown\"]],[30,3,[\"key\"]]],null]],null],[12],[1,\"\\n\"],[41,[30,3,[\"icon\"]],[[[1,\"        \"],[8,[39,8],null,[[\"@style\",\"@icon\"],[[28,[37,9],[[30,3,[\"icon\"]]],null],[28,[37,10],[[30,3,[\"icon\"]]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[1,[30,3,[\"label\"]]],[1,\"\\n\"],[41,[30,3,[\"tag\"]],[[[1,\"        \"],[8,[39,11],null,[[\"@skin\",\"@plain\",\"@label\",\"@size\"],[[30,3,[\"tag\",\"skin\"]],[30,3,[\"tag\",\"plain\"]],[30,3,[\"tag\",\"label\"]],[30,3,[\"tag\",\"size\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\"]],[3]],null],[1,\"  \"],[11,0],[24,0,\"mode-switch__background\"],[4,[38,0],[[30,0,[\"registerBackgroundElement\"]]],null],[12],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@options\",\"option\",\"@onSelect\"],false,[\"did-insert\",\"each\",\"-track-array\",\"concat\",\"eq\",\"on\",\"fn\",\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"o-s-s/tag\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/mode-switch.hbs",
+    "isStrictMode": false
+  });
+  const DEFAULT_SKIN = 'primary';
+  let ModeSwitchComponent = _exports.default = (_class = class ModeSwitchComponent extends _component2.default {
+    constructor(owner, args) {
+      super(owner, args);
+      _defineProperty(this, "containerDiv", document.createElement('div'));
+      _defineProperty(this, "containerStyles", getComputedStyle(this.containerDiv));
+      _defineProperty(this, "backgroundElement", document.createElement('div'));
+      _defineProperty(this, "guid", (0, _internals.guidFor)(this));
+      (0, _runloop.scheduleOnce)('afterRender', this, () => {
+        this.initComponent();
+      });
+    }
+    get selectedOptionKey() {
+      return this.args.selected ?? this.args.options[0].key;
+    }
+    registerContainerDiv(container) {
+      this.containerDiv = container;
+      this.containerStyles = getComputedStyle(this.containerDiv);
+    }
+    registerBackgroundElement(backgroundDiv) {
+      this.backgroundElement = backgroundDiv;
+    }
+    onKeyDown(inputId, event) {
+      if (event.key !== 'Enter' && event.key !== ' ') return;
+      event.preventDefault();
+      const inputElement = document.getElementById(`${this.guid}-${inputId}`);
+      inputElement?.click();
+    }
+    get computedClass() {
+      const classes = ['mode-switch'];
+      if (this.args.plain) {
+        classes.push('mode-switch--plain');
+      }
+      if (this.args.size === 'xs') {
+        classes.push('mode-switch--xs');
+      }
+      return classes.join(' ');
+    }
+    get computedStyles() {
+      this.moveBackgroundElement();
+      const colorPath = this.getColorPath();
+      if (!this.containerStyles) return '';
+      return [`--mode-switch__selected-color:${this.containerStyles?.getPropertyValue(`--color-${colorPath}-500`)}`, `--mode-switch__selected-background-color:${this.containerStyles?.getPropertyValue(`--color-${colorPath}-50`)}`].join(';');
+    }
+    moveBackgroundElement() {
+      const destinationLabelDivRect = document.querySelector(`label[for='${this.guid}-${this.selectedOptionKey}']`)?.getBoundingClientRect();
+      if (!this.backgroundElement || !destinationLabelDivRect) return;
+      this.backgroundElement.style.width = destinationLabelDivRect.width + 'px';
+      this.backgroundElement.style.left = destinationLabelDivRect.left - this.containerDiv.getBoundingClientRect().left + 'px';
+    }
+    getColorPath() {
+      const option = this.args.options.find(option => option.key === this.selectedOptionKey);
+      if (!option) return;
+      const skin = option.skin ?? DEFAULT_SKIN;
+      return skin.startsWith('xtd-') ? skin.split('-')[1] : skin;
+    }
+    initComponent() {
+      this.moveBackgroundElement();
+      const colorPath = this.getColorPath();
+      this.containerDiv.style.setProperty('--mode-switch__selected-color', this.containerStyles.getPropertyValue(`--color-${colorPath}-500`));
+      this.containerDiv.style.setProperty('--mode-switch__selected-background-color', this.containerStyles.getPropertyValue(`--color-${colorPath}-50`));
+      this.addTransitionsStyle();
+    }
+    addTransitionsStyle() {
+      this.backgroundElement.style.setProperty('transition', 'left 0.25s ease, width 0.25s ease, background-color 0.25s ease');
+      this.containerDiv.style.setProperty('transition', 'font-weight 0.25s ease, color 0.25s ease');
+    }
+  }, (_applyDecoratedDescriptor(_class.prototype, "registerContainerDiv", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerContainerDiv"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerBackgroundElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerBackgroundElement"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onKeyDown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onKeyDown"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, ModeSwitchComponent);
+});
+;define("@upfluence/oss-components/components/o-s-s/mode-switch.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.Default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::ModeSwitch',
+    component: 'ModeSwitch',
+    argTypes: {
+      options: {
+        description: 'The options of the switch',
+        table: {
+          type: {
+            summary: 'object'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        options: '',
+        control: {
+          type: 'object'
+        }
+      },
+      selected: {
+        description: 'The selected option',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      onSelect: {
+        description: 'A callback triggered when an option is clicked',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'onSelect():void'
+          }
+        }
+      },
+      plain: {
+        description: 'Display the switch with a grey background',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      size: {
+        description: 'Changes the size of the switch',
+        table: {
+          type: {
+            summary: 'xs' | null
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        options: ['xs', null],
+        control: {
+          type: 'select'
+        }
+      }
+    }
+  };
+  const Template = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      <ModeSwitch @options={{this.options}} @selected={{this.selected}} @plain={{this.plain}} @size={{this.size}} @onSelect={{this.onSelect}} />
+    */
+    {
+      "id": "7FeT7CZ0",
+      "block": "[[[8,[39,0],null,[[\"@options\",\"@selected\",\"@plain\",\"@size\",\"@onSelect\"],[[30,0,[\"options\"]],[30,0,[\"selected\"]],[30,0,[\"plain\"]],[30,0,[\"size\"]],[30,0,[\"onSelect\"]]]],null]],[],false,[\"mode-switch\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/mode-switch.stories.js",
+      "isStrictMode": false
+    }),
+    context: {
+      ...args,
+      onSelect: (0, _addonActions.action)('onSelect')
+    }
+  });
+  const Default = _exports.Default = Template.bind({});
+  Default.args = {
+    options: [{
+      key: 'option1',
+      label: 'Option 1',
+      icon: 'check',
+      skin: 'primary'
+    }, {
+      key: 'option2',
+      label: 'Option 2',
+      tag: {
+        label: 'New',
+        skin: 'primary'
+      },
+      skin: 'xtd-blue'
+    }],
+    selected: 'option1',
+    plain: false,
+    size: undefined
+  };
+});
 ;define("@upfluence/oss-components/components/o-s-s/nav-tab", ["exports", "@ember/component", "@ember/debug", "@glimmer/component", "@ember/object", "@ember/template-factory"], function (_exports, _component, _debug, _component2, _object, _templateFactory) {
   "use strict";
 
