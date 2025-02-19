@@ -1,9 +1,18 @@
-<div>
-  <div>
-    {{@title}}
-  </div>
-  <div>
-    {{@subtitle}}
+<div class="fx-1 fx-col fx-xalign-center fx-gap-px-18">
+  {{#if (has-block "image")}}
+    <span class="">
+      {{yield to="image"}}
+    </span>
+  {{else if @image}}
+    <OSS::Badge @icon={{@image}} @size="lg" />
+  {{/if}}
+  <div class="fx-col fx-xalign-center fx-gap-px-6">
+    <div class="font-color-gray-900 font-size-{{this.titleSize}} font-weight-semibold">
+      {{@title}}
+    </div>
+    <div class="font-color-gray-500 font-size-{{this.subtitleSize}}">
+      {{@subtitle}}
+    </div>
   </div>
   {{#if (has-block "actions")}}
     <span class="">

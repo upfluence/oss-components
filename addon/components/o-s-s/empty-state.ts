@@ -8,4 +8,12 @@ interface OSSEmptyStateComponentSignature {
   size?: 'sm' | 'md';
 }
 
-export default class OSSEmptyStateComponent extends Component<OSSEmptyStateComponentSignature> {}
+export default class OSSEmptyStateComponent extends Component<OSSEmptyStateComponentSignature> {
+  get titleSize(): string {
+    return this.args.size === 'sm' ? 'md' : 'lg';
+  }
+
+  get subtitleSize(): string {
+    return this.args.size || 'md';
+  }
+}
