@@ -11,12 +11,11 @@ module('Integration | Component | o-s-s/empty-state', function (hooks) {
 
     assert.dom('div.font-color-gray-900').hasText('No Data');
     assert.dom('div.font-color-gray-500').hasText('Try again later');
-    assert.dom('span').doesNotExist();
   });
 
-  test('it renders with an image', async function (assert) {
+  test('it renders with a badge icon', async function (assert) {
     this.set('image', 'fa-thumbs-up');
-    await render(hbs`<OSS::EmptyState @title="No Data" @subtitle="Try again later" @image={{this.image}} />`);
+    await render(hbs`<OSS::EmptyState @title="No Data" @subtitle="Try again later" @badgeIcon={{this.image}} />`);
 
     assert.dom('div.font-color-gray-900').hasText('No Data');
     assert.dom('div.font-color-gray-500').hasText('Try again later');
@@ -34,7 +33,7 @@ module('Integration | Component | o-s-s/empty-state', function (hooks) {
 
     assert.dom('div.font-color-gray-900').hasText('No Data');
     assert.dom('div.font-color-gray-500').hasText('Try again later');
-    assert.dom('span img').exists();
+    assert.dom('img').exists();
   });
 
   test('it supports block usage for actions', async function (assert) {
@@ -48,7 +47,7 @@ module('Integration | Component | o-s-s/empty-state', function (hooks) {
 
     assert.dom('div.font-color-gray-900').hasText('No Data');
     assert.dom('div.font-color-gray-500').hasText('Try again later');
-    assert.dom('span button').hasText('Retry');
+    assert.dom('button').hasText('Retry');
   });
 
   test('it applies size-based styles', async function (assert) {

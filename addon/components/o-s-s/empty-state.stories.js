@@ -4,7 +4,7 @@ export default {
   title: 'Components/OSS::EmptyState',
   component: 'empty state',
   argTypes: {
-    image: {
+    badgeIcon: {
       description: 'a font-awesome icon to be displayed in a badge',
       table: {
         type: {
@@ -56,14 +56,14 @@ export default {
 };
 
 const defaultArgs = {
-  image: 'fa-thumbs-up',
+  badgeIcon: 'fa-thumbs-up',
   title: 'Empty State Title',
   subtitle: 'Additional information here',
   size: 'md'
 };
 
 const Template = (args) => ({
-  template: hbs`<OSS::EmptyState @image={{this.image}} @title={{this.title}} @subtitle={{this.subtitle}} @size={{this.size}} />`,
+  template: hbs`<OSS::EmptyState @badgeIcon={{this.badgeIcon}} @title={{this.title}} @subtitle={{this.subtitle}} @size={{this.size}} />`,
   context: args
 });
 
