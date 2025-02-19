@@ -6,21 +6,54 @@ import { hbs } from 'ember-cli-htmlbars';
 module('Integration | Component | o-s-s/empty-state', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function (val) { ... });
+  test('it renders with default properties', async function (assert) {
+    await render(hbs`<OSS::EmptyState @title="No Data" @subtitle="Try again later" />`);
 
-    await render(hbs`<OSS::EmptyState />`);
+    assert.dom('div.font-color-gray-900').hasText('No Data');
+    assert.dom('div.font-color-gray-500').hasText('Try again later');
+    assert.dom('span').doesNotExist();
+  });
 
-    assert.dom().hasText('');
+  test('it renders with an image', async function (assert) {
+    this.set('image', 'fa-thumbs-up');
+    await render(hbs`<OSS::EmptyState @title="No Data" @subtitle="Try again later" @image={{this.image}} />`);
 
-    // Template block usage:
+    assert.dom('div.font-color-gray-900').hasText('No Data');
+    assert.dom('div.font-color-gray-500').hasText('Try again later');
+    assert.dom('.upf-badge').exists();
+  });
+
+  test('it supports block usage for image', async function (assert) {
     await render(hbs`
-      <OSS::EmptyState>
-        template block text
+      <OSS::EmptyState @title="No Data" @subtitle="Try again later">
+        <:image>
+          <img src="/test-image.png" alt="Test Image" />
+        </:image>
       </OSS::EmptyState>
     `);
 
-    assert.dom().hasText('template block text');
+    assert.dom('div.font-color-gray-900').hasText('No Data');
+    assert.dom('div.font-color-gray-500').hasText('Try again later');
+    assert.dom('span img').exists();
+  });
+
+  test('it supports block usage for actions', async function (assert) {
+    await render(hbs`
+      <OSS::EmptyState @title="No Data" @subtitle="Try again later">
+        <:actions>
+          <button type="button">Retry</button>
+        </:actions>
+      </OSS::EmptyState>
+    `);
+
+    assert.dom('div.font-color-gray-900').hasText('No Data');
+    assert.dom('div.font-color-gray-500').hasText('Try again later');
+    assert.dom('span button').hasText('Retry');
+  });
+
+  test('it applies size-based styles', async function (assert) {
+    await render(hbs`<OSS::EmptyState @title="No Data" @subtitle="Try again later" @size="sm" />`);
+    assert.dom('div.font-color-gray-900').hasClass('font-size-md');
+    assert.dom('div.font-color-gray-500').hasClass('font-size-sm');
   });
 });
