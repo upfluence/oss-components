@@ -5,6 +5,8 @@ export default class InputWrapper extends Component {
   @tracked error = null;
   @tracked help = null;
 
+  tagName = '';
+
   get computedClasses() {
     const classes = ['upf-input-container', 'form-group'];
     if (this.error !== null) {

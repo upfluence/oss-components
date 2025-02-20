@@ -8,6 +8,7 @@ export default class UpfStat extends Component {
   dataClass = null;
   label = null;
   tooltip = null;
+  tagName = '';
 
   icon = null;
   iconPlacement = 'top';
