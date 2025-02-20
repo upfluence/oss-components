@@ -15,7 +15,7 @@ export default {
       control: { type: 'text' }
     },
     title: {
-      description: 'The title of the state',
+      description: 'A title displayed below the icon or badge in the component',
       table: {
         type: {
           summary: 'string'
@@ -25,7 +25,7 @@ export default {
       control: { type: 'text' }
     },
     subtitle: {
-      description: 'More information about the state',
+      description: 'A subtitle displayed under the title in the component',
       table: {
         type: {
           summary: 'string'
@@ -67,5 +67,29 @@ const Template = (args) => ({
   context: args
 });
 
+const ImageTemplate = (args) => ({
+  template: hbs`<OSS::EmptyState @badgeIcon={{this.badgeIcon}} @title={{this.title}} @subtitle={{this.subtitle}} @size={{this.size}}>
+    <:image>
+      <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
+    </:image>
+  </OSS::EmptyState>`,
+  context: args
+});
+
+const ActionTemplate = (args) => ({
+  template: hbs`<OSS::EmptyState @badgeIcon={{this.badgeIcon}} @title={{this.title}} @subtitle={{this.subtitle}} @size={{this.size}}>
+    <:actions>
+      <OSS::Button @label="Click me" />
+    </:actions>
+  </OSS::EmptyState>`,
+  context: args
+});
+
 export const Default = Template.bind({});
 Default.args = defaultArgs;
+
+export const UsageWithImage = ImageTemplate.bind({});
+UsageWithImage.args = defaultArgs;
+
+export const UsageWithActions = ActionTemplate.bind({});
+UsageWithActions.args = defaultArgs;

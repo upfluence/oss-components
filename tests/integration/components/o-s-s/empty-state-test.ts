@@ -22,7 +22,7 @@ module('Integration | Component | o-s-s/empty-state', function (hooks) {
     assert.dom('.upf-badge').exists();
   });
 
-  test('it supports block usage for image', async function (assert) {
+  test('it supports named-block usage for image', async function (assert) {
     await render(hbs`
       <OSS::EmptyState @title="No Data" @subtitle="Try again later">
         <:image>
@@ -36,7 +36,7 @@ module('Integration | Component | o-s-s/empty-state', function (hooks) {
     assert.dom('img').exists();
   });
 
-  test('it supports block usage for actions', async function (assert) {
+  test('it supports named-block usage for actions', async function (assert) {
     await render(hbs`
       <OSS::EmptyState @title="No Data" @subtitle="Try again later">
         <:actions>
@@ -50,9 +50,28 @@ module('Integration | Component | o-s-s/empty-state', function (hooks) {
     assert.dom('button').hasText('Retry');
   });
 
-  test('it applies size-based styles', async function (assert) {
-    await render(hbs`<OSS::EmptyState @title="No Data" @subtitle="Try again later" @size="sm" />`);
-    assert.dom('div.font-color-gray-900').hasClass('font-size-md');
-    assert.dom('div.font-color-gray-500').hasClass('font-size-sm');
+  module('component size', function (hooks) {
+    test('it applies md sizes by default', async function (assert) {
+      await render(hbs`<OSS::EmptyState @title="No Data" @subtitle="Try again later" />`);
+      assert.dom('div.font-color-gray-900').hasClass('font-size-lg');
+      assert.dom('div.font-color-gray-500').hasClass('font-size-md');
+    });
+    test('it applies md sizes when given a wrong size', async function (assert) {
+      await render(hbs`<OSS::EmptyState @title="No Data" @subtitle="Try again later" @size="wrong" />`);
+      assert.dom('div.font-color-gray-900').hasClass('font-size-lg');
+      assert.dom('div.font-color-gray-500').hasClass('font-size-md');
+    });
+
+    test('it applies md sizes when specified', async function (assert) {
+      await render(hbs`<OSS::EmptyState @title="No Data" @subtitle="Try again later" @size="md" />`);
+      assert.dom('div.font-color-gray-900').hasClass('font-size-lg');
+      assert.dom('div.font-color-gray-500').hasClass('font-size-md');
+    });
+
+    test('it applies sm sizes when specified', async function (assert) {
+      await render(hbs`<OSS::EmptyState @title="No Data" @subtitle="Try again later" @size="sm" />`);
+      assert.dom('div.font-color-gray-900').hasClass('font-size-md');
+      assert.dom('div.font-color-gray-500').hasClass('font-size-sm');
+    });
   });
 });

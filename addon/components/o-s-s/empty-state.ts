@@ -8,12 +8,14 @@ interface OSSEmptyStateComponentSignature {
   size?: 'sm' | 'md';
 }
 
+const ALLOWED_SIZE = ['sm', 'md'];
+
 export default class OSSEmptyStateComponent extends Component<OSSEmptyStateComponentSignature> {
   get titleSize(): string {
     return this.size === 'sm' ? 'md' : 'lg';
   }
 
   get size(): string {
-    return this.args.size && ['sm', 'md'].includes(this.args.size) ? this.args.size : 'md';
+    return this.args.size && ALLOWED_SIZE.includes(this.args.size) ? this.args.size : 'md';
   }
 }
