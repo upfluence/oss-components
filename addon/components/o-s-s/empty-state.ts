@@ -1,4 +1,5 @@
 import type { htmlSafe } from '@ember/template';
+import { assert } from '@ember/debug';
 import Component from '@glimmer/component';
 
 interface OSSEmptyStateComponentSignature {
@@ -11,6 +12,13 @@ interface OSSEmptyStateComponentSignature {
 const ALLOWED_SIZES: string[] = ['sm', 'md'];
 
 export default class OSSEmptyStateComponent extends Component<OSSEmptyStateComponentSignature> {
+  constructor(owner: unknown, args: OSSEmptyStateComponentSignature) {
+    super(owner, args);
+
+    assert('[component][OSS::EmptyState] The title parameter is mandatory', typeof args.title === 'string');
+    assert('[component][OSS::EmptyState] The subtitle parameter is mandatory', typeof args.subtitle === 'string');
+  }
+
   get titleSize(): string {
     return this.size === 'sm' ? 'md' : 'lg';
   }
