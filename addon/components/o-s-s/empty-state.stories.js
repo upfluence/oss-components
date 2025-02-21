@@ -5,7 +5,7 @@ export default {
   component: 'empty state',
   argTypes: {
     badgeIcon: {
-      description: 'a font-awesome icon to be displayed in a badge',
+      description: 'A font-awesome icon to be displayed in a badge',
       table: {
         type: {
           summary: 'string'
@@ -49,7 +49,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: 'An component used when there is nothing to display on a page'
+        component: 'A component used when there is nothing to display on a page'
       }
     }
   }
