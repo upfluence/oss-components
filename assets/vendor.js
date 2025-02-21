@@ -87408,6 +87408,196 @@ interface OSSCodeBlockArgs {
   const BasicUsage = _exports.BasicUsage = Template.bind({});
   BasicUsage.args = defaultArgs;
 });
+;define("@upfluence/oss-components/components/o-s-s/empty-state", ["exports", "@ember/component", "@ember/debug", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _debug, _component2, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="fx-1 fx-col fx-xalign-center fx-gap-px-18" ...attributes>
+    {{#if (has-block "image")}}
+      {{yield to="image"}}
+    {{else if @badgeIcon}}
+      <OSS::Badge @icon={{@badgeIcon}} @size="lg" />
+    {{/if}}
+    <span class="fx-col fx-xalign-center fx-gap-px-6">
+      <div class="font-color-gray-900 font-size-{{this.titleSize}} font-weight-semibold">
+        {{@title}}
+      </div>
+      <div class="font-color-gray-500 font-size-{{this.size}}">
+        {{@subtitle}}
+      </div>
+    </span>
+    {{#if (has-block "actions")}}
+      {{yield to="actions"}}
+    {{/if}}
+  </div>
+  */
+  {
+    "id": "7qtqNgfo",
+    "block": "[[[11,0],[24,0,\"fx-1 fx-col fx-xalign-center fx-gap-px-18\"],[17,1],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"    \"],[18,5,null],[1,\"\\n\"]],[]],[[[41,[30,2],[[[1,\"    \"],[8,[39,3],null,[[\"@icon\",\"@size\"],[[30,2],\"lg\"]],null],[1,\"\\n  \"]],[]],null]],[]]],[1,\"  \"],[10,1],[14,0,\"fx-col fx-xalign-center fx-gap-px-6\"],[12],[1,\"\\n    \"],[10,0],[15,0,[29,[\"font-color-gray-900 font-size-\",[30,0,[\"titleSize\"]],\" font-weight-semibold\"]]],[12],[1,\"\\n      \"],[1,[30,3]],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[15,0,[29,[\"font-color-gray-500 font-size-\",[30,0,[\"size\"]]]]],[12],[1,\"\\n      \"],[1,[30,4]],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"    \"],[18,6,null],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@badgeIcon\",\"@title\",\"@subtitle\",\"&image\",\"&actions\"],false,[\"if\",\"has-block\",\"yield\",\"o-s-s/badge\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/empty-state.hbs",
+    "isStrictMode": false
+  });
+  const ALLOWED_SIZES = ['sm', 'md'];
+  class OSSEmptyStateComponent extends _component2.default {
+    constructor(owner, args) {
+      super(owner, args);
+      (true && !(typeof args.title === 'string') && (0, _debug.assert)('[component][OSS::EmptyState] The title parameter is mandatory', typeof args.title === 'string'));
+      (true && !(typeof args.subtitle === 'string') && (0, _debug.assert)('[component][OSS::EmptyState] The subtitle parameter is mandatory', typeof args.subtitle === 'string'));
+    }
+    get titleSize() {
+      return this.size === 'sm' ? 'md' : 'lg';
+    }
+    get size() {
+      return this.args.size && ALLOWED_SIZES.includes(this.args.size) ? this.args.size : 'md';
+    }
+  }
+  _exports.default = OSSEmptyStateComponent;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSEmptyStateComponent);
+});
+;define("@upfluence/oss-components/components/o-s-s/empty-state.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.UsageWithImage = _exports.UsageWithActions = _exports.Default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::EmptyState',
+    component: 'empty state',
+    argTypes: {
+      badgeIcon: {
+        description: 'A font-awesome icon to be displayed in a badge',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      title: {
+        description: 'A title displayed below the icon or badge in the component',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      subtitle: {
+        description: 'A subtitle displayed under the title in the component',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      size: {
+        description: 'The size of the state',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'select'
+        },
+        options: ['sm', 'md']
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'A component used when there is nothing to display on a page'
+        }
+      }
+    }
+  };
+  const defaultArgs = {
+    badgeIcon: 'fa-thumbs-up',
+    title: 'Empty State Title',
+    subtitle: 'Additional information here',
+    size: 'md'
+  };
+  const Template = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      <OSS::EmptyState @badgeIcon={{this.badgeIcon}} @title={{this.title}} @subtitle={{this.subtitle}} @size={{this.size}} />
+    */
+    {
+      "id": "sZ+kOkEG",
+      "block": "[[[8,[39,0],null,[[\"@badgeIcon\",\"@title\",\"@subtitle\",\"@size\"],[[30,0,[\"badgeIcon\"]],[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"size\"]]]],null]],[],false,[\"o-s-s/empty-state\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/empty-state.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const ImageTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      <OSS::EmptyState @badgeIcon={{this.badgeIcon}} @title={{this.title}} @subtitle={{this.subtitle}} @size={{this.size}}>
+        <:image>
+          <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
+        </:image>
+      </OSS::EmptyState>
+    */
+    {
+      "id": "DXufbv3p",
+      "block": "[[[8,[39,0],null,[[\"@badgeIcon\",\"@title\",\"@subtitle\",\"@size\"],[[30,0,[\"badgeIcon\"]],[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"size\"]]]],[[\"image\"],[[[[1,\"\\n      \"],[8,[39,1],null,[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null],[1,\"\\n    \"]],[]]]]]],[],false,[\"o-s-s/empty-state\",\"o-s-s/illustration\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/empty-state.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const ActionTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      <OSS::EmptyState @badgeIcon={{this.badgeIcon}} @title={{this.title}} @subtitle={{this.subtitle}} @size={{this.size}}>
+        <:actions>
+          <OSS::Button @label="Click me" />
+        </:actions>
+      </OSS::EmptyState>
+    */
+    {
+      "id": "+vAzpcQ5",
+      "block": "[[[8,[39,0],null,[[\"@badgeIcon\",\"@title\",\"@subtitle\",\"@size\"],[[30,0,[\"badgeIcon\"]],[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"size\"]]]],[[\"actions\"],[[[[1,\"\\n      \"],[8,[39,1],null,[[\"@label\"],[\"Click me\"]],null],[1,\"\\n    \"]],[]]]]]],[],false,[\"o-s-s/empty-state\",\"o-s-s/button\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/empty-state.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const Default = _exports.Default = Template.bind({});
+  Default.args = defaultArgs;
+  const UsageWithImage = _exports.UsageWithImage = ImageTemplate.bind({});
+  UsageWithImage.args = defaultArgs;
+  const UsageWithActions = _exports.UsageWithActions = ActionTemplate.bind({});
+  UsageWithActions.args = defaultArgs;
+});
 ;define("@upfluence/oss-components/components/o-s-s/icon", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@upfluence/oss-components/components/o-s-s/iconName.enum", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _iconName, _templateFactory) {
   "use strict";
 

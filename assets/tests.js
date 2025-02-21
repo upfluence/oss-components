@@ -5713,6 +5713,176 @@ define("dummy/tests/integration/components/o-s-s/email-input-test", ["qunit", "e
     });
   });
 });
+define("dummy/tests/integration/components/o-s-s/empty-state-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/empty-state', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders with default properties', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::EmptyState @title="No Data" @subtitle="Try again later" />
+      */
+      {
+        "id": "soLGenqS",
+        "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[\"No Data\",\"Try again later\"]],null]],[],false,[\"o-s-s/empty-state\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/empty-state-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('div.font-color-gray-900').hasText('No Data');
+      assert.dom('div.font-color-gray-500').hasText('Try again later');
+    });
+    (0, _qunit.test)('it renders with a badge icon', async function (assert) {
+      this.set('image', 'fa-thumbs-up');
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::EmptyState @title="No Data" @subtitle="Try again later" @badgeIcon={{this.image}} />
+      */
+      {
+        "id": "I3irsZi8",
+        "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@badgeIcon\"],[\"No Data\",\"Try again later\",[30,0,[\"image\"]]]],null]],[],false,[\"o-s-s/empty-state\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/empty-state-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('div.font-color-gray-900').hasText('No Data');
+      assert.dom('div.font-color-gray-500').hasText('Try again later');
+      assert.dom('.upf-badge').exists();
+    });
+    (0, _qunit.test)('it supports named-block usage for image', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <OSS::EmptyState @title="No Data" @subtitle="Try again later">
+              <:image>
+                <img src="/test-image.png" alt="Test Image" />
+              </:image>
+            </OSS::EmptyState>
+          
+      */
+      {
+        "id": "8MQ4GaKE",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\"],[\"No Data\",\"Try again later\"]],[[\"image\"],[[[[1,\"\\n          \"],[10,\"img\"],[14,\"src\",\"/test-image.png\"],[14,\"alt\",\"Test Image\"],[12],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"]],[],false,[\"o-s-s/empty-state\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/empty-state-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('div.font-color-gray-900').hasText('No Data');
+      assert.dom('div.font-color-gray-500').hasText('Try again later');
+      assert.dom('img').exists();
+    });
+    (0, _qunit.test)('it supports named-block usage for actions', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <OSS::EmptyState @title="No Data" @subtitle="Try again later">
+              <:actions>
+                <button type="button">Retry</button>
+              </:actions>
+            </OSS::EmptyState>
+          
+      */
+      {
+        "id": "O/13dJ1S",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\"],[\"No Data\",\"Try again later\"]],[[\"actions\"],[[[[1,\"\\n          \"],[10,\"button\"],[14,4,\"button\"],[12],[1,\"Retry\"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"]],[],false,[\"o-s-s/empty-state\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/empty-state-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('div.font-color-gray-900').hasText('No Data');
+      assert.dom('div.font-color-gray-500').hasText('Try again later');
+      assert.dom('button').hasText('Retry');
+    });
+    (0, _qunit.module)('component size', function (hooks) {
+      (0, _qunit.test)('it applies md sizes by default', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::EmptyState @title="No Data" @subtitle="Try again later" />
+        */
+        {
+          "id": "soLGenqS",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[\"No Data\",\"Try again later\"]],null]],[],false,[\"o-s-s/empty-state\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/empty-state-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('div.font-color-gray-900').hasClass('font-size-lg');
+        assert.dom('div.font-color-gray-500').hasClass('font-size-md');
+      });
+      (0, _qunit.test)('it applies md sizes when given a wrong size', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::EmptyState @title="No Data" @subtitle="Try again later" @size="wrong" />
+        */
+        {
+          "id": "CWE5do1M",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@size\"],[\"No Data\",\"Try again later\",\"wrong\"]],null]],[],false,[\"o-s-s/empty-state\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/empty-state-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('div.font-color-gray-900').hasClass('font-size-lg');
+        assert.dom('div.font-color-gray-500').hasClass('font-size-md');
+      });
+      (0, _qunit.test)('it applies md sizes when specified', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::EmptyState @title="No Data" @subtitle="Try again later" @size="md" />
+        */
+        {
+          "id": "DVuLjSvg",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@size\"],[\"No Data\",\"Try again later\",\"md\"]],null]],[],false,[\"o-s-s/empty-state\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/empty-state-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('div.font-color-gray-900').hasClass('font-size-lg');
+        assert.dom('div.font-color-gray-500').hasClass('font-size-md');
+      });
+      (0, _qunit.test)('it applies sm sizes when specified', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::EmptyState @title="No Data" @subtitle="Try again later" @size="sm" />
+        */
+        {
+          "id": "SkRZddIN",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@size\"],[\"No Data\",\"Try again later\",\"sm\"]],null]],[],false,[\"o-s-s/empty-state\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/empty-state-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('div.font-color-gray-900').hasClass('font-size-md');
+        assert.dom('div.font-color-gray-500').hasClass('font-size-sm');
+      });
+    });
+    (0, _qunit.module)('error management', function (hooks) {
+      (0, _qunit.test)('it throws an error if the @title parameter is not passed', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::EmptyState] The title parameter is mandatory');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::EmptyState @subtitle="Try again later" />
+        */
+        {
+          "id": "GYFDFoxg",
+          "block": "[[[8,[39,0],null,[[\"@subtitle\"],[\"Try again later\"]],null]],[],false,[\"o-s-s/empty-state\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/empty-state-test.ts",
+          "isStrictMode": false
+        }));
+      });
+      (0, _qunit.test)('it throws an error if the @subtitle parameter is not passed', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::EmptyState] The subtitle parameter is mandatory');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::EmptyState @title="No Data" />
+        */
+        {
+          "id": "x+wVKAJr",
+          "block": "[[[8,[39,0],null,[[\"@title\"],[\"No Data\"]],null]],[],false,[\"o-s-s/empty-state\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/empty-state-test.ts",
+          "isStrictMode": false
+        }));
+      });
+    });
+  });
+});
 define("dummy/tests/integration/components/o-s-s/icon-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
   "use strict";
 
