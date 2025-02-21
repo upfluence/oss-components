@@ -276,4 +276,44 @@
     </div>
   </div>
 
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Empty state
+    </div>
+    <div class="fx-row fx-gap-px-36 fx-xalign-start">
+      <OSS::EmptyState @title="Title" @subtitle="Subtitle">
+        <:image>
+          <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
+        </:image>
+        <:actions>
+          <OSS::Button @label="Button" />
+          <OSS::Button @skin="primary" @label="Button" />
+        </:actions>
+      </OSS::EmptyState>
+      <OSS::EmptyState @title="Title" @subtitle="Subtitle" @badgeIcon="fa-thumbs-up">
+        <:actions>
+          <OSS::Button @label="Button" />
+          <OSS::Button @skin="primary" @label="Button" />
+        </:actions>
+      </OSS::EmptyState>
+      <OSS::EmptyState @title="Title" @subtitle="Subtitle" @size="sm">
+        <:image>
+          <OSS::Illustration @src="/@upfluence/oss-components/assets/images/no-records.svg" />
+        </:image>
+        <:actions>
+          <OSS::Button @label="Button" />
+          <OSS::Button @skin="primary" @label="Button" />
+        </:actions>
+      </OSS::EmptyState>
+      <OSS::EmptyState @title="Title" @subtitle="Subtitle" @size="sm" @badgeIcon="fa-thumbs-up">
+        <:actions>
+          <OSS::Button @label="Button" />
+          <OSS::Button @skin="primary" @label="Button" />
+        </:actions>
+      </OSS::EmptyState>
+    </div>
+  </div>
+
 </div>
