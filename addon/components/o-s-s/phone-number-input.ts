@@ -6,6 +6,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { countries, type CountryData } from '@upfluence/oss-components/utils/country-codes';
 import type IntlService from 'ember-intl/services/intl';
+import { NOT_NUMERIC_FLOAT } from './currency-input';
 
 interface OSSPhoneNumberInputArgs {
   prefix: string;
@@ -16,6 +17,9 @@ interface OSSPhoneNumberInputArgs {
   onChange(prefix: string, number: string): void;
   validates?(isPassing: boolean): void;
 }
+
+const AUTHORIZED_KEYS = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift'];
+const AUTHORIZED_COMBO_KEYS = ['v', 'a', 'z', 'c', 'x'];
 
 export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputArgs> {
   @service declare intl: IntlService;
@@ -67,19 +71,35 @@ export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputAr
 
   @action
   onlyNumeric(event: KeyboardEvent | FocusEvent): void {
-    const authorizedInputs = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift'];
+    const isAuthorizedKey = AUTHORIZED_KEYS.find((key: string) => key === (event as KeyboardEvent).key);
+    const isSupportedCombo =
+      event instanceof KeyboardEvent &&
+      ((event as KeyboardEvent).metaKey ||
+        ((navigator as any).userAgentData?.platform === 'Windows' && event.ctrlKey)) &&
+      AUTHORIZED_COMBO_KEYS.includes(event.key);
 
-    if (
-      event instanceof FocusEvent ||
-      /^[0-9]$/i.test(event.key) ||
-      authorizedInputs.find((key: string) => key === event.key)
-    ) {
+    if (event instanceof FocusEvent || /^[0-9]$/i.test(event.key) || isSupportedCombo || isAuthorizedKey) {
       this.args.onChange('+' + this.selectedCountry.countryCallingCodes[0], this.args.number);
     } else {
       event.preventDefault();
     }
 
     this.validateInput();
+  }
+
+  @action
+  handlePaste(event: ClipboardEvent): void {
+    event.preventDefault();
+
+    const paste = (event.clipboardData?.getData('text') ?? '').replace(NOT_NUMERIC_FLOAT, '');
+    const target = event.target as HTMLInputElement;
+    const initialSelectionStart = target.selectionStart ?? 0;
+    const finalSelectionPosition = initialSelectionStart + paste.length;
+
+    target.setRangeText(paste, initialSelectionStart, target.selectionEnd ?? initialSelectionStart);
+    target.setSelectionRange(finalSelectionPosition, finalSelectionPosition);
+
+    this.args.onChange('+' + this.selectedCountry.countryCallingCodes[0], target.value);
   }
 
   @action
