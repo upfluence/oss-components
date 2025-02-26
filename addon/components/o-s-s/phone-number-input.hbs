@@ -13,6 +13,7 @@
         name="telephone"
         placeholder={{this.placeholder}}
         {{on "keydown" this.onlyNumeric}}
+        {{on "paste" this.handlePaste}}
         {{on "blur" this.onlyNumeric}}
         {{did-insert this.registerInputElement}}
       />
