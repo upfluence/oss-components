@@ -86535,7 +86535,7 @@ interface OSSCodeBlockArgs {
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = _exports.PLATFORM_CURRENCIES = void 0;
+  _exports.default = _exports.PLATFORM_CURRENCIES = _exports.NOT_NUMERIC_FLOAT = void 0;
   var _class, _descriptor, _descriptor2, _descriptor3;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/debug",0,"@ember/object",0,"@ember/utils",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
@@ -86606,7 +86606,7 @@ interface OSSCodeBlockArgs {
     "isStrictMode": false
   });
   const NUMERIC_ONLY = /^\d$/i;
-  const NOT_NUMERIC_FLOAT = /[^0-9,.]/g;
+  const NOT_NUMERIC_FLOAT = _exports.NOT_NUMERIC_FLOAT = /[^\d,.]/g;
   const PLATFORM_CURRENCIES = _exports.PLATFORM_CURRENCIES = [{
     code: 'USD',
     symbol: '$'
@@ -91613,7 +91613,7 @@ interface OSSCodeBlockArgs {
   const BasicUsage = _exports.BasicUsage = DefaultUsageTemplate.bind({});
   BasicUsage.args = defaultArgs;
 });
-;define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["exports", "@ember/component", "@ember/debug", "@ember/object", "@ember/service", "@ember/utils", "@glimmer/component", "@glimmer/tracking", "@upfluence/oss-components/utils/country-codes", "@ember/template-factory"], function (_exports, _component, _debug, _object, _service, _utils, _component2, _tracking, _countryCodes, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["exports", "@ember/component", "@ember/debug", "@ember/object", "@ember/service", "@ember/utils", "@glimmer/component", "@glimmer/tracking", "@upfluence/oss-components/utils/country-codes", "@upfluence/oss-components/components/o-s-s/currency-input", "@ember/template-factory"], function (_exports, _component, _debug, _object, _service, _utils, _component2, _tracking, _countryCodes, _currencyInput, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -91621,7 +91621,7 @@ interface OSSCodeBlockArgs {
   });
   _exports.default = void 0;
   var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@ember/object",0,"@ember/service",0,"@ember/utils",0,"@glimmer/component",0,"@glimmer/tracking",0,"@upfluence/oss-components/utils/country-codes",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@ember/object",0,"@ember/service",0,"@ember/utils",0,"@glimmer/component",0,"@glimmer/tracking",0,"@upfluence/oss-components/utils/country-codes",0,"@upfluence/oss-components/components/o-s-s/currency-input",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
@@ -91645,6 +91645,7 @@ interface OSSCodeBlockArgs {
           name="telephone"
           placeholder={{this.placeholder}}
           {{on "keydown" this.onlyNumeric}}
+          {{on "paste" this.handlePaste}}
           {{on "blur" this.onlyNumeric}}
           {{did-insert this.registerInputElement}}
         />
@@ -91684,11 +91685,13 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "SP2iy7Z3",
-    "block": "[[[11,0],[24,0,\"phone-number-container fx-1\"],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"phone-number-input fx-row fx-1 fx-xalign-center \",[30,0,[\"interactiveClasses\"]]]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"country-selector fx-row\"],[24,\"role\",\"button\"],[4,[38,0],[\"click\",[30,0,[\"toggleCountrySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"selectedCountry\",\"id\"]],\" ff-sm ff-round\"]]],[12],[13],[1,\"\\n      \"],[8,[39,1],null,[[\"@icon\"],[[29,[\"fa-chevron-\",[52,[30,0,[\"countrySelectorShown\"]],\"up\",\"down\"]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[11,0],[24,0,\"fx-1 fx-row upf-input\"],[4,[38,0],[\"click\",[30,0,[\"focusInput\"]]],null],[12],[1,\"\\n      \"],[10,1],[14,0,\"fx-row fx-xalign-center phone-prefix\"],[12],[1,[30,2]],[13],[1,\"\\n      \"],[8,[39,3],[[24,0,\"fx-1\"],[24,3,\"telephone\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,4,\"tel\"],[4,[38,0],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,0],[\"blur\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,4],[[30,0,[\"registerInputElement\"]]],null]],[[\"@value\"],[[30,3]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"invalidInputError\"]],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,\"\\n      \"],[1,[30,0,[\"invalidInputError\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[41,[30,4],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,\"\\n      \"],[1,[30,4]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],null]],[]]],[1,\"\\n\"],[41,[30,0,[\"countrySelectorShown\"]],[[[1,\"    \"],[8,[39,5],[[4,[38,6],[[30,0,[\"hideCountrySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCountries\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],\"Search\"]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,5]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,5,[\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm\"],[12],[1,[30,5,[\"name\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xxx-sm fx-1\"],[12],[1,\"(+\"],[1,[28,[35,8],[[30,5,[\"countryCallingCodes\"]],0],null]],[1,\")\"],[13],[1,\"\\n\"],[41,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,5]],null],[[[1,\"            \"],[8,[39,1],[[24,0,\"font-color-primary-500\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[5]]]]],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@prefix\",\"@number\",\"@errorMessage\",\"country\"],false,[\"on\",\"o-s-s/icon\",\"if\",\"input\",\"did-insert\",\"o-s-s/infinite-select\",\"on-click-outside\",\"eq\",\"get\"]]",
+    "id": "tUAzCKQ3",
+    "block": "[[[11,0],[24,0,\"phone-number-container fx-1\"],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"phone-number-input fx-row fx-1 fx-xalign-center \",[30,0,[\"interactiveClasses\"]]]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"country-selector fx-row\"],[24,\"role\",\"button\"],[4,[38,0],[\"click\",[30,0,[\"toggleCountrySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"selectedCountry\",\"id\"]],\" ff-sm ff-round\"]]],[12],[13],[1,\"\\n      \"],[8,[39,1],null,[[\"@icon\"],[[29,[\"fa-chevron-\",[52,[30,0,[\"countrySelectorShown\"]],\"up\",\"down\"]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[11,0],[24,0,\"fx-1 fx-row upf-input\"],[4,[38,0],[\"click\",[30,0,[\"focusInput\"]]],null],[12],[1,\"\\n      \"],[10,1],[14,0,\"fx-row fx-xalign-center phone-prefix\"],[12],[1,[30,2]],[13],[1,\"\\n      \"],[8,[39,3],[[24,0,\"fx-1\"],[24,3,\"telephone\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,4,\"tel\"],[4,[38,0],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,0],[\"paste\",[30,0,[\"handlePaste\"]]],null],[4,[38,0],[\"blur\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,4],[[30,0,[\"registerInputElement\"]]],null]],[[\"@value\"],[[30,3]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"invalidInputError\"]],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,\"\\n      \"],[1,[30,0,[\"invalidInputError\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[41,[30,4],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,\"\\n      \"],[1,[30,4]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],null]],[]]],[1,\"\\n\"],[41,[30,0,[\"countrySelectorShown\"]],[[[1,\"    \"],[8,[39,5],[[4,[38,6],[[30,0,[\"hideCountrySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCountries\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],\"Search\"]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,5]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,5,[\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm\"],[12],[1,[30,5,[\"name\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xxx-sm fx-1\"],[12],[1,\"(+\"],[1,[28,[35,8],[[30,5,[\"countryCallingCodes\"]],0],null]],[1,\")\"],[13],[1,\"\\n\"],[41,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,5]],null],[[[1,\"            \"],[8,[39,1],[[24,0,\"font-color-primary-500\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[5]]]]],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@prefix\",\"@number\",\"@errorMessage\",\"country\"],false,[\"on\",\"o-s-s/icon\",\"if\",\"input\",\"did-insert\",\"o-s-s/infinite-select\",\"on-click-outside\",\"eq\",\"get\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/phone-number-input.hbs",
     "isStrictMode": false
   });
+  const AUTHORIZED_KEYS = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift'];
+  const AUTHORIZED_COMBO_KEYS = ['v', 'a', 'z', 'c', 'x'];
   let OSSPhoneNumberInput = _exports.default = (_class = class OSSPhoneNumberInput extends _component2.default {
     constructor(owner, args) {
       super(owner, args);
@@ -91720,13 +91723,24 @@ interface OSSCodeBlockArgs {
       return classArray.join(' ');
     }
     onlyNumeric(event) {
-      const authorizedInputs = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift'];
-      if (event instanceof FocusEvent || /^[0-9]$/i.test(event.key) || authorizedInputs.find(key => key === event.key)) {
+      const isAuthorizedKey = AUTHORIZED_KEYS.find(key => key === event.key);
+      const isSupportedCombo = event instanceof KeyboardEvent && (event.metaKey || navigator.userAgentData?.platform === 'Windows' && event.ctrlKey) && AUTHORIZED_COMBO_KEYS.includes(event.key);
+      if (event instanceof FocusEvent || /^[0-9]$/i.test(event.key) || isSupportedCombo || isAuthorizedKey) {
         this.args.onChange('+' + this.selectedCountry.countryCallingCodes[0], this.args.number);
       } else {
         event.preventDefault();
       }
       this.validateInput();
+    }
+    handlePaste(event) {
+      event.preventDefault();
+      const paste = (event.clipboardData?.getData('text') ?? '').replace(_currencyInput.NOT_NUMERIC_FLOAT, '');
+      const target = event.target;
+      const initialSelectionStart = target.selectionStart ?? 0;
+      const finalSelectionPosition = initialSelectionStart + paste.length;
+      target.setRangeText(paste, initialSelectionStart, target.selectionEnd ?? initialSelectionStart);
+      target.setSelectionRange(finalSelectionPosition, finalSelectionPosition);
+      this.args.onChange('+' + this.selectedCountry.countryCallingCodes[0], target.value);
     }
     onSearch(keyword) {
       this.filteredCountries = this._countries.filter(country => {
@@ -91812,7 +91826,7 @@ interface OSSCodeBlockArgs {
     initializer: function () {
       return undefined;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "onlyNumeric", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onlyNumeric"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleCountrySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleCountrySelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "hideCountrySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "hideCountrySelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "focusInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "focusInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerInputElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerInputElement"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "onlyNumeric", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onlyNumeric"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handlePaste", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handlePaste"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleCountrySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleCountrySelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "hideCountrySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "hideCountrySelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "focusInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "focusInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerInputElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerInputElement"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSPhoneNumberInput);
 });
 ;define("@upfluence/oss-components/components/o-s-s/phone-number-input.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {

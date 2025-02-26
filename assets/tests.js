@@ -9350,7 +9350,7 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
   "use strict";
 
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"@ember/test-helpers/dom/click",0,"sinon",0,"@ember/test-helpers/dom/find-all",0,"@ember/test-helpers/dom/type-in",0,"@ember/test-helpers/settled"eaimeta@70e063a35619d71f
-  (0, _qunit.module)('Integration | Component | o-s-s/phone-number', function (hooks) {
+  (0, _qunit.module)('Integration | Component | o-s-s/phone-number-input', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     hooks.beforeEach(function () {
       this.onChange = _sinon.default.stub();
@@ -9519,6 +9519,72 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
         await (0, _settled.default)();
         assert.ok(this.onValidation.calledWithExactly(false));
         assert.dom('.font-color-error-500').exists();
+      });
+    });
+    (0, _qunit.module)('When the paste event is received', function (hooks) {
+      hooks.beforeEach(function () {
+        this.onChange = () => {};
+        this.onValidation = _sinon.default.spy();
+        this.number = '1234567890';
+      });
+      (0, _qunit.test)('The value stored in the clipboard is inserted in the input', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::PhoneNumberInput @prefix="" @number={{this.number}} @onChange={{this.onChange}} @validates={{this.onValidation}} />
+        */
+        {
+          "id": "6FmO4T8L",
+          "block": "[[[8,[39,0],null,[[\"@prefix\",\"@number\",\"@onChange\",\"@validates\"],[\"\",[30,0,[\"number\"]],[30,0,[\"onChange\"]],[30,0,[\"onValidation\"]]]],null]],[],false,[\"o-s-s/phone-number-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/phone-number-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('input').hasValue('1234567890');
+        await (0, _testHelpers.triggerEvent)('input', 'paste', {
+          clipboardData: {
+            getData: _sinon.default.stub().returns('123')
+          }
+        });
+        assert.dom('input').hasValue('1234567890123');
+      });
+      (0, _qunit.test)('The non-numeric characters are escaped', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::PhoneNumberInput @prefix="" @number={{this.number}} @onChange={{this.onChange}} @validates={{this.onValidation}} />
+        */
+        {
+          "id": "6FmO4T8L",
+          "block": "[[[8,[39,0],null,[[\"@prefix\",\"@number\",\"@onChange\",\"@validates\"],[\"\",[30,0,[\"number\"]],[30,0,[\"onChange\"]],[30,0,[\"onValidation\"]]]],null]],[],false,[\"o-s-s/phone-number-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/phone-number-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('input').hasValue('1234567890');
+        await (0, _testHelpers.triggerEvent)('input', 'paste', {
+          clipboardData: {
+            getData: _sinon.default.stub().returns('1withletter0')
+          }
+        });
+        assert.dom('input').hasValue('123456789010');
+      });
+      (0, _qunit.test)('When selection is applied, it replaces the selection', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::PhoneNumberInput @prefix="" @number={{this.number}} @onChange={{this.onChange}} @validates={{this.onValidation}} />
+        */
+        {
+          "id": "6FmO4T8L",
+          "block": "[[[8,[39,0],null,[[\"@prefix\",\"@number\",\"@onChange\",\"@validates\"],[\"\",[30,0,[\"number\"]],[30,0,[\"onChange\"]],[30,0,[\"onValidation\"]]]],null]],[],false,[\"o-s-s/phone-number-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/phone-number-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('input').hasValue('1234567890');
+        let input = document.querySelector('input.ember-text-field');
+        input.setSelectionRange(4, 6);
+        await (0, _testHelpers.triggerEvent)('input', 'paste', {
+          clipboardData: {
+            getData: _sinon.default.stub().returns('0')
+          }
+        });
+        assert.dom('input').hasValue('123407890');
       });
     });
     (0, _qunit.module)('@hasError parameter', () => {
