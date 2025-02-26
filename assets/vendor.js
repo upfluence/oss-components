@@ -91613,7 +91613,7 @@ interface OSSCodeBlockArgs {
   const BasicUsage = _exports.BasicUsage = DefaultUsageTemplate.bind({});
   BasicUsage.args = defaultArgs;
 });
-;define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["exports", "@ember/component", "@ember/debug", "@ember/object", "@ember/service", "@ember/utils", "@glimmer/component", "@glimmer/tracking", "@upfluence/oss-components/utils/country-codes", "@upfluence/oss-components/components/o-s-s/currency-input", "@ember/template-factory"], function (_exports, _component, _debug, _object, _service, _utils, _component2, _tracking, _countryCodes, _currencyInput, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["exports", "@ember/component", "@ember/debug", "@ember/object", "@ember/service", "@ember/utils", "@glimmer/component", "@glimmer/tracking", "@upfluence/oss-components/utils/country-codes", "@ember/template-factory"], function (_exports, _component, _debug, _object, _service, _utils, _component2, _tracking, _countryCodes, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -91621,7 +91621,7 @@ interface OSSCodeBlockArgs {
   });
   _exports.default = void 0;
   var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@ember/object",0,"@ember/service",0,"@ember/utils",0,"@glimmer/component",0,"@glimmer/tracking",0,"@upfluence/oss-components/utils/country-codes",0,"@upfluence/oss-components/components/o-s-s/currency-input",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@ember/object",0,"@ember/service",0,"@ember/utils",0,"@glimmer/component",0,"@glimmer/tracking",0,"@upfluence/oss-components/utils/country-codes",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
@@ -91692,6 +91692,7 @@ interface OSSCodeBlockArgs {
   });
   const AUTHORIZED_KEYS = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift'];
   const AUTHORIZED_COMBO_KEYS = ['v', 'a', 'z', 'c', 'x'];
+  const NOT_NUMERIC = /[^\d]/g;
   let OSSPhoneNumberInput = _exports.default = (_class = class OSSPhoneNumberInput extends _component2.default {
     constructor(owner, args) {
       super(owner, args);
@@ -91734,7 +91735,7 @@ interface OSSCodeBlockArgs {
     }
     handlePaste(event) {
       event.preventDefault();
-      const paste = (event.clipboardData?.getData('text') ?? '').replace(_currencyInput.NOT_NUMERIC_FLOAT, '');
+      const paste = (event.clipboardData?.getData('text') ?? '').replace(NOT_NUMERIC, '');
       const target = event.target;
       const initialSelectionStart = target.selectionStart ?? 0;
       const finalSelectionPosition = initialSelectionStart + paste.length;
