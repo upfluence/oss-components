@@ -6,7 +6,6 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { countries, type CountryData } from '@upfluence/oss-components/utils/country-codes';
 import type IntlService from 'ember-intl/services/intl';
-import { NOT_NUMERIC_FLOAT } from './currency-input';
 
 interface OSSPhoneNumberInputArgs {
   prefix: string;
@@ -20,6 +19,7 @@ interface OSSPhoneNumberInputArgs {
 
 const AUTHORIZED_KEYS = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift'];
 const AUTHORIZED_COMBO_KEYS = ['v', 'a', 'z', 'c', 'x'];
+const NOT_NUMERIC = /[^\d]/g;
 
 export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputArgs> {
   @service declare intl: IntlService;
@@ -91,7 +91,7 @@ export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputAr
   handlePaste(event: ClipboardEvent): void {
     event.preventDefault();
 
-    const paste = (event.clipboardData?.getData('text') ?? '').replace(NOT_NUMERIC_FLOAT, '');
+    const paste = (event.clipboardData?.getData('text') ?? '').replace(NOT_NUMERIC, '');
     const target = event.target as HTMLInputElement;
     const initialSelectionStart = target.selectionStart ?? 0;
     const finalSelectionPosition = initialSelectionStart + paste.length;
