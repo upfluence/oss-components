@@ -3132,22 +3132,23 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
   var _default = _exports.default = (0, _templateFactory.createTemplateFactory)(
   /*
+    <div class={{this.computedClasses}} ...attributes>
     {{yield}}
   
-  {{#if this.error}}
-    <span class="upf-input-feedback upf-input-feedback--error">
-      <OSS::Icon @icon="fa-exclamation-circle" aria-label={{this.error}} />
-    </span>
-  {{else if this.help}}
-    <span class="upf-input-feedback upf-input-feedback--help">
-      <OSS::Icon @icon="fa-question-circle" aria-label={{this.help}} />
-    </span>
-  {{/if}}
-  
+    {{#if this.error}}
+      <span class="upf-input-feedback upf-input-feedback--error">
+        <OSS::Icon @icon="fa-exclamation-circle" aria-label={{this.error}} />
+      </span>
+    {{else if this.help}}
+      <span class="upf-input-feedback upf-input-feedback--help">
+        <OSS::Icon @icon="fa-question-circle" aria-label={{this.help}} />
+      </span>
+    {{/if}}
+  </div>
   */
   {
-    "id": "6RBLmdQJ",
-    "block": "[[[18,1,null],[1,\"\\n\\n\"],[41,[30,0,[\"error\"]],[[[1,\"  \"],[10,1],[14,0,\"upf-input-feedback upf-input-feedback--error\"],[12],[1,\"\\n    \"],[8,[39,2],[[16,\"aria-label\",[30,0,[\"error\"]]]],[[\"@icon\"],[\"fa-exclamation-circle\"]],null],[1,\"\\n  \"],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"help\"]],[[[1,\"  \"],[10,1],[14,0,\"upf-input-feedback upf-input-feedback--help\"],[12],[1,\"\\n    \"],[8,[39,2],[[16,\"aria-label\",[30,0,[\"help\"]]]],[[\"@icon\"],[\"fa-question-circle\"]],null],[1,\"\\n  \"],[13],[1,\"\\n\"]],[]],null]],[]]]],[\"&default\"],false,[\"yield\",\"if\",\"o-s-s/icon\"]]",
+    "id": "4coo358J",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[12],[1,\"\\n  \"],[18,2,null],[1,\"\\n\\n\"],[41,[30,0,[\"error\"]],[[[1,\"    \"],[10,1],[14,0,\"upf-input-feedback upf-input-feedback--error\"],[12],[1,\"\\n      \"],[8,[39,2],[[16,\"aria-label\",[30,0,[\"error\"]]]],[[\"@icon\"],[\"fa-exclamation-circle\"]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"help\"]],[[[1,\"    \"],[10,1],[14,0,\"upf-input-feedback upf-input-feedback--help\"],[12],[1,\"\\n      \"],[8,[39,2],[[16,\"aria-label\",[30,0,[\"help\"]]]],[[\"@icon\"],[\"fa-question-circle\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],null]],[]]],[13]],[\"&attrs\",\"&default\"],false,[\"yield\",\"if\",\"o-s-s/icon\"]]",
     "moduleName": "dummy/templates/components/input-wrapper.hbs",
     "isStrictMode": false
   });
@@ -3188,48 +3189,50 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
   var _default = _exports.default = (0, _templateFactory.createTemplateFactory)(
   /*
+    <div class={{this.computedClasses}}>
     <span class="upf-stat__name">
-    {{this.name}}
+      {{this.name}}
   
-    {{#if this.icon}}
-      {{#if (eq this.iconPlacement "top")}}
-        <span class="upf-stat__icon" {{enable-tooltip title=this.iconLabel}}>
-          {{#if this.iconUrl}}
-            <a href="{{this.iconUrl}}" target="_blank" rel="noopener noreferrer">
+      {{#if this.icon}}
+        {{#if (eq this.iconPlacement "top")}}
+          <span class="upf-stat__icon" {{enable-tooltip title=this.iconLabel}}>
+            {{#if this.iconUrl}}
+              <a href="{{this.iconUrl}}" target="_blank" rel="noopener noreferrer">
+                <i class="fa fa-{{this.icon}} {{this.iconClass}}"></i>
+              </a>
+            {{else}}
               <i class="fa fa-{{this.icon}} {{this.iconClass}}"></i>
-            </a>
-          {{else}}
-            <i class="fa fa-{{this.icon}} {{this.iconClass}}"></i>
-          {{/if}}
-        </span>
-      {{/if}}
-    {{/if}}
-  </span>
-  
-  <span class={{concat "upf-stat__data " this.dataClass (unless this.data " upf-stat__data--null")}}>
-    {{this.data}}
-  
-    {{#if this.icon}}
-      {{#if (eq this.iconPlacement "right")}}
-        <span class="upf-stat__icon" {{enable-tooltip title=this.iconLabel}}>
-          <i class="fa fa-{{this.icon}} {{this.iconClass}}"></i>
-        </span>
-      {{/if}}
-    {{/if}}
-  </span>
-  
-  {{#if this.label}}
-    <span class={{if this.tooltip "upf-stat__label--with-tooltip" "upf-stat__label"}}>
-      {{{this.label}}}
-      {{#if this.tooltip}}
-        <OSS::Icon @icon="fa-info-circle" {{enable-tooltip title=this.tooltip}} />
+            {{/if}}
+          </span>
+        {{/if}}
       {{/if}}
     </span>
-  {{/if}}
+  
+    <span class={{concat "upf-stat__data " this.dataClass (unless this.data " upf-stat__data--null")}}>
+      {{this.data}}
+  
+      {{#if this.icon}}
+        {{#if (eq this.iconPlacement "right")}}
+          <span class="upf-stat__icon" {{enable-tooltip title=this.iconLabel}}>
+            <i class="fa fa-{{this.icon}} {{this.iconClass}}"></i>
+          </span>
+        {{/if}}
+      {{/if}}
+    </span>
+  
+    {{#if this.label}}
+      <span class={{if this.tooltip "upf-stat__label--with-tooltip" "upf-stat__label"}}>
+        {{{this.label}}}
+        {{#if this.tooltip}}
+          <OSS::Icon @icon="fa-info-circle" {{enable-tooltip title=this.tooltip}} />
+        {{/if}}
+      </span>
+    {{/if}}
+  </div>
   */
   {
-    "id": "0R1xeqx7",
-    "block": "[[[10,1],[14,0,\"upf-stat__name\"],[12],[1,\"\\n  \"],[1,[30,0,[\"name\"]]],[1,\"\\n\\n\"],[41,[30,0,[\"icon\"]],[[[41,[28,[37,1],[[30,0,[\"iconPlacement\"]],\"top\"],null],[[[1,\"      \"],[11,1],[24,0,\"upf-stat__icon\"],[4,[38,2],null,[[\"title\"],[[30,0,[\"iconLabel\"]]]]],[12],[1,\"\\n\"],[41,[30,0,[\"iconUrl\"]],[[[1,\"          \"],[10,3],[15,6,[29,[[30,0,[\"iconUrl\"]]]]],[14,\"target\",\"_blank\"],[14,\"rel\",\"noopener noreferrer\"],[12],[1,\"\\n            \"],[10,\"i\"],[15,0,[29,[\"fa fa-\",[30,0,[\"icon\"]],\" \",[30,0,[\"iconClass\"]]]]],[12],[13],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]],[[[1,\"          \"],[10,\"i\"],[15,0,[29,[\"fa fa-\",[30,0,[\"icon\"]],\" \",[30,0,[\"iconClass\"]]]]],[12],[13],[1,\"\\n\"]],[]]],[1,\"      \"],[13],[1,\"\\n\"]],[]],null]],[]],null],[13],[1,\"\\n\\n\"],[10,1],[15,0,[28,[37,3],[\"upf-stat__data \",[30,0,[\"dataClass\"]],[52,[51,[30,0,[\"data\"]]],\" upf-stat__data--null\"]],null]],[12],[1,\"\\n  \"],[1,[30,0,[\"data\"]]],[1,\"\\n\\n\"],[41,[30,0,[\"icon\"]],[[[41,[28,[37,1],[[30,0,[\"iconPlacement\"]],\"right\"],null],[[[1,\"      \"],[11,1],[24,0,\"upf-stat__icon\"],[4,[38,2],null,[[\"title\"],[[30,0,[\"iconLabel\"]]]]],[12],[1,\"\\n        \"],[10,\"i\"],[15,0,[29,[\"fa fa-\",[30,0,[\"icon\"]],\" \",[30,0,[\"iconClass\"]]]]],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null]],[]],null],[13],[1,\"\\n\\n\"],[41,[30,0,[\"label\"]],[[[1,\"  \"],[10,1],[15,0,[52,[30,0,[\"tooltip\"]],\"upf-stat__label--with-tooltip\",\"upf-stat__label\"]],[12],[1,\"\\n    \"],[2,[30,0,[\"label\"]]],[1,\"\\n\"],[41,[30,0,[\"tooltip\"]],[[[1,\"      \"],[8,[39,5],[[4,[38,2],null,[[\"title\"],[[30,0,[\"tooltip\"]]]]]],[[\"@icon\"],[\"fa-info-circle\"]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"]],[]],null]],[],false,[\"if\",\"eq\",\"enable-tooltip\",\"concat\",\"unless\",\"o-s-s/icon\"]]",
+    "id": "3jHi49Ez",
+    "block": "[[[10,0],[15,0,[30,0,[\"computedClasses\"]]],[12],[1,\"\\n  \"],[10,1],[14,0,\"upf-stat__name\"],[12],[1,\"\\n    \"],[1,[30,0,[\"name\"]]],[1,\"\\n\\n\"],[41,[30,0,[\"icon\"]],[[[41,[28,[37,1],[[30,0,[\"iconPlacement\"]],\"top\"],null],[[[1,\"        \"],[11,1],[24,0,\"upf-stat__icon\"],[4,[38,2],null,[[\"title\"],[[30,0,[\"iconLabel\"]]]]],[12],[1,\"\\n\"],[41,[30,0,[\"iconUrl\"]],[[[1,\"            \"],[10,3],[15,6,[29,[[30,0,[\"iconUrl\"]]]]],[14,\"target\",\"_blank\"],[14,\"rel\",\"noopener noreferrer\"],[12],[1,\"\\n              \"],[10,\"i\"],[15,0,[29,[\"fa fa-\",[30,0,[\"icon\"]],\" \",[30,0,[\"iconClass\"]]]]],[12],[13],[1,\"\\n            \"],[13],[1,\"\\n\"]],[]],[[[1,\"            \"],[10,\"i\"],[15,0,[29,[\"fa fa-\",[30,0,[\"icon\"]],\" \",[30,0,[\"iconClass\"]]]]],[12],[13],[1,\"\\n\"]],[]]],[1,\"        \"],[13],[1,\"\\n\"]],[]],null]],[]],null],[1,\"  \"],[13],[1,\"\\n\\n  \"],[10,1],[15,0,[28,[37,3],[\"upf-stat__data \",[30,0,[\"dataClass\"]],[52,[51,[30,0,[\"data\"]]],\" upf-stat__data--null\"]],null]],[12],[1,\"\\n    \"],[1,[30,0,[\"data\"]]],[1,\"\\n\\n\"],[41,[30,0,[\"icon\"]],[[[41,[28,[37,1],[[30,0,[\"iconPlacement\"]],\"right\"],null],[[[1,\"        \"],[11,1],[24,0,\"upf-stat__icon\"],[4,[38,2],null,[[\"title\"],[[30,0,[\"iconLabel\"]]]]],[12],[1,\"\\n          \"],[10,\"i\"],[15,0,[29,[\"fa fa-\",[30,0,[\"icon\"]],\" \",[30,0,[\"iconClass\"]]]]],[12],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null]],[]],null],[1,\"  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"label\"]],[[[1,\"    \"],[10,1],[15,0,[52,[30,0,[\"tooltip\"]],\"upf-stat__label--with-tooltip\",\"upf-stat__label\"]],[12],[1,\"\\n      \"],[2,[30,0,[\"label\"]]],[1,\"\\n\"],[41,[30,0,[\"tooltip\"]],[[[1,\"        \"],[8,[39,5],[[4,[38,2],null,[[\"title\"],[[30,0,[\"tooltip\"]]]]]],[[\"@icon\"],[\"fa-info-circle\"]],null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[13]],[],false,[\"if\",\"eq\",\"enable-tooltip\",\"concat\",\"unless\",\"o-s-s/icon\"]]",
     "moduleName": "dummy/templates/components/upf-stat.hbs",
     "isStrictMode": false
   });
