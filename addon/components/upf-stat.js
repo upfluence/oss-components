@@ -1,20 +1,30 @@
 import Component from '@ember/component';
 
-export default Component.extend({
-  classNames: ['upf-stat'],
-  classNameBindings: ['small:upf-stat--small', 'xsmall:upf-stat--x-small'],
+export default class UpfStat extends Component {
+  small = null;
+  xsmall = null;
+  name = null;
+  data = null;
+  dataClass = null;
+  label = null;
+  tooltip = null;
+  tagName = '';
 
-  small: null,
-  xsmall: null,
-  name: null,
-  data: null,
-  dataClass: null,
-  label: null,
-  tooltip: null,
+  icon = null;
+  iconPlacement = 'top';
+  iconClass = '';
+  iconUrl = null;
+  iconLabel = null;
 
-  icon: null,
-  iconPlacement: 'top',
-  iconClass: '',
-  iconUrl: null,
-  iconLabel: null
-});
+  get computedClasses() {
+    const classes = ['upf-stat'];
+    if (this.small) {
+      classes.push('upf-stat--small');
+    }
+    if (this.xsmall) {
+      classes.push('upf-stat--x-small');
+    }
+
+    return classes.join(' ');
+  }
+}
