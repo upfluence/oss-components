@@ -32,7 +32,7 @@
         @enableKeyboard={{true}}
         id={{this.portalId}}
         class={{concat "margin-top-px-0 oss-select-container__dropdown " this.dropdownAddressableClass}}
-        {{on-click-outside this.onClickOutside}}
+        {{on-click-outside this.onClickOutside useCapture=@captureClickOutside}}
         {{on "click" this.noop}}
       >
         <:option as |item|>

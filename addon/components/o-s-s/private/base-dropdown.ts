@@ -6,6 +6,7 @@ import { isTesting } from '@embroider/macros';
 
 export interface BaseDropdownArgs {
   focusOnOpen?: boolean;
+  captureClickOutside?: boolean;
 }
 
 export default class OSSBaseDropdown<T extends BaseDropdownArgs> extends Component<T> {
@@ -40,7 +41,9 @@ export default class OSSBaseDropdown<T extends BaseDropdownArgs> extends Compone
 
   @action
   onClickOutside(_: HTMLElement, event: MouseEvent): void {
-    event.stopPropagation();
+    if (!this.args.captureClickOutside || this.container.contains(event.target as HTMLElement)) {
+      event.stopPropagation();
+    }
     this.closeDropdown();
   }
 
