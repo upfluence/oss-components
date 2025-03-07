@@ -37,7 +37,7 @@
           class={{concat "margin-top-px-0 upf-power-select__dropdown " this.dropdownAddressableClass}}
           id={{this.portalId}}
           {{on "click" this.noop}}
-          {{on-click-outside this.onClickOutside}}
+          {{on-click-outside this.onClickOutside useCapture=@captureClickOutside}}
         >
           <:option as |item|>
             {{yield item to="option-item"}}
@@ -61,7 +61,7 @@
           class={{concat "margin-top-px-0 upf-power-select__dropdown " this.dropdownAddressableClass}}
           id={{this.portalId}}
           {{on "click" this.noop}}
-          {{on-click-outside this.onClickOutside}}
+          {{on-click-outside this.onClickOutside useCapture=@captureClickOutside}}
         >
           <:option as |item|>
             {{yield item to="option-item"}}
