@@ -40,6 +40,16 @@ export default {
       },
       control: { type: 'boolean' }
     },
+    borderless: {
+      description: 'Display border of the component',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'false' }
+      },
+      control: { type: 'boolean' }
+    },
     loadingMore: {
       description: 'Display loading more state in the list of items',
       table: {
@@ -123,6 +133,7 @@ const defaultArgs = {
   selectedItems: FAKE_SELECTED_ITEMS,
   loading: false,
   loadingMore: false,
+  borderless: false,
   placeholder: 'My placeholder',
   searchPlaceholder: 'My search placeholder',
   addressableAs: undefined,
@@ -135,7 +146,8 @@ const Template = (args) => ({
   template: hbs`
     <div style="display: flex; justify-content: center; background-color: white; border-radius: 4px">
       <OSS::PowerSelect class='padding-sm' @selectedItems={{this.selectedItems}} @items={{this.items}}
-                        @onSearch={{this.onSearch}} @onChange={{this.onChange}} @loading={{this.loading}}
+                        @onSearch={{this.onSearch}} @onChange={{this.onChange}} @loading={{this.loading}} 
+                        @borderless={{this.borderless}}
                         @loadingMore={{this.loadingMore}} @placeholder={{this.placeholder}} @searchPlaceholder={{this.searchPlaceholder}}
                         @onBottomReached={{this.onBottomReached}} @addressableAs={{this.addressableAs}}>
         <:selected-item as |selectedItem|>
