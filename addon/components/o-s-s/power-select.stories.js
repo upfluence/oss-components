@@ -41,7 +41,7 @@ export default {
       control: { type: 'boolean' }
     },
     borderless: {
-      description: 'Display border of the component',
+      description: 'Hide the border around the dropdown component',
       table: {
         type: {
           summary: 'boolean'

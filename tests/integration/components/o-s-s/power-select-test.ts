@@ -39,7 +39,7 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
       assert.dom('.upf-power-select').hasAttribute('open');
     });
 
-    test('it renders without a border when @borderless is true', async function (assert) {
+    test('without a border when @borderless is true', async function (assert) {
       await render(hbs`
         <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
                           @onSearch={{this.onSearch}} @borderless={{true}}>
@@ -49,13 +49,10 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
           <:option-item as |item|>
             {{item}}
           </:option-item>
-          <:empty-state>
-            <div class="foobar">custom empty state</div>
-          </:empty-state>
         </OSS::PowerSelect>
       `);
 
-      assert.dom('.upf-power-select').hasClass('borderless');
+      assert.dom('.upf-power-select').hasClass('upf-power-select--borderless');
     });
 
     test('custom empty state is properly rendered', async function (assert) {
