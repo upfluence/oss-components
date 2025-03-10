@@ -18,6 +18,7 @@ interface OSSPowerSelectArgs extends BaseDropdownArgs {
   onChange: (item: any, operation: OperationType) => void;
   onSearch?: (keyword: string) => void;
   onBottomReached?: () => void;
+  borderless?: boolean;
 }
 
 const DEFAULT_PLACEHOLDER = 'Select an item';
