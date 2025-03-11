@@ -1,0 +1,10 @@
+<OSS::InputContainer @value={{@value}} @placeholder={{this.placeholder}} @onChange={{this.onChange}} ...attributes>
+  <:prefix>
+    <OSS::Icon @icon="fa-search" class="font-color-gray-500" />
+  </:prefix>
+  <:suffix>
+    {{#if (gt @value.length 0)}}
+      <OSS::Icon @icon="fa-times" class="font-color-gray-500" role="button" {{on "click" this.onClearSearch}} />
+    {{/if}}
+  </:suffix>
+</OSS::InputContainer>
