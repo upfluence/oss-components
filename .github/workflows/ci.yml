@@ -16,7 +16,7 @@ env:
 jobs:
   test:
     name: Lint & Test
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     if: (!contains(github.ref, 'refs/heads/master') || contains(github.ref, 'refs/tags/v'))
     timeout-minutes: 10
     steps:
@@ -40,7 +40,7 @@ jobs:
       - name: Test
         run: pnpm test:ember
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: test
     if: contains(github.ref, 'refs/tags/v')
     timeout-minutes: 10
@@ -75,7 +75,7 @@ jobs:
           cname: storybook.upfluence.co
   release:
     name: Release Package
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     needs: test
     if: contains(github.ref, 'refs/tags/v')
     timeout-minutes: 10
