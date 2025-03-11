@@ -1,0 +1,35 @@
+.oss-pulsating-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.generate-pulse-effect-for-color(pulsating-dot__pulse-effect--primary, primary);
+.generate-pulse-effect-for-color(pulsating-dot__pulse-effect--success, success);
+.generate-pulse-effect-for-color(pulsating-dot__pulse-effect--error, error);
+.generate-pulse-effect-for-color(pulsating-dot__pulse-effect--warning, warning);
+.generate-pulse-effect-for-color(pulsating-dot__pulse-effect--gray, gray);
+
+.generate-pulse-effect-for-color(@name, @color) {
+  .oss-pulsating-dot--@{color} {
+    background-color:~'var(--color-@{color}-500)';
+    animation: @name 2s infinite;
+  }
+
+  @keyframes @name {
+    0% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgb(from var(~'--color-@{color}-400') r g b / 0.7);
+    }
+
+    70% {
+      transform: scale(1);
+      box-shadow: 0 0 0 10px rgb(from var(~'--color-@{color}-400') r g b / 0);
+    }
+
+    100% {
+      transform: scale(0.95);
+      box-shadow: 0 0 0 0 rgb(from var(~'--color-@{color}-400') r g b / 0);
+    }
+  }
+}
