@@ -20,9 +20,21 @@
     .array-input-container {
       border: none;
       &.active {
+        &:hover {
+          border-color: transparent;
+        }
         &:not(.array-input-container--disabled) {
           box-shadow: none;
           background-color: transparent;
+          transition-duration: 0ms;
+        }
+      }
+      &:hover {
+        &:not(.array-input-container--disabled) {
+          box-shadow: none;
+          border-color: transparent;
+          background-color: transparent;
+          transition-duration: 0ms;
         }
       }
     }
