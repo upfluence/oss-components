@@ -92887,6 +92887,88 @@ interface OSSCodeBlockArgs {
   const Usage = _exports.Usage = BasicUsageTemplate.bind({});
   Usage.args = defaultArgs;
 });
+;define("@upfluence/oss-components/components/o-s-s/pulsating-dot", ["exports", "@ember/component", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _component2, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="oss-pulsating-dot oss-pulsating-dot--{{this.skin}}"></div>
+  */
+  {
+    "id": "Ld21lYIk",
+    "block": "[[[10,0],[15,0,[29,[\"oss-pulsating-dot oss-pulsating-dot--\",[30,0,[\"skin\"]]]]],[12],[13]],[],false,[]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/pulsating-dot.hbs",
+    "isStrictMode": false
+  });
+  class OSSPulsatingDotComponent extends _component2.default {
+    get skin() {
+      return this.args.skin ?? 'primary';
+    }
+  }
+  _exports.default = OSSPulsatingDotComponent;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSPulsatingDotComponent);
+});
+;define("@upfluence/oss-components/components/o-s-s/pulsating-dot.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.Default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  const SkinTypes = ['primary', 'success', 'error', 'warning'];
+  var _default = _exports.default = {
+    title: 'Components/OSS::PulsatingDot',
+    component: 'PulsatingDot',
+    argTypes: {
+      skin: {
+        description: 'Adjust the color of the dot and the pulsating animation.',
+        table: {
+          type: {
+            summary: SkinTypes.join('|')
+          },
+          defaultValue: {
+            summary: 'primary'
+          }
+        },
+        options: SkinTypes,
+        control: {
+          type: 'select'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'A simple dot that has a pulsating animation.'
+        }
+      }
+    }
+  };
+  const defaultArgs = {
+    skin: 'primary'
+  };
+  const Template = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      <OSS::PulsatingDot @skin={{this.skin}} />
+    */
+    {
+      "id": "TxcDsKrf",
+      "block": "[[[8,[39,0],null,[[\"@skin\"],[[30,0,[\"skin\"]]]],null]],[],false,[\"o-s-s/pulsating-dot\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/pulsating-dot.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const Default = _exports.Default = Template.bind({});
+  Default.args = defaultArgs;
+});
 ;define("@upfluence/oss-components/components/o-s-s/radio-button", ["exports", "@ember/component", "@ember/object", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _object, _component2, _templateFactory) {
   "use strict";
 

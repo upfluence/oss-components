@@ -10497,6 +10497,56 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
     });
   });
 });
+define("dummy/tests/integration/components/o-s-s/pulsating-dot-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/pulsating-dot', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::PulsatingDot />
+      */
+      {
+        "id": "OA9hyAU4",
+        "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/pulsating-dot\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/pulsating-dot-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-pulsating-dot').exists();
+    });
+    (0, _qunit.test)('The default applied skin is primary', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::PulsatingDot />
+      */
+      {
+        "id": "OA9hyAU4",
+        "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/pulsating-dot\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/pulsating-dot-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-pulsating-dot').hasClass('oss-pulsating-dot--primary');
+    });
+    ['primary', 'success', 'error', 'warning'].forEach(skin => {
+      (0, _qunit.test)(`it renders with skin ${skin}`, async function (assert) {
+        this.set('skin', skin);
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::PulsatingDot @skin={{this.skin}} />
+        */
+        {
+          "id": "8g6H8+Gj",
+          "block": "[[[8,[39,0],null,[[\"@skin\"],[[30,0,[\"skin\"]]]],null]],[],false,[\"o-s-s/pulsating-dot\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/pulsating-dot-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-pulsating-dot').hasClass(`oss-pulsating-dot--${skin}`);
+      });
+    });
+  });
+});
 define("dummy/tests/integration/components/o-s-s/radio-button-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/test-helpers/dom/click", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _click, _templateFactory) {
   "use strict";
 

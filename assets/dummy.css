@@ -11270,6 +11270,101 @@ a.upf-btn--sm {
   font-weight: 300;
   font-size: 6px;
 }
+.oss-pulsating-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+.oss-pulsating-dot--primary {
+  background-color: var(--color-primary-500);
+  animation: pulsating-dot__pulse-effect--primary 2s infinite;
+}
+@keyframes pulsating-dot__pulse-effect--primary {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgb(from var(--color-primary-400) r g b / 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgb(from var(--color-primary-400) r g b / 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgb(from var(--color-primary-400) r g b / 0);
+  }
+}
+.oss-pulsating-dot--success {
+  background-color: var(--color-success-500);
+  animation: pulsating-dot__pulse-effect--success 2s infinite;
+}
+@keyframes pulsating-dot__pulse-effect--success {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgb(from var(--color-success-400) r g b / 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgb(from var(--color-success-400) r g b / 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgb(from var(--color-success-400) r g b / 0);
+  }
+}
+.oss-pulsating-dot--error {
+  background-color: var(--color-error-500);
+  animation: pulsating-dot__pulse-effect--error 2s infinite;
+}
+@keyframes pulsating-dot__pulse-effect--error {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgb(from var(--color-error-400) r g b / 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgb(from var(--color-error-400) r g b / 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgb(from var(--color-error-400) r g b / 0);
+  }
+}
+.oss-pulsating-dot--warning {
+  background-color: var(--color-warning-500);
+  animation: pulsating-dot__pulse-effect--warning 2s infinite;
+}
+@keyframes pulsating-dot__pulse-effect--warning {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgb(from var(--color-warning-400) r g b / 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgb(from var(--color-warning-400) r g b / 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgb(from var(--color-warning-400) r g b / 0);
+  }
+}
+.oss-pulsating-dot--gray {
+  background-color: var(--color-gray-500);
+  animation: pulsating-dot__pulse-effect--gray 2s infinite;
+}
+@keyframes pulsating-dot__pulse-effect--gray {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgb(from var(--color-gray-400) r g b / 0.7);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgb(from var(--color-gray-400) r g b / 0);
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 0 0 rgb(from var(--color-gray-400) r g b / 0);
+  }
+}
 .oss-progress-bar {
   display: flex;
   width: 100%;
