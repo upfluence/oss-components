@@ -19,6 +19,12 @@
   &--borderless {
     .array-input-container {
       border: none;
+      &.active {
+        &:not(.array-input-container--disabled) {
+          box-shadow: none;
+          background-color: transparent;
+        }
+      }
     }
   }
 
