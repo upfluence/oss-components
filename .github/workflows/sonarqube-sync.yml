@@ -1,0 +1,42 @@
+name: ci
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+env:
+  NODE_VERSION: '20'
+  GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+  FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
+
+jobs:
+  sonar-report:
+    name: Sync Sonar Report
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v3
+      - uses: webfactory/ssh-agent@v0.5.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '${{ env.NODE_VERSION }}'
+          cache: 'pnpm'
+      - name: Install Dependencies
+        run: pnpm install
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+      - name: Run tests
+        run: pnpm test:coverage
+      - name: SonarQube Scan
+        uses: sonarsource/sonarqube-scan-action@v2.0.2
+        with:
+          args: >
+            -Dsonar.projectKey=${{ github.event.repository.name }}
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
