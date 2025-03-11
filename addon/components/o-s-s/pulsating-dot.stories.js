@@ -1,6 +1,6 @@
 import { hbs } from 'ember-cli-htmlbars';
 
-const SkinTypes = ['primary', 'success', 'error', 'warning', 'gray'];
+const SkinTypes = ['primary', 'success', 'error', 'warning'];
 
 export default {
   title: 'Components/OSS::PulsatingDot',

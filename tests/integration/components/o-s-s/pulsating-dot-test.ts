@@ -12,7 +12,13 @@ module('Integration | Component | o-s-s/pulsating-dot', function (hooks) {
     assert.dom('.oss-pulsating-dot').exists();
   });
 
-  ['primary', 'success', 'error', 'warning', 'gray'].forEach((skin) => {
+  test('The default applied skin is primary', async function (assert) {
+    await render(hbs`<OSS::PulsatingDot />`);
+
+    assert.dom('.oss-pulsating-dot').hasClass('oss-pulsating-dot--primary');
+  });
+
+  ['primary', 'success', 'error', 'warning'].forEach((skin) => {
     test(`it renders with skin ${skin}`, async function (assert) {
       this.set('skin', skin);
 

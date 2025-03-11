@@ -1,9 +1,9 @@
 import Component from '@glimmer/component';
 
-type Skin = 'primary' | 'success' | 'error' | 'warning' | 'gray';
+type Skin = 'primary' | 'success' | 'error' | 'warning';
 
 interface OSSPulsatingDotComponentSignature {
-  skin: Skin;
+  skin?: Skin;
 }
 
 export default class OSSPulsatingDotComponent extends Component<OSSPulsatingDotComponentSignature> {
