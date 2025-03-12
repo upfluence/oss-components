@@ -9870,6 +9870,29 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
         await (0, _testHelpers.click)('.upf-power-select__array-container');
         assert.dom('.upf-power-select').hasAttribute('open');
       });
+      (0, _qunit.test)('without a border when @borderless is true', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
+                                  @onSearch={{this.onSearch}} @borderless={{true}}>
+                  <:selected-item as |selectedItem|>
+                    {{selectedItem}}
+                  </:selected-item>
+                  <:option-item as |item|>
+                    {{item}}
+                  </:option-item>
+                </OSS::PowerSelect>
+              
+        */
+        {
+          "id": "FDIKGC4H",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@selectedItems\",\"@items\",\"@onSearch\",\"@borderless\"],[[30,0,[\"selectedItems\"]],[30,0,[\"items\"]],[30,0,[\"onSearch\"]],true]],[[\"selected-item\",\"option-item\"],[[[[1,\"\\n            \"],[1,[30,1]],[1,\"\\n          \"]],[1]],[[[1,\"\\n            \"],[1,[30,2]],[1,\"\\n          \"]],[2]]]]],[1,\"\\n      \"]],[\"selectedItem\",\"item\"],false,[\"o-s-s/power-select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/power-select-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-power-select').hasClass('upf-power-select--borderless');
+      });
       (0, _qunit.test)('custom empty state is properly rendered', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*

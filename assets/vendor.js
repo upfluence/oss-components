@@ -92182,7 +92182,7 @@ interface OSSCodeBlockArgs {
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div
-    class="upf-power-select fx-1 fx-col"
+    class="upf-power-select fx-1 fx-col {{if @borderless 'upf-power-select--borderless'}}"
     data-toggle="oss-dropdown"
     {{did-insert this.registerContainer}}
     {{did-insert (fn this.ensureBlockPresence (has-block "selected-item") (has-block "option-item"))}}
@@ -92256,8 +92256,8 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "CaKE/Hzt",
-    "block": "[[[11,0],[24,0,\"upf-power-select fx-1 fx-col\"],[24,\"data-toggle\",\"oss-dropdown\"],[17,1],[4,[38,0],[[30,0,[\"registerContainer\"]]],null],[4,[38,0],[[28,[37,1],[[30,0,[\"ensureBlockPresence\"]],[48,[30,13]],[48,[30,14]]],null]],null],[4,[38,3],[[30,0,[\"disconnectObserver\"]]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"upf-power-select__array-container\"],[24,\"role\",\"button\"],[4,[38,4],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n    \"],[10,0],[15,0,[29,[\"array-input-container fx-row padding-px-6 \",[52,[30,0,[\"isOpen\"]],\"active\"]]]],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-1 padding-left-px-6 padding-right-px-24 fx-gap-px-6 fx-wrap\"],[12],[1,\"\\n\"],[42,[28,[37,7],[[28,[37,7],[[30,2]],null]],null],null,[[[1,\"          \"],[18,13,[[30,3]]],[1,\"\\n\"]],[3]],[[[1,\"          \"],[10,1],[14,0,\"text-size-5 text-color-default-light\"],[12],[1,\"\\n            \"],[1,[30,0,[\"placeholder\"]]],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]]],[1,\"      \"],[13],[1,\"\\n      \"],[8,[39,9],[[24,0,\"dropdown-icon\"]],[[\"@icon\"],[[52,[30,0,[\"isOpen\"]],\"fa-chevron-up\",\"fa-chevron-down\"]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"isOpen\"]],[[[40,[[[41,[48,[30,15]],[[[1,\"        \"],[8,[39,12],[[16,0,[28,[37,13],[\"margin-top-px-0 upf-power-select__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[16,1,[30,0,[\"portalId\"]]],[4,[38,4],[\"click\",[30,0,[\"noop\"]]],null],[4,[38,14],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[[30,10]]]]],[[\"@items\",\"@onSearch\",\"@inline\",\"@onSelect\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\",\"@enableKeyboard\"],[[30,4],[30,5],false,[30,0,[\"onSelect\"]],[30,6],[30,7],[30,8],[30,9],true]],[[\"option\",\"empty-state\"],[[[[1,\"\\n            \"],[18,14,[[30,11]]],[1,\"\\n          \"]],[11]],[[[1,\"\\n            \"],[18,15,null],[1,\"\\n          \"]],[]]]]],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,12],[[16,0,[28,[37,13],[\"margin-top-px-0 upf-power-select__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[16,1,[30,0,[\"portalId\"]]],[4,[38,4],[\"click\",[30,0,[\"noop\"]]],null],[4,[38,14],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[[30,10]]]]],[[\"@items\",\"@onSearch\",\"@inline\",\"@onSelect\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\",\"@enableKeyboard\"],[[30,4],[30,5],false,[30,0,[\"onSelect\"]],[30,6],[30,7],[30,8],[30,9],true]],[[\"option\"],[[[[1,\"\\n            \"],[18,14,[[30,12]]],[1,\"\\n          \"]],[12]]]]],[1,\"\\n\"]],[]]]],[]],\"%cursor:0%\",[28,[37,11],[[30,0,[\"portalTarget\"]]],null],null]],[]],null],[13]],[\"&attrs\",\"@selectedItems\",\"selectedItem\",\"@items\",\"@onSearch\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\",\"@captureClickOutside\",\"item\",\"item\",\"&selected-item\",\"&option-item\",\"&empty-state\"],false,[\"did-insert\",\"fn\",\"has-block\",\"will-destroy\",\"on\",\"if\",\"each\",\"-track-array\",\"yield\",\"o-s-s/icon\",\"in-element\",\"-in-el-null\",\"o-s-s/infinite-select\",\"concat\",\"on-click-outside\"]]",
+    "id": "b06AVVD5",
+    "block": "[[[11,0],[16,0,[29,[\"upf-power-select fx-1 fx-col \",[52,[30,1],\"upf-power-select--borderless\"]]]],[24,\"data-toggle\",\"oss-dropdown\"],[17,2],[4,[38,1],[[30,0,[\"registerContainer\"]]],null],[4,[38,1],[[28,[37,2],[[30,0,[\"ensureBlockPresence\"]],[48,[30,14]],[48,[30,15]]],null]],null],[4,[38,4],[[30,0,[\"disconnectObserver\"]]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"upf-power-select__array-container\"],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n    \"],[10,0],[15,0,[29,[\"array-input-container fx-row padding-px-6 \",[52,[30,0,[\"isOpen\"]],\"active\"]]]],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-1 padding-left-px-6 padding-right-px-24 fx-gap-px-6 fx-wrap\"],[12],[1,\"\\n\"],[42,[28,[37,7],[[28,[37,7],[[30,3]],null]],null],null,[[[1,\"          \"],[18,14,[[30,4]]],[1,\"\\n\"]],[4]],[[[1,\"          \"],[10,1],[14,0,\"text-size-5 text-color-default-light\"],[12],[1,\"\\n            \"],[1,[30,0,[\"placeholder\"]]],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]]],[1,\"      \"],[13],[1,\"\\n      \"],[8,[39,9],[[24,0,\"dropdown-icon\"]],[[\"@icon\"],[[52,[30,0,[\"isOpen\"]],\"fa-chevron-up\",\"fa-chevron-down\"]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"isOpen\"]],[[[40,[[[41,[48,[30,16]],[[[1,\"        \"],[8,[39,12],[[16,0,[28,[37,13],[\"margin-top-px-0 upf-power-select__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[16,1,[30,0,[\"portalId\"]]],[4,[38,5],[\"click\",[30,0,[\"noop\"]]],null],[4,[38,14],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[[30,11]]]]],[[\"@items\",\"@onSearch\",\"@inline\",\"@onSelect\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\",\"@enableKeyboard\"],[[30,5],[30,6],false,[30,0,[\"onSelect\"]],[30,7],[30,8],[30,9],[30,10],true]],[[\"option\",\"empty-state\"],[[[[1,\"\\n            \"],[18,15,[[30,12]]],[1,\"\\n          \"]],[12]],[[[1,\"\\n            \"],[18,16,null],[1,\"\\n          \"]],[]]]]],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,12],[[16,0,[28,[37,13],[\"margin-top-px-0 upf-power-select__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[16,1,[30,0,[\"portalId\"]]],[4,[38,5],[\"click\",[30,0,[\"noop\"]]],null],[4,[38,14],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[[30,11]]]]],[[\"@items\",\"@onSearch\",\"@inline\",\"@onSelect\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\",\"@enableKeyboard\"],[[30,5],[30,6],false,[30,0,[\"onSelect\"]],[30,7],[30,8],[30,9],[30,10],true]],[[\"option\"],[[[[1,\"\\n            \"],[18,15,[[30,13]]],[1,\"\\n          \"]],[13]]]]],[1,\"\\n\"]],[]]]],[]],\"%cursor:0%\",[28,[37,11],[[30,0,[\"portalTarget\"]]],null],null]],[]],null],[13]],[\"@borderless\",\"&attrs\",\"@selectedItems\",\"selectedItem\",\"@items\",\"@onSearch\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\",\"@captureClickOutside\",\"item\",\"item\",\"&selected-item\",\"&option-item\",\"&empty-state\"],false,[\"if\",\"did-insert\",\"fn\",\"has-block\",\"will-destroy\",\"on\",\"each\",\"-track-array\",\"yield\",\"o-s-s/icon\",\"in-element\",\"-in-el-null\",\"o-s-s/infinite-select\",\"concat\",\"on-click-outside\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/power-select.hbs",
     "isStrictMode": false
   });
@@ -92375,6 +92375,20 @@ interface OSSCodeBlockArgs {
           type: 'boolean'
         }
       },
+      borderless: {
+        description: 'Hide the border around the dropdown component',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
       loadingMore: {
         description: 'Display loading more state in the list of items',
         table: {
@@ -92470,6 +92484,7 @@ interface OSSCodeBlockArgs {
     selectedItems: FAKE_SELECTED_ITEMS,
     loading: false,
     loadingMore: false,
+    borderless: false,
     placeholder: 'My placeholder',
     searchPlaceholder: 'My search placeholder',
     addressableAs: undefined,
@@ -92485,7 +92500,8 @@ interface OSSCodeBlockArgs {
       
         <div style="display: flex; justify-content: center; background-color: white; border-radius: 4px">
           <OSS::PowerSelect class='padding-sm' @selectedItems={{this.selectedItems}} @items={{this.items}}
-                            @onSearch={{this.onSearch}} @onChange={{this.onChange}} @loading={{this.loading}}
+                            @onSearch={{this.onSearch}} @onChange={{this.onChange}} @loading={{this.loading}} 
+                            @borderless={{this.borderless}}
                             @loadingMore={{this.loadingMore}} @placeholder={{this.placeholder}} @searchPlaceholder={{this.searchPlaceholder}}
                             @onBottomReached={{this.onBottomReached}} @addressableAs={{this.addressableAs}}>
             <:selected-item as |selectedItem|>
@@ -92499,8 +92515,8 @@ interface OSSCodeBlockArgs {
       
     */
     {
-      "id": "lonCeSUH",
-      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"display: flex; justify-content: center; background-color: white; border-radius: 4px\"],[12],[1,\"\\n      \"],[8,[39,0],[[24,0,\"padding-sm\"]],[[\"@selectedItems\",\"@items\",\"@onSearch\",\"@onChange\",\"@loading\",\"@loadingMore\",\"@placeholder\",\"@searchPlaceholder\",\"@onBottomReached\",\"@addressableAs\"],[[30,0,[\"selectedItems\"]],[30,0,[\"items\"]],[30,0,[\"onSearch\"]],[30,0,[\"onChange\"]],[30,0,[\"loading\"]],[30,0,[\"loadingMore\"]],[30,0,[\"placeholder\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"addressableAs\"]]]],[[\"selected-item\",\"option-item\"],[[[[1,\"\\n          \"],[1,[30,1]],[1,\"\\n        \"]],[1]],[[[1,\"\\n          \"],[1,[30,2]],[1,\"\\n        \"]],[2]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[\"selectedItem\",\"item\"],false,[\"o-s-s/power-select\"]]",
+      "id": "RVfai5/I",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"display: flex; justify-content: center; background-color: white; border-radius: 4px\"],[12],[1,\"\\n      \"],[8,[39,0],[[24,0,\"padding-sm\"]],[[\"@selectedItems\",\"@items\",\"@onSearch\",\"@onChange\",\"@loading\",\"@borderless\",\"@loadingMore\",\"@placeholder\",\"@searchPlaceholder\",\"@onBottomReached\",\"@addressableAs\"],[[30,0,[\"selectedItems\"]],[30,0,[\"items\"]],[30,0,[\"onSearch\"]],[30,0,[\"onChange\"]],[30,0,[\"loading\"]],[30,0,[\"borderless\"]],[30,0,[\"loadingMore\"]],[30,0,[\"placeholder\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"addressableAs\"]]]],[[\"selected-item\",\"option-item\"],[[[[1,\"\\n          \"],[1,[30,1]],[1,\"\\n        \"]],[1]],[[[1,\"\\n          \"],[1,[30,2]],[1,\"\\n        \"]],[2]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[\"selectedItem\",\"item\"],false,[\"o-s-s/power-select\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/power-select.stories.js",
       "isStrictMode": false
     }),
