@@ -93251,6 +93251,152 @@ interface OSSCodeBlockArgs {
   const BasicUsage = _exports.BasicUsage = Template.bind({});
   BasicUsage.args = defaultArgs;
 });
+;define("@upfluence/oss-components/components/o-s-s/search-field", ["exports", "@ember/component", "@ember/object", "@ember/service", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _object, _service, _component2, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@ember/service",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <OSS::InputContainer @value={{@value}} @placeholder={{this.placeholder}} @onChange={{this.onChange}} ...attributes>
+    <:prefix>
+      <OSS::Icon @icon="fa-search" class="font-color-gray-500" />
+    </:prefix>
+    <:suffix>
+      {{#if (gt @value.length 0)}}
+        <OSS::Icon @icon="fa-times" class="font-color-gray-500" role="button" {{on "click" this.onClearSearch}} />
+      {{/if}}
+    </:suffix>
+  </OSS::InputContainer>
+  */
+  {
+    "id": "frDDpaaK",
+    "block": "[[[8,[39,0],[[17,1]],[[\"@value\",\"@placeholder\",\"@onChange\"],[[30,2],[30,0,[\"placeholder\"]],[30,0,[\"onChange\"]]]],[[\"prefix\",\"suffix\"],[[[[1,\"\\n    \"],[8,[39,1],[[24,0,\"font-color-gray-500\"]],[[\"@icon\"],[\"fa-search\"]],null],[1,\"\\n  \"]],[]],[[[1,\"\\n\"],[41,[28,[37,3],[[30,2,[\"length\"]],0],null],[[[1,\"      \"],[8,[39,1],[[24,0,\"font-color-gray-500\"],[24,\"role\",\"button\"],[4,[38,4],[\"click\",[30,0,[\"onClearSearch\"]]],null]],[[\"@icon\"],[\"fa-times\"]],null],[1,\"\\n\"]],[]],null],[1,\"  \"]],[]]]]]],[\"&attrs\",\"@value\"],false,[\"o-s-s/input-container\",\"o-s-s/icon\",\"if\",\"gt\",\"on\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/search-field.hbs",
+    "isStrictMode": false
+  });
+  let OSSSearchFieldComponent = _exports.default = (_class = class OSSSearchFieldComponent extends _component2.default {
+    constructor(...args) {
+      super(...args);
+      _initializerDefineProperty(this, "intl", _descriptor, this);
+    }
+    get placeholder() {
+      return this.args.placeholder ?? this.intl.t('oss-components.search_field.placeholder');
+    }
+    onClearSearch() {
+      this.args.onChange('');
+    }
+    onChange(value) {
+      this.args.onChange(value);
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _applyDecoratedDescriptor(_class.prototype, "onClearSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClearSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onChange", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onChange"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSearchFieldComponent);
+});
+;define("@upfluence/oss-components/components/o-s-s/search-field.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.BasicUsage = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::SearchField',
+    component: 'search-field',
+    argTypes: {
+      value: {
+        type: {
+          required: true
+        },
+        description: 'Value of the input',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      placeholder: {
+        description: 'Placeholder of the input',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      onChange: {
+        type: {
+          required: true
+        },
+        description: 'Method called every time the input is updated',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'onChange(value: string): void'
+          }
+        },
+        control: {
+          type: null
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'The OSS version of the search-field component. This component encapsulates search field input and allows user to reset the search.'
+        }
+      }
+    }
+  };
+  const defaultArgs = {
+    value: 'John',
+    placeholder: 'My placeholder',
+    onChange: (0, _addonActions.action)('onChange')
+  };
+  const Template = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+          <OSS::SearchField @value={{this.value}} @placeholder={{this.placeholder}} @onChange={{this.onChange}} />
+      
+    */
+    {
+      "id": "HgditJNT",
+      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@value\",\"@placeholder\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"placeholder\"]],[30,0,[\"onChange\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/search-field\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/search-field.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const BasicUsage = _exports.BasicUsage = Template.bind({});
+  BasicUsage.args = defaultArgs;
+});
 ;define("@upfluence/oss-components/components/o-s-s/select", ["exports", "@ember/component", "@glimmer/tracking", "@ember/debug", "@ember/object", "@ember/service", "@ember/utils", "@ember/runloop", "@upfluence/oss-components/utils/attach-dropdown", "@upfluence/oss-components/components/o-s-s/private/base-dropdown", "@ember/template-factory"], function (_exports, _component, _tracking, _debug, _object, _service, _utils, _runloop, _attachDropdown, _baseDropdown, _templateFactory) {
   "use strict";
 
@@ -105610,6 +105756,9 @@ interface OSSCodeBlockArgs {
       },
       "phone-input": {
         "invalid_input": "Please select your country from the selector"
+      },
+      "search_field": {
+        "placeholder": "Search"
       },
       "select": {
         "placeholder": "Select",

@@ -10779,6 +10779,83 @@ define("dummy/tests/integration/components/o-s-s/scrollable-panel-test", ["qunit
     });
   });
 });
+define("dummy/tests/integration/components/o-s-s/search-field-test", ["qunit", "ember-qunit", "@ember/test-helpers", "ember-intl/test-support", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _testSupport, _sinon, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"ember-intl/test-support",0,"sinon"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/search-field', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _testSupport.setupIntl)(hooks);
+    hooks.beforeEach(function () {
+      this.onChange = value => {
+        this.value = value;
+      };
+    });
+    (0, _qunit.test)('Search Field component is rendered with a placeholder', async function (assert) {
+      this.placeholder = 'This is a placeholder';
+      this.value = '';
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::SearchField @value={{this.value}} @placeholder={{this.placeholder}} @onChange={{this.onChange}} />
+      */
+      {
+        "id": "75xmp4yO",
+        "block": "[[[8,[39,0],null,[[\"@value\",\"@placeholder\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"placeholder\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/search-field\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/search-field-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('input').hasAttribute('placeholder', 'This is a placeholder');
+    });
+    (0, _qunit.test)('Input value is reset when the clear button is clicked', async function (assert) {
+      this.value = 'Test';
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::SearchField @value={{this.value}} @onChange={{this.onChange}} />
+      */
+      {
+        "id": "/mqKZfq7",
+        "block": "[[[8,[39,0],null,[[\"@value\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/search-field\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/search-field-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('[role="button"]').exists();
+      await (0, _testHelpers.click)('[role="button"]');
+      assert.strictEqual(this.value, '');
+    });
+    (0, _qunit.test)('onChange function is triggered on input change', async function (assert) {
+      this.value = '';
+      this.onChange = _sinon.default.stub();
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::SearchField @value={{this.value}} @onChange={{this.onChange}} />
+      */
+      {
+        "id": "/mqKZfq7",
+        "block": "[[[8,[39,0],null,[[\"@value\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/search-field\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/search-field-test.ts",
+        "isStrictMode": false
+      }));
+      await (0, _testHelpers.typeIn)('input', 'Test', {
+        delay: 0
+      });
+      assert.true(this.onChange.lastCall.calledWith('Test'));
+    });
+    (0, _qunit.test)('Clear button is not displayed when the input is empty', async function (assert) {
+      this.value = '';
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::SearchField @value={{this.value}} @onChange={{this.onChange}} />
+      */
+      {
+        "id": "/mqKZfq7",
+        "block": "[[[8,[39,0],null,[[\"@value\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/search-field\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/search-field-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('[role="button"]').doesNotExist();
+    });
+  });
+});
 define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-qunit", "ember-intl/test-support", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testSupport, _testHelpers, _sinon, _templateFactory) {
   "use strict";
 
