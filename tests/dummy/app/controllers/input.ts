@@ -7,6 +7,7 @@ import { countries, type CountryData } from '@upfluence/oss-components/utils/cou
 export default class Input extends Controller {
   @tracked shopUrl: string = '';
   @tracked inputValue: string = '';
+  @tracked searchFieldValue: string = '';
   @tracked textAreaValue: string = '42';
   @tracked superHeroes: string[] = ['Iron Man', 'Thor', 'Loki', 'Hulk'];
   @tracked items: { name: string; label: string }[] = [
@@ -120,5 +121,10 @@ export default class Input extends Controller {
   onCurrencyOnlyChange(currency: string): void {
     console.log('onCurrencyOnlyChange', currency);
     this.currencyOnly = currency;
+  }
+
+  @action
+  onSearchFieldChange(value: string): void {
+    this.searchFieldValue = value;
   }
 }
