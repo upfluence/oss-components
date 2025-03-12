@@ -1,5 +1,5 @@
 <div
-  class="upf-power-select fx-1 fx-col"
+  class="upf-power-select fx-1 fx-col {{if @borderless 'upf-power-select--borderless'}}"
   data-toggle="oss-dropdown"
   {{did-insert this.registerContainer}}
   {{did-insert (fn this.ensureBlockPresence (has-block "selected-item") (has-block "option-item"))}}
