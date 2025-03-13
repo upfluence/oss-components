@@ -10718,6 +10718,7 @@ a.upf-btn--sm {
 .upf-avatar--xs .default-img-placeholder {
   height: var(--spacing-px-12);
   width: var(--spacing-px-12);
+  object-fit: contain;
 }
 .upf-avatar--sm {
   font-size: 1.16666667rem;
@@ -10729,6 +10730,7 @@ a.upf-btn--sm {
 .upf-avatar--sm .default-img-placeholder {
   height: var(--spacing-px-12);
   width: var(--spacing-px-12);
+  object-fit: contain;
 }
 .upf-avatar--md {
   font-size: 1.33333333rem;
@@ -10740,6 +10742,7 @@ a.upf-btn--sm {
 .upf-avatar--md .default-img-placeholder {
   height: var(--spacing-px-18);
   width: var(--spacing-px-18);
+  object-fit: contain;
 }
 .upf-avatar--lg {
   font-size: 1.33333333rem;
@@ -10751,6 +10754,7 @@ a.upf-btn--sm {
 .upf-avatar--lg .default-img-placeholder {
   height: var(--spacing-px-24);
   width: var(--spacing-px-24);
+  object-fit: contain;
 }
 .upf-avatar--loading {
   animation: upf-skeleton-content 1.2s ease-in-out infinite;

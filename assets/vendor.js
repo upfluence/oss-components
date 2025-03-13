@@ -83660,7 +83660,7 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
     md: 'upf-avatar--md',
     lg: 'upf-avatar--lg'
   };
-  const DEFAULT_IMAGE_URL = _exports.DEFAULT_IMAGE_URL = '/assets/images/upfluence-white-logo.svg';
+  const DEFAULT_IMAGE_URL = _exports.DEFAULT_IMAGE_URL = '/assets/images/avatar-placeholder.svg';
   let OSSAvatar = _exports.default = (_class = class OSSAvatar extends _component2.default {
     constructor(...args) {
       super(...args);
