@@ -1,6 +1,22 @@
 .upf-toggle.upf-toggle--disabled {
+  background-color: var(--color-gray-200);
+  border-color: var(--color-gray-200);
+
   .upf-toggle__switch {
     background-color: var(--color-gray-400);
+  }
+
+  &.upf-toggle--toggled {
+    background-color: var(--color-primary-200);
+    border-color: var(--color-primary-200);
+
+    .upf-toggle__switch {
+      background-color: var(--color-white);
+
+      .fa-check {
+        color: var(--color-primary-200);
+      }
+    }
   }
 }
 
