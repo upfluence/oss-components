@@ -33,12 +33,16 @@ export default class OSSSearchFieldComponent extends Component<OSSSearchFieldArg
     this.args.onChange((event.target as HTMLInputElement).value);
   }
 
+  @action
   setupOnlyNumericListener(element: HTMLElement): void {
+    if (this.type !== 'number') return;
     const input: HTMLInputElement | null = element.querySelector('input');
     input?.addEventListener('keydown', onlyNumeric);
   }
 
+  @action
   teardownOnlyNumericListener(element: HTMLElement): void {
+    if (this.type !== 'number') return;
     const input: HTMLInputElement | null = element.querySelector('input');
     input?.removeEventListener('keydown', onlyNumeric);
   }

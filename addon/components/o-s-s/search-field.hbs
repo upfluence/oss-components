@@ -1,4 +1,8 @@
-<OSS::InputContainer ...attributes>
+<OSS::InputContainer
+  ...attributes
+  {{did-insert this.setupOnlyNumericListener}}
+  {{will-destroy this.teardownOnlyNumericListener}}
+>
   <:prefix>
     <OSS::Icon @icon="fa-search" class="font-color-gray-500" />
   </:prefix>
@@ -11,8 +15,6 @@
       placeholder={{this.placeholder}}
       aria-labelledby={{this.placeholder}}
       {{on "input" this.onChange}}
-      {{did-insert this.setupOnlyNumericListener}}
-      {{will-destroy this.teardownOnlyNumericListener}}
     />
   </:input>
   <:suffix>
