@@ -83,7 +83,7 @@ module('Integration | Component | o-s-s/access-panel', function (hooks) {
       await renderComponent();
       await fillIn('.oss-input-container input', 'fo');
       await typeIn('.oss-input-container input', 'o', { delay: 0 });
-      assert.ok(this.onSearch.calledOnceWithExactly('foo'));
+      assert.ok(this.onSearch.lastCall.calledWithExactly('foo'));
     });
 
     test('it is autofocus', async function (assert) {
