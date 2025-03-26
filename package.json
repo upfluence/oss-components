@@ -27,6 +27,7 @@
     "test": "npm-run-all lint:* test:*",
     "test:ember": "ember test --silent -r dot",
     "test:ember-compatibility": "ember try:each",
+    "test:coverage": "COVERAGE=true pnpm test:ember",
     "storybook": "cp -R public/assets/fonts app/styles/core && start-storybook -p 6006 -s dist",
     "build-storybook": "build-storybook -s dist",
     "prepack": "ember ts:precompile",
