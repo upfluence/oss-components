@@ -1,7 +1,21 @@
-<OSS::InputContainer @value={{@value}} @placeholder={{this.placeholder}} @onChange={{this.onChange}} ...attributes>
+<OSS::InputContainer ...attributes>
   <:prefix>
     <OSS::Icon @icon="fa-search" class="font-color-gray-500" />
   </:prefix>
+  <:input>
+    <input
+      class="upf-input"
+      type={{this.type}}
+      value={{@value}}
+      autocomplete="off"
+      placeholder={{this.placeholder}}
+      aria-labelledby={{this.placeholder}}
+      {{on "input" this.onChange}}
+      {{did-insert this.setupOnlyNumericListener}}
+      {{did-insert this.focusSearch}}
+      {{will-destroy this.teardownOnlyNumericListener}}
+    />
+  </:input>
   <:suffix>
     {{#if (gt @value.length 0)}}
       <OSS::Icon @icon="fa-times" class="font-color-gray-500" role="button" {{on "click" this.onClearSearch}} />
