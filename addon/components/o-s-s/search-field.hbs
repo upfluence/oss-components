@@ -12,7 +12,6 @@
       aria-labelledby={{this.placeholder}}
       {{on "input" this.onChange}}
       {{did-insert this.setupOnlyNumericListener}}
-      {{did-insert this.focusSearch}}
       {{will-destroy this.teardownOnlyNumericListener}}
     />
   </:input>

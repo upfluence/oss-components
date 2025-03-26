@@ -1,4 +1,4 @@
-const NUMERIC_ONLY: RegExp = /^\d$/i;
+export const NUMERIC_ONLY: RegExp = /^\d$/i;
 const AUTHORIZED_INPUTS: string[] = [
   'Backspace',
   'Delete',
