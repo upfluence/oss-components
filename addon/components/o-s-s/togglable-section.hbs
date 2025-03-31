@@ -12,6 +12,9 @@
       <span class="font-weight-semibold font-size-md font-color-gray-900">{{@title}}</span>
       <span class="font-color-gray-500">{{@subtitle}}</span>
     </div>
+    {{#if (and (has-block "actions"))}}
+      {{yield to="actions"}}
+    {{/if}}
     <OSS::ToggleSwitch @value={{@toggled}} @onChange={{this.noop}} @disabled={{@disabled}} />
   </div>
   {{#if (and (has-block "contents") @toggled)}}
