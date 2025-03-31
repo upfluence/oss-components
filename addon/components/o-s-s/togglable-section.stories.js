@@ -141,9 +141,9 @@ const WithActionsNamedBlockTemplate = (args) => ({
       <:contents>
         Setting content
       </:contents>
-      <:actions>
+      <:header-actions>
         actions ...
-      </:actions>
+      </:header-actions>
     </OSS::TogglableSection>
   `,
   context: args

@@ -176,12 +176,12 @@ module('Integration | Component | o-s-s/togglable-section', function (hooks) {
     });
   });
 
-  test('When `actions` named block is passed, the content is rendered in the header', async function (assert) {
+  test('When `header-actions` named block is passed, the content is rendered in the header', async function (assert) {
     await render(
       hbs`<OSS::TogglableSection @title={{this.title}} @toggled={{this.toggled}} @onChange={{this.onChange}} @disabled={{true}} >
-            <:actions>
+            <:header-actions>
               <div data-control-name="action-named-block-content" />
-            </:actions>
+            </:header-actions>
           </OSS::TogglableSection>`
     );
     assert.dom('.togglable-section .header-block [data-control-name="action-named-block-content"]').exists();
