@@ -13366,6 +13366,23 @@ define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["quni
         assert.dom('.upf-toggle').hasClass('upf-toggle--toggled');
       });
     });
+    (0, _qunit.test)('When `header-actions` named block is passed, the content is rendered in the header', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::TogglableSection @title={{this.title}} @toggled={{this.toggled}} @onChange={{this.onChange}} @disabled={{true}} >
+                  <:header-actions>
+                    <div data-control-name="action-named-block-content" />
+                  </:header-actions>
+                </OSS::TogglableSection>
+      */
+      {
+        "id": "zayH7jHX",
+        "block": "[[[8,[39,0],null,[[\"@title\",\"@toggled\",\"@onChange\",\"@disabled\"],[[30,0,[\"title\"]],[30,0,[\"toggled\"]],[30,0,[\"onChange\"]],true]],[[\"header-actions\"],[[[[1,\"\\n              \"],[10,0],[14,\"data-control-name\",\"action-named-block-content\"],[12],[13],[1,\"\\n            \"]],[]]]]]],[],false,[\"o-s-s/togglable-section\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/togglable-section-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.togglable-section .header-block [data-control-name="action-named-block-content"]').exists();
+    });
   });
 });
 define("dummy/tests/integration/components/o-s-s/toggle-buttons-test", ["qunit", "ember-qunit", "@ember/object", "@ember/test-helpers", "@ember/test-helpers/settled", "@ember/test-helpers/setup-onerror", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _object, _testHelpers, _settled, _setupOnerror, _sinon, _templateFactory) {

@@ -95781,6 +95781,9 @@ interface OSSCodeBlockArgs {
         <span class="font-weight-semibold font-size-md font-color-gray-900">{{@title}}</span>
         <span class="font-color-gray-500">{{@subtitle}}</span>
       </div>
+      {{#if (and (has-block "header-actions"))}}
+        {{yield to="header-actions"}}
+      {{/if}}
       <OSS::ToggleSwitch @value={{@toggled}} @onChange={{this.noop}} @disabled={{@disabled}} />
     </div>
     {{#if (and (has-block "contents") @toggled)}}
@@ -95790,11 +95793,10 @@ interface OSSCodeBlockArgs {
       </div>
     {{/if}}
   </div>
-  
   */
   {
-    "id": "cCgQP4E/",
-    "block": "[[[11,0],[24,0,\"togglable-section fx-1 fx-col border fx-xalign-center\"],[17,1],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"header-block fx-row \",[30,0,[\"paddingClass\"]],\" fx-gap-px-12 fx-xalign-center width-pc-100 inner-header\\n              \",[52,[30,2],\"background-color-gray-50\"]]]],[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,0,[\"onHeaderClick\"]]],null],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"      \"],[10,\"img\"],[14,0,\"upf-badge upf-badge--size-md upf-badge--shape-round\"],[15,\"src\",[30,3]],[15,\"alt\",[30,4]],[12],[13],[1,\"\\n\"]],[]],[[[41,[30,5],[[[1,\"      \"],[8,[39,2],null,[[\"@style\",\"@icon\"],[[28,[37,3],[[30,5]],null],[28,[37,4],[[30,5]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,6],[[[1,\"      \"],[8,[39,5],null,[[\"@icon\"],[[30,6]]],null],[1,\"\\n    \"]],[]],null]],[]]]],[]]],[1,\"    \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-3\"],[12],[1,\"\\n      \"],[10,1],[14,0,\"font-weight-semibold font-size-md font-color-gray-900\"],[12],[1,[30,4]],[13],[1,\"\\n      \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,[30,7]],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[8,[39,6],null,[[\"@value\",\"@onChange\",\"@disabled\"],[[30,2],[30,0,[\"noop\"]],[30,8]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[28,[37,7],[[48,[30,9]],[30,2]],null],[[[1,\"    \"],[10,\"hr\"],[14,0,\"margin-px-0 width-pc-100\"],[12],[13],[1,\"\\n    \"],[10,0],[15,0,[29,[\"width-pc-100 \",[30,0,[\"paddingClass\"]],\" content-block\"]]],[12],[1,\"\\n      \"],[18,9,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@toggled\",\"@iconUrl\",\"@title\",\"@icon\",\"@badgeIcon\",\"@subtitle\",\"@disabled\",\"&contents\"],false,[\"if\",\"on\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"o-s-s/badge\",\"o-s-s/toggle-switch\",\"and\",\"has-block\",\"yield\"]]",
+    "id": "tB4a4vsl",
+    "block": "[[[11,0],[24,0,\"togglable-section fx-1 fx-col border fx-xalign-center\"],[17,1],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"header-block fx-row \",[30,0,[\"paddingClass\"]],\" fx-gap-px-12 fx-xalign-center width-pc-100 inner-header\\n              \",[52,[30,2],\"background-color-gray-50\"]]]],[24,\"role\",\"button\"],[4,[38,1],[\"click\",[30,0,[\"onHeaderClick\"]]],null],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"      \"],[10,\"img\"],[14,0,\"upf-badge upf-badge--size-md upf-badge--shape-round\"],[15,\"src\",[30,3]],[15,\"alt\",[30,4]],[12],[13],[1,\"\\n\"]],[]],[[[41,[30,5],[[[1,\"      \"],[8,[39,2],null,[[\"@style\",\"@icon\"],[[28,[37,3],[[30,5]],null],[28,[37,4],[[30,5]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,6],[[[1,\"      \"],[8,[39,5],null,[[\"@icon\"],[[30,6]]],null],[1,\"\\n    \"]],[]],null]],[]]]],[]]],[1,\"    \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-3\"],[12],[1,\"\\n      \"],[10,1],[14,0,\"font-weight-semibold font-size-md font-color-gray-900\"],[12],[1,[30,4]],[13],[1,\"\\n      \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,[30,7]],[13],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[28,[37,6],[[48,[30,9]]],null],[[[1,\"      \"],[18,9,null],[1,\"\\n\"]],[]],null],[1,\"    \"],[8,[39,9],null,[[\"@value\",\"@onChange\",\"@disabled\"],[[30,2],[30,0,[\"noop\"]],[30,8]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[28,[37,6],[[48,[30,10]],[30,2]],null],[[[1,\"    \"],[10,\"hr\"],[14,0,\"margin-px-0 width-pc-100\"],[12],[13],[1,\"\\n    \"],[10,0],[15,0,[29,[\"width-pc-100 \",[30,0,[\"paddingClass\"]],\" content-block\"]]],[12],[1,\"\\n      \"],[18,10,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@toggled\",\"@iconUrl\",\"@title\",\"@icon\",\"@badgeIcon\",\"@subtitle\",\"@disabled\",\"&header-actions\",\"&contents\"],false,[\"if\",\"on\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"o-s-s/badge\",\"and\",\"has-block\",\"yield\",\"o-s-s/toggle-switch\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/togglable-section.hbs",
     "isStrictMode": false
   });
@@ -95822,7 +95824,7 @@ interface OSSCodeBlockArgs {
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = _exports.Default = void 0;
+  _exports.default = _exports.WithActionsNamedBlock = _exports.Default = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
   const COMPONENT_SIZES = ['sm', 'md'];
   var _default = _exports.default = {
@@ -95990,8 +95992,35 @@ interface OSSCodeBlockArgs {
     }),
     context: args
   });
+  const WithActionsNamedBlockTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <OSS::TogglableSection
+          @title={{this.title}} @subtitle={{this.subtitle}} @toggled={{this.toggled}} @iconUrl={{this.iconUrl}}
+          @badgeIcon={{this.badgeIcon}} @icon={{this.icon}} @onChange={{this.onChange}}
+          @disabled={{this.disabled}} @size={{this.size}}>
+          <:contents>
+            Setting content
+          </:contents>
+          <:header-actions>
+            actions ...
+          </:header-actions>
+        </OSS::TogglableSection>
+      
+    */
+    {
+      "id": "XBYZALz6",
+      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@toggled\",\"@iconUrl\",\"@badgeIcon\",\"@icon\",\"@onChange\",\"@disabled\",\"@size\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"toggled\"]],[30,0,[\"iconUrl\"]],[30,0,[\"badgeIcon\"]],[30,0,[\"icon\"]],[30,0,[\"onChange\"]],[30,0,[\"disabled\"]],[30,0,[\"size\"]]]],[[\"contents\",\"header-actions\"],[[[[1,\"\\n        Setting content\\n      \"]],[]],[[[1,\"\\n        actions ...\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/togglable-section\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/togglable-section.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
   const Default = _exports.Default = Template.bind({});
   Default.args = defaultArgs;
+  const WithActionsNamedBlock = _exports.WithActionsNamedBlock = WithActionsNamedBlockTemplate.bind({});
+  WithActionsNamedBlock.args = defaultArgs;
 });
 ;define("@upfluence/oss-components/components/o-s-s/toggle-buttons", ["exports", "@ember/component", "@ember/debug", "@glimmer/component", "@ember/object", "@ember/template-factory"], function (_exports, _component, _debug, _component2, _object, _templateFactory) {
   "use strict";
