@@ -132,5 +132,25 @@ const Template = (args) => ({
   context: args
 });
 
+const WithActionsNamedBlockTemplate = (args) => ({
+  template: hbs`
+    <OSS::TogglableSection
+      @title={{this.title}} @subtitle={{this.subtitle}} @toggled={{this.toggled}} @iconUrl={{this.iconUrl}}
+      @badgeIcon={{this.badgeIcon}} @icon={{this.icon}} @onChange={{this.onChange}}
+      @disabled={{this.disabled}} @size={{this.size}}>
+      <:contents>
+        Setting content
+      </:contents>
+      <:header-actions>
+        actions ...
+      </:header-actions>
+    </OSS::TogglableSection>
+  `,
+  context: args
+});
+
 export const Default = Template.bind({});
 Default.args = defaultArgs;
+
+export const WithActionsNamedBlock = WithActionsNamedBlockTemplate.bind({});
+WithActionsNamedBlock.args = defaultArgs;

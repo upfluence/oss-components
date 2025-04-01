@@ -131,7 +131,7 @@
       Togglable section
     </div>
     <div class="fx-row fx-gap-px-36 fx-xalign-start">
-      <div class="fx-row fx-gap-px-24">
+      <div class="fx-row fx-gap-px-24 fx-1">
         <OSS::TogglableSection
           @title="This is a title"
           @subtitle="This is a subtitle"
@@ -139,6 +139,9 @@
           @toggled={{this.toggled}}
           @onChange={{this.onToggle}}
         >
+          <:header-actions>
+            <OSS::Tag @label="optional" />
+          </:header-actions>
           <:contents>
             <span>This is a Contents named block</span>
           </:contents>

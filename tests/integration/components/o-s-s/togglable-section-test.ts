@@ -175,4 +175,15 @@ module('Integration | Component | o-s-s/togglable-section', function (hooks) {
       assert.dom('.upf-toggle').hasClass('upf-toggle--toggled');
     });
   });
+
+  test('When `header-actions` named block is passed, the content is rendered in the header', async function (assert) {
+    await render(
+      hbs`<OSS::TogglableSection @title={{this.title}} @toggled={{this.toggled}} @onChange={{this.onChange}} @disabled={{true}} >
+            <:header-actions>
+              <div data-control-name="action-named-block-content" />
+            </:header-actions>
+          </OSS::TogglableSection>`
+    );
+    assert.dom('.togglable-section .header-block [data-control-name="action-named-block-content"]').exists();
+  });
 });
