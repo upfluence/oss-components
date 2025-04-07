@@ -86,6 +86,7 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
     page.classList.add('page--active');
     this.prevPageIndex = this.currentPageIndex;
     this.currentPageIndex = this.pages.indexOf(page);
+    this.pages[this.prevPageIndex]?.querySelector('video')?.pause();
   }
 
   willDestroy(): void {
