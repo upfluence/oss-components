@@ -19,6 +19,9 @@
     background-color: var(--color-white);
     transition: transform 0.4s;
     box-shadow: var(--box-shadow-xs);
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -28,5 +31,9 @@
 
   .upf-toggle__switch {
     transform: translateX(100%);
+
+    .fa-check {
+      color: var(--color-primary-500);
+    }
   }
 }
