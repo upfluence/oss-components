@@ -96204,16 +96204,21 @@ interface OSSCodeBlockArgs {
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="upf-toggle {{if @value 'upf-toggle--toggled'}} {{if @disabled 'upf-toggle--disabled'}}"
-       {{on "click" this.switchState}} ...attributes>
+    <div
+    class="upf-toggle {{if @value 'upf-toggle--toggled'}} {{if @disabled 'upf-toggle--disabled'}}"
+    {{on "click" this.switchState}}
+    ...attributes
+  >
     <div class="upf-toggle__switch">
+      {{#if @value}}
+        <OSS::Icon @icon="fa-check" />
+      {{/if}}
     </div>
   </div>
-  
   */
   {
-    "id": "vb19QguO",
-    "block": "[[[11,0],[16,0,[29,[\"upf-toggle \",[52,[30,1],\"upf-toggle--toggled\"],\" \",[52,[30,2],\"upf-toggle--disabled\"]]]],[17,3],[4,[38,1],[\"click\",[30,0,[\"switchState\"]]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"upf-toggle__switch\"],[12],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"@value\",\"@disabled\",\"&attrs\"],false,[\"if\",\"on\"]]",
+    "id": "22iguFhG",
+    "block": "[[[11,0],[16,0,[29,[\"upf-toggle \",[52,[30,1],\"upf-toggle--toggled\"],\" \",[52,[30,2],\"upf-toggle--disabled\"]]]],[17,3],[4,[38,1],[\"click\",[30,0,[\"switchState\"]]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"upf-toggle__switch\"],[12],[1,\"\\n\"],[41,[30,1],[[[1,\"      \"],[8,[39,2],null,[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[13]],[\"@value\",\"@disabled\",\"&attrs\"],false,[\"if\",\"on\",\"o-s-s/icon\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/toggle-switch.hbs",
     "isStrictMode": false
   });

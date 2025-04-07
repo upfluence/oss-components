@@ -7423,6 +7423,9 @@ label {
   background-color: var(--color-white);
   transition: transform 0.4s;
   box-shadow: var(--box-shadow-xs);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .upf-toggle.upf-toggle--toggled {
   background-color: var(--color-primary-500);
@@ -7430,6 +7433,9 @@ label {
 }
 .upf-toggle.upf-toggle--toggled .upf-toggle__switch {
   transform: translateX(100%);
+}
+.upf-toggle.upf-toggle--toggled .upf-toggle__switch .fa-check {
+  color: var(--color-primary-500);
 }
 @keyframes openDropdown {
   0% {
@@ -8007,8 +8013,22 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
 .scroll-shadow--field::after {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #f1f2f3 100%);
 }
+.upf-toggle.upf-toggle--disabled {
+  background-color: var(--color-gray-200);
+  border-color: var(--color-gray-200);
+}
 .upf-toggle.upf-toggle--disabled .upf-toggle__switch {
   background-color: var(--color-gray-400);
+}
+.upf-toggle.upf-toggle--disabled.upf-toggle--toggled {
+  background-color: var(--color-primary-200);
+  border-color: var(--color-primary-200);
+}
+.upf-toggle.upf-toggle--disabled.upf-toggle--toggled .upf-toggle__switch {
+  background-color: var(--color-white);
+}
+.upf-toggle.upf-toggle--disabled.upf-toggle--toggled .upf-toggle__switch .fa-check {
+  color: var(--color-primary-200);
 }
 .upf-toggle.upf-toggle--disabled {
   background-color: var(--color-gray-200);
@@ -8027,6 +8047,9 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
   background-color: var(--color-primary-600);
   border-color: var(--color-primary-600);
 }
+.upf-toggle:not(.upf-toggle--disabled):hover.upf-toggle--toggled .fa-check {
+  color: var(--color-primary-600);
+}
 .upf-toggle:not(.upf-toggle--disabled):active {
   box-shadow: var(--box-shadow-xs), 0px 0px 0px 2px var(--color-gray-100);
   background-color: var(--color-gray-100);
@@ -8035,6 +8058,9 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
 .upf-toggle:not(.upf-toggle--disabled):active.upf-toggle--toggled {
   background-color: var(--color-primary-400);
   border-color: var(--color-primary-400);
+}
+.upf-toggle:not(.upf-toggle--disabled):active.upf-toggle--toggled .fa-check {
+  color: var(--color-primary-400);
 }
 .oss-navbar-item {
   border-radius: var(--border-radius-md);
