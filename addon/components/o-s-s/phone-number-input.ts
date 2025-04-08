@@ -2,12 +2,15 @@ import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { isBlank } from '@ember/utils';
-import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { countries, type CountryData } from '@upfluence/oss-components/utils/country-codes';
 import type IntlService from 'ember-intl/services/intl';
 
-interface OSSPhoneNumberInputArgs {
+import BaseDropdown, { type BaseDropdownArgs } from './private/base-dropdown';
+import { scheduleOnce } from '@ember/runloop';
+import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
+
+interface OSSPhoneNumberInputArgs extends BaseDropdownArgs {
   prefix: string;
   number: string;
   placeholder?: string;
@@ -21,14 +24,14 @@ const AUTHORIZED_KEYS = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab'
 const AUTHORIZED_COMBO_KEYS = ['v', 'a', 'z', 'c', 'x'];
 const NOT_NUMERIC = /[^\d]/g;
 
-export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputArgs> {
+export default class OSSPhoneNumberInput extends BaseDropdown<OSSPhoneNumberInputArgs> {
   @service declare intl: IntlService;
 
   private _countries = countries;
+  cleanupDrodpownAutoplacement?: () => void;
 
   @tracked invalidInputError = '';
   @tracked selectedCountry: CountryData;
-  @tracked countrySelectorShown: boolean = false;
   @tracked filteredCountries: CountryData[] = this._countries;
   @tracked placeholder: string = this.args.placeholder ?? '(415) 000 0000';
   @tracked inputElement: HTMLElement | undefined = undefined;
@@ -60,7 +63,7 @@ export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputAr
   get interactiveClasses(): string {
     let classArray: string[] = [];
 
-    if (this.countrySelectorShown) {
+    if (this.isOpen) {
       classArray.push('phone-number-input--active');
     }
     if (this.displayErrorBorder) {
@@ -103,32 +106,48 @@ export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputAr
   }
 
   @action
-  onSearch(keyword: any): void {
-    this.filteredCountries = this._countries.filter((country: any) => {
+  onSearch(keyword: string): void {
+    this.filteredCountries = this._countries.filter((country: CountryData) => {
       return (
         country.name.toLowerCase().indexOf(keyword.toLowerCase()) !== -1 ||
-        country.countryCallingCodes[0].indexOf(keyword) !== -1
+        country.countryCallingCodes[0]?.indexOf(keyword) !== -1
       );
     });
   }
 
   @action
-  onSelect(value: any): void {
+  onSelect(value: CountryData): void {
     this.selectedCountry = value;
     this.args.onChange('+' + this.selectedCountry.countryCallingCodes[0], this.args.number);
     this.hideCountrySelector();
   }
 
   @action
-  toggleCountrySelector(e: any): void {
-    e.stopPropagation();
-    this.countrySelectorShown = !this.countrySelectorShown;
+  toggleDropdown(event: MouseEvent): void {
+    super.toggleDropdown(event);
+
+    if (this.isOpen) {
+      scheduleOnce('afterRender', this, () => {
+        const referenceTarget = this.container;
+        const floatingTarget = document.querySelector(`#${this.portalId}`);
+
+        if (referenceTarget && floatingTarget) {
+          this.cleanupDrodpownAutoplacement = attachDropdown(
+            referenceTarget as HTMLElement,
+            floatingTarget as HTMLElement,
+            { placementStrategy: 'auto' }
+          );
+        }
+      });
+    }
   }
 
   @action
   hideCountrySelector(): void {
-    this.countrySelectorShown = false;
     this.filteredCountries = this._countries;
+    this.closeDropdown();
+    this.cleanupDrodpownAutoplacement?.();
+    document.querySelector(`#${this.portalId}`)?.remove();
   }
 
   @action
@@ -139,6 +158,11 @@ export default class OSSPhoneNumberInput extends Component<OSSPhoneNumberInputAr
   @action
   registerInputElement(el: HTMLElement): void {
     this.inputElement = el;
+  }
+
+  @action
+  handleSelectorClose(): void {
+    this.hideCountrySelector();
   }
 
   private validateInput(): void {
