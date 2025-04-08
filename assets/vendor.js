@@ -85134,6 +85134,7 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
       page.classList.add('page--active');
       this.prevPageIndex = this.currentPageIndex;
       this.currentPageIndex = this.pages.indexOf(page);
+      this.args.onPageChange?.();
     }
     willDestroy() {
       super.willDestroy();
@@ -85267,6 +85268,15 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
         },
         control: {
           type: 'number'
+        }
+      },
+      onPageChange: {
+        description: 'Action triggered when the page changes',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'onPageChange(): void'
+          }
         }
       }
     },

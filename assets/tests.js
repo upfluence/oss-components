@@ -3529,10 +3529,10 @@ define("dummy/tests/integration/components/o-s-s/button-test", ["qunit", "ember-
     });
   });
 });
-define("dummy/tests/integration/components/o-s-s/carousel-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+define("dummy/tests/integration/components/o-s-s/carousel-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon"eaimeta@70e063a35619d71f
   (0, _qunit.module)('Integration | Component | o-s-s/carousel', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     hooks.beforeEach(function () {
@@ -3541,6 +3541,7 @@ define("dummy/tests/integration/components/o-s-s/carousel-test", ["qunit", "embe
       this.showIndicators = undefined;
       this.showControls = undefined;
       this.autoPlay = undefined;
+      this.onPageChange = _sinon.default.spy();
     });
     async function renderCarousel() {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -3548,7 +3549,7 @@ define("dummy/tests/integration/components/o-s-s/carousel-test", ["qunit", "embe
         
             <OSS::Carousel @showIndicators={{this.showIndicators}} @showControls={{this.showControls}}
                            @animationStyle={{this.animationStyle}} @buttonIcon={{this.buttonIcon}}
-                           @autoPlay={{this.autoPlay}}>
+                           @autoPlay={{this.autoPlay}} @onPageChange={{this.onPageChange}}>
               <:pages>
                 <div class="page">Page 1</div>
                 <div class="page">Page 2</div>
@@ -3558,8 +3559,8 @@ define("dummy/tests/integration/components/o-s-s/carousel-test", ["qunit", "embe
           
       */
       {
-        "id": "SfcOBnbm",
-        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@showIndicators\",\"@showControls\",\"@animationStyle\",\"@buttonIcon\",\"@autoPlay\"],[[30,0,[\"showIndicators\"]],[30,0,[\"showControls\"]],[30,0,[\"animationStyle\"]],[30,0,[\"buttonIcon\"]],[30,0,[\"autoPlay\"]]]],[[\"pages\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 1\"],[13],[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 2\"],[13],[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 3\"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"]],[],false,[\"o-s-s/carousel\"]]",
+        "id": "kP8NrZiP",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@showIndicators\",\"@showControls\",\"@animationStyle\",\"@buttonIcon\",\"@autoPlay\",\"@onPageChange\"],[[30,0,[\"showIndicators\"]],[30,0,[\"showControls\"]],[30,0,[\"animationStyle\"]],[30,0,[\"buttonIcon\"]],[30,0,[\"autoPlay\"]],[30,0,[\"onPageChange\"]]]],[[\"pages\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 1\"],[13],[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 2\"],[13],[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 3\"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"]],[],false,[\"o-s-s/carousel\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/carousel-test.ts",
         "isStrictMode": false
       }));
@@ -3660,6 +3661,11 @@ define("dummy/tests/integration/components/o-s-s/carousel-test", ["qunit", "embe
         await new Promise(resolve => setTimeout(resolve, 101));
         assert.dom('.oss-carousel .page--active').hasText('Page 2');
       });
+    });
+    (0, _qunit.test)('@onPageChange is called when changing the page when the parameter is defined', async function (assert) {
+      await renderCarousel();
+      await (0, _testHelpers.click)('.oss-carousel .page-btn:nth-child(2)');
+      assert.true(this.onPageChange.calledOnceWithExactly());
     });
   });
 });
