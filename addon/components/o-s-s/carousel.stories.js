@@ -58,6 +58,15 @@ export default {
         defaultValue: { summary: 'undefined' }
       },
       control: { type: 'number' }
+    },
+    onPageChange: {
+      description: 'Action triggered when the page changes',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'onPageChange(): void'
+        }
+      }
     }
   },
   parameters: {

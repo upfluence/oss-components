@@ -11,6 +11,7 @@ interface OSSCarouselArgs {
   showIndicators?: boolean;
   showControls?: 'overlay' | 'outside';
   autoPlay?: number;
+  onPageChange?(): void;
 }
 
 interface AnimationHandler {
@@ -86,6 +87,8 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
     page.classList.add('page--active');
     this.prevPageIndex = this.currentPageIndex;
     this.currentPageIndex = this.pages.indexOf(page);
+
+    this.args.onPageChange?.();
   }
 
   willDestroy(): void {
