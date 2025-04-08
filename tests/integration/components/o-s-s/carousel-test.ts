@@ -2,6 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { click, render, setupOnerror } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/carousel', function (hooks) {
   setupRenderingTest(hooks);
@@ -12,13 +13,14 @@ module('Integration | Component | o-s-s/carousel', function (hooks) {
     this.showIndicators = undefined;
     this.showControls = undefined;
     this.autoPlay = undefined;
+    this.onPageChange = sinon.spy();
   });
 
   async function renderCarousel() {
     await render(hbs`
       <OSS::Carousel @showIndicators={{this.showIndicators}} @showControls={{this.showControls}}
                      @animationStyle={{this.animationStyle}} @buttonIcon={{this.buttonIcon}}
-                     @autoPlay={{this.autoPlay}}>
+                     @autoPlay={{this.autoPlay}} @onPageChange={{this.onPageChange}}>
         <:pages>
           <div class="page">Page 1</div>
           <div class="page">Page 2</div>
@@ -120,5 +122,11 @@ module('Integration | Component | o-s-s/carousel', function (hooks) {
       await new Promise((resolve) => setTimeout(resolve, 101));
       assert.dom('.oss-carousel .page--active').hasText('Page 2');
     });
+  });
+
+  test('@onPageChange is called when changing the page when the parameter is defined', async function (assert) {
+    await renderCarousel();
+    await click('.oss-carousel .page-btn:nth-child(2)');
+    assert.true(this.onPageChange.calledOnceWithExactly());
   });
 });
