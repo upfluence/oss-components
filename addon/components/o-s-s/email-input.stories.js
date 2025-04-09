@@ -21,7 +21,7 @@ export default {
         type: {
           summary: 'string'
         },
-        defaultValue: { summary: 'e.g: john.doe@example.com' }
+        defaultValue: { summary: 'e.g., john.doe@example.com' }
       },
       control: { type: 'text' }
     },
@@ -79,7 +79,7 @@ const defaultArgs = {
 
 const Template = (args) => ({
   template: hbs`
-      <OSS::EmailInput @value={{this.value}} @placeholder={{this.placeholder}} @validateFormat={{this.validateFormat}} 
+      <OSS::EmailInput @value={{this.value}} @placeholder={{this.placeholder}} @validateFormat={{this.validateFormat}}
                        @validates={{this.validates}} @errorMessage={{this.errorMessage}} />
   `,
   context: args
