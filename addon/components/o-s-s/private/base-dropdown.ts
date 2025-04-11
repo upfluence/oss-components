@@ -6,6 +6,7 @@ import { isTesting } from '@embroider/macros';
 
 export interface BaseDropdownArgs {
   focusOnOpen?: boolean;
+  addressableAs?: string;
   captureClickOutside?: boolean;
 }
 
@@ -21,8 +22,12 @@ export default class OSSBaseDropdown<T extends BaseDropdownArgs> extends Compone
     throw new Error('[component][OSS::BaseDropdown] You must implement handleSelectorClose method on the child class');
   }
 
+  get dropdownAddressableClass(): string {
+    return this.args.addressableAs ? `${this.args.addressableAs}__dropdown` : '';
+  }
+
   @action
-  toggleDropdown(event: MouseEvent): void {
+  toggleDropdown(event: Event): void {
     event.stopPropagation();
     event.preventDefault();
 
