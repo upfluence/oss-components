@@ -27,7 +27,7 @@ export default class OSSBaseDropdown<T extends BaseDropdownArgs> extends Compone
   }
 
   @action
-  toggleDropdown(event: MouseEvent): void {
+  toggleDropdown(event: Event): void {
     event.stopPropagation();
     event.preventDefault();
 
