@@ -1,11 +1,15 @@
-import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
+import { guidFor } from '@ember/object/internals';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 
-import { guidFor } from '@ember/object/internals';
+import type { IntlService } from 'ember-intl';
+
+import BaseDropdown, { type BaseDropdownArgs } from './private/base-dropdown';
+import { scheduleOnce } from '@ember/runloop';
+import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
 
 type Item = {
   name: string;
@@ -14,19 +18,19 @@ type Item = {
   code?: string;
 };
 
-interface OSSCountrySelectorArgs {
+interface OSSCountrySelectorArgs extends BaseDropdownArgs {
   sourceList: Item[];
   value?: string;
   onChange(item: Item | null): void;
 }
 
-export default class OSSCountrySelector extends Component<OSSCountrySelectorArgs> {
-  @service intl: any;
+export default class OSSCountrySelector extends BaseDropdown<OSSCountrySelectorArgs> {
+  @service declare intl: IntlService;
 
-  @tracked dropdownVisibility: boolean = false;
-  @tracked filteredItems: any[] = this.args.sourceList;
+  @tracked filteredItems: Item[] = this.args.sourceList;
 
-  @tracked elementId: string = guidFor(this);
+  cleanupDrodpownAutoplacement?: () => void;
+  handleSelectorClose = this.closeDropdown;
 
   constructor(owner: unknown, args: OSSCountrySelectorArgs) {
     super(owner, args);
@@ -71,17 +75,35 @@ export default class OSSCountrySelector extends Component<OSSCountrySelectorArgs
   }
 
   @action
-  toggleDropdown(e: any): void {
-    e.stopPropagation();
-    this.dropdownVisibility = !this.dropdownVisibility;
+  toggleDropdown(event: Event): void {
+    super.toggleDropdown(event);
+
     this.filteredItems = this.args.sourceList;
+
+    if (this.isOpen) {
+      scheduleOnce('afterRender', this, () => {
+        const referenceTarget = this.container.querySelector('.upf-input') as HTMLElement;
+        const floatingTarget = document.querySelector(`#${this.portalId}`);
+        console.log(referenceTarget, floatingTarget);
+
+        if (referenceTarget && floatingTarget) {
+          this.cleanupDrodpownAutoplacement = attachDropdown(
+            referenceTarget as HTMLElement,
+            floatingTarget as HTMLElement,
+            { placementStrategy: 'auto' }
+          );
+        }
+      });
+    }
   }
 
   @action
   closeDropdown(): void {
-    this.dropdownVisibility = false;
+    super.closeDropdown();
 
-    const el = document.querySelector(`#${this.elementId} .upf-input`) as HTMLElement;
+    document.querySelector(`#${this.portalId}`)?.remove();
+
+    const el = this.container.querySelector('.upf-input') as HTMLElement;
     el?.focus();
   }
 
