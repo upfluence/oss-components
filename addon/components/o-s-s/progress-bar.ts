@@ -12,6 +12,7 @@ interface OSSProgressBarArgs {
   skin?: ProgressBarSkins;
   size?: ProgressBarSizes;
   coloredBackground?: boolean;
+  secondarySkin?: ProgressBarSkins;
 }
 
 export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
@@ -37,6 +38,10 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
 
     if (this.args.coloredBackground) {
       classes.push('oss-progress-bar--colored-background');
+    }
+
+    if (this.args.secondarySkin) {
+      classes.push('oss-progress-bar--secondary-skin--' + this.args.secondarySkin);
     }
 
     return classes.join(' ');

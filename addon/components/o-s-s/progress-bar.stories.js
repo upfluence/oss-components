@@ -67,6 +67,16 @@ export default {
         defaultValue: { summary: undefined }
       },
       control: { type: 'boolean' }
+    },
+    secondarySkin: {
+      description: 'Set the secondary skin to be used for the progress bar.',
+      table: {
+        type: {
+          summary: ProgressBarSkins.join('|')
+        }
+      },
+      options: ProgressBarSkins,
+      control: { type: 'select' }
     }
   },
   parameters: {
@@ -82,7 +92,8 @@ const defaultArgs = {
   value: 30,
   label: 'Hello',
   displayValue: true,
-  coloredBackground: false
+  coloredBackground: false,
+  secondarySkin: undefined
 };
 
 const BasicUsageTemplate = (args) => ({
@@ -94,7 +105,8 @@ const BasicUsageTemplate = (args) => ({
         @displayValue={{this.displayValue}}
         @skin={{this.skin}}
         @size={{this.size}}
-        @coloredBackground={{this.coloredBackground}} />
+        @coloredBackground={{this.coloredBackground}}
+        @secondarySkin={{this.secondarySkin}} />
     </div>
   `,
   context: args

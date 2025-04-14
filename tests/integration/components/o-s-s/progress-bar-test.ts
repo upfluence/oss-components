@@ -154,4 +154,32 @@ module('Integration | Component | o-s-s/progress-bar', function (hooks) {
       assert.dom('.oss-progress-bar').doesNotHaveClass('oss-progress-bar--colored-background');
     });
   });
+
+  module('@secondarySkin arg behaviour', function () {
+    test('if the value is "warning", the progress bar has the correct secondary class', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @secondarySkin="warning" />`);
+
+      assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--secondary-skin--warning');
+    });
+
+    test('if the value is "success", the progress bar has the correct secondary class', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @secondarySkin="success" />`);
+
+      assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--secondary-skin--success');
+    });
+
+    test('if the value is "danger", the progress bar has the correct secondary class', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @secondarySkin="danger" />`);
+
+      assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--secondary-skin--danger');
+    });
+
+    test('if the value is unspecified, the progress bar does not have a secondary class', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} />`);
+
+      assert.dom('.oss-progress-bar').doesNotHaveClass('oss-progress-bar--secondary-skin--warning');
+      assert.dom('.oss-progress-bar').doesNotHaveClass('oss-progress-bar--secondary-skin--success');
+      assert.dom('.oss-progress-bar').doesNotHaveClass('oss-progress-bar--secondary-skin--danger');
+    });
+  });
 });
