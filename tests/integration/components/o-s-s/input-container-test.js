@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, find, typeIn } from '@ember/test-helpers';
+import { render, find, typeIn, triggerEvent } from '@ember/test-helpers';
 import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/input-container', function (hooks) {
@@ -76,6 +76,17 @@ module('Integration | Component | o-s-s/input-container', function (hooks) {
       let inputElement = find('.upf-input');
       await typeIn(inputElement, 'a');
       assert.ok(onValueChange.called);
+    });
+
+    test('Passing an @onChange method works and is triggered on copy event', async function (assert) {
+      this.onChange = sinon.stub();
+      await render(hbs`<OSS::InputContainer data-control-name="firstname-input" @onChange={{this.onChange}} />`);
+
+      assert.ok(this.onChange.notCalled);
+      await triggerEvent('.oss-input-container input', 'paste', {
+        clipboardData: { getData: (format) => `clipboardFormat/${format}` }
+      });
+      assert.ok(this.onChange.calledOnceWith('clipboardFormat/Text'));
     });
   });
 
