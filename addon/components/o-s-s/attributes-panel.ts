@@ -3,20 +3,21 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { assert } from '@ember/debug';
 
-type Mode = 'view' | 'edition';
+export type Mode = 'view' | 'edition';
 
 interface OSSAttributesPanelArgs {
   title: string;
   icon?: string;
   isSaveDisabled?: boolean;
   customEditIcon?: string;
+  initialMode?: Mode;
   onSave(): Promise<void>;
   onEdit?(): void;
   onCancel?(): void;
 }
 
 export default class OSSAttributesPanel extends Component<OSSAttributesPanelArgs> {
-  @tracked modeSelected: Mode = 'view';
+  @tracked modeSelected: Mode = this.args.initialMode ?? 'view';
   @tracked isLoading: boolean = false;
 
   constructor(owner: unknown, args: OSSAttributesPanelArgs) {
