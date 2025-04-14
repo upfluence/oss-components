@@ -11427,6 +11427,15 @@ a.upf-btn--sm {
 .oss-progress-bar--sm .oss-progress-bar__inner {
   height: 4px;
 }
+.oss-progress-bar--secondary-skin--warning .oss-progress-bar__outer {
+  background-color: var(--color-warning-500);
+}
+.oss-progress-bar--secondary-skin--success .oss-progress-bar__outer {
+  background-color: var(--color-success-500);
+}
+.oss-progress-bar--secondary-skin--danger .oss-progress-bar__outer {
+  background-color: var(--color-error-500);
+}
 .oss-progress-bar--warning .oss-progress-bar__inner {
   background-color: var(--color-warning-500);
 }

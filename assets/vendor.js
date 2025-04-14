@@ -92766,6 +92766,9 @@ interface OSSCodeBlockArgs {
       if (this.args.coloredBackground) {
         classes.push('oss-progress-bar--colored-background');
       }
+      if (this.args.secondarySkin) {
+        classes.push('oss-progress-bar--secondary-skin--' + this.args.secondarySkin);
+      }
       return classes.join(' ');
     }
     get progressBarWidthStyle() {
@@ -92871,6 +92874,18 @@ interface OSSCodeBlockArgs {
         control: {
           type: 'boolean'
         }
+      },
+      secondarySkin: {
+        description: 'Set the secondary skin to be used for the progress bar.',
+        table: {
+          type: {
+            summary: ProgressBarSkins.join('|')
+          }
+        },
+        options: ProgressBarSkins,
+        control: {
+          type: 'select'
+        }
       }
     },
     parameters: {
@@ -92885,7 +92900,8 @@ interface OSSCodeBlockArgs {
     value: 30,
     label: 'Hello',
     displayValue: true,
-    coloredBackground: false
+    coloredBackground: false,
+    secondarySkin: undefined
   };
   const BasicUsageTemplate = args => ({
     template: (0, _templateFactory.createTemplateFactory)(
@@ -92898,13 +92914,14 @@ interface OSSCodeBlockArgs {
             @displayValue={{this.displayValue}}
             @skin={{this.skin}}
             @size={{this.size}}
-            @coloredBackground={{this.coloredBackground}} />
+            @coloredBackground={{this.coloredBackground}}
+            @secondarySkin={{this.secondarySkin}} />
         </div>
       
     */
     {
-      "id": "8SzRS/3Z",
-      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"background-color: #1c1c1c;width:200px\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@value\",\"@label\",\"@displayValue\",\"@skin\",\"@size\",\"@coloredBackground\"],[[30,0,[\"value\"]],[30,0,[\"label\"]],[30,0,[\"displayValue\"]],[30,0,[\"skin\"]],[30,0,[\"size\"]],[30,0,[\"coloredBackground\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/progress-bar\"]]",
+      "id": "xv0aqhl1",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"background-color: #1c1c1c;width:200px\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@value\",\"@label\",\"@displayValue\",\"@skin\",\"@size\",\"@coloredBackground\",\"@secondarySkin\"],[[30,0,[\"value\"]],[30,0,[\"label\"]],[30,0,[\"displayValue\"]],[30,0,[\"skin\"]],[30,0,[\"size\"]],[30,0,[\"coloredBackground\"]],[30,0,[\"secondarySkin\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/progress-bar\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/progress-bar.stories.js",
       "isStrictMode": false
     }),

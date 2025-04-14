@@ -10524,6 +10524,62 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
         assert.dom('.oss-progress-bar').doesNotHaveClass('oss-progress-bar--colored-background');
       });
     });
+    (0, _qunit.module)('@secondarySkin arg behaviour', function () {
+      (0, _qunit.test)('if the value is "warning", the progress bar has the correct secondary class', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ProgressBar @value={{this.checkedValue}} @secondarySkin="warning" />
+        */
+        {
+          "id": "GiQsSnk/",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@secondarySkin\"],[[30,0,[\"checkedValue\"]],\"warning\"]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--secondary-skin--warning');
+      });
+      (0, _qunit.test)('if the value is "success", the progress bar has the correct secondary class', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ProgressBar @value={{this.checkedValue}} @secondarySkin="success" />
+        */
+        {
+          "id": "rqpZDcnI",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@secondarySkin\"],[[30,0,[\"checkedValue\"]],\"success\"]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--secondary-skin--success');
+      });
+      (0, _qunit.test)('if the value is "danger", the progress bar has the correct secondary class', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ProgressBar @value={{this.checkedValue}} @secondarySkin="danger" />
+        */
+        {
+          "id": "KvQxghcj",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@secondarySkin\"],[[30,0,[\"checkedValue\"]],\"danger\"]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--secondary-skin--danger');
+      });
+      (0, _qunit.test)('if the value is unspecified, the progress bar does not have a secondary class', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ProgressBar @value={{this.checkedValue}} />
+        */
+        {
+          "id": "KZFzVx3f",
+          "block": "[[[8,[39,0],null,[[\"@value\"],[[30,0,[\"checkedValue\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-progress-bar').doesNotHaveClass('oss-progress-bar--secondary-skin--warning');
+        assert.dom('.oss-progress-bar').doesNotHaveClass('oss-progress-bar--secondary-skin--success');
+        assert.dom('.oss-progress-bar').doesNotHaveClass('oss-progress-bar--secondary-skin--danger');
+      });
+    });
   });
 });
 define("dummy/tests/integration/components/o-s-s/pulsating-dot-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
