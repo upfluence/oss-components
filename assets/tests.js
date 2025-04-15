@@ -6814,6 +6814,26 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
         await (0, _testHelpers.typeIn)(inputElement, 'a');
         assert.ok(onValueChange.called);
       });
+      (0, _qunit.test)('Passing an @onChange method works and is triggered on copy event', async function (assert) {
+        this.onChange = _sinon.default.stub();
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InputContainer data-control-name="firstname-input" @onChange={{this.onChange}} />
+        */
+        {
+          "id": "T23nYTSA",
+          "block": "[[[8,[39,0],[[24,\"data-control-name\",\"firstname-input\"]],[[\"@onChange\"],[[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/input-container\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.js",
+          "isStrictMode": false
+        }));
+        assert.ok(this.onChange.notCalled);
+        await (0, _testHelpers.triggerEvent)('.oss-input-container input', 'paste', {
+          clipboardData: {
+            getData: format => `clipboardFormat/${format}`
+          }
+        });
+        assert.ok(this.onChange.calledOnceWith('clipboardFormat/Text'));
+      });
     });
     (0, _qunit.module)('feedback messages', () => {
       (0, _qunit.test)('Passing success as @feedbackMessage.type displays the success message and sets the border to green', async function (assert) {
