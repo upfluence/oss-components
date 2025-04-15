@@ -87271,7 +87271,7 @@ interface OSSCodeBlockArgs {
     "moduleName": "@upfluence/oss-components/components/o-s-s/email-input.hbs",
     "isStrictMode": false
   });
-  const DEFAULT_PLACEHOLDER = 'e.g: john.doe@example.com';
+  const DEFAULT_PLACEHOLDER = 'e.g., john.doe@example.com';
   const EMAIL_REGEXP = _exports.EMAIL_REGEXP = new RegExp(/^(?:[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+/=?^_`{|}~-]+)*|"(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*")@(?:(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-zA-Z0-9-]*[a-zA-Z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])$/);
   let OSSEmailInput = _exports.default = (_class = class OSSEmailInput extends _component2.default {
     constructor(owner, args) {
@@ -87350,7 +87350,7 @@ interface OSSCodeBlockArgs {
             summary: 'string'
           },
           defaultValue: {
-            summary: 'e.g: john.doe@example.com'
+            summary: 'e.g., john.doe@example.com'
           }
         },
         control: {
@@ -87423,7 +87423,7 @@ interface OSSCodeBlockArgs {
     template: (0, _templateFactory.createTemplateFactory)(
     /*
       
-          <OSS::EmailInput @value={{this.value}} @placeholder={{this.placeholder}} @validateFormat={{this.validateFormat}} 
+          <OSS::EmailInput @value={{this.value}} @placeholder={{this.placeholder}} @validateFormat={{this.validateFormat}}
                            @validates={{this.validates}} @errorMessage={{this.errorMessage}} />
       
     */
