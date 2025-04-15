@@ -212,4 +212,11 @@ module('Integration | Component | o-s-s/attributes-panel', function (hooks) {
     });
     await render(hbs`<OSS::AttributesPanel @title={{this.title}} />`);
   });
+
+  test('Edition mode is displayed when passed through initialMode argument', async function (assert) {
+    await render(
+      hbs`<OSS::AttributesPanel @title={{this.title}} @icon={{this.icon}} @onSave={{this.onSave}} @initialMode="edition" />`
+    );
+    assert.dom('.attributes-panel__container.attributes-panel__container--edition').exists();
+  });
 });
