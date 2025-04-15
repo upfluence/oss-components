@@ -17,6 +17,7 @@
     {{else}}
       <Input
         {{on "keyup" (fn this._onChange @value)}}
+        {{on "paste" this.onPaste}}
         @value={{@value}}
         @type={{this.type}}
         placeholder={{@placeholder}}

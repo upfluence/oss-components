@@ -48,4 +48,23 @@ export default class OSSInputContainer extends Component<OSSInputContainerArgs> 
       this.args.onChange(value);
     }
   }
+
+  @action
+  onPaste(event: ClipboardEvent): void {
+    const element = event.target as HTMLInputElement;
+    this.args.onChange?.(
+      this.replaceStringAtRange(
+        element.value,
+        element.selectionStart ?? 0,
+        element.selectionEnd ?? 0,
+        event.clipboardData?.getData('Text') ?? ''
+      )
+    );
+    event.preventDefault();
+    event.stopImmediatePropagation();
+  }
+
+  private replaceStringAtRange(s: string, start: number, end: number, substitute: string): string {
+    return s.substring(0, start) + substitute + s.substring(end);
+  }
 }
