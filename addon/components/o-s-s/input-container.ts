@@ -1,4 +1,5 @@
 import { action } from '@ember/object';
+import { next } from '@ember/runloop';
 import Component from '@glimmer/component';
 
 export type FeedbackMessage = {
@@ -60,8 +61,9 @@ export default class OSSInputContainer extends Component<OSSInputContainerArgs> 
         event.clipboardData?.getData('Text') ?? ''
       )
     );
-    event.preventDefault();
-    event.stopImmediatePropagation();
+    next(this, () => {
+      element.dispatchEvent(new KeyboardEvent('keyup', { key: 'Enter' }));
+    });
   }
 
   private replaceStringAtRange(s: string, start: number, end: number, substitute: string): string {
