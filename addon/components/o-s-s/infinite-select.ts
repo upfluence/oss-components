@@ -32,8 +32,9 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   @tracked _searchKeyword: string = '';
   @tracked _focusElement: number = 0;
   @tracked focusStylesDisabled: boolean = true;
-
   @tracked elementId: string = guidFor(this);
+
+  searchInput: HTMLInputElement | null = null;
 
   constructor(owner: unknown, args: InfiniteSelectArgs) {
     super(owner, args);
@@ -149,7 +150,15 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   }
 
   @action
+  initSearchInput(element: HTMLElement): void {
+    this.searchInput = element.querySelector('input');
+  }
+
+  @action
   handleItemHover(index: number): void {
+    if (document.activeElement === this.searchInput) {
+      return;
+    }
     this._focusElementAt(index);
     this._focusElement = index;
     this.focusStylesDisabled = this._focusElement === index ? false : true;
