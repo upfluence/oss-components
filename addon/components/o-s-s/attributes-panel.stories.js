@@ -1,6 +1,8 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
 
+const MODES = ['view', 'edition'];
+
 export default {
   title: 'Components/OSS::AttributesPanel',
   component: 'attributes-panel',
@@ -46,6 +48,17 @@ export default {
       },
       control: { type: 'boolean' }
     },
+    initialMode: {
+      description: 'Allows setting the initial mode of the component. Can be either "edition" or "view"',
+      table: {
+        type: {
+          summary: MODES.join('|')
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      options: MODES,
+      control: { type: 'select' }
+    },
     onSave: {
       description: 'A callback sent when the saved button is pressed',
       table: {
@@ -90,6 +103,7 @@ const defaultArgs = {
   icon: 'fa-laptop-code',
   isSaveDisabled: false,
   customEditIcon: 'fa-pen',
+  initialMode: 'view',
   onSave: action('onSave'),
   onCancel: action('onCancel'),
   onEdit: action('onEdit')
@@ -99,8 +113,8 @@ const DefaultUsageTemplate = (args) => ({
   template: hbs`
     <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
       <OSS::AttributesPanel @title={{this.title}} @icon={{this.icon}} @onSave={{this.onSave}}
-                            @onCancel={{this.onCancel}} @onEdit={{this.onEdit}} @isSaveDisabled={{this.isSaveDisabled}} 
-                            @customEditIcon={{this.customEditIcon}}>
+                            @onCancel={{this.onCancel}} @onEdit={{this.onEdit}} @isSaveDisabled={{this.isSaveDisabled}}
+                            @customEditIcon={{this.customEditIcon}} @initialMode={{this.initialMode}}>
           <:view-mode>
             View mode
           </:view-mode>
@@ -118,7 +132,7 @@ const WithContextualActionTemplate = (args) => ({
     <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
       <OSS::AttributesPanel @title={{this.title}} @icon={{this.icon}} @onSave={{this.onSave}}
                             @onCancel={{this.onCancel}} @onEdit={{this.onEdit}} @isSaveDisabled={{this.isSaveDisabled}}
-                            @customEditIcon={{this.customEditIcon}}>
+                            @customEditIcon={{this.customEditIcon}} @initialMode={{this.initialMode}}>
           <:contextual-action>
             <OSS::Button @icon="fa-plus" @square={{true}} />
           </:contextual-action>
