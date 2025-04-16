@@ -53,16 +53,15 @@ export default class OSSInputContainer extends Component<OSSInputContainerArgs> 
   @action
   onPaste(event: ClipboardEvent): void {
     const element = event.target as HTMLInputElement;
-    this.args.onChange?.(
-      this.replaceStringAtRange(
-        element.value,
-        element.selectionStart ?? 0,
-        element.selectionEnd ?? 0,
-        event.clipboardData?.getData('Text') ?? ''
-      )
-    );
     next(this, () => {
-      element.dispatchEvent(new KeyboardEvent('keyup', { key: 'Enter' }));
+      this.args.onChange?.(
+        this.replaceStringAtRange(
+          element.value,
+          element.selectionStart ?? 0,
+          element.selectionEnd ?? 0,
+          event.clipboardData?.getData('Text') ?? ''
+        )
+      );
     });
   }
 
