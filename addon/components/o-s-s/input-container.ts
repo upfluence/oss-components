@@ -1,4 +1,5 @@
 import { action } from '@ember/object';
+import { next } from '@ember/runloop';
 import Component from '@glimmer/component';
 
 export type FeedbackMessage = {
@@ -52,16 +53,16 @@ export default class OSSInputContainer extends Component<OSSInputContainerArgs> 
   @action
   onPaste(event: ClipboardEvent): void {
     const element = event.target as HTMLInputElement;
-    this.args.onChange?.(
-      this.replaceStringAtRange(
-        element.value,
-        element.selectionStart ?? 0,
-        element.selectionEnd ?? 0,
-        event.clipboardData?.getData('Text') ?? ''
-      )
-    );
-    event.preventDefault();
-    event.stopImmediatePropagation();
+    next(this, () => {
+      this.args.onChange?.(
+        this.replaceStringAtRange(
+          element.value,
+          element.selectionStart ?? 0,
+          element.selectionEnd ?? 0,
+          event.clipboardData?.getData('Text') ?? ''
+        )
+      );
+    });
   }
 
   private replaceStringAtRange(s: string, start: number, end: number, substitute: string): string {

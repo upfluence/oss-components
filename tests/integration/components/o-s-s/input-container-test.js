@@ -86,7 +86,7 @@ module('Integration | Component | o-s-s/input-container', function (hooks) {
       await triggerEvent('.oss-input-container input', 'paste', {
         clipboardData: { getData: (format) => `clipboardFormat/${format}` }
       });
-      assert.ok(this.onChange.calledOnceWith('clipboardFormat/Text'));
+      assert.ok(this.onChange.calledWith('clipboardFormat/Text'));
     });
   });
 
