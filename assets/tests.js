@@ -2029,6 +2029,19 @@ define("dummy/tests/integration/components/o-s-s/attributes-panel-test", ["qunit
         "isStrictMode": false
       }));
     });
+    (0, _qunit.test)('Edition mode is displayed when passed through initialMode argument', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::AttributesPanel @title={{this.title}} @icon={{this.icon}} @onSave={{this.onSave}} @initialMode="edition" />
+      */
+      {
+        "id": "aL9DrgXX",
+        "block": "[[[8,[39,0],null,[[\"@title\",\"@icon\",\"@onSave\",\"@initialMode\"],[[30,0,[\"title\"]],[30,0,[\"icon\"]],[30,0,[\"onSave\"]],\"edition\"]],null]],[],false,[\"o-s-s/attributes-panel\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/attributes-panel-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.attributes-panel__container.attributes-panel__container--edition').exists();
+    });
   });
 });
 define("dummy/tests/integration/components/o-s-s/avatar-group-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {

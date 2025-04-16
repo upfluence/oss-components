@@ -83251,7 +83251,7 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
     enumerable: true,
     writable: true,
     initializer: function () {
-      return 'view';
+      return this.args.initialMode ?? 'view';
     }
   }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "isLoading", [_tracking.tracked], {
     configurable: true,
@@ -83271,6 +83271,7 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
   });
   _exports.default = _exports.WithContextualAction = _exports.BasicUsage = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
+  const MODES = ['view', 'edition'];
   var _default = _exports.default = {
     title: 'Components/OSS::AttributesPanel',
     component: 'attributes-panel',
@@ -83334,6 +83335,21 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
           type: 'boolean'
         }
       },
+      initialMode: {
+        description: 'Allows setting the initial mode of the component. Can be either "edition" or "view"',
+        table: {
+          type: {
+            summary: MODES.join('|')
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        options: MODES,
+        control: {
+          type: 'select'
+        }
+      },
       onSave: {
         description: 'A callback sent when the saved button is pressed',
         table: {
@@ -83378,6 +83394,7 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
     icon: 'fa-laptop-code',
     isSaveDisabled: false,
     customEditIcon: 'fa-pen',
+    initialMode: 'view',
     onSave: (0, _addonActions.action)('onSave'),
     onCancel: (0, _addonActions.action)('onCancel'),
     onEdit: (0, _addonActions.action)('onEdit')
@@ -83388,8 +83405,8 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
       
         <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
           <OSS::AttributesPanel @title={{this.title}} @icon={{this.icon}} @onSave={{this.onSave}}
-                                @onCancel={{this.onCancel}} @onEdit={{this.onEdit}} @isSaveDisabled={{this.isSaveDisabled}} 
-                                @customEditIcon={{this.customEditIcon}}>
+                                @onCancel={{this.onCancel}} @onEdit={{this.onEdit}} @isSaveDisabled={{this.isSaveDisabled}}
+                                @customEditIcon={{this.customEditIcon}} @initialMode={{this.initialMode}}>
               <:view-mode>
                 View mode
               </:view-mode>
@@ -83401,8 +83418,8 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
       
     */
     {
-      "id": "HiV8v+Nl",
-      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@icon\",\"@onSave\",\"@onCancel\",\"@onEdit\",\"@isSaveDisabled\",\"@customEditIcon\"],[[30,0,[\"title\"]],[30,0,[\"icon\"]],[30,0,[\"onSave\"]],[30,0,[\"onCancel\"]],[30,0,[\"onEdit\"]],[30,0,[\"isSaveDisabled\"]],[30,0,[\"customEditIcon\"]]]],[[\"view-mode\",\"edition-mode\"],[[[[1,\"\\n            View mode\\n          \"]],[]],[[[1,\"\\n            Edition mode\\n          \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/attributes-panel\"]]",
+      "id": "DIAnPB2D",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@icon\",\"@onSave\",\"@onCancel\",\"@onEdit\",\"@isSaveDisabled\",\"@customEditIcon\",\"@initialMode\"],[[30,0,[\"title\"]],[30,0,[\"icon\"]],[30,0,[\"onSave\"]],[30,0,[\"onCancel\"]],[30,0,[\"onEdit\"]],[30,0,[\"isSaveDisabled\"]],[30,0,[\"customEditIcon\"]],[30,0,[\"initialMode\"]]]],[[\"view-mode\",\"edition-mode\"],[[[[1,\"\\n            View mode\\n          \"]],[]],[[[1,\"\\n            Edition mode\\n          \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/attributes-panel\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/attributes-panel.stories.js",
       "isStrictMode": false
     }),
@@ -83415,7 +83432,7 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
         <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
           <OSS::AttributesPanel @title={{this.title}} @icon={{this.icon}} @onSave={{this.onSave}}
                                 @onCancel={{this.onCancel}} @onEdit={{this.onEdit}} @isSaveDisabled={{this.isSaveDisabled}}
-                                @customEditIcon={{this.customEditIcon}}>
+                                @customEditIcon={{this.customEditIcon}} @initialMode={{this.initialMode}}>
               <:contextual-action>
                 <OSS::Button @icon="fa-plus" @square={{true}} />
               </:contextual-action>
@@ -83430,8 +83447,8 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
       
     */
     {
-      "id": "ftU5/T4Y",
-      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@icon\",\"@onSave\",\"@onCancel\",\"@onEdit\",\"@isSaveDisabled\",\"@customEditIcon\"],[[30,0,[\"title\"]],[30,0,[\"icon\"]],[30,0,[\"onSave\"]],[30,0,[\"onCancel\"]],[30,0,[\"onEdit\"]],[30,0,[\"isSaveDisabled\"]],[30,0,[\"customEditIcon\"]]]],[[\"contextual-action\",\"view-mode\",\"edition-mode\"],[[[[1,\"\\n            \"],[8,[39,1],null,[[\"@icon\",\"@square\"],[\"fa-plus\",true]],null],[1,\"\\n          \"]],[]],[[[1,\"\\n            View mode\\n          \"]],[]],[[[1,\"\\n            Edition mode\\n          \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/attributes-panel\",\"o-s-s/button\"]]",
+      "id": "m9qqnIMN",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@icon\",\"@onSave\",\"@onCancel\",\"@onEdit\",\"@isSaveDisabled\",\"@customEditIcon\",\"@initialMode\"],[[30,0,[\"title\"]],[30,0,[\"icon\"]],[30,0,[\"onSave\"]],[30,0,[\"onCancel\"]],[30,0,[\"onEdit\"]],[30,0,[\"isSaveDisabled\"]],[30,0,[\"customEditIcon\"]],[30,0,[\"initialMode\"]]]],[[\"contextual-action\",\"view-mode\",\"edition-mode\"],[[[[1,\"\\n            \"],[8,[39,1],null,[[\"@icon\",\"@square\"],[\"fa-plus\",true]],null],[1,\"\\n          \"]],[]],[[[1,\"\\n            View mode\\n          \"]],[]],[[[1,\"\\n            Edition mode\\n          \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/attributes-panel\",\"o-s-s/button\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/attributes-panel.stories.js",
       "isStrictMode": false
     }),
