@@ -6845,7 +6845,7 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
             getData: format => `clipboardFormat/${format}`
           }
         });
-        assert.ok(this.onChange.calledOnceWith('clipboardFormat/Text'));
+        assert.ok(this.onChange.calledWith('clipboardFormat/Text'));
       });
     });
     (0, _qunit.module)('feedback messages', () => {

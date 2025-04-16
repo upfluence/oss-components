@@ -88876,7 +88876,7 @@ interface OSSCodeBlockArgs {
   const WithCustomContent = _exports.WithCustomContent = ContentBlockTemplate.bind({});
   WithCustomContent.args = defaultArgs;
 });
-;define("@upfluence/oss-components/components/o-s-s/input-container", ["exports", "@ember/component", "@ember/object", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _object, _component2, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/input-container", ["exports", "@ember/component", "@ember/object", "@ember/runloop", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _object, _runloop, _component2, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -88884,7 +88884,7 @@ interface OSSCodeBlockArgs {
   });
   _exports.default = void 0;
   var _class;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@ember/runloop",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
@@ -88965,9 +88965,9 @@ interface OSSCodeBlockArgs {
     }
     onPaste(event) {
       const element = event.target;
-      this.args.onChange?.(this.replaceStringAtRange(element.value, element.selectionStart ?? 0, element.selectionEnd ?? 0, event.clipboardData?.getData('Text') ?? ''));
-      event.preventDefault();
-      event.stopImmediatePropagation();
+      (0, _runloop.next)(this, () => {
+        this.args.onChange?.(this.replaceStringAtRange(element.value, element.selectionStart ?? 0, element.selectionEnd ?? 0, event.clipboardData?.getData('Text') ?? ''));
+      });
     }
     replaceStringAtRange(s, start, end, substitute) {
       return s.substring(0, start) + substitute + s.substring(end);
