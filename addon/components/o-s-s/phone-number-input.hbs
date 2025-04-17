@@ -45,7 +45,7 @@
         @searchPlaceholder="Search"
         id={{this.portalId}}
         class={{concat "margin-top-px-0 phone-number-container__dropdown " this.dropdownAddressableClass}}
-        {{on-click-outside this.hideCountrySelector}}
+        {{on-click-outside this.onClickOutside}}
         {{on "click" this.noop}}
       >
         <:option as |country|>

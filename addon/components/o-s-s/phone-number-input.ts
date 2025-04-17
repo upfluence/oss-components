@@ -143,14 +143,6 @@ export default class OSSPhoneNumberInput extends BaseDropdown<OSSPhoneNumberInpu
   }
 
   @action
-  hideCountrySelector(): void {
-    this.filteredCountries = this._countries;
-    this.closeDropdown();
-    this.cleanupDrodpownAutoplacement?.();
-    document.querySelector(`#${this.portalId}`)?.remove();
-  }
-
-  @action
   focusInput(): void {
     this.inputElement?.focus();
   }
@@ -163,6 +155,13 @@ export default class OSSPhoneNumberInput extends BaseDropdown<OSSPhoneNumberInpu
   @action
   handleSelectorClose(): void {
     this.hideCountrySelector();
+  }
+
+  private hideCountrySelector(): void {
+    this.filteredCountries = this._countries;
+    this.closeDropdown();
+    this.cleanupDrodpownAutoplacement?.();
+    document.querySelector(`#${this.portalId}`)?.remove();
   }
 
   private validateInput(): void {
