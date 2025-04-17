@@ -1,7 +1,6 @@
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
-import { guidFor } from '@ember/object/internals';
 import { inject as service } from '@ember/service';
 import { isEmpty } from '@ember/utils';
 
@@ -46,7 +45,7 @@ export default class OSSCountrySelector extends BaseDropdown<OSSCountrySelectorA
     );
 
     if (!isEmpty(this.args.value)) {
-      this._matchValueWithSourceList();
+      scheduleOnce('afterRender', this, this._matchValueWithSourceList);
     }
   }
 
@@ -84,7 +83,6 @@ export default class OSSCountrySelector extends BaseDropdown<OSSCountrySelectorA
       scheduleOnce('afterRender', this, () => {
         const referenceTarget = this.container.querySelector('.upf-input') as HTMLElement;
         const floatingTarget = document.querySelector(`#${this.portalId}`);
-        console.log(referenceTarget, floatingTarget);
 
         if (referenceTarget && floatingTarget) {
           this.cleanupDrodpownAutoplacement = attachDropdown(

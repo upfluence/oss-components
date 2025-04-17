@@ -33,7 +33,7 @@
         @enableKeyboard={{true}}
         id={{this.portalId}}
         class={{concat "margin-top-px-0 country-selector-container__dropdown " this.dropdownAddressableClass}}
-        {{on-click-outside this.closeDropdown}}
+        {{on-click-outside this.onClickOutside}}
         {{on "click" this.noop}}
       >
         <:option as |item|>
