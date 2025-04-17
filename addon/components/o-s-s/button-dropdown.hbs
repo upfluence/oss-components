@@ -1,6 +1,9 @@
 <div class="oss-button-dropdown">
   <div
-    class="oss-button-dropdown__trigger {{if @square 'oss-button-dropdown__trigger-square'}} fx-row fx-xalign-center"
+    class="oss-button-dropdown__trigger
+      {{if @square 'oss-button-dropdown__trigger-square'}}
+      {{if this.displayDropdown 'oss-button-dropdown__trigger--active'}}
+      fx-row fx-xalign-center"
     role={{unless @mainAction "button"}}
     {{on "click" this.onDropdownClick}}
     ...attributes
