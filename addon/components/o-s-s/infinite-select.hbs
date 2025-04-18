@@ -49,7 +49,7 @@
             tabindex="0"
           >
             {{#if (has-block "option")}}
-              {{yield item to="option"}}
+              {{yield item index to="option"}}
             {{else}}
               {{get item this.itemLabel}}
             {{/if}}
