@@ -126,6 +126,7 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
       assert.dom('.oss-button-dropdown__trigger .fx-row:last-child').hasAttribute('role', 'button');
 
       await click('.oss-button-dropdown__trigger .fx-row:last-child');
+      assert.dom('.oss-button-dropdown__trigger').hasClass('oss-button-dropdown__trigger--active');
       assert.dom('.oss-button-dropdown__items').exists();
       assert.dom('.oss-button-dropdown__items .oss-button-dropdown__item').exists({ count: 1 });
       assert.dom('.oss-button-dropdown__items .oss-button-dropdown__item').hasText('foo');
