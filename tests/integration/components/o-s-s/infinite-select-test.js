@@ -33,12 +33,12 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
     this.onSelect = () => {};
 
     await render(
-      hbs`
-         <OSS::InfiniteSelect
-              @items={{this.items}} @searchEnabled={{false}}
-              @onSelect={{this.onSelect}} >
+      hbs`<OSS::InfiniteSelect
+            @items={{this.items}}
+            @searchEnabled={{false}}
+            @onSelect={{this.onSelect}}
+          >
             <:option as |item index|>
-              {{item.name}}
               <div class="index">{{index}}</div>
             </:option>
           </OSS::InfiniteSelect>
