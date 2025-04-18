@@ -17,6 +17,24 @@ module('Integration | Component | o-s-s/select', function (hooks) {
     ];
   });
 
+  test('the index values from the @items array are available in the option named block', async function (assert) {
+    this.value = this.items[0];
+    this.checkedIndex = 0;
+    await render(
+      hbs`
+          <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}}>
+            <:option as |item index|>
+              {{item.name}}
+              <div class="index">{{index}}</div>
+            </:option>
+          </OSS::Select>
+        `
+    );
+
+    await click('.upf-input div');
+    assert.dom('.index:nth-of-type(1)').hasText(this.checkedIndex.toString());
+  });
+
   module('value changes', function () {
     test('the onChange function is called with the selected item', async function (assert) {
       this.value = this.items[0];

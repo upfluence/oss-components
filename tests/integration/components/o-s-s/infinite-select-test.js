@@ -27,6 +27,27 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks);
 
+  test('the index values from the @items array are available in the option named block', async function (assert) {
+    this.items = FAKE_DATA;
+    this.checkedIndex = 0;
+    this.onSelect = () => {};
+
+    await render(
+      hbs`<OSS::InfiniteSelect
+            @items={{this.items}}
+            @searchEnabled={{false}}
+            @onSelect={{this.onSelect}}
+          >
+            <:option as |item index|>
+              <div class="index">{{index}}</div>
+            </:option>
+          </OSS::InfiniteSelect>
+        `
+    );
+
+    assert.dom('.index:nth-of-type(1)').hasText(this.checkedIndex.toString());
+  });
+
   module('search is enabled', function () {
     module('with onSearch hook', function () {
       test('it calls the onSearch hook with the typed keyword', async function (assert) {
