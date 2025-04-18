@@ -3017,6 +3017,7 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
         assert.dom('.oss-button-dropdown__items').doesNotExist();
         assert.dom('.oss-button-dropdown__trigger .fx-row:last-child').hasAttribute('role', 'button');
         await (0, _testHelpers.click)('.oss-button-dropdown__trigger .fx-row:last-child');
+        assert.dom('.oss-button-dropdown__trigger').hasClass('oss-button-dropdown__trigger--active');
         assert.dom('.oss-button-dropdown__items').exists();
         assert.dom('.oss-button-dropdown__items .oss-button-dropdown__item').exists({
           count: 1

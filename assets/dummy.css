@@ -11740,6 +11740,7 @@ a.upf-btn--sm {
   border-radius: var(--border-radius-sm);
   height: var(--spacing-px-36);
   padding: var(--spacing-px-6) 0;
+  transition: all 0.25s ease-in-out;
 }
 .oss-button-dropdown__trigger div {
   height: var(--spacing-px-36);
@@ -11758,6 +11759,31 @@ a.upf-btn--sm {
 .oss-button-dropdown__trigger i,
 .oss-button-dropdown__trigger span {
   color: var(--color-gray-900);
+  transition: all 0.25s ease-in-out;
+}
+.oss-button-dropdown__trigger:hover,
+.oss-button-dropdown__trigger:active {
+  border: 1px solid var(--color-gray-300);
+}
+.oss-button-dropdown__trigger:hover {
+  background-color: var(--color-gray-50);
+  box-shadow: 0px 0px 0px 2px var(--color-gray-100), var(--box-shadow-xs);
+}
+.oss-button-dropdown__trigger:active {
+  background-color: var(--color-white);
+  box-shadow: 0px 0px 0px 2px var(--color-gray-100);
+}
+.oss-button-dropdown__trigger:active i,
+.oss-button-dropdown__trigger:active span {
+  color: var(--color-gray-500);
+}
+.oss-button-dropdown__trigger--active {
+  border: 1px solid var(--color-gray-300);
+  box-shadow: 0px 0px 0px 2px var(--color-primary-100);
+}
+.oss-button-dropdown__trigger--active i,
+.oss-button-dropdown__trigger--active span {
+  color: var(--color-gray-600);
 }
 .oss-button-dropdown .oss-button-dropdown__items {
   box-shadow: var(--box-shadow-md);
@@ -11798,20 +11824,6 @@ a.upf-btn--sm {
 }
 .oss-button-dropdown .oss-button-dropdown__items .oss-button-dropdown__item.oss-button-dropdown__item--disabled:hover {
   background-color: var(--color-white);
-}
-.oss-button-dropdown.oss-button-dropdown--dark .oss-button-dropdown__trigger {
-  background-color: var(--color-primary-500);
-  border: 1px solid var(--color-white);
-}
-.oss-button-dropdown.oss-button-dropdown--dark .oss-button-dropdown__trigger i,
-.oss-button-dropdown.oss-button-dropdown--dark .oss-button-dropdown__trigger span {
-  color: var(--color-white);
-}
-.oss-button-dropdown.oss-button-dropdown--dark .oss-button-dropdown__trigger [role='button'] {
-  border-left-color: var(--color-white);
-}
-.oss-button-dropdown.oss-button-dropdown--dark .oss-button-dropdown__items {
-  border: 1px solid var(--color-border-default);
 }
 .oss-upload-area-container input[type='file'] {
   display: none;
