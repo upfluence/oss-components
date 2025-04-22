@@ -7413,12 +7413,12 @@ label {
   align-items: center;
   justify-content: flex-start;
   position: relative;
+  cursor: pointer;
 }
 .upf-toggle .upf-toggle__switch {
   height: 16px;
   width: 16px;
   border-radius: 50%;
-  cursor: pointer;
   position: absolute;
   background-color: var(--color-white);
   transition: transform 0.4s;
@@ -7426,6 +7426,9 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.upf-toggle .upf-toggle__switch i {
+  pointer-events: none;
 }
 .upf-toggle.upf-toggle--toggled {
   background-color: var(--color-primary-500);
