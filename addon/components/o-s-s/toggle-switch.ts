@@ -25,8 +25,6 @@ export default class OSSToggleSwitchComponent extends Component<ToggleSwitchArgs
 
   @action
   switchState(event: MouseEvent): void {
-    event.stopPropagation();
-
     if (!this.args.disabled) {
       this.args.onChange(!this.args.value, event);
     }
