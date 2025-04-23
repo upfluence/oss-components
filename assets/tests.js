@@ -6057,6 +6057,31 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
   (0, _qunit.module)('Integration | Component | o-s-s/infinite-select', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _testSupport.setupIntl)(hooks);
+    (0, _qunit.test)('the index values from the @items array are available in the option named block', async function (assert) {
+      this.items = FAKE_DATA;
+      this.checkedIndex = 0;
+      this.onSelect = () => {};
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::InfiniteSelect
+                  @items={{this.items}}
+                  @searchEnabled={{false}}
+                  @onSelect={{this.onSelect}}
+                >
+                  <:option as |item index|>
+                    <div class="index">{{index}}</div>
+                  </:option>
+                </OSS::InfiniteSelect>
+              
+      */
+      {
+        "id": "H8P1RPNQ",
+        "block": "[[[8,[39,0],null,[[\"@items\",\"@searchEnabled\",\"@onSelect\"],[[30,0,[\"items\"]],false,[30,0,[\"onSelect\"]]]],[[\"option\"],[[[[1,\"\\n              \"],[10,0],[14,0,\"index\"],[12],[1,[30,2]],[13],[1,\"\\n            \"]],[1,2]]]]],[1,\"\\n        \"]],[\"item\",\"index\"],false,[\"o-s-s/infinite-select\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select-test.js",
+        "isStrictMode": false
+      }));
+      assert.dom('.index:nth-of-type(1)').hasText(this.checkedIndex.toString());
+    });
     (0, _qunit.module)('search is enabled', function () {
       (0, _qunit.module)('with onSearch hook', function () {
         (0, _qunit.test)('it calls the onSearch hook with the typed keyword', async function (assert) {
@@ -10991,6 +11016,29 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
         name: 'bar',
         label: 'Second item'
       }];
+    });
+    (0, _qunit.test)('the index values from the @items array are available in the option named block', async function (assert) {
+      this.value = this.items[0];
+      this.checkedIndex = 0;
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+                <OSS::Select @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}}>
+                  <:option as |item index|>
+                    {{item.name}}
+                    <div class="index">{{index}}</div>
+                  </:option>
+                </OSS::Select>
+              
+      */
+      {
+        "id": "D/62utvW",
+        "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@onChange\",\"@items\",\"@value\"],[[30,0,[\"onChange\"]],[30,0,[\"items\"]],[30,0,[\"value\"]]]],[[\"option\"],[[[[1,\"\\n              \"],[1,[30,1,[\"name\"]]],[1,\"\\n              \"],[10,0],[14,0,\"index\"],[12],[1,[30,2]],[13],[1,\"\\n            \"]],[1,2]]]]],[1,\"\\n        \"]],[\"item\",\"index\"],false,[\"o-s-s/select\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/select-test.ts",
+        "isStrictMode": false
+      }));
+      await (0, _testHelpers.click)('.upf-input div');
+      assert.dom('.index:nth-of-type(1)').hasText(this.checkedIndex.toString());
     });
     (0, _qunit.module)('value changes', function () {
       (0, _qunit.test)('the onChange function is called with the selected item', async function (assert) {
