@@ -462,7 +462,7 @@ define("dummy/tests/integration/components/o-s-s/access-panel-test", ["qunit", "
         });
         assert.ok(this.onSearch.lastCall.calledWithExactly('foo'));
       });
-      (0, _qunit.test)('it is autofocus', async function (assert) {
+      (0, _qunit.test)('the input is autofocused', async function (assert) {
         await renderComponent();
         assert.dom('.oss-input-container input').isFocused();
       });
@@ -477,6 +477,11 @@ define("dummy/tests/integration/components/o-s-s/access-panel-test", ["qunit", "
         });
         assert.dom('.no-results').exists();
         assert.dom('.no-results').hasText('no search results');
+      });
+      (0, _qunit.test)('if the onSearch arg is not passed, the search input is not displayed', async function (assert) {
+        this.onSearch = undefined;
+        await renderComponent();
+        assert.dom('.oss-input-container').doesNotExist();
       });
     });
   });

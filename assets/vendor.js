@@ -81387,21 +81387,25 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
         {{yield to="empty-state"}}
       </div>
     {{else}}
-      <div class="padding-top-px-18 padding-bottom-px-18 padding-left-px-18 padding-right-px-18">
-        <OSS::SearchField
-          @value={{this.searchKeyword}}
-          @placeholder={{t "oss-components.access-panel.search_placeholder"}}
-          @onChange={{this.onSearch}}
-          {{enable-input-autofocus}}
-        />
-      </div>
+      {{#if @onSearch}}
+        <div class="padding-top-px-18 padding-bottom-px-18 padding-left-px-18 padding-right-px-18">
+          <OSS::SearchField
+            @value={{this.searchKeyword}}
+            @placeholder={{t "oss-components.access-panel.search_placeholder"}}
+            @onChange={{this.onSearch}}
+            {{enable-input-autofocus}}
+          />
+        </div>
+      {{/if}}
   
       <div class="oss-access-panel-container__content-wrapper fx-col height-pc-100">
-        <div class="oss-access-panel-container__rows-header">
-          {{yield to="columns"}}
-        </div>
+        {{#if (has-block "columns")}}
+          <div class="oss-access-panel-container__rows-header">
+            {{yield to="columns"}}
+          </div>
   
-        <hr />
+          <hr />
+        {{/if}}
   
         {{#if (and this.displayEmptyState this.searchKeyword)}}
           {{yield to="no-results"}}
@@ -81442,8 +81446,8 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
   </div>
   */
   {
-    "id": "Tx5DQbnB",
-    "block": "[[[11,0],[24,0,\"oss-access-panel-backdrop\"],[24,\"role\",\"button\"],[4,[38,0],[\"click\",[30,1]],null],[12],[13],[1,\"\\n\"],[11,0],[24,0,\"oss-access-panel-container\"],[17,2],[4,[38,1],[[30,0,[\"setupAnimation\"]]],null],[12],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"    \"],[10,0],[14,0,\"oss-access-panel-container__header\"],[12],[1,\"\\n      \"],[18,8,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,5],[[30,0,[\"displayEmptyState\"]],[30,0,[\"hasNoKeyword\"]]],null],[[[1,\"    \"],[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n      \"],[18,9,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[10,0],[14,0,\"padding-top-px-18 padding-bottom-px-18 padding-left-px-18 padding-right-px-18\"],[12],[1,\"\\n      \"],[8,[39,6],[[4,[38,8],null,null]],[[\"@value\",\"@placeholder\",\"@onChange\"],[[30,0,[\"searchKeyword\"]],[28,[37,7],[\"oss-components.access-panel.search_placeholder\"],null],[30,0,[\"onSearch\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"oss-access-panel-container__content-wrapper fx-col height-pc-100\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"oss-access-panel-container__rows-header\"],[12],[1,\"\\n        \"],[18,10,null],[1,\"\\n      \"],[13],[1,\"\\n\\n      \"],[10,\"hr\"],[12],[13],[1,\"\\n\\n\"],[41,[28,[37,5],[[30,0,[\"displayEmptyState\"]],[30,0,[\"searchKeyword\"]]],null],[[[1,\"        \"],[18,11,null],[1,\"\\n\"]],[]],[[[1,\"        \"],[11,0],[24,0,\"oss-access-panel-container__rows-container\"],[4,[38,9],[[30,3]],null],[12],[1,\"\\n\"],[41,[28,[37,5],[[30,4],[30,5]],null],[[[42,[28,[37,11],[[28,[37,11],[[30,0,[\"loadingRows\"]]],null]],null],null,[[[1,\"              \"],[10,0],[14,0,\"oss-access-panel-container__row fx-malign-space-between\"],[12],[1,\"\\n                \"],[8,[39,12],null,[[\"@height\",\"@width\"],[12,150]],null],[1,\"\\n                \"],[8,[39,12],null,[[\"@height\",\"@width\"],[12,36]],null],[1,\"\\n              \"],[13],[1,\"\\n\"]],[]],null]],[]],[[[42,[28,[37,11],[[28,[37,11],[[30,6]],null]],null],null,[[[1,\"              \"],[10,0],[15,0,[28,[37,13],[\"oss-access-panel-container__row\",[52,[30,7,[\"_accessPanel\",\"active\"]],\" oss-access-panel-container__row--active\"]],null]],[12],[1,\"\\n                \"],[18,12,[[30,7]]],[1,\"\\n              \"],[13],[1,\"\\n\"]],[7]],null],[1,\"\\n\"],[41,[30,4],[[[42,[28,[37,11],[[28,[37,11],[[30,0,[\"loadingMoreRows\"]]],null]],null],null,[[[1,\"                \"],[10,0],[14,0,\"oss-access-panel-container__row fx-malign-space-between\"],[12],[1,\"\\n                  \"],[8,[39,12],null,[[\"@height\",\"@width\"],[12,150]],null],[1,\"\\n                  \"],[8,[39,12],null,[[\"@height\",\"@width\"],[12,36]],null],[1,\"\\n                \"],[13],[1,\"\\n\"]],[]],null]],[]],null]],[]]],[1,\"        \"],[13],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n\"]],[]]],[13]],[\"@onClose\",\"&attrs\",\"@onBottomReached\",\"@loading\",\"@initialLoad\",\"@records\",\"record\",\"&header\",\"&empty-state\",\"&columns\",\"&no-results\",\"&row\"],false,[\"on\",\"did-insert\",\"if\",\"has-block\",\"yield\",\"and\",\"o-s-s/search-field\",\"t\",\"enable-input-autofocus\",\"on-bottom-reached\",\"each\",\"-track-array\",\"o-s-s/skeleton\",\"concat\"]]",
+    "id": "O3MnXHfb",
+    "block": "[[[11,0],[24,0,\"oss-access-panel-backdrop\"],[24,\"role\",\"button\"],[4,[38,0],[\"click\",[30,1]],null],[12],[13],[1,\"\\n\"],[11,0],[24,0,\"oss-access-panel-container\"],[17,2],[4,[38,1],[[30,0,[\"setupAnimation\"]]],null],[12],[1,\"\\n\"],[41,[48,[30,9]],[[[1,\"    \"],[10,0],[14,0,\"oss-access-panel-container__header\"],[12],[1,\"\\n      \"],[18,9,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,5],[[30,0,[\"displayEmptyState\"]],[30,0,[\"hasNoKeyword\"]]],null],[[[1,\"    \"],[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n      \"],[18,10,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[41,[30,3],[[[1,\"      \"],[10,0],[14,0,\"padding-top-px-18 padding-bottom-px-18 padding-left-px-18 padding-right-px-18\"],[12],[1,\"\\n        \"],[8,[39,6],[[4,[38,8],null,null]],[[\"@value\",\"@placeholder\",\"@onChange\"],[[30,0,[\"searchKeyword\"]],[28,[37,7],[\"oss-components.access-panel.search_placeholder\"],null],[30,0,[\"onSearch\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n    \"],[10,0],[14,0,\"oss-access-panel-container__content-wrapper fx-col height-pc-100\"],[12],[1,\"\\n\"],[41,[48,[30,11]],[[[1,\"        \"],[10,0],[14,0,\"oss-access-panel-container__rows-header\"],[12],[1,\"\\n          \"],[18,11,null],[1,\"\\n        \"],[13],[1,\"\\n\\n        \"],[10,\"hr\"],[12],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,5],[[30,0,[\"displayEmptyState\"]],[30,0,[\"searchKeyword\"]]],null],[[[1,\"        \"],[18,12,null],[1,\"\\n\"]],[]],[[[1,\"        \"],[11,0],[24,0,\"oss-access-panel-container__rows-container\"],[4,[38,9],[[30,4]],null],[12],[1,\"\\n\"],[41,[28,[37,5],[[30,5],[30,6]],null],[[[42,[28,[37,11],[[28,[37,11],[[30,0,[\"loadingRows\"]]],null]],null],null,[[[1,\"              \"],[10,0],[14,0,\"oss-access-panel-container__row fx-malign-space-between\"],[12],[1,\"\\n                \"],[8,[39,12],null,[[\"@height\",\"@width\"],[12,150]],null],[1,\"\\n                \"],[8,[39,12],null,[[\"@height\",\"@width\"],[12,36]],null],[1,\"\\n              \"],[13],[1,\"\\n\"]],[]],null]],[]],[[[42,[28,[37,11],[[28,[37,11],[[30,7]],null]],null],null,[[[1,\"              \"],[10,0],[15,0,[28,[37,13],[\"oss-access-panel-container__row\",[52,[30,8,[\"_accessPanel\",\"active\"]],\" oss-access-panel-container__row--active\"]],null]],[12],[1,\"\\n                \"],[18,13,[[30,8]]],[1,\"\\n              \"],[13],[1,\"\\n\"]],[8]],null],[1,\"\\n\"],[41,[30,5],[[[42,[28,[37,11],[[28,[37,11],[[30,0,[\"loadingMoreRows\"]]],null]],null],null,[[[1,\"                \"],[10,0],[14,0,\"oss-access-panel-container__row fx-malign-space-between\"],[12],[1,\"\\n                  \"],[8,[39,12],null,[[\"@height\",\"@width\"],[12,150]],null],[1,\"\\n                  \"],[8,[39,12],null,[[\"@height\",\"@width\"],[12,36]],null],[1,\"\\n                \"],[13],[1,\"\\n\"]],[]],null]],[]],null]],[]]],[1,\"        \"],[13],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n\"]],[]]],[13]],[\"@onClose\",\"&attrs\",\"@onSearch\",\"@onBottomReached\",\"@loading\",\"@initialLoad\",\"@records\",\"record\",\"&header\",\"&empty-state\",\"&columns\",\"&no-results\",\"&row\"],false,[\"on\",\"did-insert\",\"if\",\"has-block\",\"yield\",\"and\",\"o-s-s/search-field\",\"t\",\"enable-input-autofocus\",\"on-bottom-reached\",\"each\",\"-track-array\",\"o-s-s/skeleton\",\"concat\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/access-panel.hbs",
     "isStrictMode": false
   });
