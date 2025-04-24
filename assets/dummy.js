@@ -5386,6 +5386,26 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
   });
   0; //eaimeta@70e063a35619d71f0,"ember-intl/-private/utils/missing-message"eaimeta@70e063a35619d71f
 });
+;define("dummy/utils/keyboard", ["exports", "@upfluence/oss-components/utils/keyboard"], function (_exports, _keyboard) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "onlyDecimal", {
+    enumerable: true,
+    get: function () {
+      return _keyboard.onlyDecimal;
+    }
+  });
+  Object.defineProperty(_exports, "onlyNumeric", {
+    enumerable: true,
+    get: function () {
+      return _keyboard.onlyNumeric;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/utils/keyboard"eaimeta@70e063a35619d71f
+});
 ;define("dummy/utils/upf-local-storage", ["exports", "@upfluence/oss-components/utils/upf-local-storage"], function (_exports, _upfLocalStorage) {
   "use strict";
 

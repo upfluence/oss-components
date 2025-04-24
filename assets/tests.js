@@ -460,7 +460,7 @@ define("dummy/tests/integration/components/o-s-s/access-panel-test", ["qunit", "
         await (0, _testHelpers.typeIn)('.oss-input-container input', 'o', {
           delay: 0
         });
-        assert.ok(this.onSearch.calledOnceWithExactly('foo'));
+        assert.ok(this.onSearch.lastCall.calledWithExactly('foo'));
       });
       (0, _qunit.test)('it is autofocus', async function (assert) {
         await renderComponent();

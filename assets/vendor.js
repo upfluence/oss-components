@@ -81388,18 +81388,12 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
       </div>
     {{else}}
       <div class="padding-top-px-18 padding-bottom-px-18 padding-left-px-18 padding-right-px-18">
-        <OSS::InputContainer>
-          <:prefix>
-            <OSS::Icon @icon="fa-search" />
-          </:prefix>
-  
-          <:input>
-            <Input class="upf-input"
-              @value={{this.searchKeyword}} placeholder={{t "oss-components.access-panel.search_placeholder"}}
-              {{on "keyup" this.onSearch}}
-              {{did-insert this.focusSearch}} />
-          </:input>
-        </OSS::InputContainer>
+        <OSS::SearchField
+          @value={{this.searchKeyword}}
+          @placeholder={{t "oss-components.access-panel.search_placeholder"}}
+          @onChange={{this.onSearch}}
+          {{enable-input-autofocus}}
+        />
       </div>
   
       <div class="oss-access-panel-container__content-wrapper fx-col height-pc-100">
@@ -81422,7 +81416,12 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
               {{/each}}
             {{else}}
               {{#each @records as |record|}}
-                <div class={{concat "oss-access-panel-container__row" (if record._accessPanel.active " oss-access-panel-container__row--active")}}>
+                <div
+                  class={{concat
+                    "oss-access-panel-container__row"
+                    (if record._accessPanel.active " oss-access-panel-container__row--active")
+                  }}
+                >
                   {{yield record to="row"}}
                 </div>
               {{/each}}
@@ -81443,8 +81442,8 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
   </div>
   */
   {
-    "id": "nrH6Yaf4",
-    "block": "[[[11,0],[24,0,\"oss-access-panel-backdrop\"],[24,\"role\",\"button\"],[4,[38,0],[\"click\",[30,1]],null],[12],[13],[1,\"\\n\"],[11,0],[24,0,\"oss-access-panel-container\"],[17,2],[4,[38,1],[[30,0,[\"setupAnimation\"]]],null],[12],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"    \"],[10,0],[14,0,\"oss-access-panel-container__header\"],[12],[1,\"\\n      \"],[18,8,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,5],[[30,0,[\"displayEmptyState\"]],[30,0,[\"hasNoKeyword\"]]],null],[[[1,\"    \"],[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n      \"],[18,9,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[10,0],[14,0,\"padding-top-px-18 padding-bottom-px-18 padding-left-px-18 padding-right-px-18\"],[12],[1,\"\\n      \"],[8,[39,6],null,null,[[\"prefix\",\"input\"],[[[[1,\"\\n          \"],[8,[39,7],null,[[\"@icon\"],[\"fa-search\"]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[8,[39,8],[[24,0,\"upf-input\"],[16,\"placeholder\",[28,[37,9],[\"oss-components.access-panel.search_placeholder\"],null]],[4,[38,0],[\"keyup\",[30,0,[\"onSearch\"]]],null],[4,[38,1],[[30,0,[\"focusSearch\"]]],null]],[[\"@value\"],[[30,0,[\"searchKeyword\"]]]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"oss-access-panel-container__content-wrapper fx-col height-pc-100\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"oss-access-panel-container__rows-header\"],[12],[1,\"\\n        \"],[18,10,null],[1,\"\\n      \"],[13],[1,\"\\n\\n      \"],[10,\"hr\"],[12],[13],[1,\"\\n\\n\"],[41,[28,[37,5],[[30,0,[\"displayEmptyState\"]],[30,0,[\"searchKeyword\"]]],null],[[[1,\"        \"],[18,11,null],[1,\"\\n\"]],[]],[[[1,\"        \"],[11,0],[24,0,\"oss-access-panel-container__rows-container\"],[4,[38,10],[[30,3]],null],[12],[1,\"\\n\"],[41,[28,[37,5],[[30,4],[30,5]],null],[[[42,[28,[37,12],[[28,[37,12],[[30,0,[\"loadingRows\"]]],null]],null],null,[[[1,\"              \"],[10,0],[14,0,\"oss-access-panel-container__row fx-malign-space-between\"],[12],[1,\"\\n                \"],[8,[39,13],null,[[\"@height\",\"@width\"],[12,150]],null],[1,\"\\n                \"],[8,[39,13],null,[[\"@height\",\"@width\"],[12,36]],null],[1,\"\\n              \"],[13],[1,\"\\n\"]],[]],null]],[]],[[[42,[28,[37,12],[[28,[37,12],[[30,6]],null]],null],null,[[[1,\"              \"],[10,0],[15,0,[28,[37,14],[\"oss-access-panel-container__row\",[52,[30,7,[\"_accessPanel\",\"active\"]],\" oss-access-panel-container__row--active\"]],null]],[12],[1,\"\\n                \"],[18,12,[[30,7]]],[1,\"\\n              \"],[13],[1,\"\\n\"]],[7]],null],[1,\"\\n\"],[41,[30,4],[[[42,[28,[37,12],[[28,[37,12],[[30,0,[\"loadingMoreRows\"]]],null]],null],null,[[[1,\"                \"],[10,0],[14,0,\"oss-access-panel-container__row fx-malign-space-between\"],[12],[1,\"\\n                  \"],[8,[39,13],null,[[\"@height\",\"@width\"],[12,150]],null],[1,\"\\n                  \"],[8,[39,13],null,[[\"@height\",\"@width\"],[12,36]],null],[1,\"\\n                \"],[13],[1,\"\\n\"]],[]],null]],[]],null]],[]]],[1,\"        \"],[13],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n\"]],[]]],[13]],[\"@onClose\",\"&attrs\",\"@onBottomReached\",\"@loading\",\"@initialLoad\",\"@records\",\"record\",\"&header\",\"&empty-state\",\"&columns\",\"&no-results\",\"&row\"],false,[\"on\",\"did-insert\",\"if\",\"has-block\",\"yield\",\"and\",\"o-s-s/input-container\",\"o-s-s/icon\",\"input\",\"t\",\"on-bottom-reached\",\"each\",\"-track-array\",\"o-s-s/skeleton\",\"concat\"]]",
+    "id": "Tx5DQbnB",
+    "block": "[[[11,0],[24,0,\"oss-access-panel-backdrop\"],[24,\"role\",\"button\"],[4,[38,0],[\"click\",[30,1]],null],[12],[13],[1,\"\\n\"],[11,0],[24,0,\"oss-access-panel-container\"],[17,2],[4,[38,1],[[30,0,[\"setupAnimation\"]]],null],[12],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"    \"],[10,0],[14,0,\"oss-access-panel-container__header\"],[12],[1,\"\\n      \"],[18,8,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,5],[[30,0,[\"displayEmptyState\"]],[30,0,[\"hasNoKeyword\"]]],null],[[[1,\"    \"],[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n      \"],[18,9,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[10,0],[14,0,\"padding-top-px-18 padding-bottom-px-18 padding-left-px-18 padding-right-px-18\"],[12],[1,\"\\n      \"],[8,[39,6],[[4,[38,8],null,null]],[[\"@value\",\"@placeholder\",\"@onChange\"],[[30,0,[\"searchKeyword\"]],[28,[37,7],[\"oss-components.access-panel.search_placeholder\"],null],[30,0,[\"onSearch\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"oss-access-panel-container__content-wrapper fx-col height-pc-100\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"oss-access-panel-container__rows-header\"],[12],[1,\"\\n        \"],[18,10,null],[1,\"\\n      \"],[13],[1,\"\\n\\n      \"],[10,\"hr\"],[12],[13],[1,\"\\n\\n\"],[41,[28,[37,5],[[30,0,[\"displayEmptyState\"]],[30,0,[\"searchKeyword\"]]],null],[[[1,\"        \"],[18,11,null],[1,\"\\n\"]],[]],[[[1,\"        \"],[11,0],[24,0,\"oss-access-panel-container__rows-container\"],[4,[38,9],[[30,3]],null],[12],[1,\"\\n\"],[41,[28,[37,5],[[30,4],[30,5]],null],[[[42,[28,[37,11],[[28,[37,11],[[30,0,[\"loadingRows\"]]],null]],null],null,[[[1,\"              \"],[10,0],[14,0,\"oss-access-panel-container__row fx-malign-space-between\"],[12],[1,\"\\n                \"],[8,[39,12],null,[[\"@height\",\"@width\"],[12,150]],null],[1,\"\\n                \"],[8,[39,12],null,[[\"@height\",\"@width\"],[12,36]],null],[1,\"\\n              \"],[13],[1,\"\\n\"]],[]],null]],[]],[[[42,[28,[37,11],[[28,[37,11],[[30,6]],null]],null],null,[[[1,\"              \"],[10,0],[15,0,[28,[37,13],[\"oss-access-panel-container__row\",[52,[30,7,[\"_accessPanel\",\"active\"]],\" oss-access-panel-container__row--active\"]],null]],[12],[1,\"\\n                \"],[18,12,[[30,7]]],[1,\"\\n              \"],[13],[1,\"\\n\"]],[7]],null],[1,\"\\n\"],[41,[30,4],[[[42,[28,[37,11],[[28,[37,11],[[30,0,[\"loadingMoreRows\"]]],null]],null],null,[[[1,\"                \"],[10,0],[14,0,\"oss-access-panel-container__row fx-malign-space-between\"],[12],[1,\"\\n                  \"],[8,[39,12],null,[[\"@height\",\"@width\"],[12,150]],null],[1,\"\\n                  \"],[8,[39,12],null,[[\"@height\",\"@width\"],[12,36]],null],[1,\"\\n                \"],[13],[1,\"\\n\"]],[]],null]],[]],null]],[]]],[1,\"        \"],[13],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n\"]],[]]],[13]],[\"@onClose\",\"&attrs\",\"@onBottomReached\",\"@loading\",\"@initialLoad\",\"@records\",\"record\",\"&header\",\"&empty-state\",\"&columns\",\"&no-results\",\"&row\"],false,[\"on\",\"did-insert\",\"if\",\"has-block\",\"yield\",\"and\",\"o-s-s/search-field\",\"t\",\"enable-input-autofocus\",\"on-bottom-reached\",\"each\",\"-track-array\",\"o-s-s/skeleton\",\"concat\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/access-panel.hbs",
     "isStrictMode": false
   });
@@ -81459,26 +81458,25 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
       return (this.args.records || []).length === 0 && !this.args.loading;
     }
     get hasNoKeyword() {
-      return this.searchKeyword === undefined;
-    }
-    focusSearch(element) {
-      element.focus();
+      return !this.searchKeyword;
     }
     setupAnimation(element) {
       (0, _runloop.later)(this, () => {
         element.classList.add('oss-access-panel-container--visible');
       }, 0);
     }
-    onSearch() {
-      if (this.hasNoKeyword) return;
+    onSearch(keyword) {
+      this.searchKeyword = keyword;
       this.args.onSearch(this.searchKeyword);
     }
   }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "searchKeyword", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
-    initializer: null
-  }), _applyDecoratedDescriptor(_class.prototype, "focusSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "focusSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setupAnimation", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setupAnimation"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype)), _class);
+    initializer: function () {
+      return '';
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "setupAnimation", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setupAnimation"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSAccessPanel);
 });
 ;define("@upfluence/oss-components/components/o-s-s/alert", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@ember/template-factory"], function (_exports, _component, _component2, _object, _templateFactory) {
@@ -88076,28 +88074,17 @@ interface OSSCodeBlockArgs {
     <div
     id={{this.elementId}}
     data-internal-id={{this.elementId}}
-    class="fx-col upf-infinite-select {{unless this.inline 'upf-infinite-select--absolute'}}"
+    class="fx-col fx-gap-px-12 upf-infinite-select {{unless this.inline 'upf-infinite-select--absolute'}}"
     {{did-insert this.onRender}}
     ...attributes
   >
     {{#if this.searchEnabled}}
-      <InputWrapper>
-        <OSS::InputContainer>
-          <:prefix>
-            <OSS::Icon class="font-color-gray-500" @icon="fa-search" />
-          </:prefix>
-          <:input>
-            <Input
-              @value={{this._searchKeyword}}
-              type="text"
-              class="upf-input"
-              placeholder={{this.searchPlaceholder}}
-              {{on "keydown" this.handleKeyEventInput}}
-              {{on "keyup" this.updateSearchKeyword}}
-            />
-          </:input>
-        </OSS::InputContainer>
-      </InputWrapper>
+      <OSS::SearchField
+        @value={{this._searchKeyword}}
+        @placeholder={{this.searchPlaceholder}}
+        @onChange={{this.updateSearchKeyword}}
+        {{on "keydown" this.handleKeyEventInput}}
+      />
     {{/if}}
     <div class="upf-infinite-select__container">
       <ul
@@ -88161,8 +88148,8 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "XvIib2WJ",
-    "block": "[[[11,0],[16,1,[30,0,[\"elementId\"]]],[16,\"data-internal-id\",[30,0,[\"elementId\"]]],[16,0,[29,[\"fx-col upf-infinite-select \",[52,[51,[30,0,[\"inline\"]]],\"upf-infinite-select--absolute\"]]]],[17,1],[4,[38,1],[[30,0,[\"onRender\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"searchEnabled\"]],[[[1,\"    \"],[8,[39,3],null,null,[[\"default\"],[[[[1,\"\\n      \"],[8,[39,4],null,null,[[\"prefix\",\"input\"],[[[[1,\"\\n          \"],[8,[39,5],[[24,0,\"font-color-gray-500\"]],[[\"@icon\"],[\"fa-search\"]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[8,[39,6],[[24,0,\"upf-input\"],[16,\"placeholder\",[30,0,[\"searchPlaceholder\"]]],[24,4,\"text\"],[4,[38,7],[\"keydown\",[30,0,[\"handleKeyEventInput\"]]],null],[4,[38,7],[\"keyup\",[30,0,[\"updateSearchKeyword\"]]],null]],[[\"@value\"],[[30,0,[\"_searchKeyword\"]]]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"]],[]]]]],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"upf-infinite-select__container\"],[12],[1,\"\\n    \"],[11,\"ul\"],[16,0,[29,[\"upf-infinite-select__items-container\\n        \",[52,[28,[37,8],[[30,0,[\"items\",\"length\"]],0],null],\"upf-infinite-select__items-container--empty\"]]]],[4,[38,9],[[30,0,[\"onBottomReached\"]]],null],[4,[38,10],null,null],[4,[38,7],[\"keydown\",[30,0,[\"handleKeyEvent\"]]],null],[12],[1,\"\\n\"],[41,[28,[37,11],[[30,2],[28,[37,12],[[30,3]],null]],null],[[[1,\"        \"],[8,[39,13],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",5,\"col\"]],null],[1,\"\\n\"]],[]],[[[42,[28,[37,15],[[28,[37,15],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"          \"],[11,\"li\"],[16,0,[29,[\"upf-infinite-select__item\\n              \",[52,[28,[37,11],[[28,[37,8],[[30,5],[30,0,[\"_focusElement\"]]],null],[30,0,[\"focusStylesDisabled\"]]],null],\" upf-infinite-select__item--disabled-focus\"]]]],[24,\"role\",\"button\"],[24,\"tabindex\",\"0\"],[4,[38,7],[\"mouseenter\",[28,[37,16],[[30,0,[\"handleItemHover\"]],[30,5]],null]],null],[4,[38,7],[\"mouseleave\",[30,0,[\"clearHoverState\"]]],null],[4,[38,7],[\"click\",[28,[37,16],[[30,0,[\"didSelectItem\"]],[30,4]],null]],null],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"              \"],[18,6,[[30,4],[30,5]]],[1,\"\\n\"]],[]],[[[1,\"              \"],[1,[28,[35,19],[[30,4],[30,0,[\"itemLabel\"]]],null]],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[4,5]],[[[1,\"          \"],[10,0],[14,0,\"fx-col fx-xalign-center\"],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"              \"],[18,7,null],[1,\"\\n\"]],[]],[[[1,\"              \"],[8,[39,20],[[24,\"data-control-name\",\"infinite-select-empty-state-illustration\"]],[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null],[1,\"\\n              \"],[10,0],[14,0,\"margin-top-xx-sm text-color-default upf-align--center\"],[12],[1,\"\\n\"],[41,[30,0,[\"_searchKeyword\"]],[[[1,\"                  \"],[10,2],[12],[1,[28,[35,21],[\"oss-components.infinite-select.no-match.title\"],null]],[13],[1,\"\\n                  \"],[10,2],[14,0,\"text-color-default-light\"],[12],[1,\"\\n                    \"],[1,[28,[35,21],[\"oss-components.infinite-select.no-match.description\"],null]],[1,\"\\n                  \"],[13],[1,\"\\n\"]],[]],[[[1,\"                  \"],[1,[28,[35,21],[\"oss-components.infinite-select.empty\"],null]],[1,\"\\n\"]],[]]],[1,\"              \"],[13],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,3],[[[1,\"          \"],[8,[39,13],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",3,\"col\"]],null],[1,\"\\n\"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@loading\",\"@loadingMore\",\"item\",\"index\",\"&option\",\"&empty-state\"],false,[\"unless\",\"did-insert\",\"if\",\"input-wrapper\",\"o-s-s/input-container\",\"o-s-s/icon\",\"input\",\"on\",\"eq\",\"on-bottom-reached\",\"scroll-shadow\",\"and\",\"not\",\"o-s-s/skeleton\",\"each\",\"-track-array\",\"fn\",\"has-block\",\"yield\",\"get\",\"o-s-s/illustration\",\"t\"]]",
+    "id": "+fBknODJ",
+    "block": "[[[11,0],[16,1,[30,0,[\"elementId\"]]],[16,\"data-internal-id\",[30,0,[\"elementId\"]]],[16,0,[29,[\"fx-col fx-gap-px-12 upf-infinite-select \",[52,[51,[30,0,[\"inline\"]]],\"upf-infinite-select--absolute\"]]]],[17,1],[4,[38,1],[[30,0,[\"onRender\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"searchEnabled\"]],[[[1,\"    \"],[8,[39,3],[[4,[38,4],[\"keydown\",[30,0,[\"handleKeyEventInput\"]]],null]],[[\"@value\",\"@placeholder\",\"@onChange\"],[[30,0,[\"_searchKeyword\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"updateSearchKeyword\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"upf-infinite-select__container\"],[12],[1,\"\\n    \"],[11,\"ul\"],[16,0,[29,[\"upf-infinite-select__items-container\\n        \",[52,[28,[37,5],[[30,0,[\"items\",\"length\"]],0],null],\"upf-infinite-select__items-container--empty\"]]]],[4,[38,6],[[30,0,[\"onBottomReached\"]]],null],[4,[38,7],null,null],[4,[38,4],[\"keydown\",[30,0,[\"handleKeyEvent\"]]],null],[12],[1,\"\\n\"],[41,[28,[37,8],[[30,2],[28,[37,9],[[30,3]],null]],null],[[[1,\"        \"],[8,[39,10],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",5,\"col\"]],null],[1,\"\\n\"]],[]],[[[42,[28,[37,12],[[28,[37,12],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"          \"],[11,\"li\"],[16,0,[29,[\"upf-infinite-select__item\\n              \",[52,[28,[37,8],[[28,[37,5],[[30,5],[30,0,[\"_focusElement\"]]],null],[30,0,[\"focusStylesDisabled\"]]],null],\" upf-infinite-select__item--disabled-focus\"]]]],[24,\"role\",\"button\"],[24,\"tabindex\",\"0\"],[4,[38,4],[\"mouseenter\",[28,[37,13],[[30,0,[\"handleItemHover\"]],[30,5]],null]],null],[4,[38,4],[\"mouseleave\",[30,0,[\"clearHoverState\"]]],null],[4,[38,4],[\"click\",[28,[37,13],[[30,0,[\"didSelectItem\"]],[30,4]],null]],null],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"              \"],[18,6,[[30,4],[30,5]]],[1,\"\\n\"]],[]],[[[1,\"              \"],[1,[28,[35,16],[[30,4],[30,0,[\"itemLabel\"]]],null]],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[4,5]],[[[1,\"          \"],[10,0],[14,0,\"fx-col fx-xalign-center\"],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"              \"],[18,7,null],[1,\"\\n\"]],[]],[[[1,\"              \"],[8,[39,17],[[24,\"data-control-name\",\"infinite-select-empty-state-illustration\"]],[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null],[1,\"\\n              \"],[10,0],[14,0,\"margin-top-xx-sm text-color-default upf-align--center\"],[12],[1,\"\\n\"],[41,[30,0,[\"_searchKeyword\"]],[[[1,\"                  \"],[10,2],[12],[1,[28,[35,18],[\"oss-components.infinite-select.no-match.title\"],null]],[13],[1,\"\\n                  \"],[10,2],[14,0,\"text-color-default-light\"],[12],[1,\"\\n                    \"],[1,[28,[35,18],[\"oss-components.infinite-select.no-match.description\"],null]],[1,\"\\n                  \"],[13],[1,\"\\n\"]],[]],[[[1,\"                  \"],[1,[28,[35,18],[\"oss-components.infinite-select.empty\"],null]],[1,\"\\n\"]],[]]],[1,\"              \"],[13],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,3],[[[1,\"          \"],[8,[39,10],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",3,\"col\"]],null],[1,\"\\n\"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@loading\",\"@loadingMore\",\"item\",\"index\",\"&option\",\"&empty-state\"],false,[\"unless\",\"did-insert\",\"if\",\"o-s-s/search-field\",\"on\",\"eq\",\"on-bottom-reached\",\"scroll-shadow\",\"and\",\"not\",\"o-s-s/skeleton\",\"each\",\"-track-array\",\"fn\",\"has-block\",\"yield\",\"get\",\"o-s-s/illustration\",\"t\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/infinite-select.hbs",
     "isStrictMode": false
   });
@@ -88201,8 +88188,8 @@ interface OSSCodeBlockArgs {
         this.autoFocus();
       }
     }
-    updateSearchKeyword(event) {
-      this._searchKeyword = event?.target?.value;
+    updateSearchKeyword(value) {
+      this._searchKeyword = value;
       this.args.onSearch?.(this._searchKeyword);
     }
     onBottomReached() {
@@ -93324,7 +93311,7 @@ interface OSSCodeBlockArgs {
   const BasicUsage = _exports.BasicUsage = Template.bind({});
   BasicUsage.args = defaultArgs;
 });
-;define("@upfluence/oss-components/components/o-s-s/search-field", ["exports", "@ember/component", "@ember/object", "@ember/service", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _object, _service, _component2, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/search-field", ["exports", "@ember/component", "@ember/object", "@ember/service", "@glimmer/component", "@upfluence/oss-components/utils/keyboard", "@ember/template-factory"], function (_exports, _component, _object, _service, _component2, _keyboard, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -93332,7 +93319,7 @@ interface OSSCodeBlockArgs {
   });
   _exports.default = void 0;
   var _class, _descriptor;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@ember/service",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@ember/service",0,"@glimmer/component",0,"@upfluence/oss-components/utils/keyboard",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
@@ -93341,10 +93328,25 @@ interface OSSCodeBlockArgs {
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <OSS::InputContainer @value={{@value}} @placeholder={{this.placeholder}} @onChange={{this.onChange}} ...attributes>
+    <OSS::InputContainer
+    ...attributes
+    {{did-insert this.setupOnlyNumericListener}}
+    {{will-destroy this.teardownOnlyNumericListener}}
+  >
     <:prefix>
       <OSS::Icon @icon="fa-search" class="font-color-gray-500" />
     </:prefix>
+    <:input>
+      <input
+        class="upf-input"
+        type={{this.type}}
+        value={{@value}}
+        autocomplete="off"
+        placeholder={{this.placeholder}}
+        aria-labelledby={{this.placeholder}}
+        {{on "input" this.onChange}}
+      />
+    </:input>
     <:suffix>
       {{#if (gt @value.length 0)}}
         <OSS::Icon @icon="fa-times" class="font-color-gray-500" role="button" {{on "click" this.onClearSearch}} />
@@ -93353,8 +93355,8 @@ interface OSSCodeBlockArgs {
   </OSS::InputContainer>
   */
   {
-    "id": "frDDpaaK",
-    "block": "[[[8,[39,0],[[17,1]],[[\"@value\",\"@placeholder\",\"@onChange\"],[[30,2],[30,0,[\"placeholder\"]],[30,0,[\"onChange\"]]]],[[\"prefix\",\"suffix\"],[[[[1,\"\\n    \"],[8,[39,1],[[24,0,\"font-color-gray-500\"]],[[\"@icon\"],[\"fa-search\"]],null],[1,\"\\n  \"]],[]],[[[1,\"\\n\"],[41,[28,[37,3],[[30,2,[\"length\"]],0],null],[[[1,\"      \"],[8,[39,1],[[24,0,\"font-color-gray-500\"],[24,\"role\",\"button\"],[4,[38,4],[\"click\",[30,0,[\"onClearSearch\"]]],null]],[[\"@icon\"],[\"fa-times\"]],null],[1,\"\\n\"]],[]],null],[1,\"  \"]],[]]]]]],[\"&attrs\",\"@value\"],false,[\"o-s-s/input-container\",\"o-s-s/icon\",\"if\",\"gt\",\"on\"]]",
+    "id": "ccmmCFaf",
+    "block": "[[[8,[39,0],[[17,1],[4,[38,1],[[30,0,[\"setupOnlyNumericListener\"]]],null],[4,[38,2],[[30,0,[\"teardownOnlyNumericListener\"]]],null]],null,[[\"prefix\",\"input\",\"suffix\"],[[[[1,\"\\n    \"],[8,[39,3],[[24,0,\"font-color-gray-500\"]],[[\"@icon\"],[\"fa-search\"]],null],[1,\"\\n  \"]],[]],[[[1,\"\\n    \"],[11,\"input\"],[24,0,\"upf-input\"],[16,2,[30,2]],[24,\"autocomplete\",\"off\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[16,\"aria-labelledby\",[30,0,[\"placeholder\"]]],[16,4,[30,0,[\"type\"]]],[4,[38,4],[\"input\",[30,0,[\"onChange\"]]],null],[12],[13],[1,\"\\n  \"]],[]],[[[1,\"\\n\"],[41,[28,[37,6],[[30,2,[\"length\"]],0],null],[[[1,\"      \"],[8,[39,3],[[24,0,\"font-color-gray-500\"],[24,\"role\",\"button\"],[4,[38,4],[\"click\",[30,0,[\"onClearSearch\"]]],null]],[[\"@icon\"],[\"fa-times\"]],null],[1,\"\\n\"]],[]],null],[1,\"  \"]],[]]]]]],[\"&attrs\",\"@value\"],false,[\"o-s-s/input-container\",\"did-insert\",\"will-destroy\",\"o-s-s/icon\",\"on\",\"if\",\"gt\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/search-field.hbs",
     "isStrictMode": false
   });
@@ -93366,18 +93368,32 @@ interface OSSCodeBlockArgs {
     get placeholder() {
       return this.args.placeholder ?? this.intl.t('oss-components.search_field.placeholder');
     }
-    onClearSearch() {
+    get type() {
+      return this.args.type ?? 'text';
+    }
+    onClearSearch(event) {
+      event.stopPropagation();
       this.args.onChange('');
     }
-    onChange(value) {
-      this.args.onChange(value);
+    onChange(event) {
+      this.args.onChange(event.target.value);
+    }
+    setupOnlyNumericListener(element) {
+      if (this.type !== 'number') return;
+      const input = element.querySelector('input');
+      input?.addEventListener('keydown', _keyboard.onlyNumeric);
+    }
+    teardownOnlyNumericListener(element) {
+      if (this.type !== 'number') return;
+      const input = element.querySelector('input');
+      input?.removeEventListener('keydown', _keyboard.onlyNumeric);
     }
   }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: null
-  }), _applyDecoratedDescriptor(_class.prototype, "onClearSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClearSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onChange", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onChange"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "onClearSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClearSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onChange", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onChange"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "setupOnlyNumericListener", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setupOnlyNumericListener"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "teardownOnlyNumericListener", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "teardownOnlyNumericListener"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSearchFieldComponent);
 });
 ;define("@upfluence/oss-components/components/o-s-s/search-field.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -93417,6 +93433,20 @@ interface OSSCodeBlockArgs {
           },
           defaultValue: {
             summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      type: {
+        description: 'input type',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'text'
           }
         },
         control: {
@@ -104205,6 +104235,39 @@ interface OSSCodeBlockArgs {
       if (part.includes(FA_ICON_PREFIX)) iconValues.push(part);
     });
     return iconValues.join(' ');
+  }
+});
+;define("@upfluence/oss-components/utils/keyboard", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.NUMERIC_ONLY = void 0;
+  _exports.onlyDecimal = onlyDecimal;
+  _exports.onlyNumeric = onlyNumeric;
+  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
+  const NUMERIC_ONLY = _exports.NUMERIC_ONLY = /^\d$/i;
+  const AUTHORIZED_INPUTS = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift', 'Control', 'ArrowUp', 'ArrowDown'];
+  function onlyNumeric(event) {
+    _ensureValueFormat(event, NUMERIC_ONLY, false);
+  }
+  function onlyDecimal(event) {
+    _ensureValueFormat(event, NUMERIC_ONLY, true);
+  }
+  function _ensureValueFormat(event, regexp, allowDecimal) {
+    if (['c', 'v', 'a'].includes(event.key) && (event.metaKey || event.ctrlKey)) {
+      return;
+    }
+    const checks = [];
+    if (event.key === '.') {
+      checks.push(allowDecimal && event.target.value.indexOf('.') < 0);
+    } else {
+      checks.push(regexp.test(event.key));
+    }
+    if (!checks.every(c => c) && !AUTHORIZED_INPUTS.find(key => key === event.key)) {
+      event.preventDefault();
+    }
   }
 });
 ;define("@upfluence/oss-components/utils/upf-local-storage", ["exports", "@ember/debug"], function (_exports, _debug) {
