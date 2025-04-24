@@ -7,9 +7,9 @@ interface OSSAccessPanelArgs {
   records: unknown[];
   initialLoad: boolean;
   loading?: boolean;
-  onSearch(keyword: string): void;
   onBottomReached(): void;
   onClose(): void;
+  onSearch?(keyword: string): void;
 }
 
 export default class OSSAccessPanel extends Component<OSSAccessPanelArgs> {
@@ -40,6 +40,6 @@ export default class OSSAccessPanel extends Component<OSSAccessPanelArgs> {
   @action
   onSearch(keyword: string): void {
     this.searchKeyword = keyword;
-    this.args.onSearch(this.searchKeyword);
+    this.args.onSearch!(this.searchKeyword);
   }
 }

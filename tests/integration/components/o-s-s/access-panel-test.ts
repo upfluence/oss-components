@@ -86,7 +86,7 @@ module('Integration | Component | o-s-s/access-panel', function (hooks) {
       assert.ok(this.onSearch.lastCall.calledWithExactly('foo'));
     });
 
-    test('it is autofocus', async function (assert) {
+    test('the input is autofocused', async function (assert) {
       await renderComponent();
       assert.dom('.oss-input-container input').isFocused();
     });
@@ -102,6 +102,12 @@ module('Integration | Component | o-s-s/access-panel', function (hooks) {
 
       assert.dom('.no-results').exists();
       assert.dom('.no-results').hasText('no search results');
+    });
+
+    test('if the onSearch arg is not passed, the search input is not displayed', async function (assert) {
+      this.onSearch = undefined;
+      await renderComponent();
+      assert.dom('.oss-input-container').doesNotExist();
     });
   });
 });

@@ -11,21 +11,25 @@
       {{yield to="empty-state"}}
     </div>
   {{else}}
-    <div class="padding-top-px-18 padding-bottom-px-18 padding-left-px-18 padding-right-px-18">
-      <OSS::SearchField
-        @value={{this.searchKeyword}}
-        @placeholder={{t "oss-components.access-panel.search_placeholder"}}
-        @onChange={{this.onSearch}}
-        {{enable-input-autofocus}}
-      />
-    </div>
+    {{#if @onSearch}}
+      <div class="padding-top-px-18 padding-bottom-px-18 padding-left-px-18 padding-right-px-18">
+        <OSS::SearchField
+          @value={{this.searchKeyword}}
+          @placeholder={{t "oss-components.access-panel.search_placeholder"}}
+          @onChange={{this.onSearch}}
+          {{enable-input-autofocus}}
+        />
+      </div>
+    {{/if}}
 
     <div class="oss-access-panel-container__content-wrapper fx-col height-pc-100">
-      <div class="oss-access-panel-container__rows-header">
-        {{yield to="columns"}}
-      </div>
+      {{#if (has-block "columns")}}
+        <div class="oss-access-panel-container__rows-header">
+          {{yield to="columns"}}
+        </div>
 
-      <hr />
+        <hr />
+      {{/if}}
 
       {{#if (and this.displayEmptyState this.searchKeyword)}}
         {{yield to="no-results"}}
