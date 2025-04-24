@@ -1,28 +1,17 @@
 <div
   id={{this.elementId}}
   data-internal-id={{this.elementId}}
-  class="fx-col upf-infinite-select {{unless this.inline 'upf-infinite-select--absolute'}}"
+  class="fx-col fx-gap-px-12 upf-infinite-select {{unless this.inline 'upf-infinite-select--absolute'}}"
   {{did-insert this.onRender}}
   ...attributes
 >
   {{#if this.searchEnabled}}
-    <InputWrapper>
-      <OSS::InputContainer>
-        <:prefix>
-          <OSS::Icon class="font-color-gray-500" @icon="fa-search" />
-        </:prefix>
-        <:input>
-          <Input
-            @value={{this._searchKeyword}}
-            type="text"
-            class="upf-input"
-            placeholder={{this.searchPlaceholder}}
-            {{on "keydown" this.handleKeyEventInput}}
-            {{on "keyup" this.updateSearchKeyword}}
-          />
-        </:input>
-      </OSS::InputContainer>
-    </InputWrapper>
+    <OSS::SearchField
+      @value={{this._searchKeyword}}
+      @placeholder={{this.searchPlaceholder}}
+      @onChange={{this.updateSearchKeyword}}
+      {{on "keydown" this.handleKeyEventInput}}
+    />
   {{/if}}
   <div class="upf-infinite-select__container">
     <ul

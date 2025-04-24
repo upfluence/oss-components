@@ -26,6 +26,16 @@ export default {
       },
       control: { type: 'text' }
     },
+    type: {
+      description: 'input type',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'text' }
+      },
+      control: { type: 'text' }
+    },
     onChange: {
       type: { required: true },
       description: 'Method called every time the input is updated',

@@ -12,18 +12,12 @@
     </div>
   {{else}}
     <div class="padding-top-px-18 padding-bottom-px-18 padding-left-px-18 padding-right-px-18">
-      <OSS::InputContainer>
-        <:prefix>
-          <OSS::Icon @icon="fa-search" />
-        </:prefix>
-
-        <:input>
-          <Input class="upf-input"
-            @value={{this.searchKeyword}} placeholder={{t "oss-components.access-panel.search_placeholder"}}
-            {{on "keyup" this.onSearch}}
-            {{did-insert this.focusSearch}} />
-        </:input>
-      </OSS::InputContainer>
+      <OSS::SearchField
+        @value={{this.searchKeyword}}
+        @placeholder={{t "oss-components.access-panel.search_placeholder"}}
+        @onChange={{this.onSearch}}
+        {{enable-input-autofocus}}
+      />
     </div>
 
     <div class="oss-access-panel-container__content-wrapper fx-col height-pc-100">
@@ -46,7 +40,12 @@
             {{/each}}
           {{else}}
             {{#each @records as |record|}}
-              <div class={{concat "oss-access-panel-container__row" (if record._accessPanel.active " oss-access-panel-container__row--active")}}>
+              <div
+                class={{concat
+                  "oss-access-panel-container__row"
+                  (if record._accessPanel.active " oss-access-panel-container__row--active")
+                }}
+              >
                 {{yield record to="row"}}
               </div>
             {{/each}}

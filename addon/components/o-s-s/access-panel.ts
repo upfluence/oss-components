@@ -16,19 +16,14 @@ export default class OSSAccessPanel extends Component<OSSAccessPanelArgs> {
   loadingRows = new Array(12);
   loadingMoreRows = new Array(3);
 
-  @tracked searchKeyword?: string;
+  @tracked searchKeyword: string = '';
 
   get displayEmptyState(): boolean {
     return (this.args.records || []).length === 0 && !this.args.loading;
   }
 
   get hasNoKeyword(): boolean {
-    return this.searchKeyword === undefined;
-  }
-
-  @action
-  focusSearch(element: HTMLElement): void {
-    element.focus();
+    return !this.searchKeyword;
   }
 
   @action
@@ -43,8 +38,8 @@ export default class OSSAccessPanel extends Component<OSSAccessPanelArgs> {
   }
 
   @action
-  onSearch(): void {
-    if (this.hasNoKeyword) return;
-    this.args.onSearch(this.searchKeyword!);
+  onSearch(keyword: string): void {
+    this.searchKeyword = keyword;
+    this.args.onSearch(this.searchKeyword);
   }
 }

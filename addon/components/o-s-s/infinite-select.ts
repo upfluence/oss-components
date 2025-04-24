@@ -80,9 +80,8 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   }
 
   @action
-  updateSearchKeyword(event: any): void {
-    this._searchKeyword = event?.target?.value;
-
+  updateSearchKeyword(value: string): void {
+    this._searchKeyword = value;
     this.args.onSearch?.(this._searchKeyword);
   }
 
