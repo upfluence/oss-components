@@ -11,6 +11,7 @@
       @placeholder={{this.searchPlaceholder}}
       @onChange={{this.updateSearchKeyword}}
       {{on "keydown" this.handleKeyEventInput}}
+      {{did-insert this.initSearchInput}}
     />
   {{/if}}
   <div class="upf-infinite-select__container">
