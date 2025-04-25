@@ -98993,7 +98993,8 @@ interface OSSCodeBlockArgs {
     width: undefined,
     maxHeight: undefined,
     placement: 'bottom',
-    enableArrow: false
+    enableArrow: false,
+    fallbackPlacements: undefined
   };
   const RELATIVE_ARROW_PLACEMENT = {
     top: 'bottom',
@@ -99030,7 +99031,7 @@ interface OSSCodeBlockArgs {
       }));
     } else {
       middlewares.push((0, _dom.flip)({
-        fallbackPlacements: ['top', 'bottom']
+        fallbackPlacements: mergedOptions.fallbackPlacements ?? ['top', 'bottom']
       }));
     }
     let arrowEl = floatingTarget.querySelector('[data-floating-arrow]');
