@@ -3,12 +3,12 @@
 .modal {
   .modal-content {
     box-shadow: 0 0 25px rgba(0, 0, 0, 0.25);
-    border-radius: var(--border-radius-sm);
+    border-radius: var(--border-radius-lg);
     border: none;
 
     .modal-header {
       background-color: @upf-gray-light;
-      border-radius: var(--border-radius-sm) var(--border-radius-sm) 0 0;
+      border-radius: var(--border-radius-lg) var(--border-radius-lg) 0 0;
       box-shadow: none;
       color: var(--color-primary-500);
       text-align: center;
@@ -17,7 +17,9 @@
         border: 0;
       }
 
-      .modal-title, h4 { // Please use the .modal-title class and not H4.
+      .modal-title,
+      h4 {
+        // Please use the .modal-title class and not H4.
         .text-size-5;
 
         display: inline-block;
@@ -34,7 +36,7 @@
     }
 
     .modal-footer {
-      border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+      border-radius: 0 0 var(--border-radius-lg) var(--border-radius-lg);
       text-align: center;
       border-top: 0;
     }
