@@ -8,6 +8,7 @@ export type FormInstance = {
   id: FormInstanceId;
   validateForm(): boolean;
   validateField(field: string): boolean;
+  getErrors(): ValidationFeedbacks;
   clearErrors(field?: string): void;
 };
 export type Validator = () => FeedbackMessage | undefined;
@@ -28,6 +29,9 @@ export default class FormManager extends Service {
       id,
       validateForm: (): boolean => this.validateForm(id),
       validateField: (field: string): boolean => this.validateField(id, field),
+      getErrors: (): ValidationFeedbacks => {
+        return this.formFeedbacks[id] ?? {};
+      },
       clearErrors: (field: string) => this.clearErrors(id, field)
     };
   }
