@@ -19,6 +19,7 @@ export type AttachmentOptions = {
   placement?: Placement;
   enableArrow?: boolean;
   placementStrategy?: 'auto' | 'flip';
+  fallbackPlacements?: Placement[];
 };
 
 export const DEFAULT_ATTACHMENT_OPTIONS: AttachmentOptions = {
@@ -26,7 +27,8 @@ export const DEFAULT_ATTACHMENT_OPTIONS: AttachmentOptions = {
   width: undefined,
   maxHeight: undefined,
   placement: 'bottom',
-  enableArrow: false
+  enableArrow: false,
+  fallbackPlacements: undefined
 };
 
 const RELATIVE_ARROW_PLACEMENT: Record<Side, Side> = {
@@ -73,7 +75,7 @@ export default function attachDropdown(
   } else {
     middlewares.push(
       flip({
-        fallbackPlacements: ['top', 'bottom']
+        fallbackPlacements: mergedOptions.fallbackPlacements ?? ['top', 'bottom']
       })
     );
   }
