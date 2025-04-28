@@ -19,6 +19,6 @@ export default class FormFieldFeedbackHelper extends Helper<FormFieldFeedbackSig
   public compute([form, fieldId]: Positional): FeedbackMessage | undefined {
     if (!form || !fieldId) return;
 
-    return (this.formManager.formFeedbacks[form] ?? {})[fieldId];
+    return (this.formManager.formFeedbacks[form] ?? {})[fieldId]?.message;
   }
 }

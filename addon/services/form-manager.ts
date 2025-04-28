@@ -11,9 +11,10 @@ export type FormInstance = {
   getErrors(): ValidationFeedbacks;
   clearErrors(field?: string): void;
 };
-export type Validator = () => FeedbackMessage | undefined;
+export type Feedback = { kind: string; message: FeedbackMessage };
+export type Validator = () => Feedback | undefined;
 export type Validations = Record<string, Validator>;
-export type ValidationFeedbacks = Record<string, FeedbackMessage>;
+export type ValidationFeedbacks = Record<string, Feedback>;
 
 export default class FormManager extends Service {
   formValidators: Record<FormInstanceId, Validations> = {};
@@ -57,7 +58,7 @@ export default class FormManager extends Service {
     });
 
     return Object.values(this.formFeedbacks[id] ?? {}).every((feedback) =>
-      ['success', 'warning'].includes(feedback.type)
+      ['success', 'warning'].includes(feedback.message.type)
     );
   }
 
@@ -76,7 +77,7 @@ export default class FormManager extends Service {
       this.refreshFormFeedbacks();
     }
 
-    const isValid = feedback?.type !== 'error';
+    const isValid = feedback?.message?.type !== 'error';
 
     if (isValid) this.clearErrors(id, field);
 
@@ -84,7 +85,7 @@ export default class FormManager extends Service {
   }
 
   private clearErrors(id: string, field: string): void {
-    if (this.formFeedbacks[id]?.[field]?.type !== 'error') return;
+    if (this.formFeedbacks[id]?.[field]?.message?.type !== 'error') return;
     delete this.formFeedbacks[id]?.[field];
     this.refreshFormFeedbacks();
   }
