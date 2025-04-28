@@ -123,7 +123,7 @@ const AdvancedWithNamedBlocksTemplate = (args) => ({
           {{/if}}
         </:prefix>
         <:input>
-          <Input @value={{this.lastname}} placeholder="My fancy custom input" />
+          <input value={{this.lastname}} placeholder="My fancy custom input" aria-label="input" />
         </:input>
         <:suffix>
           {{#if (gt this.lastname.length 0)}}
