@@ -30,9 +30,7 @@ export default class FormManager extends Service {
       id,
       validateForm: (): boolean => this.validateForm(id),
       validateField: (field: string): boolean => this.validateField(id, field),
-      getErrors: (): ValidationFeedbacks => {
-        return this.formFeedbacks[id] ?? {};
-      },
+      getErrors: (): ValidationFeedbacks => this.getFieldErrors(id),
       clearErrors: (field: string) => this.clearErrors(id, field)
     };
   }
@@ -82,6 +80,18 @@ export default class FormManager extends Service {
     if (isValid) this.clearErrors(id, field);
 
     return isValid;
+  }
+
+  private getFieldErrors(id: string): ValidationFeedbacks {
+    const formFeedbacks = this.formFeedbacks[id] ?? {};
+
+    return Object.keys(formFeedbacks).reduce((acc: ValidationFeedbacks, v: string) => {
+      if (formFeedbacks[v] && formFeedbacks[v]!.message?.type === 'error') {
+        acc[v] = formFeedbacks[v]!;
+      }
+
+      return acc;
+    }, {});
   }
 
   private clearErrors(id: string, field: string): void {
