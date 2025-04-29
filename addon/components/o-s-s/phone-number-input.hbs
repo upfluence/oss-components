@@ -1,8 +1,14 @@
-<div class="phone-number-container fx-1" ...attributes>
+<div
+  class="phone-number-container fx-1"
+  data-toggle="oss-dropdown"
+  {{did-insert this.registerContainer}}
+  {{will-destroy this.disconnectObserver}}
+  ...attributes
+>
   <div class="phone-number-input fx-row fx-1 fx-xalign-center {{this.interactiveClasses}}">
-    <div class="country-selector fx-row" role="button" {{on "click" this.toggleCountrySelector}}>
+    <div class="country-selector fx-row" role="button" {{on "click" this.toggleDropdown}}>
       <div class="fflag fflag-{{this.selectedCountry.id}} ff-sm ff-round"></div>
-      <OSS::Icon @icon="fa-chevron-{{if this.countrySelectorShown 'up' 'down'}}" />
+      <OSS::Icon @icon="fa-chevron-{{if this.isOpen 'up' 'down'}}" />
     </div>
     <div class="fx-1 fx-row upf-input" {{on "click" this.focusInput}}>
       <span class="fx-row fx-xalign-center phone-prefix">{{@prefix}}</span>
@@ -30,24 +36,32 @@
     </div>
   {{/if}}
 
-  {{#if this.countrySelectorShown}}
-    <OSS::InfiniteSelect
-      @items={{this.filteredCountries}}
-      @onSearch={{this.onSearch}}
-      @onSelect={{this.onSelect}}
-      @searchPlaceholder="Search"
-      {{on-click-outside this.hideCountrySelector}}
-    >
-      <:option as |country|>
-        <div class="fx-row fx-xalign-center {{if (eq this.selectedCountry country) 'row-selected'}}">
-          <div class="fflag fflag-{{country.id}} ff-sm ff-rounded"></div>
-          <span class="text-color-default-light margin-left-xx-sm">{{country.name}}</span>
-          <span class="text-color-default-light margin-left-xxx-sm fx-1">(+{{get country.countryCallingCodes 0}})</span>
-          {{#if (eq this.selectedCountry country)}}
-            <OSS::Icon @icon="fa-check" class="font-color-primary-500" />
-          {{/if}}
-        </div>
-      </:option>
-    </OSS::InfiniteSelect>
+  {{#if this.isOpen}}
+    {{#in-element this.portalTarget insertBefore=null}}
+      <OSS::InfiniteSelect
+        @items={{this.filteredCountries}}
+        @onSearch={{this.onSearch}}
+        @onSelect={{this.onSelect}}
+        @searchPlaceholder="Search"
+        id={{this.portalId}}
+        class={{concat "margin-top-px-0 phone-number-container__dropdown " this.dropdownAddressableClass}}
+        {{on-click-outside this.onClickOutside}}
+        {{on "click" this.noop}}
+      >
+        <:option as |country|>
+          <div class="fx-row fx-xalign-center {{if (eq this.selectedCountry country) 'row-selected'}}">
+            <div class="fflag fflag-{{country.id}} ff-sm ff-rounded"></div>
+            <span class="text-color-default-light margin-left-xx-sm">{{country.name}}</span>
+            <span class="text-color-default-light margin-left-xxx-sm fx-1">(+{{get
+                country.countryCallingCodes
+                0
+              }})</span>
+            {{#if (eq this.selectedCountry country)}}
+              <OSS::Icon @icon="fa-check" class="font-color-primary-500" />
+            {{/if}}
+          </div>
+        </:option>
+      </OSS::InfiniteSelect>
+    {{/in-element}}
   {{/if}}
 </div>
