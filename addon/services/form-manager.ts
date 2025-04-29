@@ -110,15 +110,3 @@ declare module '@ember/service' {
     'form-manager': FormManager;
   }
 }
-
-// for the register-form-field modifier
-
-// for the form-field-feedback helper ->
-// - on input-container: @feedbackMessage={{form-field-feedback @formId="foo" @field="bar"}}
-// - on others w/ errorMessage: @errorMessage={{get (form-field-feedback @formId="foo" @field="bar") "value"}}
-//
-//
-// handle backend errors (toasts, main alerts, haserror without message, blablba)
-//
-//  For the team:
-//  - disabled CTA rules hint for validations
