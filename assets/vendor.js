@@ -81483,6 +81483,186 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
   }), _applyDecoratedDescriptor(_class.prototype, "setupAnimation", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setupAnimation"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSAccessPanel);
 });
+;define("@upfluence/oss-components/components/o-s-s/access-panel.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.SearchDisabled = _exports.LoadingState = _exports.CustomContent = _exports.BasicUsage = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::AccessPanel',
+    component: 'access-panel',
+    argTypes: {
+      records: {
+        description: 'The list of elements displayed inside the panel',
+        table: {
+          type: {
+            summary: 'array'
+          }
+        },
+        control: {
+          type: 'array'
+        },
+        type: {
+          required: true
+        }
+      },
+      initialLoad: {
+        description: 'Distinguish the initial data loading from subsequent data loads, showing a loading state during the first loading',
+        table: {
+          type: {
+            summary: 'boolean'
+          }
+        },
+        control: {
+          type: 'boolean'
+        },
+        type: {
+          required: true
+        }
+      },
+      loading: {
+        description: 'Displays a loading state when true',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      onBottomReached: {
+        description: 'Function triggered when the user scrolls to the bottom of the panel.',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'onBottomReached(): void'
+          }
+        },
+        type: {
+          required: true
+        }
+      },
+      onClose: {
+        description: 'Function triggered when the user closes the panel',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'onClose(): void'
+          }
+        },
+        type: {
+          required: true
+        }
+      },
+      onSearch: {
+        description: 'Function triggered whenever the user types in the search field. If undefined, the searchbar will not be displayed',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'onSearch?(keyword: string): void'
+          }
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'A panel component used to display a searchable and scrollable list of records, with optional loading and empty states.'
+        }
+      }
+    }
+  };
+  const defaultArgs = {
+    records: [{
+      label: 'foo'
+    }, {
+      label: 'bar'
+    }],
+    initialLoad: false,
+    loading: false,
+    onBottomReached: (0, _addonActions.action)('onBottomReached'),
+    onClose: (0, _addonActions.action)('onClose'),
+    onSearch: (0, _addonActions.action)('onSearch')
+  };
+  const DefaultUsageTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
+          <OSS::AccessPanel
+            @records={{this.records}}
+            @initialLoad={{this.initialLoad}}
+            @loading={{this.loading}}
+            @onBottomReached={{this.onBottomReached}}
+            @onClose={{this.onClose}}
+            @onSearch={{this.onSearch}}
+          />
+        </div>
+      
+    */
+    {
+      "id": "LVA6665A",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@records\",\"@initialLoad\",\"@loading\",\"@onBottomReached\",\"@onClose\",\"@onSearch\"],[[30,0,[\"records\"]],[30,0,[\"initialLoad\"]],[30,0,[\"loading\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"onClose\"]],[30,0,[\"onSearch\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/access-panel\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/access-panel.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const CustomContentTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
+          <OSS::AccessPanel
+            @records={{this.records}}
+            @initialLoad={{this.initialLoad}}
+            @loading={{this.loading}}
+            @onBottomReached={{this.onBottomReached}}
+            @onClose={{this.onClose}}
+            @onSearch={{this.onSearch}}
+          >
+            <:header>Header</:header>
+            <:empty-state>Empty state</:empty-state>
+            <:columns>Columns</:columns>
+            <:no-results>No results</:no-results>
+            <:row as |record|>{{record.label}}</:row>
+          </OSS::AccessPanel>
+        </div>
+      
+    */
+    {
+      "id": "tNhWksDX",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@records\",\"@initialLoad\",\"@loading\",\"@onBottomReached\",\"@onClose\",\"@onSearch\"],[[30,0,[\"records\"]],[30,0,[\"initialLoad\"]],[30,0,[\"loading\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"onClose\"]],[30,0,[\"onSearch\"]]]],[[\"header\",\"empty-state\",\"columns\",\"no-results\",\"row\"],[[[[1,\"Header\"]],[]],[[[1,\"Empty state\"]],[]],[[[1,\"Columns\"]],[]],[[[1,\"No results\"]],[]],[[[1,[30,1,[\"label\"]]]],[1]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[\"record\"],false,[\"o-s-s/access-panel\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/access-panel.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const BasicUsage = _exports.BasicUsage = DefaultUsageTemplate.bind({});
+  BasicUsage.args = defaultArgs;
+  const CustomContent = _exports.CustomContent = CustomContentTemplate.bind({});
+  CustomContent.args = {
+    ...defaultArgs
+  };
+  const SearchDisabled = _exports.SearchDisabled = DefaultUsageTemplate.bind({});
+  SearchDisabled.args = {
+    ...defaultArgs,
+    onSearch: undefined
+  };
+  const LoadingState = _exports.LoadingState = DefaultUsageTemplate.bind({});
+  LoadingState.args = {
+    ...defaultArgs,
+    loading: true,
+    initialLoad: false
+  };
+});
 ;define("@upfluence/oss-components/components/o-s-s/alert", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@ember/template-factory"], function (_exports, _component, _component2, _object, _templateFactory) {
   "use strict";
 
@@ -86285,15 +86465,15 @@ interface OSSCodeBlockArgs {
   const Default = _exports.Default = BasicUsageTemplate.bind({});
   Default.args = defaultArgs;
 });
-;define("@upfluence/oss-components/components/o-s-s/country-selector", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@glimmer/tracking", "@ember/debug", "@ember/service", "@ember/utils", "@ember/object/internals", "@ember/template-factory"], function (_exports, _component, _component2, _object, _tracking, _debug, _service, _utils, _internals, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/country-selector", ["exports", "@ember/component", "@ember/object", "@glimmer/tracking", "@ember/debug", "@ember/service", "@ember/utils", "@upfluence/oss-components/components/o-s-s/private/base-dropdown", "@ember/runloop", "@upfluence/oss-components/utils/attach-dropdown", "@ember/template-factory"], function (_exports, _component, _object, _tracking, _debug, _service, _utils, _baseDropdown, _runloop, _attachDropdown, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/object",0,"@glimmer/tracking",0,"@ember/debug",0,"@ember/service",0,"@ember/utils",0,"@ember/object/internals",0,"@ember/component"eaimeta@70e063a35619d71f
+  var _class, _descriptor, _descriptor2;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@glimmer/tracking",0,"@ember/debug",0,"@ember/service",0,"@ember/utils",0,"@upfluence/oss-components/components/o-s-s/private/base-dropdown",0,"@ember/runloop",0,"@upfluence/oss-components/utils/attach-dropdown",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
@@ -86302,60 +86482,78 @@ interface OSSCodeBlockArgs {
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div id={{this.elementId}} class="country-selector-container fx-1" ...attributes>
-    <div class="upf-input fx-row fx-1 fx-malign-space-between fx-xalign-center {{if this.dropdownVisibility 'active'}}"
-         {{on "click" this.toggleDropdown}} role="button"
-         {{on "keydown" this.handleKeyEvent}}
-         data-control-name="country-selector-input" tabindex="0">
+    <div
+    id={{this.elementId}}
+    class="country-selector-container fx-1"
+    data-toggle="oss-dropdown"
+    {{did-insert this.registerContainer}}
+    {{will-destroy this.disconnectObserver}}
+    ...attributes
+  >
+    <div
+      class="upf-input fx-row fx-1 fx-malign-space-between fx-xalign-center {{if this.isOpen 'active'}}"
+      {{on "click" this.toggleDropdown}}
+      role="button"
+      {{on "keydown" this.handleKeyEvent}}
+      data-control-name="country-selector-input"
+      tabindex="0"
+    >
       <div class="fx-row fx-xalign-center fx-gap-px-10">
         {{#if this.selectedCountry.id}}
           <div class="fflag fflag-{{this.selectedCountry.id}} ff-sm ff-rounded"></div>
         {{/if}}
         <span class="{{unless this.selectedCountry 'text-color-default-light'}}">{{this.inputLabel}}</span>
       </div>
-      <OSS::Icon @icon="fa-chevron-{{if this.dropdownVisibility 'up' 'down'}}" />
+      <OSS::Icon @icon="fa-chevron-{{if this.isOpen 'up' 'down'}}" />
     </div>
-    {{#if this.dropdownVisibility}}
-      <OSS::InfiniteSelect @items={{this.filteredItems}} @onSearch={{this.search}}
-                           @onSelect={{this.onItemSelected}}
-                           @searchPlaceholder={{t "oss-components.country-selector.search"}}
-                           @onClose={{this.closeDropdown}}
-                           @enableKeyboard={{true}}
-                           {{on-click-outside this.closeDropdown}}>
-        <:option as |item|>
-          <div class="fx-row fx-xalign-center {{if (eq this.selectedCountry item) 'row-selected'}}">
-            {{#if item.id}}
-              <div class="fflag fflag-{{item.id}} ff-sm ff-rounded"></div>
-            {{/if}}
-            <span class="text-color-default-light margin-left-xx-sm">{{item.name}}</span>
-            {{#if (eq this.selectedCountry item)}}
-              <div class="fx-1"></div>
-              <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
-            {{/if}}
-          </div>
-        </:option>
-      </OSS::InfiniteSelect>
+    {{#if this.isOpen}}
+      {{#in-element this.portalTarget insertBefore=null}}
+        <OSS::InfiniteSelect
+          @items={{this.filteredItems}}
+          @onSearch={{this.search}}
+          @onSelect={{this.onItemSelected}}
+          @searchPlaceholder={{t "oss-components.country-selector.search"}}
+          @onClose={{this.closeDropdown}}
+          @enableKeyboard={{true}}
+          id={{this.portalId}}
+          class={{concat "margin-top-px-0 country-selector-container__dropdown " this.dropdownAddressableClass}}
+          {{on-click-outside this.onClickOutside}}
+          {{on "click" this.noop}}
+        >
+          <:option as |item|>
+            <div class="fx-row fx-xalign-center {{if (eq this.selectedCountry item) 'row-selected'}}">
+              {{#if item.id}}
+                <div class="fflag fflag-{{item.id}} ff-sm ff-rounded"></div>
+              {{/if}}
+              <span class="text-color-default-light margin-left-xx-sm">{{item.name}}</span>
+              {{#if (eq this.selectedCountry item)}}
+                <div class="fx-1"></div>
+                <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
+              {{/if}}
+            </div>
+          </:option>
+        </OSS::InfiniteSelect>
+      {{/in-element}}
     {{/if}}
   </div>
-  
   */
   {
-    "id": "fu/nzvXm",
-    "block": "[[[11,0],[16,1,[30,0,[\"elementId\"]]],[24,0,\"country-selector-container fx-1\"],[17,1],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"upf-input fx-row fx-1 fx-malign-space-between fx-xalign-center \",[52,[30,0,[\"dropdownVisibility\"]],\"active\"]]]],[24,\"role\",\"button\"],[24,\"data-control-name\",\"country-selector-input\"],[24,\"tabindex\",\"0\"],[4,[38,1],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[4,[38,1],[\"keydown\",[30,0,[\"handleKeyEvent\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-10\"],[12],[1,\"\\n\"],[41,[30,0,[\"selectedCountry\",\"id\"]],[[[1,\"        \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"selectedCountry\",\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[15,0,[29,[[52,[51,[30,0,[\"selectedCountry\"]]],\"text-color-default-light\"]]]],[12],[1,[30,0,[\"inputLabel\"]]],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[8,[39,3],null,[[\"@icon\"],[[29,[\"fa-chevron-\",[52,[30,0,[\"dropdownVisibility\"]],\"up\",\"down\"]]]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"dropdownVisibility\"]],[[[1,\"    \"],[8,[39,4],[[4,[38,6],[[30,0,[\"closeDropdown\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\",\"@onClose\",\"@enableKeyboard\"],[[30,0,[\"filteredItems\"]],[30,0,[\"search\"]],[30,0,[\"onItemSelected\"]],[28,[37,5],[\"oss-components.country-selector.search\"],null],[30,0,[\"closeDropdown\"]],true]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,2]],null],\"row-selected\"]]]],[12],[1,\"\\n\"],[41,[30,2,[\"id\"]],[[[1,\"            \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,2,[\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm\"],[12],[1,[30,2,[\"name\"]]],[13],[1,\"\\n\"],[41,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,2]],null],[[[1,\"            \"],[10,0],[14,0,\"fx-1\"],[12],[13],[1,\"\\n            \"],[8,[39,3],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[2]]]]],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"item\"],false,[\"if\",\"on\",\"unless\",\"o-s-s/icon\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\",\"eq\"]]",
+    "id": "0ku79FEa",
+    "block": "[[[11,0],[16,1,[30,0,[\"elementId\"]]],[24,0,\"country-selector-container fx-1\"],[24,\"data-toggle\",\"oss-dropdown\"],[17,1],[4,[38,0],[[30,0,[\"registerContainer\"]]],null],[4,[38,1],[[30,0,[\"disconnectObserver\"]]],null],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"upf-input fx-row fx-1 fx-malign-space-between fx-xalign-center \",[52,[30,0,[\"isOpen\"]],\"active\"]]]],[24,\"role\",\"button\"],[24,\"data-control-name\",\"country-selector-input\"],[24,\"tabindex\",\"0\"],[4,[38,3],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[4,[38,3],[\"keydown\",[30,0,[\"handleKeyEvent\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-10\"],[12],[1,\"\\n\"],[41,[30,0,[\"selectedCountry\",\"id\"]],[[[1,\"        \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"selectedCountry\",\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[15,0,[29,[[52,[51,[30,0,[\"selectedCountry\"]]],\"text-color-default-light\"]]]],[12],[1,[30,0,[\"inputLabel\"]]],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[8,[39,5],null,[[\"@icon\"],[[29,[\"fa-chevron-\",[52,[30,0,[\"isOpen\"]],\"up\",\"down\"]]]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"isOpen\"]],[[[40,[[[1,\"      \"],[8,[39,8],[[16,1,[30,0,[\"portalId\"]]],[16,0,[28,[37,9],[\"margin-top-px-0 country-selector-container__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[4,[38,11],[[30,0,[\"onClickOutside\"]]],null],[4,[38,3],[\"click\",[30,0,[\"noop\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\",\"@onClose\",\"@enableKeyboard\"],[[30,0,[\"filteredItems\"]],[30,0,[\"search\"]],[30,0,[\"onItemSelected\"]],[28,[37,10],[\"oss-components.country-selector.search\"],null],[30,0,[\"closeDropdown\"]],true]],[[\"option\"],[[[[1,\"\\n          \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,12],[[30,0,[\"selectedCountry\"]],[30,2]],null],\"row-selected\"]]]],[12],[1,\"\\n\"],[41,[30,2,[\"id\"]],[[[1,\"              \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,2,[\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n\"]],[]],null],[1,\"            \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm\"],[12],[1,[30,2,[\"name\"]]],[13],[1,\"\\n\"],[41,[28,[37,12],[[30,0,[\"selectedCountry\"]],[30,2]],null],[[[1,\"              \"],[10,0],[14,0,\"fx-1\"],[12],[13],[1,\"\\n              \"],[8,[39,5],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"          \"],[13],[1,\"\\n        \"]],[2]]]]],[1,\"\\n\"]],[]],\"%cursor:0%\",[28,[37,7],[[30,0,[\"portalTarget\"]]],null],null]],[]],null],[13]],[\"&attrs\",\"item\"],false,[\"did-insert\",\"will-destroy\",\"if\",\"on\",\"unless\",\"o-s-s/icon\",\"in-element\",\"-in-el-null\",\"o-s-s/infinite-select\",\"concat\",\"t\",\"on-click-outside\",\"eq\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/country-selector.hbs",
     "isStrictMode": false
   });
-  let OSSCountrySelector = _exports.default = (_class = class OSSCountrySelector extends _component2.default {
+  let OSSCountrySelector = _exports.default = (_class = class OSSCountrySelector extends _baseDropdown.default {
     constructor(owner, args) {
       super(owner, args);
       _initializerDefineProperty(this, "intl", _descriptor, this);
-      _initializerDefineProperty(this, "dropdownVisibility", _descriptor2, this);
-      _initializerDefineProperty(this, "filteredItems", _descriptor3, this);
-      _initializerDefineProperty(this, "elementId", _descriptor4, this);
+      _initializerDefineProperty(this, "filteredItems", _descriptor2, this);
+      _defineProperty(this, "cleanupDrodpownAutoplacement", void 0);
+      _defineProperty(this, "handleSelectorClose", this.closeDropdown);
       (true && !(typeof this.args.sourceList === 'object') && (0, _debug.assert)('[component][OSS::CountrySelector] The parameter @sourceList of type object is mandatory', typeof this.args.sourceList === 'object'));
       (true && !(typeof this.args.onChange === 'function') && (0, _debug.assert)('[component][OSS::CountrySelector] The @onChange parameter is mandatory', typeof this.args.onChange === 'function'));
       if (!(0, _utils.isEmpty)(this.args.value)) {
-        this._matchValueWithSourceList();
+        (0, _runloop.scheduleOnce)('afterRender', this, this._matchValueWithSourceList);
       }
     }
     get isCountry() {
@@ -86373,14 +86571,25 @@ interface OSSCodeBlockArgs {
         this.toggleDropdown(e);
       }
     }
-    toggleDropdown(e) {
-      e.stopPropagation();
-      this.dropdownVisibility = !this.dropdownVisibility;
+    toggleDropdown(event) {
+      super.toggleDropdown(event);
       this.filteredItems = this.args.sourceList;
+      if (this.isOpen) {
+        (0, _runloop.scheduleOnce)('afterRender', this, () => {
+          const referenceTarget = this.container.querySelector('.upf-input');
+          const floatingTarget = document.querySelector(`#${this.portalId}`);
+          if (referenceTarget && floatingTarget) {
+            this.cleanupDrodpownAutoplacement = (0, _attachDropdown.default)(referenceTarget, floatingTarget, {
+              placementStrategy: 'auto'
+            });
+          }
+        });
+      }
     }
     closeDropdown() {
-      this.dropdownVisibility = false;
-      const el = document.querySelector(`#${this.elementId} .upf-input`);
+      super.closeDropdown();
+      document.querySelector(`#${this.portalId}`)?.remove();
+      const el = this.container.querySelector('.upf-input');
       el?.focus();
     }
     search(keyword) {
@@ -86400,26 +86609,12 @@ interface OSSCodeBlockArgs {
     enumerable: true,
     writable: true,
     initializer: null
-  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "dropdownVisibility", [_tracking.tracked], {
-    configurable: true,
-    enumerable: true,
-    writable: true,
-    initializer: function () {
-      return false;
-    }
-  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "filteredItems", [_tracking.tracked], {
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "filteredItems", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function () {
       return this.args.sourceList;
-    }
-  }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, "elementId", [_tracking.tracked], {
-    configurable: true,
-    enumerable: true,
-    writable: true,
-    initializer: function () {
-      return (0, _internals.guidFor)(this);
     }
   }), _applyDecoratedDescriptor(_class.prototype, "handleKeyEvent", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleKeyEvent"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "search", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "search"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onItemSelected", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onItemSelected"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSCountrySelector);
@@ -91672,15 +91867,15 @@ interface OSSCodeBlockArgs {
   const BasicUsage = _exports.BasicUsage = DefaultUsageTemplate.bind({});
   BasicUsage.args = defaultArgs;
 });
-;define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["exports", "@ember/component", "@ember/debug", "@ember/object", "@ember/service", "@ember/utils", "@glimmer/component", "@glimmer/tracking", "@upfluence/oss-components/utils/country-codes", "@ember/template-factory"], function (_exports, _component, _debug, _object, _service, _utils, _component2, _tracking, _countryCodes, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/phone-number-input", ["exports", "@ember/component", "@ember/debug", "@ember/object", "@ember/service", "@ember/utils", "@glimmer/tracking", "@upfluence/oss-components/utils/country-codes", "@upfluence/oss-components/components/o-s-s/private/base-dropdown", "@ember/runloop", "@upfluence/oss-components/utils/attach-dropdown", "@ember/template-factory"], function (_exports, _component, _debug, _object, _service, _utils, _tracking, _countryCodes, _baseDropdown, _runloop, _attachDropdown, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@ember/object",0,"@ember/service",0,"@ember/utils",0,"@glimmer/component",0,"@glimmer/tracking",0,"@upfluence/oss-components/utils/country-codes",0,"@ember/component"eaimeta@70e063a35619d71f
+  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@ember/object",0,"@ember/service",0,"@ember/utils",0,"@glimmer/tracking",0,"@upfluence/oss-components/utils/country-codes",0,"@upfluence/oss-components/components/o-s-s/private/base-dropdown",0,"@ember/runloop",0,"@upfluence/oss-components/utils/attach-dropdown",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
@@ -91689,11 +91884,17 @@ interface OSSCodeBlockArgs {
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="phone-number-container fx-1" ...attributes>
+    <div
+    class="phone-number-container fx-1"
+    data-toggle="oss-dropdown"
+    {{did-insert this.registerContainer}}
+    {{will-destroy this.disconnectObserver}}
+    ...attributes
+  >
     <div class="phone-number-input fx-row fx-1 fx-xalign-center {{this.interactiveClasses}}">
-      <div class="country-selector fx-row" role="button" {{on "click" this.toggleCountrySelector}}>
+      <div class="country-selector fx-row" role="button" {{on "click" this.toggleDropdown}}>
         <div class="fflag fflag-{{this.selectedCountry.id}} ff-sm ff-round"></div>
-        <OSS::Icon @icon="fa-chevron-{{if this.countrySelectorShown 'up' 'down'}}" />
+        <OSS::Icon @icon="fa-chevron-{{if this.isOpen 'up' 'down'}}" />
       </div>
       <div class="fx-1 fx-row upf-input" {{on "click" this.focusInput}}>
         <span class="fx-row fx-xalign-center phone-prefix">{{@prefix}}</span>
@@ -91721,48 +91922,56 @@ interface OSSCodeBlockArgs {
       </div>
     {{/if}}
   
-    {{#if this.countrySelectorShown}}
-      <OSS::InfiniteSelect
-        @items={{this.filteredCountries}}
-        @onSearch={{this.onSearch}}
-        @onSelect={{this.onSelect}}
-        @searchPlaceholder="Search"
-        {{on-click-outside this.hideCountrySelector}}
-      >
-        <:option as |country|>
-          <div class="fx-row fx-xalign-center {{if (eq this.selectedCountry country) 'row-selected'}}">
-            <div class="fflag fflag-{{country.id}} ff-sm ff-rounded"></div>
-            <span class="text-color-default-light margin-left-xx-sm">{{country.name}}</span>
-            <span class="text-color-default-light margin-left-xxx-sm fx-1">(+{{get country.countryCallingCodes 0}})</span>
-            {{#if (eq this.selectedCountry country)}}
-              <OSS::Icon @icon="fa-check" class="font-color-primary-500" />
-            {{/if}}
-          </div>
-        </:option>
-      </OSS::InfiniteSelect>
+    {{#if this.isOpen}}
+      {{#in-element this.portalTarget insertBefore=null}}
+        <OSS::InfiniteSelect
+          @items={{this.filteredCountries}}
+          @onSearch={{this.onSearch}}
+          @onSelect={{this.onSelect}}
+          @searchPlaceholder="Search"
+          id={{this.portalId}}
+          class={{concat "margin-top-px-0 phone-number-container__dropdown " this.dropdownAddressableClass}}
+          {{on-click-outside this.onClickOutside}}
+          {{on "click" this.noop}}
+        >
+          <:option as |country|>
+            <div class="fx-row fx-xalign-center {{if (eq this.selectedCountry country) 'row-selected'}}">
+              <div class="fflag fflag-{{country.id}} ff-sm ff-rounded"></div>
+              <span class="text-color-default-light margin-left-xx-sm">{{country.name}}</span>
+              <span class="text-color-default-light margin-left-xxx-sm fx-1">(+{{get
+                  country.countryCallingCodes
+                  0
+                }})</span>
+              {{#if (eq this.selectedCountry country)}}
+                <OSS::Icon @icon="fa-check" class="font-color-primary-500" />
+              {{/if}}
+            </div>
+          </:option>
+        </OSS::InfiniteSelect>
+      {{/in-element}}
     {{/if}}
   </div>
   */
   {
-    "id": "tUAzCKQ3",
-    "block": "[[[11,0],[24,0,\"phone-number-container fx-1\"],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"phone-number-input fx-row fx-1 fx-xalign-center \",[30,0,[\"interactiveClasses\"]]]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"country-selector fx-row\"],[24,\"role\",\"button\"],[4,[38,0],[\"click\",[30,0,[\"toggleCountrySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"selectedCountry\",\"id\"]],\" ff-sm ff-round\"]]],[12],[13],[1,\"\\n      \"],[8,[39,1],null,[[\"@icon\"],[[29,[\"fa-chevron-\",[52,[30,0,[\"countrySelectorShown\"]],\"up\",\"down\"]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[11,0],[24,0,\"fx-1 fx-row upf-input\"],[4,[38,0],[\"click\",[30,0,[\"focusInput\"]]],null],[12],[1,\"\\n      \"],[10,1],[14,0,\"fx-row fx-xalign-center phone-prefix\"],[12],[1,[30,2]],[13],[1,\"\\n      \"],[8,[39,3],[[24,0,\"fx-1\"],[24,3,\"telephone\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,4,\"tel\"],[4,[38,0],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,0],[\"paste\",[30,0,[\"handlePaste\"]]],null],[4,[38,0],[\"blur\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,4],[[30,0,[\"registerInputElement\"]]],null]],[[\"@value\"],[[30,3]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"invalidInputError\"]],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,\"\\n      \"],[1,[30,0,[\"invalidInputError\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[41,[30,4],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,\"\\n      \"],[1,[30,4]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],null]],[]]],[1,\"\\n\"],[41,[30,0,[\"countrySelectorShown\"]],[[[1,\"    \"],[8,[39,5],[[4,[38,6],[[30,0,[\"hideCountrySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCountries\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],\"Search\"]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,5]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,5,[\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm\"],[12],[1,[30,5,[\"name\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xxx-sm fx-1\"],[12],[1,\"(+\"],[1,[28,[35,8],[[30,5,[\"countryCallingCodes\"]],0],null]],[1,\")\"],[13],[1,\"\\n\"],[41,[28,[37,7],[[30,0,[\"selectedCountry\"]],[30,5]],null],[[[1,\"            \"],[8,[39,1],[[24,0,\"font-color-primary-500\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[5]]]]],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@prefix\",\"@number\",\"@errorMessage\",\"country\"],false,[\"on\",\"o-s-s/icon\",\"if\",\"input\",\"did-insert\",\"o-s-s/infinite-select\",\"on-click-outside\",\"eq\",\"get\"]]",
+    "id": "TDXNvgji",
+    "block": "[[[11,0],[24,0,\"phone-number-container fx-1\"],[24,\"data-toggle\",\"oss-dropdown\"],[17,1],[4,[38,0],[[30,0,[\"registerContainer\"]]],null],[4,[38,1],[[30,0,[\"disconnectObserver\"]]],null],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"phone-number-input fx-row fx-1 fx-xalign-center \",[30,0,[\"interactiveClasses\"]]]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"country-selector fx-row\"],[24,\"role\",\"button\"],[4,[38,2],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n      \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"selectedCountry\",\"id\"]],\" ff-sm ff-round\"]]],[12],[13],[1,\"\\n      \"],[8,[39,3],null,[[\"@icon\"],[[29,[\"fa-chevron-\",[52,[30,0,[\"isOpen\"]],\"up\",\"down\"]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[11,0],[24,0,\"fx-1 fx-row upf-input\"],[4,[38,2],[\"click\",[30,0,[\"focusInput\"]]],null],[12],[1,\"\\n      \"],[10,1],[14,0,\"fx-row fx-xalign-center phone-prefix\"],[12],[1,[30,2]],[13],[1,\"\\n      \"],[8,[39,5],[[24,0,\"fx-1\"],[24,3,\"telephone\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,4,\"tel\"],[4,[38,2],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,2],[\"paste\",[30,0,[\"handlePaste\"]]],null],[4,[38,2],[\"blur\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,0],[[30,0,[\"registerInputElement\"]]],null]],[[\"@value\"],[[30,3]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"invalidInputError\"]],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,\"\\n      \"],[1,[30,0,[\"invalidInputError\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[41,[30,4],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,\"\\n      \"],[1,[30,4]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],null]],[]]],[1,\"\\n\"],[41,[30,0,[\"isOpen\"]],[[[40,[[[1,\"      \"],[8,[39,8],[[16,1,[30,0,[\"portalId\"]]],[16,0,[28,[37,9],[\"margin-top-px-0 phone-number-container__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[4,[38,10],[[30,0,[\"onClickOutside\"]]],null],[4,[38,2],[\"click\",[30,0,[\"noop\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCountries\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],\"Search\"]],[[\"option\"],[[[[1,\"\\n          \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,11],[[30,0,[\"selectedCountry\"]],[30,5]],null],\"row-selected\"]]]],[12],[1,\"\\n            \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,5,[\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n            \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm\"],[12],[1,[30,5,[\"name\"]]],[13],[1,\"\\n            \"],[10,1],[14,0,\"text-color-default-light margin-left-xxx-sm fx-1\"],[12],[1,\"(+\"],[1,[28,[35,12],[[30,5,[\"countryCallingCodes\"]],0],null]],[1,\")\"],[13],[1,\"\\n\"],[41,[28,[37,11],[[30,0,[\"selectedCountry\"]],[30,5]],null],[[[1,\"              \"],[8,[39,3],[[24,0,\"font-color-primary-500\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"          \"],[13],[1,\"\\n        \"]],[5]]]]],[1,\"\\n\"]],[]],\"%cursor:0%\",[28,[37,7],[[30,0,[\"portalTarget\"]]],null],null]],[]],null],[13]],[\"&attrs\",\"@prefix\",\"@number\",\"@errorMessage\",\"country\"],false,[\"did-insert\",\"will-destroy\",\"on\",\"o-s-s/icon\",\"if\",\"input\",\"in-element\",\"-in-el-null\",\"o-s-s/infinite-select\",\"concat\",\"on-click-outside\",\"eq\",\"get\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/phone-number-input.hbs",
     "isStrictMode": false
   });
   const AUTHORIZED_KEYS = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift'];
   const AUTHORIZED_COMBO_KEYS = ['v', 'a', 'z', 'c', 'x'];
   const NOT_NUMERIC = /[^\d]/g;
-  let OSSPhoneNumberInput = _exports.default = (_class = class OSSPhoneNumberInput extends _component2.default {
+  let OSSPhoneNumberInput = _exports.default = (_class = class OSSPhoneNumberInput extends _baseDropdown.default {
     constructor(owner, args) {
       super(owner, args);
       _initializerDefineProperty(this, "intl", _descriptor, this);
       _defineProperty(this, "_countries", _countryCodes.countries);
+      _defineProperty(this, "cleanupDrodpownAutoplacement", void 0);
       _initializerDefineProperty(this, "invalidInputError", _descriptor2, this);
       _initializerDefineProperty(this, "selectedCountry", _descriptor3, this);
-      _initializerDefineProperty(this, "countrySelectorShown", _descriptor4, this);
-      _initializerDefineProperty(this, "filteredCountries", _descriptor5, this);
-      _initializerDefineProperty(this, "placeholder", _descriptor6, this);
-      _initializerDefineProperty(this, "inputElement", _descriptor7, this);
+      _initializerDefineProperty(this, "filteredCountries", _descriptor4, this);
+      _initializerDefineProperty(this, "placeholder", _descriptor5, this);
+      _initializerDefineProperty(this, "inputElement", _descriptor6, this);
       (true && !(typeof this.args.prefix === 'string') && (0, _debug.assert)('[component][OSS::PhoneNumberInput] The parameter @prefix of type string is mandatory', typeof this.args.prefix === 'string'));
       (true && !(typeof this.args.number === 'string') && (0, _debug.assert)('[component][OSS::PhoneNumberInput] The parameter @number of type string is mandatory', typeof this.args.number === 'string'));
       (true && !(typeof this.args.onChange === 'function') && (0, _debug.assert)('[component][OSS::PhoneNumberInput] The parameter @onChange of type function is mandatory', typeof this.args.onChange === 'function'));
@@ -91774,7 +91983,7 @@ interface OSSCodeBlockArgs {
     }
     get interactiveClasses() {
       let classArray = [];
-      if (this.countrySelectorShown) {
+      if (this.isOpen) {
         classArray.push('phone-number-input--active');
       }
       if (this.displayErrorBorder) {
@@ -91804,7 +92013,7 @@ interface OSSCodeBlockArgs {
     }
     onSearch(keyword) {
       this.filteredCountries = this._countries.filter(country => {
-        return country.name.toLowerCase().indexOf(keyword.toLowerCase()) !== -1 || country.countryCallingCodes[0].indexOf(keyword) !== -1;
+        return country.name.toLowerCase().indexOf(keyword.toLowerCase()) !== -1 || country.countryCallingCodes[0]?.indexOf(keyword) !== -1;
       });
     }
     onSelect(value) {
@@ -91812,19 +92021,34 @@ interface OSSCodeBlockArgs {
       this.args.onChange('+' + this.selectedCountry.countryCallingCodes[0], this.args.number);
       this.hideCountrySelector();
     }
-    toggleCountrySelector(e) {
-      e.stopPropagation();
-      this.countrySelectorShown = !this.countrySelectorShown;
-    }
-    hideCountrySelector() {
-      this.countrySelectorShown = false;
-      this.filteredCountries = this._countries;
+    toggleDropdown(event) {
+      super.toggleDropdown(event);
+      if (this.isOpen) {
+        (0, _runloop.scheduleOnce)('afterRender', this, () => {
+          const referenceTarget = this.container;
+          const floatingTarget = document.querySelector(`#${this.portalId}`);
+          if (referenceTarget && floatingTarget) {
+            this.cleanupDrodpownAutoplacement = (0, _attachDropdown.default)(referenceTarget, floatingTarget, {
+              placementStrategy: 'auto'
+            });
+          }
+        });
+      }
     }
     focusInput() {
       this.inputElement?.focus();
     }
     registerInputElement(el) {
       this.inputElement = el;
+    }
+    handleSelectorClose() {
+      this.hideCountrySelector();
+    }
+    hideCountrySelector() {
+      this.filteredCountries = this._countries;
+      this.closeDropdown();
+      this.cleanupDrodpownAutoplacement?.();
+      document.querySelector(`#${this.portalId}`)?.remove();
     }
     validateInput() {
       this.invalidInputError = '';
@@ -91858,35 +92082,28 @@ interface OSSCodeBlockArgs {
     enumerable: true,
     writable: true,
     initializer: null
-  }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, "countrySelectorShown", [_tracking.tracked], {
-    configurable: true,
-    enumerable: true,
-    writable: true,
-    initializer: function () {
-      return false;
-    }
-  }), _descriptor5 = _applyDecoratedDescriptor(_class.prototype, "filteredCountries", [_tracking.tracked], {
+  }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, "filteredCountries", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function () {
       return this._countries;
     }
-  }), _descriptor6 = _applyDecoratedDescriptor(_class.prototype, "placeholder", [_tracking.tracked], {
+  }), _descriptor5 = _applyDecoratedDescriptor(_class.prototype, "placeholder", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function () {
       return this.args.placeholder ?? '(415) 000 0000';
     }
-  }), _descriptor7 = _applyDecoratedDescriptor(_class.prototype, "inputElement", [_tracking.tracked], {
+  }), _descriptor6 = _applyDecoratedDescriptor(_class.prototype, "inputElement", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
     initializer: function () {
       return undefined;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "onlyNumeric", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onlyNumeric"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handlePaste", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handlePaste"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleCountrySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleCountrySelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "hideCountrySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "hideCountrySelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "focusInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "focusInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerInputElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerInputElement"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "onlyNumeric", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onlyNumeric"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handlePaste", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handlePaste"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "focusInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "focusInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerInputElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerInputElement"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleSelectorClose", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleSelectorClose"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSPhoneNumberInput);
 });
 ;define("@upfluence/oss-components/components/o-s-s/phone-number-input.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -92596,6 +92813,9 @@ interface OSSCodeBlockArgs {
     }
     handleSelectorClose() {
       throw new Error('[component][OSS::BaseDropdown] You must implement handleSelectorClose method on the child class');
+    }
+    get dropdownAddressableClass() {
+      return this.args.addressableAs ? `${this.args.addressableAs}__dropdown` : '';
     }
     toggleDropdown(event) {
       event.stopPropagation();
