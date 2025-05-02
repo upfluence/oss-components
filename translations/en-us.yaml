@@ -74,3 +74,6 @@ oss-components:
       remove_tooltip: Remove
   search_field:
     placeholder: Search
+  forms:
+    errors:
+      required: This field is required.

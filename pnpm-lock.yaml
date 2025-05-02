@@ -10,7 +10,7 @@ importers:
     dependencies:
       '@ember/render-modifiers':
         specifier: ^2.1.0
-        version: 2.1.0(@babel/core@7.23.9)(@glint/template@1.3.0)(ember-source@3.28.12)
+        version: 2.1.0(@babel/core@7.23.9)(@glint/template@1.3.0)(ember-source@3.28.12(@babel/core@7.23.9))
       '@embroider/macros':
         specifier: ^1.13.4
         version: 1.13.5(@glint/template@1.3.0)
@@ -56,6 +56,9 @@ importers:
       ember-intl:
         specifier: ^6.4.0
         version: 6.4.0(@babel/core@7.23.9)(@glint/template@1.3.0)(typescript@5.3.3)(webpack@5.90.1)
+      ember-modifier:
+        specifier: ^3.2.7
+        version: 3.2.7(@babel/core@7.23.9)
       ember-named-blocks-polyfill:
         specifier: ^0.2.4
         version: 0.2.5
@@ -80,7 +83,7 @@ importers:
         version: 2.0.0
       '@ember/test-helpers':
         specifier: ^3.2.1
-        version: 3.2.1(@glint/template@1.3.0)(ember-source@3.28.12)(webpack@5.90.1)
+        version: 3.2.1(@glint/template@1.3.0)(ember-source@3.28.12(@babel/core@7.23.9))(webpack@5.90.1)
       '@embroider/test-setup':
         specifier: ^0.48.1
         version: 0.48.1
@@ -95,16 +98,16 @@ importers:
         version: 1.3.0
       '@storybook/addon-actions':
         specifier: 6.4.9
-        version: 6.4.9(react-dom@17.0.2)(react@17.0.2)
+        version: 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/addon-essentials':
         specifier: 6.4.9
-        version: 6.4.9(@babel/core@7.23.9)(babel-loader@8.3.0)(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)(webpack@5.90.1)
+        version: 6.4.9(@babel/core@7.23.9)(babel-loader@8.3.0(@babel/core@7.23.9)(webpack@5.90.1))(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)(webpack@5.90.1)
       '@storybook/addon-links':
         specifier: 6.4.9
-        version: 6.4.9(react-dom@17.0.2)(react@17.0.2)
+        version: 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/ember':
         specifier: 6.4.9
-        version: 6.4.9(@babel/core@7.23.9)(@glint/template@1.3.0)(babel-plugin-ember-modules-api-polyfill@2.13.4)(babel-plugin-htmlbars-inline-precompile@3.2.0)(ember-source@3.28.12)(eslint@7.32.0)(typescript@5.3.3)(webpack@5.90.1)
+        version: 6.4.9(@babel/core@7.23.9)(@glint/template@1.3.0)(babel-plugin-ember-modules-api-polyfill@3.5.0)(babel-plugin-htmlbars-inline-precompile@5.3.1)(ember-source@3.28.12(@babel/core@7.23.9))(eslint@7.32.0)(typescript@5.3.3)(webpack@5.90.1)
       '@storybook/ember-cli-storybook':
         specifier: ^0.4.0
         version: 0.4.0
@@ -188,7 +191,7 @@ importers:
         version: 5.2.7(webpack@5.90.1)
       ember-cli:
         specifier: ~3.28.6
-        version: 3.28.6(react-dom@17.0.2)(react@17.0.2)
+        version: 3.28.6(handlebars@4.7.8)(lodash@4.17.21)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(underscore@1.13.6)
       ember-cli-code-coverage:
         specifier: ^3.0.0
         version: 3.0.0
@@ -203,7 +206,7 @@ importers:
         version: 1.1.3
       ember-qunit:
         specifier: 6.1.1
-        version: 6.1.1(@glint/template@1.3.0)(ember-source@3.28.12)(qunit@2.20.0)(webpack@5.90.1)
+        version: 6.1.1(@glint/template@1.3.0)(ember-source@3.28.12(@babel/core@7.23.9))(qunit@2.20.0)(webpack@5.90.1)
       ember-resolver:
         specifier: 8.0.3
         version: 8.0.3(@babel/core@7.23.9)
@@ -236,7 +239,7 @@ importers:
         version: 11.1.0(eslint@7.32.0)
       eslint-plugin-prettier:
         specifier: ^3.4.1
-        version: 3.4.1(eslint-config-prettier@8.10.0)(eslint@7.32.0)(prettier@2.8.8)
+        version: 3.4.1(eslint-config-prettier@8.10.0(eslint@7.32.0))(eslint@7.32.0)(prettier@2.8.8)
       eslint-plugin-qunit:
         specifier: ^6.2.0
         version: 6.2.0(eslint@7.32.0)
@@ -1211,7 +1214,6 @@ packages:
 
   '@fortawesome/fontawesome-pro@git+https://git@github.com:upfluence/fontawesome-pro.git#2151d30ec8f1c1db594035ee504ea985b4e962c9':
     resolution: {commit: 2151d30ec8f1c1db594035ee504ea985b4e962c9, repo: git@github.com:upfluence/fontawesome-pro.git, type: git}
-    name: '@fortawesome/fontawesome-pro'
     version: 6.5.1
     engines: {node: '>=6'}
 
@@ -2505,10 +2507,6 @@ packages:
     resolution: {integrity: sha512-kTHnOwoOXfPXi00Z8yAgyD64+jdSXk3pknnS7NlqnCKAU6YDkXZ4Y7irl66kaZjZn0FBBt0P4YOZFZk85jYOww==}
     engines: {node: 6.* || 8.* || 10.* || >= 12.*}
 
-  babel-plugin-ember-modules-api-polyfill@2.13.4:
-    resolution: {integrity: sha512-uxQPkEQAzCYdwhZk16O9m1R4xtCRNy4oEUTBrccOPfzlIahRZJic/JeP/ZEL0BC6Mfq6r55eOg6gMF/zdFoCvA==}
-    engines: {node: 6.* || 8.* || >= 10.*}
-
   babel-plugin-ember-modules-api-polyfill@3.5.0:
     resolution: {integrity: sha512-pJajN/DkQUnStw0Az8c6khVcMQHgzqWr61lLNtVeu0g61LRW0k9jyK7vaedrHDWGe/Qe8sxG5wpiyW9NsMqFzA==}
     engines: {node: 6.* || 8.* || >= 10.*}
@@ -2526,10 +2524,6 @@ packages:
   babel-plugin-filter-imports@4.0.0:
     resolution: {integrity: sha512-jDLlxI8QnfKd7PtieH6pl4tZJzymzfCDCPGdTq/grgbiYAikwDPp/oL0IlFJn0HQjLpcLkyYhPKkUVneRESw5w==}
     engines: {node: '>=8'}
-
-  babel-plugin-htmlbars-inline-precompile@3.2.0:
-    resolution: {integrity: sha512-IUeZmgs9tMUGXYu1vfke5I18yYJFldFGdNFQOWslXTnDWXzpwPih7QFduUqvT+awDpDuNtXpdt5JAf43Q1Hhzg==}
-    engines: {node: 8.* || 10.* || >= 12.*}
 
   babel-plugin-htmlbars-inline-precompile@5.3.1:
     resolution: {integrity: sha512-QWjjFgSKtSRIcsBhJmEwS2laIdrA6na8HAlc/pEAhjHgQsah/gMiBFRZvbQTy//hWxR4BMwV7/Mya7q5H8uHeA==}
@@ -3856,7 +3850,6 @@ packages:
 
   ember-cli-typescript-blueprints@https://codeload.github.com/upfluence/ember-cli-typescript-blueprints/tar.gz/7f349e228ceb8d2ef72b369466e445b40a820931:
     resolution: {tarball: https://codeload.github.com/upfluence/ember-cli-typescript-blueprints/tar.gz/7f349e228ceb8d2ef72b369466e445b40a820931}
-    name: ember-cli-typescript-blueprints
     version: 3.0.0
     engines: {node: 12.* || 14.* || >= 16}
 
@@ -3919,6 +3912,10 @@ packages:
   ember-modifier-manager-polyfill@1.2.0:
     resolution: {integrity: sha512-bnaKF1LLKMkBNeDoetvIJ4vhwRPKIIumWr6dbVuW6W6p4QV8ZiO+GdF8J7mxDNlog9CeL9Z/7wam4YS86G8BYA==}
     engines: {node: 6.* || 8.* || >= 10.*}
+
+  ember-modifier@3.2.7:
+    resolution: {integrity: sha512-ezcPQhH8jUfcJQbbHji4/ZG/h0yyj1jRDknfYue/ypQS8fM8LrGcCMo0rjDZLzL1Vd11InjNs3BD7BdxFlzGoA==}
+    engines: {node: 12.* || >= 14}
 
   ember-named-blocks-polyfill@0.2.5:
     resolution: {integrity: sha512-OVMxzkfqJrEvmiky7gFzmuTaImCGm7DOudHWTdMBPO7E+dQSunrcRsJMgO9ZZ56suqBIz/yXbEURrmGS+avHxA==}
@@ -6882,11 +6879,6 @@ packages:
     peerDependencies:
       react: ^16.14.0
 
-  react-dom@17.0.2:
-    resolution: {integrity: sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA==}
-    peerDependencies:
-      react: 17.0.2
-
   react-draggable@4.4.6:
     resolution: {integrity: sha512-LtY5Xw1zTPqHkVmtM3X8MUOxNDOUhv/khTgBgrUvwaS064bwVvxT+q5El0uUFNx5IEPKXuRejr7UqLwBIg5pdw==}
     peerDependencies:
@@ -6964,10 +6956,6 @@ packages:
 
   react@16.14.0:
     resolution: {integrity: sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==}
-    engines: {node: '>=0.10.0'}
-
-  react@17.0.2:
-    resolution: {integrity: sha512-gnhPt75i/dq/z3/6q/0asP78D0u592D5L1pd7M8P+dck6Fu/jJeL6iVVK23fptSUZj8Vjf++7wXA8UNclGQcbA==}
     engines: {node: '>=0.10.0'}
 
   read-pkg-up@7.0.1:
@@ -7259,9 +7247,6 @@ packages:
 
   scheduler@0.19.1:
     resolution: {integrity: sha512-n/zwRWRYSUj0/3g/otKDRPMh6qv2SYMWNq85IEa8iZyAv8od9zDYpGSnpBEjNgcMNq6Scbu5KfIPxNF72R/2EA==}
-
-  scheduler@0.20.2:
-    resolution: {integrity: sha512-2eWfGgAqqWFGqtdMmcL5zCMK1U8KlXv8SQFGglL3CEtd0aDVDWgeF/YoCmvln55m5zSk3J/20hTaSBeSObsQDQ==}
 
   schema-utils@1.0.0:
     resolution: {integrity: sha512-i27Mic4KovM/lnGsy8whRCHhc7VicJajAjTrYg11K9zfZXnYIt4k5F+kZkwjnrhKzLic/HLU4j11mjsz2G/75g==}
@@ -9471,22 +9456,23 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@ember/render-modifiers@2.1.0(@babel/core@7.23.9)(@glint/template@1.3.0)(ember-source@3.28.12)':
+  '@ember/render-modifiers@2.1.0(@babel/core@7.23.9)(@glint/template@1.3.0)(ember-source@3.28.12(@babel/core@7.23.9))':
     dependencies:
       '@embroider/macros': 1.13.5(@glint/template@1.3.0)
-      '@glint/template': 1.3.0
       ember-cli-babel: 7.26.11
       ember-modifier-manager-polyfill: 1.2.0(@babel/core@7.23.9)
       ember-source: 3.28.12(@babel/core@7.23.9)
+    optionalDependencies:
+      '@glint/template': 1.3.0
     transitivePeerDependencies:
       - '@babel/core'
       - supports-color
 
-  '@ember/test-helpers@2.9.4(@babel/core@7.23.9)(@glint/template@1.3.0)(ember-source@3.28.12)':
+  '@ember/test-helpers@2.9.4(@babel/core@7.23.9)(@glint/template@1.3.0)(ember-source@3.28.12(@babel/core@7.23.9))':
     dependencies:
       '@ember/test-waiters': 3.1.0
       '@embroider/macros': 1.13.5(@glint/template@1.3.0)
-      '@embroider/util': 1.12.1(@glint/template@1.3.0)(ember-source@3.28.12)
+      '@embroider/util': 1.12.1(@glint/template@1.3.0)(ember-source@3.28.12(@babel/core@7.23.9))
       broccoli-debug: 0.6.5
       broccoli-funnel: 3.0.8
       ember-cli-babel: 7.26.11
@@ -9499,7 +9485,7 @@ snapshots:
       - '@glint/template'
       - supports-color
 
-  '@ember/test-helpers@3.2.1(@glint/template@1.3.0)(ember-source@3.28.12)(webpack@5.90.1)':
+  '@ember/test-helpers@3.2.1(@glint/template@1.3.0)(ember-source@3.28.12(@babel/core@7.23.9))(webpack@5.90.1)':
     dependencies:
       '@ember/test-waiters': 3.1.0
       '@embroider/macros': 1.13.5(@glint/template@1.3.0)
@@ -9527,7 +9513,6 @@ snapshots:
   '@embroider/macros@1.13.5(@glint/template@1.3.0)':
     dependencies:
       '@embroider/shared-internals': 2.5.2
-      '@glint/template': 1.3.0
       assert-never: 1.2.1
       babel-import-util: 2.0.1
       ember-cli-babel: 7.26.11
@@ -9535,6 +9520,8 @@ snapshots:
       lodash: 4.17.21
       resolve: 1.22.8
       semver: 7.6.0
+    optionalDependencies:
+      '@glint/template': 1.3.0
     transitivePeerDependencies:
       - supports-color
 
@@ -9557,13 +9544,14 @@ snapshots:
       lodash: 4.17.21
       resolve: 1.22.8
 
-  '@embroider/util@1.12.1(@glint/template@1.3.0)(ember-source@3.28.12)':
+  '@embroider/util@1.12.1(@glint/template@1.3.0)(ember-source@3.28.12(@babel/core@7.23.9))':
     dependencies:
       '@embroider/macros': 1.13.5(@glint/template@1.3.0)
-      '@glint/template': 1.3.0
       broccoli-funnel: 3.0.8
       ember-cli-babel: 7.26.11
       ember-source: 3.28.12(@babel/core@7.23.9)
+    optionalDependencies:
+      '@glint/template': 1.3.0
     transitivePeerDependencies:
       - supports-color
 
@@ -9583,16 +9571,6 @@ snapshots:
       '@emotion/sheet': 0.9.4
       '@emotion/utils': 0.11.3
       react: 16.14.0
-
-  '@emotion/core@10.3.1(react@17.0.2)':
-    dependencies:
-      '@babel/runtime': 7.23.9
-      '@emotion/cache': 10.0.29
-      '@emotion/css': 10.0.27
-      '@emotion/serialize': 0.11.16
-      '@emotion/sheet': 0.9.4
-      '@emotion/utils': 0.11.3
-      react: 17.0.2
 
   '@emotion/css@10.0.27':
     dependencies:
@@ -9618,7 +9596,7 @@ snapshots:
 
   '@emotion/sheet@0.9.4': {}
 
-  '@emotion/styled-base@10.3.0(@emotion/core@10.3.1)(react@16.14.0)':
+  '@emotion/styled-base@10.3.0(@emotion/core@10.3.1(react@16.14.0))(react@16.14.0)':
     dependencies:
       '@babel/runtime': 7.23.9
       '@emotion/core': 10.3.1(react@16.14.0)
@@ -9627,28 +9605,12 @@ snapshots:
       '@emotion/utils': 0.11.3
       react: 16.14.0
 
-  '@emotion/styled-base@10.3.0(@emotion/core@10.3.1)(react@17.0.2)':
-    dependencies:
-      '@babel/runtime': 7.23.9
-      '@emotion/core': 10.3.1(react@17.0.2)
-      '@emotion/is-prop-valid': 0.8.8
-      '@emotion/serialize': 0.11.16
-      '@emotion/utils': 0.11.3
-      react: 17.0.2
-
-  '@emotion/styled@10.3.0(@emotion/core@10.3.1)(react@16.14.0)':
+  '@emotion/styled@10.3.0(@emotion/core@10.3.1(react@16.14.0))(react@16.14.0)':
     dependencies:
       '@emotion/core': 10.3.1(react@16.14.0)
-      '@emotion/styled-base': 10.3.0(@emotion/core@10.3.1)(react@16.14.0)
+      '@emotion/styled-base': 10.3.0(@emotion/core@10.3.1(react@16.14.0))(react@16.14.0)
       babel-plugin-emotion: 10.2.2
       react: 16.14.0
-
-  '@emotion/styled@10.3.0(@emotion/core@10.3.1)(react@17.0.2)':
-    dependencies:
-      '@emotion/core': 10.3.1(react@17.0.2)
-      '@emotion/styled-base': 10.3.0(@emotion/core@10.3.1)(react@17.0.2)
-      babel-plugin-emotion: 10.2.2
-      react: 17.0.2
 
   '@emotion/stylis@0.8.5': {}
 
@@ -9728,6 +9690,7 @@ snapshots:
       '@formatjs/intl-listformat': 7.5.5
       intl-messageformat: 10.5.11
       tslib: 2.6.2
+    optionalDependencies:
       typescript: 5.3.3
 
   '@fortawesome/fontawesome-pro@git+https://git@github.com:upfluence/fontawesome-pro.git#2151d30ec8f1c1db594035ee504ea985b4e962c9': {}
@@ -9902,10 +9865,10 @@ snapshots:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  '@mdx-js/loader@1.6.22(react@17.0.2)':
+  '@mdx-js/loader@1.6.22(react@16.14.0)':
     dependencies:
       '@mdx-js/mdx': 1.6.22
-      '@mdx-js/react': 1.6.22(react@17.0.2)
+      '@mdx-js/react': 1.6.22(react@16.14.0)
       loader-utils: 2.0.0
     transitivePeerDependencies:
       - react
@@ -9935,9 +9898,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@mdx-js/react@1.6.22(react@17.0.2)':
+  '@mdx-js/react@1.6.22(react@16.14.0)':
     dependencies:
-      react: 17.0.2
+      react: 16.14.0
 
   '@mdx-js/util@1.6.22': {}
 
@@ -9996,67 +9959,70 @@ snapshots:
 
   '@socket.io/component-emitter@3.1.0': {}
 
-  '@storybook/addon-actions@6.4.9(react-dom@17.0.2)(react@17.0.2)':
+  '@storybook/addon-actions@6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)':
     dependencies:
-      '@storybook/addons': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/api': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/components': 6.4.9(react-dom@17.0.2)(react@17.0.2)
+      '@storybook/addons': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/api': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/components': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/core-events': 6.4.9
       '@storybook/csf': 0.0.2--canary.87bc651.0
-      '@storybook/theming': 6.4.9(react-dom@17.0.2)(react@17.0.2)
+      '@storybook/theming': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       core-js: 3.35.1
       fast-deep-equal: 3.1.3
       global: 4.4.0
       lodash: 4.17.21
       polished: 4.3.1
       prop-types: 15.8.1
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      react-inspector: 5.1.1(react@17.0.2)
+      react-inspector: 5.1.1(react@16.14.0)
       regenerator-runtime: 0.13.11
       telejson: 5.3.3
       ts-dedent: 2.2.0
       util-deprecate: 1.0.2
       uuid-browser: 3.1.0
+    optionalDependencies:
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
     transitivePeerDependencies:
       - '@types/react'
 
-  '@storybook/addon-backgrounds@6.4.9(react-dom@17.0.2)(react@17.0.2)':
+  '@storybook/addon-backgrounds@6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)':
     dependencies:
-      '@storybook/addons': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/api': 6.4.9(react-dom@17.0.2)(react@17.0.2)
+      '@storybook/addons': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/api': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/client-logger': 6.4.9
-      '@storybook/components': 6.4.9(react-dom@17.0.2)(react@17.0.2)
+      '@storybook/components': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/core-events': 6.4.9
       '@storybook/csf': 0.0.2--canary.87bc651.0
-      '@storybook/theming': 6.4.9(react-dom@17.0.2)(react@17.0.2)
+      '@storybook/theming': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       core-js: 3.35.1
       global: 4.4.0
       memoizerific: 1.11.3
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
       regenerator-runtime: 0.13.11
       ts-dedent: 2.2.0
       util-deprecate: 1.0.2
+    optionalDependencies:
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
     transitivePeerDependencies:
       - '@types/react'
 
-  '@storybook/addon-controls@6.4.9(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)':
+  '@storybook/addon-controls@6.4.9(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)':
     dependencies:
-      '@storybook/addons': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/api': 6.4.9(react-dom@17.0.2)(react@17.0.2)
+      '@storybook/addons': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/api': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/client-logger': 6.4.9
-      '@storybook/components': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/core-common': 6.4.9(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)
+      '@storybook/components': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/core-common': 6.4.9(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)
       '@storybook/csf': 0.0.2--canary.87bc651.0
       '@storybook/node-logger': 6.4.9
-      '@storybook/store': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/theming': 6.4.9(react-dom@17.0.2)(react@17.0.2)
+      '@storybook/store': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/theming': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       core-js: 3.35.1
       lodash: 4.17.21
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
       ts-dedent: 2.2.0
+    optionalDependencies:
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
     transitivePeerDependencies:
       - '@types/react'
       - eslint
@@ -10066,7 +10032,7 @@ snapshots:
       - webpack-cli
       - webpack-command
 
-  '@storybook/addon-docs@6.4.9(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)(webpack@5.90.1)':
+  '@storybook/addon-docs@6.4.9(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)(webpack@5.90.1)':
     dependencies:
       '@babel/core': 7.23.9
       '@babel/generator': 7.23.6
@@ -10074,24 +10040,24 @@ snapshots:
       '@babel/plugin-transform-react-jsx': 7.23.4(@babel/core@7.23.9)
       '@babel/preset-env': 7.23.9(@babel/core@7.23.9)
       '@jest/transform': 26.6.2
-      '@mdx-js/loader': 1.6.22(react@17.0.2)
+      '@mdx-js/loader': 1.6.22(react@16.14.0)
       '@mdx-js/mdx': 1.6.22
-      '@mdx-js/react': 1.6.22(react@17.0.2)
-      '@storybook/addons': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/api': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/builder-webpack4': 6.4.9(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)
+      '@mdx-js/react': 1.6.22(react@16.14.0)
+      '@storybook/addons': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/api': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/builder-webpack4': 6.4.9(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)
       '@storybook/client-logger': 6.4.9
-      '@storybook/components': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/core': 6.4.9(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)(webpack@5.90.1)
+      '@storybook/components': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/core': 6.4.9(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)(webpack@5.90.1)
       '@storybook/core-events': 6.4.9
       '@storybook/csf': 0.0.2--canary.87bc651.0
       '@storybook/csf-tools': 6.4.9
       '@storybook/node-logger': 6.4.9
       '@storybook/postinstall': 6.4.9
-      '@storybook/preview-web': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/source-loader': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/store': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/theming': 6.4.9(react-dom@17.0.2)(react@17.0.2)
+      '@storybook/preview-web': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/source-loader': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/store': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/theming': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       acorn: 7.4.1
       acorn-jsx: 5.3.2(acorn@7.4.1)
       acorn-walk: 7.2.0
@@ -10108,14 +10074,15 @@ snapshots:
       p-limit: 3.1.0
       prettier: 2.8.8
       prop-types: 15.8.1
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      react-element-to-jsx-string: 14.3.4(react-dom@17.0.2)(react@17.0.2)
+      react-element-to-jsx-string: 14.3.4(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       regenerator-runtime: 0.13.11
       remark-external-links: 8.0.0
       remark-slug: 6.1.0
       ts-dedent: 2.2.0
       util-deprecate: 1.0.2
+    optionalDependencies:
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
       webpack: 5.90.1
     transitivePeerDependencies:
       - '@storybook/builder-webpack5'
@@ -10132,26 +10099,27 @@ snapshots:
       - webpack-cli
       - webpack-command
 
-  '@storybook/addon-essentials@6.4.9(@babel/core@7.23.9)(babel-loader@8.3.0)(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)(webpack@5.90.1)':
+  '@storybook/addon-essentials@6.4.9(@babel/core@7.23.9)(babel-loader@8.3.0(@babel/core@7.23.9)(webpack@5.90.1))(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)(webpack@5.90.1)':
     dependencies:
       '@babel/core': 7.23.9
-      '@storybook/addon-actions': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/addon-backgrounds': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/addon-controls': 6.4.9(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)
-      '@storybook/addon-docs': 6.4.9(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)(webpack@5.90.1)
-      '@storybook/addon-measure': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/addon-outline': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/addon-toolbars': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/addon-viewport': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/addons': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/api': 6.4.9(react-dom@17.0.2)(react@17.0.2)
+      '@storybook/addon-actions': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/addon-backgrounds': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/addon-controls': 6.4.9(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)
+      '@storybook/addon-docs': 6.4.9(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)(webpack@5.90.1)
+      '@storybook/addon-measure': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/addon-outline': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/addon-toolbars': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/addon-viewport': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/addons': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/api': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/node-logger': 6.4.9
       babel-loader: 8.3.0(@babel/core@7.23.9)(webpack@5.90.1)
       core-js: 3.35.1
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
       regenerator-runtime: 0.13.11
       ts-dedent: 2.2.0
+    optionalDependencies:
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
       webpack: 5.90.1
     transitivePeerDependencies:
       - '@storybook/angular'
@@ -10176,95 +10144,100 @@ snapshots:
       - webpack-cli
       - webpack-command
 
-  '@storybook/addon-links@6.4.9(react-dom@17.0.2)(react@17.0.2)':
+  '@storybook/addon-links@6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)':
     dependencies:
-      '@storybook/addons': 6.4.9(react-dom@17.0.2)(react@17.0.2)
+      '@storybook/addons': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/client-logger': 6.4.9
       '@storybook/core-events': 6.4.9
       '@storybook/csf': 0.0.2--canary.87bc651.0
-      '@storybook/router': 6.4.9(react-dom@17.0.2)(react@17.0.2)
+      '@storybook/router': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@types/qs': 6.9.11
       core-js: 3.35.1
       global: 4.4.0
       prop-types: 15.8.1
       qs: 6.11.2
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
       regenerator-runtime: 0.13.11
       ts-dedent: 2.2.0
+    optionalDependencies:
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
 
-  '@storybook/addon-measure@6.4.9(react-dom@17.0.2)(react@17.0.2)':
+  '@storybook/addon-measure@6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)':
     dependencies:
-      '@storybook/addons': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/api': 6.4.9(react-dom@17.0.2)(react@17.0.2)
+      '@storybook/addons': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/api': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/client-logger': 6.4.9
-      '@storybook/components': 6.4.9(react-dom@17.0.2)(react@17.0.2)
+      '@storybook/components': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/core-events': 6.4.9
       '@storybook/csf': 0.0.2--canary.87bc651.0
       core-js: 3.35.1
       global: 4.4.0
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
+    optionalDependencies:
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
     transitivePeerDependencies:
       - '@types/react'
 
-  '@storybook/addon-outline@6.4.9(react-dom@17.0.2)(react@17.0.2)':
+  '@storybook/addon-outline@6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)':
     dependencies:
-      '@storybook/addons': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/api': 6.4.9(react-dom@17.0.2)(react@17.0.2)
+      '@storybook/addons': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/api': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/client-logger': 6.4.9
-      '@storybook/components': 6.4.9(react-dom@17.0.2)(react@17.0.2)
+      '@storybook/components': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/core-events': 6.4.9
       '@storybook/csf': 0.0.2--canary.87bc651.0
       core-js: 3.35.1
       global: 4.4.0
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
       regenerator-runtime: 0.13.11
       ts-dedent: 2.2.0
+    optionalDependencies:
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
     transitivePeerDependencies:
       - '@types/react'
 
-  '@storybook/addon-toolbars@6.4.9(react-dom@17.0.2)(react@17.0.2)':
+  '@storybook/addon-toolbars@6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)':
     dependencies:
-      '@storybook/addons': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/api': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/components': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/theming': 6.4.9(react-dom@17.0.2)(react@17.0.2)
+      '@storybook/addons': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/api': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/components': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/theming': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       core-js: 3.35.1
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
       regenerator-runtime: 0.13.11
+    optionalDependencies:
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
     transitivePeerDependencies:
       - '@types/react'
 
-  '@storybook/addon-viewport@6.4.9(react-dom@17.0.2)(react@17.0.2)':
+  '@storybook/addon-viewport@6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)':
     dependencies:
-      '@storybook/addons': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/api': 6.4.9(react-dom@17.0.2)(react@17.0.2)
+      '@storybook/addons': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/api': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/client-logger': 6.4.9
-      '@storybook/components': 6.4.9(react-dom@17.0.2)(react@17.0.2)
+      '@storybook/components': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/core-events': 6.4.9
-      '@storybook/theming': 6.4.9(react-dom@17.0.2)(react@17.0.2)
+      '@storybook/theming': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       core-js: 3.35.1
       global: 4.4.0
       memoizerific: 1.11.3
       prop-types: 15.8.1
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
       regenerator-runtime: 0.13.11
+    optionalDependencies:
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
     transitivePeerDependencies:
       - '@types/react'
 
-  '@storybook/addons@6.4.9(react-dom@16.14.0)(react@16.14.0)':
+  '@storybook/addons@6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)':
     dependencies:
-      '@storybook/api': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/api': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/channels': 6.4.9
       '@storybook/client-logger': 6.4.9
       '@storybook/core-events': 6.4.9
       '@storybook/csf': 0.0.2--canary.87bc651.0
-      '@storybook/router': 6.4.9(react-dom@16.14.0)(react@16.14.0)
-      '@storybook/theming': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/router': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/theming': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@types/webpack-env': 1.18.4
       core-js: 3.35.1
       global: 4.4.0
@@ -10272,31 +10245,15 @@ snapshots:
       react-dom: 16.14.0(react@16.14.0)
       regenerator-runtime: 0.13.11
 
-  '@storybook/addons@6.4.9(react-dom@17.0.2)(react@17.0.2)':
-    dependencies:
-      '@storybook/api': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/channels': 6.4.9
-      '@storybook/client-logger': 6.4.9
-      '@storybook/core-events': 6.4.9
-      '@storybook/csf': 0.0.2--canary.87bc651.0
-      '@storybook/router': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/theming': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@types/webpack-env': 1.18.4
-      core-js: 3.35.1
-      global: 4.4.0
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      regenerator-runtime: 0.13.11
-
-  '@storybook/api@6.4.9(react-dom@16.14.0)(react@16.14.0)':
+  '@storybook/api@6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)':
     dependencies:
       '@storybook/channels': 6.4.9
       '@storybook/client-logger': 6.4.9
       '@storybook/core-events': 6.4.9
       '@storybook/csf': 0.0.2--canary.87bc651.0
-      '@storybook/router': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/router': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/semver': 7.3.2
-      '@storybook/theming': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/theming': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       core-js: 3.35.1
       fast-deep-equal: 3.1.3
       global: 4.4.0
@@ -10310,29 +10267,7 @@ snapshots:
       ts-dedent: 2.2.0
       util-deprecate: 1.0.2
 
-  '@storybook/api@6.4.9(react-dom@17.0.2)(react@17.0.2)':
-    dependencies:
-      '@storybook/channels': 6.4.9
-      '@storybook/client-logger': 6.4.9
-      '@storybook/core-events': 6.4.9
-      '@storybook/csf': 0.0.2--canary.87bc651.0
-      '@storybook/router': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/semver': 7.3.2
-      '@storybook/theming': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      core-js: 3.35.1
-      fast-deep-equal: 3.1.3
-      global: 4.4.0
-      lodash: 4.17.21
-      memoizerific: 1.11.3
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      regenerator-runtime: 0.13.11
-      store2: 2.14.2
-      telejson: 5.3.3
-      ts-dedent: 2.2.0
-      util-deprecate: 1.0.2
-
-  '@storybook/builder-webpack4@6.4.9(eslint@7.32.0)(react-dom@16.14.0)(react@16.14.0)(typescript@5.3.3)':
+  '@storybook/builder-webpack4@6.4.9(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)':
     dependencies:
       '@babel/core': 7.23.9
       '@babel/plugin-proposal-class-properties': 7.18.6(@babel/core@7.23.9)
@@ -10355,22 +10290,22 @@ snapshots:
       '@babel/preset-env': 7.23.9(@babel/core@7.23.9)
       '@babel/preset-react': 7.23.3(@babel/core@7.23.9)
       '@babel/preset-typescript': 7.23.3(@babel/core@7.23.9)
-      '@storybook/addons': 6.4.9(react-dom@16.14.0)(react@16.14.0)
-      '@storybook/api': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/addons': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/api': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/channel-postmessage': 6.4.9
       '@storybook/channels': 6.4.9
-      '@storybook/client-api': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/client-api': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/client-logger': 6.4.9
-      '@storybook/components': 6.4.9(react-dom@16.14.0)(react@16.14.0)
-      '@storybook/core-common': 6.4.9(eslint@7.32.0)(react-dom@16.14.0)(react@16.14.0)(typescript@5.3.3)
+      '@storybook/components': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/core-common': 6.4.9(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)
       '@storybook/core-events': 6.4.9
       '@storybook/node-logger': 6.4.9
-      '@storybook/preview-web': 6.4.9(react-dom@16.14.0)(react@16.14.0)
-      '@storybook/router': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/preview-web': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/router': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/semver': 7.3.2
-      '@storybook/store': 6.4.9(react-dom@16.14.0)(react@16.14.0)
-      '@storybook/theming': 6.4.9(react-dom@16.14.0)(react@16.14.0)
-      '@storybook/ui': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/store': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/theming': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/ui': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@types/node': 14.18.63
       '@types/webpack': 4.41.38
       autoprefixer: 9.8.8
@@ -10399,98 +10334,15 @@ snapshots:
       style-loader: 1.3.0(webpack@4.47.0)
       terser-webpack-plugin: 4.2.3(webpack@4.47.0)
       ts-dedent: 2.2.0
-      typescript: 5.3.3
-      url-loader: 4.1.1(file-loader@6.2.0)(webpack@4.47.0)
+      url-loader: 4.1.1(file-loader@6.2.0(webpack@5.90.1))(webpack@4.47.0)
       util-deprecate: 1.0.2
       webpack: 4.47.0
       webpack-dev-middleware: 3.7.3(webpack@4.47.0)
       webpack-filter-warnings-plugin: 1.2.1(webpack@4.47.0)
       webpack-hot-middleware: 2.26.1
       webpack-virtual-modules: 0.2.2
-    transitivePeerDependencies:
-      - '@types/react'
-      - bluebird
-      - eslint
-      - supports-color
-      - vue-template-compiler
-      - webpack-cli
-      - webpack-command
-
-  '@storybook/builder-webpack4@6.4.9(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)':
-    dependencies:
-      '@babel/core': 7.23.9
-      '@babel/plugin-proposal-class-properties': 7.18.6(@babel/core@7.23.9)
-      '@babel/plugin-proposal-decorators': 7.23.9(@babel/core@7.23.9)
-      '@babel/plugin-proposal-export-default-from': 7.23.3(@babel/core@7.23.9)
-      '@babel/plugin-proposal-nullish-coalescing-operator': 7.18.6(@babel/core@7.23.9)
-      '@babel/plugin-proposal-object-rest-spread': 7.20.7(@babel/core@7.23.9)
-      '@babel/plugin-proposal-optional-chaining': 7.21.0(@babel/core@7.23.9)
-      '@babel/plugin-proposal-private-methods': 7.18.6(@babel/core@7.23.9)
-      '@babel/plugin-syntax-dynamic-import': 7.8.3(@babel/core@7.23.9)
-      '@babel/plugin-transform-arrow-functions': 7.23.3(@babel/core@7.23.9)
-      '@babel/plugin-transform-block-scoping': 7.23.4(@babel/core@7.23.9)
-      '@babel/plugin-transform-classes': 7.23.8(@babel/core@7.23.9)
-      '@babel/plugin-transform-destructuring': 7.23.3(@babel/core@7.23.9)
-      '@babel/plugin-transform-for-of': 7.23.6(@babel/core@7.23.9)
-      '@babel/plugin-transform-parameters': 7.23.3(@babel/core@7.23.9)
-      '@babel/plugin-transform-shorthand-properties': 7.23.3(@babel/core@7.23.9)
-      '@babel/plugin-transform-spread': 7.23.3(@babel/core@7.23.9)
-      '@babel/plugin-transform-template-literals': 7.23.3(@babel/core@7.23.9)
-      '@babel/preset-env': 7.23.9(@babel/core@7.23.9)
-      '@babel/preset-react': 7.23.3(@babel/core@7.23.9)
-      '@babel/preset-typescript': 7.23.3(@babel/core@7.23.9)
-      '@storybook/addons': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/api': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/channel-postmessage': 6.4.9
-      '@storybook/channels': 6.4.9
-      '@storybook/client-api': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/client-logger': 6.4.9
-      '@storybook/components': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/core-common': 6.4.9(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)
-      '@storybook/core-events': 6.4.9
-      '@storybook/node-logger': 6.4.9
-      '@storybook/preview-web': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/router': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/semver': 7.3.2
-      '@storybook/store': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/theming': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/ui': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@types/node': 14.18.63
-      '@types/webpack': 4.41.38
-      autoprefixer: 9.8.8
-      babel-loader: 8.3.0(@babel/core@7.23.9)(webpack@4.47.0)
-      babel-plugin-macros: 2.8.0
-      babel-plugin-polyfill-corejs3: 0.1.7(@babel/core@7.23.9)
-      case-sensitive-paths-webpack-plugin: 2.4.0
-      core-js: 3.35.1
-      css-loader: 3.6.0(webpack@4.47.0)
-      file-loader: 6.2.0(webpack@4.47.0)
-      find-up: 5.0.0
-      fork-ts-checker-webpack-plugin: 4.1.6(eslint@7.32.0)(typescript@5.3.3)(webpack@4.47.0)
-      glob: 7.2.3
-      glob-promise: 3.4.0(glob@7.2.3)
-      global: 4.4.0
-      html-webpack-plugin: 4.5.2(webpack@4.47.0)
-      pnp-webpack-plugin: 1.6.4(typescript@5.3.3)
-      postcss: 7.0.39
-      postcss-flexbugs-fixes: 4.2.1
-      postcss-loader: 4.3.0(postcss@7.0.39)(webpack@4.47.0)
-      raw-loader: 4.0.2(webpack@4.47.0)
-      react: 17.0.2
-      react-dev-utils: 11.0.4(eslint@7.32.0)(typescript@5.3.3)(webpack@4.47.0)
-      react-dom: 17.0.2(react@17.0.2)
-      stable: 0.1.8
-      style-loader: 1.3.0(webpack@4.47.0)
-      terser-webpack-plugin: 4.2.3(webpack@4.47.0)
-      ts-dedent: 2.2.0
+    optionalDependencies:
       typescript: 5.3.3
-      url-loader: 4.1.1(file-loader@6.2.0)(webpack@4.47.0)
-      util-deprecate: 1.0.2
-      webpack: 4.47.0
-      webpack-dev-middleware: 3.7.3(webpack@4.47.0)
-      webpack-filter-warnings-plugin: 1.2.1(webpack@4.47.0)
-      webpack-hot-middleware: 2.26.1
-      webpack-virtual-modules: 0.2.2
     transitivePeerDependencies:
       - '@types/react'
       - bluebird
@@ -10524,15 +10376,15 @@ snapshots:
       ts-dedent: 2.2.0
       util-deprecate: 1.0.2
 
-  '@storybook/client-api@6.4.9(react-dom@16.14.0)(react@16.14.0)':
+  '@storybook/client-api@6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)':
     dependencies:
-      '@storybook/addons': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/addons': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/channel-postmessage': 6.4.9
       '@storybook/channels': 6.4.9
       '@storybook/client-logger': 6.4.9
       '@storybook/core-events': 6.4.9
       '@storybook/csf': 0.0.2--canary.87bc651.0
-      '@storybook/store': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/store': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@types/qs': 6.9.11
       '@types/webpack-env': 1.18.4
       core-js: 3.35.1
@@ -10549,42 +10401,17 @@ snapshots:
       ts-dedent: 2.2.0
       util-deprecate: 1.0.2
 
-  '@storybook/client-api@6.4.9(react-dom@17.0.2)(react@17.0.2)':
-    dependencies:
-      '@storybook/addons': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/channel-postmessage': 6.4.9
-      '@storybook/channels': 6.4.9
-      '@storybook/client-logger': 6.4.9
-      '@storybook/core-events': 6.4.9
-      '@storybook/csf': 0.0.2--canary.87bc651.0
-      '@storybook/store': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@types/qs': 6.9.11
-      '@types/webpack-env': 1.18.4
-      core-js: 3.35.1
-      fast-deep-equal: 3.1.3
-      global: 4.4.0
-      lodash: 4.17.21
-      memoizerific: 1.11.3
-      qs: 6.11.2
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      regenerator-runtime: 0.13.11
-      store2: 2.14.2
-      synchronous-promise: 2.0.17
-      ts-dedent: 2.2.0
-      util-deprecate: 1.0.2
-
   '@storybook/client-logger@6.4.9':
     dependencies:
       core-js: 3.35.1
       global: 4.4.0
 
-  '@storybook/components@6.4.9(react-dom@16.14.0)(react@16.14.0)':
+  '@storybook/components@6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)':
     dependencies:
       '@popperjs/core': 2.11.8
       '@storybook/client-logger': 6.4.9
       '@storybook/csf': 0.0.2--canary.87bc651.0
-      '@storybook/theming': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/theming': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@types/color-convert': 2.0.3
       '@types/overlayscrollbars': 1.12.5
       '@types/react-syntax-highlighter': 11.0.5
@@ -10599,9 +10426,9 @@ snapshots:
       polished: 4.3.1
       prop-types: 15.8.1
       react: 16.14.0
-      react-colorful: 5.6.1(react-dom@16.14.0)(react@16.14.0)
+      react-colorful: 5.6.1(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       react-dom: 16.14.0(react@16.14.0)
-      react-popper-tooltip: 3.1.1(react-dom@16.14.0)(react@16.14.0)
+      react-popper-tooltip: 3.1.1(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       react-syntax-highlighter: 13.5.3(react@16.14.0)
       react-textarea-autosize: 8.5.3(react@16.14.0)
       regenerator-runtime: 0.13.11
@@ -10610,49 +10437,18 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
 
-  '@storybook/components@6.4.9(react-dom@17.0.2)(react@17.0.2)':
+  '@storybook/core-client@6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)(webpack@4.47.0)':
     dependencies:
-      '@popperjs/core': 2.11.8
-      '@storybook/client-logger': 6.4.9
-      '@storybook/csf': 0.0.2--canary.87bc651.0
-      '@storybook/theming': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@types/color-convert': 2.0.3
-      '@types/overlayscrollbars': 1.12.5
-      '@types/react-syntax-highlighter': 11.0.5
-      color-convert: 2.0.1
-      core-js: 3.35.1
-      fast-deep-equal: 3.1.3
-      global: 4.4.0
-      lodash: 4.17.21
-      markdown-to-jsx: 7.4.1(react@17.0.2)
-      memoizerific: 1.11.3
-      overlayscrollbars: 1.13.3
-      polished: 4.3.1
-      prop-types: 15.8.1
-      react: 17.0.2
-      react-colorful: 5.6.1(react-dom@17.0.2)(react@17.0.2)
-      react-dom: 17.0.2(react@17.0.2)
-      react-popper-tooltip: 3.1.1(react-dom@17.0.2)(react@17.0.2)
-      react-syntax-highlighter: 13.5.3(react@17.0.2)
-      react-textarea-autosize: 8.5.3(react@17.0.2)
-      regenerator-runtime: 0.13.11
-      ts-dedent: 2.2.0
-      util-deprecate: 1.0.2
-    transitivePeerDependencies:
-      - '@types/react'
-
-  '@storybook/core-client@6.4.9(react-dom@16.14.0)(react@16.14.0)(typescript@5.3.3)(webpack@4.47.0)':
-    dependencies:
-      '@storybook/addons': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/addons': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/channel-postmessage': 6.4.9
       '@storybook/channel-websocket': 6.4.9
-      '@storybook/client-api': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/client-api': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/client-logger': 6.4.9
       '@storybook/core-events': 6.4.9
       '@storybook/csf': 0.0.2--canary.87bc651.0
-      '@storybook/preview-web': 6.4.9(react-dom@16.14.0)(react@16.14.0)
-      '@storybook/store': 6.4.9(react-dom@16.14.0)(react@16.14.0)
-      '@storybook/ui': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/preview-web': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/store': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/ui': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       airbnb-js-shims: 2.2.1
       ansi-to-html: 0.6.15
       core-js: 3.35.1
@@ -10663,25 +10459,26 @@ snapshots:
       react-dom: 16.14.0(react@16.14.0)
       regenerator-runtime: 0.13.11
       ts-dedent: 2.2.0
-      typescript: 5.3.3
       unfetch: 4.2.0
       util-deprecate: 1.0.2
       webpack: 4.47.0
+    optionalDependencies:
+      typescript: 5.3.3
     transitivePeerDependencies:
       - '@types/react'
 
-  '@storybook/core-client@6.4.9(react-dom@16.14.0)(react@16.14.0)(typescript@5.3.3)(webpack@5.90.1)':
+  '@storybook/core-client@6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)(webpack@5.90.1)':
     dependencies:
-      '@storybook/addons': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/addons': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/channel-postmessage': 6.4.9
       '@storybook/channel-websocket': 6.4.9
-      '@storybook/client-api': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/client-api': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/client-logger': 6.4.9
       '@storybook/core-events': 6.4.9
       '@storybook/csf': 0.0.2--canary.87bc651.0
-      '@storybook/preview-web': 6.4.9(react-dom@16.14.0)(react@16.14.0)
-      '@storybook/store': 6.4.9(react-dom@16.14.0)(react@16.14.0)
-      '@storybook/ui': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/preview-web': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/store': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/ui': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       airbnb-js-shims: 2.2.1
       ansi-to-html: 0.6.15
       core-js: 3.35.1
@@ -10692,72 +10489,15 @@ snapshots:
       react-dom: 16.14.0(react@16.14.0)
       regenerator-runtime: 0.13.11
       ts-dedent: 2.2.0
-      typescript: 5.3.3
       unfetch: 4.2.0
       util-deprecate: 1.0.2
       webpack: 5.90.1
-    transitivePeerDependencies:
-      - '@types/react'
-
-  '@storybook/core-client@6.4.9(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)(webpack@4.47.0)':
-    dependencies:
-      '@storybook/addons': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/channel-postmessage': 6.4.9
-      '@storybook/channel-websocket': 6.4.9
-      '@storybook/client-api': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/client-logger': 6.4.9
-      '@storybook/core-events': 6.4.9
-      '@storybook/csf': 0.0.2--canary.87bc651.0
-      '@storybook/preview-web': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/store': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/ui': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      airbnb-js-shims: 2.2.1
-      ansi-to-html: 0.6.15
-      core-js: 3.35.1
-      global: 4.4.0
-      lodash: 4.17.21
-      qs: 6.11.2
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      regenerator-runtime: 0.13.11
-      ts-dedent: 2.2.0
+    optionalDependencies:
       typescript: 5.3.3
-      unfetch: 4.2.0
-      util-deprecate: 1.0.2
-      webpack: 4.47.0
     transitivePeerDependencies:
       - '@types/react'
 
-  '@storybook/core-client@6.4.9(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)(webpack@5.90.1)':
-    dependencies:
-      '@storybook/addons': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/channel-postmessage': 6.4.9
-      '@storybook/channel-websocket': 6.4.9
-      '@storybook/client-api': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/client-logger': 6.4.9
-      '@storybook/core-events': 6.4.9
-      '@storybook/csf': 0.0.2--canary.87bc651.0
-      '@storybook/preview-web': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/store': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/ui': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      airbnb-js-shims: 2.2.1
-      ansi-to-html: 0.6.15
-      core-js: 3.35.1
-      global: 4.4.0
-      lodash: 4.17.21
-      qs: 6.11.2
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      regenerator-runtime: 0.13.11
-      ts-dedent: 2.2.0
-      typescript: 5.3.3
-      unfetch: 4.2.0
-      util-deprecate: 1.0.2
-      webpack: 5.90.1
-    transitivePeerDependencies:
-      - '@types/react'
-
-  '@storybook/core-common@6.4.9(eslint@7.32.0)(react-dom@16.14.0)(react@16.14.0)(typescript@5.3.3)':
+  '@storybook/core-common@6.4.9(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)':
     dependencies:
       '@babel/core': 7.23.9
       '@babel/plugin-proposal-class-properties': 7.18.6(@babel/core@7.23.9)
@@ -10808,70 +10548,10 @@ snapshots:
       slash: 3.0.0
       telejson: 5.3.3
       ts-dedent: 2.2.0
-      typescript: 5.3.3
       util-deprecate: 1.0.2
       webpack: 4.47.0
-    transitivePeerDependencies:
-      - eslint
-      - supports-color
-      - vue-template-compiler
-      - webpack-cli
-      - webpack-command
-
-  '@storybook/core-common@6.4.9(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)':
-    dependencies:
-      '@babel/core': 7.23.9
-      '@babel/plugin-proposal-class-properties': 7.18.6(@babel/core@7.23.9)
-      '@babel/plugin-proposal-decorators': 7.23.9(@babel/core@7.23.9)
-      '@babel/plugin-proposal-export-default-from': 7.23.3(@babel/core@7.23.9)
-      '@babel/plugin-proposal-nullish-coalescing-operator': 7.18.6(@babel/core@7.23.9)
-      '@babel/plugin-proposal-object-rest-spread': 7.20.7(@babel/core@7.23.9)
-      '@babel/plugin-proposal-optional-chaining': 7.21.0(@babel/core@7.23.9)
-      '@babel/plugin-proposal-private-methods': 7.18.6(@babel/core@7.23.9)
-      '@babel/plugin-syntax-dynamic-import': 7.8.3(@babel/core@7.23.9)
-      '@babel/plugin-transform-arrow-functions': 7.23.3(@babel/core@7.23.9)
-      '@babel/plugin-transform-block-scoping': 7.23.4(@babel/core@7.23.9)
-      '@babel/plugin-transform-classes': 7.23.8(@babel/core@7.23.9)
-      '@babel/plugin-transform-destructuring': 7.23.3(@babel/core@7.23.9)
-      '@babel/plugin-transform-for-of': 7.23.6(@babel/core@7.23.9)
-      '@babel/plugin-transform-parameters': 7.23.3(@babel/core@7.23.9)
-      '@babel/plugin-transform-shorthand-properties': 7.23.3(@babel/core@7.23.9)
-      '@babel/plugin-transform-spread': 7.23.3(@babel/core@7.23.9)
-      '@babel/preset-env': 7.23.9(@babel/core@7.23.9)
-      '@babel/preset-react': 7.23.3(@babel/core@7.23.9)
-      '@babel/preset-typescript': 7.23.3(@babel/core@7.23.9)
-      '@babel/register': 7.23.7(@babel/core@7.23.9)
-      '@storybook/node-logger': 6.4.9
-      '@storybook/semver': 7.3.2
-      '@types/node': 14.18.63
-      '@types/pretty-hrtime': 1.0.3
-      babel-loader: 8.3.0(@babel/core@7.23.9)(webpack@4.47.0)
-      babel-plugin-macros: 3.1.0
-      babel-plugin-polyfill-corejs3: 0.1.7(@babel/core@7.23.9)
-      chalk: 4.1.2
-      core-js: 3.35.1
-      express: 4.18.2
-      file-system-cache: 1.1.0
-      find-up: 5.0.0
-      fork-ts-checker-webpack-plugin: 6.5.3(eslint@7.32.0)(typescript@5.3.3)(webpack@4.47.0)
-      fs-extra: 9.1.0
-      glob: 7.2.3
-      handlebars: 4.7.8
-      interpret: 2.2.0
-      json5: 2.2.3
-      lazy-universal-dotenv: 3.0.1
-      picomatch: 2.3.1
-      pkg-dir: 5.0.0
-      pretty-hrtime: 1.0.3
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      resolve-from: 5.0.0
-      slash: 3.0.0
-      telejson: 5.3.3
-      ts-dedent: 2.2.0
+    optionalDependencies:
       typescript: 5.3.3
-      util-deprecate: 1.0.2
-      webpack: 4.47.0
     transitivePeerDependencies:
       - eslint
       - supports-color
@@ -10883,19 +10563,19 @@ snapshots:
     dependencies:
       core-js: 3.35.1
 
-  '@storybook/core-server@6.4.9(eslint@7.32.0)(react-dom@16.14.0)(react@16.14.0)(typescript@5.3.3)':
+  '@storybook/core-server@6.4.9(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)':
     dependencies:
       '@discoveryjs/json-ext': 0.5.7
-      '@storybook/builder-webpack4': 6.4.9(eslint@7.32.0)(react-dom@16.14.0)(react@16.14.0)(typescript@5.3.3)
-      '@storybook/core-client': 6.4.9(react-dom@16.14.0)(react@16.14.0)(typescript@5.3.3)(webpack@4.47.0)
-      '@storybook/core-common': 6.4.9(eslint@7.32.0)(react-dom@16.14.0)(react@16.14.0)(typescript@5.3.3)
+      '@storybook/builder-webpack4': 6.4.9(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)
+      '@storybook/core-client': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)(webpack@4.47.0)
+      '@storybook/core-common': 6.4.9(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)
       '@storybook/core-events': 6.4.9
       '@storybook/csf': 0.0.2--canary.87bc651.0
       '@storybook/csf-tools': 6.4.9
-      '@storybook/manager-webpack4': 6.4.9(eslint@7.32.0)(react-dom@16.14.0)(react@16.14.0)(typescript@5.3.3)
+      '@storybook/manager-webpack4': 6.4.9(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)
       '@storybook/node-logger': 6.4.9
       '@storybook/semver': 7.3.2
-      '@storybook/store': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/store': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@types/node': 14.18.63
       '@types/node-fetch': 2.6.11
       '@types/pretty-hrtime': 1.0.3
@@ -10925,11 +10605,12 @@ snapshots:
       slash: 3.0.0
       telejson: 5.3.3
       ts-dedent: 2.2.0
-      typescript: 5.3.3
       util-deprecate: 1.0.2
       watchpack: 2.4.0
       webpack: 4.47.0
       ws: 8.16.0
+    optionalDependencies:
+      typescript: 5.3.3
     transitivePeerDependencies:
       - '@types/react'
       - bluebird
@@ -10942,94 +10623,15 @@ snapshots:
       - webpack-cli
       - webpack-command
 
-  '@storybook/core-server@6.4.9(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)':
+  '@storybook/core@6.4.9(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)(webpack@5.90.1)':
     dependencies:
-      '@discoveryjs/json-ext': 0.5.7
-      '@storybook/builder-webpack4': 6.4.9(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)
-      '@storybook/core-client': 6.4.9(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)(webpack@4.47.0)
-      '@storybook/core-common': 6.4.9(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)
-      '@storybook/core-events': 6.4.9
-      '@storybook/csf': 0.0.2--canary.87bc651.0
-      '@storybook/csf-tools': 6.4.9
-      '@storybook/manager-webpack4': 6.4.9(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)
-      '@storybook/node-logger': 6.4.9
-      '@storybook/semver': 7.3.2
-      '@storybook/store': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@types/node': 14.18.63
-      '@types/node-fetch': 2.6.11
-      '@types/pretty-hrtime': 1.0.3
-      '@types/webpack': 4.41.38
-      better-opn: 2.1.1
-      boxen: 5.1.2
-      chalk: 4.1.2
-      cli-table3: 0.6.0
-      commander: 6.2.1
-      compression: 1.7.4
-      core-js: 3.35.1
-      cpy: 8.1.2
-      detect-port: 1.5.1
-      express: 4.18.2
-      file-system-cache: 1.1.0
-      fs-extra: 9.1.0
-      globby: 11.1.0
-      ip: 1.1.8
-      lodash: 4.17.21
-      node-fetch: 2.7.0
-      pretty-hrtime: 1.0.3
-      prompts: 2.4.2
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      regenerator-runtime: 0.13.11
-      serve-favicon: 2.5.0
-      slash: 3.0.0
-      telejson: 5.3.3
-      ts-dedent: 2.2.0
-      typescript: 5.3.3
-      util-deprecate: 1.0.2
-      watchpack: 2.4.0
-      webpack: 4.47.0
-      ws: 8.16.0
-    transitivePeerDependencies:
-      - '@types/react'
-      - bluebird
-      - bufferutil
-      - encoding
-      - eslint
-      - supports-color
-      - utf-8-validate
-      - vue-template-compiler
-      - webpack-cli
-      - webpack-command
-
-  '@storybook/core@6.4.9(eslint@7.32.0)(react-dom@16.14.0)(react@16.14.0)(typescript@5.3.3)(webpack@5.90.1)':
-    dependencies:
-      '@storybook/core-client': 6.4.9(react-dom@16.14.0)(react@16.14.0)(typescript@5.3.3)(webpack@5.90.1)
-      '@storybook/core-server': 6.4.9(eslint@7.32.0)(react-dom@16.14.0)(react@16.14.0)(typescript@5.3.3)
+      '@storybook/core-client': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)(webpack@5.90.1)
+      '@storybook/core-server': 6.4.9(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)
       react: 16.14.0
       react-dom: 16.14.0(react@16.14.0)
-      typescript: 5.3.3
       webpack: 5.90.1
-    transitivePeerDependencies:
-      - '@storybook/manager-webpack5'
-      - '@types/react'
-      - bluebird
-      - bufferutil
-      - encoding
-      - eslint
-      - supports-color
-      - utf-8-validate
-      - vue-template-compiler
-      - webpack-cli
-      - webpack-command
-
-  '@storybook/core@6.4.9(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)(webpack@5.90.1)':
-    dependencies:
-      '@storybook/core-client': 6.4.9(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)(webpack@5.90.1)
-      '@storybook/core-server': 6.4.9(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
+    optionalDependencies:
       typescript: 5.3.3
-      webpack: 5.90.1
     transitivePeerDependencies:
       - '@storybook/manager-webpack5'
       - '@types/react'
@@ -11080,15 +10682,15 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@storybook/ember@6.4.9(@babel/core@7.23.9)(@glint/template@1.3.0)(babel-plugin-ember-modules-api-polyfill@2.13.4)(babel-plugin-htmlbars-inline-precompile@3.2.0)(ember-source@3.28.12)(eslint@7.32.0)(typescript@5.3.3)(webpack@5.90.1)':
+  '@storybook/ember@6.4.9(@babel/core@7.23.9)(@glint/template@1.3.0)(babel-plugin-ember-modules-api-polyfill@3.5.0)(babel-plugin-htmlbars-inline-precompile@5.3.1)(ember-source@3.28.12(@babel/core@7.23.9))(eslint@7.32.0)(typescript@5.3.3)(webpack@5.90.1)':
     dependencies:
       '@babel/core': 7.23.9
-      '@ember/test-helpers': 2.9.4(@babel/core@7.23.9)(@glint/template@1.3.0)(ember-source@3.28.12)
-      '@storybook/core': 6.4.9(eslint@7.32.0)(react-dom@16.14.0)(react@16.14.0)(typescript@5.3.3)(webpack@5.90.1)
-      '@storybook/core-common': 6.4.9(eslint@7.32.0)(react-dom@16.14.0)(react@16.14.0)(typescript@5.3.3)
-      '@storybook/store': 6.4.9(react-dom@16.14.0)(react@16.14.0)
-      babel-plugin-ember-modules-api-polyfill: 2.13.4
-      babel-plugin-htmlbars-inline-precompile: 3.2.0
+      '@ember/test-helpers': 2.9.4(@babel/core@7.23.9)(@glint/template@1.3.0)(ember-source@3.28.12(@babel/core@7.23.9))
+      '@storybook/core': 6.4.9(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)(webpack@5.90.1)
+      '@storybook/core-common': 6.4.9(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)
+      '@storybook/store': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      babel-plugin-ember-modules-api-polyfill: 3.5.0
+      babel-plugin-htmlbars-inline-precompile: 5.3.1
       core-js: 3.35.1
       ember-source: 3.28.12(@babel/core@7.23.9)
       global: 4.4.0
@@ -11115,17 +10717,17 @@ snapshots:
       - webpack-cli
       - webpack-command
 
-  '@storybook/manager-webpack4@6.4.9(eslint@7.32.0)(react-dom@16.14.0)(react@16.14.0)(typescript@5.3.3)':
+  '@storybook/manager-webpack4@6.4.9(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)':
     dependencies:
       '@babel/core': 7.23.9
       '@babel/plugin-transform-template-literals': 7.23.3(@babel/core@7.23.9)
       '@babel/preset-react': 7.23.3(@babel/core@7.23.9)
-      '@storybook/addons': 6.4.9(react-dom@16.14.0)(react@16.14.0)
-      '@storybook/core-client': 6.4.9(react-dom@16.14.0)(react@16.14.0)(typescript@5.3.3)(webpack@4.47.0)
-      '@storybook/core-common': 6.4.9(eslint@7.32.0)(react-dom@16.14.0)(react@16.14.0)(typescript@5.3.3)
+      '@storybook/addons': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/core-client': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)(webpack@4.47.0)
+      '@storybook/core-common': 6.4.9(eslint@7.32.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(typescript@5.3.3)
       '@storybook/node-logger': 6.4.9
-      '@storybook/theming': 6.4.9(react-dom@16.14.0)(react@16.14.0)
-      '@storybook/ui': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/theming': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/ui': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@types/node': 14.18.63
       '@types/webpack': 4.41.38
       babel-loader: 8.3.0(@babel/core@7.23.9)(webpack@4.47.0)
@@ -11150,63 +10752,13 @@ snapshots:
       telejson: 5.3.3
       terser-webpack-plugin: 4.2.3(webpack@4.47.0)
       ts-dedent: 2.2.0
-      typescript: 5.3.3
-      url-loader: 4.1.1(file-loader@6.2.0)(webpack@4.47.0)
+      url-loader: 4.1.1(file-loader@6.2.0(webpack@5.90.1))(webpack@4.47.0)
       util-deprecate: 1.0.2
       webpack: 4.47.0
       webpack-dev-middleware: 3.7.3(webpack@4.47.0)
       webpack-virtual-modules: 0.2.2
-    transitivePeerDependencies:
-      - '@types/react'
-      - bluebird
-      - encoding
-      - eslint
-      - supports-color
-      - vue-template-compiler
-      - webpack-cli
-      - webpack-command
-
-  '@storybook/manager-webpack4@6.4.9(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)':
-    dependencies:
-      '@babel/core': 7.23.9
-      '@babel/plugin-transform-template-literals': 7.23.3(@babel/core@7.23.9)
-      '@babel/preset-react': 7.23.3(@babel/core@7.23.9)
-      '@storybook/addons': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/core-client': 6.4.9(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)(webpack@4.47.0)
-      '@storybook/core-common': 6.4.9(eslint@7.32.0)(react-dom@17.0.2)(react@17.0.2)(typescript@5.3.3)
-      '@storybook/node-logger': 6.4.9
-      '@storybook/theming': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/ui': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@types/node': 14.18.63
-      '@types/webpack': 4.41.38
-      babel-loader: 8.3.0(@babel/core@7.23.9)(webpack@4.47.0)
-      case-sensitive-paths-webpack-plugin: 2.4.0
-      chalk: 4.1.2
-      core-js: 3.35.1
-      css-loader: 3.6.0(webpack@4.47.0)
-      express: 4.18.2
-      file-loader: 6.2.0(webpack@4.47.0)
-      file-system-cache: 1.1.0
-      find-up: 5.0.0
-      fs-extra: 9.1.0
-      html-webpack-plugin: 4.5.2(webpack@4.47.0)
-      node-fetch: 2.7.0
-      pnp-webpack-plugin: 1.6.4(typescript@5.3.3)
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      read-pkg-up: 7.0.1
-      regenerator-runtime: 0.13.11
-      resolve-from: 5.0.0
-      style-loader: 1.3.0(webpack@4.47.0)
-      telejson: 5.3.3
-      terser-webpack-plugin: 4.2.3(webpack@4.47.0)
-      ts-dedent: 2.2.0
+    optionalDependencies:
       typescript: 5.3.3
-      url-loader: 4.1.1(file-loader@6.2.0)(webpack@4.47.0)
-      util-deprecate: 1.0.2
-      webpack: 4.47.0
-      webpack-dev-middleware: 3.7.3(webpack@4.47.0)
-      webpack-virtual-modules: 0.2.2
     transitivePeerDependencies:
       - '@types/react'
       - bluebird
@@ -11229,14 +10781,14 @@ snapshots:
     dependencies:
       core-js: 3.35.1
 
-  '@storybook/preview-web@6.4.9(react-dom@16.14.0)(react@16.14.0)':
+  '@storybook/preview-web@6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)':
     dependencies:
-      '@storybook/addons': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/addons': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/channel-postmessage': 6.4.9
       '@storybook/client-logger': 6.4.9
       '@storybook/core-events': 6.4.9
       '@storybook/csf': 0.0.2--canary.87bc651.0
-      '@storybook/store': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/store': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       ansi-to-html: 0.6.15
       core-js: 3.35.1
       global: 4.4.0
@@ -11250,28 +10802,7 @@ snapshots:
       unfetch: 4.2.0
       util-deprecate: 1.0.2
 
-  '@storybook/preview-web@6.4.9(react-dom@17.0.2)(react@17.0.2)':
-    dependencies:
-      '@storybook/addons': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/channel-postmessage': 6.4.9
-      '@storybook/client-logger': 6.4.9
-      '@storybook/core-events': 6.4.9
-      '@storybook/csf': 0.0.2--canary.87bc651.0
-      '@storybook/store': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      ansi-to-html: 0.6.15
-      core-js: 3.35.1
-      global: 4.4.0
-      lodash: 4.17.21
-      qs: 6.11.2
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      regenerator-runtime: 0.13.11
-      synchronous-promise: 2.0.17
-      ts-dedent: 2.2.0
-      unfetch: 4.2.0
-      util-deprecate: 1.0.2
-
-  '@storybook/router@6.4.9(react-dom@16.14.0)(react@16.14.0)':
+  '@storybook/router@6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)':
     dependencies:
       '@storybook/client-logger': 6.4.9
       core-js: 3.35.1
@@ -11284,23 +10815,7 @@ snapshots:
       react: 16.14.0
       react-dom: 16.14.0(react@16.14.0)
       react-router: 6.22.0(react@16.14.0)
-      react-router-dom: 6.22.0(react-dom@16.14.0)(react@16.14.0)
-      ts-dedent: 2.2.0
-
-  '@storybook/router@6.4.9(react-dom@17.0.2)(react@17.0.2)':
-    dependencies:
-      '@storybook/client-logger': 6.4.9
-      core-js: 3.35.1
-      fast-deep-equal: 3.1.3
-      global: 4.4.0
-      history: 5.0.0
-      lodash: 4.17.21
-      memoizerific: 1.11.3
-      qs: 6.11.2
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      react-router: 6.22.0(react@17.0.2)
-      react-router-dom: 6.22.0(react-dom@17.0.2)(react@17.0.2)
+      react-router-dom: 6.22.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       ts-dedent: 2.2.0
 
   '@storybook/semver@7.3.2':
@@ -11308,9 +10823,9 @@ snapshots:
       core-js: 3.35.1
       find-up: 4.1.0
 
-  '@storybook/source-loader@6.4.9(react-dom@17.0.2)(react@17.0.2)':
+  '@storybook/source-loader@6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)':
     dependencies:
-      '@storybook/addons': 6.4.9(react-dom@17.0.2)(react@17.0.2)
+      '@storybook/addons': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/client-logger': 6.4.9
       '@storybook/csf': 0.0.2--canary.87bc651.0
       core-js: 3.35.1
@@ -11319,13 +10834,13 @@ snapshots:
       loader-utils: 2.0.4
       lodash: 4.17.21
       prettier: 2.8.8
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
       regenerator-runtime: 0.13.11
 
-  '@storybook/store@6.4.9(react-dom@16.14.0)(react@16.14.0)':
+  '@storybook/store@6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)':
     dependencies:
-      '@storybook/addons': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/addons': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/client-logger': 6.4.9
       '@storybook/core-events': 6.4.9
       '@storybook/csf': 0.0.2--canary.87bc651.0
@@ -11343,35 +10858,15 @@ snapshots:
       ts-dedent: 2.2.0
       util-deprecate: 1.0.2
 
-  '@storybook/store@6.4.9(react-dom@17.0.2)(react@17.0.2)':
-    dependencies:
-      '@storybook/addons': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/client-logger': 6.4.9
-      '@storybook/core-events': 6.4.9
-      '@storybook/csf': 0.0.2--canary.87bc651.0
-      core-js: 3.35.1
-      fast-deep-equal: 3.1.3
-      global: 4.4.0
-      lodash: 4.17.21
-      memoizerific: 1.11.3
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      regenerator-runtime: 0.13.11
-      slash: 3.0.0
-      stable: 0.1.8
-      synchronous-promise: 2.0.17
-      ts-dedent: 2.2.0
-      util-deprecate: 1.0.2
-
-  '@storybook/theming@6.4.9(react-dom@16.14.0)(react@16.14.0)':
+  '@storybook/theming@6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)':
     dependencies:
       '@emotion/core': 10.3.1(react@16.14.0)
       '@emotion/is-prop-valid': 0.8.8
-      '@emotion/styled': 10.3.0(@emotion/core@10.3.1)(react@16.14.0)
+      '@emotion/styled': 10.3.0(@emotion/core@10.3.1(react@16.14.0))(react@16.14.0)
       '@storybook/client-logger': 6.4.9
       core-js: 3.35.1
       deep-object-diff: 1.1.9
-      emotion-theming: 10.3.0(@emotion/core@10.3.1)(react@16.14.0)
+      emotion-theming: 10.3.0(@emotion/core@10.3.1(react@16.14.0))(react@16.14.0)
       global: 4.4.0
       memoizerific: 1.11.3
       polished: 4.3.1
@@ -11380,40 +10875,23 @@ snapshots:
       resolve-from: 5.0.0
       ts-dedent: 2.2.0
 
-  '@storybook/theming@6.4.9(react-dom@17.0.2)(react@17.0.2)':
-    dependencies:
-      '@emotion/core': 10.3.1(react@17.0.2)
-      '@emotion/is-prop-valid': 0.8.8
-      '@emotion/styled': 10.3.0(@emotion/core@10.3.1)(react@17.0.2)
-      '@storybook/client-logger': 6.4.9
-      core-js: 3.35.1
-      deep-object-diff: 1.1.9
-      emotion-theming: 10.3.0(@emotion/core@10.3.1)(react@17.0.2)
-      global: 4.4.0
-      memoizerific: 1.11.3
-      polished: 4.3.1
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      resolve-from: 5.0.0
-      ts-dedent: 2.2.0
-
-  '@storybook/ui@6.4.9(react-dom@16.14.0)(react@16.14.0)':
+  '@storybook/ui@6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)':
     dependencies:
       '@emotion/core': 10.3.1(react@16.14.0)
-      '@storybook/addons': 6.4.9(react-dom@16.14.0)(react@16.14.0)
-      '@storybook/api': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/addons': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      '@storybook/api': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/channels': 6.4.9
       '@storybook/client-logger': 6.4.9
-      '@storybook/components': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/components': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/core-events': 6.4.9
-      '@storybook/router': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/router': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       '@storybook/semver': 7.3.2
-      '@storybook/theming': 6.4.9(react-dom@16.14.0)(react@16.14.0)
+      '@storybook/theming': 6.4.9(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       copy-to-clipboard: 3.3.3
       core-js: 3.35.1
       core-js-pure: 3.35.1
       downshift: 6.1.12(react@16.14.0)
-      emotion-theming: 10.3.0(@emotion/core@10.3.1)(react@16.14.0)
+      emotion-theming: 10.3.0(@emotion/core@10.3.1(react@16.14.0))(react@16.14.0)
       fuse.js: 3.6.1
       global: 4.4.0
       lodash: 4.17.21
@@ -11423,43 +10901,8 @@ snapshots:
       qs: 6.11.2
       react: 16.14.0
       react-dom: 16.14.0(react@16.14.0)
-      react-draggable: 4.4.6(react-dom@16.14.0)(react@16.14.0)
-      react-helmet-async: 1.3.0(react-dom@16.14.0)(react@16.14.0)
-      react-sizeme: 3.0.2
-      regenerator-runtime: 0.13.11
-      resolve-from: 5.0.0
-      store2: 2.14.2
-    transitivePeerDependencies:
-      - '@types/react'
-
-  '@storybook/ui@6.4.9(react-dom@17.0.2)(react@17.0.2)':
-    dependencies:
-      '@emotion/core': 10.3.1(react@17.0.2)
-      '@storybook/addons': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/api': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/channels': 6.4.9
-      '@storybook/client-logger': 6.4.9
-      '@storybook/components': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/core-events': 6.4.9
-      '@storybook/router': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      '@storybook/semver': 7.3.2
-      '@storybook/theming': 6.4.9(react-dom@17.0.2)(react@17.0.2)
-      copy-to-clipboard: 3.3.3
-      core-js: 3.35.1
-      core-js-pure: 3.35.1
-      downshift: 6.1.12(react@17.0.2)
-      emotion-theming: 10.3.0(@emotion/core@10.3.1)(react@17.0.2)
-      fuse.js: 3.6.1
-      global: 4.4.0
-      lodash: 4.17.21
-      markdown-to-jsx: 7.4.1(react@17.0.2)
-      memoizerific: 1.11.3
-      polished: 4.3.1
-      qs: 6.11.2
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      react-draggable: 4.4.6(react-dom@17.0.2)(react@17.0.2)
-      react-helmet-async: 1.3.0(react-dom@17.0.2)(react@17.0.2)
+      react-draggable: 4.4.6(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
+      react-helmet-async: 1.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
       react-sizeme: 3.0.2
       regenerator-runtime: 0.13.11
       resolve-from: 5.0.0
@@ -11844,6 +11287,7 @@ snapshots:
       '@typescript-eslint/typescript-estree': 5.62.0(typescript@5.3.3)
       debug: 4.3.4
       eslint: 7.32.0
+    optionalDependencies:
       typescript: 5.3.3
     transitivePeerDependencies:
       - supports-color
@@ -11864,6 +11308,7 @@ snapshots:
       is-glob: 4.0.3
       semver: 7.6.0
       tsutils: 3.21.0(typescript@5.3.3)
+    optionalDependencies:
       typescript: 5.3.3
     transitivePeerDependencies:
       - supports-color
@@ -12103,7 +11548,7 @@ snapshots:
       ajv: 6.12.6
 
   ajv-formats@2.1.1(ajv@8.12.0):
-    dependencies:
+    optionalDependencies:
       ajv: 8.12.0
 
   ajv-keywords@3.5.2(ajv@6.12.6):
@@ -12426,10 +11871,6 @@ snapshots:
     dependencies:
       '@ember-data/rfc395-data': 0.0.4
 
-  babel-plugin-ember-modules-api-polyfill@2.13.4:
-    dependencies:
-      ember-rfc176-data: 0.3.18
-
   babel-plugin-ember-modules-api-polyfill@3.5.0:
     dependencies:
       ember-rfc176-data: 0.3.18
@@ -12460,8 +11901,6 @@ snapshots:
     dependencies:
       '@babel/types': 7.23.9
       lodash: 4.17.21
-
-  babel-plugin-htmlbars-inline-precompile@3.2.0: {}
 
   babel-plugin-htmlbars-inline-precompile@5.3.1:
     dependencies:
@@ -13540,12 +12979,16 @@ snapshots:
       ora: 3.4.0
       through2: 3.0.2
 
-  consolidate@0.16.0(mustache@4.2.0)(react-dom@17.0.2)(react@17.0.2):
+  consolidate@0.16.0(handlebars@4.7.8)(lodash@4.17.21)(mustache@4.2.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(underscore@1.13.6):
     dependencies:
       bluebird: 3.7.2
+    optionalDependencies:
+      handlebars: 4.7.8
+      lodash: 4.17.21
       mustache: 4.2.0
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
+      underscore: 1.13.6
 
   constants-browserify@1.0.0: {}
 
@@ -13958,15 +13401,6 @@ snapshots:
       react-is: 17.0.2
       tslib: 2.6.2
 
-  downshift@6.1.12(react@17.0.2):
-    dependencies:
-      '@babel/runtime': 7.23.9
-      compute-scroll-into-view: 1.0.20
-      prop-types: 15.8.1
-      react: 17.0.2
-      react-is: 17.0.2
-      tslib: 2.6.2
-
   duplexer3@0.1.5: {}
 
   duplexer@0.1.2: {}
@@ -14326,7 +13760,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-cli@3.28.6(react-dom@17.0.2)(react@17.0.2):
+  ember-cli@3.28.6(handlebars@4.7.8)(lodash@4.17.21)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(underscore@1.13.6):
     dependencies:
       '@babel/core': 7.23.9
       '@babel/plugin-transform-modules-amd': 7.23.3(@babel/core@7.23.9)
@@ -14411,7 +13845,7 @@ snapshots:
       sort-package-json: 1.57.0
       symlink-or-copy: 1.3.1
       temp: 0.9.4
-      testem: 3.11.0(react-dom@17.0.2)(react@17.0.2)
+      testem: 3.11.0(handlebars@4.7.8)(lodash@4.17.21)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(underscore@1.13.6)
       tiny-lr: 2.0.0
       tree-sync: 2.1.0
       uuid: 8.3.2
@@ -14522,6 +13956,7 @@ snapshots:
       js-yaml: 4.1.0
       json-stable-stringify: 1.1.1
       silent-error: 1.1.1
+    optionalDependencies:
       typescript: 5.3.3
     transitivePeerDependencies:
       - '@babel/core'
@@ -14538,6 +13973,17 @@ snapshots:
       - '@babel/core'
       - supports-color
 
+  ember-modifier@3.2.7(@babel/core@7.23.9):
+    dependencies:
+      ember-cli-babel: 7.26.11
+      ember-cli-normalize-entity-name: 1.0.0
+      ember-cli-string-utils: 1.1.0
+      ember-cli-typescript: 5.3.0
+      ember-compatibility-helpers: 1.2.7(@babel/core@7.23.9)
+    transitivePeerDependencies:
+      - '@babel/core'
+      - supports-color
+
   ember-named-blocks-polyfill@0.2.5:
     dependencies:
       ember-cli-babel: 7.26.11
@@ -14545,7 +13991,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  ember-qunit@6.1.1(@glint/template@1.3.0)(ember-source@3.28.12)(qunit@2.20.0)(webpack@5.90.1):
+  ember-qunit@6.1.1(@glint/template@1.3.0)(ember-source@3.28.12(@babel/core@7.23.9))(qunit@2.20.0)(webpack@5.90.1):
     dependencies:
       broccoli-funnel: 3.0.8
       broccoli-merge-trees: 3.0.2
@@ -14712,21 +14158,13 @@ snapshots:
 
   emojis-list@3.0.0: {}
 
-  emotion-theming@10.3.0(@emotion/core@10.3.1)(react@16.14.0):
+  emotion-theming@10.3.0(@emotion/core@10.3.1(react@16.14.0))(react@16.14.0):
     dependencies:
       '@babel/runtime': 7.23.9
       '@emotion/core': 10.3.1(react@16.14.0)
       '@emotion/weak-memoize': 0.2.5
       hoist-non-react-statics: 3.3.2
       react: 16.14.0
-
-  emotion-theming@10.3.0(@emotion/core@10.3.1)(react@17.0.2):
-    dependencies:
-      '@babel/runtime': 7.23.9
-      '@emotion/core': 10.3.1(react@17.0.2)
-      '@emotion/weak-memoize': 0.2.5
-      hoist-non-react-statics: 3.3.2
-      react: 17.0.2
 
   encodeurl@1.0.2: {}
 
@@ -14923,12 +14361,13 @@ snapshots:
       resolve: 1.22.8
       semver: 6.3.1
 
-  eslint-plugin-prettier@3.4.1(eslint-config-prettier@8.10.0)(eslint@7.32.0)(prettier@2.8.8):
+  eslint-plugin-prettier@3.4.1(eslint-config-prettier@8.10.0(eslint@7.32.0))(eslint@7.32.0)(prettier@2.8.8):
     dependencies:
       eslint: 7.32.0
-      eslint-config-prettier: 8.10.0(eslint@7.32.0)
       prettier: 2.8.8
       prettier-linter-helpers: 1.0.0
+    optionalDependencies:
+      eslint-config-prettier: 8.10.0(eslint@7.32.0)
 
   eslint-plugin-qunit@6.2.0(eslint@7.32.0):
     dependencies:
@@ -15265,6 +14704,13 @@ snapshots:
       schema-utils: 3.3.0
       webpack: 4.47.0
 
+  file-loader@6.2.0(webpack@5.90.1):
+    dependencies:
+      loader-utils: 2.0.4
+      schema-utils: 3.3.0
+      webpack: 5.90.1
+    optional: true
+
   file-system-cache@1.1.0:
     dependencies:
       fs-extra: 10.1.0
@@ -15430,7 +14876,6 @@ snapshots:
     dependencies:
       '@babel/code-frame': 7.23.5
       chalk: 2.4.2
-      eslint: 7.32.0
       micromatch: 3.1.10
       minimatch: 3.1.2
       semver: 5.7.2
@@ -15438,6 +14883,8 @@ snapshots:
       typescript: 5.3.3
       webpack: 4.47.0
       worker-rpc: 0.1.1
+    optionalDependencies:
+      eslint: 7.32.0
     transitivePeerDependencies:
       - supports-color
 
@@ -15449,7 +14896,6 @@ snapshots:
       chokidar: 3.5.3
       cosmiconfig: 6.0.0
       deepmerge: 4.3.1
-      eslint: 7.32.0
       fs-extra: 9.1.0
       glob: 7.2.3
       memfs: 3.5.3
@@ -15459,6 +14905,8 @@ snapshots:
       tapable: 1.1.3
       typescript: 5.3.3
       webpack: 4.47.0
+    optionalDependencies:
+      eslint: 7.32.0
 
   form-data@0.1.4:
     dependencies:
@@ -16985,10 +16433,6 @@ snapshots:
     dependencies:
       react: 16.14.0
 
-  markdown-to-jsx@7.4.1(react@17.0.2):
-    dependencies:
-      react: 17.0.2
-
   matcher-collection@1.1.2:
     dependencies:
       minimatch: 3.1.2
@@ -17922,7 +17366,7 @@ snapshots:
   progress@2.0.3: {}
 
   promise-inflight@1.0.1(bluebird@3.7.2):
-    dependencies:
+    optionalDependencies:
       bluebird: 3.7.2
 
   promise-map-series@0.2.3:
@@ -18078,15 +17522,10 @@ snapshots:
       minimist: 1.2.8
       strip-json-comments: 2.0.1
 
-  react-colorful@5.6.1(react-dom@16.14.0)(react@16.14.0):
+  react-colorful@5.6.1(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
     dependencies:
       react: 16.14.0
       react-dom: 16.14.0(react@16.14.0)
-
-  react-colorful@5.6.1(react-dom@17.0.2)(react@17.0.2):
-    dependencies:
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
 
   react-dev-utils@11.0.4(eslint@7.32.0)(typescript@5.3.3)(webpack@4.47.0):
     dependencies:
@@ -18114,8 +17553,9 @@ snapshots:
       shell-quote: 1.7.2
       strip-ansi: 6.0.0
       text-table: 0.2.0
-      typescript: 5.3.3
       webpack: 4.47.0
+    optionalDependencies:
+      typescript: 5.3.3
     transitivePeerDependencies:
       - eslint
       - supports-color
@@ -18129,40 +17569,26 @@ snapshots:
       react: 16.14.0
       scheduler: 0.19.1
 
-  react-dom@17.0.2(react@17.0.2):
-    dependencies:
-      loose-envify: 1.4.0
-      object-assign: 4.1.1
-      react: 17.0.2
-      scheduler: 0.20.2
-
-  react-draggable@4.4.6(react-dom@16.14.0)(react@16.14.0):
+  react-draggable@4.4.6(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
     dependencies:
       clsx: 1.2.1
       prop-types: 15.8.1
       react: 16.14.0
       react-dom: 16.14.0(react@16.14.0)
 
-  react-draggable@4.4.6(react-dom@17.0.2)(react@17.0.2):
-    dependencies:
-      clsx: 1.2.1
-      prop-types: 15.8.1
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-
-  react-element-to-jsx-string@14.3.4(react-dom@17.0.2)(react@17.0.2):
+  react-element-to-jsx-string@14.3.4(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
     dependencies:
       '@base2/pretty-print-object': 1.0.1
       is-plain-object: 5.0.0
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
+      react: 16.14.0
+      react-dom: 16.14.0(react@16.14.0)
       react-is: 17.0.2
 
   react-error-overlay@6.0.11: {}
 
   react-fast-compare@3.2.2: {}
 
-  react-helmet-async@1.3.0(react-dom@16.14.0)(react@16.14.0):
+  react-helmet-async@1.3.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
     dependencies:
       '@babel/runtime': 7.23.9
       invariant: 2.2.4
@@ -18172,44 +17598,26 @@ snapshots:
       react-fast-compare: 3.2.2
       shallowequal: 1.1.0
 
-  react-helmet-async@1.3.0(react-dom@17.0.2)(react@17.0.2):
-    dependencies:
-      '@babel/runtime': 7.23.9
-      invariant: 2.2.4
-      prop-types: 15.8.1
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      react-fast-compare: 3.2.2
-      shallowequal: 1.1.0
-
-  react-inspector@5.1.1(react@17.0.2):
+  react-inspector@5.1.1(react@16.14.0):
     dependencies:
       '@babel/runtime': 7.23.9
       is-dom: 1.1.0
       prop-types: 15.8.1
-      react: 17.0.2
+      react: 16.14.0
 
   react-is@16.13.1: {}
 
   react-is@17.0.2: {}
 
-  react-popper-tooltip@3.1.1(react-dom@16.14.0)(react@16.14.0):
+  react-popper-tooltip@3.1.1(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
     dependencies:
       '@babel/runtime': 7.23.9
       '@popperjs/core': 2.11.8
       react: 16.14.0
       react-dom: 16.14.0(react@16.14.0)
-      react-popper: 2.3.0(@popperjs/core@2.11.8)(react-dom@16.14.0)(react@16.14.0)
+      react-popper: 2.3.0(@popperjs/core@2.11.8)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)
 
-  react-popper-tooltip@3.1.1(react-dom@17.0.2)(react@17.0.2):
-    dependencies:
-      '@babel/runtime': 7.23.9
-      '@popperjs/core': 2.11.8
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      react-popper: 2.3.0(@popperjs/core@2.11.8)(react-dom@17.0.2)(react@17.0.2)
-
-  react-popper@2.3.0(@popperjs/core@2.11.8)(react-dom@16.14.0)(react@16.14.0):
+  react-popper@2.3.0(@popperjs/core@2.11.8)(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
     dependencies:
       '@popperjs/core': 2.11.8
       react: 16.14.0
@@ -18217,37 +17625,17 @@ snapshots:
       react-fast-compare: 3.2.2
       warning: 4.0.3
 
-  react-popper@2.3.0(@popperjs/core@2.11.8)(react-dom@17.0.2)(react@17.0.2):
-    dependencies:
-      '@popperjs/core': 2.11.8
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      react-fast-compare: 3.2.2
-      warning: 4.0.3
-
-  react-router-dom@6.22.0(react-dom@16.14.0)(react@16.14.0):
+  react-router-dom@6.22.0(react-dom@16.14.0(react@16.14.0))(react@16.14.0):
     dependencies:
       '@remix-run/router': 1.15.0
       react: 16.14.0
       react-dom: 16.14.0(react@16.14.0)
       react-router: 6.22.0(react@16.14.0)
 
-  react-router-dom@6.22.0(react-dom@17.0.2)(react@17.0.2):
-    dependencies:
-      '@remix-run/router': 1.15.0
-      react: 17.0.2
-      react-dom: 17.0.2(react@17.0.2)
-      react-router: 6.22.0(react@17.0.2)
-
   react-router@6.22.0(react@16.14.0):
     dependencies:
       '@remix-run/router': 1.15.0
       react: 16.14.0
-
-  react-router@6.22.0(react@17.0.2):
-    dependencies:
-      '@remix-run/router': 1.15.0
-      react: 17.0.2
 
   react-sizeme@3.0.2:
     dependencies:
@@ -18265,15 +17653,6 @@ snapshots:
       react: 16.14.0
       refractor: 3.6.0
 
-  react-syntax-highlighter@13.5.3(react@17.0.2):
-    dependencies:
-      '@babel/runtime': 7.23.9
-      highlight.js: 10.7.3
-      lowlight: 1.20.0
-      prismjs: 1.29.0
-      react: 17.0.2
-      refractor: 3.6.0
-
   react-textarea-autosize@8.5.3(react@16.14.0):
     dependencies:
       '@babel/runtime': 7.23.9
@@ -18283,25 +17662,11 @@ snapshots:
     transitivePeerDependencies:
       - '@types/react'
 
-  react-textarea-autosize@8.5.3(react@17.0.2):
-    dependencies:
-      '@babel/runtime': 7.23.9
-      react: 17.0.2
-      use-composed-ref: 1.3.0(react@17.0.2)
-      use-latest: 1.2.1(react@17.0.2)
-    transitivePeerDependencies:
-      - '@types/react'
-
   react@16.14.0:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
       prop-types: 15.8.1
-
-  react@17.0.2:
-    dependencies:
-      loose-envify: 1.4.0
-      object-assign: 4.1.1
 
   read-pkg-up@7.0.1:
     dependencies:
@@ -18667,11 +18032,6 @@ snapshots:
     optional: true
 
   scheduler@0.19.1:
-    dependencies:
-      loose-envify: 1.4.0
-      object-assign: 4.1.1
-
-  scheduler@0.20.2:
     dependencies:
       loose-envify: 1.4.0
       object-assign: 4.1.1
@@ -19314,7 +18674,7 @@ snapshots:
       glob: 7.2.3
       minimatch: 3.1.2
 
-  testem@3.11.0(react-dom@17.0.2)(react@17.0.2):
+  testem@3.11.0(handlebars@4.7.8)(lodash@4.17.21)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(underscore@1.13.6):
     dependencies:
       '@xmldom/xmldom': 0.8.10
       backbone: 1.6.0
@@ -19322,7 +18682,7 @@ snapshots:
       charm: 1.0.2
       commander: 2.20.3
       compression: 1.7.4
-      consolidate: 0.16.0(mustache@4.2.0)(react-dom@17.0.2)(react@17.0.2)
+      consolidate: 0.16.0(handlebars@4.7.8)(lodash@4.17.21)(mustache@4.2.0)(react-dom@16.14.0(react@16.14.0))(react@16.14.0)(underscore@1.13.6)
       execa: 1.0.0
       express: 4.18.2
       fireworm: 0.7.2
@@ -19537,7 +18897,7 @@ snapshots:
   ts-dedent@2.2.0: {}
 
   ts-pnp@1.2.0(typescript@5.3.3):
-    dependencies:
+    optionalDependencies:
       typescript: 5.3.3
 
   tslib@1.14.1: {}
@@ -19749,13 +19109,14 @@ snapshots:
 
   urix@0.1.0: {}
 
-  url-loader@4.1.1(file-loader@6.2.0)(webpack@4.47.0):
+  url-loader@4.1.1(file-loader@6.2.0(webpack@5.90.1))(webpack@4.47.0):
     dependencies:
-      file-loader: 6.2.0(webpack@4.47.0)
       loader-utils: 2.0.4
       mime-types: 2.1.35
       schema-utils: 3.3.0
       webpack: 4.47.0
+    optionalDependencies:
+      file-loader: 6.2.0(webpack@5.90.1)
 
   url-parse-lax@3.0.0:
     dependencies:
@@ -19776,27 +19137,14 @@ snapshots:
     dependencies:
       react: 16.14.0
 
-  use-composed-ref@1.3.0(react@17.0.2):
-    dependencies:
-      react: 17.0.2
-
   use-isomorphic-layout-effect@1.1.2(react@16.14.0):
     dependencies:
       react: 16.14.0
-
-  use-isomorphic-layout-effect@1.1.2(react@17.0.2):
-    dependencies:
-      react: 17.0.2
 
   use-latest@1.2.1(react@16.14.0):
     dependencies:
       react: 16.14.0
       use-isomorphic-layout-effect: 1.1.2(react@16.14.0)
-
-  use-latest@1.2.1(react@17.0.2):
-    dependencies:
-      react: 17.0.2
-      use-isomorphic-layout-effect: 1.1.2(react@17.0.2)
 
   use@3.1.1: {}
 
