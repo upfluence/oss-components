@@ -9,11 +9,11 @@ module('Integration | Component | o-s-s/avatar-group', function (hooks) {
   hooks.beforeEach(function () {
     this.avatars = [
       {
-        image: 'http://foo.co/bar.png',
+        image: '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg',
         initials: 'TS'
       },
       {
-        image: 'http://foo.co/baz.png',
+        image: '/@upfluence/oss-components/assets/images/avatar-placeholder.svg',
         initials: 'OM'
       }
     ];
@@ -22,8 +22,12 @@ module('Integration | Component | o-s-s/avatar-group', function (hooks) {
   test('it displays the right number of avatars', async function (assert) {
     await render(hbs`<OSS::AvatarGroup @avatars={{this.avatars}} />`);
     assert.dom('.upf-avatar').exists({ count: 2 });
-    assert.dom('.upf-avatar:first-child img').hasAttribute('src', 'http://foo.co/bar.png');
-    assert.dom('.upf-avatar:last-child img').hasAttribute('src', 'http://foo.co/baz.png');
+    assert
+      .dom('.upf-avatar:first-child img')
+      .hasAttribute('src', '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg');
+    assert
+      .dom('.upf-avatar:last-child img')
+      .hasAttribute('src', '/@upfluence/oss-components/assets/images/avatar-placeholder.svg');
   });
 
   test('if no @size arg is provided, it should default to "md"', async function (assert) {
@@ -41,7 +45,9 @@ module('Integration | Component | o-s-s/avatar-group', function (hooks) {
   test('if a @max arg is provided, we should display maximum that number of avatars and display remaining ones using a placeholder', async function (assert) {
     await render(hbs`<OSS::AvatarGroup @avatars={{this.avatars}} @max={{1}} />`);
     assert.dom('.upf-avatar').exists({ count: 2 });
-    assert.dom('.upf-avatar:first-child img').hasAttribute('src', 'http://foo.co/bar.png');
+    assert
+      .dom('.upf-avatar:first-child img')
+      .hasAttribute('src', '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg');
     assert.dom('.upf-avatar:last-child img').doesNotExist();
     assert.dom('.upf-avatar:last-child').hasText('+1');
   });
