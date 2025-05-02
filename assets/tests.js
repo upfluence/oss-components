@@ -2057,10 +2057,10 @@ define("dummy/tests/integration/components/o-s-s/avatar-group-test", ["qunit", "
     (0, _emberQunit.setupRenderingTest)(hooks);
     hooks.beforeEach(function () {
       this.avatars = [{
-        image: 'http://foo.co/bar.png',
+        image: '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg',
         initials: 'TS'
       }, {
-        image: 'http://foo.co/baz.png',
+        image: '/@upfluence/oss-components/assets/images/avatar-placeholder.svg',
         initials: 'OM'
       }];
     });
@@ -2078,8 +2078,8 @@ define("dummy/tests/integration/components/o-s-s/avatar-group-test", ["qunit", "
       assert.dom('.upf-avatar').exists({
         count: 2
       });
-      assert.dom('.upf-avatar:first-child img').hasAttribute('src', 'http://foo.co/bar.png');
-      assert.dom('.upf-avatar:last-child img').hasAttribute('src', 'http://foo.co/baz.png');
+      assert.dom('.upf-avatar:first-child img').hasAttribute('src', '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg');
+      assert.dom('.upf-avatar:last-child img').hasAttribute('src', '/@upfluence/oss-components/assets/images/avatar-placeholder.svg');
     });
     (0, _qunit.test)('if no @size arg is provided, it should default to "md"', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -2123,7 +2123,7 @@ define("dummy/tests/integration/components/o-s-s/avatar-group-test", ["qunit", "
       assert.dom('.upf-avatar').exists({
         count: 2
       });
-      assert.dom('.upf-avatar:first-child img').hasAttribute('src', 'http://foo.co/bar.png');
+      assert.dom('.upf-avatar:first-child img').hasAttribute('src', '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg');
       assert.dom('.upf-avatar:last-child img').doesNotExist();
       assert.dom('.upf-avatar:last-child').hasText('+1');
     });
@@ -5905,6 +5905,64 @@ define("dummy/tests/integration/components/o-s-s/empty-state-test", ["qunit", "e
           "isStrictMode": false
         }));
       });
+    });
+  });
+});
+define("dummy/tests/integration/components/o-s-s/form-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/form', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.formManager = this.owner.lookup('service:form-manager');
+      _sinon.default.stub(this.formManager, 'generateId').returns('foo-id');
+      this.onSetup = _sinon.default.stub();
+      this.onSubmit = _sinon.default.stub();
+    });
+    (0, _qunit.test)('it properly renders & calls the onSetup arg upon entry', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <OSS::Form @onSetup={{this.onSetup}} @onSubmit={{this.onSubmit}}>
+              <:content>
+                Foo
+              </:content>
+            </OSS::Form>
+          
+      */
+      {
+        "id": "WqGQhyWK",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@onSetup\",\"@onSubmit\"],[[30,0,[\"onSetup\"]],[30,0,[\"onSubmit\"]]]],[[\"content\"],[[[[1,\"\\n          Foo\\n        \"]],[]]]]],[1,\"\\n    \"]],[],false,[\"o-s-s/form\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/form-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('form').hasAttribute('id', 'foo-id');
+      assert.ok(this.onSetup.calledOnceWithExactly(_sinon.default.match(obj => {
+        return obj && typeof obj === 'object' && ['validateForm', 'validateField', 'getErrors', 'clearErrors'].every(func => func in obj);
+      })));
+      assert.dom().hasText('Foo');
+    });
+    (0, _qunit.test)('hitting Enter properly submits the form', async function (assert) {
+      const validateFormStub = _sinon.default.stub(this.formManager, 'validateForm').returns(true);
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <OSS::Form @onSetup={{this.onSetup}} @onSubmit={{this.onSubmit}}>
+              <:content>
+                Foo
+              </:content>
+            </OSS::Form>
+          
+      */
+      {
+        "id": "WqGQhyWK",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@onSetup\",\"@onSubmit\"],[[30,0,[\"onSetup\"]],[30,0,[\"onSubmit\"]]]],[[\"content\"],[[[[1,\"\\n          Foo\\n        \"]],[]]]]],[1,\"\\n    \"]],[],false,[\"o-s-s/form\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/form-test.ts",
+        "isStrictMode": false
+      }));
+      await (0, _testHelpers.triggerEvent)('form', 'submit');
+      assert.ok(validateFormStub.calledOnce);
     });
   });
 });
@@ -14818,6 +14876,78 @@ define("dummy/tests/integration/components/o-s-s/url-input-test", ["qunit", "emb
     });
   });
 });
+define("dummy/tests/integration/helpers/form-field-feedback-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Helper | form-field-feedback', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.formManager = this.owner.lookup('service:form-manager');
+      this.formInstance = this.formManager.getInstance('test-form');
+    });
+    (0, _qunit.module)('when the form instance has no errors for the field', function () {
+      (0, _qunit.test)('it renders no error message if none is found', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InputContainer @value="foo" @feedbackMessage={{form-field-feedback this.formInstance.id "name"}} />
+        */
+        {
+          "id": "KsaOpvog",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@feedbackMessage\"],[\"foo\",[28,[37,1],[[30,0,[\"formInstance\",\"id\"]],\"name\"],null]]],null]],[],false,[\"o-s-s/input-container\",\"form-field-feedback\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/helpers/form-field-feedback-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-input-container + .font-color-error-500').doesNotExist();
+      });
+      (0, _qunit.test)('it renders no error message if the required params are omitted', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                {{! template-lint-disable no-implicit-this }}
+                <OSS::InputContainer @value="foo" @feedbackMessage={{form-field-feedback}} />
+              
+        */
+        {
+          "id": "P0hxnZfO",
+          "block": "[[[1,\"\\n\"],[1,\"        \"],[8,[39,0],null,[[\"@value\",\"@feedbackMessage\"],[\"foo\",[99,1,[\"@feedbackMessage\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/input-container\",\"form-field-feedback\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/helpers/form-field-feedback-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-input-container + .font-color-error-500').doesNotExist();
+      });
+    });
+    (0, _qunit.module)('when the tracking plan manager builder has errors for the field', function (hooks) {
+      hooks.beforeEach(function () {
+        this.formManager.formFeedbacks = Object.freeze({
+          [this.formInstance.id]: {
+            name: {
+              kind: 'foo',
+              message: {
+                type: 'error',
+                value: 'there were an error on the name field'
+              }
+            }
+          }
+        });
+      });
+      (0, _qunit.test)('it renders the error message', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InputContainer @value="foo" @feedbackMessage={{form-field-feedback this.formInstance.id "name"}} />
+        */
+        {
+          "id": "KsaOpvog",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@feedbackMessage\"],[\"foo\",[28,[37,1],[[30,0,[\"formInstance\",\"id\"]],\"name\"],null]]],null]],[],false,[\"o-s-s/input-container\",\"form-field-feedback\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/helpers/form-field-feedback-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-input-container + .font-color-error-500').exists();
+        assert.dom('.oss-input-container + .font-color-error-500').hasText('there were an error on the name field');
+      });
+    });
+  });
+});
 define("dummy/tests/integration/helpers/redirect-to-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
   "use strict";
 
@@ -15115,6 +15245,60 @@ define("dummy/tests/integration/modifiers/attach-element-test", ["qunit", "ember
     });
   });
 });
+define("dummy/tests/integration/modifiers/register-form-field-test", ["@ember/test-helpers", "ember-qunit", "qunit", "sinon", "@ember/template-factory"], function (_testHelpers, _emberQunit, _qunit, _sinon, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"ember-qunit",0,"qunit",0,"sinon"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Modifiers | modifiers/register-form-field', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.formManager = this.owner.lookup('service:form-manager');
+      this.formInstance = this.formManager.getInstance('test-form');
+      this.validator = _sinon.default.stub();
+      this.validateOnBlur = true;
+    });
+    (0, _qunit.test)('a data-form-field-id attribute is added to the element', async function (assert) {
+      await renderComponent();
+      assert.dom('.oss-input-container').hasAttribute('data-form-field-id', 'name');
+    });
+    (0, _qunit.module)('validateOnBlur behaviour', function () {
+      (0, _qunit.test)('when validateOnBlur=true the validator is called when the blur event is triggered', async function (assert) {
+        await renderComponent();
+        await (0, _testHelpers.focus)('input');
+        await (0, _testHelpers.blur)('input');
+        assert.ok(this.validator.calledOnce);
+      });
+      (0, _qunit.test)('when validateOnBlur=false the validator is not called when the blur event is triggered', async function (assert) {
+        this.validateOnBlur = false;
+        await renderComponent();
+        await (0, _testHelpers.focus)('input');
+        await (0, _testHelpers.blur)('input');
+        assert.ok(this.validator.notCalled);
+      });
+      (0, _qunit.test)('when validateOnBlur arg is not provided the validator is called when the blur event is triggered', async function (assert) {
+        this.validateOnBlur = undefined;
+        await renderComponent();
+        await (0, _testHelpers.focus)('input');
+        await (0, _testHelpers.blur)('input');
+        assert.ok(this.validator.calledOnce);
+      });
+    });
+    async function renderComponent() {
+      return await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+              <OSS::InputContainer @value="foo" {{register-form-field form=this.formInstance.id fieldId="name" validator=this.validator validateOnBlur=this.validateOnBlur}} />
+            
+      */
+      {
+        "id": "UsUNNM91",
+        "block": "[[[1,\"\\n        \"],[8,[39,0],[[4,[38,1],null,[[\"form\",\"fieldId\",\"validator\",\"validateOnBlur\"],[[30,0,[\"formInstance\",\"id\"]],\"name\",[30,0,[\"validator\"]],[30,0,[\"validateOnBlur\"]]]]]],[[\"@value\"],[\"foo\"]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/input-container\",\"register-form-field\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/modifiers/register-form-field-test.ts",
+        "isStrictMode": false
+      }));
+    }
+  });
+});
 define("dummy/tests/test-helper", ["dummy/app", "dummy/config/environment", "@ember/test-helpers", "qunit", "qunit-dom", "ember-qunit", "@upfluence/oss-components/test-support/register-assertions", "ember-cli-code-coverage/test-support"], function (_app, _environment, _testHelpers, QUnit, _qunitDom, _emberQunit, _registerAssertions, _testSupport) {
   "use strict";
 
@@ -15278,6 +15462,204 @@ define("dummy/tests/unit/services/base-uploader-test", ["qunit", "ember-qunit"],
       } catch (err) {
         assert.equal(err.message, '[@upfluence/oss-components::uploader] NotImpemented: Please extend this service and inherit this method.');
       }
+    });
+  });
+});
+define("dummy/tests/unit/services/form-manager-test", ["qunit", "ember-qunit", "sinon"], function (_qunit, _emberQunit, _sinon) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"sinon"eaimeta@70e063a35619d71f
+  const FAKE_UUID = '1234-5678-9101-1121-3141-';
+  (0, _qunit.module)('Unit | Service | form-manager', function (hooks) {
+    (0, _emberQunit.setupTest)(hooks);
+    hooks.beforeEach(function () {
+      this.randomUUIDStub = _sinon.default.stub(window.crypto, 'randomUUID').returns(FAKE_UUID);
+      this.service = this.owner.lookup('service:form-manager');
+    });
+    hooks.afterEach(function () {
+      this.randomUUIDStub.restore();
+    });
+    (0, _qunit.module)('#generateId', function () {
+      (0, _qunit.test)('it generates a unique ID', function (assert) {
+        assert.equal(this.service.generateId(), FAKE_UUID);
+      });
+    });
+    (0, _qunit.module)('#getInstance', function () {
+      (0, _qunit.test)('it returns a form instance', function (assert) {
+        const instance = this.service.getInstance('test');
+        assert.equal(instance.id, 'test');
+        ['validateForm', 'validateField', 'getErrors', 'clearErrors'].forEach(method => {
+          assert.equal(typeof instance[method], 'function');
+        });
+      });
+    });
+    (0, _qunit.module)('#registerField', function () {
+      (0, _qunit.test)('it properly registers a field with a validator', function (assert) {
+        const id = this.service.generateId();
+        const field = 'testField';
+        const validator = _sinon.default.stub();
+        this.service.registerField(id, field, validator);
+        assert.equal(this.service.formValidators[id][field], validator);
+      });
+    });
+    (0, _qunit.module)('#unregisterField', function () {
+      (0, _qunit.test)('it properly unregisters a field', function (assert) {
+        this.service.registerField('test', 'testField', _sinon.default.stub());
+        this.service.unregisterField('test', 'testField');
+        assert.equal(this.service.formValidators['test']['testField'], undefined);
+      });
+    });
+    (0, _qunit.module)('Form instance methods', function (hooks) {
+      hooks.beforeEach(function () {
+        this.formInstance = this.service.getInstance('test');
+      });
+      (0, _qunit.module)('#validateField', function () {
+        (0, _qunit.test)('the feedbacks are properly populated if any', function (assert) {
+          const field = 'testField';
+          const validator = _sinon.default.stub().returns({
+            kind: 'blank',
+            message: {
+              type: 'error',
+              value: 'Error'
+            }
+          });
+          this.service.registerField('test', field, validator);
+          assert.equal(this.formInstance.validateField(field), false);
+          assert.deepEqual(this.service.formFeedbacks['test'][field], {
+            kind: 'blank',
+            message: {
+              type: 'error',
+              value: 'Error'
+            }
+          });
+        });
+        (0, _qunit.test)('it returns true if there is no error feedback', function (assert) {
+          const field = 'testField';
+          const validator = _sinon.default.stub().returns({
+            kind: 'be_cautious',
+            message: {
+              type: 'warning',
+              value: 'warning'
+            }
+          });
+          this.service.registerField('test', field, validator);
+          assert.equal(this.formInstance.validateField(field), true);
+          assert.deepEqual(this.service.formFeedbacks['test'][field], {
+            kind: 'be_cautious',
+            message: {
+              type: 'warning',
+              value: 'warning'
+            }
+          });
+        });
+        (0, _qunit.test)('no feedback is populated if there is none', function (assert) {
+          const field = 'testField';
+          const validator = _sinon.default.stub().returns(undefined);
+          this.service.registerField('test', field, validator);
+          assert.equal(this.formInstance.validateField(field), true);
+          assert.equal(this.service.formFeedbacks['test'], undefined);
+        });
+      });
+      (0, _qunit.module)('#validateForm', function () {
+        (0, _qunit.test)('the feedbacks are properly populated if any', function (assert) {
+          const field = 'testField';
+          const validator = _sinon.default.stub().returns({
+            kind: 'blank',
+            message: {
+              type: 'error',
+              value: 'Error'
+            }
+          });
+          this.service.registerField('test', field, validator);
+          assert.equal(this.formInstance.validateForm(), false);
+          assert.deepEqual(this.service.formFeedbacks['test'][field], {
+            kind: 'blank',
+            message: {
+              type: 'error',
+              value: 'Error'
+            }
+          });
+        });
+        (0, _qunit.test)('it returns true if there is no error feedback', function (assert) {
+          const field = 'testField';
+          const validator = _sinon.default.stub().returns({
+            kind: 'be_cautious',
+            message: {
+              type: 'warning',
+              value: 'warning'
+            }
+          });
+          this.service.registerField('test', field, validator);
+          assert.equal(this.formInstance.validateForm(), true);
+          assert.deepEqual(this.service.formFeedbacks['test'][field], {
+            kind: 'be_cautious',
+            message: {
+              type: 'warning',
+              value: 'warning'
+            }
+          });
+        });
+        (0, _qunit.test)('no feedback is populated if there is none', function (assert) {
+          const field = 'testField';
+          const validator = _sinon.default.stub().returns(undefined);
+          this.service.registerField('test', field, validator);
+          assert.equal(this.formInstance.validateForm(), true);
+          assert.equal(this.service.formFeedbacks['test'], undefined);
+        });
+      });
+      (0, _qunit.module)('#getErrors', function () {
+        (0, _qunit.test)('it returns all error feedbacks if any', function (assert) {
+          this.service.registerField('test', 'testField', _sinon.default.stub().returns({
+            kind: 'blank',
+            message: {
+              type: 'error',
+              value: 'Error'
+            }
+          }));
+          this.service.registerField('test', 'testField2', _sinon.default.stub().returns({
+            kind: 'be_cautious',
+            message: {
+              type: 'warning',
+              value: 'warning'
+            }
+          }));
+          this.formInstance.validateForm();
+          assert.deepEqual(this.formInstance.getErrors(), {
+            testField: {
+              kind: 'blank',
+              message: {
+                type: 'error',
+                value: 'Error'
+              }
+            }
+          });
+        });
+      });
+      (0, _qunit.module)('#clearErrors', function (hooks) {
+        hooks.beforeEach(function () {
+          this.service.registerField('test', 'testField', _sinon.default.stub().returns({
+            kind: 'blank',
+            message: {
+              type: 'error',
+              value: 'Error'
+            }
+          }));
+          this.formInstance.validateForm();
+        });
+        (0, _qunit.test)('it clears the error feedbacks', function (assert) {
+          assert.deepEqual(this.formInstance.getErrors(), {
+            testField: {
+              kind: 'blank',
+              message: {
+                type: 'error',
+                value: 'Error'
+              }
+            }
+          });
+          this.formInstance.clearErrors('testField');
+          assert.deepEqual(this.formInstance.getErrors(), {});
+        });
+      });
     });
   });
 });

@@ -87845,6 +87845,66 @@ interface OSSCodeBlockArgs {
   const UsageWithActions = _exports.UsageWithActions = ActionTemplate.bind({});
   UsageWithActions.args = defaultArgs;
 });
+;define("@upfluence/oss-components/components/o-s-s/form", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/object", "@ember/service", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _object, _service, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor, _descriptor2, _descriptor3;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/object",0,"@ember/service",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <form id={{this.id}} ...attributes {{on "submit" this.onSubmit}}>
+    {{yield to="content"}}
+    <button type="submit" hidden></button>
+  </form>
+  */
+  {
+    "id": "mtmO7+z3",
+    "block": "[[[11,\"form\"],[16,1,[30,0,[\"id\"]]],[17,1],[4,[38,0],[\"submit\",[30,0,[\"onSubmit\"]]],null],[12],[1,\"\\n  \"],[18,2,null],[1,\"\\n  \"],[10,\"button\"],[14,\"hidden\",\"\"],[14,4,\"submit\"],[12],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"&content\"],false,[\"on\",\"yield\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/form.hbs",
+    "isStrictMode": false
+  });
+  let OSSFormComponent = _exports.default = (_class = class OSSFormComponent extends _component2.default {
+    constructor(owner, args) {
+      super(owner, args);
+      _initializerDefineProperty(this, "formManager", _descriptor, this);
+      _initializerDefineProperty(this, "id", _descriptor2, this);
+      _initializerDefineProperty(this, "formInstance", _descriptor3, this);
+      this.id = this.formManager.generateId();
+      this.formInstance = this.formManager.getInstance(this.id);
+      this.args.onSetup(this.formInstance);
+    }
+    onSubmit(event) {
+      event.preventDefault();
+      this.args.onSubmit(this.formInstance.validateForm());
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "formManager", [_service.inject], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "id", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "formInstance", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _applyDecoratedDescriptor(_class.prototype, "onSubmit", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSubmit"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSFormComponent);
+});
 ;define("@upfluence/oss-components/components/o-s-s/icon", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@upfluence/oss-components/components/o-s-s/iconName.enum", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _iconName, _templateFactory) {
   "use strict";
 
@@ -98008,6 +98068,37 @@ interface OSSCodeBlockArgs {
   }
   _exports.default = _default;
 });
+;define("@upfluence/oss-components/helpers/form-field-feedback", ["exports", "@ember/component/helper", "@ember/service"], function (_exports, _helper, _service) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor;
+  0; //eaimeta@70e063a35619d71f0,"@ember/component/helper",0,"@ember/service"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  let FormFieldFeedbackHelper = _exports.default = (_class = class FormFieldFeedbackHelper extends _helper.default {
+    constructor(...args) {
+      super(...args);
+      _initializerDefineProperty(this, "formManager", _descriptor, this);
+    }
+    compute([form, fieldId]) {
+      if (!form || !fieldId) return;
+      return (this.formManager.formFeedbacks[form] ?? {})[fieldId]?.message;
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "formManager", [_service.inject], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  })), _class);
+});
 ;define("@upfluence/oss-components/helpers/format-money", ["exports", "@ember/component/helper"], function (_exports, _helper) {
   "use strict";
 
@@ -98846,6 +98937,95 @@ interface OSSCodeBlockArgs {
     }
   }), class OnClickOutsideModifierManager {});
 });
+;define("@upfluence/oss-components/modifiers/register-form-field", ["exports", "@ember/debug", "@ember/destroyable", "@ember/service", "ember-modifier"], function (_exports, _debug, _destroyable, _service, _emberModifier) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor;
+  0; //eaimeta@70e063a35619d71f0,"@ember/debug",0,"@ember/destroyable",0,"@ember/service",0,"ember-modifier"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  function cleanup(instance) {
+    instance.targetElement.removeAttribute('data-plan-field-id');
+    instance.formManager.unregisterField(instance.form, instance.field);
+    instance.formInstance.validateField(instance.field);
+    if (instance.innerInputs.length > 0) {
+      instance.innerInputs.forEach(input => {
+        input.removeEventListener('input', instance.clearErrorsOnInput);
+        input.removeEventListener('blur', instance.validateField);
+      });
+    }
+  }
+  let RegisterFormField = _exports.default = (_class = class RegisterFormField extends _emberModifier.default {
+    constructor(owner, args) {
+      super(owner, args);
+      _initializerDefineProperty(this, "formManager", _descriptor, this);
+      _defineProperty(this, "innerInputs", []);
+      _defineProperty(this, "validateField", () => {
+        this.formInstance.validateField(this.field);
+      });
+      _defineProperty(this, "clearErrorsOnInput", () => {
+        this.formInstance.clearErrors(this.field);
+      });
+      (0, _destroyable.registerDestructor)(this, cleanup);
+    }
+    modify(element, _, {
+      form,
+      fieldId,
+      validator,
+      validateOnBlur
+    }) {
+      (true && !(typeof form === 'string') && (0, _debug.assert)(`'form' arg must be a string but was ${typeof form}`, typeof form === 'string'));
+      (true && !(typeof fieldId === 'string') && (0, _debug.assert)(`'fieldId' arg must be a string but was ${typeof fieldId}`, typeof fieldId === 'string'));
+      (true && !(typeof validator === 'function') && (0, _debug.assert)(`'validator' arg must be a string but was ${typeof validator}`, typeof validator === 'function'));
+      this.targetElement = element;
+      this.form = form;
+      this.field = fieldId;
+      this.validateOnBlur = typeof validateOnBlur === 'boolean' ? validateOnBlur : true;
+      this.formInstance = this.formManager.getInstance(form);
+      element.setAttribute('data-form-field-id', fieldId);
+      this.formManager.registerField(form, fieldId, validator);
+      const inputs = element.tagName === 'INPUT' ? [element] : Array.from(element.querySelectorAll('input'));
+      this.innerInputs = inputs;
+      inputs.forEach(input => {
+        input.addEventListener('input', this.clearErrorsOnInput);
+      });
+      if (this.validateOnBlur) {
+        inputs.forEach(input => {
+          input.addEventListener('blur', this.validateField);
+        });
+      }
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "formManager", [_service.inject], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  })), _class);
+});
+;define("@upfluence/oss-components/modifiers/required-input", ["exports", "ember-modifier"], function (_exports, _emberModifier) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-modifier"eaimeta@70e063a35619d71f
+  class RegisterFormField extends _emberModifier.default {
+    modify(element) {
+      this.targetElement = element;
+      element.innerHTML = element.innerHTML.trim() + '<span class="font-color-error-500">*</span>';
+    }
+  }
+  _exports.default = RegisterFormField;
+});
 ;define("@upfluence/oss-components/modifiers/scroll-shadow", ["exports", "@ember/modifier"], function (_exports, _modifier) {
   "use strict";
 
@@ -98930,6 +99110,97 @@ interface OSSCodeBlockArgs {
     }
   }
   _exports.default = BaseUploader;
+});
+;define("@upfluence/oss-components/services/form-manager", ["exports", "@ember/service", "@glimmer/tracking"], function (_exports, _service, _tracking) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor;
+  0; //eaimeta@70e063a35619d71f0,"@ember/service",0,"@glimmer/tracking"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  let FormManager = _exports.default = (_class = class FormManager extends _service.default {
+    constructor(...args) {
+      super(...args);
+      _defineProperty(this, "formValidators", {});
+      _initializerDefineProperty(this, "formFeedbacks", _descriptor, this);
+    }
+    generateId() {
+      return crypto.randomUUID();
+    }
+    getInstance(id) {
+      return {
+        id,
+        validateForm: () => this.validateForm(id),
+        validateField: field => this.validateField(id, field),
+        getErrors: () => this.getFieldErrors(id),
+        clearErrors: field => this.clearErrors(id, field)
+      };
+    }
+    registerField(id, field, validator) {
+      this.formValidators[id] = this.formValidators[id] ?? {};
+      this.formValidators[id][field] = validator;
+    }
+    unregisterField(id, field) {
+      if (this.formValidators[id]) {
+        delete this.formValidators[id][field];
+      }
+    }
+    validateForm(id) {
+      const validators = this.formValidators[id];
+      if (!validators) return true;
+      Object.keys(validators).forEach(field => {
+        this.validateField(id, field);
+      });
+      return Object.values(this.formFeedbacks[id] ?? {}).every(feedback => ['success', 'warning'].includes(feedback.message.type));
+    }
+    validateField(id, field) {
+      const validator = this.formValidators[id]?.[field];
+      if (!validator) return true;
+      const feedback = validator();
+      if (feedback) {
+        this.formFeedbacks[id] = {
+          ...this.formFeedbacks[id],
+          [field]: feedback
+        };
+        this.refreshFormFeedbacks();
+      }
+      const isValid = feedback?.message?.type !== 'error';
+      if (isValid) this.clearErrors(id, field);
+      return isValid;
+    }
+    getFieldErrors(id) {
+      const formFeedbacks = this.formFeedbacks[id] ?? {};
+      return Object.keys(formFeedbacks).reduce((acc, v) => {
+        if (formFeedbacks[v] && formFeedbacks[v].message?.type === 'error') {
+          acc[v] = formFeedbacks[v];
+        }
+        return acc;
+      }, {});
+    }
+    clearErrors(id, field) {
+      if (this.formFeedbacks[id]?.[field]?.message?.type !== 'error') return;
+      delete this.formFeedbacks[id]?.[field];
+      this.refreshFormFeedbacks();
+    }
+    refreshFormFeedbacks() {
+      this.formFeedbacks = this.formFeedbacks;
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "formFeedbacks", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return {};
+    }
+  })), _class);
 });
 ;define("@upfluence/oss-components/services/toast", ["exports", "@ember/service", "@ember/utils", "@ember/runloop"], function (_exports, _service, _utils, _runloop) {
   "use strict";
@@ -106139,6 +106410,11 @@ interface OSSCodeBlockArgs {
       "email-input": {
         "regex_error": "Please enter a valid email address."
       },
+      "forms": {
+        "errors": {
+          "required": "This field is required."
+        }
+      },
       "infinite-select": {
         "empty": "Nothing to see here.",
         "empty_img_alt": "Empty content",
@@ -106191,6 +106467,791 @@ interface OSSCodeBlockArgs {
       }
     }
   }]];
+});
+;define("ember-modifier/-private/class/modifier-manager", ["exports", "@ember/modifier", "@ember/destroyable", "ember-modifier/-private/class/modifier", "ember-modifier/-private/compat"], function (_exports, _modifier, _destroyable, _modifier2, _compat) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function destroyModifier(modifier) {
+    modifier.willRemove();
+    modifier.willDestroy();
+  }
+
+  /**
+   * The state bucket used throughout the life-cycle of the modifier. Basically a
+   * state *machine*, where the framework calls us with the version we hand back
+   * to it at each phase. The two states are the two `extends` versions of this
+   * below.
+   *
+   * @internal
+   */
+
+  /**
+   * The `State` after calling `createModifier`, and therefore the state available
+   * at the start of `InstallModifier`.
+   * @internal
+   */
+
+  /**
+   * The `State` after calling `installModifier`, and therefore the state
+   * available in all `updateModifier` calls and in `destroyModifier`.
+   * @internal
+   */
+
+  // Wraps the unsafe (b/c it mutates, rather than creating new state) code that
+  // TS does not yet understand.
+  function installElement(state, element) {
+    // SAFETY: this cast represents how we are actually handling the state machine
+    // transition: from this point forward in the lifecycle of the modifier, it
+    // always behaves as `InstalledState<S>`. It is safe because, and *only*
+    // because, we immediately initialize `element`. (We cannot create a new state
+    // from the old one because the modifier manager API expects mutation of a
+    // single state bucket rather than updating it at hook calls.)
+    const installedState = state;
+    installedState.element = element;
+    return installedState;
+  }
+  function installElementOnInstance(instance, element) {
+    // SAFETY: we use the internal API for all class-based modifiers to set this
+    // in a way which lets us issue the deprecation warning for anyone accessing
+    // `element` as a getter while allowing types to continue working for any
+    // existing subclasses (see the discussion on the class definition).
+    instance[_modifier2.Element] = element;
+  }
+  function updateArgsOnInstance(instance, args) {
+    // SAFETY: we use the internal API for all class-based modifiers to set this
+    // in a way which lets us issue the deprecation warning for anyone accessing
+    // `args` as a getter while allowing types to continue working for any
+    // existing subclasses (see the discussion on the class definition).
+    instance[_modifier2.Args] = args;
+  }
+  class ClassBasedModifierManager {
+    constructor(owner) {
+      _defineProperty(this, "capabilities", (0, _modifier.capabilities)(true ? '3.22' : '3.13'));
+      this.owner = owner;
+    }
+    createModifier(factoryOrClass, args) {
+      const Modifier = (0, _compat.isFactory)(factoryOrClass) ? factoryOrClass.class : factoryOrClass;
+      const modifier = new Modifier(this.owner, args);
+      (0, _destroyable.registerDestructor)(modifier, destroyModifier);
+      return {
+        instance: modifier,
+        implementsModify: (0, _modifier2._implementsModify)(modifier),
+        element: null
+      };
+    }
+    installModifier(createdState, element, args) {
+      const state = installElement(createdState, element);
+
+      // TODO: this can be deleted entirely at v4.
+      const {
+        instance
+      } = state;
+      installElementOnInstance(instance, element);
+      if (state.implementsModify) {
+        instance.modify(element, args.positional, args.named);
+      } else {
+        // The `consumeArgs()` call provides backwards compatibility on v3 for the
+        // deprecated legacy lifecycle hooks (`didInstall`, `didReceiveArguments`,
+        // and `didUpdateArguments`), which accidentally had eager consumption
+        // semantics prior to Ember 3.22. The new, recommended `modify` hook has
+        // the updated lazy semantics associated with normal auto-tracking.
+        if (true) {
+          (0, _compat.consumeArgs)(args);
+        }
+        instance.didReceiveArguments();
+        instance.didInstall();
+      }
+    }
+    updateModifier(state, args) {
+      const {
+        instance
+      } = state;
+
+      // TODO: remove at 4.0
+      updateArgsOnInstance(state.instance, args);
+      if (state.implementsModify) {
+        instance.modify(state.element, args.positional, args.named);
+      } else {
+        // The `consumeArgs()` call provides backwards compatibility on v3 for the
+        // deprecated legacy lifecycle hooks (`didInstall`, `didReceiveArguments`,
+        // and `didUpdateArguments`), which accidentally had eager consumption
+        // semantics prior to Ember 3.22. The new, recommended `modify` hook has
+        // the updated lazy semantics associated with normal auto-tracking.
+        if (true) {
+          (0, _compat.consumeArgs)(args);
+        }
+        instance.didUpdateArguments();
+        instance.didReceiveArguments();
+      }
+    }
+    destroyModifier(state) {
+      (0, _destroyable.destroy)(state.instance);
+    }
+  }
+  _exports.default = ClassBasedModifierManager;
+});
+;define("ember-modifier/-private/class/modifier", ["exports", "@ember/application", "@ember/modifier", "ember-modifier/-private/class/modifier-manager", "@ember/destroyable", "@ember/debug"], function (_exports, _application, _modifier, _modifierManager, _destroyable, _debug) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports._implementsModify = _exports._implementsLegacyHooks = _exports.Element = _exports.Args = void 0;
+  // SAFETY: these sets are dev-only code to avoid showing deprecations for the
+  // same class more than once.
+
+  let SEEN_CLASSES_FOR_LIFECYCLE;
+  if (true /* DEBUG */) {
+    SEEN_CLASSES_FOR_LIFECYCLE = new Set();
+  }
+  let SEEN_CLASSES_FOR_DESTROYABLES;
+  if (true /* DEBUG */) {
+    SEEN_CLASSES_FOR_DESTROYABLES = new Set();
+  }
+  let SEEN_CLASSES_FOR_ARGS;
+  if (true /* DEBUG */) {
+    SEEN_CLASSES_FOR_ARGS = new Set();
+  }
+  let SEEN_CLASSES_FOR_ELEMENTS;
+  if (true /* DEBUG */) {
+    SEEN_CLASSES_FOR_ELEMENTS = new Set();
+  }
+
+  /** @internal */
+  const _implementsModify = instance => instance.modify !== ClassBasedModifier.prototype.modify;
+
+  /** @internal */
+  _exports._implementsModify = _implementsModify;
+  const _implementsLegacyHooks = instance => instance.didInstall !== ClassBasedModifier.prototype.didInstall || instance.didUpdateArguments !== ClassBasedModifier.prototype.didUpdateArguments || instance.didReceiveArguments !== ClassBasedModifier.prototype.didReceiveArguments;
+
+  /** @internal */
+  _exports._implementsLegacyHooks = _implementsLegacyHooks;
+  const Element = _exports.Element = Symbol('Element');
+
+  /** @internal */
+  const Args = _exports.Args = Symbol('Args');
+
+  // Preserve the signature on a class-based modifier so it can be plucked off
+  // later (by e.g. Glint), using interface merging with an opaque item to
+  // preserve it in the type system. The fact that it's an empty interface is
+  // actually the point: it *only* hooks the type parameter into the opaque
+  // (nominal) type. Note that this is distinct from the function-based modifier
+  // type intentionally, because it is actually the static class side of a
+  // class-based modifier which corresponds to the result of calling `modifier()`
+  // with a callback defining a function-based modifier.
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+
+  /**
+   * A base class for modifiers which need more capabilities than function-based
+   * modifiers. Useful if, for example:
+   *
+   * 1. You need to inject services and access them
+   * 2. You need fine-grained control of updates, either for performance or
+   *    convenience reasons, and don't want to teardown the state of your modifier
+   *    every time only to set it up again.
+   * 3. You need to store some local state within your modifier.
+   *
+   * The lifecycle hooks of class modifiers are tracked. When they run, they any
+   * values they access will be added to the modifier, and the modifier will
+   * update if any of those values change.
+   */
+  class ClassBasedModifier {
+    // Done this way with the weird combination of `declare` and `defineProperty`
+    // so that subclasses which are overriding this by writing their own `args`
+    // field type declarations continue to type check correctly. (If we introduced
+    // a getter here, existing classes defining their args via a `declare args:`
+    // would stop type checking, because TS -- correctly! -- differentiates
+    // between class fields and getters).
+    /**
+     * The arguments passed to the modifier. `args.positional` is an array of
+     * positional arguments, and `args.named` is an object containing the named
+     * arguments.
+     *
+     * @deprecated Until 4.0. Access positional and named arguments directly in
+     *   the `modify` hook instead.
+     */
+
+    // Done this way with the weird combination of `declare` and `defineProperty`
+    // so that subclasses which are overriding this by writing their own `element`
+    // field declarations continue to type check correctly.
+    /**
+     * The element the modifier is applied to.
+     *
+     * @warning `element` is ***not*** available during `constructor` or
+     *   `willDestroy`.
+     * @deprecated Until 4.0. Access the `element` as an argument in the `modify`
+     *   hook instead.
+     */
+
+    constructor(owner, args) {
+      (0, _application.setOwner)(this, owner);
+
+      // SAFETY: the point here is (for the period where we are providing `args`
+      // and `element`) to provide an internal-only way of setting and update the
+      // `args` for the modifier instance; we use the `InternalClassBasedModifier`
+      // interface to represent the internal-only API in a way that end users do
+      // *not* have access to when subclassing `ClassBasedModifier`.
+      this[Args] = args;
+      (true && !(!(_implementsModify(this) && _implementsLegacyHooks(this))) && (0, _debug.assert)('ember-modifier: You cannot implement both `modify` and any of the deprecated legacy lifecycle hooks (`didInstall`, `didReceiveArguments`, and `didUpdateArguments`)', !(_implementsModify(this) && _implementsLegacyHooks(this))));
+      (true && !(this.willDestroy === ClassBasedModifier.prototype.willDestroy || SEEN_CLASSES_FOR_DESTROYABLES.has(this.constructor)) && (0, _debug.deprecate)(`ember-modifier (in ${this.constructor.name} at ${new Error().stack}): \`willDestroy\`, \`isDestroyed\`, and \`isDestroyed\` are deprecated. Use the corresponding API from '@ember/destroyable' instead.`, this.willDestroy === ClassBasedModifier.prototype.willDestroy || SEEN_CLASSES_FOR_DESTROYABLES.has(this.constructor), {
+        id: 'ember-modifier.use-destroyables',
+        until: '4.0.0',
+        for: 'ember-modifier',
+        since: {
+          available: '3.2.0',
+          enabled: '3.2.0'
+        }
+      }));
+      if (true /* DEBUG */ && !SEEN_CLASSES_FOR_DESTROYABLES.has(this.constructor)) {
+        SEEN_CLASSES_FOR_DESTROYABLES.add(this.constructor);
+      }
+      (true && !(_implementsModify(this) || SEEN_CLASSES_FOR_LIFECYCLE.has(this.constructor)) && (0, _debug.deprecate)(`ember-modifier (in ${this.constructor.name} at ${new Error().stack}): The \`didInstall\`, \`didReceiveArguments\`, and \`didUpdateArguments\` hooks are deprecated. Use the new \`modify\` hook instead.`, _implementsModify(this) || SEEN_CLASSES_FOR_LIFECYCLE.has(this.constructor), {
+        id: 'ember-modifier.use-modify',
+        until: '4.0.0',
+        for: 'ember-modifier',
+        since: {
+          available: '3.2.0',
+          enabled: '3.2.0'
+        }
+      }));
+      if (true /* DEBUG */ && !SEEN_CLASSES_FOR_LIFECYCLE.has(this.constructor)) {
+        SEEN_CLASSES_FOR_LIFECYCLE.add(this.constructor);
+      }
+    }
+
+    /**
+     * Called when the modifier is installed and any time any tracked state used
+     * in the modifier changes.
+     *
+     * If you need to do first-time-only setup, create a class field representing
+     * the initialization state and check it when running the hook. That is also
+     * where and when you should use `registerDestructor` for any teardown you
+     * need to do. For example:
+     *
+     * ```js
+     * function disconnect(instance) {
+     *  instance.observer?.disconnect();
+     * }
+     *
+     * class IntersectionObserver extends Modifier {
+     *   observer;
+     *
+     *   constructor(owner, args) {
+     *     super(owner, args);
+     *     registerDestructor(this, disconnect);
+     *   }
+     *
+     *   modify(element, callback, options) {
+     *     disconnect(this);
+     *
+     *     this.observer = new IntersectionObserver(callback, options);
+     *     this.observer.observe(element);
+     *   }
+     * }
+     * ```
+     *
+     * @param element The element to which the modifier is applied.
+     * @param positional The positional arguments to the modifier.
+     * @param named The named arguments to the modifier.
+     */
+    modify( /* eslint-disable @typescript-eslint/no-unused-vars */
+    element, positional, named) {
+      /* no op, for subclassing */
+    }
+
+    /**
+     * Called when the modifier is installed **and** anytime the arguments are
+     * updated.
+     *
+     * @deprecated Until 4.0. Use `modify()`.
+     */
+    didReceiveArguments() {
+      /* no op, for subclassing */
+    }
+
+    /**
+     * Called anytime the arguments are updated but **not** on the initial
+     * install. Called before `didReceiveArguments`.
+     *
+     * @deprecated Until 4.0. Use `modify()`.
+     */
+    didUpdateArguments() {
+      /* no op, for subclassing */
+    }
+
+    /**
+     * Called when the modifier is installed on the DOM element. Called after
+     * `didReceiveArguments`.
+     *
+     * @deprecated Until 4.0. Use `modify()`.
+     */
+    didInstall() {
+      /* no op, for subclassing */
+    }
+
+    /**
+     * Called when the DOM element is about to be destroyed; use for removing
+     * event listeners on the element and other similar clean-up tasks.
+     *
+     * @deprecated since 2.0.0: prefer to use `willDestroy`, since both it and
+     *   `willRemove` can perform all the same operations, including on the
+     *   `element`.
+     */
+    willRemove() {
+      /* no op, for subclassing */
+    }
+
+    /**
+     * Called when the modifier itself is about to be destroyed; use for teardown
+     * code. Called after `willRemove`.
+     *
+     * @deprecated Until 4.0. Use `registerDestructor` from `@ember/destroyables`.
+     */
+    willDestroy() {
+      /* no op, for subclassing */
+    }
+
+    /**
+     * @deprecated Until 4.0. Use `isDestroying` from `@ember/destroyables`.
+     */
+    get isDestroying() {
+      (true && !(SEEN_CLASSES_FOR_DESTROYABLES.has(this.constructor)) && (0, _debug.deprecate)('Modifier.isDestroying is deprecated', SEEN_CLASSES_FOR_DESTROYABLES.has(this.constructor), {
+        id: 'ember-modifier.use-destroyables',
+        until: '4.0.0',
+        for: 'ember-modifier',
+        since: {
+          available: '3.2.0',
+          enabled: '3.2.0'
+        }
+      }));
+      if (true /* DEBUG */ && !SEEN_CLASSES_FOR_DESTROYABLES.has(this.constructor)) {
+        SEEN_CLASSES_FOR_DESTROYABLES.add(this.constructor);
+      }
+      return (0, _destroyable.isDestroying)(this);
+    }
+
+    /**
+     * @deprecated Until 4.0. Use `isDestroyed` from `@ember/destroyables`.
+     */
+    get isDestroyed() {
+      (true && !(SEEN_CLASSES_FOR_DESTROYABLES.has(this.constructor)) && (0, _debug.deprecate)('Modifier.isDestroyed is deprecated', SEEN_CLASSES_FOR_DESTROYABLES.has(this.constructor), {
+        id: 'ember-modifier.use-destroyables',
+        until: '4.0.0',
+        for: 'ember-modifier',
+        since: {
+          available: '3.2.0',
+          enabled: '3.2.0'
+        }
+      }));
+      if (true /* DEBUG */ && !SEEN_CLASSES_FOR_DESTROYABLES.has(this.constructor)) {
+        SEEN_CLASSES_FOR_DESTROYABLES.add(this.constructor);
+      }
+      return (0, _destroyable.isDestroyed)(this);
+    }
+  }
+
+  // We apply these here, against the prototype, so that there is only one of
+  // these, rather than one per instance. We also only issue the deprecation once
+  // per class for each of `args` and `element`.
+  _exports.default = ClassBasedModifier;
+  Object.defineProperty(ClassBasedModifier.prototype, 'args', {
+    enumerable: true,
+    get() {
+      (true && !(SEEN_CLASSES_FOR_ARGS.has(this.constructor)) && (0, _debug.deprecate)(`ember-modifier (in ${this.constructor.name} at ${new Error().stack}): using \`this.args\` is deprecated. Access positional and named arguments directly in the \`modify\` hook instead.`, SEEN_CLASSES_FOR_ARGS.has(this.constructor), {
+        id: 'ember-modifier.no-args-property',
+        for: 'ember-modifier',
+        since: {
+          available: '3.2.0',
+          enabled: '3.2.0'
+        },
+        until: '4.0.0'
+      }));
+      if (true /* DEBUG */ && !SEEN_CLASSES_FOR_ARGS.has(this.constructor)) {
+        SEEN_CLASSES_FOR_ARGS.add(this.constructor);
+      }
+      return this[Args];
+    }
+  });
+  Object.defineProperty(ClassBasedModifier.prototype, 'element', {
+    enumerable: true,
+    get() {
+      (true && !(SEEN_CLASSES_FOR_ELEMENTS.has(this.constructor)) && (0, _debug.deprecate)(`ember-modifier (in ${this.constructor.name} at ${new Error().stack}): using \`this.element\` is deprecated. Access the \`element\` as an argument in the \`modify\` hook instead.`, SEEN_CLASSES_FOR_ELEMENTS.has(this.constructor), {
+        id: 'ember-modifier.no-element-property',
+        for: 'ember-modifier',
+        since: {
+          available: '3.2.0',
+          enabled: '3.2.0'
+        },
+        until: '4.0.0'
+      }));
+      if (true /* DEBUG */ && !SEEN_CLASSES_FOR_ELEMENTS.has(this.constructor)) {
+        SEEN_CLASSES_FOR_ELEMENTS.add(this.constructor);
+      }
+      return this[Element] ?? null;
+    }
+  });
+
+  /**
+   * @internal This provides an interface we can use to backwards-compatibly set
+   *   up the element in a way that external callers will not have access to or
+   *   even see.
+   */
+
+  (0, _modifier.setModifierManager)(owner => new _modifierManager.default(owner), ClassBasedModifier);
+});
+;define("ember-modifier/-private/compat", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.consumeArgs = void 0;
+  _exports.isFactory = isFactory;
+  function isFactory(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _factoryOrClass) {
+    return !true;
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  const noop = () => {};
+
+  /**
+   * Consume each positional and named argument to entangle it in autotracking and
+   * enable updates.
+   *
+   * This is a temporary workaround for a change in the autotracking semantics of
+   * the args proxy introduced in `v3.22`. What changed is that arguments are no
+   * longer eagerly consumed. Didn’t use an argument? Then updates won’t be run
+   * when its value changes. This workaround reproduces the previous behaviour to
+   * avoid introducing a breaking change until a suitable transition path is made
+   * available.
+   */
+  let consumeArgs = _exports.consumeArgs = noop;
+  if (true) {
+    _exports.consumeArgs = consumeArgs = function ({
+      positional,
+      named
+    }) {
+      // SAFETY: TS before 4.6 does not correctly/fully resolve the type in a way
+      // that allows the type checker to see that `positional` must *always* be
+      // something which `extends unknown[]` here, because the underlying
+      // machinery is fairly complicated and relies on a fair bit of type
+      // recursion. It will stop mattering when we cut v4.0, because we won't be
+      // doing this anyway.
+      const pos = positional;
+      for (let i = 0; i < pos.length; i++) {
+        pos[i];
+      }
+
+      // SAFETY: TS 4.7 does not see that `named` will always be an object here.
+      // However, it is guaranteed to be resolved as such by the types. This *may*
+      // be a bug (https://github.com/microsoft/TypeScript/issues/48468), but it
+      // *should* also stop being relevant once we ship 4.0.
+      Object.values(named);
+    };
+  }
+});
+;define("ember-modifier/-private/function-based/modifier-manager", ["exports", "@ember/modifier", "ember-modifier/-private/compat"], function (_exports, _modifier, _compat) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  // Wraps the unsafe (b/c it mutates, rather than creating new state) code that
+  // TS does not yet understand.
+  function installElement(state, element) {
+    // SAFETY: this cast represents how we are actually handling the state machine
+    // transition: from this point forward in the lifecycle of the modifier, it
+    // always behaves as `InstalledState<S>`. It is safe because, and *only*
+    // because, we immediately initialize `element`. (We cannot create a new state
+    // from the old one because the modifier manager API expects mutation of a
+    // single state bucket rather than updating it at hook calls.)
+    const installedState = state;
+    installedState.element = element;
+    return installedState;
+  }
+  class FunctionBasedModifierManager {
+    constructor(options) {
+      _defineProperty(this, "capabilities", (0, _modifier.capabilities)(true ? '3.22' : '3.13'));
+      _defineProperty(this, "options", void 0);
+      this.options = {
+        eager: options?.eager ?? true
+      };
+    }
+    createModifier(factoryOrClass) {
+      const instance = (0, _compat.isFactory)(factoryOrClass) ? factoryOrClass.class : factoryOrClass;
+      return {
+        element: null,
+        instance: instance
+      };
+    }
+    installModifier(createdState, element, args) {
+      const state = installElement(createdState, element);
+      const {
+        positional,
+        named
+      } = args;
+      const teardown = createdState.instance(element, positional, named);
+      if (typeof teardown === 'function') {
+        state.teardown = teardown;
+      }
+      if (true && this.options.eager) {
+        (0, _compat.consumeArgs)(args);
+      }
+    }
+    updateModifier(state, args) {
+      if (state.teardown) {
+        state.teardown();
+      }
+      const teardown = state.instance(state.element, args.positional, args.named);
+      if (typeof teardown === 'function') {
+        state.teardown = teardown;
+      }
+      if (true && this.options.eager) {
+        (0, _compat.consumeArgs)(args);
+      }
+    }
+    destroyModifier(state) {
+      if (typeof state.teardown === 'function') {
+        state.teardown();
+      }
+    }
+  }
+  _exports.default = FunctionBasedModifierManager;
+});
+;define("ember-modifier/-private/function-based/modifier", ["exports", "@ember/debug", "@ember/modifier", "ember-modifier/-private/class/modifier", "ember-modifier/-private/function-based/modifier-manager"], function (_exports, _debug, _modifier, _modifier2, _modifierManager) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = modifier;
+  // Provide a singleton manager for each of the options. (If we extend this to
+  // many more options in the future, we can revisit, but for now this means we
+  // only ever allocate two managers.)
+  const EAGER_MANAGER = new _modifierManager.default({
+    eager: true
+  });
+  const LAZY_MANAGER = new _modifierManager.default({
+    eager: false
+  });
+
+  // This type exists to provide a non-user-constructible, non-subclassable
+  // type representing the conceptual "instance type" of a function modifier.
+  // The abstract field of type `never` prevents subclassing in userspace of
+  // the value returned from `modifier()`. By extending `Modifier<S>`, any
+  // augmentations of the `Modifier` type performed by tools like Glint will
+  // also apply to function-based modifiers as well.
+
+  // This provides a type whose only purpose here is to represent the runtime
+  // type of a function-based modifier: a virtually opaque item. The fact that it's
+  // a bare constructor type allows `modifier()` to preserve type parameters from
+  // a generic function it's passed, and by making it abstract and impossible to
+  // subclass (see above) we prevent users from attempting to instantiate the return
+  // value from a `modifier()` call.
+
+  /**
+   * The (optional) return type for a modifier which needs to perform some kind of
+   * cleanup or teardown -- for example, removing an event listener from an
+   * element besides the one passed into the modifier.
+   */
+
+  /**
+   * An API for writing simple modifiers.
+   *
+   * This function runs the first time when the element the modifier was applied
+   * to is inserted into the DOM, and it *autotracks* while running. Any values
+   * that it accesses will be tracked, and if any of them changes, the function
+   * will run again.
+   *
+   * **Note:** this will rerun if any of its arguments change, *whether or not you
+   * access them*. This is legacy behavior and you should switch to using the
+   * `{ eager: false }` variant, which has normal auto-tracking semantics.
+   *
+   * The modifier can also optionally return a *destructor*. The destructor
+   * function will be run just before the next update, and when the element is
+   * being removed entirely. It should generally clean up the changes that the
+   * modifier made in the first place.
+   *
+   * @deprecated Until 4.0. Calling `modifier()` without an options argument is
+   *   deprecated. It is supported until 4.0 so that existing modifiers can be
+   *   migrated individually. Please update your function-based modifiers to pass
+   *   `{ eager: false }`.
+   *
+   * @param fn The function which defines the modifier.
+   */
+  // This overload allows users to write types directly on the callback passed to
+  // the `modifier` function and infer the resulting type correctly.
+
+  /**
+   * An API for writing simple modifiers.
+   *
+   * This function runs the first time when the element the modifier was applied
+   * to is inserted into the DOM, and it *autotracks* while running. Any values
+   * that it accesses will be tracked, and if any of them changes, the function
+   * will run again.
+   *
+   * **Note:** this will rerun if any of its arguments change, *whether or not you
+   * access them*. This is legacy behavior and you should switch to using the
+   * `{ eager: false }` variant, which has normal auto-tracking semantics.
+   *
+   * The modifier can also optionally return a *destructor*. The destructor
+   * function will be run just before the next update, and when the element is
+   * being removed entirely. It should generally clean up the changes that the
+   * modifier made in the first place.
+   *
+   * @deprecated Until 4.0. Calling `modifier()` with `{ eager: true }` is
+   *   deprecated. It is supported until 4.0 so that existing modifiers can be
+   *   migrated individually. Please update your function-based modifiers to pass
+   *   `{ eager: false }`.
+   *
+   * @param fn The function which defines the modifier.
+   * @param options Configuration for the modifier.
+   */
+  // This overload allows users to write types directly on the callback passed to
+  // the `modifier` function and infer the resulting type correctly.
+
+  /**
+   * An API for writing simple modifiers.
+   *
+   * This function runs the first time when the element the modifier was applied
+   * to is inserted into the DOM, and it *autotracks* while running. Any values
+   * that it accesses will be tracked, including any of its arguments that it
+   * accesses, and if any of them changes, the function will run again.
+   *
+   * **Note:** this will *not* automatically rerun because an argument changes. It
+   * will only rerun if it is *using* that argument (the same as with auto-tracked
+   * state in general).
+   *
+   * The modifier can also optionally return a *destructor*. The destructor
+   * function will be run just before the next update, and when the element is
+   * being removed entirely. It should generally clean up the changes that the
+   * modifier made in the first place.
+   *
+   * @param fn The function which defines the modifier.
+   * @param options Configuration for the modifier.
+   */
+  // This overload allows users to write types directly on the callback passed to
+  // the `modifier` function and infer the resulting type correctly.
+
+  /**
+   * An API for writing simple modifiers.
+   *
+   * This function runs the first time when the element the modifier was applied
+   * to is inserted into the DOM, and it *autotracks* while running. Any values
+   * that it accesses will be tracked, including any of its arguments that it
+   * accesses, and if any of them changes, the function will run again.
+   *
+   * **Note:** this will *not* automatically rerun because an argument changes. It
+   * will only rerun if it is *using* that argument (the same as with auto-tracked
+   * state in general).
+   *
+   * The modifier can also optionally return a *destructor*. The destructor
+   * function will be run just before the next update, and when the element is
+   * being removed entirely. It should generally clean up the changes that the
+   * modifier made in the first place.
+   *
+   * @param fn The function which defines the modifier.
+   * @param options Configuration for the modifier.
+   */
+  // This overload allows users to provide a `Signature` type explicitly at the
+  // modifier definition site, e.g. `modifier<Sig>((el, pos, named) => {...})`.
+  // **Note:** this overload must appear second, since TS' inference engine will
+  // not correctly infer the type of `S` here from the types on the supplied
+  // callback.
+
+  // This is the runtime signature; it performs no inference whatsover and just
+  // uses the simplest version of the invocation possible since, for the case of
+  // setting it on the modifier manager, we don't *need* any of that info, and
+  // the two previous overloads capture all invocations from a type perspective.
+  function modifier(fn, options = {
+    eager: true
+  }) {
+    (true && !(options !== undefined) && (0, _debug.deprecate)(`ember-modifier (for ${fn.name ?? fn} at ${new Error().stack}): creating a function-based modifier without options is deprecated and will be removed at v4.0`, options !== undefined, {
+      id: 'ember-modifier.function-based-options',
+      for: 'ember-modifier',
+      since: {
+        available: '3.2.0',
+        enabled: '3.2.0'
+      },
+      until: '4.0.0'
+    }));
+    (true && !(options?.eager === false) && (0, _debug.deprecate)(`ember-modifier (for ${fn.name ?? fn} at ${new Error().stack}): creating a function-based modifier with \`{ eager: true }\` is deprecated and will be removed at v4.0`, options?.eager === false, {
+      id: 'ember-modifier.function-based-options',
+      for: 'ember-modifier',
+      since: {
+        available: '3.2.0',
+        enabled: '3.2.0'
+      },
+      until: '4.0.0'
+    })); // SAFETY: the cast here is a *lie*, but it is a useful one. The actual return
+    // type of `setModifierManager` today is `void`; we pretend it actually
+    // returns an opaque `Modifier` type so that we can provide a result from this
+    // type which is useful to TS-aware tooling (e.g. Glint).
+    return (0, _modifier.setModifierManager)(() => options.eager ? EAGER_MANAGER : LAZY_MANAGER, fn);
+  }
+
+  /**
+   * @internal
+   */
+
+  /**
+   * @deprecated Instead of defining a function to match this type, simply define
+   *   a function-based modifier either using a `Signature` or by defining the
+   *   types on the callback passed to the `modifier`.
+   */
+});
+;define("ember-modifier/-private/interfaces", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+});
+;define("ember-modifier/-private/opaque", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+});
+;define("ember-modifier/-private/signature", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+});
+;define("ember-modifier/index", ["exports", "ember-modifier/-private/class/modifier", "ember-modifier/-private/function-based/modifier"], function (_exports, _modifier, _modifier2) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _modifier.default;
+    }
+  });
+  Object.defineProperty(_exports, "modifier", {
+    enumerable: true,
+    get: function () {
+      return _modifier2.default;
+    }
+  });
 });
 ;/*
  * This is a stub file, it must be on disk b/c babel-plugin-debug-macros
