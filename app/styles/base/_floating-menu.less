@@ -28,11 +28,13 @@
   overflow: hidden auto;
   max-height: var(--floating-max-height, 250px);
   max-width: 350px;
-
-  margin-top: @spacing-xx-sm;
-  padding: @spacing-xxx-sm;
+  padding: var(--spacing-px-6);
   position: absolute;
   z-index: 1100;
+
+  &:not(.upf-floating-menu--skip-offset) {
+    margin-top: var(--spacing-px-12);
+  }
 
   ul {
     padding: 0;
@@ -62,10 +64,10 @@
   cursor: pointer;
 
   list-style: none;
-  padding: @spacing-xxx-sm @spacing-xx-sm;
+  padding: var(--spacing-px-6) var(--spacing-px-12);
 
   &:hover {
-    background-color: @upf-gray-light;
+    background-color: var(--color-gray-50);
   }
 
   > li {
