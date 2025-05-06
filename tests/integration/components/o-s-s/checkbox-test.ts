@@ -90,6 +90,35 @@ module('Integration | Component | o-s-s/checkbox', function (hooks) {
     });
   });
 
+  module('@hasError argument', () => {
+    test('When the hasError argument is true, the checkbox has the upf-checkbox--error class', async function (assert: Assert) {
+      this.checked = false;
+      this.hasError = true;
+      await render(
+        hbs`<OSS::Checkbox @checked={{this.checked}} @hasError={{this.hasError}} @onChange={{this.onChange}} />`
+      );
+      assert.dom('.upf-checkbox').hasClass('upf-checkbox--error');
+    });
+
+    test('When the hasError argument is false, the checkbox does not have the upf-checkbox--error class', async function (assert: Assert) {
+      this.checked = false;
+      this.hasError = false;
+      await render(
+        hbs`<OSS::Checkbox @checked={{this.checked}} @hasError={{this.hasError}} @onChange={{this.onChange}} />`
+      );
+      assert.dom('.upf-checkbox').doesNotHaveClass('upf-checkbox--error');
+    });
+
+    test('When the hasError argument is undefined, the checkbox does not have the upf-checkbox--error class', async function (assert: Assert) {
+      this.checked = false;
+      this.hasError = undefined;
+      await render(
+        hbs`<OSS::Checkbox @checked={{this.checked}} @hasError={{this.hasError}} @onChange={{this.onChange}} />`
+      );
+      assert.dom('.upf-checkbox').doesNotHaveClass('upf-checkbox--error');
+    });
+  });
+
   module('Error management', function () {
     test('it throws an error if checked argument is missing', async function (assert) {
       setupOnerror((error: Error) => {

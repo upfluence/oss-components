@@ -47,6 +47,17 @@ export default {
         type: 'boolean'
       }
     },
+    hasError: {
+      description:
+        'Displays an error border around the checkbox. Note: disabled, checked and partial states prevail over this state.',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
     onChange: {
       type: { required: true },
       description: 'The action triggered when the checkbox status is changed',
@@ -69,6 +80,7 @@ const defaultArgs = {
   checked: false,
   partial: false,
   disabled: false,
+  hasError: false,
   size: null,
   onChange: action('onSelect')
 };
@@ -76,7 +88,13 @@ const defaultArgs = {
 const Template = (args) => ({
   template: hbs`
     <OSS::Checkbox
-      @checked={{this.checked}} @partial={{this.partial}} @disabled={{this.disabled}} @size={{this.size}} @onChange={{this.onChange}} />
+      @checked={{this.checked}}
+      @partial={{this.partial}}
+      @disabled={{this.disabled}}
+      @size={{this.size}}
+      @hasError={{this.hasError}}
+      @onChange={{this.onChange}}
+    />
   `,
   context: args
 });

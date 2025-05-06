@@ -15,6 +15,7 @@ interface OSSCheckboxArgs {
   partial?: boolean;
   disabled?: boolean;
   size?: SizeType;
+  hasError?: boolean;
   onChange(value: boolean): void;
 }
 
@@ -35,6 +36,10 @@ export default class OSSCheckbox extends Component<OSSCheckboxArgs> {
 
     if (this.args.disabled) {
       classes.push('upf-checkbox--disabled');
+    }
+
+    if (this.args.hasError) {
+      classes.push('upf-checkbox--error');
     }
 
     if (this.args.size && Object.keys(SizeDefinition).includes(this.args.size as SizeType)) {
