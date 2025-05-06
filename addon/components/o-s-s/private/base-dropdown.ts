@@ -3,11 +3,14 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { guidFor } from '@ember/object/internals';
 import { isTesting } from '@embroider/macros';
+import type { FeedbackMessage } from '../input-container';
 
 export interface BaseDropdownArgs {
   focusOnOpen?: boolean;
   addressableAs?: string;
   captureClickOutside?: boolean;
+  feedbackMessage?: FeedbackMessage;
+  hasError?: boolean;
 }
 
 export default class OSSBaseDropdown<T extends BaseDropdownArgs> extends Component<T> {
@@ -24,6 +27,14 @@ export default class OSSBaseDropdown<T extends BaseDropdownArgs> extends Compone
 
   get dropdownAddressableClass(): string {
     return this.args.addressableAs ? `${this.args.addressableAs}__dropdown` : '';
+  }
+
+  get safeFeedbackMessage(): FeedbackMessage | undefined {
+    if (this.args.feedbackMessage && ['error', 'warning', 'success'].includes(this.args.feedbackMessage.type)) {
+      return this.args.feedbackMessage;
+    }
+
+    return undefined;
   }
 
   @action

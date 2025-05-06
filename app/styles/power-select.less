@@ -1,6 +1,14 @@
 .upf-power-select {
   height: 100%;
 
+  &--error {
+    border: red !important;
+    .yielded-input input,
+    .upf-input {
+      .upf-input--errored;
+    }
+  }
+
   .upf-power-select__array-container {
     position: relative;
     height: 100%;
@@ -20,6 +28,7 @@
     .array-input-container {
       border-color: transparent;
       background-color: transparent;
+
       &.active {
         &:hover {
           &:not(.array-input-container--disabled) {
@@ -27,6 +36,7 @@
             border: 1px solid var(--color-border-default);
           }
         }
+
         &:not(.array-input-container--disabled) {
           box-shadow: none;
           background-color: var(--color-gray-100);
@@ -34,6 +44,7 @@
           transition-duration: 0ms;
         }
       }
+
       &:hover {
         &:not(.array-input-container--disabled) {
           box-shadow: none;

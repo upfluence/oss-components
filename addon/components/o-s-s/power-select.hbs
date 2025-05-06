@@ -7,7 +7,7 @@
   ...attributes
 >
   <div class="upf-power-select__array-container" role="button" {{on "click" this.toggleDropdown}}>
-    <div class="array-input-container fx-row padding-px-6 {{if this.isOpen 'active'}}">
+    <div class="array-input-container {{this.inputBorderStateClass}} fx-row padding-px-6 {{if this.isOpen 'active'}}">
       <div class="fx-row fx-xalign-center fx-1 padding-left-px-6 padding-right-px-24 fx-gap-px-6 fx-wrap">
         {{#each @selectedItems as |selectedItem|}}
           {{yield selectedItem to="selected-item"}}
@@ -20,6 +20,14 @@
       <OSS::Icon @icon={{if this.isOpen "fa-chevron-up" "fa-chevron-down"}} class="dropdown-icon" />
     </div>
   </div>
+  {{#if this.safeFeedbackMessage}}
+    <span
+      class={{concat "margin-top-px-6 font-color-" this.safeFeedbackMessage.type "-500"}}
+      data-control-name="power-select-feedback-message"
+    >
+      <span>{{this.safeFeedbackMessage.value}}</span>
+    </span>
+  {{/if}}
 
   {{#if this.isOpen}}
     {{#in-element this.portalTarget insertBefore=null}}

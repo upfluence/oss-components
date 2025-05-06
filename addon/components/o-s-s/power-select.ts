@@ -34,6 +34,12 @@ export default class OSSPowerSelect extends BaseDropdown<OSSPowerSelectArgs> {
     return this.args.addressableAs ? `${this.args.addressableAs}__dropdown` : '';
   }
 
+  get inputBorderStateClass(): string | undefined {
+    if (this.args.hasError) return ' array-input-container--error';
+    if (this.safeFeedbackMessage) return ` array-input-container--${this.safeFeedbackMessage.type}`;
+    return undefined;
+  }
+
   @action
   ensureBlockPresence(hasSelectedItem: boolean, hasOptionItem: boolean): void | never {
     assert(`[component][OSS::PowerSelect] You must pass selected-item named block`, hasSelectedItem);
@@ -63,18 +69,7 @@ export default class OSSPowerSelect extends BaseDropdown<OSSPowerSelectArgs> {
       return;
     }
 
-    scheduleOnce('afterRender', this, () => {
-      const referenceTarget = this.container.querySelector('.upf-power-select__array-container');
-      const floatingTarget = document.querySelector(`#${this.portalId}`);
-
-      if (referenceTarget && floatingTarget) {
-        this.cleanupDrodpownAutoplacement = attachDropdown(
-          referenceTarget as HTMLElement,
-          floatingTarget as HTMLElement,
-          { maxHeight: 300, placementStrategy: 'auto' }
-        );
-      }
-    });
+    scheduleOnce('afterRender', this, this.setupDropdownAutoplacement);
   }
 
   @action
@@ -83,5 +78,18 @@ export default class OSSPowerSelect extends BaseDropdown<OSSPowerSelectArgs> {
     this.cleanupDrodpownAutoplacement?.();
     this.args.onSearch?.('');
     document.querySelector(`#${this.portalId}`)?.remove();
+  }
+
+  private setupDropdownAutoplacement(): void {
+    const referenceTarget = this.container.querySelector('.upf-power-select__array-container');
+    const floatingTarget = document.querySelector(`#${this.portalId}`);
+
+    if (referenceTarget && floatingTarget) {
+      this.cleanupDrodpownAutoplacement = attachDropdown(
+        referenceTarget as HTMLElement,
+        floatingTarget as HTMLElement,
+        { maxHeight: 300, placementStrategy: 'auto' }
+      );
+    }
   }
 }

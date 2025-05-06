@@ -50,6 +50,27 @@ export default {
       },
       control: { type: 'boolean' }
     },
+    feedbackMessage: {
+      description: 'A success, warning or error message that will be displayed below the input-group.',
+      table: {
+        type: {
+          summary: "{ type: 'error' | 'warning' | 'success', value: string }"
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'object' }
+    },
+    hasError: {
+      description:
+        'Allows setting the error style on the input without showing an error message. Useful for form validation.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'boolean' }
+    },
     loadingMore: {
       description: 'Display loading more state in the list of items',
       table: {
@@ -137,6 +158,8 @@ const defaultArgs = {
   placeholder: 'My placeholder',
   searchPlaceholder: 'My search placeholder',
   addressableAs: undefined,
+  feedbackMessage: undefined,
+  hasError: false,
   onSearch: action('onSearch'),
   onChange: action('onChange', { allowFunction: true }),
   onBottomReached: action('onBottomReached')
@@ -147,7 +170,7 @@ const Template = (args) => ({
     <div style="display: flex; justify-content: center; background-color: white; border-radius: 4px">
       <OSS::PowerSelect class='padding-sm' @selectedItems={{this.selectedItems}} @items={{this.items}}
                         @onSearch={{this.onSearch}} @onChange={{this.onChange}} @loading={{this.loading}} 
-                        @borderless={{this.borderless}}
+                        @borderless={{this.borderless}} @hasError={{this.hasError}} @feedbackMessage={{this.feedbackMessage}}
                         @loadingMore={{this.loadingMore}} @placeholder={{this.placeholder}} @searchPlaceholder={{this.searchPlaceholder}}
                         @onBottomReached={{this.onBottomReached}} @addressableAs={{this.addressableAs}}>
         <:selected-item as |selectedItem|>
