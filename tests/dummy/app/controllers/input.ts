@@ -9,7 +9,21 @@ export default class Input extends Controller {
   @tracked inputValue: string = '';
   @tracked searchFieldValue: string = '';
   @tracked textAreaValue: string = '42';
-  @tracked superHeroes: string[] = ['Iron Man', 'Thor', 'Loki', 'Hulk'];
+  @tracked superHeroes: string[] = [
+    'Iron Man',
+    'Thor',
+    'Loki',
+    'Hulk',
+    'Captain America',
+    'Black Widow',
+    'Hawkeye',
+    'Vision',
+    'Scarlet Witch',
+    'Doctor Strange',
+    'Spiderman',
+    'Black Panther',
+    'Captain Marvel'
+  ];
   @tracked items: { name: string; label: string }[] = [
     { name: 'foo', label: 'foo' },
     { name: 'bar', label: 'bar' }
