@@ -21,8 +21,7 @@
     .input-state-disabled;
   }
 
-  &:not(.oss-select-container--disabled, .oss-select-container--errorful, .oss-select-container--successful)
-    .upf-input {
+  &:not(.oss-select-container--disabled, .oss-select-container--errorful, .oss-select-container--successful) .upf-input {
     &:hover {
       .input-state-hover;
     }
@@ -39,6 +38,7 @@
 
   :not(&--disabled)&--errorful .upf-input {
     .border-color-error;
+
     &:hover {
       .input-state-error-hover;
     }
@@ -55,6 +55,7 @@
 
   :not(&--disabled)&--successful .upf-input {
     border: 1px solid var(--color-success-500);
+
     &:hover {
       .input-state-hover;
       border: 1px solid var(--color-success-500);
@@ -75,9 +76,13 @@
 }
 
 .oss-select-container__dropdown {
-  max-width: 100%;
-  min-width: 100%;
-  padding: var(--spacing-px-12);
+  overflow: hidden;
+
+  &:has(.upf-input) {
+    .upf-infinite-select__items-container {
+      max-height: calc(var(--floating-max-height) - 78px);
+    }
+  }
 
   .upf-infinite-select__item {
     padding: 0;
