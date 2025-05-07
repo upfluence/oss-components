@@ -136,7 +136,7 @@
         @selectedItems={{null}}
         @onChange={{this.onPowerSelectChange}}
         @onSearch={{this.onPowerSelectSearch}}
-        @feedbackMessage={{hash type="error" value=""}}
+        @feedbackMessage={{hash type="error" value="error message"}}
       >
         <:selected-item as |selectedProduct|>
           <OSS::Chip @label={{selectedProduct}} @onRemove={{this.onPowerSelectChange}} @maxDisplayWidth={{100}} />
@@ -151,7 +151,7 @@
         @selectedItems={{null}}
         @onChange={{this.onPowerSelectChange}}
         @onSearch={{this.onPowerSelectSearch}}
-        @feedbackMessage={{hash type="success" value=""}}
+        @feedbackMessage={{hash type="success" value="sucess message"}}
       >
         <:selected-item as |selectedProduct|>
           <OSS::Chip @label={{selectedProduct}} @onRemove={{this.onPowerSelectChange}} @maxDisplayWidth={{100}} />
@@ -166,7 +166,7 @@
         @selectedItems={{null}}
         @onChange={{this.onPowerSelectChange}}
         @onSearch={{this.onPowerSelectSearch}}
-        @feedbackMessage={{hash type="warning" value=""}}
+        @feedbackMessage={{hash type="warning" value="warning message"}}
       >
         <:selected-item as |selectedProduct|>
           <OSS::Chip @label={{selectedProduct}} @onRemove={{this.onPowerSelectChange}} @maxDisplayWidth={{100}} />
