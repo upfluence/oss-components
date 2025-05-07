@@ -33,6 +33,7 @@
     border: none;
 
     &:not(&.array-input-container--disabled) {
+
       &:hover,
       &:active,
       &.active,
@@ -42,10 +43,12 @@
     }
   }
 
-  &--errored {
+  &--errored,
+  &--error {
     .border-color-error;
 
     &:not(&.array-input-container--disabled) {
+
       &:hover,
       &:focus {
         .border-color-error;
@@ -53,6 +56,38 @@
 
       &:active {
         .input-state-error-active;
+      }
+    }
+  }
+
+  &--success {
+    .border-color-success;
+
+    &:not(&.array-input-container--disabled) {
+
+      &:hover,
+      &:focus {
+        .border-color-success;
+      }
+
+      &:active {
+        .input-state-success-active;
+      }
+    }
+  }
+
+  &--warning {
+    .border-color-warning;
+
+    &:not(&.array-input-container--disabled) {
+
+      &:hover,
+      &:focus {
+        .border-color-warning;
+      }
+
+      &:active {
+        .input-state-warning-active;
       }
     }
   }

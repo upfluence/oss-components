@@ -98,18 +98,7 @@ export default class OSSSelect extends BaseDropdown<OSSSelectArgs> {
       return;
     }
 
-    scheduleOnce('afterRender', this, () => {
-      const referenceTarget = this.container.querySelector('.upf-input');
-      const floatingTarget = document.querySelector(`#${this.portalId}`);
-
-      if (referenceTarget && floatingTarget) {
-        this.cleanupDrodpownAutoplacement = attachDropdown(
-          referenceTarget as HTMLElement,
-          floatingTarget as HTMLElement,
-          { placementStrategy: 'auto' }
-        );
-      }
-    });
+    scheduleOnce('afterRender', this, this.setupDropdownAutoplacement);
   }
 
   @action
@@ -134,5 +123,18 @@ export default class OSSSelect extends BaseDropdown<OSSSelectArgs> {
   @action
   ensureBlockPresence(hasOptionItem: boolean): void {
     assert(`[component][OSS::Select] You must pass option named block`, hasOptionItem);
+  }
+
+  private setupDropdownAutoplacement(): void {
+    const referenceTarget = this.container.querySelector('.upf-input');
+    const floatingTarget = document.querySelector(`#${this.portalId}`);
+
+    if (referenceTarget && floatingTarget) {
+      this.cleanupDrodpownAutoplacement = attachDropdown(
+        referenceTarget as HTMLElement,
+        floatingTarget as HTMLElement,
+        { maxHeight: 300, placementStrategy: 'auto' }
+      );
+    }
   }
 }

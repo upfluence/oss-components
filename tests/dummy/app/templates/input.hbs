@@ -45,12 +45,14 @@
 
         <OSS::Select
           @value={{this.selectedItem}}
-          @items={{this.items}}
+          @items={{this.superHeroes}}
           @onChange={{this.onSelect}}
+          @onSearch={{this.onPowerSelectSearch}}
           @successMessage="It works"
+          class="fx-1"
         >
           <:option as |item|>
-            {{item.name}}
+            {{item}}
           </:option>
         </OSS::Select>
 
@@ -119,6 +121,52 @@
         @selectedItems={{null}}
         @onChange={{this.onPowerSelectChange}}
         @onSearch={{this.onPowerSelectSearch}}
+      >
+        <:selected-item as |selectedProduct|>
+          <OSS::Chip @label={{selectedProduct}} @onRemove={{this.onPowerSelectChange}} @maxDisplayWidth={{100}} />
+        </:selected-item>
+        <:option-item as |item|>
+          {{item}}
+        </:option-item>
+      </OSS::PowerSelect>
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <OSS::PowerSelect
+        @items={{this.superHeroes}}
+        @selectedItems={{null}}
+        @onChange={{this.onPowerSelectChange}}
+        @onSearch={{this.onPowerSelectSearch}}
+        @feedbackMessage={{hash type="error" value="error message"}}
+      >
+        <:selected-item as |selectedProduct|>
+          <OSS::Chip @label={{selectedProduct}} @onRemove={{this.onPowerSelectChange}} @maxDisplayWidth={{100}} />
+        </:selected-item>
+        <:option-item as |item|>
+          {{item}}
+        </:option-item>
+      </OSS::PowerSelect>
+
+      <OSS::PowerSelect
+        @items={{this.superHeroes}}
+        @selectedItems={{null}}
+        @onChange={{this.onPowerSelectChange}}
+        @onSearch={{this.onPowerSelectSearch}}
+        @feedbackMessage={{hash type="success" value="sucess message"}}
+      >
+        <:selected-item as |selectedProduct|>
+          <OSS::Chip @label={{selectedProduct}} @onRemove={{this.onPowerSelectChange}} @maxDisplayWidth={{100}} />
+        </:selected-item>
+        <:option-item as |item|>
+          {{item}}
+        </:option-item>
+      </OSS::PowerSelect>
+
+      <OSS::PowerSelect
+        @items={{this.superHeroes}}
+        @selectedItems={{null}}
+        @onChange={{this.onPowerSelectChange}}
+        @onSearch={{this.onPowerSelectSearch}}
+        @feedbackMessage={{hash type="warning" value="warning message"}}
       >
         <:selected-item as |selectedProduct|>
           <OSS::Chip @label={{selectedProduct}} @onRemove={{this.onPowerSelectChange}} @maxDisplayWidth={{100}} />

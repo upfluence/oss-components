@@ -2,7 +2,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { setupIntl } from 'ember-intl/test-support';
-import { render, setupOnerror, findAll, click, typeIn, scrollTo } from '@ember/test-helpers';
+import { render, setupOnerror, findAll, click, typeIn, scrollTo, type TestContext } from '@ember/test-helpers';
 import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/power-select', function (hooks) {
@@ -282,6 +282,99 @@ module('Integration | Component | o-s-s/power-select', function (hooks) {
       await click('.upf-power-select__array-container');
       assert.dom('.upf-infinite-select').exists();
       assert.dom('.upf-infinite-select').hasClass('foobar-select__dropdown');
+    });
+  });
+
+  module('with @feedbackMessage', () => {
+    async function renderComponentWithFeedbackMessage(): Promise<void> {
+      await render(hbs`
+        <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
+                          @onSearch={{this.onSearch}} @feedbackMessage={{this.feedbackMessage}}>
+          <:selected-item as |selectedItem|>
+            {{selectedItem}}
+          </:selected-item>
+          <:option-item as |item|>
+            {{item}}
+          </:option-item>
+        </OSS::PowerSelect>
+      `);
+    }
+
+    module('For "error" type', () => {
+      test('Passing the error type sets the proper border class on the input container', async function (assert) {
+        this.feedbackMessage = { type: 'error', value: 'error message' };
+        await renderComponentWithFeedbackMessage();
+
+        assert.dom('.upf-power-select .array-input-container').hasClass('array-input-container--error');
+      });
+
+      test('Passing the error type along with a message will display the message', async function (assert) {
+        this.feedbackMessage = { type: 'error', value: 'error message' };
+        await renderComponentWithFeedbackMessage();
+
+        assert.dom('[data-control-name="power-select-feedback-message"]').hasText('error message');
+      });
+    });
+
+    module('For "warning" type', () => {
+      test('Passing the warning type sets the proper border class on the input container', async function (assert) {
+        this.feedbackMessage = { type: 'warning', value: 'warning message' };
+        await renderComponentWithFeedbackMessage();
+
+        assert.dom('.upf-power-select .array-input-container').hasClass('array-input-container--warning');
+      });
+
+      test('Passing the warning type along with a message will display the message', async function (assert) {
+        this.feedbackMessage = { type: 'warning', value: 'warning message' };
+        await renderComponentWithFeedbackMessage();
+
+        assert.dom('[data-control-name="power-select-feedback-message"]').hasText('warning message');
+      });
+    });
+
+    module('For "success" type', () => {
+      test('Passing the success type sets the proper border class on the input container', async function (assert) {
+        this.feedbackMessage = { type: 'success', value: 'success message' };
+        await renderComponentWithFeedbackMessage();
+
+        assert.dom('.upf-power-select .array-input-container').hasClass('array-input-container--success');
+      });
+
+      test('Passing the success type along with a message will display the message', async function (assert) {
+        this.feedbackMessage = { type: 'success', value: 'success message' };
+        await renderComponentWithFeedbackMessage();
+
+        assert.dom('[data-control-name="power-select-feedback-message"]').hasText('success message');
+      });
+    });
+
+    test('Failing to pass the type will not display a border or a message', async function (assert) {
+      this.feedbackMessage = undefined;
+      await renderComponentWithFeedbackMessage();
+      assert.dom('.upf-power-select .array-input-container').doesNotHaveClass('array-input-container--error');
+      assert.dom('[data-control-name="power-select-feedback-message"]').doesNotExist();
+    });
+  });
+
+  module('with @hasError', () => {
+    test('Passing @hasError parameter sets the proper border class on the input container', async function (assert) {
+      this.selectedItems = ['value1', 'value2'];
+      this.items = ['value1', 'value2'];
+      this.hasError = true;
+
+      await render(hbs`
+        <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}} @hasError={{true}}
+                          @onSearch={{this.onSearch}}>
+          <:selected-item as |selectedItem|>
+            {{selectedItem}}
+          </:selected-item>
+          <:option-item as |item|>
+            {{item}}
+          </:option-item>
+        </OSS::PowerSelect />
+      `);
+
+      assert.dom('.upf-power-select .array-input-container').hasClass('array-input-container--error');
     });
   });
 
