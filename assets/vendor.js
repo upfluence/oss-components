@@ -85574,6 +85574,9 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
       if (this.args.disabled) {
         classes.push('upf-checkbox--disabled');
       }
+      if (this.args.hasError) {
+        classes.push('upf-checkbox--error');
+      }
       if (this.args.size && Object.keys(SizeDefinition).includes(this.args.size)) {
         classes.push(SizeDefinition[this.args.size]);
       }
@@ -85668,6 +85671,20 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
           type: 'boolean'
         }
       },
+      hasError: {
+        description: 'Displays an error border around the checkbox. Note: disabled, checked and partial states prevail over this state.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
       onChange: {
         type: {
           required: true
@@ -85693,6 +85710,7 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
     checked: false,
     partial: false,
     disabled: false,
+    hasError: false,
     size: null,
     onChange: (0, _addonActions.action)('onSelect')
   };
@@ -85701,12 +85719,18 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
     /*
       
         <OSS::Checkbox
-          @checked={{this.checked}} @partial={{this.partial}} @disabled={{this.disabled}} @size={{this.size}} @onChange={{this.onChange}} />
+          @checked={{this.checked}}
+          @partial={{this.partial}}
+          @disabled={{this.disabled}}
+          @size={{this.size}}
+          @hasError={{this.hasError}}
+          @onChange={{this.onChange}}
+        />
       
     */
     {
-      "id": "AzFNd0Kl",
-      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@checked\",\"@partial\",\"@disabled\",\"@size\",\"@onChange\"],[[30,0,[\"checked\"]],[30,0,[\"partial\"]],[30,0,[\"disabled\"]],[30,0,[\"size\"]],[30,0,[\"onChange\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/checkbox\"]]",
+      "id": "ZT+h/sW6",
+      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@checked\",\"@partial\",\"@disabled\",\"@size\",\"@hasError\",\"@onChange\"],[[30,0,[\"checked\"]],[30,0,[\"partial\"]],[30,0,[\"disabled\"]],[30,0,[\"size\"]],[30,0,[\"hasError\"]],[30,0,[\"onChange\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/checkbox\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/checkbox.stories.js",
       "isStrictMode": false
     }),
@@ -92506,7 +92530,7 @@ interface OSSCodeBlockArgs {
     ...attributes
   >
     <div class="upf-power-select__array-container" role="button" {{on "click" this.toggleDropdown}}>
-      <div class="array-input-container fx-row padding-px-6 {{if this.isOpen 'active'}}">
+      <div class="array-input-container {{this.inputBorderStateClass}} fx-row padding-px-6 {{if this.isOpen 'active'}}">
         <div class="fx-row fx-xalign-center fx-1 padding-left-px-6 padding-right-px-24 fx-gap-px-6 fx-wrap">
           {{#each @selectedItems as |selectedItem|}}
             {{yield selectedItem to="selected-item"}}
@@ -92519,6 +92543,14 @@ interface OSSCodeBlockArgs {
         <OSS::Icon @icon={{if this.isOpen "fa-chevron-up" "fa-chevron-down"}} class="dropdown-icon" />
       </div>
     </div>
+    {{#if this.safeFeedbackMessage}}
+      <span
+        class={{concat "margin-top-px-6 font-color-" this.safeFeedbackMessage.type "-500"}}
+        data-control-name="power-select-feedback-message"
+      >
+        {{this.safeFeedbackMessage.value}}
+      </span>
+    {{/if}}
   
     {{#if this.isOpen}}
       {{#in-element this.portalTarget insertBefore=null}}
@@ -92572,8 +92604,8 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "b06AVVD5",
-    "block": "[[[11,0],[16,0,[29,[\"upf-power-select fx-1 fx-col \",[52,[30,1],\"upf-power-select--borderless\"]]]],[24,\"data-toggle\",\"oss-dropdown\"],[17,2],[4,[38,1],[[30,0,[\"registerContainer\"]]],null],[4,[38,1],[[28,[37,2],[[30,0,[\"ensureBlockPresence\"]],[48,[30,14]],[48,[30,15]]],null]],null],[4,[38,4],[[30,0,[\"disconnectObserver\"]]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"upf-power-select__array-container\"],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n    \"],[10,0],[15,0,[29,[\"array-input-container fx-row padding-px-6 \",[52,[30,0,[\"isOpen\"]],\"active\"]]]],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-1 padding-left-px-6 padding-right-px-24 fx-gap-px-6 fx-wrap\"],[12],[1,\"\\n\"],[42,[28,[37,7],[[28,[37,7],[[30,3]],null]],null],null,[[[1,\"          \"],[18,14,[[30,4]]],[1,\"\\n\"]],[4]],[[[1,\"          \"],[10,1],[14,0,\"text-size-5 text-color-default-light\"],[12],[1,\"\\n            \"],[1,[30,0,[\"placeholder\"]]],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]]],[1,\"      \"],[13],[1,\"\\n      \"],[8,[39,9],[[24,0,\"dropdown-icon\"]],[[\"@icon\"],[[52,[30,0,[\"isOpen\"]],\"fa-chevron-up\",\"fa-chevron-down\"]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"isOpen\"]],[[[40,[[[41,[48,[30,16]],[[[1,\"        \"],[8,[39,12],[[16,0,[28,[37,13],[\"margin-top-px-0 upf-power-select__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[16,1,[30,0,[\"portalId\"]]],[4,[38,5],[\"click\",[30,0,[\"noop\"]]],null],[4,[38,14],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[[30,11]]]]],[[\"@items\",\"@onSearch\",\"@inline\",\"@onSelect\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\",\"@enableKeyboard\"],[[30,5],[30,6],false,[30,0,[\"onSelect\"]],[30,7],[30,8],[30,9],[30,10],true]],[[\"option\",\"empty-state\"],[[[[1,\"\\n            \"],[18,15,[[30,12]]],[1,\"\\n          \"]],[12]],[[[1,\"\\n            \"],[18,16,null],[1,\"\\n          \"]],[]]]]],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,12],[[16,0,[28,[37,13],[\"margin-top-px-0 upf-power-select__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[16,1,[30,0,[\"portalId\"]]],[4,[38,5],[\"click\",[30,0,[\"noop\"]]],null],[4,[38,14],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[[30,11]]]]],[[\"@items\",\"@onSearch\",\"@inline\",\"@onSelect\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\",\"@enableKeyboard\"],[[30,5],[30,6],false,[30,0,[\"onSelect\"]],[30,7],[30,8],[30,9],[30,10],true]],[[\"option\"],[[[[1,\"\\n            \"],[18,15,[[30,13]]],[1,\"\\n          \"]],[13]]]]],[1,\"\\n\"]],[]]]],[]],\"%cursor:0%\",[28,[37,11],[[30,0,[\"portalTarget\"]]],null],null]],[]],null],[13]],[\"@borderless\",\"&attrs\",\"@selectedItems\",\"selectedItem\",\"@items\",\"@onSearch\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\",\"@captureClickOutside\",\"item\",\"item\",\"&selected-item\",\"&option-item\",\"&empty-state\"],false,[\"if\",\"did-insert\",\"fn\",\"has-block\",\"will-destroy\",\"on\",\"each\",\"-track-array\",\"yield\",\"o-s-s/icon\",\"in-element\",\"-in-el-null\",\"o-s-s/infinite-select\",\"concat\",\"on-click-outside\"]]",
+    "id": "9k4C+QD5",
+    "block": "[[[11,0],[16,0,[29,[\"upf-power-select fx-1 fx-col \",[52,[30,1],\"upf-power-select--borderless\"]]]],[24,\"data-toggle\",\"oss-dropdown\"],[17,2],[4,[38,1],[[30,0,[\"registerContainer\"]]],null],[4,[38,1],[[28,[37,2],[[30,0,[\"ensureBlockPresence\"]],[48,[30,14]],[48,[30,15]]],null]],null],[4,[38,4],[[30,0,[\"disconnectObserver\"]]],null],[12],[1,\"\\n  \"],[11,0],[24,0,\"upf-power-select__array-container\"],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n    \"],[10,0],[15,0,[29,[\"array-input-container \",[30,0,[\"inputBorderStateClass\"]],\" fx-row padding-px-6 \",[52,[30,0,[\"isOpen\"]],\"active\"]]]],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-1 padding-left-px-6 padding-right-px-24 fx-gap-px-6 fx-wrap\"],[12],[1,\"\\n\"],[42,[28,[37,7],[[28,[37,7],[[30,3]],null]],null],null,[[[1,\"          \"],[18,14,[[30,4]]],[1,\"\\n\"]],[4]],[[[1,\"          \"],[10,1],[14,0,\"text-size-5 text-color-default-light\"],[12],[1,\"\\n            \"],[1,[30,0,[\"placeholder\"]]],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]]],[1,\"      \"],[13],[1,\"\\n      \"],[8,[39,9],[[24,0,\"dropdown-icon\"]],[[\"@icon\"],[[52,[30,0,[\"isOpen\"]],\"fa-chevron-up\",\"fa-chevron-down\"]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"safeFeedbackMessage\"]],[[[1,\"    \"],[10,1],[15,0,[28,[37,10],[\"margin-top-px-6 font-color-\",[30,0,[\"safeFeedbackMessage\",\"type\"]],\"-500\"],null]],[14,\"data-control-name\",\"power-select-feedback-message\"],[12],[1,\"\\n      \"],[1,[30,0,[\"safeFeedbackMessage\",\"value\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,0,[\"isOpen\"]],[[[40,[[[41,[48,[30,16]],[[[1,\"        \"],[8,[39,13],[[16,0,[28,[37,10],[\"margin-top-px-0 upf-power-select__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[16,1,[30,0,[\"portalId\"]]],[4,[38,5],[\"click\",[30,0,[\"noop\"]]],null],[4,[38,14],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[[30,11]]]]],[[\"@items\",\"@onSearch\",\"@inline\",\"@onSelect\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\",\"@enableKeyboard\"],[[30,5],[30,6],false,[30,0,[\"onSelect\"]],[30,7],[30,8],[30,9],[30,10],true]],[[\"option\",\"empty-state\"],[[[[1,\"\\n            \"],[18,15,[[30,12]]],[1,\"\\n          \"]],[12]],[[[1,\"\\n            \"],[18,16,null],[1,\"\\n          \"]],[]]]]],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,13],[[16,0,[28,[37,10],[\"margin-top-px-0 upf-power-select__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[16,1,[30,0,[\"portalId\"]]],[4,[38,5],[\"click\",[30,0,[\"noop\"]]],null],[4,[38,14],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[[30,11]]]]],[[\"@items\",\"@onSearch\",\"@inline\",\"@onSelect\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\",\"@enableKeyboard\"],[[30,5],[30,6],false,[30,0,[\"onSelect\"]],[30,7],[30,8],[30,9],[30,10],true]],[[\"option\"],[[[[1,\"\\n            \"],[18,15,[[30,13]]],[1,\"\\n          \"]],[13]]]]],[1,\"\\n\"]],[]]]],[]],\"%cursor:0%\",[28,[37,12],[[30,0,[\"portalTarget\"]]],null],null]],[]],null],[13]],[\"@borderless\",\"&attrs\",\"@selectedItems\",\"selectedItem\",\"@items\",\"@onSearch\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\",\"@captureClickOutside\",\"item\",\"item\",\"&selected-item\",\"&option-item\",\"&empty-state\"],false,[\"if\",\"did-insert\",\"fn\",\"has-block\",\"will-destroy\",\"on\",\"each\",\"-track-array\",\"yield\",\"o-s-s/icon\",\"concat\",\"in-element\",\"-in-el-null\",\"o-s-s/infinite-select\",\"on-click-outside\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/power-select.hbs",
     "isStrictMode": false
   });
@@ -92588,6 +92620,11 @@ interface OSSCodeBlockArgs {
     }
     get dropdownAddressableClass() {
       return this.args.addressableAs ? `${this.args.addressableAs}__dropdown` : '';
+    }
+    get inputBorderStateClass() {
+      if (this.args.hasError) return ' array-input-container--error';
+      if (this.safeFeedbackMessage) return ` array-input-container--${this.safeFeedbackMessage.type}`;
+      return undefined;
     }
     ensureBlockPresence(hasSelectedItem, hasOptionItem) {
       (true && !(hasSelectedItem) && (0, _debug.assert)(`[component][OSS::PowerSelect] You must pass selected-item named block`, hasSelectedItem));
@@ -92609,22 +92646,23 @@ interface OSSCodeBlockArgs {
         this.args.onSearch?.('');
         return;
       }
-      (0, _runloop.scheduleOnce)('afterRender', this, () => {
-        const referenceTarget = this.container.querySelector('.upf-power-select__array-container');
-        const floatingTarget = document.querySelector(`#${this.portalId}`);
-        if (referenceTarget && floatingTarget) {
-          this.cleanupDrodpownAutoplacement = (0, _attachDropdown.default)(referenceTarget, floatingTarget, {
-            maxHeight: 300,
-            placementStrategy: 'auto'
-          });
-        }
-      });
+      (0, _runloop.scheduleOnce)('afterRender', this, this.setupDropdownAutoplacement);
     }
     onClickOutside(_, event) {
       super.onClickOutside(_, event);
       this.cleanupDrodpownAutoplacement?.();
       this.args.onSearch?.('');
       document.querySelector(`#${this.portalId}`)?.remove();
+    }
+    setupDropdownAutoplacement() {
+      const referenceTarget = this.container.querySelector('.upf-power-select__array-container');
+      const floatingTarget = document.querySelector(`#${this.portalId}`);
+      if (referenceTarget && floatingTarget) {
+        this.cleanupDrodpownAutoplacement = (0, _attachDropdown.default)(referenceTarget, floatingTarget, {
+          maxHeight: 300,
+          placementStrategy: 'auto'
+        });
+      }
     }
   }, (_applyDecoratedDescriptor(_class.prototype, "ensureBlockPresence", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "ensureBlockPresence"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleSelectorClose", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleSelectorClose"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSPowerSelect);
@@ -92699,6 +92737,34 @@ interface OSSCodeBlockArgs {
           },
           defaultValue: {
             summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      feedbackMessage: {
+        description: 'A success, warning or error message that will be displayed below the input-group.',
+        table: {
+          type: {
+            summary: "{ type: 'error' | 'warning' | 'success', value: string }"
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'object'
+        }
+      },
+      hasError: {
+        description: 'Allows setting the error style on the input without showing an error message. Useful for form validation.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'undefined'
           }
         },
         control: {
@@ -92804,6 +92870,8 @@ interface OSSCodeBlockArgs {
     placeholder: 'My placeholder',
     searchPlaceholder: 'My search placeholder',
     addressableAs: undefined,
+    feedbackMessage: undefined,
+    hasError: false,
     onSearch: (0, _addonActions.action)('onSearch'),
     onChange: (0, _addonActions.action)('onChange', {
       allowFunction: true
@@ -92817,7 +92885,7 @@ interface OSSCodeBlockArgs {
         <div style="display: flex; justify-content: center; background-color: white; border-radius: 4px">
           <OSS::PowerSelect class='padding-sm' @selectedItems={{this.selectedItems}} @items={{this.items}}
                             @onSearch={{this.onSearch}} @onChange={{this.onChange}} @loading={{this.loading}} 
-                            @borderless={{this.borderless}}
+                            @borderless={{this.borderless}} @hasError={{this.hasError}} @feedbackMessage={{this.feedbackMessage}}
                             @loadingMore={{this.loadingMore}} @placeholder={{this.placeholder}} @searchPlaceholder={{this.searchPlaceholder}}
                             @onBottomReached={{this.onBottomReached}} @addressableAs={{this.addressableAs}}>
             <:selected-item as |selectedItem|>
@@ -92831,8 +92899,8 @@ interface OSSCodeBlockArgs {
       
     */
     {
-      "id": "RVfai5/I",
-      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"display: flex; justify-content: center; background-color: white; border-radius: 4px\"],[12],[1,\"\\n      \"],[8,[39,0],[[24,0,\"padding-sm\"]],[[\"@selectedItems\",\"@items\",\"@onSearch\",\"@onChange\",\"@loading\",\"@borderless\",\"@loadingMore\",\"@placeholder\",\"@searchPlaceholder\",\"@onBottomReached\",\"@addressableAs\"],[[30,0,[\"selectedItems\"]],[30,0,[\"items\"]],[30,0,[\"onSearch\"]],[30,0,[\"onChange\"]],[30,0,[\"loading\"]],[30,0,[\"borderless\"]],[30,0,[\"loadingMore\"]],[30,0,[\"placeholder\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"addressableAs\"]]]],[[\"selected-item\",\"option-item\"],[[[[1,\"\\n          \"],[1,[30,1]],[1,\"\\n        \"]],[1]],[[[1,\"\\n          \"],[1,[30,2]],[1,\"\\n        \"]],[2]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[\"selectedItem\",\"item\"],false,[\"o-s-s/power-select\"]]",
+      "id": "Hk1NEEDr",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"display: flex; justify-content: center; background-color: white; border-radius: 4px\"],[12],[1,\"\\n      \"],[8,[39,0],[[24,0,\"padding-sm\"]],[[\"@selectedItems\",\"@items\",\"@onSearch\",\"@onChange\",\"@loading\",\"@borderless\",\"@hasError\",\"@feedbackMessage\",\"@loadingMore\",\"@placeholder\",\"@searchPlaceholder\",\"@onBottomReached\",\"@addressableAs\"],[[30,0,[\"selectedItems\"]],[30,0,[\"items\"]],[30,0,[\"onSearch\"]],[30,0,[\"onChange\"]],[30,0,[\"loading\"]],[30,0,[\"borderless\"]],[30,0,[\"hasError\"]],[30,0,[\"feedbackMessage\"]],[30,0,[\"loadingMore\"]],[30,0,[\"placeholder\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"addressableAs\"]]]],[[\"selected-item\",\"option-item\"],[[[[1,\"\\n          \"],[1,[30,1]],[1,\"\\n        \"]],[1]],[[[1,\"\\n          \"],[1,[30,2]],[1,\"\\n        \"]],[2]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[\"selectedItem\",\"item\"],false,[\"o-s-s/power-select\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/power-select.stories.js",
       "isStrictMode": false
     }),
@@ -92876,6 +92944,12 @@ interface OSSCodeBlockArgs {
     }
     get dropdownAddressableClass() {
       return this.args.addressableAs ? `${this.args.addressableAs}__dropdown` : '';
+    }
+    get safeFeedbackMessage() {
+      if (this.args.feedbackMessage && ['error', 'warning', 'success'].includes(this.args.feedbackMessage.type)) {
+        return this.args.feedbackMessage;
+      }
+      return undefined;
     }
     toggleDropdown(event) {
       event.stopPropagation();
@@ -93932,15 +94006,7 @@ interface OSSCodeBlockArgs {
         this.args.onSearch?.('');
         return;
       }
-      (0, _runloop.scheduleOnce)('afterRender', this, () => {
-        const referenceTarget = this.container.querySelector('.upf-input');
-        const floatingTarget = document.querySelector(`#${this.portalId}`);
-        if (referenceTarget && floatingTarget) {
-          this.cleanupDrodpownAutoplacement = (0, _attachDropdown.default)(referenceTarget, floatingTarget, {
-            placementStrategy: 'auto'
-          });
-        }
-      });
+      (0, _runloop.scheduleOnce)('afterRender', this, this.setupDropdownAutoplacement);
     }
     onClickOutside(_, event) {
       event.stopPropagation();
@@ -93957,6 +94023,16 @@ interface OSSCodeBlockArgs {
     }
     ensureBlockPresence(hasOptionItem) {
       (true && !(hasOptionItem) && (0, _debug.assert)(`[component][OSS::Select] You must pass option named block`, hasOptionItem));
+    }
+    setupDropdownAutoplacement() {
+      const referenceTarget = this.container.querySelector('.upf-input');
+      const floatingTarget = document.querySelector(`#${this.portalId}`);
+      if (referenceTarget && floatingTarget) {
+        this.cleanupDrodpownAutoplacement = (0, _attachDropdown.default)(referenceTarget, floatingTarget, {
+          maxHeight: 300,
+          placementStrategy: 'auto'
+        });
+      }
     }
   }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,

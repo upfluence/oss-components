@@ -3823,6 +3823,53 @@ define("dummy/tests/integration/components/o-s-s/checkbox-test", ["qunit", "embe
         assert.dom('.upf-checkbox__fake-checkbox').hasNoClass('upf-checkbox__fake-checkbox--partial');
       });
     });
+    (0, _qunit.module)('@hasError argument', () => {
+      (0, _qunit.test)('When the hasError argument is true, the checkbox has the upf-checkbox--error class', async function (assert) {
+        this.checked = false;
+        this.hasError = true;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Checkbox @checked={{this.checked}} @hasError={{this.hasError}} @onChange={{this.onChange}} />
+        */
+        {
+          "id": "a+PECYgL",
+          "block": "[[[8,[39,0],null,[[\"@checked\",\"@hasError\",\"@onChange\"],[[30,0,[\"checked\"]],[30,0,[\"hasError\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/checkbox\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/checkbox-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-checkbox').hasClass('upf-checkbox--error');
+      });
+      (0, _qunit.test)('When the hasError argument is false, the checkbox does not have the upf-checkbox--error class', async function (assert) {
+        this.checked = false;
+        this.hasError = false;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Checkbox @checked={{this.checked}} @hasError={{this.hasError}} @onChange={{this.onChange}} />
+        */
+        {
+          "id": "a+PECYgL",
+          "block": "[[[8,[39,0],null,[[\"@checked\",\"@hasError\",\"@onChange\"],[[30,0,[\"checked\"]],[30,0,[\"hasError\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/checkbox\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/checkbox-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-checkbox').doesNotHaveClass('upf-checkbox--error');
+      });
+      (0, _qunit.test)('When the hasError argument is undefined, the checkbox does not have the upf-checkbox--error class', async function (assert) {
+        this.checked = false;
+        this.hasError = undefined;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Checkbox @checked={{this.checked}} @hasError={{this.hasError}} @onChange={{this.onChange}} />
+        */
+        {
+          "id": "a+PECYgL",
+          "block": "[[[8,[39,0],null,[[\"@checked\",\"@hasError\",\"@onChange\"],[[30,0,[\"checked\"]],[30,0,[\"hasError\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/checkbox\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/checkbox-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-checkbox').doesNotHaveClass('upf-checkbox--error');
+      });
+    });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it throws an error if checked argument is missing', async function (assert) {
         (0, _testHelpers.setupOnerror)(error => {
@@ -10315,6 +10362,118 @@ define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "
         await (0, _testHelpers.click)('.upf-power-select__array-container');
         assert.dom('.upf-infinite-select').exists();
         assert.dom('.upf-infinite-select').hasClass('foobar-select__dropdown');
+      });
+    });
+    (0, _qunit.module)('with @feedbackMessage', () => {
+      async function renderComponentWithFeedbackMessage() {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}}
+                                  @onSearch={{this.onSearch}} @feedbackMessage={{this.feedbackMessage}}>
+                  <:selected-item as |selectedItem|>
+                    {{selectedItem}}
+                  </:selected-item>
+                  <:option-item as |item|>
+                    {{item}}
+                  </:option-item>
+                </OSS::PowerSelect>
+              
+        */
+        {
+          "id": "oQVp1Lq/",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@selectedItems\",\"@items\",\"@onSearch\",\"@feedbackMessage\"],[[30,0,[\"selectedItems\"]],[30,0,[\"items\"]],[30,0,[\"onSearch\"]],[30,0,[\"feedbackMessage\"]]]],[[\"selected-item\",\"option-item\"],[[[[1,\"\\n            \"],[1,[30,1]],[1,\"\\n          \"]],[1]],[[[1,\"\\n            \"],[1,[30,2]],[1,\"\\n          \"]],[2]]]]],[1,\"\\n      \"]],[\"selectedItem\",\"item\"],false,[\"o-s-s/power-select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/power-select-test.ts",
+          "isStrictMode": false
+        }));
+      }
+      (0, _qunit.module)('For "error" type', () => {
+        (0, _qunit.test)('Passing the error type sets the proper border class on the input container', async function (assert) {
+          this.feedbackMessage = {
+            type: 'error',
+            value: 'error message'
+          };
+          await renderComponentWithFeedbackMessage();
+          assert.dom('.upf-power-select .array-input-container').hasClass('array-input-container--error');
+        });
+        (0, _qunit.test)('Passing the error type along with a message will display the message', async function (assert) {
+          this.feedbackMessage = {
+            type: 'error',
+            value: 'error message'
+          };
+          await renderComponentWithFeedbackMessage();
+          assert.dom('[data-control-name="power-select-feedback-message"]').hasText('error message');
+        });
+      });
+      (0, _qunit.module)('For "warning" type', () => {
+        (0, _qunit.test)('Passing the warning type sets the proper border class on the input container', async function (assert) {
+          this.feedbackMessage = {
+            type: 'warning',
+            value: 'warning message'
+          };
+          await renderComponentWithFeedbackMessage();
+          assert.dom('.upf-power-select .array-input-container').hasClass('array-input-container--warning');
+        });
+        (0, _qunit.test)('Passing the warning type along with a message will display the message', async function (assert) {
+          this.feedbackMessage = {
+            type: 'warning',
+            value: 'warning message'
+          };
+          await renderComponentWithFeedbackMessage();
+          assert.dom('[data-control-name="power-select-feedback-message"]').hasText('warning message');
+        });
+      });
+      (0, _qunit.module)('For "success" type', () => {
+        (0, _qunit.test)('Passing the success type sets the proper border class on the input container', async function (assert) {
+          this.feedbackMessage = {
+            type: 'success',
+            value: 'success message'
+          };
+          await renderComponentWithFeedbackMessage();
+          assert.dom('.upf-power-select .array-input-container').hasClass('array-input-container--success');
+        });
+        (0, _qunit.test)('Passing the success type along with a message will display the message', async function (assert) {
+          this.feedbackMessage = {
+            type: 'success',
+            value: 'success message'
+          };
+          await renderComponentWithFeedbackMessage();
+          assert.dom('[data-control-name="power-select-feedback-message"]').hasText('success message');
+        });
+      });
+      (0, _qunit.test)('Failing to pass the type will not display a border or a message', async function (assert) {
+        this.feedbackMessage = undefined;
+        await renderComponentWithFeedbackMessage();
+        assert.dom('.upf-power-select .array-input-container').doesNotHaveClass('array-input-container--error');
+        assert.dom('[data-control-name="power-select-feedback-message"]').doesNotExist();
+      });
+    });
+    (0, _qunit.module)('with @hasError', () => {
+      (0, _qunit.test)('Passing @hasError parameter sets the proper border class on the input container', async function (assert) {
+        this.selectedItems = ['value1', 'value2'];
+        this.items = ['value1', 'value2'];
+        this.hasError = true;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::PowerSelect @selectedItems={{this.selectedItems}} @items={{this.items}} @hasError={{true}}
+                                  @onSearch={{this.onSearch}}>
+                  <:selected-item as |selectedItem|>
+                    {{selectedItem}}
+                  </:selected-item>
+                  <:option-item as |item|>
+                    {{item}}
+                  </:option-item>
+                </OSS::PowerSelect />
+              
+        */
+        {
+          "id": "3JRCTgGx",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@selectedItems\",\"@items\",\"@hasError\",\"@onSearch\"],[[30,0,[\"selectedItems\"]],[30,0,[\"items\"]],true,[30,0,[\"onSearch\"]]]],[[\"selected-item\",\"option-item\"],[[[[1,\"\\n            \"],[1,[30,1]],[1,\"\\n          \"]],[1]],[[[1,\"\\n            \"],[1,[30,2]],[1,\"\\n          \"]],[2]]]]],[1,\"\\n      \"]],[\"selectedItem\",\"item\"],false,[\"o-s-s/power-select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/power-select-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-power-select .array-input-container').hasClass('array-input-container--error');
       });
     });
     (0, _qunit.module)('Error management', () => {

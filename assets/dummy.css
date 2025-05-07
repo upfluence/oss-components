@@ -6491,6 +6491,9 @@ label {
   content: '\f068';
   color: var(--color-primary-500);
 }
+.upf-checkbox--error .upf-checkbox__fake-checkbox {
+  border-color: var(--color-error-500);
+}
 .upf-checkbox__label {
   position: absolute;
   left: 15%;
@@ -7980,7 +7983,8 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
 .border-color-default {
   border-color: var(--color-border-default);
 }
-.border-color-alert {
+.border-color-alert,
+.border-color-warning {
   border-color: var(--color-warning-500);
 }
 .border-color-error {
@@ -8188,16 +8192,50 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
   background-color: transparent;
   box-shadow: none;
 }
-.array-input-container--errored {
+.array-input-container--errored,
+.array-input-container--error {
   border-color: var(--color-error-500);
 }
 .array-input-container--errored:not(.array-input-container--errored.array-input-container--disabled):hover,
-.array-input-container--errored:not(.array-input-container--errored.array-input-container--disabled):focus {
+.array-input-container--error:not(.array-input-container--errored.array-input-container--disabled):hover,
+.array-input-container--errored:not(.array-input-container--error.array-input-container--disabled):hover,
+.array-input-container--error:not(.array-input-container--error.array-input-container--disabled):hover,
+.array-input-container--errored:not(.array-input-container--errored.array-input-container--disabled):focus,
+.array-input-container--error:not(.array-input-container--errored.array-input-container--disabled):focus,
+.array-input-container--errored:not(.array-input-container--error.array-input-container--disabled):focus,
+.array-input-container--error:not(.array-input-container--error.array-input-container--disabled):focus {
   border-color: var(--color-error-500);
 }
-.array-input-container--errored:not(.array-input-container--errored.array-input-container--disabled):active {
+.array-input-container--errored:not(.array-input-container--errored.array-input-container--disabled):active,
+.array-input-container--error:not(.array-input-container--errored.array-input-container--disabled):active,
+.array-input-container--errored:not(.array-input-container--error.array-input-container--disabled):active,
+.array-input-container--error:not(.array-input-container--error.array-input-container--disabled):active {
   border-color: var(--color-error-500);
   box-shadow: 0px 0px 0px 2px var(--color-error-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+}
+.array-input-container--success {
+  border-color: var(--color-success-500);
+}
+.array-input-container--success:not(.array-input-container--success.array-input-container--disabled):hover,
+.array-input-container--success:not(.array-input-container--success.array-input-container--disabled):focus {
+  border-color: var(--color-success-500);
+}
+.array-input-container--success:not(.array-input-container--success.array-input-container--disabled):active {
+  border-color: var(--color-success-500);
+  box-shadow: 0px 0px 0px 2px var(--color-success-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+}
+.array-input-container--warning {
+  border-color: var(--color-warning-500);
+}
+.array-input-container--warning:not(.array-input-container--warning.array-input-container--disabled):hover,
+.array-input-container--warning:not(.array-input-container--warning.array-input-container--disabled):focus {
+  border-color: var(--color-warning-500);
+}
+.array-input-container--warning:not(.array-input-container--warning.array-input-container--disabled):active {
+  border-color: var(--color-warning-500);
+  box-shadow: 0px 0px 0px 2px var(--color-warning-100), var(--box-shadow-xs);
   background-color: var(--color-white);
 }
 .array-input-container input {
@@ -11578,9 +11616,10 @@ a.upf-btn--sm {
   border-color: var(--color-success-500);
 }
 .oss-select-container__dropdown {
-  max-width: 100%;
-  min-width: 100%;
-  padding: var(--spacing-px-12);
+  overflow: hidden;
+}
+.oss-select-container__dropdown:has(.upf-input) .upf-infinite-select__items-container {
+  max-height: calc(var(--floating-max-height) - 78px);
 }
 .oss-select-container__dropdown .upf-infinite-select__item {
   padding: 0;
