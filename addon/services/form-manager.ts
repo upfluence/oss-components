@@ -10,6 +10,7 @@ export type FormInstance = {
   validateField(field: string): boolean;
   getErrors(): ValidationFeedbacks;
   clearErrors(field?: string): void;
+  setFieldFeedback(field: string, feedback: Feedback): void;
 };
 export type Feedback = { kind: string; message: FeedbackMessage };
 export type Validator = () => Feedback | undefined;
@@ -31,7 +32,8 @@ export default class FormManager extends Service {
       validateForm: (): boolean => this.validateForm(id),
       validateField: (field: string): boolean => this.validateField(id, field),
       getErrors: (): ValidationFeedbacks => this.getFieldErrors(id),
-      clearErrors: (field: string) => this.clearErrors(id, field)
+      clearErrors: (field: string) => this.clearErrors(id, field),
+      setFieldFeedback: (field: string, feedback: Feedback): void => this.setFieldFeedback(id, field, feedback)
     };
   }
 
@@ -80,6 +82,14 @@ export default class FormManager extends Service {
     if (isValid) this.clearErrors(id, field);
 
     return isValid;
+  }
+
+  private setFieldFeedback(id: string, field: string, feedback: Feedback): void {
+    this.formFeedbacks[id] = {
+      ...this.formFeedbacks[id],
+      [field]: feedback
+    };
+    this.refreshFormFeedbacks();
   }
 
   private getFieldErrors(id: string): ValidationFeedbacks {
