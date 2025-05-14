@@ -193,5 +193,16 @@ module('Unit | Service | form-manager', function (hooks) {
         assert.deepEqual(this.formInstance.getErrors(), {});
       });
     });
+
+    module('#setFieldFeedback', function () {
+      test('it sets the feedback for a field', function (assert) {
+        const field = 'testField';
+        const feedback = { kind: 'blank', message: { type: 'error', value: 'Error' } } as Feedback;
+
+        this.formInstance.setFieldFeedback(field, feedback);
+
+        assert.deepEqual(this.service.formFeedbacks['test'][field], feedback);
+      });
+    });
   });
 });
