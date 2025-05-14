@@ -15819,6 +15819,20 @@ define("dummy/tests/unit/services/form-manager-test", ["qunit", "ember-qunit", "
           assert.deepEqual(this.formInstance.getErrors(), {});
         });
       });
+      (0, _qunit.module)('#setFieldFeedback', function () {
+        (0, _qunit.test)('it sets the feedback for a field', function (assert) {
+          const field = 'testField';
+          const feedback = {
+            kind: 'blank',
+            message: {
+              type: 'error',
+              value: 'Error'
+            }
+          };
+          this.formInstance.setFieldFeedback(field, feedback);
+          assert.deepEqual(this.service.formFeedbacks['test'][field], feedback);
+        });
+      });
     });
   });
 });

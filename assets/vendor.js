@@ -99217,7 +99217,8 @@ interface OSSCodeBlockArgs {
         validateForm: () => this.validateForm(id),
         validateField: field => this.validateField(id, field),
         getErrors: () => this.getFieldErrors(id),
-        clearErrors: field => this.clearErrors(id, field)
+        clearErrors: field => this.clearErrors(id, field),
+        setFieldFeedback: (field, feedback) => this.setFieldFeedback(id, field, feedback)
       };
     }
     registerField(id, field, validator) {
@@ -99251,6 +99252,13 @@ interface OSSCodeBlockArgs {
       const isValid = feedback?.message?.type !== 'error';
       if (isValid) this.clearErrors(id, field);
       return isValid;
+    }
+    setFieldFeedback(id, field, feedback) {
+      this.formFeedbacks[id] = {
+        ...this.formFeedbacks[id],
+        [field]: feedback
+      };
+      this.refreshFormFeedbacks();
     }
     getFieldErrors(id) {
       const formFeedbacks = this.formFeedbacks[id] ?? {};
