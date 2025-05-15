@@ -11615,7 +11615,7 @@ a.upf-btn--sm {
   border: 1px solid var(--color-gray-300);
   border-color: var(--color-success-500);
 }
-.oss-select-container__dropdown {
+.oss-select-container__dropdown:has(.upf-input) {
   overflow: hidden;
 }
 .oss-select-container__dropdown:has(.upf-input) .upf-infinite-select__items-container {
