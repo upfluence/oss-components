@@ -5,6 +5,7 @@ interface OSSInputGroupArgs {
   value?: string;
   disabled?: boolean;
   errorMessage?: string;
+  hasError?: boolean;
   placeholder?: string;
   prefix?: string;
   suffix?: string;
@@ -24,5 +25,9 @@ export default class OSSInputGroup extends Component<OSSInputGroupArgs> {
 
   get type(): string {
     return this.args.type ?? 'text';
+  }
+
+  get hasError(): boolean {
+    return !!this.args.errorMessage || !!this.args.hasError;
   }
 }

@@ -39,6 +39,12 @@ module('Integration | Component | o-s-s/input-group', function (hooks) {
     assert.dom('.oss-input-group-row--error').hasStyle({ borderColor: 'rgb(239, 68, 68)' });
   });
 
+  test('Passing the @hasError without errorMessage sets an error border on the whole compoenent', async function (assert) {
+    await render(hbs`<OSS::InputGroup @prefix="random" @suffix="@domain.com" @hasError={{true}} />`);
+    assert.dom('.oss-input-group-row--error').exists();
+    assert.dom('.oss-input-group-row--error').hasStyle({ borderColor: 'rgb(239, 68, 68)' });
+  });
+
   test('it fails if no prefix or suffix parameters are passed', async function (assert: Assert) {
     setupOnerror((err: Error) => {
       assert.equal(
