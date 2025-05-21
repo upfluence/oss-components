@@ -96,13 +96,13 @@ export default class OSSCountrySelector extends BaseDropdown<OSSCountrySelectorA
   }
 
   @action
-  closeDropdown(): void {
+  closeDropdown(preventFocus: boolean = false): void {
     super.closeDropdown();
 
     document.querySelector(`#${this.portalId}`)?.remove();
 
     const el = this.container.querySelector('.upf-input') as HTMLElement;
-    el?.focus();
+    if (!preventFocus) el?.focus();
   }
 
   @action
@@ -113,12 +113,12 @@ export default class OSSCountrySelector extends BaseDropdown<OSSCountrySelectorA
   }
 
   @action
-  onItemSelected(value: Item): void {
-    this.closeDropdown();
+  onItemSelected(value: Item, preventFocus: boolean = false): void {
+    this.closeDropdown(preventFocus);
     this.args.onChange(value);
   }
 
   private _matchValueWithSourceList(): void {
-    if (this.selectedCountry) this.onItemSelected(this.selectedCountry);
+    if (this.selectedCountry) this.onItemSelected(this.selectedCountry, true);
   }
 }
