@@ -86610,23 +86610,23 @@ interface OSSCodeBlockArgs {
         });
       }
     }
-    closeDropdown() {
+    closeDropdown(preventFocus = false) {
       super.closeDropdown();
       document.querySelector(`#${this.portalId}`)?.remove();
       const el = this.container.querySelector('.upf-input');
-      el?.focus();
+      if (!preventFocus) el?.focus();
     }
     search(keyword) {
       this.filteredItems = this.args.sourceList.filter(item => {
         return item.name.toLowerCase().indexOf(keyword.toLowerCase()) !== -1;
       });
     }
-    onItemSelected(value) {
-      this.closeDropdown();
+    onItemSelected(value, preventFocus = false) {
+      this.closeDropdown(preventFocus);
       this.args.onChange(value);
     }
     _matchValueWithSourceList() {
-      if (this.selectedCountry) this.onItemSelected(this.selectedCountry);
+      if (this.selectedCountry) this.onItemSelected(this.selectedCountry, true);
     }
   }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
     configurable: true,

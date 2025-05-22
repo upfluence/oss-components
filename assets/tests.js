@@ -2173,17 +2173,17 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
       (0, _qunit.test)('it displays the image when it is provided', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::Avatar @image="http://foo.co/bar.png" />
+          <OSS::Avatar @image="/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg" />
         */
         {
-          "id": "Yt5dkUAE",
-          "block": "[[[8,[39,0],null,[[\"@image\"],[\"http://foo.co/bar.png\"]],null]],[],false,[\"o-s-s/avatar\"]]",
+          "id": "lg38wWoe",
+          "block": "[[[8,[39,0],null,[[\"@image\"],[\"/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg\"]],null]],[],false,[\"o-s-s/avatar\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/avatar-test.ts",
           "isStrictMode": false
         }));
         assert.dom('.upf-avatar').exists();
         assert.dom('.upf-avatar img').exists();
-        assert.dom('.upf-avatar img').hasAttribute('src', 'http://foo.co/bar.png');
+        assert.dom('.upf-avatar img').hasAttribute('src', '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg');
       });
       (0, _qunit.test)('it displays the initials when they are provided', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -2218,17 +2218,17 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
       (0, _qunit.test)('it displays the image when image and initials are provided', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::Avatar @image="http://foo.co/bar.png" @initials="TS" />
+          <OSS::Avatar @image="/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg" @initials="TS" />
         */
         {
-          "id": "/YIUuYWT",
-          "block": "[[[8,[39,0],null,[[\"@image\",\"@initials\"],[\"http://foo.co/bar.png\",\"TS\"]],null]],[],false,[\"o-s-s/avatar\"]]",
+          "id": "CntmSaZu",
+          "block": "[[[8,[39,0],null,[[\"@image\",\"@initials\"],[\"/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg\",\"TS\"]],null]],[],false,[\"o-s-s/avatar\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/avatar-test.ts",
           "isStrictMode": false
         }));
         assert.dom('.upf-avatar').exists();
         assert.dom('.upf-avatar img').exists();
-        assert.dom('.upf-avatar img').hasAttribute('src', 'http://foo.co/bar.png');
+        assert.dom('.upf-avatar img').hasAttribute('src', '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg');
       });
       (0, _qunit.test)('it updates the image when a new @image is provided', async function (assert) {
         this.updatedImage = null;
@@ -2246,9 +2246,9 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
         assert.dom('.upf-avatar').exists();
         assert.dom('.upf-avatar img').doesNotExist();
         assert.dom('.upf-avatar span').hasText('TS');
-        this.set('updatedImage', 'https://via.placeholder.com/150');
+        this.set('updatedImage', '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg');
         assert.dom('.upf-avatar span').doesNotExist();
-        assert.dom('.upf-avatar img').hasAttribute('src', 'https://via.placeholder.com/150');
+        assert.dom('.upf-avatar img').hasAttribute('src', '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg');
       });
     });
     (0, _qunit.module)('Sizes', function () {
@@ -2316,11 +2316,11 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
       (0, _qunit.test)('it displays the initials when both initials and image are provided and the image fails to load', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::Avatar @image="/foo.co/bar.p" @initials="TS" />
+          <OSS::Avatar @image="/@upfluence/oss-components/assets/images/fail.svg" @initials="TS" />
         */
         {
-          "id": "sem6/l/R",
-          "block": "[[[8,[39,0],null,[[\"@image\",\"@initials\"],[\"/foo.co/bar.p\",\"TS\"]],null]],[],false,[\"o-s-s/avatar\"]]",
+          "id": "3QIewe2P",
+          "block": "[[[8,[39,0],null,[[\"@image\",\"@initials\"],[\"/@upfluence/oss-components/assets/images/fail.svg\",\"TS\"]],null]],[],false,[\"o-s-s/avatar\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/avatar-test.ts",
           "isStrictMode": false
         }));
@@ -2332,11 +2332,11 @@ define("dummy/tests/integration/components/o-s-s/avatar-test", ["qunit", "ember-
       (0, _qunit.test)('it displays the placeholder image when the image provided in parameters fails to load', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::Avatar @image="/foo.co/bar.p" />
+          <OSS::Avatar @image="/@upfluence/oss-components/assets/images/fail.svg" />
         */
         {
-          "id": "oQjKxQbP",
-          "block": "[[[8,[39,0],null,[[\"@image\"],[\"/foo.co/bar.p\"]],null]],[],false,[\"o-s-s/avatar\"]]",
+          "id": "sag+LWFu",
+          "block": "[[[8,[39,0],null,[[\"@image\"],[\"/@upfluence/oss-components/assets/images/fail.svg\"]],null]],[],false,[\"o-s-s/avatar\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/avatar-test.ts",
           "isStrictMode": false
         }));
