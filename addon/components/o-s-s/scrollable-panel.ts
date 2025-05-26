@@ -5,12 +5,15 @@ import { tracked } from '@glimmer/tracking';
 interface OSSScrollablePanelComponentSignature {
   plain?: boolean;
   disableShadows?: boolean;
+  onBottomReached?: () => void;
 }
 
 export default class OSSScrollablePanelComponent extends Component<OSSScrollablePanelComponentSignature> {
   @tracked declare parentElement: HTMLElement;
   @tracked shadowTopVisible: boolean = false;
   @tracked shadowBottomVisible: boolean = false;
+
+  resizeObserver = new ResizeObserver(this.resizeObserverCallback.bind(this));
 
   @action
   initScrollListener(element: HTMLElement): void {
@@ -20,9 +23,20 @@ export default class OSSScrollablePanelComponent extends Component<OSSScrollable
   }
 
   @action
+  initResizeObserver(element: HTMLElement): void {
+    this.resizeObserver.observe(element);
+  }
+
+  @action
   willDestroy(): void {
     this.parentElement.removeEventListener('scroll', this.scrollListener.bind(this));
+    this.resizeObserver.disconnect();
     super.willDestroy();
+  }
+
+  @action
+  onBottomReached(): void {
+    this.args.onBottomReached?.();
   }
 
   private scrollListener(): void {
@@ -40,5 +54,9 @@ export default class OSSScrollablePanelComponent extends Component<OSSScrollable
     } else {
       this.shadowBottomVisible = true;
     }
+  }
+
+  private resizeObserverCallback(_: ResizeObserverEntry[]): void {
+    this.scrollListener();
   }
 }
