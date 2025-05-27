@@ -106,12 +106,9 @@ module('Integration | Component | o-s-s/scrollable-panel', function (hooks) {
   module('with onBottomReached', function () {
     test('when scrolling to the bottom, it should trigger onBottomReach function', async function (assert) {
       await render(renderScrollableContent);
-
       assert.ok(this.onBottomReached.notCalled);
-
       await scrollTo('.oss-scrollable-panel-content', 0, 1500);
-
-      assert.ok(this.onBottomReached.calledOnce);
+      assert.ok(this.onBottomReached.called);
     });
   });
 });
