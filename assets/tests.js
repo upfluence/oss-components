@@ -11037,12 +11037,15 @@ define("dummy/tests/integration/components/o-s-s/radio-button-test", ["qunit", "
     });
   });
 });
-define("dummy/tests/integration/components/o-s-s/scrollable-panel-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+define("dummy/tests/integration/components/o-s-s/scrollable-panel-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon"eaimeta@70e063a35619d71f
   (0, _qunit.module)('Integration | Component | o-s-s/scrollable-panel', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.onBottomReached = _sinon.default.stub();
+    });
     function scrollIntoView(elementId) {
       document.querySelector(`#${elementId}`)?.scrollIntoView({
         block: 'center'
@@ -11052,7 +11055,7 @@ define("dummy/tests/integration/components/o-s-s/scrollable-panel-test", ["qunit
     /*
       
       <div class="background-color-gray-50" style="height:300px; width: 500px">
-        <OSS::ScrollablePanel @disableShadows={{this.disableShadows}}>
+        <OSS::ScrollablePanel @disableShadows={{this.disableShadows}} @onBottomReached={{this.onBottomReached}}>
           <div class="fx-col fx-gap-px-12 padding-px-12">
             <div class="background-color-gray-200" style="height: 50px; width: 100%;" id="start-element"/>
             <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
@@ -11065,8 +11068,8 @@ define("dummy/tests/integration/components/o-s-s/scrollable-panel-test", ["qunit
     
     */
     {
-      "id": "GvX/Lzyf",
-      "block": "[[[1,\"\\n  \"],[10,0],[14,0,\"background-color-gray-50\"],[14,5,\"height:300px; width: 500px\"],[12],[1,\"\\n    \"],[8,[39,0],null,[[\"@disableShadows\"],[[30,0,[\"disableShadows\"]]]],[[\"default\"],[[[[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-12\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"start-element\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"center-element\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"end-element\"],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"]],[]]]]],[1,\"\\n  \"],[13],[1,\"\\n\"]],[],false,[\"o-s-s/scrollable-panel\"]]",
+      "id": "ci14U2yn",
+      "block": "[[[1,\"\\n  \"],[10,0],[14,0,\"background-color-gray-50\"],[14,5,\"height:300px; width: 500px\"],[12],[1,\"\\n    \"],[8,[39,0],null,[[\"@disableShadows\",\"@onBottomReached\"],[[30,0,[\"disableShadows\"]],[30,0,[\"onBottomReached\"]]]],[[\"default\"],[[[[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-12\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"start-element\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"center-element\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"end-element\"],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"]],[]]]]],[1,\"\\n  \"],[13],[1,\"\\n\"]],[],false,[\"o-s-s/scrollable-panel\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/scrollable-panel-test.ts",
       "isStrictMode": false
     });
@@ -11142,6 +11145,14 @@ define("dummy/tests/integration/components/o-s-s/scrollable-panel-test", ["qunit
       assert.dom('.oss-scrollable-panel-content').exists();
       assert.dom('.oss-scrollable-panel--shadow__top').doesNotExist();
       assert.dom('.oss-scrollable-panel--shadow__bottom').doesNotExist();
+    });
+    (0, _qunit.module)('with onBottomReached', function () {
+      (0, _qunit.test)('when scrolling to the bottom, it should trigger onBottomReach function', async function (assert) {
+        await (0, _testHelpers.render)(renderScrollableContent);
+        assert.ok(this.onBottomReached.notCalled);
+        await (0, _testHelpers.scrollTo)('.oss-scrollable-panel-content', 0, 1500);
+        assert.ok(this.onBottomReached.called);
+      });
     });
   });
 });
