@@ -1,4 +1,5 @@
 import { hbs } from 'ember-cli-htmlbars';
+import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'Components/OSS::ScrollablePanel',
@@ -23,6 +24,15 @@ export default {
       control: {
         type: 'boolean'
       }
+    },
+    onBottomReached: {
+      description: 'Function to be called when the scroll hits the bottom',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'onBottomReached(): void'
+        }
+      }
     }
   },
   parameters: {
@@ -36,13 +46,14 @@ export default {
 
 const defaultArgs = {
   plain: false,
-  disableShadows: false
+  disableShadows: false,
+  onBottomReached: action('onBottomReached')
 };
 
 const Template = (args) => ({
   template: hbs`
     <div style="height:200px; width: 300px; background-color: white; " >
-      <OSS::ScrollablePanel @plain={{this.plain}} @disableShadows={{this.disableShadows}}>
+      <OSS::ScrollablePanel @plain={{this.plain}} @disableShadows={{this.disableShadows}} @onBottomReached={{this.onBottomReached}} >
         <div class="fx-col fx-gap-px-12 padding-px-12">
           <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
           <div class="background-color-gray-200" style="height: 50px; width: 100%;" />

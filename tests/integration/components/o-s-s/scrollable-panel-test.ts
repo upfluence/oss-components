@@ -1,10 +1,15 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, settled, waitFor } from '@ember/test-helpers';
+import { render, scrollTo, settled, waitFor } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/scrollable-panel', function (hooks) {
   setupRenderingTest(hooks);
+
+  hooks.beforeEach(function () {
+    this.onBottomReached = sinon.stub();
+  });
 
   function scrollIntoView(elementId: string) {
     document.querySelector(`#${elementId}`)?.scrollIntoView({ block: 'center' });
@@ -12,7 +17,7 @@ module('Integration | Component | o-s-s/scrollable-panel', function (hooks) {
 
   const renderScrollableContent = hbs`
   <div class="background-color-gray-50" style="height:300px; width: 500px">
-    <OSS::ScrollablePanel @disableShadows={{this.disableShadows}}>
+    <OSS::ScrollablePanel @disableShadows={{this.disableShadows}} @onBottomReached={{this.onBottomReached}}>
       <div class="fx-col fx-gap-px-12 padding-px-12">
         <div class="background-color-gray-200" style="height: 50px; width: 100%;" id="start-element"/>
         <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
@@ -96,5 +101,17 @@ module('Integration | Component | o-s-s/scrollable-panel', function (hooks) {
     assert.dom('.oss-scrollable-panel-content').exists();
     assert.dom('.oss-scrollable-panel--shadow__top').doesNotExist();
     assert.dom('.oss-scrollable-panel--shadow__bottom').doesNotExist();
+  });
+
+  module('with onBottomReached', function () {
+    test('when scrolling to the bottom, it should trigger onBottomReach function', async function (assert) {
+      await render(renderScrollableContent);
+
+      assert.ok(this.onBottomReached.notCalled);
+
+      await scrollTo('.oss-scrollable-panel-content', 0, 1500);
+
+      assert.ok(this.onBottomReached.calledOnce);
+    });
   });
 });

@@ -2,8 +2,14 @@
   {{#if (and this.shadowTopVisible (not @disableShadows))}}
     <div class="oss-scrollable-panel--shadow oss-scrollable-panel--shadow__top"></div>
   {{/if}}
-  <div class="oss-scrollable-panel-content" {{did-insert this.initScrollListener}}>
-    {{yield}}
+  <div
+    class="oss-scrollable-panel-content"
+    {{on-bottom-reached this.onBottomReached}}
+    {{did-insert this.initScrollListener}}
+  >
+    <div {{did-insert this.initResizeObserver}}>
+      {{yield}}
+    </div>
   </div>
   {{#if (and this.shadowBottomVisible (not @disableShadows))}}
     <div class="oss-scrollable-panel--shadow oss-scrollable-panel--shadow__bottom"></div>
