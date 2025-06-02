@@ -14,8 +14,8 @@
       <span class="fx-row fx-xalign-center phone-prefix">{{@prefix}}</span>
       <Input
         @value={{@number}}
+        @type="tel"
         class="fx-1"
-        type="tel"
         name="telephone"
         placeholder={{this.placeholder}}
         {{on "keydown" this.onlyNumeric}}

@@ -16,13 +16,13 @@
       </div>
     {{else}}
       <Input
-        {{on "keyup" (fn this._onChange @value)}}
-        {{on "paste" this.onPaste}}
         @value={{@value}}
         @type={{this.type}}
         placeholder={{@placeholder}}
         disabled={{@disabled}}
         class="upf-input"
+        {{on "keyup" (fn this._onChange @value)}}
+        {{on "paste" this.onPaste}}
       />
     {{/if}}
 
