@@ -1,7 +1,13 @@
 <div class="fx-1">
   <div class="oss-textarea-container {{if @errorMessage ' oss-textarea-container--errored'}}" ...attributes>
-    <Textarea {{on "keyup" (fn this._onChange @value)}} @value={{@value}} placeholder={{@placeholder}}
-              disabled={{@disabled}} class="oss-textarea {{this.computedClass}}" rows={{this.rows}} />
+    <Textarea
+      @value={{@value}}
+      placeholder={{@placeholder}}
+      disabled={{@disabled}}
+      rows={{this.rows}}
+      class="oss-textarea {{this.computedClass}}"
+      {{on "keyup" (fn this._onChange @value)}}
+    />
   </div>
   {{#if @errorMessage}}
     <span class="font-color-error-500 margin-top-px-6">{{@errorMessage}}</span>

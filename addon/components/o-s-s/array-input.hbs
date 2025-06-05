@@ -1,11 +1,16 @@
 <div class="fx-1 fx-col fx-gap-px-6">
-  <div class={{this.computedClasses}}
-       ...attributes>
+  <div class={{this.computedClasses}} ...attributes>
     {{#each this.items as |item index|}}
       <OSS::Chip @label={{item}} @onRemove={{fn this.removeItem index}} />
     {{/each}}
-    <Input @value={{this.currentValue}} placeholder={{@placeholder}} autocomplete="off" disabled={{@disabled}}
-           {{on "keydown" this.keyListener}} {{on "blur" this.validateTagOnClickOutside}} />
+    <Input
+      @value={{this.currentValue}}
+      placeholder={{@placeholder}}
+      autocomplete="off"
+      disabled={{@disabled}}
+      {{on "keydown" this.keyListener}}
+      {{on "blur" this.validateTagOnClickOutside}}
+    />
   </div>
   <span class="font-color-error-500">{{@errorMessage}}</span>
 </div>

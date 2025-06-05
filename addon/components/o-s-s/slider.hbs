@@ -43,7 +43,6 @@
         />
       {{else}}
         <Input
-          class="upf-input"
           @type="number"
           @value={{@value}}
           step={{this.sliderOptions.step}}
@@ -51,6 +50,7 @@
           max={{this.sliderOptions.max}}
           placeholder={{this.currentRangeValue}}
           disabled={{@disabled}}
+          class="upf-input"
           {{on "input" this.onNumberInput}}
         />
       {{/if}}

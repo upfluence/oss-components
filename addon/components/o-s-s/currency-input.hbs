@@ -19,9 +19,18 @@
       {{/if}}
     </div>
     {{#unless @onlyCurrency}}
-      <Input class="fx-1" type="number" @value={{this.localValue}} min="0" autocomplete="off"
-             placeholder={{this.placeholder}} disabled={{this.disabled}}
-             {{on "keydown" this.onlyNumeric}} {{on "keyup" this.notifyChanges}} {{on "paste" this.handlePaste}} />
+      <Input
+        @value={{this.localValue}}
+        @type="text"
+        min="0"
+        autocomplete="off"
+        placeholder={{this.placeholder}}
+        disabled={{this.disabled}}
+        class="fx-1"
+        {{on "keydown" this.onlyNumeric}}
+        {{on "keyup" this.notifyChanges}}
+        {{on "paste" this.handlePaste}}
+      />
     {{/unless}}
   </div>
   {{#if @errorMessage}}
