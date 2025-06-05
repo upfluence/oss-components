@@ -82063,21 +82063,25 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class="fx-1 fx-col fx-gap-px-6">
-    <div class={{this.computedClasses}}
-         ...attributes>
+    <div class={{this.computedClasses}} ...attributes>
       {{#each this.items as |item index|}}
         <OSS::Chip @label={{item}} @onRemove={{fn this.removeItem index}} />
       {{/each}}
-      <Input @value={{this.currentValue}} placeholder={{@placeholder}} autocomplete="off" disabled={{@disabled}}
-             {{on "keydown" this.keyListener}} {{on "blur" this.validateTagOnClickOutside}} />
+      <Input
+        @value={{this.currentValue}}
+        placeholder={{@placeholder}}
+        autocomplete="off"
+        disabled={{@disabled}}
+        {{on "keydown" this.keyListener}}
+        {{on "blur" this.validateTagOnClickOutside}}
+      />
     </div>
     <span class="font-color-error-500">{{@errorMessage}}</span>
   </div>
-  
   */
   {
-    "id": "NlopqBaw",
-    "block": "[[[10,0],[14,0,\"fx-1 fx-col fx-gap-px-6\"],[12],[1,\"\\n  \"],[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"      \"],[8,[39,2],null,[[\"@label\",\"@onRemove\"],[[30,2],[28,[37,3],[[30,0,[\"removeItem\"]],[30,3]],null]]],null],[1,\"\\n\"]],[2,3]],null],[1,\"    \"],[8,[39,4],[[16,\"placeholder\",[30,4]],[24,\"autocomplete\",\"off\"],[16,\"disabled\",[30,5]],[4,[38,5],[\"keydown\",[30,0,[\"keyListener\"]]],null],[4,[38,5],[\"blur\",[30,0,[\"validateTagOnClickOutside\"]]],null]],[[\"@value\"],[[30,0,[\"currentValue\"]]]],null],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,1],[14,0,\"font-color-error-500\"],[12],[1,[30,6]],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"item\",\"index\",\"@placeholder\",\"@disabled\",\"@errorMessage\"],false,[\"each\",\"-track-array\",\"o-s-s/chip\",\"fn\",\"input\",\"on\"]]",
+    "id": "H1ppolMu",
+    "block": "[[[10,0],[14,0,\"fx-1 fx-col fx-gap-px-6\"],[12],[1,\"\\n  \"],[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"      \"],[8,[39,2],null,[[\"@label\",\"@onRemove\"],[[30,2],[28,[37,3],[[30,0,[\"removeItem\"]],[30,3]],null]]],null],[1,\"\\n\"]],[2,3]],null],[1,\"    \"],[8,[39,4],[[16,\"placeholder\",[30,4]],[24,\"autocomplete\",\"off\"],[16,\"disabled\",[30,5]],[4,[38,5],[\"keydown\",[30,0,[\"keyListener\"]]],null],[4,[38,5],[\"blur\",[30,0,[\"validateTagOnClickOutside\"]]],null]],[[\"@value\"],[[30,0,[\"currentValue\"]]]],null],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,1],[14,0,\"font-color-error-500\"],[12],[1,[30,6]],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"item\",\"index\",\"@placeholder\",\"@disabled\",\"@errorMessage\"],false,[\"each\",\"-track-array\",\"o-s-s/chip\",\"fn\",\"input\",\"on\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/array-input.hbs",
     "isStrictMode": false
   });
@@ -85543,16 +85547,18 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
   /*
     <div class="upf-checkbox {{this.modifierClasses}}" ...attributes {{on "click" this.updateValue}}>
     <Input
-      @type="checkbox" @checked={{@checked}} disabled={{@disabled}} class="upf-checkbox__input"
-      id={{concat "unchecked-checkbox-" this.elementId}} />
-  
+      @type="checkbox"
+      @checked={{@checked}}
+      disabled={{@disabled}}
+      class="upf-checkbox__input"
+      id={{concat "unchecked-checkbox-" this.elementId}}
+    />
     <label for={{concat "unchecked-checkbox-" this.elementId}} class={{this.checkboxClasses}}></label>
   </div>
-  
   */
   {
-    "id": "0xF7mmNa",
-    "block": "[[[11,0],[16,0,[29,[\"upf-checkbox \",[30,0,[\"modifierClasses\"]]]]],[17,1],[4,[38,0],[\"click\",[30,0,[\"updateValue\"]]],null],[12],[1,\"\\n  \"],[8,[39,1],[[16,\"disabled\",[30,2]],[24,0,\"upf-checkbox__input\"],[16,1,[28,[37,2],[\"unchecked-checkbox-\",[30,0,[\"elementId\"]]],null]]],[[\"@type\",\"@checked\"],[\"checkbox\",[30,3]]],null],[1,\"\\n\\n  \"],[10,\"label\"],[15,\"for\",[28,[37,2],[\"unchecked-checkbox-\",[30,0,[\"elementId\"]]],null]],[15,0,[30,0,[\"checkboxClasses\"]]],[12],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@disabled\",\"@checked\"],false,[\"on\",\"input\",\"concat\"]]",
+    "id": "0YWfVa+Z",
+    "block": "[[[11,0],[16,0,[29,[\"upf-checkbox \",[30,0,[\"modifierClasses\"]]]]],[17,1],[4,[38,0],[\"click\",[30,0,[\"updateValue\"]]],null],[12],[1,\"\\n  \"],[8,[39,1],[[16,\"disabled\",[30,2]],[24,0,\"upf-checkbox__input\"],[16,1,[28,[37,2],[\"unchecked-checkbox-\",[30,0,[\"elementId\"]]],null]]],[[\"@type\",\"@checked\"],[\"checkbox\",[30,3]]],null],[1,\"\\n  \"],[10,\"label\"],[15,\"for\",[28,[37,2],[\"unchecked-checkbox-\",[30,0,[\"elementId\"]]],null]],[15,0,[30,0,[\"checkboxClasses\"]]],[12],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@disabled\",\"@checked\"],false,[\"on\",\"input\",\"concat\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/checkbox.hbs",
     "isStrictMode": false
   });
@@ -86838,9 +86844,18 @@ interface OSSCodeBlockArgs {
         {{/if}}
       </div>
       {{#unless @onlyCurrency}}
-        <Input class="fx-1" type="number" @value={{this.localValue}} min="0" autocomplete="off"
-               placeholder={{this.placeholder}} disabled={{this.disabled}}
-               {{on "keydown" this.onlyNumeric}} {{on "keyup" this.notifyChanges}} {{on "paste" this.handlePaste}} />
+        <Input
+          @value={{this.localValue}}
+          @type="text"
+          min="0"
+          autocomplete="off"
+          placeholder={{this.placeholder}}
+          disabled={{this.disabled}}
+          class="fx-1"
+          {{on "keydown" this.onlyNumeric}}
+          {{on "keyup" this.notifyChanges}}
+          {{on "paste" this.handlePaste}}
+        />
       {{/unless}}
     </div>
     {{#if @errorMessage}}
@@ -86871,8 +86886,8 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "KjqJnMLi",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"currency-input fx-row fx-1 fx-xalign-center\\n              \",[52,[30,2],\"onlycurrency\"],\" \",[52,[30,0,[\"currencySelectorShown\"]],\"currency-input--active\"]]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center\"],[16,\"role\",[52,[30,0,[\"allowCurrencyUpdate\"]],\"button\",\"img\"]],[4,[38,1],[\"click\",[30,0,[\"toggleCurrencySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-9\"],[12],[1,\"\\n          \"],[10,1],[12],[1,[30,0,[\"selectedCurrencySymbol\"]]],[13],[1,\"\\n\"],[41,[30,2],[[[1,\"            \"],[10,1],[14,0,\"margin-right-px-12\"],[12],[1,[30,0,[\"selectedCurrencyCode\"]]],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[28,[37,2],[[30,0,[\"allowCurrencyUpdate\"]],[28,[37,3],[[30,0,[\"disabled\"]]],null]],null],[[[1,\"        \"],[8,[39,4],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[[29,[[52,[30,0,[\"currencySelectorShown\"]],\"fa-chevron-up\",\"fa-chevron-down\"]]]]],null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[51,[30,2]],[[[1,\"      \"],[8,[39,6],[[24,0,\"fx-1\"],[24,\"min\",\"0\"],[24,\"autocomplete\",\"off\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[16,\"disabled\",[30,0,[\"disabled\"]]],[24,4,\"number\"],[4,[38,1],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,1],[\"keyup\",[30,0,[\"notifyChanges\"]]],null],[4,[38,1],[\"paste\",[30,0,[\"handlePaste\"]]],null]],[[\"@value\"],[[30,0,[\"localValue\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\"\\n      \"],[1,[30,3]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"    \"],[8,[39,7],[[4,[38,9],[[30,0,[\"hideCurrencySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCurrencies\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[28,[37,8],[\"oss-components.currency-input.search\"],null]]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,10],[[30,0,[\"selectedCurrency\"]],[30,4]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,1],[14,0,\"symbol text-color-default-light margin-left-xx-sm\"],[12],[1,[30,4,[\"symbol\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm fx-1\"],[12],[1,[30,4,[\"code\"]]],[13],[1,\"\\n\"],[41,[28,[37,10],[[30,0,[\"selectedCurrency\"]],[30,4]],null],[[[1,\"            \"],[8,[39,4],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@onlyCurrency\",\"@errorMessage\",\"currency\"],false,[\"if\",\"on\",\"and\",\"not\",\"o-s-s/icon\",\"unless\",\"input\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\",\"eq\"]]",
+    "id": "uMFbWvQt",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"currency-input fx-row fx-1 fx-xalign-center\\n              \",[52,[30,2],\"onlycurrency\"],\" \",[52,[30,0,[\"currencySelectorShown\"]],\"currency-input--active\"]]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center\"],[16,\"role\",[52,[30,0,[\"allowCurrencyUpdate\"]],\"button\",\"img\"]],[4,[38,1],[\"click\",[30,0,[\"toggleCurrencySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-9\"],[12],[1,\"\\n          \"],[10,1],[12],[1,[30,0,[\"selectedCurrencySymbol\"]]],[13],[1,\"\\n\"],[41,[30,2],[[[1,\"            \"],[10,1],[14,0,\"margin-right-px-12\"],[12],[1,[30,0,[\"selectedCurrencyCode\"]]],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[28,[37,2],[[30,0,[\"allowCurrencyUpdate\"]],[28,[37,3],[[30,0,[\"disabled\"]]],null]],null],[[[1,\"        \"],[8,[39,4],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[[29,[[52,[30,0,[\"currencySelectorShown\"]],\"fa-chevron-up\",\"fa-chevron-down\"]]]]],null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[51,[30,2]],[[[1,\"      \"],[8,[39,6],[[24,\"min\",\"0\"],[24,\"autocomplete\",\"off\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[16,\"disabled\",[30,0,[\"disabled\"]]],[24,0,\"fx-1\"],[4,[38,1],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,1],[\"keyup\",[30,0,[\"notifyChanges\"]]],null],[4,[38,1],[\"paste\",[30,0,[\"handlePaste\"]]],null]],[[\"@value\",\"@type\"],[[30,0,[\"localValue\"]],\"text\"]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\"\\n      \"],[1,[30,3]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"    \"],[8,[39,7],[[4,[38,9],[[30,0,[\"hideCurrencySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCurrencies\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[28,[37,8],[\"oss-components.currency-input.search\"],null]]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,10],[[30,0,[\"selectedCurrency\"]],[30,4]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,1],[14,0,\"symbol text-color-default-light margin-left-xx-sm\"],[12],[1,[30,4,[\"symbol\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm fx-1\"],[12],[1,[30,4,[\"code\"]]],[13],[1,\"\\n\"],[41,[28,[37,10],[[30,0,[\"selectedCurrency\"]],[30,4]],null],[[[1,\"            \"],[8,[39,4],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@onlyCurrency\",\"@errorMessage\",\"currency\"],false,[\"if\",\"on\",\"and\",\"not\",\"o-s-s/icon\",\"unless\",\"input\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\",\"eq\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/currency-input.hbs",
     "isStrictMode": false
   });
@@ -89187,13 +89202,13 @@ interface OSSCodeBlockArgs {
         </div>
       {{else}}
         <Input
-          {{on "keyup" (fn this._onChange @value)}}
-          {{on "paste" this.onPaste}}
           @value={{@value}}
           @type={{this.type}}
           placeholder={{@placeholder}}
           disabled={{@disabled}}
           class="upf-input"
+          {{on "keyup" (fn this._onChange @value)}}
+          {{on "paste" this.onPaste}}
         />
       {{/if}}
   
@@ -91659,12 +91674,14 @@ interface OSSCodeBlockArgs {
     <div class="fx-col fx-1 fx-gap-px-6">
     <OSS::InputContainer @errorMessage={{this.errorMessage}} ...attributes>
       <:input>
-        <Input @value={{@value}}
-               @type={{this.visibility}}
-               disabled={{@disabled}}
-               placeholder={{this.placeholder}}
-               autocomplete="current-password"
-               {{on "keyup" this.validateInput}} />
+        <Input
+          @value={{@value}}
+          @type={{this.visibility}}
+          disabled={{@disabled}}
+          placeholder={{this.placeholder}}
+          autocomplete="current-password"
+          {{on "keyup" this.validateInput}}
+        />
       </:input>
       <:suffix>
         {{#if @disabled}}
@@ -91695,11 +91712,10 @@ interface OSSCodeBlockArgs {
       </div>
     {{/if}}
   </div>
-  
   */
   {
-    "id": "WLMDoQPO",
-    "block": "[[[10,0],[14,0,\"fx-col fx-1 fx-gap-px-6\"],[12],[1,\"\\n  \"],[8,[39,0],[[17,1]],[[\"@errorMessage\"],[[30,0,[\"errorMessage\"]]]],[[\"input\",\"suffix\"],[[[[1,\"\\n      \"],[8,[39,1],[[16,\"disabled\",[30,2]],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,\"autocomplete\",\"current-password\"],[4,[38,2],[\"keyup\",[30,0,[\"validateInput\"]]],null]],[[\"@value\",\"@type\"],[[30,3],[30,0,[\"visibility\"]]]],null],[1,\"\\n    \"]],[]],[[[1,\"\\n\"],[41,[30,2],[[[1,\"        \"],[8,[39,4],[[24,0,\"font-color-gray-500\"]],[[\"@icon\"],[[30,0,[\"visibilityIcon\"]]]],null],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,5],[[24,0,\"margin-px-6\"],[4,[38,2],[\"click\",[30,0,[\"toggleVisibility\"]]],null]],[[\"@icon\",\"@square\"],[[30,0,[\"visibilityIcon\"]],true]],null],[1,\"\\n\"]],[]]],[1,\"    \"]],[]]]]],[1,\"\\n\"],[41,[30,4],[[[1,\"    \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[14,\"data-control-name\",\"password-input-validators\"],[12],[1,\"\\n\"],[42,[28,[37,7],[[28,[37,7],[[30,0,[\"inputValidators\"]]],null]],null],null,[[[44,[[28,[30,0,[\"validatorAttributes\"]],null,[[\"type\"],[[30,5]]]]],[[[1,\"          \"],[10,0],[14,0,\"password-input-validator fx-row fx-gap-px-6\"],[15,\"data-control-name\",[29,[\"password-input-validator-\",[30,5]]]],[12],[1,\"\\n            \"],[10,0],[14,0,\"validator-icon-container\"],[12],[1,\"\\n\"],[42,[28,[37,7],[[28,[37,7],[[30,0,[\"validationIcons\"]]],null]],null],null,[[[1,\"                \"],[8,[39,4],[[16,0,[29,[\"validator-icon \",[30,6,[\"iconClass\"]],\"\\n                                  \",[28,[30,0,[\"validationIconVisibility\"]],null,[[\"validator\",\"state\"],[[30,6],[30,7,[\"state\"]]]]]]]]],[[\"@icon\"],[[30,7,[\"icon\"]]]],null],[1,\"\\n\"]],[7]],null],[1,\"            \"],[13],[1,\"\\n            \"],[10,1],[15,0,[30,6,[\"labelClass\"]]],[12],[1,[28,[35,9],[[30,6,[\"labelKey\"]]],null]],[13],[1,\"\\n          \"],[13],[1,\"\\n\"]],[6]]]],[5]],null],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"&attrs\",\"@disabled\",\"@value\",\"@validates\",\"inputValidator\",\"validator\",\"validationIcon\"],false,[\"o-s-s/input-container\",\"input\",\"on\",\"if\",\"o-s-s/icon\",\"o-s-s/button\",\"each\",\"-track-array\",\"let\",\"t\"]]",
+    "id": "zGp9XQ3G",
+    "block": "[[[10,0],[14,0,\"fx-col fx-1 fx-gap-px-6\"],[12],[1,\"\\n  \"],[8,[39,0],[[17,1]],[[\"@errorMessage\"],[[30,0,[\"errorMessage\"]]]],[[\"input\",\"suffix\"],[[[[1,\"\\n      \"],[8,[39,1],[[16,\"disabled\",[30,2]],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,\"autocomplete\",\"current-password\"],[4,[38,2],[\"keyup\",[30,0,[\"validateInput\"]]],null]],[[\"@value\",\"@type\"],[[30,3],[30,0,[\"visibility\"]]]],null],[1,\"\\n    \"]],[]],[[[1,\"\\n\"],[41,[30,2],[[[1,\"        \"],[8,[39,4],[[24,0,\"font-color-gray-500\"]],[[\"@icon\"],[[30,0,[\"visibilityIcon\"]]]],null],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,5],[[24,0,\"margin-px-6\"],[4,[38,2],[\"click\",[30,0,[\"toggleVisibility\"]]],null]],[[\"@icon\",\"@square\"],[[30,0,[\"visibilityIcon\"]],true]],null],[1,\"\\n\"]],[]]],[1,\"    \"]],[]]]]],[1,\"\\n\"],[41,[30,4],[[[1,\"    \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[14,\"data-control-name\",\"password-input-validators\"],[12],[1,\"\\n\"],[42,[28,[37,7],[[28,[37,7],[[30,0,[\"inputValidators\"]]],null]],null],null,[[[44,[[28,[30,0,[\"validatorAttributes\"]],null,[[\"type\"],[[30,5]]]]],[[[1,\"          \"],[10,0],[14,0,\"password-input-validator fx-row fx-gap-px-6\"],[15,\"data-control-name\",[29,[\"password-input-validator-\",[30,5]]]],[12],[1,\"\\n            \"],[10,0],[14,0,\"validator-icon-container\"],[12],[1,\"\\n\"],[42,[28,[37,7],[[28,[37,7],[[30,0,[\"validationIcons\"]]],null]],null],null,[[[1,\"                \"],[8,[39,4],[[16,0,[29,[\"validator-icon \",[30,6,[\"iconClass\"]],\"\\n                                  \",[28,[30,0,[\"validationIconVisibility\"]],null,[[\"validator\",\"state\"],[[30,6],[30,7,[\"state\"]]]]]]]]],[[\"@icon\"],[[30,7,[\"icon\"]]]],null],[1,\"\\n\"]],[7]],null],[1,\"            \"],[13],[1,\"\\n            \"],[10,1],[15,0,[30,6,[\"labelClass\"]]],[12],[1,[28,[35,9],[[30,6,[\"labelKey\"]]],null]],[13],[1,\"\\n          \"],[13],[1,\"\\n\"]],[6]]]],[5]],null],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@disabled\",\"@value\",\"@validates\",\"inputValidator\",\"validator\",\"validationIcon\"],false,[\"o-s-s/input-container\",\"input\",\"on\",\"if\",\"o-s-s/icon\",\"o-s-s/button\",\"each\",\"-track-array\",\"let\",\"t\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/password-input.hbs",
     "isStrictMode": false
   });
@@ -91984,8 +92000,8 @@ interface OSSCodeBlockArgs {
         <span class="fx-row fx-xalign-center phone-prefix">{{@prefix}}</span>
         <Input
           @value={{@number}}
+          @type="tel"
           class="fx-1"
-          type="tel"
           name="telephone"
           placeholder={{this.placeholder}}
           {{on "keydown" this.onlyNumeric}}
@@ -92037,8 +92053,8 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "TDXNvgji",
-    "block": "[[[11,0],[24,0,\"phone-number-container fx-1\"],[24,\"data-toggle\",\"oss-dropdown\"],[17,1],[4,[38,0],[[30,0,[\"registerContainer\"]]],null],[4,[38,1],[[30,0,[\"disconnectObserver\"]]],null],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"phone-number-input fx-row fx-1 fx-xalign-center \",[30,0,[\"interactiveClasses\"]]]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"country-selector fx-row\"],[24,\"role\",\"button\"],[4,[38,2],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n      \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"selectedCountry\",\"id\"]],\" ff-sm ff-round\"]]],[12],[13],[1,\"\\n      \"],[8,[39,3],null,[[\"@icon\"],[[29,[\"fa-chevron-\",[52,[30,0,[\"isOpen\"]],\"up\",\"down\"]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[11,0],[24,0,\"fx-1 fx-row upf-input\"],[4,[38,2],[\"click\",[30,0,[\"focusInput\"]]],null],[12],[1,\"\\n      \"],[10,1],[14,0,\"fx-row fx-xalign-center phone-prefix\"],[12],[1,[30,2]],[13],[1,\"\\n      \"],[8,[39,5],[[24,0,\"fx-1\"],[24,3,\"telephone\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[24,4,\"tel\"],[4,[38,2],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,2],[\"paste\",[30,0,[\"handlePaste\"]]],null],[4,[38,2],[\"blur\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,0],[[30,0,[\"registerInputElement\"]]],null]],[[\"@value\"],[[30,3]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"invalidInputError\"]],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,\"\\n      \"],[1,[30,0,[\"invalidInputError\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[41,[30,4],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,\"\\n      \"],[1,[30,4]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],null]],[]]],[1,\"\\n\"],[41,[30,0,[\"isOpen\"]],[[[40,[[[1,\"      \"],[8,[39,8],[[16,1,[30,0,[\"portalId\"]]],[16,0,[28,[37,9],[\"margin-top-px-0 phone-number-container__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[4,[38,10],[[30,0,[\"onClickOutside\"]]],null],[4,[38,2],[\"click\",[30,0,[\"noop\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCountries\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],\"Search\"]],[[\"option\"],[[[[1,\"\\n          \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,11],[[30,0,[\"selectedCountry\"]],[30,5]],null],\"row-selected\"]]]],[12],[1,\"\\n            \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,5,[\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n            \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm\"],[12],[1,[30,5,[\"name\"]]],[13],[1,\"\\n            \"],[10,1],[14,0,\"text-color-default-light margin-left-xxx-sm fx-1\"],[12],[1,\"(+\"],[1,[28,[35,12],[[30,5,[\"countryCallingCodes\"]],0],null]],[1,\")\"],[13],[1,\"\\n\"],[41,[28,[37,11],[[30,0,[\"selectedCountry\"]],[30,5]],null],[[[1,\"              \"],[8,[39,3],[[24,0,\"font-color-primary-500\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"          \"],[13],[1,\"\\n        \"]],[5]]]]],[1,\"\\n\"]],[]],\"%cursor:0%\",[28,[37,7],[[30,0,[\"portalTarget\"]]],null],null]],[]],null],[13]],[\"&attrs\",\"@prefix\",\"@number\",\"@errorMessage\",\"country\"],false,[\"did-insert\",\"will-destroy\",\"on\",\"o-s-s/icon\",\"if\",\"input\",\"in-element\",\"-in-el-null\",\"o-s-s/infinite-select\",\"concat\",\"on-click-outside\",\"eq\",\"get\"]]",
+    "id": "gAia46m2",
+    "block": "[[[11,0],[24,0,\"phone-number-container fx-1\"],[24,\"data-toggle\",\"oss-dropdown\"],[17,1],[4,[38,0],[[30,0,[\"registerContainer\"]]],null],[4,[38,1],[[30,0,[\"disconnectObserver\"]]],null],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"phone-number-input fx-row fx-1 fx-xalign-center \",[30,0,[\"interactiveClasses\"]]]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"country-selector fx-row\"],[24,\"role\",\"button\"],[4,[38,2],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n      \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"selectedCountry\",\"id\"]],\" ff-sm ff-round\"]]],[12],[13],[1,\"\\n      \"],[8,[39,3],null,[[\"@icon\"],[[29,[\"fa-chevron-\",[52,[30,0,[\"isOpen\"]],\"up\",\"down\"]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[11,0],[24,0,\"fx-1 fx-row upf-input\"],[4,[38,2],[\"click\",[30,0,[\"focusInput\"]]],null],[12],[1,\"\\n      \"],[10,1],[14,0,\"fx-row fx-xalign-center phone-prefix\"],[12],[1,[30,2]],[13],[1,\"\\n      \"],[8,[39,5],[[24,0,\"fx-1\"],[24,3,\"telephone\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[4,[38,2],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,2],[\"paste\",[30,0,[\"handlePaste\"]]],null],[4,[38,2],[\"blur\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,0],[[30,0,[\"registerInputElement\"]]],null]],[[\"@value\",\"@type\"],[[30,3],\"tel\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"invalidInputError\"]],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,\"\\n      \"],[1,[30,0,[\"invalidInputError\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[41,[30,4],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,\"\\n      \"],[1,[30,4]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],null]],[]]],[1,\"\\n\"],[41,[30,0,[\"isOpen\"]],[[[40,[[[1,\"      \"],[8,[39,8],[[16,1,[30,0,[\"portalId\"]]],[16,0,[28,[37,9],[\"margin-top-px-0 phone-number-container__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[4,[38,10],[[30,0,[\"onClickOutside\"]]],null],[4,[38,2],[\"click\",[30,0,[\"noop\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCountries\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],\"Search\"]],[[\"option\"],[[[[1,\"\\n          \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,11],[[30,0,[\"selectedCountry\"]],[30,5]],null],\"row-selected\"]]]],[12],[1,\"\\n            \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,5,[\"id\"]],\" ff-sm ff-rounded\"]]],[12],[13],[1,\"\\n            \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm\"],[12],[1,[30,5,[\"name\"]]],[13],[1,\"\\n            \"],[10,1],[14,0,\"text-color-default-light margin-left-xxx-sm fx-1\"],[12],[1,\"(+\"],[1,[28,[35,12],[[30,5,[\"countryCallingCodes\"]],0],null]],[1,\")\"],[13],[1,\"\\n\"],[41,[28,[37,11],[[30,0,[\"selectedCountry\"]],[30,5]],null],[[[1,\"              \"],[8,[39,3],[[24,0,\"font-color-primary-500\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"          \"],[13],[1,\"\\n        \"]],[5]]]]],[1,\"\\n\"]],[]],\"%cursor:0%\",[28,[37,7],[[30,0,[\"portalTarget\"]]],null],null]],[]],null],[13]],[\"&attrs\",\"@prefix\",\"@number\",\"@errorMessage\",\"country\"],false,[\"did-insert\",\"will-destroy\",\"on\",\"o-s-s/icon\",\"if\",\"input\",\"in-element\",\"-in-el-null\",\"o-s-s/infinite-select\",\"concat\",\"on-click-outside\",\"eq\",\"get\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/phone-number-input.hbs",
     "isStrictMode": false
   });
@@ -94927,7 +94943,6 @@ interface OSSCodeBlockArgs {
           />
         {{else}}
           <Input
-            class="upf-input"
             @type="number"
             @value={{@value}}
             step={{this.sliderOptions.step}}
@@ -94935,6 +94950,7 @@ interface OSSCodeBlockArgs {
             max={{this.sliderOptions.max}}
             placeholder={{this.currentRangeValue}}
             disabled={{@disabled}}
+            class="upf-input"
             {{on "input" this.onNumberInput}}
           />
         {{/if}}
@@ -94943,8 +94959,8 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "W1aIdEyx",
-    "block": "[[[11,0],[16,0,[29,[\"oss-slider__container \",[52,[30,1],\"oss-slider__container--disabled\"]]]],[17,2],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-slider__range-container\"],[12],[1,\"\\n    \"],[11,\"input\"],[24,0,\"oss-slider__range\"],[16,\"min\",[30,0,[\"sliderOptions\",\"min\"]]],[16,\"max\",[30,0,[\"sliderOptions\",\"max\"]]],[16,2,[30,0,[\"currentRangeValue\"]]],[16,\"step\",[30,0,[\"sliderOptions\",\"step\"]]],[16,\"disabled\",[30,1]],[16,5,[30,0,[\"activeBackgroundWidth\"]]],[24,4,\"range\"],[4,[38,1],[\"input\",[30,0,[\"onRangeChange\"]]],null],[4,[38,1],[\"mouseenter\",[30,0,[\"showTooltip\"]]],null],[4,[38,1],[\"mouseleave\",[30,0,[\"removeTooltip\"]]],null],[4,[38,2],[[30,0,[\"initializeSliderInput\"]]],null],[12],[13],[1,\"\\n    \"],[11,0],[16,0,[29,[\"upf-tooltip oss-slider__tooltip\\n        \",[52,[51,[30,0,[\"displayTooltip\"]]],\"oss-slider__tooltip--hidden\"],\"\\n        \",[52,[28,[37,4],[[30,3],false],null],\"oss-slider__tooltip__without_input\"]]]],[16,5,[30,0,[\"tooltipPositionStyle\"]]],[4,[38,2],[[30,0,[\"initializeTooltip\"]]],null],[12],[1,\"\\n      \"],[10,1],[12],[1,\"\\n\"],[41,[30,4],[[[1,\"          \"],[1,[30,4]],[1,\"\\n\"]],[]],[[[1,\"          \"],[1,[28,[35,5],[[30,0,[\"currentRangeValue\"]],[52,[28,[37,4],[[30,5],\"percentage\"],null],\"%\"]],null]],[1,\"\\n\"]],[]]],[1,\"      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,0],[14,0,\"oss-slider__number-input\"],[12],[1,\"\\n\"],[41,[30,5],[[[1,\"        \"],[8,[39,6],[[4,[38,1],[\"input\",[30,0,[\"onNumberInput\"]]],null]],[[\"@value\",\"@type\",\"@suffix\",\"@placeholder\",\"@disabled\"],[[30,6],\"number\",[30,0,[\"unitIcon\"]],[30,0,[\"currentRangeValue\"]],[30,1]]],null],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,7],[[24,0,\"upf-input\"],[16,\"step\",[30,0,[\"sliderOptions\",\"step\"]]],[16,\"min\",[30,0,[\"sliderOptions\",\"min\"]]],[16,\"max\",[30,0,[\"sliderOptions\",\"max\"]]],[16,\"placeholder\",[30,0,[\"currentRangeValue\"]]],[16,\"disabled\",[30,1]],[4,[38,1],[\"input\",[30,0,[\"onNumberInput\"]]],null]],[[\"@type\",\"@value\"],[\"number\",[30,6]]],null],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"@disabled\",\"&attrs\",\"@displayInputValue\",\"@tooltipLabel\",\"@unit\",\"@value\"],false,[\"if\",\"on\",\"did-insert\",\"unless\",\"eq\",\"concat\",\"o-s-s/input-group\",\"input\"]]",
+    "id": "KiL2NzNE",
+    "block": "[[[11,0],[16,0,[29,[\"oss-slider__container \",[52,[30,1],\"oss-slider__container--disabled\"]]]],[17,2],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-slider__range-container\"],[12],[1,\"\\n    \"],[11,\"input\"],[24,0,\"oss-slider__range\"],[16,\"min\",[30,0,[\"sliderOptions\",\"min\"]]],[16,\"max\",[30,0,[\"sliderOptions\",\"max\"]]],[16,2,[30,0,[\"currentRangeValue\"]]],[16,\"step\",[30,0,[\"sliderOptions\",\"step\"]]],[16,\"disabled\",[30,1]],[16,5,[30,0,[\"activeBackgroundWidth\"]]],[24,4,\"range\"],[4,[38,1],[\"input\",[30,0,[\"onRangeChange\"]]],null],[4,[38,1],[\"mouseenter\",[30,0,[\"showTooltip\"]]],null],[4,[38,1],[\"mouseleave\",[30,0,[\"removeTooltip\"]]],null],[4,[38,2],[[30,0,[\"initializeSliderInput\"]]],null],[12],[13],[1,\"\\n    \"],[11,0],[16,0,[29,[\"upf-tooltip oss-slider__tooltip\\n        \",[52,[51,[30,0,[\"displayTooltip\"]]],\"oss-slider__tooltip--hidden\"],\"\\n        \",[52,[28,[37,4],[[30,3],false],null],\"oss-slider__tooltip__without_input\"]]]],[16,5,[30,0,[\"tooltipPositionStyle\"]]],[4,[38,2],[[30,0,[\"initializeTooltip\"]]],null],[12],[1,\"\\n      \"],[10,1],[12],[1,\"\\n\"],[41,[30,4],[[[1,\"          \"],[1,[30,4]],[1,\"\\n\"]],[]],[[[1,\"          \"],[1,[28,[35,5],[[30,0,[\"currentRangeValue\"]],[52,[28,[37,4],[[30,5],\"percentage\"],null],\"%\"]],null]],[1,\"\\n\"]],[]]],[1,\"      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,0],[14,0,\"oss-slider__number-input\"],[12],[1,\"\\n\"],[41,[30,5],[[[1,\"        \"],[8,[39,6],[[4,[38,1],[\"input\",[30,0,[\"onNumberInput\"]]],null]],[[\"@value\",\"@type\",\"@suffix\",\"@placeholder\",\"@disabled\"],[[30,6],\"number\",[30,0,[\"unitIcon\"]],[30,0,[\"currentRangeValue\"]],[30,1]]],null],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,7],[[16,\"step\",[30,0,[\"sliderOptions\",\"step\"]]],[16,\"min\",[30,0,[\"sliderOptions\",\"min\"]]],[16,\"max\",[30,0,[\"sliderOptions\",\"max\"]]],[16,\"placeholder\",[30,0,[\"currentRangeValue\"]]],[16,\"disabled\",[30,1]],[24,0,\"upf-input\"],[4,[38,1],[\"input\",[30,0,[\"onNumberInput\"]]],null]],[[\"@type\",\"@value\"],[\"number\",[30,6]]],null],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"@disabled\",\"&attrs\",\"@displayInputValue\",\"@tooltipLabel\",\"@unit\",\"@value\"],false,[\"if\",\"on\",\"did-insert\",\"unless\",\"eq\",\"concat\",\"o-s-s/input-group\",\"input\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/slider.hbs",
     "isStrictMode": false
   });
@@ -96056,18 +96072,23 @@ interface OSSCodeBlockArgs {
   /*
     <div class="fx-1">
     <div class="oss-textarea-container {{if @errorMessage ' oss-textarea-container--errored'}}" ...attributes>
-      <Textarea {{on "keyup" (fn this._onChange @value)}} @value={{@value}} placeholder={{@placeholder}}
-                disabled={{@disabled}} class="oss-textarea {{this.computedClass}}" rows={{this.rows}} />
+      <Textarea
+        @value={{@value}}
+        placeholder={{@placeholder}}
+        disabled={{@disabled}}
+        rows={{this.rows}}
+        class="oss-textarea {{this.computedClass}}"
+        {{on "keyup" (fn this._onChange @value)}}
+      />
     </div>
     {{#if @errorMessage}}
       <span class="font-color-error-500 margin-top-px-6">{{@errorMessage}}</span>
     {{/if}}
   </div>
-  
   */
   {
-    "id": "g3gdDzS5",
-    "block": "[[[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-textarea-container \",[52,[30,1],\" oss-textarea-container--errored\"]]]],[17,2],[12],[1,\"\\n    \"],[8,[39,1],[[16,\"placeholder\",[30,3]],[16,\"disabled\",[30,4]],[16,0,[29,[\"oss-textarea \",[30,0,[\"computedClass\"]]]]],[16,\"rows\",[30,0,[\"rows\"]]],[4,[38,2],[\"keyup\",[28,[37,3],[[30,0,[\"_onChange\"]],[30,5]],null]],null]],[[\"@value\"],[[30,5]]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,1],[[[1,\"    \"],[10,1],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,[30,1]],[13],[1,\"\\n\"]],[]],null],[13],[1,\"\\n\"]],[\"@errorMessage\",\"&attrs\",\"@placeholder\",\"@disabled\",\"@value\"],false,[\"if\",\"textarea\",\"on\",\"fn\"]]",
+    "id": "HXrtmOMH",
+    "block": "[[[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-textarea-container \",[52,[30,1],\" oss-textarea-container--errored\"]]]],[17,2],[12],[1,\"\\n    \"],[8,[39,1],[[16,\"placeholder\",[30,3]],[16,\"disabled\",[30,4]],[16,\"rows\",[30,0,[\"rows\"]]],[16,0,[29,[\"oss-textarea \",[30,0,[\"computedClass\"]]]]],[4,[38,2],[\"keyup\",[28,[37,3],[[30,0,[\"_onChange\"]],[30,5]],null]],null]],[[\"@value\"],[[30,5]]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,1],[[[1,\"    \"],[10,1],[14,0,\"font-color-error-500 margin-top-px-6\"],[12],[1,[30,1]],[13],[1,\"\\n\"]],[]],null],[13]],[\"@errorMessage\",\"&attrs\",\"@placeholder\",\"@disabled\",\"@value\"],false,[\"if\",\"textarea\",\"on\",\"fn\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/text-area.hbs",
     "isStrictMode": false
   });
