@@ -12822,7 +12822,9 @@ a.oss-sidebar-item:focus {
   gap: var(--spacing-px-12);
   align-items: center;
   height: 48px;
-  padding: var(--spacing-px-12) var(--spacing-px-18);
+  padding: var(--spacing-px-12) var(--spacing-px-12);
+  border-radius: var(--border-radius-md);
+  margin: 0 var(--spacing-px-6);
 }
 .oss-access-panel-container__row .fas.fa-circle.font-color-error-500 {
   font-size: 6px;
