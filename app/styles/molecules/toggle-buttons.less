@@ -45,6 +45,7 @@
   height: 30px;
   padding: 2px;
   color: var(--color-primary-300);
+  gap: var(--spacing-px-3);
 
   .oss-smart-toggle-buttons-btn {
     .border-radius-lg;
@@ -53,7 +54,6 @@
     flex: 1;
     justify-content: center;
     align-items: center;
-    gap: var(--spacing-px-6);
     padding: var(--spacing-px-6) var(--spacing-px-12);
     transition: background-color 300ms ease-in-out;
 
@@ -69,6 +69,17 @@
       &--selected {
         background-color: var(--color-primary-400);
         opacity: 0.5;
+      }
+
+      &:hover {
+      }
+    }
+  }
+
+  &:not(&--disabled) {
+    .oss-smart-toggle-buttons-btn {
+      &:not(&--selected):hover {
+        background-color: var(--color-white);
       }
     }
   }
