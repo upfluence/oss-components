@@ -12,4 +12,5 @@ Router.map(function () {
   this.route('data');
   this.route('overlay');
   this.route('extra');
+  this.route('smart');
 });

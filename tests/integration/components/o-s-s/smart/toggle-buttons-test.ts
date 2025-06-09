@@ -1,0 +1,167 @@
+import { hbs } from 'ember-cli-htmlbars';
+import { module, test } from 'qunit';
+import { setupRenderingTest } from 'ember-qunit';
+import { set } from '@ember/object';
+import { click, render } from '@ember/test-helpers';
+import settled from '@ember/test-helpers/settled';
+import setupOnerror from '@ember/test-helpers/setup-onerror';
+import sinon from 'sinon';
+
+module('Integration | Component | o-s-s/smart/toggle-buttons', function (hooks) {
+  setupRenderingTest(hooks);
+
+  hooks.beforeEach(function () {
+    this.selectedToggle = 'first';
+    this.onSelection = (value: any) => {
+      set(this, 'selectedToggle', value);
+    };
+    this.toggles = [
+      {
+        value: 'first',
+        label: 'First'
+      },
+      {
+        value: 'second',
+        label: 'Second',
+        icon: 'far fa-2'
+      }
+    ];
+  });
+
+  test('it renders', async function (assert) {
+    await render(
+      hbs`<OSS::Smart::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+    );
+
+    assert.dom('.oss-smart-toggle-buttons-container').exists();
+  });
+
+  test('the right class is applied when the @disabled arg is truthy', async function (assert) {
+    await render(
+      hbs`<OSS::Smart::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}} @disabled={{true}}/>`
+    );
+
+    assert.dom('.oss-smart-toggle-buttons-container').exists();
+    assert.dom('.oss-smart-toggle-buttons-container').hasClass('oss-smart-toggle-buttons-container--disabled');
+  });
+
+  test('the toggle icon is displayed when provided', async function (assert) {
+    await render(
+      hbs`<OSS::Smart::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+    );
+
+    assert.dom('.oss-smart-toggle-buttons-btn:first-child i.far').doesNotExist();
+    assert.dom('.oss-smart-toggle-buttons-btn:last-child i.far').exists();
+    assert.dom('.oss-smart-toggle-buttons-btn:last-child i.far').hasClass('fa-2');
+  });
+
+  module('If @selectedToggle is passed', function () {
+    test('If the selectedToggle matches an entry from the toggles, then the toggle is set to selected', async function (assert) {
+      this.selectedToggle = 'second';
+
+      await render(
+        hbs`<OSS::Smart::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+      );
+      assert.dom('.oss-smart-toggle-buttons-btn--selected').hasText('Second');
+    });
+  });
+
+  module('When clicking on an item', () => {
+    test('the toggle is selected', async function (assert) {
+      await render(
+        hbs`<OSS::Smart::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+      );
+
+      await click('.oss-smart-toggle-buttons-btn:first-child');
+      assert.dom('.oss-smart-toggle-buttons-btn--selected').hasText('First');
+
+      await click('.oss-smart-toggle-buttons-btn:last-child');
+      assert.dom('.oss-smart-toggle-buttons-btn--selected').hasText('Second');
+    });
+
+    test('the @onSelection method is not triggered if the item is already selected', async function (assert) {
+      this.onSelectionStub = sinon.stub();
+
+      await render(
+        hbs`<OSS::Smart::ToggleButtons @onSelection={{this.onSelectionStub}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+      );
+
+      await click('.oss-smart-toggle-buttons-btn:first-child');
+      assert.ok(this.onSelectionStub.notCalled);
+    });
+
+    test('the @onSelection method is not triggered if the component is disabled', async function (assert) {
+      this.onSelectionStub = sinon.stub();
+
+      await render(
+        hbs`<OSS::Smart::ToggleButtons @onSelection={{this.onSelectionStub}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}} @disabled={{true}} />`
+      );
+
+      await click('.oss-smart-toggle-buttons-btn:first-child');
+      assert.ok(this.onSelectionStub.notCalled);
+    });
+
+    test('the @onSelection method is triggered with the selected value', async function (assert) {
+      this.onSelection = sinon.spy();
+
+      await render(
+        hbs`<OSS::Smart::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`
+      );
+
+      await click('.oss-smart-toggle-buttons-btn:last-child');
+      assert.ok(this.onSelection.calledWith('second'));
+    });
+  });
+
+  module('Error management', () => {
+    test('it throws an error if @toggles is not provided', async function (assert) {
+      setupOnerror((err: any) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @toggles parameter of type Toggle[] is mandatory'
+        );
+      });
+      await render(
+        hbs`<OSS::Smart::ToggleButtons @onSelection={{this.onSelection}} @selectedToggle={{this.selectedToggle}}/>`
+      );
+      await settled();
+    });
+
+    test('it throws an error if @onSelection is not provided', async function (assert) {
+      setupOnerror((err: any) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @onSelection parameter of type function is mandatory'
+        );
+      });
+      await render(hbs`<OSS::Smart::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>`);
+      await settled();
+    });
+
+    test('it throws an error if @selectedToggle is not provided', async function (assert) {
+      setupOnerror((err: any) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @selectedToggle parameter of type string or null is mandatory'
+        );
+      });
+      await render(hbs`<OSS::Smart::ToggleButtons @toggles={{this.toggles}} @onSelection={{this.onSelection}}  />`);
+      await settled();
+    });
+
+    test('it throws an error if @selectedToggle is not a value of toggles', async function (assert) {
+      this.selectedToggle = 'toto';
+
+      setupOnerror((err: any) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @selectedToggle parameter should be null or a value of toggles'
+        );
+      });
+      await render(
+        hbs`<OSS::Smart::ToggleButtons @toggles={{this.toggles}} @onSelection={{this.onSelection}} @selectedToggle={{this.selectedToggle}}/>`
+      );
+      await settled();
+    });
+  });
+});
