@@ -1,0 +1,18 @@
+<div
+  class={{concat "oss-smart-toggle-buttons-container " (if @disabled "oss-smart-toggle-buttons-container--disabled")}}
+  ...attributes
+>
+  {{#each @toggles as |toggle|}}
+    <div
+      class="oss-smart-toggle-buttons-btn
+        {{if (eq @selectedToggle toggle.value) ' oss-smart-toggle-buttons-btn--selected'}}"
+      role="button"
+      {{on "click" (fn this.onSelectToggle toggle.value)}}
+    >
+      {{#if toggle.icon}}
+        <OSS::Icon @style={{fa-icon-style toggle.icon}} @icon={{fa-icon-value toggle.icon}} />
+      {{/if}}
+      {{toggle.label}}
+    </div>
+  {{/each}}
+</div>
