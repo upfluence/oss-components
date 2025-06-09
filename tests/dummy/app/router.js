@@ -13,4 +13,5 @@ Router.map(function () {
   this.route('overlay');
   this.route('extra');
   this.route('wizard');
+  this.route('smart');
 });
