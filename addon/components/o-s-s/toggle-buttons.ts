@@ -8,16 +8,18 @@ export type Toggle = {
   icon?: string;
 };
 
-interface OSSToggleButtonsArgs {
+export interface OSSToggleButtonsArgs {
   toggles: Toggle[];
   selectedToggle: string | null;
   disabled?: boolean;
   onSelection(selectedToggle: string): void;
 }
 
-export default class OSSToggleButtons extends Component<OSSToggleButtonsArgs> {
-  constructor(owner: unknown, args: OSSToggleButtonsArgs) {
+export default class OSSToggleButtons<T extends OSSToggleButtonsArgs> extends Component<T> {
+  constructor(owner: unknown, args: OSSToggleButtonsArgs, preventDefaultAssertions?: boolean) {
     super(owner, args);
+
+    if (preventDefaultAssertions) return;
 
     assert(
       '[component][OSS::ToggleButtons] The @toggles parameter of type Toggle[] is mandatory',
