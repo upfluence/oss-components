@@ -1,0 +1,32 @@
+<div class="fx-col fx-gap-px-12 padding-px-18">
+  <div class="page-title-container">
+    <span class="font-size-h2 font-weight-semibold">Smart</span>
+    <span class="font-color-gray-500">Components that look like another component and act like another component but
+      aren't said component</span>
+    <span class="font-color-gray-500 font-size-xs text-style-italic">(also they might be smarter than you who knows)</span>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Smart toggle buttons
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <div class="fx-row fx-xalign-start fx-gap-px-10">
+        <OSS::Smart::ToggleButtons
+          @toggles={{this.toggles}}
+          @selectedToggle={{this.selectedToggle}}
+          @onSelection={{this.triggerSelection}}
+        />
+        <OSS::Smart::ToggleButtons
+          @toggles={{this.toggles}}
+          @selectedToggle={{this.selectedToggleTwo}}
+          @onSelection={{this.triggerSelection}}
+          @disabled={{true}}
+        />
+      </div>
+    </div>
+  </div>
+
+</div>
