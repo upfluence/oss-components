@@ -3,7 +3,7 @@ import OSSToggleButtons, { type OSSToggleButtonsArgs } from '../toggle-buttons';
 
 interface OSSSmartToggleButtonsArgs extends OSSToggleButtonsArgs {}
 
-export default class OSSSmartToggleButtons extends OSSToggleButtons<OSSToggleButtonsArgs> {
+export default class OSSSmartToggleButtons extends OSSToggleButtons<OSSSmartToggleButtonsArgs> {
   constructor(owner: unknown, args: OSSSmartToggleButtonsArgs) {
     super(owner, args, true);
 
