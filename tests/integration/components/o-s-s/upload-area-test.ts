@@ -39,10 +39,8 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
             @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
         `);
 
-        assert.dom('.oss-upload-area .fx-col.fx-gap-px-3 .fx-row.fx-xalign-center.fx-gap-px-3 .upf-link').exists();
-        assert
-          .dom('.oss-upload-area .fx-col.fx-gap-px-3 .fx-row.fx-xalign-center.fx-gap-px-3 .upf-link')
-          .hasText('browse');
+        assert.dom('.oss-upload-area .upf-link').exists();
+        assert.dom('.oss-upload-area .upf-link').hasText('browse');
       });
 
       test('clicking on browse text opens the hidden file input', async function (assert) {
@@ -56,7 +54,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         const fileInput: HTMLInputElement = document.querySelector('.oss-upload-area-container input[type="file"]')!;
         const fileInputClickStub = sinon.stub(fileInput, 'click');
 
-        await click('.oss-upload-area .fx-col.fx-gap-px-3 .fx-row.fx-xalign-center.fx-gap-px-3 .upf-link');
+        await click('.oss-upload-area .upf-link');
         assert.ok(fileInputClickStub.calledOnce);
       });
     });
@@ -106,7 +104,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         `);
 
         assert
-          .dom('.oss-upload-area .fx-col.fx-gap-px-3 .fx-row.fx-xalign-center.fx-gap-px-3')
+          .dom('.oss-upload-area .fx-col.fx-gap-px-3 .font-color-gray-900')
           .hasText('Drop your file here, or browse');
         assert.dom('.oss-upload-area .fx-col.fx-gap-px-3 .font-color-gray-500').doesNotExist();
       });
@@ -119,7 +117,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
         `);
 
         assert
-          .dom('.oss-upload-area .fx-col.fx-gap-px-3 .fx-row.fx-xalign-center.fx-gap-px-3')
+          .dom('.oss-upload-area .fx-col.fx-gap-px-3 .font-color-gray-900')
           .hasText('Drop your file here, or browse');
         assert.dom('.oss-upload-area .fx-col.fx-gap-px-3 .font-color-gray-500').exists();
         assert.dom('.oss-upload-area .fx-col.fx-gap-px-3 .font-color-gray-500').hasText(this.subtitle);
@@ -144,9 +142,7 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
             @disabled={{true}} @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
         `);
 
-        assert
-          .dom('.oss-upload-area .fx-col.fx-gap-px-3 .fx-row.fx-xalign-center.fx-gap-px-3 .upf-link')
-          .doesNotExist();
+        assert.dom('.oss-upload-area .upf-link').doesNotExist();
       });
     });
   });
