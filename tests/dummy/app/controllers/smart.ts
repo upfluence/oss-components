@@ -17,6 +17,11 @@ export default class Smart extends Controller {
   ];
 
   @action
+  countDownAction(): void {
+    console.log('countDownAction');
+  }
+
+  @action
   triggerSelection(value: string): void {
     console.log('selected toggle value : ', value);
     this.selectedToggle = value;
