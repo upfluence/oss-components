@@ -70,7 +70,7 @@ const SQUARE_CLASS = 'upf-square-btn';
 const DEFAULT_COUNTER_TIME = 5000;
 const DEFAULT_STEP_COUNTER_TIME = 1000;
 
-interface ButtonArgs {
+export interface OSSButtonArgs {
   skin?: string;
   size?: string;
   loading?: boolean;
@@ -85,16 +85,19 @@ interface ButtonArgs {
     time?: number;
     step?: number;
   };
+  // disabled?: boolean;
 }
 
-export default class OSSButton extends Component<ButtonArgs> {
+export default class OSSButton<T extends OSSButtonArgs> extends Component<T> {
   @tracked DOMElement: HTMLElement | undefined;
   @tracked intervalID: ReturnType<typeof setInterval> | undefined;
   @tracked intervalState: boolean = false;
   @tracked counterTimeLeft: number = 0;
 
-  constructor(owner: unknown, args: ButtonArgs) {
+  constructor(owner: unknown, args: OSSButtonArgs, preventDefaultAssertions?: boolean) {
     super(owner, args);
+
+    if (preventDefaultAssertions) return;
 
     assert(
       '[component][OSS::Button] You must pass either a @label, an @icon or an @iconUrl argument.',

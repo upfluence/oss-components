@@ -1,0 +1,30 @@
+{{! template-lint-disable u-template-lint/no-bare-button}}
+<div class="upf-smart-btn-container fx-row" ...attributes>
+  <button
+    type="button"
+    class={{this.computedSmartClasses}}
+    disabled={{@disabled}}
+    {{did-insert this.didInsert}}
+    {{on "click" this.onclick}}
+  >
+    {{#if this.intervalState}}
+      {{t "oss-components.button.cancel_message" time=this.counterTimeLeftSecond}}
+    {{else if this.loadingState}}
+      <OSS::Icon @style="solid" @icon="fa-spinner-third fa-spin" />
+
+      {{#if (and @label @loadingOptions.showLabel)}}
+        <span class="margin-left-px-6">{{@label}}</span>
+      {{/if}}
+    {{else}}
+      {{#if @icon}}
+        <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
+      {{else if @iconUrl}}
+        <img src={{@iconUrl}} alt="icon" />
+      {{/if}}
+
+      {{#if (and @label (not this.isCircle))}}
+        <span class={{if (or @icon @iconUrl) "margin-left-px-6"}}>{{@label}}</span>
+      {{/if}}
+    {{/if}}
+  </button>
+</div>
