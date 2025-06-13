@@ -7,11 +7,8 @@
     {{did-insert this.didInsert}}
     {{on "click" this.onclick}}
   >
-    {{#if this.intervalState}}
-      {{t "oss-components.button.cancel_message" time=this.counterTimeLeftSecond}}
-    {{else if this.loadingState}}
+    {{#if this.loadingState}}
       <OSS::Icon @style="solid" @icon="fa-spinner-third fa-spin" />
-
       {{#if (and @label @loadingOptions.showLabel)}}
         <span class="margin-left-px-6">{{@label}}</span>
       {{/if}}
@@ -21,7 +18,6 @@
       {{else if @iconUrl}}
         <img src={{@iconUrl}} alt="icon" />
       {{/if}}
-
       {{#if (and @label (not this.isCircle))}}
         <span class={{if (or @icon @iconUrl) "margin-left-px-6"}}>{{@label}}</span>
       {{/if}}
