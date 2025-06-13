@@ -89,20 +89,6 @@ export default {
         type: 'boolean'
       }
     },
-    countDown: {
-      description:
-        'Definition of countDown object, it takes 3 keys:<br/>' +
-        "- 'callback' (mandatory): function to call at the end<br/>" +
-        "- 'time' (optional): time between execute callback. It is representing entire second in millisecond, for exemple 1000, 2000 or 5000<br/>" +
-        "- 'step' (optional): the step value, it should be in the same unit as the time",
-      table: {
-        type: {
-          summary: '{ callback: () => {}, time?: number, step?: number }'
-        },
-        defaultValue: { summary: 'undefined' }
-      },
-      control: { type: 'object' }
-    },
     disabled: {
       description: 'Disables the button',
       table: {
@@ -130,7 +116,6 @@ const defaultArgs = {
   label: 'Label',
   icon: 'far fa-envelope-open',
   circle: false,
-  countDown: undefined,
   loadingOptions: undefined,
   iconUrl: undefined,
   disabled: false
@@ -140,27 +125,13 @@ const Template = (args) => ({
   template: hbs`
     <OSS::Smart::Button
       @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
-      @circle={{this.circle}} @countDown={{this.countDown}}
-      @iconUrl={{this.iconUrl}} @loadingOptions={{this.loadingOptions}} @disabled={{this.disabled}} />
+      @circle={{this.circle}} @iconUrl={{this.iconUrl}} @loadingOptions={{this.loadingOptions}} @disabled={{this.disabled}} />
   `,
   context: args
 });
 
 export const Default = Template.bind({});
 Default.args = defaultArgs;
-
-export const WithCountDown = Template.bind({});
-WithCountDown.args = {
-  ...defaultArgs,
-  ...{
-    countDown: {
-      callback: function () {
-        alert('Count down finish');
-      },
-      time: 3000
-    }
-  }
-};
 
 export const WithIconUrl = Template.bind({});
 WithIconUrl.args = {

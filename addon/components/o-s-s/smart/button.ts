@@ -28,10 +28,6 @@ export default class OSSSmartButton extends OSSButton<OSSSmartButtonArgs> {
       '[component][OSS::Smart::Button] You must pass either a @label, an @icon or an @iconUrl argument.',
       args.label || args.icon || args.iconUrl
     );
-    assert(
-      "[component][OSS::Smart::Button] You must pass either a hash with 'callback' value to @countDown argument.",
-      args.countDown ? args.countDown.callback : true
-    );
   }
 
   get isCircle(): boolean {
