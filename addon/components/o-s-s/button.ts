@@ -85,7 +85,6 @@ export interface OSSButtonArgs {
     time?: number;
     step?: number;
   };
-  // disabled?: boolean;
 }
 
 export default class OSSButton<T extends OSSButtonArgs> extends Component<T> {
