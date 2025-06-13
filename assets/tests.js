@@ -14105,8 +14105,8 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
             "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-area-test.ts",
             "isStrictMode": false
           }));
-          assert.dom('.oss-upload-area .fx-col.fx-gap-px-3 .fx-row.fx-xalign-center.fx-gap-px-3 .upf-link').exists();
-          assert.dom('.oss-upload-area .fx-col.fx-gap-px-3 .fx-row.fx-xalign-center.fx-gap-px-3 .upf-link').hasText('browse');
+          assert.dom('.oss-upload-area .upf-link').exists();
+          assert.dom('.oss-upload-area .upf-link').hasText('browse');
         });
         (0, _qunit.test)('clicking on browse text opens the hidden file input', async function (assert) {
           await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -14126,7 +14126,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
           assert.dom('.oss-upload-area-container input[type="file"]').exists();
           const fileInput = document.querySelector('.oss-upload-area-container input[type="file"]');
           const fileInputClickStub = _sinon.default.stub(fileInput, 'click');
-          await (0, _testHelpers.click)('.oss-upload-area .fx-col.fx-gap-px-3 .fx-row.fx-xalign-center.fx-gap-px-3 .upf-link');
+          await (0, _testHelpers.click)('.oss-upload-area .upf-link');
           assert.ok(fileInputClickStub.calledOnce);
         });
       });
@@ -14202,7 +14202,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
             "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-area-test.ts",
             "isStrictMode": false
           }));
-          assert.dom('.oss-upload-area .fx-col.fx-gap-px-3 .fx-row.fx-xalign-center.fx-gap-px-3').hasText('Drop your file here, or browse');
+          assert.dom('.oss-upload-area .fx-col.fx-gap-px-3 .font-color-gray-900').hasText('Drop your file here, or browse');
           assert.dom('.oss-upload-area .fx-col.fx-gap-px-3 .font-color-gray-500').doesNotExist();
         });
         (0, _qunit.test)('it renders the subtitle when provided', async function (assert) {
@@ -14220,7 +14220,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
             "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-area-test.ts",
             "isStrictMode": false
           }));
-          assert.dom('.oss-upload-area .fx-col.fx-gap-px-3 .fx-row.fx-xalign-center.fx-gap-px-3').hasText('Drop your file here, or browse');
+          assert.dom('.oss-upload-area .fx-col.fx-gap-px-3 .font-color-gray-900').hasText('Drop your file here, or browse');
           assert.dom('.oss-upload-area .fx-col.fx-gap-px-3 .font-color-gray-500').exists();
           assert.dom('.oss-upload-area .fx-col.fx-gap-px-3 .font-color-gray-500').hasText(this.subtitle);
         });
@@ -14258,7 +14258,7 @@ define("dummy/tests/integration/components/o-s-s/upload-area-test", ["qunit", "e
             "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/upload-area-test.ts",
             "isStrictMode": false
           }));
-          assert.dom('.oss-upload-area .fx-col.fx-gap-px-3 .fx-row.fx-xalign-center.fx-gap-px-3 .upf-link').doesNotExist();
+          assert.dom('.oss-upload-area .upf-link').doesNotExist();
         });
       });
     });

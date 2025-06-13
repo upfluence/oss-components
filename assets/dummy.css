@@ -11891,6 +11891,10 @@ a.upf-btn--sm {
 .oss-upload-area-container .oss-upload-area .oss-upload-area__illustration img {
   border-radius: var(--border-radius-sm);
 }
+.oss-upload-area-container .oss-upload-area .upf-link {
+  display: inline;
+  vertical-align: baseline;
+}
 .oss-upload-area-container .oss-upload-area--md {
   padding: var(--spacing-px-18);
 }
@@ -11924,8 +11928,9 @@ a.upf-btn--sm {
   animation: dragging-md-end 0.25s ease-in-out forwards;
 }
 .oss-upload-area-container .oss-upload-area--lg {
-  height: 165px;
+  min-height: 165px;
   padding: var(--spacing-px-24);
+  text-align: center;
 }
 .oss-upload-area-container .oss-upload-area--lg .oss-upload-area__illustration {
   position: relative;
