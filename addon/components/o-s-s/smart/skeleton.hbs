@@ -1,0 +1,11 @@
+{{#if @multiple}}
+  <div class="fx-1 {{this.computedClass}}" ...attributes>
+    {{#each this.rows as |row|}}
+      <div class="upf-smart-skeleton-effect" style={{this.inlineStyles rowStyle=row}}></div>
+    {{/each}}
+  </div>
+{{else}}
+  {{#each this.rows as |row|}}
+    <div class="upf-smart-skeleton-effect" style={{this.inlineStyles rowStyle=row}} ...attributes></div>
+  {{/each}}
+{{/if}}
