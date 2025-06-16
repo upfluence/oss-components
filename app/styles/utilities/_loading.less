@@ -18,3 +18,31 @@
   display: inline-block;
   line-height: 1;
 }
+
+@keyframes upf-smart-skeleton-content {
+  0% {
+    background-position: -136 0;
+  }
+
+  100% {
+    background-position: calc(136px + 100%) 0;
+  }
+}
+
+.upf-smart-skeleton-effect {
+  animation: upf-skeleton-content 1.5s ease-in-out alternate infinite;
+  background-color: var(--color-white);
+  background-image: linear-gradient(
+    150deg,
+    rgba(255, 255, 255, 0.15) 8.2%,
+    rgba(247, 213, 250, 0.15) 23.6%,
+    rgba(83, 94, 252, 0.15) 38.3%,
+    rgba(237, 33, 255, 0.15) 53.2%,
+    rgba(255, 255, 255, 0.15) 91.7%
+  );
+  background-size: 136px 100%;
+  background-repeat: no-repeat;
+  border-radius: var(--border-radius-xs);
+  display: inline-block;
+  line-height: 1;
+}
