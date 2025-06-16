@@ -338,10 +338,6 @@
 }
 
 .upf-smart-btn-container {
-  --color-smart-primary-400: linear-gradient(104.04deg, #535efc 0%, #ed21ff 100%);
-  --color-smart-primary-500: linear-gradient(104.04deg, #0d0de6 0%, #db00ff 100%);
-  --color-smart-primary-600: linear-gradient(104.04deg, #0505b8 0%, #b700cf 100%);
-
   position: relative;
   pointer-events: none;
   height: fit-content;
@@ -362,7 +358,7 @@
       transform: translate(-50%, -50%);
       z-index: 0;
       border-radius: var(--border-radius-xl);
-      background: var(--color-smart-primary-400);
+      background: var(--color-smart-gradient-400);
       opacity: 0;
       transition: opacity 0.25s ease-in-out;
     }
@@ -412,8 +408,8 @@
     position: relative;
     overflow: hidden;
     z-index: 0;
-    background: var(--color-smart-primary-500);
-    border: 1px solid var(--color-smart-primary-500);
+    background: var(--color-smart-gradient-500);
+    border: 1px solid var(--color-smart-gradient-500);
     color: var(--color-white);
 
     a& {
@@ -425,8 +421,8 @@
       position: absolute;
       inset: 0;
       z-index: -1;
-      background: var(--color-smart-primary-600);
-      border: 1px solid var(--color-smart-primary-600);
+      background: var(--color-smart-gradient-600);
+      border: 1px solid var(--color-smart-gradient-600);
       opacity: 0;
       transition: opacity 0.25s ease-in-out;
     }
@@ -436,8 +432,8 @@
     }
 
     &:not(:disabled):active::after {
-      background: var(--color-smart-primary-400);
-      border: 1px solid var(--color-smart-primary-400);
+      background: var(--color-smart-gradient-400);
+      border: 1px solid var(--color-smart-gradient-400);
     }
 
     > * {
