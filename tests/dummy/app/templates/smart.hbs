@@ -10,6 +10,128 @@
     class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
   >
     <div class="font-size-md font-weight-semibold">
+      Button
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Smart::Button @skin="primary" @label="Primary" @icon="fas fa-box-open" @size="lg" />
+        <OSS::Smart::Button
+          @skin="primary"
+          @label="Primary"
+          @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+        />
+        <OSS::Smart::Button @skin="primary" @label="Primary" @icon="fas fa-box-open" @size="sm" />
+        <OSS::Smart::Button
+          @skin="primary"
+          @label="Primary"
+          @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+          @size="sm"
+        />
+        <div class="fx-row fx-xalign-center fx-gap-px-12">
+          <OSS::Smart::Button @skin="primary" @circle="true" @icon="fas fa-box-open" @size="lg" />
+          <OSS::Smart::Button @skin="primary" @square="true" @icon="fas fa-box-open" @size="sm" />
+        </div>
+      </div>
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Smart::Button
+          @skin="primary"
+          @label="Loading"
+          @loading={{true}}
+          @loadingOptions={{hash showLabel=true}}
+          @size="lg"
+        />
+        <OSS::Smart::Button @skin="primary" @label="Loading" @loading={{true}} />
+        <OSS::Smart::Button
+          @skin="primary"
+          @label="Loading"
+          @loading={{true}}
+          @loadingOptions={{hash showLabel=true}}
+          @size="sm"
+        />
+        <OSS::Smart::Button @skin="primary" @label="Loading" @loading={{true}} @size="sm" />
+        <div class="fx-row fx-xalign-center fx-gap-px-12">
+          <OSS::Smart::Button
+            @skin="primary"
+            @square="true"
+            @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+            @size="md"
+          />
+          <OSS::Smart::Button
+            @skin="primary"
+            @square="true"
+            @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+            @size="sm"
+          />
+        </div>
+      </div>
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Smart::Button @skin="primary" @label="Disabled" @size="lg" @disabled={{true}} />
+        <OSS::Smart::Button @skin="primary" @label="Disabled" @size="md" @disabled={{true}} />
+        <OSS::Smart::Button @skin="primary" @label="Disabled" @size="sm" @disabled={{true}} />
+      </div>
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Smart::Button @skin="secondary" @label="Secondary" @icon="fas fa-box-open" @size="lg" />
+        <OSS::Smart::Button
+          @skin="secondary"
+          @label="Secondary"
+          @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+        />
+        <OSS::Smart::Button @skin="secondary" @label="Secondary" @icon="fas fa-box-open" @size="sm" />
+        <OSS::Smart::Button
+          @skin="secondary"
+          @label="Secondary"
+          @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+          @size="sm"
+        />
+        <div class="fx-row fx-xalign-center fx-gap-px-12">
+          <OSS::Smart::Button @skin="secondary" @square="true" @icon="fas fa-box-open" @size="md" />
+          <OSS::Smart::Button @skin="secondary" @square="true" @icon="fas fa-box-open" @size="sm" />
+        </div>
+      </div>
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Smart::Button
+          @skin="secondary"
+          @label="Loading"
+          @loading={{true}}
+          @loadingOptions={{hash showLabel=true}}
+          @size="lg"
+        />
+        <OSS::Smart::Button @skin="secondary" @label="Loading" @loading={{true}} />
+        <OSS::Smart::Button
+          @skin="secondary"
+          @label="Loading"
+          @loading={{true}}
+          @loadingOptions={{hash showLabel=true}}
+          @size="sm"
+        />
+        <OSS::Smart::Button @skin="secondary" @label="Loading" @loading={{true}} @size="sm" />
+        <div class="fx-row fx-xalign-center fx-gap-px-12">
+          <OSS::Smart::Button
+            @skin="secondary"
+            @square="true"
+            @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+            @size="md"
+          />
+          <OSS::Smart::Button
+            @skin="secondary"
+            @square="true"
+            @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+            @size="sm"
+          />
+        </div>
+      </div>
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Smart::Button @skin="secondary" @label="Disabled" @size="lg" @disabled={{true}} />
+        <OSS::Smart::Button @skin="secondary" @label="Disabled" @size="md" @disabled={{true}} />
+        <OSS::Smart::Button @skin="secondary" @label="Disabled" @size="sm" @disabled={{true}} />
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
       Smart toggle buttons
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-center">
