@@ -3,6 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { isEmpty } from '@ember/utils';
+import { guidFor } from '@ember/object/internals';
 import type { FeedbackMessage } from '@upfluence/oss-components/components/o-s-s/input-container';
 
 export type Currency = {
@@ -10,7 +11,7 @@ export type Currency = {
   symbol: string;
 };
 
-interface OSSCurrencyInputArgs {
+export interface OSSCurrencyInputArgs {
   currency: string;
   value: number;
   onChange(currency: string, value: number): void;
@@ -70,15 +71,17 @@ const AUTHORIZED_INPUTS = [
   'ArrowDown'
 ];
 
-export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
+export default class OSSCurrencyInput<T extends OSSCurrencyInputArgs> extends Component<T> {
   private currencies = this.args.allowedCurrencies ?? PLATFORM_CURRENCIES;
 
   @tracked currencySelectorShown: boolean = false;
   @tracked filteredCurrencies: Currency[] = this.currencies;
   @tracked localValue: number = this.args.value;
 
-  constructor(owner: unknown, args: OSSCurrencyInputArgs) {
+  constructor(owner: unknown, args: OSSCurrencyInputArgs, preventDefaultAssertions?: boolean) {
     super(owner, args);
+
+    if (preventDefaultAssertions) return;
 
     if (!this.args.value && !this.args.placeholder) {
       this.localValue = 0;
