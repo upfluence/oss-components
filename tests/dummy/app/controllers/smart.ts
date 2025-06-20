@@ -5,7 +5,7 @@ import { tracked } from '@glimmer/tracking';
 export default class Smart extends Controller {
   @tracked selectedToggle: string = 'first';
   @tracked selectedToggleTwo: string = 'second';
-  @tracked toggleInputLoadingValue: boolean = false;
+  @tracked toggleCurrencyInputLoadingValue: boolean = false;
   @tracked smartFeedback: boolean = false;
   @tracked smartFeedbackLoading: boolean = false;
   @tracked contentArray: string[] = [
@@ -20,6 +20,15 @@ export default class Smart extends Controller {
 
   @tracked declare value: string;
   @tracked loading: boolean = false;
+  @tracked currency: string = 'USD';
+  @tracked currencyValue: number = 3.14159999;
+  @tracked currencyOnly: string = '';
+  allowedCurrencies: { code: string; symbol: string }[] = [
+    { code: 'USD', symbol: '$' },
+    { code: 'EUR', symbol: '€' }
+  ];
+  @tracked hasError = true;
+  @tracked toggleInputLoadingValue = true;
   intervalId?: number;
 
   constructor() {
@@ -40,6 +49,25 @@ export default class Smart extends Controller {
     if (this.loading === false) {
       this.value = 'Data loaded from a very smart backend';
     }
+  }
+
+  @action
+  onCurrencyInputChange(currency: string, value: number): void {
+    console.log(value);
+    this.currency = currency;
+    this.currencyValue = value;
+    this.hasError = !this.hasError;
+  }
+
+  @action
+  onValueInputChange(value: number): void {
+    this.currencyValue = value;
+    this.currency = 'USD';
+  }
+
+  @action
+  toggleCurrencyInputLoading(): void {
+    this.toggleCurrencyInputLoadingValue = !this.toggleCurrencyInputLoadingValue;
   }
 
   @action
