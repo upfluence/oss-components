@@ -1,0 +1,83 @@
+<div
+  class={{this.computedClasses}}
+  id={{this.inputId}}
+  {{did-insert this.registerElement}}
+  {{did-update this.manageLoadingUpdate this.localValue}}
+  {{did-update this.manageLoadingUpdate @loading}}
+  data-control-name="oss-immersive-currency-input-container"
+  ...attributes
+>
+  <div
+    class="immersive-currency-input fx-row fx-1 fx-xalign-center
+      {{if this.currencySelectorShown 'currency-input--active'}}"
+  >
+    <div
+      class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center"
+      role={{if this.allowCurrencyUpdate "button" "img"}}
+      {{on "click" this.toggleCurrencySelector}}
+    >
+      <div class="fx-col">
+        <div class="fx-row fx-gap-px-9">
+          <span>{{this.selectedCurrencySymbol}}</span>
+        </div>
+      </div>
+
+      {{#if (and this.allowCurrencyUpdate (not this.disabled))}}
+        <OSS::Icon
+          @icon="{{if this.currencySelectorShown 'fa-chevron-up' 'fa-chevron-down'}}"
+          class="margin-left-px-6"
+        />
+      {{/if}}
+    </div>
+    {{#if @loading}}
+      <div class="smart-input__animated-text smart-input-wrapper fx-row fx-xalign-center">
+        <div class="smart-input__animated-text--fill">
+          <div class="fill-wrapper">
+            {{@placeholder}}
+          </div>
+        </div>
+        <div class="smart-input__animated-text--normal">
+          {{@placeholder}}
+        </div>
+      </div>
+    {{else}}
+      <div class={{this.smartCurrencyInputClasses}}>
+        <span data-control-name="smart-currency-input-hidden-container"></span>
+        <Input
+          @value={{this.localValue}}
+          @type="text"
+          min="0"
+          autocomplete="off"
+          placeholder={{this.placeholder}}
+          disabled={{this.disabled}}
+          class="fx-1"
+          data-control-name="oss-immersive-currency-input"
+          {{on "keydown" this.onlyNumeric}}
+          {{on "keyup" this.notifyChanges}}
+          {{on "paste" this.handlePaste}}
+          {{did-insert this.addEventInputListener}}
+          {{will-destroy this.removeEventInputListener}}
+        />
+      </div>
+    {{/if}}
+  </div>
+  {{#if this.currencySelectorShown}}
+    <OSS::InfiniteSelect
+      @items={{this.filteredCurrencies}}
+      @onSearch={{this.onSearch}}
+      @onSelect={{this.onSelect}}
+      @searchPlaceholder={{t "oss-components.currency-input.search"}}
+      {{on-click-outside this.hideCurrencySelector}}
+    >
+      <:option as |currency|>
+        <div class="fx-row fx-xalign-center {{if (eq this.selectedCurrency currency) 'row-selected'}}">
+          <span class="symbol text-color-default-light margin-left-xx-sm">{{currency.symbol}}</span>
+          <span class="text-color-default-light margin-left-xx-sm fx-1">{{currency.code}}</span>
+          {{#if (eq this.selectedCurrency currency)}}
+            <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
+          {{/if}}
+        </div>
+      </:option>
+    </OSS::InfiniteSelect>
+  {{/if}}
+</div>
