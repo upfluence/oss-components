@@ -10,7 +10,7 @@
     class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
   >
     <div class="font-size-md font-weight-semibold">
-      Button
+      Smart button
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-start">
       <div class="fx-col fx-gap-px-12">
@@ -149,6 +149,57 @@
         />
       </div>
     </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Smart immersive currency input
+    </div>
+    {{!-- <OSS::NumberInput @value={{this.currencyValue}} @onChange={{this.onValueInputChange}} />--}}
+
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <OSS::Smart::Immersive::CurrencyInput
+        @currency={{this.currency}}
+        @value={{this.currencyValue}}
+        @onChange={{this.onCurrencyInputChange}}
+        @allowCurrencyUpdate={{true}}
+        @placeholder="Placeholder"
+        @loading={{this.toggleInputLoadingValue}}
+      />
+      <OSS::Smart::Immersive::CurrencyInput
+        @currency={{this.currency}}
+        @value={{this.currencyValue}}
+        @onChange={{this.onCurrencyInputChange}}
+        @allowedCurrencies={{this.allowedCurrencies}}
+        @allowCurrencyUpdate={{true}}
+        @placeholder="Placeholder"
+        @loading={{this.toggleInputLoadingValue}}
+      />
+      <OSS::Smart::Immersive::CurrencyInput
+        @currency={{this.currency}}
+        @onChange={{this.onCurrencyInputChange}}
+        @allowCurrencyUpdate={{true}}
+        @placeholder="Placeholder"
+        @hasError={{this.hasError}}
+      />
+      <OSS::Smart::Immersive::CurrencyInput
+        @currency={{this.currency}}
+        @value={{this.currencyValue}}
+        @onChange={{this.onCurrencyInputChange}}
+        @allowedCurrencies={{this.allowedCurrencies}}
+        @allowCurrencyUpdate={{true}}
+        @hasError={{this.hasError}}
+      />
+    </div>
+    <span class="fx-row fx-gap-px-6">Toggle the @loading argument =>
+      <OSS::ToggleSwitch
+        @label="Toggle"
+        @value={{this.toggleInputLoadingValue}}
+        @onChange={{this.toggleInputLoading}}
+      /></span>
+
   </div>
 
 </div>
