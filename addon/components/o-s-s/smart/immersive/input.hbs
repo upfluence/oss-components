@@ -7,25 +7,22 @@
 >
   <:input>
     {{#if @loading}}
-      <div class="upf-input loading-placeholder smart-input__animated-text smart-input-wrapper fx-row fx-xalign-center">
-        <span class="rainbow rainbow_text_animated">{{@placeholder}}</span>
+      <div class="upf-input loading-placeholder fx-row fx-xalign-center">
+        <span class="smart_text_animated">{{@placeholder}}</span>
       </div>
     {{else}}
-      <div style="width: min-content;">
-        <span
-          style="height: 0px; display: block; padding: 0 13px; visibility: hidden; width: fit-content; white-space: nowrap; white-space-collapse: preserve;"
-        >{{or @value @placeholder}}</span>
+      <div class="smart-immersive-input-sizer">
+        <span class="smart-immersive-span-placeholder">{{or @value @placeholder}}</span>
         <Input
           @value={{@value}}
           @type={{this.type}}
           placeholder={{this.placeholder}}
           disabled={{@disabled}}
-          class="test"
+          class="smart-immersive--input"
           aria-label="input"
-          {{on "keyup" (fn this.onChange @value)}}
+          {{on "input" (fn this.onChange @value)}}
         />
       </div>
-
     {{/if}}
   </:input>
 </OSS::InputContainer>
