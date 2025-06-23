@@ -7,7 +7,7 @@ export type FeedbackMessage = {
   value: string;
 };
 
-interface OSSInputContainerArgs {
+export interface OSSInputContainerArgs {
   value?: string;
   disabled?: boolean;
   feedbackMessage?: FeedbackMessage;
@@ -18,7 +18,7 @@ interface OSSInputContainerArgs {
   onChange?(value: string): void;
 }
 
-export default class OSSInputContainer extends Component<OSSInputContainerArgs> {
+export default class OSSInputContainer<T extends OSSInputContainerArgs> extends Component<T> {
   get feedbackMessage(): FeedbackMessage | undefined {
     if (this.args.feedbackMessage && ['error', 'warning', 'success'].includes(this.args.feedbackMessage.type)) {
       return this.args.feedbackMessage;
