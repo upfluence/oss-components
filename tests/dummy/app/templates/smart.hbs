@@ -199,6 +199,19 @@
       <div class="fx-row fx-1 fx-gap-px-10">
         <OSS::Smart::Skeleton @height="40" @width="100" @multiple="3" @direction="row" @randomize="true" />
       </div>
+
+    </div>
+
+    <div class="fx-col fx-1 fx-gap-px-10">
+      <div class="font-size-md fx-row fx-gap-px-12 fx-xalign-center font-weight-semibold">
+        <span>Smart feedback : loading {{this.smartFeedback}}</span>
+        <OSS::ToggleSwitch @value={{this.smartFeedback}} @onChange={{this.toggleSmartFeedbackLoading}} />
+      </div>
+      <OSS::Smart::Feedback @loading={{this.smartFeedback}} @contentArray={{this.contentArray}}>
+        <:blob>
+          <OSS::Avatar @initials={{concat "+" "123"}} @size={{"sm"}} />
+        </:blob>
+      </OSS::Smart::Feedback>
     </div>
   </div>
 
