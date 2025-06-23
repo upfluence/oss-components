@@ -1,0 +1,81 @@
+.oss-smart-input-container {
+  width: 100%;
+
+  .oss-input-container {
+    width: 100%;
+    position: relative;
+  }
+
+  .smart-input__animated-text {
+    .smart-input__animated-text--normal.text {
+      color: transparent;
+      width: 100%;
+    }
+
+    .upf-input {
+      position: relative;
+      width: 100%;
+      border: 1px solid var(--color-gray-100);
+    }
+
+    .smart-input__animated-text--fill.fill-text {
+      justify-content: start;
+      word-break: keep-all;
+      width: 0;
+      background: linear-gradient(
+        276.39deg,
+        #d8dae4 -27.68%,
+        #d0d9ff -5.84%,
+        #fac6ff 8.68%,
+        rgba(255, 255, 255, 0.3) 17.85%,
+        rgba(208, 217, 255, 0.8) 28.01%,
+        rgba(250, 198, 255, 0.7) 37.18%
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: 0.5s width ease-in-out;
+    }
+
+    &.smart-input-wrapper {
+      position: relative;
+      border: none;
+      min-width: 50px;
+    }
+
+    .smart-input__animated-text--normal {
+      .font-weight-semibold;
+      color: var(--color-gray-400);
+      padding: 5px var(--spacing-px-6);
+    }
+
+    .smart-input__animated-text--fill {
+      width: 100%;
+      padding-top: 8px;
+      animation: rainbow_animation 4s linear infinite;
+      justify-content: start;
+      overflow: hidden;
+      word-break: keep-all;
+      width: 0;
+      max-width: fit-content;
+      height: 100%;
+      background: linear-gradient(
+        135deg,
+        #d8dae4 -27.68%,
+        #d0d9ff -5.84%,
+        #fac6ff 8.68%,
+        rgba(255, 255, 255, 0.3) 17.85%,
+        rgba(208, 217, 255, 0.8) 28.01%,
+        rgba(250, 198, 255, 0.7) 37.18%
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      transition: 0.5s width ease-in-out;
+
+      animation: animate-letters 2s linear infinite;
+    }
+  }
+}
