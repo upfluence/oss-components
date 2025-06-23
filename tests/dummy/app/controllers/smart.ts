@@ -6,6 +6,18 @@ export default class Smart extends Controller {
   @tracked selectedToggle: string = 'first';
   @tracked selectedToggleTwo: string = 'second';
   @tracked toggleInputLoadingValue: boolean = false;
+  @tracked smartFeedback: boolean = false;
+  @tracked contentArray: string[] = [
+    'This is the first content',
+    'This is the second content',
+    'This is the third content',
+    'This is the first content',
+    'This is the second content',
+    'This is the third content',
+    'This is the first content',
+    'This is the second content',
+    'This is the third content'
+  ];
   @tracked toggles: { value: string; label: string }[] = [
     {
       value: 'first',
@@ -38,5 +50,9 @@ export default class Smart extends Controller {
   @action
   toggleInputLoading(): void {
     this.toggleInputLoadingValue = !this.toggleInputLoadingValue;
+  }
+  @action
+  toggleSmartFeedbackLoading(): void {
+    this.smartFeedback = !this.smartFeedback;
   }
 }
