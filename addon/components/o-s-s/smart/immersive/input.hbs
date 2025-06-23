@@ -1,0 +1,31 @@
+<OSS::InputContainer
+  @feedbackMessage={{@feedbackMessage}}
+  class={{this.computedClasses}}
+  {{did-insert this.registerElement}}
+  {{did-update this.runAnimationOnLoadEnd @loading}}
+  ...attributes
+>
+  <:input>
+    {{#if @loading}}
+      <div class="upf-input loading-placeholder smart-input__animated-text smart-input-wrapper fx-row fx-xalign-center">
+        <span class="rainbow rainbow_text_animated">{{@placeholder}}</span>
+      </div>
+    {{else}}
+      <div style="width: min-content;">
+        <span
+          style="height: 0px; display: block; padding: 0 13px; visibility: hidden; width: fit-content; white-space: nowrap; white-space-collapse: preserve;"
+        >{{or @value @placeholder}}</span>
+        <Input
+          @value={{@value}}
+          @type={{this.type}}
+          placeholder={{this.placeholder}}
+          disabled={{@disabled}}
+          class="test"
+          aria-label="input"
+          {{on "keyup" (fn this.onChange @value)}}
+        />
+      </div>
+
+    {{/if}}
+  </:input>
+</OSS::InputContainer>
