@@ -9,18 +9,30 @@
   <div
     class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
   >
-    {{this.loading}}
+    <div class="font-size-md font-weight-semibold">
+      Smart input immersive
+    </div>
+    <div class="fx-col fx-gap-px-24 fx-xalign-center">
+      <OSS::Button @label="Toggle loading" {{on "click" this.toggleLoading}} />
+      <OSS::Smart::Immersive::Input @placeholder="Placeholder" @value={{this.value}} @loading={{this.loading}} />
+      <OSS::Smart::Immersive::Input
+        @placeholder="Placeholder"
+        @value={{this.value}}
+        @loading={{this.loading}}
+        @hasError={{true}}
+      />
+      <OSS::Smart::Immersive::Input
+        @placeholder="Type your name or pseudo"
+        @value={{this.value}}
+        @loading={{this.loading}}
+        @type="number"
+      />
+    </div>
+  </div>
 
-    <OSS::Button @label="Toggle loading" {{on "click" this.toggleLoading}} />
-    <OSS::Smart::Immersive::Input @placeholder="Placeholder" @value={{this.value}} @loading={{true}} />
-    <OSS::Smart::Immersive::Input @placeholder="Placeholder" @value={{this.value}} @hasError={{true}} />
-    <OSS::Smart::Immersive::Input
-      @placeholder="Type your name or pseudo"
-      @value={{this.value}}
-      @loading={{this.loading}}
-    />
-    <OSS::InputContainer @placeholder="Placeholder" @value={{this.value}} @type="number" />
-
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
     <div class="font-size-md font-weight-semibold">
       Button
     </div>
