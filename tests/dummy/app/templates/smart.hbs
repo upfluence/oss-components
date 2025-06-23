@@ -202,4 +202,33 @@
     </div>
   </div>
 
+  <div class="fx-row fx-gap-px-12 font-size-md font-weight-semibold">
+    Smart Inputs
+    <OSS::ToggleSwitch @label="Toggle" @value={{this.toggleInputLoadingValue}} @onChange={{this.toggleInputLoading}} />
+  </div>
+  <div class="fx-row fx-gap-px-24 fx-xalign-center">
+    <OSS::Smart::Input
+      @value={{null}}
+      @label="Label"
+      @placeholder="Placeholder"
+      @loading={{this.toggleInputLoadingValue}}
+      @generating={{this.toggleInputGeneratingValue}}
+    />
+
+    <OSS::Smart::Input
+      @value={{null}}
+      @label="Label"
+      @placeholder="Placeholder"
+      @loading={{this.toggleInputLoadingValue}}
+      @generating={{this.toggleInputGeneratingValue}}
+    />
+
+    <OSS::Smart::Input
+      @value={{"value"}}
+      @label="Label"
+      @placeholder="Placeholder"
+      @loading={{this.toggleInputLoadingValue}}
+      @generating={{this.toggleInputGeneratingValue}}
+    />
+  </div>
 </div>
