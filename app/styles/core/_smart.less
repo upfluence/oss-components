@@ -1,3 +1,158 @@
 :root {
   --border-radius-xl: 999px;
 }
+
+@keyframes rainbow_animation {
+  0% {
+    background-position: 100% 0;
+  }
+
+  100% {
+    background-position: 0 0%;
+  }
+}
+
+// add `width: fit-content on .smart-immersive-input-container`
+// looks like there is a .33px height issue with the animation
+
+// still todo:
+// - tests
+// - dynamic component width
+
+.smart-immersive-input-container {
+  width: fit-content;
+
+  &.oss-input-container {
+    .test,
+    .loading-placeholder {
+      height: 32px;
+      min-width: 50px;
+      border: 1px dashed var(--color-gray-400);
+
+      &:focus,
+      &:active,
+      &:hover {
+        border: 1px dashed var(--color-gray-600);
+        background-color: transparent;
+        box-shadow: none;
+      }
+    }
+
+    .upf-input.loading-placeholder {
+      padding: 0px;
+    }
+
+    .loading-placeholder {
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      position: relative;
+    }
+
+    .rainbow_text_animated {
+      // .font-weight-semibold;
+
+      background: linear-gradient(
+        129deg,
+        var(--color-gray-400) 19%,
+        rgba(216, 218, 228, 1) 24%,
+        rgba(208, 217, 255, 1) 31%,
+        rgba(250, 198, 255, 1) 42%,
+        rgba(255, 255, 255, 0.3) 61%,
+        rgba(208, 217, 255, 0.8) 64%,
+        rgba(250, 198, 255, 0.7) 69%,
+        var(--color-gray-400) 75%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: rainbow_animation 4s ease-in-out infinite;
+      background-size: 600% 100%;
+      padding: 6px 12px;
+    }
+  }
+
+  &.oss-input-container.smart-rotating-gradient {
+    .test {
+      border: 1px dashed transparent;
+    }
+  }
+
+  &--filled {
+    &.oss-input-container {
+      .test {
+        color: var(--color-primary-400);
+        border-color: var(--color-primary-400);
+
+        &:focus,
+        &:active {
+          border: 1px dashed var(--color-primary-400);
+        }
+
+        &:hover:not(:focus, :active) {
+          color: var(--color-primary-300);
+          border: 1px dashed var(--color-primary-300);
+        }
+      }
+    }
+  }
+  &--warning {
+    &.oss-input-container {
+      .test {
+        border-color: var(--color-warning-500);
+
+        &:hover:not(:focus, :active),
+        &:focus,
+        &:active {
+          border: 1px dashed var(--color-warning-500);
+        }
+      }
+    }
+  }
+
+  &--success {
+    &.oss-input-container {
+      .test {
+        border-color: var(--color-success-500);
+
+        &:hover:not(:focus, :active),
+        &:focus,
+        &:active {
+          border: 1px dashed var(--color-success-500);
+        }
+      }
+    }
+  }
+
+  &--errored,
+  &--error {
+    &.oss-input-container {
+      .test {
+        border-color: var(--color-error-500);
+
+        &:hover:not(:focus, :active),
+        &:focus,
+        &:active {
+          border: 1px dashed var(--color-error-500);
+        }
+      }
+    }
+  }
+
+  &.oss-input-container {
+    &--errored .yielded-input input:not(:disabled, .disabled):focus,
+    &--error .yielded-input input:not(:disabled, .disabled):focus,
+    &--warning .yielded-input input:not(:disabled, .disabled):focus,
+    &--success .yielded-input input:not(:disabled, .disabled):focus {
+      box-shadow: none;
+    }
+
+    &--errored .yielded-input input:not(:disabled, .disabled):hover,
+    &--error .yielded-input input:not(:disabled, .disabled):hover,
+    &--warning .yielded-input input:not(:disabled, .disabled):hover,
+    &--success .yielded-input input:not(:disabled, .disabled):hover {
+      background: transparent;
+    }
+  }
+}
