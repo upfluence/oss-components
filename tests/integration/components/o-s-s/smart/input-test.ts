@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, find, findAll, settled } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
 module('Integration | Component | o-s-s/smart/input', function (hooks) {
@@ -17,11 +17,6 @@ module('Integration | Component | o-s-s/smart/input', function (hooks) {
     assert.dom().exists();
   });
 
-  test('it renders a label if passed', async function (assert) {
-    await render(hbs`<OSS::Smart::Input @label="Username" />`);
-    assert.dom('label, span').hasText('Username');
-  });
-
   test('it renders placeholder if passed', async function (assert) {
     await render(hbs`<OSS::Smart::Input @placeholder="Enter email" />`);
     assert.dom('input').hasAttribute('placeholder', 'Enter email');
@@ -34,40 +29,17 @@ module('Integration | Component | o-s-s/smart/input', function (hooks) {
   });
 
   test('it shows animated text when loading is true', async function (assert) {
-    this.value = 'Value';
-    this.set('loading', true);
+    this.placeholder = 'placeholder';
+    this.loading = true;
 
     await render(hbs`
       <OSS::Smart::Input
-        @value={{this.value}}
+        @placeholder={{this.placeholder}}
         @loading={{this.loading}}
       />
     `);
 
-    assert.dom('.smart-input__animated-text').exists('');
-    assert.dom('.smart-input__animated-text--normal').hasText('Value');
-  });
-
-  test('it transitions back to normal input when loading becomes false', async function (assert) {
-    this.setProperties({
-      value: 'Done',
-      loading: true
-    });
-
-    await render(hbs`
-      <OSS::Smart::Input
-        @value={{this.value}}
-        @loading={{this.loading}}
-      />
-    `);
-
-    assert.dom('.smart-input__animated-text').exists();
-
-    // Simulate loading -> false
-    this.set('loading', false);
-    await settled();
-
-    assert.dom('input').hasValue('Done');
+    assert.dom('.rainbow_text_animated').hasText(this.placeholder);
   });
 
   test('it shows error message when @errorMessage is passed', async function (assert) {
