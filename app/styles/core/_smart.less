@@ -2,7 +2,7 @@
   --border-radius-xl: 999px;
 }
 
-@keyframes rainbow_animation {
+@keyframes smart_loading_text_animation {
   0% {
     background-position: 100% 0;
   }
@@ -12,18 +12,28 @@
   }
 }
 
-// add `width: fit-content on .smart-immersive-input-container`
-// looks like there is a .33px height issue with the animation
-
-// still todo:
-// - tests
-// - dynamic component width
-
 .smart-immersive-input-container {
   width: fit-content;
 
+  .smart-immersive-input-sizer {
+    width: min-content;
+  }
+
+  .smart-immersive-span-placeholder {
+    height: 0px;
+    display: block;
+    padding: 0 calc(var(--spacing-px-12) + 1px);
+    visibility: hidden;
+    width: fit-content;
+    white-space: pre;
+
+    &:has(+ input[type='number']) {
+      padding: 0 calc(var(--spacing-px-24) + 1px);
+    }
+  }
+
   &.oss-input-container {
-    .test,
+    .smart-immersive--input,
     .loading-placeholder {
       height: 32px;
       min-width: 50px;
@@ -38,6 +48,11 @@
       }
     }
 
+    .smart-immersive--input[type='number']::-webkit-outer-spin-button,
+    .smart-immersive--input[type='number']::-webkit-inner-spin-button {
+      color: red;
+      background-color: rebeccapurple;
+    }
     .upf-input.loading-placeholder {
       padding: 0px;
     }
@@ -50,38 +65,37 @@
       position: relative;
     }
 
-    .rainbow_text_animated {
-      // .font-weight-semibold;
-
+    .smart_text_animated {
+      background: var(--color-gray-400);
       background: linear-gradient(
-        129deg,
-        var(--color-gray-400) 19%,
-        rgba(216, 218, 228, 1) 24%,
-        rgba(208, 217, 255, 1) 31%,
-        rgba(250, 198, 255, 1) 42%,
-        rgba(255, 255, 255, 0.3) 61%,
-        rgba(208, 217, 255, 0.8) 64%,
-        rgba(250, 198, 255, 0.7) 69%,
-        var(--color-gray-400) 75%
+        130deg,
+        var(--color-gray-400) 18%,
+        var(--color-gray-300) 25%,
+        rgba(250, 198, 255, 1) 56%,
+        var(--color-primary-100) 62%,
+        var(--color-white) 66%,
+        rgba(250, 198, 255, 0.58) 68%,
+        var(--color-gray-300) 73%,
+        var(--color-gray-400) 85%
       );
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      animation: rainbow_animation 4s ease-in-out infinite;
+      animation: smart_loading_text_animation 3.5s ease-in-out infinite;
       background-size: 600% 100%;
       padding: 6px 12px;
     }
   }
 
   &.oss-input-container.smart-rotating-gradient {
-    .test {
+    .smart-immersive--input {
       border: 1px dashed transparent;
     }
   }
 
   &--filled {
     &.oss-input-container {
-      .test {
+      .smart-immersive--input {
         color: var(--color-primary-400);
         border-color: var(--color-primary-400);
 
@@ -99,7 +113,7 @@
   }
   &--warning {
     &.oss-input-container {
-      .test {
+      .smart-immersive--input {
         border-color: var(--color-warning-500);
 
         &:hover:not(:focus, :active),
@@ -113,7 +127,7 @@
 
   &--success {
     &.oss-input-container {
-      .test {
+      .smart-immersive--input {
         border-color: var(--color-success-500);
 
         &:hover:not(:focus, :active),
@@ -128,7 +142,7 @@
   &--errored,
   &--error {
     &.oss-input-container {
-      .test {
+      .smart-immersive--input {
         border-color: var(--color-error-500);
 
         &:hover:not(:focus, :active),

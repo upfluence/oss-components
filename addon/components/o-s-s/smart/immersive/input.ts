@@ -12,7 +12,6 @@ interface OSSSmartImmersiveInputComponentSignature extends OSSInputContainerArgs
 
 export default class OSSSmartImmersiveInputComponent extends OSSInputContainer<OSSSmartImmersiveInputComponentSignature> {
   @tracked declare element: HTMLElement;
-  // ADD assertions
 
   get placeholder(): string {
     return this.args.placeholder ?? '';
@@ -34,9 +33,10 @@ export default class OSSSmartImmersiveInputComponent extends OSSInputContainer<O
   }
 
   @action
-  onChange(value: string): void {
+  onChange(_: string, event: Event): void {
     if (this.args.onChange) {
-      this.args.onChange(value);
+      const target = event.target as HTMLInputElement;
+      this.args.onChange(target.value);
     }
   }
 
