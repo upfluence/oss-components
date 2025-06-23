@@ -16,9 +16,22 @@ export default class Smart extends Controller {
     }
   ];
 
+  @tracked declare value: string;
+  @tracked loading: boolean = false;
+
   @action
   triggerSelection(value: string): void {
     console.log('selected toggle value : ', value);
     this.selectedToggle = value;
+  }
+
+  @action
+  toggleLoading(): void {
+    this.loading = !this.loading;
+
+    if (this.loading === false) {
+      this.value = 'short res';
+      // this.value = 'Data loaded from a very smart IA';
+    }
   }
 }
