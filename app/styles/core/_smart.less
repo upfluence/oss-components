@@ -1,3 +1,36 @@
 :root {
   --border-radius-xl: 999px;
 }
+
+@import '../atoms/smart-input.less';
+
+.rainbow_text_animated {
+  // .font-weight-semibold;
+
+  background: linear-gradient(
+    129deg,
+    var(--color-gray-400) 19%,
+    rgba(216, 218, 228, 1) 24%,
+    rgba(208, 217, 255, 1) 31%,
+    rgba(250, 198, 255, 1) 42%,
+    rgba(255, 255, 255, 0.3) 61%,
+    rgba(208, 217, 255, 0.8) 64%,
+    rgba(250, 198, 255, 0.7) 69%,
+    var(--color-gray-400) 75%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: rainbow_animation 4s ease-in-out infinite;
+  background-size: 600% 100%;
+}
+
+@keyframes rainbow_animation {
+  0% {
+    background-position: 100% 0;
+  }
+
+  100% {
+    background-position: 0 0%;
+  }
+}

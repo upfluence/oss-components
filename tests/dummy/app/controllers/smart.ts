@@ -5,6 +5,7 @@ import { tracked } from '@glimmer/tracking';
 export default class Smart extends Controller {
   @tracked selectedToggle: string = 'first';
   @tracked selectedToggleTwo: string = 'second';
+  @tracked toggleInputLoadingValue: boolean = false;
   @tracked toggles: { value: string; label: string }[] = [
     {
       value: 'first',
@@ -32,5 +33,10 @@ export default class Smart extends Controller {
     if (this.loading === false) {
       this.value = 'Data loaded from a very smart backend';
     }
+  }
+
+  @action
+  toggleInputLoading(): void {
+    this.toggleInputLoadingValue = !this.toggleInputLoadingValue;
   }
 }
