@@ -18,14 +18,6 @@ export default class OSSSmartInput extends OSSInputContainer<SmartInputArgs> {
     super(owner, args);
   }
 
-  get hasGeneratedValue(): boolean {
-    return !this.args.loading && !isEmpty(this.args.value);
-  }
-
-  get hasValue(): boolean {
-    return !isEmpty(this.args.value);
-  }
-
   @action
   handleUpdate(): void {
     if (!this.args.loading && !isEmpty(this.args.value)) {
