@@ -30,8 +30,7 @@ export default class Smart extends Controller {
     this.loading = !this.loading;
 
     if (this.loading === false) {
-      this.value = 'short res';
-      // this.value = 'Data loaded from a very smart IA';
+      this.value = 'Data loaded from a very smart backend';
     }
   }
 }
