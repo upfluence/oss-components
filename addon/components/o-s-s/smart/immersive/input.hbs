@@ -1,0 +1,28 @@
+<OSS::InputContainer
+  @feedbackMessage={{@feedbackMessage}}
+  class={{this.computedClasses}}
+  {{did-insert this.registerElement}}
+  {{did-update this.runAnimationOnLoadEnd @loading}}
+  ...attributes
+>
+  <:input>
+    {{#if @loading}}
+      <div class="upf-input loading-placeholder fx-row fx-xalign-center">
+        <span class="smart_text_animated">{{@placeholder}}</span>
+      </div>
+    {{else}}
+      <div class="smart-immersive-input-sizer">
+        <span class="smart-immersive-span-placeholder">{{or @value @placeholder}}</span>
+        <Input
+          @value={{@value}}
+          @type={{this.type}}
+          placeholder={{this.placeholder}}
+          disabled={{@disabled}}
+          class="smart-immersive--input"
+          aria-label="input"
+          {{on "input" (fn this.onChange @value)}}
+        />
+      </div>
+    {{/if}}
+  </:input>
+</OSS::InputContainer>
