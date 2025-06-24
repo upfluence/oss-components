@@ -6,21 +6,58 @@ import { hbs } from 'ember-cli-htmlbars';
 module('Integration | Component | o-s-s/smart/feedback', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function (val) { ... });
-
+  test('it renders the component container', async function (assert) {
     await render(hbs`<OSS::Smart::Feedback />`);
+    assert.dom('.oss-smart__feedback').exists();
+  });
 
-    assert.dom().hasText('');
+  test('it shows loading skeletons when @loading is true', async function (assert) {
+    this.loading = true;
 
-    // Template block usage:
+    await render(hbs`<OSS::Smart::Feedback @loading={{this.loading}} />`);
+
+    assert.dom('.upf-smart-skeleton-effect').exists({ count: 2 });
+  });
+
+  test('it renders content string when @loading is false and @contentString is provided', async function (assert) {
+    this.loading = false;
+    this.contentString = 'Test feedback message';
+
+    await render(hbs`
+      <OSS::Smart::Feedback 
+        @loading={{this.loading}} 
+        @contentString={{this.contentString}} 
+      />
+    `);
+
+    assert.dom('.oss-smart__generated').exists();
+    assert.dom('.oss-smart__feedback__content__text').hasText('Test feedback message');
+  });
+
+  test('it renders content array when @loading is false and @contentArray is provided', async function (assert) {
+    this.loading = false;
+    this.contentArray = ['First line', ' Second line'];
+
+    await render(hbs`
+      <OSS::Smart::Feedback 
+        @loading={{this.loading}} 
+        @contentArray={{this.contentArray}} 
+      />
+    `);
+
+    assert.dom('.oss-smart__generated').exists();
+    assert.dom('.oss-smart__feedback__content__text').hasText('First line Second line');
+  });
+
+  test('it yields the icon named-block content', async function (assert) {
     await render(hbs`
       <OSS::Smart::Feedback>
-        template block text
+        <:icon>
+          <div class="test-blob">Blob Content</div>
+        </:icon>
       </OSS::Smart::Feedback>
     `);
 
-    assert.dom().hasText('template block text');
+    assert.dom('.test-blob').hasText('Blob Content');
   });
 });
