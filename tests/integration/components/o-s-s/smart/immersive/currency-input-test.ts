@@ -30,12 +30,16 @@ module('Integration | Component | o-s-s/smart/immersive/currency-input', functio
 
   test('It displays a blue border around the component if @value is truthy', async function (assert) {
     await render(hbs`<OSS::Smart::Immersive::CurrencyInput @value="12345" @onChange={{this.onChange}} />`);
-    assert.dom('.smart-immersive-currency-input').hasStyle({ borderColor: 'rgb(83, 94, 252)' });
+    assert
+      .dom('.smart-immersive-currency-input-container')
+      .hasClass('smart-immersive-currency-input-container--filled');
   });
 
   test('It displays a red border around the component if @hasError exists', async function (assert) {
     await render(hbs`<OSS::Smart::Immersive::CurrencyInput @onChange={{this.onChange}} @hasError={{true}} />`);
-    assert.dom('.smart-immersive-currency-input').hasStyle({ borderColor: 'rgb(239, 68, 68)' });
+    assert
+      .dom('.smart-immersive-currency-input-container')
+      .hasClass('smart-immersive-currency-input-container--errored');
   });
 
   module('Currency selector', () => {
