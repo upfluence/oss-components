@@ -124,29 +124,35 @@
   }
 }
 
-////////////////////////////////////////////
-
-.immersive-currency-input-container {
+.smart-immersive-currency-input-container {
   .currency-input-container;
+  width: fit-content;
   flex: none;
-  // width: fit-content;
 
-  .immersive-currency-input {
+  &.smart-rotating-gradient {
+    .smart-immersive-currency-input {
+      border: 1px dashed transparent;
+    }
+  }
+
+  & * {
+    .font-weight-semibold;
+  }
+
+  .smart-immersive-currency-input {
     .currency-input;
-
+    width: fit-content;
     height: 32px;
-    border: 1.5px dashed var(--color-gray-400);
+    border: 1px dashed var(--color-gray-400);
+    border-radius: var(--border-radius-sm);
+    background-color: var(--color-white);
 
-    .input-container {
-      min-width: 50px;
-      // width: fit-content;
-
-      input {
-        .font-weight-semibold;
-        padding: 5px var(--spacing-px-6);
-        color: var(--color-gray-400);
-        flex: none;
-        field-sizing: content;
+    &:not(.disabled, :disabled) {
+      &:hover,
+      &:focus-within {
+        border: 1px dashed var(--color-gray-500);
+        background-color: transparent;
+        box-shadow: none;
       }
     }
 
@@ -154,26 +160,102 @@
       gap: var(--spacing-px-6);
       padding: 10px;
       width: 50px;
+      height: 100%;
       border-right: none;
       color: var(--color-gray-500);
     }
 
-    &:not(.disabled, :disabled) {
-      &:hover,
-      &:focus-within {
-        border: 1.5px dashed var(--color-gray-500);
-        // background-color: transparent;
-        box-shadow: none;
+    .input-container {
+      min-width: 50px;
+      width: min-content;
+
+      .hidden-span {
+        height: 0px;
+        display: block;
+        padding: 0 6px;
+        visibility: hidden;
+        width: fit-content;
+        white-space: pre;
+      }
+
+      .displayed-input {
+        width: 100%;
+        padding: 5px 6px;
+        color: var(--color-gray-400);
+
+        &::placeholder {
+          color: var(--color-gray-400);
+        }
+      }
+    }
+
+    .displayed-input,
+    .loading-placeholder {
+      height: 32px;
+      min-width: 50px;
+      border: 1px transparent;
+    }
+
+    .loading-placeholder {
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      position: relative;
+      padding: 0;
+
+      .rainbow-text-animated {
+        .font-weight-semibold;
+        background: linear-gradient(
+          129deg,
+          var(--color-gray-400) 19%,
+          rgba(216, 218, 228, 1) 24%,
+          rgba(208, 217, 255, 1) 31%,
+          rgba(250, 198, 255, 1) 42%,
+          rgba(255, 255, 255, 0.3) 61%,
+          rgba(208, 217, 255, 0.8) 64%,
+          rgba(250, 198, 255, 0.7) 69%,
+          var(--color-gray-400) 75%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: rainbow_animation 4s ease-in-out infinite;
+        background-size: 600% 100%;
+        padding: 5px 6px;
+      }
+    }
+
+    @keyframes rainbow_animation {
+      0% {
+        background-position: 100% 0;
+      }
+
+      100% {
+        background-position: 0 0%;
+      }
+    }
+  }
+
+  &--errored {
+    .smart-immersive-currency-input {
+      .border-color-error;
+
+      &:not(.disabled, :disabled) {
+        &:focus-within,
+        &:hover {
+          .border-color-error;
+        }
       }
     }
   }
 
   &--filled {
-    .immersive-currency-input {
-      border: 1.5px dashed var(--color-primary-400);
+    .smart-immersive-currency-input {
+      border-color: var(--color-primary-400);
 
-      input,
-      .currency-selector {
+      .currency-selector,
+      .input-container .displayed-input {
         transition: all 500ms ease-in-out;
         color: var(--color-primary-400);
       }
@@ -183,207 +265,20 @@
       }
 
       &:not(.disabled, :disabled) {
-        &:focus-within {
-          border: 1.5px dashed var(--color-primary-400);
-
-          input,
-          .currency-selector {
-            color: var(--color-primary-400);
-          }
-        }
-
-        &:hover {
-          border: 1.5px dashed var(--color-primary-300);
-
-          input,
-          .currency-selector {
-            color: var(--color-primary-300);
-          }
-        }
-      }
-    }
-  }
-
-  &--errored {
-    .immersive-currency-input {
-      .border-color-error;
-
-      input {
-        color: var(--color-gray-400);
-      }
-
-      .currency-selector {
-        color: var(--color-gray-500);
-      }
-
-      &:not(.disabled, :disabled) {
         &:focus-within,
-        &:hover {
-          border-color: var(--color-error-500);
-
-          input {
-            color: var(--color-gray-400);
-          }
-
-          .currency-selector {
-            color: var(--color-gray-500);
-          }
+        &:active {
+          border-color: var(--color-primary-400);
         }
       }
-    }
-  }
 
-  /////////////////////////////////////////////
+      &:hover:not(:focus, :active) {
+        border: 1px dashed var(--color-primary-300);
 
-  .smart-input__animated-text {
-    &.smart-input-wrapper {
-      position: relative;
-      border: none;
-      min-width: 50px;
-    }
-
-    .smart-input__animated-text--normal {
-      .font-weight-semibold;
-      color: var(--color-gray-400);
-      padding: 5px var(--spacing-px-6);
-    }
-
-    .smart-input__animated-text--fill {
-      display: grid;
-      justify-content: start;
-      position: absolute;
-      top: 0;
-      left: 0;
-      overflow: hidden;
-      word-break: keep-all;
-      width: 0;
-      max-width: fit-content;
-      height: 100%;
-      background: linear-gradient(
-        276.39deg,
-        #d8dae4 -27.68%,
-        #d0d9ff -5.84%,
-        #fac6ff 8.68%,
-        rgba(255, 255, 255, 0.3) 17.85%,
-        rgba(208, 217, 255, 0.8) 28.01%,
-        rgba(250, 198, 255, 0.7) 37.18%
-      );
-
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      transition: 0.5s width ease-in-out;
-
-      animation: animate-letters 2s linear infinite;
-
-      .fill-wrapper {
-        .font-weight-semibold;
-        padding: 5px var(--spacing-px-6);
+        .currency-selector,
+        .displayed-input {
+          color: var(--color-primary-300);
+        }
       }
-    }
-  }
-
-  .smart-currency__input {
-    position: relative;
-    display: flex;
-    align-items: center;
-    // border-radius: 30px;
-    height: 30px;
-    min-width: 50px;
-    overflow: hidden;
-    // max-width: 0;
-    border: 1px solid transparent;
-    font-weight: var(--font-weight-semibold);
-    // color: var(--color-white);
-    transition: all 250ms ease-in-out;
-
-    span {
-      display: inline-block;
-      visibility: hidden;
-      white-space: pre;
-      max-width: 200px;
-    }
-
-    input {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 5px 6px;
-      max-width: 200px;
-      min-width: 1px;
-      text-align: start;
-      outline: none;
-      border: none;
-      padding: 0;
-      caret-color: var(--color-gray-400);
-      // height: 100%;
-    }
-
-    i.fa-arrow-turn-down-left {
-      margin-left: var(--spacing-px-6);
-    }
-
-    .keyword-rule-filter-hidden-container {
-      width: var(--smart-currency-input-width, 100px);
-    }
-
-    .keyword-input-empty-state {
-      display: none;
-      overflow: hidden;
-      white-space: nowrap;
-    }
-
-    &--focus {
-      max-width: 244px;
-      border: 1px solid var(--color-border-default);
-      padding: 0 var(--spacing-px-12);
-      color: var(--color-gray-400);
-      transition: all 250ms ease-in-out;
-
-      input {
-        width: var(--smart-currency-input-width, 100px);
-      }
-
-      .keyword-input-empty-state {
-        display: inline;
-        max-width: 0;
-        transition: max-width 250ms ease-in-out, color 0s;
-      }
-    }
-
-    &--empty {
-      max-width: 244px;
-      padding: 0 var(--spacing-px-12);
-      border: 1px dashed var(--color-border-default);
-      color: var(--color-gray-300);
-      transition: all 250ms ease-in-out;
-
-      .keyword-input-empty-state {
-        display: inline;
-        max-width: 80px;
-        transition: max-width 250ms ease-in-out, color 0s;
-      }
-    }
-  }
-
-  @keyframes animate-letters {
-    0% {
-      opacity: 0;
-      width: 0%;
-    }
-    10% {
-      opacity: 1;
-      width: 0%;
-    }
-    80% {
-      opacity: 1;
-      width: 100%;
-    }
-    100% {
-      opacity: 0;
-      width: 100%;
     }
   }
 }
