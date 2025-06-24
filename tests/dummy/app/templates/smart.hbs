@@ -260,39 +260,22 @@
         @onChange={{this.onCurrencyInputChange}}
         @allowCurrencyUpdate={{true}}
         @placeholder="Placeholder"
-        @loading={{this.toggleCurrencyInputLoadingValue}}
+        @loading={{this.currencyInputLoading}}
       />
       <OSS::Smart::Immersive::CurrencyInput
         @currency={{this.currency}}
-        @value={{this.currencyValue}}
-        @onChange={{this.onCurrencyInputChange}}
-        @allowedCurrencies={{this.allowedCurrencies}}
-        @allowCurrencyUpdate={{true}}
-        @placeholder="Placeholder"
-        @loading={{this.toggleCurrencyInputLoadingValue}}
-      />
-      <OSS::Smart::Immersive::CurrencyInput
-        @currency={{this.currency}}
+        @value={{this.currencyValueTwo}}
         @onChange={{this.onCurrencyInputChange}}
         @allowCurrencyUpdate={{true}}
         @placeholder="Placeholder"
-        @hasError={{this.hasError}}
-      />
-      <OSS::Smart::Immersive::CurrencyInput
-        @currency={{this.currency}}
-        @value={{this.currencyValue}}
-        @onChange={{this.onCurrencyInputChange}}
-        @allowedCurrencies={{this.allowedCurrencies}}
-        @allowCurrencyUpdate={{true}}
+        @loading={{this.currencyInputLoading}}
         @hasError={{this.hasError}}
       />
     </div>
+    <span>Loading = {{this.currencyInputLoading}}</span>
     <span class="fx-row fx-gap-px-6">Toggle the @loading argument =>
-      <OSS::ToggleSwitch
-        @label="Toggle"
-        @value={{this.toggleCurrencyInputLoadingValue}}
-        @onChange={{this.toggleCurrencyInputLoading}}
-      /></span>
+      <OSS::Button @label="Toggle loading" {{on "click" this.toggleCurrencyInputLoading}} />
+    </span>
 
   </div>
 
