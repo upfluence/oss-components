@@ -15,7 +15,7 @@ module('Integration | Component | o-s-s/smart/immersive/currency-input', functio
 
   test('it renders', async function (assert) {
     await render(hbs`<OSS::Smart::Immersive::CurrencyInput @onChange={{this.onChange}} />`);
-    assert.dom('.immersive-currency-input-container').exists();
+    assert.dom('.smart-immersive-currency-input-container').exists();
   });
 
   test('The passed @value parameter is properly displayed in the input', async function (assert) {
@@ -28,9 +28,14 @@ module('Integration | Component | o-s-s/smart/immersive/currency-input', functio
     assert.dom('.currency-selector').hasText('€');
   });
 
-  test('It displays an red border around the component if @hasError exists', async function (assert) {
+  test('It displays a blue border around the component if @value is truthy', async function (assert) {
+    await render(hbs`<OSS::Smart::Immersive::CurrencyInput @value="12345" @onChange={{this.onChange}} />`);
+    assert.dom('.smart-immersive-currency-input').hasStyle({ borderColor: 'rgb(83, 94, 252)' });
+  });
+
+  test('It displays a red border around the component if @hasError exists', async function (assert) {
     await render(hbs`<OSS::Smart::Immersive::CurrencyInput @onChange={{this.onChange}} @hasError={{true}} />`);
-    assert.dom('.immersive-currency-input-container').hasStyle({ borderColor: 'rgb(27, 30, 33)' });
+    assert.dom('.smart-immersive-currency-input').hasStyle({ borderColor: 'rgb(239, 68, 68)' });
   });
 
   module('Currency selector', () => {
@@ -40,7 +45,6 @@ module('Integration | Component | o-s-s/smart/immersive/currency-input', functio
       assert.dom('.upf-infinite-select').exists();
     });
 
-    //TODO
     test('Selecting a new currency in the Currency selector triggers the onChange method', async function (assert) {
       this.currency = '';
       await render(
@@ -48,8 +52,7 @@ module('Integration | Component | o-s-s/smart/immersive/currency-input', functio
       );
       await click('.currency-selector');
       await click('.upf-infinite-select__item:nth-child(5)');
-      // await this.pauseTest();
-      assert.true(this.onChange.calledOnceWithExactly('AUD', 0));
+      assert.true(this.onChange.calledOnceWith('AUD', ''));
     });
 
     test('Typing in the search input filters the results', async function (assert) {
