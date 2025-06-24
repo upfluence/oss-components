@@ -6,12 +6,11 @@ import { runSmartGradientAnimation } from '@upfluence/oss-components/utils/run-s
 import { isEmpty } from '@ember/utils';
 
 interface OSSSmartImmersiveCurrencyInputArgs extends OSSCurrencyInputArgs {
-  loading?: boolean;
+  loading: boolean;
   hasError?: boolean;
 }
 
 export default class OSSSmartImmersiveCurrencyInput extends OSSCurrencyInput<OSSSmartImmersiveCurrencyInputArgs> {
-  @tracked declare previousLoading: boolean;
   @tracked declare element: HTMLElement;
 
   constructor(owner: unknown, args: OSSCurrencyInputArgs) {
@@ -21,79 +20,40 @@ export default class OSSSmartImmersiveCurrencyInput extends OSSCurrencyInput<OSS
       '[component][OSS::Smart::Immersive::CurrencyInput] The parameter @onChange of type function is mandatory',
       typeof this.args.onChange === 'function'
     );
+  }
 
-    this.previousLoading = this.args.loading ?? false;
+  get placeholder(): string {
+    return this.args.placeholder ?? '';
+  }
+
+  get computedClasses(): string {
+    const classes = ['smart-immersive-currency-input-container'];
+
+    if (this.args.value && !this.args.loading) {
+      classes.push('smart-immersive-currency-input-container--filled');
+    }
+    if (this.args.hasError) {
+      classes.push('smart-immersive-currency-input-container--errored');
+    }
+    return classes.join(' ');
+  }
+
+  @action
+  onChange(currency: string, value: number): void {
+    if (this.args.onChange) {
+      this.args.onChange(currency, value);
+    }
   }
 
   @action
   registerElement(element: HTMLElement): void {
     this.element = element;
-    this.resizeOnMount();
-  }
-
-  get smartCurrencyInputClasses(): string {
-    const classes = ['smart-currency__input'];
-    return classes.join(' ');
-  }
-
-  get computedClasses(): string {
-    const classes = ['immersive-currency-input-container'];
-    if (this.localValue) {
-      classes.push('immersive-currency-input-container--filled');
-    }
-    if (this.disabled) {
-      classes.push('immersive-currency-input-container--disabled');
-    }
-    if (this.args.hasError) {
-      classes.push('immersive-currency-input-container--errored');
-    }
-    return classes.join(' ');
   }
 
   @action
-  manageLoadingUpdate(): void {
-    this.resizeHiddenInput();
-    if (this.previousLoading && !this.args.loading && !isEmpty(this.localValue)) {
+  runAnimationOnLoadEnd(): void {
+    if (this.element && this.args.loading === false && !isEmpty(this.args.value)) {
       runSmartGradientAnimation(this.element);
     }
-
-    this.previousLoading = this.args.loading ?? false;
-  }
-
-  @action
-  addEventInputListener(element: HTMLElement): void {
-    element.addEventListener('input', this.resizeHiddenInput);
-  }
-
-  @action
-  removeEventInputListener(element: HTMLElement): void {
-    element.removeEventListener('input', this.resizeHiddenInput);
-  }
-
-  @action
-  resizeHiddenInput(): void {
-    const hiddenContainer = this.element.querySelector(
-      '[data-control-name="smart-currency-input-hidden-container"]'
-    ) as HTMLElement;
-    if (hiddenContainer) {
-      hiddenContainer.textContent = this.localValue ? this.localValue.toString() : '50';
-      this.resizeContainer(hiddenContainer);
-    }
-  }
-
-  @action
-  resizeOnMount(): void {
-    console.log('mounted');
-    const placeholderContainer = this.element.querySelector('.smart-input__animated-text') as HTMLElement;
-    if (placeholderContainer) {
-      this.resizeContainer(placeholderContainer);
-    }
-  }
-
-  private resizeContainer(element: HTMLElement): void {
-    document.documentElement.style.setProperty(
-      '--smart-currency-input-width',
-      `${element.getBoundingClientRect().width}px`
-    );
   }
 }
