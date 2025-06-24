@@ -1,0 +1,19 @@
+<div
+  class={{this.computedClass}}
+  {{on "mouseenter" this.expand}}
+  {{on "mouseleave" this.collapse}}
+  {{on "touchend" this.handleExpansion}}
+  role="button"
+  ...attributes
+>
+  {{#if @icon}}
+    <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} class={{@fontColor}}/>
+  {{else if @image}}
+    <img src={{@image}} alt={{t "oss-components.badge.image_alt"}} />
+  {{else if @flag}}
+    <div class="fflag fflag-{{this.flagCountry}} ff-sm ff-round"></div>
+  {{else}}
+    <span class="upf-badge__text">{{@text}}</span>
+  {{/if}}
+  <span class="upf-expandable-badge__label {{@fontColor}}">{{@expandedLabel}}</span>
+</div>

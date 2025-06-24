@@ -328,6 +328,76 @@
     class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
   >
     <div class="font-size-md font-weight-semibold">
+      Expandable badge
+    </div>
+    <div class="fx-row fx-xalign-start fx-gap-px-6">
+      <div class="fx-row fx-gap-px-12 fx-xalign-center">
+        <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" @size="lg" />
+        <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" />
+        <OSS::ExpandableBadge @expandedLabel="content" @size="md" @icon="fas fa-box-open" />
+        <OSS::ExpandableBadge @expandedLabel="content" @size="sm" @icon="fas fa-box-open" />
+      </div>
+    </div>
+    <div class="fx-row fx-xalign-start fx-gap-px-6">
+      <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" @skin="primary" />
+      <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" @skin="primary" @plain={{true}} />
+      <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" @skin="success" />
+      <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" @skin="success" @plain={{true}} />
+      <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" @skin="alert" />
+      <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" @skin="alert" @plain={{true}} />
+      <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" @skin="error" />
+      <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" @skin="error" @plain={{true}} />
+      <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" @skin="xtd-orange" />
+      <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" @skin="xtd-orange" @plain={{true}} />
+      <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" @skin="xtd-yellow" />
+      <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" @skin="xtd-yellow" @plain={{true}} />
+      <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" @skin="xtd-lime" />
+      <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" @skin="xtd-lime" @plain={{true}} />
+      <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" @skin="xtd-cyan" />
+      <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" @skin="xtd-cyan" @plain={{true}} />
+      <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" @skin="xtd-blue" />
+      <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" @skin="xtd-blue" @plain={{true}} />
+      <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" @skin="xtd-violet" />
+      <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" @skin="xtd-violet" @plain={{true}} />
+    </div>
+    <div class="fx-row fx-xalign-start fx-gap-px-6">
+      <OSS::ExpandableBadge @icon="fas fa-user-bounty-hunter" @size="md" @expandedLabel="The Mandalorian" />
+      <OSS::ExpandableBadge @icon="fas fa-robot-astromech" @size="md" @expandedLabel="R2-D2" />
+      <OSS::ExpandableBadge
+        @icon="fab fa-pinterest"
+        @size="md"
+        @expandedLabel="pinterest"
+        @fontColor="font-color-pinterest-500"
+        class="font-color-pinterest-500"
+      />
+    </div>
+    <div class="fx-row fx-xalign-start fx-gap-px-6">
+      <OSS::ExpandableBadge @flag="us" @expandedLabel="United-States" />
+      <OSS::ExpandableBadge @flag="fr" @expandedLabel="France" />
+      <OSS::ExpandableBadge @flag="ca" @expandedLabel="Canada" />
+    </div>
+    <div class="fx-row fx-gap-px-12 fx-xalign-center">
+      <OSS::ExpandableBadge
+        @expandedLabel="content"
+        @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
+        @size="lg"
+      />
+      <OSS::ExpandableBadge
+        @expandedLabel="content"
+        @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
+      />
+      <OSS::ExpandableBadge
+        @expandedLabel="content"
+        @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
+        @size="sm"
+      />
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
       Icon
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-center">
@@ -600,10 +670,14 @@
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-center">
       <div class="fx-row fx-xalign-center fx-gap-px-12">
-        Primary: <OSS::PulsatingDot />
-        Success: <OSS::PulsatingDot @skin="success" />
-        Error: <OSS::PulsatingDot @skin="error" />
-        Warning: <OSS::PulsatingDot @skin="warning" />
+        Primary:
+        <OSS::PulsatingDot />
+        Success:
+        <OSS::PulsatingDot @skin="success" />
+        Error:
+        <OSS::PulsatingDot @skin="error" />
+        Warning:
+        <OSS::PulsatingDot @skin="warning" />
       </div>
     </div>
   </div>
