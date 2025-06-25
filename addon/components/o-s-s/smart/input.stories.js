@@ -1,27 +1,90 @@
 import { hbs } from 'ember-cli-htmlbars';
+import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'Components/OSS::Smart::Input',
   component: 'button',
   argTypes: {
-    value: {
-      type: { required: true },
-      control: 'text',
-      description: 'The value of the input',
-      defaultValue: 'Input value',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'Input value' }
-      }
-    },
-    placeholder: {
-      type: { required: true },
-      control: 'text',
-      description: 'Placeholder text for the input',
-      defaultValue: 'Placeholder',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: 'Placeholder' }
+    argTypes: {
+      value: {
+        description: 'Value of the input',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: { summary: 'undefined' }
+        },
+        control: { type: 'text' }
+      },
+      type: {
+        description: 'The input type',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: { summary: 'text' }
+        },
+        control: { type: 'text' }
+      },
+      disabled: {
+        description: 'Disable the default input (when not passing an input named block)',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: { summary: false }
+        },
+        control: { type: 'boolean' }
+      },
+      placeholder: {
+        description: 'Placeholder of the input',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: { summary: 'undefined' }
+        },
+        control: { type: 'text' }
+      },
+      feedbackMessage: {
+        description: 'A success, warning or error message that will be displayed below the input-group.',
+        table: {
+          type: {
+            summary: '{ type: string, value: string }'
+          },
+          defaultValue: { summary: 'undefined' }
+        },
+        control: { type: 'object' }
+      },
+      errorMessage: {
+        description: 'An error message that will be displayed below the input-group.',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: { summary: 'undefined' }
+        },
+        control: { type: 'text' }
+      },
+      hasError: {
+        description:
+          'Allows setting the error style on the input without showing an error message. Useful for form validation.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: { summary: 'undefined' }
+        },
+        control: { type: 'boolean' }
+      },
+      onChange: {
+        description: 'Method called every time the input is updated',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'onChange(value: string): void'
+          }
+        }
       }
     },
     loading: {
@@ -33,14 +96,6 @@ export default {
         type: { summary: 'boolean' },
         defaultValue: { summary: false }
       }
-    },
-    onChange: {
-      type: { required: true },
-      description: 'The action triggered when the input value is changed',
-      table: {
-        category: 'Actions',
-        type: { summary: 'onChange(value: boolean): void' }
-      }
     }
   }
 };
@@ -48,20 +103,26 @@ export default {
 const Template = (args) => ({
   template: hbs`
      <OSS::Smart::Input
-          @value={{this.value}}
+          @value={{this.value}} 
+          @disabled={{this.disabled}}
           @placeholder={{this.placeholder}}
-          @loading={{this.toggleInputLoadingValue}}
+          @type={{this.type}}
+          @errorMessage={{this.errorMessage}}
           @onChange={{this.onChange}}
+          @loading={{this.loading}}
         />
   `,
   context: args
 });
 
 const defaultArgs = {
-  value: 'Input value',
-  placeholder: 'Placeholder',
-  loading: false,
-  onChange: (value) => console.log('Input changed:', value)
+  value: 'John',
+  disabled: false,
+  type: undefined,
+  placeholder: 'this is the placeholder',
+  errorMessage: undefined,
+  onChange: action('onChange'),
+  loading: false
 };
 
 export const Default = Template.bind({});
