@@ -13,6 +13,7 @@ export default class Smart extends Controller {
     'This is the second content',
     'This is the third content'
   ];
+  @tracked logoLoading: boolean = false;
   @tracked toggles: { value: string; label: string }[] = [
     { value: 'first', label: 'First' },
     { value: 'second', label: 'Second' }
@@ -43,6 +44,11 @@ export default class Smart extends Controller {
   triggerSelection(value: string): void {
     console.log('selected toggle value : ', value);
     this.selectedToggle = value;
+  }
+
+  @action
+  toggleLogoLoading(): void {
+    this.logoLoading = !this.logoLoading;
   }
 
   @action

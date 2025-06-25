@@ -1,0 +1,21 @@
+<div
+  class="oss-smart__immersive-icon-container
+    {{if @loading 'oss-smart__immersive-icon-container__generating'}}
+    {{if @oversize 'oss-smart__immersive-icon-container--oversize'}}"
+  {{did-update this.handleLoadingUpdate @loading}}
+  {{did-insert this.registerElement}}
+  ...attributes
+>
+  {{#if @editable}}
+    <div class="edit-overlay fx-row fx-malign-center fx-xalign-center" {{on "click" this.onClick}}>
+      <OSS::Icon @icon="fa-pen" />
+    </div>
+  {{/if}}
+  {{#if (eq this.logoMode "icon")}}
+    <div class="logo-icon fx-row fx-malign-center fx-xalign-center {{this.logoColor}}">
+      <i class="fad fa-{{this.logoIcon}}"></i>
+    </div>
+  {{else}}
+    <div class="campaign-image" style={{this.dynamicImageStyle}}></div>
+  {{/if}}
+</div>

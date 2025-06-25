@@ -33,3 +33,212 @@
     background-position: 0 0%;
   }
 }
+
+.oss-smart__immersive-icon-container {
+  height: 36px;
+  width: 36px;
+  position: relative;
+  transition: all 250ms ease-in-out;
+
+  .edit-overlay {
+    position: absolute;
+    opacity: 0;
+    transition: all 250ms ease-in-out;
+    height: 36px;
+    width: 36px;
+    border-radius: var(--border-radius-md);
+  }
+
+  &__generating {
+    .logo-icon::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        #549eff 0%,
+        #ffffff 5%,
+        #db00ff 10%,
+        #727ae5 15%,
+        #ff158d 20%,
+        #ffffff 25%,
+        #549eff 30%
+      );
+      background-size: 600% 100%;
+      animation: smart_loading_text_animation 3.5s ease-in-out infinite;
+      opacity: 0.6;
+      z-index: -1;
+      pointer-events: none;
+    }
+    .logo-icon {
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+  }
+}
+
+.oss-smart__immersive-icon-container:hover {
+  .edit-overlay {
+    display: flex;
+    background-color: var(--color-gray-900);
+    opacity: 60%;
+    color: var(--color-white);
+    z-index: 1;
+    cursor: pointer;
+  }
+}
+
+.oss-smart__immersive-icon-container--oversize {
+  height: 60px;
+  width: 60px;
+
+  .edit-overlay,
+  .logo-icon,
+  .campaign-image {
+    height: 60px;
+    width: 60px;
+  }
+}
+
+.campaign-image {
+  height: 36px;
+  width: 36px;
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--border-radius-md);
+}
+
+.logo-icon {
+  height: 36px;
+  width: 36px;
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--border-radius-md);
+}
+
+.logo-icon-color {
+  &_stone {
+    background-color: var(--logo-color-stone-light);
+    color: var(--logo-color-stone-dark);
+  }
+  &_rose {
+    background-color: var(--logo-color-rose-light);
+    color: var(--logo-color-rose-dark);
+  }
+  &_orange {
+    background-color: var(--logo-color-orange-light);
+    color: var(--logo-color-orange-dark);
+  }
+  &_yellow {
+    background-color: var(--logo-color-yellow-light);
+    color: var(--logo-color-yellow-dark);
+  }
+  &_lime {
+    background-color: var(--logo-color-lime-light);
+    color: var(--logo-color-lime-dark);
+  }
+  &_emerald {
+    background-color: var(--logo-color-emerald-light);
+    color: var(--logo-color-emerald-dark);
+  }
+  &_teal {
+    background-color: var(--logo-color-teal-light);
+    color: var(--logo-color-teal-dark);
+  }
+  &_cyan {
+    background-color: var(--logo-color-cyan-light);
+    color: var(--logo-color-cyan-dark);
+  }
+  &_sky {
+    background-color: var(--logo-color-sky-light);
+    color: var(--logo-color-sky-dark);
+  }
+  &_blue {
+    background-color: var(--logo-color-blue-light);
+    color: var(--logo-color-blue-dark);
+  }
+  &_indigo {
+    background-color: var(--logo-color-indigo-light);
+    color: var(--logo-color-indigo-dark);
+  }
+  &_violet {
+    background-color: var(--logo-color-violet-light);
+    color: var(--logo-color-violet-dark);
+  }
+  &_purple {
+    background-color: var(--logo-color-purple-light);
+    color: var(--logo-color-purple-dark);
+  }
+  &_fuschia {
+    background-color: var(--logo-color-fuschia-light);
+    color: var(--logo-color-fuschia-dark);
+  }
+  &_pink {
+    background-color: var(--logo-color-pink-light);
+    color: var(--logo-color-pink-dark);
+  }
+  &_slate {
+    background-color: var(--logo-color-slate-light);
+    color: var(--logo-color-slate-dark);
+  }
+}
+
+:root {
+  --logo-color-stone-light: #f5f5f4;
+  --logo-color-stone-dark: #78716c;
+
+  --logo-color-rose-light: #ffe4e6;
+  --logo-color-rose-dark: #f43f5e;
+
+  --logo-color-orange-light: #ffedd5;
+  --logo-color-orange-dark: #f97316;
+
+  --logo-color-yellow-light: #fef3c7;
+  --logo-color-yellow-dark: #f59e0b;
+
+  --logo-color-lime-light: #ecfccb;
+  --logo-color-lime-dark: #84cc16;
+
+  --logo-color-emerald-light: #d1fae5;
+  --logo-color-emerald-dark: #10b981;
+
+  --logo-color-teal-light: #ccfbf1;
+  --logo-color-teal-dark: #14b8a6;
+
+  --logo-color-cyan-light: #cffafe;
+  --logo-color-cyan-dark: #06b6d4;
+
+  --logo-color-sky-light: #e0f2fe;
+  --logo-color-sky-dark: #0ea5e9;
+
+  --logo-color-blue-light: #dbeafe;
+  --logo-color-blue-dark: #3b82f6;
+
+  --logo-color-indigo-light: #e0e7ff;
+  --logo-color-indigo-dark: #6366f1;
+
+  --logo-color-violet-light: #ede9fe;
+  --logo-color-violet-dark: #8b5cf6;
+
+  --logo-color-purple-light: #f3e8ff;
+  --logo-color-purple-dark: #a855f7;
+
+  --logo-color-fuschia-light: #fae8ff;
+  --logo-color-fuschia-dark: #d946ef;
+
+  --logo-color-pink-light: #fce7f3;
+  --logo-color-pink-dark: #ec4899;
+
+  --logo-color-slate-light: #f1f5f9;
+  --logo-color-slate-dark: #64748b;
+}
+
+@keyframes smart_loading_text_animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
