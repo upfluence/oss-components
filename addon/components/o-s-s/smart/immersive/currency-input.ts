@@ -40,9 +40,7 @@ export default class OSSSmartImmersiveCurrencyInput extends OSSCurrencyInput<OSS
 
   @action
   onChange(currency: string, value: number): void {
-    if (this.args.onChange) {
-      this.args.onChange(currency, value);
-    }
+    this.args.onChange(currency, value);
   }
 
   @action
