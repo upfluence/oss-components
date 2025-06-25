@@ -6153,32 +6153,34 @@ define("dummy/tests/integration/components/o-s-s/expandable-badge-test", ["qunit
         assert.dom('.upf-badge .fflag.fflag-FR').exists();
       });
     });
-    (0, _qunit.module)('@fontColorClass parameter', function () {
-      (0, _qunit.test)('applies to the icon when passed', async function (assert) {
+    (0, _qunit.module)('ColorClass parameters', function () {
+      (0, _qunit.test)('@iconColorClass applies to the icon when passed', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::ExpandableBadge @icon="fas fa-users" @fontColorClass="text-primary" @expandedLabel="content" />
+          <OSS::ExpandableBadge @icon="fas fa-users" @iconColorClass="text-primary" @expandedLabel="content" />
         */
         {
-          "id": "6tr51TR0",
-          "block": "[[[8,[39,0],null,[[\"@icon\",\"@fontColorClass\",\"@expandedLabel\"],[\"fas fa-users\",\"text-primary\",\"content\"]],null]],[],false,[\"o-s-s/expandable-badge\"]]",
+          "id": "kyZTgw8/",
+          "block": "[[[8,[39,0],null,[[\"@icon\",\"@iconColorClass\",\"@expandedLabel\"],[\"fas fa-users\",\"text-primary\",\"content\"]],null]],[],false,[\"o-s-s/expandable-badge\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/expandable-badge-test.ts",
           "isStrictMode": false
         }));
         assert.dom('.upf-expandable-badge i').hasClass('text-primary');
+        assert.dom('.upf-expandable-badge__label').doesNotHaveClass('text-primary');
       });
-      (0, _qunit.test)('applies to the span when passed', async function (assert) {
+      (0, _qunit.test)('@labelColorClass applies to the span when passed', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::ExpandableBadge @text="2x" @fontColorClass="text-primary" @expandedLabel="content" />
+          <OSS::ExpandableBadge @icon="fas fa-users" @labelColorClass="text-primary" @expandedLabel="content" />
         */
         {
-          "id": "/XYl4qPw",
-          "block": "[[[8,[39,0],null,[[\"@text\",\"@fontColorClass\",\"@expandedLabel\"],[\"2x\",\"text-primary\",\"content\"]],null]],[],false,[\"o-s-s/expandable-badge\"]]",
+          "id": "NeVmTnen",
+          "block": "[[[8,[39,0],null,[[\"@icon\",\"@labelColorClass\",\"@expandedLabel\"],[\"fas fa-users\",\"text-primary\",\"content\"]],null]],[],false,[\"o-s-s/expandable-badge\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/expandable-badge-test.ts",
           "isStrictMode": false
         }));
         assert.dom('.upf-expandable-badge__label').hasClass('text-primary');
+        assert.dom('.upf-expandable-badge i').doesNotHaveClass('text-primary');
       });
     });
     (0, _qunit.module)('Error management', function () {
@@ -6214,7 +6216,7 @@ define("dummy/tests/integration/components/o-s-s/expandable-badge-test", ["qunit
       });
       (0, _qunit.test)('it throws an error if no @expandableLabel argument is passed', async function (assert) {
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::ExpandableBadge] The @expandableLabel argument is mandatory.');
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::ExpandableBadge] The @expandedLabel argument is mandatory.');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*

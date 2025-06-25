@@ -87911,7 +87911,7 @@ interface OSSCodeBlockArgs {
     ...attributes
   >
     {{#if @icon}}
-      <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} class={{@fontColorClass}}/>
+      <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} class={{@iconColorClass}}/>
     {{else if @image}}
       <img src={{@image}} alt={{t "oss-components.badge.image_alt"}} />
     {{else if @flag}}
@@ -87919,12 +87919,12 @@ interface OSSCodeBlockArgs {
     {{else}}
       <span class="upf-badge__text">{{@text}}</span>
     {{/if}}
-    <span class="upf-expandable-badge__label {{@fontColorClass}}">{{@expandedLabel}}</span>
+    <span class="upf-expandable-badge__label {{@labelColorClass}}">{{@expandedLabel}}</span>
   </div>
   */
   {
-    "id": "oCkRlsSc",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[24,\"role\",\"button\"],[17,1],[4,[38,0],[\"mouseenter\",[30,0,[\"expand\"]]],null],[4,[38,0],[\"mouseleave\",[30,0,[\"collapse\"]]],null],[4,[38,0],[\"touchend\",[30,0,[\"handleExpansion\"]]],null],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[8,[39,2],[[16,0,[30,3]]],[[\"@style\",\"@icon\"],[[28,[37,3],[[30,2]],null],[28,[37,4],[[30,2]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,4],[[[1,\"    \"],[10,\"img\"],[15,\"src\",[30,4]],[15,\"alt\",[28,[37,5],[\"oss-components.badge.image_alt\"],null]],[12],[13],[1,\"\\n\"]],[]],[[[41,[30,5],[[[1,\"    \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"flagCountry\"]],\" ff-sm ff-round\"]]],[12],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[10,1],[14,0,\"upf-badge__text\"],[12],[1,[30,6]],[13],[1,\"\\n  \"]],[]]]],[]]]],[]]],[1,\"  \"],[10,1],[15,0,[29,[\"upf-expandable-badge__label \",[30,3]]]],[12],[1,[30,7]],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@icon\",\"@fontColorClass\",\"@image\",\"@flag\",\"@text\",\"@expandedLabel\"],false,[\"on\",\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"t\"]]",
+    "id": "hbH5ImpW",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[24,\"role\",\"button\"],[17,1],[4,[38,0],[\"mouseenter\",[30,0,[\"expand\"]]],null],[4,[38,0],[\"mouseleave\",[30,0,[\"collapse\"]]],null],[4,[38,0],[\"touchend\",[30,0,[\"handleExpansion\"]]],null],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[8,[39,2],[[16,0,[30,3]]],[[\"@style\",\"@icon\"],[[28,[37,3],[[30,2]],null],[28,[37,4],[[30,2]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,4],[[[1,\"    \"],[10,\"img\"],[15,\"src\",[30,4]],[15,\"alt\",[28,[37,5],[\"oss-components.badge.image_alt\"],null]],[12],[13],[1,\"\\n\"]],[]],[[[41,[30,5],[[[1,\"    \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"flagCountry\"]],\" ff-sm ff-round\"]]],[12],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[10,1],[14,0,\"upf-badge__text\"],[12],[1,[30,6]],[13],[1,\"\\n  \"]],[]]]],[]]]],[]]],[1,\"  \"],[10,1],[15,0,[29,[\"upf-expandable-badge__label \",[30,7]]]],[12],[1,[30,8]],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@icon\",\"@iconColorClass\",\"@image\",\"@flag\",\"@text\",\"@labelColorClass\",\"@expandedLabel\"],false,[\"on\",\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"t\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/expandable-badge.hbs",
     "isStrictMode": false
   });
@@ -87934,7 +87934,7 @@ interface OSSCodeBlockArgs {
       _initializerDefineProperty(this, "expanded", _descriptor, this);
       const contentArguments = [args.icon, args.image, args.flag, args.text].filter(arg => arg);
       (true && !(contentArguments.length === 1) && (0, _debug.assert)(`[component][OSS::ExpandableBadge] One of @icon, @image, @flag or @text arguments is mandatory. You passed ${contentArguments.length} arguments`, contentArguments.length === 1));
-      (true && !(args.expandedLabel !== undefined) && (0, _debug.assert)(`[component][OSS::ExpandableBadge] The @expandableLabel argument is mandatory.`, args.expandedLabel !== undefined));
+      (true && !(args.expandedLabel !== undefined) && (0, _debug.assert)(`[component][OSS::ExpandableBadge] The @expandedLabel argument is mandatory.`, args.expandedLabel !== undefined));
     }
     get flagCountry() {
       return this.args.flag.toUpperCase();
@@ -87990,7 +87990,7 @@ interface OSSCodeBlockArgs {
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = _exports.WithText = _exports.WithImage = _exports.WithIcon = void 0;
+  _exports.default = _exports.WithText = _exports.WithImage = _exports.WithIcon = _exports.WithFlag = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
   const SizeTypes = ['sm', 'md', 'lg'];
   const SkinTypes = ['primary', 'success', 'alert', 'error', 'xtd-cyan', 'xtd-orange', 'xtd-yellow', 'xtd-lime', 'xtd-blue', 'xtd-violet', 'xtd-smart'];
@@ -88100,6 +88100,48 @@ interface OSSCodeBlockArgs {
         type: {
           required: true
         }
+      },
+      flag: {
+        description: 'Allows passing a Alpha2 country code to display a flag as the icon.',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      iconColorClass: {
+        description: 'Allows passing a color class to the icon.',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      labelColorClass: {
+        description: 'Allows passing a color class to the label.',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
       }
     },
     parameters: {
@@ -88116,6 +88158,7 @@ interface OSSCodeBlockArgs {
     icon: undefined,
     image: undefined,
     text: undefined,
+    flag: undefined,
     plain: false,
     skin: undefined
   };
@@ -88124,12 +88167,12 @@ interface OSSCodeBlockArgs {
     /*
       
         <OSS::ExpandableBadge @expandedLabel={{this.expandedLabel}} @image={{this.image}} @icon={{this.icon}} @text={{this.text}}
-                              @size={{this.size}} @skin={{this.skin}} @plain={{this.plain}} />
+                              @flag={{this.flag}} @size={{this.size}} @skin={{this.skin}} @plain={{this.plain}} />
       
     */
     {
-      "id": "gwHMJHtu",
-      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@expandedLabel\",\"@image\",\"@icon\",\"@text\",\"@size\",\"@skin\",\"@plain\"],[[30,0,[\"expandedLabel\"]],[30,0,[\"image\"]],[30,0,[\"icon\"]],[30,0,[\"text\"]],[30,0,[\"size\"]],[30,0,[\"skin\"]],[30,0,[\"plain\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/expandable-badge\"]]",
+      "id": "YA6gzJPS",
+      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@expandedLabel\",\"@image\",\"@icon\",\"@text\",\"@flag\",\"@size\",\"@skin\",\"@plain\"],[[30,0,[\"expandedLabel\"]],[30,0,[\"image\"]],[30,0,[\"icon\"]],[30,0,[\"text\"]],[30,0,[\"flag\"]],[30,0,[\"size\"]],[30,0,[\"skin\"]],[30,0,[\"plain\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/expandable-badge\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/expandable-badge.stories.js",
       "isStrictMode": false
     }),
@@ -88147,6 +88190,13 @@ interface OSSCodeBlockArgs {
     ...defaultArgs,
     ...{
       image: '/@upfluence/oss-components/assets/heart.svg'
+    }
+  };
+  const WithFlag = _exports.WithFlag = Template.bind({});
+  WithFlag.args = {
+    ...defaultArgs,
+    ...{
+      flag: 'us'
     }
   };
   const WithText = _exports.WithText = Template.bind({});
