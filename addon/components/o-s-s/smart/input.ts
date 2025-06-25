@@ -14,10 +14,6 @@ interface SmartInputArgs {
 export default class OSSSmartInput extends OSSInputContainer<SmartInputArgs> {
   @tracked declare element: HTMLElement;
 
-  constructor(owner: unknown, args: SmartInputArgs) {
-    super(owner, args);
-  }
-
   @action
   handleUpdate(): void {
     if (!this.args.loading && !isEmpty(this.args.value)) {
