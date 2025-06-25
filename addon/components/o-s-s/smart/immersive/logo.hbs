@@ -7,7 +7,7 @@
   ...attributes
 >
   {{#if @editable}}
-    <div class="edit-overlay fx-row fx-malign-center fx-xalign-center" {{on "click" this.onClick}}>
+    <div class="edit-overlay fx-row fx-malign-center fx-xalign-center" {{on "click" @onClick}}>
       <OSS::Icon @icon="fa-pen" />
     </div>
   {{/if}}
