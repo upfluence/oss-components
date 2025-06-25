@@ -119,4 +119,9 @@ export default class Smart extends Controller {
     this.pillLoading = !this.pillLoading;
     this.selectedPillTwo = !this.pillLoading;
   }
+
+  @action
+  onLogoClick(): void {
+    console.log('logo icon clicked');
+  }
 }
