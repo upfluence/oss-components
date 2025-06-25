@@ -39,4 +39,9 @@ export default class Smart extends Controller {
       this.value = 'Data loaded from a very smart backend';
     }
   }
+
+  @action
+  onLogoClick(): void {
+    console.log('logo icon clicked');
+  }
 }
