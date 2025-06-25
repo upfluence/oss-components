@@ -1,0 +1,52 @@
+<div class="fx-col oss-smart-input-container" {{did-update this.handleUpdate @loading}}>
+  <div
+    class="oss-input-container
+      {{this.containerClass}}
+      {{if (has-block 'prefix') ' has-prefix'}}
+      {{if (has-block 'suffix') ' has-suffix'}}"
+    {{did-insert this.registerElement}}
+    data-control-name="oss-smart-input"
+    ...attributes
+  >
+    {{#if (has-block "prefix")}}
+      <div class="prefix">{{yield to="prefix"}}</div>
+    {{/if}}
+
+    {{#if (has-block "input")}}
+      <div class="yielded-input">
+        {{yield to="input"}}
+      </div>
+    {{else}}
+      {{#if @loading}}
+        <div class="smart-input__animated-text fx-row fx-xalign-center upf-input wrapper">
+          <span class="rainbow rainbow_text_animated">{{@placeholder}}</span>
+        </div>
+      {{else}}
+        <Input
+          @value={{@value}}
+          @type={{this.type}}
+          placeholder={{@placeholder}}
+          disabled={{@disabled}}
+          class="upf-input"
+          {{on "keyup" (fn this._onChange @value)}}
+          {{on "paste" this.onPaste}}
+        />
+      {{/if}}
+    {{/if}}
+
+    {{#if (has-block "suffix")}}
+      <div class="suffix">{{yield to="suffix"}}</div>
+    {{/if}}
+  </div>
+
+  {{#if @errorMessage}}
+    <span class="text-color-error margin-top-px-6">{{@errorMessage}}</span>
+  {{else if this.feedbackMessage}}
+    <span class={{concat "margin-top-px-6 font-color-" this.feedbackMessage.type "-500"}}>
+      {{#unless (eq this.feedbackMessage.type "error")}}
+        <OSS::Icon @icon={{this.messageIcon}} />
+      {{/unless}}
+      <span>{{this.feedbackMessage.value}}</span>
+    </span>
+  {{/if}}
+</div>
