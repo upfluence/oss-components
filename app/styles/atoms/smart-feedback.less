@@ -1,0 +1,30 @@
+.oss-smart__feedback {
+  position: relative;
+  display: flex;
+  width: 100%;
+  padding: var(--spacing-px-12) var(--spacing-px-18);
+  border-radius: var(--spacing-px-12);
+  min-height: 56px;
+  transition: height 0.5s ease;
+
+  border: 1px solid transparent;
+  background: linear-gradient(45deg, var(--color-white) 0%, var(--color-primary-50) 100%) padding-box,
+    linear-gradient(90deg, var(--color-primary-100) 0%, var(--color-white) 72.5%) border-box;
+  transition: background 0.3s ease;
+
+  &__generated,
+  &__loading,
+  .oss-smart__feedback__content {
+    width: 100%;
+  }
+
+  &__content {
+    color: var(--color-primary-400);
+    font-size: var(--font-size-md);
+    font-family: 'Reddit Sans', sans-serif;
+
+    &__text {
+      display: inline-block;
+    }
+  }
+}
