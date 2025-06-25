@@ -3,7 +3,6 @@ import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { isEmpty } from '@ember/utils';
-import { guidFor } from '@ember/object/internals';
 
 export type Currency = {
   code: string;
