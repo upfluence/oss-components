@@ -10,7 +10,7 @@
       </div>
     {{else}}
       {{#if @contentString}}
-        <span class="oss-smart__feedback__content__text typing-effect">{{@contentString}}</span>
+        <span class="oss-smart__feedback__content__text">{{@contentString}}</span>
       {{else if @contentArray}}
         <span class="oss-smart__feedback__content__text">
           {{#each @contentArray as |item|}}
