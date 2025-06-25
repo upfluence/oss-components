@@ -238,6 +238,61 @@
   <div
     class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
   >
+    <div class="font-size-md font-weight-semibold">
+      Stack container
+    </div>
+    <div class="fx-row fx-xalign-start fx-gap-px-18">
+      <div class="fx-col fx-xalign-start fx-gap-px-12">
+        <span>@style="under"</span>
+        <OSS::StackContainer @direction="row" @style="under" @pxMargin="6px">
+          <OSS::ExpandableBadge @flag="us" @expandedLabel="United-States" />
+          <OSS::ExpandableBadge @flag="fr" @expandedLabel="France" />
+          <OSS::ExpandableBadge @flag="ca" @expandedLabel="Canada" />
+          <OSS::ExpandableBadge @flag="de" @expandedLabel="Germany" />
+        </OSS::StackContainer>
+      </div>
+      <div class="fx-col fx-xalign-start fx-gap-px-12">
+        <span>@style="over"</span>
+        <OSS::StackContainer @direction="row" @style="over">
+          <OSS::ExpandableBadge @flag="us" @expandedLabel="United-States" />
+          <OSS::ExpandableBadge @flag="fr" @expandedLabel="France" />
+          <OSS::ExpandableBadge @flag="ca" @expandedLabel="Canada" />
+          <OSS::ExpandableBadge @flag="de" @expandedLabel="Germany" />
+        </OSS::StackContainer>
+      </div>
+      <div class="fx-col fx-xalign-start fx-gap-px-12">
+        <span>@direction="column"</span>
+        <div class="fx-row fx-xalign-start fx-gap-px-12">
+          <OSS::StackContainer @direction="column" @style="over">
+            <OSS::ExpandableBadge @flag="us" @expandedLabel="United-States" />
+            <OSS::ExpandableBadge @flag="fr" @expandedLabel="France" />
+            <OSS::ExpandableBadge @flag="ca" @expandedLabel="Canada" />
+            <OSS::ExpandableBadge @flag="de" @expandedLabel="Germany" />
+          </OSS::StackContainer>
+          <OSS::StackContainer @direction="column" @style="under">
+            <OSS::ExpandableBadge @flag="us" @expandedLabel="United-States" />
+            <OSS::ExpandableBadge @flag="fr" @expandedLabel="France" />
+            <OSS::ExpandableBadge @flag="ca" @expandedLabel="Canada" />
+            <OSS::ExpandableBadge @flag="de" @expandedLabel="Germany" />
+          </OSS::StackContainer>
+        </div>
+      </div>
+      <div class="fx-col fx-xalign-start fx-gap-px-12">
+        <span>Usage with random component and @bringToFrontOnHover={{true}}</span>
+        <OSS::StackContainer @pxMargin="-30px" @bringToFrontOnHover={{true}}>
+          <OSS::Button @skin="xtd-orange" @label="Extended orange" @icon="fas fa-plus" @size="md" />
+          <OSS::Button @skin="xtd-yellow" @label="Extended yellow" @icon="fas fa-plus" @size="md" />
+          <OSS::Button @skin="xtd-lime" @label="Extended lime" @icon="fas fa-plus" @size="md" />
+          <OSS::Button @skin="xtd-cyan" @label="Extended Cyan" @icon="fas fa-plus" @size="md" />
+          <OSS::Button @skin="xtd-blue" @label="Extended blue" @icon="fas fa-plus" @size="md" />
+        </OSS::StackContainer>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
 
     <div class="font-size-md font-weight-semibold">
       Avatar group
@@ -360,22 +415,6 @@
       <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" @skin="xtd-violet" />
       <OSS::ExpandableBadge @expandedLabel="content" @icon="fas fa-box-open" @skin="xtd-violet" @plain={{true}} />
     </div>
-    <div class="fx-row fx-xalign-start fx-gap-px-6">
-      <OSS::ExpandableBadge @icon="fas fa-user-bounty-hunter" @size="md" @expandedLabel="The Mandalorian" />
-      <OSS::ExpandableBadge @icon="fas fa-robot-astromech" @size="md" @expandedLabel="R2-D2" />
-      <OSS::ExpandableBadge
-        @icon="fab fa-pinterest"
-        @size="md"
-        @expandedLabel="pinterest"
-        @fontColor="font-color-pinterest-500"
-        class="font-color-pinterest-500"
-      />
-    </div>
-    <div class="fx-row fx-xalign-start fx-gap-px-6">
-      <OSS::ExpandableBadge @flag="us" @expandedLabel="United-States" />
-      <OSS::ExpandableBadge @flag="fr" @expandedLabel="France" />
-      <OSS::ExpandableBadge @flag="ca" @expandedLabel="Canada" />
-    </div>
     <div class="fx-row fx-gap-px-12 fx-xalign-center">
       <OSS::ExpandableBadge
         @expandedLabel="content"
@@ -390,6 +429,17 @@
         @expandedLabel="content"
         @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
         @size="sm"
+      />
+    </div>
+    <div class="fx-row fx-xalign-start fx-gap-px-6">
+      <OSS::ExpandableBadge @icon="fas fa-user-bounty-hunter" @size="md" @expandedLabel="The Mandalorian" />
+      <OSS::ExpandableBadge @icon="fas fa-robot-astromech" @size="md" @expandedLabel="R2-D2" />
+      <OSS::ExpandableBadge
+        @icon="fab fa-pinterest"
+        @size="md"
+        @expandedLabel="pinterest"
+        @fontColor="font-color-pinterest-500"
+        class="font-color-pinterest-500"
       />
     </div>
   </div>
