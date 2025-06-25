@@ -7,7 +7,8 @@ import { next } from '@ember/runloop';
 interface OSSExpandableBadgeComponentSignature extends OSSBadgeArgs {
   expandedLabel: string;
   flag?: string;
-  fontColorClass?: string;
+  iconColorClass?: string;
+  labelColorClass?: string;
 }
 
 export default class OSSExpandableBadgeComponent extends OSSBadge<OSSExpandableBadgeComponentSignature> {
@@ -23,7 +24,7 @@ export default class OSSExpandableBadgeComponent extends OSSBadge<OSSExpandableB
       contentArguments.length === 1
     );
     assert(
-      `[component][OSS::ExpandableBadge] The @expandableLabel argument is mandatory.`,
+      `[component][OSS::ExpandableBadge] The @expandedLabel argument is mandatory.`,
       args.expandedLabel !== undefined
     );
   }
