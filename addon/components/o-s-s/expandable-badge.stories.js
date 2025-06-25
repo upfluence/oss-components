@@ -83,6 +83,30 @@ export default {
       },
       control: { type: 'text' },
       type: { required: true }
+    },
+    flag: {
+      description: 'Allows passing a Alpha2 country code to display a flag as the icon.',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'text' }
+    },
+    iconColorClass: {
+      description: 'Allows passing a color class to the icon.',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'text' }
+    },
+    labelColorClass: {
+      description: 'Allows passing a color class to the label.',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'text' }
     }
   },
   parameters: {
@@ -101,6 +125,7 @@ const defaultArgs = {
   icon: undefined,
   image: undefined,
   text: undefined,
+  flag: undefined,
   plain: false,
   skin: undefined
 };
@@ -108,7 +133,7 @@ const defaultArgs = {
 const Template = (args) => ({
   template: hbs`
     <OSS::ExpandableBadge @expandedLabel={{this.expandedLabel}} @image={{this.image}} @icon={{this.icon}} @text={{this.text}}
-                          @size={{this.size}} @skin={{this.skin}} @plain={{this.plain}} />
+                          @flag={{this.flag}} @size={{this.size}} @skin={{this.skin}} @plain={{this.plain}} />
   `,
   context: args
 });
@@ -123,6 +148,12 @@ export const WithImage = Template.bind({});
 WithImage.args = {
   ...defaultArgs,
   ...{ image: '/@upfluence/oss-components/assets/heart.svg' }
+};
+
+export const WithFlag = Template.bind({});
+WithFlag.args = {
+  ...defaultArgs,
+  ...{ flag: 'us' }
 };
 
 export const WithText = Template.bind({});

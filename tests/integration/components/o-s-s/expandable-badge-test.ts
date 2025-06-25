@@ -136,19 +136,23 @@ module('Integration | Component | o-s-s/expandable-badge', function (hooks) {
     });
   });
 
-  module('@fontColorClass parameter', function () {
-    test('applies to the icon when passed', async function (assert: Assert) {
+  module('ColorClass parameters', function () {
+    test('@iconColorClass applies to the icon when passed', async function (assert: Assert) {
       await render(
-        hbs`<OSS::ExpandableBadge @icon="fas fa-users" @fontColorClass="text-primary" @expandedLabel="content" />`
+        hbs`<OSS::ExpandableBadge @icon="fas fa-users" @iconColorClass="text-primary" @expandedLabel="content" />`
       );
 
       assert.dom('.upf-expandable-badge i').hasClass('text-primary');
+      assert.dom('.upf-expandable-badge__label').doesNotHaveClass('text-primary');
     });
 
-    test('applies to the span when passed', async function (assert: Assert) {
-      await render(hbs`<OSS::ExpandableBadge @text="2x" @fontColorClass="text-primary" @expandedLabel="content" />`);
+    test('@labelColorClass applies to the span when passed', async function (assert: Assert) {
+      await render(
+        hbs`<OSS::ExpandableBadge @icon="fas fa-users" @labelColorClass="text-primary" @expandedLabel="content" />`
+      );
 
       assert.dom('.upf-expandable-badge__label').hasClass('text-primary');
+      assert.dom('.upf-expandable-badge i').doesNotHaveClass('text-primary');
     });
   });
 
@@ -179,7 +183,7 @@ module('Integration | Component | o-s-s/expandable-badge', function (hooks) {
       setupOnerror((err: Error) => {
         assert.equal(
           err.message,
-          'Assertion Failed: [component][OSS::ExpandableBadge] The @expandableLabel argument is mandatory.'
+          'Assertion Failed: [component][OSS::ExpandableBadge] The @expandedLabel argument is mandatory.'
         );
       });
 
