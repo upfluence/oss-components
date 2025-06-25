@@ -5,6 +5,7 @@ import { tracked } from '@glimmer/tracking';
 export default class Smart extends Controller {
   @tracked selectedToggle: string = 'first';
   @tracked selectedToggleTwo: string = 'second';
+  @tracked logoLoading: boolean = false;
   @tracked toggles: { value: string; label: string }[] = [
     {
       value: 'first',
@@ -23,6 +24,11 @@ export default class Smart extends Controller {
   triggerSelection(value: string): void {
     console.log('selected toggle value : ', value);
     this.selectedToggle = value;
+  }
+
+  @action
+  toggleLogoLoading(): void {
+    this.logoLoading = !this.logoLoading;
   }
 
   @action
