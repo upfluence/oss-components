@@ -84017,7 +84017,7 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = _exports.SkinDefinition = void 0;
+  _exports.default = _exports.SkinDefinition = _exports.SizeDefinition = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/debug",0,"@ember/component"eaimeta@70e063a35619d71f
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
@@ -84038,7 +84038,7 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
     "moduleName": "@upfluence/oss-components/components/o-s-s/badge.hbs",
     "isStrictMode": false
   });
-  const SizeDefinition = {
+  const SizeDefinition = _exports.SizeDefinition = {
     sm: 'upf-badge--size-sm',
     md: 'upf-badge--size-md',
     lg: 'upf-badge--size-lg'
@@ -84057,8 +84057,9 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
     'xtd-smart': 'upf-badge--extended-smart'
   };
   class OSSBadge extends _component2.default {
-    constructor(owner, args) {
+    constructor(owner, args, bypassAssertions = false) {
       super(owner, args);
+      if (bypassAssertions) return;
       const contentArguments = [args.icon, args.image, args.text].filter(arg => arg);
       (true && !(contentArguments.length === 1) && (0, _debug.assert)(`[component][OSS::Badge] One of @icon, @image or @text arguments is mandatory. You passed ${contentArguments.length} arguments`, contentArguments.length === 1));
     }
@@ -87883,6 +87884,278 @@ interface OSSCodeBlockArgs {
   UsageWithImage.args = defaultArgs;
   const UsageWithActions = _exports.UsageWithActions = ActionTemplate.bind({});
   UsageWithActions.args = defaultArgs;
+});
+;define("@upfluence/oss-components/components/o-s-s/expandable-badge", ["exports", "@ember/component", "@glimmer/tracking", "@upfluence/oss-components/components/o-s-s/badge", "@ember/object", "@ember/debug", "@ember/runloop", "@ember/template-factory"], function (_exports, _component, _tracking, _badge, _object, _debug, _runloop, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/tracking",0,"@upfluence/oss-components/components/o-s-s/badge",0,"@ember/object",0,"@ember/debug",0,"@ember/runloop",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div
+    class={{this.computedClass}}
+    {{on "mouseenter" this.expand}}
+    {{on "mouseleave" this.collapse}}
+    {{on "touchend" this.handleExpansion}}
+    role="button"
+    ...attributes
+  >
+    {{#if @icon}}
+      <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} class={{@fontColorClass}}/>
+    {{else if @image}}
+      <img src={{@image}} alt={{t "oss-components.badge.image_alt"}} />
+    {{else if @flag}}
+      <div class="fflag fflag-{{this.flagCountry}} ff-sm ff-round"></div>
+    {{else}}
+      <span class="upf-badge__text">{{@text}}</span>
+    {{/if}}
+    <span class="upf-expandable-badge__label {{@fontColorClass}}">{{@expandedLabel}}</span>
+  </div>
+  */
+  {
+    "id": "oCkRlsSc",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[24,\"role\",\"button\"],[17,1],[4,[38,0],[\"mouseenter\",[30,0,[\"expand\"]]],null],[4,[38,0],[\"mouseleave\",[30,0,[\"collapse\"]]],null],[4,[38,0],[\"touchend\",[30,0,[\"handleExpansion\"]]],null],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[8,[39,2],[[16,0,[30,3]]],[[\"@style\",\"@icon\"],[[28,[37,3],[[30,2]],null],[28,[37,4],[[30,2]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,4],[[[1,\"    \"],[10,\"img\"],[15,\"src\",[30,4]],[15,\"alt\",[28,[37,5],[\"oss-components.badge.image_alt\"],null]],[12],[13],[1,\"\\n\"]],[]],[[[41,[30,5],[[[1,\"    \"],[10,0],[15,0,[29,[\"fflag fflag-\",[30,0,[\"flagCountry\"]],\" ff-sm ff-round\"]]],[12],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[10,1],[14,0,\"upf-badge__text\"],[12],[1,[30,6]],[13],[1,\"\\n  \"]],[]]]],[]]]],[]]],[1,\"  \"],[10,1],[15,0,[29,[\"upf-expandable-badge__label \",[30,3]]]],[12],[1,[30,7]],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@icon\",\"@fontColorClass\",\"@image\",\"@flag\",\"@text\",\"@expandedLabel\"],false,[\"on\",\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"t\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/expandable-badge.hbs",
+    "isStrictMode": false
+  });
+  let OSSExpandableBadgeComponent = _exports.default = (_class = class OSSExpandableBadgeComponent extends _badge.default {
+    constructor(owner, args) {
+      super(owner, args, true);
+      _initializerDefineProperty(this, "expanded", _descriptor, this);
+      const contentArguments = [args.icon, args.image, args.flag, args.text].filter(arg => arg);
+      (true && !(contentArguments.length === 1) && (0, _debug.assert)(`[component][OSS::ExpandableBadge] One of @icon, @image, @flag or @text arguments is mandatory. You passed ${contentArguments.length} arguments`, contentArguments.length === 1));
+      (true && !(args.expandedLabel !== undefined) && (0, _debug.assert)(`[component][OSS::ExpandableBadge] The @expandableLabel argument is mandatory.`, args.expandedLabel !== undefined));
+    }
+    get flagCountry() {
+      return this.args.flag.toUpperCase();
+    }
+    get sizeClass() {
+      const size = this.args.size || 'md';
+      (true && !(Object.keys(_badge.SizeDefinition).includes(size)) && (0, _debug.assert)(`[component][OSS::ExpandableBadge] Unknown size. Available sizes are: ${Object.keys(_badge.SizeDefinition).join(', ')}`, Object.keys(_badge.SizeDefinition).includes(size)));
+      return _badge.SizeDefinition[size];
+    }
+    get skinClass() {
+      const skin = this.args?.skin;
+      if (!skin) return '';
+      (true && !(Object.keys(_badge.SkinDefinition).includes(skin)) && (0, _debug.assert)(`[component][OSS::ExpandableBadge] Unknown skin. Available skins are: ${Object.keys(_badge.SkinDefinition).join(', ')}`, Object.keys(_badge.SkinDefinition).includes(skin)));
+      return _badge.SkinDefinition[skin];
+    }
+    get computedClass() {
+      const classes = ['upf-badge', 'upf-expandable-badge'];
+      [this.sizeClass, this.skinClass].forEach(klass => {
+        classes.push(klass);
+      });
+      if (this.args.plain) {
+        classes.push('upf-badge--plain');
+      }
+      if (this.expanded) {
+        classes.push('upf-expandable-badge--expanded');
+      }
+      return classes.join(' ');
+    }
+    handleExpansion() {
+      this.expanded = !this.expanded;
+    }
+    expand() {
+      this.expanded = true;
+    }
+    collapse() {
+      (0, _runloop.next)(() => {
+        this.expanded = false;
+      });
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "expanded", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "handleExpansion", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleExpansion"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "expand", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "expand"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "collapse", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "collapse"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSExpandableBadgeComponent);
+});
+;define("@upfluence/oss-components/components/o-s-s/expandable-badge.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.WithText = _exports.WithImage = _exports.WithIcon = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  const SizeTypes = ['sm', 'md', 'lg'];
+  const SkinTypes = ['primary', 'success', 'alert', 'error', 'xtd-cyan', 'xtd-orange', 'xtd-yellow', 'xtd-lime', 'xtd-blue', 'xtd-violet', 'xtd-smart'];
+  var _default = _exports.default = {
+    title: 'Components/OSS::ExpandableBadge',
+    component: 'expandable-badge',
+    argTypes: {
+      size: {
+        description: 'Adjust the size of the badge',
+        table: {
+          type: {
+            summary: SizeTypes.join('|')
+          },
+          defaultValue: {
+            summary: 'md'
+          }
+        },
+        options: SizeTypes,
+        control: {
+          type: 'select'
+        }
+      },
+      skin: {
+        description: 'Adjust the skin of the badge',
+        table: {
+          type: {
+            summary: SkinTypes.join('|')
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        options: SkinTypes,
+        control: {
+          type: 'select'
+        }
+      },
+      plain: {
+        description: 'Displays the badge with a plain background',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      icon: {
+        description: 'Font Awesome class, for example: far fa-envelope-open',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      image: {
+        description: 'URL of an image',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      text: {
+        description: 'Text to display inside the badge',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      expandedLabel: {
+        description: 'Label for the expandable badge',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        },
+        type: {
+          required: true
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'A badge component with the ability to expand to display additional content. On desktop, it expands on hover whereas on mobile, it expands on tap.'
+        }
+      }
+    }
+  };
+  const defaultArgs = {
+    size: 'md',
+    expandedLabel: 'Content',
+    icon: undefined,
+    image: undefined,
+    text: undefined,
+    plain: false,
+    skin: undefined
+  };
+  const Template = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <OSS::ExpandableBadge @expandedLabel={{this.expandedLabel}} @image={{this.image}} @icon={{this.icon}} @text={{this.text}}
+                              @size={{this.size}} @skin={{this.skin}} @plain={{this.plain}} />
+      
+    */
+    {
+      "id": "gwHMJHtu",
+      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@expandedLabel\",\"@image\",\"@icon\",\"@text\",\"@size\",\"@skin\",\"@plain\"],[[30,0,[\"expandedLabel\"]],[30,0,[\"image\"]],[30,0,[\"icon\"]],[30,0,[\"text\"]],[30,0,[\"size\"]],[30,0,[\"skin\"]],[30,0,[\"plain\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/expandable-badge\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/expandable-badge.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const WithIcon = _exports.WithIcon = Template.bind({});
+  WithIcon.args = {
+    ...defaultArgs,
+    ...{
+      icon: 'fas fa-volume-up'
+    }
+  };
+  const WithImage = _exports.WithImage = Template.bind({});
+  WithImage.args = {
+    ...defaultArgs,
+    ...{
+      image: '/@upfluence/oss-components/assets/heart.svg'
+    }
+  };
+  const WithText = _exports.WithText = Template.bind({});
+  WithText.args = {
+    ...defaultArgs,
+    ...{
+      text: '2x'
+    }
+  };
 });
 ;define("@upfluence/oss-components/components/o-s-s/form", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/object", "@ember/service", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _object, _service, _templateFactory) {
   "use strict";
@@ -95601,6 +95874,239 @@ interface OSSCodeBlockArgs {
   });
   const Usage = _exports.Usage = BasicUsageTemplate.bind({});
   Usage.args = defaultArgs;
+});
+;define("@upfluence/oss-components/components/o-s-s/stack-container", ["exports", "@ember/component", "@ember/object", "@glimmer/component", "@glimmer/tracking", "@ember/template-factory"], function (_exports, _component, _object, _component2, _tracking, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor, _descriptor2;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class={{this.computedClass}} ...attributes {{did-insert this.initComponent}}>
+    {{yield}}
+  </div>
+  */
+  {
+    "id": "Y1mvXahw",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[4,[38,0],[[30,0,[\"initComponent\"]]],null],[12],[1,\"\\n  \"],[18,2,null],[1,\"\\n\"],[13]],[\"&attrs\",\"&default\"],false,[\"did-insert\",\"yield\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/stack-container.hbs",
+    "isStrictMode": false
+  });
+  const DEFAULT_MARGIN = '-6px';
+  let OSSStackContainerComponent = _exports.default = (_class = class OSSStackContainerComponent extends _component2.default {
+    constructor(...args) {
+      super(...args);
+      _initializerDefineProperty(this, "element", _descriptor, this);
+      _initializerDefineProperty(this, "subElements", _descriptor2, this);
+    }
+    get computedClass() {
+      const classes = ['oss-stack-container'];
+      classes.push(`oss-stack-container--${this.direction}`);
+      classes.push(`oss-stack-container--style-${this.style}`);
+      return classes.join(' ');
+    }
+    get direction() {
+      return this.args.direction ?? 'row';
+    }
+    get style() {
+      return this.args.style ?? 'under';
+    }
+    get margin() {
+      return this.args.pxMargin ? this.ensureNegativeMargin(this.args.pxMargin) : DEFAULT_MARGIN;
+    }
+    initComponent(element) {
+      this.element = element;
+      this.subElements = Array.from(this.element.children);
+      if (this.style === 'over') {
+        this.subElements.reverse();
+      }
+      this.applyStylesToSubElements();
+      if (this.args.bringToFrontOnHover) {
+        this.bringToFront();
+      }
+    }
+    applyStylesToSubElements() {
+      this.subElements.forEach((child, index) => {
+        child.style.zIndex = index.toString();
+        if (this.args.subElementClass) {
+          child.classList.add(this.args.subElementClass);
+        }
+        if (this.args.style === 'under' && index === this.subElements.length - 1) return;
+        if (this.args.style === 'over' && index === 0) return;
+        if (this.direction === 'row') {
+          child.style.marginRight = this.margin;
+        } else {
+          child.style.marginBottom = this.margin;
+        }
+      });
+    }
+    bringToFront() {
+      this.subElements.forEach(child => {
+        child.addEventListener('mouseenter', () => {
+          child.style.zIndex = this.subElements.length.toString();
+        });
+        child.addEventListener('mouseleave', () => {
+          child.style.zIndex = Array.from(this.element.children).indexOf(child).toString();
+        });
+      });
+    }
+    ensureNegativeMargin(margin) {
+      const parsedMargin = parseInt(margin);
+      if (isNaN(parsedMargin)) {
+        return DEFAULT_MARGIN;
+      }
+      return `-${Math.abs(parsedMargin)}px`;
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "element", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "subElements", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _applyDecoratedDescriptor(_class.prototype, "initComponent", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initComponent"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "applyStylesToSubElements", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "applyStylesToSubElements"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "bringToFront", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "bringToFront"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSStackContainerComponent);
+});
+;define("@upfluence/oss-components/components/o-s-s/stack-container.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.BasicUsage = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::StackContainer',
+    component: 'stack-container',
+    argTypes: {
+      direction: {
+        description: 'Whether the stack is displayed in a column or row. Default is row.',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'row'
+          }
+        },
+        options: ['row', 'column'],
+        control: {
+          type: 'select'
+        }
+      },
+      style: {
+        description: 'Whether to display the next items under the previous ones or over. Default is under.',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'under'
+          }
+        },
+        options: ['under', 'over'],
+        control: {
+          type: 'select'
+        }
+      },
+      pxMargin: {
+        description: 'Horizontal margin between items in the stack. The passed value is always transformed to be negative. Default is -6px',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: '-6px'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      bringToFrontOnHover: {
+        description: 'Whether to bring the hovered item to the front. Default is false.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      subElementClass: {
+        description: 'Class to be applied to each sub-element in the stack.',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'A stack container component that allows stacking elements in a row or column with customizable styles.'
+        }
+      }
+    }
+  };
+  const defaultArgs = {
+    direction: 'row',
+    style: 'under',
+    pxMargin: '-6px',
+    bringToFrontOnHover: false,
+    subElementClass: undefined
+  };
+  const DefaultUsageTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <OSS::StackContainer
+          @direction={{this.direction}}
+          @style={{this.style}}
+          @pxMargin={{this.pxMargin}}
+          @bringToFrontOnHover={{this.bringToFrontOnHover}}
+          @subElementClass={{this.subElementClass}}
+        >
+          <div class="stack-item" style="border-radius: 8px; color: black; background-color: white; border: 1px solid blue">Item 1</div>
+          <div class="stack-item" style="border-radius: 8px; color: black; background-color: pink; border: 1px solid blue">Item 2</div>
+          <div class="stack-item" style="border-radius: 8px; color: black; background-color: yellow; border: 1px solid blue">Item 3</div>
+        </OSS::StackContainer>
+      
+    */
+    {
+      "id": "OMeGuAga",
+      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@direction\",\"@style\",\"@pxMargin\",\"@bringToFrontOnHover\",\"@subElementClass\"],[[30,0,[\"direction\"]],[30,0,[\"style\"]],[30,0,[\"pxMargin\"]],[30,0,[\"bringToFrontOnHover\"]],[30,0,[\"subElementClass\"]]]],[[\"default\"],[[[[1,\"\\n      \"],[10,0],[14,0,\"stack-item\"],[14,5,\"border-radius: 8px; color: black; background-color: white; border: 1px solid blue\"],[12],[1,\"Item 1\"],[13],[1,\"\\n      \"],[10,0],[14,0,\"stack-item\"],[14,5,\"border-radius: 8px; color: black; background-color: pink; border: 1px solid blue\"],[12],[1,\"Item 2\"],[13],[1,\"\\n      \"],[10,0],[14,0,\"stack-item\"],[14,5,\"border-radius: 8px; color: black; background-color: yellow; border: 1px solid blue\"],[12],[1,\"Item 3\"],[13],[1,\"\\n    \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/stack-container\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/stack-container.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const BasicUsage = _exports.BasicUsage = DefaultUsageTemplate.bind({});
+  BasicUsage.args = defaultArgs;
 });
 ;define("@upfluence/oss-components/components/o-s-s/star-rating", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@ember/object", "@glimmer/tracking", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _object, _tracking, _templateFactory) {
   "use strict";

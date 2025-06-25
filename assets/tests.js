@@ -5955,6 +5955,311 @@ define("dummy/tests/integration/components/o-s-s/empty-state-test", ["qunit", "e
     });
   });
 });
+define("dummy/tests/integration/components/o-s-s/expandable-badge-test", ["qunit", "ember-qunit", "ember-intl/test-support", "@ember/test-helpers", "@upfluence/oss-components/components/o-s-s/badge", "@ember/template-factory"], function (_qunit, _emberQunit, _testSupport, _testHelpers, _badge, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"qunit",0,"ember-qunit",0,"ember-intl/test-support",0,"@ember/test-helpers",0,"@upfluence/oss-components/components/o-s-s/badge"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/expandable-badge', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _testSupport.setupIntl)(hooks);
+    (0, _qunit.module)('sizes', function () {
+      (0, _qunit.test)('it sets the right class when usng a supported size', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ExpandableBadge @size="lg" @text="2x" @expandedLabel="content" />
+        */
+        {
+          "id": "3OWJ1LyD",
+          "block": "[[[8,[39,0],null,[[\"@size\",\"@text\",\"@expandedLabel\"],[\"lg\",\"2x\",\"content\"]],null]],[],false,[\"o-s-s/expandable-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/expandable-badge-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-badge').exists();
+        assert.dom('.upf-badge').hasClass('upf-badge--size-lg');
+      });
+      (0, _qunit.test)('it defaults to md size if none is passed', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ExpandableBadge @text="2x" @expandedLabel="content" />
+        */
+        {
+          "id": "8XpwuWJj",
+          "block": "[[[8,[39,0],null,[[\"@text\",\"@expandedLabel\"],[\"2x\",\"content\"]],null]],[],false,[\"o-s-s/expandable-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/expandable-badge-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-badge').exists();
+        assert.dom('.upf-badge').hasClass('upf-badge--size-md');
+      });
+    });
+    (0, _qunit.module)('Expansion behavior', function () {
+      (0, _qunit.test)('On touch event, it expands the badge', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ExpandableBadge @icon="fa-robot" @expandedLabel="content" />
+        */
+        {
+          "id": "xLoI9jNJ",
+          "block": "[[[8,[39,0],null,[[\"@icon\",\"@expandedLabel\"],[\"fa-robot\",\"content\"]],null]],[],false,[\"o-s-s/expandable-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/expandable-badge-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-expandable-badge').doesNotHaveClass('upf-expandable-badge--expanded');
+        const touch = new Touch({
+          identifier: Date.now(),
+          target: this.element.querySelector('.upf-expandable-badge')
+        });
+        await this.element.querySelector('.upf-expandable-badge')?.dispatchEvent(new TouchEvent('touchend', {
+          touches: [touch],
+          bubbles: true,
+          cancelable: true
+        }));
+        await (0, _testHelpers.settled)();
+        assert.dom('.upf-expandable-badge').hasClass('upf-expandable-badge--expanded');
+      });
+      (0, _qunit.test)('On mouse enter, it expands the badge', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ExpandableBadge @icon="fa-robot" @expandedLabel="content" />
+        */
+        {
+          "id": "xLoI9jNJ",
+          "block": "[[[8,[39,0],null,[[\"@icon\",\"@expandedLabel\"],[\"fa-robot\",\"content\"]],null]],[],false,[\"o-s-s/expandable-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/expandable-badge-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-expandable-badge').doesNotHaveClass('upf-expandable-badge--expanded');
+        await this.element.querySelector('.upf-expandable-badge')?.dispatchEvent(new MouseEvent('mouseenter', {
+          bubbles: true,
+          cancelable: true
+        }));
+        await (0, _testHelpers.settled)();
+        assert.dom('.upf-expandable-badge').hasClass('upf-expandable-badge--expanded');
+      });
+      (0, _qunit.test)('On mouse leave, it collapses the badge', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ExpandableBadge @icon="fa-robot" @expandedLabel="content" />
+        */
+        {
+          "id": "xLoI9jNJ",
+          "block": "[[[8,[39,0],null,[[\"@icon\",\"@expandedLabel\"],[\"fa-robot\",\"content\"]],null]],[],false,[\"o-s-s/expandable-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/expandable-badge-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-expandable-badge').doesNotHaveClass('upf-expandable-badge--expanded');
+        await this.element.querySelector('.upf-expandable-badge')?.dispatchEvent(new MouseEvent('mouseenter', {
+          bubbles: true,
+          cancelable: true
+        }));
+        await (0, _testHelpers.settled)();
+        assert.dom('.upf-expandable-badge').hasClass('upf-expandable-badge--expanded');
+        await this.element.querySelector('.upf-expandable-badge')?.dispatchEvent(new MouseEvent('mouseleave', {
+          bubbles: true,
+          cancelable: true
+        }));
+        await (0, _testHelpers.settled)();
+        assert.dom('.upf-expandable-badge').doesNotHaveClass('upf-expandable-badge--expanded');
+      });
+    });
+    (0, _qunit.module)('skins', function () {
+      Object.keys(_badge.SkinDefinition).forEach(skin => {
+        (0, _qunit.test)(`it sets the right class when using a supported skin: ${skin}`, async function (assert) {
+          this.skin = skin;
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::ExpandableBadge @skin={{this.skin}} @text="2x" @expandedLabel="content" />
+          */
+          {
+            "id": "9EVW+H+F",
+            "block": "[[[8,[39,0],null,[[\"@skin\",\"@text\",\"@expandedLabel\"],[[30,0,[\"skin\"]],\"2x\",\"content\"]],null]],[],false,[\"o-s-s/expandable-badge\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/expandable-badge-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.upf-badge').exists();
+          assert.dom('.upf-badge').hasClass(`upf-badge--${skin.startsWith('xtd') ? skin.replace('xtd', 'extended') : skin}`);
+        });
+      });
+      (0, _qunit.test)('it adds the plain class when passed', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ExpandableBadge @skin="primary" @plain={{true}} @text="2x" @expandedLabel="content" />
+        */
+        {
+          "id": "2adjDmna",
+          "block": "[[[8,[39,0],null,[[\"@skin\",\"@plain\",\"@text\",\"@expandedLabel\"],[\"primary\",true,\"2x\",\"content\"]],null]],[],false,[\"o-s-s/expandable-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/expandable-badge-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-badge').hasClass('upf-badge--plain');
+      });
+    });
+    (0, _qunit.module)('content args', function () {
+      (0, _qunit.test)('it displays the right icon when using the @icon arg', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ExpandableBadge @icon="fas fa-users" @expandedLabel="content" />
+        */
+        {
+          "id": "3nPu1dkN",
+          "block": "[[[8,[39,0],null,[[\"@icon\",\"@expandedLabel\"],[\"fas fa-users\",\"content\"]],null]],[],false,[\"o-s-s/expandable-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/expandable-badge-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-badge').exists();
+        assert.dom('.upf-badge i').hasAttribute('class', 'fas fa-users');
+      });
+      (0, _qunit.test)('it displays the right text when using the @text arg', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ExpandableBadge @text="2x" @expandedLabel="content" />
+        */
+        {
+          "id": "8XpwuWJj",
+          "block": "[[[8,[39,0],null,[[\"@text\",\"@expandedLabel\"],[\"2x\",\"content\"]],null]],[],false,[\"o-s-s/expandable-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/expandable-badge-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-badge').exists();
+        assert.dom('.upf-badge .upf-badge__text').exists();
+        assert.dom('.upf-badge .upf-badge__text').hasText('2x');
+      });
+      (0, _qunit.test)('it displays the right image when using the @image arg', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ExpandableBadge @image="http://foo.co/bar.png" @expandedLabel="content" />
+        */
+        {
+          "id": "W7S8MQRL",
+          "block": "[[[8,[39,0],null,[[\"@image\",\"@expandedLabel\"],[\"http://foo.co/bar.png\",\"content\"]],null]],[],false,[\"o-s-s/expandable-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/expandable-badge-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-badge').exists();
+        assert.dom('.upf-badge img').exists();
+        assert.dom('.upf-badge img').hasAttribute('src', 'http://foo.co/bar.png');
+      });
+      (0, _qunit.test)('it displays the right flag when using the @flag arg', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ExpandableBadge @flag="fr" @expandedLabel="France" />
+        */
+        {
+          "id": "I51sy2fW",
+          "block": "[[[8,[39,0],null,[[\"@flag\",\"@expandedLabel\"],[\"fr\",\"France\"]],null]],[],false,[\"o-s-s/expandable-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/expandable-badge-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-badge .fflag.fflag-FR').exists();
+      });
+    });
+    (0, _qunit.module)('@fontColorClass parameter', function () {
+      (0, _qunit.test)('applies to the icon when passed', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ExpandableBadge @icon="fas fa-users" @fontColorClass="text-primary" @expandedLabel="content" />
+        */
+        {
+          "id": "6tr51TR0",
+          "block": "[[[8,[39,0],null,[[\"@icon\",\"@fontColorClass\",\"@expandedLabel\"],[\"fas fa-users\",\"text-primary\",\"content\"]],null]],[],false,[\"o-s-s/expandable-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/expandable-badge-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-expandable-badge i').hasClass('text-primary');
+      });
+      (0, _qunit.test)('applies to the span when passed', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ExpandableBadge @text="2x" @fontColorClass="text-primary" @expandedLabel="content" />
+        */
+        {
+          "id": "/XYl4qPw",
+          "block": "[[[8,[39,0],null,[[\"@text\",\"@fontColorClass\",\"@expandedLabel\"],[\"2x\",\"text-primary\",\"content\"]],null]],[],false,[\"o-s-s/expandable-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/expandable-badge-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-expandable-badge__label').hasClass('text-primary');
+      });
+    });
+    (0, _qunit.module)('Error management', function () {
+      (0, _qunit.test)('it throws an error when an unsupported skin is passed', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::ExpandableBadge] Unknown skin. Available skins are: primary, success, alert, error, xtd-cyan, xtd-orange, xtd-yellow, xtd-lime, xtd-blue, xtd-violet, xtd-smart');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ExpandableBadge @skin="foo" @text="2x" @expandedLabel="content" />
+        */
+        {
+          "id": "K4MkyQUV",
+          "block": "[[[8,[39,0],null,[[\"@skin\",\"@text\",\"@expandedLabel\"],[\"foo\",\"2x\",\"content\"]],null]],[],false,[\"o-s-s/expandable-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/expandable-badge-test.ts",
+          "isStrictMode": false
+        }));
+      });
+      (0, _qunit.test)('it throws an error when an unsupported size is passed', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::ExpandableBadge] Unknown size. Available sizes are: sm, md, lg');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ExpandableBadge @size="foo" @text="2x" @expandedLabel="content" />
+        */
+        {
+          "id": "4W6uwE3T",
+          "block": "[[[8,[39,0],null,[[\"@size\",\"@text\",\"@expandedLabel\"],[\"foo\",\"2x\",\"content\"]],null]],[],false,[\"o-s-s/expandable-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/expandable-badge-test.ts",
+          "isStrictMode": false
+        }));
+      });
+      (0, _qunit.test)('it throws an error if no @expandableLabel argument is passed', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::ExpandableBadge] The @expandableLabel argument is mandatory.');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ExpandableBadge @icon="fas fa-users" />
+        */
+        {
+          "id": "wHn3JnTU",
+          "block": "[[[8,[39,0],null,[[\"@icon\"],[\"fas fa-users\"]],null]],[],false,[\"o-s-s/expandable-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/expandable-badge-test.ts",
+          "isStrictMode": false
+        }));
+      });
+      (0, _qunit.test)('it throws an error if no argument is passed', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::ExpandableBadge] One of @icon, @image, @flag or @text arguments is mandatory. You passed 0 arguments');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ExpandableBadge />
+        */
+        {
+          "id": "Tc+YYKBF",
+          "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/expandable-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/expandable-badge-test.ts",
+          "isStrictMode": false
+        }));
+      });
+      (0, _qunit.test)('it throws an error if more than one content argument is passed', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::ExpandableBadge] One of @icon, @image, @flag or @text arguments is mandatory. You passed 2 arguments');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ExpandableBadge @icon="fas fa-users" @text="2x" />
+        */
+        {
+          "id": "69pUgaOd",
+          "block": "[[[8,[39,0],null,[[\"@icon\",\"@text\"],[\"fas fa-users\",\"2x\"]],null]],[],false,[\"o-s-s/expandable-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/expandable-badge-test.ts",
+          "isStrictMode": false
+        }));
+      });
+    });
+  });
+});
 define("dummy/tests/integration/components/o-s-s/form-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
   "use strict";
 
@@ -12974,6 +13279,234 @@ define("dummy/tests/integration/components/o-s-s/split-modal-test", ["qunit", "e
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/split-modal-test.ts",
           "isStrictMode": false
         }));
+      });
+    });
+  });
+});
+define("dummy/tests/integration/components/o-s-s/stack-container-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/stack-container', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::StackContainer />
+      */
+      {
+        "id": "lUC3fTMm",
+        "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/stack-container\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stack-container-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-stack-container').exists();
+    });
+    (0, _qunit.module)('@direction parameter', function () {
+      (0, _qunit.test)('it defaults to "row"', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::StackContainer />
+        */
+        {
+          "id": "lUC3fTMm",
+          "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/stack-container\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stack-container-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-stack-container').hasClass('oss-stack-container--row');
+      });
+      (0, _qunit.test)('passing "row" as parameter sets the direction to row', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::StackContainer @direction="row" />
+        */
+        {
+          "id": "cPrNDRgj",
+          "block": "[[[8,[39,0],null,[[\"@direction\"],[\"row\"]],null]],[],false,[\"o-s-s/stack-container\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stack-container-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-stack-container').hasClass('oss-stack-container--row');
+      });
+      (0, _qunit.test)('passing "column" as parameter sets the direction to column', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::StackContainer @direction="column" />
+        */
+        {
+          "id": "9J2mMmNC",
+          "block": "[[[8,[39,0],null,[[\"@direction\"],[\"column\"]],null]],[],false,[\"o-s-s/stack-container\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stack-container-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-stack-container').hasClass('oss-stack-container--column');
+      });
+    });
+    (0, _qunit.module)('@style parameter', function () {
+      (0, _qunit.test)('when "under" is passed, sub-elements have a raising z-index', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::StackContainer @style="under"><div></div><div></div><div></div></OSS::StackContainer>
+        */
+        {
+          "id": "ckWj/R4Y",
+          "block": "[[[8,[39,0],null,[[\"@style\"],[\"under\"]],[[\"default\"],[[[[10,0],[12],[13],[10,0],[12],[13],[10,0],[12],[13]],[]]]]]],[],false,[\"o-s-s/stack-container\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stack-container-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-stack-container').hasClass('oss-stack-container--style-under');
+        const subElements = document.querySelectorAll('.oss-stack-container > *');
+        subElements.forEach((child, index) => {
+          assert.strictEqual(child.style.zIndex, index.toString(), `Child ${index} has z-index ${index}`);
+        });
+      });
+      (0, _qunit.test)('when "over" is passed, sub-elements have a lowering z-index', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::StackContainer @style="over"><div></div><div></div><div></div></OSS::StackContainer>
+        */
+        {
+          "id": "ycaqkh++",
+          "block": "[[[8,[39,0],null,[[\"@style\"],[\"over\"]],[[\"default\"],[[[[10,0],[12],[13],[10,0],[12],[13],[10,0],[12],[13]],[]]]]]],[],false,[\"o-s-s/stack-container\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stack-container-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-stack-container').hasClass('oss-stack-container--style-over');
+        const subElements = document.querySelectorAll('.oss-stack-container > *');
+        subElements.forEach((child, index) => {
+          assert.strictEqual(child.style.zIndex, (subElements.length - 1 - index).toString(), `Child ${index} has z-index ${subElements.length - 1 - index}`);
+        });
+      });
+      (0, _qunit.test)('it defaults to "under" style', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::StackContainer />
+        */
+        {
+          "id": "lUC3fTMm",
+          "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/stack-container\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stack-container-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-stack-container').hasClass('oss-stack-container--style-under');
+      });
+    });
+    (0, _qunit.module)('@pxMargin parameter', function () {
+      (0, _qunit.test)('it applies a margin to sub-elements except the last one', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::StackContainer @pxMargin="10" @style="under"><div></div><div></div><div></div></OSS::StackContainer>
+        */
+        {
+          "id": "VNgW+Un7",
+          "block": "[[[8,[39,0],null,[[\"@pxMargin\",\"@style\"],[\"10\",\"under\"]],[[\"default\"],[[[[10,0],[12],[13],[10,0],[12],[13],[10,0],[12],[13]],[]]]]]],[],false,[\"o-s-s/stack-container\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stack-container-test.ts",
+          "isStrictMode": false
+        }));
+        const subElements = document.querySelectorAll('.oss-stack-container > *');
+        subElements.forEach((child, index) => {
+          if (index < subElements.length - 1) {
+            assert.strictEqual(child.style.marginRight, '-10px');
+          } else {
+            assert.strictEqual(child.style.marginRight, '');
+          }
+        });
+      });
+      (0, _qunit.test)('the margin defaults to -6px if not specified', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::StackContainer @style="under"><div></div><div></div><div></div></OSS::StackContainer>
+        */
+        {
+          "id": "ckWj/R4Y",
+          "block": "[[[8,[39,0],null,[[\"@style\"],[\"under\"]],[[\"default\"],[[[[10,0],[12],[13],[10,0],[12],[13],[10,0],[12],[13]],[]]]]]],[],false,[\"o-s-s/stack-container\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stack-container-test.ts",
+          "isStrictMode": false
+        }));
+        const subElements = document.querySelectorAll('.oss-stack-container > *');
+        subElements.forEach((child, index) => {
+          if (index < subElements.length - 1) {
+            assert.strictEqual(child.style.marginRight, '-6px', 'Default margin is applied');
+          } else {
+            assert.strictEqual(child.style.marginRight, '', 'No margin for the last child');
+          }
+        });
+      });
+      (0, _qunit.test)('passing a positive margin converts it to a negative margin', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::StackContainer @pxMargin="20" @style="under"><div></div><div></div><div></div></OSS::StackContainer>
+        */
+        {
+          "id": "V+iwpdRN",
+          "block": "[[[8,[39,0],null,[[\"@pxMargin\",\"@style\"],[\"20\",\"under\"]],[[\"default\"],[[[[10,0],[12],[13],[10,0],[12],[13],[10,0],[12],[13]],[]]]]]],[],false,[\"o-s-s/stack-container\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stack-container-test.ts",
+          "isStrictMode": false
+        }));
+        const subElements = document.querySelectorAll('.oss-stack-container > *');
+        subElements.forEach((child, index) => {
+          if (index < subElements.length - 1) {
+            assert.strictEqual(child.style.marginRight, '-20px', 'Margin is negative');
+          } else {
+            assert.strictEqual(child.style.marginRight, '', 'No margin for the last child');
+          }
+        });
+      });
+    });
+    (0, _qunit.module)('@bringToFrontOnHover parameter', function () {
+      (0, _qunit.test)('it does not bring elements to front by default', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::StackContainer @style="under"><div></div><div></div><div></div></OSS::StackContainer>
+        */
+        {
+          "id": "ckWj/R4Y",
+          "block": "[[[8,[39,0],null,[[\"@style\"],[\"under\"]],[[\"default\"],[[[[10,0],[12],[13],[10,0],[12],[13],[10,0],[12],[13]],[]]]]]],[],false,[\"o-s-s/stack-container\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stack-container-test.ts",
+          "isStrictMode": false
+        }));
+        const subElements = document.querySelectorAll('.oss-stack-container > *');
+        subElements.forEach((child, index) => {
+          assert.strictEqual(child.style.zIndex, index.toString(), `Child ${index} has z-index ${index}`);
+        });
+      });
+      (0, _qunit.test)('it brings elements to front on hover when specified', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::StackContainer @bringToFrontOnHover={{true}} @style="under"><div></div><div></div><div></div></OSS::StackContainer>
+        */
+        {
+          "id": "ncd3nvs1",
+          "block": "[[[8,[39,0],null,[[\"@bringToFrontOnHover\",\"@style\"],[true,\"under\"]],[[\"default\"],[[[[10,0],[12],[13],[10,0],[12],[13],[10,0],[12],[13]],[]]]]]],[],false,[\"o-s-s/stack-container\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stack-container-test.ts",
+          "isStrictMode": false
+        }));
+        const subElements = document.querySelectorAll('.oss-stack-container > *');
+        subElements.forEach((child, index) => {
+          child.dispatchEvent(new MouseEvent('mouseenter'));
+          assert.strictEqual(child.style.zIndex, subElements.length.toString());
+          child.dispatchEvent(new MouseEvent('mouseleave'));
+          assert.strictEqual(child.style.zIndex, index.toString());
+        });
+      });
+    });
+    (0, _qunit.module)('@subElementClass parameter', function () {
+      (0, _qunit.test)('it applies the specified class to each sub-element', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::StackContainer @subElementClass="custom-class" @style="under"><div></div><div></div><div></div></OSS::StackContainer>
+        */
+        {
+          "id": "vjMdIPMb",
+          "block": "[[[8,[39,0],null,[[\"@subElementClass\",\"@style\"],[\"custom-class\",\"under\"]],[[\"default\"],[[[[10,0],[12],[13],[10,0],[12],[13],[10,0],[12],[13]],[]]]]]],[],false,[\"o-s-s/stack-container\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/stack-container-test.ts",
+          "isStrictMode": false
+        }));
+        const subElements = document.querySelectorAll('.oss-stack-container > *');
+        subElements.forEach(child => {
+          assert.dom(child).hasClass('custom-class');
+        });
       });
     });
   });

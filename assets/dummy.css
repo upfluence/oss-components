@@ -10726,6 +10726,66 @@ a.upf-btn--sm {
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
 }
+.upf-expandable-badge {
+  border-radius: 999px;
+  color: var(--color-gray-900);
+  white-space: nowrap;
+}
+.upf-expandable-badge--expanded.upf-badge--size-sm:not(:has(img)) {
+  padding: var(--spacing-px-3);
+}
+.upf-expandable-badge--expanded.upf-badge--size-sm:has(img) {
+  padding-right: var(--spacing-px-6);
+}
+.upf-expandable-badge--expanded.upf-badge--size-sm img {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+}
+.upf-expandable-badge--expanded.upf-badge--size-md:not(:has(img)) {
+  padding: var(--spacing-px-12);
+}
+.upf-expandable-badge--expanded.upf-badge--size-md:has(img) {
+  padding-right: var(--spacing-px-12);
+}
+.upf-expandable-badge--expanded.upf-badge--size-md img {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+.upf-expandable-badge--expanded.upf-badge--size-lg:not(:has(img)) {
+  padding: var(--spacing-px-18);
+}
+.upf-expandable-badge--expanded.upf-badge--size-lg:has(img) {
+  padding-right: var(--spacing-px-12);
+}
+.upf-expandable-badge--expanded.upf-badge--size-lg img {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+}
+.upf-expandable-badge--expanded {
+  width: fit-content;
+  min-width: fit-content;
+  transition: width 0.3s linear;
+}
+.upf-expandable-badge--expanded:not(:has(img)) {
+  padding: var(--spacing-px-12);
+}
+.upf-expandable-badge--expanded .upf-expandable-badge__label {
+  opacity: 1;
+  width: auto;
+  margin-left: var(--spacing-px-6);
+  transition: opacity 0.3s linear, width 0.3s linear, margin 0.3s linear;
+}
+.upf-expandable-badge__label {
+  display: inline-block;
+  opacity: 0;
+  width: 0;
+  margin-left: 0;
+  overflow: hidden;
+  vertical-align: middle;
+}
 .upf-chip {
   display: flex;
   align-items: center;
@@ -12407,6 +12467,16 @@ a.upf-btn--sm {
 }
 .oss-avatar-group--has-remaining .upf-avatar:last-child {
   background-color: var(--color-gray-100);
+}
+.oss-stack-container {
+  position: relative;
+  display: flex;
+}
+.oss-stack-container--row {
+  flex-direction: row;
+}
+.oss-stack-container--column {
+  flex-direction: column;
 }
 .upf-table-v2 {
   border: 1px solid var(--color-border-default);
