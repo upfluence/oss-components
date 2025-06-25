@@ -11,6 +11,7 @@ module('Integration | Component | o-s-s/smart/immersive/currency-input', functio
 
   hooks.beforeEach(function () {
     this.onChange = sinon.stub();
+    this.placeholder = 'Placeholder';
   });
 
   test('it renders', async function (assert) {
@@ -121,9 +122,9 @@ module('Integration | Component | o-s-s/smart/immersive/currency-input', functio
 
     test('Placeholder is correctly displayed when provided', async function (assert) {
       await render(
-        hbs`<OSS::Smart::Immersive::CurrencyInput @currency="" @value="" @placeholder="foobar" @onChange={{this.onChange}} />`
+        hbs`<OSS::Smart::Immersive::CurrencyInput @currency="" @value="" @placeholder={{this.placeholder}} @onChange={{this.onChange}} />`
       );
-      assert.dom('input').hasAttribute('placeholder', 'foobar');
+      assert.dom('input').hasAttribute('placeholder', 'Placeholder');
     });
   });
 
@@ -168,6 +169,32 @@ module('Integration | Component | o-s-s/smart/immersive/currency-input', functio
       });
 
       assert.dom('input').hasValue('123407890');
+    });
+  });
+
+  module('Loading', () => {
+    hooks.beforeEach(function () {
+      this.loading = true;
+    });
+
+    test('When the component is loading, it displays an animated div instead of the input', async function (assert) {
+      await render(
+        hbs`<OSS::Smart::Immersive::CurrencyInput @onChange={{this.onChange}} @placeholder={{this.placeholder}}
+                                                  @loading={{this.loading}} />`
+      );
+
+      assert.dom('.smart-immersive-currency-input-container input').doesNotExist();
+      assert.dom('.loading-placeholder').exists();
+      assert.dom('.loading-placeholder').hasText(this.placeholder);
+    });
+
+    test('Once loading is over, it displays an animation', async function (assert) {
+      await render(
+        hbs`<OSS::Smart::Immersive::CurrencyInput @onChange={{this.onChange}} @value="12345"
+                                                  @placeholder="Placeholder" @loading={{this.loading}} />`
+      );
+      this.set('loading', false);
+      assert.dom('.smart-immersive-currency-input-container').hasClass('smart-rotating-gradient');
     });
   });
 
