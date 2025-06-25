@@ -7,7 +7,7 @@
   ...attributes
 >
   {{#if @icon}}
-    <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} class={{@fontColor}}/>
+    <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} class={{@fontColorClass}}/>
   {{else if @image}}
     <img src={{@image}} alt={{t "oss-components.badge.image_alt"}} />
   {{else if @flag}}
@@ -15,5 +15,5 @@
   {{else}}
     <span class="upf-badge__text">{{@text}}</span>
   {{/if}}
-  <span class="upf-expandable-badge__label {{@fontColor}}">{{@expandedLabel}}</span>
+  <span class="upf-expandable-badge__label {{@fontColorClass}}">{{@expandedLabel}}</span>
 </div>

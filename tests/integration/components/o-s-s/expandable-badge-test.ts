@@ -136,6 +136,22 @@ module('Integration | Component | o-s-s/expandable-badge', function (hooks) {
     });
   });
 
+  module('@fontColorClass parameter', function () {
+    test('applies to the icon when passed', async function (assert: Assert) {
+      await render(
+        hbs`<OSS::ExpandableBadge @icon="fas fa-users" @fontColorClass="text-primary" @expandedLabel="content" />`
+      );
+
+      assert.dom('.upf-expandable-badge i').hasClass('text-primary');
+    });
+
+    test('applies to the span when passed', async function (assert: Assert) {
+      await render(hbs`<OSS::ExpandableBadge @text="2x" @fontColorClass="text-primary" @expandedLabel="content" />`);
+
+      assert.dom('.upf-expandable-badge__label').hasClass('text-primary');
+    });
+  });
+
   module('Error management', function () {
     test('it throws an error when an unsupported skin is passed', async function (assert: Assert) {
       setupOnerror((err: Error) => {

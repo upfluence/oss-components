@@ -80,33 +80,33 @@ module('Integration | Component | o-s-s/stack-container', function (hooks) {
           assert.strictEqual((child as HTMLElement).style.marginRight, '');
         }
       });
+    });
 
-      test('the margin defaults to -3px if not specified', async function (assert) {
-        await render(hbs`<OSS::StackContainer @style="under"><div></div><div></div><div></div></OSS::StackContainer>`);
+    test('the margin defaults to -6px if not specified', async function (assert) {
+      await render(hbs`<OSS::StackContainer @style="under"><div></div><div></div><div></div></OSS::StackContainer>`);
 
-        const subElements = document.querySelectorAll('.oss-stack-container > *');
-        subElements.forEach((child, index) => {
-          if (index < subElements.length - 1) {
-            assert.strictEqual((child as HTMLElement).style.marginRight, '-3px', 'Default margin is applied');
-          } else {
-            assert.strictEqual((child as HTMLElement).style.marginRight, '', 'No margin for the last child');
-          }
-        });
+      const subElements = document.querySelectorAll('.oss-stack-container > *');
+      subElements.forEach((child, index) => {
+        if (index < subElements.length - 1) {
+          assert.strictEqual((child as HTMLElement).style.marginRight, '-6px', 'Default margin is applied');
+        } else {
+          assert.strictEqual((child as HTMLElement).style.marginRight, '', 'No margin for the last child');
+        }
       });
+    });
 
-      test('passing a positive margin converts it to a negative margin', async function (assert) {
-        await render(
-          hbs`<OSS::StackContainer @pxMargin="20" @style="under"><div></div><div></div><div></div></OSS::StackContainer>`
-        );
+    test('passing a positive margin converts it to a negative margin', async function (assert) {
+      await render(
+        hbs`<OSS::StackContainer @pxMargin="20" @style="under"><div></div><div></div><div></div></OSS::StackContainer>`
+      );
 
-        const subElements = document.querySelectorAll('.oss-stack-container > *');
-        subElements.forEach((child, index) => {
-          if (index < subElements.length - 1) {
-            assert.strictEqual((child as HTMLElement).style.marginRight, '-20px', 'Margin is negative');
-          } else {
-            assert.strictEqual((child as HTMLElement).style.marginRight, '', 'No margin for the last child');
-          }
-        });
+      const subElements = document.querySelectorAll('.oss-stack-container > *');
+      subElements.forEach((child, index) => {
+        if (index < subElements.length - 1) {
+          assert.strictEqual((child as HTMLElement).style.marginRight, '-20px', 'Margin is negative');
+        } else {
+          assert.strictEqual((child as HTMLElement).style.marginRight, '', 'No margin for the last child');
+        }
       });
     });
   });

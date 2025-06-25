@@ -7,7 +7,7 @@ import { next } from '@ember/runloop';
 interface OSSExpandableBadgeComponentSignature extends OSSBadgeArgs {
   expandedLabel: string;
   flag?: string;
-  fontColor?: string;
+  fontColorClass?: string;
 }
 
 export default class OSSExpandableBadgeComponent extends OSSBadge<OSSExpandableBadgeComponentSignature> {
