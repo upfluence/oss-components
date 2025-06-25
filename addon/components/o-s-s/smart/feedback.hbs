@@ -12,13 +12,11 @@
       {{#if @contentString}}
         <span class="oss-smart__feedback__content__text typing-effect">{{@contentString}}</span>
       {{else if @contentArray}}
-        <div>
-          <span class="oss-smart__feedback__content__text">
-            {{#each @contentArray as |item|}}
-              {{item}}
-            {{/each}}
-          </span>
-        </div>
+        <span class="oss-smart__feedback__content__text">
+          {{#each @contentArray as |item|}}
+            {{item}}
+          {{/each}}
+        </span>
       {{/if}}
     {{/if}}
   </div>
