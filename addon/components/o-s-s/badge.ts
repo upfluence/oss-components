@@ -1,15 +1,15 @@
 import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 
-type SizeType = 'sm' | 'md' | 'lg';
-type SizeDefType = { [key in SizeType]: string };
-const SizeDefinition: SizeDefType = {
+export type SizeType = 'sm' | 'md' | 'lg';
+export type SizeDefType = { [key in SizeType]: string };
+export const SizeDefinition: SizeDefType = {
   sm: 'upf-badge--size-sm',
   md: 'upf-badge--size-md',
   lg: 'upf-badge--size-lg'
 };
 
-type SkinType =
+export type SkinType =
   | 'primary'
   | 'success'
   | 'alert'
@@ -21,7 +21,7 @@ type SkinType =
   | 'xtd-blue'
   | 'xtd-violet'
   | 'xtd-smart';
-type SkinDefType = { [key in SkinType]: string };
+export type SkinDefType = { [key in SkinType]: string };
 export const SkinDefinition: SkinDefType = {
   primary: 'upf-badge--primary',
   success: 'upf-badge--success',
@@ -36,7 +36,7 @@ export const SkinDefinition: SkinDefType = {
   'xtd-smart': 'upf-badge--extended-smart'
 };
 
-interface OSSBadgeArgs {
+export interface OSSBadgeArgs {
   icon: string;
   image: string;
   text: string;
@@ -45,9 +45,11 @@ interface OSSBadgeArgs {
   size?: SizeType;
 }
 
-export default class OSSBadge extends Component<OSSBadgeArgs> {
-  constructor(owner: unknown, args: OSSBadgeArgs) {
+export default class OSSBadge<T extends OSSBadgeArgs> extends Component<T> {
+  constructor(owner: unknown, args: OSSBadgeArgs, bypassAssertions: boolean = false) {
     super(owner, args);
+
+    if (bypassAssertions) return;
 
     const contentArguments = [args.icon, args.image, args.text].filter((arg: string) => arg);
 
