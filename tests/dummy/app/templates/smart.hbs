@@ -202,6 +202,22 @@
     </div>
   </div>
 
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="fx-col fx-1 fx-gap-px-10">
+      <div class="font-size-md fx-row fx-gap-px-12 fx-xalign-center font-weight-semibold">
+        <span>Smart feedback : loading {{this.smartFeedbackLoading}}</span>
+        <OSS::ToggleSwitch @value={{this.smartFeedbackLoading}} @onChange={{this.toggleSmartFeedbackLoading}} />
+      </div>
+      <OSS::Smart::Feedback @loading={{this.smartFeedbackLoading}} @contentArray={{this.contentArray}}>
+        <:icon>
+          <OSS::Avatar @initials={{concat "+" "123"}} @size={{"sm"}} />
+        </:icon>
+      </OSS::Smart::Feedback>
+    </div>
+  </div>
+
   <div class="fx-row fx-gap-px-12 font-size-md font-weight-semibold">
     Smart Inputs
     <OSS::ToggleSwitch @label="Toggle" @value={{this.toggleInputLoadingValue}} @onChange={{this.toggleInputLoading}} />
