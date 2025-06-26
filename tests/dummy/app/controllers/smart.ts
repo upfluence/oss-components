@@ -17,7 +17,6 @@ export default class Smart extends Controller {
     { value: 'first', label: 'First' },
     { value: 'second', label: 'Second' }
   ];
-
   @tracked declare value: string;
   @tracked loading: boolean = false;
   @tracked currency: string = 'USD';
@@ -30,6 +29,9 @@ export default class Smart extends Controller {
   ];
   @tracked hasError: boolean = true;
   @tracked currencyInputLoading: boolean = true;
+  @tracked pillLoading: boolean = true;
+  @tracked selectedPill: boolean = false;
+  @tracked selectedPillTwo: boolean = false;
   intervalId?: number;
 
   constructor() {
@@ -99,5 +101,16 @@ export default class Smart extends Controller {
       }
       index++;
     }, 1000);
+  }
+
+  @action
+  onPillChange(): void {
+    this.selectedPill = !this.selectedPill;
+  }
+
+  @action
+  togglePillLoading(): void {
+    this.pillLoading = !this.pillLoading;
+    this.selectedPillTwo = !this.pillLoading;
   }
 }
