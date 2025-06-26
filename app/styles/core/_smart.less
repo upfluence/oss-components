@@ -55,21 +55,24 @@
       content: '';
       position: absolute;
       inset: 0;
+      z-index: -1;
+      pointer-events: none;
+
       background: linear-gradient(
         270deg,
-        rgba(245, 245, 244, 0.7) 72.53%,
+        rgba(245, 245, 244, 0) 65%,
         rgba(250, 198, 255, 0.7) 73.75%,
         rgba(208, 217, 255, 0.8) 76.81%,
         rgba(255, 255, 255, 0.3) 81.54%,
         #fac6ff 85.82%,
         #d0d9ff 92.59%,
-        #f5f5f4 102.78%
+        rgba(245, 245, 244, 0) 100%
       );
+      background-size: 300% 100%;
       background-repeat: no-repeat;
-      animation: stripeGrow 2s linear infinite;
+      background-blend-mode: normal;
+      animation: stripeGlow 2s ease-in-out infinite;
       opacity: 0.6;
-      z-index: -1;
-      pointer-events: none;
     }
 
     .logo-icon,
@@ -84,12 +87,21 @@
 .oss-smart__immersive-icon-container:hover {
   .edit-overlay {
     display: flex;
-    background-color: var(--color-gray-900);
+    background-color: var(--color-gray-600);
     opacity: 60%;
     color: var(--color-white);
     z-index: 1;
     cursor: pointer;
   }
+}
+
+.edit-overlay:active {
+  display: flex;
+  background-color: var(--color-gray-900);
+  opacity: 60%;
+  color: var(--color-white);
+  z-index: 1;
+  cursor: pointer;
 }
 
 .oss-smart__immersive-icon-container--oversize {
@@ -237,12 +249,25 @@
   --logo-color-slate-dark: #64748b;
 }
 
-@keyframes stripeGrow {
+@keyframes stripeGlow {
   0% {
-    background-position: -136px 0;
+    background-position: 100% 0%;
+    transform: scaleX(1);
+    opacity: 0;
   }
-
+  10% {
+    opacity: 1;
+  }
+  50% {
+    background-position: 50% 0%;
+    transform: scaleX(1);
+  }
+  90% {
+    opacity: 1;
+  }
   100% {
-    background-position: calc(136px + 100%) 0;
+    background-position: -100% 0%;
+    transform: scaleX(1.2);
+    opacity: 0;
   }
 }
