@@ -20,6 +20,16 @@ export default class Smart extends Controller {
 
   @tracked declare value: string;
   @tracked loading: boolean = false;
+  @tracked currency: string = 'USD';
+  @tracked declare currencyValue: number;
+  @tracked declare currencyValueTwo: number;
+  @tracked currencyOnly: string = '';
+  allowedCurrencies: { code: string; symbol: string }[] = [
+    { code: 'USD', symbol: '$' },
+    { code: 'EUR', symbol: '€' }
+  ];
+  @tracked hasError: boolean = true;
+  @tracked currencyInputLoading: boolean = true;
   intervalId?: number;
 
   constructor() {
@@ -43,8 +53,25 @@ export default class Smart extends Controller {
   }
 
   @action
+  onCurrencyInputChange(currency: string, value: number): void {
+    console.log(currency, value);
+    this.currency = currency;
+    this.currencyValue = value;
+    this.hasError = !this.hasError;
+  }
+
+  @action
   toggleInputLoading(): void {
     this.toggleInputLoadingValue = !this.toggleInputLoadingValue;
+  }
+
+  @action
+  toggleCurrencyInputLoading(): void {
+    this.currencyInputLoading = !this.currencyInputLoading;
+
+    if (this.currencyInputLoading === false) {
+      this.currencyValue = 77777777777;
+    }
   }
   @action
   toggleSmartFeedbackLoading(): void {

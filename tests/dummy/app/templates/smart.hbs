@@ -34,7 +34,7 @@
     class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
   >
     <div class="font-size-md font-weight-semibold">
-      Button
+      Smart button
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-start">
       <div class="fx-col fx-gap-px-12">
@@ -247,4 +247,36 @@
       @generating={{this.toggleInputGeneratingValue}}
     />
   </div>
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Smart immersive currency input
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <OSS::Smart::Immersive::CurrencyInput
+        @currency={{this.currency}}
+        @value={{this.currencyValue}}
+        @onChange={{this.onCurrencyInputChange}}
+        @allowCurrencyUpdate={{true}}
+        @placeholder="Placeholder"
+        @loading={{this.currencyInputLoading}}
+      />
+      <OSS::Smart::Immersive::CurrencyInput
+        @currency={{this.currency}}
+        @value={{this.currencyValueTwo}}
+        @onChange={{this.onCurrencyInputChange}}
+        @allowCurrencyUpdate={{true}}
+        @placeholder="Placeholder"
+        @loading={{this.currencyInputLoading}}
+        @hasError={{this.hasError}}
+      />
+    </div>
+    <span>Loading = {{this.currencyInputLoading}}</span>
+    <span class="fx-row fx-gap-px-6">Toggle the @loading argument =>
+      <OSS::Button @label="Toggle loading" {{on "click" this.toggleCurrencyInputLoading}} />
+    </span>
+
+  </div>
+
 </div>

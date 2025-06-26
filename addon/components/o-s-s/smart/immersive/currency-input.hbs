@@ -1,9 +1,11 @@
-<div class={{this.computedClasses}} ...attributes>
-  <div
-    class="currency-input fx-row fx-1 fx-xalign-center
-      {{if @onlyCurrency 'onlycurrency'}}
-      {{if this.currencySelectorShown 'currency-input--active'}}"
-  >
+<div
+  class={{this.computedClasses}}
+  id={{this.inputId}}
+  {{did-insert this.registerElement}}
+  {{did-update this.runAnimationOnLoadEnd @loading}}
+  ...attributes
+>
+  <div class="smart-immersive-currency-input fx-row">
     <div
       class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center"
       role={{if this.allowCurrencyUpdate "button" "img"}}
@@ -12,40 +14,38 @@
       <div class="fx-col">
         <div class="fx-row fx-gap-px-9">
           <span>{{this.selectedCurrencySymbol}}</span>
-          {{#if @onlyCurrency}}
-            <span class="margin-right-px-12">{{this.selectedCurrencyCode}}</span>
-          {{/if}}
         </div>
       </div>
 
-      {{#if (and this.allowCurrencyUpdate (not this.disabled))}}
+      {{#if this.allowCurrencyUpdate}}
         <OSS::Icon
           @icon="{{if this.currencySelectorShown 'fa-chevron-up' 'fa-chevron-down'}}"
           class="margin-left-px-6"
         />
       {{/if}}
     </div>
-    {{#unless @onlyCurrency}}
-      <Input
-        @value={{this.localValue}}
-        @type="text"
-        min="0"
-        autocomplete="off"
-        placeholder={{this.placeholder}}
-        disabled={{this.disabled}}
-        class="fx-1"
-        {{on "keydown" this.onlyNumeric}}
-        {{on "keyup" this.notifyChanges}}
-        {{on "paste" this.handlePaste}}
-      />
-    {{/unless}}
+    {{#if @loading}}
+      <div class="loading-placeholder fx-row fx-xalign-center">
+        <span class="rainbow-text-animated">{{@placeholder}}</span>
+      </div>
+    {{else}}
+      <div class="input-container">
+        <span class="hidden-span">{{or @value @placeholder}}</span>
+        <Input
+          class="displayed-input"
+          @value={{@value}}
+          @type="text"
+          min="0"
+          autocomplete="off"
+          placeholder={{this.placeholder}}
+          disabled={{@disabled}}
+          {{on "keydown" this.onlyNumeric}}
+          {{on "keyup" (fn this.onChange @currency @value)}}
+          {{on "paste" this.handlePaste}}
+        />
+      </div>
+    {{/if}}
   </div>
-  {{#if @errorMessage}}
-    <div class="font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center">
-      <OSS::Icon @icon="fa-exclamation-triangle" />
-      {{@errorMessage}}
-    </div>
-  {{/if}}
   {{#if this.currencySelectorShown}}
     <OSS::InfiniteSelect
       @items={{this.filteredCurrencies}}
