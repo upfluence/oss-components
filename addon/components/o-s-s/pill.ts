@@ -1,11 +1,11 @@
 import { assert } from '@ember/debug';
-import { action } from '@ember/object';
+// import { action } from '@ember/object';
 import Component from '@glimmer/component';
 
 export interface OSSPillArgs {
   label: string;
   selected: boolean;
-  onChange?(): void;
+  // onChange?(): void;
   disabled?: boolean;
 }
 
@@ -32,10 +32,10 @@ export default class OSSPill<T extends OSSPillArgs> extends Component<T> {
     return computedClasses.join(' ');
   }
 
-  @action
-  onChange(): void {
-    if (this.args.onChange) {
-      this.args.onChange();
-    }
-  }
+  // @action
+  // onChange(): void {
+  //   if (this.args.onChange) {
+  //     this.args.onChange();
+  //   }
+  // }
 }

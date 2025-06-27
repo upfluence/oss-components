@@ -31,15 +31,6 @@ module('Integration | Component | o-s-s/smart/pill', function (hooks) {
     assert.dom('.oss-smart-pill').hasClass('oss-smart-pill--disabled');
   });
 
-  test('the onChange function is called on click', async function (assert) {
-    this.onChange = sinon.stub();
-    await render(hbs`<OSS::Smart::Pill @label="Pill" @onChange={{this.onChange}} />`);
-
-    assert.true(this.onChange.notCalled);
-    await click('.oss-smart-pill');
-    assert.true(this.onChange.calledOnce);
-  });
-
   module('loading', (hooks) => {
     hooks.beforeEach(function () {
       this.loading = true;

@@ -744,10 +744,10 @@
       Pill
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-center">
-      <OSS::Pill @label="Text" @selected={{false}} />
-      <OSS::Charger @label="Text" @selected={{true}} />
-      <OSS::Pill @label="Text" @selected={{false}} @disabled={{true}} />
-      <OSS::Pill @label="Text" @selected={{true}} @disabled={{true}} />
+      <OSS::Pill @label="Text" @selected={{not this.selectedPill}} {{on "click" this.onPillClick}} />
+      <OSS::Charger @label="Text" @selected={{this.selectedPill}} {{on "click" this.onPillClick}} />
+      <OSS::Pill @label="Text" @selected={{not this.selectedPill}} @disabled={{true}} />
+      <OSS::Pill @label="Text" @selected={{this.selectedPill}} @disabled={{true}} />
     </div>
   </div>
 </div>

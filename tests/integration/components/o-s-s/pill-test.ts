@@ -31,15 +31,6 @@ module('Integration | Component | o-s-s/pill', function (hooks) {
     assert.dom('.oss-pill').hasClass('oss-pill--disabled');
   });
 
-  test('the onChange function is called on click', async function (assert) {
-    this.onChange = sinon.stub();
-    await render(hbs`<OSS::Pill @label="Pill" @onChange={{this.onChange}} />`);
-
-    assert.true(this.onChange.notCalled);
-    await click('.oss-pill');
-    assert.true(this.onChange.calledOnce);
-  });
-
   module('Error management', function () {
     test('it fails if @label is missing', async function (assert) {
       setupOnerror((err: { message: string }) => {
