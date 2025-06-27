@@ -279,4 +279,25 @@
 
   </div>
 
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Smart pill
+    </div>
+    <div class="fx-col fx-gap-px-24 fx-xalign-start">
+      <div class="fx-row fx-xalign-start fx-gap-px-10">
+        <OSS::Smart::Pill @label="Text" @selected={{this.selectedPill}} {{on "click" this.onPillChange}} />
+        <OSS::Smart::Pill @label="Text" @selected={{not this.selectedPill}} {{on "click" this.onPillChange}} />
+        <OSS::Smart::Pill @label="Text" @selected={{this.selectedPill}} @disabled={{true}} />
+        <OSS::Smart::Pill @label="Text" @selected={{not this.selectedPill}} @disabled={{true}} />
+      </div>
+      <div class="fx-row fx-xalign-start fx-gap-px-10">
+        <OSS::Smart::Pill @label="Text" @selected={{false}} @loading={{this.pillLoading}} />
+        <OSS::Smart::Pill @label="Text" @selected={{this.selectedPillTwo}} @loading={{this.pillLoading}} />
+        <OSS::Button @label="Toggle loading" {{on "click" this.togglePillLoading}} />
+      </div>
+    </div>
+  </div>
+
 </div>

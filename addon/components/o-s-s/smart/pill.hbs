@@ -1,0 +1,10 @@
+<div
+  class="oss-smart-pill-container"
+  {{did-insert this.registerElement}}
+  {{did-update this.runAnimationOnLoadEnd @loading}}
+  ...attributes
+>
+  <div class={{this.computedClasses}}>
+    <span class="label {{if @loading 'loading-animation'}}">{{@label}}</span>
+  </div>
+</div>
