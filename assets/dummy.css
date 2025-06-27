@@ -12717,6 +12717,17 @@ a.upf-btn--sm {
   max-height: inherit;
   overflow: auto;
 }
+.oss-scrollable-panel-container .oss-scrollable-panel-content--hidden {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.oss-scrollable-panel-container .oss-scrollable-panel-content--hidden::-webkit-scrollbar {
+  display: none;
+}
+.oss-scrollable-panel-container--horizontal {
+  display: flex;
+  flex-direction: row;
+}
 .oss-scrollable-panel-container .oss-scrollable-panel--shadow {
   position: absolute;
   z-index: 1;
@@ -12725,12 +12736,26 @@ a.upf-btn--sm {
   height: 60px;
   pointer-events: none;
 }
+.oss-scrollable-panel-container .oss-scrollable-panel--shadow__left {
+  height: inherit;
+  background: linear-gradient(to right, var(--color-gray-50), transparent 40px);
+}
+.oss-scrollable-panel-container .oss-scrollable-panel--shadow__right {
+  height: inherit;
+  background: linear-gradient(to left, var(--color-gray-50), transparent 40px);
+}
 .oss-scrollable-panel-container .oss-scrollable-panel--shadow__top {
   background: linear-gradient(to bottom, var(--color-gray-50), transparent 40px);
 }
 .oss-scrollable-panel-container .oss-scrollable-panel--shadow__bottom {
   bottom: 0;
   background: linear-gradient(to top, var(--color-gray-50), transparent 40px);
+}
+.oss-scrollable-panel-container--plain .oss-scrollable-panel--shadow__left {
+  background: linear-gradient(to right, var(--color-white), transparent 40px);
+}
+.oss-scrollable-panel-container--plain .oss-scrollable-panel--shadow__right {
+  background: linear-gradient(to left, var(--color-white), transparent 40px);
 }
 .oss-scrollable-panel-container--plain .oss-scrollable-panel--shadow__top {
   background: linear-gradient(to bottom, var(--color-white), transparent 40px);

@@ -11352,6 +11352,7 @@ define("dummy/tests/integration/components/o-s-s/scrollable-panel-test", ["qunit
     (0, _emberQunit.setupRenderingTest)(hooks);
     hooks.beforeEach(function () {
       this.onBottomReached = _sinon.default.stub();
+      this.hideScrollbar = false;
     });
     function scrollIntoView(elementId) {
       document.querySelector(`#${elementId}`)?.scrollIntoView({
@@ -11362,7 +11363,9 @@ define("dummy/tests/integration/components/o-s-s/scrollable-panel-test", ["qunit
     /*
       
       <div class="background-color-gray-50" style="height:300px; width: 500px">
-        <OSS::ScrollablePanel @disableShadows={{this.disableShadows}} @onBottomReached={{this.onBottomReached}}>
+        <OSS::ScrollablePanel @disableShadows={{this.disableShadows}}
+                              @onBottomReached={{this.onBottomReached}}
+                              @hideScrollbar={{this.hideScrollbar}}>
           <div class="fx-col fx-gap-px-12 padding-px-12">
             <div class="background-color-gray-200" style="height: 50px; width: 100%;" id="start-element"/>
             <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
@@ -11375,8 +11378,32 @@ define("dummy/tests/integration/components/o-s-s/scrollable-panel-test", ["qunit
     
     */
     {
-      "id": "ci14U2yn",
-      "block": "[[[1,\"\\n  \"],[10,0],[14,0,\"background-color-gray-50\"],[14,5,\"height:300px; width: 500px\"],[12],[1,\"\\n    \"],[8,[39,0],null,[[\"@disableShadows\",\"@onBottomReached\"],[[30,0,[\"disableShadows\"]],[30,0,[\"onBottomReached\"]]]],[[\"default\"],[[[[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-12\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"start-element\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"center-element\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"end-element\"],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"]],[]]]]],[1,\"\\n  \"],[13],[1,\"\\n\"]],[],false,[\"o-s-s/scrollable-panel\"]]",
+      "id": "AN7e8gXF",
+      "block": "[[[1,\"\\n  \"],[10,0],[14,0,\"background-color-gray-50\"],[14,5,\"height:300px; width: 500px\"],[12],[1,\"\\n    \"],[8,[39,0],null,[[\"@disableShadows\",\"@onBottomReached\",\"@hideScrollbar\"],[[30,0,[\"disableShadows\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"hideScrollbar\"]]]],[[\"default\"],[[[[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-12\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"start-element\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"center-element\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"end-element\"],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"]],[]]]]],[1,\"\\n  \"],[13],[1,\"\\n\"]],[],false,[\"o-s-s/scrollable-panel\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/scrollable-panel-test.ts",
+      "isStrictMode": false
+    });
+    const renderHorizontalScrollableContent = (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+      <div class="background-color-gray-50" style="width: 200px; height: 50px;">
+        <OSS::ScrollablePanel @disableShadows={{this.disableShadows}}
+                              @onBottomReached={{this.onBottomReached}}
+                              @horizontal={{true}} >
+          <div class="fx-row fx-gap-px-6" style="width: fit-content;">
+            <div class="background-color-gray-200" style="width: 100px; height: 50px;" id="start-element"/>
+            <div class="background-color-gray-200" style="width: 100px; height: 50px;" />
+            <div class="background-color-gray-200" style="width: 100px; height: 50px;" id="center-element"/>
+            <div class="background-color-gray-200" style="width: 100px; height: 50px;" />
+            <div class="background-color-gray-200" style="width: 100px; height: 50px;" id="end-element"/>
+          </div>
+        </OSS::ScrollablePanel>
+      </div>
+    
+    */
+    {
+      "id": "nSaU0Zud",
+      "block": "[[[1,\"\\n  \"],[10,0],[14,0,\"background-color-gray-50\"],[14,5,\"width: 200px; height: 50px;\"],[12],[1,\"\\n    \"],[8,[39,0],null,[[\"@disableShadows\",\"@onBottomReached\",\"@horizontal\"],[[30,0,[\"disableShadows\"]],[30,0,[\"onBottomReached\"]],true]],[[\"default\"],[[[[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-6\"],[14,5,\"width: fit-content;\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"width: 100px; height: 50px;\"],[14,1,\"start-element\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"width: 100px; height: 50px;\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"width: 100px; height: 50px;\"],[14,1,\"center-element\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"width: 100px; height: 50px;\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"width: 100px; height: 50px;\"],[14,1,\"end-element\"],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"]],[]]]]],[1,\"\\n  \"],[13],[1,\"\\n\"]],[],false,[\"o-s-s/scrollable-panel\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/scrollable-panel-test.ts",
       "isStrictMode": false
     });
@@ -11444,14 +11471,63 @@ define("dummy/tests/integration/components/o-s-s/scrollable-panel-test", ["qunit
         assert.dom('.oss-scrollable-panel--shadow__top').doesNotExist();
         assert.dom('.oss-scrollable-panel--shadow__bottom').exists();
       });
+      (0, _qunit.module)('When the container is horizontally scrollable', () => {
+        (0, _qunit.test)('It has a shadow right per default', async function (assert) {
+          await (0, _testHelpers.render)(renderHorizontalScrollableContent);
+          assert.dom('.oss-scrollable-panel-content').exists();
+          assert.dom('.oss-scrollable-panel--shadow__left').doesNotExist();
+          assert.dom('.oss-scrollable-panel--shadow__right').exists();
+        });
+        (0, _qunit.test)('When scrolling into last element, It only has a shadow left', async function (assert) {
+          await (0, _testHelpers.render)(renderHorizontalScrollableContent);
+          scrollIntoView('end-element');
+          assert.dom('.oss-scrollable-panel-content').exists();
+          await (0, _testHelpers.waitFor)('.oss-scrollable-panel--shadow__left', {
+            timeout: 500
+          });
+          assert.dom('.oss-scrollable-panel--shadow__left').exists();
+          assert.dom('.oss-scrollable-panel--shadow__right').doesNotExist();
+        });
+        (0, _qunit.test)('When scrolling into center element, It has left and right shadows', async function (assert) {
+          await (0, _testHelpers.render)(renderHorizontalScrollableContent);
+          scrollIntoView('center-element');
+          assert.dom('.oss-scrollable-panel-content').exists();
+          await (0, _testHelpers.waitFor)('.oss-scrollable-panel--shadow__left', {
+            timeout: 500
+          });
+          assert.dom('.oss-scrollable-panel--shadow__left').exists();
+          assert.dom('.oss-scrollable-panel--shadow__right').exists();
+        });
+        (0, _qunit.test)('When scrolling into first element, It only has a shadow right', async function (assert) {
+          await (0, _testHelpers.render)(renderHorizontalScrollableContent);
+          scrollIntoView('start-element');
+          assert.dom('.oss-scrollable-panel-content').exists();
+          await (0, _testHelpers.waitFor)('.oss-scrollable-panel--shadow__right', {
+            timeout: 500
+          });
+          assert.dom('.oss-scrollable-panel--shadow__left').doesNotExist();
+          assert.dom('.oss-scrollable-panel--shadow__right').exists();
+        });
+      });
     });
-    (0, _qunit.test)('When @disableShadows is enabled, the top & bottom shadows are not displayed', async function (assert) {
-      this.disableShadows = true;
-      await (0, _testHelpers.render)(renderScrollableContent);
-      scrollIntoView('center-element');
-      assert.dom('.oss-scrollable-panel-content').exists();
-      assert.dom('.oss-scrollable-panel--shadow__top').doesNotExist();
-      assert.dom('.oss-scrollable-panel--shadow__bottom').doesNotExist();
+    (0, _qunit.module)('When @disableShadows is enabled', hooks => {
+      hooks.beforeEach(function () {
+        this.disableShadows = true;
+      });
+      (0, _qunit.test)('When scrollsection is vertical, the top & bottom shadows are not displayed', async function (assert) {
+        await (0, _testHelpers.render)(renderHorizontalScrollableContent);
+        scrollIntoView('center-element');
+        assert.dom('.oss-scrollable-panel-content').exists();
+        assert.dom('.oss-scrollable-panel--shadow__top').doesNotExist();
+        assert.dom('.oss-scrollable-panel--shadow__bottom').doesNotExist();
+      });
+      (0, _qunit.test)('When scrollsection is horizontal, the left & right shadows are not displayed', async function (assert) {
+        await (0, _testHelpers.render)(renderScrollableContent);
+        scrollIntoView('center-element');
+        assert.dom('.oss-scrollable-panel-content').exists();
+        assert.dom('.oss-scrollable-panel--shadow__left').doesNotExist();
+        assert.dom('.oss-scrollable-panel--shadow__right').doesNotExist();
+      });
     });
     (0, _qunit.module)('with onBottomReached', function () {
       (0, _qunit.test)('when scrolling to the bottom, it should trigger onBottomReach function', async function (assert) {
@@ -11460,6 +11536,12 @@ define("dummy/tests/integration/components/o-s-s/scrollable-panel-test", ["qunit
         await (0, _testHelpers.scrollTo)('.oss-scrollable-panel-content', 0, 1500);
         assert.ok(this.onBottomReached.called);
       });
+    });
+    (0, _qunit.test)('When @hideScrollbar is truthy, the scrollbar is hidden', async function (assert) {
+      await (0, _testHelpers.render)(renderScrollableContent);
+      assert.dom('.oss-scrollable-panel-container .oss-scrollable-panel-content').hasNoClass('oss-scrollable-panel-content--hidden');
+      this.set('hideScrollbar', true);
+      assert.dom('.oss-scrollable-panel-container .oss-scrollable-panel-content').hasClass('oss-scrollable-panel-content--hidden');
     });
   });
 });

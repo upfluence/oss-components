@@ -93854,7 +93854,7 @@ interface OSSCodeBlockArgs {
     value: true
   });
   _exports.default = void 0;
-  var _class, _descriptor, _descriptor2, _descriptor3;
+  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/object",0,"@glimmer/tracking",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -93864,12 +93864,20 @@ interface OSSCodeBlockArgs {
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="oss-scrollable-panel-container {{if @plain 'oss-scrollable-panel-container--plain'}}" ...attributes>
+    <div
+    class="oss-scrollable-panel-container
+      {{if @plain 'oss-scrollable-panel-container--plain'}}
+      {{if @horizontal 'oss-scrollable-panel-container--horizontal'}}"
+    ...attributes
+  >
     {{#if (and this.shadowTopVisible (not @disableShadows))}}
       <div class="oss-scrollable-panel--shadow oss-scrollable-panel--shadow__top"></div>
     {{/if}}
+    {{#if (and this.shadowLeftVisible (not @disableShadows))}}
+      <div class="oss-scrollable-panel--shadow oss-scrollable-panel--shadow__left"></div>
+    {{/if}}
     <div
-      class="oss-scrollable-panel-content"
+      class="oss-scrollable-panel-content {{if @hideScrollbar 'oss-scrollable-panel-content--hidden'}}"
       {{on-bottom-reached this.onBottomReached}}
       {{did-insert this.initScrollListener}}
     >
@@ -93880,11 +93888,14 @@ interface OSSCodeBlockArgs {
     {{#if (and this.shadowBottomVisible (not @disableShadows))}}
       <div class="oss-scrollable-panel--shadow oss-scrollable-panel--shadow__bottom"></div>
     {{/if}}
+    {{#if (and this.shadowRightVisible (not @disableShadows))}}
+      <div class="oss-scrollable-panel--shadow oss-scrollable-panel--shadow__right"></div>
+    {{/if}}
   </div>
   */
   {
-    "id": "UOiZHOSu",
-    "block": "[[[11,0],[16,0,[29,[\"oss-scrollable-panel-container \",[52,[30,1],\"oss-scrollable-panel-container--plain\"]]]],[17,2],[12],[1,\"\\n\"],[41,[28,[37,1],[[30,0,[\"shadowTopVisible\"]],[28,[37,2],[[30,3]],null]],null],[[[1,\"    \"],[10,0],[14,0,\"oss-scrollable-panel--shadow oss-scrollable-panel--shadow__top\"],[12],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[11,0],[24,0,\"oss-scrollable-panel-content\"],[4,[38,3],[[30,0,[\"onBottomReached\"]]],null],[4,[38,4],[[30,0,[\"initScrollListener\"]]],null],[12],[1,\"\\n    \"],[11,0],[4,[38,4],[[30,0,[\"initResizeObserver\"]]],null],[12],[1,\"\\n      \"],[18,4,null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[28,[37,1],[[30,0,[\"shadowBottomVisible\"]],[28,[37,2],[[30,3]],null]],null],[[[1,\"    \"],[10,0],[14,0,\"oss-scrollable-panel--shadow oss-scrollable-panel--shadow__bottom\"],[12],[13],[1,\"\\n\"]],[]],null],[13]],[\"@plain\",\"&attrs\",\"@disableShadows\",\"&default\"],false,[\"if\",\"and\",\"not\",\"on-bottom-reached\",\"did-insert\",\"yield\"]]",
+    "id": "rRQh55PS",
+    "block": "[[[11,0],[16,0,[29,[\"oss-scrollable-panel-container\\n    \",[52,[30,1],\"oss-scrollable-panel-container--plain\"],\"\\n    \",[52,[30,2],\"oss-scrollable-panel-container--horizontal\"]]]],[17,3],[12],[1,\"\\n\"],[41,[28,[37,1],[[30,0,[\"shadowTopVisible\"]],[28,[37,2],[[30,4]],null]],null],[[[1,\"    \"],[10,0],[14,0,\"oss-scrollable-panel--shadow oss-scrollable-panel--shadow__top\"],[12],[13],[1,\"\\n\"]],[]],null],[41,[28,[37,1],[[30,0,[\"shadowLeftVisible\"]],[28,[37,2],[[30,4]],null]],null],[[[1,\"    \"],[10,0],[14,0,\"oss-scrollable-panel--shadow oss-scrollable-panel--shadow__left\"],[12],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[11,0],[16,0,[29,[\"oss-scrollable-panel-content \",[52,[30,5],\"oss-scrollable-panel-content--hidden\"]]]],[4,[38,3],[[30,0,[\"onBottomReached\"]]],null],[4,[38,4],[[30,0,[\"initScrollListener\"]]],null],[12],[1,\"\\n    \"],[11,0],[4,[38,4],[[30,0,[\"initResizeObserver\"]]],null],[12],[1,\"\\n      \"],[18,6,null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[28,[37,1],[[30,0,[\"shadowBottomVisible\"]],[28,[37,2],[[30,4]],null]],null],[[[1,\"    \"],[10,0],[14,0,\"oss-scrollable-panel--shadow oss-scrollable-panel--shadow__bottom\"],[12],[13],[1,\"\\n\"]],[]],null],[41,[28,[37,1],[[30,0,[\"shadowRightVisible\"]],[28,[37,2],[[30,4]],null]],null],[[[1,\"    \"],[10,0],[14,0,\"oss-scrollable-panel--shadow oss-scrollable-panel--shadow__right\"],[12],[13],[1,\"\\n\"]],[]],null],[13]],[\"@plain\",\"@horizontal\",\"&attrs\",\"@disableShadows\",\"@hideScrollbar\",\"&default\"],false,[\"if\",\"and\",\"not\",\"on-bottom-reached\",\"did-insert\",\"yield\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/scrollable-panel.hbs",
     "isStrictMode": false
   });
@@ -93894,22 +93905,34 @@ interface OSSCodeBlockArgs {
       _initializerDefineProperty(this, "parentElement", _descriptor, this);
       _initializerDefineProperty(this, "shadowTopVisible", _descriptor2, this);
       _initializerDefineProperty(this, "shadowBottomVisible", _descriptor3, this);
+      _initializerDefineProperty(this, "shadowLeftVisible", _descriptor4, this);
+      _initializerDefineProperty(this, "shadowRightVisible", _descriptor5, this);
       _defineProperty(this, "resizeObserver", new ResizeObserver(this.resizeObserverCallback.bind(this)));
     }
     initScrollListener(element) {
       this.parentElement = element;
-      this.displayBottomShadow();
-      element.addEventListener('scroll', this.scrollListener.bind(this));
+      if (this.args.horizontal) {
+        this.displayRightShadow();
+        element.addEventListener('scroll', this.horizontalScrollListener.bind(this));
+      } else {
+        this.displayBottomShadow();
+        element.addEventListener('scroll', this.scrollListener.bind(this));
+      }
     }
     initResizeObserver(element) {
       this.resizeObserver.observe(element);
     }
     willDestroy() {
-      this.parentElement.removeEventListener('scroll', this.scrollListener.bind(this));
+      if (this.args.horizontal) {
+        this.parentElement.removeEventListener('scroll', this.horizontalScrollListener.bind(this));
+      } else {
+        this.parentElement.removeEventListener('scroll', this.scrollListener.bind(this));
+      }
       this.resizeObserver.disconnect();
       super.willDestroy();
     }
     onBottomReached() {
+      if (this.args.horizontal) return;
       this.args.onBottomReached?.();
     }
     scrollListener() {
@@ -93927,8 +93950,27 @@ interface OSSCodeBlockArgs {
         this.shadowBottomVisible = true;
       }
     }
+    horizontalScrollListener() {
+      if (this.parentElement.scrollLeft > 0) {
+        this.shadowLeftVisible = true;
+      } else {
+        this.shadowLeftVisible = false;
+      }
+      this.displayRightShadow();
+    }
+    displayRightShadow() {
+      if (this.parentElement.scrollLeft + this.parentElement.clientWidth >= this.parentElement.scrollWidth - 1) {
+        this.shadowRightVisible = false;
+      } else {
+        this.shadowRightVisible = true;
+      }
+    }
     resizeObserverCallback(_) {
-      this.scrollListener();
+      if (this.args.horizontal) {
+        this.horizontalScrollListener();
+      } else {
+        this.scrollListener();
+      }
     }
   }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "parentElement", [_tracking.tracked], {
     configurable: true,
@@ -93949,6 +93991,20 @@ interface OSSCodeBlockArgs {
     initializer: function () {
       return false;
     }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, "shadowLeftVisible", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
+  }), _descriptor5 = _applyDecoratedDescriptor(_class.prototype, "shadowRightVisible", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
   }), _applyDecoratedDescriptor(_class.prototype, "initScrollListener", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initScrollListener"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "initResizeObserver", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initResizeObserver"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "willDestroy", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "willDestroy"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onBottomReached", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onBottomReached"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSScrollablePanelComponent);
 });
@@ -93958,7 +94014,7 @@ interface OSSCodeBlockArgs {
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = _exports.BasicUsage = void 0;
+  _exports.default = _exports.HorizontalUsage = _exports.BasicUsage = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
   var _default = _exports.default = {
     title: 'Components/OSS::ScrollablePanel',
@@ -93992,6 +94048,34 @@ interface OSSCodeBlockArgs {
           type: 'boolean'
         }
       },
+      hideScrollbar: {
+        description: 'When disableShadows is true, the content remains scrollable but it hides the scrollbar ',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      horizontal: {
+        description: 'When horizontal is true, left & rights shadows are displayed instead of top & bottom',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
       onBottomReached: {
         description: 'Function to be called when the scroll hits the bottom',
         table: {
@@ -94013,14 +94097,23 @@ interface OSSCodeBlockArgs {
   const defaultArgs = {
     plain: false,
     disableShadows: false,
+    hideScrollbar: false,
     onBottomReached: (0, _addonActions.action)('onBottomReached')
+  };
+  const horizontalArgs = {
+    ...defaultArgs,
+    horizontal: true
   };
   const Template = args => ({
     template: (0, _templateFactory.createTemplateFactory)(
     /*
       
         <div style="height:200px; width: 300px; background-color: white; " >
-          <OSS::ScrollablePanel @plain={{this.plain}} @disableShadows={{this.disableShadows}} @onBottomReached={{this.onBottomReached}} >
+          <OSS::ScrollablePanel @plain={{this.plain}}
+                                @disableShadows={{this.disableShadows}}
+                                @onBottomReached={{this.onBottomReached}}
+                                @hideScrollbar={{this.hideScrollbar}}
+                                @horizontal={{this.horizontal}} >
             <div class="fx-col fx-gap-px-12 padding-px-12">
               <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
               <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
@@ -94033,8 +94126,37 @@ interface OSSCodeBlockArgs {
       
     */
     {
-      "id": "aBKLI2lF",
-      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"height:200px; width: 300px; background-color: white; \"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@plain\",\"@disableShadows\",\"@onBottomReached\"],[[30,0,[\"plain\"]],[30,0,[\"disableShadows\"]],[30,0,[\"onBottomReached\"]]]],[[\"default\"],[[[[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-12\"],[12],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/scrollable-panel\"]]",
+      "id": "g3Nqrqw3",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"height:200px; width: 300px; background-color: white; \"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@plain\",\"@disableShadows\",\"@onBottomReached\",\"@hideScrollbar\",\"@horizontal\"],[[30,0,[\"plain\"]],[30,0,[\"disableShadows\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"hideScrollbar\"]],[30,0,[\"horizontal\"]]]],[[\"default\"],[[[[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-12\"],[12],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/scrollable-panel\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/scrollable-panel.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const TemplateHorizontal = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <div style="height:70px; width: 300px; background-color: white; " >
+          <OSS::ScrollablePanel @plain={{this.plain}}
+                                @disableShadows={{this.disableShadows}}
+                                @onBottomReached={{this.onBottomReached}}
+                                @hideScrollbar={{this.hideScrollbar}}
+                                @horizontal={{this.horizontal}} >
+            <div class="fx-row fx-gap-px-12 padding-px-12" style="width: fit-content">
+              <div class="background-color-gray-200" style="height: 50px; width: 100px;" />
+              <div class="background-color-gray-200" style="height: 50px; width: 100px;" />
+              <div class="background-color-gray-200" style="height: 50px; width: 100px;" />
+              <div class="background-color-gray-200" style="height: 50px; width: 100px;" />
+              <div class="background-color-gray-200" style="height: 50px; width: 100px;" />
+            </div>
+          </OSS::ScrollablePanel>
+        </div>
+      
+    */
+    {
+      "id": "5LO0Kfaz",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"height:70px; width: 300px; background-color: white; \"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@plain\",\"@disableShadows\",\"@onBottomReached\",\"@hideScrollbar\",\"@horizontal\"],[[30,0,[\"plain\"]],[30,0,[\"disableShadows\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"hideScrollbar\"]],[30,0,[\"horizontal\"]]]],[[\"default\"],[[[[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-12 padding-px-12\"],[14,5,\"width: fit-content\"],[12],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100px;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100px;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100px;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100px;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100px;\"],[12],[13],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/scrollable-panel\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/scrollable-panel.stories.js",
       "isStrictMode": false
     }),
@@ -94042,6 +94164,14 @@ interface OSSCodeBlockArgs {
   });
   const BasicUsage = _exports.BasicUsage = Template.bind({});
   BasicUsage.args = defaultArgs;
+  BasicUsage.argTypes = {
+    horizontal: {
+      description: 'When horizontal is true, left & rights shadows are displayed instead of top & bottom (Use with fx-row see `Horizontal Usage` story)',
+      control: false
+    }
+  };
+  const HorizontalUsage = _exports.HorizontalUsage = TemplateHorizontal.bind({});
+  HorizontalUsage.args = horizontalArgs;
 });
 ;define("@upfluence/oss-components/components/o-s-s/search-field", ["exports", "@ember/component", "@ember/object", "@ember/service", "@glimmer/component", "@upfluence/oss-components/utils/keyboard", "@ember/template-factory"], function (_exports, _component, _object, _service, _component2, _keyboard, _templateFactory) {
   "use strict";
