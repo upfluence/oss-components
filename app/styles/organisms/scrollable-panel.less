@@ -11,6 +11,20 @@
     overflow: auto;
   }
 
+  .oss-scrollable-panel-content--hidden {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &--horizontal {
+    display: flex;
+    flex-direction: row;
+  }
+
   .oss-scrollable-panel--shadow {
     position: absolute;
     z-index: 1;
@@ -18,6 +32,16 @@
     width: inherit;
     height: 60px;
     pointer-events: none;
+
+    &__left {
+      height: inherit;
+      background: linear-gradient(to right, var(--color-gray-50), transparent 40px);
+    }
+
+    &__right {
+      height: inherit;
+      background: linear-gradient(to left, var(--color-gray-50), transparent 40px);
+    }
 
     &__top {
       background: linear-gradient(to bottom, var(--color-gray-50), transparent 40px);
@@ -31,6 +55,14 @@
 
   &--plain {
     .oss-scrollable-panel--shadow {
+      &__left {
+        background: linear-gradient(to right, var(--color-white), transparent 40px);
+      }
+
+      &__right {
+        background: linear-gradient(to left, var(--color-white), transparent 40px);
+      }
+
       &__top {
         background: linear-gradient(to bottom, var(--color-white), transparent 40px);
       }

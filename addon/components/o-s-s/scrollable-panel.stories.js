@@ -25,6 +25,26 @@ export default {
         type: 'boolean'
       }
     },
+    hideScrollbar: {
+      description: 'When disableShadows is true, the content remains scrollable but it hides the scrollbar ',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
+    horizontal: {
+      description: 'When horizontal is true, left & rights shadows are displayed instead of top & bottom',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
     onBottomReached: {
       description: 'Function to be called when the scroll hits the bottom',
       table: {
@@ -47,13 +67,23 @@ export default {
 const defaultArgs = {
   plain: false,
   disableShadows: false,
+  hideScrollbar: false,
   onBottomReached: action('onBottomReached')
+};
+
+const horizontalArgs = {
+  ...defaultArgs,
+  horizontal: true
 };
 
 const Template = (args) => ({
   template: hbs`
     <div style="height:200px; width: 300px; background-color: white; " >
-      <OSS::ScrollablePanel @plain={{this.plain}} @disableShadows={{this.disableShadows}} @onBottomReached={{this.onBottomReached}} >
+      <OSS::ScrollablePanel @plain={{this.plain}}
+                            @disableShadows={{this.disableShadows}}
+                            @onBottomReached={{this.onBottomReached}}
+                            @hideScrollbar={{this.hideScrollbar}}
+                            @horizontal={{this.horizontal}} >
         <div class="fx-col fx-gap-px-12 padding-px-12">
           <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
           <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
@@ -68,5 +98,37 @@ const Template = (args) => ({
   context: args
 });
 
+const TemplateHorizontal = (args) => ({
+  template: hbs`
+    <div style="height:70px; width: 300px; background-color: white; " >
+      <OSS::ScrollablePanel @plain={{this.plain}}
+                            @disableShadows={{this.disableShadows}}
+                            @onBottomReached={{this.onBottomReached}}
+                            @hideScrollbar={{this.hideScrollbar}}
+                            @horizontal={{this.horizontal}} >
+        <div class="fx-row fx-gap-px-12 padding-px-12" style="width: fit-content">
+          <div class="background-color-gray-200" style="height: 50px; width: 100px;" />
+          <div class="background-color-gray-200" style="height: 50px; width: 100px;" />
+          <div class="background-color-gray-200" style="height: 50px; width: 100px;" />
+          <div class="background-color-gray-200" style="height: 50px; width: 100px;" />
+          <div class="background-color-gray-200" style="height: 50px; width: 100px;" />
+        </div>
+      </OSS::ScrollablePanel>
+    </div>
+  `,
+
+  context: args
+});
+
 export const BasicUsage = Template.bind({});
 BasicUsage.args = defaultArgs;
+BasicUsage.argTypes = {
+  horizontal: {
+    table: {
+      disable: true
+    }
+  }
+};
+
+export const HorizontalUsage = TemplateHorizontal.bind({});
+HorizontalUsage.args = horizontalArgs;
