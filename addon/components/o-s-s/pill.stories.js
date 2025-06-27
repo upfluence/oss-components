@@ -1,5 +1,4 @@
 import { hbs } from 'ember-cli-htmlbars';
-import { action } from '@storybook/addon-actions';
 
 export default {
   title: 'Components/OSS::Pill',
@@ -34,15 +33,6 @@ export default {
       control: {
         type: 'boolean'
       }
-    },
-    onChange: {
-      description: 'The callback triggered when the pill status is changed',
-      table: {
-        category: 'Actions',
-        type: {
-          summary: 'onChange(): void'
-        }
-      }
     }
   },
   parameters: {
@@ -57,13 +47,12 @@ export default {
 const defaultArgs = {
   label: 'Pill',
   selected: false,
-  disabled: false,
-  onChange: action('onChange')
+  disabled: false
 };
 
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
-      <OSS::Pill @label={{this.label}} @selected={{this.selected}} @disabled={{this.disabled}} @onChange={{this.onChange}} />
+      <OSS::Pill @label={{this.label}} @selected={{this.selected}} @disabled={{this.disabled}} />
   `,
   context: args
 });
