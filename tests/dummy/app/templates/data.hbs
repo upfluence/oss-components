@@ -83,6 +83,15 @@
           </div>
         </OSS::ScrollablePanel>
       </div>
+      <div class="fx-row fx-gap-px-24 fx-xalign-start" style="width: 500px;">
+        <OSS::ScrollablePanel @plain={{true}} @horizontal={{true}} @hideScrollbar={{true}}>
+          <div class="fx-row fx-gap-px-6" style="width: fit-content;">
+            {{#each this.loop}}
+              <OSS::Tag @label="toto" />
+            {{/each}}
+          </div>
+        </OSS::ScrollablePanel>
+      </div>
     </div>
   </div>
 

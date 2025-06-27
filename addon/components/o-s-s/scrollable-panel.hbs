@@ -1,9 +1,17 @@
-<div class="oss-scrollable-panel-container {{if @plain 'oss-scrollable-panel-container--plain'}}" ...attributes>
+<div
+  class="oss-scrollable-panel-container
+    {{if @plain 'oss-scrollable-panel-container--plain'}}
+    {{if @horizontal 'oss-scrollable-panel-container--horizontal'}}"
+  ...attributes
+>
   {{#if (and this.shadowTopVisible (not @disableShadows))}}
     <div class="oss-scrollable-panel--shadow oss-scrollable-panel--shadow__top"></div>
   {{/if}}
+  {{#if (and this.shadowLeftVisible (not @disableShadows))}}
+    <div class="oss-scrollable-panel--shadow oss-scrollable-panel--shadow__left"></div>
+  {{/if}}
   <div
-    class="oss-scrollable-panel-content"
+    class="oss-scrollable-panel-content {{if @hideScrollbar 'oss-scrollable-panel-content--hidden'}}"
     {{on-bottom-reached this.onBottomReached}}
     {{did-insert this.initScrollListener}}
   >
@@ -13,5 +21,8 @@
   </div>
   {{#if (and this.shadowBottomVisible (not @disableShadows))}}
     <div class="oss-scrollable-panel--shadow oss-scrollable-panel--shadow__bottom"></div>
+  {{/if}}
+  {{#if (and this.shadowRightVisible (not @disableShadows))}}
+    <div class="oss-scrollable-panel--shadow oss-scrollable-panel--shadow__right"></div>
   {{/if}}
 </div>
