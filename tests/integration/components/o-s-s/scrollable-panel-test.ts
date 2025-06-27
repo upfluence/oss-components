@@ -189,7 +189,7 @@ module('Integration | Component | o-s-s/scrollable-panel', function (hooks) {
     });
   });
 
-  test('When hideScrollbar is truthy, the scrolbar is hidden', async function (assert) {
+  test('When @hideScrollbar is truthy, the scrollbar is hidden', async function (assert) {
     await render(renderScrollableContent);
 
     assert

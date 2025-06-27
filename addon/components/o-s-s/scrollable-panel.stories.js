@@ -124,9 +124,9 @@ export const BasicUsage = Template.bind({});
 BasicUsage.args = defaultArgs;
 BasicUsage.argTypes = {
   horizontal: {
-    table: {
-      disable: true
-    }
+    description:
+      'When horizontal is true, left & rights shadows are displayed instead of top & bottom (Use with fx-row see `Horizontal Usage` story)',
+    control: false
   }
 };
 
