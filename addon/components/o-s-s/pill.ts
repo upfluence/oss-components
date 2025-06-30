@@ -1,19 +1,15 @@
 import { assert } from '@ember/debug';
-// import { action } from '@ember/object';
 import Component from '@glimmer/component';
 
 export interface OSSPillArgs {
   label: string;
   selected: boolean;
-  // onChange?(): void;
   disabled?: boolean;
 }
 
 export default class OSSPill<T extends OSSPillArgs> extends Component<T> {
-  constructor(owner: unknown, args: OSSPillArgs, preventDefaultAssertions?: boolean) {
+  constructor(owner: unknown, args: OSSPillArgs) {
     super(owner, args);
-
-    if (preventDefaultAssertions) return;
 
     assert('[component][OSS::Pill] You must pass a @label argument.', args.label);
   }
@@ -31,11 +27,4 @@ export default class OSSPill<T extends OSSPillArgs> extends Component<T> {
 
     return computedClasses.join(' ');
   }
-
-  // @action
-  // onChange(): void {
-  //   if (this.args.onChange) {
-  //     this.args.onChange();
-  //   }
-  // }
 }
