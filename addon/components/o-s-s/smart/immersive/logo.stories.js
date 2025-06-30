@@ -6,9 +6,15 @@ export default {
   title: 'Components/Smart::Immersive::Logo',
   component: 'oss-smart-immersive-logo',
   argTypes: {
-    icon: { table: { disable: true } },
+    icon: {
+      name: 'Icon',
+      description: 'icon name and color for icon mode (e.g., "rabbit:orange")',
+      table: { disable: false },
+      control: { type: 'text' }
+    },
     iconName: {
       name: 'Icon Name',
+      description: 'Name of the icon to display, concatenated with iconColor to form "iconName:iconColor"',
       control: {
         type: 'select',
         options: LOGO_ICONS
@@ -16,11 +22,13 @@ export default {
     },
     iconColor: {
       name: 'Icon Color',
+      description: 'Color of the icon to display, concatenated with iconName to form "iconName:iconColor"',
       control: {
         type: 'select',
         options: LOGO_COLORS
       }
     },
+
     url: {
       description: 'URL of the image for image mode',
       table: {
