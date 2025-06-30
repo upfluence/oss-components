@@ -10,10 +10,6 @@ export interface OSSSmartPillArgs extends OSSPillArgs {
 export default class OSSSmartPill extends OSSPill<OSSSmartPillArgs> {
   @tracked declare element: HTMLElement;
 
-  constructor(owner: unknown, args: OSSSmartPillArgs) {
-    super(owner, args, true);
-  }
-
   get computedClasses(): string {
     const computedClasses = ['oss-smart-pill'];
 
