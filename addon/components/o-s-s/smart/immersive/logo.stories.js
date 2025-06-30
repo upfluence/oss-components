@@ -71,7 +71,6 @@ export default {
 };
 
 const Template = ({ iconName, iconColor, ...rest }) => {
-  // Compose icon string
   const icon = iconName && iconColor ? `${iconName}:${iconColor}` : undefined;
 
   return {
