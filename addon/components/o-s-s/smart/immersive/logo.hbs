@@ -13,7 +13,7 @@
   {{/if}}
   {{#if (eq this.logoMode "icon")}}
     <div class="logo-icon fx-row fx-malign-center fx-xalign-center {{this.logoColor}}">
-      <i class="fad fa-{{this.logoIcon}}"></i>
+      <OSS::Icon @icon="fa-{{this.logoIcon}}" @style="duotone" />
     </div>
   {{else}}
     <div class="campaign-image" style={{this.dynamicImageStyle}}></div>
