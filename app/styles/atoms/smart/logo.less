@@ -8,44 +8,44 @@
     color: #f43f5e;
   }
   &_orange {
-    background-color: #ffedd5;
-    color: #f97316;
+    background-color: var(--color-orange-100);
+    color: var(--color-orange-500);
   }
   &_yellow {
-    background-color: #fef3c7;
-    color: #f59e0b;
+    background-color: var(--color-yellow-100);
+    color: var(--color-yellow-500);
   }
   &_lime {
-    background-color: #ecfccb;
-    color: #84cc16;
+    background-color: var(--color-lime-100);
+    color: var(--color-lime-500);
   }
   &_emerald {
-    background-color: #d1fae5;
-    color: #10b981;
+    background-color: var(--color-success-100);
+    color: var(--color-success-500);
   }
   &_teal {
-    background-color: #ccfbf1;
-    color: #14b8a6;
+    background-color: var(--color-info-100);
+    color: var(--color-info-500);
   }
   &_cyan {
-    background-color: #cffafe;
-    color: #06b6d4;
+    background-color: var(--color-cyan-100);
+    color: var(--color-cyan-500);
   }
   &_sky {
     background-color: #e0f2fe;
     color: #0ea5e9;
   }
   &_blue {
-    background-color: #dbeafe;
-    color: #3b82f6;
+    background-color: var(--color-blue-100);
+    color: var(--color-blue-500);
   }
   &_indigo {
     background-color: #e0e7ff;
     color: #6366f1;
   }
   &_violet {
-    background-color: #ede9fe;
-    color: #8b5cf6;
+    background-color: var(--color-violet-100);
+    color: var(--color-violet-500);
   }
   &_purple {
     background-color: #f3e8ff;
@@ -72,22 +72,10 @@
 }
 
 .oss-smart__immersive-icon-container {
+  position: relative;
   height: var(--spacing-px-36);
   width: var(--spacing-px-36);
-  position: relative;
   transition: all 250ms ease-in-out;
-
-  &--oversize {
-    height: 60px;
-    width: 60px;
-
-    .edit-overlay,
-    .logo-icon,
-    .campaign-image {
-      height: 60px;
-      width: 60px;
-    }
-  }
 
   .logo-icon,
   .campaign-image {
@@ -124,6 +112,18 @@
       color: var(--color-white);
       z-index: 1;
       cursor: pointer;
+    }
+  }
+
+  &.oss-smart__immersive-icon-container--oversize {
+    height: 60px;
+    width: 60px;
+
+    .edit-overlay,
+    .logo-icon,
+    .campaign-image {
+      height: 60px;
+      width: 60px;
     }
   }
 
