@@ -35,6 +35,22 @@ module('Integration | Component | o-s-s/carousel', function (hooks) {
     assert.dom('.oss-carousel').exists();
   });
 
+  test('it renders with controls at the bottom when @showPageCounterBottom is true', async function (assert) {
+    await render(hbs`
+      <OSS::Carousel @showIndicators={{this.showIndicators}} @showControls={{this.showControls}}
+                     @animationStyle={{this.animationStyle}} @buttonIcon={{this.buttonIcon}}
+                     @autoPlay={{this.autoPlay}} @onPageChange={{this.onPageChange}} @showPageCounterBottom={{true}}>
+        <:pages>
+          <div class="page">Page 1</div>
+          <div class="page">Page 2</div>
+          <div class="page">Page 3</div>
+        </:pages>
+      </OSS::Carousel>
+    `);
+
+    assert.dom('.oss-carousel').hasClass('oss-carousel__reverse');
+  });
+
   test('If no pages are yielded to the component, it throws an error', async function (assert) {
     setupOnerror((error: Error) => {
       assert.equal(error.message, '[component][OSS::Carousel] No pages found in the carousel');

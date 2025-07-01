@@ -1,4 +1,8 @@
-<div class="oss-carousel" {{did-insert this.initialize}} ...attributes>
+<div
+  class="oss-carousel {{if @showPageCounterBottom 'oss-carousel__reverse'}}"
+  {{did-insert this.initialize}}
+  ...attributes
+>
   {{#if this.showIndicators}}
     <div class="fx-row">
       {{#each this.pages as |page index|}}

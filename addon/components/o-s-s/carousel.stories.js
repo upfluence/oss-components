@@ -67,6 +67,16 @@ export default {
           summary: 'onPageChange(): void'
         }
       }
+    },
+    showPageCounterBottom: {
+      description: 'Whether to show the page counter at the bottom of the carousel.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'false' }
+      },
+      control: { type: 'boolean' }
     }
   },
   parameters: {
@@ -84,14 +94,15 @@ const defaultArgs = {
   animationStyle: undefined,
   showIndicators: undefined,
   showControls: undefined,
-  autoPlay: undefined
+  autoPlay: undefined,
+  showPageCounterBottom: false
 };
 
 const Template = (args) => ({
   template: hbs`
     <OSS::Carousel @showIndicators={{this.showIndicators}} @showControls={{this.showControls}}
                    @animationStyle={{this.animationStyle}} @buttonIcon={{this.buttonIcon}}
-                   @autoPlay={{this.autoPlay}}>
+                   @autoPlay={{this.autoPlay}} @showPageCounterBottom={{this.showPageCounterBottom}}>
       <:pages>
         <div class="page">
           <OSS::Banner @icon="fas fa-image" @title="PAGE 1"/>

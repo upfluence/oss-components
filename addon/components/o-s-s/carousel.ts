@@ -9,6 +9,7 @@ interface OSSCarouselArgs {
   buttonIcon?: string;
   animationStyle?: 'shift' | 'slide';
   showIndicators?: boolean;
+  showPageCounterBottom?: boolean;
   showControls?: 'overlay' | 'outside';
   autoPlay?: number;
   onPageChange?(): void;
