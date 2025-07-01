@@ -215,24 +215,6 @@
           <OSS::Avatar @initials={{concat "+" "123"}} @size={{"sm"}} />
         </:icon>
       </OSS::Smart::Feedback>
-      <div class="font-size-md font-weight-semibold">
-        Smart Logo
-        <OSS::ToggleSwitch @value={{this.logoLoading}} @onChange={{this.toggleLogoLoading}} />
-      </div>
-      <div class="fx-col fx-gap-px-24 padding-px-12 background-color-primary-50">
-        <OSS::Smart::Immersive::Logo
-          @url="https://picsum.photos/200/300"
-          @loading={{this.logoLoading}}
-          @onClick={{this.onLogoClick}}
-        />
-
-        <OSS::Smart::Immersive::Logo
-          @icon="rabbit:orange"
-          @editable={{true}}
-          @loading={{this.logoLoading}}
-          @onClick={{this.onLogoClick}}
-        />
-      </div>
     </div>
 
     <div class="fx-row fx-gap-px-12 font-size-md font-weight-semibold">
@@ -326,18 +308,32 @@
       <OSS::ToggleSwitch @value={{this.logoLoading}} @onChange={{this.toggleLogoLoading}} />
     </div>
     <div class="fx-col fx-gap-px-24 padding-px-12 background-color-primary-50">
-      <OSS::Smart::Immersive::Logo @url="https://picsum.photos/200/300" @loading={{this.logoLoading}} />
+      <OSS::Smart::Immersive::Logo
+        @url="https://picsum.photos/200/300"
+        @loading={{this.logoLoading}}
+        @onEdit={{this.onLogoClick}}
+      />
 
-      <OSS::Smart::Immersive::Logo @icon="rabbit:orange" @loading={{this.logoLoading}} />
+      <OSS::Smart::Immersive::Logo @icon="rabbit:orange" @loading={{this.logoLoading}} @onEdit={{this.onLogoClick}} />
 
-      <OSS::Smart::Immersive::Logo @icon="rabbit:orange" @oversize={{true}} @loading={{this.logoLoading}} />
+      <OSS::Smart::Immersive::Logo
+        @icon="rabbit:orange"
+        @oversize={{true}}
+        @loading={{this.logoLoading}}
+        @onEdit={{this.onLogoClick}}
+      />
 
-      <OSS::Smart::Immersive::Logo @icon="rabbit:orange" @editable={{true}} @loading={{this.logoLoading}} />
       <OSS::Smart::Immersive::Logo
         @icon="rabbit:orange"
         @editable={{true}}
         @loading={{this.logoLoading}}
-        @onClick={{this.onLogoClick}}
+        @onEdit={{this.onLogoClick}}
+      />
+      <OSS::Smart::Immersive::Logo
+        @icon="rabbit:orange"
+        @editable={{true}}
+        @loading={{this.logoLoading}}
+        @onEdit={{this.onLogoClick}}
       />
 
       <OSS::Smart::Immersive::Logo @editable={{true}} @loading={{this.logoLoading}} @onClick={{this.onLogoClick}} />
