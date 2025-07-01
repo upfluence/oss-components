@@ -12,7 +12,7 @@ interface OSSSmartImmersiveLogoArgs {
   editable: boolean;
   loading?: boolean;
   oversize?: boolean;
-  onClick(): void;
+  onEdit(): void;
 }
 
 export default class OSSSmartImmersiveLogoComponent extends Component<OSSSmartImmersiveLogoArgs> {
