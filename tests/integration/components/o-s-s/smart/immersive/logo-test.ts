@@ -7,6 +7,9 @@ import { LOGO_COLORS, LOGO_ICONS } from 'dummy/utils/logo-config';
 
 module('Integration | Component | o-s-s/smart/immersive/logo', function (hooks) {
   setupRenderingTest(hooks);
+  hooks.beforeEach(function () {
+    this.onEdit = sinon.stub();
+  });
 
   test('it renders with icon mode', async function (assert) {
     this.icon = 'fa:star';
@@ -41,31 +44,30 @@ module('Integration | Component | o-s-s/smart/immersive/logo', function (hooks) 
   test('it renders edit overlay when editable', async function (assert) {
     this.icon = 'fa:pen';
     this.editable = true;
-    this.onClick = sinon.stub();
+    this.onEdit = sinon.stub();
 
     await render(hbs`<OSS::Smart::Immersive::Logo
       @icon={{this.icon}}
       @editable={{this.editable}}
-      @onClick={{this.onClick}}
+      @onEdit={{this.onEdit}}
     />`);
 
     assert.dom('.edit-overlay').exists();
   });
 
-  test('onClick is called when the component is clicked', async function (assert) {
+  test('onEdit is called when the component is clicked', async function (assert) {
     this.icon = 'fa:pen';
     this.editable = true;
-    this.onClick = sinon.stub();
 
     await render(hbs`<OSS::Smart::Immersive::Logo
       @icon={{this.icon}}
       @editable={{this.editable}}
-      @onClick={{this.onClick}}
+      @onEdit={{this.onEdit}}
     />`);
 
     assert.dom('.edit-overlay').exists();
     await this.element.querySelector('.edit-overlay').click();
-    assert.ok(this.onClick.calledOnce);
+    assert.ok(this.onEdit.calledOnce);
   });
 
   LOGO_ICONS.forEach((iconName) => {
@@ -144,7 +146,7 @@ module('Integration | Component | o-s-s/smart/immersive/logo', function (hooks) 
 
     await render(hbs`<OSS::Smart::Immersive::Logo
       @editable={{this.editable}}
-      @onClick={{this.onClick}}
+      @onEdit={{this.onEdit}}
     />`);
 
     assert.dom('.campaign-image').exists('Fallback image container is rendered');
