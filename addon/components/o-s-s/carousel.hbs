@@ -4,7 +4,7 @@
   ...attributes
 >
   {{#if this.showIndicators}}
-    <div class="fx-row">
+    <div class="fx-row oss-carousel__indicators">
       {{#each this.pages as |page index|}}
         <div class="page-btn" role="button" {{on "click" (fn this.displayPage page)}}>
           <i class="{{this.buttonIcon}} {{if (eq index this.currentPageIndex) 'page-btn--active'}}"></i>
