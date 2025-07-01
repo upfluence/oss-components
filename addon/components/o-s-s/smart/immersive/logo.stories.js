@@ -61,7 +61,7 @@ export default {
       },
       control: { type: 'boolean' }
     },
-    onClick: {
+    onEdit: {
       description: 'Action triggered when clicking the edit overlay',
       table: {
         category: 'Actions',
@@ -90,7 +90,7 @@ const Template = ({ iconName, iconColor, ...rest }) => {
           @editable={{this.editable}}
           @loading={{this.loading}}
           @oversize={{this.oversize}}
-          @onClick={{this.onClick}}
+          @onEdit={{this.onEdit}}
         />
       </div>
     `,
@@ -109,7 +109,7 @@ Default.args = {
   editable: false,
   loading: false,
   oversize: false,
-  onClick: action('onClick')
+  onEdit: action('onEdit')
 };
 
 export const Editable = Template.bind({});
