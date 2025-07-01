@@ -611,4 +611,18 @@
       </div>
     </div>
   </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Pill
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <OSS::Pill @label="Text" @selected={{not this.selectedPill}} {{on "click" this.onPillClick}} />
+      <OSS::Charger @label="Text" @selected={{this.selectedPill}} {{on "click" this.onPillClick}} />
+      <OSS::Pill @label="Text" @selected={{not this.selectedPill}} @disabled={{true}} />
+      <OSS::Pill @label="Text" @selected={{this.selectedPill}} @disabled={{true}} />
+    </div>
+  </div>
 </div>

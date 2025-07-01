@@ -105,6 +105,7 @@ export default class Visual extends Controller {
     { key: 'and', label: 'AND', skin: 'xtd-violet', icon: 'fa-exclamation-circle' }
   ];
   @tracked modeSwitchSelected2: string = 'or';
+  @tracked selectedPill: boolean = true;
 
   @action
   redirectTo(route: string): void {
@@ -165,7 +166,13 @@ export default class Visual extends Controller {
   @action onChangeMode1(selectedMode: string): void {
     this.modeSwitchSelected1 = selectedMode;
   }
+
   @action onChangeMode2(selectedMode: string): void {
     this.modeSwitchSelected2 = selectedMode;
+  }
+
+  @action
+  onPillClick(): void {
+    this.selectedPill = !this.selectedPill;
   }
 }
