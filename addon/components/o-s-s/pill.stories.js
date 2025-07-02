@@ -24,6 +24,14 @@ export default {
         type: 'boolean'
       }
     },
+    icon: {
+      description: 'Displays an icon on the left using a Font Awesome class, for example: far fa-envelope-open',
+      table: {
+        type: { summary: 'string' },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'text' }
+    },
     disabled: {
       description: 'Displays the disabled version of the pill',
       table: {
