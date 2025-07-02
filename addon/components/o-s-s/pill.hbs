@@ -1,6 +1,6 @@
 <div class={{this.computedClasses}} ...attributes>
   {{#if @icon}}
-    <OSS::Icon @icon={{@icon}} />
+    <OSS::Icon class="icon" @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
   {{/if}}
   {{@label}}
 </div>

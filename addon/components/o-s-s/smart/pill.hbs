@@ -6,7 +6,7 @@
 >
   <div class={{this.computedClasses}}>
     {{#if @icon}}
-      <OSS::Icon class="icon" @icon={{@icon}} />
+      <OSS::Icon class="icon" @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
     {{/if}}
     <span class="label {{if @loading 'loading-animation'}}">{{@label}}</span>
   </div>
