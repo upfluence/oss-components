@@ -25,7 +25,8 @@ export default {
       }
     },
     icon: {
-      description: 'Displays an icon on the left using a Font Awesome class, for example: far fa-envelope-open',
+      description:
+        'Displays a Fontawesome icon on the left using a Fontawesome class, for example: far fa-envelope-open',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'undefined' }
