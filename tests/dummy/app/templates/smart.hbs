@@ -290,9 +290,14 @@
       </div>
       <div class="fx-col fx-gap-px-24 fx-xalign-start">
         <div class="fx-row fx-xalign-start fx-gap-px-10">
-          <OSS::Smart::Pill @label="Text" @selected={{this.selectedPill}} {{on "click" this.onPillChange}} />
+          <OSS::Smart::Pill
+            @label="Text"
+            @icon="fa-badge-percent"
+            @selected={{this.selectedPill}}
+            {{on "click" this.onPillChange}}
+          />
           <OSS::Smart::Pill @label="Text" @selected={{not this.selectedPill}} {{on "click" this.onPillChange}} />
-          <OSS::Smart::Pill @label="Text" @selected={{this.selectedPill}} @disabled={{true}} />
+          <OSS::Smart::Pill @label="Text" @icon="fa-badge-percent" @selected={{this.selectedPill}} @disabled={{true}} />
           <OSS::Smart::Pill @label="Text" @selected={{not this.selectedPill}} @disabled={{true}} />
         </div>
         <div class="fx-row fx-xalign-start fx-gap-px-10">
