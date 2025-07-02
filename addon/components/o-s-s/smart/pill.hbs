@@ -5,6 +5,9 @@
   ...attributes
 >
   <div class={{this.computedClasses}}>
+    {{#if @icon}}
+      <OSS::Icon class="icon" @icon={{@icon}} />
+    {{/if}}
     <span class="label {{if @loading 'loading-animation'}}">{{@label}}</span>
   </div>
 </div>
