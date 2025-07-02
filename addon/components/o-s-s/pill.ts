@@ -4,6 +4,7 @@ import Component from '@glimmer/component';
 export interface OSSPillArgs {
   label: string;
   selected: boolean;
+  icon?: string;
   disabled?: boolean;
 }
 

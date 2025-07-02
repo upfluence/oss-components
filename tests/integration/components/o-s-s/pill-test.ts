@@ -1,8 +1,7 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, render, setupOnerror } from '@ember/test-helpers';
+import { render, setupOnerror } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
-import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/pill', function (hooks) {
   setupRenderingTest(hooks);
@@ -17,6 +16,12 @@ module('Integration | Component | o-s-s/pill', function (hooks) {
     await render(hbs`<OSS::Pill @label="Pill" />`);
 
     assert.dom('.oss-pill').hasText('Pill');
+  });
+
+  test('it displays the correct icon when using the @icon arg', async function (assert) {
+    await render(hbs`<OSS::Smart::Pill @label="Pill" @icon="fa-gift"/>`);
+
+    assert.dom('.icon.fa-gift').exists();
   });
 
   test('it renders the corresponding style when the component is selected', async function (assert) {
