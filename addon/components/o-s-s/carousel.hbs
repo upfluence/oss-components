@@ -1,5 +1,5 @@
 <div
-  class="oss-carousel {{if @showPageCounterBottom 'oss-carousel__reverse'}}"
+  class="oss-carousel {{if (eq @indicatorsPosition 'bottom') 'oss-carousel__reverse'}}"
   {{did-insert this.initialize}}
   ...attributes
 >
