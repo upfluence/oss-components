@@ -69,7 +69,7 @@ export default {
       }
     },
     indicatorsPosition: {
-      description: 'Whether to show the page indicators at the bottom of the carousel.',
+      description: 'Whether to show the page indicators at the top or the bottom of the carousel.',
       table: {
         type: {
           summary: 'string'
@@ -96,7 +96,7 @@ const defaultArgs = {
   showIndicators: undefined,
   showControls: undefined,
   autoPlay: undefined,
-  indicatorsPosition: false
+  indicatorsPosition: 'top'
 };
 
 const Template = (args) => ({
