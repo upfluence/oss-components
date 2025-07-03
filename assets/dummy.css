@@ -13162,6 +13162,9 @@ a.oss-sidebar-item:focus {
   gap: var(--spacing-px-12);
   position: relative;
 }
+.oss-carousel__reverse {
+  flex-direction: column-reverse;
+}
 .oss-carousel .page-btn {
   padding: var(--spacing-px-3);
   color: var(--color-gray-200);
@@ -13179,18 +13182,28 @@ a.oss-sidebar-item:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: var(--spacing-px-24);
+  width: var(--spacing-px-36);
+  height: var(--spacing-px-36);
+  border-radius: 50%;
+  border: 1px solid var(--color-gray-200);
+  background-color: var(--color-white);
   padding: 0;
   color: var(--color-gray-500);
   text-align: center;
   transition: opacity 0.5s ease;
 }
+.oss-carousel .carousel-control--left,
+.oss-carousel .carousel-control--right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
 .oss-carousel .carousel-control--left {
-  left: 0;
+  left: var(--spacing-px-24);
 }
 .oss-carousel .carousel-control--right {
   left: unset;
-  right: 0;
+  right: var(--spacing-px-24);
 }
 .oss-carousel .page-container {
   display: block;

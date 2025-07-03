@@ -3568,7 +3568,8 @@ define("dummy/tests/integration/components/o-s-s/carousel-test", ["qunit", "embe
         
             <OSS::Carousel @showIndicators={{this.showIndicators}} @showControls={{this.showControls}}
                            @animationStyle={{this.animationStyle}} @buttonIcon={{this.buttonIcon}}
-                           @autoPlay={{this.autoPlay}} @onPageChange={{this.onPageChange}}>
+                           @autoPlay={{this.autoPlay}} @onPageChange={{this.onPageChange}}
+                           @indicatorsPosition={{this.indicatorsPosition}}>
               <:pages>
                 <div class="page">Page 1</div>
                 <div class="page">Page 2</div>
@@ -3578,8 +3579,8 @@ define("dummy/tests/integration/components/o-s-s/carousel-test", ["qunit", "embe
           
       */
       {
-        "id": "kP8NrZiP",
-        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@showIndicators\",\"@showControls\",\"@animationStyle\",\"@buttonIcon\",\"@autoPlay\",\"@onPageChange\"],[[30,0,[\"showIndicators\"]],[30,0,[\"showControls\"]],[30,0,[\"animationStyle\"]],[30,0,[\"buttonIcon\"]],[30,0,[\"autoPlay\"]],[30,0,[\"onPageChange\"]]]],[[\"pages\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 1\"],[13],[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 2\"],[13],[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 3\"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"]],[],false,[\"o-s-s/carousel\"]]",
+        "id": "XJ1JyX9E",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@showIndicators\",\"@showControls\",\"@animationStyle\",\"@buttonIcon\",\"@autoPlay\",\"@onPageChange\",\"@indicatorsPosition\"],[[30,0,[\"showIndicators\"]],[30,0,[\"showControls\"]],[30,0,[\"animationStyle\"]],[30,0,[\"buttonIcon\"]],[30,0,[\"autoPlay\"]],[30,0,[\"onPageChange\"]],[30,0,[\"indicatorsPosition\"]]]],[[\"pages\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 1\"],[13],[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 2\"],[13],[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 3\"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"]],[],false,[\"o-s-s/carousel\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/carousel-test.ts",
         "isStrictMode": false
       }));
@@ -3620,6 +3621,11 @@ define("dummy/tests/integration/components/o-s-s/carousel-test", ["qunit", "embe
         this.showIndicators = false;
         await renderCarousel();
         assert.dom('.oss-carousel .page-btn').doesNotExist();
+      });
+      (0, _qunit.test)('When specified, it renders the indicators at the bottom if indicatorsPosition is set to bottom', async function (assert) {
+        this.indicatorsPosition = 'bottom';
+        await renderCarousel();
+        assert.dom('.oss-carousel').hasClass('oss-carousel__reverse');
       });
     });
     (0, _qunit.module)('Controls (chevrons)', () => {

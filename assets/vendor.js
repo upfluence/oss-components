@@ -85230,9 +85230,13 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="oss-carousel" {{did-insert this.initialize}} ...attributes>
+    <div
+    class="oss-carousel {{if (eq @indicatorsPosition 'bottom') 'oss-carousel__reverse'}}"
+    {{did-insert this.initialize}}
+    ...attributes
+  >
     {{#if this.showIndicators}}
-      <div class="fx-row">
+      <div class="fx-row oss-carousel__indicators">
         {{#each this.pages as |page index|}}
           <div class="page-btn" role="button" {{on "click" (fn this.displayPage page)}}>
             <i class="{{this.buttonIcon}} {{if (eq index this.currentPageIndex) 'page-btn--active'}}"></i>
@@ -85254,8 +85258,8 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
   </div>
   */
   {
-    "id": "iToN/7PP",
-    "block": "[[[11,0],[24,0,\"oss-carousel\"],[17,1],[4,[38,0],[[30,0,[\"initialize\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"showIndicators\"]],[[[1,\"    \"],[10,0],[14,0,\"fx-row\"],[12],[1,\"\\n\"],[42,[28,[37,3],[[28,[37,3],[[30,0,[\"pages\"]]],null]],null],null,[[[1,\"        \"],[11,0],[24,0,\"page-btn\"],[24,\"role\",\"button\"],[4,[38,4],[\"click\",[28,[37,5],[[30,0,[\"displayPage\"]],[30,2]],null]],null],[12],[1,\"\\n          \"],[10,\"i\"],[15,0,[29,[[30,0,[\"buttonIcon\"]],\" \",[52,[28,[37,6],[[30,3],[30,0,[\"currentPageIndex\"]]],null],\"page-btn--active\"]]]],[12],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[2,3]],null],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[15,0,[29,[\"page-container \",[52,[30,0,[\"displaySidePadding\"]],\"page-container--side-padding\"]]]],[12],[1,\"\\n\"],[41,[30,0,[\"showControls\"]],[[[1,\"      \"],[11,0],[24,0,\"carousel-control carousel-control--left\"],[24,\"role\",\"button\"],[4,[38,4],[\"click\",[30,0,[\"previousPage\"]]],null],[12],[1,\"\\n        \"],[10,\"i\"],[14,0,\"far fa-chevron-left\"],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[11,0],[24,0,\"carousel-control carousel-control--right\"],[24,\"role\",\"button\"],[4,[38,4],[\"click\",[30,0,[\"nextPage\"]]],null],[12],[1,\"\\n        \"],[10,\"i\"],[14,0,\"far fa-chevron-right\"],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[18,4,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"page\",\"index\",\"&pages\"],false,[\"did-insert\",\"if\",\"each\",\"-track-array\",\"on\",\"fn\",\"eq\",\"yield\"]]",
+    "id": "KxhoCQ4n",
+    "block": "[[[11,0],[16,0,[29,[\"oss-carousel \",[52,[28,[37,1],[[30,1],\"bottom\"],null],\"oss-carousel__reverse\"]]]],[17,2],[4,[38,2],[[30,0,[\"initialize\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"showIndicators\"]],[[[1,\"    \"],[10,0],[14,0,\"fx-row oss-carousel__indicators\"],[12],[1,\"\\n\"],[42,[28,[37,4],[[28,[37,4],[[30,0,[\"pages\"]]],null]],null],null,[[[1,\"        \"],[11,0],[24,0,\"page-btn\"],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[28,[37,6],[[30,0,[\"displayPage\"]],[30,3]],null]],null],[12],[1,\"\\n          \"],[10,\"i\"],[15,0,[29,[[30,0,[\"buttonIcon\"]],\" \",[52,[28,[37,1],[[30,4],[30,0,[\"currentPageIndex\"]]],null],\"page-btn--active\"]]]],[12],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[3,4]],null],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[15,0,[29,[\"page-container \",[52,[30,0,[\"displaySidePadding\"]],\"page-container--side-padding\"]]]],[12],[1,\"\\n\"],[41,[30,0,[\"showControls\"]],[[[1,\"      \"],[11,0],[24,0,\"carousel-control carousel-control--left\"],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[30,0,[\"previousPage\"]]],null],[12],[1,\"\\n        \"],[10,\"i\"],[14,0,\"far fa-chevron-left\"],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[11,0],[24,0,\"carousel-control carousel-control--right\"],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[30,0,[\"nextPage\"]]],null],[12],[1,\"\\n        \"],[10,\"i\"],[14,0,\"far fa-chevron-right\"],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[18,5,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"@indicatorsPosition\",\"&attrs\",\"page\",\"index\",\"&pages\"],false,[\"if\",\"eq\",\"did-insert\",\"each\",\"-track-array\",\"on\",\"fn\",\"yield\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/carousel.hbs",
     "isStrictMode": false
   });
@@ -85485,6 +85489,21 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
             summary: 'onPageChange(): void'
           }
         }
+      },
+      indicatorsPosition: {
+        description: 'Whether to show the page indicators at the top or the bottom of the carousel.',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'top'
+          }
+        },
+        options: ['top', 'bottom'],
+        control: {
+          type: 'select'
+        }
       }
     },
     parameters: {
@@ -85500,7 +85519,8 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
     animationStyle: undefined,
     showIndicators: undefined,
     showControls: undefined,
-    autoPlay: undefined
+    autoPlay: undefined,
+    indicatorsPosition: 'top'
   };
   const Template = args => ({
     template: (0, _templateFactory.createTemplateFactory)(
@@ -85508,7 +85528,7 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
       
         <OSS::Carousel @showIndicators={{this.showIndicators}} @showControls={{this.showControls}}
                        @animationStyle={{this.animationStyle}} @buttonIcon={{this.buttonIcon}}
-                       @autoPlay={{this.autoPlay}}>
+                       @autoPlay={{this.autoPlay}} @indicatorsPosition={{this.indicatorsPosition}}>
           <:pages>
             <div class="page">
               <OSS::Banner @icon="fas fa-image" @title="PAGE 1"/>
@@ -85524,8 +85544,8 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
       
     */
     {
-      "id": "8jwfaCwB",
-      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@showIndicators\",\"@showControls\",\"@animationStyle\",\"@buttonIcon\",\"@autoPlay\"],[[30,0,[\"showIndicators\"]],[30,0,[\"showControls\"]],[30,0,[\"animationStyle\"]],[30,0,[\"buttonIcon\"]],[30,0,[\"autoPlay\"]]]],[[\"pages\"],[[[[1,\"\\n        \"],[10,0],[14,0,\"page\"],[12],[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\",\"@title\"],[\"fas fa-image\",\"PAGE 1\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"page\"],[12],[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\",\"@title\"],[\"fas fa-image\",\"PAGE 2\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"page\"],[12],[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\",\"@title\"],[\"fas fa-image\",\"PAGE 1\"]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/carousel\",\"o-s-s/banner\"]]",
+      "id": "exOJlVai",
+      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@showIndicators\",\"@showControls\",\"@animationStyle\",\"@buttonIcon\",\"@autoPlay\",\"@indicatorsPosition\"],[[30,0,[\"showIndicators\"]],[30,0,[\"showControls\"]],[30,0,[\"animationStyle\"]],[30,0,[\"buttonIcon\"]],[30,0,[\"autoPlay\"]],[30,0,[\"indicatorsPosition\"]]]],[[\"pages\"],[[[[1,\"\\n        \"],[10,0],[14,0,\"page\"],[12],[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\",\"@title\"],[\"fas fa-image\",\"PAGE 1\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"page\"],[12],[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\",\"@title\"],[\"fas fa-image\",\"PAGE 2\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"page\"],[12],[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\",\"@title\"],[\"fas fa-image\",\"PAGE 1\"]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/carousel\",\"o-s-s/banner\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/carousel.stories.js",
       "isStrictMode": false
     }),
