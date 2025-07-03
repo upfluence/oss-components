@@ -20,7 +20,8 @@ module('Integration | Component | o-s-s/carousel', function (hooks) {
     await render(hbs`
       <OSS::Carousel @showIndicators={{this.showIndicators}} @showControls={{this.showControls}}
                      @animationStyle={{this.animationStyle}} @buttonIcon={{this.buttonIcon}}
-                     @autoPlay={{this.autoPlay}} @onPageChange={{this.onPageChange}}>
+                     @autoPlay={{this.autoPlay}} @onPageChange={{this.onPageChange}}
+                     @indicatorsPosition={{this.indicatorsPosition}}>
         <:pages>
           <div class="page">Page 1</div>
           <div class="page">Page 2</div>
@@ -58,6 +59,12 @@ module('Integration | Component | o-s-s/carousel', function (hooks) {
       this.showIndicators = false;
       await renderCarousel();
       assert.dom('.oss-carousel .page-btn').doesNotExist();
+    });
+
+    test('When specified, it renders the indicators at the bottom if indicatorsPosition is set to bottom', async function (assert) {
+      this.indicatorsPosition = 'bottom';
+      await renderCarousel();
+      assert.dom('.oss-carousel').hasClass('oss-carousel__reverse');
     });
   });
 

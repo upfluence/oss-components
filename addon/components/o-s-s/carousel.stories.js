@@ -67,6 +67,17 @@ export default {
           summary: 'onPageChange(): void'
         }
       }
+    },
+    indicatorsPosition: {
+      description: 'Whether to show the page indicators at the top or the bottom of the carousel.',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'top' }
+      },
+      options: ['top', 'bottom'],
+      control: { type: 'select' }
     }
   },
   parameters: {
@@ -84,14 +95,15 @@ const defaultArgs = {
   animationStyle: undefined,
   showIndicators: undefined,
   showControls: undefined,
-  autoPlay: undefined
+  autoPlay: undefined,
+  indicatorsPosition: 'top'
 };
 
 const Template = (args) => ({
   template: hbs`
     <OSS::Carousel @showIndicators={{this.showIndicators}} @showControls={{this.showControls}}
                    @animationStyle={{this.animationStyle}} @buttonIcon={{this.buttonIcon}}
-                   @autoPlay={{this.autoPlay}}>
+                   @autoPlay={{this.autoPlay}} @indicatorsPosition={{this.indicatorsPosition}}>
       <:pages>
         <div class="page">
           <OSS::Banner @icon="fas fa-image" @title="PAGE 1"/>
