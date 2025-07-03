@@ -99336,14 +99336,14 @@ interface OSSCodeBlockArgs {
     }
   }), class EnablePopoverModifierManager {});
 });
-;define("@upfluence/oss-components/modifiers/enable-tooltip", ["exports", "@ember/modifier", "@upfluence/oss-components/utils/dope", "@ember/runloop", "@upfluence/oss-components/utils/animation-manager", "@ember/utils", "@embroider/macros/runtime"], function (_exports, _modifier, _dope, _runloop, _animationManager, _utils, _runtime) {
+;define("@upfluence/oss-components/modifiers/enable-tooltip", ["exports", "@ember/modifier", "@upfluence/oss-components/utils/dope", "@ember/runloop", "@upfluence/oss-components/utils/animation-manager", "@upfluence/oss-components/utils/element", "@ember/utils", "@embroider/macros/runtime"], function (_exports, _modifier, _dope, _runloop, _animationManager, _element, _utils, _runtime) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"@ember/modifier",0,"@upfluence/oss-components/utils/dope",0,"@ember/runloop",0,"@upfluence/oss-components/utils/animation-manager",0,"@embroider/macros",0,"@ember/utils"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"@ember/modifier",0,"@upfluence/oss-components/utils/dope",0,"@ember/runloop",0,"@upfluence/oss-components/utils/animation-manager",0,"@upfluence/oss-components/utils/element",0,"@embroider/macros",0,"@ember/utils"eaimeta@70e063a35619d71f
   // @ts-ignore
   const ANIMATION_DURATION = 250;
   const RENDERING_DELAY = 300;
@@ -99404,6 +99404,9 @@ interface OSSCodeBlockArgs {
     }
   }
   function delayedRender(state) {
+    if (state.tooltipConfig.displayOnlyOnOverflow && !(0, _element.hasOverflow)(state.originElement)) {
+      return;
+    }
     if ((0, _utils.isEmpty)(state.tooltipConfig.title) || state.isRendered || state.setTimeoutId) return;
     state.setTimeoutId = setTimeout(() => {
       renderTooltip(state);
@@ -99547,7 +99550,7 @@ interface OSSCodeBlockArgs {
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = _exports.BasicUsage = void 0;
+  _exports.default = _exports.OverflowUsage = _exports.BasicUsage = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
   const PlacementDefinitions = ['bottom', 'top', 'left', 'right'];
   const TriggerDefinitions = ['hover focus', 'hover', 'focus'];
@@ -99629,6 +99632,21 @@ interface OSSCodeBlockArgs {
         control: {
           type: 'select'
         }
+      },
+      displayOnlyOnOverflow: {
+        name: 'displayOnlyOnOverflow',
+        description: 'Enables the tooltip on hover only when the container is to small to display the full text.',
+        table: {
+          type: {
+            summary: 'false'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
       }
     },
     parameters: {
@@ -99639,6 +99657,14 @@ interface OSSCodeBlockArgs {
       }
     }
   };
+  const defaultArgs = {
+    title: 'Title',
+    subtitle: 'A very nice subtitle',
+    icon: 'far fa-fire',
+    placement: 'bottom',
+    triggerValue: 'hover focus',
+    displayOnlyOnOverflow: false
+  };
   const DefaultUsageTemplate = args => ({
     template: (0, _templateFactory.createTemplateFactory)(
     /*
@@ -99646,7 +99672,8 @@ interface OSSCodeBlockArgs {
         <div class="fx-col" style="justify-content: center; height: 200px; width: 750px; background-color: white">
           <div class="fx-row" style="justify-content: center;">
             <span style="color: var(--color-gray-900)" {{enable-tooltip title=this.title subtitle=this.subtitle icon=this.icon
-                                                                        placement=this.placement trigger=this.triggerValue}}>
+                                                                        placement=this.placement trigger=this.triggerValue
+                                                                        displayOnlyOnOverflow=this.displayOnlyOnOverflow}}>
               I have a tooltip
             </span>
           </div>
@@ -99654,21 +99681,40 @@ interface OSSCodeBlockArgs {
       
     */
     {
-      "id": "rSbYghtw",
-      "block": "[[[1,\"\\n    \"],[10,0],[14,0,\"fx-col\"],[14,5,\"justify-content: center; height: 200px; width: 750px; background-color: white\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row\"],[14,5,\"justify-content: center;\"],[12],[1,\"\\n        \"],[11,1],[24,5,\"color: var(--color-gray-900)\"],[4,[38,0],null,[[\"title\",\"subtitle\",\"icon\",\"placement\",\"trigger\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"icon\"]],[30,0,[\"placement\"]],[30,0,[\"triggerValue\"]]]]],[12],[1,\"\\n          I have a tooltip\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"enable-tooltip\"]]",
+      "id": "ZrI5phCC",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,0,\"fx-col\"],[14,5,\"justify-content: center; height: 200px; width: 750px; background-color: white\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row\"],[14,5,\"justify-content: center;\"],[12],[1,\"\\n        \"],[11,1],[24,5,\"color: var(--color-gray-900)\"],[4,[38,0],null,[[\"title\",\"subtitle\",\"icon\",\"placement\",\"trigger\",\"displayOnlyOnOverflow\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"icon\"]],[30,0,[\"placement\"]],[30,0,[\"triggerValue\"]],[30,0,[\"displayOnlyOnOverflow\"]]]]],[12],[1,\"\\n          I have a tooltip\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"enable-tooltip\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/modifiers/enable-tooltip.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const OverflowUsageTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <div class="fx-col" style="justify-content: center; height: 200px; width: 750px; background-color: white">
+          <div class="fx-row" style="justify-content: center;">
+            <span class="text-ellipsis-160" style="color: var(--color-gray-900)" {{enable-tooltip title=this.title subtitle=this.subtitle icon=this.icon
+                                                                        placement=this.placement trigger=this.triggerValue
+                                                                        displayOnlyOnOverflow=this.displayOnlyOnOverflow}}>
+              I have a very very very long content to display a tooltip
+            </span>
+          </div>
+        </div>
+      
+    */
+    {
+      "id": "PjOkAgbQ",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,0,\"fx-col\"],[14,5,\"justify-content: center; height: 200px; width: 750px; background-color: white\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row\"],[14,5,\"justify-content: center;\"],[12],[1,\"\\n        \"],[11,1],[24,0,\"text-ellipsis-160\"],[24,5,\"color: var(--color-gray-900)\"],[4,[38,0],null,[[\"title\",\"subtitle\",\"icon\",\"placement\",\"trigger\",\"displayOnlyOnOverflow\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"icon\"]],[30,0,[\"placement\"]],[30,0,[\"triggerValue\"]],[30,0,[\"displayOnlyOnOverflow\"]]]]],[12],[1,\"\\n          I have a very very very long content to display a tooltip\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"enable-tooltip\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/modifiers/enable-tooltip.stories.js",
       "isStrictMode": false
     }),
     context: args
   });
   const BasicUsage = _exports.BasicUsage = DefaultUsageTemplate.bind({});
-  BasicUsage.args = {
-    title: 'Title',
-    subtitle: 'A very nice subtitle',
-    icon: 'far fa-fire',
-    placement: 'bottom',
-    triggerValue: 'hover focus'
-  };
+  BasicUsage.args = defaultArgs;
+  const OverflowUsage = _exports.OverflowUsage = OverflowUsageTemplate.bind({});
+  OverflowUsage.args = defaultArgs;
 });
 ;define("@upfluence/oss-components/modifiers/on-bottom-reached", ["exports", "@ember/modifier", "@ember/runloop"], function (_exports, _modifier, _runloop) {
   "use strict";
@@ -105483,6 +105529,23 @@ interface OSSCodeBlockArgs {
     });
   };
   _exports.registerEasterEgg = registerEasterEgg;
+});
+;define("@upfluence/oss-components/utils/element", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.hasOverflow = hasOverflow;
+  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
+  function hasOverflow(element) {
+    if (!Array.from(element.children).length) {
+      return element.offsetWidth < element.scrollWidth;
+    }
+    return Array.from(element.children).some(child => {
+      return hasOverflow(child);
+    });
+  }
 });
 ;define("@upfluence/oss-components/utils/filesize-parser", ["exports"], function (_exports) {
   "use strict";

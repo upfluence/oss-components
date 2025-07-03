@@ -152,6 +152,59 @@ define("dummy/tests/integration/components/modifiers/enable-tooltip-test", ["qun
         });
       });
     });
+    (0, _qunit.module)('Display only on overflow', hooks => {
+      hooks.beforeEach(function () {
+        this.displayOnlyOnOverflow = true;
+      });
+      (0, _qunit.test)('When content has no overflow, it does not display tooltip on hover', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+              <div class="test-container" style="height: 20px; width: 40px"
+                   {{enable-tooltip title=this.title
+                                    subtitle=this.subtitle
+                                    placement=this.placement
+                                    icon=this.icon
+                                    trigger=this.trigger
+                                    html=this.html
+                                    displayOnlyOnOverflow=this.displayOnlyOnOverflow }}>
+                   abc
+              </div>
+            
+        */
+        {
+          "id": "t+wHtW3M",
+          "block": "[[[1,\"\\n      \"],[11,0],[24,0,\"test-container\"],[24,5,\"height: 20px; width: 40px\"],[4,[38,0],null,[[\"title\",\"subtitle\",\"placement\",\"icon\",\"trigger\",\"html\",\"displayOnlyOnOverflow\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"placement\"]],[30,0,[\"icon\"]],[30,0,[\"trigger\"]],[30,0,[\"html\"]],[30,0,[\"displayOnlyOnOverflow\"]]]]],[12],[1,\"\\n           abc\\n      \"],[13],[1,\"\\n    \"]],[],false,[\"enable-tooltip\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/modifiers/enable-tooltip-test.ts",
+          "isStrictMode": false
+        }));
+        await assert.tooltip('.test-container').doesNotExist();
+      });
+      (0, _qunit.test)('When content has overflow, it displays tooltip on hover', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+              <div class="test-container" style="height: 20px; width: 40px"
+                   {{enable-tooltip title=this.title
+                                    subtitle=this.subtitle
+                                    placement=this.placement
+                                    icon=this.icon
+                                    trigger=this.trigger
+                                    html=this.html
+                                    displayOnlyOnOverflow=this.displayOnlyOnOverflow }}>
+                   abcdefghijklmnopqrstuvwxyz
+              </div>
+            
+        */
+        {
+          "id": "SKZMEj+a",
+          "block": "[[[1,\"\\n      \"],[11,0],[24,0,\"test-container\"],[24,5,\"height: 20px; width: 40px\"],[4,[38,0],null,[[\"title\",\"subtitle\",\"placement\",\"icon\",\"trigger\",\"html\",\"displayOnlyOnOverflow\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"placement\"]],[30,0,[\"icon\"]],[30,0,[\"trigger\"]],[30,0,[\"html\"]],[30,0,[\"displayOnlyOnOverflow\"]]]]],[12],[1,\"\\n           abcdefghijklmnopqrstuvwxyz\\n      \"],[13],[1,\"\\n    \"]],[],false,[\"enable-tooltip\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/modifiers/enable-tooltip-test.ts",
+          "isStrictMode": false
+        }));
+        await assert.tooltip('.test-container').exists();
+      });
+    });
     (0, _qunit.module)('trigger attribute', () => {
       (0, _qunit.test)('it renders when hovering and focusing the element with undefined trigger', async function (assert) {
         await renderTooltip();
