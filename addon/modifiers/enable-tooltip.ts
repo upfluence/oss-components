@@ -3,6 +3,7 @@ import { setModifierManager, capabilities } from '@ember/modifier';
 import Dope, { type Placement } from '@upfluence/oss-components/utils/dope';
 import { run } from '@ember/runloop';
 import { createAnimation } from '@upfluence/oss-components/utils/animation-manager';
+import { hasOverflow } from '@upfluence/oss-components/utils/element';
 import { isTesting } from '@embroider/macros';
 import { isEmpty } from '@ember/utils';
 
@@ -13,6 +14,7 @@ type TooltipConfig = {
   subtitle?: string;
   icon?: string;
   html?: boolean;
+  displayOnlyOnOverflow?: boolean;
 };
 
 type EnableTooltipArgs = {
@@ -89,6 +91,10 @@ function generateHTMLStructure(state: EnableTooltipState): void {
 }
 
 function delayedRender(state: EnableTooltipState): void {
+  if (state.tooltipConfig.displayOnlyOnOverflow && !hasOverflow(state.originElement)) {
+    return;
+  }
+
   if (isEmpty(state.tooltipConfig.title) || state.isRendered || state.setTimeoutId) return;
   state.setTimeoutId = setTimeout(() => {
     renderTooltip(state);

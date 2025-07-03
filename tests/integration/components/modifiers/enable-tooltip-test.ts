@@ -68,6 +68,45 @@ module('Integration | Component | modifiers/enable-tooltip', function (hooks) {
     });
   });
 
+  module('Display only on overflow', (hooks) => {
+    hooks.beforeEach(function () {
+      this.displayOnlyOnOverflow = true;
+    });
+    test('When content has no overflow, it does not display tooltip on hover', async function (assert) {
+      await render(hbs`
+      <div class="test-container" style="height: 20px; width: 40px"
+           {{enable-tooltip title=this.title
+                            subtitle=this.subtitle
+                            placement=this.placement
+                            icon=this.icon
+                            trigger=this.trigger
+                            html=this.html
+                            displayOnlyOnOverflow=this.displayOnlyOnOverflow }}>
+           abc
+      </div>
+    `);
+
+      await assert.tooltip('.test-container').doesNotExist();
+    });
+
+    test('When content has overflow, it displays tooltip on hover', async function (assert) {
+      await render(hbs`
+      <div class="test-container" style="height: 20px; width: 40px"
+           {{enable-tooltip title=this.title
+                            subtitle=this.subtitle
+                            placement=this.placement
+                            icon=this.icon
+                            trigger=this.trigger
+                            html=this.html
+                            displayOnlyOnOverflow=this.displayOnlyOnOverflow }}>
+           abcdefghijklmnopqrstuvwxyz
+      </div>
+    `);
+
+      await assert.tooltip('.test-container').exists();
+    });
+  });
+
   module('trigger attribute', () => {
     test('it renders when hovering and focusing the element with undefined trigger', async function (assert) {
       await renderTooltip();
