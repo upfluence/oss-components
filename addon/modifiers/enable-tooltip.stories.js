@@ -59,6 +59,17 @@ export default {
       },
       options: TriggerDefinitions,
       control: { type: 'select' }
+    },
+    displayOnlyOnOverflow: {
+      name: 'displayOnlyOnOverflow',
+      description: 'The trigger definition',
+      table: {
+        type: {
+          summary: 'false'
+        },
+        defaultValue: { summary: 'false' }
+      },
+      control: { type: 'boolean' }
     }
   },
   parameters: {
@@ -69,13 +80,22 @@ export default {
     }
   }
 };
+const defaultArgs = {
+  title: 'Title',
+  subtitle: 'A very nice subtitle',
+  icon: 'far fa-fire',
+  placement: 'bottom',
+  triggerValue: 'hover focus',
+  displayOnlyOnOverflow: false
+};
 
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
     <div class="fx-col" style="justify-content: center; height: 200px; width: 750px; background-color: white">
       <div class="fx-row" style="justify-content: center;">
         <span style="color: var(--color-gray-900)" {{enable-tooltip title=this.title subtitle=this.subtitle icon=this.icon
-                                                                    placement=this.placement trigger=this.triggerValue}}>
+                                                                    placement=this.placement trigger=this.triggerValue
+                                                                    displayOnlyOnOverflow=this.displayOnlyOnOverflow}}>
           I have a tooltip
         </span>
       </div>
@@ -83,11 +103,24 @@ const DefaultUsageTemplate = (args) => ({
   `,
   context: args
 });
+
+const OverflowUsageTemplate = (args) => ({
+  template: hbs`
+    <div class="fx-col" style="justify-content: center; height: 200px; width: 750px; background-color: white">
+      <div class="fx-row" style="justify-content: center;">
+        <span class="text-ellipsis-160" style="color: var(--color-gray-900)" {{enable-tooltip title=this.title subtitle=this.subtitle icon=this.icon
+                                                                    placement=this.placement trigger=this.triggerValue
+                                                                    displayOnlyOnOverflow=this.displayOnlyOnOverflow}}>
+          I have a very very very long content to display a tooltip
+        </span>
+      </div>
+    </div>
+  `,
+  context: args
+});
+
 export const BasicUsage = DefaultUsageTemplate.bind({});
-BasicUsage.args = {
-  title: 'Title',
-  subtitle: 'A very nice subtitle',
-  icon: 'far fa-fire',
-  placement: 'bottom',
-  triggerValue: 'hover focus'
-};
+BasicUsage.args = defaultArgs;
+
+export const OverflowUsage = OverflowUsageTemplate.bind({});
+OverflowUsage.args = defaultArgs;

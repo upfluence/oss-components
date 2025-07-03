@@ -14,7 +14,7 @@ type TooltipConfig = {
   subtitle?: string;
   icon?: string;
   html?: boolean;
-  displayOnOverflow?: boolean;
+  displayOnlyOnOverflow?: boolean;
 };
 
 type EnableTooltipArgs = {
@@ -91,7 +91,7 @@ function generateHTMLStructure(state: EnableTooltipState): void {
 }
 
 function delayedRender(state: EnableTooltipState): void {
-  if (state.tooltipConfig.displayOnOverflow && !hasOverflow(state.originElement)) {
+  if (state.tooltipConfig.displayOnlyOnOverflow && !hasOverflow(state.originElement)) {
     return;
   }
 

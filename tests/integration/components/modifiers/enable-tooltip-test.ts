@@ -68,9 +68,9 @@ module('Integration | Component | modifiers/enable-tooltip', function (hooks) {
     });
   });
 
-  module('display on overflow', (hooks) => {
+  module('Display only on overflow', (hooks) => {
     hooks.beforeEach(function () {
-      this.displayOnOverflow = true;
+      this.displayOnlyOnOverflow = true;
     });
     test('When content has no overflow, it does not display tooltip on hover', async function (assert) {
       await render(hbs`
@@ -81,7 +81,7 @@ module('Integration | Component | modifiers/enable-tooltip', function (hooks) {
                             icon=this.icon
                             trigger=this.trigger
                             html=this.html
-                            displayOnOverflow=this.displayOnOverflow }}>
+                            displayOnlyOnOverflow=this.displayOnlyOnOverflow }}>
            abc
       </div>
     `);
@@ -98,7 +98,7 @@ module('Integration | Component | modifiers/enable-tooltip', function (hooks) {
                             icon=this.icon
                             trigger=this.trigger
                             html=this.html
-                            displayOnOverflow=this.displayOnOverflow }}>
+                            displayOnlyOnOverflow=this.displayOnlyOnOverflow }}>
            abcdefghijklmnopqrstuvwxyz
       </div>
     `);
