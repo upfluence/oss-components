@@ -62,7 +62,7 @@ export default {
     },
     displayOnlyOnOverflow: {
       name: 'displayOnlyOnOverflow',
-      description: 'The trigger definition',
+      description: 'Enables the tooltip on hover only when the container is to small to display the full text.',
       table: {
         type: {
           summary: 'false'

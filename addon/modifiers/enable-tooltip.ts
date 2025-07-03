@@ -3,9 +3,9 @@ import { setModifierManager, capabilities } from '@ember/modifier';
 import Dope, { type Placement } from '@upfluence/oss-components/utils/dope';
 import { run } from '@ember/runloop';
 import { createAnimation } from '@upfluence/oss-components/utils/animation-manager';
+import { hasOverflow } from '@upfluence/oss-components/utils/element';
 import { isTesting } from '@embroider/macros';
 import { isEmpty } from '@ember/utils';
-import { bool } from '@ember/object/computed';
 
 type TooltipConfig = {
   title?: string;
@@ -194,16 +194,6 @@ function initEventListener(state: EnableTooltipState, element: HTMLElement): voi
       destroyWithEvent(state, event);
     });
   }
-}
-
-function hasOverflow(element: HTMLElement): boolean {
-  if (!Array.from(element.children).length) {
-    return element.offsetWidth < element.scrollWidth;
-  }
-
-  return Array.from(element.children).some((child: HTMLElement) => {
-    return hasOverflow(child);
-  });
 }
 
 export default setModifierManager(
