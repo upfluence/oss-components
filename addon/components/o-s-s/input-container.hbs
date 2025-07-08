@@ -15,12 +15,13 @@
         {{yield to="input"}}
       </div>
     {{else}}
-      <Input
-        @value={{@value}}
-        @type={{this.type}}
+      <input
+        value={{@value}}
+        type={{this.type}}
         placeholder={{@placeholder}}
         disabled={{@disabled}}
         class="upf-input"
+        {{on "input" this.onInput}}
         {{on "keyup" (fn this._onChange @value)}}
         {{on "paste" this.onPaste}}
       />
