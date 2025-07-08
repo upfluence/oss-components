@@ -1,0 +1,17 @@
+<div class="fx-col fx-gap-px-12">
+  {{#each this.sections as |section|}}
+    <div style="border:1px solid black; border-radius: 4px; padding: 6px">
+      <span {{on "click" (fn this.selectSection section.id)}} role="button">{{section.key}}</span>
+      {{#if (this.isSectionExpanded sectionId=section.id)}}
+        {{#each section.steps as |step|}}
+          {{#if (not-eq step.displayState "empty")}}
+            <li role="button" {{on "click" (fn this.selectStep step.id)}}>
+              {{step.key}}
+              {{#if (eq step this.wizardManager.currentStep)}}<i class="far fa-star"></i>{{/if}}
+            </li>
+          {{/if}}
+        {{/each}}
+      {{/if}}
+    </div>
+  {{/each}}
+</div>
