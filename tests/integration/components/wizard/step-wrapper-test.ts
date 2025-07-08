@@ -12,7 +12,7 @@ module('Integration | Component | wizard/step-wrapper', function (hooks) {
       title: 'Step 1',
       displayState: 'active',
       visited: false,
-      validateStep: () => Promise.resolve(true),
+      validateStep: () => Promise.resolve(true)
     });
   });
 

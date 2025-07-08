@@ -7,10 +7,6 @@ export default class WizardExampleStepWithScroll extends WizardBaseStep<WizardEx
   constructor(owner: unknown, args: WizardExampleStepWithScrollSignature) {
     super(owner, args);
     console.log('WizardExampleStep initialized for step:', this.args.step.id);
-    // Ensure the submission method is set
-    if (!this.args.step.validateStep) {
-      this.args.step.validateStep = this.onStepSubmission.bind(this);
-    }
   }
 
   @action
