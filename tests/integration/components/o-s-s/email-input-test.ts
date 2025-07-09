@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, setupOnerror, typeIn, triggerKeyEvent } from '@ember/test-helpers';
+import { render, setupOnerror, typeIn, triggerKeyEvent, fillIn } from '@ember/test-helpers';
 import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/email-input', function (hooks) {
@@ -69,9 +69,10 @@ module('Integration | Component | o-s-s/email-input', function (hooks) {
     });
 
     test('it returns null value', async function (assert) {
-      this.value = null;
+      this.value = '1';
       await render(hbs`<OSS::EmailInput @value={{this.value}} @onChange={{this.onChange}} />`);
-      await triggerKeyEvent('input', 'keyup', 'Backspace');
+      await fillIn('input', '');
+      console.log('stub', this.onChange.args);
       assert.true(this.onChange.calledOnceWithExactly(null));
     });
 
