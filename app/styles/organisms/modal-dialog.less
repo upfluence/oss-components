@@ -75,9 +75,14 @@
 @media screen and (max-device-width: 480px) and (orientation: portrait) {
   .oss-modal-dialog {
     height: 90vh;
-    margin-top: 10vh;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+    position: fixed;
+    bottom: 0;
+
+    @supports (height: 90dvh) {
+      height: 90dvh;
+    }
 
     footer {
       gap: var(--spacing-px-9);
