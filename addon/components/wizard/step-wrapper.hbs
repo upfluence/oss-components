@@ -1,0 +1,15 @@
+<div
+  id={{@step.id}}
+  class={{this.computedClasses}}
+  data-wheel-listener={{this.wheelListenerEnabled}}
+  data-wheel-handled={{this.wheelHandled}}
+  {{did-insert this.initStepView}}
+  {{did-update this.onDisplayStateUpdate @step.displayState}}
+  {{on "scroll" this.handleScrollEvent}}
+  {{on "wheel" this.handleWheelEvent}}
+  ...attributes
+>
+  {{#if this.isVisible}}
+    <this.componentToDisplay @step={{@step}} />
+  {{/if}}
+</div>

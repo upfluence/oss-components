@@ -1,0 +1,18 @@
+<div class="step-controls fx-col fx-gap-px-12">
+  <OSS::Button
+    @square={{true}}
+    @size="lg"
+    @icon="fa-arrow-up"
+    disabled={{not this.wizardManager.previousStep}}
+    {{on "click" this.selectPreviousStep}}
+    data-control-name="previous-step"
+  />
+  <OSS::Button
+    @square={{true}}
+    @size="lg"
+    @icon="fa-arrow-down"
+    disabled={{not this.wizardManager.nextStep}}
+    {{on "click" this.selectNextStep}}
+    data-control-name="next-step"
+  />
+</div>

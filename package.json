@@ -38,6 +38,7 @@
   "dependencies": {
     "@ember/render-modifiers": "^2.1.0",
     "@embroider/macros": "^1.13.4",
+    "@embroider/util": "^1.9.0",
     "@floating-ui/dom": "^1.6.3",
     "@fortawesome/fontawesome-pro": "git+ssh://git@github.com/upfluence/fontawesome-pro.git",
     "babel-plugin-debug-macros": "^0.3.1",
@@ -69,6 +70,7 @@
     "@embroider/test-setup": "^0.48.1",
     "@glimmer/component": "^1.0.4",
     "@glimmer/tracking": "^1.0.4",
+    "@glint/environment-ember-loose": "^1.5.2",
     "@glint/template": "^1.2.1",
     "@storybook/addon-actions": "6.4.9",
     "@storybook/addon-essentials": "6.4.9",
