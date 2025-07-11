@@ -44,7 +44,7 @@ export default class WizardStepWrapperComponent extends Component<WizardStepWrap
   }
 
   get baseClass(): string {
-    return this.wizardManager.configOptions?.stepWrapperBaseClass || DEFAULT_BASE_CLASS;
+    return this.wizardManager.configOptions?.stepWrapperBaseClass ?? DEFAULT_BASE_CLASS;
   }
 
   get componentToDisplay(): any {

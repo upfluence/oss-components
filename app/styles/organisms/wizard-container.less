@@ -6,7 +6,7 @@
   position: relative;
   overflow: hidden;
   height: 100vh;
-  padding: 30px;
+  padding: var(--spacing-px-30);
   animation: all 0.5s ease-in-out;
   scrollbar-width: none;
 
@@ -44,7 +44,7 @@
     height: 100%;
     background: linear-gradient(to bottom, transparent, var(--color-gray-50));
     border-radius: 0 0 var(--border-radius-xs) var(--border-radius-xs);
-    animation: fadeInGradientNext 1s ease;
+    animation: fadeInGradient 1s ease;
     animation-fill-mode: forwards;
     pointer-events: none;
   }
@@ -52,30 +52,20 @@
   .step-wrapper__previous:after {
     content: '';
     position: absolute;
+    opacity: 0;
     left: 0;
     right: 0;
     height: 100%;
     bottom: 0;
     background: linear-gradient(to top, transparent, var(--color-gray-50));
     border-radius: var(--border-radius-xs) var(--border-radius-xs) 0 0;
-    opacity: 0;
-    animation: fadeInGradientPrev 1s ease;
+    animation: fadeInGradient 1s ease;
     animation-fill-mode: forwards;
     pointer-events: none;
   }
 }
 
-@keyframes fadeInGradientNext {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeInGradientPrev {
+@keyframes fadeInGradient {
   from {
     opacity: 0;
   }

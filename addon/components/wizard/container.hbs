@@ -1,4 +1,4 @@
-<div class="{{or this.wizardManager.configOptions.containerClass 'wizard-container'}}">
+<div class={{or this.wizardManager.configOptions.containerClass "wizard-container"}}>
   {{#if this.wizardManager.initialized}}
     {{#each this.allSteps as |step|}}
       <Wizard::StepWrapper @step={{step}} />

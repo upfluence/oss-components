@@ -1,8 +1,8 @@
 <div
-  id="{{@step.id}}"
+  id={{@step.id}}
   class={{this.computedClasses}}
-  data-wheel-listener="{{this.wheelListenerEnabled}}"
-  data-wheel-handled="{{this.wheelHandled}}"
+  data-wheel-listener={{this.wheelListenerEnabled}}
+  data-wheel-handled={{this.wheelHandled}}
   {{did-insert this.initStepView}}
   {{did-update this.onDisplayStateUpdate @step.displayState}}
   {{on "scroll" this.handleScrollEvent}}

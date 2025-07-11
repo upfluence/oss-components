@@ -25,6 +25,6 @@ export abstract class WizardBaseStep<T extends WizardBaseStepSignature> extends 
     } else if (this.args.step.displayState === 'active' && this.args.step.visited) {
       this.onRevisit();
     }
-    if (this.args.step.displayState === 'previous' || this.args.step.displayState === 'next') this.onLeave();
+    if (['previous', 'next'].includes(this.args.step.displayState as string)) this.onLeave();
   }
 }
