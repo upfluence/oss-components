@@ -5,6 +5,7 @@ import type { WizardConfiguration } from '@upfluence/oss-components/services/wiz
 import WizardExampleStep from '../components/wizard/example-step';
 import WizardExampleStepWithScroll from '../components/wizard/example-step-with-scroll';
 import OSSInputContainer from '@upfluence/oss-components/components/o-s-s/input-container';
+import { action } from '@ember/object';
 
 const WIZARD_CONFIG: WizardConfiguration = {
   options: {
@@ -33,8 +34,8 @@ const WIZARD_CONFIG: WizardConfiguration = {
 export default class Wizard extends Controller {
   @service declare wizardManager: WizardManager;
 
-  constructor() {
-    super(...arguments);
+  @action
+  initWizard(): void {
     this.wizardManager.initialize(WIZARD_CONFIG);
   }
 }
