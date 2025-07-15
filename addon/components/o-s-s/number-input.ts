@@ -74,13 +74,29 @@ export default class OSSNumberInput extends Component<OSSNumberInputArgs> {
   }
 
   @action
-  checkUserInput(): void {
-    if (this.args.min !== undefined && Number(this.localValue) < this.args.min) {
-      this.localValue = this.args.min;
+  checkUserInput(newValue: string): void {
+    if (newValue === '') {
+      this.localValue = DEFAULT_VALUE;
+      this.args.onChange?.(DEFAULT_VALUE);
+      return;
     }
-    if (this.args.max !== undefined && Number(this.localValue) > this.args.max) {
-      this.localValue = this.args.max;
+
+    if (!/^-?\d+$/.test(newValue)) return; // prevent invalid formats (non-numeric)
+
+    let numericValue = Number(newValue);
+
+    if (isNaN(numericValue)) return;
+
+    // Clamp value
+    if (this.args.min !== undefined && numericValue < this.args.min) {
+      numericValue = this.args.min;
     }
+
+    if (this.args.max !== undefined && numericValue > this.args.max) {
+      numericValue = this.args.max;
+    }
+
+    this.localValue = numericValue;
     this.notifyChanges();
   }
 
@@ -89,7 +105,7 @@ export default class OSSNumberInput extends Component<OSSNumberInputArgs> {
     if (this.inputElement) this.inputElement.focus();
     if (this.args.max === undefined || Number(this.localValue) + this.step <= this.args.max) {
       this.localValue = Number(this.localValue) + (event.shiftKey ? this.step * 2 : this.step);
-      this.checkUserInput();
+      this.checkUserInput(this.localValue.toString());
     }
   }
 
@@ -98,7 +114,7 @@ export default class OSSNumberInput extends Component<OSSNumberInputArgs> {
     if (this.inputElement) this.inputElement.focus();
     if (this.args.min === undefined || Number(this.localValue) - this.step >= this.args.min) {
       this.localValue = Number(this.localValue) - (event.shiftKey ? this.step * 2 : this.step);
-      this.checkUserInput();
+      this.checkUserInput(this.localValue.toString());
     }
   }
 
