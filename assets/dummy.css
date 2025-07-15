@@ -6097,6 +6097,10 @@ button.close {
 .fx-wrap {
   flex-wrap: wrap;
 }
+.oss-label {
+  font-size: var(--font-size-md);
+  color: var(--color-gray-500);
+}
 @font-face {
   font-family: 'Open Sans';
   font-style: italic;
