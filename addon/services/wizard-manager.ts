@@ -129,12 +129,19 @@ export default class WizardManager extends Service {
     if (this.previousStep) this.selectStep(this.previousStep.id);
   }
 
-  findStepsInSection(sectionId: string): Step[] {
-    const section = this.sections.find((section: Section) => section.id === sectionId);
+  findStepsForSectionKey(sectionKey: string): Step[] {
+    const section = this.sections.find((section: Section) => section.key === sectionKey);
     if (section) {
       return section.steps.filter((step: Step) => step.displayState !== 'empty');
     }
     return [];
+  }
+
+  reset(): void {
+    this.initialized = false;
+    this.sections = [];
+    this.focusedStepId = '';
+    this.configOptions = {};
   }
 
   private get currentSection(): Section | undefined {

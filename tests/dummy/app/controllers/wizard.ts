@@ -6,6 +6,7 @@ import WizardExampleStep from '../components/wizard/example-step';
 import WizardExampleStepWithScroll from '../components/wizard/example-step-with-scroll';
 import OSSInputContainer from '@upfluence/oss-components/components/o-s-s/input-container';
 import { action } from '@ember/object';
+import { next } from '@ember/runloop';
 
 const WIZARD_CONFIG: WizardConfiguration = {
   options: {
@@ -36,6 +37,6 @@ export default class Wizard extends Controller {
 
   @action
   initWizard(): void {
-    this.wizardManager.initialize(WIZARD_CONFIG);
+    next(() => this.wizardManager.initialize(WIZARD_CONFIG));
   }
 }

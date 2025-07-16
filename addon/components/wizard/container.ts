@@ -8,10 +8,6 @@ interface WizardContainerComponentSignature {}
 export default class WizardContainerComponent extends Component<WizardContainerComponentSignature> {
   @service declare wizardManager: WizardManager;
 
-  get currentStep(): Step | undefined {
-    return this.wizardManager.currentStep;
-  }
-
   get allSteps(): Step[] {
     return this.wizardManager.allSteps;
   }
