@@ -28,7 +28,7 @@ module('Unit | Service | wizard-manager', function (hooks) {
   });
 
   module('Configuration & Initialization', function () {
-    test('Section are properly initialized', function (assert) {
+    test('Sections are properly initialized', function (assert) {
       this.service.initialize(this.config as WizardConfiguration);
 
       assert.equal(this.service.sections.length, 1);
