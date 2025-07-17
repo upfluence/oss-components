@@ -1,0 +1,76 @@
+.wizard-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: var(--spacing-px-12);
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  padding: var(--spacing-px-30);
+  animation: all 0.5s ease-in-out;
+  scrollbar-width: none;
+
+  .step-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 60vh;
+    overflow: auto;
+    border-radius: var(--border-radius-xs);
+    padding: var(--spacing-px-12);
+  }
+
+  .step-wrapper__active {
+    border: 1px solid var(--color-border-default);
+    background: var(--color-white);
+  }
+
+  .step-wrapper__previous,
+  .step-wrapper__next {
+    overflow: hidden;
+    pointer-events: none;
+    opacity: .5;
+    background-color: var(--color-gray-50);
+    border: 1px solid var(--color-border-default);
+    box-shadow: var(--box-shadow-xs);
+  }
+
+  .step-wrapper__next:after {
+    content: '';
+    position: absolute;
+    opacity: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, var(--color-gray-50));
+    border-radius: 0 0 var(--border-radius-xs) var(--border-radius-xs);
+    animation: fadeInGradient 1s ease;
+    animation-fill-mode: forwards;
+    pointer-events: none;
+  }
+
+  .step-wrapper__previous:after {
+    content: '';
+    position: absolute;
+    opacity: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    bottom: 0;
+    background: linear-gradient(to top, transparent, var(--color-gray-50));
+    border-radius: var(--border-radius-xs) var(--border-radius-xs) 0 0;
+    animation: fadeInGradient 1s ease;
+    animation-fill-mode: forwards;
+    pointer-events: none;
+  }
+}
+
+@keyframes fadeInGradient {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

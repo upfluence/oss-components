@@ -67,3 +67,7 @@ li {
 .tip-wrapper svg path {
   fill: #1ea7fd;
 }
+
+.wizard-img {
+  height: 350px;
+}

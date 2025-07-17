@@ -32,6 +32,11 @@
         @link="extra"
       />
       <OSS::Layout::Sidebar::Item
+        @icon="far fa-hat-wizard"
+        class={{if (eq this.router.currentRouteName "wizard") "active"}}
+        @link="wizard"
+      />
+      <OSS::Layout::Sidebar::Item
         @icon="far fa-lock"
         @locked={{true}}
         @defaultAction={{fn this.redirectTo "credit-card"}}

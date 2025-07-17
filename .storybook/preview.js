@@ -14,6 +14,7 @@ export const parameters = {
         ['Typography', 'Variables', 'Colors', 'Flexbox'],
         'Helpers & Modifiers',
         'Components',
+        'Wizard',
         'Deprecated',
         ['Typography', 'Icons', 'Variables']
       ]
