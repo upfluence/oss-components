@@ -15722,6 +15722,478 @@ define("dummy/tests/integration/components/o-s-s/url-input-test", ["qunit", "emb
     });
   });
 });
+define("dummy/tests/integration/components/wizard/base-step-test", ["qunit", "ember-qunit", "@upfluence/oss-components/components/wizard/base-step", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _baseStep, _testHelpers, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@upfluence/oss-components/components/wizard/base-step",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  class TestStepComponent extends _baseStep.WizardBaseStep {
+    constructor(owner, args) {
+      super(owner, args);
+      this.registerMethodsForTestingValidations(args);
+      this.registerMembersForTestingValidations(args);
+    }
+    onStepSubmission() {
+      this.args.step.onStepSubmissionCalled = true;
+      return Promise.resolve(true);
+    }
+    onFirstInsertion() {
+      this.args.step.onFirstInsertionCalled = true;
+    }
+    onRevisit() {
+      this.args.step.onRevisitCalled = true;
+    }
+    onLeave() {
+      this.args.step.onLeaveCalled = true;
+    }
+    registerMethodsForTestingValidations(args) {
+      args.step.validateStep = this.onStepSubmission.bind(this);
+      args.step.onFirstInsertion = this.onFirstInsertion.bind(this);
+      args.step.onRevisit = this.onRevisit.bind(this);
+      args.step.onLeave = this.onLeave.bind(this);
+      args.step.onVisibleState = this.onVisibleState.bind(this);
+    }
+    registerMembersForTestingValidations(args) {
+      args.step.onStepSubmissionCalled = false;
+      args.step.onFirstInsertionCalled = false;
+      args.step.onRevisitCalled = false;
+      args.step.onLeaveCalled = false;
+    }
+  }
+  (0, _qunit.module)('Integration | Component | wizard/base-step', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.owner.register('component:test-step', TestStepComponent);
+      this.step = {
+        id: '1',
+        key: 'step-1',
+        displayState: 'active',
+        visited: false
+      };
+    });
+    (0, _qunit.test)('it sets validateStep if not present', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <TestStep @step={{this.step}} />
+      */
+      {
+        "id": "quDzsLIO",
+        "block": "[[[8,[39,0],null,[[\"@step\"],[[30,0,[\"step\"]]]],null]],[],false,[\"test-step\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/base-step-test.ts",
+        "isStrictMode": false
+      }));
+      assert.ok(typeof this.step.validateStep === 'function');
+    });
+    (0, _qunit.test)("It doesn't set validateStep if already present", async function (assert) {
+      this.step.validateStep = () => Promise.resolve(true);
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <TestStep @step={{this.step}} />
+      */
+      {
+        "id": "quDzsLIO",
+        "block": "[[[8,[39,0],null,[[\"@step\"],[[30,0,[\"step\"]]]],null]],[],false,[\"test-step\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/base-step-test.ts",
+        "isStrictMode": false
+      }));
+      assert.strictEqual(this.step.validateStep, this.step.validateStep);
+    });
+    (0, _qunit.module)('Step lifecycle hooks - When onVisibleState is triggered', () => {
+      (0, _qunit.test)('If displayState is "active" and the step has not been visited, the onFirstInsertion hook is called', async function (assert) {
+        this.step.displayState = 'active';
+        this.step.visited = false;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <TestStep @step={{this.step}} />
+        */
+        {
+          "id": "quDzsLIO",
+          "block": "[[[8,[39,0],null,[[\"@step\"],[[30,0,[\"step\"]]]],null]],[],false,[\"test-step\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/base-step-test.ts",
+          "isStrictMode": false
+        }));
+        this.step.onVisibleState();
+        assert.true(this.step.onFirstInsertionCalled);
+      });
+      (0, _qunit.test)('If displayState is "active" and the step has not been visited, the step is marked as visited', async function (assert) {
+        this.step.displayState = 'active';
+        this.step.visited = false;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <TestStep @step={{this.step}} />
+        */
+        {
+          "id": "quDzsLIO",
+          "block": "[[[8,[39,0],null,[[\"@step\"],[[30,0,[\"step\"]]]],null]],[],false,[\"test-step\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/base-step-test.ts",
+          "isStrictMode": false
+        }));
+        this.step.onVisibleState();
+        assert.true(this.step.visited);
+      });
+      (0, _qunit.test)('If displayState is "active" and the step has been visited, the onRevisit hook is called', async function (assert) {
+        this.step.displayState = 'active';
+        this.step.visited = true;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <TestStep @step={{this.step}} />
+        */
+        {
+          "id": "quDzsLIO",
+          "block": "[[[8,[39,0],null,[[\"@step\"],[[30,0,[\"step\"]]]],null]],[],false,[\"test-step\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/base-step-test.ts",
+          "isStrictMode": false
+        }));
+        this.step.onVisibleState();
+        assert.true(this.step.onRevisitCalled);
+      });
+      (0, _qunit.test)('If displayState is "previous", the onLeave hook is called', async function (assert) {
+        this.step.displayState = 'previous';
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <TestStep @step={{this.step}} />
+        */
+        {
+          "id": "quDzsLIO",
+          "block": "[[[8,[39,0],null,[[\"@step\"],[[30,0,[\"step\"]]]],null]],[],false,[\"test-step\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/base-step-test.ts",
+          "isStrictMode": false
+        }));
+        this.step.onVisibleState();
+        assert.true(this.step.onLeaveCalled);
+      });
+      (0, _qunit.test)('If displayState is "next", the onLeave hook is called', async function (assert) {
+        this.step.displayState = 'next';
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <TestStep @step={{this.step}} />
+        */
+        {
+          "id": "quDzsLIO",
+          "block": "[[[8,[39,0],null,[[\"@step\"],[[30,0,[\"step\"]]]],null]],[],false,[\"test-step\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/base-step-test.ts",
+          "isStrictMode": false
+        }));
+        this.step.onVisibleState();
+        assert.true(this.step.onLeaveCalled);
+      });
+    });
+  });
+});
+define("dummy/tests/integration/components/wizard/container-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@upfluence/oss-components/components/o-s-s/input-container", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _inputContainer, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"@upfluence/oss-components/components/o-s-s/input-container"eaimeta@70e063a35619d71f
+  const WIZARD_CONFIG = {
+    sections: [{
+      key: 'section-1',
+      steps: [{
+        key: 'step-1',
+        componentClass: _inputContainer.default
+      }, {
+        key: 'step-2',
+        componentClass: _inputContainer.default
+      }]
+    }]
+  };
+  (0, _qunit.module)('Integration | Component | wizard/container', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.wizardManager = this.owner.lookup('service:wizard-manager');
+    });
+    hooks.afterEach(function () {
+      this.wizardManager.reset();
+    });
+    (0, _qunit.test)('By default the container has the class "wizard-container"', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <Wizard::Container />
+      */
+      {
+        "id": "s4t2GEAu",
+        "block": "[[[8,[39,0],null,null,null]],[],false,[\"wizard/container\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/container-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.wizard-container').exists();
+    });
+    (0, _qunit.test)('Customizing the class of the container via the service properly applies the class', async function (assert) {
+      this.wizardManager.initialize({
+        ...WIZARD_CONFIG,
+        options: {
+          containerClass: 'custom-container-class'
+        }
+      });
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <Wizard::Container />
+      */
+      {
+        "id": "s4t2GEAu",
+        "block": "[[[8,[39,0],null,null,null]],[],false,[\"wizard/container\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/container-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.custom-container-class').exists();
+    });
+    (0, _qunit.test)('It does not render steps when the wizard manager is not initialized', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <Wizard::Container />
+      */
+      {
+        "id": "s4t2GEAu",
+        "block": "[[[8,[39,0],null,null,null]],[],false,[\"wizard/container\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/container-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.step-wrapper').doesNotExist();
+    });
+    (0, _qunit.test)('It renders all step wrappers when wizard manager is initialized', async function (assert) {
+      this.wizardManager.initialize(WIZARD_CONFIG);
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <Wizard::Container />
+      */
+      {
+        "id": "s4t2GEAu",
+        "block": "[[[8,[39,0],null,null,null]],[],false,[\"wizard/container\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/container-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.step-wrapper').exists({
+        count: this.wizardManager.allSteps.length
+      });
+    });
+  });
+});
+define("dummy/tests/integration/components/wizard/step-wrapper-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@upfluence/oss-components/components/o-s-s/input-container", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _inputContainer, _sinon, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"@upfluence/oss-components/components/o-s-s/input-container",0,"sinon"eaimeta@70e063a35619d71f
+  const WIZARD_CONFIG = {
+    sections: [{
+      key: 'section-1',
+      steps: [{
+        key: 'step-1',
+        componentClass: _inputContainer.default,
+        validateStep: () => Promise.resolve(true)
+      }]
+    }]
+  };
+  (0, _qunit.module)('Integration | Component | wizard/step-wrapper', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.wizardManager = this.owner.lookup('service:wizard-manager');
+      this.wizardManager.initialize(WIZARD_CONFIG);
+      this.step = this.wizardManager.allSteps[0];
+    });
+    hooks.afterEach(function () {
+      this.wizardManager.reset();
+    });
+    (0, _qunit.module)('Computed classes', () => {
+      (0, _qunit.module)('Default config', () => {
+        (0, _qunit.test)('By default, it renders with the "step-wrapper" class', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <Wizard::StepWrapper @step={{this.step}} />
+          */
+          {
+            "id": "7XakbciT",
+            "block": "[[[8,[39,0],null,[[\"@step\"],[[30,0,[\"step\"]]]],null]],[],false,[\"wizard/step-wrapper\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/step-wrapper-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.step-wrapper').exists();
+        });
+        (0, _qunit.test)('It applies the "active" class when the step is focused', async function (assert) {
+          this.step.displayState = 'active';
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <Wizard::StepWrapper @step={{this.step}} @stepWrapperBaseClass="custom-step-wrapper" />
+          */
+          {
+            "id": "XHBRsyDK",
+            "block": "[[[8,[39,0],null,[[\"@step\",\"@stepWrapperBaseClass\"],[[30,0,[\"step\"]],\"custom-step-wrapper\"]],null]],[],false,[\"wizard/step-wrapper\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/step-wrapper-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.step-wrapper__active').exists();
+        });
+        (0, _qunit.test)('Previous step - It applies the "previous" class when the step is not visited', async function (assert) {
+          this.step.displayState = 'previous';
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <Wizard::StepWrapper @step={{this.step}} @stepWrapperBaseClass="custom-step-wrapper" />
+          */
+          {
+            "id": "XHBRsyDK",
+            "block": "[[[8,[39,0],null,[[\"@step\",\"@stepWrapperBaseClass\"],[[30,0,[\"step\"]],\"custom-step-wrapper\"]],null]],[],false,[\"wizard/step-wrapper\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/step-wrapper-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.step-wrapper__previous').exists();
+        });
+        (0, _qunit.test)('Next step - It applies the "next" class when the step is not visited', async function (assert) {
+          this.step.displayState = 'next';
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <Wizard::StepWrapper @step={{this.step}} @stepWrapperBaseClass="custom-step-wrapper" />
+          */
+          {
+            "id": "XHBRsyDK",
+            "block": "[[[8,[39,0],null,[[\"@step\",\"@stepWrapperBaseClass\"],[[30,0,[\"step\"]],\"custom-step-wrapper\"]],null]],[],false,[\"wizard/step-wrapper\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/step-wrapper-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.step-wrapper__next').exists();
+        });
+      });
+      (0, _qunit.module)('When a stepWrapperBaseClass is set in the wizard-manager', function (hooks) {
+        hooks.beforeEach(function () {
+          this.wizardManager.initialize({
+            ...WIZARD_CONFIG,
+            options: {
+              stepWrapperBaseClass: 'custom-step-wrapper'
+            }
+          });
+        });
+        (0, _qunit.test)('It applies that base class based of the custom name', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <Wizard::StepWrapper @step={{this.step}} @stepWrapperBaseClass={{this.stepWrapperBaseClass}} />
+          */
+          {
+            "id": "4kQa+CiD",
+            "block": "[[[8,[39,0],null,[[\"@step\",\"@stepWrapperBaseClass\"],[[30,0,[\"step\"]],[30,0,[\"stepWrapperBaseClass\"]]]],null]],[],false,[\"wizard/step-wrapper\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/step-wrapper-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.custom-step-wrapper').exists();
+        });
+        (0, _qunit.test)('It applies the "active" class when the step is focused', async function (assert) {
+          this.step.displayState = 'active';
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <Wizard::StepWrapper @step={{this.step}} @stepWrapperBaseClass="custom-step-wrapper" />
+          */
+          {
+            "id": "XHBRsyDK",
+            "block": "[[[8,[39,0],null,[[\"@step\",\"@stepWrapperBaseClass\"],[[30,0,[\"step\"]],\"custom-step-wrapper\"]],null]],[],false,[\"wizard/step-wrapper\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/step-wrapper-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.custom-step-wrapper__active').exists();
+        });
+        (0, _qunit.test)('Previous step - It applies the "previous" class when the step is not visited', async function (assert) {
+          this.step.displayState = 'previous';
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <Wizard::StepWrapper @step={{this.step}} @stepWrapperBaseClass="custom-step-wrapper" />
+          */
+          {
+            "id": "XHBRsyDK",
+            "block": "[[[8,[39,0],null,[[\"@step\",\"@stepWrapperBaseClass\"],[[30,0,[\"step\"]],\"custom-step-wrapper\"]],null]],[],false,[\"wizard/step-wrapper\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/step-wrapper-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.custom-step-wrapper__previous').exists();
+        });
+        (0, _qunit.test)('Next step - It applies the "next" class when the step is not visited', async function (assert) {
+          this.step.displayState = 'next';
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <Wizard::StepWrapper @step={{this.step}} @stepWrapperBaseClass="custom-step-wrapper" />
+          */
+          {
+            "id": "XHBRsyDK",
+            "block": "[[[8,[39,0],null,[[\"@step\",\"@stepWrapperBaseClass\"],[[30,0,[\"step\"]],\"custom-step-wrapper\"]],null]],[],false,[\"wizard/step-wrapper\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/step-wrapper-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.custom-step-wrapper__next').exists();
+        });
+      });
+    });
+    (0, _qunit.module)('Component Class', () => {
+      ['previous', 'next', 'active'].forEach(state => {
+        (0, _qunit.test)(`It renders the component class when the step is ${state}`, async function (assert) {
+          this.step.displayState = state;
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <Wizard::StepWrapper @step={{this.step}} />
+          */
+          {
+            "id": "7XakbciT",
+            "block": "[[[8,[39,0],null,[[\"@step\"],[[30,0,[\"step\"]]]],null]],[],false,[\"wizard/step-wrapper\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/step-wrapper-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.step-wrapper').exists();
+          assert.dom('.oss-input-container').exists();
+        });
+      });
+      (0, _qunit.test)('It does not render the component class when the step is none', async function (assert) {
+        this.step.displayState = 'none';
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <Wizard::StepWrapper @step={{this.step}} />
+        */
+        {
+          "id": "7XakbciT",
+          "block": "[[[8,[39,0],null,[[\"@step\"],[[30,0,[\"step\"]]]],null]],[],false,[\"wizard/step-wrapper\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/step-wrapper-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.step-wrapper').exists();
+        assert.dom('.oss-input-container').doesNotExist();
+      });
+    });
+    (0, _qunit.test)('Wheel event down calls wizardManager.selectNextStep', async function (assert) {
+      this.step.displayState = 'active';
+      this.selectNextStepStub = _sinon.default.stub(this.wizardManager, 'selectNextStep');
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <Wizard::StepWrapper @step={{this.step}} />
+      */
+      {
+        "id": "7XakbciT",
+        "block": "[[[8,[39,0],null,[[\"@step\"],[[30,0,[\"step\"]]]],null]],[],false,[\"wizard/step-wrapper\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/step-wrapper-test.ts",
+        "isStrictMode": false
+      }));
+      const stepWrapper = document.querySelector('.step-wrapper');
+      if (stepWrapper) {
+        const wheelEvent = new WheelEvent('wheel', {
+          deltaY: 100
+        });
+        stepWrapper.dispatchEvent(wheelEvent);
+      }
+      assert.true(this.selectNextStepStub.calledOnce);
+    });
+    (0, _qunit.test)('Wheel event up calls the wizardManager.selectPreviousStep', async function (assert) {
+      this.step.displayState = 'active';
+      this.selectPreviousStepStub = _sinon.default.stub(this.wizardManager, 'selectPreviousStep');
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <Wizard::StepWrapper @step={{this.step}} />
+      */
+      {
+        "id": "7XakbciT",
+        "block": "[[[8,[39,0],null,[[\"@step\"],[[30,0,[\"step\"]]]],null]],[],false,[\"wizard/step-wrapper\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/step-wrapper-test.ts",
+        "isStrictMode": false
+      }));
+      const stepWrapper = document.querySelector('.step-wrapper');
+      if (stepWrapper) {
+        const wheelEvent = new WheelEvent('wheel', {
+          deltaY: -100
+        });
+        stepWrapper.dispatchEvent(wheelEvent);
+      }
+      assert.true(this.selectPreviousStepStub.calledOnce);
+    });
+  });
+});
 define("dummy/tests/integration/helpers/form-field-feedback-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
   "use strict";
 
@@ -16611,6 +17083,203 @@ define("dummy/tests/unit/services/toast-test", ["qunit", "ember-qunit", "@ember/
         const badge = toast.querySelector('.upf-badge span');
         assert.dom(badge).hasText('1');
       });
+    });
+  });
+});
+define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit", "sinon", "@ember/test-helpers"], function (_qunit, _emberQunit, _sinon, _testHelpers) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"sinon",0,"@ember/test-helpers"eaimeta@70e063a35619d71f
+  function createStep(key, opts = {}) {
+    return {
+      key,
+      componentClass: {},
+      ...opts
+    };
+  }
+  function createSection(key, steps) {
+    return {
+      key,
+      steps
+    };
+  }
+  (0, _qunit.module)('Unit | Service | wizard-manager', function (hooks) {
+    (0, _emberQunit.setupTest)(hooks);
+    hooks.beforeEach(function () {
+      this.service = this.owner.lookup('service:wizard-manager');
+      this.config = {
+        sections: [createSection('section-1', [createStep('step-1'), createStep('step-2')])]
+      };
+    });
+    hooks.afterEach(function () {
+      this.service.reset();
+    });
+    (0, _qunit.module)('Configuration & Initialization', function () {
+      (0, _qunit.test)('Sections are properly initialized', function (assert) {
+        this.service.initialize(this.config);
+        assert.equal(this.service.sections.length, 1);
+        assert.equal(this.service.sections[0].key, 'section-1');
+      });
+      (0, _qunit.test)('Steps are properly initialized', function (assert) {
+        this.service.initialize(this.config);
+        assert.equal(this.service.allSteps.length, 2);
+        assert.equal(this.service.allSteps[0].key, 'step-1');
+        assert.equal(this.service.allSteps[1].key, 'step-2');
+      });
+      (0, _qunit.test)('Focused step is set to first step', function (assert) {
+        this.service.initialize(this.config);
+        assert.equal(this.service.focusedStepId, this.service.allSteps[0].id);
+      });
+      (0, _qunit.test)('Setting centerStepsInContainer option to true adds empty steps to the start and end', function (assert) {
+        this.config.options = {
+          centerStepsInContainer: true
+        };
+        this.service.initialize(this.config);
+        const steps = this.service.sections[0].steps;
+        assert.equal(steps[0].displayState, 'empty');
+        assert.equal(steps[steps.length - 1].displayState, 'empty');
+      });
+      (0, _qunit.test)('Not setting centerStepsInContainer does not add empty steps', function (assert) {
+        this.service.initialize(this.config);
+        const steps = this.service.sections[0].steps;
+        assert.notEqual(steps[0].displayState, 'empty');
+        assert.notEqual(steps[steps.length - 1].displayState, 'empty');
+      });
+    });
+    (0, _qunit.module)('Step Navigation', function (hooks) {
+      hooks.beforeEach(function () {
+        this.config = {
+          sections: [createSection('section-1', [createStep('step-1', {
+            validateStep: () => _sinon.default.stub().resolves(true)
+          }), createStep('step-2', {
+            validateStep: () => _sinon.default.stub().resolves(true)
+          }), createStep('step-3', {
+            validateStep: () => _sinon.default.stub().resolves(true)
+          })])]
+        };
+      });
+      (0, _qunit.test)('selectStep focuses the step and updates focusedStepId', async function (assert) {
+        this.service.initialize(this.config);
+        const step2Id = this.service.allSteps[1].id;
+        this.service.selectStep(step2Id);
+        await (0, _testHelpers.settled)();
+        assert.equal(this.service.focusedStepId, step2Id);
+      });
+      (0, _qunit.test)("selectStep runs the current step's validateStep if provided", async function (assert) {
+        this.service.initialize(this.config);
+        this.validateStub = _sinon.default.stub(this.service.allSteps[0], 'validateStep').resolves(true);
+        const step1 = this.service.allSteps[0];
+        const step2 = this.service.allSteps[1];
+        step1.validateStep = this.validateStub;
+        this.service.selectStep(step2.id);
+        assert.ok(this.validateStub.calledOnce, 'validateStep was called');
+      });
+      (0, _qunit.test)('selectStep does not change focusedStepId if validation fails', async function (assert) {
+        this.service.initialize(this.config);
+        const step1 = this.service.allSteps[0];
+        const step2 = this.service.allSteps[1];
+        step1.validateStep = () => Promise.resolve(false);
+        this.service.selectStep(step2.id);
+        assert.notEqual(this.service.focusedStepId, step2.id);
+      });
+      (0, _qunit.test)('selectStep runs all validation steps from current section to target step', async function (assert) {
+        this.service.initialize(this.config);
+        const step1 = this.service.allSteps[0];
+        const step2 = this.service.allSteps[1];
+        const step3 = this.service.allSteps[2];
+        const stub1 = _sinon.default.stub().resolves(true);
+        const stub2 = _sinon.default.stub().resolves(true);
+        step1.validateStep = stub1;
+        step2.validateStep = stub2;
+        this.service.selectStep(step3.id);
+        await (0, _testHelpers.settled)();
+        assert.equal(this.service.focusedStepId, step3.id, 'Focused on step 3 after validation');
+        assert.true(stub1.calledOnce);
+        assert.true(stub2.calledOnce);
+      });
+      (0, _qunit.test)('selectStep focuses the first failing step if validation fails', async function (assert) {
+        this.service.initialize(this.config);
+        const step1 = this.service.allSteps[0];
+        const step2 = this.service.allSteps[1];
+        const step3 = this.service.allSteps[2];
+        const stub1 = _sinon.default.stub().resolves(true);
+        const stub2 = _sinon.default.stub().resolves(false);
+        step1.validateStep = stub1;
+        step2.validateStep = stub2;
+        this.service.selectStep(step3.id);
+        await (0, _testHelpers.settled)();
+        assert.equal(this.service.focusedStepId, step2.id);
+      });
+    });
+    (0, _qunit.module)('Service getters', function () {
+      (0, _qunit.test)('currentStep returns the step with focusedStepId', function (assert) {
+        this.service.initialize(this.config);
+        const step1 = this.service.allSteps[0];
+        this.service.focusedStepId = step1.id;
+        assert.strictEqual(this.service.currentStep?.id, step1.id);
+      });
+      (0, _qunit.test)('previousStep returns the step before the current step', async function (assert) {
+        this.service.initialize(this.config);
+        const step1 = this.service.allSteps[0];
+        const step2 = this.service.allSteps[1];
+        this.service.selectStep(step2.id);
+        await (0, _testHelpers.settled)();
+        assert.strictEqual(this.service.previousStep?.id, step1.id);
+      });
+      (0, _qunit.test)('nextStep returns the step after the current step', async function (assert) {
+        this.service.initialize(this.config);
+        const step1 = this.service.allSteps[0];
+        const step2 = this.service.allSteps[1];
+        this.service.selectStep(step1.id);
+        await (0, _testHelpers.settled)();
+        assert.strictEqual(this.service.nextStep?.id, step2.id);
+      });
+      (0, _qunit.test)('allSteps returns all steps across sections', function (assert) {
+        this.service.initialize(this.config);
+        const allSteps = this.service.allSteps;
+        assert.strictEqual(allSteps.length, 2);
+        assert.strictEqual(allSteps[0].key, 'step-1');
+        assert.strictEqual(allSteps[1].key, 'step-2');
+      });
+    });
+    (0, _qunit.module)('Select Next/Previous Step', function (hooks) {
+      hooks.beforeEach(function () {
+        this.config = {
+          sections: [createSection('section-1', [createStep('step-1'), createStep('step-2'), createStep('step-3')])]
+        };
+        this.service.initialize(this.config);
+      });
+      (0, _qunit.test)('selectNextStep focuses the next step', async function (assert) {
+        const step1Id = this.service.allSteps[0].id;
+        const step2Id = this.service.allSteps[1].id;
+        this.service.focusedStepId = step1Id;
+        this.service.selectNextStep();
+        await (0, _testHelpers.settled)();
+        assert.strictEqual(this.service.focusedStepId, step2Id);
+      });
+      (0, _qunit.test)('selectPreviousStep focuses the previous step', async function (assert) {
+        const step2Id = this.service.allSteps[1].id;
+        const step1Id = this.service.allSteps[0].id;
+        this.service.focusedStepId = step2Id;
+        this.service.selectPreviousStep();
+        await (0, _testHelpers.settled)();
+        assert.strictEqual(this.service.focusedStepId, step1Id);
+      });
+    });
+    (0, _qunit.test)('findStepsForSectionKey returns steps for a given section key', function (assert) {
+      this.service.initialize(this.config);
+      const steps = this.service.findStepsForSectionKey('section-1');
+      assert.strictEqual(steps.length, 2);
+      assert.strictEqual(steps[0].key, 'step-1');
+      assert.strictEqual(steps[1].key, 'step-2');
+    });
+    (0, _qunit.test)('reset clears all sections and steps', function (assert) {
+      this.service.initialize(this.config);
+      this.service.reset();
+      assert.strictEqual(this.service.sections.length, 0);
+      assert.strictEqual(this.service.allSteps.length, 0);
+      assert.strictEqual(this.service.focusedStepId, '');
+      assert.strictEqual(this.service.initialized, false);
     });
   });
 });

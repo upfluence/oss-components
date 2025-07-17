@@ -80855,6 +80855,147 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
     }
   }
 });
+;define("@embroider/util/ember-private-api", ["exports", "@embroider/macros/es-compat2"], function (_exports, _esCompat) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.isCurriedComponentDefinition = void 0;
+  _exports.lookupCurriedComponentDefinition = lookupCurriedComponentDefinition;
+  let runtime;
+  {
+    // new enough ember has a real module we can import
+    runtime = (0, _esCompat.default)(require("@glimmer/runtime"));
+  }
+  let {
+    isCurriedComponentDefinition,
+    CurriedComponentDefinition,
+    curry,
+    CurriedValue
+  } = runtime;
+
+  // older embers have isCurriedComponentDefinition, new ones have CurriedValue
+  // and instanceof CurriedValue seems good enough.
+  _exports.isCurriedComponentDefinition = isCurriedComponentDefinition;
+  if (!isCurriedComponentDefinition) {
+    _exports.isCurriedComponentDefinition = isCurriedComponentDefinition = function (value) {
+      return value instanceof CurriedValue;
+    };
+  }
+  function runtimeResolver(owner) {
+    let resolver = owner.lookup('renderer:-dom')._runtimeResolver;
+    if (resolver) {
+      return resolver;
+    }
+    let entry = Object.entries(owner.__container__.cache).find(e => e[0].startsWith('template-compiler:main-'));
+    if (entry) {
+      return entry[1].resolver.resolver;
+    }
+    throw new Error(`@embroider/util couldn't locate the runtime resolver on this ember version`);
+  }
+  function lookupCurriedComponentDefinition(name, owner) {
+    let resolver = runtimeResolver(owner);
+    if (typeof resolver.lookupComponentHandle === 'function') {
+      let handle = resolver.lookupComponentHandle(name, contextForLookup(owner));
+      if (handle != null) {
+        return new CurriedComponentDefinition(resolver.resolve(handle), null);
+      }
+    }
+
+    // here we're doing the same thing the internal currying does, in order to
+    // generate a sane error message (even though we don't actually use
+    // resolvedDefinition as part of our return value).
+    let resolvedDefinition = resolver.lookupComponent(name, owner);
+    if (!resolvedDefinition) {
+      throw new Error(`Attempted to resolve \`${name}\` via ensureSafeComponent, but nothing was found.`);
+    }
+    return curry(0, name, owner, {
+      named: {},
+      positional: []
+    });
+  }
+  function contextForLookup(owner) {
+    {
+      return owner;
+    }
+  }
+});
+;define("@embroider/util/index", ["exports", "@ember/debug", "@ember/application", "@embroider/util/ember-private-api", "@ember/component/helper"], function (_exports, _debug, _application, _emberPrivateApi, _helper) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.EnsureSafeComponentHelper = void 0;
+  _exports.ensureSafeComponent = ensureSafeComponent;
+  function ensureSafeComponent(value, thingWithOwner) {
+    if (typeof value === 'string') {
+      return handleString(value, thingWithOwner);
+    } else if ((0, _emberPrivateApi.isCurriedComponentDefinition)(value)) {
+      return value;
+    } else if (value == null) {
+      return value;
+    } else {
+      return handleClass(value, thingWithOwner);
+    }
+  }
+  class EnsureSafeComponentHelper extends _helper.default {
+    compute([value]) {
+      return ensureSafeComponent(value, this);
+    }
+  }
+  _exports.EnsureSafeComponentHelper = EnsureSafeComponentHelper;
+  function handleString(name, thingWithOwner) {
+    (true && !(false) && (0, _debug.deprecate)(`You're trying to invoke the component "${name}" by passing its name as a string. This won't work under Embroider.`, false, {
+      id: 'ensure-safe-component.string',
+      url: 'https://github.com/embroider-build/embroider/blob/main/docs/replacing-component-helper.md#when-youre-passing-a-component-to-someone-else',
+      until: 'embroider',
+      for: '@embroider/util',
+      since: '0.27.0'
+    }));
+    let owner = (0, _application.getOwner)(thingWithOwner);
+    return (0, _emberPrivateApi.lookupCurriedComponentDefinition)(name, owner);
+  }
+  function ensureRegistered(klass, owner) {
+    let service = owner.lookup('service:-ensure-registered');
+    (true && !(service) && (0, _debug.assert)('Could not lookup private -ensure-registered service', service));
+    return service.register(klass, owner);
+  }
+  function handleClass(klass, thingWithOwner) {
+    {
+      return klass;
+    }
+  }
+});
+;define("@embroider/util/services/ensure-registered", ["exports", "@ember/service", "@ember/application"], function (_exports, _service, _application) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  class EnsureRegisteredService extends _service.default {
+    constructor(...args) {
+      super(...args);
+      _defineProperty(this, "classNonces", new WeakMap());
+      _defineProperty(this, "nonceCounter", 0);
+    }
+    register(klass, owner = (0, _application.getOwner)(this)) {
+      let nonce = this.classNonces.get(klass);
+      if (nonce == null) {
+        nonce = `-ensure${this.nonceCounter++}`;
+        this.classNonces.set(klass, nonce);
+        owner.register(`component:${nonce}`, klass);
+      }
+      return nonce;
+    }
+  }
+  _exports.default = EnsureRegisteredService;
+});
 ;define("@glimmer/component/-private/base-component-manager", ["exports", "@glimmer/component/-private/component"], function (_exports, _component) {
   "use strict";
 
@@ -98856,6 +98997,248 @@ interface OSSCodeBlockArgs {
   const Default = _exports.Default = Template.bind({});
   Default.args = defaultArgs;
 });
+;define("@upfluence/oss-components/components/wizard/base-step", ["exports", "@glimmer/component", "@ember/object"], function (_exports, _component, _object) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.WizardBaseStep = void 0;
+  var _class;
+  0; //eaimeta@70e063a35619d71f0,"@glimmer/component",0,"@ember/object"eaimeta@70e063a35619d71f
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  let WizardBaseStep = _exports.WizardBaseStep = (_class = class WizardBaseStep extends _component.default {
+    constructor(owner, args) {
+      super(owner, args);
+      if (!args.step.validateStep) (0, _object.set)(args.step, 'validateStep', this.onStepSubmission.bind(this));
+    }
+    onLeave() {}
+    onVisibleState() {
+      if (this.args.step.displayState === 'active' && !this.args.step.visited) {
+        this.onFirstInsertion();
+        this.args.step.visited = true;
+      } else if (this.args.step.displayState === 'active' && this.args.step.visited) {
+        this.onRevisit();
+      }
+      if (['previous', 'next'].includes(this.args.step.displayState)) this.onLeave();
+    }
+  }, (_applyDecoratedDescriptor(_class.prototype, "onVisibleState", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onVisibleState"), _class.prototype)), _class);
+});
+;define("@upfluence/oss-components/components/wizard/container", ["exports", "@ember/component", "@glimmer/component", "@ember/service", "@ember/template-factory"], function (_exports, _component, _component2, _service, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/service",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class={{or this.wizardManager.configOptions.containerClass "wizard-container"}}>
+    {{#if this.wizardManager.initialized}}
+      {{#each this.allSteps as |step|}}
+        <Wizard::StepWrapper @step={{step}} />
+      {{/each}}
+    {{/if}}
+  </div>
+  */
+  {
+    "id": "8g9EKN+z",
+    "block": "[[[10,0],[15,0,[28,[37,0],[[30,0,[\"wizardManager\",\"configOptions\",\"containerClass\"]],\"wizard-container\"],null]],[12],[1,\"\\n\"],[41,[30,0,[\"wizardManager\",\"initialized\"]],[[[42,[28,[37,3],[[28,[37,3],[[30,0,[\"allSteps\"]]],null]],null],null,[[[1,\"      \"],[8,[39,4],null,[[\"@step\"],[[30,1]]],null],[1,\"\\n\"]],[1]],null]],[]],null],[13]],[\"step\"],false,[\"or\",\"if\",\"each\",\"-track-array\",\"wizard/step-wrapper\"]]",
+    "moduleName": "@upfluence/oss-components/components/wizard/container.hbs",
+    "isStrictMode": false
+  });
+  let WizardContainerComponent = _exports.default = (_class = class WizardContainerComponent extends _component2.default {
+    constructor(...args) {
+      super(...args);
+      _initializerDefineProperty(this, "wizardManager", _descriptor, this);
+    }
+    get allSteps() {
+      return this.wizardManager.allSteps;
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "wizardManager", [_service.inject], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  })), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, WizardContainerComponent);
+});
+;define("@upfluence/oss-components/components/wizard/step-wrapper", ["exports", "@ember/component", "@glimmer/component", "@ember/service", "@ember/object", "@embroider/util", "@ember/runloop", "@glimmer/tracking", "@ember/template-factory"], function (_exports, _component, _component2, _service, _object, _util, _runloop, _tracking, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _dec, _dec2, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/service",0,"@ember/object",0,"@embroider/util",0,"@ember/runloop",0,"@glimmer/tracking",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div
+    id={{@step.id}}
+    class={{this.computedClasses}}
+    data-wheel-listener={{this.wheelListenerEnabled}}
+    data-wheel-handled={{this.wheelHandled}}
+    {{did-insert this.initStepView}}
+    {{did-update this.onDisplayStateUpdate @step.displayState}}
+    {{on "scroll" this.handleScrollEvent}}
+    {{on "wheel" this.handleWheelEvent}}
+    ...attributes
+  >
+    {{#if this.isVisible}}
+      <this.componentToDisplay @step={{@step}} />
+    {{/if}}
+  </div>
+  */
+  {
+    "id": "Mes2LUZp",
+    "block": "[[[11,0],[16,1,[30,1,[\"id\"]]],[16,0,[30,0,[\"computedClasses\"]]],[16,\"data-wheel-listener\",[30,0,[\"wheelListenerEnabled\"]]],[16,\"data-wheel-handled\",[30,0,[\"wheelHandled\"]]],[17,2],[4,[38,0],[[30,0,[\"initStepView\"]]],null],[4,[38,1],[[30,0,[\"onDisplayStateUpdate\"]],[30,1,[\"displayState\"]]],null],[4,[38,2],[\"scroll\",[30,0,[\"handleScrollEvent\"]]],null],[4,[38,2],[\"wheel\",[30,0,[\"handleWheelEvent\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"isVisible\"]],[[[1,\"    \"],[8,[30,0,[\"componentToDisplay\"]],null,[[\"@step\"],[[30,1]]],null],[1,\"\\n\"]],[]],null],[13]],[\"@step\",\"&attrs\"],false,[\"did-insert\",\"did-update\",\"on\",\"if\"]]",
+    "moduleName": "@upfluence/oss-components/components/wizard/step-wrapper.hbs",
+    "isStrictMode": false
+  });
+  const SCROLL_EVENTS_DELAY = 1500;
+  const DEFAULT_BASE_CLASS = 'step-wrapper';
+  let WizardStepWrapperComponent = _exports.default = (_dec = (0, _object.computed)('args.step.displayState'), _dec2 = (0, _object.computed)('args.step.displayState'), (_class = class WizardStepWrapperComponent extends _component2.default {
+    constructor(...args) {
+      super(...args);
+      _initializerDefineProperty(this, "wizardManager", _descriptor, this);
+      _initializerDefineProperty(this, "scrollPosition", _descriptor2, this);
+      _initializerDefineProperty(this, "element", _descriptor3, this);
+      _initializerDefineProperty(this, "wheelListenerEnabled", _descriptor4, this);
+      _initializerDefineProperty(this, "wheelHandled", _descriptor5, this);
+      _defineProperty(this, "wheelListenerTimeoutId", void 0);
+    }
+    get isVisible() {
+      return this.args.step.displayState !== 'none';
+    }
+    get computedClasses() {
+      const classArray = [this.baseClass];
+      if (this.args.step.displayState === 'previous') {
+        classArray.push(`${this.baseClass}__previous`);
+      } else if (this.args.step.displayState === 'next') {
+        classArray.push(`${this.baseClass}__next`);
+      } else if (this.args.step.displayState === 'active') {
+        classArray.push(`${this.baseClass}__active`);
+      }
+      return classArray.join(' ');
+    }
+    get baseClass() {
+      return this.wizardManager.configOptions?.stepWrapperBaseClass ?? DEFAULT_BASE_CLASS;
+    }
+    get componentToDisplay() {
+      return (0, _util.ensureSafeComponent)(this.args.step.componentClass, this);
+    }
+    initStepView(element) {
+      this.element = element;
+      this.handleScrollPosition();
+    }
+    onDisplayStateUpdate() {
+      this.handleScrollPosition();
+    }
+    handleWheelEvent(event) {
+      if (!this.wheelListenerEnabled || this.wheelHandled) return;
+      if (!this.scrollPosition && !this.wheelListenerEnabled) return;
+      if (this.scrollPosition === 'middle') return;
+      this.wheelHandled = true;
+      if (event.deltaY > 0 && (this.scrollPosition === 'bottom' || !this.scrollPosition)) {
+        this.wizardManager.selectNextStep();
+        setTimeout(() => {
+          this.wheelHandled = false;
+        }, SCROLL_EVENTS_DELAY);
+      } else if (event.deltaY < 0 && this.scrollPosition === 'top' || !this.scrollPosition) {
+        this.wizardManager.selectPreviousStep();
+        setTimeout(() => {
+          this.wheelHandled = false;
+        }, SCROLL_EVENTS_DELAY);
+      }
+    }
+    handleScrollEvent(event) {
+      const target = event.target;
+      if (target.scrollHeight - target.scrollTop <= target.clientHeight) {
+        this.scrollPosition = 'bottom';
+        this.enableWheelListenerAfterDelay(SCROLL_EVENTS_DELAY);
+      } else if (target.scrollTop === 0) {
+        this.scrollPosition = 'top';
+        this.enableWheelListenerAfterDelay(SCROLL_EVENTS_DELAY);
+      } else {
+        this.scrollPosition = 'middle';
+        if (this.wheelListenerTimeoutId) {
+          window.clearTimeout(this.wheelListenerTimeoutId);
+          this.wheelListenerTimeoutId = undefined;
+        }
+        this.wheelListenerEnabled = false;
+        this.wheelHandled = false;
+      }
+    }
+    handleScrollPosition() {
+      if (this.element.scrollHeight > this.element.clientHeight) {
+        this.scrollPosition = 'top';
+        this.element.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+        this.wheelListenerEnabled = false;
+      } else {
+        this.wheelListenerEnabled = true;
+      }
+    }
+    enableWheelListenerAfterDelay(delay) {
+      if (this.wheelListenerTimeoutId) {
+        window.clearTimeout(this.wheelListenerTimeoutId);
+      }
+      this.wheelListenerTimeoutId = (0, _runloop.later)(() => {
+        this.wheelListenerEnabled = true;
+        this.wheelListenerTimeoutId = undefined;
+      }, delay);
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "wizardManager", [_service.inject], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "scrollPosition", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return undefined;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "element", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, "wheelListenerEnabled", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
+  }), _descriptor5 = _applyDecoratedDescriptor(_class.prototype, "wheelHandled", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "isVisible", [_dec], Object.getOwnPropertyDescriptor(_class.prototype, "isVisible"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "computedClasses", [_dec2], Object.getOwnPropertyDescriptor(_class.prototype, "computedClasses"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "initStepView", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initStepView"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onDisplayStateUpdate", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onDisplayStateUpdate"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleWheelEvent", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleWheelEvent"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleScrollEvent", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleScrollEvent"), _class.prototype)), _class));
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, WizardStepWrapperComponent);
+});
 ;define("@upfluence/oss-components/helpers/fa-icon-style", ["exports", "@ember/component/helper", "@ember/debug", "@upfluence/oss-components/utils/icon-details"], function (_exports, _helper, _debug, _iconDetails) {
   "use strict";
 
@@ -100324,6 +100707,204 @@ interface OSSCodeBlockArgs {
     }
   }
   _exports.default = Toast;
+});
+;define("@upfluence/oss-components/services/wizard-manager", ["exports", "@ember/service", "@ember/object", "@glimmer/tracking", "@ember/object/internals"], function (_exports, _service, _object, _tracking, _internals) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+  0; //eaimeta@70e063a35619d71f0,"@ember/service",0,"@ember/object",0,"@glimmer/tracking",0,"@ember/object/internals"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  let WizardManager = _exports.default = (_class = class WizardManager extends _service.default {
+    constructor(...args) {
+      super(...args);
+      _initializerDefineProperty(this, "initialized", _descriptor, this);
+      _initializerDefineProperty(this, "sections", _descriptor2, this);
+      _initializerDefineProperty(this, "focusedStepId", _descriptor3, this);
+      _initializerDefineProperty(this, "configOptions", _descriptor4, this);
+    }
+    get allSteps() {
+      return this.sections.flatMap(section => section.steps);
+    }
+    get currentStep() {
+      return this.currentSection?.steps.find(step => step.id === this.focusedStepId);
+    }
+    get previousStep() {
+      const currentIndex = this.allSteps.findIndex(step => step.id === this.focusedStepId);
+      if (currentIndex > 0 && this.allSteps[currentIndex - 1]?.displayState !== 'empty') {
+        return this.allSteps[currentIndex - 1];
+      }
+      return undefined;
+    }
+    get nextStep() {
+      const currentIndex = this.allSteps.findIndex(step => step.id === this.focusedStepId);
+      if (currentIndex >= 0 && currentIndex < this.allSteps.length - 1 && this.allSteps[currentIndex + 1]?.displayState !== 'empty') {
+        return this.allSteps[currentIndex + 1];
+      }
+      return undefined;
+    }
+    initialize(configuration) {
+      this.configOptions = configuration.options || {};
+      this.initSectionsAndSteps(configuration);
+      this.applyConfigOptions();
+      this.initialized = true;
+      const firstFocusableStep = this.sections[0]?.steps.find(step => step.displayState !== 'empty');
+      if (firstFocusableStep) {
+        this.focusedStepId = firstFocusableStep.id;
+        this.selectStep(firstFocusableStep.id);
+      }
+    }
+    selectSection(sectionId) {
+      const firstFocusableStepOfSection = this.findFirstFocusableStepInSection(sectionId);
+      if (firstFocusableStepOfSection) {
+        this.selectStep(firstFocusableStepOfSection.id);
+      }
+    }
+    selectStep(stepId) {
+      const targetStep = this.findStepById(stepId);
+      if (!targetStep) return;
+      const targetStepIndex = this.findIndexOfStep(stepId);
+      const currentStepIndex = this.focusedStepId ? this.findIndexOfStep(this.focusedStepId) : -1;
+      if (currentStepIndex !== -1) {
+        const stepsToValidate = this.allSteps.slice(currentStepIndex, targetStepIndex);
+        const validationPromises = stepsToValidate.map(step => {
+          if (step.completed) return Promise.resolve(true);
+          return step.validateStep ? step.validateStep() : Promise.resolve(true);
+        });
+        Promise.all(validationPromises).then(results => {
+          if (results.every(result => result)) {
+            this.focusStep(stepId);
+          } else {
+            const firstInvalidIndex = results.findIndex(result => !result);
+            if (firstInvalidIndex !== -1) {
+              this.focusStep(this.allSteps[currentStepIndex + firstInvalidIndex]?.id ?? '');
+            }
+          }
+        });
+      }
+    }
+    selectNextStep() {
+      if (this.nextStep) this.selectStep(this.nextStep.id);
+    }
+    selectPreviousStep() {
+      if (this.previousStep) this.selectStep(this.previousStep.id);
+    }
+    findStepsForSectionKey(sectionKey) {
+      const section = this.sections.find(section => section.key === sectionKey);
+      if (section) {
+        return section.steps.filter(step => step.displayState !== 'empty');
+      }
+      return [];
+    }
+    reset() {
+      this.initialized = false;
+      this.sections = [];
+      this.focusedStepId = '';
+      this.configOptions = {};
+    }
+    get currentSection() {
+      return this.sections.find(section => section.steps.some(step => step.id === this.focusedStepId));
+    }
+    findIndexOfStep(stepId) {
+      return this.allSteps.findIndex(step => step.id === stepId);
+    }
+    findStepById(stepId) {
+      return this.allSteps.find(step => step.id === stepId);
+    }
+    findFirstFocusableStepInSection(sectionId) {
+      const section = this.sections.find(section => section.id === sectionId);
+      if (section) {
+        return section.steps.find(step => step.displayState !== 'empty');
+      }
+      return undefined;
+    }
+    focusStep(stepId) {
+      const stepExists = this.sections.some(section => section.steps.some(step => step.id === stepId));
+      if (stepExists) {
+        (0, _object.set)(this, 'focusedStepId', stepId);
+        this.setDisplayStates();
+        document.getElementById(stepId)?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'center'
+        });
+      }
+    }
+    setDisplayStates() {
+      this.resetDisplayStates();
+      if (this.currentStep) (0, _object.set)(this.currentStep, 'displayState', 'active');
+      if (this.previousStep && this.previousStep.displayState !== 'empty') (0, _object.set)(this.previousStep, 'displayState', 'previous');
+      if (this.nextStep && this.nextStep.displayState !== 'empty') (0, _object.set)(this.nextStep, 'displayState', 'next');
+    }
+    resetDisplayStates() {
+      this.allSteps.filter(step => step.displayState !== 'empty').forEach(step => {
+        (0, _object.set)(step, 'displayState', 'none');
+      });
+    }
+    initSectionsAndSteps(configuration) {
+      this.sections = configuration.sections.map(section => {
+        return {
+          id: (0, _internals.guidFor)(section.key),
+          key: section.key,
+          steps: section.steps.map(step => {
+            return {
+              id: (0, _internals.guidFor)(step.key),
+              key: step.key,
+              componentClass: step.componentClass,
+              validateStep: step.validateStep,
+              displayState: 'none',
+              visited: false
+            };
+          })
+        };
+      });
+    }
+    applyConfigOptions() {
+      if (this.configOptions?.centerStepsInContainer && this.sections?.length > 0) {
+        this.sections[0].steps.unshift({
+          id: (0, _internals.guidFor)('empty-step-top'),
+          key: '',
+          displayState: 'empty'
+        });
+        this.sections[this.sections.length - 1].steps.push({
+          id: (0, _internals.guidFor)('empty-step-bottom'),
+          key: '',
+          displayState: 'empty'
+        });
+      }
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "initialized", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "sections", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return [];
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "focusedStepId", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, "configOptions", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  })), _class);
 });
 ;define("@upfluence/oss-components/types/uploader", ["exports"], function (_exports) {
   "use strict";

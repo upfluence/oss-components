@@ -1223,6 +1223,334 @@
   });
   0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/upf-stat"eaimeta@70e063a35619d71f
 });
+;define("dummy/components/wizard/base-step", ["exports", "@upfluence/oss-components/components/wizard/base-step"], function (_exports, _baseStep) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _baseStep.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/wizard/base-step"eaimeta@70e063a35619d71f
+});
+;define("dummy/components/wizard/container", ["exports", "@upfluence/oss-components/components/wizard/container"], function (_exports, _container) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _container.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/wizard/container"eaimeta@70e063a35619d71f
+});
+;define("dummy/components/wizard/example-controls", ["exports", "@ember/component", "@glimmer/component", "@ember/service", "@ember/object", "@ember/template-factory"], function (_exports, _component, _component2, _service, _object, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/service",0,"@ember/object",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="step-controls fx-col fx-gap-px-12">
+    <OSS::Button
+      @square={{true}}
+      @size="lg"
+      @icon="fa-arrow-up"
+      disabled={{not this.wizardManager.previousStep}}
+      {{on "click" this.selectPreviousStep}}
+      data-control-name="previous-step"
+    />
+    <OSS::Button
+      @square={{true}}
+      @size="lg"
+      @icon="fa-arrow-down"
+      disabled={{not this.wizardManager.nextStep}}
+      {{on "click" this.selectNextStep}}
+      data-control-name="next-step"
+    />
+  </div>
+  */
+  {
+    "id": "MsSMNukC",
+    "block": "[[[10,0],[14,0,\"step-controls fx-col fx-gap-px-12\"],[12],[1,\"\\n  \"],[8,[39,0],[[16,\"disabled\",[28,[37,1],[[30,0,[\"wizardManager\",\"previousStep\"]]],null]],[24,\"data-control-name\",\"previous-step\"],[4,[38,2],[\"click\",[30,0,[\"selectPreviousStep\"]]],null]],[[\"@square\",\"@size\",\"@icon\"],[true,\"lg\",\"fa-arrow-up\"]],null],[1,\"\\n  \"],[8,[39,0],[[16,\"disabled\",[28,[37,1],[[30,0,[\"wizardManager\",\"nextStep\"]]],null]],[24,\"data-control-name\",\"next-step\"],[4,[38,2],[\"click\",[30,0,[\"selectNextStep\"]]],null]],[[\"@square\",\"@size\",\"@icon\"],[true,\"lg\",\"fa-arrow-down\"]],null],[1,\"\\n\"],[13]],[],false,[\"o-s-s/button\",\"not\",\"on\"]]",
+    "moduleName": "dummy/components/wizard/example-controls.hbs",
+    "isStrictMode": false
+  });
+  let WizardExampleControls = _exports.default = (_class = class WizardExampleControls extends _component2.default {
+    constructor(...args) {
+      super(...args);
+      _initializerDefineProperty(this, "wizardManager", _descriptor, this);
+    }
+    selectNextStep() {
+      this.wizardManager.selectNextStep();
+    }
+    selectPreviousStep() {
+      this.wizardManager.selectPreviousStep();
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "wizardManager", [_service.inject], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _applyDecoratedDescriptor(_class.prototype, "selectNextStep", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "selectNextStep"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "selectPreviousStep", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "selectPreviousStep"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, WizardExampleControls);
+});
+;define("dummy/components/wizard/example-menu", ["exports", "@ember/component", "@glimmer/component", "@ember/service", "@ember/component/helper", "@ember/object", "@ember/template-factory"], function (_exports, _component, _component2, _service, _helper, _object, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/service",0,"@ember/component/helper",0,"@ember/object",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="fx-col fx-gap-px-12">
+    {{#each this.sections as |section|}}
+      <div style="border:1px solid black; border-radius: 4px; padding: 6px">
+        <span {{on "click" (fn this.selectSection section.id)}} role="button">{{section.key}}</span>
+        {{#if (this.isSectionExpanded sectionId=section.id)}}
+          {{#each section.steps as |step|}}
+            {{#if (not-eq step.displayState "empty")}}
+              <li role="button" {{on "click" (fn this.selectStep step.id)}}>
+                {{step.key}}
+                {{#if (eq step this.wizardManager.currentStep)}}<i class="far fa-star"></i>{{/if}}
+              </li>
+            {{/if}}
+          {{/each}}
+        {{/if}}
+      </div>
+    {{/each}}
+  </div>
+  */
+  {
+    "id": "bQzmeVy+",
+    "block": "[[[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n\"],[42,[28,[37,1],[[28,[37,1],[[30,0,[\"sections\"]]],null]],null],null,[[[1,\"    \"],[10,0],[14,5,\"border:1px solid black; border-radius: 4px; padding: 6px\"],[12],[1,\"\\n      \"],[11,1],[24,\"role\",\"button\"],[4,[38,2],[\"click\",[28,[37,3],[[30,0,[\"selectSection\"]],[30,1,[\"id\"]]],null]],null],[12],[1,[30,1,[\"key\"]]],[13],[1,\"\\n\"],[41,[28,[30,0,[\"isSectionExpanded\"]],null,[[\"sectionId\"],[[30,1,[\"id\"]]]]],[[[42,[28,[37,1],[[28,[37,1],[[30,1,[\"steps\"]]],null]],null],null,[[[41,[28,[37,5],[[30,2,[\"displayState\"]],\"empty\"],null],[[[1,\"            \"],[11,\"li\"],[24,\"role\",\"button\"],[4,[38,2],[\"click\",[28,[37,3],[[30,0,[\"selectStep\"]],[30,2,[\"id\"]]],null]],null],[12],[1,\"\\n              \"],[1,[30,2,[\"key\"]]],[1,\"\\n              \"],[41,[28,[37,6],[[30,2],[30,0,[\"wizardManager\",\"currentStep\"]]],null],[[[10,\"i\"],[14,0,\"far fa-star\"],[12],[13]],[]],null],[1,\"\\n            \"],[13],[1,\"\\n\"]],[]],null]],[2]],null]],[]],null],[1,\"    \"],[13],[1,\"\\n\"]],[1]],null],[13]],[\"section\",\"step\"],false,[\"each\",\"-track-array\",\"on\",\"fn\",\"if\",\"not-eq\",\"eq\"]]",
+    "moduleName": "dummy/components/wizard/example-menu.hbs",
+    "isStrictMode": false
+  });
+  let WizardExampleMenu = _exports.default = (_class = class WizardExampleMenu extends _component2.default {
+    constructor(...args) {
+      super(...args);
+      _initializerDefineProperty(this, "wizardManager", _descriptor, this);
+      _defineProperty(this, "isSectionExpanded", (0, _helper.helper)((_, {
+        sectionId
+      }) => {
+        return this.wizardManager.sections.some(section => {
+          return section.id === sectionId && section.steps.some(step => step.id === this.wizardManager.focusedStepId);
+        });
+      }));
+    }
+    get sections() {
+      return this.wizardManager.sections;
+    }
+    selectStep(stepId) {
+      this.wizardManager.selectStep(stepId);
+    }
+    selectSection(sectionId) {
+      this.wizardManager.selectSection(sectionId);
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "wizardManager", [_service.inject], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _applyDecoratedDescriptor(_class.prototype, "selectStep", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "selectStep"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "selectSection", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "selectSection"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, WizardExampleMenu);
+});
+;define("dummy/components/wizard/example-step-with-scroll", ["exports", "@ember/component", "@ember/object", "@upfluence/oss-components/components/wizard/base-step", "@ember/template-factory"], function (_exports, _component, _object, _baseStep, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@upfluence/oss-components/components/wizard/base-step",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="fx-col fx-gap-px-12" {{did-update this.onVisibleState @step.displayState}}>
+    <span>Example step with overflowing contents</span>
+    <span>First name:</span>
+    <OSS::InputContainer />
+    <span>Last name:</span>
+    <OSS::InputContainer />
+    <span>Address:</span>
+    <OSS::InputContainer />
+    <span>City:</span>
+    <OSS::InputContainer />
+    <span>State:</span>
+    <OSS::InputContainer />
+    <span>Zip code:</span>
+    <OSS::InputContainer />
+    <span>Country:</span>
+    <OSS::InputContainer />
+    <span>Phone number:</span>
+    <OSS::InputContainer />
+    <span>Email:</span>
+    <OSS::InputContainer />
+    <span>Notes:</span>
+    <OSS::TextArea />
+    <span>Additional information:</span>
+    <OSS::TextArea />
+    <span>Comments:</span>
+    <OSS::TextArea />
+    <span>Feedback:</span>
+    <OSS::TextArea />
+    <span>Pet name:</span>
+    <OSS::InputContainer />
+    <span>Favorite color:</span>
+    <OSS::InputContainer />
+    <span>Hobbies:</span>
+    <OSS::TextArea />
+    <span>Interests:</span>
+    <OSS::TextArea />
+  </div>
+  */
+  {
+    "id": "mSID6UEF",
+    "block": "[[[11,0],[24,0,\"fx-col fx-gap-px-12\"],[4,[38,0],[[30,0,[\"onVisibleState\"]],[30,1,[\"displayState\"]]],null],[12],[1,\"\\n  \"],[10,1],[12],[1,\"Example step with overflowing contents\"],[13],[1,\"\\n  \"],[10,1],[12],[1,\"First name:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Last name:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Address:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"City:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"State:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Zip code:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Country:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Phone number:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Email:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Notes:\"],[13],[1,\"\\n  \"],[8,[39,2],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Additional information:\"],[13],[1,\"\\n  \"],[8,[39,2],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Comments:\"],[13],[1,\"\\n  \"],[8,[39,2],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Feedback:\"],[13],[1,\"\\n  \"],[8,[39,2],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Pet name:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Favorite color:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Hobbies:\"],[13],[1,\"\\n  \"],[8,[39,2],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Interests:\"],[13],[1,\"\\n  \"],[8,[39,2],null,null,null],[1,\"\\n\"],[13]],[\"@step\"],false,[\"did-update\",\"o-s-s/input-container\",\"o-s-s/text-area\"]]",
+    "moduleName": "dummy/components/wizard/example-step-with-scroll.hbs",
+    "isStrictMode": false
+  });
+  let WizardExampleStepWithScroll = _exports.default = (_class = class WizardExampleStepWithScroll extends _baseStep.WizardBaseStep {
+    constructor(owner, args) {
+      super(owner, args);
+      console.log('WizardExampleStep initialized for step:', this.args.step.id);
+    }
+    onStepSubmission() {
+      console.log('onStepSubmission called for step:', this.args.step.id);
+      return new Promise(resolve => {
+        // Implement the logic for step submission here
+        // For example, this can be bound to the submit button of an OSS::Form component
+        // we would then validate the inputs and resolve true or false based on the validations
+        resolve(true || false);
+      });
+    }
+    onFirstInsertion() {
+      console.log('onFirstInsertion called for step:', this.args.step.id);
+      // This is triggered the first time the step becomes active
+      // You can add any additional logic that should run when the step becomes active
+      // ie. set the loading states on the components
+      // and run the calls to the API to fetch JACE data
+    }
+    onRevisit() {
+      console.log('onRevisit called for step:', this.args.step.id);
+      // This is triggered when the step is revisited
+      // We will use it to rerun validations to display any errors that would be present
+      this.onStepSubmission();
+    }
+    onLeave() {
+      // Triggered when this step is no longer active (ie. moved to preview)
+      console.log('onLeave called for step:', this.args.step.id);
+    }
+    willDestroy() {
+      super.willDestroy();
+      console.log('onDestroy called for step:', this.args.step.id);
+    }
+  }, (_applyDecoratedDescriptor(_class.prototype, "onStepSubmission", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onStepSubmission"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onFirstInsertion", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onFirstInsertion"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onRevisit", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onRevisit"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, WizardExampleStepWithScroll);
+});
+;define("dummy/components/wizard/example-step", ["exports", "@ember/component", "@ember/object", "@upfluence/oss-components/components/wizard/base-step", "@ember/template-factory"], function (_exports, _component, _object, _baseStep, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@upfluence/oss-components/components/wizard/base-step",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="fx-col fx-gap-px-12" {{did-update this.onVisibleState @step.displayState}}>
+    <span>Example step #{{@step.id}}</span>
+    <OSS::InputContainer />
+  </div>
+  */
+  {
+    "id": "bdKol6W2",
+    "block": "[[[11,0],[24,0,\"fx-col fx-gap-px-12\"],[4,[38,0],[[30,0,[\"onVisibleState\"]],[30,1,[\"displayState\"]]],null],[12],[1,\"\\n  \"],[10,1],[12],[1,\"Example step #\"],[1,[30,1,[\"id\"]]],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n\"],[13]],[\"@step\"],false,[\"did-update\",\"o-s-s/input-container\"]]",
+    "moduleName": "dummy/components/wizard/example-step.hbs",
+    "isStrictMode": false
+  });
+  let WizardExampleStep = _exports.default = (_class = class WizardExampleStep extends _baseStep.WizardBaseStep {
+    constructor(owner, args) {
+      super(owner, args);
+      console.log('WizardExampleStep initialized for step:', this.args.step.id);
+    }
+    onStepSubmission() {
+      console.log('onStepSubmission called for step:', this.args.step.id);
+      return new Promise(resolve => {
+        // Implement the logic for step submission here
+        // For example, this can be bound to the submit button of an OSS::Form component
+        // we would then validate the inputs and resolve true or false based on the validations
+        resolve(true || false);
+      });
+    }
+    onFirstInsertion() {
+      console.log('onFirstInsertion called for step:', this.args.step.id);
+      // This is triggered the first time the step becomes active
+      // You can add any additional logic that should run when the step becomes active
+      // ie. set the loading states on the components
+      // and run the calls to the API to fetch JACE data
+    }
+    onRevisit() {
+      console.log('onRevisit called for step:', this.args.step.id);
+      // This is triggered when the step is revisited
+      // We will use it to rerun validations to display any errors that would be present
+      this.onStepSubmission();
+    }
+    onLeave() {
+      // Triggered when this step is no longer active (ie. moved to preview)
+      console.log('onLeave called for step:', this.args.step.id);
+    }
+    willDestroy() {
+      super.willDestroy();
+      console.log('onDestroy called for step:', this.args.step.id);
+    }
+  }, (_applyDecoratedDescriptor(_class.prototype, "onStepSubmission", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onStepSubmission"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onFirstInsertion", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onFirstInsertion"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onRevisit", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onRevisit"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, WizardExampleStep);
+});
+;define("dummy/components/wizard/step-wrapper", ["exports", "@upfluence/oss-components/components/wizard/step-wrapper"], function (_exports, _stepWrapper) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _stepWrapper.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/wizard/step-wrapper"eaimeta@70e063a35619d71f
+});
 ;define("dummy/controllers/application", ["exports", "@ember/controller", "@ember/object", "@ember/service"], function (_exports, _controller, _object, _service) {
   "use strict";
 
@@ -2260,6 +2588,66 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
     }
   }), _applyDecoratedDescriptor(_class.prototype, "redirectTo", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "redirectTo"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "triggerSelection", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "triggerSelection"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onCheck", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onCheck"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onRadioBtnChange", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onRadioBtnChange"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleMedia", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleMedia"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onCrossChipClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onCrossChipClick"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onRatingClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onRatingClick"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onChangeSlider", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onChangeSlider"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onChangeSlider2", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onChangeSlider2"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onChangeSlider3", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onChangeSlider3"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "countDownAction", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "countDownAction"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onChangeMode1", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onChangeMode1"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onChangeMode2", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onChangeMode2"), _class.prototype)), _class);
 });
+;define("dummy/controllers/wizard", ["exports", "@ember/controller", "@ember/service", "dummy/components/wizard/example-step", "dummy/components/wizard/example-step-with-scroll", "@upfluence/oss-components/components/o-s-s/input-container", "@ember/object", "@ember/runloop"], function (_exports, _controller, _service, _exampleStep, _exampleStepWithScroll, _inputContainer, _object, _runloop) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor;
+  0; //eaimeta@70e063a35619d71f0,"@ember/controller",0,"@ember/service",0,"dummy/components/wizard/example-step",0,"dummy/components/wizard/example-step-with-scroll",0,"@upfluence/oss-components/components/o-s-s/input-container",0,"@ember/object",0,"@ember/runloop"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const WIZARD_CONFIG = {
+    options: {
+      centerStepsInContainer: true
+    },
+    sections: [{
+      key: 'Section 1',
+      steps: [{
+        key: 'Step 1',
+        componentClass: _exampleStepWithScroll.default
+      }, {
+        key: 'Step 2',
+        componentClass: _exampleStep.default
+      },
+      // Usage with a random component that is not extending WizardBaseStep:
+      {
+        key: 'Step 3',
+        componentClass: _inputContainer.default,
+        validateStep: () => Promise.resolve(true)
+      }]
+    }, {
+      key: 'Section 2',
+      steps: [{
+        key: 'Step 4',
+        componentClass: _exampleStep.default
+      }, {
+        key: 'Step 5',
+        componentClass: _exampleStep.default
+      }]
+    }]
+  };
+  let Wizard = _exports.default = (_class = class Wizard extends _controller.default {
+    constructor(...args) {
+      super(...args);
+      _initializerDefineProperty(this, "wizardManager", _descriptor, this);
+    }
+    initWizard() {
+      (0, _runloop.next)(() => this.wizardManager.initialize(WIZARD_CONFIG));
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "wizardManager", [_service.inject], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _applyDecoratedDescriptor(_class.prototype, "initWizard", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initWizard"), _class.prototype)), _class);
+});
 ;define("dummy/helpers/and", ["exports", "ember-truth-helpers/helpers/and"], function (_exports, _and) {
   "use strict";
 
@@ -2289,6 +2677,20 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
   _exports.default = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-ifa/helpers/asset-map"eaimeta@70e063a35619d71f
   var _default = _exports.default = _assetMap.default;
+});
+;define("dummy/helpers/ensure-safe-component", ["exports", "@embroider/util"], function (_exports, _util) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _util.EnsureSafeComponentHelper;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@embroider/util"eaimeta@70e063a35619d71f
 });
 ;define("dummy/helpers/eq", ["exports", "ember-truth-helpers/helpers/eq"], function (_exports, _eq) {
   "use strict";
@@ -3025,6 +3427,7 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
     this.route('data');
     this.route('overlay');
     this.route('extra');
+    this.route('wizard');
   });
 });
 ;define("dummy/routes/application", ["exports", "@ember/routing/route", "@ember/service"], function (_exports, _route, _service) {
@@ -3116,6 +3519,20 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
   class Visual extends _route.default {}
   _exports.default = Visual;
 });
+;define("dummy/services/-ensure-registered", ["exports", "@embroider/util/services/ensure-registered"], function (_exports, _ensureRegistered) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _ensureRegistered.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@embroider/util/services/ensure-registered"eaimeta@70e063a35619d71f
+});
 ;define("dummy/services/asset-map", ["exports", "ember-cli-ifa/services/asset-map"], function (_exports, _assetMap) {
   "use strict";
 
@@ -3182,6 +3599,20 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
   });
   0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/services/toast"eaimeta@70e063a35619d71f
 });
+;define("dummy/services/wizard-manager", ["exports", "@upfluence/oss-components/services/wizard-manager"], function (_exports, _wizardManager) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _wizardManager.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/services/wizard-manager"eaimeta@70e063a35619d71f
+});
 ;define("dummy/templates/application", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
   "use strict";
 
@@ -3226,6 +3657,11 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
           @link="extra"
         />
         <OSS::Layout::Sidebar::Item
+          @icon="far fa-hat-wizard"
+          class={{if (eq this.router.currentRouteName "wizard") "active"}}
+          @link="wizard"
+        />
+        <OSS::Layout::Sidebar::Item
           @icon="far fa-lock"
           @locked={{true}}
           @defaultAction={{fn this.redirectTo "credit-card"}}
@@ -3253,8 +3689,8 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
   
   */
   {
-    "id": "gnT+gOHz",
-    "block": "[[[10,0],[14,0,\"fx-row\"],[12],[1,\"\\n  \"],[8,[39,0],null,[[\"@logo\",\"@homeAction\"],[\"/assets/images/upfluence-white-logo.svg\",[28,[37,1],[[30,0,[\"redirectTo\"]],\"/\"],null]]],[[\"content\",\"footer\"],[[[[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"index\"],null],\"active\"]]],[[\"@icon\",\"@link\"],[\"far fa-message-plus\",\"index\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"input\"],null],\"active\"]]],[[\"@icon\",\"@link\"],[\"far fa-input-text\",\"input\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"visual\"],null],\"active\"]]],[[\"@icon\",\"@link\"],[\"far fa-toggle-on\",\"visual\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"data\"],null],\"active\"]]],[[\"@icon\",\"@link\"],[\"far fa-line-columns\",\"data\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"overlay\"],null],\"active\"]]],[[\"@icon\",\"@link\"],[\"far fa-window-restore\",\"overlay\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"extra\"],null],\"active\"]]],[[\"@icon\",\"@link\"],[\"far fa-link\",\"extra\"]],null],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@locked\",\"@defaultAction\",\"@lockedAction\"],[\"far fa-lock\",true,[28,[37,1],[[30,0,[\"redirectTo\"]],\"credit-card\"],null],[28,[37,1],[[30,0,[\"redirectTo\"]],\"locked credit-card\"],null]]],null],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@defaultAction\",\"@hasNotifications\"],[\"far fa-bullhorn\",[28,[37,1],[[30,0,[\"redirectTo\"]],\"pointer\"],null],true]],null],[1,\"\\n    \"]],[]],[[[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\"],[\"fal fa-info-circle\"]],null],[1,\"\\n      \"],[8,[39,5],null,[[\"@image\",\"@initials\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"Ts\"]],null],[1,\"\\n    \"]],[]]]]],[1,\"\\n\\n  \"],[10,0],[14,5,\"width:100%; height:100vh; overflow: auto; background-color: var(--color-gray-50)\"],[12],[1,\"\\n    \"],[46,[28,[37,7],null,null],null,null,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[],false,[\"o-s-s/layout/sidebar\",\"fn\",\"o-s-s/layout/sidebar/item\",\"if\",\"eq\",\"o-s-s/avatar\",\"component\",\"-outlet\"]]",
+    "id": "AKPRfAoq",
+    "block": "[[[10,0],[14,0,\"fx-row\"],[12],[1,\"\\n  \"],[8,[39,0],null,[[\"@logo\",\"@homeAction\"],[\"/assets/images/upfluence-white-logo.svg\",[28,[37,1],[[30,0,[\"redirectTo\"]],\"/\"],null]]],[[\"content\",\"footer\"],[[[[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"index\"],null],\"active\"]]],[[\"@icon\",\"@link\"],[\"far fa-message-plus\",\"index\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"input\"],null],\"active\"]]],[[\"@icon\",\"@link\"],[\"far fa-input-text\",\"input\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"visual\"],null],\"active\"]]],[[\"@icon\",\"@link\"],[\"far fa-toggle-on\",\"visual\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"data\"],null],\"active\"]]],[[\"@icon\",\"@link\"],[\"far fa-line-columns\",\"data\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"overlay\"],null],\"active\"]]],[[\"@icon\",\"@link\"],[\"far fa-window-restore\",\"overlay\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"extra\"],null],\"active\"]]],[[\"@icon\",\"@link\"],[\"far fa-link\",\"extra\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"wizard\"],null],\"active\"]]],[[\"@icon\",\"@link\"],[\"far fa-hat-wizard\",\"wizard\"]],null],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@locked\",\"@defaultAction\",\"@lockedAction\"],[\"far fa-lock\",true,[28,[37,1],[[30,0,[\"redirectTo\"]],\"credit-card\"],null],[28,[37,1],[[30,0,[\"redirectTo\"]],\"locked credit-card\"],null]]],null],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@defaultAction\",\"@hasNotifications\"],[\"far fa-bullhorn\",[28,[37,1],[[30,0,[\"redirectTo\"]],\"pointer\"],null],true]],null],[1,\"\\n    \"]],[]],[[[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\"],[\"fal fa-info-circle\"]],null],[1,\"\\n      \"],[8,[39,5],null,[[\"@image\",\"@initials\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"Ts\"]],null],[1,\"\\n    \"]],[]]]]],[1,\"\\n\\n  \"],[10,0],[14,5,\"width:100%; height:100vh; overflow: auto; background-color: var(--color-gray-50)\"],[12],[1,\"\\n    \"],[46,[28,[37,7],null,null],null,null,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[],false,[\"o-s-s/layout/sidebar\",\"fn\",\"o-s-s/layout/sidebar/item\",\"if\",\"eq\",\"o-s-s/avatar\",\"component\",\"-outlet\"]]",
     "moduleName": "dummy/templates/application.hbs",
     "isStrictMode": false
   });
@@ -5613,6 +6049,29 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
     "id": "HWC4zoEc",
     "block": "[[[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-18\"],[12],[1,\"\\n  \"],[10,0],[14,0,\"page-title-container\"],[12],[1,\"\\n    \"],[10,1],[14,0,\"font-size-h2 font-weight-semibold\"],[12],[1,\"Visual\"],[13],[1,\"\\n    \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,\"Components used to display information or actions in a simple and visual way\"],[13],[1,\"\\n    \"],[10,1],[14,0,\"font-color-gray-500 font-size-xs text-style-italic\"],[12],[1,\"(this one might work for people who can't read 👍)\"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Button\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"destructive\",\"destructive\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"destructive\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"alert\",\"alert\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"alert\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"secondary\",\"secondary\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"secondary\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"default\",\"default\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"default\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"success\",\"success\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"success\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-orange\",\"Extended orange\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-orange\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-yellow\",\"Extended yellow\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-yellow\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-lime\",\"Extended lime\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-lime\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-cyan\",\"Extended Cyan\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-cyan\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-blue\",\"Extended blue\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-blue\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-violet\",\"Extended violet\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-violet\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"primary\",\"xs\",\"XS\",\"far fa-envelope-open\"]],null],[1,\"\\n        \"],[8,[39,0],null,[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"primary\",\"sm\",\"SM\",\"far fa-envelope-open\"]],null],[1,\"\\n        \"],[8,[39,0],null,[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"primary\",\"md\",\"MD\",\"far fa-envelope-open\"]],null],[1,\"\\n        \"],[8,[39,0],null,[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"primary\",\"lg\",\"LG\",\"far fa-envelope-open\"]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@square\",\"@skin\",\"@size\",\"@icon\"],[\"true\",\"primary\",\"sm\",\"far fa-envelope-open\"]],null],[1,\"\\n        \"],[8,[39,0],null,[[\"@square\",\"@skin\",\"@size\",\"@icon\"],[\"true\",\"primary\",\"md\",\"far fa-envelope-open\"]],null],[1,\"\\n        \"],[8,[39,0],null,[[\"@square\",\"@skin\",\"@size\",\"@icon\"],[\"true\",\"primary\",\"lg\",\"far fa-envelope-open\"]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@label\",\"@loading\"],[\"loading\",true]],null],[1,\"\\n        \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\",\"@countDown\"],[\"destructive\",\"Count down\",\"far fa-hourglass\",\"md\",[28,[37,1],null,[[\"callback\"],[[30,0,[\"countDownAction\"]]]]]]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Button dropdown\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@label\",\"@mainAction\"],[\"far fa-credit-card\",\"Dropdown button\",[28,[37,3],[[30,0,[\"redirectTo\"]],\"test\"],null]]],[[\"items\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"\\n            \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-share\"]],null],[1,\"\\n            Share\\n          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@label\"],[\"far fa-hourglass\",\"Dropdown button\"]],[[\"items\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"\\n            \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-share\"]],null],[1,\"\\n            Share\\n          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Toggle buttons\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10\"],[12],[1,\"\\n        \"],[8,[39,5],null,[[\"@toggles\",\"@selectedToggle\",\"@onSelection\"],[[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]],[30,0,[\"triggerSelection\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Toggle switch\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-1 fx-col fx-gap-px-12\"],[12],[1,\"\\n        Active\\n        \"],[8,[39,6],null,[[\"@value\",\"@onChange\"],[[30,0,[\"toggleValue\"]],[28,[37,3],[[28,[37,7],[[30,0,[\"toggleValue\"]]],null]],null]]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-1 fx-col fx-gap-px-12\"],[12],[1,\"\\n        Disabled\\n        \"],[8,[39,6],null,[[\"@value\",\"@onChange\",\"@disabled\"],[[30,0,[\"toggleValue\"]],[28,[37,3],[[28,[37,7],[[30,0,[\"toggleValue\"]]],null]],null],[30,0,[\"disabled\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Checkbox\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@onChange\"],[[30,0,[\"isChecked\"]],[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@disabled\",\"@onChange\"],[[30,0,[\"isChecked\"]],true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@partial\",\"@onChange\"],[[30,0,[\"isChecked\"]],true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@disabled\",\"@partial\",\"@onChange\"],[[30,0,[\"isChecked\"]],true,true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@size\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@size\",\"@disabled\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@size\",\"@partial\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@size\",\"@disabled\",\"@partial\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",true,true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@size\",\"@disabled\",\"@partial\",\"@hasError\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",false,false,true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Radio button\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,9],null,[[\"@selected\",\"@onChange\"],[[30,0,[\"radio1\"]],[28,[37,3],[[30,0,[\"onRadioBtnChange\"]],\"radio1\"],null]]],null],[1,\"\\n      \"],[8,[39,9],null,[[\"@selected\",\"@onChange\"],[[30,0,[\"radio2\"]],[28,[37,3],[[30,0,[\"onRadioBtnChange\"]],\"radio2\"],null]]],null],[1,\"\\n      \"],[8,[39,9],null,[[\"@selected\",\"@disabled\"],[true,true]],null],[1,\"\\n      \"],[8,[39,9],null,[[\"@selected\",\"@disabled\"],[false,true]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Copy button\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,10],null,[[\"@value\",\"@inline\"],[\"I am the value copied\",true]],null],[1,\"\\n      \"],[8,[39,10],null,[[\"@value\"],[\"I am the value copied\"]],null],[1,\"\\n      \"],[8,[39,10],null,[[\"@value\",\"@tooltip\"],[\"I am the value copied\",\"Custom tooltip\"]],null],[1,\"\\n      \"],[8,[39,10],null,[[\"@value\",\"@icon\"],[\"I am the value copied\",\"far fa-jedi\"]],null],[1,\"\\n      \"],[8,[39,10],null,[[\"@value\",\"@icon\",\"@inline\"],[\"I am the value copied\",\"fab fa-empire\",true]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Avatar\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,11],null,[[\"@image\",\"@initials\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"Ts\"]],null],[1,\"\\n      \"],[8,[39,11],null,[[\"@initials\"],[\"MI\"]],null],[1,\"\\n      \"],[8,[39,11],null,null,null],[1,\"\\n      \"],[8,[39,11],null,[[\"@size\"],[\"xs\"]],null],[1,\"\\n      \"],[8,[39,11],null,[[\"@size\"],[\"sm\"]],null],[1,\"\\n      \"],[8,[39,11],null,[[\"@size\"],[\"md\"]],null],[1,\"\\n      \"],[8,[39,11],null,[[\"@size\"],[\"lg\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Stack container\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-18\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-xalign-start fx-gap-px-12\"],[12],[1,\"\\n        \"],[10,1],[12],[1,\"@style=\\\"under\\\"\"],[13],[1,\"\\n        \"],[8,[39,12],null,[[\"@direction\",\"@style\",\"@pxMargin\"],[\"row\",\"under\",\"6px\"]],[[\"default\"],[[[[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"us\",\"United-States\"]],null],[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"fr\",\"France\"]],null],[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"ca\",\"Canada\"]],null],[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"de\",\"Germany\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-xalign-start fx-gap-px-12\"],[12],[1,\"\\n        \"],[10,1],[12],[1,\"@style=\\\"over\\\"\"],[13],[1,\"\\n        \"],[8,[39,12],null,[[\"@direction\",\"@style\"],[\"row\",\"over\"]],[[\"default\"],[[[[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"us\",\"United-States\"]],null],[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"fr\",\"France\"]],null],[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"ca\",\"Canada\"]],null],[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"de\",\"Germany\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-xalign-start fx-gap-px-12\"],[12],[1,\"\\n        \"],[10,1],[12],[1,\"@direction=\\\"column\\\"\"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,12],null,[[\"@direction\",\"@style\"],[\"column\",\"over\"]],[[\"default\"],[[[[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"us\",\"United-States\"]],null],[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"fr\",\"France\"]],null],[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"ca\",\"Canada\"]],null],[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"de\",\"Germany\"]],null],[1,\"\\n          \"]],[]]]]],[1,\"\\n          \"],[8,[39,12],null,[[\"@direction\",\"@style\"],[\"column\",\"under\"]],[[\"default\"],[[[[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"us\",\"United-States\"]],null],[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"fr\",\"France\"]],null],[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"ca\",\"Canada\"]],null],[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"de\",\"Germany\"]],null],[1,\"\\n          \"]],[]]]]],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-xalign-start fx-gap-px-12\"],[12],[1,\"\\n        \"],[10,1],[12],[1,\"Usage with random component and @bringToFrontOnHover=\"],[1,true],[13],[1,\"\\n        \"],[8,[39,12],null,[[\"@pxMargin\",\"@bringToFrontOnHover\"],[\"-30px\",true]],[[\"default\"],[[[[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-orange\",\"Extended orange\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-yellow\",\"Extended yellow\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-lime\",\"Extended lime\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-cyan\",\"Extended Cyan\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-blue\",\"Extended blue\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Avatar group\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,14],null,[[\"@avatars\",\"@size\"],[[30,0,[\"avatars\"]],\"lg\"]],null],[1,\"\\n      \"],[8,[39,14],null,[[\"@avatars\",\"@size\"],[[30,0,[\"avatars\"]],\"md\"]],null],[1,\"\\n      \"],[8,[39,14],null,[[\"@avatars\",\"@size\"],[[30,0,[\"avatars\"]],\"sm\"]],null],[1,\"\\n      \"],[8,[39,14],null,[[\"@avatars\",\"@size\"],[[30,0,[\"avatars\"]],\"xs\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Badge\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@size\"],[\"fas fa-box-open\",\"lg\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\"],[\"fas fa-box-open\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@size\",\"@icon\"],[\"md\",\"fas fa-box-open\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@size\",\"@icon\"],[\"sm\",\"fas fa-box-open\"]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"primary\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"primary\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"success\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"success\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"alert\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"alert\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"error\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"error\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-orange\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-orange\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-yellow\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-yellow\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-lime\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-lime\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-cyan\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-cyan\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-blue\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-blue\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-violet\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-violet\",true]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,15],null,[[\"@text\",\"@size\"],[\"2x\",\"lg\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@text\"],[\"2x\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@text\",\"@size\"],[\"2x\",\"sm\"]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,15],null,[[\"@image\",\"@size\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"lg\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@image\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@image\",\"@size\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"sm\"]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Social post badge\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n\"],[42,[28,[37,17],[[28,[37,17],[[30,0,[\"media\"]]],null]],null],null,[[[1,\"        \"],[8,[39,18],null,[[\"@postType\",\"@selected\",\"@plain\",\"@onToggle\"],[[30,1,[\"key\"]],[30,1,[\"active\"]],[30,1,[\"active\"]],[30,0,[\"toggleMedia\"]]]],null],[1,\"\\n\"]],[1]],null],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Expandable badge\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-6\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@size\"],[\"content\",\"fas fa-box-open\",\"lg\"]],null],[1,\"\\n        \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\"],[\"content\",\"fas fa-box-open\"]],null],[1,\"\\n        \"],[8,[39,13],null,[[\"@expandedLabel\",\"@size\",\"@icon\"],[\"content\",\"md\",\"fas fa-box-open\"]],null],[1,\"\\n        \"],[8,[39,13],null,[[\"@expandedLabel\",\"@size\",\"@icon\"],[\"content\",\"sm\",\"fas fa-box-open\"]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-6\"],[12],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"primary\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"primary\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"success\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"success\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"alert\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"alert\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"error\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"error\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"xtd-orange\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"xtd-orange\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"xtd-yellow\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"xtd-yellow\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"xtd-lime\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"xtd-lime\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"xtd-cyan\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"xtd-cyan\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"xtd-blue\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"xtd-blue\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"xtd-violet\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"xtd-violet\",true]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@image\",\"@size\"],[\"content\",\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"lg\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@image\"],[\"content\",\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@image\",\"@size\"],[\"content\",\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"sm\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-6\"],[12],[1,\"\\n      \"],[8,[39,13],null,[[\"@icon\",\"@size\",\"@expandedLabel\"],[\"fas fa-user-bounty-hunter\",\"md\",\"The Mandalorian\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@icon\",\"@size\",\"@expandedLabel\"],[\"fas fa-robot-astromech\",\"md\",\"R2-D2\"]],null],[1,\"\\n      \"],[8,[39,13],[[24,0,\"font-color-pinterest-500\"]],[[\"@icon\",\"@size\",\"@expandedLabel\",\"@fontColorClass\"],[\"fab fa-pinterest\",\"md\",\"pinterest\",\"font-color-pinterest-500\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Icon\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\"],[\"LaptopCode\"]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@style\"],[\"LaptopCode\",\"solid\"]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@style\"],[\"LaptopCode\",\"regular\"]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@style\"],[\"LaptopCode\",\"light\"]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@style\"],[\"LaptopCode\",\"duotone\"]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@style\"],[\"FacebookSquare\",\"brand\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Tag\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-69\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"primary\",\"far fa-thumbs-up\"]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"success\",\"far fa-thumbs-up\"]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"warning\",\"far fa-thumbs-up\"]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"danger\",\"far fa-thumbs-up\"]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"secondary\",\"far fa-thumbs-up\"]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@icon\"],[\"Tag\",\"far fa-thumbs-up\"]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@icon\"],[\"far fa-thumbs-up\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\"],[\"Tag\",\"secondary\"]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-orange\"]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-cyan\"]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-yellow\"]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-blue\"]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-violet\"]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-lime\"]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\"],[\"Tag\",\"chat-gpt\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,19],[[4,[38,20],null,[[\"title\",\"placement\",\"displayOnlyOnOverflow\"],[\"Test with a huge label sentence\",\"top\",true]]]],[[\"@label\",\"@skin\",\"@icon\"],[\"Test with a huge label sentence\",\"danger\",\"far fa-thumbs-up\"]],null],[1,\"\\n          \"],[8,[39,19],[[4,[38,20],null,[[\"title\",\"placement\",\"displayOnlyOnOverflow\"],[\"Test with a huge label sentence\",\"top\",true]]]],[[\"@label\",\"@skin\",\"@icon\",\"@hasEllipsis\"],[\"Test with a huge label sentence\",\"danger\",\"far fa-thumbs-up\",true]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"primary\",\"far fa-thumbs-up\",true]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"success\",\"far fa-thumbs-up\",true]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"warning\",\"far fa-thumbs-up\",true]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"danger\",\"far fa-thumbs-up\",true]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"secondary\",\"far fa-thumbs-up\",true]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@icon\",\"@plain\"],[\"Tag\",\"far fa-thumbs-up\",true]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@icon\",\"@plain\"],[\"far fa-thumbs-up\",true]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"secondary\",true]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-orange\",true]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-cyan\",true]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-yellow\",true]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-blue\",true]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-violet\",true]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-lime\",true]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"chat-gpt\",true]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Test with a huge label sentence\",\"danger\",\"far fa-thumbs-up\",true]],null],[1,\"\\n          \"],[8,[39,19],[[4,[38,20],null,[[\"title\",\"placement\"],[\"Test with a huge label sentence\",\"top\"]]]],[[\"@label\",\"@skin\",\"@icon\",\"@hasEllipsis\",\"@plain\"],[\"Test with a huge label sentence\",\"danger\",\"far fa-thumbs-up\",true,true]],null],[1,\"\\n          \"],[8,[39,19],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\",\"@htmlSafe\"],[\"normal text - <b>bold text</b>\",\"danger\",\"far fa-thumbs-up\",true,true]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Chip\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,21],null,[[\"@label\",\"@onRemove\"],[\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,21],null,[[\"@skin\",\"@label\",\"@onRemove\"],[\"default\",\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,21],null,[[\"@skin\",\"@label\",\"@onRemove\"],[\"primary\",\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,21],null,[[\"@skin\",\"@label\",\"@onRemove\"],[\"success\",\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,21],null,[[\"@skin\",\"@label\",\"@onRemove\"],[\"danger\",\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,21],null,[[\"@skin\",\"@label\",\"@disabled\",\"@onRemove\"],[\"danger\",\"Chip\",true,[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,21],null,[[\"@skin\",\"@label\",\"@disabled\",\"@maxDisplayWidth\",\"@onRemove\"],[\"success\",\"Chip with a huge label\",false,100,[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,21],null,[[\"@skin\",\"@label\",\"@disabled\",\"@maxDisplayWidth\",\"@onRemove\"],[\"danger\",\"Chip with a huge label\",false,160,[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,22],null,[[\"@skin\",\"@label\",\"@disabled\",\"@onRemove\",\"@maxDisplayWidth\"],[\"danger\",\"Chip with a huge label\",true,[30,0,[\"onCrossChipClick\"]],50]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Star rating\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,23],null,[[\"@rating\",\"@totalStars\",\"@onChange\"],[3,5,[30,0,[\"onRatingClick\"]]]],null],[1,\"\\n      \"],[8,[39,23],null,[[\"@rating\",\"@totalStars\",\"@activeColor\",\"@passiveColor\",\"@onChange\"],[[30,0,[\"rating\"]],15,\"red\",\"blue\",[30,0,[\"onRatingClick\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Progress bar\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,24],null,[[\"@skin\",\"@value\",\"@displayValue\",\"@label\",\"@size\"],[\"success\",42,true,\"Hello\",\"xs\"]],null],[1,\"\\n      \"],[8,[39,24],null,[[\"@skin\",\"@value\",\"@displayValue\",\"@label\"],[\"warning\",21,true,\"Hello\"]],null],[1,\"\\n      \"],[8,[39,24],null,[[\"@skin\",\"@value\",\"@displayValue\",\"@label\",\"@coloredBackground\"],[\"danger\",78,true,\"Hello\",true]],null],[1,\"\\n      \"],[8,[39,24],null,[[\"@skin\",\"@value\",\"@displayValue\",\"@label\",\"@coloredBackground\"],[\"success\",78,true,\"Hello\",true]],null],[1,\"\\n      \"],[8,[39,24],null,[[\"@value\",\"@displayValue\",\"@label\",\"@coloredBackground\"],[78,true,\"Hello\",false]],null],[1,\"\\n      \"],[8,[39,24],null,[[\"@value\",\"@displayValue\",\"@label\",\"@secondarySkin\",\"@size\"],[78,true,\"Hello\",\"danger\",\"sm\"]],null],[1,\"\\n      \"],[8,[39,24],null,[[\"@value\",\"@displayValue\",\"@skin\",\"@secondarySkin\",\"@size\"],[62,true,\"success\",\"danger\",\"sm\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Slider\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-10\"],[12],[1,\"\\n        \"],[8,[39,25],null,[[\"@value\",\"@defaultValue\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue\"]],\"0\",true,[30,0,[\"onChangeSlider\"]]]],null],[1,\"\\n        \"],[8,[39,25],null,[[\"@value\",\"@unit\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue\"]],\"percentage\",true,[30,0,[\"onChangeSlider\"]]]],null],[1,\"\\n        \"],[8,[39,25],null,[[\"@value\",\"@unit\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue\"]],\"number\",true,[30,0,[\"onChangeSlider\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-10\"],[12],[1,\"\\n        \"],[8,[39,25],null,[[\"@value\",\"@disabled\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue2\"]],true,true,[30,0,[\"onChangeSlider2\"]]]],null],[1,\"\\n        \"],[8,[39,25],null,[[\"@value\",\"@disabled\",\"@unit\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue2\"]],true,\"percentage\",true,[30,0,[\"onChangeSlider2\"]]]],null],[1,\"\\n        \"],[8,[39,25],null,[[\"@value\",\"@disabled\",\"@unit\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue2\"]],true,\"number\",true,[30,0,[\"onChangeSlider2\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-10\"],[12],[1,\"\\n        \"],[8,[39,25],null,[[\"@value\",\"@inputOptions\",\"@min\",\"@max\",\"@step\",\"@unit\",\"@onChange\",\"@displayInputValue\"],[[30,0,[\"sliderValue3\"]],[28,[37,1],null,[[\"min\",\"max\"],[0,999]]],0,200,10,\"percentage\",[30,0,[\"onChangeSlider3\"]],true]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Mode switch\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-10\"],[12],[1,\"\\n        \"],[8,[39,26],null,[[\"@options\",\"@selected\",\"@onSelect\"],[[30,0,[\"modeSwitchOptions1\"]],[30,0,[\"modeSwitchSelected1\"]],[30,0,[\"onChangeMode1\"]]]],null],[1,\"\\n        \"],[8,[39,26],null,[[\"@options\",\"@selected\",\"@onSelect\",\"@plain\",\"@size\"],[[30,0,[\"modeSwitchOptions2\"]],[30,0,[\"modeSwitchSelected2\"]],[30,0,[\"onChangeMode2\"]],true,\"xs\"]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Pulsating dot\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-12\"],[12],[1,\"\\n        Primary:\\n        \"],[8,[39,27],null,null,null],[1,\"\\n        Success:\\n        \"],[8,[39,27],null,[[\"@skin\"],[\"success\"]],null],[1,\"\\n        Error:\\n        \"],[8,[39,27],null,[[\"@skin\"],[\"error\"]],null],[1,\"\\n        Warning:\\n        \"],[8,[39,27],null,[[\"@skin\"],[\"warning\"]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"socialMedia\"],false,[\"o-s-s/button\",\"hash\",\"o-s-s/button-dropdown\",\"fn\",\"o-s-s/icon\",\"o-s-s/toggle-buttons\",\"o-s-s/toggle-switch\",\"mut\",\"o-s-s/checkbox\",\"o-s-s/radio-button\",\"o-s-s/copy\",\"o-s-s/avatar\",\"o-s-s/stack-container\",\"o-s-s/expandable-badge\",\"o-s-s/avatar-group\",\"o-s-s/badge\",\"each\",\"-track-array\",\"o-s-s/social-post-badge\",\"o-s-s/tag\",\"enable-tooltip\",\"o-s-s/chip\",\"o-s-s/chip-n-fish\",\"o-s-s/star-rating\",\"o-s-s/progress-bar\",\"o-s-s/slider\",\"o-s-s/mode-switch\",\"o-s-s/pulsating-dot\"]]",
     "moduleName": "dummy/templates/visual.hbs",
+    "isStrictMode": false
+  });
+});
+;define("dummy/templates/wizard", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  var _default = _exports.default = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="fx-row fx-xalign-center padding-left-px-30 padding-right-px-30" {{did-insert this.initWizard}}>
+    <Wizard::ExampleMenu />
+    <Wizard::Container />
+    <Wizard::ExampleControls />
+  </div>
+  */
+  {
+    "id": "rdVjR/on",
+    "block": "[[[11,0],[24,0,\"fx-row fx-xalign-center padding-left-px-30 padding-right-px-30\"],[4,[38,0],[[30,0,[\"initWizard\"]]],null],[12],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[8,[39,2],null,null,null],[1,\"\\n  \"],[8,[39,3],null,null,null],[1,\"\\n\"],[13]],[],false,[\"did-insert\",\"wizard/example-menu\",\"wizard/container\",\"wizard/example-controls\"]]",
+    "moduleName": "dummy/templates/wizard.hbs",
     "isStrictMode": false
   });
 });
