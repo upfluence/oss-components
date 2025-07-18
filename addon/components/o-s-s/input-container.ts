@@ -15,6 +15,7 @@ interface OSSInputContainerArgs {
   hasError?: boolean;
   placeholder?: string;
   type?: string;
+  autocomplete?: 'on' | 'off';
   onChange?(value: string): void;
 }
 
@@ -41,6 +42,10 @@ export default class OSSInputContainer extends Component<OSSInputContainerArgs> 
 
   get type(): string {
     return this.args.type ?? 'text';
+  }
+
+  get autocomplete(): 'on' | 'off' {
+    return this.args.autocomplete ?? 'on';
   }
 
   @action

@@ -39,6 +39,7 @@
           @suffix={{this.unitIcon}}
           @placeholder={{this.currentRangeValue}}
           @disabled={{@disabled}}
+          @autocomplete={{this.sliderOptions.autocomplete}}
           {{on "input" this.onNumberInput}}
         />
       {{else}}
@@ -50,6 +51,7 @@
           max={{this.sliderOptions.max}}
           placeholder={{this.currentRangeValue}}
           disabled={{@disabled}}
+          autocomplete={{this.sliderOptions.autocomplete}}
           class="upf-input"
           {{on "input" this.onNumberInput}}
         />
