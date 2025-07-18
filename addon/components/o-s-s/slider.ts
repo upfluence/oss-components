@@ -6,6 +6,7 @@ import { isBlank } from '@ember/utils';
 
 interface SliderComponentArgs {
   value: string;
+  autocomplete?: 'on' | 'off';
   defaultValue?: string;
   displayInputValue?: boolean;
   unit?: 'percentage' | 'number';
@@ -25,7 +26,8 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
   sliderOptions = {
     min: this.args.min ?? 0,
     max: this.args.max ?? 100,
-    step: this.args.step ?? 1
+    step: this.args.step ?? 1,
+    autocomplete: this.args.autocomplete ?? 'on'
   };
 
   @tracked displayTooltip: boolean = false;

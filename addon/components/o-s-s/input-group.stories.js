@@ -1,6 +1,8 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
 
+const AutocompleteValues = ['on', 'off'];
+
 export default {
   title: 'Components/OSS::InputGroup',
   component: 'input-group',
@@ -75,6 +77,17 @@ export default {
       },
       control: { type: 'text' }
     },
+    autocomplete: {
+      description: 'The autocomplete attribute of the input',
+      table: {
+        type: {
+          summary: AutocompleteValues.join('|')
+        },
+        defaultValue: { summary: 'on' }
+      },
+      options: AutocompleteValues,
+      control: { type: 'select' }
+    },
     onChange: {
       description: 'Method called every time the input is updated',
       table: {
@@ -104,13 +117,14 @@ const defaultArgs = {
   suffix: '@domain.com',
   errorMessage: undefined,
   placeholder: 'My placeholder',
+  autocomplete: undefined,
   onChange: action('onChange')
 };
 
 const Template = (args) => ({
   template: hbs`
       <OSS::InputGroup @prefix={{this.prefix}} @disabled={{this.disabled}} @suffix={{this.suffix}} @type={{this.type}} @value={{this.value}}
-                       @errorMessage={{this.errorMessage}} @placeholder={{this.placeholder}} @onChange={{this.onChange}} />
+                       @errorMessage={{this.errorMessage}} @placeholder={{this.placeholder}} @onChange={{this.onChange}} @autocomplete={{this.autocomplete}} />
   `,
   context: args
 });

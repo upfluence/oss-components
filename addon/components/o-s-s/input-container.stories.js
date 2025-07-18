@@ -1,6 +1,8 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
 
+const AutocompleteValues = ['on', 'off'];
+
 export default {
   title: 'Components/OSS::InputContainer',
   component: 'input-container',
@@ -76,6 +78,17 @@ export default {
       },
       control: { type: 'boolean' }
     },
+    autocomplete: {
+      description: 'The autocomplete attribute of the input',
+      table: {
+        type: {
+          summary: AutocompleteValues.join('|')
+        },
+        defaultValue: { summary: 'on' }
+      },
+      options: AutocompleteValues,
+      control: { type: 'select' }
+    },
     onChange: {
       description: 'Method called every time the input is updated',
       table: {
@@ -101,13 +114,14 @@ const defaultArgs = {
   type: undefined,
   placeholder: 'this is the placeholder',
   errorMessage: undefined,
+  autocomplete: undefined,
   onChange: action('onChange')
 };
 
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
       <OSS::InputContainer @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}} @type={{this.type}}
-                           @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} />
+                           @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} @autocomplete={{this.autocomplete}} />
   `,
   context: args
 });

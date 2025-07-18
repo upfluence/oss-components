@@ -20,6 +20,7 @@
         @type={{this.type}}
         placeholder={{@placeholder}}
         disabled={{@disabled}}
+        autocomplete={{this.autocomplete}}
         class="upf-input"
         {{on "keyup" (fn this._onChange @value)}}
         {{on "paste" this.onPaste}}

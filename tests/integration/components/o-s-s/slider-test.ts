@@ -177,6 +177,20 @@ module('Integration | Component | o-s-s/slider', function (hooks) {
       );
       assert.dom('.oss-slider__number-input').doesNotExist();
     });
+
+    test('with no autocomplete arg, it is on by default', async function (assert) {
+      await render(
+        hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @onChange={{this.onChange}} />`
+      );
+      assert.dom('.oss-slider__number-input input').hasAttribute('autocomplete', 'on');
+    });
+
+    test('when autocomplete is off', async function (assert) {
+      await render(
+        hbs`<OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @onChange={{this.onChange}} @autocomplete="off" />`
+      );
+      assert.dom('.oss-slider__number-input input').hasAttribute('autocomplete', 'off');
+    });
   });
 
   module('Unit container', function () {

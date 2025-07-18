@@ -9,6 +9,7 @@ interface OSSInputGroupArgs {
   prefix?: string;
   suffix?: string;
   type?: string;
+  autocomplete?: 'on' | 'off';
   onChange?(value: string): void;
 }
 

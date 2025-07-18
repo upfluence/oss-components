@@ -1,6 +1,8 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
 
+const AutocompleteValues = ['on', 'off'];
+
 export default {
   title: 'Components/OSS::Slider',
   component: 'slider',
@@ -86,6 +88,17 @@ export default {
         defaultValue: { summary: 'undefined' }
       }
     },
+    autocomplete: {
+      description: 'The autocomplete attribute of the input',
+      table: {
+        type: {
+          summary: AutocompleteValues.join('|')
+        },
+        defaultValue: { summary: 'on' }
+      },
+      options: AutocompleteValues,
+      control: { type: 'select' }
+    },
     inputOptions: {
       description: 'Options min and max for the input field and slider',
       table: {
@@ -125,6 +138,7 @@ const defaultArgs = {
   unit: 'percentage',
   disabled: false,
   inputOptions: { min: 0, max: 100 },
+  autocomplete: undefined,
   onChange: action('onChange')
 };
 
@@ -140,6 +154,7 @@ const Template = (args) => ({
                  @unit={{this.unit}}
                  @disabled={{this.disabled}}
                  @inputOptions={{this.inputOptions}}
+                 @autocomplete={{this.autocomplete}}
                  @onChange={{this.onChange}}
     />
   `,
