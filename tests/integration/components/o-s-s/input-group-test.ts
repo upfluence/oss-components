@@ -27,7 +27,7 @@ module('Integration | Component | o-s-s/input-group', function (hooks) {
     assert.dom('.oss-input-group-row-suffix').hasText('@domain.com');
   });
 
-  test('Passing no @autocomplete parameter works', async function (assert) {
+  test('Not passing an @autocomplete parameter defaults to "on" state', async function (assert) {
     await render(hbs`<OSS::InputGroup @prefix="email" @suffix="@domain.com"/>`);
     assert.dom('.upf-input').hasAttribute('autocomplete', 'on');
   });

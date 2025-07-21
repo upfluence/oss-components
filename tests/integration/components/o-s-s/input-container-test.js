@@ -91,7 +91,7 @@ module('Integration | Component | o-s-s/input-container', function (hooks) {
       assert.ok(this.onChange.calledWith('clipboardFormat/Text'));
     });
 
-    test('Passing no @autocomplete parameter works', async function (assert) {
+    test('Not passing an @autocomplete parameter defaults to "on" state', async function (assert) {
       await renderComponentWithParameters();
       assert.dom('.upf-input').hasAttribute('autocomplete', 'on');
     });
