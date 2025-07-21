@@ -52,12 +52,14 @@ module('Integration | Component | o-s-s/input-container', function (hooks) {
       this.set('value', 'testValue');
       this.set('placeholder', 'Type your text');
       this.set('onValueChange', onValueChange);
+      this.set('autocomplete', undefined);
     });
     async function renderComponentWithParameters() {
       await render(hbs`
         <OSS::InputContainer @value={{this.value}}
                              @onChange={{this.onValueChange}}
-                             @placeholder={{this.placeholder}} />`);
+                             @placeholder={{this.placeholder}}
+                             @autocomplete={{this.autocomplete}} />`);
     }
 
     test('Passing a @value parameter works', async function (assert) {
@@ -87,6 +89,17 @@ module('Integration | Component | o-s-s/input-container', function (hooks) {
         clipboardData: { getData: (format) => `clipboardFormat/${format}` }
       });
       assert.ok(this.onChange.calledWith('clipboardFormat/Text'));
+    });
+
+    test('Not passing an @autocomplete parameter defaults to "on" state', async function (assert) {
+      await renderComponentWithParameters();
+      assert.dom('.upf-input').hasAttribute('autocomplete', 'on');
+    });
+
+    test('Passing a @autocomplete parameter works', async function (assert) {
+      this.autocomplete = 'off';
+      await renderComponentWithParameters();
+      assert.dom('.upf-input').hasAttribute('autocomplete', 'off');
     });
   });
 
