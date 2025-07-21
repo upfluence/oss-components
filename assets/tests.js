@@ -7298,6 +7298,7 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
         this.set('value', 'testValue');
         this.set('placeholder', 'Type your text');
         this.set('onValueChange', onValueChange);
+        this.set('autocomplete', undefined);
       });
       async function renderComponentWithParameters() {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -7305,11 +7306,12 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
           
                 <OSS::InputContainer @value={{this.value}}
                                      @onChange={{this.onValueChange}}
-                                     @placeholder={{this.placeholder}} />
+                                     @placeholder={{this.placeholder}}
+                                     @autocomplete={{this.autocomplete}} />
         */
         {
-          "id": "As0hJu+6",
-          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@value\",\"@onChange\",\"@placeholder\"],[[30,0,[\"value\"]],[30,0,[\"onValueChange\"]],[30,0,[\"placeholder\"]]]],null]],[],false,[\"o-s-s/input-container\"]]",
+          "id": "GLKeiy0u",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@value\",\"@onChange\",\"@placeholder\",\"@autocomplete\"],[[30,0,[\"value\"]],[30,0,[\"onValueChange\"]],[30,0,[\"placeholder\"]],[30,0,[\"autocomplete\"]]]],null]],[],false,[\"o-s-s/input-container\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-container-test.js",
           "isStrictMode": false
         }));
@@ -7348,6 +7350,15 @@ define("dummy/tests/integration/components/o-s-s/input-container-test", ["qunit"
           }
         });
         assert.ok(this.onChange.calledWith('clipboardFormat/Text'));
+      });
+      (0, _qunit.test)('Not passing an @autocomplete parameter defaults to "on" state', async function (assert) {
+        await renderComponentWithParameters();
+        assert.dom('.upf-input').hasAttribute('autocomplete', 'on');
+      });
+      (0, _qunit.test)('Passing a @autocomplete parameter works', async function (assert) {
+        this.autocomplete = 'off';
+        await renderComponentWithParameters();
+        assert.dom('.upf-input').hasAttribute('autocomplete', 'off');
       });
     });
     (0, _qunit.module)('feedback messages', () => {
@@ -7585,6 +7596,32 @@ define("dummy/tests/integration/components/o-s-s/input-group-test", ["qunit", "e
       }));
       assert.dom('.oss-input-group-row-prefix').hasText('email');
       assert.dom('.oss-input-group-row-suffix').hasText('@domain.com');
+    });
+    (0, _qunit.test)('Not passing an @autocomplete parameter defaults to "on" state', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::InputGroup @prefix="email" @suffix="@domain.com"/>
+      */
+      {
+        "id": "Kyro+fY3",
+        "block": "[[[8,[39,0],null,[[\"@prefix\",\"@suffix\"],[\"email\",\"@domain.com\"]],null]],[],false,[\"o-s-s/input-group\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-group-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-input').hasAttribute('autocomplete', 'on');
+    });
+    (0, _qunit.test)('Passing a @autocomplete parameter works', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::InputGroup @prefix="email" @suffix="@domain.com" @autocomplete="off"/>
+      */
+      {
+        "id": "BbLYBOIo",
+        "block": "[[[8,[39,0],null,[[\"@prefix\",\"@suffix\",\"@autocomplete\"],[\"email\",\"@domain.com\",\"off\"]],null]],[],false,[\"o-s-s/input-group\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/input-group-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-input').hasAttribute('autocomplete', 'off');
     });
     (0, _qunit.test)('Passing the @errorMessage parameter displays the error message', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -13003,6 +13040,32 @@ define("dummy/tests/integration/components/o-s-s/slider-test", ["qunit", "ember-
           "isStrictMode": false
         }));
         assert.dom('.oss-slider__number-input').doesNotExist();
+      });
+      (0, _qunit.test)('with no autocomplete arg, it is on by default', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @onChange={{this.onChange}} />
+        */
+        {
+          "id": "W7p+PbkJ",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"displayInputValue\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/slider\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/slider-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-slider__number-input input').hasAttribute('autocomplete', 'on');
+      });
+      (0, _qunit.test)('when autocomplete is off', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Slider @value={{this.value}} @displayInputValue={{this.displayInputValue}} @onChange={{this.onChange}} @autocomplete="off" />
+        */
+        {
+          "id": "mwawhFJi",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@displayInputValue\",\"@onChange\",\"@autocomplete\"],[[30,0,[\"value\"]],[30,0,[\"displayInputValue\"]],[30,0,[\"onChange\"]],\"off\"]],null]],[],false,[\"o-s-s/slider\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/slider-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-slider__number-input input').hasAttribute('autocomplete', 'off');
       });
     });
     (0, _qunit.module)('Unit container', function () {

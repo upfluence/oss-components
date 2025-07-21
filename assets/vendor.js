@@ -89662,7 +89662,7 @@ interface OSSCodeBlockArgs {
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = void 0;
+  _exports.default = _exports.AutocompleteValues = void 0;
   var _class;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@ember/runloop",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
@@ -89690,6 +89690,7 @@ interface OSSCodeBlockArgs {
           @type={{this.type}}
           placeholder={{@placeholder}}
           disabled={{@disabled}}
+          autocomplete={{this.autocomplete}}
           class="upf-input"
           {{on "keyup" (fn this._onChange @value)}}
           {{on "paste" this.onPaste}}
@@ -89713,11 +89714,12 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "qjYX/ytQ",
-    "block": "[[[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-input-container\\n      \",[30,0,[\"containerClass\"]],\"\\n      \",[52,[48,[30,6]],\" has-prefix\"],\"\\n      \",[52,[48,[30,7]],\" has-suffix\"]]]],[17,1],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"      \"],[10,0],[14,0,\"prefix\"],[12],[18,6,null],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"      \"],[10,0],[14,0,\"yielded-input\"],[12],[1,\"\\n        \"],[18,8,null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,3],[[16,\"placeholder\",[30,2]],[16,\"disabled\",[30,3]],[24,0,\"upf-input\"],[4,[38,4],[\"keyup\",[28,[37,5],[[30,0,[\"_onChange\"]],[30,4]],null]],null],[4,[38,4],[\"paste\",[30,0,[\"onPaste\"]]],null]],[[\"@value\",\"@type\"],[[30,4],[30,0,[\"type\"]]]],null],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"      \"],[10,0],[14,0,\"suffix\"],[12],[18,7,null],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,5],[[[1,\"    \"],[10,1],[14,0,\"text-color-error margin-top-px-6\"],[12],[1,[30,5]],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"feedbackMessage\"]],[[[1,\"    \"],[10,1],[15,0,[28,[37,6],[\"margin-top-px-6 font-color-\",[30,0,[\"feedbackMessage\",\"type\"]],\"-500\"],null]],[12],[1,\"\\n\"],[41,[51,[28,[37,8],[[30,0,[\"feedbackMessage\",\"type\"]],\"error\"],null]],[[[1,\"        \"],[8,[39,9],null,[[\"@icon\"],[[30,0,[\"messageIcon\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[12],[1,[30,0,[\"feedbackMessage\",\"value\"]]],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],null]],[]]],[13]],[\"&attrs\",\"@placeholder\",\"@disabled\",\"@value\",\"@errorMessage\",\"&prefix\",\"&suffix\",\"&input\"],false,[\"if\",\"has-block\",\"yield\",\"input\",\"on\",\"fn\",\"concat\",\"unless\",\"eq\",\"o-s-s/icon\"]]",
+    "id": "cmcyL9QB",
+    "block": "[[[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-input-container\\n      \",[30,0,[\"containerClass\"]],\"\\n      \",[52,[48,[30,6]],\" has-prefix\"],\"\\n      \",[52,[48,[30,7]],\" has-suffix\"]]]],[17,1],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"      \"],[10,0],[14,0,\"prefix\"],[12],[18,6,null],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"      \"],[10,0],[14,0,\"yielded-input\"],[12],[1,\"\\n        \"],[18,8,null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,3],[[16,\"placeholder\",[30,2]],[16,\"disabled\",[30,3]],[16,\"autocomplete\",[30,0,[\"autocomplete\"]]],[24,0,\"upf-input\"],[4,[38,4],[\"keyup\",[28,[37,5],[[30,0,[\"_onChange\"]],[30,4]],null]],null],[4,[38,4],[\"paste\",[30,0,[\"onPaste\"]]],null]],[[\"@value\",\"@type\"],[[30,4],[30,0,[\"type\"]]]],null],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"      \"],[10,0],[14,0,\"suffix\"],[12],[18,7,null],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,5],[[[1,\"    \"],[10,1],[14,0,\"text-color-error margin-top-px-6\"],[12],[1,[30,5]],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"feedbackMessage\"]],[[[1,\"    \"],[10,1],[15,0,[28,[37,6],[\"margin-top-px-6 font-color-\",[30,0,[\"feedbackMessage\",\"type\"]],\"-500\"],null]],[12],[1,\"\\n\"],[41,[51,[28,[37,8],[[30,0,[\"feedbackMessage\",\"type\"]],\"error\"],null]],[[[1,\"        \"],[8,[39,9],null,[[\"@icon\"],[[30,0,[\"messageIcon\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[12],[1,[30,0,[\"feedbackMessage\",\"value\"]]],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],null]],[]]],[13]],[\"&attrs\",\"@placeholder\",\"@disabled\",\"@value\",\"@errorMessage\",\"&prefix\",\"&suffix\",\"&input\"],false,[\"if\",\"has-block\",\"yield\",\"input\",\"on\",\"fn\",\"concat\",\"unless\",\"eq\",\"o-s-s/icon\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/input-container.hbs",
     "isStrictMode": false
   });
+  const AutocompleteValues = _exports.AutocompleteValues = ['on', 'off'];
   let OSSInputContainer = _exports.default = (_class = class OSSInputContainer extends _component2.default {
     get feedbackMessage() {
       if (this.args.feedbackMessage && ['error', 'warning', 'success'].includes(this.args.feedbackMessage.type)) {
@@ -89737,6 +89739,9 @@ interface OSSCodeBlockArgs {
     }
     get type() {
       return this.args.type ?? 'text';
+    }
+    get autocomplete() {
+      return AutocompleteValues.includes(this.args.autocomplete ?? '') ? this.args.autocomplete : 'on';
     }
     _onChange(value) {
       if (this.args.onChange) {
@@ -89763,6 +89768,7 @@ interface OSSCodeBlockArgs {
   });
   _exports.default = _exports.BasicUsage = _exports.AdvancedWithNamedBlocks = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
+  const AutocompleteValues = ['on', 'off'];
   var _default = _exports.default = {
     title: 'Components/OSS::InputContainer',
     component: 'input-container',
@@ -89865,6 +89871,21 @@ interface OSSCodeBlockArgs {
           type: 'boolean'
         }
       },
+      autocomplete: {
+        description: 'The autocomplete attribute of the input',
+        table: {
+          type: {
+            summary: AutocompleteValues.join('|')
+          },
+          defaultValue: {
+            summary: 'on'
+          }
+        },
+        options: AutocompleteValues,
+        control: {
+          type: 'select'
+        }
+      },
       onChange: {
         description: 'Method called every time the input is updated',
         table: {
@@ -89889,6 +89910,7 @@ interface OSSCodeBlockArgs {
     type: undefined,
     placeholder: 'this is the placeholder',
     errorMessage: undefined,
+    autocomplete: undefined,
     onChange: (0, _addonActions.action)('onChange')
   };
   const DefaultUsageTemplate = args => ({
@@ -89896,12 +89918,12 @@ interface OSSCodeBlockArgs {
     /*
       
           <OSS::InputContainer @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}} @type={{this.type}}
-                               @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} />
+                               @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} @autocomplete={{this.autocomplete}} />
       
     */
     {
-      "id": "vQ0NyWK5",
-      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@value\",\"@disabled\",\"@placeholder\",\"@type\",\"@errorMessage\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"disabled\"]],[30,0,[\"placeholder\"]],[30,0,[\"type\"]],[30,0,[\"errorMessage\"]],[30,0,[\"onChange\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/input-container\"]]",
+      "id": "L7pKgSON",
+      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@value\",\"@disabled\",\"@placeholder\",\"@type\",\"@errorMessage\",\"@onChange\",\"@autocomplete\"],[[30,0,[\"value\"]],[30,0,[\"disabled\"]],[30,0,[\"placeholder\"]],[30,0,[\"type\"]],[30,0,[\"errorMessage\"]],[30,0,[\"onChange\"]],[30,0,[\"autocomplete\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/input-container\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/input-container.stories.js",
       "isStrictMode": false
     }),
@@ -89971,6 +89993,7 @@ interface OSSCodeBlockArgs {
           @type={{this.type}}
           @placeholder={{@placeholder}}
           @onChange={{@onChange}}
+          @autocomplete={{@autocomplete}}
           class="{{if @prefix 'prefix-radius-fix'}} {{if @suffix 'suffix-radius-fix'}}"
         />
       </div>
@@ -89984,8 +90007,8 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "sgz24B8g",
-    "block": "[[[11,0],[24,0,\"oss-input-group fx-1\"],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"fx-1 fx-row fx-xalign-center oss-input-group-row\\n      \",[52,[30,2],\"disabled\"],\"\\n      \",[52,[30,3],\"oss-input-group-row--error\"]]]],[12],[1,\"\\n\"],[41,[30,4],[[[1,\"      \"],[10,0],[14,0,\"oss-input-group-row-prefix\"],[12],[1,[30,4]],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n      \"],[8,[39,1],[[16,0,[29,[[52,[30,4],\"prefix-radius-fix\"],\" \",[52,[30,5],\"suffix-radius-fix\"]]]]],[[\"@value\",\"@disabled\",\"@type\",\"@placeholder\",\"@onChange\"],[[30,6],[30,2],[30,0,[\"type\"]],[30,7],[30,8]]],null],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[30,5],[[[1,\"      \"],[10,0],[14,0,\"oss-input-group-row-suffix\"],[12],[1,[30,5]],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,1],[14,0,\"text-color-error margin-top-xxx-sm\"],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@disabled\",\"@errorMessage\",\"@prefix\",\"@suffix\",\"@value\",\"@placeholder\",\"@onChange\"],false,[\"if\",\"o-s-s/input-container\"]]",
+    "id": "uhEnLwrz",
+    "block": "[[[11,0],[24,0,\"oss-input-group fx-1\"],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"fx-1 fx-row fx-xalign-center oss-input-group-row\\n      \",[52,[30,2],\"disabled\"],\"\\n      \",[52,[30,3],\"oss-input-group-row--error\"]]]],[12],[1,\"\\n\"],[41,[30,4],[[[1,\"      \"],[10,0],[14,0,\"oss-input-group-row-prefix\"],[12],[1,[30,4]],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[10,0],[14,0,\"fx-1\"],[12],[1,\"\\n      \"],[8,[39,1],[[16,0,[29,[[52,[30,4],\"prefix-radius-fix\"],\" \",[52,[30,5],\"suffix-radius-fix\"]]]]],[[\"@value\",\"@disabled\",\"@type\",\"@placeholder\",\"@onChange\",\"@autocomplete\"],[[30,6],[30,2],[30,0,[\"type\"]],[30,7],[30,8],[30,9]]],null],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[30,5],[[[1,\"      \"],[10,0],[14,0,\"oss-input-group-row-suffix\"],[12],[1,[30,5]],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,1],[14,0,\"text-color-error margin-top-xxx-sm\"],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@disabled\",\"@errorMessage\",\"@prefix\",\"@suffix\",\"@value\",\"@placeholder\",\"@onChange\",\"@autocomplete\"],false,[\"if\",\"o-s-s/input-container\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/input-group.hbs",
     "isStrictMode": false
   });
@@ -90009,6 +90032,7 @@ interface OSSCodeBlockArgs {
   });
   _exports.default = _exports.BasicUsage = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
+  const AutocompleteValues = ['on', 'off'];
   var _default = _exports.default = {
     title: 'Components/OSS::InputGroup',
     component: 'input-group',
@@ -90111,6 +90135,21 @@ interface OSSCodeBlockArgs {
           type: 'text'
         }
       },
+      autocomplete: {
+        description: 'The autocomplete attribute of the input',
+        table: {
+          type: {
+            summary: AutocompleteValues.join('|')
+          },
+          defaultValue: {
+            summary: 'on'
+          }
+        },
+        options: AutocompleteValues,
+        control: {
+          type: 'select'
+        }
+      },
       onChange: {
         description: 'Method called every time the input is updated',
         table: {
@@ -90140,6 +90179,7 @@ interface OSSCodeBlockArgs {
     suffix: '@domain.com',
     errorMessage: undefined,
     placeholder: 'My placeholder',
+    autocomplete: undefined,
     onChange: (0, _addonActions.action)('onChange')
   };
   const Template = args => ({
@@ -90147,12 +90187,12 @@ interface OSSCodeBlockArgs {
     /*
       
           <OSS::InputGroup @prefix={{this.prefix}} @disabled={{this.disabled}} @suffix={{this.suffix}} @type={{this.type}} @value={{this.value}}
-                           @errorMessage={{this.errorMessage}} @placeholder={{this.placeholder}} @onChange={{this.onChange}} />
+                           @errorMessage={{this.errorMessage}} @placeholder={{this.placeholder}} @onChange={{this.onChange}} @autocomplete={{this.autocomplete}} />
       
     */
     {
-      "id": "mrYafALh",
-      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@prefix\",\"@disabled\",\"@suffix\",\"@type\",\"@value\",\"@errorMessage\",\"@placeholder\",\"@onChange\"],[[30,0,[\"prefix\"]],[30,0,[\"disabled\"]],[30,0,[\"suffix\"]],[30,0,[\"type\"]],[30,0,[\"value\"]],[30,0,[\"errorMessage\"]],[30,0,[\"placeholder\"]],[30,0,[\"onChange\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/input-group\"]]",
+      "id": "VdHZcgoM",
+      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@prefix\",\"@disabled\",\"@suffix\",\"@type\",\"@value\",\"@errorMessage\",\"@placeholder\",\"@onChange\",\"@autocomplete\"],[[30,0,[\"prefix\"]],[30,0,[\"disabled\"]],[30,0,[\"suffix\"]],[30,0,[\"type\"]],[30,0,[\"value\"]],[30,0,[\"errorMessage\"]],[30,0,[\"placeholder\"]],[30,0,[\"onChange\"]],[30,0,[\"autocomplete\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/input-group\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/input-group.stories.js",
       "isStrictMode": false
     }),
@@ -95495,7 +95535,7 @@ interface OSSCodeBlockArgs {
   const Default = _exports.Default = Template.bind({});
   Default.args = defaultArgs;
 });
-;define("@upfluence/oss-components/components/o-s-s/slider", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@glimmer/tracking", "@ember/template", "@ember/utils", "@ember/template-factory"], function (_exports, _component, _component2, _object, _tracking, _template, _utils, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/slider", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@glimmer/tracking", "@ember/template", "@ember/utils", "@upfluence/oss-components/components/o-s-s/input-container", "@ember/template-factory"], function (_exports, _component, _component2, _object, _tracking, _template, _utils, _inputContainer, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -95503,7 +95543,7 @@ interface OSSCodeBlockArgs {
   });
   _exports.default = void 0;
   var _class, _descriptor, _descriptor2, _descriptor3;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/object",0,"@glimmer/tracking",0,"@ember/template",0,"@ember/utils",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/object",0,"@glimmer/tracking",0,"@ember/template",0,"@ember/utils",0,"@upfluence/oss-components/components/o-s-s/input-container",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
@@ -95553,6 +95593,7 @@ interface OSSCodeBlockArgs {
             @suffix={{this.unitIcon}}
             @placeholder={{this.currentRangeValue}}
             @disabled={{@disabled}}
+            @autocomplete={{this.sliderOptions.autocomplete}}
             {{on "input" this.onNumberInput}}
           />
         {{else}}
@@ -95564,6 +95605,7 @@ interface OSSCodeBlockArgs {
             max={{this.sliderOptions.max}}
             placeholder={{this.currentRangeValue}}
             disabled={{@disabled}}
+            autocomplete={{this.sliderOptions.autocomplete}}
             class="upf-input"
             {{on "input" this.onNumberInput}}
           />
@@ -95573,8 +95615,8 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "KiL2NzNE",
-    "block": "[[[11,0],[16,0,[29,[\"oss-slider__container \",[52,[30,1],\"oss-slider__container--disabled\"]]]],[17,2],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-slider__range-container\"],[12],[1,\"\\n    \"],[11,\"input\"],[24,0,\"oss-slider__range\"],[16,\"min\",[30,0,[\"sliderOptions\",\"min\"]]],[16,\"max\",[30,0,[\"sliderOptions\",\"max\"]]],[16,2,[30,0,[\"currentRangeValue\"]]],[16,\"step\",[30,0,[\"sliderOptions\",\"step\"]]],[16,\"disabled\",[30,1]],[16,5,[30,0,[\"activeBackgroundWidth\"]]],[24,4,\"range\"],[4,[38,1],[\"input\",[30,0,[\"onRangeChange\"]]],null],[4,[38,1],[\"mouseenter\",[30,0,[\"showTooltip\"]]],null],[4,[38,1],[\"mouseleave\",[30,0,[\"removeTooltip\"]]],null],[4,[38,2],[[30,0,[\"initializeSliderInput\"]]],null],[12],[13],[1,\"\\n    \"],[11,0],[16,0,[29,[\"upf-tooltip oss-slider__tooltip\\n        \",[52,[51,[30,0,[\"displayTooltip\"]]],\"oss-slider__tooltip--hidden\"],\"\\n        \",[52,[28,[37,4],[[30,3],false],null],\"oss-slider__tooltip__without_input\"]]]],[16,5,[30,0,[\"tooltipPositionStyle\"]]],[4,[38,2],[[30,0,[\"initializeTooltip\"]]],null],[12],[1,\"\\n      \"],[10,1],[12],[1,\"\\n\"],[41,[30,4],[[[1,\"          \"],[1,[30,4]],[1,\"\\n\"]],[]],[[[1,\"          \"],[1,[28,[35,5],[[30,0,[\"currentRangeValue\"]],[52,[28,[37,4],[[30,5],\"percentage\"],null],\"%\"]],null]],[1,\"\\n\"]],[]]],[1,\"      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,0],[14,0,\"oss-slider__number-input\"],[12],[1,\"\\n\"],[41,[30,5],[[[1,\"        \"],[8,[39,6],[[4,[38,1],[\"input\",[30,0,[\"onNumberInput\"]]],null]],[[\"@value\",\"@type\",\"@suffix\",\"@placeholder\",\"@disabled\"],[[30,6],\"number\",[30,0,[\"unitIcon\"]],[30,0,[\"currentRangeValue\"]],[30,1]]],null],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,7],[[16,\"step\",[30,0,[\"sliderOptions\",\"step\"]]],[16,\"min\",[30,0,[\"sliderOptions\",\"min\"]]],[16,\"max\",[30,0,[\"sliderOptions\",\"max\"]]],[16,\"placeholder\",[30,0,[\"currentRangeValue\"]]],[16,\"disabled\",[30,1]],[24,0,\"upf-input\"],[4,[38,1],[\"input\",[30,0,[\"onNumberInput\"]]],null]],[[\"@type\",\"@value\"],[\"number\",[30,6]]],null],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"@disabled\",\"&attrs\",\"@displayInputValue\",\"@tooltipLabel\",\"@unit\",\"@value\"],false,[\"if\",\"on\",\"did-insert\",\"unless\",\"eq\",\"concat\",\"o-s-s/input-group\",\"input\"]]",
+    "id": "vLFIRxD3",
+    "block": "[[[11,0],[16,0,[29,[\"oss-slider__container \",[52,[30,1],\"oss-slider__container--disabled\"]]]],[17,2],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-slider__range-container\"],[12],[1,\"\\n    \"],[11,\"input\"],[24,0,\"oss-slider__range\"],[16,\"min\",[30,0,[\"sliderOptions\",\"min\"]]],[16,\"max\",[30,0,[\"sliderOptions\",\"max\"]]],[16,2,[30,0,[\"currentRangeValue\"]]],[16,\"step\",[30,0,[\"sliderOptions\",\"step\"]]],[16,\"disabled\",[30,1]],[16,5,[30,0,[\"activeBackgroundWidth\"]]],[24,4,\"range\"],[4,[38,1],[\"input\",[30,0,[\"onRangeChange\"]]],null],[4,[38,1],[\"mouseenter\",[30,0,[\"showTooltip\"]]],null],[4,[38,1],[\"mouseleave\",[30,0,[\"removeTooltip\"]]],null],[4,[38,2],[[30,0,[\"initializeSliderInput\"]]],null],[12],[13],[1,\"\\n    \"],[11,0],[16,0,[29,[\"upf-tooltip oss-slider__tooltip\\n        \",[52,[51,[30,0,[\"displayTooltip\"]]],\"oss-slider__tooltip--hidden\"],\"\\n        \",[52,[28,[37,4],[[30,3],false],null],\"oss-slider__tooltip__without_input\"]]]],[16,5,[30,0,[\"tooltipPositionStyle\"]]],[4,[38,2],[[30,0,[\"initializeTooltip\"]]],null],[12],[1,\"\\n      \"],[10,1],[12],[1,\"\\n\"],[41,[30,4],[[[1,\"          \"],[1,[30,4]],[1,\"\\n\"]],[]],[[[1,\"          \"],[1,[28,[35,5],[[30,0,[\"currentRangeValue\"]],[52,[28,[37,4],[[30,5],\"percentage\"],null],\"%\"]],null]],[1,\"\\n\"]],[]]],[1,\"      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,0],[14,0,\"oss-slider__number-input\"],[12],[1,\"\\n\"],[41,[30,5],[[[1,\"        \"],[8,[39,6],[[4,[38,1],[\"input\",[30,0,[\"onNumberInput\"]]],null]],[[\"@value\",\"@type\",\"@suffix\",\"@placeholder\",\"@disabled\",\"@autocomplete\"],[[30,6],\"number\",[30,0,[\"unitIcon\"]],[30,0,[\"currentRangeValue\"]],[30,1],[30,0,[\"sliderOptions\",\"autocomplete\"]]]],null],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,7],[[16,\"step\",[30,0,[\"sliderOptions\",\"step\"]]],[16,\"min\",[30,0,[\"sliderOptions\",\"min\"]]],[16,\"max\",[30,0,[\"sliderOptions\",\"max\"]]],[16,\"placeholder\",[30,0,[\"currentRangeValue\"]]],[16,\"disabled\",[30,1]],[16,\"autocomplete\",[30,0,[\"sliderOptions\",\"autocomplete\"]]],[24,0,\"upf-input\"],[4,[38,1],[\"input\",[30,0,[\"onNumberInput\"]]],null]],[[\"@type\",\"@value\"],[\"number\",[30,6]]],null],[1,\"\\n\"]],[]]],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"@disabled\",\"&attrs\",\"@displayInputValue\",\"@tooltipLabel\",\"@unit\",\"@value\"],false,[\"if\",\"on\",\"did-insert\",\"unless\",\"eq\",\"concat\",\"o-s-s/input-group\",\"input\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/slider.hbs",
     "isStrictMode": false
   });
@@ -95586,7 +95628,8 @@ interface OSSCodeBlockArgs {
       _defineProperty(this, "sliderOptions", {
         min: this.args.min ?? 0,
         max: this.args.max ?? 100,
-        step: this.args.step ?? 1
+        step: this.args.step ?? 1,
+        autocomplete: _inputContainer.AutocompleteValues.includes(this.args.autocomplete ?? '') ? this.args.autocomplete : 'on'
       });
       _initializerDefineProperty(this, "displayTooltip", _descriptor, this);
       _initializerDefineProperty(this, "inputRangeElement", _descriptor2, this);
@@ -95702,6 +95745,7 @@ interface OSSCodeBlockArgs {
   });
   _exports.default = _exports.Default = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
+  const AutocompleteValues = ['on', 'off'];
   var _default = _exports.default = {
     title: 'Components/OSS::Slider',
     component: 'slider',
@@ -95825,6 +95869,21 @@ interface OSSCodeBlockArgs {
           }
         }
       },
+      autocomplete: {
+        description: 'The autocomplete attribute of the input',
+        table: {
+          type: {
+            summary: AutocompleteValues.join('|')
+          },
+          defaultValue: {
+            summary: 'on'
+          }
+        },
+        options: AutocompleteValues,
+        control: {
+          type: 'select'
+        }
+      },
       inputOptions: {
         description: 'Options min and max for the input field and slider',
         table: {
@@ -95874,6 +95933,7 @@ interface OSSCodeBlockArgs {
       min: 0,
       max: 100
     },
+    autocomplete: undefined,
     onChange: (0, _addonActions.action)('onChange')
   };
   const Template = args => ({
@@ -95890,13 +95950,14 @@ interface OSSCodeBlockArgs {
                      @unit={{this.unit}}
                      @disabled={{this.disabled}}
                      @inputOptions={{this.inputOptions}}
+                     @autocomplete={{this.autocomplete}}
                      @onChange={{this.onChange}}
         />
       
     */
     {
-      "id": "gQ5HxwYT",
-      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@value\",\"@min\",\"@max\",\"@step\",\"@tooltipLabel\",\"@defaultValue\",\"@displayInputValue\",\"@unit\",\"@disabled\",\"@inputOptions\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"min\"]],[30,0,[\"max\"]],[30,0,[\"step\"]],[30,0,[\"tooltipLabel\"]],[30,0,[\"defaultValue\"]],[30,0,[\"displayInputValue\"]],[30,0,[\"unit\"]],[30,0,[\"disabled\"]],[30,0,[\"inputOptions\"]],[30,0,[\"onChange\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/slider\"]]",
+      "id": "+T5Z2fIY",
+      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@value\",\"@min\",\"@max\",\"@step\",\"@tooltipLabel\",\"@defaultValue\",\"@displayInputValue\",\"@unit\",\"@disabled\",\"@inputOptions\",\"@autocomplete\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"min\"]],[30,0,[\"max\"]],[30,0,[\"step\"]],[30,0,[\"tooltipLabel\"]],[30,0,[\"defaultValue\"]],[30,0,[\"displayInputValue\"]],[30,0,[\"unit\"]],[30,0,[\"disabled\"]],[30,0,[\"inputOptions\"]],[30,0,[\"autocomplete\"]],[30,0,[\"onChange\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/slider\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/slider.stories.js",
       "isStrictMode": false
     }),
