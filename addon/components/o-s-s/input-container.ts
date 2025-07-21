@@ -19,6 +19,8 @@ interface OSSInputContainerArgs {
   onChange?(value: string): void;
 }
 
+export const AutocompleteValues = ['on', 'off'];
+
 export default class OSSInputContainer extends Component<OSSInputContainerArgs> {
   get feedbackMessage(): FeedbackMessage | undefined {
     if (this.args.feedbackMessage && ['error', 'warning', 'success'].includes(this.args.feedbackMessage.type)) {
@@ -45,7 +47,10 @@ export default class OSSInputContainer extends Component<OSSInputContainerArgs> 
   }
 
   get autocomplete(): 'on' | 'off' {
-    return this.args.autocomplete ?? 'on';
+    if (!this.args.autocomplete) {
+      return 'on';
+    }
+    return AutocompleteValues.includes(this.args.autocomplete) ? this.args.autocomplete : 'on';
   }
 
   @action

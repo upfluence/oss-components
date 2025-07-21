@@ -3,6 +3,7 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { htmlSafe } from '@ember/template';
 import { isBlank } from '@ember/utils';
+import { AutocompleteValues } from './input-container';
 
 interface SliderComponentArgs {
   value: string;
@@ -27,7 +28,8 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
     min: this.args.min ?? 0,
     max: this.args.max ?? 100,
     step: this.args.step ?? 1,
-    autocomplete: this.args.autocomplete ?? 'on'
+    autocomplete:
+      this.args.autocomplete && AutocompleteValues.includes(this.args.autocomplete) ? this.args.autocomplete : 'on'
   };
 
   @tracked displayTooltip: boolean = false;
