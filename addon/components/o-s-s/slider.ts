@@ -28,8 +28,7 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
     min: this.args.min ?? 0,
     max: this.args.max ?? 100,
     step: this.args.step ?? 1,
-    autocomplete:
-      this.args.autocomplete && AutocompleteValues.includes(this.args.autocomplete) ? this.args.autocomplete : 'on'
+    autocomplete: AutocompleteValues.includes(this.args.autocomplete ?? '') ? this.args.autocomplete! : 'on'
   };
 
   @tracked displayTooltip: boolean = false;

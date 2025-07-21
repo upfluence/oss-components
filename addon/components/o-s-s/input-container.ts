@@ -47,10 +47,7 @@ export default class OSSInputContainer extends Component<OSSInputContainerArgs> 
   }
 
   get autocomplete(): 'on' | 'off' {
-    if (!this.args.autocomplete) {
-      return 'on';
-    }
-    return AutocompleteValues.includes(this.args.autocomplete) ? this.args.autocomplete : 'on';
+    return AutocompleteValues.includes(this.args.autocomplete ?? '') ? this.args.autocomplete! : 'on';
   }
 
   @action
