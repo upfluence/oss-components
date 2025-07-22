@@ -448,6 +448,30 @@
     class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
   >
     <div class="font-size-md font-weight-semibold">
+      Completion badge
+    </div>
+    <div class="fx-row fx-gap-px-12 fx-xalign-center">
+      <OSS::CompletionBadge @icon="fas fa-box-open" @size="lg" />
+      <OSS::CompletionBadge @progress="27" @icon="fas fa-box-open" @size="lg" />
+      <OSS::CompletionBadge @progress="50" @size="md" @icon="fas fa-box-open" />
+      <OSS::CompletionBadge @progress="76" @size="sm" @icon="fas fa-box-open" />
+    </div>
+    <div class="fx-row fx-gap-px-12 fx-xalign-center">
+      <OSS::CompletionBadge @progress="100" @text="2x" />
+      <OSS::CompletionBadge
+        @progress={{this.dynamicProgress}}
+        @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
+        {{did-insert this.increaseProgress}}
+      />
+      <OSS::CompletionBadge @icon="fas fa-box-open" @skin="xtd-orange" />
+      <OSS::CompletionBadge @progress="66" @icon="fas fa-box-open" @skin="xtd-orange" @plain={{true}} />
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
       Icon
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-center">

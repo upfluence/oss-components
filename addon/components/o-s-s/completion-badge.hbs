@@ -1,0 +1,16 @@
+<div
+  class="upf-completion-badge-wrapper"
+  {{did-insert this.animateProgress}}
+  {{did-update this.animateProgress @progress}}
+>
+  <div class="upf-completion-badge-ring" style={{this.progressRingStyle}}></div>
+  <div class={{this.computedClass}} ...attributes>
+    {{#if @icon}}
+      <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
+    {{else if @image}}
+      <img src={{@image}} alt={{t "oss-components.badge.image_alt"}} />
+    {{else}}
+      <span class="upf-badge__text">{{@text}}</span>
+    {{/if}}
+  </div>
+</div>
