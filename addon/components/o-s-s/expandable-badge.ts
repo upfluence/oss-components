@@ -33,30 +33,6 @@ export default class OSSExpandableBadgeComponent extends OSSBadge<OSSExpandableB
     return this.args.flag!.toUpperCase();
   }
 
-  override get sizeClass(): string {
-    const size: SizeType = this.args.size || 'md';
-
-    assert(
-      `[component][OSS::ExpandableBadge] Unknown size. Available sizes are: ${Object.keys(SizeDefinition).join(', ')}`,
-      Object.keys(SizeDefinition).includes(size as SizeType)
-    );
-
-    return SizeDefinition[size as SizeType];
-  }
-
-  override get skinClass(): string {
-    const skin: SkinType | undefined = this.args?.skin;
-
-    if (!skin) return '';
-
-    assert(
-      `[component][OSS::ExpandableBadge] Unknown skin. Available skins are: ${Object.keys(SkinDefinition).join(', ')}`,
-      Object.keys(SkinDefinition).includes(skin as SkinType)
-    );
-
-    return SkinDefinition[skin as SkinType];
-  }
-
   override get computedClass(): string {
     const classes = ['upf-badge', 'upf-expandable-badge'];
 
@@ -73,6 +49,30 @@ export default class OSSExpandableBadgeComponent extends OSSBadge<OSSExpandableB
     }
 
     return classes.join(' ');
+  }
+
+  protected override get sizeClass(): string {
+    const size: SizeType = this.args.size || 'md';
+
+    assert(
+      `[component][OSS::ExpandableBadge] Unknown size. Available sizes are: ${Object.keys(SizeDefinition).join(', ')}`,
+      Object.keys(SizeDefinition).includes(size as SizeType)
+    );
+
+    return SizeDefinition[size as SizeType];
+  }
+
+  protected override get skinClass(): string {
+    const skin: SkinType | undefined = this.args?.skin;
+
+    if (!skin) return '';
+
+    assert(
+      `[component][OSS::ExpandableBadge] Unknown skin. Available skins are: ${Object.keys(SkinDefinition).join(', ')}`,
+      Object.keys(SkinDefinition).includes(skin as SkinType)
+    );
+
+    return SkinDefinition[skin as SkinType];
   }
 
   @action
