@@ -55,9 +55,7 @@ module('Integration | Component | o-s-s/completion-badge', function (hooks) {
   module('progress', function () {
     test('it renders only the background border when @progress is undefined', async function (assert) {
       await render(hbs`<OSS::CompletionBadge @icon="fas fa-check" />`);
-
       const rgbValues = getCSSVarValuesInRGB();
-      console.log('RGB Values:', rgbValues);
 
       assert.dom('.upf-completion-badge-ring').hasStyle({
         backgroundImage: `conic-gradient(${rgbValues.progressColor} 0deg, ${rgbValues.progressColor} 0deg, ${rgbValues.backgroundColor} 0deg, ${rgbValues.backgroundColor} 360deg)`

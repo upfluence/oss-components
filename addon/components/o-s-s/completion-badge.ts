@@ -2,7 +2,6 @@ import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { htmlSafe } from '@ember/template';
-import type { SafeString } from '@ember/template/-private/handlebars';
 import { isTesting } from '@embroider/macros';
 
 import type { OSSBadgeArgs, SizeType, SkinType } from './badge';
@@ -32,7 +31,7 @@ export default class OSSCompletionBadgeComponent extends OSSBadge<OSSCompletionB
     );
   }
 
-  get progressRingStyle(): SafeString {
+  get progressRingStyle(): ReturnType<typeof htmlSafe> {
     const progress = this.animatedProgress;
     const angle = (progress / 100) * 360;
     if (progress >= 100) {
