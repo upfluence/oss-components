@@ -2411,7 +2411,7 @@ define("dummy/tests/integration/components/o-s-s/badge-test", ["qunit", "ember-q
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _testSupport.setupIntl)(hooks);
     (0, _qunit.module)('sizes', function () {
-      (0, _qunit.test)('it sets the right class when usng a supported size', async function (assert) {
+      (0, _qunit.test)('it sets the right class when using a supported size', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::Badge @size="lg" @text="2x" />
@@ -4415,6 +4415,361 @@ export default class OSSCodeBlock extends Component<OSSCodeBlockArgs> {
     this.componentHeight = this.componentHeight * 2;
   }
 }`;
+});
+define("dummy/tests/integration/components/o-s-s/completion-badge-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@upfluence/oss-components/components/o-s-s/badge", "ember-intl/test-support", "@upfluence/oss-components/components/o-s-s/completion-badge", "@ember/object", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _badge, _testSupport, _completionBadge, _object, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"@upfluence/oss-components/components/o-s-s/badge",0,"ember-intl/test-support",0,"@upfluence/oss-components/components/o-s-s/completion-badge",0,"@ember/object"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/completion-badge', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _testSupport.setupIntl)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::CompletionBadge @icon="fas fa-check" />
+      */
+      {
+        "id": "VBWq+TcS",
+        "block": "[[[8,[39,0],null,[[\"@icon\"],[\"fas fa-check\"]],null]],[],false,[\"o-s-s/completion-badge\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-completion-badge-wrapper').exists();
+    });
+    function hexToRgb(hex) {
+      const bigint = parseInt(hex.slice(1), 16);
+      const r = bigint >> 16 & 255;
+      const g = bigint >> 8 & 255;
+      const b = bigint & 255;
+      return `rgb(${r}, ${g}, ${b})`;
+    }
+    function getCSSVarValuesInRGB() {
+      const ring = document.querySelector('.upf-completion-badge-ring');
+      const backgroundSelector = _completionBadge.BACKGROUND_COLOR.replace('var(', '').replace(')', '');
+      const backgroundVarHexValue = getComputedStyle(ring).getPropertyValue(backgroundSelector).trim();
+      const successSelector = _completionBadge.SUCCESS_COLOR.replace('var(', '').replace(')', '');
+      const successVarHexValue = getComputedStyle(ring).getPropertyValue(successSelector).trim();
+      const progressSelector = _completionBadge.PROGRESS_COLOR.replace('var(', '').replace(')', '');
+      const progressVarHexValue = getComputedStyle(ring).getPropertyValue(progressSelector).trim();
+      return {
+        successColor: successVarHexValue.startsWith('#') ? hexToRgb(successVarHexValue) : successVarHexValue,
+        progressColor: progressVarHexValue.startsWith('#') ? hexToRgb(progressVarHexValue) : progressVarHexValue,
+        backgroundColor: backgroundVarHexValue.startsWith('#') ? hexToRgb(backgroundVarHexValue) : backgroundVarHexValue
+      };
+    }
+    (0, _qunit.module)('progress', function () {
+      (0, _qunit.test)('it renders only the background border when @progress is undefined', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CompletionBadge @icon="fas fa-check" />
+        */
+        {
+          "id": "VBWq+TcS",
+          "block": "[[[8,[39,0],null,[[\"@icon\"],[\"fas fa-check\"]],null]],[],false,[\"o-s-s/completion-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
+          "isStrictMode": false
+        }));
+        const rgbValues = getCSSVarValuesInRGB();
+        assert.dom('.upf-completion-badge-ring').hasStyle({
+          backgroundImage: `conic-gradient(${rgbValues.progressColor} 0deg, ${rgbValues.progressColor} 0deg, ${rgbValues.backgroundColor} 0deg, ${rgbValues.backgroundColor} 360deg)`
+        });
+      });
+      (0, _qunit.test)('it renders the progress ring with 0% progress', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CompletionBadge @progress="0" @icon="fas fa-check" />
+        */
+        {
+          "id": "LWo7dvOm",
+          "block": "[[[8,[39,0],null,[[\"@progress\",\"@icon\"],[\"0\",\"fas fa-check\"]],null]],[],false,[\"o-s-s/completion-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
+          "isStrictMode": false
+        }));
+        const rgbValues = getCSSVarValuesInRGB();
+        assert.dom('.upf-completion-badge-ring').hasStyle({
+          backgroundImage: `conic-gradient(${rgbValues.progressColor} 0deg, ${rgbValues.progressColor} 0deg, ${rgbValues.backgroundColor} 0deg, ${rgbValues.backgroundColor} 360deg)`
+        });
+      });
+      (0, _qunit.test)('it renders the progress ring with 100% progress', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CompletionBadge @progress="100" @icon="fas fa-check" />
+        */
+        {
+          "id": "XOiTiwNo",
+          "block": "[[[8,[39,0],null,[[\"@progress\",\"@icon\"],[\"100\",\"fas fa-check\"]],null]],[],false,[\"o-s-s/completion-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
+          "isStrictMode": false
+        }));
+        const rgbValues = getCSSVarValuesInRGB();
+        await new Promise(resolve => setTimeout(resolve, _completionBadge.ANIMATION_DURATION * 2));
+        assert.dom('.upf-completion-badge-ring').hasStyle({
+          backgroundImage: `conic-gradient(${rgbValues.successColor} 0deg, ${rgbValues.successColor} 360deg, ${rgbValues.successColor} 360deg, ${rgbValues.successColor} 360deg)`
+        });
+      });
+      (0, _qunit.test)('it renders the progress ring with 25% progress', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CompletionBadge @progress="25" @icon="fas fa-check" />
+        */
+        {
+          "id": "8OvOtmMk",
+          "block": "[[[8,[39,0],null,[[\"@progress\",\"@icon\"],[\"25\",\"fas fa-check\"]],null]],[],false,[\"o-s-s/completion-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
+          "isStrictMode": false
+        }));
+        const rgbValues = getCSSVarValuesInRGB();
+        await new Promise(resolve => setTimeout(resolve, _completionBadge.ANIMATION_DURATION * 2));
+        assert.dom('.upf-completion-badge-ring').hasStyle({
+          backgroundImage: `conic-gradient(${rgbValues.progressColor} 0deg, ${rgbValues.progressColor} 90deg, ${rgbValues.backgroundColor} 90deg, ${rgbValues.backgroundColor} 360deg)`
+        });
+      });
+      (0, _qunit.test)('it renders the progress ring with 50% progress', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CompletionBadge @progress="50" @icon="fas fa-check" />
+        */
+        {
+          "id": "e1N9RLY9",
+          "block": "[[[8,[39,0],null,[[\"@progress\",\"@icon\"],[\"50\",\"fas fa-check\"]],null]],[],false,[\"o-s-s/completion-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
+          "isStrictMode": false
+        }));
+        const rgbValues = getCSSVarValuesInRGB();
+        await new Promise(resolve => setTimeout(resolve, _completionBadge.ANIMATION_DURATION * 2));
+        assert.dom('.upf-completion-badge-ring').hasStyle({
+          backgroundImage: `conic-gradient(${rgbValues.progressColor} 0deg, ${rgbValues.progressColor} 180deg, ${rgbValues.backgroundColor} 180deg, ${rgbValues.backgroundColor} 360deg)`
+        });
+      });
+      (0, _qunit.test)('it renders the progress ring with 75% progress', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CompletionBadge @progress="75" @icon="fas fa-check" />
+        */
+        {
+          "id": "dIyB+Bms",
+          "block": "[[[8,[39,0],null,[[\"@progress\",\"@icon\"],[\"75\",\"fas fa-check\"]],null]],[],false,[\"o-s-s/completion-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
+          "isStrictMode": false
+        }));
+        const rgbValues = getCSSVarValuesInRGB();
+        await new Promise(resolve => setTimeout(resolve, _completionBadge.ANIMATION_DURATION * 2));
+        assert.dom('.upf-completion-badge-ring').hasStyle({
+          backgroundImage: `conic-gradient(${rgbValues.progressColor} 0deg, ${rgbValues.progressColor} 270deg, ${rgbValues.backgroundColor} 270deg, ${rgbValues.backgroundColor} 360deg)`
+        });
+      });
+      (0, _qunit.test)('passing a @progress value above 100 caps the value to 100', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CompletionBadge @progress="150" @icon="fas fa-check" />
+        */
+        {
+          "id": "XuhDZqST",
+          "block": "[[[8,[39,0],null,[[\"@progress\",\"@icon\"],[\"150\",\"fas fa-check\"]],null]],[],false,[\"o-s-s/completion-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
+          "isStrictMode": false
+        }));
+        const rgbValues = getCSSVarValuesInRGB();
+        await new Promise(resolve => setTimeout(resolve, _completionBadge.ANIMATION_DURATION * 2));
+        assert.dom('.upf-completion-badge-ring').hasStyle({
+          backgroundImage: `conic-gradient(${rgbValues.successColor} 0deg, ${rgbValues.successColor} 360deg, ${rgbValues.successColor} 360deg, ${rgbValues.successColor} 360deg)`
+        });
+      });
+      (0, _qunit.test)('it updates the progress ring when @progress changes', async function (assert) {
+        this.progress = 0;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CompletionBadge @progress={{this.progress}} @icon="fas fa-check" />
+        */
+        {
+          "id": "bvqr765o",
+          "block": "[[[8,[39,0],null,[[\"@progress\",\"@icon\"],[[30,0,[\"progress\"]],\"fas fa-check\"]],null]],[],false,[\"o-s-s/completion-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
+          "isStrictMode": false
+        }));
+        const rgbValues = getCSSVarValuesInRGB();
+        await new Promise(resolve => setTimeout(resolve, _completionBadge.ANIMATION_DURATION * 2));
+        assert.dom('.upf-completion-badge-ring').hasStyle({
+          backgroundImage: `conic-gradient(${rgbValues.progressColor} 0deg, ${rgbValues.progressColor} 0deg, ${rgbValues.backgroundColor} 0deg, ${rgbValues.backgroundColor} 360deg)`
+        });
+        (0, _object.set)(this, 'progress', 50);
+        await new Promise(resolve => setTimeout(resolve, _completionBadge.ANIMATION_DURATION * 2));
+        assert.dom('.upf-completion-badge-ring').hasStyle({
+          backgroundImage: `conic-gradient(${rgbValues.progressColor} 0deg, ${rgbValues.progressColor} 180deg, ${rgbValues.backgroundColor} 180deg, ${rgbValues.backgroundColor} 360deg)`
+        });
+      });
+    });
+    (0, _qunit.module)('sizes', function () {
+      (0, _qunit.test)('it sets the right class when using a supported size', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CompletionBadge @size="lg" @text="2x" />
+        */
+        {
+          "id": "2Gk9oF2X",
+          "block": "[[[8,[39,0],null,[[\"@size\",\"@text\"],[\"lg\",\"2x\"]],null]],[],false,[\"o-s-s/completion-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-badge').exists();
+        assert.dom('.upf-badge').hasClass('upf-badge--size-lg');
+      });
+      (0, _qunit.test)('it defaults to md size if none is passed', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CompletionBadge @text="2x" />
+        */
+        {
+          "id": "lzdtgu+c",
+          "block": "[[[8,[39,0],null,[[\"@text\"],[\"2x\"]],null]],[],false,[\"o-s-s/completion-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-badge').exists();
+        assert.dom('.upf-badge').hasClass('upf-badge--size-md');
+      });
+    });
+    (0, _qunit.module)('skins', function () {
+      Object.keys(_badge.SkinDefinition).forEach(skin => {
+        (0, _qunit.test)(`it sets the right class when using a supported skin: ${skin}`, async function (assert) {
+          this.skin = skin;
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::CompletionBadge @skin={{this.skin}} @text="2x" />
+          */
+          {
+            "id": "01ZPUekq",
+            "block": "[[[8,[39,0],null,[[\"@skin\",\"@text\"],[[30,0,[\"skin\"]],\"2x\"]],null]],[],false,[\"o-s-s/completion-badge\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.upf-badge').exists();
+          assert.dom('.upf-badge').hasClass(`upf-badge--${skin.startsWith('xtd') ? skin.replace('xtd', 'extended') : skin}`);
+        });
+      });
+      (0, _qunit.test)('it adds the plain class when passed', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CompletionBadge @skin="primary" @plain={{true}} @text="2x" />
+        */
+        {
+          "id": "6Xb3Xc6d",
+          "block": "[[[8,[39,0],null,[[\"@skin\",\"@plain\",\"@text\"],[\"primary\",true,\"2x\"]],null]],[],false,[\"o-s-s/completion-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-badge').hasClass('upf-badge--plain');
+      });
+    });
+    (0, _qunit.module)('content args', function () {
+      (0, _qunit.test)('it displays the right icon when using the @icon arg', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CompletionBadge @icon="fas fa-users" />
+        */
+        {
+          "id": "5KMftiSh",
+          "block": "[[[8,[39,0],null,[[\"@icon\"],[\"fas fa-users\"]],null]],[],false,[\"o-s-s/completion-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-badge').exists();
+        assert.dom('.upf-badge i').hasAttribute('class', 'fas fa-users');
+      });
+      (0, _qunit.test)('it displays the right text when using the @text arg', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CompletionBadge @text="2x" />
+        */
+        {
+          "id": "lzdtgu+c",
+          "block": "[[[8,[39,0],null,[[\"@text\"],[\"2x\"]],null]],[],false,[\"o-s-s/completion-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-badge').exists();
+        assert.dom('.upf-badge .upf-badge__text').exists();
+        assert.dom('.upf-badge .upf-badge__text').hasText('2x');
+      });
+      (0, _qunit.test)('it displays the right image when using the @image arg', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CompletionBadge @image="http://foo.co/bar.png" />
+        */
+        {
+          "id": "omxpkQx7",
+          "block": "[[[8,[39,0],null,[[\"@image\"],[\"http://foo.co/bar.png\"]],null]],[],false,[\"o-s-s/completion-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-badge').exists();
+        assert.dom('.upf-badge img').exists();
+        assert.dom('.upf-badge img').hasAttribute('src', 'http://foo.co/bar.png');
+      });
+    });
+    (0, _qunit.module)('Error management', function () {
+      (0, _qunit.test)('it throws an error when an unsupported skin is passed', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::CompletionBadge] Unknown skin. Available skins are: primary, success, alert, error, xtd-cyan, xtd-orange, xtd-yellow, xtd-lime, xtd-blue, xtd-violet, xtd-smart');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CompletionBadge @skin="foo" @text="2x" />
+        */
+        {
+          "id": "9tIquXCt",
+          "block": "[[[8,[39,0],null,[[\"@skin\",\"@text\"],[\"foo\",\"2x\"]],null]],[],false,[\"o-s-s/completion-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
+          "isStrictMode": false
+        }));
+      });
+      (0, _qunit.test)('it throws an error when an unsupported size is passed', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::CompletionBadge] Unknown size. Available sizes are: sm, md, lg');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CompletionBadge @size="foo" @text="2x" />
+        */
+        {
+          "id": "iNaoZ8mP",
+          "block": "[[[8,[39,0],null,[[\"@size\",\"@text\"],[\"foo\",\"2x\"]],null]],[],false,[\"o-s-s/completion-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
+          "isStrictMode": false
+        }));
+      });
+      (0, _qunit.test)('it throws an error if no argument is passed', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::CompletionBadge] One of @icon, @image or @text arguments is mandatory. You passed 0 arguments');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CompletionBadge />
+        */
+        {
+          "id": "cstqV4Kr",
+          "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/completion-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
+          "isStrictMode": false
+        }));
+      });
+      (0, _qunit.test)('it throws an error if more than one content argument is passed', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::CompletionBadge] One of @icon, @image or @text arguments is mandatory. You passed 2 arguments');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CompletionBadge @icon="fas fa-users" @text="2x" />
+        */
+        {
+          "id": "MxNOC49h",
+          "block": "[[[8,[39,0],null,[[\"@icon\",\"@text\"],[\"fas fa-users\",\"2x\"]],null]],[],false,[\"o-s-s/completion-badge\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
+          "isStrictMode": false
+        }));
+      });
+    });
+  });
 });
 define("dummy/tests/integration/components/o-s-s/content-panel-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
   "use strict";

@@ -84204,17 +84204,6 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
       const contentArguments = [args.icon, args.image, args.text].filter(arg => arg);
       (true && !(contentArguments.length === 1) && (0, _debug.assert)(`[component][OSS::Badge] One of @icon, @image or @text arguments is mandatory. You passed ${contentArguments.length} arguments`, contentArguments.length === 1));
     }
-    get sizeClass() {
-      const size = this.args.size || 'md';
-      (true && !(Object.keys(SizeDefinition).includes(size)) && (0, _debug.assert)(`[component][OSS::Badge] Unknown size. Available sizes are: ${Object.keys(SizeDefinition).join(', ')}`, Object.keys(SizeDefinition).includes(size)));
-      return SizeDefinition[size];
-    }
-    get skinClass() {
-      const skin = this.args?.skin;
-      if (!skin) return '';
-      (true && !(Object.keys(SkinDefinition).includes(skin)) && (0, _debug.assert)(`[component][OSS::Badge] Unknown skin. Available skins are: ${Object.keys(SkinDefinition).join(', ')}`, Object.keys(SkinDefinition).includes(skin)));
-      return SkinDefinition[skin];
-    }
     get computedClass() {
       const classes = ['upf-badge', 'upf-badge--shape-round'];
       [this.sizeClass, this.skinClass].forEach(klass => {
@@ -84224,6 +84213,17 @@ if("undefined"==typeof jQuery)throw new Error("Bootstrap's JavaScript requires j
         classes.push('upf-badge--plain');
       }
       return classes.join(' ');
+    }
+    get skinClass() {
+      const skin = this.args?.skin;
+      if (!skin) return '';
+      (true && !(Object.keys(SkinDefinition).includes(skin)) && (0, _debug.assert)(`[component][OSS::Badge] Unknown skin. Available skins are: ${Object.keys(SkinDefinition).join(', ')}`, Object.keys(SkinDefinition).includes(skin)));
+      return SkinDefinition[skin];
+    }
+    get sizeClass() {
+      const size = this.args.size || 'md';
+      (true && !(Object.keys(SizeDefinition).includes(size)) && (0, _debug.assert)(`[component][OSS::Badge] Unknown size. Available sizes are: ${Object.keys(SizeDefinition).join(', ')}`, Object.keys(SizeDefinition).includes(size)));
+      return SizeDefinition[size];
     }
   }
   _exports.default = OSSBadge;
@@ -86367,6 +86367,293 @@ interface OSSCodeBlockArgs {
   const UsageWithIcon = _exports.UsageWithIcon = BasicUsageTemplate.bind({});
   UsageWithIcon.args = defaultArgs;
 });
+;define("@upfluence/oss-components/components/o-s-s/completion-badge", ["exports", "@ember/component", "@glimmer/tracking", "@ember/debug", "@ember/object", "@ember/template", "@upfluence/oss-components/components/o-s-s/badge", "@ember/template-factory", "@embroider/macros/runtime"], function (_exports, _component, _tracking, _debug, _object, _template, _badge, _templateFactory, _runtime) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.SUCCESS_COLOR = _exports.PROGRESS_COLOR = _exports.BACKGROUND_COLOR = _exports.ANIMATION_DURATION = void 0;
+  var _class, _descriptor;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/tracking",0,"@ember/debug",0,"@ember/object",0,"@ember/template",0,"@embroider/macros",0,"@upfluence/oss-components/components/o-s-s/badge",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div
+    class="upf-completion-badge-wrapper"
+    {{did-insert this.animateProgress}}
+    {{did-update this.animateProgress @progress}}
+    ...attributes
+  >
+    <div class="upf-completion-badge-ring" style={{this.progressRingStyle}}></div>
+    <div class={{this.computedClass}}>
+      {{#if @icon}}
+        <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
+      {{else if @image}}
+        <img src={{@image}} alt={{t "oss-components.badge.image_alt"}} />
+      {{else}}
+        <span class="upf-badge__text">{{@text}}</span>
+      {{/if}}
+    </div>
+  </div>
+  */
+  {
+    "id": "cs+svY87",
+    "block": "[[[11,0],[24,0,\"upf-completion-badge-wrapper\"],[17,1],[4,[38,0],[[30,0,[\"animateProgress\"]]],null],[4,[38,1],[[30,0,[\"animateProgress\"]],[30,2]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"upf-completion-badge-ring\"],[15,5,[30,0,[\"progressRingStyle\"]]],[12],[13],[1,\"\\n  \"],[10,0],[15,0,[30,0,[\"computedClass\"]]],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"      \"],[8,[39,3],null,[[\"@style\",\"@icon\"],[[28,[37,4],[[30,3]],null],[28,[37,5],[[30,3]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,4],[[[1,\"      \"],[10,\"img\"],[15,\"src\",[30,4]],[15,\"alt\",[28,[37,6],[\"oss-components.badge.image_alt\"],null]],[12],[13],[1,\"\\n\"]],[]],[[[1,\"      \"],[10,1],[14,0,\"upf-badge__text\"],[12],[1,[30,5]],[13],[1,\"\\n    \"]],[]]]],[]]],[1,\"  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@progress\",\"@icon\",\"@image\",\"@text\"],false,[\"did-insert\",\"did-update\",\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"t\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/completion-badge.hbs",
+    "isStrictMode": false
+  });
+  const SUCCESS_COLOR = _exports.SUCCESS_COLOR = 'var(--color-success-500)';
+  const PROGRESS_COLOR = _exports.PROGRESS_COLOR = 'var(--color-primary-500)';
+  const BACKGROUND_COLOR = _exports.BACKGROUND_COLOR = 'var(--color-gray-200)';
+  const ANIMATION_DURATION = _exports.ANIMATION_DURATION = (0, _runtime.isTesting)() ? 25 : 1200;
+  let OSSCompletionBadgeComponent = _exports.default = (_class = class OSSCompletionBadgeComponent extends _badge.default {
+    constructor(owner, args) {
+      super(owner, args, true);
+      _initializerDefineProperty(this, "animatedProgress", _descriptor, this);
+      _defineProperty(this, "animationFrameId", void 0);
+      const contentArguments = [args.icon, args.image, args.text].filter(arg => arg);
+      (true && !(contentArguments.length === 1) && (0, _debug.assert)(`[component][OSS::CompletionBadge] One of @icon, @image or @text arguments is mandatory. You passed ${contentArguments.length} arguments`, contentArguments.length === 1));
+    }
+    get progressRingStyle() {
+      const progress = this.animatedProgress;
+      const angle = progress / 100 * 360;
+      if (progress >= 100) {
+        return (0, _template.htmlSafe)(`background: conic-gradient(${SUCCESS_COLOR} 0deg 360deg, ${SUCCESS_COLOR} 360deg 360deg);`);
+      }
+      return (0, _template.htmlSafe)(`background: conic-gradient(${PROGRESS_COLOR} 0deg ${angle}deg, ${BACKGROUND_COLOR} ${angle}deg 360deg);`);
+    }
+    get computedClass() {
+      const classes = ['upf-badge', 'upf-badge--shape-round'];
+      [this.sizeClass, this.skinClass].forEach(klass => {
+        classes.push(klass);
+      });
+      if (this.args.plain) {
+        classes.push('upf-badge--plain');
+      }
+      return classes.join(' ');
+    }
+    get sizeClass() {
+      const size = this.args.size || 'md';
+      (true && !(Object.keys(_badge.SizeDefinition).includes(size)) && (0, _debug.assert)(`[component][OSS::CompletionBadge] Unknown size. Available sizes are: ${Object.keys(_badge.SizeDefinition).join(', ')}`, Object.keys(_badge.SizeDefinition).includes(size)));
+      return _badge.SizeDefinition[size];
+    }
+    get skinClass() {
+      const skin = this.args?.skin;
+      if (!skin) return '';
+      (true && !(Object.keys(_badge.SkinDefinition).includes(skin)) && (0, _debug.assert)(`[component][OSS::CompletionBadge] Unknown skin. Available skins are: ${Object.keys(_badge.SkinDefinition).join(', ')}`, Object.keys(_badge.SkinDefinition).includes(skin)));
+      return _badge.SkinDefinition[skin];
+    }
+    animateProgress() {
+      if (this.animationFrameId) {
+        cancelAnimationFrame(this.animationFrameId);
+      }
+      const initial = this.animatedProgress;
+      const target = this.progressValue;
+      const duration = ANIMATION_DURATION;
+      const start = performance.now();
+      this.animationFrameId = requestAnimationFrame(now => this.animateStep(now, initial, target, duration, start));
+    }
+    get progressValue() {
+      const value = Number(this.args.progress);
+      return isNaN(value) ? 0 : Math.round(value);
+    }
+    animateStep(now, initial, target, duration, start) {
+      const elapsed = now - start;
+      const percent = Math.min(elapsed / duration, 1);
+      this.animatedProgress = initial + percent * (target - initial);
+      if (percent < 1) {
+        this.animationFrameId = requestAnimationFrame(nextNow => this.animateStep(nextNow, initial, target, duration, start));
+      } else {
+        this.animatedProgress = target;
+        this.animationFrameId = undefined;
+      }
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "animatedProgress", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return 0;
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "animateProgress", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "animateProgress"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSCompletionBadgeComponent);
+});
+;define("@upfluence/oss-components/components/o-s-s/completion-badge.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.WithText = _exports.WithImage = _exports.WithIcon = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  const SizeTypes = ['sm', 'md', 'lg'];
+  const SkinTypes = ['primary', 'success', 'alert', 'error', 'xtd-cyan', 'xtd-orange', 'xtd-yellow', 'xtd-lime', 'xtd-blue', 'xtd-violet', 'xtd-smart'];
+  var _default = _exports.default = {
+    title: 'Components/OSS::CompletionBadge',
+    component: 'completion-badge',
+    argTypes: {
+      size: {
+        description: 'Adjust the size of the badge',
+        table: {
+          type: {
+            summary: SizeTypes.join('|')
+          },
+          defaultValue: {
+            summary: 'md'
+          }
+        },
+        options: SizeTypes,
+        control: {
+          type: 'select'
+        }
+      },
+      skin: {
+        description: 'Adjust the skin of the badge',
+        table: {
+          type: {
+            summary: SkinTypes.join('|')
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        options: SkinTypes,
+        control: {
+          type: 'select'
+        }
+      },
+      plain: {
+        description: 'Displays the badge with a plain background',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      icon: {
+        description: 'Font Awesome class, for example: far fa-envelope-open',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      image: {
+        description: 'URL of an image',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      text: {
+        description: 'Text to display inside the badge',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      progress: {
+        description: 'Progress percentage to display around the badge',
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: '0'
+          }
+        },
+        control: {
+          type: 'number'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'A badge component that displays a progress ring around the badge content. It can be used to indicate completion status or progress of a task.'
+        }
+      }
+    }
+  };
+  const defaultArgs = {
+    progress: 42,
+    size: 'md',
+    icon: undefined,
+    image: undefined,
+    text: undefined,
+    plain: false,
+    skin: undefined
+  };
+  const Template = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <OSS::CompletionBadge @progress={{this.progress}} @image={{this.image}} @icon={{this.icon}} @text={{this.text}}
+                              @flag={{this.flag}} @size={{this.size}} @skin={{this.skin}} @plain={{this.plain}} />
+      
+    */
+    {
+      "id": "ZyPk3Wdz",
+      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@progress\",\"@image\",\"@icon\",\"@text\",\"@flag\",\"@size\",\"@skin\",\"@plain\"],[[30,0,[\"progress\"]],[30,0,[\"image\"]],[30,0,[\"icon\"]],[30,0,[\"text\"]],[30,0,[\"flag\"]],[30,0,[\"size\"]],[30,0,[\"skin\"]],[30,0,[\"plain\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/completion-badge\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/completion-badge.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const WithIcon = _exports.WithIcon = Template.bind({});
+  WithIcon.args = {
+    ...defaultArgs,
+    ...{
+      icon: 'fas fa-volume-up'
+    }
+  };
+  const WithImage = _exports.WithImage = Template.bind({});
+  WithImage.args = {
+    ...defaultArgs,
+    ...{
+      image: '/@upfluence/oss-components/assets/heart.svg'
+    }
+  };
+  const WithText = _exports.WithText = Template.bind({});
+  WithText.args = {
+    ...defaultArgs,
+    ...{
+      text: '2x'
+    }
+  };
+});
 ;define("@upfluence/oss-components/components/o-s-s/content-panel", ["exports", "@ember/component", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _component2, _templateFactory) {
   "use strict";
 
@@ -88100,17 +88387,6 @@ interface OSSCodeBlockArgs {
     get flagCountry() {
       return this.args.flag.toUpperCase();
     }
-    get sizeClass() {
-      const size = this.args.size || 'md';
-      (true && !(Object.keys(_badge.SizeDefinition).includes(size)) && (0, _debug.assert)(`[component][OSS::ExpandableBadge] Unknown size. Available sizes are: ${Object.keys(_badge.SizeDefinition).join(', ')}`, Object.keys(_badge.SizeDefinition).includes(size)));
-      return _badge.SizeDefinition[size];
-    }
-    get skinClass() {
-      const skin = this.args?.skin;
-      if (!skin) return '';
-      (true && !(Object.keys(_badge.SkinDefinition).includes(skin)) && (0, _debug.assert)(`[component][OSS::ExpandableBadge] Unknown skin. Available skins are: ${Object.keys(_badge.SkinDefinition).join(', ')}`, Object.keys(_badge.SkinDefinition).includes(skin)));
-      return _badge.SkinDefinition[skin];
-    }
     get computedClass() {
       const classes = ['upf-badge', 'upf-expandable-badge'];
       [this.sizeClass, this.skinClass].forEach(klass => {
@@ -88123,6 +88399,17 @@ interface OSSCodeBlockArgs {
         classes.push('upf-expandable-badge--expanded');
       }
       return classes.join(' ');
+    }
+    get sizeClass() {
+      const size = this.args.size || 'md';
+      (true && !(Object.keys(_badge.SizeDefinition).includes(size)) && (0, _debug.assert)(`[component][OSS::ExpandableBadge] Unknown size. Available sizes are: ${Object.keys(_badge.SizeDefinition).join(', ')}`, Object.keys(_badge.SizeDefinition).includes(size)));
+      return _badge.SizeDefinition[size];
+    }
+    get skinClass() {
+      const skin = this.args?.skin;
+      if (!skin) return '';
+      (true && !(Object.keys(_badge.SkinDefinition).includes(skin)) && (0, _debug.assert)(`[component][OSS::ExpandableBadge] Unknown skin. Available skins are: ${Object.keys(_badge.SkinDefinition).join(', ')}`, Object.keys(_badge.SkinDefinition).includes(skin)));
+      return _badge.SkinDefinition[skin];
     }
     handleExpansion() {
       this.expanded = !this.expanded;
