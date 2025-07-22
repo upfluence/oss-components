@@ -2,9 +2,10 @@
   class="upf-completion-badge-wrapper"
   {{did-insert this.animateProgress}}
   {{did-update this.animateProgress @progress}}
+  ...attributes
 >
   <div class="upf-completion-badge-ring" style={{this.progressRingStyle}}></div>
-  <div class={{this.computedClass}} ...attributes>
+  <div class={{this.computedClass}}>
     {{#if @icon}}
       <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
     {{else if @image}}
