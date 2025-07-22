@@ -11,7 +11,7 @@ module('Integration | Component | o-s-s/badge', function (hooks) {
   setupIntl(hooks);
 
   module('sizes', function () {
-    test('it sets the right class when usng a supported size', async function (assert: Assert) {
+    test('it sets the right class when using a supported size', async function (assert: Assert) {
       await render(hbs`<OSS::Badge @size="lg" @text="2x" />`);
 
       assert.dom('.upf-badge').exists();

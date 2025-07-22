@@ -10,6 +10,7 @@ export default class Visual extends Controller {
   @tracked isChecked: boolean = true;
   @tracked radio1: boolean = true;
   @tracked radio2: boolean = false;
+  @tracked dynamicProgress: number = 0;
   @tracked avatars: { image: string; initials: string }[] = [
     {
       image: 'https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png',
@@ -165,7 +166,16 @@ export default class Visual extends Controller {
   @action onChangeMode1(selectedMode: string): void {
     this.modeSwitchSelected1 = selectedMode;
   }
+
   @action onChangeMode2(selectedMode: string): void {
     this.modeSwitchSelected2 = selectedMode;
+  }
+
+  @action
+  increaseProgress(): void {
+    if (this.dynamicProgress < 100) {
+      set(this, 'dynamicProgress', this.dynamicProgress + 10);
+      setTimeout(() => this.increaseProgress(), 1000);
+    }
   }
 }

@@ -59,30 +59,6 @@ export default class OSSBadge<T extends OSSBadgeArgs> extends Component<T> {
     );
   }
 
-  get sizeClass(): string {
-    const size: SizeType = this.args.size || 'md';
-
-    assert(
-      `[component][OSS::Badge] Unknown size. Available sizes are: ${Object.keys(SizeDefinition).join(', ')}`,
-      Object.keys(SizeDefinition).includes(size as SizeType)
-    );
-
-    return SizeDefinition[size as SizeType];
-  }
-
-  get skinClass(): string {
-    const skin: SkinType | undefined = this.args?.skin;
-
-    if (!skin) return '';
-
-    assert(
-      `[component][OSS::Badge] Unknown skin. Available skins are: ${Object.keys(SkinDefinition).join(', ')}`,
-      Object.keys(SkinDefinition).includes(skin as SkinType)
-    );
-
-    return SkinDefinition[skin as SkinType];
-  }
-
   get computedClass(): string {
     const classes = ['upf-badge', 'upf-badge--shape-round'];
 
@@ -95,5 +71,29 @@ export default class OSSBadge<T extends OSSBadgeArgs> extends Component<T> {
     }
 
     return classes.join(' ');
+  }
+
+  protected get skinClass(): string {
+    const skin: SkinType | undefined = this.args?.skin;
+
+    if (!skin) return '';
+
+    assert(
+      `[component][OSS::Badge] Unknown skin. Available skins are: ${Object.keys(SkinDefinition).join(', ')}`,
+      Object.keys(SkinDefinition).includes(skin as SkinType)
+    );
+
+    return SkinDefinition[skin as SkinType];
+  }
+
+  protected get sizeClass(): string {
+    const size: SizeType = this.args.size || 'md';
+
+    assert(
+      `[component][OSS::Badge] Unknown size. Available sizes are: ${Object.keys(SizeDefinition).join(', ')}`,
+      Object.keys(SizeDefinition).includes(size as SizeType)
+    );
+
+    return SizeDefinition[size as SizeType];
   }
 }
