@@ -1,26 +1,153 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { click, fillIn, render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import sinon from 'sinon';
+import { setupIntl } from 'ember-intl/test-support';
 
 module('Integration | Component | o-s-s/smart/immersive/select', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
 
-  test('it renders', async function (assert) {
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.set('myAction', function (val) { ... });
-
-    await render(hbs`<OSS::Smart::Immersive::Select />`);
-
-    assert.dom().hasText('');
-
-    // Template block usage:
-    await render(hbs`
-      <OSS::Smart::Immersive::Select>
-        template block text
-      </OSS::Smart::Immersive::Select>
-    `);
-
-    assert.dom().hasText('template block text');
+  hooks.beforeEach(function () {
+    this.selectedItems = ['item1'];
+    this.items = [
+      { value: 'item1', label: 'Item 1' },
+      { value: 'item2', label: 'Item 2' }
+    ];
+    this.placeholder = 'Default placeholder';
+    this.loading = false;
+    this.hasError = false;
+    this.multiple = true;
+    this.displayedItems = 0;
+    this.maxItemWidth = 200;
+    this.onSearch = sinon.stub();
+    this.onChange = sinon.stub();
   });
+
+  test('it renders with all required named blocks', async function (assert) {
+    await renderComponent();
+
+    assert.dom('.smart-immersive-select-container').exists();
+  });
+
+  module('Single select', (hooks) => {
+    hooks.beforeEach(function () {
+      this.selectedItems = null;
+      this.value = 'item1';
+      this.multiple = false;
+    });
+
+    test('When clicking on the immersive input, it opens the infinite select', async function (assert) {
+      await renderComponent();
+      assert.dom('.upf-infinite-select').doesNotExist();
+      await click('.smart-immersive-select-container div');
+      assert.dom('.upf-infinite-select').exists().hasClass('upf-infinite-select--smart');
+    });
+
+    test('Selected items are highlighted with a checkmark', async function (assert) {
+      await renderComponent();
+      await click('.smart-immersive-select-container div');
+      assert.dom('.upf-infinite-select__item .selected').exists();
+      assert.dom('.upf-infinite-select__item .selected i').exists();
+      assert.dom('.upf-infinite-select__item .selected i').hasClass('font-color-primary-500').hasClass('fa-check');
+    });
+  });
+
+  module('Multiple select', () => {
+    test('When clicking on the immersive input, it opens the infinite select', async function (assert) {
+      await renderComponent();
+      assert.dom('.upf-infinite-select').doesNotExist();
+      await click('.smart-immersive-select-container div');
+      assert.dom('.upf-infinite-select').exists().hasClass('upf-infinite-select--smart');
+    });
+
+    test('Selected items are highlighted with an active checkbox', async function (assert) {
+      await renderComponent();
+      await click('.smart-immersive-select-container div');
+
+      assert.dom('.upf-infinite-select__item:nth-of-type(1) > div').hasClass('selected');
+      assert.dom('.upf-infinite-select__item:nth-of-type(1) > div .upf-checkbox input').isChecked();
+      assert.dom('.upf-infinite-select__item:nth-of-type(2) > div').hasNoClass('selected');
+      assert.dom('.upf-infinite-select__item:nth-of-type(2) > div .upf-checkbox input').isNotChecked();
+    });
+
+    test('When displayedItems is defined, only the X firsts items are displayed, the remaining ones are concatenated', async function (assert) {
+      this.displayedItems = 1;
+      this.selectedItems = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
+      await renderComponent();
+
+      assert.dom('.smart-immersive-select-container .select-smart-item').exists({ count: 2 });
+      assert.dom('.smart-immersive-select-container .select-smart-item:nth-of-type(1)').hasText('Item 1');
+      assert.dom('.smart-immersive-select-container .select-smart-item:nth-of-type(2)').exists('+3');
+    });
+  });
+
+  test('When maxItemWidth is defined, it applies the max-width style to the selected items', async function (assert) {
+    await renderComponent();
+    assert.dom('.smart-immersive-select-container .select-smart-item').hasStyle({ 'max-width': '200px' });
+  });
+
+  test('When selecting an item in the list, it triggers the onChange action ', async function (assert) {
+    await renderComponent();
+
+    assert.ok(this.onChange.notCalled);
+    await click('.smart-immersive-select-container div');
+    await click('.upf-infinite-select__item:nth-of-type(2)');
+    assert.ok(this.onChange.calledOnceWith({ value: 'item2', label: 'Item 2' }));
+  });
+
+  test('When updating the search input, it triggers the onSearch action ', async function (assert) {
+    await renderComponent();
+
+    assert.ok(this.onSearch.notCalled);
+    await click('.smart-immersive-select-container div');
+    await fillIn('.search-field input', 'test');
+    assert.ok(this.onSearch.calledOnceWith('test'));
+  });
+
+  module('loading', (hooks) => {
+    hooks.beforeEach(function () {
+      this.loading = true;
+    });
+
+    test('When input is loading, it display an animated div instead of the input', async function (assert) {
+      await renderComponent();
+
+      assert.dom('.smart-immersive-select-container .loading-placeholder').exists();
+      assert.dom('.smart-immersive-select-container .loading-placeholder').hasText(this.placeholder);
+    });
+
+    module('Once loading is finished', () => {
+      test('It displays an animation once', async function (assert) {
+        await renderComponent();
+        this.set('loading', false);
+        assert.dom('.smart-immersive-select-container').hasClass('smart-rotating-gradient');
+      });
+
+      test('If the field is empty, it does not display an animation once', async function (assert) {
+        this.selectedItems = [];
+        await renderComponent();
+        this.set('loading', false);
+        assert.dom('.smart-immersive-select-container').hasNoClass('smart-rotating-gradient');
+      });
+    });
+  });
+
+  async function renderComponent(): Promise<void> {
+    return await render(
+      hbs`<OSS::Smart::Immersive::Select @value={{this.value}} @values={{this.selectedItems}} @items={{this.items}} 
+                                         @multiple={{this.multiple}} @placeholder={{this.placeholder}}
+                                         @loading={{this.loading}} @hasError={{this.hasError}}
+                                         @displayedItems={{this.displayedItems}} @maxItemWidth={{this.maxItemWidth}}
+                                         @onChange={{this.onChange}} @onSearch={{this.onSearch}}>
+            <:selected-item as |item|>
+              <span class="selected-item-label">{{item}}</span>
+            </:selected-item>
+            <:option-item as |item|>
+              <span class="option-item-label">{{item.label}}</span>
+            </:option-item>
+          </OSS::Smart::Immersive::Select>`
+    );
+  }
 });
