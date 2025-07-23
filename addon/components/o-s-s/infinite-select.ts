@@ -14,6 +14,7 @@ interface InfiniteSelectArgs {
   items: InfinityItem[];
   inline: boolean;
   enableKeyboard?: boolean;
+  skin?: 'default' | 'smart';
 
   onSelect: (item: InfinityItem) => void;
   onSearch?: (keyword: string) => void;
@@ -69,6 +70,10 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
 
   get inline(): boolean {
     return this.args.inline ?? false;
+  }
+
+  get skin(): 'default' | 'smart' {
+    return this.args.skin ?? 'default';
   }
 
   @action

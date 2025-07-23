@@ -35,6 +35,20 @@ export default class Smart extends Controller {
   @tracked selectedPillTwo: boolean = false;
   intervalId?: number;
 
+  @tracked values = ['content'];
+  @tracked items = [
+    { value: 'content', label: 'Jace generated content' },
+    { value: '1', label: 'Item 1' },
+    { value: '2', label: 'Item 2' },
+    { value: '3', label: 'Item 3' },
+    { value: '4', label: 'Item 4' },
+    { value: '5', label: 'Item 5' },
+    { value: '6', label: 'Item 6' },
+    { value: '7', label: 'Item 7' },
+    { value: '8', label: 'Item 8' },
+    { value: '9', label: 'Item 9' }
+  ];
+
   constructor() {
     super(...arguments);
     this.addContentToFeedbackComponent();
@@ -123,5 +137,23 @@ export default class Smart extends Controller {
   @action
   onLogoClick(): void {
     console.log('logo icon clicked');
+  }
+
+  @action
+  onSearch(keyword: string): void {
+    console.log('Search keyword:', keyword);
+  }
+
+  @action
+  onChange(item: any): void {
+    console.log('Selected item:', item);
+
+    if (this.values.includes(item.value)) {
+      this.values = this.values.filter((value) => value !== item.value);
+    } else {
+      this.values = [...this.values, item.value];
+    }
+
+    this.value = item.value;
   }
 }
