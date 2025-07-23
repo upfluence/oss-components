@@ -30,9 +30,13 @@ export default class OSSSmartImmersiveSelectComponent extends BaseDropdown<OSSSm
     return this.args.values?.includes(value) || false;
   });
 
+  get hasValue(): boolean {
+    return !isEmpty(this.args.values) || !isEmpty(this.args.value);
+  }
+
   get computedClasses(): string {
     const classes = ['smart-immersive-select-container'];
-    if (!isEmpty(this.args.values) || !isEmpty(this.args.value)) {
+    if (this.hasValue) {
       classes.push('smart-immersive-select-container--filled');
     }
     if (this.args.hasError) {
@@ -75,7 +79,7 @@ export default class OSSSmartImmersiveSelectComponent extends BaseDropdown<OSSSm
 
   @action
   runAnimationOnLoadEnd(): void {
-    if (this.container && this.args.loading === false && !isEmpty(this.args.values)) {
+    if (this.container && this.args.loading === false && this.hasValue) {
       runSmartGradientAnimation(this.container);
     }
   }
