@@ -418,6 +418,29 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
     });
   });
 
+  module('Skin', function (hooks) {
+    hooks.beforeEach(function () {
+      this.items = FAKE_DATA;
+      this.onSelect = () => {};
+    });
+
+    test('it should render with the default skin', async function (assert) {
+      await render(
+        hbs`<OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{false}} @onSelect={{this.onSelect}}/>`
+      );
+
+      assert.dom('.upf-infinite-select').hasClass('upf-infinite-select--default');
+    });
+
+    test('it should render with the smart skin', async function (assert) {
+      await render(
+        hbs`<OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{false}} @onSelect={{this.onSelect}} @skin="smart"/>`
+      );
+
+      assert.dom('.upf-infinite-select').hasClass('upf-infinite-select--smart');
+    });
+  });
+
   module('Error management', function () {
     module('On item selection, if onSelect is not passed', function () {
       test('it should throw an error', async function (assert) {
