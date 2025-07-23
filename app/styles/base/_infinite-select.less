@@ -48,3 +48,38 @@
     background-color: var(--color-white);
   }
 }
+
+.upf-infinite-select--smart {
+  border: 1px solid var(--color-primary-200);
+  box-shadow: var(--box-shadow-md);
+  padding: 0;
+
+  .search-field {
+    margin: var(--spacing-px-12);
+    margin-bottom: var(--spacing-px-3);
+  }
+
+  .upf-infinite-select__item {
+    display: flex;
+    align-items: center;
+    color: var(--color-gray-600);
+    padding: var(--spacing-px-3) var(--spacing-px-12);
+    height: 36px;
+    gap: var(--spacing-px-6);
+    border-radius: 0;
+
+    &:has(> .selected),
+    &:hover {
+      background-color: var(--color-gray-100);
+      color: var(--color-gray-900);
+    }
+
+    &:not(:first-child)  {
+      margin-top: 0;
+    }
+
+    .item-wrapper {
+      flex: 1;
+    }
+  }
+}
