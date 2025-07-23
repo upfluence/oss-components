@@ -36,7 +36,7 @@
         {{on "click" this.noop}}
       >
         <:option as |item index|>
-          <div class="item-wrapper fx-row fx-xalign-center fx-malign-space-between">
+          <div class="item-wrapper fx-row fx-xalign-center fx-malign-space-between {{if (eq @value item) 'selected'}}">
             {{#if (has-block "option")}}
               {{yield item index to="option"}}
             {{/if}}
