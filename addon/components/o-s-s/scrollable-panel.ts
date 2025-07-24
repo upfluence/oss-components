@@ -7,6 +7,7 @@ interface OSSScrollablePanelComponentSignature {
   disableShadows?: boolean;
   horizontal?: boolean;
   hideScrollbar?: boolean;
+  offset?: number;
   onBottomReached?: () => void;
 }
 
@@ -18,6 +19,10 @@ export default class OSSScrollablePanelComponent extends Component<OSSScrollable
   @tracked shadowRightVisible: boolean = false;
 
   resizeObserver = new ResizeObserver(this.resizeObserverCallback.bind(this));
+
+  get offset(): number {
+    return this.args.offset ?? 0;
+  }
 
   @action
   initScrollListener(element: HTMLElement): void {
@@ -54,7 +59,7 @@ export default class OSSScrollablePanelComponent extends Component<OSSScrollable
   }
 
   private scrollListener(): void {
-    if (this.parentElement.scrollTop > 0) {
+    if (this.parentElement.scrollTop - this.offset > 0) {
       this.shadowTopVisible = true;
     } else {
       this.shadowTopVisible = false;
@@ -63,7 +68,10 @@ export default class OSSScrollablePanelComponent extends Component<OSSScrollable
   }
 
   private displayBottomShadow(): void {
-    if (this.parentElement.scrollTop + this.parentElement.clientHeight >= this.parentElement.scrollHeight - 1) {
+    if (
+      this.parentElement.scrollTop + this.parentElement.clientHeight + this.offset >=
+      this.parentElement.scrollHeight - 1
+    ) {
       this.shadowBottomVisible = false;
     } else {
       this.shadowBottomVisible = true;
@@ -71,7 +79,7 @@ export default class OSSScrollablePanelComponent extends Component<OSSScrollable
   }
 
   private horizontalScrollListener(): void {
-    if (this.parentElement.scrollLeft > 0) {
+    if (this.parentElement.scrollLeft - this.offset > 0) {
       this.shadowLeftVisible = true;
     } else {
       this.shadowLeftVisible = false;
@@ -80,7 +88,10 @@ export default class OSSScrollablePanelComponent extends Component<OSSScrollable
   }
 
   private displayRightShadow(): void {
-    if (this.parentElement.scrollLeft + this.parentElement.clientWidth >= this.parentElement.scrollWidth - 1) {
+    if (
+      this.parentElement.scrollLeft + this.parentElement.clientWidth + this.offset >=
+      this.parentElement.scrollWidth - 1
+    ) {
       this.shadowRightVisible = false;
     } else {
       this.shadowRightVisible = true;

@@ -45,6 +45,16 @@ export default {
         type: 'boolean'
       }
     },
+    offset: {
+      description: 'Offset in pixels from which the scrollable panel will be considered as scrolled',
+      table: {
+        type: { summary: 'number' },
+        defaultValue: { summary: '0' }
+      },
+      control: {
+        type: 'number'
+      }
+    },
     onBottomReached: {
       description: 'Function to be called when the scroll hits the bottom',
       table: {
@@ -68,6 +78,7 @@ const defaultArgs = {
   plain: false,
   disableShadows: false,
   hideScrollbar: false,
+  offset: 0,
   onBottomReached: action('onBottomReached')
 };
 
@@ -83,7 +94,8 @@ const Template = (args) => ({
                             @disableShadows={{this.disableShadows}}
                             @onBottomReached={{this.onBottomReached}}
                             @hideScrollbar={{this.hideScrollbar}}
-                            @horizontal={{this.horizontal}} >
+                            @horizontal={{this.horizontal}}
+                            @offset={{this.offset}} >
         <div class="fx-col fx-gap-px-12 padding-px-12">
           <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
           <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
@@ -105,7 +117,8 @@ const TemplateHorizontal = (args) => ({
                             @disableShadows={{this.disableShadows}}
                             @onBottomReached={{this.onBottomReached}}
                             @hideScrollbar={{this.hideScrollbar}}
-                            @horizontal={{this.horizontal}} >
+                            @horizontal={{this.horizontal}}
+                            @offset={{this.offset}} >
         <div class="fx-row fx-gap-px-12 padding-px-12" style="width: fit-content">
           <div class="background-color-gray-200" style="height: 50px; width: 100px;" />
           <div class="background-color-gray-200" style="height: 50px; width: 100px;" />
