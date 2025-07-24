@@ -424,7 +424,7 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
       this.onSelect = () => {};
     });
 
-    test('it should render with the default skin', async function (assert) {
+    test('When @skin is not specified the "default" skin is applied', async function (assert) {
       await render(
         hbs`<OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{false}} @onSelect={{this.onSelect}}/>`
       );

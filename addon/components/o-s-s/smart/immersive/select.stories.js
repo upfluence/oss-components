@@ -11,19 +11,19 @@ export default {
       table: { defaultValue: { summary: 'undefined' } },
       control: { type: 'text' }
     },
-    value: {
-      name: 'Value',
-      description: 'Selected value for single-select mode.',
-      table: { defaultValue: { summary: 'undefined' } },
-      control: { type: 'text' }
-    },
     values: {
       name: 'Values',
       description: 'Selected values for multi-select mode.',
-      table: { defaultValue: { summary: 'undefined' } },
-      control: { type: 'object' }
+      table: {
+        type: {
+          summary: '<Array<String>>'
+        },
+        defaultValue: { summary: '[]' }
+      },
+      control: { type: 'array' }
     },
     loading: {
+      name: 'Loading',
       type: { name: 'boolean' },
       description: 'Enable the loading state.',
       table: {
@@ -35,6 +35,7 @@ export default {
       control: { type: 'boolean' }
     },
     multiple: {
+      name: 'Multiple',
       type: { name: 'boolean' },
       description: 'Allow multiple selections.',
       table: {
@@ -46,6 +47,7 @@ export default {
       control: { type: 'boolean' }
     },
     items: {
+      name: 'Items',
       description: 'Array of selectable items, each with a value and label.',
       table: {
         type: {
@@ -119,7 +121,7 @@ const TemplateSingle = ({ iconName, iconColor, ...rest }) => {
       <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
         <OSS::Smart::Immersive::Select
           @placeholder={{this.placeholder}}
-          @value={{this.value}}
+          @values={{this.values}}
           @loading={{this.loading}}
           @items={{this.items}}
           @onSearch={{this.onSearch}}
@@ -146,7 +148,7 @@ export const Select = TemplateSingle.bind({});
 
 Select.args = {
   placeholder: 'Placeholder',
-  value: 'step 1',
+  values: ['step 1'],
   loading: false,
   multiple: false,
   items: [

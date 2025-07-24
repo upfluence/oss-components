@@ -1,14 +1,13 @@
 import { action } from '@ember/object';
 import BaseDropdown, { type BaseDropdownArgs } from '../../private/base-dropdown';
 import { runSmartGradientAnimation } from '@upfluence/oss-components/utils/run-smart-gradient-animation';
-import { isEmpty } from '@ember/utils';
+import { isBlank, isEmpty } from '@ember/utils';
 import { assert } from '@ember/debug';
 import { scheduleOnce } from '@ember/runloop';
 import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
 import { helper } from '@ember/component/helper';
 
 interface OSSSmartImmersiveSelectComponentSignature extends BaseDropdownArgs {
-  value?: string;
   values?: string[];
   items: { value: string; label: string }[];
   placeholder?: string;
@@ -31,7 +30,7 @@ export default class OSSSmartImmersiveSelectComponent extends BaseDropdown<OSSSm
   });
 
   get hasValue(): boolean {
-    return !isEmpty(this.args.values) || !isEmpty(this.args.value);
+    return !isBlank(this.args.values);
   }
 
   get computedClasses(): string {
@@ -63,12 +62,12 @@ export default class OSSSmartImmersiveSelectComponent extends BaseDropdown<OSSSm
 
   get values(): string[] {
     let values: string[] = [];
-    if (this.args.multiple) {
-      values = [...(this.args.values ?? [])];
-    }
-    if (!this.args.multiple && this.args.value) {
-      values.push(this.args.value);
-    }
+    values = [
+      ...(this.args.values?.filter((el) => {
+        return !isBlank(el) && el !== undefined;
+      }) ?? [])
+    ];
+
     if (this.displayedItems > 0 && values.length > this.displayedItems) {
       values = values.slice(0, this.displayedItems);
       values.push(`+${(this.args.values?.length ?? 0) - this.displayedItems}`);
@@ -100,8 +99,8 @@ export default class OSSSmartImmersiveSelectComponent extends BaseDropdown<OSSSm
 
   @action
   ensureBlockPresence(hasSelectedItem: boolean, hasOptionItem: boolean): void | never {
-    assert(`[component][OSS::PowerSelect] You must pass selected-item named block`, hasSelectedItem);
-    assert(`[component][OSS::PowerSelect] You must pass option-item named block`, hasOptionItem);
+    assert(`[component][OSS::Smart::Immersive::Select] You must pass selected-item named block`, hasSelectedItem);
+    assert(`[component][OSS::Smart::Immersive::Select] You must pass option-item named block`, hasOptionItem);
   }
 
   @action
