@@ -1,0 +1,73 @@
+.smart-tag {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-px-6);
+  padding: 0 var(--spacing-px-12);
+  border-radius: var(--border-radius-xl);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  background-color: var(--color-white);
+  height: 30px;
+  transition: 250ms ease-in-out;
+
+  &--color-yellow {
+    border: 1px solid var(--color-yellow-500);
+    color: var(--color-yellow-500);
+
+    &:hover {
+      border: 1px solid var(--color-yellow-600);
+      color: var(--color-yellow-600);
+    }
+
+    &:active {
+      border: 1px solid var(--color-yellow-400);
+      color: var(--color-yellow-400);
+    }
+  }
+
+  &--color-cyan {
+    border: 1px solid var(--color-cyan-500);
+    color: var(--color-cyan-500);
+
+    &:hover {
+      border: 1px solid var(--color-cyan-600);
+      color: var(--color-cyan-600);
+    }
+
+    &:active {
+      border: 1px solid var(--color-cyan-400);
+      color: var(--color-cyan-400);
+    }
+  }
+
+  &--color-violet {
+    border: 1px solid var(--color-violet-500);
+    color: var(--color-violet-500);
+
+    &:hover {
+      border: 1px solid var(--color-violet-600);
+      color: var(--color-violet-600);
+    }
+
+    &:active {
+      border: 1px solid var(--color-violet-400);
+      color: var(--color-violet-400);
+    }
+  }
+}
+
+.smart-tag-container.smart-rotating-gradient {
+  &::after {
+    border-radius: var(--border-radius-xl);
+  }
+
+  .smart-tag {
+    border: 1px solid transparent;
+  }
+}
+
+.smart-tag-container--lg {
+  .smart-tag {
+    height: 40px;
+  }
+}

@@ -1,6 +1,9 @@
 import Controller from '@ember/controller';
 import { action } from '@ember/object';
+import { next } from '@ember/runloop';
 import { tracked } from '@glimmer/tracking';
+import type { TagType } from '@upfluence/oss-components/components/o-s-s/smart/tag';
+import type { Keyword } from '@upfluence/oss-components/components/o-s-s/smart/tag-input';
 
 export default class Smart extends Controller {
   @tracked selectedToggle: string = 'first';
@@ -48,6 +51,14 @@ export default class Smart extends Controller {
     { value: '8', label: 'Item 8' },
     { value: '9', label: 'Item 9' }
   ];
+  @tracked tagLoading: boolean = false;
+  @tracked tags: { value: string; type: TagType }[] = [
+    { value: 'keyword', type: 'keyword' },
+    { value: 'mention', type: 'mention' },
+    { value: 'hashtag', type: 'hashtag' }
+  ];
+  @tracked smartTags: { value: string; type: TagType }[] = [];
+  @tracked inputValue: string = '';
 
   constructor() {
     super(...arguments);
@@ -155,5 +166,42 @@ export default class Smart extends Controller {
     }
 
     this.value = item.value;
+  }
+
+  @action
+  onTagRemove(): void {
+    console.log('removing tag');
+  }
+
+  @action
+  toggleTagAnimation(): void {
+    this.tagLoading = !this.tagLoading;
+  }
+
+  @action
+  handleTagInput({ value, type }: Keyword): string {
+    this.tags = [...this.tags, { value, type }];
+    return '';
+  }
+
+  @action
+  handleSmartTagInput({ value, type }: Keyword): string {
+    this.smartTags = [...this.smartTags, { value, type }];
+    return '';
+  }
+
+  @action
+  fakeLoadData(): void {
+    this.loading = true;
+    setTimeout(() => {
+      this.smartTags = [
+        { value: 'example', type: 'keyword' },
+        { value: 'test', type: 'mention' },
+        { value: 'sample', type: 'hashtag' }
+      ];
+      next(() => {
+        this.loading = false;
+      });
+    }, 3000);
   }
 }
