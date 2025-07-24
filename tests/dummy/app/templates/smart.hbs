@@ -10,6 +10,61 @@
     class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
   >
     <div class="font-size-md font-weight-semibold">
+      Smart tag & Smart tag input
+    </div>
+    <div class="fx-col fx-gap-px-24">
+      <div class="fx-row fx-gap-px-24 fx-xalign-center">
+        <OSS::Button @label="Toggle animation" {{on "click" this.toggleTagAnimation}} />
+        <OSS::Smart::Tag @label="Default" />
+        {{#each this.tags as |tag|}}
+          <OSS::Smart::Tag
+            @label={{tag.value}}
+            @type={{tag.type}}
+            @onRemove={{this.onTagRemove}}
+            @successAnimationOnInsertion={{this.tagLoading}}
+          />
+        {{/each}}
+        {{#each this.tags as |tag|}}
+          <OSS::Smart::Tag
+            @label={{tag.value}}
+            @type={{tag.type}}
+            @onRemove={{this.onTagRemove}}
+            @successAnimationOnInsertion={{this.tagLoading}}
+            @size="lg"
+          />
+        {{/each}}
+      </div>
+      <div class="fx-row fx-gap-px-24 fx-xalign-start">
+        {{#each this.smartTags as |smartTag|}}
+          <OSS::Smart::Tag @label={{smartTag.value}} @type={{smartTag.type}} @onRemove={{this.onTagRemove}} />
+        {{/each}}
+        <OSS::Smart::TagInput @value={{this.inputValue}} @onKeydown={{this.handleTagInput}} />
+        <OSS::Smart::TagInput @value={{this.inputValue}} @onKeydown={{this.handleTagInput}} @loading={{true}} />
+        <OSS::Smart::TagInput @value={{this.inputValue}} @onKeydown={{this.handleTagInput}} @hasError={{true}} />
+      </div>
+      <div class="fx-row fx-gap-px-24 fx-xalign-start">
+        <OSS::Button @label="Fake load data" {{on "click" this.fakeLoadData}} />
+        {{#each this.smartTags as |smartTag|}}
+          <OSS::Smart::Tag
+            @label={{smartTag.value}}
+            @type={{smartTag.type}}
+            @onRemove={{this.onTagRemove}}
+            @successAnimationOnInsertion={{this.loading}}
+          />
+        {{/each}}
+        <OSS::Smart::TagInput
+          @value={{this.inputValue}}
+          @onKeydown={{this.handleSmartTagInput}}
+          @loading={{this.loading}}
+        />
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
       Smart select
     </div>
     <div class="fx-col fx-gap-px-24 fx-xalign-center">
