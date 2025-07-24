@@ -52,9 +52,9 @@
       </OSS::Smart::Immersive::Select>
       <OSS::Smart::Immersive::Select
         @placeholder="Type your name or pseudo"
-        @value={{this.value}}
+        @values={{array this.value}}
         @loading={{this.loading}}
-        {{!-- @hasError={{true}} --}}
+        @hasError={{true}}
         @items={{this.items}}
         @onSearch={{this.onSearch}}
         @onChange={{this.onChange}}
