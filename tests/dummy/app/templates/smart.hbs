@@ -10,6 +10,65 @@
     class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
   >
     <div class="font-size-md font-weight-semibold">
+      Smart select
+    </div>
+    <div class="fx-col fx-gap-px-24 fx-xalign-center">
+      <OSS::Button @label="Toggle loading" {{on "click" this.toggleLoading}} />
+      <OSS::Smart::Immersive::Select
+        @placeholder="Placeholder"
+        @values={{this.values}}
+        @loading={{this.loading}}
+        @items={{this.items}}
+        @onSearch={{this.onSearch}}
+        @onChange={{this.onChange}}
+        @multiple={{true}}
+      >
+        <:selected-item as |item|>{{item}}</:selected-item>
+        <:option-item as |item|>
+          <div class="text-ellipsis" {{enable-tooltip title=item.label displayOnlyOnOverflow=true}}>
+            {{item.label}}
+          </div>
+        </:option-item>
+      </OSS::Smart::Immersive::Select>
+      <OSS::Smart::Immersive::Select
+        @placeholder="Placeholder"
+        @values={{this.values}}
+        @displayCount={{true}}
+        @loading={{this.loading}}
+        @hasError={{false}}
+        @displayedItems={{1}}
+        @maxItemWidth={{100}}
+        @items={{this.items}}
+        @onSearch={{this.onSearch}}
+        @onChange={{this.onChange}}
+        @multiple={{true}}
+      >
+        <:selected-item as |item|>{{item}}</:selected-item>
+        <:option-item as |item|>
+          <div class="text-ellipsis" {{enable-tooltip title=item.label displayOnlyOnOverflow=true}}>
+            {{item.label}}
+          </div>
+        </:option-item>
+      </OSS::Smart::Immersive::Select>
+      <OSS::Smart::Immersive::Select
+        @placeholder="Type your name or pseudo"
+        @values={{array this.value}}
+        @loading={{this.loading}}
+        @hasError={{true}}
+        @items={{this.items}}
+        @onSearch={{this.onSearch}}
+        @onChange={{this.onChange}}
+      >
+        <:selected-item as |item|>{{item}}</:selected-item>
+        <:option-item as |item|>{{item.label}}</:option-item>
+      </OSS::Smart::Immersive::Select>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
       Smart immersive input
     </div>
     <div class="fx-col fx-gap-px-24 fx-xalign-center">
@@ -320,7 +379,6 @@
       />
 
       <OSS::Smart::Immersive::Logo @icon="rabbit:orange" @loading={{this.logoLoading}} @onEdit={{this.onLogoClick}} />
-
       <OSS::Smart::Immersive::Logo
         @icon="rabbit:orange"
         @oversize={{true}}
@@ -341,7 +399,7 @@
         @onEdit={{this.onLogoClick}}
       />
 
-      <OSS::Smart::Immersive::Logo @editable={{true}} @loading={{this.logoLoading}} @onClick={{this.onLogoClick}} />
+      <OSS::Smart::Immersive::Logo @editable={{true}} @loading={{this.logoLoading}} @onEdit={{this.onLogoClick}} />
     </div>
   </div>
 </div>
