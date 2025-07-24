@@ -1,0 +1,36 @@
+<div
+  class="tag-input-container {{if (gt this.inputValue.length 0) 'tag-input-container--active'}}"
+  {{on "click" this.onClickQueryBuilder}}
+  {{did-insert this.registerElement}}
+>
+  <div class={{this.keywordInputClasses}}>
+    {{#if @loading}}
+      <div class="animated-overlay">
+        {{or this.inputValue this.placeholder}}
+      </div>
+    {{else}}
+      <div class="fx-col">
+        <span class="hidden-span">{{if
+            (or this.inputValue this.isInputFocused)
+            this.inputValue
+            this.placeholder
+          }}</span>
+        <Input
+          class="displayed-input"
+          @value={{this.inputValue}}
+          @type="text"
+          data-control-name="tag-input"
+          {{on "keydown" this.onKeydown}}
+          {{on "focusin" this.onFocusin}}
+          {{on-click-outside this.onClickOutside}}
+        />
+      </div>
+      <div class="tag-input-empty-state">
+        {{this.placeholder}}
+      </div>
+    {{/if}}
+    <span class="tag-input-icon">
+      <OSS::Icon @style="solid" @icon="fa-arrow-turn-down-left" />
+    </span>
+  </div>
+</div>

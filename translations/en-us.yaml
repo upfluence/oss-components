@@ -79,3 +79,6 @@ oss-components:
       required: This field is required.
   sidebar:
     collapse: Collapse
+  smart:
+    tag_input:
+      placeholder: "Add keywords, @mentions and #hashtags"
