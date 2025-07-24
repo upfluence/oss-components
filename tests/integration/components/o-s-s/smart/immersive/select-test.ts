@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, fillIn, render } from '@ember/test-helpers';
+import { click, fillIn, render, setupOnerror } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import sinon from 'sinon';
 import { setupIntl } from 'ember-intl/test-support';
@@ -25,10 +25,54 @@ module('Integration | Component | o-s-s/smart/immersive/select', function (hooks
     this.onChange = sinon.stub();
   });
 
-  test('it renders with all required named blocks', async function (assert) {
-    await renderComponent();
+  module('It renders', () => {
+    test('When missing selected-item name block, it throws an error', async function (assert) {
+      setupOnerror((err: { message: string }) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::Smart::Immersive::Select] You must pass selected-item named block'
+        );
+      });
 
-    assert.dom('.smart-immersive-select-container').exists();
+      await render(
+        hbs`<OSS::Smart::Immersive::Select @value={{this.value}} @values={{this.selectedItems}} @items={{this.items}} 
+                                         @multiple={{this.multiple}} @placeholder={{this.placeholder}}
+                                         @loading={{this.loading}} @hasError={{this.hasError}}
+                                         @displayedItems={{this.displayedItems}} @maxItemWidth={{this.maxItemWidth}}
+                                         @onChange={{this.onChange}} @onSearch={{this.onSearch}}>
+            <:option-item as |item|>
+              <span class="option-item-label">{{item.label}}</span>
+            </:option-item>
+          </OSS::Smart::Immersive::Select>`
+      );
+    });
+
+    test('With missing option-item name block, it throws an error', async function (assert) {
+      setupOnerror((err: { message: string }) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::Smart::Immersive::Select] You must pass option-item named block'
+        );
+      });
+
+      await render(
+        hbs`<OSS::Smart::Immersive::Select @value={{this.value}} @values={{this.selectedItems}} @items={{this.items}} 
+                                         @multiple={{this.multiple}} @placeholder={{this.placeholder}}
+                                         @loading={{this.loading}} @hasError={{this.hasError}}
+                                         @displayedItems={{this.displayedItems}} @maxItemWidth={{this.maxItemWidth}}
+                                         @onChange={{this.onChange}} @onSearch={{this.onSearch}}>
+            <:selected-item as |item|>
+              <span class="selected-item-label">{{item}}</span>
+            </:selected-item>
+          </OSS::Smart::Immersive::Select>`
+      );
+    });
+
+    test('With all required named blocks', async function (assert) {
+      await renderComponent();
+
+      assert.dom('.smart-immersive-select-container').exists();
+    });
   });
 
   module('Single select', (hooks) => {
@@ -39,14 +83,14 @@ module('Integration | Component | o-s-s/smart/immersive/select', function (hooks
     });
 
     test('When clicking on the immersive input, it opens the infinite select', async function (assert) {
-      await renderComponent();
+      await renderSingleComponent();
       assert.dom('.upf-infinite-select').doesNotExist();
       await click('.smart-immersive-select-container div');
       assert.dom('.upf-infinite-select').exists().hasClass('upf-infinite-select--smart');
     });
 
     test('Selected items are highlighted with a checkmark', async function (assert) {
-      await renderComponent();
+      await renderSingleComponent();
       await click('.smart-immersive-select-container div');
       assert.dom('.upf-infinite-select__item .selected').exists();
       assert.dom('.upf-infinite-select__item .selected i').exists();
@@ -102,7 +146,7 @@ module('Integration | Component | o-s-s/smart/immersive/select', function (hooks
 
     assert.ok(this.onSearch.notCalled);
     await click('.smart-immersive-select-container div');
-    await fillIn('.search-field input', 'test');
+    await fillIn('.upf-infinite-select--search input', 'test');
     assert.ok(this.onSearch.calledOnceWith('test'));
   });
 
@@ -136,7 +180,24 @@ module('Integration | Component | o-s-s/smart/immersive/select', function (hooks
 
   async function renderComponent(): Promise<void> {
     return await render(
-      hbs`<OSS::Smart::Immersive::Select @value={{this.value}} @values={{this.selectedItems}} @items={{this.items}} 
+      hbs`<OSS::Smart::Immersive::Select @values={{this.selectedItems}} @items={{this.items}} 
+                                         @multiple={{this.multiple}} @placeholder={{this.placeholder}}
+                                         @loading={{this.loading}} @hasError={{this.hasError}}
+                                         @displayedItems={{this.displayedItems}} @maxItemWidth={{this.maxItemWidth}}
+                                         @onChange={{this.onChange}} @onSearch={{this.onSearch}}>
+            <:selected-item as |item|>
+              <span class="selected-item-label">{{item}}</span>
+            </:selected-item>
+            <:option-item as |item|>
+              <span class="option-item-label">{{item.label}}</span>
+            </:option-item>
+          </OSS::Smart::Immersive::Select>`
+    );
+  }
+
+  async function renderSingleComponent(): Promise<void> {
+    return await render(
+      hbs`<OSS::Smart::Immersive::Select @values={{array this.value}} @items={{this.items}} 
                                          @multiple={{this.multiple}} @placeholder={{this.placeholder}}
                                          @loading={{this.loading}} @hasError={{this.hasError}}
                                          @displayedItems={{this.displayedItems}} @maxItemWidth={{this.maxItemWidth}}
