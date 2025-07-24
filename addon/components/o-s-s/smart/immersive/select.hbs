@@ -12,7 +12,6 @@
       <span class="smart_text_animated">{{@placeholder}}</span>
     </div>
   {{else}}
-
     <div class="upf-power-select__array-container" role="button" {{on "click" this.toggleDropdown}}>
       <div class="upf-input fx-row padding-px-6 {{if this.isOpen 'active'}}">
         <div class="fx-row fx-xalign-center fx-1 fx-gap-px-6 fx-wrap">
@@ -52,13 +51,13 @@
           <div
             class="item-wrapper fx-row fx-xalign-center
               {{if @multiple 'fx-gap-px-6' 'fx-malign-space-between'}}
-              {{if (or (this.isSelected value=item.value) (eq @value item.value)) 'selected'}}"
+              {{if (this.isSelected value=item.value) 'selected'}}"
           >
             {{#if @multiple}}
               <OSS::Checkbox @checked={{this.isSelected value=item.value}} @onChange={{fn this.onSelect item}} />
             {{/if}}
             {{yield item to="option-item"}}
-            {{#if (and (not @multiple) (eq @value item.value))}}
+            {{#if (and (not @multiple) (this.isSelected value=item.value))}}
               <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
             {{/if}}
           </div>
