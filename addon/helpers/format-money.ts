@@ -4,8 +4,8 @@ var _getFormatter = function (currency: string, compact?: boolean) {
   return Intl.NumberFormat(['en-EN', 'fr-FR'], {
     style: 'currency',
     currency: currency,
-    minimumFractionDigits: 0, // show decimals only if there are ones
-    maximumFractionDigits: compact ? 1 : undefined, // show only one decimal in compact mode
+    minimumFractionDigits: 0,
+    maximumFractionDigits: compact ? 1 : undefined,
     notation: compact ? 'compact' : undefined
   });
 };
