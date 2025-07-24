@@ -77,3 +77,6 @@ oss-components:
   forms:
     errors:
       required: This field is required.
+  smart:
+    tag_input:
+      placeholder: "Add keywords, @mentions and #hashtags"

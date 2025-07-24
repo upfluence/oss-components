@@ -1,0 +1,15 @@
+<div
+  class="smart-tag-container {{if (eq @size 'lg') 'smart-tag-container--lg'}}"
+  {{did-insert this.handleElementLifecycle}}
+  {{did-update this.runAnimationOnLoadEnd @successAnimationOnInsertion}}
+>
+  <div class="smart-tag smart-tag--color-{{this.typeColor}}" ...attributes>
+    {{#if this.typeIcon}}
+      <OSS::Icon @icon={{this.typeIcon}} />
+    {{/if}}
+    <span class="text-ellipsis-140">{{this.displayLabel}}</span>
+    {{#if this.closable}}
+      <OSS::Icon @icon="fa-times" {{on "click" this.onRemove}} role="button" data-control-name="remove-tag-button" />
+    {{/if}}
+  </div>
+</div>
