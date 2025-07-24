@@ -1,0 +1,103 @@
+.tag-input-container {
+  display: flex;
+  align-items: center;
+  width: auto;
+  height: 30px;
+  border: 1px dashed var(--color-gray-400);
+  border-radius: var(--border-radius-xl);
+  padding: 0 var(--spacing-px-12);
+  color: var(--color-gray-400);
+  background-color: var(--color-white);
+
+  .tag-input {
+    width: min-content;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-px-6);
+    overflow: hidden;
+    position: relative;
+
+    * {
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .hidden-span {
+      height: 0px;
+      display: block;
+      visibility: hidden;
+      width: fit-content;
+      white-space: pre;
+      transition: all 250ms ease-in-out;
+    }
+
+    .displayed-input {
+      width: 100%;
+      min-width: 4px;
+      outline: none;
+      border: none;
+      padding: 0;
+    }
+
+    .tag-input-empty-state {
+      display: inline;
+      overflow: hidden;
+      white-space: nowrap;
+      pointer-events: none;
+      position: absolute;
+      transition: all 250ms ease-in-out;
+    }
+
+    &:focus-within {
+      transition: all 250ms ease-in-out;
+
+      .tag-input-empty-state {
+        display: none;
+        max-width: 0;
+        transition: all 250ms ease-in-out;
+      }
+    }
+  }
+
+  &--active {
+    .tag-input-empty-state {
+      display: none;
+      max-width: 0;
+      transition: all 250ms ease-in-out;
+    }
+  }
+
+  &:has(.tag-input--error) {
+    border-color: var(--color-error-500);
+  }
+}
+
+.animated-overlay {
+  background: linear-gradient(
+    130deg,
+    var(--color-gray-400) 18%,
+    var(--color-gray-300) 25%,
+    rgba(250, 198, 255, 1) 56%,
+    var(--color-primary-100) 62%,
+    var(--color-white) 66%,
+    rgba(250, 198, 255, 0.58) 68%,
+    var(--color-gray-300) 73%,
+    var(--color-gray-400) 85%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: smart_loading_text_animation 3.5s ease-in-out infinite;
+  background-size: 600% 100%;
+  width: fit-content;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+@keyframes smart_loading_text_animation-text {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
