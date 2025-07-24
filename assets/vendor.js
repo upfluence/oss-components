@@ -99661,21 +99661,23 @@ interface OSSCodeBlockArgs {
   _exports.default = void 0;
   _exports.formatMoneyHelper = formatMoneyHelper;
   0; //eaimeta@70e063a35619d71f0,"@ember/component/helper"eaimeta@70e063a35619d71f
-  var _getFormatter = function (currency) {
+  var _getFormatter = function (currency, compact) {
     return Intl.NumberFormat(['en-EN', 'fr-FR'], {
       style: 'currency',
       currency: currency,
-      minimumFractionDigits: 0 // show decimals only if there are ones
+      minimumFractionDigits: 0,
+      maximumFractionDigits: compact ? 1 : undefined,
+      notation: compact ? 'compact' : undefined
     });
   };
-  var _formatMoney = function (amount, currency, format = 'raw') {
+  var _formatMoney = function (amount, currency, format = 'raw', compact = false) {
     if (isNaN(parseInt(amount)) || !currency) return amount;
     const value = format === 'cents' ? parseFloat(amount) / 100 : parseFloat(amount);
-    return _getFormatter(currency).format(value);
+    return _getFormatter(currency, compact).format(value);
   };
   function formatMoneyHelper(params) {
-    let [amount, currency, format] = params;
-    return _formatMoney(amount, currency, format);
+    const [amount, currency, format = 'raw', compact = false] = params;
+    return _formatMoney(amount, currency, format, compact);
   }
   var _default = _exports.default = _helper.default.helper(formatMoneyHelper);
 });

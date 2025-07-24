@@ -16684,6 +16684,146 @@ define("dummy/tests/integration/helpers/form-field-feedback-test", ["qunit", "em
     });
   });
 });
+define("dummy/tests/integration/helpers/format-money-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Helper | format-money', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.amount = 1234;
+      this.currency = 'USD';
+    });
+    (0, _qunit.module)('Basic formatting', function () {
+      (0, _qunit.test)('Formats money when an amount and a currency are passed', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <div>{{format-money this.amount this.currency}}</div>
+        */
+        {
+          "id": "tceKRTLA",
+          "block": "[[[10,0],[12],[1,[28,[35,0],[[30,0,[\"amount\"]],[30,0,[\"currency\"]]],null]],[13]],[],false,[\"format-money\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/helpers/format-money-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('div').hasText('$1,234');
+      });
+      (0, _qunit.test)('Divides amount by 100 when cents are passed', async function (assert) {
+        this.format = 'cents';
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <div>{{format-money this.amount this.currency this.format}}</div>
+        */
+        {
+          "id": "xpYmCje+",
+          "block": "[[[10,0],[12],[1,[28,[35,0],[[30,0,[\"amount\"]],[30,0,[\"currency\"]],[30,0,[\"format\"]]],null]],[13]],[],false,[\"format-money\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/helpers/format-money-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('div').hasText('$12.34');
+      });
+    });
+    (0, _qunit.module)('Compact formatting (K/M/B)', function () {
+      (0, _qunit.test)('Applies a K notation to thousands when compact is passed as true', async function (assert) {
+        this.format = 'raw';
+        this.compact = true;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <div>{{format-money this.amount this.currency this.format this.compact}}</div>
+        */
+        {
+          "id": "7qy/6YwD",
+          "block": "[[[10,0],[12],[1,[28,[35,0],[[30,0,[\"amount\"]],[30,0,[\"currency\"]],[30,0,[\"format\"]],[30,0,[\"compact\"]]],null]],[13]],[],false,[\"format-money\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/helpers/format-money-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('div').hasText('$1.2K');
+      });
+      (0, _qunit.test)('Applies a M notation to millions when compact is passed as true', async function (assert) {
+        this.amount = 1234567;
+        this.format = 'raw';
+        this.compact = true;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <div>{{format-money this.amount this.currency this.format this.compact}}</div>
+        */
+        {
+          "id": "7qy/6YwD",
+          "block": "[[[10,0],[12],[1,[28,[35,0],[[30,0,[\"amount\"]],[30,0,[\"currency\"]],[30,0,[\"format\"]],[30,0,[\"compact\"]]],null]],[13]],[],false,[\"format-money\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/helpers/format-money-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('div').hasText('$1.2M');
+      });
+      (0, _qunit.test)('Applies a B notation to billions when compact is passed as true', async function (assert) {
+        this.amount = 1234567890;
+        this.format = 'raw';
+        this.compact = true;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <div>{{format-money this.amount this.currency this.format this.compact}}</div>
+        */
+        {
+          "id": "7qy/6YwD",
+          "block": "[[[10,0],[12],[1,[28,[35,0],[[30,0,[\"amount\"]],[30,0,[\"currency\"]],[30,0,[\"format\"]],[30,0,[\"compact\"]]],null]],[13]],[],false,[\"format-money\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/helpers/format-money-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('div').hasText('$1.2B');
+      });
+    });
+    (0, _qunit.module)('Compact + cents formatting', function () {
+      (0, _qunit.test)('Applies a division by 100 and K notation to thousands when compact is passed as true', async function (assert) {
+        this.amount = 123457;
+        this.format = 'cents';
+        this.compact = true;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <div>{{format-money this.amount this.currency this.format this.compact}}</div>
+        */
+        {
+          "id": "7qy/6YwD",
+          "block": "[[[10,0],[12],[1,[28,[35,0],[[30,0,[\"amount\"]],[30,0,[\"currency\"]],[30,0,[\"format\"]],[30,0,[\"compact\"]]],null]],[13]],[],false,[\"format-money\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/helpers/format-money-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('div').hasText('$1.2K');
+      });
+      (0, _qunit.test)('Applies a division by 100 and K notation to millions when compact is passed as true', async function (assert) {
+        this.amount = 123457890;
+        this.format = 'cents';
+        this.compact = true;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <div>{{format-money this.amount this.currency this.format this.compact}}</div>
+        */
+        {
+          "id": "7qy/6YwD",
+          "block": "[[[10,0],[12],[1,[28,[35,0],[[30,0,[\"amount\"]],[30,0,[\"currency\"]],[30,0,[\"format\"]],[30,0,[\"compact\"]]],null]],[13]],[],false,[\"format-money\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/helpers/format-money-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('div').hasText('$1.2M');
+      });
+      (0, _qunit.test)('Applies a division by 100 and K notation to billions when compact is passed as true', async function (assert) {
+        this.amount = 123457890123;
+        this.format = 'cents';
+        this.compact = true;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <div>{{format-money this.amount this.currency this.format this.compact}}</div>
+        */
+        {
+          "id": "7qy/6YwD",
+          "block": "[[[10,0],[12],[1,[28,[35,0],[[30,0,[\"amount\"]],[30,0,[\"currency\"]],[30,0,[\"format\"]],[30,0,[\"compact\"]]],null]],[13]],[],false,[\"format-money\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/helpers/format-money-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('div').hasText('$1.2B');
+      });
+    });
+  });
+});
 define("dummy/tests/integration/helpers/redirect-to-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
   "use strict";
 
