@@ -5,16 +5,24 @@ import { runSmartGradientAnimation } from '@upfluence/oss-components/utils/run-s
 
 export type TagType = 'keyword' | 'hashtag' | 'mention';
 
-const TypeColorMatch: any = {
-  hashtag: 'cyan',
-  mention: 'violet',
-  keyword: 'yellow'
-};
+export type TagTypeDefinition = { icon?: string; color: string };
 
-const TypeIconMatch: any = {
-  hashtag: 'fa-hashtag',
-  mention: 'fa-at',
-  keyword: null
+// const TypeColorMatch: any = {
+//   hashtag: 'cyan',
+//   mention: 'violet',
+//   keyword: 'yellow'
+// };
+
+// const TypeIconMatch: any = {
+//   hashtag: 'fa-hashtag',
+//   mention: 'fa-at',
+//   keyword: null
+// };
+
+const TypeDefinition: Record<TagType, TagTypeDefinition> = {
+  hashtag: { icon: 'fa-hashtag', color: 'cyan' },
+  mention: { icon: 'fa-at', color: 'violet' },
+  keyword: { icon: 'x', color: 'yellow' }
 };
 
 interface OSSSmartTagArgs {
@@ -32,12 +40,12 @@ export default class OSSSmartTag extends Component<OSSSmartTagArgs> {
     return Boolean(this.args.onRemove);
   }
 
-  get typeColor(): TagType {
-    return TypeColorMatch[this.args.type || 'keyword'];
+  get typeColor(): string {
+    return TypeDefinition[this.args.type ?? 'keyword'].color;
   }
 
-  get typeIcon(): TagType {
-    return TypeIconMatch[this.args.type || 'keyword'];
+  get typeIcon(): string | undefined {
+    return TypeDefinition[this.args.type ?? 'keyword'].icon;
   }
 
   get displayLabel(): string {
