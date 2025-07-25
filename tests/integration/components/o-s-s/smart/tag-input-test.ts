@@ -32,7 +32,7 @@ module('Integration | Component | o-s-s/smart/tag-input', function (hooks) {
     assert.true(this.onKeydown.calledOnce, 'onKeydown is called once');
   });
 
-  test('input is cleared after save', async function (assert) {
+  test('input is cleared on validation', async function (assert) {
     await render(hbs`<OSS::Smart::TagInput @value="" @onKeydown={{this.onKeydown}} />`);
     await fillIn('[data-control-name="tag-input"]', 'foo');
     assert.dom('[data-control-name="tag-input"]').hasValue('foo', 'Input has value "foo"');
