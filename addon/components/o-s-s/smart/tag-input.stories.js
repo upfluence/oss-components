@@ -35,6 +35,16 @@ export default {
         category: 'Actions',
         type: { summary: '(keyword: { value: string, type: "keyword" | "hashtag" | "mention" }) => void' }
       }
+    },
+    placeholder: {
+      description: 'The placeholder to show when the input is empty',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: undefined }
+      },
+      control: { type: 'text' }
     }
   },
   parameters: {
@@ -49,7 +59,8 @@ export default {
 const defaultArgs = {
   value: 'Keyword',
   loading: false,
-  hasError: false
+  hasError: false,
+  placeholder: 'Type a keyword, mention, or hashtag'
 };
 
 const Template = (args) => ({
