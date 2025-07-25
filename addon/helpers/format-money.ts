@@ -1,6 +1,6 @@
 import Helper from '@ember/component/helper';
 
-var _getFormatter = function (currency: string, compact?: boolean) {
+let _getFormatter = function (currency: string, compact?: boolean) {
   return Intl.NumberFormat(['en-EN', 'fr-FR'], {
     style: 'currency',
     currency: currency,
@@ -10,7 +10,7 @@ var _getFormatter = function (currency: string, compact?: boolean) {
   });
 };
 
-var _formatMoney = function (
+let _formatMoney = function (
   amount: string,
   currency: string,
   format: 'raw' | 'cents' = 'raw',
@@ -22,7 +22,8 @@ var _formatMoney = function (
 };
 
 export function formatMoneyHelper(params: any[]) {
-  const [amount, currency, format = 'raw', compact = false] = params;
+  let [amount, currency, format = 'raw', compact = false] = params;
+  if ((amount < 1000 && format === 'raw') || (amount < 100000 && format === 'cents')) compact = false;
   return _formatMoney(amount, currency, format, compact);
 }
 
