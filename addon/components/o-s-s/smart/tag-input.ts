@@ -16,6 +16,7 @@ interface OSSSmartTagInputArgs {
   onKeydown(keyword: Keyword): void;
   loading?: boolean;
   hasError?: boolean;
+  placeholder?: string;
 }
 
 export default class OSSSmartTagInput extends Component<OSSSmartTagInputArgs> {
@@ -23,7 +24,7 @@ export default class OSSSmartTagInput extends Component<OSSSmartTagInputArgs> {
 
   @tracked inputValue: string = this.args.value || '';
   @tracked isInputFocused: boolean = false;
-  @tracked declare element: HTMLElement;
+  declare element: HTMLElement;
 
   get keywordInputClasses(): string {
     const classes = ['tag-input'];
@@ -41,7 +42,7 @@ export default class OSSSmartTagInput extends Component<OSSSmartTagInputArgs> {
   }
 
   get placeholder(): string {
-    return this.intl.t('oss-components.smart.tag_input.placeholder');
+    return this.args.placeholder || this.intl.t('oss-components.smart.tag_input.placeholder');
   }
 
   @action
@@ -62,7 +63,7 @@ export default class OSSSmartTagInput extends Component<OSSSmartTagInputArgs> {
   @action
   onKeydown(event: KeyboardEvent): void {
     if (event.key === 'Enter' || event.key === 'Tab') {
-      this.saveKeyword();
+      this.formatAndNotify();
     }
   }
 
@@ -72,10 +73,10 @@ export default class OSSSmartTagInput extends Component<OSSSmartTagInputArgs> {
     this.isInputFocused = false;
     if (isBlank(this.inputValue)) return;
     event.stopImmediatePropagation();
-    this.saveKeyword();
+    this.formatAndNotify();
   }
 
-  private saveKeyword(): void {
+  private formatAndNotify(): void {
     if (this.inputValue.trim().length > 0) {
       let type: TagType = 'keyword';
       if (this.inputValue.startsWith('@')) {
@@ -83,7 +84,7 @@ export default class OSSSmartTagInput extends Component<OSSSmartTagInputArgs> {
       } else if (this.inputValue.startsWith('#')) {
         type = 'hashtag';
       }
-      let keyword = { value: this.inputValue.trim(), type };
+      const keyword = { value: this.inputValue.trim(), type };
       this.args.onKeydown(keyword);
       this.inputValue = '';
     }
