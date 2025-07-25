@@ -18,11 +18,18 @@ module('Integration | Component | o-s-s/smart/tag-input', function (hooks) {
     assert.dom('.tag-input-container').exists();
   });
 
-  test('it renders the empty state with placeholder', async function (assert) {
+  test('it renders the empty state with the default placeholder', async function (assert) {
     await render(hbs`<OSS::Smart::TagInput @value="" @onKeydown={{this.onKeydown}} />`);
     assert
       .dom('.tag-input-empty-state')
       .hasText(this.intl.t('oss-components.smart.tag_input.placeholder'), 'Placeholder text is rendered');
+  });
+
+  test('it displays the custom placeholder when @placeholder is provided', async function (assert) {
+    await render(
+      hbs`<OSS::Smart::TagInput @value="" @placeholder="Custom Placeholder" @onKeydown={{this.onKeydown}} />`
+    );
+    assert.dom('.tag-input-empty-state').hasText('Custom Placeholder', 'Custom placeholder is displayed');
   });
 
   test('it calls @onKeydown when pressing Enter', async function (assert) {
@@ -32,7 +39,7 @@ module('Integration | Component | o-s-s/smart/tag-input', function (hooks) {
     assert.true(this.onKeydown.calledOnce, 'onKeydown is called once');
   });
 
-  test('input is cleared on validation', async function (assert) {
+  test('the input is cleared on validation', async function (assert) {
     await render(hbs`<OSS::Smart::TagInput @value="" @onKeydown={{this.onKeydown}} />`);
     await fillIn('[data-control-name="tag-input"]', 'foo');
     assert.dom('[data-control-name="tag-input"]').hasValue('foo', 'Input has value "foo"');
