@@ -4,20 +4,7 @@ import { tracked } from '@glimmer/tracking';
 import { runSmartGradientAnimation } from '@upfluence/oss-components/utils/run-smart-gradient-animation';
 
 export type TagType = 'keyword' | 'hashtag' | 'mention';
-
 export type TagTypeDefinition = { icon?: string; color: string };
-
-// const TypeColorMatch: any = {
-//   hashtag: 'cyan',
-//   mention: 'violet',
-//   keyword: 'yellow'
-// };
-
-// const TypeIconMatch: any = {
-//   hashtag: 'fa-hashtag',
-//   mention: 'fa-at',
-//   keyword: null
-// };
 
 const TypeDefinition: Record<TagType, TagTypeDefinition> = {
   hashtag: { icon: 'fa-hashtag', color: 'cyan' },
