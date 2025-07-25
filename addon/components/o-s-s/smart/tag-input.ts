@@ -42,7 +42,7 @@ export default class OSSSmartTagInput extends Component<OSSSmartTagInputArgs> {
   }
 
   get placeholder(): string {
-    return this.args.placeholder || this.intl.t('oss-components.smart.tag_input.placeholder');
+    return this.args.placeholder ?? this.intl.t('oss-components.smart.tag_input.placeholder');
   }
 
   @action
