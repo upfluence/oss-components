@@ -4,6 +4,8 @@ import { render, click } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import sinon from 'sinon';
 
+const SIZES = ['md', 'lg'];
+
 module('Integration | Component | o-s-s/smart/tag', function (hooks) {
   setupRenderingTest(hooks);
 
@@ -28,7 +30,7 @@ module('Integration | Component | o-s-s/smart/tag', function (hooks) {
     assert.dom('.smart-tag span').hasText('baz');
   });
 
-  test('it renders a closable tag and triggers onRemove', async function (assert) {
+  test('clicking on the close button calls the @onRemove method', async function (assert) {
     this.onRemove = sinon.stub();
     await render(hbs`<OSS::Smart::Tag @label="foo" @onRemove={{this.onRemove}} />`);
     assert.dom('[data-control-name="remove-tag-button"]').exists('Remove button is rendered');
@@ -39,6 +41,21 @@ module('Integration | Component | o-s-s/smart/tag', function (hooks) {
   test('it applies the correct size class', async function (assert) {
     await render(hbs`<OSS::Smart::Tag @label="foo" @size="lg" />`);
     assert.dom('.smart-tag-container').hasClass('smart-tag-container--lg', 'Has large size class');
+  });
+
+  module('size attribute', () => {
+    test(`it applies the default size class when no size is specified`, async function (assert) {
+      await render(hbs`<OSS::Smart::Tag @label="foo" />`);
+      assert.dom('.smart-tag-container').hasClass('smart-tag-container--md', 'Has default medium size class');
+    });
+
+    SIZES.forEach((size) => {
+      test(`it applies the ${size} size class`, async function (assert) {
+        this.size = size;
+        await render(hbs`<OSS::Smart::Tag @label="foo" @size={{this.size}} />`);
+        assert.dom('.smart-tag-container').hasClass(`smart-tag-container--${size}`, `Has ${size} size class`);
+      });
+    });
   });
 
   test('it applies success animation class when @successAnimationOnInsertion is truthy', async function (assert) {
