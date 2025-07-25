@@ -17,10 +17,6 @@
     overflow: hidden;
     position: relative;
 
-    * {
-      font-weight: var(--font-weight-semibold);
-    }
-
     .hidden-span {
       height: 0px;
       display: block;
@@ -28,6 +24,7 @@
       width: fit-content;
       white-space: pre;
       transition: all 250ms ease-in-out;
+      font-weight: var(--font-weight-semibold);
     }
 
     .displayed-input {
@@ -36,6 +33,7 @@
       outline: none;
       border: none;
       padding: 0;
+      font-weight: var(--font-weight-semibold);
     }
 
     .tag-input-empty-state {
@@ -45,6 +43,30 @@
       pointer-events: none;
       position: absolute;
       transition: all 250ms ease-in-out;
+      font-weight: var(--font-weight-semibold);
+    }
+
+    .animated-overlay {
+      font-weight: var(--font-weight-semibold);
+      background: linear-gradient(
+        130deg,
+        var(--color-gray-400) 18%,
+        var(--color-gray-300) 25%,
+        rgba(250, 198, 255, 1) 56%,
+        var(--color-primary-100) 62%,
+        var(--color-white) 66%,
+        rgba(250, 198, 255, 0.58) 68%,
+        var(--color-gray-300) 73%,
+        var(--color-gray-400) 85%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: smart_loading_text_animation 3.5s ease-in-out infinite;
+      background-size: 600% 100%;
+      width: fit-content;
+      overflow: hidden;
+      white-space: nowrap;
     }
 
     &:focus-within {
@@ -69,28 +91,6 @@
   &:has(.tag-input--error) {
     border-color: var(--color-error-500);
   }
-}
-
-.animated-overlay {
-  background: linear-gradient(
-    130deg,
-    var(--color-gray-400) 18%,
-    var(--color-gray-300) 25%,
-    rgba(250, 198, 255, 1) 56%,
-    var(--color-primary-100) 62%,
-    var(--color-white) 66%,
-    rgba(250, 198, 255, 0.58) 68%,
-    var(--color-gray-300) 73%,
-    var(--color-gray-400) 85%
-  );
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  animation: smart_loading_text_animation 3.5s ease-in-out infinite;
-  background-size: 600% 100%;
-  width: fit-content;
-  overflow: hidden;
-  white-space: nowrap;
 }
 
 @keyframes smart_loading_text_animation-text {

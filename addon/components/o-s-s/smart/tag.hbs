@@ -1,5 +1,5 @@
 <div
-  class="smart-tag-container {{if (eq @size 'lg') 'smart-tag-container--lg'}}"
+  class="smart-tag-container {{if (eq @size 'lg') 'smart-tag-container--lg' 'smart-tag-container--md'}}"
   {{did-insert this.handleElementLifecycle}}
   {{did-update this.runAnimationOnLoadEnd @successAnimationOnInsertion}}
 >
