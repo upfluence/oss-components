@@ -46,9 +46,9 @@ export default {
       }
     },
     tag: {
-      description: 'Rendered tag for the item',
+      description: 'Optional tag element displayed as an overlay at the bottom of the component',
       table: {
-        type: { summary: '{ label: string, skin?: string }' },
+        type: { summary: '{ label?: string, icon?: string, skin?: string }' },
         defaultValue: { summary: 'undefined' }
       },
       control: {

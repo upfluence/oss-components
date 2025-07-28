@@ -9,7 +9,7 @@ interface OSSLayoutSidebarItemArgs {
   hasNotifications?: boolean;
   link: string;
   lockedAction?(): void;
-  tag?: Pick<OSSTagArgs, 'label' | 'skin'>;
+  tag?: Pick<OSSTagArgs, 'label' | 'skin' | 'icon'>;
 }
 
 export default class OSSLayoutSidebarItem extends Component<OSSLayoutSidebarItemArgs> {
