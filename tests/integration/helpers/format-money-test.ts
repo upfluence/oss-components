@@ -2,6 +2,10 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import {
+  PREVENT_COMPACT_NOTATION_ON_CENTS_BELOW,
+  PREVENT_COMPACT_NOTATION_ON_RAW_BELOW
+} from '@upfluence/oss-components/helpers/format-money';
 
 module('Integration | Helper | format-money', function (hooks) {
   setupRenderingTest(hooks);
@@ -25,10 +29,13 @@ module('Integration | Helper | format-money', function (hooks) {
     });
   });
 
-  module('Compact formatting (K/M/B)', function () {
-    test('Before thousands value, it renders complete number when compact is passed as true', async function (assert) {
+  module('Compact formatting (K/M/B)', function (hooks) {
+    hooks.beforeEach(function () {
       this.format = 'raw';
       this.compact = true;
+    });
+
+    test(`Below ${PREVENT_COMPACT_NOTATION_ON_RAW_BELOW} value, it renders complete number when compact is passed as true`, async function (assert) {
       this.amount = 834.89;
 
       await render(hbs`<div>{{format-money this.amount this.currency this.format this.compact}}</div>`);
@@ -36,17 +43,12 @@ module('Integration | Helper | format-money', function (hooks) {
     });
 
     test('Applies a K notation to thousands when compact is passed as true', async function (assert) {
-      this.format = 'raw';
-      this.compact = true;
-
       await render(hbs`<div>{{format-money this.amount this.currency this.format this.compact}}</div>`);
       assert.dom('div').hasText('$1.2K');
     });
 
     test('Applies a M notation to millions when compact is passed as true', async function (assert) {
       this.amount = 1234567.89;
-      this.format = 'raw';
-      this.compact = true;
 
       await render(hbs`<div>{{format-money this.amount this.currency this.format this.compact}}</div>`);
       assert.dom('div').hasText('$1.2M');
@@ -54,19 +56,20 @@ module('Integration | Helper | format-money', function (hooks) {
 
     test('Applies a B notation to billions when compact is passed as true', async function (assert) {
       this.amount = 1234567890.89;
-      this.format = 'raw';
-      this.compact = true;
 
       await render(hbs`<div>{{format-money this.amount this.currency this.format this.compact}}</div>`);
       assert.dom('div').hasText('$1.2B');
     });
   });
 
-  module('Compact + cents formatting', function () {
-    test('Applies a division by 100 when compact is passed as true', async function (assert) {
-      this.amount = 83489;
+  module('Compact + cents formatting', function (hooks) {
+    hooks.beforeEach(function () {
       this.format = 'cents';
       this.compact = true;
+    });
+
+    test(`Below ${PREVENT_COMPACT_NOTATION_ON_CENTS_BELOW} value, it applies a division by 100 when compact is passed as true`, async function (assert) {
+      this.amount = 83489;
 
       await render(hbs`<div>{{format-money this.amount this.currency this.format this.compact}}</div>`);
       assert.dom('div').hasText('$834.89');
@@ -74,8 +77,6 @@ module('Integration | Helper | format-money', function (hooks) {
 
     test('Applies a division by 100 and K notation to thousands when compact is passed as true', async function (assert) {
       this.amount = 123457;
-      this.format = 'cents';
-      this.compact = true;
 
       await render(hbs`<div>{{format-money this.amount this.currency this.format this.compact}}</div>`);
       assert.dom('div').hasText('$1.2K');
@@ -83,8 +84,6 @@ module('Integration | Helper | format-money', function (hooks) {
 
     test('Applies a division by 100 and M notation to millions when compact is passed as true', async function (assert) {
       this.amount = 123457890;
-      this.format = 'cents';
-      this.compact = true;
 
       await render(hbs`<div>{{format-money this.amount this.currency this.format this.compact}}</div>`);
       assert.dom('div').hasText('$1.2M');
@@ -92,8 +91,6 @@ module('Integration | Helper | format-money', function (hooks) {
 
     test('Applies a division by 100 and B notation to billions when compact is passed as true', async function (assert) {
       this.amount = 123457890123;
-      this.format = 'cents';
-      this.compact = true;
 
       await render(hbs`<div>{{format-money this.amount this.currency this.format this.compact}}</div>`);
       assert.dom('div').hasText('$1.2B');
