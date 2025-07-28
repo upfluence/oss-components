@@ -45,6 +45,16 @@ export default {
         type: 'text'
       }
     },
+    tag: {
+      description: 'Rendered tag for the item',
+      table: {
+        type: { summary: '{ label: string, skin?: string }' },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: {
+        type: 'object'
+      }
+    },
     lockedAction: {
       description: 'Function to be called on click when item is locked',
       table: {
@@ -70,6 +80,7 @@ const defaultArgs = {
   hasNotifications: false,
   locked: false,
   link: 'http://upfluence.com',
+  tag: undefined,
   lockedAction: action('lockedAction')
 };
 
@@ -79,6 +90,7 @@ const Template = (args) => ({
       <OSS::Layout::Sidebar::Item @icon={{this.icon}} @locked={{this.locked}}
                                   @hasNotifications={{this.hasNotifications}}
                                   @link={{this.link}}
+                                  @tag={{this.tag}}
                                   @lockedAction={{this.lockedAction}}/>
     </div>
   `,
