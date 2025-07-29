@@ -99679,10 +99679,12 @@ interface OSSCodeBlockArgs {
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = void 0;
+  _exports.default = _exports.PREVENT_COMPACT_NOTATION_ON_RAW_BELOW = _exports.PREVENT_COMPACT_NOTATION_ON_CENTS_BELOW = void 0;
   _exports.formatMoneyHelper = formatMoneyHelper;
   0; //eaimeta@70e063a35619d71f0,"@ember/component/helper"eaimeta@70e063a35619d71f
-  var _getFormatter = function (currency, compact) {
+  const PREVENT_COMPACT_NOTATION_ON_RAW_BELOW = _exports.PREVENT_COMPACT_NOTATION_ON_RAW_BELOW = 1000;
+  const PREVENT_COMPACT_NOTATION_ON_CENTS_BELOW = _exports.PREVENT_COMPACT_NOTATION_ON_CENTS_BELOW = PREVENT_COMPACT_NOTATION_ON_RAW_BELOW * 100;
+  const _getFormatter = function (currency, compact) {
     return Intl.NumberFormat(['en-EN', 'fr-FR'], {
       style: 'currency',
       currency: currency,
@@ -99691,13 +99693,14 @@ interface OSSCodeBlockArgs {
       notation: compact ? 'compact' : undefined
     });
   };
-  var _formatMoney = function (amount, currency, format = 'raw', compact = false) {
+  const _formatMoney = function (amount, currency, format = 'raw', compact = false) {
     if (isNaN(parseInt(amount)) || !currency) return amount;
     const value = format === 'cents' ? parseFloat(amount) / 100 : parseFloat(amount);
     return _getFormatter(currency, compact).format(value);
   };
   function formatMoneyHelper(params) {
-    const [amount, currency, format = 'raw', compact = false] = params;
+    let [amount, currency, format = 'raw', compact = false] = params;
+    if (amount < PREVENT_COMPACT_NOTATION_ON_RAW_BELOW && format === 'raw' || amount < PREVENT_COMPACT_NOTATION_ON_CENTS_BELOW && format === 'cents') compact = false;
     return _formatMoney(amount, currency, format, compact);
   }
   var _default = _exports.default = _helper.default.helper(formatMoneyHelper);
