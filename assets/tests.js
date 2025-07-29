@@ -8269,7 +8269,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
       (0, _qunit.test)('Default value for locked is false', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::Layout::Sidebar::Item @icon="far fa-search"/>
+          <OSS::Layout::Sidebar::Item @icon="far fa-search" />
         */
         {
           "id": "zRXo9p88",
@@ -8282,7 +8282,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
       (0, _qunit.test)('When locked is true', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::Layout::Sidebar::Item @icon="far fa-search" @locked={{true}}/>
+          <OSS::Layout::Sidebar::Item @icon="far fa-search" @locked={{true}} />
         */
         {
           "id": "56tac0XL",
@@ -8295,7 +8295,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
       (0, _qunit.test)('Default value for hasNotification is false', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::Layout::Sidebar::Item @icon="far fa-search"/>
+          <OSS::Layout::Sidebar::Item @icon="far fa-search" />
         */
         {
           "id": "zRXo9p88",
@@ -8318,6 +8318,75 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
         }));
         assert.dom('.oss-sidebar-item--notification').exists();
       });
+      (0, _qunit.module)('for @tag argument', () => {
+        (0, _qunit.test)("It doesn't render it for undefined value", async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Layout::Sidebar::Item @icon="far fa-search" />
+          */
+          {
+            "id": "zRXo9p88",
+            "block": "[[[8,[39,0],null,[[\"@icon\"],[\"far fa-search\"]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.oss-sidebar-item--tag').doesNotExist();
+        });
+        (0, _qunit.module)('When tag is defined', () => {
+          (0, _qunit.test)('It renders it', async function (assert) {
+            await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+            /*
+              <OSS::Layout::Sidebar::Item @icon="far fa-search" @tag={{hash label="New" skin="chat-gpt"}} />
+            */
+            {
+              "id": "Lezkvzvb",
+              "block": "[[[8,[39,0],null,[[\"@icon\",\"@tag\"],[\"far fa-search\",[28,[37,1],null,[[\"label\",\"skin\"],[\"New\",\"chat-gpt\"]]]]],null]],[],false,[\"o-s-s/layout/sidebar/item\",\"hash\"]]",
+              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
+              "isStrictMode": false
+            }));
+            assert.dom('.oss-sidebar-item--tag .upf-tag.upf-tag--xs').exists();
+          });
+          (0, _qunit.test)('It renders the correct wording', async function (assert) {
+            await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+            /*
+              <OSS::Layout::Sidebar::Item @icon="far fa-search" @tag={{hash label="New" skin="chat-gpt"}} />
+            */
+            {
+              "id": "Lezkvzvb",
+              "block": "[[[8,[39,0],null,[[\"@icon\",\"@tag\"],[\"far fa-search\",[28,[37,1],null,[[\"label\",\"skin\"],[\"New\",\"chat-gpt\"]]]]],null]],[],false,[\"o-s-s/layout/sidebar/item\",\"hash\"]]",
+              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
+              "isStrictMode": false
+            }));
+            assert.dom('.oss-sidebar-item--tag').hasText('New');
+          });
+          (0, _qunit.test)('It renders the correct icon', async function (assert) {
+            await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+            /*
+              <OSS::Layout::Sidebar::Item @icon="far fa-search" @tag={{hash icon="fa-search" skin="chat-gpt"}} />
+            */
+            {
+              "id": "1zMHsVk3",
+              "block": "[[[8,[39,0],null,[[\"@icon\",\"@tag\"],[\"far fa-search\",[28,[37,1],null,[[\"icon\",\"skin\"],[\"fa-search\",\"chat-gpt\"]]]]],null]],[],false,[\"o-s-s/layout/sidebar/item\",\"hash\"]]",
+              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
+              "isStrictMode": false
+            }));
+            assert.dom('.oss-sidebar-item--tag i.fa-search').exists();
+          });
+          (0, _qunit.test)('It renders the correct skin', async function (assert) {
+            await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+            /*
+              <OSS::Layout::Sidebar::Item @icon="far fa-search" @tag={{hash label="New" skin="chat-gpt"}} />
+            */
+            {
+              "id": "Lezkvzvb",
+              "block": "[[[8,[39,0],null,[[\"@icon\",\"@tag\"],[\"far fa-search\",[28,[37,1],null,[[\"label\",\"skin\"],[\"New\",\"chat-gpt\"]]]]],null]],[],false,[\"o-s-s/layout/sidebar/item\",\"hash\"]]",
+              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
+              "isStrictMode": false
+            }));
+            assert.dom('.oss-sidebar-item--tag .upf-tag.upf-tag--chat-gpt').exists();
+          });
+        });
+      });
     });
     (0, _qunit.module)('Actions', function (hooks) {
       hooks.beforeEach(function () {
@@ -8328,7 +8397,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
         const router = this.owner.lookup('service:router');
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::Layout::Sidebar::Item @icon="far fa-search" @link="index" @lockedAction={{this.lockedAction}}/>
+          <OSS::Layout::Sidebar::Item @icon="far fa-search" @link="index" @lockedAction={{this.lockedAction}} />
         */
         {
           "id": "IUtR/p3O",
@@ -8343,7 +8412,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
       (0, _qunit.test)('When locked is true lockedAction is triggered', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::Layout::Sidebar::Item @icon="far fa-search" @locked={{true}} @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}}/>
+          <OSS::Layout::Sidebar::Item @icon="far fa-search" @locked={{true}} @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}} />
         */
         {
           "id": "hO9alJPM",

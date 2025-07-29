@@ -12872,6 +12872,11 @@ a.oss-sidebar-item:focus {
 .oss-sidebar-item .oss-sidebar-item--locked i {
   font-size: 8px;
 }
+.oss-sidebar-item .oss-sidebar-item--tag {
+  position: absolute;
+  font-size: var(--font-size-sm);
+  top: 32px;
+}
 .oss-access-panel-backdrop {
   position: absolute;
   width: 100%;
