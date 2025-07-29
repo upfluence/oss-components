@@ -6697,7 +6697,7 @@ label {
   background-color: var(--color-gray-100);
 }
 .input-state-active {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
 }
@@ -6720,10 +6720,9 @@ label {
   box-shadow: none;
 }
 .input-state-focus {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
-  border: 1px solid var(--color-gray-300);
 }
 .input-state-success-focus {
   box-shadow: 0px 0px 0px 2px var(--color-success-100), var(--box-shadow-xs);
@@ -6769,15 +6768,14 @@ label {
   background-color: var(--color-gray-100);
 }
 .upf-input:not(:disabled, .disabled):active {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
 }
 .upf-input:not(:disabled, .disabled):focus {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
-  border: 1px solid var(--color-gray-300);
 }
 .upf-input.disabled,
 .upf-input:disabled {
@@ -6823,15 +6821,14 @@ label {
   background-color: var(--color-gray-100);
 }
 .upf-select:not(:disabled, .disabled):active {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
 }
 .upf-select:not(:disabled, .disabled):focus {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
-  border: 1px solid var(--color-gray-300);
 }
 .upf-select.disabled,
 .upf-select:disabled {
@@ -8152,15 +8149,14 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
   background-color: var(--color-gray-100);
 }
 .array-input-container:not(:disabled, .disabled):active {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
 }
 .array-input-container:not(:disabled, .disabled):focus {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
-  border: 1px solid var(--color-gray-300);
 }
 .array-input-container.disabled,
 .array-input-container:disabled {
@@ -8175,15 +8171,14 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
 }
 .array-input-container:not(.array-input-container--disabled):active,
 .array-input-container:not(.array-input-container--disabled).active {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
 }
 .array-input-container:not(.array-input-container--disabled):focus-within {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
-  border: 1px solid var(--color-gray-300);
 }
 .array-input-container--transparent {
   background-color: transparent;
@@ -9497,21 +9492,18 @@ For complete information visit: www.freakflagsprite.com
 }
 .phone-number-container .phone-number-input:active,
 .phone-number-container .phone-number-input--active {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
-  border-color: var(--color-border-default);
 }
 .phone-number-container .phone-number-input:active:hover,
 .phone-number-container .phone-number-input--active:hover {
   background-color: transparent;
 }
 .phone-number-container .phone-number-input:focus-within {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
-  border: 1px solid var(--color-gray-300);
-  border-color: var(--color-border-default);
 }
 .currency-input-container {
   flex: 1;
@@ -9540,15 +9532,14 @@ For complete information visit: www.freakflagsprite.com
   background-color: var(--color-gray-100);
 }
 .currency-input-container .currency-input:not(.disabled, :disabled).currency-input--active {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
 }
 .currency-input-container .currency-input:not(.disabled, :disabled):focus-within {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
-  border: 1px solid var(--color-gray-300);
 }
 .currency-input-container .onlycurrency {
   padding-right: 0;
@@ -9560,7 +9551,7 @@ For complete information visit: www.freakflagsprite.com
   background-color: transparent;
 }
 .currency-input-container .onlycurrency.currency-input--active {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
 }
@@ -9702,15 +9693,14 @@ For complete information visit: www.freakflagsprite.com
 }
 .country-selector-container .upf-input:active,
 .country-selector-container .upf-input.active {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
 }
 .country-selector-container .upf-input:focus {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
-  border: 1px solid var(--color-gray-300);
 }
 .country-selector-container .row-selected span {
   color: #1b1e21;
@@ -11023,13 +11013,12 @@ a.upf-btn--sm {
   background-color: var(--color-gray-100);
 }
 .oss-input-container .yielded-input input:focus {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
-  border: 1px solid var(--color-gray-300);
 }
 .oss-input-container .yielded-input input:active {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
 }
@@ -11220,30 +11209,27 @@ a.upf-btn--sm {
   border: none;
 }
 .oss-input-group .oss-input-group-row:not(.disabled, :disabled):active {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
-  border-color: var(--color-border-default);
 }
 .oss-input-group .oss-input-group-row:not(.disabled, :disabled):active .oss-input-container .upf-input:active {
   box-shadow: none;
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
   border: none;
 }
 .oss-input-group .oss-input-group-row:not(.disabled, :disabled):focus-within {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
-  border-color: var(--color-border-default);
 }
 .oss-input-group .oss-input-group-row:not(.disabled, :disabled):focus-within .oss-input-container input,
 .oss-input-group .oss-input-group-row:not(.disabled, :disabled):focus-within .oss-input-container .upf-input:focus {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
-  border: 1px solid var(--color-gray-300);
   box-shadow: none;
   border: none;
 }
@@ -11647,15 +11633,14 @@ a.upf-btn--sm {
 }
 .oss-select-container:not(.oss-select-container--disabled, .oss-select-container--errorful, .oss-select-container--successful) .upf-input:active,
 .oss-select-container:not(.oss-select-container--disabled, .oss-select-container--errorful, .oss-select-container--successful) .upf-input.active {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
 }
 .oss-select-container:not(.oss-select-container--disabled, .oss-select-container--errorful, .oss-select-container--successful) .upf-input:focus {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
-  border: 1px solid var(--color-gray-300);
 }
 :not(.oss-select-container--disabled).oss-select-container--errorful .upf-input {
   border-color: var(--color-error-500);
@@ -11685,17 +11670,16 @@ a.upf-btn--sm {
 }
 :not(.oss-select-container--disabled).oss-select-container--successful .upf-input:active,
 :not(.oss-select-container--disabled).oss-select-container--successful .upf-input.active {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
   border-color: var(--color-success-500);
   box-shadow: 0px 0px 0px 2px var(--color-success-100), var(--box-shadow-xs);
 }
 :not(.oss-select-container--disabled).oss-select-container--successful .upf-input:focus {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
-  border: 1px solid var(--color-gray-300);
   border-color: var(--color-success-500);
 }
 .oss-select-container__dropdown:has(.upf-input) {
@@ -12186,16 +12170,14 @@ a.upf-btn--sm {
   background-color: var(--color-gray-50);
 }
 .number-input:active {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
-  border: 1px solid var(--color-border-default);
 }
 .number-input:focus-within {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
-  border: 1px solid var(--color-border-default);
 }
 .number-input:focus-within .upf-square-btn:not(:disabled, .disabled):hover {
   border-color: var(--color-border-default);
@@ -12266,15 +12248,14 @@ a.upf-btn--sm {
   background-color: var(--color-gray-100);
 }
 .oss-textarea-container .oss-textarea:not(:disabled, .disabled):active {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
 }
 .oss-textarea-container .oss-textarea:not(:disabled, .disabled):focus {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
-  border: 1px solid var(--color-gray-300);
 }
 .oss-textarea-container .oss-textarea.disabled,
 .oss-textarea-container .oss-textarea:disabled {
@@ -12337,15 +12318,14 @@ a.upf-btn--sm {
   background-color: var(--color-gray-100);
 }
 .oss-textarea:not(:disabled, .disabled):active {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
 }
 .oss-textarea:not(:disabled, .disabled):focus {
-  border: 1px solid var(--color-gray-100);
+  border: 1px solid var(--color-primary-500);
   box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
   background-color: var(--color-white);
-  border: 1px solid var(--color-gray-300);
 }
 .oss-textarea.disabled,
 .oss-textarea:disabled {
