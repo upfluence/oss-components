@@ -1,12 +1,15 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
 
+import type { OSSTagArgs } from '@upfluence/oss-components/components/o-s-s/tag';
+
 interface OSSLayoutSidebarItemArgs {
   icon: string;
   locked?: boolean;
   hasNotifications?: boolean;
   link: string;
   lockedAction?(): void;
+  tag?: Pick<OSSTagArgs, 'label' | 'skin' | 'icon'>;
 }
 
 export default class OSSLayoutSidebarItem extends Component<OSSLayoutSidebarItemArgs> {

@@ -43,6 +43,11 @@
         @lockedAction={{fn this.redirectTo "locked credit-card"}}
       />
       <OSS::Layout::Sidebar::Item
+        @icon="far fa-kiwi-bird"
+        @defaultAction={{fn this.redirectTo "pointer"}}
+        @tag={{hash label="New" skin="chat-gpt"}}
+      />
+      <OSS::Layout::Sidebar::Item
         @icon="far fa-bullhorn"
         @defaultAction={{fn this.redirectTo "pointer"}}
         @hasNotifications={{true}}
