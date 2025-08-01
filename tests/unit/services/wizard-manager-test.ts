@@ -205,6 +205,16 @@ module('Unit | Service | wizard-manager', function (hooks) {
       assert.strictEqual(allSteps[0].key, 'step-1');
       assert.strictEqual(allSteps[1].key, 'step-2');
     });
+
+    test('findStepByKey returns the step with the given key', function (assert) {
+      this.service.initialize(this.config as WizardConfiguration);
+      const step1 = this.service.findStepByKey('step-1');
+      const step2 = this.service.findStepByKey('step-2');
+      const step3 = this.service.findStepByKey('step-3');
+      assert.strictEqual(step1?.key, 'step-1');
+      assert.strictEqual(step2?.key, 'step-2');
+      assert.strictEqual(step3, undefined, 'Step with key step-3 does not exist');
+    });
   });
 
   module('Select Next/Previous Step', function (hooks) {

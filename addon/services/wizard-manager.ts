@@ -138,6 +138,10 @@ export default class WizardManager extends Service {
     return [];
   }
 
+  findStepByKey(stepKey: string): Step | undefined {
+    return this.allSteps.find((step: Step) => step.key === stepKey);
+  }
+
   reset(): void {
     this.initialized = false;
     this.sections = [];
