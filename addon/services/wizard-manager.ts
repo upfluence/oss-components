@@ -38,6 +38,7 @@ export type WizardConfiguration = {
       key: string;
       componentClass: any;
       validateStep?: () => Promise<boolean>;
+      [key: string]: unknown;
     }[];
   }[];
 };
@@ -95,7 +96,12 @@ export default class WizardManager extends Service {
     }
   }
 
-  selectStep(stepId: string): void {
+  selectStep(stepId: string, bypassValidations?: boolean): void {
+    if (bypassValidations) {
+      this.focusStep(stepId);
+      return;
+    }
+
     const targetStep = this.findStepById(stepId);
     if (!targetStep) return;
 
@@ -135,6 +141,10 @@ export default class WizardManager extends Service {
       return section.steps.filter((step: Step) => step.displayState !== 'empty');
     }
     return [];
+  }
+
+  findStepByKey(stepKey: string): Step | undefined {
+    return this.allSteps.find((step: Step) => step.key === stepKey);
   }
 
   reset(): void {
@@ -195,7 +205,7 @@ export default class WizardManager extends Service {
         id: guidFor(section.key),
         key: section.key,
         steps: section.steps.map((step) => {
-          return {
+          let defaultStep: Step = {
             id: guidFor(step.key),
             key: step.key,
             componentClass: step.componentClass,
@@ -203,6 +213,8 @@ export default class WizardManager extends Service {
             displayState: 'none',
             visited: false
           };
+
+          return { ...defaultStep, ...step };
         })
       };
     });
