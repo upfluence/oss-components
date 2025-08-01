@@ -43,6 +43,27 @@ module('Unit | Service | wizard-manager', function (hooks) {
       assert.equal(this.service.allSteps[1].key, 'step-2');
     });
 
+    test('Extra step properties are preserved', function (assert) {
+      const extraProperty = { customProp: 'customValue' };
+      this.config = {
+        sections: [createSection('section-1', [createStep('step-1', extraProperty), createStep('step-2')])]
+      };
+      this.service.initialize(this.config as WizardConfiguration);
+      const step1 = this.service.allSteps[0];
+      assert.equal(step1.customProp, 'customValue', 'Extra properties are preserved in steps');
+    });
+
+    test('Setting a visited attribute on steps overwrites the default', function (assert) {
+      this.config = {
+        sections: [createSection('section-1', [createStep('step-1', { visited: true }), createStep('step-2')])]
+      };
+      this.service.initialize(this.config as WizardConfiguration);
+      const step1 = this.service.allSteps[0];
+      const step2 = this.service.allSteps[1];
+      assert.true(step1.visited);
+      assert.false(step2.visited);
+    });
+
     test('Focused step is set to first step', function (assert) {
       this.service.initialize(this.config as WizardConfiguration);
 
