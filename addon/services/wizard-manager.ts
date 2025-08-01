@@ -96,7 +96,12 @@ export default class WizardManager extends Service {
     }
   }
 
-  selectStep(stepId: string): void {
+  selectStep(stepId: string, bypassValidations?: boolean): void {
+    if (bypassValidations) {
+      this.focusStep(stepId);
+      return;
+    }
+
     const targetStep = this.findStepById(stepId);
     if (!targetStep) return;
 

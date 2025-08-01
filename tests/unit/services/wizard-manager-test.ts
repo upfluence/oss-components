@@ -109,6 +109,26 @@ module('Unit | Service | wizard-manager', function (hooks) {
       assert.equal(this.service.focusedStepId, step2Id);
     });
 
+    test('calling selectStep with a bypassValidations flag focuses the step without validation', async function (assert) {
+      const step1 = createStep('step-1', { validateStep: () => sinon.stub().resolves(true) });
+      const step2 = createStep('step-2', { validateStep: () => sinon.stub().resolves(true) });
+      this.config = {
+        sections: [createSection('section-1', [step1, step2])]
+      };
+
+      this.service.initialize(this.config as WizardConfiguration);
+      const step1Id = this.service.allSteps[0].id;
+      const step2Id = this.service.allSteps[1].id;
+      this.validateStub = sinon.stub(this.service.allSteps[0], 'validateStep').resolves(true);
+
+      assert.equal(this.service.focusedStepId, step1Id);
+
+      this.service.selectStep(step2Id, true);
+      await settled();
+      assert.equal(this.service.focusedStepId, step1Id);
+      assert.true(this.validateStub.notCalled, 'validateStep was not called when bypassValidations is true');
+    });
+
     test("selectStep runs the current step's validateStep if provided", async function (assert) {
       this.service.initialize(this.config as WizardConfiguration);
       this.validateStub = sinon.stub(this.service.allSteps[0], 'validateStep').resolves(true);
