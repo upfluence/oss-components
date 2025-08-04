@@ -97474,6 +97474,192 @@ interface OSSCodeBlockArgs {
   const BasicUsage = _exports.BasicUsage = DefaultUsageTemplate.bind({});
   BasicUsage.args = defaultArgs;
 });
+;define("@upfluence/oss-components/components/o-s-s/tip", ["exports", "@ember/component", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _component2, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class={{concat "oss-tip" (if @active " oss-tip--active")}} ...attributes>
+    {{#if (has-block "custom-icon")}}
+      {{yield to="custom-icon"}}
+    {{else}}
+      {{#if @icon}}
+        <OSS::Icon @style={{fa-icon-style @icon}} class="font-color-gray-400" @icon={{fa-icon-value @icon}} />
+      {{/if}}
+    {{/if}}
+    {{yield to="custom-icon"}}
+    <div class="{{if @important 'font-weight-semibold'}} font-size-{{this.labelSize}}">{{@label}}</div>
+    <OSS::Icon class="oss-tip__bulb-icon" @icon="fa-lightbulb-on" />
+  </div>
+  */
+  {
+    "id": "uuX/b8/j",
+    "block": "[[[11,0],[16,0,[28,[37,0],[\"oss-tip\",[52,[30,1],\" oss-tip--active\"]],null]],[17,2],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"    \"],[18,6,null],[1,\"\\n\"]],[]],[[[41,[30,3],[[[1,\"      \"],[8,[39,4],[[24,0,\"font-color-gray-400\"]],[[\"@style\",\"@icon\"],[[28,[37,5],[[30,3]],null],[28,[37,6],[[30,3]],null]]],null],[1,\"\\n\"]],[]],null]],[]]],[1,\"  \"],[18,6,null],[1,\"\\n  \"],[10,0],[15,0,[29,[[52,[30,4],\"font-weight-semibold\"],\" font-size-\",[30,0,[\"labelSize\"]]]]],[12],[1,[30,5]],[13],[1,\"\\n  \"],[8,[39,4],[[24,0,\"oss-tip__bulb-icon\"]],[[\"@icon\"],[\"fa-lightbulb-on\"]],null],[1,\"\\n\"],[13]],[\"@active\",\"&attrs\",\"@icon\",\"@important\",\"@label\",\"&custom-icon\"],false,[\"concat\",\"if\",\"has-block\",\"yield\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/tip.hbs",
+    "isStrictMode": false
+  });
+  class Tip extends _component2.default {
+    get labelSize() {
+      return this.args.size ?? 'sm';
+    }
+  }
+  _exports.default = Tip;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, Tip);
+});
+;define("@upfluence/oss-components/components/o-s-s/tip.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.Default = _exports.CustomContent = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  const Sizes = ['sm', 'md'];
+  var _default = _exports.default = {
+    title: 'Components/OSS::TIP',
+    component: 'tip',
+    argTypes: {
+      label: {
+        description: 'Text content of the tip',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        },
+        type: {
+          required: true
+        }
+      },
+      active: {
+        description: 'Applies a blue background to the tip',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        },
+        type: {
+          required: true
+        }
+      },
+      icon: {
+        description: 'Icon placed before the tip if any. Font Awesome class, for example: fa-envelope-open',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      important: {
+        description: 'Makes the label bold if true',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      size: {
+        description: 'Adjust size',
+        table: {
+          type: {
+            summary: Sizes.join('|')
+          },
+          defaultValue: {
+            summary: 'sm'
+          }
+        },
+        options: Sizes,
+        control: {
+          type: 'select'
+        }
+      }
+    }
+  };
+  const defaultArgs = {
+    label: 'Label',
+    active: false,
+    icon: 'fa-handshake',
+    important: false,
+    size: 'sm'
+  };
+  const DefaultUsageTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <OSS::Tip
+          @label={{this.label}}
+          @active={{this.active}}
+          @icon={{this.icon}}
+          @important={{this.important}}
+          @size={{this.size}}
+        />
+      
+    */
+    {
+      "id": "hWKVihX4",
+      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@label\",\"@active\",\"@icon\",\"@important\",\"@size\"],[[30,0,[\"label\"]],[30,0,[\"active\"]],[30,0,[\"icon\"]],[30,0,[\"important\"]],[30,0,[\"size\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/tip\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/tip.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const CustomContentTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <OSS::Tip
+          @label={{this.label}}
+          @active={{this.active}}
+          @important={{this.important}}
+          @size={{this.size}}
+        >
+          <:custom-icon><div class="fflag fflag-FR ff-sm ff-round" /></:custom-icon>
+        </OSS::Tip>
+      
+    */
+    {
+      "id": "hGHVFXoj",
+      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@label\",\"@active\",\"@important\",\"@size\"],[[30,0,[\"label\"]],[30,0,[\"active\"]],[30,0,[\"important\"]],[30,0,[\"size\"]]]],[[\"custom-icon\"],[[[[10,0],[14,0,\"fflag fflag-FR ff-sm ff-round\"],[12],[13]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/tip\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/tip.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const Default = _exports.Default = DefaultUsageTemplate.bind({});
+  Default.args = defaultArgs;
+  const CustomContent = _exports.CustomContent = CustomContentTemplate.bind({});
+  CustomContent.args = {
+    ...defaultArgs
+  };
+});
 ;define("@upfluence/oss-components/components/o-s-s/togglable-section", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@ember/object", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _object, _templateFactory) {
   "use strict";
 

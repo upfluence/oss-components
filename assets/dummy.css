@@ -11254,6 +11254,23 @@ a.upf-btn--sm {
 .oss-input-group .oss-input-group-row--error:not(.disabled, :disabled):focus-within .oss-input-container .upf-input:focus {
   box-shadow: none;
 }
+.oss-tip {
+  height: var(--spacing-px-30);
+  padding: 0 var(--spacing-px-6);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-px-6);
+  border-radius: var(--border-radius-sm);
+  transition: background ease-in-out 0.25s;
+  max-width: max-content;
+}
+.oss-tip__bulb-icon {
+  color: var(--color-blue-600);
+  padding: 0 var(--spacing-px-6);
+}
+.oss-tip--active {
+  background: var(--color-blue-50);
+}
 .upf-tooltip {
   position: absolute;
   display: flex;

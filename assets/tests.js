@@ -14635,6 +14635,182 @@ define("dummy/tests/integration/components/o-s-s/text-area-test", ["qunit", "emb
     });
   });
 });
+define("dummy/tests/integration/components/o-s-s/tip-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"qunit",0,"ember-qunit",0,"@ember/test-helpers"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/tip', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.label = 'Label';
+      this.active = false;
+      this.icon = 'fa-handshake';
+      this.important = false;
+      this.size = 'sm';
+    });
+    (0, _qunit.test)('it renders', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Tip @label={{this.label}} @active={{this.active}} />
+      */
+      {
+        "id": "IvjO6ucl",
+        "block": "[[[8,[39,0],null,[[\"@label\",\"@active\"],[[30,0,[\"label\"]],[30,0,[\"active\"]]]],null]],[],false,[\"o-s-s/tip\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/tip-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-tip').exists();
+    });
+    (0, _qunit.module)('Basic rendering', function () {
+      (0, _qunit.test)('it renders with default args', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Tip @label={{this.label}} @active={{this.active}} />
+        */
+        {
+          "id": "IvjO6ucl",
+          "block": "[[[8,[39,0],null,[[\"@label\",\"@active\"],[[30,0,[\"label\"]],[30,0,[\"active\"]]]],null]],[],false,[\"o-s-s/tip\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/tip-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-tip').exists();
+        assert.dom('.fa-lightbulb-on').exists();
+        assert.dom('.font-size-sm').hasText('Label');
+        assert.dom('.font-weight-semibold').doesNotExist();
+      });
+      (0, _qunit.test)('it yields content to custom-icon', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Tip @label={{this.label}} @active={{this.active}}>
+                  <:custom-icon><div class="fflag fflag-FR ff-sm ff-round" /></:custom-icon>
+                </OSS::Tip>
+              
+        */
+        {
+          "id": "2oR7tiuV",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@label\",\"@active\"],[[30,0,[\"label\"]],[30,0,[\"active\"]]]],[[\"custom-icon\"],[[[[10,0],[14,0,\"fflag fflag-FR ff-sm ff-round\"],[12],[13]],[]]]]],[1,\"\\n      \"]],[],false,[\"o-s-s/tip\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/tip-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.fflag-FR').exists();
+      });
+    });
+    (0, _qunit.module)('Active state', function () {
+      (0, _qunit.test)('it does not add the active class when @active is false', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Tip @label={{this.label}} @active={{false}} />
+        */
+        {
+          "id": "XqFz80u1",
+          "block": "[[[8,[39,0],null,[[\"@label\",\"@active\"],[[30,0,[\"label\"]],false]],null]],[],false,[\"o-s-s/tip\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/tip-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-tip').doesNotHaveClass('oss-tip--active');
+      });
+      (0, _qunit.test)('it adds the active class when @active is true', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Tip @label={{this.label}} @active={{true}} />
+        */
+        {
+          "id": "YY2rVapY",
+          "block": "[[[8,[39,0],null,[[\"@label\",\"@active\"],[[30,0,[\"label\"]],true]],null]],[],false,[\"o-s-s/tip\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/tip-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-tip').hasClass('oss-tip--active');
+      });
+    });
+    (0, _qunit.module)('Important label', function () {
+      (0, _qunit.test)('it adds bold style when @important is true', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Tip @label={{this.label}} @active={{this.active}} @important={{true}} />
+        */
+        {
+          "id": "OUrVjH9w",
+          "block": "[[[8,[39,0],null,[[\"@label\",\"@active\",\"@important\"],[[30,0,[\"label\"]],[30,0,[\"active\"]],true]],null]],[],false,[\"o-s-s/tip\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/tip-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.font-weight-semibold').exists();
+      });
+      (0, _qunit.test)('it does not add bold style when @important is false', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Tip @label={{this.label}} @active={{this.active}} @important={{false}} />
+        */
+        {
+          "id": "SkeFXYJX",
+          "block": "[[[8,[39,0],null,[[\"@label\",\"@active\",\"@important\"],[[30,0,[\"label\"]],[30,0,[\"active\"]],false]],null]],[],false,[\"o-s-s/tip\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/tip-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.font-weight-semibold').doesNotExist();
+      });
+    });
+    (0, _qunit.module)('Size variants', function () {
+      (0, _qunit.test)('it uses sm as default size', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Tip @label={{this.label}} @active={{true}} />
+        */
+        {
+          "id": "YY2rVapY",
+          "block": "[[[8,[39,0],null,[[\"@label\",\"@active\"],[[30,0,[\"label\"]],true]],null]],[],false,[\"o-s-s/tip\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/tip-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.font-size-sm').exists();
+      });
+      (0, _qunit.test)('it renders with size=md', async function (assert) {
+        this.set('size', 'md');
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Tip @label={{this.label}} @active={{true}} @size={{this.size}} />
+        */
+        {
+          "id": "4r99WPST",
+          "block": "[[[8,[39,0],null,[[\"@label\",\"@active\",\"@size\"],[[30,0,[\"label\"]],true,[30,0,[\"size\"]]]],null]],[],false,[\"o-s-s/tip\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/tip-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.font-size-md').exists();
+      });
+    });
+    (0, _qunit.module)('Icon rendering', function () {
+      (0, _qunit.test)('it renders icon when @icon is provided', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Tip @label={{this.label}} @active={{this.active}} @icon={{this.icon}} />
+        */
+        {
+          "id": "pZi9YY84",
+          "block": "[[[8,[39,0],null,[[\"@label\",\"@active\",\"@icon\"],[[30,0,[\"label\"]],[30,0,[\"active\"]],[30,0,[\"icon\"]]]],null]],[],false,[\"o-s-s/tip\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/tip-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.far.fa-handshake.font-color-gray-400').exists();
+      });
+      (0, _qunit.test)('it does not render icon when @icon is not provided', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Tip @label={{this.label}} @active={{this.active}} />
+        */
+        {
+          "id": "IvjO6ucl",
+          "block": "[[[8,[39,0],null,[[\"@label\",\"@active\"],[[30,0,[\"label\"]],[30,0,[\"active\"]]]],null]],[],false,[\"o-s-s/tip\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/tip-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.font-color-gray-400').doesNotExist();
+      });
+    });
+  });
+});
 define("dummy/tests/integration/components/o-s-s/togglable-section-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/object", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _object, _sinon, _templateFactory) {
   "use strict";
 
