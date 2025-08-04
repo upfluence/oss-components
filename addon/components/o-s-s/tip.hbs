@@ -1,6 +1,10 @@
 <div class={{concat "oss-tip" (if @active " oss-tip--active")}} ...attributes>
-  {{#if @icon}}
-    <OSS::Icon @style={{fa-icon-style @icon}} class="font-color-gray-400" @icon={{fa-icon-value @icon}} />
+  {{#if (has-block "custom-icon")}}
+    {{yield to="custom-icon"}}
+  {{else}}
+    {{#if @icon}}
+      <OSS::Icon @style={{fa-icon-style @icon}} class="font-color-gray-400" @icon={{fa-icon-value @icon}} />
+    {{/if}}
   {{/if}}
   {{yield to="custom-icon"}}
   <div class="{{if @important 'font-weight-semibold'}} font-size-{{this.labelSize}}">{{@label}}</div>
