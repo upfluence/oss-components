@@ -1,8 +1,9 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { click, render, settled, triggerEvent, waitFor } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { type Placement } from '@upfluence/oss-components/test-support/custom-assertions/tooltip';
+import Sinon from 'sinon';
 
 const PLACEMENTS: Placement[] = [undefined, 'top', 'bottom', 'left', 'right'];
 
@@ -104,6 +105,59 @@ module('Integration | Component | modifiers/enable-tooltip', function (hooks) {
     `);
 
       await assert.tooltip('.test-container').exists();
+    });
+  });
+
+  module('Disable on mobile', (hooks) => {
+    hooks.beforeEach(function () {
+      this.disableOnMobile = true;
+    });
+
+    test('When the user agent is not a mobile, the tooltip is properly displayed', async function (assert) {
+      await render(hbs`
+      <div class="test-container" style="height: 20px; width: 40px"
+           {{enable-tooltip title=this.title
+                            subtitle=this.subtitle
+                            placement=this.placement
+                            icon=this.icon
+                            trigger=this.trigger
+                            html=this.html
+                            displayOnlyOnOverflow=this.displayOnlyOnOverflow
+                            disableOnMobile=this.disableOnMobile }}>
+           abc
+      </div>
+    `);
+
+      await assert.tooltip('.test-container').exists();
+    });
+
+    test('When the user agent is a mobile, the tooltip is not displayed', async function (assert) {
+      const initialUserAgent = navigator.userAgent;
+      //@ts-ignore
+      navigator.__defineGetter__('userAgent', function () {
+        return 'Mobile';
+      });
+
+      await render(hbs`
+      <div class="test-container" style="height: 20px; width: 40px"
+           {{enable-tooltip title=this.title
+                            subtitle=this.subtitle
+                            placement=this.placement
+                            icon=this.icon
+                            trigger=this.trigger
+                            html=this.html
+                            displayOnlyOnOverflow=this.displayOnlyOnOverflow
+                            disableOnMobile=this.disableOnMobile }}>
+           abcdefghijklmnopqrstuvwxyz
+      </div>
+    `);
+
+      await assert.tooltip('.test-container').doesNotExist();
+
+      //@ts-ignore
+      navigator.__defineGetter__('userAgent', function () {
+        return initialUserAgent;
+      });
     });
   });
 

@@ -15,6 +15,7 @@ type TooltipConfig = {
   icon?: string;
   html?: boolean;
   displayOnlyOnOverflow?: boolean;
+  disableOnMobile?: boolean;
 };
 
 type EnableTooltipArgs = {
@@ -91,6 +92,10 @@ function generateHTMLStructure(state: EnableTooltipState): void {
 }
 
 function delayedRender(state: EnableTooltipState): void {
+  if (state.tooltipConfig.disableOnMobile && isMobile()) {
+    return;
+  }
+
   if (state.tooltipConfig.displayOnlyOnOverflow && !hasOverflow(state.originElement)) {
     return;
   }
@@ -194,6 +199,11 @@ function initEventListener(state: EnableTooltipState, element: HTMLElement): voi
       destroyWithEvent(state, event);
     });
   }
+}
+
+function isMobile() {
+  const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+  return regex.test(navigator.userAgent);
 }
 
 export default setModifierManager(

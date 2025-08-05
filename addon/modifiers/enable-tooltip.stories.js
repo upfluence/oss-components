@@ -70,6 +70,17 @@ export default {
         defaultValue: { summary: 'false' }
       },
       control: { type: 'boolean' }
+    },
+    disableOnMobile: {
+      name: 'disableOnMobile',
+      description: 'Disables the tooltip on mobile.',
+      table: {
+        type: {
+          summary: 'false'
+        },
+        defaultValue: { summary: 'false' }
+      },
+      control: { type: 'boolean' }
     }
   },
   parameters: {
@@ -86,7 +97,8 @@ const defaultArgs = {
   icon: 'far fa-fire',
   placement: 'bottom',
   triggerValue: 'hover focus',
-  displayOnlyOnOverflow: false
+  displayOnlyOnOverflow: false,
+  disableOnMobile: false
 };
 
 const DefaultUsageTemplate = (args) => ({
@@ -95,7 +107,8 @@ const DefaultUsageTemplate = (args) => ({
       <div class="fx-row" style="justify-content: center;">
         <span style="color: var(--color-gray-900)" {{enable-tooltip title=this.title subtitle=this.subtitle icon=this.icon
                                                                     placement=this.placement trigger=this.triggerValue
-                                                                    displayOnlyOnOverflow=this.displayOnlyOnOverflow}}>
+                                                                    displayOnlyOnOverflow=this.displayOnlyOnOverflow
+                                                                    disableOnMobile=this.disableOnMobile}}>
           I have a tooltip
         </span>
       </div>
