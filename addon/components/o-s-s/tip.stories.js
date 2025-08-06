@@ -3,7 +3,7 @@ import { hbs } from 'ember-cli-htmlbars';
 const Sizes = ['sm', 'md'];
 
 export default {
-  title: 'Components/OSS::TIP',
+  title: 'Components/OSS::Tip',
   component: 'tip',
   argTypes: {
     label: {
