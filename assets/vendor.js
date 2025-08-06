@@ -97487,19 +97487,16 @@ interface OSSCodeBlockArgs {
     <div class={{concat "oss-tip" (if @active " oss-tip--active")}} ...attributes>
     {{#if (has-block "custom-icon")}}
       {{yield to="custom-icon"}}
-    {{else}}
-      {{#if @icon}}
-        <OSS::Icon @style={{fa-icon-style @icon}} class="font-color-gray-400" @icon={{fa-icon-value @icon}} />
-      {{/if}}
+    {{else if @icon}}
+      <OSS::Icon @style={{fa-icon-style @icon}} class="font-color-gray-400" @icon={{fa-icon-value @icon}} />
     {{/if}}
-    {{yield to="custom-icon"}}
     <div class="{{if @important 'font-weight-semibold'}} font-size-{{this.labelSize}}">{{@label}}</div>
     <OSS::Icon class="oss-tip__bulb-icon" @icon="fa-lightbulb-on" />
   </div>
   */
   {
-    "id": "uuX/b8/j",
-    "block": "[[[11,0],[16,0,[28,[37,0],[\"oss-tip\",[52,[30,1],\" oss-tip--active\"]],null]],[17,2],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"    \"],[18,6,null],[1,\"\\n\"]],[]],[[[41,[30,3],[[[1,\"      \"],[8,[39,4],[[24,0,\"font-color-gray-400\"]],[[\"@style\",\"@icon\"],[[28,[37,5],[[30,3]],null],[28,[37,6],[[30,3]],null]]],null],[1,\"\\n\"]],[]],null]],[]]],[1,\"  \"],[18,6,null],[1,\"\\n  \"],[10,0],[15,0,[29,[[52,[30,4],\"font-weight-semibold\"],\" font-size-\",[30,0,[\"labelSize\"]]]]],[12],[1,[30,5]],[13],[1,\"\\n  \"],[8,[39,4],[[24,0,\"oss-tip__bulb-icon\"]],[[\"@icon\"],[\"fa-lightbulb-on\"]],null],[1,\"\\n\"],[13]],[\"@active\",\"&attrs\",\"@icon\",\"@important\",\"@label\",\"&custom-icon\"],false,[\"concat\",\"if\",\"has-block\",\"yield\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
+    "id": "9YDAwA9T",
+    "block": "[[[11,0],[16,0,[28,[37,0],[\"oss-tip\",[52,[30,1],\" oss-tip--active\"]],null]],[17,2],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"    \"],[18,6,null],[1,\"\\n\"]],[]],[[[41,[30,3],[[[1,\"    \"],[8,[39,4],[[24,0,\"font-color-gray-400\"]],[[\"@style\",\"@icon\"],[[28,[37,5],[[30,3]],null],[28,[37,6],[[30,3]],null]]],null],[1,\"\\n  \"]],[]],null]],[]]],[1,\"  \"],[10,0],[15,0,[29,[[52,[30,4],\"font-weight-semibold\"],\" font-size-\",[30,0,[\"labelSize\"]]]]],[12],[1,[30,5]],[13],[1,\"\\n  \"],[8,[39,4],[[24,0,\"oss-tip__bulb-icon\"]],[[\"@icon\"],[\"fa-lightbulb-on\"]],null],[1,\"\\n\"],[13]],[\"@active\",\"&attrs\",\"@icon\",\"@important\",\"@label\",\"&custom-icon\"],false,[\"concat\",\"if\",\"has-block\",\"yield\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/tip.hbs",
     "isStrictMode": false
   });
@@ -97521,7 +97518,7 @@ interface OSSCodeBlockArgs {
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
   const Sizes = ['sm', 'md'];
   var _default = _exports.default = {
-    title: 'Components/OSS::TIP',
+    title: 'Components/OSS::Tip',
     component: 'tip',
     argTypes: {
       label: {
