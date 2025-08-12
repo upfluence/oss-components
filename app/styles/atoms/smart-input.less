@@ -4,30 +4,40 @@
   .oss-input-container {
     width: 100%;
     position: relative;
-  }
+    display: flex;
 
-  .smart-input__animated-text {
-    .smart-input__animated-text--normal.text {
+    .loading-placeholder {
+      pointer-events: none;
+      display: flex;
+      flex: 1;
+      align-items: center;
+      width: fit-content;
+      position: relative;
+    }
+
+    .upf-input.loading-placeholder {
+      padding: 0px;
+    }
+
+    .smart_text_animated {
+      background: var(--color-gray-400);
+      background: linear-gradient(
+        130deg,
+        var(--color-gray-400) 18%,
+        var(--color-gray-300) 25%,
+        rgba(250, 198, 255, 1) 56%,
+        var(--color-primary-100) 62%,
+        var(--color-white) 66%,
+        rgba(250, 198, 255, 0.58) 68%,
+        var(--color-gray-300) 73%,
+        var(--color-gray-400) 85%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
       color: transparent;
-      width: 100%;
-    }
-
-    .upf-input {
-      position: relative;
-      width: 100%;
-      border: 1px solid var(--color-gray-100);
-    }
-
-    &.smart-input-wrapper {
-      position: relative;
-      border: none;
-      min-width: 50px;
-    }
-
-    .smart-input__animated-text--normal {
-      .font-weight-semibold;
-      color: var(--color-gray-400);
-      padding: 5px var(--spacing-px-6);
+      animation: smart_loading_text_animation 3.5s ease-in-out infinite;
+      background-size: 600% 100%;
+      padding: 6px 12px;
     }
   }
 }
