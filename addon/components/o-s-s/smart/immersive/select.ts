@@ -17,6 +17,7 @@ interface OSSSmartImmersiveSelectComponentSignature extends BaseDropdownArgs {
   maxItemWidth?: number;
   addressableAs?: string;
   multiple?: boolean;
+  searchEnabled?: boolean;
   onChange?: (item: string) => void;
   onSearch?: (keyword: string) => void;
   onBottomReached?: () => void;
