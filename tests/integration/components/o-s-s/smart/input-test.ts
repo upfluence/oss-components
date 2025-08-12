@@ -111,7 +111,7 @@ module('Integration | Component | o-s-s/smart/input', function (hooks) {
         />
       `);
 
-      assert.dom('.rainbow_text_animated').hasText('Smart...');
+      assert.dom('.smart_text_animated').hasText('Smart...');
     });
   });
 
