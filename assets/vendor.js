@@ -88739,7 +88739,8 @@ interface OSSCodeBlockArgs {
     regular: 'far',
     light: 'fal',
     duotone: 'fad',
-    brand: 'fab'
+    brand: 'fab',
+    'duotone-regular': 'fadr'
   };
   class OSSIcon extends _component2.default {
     constructor(owner, args) {
@@ -88770,7 +88771,7 @@ interface OSSCodeBlockArgs {
   });
   _exports.default = _exports.BasicUsage = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
-  const StyleTypes = ['solid', 'regular', 'light', 'duotone', 'brand'];
+  const StyleTypes = ['solid', 'regular', 'light', 'duotone', 'brand', 'duotone-regular'];
   var _default = _exports.default = {
     title: 'Components/OSS::Icon',
     component: 'icon',

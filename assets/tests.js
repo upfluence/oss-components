@@ -6743,7 +6743,8 @@ define("dummy/tests/integration/components/o-s-s/icon-test", ["qunit", "ember-qu
     regular: 'far',
     light: 'fal',
     duotone: 'fad',
-    brand: 'fab'
+    brand: 'fab',
+    'duotone-regular': 'fadr'
   };
   (0, _qunit.module)('Integration | Component | o-s-s/icon', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
