@@ -14,7 +14,8 @@ export const STYLE_CLASSES = {
   regular: 'far',
   light: 'fal',
   duotone: 'fad',
-  brand: 'fab'
+  brand: 'fab',
+  'duotone-regular': 'fadr'
 };
 
 export default class OSSIcon extends Component<OSSIconArgs> {

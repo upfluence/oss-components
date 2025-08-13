@@ -8,7 +8,8 @@ const STYLE_CLASSES = {
   regular: 'far',
   light: 'fal',
   duotone: 'fad',
-  brand: 'fab'
+  brand: 'fab',
+  'duotone-regular': 'fadr'
 };
 
 module('Integration | Component | o-s-s/icon', function (hooks) {
