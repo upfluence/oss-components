@@ -4797,6 +4797,8 @@ button.close {
   --border-radius-sm: 8px;
   --border-radius-md: 12px;
   --border-radius-lg: 16px;
+  --border-radius-xl: 999px;
+  --border-radius-round: 50%;
   --topbar-height: 56px;
   --sidebar-width: 60px;
   --sidebar-bg-color: var(--color-primary-500);
@@ -8013,8 +8015,11 @@ The size modifiers available are: `xxx-sm`, `xx-sm`, `x-sm`, `sm`, `md`, `lg`, `
 .border-radius-lg {
   border-radius: var(--border-radius-lg);
 }
+.border-radius-xl {
+  border-radius: var(--border-radius-xl);
+}
 .border-radius-round {
-  border-radius: 50%;
+  border-radius: var(--border-radius-round);
 }
 .scroll-shadow {
   padding-bottom: 18px !important;
@@ -10846,7 +10851,7 @@ a.upf-btn--sm {
   cursor: not-allowed;
 }
 .upf-avatar {
-  border-radius: 50%;
+  border-radius: var(--border-radius-round);
   background-color: var(--color-gray-200);
   color: var(--color-gray-400);
   display: flex;
