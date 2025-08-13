@@ -1,6 +1,6 @@
 import { hbs } from 'ember-cli-htmlbars';
 
-const StyleTypes = ['solid', 'regular', 'light', 'duotone', 'brand'];
+const StyleTypes = ['solid', 'regular', 'light', 'duotone', 'brand', 'duotone-regular'];
 
 export default {
   title: 'Components/OSS::Icon',
