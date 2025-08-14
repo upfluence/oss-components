@@ -1,6 +1,7 @@
 import Service from '@ember/service';
 import { isEmpty } from '@ember/utils';
 import { run } from '@ember/runloop';
+import type { IntlService } from 'ember-intl';
 
 enum ToastType {
   INFO = 'info',
@@ -33,7 +34,11 @@ export type ToastOptions = {
   };
 };
 
-type ToastFunction = (message: string, title: string, opts?: ToastOptions) => void;
+type ToastFunction = (
+  message: string | ReturnType<IntlService['t']>,
+  title: string | ReturnType<IntlService['t']>,
+  opts?: ToastOptions
+) => void;
 
 const DEFAULT_TOAST_TIMEOUT = 5000;
 
@@ -87,7 +92,11 @@ export default class Toast extends Service {
   info: ToastFunction = this._delegate(ToastType.INFO);
 
   private _delegate(type: ToastType): ToastFunction {
-    return (message: string, title?: string, opts?: ToastOptions): Element | undefined => {
+    return (
+      message: string | ReturnType<IntlService['t']>,
+      title?: string | ReturnType<IntlService['t']>,
+      opts?: ToastOptions
+    ): Element | undefined => {
       if (isEmpty(message) && isEmpty(title)) return;
 
       return this._buildToast(type, message, title, { ...DEFAULT_OPTIONS, ...(opts || {}) });
@@ -163,26 +172,35 @@ export default class Toast extends Service {
     parent.append(closeButton);
   }
 
-  private _buildTitle(parent: Element, title: string | undefined) {
+  private _buildTitle(parent: Element, title: string | ReturnType<IntlService['t']> | undefined) {
     if (title) {
       const mainTitle: Element = this._buildElement('span', ['title'], title);
       parent.append(mainTitle);
     }
   }
 
-  private _buildSubtitle(parent: Element, message: string) {
+  private _buildSubtitle(parent: Element, message: string | ReturnType<IntlService['t']>) {
     const subtitle: Element = this._buildElement('span', ['subtitle'], message);
     parent.append(subtitle);
   }
 
-  private _buildTextContainer(parent: Element, message: string, title: string | undefined) {
+  private _buildTextContainer(
+    parent: Element,
+    message: string | ReturnType<IntlService['t']>,
+    title: string | ReturnType<IntlService['t']> | undefined
+  ) {
     const textContainer: Element = this._buildElement('div', ['text-container']);
     this._buildTitle(textContainer, title);
     this._buildSubtitle(textContainer, message);
     parent.append(textContainer);
   }
 
-  private _buildToast(type: ToastType, message: string, title: string | undefined, opts: ToastOptions): Element {
+  private _buildToast(
+    type: ToastType,
+    message: string | ReturnType<IntlService['t']>,
+    title: string | ReturnType<IntlService['t']> | undefined,
+    opts: ToastOptions
+  ): Element {
     const container: Element = this._buildContainer();
     const toast: Element = this._buildElement('div', ['toast', 'toast--hidden', `toast--${type}`]);
     const mainContainer: Element = this._buildElement('div', ['main-container']);
@@ -267,12 +285,12 @@ export default class Toast extends Service {
     });
   }
 
-  private _buildElement(tagName: string, classes: string[], content?: string): Element {
+  private _buildElement(tagName: string, classes: string[], content?: string | ReturnType<IntlService['t']>): Element {
     const element: Element = document.createElement(tagName);
     element.classList.add(...classes);
 
     if (content) {
-      element.innerHTML = content;
+      element.innerHTML = content as string;
     }
 
     return element;
