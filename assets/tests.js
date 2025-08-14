@@ -10717,6 +10717,96 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
     });
   });
 });
+define("dummy/tests/integration/components/o-s-s/pill-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/pill', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Pill @label="Pill"/>
+      */
+      {
+        "id": "XebuhR+w",
+        "block": "[[[8,[39,0],null,[[\"@label\"],[\"Pill\"]],null]],[],false,[\"o-s-s/pill\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/pill-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-pill').exists();
+    });
+    (0, _qunit.test)('it renders the label correctly', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Pill @label="Pill" />
+      */
+      {
+        "id": "XebuhR+w",
+        "block": "[[[8,[39,0],null,[[\"@label\"],[\"Pill\"]],null]],[],false,[\"o-s-s/pill\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/pill-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-pill').hasText('Pill');
+    });
+    (0, _qunit.test)('it displays the correct icon when using the @icon arg', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Pill @label="Pill" @icon="fa-gift"/>
+      */
+      {
+        "id": "oH/boZjP",
+        "block": "[[[8,[39,0],null,[[\"@label\",\"@icon\"],[\"Pill\",\"fa-gift\"]],null]],[],false,[\"o-s-s/smart/pill\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/pill-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.icon.fa-gift').exists();
+    });
+    (0, _qunit.test)('it renders the corresponding style when the component is selected', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Pill @label="Pill" @selected={{true}} />
+      */
+      {
+        "id": "FtgqsbhA",
+        "block": "[[[8,[39,0],null,[[\"@label\",\"@selected\"],[\"Pill\",true]],null]],[],false,[\"o-s-s/pill\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/pill-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-pill').hasClass('oss-pill--selected');
+    });
+    (0, _qunit.test)('it renders the corresponding style when the component is disabled', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Pill @label="Pill" @disabled={{true}} />
+      */
+      {
+        "id": "hgE05e//",
+        "block": "[[[8,[39,0],null,[[\"@label\",\"@disabled\"],[\"Pill\",true]],null]],[],false,[\"o-s-s/pill\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/pill-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-pill').hasClass('oss-pill--disabled');
+    });
+    (0, _qunit.module)('Error management', function () {
+      (0, _qunit.test)('it fails if @label is missing', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::Pill] You must pass a @label argument.');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Pill />
+        */
+        {
+          "id": "BBXS2XMD",
+          "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/pill\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/pill-test.ts",
+          "isStrictMode": false
+        }));
+      });
+    });
+  });
+});
 define("dummy/tests/integration/components/o-s-s/popover-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
   "use strict";
 
@@ -13568,6 +13658,111 @@ define("dummy/tests/integration/components/o-s-s/slider-test", ["qunit", "ember-
         await (0, _testHelpers.fillIn)('.oss-slider__number-input input', '1000');
         const element = this.element.querySelector('.oss-slider__range');
         assert.strictEqual(element.style.getPropertyValue('--range-percentage'), '100%');
+      });
+    });
+  });
+});
+define("dummy/tests/integration/components/o-s-s/smart/pill-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/smart/pill', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Pill @label="Pill" />
+      */
+      {
+        "id": "k9+Kf3TG",
+        "block": "[[[8,[39,0],null,[[\"@label\"],[\"Pill\"]],null]],[],false,[\"o-s-s/smart/pill\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/pill-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-smart-pill-container').exists();
+    });
+    (0, _qunit.test)('it renders the label correctly', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Pill @label="Pill" />
+      */
+      {
+        "id": "k9+Kf3TG",
+        "block": "[[[8,[39,0],null,[[\"@label\"],[\"Pill\"]],null]],[],false,[\"o-s-s/smart/pill\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/pill-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.label').hasText('Pill');
+    });
+    (0, _qunit.test)('it displays the correct icon when using the @icon arg', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Pill @label="Pill" @icon="fa-gift"/>
+      */
+      {
+        "id": "b3ufiwIU",
+        "block": "[[[8,[39,0],null,[[\"@label\",\"@icon\"],[\"Pill\",\"fa-gift\"]],null]],[],false,[\"o-s-s/smart/pill\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/pill-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.icon.fa-gift').exists();
+    });
+    (0, _qunit.test)('it renders the corresponding style when the component is selected', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Pill @label="Pill" @selected={{true}} />
+      */
+      {
+        "id": "eukmzdOT",
+        "block": "[[[8,[39,0],null,[[\"@label\",\"@selected\"],[\"Pill\",true]],null]],[],false,[\"o-s-s/smart/pill\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/pill-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-smart-pill').hasClass('oss-smart-pill--selected');
+    });
+    (0, _qunit.test)('it renders the corresponding style when the component is disabled', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Pill @label="Pill" @disabled={{true}} />
+      */
+      {
+        "id": "DpM2zI+u",
+        "block": "[[[8,[39,0],null,[[\"@label\",\"@disabled\"],[\"Pill\",true]],null]],[],false,[\"o-s-s/smart/pill\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/pill-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-smart-pill').hasClass('oss-smart-pill--disabled');
+    });
+    (0, _qunit.module)('loading', hooks => {
+      hooks.beforeEach(function () {
+        this.loading = true;
+      });
+      (0, _qunit.test)('during loading, it displays the corresponding animation', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Pill @label="Pill" @loading={{this.loading}} />
+        */
+        {
+          "id": "lWkx18Vh",
+          "block": "[[[8,[39,0],null,[[\"@label\",\"@loading\"],[\"Pill\",[30,0,[\"loading\"]]]],null]],[],false,[\"o-s-s/smart/pill\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/pill-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.label').hasClass('loading-animation');
+      });
+      (0, _qunit.test)('Once loading is over, it displays the corresponding animation', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Pill @label="Pill" @loading={{this.loading}} />
+        */
+        {
+          "id": "lWkx18Vh",
+          "block": "[[[8,[39,0],null,[[\"@label\",\"@loading\"],[\"Pill\",[30,0,[\"loading\"]]]],null]],[],false,[\"o-s-s/smart/pill\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/pill-test.ts",
+          "isStrictMode": false
+        }));
+        this.set('loading', false);
+        assert.dom('.oss-smart-pill-container').hasClass('smart-rotating-gradient');
       });
     });
   });

@@ -11558,6 +11558,143 @@ a.upf-btn--sm {
     box-shadow: 0 0 0 0 rgb(from var(--color-gray-400) r g b / 0);
   }
 }
+.oss-pill {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-px-3);
+  height: var(--spacing-px-36);
+  border: 1px solid var(--color-gray-200);
+  background-color: var(--color-white);
+  color: var(--color-gray-600);
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-px-9) var(--spacing-px-12);
+  transition: all 0.25s ease-in-out;
+}
+.oss-pill:not(.oss-pill--disabled):hover {
+  border: 1px solid var(--color-gray-300);
+  box-shadow: 0px 0px 0px 2px #f3f4f6, 0px 1px 3px 0px rgba(0, 0, 0, 0.1), 0px 1px 2px 0px rgba(0, 0, 0, 0.06);
+}
+.oss-pill:not(.oss-pill--disabled):active {
+  border: 1px solid var(--color-gray-200);
+  color: var(--color-gray-500);
+}
+.oss-pill.oss-pill--disabled {
+  pointer-events: none;
+  border: 1px solid var(--color-gray-100);
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-400);
+}
+.oss-pill--selected {
+  border: 1px solid var(--color-gray-900);
+  background-color: var(--color-gray-900);
+  color: var(--color-white);
+}
+.oss-pill--selected:not(.oss-pill--disabled):hover {
+  border: 1px solid var(--color-gray-600);
+  background-color: var(--color-gray-600);
+}
+.oss-pill--selected:not(.oss-pill--disabled):active {
+  border: 1px solid var(--color-gray-500);
+  background-color: var(--color-gray-500);
+  color: var(--color-white);
+}
+.oss-pill--selected.oss-pill--disabled {
+  border: 1px solid var(--color-gray-300);
+  background-color: var(--color-gray-300);
+  color: var(--color-gray-400);
+}
+.oss-smart-pill-container .oss-smart-pill {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--spacing-px-3);
+  height: var(--spacing-px-36);
+  border: 1px solid var(--color-primary-100);
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-xl);
+  padding: var(--spacing-px-9) var(--spacing-px-12);
+  transition: all 0.25s ease-in-out;
+}
+.oss-smart-pill-container .oss-smart-pill .label,
+.oss-smart-pill-container .oss-smart-pill .icon {
+  color: var(--color-gray-600);
+  font-size: var(--font-size-sm);
+  font-weight: normal;
+  padding: 0;
+}
+.oss-smart-pill-container .oss-smart-pill:not(.oss-smart-pill--disabled):hover {
+  border: 1px solid var(--color-primary-100);
+  background-color: var(--color-primary-50);
+  box-shadow: 0px 0px 0px 2px #dbeafe, 0px 1px 3px 0px rgba(0, 0, 0, 0.1);
+}
+.oss-smart-pill-container .oss-smart-pill:not(.oss-smart-pill--disabled):active {
+  border: 1px solid var(--color-primary-100);
+  background-color: var(--color-white);
+}
+.oss-smart-pill-container .oss-smart-pill--disabled {
+  pointer-events: none;
+  border: 1px solid var(--color-gray-100);
+  background-color: var(--color-gray-100);
+}
+.oss-smart-pill-container .oss-smart-pill--disabled .label,
+.oss-smart-pill-container .oss-smart-pill--disabled .icon {
+  color: var(--color-gray-400);
+}
+.oss-smart-pill-container .oss-smart-pill--selected {
+  border: 1px solid var(--color-primary-400);
+  background-color: var(--color-primary-400);
+}
+.oss-smart-pill-container .oss-smart-pill--selected .label,
+.oss-smart-pill-container .oss-smart-pill--selected .icon {
+  color: var(--color-white);
+}
+.oss-smart-pill-container .oss-smart-pill--selected:not(.oss-smart-pill--disabled):hover {
+  border: 1px solid var(--color-primary-300);
+  background-color: var(--color-primary-300);
+}
+.oss-smart-pill-container .oss-smart-pill--selected:not(.oss-smart-pill--disabled):active {
+  border: 1px solid var(--color-primary-200);
+  background-color: var(--color-primary-200);
+}
+.oss-smart-pill-container .oss-smart-pill--selected:not(.oss-smart-pill--disabled):active .label,
+.oss-smart-pill-container .oss-smart-pill--selected:not(.oss-smart-pill--disabled):active .icon {
+  color: var(--color-white);
+}
+.oss-smart-pill-container .oss-smart-pill--selected.oss-smart-pill--disabled {
+  pointer-events: none;
+  border: 1px solid var(--color-gray-300);
+  background-color: var(--color-gray-300);
+}
+.oss-smart-pill-container .oss-smart-pill--selected.oss-smart-pill--disabled .label,
+.oss-smart-pill-container .oss-smart-pill--selected.oss-smart-pill--disabled .icon {
+  color: var(--color-gray-400);
+}
+.oss-smart-pill-container .oss-smart-pill .loading-animation {
+  background: linear-gradient(130deg, var(--color-gray-400) 18%, var(--color-gray-300) 25%, #fac6ff 56%, var(--color-primary-100) 62%, var(--color-white) 66%, rgba(250, 198, 255, 0.58) 68%, var(--color-gray-300) 73%, var(--color-gray-400) 85%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: smart_loading_text_animation 3.5s ease-in-out infinite;
+  background-size: 600% 100%;
+}
+.oss-smart-pill-container .oss-smart-pill:has(.loading-animation) {
+  pointer-events: none;
+}
+.oss-smart-pill-container.smart-rotating-gradient .oss-smart-pill {
+  border: 1px solid transparent;
+}
+.oss-smart-pill-container.smart-rotating-gradient::after {
+  border-radius: var(--border-radius-xl);
+}
+@keyframes smart_loading_text_animation {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: 0 0%;
+  }
+}
 .oss-progress-bar {
   display: flex;
   width: 100%;
@@ -13410,6 +13547,220 @@ a.oss-sidebar-item:focus {
   }
   to {
     opacity: 1;
+  }
+}
+.smart-rotating-gradient {
+  position: relative;
+  z-index: 0;
+}
+.smart-rotating-gradient::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  background: conic-gradient(#549eff 0deg, #ffffff 17deg, #db00ff 72deg, #727ae5 82deg, #ff158d 130deg, #ffffff 172deg, #549eff 190deg);
+  animation: rotate-gradient 2000ms;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  border-radius: 10px;
+}
+@keyframes rotate-gradient {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  1% {
+    visibility: visible;
+  }
+  20% {
+    opacity: 1;
+  }
+  21% {
+    background: conic-gradient(#549eff 0deg, #ffffff 17deg, #db00ff 72deg, #727ae5 82deg, #ff158d 130deg, #ffffff 172deg, #549eff 190deg);
+  }
+  22% {
+    background: conic-gradient(#549eff 4deg, #ffffff 21deg, #db00ff 76deg, #727ae5 86deg, #ff158d 134deg, #ffffff 176deg, #549eff 194deg);
+  }
+  23% {
+    background: conic-gradient(#549eff 7deg, #ffffff 24deg, #db00ff 79deg, #727ae5 89deg, #ff158d 137deg, #ffffff 179deg, #549eff 197deg);
+  }
+  24% {
+    background: conic-gradient(#549eff 10deg, #ffffff 27deg, #db00ff 82deg, #727ae5 92deg, #ff158d 140deg, #ffffff 182deg, #549eff 200deg);
+  }
+  25% {
+    background: conic-gradient(#549eff 13deg, #ffffff 30deg, #db00ff 85deg, #727ae5 95deg, #ff158d 143deg, #ffffff 185deg, #549eff 203deg);
+  }
+  26% {
+    background: conic-gradient(#549eff 16deg, #ffffff 33deg, #db00ff 88deg, #727ae5 98deg, #ff158d 146deg, #ffffff 188deg, #549eff 206deg);
+  }
+  27% {
+    background: conic-gradient(#549eff 19deg, #ffffff 36deg, #db00ff 91deg, #727ae5 101deg, #ff158d 149deg, #ffffff 191deg, #549eff 209deg);
+  }
+  28% {
+    background: conic-gradient(#549eff 22deg, #ffffff 39deg, #db00ff 94deg, #727ae5 104deg, #ff158d 152deg, #ffffff 194deg, #549eff 212deg);
+  }
+  29% {
+    background: conic-gradient(#549eff 26deg, #ffffff 43deg, #db00ff 98deg, #727ae5 108deg, #ff158d 156deg, #ffffff 198deg, #549eff 216deg);
+  }
+  30% {
+    background: conic-gradient(#549eff 29deg, #ffffff 46deg, #db00ff 101deg, #727ae5 111deg, #ff158d 159deg, #ffffff 201deg, #549eff 219deg);
+  }
+  31% {
+    background: conic-gradient(#549eff 32deg, #ffffff 49deg, #db00ff 104deg, #727ae5 114deg, #ff158d 162deg, #ffffff 204deg, #549eff 222deg);
+  }
+  32% {
+    background: conic-gradient(#549eff 35deg, #ffffff 52deg, #db00ff 107deg, #727ae5 117deg, #ff158d 165deg, #ffffff 207deg, #549eff 225deg);
+  }
+  33% {
+    background: conic-gradient(#549eff 38deg, #ffffff 55deg, #db00ff 110deg, #727ae5 120deg, #ff158d 168deg, #ffffff 210deg, #549eff 228deg);
+  }
+  34% {
+    background: conic-gradient(#549eff 40deg, #ffffff 57deg, #db00ff 112deg, #727ae5 122deg, #ff158d 170deg, #ffffff 212deg, #549eff 230deg);
+  }
+  35% {
+    background: conic-gradient(#549eff 43deg, #ffffff 60deg, #db00ff 115deg, #727ae5 125deg, #ff158d 173deg, #ffffff 215deg, #549eff 233deg);
+  }
+  36% {
+    background: conic-gradient(#549eff 46deg, #ffffff 63deg, #db00ff 118deg, #727ae5 128deg, #ff158d 176deg, #ffffff 218deg, #549eff 236deg);
+  }
+  37% {
+    background: conic-gradient(#549eff 49deg, #ffffff 66deg, #db00ff 121deg, #727ae5 131deg, #ff158d 179deg, #ffffff 221deg, #549eff 239deg);
+  }
+  38% {
+    background: conic-gradient(#549eff 52deg, #ffffff 69deg, #db00ff 124deg, #727ae5 134deg, #ff158d 182deg, #ffffff 224deg, #549eff 242deg);
+  }
+  39% {
+    background: conic-gradient(#549eff 55deg, #ffffff 72deg, #db00ff 127deg, #727ae5 137deg, #ff158d 185deg, #ffffff 227deg, #549eff 245deg);
+  }
+  40% {
+    background: conic-gradient(#549eff 58deg, #ffffff 75deg, #db00ff 130deg, #727ae5 140deg, #ff158d 188deg, #ffffff 230deg, #549eff 248deg);
+  }
+  41% {
+    background: conic-gradient(#549eff 61deg, #ffffff 78deg, #db00ff 133deg, #727ae5 143deg, #ff158d 191deg, #ffffff 233deg, #549eff 251deg);
+  }
+  42% {
+    background: conic-gradient(#549eff 64deg, #ffffff 81deg, #db00ff 136deg, #727ae5 146deg, #ff158d 194deg, #ffffff 236deg, #549eff 254deg);
+  }
+  43% {
+    background: conic-gradient(#549eff 67deg, #ffffff 84deg, #db00ff 139deg, #727ae5 149deg, #ff158d 197deg, #ffffff 239deg, #549eff 257deg);
+  }
+  44% {
+    background: conic-gradient(#549eff 70deg, #ffffff 87deg, #db00ff 142deg, #727ae5 152deg, #ff158d 200deg, #ffffff 242deg, #549eff 260deg);
+  }
+  45% {
+    background: conic-gradient(#549eff 73deg, #ffffff 90deg, #db00ff 145deg, #727ae5 155deg, #ff158d 203deg, #ffffff 245deg, #549eff 263deg);
+  }
+  46% {
+    background: conic-gradient(#549eff 76deg, #ffffff 93deg, #db00ff 148deg, #727ae5 158deg, #ff158d 206deg, #ffffff 248deg, #549eff 266deg);
+  }
+  47% {
+    background: conic-gradient(#549eff 79deg, #ffffff 96deg, #db00ff 151deg, #727ae5 161deg, #ff158d 209deg, #ffffff 251deg, #549eff 269deg);
+  }
+  48% {
+    background: conic-gradient(#549eff 82deg, #ffffff 99deg, #db00ff 154deg, #727ae5 164deg, #ff158d 212deg, #ffffff 254deg, #549eff 272deg);
+  }
+  49% {
+    background: conic-gradient(#549eff 85deg, #ffffff 102deg, #db00ff 157deg, #727ae5 167deg, #ff158d 215deg, #ffffff 257deg, #549eff 275deg);
+  }
+  50% {
+    background: conic-gradient(#549eff 88deg, #ffffff 105deg, #db00ff 160deg, #727ae5 170deg, #ff158d 218deg, #ffffff 260deg, #549eff 278deg);
+  }
+  51% {
+    background: conic-gradient(#549eff 92deg, #ffffff 109deg, #db00ff 164deg, #727ae5 174deg, #ff158d 222deg, #ffffff 264deg, #549eff 282deg);
+  }
+  52% {
+    background: conic-gradient(#549eff 95deg, #ffffff 112deg, #db00ff 167deg, #727ae5 177deg, #ff158d 225deg, #ffffff 267deg, #549eff 285deg);
+  }
+  53% {
+    background: conic-gradient(#549eff 98deg, #ffffff 115deg, #db00ff 170deg, #727ae5 180deg, #ff158d 228deg, #ffffff 270deg, #549eff 288deg);
+  }
+  54% {
+    background: conic-gradient(#549eff 101deg, #ffffff 118deg, #db00ff 173deg, #727ae5 183deg, #ff158d 231deg, #ffffff 273deg, #549eff 291deg);
+  }
+  55% {
+    background: conic-gradient(#549eff 104deg, #ffffff 121deg, #db00ff 176deg, #727ae5 186deg, #ff158d 234deg, #ffffff 276deg, #549eff 294deg);
+  }
+  56% {
+    background: conic-gradient(#549eff 107deg, #ffffff 124deg, #db00ff 179deg, #727ae5 189deg, #ff158d 237deg, #ffffff 279deg, #549eff 297deg);
+  }
+  57% {
+    background: conic-gradient(#549eff 110deg, #ffffff 127deg, #db00ff 182deg, #727ae5 192deg, #ff158d 240deg, #ffffff 282deg, #549eff 300deg);
+  }
+  58% {
+    background: conic-gradient(#549eff 113deg, #ffffff 130deg, #db00ff 185deg, #727ae5 195deg, #ff158d 243deg, #ffffff 285deg, #549eff 303deg);
+  }
+  59% {
+    background: conic-gradient(#549eff 116deg, #ffffff 133deg, #db00ff 188deg, #727ae5 198deg, #ff158d 246deg, #ffffff 288deg, #549eff 306deg);
+  }
+  60% {
+    background: conic-gradient(#549eff 119deg, #ffffff 136deg, #db00ff 191deg, #727ae5 201deg, #ff158d 249deg, #ffffff 291deg, #549eff 309deg);
+  }
+  61% {
+    background: conic-gradient(#549eff 122deg, #ffffff 139deg, #db00ff 194deg, #727ae5 204deg, #ff158d 252deg, #ffffff 294deg, #549eff 312deg);
+  }
+  62% {
+    background: conic-gradient(#549eff 125deg, #ffffff 142deg, #db00ff 197deg, #727ae5 207deg, #ff158d 255deg, #ffffff 297deg, #549eff 315deg);
+  }
+  63% {
+    background: conic-gradient(#549eff 128deg, #ffffff 145deg, #db00ff 200deg, #727ae5 210deg, #ff158d 258deg, #ffffff 300deg, #549eff 318deg);
+  }
+  64% {
+    background: conic-gradient(#549eff 131deg, #ffffff 148deg, #db00ff 203deg, #727ae5 213deg, #ff158d 261deg, #ffffff 303deg, #549eff 321deg);
+  }
+  65% {
+    background: conic-gradient(#549eff 134deg, #ffffff 151deg, #db00ff 206deg, #727ae5 216deg, #ff158d 264deg, #ffffff 306deg, #549eff 324deg);
+  }
+  66% {
+    background: conic-gradient(#549eff 137deg, #ffffff 154deg, #db00ff 209deg, #727ae5 219deg, #ff158d 267deg, #ffffff 309deg, #549eff 327deg);
+  }
+  67% {
+    background: conic-gradient(#549eff 140deg, #ffffff 157deg, #db00ff 212deg, #727ae5 222deg, #ff158d 270deg, #ffffff 312deg, #549eff 330deg);
+  }
+  68% {
+    background: conic-gradient(#549eff 143deg, #ffffff 160deg, #db00ff 215deg, #727ae5 225deg, #ff158d 273deg, #ffffff 315deg, #549eff 333deg);
+  }
+  69% {
+    background: conic-gradient(#549eff 146deg, #ffffff 163deg, #db00ff 218deg, #727ae5 228deg, #ff158d 276deg, #ffffff 318deg, #549eff 336deg);
+  }
+  70% {
+    background: conic-gradient(#549eff 149deg, #ffffff 166deg, #db00ff 221deg, #727ae5 231deg, #ff158d 279deg, #ffffff 321deg, #549eff 339deg);
+  }
+  71% {
+    background: conic-gradient(#549eff 153deg, #ffffff 170deg, #db00ff 225deg, #727ae5 235deg, #ff158d 283deg, #ffffff 325deg, #549eff 343deg);
+  }
+  72% {
+    background: conic-gradient(#549eff 156deg, #ffffff 173deg, #db00ff 228deg, #727ae5 238deg, #ff158d 286deg, #ffffff 328deg, #549eff 346deg);
+  }
+  73% {
+    background: conic-gradient(#549eff 159deg, #ffffff 176deg, #db00ff 231deg, #727ae5 241deg, #ff158d 289deg, #ffffff 331deg, #549eff 349deg);
+  }
+  74% {
+    background: conic-gradient(#549eff 162deg, #ffffff 179deg, #db00ff 234deg, #727ae5 244deg, #ff158d 292deg, #ffffff 334deg, #549eff 352deg);
+  }
+  75% {
+    background: conic-gradient(#549eff 165deg, #ffffff 182deg, #db00ff 237deg, #727ae5 247deg, #ff158d 295deg, #ffffff 337deg, #549eff 355deg);
+  }
+  76% {
+    background: conic-gradient(#549eff 168deg, #ffffff 185deg, #db00ff 240deg, #727ae5 250deg, #ff158d 298deg, #ffffff 340deg, #549eff 358deg);
+  }
+  77% {
+    background: conic-gradient(#549eff 171deg, #ffffff 188deg, #db00ff 243deg, #727ae5 253deg, #ff158d 301deg, #ffffff 343deg, #549eff 361deg);
+  }
+  78% {
+    background: conic-gradient(#549eff 174deg, #ffffff 191deg, #db00ff 246deg, #727ae5 256deg, #ff158d 304deg, #ffffff 346deg, #549eff 364deg);
+  }
+  79% {
+    background: conic-gradient(#549eff 180deg, #ffffff 197deg, #db00ff 252deg, #727ae5 262deg, #ff158d 310deg, #ffffff 352deg, #549eff 370deg);
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.1;
+    background: conic-gradient(#549eff 180deg, #ffffff 197deg, #db00ff 252deg, #727ae5 262deg, #ff158d 310deg, #ffffff 352deg, #549eff 370deg);
+    visibility: hidden;
   }
 }
 @keyframes slide-up {

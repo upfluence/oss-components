@@ -93146,6 +93146,148 @@ interface OSSCodeBlockArgs {
   const BasicUsage = _exports.BasicUsage = DefaultUsageTemplate.bind({});
   BasicUsage.args = defaultArgs;
 });
+;define("@upfluence/oss-components/components/o-s-s/pill", ["exports", "@ember/component", "@ember/debug", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _debug, _component2, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class={{this.computedClasses}} ...attributes>
+    {{#if @icon}}
+      <OSS::Icon class="icon" @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
+    {{/if}}
+    {{@label}}
+  </div>
+  */
+  {
+    "id": "X7ZJQWyO",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[8,[39,1],[[24,0,\"icon\"]],[[\"@style\",\"@icon\"],[[28,[37,2],[[30,2]],null],[28,[37,3],[[30,2]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[1,[30,3]],[1,\"\\n\"],[13]],[\"&attrs\",\"@icon\",\"@label\"],false,[\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/pill.hbs",
+    "isStrictMode": false
+  });
+  class OSSPill extends _component2.default {
+    constructor(owner, args) {
+      super(owner, args);
+      (true && !(args.label) && (0, _debug.assert)('[component][OSS::Pill] You must pass a @label argument.', args.label));
+    }
+    get computedClasses() {
+      const computedClasses = ['oss-pill'];
+      if (this.args.selected) {
+        computedClasses.push('oss-pill--selected');
+      }
+      if (this.args.disabled) {
+        computedClasses.push('oss-pill--disabled');
+      }
+      return computedClasses.join(' ');
+    }
+  }
+  _exports.default = OSSPill;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSPill);
+});
+;define("@upfluence/oss-components/components/o-s-s/pill.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.BasicUsage = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::Pill',
+    component: 'pill',
+    argTypes: {
+      label: {
+        description: 'Content of the pill',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      selected: {
+        description: 'Displays the selected version of the pill',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      icon: {
+        description: 'Displays a Fontawesome icon on the left using a Fontawesome class, for example: far fa-envelope-open',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      disabled: {
+        description: 'Displays the disabled version of the pill',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'A small pill-shaped component used to select a value'
+        }
+      }
+    }
+  };
+  const defaultArgs = {
+    label: 'Pill',
+    selected: false,
+    disabled: false
+  };
+  const DefaultUsageTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+          <OSS::Pill @label={{this.label}} @selected={{this.selected}} @disabled={{this.disabled}} />
+      
+    */
+    {
+      "id": "RIZsPoFJ",
+      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@label\",\"@selected\",\"@disabled\"],[[30,0,[\"label\"]],[30,0,[\"selected\"]],[30,0,[\"disabled\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/pill\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/pill.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const BasicUsage = _exports.BasicUsage = DefaultUsageTemplate.bind({});
+  BasicUsage.args = defaultArgs;
+});
 ;define("@upfluence/oss-components/components/o-s-s/popover", ["exports", "@ember/component", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _component2, _templateFactory) {
   "use strict";
 
@@ -96274,6 +96416,189 @@ interface OSSCodeBlockArgs {
   });
   const Default = _exports.Default = Template.bind({});
   Default.args = defaultArgs;
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/pill", ["exports", "@ember/component", "@glimmer/tracking", "@upfluence/oss-components/components/o-s-s/pill", "@ember/object", "@upfluence/oss-components/utils/run-smart-gradient-animation", "@ember/template-factory"], function (_exports, _component, _tracking, _pill, _object, _runSmartGradientAnimation, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/tracking",0,"@upfluence/oss-components/components/o-s-s/pill",0,"@ember/object",0,"@upfluence/oss-components/utils/run-smart-gradient-animation",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div
+    class="oss-smart-pill-container"
+    {{did-insert this.registerElement}}
+    {{did-update this.runAnimationOnLoadEnd @loading}}
+    ...attributes
+  >
+    <div class={{this.computedClasses}}>
+      {{#if @icon}}
+        <OSS::Icon class="icon" @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
+      {{/if}}
+      <span class="label {{if @loading 'loading-animation'}}">{{@label}}</span>
+    </div>
+  </div>
+  */
+  {
+    "id": "nDOBqy+5",
+    "block": "[[[11,0],[24,0,\"oss-smart-pill-container\"],[17,1],[4,[38,0],[[30,0,[\"registerElement\"]]],null],[4,[38,1],[[30,0,[\"runAnimationOnLoadEnd\"]],[30,2]],null],[12],[1,\"\\n  \"],[10,0],[15,0,[30,0,[\"computedClasses\"]]],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"      \"],[8,[39,3],[[24,0,\"icon\"]],[[\"@style\",\"@icon\"],[[28,[37,4],[[30,3]],null],[28,[37,5],[[30,3]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"    \"],[10,1],[15,0,[29,[\"label \",[52,[30,2],\"loading-animation\"]]]],[12],[1,[30,4]],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@loading\",\"@icon\",\"@label\"],false,[\"did-insert\",\"did-update\",\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/smart/pill.hbs",
+    "isStrictMode": false
+  });
+  let OSSSmartPill = _exports.default = (_class = class OSSSmartPill extends _pill.default {
+    constructor(...args) {
+      super(...args);
+      _initializerDefineProperty(this, "element", _descriptor, this);
+    }
+    get computedClasses() {
+      const computedClasses = ['oss-smart-pill'];
+      if (this.args.selected) {
+        computedClasses.push('oss-smart-pill--selected');
+      }
+      if (this.args.disabled) {
+        computedClasses.push('oss-smart-pill--disabled');
+      }
+      return computedClasses.join(' ');
+    }
+    registerElement(element) {
+      this.element = element;
+    }
+    runAnimationOnLoadEnd() {
+      if (this.element && this.args.loading === false) {
+        (0, _runSmartGradientAnimation.runSmartGradientAnimation)(this.element);
+      }
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "element", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _applyDecoratedDescriptor(_class.prototype, "registerElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerElement"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "runAnimationOnLoadEnd", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "runAnimationOnLoadEnd"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSmartPill);
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/pill.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.BasicUsage = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::Smart::Pill',
+    component: 'pill',
+    argTypes: {
+      label: {
+        description: 'Content of the smart pill',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      selected: {
+        description: 'Displays the selected version of the smart pill',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      icon: {
+        description: 'Displays a Fontawesome icon on the left using a Fontawesome class, for example: far fa-envelope-open',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      disabled: {
+        description: 'Displays the disabled version of the smart pill',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      loading: {
+        description: 'Displays the loading state when true',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'The smart version of a small pill-shaped component used to select a value'
+        }
+      }
+    }
+  };
+  const defaultArgs = {
+    label: 'Pill',
+    selected: false,
+    disabled: false,
+    loading: false
+  };
+  const DefaultUsageTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+          <OSS::Smart::Pill @label={{this.label}} @selected={{this.selected}} @disabled={{this.disabled}} @loading={{this.loading}} />
+      
+    */
+    {
+      "id": "dD6XjAoU",
+      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@label\",\"@selected\",\"@disabled\",\"@loading\"],[[30,0,[\"label\"]],[30,0,[\"selected\"]],[30,0,[\"disabled\"]],[30,0,[\"loading\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/smart/pill\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/smart/pill.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const BasicUsage = _exports.BasicUsage = DefaultUsageTemplate.bind({});
+  BasicUsage.args = defaultArgs;
 });
 ;define("@upfluence/oss-components/components/o-s-s/social-post-badge", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@ember/debug", "@ember/template-factory"], function (_exports, _component, _component2, _object, _debug, _templateFactory) {
   "use strict";
@@ -106803,6 +107128,24 @@ interface OSSCodeBlockArgs {
     }
     if (!checks.every(c => c) && !AUTHORIZED_INPUTS.find(key => key === event.key)) {
       event.preventDefault();
+    }
+  }
+});
+;define("@upfluence/oss-components/utils/run-smart-gradient-animation", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.runSmartGradientAnimation = runSmartGradientAnimation;
+  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
+  const ANIMATION_DURATION = 1900;
+  function runSmartGradientAnimation(element) {
+    if (element) {
+      element.classList.add('smart-rotating-gradient');
+      setTimeout(() => {
+        element.classList.remove('smart-rotating-gradient');
+      }, ANIMATION_DURATION);
     }
   }
 });
