@@ -1,0 +1,13 @@
+<div
+  class="oss-smart-pill-container"
+  {{did-insert this.registerElement}}
+  {{did-update this.runAnimationOnLoadEnd @loading}}
+  ...attributes
+>
+  <div class={{this.computedClasses}}>
+    {{#if @icon}}
+      <OSS::Icon class="icon" @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
+    {{/if}}
+    <span class="label {{if @loading 'loading-animation'}}">{{@label}}</span>
+  </div>
+</div>
