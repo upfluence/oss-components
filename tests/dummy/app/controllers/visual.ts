@@ -106,6 +106,7 @@ export default class Visual extends Controller {
     { key: 'and', label: 'AND', skin: 'xtd-violet', icon: 'fa-exclamation-circle' }
   ];
   @tracked modeSwitchSelected2: string = 'or';
+  @tracked selectedPill: boolean = true;
 
   @action
   redirectTo(route: string): void {
@@ -177,5 +178,10 @@ export default class Visual extends Controller {
       set(this, 'dynamicProgress', this.dynamicProgress + 10);
       setTimeout(() => this.increaseProgress(), 1000);
     }
+  }
+
+  @action
+  onPillClick(): void {
+    this.selectedPill = !this.selectedPill;
   }
 }
