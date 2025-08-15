@@ -51,6 +51,12 @@ export default class OSSInputContainer extends Component<OSSInputContainerArgs> 
   }
 
   @action
+  onInput(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    this.args.onChange?.(input.value);
+  }
+
+  @action
   _onChange(value: string): void {
     if (this.args.onChange) {
       this.args.onChange(value);

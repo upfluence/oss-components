@@ -25,6 +25,7 @@ export default class OSSEmailInput extends Component<OSSEmailInputArgs> {
   private _runValidation: boolean = true;
 
   @tracked regexError: string | null = null;
+  @tracked currentValue: string | null = this.args.value;
 
   constructor(owner: unknown, args: OSSEmailInputArgs) {
     super(owner, args);
@@ -45,13 +46,16 @@ export default class OSSEmailInput extends Component<OSSEmailInputArgs> {
   }
 
   @action
-  validateInput(): void {
+  handleChange(newValue: string | null): void {
+    const normalizedValue = newValue === '' ? null : newValue;
+    this.currentValue = normalizedValue;
+    const valueToValidate = normalizedValue?.toLowerCase() ?? null;
+    this.args.onChange?.(valueToValidate);
     this.regexError = '';
-    this.args.onChange?.(this.args.value ? this.args.value.toLowerCase() : this.args.value);
 
-    if (!this._runValidation || !this.args.value) {
+    if (!this._runValidation || !valueToValidate) {
       this.args.validates?.(true);
-    } else if (!EMAIL_REGEXP.test(this.args.value)) {
+    } else if (!EMAIL_REGEXP.test(valueToValidate)) {
       this.regexError = this.intl.t('oss-components.email-input.regex_error');
       this.args.validates?.(false);
     } else {
