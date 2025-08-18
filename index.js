@@ -54,7 +54,13 @@ module.exports = {
     trees.push(
       new Funnel(`${faPath}/webfonts/`, {
         srcDir: '/',
-        include: ['**/*.woff', '**/*.woff2', '**/*.eot', '**/*.ttf', '**/*.svg'],
+        include: [
+          '**/fa-brand-*.woff2',
+          '**/fa-duotone-*.woff2',
+          '**/fa-light-*.woff2',
+          '**/fa-regular-*.woff2',
+          '**/fa-solid-*.woff2'
+        ],
         destDir: '/webfonts'
       })
     );
