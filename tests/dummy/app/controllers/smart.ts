@@ -59,6 +59,8 @@ export default class Smart extends Controller {
   ];
   @tracked smartTags: { value: string; type: TagType }[] = [];
   @tracked inputValue: string = '';
+  @tracked textAreaValue: string = '';
+  @tracked multilinePlaceholder: string = 'Small placeholder\nwith multiple\nlines';
 
   constructor() {
     super(...arguments);
@@ -188,6 +190,12 @@ export default class Smart extends Controller {
   handleSmartTagInput({ value, type }: Keyword): string {
     this.smartTags = [...this.smartTags, { value, type }];
     return '';
+  }
+
+  @action
+  onTextAreaChange(value: string): void {
+    console.log('Text area value changed:', value);
+    this.textAreaValue = value;
   }
 
   @action
