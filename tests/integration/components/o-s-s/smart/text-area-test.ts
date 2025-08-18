@@ -20,11 +20,11 @@ module('Integration | Component | o-s-s/smart/text-area', function (hooks) {
   });
 
   module('@resize', function () {
-    test('Default has no class resize', async function (assert) {
+    test('Default it has the none resize class', async function (assert) {
       await render(hbs`<OSS::Smart::TextArea />`);
       assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-v');
       assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-h');
-      assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-none');
+      assert.dom(this.textareaSelector).hasClass('oss-textarea--resize-none');
     });
 
     test('When resize is vertical should have class resize-v', async function (assert) {
@@ -41,14 +41,6 @@ module('Integration | Component | o-s-s/smart/text-area', function (hooks) {
       assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-v');
       assert.dom(this.textareaSelector).hasClass('oss-textarea--resize-h');
       assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-none');
-    });
-
-    test('When resize is none should have class resize-none', async function (assert) {
-      this.resize = 'none';
-      await render(hbs`<OSS::Smart::TextArea @resize={{this.resize}}/>`);
-      assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-v');
-      assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-h');
-      assert.dom(this.textareaSelector).hasClass('oss-textarea--resize-none');
     });
   });
 
