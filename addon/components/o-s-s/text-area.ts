@@ -2,7 +2,7 @@ import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 
-interface OSSTextAreaArgs {
+export interface OSSTextAreaArgs {
   rows?: number;
   resize?: 'vertical' | 'horizontal' | 'none';
   value?: string;
@@ -12,7 +12,7 @@ interface OSSTextAreaArgs {
   onChange?(value: string): void;
 }
 
-export default class OSSTextArea extends Component<OSSTextAreaArgs> {
+export default class OSSTextArea<T extends OSSTextAreaArgs> extends Component<T> {
   constructor(owner: unknown, args: OSSTextAreaArgs) {
     super(owner, args);
 
@@ -28,11 +28,15 @@ export default class OSSTextArea extends Component<OSSTextAreaArgs> {
     return this.args.rows || 2;
   }
 
+  get resize(): 'vertical' | 'horizontal' | 'none' | undefined {
+    return this.args.resize;
+  }
+
   get computedClass(): string {
     const classes: string[] = [];
-    if (this.args.resize === 'vertical') classes.push('oss-textarea--resize-v');
-    else if (this.args.resize === 'horizontal') classes.push('oss-textarea--resize-h');
-    else if (this.args.resize === 'none') classes.push('oss-textarea--resize-none');
+    if (this.resize === 'vertical') classes.push('oss-textarea--resize-v');
+    else if (this.resize === 'horizontal') classes.push('oss-textarea--resize-h');
+    else if (this.resize === 'none') classes.push('oss-textarea--resize-none');
 
     return classes.join(' ');
   }

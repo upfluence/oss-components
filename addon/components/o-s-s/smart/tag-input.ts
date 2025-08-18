@@ -45,6 +45,10 @@ export default class OSSSmartTagInput extends Component<OSSSmartTagInputArgs> {
     return this.args.placeholder ?? this.intl.t('oss-components.smart.tag_input.placeholder');
   }
 
+  get hiddenSpanValue(): string {
+    return this.inputValue || this.isInputFocused ? this.inputValue : this.placeholder;
+  }
+
   @action
   registerElement(element: HTMLElement): void {
     this.element = element;
