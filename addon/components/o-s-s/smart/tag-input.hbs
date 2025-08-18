@@ -10,9 +10,7 @@
       </div>
     {{else}}
       <div class="fx-col">
-        <span class="hidden-span">
-          {{if (or this.inputValue this.isInputFocused) this.inputValue this.placeholder}}
-        </span>
+        <span class="hidden-span">{{this.hiddenSpanValue}}</span>
         <Input
           class="displayed-input"
           @value={{this.inputValue}}
