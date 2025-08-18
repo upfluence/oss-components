@@ -115,6 +115,17 @@ module('Integration | Component | o-s-s/smart/text-area', function (hooks) {
       assert.dom('.loading-placeholder').hasText(this.placeholder);
     });
 
+    test('When input is loading, and a value is set it use the value instead of placeholder', async function (assert) {
+      this.set('value', 'Small value');
+      await render(
+        hbs`<OSS::Smart::TextArea @placeholder={{this.placeholder}} @loading={{this.loading}} @value={{this.value}}/>`
+      );
+
+      assert.dom('.oss-smart-text-area-container .oss-textarea').hasClass('oss-textarea--loading');
+      assert.dom('.loading-placeholder').exists();
+      assert.dom('.loading-placeholder').hasText(this.value);
+    });
+
     module('Once loading is finished', () => {
       test('If value is empty, it does not display an animation once', async function (assert) {
         await render(hbs`<OSS::Smart::TextArea @placeholder={{this.placeholder}} @loading={{this.loading}}/>`);
