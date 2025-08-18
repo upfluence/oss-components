@@ -7,7 +7,7 @@
   <div class="fx-row">
     {{#if @loading}}
       <div class="upf-input loading-placeholder fx-row fx-xalign-center">
-        <pre class="smart_text_animated">{{@placeholder}}</pre>
+        <pre class="smart_text_animated">{{or @value @placeholder}}</pre>
       </div>
     {{/if}}
     <Textarea
