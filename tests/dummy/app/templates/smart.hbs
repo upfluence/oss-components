@@ -10,6 +10,26 @@
     class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
   >
     <div class="font-size-md font-weight-semibold">
+      Text-area
+    </div>
+    <div class="fx-col fx-gap-px-24">
+      <div class="fx-row fx-gap-px-24 fx-xalign-center">
+        <OSS::Button @label="Toggle loading" {{on "click" this.toggleLoading}} />
+        <OSS::Smart::TextArea
+          @value={{this.textAreaValue}}
+          @onChange={{this.onTextAreaChange}}
+          @rows={{7}}
+          @placeholder={{this.multilinePlaceholder}}
+          @loading={{this.loading}}
+        />
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
       Smart tag & Smart tag input
     </div>
     <div class="fx-col fx-gap-px-24">
