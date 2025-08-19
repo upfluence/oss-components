@@ -9,7 +9,6 @@ module('Integration | Component | o-s-s/smart/text-area', function (hooks) {
 
   hooks.beforeEach(function () {
     this.value = 'Data';
-
     this.textareaSelector = '.oss-smart-text-area-container  .oss-textarea';
     this.placeholder = 'Multiline\nplaceholder';
   });
