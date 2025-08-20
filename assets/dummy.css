@@ -6106,6 +6106,14 @@ button.close {
   font-size: var(--font-size-md);
   color: var(--color-gray-900);
 }
+label {
+  font-size: var(--font-size-md);
+  color: var(--color-gray-900);
+  display: inherit;
+  max-width: unset;
+  margin-bottom: unset;
+  font-weight: unset;
+}
 @font-face {
   font-family: 'Open Sans';
   font-style: italic;
@@ -6186,9 +6194,6 @@ body {
   font-size: var(--font-size-sm);
   font-family: var(--font-family-stack);
   line-height: var(--font-text-line-height);
-}
-label {
-  font-size: 1.33333333rem;
 }
 *::-webkit-scrollbar {
   width: 16px;
@@ -6615,10 +6620,6 @@ div.upf-image {
 .upf-image--round-288 {
   width: 288px;
   height: 288px;
-}
-label {
-  color: var(--color-gray-500);
-  font-weight: 100;
 }
 .input-state-reset {
   border: none;
