@@ -2,9 +2,11 @@ import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 
+export type textAreaResizeOptions = 'vertical' | 'horizontal' | 'none';
+
 export interface OSSTextAreaArgs {
   rows?: number;
-  resize?: 'vertical' | 'horizontal' | 'none';
+  resize?: textAreaResizeOptions;
   value?: string;
   disabled?: boolean;
   errorMessage?: string;
@@ -28,7 +30,7 @@ export default class OSSTextArea<T extends OSSTextAreaArgs> extends Component<T>
     return this.args.rows || 2;
   }
 
-  get resize(): 'vertical' | 'horizontal' | 'none' | undefined {
+  get resize(): textAreaResizeOptions | undefined {
     return this.args.resize;
   }
 
