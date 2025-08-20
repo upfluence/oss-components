@@ -2,7 +2,7 @@ import { action } from '@ember/object';
 import { isEmpty } from '@ember/utils';
 import { tracked } from '@glimmer/tracking';
 import { runSmartGradientAnimation } from '@upfluence/oss-components/utils/run-smart-gradient-animation';
-import type { OSSTextAreaArgs } from '../text-area';
+import type { OSSTextAreaArgs, textAreaResizeOptions } from '../text-area';
 import OSSTextArea from '../text-area';
 
 interface OSSSmartImmersiveInputComponentSignature extends OSSTextAreaArgs {
@@ -27,7 +27,7 @@ export default class OSSSmartTextareaComponent extends OSSTextArea<OSSSmartImmer
     this.element = element;
   }
 
-  get resize(): 'vertical' | 'horizontal' | 'none' {
+  get resize(): textAreaResizeOptions | undefined {
     return this.args.resize ?? 'none';
   }
 
