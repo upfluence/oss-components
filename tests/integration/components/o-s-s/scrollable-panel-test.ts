@@ -10,6 +10,7 @@ module('Integration | Component | o-s-s/scrollable-panel', function (hooks) {
   hooks.beforeEach(function () {
     this.onBottomReached = sinon.stub();
     this.hideScrollbar = false;
+    this.offset = 0;
   });
 
   function scrollIntoView(elementId: string) {
@@ -20,7 +21,8 @@ module('Integration | Component | o-s-s/scrollable-panel', function (hooks) {
   <div class="background-color-gray-50" style="height:300px; width: 500px">
     <OSS::ScrollablePanel @disableShadows={{this.disableShadows}}
                           @onBottomReached={{this.onBottomReached}}
-                          @hideScrollbar={{this.hideScrollbar}}>
+                          @hideScrollbar={{this.hideScrollbar}}
+                          @offset={{this.offset}} >
       <div class="fx-col fx-gap-px-12 padding-px-12">
         <div class="background-color-gray-200" style="height: 50px; width: 100%;" id="start-element"/>
         <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
@@ -199,5 +201,27 @@ module('Integration | Component | o-s-s/scrollable-panel', function (hooks) {
     assert
       .dom('.oss-scrollable-panel-container .oss-scrollable-panel-content')
       .hasClass('oss-scrollable-panel-content--hidden');
+  });
+
+  module('with @offset', function (hooks) {
+    hooks.beforeEach(function () {
+      this.set('offset', 10);
+    });
+
+    test('When scrolling under the offset, it does not display top shadow', async function (assert) {
+      await render(renderScrollableContent);
+
+      assert.dom('.oss-scrollable-panel--shadow__top').doesNotExist();
+      await scrollTo('.oss-scrollable-panel-content', 0, 5);
+      assert.dom('.oss-scrollable-panel--shadow__top').doesNotExist();
+    });
+
+    test('When scrolling above the offset, it displays the top shadow', async function (assert) {
+      await render(renderScrollableContent);
+
+      assert.dom('.oss-scrollable-panel--shadow__top').doesNotExist();
+      await scrollTo('.oss-scrollable-panel-content', 0, 15);
+      assert.dom('.oss-scrollable-panel--shadow__top').exists();
+    });
   });
 });

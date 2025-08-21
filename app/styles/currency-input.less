@@ -19,9 +19,8 @@
     input {
       border: none;
       outline: none;
-
       padding: var(--spacing-px-3) var(--spacing-px-12);
-      background-color: transparent;
+      background-color: var(--color-white);
     }
 
     &:not(.disabled, :disabled) {
@@ -46,7 +45,6 @@
       border-right: none;
       margin-right: 0;
       width: 100%;
-
       background-color: transparent;
     }
 
@@ -98,12 +96,10 @@
 
   .currency-selector {
     display: flex;
-
     gap: var(--spacing-px-9);
     padding: var(--spacing-px-3) var(--spacing-px-12);
     background-color: var(--color-gray-50);
     color: var(--color-gray-500);
-
     border-right: 1px solid var(--color-border-default);
   }
 
@@ -114,9 +110,7 @@
     padding: var(--spacing-px-12);
 
     .upf-infinite-select__item {
-      padding: 0;
-      padding-top: var(--spacing-px-6);
-      padding-bottom: var(--spacing-px-6);
+      padding: var(--spacing-px-6) 0;
     }
 
     .row-selected span {

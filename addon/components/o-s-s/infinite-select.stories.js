@@ -11,6 +11,8 @@ const FAKE_DATA = [
   { superhero: 'Spider Man', characters: 'Peter Parker' }
 ];
 
+const SkinTypes = ['default', 'smart'];
+
 export default {
   title: 'Components/OSS::InfiniteSelect',
   component: 'infinite-select',
@@ -55,6 +57,17 @@ export default {
         defaultValue: { summary: true }
       },
       control: { type: 'boolean' }
+    },
+    skin: {
+      description: 'Adjust the skin of the badge',
+      table: {
+        type: {
+          summary: SkinTypes.join('|')
+        },
+        defaultValue: { summary: 'default' }
+      },
+      options: SkinTypes,
+      control: { type: 'select' }
     },
     loading: {
       type: { name: 'boolean' },
@@ -159,6 +172,7 @@ const defaultArgs = {
   loadingMore: false,
   inline: false,
   enableKeyboard: false,
+  skin: 'default',
   onSelect: action('onSelect'),
   onSearch: action('onSearch'),
   onBottomReached: action('onBottomReached'),
@@ -171,7 +185,8 @@ const Template = (args) => ({
         @items={{this.items}} @itemLabel={{this.itemLabel}} @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}}
         @searchPlaceholder={{this.searchPlaceholder}} @onSelect={{this.onSelect}} @loading={{this.loading}}
         @loadingMore={{this.loadingMore}} @inline={{this.inline}} @onBottomReached={{this.onBottomReached}} 
-        @didRender={{this.didRender}} @enableKeyboard={{this.enableKeyboard}} class="upf-align--absolute-center"/>
+        @skin={{this.skin}} @didRender={{this.didRender}} @enableKeyboard={{this.enableKeyboard}}
+        class="upf-align--absolute-center"/>
   `,
   context: args
 });
