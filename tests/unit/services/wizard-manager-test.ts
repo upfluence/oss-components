@@ -43,6 +43,27 @@ module('Unit | Service | wizard-manager', function (hooks) {
       assert.equal(this.service.allSteps[1].key, 'step-2');
     });
 
+    test('Extra step properties are preserved', function (assert) {
+      const extraProperty = { customProp: 'customValue' };
+      this.config = {
+        sections: [createSection('section-1', [createStep('step-1', extraProperty), createStep('step-2')])]
+      };
+      this.service.initialize(this.config as WizardConfiguration);
+      const step1 = this.service.allSteps[0];
+      assert.equal(step1.customProp, 'customValue', 'Extra properties are preserved in steps');
+    });
+
+    test('Setting a visited attribute on steps overwrites the default', function (assert) {
+      this.config = {
+        sections: [createSection('section-1', [createStep('step-1', { visited: true }), createStep('step-2')])]
+      };
+      this.service.initialize(this.config as WizardConfiguration);
+      const step1 = this.service.allSteps[0];
+      const step2 = this.service.allSteps[1];
+      assert.true(step1.visited);
+      assert.false(step2.visited);
+    });
+
     test('Focused step is set to first step', function (assert) {
       this.service.initialize(this.config as WizardConfiguration);
 
@@ -86,6 +107,26 @@ module('Unit | Service | wizard-manager', function (hooks) {
 
       await settled();
       assert.equal(this.service.focusedStepId, step2Id);
+    });
+
+    test('calling selectStep with a bypassValidations flag focuses the step without validation', async function (assert) {
+      const step1 = createStep('step-1', { validateStep: () => sinon.stub().resolves(true) });
+      const step2 = createStep('step-2', { validateStep: () => sinon.stub().resolves(true) });
+      this.config = {
+        sections: [createSection('section-1', [step1, step2])]
+      };
+
+      this.service.initialize(this.config as WizardConfiguration);
+      const step1Id = this.service.allSteps[0].id;
+      const step2Id = this.service.allSteps[1].id;
+      this.validateStub = sinon.stub(this.service.allSteps[0], 'validateStep').resolves(true);
+
+      assert.equal(this.service.focusedStepId, step1Id);
+
+      this.service.selectStep(step2Id, true);
+      await settled();
+      assert.equal(this.service.focusedStepId, step1Id);
+      assert.true(this.validateStub.notCalled, 'validateStep was not called when bypassValidations is true');
     });
 
     test("selectStep runs the current step's validateStep if provided", async function (assert) {
@@ -184,6 +225,16 @@ module('Unit | Service | wizard-manager', function (hooks) {
       assert.strictEqual(allSteps[0].key, 'step-1');
       assert.strictEqual(allSteps[1].key, 'step-2');
     });
+
+    test('findStepByKey returns the step with the given key', function (assert) {
+      this.service.initialize(this.config as WizardConfiguration);
+      const step1 = this.service.findStepByKey('step-1');
+      const step2 = this.service.findStepByKey('step-2');
+      const step3 = this.service.findStepByKey('step-3');
+      assert.strictEqual(step1?.key, 'step-1');
+      assert.strictEqual(step2?.key, 'step-2');
+      assert.strictEqual(step3, undefined, 'Step with key step-3 does not exist');
+    });
   });
 
   module('Select Next/Previous Step', function (hooks) {
@@ -234,5 +285,13 @@ module('Unit | Service | wizard-manager', function (hooks) {
     assert.strictEqual(this.service.allSteps.length, 0);
     assert.strictEqual(this.service.focusedStepId, '');
     assert.strictEqual(this.service.initialized, false);
+  });
+
+  test('markStepAsCompleted marks a step as completed', function (assert) {
+    this.service.initialize(this.config as WizardConfiguration);
+    const step1 = this.service.allSteps[0];
+    assert.equal(step1.completed, undefined);
+    this.service.markStepAsCompleted(step1.id);
+    assert.true(step1.completed);
   });
 });

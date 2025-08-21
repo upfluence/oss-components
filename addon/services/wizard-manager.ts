@@ -38,6 +38,7 @@ export type WizardConfiguration = {
       key: string;
       componentClass: any;
       validateStep?: () => Promise<boolean>;
+      [key: string]: unknown;
     }[];
   }[];
 };
@@ -95,7 +96,12 @@ export default class WizardManager extends Service {
     }
   }
 
-  selectStep(stepId: string): void {
+  selectStep(stepId: string, bypassValidations?: boolean): void {
+    if (bypassValidations) {
+      this.focusStep(stepId);
+      return;
+    }
+
     const targetStep = this.findStepById(stepId);
     if (!targetStep) return;
 
@@ -137,6 +143,10 @@ export default class WizardManager extends Service {
     return [];
   }
 
+  findStepByKey(stepKey: string): Step | undefined {
+    return this.allSteps.find((step: Step) => step.key === stepKey);
+  }
+
   reset(): void {
     this.initialized = false;
     this.sections = [];
@@ -144,8 +154,20 @@ export default class WizardManager extends Service {
     this.configOptions = {};
   }
 
+  markStepAsCompleted(stepId: string): void {
+    const step = this.findStepById(stepId);
+    if (step) {
+      set(step, 'completed', true);
+    }
+    this.notifySectionChange();
+  }
+
   private get currentSection(): Section | undefined {
     return this.sections.find((section: Section) => section.steps.some((step: Step) => step.id === this.focusedStepId));
+  }
+
+  private notifySectionChange(): void {
+    this.sections = [...this.sections];
   }
 
   private findIndexOfStep(stepId: string): number {
@@ -195,7 +217,7 @@ export default class WizardManager extends Service {
         id: guidFor(section.key),
         key: section.key,
         steps: section.steps.map((step) => {
-          return {
+          let defaultStep: Step = {
             id: guidFor(step.key),
             key: step.key,
             componentClass: step.componentClass,
@@ -203,6 +225,8 @@ export default class WizardManager extends Service {
             displayState: 'none',
             visited: false
           };
+
+          return { ...defaultStep, ...step };
         })
       };
     });
