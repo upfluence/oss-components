@@ -286,4 +286,12 @@ module('Unit | Service | wizard-manager', function (hooks) {
     assert.strictEqual(this.service.focusedStepId, '');
     assert.strictEqual(this.service.initialized, false);
   });
+
+  test('markStepAsCompleted marks a step as completed', function (assert) {
+    this.service.initialize(this.config as WizardConfiguration);
+    const step1 = this.service.allSteps[0];
+    assert.equal(step1.completed, undefined);
+    this.service.markStepAsCompleted(step1.id);
+    assert.true(step1.completed);
+  });
 });

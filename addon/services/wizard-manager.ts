@@ -154,8 +154,20 @@ export default class WizardManager extends Service {
     this.configOptions = {};
   }
 
+  markStepAsCompleted(stepId: string): void {
+    const step = this.findStepById(stepId);
+    if (step) {
+      set(step, 'completed', true);
+    }
+    this.notifySectionChange();
+  }
+
   private get currentSection(): Section | undefined {
     return this.sections.find((section: Section) => section.steps.some((step: Step) => step.id === this.focusedStepId));
+  }
+
+  private notifySectionChange(): void {
+    this.sections = [...this.sections];
   }
 
   private findIndexOfStep(stepId: string): number {
