@@ -347,7 +347,7 @@ module('Unit | Service | wizard-manager', function (hooks) {
       assert.equal(step1.hidden, false);
     });
 
-    test('It rerender the display states when triggered', function (assert) {
+    test('It rerenders the display states when triggered', function (assert) {
       this.service.initialize(this.config as WizardConfiguration);
       const step1 = this.service.allSteps[0];
       assert.ok(this.setDisplayStatesStub.notCalled);
