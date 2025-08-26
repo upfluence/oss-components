@@ -56,7 +56,8 @@ module('Integration | Component | wizard/step-wrapper', function (hooks) {
         assert.dom('.step-wrapper__next').exists();
       });
 
-      test('Hidden step - It applies the "hidden" class when the step is not visited', async function (assert) {
+      test('Hidden step - It applies the "hidden" class when the step is hidden', async function (assert) {
+        this.step.displayState = 'none';
         this.step.hidden = true;
         await render(hbs`<Wizard::StepWrapper @step={{this.step}} @stepWrapperBaseClass="custom-step-wrapper" />`);
 
