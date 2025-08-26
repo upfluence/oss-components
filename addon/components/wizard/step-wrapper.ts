@@ -39,6 +39,8 @@ export default class WizardStepWrapperComponent extends Component<WizardStepWrap
       classArray.push(`${this.baseClass}__next`);
     } else if (this.args.step.displayState === 'active') {
       classArray.push(`${this.baseClass}__active`);
+    } else if (this.args.step.hidden === true) {
+      classArray.push(`${this.baseClass}__hidden`);
     }
     return classArray.join(' ');
   }

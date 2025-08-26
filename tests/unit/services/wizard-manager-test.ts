@@ -9,8 +9,8 @@ function createStep(key: string, opts: any = {}) {
   return { key, componentClass: {}, ...opts };
 }
 
-function createSection(key: string, steps: any[]) {
-  return { key, steps };
+function createSection(key: string, steps: any[], opts: any = {}) {
+  return { key, steps, ...opts };
 }
 
 module('Unit | Service | wizard-manager', function (hooks) {
@@ -19,7 +19,7 @@ module('Unit | Service | wizard-manager', function (hooks) {
   hooks.beforeEach(function () {
     this.service = this.owner.lookup('service:wizard-manager') as WizardManager;
     this.config = {
-      sections: [createSection('section-1', [createStep('step-1'), createStep('step-2')])]
+      sections: [createSection('section-1', [createStep('step-1'), createStep('step-2'), createStep('step-3')])]
     };
   });
 
@@ -38,18 +38,23 @@ module('Unit | Service | wizard-manager', function (hooks) {
     test('Steps are properly initialized', function (assert) {
       this.service.initialize(this.config as WizardConfiguration);
 
-      assert.equal(this.service.allSteps.length, 2);
+      assert.equal(this.service.allSteps.length, 3);
       assert.equal(this.service.allSteps[0].key, 'step-1');
       assert.equal(this.service.allSteps[1].key, 'step-2');
+      assert.equal(this.service.allSteps[2].key, 'step-3');
     });
 
     test('Extra step properties are preserved', function (assert) {
       const extraProperty = { customProp: 'customValue' };
       this.config = {
-        sections: [createSection('section-1', [createStep('step-1', extraProperty), createStep('step-2')])]
+        sections: [
+          createSection('section-1', [createStep('step-1', extraProperty), createStep('step-2')], extraProperty)
+        ]
       };
       this.service.initialize(this.config as WizardConfiguration);
       const step1 = this.service.allSteps[0];
+      const section1 = this.service.sections[0];
+      assert.equal(section1.customProp, 'customValue', 'Extra properties are preserved in sections');
       assert.equal(step1.customProp, 'customValue', 'Extra properties are preserved in steps');
     });
 
@@ -197,33 +202,62 @@ module('Unit | Service | wizard-manager', function (hooks) {
       assert.strictEqual(this.service.currentStep?.id, step1.id);
     });
 
-    test('previousStep returns the step before the current step', async function (assert) {
-      this.service.initialize(this.config as WizardConfiguration);
-      const step1 = this.service.allSteps[0];
-      const step2 = this.service.allSteps[1];
-      this.service.selectStep(step2.id);
+    module('previousStep', function () {
+      test('It returns the step before the current step', async function (assert) {
+        this.service.initialize(this.config as WizardConfiguration);
+        const step1 = this.service.allSteps[0];
+        const step2 = this.service.allSteps[1];
+        this.service.selectStep(step2.id);
 
-      await settled();
-      assert.strictEqual(this.service.previousStep?.id, step1.id);
+        await settled();
+        assert.strictEqual(this.service.previousStep?.id, step1.id);
+      });
+
+      test('If previous step is hidden, it returns the previous visible', async function (assert) {
+        this.service.initialize(this.config as WizardConfiguration);
+        const step1 = this.service.allSteps[0];
+        const step2 = this.service.allSteps[1];
+        const step3 = this.service.allSteps[2];
+        step2.hidden = true;
+        this.service.selectStep(step3.id);
+
+        await settled();
+        assert.strictEqual(this.service.previousStep?.id, step1.id);
+      });
     });
 
-    test('nextStep returns the step after the current step', async function (assert) {
-      this.service.initialize(this.config as WizardConfiguration);
-      const step1 = this.service.allSteps[0];
-      const step2 = this.service.allSteps[1];
-      this.service.selectStep(step1.id);
+    module('nextStep', function () {
+      test('nextStep returns the step after the current step', async function (assert) {
+        this.service.initialize(this.config as WizardConfiguration);
+        const step1 = this.service.allSteps[0];
+        const step2 = this.service.allSteps[1];
+        this.service.selectStep(step1.id);
 
-      await settled();
-      assert.strictEqual(this.service.nextStep?.id, step2.id);
+        await settled();
+        assert.strictEqual(this.service.nextStep?.id, step2.id);
+      });
+
+      test('If next step is hidden, it returns the next visible', async function (assert) {
+        this.service.initialize(this.config as WizardConfiguration);
+        const step1 = this.service.allSteps[0];
+        const step2 = this.service.allSteps[1];
+        const step3 = this.service.allSteps[2];
+        step2.hidden = true;
+        this.service.selectStep(step1.id);
+
+        await settled();
+        assert.strictEqual(this.service.nextStep?.id, step3.id);
+      });
     });
 
     test('allSteps returns all steps across sections', function (assert) {
       this.service.initialize(this.config as WizardConfiguration);
       const allSteps = this.service.allSteps;
 
-      assert.strictEqual(allSteps.length, 2);
+      assert.strictEqual(allSteps.length, 3);
       assert.strictEqual(allSteps[0].key, 'step-1');
       assert.strictEqual(allSteps[1].key, 'step-2');
+      assert.strictEqual(allSteps[2].key, 'step-3');
     });
 
     test('findStepByKey returns the step with the given key', function (assert) {
@@ -231,9 +265,11 @@ module('Unit | Service | wizard-manager', function (hooks) {
       const step1 = this.service.findStepByKey('step-1');
       const step2 = this.service.findStepByKey('step-2');
       const step3 = this.service.findStepByKey('step-3');
+      const step4 = this.service.findStepByKey('step-4');
       assert.strictEqual(step1?.key, 'step-1');
       assert.strictEqual(step2?.key, 'step-2');
-      assert.strictEqual(step3, undefined, 'Step with key step-3 does not exist');
+      assert.strictEqual(step3?.key, 'step-3');
+      assert.strictEqual(step4, undefined, 'Step with key step-4 does not exist');
     });
   });
 
@@ -272,9 +308,10 @@ module('Unit | Service | wizard-manager', function (hooks) {
     this.service.initialize(this.config as WizardConfiguration);
     const steps = this.service.findStepsForSectionKey('section-1');
 
-    assert.strictEqual(steps.length, 2);
+    assert.strictEqual(steps.length, 3);
     assert.strictEqual(steps[0].key, 'step-1');
     assert.strictEqual(steps[1].key, 'step-2');
+    assert.strictEqual(steps[2].key, 'step-3');
   });
 
   test('reset clears all sections and steps', function (assert) {
@@ -293,5 +330,29 @@ module('Unit | Service | wizard-manager', function (hooks) {
     assert.equal(step1.completed, undefined);
     this.service.markStepAsCompleted(step1.id);
     assert.true(step1.completed);
+  });
+
+  module('ToggleStepVisibility', function (hooks) {
+    hooks.beforeEach(function () {
+      this.setDisplayStatesStub = sinon.stub(this.service, 'setDisplayStates').resolves();
+    });
+
+    test('It allows to hide or display a step', function (assert) {
+      this.service.initialize(this.config as WizardConfiguration);
+      const step1 = this.service.allSteps[0];
+      assert.equal(step1.hidden, undefined);
+      this.service.toggleStepVisibility(step1.id, true);
+      assert.equal(step1.hidden, true);
+      this.service.toggleStepVisibility(step1.id, false);
+      assert.equal(step1.hidden, false);
+    });
+
+    test('It rerender the display states when triggered', function (assert) {
+      this.service.initialize(this.config as WizardConfiguration);
+      const step1 = this.service.allSteps[0];
+      assert.ok(this.setDisplayStatesStub.notCalled);
+      this.service.toggleStepVisibility(step1.id, true);
+      assert.ok(this.setDisplayStatesStub.calledOnce);
+    });
   });
 });
