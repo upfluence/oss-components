@@ -2,6 +2,7 @@ import Service from '@ember/service';
 import { set } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { guidFor } from '@ember/object/internals';
+import { next } from '@ember/runloop';
 
 export type Step = {
   id: string;
@@ -22,6 +23,7 @@ export type Section = {
   id: string;
   key: string;
   steps: Step[];
+  [key: string]: unknown;
 };
 
 export type ConfigurationOptions = {
@@ -38,8 +40,10 @@ export type WizardConfiguration = {
       key: string;
       componentClass: any;
       validateStep?: () => Promise<boolean>;
+      hidden?: boolean;
       [key: string]: unknown;
     }[];
+    [key: string]: unknown;
   }[];
 };
 
@@ -58,23 +62,11 @@ export default class WizardManager extends Service {
   }
 
   get previousStep(): Step | undefined {
-    const currentIndex = this.allSteps.findIndex((step: Step) => step.id === this.focusedStepId);
-    if (currentIndex > 0 && this.allSteps[currentIndex - 1]?.displayState !== 'empty') {
-      return this.allSteps[currentIndex - 1];
-    }
-    return undefined;
+    return this.findPreviousStep(this.currentStep!);
   }
 
   get nextStep(): Step | undefined {
-    const currentIndex = this.allSteps.findIndex((step: Step) => step.id === this.focusedStepId);
-    if (
-      currentIndex >= 0 &&
-      currentIndex < this.allSteps.length - 1 &&
-      this.allSteps[currentIndex + 1]?.displayState !== 'empty'
-    ) {
-      return this.allSteps[currentIndex + 1];
-    }
-    return undefined;
+    return this.findNextStep(this.currentStep!);
   }
 
   initialize(configuration: WizardConfiguration): void {
@@ -162,6 +154,15 @@ export default class WizardManager extends Service {
     this.notifySectionChange();
   }
 
+  toggleStepVisibility(stepId: string, hidden: boolean): void {
+    const step = this.findStepById(stepId);
+    if (step) {
+      set(step, 'hidden', hidden);
+      this.setDisplayStates();
+      this.notifySectionChange();
+    }
+  }
+
   private get currentSection(): Section | undefined {
     return this.sections.find((section: Section) => section.steps.some((step: Step) => step.id === this.focusedStepId));
   }
@@ -191,7 +192,9 @@ export default class WizardManager extends Service {
     if (stepExists) {
       set(this, 'focusedStepId', stepId);
       this.setDisplayStates();
-      document.getElementById(stepId)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      next(this, () => {
+        document.getElementById(stepId)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
     }
   }
 
@@ -213,11 +216,11 @@ export default class WizardManager extends Service {
 
   private initSectionsAndSteps(configuration: WizardConfiguration): void {
     this.sections = configuration.sections.map((section) => {
-      return {
+      const overridingSection: Section = {
         id: guidFor(section.key),
         key: section.key,
         steps: section.steps.map((step) => {
-          let defaultStep: Step = {
+          const defaultStep: Step = {
             id: guidFor(step.key),
             key: step.key,
             componentClass: step.componentClass,
@@ -225,11 +228,34 @@ export default class WizardManager extends Service {
             displayState: 'none',
             visited: false
           };
-
           return { ...defaultStep, ...step };
         })
       };
+      return { ...section, ...overridingSection };
     });
+  }
+
+  private findPreviousStep(currentStep: Step): Step | undefined {
+    const currentIndex = this.allSteps.findIndex((step: Step) => step.id === currentStep.id);
+    if (currentIndex > 0 && this.allSteps[currentIndex - 1]?.displayState !== 'empty') {
+      const localPreviousStep = this.allSteps[currentIndex - 1];
+      return localPreviousStep!.hidden === true ? this.findPreviousStep(localPreviousStep!) : localPreviousStep;
+    }
+    return undefined;
+  }
+
+  private findNextStep(currentStep: Step): Step | undefined {
+    const currentIndex = this.allSteps.findIndex((step: Step) => step.id === currentStep.id);
+    if (
+      currentIndex >= 0 &&
+      currentIndex < this.allSteps.length - 1 &&
+      this.allSteps[currentIndex + 1]?.displayState !== 'empty'
+    ) {
+      const localNextStep = this.allSteps[currentIndex + 1];
+
+      return localNextStep!.hidden === true ? this.findNextStep(localNextStep!) : localNextStep;
+    }
+    return undefined;
   }
 
   private applyConfigOptions(): void {
