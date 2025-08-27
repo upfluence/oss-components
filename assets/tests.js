@@ -16906,6 +16906,21 @@ define("dummy/tests/integration/components/wizard/step-wrapper-test", ["qunit", 
           }));
           assert.dom('.step-wrapper__next').exists();
         });
+        (0, _qunit.test)('Hidden step - It applies the "hidden" class when the step is hidden', async function (assert) {
+          this.step.displayState = 'none';
+          this.step.hidden = true;
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <Wizard::StepWrapper @step={{this.step}} @stepWrapperBaseClass="custom-step-wrapper" />
+          */
+          {
+            "id": "XHBRsyDK",
+            "block": "[[[8,[39,0],null,[[\"@step\",\"@stepWrapperBaseClass\"],[[30,0,[\"step\"]],\"custom-step-wrapper\"]],null]],[],false,[\"wizard/step-wrapper\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/step-wrapper-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.step-wrapper__hidden').exists();
+        });
       });
       (0, _qunit.module)('When a stepWrapperBaseClass is set in the wizard-manager', function (hooks) {
         hooks.beforeEach(function () {
@@ -18120,10 +18135,11 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
       ...opts
     };
   }
-  function createSection(key, steps) {
+  function createSection(key, steps, opts = {}) {
     return {
       key,
-      steps
+      steps,
+      ...opts
     };
   }
   (0, _qunit.module)('Unit | Service | wizard-manager', function (hooks) {
@@ -18131,7 +18147,7 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
     hooks.beforeEach(function () {
       this.service = this.owner.lookup('service:wizard-manager');
       this.config = {
-        sections: [createSection('section-1', [createStep('step-1'), createStep('step-2')])]
+        sections: [createSection('section-1', [createStep('step-1'), createStep('step-2'), createStep('step-3')])]
       };
     });
     hooks.afterEach(function () {
@@ -18145,9 +18161,35 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
       });
       (0, _qunit.test)('Steps are properly initialized', function (assert) {
         this.service.initialize(this.config);
-        assert.equal(this.service.allSteps.length, 2);
+        assert.equal(this.service.allSteps.length, 3);
         assert.equal(this.service.allSteps[0].key, 'step-1');
         assert.equal(this.service.allSteps[1].key, 'step-2');
+        assert.equal(this.service.allSteps[2].key, 'step-3');
+      });
+      (0, _qunit.test)('Extra step properties are preserved', function (assert) {
+        const extraProperty = {
+          customProp: 'customValue'
+        };
+        this.config = {
+          sections: [createSection('section-1', [createStep('step-1', extraProperty), createStep('step-2')], extraProperty)]
+        };
+        this.service.initialize(this.config);
+        const step1 = this.service.allSteps[0];
+        const section1 = this.service.sections[0];
+        assert.equal(section1.customProp, 'customValue', 'Extra properties are preserved in sections');
+        assert.equal(step1.customProp, 'customValue', 'Extra properties are preserved in steps');
+      });
+      (0, _qunit.test)('Setting a visited attribute on steps overwrites the default', function (assert) {
+        this.config = {
+          sections: [createSection('section-1', [createStep('step-1', {
+            visited: true
+          }), createStep('step-2')])]
+        };
+        this.service.initialize(this.config);
+        const step1 = this.service.allSteps[0];
+        const step2 = this.service.allSteps[1];
+        assert.true(step1.visited);
+        assert.false(step2.visited);
       });
       (0, _qunit.test)('Focused step is set to first step', function (assert) {
         this.service.initialize(this.config);
@@ -18187,6 +18229,26 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
         this.service.selectStep(step2Id);
         await (0, _testHelpers.settled)();
         assert.equal(this.service.focusedStepId, step2Id);
+      });
+      (0, _qunit.test)('calling selectStep with a bypassValidations flag focuses the step without validation', async function (assert) {
+        const step1 = createStep('step-1', {
+          validateStep: () => _sinon.default.stub().resolves(true)
+        });
+        const step2 = createStep('step-2', {
+          validateStep: () => _sinon.default.stub().resolves(true)
+        });
+        this.config = {
+          sections: [createSection('section-1', [step1, step2])]
+        };
+        this.service.initialize(this.config);
+        const step1Id = this.service.allSteps[0].id;
+        const step2Id = this.service.allSteps[1].id;
+        this.validateStub = _sinon.default.stub(this.service.allSteps[0], 'validateStep').resolves(true);
+        assert.equal(this.service.focusedStepId, step1Id);
+        this.service.selectStep(step2Id, true);
+        await (0, _testHelpers.settled)();
+        assert.equal(this.service.focusedStepId, step1Id);
+        assert.true(this.validateStub.notCalled, 'validateStep was not called when bypassValidations is true');
       });
       (0, _qunit.test)("selectStep runs the current step's validateStep if provided", async function (assert) {
         this.service.initialize(this.config);
@@ -18241,28 +18303,64 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
         this.service.focusedStepId = step1.id;
         assert.strictEqual(this.service.currentStep?.id, step1.id);
       });
-      (0, _qunit.test)('previousStep returns the step before the current step', async function (assert) {
-        this.service.initialize(this.config);
-        const step1 = this.service.allSteps[0];
-        const step2 = this.service.allSteps[1];
-        this.service.selectStep(step2.id);
-        await (0, _testHelpers.settled)();
-        assert.strictEqual(this.service.previousStep?.id, step1.id);
+      (0, _qunit.module)('previousStep', function () {
+        (0, _qunit.test)('It returns the step before the current step', async function (assert) {
+          this.service.initialize(this.config);
+          const step1 = this.service.allSteps[0];
+          const step2 = this.service.allSteps[1];
+          this.service.selectStep(step2.id);
+          await (0, _testHelpers.settled)();
+          assert.strictEqual(this.service.previousStep?.id, step1.id);
+        });
+        (0, _qunit.test)('If previous step is hidden, it returns the previous visible', async function (assert) {
+          this.service.initialize(this.config);
+          const step1 = this.service.allSteps[0];
+          const step2 = this.service.allSteps[1];
+          const step3 = this.service.allSteps[2];
+          step2.hidden = true;
+          this.service.selectStep(step3.id);
+          await (0, _testHelpers.settled)();
+          assert.strictEqual(this.service.previousStep?.id, step1.id);
+        });
       });
-      (0, _qunit.test)('nextStep returns the step after the current step', async function (assert) {
-        this.service.initialize(this.config);
-        const step1 = this.service.allSteps[0];
-        const step2 = this.service.allSteps[1];
-        this.service.selectStep(step1.id);
-        await (0, _testHelpers.settled)();
-        assert.strictEqual(this.service.nextStep?.id, step2.id);
+      (0, _qunit.module)('nextStep', function () {
+        (0, _qunit.test)('nextStep returns the step after the current step', async function (assert) {
+          this.service.initialize(this.config);
+          const step1 = this.service.allSteps[0];
+          const step2 = this.service.allSteps[1];
+          this.service.selectStep(step1.id);
+          await (0, _testHelpers.settled)();
+          assert.strictEqual(this.service.nextStep?.id, step2.id);
+        });
+        (0, _qunit.test)('If next step is hidden, it returns the next visible', async function (assert) {
+          this.service.initialize(this.config);
+          const step1 = this.service.allSteps[0];
+          const step2 = this.service.allSteps[1];
+          const step3 = this.service.allSteps[2];
+          step2.hidden = true;
+          this.service.selectStep(step1.id);
+          await (0, _testHelpers.settled)();
+          assert.strictEqual(this.service.nextStep?.id, step3.id);
+        });
       });
       (0, _qunit.test)('allSteps returns all steps across sections', function (assert) {
         this.service.initialize(this.config);
         const allSteps = this.service.allSteps;
-        assert.strictEqual(allSteps.length, 2);
+        assert.strictEqual(allSteps.length, 3);
         assert.strictEqual(allSteps[0].key, 'step-1');
         assert.strictEqual(allSteps[1].key, 'step-2');
+        assert.strictEqual(allSteps[2].key, 'step-3');
+      });
+      (0, _qunit.test)('findStepByKey returns the step with the given key', function (assert) {
+        this.service.initialize(this.config);
+        const step1 = this.service.findStepByKey('step-1');
+        const step2 = this.service.findStepByKey('step-2');
+        const step3 = this.service.findStepByKey('step-3');
+        const step4 = this.service.findStepByKey('step-4');
+        assert.strictEqual(step1?.key, 'step-1');
+        assert.strictEqual(step2?.key, 'step-2');
+        assert.strictEqual(step3?.key, 'step-3');
+        assert.strictEqual(step4, undefined, 'Step with key step-4 does not exist');
       });
     });
     (0, _qunit.module)('Select Next/Previous Step', function (hooks) {
@@ -18292,9 +18390,10 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
     (0, _qunit.test)('findStepsForSectionKey returns steps for a given section key', function (assert) {
       this.service.initialize(this.config);
       const steps = this.service.findStepsForSectionKey('section-1');
-      assert.strictEqual(steps.length, 2);
+      assert.strictEqual(steps.length, 3);
       assert.strictEqual(steps[0].key, 'step-1');
       assert.strictEqual(steps[1].key, 'step-2');
+      assert.strictEqual(steps[2].key, 'step-3');
     });
     (0, _qunit.test)('reset clears all sections and steps', function (assert) {
       this.service.initialize(this.config);
@@ -18303,6 +18402,34 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
       assert.strictEqual(this.service.allSteps.length, 0);
       assert.strictEqual(this.service.focusedStepId, '');
       assert.strictEqual(this.service.initialized, false);
+    });
+    (0, _qunit.test)('markStepAsCompleted marks a step as completed', function (assert) {
+      this.service.initialize(this.config);
+      const step1 = this.service.allSteps[0];
+      assert.equal(step1.completed, undefined);
+      this.service.markStepAsCompleted(step1.id);
+      assert.true(step1.completed);
+    });
+    (0, _qunit.module)('ToggleStepVisibility', function (hooks) {
+      hooks.beforeEach(function () {
+        this.setDisplayStatesStub = _sinon.default.stub(this.service, 'setDisplayStates').resolves();
+      });
+      (0, _qunit.test)('It allows to hide or display a step', function (assert) {
+        this.service.initialize(this.config);
+        const step1 = this.service.allSteps[0];
+        assert.equal(step1.hidden, undefined);
+        this.service.toggleStepVisibility(step1.id, true);
+        assert.equal(step1.hidden, true);
+        this.service.toggleStepVisibility(step1.id, false);
+        assert.equal(step1.hidden, false);
+      });
+      (0, _qunit.test)('It rerenders the display states when triggered', function (assert) {
+        this.service.initialize(this.config);
+        const step1 = this.service.allSteps[0];
+        assert.ok(this.setDisplayStatesStub.notCalled);
+        this.service.toggleStepVisibility(step1.id, true);
+        assert.ok(this.setDisplayStatesStub.calledOnce);
+      });
     });
   });
 });

@@ -100011,6 +100011,8 @@ interface OSSCodeBlockArgs {
         classArray.push(`${this.baseClass}__next`);
       } else if (this.args.step.displayState === 'active') {
         classArray.push(`${this.baseClass}__active`);
+      } else if (this.args.step.hidden === true) {
+        classArray.push(`${this.baseClass}__hidden`);
       }
       return classArray.join(' ');
     }
@@ -101591,7 +101593,7 @@ interface OSSCodeBlockArgs {
   }
   _exports.default = Toast;
 });
-;define("@upfluence/oss-components/services/wizard-manager", ["exports", "@ember/service", "@ember/object", "@glimmer/tracking", "@ember/object/internals"], function (_exports, _service, _object, _tracking, _internals) {
+;define("@upfluence/oss-components/services/wizard-manager", ["exports", "@ember/service", "@ember/object", "@glimmer/tracking", "@ember/object/internals", "@ember/runloop"], function (_exports, _service, _object, _tracking, _internals, _runloop) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -101599,7 +101601,7 @@ interface OSSCodeBlockArgs {
   });
   _exports.default = void 0;
   var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4;
-  0; //eaimeta@70e063a35619d71f0,"@ember/service",0,"@ember/object",0,"@glimmer/tracking",0,"@ember/object/internals"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"@ember/service",0,"@ember/object",0,"@glimmer/tracking",0,"@ember/object/internals",0,"@ember/runloop"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
@@ -101621,18 +101623,10 @@ interface OSSCodeBlockArgs {
       return this.currentSection?.steps.find(step => step.id === this.focusedStepId);
     }
     get previousStep() {
-      const currentIndex = this.allSteps.findIndex(step => step.id === this.focusedStepId);
-      if (currentIndex > 0 && this.allSteps[currentIndex - 1]?.displayState !== 'empty') {
-        return this.allSteps[currentIndex - 1];
-      }
-      return undefined;
+      return this.findPreviousStep(this.currentStep);
     }
     get nextStep() {
-      const currentIndex = this.allSteps.findIndex(step => step.id === this.focusedStepId);
-      if (currentIndex >= 0 && currentIndex < this.allSteps.length - 1 && this.allSteps[currentIndex + 1]?.displayState !== 'empty') {
-        return this.allSteps[currentIndex + 1];
-      }
-      return undefined;
+      return this.findNextStep(this.currentStep);
     }
     initialize(configuration) {
       this.configOptions = configuration.options || {};
@@ -101651,7 +101645,11 @@ interface OSSCodeBlockArgs {
         this.selectStep(firstFocusableStepOfSection.id);
       }
     }
-    selectStep(stepId) {
+    selectStep(stepId, bypassValidations) {
+      if (bypassValidations) {
+        this.focusStep(stepId);
+        return;
+      }
       const targetStep = this.findStepById(stepId);
       if (!targetStep) return;
       const targetStepIndex = this.findIndexOfStep(stepId);
@@ -101687,14 +101685,35 @@ interface OSSCodeBlockArgs {
       }
       return [];
     }
+    findStepByKey(stepKey) {
+      return this.allSteps.find(step => step.key === stepKey);
+    }
     reset() {
       this.initialized = false;
       this.sections = [];
       this.focusedStepId = '';
       this.configOptions = {};
     }
+    markStepAsCompleted(stepId) {
+      const step = this.findStepById(stepId);
+      if (step) {
+        (0, _object.set)(step, 'completed', true);
+      }
+      this.notifySectionChange();
+    }
+    toggleStepVisibility(stepId, hidden) {
+      const step = this.findStepById(stepId);
+      if (step) {
+        (0, _object.set)(step, 'hidden', hidden);
+        this.setDisplayStates();
+        this.notifySectionChange();
+      }
+    }
     get currentSection() {
       return this.sections.find(section => section.steps.some(step => step.id === this.focusedStepId));
+    }
+    notifySectionChange() {
+      this.sections = [...this.sections];
     }
     findIndexOfStep(stepId) {
       return this.allSteps.findIndex(step => step.id === stepId);
@@ -101714,9 +101733,11 @@ interface OSSCodeBlockArgs {
       if (stepExists) {
         (0, _object.set)(this, 'focusedStepId', stepId);
         this.setDisplayStates();
-        document.getElementById(stepId)?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center'
+        (0, _runloop.next)(this, () => {
+          document.getElementById(stepId)?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+          });
         });
       }
     }
@@ -101733,11 +101754,11 @@ interface OSSCodeBlockArgs {
     }
     initSectionsAndSteps(configuration) {
       this.sections = configuration.sections.map(section => {
-        return {
+        const overridingSection = {
           id: (0, _internals.guidFor)(section.key),
           key: section.key,
           steps: section.steps.map(step => {
-            return {
+            const defaultStep = {
               id: (0, _internals.guidFor)(step.key),
               key: step.key,
               componentClass: step.componentClass,
@@ -101745,9 +101766,33 @@ interface OSSCodeBlockArgs {
               displayState: 'none',
               visited: false
             };
+            return {
+              ...defaultStep,
+              ...step
+            };
           })
         };
+        return {
+          ...section,
+          ...overridingSection
+        };
       });
+    }
+    findPreviousStep(currentStep) {
+      const currentIndex = this.allSteps.findIndex(step => step.id === currentStep.id);
+      if (currentIndex > 0 && this.allSteps[currentIndex - 1]?.displayState !== 'empty') {
+        const localPreviousStep = this.allSteps[currentIndex - 1];
+        return localPreviousStep.hidden === true ? this.findPreviousStep(localPreviousStep) : localPreviousStep;
+      }
+      return undefined;
+    }
+    findNextStep(currentStep) {
+      const currentIndex = this.allSteps.findIndex(step => step.id === currentStep.id);
+      if (currentIndex >= 0 && currentIndex < this.allSteps.length - 1 && this.allSteps[currentIndex + 1]?.displayState !== 'empty') {
+        const localNextStep = this.allSteps[currentIndex + 1];
+        return localNextStep.hidden === true ? this.findNextStep(localNextStep) : localNextStep;
+      }
+      return undefined;
     }
     applyConfigOptions() {
       if (this.configOptions?.centerStepsInContainer && this.sections?.length > 0) {

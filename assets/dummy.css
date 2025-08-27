@@ -13501,6 +13501,11 @@ a.oss-sidebar-item:focus {
   border-radius: var(--border-radius-xs);
   padding: var(--spacing-px-12);
 }
+.wizard-container .step-wrapper__hidden {
+  min-height: 0px;
+  padding: 0px;
+  display: none;
+}
 .wizard-container .step-wrapper__active {
   border: 1px solid var(--color-border-default);
   background: var(--color-white);
