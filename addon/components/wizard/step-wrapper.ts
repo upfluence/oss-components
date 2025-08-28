@@ -86,7 +86,9 @@ export default class WizardStepWrapperComponent extends Component<WizardStepWrap
   @action
   handleScrollEvent(event: Event): void {
     const target = event.target as HTMLElement;
-    if (target.scrollHeight - target.scrollTop <= target.clientHeight) {
+    const Tolerance = 1;
+
+    if (target.scrollHeight - target.scrollTop - target.clientHeight <= Tolerance) {
       this.scrollPosition = 'bottom';
       this.enableWheelListenerAfterDelay(SCROLL_EVENTS_DELAY);
     } else if (target.scrollTop === 0) {
