@@ -4,6 +4,7 @@
   data-wheel-listener={{this.wheelListenerEnabled}}
   data-wheel-handled={{this.wheelHandled}}
   {{did-update this.onDisplayStateUpdate @step.displayState}}
+  {{did-insert this.initStepView}}
   {{on "wheel" this.handleWheelEvent}}
   ...attributes
 >
