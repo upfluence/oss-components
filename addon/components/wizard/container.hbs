@@ -1,9 +1,7 @@
 <div class={{or this.wizardManager.configOptions.containerClass "wizard-container"}}>
-  <div class="wizard-container__scrollable">
-    {{#if this.wizardManager.initialized}}
-      {{#each this.allSteps as |step|}}
-        <Wizard::StepWrapper @step={{step}} />
-      {{/each}}
-    {{/if}}
-  </div>
+  {{#if this.wizardManager.initialized}}
+    {{#each this.allSteps as |step|}}
+      <Wizard::StepWrapper @step={{step}} />
+    {{/each}}
+  {{/if}}
 </div>
