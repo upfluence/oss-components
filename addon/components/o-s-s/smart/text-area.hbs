@@ -1,0 +1,23 @@
+<div
+  class="oss-smart-text-area-container {{if @hasError ' oss-smart-text-area-container--errored'}}"
+  {{did-insert this.registerElement}}
+  {{did-update this.handleUpdate @loading}}
+  ...attributes
+>
+  <div class="fx-row">
+    {{#if @loading}}
+      <div class="upf-input loading-placeholder fx-row fx-xalign-center">
+        <pre class="smart_text_animated">{{or @value @placeholder}}</pre>
+      </div>
+    {{/if}}
+    <Textarea
+      @value={{@value}}
+      placeholder={{@placeholder}}
+      disabled={{@disabled}}
+      rows={{this.rows}}
+      class="oss-textarea {{this.computedClass}}"
+      {{on "keyup" (fn this._onChange @value)}}
+    />
+  </div>
+
+</div>
