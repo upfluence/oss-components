@@ -1,14 +1,14 @@
 import Component from '@glimmer/component';
-import { action } from '@ember/object';
+
+export type HomeParameters = {
+  logo: string;
+  url: string;
+};
 
 interface OSSLayoutSidebarArgs {
+  homeParameters?: HomeParameters;
   logo: string;
-  homeAction?(): void;
+  homeURL?: string;
 }
 
-export default class OSSLayoutSidebar extends Component<OSSLayoutSidebarArgs> {
-  @action
-  onHomeAction(): void {
-    return this.args.homeAction?.();
-  }
-}
+export default class OSSLayoutSidebar extends Component<OSSLayoutSidebarArgs> {}

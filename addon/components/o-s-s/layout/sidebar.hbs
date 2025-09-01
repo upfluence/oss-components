@@ -1,7 +1,10 @@
 <div class="oss-sidebar--containers fx-col" ...attributes>
-  <OSS::Anchor @link={{@homeURL}} class="logo-container">
-    <img src={{@logo}} alt="brand" />
-  </OSS::Anchor>
+  {{#if (or @homeParameters (and @logo @homeURL))}}
+    <OSS::Anchor @link={{or @homeParameters.url @homeURL}} class="logo-container">
+      <img src={{or @homeParameters.logo @logo}} alt="brand" />
+    </OSS::Anchor>
+  {{/if}}
+
   <div class="oss-sidebar--content fx-1 fx-col fx-xalign-center fx-gap-px-9">
     {{yield to="content"}}
   </div>
