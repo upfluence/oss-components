@@ -1,16 +1,30 @@
-<div class="oss-sidebar--containers fx-col" ...attributes>
+<div class={{this.computedClasses}} ...attributes>
   {{#if (or @homeParameters (and @logo @homeURL))}}
     <OSS::Anchor @link={{or @homeParameters.url @homeURL}} class="logo-container">
       <img src={{or @homeParameters.logo @logo}} alt="brand" />
     </OSS::Anchor>
   {{/if}}
 
-  <div class="oss-sidebar--content fx-1 fx-col fx-xalign-center fx-gap-px-9">
-    {{yield to="content"}}
+  <div class="oss-sidebar-container__content oss-sidebar--content">
+    <div class="fx-col fx-xalign-center fx-gap-px-9">
+      {{yield (hash expanded=this.expanded) to="content"}}
+    </div>
+
+    {{#if @expandable}}
+      <div class="oss-sidebar-container__expand">
+        <OSS::Layout::Sidebar::Item
+          @icon={{if this.expanded "fa-arrow-left-to-line" "fa-arrow-right-to-line"}}
+          @label={{t "oss-components.sidebar.collapse"}}
+          @expanded={{this.expanded}}
+          data-control-name="sidebar-expanded-state-toggle"
+          {{on "click" this.toggleExpandedState}}
+        />
+      </div>
+    {{/if}}
   </div>
   {{#if (has-block "footer")}}
     <div class="oss-sidebar--footer fx-col fx-xalign-center fx-gap-px-9">
-      {{yield to="footer"}}
+      {{yield (hash expanded=this.expanded) to="footer"}}
     </div>
   {{/if}}
 </div>
