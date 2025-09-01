@@ -15,9 +15,11 @@
     <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
   </div>
 
-  <div class="oss-sidebar-item__label">
-    {{@label}}
-  </div>
+  {{#if @expanded}}
+    <div class="oss-sidebar-item__label">
+      {{@label}}
+    </div>
+  {{/if}}
 
   {{#if this.hasNotifications}}
     <div class="oss-sidebar-item__notification"></div>
