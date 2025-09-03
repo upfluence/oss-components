@@ -67,6 +67,11 @@ export default class Smart extends Controller {
     this.addContentToFeedbackComponent();
   }
 
+  get fakeSelectedItems(): string[] {
+    const mapped = this.items.map((item) => item.label);
+    return [...mapped, ...mapped, ...mapped];
+  }
+
   @action
   triggerSelection(value: string): void {
     console.log('selected toggle value : ', value);

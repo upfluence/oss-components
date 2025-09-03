@@ -87,6 +87,9 @@ export default class OSSSmartImmersiveSelectComponent extends BaseDropdown<OSSSm
   @action
   onSelect(selection: any): void {
     this.args.onChange?.(selection);
+    if (!this.args.multiple) {
+      this.closeDropdown();
+    }
   }
 
   @action

@@ -22,6 +22,7 @@ module('Integration | Component | o-s-s/smart/immersive/select', function (hooks
     this.displayedItems = 0;
     this.maxItemWidth = 200;
     this.onSearch = sinon.stub();
+    this.searchEnabled = true;
     this.onChange = sinon.stub();
   });
 
@@ -96,6 +97,31 @@ module('Integration | Component | o-s-s/smart/immersive/select', function (hooks
       assert.dom('.upf-infinite-select__item .selected i').exists();
       assert.dom('.upf-infinite-select__item .selected i').hasClass('font-color-primary-500').hasClass('fa-check');
     });
+
+    test('Selecting an item automatically closes the dropdown', async function (assert) {
+      await renderSingleComponent();
+      await click('.smart-immersive-select-container div');
+      await click('.upf-infinite-select__item:nth-of-type(2)');
+      assert.dom('.upf-infinite-select').doesNotExist();
+    });
+
+    module('@searchEnabled parameter', () => {
+      test('The search input is hidden if the searchEnabled is false', async function (assert) {
+        this.searchEnabled = false;
+        await renderComponent();
+        await click('.smart-immersive-select-container div');
+
+        assert.dom('.upf-infinite-select--search input').doesNotExist();
+      });
+
+      test('The search input is visible if the searchEnabled is true', async function (assert) {
+        this.searchEnabled = true;
+        await renderComponent();
+        await click('.smart-immersive-select-container div');
+
+        assert.dom('.upf-infinite-select--search input').exists();
+      });
+    });
   });
 
   module('Multiple select', () => {
@@ -124,6 +150,31 @@ module('Integration | Component | o-s-s/smart/immersive/select', function (hooks
       assert.dom('.smart-immersive-select-container .select-smart-item').exists({ count: 2 });
       assert.dom('.smart-immersive-select-container .select-smart-item:nth-of-type(1)').hasText('Item 1');
       assert.dom('.smart-immersive-select-container .select-smart-item:nth-of-type(2)').exists('+3');
+    });
+
+    test('Selecting an item does not automatically close the dropdown', async function (assert) {
+      await renderComponent();
+      await click('.smart-immersive-select-container div');
+      await click('.upf-infinite-select__item:nth-of-type(2)');
+      assert.dom('.upf-infinite-select').exists();
+    });
+
+    module('@searchEnabled parameter', () => {
+      test('The search input is hidden if the searchEnabled is false', async function (assert) {
+        this.searchEnabled = false;
+        await renderComponent();
+        await click('.smart-immersive-select-container div');
+
+        assert.dom('.upf-infinite-select--search input').doesNotExist();
+      });
+
+      test('The search input is visible if the searchEnabled is true', async function (assert) {
+        this.searchEnabled = true;
+        await renderComponent();
+        await click('.smart-immersive-select-container div');
+
+        assert.dom('.upf-infinite-select--search input').exists();
+      });
     });
   });
 
@@ -184,7 +235,8 @@ module('Integration | Component | o-s-s/smart/immersive/select', function (hooks
                                          @multiple={{this.multiple}} @placeholder={{this.placeholder}}
                                          @loading={{this.loading}} @hasError={{this.hasError}}
                                          @displayedItems={{this.displayedItems}} @maxItemWidth={{this.maxItemWidth}}
-                                         @onChange={{this.onChange}} @onSearch={{this.onSearch}}>
+                                         @onChange={{this.onChange}} @onSearch={{this.onSearch}}
+                                         @searchEnabled={{this.searchEnabled}}>
             <:selected-item as |item|>
               <span class="selected-item-label">{{item}}</span>
             </:selected-item>
@@ -201,7 +253,8 @@ module('Integration | Component | o-s-s/smart/immersive/select', function (hooks
                                          @multiple={{this.multiple}} @placeholder={{this.placeholder}}
                                          @loading={{this.loading}} @hasError={{this.hasError}}
                                          @displayedItems={{this.displayedItems}} @maxItemWidth={{this.maxItemWidth}}
-                                         @onChange={{this.onChange}} @onSearch={{this.onSearch}}>
+                                         @onChange={{this.onChange}} @onSearch={{this.onSearch}}
+                                         @searchEnabled={{this.searchEnabled}}>
             <:selected-item as |item|>
               <span class="selected-item-label">{{item}}</span>
             </:selected-item>
