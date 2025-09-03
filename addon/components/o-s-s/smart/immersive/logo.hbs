@@ -10,10 +10,10 @@
     </div>
   {{/if}}
   {{#if (eq this.logoMode "icon")}}
-    <div class="logo-icon fx-row fx-malign-center fx-xalign-center {{this.logoColor}}">
+    <div class="smart-logo-icon fx-row fx-malign-center fx-xalign-center {{this.logoColor}}">
       <OSS::Icon @icon="fa-{{this.logoIcon}}" @style="duotone" />
     </div>
   {{else}}
-    <div class="campaign-image" style={{this.dynamicImageStyle}}></div>
+    <div class="smart-campaign-image" style={{this.dynamicImageStyle}}></div>
   {{/if}}
 </div>
