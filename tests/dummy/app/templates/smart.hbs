@@ -85,7 +85,7 @@
     class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
   >
     <div class="font-size-md font-weight-semibold">
-      Smart select
+      Smart Immersive select
     </div>
     <div class="fx-col fx-gap-px-24 fx-xalign-center">
       <OSS::Button @label="Toggle loading" {{on "click" this.toggleLoading}} />
@@ -126,13 +126,32 @@
         </:option-item>
       </OSS::Smart::Immersive::Select>
       <OSS::Smart::Immersive::Select
+        @placeholder="Placeholder"
+        @values={{this.fakeSelectedItems}}
+        @displayCount={{true}}
+        @loading={{this.loading}}
+        @hasError={{false}}
+        @items={{this.items}}
+        @onSearch={{this.onSearch}}
+        @onChange={{this.onChange}}
+        @multiple={{true}}
+      >
+        <:selected-item as |item|>{{item}}</:selected-item>
+        <:option-item as |item|>
+          <div class="text-ellipsis" {{enable-tooltip title=item.label displayOnlyOnOverflow=true}}>
+            {{item.label}}
+          </div>
+        </:option-item>
+      </OSS::Smart::Immersive::Select>
+      <OSS::Smart::Immersive::Select
         @placeholder="Type your name or pseudo"
         @values={{array this.value}}
         @loading={{this.loading}}
         @hasError={{true}}
         @items={{this.items}}
-        @onSearch={{this.onSearch}}
         @onChange={{this.onChange}}
+        @searchEnabled={{false}}
+        @multiple={{false}}
       >
         <:selected-item as |item|>{{item}}</:selected-item>
         <:option-item as |item|>{{item.label}}</:option-item>
@@ -443,14 +462,26 @@
       Smart Logo
       <OSS::ToggleSwitch @value={{this.logoLoading}} @onChange={{this.toggleLogoLoading}} />
     </div>
-    <div class="fx-col fx-gap-px-24 padding-px-12 background-color-primary-50">
+    <div class="fx-row fx-gap-px-24 padding-px-12 background-color-primary-50">
       <OSS::Smart::Immersive::Logo
         @url="https://picsum.photos/200/300"
         @loading={{this.logoLoading}}
         @onEdit={{this.onLogoClick}}
       />
+      <OSS::Smart::Immersive::Logo
+        @url="https://picsum.photos/200/300"
+        @loading={{this.logoLoading}}
+        @onEdit={{this.onLogoClick}}
+        @hasError={{true}}
+      />
 
       <OSS::Smart::Immersive::Logo @icon="rabbit:orange" @loading={{this.logoLoading}} @onEdit={{this.onLogoClick}} />
+      <OSS::Smart::Immersive::Logo
+        @icon="rabbit:orange"
+        @loading={{this.logoLoading}}
+        @onEdit={{this.onLogoClick}}
+        @hasError={{true}}
+      />
       <OSS::Smart::Immersive::Logo
         @icon="rabbit:orange"
         @oversize={{true}}
