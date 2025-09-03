@@ -111,7 +111,7 @@ export default class WizardManager extends Service {
           this.focusStep(stepId);
         } else {
           const firstInvalidIndex = results.findIndex((result: boolean) => !result);
-          if (firstInvalidIndex !== -1) {
+          if (firstInvalidIndex !== -1 && currentStepIndex !== currentStepIndex + firstInvalidIndex) {
             this.focusStep(this.allSteps[currentStepIndex + firstInvalidIndex]?.id ?? '');
           }
         }
