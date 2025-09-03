@@ -56,7 +56,7 @@ export default class OSSSmartImmersiveLogoComponent extends Component<OSSSmartIm
   }
 
   get logoColor(): string | null {
-    return this.args.icon ? `logo-icon-color_${this.args.icon.split(':')[1]}` : null;
+    return this.args.icon ? `smart-logo-icon-color_${this.args.icon.split(':')[1]}` : null;
   }
 
   get logoIcon(): string | null {
