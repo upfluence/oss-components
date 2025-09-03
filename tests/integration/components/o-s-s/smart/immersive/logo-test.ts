@@ -109,7 +109,43 @@ module('Integration | Component | o-s-s/smart/immersive/logo', function (hooks) 
       @loading={{this.loading}}
     />`);
 
-    assert.dom('.oss-smart__immersive-icon-container__generating').exists();
+    assert.dom('.oss-smart__immersive-icon-container--generating').exists();
+  });
+
+  module('@hasError', () => {
+    test('it applies the error class when hasError is true', async function (assert) {
+      this.hasError = true;
+
+      await render(hbs`<OSS::Smart::Immersive::Logo
+        @icon={{this.icon}}
+        @editable={{this.editable}}
+        @hasError={{this.hasError}}
+      />`);
+
+      assert.dom('.oss-smart__immersive-icon-container--errored').exists();
+    });
+
+    test('it does not apply the error class when hasError is false', async function (assert) {
+      this.hasError = false;
+
+      await render(hbs`<OSS::Smart::Immersive::Logo
+        @icon={{this.icon}}
+        @editable={{this.editable}}
+        @hasError={{this.hasError}}
+      />`);
+
+      assert.dom('.oss-smart__immersive-icon-container--errored').doesNotExist();
+    });
+
+    test('it does not apply the class by default', async function (assert) {
+      await render(hbs`<OSS::Smart::Immersive::Logo
+        @icon={{this.icon}}
+        @editable={{this.editable}}
+        @hasError={{this.hasError}}
+      />`);
+
+      assert.dom('.oss-smart__immersive-icon-container--errored').doesNotExist();
+    });
   });
 
   test(`it renders the generated content animation when loading is false`, async function (assert) {

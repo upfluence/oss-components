@@ -12,8 +12,11 @@ interface OSSSmartImmersiveLogoArgs {
   editable: boolean;
   loading?: boolean;
   oversize?: boolean;
+  hasError?: boolean;
   onEdit(): void;
 }
+
+const BASE_COMPONENT_CLASS = 'oss-smart__immersive-icon-container';
 
 export default class OSSSmartImmersiveLogoComponent extends Component<OSSSmartImmersiveLogoArgs> {
   @tracked declare element: HTMLElement;
@@ -34,6 +37,22 @@ export default class OSSSmartImmersiveLogoComponent extends Component<OSSSmartIm
         );
       }
     }
+  }
+
+  get computedClass(): string {
+    const classes = [BASE_COMPONENT_CLASS];
+
+    if (this.args.loading) {
+      classes.push(`${BASE_COMPONENT_CLASS}--generating`);
+    }
+    if (this.args.oversize) {
+      classes.push(`${BASE_COMPONENT_CLASS}--oversize`);
+    }
+    if (this.args.hasError) {
+      classes.push(`${BASE_COMPONENT_CLASS}--errored`);
+    }
+
+    return classes.join(' ');
   }
 
   get logoColor(): string | null {

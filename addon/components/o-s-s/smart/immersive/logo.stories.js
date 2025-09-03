@@ -3,7 +3,7 @@ import { action } from '@storybook/addon-actions';
 import { LOGO_COLORS, LOGO_ICONS } from '../../../../../app/utils/logo-config';
 
 export default {
-  title: 'Components/Smart::Immersive::Logo',
+  title: 'Components/OSS::Smart::Immersive::Logo',
   component: 'oss-smart-immersive-logo',
   argTypes: {
     icon: {
@@ -61,6 +61,14 @@ export default {
       },
       control: { type: 'boolean' }
     },
+    hasError: {
+      description: 'Display an error border around the component.',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: false }
+      },
+      control: { type: 'boolean' }
+    },
     onEdit: {
       description: 'Action triggered when clicking the edit overlay',
       table: {
@@ -90,6 +98,7 @@ const Template = ({ iconName, iconColor, ...rest }) => {
           @editable={{this.editable}}
           @loading={{this.loading}}
           @oversize={{this.oversize}}
+          @hasError={{this.hasError}}
           @onEdit={{this.onEdit}}
         />
       </div>
@@ -109,6 +118,7 @@ Default.args = {
   editable: false,
   loading: false,
   oversize: false,
+  hasError: false,
   onEdit: action('onEdit')
 };
 
