@@ -20,8 +20,8 @@ module('Integration | Component | o-s-s/smart/immersive/logo', function (hooks) 
       @editable={{this.editable}}
     />`);
 
-    assert.dom('.logo-icon').exists();
-    assert.dom('.logo-icon').hasClass('logo-icon-color_star');
+    assert.dom('.smart-logo-icon').exists();
+    assert.dom('.smart-logo-icon').hasClass('smart-logo-icon-color_star');
     assert.dom('i.fad.fa-fa').exists();
     assert.dom('.edit-overlay').doesNotExist();
   });
@@ -35,10 +35,10 @@ module('Integration | Component | o-s-s/smart/immersive/logo', function (hooks) 
       @editable={{this.editable}}
     />`);
 
-    assert.dom('.campaign-image').exists();
-    let style = this.element.querySelector('.campaign-image').style.backgroundImage;
+    assert.dom('.smart-campaign-image').exists();
+    let style = this.element.querySelector('.smart-campaign-image').style.backgroundImage;
     assert.ok(style.includes(this.url));
-    assert.dom('.logo-icon').doesNotExist();
+    assert.dom('.smart-logo-icon').doesNotExist();
   });
 
   test('it renders edit overlay when editable', async function (assert) {
@@ -81,7 +81,7 @@ module('Integration | Component | o-s-s/smart/immersive/logo', function (hooks) 
           @editable={{this.editable}}
         />`);
 
-      assert.dom(`.logo-icon i.fa-${iconName}`).exists();
+      assert.dom(`.smart-logo-icon i.fa-${iconName}`).exists();
     });
   });
 
@@ -96,7 +96,7 @@ module('Integration | Component | o-s-s/smart/immersive/logo', function (hooks) 
         @editable={{this.editable}}
       />`);
 
-      assert.dom(`.logo-icon`).hasClass(`logo-icon-color_${color}`);
+      assert.dom(`.smart-logo-icon`).hasClass(`smart-logo-icon-color_${color}`);
     });
   });
 
@@ -185,8 +185,8 @@ module('Integration | Component | o-s-s/smart/immersive/logo', function (hooks) 
       @onEdit={{this.onEdit}}
     />`);
 
-    assert.dom('.campaign-image').exists('Fallback image container is rendered');
-    const style = this.element.querySelector('.campaign-image')?.getAttribute('style');
+    assert.dom('.smart-campaign-image').exists('Fallback image container is rendered');
+    const style = this.element.querySelector('.smart-campaign-image')?.getAttribute('style');
     assert.ok(style?.includes('background-image: url(/assets/images/picture-frame.svg)'));
   });
 });
