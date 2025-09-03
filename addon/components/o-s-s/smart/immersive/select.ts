@@ -127,7 +127,7 @@ export default class OSSSmartImmersiveSelectComponent extends BaseDropdown<OSSSm
       this.cleanupDrodpownAutoplacement = attachDropdown(
         referenceTarget as HTMLElement,
         floatingTarget as HTMLElement,
-        { maxHeight: 300, maxWidth: 320, placementStrategy: 'auto' }
+        { maxHeight: 300, maxWidth: 320, placement: 'bottom-start', fallbackPlacements: ['top-start'] }
       );
     }
   }
