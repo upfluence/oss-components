@@ -2,7 +2,7 @@ import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: 'Components/Smart::Immersive::Select',
+  title: 'Components/OSS::Smart::Immersive::Select',
   component: 'oss-smart-immersive-select',
   argTypes: {
     placeholder: {
