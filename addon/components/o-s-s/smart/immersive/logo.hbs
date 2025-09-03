@@ -1,7 +1,5 @@
 <div
-  class="oss-smart__immersive-icon-container
-    {{if @loading 'oss-smart__immersive-icon-container__generating'}}
-    {{if @oversize 'oss-smart__immersive-icon-container--oversize'}}"
+  class={{this.computedClass}}
   {{did-update this.handleLoadingUpdate @loading}}
   {{did-insert this.registerElement}}
   ...attributes
