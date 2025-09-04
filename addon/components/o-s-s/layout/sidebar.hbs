@@ -6,7 +6,7 @@
   {{/if}}
 
   <div class="oss-sidebar-container__content oss-sidebar--content">
-    <div class="fx-col fx-xalign-center fx-gap-px-9">
+    <div class="fx-col fx-xalign-center fx-gap-px-9 width-pc-100">
       {{yield (hash expanded=this.expanded) to="content"}}
     </div>
 
@@ -23,7 +23,7 @@
     {{/if}}
   </div>
   {{#if (has-block "footer")}}
-    <div class="oss-sidebar--footer fx-col fx-xalign-center fx-gap-px-9">
+    <div class="oss-sidebar-container__footer">
       {{yield (hash expanded=this.expanded) to="footer"}}
     </div>
   {{/if}}

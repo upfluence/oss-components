@@ -36,6 +36,7 @@
   //
   --spacing-px-3: 3px;
   --spacing-px-9: 9px;
+
   .generate-spacing-vars(60);
   .generate-spacing-vars(@n, @i: 0) when (@i =< @n) {
     --spacing-px-@{i}: calc(@i * 1px);
@@ -75,6 +76,22 @@
     }
 
     .generate-spacing-vars(@n, (@i + 6));
+
+    .padding-px-9 {
+      padding: 9px;
+    }
+    .padding-left-px-9 {
+      padding-left: 9px;
+    }
+    .padding-right-px-9 {
+      padding-right: 9px;
+    }
+    .padding-top-px-9 {
+      padding-top: 9px;
+    }
+    .padding-bottom-px-9 {
+      padding-bottom: 9px;
+    }
   }
 
   .generate-width-height-pc-classes(100);
