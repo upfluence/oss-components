@@ -1,64 +1,84 @@
 <div class="fx-row">
-  <OSS::Layout::Sidebar @homeParameters={{hash logo="/assets/images/upfluence-white-logo.svg" url="/"}}>
-    <:content>
+  <OSS::Layout::Sidebar @homeParameters={{hash logo="/assets/images/brand-icon.svg" url="/"}} @expandable={{true}}>
+    <:content as |state|>
       <OSS::Layout::Sidebar::Item
         @icon="far fa-message-plus"
+        @label="Display"
+        @expanded={{state.expanded}}
         class={{if (eq this.router.currentRouteName "index") "active"}}
         @link="index"
       />
       <OSS::Layout::Sidebar::Item
         @icon="far fa-input-text"
+        @label="Input"
+        @expanded={{state.expanded}}
         class={{if (eq this.router.currentRouteName "input") "active"}}
         @link="input"
       />
       <OSS::Layout::Sidebar::Item
         @icon="far fa-toggle-on"
+        @label="Visual"
+        @expanded={{state.expanded}}
         class={{if (eq this.router.currentRouteName "visual") "active"}}
         @link="visual"
       />
       <OSS::Layout::Sidebar::Item
         @icon="far fa-line-columns"
+        @label="Data"
+        @expanded={{state.expanded}}
         class={{if (eq this.router.currentRouteName "data") "active"}}
         @link="data"
       />
       <OSS::Layout::Sidebar::Item
         @icon="far fa-window-restore"
+        @label="Overlay"
+        @expanded={{state.expanded}}
         class={{if (eq this.router.currentRouteName "overlay") "active"}}
         @link="overlay"
       />
       <OSS::Layout::Sidebar::Item
         @icon="far fa-link"
+        @label="Extra"
+        @expanded={{state.expanded}}
         class={{if (eq this.router.currentRouteName "extra") "active"}}
         @link="extra"
       />
       <OSS::Layout::Sidebar::Item
         @icon="far fa-hat-wizard"
+        @label="Wizard"
+        @expanded={{state.expanded}}
         class={{if (eq this.router.currentRouteName "wizard") "active"}}
         @link="wizard"
       />
       <OSS::Layout::Sidebar::Item
         @icon="far fa-lock"
         @locked={{true}}
+        @label="Locked State"
+        @expanded={{state.expanded}}
         @defaultAction={{fn this.redirectTo "credit-card"}}
         @lockedAction={{fn this.redirectTo "locked credit-card"}}
       />
       <OSS::Layout::Sidebar::Item
-        @icon="far fa-kiwi-bird"
-        @defaultAction={{fn this.redirectTo "pointer"}}
-        @tag={{hash label="New" skin="chat-gpt"}}
-      />
-      <OSS::Layout::Sidebar::Item
         @icon="far fa-bullhorn"
         @defaultAction={{fn this.redirectTo "pointer"}}
+        @label="Notifications"
+        @expanded={{state.expanded}}
         @hasNotifications={{true}}
       />
     </:content>
-    <:footer>
-      <OSS::Layout::Sidebar::Item @icon="fal fa-info-circle" />
-      <OSS::Avatar
-        @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
-        @initials="Ts"
-      />
+    <:footer as |sidebar|>
+      <OSS::Layout::Sidebar::Item @icon="fal fa-info-circle" @label="Help center" @expanded={{sidebar.expanded}} />
+
+      <div class="fx-row fx-gap-px-9 fx-xalign-center">
+        <OSS::Avatar
+          @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
+          @initials="Ts"
+        />
+
+        {{#if sidebar.expanded}}
+          My account
+        {{/if}}
+      </div>
     </:footer>
   </OSS::Layout::Sidebar>
 
