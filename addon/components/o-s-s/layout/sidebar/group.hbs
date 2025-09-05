@@ -1,0 +1,49 @@
+<div
+  class={{concat
+    "oss-sidebar-group"
+    (if @expanded " oss-sidebar-group--expanded")
+    (if this.triggerHovered " oss-sidebar-group--hovered")
+  }}
+  {{did-insert this.registerTrigger}}
+  ...attributes
+>
+  <OSS::Layout::Sidebar::Item
+    @icon={{@icon}}
+    @label={{@label}}
+    @expanded={{@expanded}}
+    @hasNotifications={{and (not @expanded) this.hasNotifications}}
+    {{on "mouseenter" this.handleMouseEnter}}
+    {{on "mouseleave" this.handleMouseLeave}}
+    class={{concat (if @expanded "oss-sidebar-item--group-header") (if this.isActive " active")}}
+  />
+
+  <div
+    class={{concat
+      "oss-sidebar-group__items-container"
+      (if (or @expanded this.displayGroupList) " oss-sidebar-group__items-container--visible")
+    }}
+    {{on "mouseenter" (fn (mut this.groupListHovered) true)}}
+    {{on "mouseleave" this.handleGroupListLeave}}
+  >
+    {{#unless @expanded}}
+      <div class="group-name">
+        {{@label}}
+      </div>
+    {{/unless}}
+    <div class="group-list">
+      {{#each @items as |item|}}
+        <OSS::Layout::Sidebar::Item
+          @expanded={{true}}
+          @icon={{item.icon}}
+          @label={{item.label}}
+          @locked={{item.locked}}
+          @hasNotifications={{item.hasNotifications}}
+          @link={{item.link}}
+          @lockedAction={{item.lockedAction}}
+          data-control-name={{item.dataControlName}}
+          class={{if item.active "active"}}
+        />
+      {{/each}}
+    </div>
+  </div>
+</div>
