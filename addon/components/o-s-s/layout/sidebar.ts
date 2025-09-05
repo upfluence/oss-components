@@ -8,6 +8,7 @@ import UPFLocalStorage from '@upfluence/oss-components/utils/upf-local-storage';
 export type HomeParameters = {
   logo: string;
   url: string;
+  tooltip?: string;
 };
 
 const SIDEBAR_EXPANDED_STATE = 'oss-layout-sidebar-expanded';
@@ -31,7 +32,7 @@ export default class OSSLayoutSidebar extends Component<OSSLayoutSidebarArgs> {
   }
 
   get computedClasses(): string {
-    const classes = ['oss-sidebar-container', 'oss-sidebar--containers'];
+    const classes = ['oss-sidebar-container'];
 
     if (this.expanded) {
       classes.push('oss-sidebar-container--expanded');

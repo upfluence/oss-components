@@ -10,8 +10,7 @@
   }
 }
 
-.oss-sidebar-container,
-.oss-sidebar--containers {
+.oss-sidebar-container {
   height: 100vh;
   width: var(--sidebar-width);
   display: flex;
@@ -35,6 +34,11 @@
     img {
       max-width: 30px;
       max-height: 30px;
+    }
+
+    .oss-sidebar-item.active:not(:hover) {
+      background-color: transparent;
+      border: 1px solid transparent;
     }
   }
 

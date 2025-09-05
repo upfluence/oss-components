@@ -1,8 +1,15 @@
 <div class={{this.computedClasses}} ...attributes>
   {{#if (or @homeParameters (and @logo @homeURL))}}
-    <OSS::Anchor @link={{or @homeParameters.url @homeURL}} class="logo-container">
-      <img src={{or @homeParameters.logo @logo}} alt="brand" />
-    </OSS::Anchor>
+    <div class="logo-container">
+      <OSS::Layout::Sidebar::Item
+        @link={{or @homeParameters.url @homeURL}}
+        {{enable-tooltip title=@homeParameters.tooltip placement="right"}}
+      >
+        <:icon>
+          <img src={{or @homeParameters.logo @logo}} alt="brand" />
+        </:icon>
+      </OSS::Layout::Sidebar::Item>
+    </div>
   {{/if}}
 
   <div class="oss-sidebar-container__content oss-sidebar--content">

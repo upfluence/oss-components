@@ -5,24 +5,25 @@ export default {
   title: 'Components/OSS::Layout::Sidebar',
   component: 'sidebar',
   argTypes: {
-    logo: {
-      description: 'Url of the brand logo',
+    homeParameters: {
+      description: 'Options to configure the header of the sidebar',
       table: {
         type: {
-          summary: 'string'
+          summary: '{ logo: string; url: string; tooltip?: string; }'
         },
         defaultValue: { summary: 'undefined' }
       },
-      control: { type: 'text' }
+      control: { type: 'object' }
     },
-    homeAction: {
-      description: 'Function to be called when the brand logo is clicked',
+    expandable: {
+      description: 'Can be expanded or collapsed',
       table: {
-        category: 'Actions',
         type: {
-          summary: 'homeAction(): void'
-        }
-      }
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'false' }
+      },
+      control: { type: 'boolean' }
     }
   },
   parameters: {
@@ -36,23 +37,26 @@ export default {
 };
 
 const defaultArgs = {
-  logo: 'https://d2vn5no6mw06ds.cloudfront.net/assets/images/upfluence-white-logo-6914f5a181fad59b7c6e4e755ce05d70.svg',
-  homeAction: action('homeAction')
+  expandable: false,
+  homeParameters: {
+    logo: '/assets/images/brand-icon.svg',
+    url: 'https://www.upfluence.com'
+  }
 };
 
 const Template = (args) => ({
   template: hbs`
     <div style="height:100vh; padding:5px;">
-      <OSS::Layout::Sidebar @logo={{this.logo}} @homeAction={{this.homeAction}} style="height:95vh;">
-      <:content>
-        <OSS::Layout::Sidebar::Item @icon="far fa-search" class="active" @homeAction={{this.homeAction}} />
-        <OSS::Layout::Sidebar::Item @icon="far fa-list" />
-        <OSS::Layout::Sidebar::Item @icon="far fa-envelope" @hasNotifications={{true}} />
-        <OSS::Layout::Sidebar::Item @icon="far fa-credit-card" @locked={{true}} />
-      </:content>
-      <:footer>
-        <OSS::Avatar @initials="Ts" />
-      </:footer>
+      <OSS::Layout::Sidebar @expandable={{this.expandable}} @homeParameters={{this.homeParameters}} style="height:95vh; overflow: visible">
+        <:content as |sidebar|>
+          <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-search" @label="Search" class="active" @homeAction={{this.homeAction}} />
+          <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-list" @label="Community" />
+          <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-envelope" @label="Inbox" @hasNotifications={{true}} />
+          <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-credit-card" @label="Payment" @locked={{true}} />
+        </:content>
+        <:footer>
+          <OSS::Avatar @initials="Ts" />
+        </:footer>
       </OSS::Layout::Sidebar>
     </div>
   `,

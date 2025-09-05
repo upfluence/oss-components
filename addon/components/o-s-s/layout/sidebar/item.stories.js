@@ -15,6 +15,26 @@ export default {
       },
       control: { type: 'text' }
     },
+    label: {
+      description: 'A label for the item to display when expanded',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'text' }
+    },
+    expanded: {
+      description: 'Display in expanded state',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'false' }
+      },
+      control: { type: 'boolean' }
+    },
     hasNotifications: {
       description: 'Has notifications',
       table: {
@@ -45,16 +65,6 @@ export default {
         type: 'text'
       }
     },
-    tag: {
-      description: 'Optional tag element displayed as an overlay at the bottom of the component',
-      table: {
-        type: { summary: '{ label?: string, icon?: string, skin?: string }' },
-        defaultValue: { summary: 'undefined' }
-      },
-      control: {
-        type: 'object'
-      }
-    },
     lockedAction: {
       description: 'Function to be called on click when item is locked',
       table: {
@@ -77,10 +87,11 @@ export default {
 
 const defaultArgs = {
   icon: 'far fa-search',
+  label: 'Search',
+  expanded: false,
   hasNotifications: false,
   locked: false,
   link: 'http://upfluence.com',
-  tag: undefined,
   lockedAction: action('lockedAction')
 };
 
@@ -89,13 +100,30 @@ const Template = (args) => ({
     <div style="background: var(--sidebar-bg-color)">
       <OSS::Layout::Sidebar::Item @icon={{this.icon}} @locked={{this.locked}}
                                   @hasNotifications={{this.hasNotifications}}
-                                  @link={{this.link}}
-                                  @tag={{this.tag}}
-                                  @lockedAction={{this.lockedAction}}/>
+                                  @link={{this.link}} @label={{this.label}}
+                                  @expanded={{this.expanded}}
+                                  @lockedAction={{this.lockedAction}} />
     </div>
+  `,
+  context: args
+});
+
+const IconNamedBlockTemplate = (args) => ({
+  template: hbs`
+      <OSS::Layout::Sidebar::Item
+        @icon={{this.icon}} @locked={{this.locked}} @hasNotifications={{this.hasNotifications}}
+        @link={{this.link}} @label={{this.label}} @expanded={{this.expanded}} @lockedAction={{this.lockedAction}}
+      >
+        <:icon>
+          <OSS::Icon @icon="fa-ship" />
+        </:icon>
+      </OSS::Layout::Sidebar::Item>
   `,
   context: args
 });
 
 export const BasicUsage = Template.bind({});
 BasicUsage.args = defaultArgs;
+
+export const WithNamedBlockIcon = IconNamedBlockTemplate.bind({});
+WithNamedBlockIcon.args = defaultArgs;

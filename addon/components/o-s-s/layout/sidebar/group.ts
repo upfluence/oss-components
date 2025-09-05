@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import { later, next, schedule, scheduleOnce } from '@ember/runloop';
+import { later, schedule } from '@ember/runloop';
 
 export type GroupItem = {
   icon?: string;
@@ -85,6 +85,5 @@ export default class OSSLayoutSidebarGroupComponent extends Component<OSSLayoutS
     };
 
     later(this, hide, immediate ? 0 : GROUP_LIST_HIDE_DELAY);
-    //this.hideGroupListTimeout = later(this, hide, immediate ? 0 : GROUP_LIST_HIDE_DELAY);
   }
 }
