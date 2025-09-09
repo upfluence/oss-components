@@ -7,9 +7,14 @@ import { scheduleOnce } from '@ember/runloop';
 import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
 import { helper } from '@ember/component/helper';
 
+export type SmartImmersiveSelectItem = {
+  value: any;
+  label: string;
+};
+
 interface OSSSmartImmersiveSelectComponentSignature extends BaseDropdownArgs {
-  values?: string[];
-  items: { value: string; label: string }[];
+  values?: SmartImmersiveSelectItem[];
+  items: SmartImmersiveSelectItem[];
   placeholder?: string;
   loading?: boolean;
   hasError?: boolean;
@@ -26,8 +31,8 @@ interface OSSSmartImmersiveSelectComponentSignature extends BaseDropdownArgs {
 export default class OSSSmartImmersiveSelectComponent extends BaseDropdown<OSSSmartImmersiveSelectComponentSignature> {
   cleanupDrodpownAutoplacement?: () => void;
 
-  isSelected = helper((_, { value }: { value: string }): boolean => {
-    return this.args.values?.includes(value) || false;
+  isSelected = helper((_, { value }: { value: any }): boolean => {
+    return this.args.values?.some((item) => item.value === value) || false;
   });
 
   get hasValue(): boolean {
@@ -61,8 +66,8 @@ export default class OSSSmartImmersiveSelectComponent extends BaseDropdown<OSSSm
     return this.args.displayedItems ?? 0;
   }
 
-  get values(): string[] {
-    let values: string[] = [];
+  get values(): SmartImmersiveSelectItem[] {
+    let values: SmartImmersiveSelectItem[] = [];
     values = [
       ...(this.args.values?.filter((el) => {
         return !isBlank(el) && el !== undefined;
@@ -71,7 +76,10 @@ export default class OSSSmartImmersiveSelectComponent extends BaseDropdown<OSSSm
 
     if (this.displayedItems > 0 && values.length > this.displayedItems) {
       values = values.slice(0, this.displayedItems);
-      values.push(`+${(this.args.values?.length ?? 0) - this.displayedItems}`);
+      values.push({
+        value: `+${(this.args.values?.length ?? 0) - this.displayedItems}`,
+        label: `+${(this.args.values?.length ?? 0) - this.displayedItems}`
+      });
     }
 
     return values;
