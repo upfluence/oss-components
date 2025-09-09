@@ -23,6 +23,7 @@ interface OSSSmartImmersiveSelectComponentSignature extends BaseDropdownArgs {
   addressableAs?: string;
   multiple?: boolean;
   searchEnabled?: boolean;
+  hideCheckboxes?: boolean;
   onChange?: (item: string) => void;
   onSearch?: (keyword: string) => void;
   onBottomReached?: () => void;

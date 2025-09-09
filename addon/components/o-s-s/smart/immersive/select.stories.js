@@ -46,6 +46,30 @@ export default {
       },
       control: { type: 'boolean' }
     },
+    hideCheckboxes: {
+      name: 'Hide Checkboxes',
+      type: { name: 'boolean' },
+      description: 'Hide checkboxes in multiple selection mode.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: false }
+      },
+      control: { type: 'boolean' }
+    },
+    searchEnabled: {
+      name: 'Search Enabled',
+      type: { name: 'boolean' },
+      description: 'Enable the search functionality.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: true }
+      },
+      control: { type: 'boolean' }
+    },
     items: {
       name: 'Items',
       description: 'Array of selectable items, each with a value and label.',
@@ -127,8 +151,10 @@ const TemplateSingle = ({ iconName, iconColor, ...rest }) => {
           @onSearch={{this.onSearch}}
           @onChange={{this.onChange}}
           @multiple={{this.multiple}}
+          @hideCheckboxes={{this.hideCheckboxes}}
+          @searchEnabled={{this.searchEnabled}}
         >
-          <:selected-item as |item|>{{item}}</:selected-item>
+          <:selected-item as |item|>{{item.value}}</:selected-item>
           <:option-item as |item|>
             <div class="text-ellipsis" {{enable-tooltip title=item.label displayOnlyOnOverflow=true}}>
               {{item.label}}
@@ -148,9 +174,11 @@ export const Select = TemplateSingle.bind({});
 
 Select.args = {
   placeholder: 'Placeholder',
-  values: ['step 1'],
+  values: [{ value: 'step 1' }],
   loading: false,
   multiple: false,
+  hideCheckboxes: false,
+  searchEnabled: true,
   items: [
     { value: 'step 1', label: 'Step 1' },
     { value: 'step 2', label: 'Step 2' },
@@ -164,9 +192,11 @@ export const Multiple = Template.bind({});
 
 Multiple.args = {
   placeholder: 'Placeholder',
-  values: ['step 1', 'step 2'],
+  values: [{ value: 'step 1' }, { value: 'step 2' }],
   loading: false,
   multiple: true,
+  hideCheckboxes: false,
+  searchEnabled: true,
   items: [
     { value: 'step 1', label: 'Step 1' },
     { value: 'step 2', label: 'Step 2' },
