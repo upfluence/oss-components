@@ -84,6 +84,11 @@ export default class OSSLayoutSidebarGroupComponent extends Component<OSSLayoutS
       this.triggerHovered = this.displayGroupList = false;
     };
 
-    later(this, hide, immediate ? 0 : GROUP_LIST_HIDE_DELAY);
+    if (immediate) {
+      hide();
+      return;
+    }
+
+    later(this, hide, GROUP_LIST_HIDE_DELAY);
   }
 }

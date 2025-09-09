@@ -18,6 +18,7 @@
 
   background-color: var(--sidebar-bg-color);
   border-right: 1px solid var(--sidebar-outer-border-color);
+  box-sizing: content-box;
   transition: width 300ms ease-in-out;
 
   .logo-container {
@@ -103,16 +104,33 @@ a.oss-sidebar-item:focus {
   border-radius: var(--border-radius-sm);
   transition: color 300ms ease-in-out, background-color 300ms ease-in-out, width 300ms ease-in-out;
 
+  .oss-sidebar-item__icon {
+    height: 30px;
+    width: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .oss-sidebar-item__label {
+    display: none;
+  }
+
   &:not(&--group-header) {
     cursor: pointer;
   }
 
   &--expanded {
     display: flex;
-    gap: var(--spacing-px-9);
     justify-content: flex-start;
     padding: 0 var(--spacing-px-9);
     width: 100%;
+
+    .oss-sidebar-item__label {
+      display: block;
+      opacity: 1;
+    }
   }
 
   &[disabled]:not(:hover) .oss-sidebar-item__icon,
@@ -145,6 +163,8 @@ a.oss-sidebar-item:focus {
 
     background-color: var(--color-error-500);
     border-radius: var(--border-radius-md);
+
+    margin-left: var(--spacing-px-9);
   }
 
   &:not(&--expanded) .oss-sidebar-item__notification {
@@ -216,6 +236,7 @@ a.oss-sidebar-item:focus {
       display: flex;
       flex-direction: column;
       gap: var(--spacing-px-3);
+      transition: opacity 300ms ease-in-out;
 
       margin-left: var(--spacing-px-12);
       padding-left: var(--spacing-px-6);
@@ -235,6 +256,7 @@ a.oss-sidebar-item:focus {
   &--expanded {
     .group-list {
       margin-left: var(--spacing-px-3);
+      opacity: 1;
     }
   }
 
@@ -246,9 +268,6 @@ a.oss-sidebar-item:focus {
       top: 0;
       left: var(--spacing-px-54);
       z-index: 10;
-
-      .oss-sidebar-item {
-      }
     }
   }
 }

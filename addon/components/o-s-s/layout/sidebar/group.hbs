@@ -33,7 +33,7 @@
     <div class="group-list">
       {{#each @items as |item|}}
         <OSS::Layout::Sidebar::Item
-          @expanded={{true}}
+          @expanded={{or @expanded this.displayGroupList}}
           @icon={{item.icon}}
           @label={{item.label}}
           @locked={{item.locked}}
