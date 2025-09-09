@@ -5,7 +5,7 @@
   ...attributes
 >
   {{#if @editable}}
-    <div class="edit-overlay fx-row fx-malign-center fx-xalign-center" {{on "click" @onEdit}}>
+    <div class="edit-overlay fx-row fx-malign-center fx-xalign-center" role="button" {{on "click" @onEdit}}>
       <OSS::Icon @icon="fa-pen" />
     </div>
   {{/if}}
@@ -14,11 +14,6 @@
       <OSS::Icon @icon="fa-{{this.logoIcon}}" @style="duotone" />
     </div>
   {{else}}
-    <img
-      class="smart-campaign-image"
-      src={{or @url this.fallbackSvgUrl}}
-      onError={{this.onError}}
-      alt="Smart Campaign"
-    />
+    <img class="smart-logo-image" src={{or @url this.fallbackSvgUrl}} onError={{this.onError}} alt="Smart branding" />
   {{/if}}
 </div>
