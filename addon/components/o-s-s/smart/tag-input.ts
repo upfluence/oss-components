@@ -24,6 +24,7 @@ export default class OSSSmartTagInput extends Component<OSSSmartTagInputArgs> {
 
   @tracked inputValue: string = this.args.value || '';
   @tracked isInputFocused: boolean = false;
+  @tracked lastFocusInTime: number = 0;
   declare element: HTMLElement;
 
   get keywordInputClasses(): string {
@@ -61,6 +62,7 @@ export default class OSSSmartTagInput extends Component<OSSSmartTagInputArgs> {
 
   @action
   onFocusin(): void {
+    this.lastFocusInTime = Date.now();
     this.isInputFocused = true;
   }
 
@@ -73,6 +75,9 @@ export default class OSSSmartTagInput extends Component<OSSSmartTagInputArgs> {
 
   @action
   onClickOutside(_: any, event: Event): void {
+    if (Date.now() - this.lastFocusInTime < 150) {
+      return;
+    }
     if (!this.isInputFocused) return;
     this.isInputFocused = false;
     if (isBlank(this.inputValue)) return;
