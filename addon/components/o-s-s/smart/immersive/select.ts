@@ -128,6 +128,12 @@ export default class OSSSmartImmersiveSelectComponent extends BaseDropdown<OSSSm
     scheduleOnce('afterRender', this, this.setupDropdownAutoplacement);
   }
 
+  @action
+  onClickOutside(element: HTMLElement, event: PointerEvent): void {
+    this.args.onSearch?.('');
+    super.onClickOutside(element, event);
+  }
+
   private setupDropdownAutoplacement(): void {
     const referenceTarget = this.container.querySelector('.upf-input');
     const floatingTarget = document.querySelector(`#${this.portalId}`);
