@@ -38,7 +38,7 @@ export default class Smart extends Controller {
   @tracked selectedPillTwo: boolean = false;
   intervalId?: number;
 
-  @tracked values = ['content'];
+  @tracked values = [{ value: 'content' }];
   @tracked items = [
     { value: 'content', label: 'Jace generated content' },
     { value: '1', label: 'Item 1' },
@@ -67,8 +67,10 @@ export default class Smart extends Controller {
     this.addContentToFeedbackComponent();
   }
 
-  get fakeSelectedItems(): string[] {
-    const mapped = this.items.map((item) => item.label);
+  get fakeSelectedItems(): { value: string; label: string }[] {
+    const mapped = this.items.map((item) => {
+      return { value: item.value, label: item.label };
+    });
     return [...mapped, ...mapped, ...mapped];
   }
 
@@ -163,13 +165,13 @@ export default class Smart extends Controller {
   }
 
   @action
-  onChange(item: any): void {
+  onChange(item: { value: any }): void {
     console.log('Selected item:', item);
 
-    if (this.values.includes(item.value)) {
-      this.values = this.values.filter((value) => value !== item.value);
+    if (this.values.some((value) => value.value === item.value)) {
+      this.values = this.values.filter((value) => value.value !== item.value);
     } else {
-      this.values = [...this.values, item.value];
+      this.values = [...this.values, { value: item.value }];
     }
 
     this.value = item.value;

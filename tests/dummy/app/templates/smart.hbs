@@ -98,7 +98,7 @@
         @onChange={{this.onChange}}
         @multiple={{true}}
       >
-        <:selected-item as |item|>{{item}}</:selected-item>
+        <:selected-item as |item|>{{item.value}}</:selected-item>
         <:option-item as |item|>
           <div class="text-ellipsis" {{enable-tooltip title=item.label displayOnlyOnOverflow=true}}>
             {{item.label}}
@@ -118,7 +118,7 @@
         @onChange={{this.onChange}}
         @multiple={{true}}
       >
-        <:selected-item as |item|>{{item}}</:selected-item>
+        <:selected-item as |item|>{{item.value}}</:selected-item>
         <:option-item as |item|>
           <div class="text-ellipsis" {{enable-tooltip title=item.label displayOnlyOnOverflow=true}}>
             {{item.label}}
@@ -136,7 +136,7 @@
         @onChange={{this.onChange}}
         @multiple={{true}}
       >
-        <:selected-item as |item|>{{item}}</:selected-item>
+        <:selected-item as |item|>{{item.value}}</:selected-item>
         <:option-item as |item|>
           <div class="text-ellipsis" {{enable-tooltip title=item.label displayOnlyOnOverflow=true}}>
             {{item.label}}
