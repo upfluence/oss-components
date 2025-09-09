@@ -176,6 +176,14 @@ module('Integration | Component | o-s-s/smart/immersive/select', function (hooks
         assert.dom('.upf-infinite-select--search input').exists();
       });
     });
+
+    test('When @hideCheckboxes is true, checkboxes are not rendered', async function (assert) {
+      this.hideCheckboxes = true;
+      await renderComponent();
+      await click('.smart-immersive-select-container div');
+      assert.dom('.upf-infinite-select__item:nth-of-type(1) .upf-checkbox').doesNotExist();
+      assert.dom('.upf-infinite-select__item:nth-of-type(2) .upf-checkbox').doesNotExist();
+    });
   });
 
   test('When maxItemWidth is defined, it applies the max-width style to the selected items', async function (assert) {
@@ -236,7 +244,7 @@ module('Integration | Component | o-s-s/smart/immersive/select', function (hooks
                                          @loading={{this.loading}} @hasError={{this.hasError}}
                                          @displayedItems={{this.displayedItems}} @maxItemWidth={{this.maxItemWidth}}
                                          @onChange={{this.onChange}} @onSearch={{this.onSearch}}
-                                         @searchEnabled={{this.searchEnabled}}>
+                                         @searchEnabled={{this.searchEnabled}} @hideCheckboxes={{this.hideCheckboxes}} >
             <:selected-item as |item|>
               <span class="selected-item-label">{{item.value}}</span>
             </:selected-item>

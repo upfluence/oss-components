@@ -54,7 +54,7 @@
               {{if @multiple 'fx-gap-px-6' 'fx-malign-space-between'}}
               {{if (this.isSelected value=item.value) 'selected'}}"
           >
-            {{#if @multiple}}
+            {{#if (and @multiple (not @hideCheckboxes))}}
               <OSS::Checkbox @checked={{this.isSelected value=item.value}} @onChange={{fn this.onSelect item}} />
             {{/if}}
             {{yield item to="option-item"}}

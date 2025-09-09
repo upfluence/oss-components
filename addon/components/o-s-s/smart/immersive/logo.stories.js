@@ -53,13 +53,16 @@ export default {
       },
       control: { type: 'boolean' }
     },
-    oversize: {
-      description: 'Whether the container is oversized',
+    size: {
+      description: 'Allow to define the size of the container',
       table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: false }
+        type: { summary: 'string' },
+        defaultValue: { summary: 'md' }
       },
-      control: { type: 'boolean' }
+      control: {
+        type: 'select',
+        options: ['sm', 'md', 'lg']
+      }
     },
     hasError: {
       description: 'Display an error border around the component.',
@@ -97,7 +100,7 @@ const Template = ({ iconName, iconColor, ...rest }) => {
           @url={{this.url}}
           @editable={{this.editable}}
           @loading={{this.loading}}
-          @oversize={{this.oversize}}
+          @size={{this.size}}
           @hasError={{this.hasError}}
           @onEdit={{this.onEdit}}
         />
@@ -117,7 +120,7 @@ Default.args = {
   url: undefined,
   editable: false,
   loading: false,
-  oversize: false,
+  size: 'md',
   hasError: false,
   onEdit: action('onEdit')
 };
