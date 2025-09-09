@@ -4,9 +4,17 @@ import { setupRenderingTest } from 'ember-qunit';
 import { click, render, settled } from '@ember/test-helpers';
 import { setupIntl } from 'ember-intl/test-support';
 
+import UPFLocalStorage from '@upfluence/oss-components/utils/upf-local-storage';
+
+const upfLocalStorage = new UPFLocalStorage();
+
 module('Integration | Component | o-s-s/layout/sidebar', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks);
+
+  hooks.beforeEach(function () {
+    upfLocalStorage.delete('oss-layout-sidebar-expanded');
+  });
 
   test('it renders', async function (assert) {
     await render(hbs`<OSS::Layout::Sidebar />`);
