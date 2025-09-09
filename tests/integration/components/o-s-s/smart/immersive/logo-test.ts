@@ -35,8 +35,8 @@ module('Integration | Component | o-s-s/smart/immersive/logo', function (hooks) 
       @editable={{this.editable}}
     />`);
 
-    assert.dom('.smart-campaign-image').exists();
-    assert.dom('.smart-campaign-image').hasAttribute('src', this.url);
+    assert.dom('.smart-logo-image').exists();
+    assert.dom('.smart-logo-image').hasAttribute('src', this.url);
     assert.dom('.smart-logo-icon').doesNotExist();
   });
 
@@ -185,8 +185,8 @@ module('Integration | Component | o-s-s/smart/immersive/logo', function (hooks) 
       @onEdit={{this.onEdit}}
     />`);
 
-    assert.dom('.smart-campaign-image').exists('Fallback image container is rendered');
-    assert.dom('.smart-campaign-image').hasAttribute('src', '/assets/images/picture-frame.svg');
+    assert.dom('.smart-logo-image').exists('Fallback image container is rendered');
+    assert.dom('.smart-logo-image').hasAttribute('src', '/assets/images/picture-frame.svg');
   });
 
   module('@size', () => {

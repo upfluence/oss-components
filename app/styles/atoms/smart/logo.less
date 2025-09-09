@@ -88,7 +88,7 @@
   transition: all 250ms ease-in-out;
 
   &--errored .smart-logo-icon,
-  &--errored .smart-campaign-image {
+  &--errored .smart-logo-image {
     border: 1px solid var(--color-error-500);
   }
 
@@ -99,7 +99,7 @@
   }
 
   .smart-logo-icon,
-  .smart-campaign-image {
+  .smart-logo-image {
     height: var(--spacing-px-36);
     width: var(--spacing-px-36);
     object-fit: cover;
@@ -145,7 +145,7 @@
 
       .edit-overlay,
       .smart-logo-icon,
-      .smart-campaign-image {
+      .smart-logo-image {
         font-size: 6px;
         height: 12px;
         width: 12px;
@@ -159,7 +159,7 @@
 
       .edit-overlay,
       .smart-logo-icon,
-      .smart-campaign-image {
+      .smart-logo-image {
         height: 36px;
         width: 36px;
       }
@@ -171,7 +171,7 @@
 
       .edit-overlay,
       .smart-logo-icon,
-      .smart-campaign-image {
+      .smart-logo-image {
         height: 60px;
         width: 60px;
       }
@@ -180,7 +180,7 @@
 
   &--generating {
     .smart-logo-icon::before,
-    .smart-campaign-image::before {
+    .smart-logo-image::before {
       content: '';
       position: absolute;
       inset: 0;
@@ -205,7 +205,7 @@
     }
 
     .smart-logo-icon,
-    .smart-campaign-image {
+    .smart-logo-image {
       position: relative;
       overflow: hidden;
       z-index: 1;
