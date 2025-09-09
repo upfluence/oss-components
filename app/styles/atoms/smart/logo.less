@@ -101,6 +101,7 @@
   .smart-campaign-image {
     height: var(--spacing-px-36);
     width: var(--spacing-px-36);
+    object-fit: cover;
     background-size: cover;
     background-position: center;
     border-radius: var(--border-radius-md);
@@ -135,15 +136,43 @@
     }
   }
 
-  &--oversize {
-    height: 60px;
-    width: 60px;
+  &--size {
+    &-sm {
+      height: 12px;
+      width: 12px;
+      border-radius: calc(8px / 3);
 
-    .edit-overlay,
-    .smart-logo-icon,
-    .smart-campaign-image {
+      .edit-overlay,
+      .smart-logo-icon,
+      .smart-campaign-image {
+        height: 12px;
+        width: 12px;
+        border-radius: calc(8px / 3);
+      }
+    }
+
+    &-md {
+      height: 36px;
+      width: 36px;
+
+      .edit-overlay,
+      .smart-logo-icon,
+      .smart-campaign-image {
+        height: 36px;
+        width: 36px;
+      }
+    }
+
+    &-lg {
       height: 60px;
       width: 60px;
+
+      .edit-overlay,
+      .smart-logo-icon,
+      .smart-campaign-image {
+        height: 60px;
+        width: 60px;
+      }
     }
   }
 
@@ -156,14 +185,16 @@
       z-index: -1;
       pointer-events: none;
 
-      background: linear-gradient(270deg,
-          rgba(245, 245, 244, 0) 65%,
-          rgba(250, 198, 255, 0.7) 73.75%,
-          rgba(208, 217, 255, 0.8) 76.81%,
-          rgba(255, 255, 255, 0.3) 81.54%,
-          #fac6ff 85.82%,
-          #d0d9ff 92.59%,
-          rgba(245, 245, 244, 0) 100%);
+      background: linear-gradient(
+        270deg,
+        rgba(245, 245, 244, 0) 65%,
+        rgba(250, 198, 255, 0.7) 73.75%,
+        rgba(208, 217, 255, 0.8) 76.81%,
+        rgba(255, 255, 255, 0.3) 81.54%,
+        #fac6ff 85.82%,
+        #d0d9ff 92.59%,
+        rgba(245, 245, 244, 0) 100%
+      );
       background-size: 300% 100%;
       background-repeat: no-repeat;
       background-blend-mode: normal;
