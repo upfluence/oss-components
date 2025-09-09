@@ -14,6 +14,11 @@
       <OSS::Icon @icon="fa-{{this.logoIcon}}" @style="duotone" />
     </div>
   {{else}}
-    <div class="smart-campaign-image" style={{this.dynamicImageStyle}}></div>
+    <img
+      class="smart-campaign-image"
+      src={{or @url this.fallbackSvgUrl}}
+      onError={{this.onError}}
+      alt="Smart Campaign"
+    />
   {{/if}}
 </div>
