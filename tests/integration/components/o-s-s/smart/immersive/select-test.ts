@@ -10,7 +10,7 @@ module('Integration | Component | o-s-s/smart/immersive/select', function (hooks
   setupIntl(hooks);
 
   hooks.beforeEach(function () {
-    this.selectedItems = ['item1'];
+    this.selectedItems = [{ value: 'item1' }];
     this.items = [
       { value: 'item1', label: 'Item 1' },
       { value: 'item2', label: 'Item 2' }
@@ -79,7 +79,7 @@ module('Integration | Component | o-s-s/smart/immersive/select', function (hooks
   module('Single select', (hooks) => {
     hooks.beforeEach(function () {
       this.selectedItems = null;
-      this.value = 'item1';
+      this.value = { value: 'item1' };
       this.multiple = false;
     });
 
@@ -144,7 +144,7 @@ module('Integration | Component | o-s-s/smart/immersive/select', function (hooks
 
     test('When displayedItems is defined, only the X firsts items are displayed, the remaining ones are concatenated', async function (assert) {
       this.displayedItems = 1;
-      this.selectedItems = ['Item 1', 'Item 2', 'Item 3', 'Item 4'];
+      this.selectedItems = [{ value: 'Item 1' }, { value: 'Item 2' }, { value: 'Item 3' }, { value: 'Item 4' }];
       await renderComponent();
 
       assert.dom('.smart-immersive-select-container .select-smart-item').exists({ count: 2 });
@@ -175,6 +175,14 @@ module('Integration | Component | o-s-s/smart/immersive/select', function (hooks
 
         assert.dom('.upf-infinite-select--search input').exists();
       });
+    });
+
+    test('When @hideCheckboxes is true, checkboxes are not rendered', async function (assert) {
+      this.hideCheckboxes = true;
+      await renderComponent();
+      await click('.smart-immersive-select-container div');
+      assert.dom('.upf-infinite-select__item:nth-of-type(1) .upf-checkbox').doesNotExist();
+      assert.dom('.upf-infinite-select__item:nth-of-type(2) .upf-checkbox').doesNotExist();
     });
   });
 
@@ -236,9 +244,9 @@ module('Integration | Component | o-s-s/smart/immersive/select', function (hooks
                                          @loading={{this.loading}} @hasError={{this.hasError}}
                                          @displayedItems={{this.displayedItems}} @maxItemWidth={{this.maxItemWidth}}
                                          @onChange={{this.onChange}} @onSearch={{this.onSearch}}
-                                         @searchEnabled={{this.searchEnabled}}>
+                                         @searchEnabled={{this.searchEnabled}} @hideCheckboxes={{this.hideCheckboxes}} >
             <:selected-item as |item|>
-              <span class="selected-item-label">{{item}}</span>
+              <span class="selected-item-label">{{item.value}}</span>
             </:selected-item>
             <:option-item as |item|>
               <span class="option-item-label">{{item.label}}</span>

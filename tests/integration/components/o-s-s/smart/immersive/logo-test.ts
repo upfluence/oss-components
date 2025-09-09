@@ -35,9 +35,8 @@ module('Integration | Component | o-s-s/smart/immersive/logo', function (hooks) 
       @editable={{this.editable}}
     />`);
 
-    assert.dom('.smart-campaign-image').exists();
-    let style = this.element.querySelector('.smart-campaign-image').style.backgroundImage;
-    assert.ok(style.includes(this.url));
+    assert.dom('.smart-logo-image').exists();
+    assert.dom('.smart-logo-image').hasAttribute('src', this.url);
     assert.dom('.smart-logo-icon').doesNotExist();
   });
 
@@ -148,8 +147,9 @@ module('Integration | Component | o-s-s/smart/immersive/logo', function (hooks) 
     });
   });
 
-  test(`it renders the generated content animation when loading is false`, async function (assert) {
+  test(`it renders the generated content animation when loading is false & url or icon is present`, async function (assert) {
     this.loading = true;
+    this.icon = 'rabbit:orange';
 
     await render(hbs`<OSS::Smart::Immersive::Logo
       @icon={{this.icon}}
@@ -185,8 +185,39 @@ module('Integration | Component | o-s-s/smart/immersive/logo', function (hooks) 
       @onEdit={{this.onEdit}}
     />`);
 
-    assert.dom('.smart-campaign-image').exists('Fallback image container is rendered');
-    const style = this.element.querySelector('.smart-campaign-image')?.getAttribute('style');
-    assert.ok(style?.includes('background-image: url(/assets/images/picture-frame.svg)'));
+    assert.dom('.smart-logo-image').exists('Fallback image container is rendered');
+    assert.dom('.smart-logo-image').hasAttribute('src', '/assets/images/picture-frame.svg');
+  });
+
+  module('@size', () => {
+    test('By default, it applies the size "md" class', async function (assert) {
+      await render(hbs`<OSS::Smart::Immersive::Logo
+        @editable={{this.editable}}
+      />`);
+
+      assert.dom('.oss-smart__immersive-icon-container--size-md').exists();
+    });
+
+    test('it applies the correct class for size "sm"', async function (assert) {
+      this.size = 'sm';
+
+      await render(hbs`<OSS::Smart::Immersive::Logo
+        @size={{this.size}}
+        @editable={{this.editable}}
+      />`);
+
+      assert.dom('.oss-smart__immersive-icon-container--size-sm').exists();
+    });
+
+    test('it applies the correct class for size "lg"', async function (assert) {
+      this.size = 'lg';
+
+      await render(hbs`<OSS::Smart::Immersive::Logo
+        @size={{this.size}}
+        @editable={{this.editable}}
+      />`);
+
+      assert.dom('.oss-smart__immersive-icon-container--size-lg').exists();
+    });
   });
 });

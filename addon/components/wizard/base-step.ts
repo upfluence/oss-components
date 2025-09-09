@@ -9,7 +9,7 @@ export interface WizardBaseStepSignature {
 export abstract class WizardBaseStep<T extends WizardBaseStepSignature> extends Component<T> {
   constructor(owner: unknown, args: T) {
     super(owner, args);
-    if (!args.step.validateStep) set(args.step, 'validateStep', this.onStepSubmission.bind(this));
+    set(args.step, 'validateStep', this.onStepSubmission?.bind(this));
   }
 
   abstract onStepSubmission(): Promise<boolean>;
