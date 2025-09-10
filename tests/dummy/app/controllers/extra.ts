@@ -1,6 +1,7 @@
 import Controller from '@ember/controller';
 import { action, set } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
+import type { GroupItem } from '@upfluence/oss-components/components/o-s-s/layout/sidebar/group';
 
 import BaseUploader from '@upfluence/oss-components/services/base-uploader';
 import type Uploader from '@upfluence/oss-components/types/uploader';
@@ -80,6 +81,46 @@ export default class Extra extends Controller {
     { label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true, disabled: true },
     { label: 'Tab', icon: 'far fa-thumbs-up', infoCircle: true, notificationDot: true, selected: true, disabled: true }
   ];
+
+  get itemsSidebarGroup(): GroupItem[] {
+    return [
+      {
+        icon: 'far fa-input-text',
+        label: 'Input',
+        hasNotifications: false,
+        active: false,
+        link: 'input'
+      },
+      {
+        icon: 'far fa-toggle-on',
+        label: 'Visual',
+        hasNotifications: false,
+        active: false,
+        link: 'visual'
+      },
+      {
+        icon: 'far fa-line-columns',
+        label: 'Data',
+        hasNotifications: false,
+        active: false,
+        link: 'data'
+      },
+      {
+        icon: 'far fa-window-restore',
+        label: 'Overlay',
+        hasNotifications: true,
+        active: false,
+        link: 'overlay'
+      },
+      {
+        icon: 'far fa-link',
+        label: 'Extra',
+        hasNotifications: false,
+        active: true,
+        link: 'extra'
+      }
+    ];
+  }
 
   @action
   onSelectionNavTab(selectedTab: {}): void {

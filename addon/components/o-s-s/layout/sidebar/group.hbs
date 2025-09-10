@@ -1,21 +1,41 @@
-<div
-  class={{concat
-    "oss-sidebar-group"
-    (if @expanded " oss-sidebar-group--expanded")
-    (if this.triggerHovered " oss-sidebar-group--hovered")
-  }}
-  {{did-insert this.registerTrigger}}
-  ...attributes
->
-  <OSS::Layout::Sidebar::Item
-    @icon={{@icon}}
-    @label={{@label}}
-    @expanded={{@expanded}}
-    @hasNotifications={{and (not @expanded) this.hasNotifications}}
-    {{on "mouseenter" this.handleMouseEnter}}
-    {{on "mouseleave" this.handleMouseLeave}}
-    class={{concat (if @expanded "oss-sidebar-item--group-header") (if this.isActive " active")}}
-  />
+<div class={{this.computedClasses}} {{did-insert this.registerTrigger}} ...attributes>
+  <div class="fx-row fx-gap-px-12 fx-xalign-center fx-malign-space-between">
+    {{#if (has-block "icon")}}
+      <OSS::Layout::Sidebar::Item
+        @icon={{@icon}}
+        @label={{@label}}
+        @expanded={{@expanded}}
+        @hasNotifications={{and (not @expanded) this.hasNotifications}}
+        {{on "mouseenter" this.handleMouseEnter}}
+        {{on "mouseleave" this.handleMouseLeave}}
+        class={{concat (if @expanded "oss-sidebar-item--group-header") (if this.isActive " active")}}
+      >
+        <:icon>
+          {{yield (hash expanded=@expanded) to="icon"}}
+        </:icon>
+      </OSS::Layout::Sidebar::Item>
+    {{else}}
+      <OSS::Layout::Sidebar::Item
+        @icon={{@icon}}
+        @label={{@label}}
+        @expanded={{@expanded}}
+        @hasNotifications={{and (not @expanded) this.hasNotifications}}
+        {{on "mouseenter" this.handleMouseEnter}}
+        {{on "mouseleave" this.handleMouseLeave}}
+        class={{concat (if @expanded "oss-sidebar-item--group-header") (if this.isActive " active")}}
+      />
+    {{/if}}
+
+    {{#if this.collapsible}}
+      <OSS::Icon
+        @icon={{if this.collapsed "fa-chevron-down" "fa-chevron-up"}}
+        role="button"
+        class="oss-sidebar-group__collapse-trigger"
+        {{on "click" this.toggleCollapsed}}
+      />
+    {{/if}}
+
+  </div>
 
   <div
     class={{concat

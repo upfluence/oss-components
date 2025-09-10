@@ -206,6 +206,13 @@ a.oss-sidebar-item:focus {
 
 .oss-sidebar-group {
   position: relative;
+  height: var(--oss-sidebar-group-height, fit-content);
+
+  transition: height 300ms ease-in-out;
+
+  &__collapse-trigger {
+    color: var(--color-gray-600);
+  }
 
   &__items-container {
     display: none;
@@ -251,6 +258,11 @@ a.oss-sidebar-item:focus {
         background-color: var(--color-primary-500);
       }
     }
+  }
+
+  &--collapsed {
+    overflow: hidden;
+    height: 30px;
   }
 
   &--expanded {

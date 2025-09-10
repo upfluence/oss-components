@@ -7,7 +7,7 @@ export type GroupItem = {
   icon?: string;
   locked?: boolean;
   label?: string;
-  hasNotifications: boolean;
+  hasNotifications?: boolean;
   link: string;
   active: boolean;
   lockedAction?(): unknown;
@@ -15,10 +15,11 @@ export type GroupItem = {
 };
 
 interface OSSLayoutSidebarGroupComponentSignature {
-  icon: string;
   label: string;
   expanded: boolean;
   items: GroupItem[];
+  icon?: string;
+  collapsible?: boolean;
 }
 
 const GROUP_LIST_HIDE_DELAY = 450;
@@ -27,8 +28,19 @@ export default class OSSLayoutSidebarGroupComponent extends Component<OSSLayoutS
   @tracked displayGroupList: boolean = false;
   @tracked triggerHovered: boolean = false;
   @tracked groupListHovered: boolean = false;
+  @tracked collapsed: boolean = false;
 
   declare triggerElement: HTMLElement;
+
+  constructor(owner: unknown, args: OSSLayoutSidebarGroupComponentSignature) {
+    super(owner, args);
+
+    if (this.collapsible) this.collapsed = false;
+  }
+
+  get collapsible(): boolean {
+    return this.args.collapsible ?? false;
+  }
 
   get hasNotifications(): boolean {
     return this.args.items.some((item) => item.hasNotifications);
@@ -38,9 +50,20 @@ export default class OSSLayoutSidebarGroupComponent extends Component<OSSLayoutS
     return !this.args.expanded && this.args.items.some((item) => item.active);
   }
 
+  get computedClasses(): string {
+    const classes = ['oss-sidebar-group'];
+
+    if (this.args.expanded) classes.push('oss-sidebar-group--expanded');
+    if (this.triggerHovered) classes.push('oss-sidebar-group--hovered');
+    if (this.collapsed) classes.push('oss-sidebar-group--collapsed');
+
+    return classes.join(' ');
+  }
+
   @action
   registerTrigger(element: HTMLElement): void {
     this.triggerElement = element;
+    element.style.setProperty('--oss-sidebar-group-height', `${element.clientHeight.toString()}px`);
   }
 
   @action
@@ -76,6 +99,11 @@ export default class OSSLayoutSidebarGroupComponent extends Component<OSSLayoutS
   handleGroupListLeave(): void {
     this.groupListHovered = false;
     this.hideGroupList();
+  }
+
+  @action
+  toggleCollapsed(): void {
+    this.collapsed = !this.collapsed;
   }
 
   private hideGroupList(immediate: boolean = false): void {

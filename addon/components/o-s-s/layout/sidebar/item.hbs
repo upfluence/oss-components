@@ -12,7 +12,9 @@
   {{/if}}
 
   {{#if (has-block "icon")}}
-    {{yield (hash expanded=@expanded) to="icon"}}
+    <div class="oss-sidebar-item__icon">
+      {{yield (hash expanded=@expanded) to="icon"}}
+    </div>
   {{else}}
     <div class="oss-sidebar-item__icon">
       <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
