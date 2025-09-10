@@ -35,6 +35,16 @@ export default {
       },
       control: { type: 'boolean' }
     },
+    collapsible: {
+      description: 'Allow the group to be collapsed',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'false' }
+      },
+      control: { type: 'boolean' }
+    },
     items: {
       description: 'An array of items to display as children of the group using OSS::Layout::Sidebar::Item',
       table: {
@@ -59,7 +69,7 @@ const defaultArgs = {
   icon: 'far fa-search',
   label: 'Search',
   expanded: false,
-
+  collapsible: true,
   items: [
     {
       icon: 'far fa-search',
@@ -92,5 +102,20 @@ const Template = (args) => ({
   context: args
 });
 
+const IconNamedBlockTemplate = (args) => ({
+  template: hbs`
+      <OSS::Layout::Sidebar::Group
+        @icon={{this.icon}} @label={{this.label}} @expanded={{true}} @items={{this.items}} @collapsible={{this.collapsible}}>
+        <:icon>
+          <OSS::Icon @icon="fa-ship" />
+        </:icon>
+      </OSS::Layout::Sidebar::Group>
+  `,
+  context: args
+});
+
 export const BasicUsage = Template.bind({});
 BasicUsage.args = defaultArgs;
+
+export const WithNamedBlockIcon = IconNamedBlockTemplate.bind({});
+WithNamedBlockIcon.args = defaultArgs;

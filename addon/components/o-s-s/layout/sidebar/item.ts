@@ -4,8 +4,8 @@ import { action } from '@ember/object';
 import type { OSSTagArgs } from '@upfluence/oss-components/components/o-s-s/tag';
 
 interface OSSLayoutSidebarItemArgs {
-  icon: string;
   link: string;
+  icon?: string;
   locked?: boolean;
   hasNotifications?: boolean;
   tag?: Pick<OSSTagArgs, 'label' | 'skin' | 'icon'>;
