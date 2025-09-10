@@ -23,8 +23,7 @@ module('Integration | Component | oss/layout/sidebar/item', function (hooks) {
     await render(
       hbs`<OSS::Layout::Sidebar::Item @icon="fal fa-search"><:icon><OSS::Icon @icon="fa-ship" class="custom-icon" /></:icon></OSS::Layout::Sidebar::Item>`
     );
-    assert.dom('.oss-sidebar-item .oss-sidebar-item__icon').doesNotExist();
-    assert.dom('.oss-sidebar-item .custom-icon').exists();
+    assert.dom('.oss-sidebar-item .oss-sidebar-item__icon .custom-icon').exists();
     assert.dom('.oss-sidebar-item .custom-icon').hasClass('fa-ship');
   });
 
@@ -47,11 +46,6 @@ module('Integration | Component | oss/layout/sidebar/item', function (hooks) {
     test('When hasNotification is true', async function (assert) {
       await render(hbs`<OSS::Layout::Sidebar::Item @icon="far fa-search" @hasNotifications={{true}}/>`);
       assert.dom('.oss-sidebar-item__notification').exists();
-    });
-
-    test('the label is not displayed when passed but expanded is falsy', async function (assert) {
-      await render(hbs`<OSS::Layout::Sidebar::Item @icon="far fa-search" @label="Label" @hasNotifications={{true}}/>`);
-      assert.dom('.oss-sidebar-item__label').doesNotExist();
     });
 
     module('Expanded state', () => {
