@@ -45,6 +45,7 @@
 
   &--expanded {
     --sidebar-width: 160px;
+    overflow: hidden;
 
     .logo-container {
       justify-content: flex-start;
@@ -69,7 +70,7 @@
   &__expand {
     display: flex;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
   }
 
@@ -93,11 +94,8 @@ a.oss-sidebar-item:focus {
   position: relative;
 
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-
-  height: 30px;
-  width: 30px;
 
   color: var(--sidebar-font-color);
   font-size: var(--font-size-sm);
@@ -105,8 +103,10 @@ a.oss-sidebar-item:focus {
   transition: color 300ms ease-in-out, background-color 300ms ease-in-out, width 300ms ease-in-out;
 
   .oss-sidebar-item__icon {
-    height: 30px;
-    width: 30px;
+    max-width: 30px;
+    max-height: 30px;
+    min-width: 30px;
+    min-height: 30px;
 
     display: flex;
     justify-content: center;
@@ -114,7 +114,10 @@ a.oss-sidebar-item:focus {
   }
 
   .oss-sidebar-item__label {
-    display: none;
+    width: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: width 300ms ease-in-out, opacity 300ms ease-in-out;
   }
 
   &:not(&--group-header) {
@@ -124,11 +127,10 @@ a.oss-sidebar-item:focus {
   &--expanded {
     display: flex;
     justify-content: flex-start;
-    padding: 0 var(--spacing-px-9);
     width: 100%;
 
     .oss-sidebar-item__label {
-      display: block;
+      width: fit-content;
       opacity: 1;
     }
   }
@@ -152,7 +154,6 @@ a.oss-sidebar-item:focus {
 
   &.active {
     background-color: var(--sidebar-item-active-bg-color);
-    border: 1px solid var(--sidebar-item-active-bg-color);
     color: var(--sidebar-item-active-font-color);
     font-weight: var(--font-weight-semibold);
   }
@@ -170,7 +171,7 @@ a.oss-sidebar-item:focus {
   &:not(&--expanded) .oss-sidebar-item__notification {
     position: absolute;
     top: 5px;
-    right: 6px;
+    right: 5px;
   }
 
   &__label {
@@ -207,6 +208,7 @@ a.oss-sidebar-item:focus {
 .oss-sidebar-group {
   position: relative;
   height: var(--oss-sidebar-group-height, fit-content);
+  width: 100%;
 
   transition: height 300ms ease-in-out;
 
@@ -218,9 +220,9 @@ a.oss-sidebar-item:focus {
     display: none;
     opacity: 0;
 
-    min-width: 150px;
+    width: 150px;
     padding: var(--spacing-px-3) var(--spacing-px-12);
-    transition: opacity 300ms ease-in-out;
+    transition: width 300ms ease-in-out, opacity 300ms ease-in-out;
 
     &--visible {
       display: flex;
@@ -230,7 +232,7 @@ a.oss-sidebar-item:focus {
 
       background-color: white;
       border-radius: var(--border-radius-md);
-      padding-bottom: 6px;
+      padding-bottom: var(--spacing-px-6);
     }
 
     .group-name {
@@ -260,6 +262,17 @@ a.oss-sidebar-item:focus {
     }
   }
 
+  &__title-container {
+    display: flex;
+    gap: var(--spacing-px-12);
+    align-items: center;
+    justify-content: flex-start;
+
+    .oss-sidebar-item--expanded {
+      padding: 0;
+    }
+  }
+
   &--collapsed {
     overflow: hidden;
     height: 30px;
@@ -285,8 +298,15 @@ a.oss-sidebar-item:focus {
 }
 
 @starting-style {
-  .oss-sidebar-group:not(.oss-sidebar-group--expanded)
-    .oss-sidebar-group__items-container.oss-sidebar-group__items-container--visible {
+  .oss-sidebar-group:not(.oss-sidebar-group--expanded),
+  .oss-sidebar-group__items-container.oss-sidebar-group__items-container--visible {
     opacity: 0;
+  }
+
+  .oss-sidebar-group--expanded {
+    .oss-sidebar-group__items-container.oss-sidebar-group__items-container--visible {
+      width: 0;
+      opacity: 0;
+    }
   }
 }
