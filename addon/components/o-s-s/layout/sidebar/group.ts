@@ -63,7 +63,6 @@ export default class OSSLayoutSidebarGroupComponent extends Component<OSSLayoutS
   @action
   registerTrigger(element: HTMLElement): void {
     this.triggerElement = element;
-    // element.style.setProperty('--oss-sidebar-group-height', `${element.clientHeight.toString()}px`);
   }
 
   @action
