@@ -31,7 +31,7 @@ export default class OSSSmartPill extends OSSPill<OSSSmartPillArgs> {
 
   @action
   runAnimationOnLoadEnd(): void {
-    if (this.element && this.args.loading === false) {
+    if (this.element && this.args.loading === false && this.args.selected) {
       runSmartGradientAnimation(this.element);
     }
   }
