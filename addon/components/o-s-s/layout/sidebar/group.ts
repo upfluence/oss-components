@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import { later, schedule } from '@ember/runloop';
+import { later, scheduleOnce } from '@ember/runloop';
 
 export type GroupItem = {
   icon?: string;
@@ -69,7 +69,7 @@ export default class OSSLayoutSidebarGroupComponent extends Component<OSSLayoutS
   handleMouseEnter(): void {
     if (this.args.expanded) return;
 
-    schedule('afterRender', this, () => {
+    scheduleOnce('afterRender', this, () => {
       this.triggerHovered = this.displayGroupList = true;
     });
   }

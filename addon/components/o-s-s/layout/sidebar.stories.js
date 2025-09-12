@@ -15,7 +15,7 @@ export default {
       control: { type: 'object' }
     },
     expandable: {
-      description: 'Can be expanded or collapsed',
+      description: 'Whether the user has the ability to expand/collapse the sidebar',
       table: {
         type: {
           summary: 'boolean'
