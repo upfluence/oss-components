@@ -50,8 +50,8 @@
       >
         <:option as |item|>
           <div
-            class="item-wrapper fx-row fx-xalign-center
-              {{if @multiple 'fx-gap-px-6' 'fx-malign-space-between'}}
+            class="item-wrapper fx-row fx-xalign-center fx-gap-px-6
+              {{unless @multiple 'fx-malign-space-between'}}
               {{if (this.isSelected value=item.value) 'selected'}}"
           >
             {{#if (and @multiple (not @hideCheckboxes))}}

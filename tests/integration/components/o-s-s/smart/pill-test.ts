@@ -47,11 +47,30 @@ module('Integration | Component | o-s-s/smart/pill', function (hooks) {
       assert.dom('.label').hasClass('loading-animation');
     });
 
-    test('Once loading is over, it displays the corresponding animation', async function (assert) {
-      await render(hbs`<OSS::Smart::Pill @label="Pill" @loading={{this.loading}} />`);
+    module('When selected is true', (hooks) => {
+      hooks.beforeEach(function () {
+        this.selected = true;
+      });
 
-      this.set('loading', false);
-      assert.dom('.oss-smart-pill-container').hasClass('smart-rotating-gradient');
+      test('Once loading is over, it displays the corresponding animation', async function (assert) {
+        await render(hbs`<OSS::Smart::Pill @label="Pill" @loading={{this.loading}} @selected={{this.selected}}/>`);
+
+        this.set('loading', false);
+        assert.dom('.oss-smart-pill-container').hasClass('smart-rotating-gradient');
+      });
+    });
+
+    module('When selected is false', (hooks) => {
+      hooks.beforeEach(function () {
+        this.selected = false;
+      });
+
+      test('Once loading is over, it does not displays the corresponding animation', async function (assert) {
+        await render(hbs`<OSS::Smart::Pill @label="Pill" @loading={{this.loading}} @selected={{this.selected}}/>`);
+
+        this.set('loading', false);
+        assert.dom('.oss-smart-pill-container').doesNotHaveClass('smart-rotating-gradient');
+      });
     });
   });
 });
