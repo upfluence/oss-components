@@ -16,6 +16,7 @@ export type AttachmentOptions = {
   offset?: number;
   width?: number;
   maxHeight?: number;
+  maxWidth?: number;
   placement?: Placement;
   enableArrow?: boolean;
   placementStrategy?: 'auto' | 'flip';
@@ -54,6 +55,11 @@ export default function attachDropdown(
           minWidth: `${desiredWidth}px`,
           width: `${desiredWidth}px`
         };
+
+        if (mergedOptions.maxWidth) {
+          floatingStyle.width = `fit-content`;
+          floatingStyle.maxWidth = `${mergedOptions.maxWidth}px`;
+        }
 
         if (mergedOptions.maxHeight) {
           floatingStyle.maxHeight = `${floatingStyle.maxHeight}px`;

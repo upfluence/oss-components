@@ -111,7 +111,7 @@ export default class WizardManager extends Service {
           this.focusStep(stepId);
         } else {
           const firstInvalidIndex = results.findIndex((result: boolean) => !result);
-          if (firstInvalidIndex !== -1) {
+          if (firstInvalidIndex !== -1 && currentStepIndex !== currentStepIndex + firstInvalidIndex) {
             this.focusStep(this.allSteps[currentStepIndex + firstInvalidIndex]?.id ?? '');
           }
         }
@@ -182,7 +182,7 @@ export default class WizardManager extends Service {
   private findFirstFocusableStepInSection(sectionId: string): Step | undefined {
     const section = this.sections.find((section: Section) => section.id === sectionId);
     if (section) {
-      return section.steps.find((step: Step) => step.displayState !== 'empty');
+      return section.steps.find((step: Step) => step.displayState !== 'empty' && !step.hidden);
     }
     return undefined;
   }
