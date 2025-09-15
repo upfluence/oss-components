@@ -34,6 +34,8 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
   @tracked displayTooltip: boolean = false;
   @tracked inputRangeElement: HTMLElement | null = null;
   @tracked tooltipElement: HTMLElement | null = null;
+  @tracked numberInputElement: HTMLElement | null = null;
+  @tracked actualInputValue: string | null = null;
 
   get defaultValue(): string {
     return this.args.defaultValue ?? DEFAULT_VALUE;
@@ -70,7 +72,29 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
   }
 
   get activeBackgroundWidth(): ReturnType<typeof htmlSafe> {
-    const percentage = Math.round(this.getPercentage(this.args.value ?? '0') * 100);
+    // For background calculation, use actual input value if available, otherwise use prop value
+    let valueForBackground: string;
+
+    if (this.actualInputValue !== null) {
+      // Use the actual input value (including empty string for cleared input)
+      valueForBackground = this.actualInputValue;
+    } else {
+      // Fallback to prop value
+      valueForBackground = this.currentRangeValue;
+    }
+
+    console.log(
+      'activeBackgroundWidth - actualInputValue:',
+      this.actualInputValue,
+      'valueForBackground:',
+      valueForBackground,
+      'currentRangeValue:',
+      this.currentRangeValue,
+      'args.value:',
+      this.args.value
+    );
+    const percentage = Math.round(this.getPercentage(valueForBackground) * 100);
+    console.log('Calculated percentage:', percentage);
     return htmlSafe(`--range-percentage: ${percentage}%`);
   }
 
@@ -94,6 +118,7 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
   @action
   onNumberInput(event: InputEvent): void {
     const value = (event.target as HTMLInputElement).value;
+    this.actualInputValue = value;
     this.checkUserInput(value);
   }
 
@@ -117,22 +142,29 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
     this.tooltipElement = element;
   }
 
+  @action
+  initializeNumberInput(element: HTMLElement): void {
+    this.numberInputElement = element;
+  }
+
   private getPercentage(value: string): number {
     let correction = 0;
     const convertedValue = parseFloat(isBlank(value) ? '0' : value);
+    const min = this.args.min ?? 0;
+    const max = this.args.max ?? 100;
+
+    console.log('getPercentage - value:', value, 'convertedValue:', convertedValue, 'min:', min, 'max:', max);
 
     if (this.args.step) {
       correction =
         convertedValue % this.args.step >= this.args.step / 2
           ? this.args.step - (convertedValue % this.args.step)
-          : -value % this.args.step;
+          : -convertedValue % this.args.step;
     }
 
-    return Math.min(
-      Math.max(convertedValue + correction - this.sliderOptions.min, 0) /
-        (this.sliderOptions.max - this.sliderOptions.min),
-      1
-    );
+    const result = Math.min(Math.max(convertedValue + correction - min, 0) / (max - min), 1);
+    console.log('getPercentage - result:', result);
+    return result;
   }
 
   private checkUserInput(value: string | null): void {

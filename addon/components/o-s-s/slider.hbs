@@ -41,6 +41,7 @@
           @disabled={{@disabled}}
           @autocomplete={{this.sliderOptions.autocomplete}}
           {{on "input" this.onNumberInput}}
+          {{did-insert this.initializeNumberInput}}
         />
       {{else}}
         <Input
@@ -54,6 +55,7 @@
           autocomplete={{this.sliderOptions.autocomplete}}
           class="upf-input"
           {{on "input" this.onNumberInput}}
+          {{did-insert this.initializeNumberInput}}
         />
       {{/if}}
     </div>
