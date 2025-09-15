@@ -60,9 +60,9 @@ const defaultArgs = {
 
 const Template = (args) => ({
   template: hbs`
-    <form id={{this.formId}}>
+    <form id={{this.form}}>
       <OSS::InputContainer {{register-form-field
-        form=this.formId
+        form=this.form
         fieldId=this.fieldId
         validator=this.validator
         validateOnBlur=this.validateOnBlur

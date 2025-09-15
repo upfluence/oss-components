@@ -146,6 +146,7 @@ export default class Input extends Controller {
     this.searchFieldValue = value;
   }
 
+  @action
   onFormSubmit(): void {
     console.log('submitted form instance:', this.formInstance, ' with field value: ', this.formFieldValue);
   }
