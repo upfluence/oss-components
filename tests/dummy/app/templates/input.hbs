@@ -471,6 +471,30 @@
     </div>
   </div>
 
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">Form</div>
+    <OSS::Form @onSetup={{this.onFormSetup}} @onSubmit={{this.onFormSubmit}}>
+      <:content>
+        <div class="fx-col fx-gap-px-6">
+          <span class="oss-label" {{required-input}}>This is a required form field</span>
+          <OSS::InputContainer
+            @value={{this.formFieldValue}}
+            @placeholder="Form field placeholder"
+            @feedbackMessage={{form-field-feedback this.formInstance.id "form-field"}}
+            {{register-form-field
+              form=this.formInstance.id
+              fieldId="form-field"
+              validator=this.validateFormField
+              validateOnBlur=true
+            }}
+          />
+        </div>
+      </:content>
+    </OSS::Form>
+    <OSS::Button @skin="primary" @label="Submit" type="submit" form={{this.formInstance.id}} />
+  </div>
 </div>
 
 {{!-- <div class="fx-col fx-gap-px-6 padding-px-18">
