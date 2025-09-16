@@ -8,7 +8,9 @@ This is an Ember.js addon containing reusable UI components for Upfluence's desi
 - Less for styling
 - Storybook for component documentation
 - pnpm for package management
-- when generating components, they should be added in the o-s-s folder unless specified otherwise. You can also suggest a basic structure if you can 
+- when generating components, they should be added in the o-s-s folder unless specified otherwise. You can also suggest a basic structure if you can make it out from context.
+- to test it, you could add it to the proper component in the dummy app, starting with `oss-components/tests/dummy/app/templates/application.hbs` . If you can make out a better position in the children components of this template, based on context, even better. 
+- Avoid all comments, we don't need explanatory comments if the function name is well chosen & clear.
 
 ## Code Style Guidelines
 - Follow Ember.js conventions and best practices
@@ -21,7 +23,6 @@ This is an Ember.js addon containing reusable UI components for Upfluence's desi
 ## File Organization
 - Components go in `/addon/components/`
 - Templates go in `/addon/templates/components/`
-- Styles go in `/addon/styles/`
 - Tests go in `/tests/integration/components/`
 - Stories go in `/stories/` for Storybook documentation
 - less imports should be added to `oss-components/app/styles/oss-components.less ` when a less file is generated

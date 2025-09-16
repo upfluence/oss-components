@@ -1,0 +1,10 @@
+<label class={{this.computedClass}} for={{@for}} ...attributes>
+  {{#if this.hasBlock}}
+    {{yield}}
+  {{else}}
+    {{@text}}
+  {{/if}}
+  {{#if @required}}
+    <span class="oss-label__required-indicator" aria-label="required">*</span>
+  {{/if}}
+</label>
