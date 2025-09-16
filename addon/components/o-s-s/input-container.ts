@@ -19,6 +19,8 @@ interface OSSInputContainerArgs {
   onChange?(value: string): void;
 }
 
+const NOT_NUMERIC = /[^\d]/g;
+
 export const AutocompleteValues = ['on', 'off'];
 
 export default class OSSInputContainer extends Component<OSSInputContainerArgs> {
@@ -60,15 +62,17 @@ export default class OSSInputContainer extends Component<OSSInputContainerArgs> 
   @action
   onPaste(event: ClipboardEvent): void {
     const element = event.target as HTMLInputElement;
+    const paste = event.clipboardData?.getData('Text') ?? '';
+
+    if (this.type === 'number' && NOT_NUMERIC.test(paste)) {
+      return;
+    }
+
+    const start = element.selectionStart ?? 0;
+    const end = element.selectionEnd ?? 0;
+
     next(this, () => {
-      this.args.onChange?.(
-        this.replaceStringAtRange(
-          element.value,
-          element.selectionStart ?? 0,
-          element.selectionEnd ?? 0,
-          event.clipboardData?.getData('Text') ?? ''
-        )
-      );
+      this.args.onChange?.(this.replaceStringAtRange(element.value, start, end, paste));
     });
   }
 

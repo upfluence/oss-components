@@ -91,6 +91,19 @@ module('Integration | Component | o-s-s/input-container', function (hooks) {
       assert.ok(this.onChange.calledWith('clipboardFormat/Text'));
     });
 
+    test('Pasting text in a number input is not possible', async function (assert) {
+      this.onChange = sinon.stub();
+      await render(
+        hbs`<OSS::InputContainer data-control-name="firstname-input" @type="number" @onChange={{this.onChange}} />`
+      );
+
+      assert.ok(this.onChange.notCalled);
+      await triggerEvent('.oss-input-container input', 'paste', {
+        clipboardData: { getData: () => 'abc' }
+      });
+      assert.ok(this.onChange.notCalled);
+    });
+
     test('Not passing an @autocomplete parameter defaults to "on" state', async function (assert) {
       await renderComponentWithParameters();
       assert.dom('.upf-input').hasAttribute('autocomplete', 'on');
