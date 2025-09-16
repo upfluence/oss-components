@@ -1,0 +1,56 @@
+.oss-label {
+  display: inline-block;
+  font-family: var(--font-family-primary);
+  color: var(--color-gray-900);
+  line-height: 1.4;
+  margin-bottom: var(--spacing-px-6);
+  cursor: pointer;
+
+  &--xs {
+    font-size: 12px;
+  }
+
+  &--sm {
+    font-size: 14px;
+  }
+
+  &--md {
+    font-size: 16px;
+  }
+
+  &--lg {
+    font-size: 18px;
+  }
+
+  &--normal {
+    font-weight: 400;
+  }
+
+  &--medium {
+    font-weight: 500;
+  }
+
+  &--semibold {
+    font-weight: 600;
+  }
+
+  &--bold {
+    font-weight: 700;
+  }
+
+  &--required {
+    .oss-label__required-indicator {
+      color: var(--color-error-500);
+      margin-left: var(--spacing-px-3);
+    }
+  }
+
+  &--disabled {
+    color: var(--color-gray-400);
+    cursor: not-allowed;
+  }
+
+  &:hover:not(.oss-label--disabled) {
+    color: var(--color-gray-700);
+  }
+}

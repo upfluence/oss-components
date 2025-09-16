@@ -258,7 +258,7 @@
       Input group
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-start">
-      <OSS::InputGroup @value={{this.inputValue}} @prefix="@" @placeholder="Username" @autocomplete="off"/>
+      <OSS::InputGroup @value={{this.inputValue}} @prefix="@" @placeholder="Username" @autocomplete="off" />
       <OSS::InputGroup @value={{this.inputValue}} @suffix="@example.com" @placeholder="john.doe" />
       <OSS::InputGroup
         @value={{this.inputValue}}
@@ -468,6 +468,31 @@
         @onlyCurrency={{true}}
         @allowedCurrencies={{this.allowedCurrencies}}
       />
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">Label</div>
+    <div class="fx-col fx-gap-px-12">
+      <div class="fx-col fx-gap-px-6">
+        <OSS::Label @text="Basic Label" />
+        <OSS::Label @text="Required Label" @required={{true}} />
+        <OSS::Label @text="Disabled Label" @disabled={{true}} />
+        <OSS::Label @text="Large Label" @size="lg" @weight="semibold" />
+      </div>
+      <div class="fx-col fx-gap-px-6">
+        <OSS::Label @text="Email Address" @for="email-demo" @required={{true}} />
+        <input id="email-demo" type="email" class="upf-input" placeholder="Enter your email" />
+      </div>
+      <div class="fx-col fx-gap-px-6">
+        <OSS::Label @for="password-demo" @required={{true}}>
+          Password
+          <em>(must be at least 8 characters)</em>
+        </OSS::Label>
+        <input id="password-demo" type="password" class="upf-input" placeholder="Enter your password" />
+      </div>
     </div>
   </div>
 

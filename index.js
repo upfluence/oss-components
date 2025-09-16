@@ -65,6 +65,10 @@ module.exports = {
     return mergeTrees(trees);
   },
 
+  treeForStyles(tree) {
+    return tree;
+  },
+
   treeForVendor(tree) {
     const trees = [tree];
 
