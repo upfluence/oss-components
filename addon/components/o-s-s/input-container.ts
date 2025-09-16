@@ -58,7 +58,6 @@ export default class OSSInputContainer extends Component<OSSInputContainerArgs> 
 
   @action
   onKeyUp(event: KeyboardEvent): void {
-    // Only handle specific keys like Backspace for null values
     if (event.key === 'Backspace' && this.args.value === null) {
       this.args.onChange?.(null);
     }

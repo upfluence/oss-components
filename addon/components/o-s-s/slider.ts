@@ -72,14 +72,11 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
   }
 
   get activeBackgroundWidth(): ReturnType<typeof htmlSafe> {
-    // For background calculation, use actual input value if available, otherwise use prop value
     let valueForBackground: string;
 
     if (this.actualInputValue !== null) {
-      // Use the actual input value (including empty string for cleared input)
       valueForBackground = this.actualInputValue;
     } else {
-      // Fallback to prop value
       valueForBackground = this.currentRangeValue;
     }
 
