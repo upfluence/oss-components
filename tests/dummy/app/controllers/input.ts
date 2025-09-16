@@ -3,6 +3,8 @@ import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 
 import { countries, type CountryData } from '@upfluence/oss-components/utils/country-codes';
+import type { Feedback, FormInstance } from '@upfluence/oss-components/services/form-manager';
+import { isBlank } from '@ember/utils';
 
 export default class Input extends Controller {
   @tracked shopUrl: string = '';
@@ -39,6 +41,8 @@ export default class Input extends Controller {
   @tracked currency: string = 'EUR';
   @tracked currencyValue: number = 42.13;
   @tracked currencyOnly: string = '';
+  @tracked formInstance?: FormInstance;
+  @tracked formFieldValue: string = '';
 
   countries: CountryData[] = countries;
   allowedCurrencies: { code: string; symbol: string }[] = [
@@ -140,5 +144,22 @@ export default class Input extends Controller {
   @action
   onSearchFieldChange(value: string): void {
     this.searchFieldValue = value;
+  }
+
+  @action
+  onFormSubmit(): void {
+    console.log('submitted form instance:', this.formInstance, ' with field value: ', this.formFieldValue);
+  }
+
+  @action
+  onFormSetup(instance: FormInstance): void {
+    this.formInstance = instance;
+  }
+
+  @action
+  validateFormField(): Feedback | undefined {
+    if (isBlank(this.formFieldValue)) {
+      return { kind: 'blank', message: { type: 'error', value: 'This field is required' } };
+    }
   }
 }
