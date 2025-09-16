@@ -83,18 +83,7 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
       valueForBackground = this.currentRangeValue;
     }
 
-    console.log(
-      'activeBackgroundWidth - actualInputValue:',
-      this.actualInputValue,
-      'valueForBackground:',
-      valueForBackground,
-      'currentRangeValue:',
-      this.currentRangeValue,
-      'args.value:',
-      this.args.value
-    );
     const percentage = Math.round(this.getPercentage(valueForBackground) * 100);
-    console.log('Calculated percentage:', percentage);
     return htmlSafe(`--range-percentage: ${percentage}%`);
   }
 
@@ -153,8 +142,6 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
     const min = this.args.min ?? 0;
     const max = this.args.max ?? 100;
 
-    console.log('getPercentage - value:', value, 'convertedValue:', convertedValue, 'min:', min, 'max:', max);
-
     if (this.args.step) {
       correction =
         convertedValue % this.args.step >= this.args.step / 2
@@ -162,9 +149,7 @@ export default class SliderComponent extends Component<SliderComponentArgs> {
           : -convertedValue % this.args.step;
     }
 
-    const result = Math.min(Math.max(convertedValue + correction - min, 0) / (max - min), 1);
-    console.log('getPercentage - result:', result);
-    return result;
+    return Math.min(Math.max(convertedValue + correction - min, 0) / (max - min), 1);
   }
 
   private checkUserInput(value: string | null): void {
