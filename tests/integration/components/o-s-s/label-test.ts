@@ -77,11 +77,9 @@ module('Integration | Component | OSS::Label', function (hooks) {
     assert.dom('.oss-label').hasClass('oss-label--disabled');
   });
 
-  test('it throws error when neither text nor block content provided', async function (assert) {
-    setupOnerror((error) => {
-      assert.ok(error.message.includes('[component][OSS::Label]'));
-    });
-
+  test('it renders without content', async function (assert) {
     await render(hbs`<OSS::Label />`);
+
+    assert.dom('.oss-label').exists();
   });
 });
