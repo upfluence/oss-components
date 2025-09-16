@@ -14,7 +14,6 @@ const PlacementDefinitions = [
   'left-end',
   'right-end'
 ];
-'top' | 'right' | 'bottom' | 'left';
 
 export default {
   title: 'Helpers & Modifiers/Modifiers/Attach Element/Definition',
