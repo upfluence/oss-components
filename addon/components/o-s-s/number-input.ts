@@ -74,7 +74,12 @@ export default class OSSNumberInput extends Component<OSSNumberInputArgs> {
   }
 
   @action
-  checkUserInput(): void {
+  checkUserInput(value?: string): void {
+    // If value is provided, update localValue first
+    if (value !== undefined) {
+      this.localValue = Number(value);
+    }
+    
     if (this.args.min !== undefined && Number(this.localValue) < this.args.min) {
       this.localValue = this.args.min;
     }
