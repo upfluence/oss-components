@@ -1,10 +1,11 @@
-const { NoBareHTMLButton } = require('./rules');
+const { NoBareHTMLButton, RequireDataControlName } = require('./rules');
 
 module.exports = {
   name: 'u-template-lint',
 
   rules: {
-    'u-template-lint/no-bare-button': NoBareHTMLButton
+    'u-template-lint/no-bare-button': NoBareHTMLButton,
+    'require-data-control-name': RequireDataControlName
   },
 
   configurations: {
