@@ -1,8 +1,7 @@
-'use strict';
+/* global require module */
+const { Rule } = require('ember-template-lint');
 
-const Rule = require('ember-template-lint/lib/rules/_base');
-
-module.exports = class RequireDataControlName extends Rule {
+class RequireDataControlName extends Rule {
   constructor(options) {
     super(options);
   }
@@ -190,4 +189,6 @@ module.exports = class RequireDataControlName extends Rule {
 
     return node.attributes.some((attr) => attr.name === 'data-control-name');
   }
-};
+}
+
+module.exports = RequireDataControlName;
