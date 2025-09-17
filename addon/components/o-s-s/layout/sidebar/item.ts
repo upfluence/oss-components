@@ -39,4 +39,13 @@ export default class OSSLayoutSidebarItem extends Component<OSSLayoutSidebarItem
       this.args.lockedAction?.();
     }
   }
+
+  @action
+  handleMouseEnter(event: PointerEvent): void {
+    if (this.args.expanded || (event.currentTarget as HTMLElement).closest('.oss-sidebar-group') !== null) return;
+
+    document.querySelectorAll('.oss-sidebar-group__items-container--visible').forEach((el) => {
+      el.classList.remove('oss-sidebar-group__items-container--visible');
+    });
+  }
 }

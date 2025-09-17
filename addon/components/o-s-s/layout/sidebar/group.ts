@@ -30,8 +30,8 @@ export default class OSSLayoutSidebarGroupComponent extends Component<OSSLayoutS
   @tracked triggerHovered: boolean = false;
   @tracked groupListHovered: boolean = false;
   @tracked collapsed: boolean = false;
-  @tracked hideGroupListTimeout: number = 0;
-  @tracked handleMouseLeaveTimeout: number = 0;
+  hideGroupListTimeout: number = 0;
+  handleMouseLeaveTimeout: number = 0;
 
   declare triggerElement: HTMLElement;
 

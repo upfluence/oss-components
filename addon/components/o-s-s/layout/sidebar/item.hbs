@@ -3,6 +3,7 @@
   class={{this.computedClasses}}
   disabled={{this.locked}}
   {{on "click" this.onClick}}
+  {{on "mouseenter" this.handleMouseEnter}}
   ...attributes
 >
   {{#if this.locked}}
