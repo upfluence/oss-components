@@ -1,7 +1,7 @@
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
-import { later, scheduleOnce } from '@ember/runloop';
+import { scheduleOnce } from '@ember/runloop';
 
 export type GroupItem = {
   icon?: string;
@@ -23,12 +23,15 @@ interface OSSLayoutSidebarGroupComponentSignature {
 }
 
 const GROUP_LIST_HIDE_DELAY = 450;
+const ITEM_LEAVE_DELAY = 50;
 
 export default class OSSLayoutSidebarGroupComponent extends Component<OSSLayoutSidebarGroupComponentSignature> {
   @tracked displayGroupList: boolean = false;
   @tracked triggerHovered: boolean = false;
   @tracked groupListHovered: boolean = false;
   @tracked collapsed: boolean = false;
+  hideGroupListTimeout: number = 0;
+  handleMouseLeaveTimeout: number = 0;
 
   declare triggerElement: HTMLElement;
 
@@ -69,29 +72,36 @@ export default class OSSLayoutSidebarGroupComponent extends Component<OSSLayoutS
   handleMouseEnter(): void {
     if (this.args.expanded) return;
 
+    this.clearTimeouts();
     scheduleOnce('afterRender', this, () => {
       this.triggerHovered = this.displayGroupList = true;
+    });
+
+    document.querySelectorAll('.oss-sidebar-group__items-container--visible').forEach((el) => {
+      if (!this.triggerElement.contains(el)) {
+        el.classList.remove('oss-sidebar-group__items-container--visible');
+      }
     });
   }
 
   @action
-  handleMouseLeave(event: MouseEvent & { relatedTarget: HTMLElement }): void {
-    if (this.args.expanded || this.triggerElement.querySelector('.oss-sidebar-item')!.contains(event.relatedTarget)) {
-      return;
-    }
+  handleMouseLeave(): void {
+    if (this.args.expanded) return;
 
     this.triggerHovered = false;
 
-    later(
-      this,
-      () => {
-        const hoveredAway =
-          document.querySelector('.oss-sidebar-group.oss-sidebar-group--hovered') !== null &&
-          document.querySelector('.oss-sidebar-group.oss-sidebar-group--hovered') !== this.triggerElement;
-        this.hideGroupList(hoveredAway);
-      },
-      50
-    );
+    this.handleMouseLeaveTimeout = setTimeout(() => {
+      const hoveredAway =
+        document.querySelector('.oss-sidebar-group.oss-sidebar-group--hovered') !== null &&
+        document.querySelector('.oss-sidebar-group.oss-sidebar-group--hovered') !== this.triggerElement;
+      this.hideGroupList(hoveredAway);
+    }, ITEM_LEAVE_DELAY);
+  }
+
+  @action
+  handleGroupListEnter(): void {
+    this.groupListHovered = true;
+    this.clearTimeouts();
   }
 
   @action
@@ -116,6 +126,11 @@ export default class OSSLayoutSidebarGroupComponent extends Component<OSSLayoutS
       return;
     }
 
-    later(this, hide, GROUP_LIST_HIDE_DELAY);
+    this.hideGroupListTimeout = setTimeout(() => hide(), GROUP_LIST_HIDE_DELAY);
+  }
+
+  private clearTimeouts(): void {
+    clearTimeout(this.hideGroupListTimeout);
+    clearTimeout(this.handleMouseLeaveTimeout);
   }
 }

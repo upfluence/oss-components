@@ -42,7 +42,7 @@
       "oss-sidebar-group__items-container"
       (if (or @expanded this.displayGroupList) " oss-sidebar-group__items-container--visible")
     }}
-    {{on "mouseenter" (fn (mut this.groupListHovered) true)}}
+    {{on "mouseenter" this.handleGroupListEnter}}
     {{on "mouseleave" this.handleGroupListLeave}}
   >
     {{#unless @expanded}}
