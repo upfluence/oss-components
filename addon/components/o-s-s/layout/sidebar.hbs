@@ -3,6 +3,7 @@
     <div class="logo-container">
       <OSS::Layout::Sidebar::Item
         @link={{or @homeParameters.url @homeURL}}
+        @expanded={{this.expanded}}
         {{enable-tooltip title=@homeParameters.tooltip placement="right"}}
       >
         <:icon>
