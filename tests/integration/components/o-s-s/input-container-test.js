@@ -117,7 +117,7 @@ module('Integration | Component | o-s-s/input-container', function (hooks) {
       assert.ok(this.onChange.notCalled);
     });
 
-    test('Pasting text containing letters and numbers in a number input is not possible', async function (assert) {
+    test('Pasting text containing letters and numbers in a number input keeps numbers only', async function (assert) {
       this.onChange = sinon.stub();
       await render(
         hbs`<OSS::InputContainer data-control-name="firstname-input" @type="number" @onChange={{this.onChange}} />`
@@ -127,7 +127,7 @@ module('Integration | Component | o-s-s/input-container', function (hooks) {
       await triggerEvent('.oss-input-container input', 'paste', {
         clipboardData: { getData: () => 'abc123' }
       });
-      assert.ok(this.onChange.notCalled);
+      assert.ok(this.onChange.calledWithExactly('123'));
     });
 
     test('Pasting text containing numbers only in a number input is possible', async function (assert) {
