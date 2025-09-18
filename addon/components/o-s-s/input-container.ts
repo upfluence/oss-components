@@ -65,10 +65,12 @@ export default class OSSInputContainer extends Component<OSSInputContainerArgs> 
     let paste = event.clipboardData?.getData('Text') ?? '';
 
     if (this.type === 'number' && NOT_NUMERIC.test(paste)) {
-      event.preventDefault();
-
       paste = paste.replace(NOT_NUMERIC, '');
-      if (!paste) return;
+
+      if (!paste) {
+        event.preventDefault();
+        return;
+      }
     }
 
     const start = element.selectionStart ?? 0;
