@@ -1,6 +1,60 @@
 /* global require module */
 const { Rule } = require('ember-template-lint');
 
+const nativeInteractiveTags = ['button', 'input', 'select', 'textarea', 'a', 'area', 'details', 'summary'];
+
+const interactiveAttributes = [
+  'onclick',
+  'onchange',
+  'onsubmit',
+  'onfocus',
+  'onblur',
+  'onkeydown',
+  'onkeyup',
+  'onkeypress',
+  'onmousedown',
+  'onmouseup',
+  'onmouseover',
+  'onmouseout',
+  'tabindex'
+];
+
+const excludedOSSComponents = [
+  'OSS::StackContainer',
+  'OSS::Panel::Row',
+  'OSS::ContentPanel',
+
+  // Display and visual components
+  'OSS::Illustration',
+  'OSS::Icon',
+  'OSS::Badge',
+  'OSS::Skeleton',
+  'OSS::PulsatingDot',
+  'OSS::ProgressBar',
+  'OSS::Tip',
+  'OSS::Banner',
+  'OSS::Alert',
+  'OSS::EmptyState',
+  'OSS::InformationSection',
+
+  // Attribute display components (non-interactive)
+  'OSS::Attribute::Text',
+  'OSS::Attribute::RemovableText',
+
+  // Avatar components (display only)
+  'OSS::Avatar',
+  'OSS::AvatarGroup',
+
+  // Layout components
+  'OSS::Layout::Sidebar',
+  'OSS::Layout::Sidebar::Item',
+  'OSS::Layout::Navbar::NavItem',
+
+  // Other non-interactive components
+  'OSS::CodeBlock',
+  'OSS::CompletionBadge'
+];
+
 class RequireDataControlName extends Rule {
   constructor(options) {
     super(options);
@@ -22,29 +76,11 @@ class RequireDataControlName extends Rule {
   }
 
   isInteractiveElement(node) {
-    const nativeInteractiveTags = ['button', 'input', 'select', 'textarea', 'a', 'area', 'details', 'summary'];
-
     if (nativeInteractiveTags.includes(node.tag)) {
       return true;
     }
 
     if (node.attributes) {
-      const interactiveAttributes = [
-        'onclick',
-        'onchange',
-        'onsubmit',
-        'onfocus',
-        'onblur',
-        'onkeydown',
-        'onkeyup',
-        'onkeypress',
-        'onmousedown',
-        'onmouseup',
-        'onmouseover',
-        'onmouseout',
-        'tabindex'
-      ];
-
       const hasInteractiveAttribute = node.attributes.some(
         (attr) => interactiveAttributes.includes(attr.name) || attr.name.startsWith('on')
       );
@@ -73,42 +109,6 @@ class RequireDataControlName extends Rule {
         return true;
       }
     }
-
-    const excludedOSSComponents = [
-      'OSS::StackContainer',
-      'OSS::Panel::Row',
-      'OSS::ContentPanel',
-
-      // Display and visual components
-      'OSS::Illustration',
-      'OSS::Icon',
-      'OSS::Badge',
-      'OSS::Skeleton',
-      'OSS::PulsatingDot',
-      'OSS::ProgressBar',
-      'OSS::Tip',
-      'OSS::Banner',
-      'OSS::Alert',
-      'OSS::EmptyState',
-      'OSS::InformationSection',
-
-      // Attribute display components (non-interactive)
-      'OSS::Attribute::Text',
-      'OSS::Attribute::RemovableText',
-
-      // Avatar components (display only)
-      'OSS::Avatar',
-      'OSS::AvatarGroup',
-
-      // Layout components
-      'OSS::Layout::Sidebar',
-      'OSS::Layout::Sidebar::Item',
-      'OSS::Layout::Navbar::NavItem',
-
-      // Other non-interactive components
-      'OSS::CodeBlock',
-      'OSS::CompletionBadge'
-    ];
 
     if (node.tag.startsWith('OSS::')) {
       if (excludedOSSComponents.includes(node.tag)) {
