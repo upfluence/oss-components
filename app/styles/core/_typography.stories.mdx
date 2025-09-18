@@ -30,10 +30,11 @@ export const typography = {
 
 export const monoTypography = {
   type: {
-    primary: getComputedStyle(document.documentElement).getPropertyValue('--font-stack-monospace')
+    primary: getComputedStyle(document.documentElement).getPropertyValue('--font-family-mono')
   },
   weight: {
-    regular: '400'
+    regular: '400',
+    semibold: '600'
   },
   fontSizes: {
     xs: 10,
@@ -56,16 +57,17 @@ creating clear visual patterns.
 
 ## Product Font
 
-**[Inter](https://fonts.google.com/specimen/Inter)** is the primary typeface accross Upfluence products and can be used
-in 2 different weights:
+**[Inter](https://fonts.google.com/specimen/Inter)** is the primary typeface accross Upfluence products. It is the default font.
+
+**[Roboto Mono](https://fonts.google.com/specimen/Roboto+Mono)** is the second typeface used in Upfluence products.
+It can be set using the class `.font-family-mono` of the font family variable `--font-family-mono`.
+
+Both fonts can be used in 2 different weights:
 
 | Name     | Weight | Class                 |
 | -------- | ------ | --------------------- |
 | Regular  | 400    | -                     |
 | Semibold | 600    | .font-weight-semibold |
-
-**[Roboto Mono](https://fonts.google.com/specimen/Roboto+Mono)** is the second typeface used in Upfluence products.
-It can be set using the class `.font-stack-monospace` of the font family variable `--font-stack-monospace`.
 
 ## Type styles
 
@@ -115,7 +117,7 @@ flexibility and a wide range of applications within the user interface.
 <div class="fx-row fx-gap-px-12">
   <div class="fx-1">
     <div class="fx-col">
-      <span>Regular</span>
+      <span>Regular Inter font</span>
       <Typeset
         fontSizes={[typography.fontSizes.xs, typography.fontSizes.sm, typography.fontSizes.md, typography.fontSizes.lg]}
         fontWeight={typography.weight.regular}
@@ -126,7 +128,7 @@ flexibility and a wide range of applications within the user interface.
   </div>
   <div class="fx-1">
     <div class="fx-col">
-      <span>Semibold</span>
+      <span>Semibold Inter font</span>
       <Typeset
         fontSizes={[typography.fontSizes.xs, typography.fontSizes.sm, typography.fontSizes.md, typography.fontSizes.lg]}
         fontWeight={typography.weight.semibold}
@@ -149,6 +151,22 @@ flexibility and a wide range of applications within the user interface.
           monoTypography.fontSizes.lg
         ]}
         fontWeight={monoTypography.weight.regular}
+        sampleText={SampleText}
+        fontFamily={monoTypography.type.primary}
+      />
+    </div>
+  </div>
+  <div class="fx-1">
+    <div class="fx-col">
+      <span>Semibold Monospace font</span>
+      <Typeset
+        fontSizes={[
+          monoTypography.fontSizes.xs,
+          monoTypography.fontSizes.sm,
+          monoTypography.fontSizes.md,
+          monoTypography.fontSizes.lg
+        ]}
+        fontWeight={monoTypography.weight.semibold}
         sampleText={SampleText}
         fontFamily={monoTypography.type.primary}
       />
