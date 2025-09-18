@@ -28,6 +28,25 @@ export const typography = {
   }
 };
 
+export const monoTypography = {
+  type: {
+    primary: getComputedStyle(document.documentElement).getPropertyValue('--font-stack-monospace')
+  },
+  weight: {
+    regular: '400'
+  },
+  fontSizes: {
+    xs: 10,
+    sm: 12,
+    md: 14,
+    lg: 16,
+    h1: 30,
+    h2: 25,
+    h3: 20,
+    h4: 15
+  }
+};
+
 export const SampleText = 'The quick brown fox jumps over a lazy dog.';
 
 # Typography
@@ -44,6 +63,9 @@ in 2 different weights:
 | -------- | ------ | --------------------- |
 | Regular  | 400    | -                     |
 | Semibold | 600    | .font-weight-semibold |
+
+**[Roboto Mono](https://fonts.google.com/specimen/Roboto+Mono)** is the second typeface used in Upfluence products.
+It can be set using the class `.font-stack-monospace` of the font family variable `--font-stack-monospace`.
 
 ## Type styles
 
@@ -110,6 +132,25 @@ flexibility and a wide range of applications within the user interface.
         fontWeight={typography.weight.semibold}
         sampleText={SampleText}
         fontFamily={typography.type.primary}
+      />
+    </div>
+  </div>
+</div>
+
+<div class="fx-row fx-gap-px-12">
+  <div class="fx-1">
+    <div class="fx-col">
+      <span>Regular Monospace font</span>
+      <Typeset
+        fontSizes={[
+          monoTypography.fontSizes.xs,
+          monoTypography.fontSizes.sm,
+          monoTypography.fontSizes.md,
+          monoTypography.fontSizes.lg
+        ]}
+        fontWeight={monoTypography.weight.regular}
+        sampleText={SampleText}
+        fontFamily={monoTypography.type.primary}
       />
     </div>
   </div>
