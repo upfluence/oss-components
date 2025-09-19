@@ -4,12 +4,14 @@ import { action } from '@ember/object';
 import type { OSSTagArgs } from '@upfluence/oss-components/components/o-s-s/tag';
 
 interface OSSLayoutSidebarItemArgs {
-  icon: string;
+  link: string;
+  icon?: string;
   locked?: boolean;
   hasNotifications?: boolean;
-  link: string;
-  lockedAction?(): void;
   tag?: Pick<OSSTagArgs, 'label' | 'skin' | 'icon'>;
+  expanded?: boolean;
+  label?: string;
+  lockedAction?(): void;
 }
 
 export default class OSSLayoutSidebarItem extends Component<OSSLayoutSidebarItemArgs> {
@@ -21,10 +23,29 @@ export default class OSSLayoutSidebarItem extends Component<OSSLayoutSidebarItem
     return this.args.hasNotifications || false;
   }
 
+  get computedClasses(): string {
+    const classes = ['oss-sidebar-item'];
+
+    if (this.args.expanded) {
+      classes.push('oss-sidebar-item--expanded');
+    }
+
+    return classes.join(' ');
+  }
+
   @action
   onClick(): void {
     if (this.locked) {
       this.args.lockedAction?.();
     }
+  }
+
+  @action
+  handleMouseEnter(event: PointerEvent): void {
+    if (this.args.expanded || (event.currentTarget as HTMLElement).closest('.oss-sidebar-group') !== null) return;
+
+    document.querySelectorAll('.oss-sidebar-group__items-container--visible').forEach((el) => {
+      el.classList.remove('oss-sidebar-group__items-container--visible');
+    });
   }
 }

@@ -1,13 +1,38 @@
-<div class="oss-sidebar--containers fx-col" ...attributes>
-  <OSS::Anchor @link={{@homeURL}} class="logo-container">
-    <img src={{@logo}} alt="brand" />
-  </OSS::Anchor>
-  <div class="oss-sidebar--content fx-1 fx-col fx-xalign-center fx-gap-px-9">
-    {{yield to="content"}}
+<div class={{this.computedClasses}} ...attributes>
+  {{#if (or @homeParameters (and @logo @homeURL))}}
+    <div class="logo-container">
+      <OSS::Layout::Sidebar::Item
+        @link={{or @homeParameters.url @homeURL}}
+        @expanded={{this.expanded}}
+        {{enable-tooltip title=@homeParameters.tooltip placement="right"}}
+      >
+        <:icon>
+          <img src={{or @homeParameters.logo @logo}} alt="brand" />
+        </:icon>
+      </OSS::Layout::Sidebar::Item>
+    </div>
+  {{/if}}
+
+  <div class="oss-sidebar-container__content">
+    <div class="fx-col fx-xalign-start fx-gap-px-9 width-pc-100">
+      {{yield (hash expanded=this.expanded) to="content"}}
+    </div>
+
+    {{#if @expandable}}
+      <div class="oss-sidebar-container__expand">
+        <OSS::Layout::Sidebar::Item
+          @icon={{if this.expanded "fa-arrow-left-to-line" "fa-arrow-right-to-line"}}
+          @label={{t "oss-components.sidebar.collapse"}}
+          @expanded={{this.expanded}}
+          data-control-name="sidebar-expanded-state-toggle"
+          {{on "click" this.toggleExpandedState}}
+        />
+      </div>
+    {{/if}}
   </div>
   {{#if (has-block "footer")}}
-    <div class="oss-sidebar--footer fx-col fx-xalign-center fx-gap-px-9">
-      {{yield to="footer"}}
+    <div class="oss-sidebar-container__footer">
+      {{yield (hash expanded=this.expanded) to="footer"}}
     </div>
   {{/if}}
 </div>

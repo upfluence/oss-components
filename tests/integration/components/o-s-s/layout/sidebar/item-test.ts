@@ -16,64 +16,48 @@ module('Integration | Component | oss/layout/sidebar/item', function (hooks) {
   test('it renders the icon when present', async function (assert) {
     await render(hbs`<OSS::Layout::Sidebar::Item @icon="fal fa-search" />`);
 
-    assert.dom('.oss-sidebar-item .oss-sidebar-item--icon i').hasClass('fa-search');
+    assert.dom('.oss-sidebar-item .oss-sidebar-item__icon i').hasClass('fa-search');
+  });
+
+  test('it renders the icon named block instead of the icon argument when present', async function (assert) {
+    await render(
+      hbs`<OSS::Layout::Sidebar::Item @icon="fal fa-search"><:icon><OSS::Icon @icon="fa-ship" class="custom-icon" /></:icon></OSS::Layout::Sidebar::Item>`
+    );
+    assert.dom('.oss-sidebar-item .oss-sidebar-item__icon .custom-icon').exists();
+    assert.dom('.oss-sidebar-item .custom-icon').hasClass('fa-ship');
   });
 
   module('Arguments', () => {
     test('Default value for locked is false', async function (assert) {
       await render(hbs`<OSS::Layout::Sidebar::Item @icon="far fa-search" />`);
-      assert.dom('.oss-sidebar-item--locked').doesNotExist();
+      assert.dom('.oss-sidebar-item__lock').doesNotExist();
     });
 
     test('When locked is true', async function (assert) {
       await render(hbs`<OSS::Layout::Sidebar::Item @icon="far fa-search" @locked={{true}} />`);
-      assert.dom('.oss-sidebar-item--locked').exists();
+      assert.dom('.oss-sidebar-item__lock').exists();
     });
 
     test('Default value for hasNotification is false', async function (assert) {
       await render(hbs`<OSS::Layout::Sidebar::Item @icon="far fa-search" />`);
-      assert.dom('.oss-sidebar-item--notification').doesNotExist();
+      assert.dom('.oss-sidebar-item__notification').doesNotExist();
     });
 
     test('When hasNotification is true', async function (assert) {
       await render(hbs`<OSS::Layout::Sidebar::Item @icon="far fa-search" @hasNotifications={{true}}/>`);
-      assert.dom('.oss-sidebar-item--notification').exists();
+      assert.dom('.oss-sidebar-item__notification').exists();
     });
 
-    module('for @tag argument', () => {
-      test("It doesn't render it for undefined value", async function (assert) {
-        await render(hbs`<OSS::Layout::Sidebar::Item @icon="far fa-search" />`);
-        assert.dom('.oss-sidebar-item--tag').doesNotExist();
+    module('Expanded state', () => {
+      test('the wrapper container is applied', async function (assert) {
+        await render(hbs`<OSS::Layout::Sidebar::Item @expanded={{true}} @icon="far fa-search" @label="Label" />`);
+        assert.dom('.oss-sidebar-item').hasClass('oss-sidebar-item--expanded');
       });
 
-      module('When tag is defined', () => {
-        test('It renders it', async function (assert) {
-          await render(
-            hbs`<OSS::Layout::Sidebar::Item @icon="far fa-search" @tag={{hash label="New" skin="chat-gpt"}} />`
-          );
-          assert.dom('.oss-sidebar-item--tag .upf-tag.upf-tag--xs').exists();
-        });
-
-        test('It renders the correct wording', async function (assert) {
-          await render(
-            hbs`<OSS::Layout::Sidebar::Item @icon="far fa-search" @tag={{hash label="New" skin="chat-gpt"}} />`
-          );
-          assert.dom('.oss-sidebar-item--tag').hasText('New');
-        });
-
-        test('It renders the correct icon', async function (assert) {
-          await render(
-            hbs`<OSS::Layout::Sidebar::Item @icon="far fa-search" @tag={{hash icon="fa-search" skin="chat-gpt"}} />`
-          );
-          assert.dom('.oss-sidebar-item--tag i.fa-search').exists();
-        });
-
-        test('It renders the correct skin', async function (assert) {
-          await render(
-            hbs`<OSS::Layout::Sidebar::Item @icon="far fa-search" @tag={{hash label="New" skin="chat-gpt"}} />`
-          );
-          assert.dom('.oss-sidebar-item--tag .upf-tag.upf-tag--chat-gpt').exists();
-        });
+      test('the label is displayed', async function (assert) {
+        await render(hbs`<OSS::Layout::Sidebar::Item @expanded={{true}} @icon="far fa-search" @label="Label" />`);
+        assert.dom('.oss-sidebar-item__label').exists();
+        assert.dom('.oss-sidebar-item__label').hasText('Label');
       });
     });
   });
@@ -84,7 +68,7 @@ module('Integration | Component | oss/layout/sidebar/item', function (hooks) {
       this.lockedAction = sinon.spy();
     });
 
-    test('OnClick it redirect to the @link attribute', async function (assert) {
+    test('on click, it redirect to the @link attribute', async function (assert) {
       const router = this.owner.lookup('service:router');
       await render(
         hbs`<OSS::Layout::Sidebar::Item @icon="far fa-search" @link="index" @lockedAction={{this.lockedAction}} />`

@@ -145,4 +145,58 @@
     </div>
   </div>
 
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      OSS::Layout::Sidebar::Group
+    </div>
+
+    <div class="fx-row fx-1 fx-gap-px-12 fx-malign-space-between width-pc-40">
+      <OSS::Layout::Sidebar::Group
+        @icon="fa fa-folder"
+        @label="Group label"
+        @items={{this.itemsSidebarGroup}}
+        @expanded={{false}}
+      />
+
+      <div class="fx-row fx-gap-px-12">
+        <OSS::Layout::Sidebar::Group
+          @expanded={{true}}
+          @icon="fa fa-folder"
+          @label="Group label"
+          @items={{this.itemsSidebarGroup}}
+        />
+
+        <OSS::Layout::Sidebar::Group
+          @expanded={{true}}
+          @icon="fa fa-folder"
+          @label="Group label"
+          @items={{this.itemsSidebarGroup}}
+        >
+          <:icon>
+            <OSS::Avatar
+              @image="https://img.apmcdn.org/768cb350c59023919f564341090e3eea4970388c/square/72dd92-20180309-rick-astley.jpg"
+              @size="xs"
+            />
+          </:icon>
+        </OSS::Layout::Sidebar::Group>
+
+        <OSS::Layout::Sidebar::Group
+          @collapsible={{true}}
+          @expanded={{true}}
+          @icon="fa fa-folder"
+          @label="Group label"
+          @items={{this.itemsSidebarGroup}}
+        >
+          <:icon>
+            <OSS::Avatar
+              @image="https://img.apmcdn.org/768cb350c59023919f564341090e3eea4970388c/square/72dd92-20180309-rick-astley.jpg"
+              @size="xs"
+            />
+          </:icon>
+        </OSS::Layout::Sidebar::Group>
+      </div>
+    </div>
+  </div>
 </div>

@@ -1,0 +1,69 @@
+<div class={{this.computedClasses}} {{did-insert this.registerTrigger}} ...attributes>
+  <div class="oss-sidebar-group__title-container">
+    {{#if (has-block "icon")}}
+      <OSS::Layout::Sidebar::Item
+        @icon={{@icon}}
+        @label={{@label}}
+        @expanded={{@expanded}}
+        @hasNotifications={{and (not @expanded) this.hasNotifications}}
+        {{on "mouseenter" this.handleMouseEnter}}
+        {{on "mouseleave" this.handleMouseLeave}}
+        class={{concat (if @expanded "oss-sidebar-item--group-header") (if this.isActive " active")}}
+      >
+        <:icon>
+          {{yield (hash expanded=@expanded) to="icon"}}
+        </:icon>
+      </OSS::Layout::Sidebar::Item>
+    {{else}}
+      <OSS::Layout::Sidebar::Item
+        @icon={{@icon}}
+        @label={{@label}}
+        @expanded={{@expanded}}
+        @hasNotifications={{and (not @expanded) this.hasNotifications}}
+        {{on "mouseenter" this.handleMouseEnter}}
+        {{on "mouseleave" this.handleMouseLeave}}
+        class={{concat (if @expanded "oss-sidebar-item--group-header") (if this.isActive " active")}}
+      />
+    {{/if}}
+
+    {{#if this.collapsible}}
+      <OSS::Icon
+        @icon={{if this.collapsed "fa-chevron-down" "fa-chevron-up"}}
+        role="button"
+        class="oss-sidebar-group__collapse-trigger"
+        {{on "click" this.toggleCollapsed}}
+      />
+    {{/if}}
+
+  </div>
+
+  <div
+    class={{concat
+      "oss-sidebar-group__items-container"
+      (if (or @expanded this.displayGroupList) " oss-sidebar-group__items-container--visible")
+    }}
+    {{on "mouseenter" this.handleGroupListEnter}}
+    {{on "mouseleave" this.handleGroupListLeave}}
+  >
+    {{#unless @expanded}}
+      <div class="group-name">
+        {{@label}}
+      </div>
+    {{/unless}}
+    <div class="group-list">
+      {{#each @items as |item|}}
+        <OSS::Layout::Sidebar::Item
+          @expanded={{or @expanded this.displayGroupList}}
+          @icon={{item.icon}}
+          @label={{item.label}}
+          @locked={{item.locked}}
+          @hasNotifications={{item.hasNotifications}}
+          @link={{item.link}}
+          @lockedAction={{item.lockedAction}}
+          data-control-name={{item.dataControlName}}
+          class={{if item.active "active"}}
+        />
+      {{/each}}
+    </div>
+  </div>
+</div>
