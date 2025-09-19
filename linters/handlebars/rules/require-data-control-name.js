@@ -76,45 +76,27 @@ class RequireDataControlName extends Rule {
   }
 
   isInteractiveElement(node) {
-    if (nativeInteractiveTags.includes(node.tag)) {
+    if (nativeInteractiveTags.includes(node.tag)) return true;
+
+    if (node.attributes?.some((attr) => interactiveAttributes.includes(attr.name) || attr.name.startsWith('on')))
       return true;
-    }
 
-    if (node.attributes) {
-      const hasInteractiveAttribute = node.attributes.some(
-        (attr) => interactiveAttributes.includes(attr.name) || attr.name.startsWith('on')
-      );
+    if (
+      node.modifiers?.some((modifier) => {
+        if (modifier.path?.original !== 'on') return false;
+        if ((modifier.params?.length || 0) === 0) return true;
 
-      if (hasInteractiveAttribute) {
-        return true;
-      }
-    }
-
-    if (node.modifiers) {
-      const hasOnModifier = node.modifiers.some((modifier) => {
-        if (modifier.path && modifier.path.original === 'on') {
-          if (modifier.params && modifier.params.length > 0) {
-            const eventName = modifier.params[0];
-            if (eventName.type === 'StringLiteral') {
-              const interactiveEvents = ['click', 'submit', 'keydown', 'keyup', 'keypress'];
-              return interactiveEvents.includes(eventName.value);
-            }
-          }
-          return true;
-        }
-        return false;
-      });
-
-      if (hasOnModifier) {
-        return true;
-      }
-    }
+        const eventName = node.modifiers.params[0];
+        return (
+          eventName.type === 'StringLiteral' &&
+          ['click', 'submit', 'keydown', 'keyup', 'keypress'].includes(eventName.value)
+        );
+      })
+    )
+      return true;
 
     if (node.tag.startsWith('OSS::')) {
-      if (excludedOSSComponents.includes(node.tag)) {
-        return false;
-      }
-      return true;
+      return !excludedOSSComponents.includes(node.tag);
     }
 
     return false;
