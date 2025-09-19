@@ -88715,6 +88715,85 @@ interface OSSCodeBlockArgs {
   }), _applyDecoratedDescriptor(_class.prototype, "onSubmit", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSubmit"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSFormComponent);
 });
+;define("@upfluence/oss-components/components/o-s-s/form.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.Default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::Form',
+    component: 'form',
+    argTypes: {
+      onSetup: {
+        description: 'Callback function called during component initialization with the form instance',
+        table: {
+          type: {
+            summary: '(instance: FormInstance) => void'
+          }
+        },
+        control: {
+          type: 'function'
+        },
+        type: {
+          required: true
+        }
+      },
+      onSubmit: {
+        description: 'Callback function called when the form is submitted with the validation result',
+        table: {
+          type: {
+            summary: '(isValid: boolean) => void'
+          }
+        },
+        control: {
+          type: 'function'
+        },
+        type: {
+          required: true
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'A form component that integrates with the FormManager service for validation and form state management. Provides form instance management and validation on submit.'
+        }
+      }
+    }
+  };
+  const defaultArgs = {
+    onSetup(instance) {
+      console.log('Form instance setup:', instance);
+    },
+    onSubmit(isValid) {
+      console.log('Form submitted, is valid:', isValid);
+    }
+  };
+  const Template = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <OSS::Form @onSetup={{this.onSetup}} @onSubmit={{this.onSubmit}}>
+          <:content>
+          Form content
+          </:content>
+        </OSS::Form>
+      
+    */
+    {
+      "id": "AoBTAKiD",
+      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@onSetup\",\"@onSubmit\"],[[30,0,[\"onSetup\"]],[30,0,[\"onSubmit\"]]]],[[\"content\"],[[[[1,\"\\n      Form content\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/form\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/form.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const Default = _exports.Default = Template.bind({});
+  Default.args = defaultArgs;
+});
 ;define("@upfluence/oss-components/components/o-s-s/icon", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@upfluence/oss-components/components/o-s-s/iconName.enum", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _iconName, _templateFactory) {
   "use strict";
 
@@ -100184,6 +100263,72 @@ interface OSSCodeBlockArgs {
     initializer: null
   })), _class);
 });
+;define("@upfluence/oss-components/helpers/form-field-feedback.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.Default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Helpers & Modifiers/Helpers/Form-Field-Feedback/Definition',
+    argTypes: {
+      form: {
+        description: 'The name of the form from which the feedback message should be retrieved.',
+        table: {
+          type: {
+            summary: 'string'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      fieldId: {
+        description: 'The unique identifier of the field whose feedback message should be displayed.',
+        table: {
+          type: {
+            summary: 'string'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'Helper that returns a feedback message (e.g., validation error) for a specific field managed by the `FormManager` service.'
+        }
+      }
+    }
+  };
+  const defaultArgs = {
+    form: 'form-instance',
+    fieldId: 'field-id'
+  };
+  const Template = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <form id={{this.form}}>
+          <OSS::InputContainer @value="Hello world" @feedback={{form-field-feedback this.form this.fieldId}} />
+        </form>
+      
+    */
+    {
+      "id": "Ug+NAtc3",
+      "block": "[[[1,\"\\n    \"],[10,\"form\"],[15,1,[30,0,[\"form\"]]],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@value\",\"@feedback\"],[\"Hello world\",[28,[37,1],[[30,0,[\"form\"]],[30,0,[\"fieldId\"]]],null]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/input-container\",\"form-field-feedback\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/helpers/form-field-feedback.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const Default = _exports.Default = Template.bind({});
+  Default.args = defaultArgs;
+});
 ;define("@upfluence/oss-components/helpers/format-money", ["exports", "@ember/component/helper"], function (_exports, _helper) {
   "use strict";
 
@@ -101145,6 +101290,104 @@ interface OSSCodeBlockArgs {
     writable: true,
     initializer: null
   })), _class);
+});
+;define("@upfluence/oss-components/modifiers/register-form-field.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.Default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Helpers & Modifiers/Modifiers/Register-Form-Field/Definition',
+    argTypes: {
+      form: {
+        description: 'The name of the form this field belongs to. Used to retrieve the correct FormManager instance.',
+        table: {
+          type: {
+            summary: 'string'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      fieldId: {
+        description: 'A unique identifier for the field within the form. Used for registration and validation.',
+        table: {
+          type: {
+            summary: 'string'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      validator: {
+        description: 'A validation function called by the FormManager for this field',
+        table: {
+          type: {
+            summary: '(value: unknown) => string | void'
+          }
+        },
+        control: {
+          type: 'function'
+        }
+      },
+      validateOnBlur: {
+        description: 'Whether the field should be validated automatically on blur. Defaults to `true`.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'true'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'A modifier that registers a form field with the `FormManager` service, handling form validation logic'
+        }
+      }
+    }
+  };
+  const defaultArgs = {
+    form: 'form-instance',
+    fieldId: 'field-id',
+    validator: value => !value ? 'This field is required' : undefined,
+    validateOnBlur: true
+  };
+  const Template = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <form id={{this.form}}>
+          <OSS::InputContainer {{register-form-field
+            form=this.form
+            fieldId=this.fieldId
+            validator=this.validator
+            validateOnBlur=this.validateOnBlur
+            }} />
+        </form>
+      
+    */
+    {
+      "id": "F2yt4CQJ",
+      "block": "[[[1,\"\\n    \"],[10,\"form\"],[15,1,[30,0,[\"form\"]]],[12],[1,\"\\n      \"],[8,[39,0],[[4,[38,1],null,[[\"form\",\"fieldId\",\"validator\",\"validateOnBlur\"],[[30,0,[\"form\"]],[30,0,[\"fieldId\"]],[30,0,[\"validator\"]],[30,0,[\"validateOnBlur\"]]]]]],null,null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/input-container\",\"register-form-field\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/modifiers/register-form-field.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const Default = _exports.Default = Template.bind({});
+  Default.args = defaultArgs;
 });
 ;define("@upfluence/oss-components/modifiers/required-input", ["exports", "ember-modifier"], function (_exports, _emberModifier) {
   "use strict";
