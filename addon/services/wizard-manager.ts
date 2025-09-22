@@ -188,12 +188,19 @@ export default class WizardManager extends Service {
   }
 
   private focusStep(stepId: string): void {
-    const stepExists = this.sections.some((section: Section) => section.steps.some((step: Step) => step.id === stepId));
-    if (stepExists) {
-      set(this, 'focusedStepId', stepId);
+    const stepPosition: 'before' | 'after' =
+      this.findIndexOfStep(stepId) > this.findIndexOfStep(this.focusedStepId) ? 'after' : 'before';
+    const targetStep = stepPosition === 'after' ? this.nextStep : this.previousStep;
+    if (targetStep) {
+      set(this, 'focusedStepId', targetStep.id);
       this.setDisplayStates();
       next(this, () => {
         document.getElementById(stepId)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (stepId !== this.focusedStepId) {
+          next(this, () => {
+            this.focusStep(stepId);
+          });
+        }
       });
     }
   }

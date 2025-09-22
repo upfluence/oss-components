@@ -130,7 +130,7 @@ module('Unit | Service | wizard-manager', function (hooks) {
 
       this.service.selectStep(step2Id, true);
       await settled();
-      assert.equal(this.service.focusedStepId, step1Id);
+      assert.equal(this.service.focusedStepId, step2Id);
       assert.true(this.validateStub.notCalled, 'validateStep was not called when bypassValidations is true');
     });
 
