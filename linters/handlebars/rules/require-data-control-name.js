@@ -1,23 +1,7 @@
 /* global require module */
 const { Rule } = require('ember-template-lint');
 
-const nativeInteractiveTags = ['button', 'input', 'select', 'textarea', 'a', 'area', 'details', 'summary'];
-
-const interactiveAttributes = [
-  'onclick',
-  'onchange',
-  'onsubmit',
-  'onfocus',
-  'onblur',
-  'onkeydown',
-  'onkeyup',
-  'onkeypress',
-  'onmousedown',
-  'onmouseup',
-  'onmouseover',
-  'onmouseout',
-  'tabindex'
-];
+const nativeInteractiveTags = ['button', 'input', 'textarea', 'a'];
 
 const excludedOSSComponents = [
   'OSS::StackContainer',
@@ -77,9 +61,6 @@ class RequireDataControlName extends Rule {
 
   isInteractiveElement(node) {
     if (nativeInteractiveTags.includes(node.tag)) return true;
-
-    if (node.attributes?.some((attr) => interactiveAttributes.includes(attr.name) || attr.name.startsWith('on')))
-      return true;
 
     if (
       node.modifiers?.some((modifier) => {
