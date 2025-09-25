@@ -52,6 +52,7 @@ export default class WizardManager extends Service {
   @tracked sections: Section[] = [];
   @tracked declare focusedStepId: string;
   @tracked declare configOptions: ConfigurationOptions;
+  @tracked wheelEnabled: boolean = true;
 
   get allSteps(): Step[] {
     return this.sections.flatMap((section: Section) => section.steps);
@@ -164,6 +165,14 @@ export default class WizardManager extends Service {
       this.setDisplayStates();
       this.notifySectionChange();
     }
+  }
+
+  enableWheelScroll(): void {
+    this.wheelEnabled = true;
+  }
+
+  disableWheelScroll(): void {
+    this.wheelEnabled = false;
   }
 
   private get currentSection(): Section | undefined {
