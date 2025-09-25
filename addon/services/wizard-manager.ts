@@ -190,7 +190,11 @@ export default class WizardManager extends Service {
   private focusStep(stepId: string): void {
     const stepPosition: 'before' | 'after' =
       this.findIndexOfStep(stepId) > this.findIndexOfStep(this.focusedStepId) ? 'after' : 'before';
-    const targetStep = stepPosition === 'after' ? this.nextStep : this.previousStep;
+
+    let targetStep = stepPosition === 'after' ? this.nextStep : this.previousStep;
+    if (!targetStep) {
+      targetStep = this.findStepById(stepId);
+    }
     if (targetStep) {
       set(this, 'focusedStepId', targetStep.id);
       this.setDisplayStates();
