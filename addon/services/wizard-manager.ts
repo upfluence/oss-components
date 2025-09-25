@@ -77,7 +77,10 @@ export default class WizardManager extends Service {
     const firstFocusableStep = this.sections[0]?.steps.find((step: Step) => step.displayState !== 'empty');
     if (firstFocusableStep) {
       this.focusedStepId = firstFocusableStep.id;
-      this.selectStep(firstFocusableStep.id);
+      this.setDisplayStates();
+      next(this, () => {
+        document.getElementById(firstFocusableStep.id)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
     }
   }
 
