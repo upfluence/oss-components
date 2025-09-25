@@ -66,7 +66,7 @@ export default class WizardStepWrapperComponent extends Component<WizardStepWrap
 
   @action
   handleWheelEvent(event: WheelEvent): void {
-    if (!this.wheelListenerEnabled || this.wheelHandled) return;
+    if (!this.wizardManager.wheelEnabled || !this.wheelListenerEnabled || this.wheelHandled) return;
     if (!this.scrollPosition && !this.wheelListenerEnabled) return;
     if (this.scrollPosition === 'middle') return;
     this.wheelHandled = true;

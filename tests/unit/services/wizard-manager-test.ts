@@ -374,4 +374,29 @@ module('Unit | Service | wizard-manager', function (hooks) {
       assert.ok(this.setDisplayStatesStub.calledOnce);
     });
   });
+
+  module('Enable/Disable Wheel Scroll', function () {
+    test('By default, wheel scroll is enabled', async function (assert) {
+      this.service.initialize(this.config as WizardConfiguration);
+      await settled();
+      assert.true(this.service.wheelEnabled);
+    });
+
+    test('enableWheelScroll sets wheelEnabled to true', async function (assert) {
+      this.service.initialize(this.config as WizardConfiguration);
+      await settled();
+      this.service.wheelEnabled = false;
+      assert.false(this.service.wheelEnabled);
+      this.service.enableWheelScroll();
+      assert.true(this.service.wheelEnabled);
+    });
+
+    test('disableWheelScroll sets wheelEnabled to false', async function (assert) {
+      this.service.initialize(this.config as WizardConfiguration);
+      await settled();
+      assert.true(this.service.wheelEnabled);
+      this.service.disableWheelScroll();
+      assert.false(this.service.wheelEnabled);
+    });
+  });
 });
