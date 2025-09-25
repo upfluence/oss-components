@@ -147,4 +147,23 @@ module('Integration | Component | wizard/step-wrapper', function (hooks) {
 
     assert.true(this.selectPreviousStepStub.calledOnce);
   });
+
+  test('Wheel event does not call selectNextStep or selectPreviousStep when wheelEnabled is false', async function (assert) {
+    this.step.displayState = 'active';
+    this.wizardManager.disableWheelScroll();
+    this.selectNextStepStub = sinon.stub(this.wizardManager, 'selectNextStep');
+    this.selectPreviousStepStub = sinon.stub(this.wizardManager, 'selectPreviousStep');
+    await render(hbs`<Wizard::StepWrapper @step={{this.step}} />`);
+
+    const stepWrapper = document.querySelector('.step-wrapper');
+    if (stepWrapper) {
+      const wheelEventDown = new WheelEvent('wheel', { deltaY: 100 });
+      stepWrapper.dispatchEvent(wheelEventDown);
+      const wheelEventUp = new WheelEvent('wheel', { deltaY: -100 });
+      stepWrapper.dispatchEvent(wheelEventUp);
+    }
+
+    assert.true(this.selectNextStepStub.notCalled);
+    assert.true(this.selectPreviousStepStub.notCalled);
+  });
 });
