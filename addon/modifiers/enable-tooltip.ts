@@ -165,7 +165,7 @@ function setDefaultConfiguration(state: EnableTooltipState, args: EnableTooltipA
   };
 }
 
-function initEventListener(state: EnableTooltipState, element: HTMLElement): void {
+export function initEventListener(state: EnableTooltipState, element: HTMLElement): void {
   const { trigger } = state.tooltipConfig;
   const triggerEvents = trigger?.split(' ') || [];
 
