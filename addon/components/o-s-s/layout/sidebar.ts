@@ -45,9 +45,17 @@ export default class OSSLayoutSidebar extends Component<OSSLayoutSidebarArgs> {
   toggleExpandedState(): void {
     this.expanded = !this.expanded;
     this.upfLocalStorage.saveItem(SIDEBAR_EXPANDED_STATE, String(this.expanded));
+    document.documentElement.style.setProperty(
+      '--sidebar-width',
+      'var(--sidebar-' + (this.expanded ? 'expanded' : 'default') + '-width)'
+    );
   }
 
   private initializeSidebarState(): void {
     this.expanded = Boolean(this.args.expandable) && this.upfLocalStorage.getItem(SIDEBAR_EXPANDED_STATE) !== 'false';
+    document.documentElement.style.setProperty(
+      '--sidebar-width',
+      'var(--sidebar-' + (this.expanded ? 'expanded' : 'default') + '-width)'
+    );
   }
 }
