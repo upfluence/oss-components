@@ -1,0 +1,171 @@
+# Cursor Rules for Upfluence OSS Components
+
+## Project Context
+This is an Ember.js addon containing reusable UI components for Upfluence's design system. The project uses:
+- Ember.js with TypeScript
+- use pnpm for commands over yarn & npm
+- Handlebars templates
+- Less for styling
+- Storybook for component documentation
+- pnpm for package management
+- when generating components, they should be added in the o-s-s folder unless specified otherwise. You can also suggest a basic structure if you can make it out from context.
+- to test it, you could add it to the proper component in the dummy app, starting with `oss-components/tests/dummy/app/templates/application.hbs` . If you can make out a better position in the children components of this template, based on context, even better. 
+- Avoid all comments, we don't need explanatory comments if the function name is well chosen & clear.
+
+## Code Style Guidelines
+- Follow Ember.js conventions and best practices
+- Use TypeScript for type safety
+- Prefer composition over inheritance
+- Use semantic HTML and accessibility best practices
+- Follow the existing component structure in `/addon/components/`
+- Pick & match CSS classes with the provided variables & template examples. Reusable classes is a must on this repo. variables are in `styles/core/_variables.less`
+
+## File Organization
+- Components go in `/addon/components/`
+- Templates go in `/addon/templates/components/`
+- Tests go in `/tests/integration/components/`
+- Stories go in `/stories/` for Storybook documentation
+- less imports should be added to `oss-components/app/styles/oss-components.less ` when a less file is generated
+
+## Naming Conventions
+- Use kebab-case for file names
+- Use PascalCase for component class names
+- Use camelCase for properties and methods
+- Use descriptive, semantic names
+
+## Component Development
+- Always include TypeScript types
+- Write comprehensive tests 
+- Add Storybook stories for documentation
+- Ensure accessibility compliance
+- Follow the existing patterns in the codebase
+
+## Testing Guidelines
+- Prioritize vanilla JS variable setting instead of `this.set()` in tests
+- Use sinon for stubbing functions and methods
+- Write comprehensive test coverage for all components
+- Test both happy path and edge cases
+- Mock external dependencies appropriately ( lookup + stubbing over service functions )
+- stubs should be assigned to `this."stub"` instead of `let stub = ...`
+- variables should be assigned to `this."variable"` instead of `let variable = ...`
+- no need for success strings on assertions
+
+## Controller Organization
+When organizing controller files, follow this order:
+1. Helper functions (utility methods)
+2. Constructor (init, setup)
+3. Getters (computed properties)
+4. Actions (event handlers)
+5. Private methods (internal logic)
+
+## TypeScript Guidelines
+- Use strict TypeScript interfaces for all component arguments (e.g., `ComponentNameArgs`)
+- Define reusable types in separate files when used across multiple components
+- Use union types for variants (e.g., `'success' | 'error' | 'warning'`)
+- Create type definitions for complex objects (e.g., `ButtonDefinition`, `FeedbackMessage`)
+- Use generic constraints for base components (e.g., `BaseDropdown<T extends BaseDropdownArgs>`)
+- Prefer `export type` over `export interface` for simple type definitions
+- Use `declare module '@ember/service'` for service registry declarations
+
+## Component Architecture
+- Follow the OSS:: namespace pattern for all components
+- Use constructor assertions for mandatory arguments with descriptive error messages
+- Implement computed getters for dynamic class generation (e.g., `computedClass`)
+- Use protected/private methods for internal logic organization
+- Follow the pattern: Helper functions → Constructor → Getters → Actions → Private methods
+- Use `@tracked` for reactive state management
+- Use `@service` for dependency injection
+- Use `@action` for event handlers
+
+## Enhanced Testing Guidelines
+- Use `this.owner.lookup('service:service-name')` for service access
+- Assign stubs to `this.stubName` instead of `let stubName`
+- Assign test variables to `this.variableName` instead of `let variableName`
+- Use `sinon.match()` for complex object assertions
+- Test both happy path and error scenarios
+- Use `setupOnerror()` for testing error conditions
+- Mock external dependencies with sinon stubs
+- Use `hooks.beforeEach()` and `hooks.afterEach()` for test setup/cleanup
+- Test computed properties and getters thoroughly
+- Use `assert.dom()` for DOM assertions
+
+## Service Development
+- Extend base services when creating new services (e.g., `BaseUploader`)
+- Use TypeScript interfaces for service contracts
+- Implement proper service registry declarations
+- Use `@tracked` for reactive service state
+- Follow the pattern: Properties → Constructor → Public methods → Private methods
+- Use dependency injection with `@service` decorator
+- Implement proper error handling with descriptive messages
+
+## Helper Development
+- Use TypeScript interfaces for helper signatures
+- Implement proper argument validation with assertions
+- Use descriptive error messages with component/helper context
+- Export both the helper class and helper function when needed
+- Use `Helper.helper()` for function-based helpers
+- Follow the pattern: Type definitions → Validation → Computation
+
+## Styling and CSS Organization
+- Import new Less files in `app/styles/oss-components.less`
+- Follow atomic design principles (atoms, molecules, organisms)
+- Use BEM-like naming conventions with component prefixes (e.g., `upf-btn`, `oss-modal`)
+- Create reusable CSS classes and avoid component-specific styles
+- Use CSS variables from `styles/core/_variables.less`
+- Organize styles by component type: atoms → molecules → organisms
+- Use Less mixins for common patterns
+
+## Error Handling and Validation
+- Use `assert()` with descriptive error messages including component context
+- Follow the pattern: `[component][OSS::ComponentName] Description`
+- Validate mandatory arguments in constructors
+- Use TypeScript for compile-time validation
+- Provide helpful error messages with available options
+- Use `setupOnerror()` in tests to verify error conditions
+
+## File Organization Enhancements
+- Place private/base components in `addon/components/o-s-s/private/`
+- Use `.stories.js` files for Storybook documentation
+- Create separate type definition files for complex types
+- Use `.enum.ts` files for enumerations (e.g., `IconNames`)
+- Place utility functions in `addon/utils/`
+- Use `.mdx` files for comprehensive documentation
+
+## Import and Dependency Management
+- Use absolute imports for internal modules (e.g., `@upfluence/oss-components/...`)
+- Group imports: external libraries → internal services → internal components → types
+- Use type-only imports when appropriate (`import type`)
+- Prefer named exports over default exports for utilities
+- Use barrel exports for related functionality
+
+## Documentation and Storybook
+- Create comprehensive Storybook stories for all components
+- Use `.stories.js` files with proper argTypes and controls
+- Document all component arguments and their types
+- Include usage examples in Storybook
+- Use `.mdx` files for complex documentation
+- Document service methods and their parameters
+- Include accessibility guidelines in documentation
+
+## Performance and Best Practices
+- Use `@tracked` sparingly and only for reactive state
+- Implement proper cleanup in component destruction
+- Use `next()` from `@ember/runloop` for DOM updates
+- Avoid unnecessary re-renders with computed properties
+- Use `guidFor()` for unique identifiers
+- Implement proper event listener cleanup
+
+## Accessibility and UX
+- Use semantic HTML elements
+- Implement proper ARIA attributes
+- Ensure keyboard navigation support
+- Use proper focus management
+- Implement screen reader support
+- Follow WCAG guidelines
+- Test with accessibility tools
+
+## When suggesting changes:
+- Maintain backward compatibility
+- Follow the established patterns in the codebase
+- Include proper error handling
+- Add appropriate documentation ( storybook )
