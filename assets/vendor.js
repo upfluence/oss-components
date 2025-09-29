@@ -90679,78 +90679,140 @@ interface OSSCodeBlockArgs {
   const BasicUsage = _exports.BasicUsage = Template.bind({});
   BasicUsage.args = defaultArgs;
 });
-;define("@upfluence/oss-components/components/o-s-s/layout/sidebar", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@ember/template-factory"], function (_exports, _component, _component2, _object, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/layout/sidebar", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/object", "@ember/runloop", "@upfluence/oss-components/utils/upf-local-storage", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _object, _runloop, _upfLocalStorage, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  var _class;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/object",0,"@ember/component"eaimeta@70e063a35619d71f
+  var _class, _descriptor;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/object",0,"@ember/runloop",0,"@upfluence/oss-components/utils/upf-local-storage",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="oss-sidebar--containers fx-col" ...attributes>
-    <OSS::Anchor @link={{@homeURL}} class="logo-container">
-      <img src={{@logo}} alt="brand" />
-    </OSS::Anchor>
-    <div class="oss-sidebar--content fx-1 fx-col fx-xalign-center fx-gap-px-9">
-      {{yield to="content"}}
+    <div class={{this.computedClasses}} ...attributes>
+    {{#if (or @homeParameters (and @logo @homeURL))}}
+      <div class="logo-container">
+        <OSS::Layout::Sidebar::Item
+          @link={{or @homeParameters.url @homeURL}}
+          @expanded={{this.expanded}}
+          {{enable-tooltip title=@homeParameters.tooltip placement="right"}}
+        >
+          <:icon>
+            <img src={{or @homeParameters.logo @logo}} alt="brand" />
+          </:icon>
+        </OSS::Layout::Sidebar::Item>
+      </div>
+    {{/if}}
+  
+    <div class="oss-sidebar-container__content">
+      <div class="fx-col fx-xalign-start fx-gap-px-9 width-pc-100">
+        {{yield (hash expanded=this.expanded) to="content"}}
+      </div>
+  
+      {{#if @expandable}}
+        <div class="oss-sidebar-container__expand">
+          <OSS::Layout::Sidebar::Item
+            @icon={{if this.expanded "fa-arrow-left-to-line" "fa-arrow-right-to-line"}}
+            @label={{t "oss-components.sidebar.collapse"}}
+            @expanded={{this.expanded}}
+            data-control-name="sidebar-expanded-state-toggle"
+            {{on "click" this.toggleExpandedState}}
+          />
+        </div>
+      {{/if}}
     </div>
     {{#if (has-block "footer")}}
-      <div class="oss-sidebar--footer fx-col fx-xalign-center fx-gap-px-9">
-        {{yield to="footer"}}
+      <div class="oss-sidebar-container__footer">
+        {{yield (hash expanded=this.expanded) to="footer"}}
       </div>
     {{/if}}
   </div>
   */
   {
-    "id": "5Qhk35NO",
-    "block": "[[[11,0],[24,0,\"oss-sidebar--containers fx-col\"],[17,1],[12],[1,\"\\n  \"],[8,[39,0],[[24,0,\"logo-container\"]],[[\"@link\"],[[30,2]]],[[\"default\"],[[[[1,\"\\n    \"],[10,\"img\"],[15,\"src\",[30,3]],[14,\"alt\",\"brand\"],[12],[13],[1,\"\\n  \"]],[]]]]],[1,\"\\n  \"],[10,0],[14,0,\"oss-sidebar--content fx-1 fx-col fx-xalign-center fx-gap-px-9\"],[12],[1,\"\\n    \"],[18,4,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar--footer fx-col fx-xalign-center fx-gap-px-9\"],[12],[1,\"\\n      \"],[18,5,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@homeURL\",\"@logo\",\"&content\",\"&footer\"],false,[\"o-s-s/anchor\",\"yield\",\"if\",\"has-block\"]]",
+    "id": "G5XWB6WF",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[12],[1,\"\\n\"],[41,[28,[37,1],[[30,2],[28,[37,2],[[30,3],[30,4]],null]],null],[[[1,\"    \"],[10,0],[14,0,\"logo-container\"],[12],[1,\"\\n      \"],[8,[39,3],[[4,[38,4],null,[[\"title\",\"placement\"],[[30,2,[\"tooltip\"]],\"right\"]]]],[[\"@link\",\"@expanded\"],[[28,[37,1],[[30,2,[\"url\"]],[30,4]],null],[30,0,[\"expanded\"]]]],[[\"icon\"],[[[[1,\"\\n          \"],[10,\"img\"],[15,\"src\",[28,[37,1],[[30,2,[\"logo\"]],[30,3]],null]],[14,\"alt\",\"brand\"],[12],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n  \"],[10,0],[14,0,\"oss-sidebar-container__content\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-xalign-start fx-gap-px-9 width-pc-100\"],[12],[1,\"\\n      \"],[18,6,[[28,[37,6],null,[[\"expanded\"],[[30,0,[\"expanded\"]]]]]]],[1,\"\\n    \"],[13],[1,\"\\n\\n\"],[41,[30,5],[[[1,\"      \"],[10,0],[14,0,\"oss-sidebar-container__expand\"],[12],[1,\"\\n        \"],[8,[39,3],[[24,\"data-control-name\",\"sidebar-expanded-state-toggle\"],[4,[38,8],[\"click\",[30,0,[\"toggleExpandedState\"]]],null]],[[\"@icon\",\"@label\",\"@expanded\"],[[52,[30,0,[\"expanded\"]],\"fa-arrow-left-to-line\",\"fa-arrow-right-to-line\"],[28,[37,7],[\"oss-components.sidebar.collapse\"],null],[30,0,[\"expanded\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-container__footer\"],[12],[1,\"\\n      \"],[18,7,[[28,[37,6],null,[[\"expanded\"],[[30,0,[\"expanded\"]]]]]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@homeParameters\",\"@logo\",\"@homeURL\",\"@expandable\",\"&content\",\"&footer\"],false,[\"if\",\"or\",\"and\",\"o-s-s/layout/sidebar/item\",\"enable-tooltip\",\"yield\",\"hash\",\"t\",\"on\",\"has-block\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/layout/sidebar.hbs",
     "isStrictMode": false
   });
+  const SIDEBAR_EXPANDED_STATE = 'oss-layout-sidebar-expanded';
   let OSSLayoutSidebar = _exports.default = (_class = class OSSLayoutSidebar extends _component2.default {
-    onHomeAction() {
-      return this.args.homeAction?.();
+    constructor(owner, args) {
+      super(owner, args);
+      _initializerDefineProperty(this, "expanded", _descriptor, this);
+      _defineProperty(this, "upfLocalStorage", new _upfLocalStorage.default());
+      (0, _runloop.scheduleOnce)('afterRender', this, this.initializeSidebarState);
     }
-  }, (_applyDecoratedDescriptor(_class.prototype, "onHomeAction", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onHomeAction"), _class.prototype)), _class);
+    get computedClasses() {
+      const classes = ['oss-sidebar-container'];
+      if (this.expanded) {
+        classes.push('oss-sidebar-container--expanded');
+      }
+      return classes.join(' ');
+    }
+    toggleExpandedState() {
+      this.expanded = !this.expanded;
+      this.upfLocalStorage.saveItem(SIDEBAR_EXPANDED_STATE, String(this.expanded));
+      document.documentElement.style.setProperty('--sidebar-width', 'var(--sidebar-' + (this.expanded ? 'expanded' : 'default') + '-width)');
+    }
+    initializeSidebarState() {
+      this.expanded = Boolean(this.args.expandable) && this.upfLocalStorage.getItem(SIDEBAR_EXPANDED_STATE) !== 'false';
+      document.documentElement.style.setProperty('--sidebar-width', 'var(--sidebar-' + (this.expanded ? 'expanded' : 'default') + '-width)');
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "expanded", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return true;
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "toggleExpandedState", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleExpandedState"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSLayoutSidebar);
 });
-;define("@upfluence/oss-components/components/o-s-s/layout/sidebar.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/layout/sidebar.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = _exports.BasicUsage = void 0;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
   var _default = _exports.default = {
     title: 'Components/OSS::Layout::Sidebar',
     component: 'sidebar',
     argTypes: {
-      logo: {
-        description: 'Url of the brand logo',
+      homeParameters: {
+        description: 'Options to configure the header of the sidebar',
         table: {
           type: {
-            summary: 'string'
+            summary: '{ logo: string; url: string; tooltip?: string; }'
           },
           defaultValue: {
             summary: 'undefined'
           }
         },
         control: {
-          type: 'text'
+          type: 'object'
         }
       },
-      homeAction: {
-        description: 'Function to be called when the brand logo is clicked',
+      expandable: {
+        description: 'Whether the user has the ability to expand/collapse the sidebar',
         table: {
-          category: 'Actions',
           type: {
-            summary: 'homeAction(): void'
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
           }
+        },
+        control: {
+          type: 'boolean'
         }
       }
     },
@@ -90764,31 +90826,34 @@ interface OSSCodeBlockArgs {
     }
   };
   const defaultArgs = {
-    logo: 'https://d2vn5no6mw06ds.cloudfront.net/assets/images/upfluence-white-logo-6914f5a181fad59b7c6e4e755ce05d70.svg',
-    homeAction: (0, _addonActions.action)('homeAction')
+    expandable: false,
+    homeParameters: {
+      logo: '/assets/images/brand-icon.svg',
+      url: 'https://www.upfluence.com'
+    }
   };
   const Template = args => ({
     template: (0, _templateFactory.createTemplateFactory)(
     /*
       
         <div style="height:100vh; padding:5px;">
-          <OSS::Layout::Sidebar @logo={{this.logo}} @homeAction={{this.homeAction}} style="height:95vh;">
-          <:content>
-            <OSS::Layout::Sidebar::Item @icon="far fa-search" class="active" @homeAction={{this.homeAction}} />
-            <OSS::Layout::Sidebar::Item @icon="far fa-list" />
-            <OSS::Layout::Sidebar::Item @icon="far fa-envelope" @hasNotifications={{true}} />
-            <OSS::Layout::Sidebar::Item @icon="far fa-credit-card" @locked={{true}} />
-          </:content>
-          <:footer>
-            <OSS::Avatar @initials="Ts" />
-          </:footer>
+          <OSS::Layout::Sidebar @expandable={{this.expandable}} @homeParameters={{this.homeParameters}} style="height:95vh; overflow: visible">
+            <:content as |sidebar|>
+              <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-search" @label="Search" class="active" @homeAction={{this.homeAction}} />
+              <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-list" @label="Community" />
+              <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-envelope" @label="Inbox" @hasNotifications={{true}} />
+              <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-credit-card" @label="Payment" @locked={{true}} />
+            </:content>
+            <:footer>
+              <OSS::Avatar @initials="Ts" />
+            </:footer>
           </OSS::Layout::Sidebar>
         </div>
       
     */
     {
-      "id": "MDIRi6J3",
-      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"height:100vh; padding:5px;\"],[12],[1,\"\\n      \"],[8,[39,0],[[24,5,\"height:95vh;\"]],[[\"@logo\",\"@homeAction\"],[[30,0,[\"logo\"]],[30,0,[\"homeAction\"]]]],[[\"content\",\"footer\"],[[[[1,\"\\n        \"],[8,[39,1],[[24,0,\"active\"]],[[\"@icon\",\"@homeAction\"],[\"far fa-search\",[30,0,[\"homeAction\"]]]],null],[1,\"\\n        \"],[8,[39,1],null,[[\"@icon\"],[\"far fa-list\"]],null],[1,\"\\n        \"],[8,[39,1],null,[[\"@icon\",\"@hasNotifications\"],[\"far fa-envelope\",true]],null],[1,\"\\n        \"],[8,[39,1],null,[[\"@icon\",\"@locked\"],[\"far fa-credit-card\",true]],null],[1,\"\\n      \"]],[]],[[[1,\"\\n        \"],[8,[39,2],null,[[\"@initials\"],[\"Ts\"]],null],[1,\"\\n      \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/layout/sidebar\",\"o-s-s/layout/sidebar/item\",\"o-s-s/avatar\"]]",
+      "id": "m1MYcqqM",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"height:100vh; padding:5px;\"],[12],[1,\"\\n      \"],[8,[39,0],[[24,5,\"height:95vh; overflow: visible\"]],[[\"@expandable\",\"@homeParameters\"],[[30,0,[\"expandable\"]],[30,0,[\"homeParameters\"]]]],[[\"content\",\"footer\"],[[[[1,\"\\n          \"],[8,[39,1],[[24,0,\"active\"]],[[\"@expanded\",\"@icon\",\"@label\",\"@homeAction\"],[[30,1,[\"expanded\"]],\"far fa-search\",\"Search\",[30,0,[\"homeAction\"]]]],null],[1,\"\\n          \"],[8,[39,1],null,[[\"@expanded\",\"@icon\",\"@label\"],[[30,1,[\"expanded\"]],\"far fa-list\",\"Community\"]],null],[1,\"\\n          \"],[8,[39,1],null,[[\"@expanded\",\"@icon\",\"@label\",\"@hasNotifications\"],[[30,1,[\"expanded\"]],\"far fa-envelope\",\"Inbox\",true]],null],[1,\"\\n          \"],[8,[39,1],null,[[\"@expanded\",\"@icon\",\"@label\",\"@locked\"],[[30,1,[\"expanded\"]],\"far fa-credit-card\",\"Payment\",true]],null],[1,\"\\n        \"]],[1]],[[[1,\"\\n          \"],[8,[39,2],null,[[\"@initials\"],[\"Ts\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[\"sidebar\"],false,[\"o-s-s/layout/sidebar\",\"o-s-s/layout/sidebar/item\",\"o-s-s/avatar\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/layout/sidebar.stories.js",
       "isStrictMode": false
     }),
@@ -90796,6 +90861,363 @@ interface OSSCodeBlockArgs {
   });
   const BasicUsage = _exports.BasicUsage = Template.bind({});
   BasicUsage.args = defaultArgs;
+});
+;define("@upfluence/oss-components/components/o-s-s/layout/sidebar/group", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/object", "@ember/runloop", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _object, _runloop, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/object",0,"@ember/runloop",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class={{this.computedClasses}} {{did-insert this.registerTrigger}} ...attributes>
+    <div class="oss-sidebar-group__title-container">
+      {{#if (has-block "icon")}}
+        <OSS::Layout::Sidebar::Item
+          @icon={{@icon}}
+          @label={{@label}}
+          @expanded={{@expanded}}
+          @hasNotifications={{and (not @expanded) this.hasNotifications}}
+          {{on "mouseenter" this.handleMouseEnter}}
+          {{on "mouseleave" this.handleMouseLeave}}
+          class={{concat (if @expanded "oss-sidebar-item--group-header") (if this.isActive " active")}}
+        >
+          <:icon>
+            {{yield (hash expanded=@expanded) to="icon"}}
+          </:icon>
+        </OSS::Layout::Sidebar::Item>
+      {{else}}
+        <OSS::Layout::Sidebar::Item
+          @icon={{@icon}}
+          @label={{@label}}
+          @expanded={{@expanded}}
+          @hasNotifications={{and (not @expanded) this.hasNotifications}}
+          {{on "mouseenter" this.handleMouseEnter}}
+          {{on "mouseleave" this.handleMouseLeave}}
+          class={{concat (if @expanded "oss-sidebar-item--group-header") (if this.isActive " active")}}
+        />
+      {{/if}}
+  
+      {{#if this.collapsible}}
+        <OSS::Icon
+          @icon={{if this.collapsed "fa-chevron-down" "fa-chevron-up"}}
+          role="button"
+          class="oss-sidebar-group__collapse-trigger"
+          {{on "click" this.toggleCollapsed}}
+        />
+      {{/if}}
+  
+    </div>
+  
+    <div
+      class={{concat
+        "oss-sidebar-group__items-container"
+        (if (or @expanded this.displayGroupList) " oss-sidebar-group__items-container--visible")
+      }}
+      {{on "mouseenter" this.handleGroupListEnter}}
+      {{on "mouseleave" this.handleGroupListLeave}}
+    >
+      {{#unless @expanded}}
+        <div class="group-name">
+          {{@label}}
+        </div>
+      {{/unless}}
+      <div class="group-list">
+        {{#each @items as |item|}}
+          <OSS::Layout::Sidebar::Item
+            @expanded={{or @expanded this.displayGroupList}}
+            @icon={{item.icon}}
+            @label={{item.label}}
+            @locked={{item.locked}}
+            @hasNotifications={{item.hasNotifications}}
+            @link={{item.link}}
+            @lockedAction={{item.lockedAction}}
+            data-control-name={{item.dataControlName}}
+            class={{if item.active "active"}}
+          />
+        {{/each}}
+      </div>
+    </div>
+  </div>
+  */
+  {
+    "id": "j8loKBxz",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[4,[38,0],[[30,0,[\"registerTrigger\"]]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-sidebar-group__title-container\"],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"      \"],[8,[39,3],[[16,0,[28,[37,4],[[52,[30,2],\"oss-sidebar-item--group-header\"],[52,[30,0,[\"isActive\"]],\" active\"]],null]],[4,[38,7],[\"mouseenter\",[30,0,[\"handleMouseEnter\"]]],null],[4,[38,7],[\"mouseleave\",[30,0,[\"handleMouseLeave\"]]],null]],[[\"@icon\",\"@label\",\"@expanded\",\"@hasNotifications\"],[[30,3],[30,4],[30,2],[28,[37,5],[[28,[37,6],[[30,2]],null],[30,0,[\"hasNotifications\"]]],null]]],[[\"icon\"],[[[[1,\"\\n          \"],[18,7,[[28,[37,9],null,[[\"expanded\"],[[30,2]]]]]],[1,\"\\n        \"]],[]]]]],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,3],[[16,0,[28,[37,4],[[52,[30,2],\"oss-sidebar-item--group-header\"],[52,[30,0,[\"isActive\"]],\" active\"]],null]],[4,[38,7],[\"mouseenter\",[30,0,[\"handleMouseEnter\"]]],null],[4,[38,7],[\"mouseleave\",[30,0,[\"handleMouseLeave\"]]],null]],[[\"@icon\",\"@label\",\"@expanded\",\"@hasNotifications\"],[[30,3],[30,4],[30,2],[28,[37,5],[[28,[37,6],[[30,2]],null],[30,0,[\"hasNotifications\"]]],null]]],null],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,0,[\"collapsible\"]],[[[1,\"      \"],[8,[39,10],[[24,\"role\",\"button\"],[24,0,\"oss-sidebar-group__collapse-trigger\"],[4,[38,7],[\"click\",[30,0,[\"toggleCollapsed\"]]],null]],[[\"@icon\"],[[52,[30,0,[\"collapsed\"]],\"fa-chevron-down\",\"fa-chevron-up\"]]],null],[1,\"\\n\"]],[]],null],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[11,0],[16,0,[28,[37,4],[\"oss-sidebar-group__items-container\",[52,[28,[37,11],[[30,2],[30,0,[\"displayGroupList\"]]],null],\" oss-sidebar-group__items-container--visible\"]],null]],[4,[38,7],[\"mouseenter\",[30,0,[\"handleGroupListEnter\"]]],null],[4,[38,7],[\"mouseleave\",[30,0,[\"handleGroupListLeave\"]]],null],[12],[1,\"\\n\"],[41,[51,[30,2]],[[[1,\"      \"],[10,0],[14,0,\"group-name\"],[12],[1,\"\\n        \"],[1,[30,4]],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[10,0],[14,0,\"group-list\"],[12],[1,\"\\n\"],[42,[28,[37,14],[[28,[37,14],[[30,5]],null]],null],null,[[[1,\"        \"],[8,[39,3],[[16,\"data-control-name\",[30,6,[\"dataControlName\"]]],[16,0,[52,[30,6,[\"active\"]],\"active\"]]],[[\"@expanded\",\"@icon\",\"@label\",\"@locked\",\"@hasNotifications\",\"@link\",\"@lockedAction\"],[[28,[37,11],[[30,2],[30,0,[\"displayGroupList\"]]],null],[30,6,[\"icon\"]],[30,6,[\"label\"]],[30,6,[\"locked\"]],[30,6,[\"hasNotifications\"]],[30,6,[\"link\"]],[30,6,[\"lockedAction\"]]]],null],[1,\"\\n\"]],[6]],null],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@expanded\",\"@icon\",\"@label\",\"@items\",\"item\",\"&icon\"],false,[\"did-insert\",\"if\",\"has-block\",\"o-s-s/layout/sidebar/item\",\"concat\",\"and\",\"not\",\"on\",\"yield\",\"hash\",\"o-s-s/icon\",\"or\",\"unless\",\"each\",\"-track-array\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/layout/sidebar/group.hbs",
+    "isStrictMode": false
+  });
+  const GROUP_LIST_HIDE_DELAY = 450;
+  const ITEM_LEAVE_DELAY = 50;
+  let OSSLayoutSidebarGroupComponent = _exports.default = (_class = class OSSLayoutSidebarGroupComponent extends _component2.default {
+    constructor(owner, args) {
+      super(owner, args);
+      _initializerDefineProperty(this, "displayGroupList", _descriptor, this);
+      _initializerDefineProperty(this, "triggerHovered", _descriptor2, this);
+      _initializerDefineProperty(this, "groupListHovered", _descriptor3, this);
+      _initializerDefineProperty(this, "collapsed", _descriptor4, this);
+      _defineProperty(this, "hideGroupListTimeout", 0);
+      _defineProperty(this, "handleMouseLeaveTimeout", 0);
+      if (this.collapsible) this.collapsed = false;
+    }
+    get collapsible() {
+      return this.args.collapsible ?? false;
+    }
+    get hasNotifications() {
+      return this.args.items.some(item => item.hasNotifications);
+    }
+    get isActive() {
+      return !this.args.expanded && this.args.items.some(item => item.active);
+    }
+    get computedClasses() {
+      const classes = ['oss-sidebar-group'];
+      if (this.args.expanded) classes.push('oss-sidebar-group--expanded');
+      if (this.triggerHovered) classes.push('oss-sidebar-group--hovered');
+      if (this.collapsed) classes.push('oss-sidebar-group--collapsed');
+      return classes.join(' ');
+    }
+    registerTrigger(element) {
+      this.triggerElement = element;
+    }
+    handleMouseEnter() {
+      if (this.args.expanded) return;
+      this.clearTimeouts();
+      (0, _runloop.scheduleOnce)('afterRender', this, () => {
+        this.triggerHovered = this.displayGroupList = true;
+      });
+      document.querySelectorAll('.oss-sidebar-group__items-container--visible').forEach(el => {
+        if (!this.triggerElement.contains(el)) {
+          el.classList.remove('oss-sidebar-group__items-container--visible');
+        }
+      });
+    }
+    handleMouseLeave() {
+      if (this.args.expanded) return;
+      this.triggerHovered = false;
+      this.handleMouseLeaveTimeout = setTimeout(() => {
+        const hoveredAway = document.querySelector('.oss-sidebar-group.oss-sidebar-group--hovered') !== null && document.querySelector('.oss-sidebar-group.oss-sidebar-group--hovered') !== this.triggerElement;
+        this.hideGroupList(hoveredAway);
+      }, ITEM_LEAVE_DELAY);
+    }
+    handleGroupListEnter() {
+      this.groupListHovered = true;
+      this.clearTimeouts();
+    }
+    handleGroupListLeave() {
+      this.groupListHovered = false;
+      this.hideGroupList();
+    }
+    toggleCollapsed() {
+      this.collapsed = !this.collapsed;
+    }
+    hideGroupList(immediate = false) {
+      const hide = () => {
+        if (this.groupListHovered || this.triggerHovered) return;
+        this.triggerHovered = this.displayGroupList = false;
+      };
+      if (immediate) {
+        hide();
+        return;
+      }
+      this.hideGroupListTimeout = setTimeout(() => hide(), GROUP_LIST_HIDE_DELAY);
+    }
+    clearTimeouts() {
+      clearTimeout(this.hideGroupListTimeout);
+      clearTimeout(this.handleMouseLeaveTimeout);
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "displayGroupList", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "triggerHovered", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "groupListHovered", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, "collapsed", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "registerTrigger", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerTrigger"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleMouseEnter", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleMouseEnter"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleMouseLeave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleMouseLeave"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleGroupListEnter", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleGroupListEnter"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleGroupListLeave", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleGroupListLeave"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleCollapsed", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleCollapsed"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSLayoutSidebarGroupComponent);
+});
+;define("@upfluence/oss-components/components/o-s-s/layout/sidebar/group.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.WithNamedBlockIcon = _exports.BasicUsage = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::Layout::Sidebar::Group',
+    component: 'group',
+    argTypes: {
+      icon: {
+        description: 'Font Awesome class, for example: far fa-envelope-open',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      label: {
+        description: 'A label for the item to display when expanded',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      expanded: {
+        description: 'Display in expanded state',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      collapsible: {
+        description: 'Allow the group to be collapsed',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      items: {
+        description: 'An array of items to display as children of the group using OSS::Layout::Sidebar::Item',
+        table: {
+          type: {
+            summary: 'GroupItem[]'
+          }
+        },
+        control: {
+          type: 'array'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'Group component (used in sidebar)'
+        },
+        iframeHeight: 120
+      }
+    }
+  };
+  const defaultArgs = {
+    icon: 'far fa-search',
+    label: 'Search',
+    expanded: false,
+    collapsible: true,
+    items: [{
+      icon: 'far fa-search',
+      label: 'Search',
+      expanded: false,
+      hasNotifications: false,
+      locked: false,
+      link: 'http://upfluence.com',
+      lockedAction: (0, _addonActions.action)('lockedAction')
+    }, {
+      icon: 'far fa-bullseye-pointer',
+      label: 'Live Capture',
+      expanded: false,
+      hasNotifications: true,
+      locked: false,
+      link: 'http://upfluence.com',
+      lockedAction: (0, _addonActions.action)('lockedAction')
+    }]
+  };
+  const Template = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <div style="background: var(--sidebar-bg-color)">
+          <OSS::Layout::Sidebar::Group
+            @icon={{this.icon}} @label={{this.label}} @expanded={{this.expanded}} @items={{this.items}} />
+        </div>
+      
+    */
+    {
+      "id": "i1NjY+Ys",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"background: var(--sidebar-bg-color)\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@icon\",\"@label\",\"@expanded\",\"@items\"],[[30,0,[\"icon\"]],[30,0,[\"label\"]],[30,0,[\"expanded\"]],[30,0,[\"items\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/layout/sidebar/group\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/layout/sidebar/group.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const IconNamedBlockTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+          <OSS::Layout::Sidebar::Group
+            @icon={{this.icon}} @label={{this.label}} @expanded={{true}} @items={{this.items}} @collapsible={{this.collapsible}}>
+            <:icon>
+              <OSS::Icon @icon="fa-ship" />
+            </:icon>
+          </OSS::Layout::Sidebar::Group>
+      
+    */
+    {
+      "id": "r1QU9uC7",
+      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@icon\",\"@label\",\"@expanded\",\"@items\",\"@collapsible\"],[[30,0,[\"icon\"]],[30,0,[\"label\"]],true,[30,0,[\"items\"]],[30,0,[\"collapsible\"]]]],[[\"icon\"],[[[[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\"],[\"fa-ship\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/layout/sidebar/group\",\"o-s-s/icon\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/layout/sidebar/group.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const BasicUsage = _exports.BasicUsage = Template.bind({});
+  BasicUsage.args = defaultArgs;
+  const WithNamedBlockIcon = _exports.WithNamedBlockIcon = IconNamedBlockTemplate.bind({});
+  WithNamedBlockIcon.args = defaultArgs;
 });
 ;define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@ember/template-factory"], function (_exports, _component, _component2, _object, _templateFactory) {
   "use strict";
@@ -90811,32 +91233,40 @@ interface OSSCodeBlockArgs {
   /*
     <OSS::Anchor
     @link={{@link}}
+    class={{this.computedClasses}}
+    disabled={{this.locked}}
     {{on "click" this.onClick}}
-    class="oss-sidebar-item"
-    disabled={{if this.locked "disabled"}}
+    {{on "mouseenter" this.handleMouseEnter}}
     ...attributes
   >
     {{#if this.locked}}
-      <div class="oss-sidebar-item--locked">
-        <OSS::Icon @style="light" @icon="fa-lock" />
+      <div class="oss-sidebar-item__lock">
+        <OSS::Icon @icon="fa-lock" />
       </div>
     {{/if}}
-    <div class="oss-sidebar-item--icon">
-      <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
+  
+    {{#if (has-block "icon")}}
+      <div class="oss-sidebar-item__icon">
+        {{yield (hash expanded=@expanded) to="icon"}}
+      </div>
+    {{else}}
+      <div class="oss-sidebar-item__icon">
+        <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
+      </div>
+    {{/if}}
+  
+    <div class="oss-sidebar-item__label">
+      {{@label}}
     </div>
-    {{#if @tag}}
-      <div class="oss-sidebar-item--tag">
-        <OSS::Tag @label={{@tag.label}} @skin={{@tag.skin}} @icon={{@tag.icon}} @size="xs" />
-      </div>
-    {{/if}}
+  
     {{#if this.hasNotifications}}
-      <span class="oss-sidebar-item--notification" />
+      <div class="oss-sidebar-item__notification"></div>
     {{/if}}
   </OSS::Anchor>
   */
   {
-    "id": "JNLHOI1B",
-    "block": "[[[8,[39,0],[[24,0,\"oss-sidebar-item\"],[16,\"disabled\",[52,[30,0,[\"locked\"]],\"disabled\"]],[17,1],[4,[38,2],[\"click\",[30,0,[\"onClick\"]]],null]],[[\"@link\"],[[30,2]]],[[\"default\"],[[[[1,\"\\n\"],[41,[30,0,[\"locked\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-item--locked\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@style\",\"@icon\"],[\"light\",\"fa-lock\"]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"oss-sidebar-item--icon\"],[12],[1,\"\\n    \"],[8,[39,3],null,[[\"@style\",\"@icon\"],[[28,[37,4],[[30,3]],null],[28,[37,5],[[30,3]],null]]],null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,4],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-item--tag\"],[12],[1,\"\\n      \"],[8,[39,6],null,[[\"@label\",\"@skin\",\"@icon\",\"@size\"],[[30,4,[\"label\"]],[30,4,[\"skin\"]],[30,4,[\"icon\"]],\"xs\"]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"hasNotifications\"]],[[[1,\"    \"],[10,1],[14,0,\"oss-sidebar-item--notification\"],[12],[13],[1,\"\\n\"]],[]],null]],[]]]]]],[\"&attrs\",\"@link\",\"@icon\",\"@tag\"],false,[\"o-s-s/anchor\",\"if\",\"on\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"o-s-s/tag\"]]",
+    "id": "2qlf2FvV",
+    "block": "[[[8,[39,0],[[16,0,[30,0,[\"computedClasses\"]]],[16,\"disabled\",[30,0,[\"locked\"]]],[17,1],[4,[38,1],[\"click\",[30,0,[\"onClick\"]]],null],[4,[38,1],[\"mouseenter\",[30,0,[\"handleMouseEnter\"]]],null]],[[\"@link\"],[[30,2]]],[[\"default\"],[[[[1,\"\\n\"],[41,[30,0,[\"locked\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-item__lock\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@icon\"],[\"fa-lock\"]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-item__icon\"],[12],[1,\"\\n      \"],[18,6,[[28,[37,6],null,[[\"expanded\"],[[30,3]]]]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-item__icon\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@style\",\"@icon\"],[[28,[37,7],[[30,4]],null],[28,[37,8],[[30,4]],null]]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]]],[1,\"\\n  \"],[10,0],[14,0,\"oss-sidebar-item__label\"],[12],[1,\"\\n    \"],[1,[30,5]],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"hasNotifications\"]],[[[1,\"    \"],[10,0],[14,0,\"oss-sidebar-item__notification\"],[12],[13],[1,\"\\n\"]],[]],null]],[]]]]]],[\"&attrs\",\"@link\",\"@expanded\",\"@icon\",\"@label\",\"&icon\"],false,[\"o-s-s/anchor\",\"on\",\"if\",\"o-s-s/icon\",\"has-block\",\"yield\",\"hash\",\"fa-icon-style\",\"fa-icon-value\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/layout/sidebar/item.hbs",
     "isStrictMode": false
   });
@@ -90847,12 +91277,25 @@ interface OSSCodeBlockArgs {
     get hasNotifications() {
       return this.args.hasNotifications || false;
     }
+    get computedClasses() {
+      const classes = ['oss-sidebar-item'];
+      if (this.args.expanded) {
+        classes.push('oss-sidebar-item--expanded');
+      }
+      return classes.join(' ');
+    }
     onClick() {
       if (this.locked) {
         this.args.lockedAction?.();
       }
     }
-  }, (_applyDecoratedDescriptor(_class.prototype, "onClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClick"), _class.prototype)), _class);
+    handleMouseEnter(event) {
+      if (this.args.expanded || event.currentTarget.closest('.oss-sidebar-group') !== null) return;
+      document.querySelectorAll('.oss-sidebar-group__items-container--visible').forEach(el => {
+        el.classList.remove('oss-sidebar-group__items-container--visible');
+      });
+    }
+  }, (_applyDecoratedDescriptor(_class.prototype, "onClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClick"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleMouseEnter", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleMouseEnter"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSLayoutSidebarItem);
 });
 ;define("@upfluence/oss-components/components/o-s-s/layout/sidebar/item.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -90861,7 +91304,7 @@ interface OSSCodeBlockArgs {
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = _exports.BasicUsage = void 0;
+  _exports.default = _exports.WithNamedBlockIcon = _exports.BasicUsage = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
   var _default = _exports.default = {
     title: 'Components/OSS::Layout::Sidebar::Item',
@@ -90879,6 +91322,34 @@ interface OSSCodeBlockArgs {
         },
         control: {
           type: 'text'
+        }
+      },
+      label: {
+        description: 'A label for the item to display when expanded',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      expanded: {
+        description: 'Display in expanded state',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
         }
       },
       hasNotifications: {
@@ -90923,20 +91394,6 @@ interface OSSCodeBlockArgs {
           type: 'text'
         }
       },
-      tag: {
-        description: 'Optional tag element displayed as an overlay at the bottom of the component',
-        table: {
-          type: {
-            summary: '{ label?: string, icon?: string, skin?: string }'
-          },
-          defaultValue: {
-            summary: 'undefined'
-          }
-        },
-        control: {
-          type: 'object'
-        }
-      },
       lockedAction: {
         description: 'Function to be called on click when item is locked',
         table: {
@@ -90958,10 +91415,11 @@ interface OSSCodeBlockArgs {
   };
   const defaultArgs = {
     icon: 'far fa-search',
+    label: 'Search',
+    expanded: false,
     hasNotifications: false,
     locked: false,
     link: 'http://upfluence.com',
-    tag: undefined,
     lockedAction: (0, _addonActions.action)('lockedAction')
   };
   const Template = args => ({
@@ -90971,15 +91429,37 @@ interface OSSCodeBlockArgs {
         <div style="background: var(--sidebar-bg-color)">
           <OSS::Layout::Sidebar::Item @icon={{this.icon}} @locked={{this.locked}}
                                       @hasNotifications={{this.hasNotifications}}
-                                      @link={{this.link}}
-                                      @tag={{this.tag}}
-                                      @lockedAction={{this.lockedAction}}/>
+                                      @link={{this.link}} @label={{this.label}}
+                                      @expanded={{this.expanded}}
+                                      @lockedAction={{this.lockedAction}} />
         </div>
       
     */
     {
-      "id": "fK4FDIfy",
-      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"background: var(--sidebar-bg-color)\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@icon\",\"@locked\",\"@hasNotifications\",\"@link\",\"@tag\",\"@lockedAction\"],[[30,0,[\"icon\"]],[30,0,[\"locked\"]],[30,0,[\"hasNotifications\"]],[30,0,[\"link\"]],[30,0,[\"tag\"]],[30,0,[\"lockedAction\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+      "id": "z/RQC49K",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"background: var(--sidebar-bg-color)\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@icon\",\"@locked\",\"@hasNotifications\",\"@link\",\"@label\",\"@expanded\",\"@lockedAction\"],[[30,0,[\"icon\"]],[30,0,[\"locked\"]],[30,0,[\"hasNotifications\"]],[30,0,[\"link\"]],[30,0,[\"label\"]],[30,0,[\"expanded\"]],[30,0,[\"lockedAction\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/layout/sidebar/item.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const IconNamedBlockTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+          <OSS::Layout::Sidebar::Item
+            @icon={{this.icon}} @locked={{this.locked}} @hasNotifications={{this.hasNotifications}}
+            @link={{this.link}} @label={{this.label}} @expanded={{this.expanded}} @lockedAction={{this.lockedAction}}
+          >
+            <:icon>
+              <OSS::Icon @icon="fa-ship" />
+            </:icon>
+          </OSS::Layout::Sidebar::Item>
+      
+    */
+    {
+      "id": "a96TJDnM",
+      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@icon\",\"@locked\",\"@hasNotifications\",\"@link\",\"@label\",\"@expanded\",\"@lockedAction\"],[[30,0,[\"icon\"]],[30,0,[\"locked\"]],[30,0,[\"hasNotifications\"]],[30,0,[\"link\"]],[30,0,[\"label\"]],[30,0,[\"expanded\"]],[30,0,[\"lockedAction\"]]]],[[\"icon\"],[[[[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\"],[\"fa-ship\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/layout/sidebar/item\",\"o-s-s/icon\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/layout/sidebar/item.stories.js",
       "isStrictMode": false
     }),
@@ -90987,6 +91467,8 @@ interface OSSCodeBlockArgs {
   });
   const BasicUsage = _exports.BasicUsage = Template.bind({});
   BasicUsage.args = defaultArgs;
+  const WithNamedBlockIcon = _exports.WithNamedBlockIcon = IconNamedBlockTemplate.bind({});
+  WithNamedBlockIcon.args = defaultArgs;
 });
 ;define("@upfluence/oss-components/components/o-s-s/link", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@ember/service", "@ember/debug", "@ember/template-factory"], function (_exports, _component, _component2, _object, _service, _debug, _templateFactory) {
   "use strict";
@@ -100523,7 +101005,6 @@ interface OSSCodeBlockArgs {
   _exports.default = _exports.BasicUsage = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
   const PlacementDefinitions = ['bottom', 'top', 'left', 'right', 'bottom-start', 'top-start', 'left-start', 'right-start', 'bottom-end', 'top-end', 'left-end', 'right-end'];
-  'top' | 'right' | 'bottom' | 'left';
   var _default = _exports.default = {
     title: 'Helpers & Modifiers/Modifiers/Attach Element/Definition',
     argTypes: {
@@ -100835,7 +101316,7 @@ interface OSSCodeBlockArgs {
       placement: placement,
       cssVariableName: 'modifier-tooltip',
       targetOffset: 9,
-      viewportOffset: 16
+      viewportOffset: 6
     }, {
       defaultRotation: 0,
       height: 4,
@@ -109107,6 +109588,9 @@ interface OSSCodeBlockArgs {
       "select": {
         "placeholder": "Select",
         "search": "Search"
+      },
+      "sidebar": {
+        "collapse": "Collapse"
       },
       "upload-area": {
         "browse": "browse",

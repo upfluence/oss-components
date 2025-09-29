@@ -705,6 +705,20 @@
   });
   0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/layout/sidebar"eaimeta@70e063a35619d71f
 });
+;define("dummy/components/o-s-s/layout/sidebar/group", ["exports", "@upfluence/oss-components/components/o-s-s/layout/sidebar/group"], function (_exports, _group) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _group.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/layout/sidebar/group"eaimeta@70e063a35619d71f
+});
 ;define("dummy/components/o-s-s/layout/sidebar/item", ["exports", "@upfluence/oss-components/components/o-s-s/layout/sidebar/item"], function (_exports, _item) {
   "use strict";
 
@@ -1874,6 +1888,39 @@
       _initializerDefineProperty(this, "uploader", _descriptor, this);
       _initializerDefineProperty(this, "file", _descriptor2, this);
       _initializerDefineProperty(this, "tabArrayNavTab", _descriptor3, this);
+    }
+    get itemsSidebarGroup() {
+      return [{
+        icon: 'far fa-input-text',
+        label: 'Input',
+        hasNotifications: false,
+        active: false,
+        link: 'input'
+      }, {
+        icon: 'far fa-toggle-on',
+        label: 'Visual',
+        hasNotifications: false,
+        active: false,
+        link: 'visual'
+      }, {
+        icon: 'far fa-line-columns',
+        label: 'Data',
+        hasNotifications: false,
+        active: false,
+        link: 'data'
+      }, {
+        icon: 'far fa-window-restore',
+        label: 'Overlay',
+        hasNotifications: true,
+        active: false,
+        link: 'overlay'
+      }, {
+        icon: 'far fa-link',
+        label: 'Extra',
+        hasNotifications: false,
+        active: true,
+        link: 'extra'
+      }];
     }
     onSelectionNavTab(selectedTab) {
       console.log('onSelectionNavTab : ', selectedTab);
@@ -3764,66 +3811,86 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
   var _default = _exports.default = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class="fx-row">
-    <OSS::Layout::Sidebar @logo="/assets/images/upfluence-white-logo.svg" @homeAction={{fn this.redirectTo "/"}}>
-      <:content>
+    <OSS::Layout::Sidebar @homeParameters={{hash logo="/assets/images/brand-icon.svg" url="/"}} @expandable={{true}}>
+      <:content as |state|>
         <OSS::Layout::Sidebar::Item
           @icon="far fa-message-plus"
+          @label="Display"
+          @expanded={{state.expanded}}
           class={{if (eq this.router.currentRouteName "index") "active"}}
           @link="index"
         />
         <OSS::Layout::Sidebar::Item
           @icon="far fa-input-text"
+          @label="Input"
+          @expanded={{state.expanded}}
           class={{if (eq this.router.currentRouteName "input") "active"}}
           @link="input"
         />
         <OSS::Layout::Sidebar::Item
           @icon="far fa-toggle-on"
+          @label="Visual"
+          @expanded={{state.expanded}}
           class={{if (eq this.router.currentRouteName "visual") "active"}}
           @link="visual"
         />
         <OSS::Layout::Sidebar::Item
           @icon="far fa-line-columns"
+          @label="Data"
+          @expanded={{state.expanded}}
           class={{if (eq this.router.currentRouteName "data") "active"}}
           @link="data"
         />
         <OSS::Layout::Sidebar::Item
           @icon="far fa-window-restore"
+          @label="Overlay"
+          @expanded={{state.expanded}}
           class={{if (eq this.router.currentRouteName "overlay") "active"}}
           @link="overlay"
         />
         <OSS::Layout::Sidebar::Item
           @icon="far fa-link"
+          @label="Extra"
+          @expanded={{state.expanded}}
           class={{if (eq this.router.currentRouteName "extra") "active"}}
           @link="extra"
         />
         <OSS::Layout::Sidebar::Item
           @icon="far fa-hat-wizard"
+          @label="Wizard"
+          @expanded={{state.expanded}}
           class={{if (eq this.router.currentRouteName "wizard") "active"}}
           @link="wizard"
         />
         <OSS::Layout::Sidebar::Item
           @icon="far fa-lock"
           @locked={{true}}
+          @label="Locked State"
+          @expanded={{state.expanded}}
           @defaultAction={{fn this.redirectTo "credit-card"}}
           @lockedAction={{fn this.redirectTo "locked credit-card"}}
         />
         <OSS::Layout::Sidebar::Item
-          @icon="far fa-kiwi-bird"
-          @defaultAction={{fn this.redirectTo "pointer"}}
-          @tag={{hash label="New" skin="chat-gpt"}}
-        />
-        <OSS::Layout::Sidebar::Item
           @icon="far fa-bullhorn"
           @defaultAction={{fn this.redirectTo "pointer"}}
+          @label="Notifications"
+          @expanded={{state.expanded}}
           @hasNotifications={{true}}
         />
       </:content>
-      <:footer>
-        <OSS::Layout::Sidebar::Item @icon="fal fa-info-circle" />
-        <OSS::Avatar
-          @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
-          @initials="Ts"
-        />
+      <:footer as |sidebar|>
+        <OSS::Layout::Sidebar::Item @icon="fal fa-info-circle" @label="Help center" @expanded={{sidebar.expanded}} />
+  
+        <div class="fx-row fx-gap-px-9 fx-xalign-center">
+          <OSS::Avatar
+            @image="https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png"
+            @initials="Ts"
+          />
+  
+          {{#if sidebar.expanded}}
+            My account
+          {{/if}}
+        </div>
       </:footer>
     </OSS::Layout::Sidebar>
   
@@ -3833,8 +3900,8 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
   </div>
   */
   {
-    "id": "vBPW+viQ",
-    "block": "[[[10,0],[14,0,\"fx-row\"],[12],[1,\"\\n  \"],[8,[39,0],null,[[\"@logo\",\"@homeAction\"],[\"/assets/images/upfluence-white-logo.svg\",[28,[37,1],[[30,0,[\"redirectTo\"]],\"/\"],null]]],[[\"content\",\"footer\"],[[[[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"index\"],null],\"active\"]]],[[\"@icon\",\"@link\"],[\"far fa-message-plus\",\"index\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"input\"],null],\"active\"]]],[[\"@icon\",\"@link\"],[\"far fa-input-text\",\"input\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"visual\"],null],\"active\"]]],[[\"@icon\",\"@link\"],[\"far fa-toggle-on\",\"visual\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"data\"],null],\"active\"]]],[[\"@icon\",\"@link\"],[\"far fa-line-columns\",\"data\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"overlay\"],null],\"active\"]]],[[\"@icon\",\"@link\"],[\"far fa-window-restore\",\"overlay\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"extra\"],null],\"active\"]]],[[\"@icon\",\"@link\"],[\"far fa-link\",\"extra\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"wizard\"],null],\"active\"]]],[[\"@icon\",\"@link\"],[\"far fa-hat-wizard\",\"wizard\"]],null],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@locked\",\"@defaultAction\",\"@lockedAction\"],[\"far fa-lock\",true,[28,[37,1],[[30,0,[\"redirectTo\"]],\"credit-card\"],null],[28,[37,1],[[30,0,[\"redirectTo\"]],\"locked credit-card\"],null]]],null],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@defaultAction\",\"@tag\"],[\"far fa-kiwi-bird\",[28,[37,1],[[30,0,[\"redirectTo\"]],\"pointer\"],null],[28,[37,5],null,[[\"label\",\"skin\"],[\"New\",\"chat-gpt\"]]]]],null],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@defaultAction\",\"@hasNotifications\"],[\"far fa-bullhorn\",[28,[37,1],[[30,0,[\"redirectTo\"]],\"pointer\"],null],true]],null],[1,\"\\n    \"]],[]],[[[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\"],[\"fal fa-info-circle\"]],null],[1,\"\\n      \"],[8,[39,6],null,[[\"@image\",\"@initials\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"Ts\"]],null],[1,\"\\n    \"]],[]]]]],[1,\"\\n\\n  \"],[10,0],[14,5,\"width:100%; height:100vh; overflow: auto; background-color: var(--color-gray-50)\"],[12],[1,\"\\n    \"],[46,[28,[37,8],null,null],null,null,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[],false,[\"o-s-s/layout/sidebar\",\"fn\",\"o-s-s/layout/sidebar/item\",\"if\",\"eq\",\"hash\",\"o-s-s/avatar\",\"component\",\"-outlet\"]]",
+    "id": "FiWlX3qD",
+    "block": "[[[10,0],[14,0,\"fx-row\"],[12],[1,\"\\n  \"],[8,[39,0],null,[[\"@homeParameters\",\"@expandable\"],[[28,[37,1],null,[[\"logo\",\"url\"],[\"/assets/images/brand-icon.svg\",\"/\"]]],true]],[[\"content\",\"footer\"],[[[[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"index\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-message-plus\",\"Display\",[30,1,[\"expanded\"]],\"index\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"input\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-input-text\",\"Input\",[30,1,[\"expanded\"]],\"input\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"visual\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-toggle-on\",\"Visual\",[30,1,[\"expanded\"]],\"visual\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"data\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-line-columns\",\"Data\",[30,1,[\"expanded\"]],\"data\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"overlay\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-window-restore\",\"Overlay\",[30,1,[\"expanded\"]],\"overlay\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"extra\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-link\",\"Extra\",[30,1,[\"expanded\"]],\"extra\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"wizard\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-hat-wizard\",\"Wizard\",[30,1,[\"expanded\"]],\"wizard\"]],null],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@locked\",\"@label\",\"@expanded\",\"@defaultAction\",\"@lockedAction\"],[\"far fa-lock\",true,\"Locked State\",[30,1,[\"expanded\"]],[28,[37,5],[[30,0,[\"redirectTo\"]],\"credit-card\"],null],[28,[37,5],[[30,0,[\"redirectTo\"]],\"locked credit-card\"],null]]],null],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@defaultAction\",\"@label\",\"@expanded\",\"@hasNotifications\"],[\"far fa-bullhorn\",[28,[37,5],[[30,0,[\"redirectTo\"]],\"pointer\"],null],\"Notifications\",[30,1,[\"expanded\"]],true]],null],[1,\"\\n    \"]],[1]],[[[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@label\",\"@expanded\"],[\"fal fa-info-circle\",\"Help center\",[30,2,[\"expanded\"]]]],null],[1,\"\\n\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-9 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,6],null,[[\"@image\",\"@initials\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"Ts\"]],null],[1,\"\\n\\n\"],[41,[30,2,[\"expanded\"]],[[[1,\"          My account\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n    \"]],[2]]]]],[1,\"\\n\\n  \"],[10,0],[14,5,\"width:100%; height:100vh; overflow: auto; background-color: var(--color-gray-50)\"],[12],[1,\"\\n    \"],[46,[28,[37,8],null,null],null,null,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"state\",\"sidebar\"],false,[\"o-s-s/layout/sidebar\",\"hash\",\"o-s-s/layout/sidebar/item\",\"if\",\"eq\",\"fn\",\"o-s-s/avatar\",\"component\",\"-outlet\"]]",
     "moduleName": "dummy/templates/application.hbs",
     "isStrictMode": false
   });
@@ -4396,11 +4463,65 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
       </div>
     </div>
   
+    <div
+      class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+    >
+      <div class="font-size-md font-weight-semibold">
+        OSS::Layout::Sidebar::Group
+      </div>
+  
+      <div class="fx-row fx-1 fx-gap-px-12 fx-malign-space-between width-pc-40">
+        <OSS::Layout::Sidebar::Group
+          @icon="fa fa-folder"
+          @label="Group label"
+          @items={{this.itemsSidebarGroup}}
+          @expanded={{false}}
+        />
+  
+        <div class="fx-row fx-gap-px-12">
+          <OSS::Layout::Sidebar::Group
+            @expanded={{true}}
+            @icon="fa fa-folder"
+            @label="Group label"
+            @items={{this.itemsSidebarGroup}}
+          />
+  
+          <OSS::Layout::Sidebar::Group
+            @expanded={{true}}
+            @icon="fa fa-folder"
+            @label="Group label"
+            @items={{this.itemsSidebarGroup}}
+          >
+            <:icon>
+              <OSS::Avatar
+                @image="https://img.apmcdn.org/768cb350c59023919f564341090e3eea4970388c/square/72dd92-20180309-rick-astley.jpg"
+                @size="xs"
+              />
+            </:icon>
+          </OSS::Layout::Sidebar::Group>
+  
+          <OSS::Layout::Sidebar::Group
+            @collapsible={{true}}
+            @expanded={{true}}
+            @icon="fa fa-folder"
+            @label="Group label"
+            @items={{this.itemsSidebarGroup}}
+          >
+            <:icon>
+              <OSS::Avatar
+                @image="https://img.apmcdn.org/768cb350c59023919f564341090e3eea4970388c/square/72dd92-20180309-rick-astley.jpg"
+                @size="xs"
+              />
+            </:icon>
+          </OSS::Layout::Sidebar::Group>
+        </div>
+      </div>
+    </div>
   </div>
   */
   {
-    "id": "8bP5Yo5V",
-    "block": "[[[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-18\"],[12],[1,\"\\n  \"],[10,0],[14,0,\"page-title-container\"],[12],[1,\"\\n    \"],[10,1],[14,0,\"font-size-h2 font-weight-semibold\"],[12],[1,\"Extra\"],[13],[1,\"\\n    \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,\"Extra components used for extra things\"],[13],[1,\"\\n    \"],[10,1],[14,0,\"font-color-gray-500 font-size-xs text-style-italic\"],[12],[1,\"(they're extra useful, I think)\"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Link\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@label\",\"@icon\"],[\"Link\",\"fa fa-sword\"]],null],[1,\"\\n      \"],[8,[39,0],null,[[\"@label\"],[\"Zelda\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Anchor\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[8,[39,1],null,[[\"@link\",\"@noopener\",\"@noreferrer\"],[\"https://shorturl.at/0c8jr\",true,true]],[[\"default\"],[[[[1,\"\\n        Absolutely not suspicious link\\n      \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Nav tab\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@onSelection\",\"@tabArray\"],[[30,0,[\"onSelectionNavTab\"]],[30,0,[\"tabArrayNavTab\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Nav item\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@icon\",\"@label\"],[\"fa-cog\",\"First Label\"]],null],[1,\"\\n      \"],[8,[39,3],null,[[\"@icon\",\"@label\",\"@active\"],[\"fa-code-branch\",\"Second Label\",true]],null],[1,\"\\n      \"],[8,[39,3],null,[[\"@icon\",\"@label\",\"@active\"],[\"fa-code-branch\",\"Third Label\",true]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Illustration\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Upload item\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[8,[39,5],null,[[\"@uploader\",\"@file\",\"@onEdition\",\"@onDeletion\",\"@onUploadSuccess\"],[[30,0,[\"uploader\"]],[30,0,[\"file\"]],[30,0,[\"onEdition\"]],[30,0,[\"onDeletion\"]],[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Upload area\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,6],null,[[\"@uploader\",\"@rules\",\"@size\",\"@subtitle\",\"@onUploadSuccess\"],[[30,0,[\"uploader\"]],[28,[37,7],[[28,[37,8],null,[[\"type\",\"value\"],[\"filesize\",\"8MB\"]]]],null],\"lg\",\"JPG, PNG, PDF (Max 800x400px - 2MB)\",[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n\\n        \"],[8,[39,6],null,[[\"@uploader\",\"@rules\",\"@subtitle\",\"@onUploadSuccess\",\"@displayPreview\"],[[30,0,[\"uploader\"]],[28,[37,7],[[28,[37,8],null,[[\"type\",\"value\"],[\"filesize\",\"8MB\"]]]],null],\"JPG, PNG, PDF (Max 800x400px - 2MB)\",[30,0,[\"onUploadSuccess\"]],true]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,6],null,[[\"@uploader\",\"@rules\",\"@size\",\"@disabled\",\"@subtitle\",\"@onUploadSuccess\"],[[30,0,[\"uploader\"]],[28,[37,7],[[28,[37,8],null,[[\"type\",\"value\"],[\"filesize\",\"8MB\"]]]],null],\"lg\",true,\"JPG, PNG, PDF (Max 800x400px - 2MB)\",[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n\\n        \"],[8,[39,6],null,[[\"@uploader\",\"@rules\",\"@disabled\",\"@subtitle\",\"@onUploadSuccess\"],[[30,0,[\"uploader\"]],[28,[37,7],[[28,[37,8],null,[[\"type\",\"value\"],[\"filesize\",\"8MB\"]]]],null],true,\"JPG, PNG, PDF (Max 800x400px - 2MB)\",[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Skeleton\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10\"],[12],[1,\"\\n      \"],[8,[39,9],null,[[\"@width\"],[\"70%\"]],null],[1,\"\\n      \"],[8,[39,9],null,[[\"@width\"],[20]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10\"],[12],[1,\"\\n      \"],[8,[39,9],null,[[\"@direction\",\"@width\",\"@gap\",\"@multiple\",\"@randomize\"],[\"column\",\"60%\",\"12\",\"3\",true]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10\"],[12],[1,\"\\n      \"],[8,[39,9],null,[[\"@width\",\"@multiple\",\"@direction\",\"@randomize\"],[\"10%\",\"3\",\"row\",\"true\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[13]],[],false,[\"o-s-s/link\",\"o-s-s/anchor\",\"o-s-s/nav-tab\",\"o-s-s/layout/navbar/nav-item\",\"o-s-s/illustration\",\"o-s-s/upload-item\",\"o-s-s/upload-area\",\"array\",\"hash\",\"o-s-s/skeleton\"]]",
+    "id": "q/2q8gZy",
+    "block": "[[[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-18\"],[12],[1,\"\\n  \"],[10,0],[14,0,\"page-title-container\"],[12],[1,\"\\n    \"],[10,1],[14,0,\"font-size-h2 font-weight-semibold\"],[12],[1,\"Extra\"],[13],[1,\"\\n    \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,\"Extra components used for extra things\"],[13],[1,\"\\n    \"],[10,1],[14,0,\"font-color-gray-500 font-size-xs text-style-italic\"],[12],[1,\"(they're extra useful, I think)\"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Link\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@label\",\"@icon\"],[\"Link\",\"fa fa-sword\"]],null],[1,\"\\n      \"],[8,[39,0],null,[[\"@label\"],[\"Zelda\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Anchor\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[8,[39,1],null,[[\"@link\",\"@noopener\",\"@noreferrer\"],[\"https://shorturl.at/0c8jr\",true,true]],[[\"default\"],[[[[1,\"\\n        Absolutely not suspicious link\\n      \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Nav tab\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@onSelection\",\"@tabArray\"],[[30,0,[\"onSelectionNavTab\"]],[30,0,[\"tabArrayNavTab\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Nav item\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[8,[39,3],null,[[\"@icon\",\"@label\"],[\"fa-cog\",\"First Label\"]],null],[1,\"\\n      \"],[8,[39,3],null,[[\"@icon\",\"@label\",\"@active\"],[\"fa-code-branch\",\"Second Label\",true]],null],[1,\"\\n      \"],[8,[39,3],null,[[\"@icon\",\"@label\",\"@active\"],[\"fa-code-branch\",\"Third Label\",true]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Illustration\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Upload item\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[8,[39,5],null,[[\"@uploader\",\"@file\",\"@onEdition\",\"@onDeletion\",\"@onUploadSuccess\"],[[30,0,[\"uploader\"]],[30,0,[\"file\"]],[30,0,[\"onEdition\"]],[30,0,[\"onDeletion\"]],[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Upload area\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,6],null,[[\"@uploader\",\"@rules\",\"@size\",\"@subtitle\",\"@onUploadSuccess\"],[[30,0,[\"uploader\"]],[28,[37,7],[[28,[37,8],null,[[\"type\",\"value\"],[\"filesize\",\"8MB\"]]]],null],\"lg\",\"JPG, PNG, PDF (Max 800x400px - 2MB)\",[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n\\n        \"],[8,[39,6],null,[[\"@uploader\",\"@rules\",\"@subtitle\",\"@onUploadSuccess\",\"@displayPreview\"],[[30,0,[\"uploader\"]],[28,[37,7],[[28,[37,8],null,[[\"type\",\"value\"],[\"filesize\",\"8MB\"]]]],null],\"JPG, PNG, PDF (Max 800x400px - 2MB)\",[30,0,[\"onUploadSuccess\"]],true]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,6],null,[[\"@uploader\",\"@rules\",\"@size\",\"@disabled\",\"@subtitle\",\"@onUploadSuccess\"],[[30,0,[\"uploader\"]],[28,[37,7],[[28,[37,8],null,[[\"type\",\"value\"],[\"filesize\",\"8MB\"]]]],null],\"lg\",true,\"JPG, PNG, PDF (Max 800x400px - 2MB)\",[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n\\n        \"],[8,[39,6],null,[[\"@uploader\",\"@rules\",\"@disabled\",\"@subtitle\",\"@onUploadSuccess\"],[[30,0,[\"uploader\"]],[28,[37,7],[[28,[37,8],null,[[\"type\",\"value\"],[\"filesize\",\"8MB\"]]]],null],true,\"JPG, PNG, PDF (Max 800x400px - 2MB)\",[30,0,[\"onUploadSuccess\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Skeleton\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10\"],[12],[1,\"\\n      \"],[8,[39,9],null,[[\"@width\"],[\"70%\"]],null],[1,\"\\n      \"],[8,[39,9],null,[[\"@width\"],[20]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10\"],[12],[1,\"\\n      \"],[8,[39,9],null,[[\"@direction\",\"@width\",\"@gap\",\"@multiple\",\"@randomize\"],[\"column\",\"60%\",\"12\",\"3\",true]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10\"],[12],[1,\"\\n      \"],[8,[39,9],null,[[\"@width\",\"@multiple\",\"@direction\",\"@randomize\"],[\"10%\",\"3\",\"row\",\"true\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      OSS::Layout::Sidebar::Group\\n    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-12 fx-malign-space-between width-pc-40\"],[12],[1,\"\\n      \"],[8,[39,10],null,[[\"@icon\",\"@label\",\"@items\",\"@expanded\"],[\"fa fa-folder\",\"Group label\",[30,0,[\"itemsSidebarGroup\"]],false]],null],[1,\"\\n\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,10],null,[[\"@expanded\",\"@icon\",\"@label\",\"@items\"],[true,\"fa fa-folder\",\"Group label\",[30,0,[\"itemsSidebarGroup\"]]]],null],[1,\"\\n\\n        \"],[8,[39,10],null,[[\"@expanded\",\"@icon\",\"@label\",\"@items\"],[true,\"fa fa-folder\",\"Group label\",[30,0,[\"itemsSidebarGroup\"]]]],[[\"icon\"],[[[[1,\"\\n            \"],[8,[39,11],null,[[\"@image\",\"@size\"],[\"https://img.apmcdn.org/768cb350c59023919f564341090e3eea4970388c/square/72dd92-20180309-rick-astley.jpg\",\"xs\"]],null],[1,\"\\n          \"]],[]]]]],[1,\"\\n\\n        \"],[8,[39,10],null,[[\"@collapsible\",\"@expanded\",\"@icon\",\"@label\",\"@items\"],[true,true,\"fa fa-folder\",\"Group label\",[30,0,[\"itemsSidebarGroup\"]]]],[[\"icon\"],[[[[1,\"\\n            \"],[8,[39,11],null,[[\"@image\",\"@size\"],[\"https://img.apmcdn.org/768cb350c59023919f564341090e3eea4970388c/square/72dd92-20180309-rick-astley.jpg\",\"xs\"]],null],[1,\"\\n          \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[],false,[\"o-s-s/link\",\"o-s-s/anchor\",\"o-s-s/nav-tab\",\"o-s-s/layout/navbar/nav-item\",\"o-s-s/illustration\",\"o-s-s/upload-item\",\"o-s-s/upload-area\",\"array\",\"hash\",\"o-s-s/skeleton\",\"o-s-s/layout/sidebar/group\",\"o-s-s/avatar\"]]",
     "moduleName": "dummy/templates/extra.hbs",
     "isStrictMode": false
   });

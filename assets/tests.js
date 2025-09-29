@@ -8145,12 +8145,17 @@ define("dummy/tests/integration/components/o-s-s/layout/navbar/nav-item-test", [
     });
   });
 });
-define("dummy/tests/integration/components/o-s-s/layout/sidebar-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+define("dummy/tests/integration/components/o-s-s/layout/sidebar-test", ["qunit", "ember-qunit", "@ember/test-helpers", "ember-intl/test-support", "@upfluence/oss-components/utils/upf-local-storage", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _testSupport, _upfLocalStorage, _templateFactory) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"qunit",0,"ember-qunit",0,"@ember/test-helpers"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-intl/test-support",0,"@upfluence/oss-components/utils/upf-local-storage"eaimeta@70e063a35619d71f
+  const upfLocalStorage = new _upfLocalStorage.default();
   (0, _qunit.module)('Integration | Component | o-s-s/layout/sidebar', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _testSupport.setupIntl)(hooks);
+    hooks.beforeEach(function () {
+      upfLocalStorage.delete('oss-layout-sidebar-expanded');
+    });
     (0, _qunit.test)('it renders', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -8162,24 +8167,62 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar-test", ["qunit",
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar-test.ts",
         "isStrictMode": false
       }));
-      assert.dom('.oss-sidebar--containers').exists();
+      assert.dom('.oss-sidebar-container').exists();
     });
-    (0, _qunit.test)('it renders the logo when present', async function (assert) {
-      this.logo = '/toto.png';
-      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-      /*
-        
-            <OSS::Layout::Sidebar @logo={{this.logo}}/>
-      */
-      {
-        "id": "Kw1Gwufu",
-        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@logo\"],[[30,0,[\"logo\"]]]],null]],[],false,[\"o-s-s/layout/sidebar\"]]",
-        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar-test.ts",
-        "isStrictMode": false
-      }));
-      assert.equal(document.querySelector('.oss-sidebar--containers .logo-container img')?.getAttribute('src'), '/toto.png');
+    (0, _qunit.module)('Home header', () => {
+      (0, _qunit.test)('for backward compatibility: it renders the legacy logo & homeURL behaviour when present', async function (assert) {
+        this.logo = '/assets/images/brand-icon.svg';
+        this.homeURL = '/home';
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Layout::Sidebar @logo={{this.logo}} @homeURL={{this.homeURL}} />
+        */
+        {
+          "id": "tPhx8gL0",
+          "block": "[[[8,[39,0],null,[[\"@logo\",\"@homeURL\"],[[30,0,[\"logo\"]],[30,0,[\"homeURL\"]]]],null]],[],false,[\"o-s-s/layout/sidebar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-sidebar-container .logo-container img').hasAttribute('src', '/assets/images/brand-icon.svg');
+      });
+      (0, _qunit.test)('it properly renders the homeParameters when present', async function (assert) {
+        this.homeParameters = {
+          logo: '/assets/images/brand-icon.svg',
+          url: '/home'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Layout::Sidebar @homeParameters={{this.homeParameters}} />
+        */
+        {
+          "id": "RH+P/ugb",
+          "block": "[[[8,[39,0],null,[[\"@homeParameters\"],[[30,0,[\"homeParameters\"]]]],null]],[],false,[\"o-s-s/layout/sidebar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-sidebar-container .logo-container img').hasAttribute('src', '/assets/images/brand-icon.svg');
+        assert.dom('.oss-sidebar-container .logo-container a').hasAttribute('href', '/home');
+      });
+      (0, _qunit.test)('it properly renders the homeParameters.tooltip when present', async function (assert) {
+        this.homeParameters = {
+          logo: '/assets/images/brand-icon.svg',
+          url: '/home',
+          tooltip: 'Home'
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Layout::Sidebar @homeParameters={{this.homeParameters}} />
+        */
+        {
+          "id": "RH+P/ugb",
+          "block": "[[[8,[39,0],null,[[\"@homeParameters\"],[[30,0,[\"homeParameters\"]]]],null]],[],false,[\"o-s-s/layout/sidebar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar-test.ts",
+          "isStrictMode": false
+        }));
+        await assert.tooltip('.oss-sidebar-container .logo-container .oss-sidebar-item').hasTitle('Home');
+      });
     });
-    (0, _qunit.module)('Named block', () => {
+    (0, _qunit.module)('Named blocks', () => {
       (0, _qunit.test)('The content named-block is properly displayed', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -8196,7 +8239,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar-test", ["qunit",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar-test.ts",
           "isStrictMode": false
         }));
-        assert.dom('.oss-sidebar--content').hasText('This is the content');
+        assert.dom('.oss-sidebar-container__content').hasText('This is the content');
       });
       (0, _qunit.test)('The footer named-block is properly displayed', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -8214,7 +8257,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar-test", ["qunit",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar-test.ts",
           "isStrictMode": false
         }));
-        assert.dom('.oss-sidebar--footer').hasText('footer content');
+        assert.dom('.oss-sidebar-container__footer').hasText('footer content');
       });
     });
     (0, _qunit.module)('Extra attributes', () => {
@@ -8242,8 +8285,236 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar-test", ["qunit",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar-test.ts",
           "isStrictMode": false
         }));
-        let inputWrapper = (0, _testHelpers.find)('.oss-sidebar--containers');
-        assert.equal(inputWrapper?.getAttribute('data-control-name'), 'layout-sidebar');
+        assert.dom('.oss-sidebar-container').hasAttribute('data-control-name', 'layout-sidebar');
+      });
+    });
+    (0, _qunit.module)('Expandable behavior', hooks => {
+      hooks.beforeEach(function () {
+        this.homeParameters = {
+          logo: '/assets/images/brand-icon.svg',
+          url: '/home'
+        };
+      });
+      (0, _qunit.test)('the toggle button is not displayed when expandable is falsy', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Layout::Sidebar @homeParameters={{this.homeParameters}} />
+        */
+        {
+          "id": "RH+P/ugb",
+          "block": "[[[8,[39,0],null,[[\"@homeParameters\"],[[30,0,[\"homeParameters\"]]]],null]],[],false,[\"o-s-s/layout/sidebar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-sidebar-container__expand').doesNotExist();
+      });
+      (0, _qunit.test)('the toggle button is displayed when expandable is true', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Layout::Sidebar @homeParameters={{this.homeParameters}} @expandable={{true}} />
+        */
+        {
+          "id": "+8L0WciM",
+          "block": "[[[8,[39,0],null,[[\"@homeParameters\",\"@expandable\"],[[30,0,[\"homeParameters\"]],true]],null]],[],false,[\"o-s-s/layout/sidebar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-sidebar-container__expand').exists();
+        assert.dom('.oss-sidebar-container__expand').hasText(this.intl.t('oss-components.sidebar.collapse'));
+      });
+      (0, _qunit.test)('the sidebar is expanded by default when expandable is true and there is no local storage item preventing it', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Layout::Sidebar @homeParameters={{this.homeParameters}} @expandable={{true}} />
+        */
+        {
+          "id": "+8L0WciM",
+          "block": "[[[8,[39,0],null,[[\"@homeParameters\",\"@expandable\"],[[30,0,[\"homeParameters\"]],true]],null]],[],false,[\"o-s-s/layout/sidebar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-sidebar-container').hasClass('oss-sidebar-container--expanded');
+      });
+      (0, _qunit.test)('the sidebar is collapsed by default when expandable is true and the local storage item is set to false', async function (assert) {
+        window.localStorage.setItem('_upf.oss-layout-sidebar-expanded', 'false');
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Layout::Sidebar @homeParameters={{this.homeParameters}} @expandable={{true}} />
+        */
+        {
+          "id": "+8L0WciM",
+          "block": "[[[8,[39,0],null,[[\"@homeParameters\",\"@expandable\"],[[30,0,[\"homeParameters\"]],true]],null]],[],false,[\"o-s-s/layout/sidebar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-sidebar-container').doesNotHaveClass('oss-sidebar-container--expanded');
+        window.localStorage.removeItem('_upf.oss-layout-sidebar-expanded');
+      });
+      (0, _qunit.test)('clicking the toggle button effectively toggles the expanded state of the sidebar', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Layout::Sidebar @homeParameters={{this.homeParameters}} @expandable={{true}} />
+        */
+        {
+          "id": "+8L0WciM",
+          "block": "[[[8,[39,0],null,[[\"@homeParameters\",\"@expandable\"],[[30,0,[\"homeParameters\"]],true]],null]],[],false,[\"o-s-s/layout/sidebar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-sidebar-container').hasClass('oss-sidebar-container--expanded');
+        await (0, _testHelpers.click)('[data-control-name="sidebar-expanded-state-toggle"]');
+        await (0, _testHelpers.settled)();
+        assert.dom('.oss-sidebar-container').doesNotHaveClass('oss-sidebar-container--expanded');
+        assert.equal(window.localStorage.getItem('_upf.oss-layout-sidebar-expanded'), 'false');
+        await (0, _testHelpers.click)('[data-control-name="sidebar-expanded-state-toggle"]');
+        assert.dom('.oss-sidebar-container').hasClass('oss-sidebar-container--expanded');
+        assert.equal(window.localStorage.getItem('_upf.oss-layout-sidebar-expanded'), 'true');
+      });
+    });
+  });
+});
+define("dummy/tests/integration/components/o-s-s/layout/sidebar/group-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/layout/sidebar/group', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.items = [{
+        icon: 'far fa-search',
+        link: '/search',
+        active: false,
+        hasNotifications: false,
+        label: 'Search'
+      }, {
+        icon: 'far fa-user',
+        link: '/profile',
+        active: true,
+        hasNotifications: true,
+        label: 'Profile'
+      }];
+    });
+    async function renderComponent() {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+              <div class="fx-row fx-malign-space-between">
+                <OSS::Layout::Sidebar::Group @icon="fa-screen-users" @label="Apps" @expanded={{this.expanded}} @items={{this.items}} @collapsible={{this.collapsible}} />
+                <OSS::Icon @icon="fa-ship" class="side-icon" />
+              </div>
+            
+      */
+      {
+        "id": "970JxNDV",
+        "block": "[[[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-malign-space-between\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@icon\",\"@label\",\"@expanded\",\"@items\",\"@collapsible\"],[\"fa-screen-users\",\"Apps\",[30,0,[\"expanded\"]],[30,0,[\"items\"]],[30,0,[\"collapsible\"]]]],null],[1,\"\\n          \"],[8,[39,1],[[24,0,\"side-icon\"]],[[\"@icon\"],[\"fa-ship\"]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[],false,[\"o-s-s/layout/sidebar/group\",\"o-s-s/icon\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/group-test.ts",
+        "isStrictMode": false
+      }));
+    }
+    (0, _qunit.module)('@expanded is falsy', function (hooks) {
+      hooks.beforeEach(function () {
+        this.expanded = false;
+      });
+      (0, _qunit.test)('the container has the right class applied', async function (assert) {
+        await renderComponent();
+        assert.dom('.oss-sidebar-group').hasNoClass('oss-sidebar-group--expanded');
+      });
+      (0, _qunit.test)('the group label is not displayed, nor the items container', async function (assert) {
+        await renderComponent();
+        assert.dom('.oss-sidebar-group > .oss-sidebar-item .oss-sidebar-item__label').doesNotExist();
+        assert.dom('.oss-sidebar-group .oss-sidebar-group__items-container').hasNoClass('oss-sidebar-group__items-container--visible');
+        assert.dom('.oss-sidebar-group .oss-sidebar-group__items-container .oss-sidebar-item').exists({
+          count: 2
+        });
+        assert.dom('.oss-sidebar-group .oss-sidebar-group__items-container .oss-sidebar-item:first-child .oss-sidebar-item__label').hasText('Search');
+        assert.dom('.oss-sidebar-group .oss-sidebar-group__items-container .oss-sidebar-item:last-child .oss-sidebar-item__label').hasText('Profile');
+      });
+      (0, _qunit.test)('the group items container is displayed on hover of the group item', async function (assert) {
+        await renderComponent();
+        assert.dom('.oss-sidebar-group').hasNoClass('oss-sidebar-group--hovered');
+        await (0, _testHelpers.triggerEvent)('.oss-sidebar-group > div .oss-sidebar-item', 'mouseenter');
+        assert.dom('.oss-sidebar-group').hasClass('oss-sidebar-group--hovered');
+        assert.dom('.oss-sidebar-group .oss-sidebar-group__items-container').hasClass('oss-sidebar-group__items-container--visible');
+        assert.dom('.oss-sidebar-group .oss-sidebar-group__items-container .oss-sidebar-item:first-child .oss-sidebar-item__label').hasText('Search');
+        assert.dom('.oss-sidebar-group .oss-sidebar-group__items-container .oss-sidebar-item:last-child .oss-sidebar-item__label').hasText('Profile');
+      });
+      (0, _qunit.test)('the group has a notification dot as one of its items has one', async function (assert) {
+        await renderComponent();
+        assert.dom('.oss-sidebar-group > div .oss-sidebar-item .oss-sidebar-item__notification').exists();
+      });
+      (0, _qunit.test)('the group items container is hidden after a slight delay when the mouse leaves both the group item and the items container', async function (assert) {
+        const clock = _sinon.default.useFakeTimers({
+          shouldAdvanceTime: true
+        });
+        await renderComponent();
+        await (0, _testHelpers.triggerEvent)('.oss-sidebar-group > div .oss-sidebar-item', 'mouseenter');
+        assert.dom('.oss-sidebar-group').hasClass('oss-sidebar-group--hovered');
+        assert.dom('.oss-sidebar-group .oss-sidebar-group__items-container').hasClass('oss-sidebar-group__items-container--visible');
+        (0, _testHelpers.triggerEvent)('.oss-sidebar-group > div .oss-sidebar-item', 'mouseleave');
+        assert.dom('.oss-sidebar-group .oss-sidebar-group__items-container').hasClass('oss-sidebar-group__items-container--visible');
+        await clock.tickAsync(500);
+        assert.dom('.oss-sidebar-group .oss-sidebar-group__items-container').hasNoClass('oss-sidebar-group__items-container--visible');
+        clock.restore();
+      });
+    });
+    (0, _qunit.module)('@expanded is truthy', function (hooks) {
+      hooks.beforeEach(function () {
+        this.expanded = true;
+      });
+      (0, _qunit.test)('the container has the right class applied', async function (assert) {
+        await renderComponent();
+        assert.dom('.oss-sidebar-group').hasClass('oss-sidebar-group--expanded');
+      });
+      (0, _qunit.test)('the group label is displayed, along with all the items directly', async function (assert) {
+        await renderComponent();
+        assert.dom('.oss-sidebar-group > div .oss-sidebar-item').hasClass('oss-sidebar-item--group-header');
+        assert.dom('.oss-sidebar-group > div .oss-sidebar-item .oss-sidebar-item__label').hasText('Apps');
+        assert.dom('.oss-sidebar-group .oss-sidebar-group__items-container').hasClass('oss-sidebar-group__items-container--visible');
+        assert.dom('.oss-sidebar-group .oss-sidebar-group__items-container .oss-sidebar-item').exists({
+          count: 2
+        });
+        assert.dom('.oss-sidebar-group .oss-sidebar-group__items-container .oss-sidebar-item:first-child .oss-sidebar-item__label').hasText('Search');
+        assert.dom('.oss-sidebar-group .oss-sidebar-group__items-container .oss-sidebar-item:last-child .oss-sidebar-item__label').hasText('Profile');
+      });
+      (0, _qunit.test)('the group itself has no notification dot as they are displayed on the children', async function (assert) {
+        await renderComponent();
+        assert.dom('.oss-sidebar-group > .oss-sidebar-item .oss-sidebar-item__notification').doesNotExist();
+      });
+    });
+    (0, _qunit.module)('@collapsible is true', function (hooks) {
+      hooks.beforeEach(function () {
+        this.collapsible = true;
+      });
+      (0, _qunit.test)('the group header includes a collapse icon', async function (assert) {
+        await renderComponent();
+        assert.dom('.oss-sidebar-group__collapse-trigger').exists();
+      });
+      (0, _qunit.test)('clicking the collapse icon toggles the related state', async function (assert) {
+        await renderComponent();
+        assert.dom('.oss-sidebar-group').doesNotHaveClass('oss-sidebar-group--collapsed');
+        await (0, _testHelpers.click)('.oss-sidebar-group__collapse-trigger');
+        assert.dom('.oss-sidebar-group').hasClass('oss-sidebar-group--collapsed');
+      });
+    });
+    (0, _qunit.module)('icon named-block', function () {
+      (0, _qunit.test)('it renders the icon named block instead of the icon argument when present', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Layout::Sidebar::Group @icon="fa-screen-users" @label="Apps" @expanded={{this.expanded}} @items={{this.items}} @collapsible={{this.collapsible}}
+                >
+                  <:icon>
+                    <OSS::Icon @icon="fa-ship" class="custom-icon" />
+                  </:icon>
+                </OSS::Layout::Sidebar::Group>
+        */
+        {
+          "id": "ahwplNGO",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@icon\",\"@label\",\"@expanded\",\"@items\",\"@collapsible\"],[\"fa-screen-users\",\"Apps\",[30,0,[\"expanded\"]],[30,0,[\"items\"]],[30,0,[\"collapsible\"]]]],[[\"icon\"],[[[[1,\"\\n            \"],[8,[39,1],[[24,0,\"custom-icon\"]],[[\"@icon\"],[\"fa-ship\"]],null],[1,\"\\n          \"]],[]]]]]],[],false,[\"o-s-s/layout/sidebar/group\",\"o-s-s/icon\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/group-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-sidebar-group > div .oss-sidebar-item .oss-sidebar-item__icon i').hasClass('fa-ship');
       });
     });
   });
@@ -8278,7 +8549,21 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
         "isStrictMode": false
       }));
-      assert.dom('.oss-sidebar-item .oss-sidebar-item--icon i').hasClass('fa-search');
+      assert.dom('.oss-sidebar-item .oss-sidebar-item__icon i').hasClass('fa-search');
+    });
+    (0, _qunit.test)('it renders the icon named block instead of the icon argument when present', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Layout::Sidebar::Item @icon="fal fa-search"><:icon><OSS::Icon @icon="fa-ship" class="custom-icon" /></:icon></OSS::Layout::Sidebar::Item>
+      */
+      {
+        "id": "rqeBIPSn",
+        "block": "[[[8,[39,0],null,[[\"@icon\"],[\"fal fa-search\"]],[[\"icon\"],[[[[8,[39,1],[[24,0,\"custom-icon\"]],[[\"@icon\"],[\"fa-ship\"]],null]],[]]]]]],[],false,[\"o-s-s/layout/sidebar/item\",\"o-s-s/icon\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-sidebar-item .oss-sidebar-item__icon .custom-icon').exists();
+      assert.dom('.oss-sidebar-item .custom-icon').hasClass('fa-ship');
     });
     (0, _qunit.module)('Arguments', () => {
       (0, _qunit.test)('Default value for locked is false', async function (assert) {
@@ -8292,7 +8577,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
           "isStrictMode": false
         }));
-        assert.dom('.oss-sidebar-item--locked').doesNotExist();
+        assert.dom('.oss-sidebar-item__lock').doesNotExist();
       });
       (0, _qunit.test)('When locked is true', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -8305,7 +8590,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
           "isStrictMode": false
         }));
-        assert.dom('.oss-sidebar-item--locked').exists();
+        assert.dom('.oss-sidebar-item__lock').exists();
       });
       (0, _qunit.test)('Default value for hasNotification is false', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -8318,7 +8603,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
           "isStrictMode": false
         }));
-        assert.dom('.oss-sidebar-item--notification').doesNotExist();
+        assert.dom('.oss-sidebar-item__notification').doesNotExist();
       });
       (0, _qunit.test)('When hasNotification is true', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -8331,75 +8616,35 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
           "isStrictMode": false
         }));
-        assert.dom('.oss-sidebar-item--notification').exists();
+        assert.dom('.oss-sidebar-item__notification').exists();
       });
-      (0, _qunit.module)('for @tag argument', () => {
-        (0, _qunit.test)("It doesn't render it for undefined value", async function (assert) {
+      (0, _qunit.module)('Expanded state', () => {
+        (0, _qunit.test)('the wrapper container is applied', async function (assert) {
           await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
           /*
-            <OSS::Layout::Sidebar::Item @icon="far fa-search" />
+            <OSS::Layout::Sidebar::Item @expanded={{true}} @icon="far fa-search" @label="Label" />
           */
           {
-            "id": "zRXo9p88",
-            "block": "[[[8,[39,0],null,[[\"@icon\"],[\"far fa-search\"]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+            "id": "+pWc17XT",
+            "block": "[[[8,[39,0],null,[[\"@expanded\",\"@icon\",\"@label\"],[true,\"far fa-search\",\"Label\"]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
             "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
             "isStrictMode": false
           }));
-          assert.dom('.oss-sidebar-item--tag').doesNotExist();
+          assert.dom('.oss-sidebar-item').hasClass('oss-sidebar-item--expanded');
         });
-        (0, _qunit.module)('When tag is defined', () => {
-          (0, _qunit.test)('It renders it', async function (assert) {
-            await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-            /*
-              <OSS::Layout::Sidebar::Item @icon="far fa-search" @tag={{hash label="New" skin="chat-gpt"}} />
-            */
-            {
-              "id": "Lezkvzvb",
-              "block": "[[[8,[39,0],null,[[\"@icon\",\"@tag\"],[\"far fa-search\",[28,[37,1],null,[[\"label\",\"skin\"],[\"New\",\"chat-gpt\"]]]]],null]],[],false,[\"o-s-s/layout/sidebar/item\",\"hash\"]]",
-              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
-              "isStrictMode": false
-            }));
-            assert.dom('.oss-sidebar-item--tag .upf-tag.upf-tag--xs').exists();
-          });
-          (0, _qunit.test)('It renders the correct wording', async function (assert) {
-            await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-            /*
-              <OSS::Layout::Sidebar::Item @icon="far fa-search" @tag={{hash label="New" skin="chat-gpt"}} />
-            */
-            {
-              "id": "Lezkvzvb",
-              "block": "[[[8,[39,0],null,[[\"@icon\",\"@tag\"],[\"far fa-search\",[28,[37,1],null,[[\"label\",\"skin\"],[\"New\",\"chat-gpt\"]]]]],null]],[],false,[\"o-s-s/layout/sidebar/item\",\"hash\"]]",
-              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
-              "isStrictMode": false
-            }));
-            assert.dom('.oss-sidebar-item--tag').hasText('New');
-          });
-          (0, _qunit.test)('It renders the correct icon', async function (assert) {
-            await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-            /*
-              <OSS::Layout::Sidebar::Item @icon="far fa-search" @tag={{hash icon="fa-search" skin="chat-gpt"}} />
-            */
-            {
-              "id": "1zMHsVk3",
-              "block": "[[[8,[39,0],null,[[\"@icon\",\"@tag\"],[\"far fa-search\",[28,[37,1],null,[[\"icon\",\"skin\"],[\"fa-search\",\"chat-gpt\"]]]]],null]],[],false,[\"o-s-s/layout/sidebar/item\",\"hash\"]]",
-              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
-              "isStrictMode": false
-            }));
-            assert.dom('.oss-sidebar-item--tag i.fa-search').exists();
-          });
-          (0, _qunit.test)('It renders the correct skin', async function (assert) {
-            await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-            /*
-              <OSS::Layout::Sidebar::Item @icon="far fa-search" @tag={{hash label="New" skin="chat-gpt"}} />
-            */
-            {
-              "id": "Lezkvzvb",
-              "block": "[[[8,[39,0],null,[[\"@icon\",\"@tag\"],[\"far fa-search\",[28,[37,1],null,[[\"label\",\"skin\"],[\"New\",\"chat-gpt\"]]]]],null]],[],false,[\"o-s-s/layout/sidebar/item\",\"hash\"]]",
-              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
-              "isStrictMode": false
-            }));
-            assert.dom('.oss-sidebar-item--tag .upf-tag.upf-tag--chat-gpt').exists();
-          });
+        (0, _qunit.test)('the label is displayed', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Layout::Sidebar::Item @expanded={{true}} @icon="far fa-search" @label="Label" />
+          */
+          {
+            "id": "+pWc17XT",
+            "block": "[[[8,[39,0],null,[[\"@expanded\",\"@icon\",\"@label\"],[true,\"far fa-search\",\"Label\"]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.oss-sidebar-item__label').exists();
+          assert.dom('.oss-sidebar-item__label').hasText('Label');
         });
       });
     });
@@ -8408,7 +8653,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
         this.defaultAction = _sinon.default.spy();
         this.lockedAction = _sinon.default.spy();
       });
-      (0, _qunit.test)('OnClick it redirect to the @link attribute', async function (assert) {
+      (0, _qunit.test)('on click, it redirect to the @link attribute', async function (assert) {
         const router = this.owner.lookup('service:router');
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
