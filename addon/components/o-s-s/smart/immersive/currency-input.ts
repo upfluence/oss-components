@@ -4,13 +4,21 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { runSmartGradientAnimation } from '@upfluence/oss-components/utils/run-smart-gradient-animation';
 import { isEmpty } from '@ember/utils';
+import { guidFor } from '@ember/object/internals';
+import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
+import { scheduleOnce } from '@ember/runloop';
+import { isTesting } from '@embroider/macros';
 
 interface OSSSmartImmersiveCurrencyInputArgs extends OSSCurrencyInputArgs {
   loading: boolean;
   hasError?: boolean;
+  addressableAs?: string;
 }
 
 export default class OSSSmartImmersiveCurrencyInput extends OSSCurrencyInput<OSSSmartImmersiveCurrencyInputArgs> {
+  declare portalTarget: HTMLElement;
+  portalId: string = guidFor(this);
+
   @tracked declare element: HTMLElement;
 
   constructor(owner: unknown, args: OSSCurrencyInputArgs) {
@@ -45,6 +53,7 @@ export default class OSSSmartImmersiveCurrencyInput extends OSSCurrencyInput<OSS
 
   @action
   registerElement(element: HTMLElement): void {
+    this.portalTarget = isTesting() ? element : document.body;
     this.element = element;
   }
 
@@ -52,6 +61,32 @@ export default class OSSSmartImmersiveCurrencyInput extends OSSCurrencyInput<OSS
   runAnimationOnLoadEnd(): void {
     if (this.element && this.args.loading === false && !isEmpty(this.args.value)) {
       runSmartGradientAnimation(this.element);
+    }
+  }
+
+  @action
+  toggleCurrencySelector(e: any): void {
+    super.toggleCurrencySelector(e);
+
+    scheduleOnce('afterRender', this, this.setupDropdownAutoplacement);
+  }
+
+  get dropdownAddressableClass(): string {
+    return this.args.addressableAs ? `${this.args.addressableAs}__dropdown` : '';
+  }
+
+  cleanupDrodpownAutoplacement?: () => void;
+
+  private setupDropdownAutoplacement(): void {
+    const referenceTarget = this.element.querySelector('.currency-selector');
+    const floatingTarget = document.querySelector(`#${this.portalId}`);
+
+    if (referenceTarget && floatingTarget) {
+      this.cleanupDrodpownAutoplacement = attachDropdown(
+        referenceTarget as HTMLElement,
+        floatingTarget as HTMLElement,
+        { maxHeight: 200, maxWidth: 320, placement: 'bottom-start', fallbackPlacements: ['top-start'] }
+      );
     }
   }
 }

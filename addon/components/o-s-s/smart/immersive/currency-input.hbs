@@ -47,22 +47,26 @@
     {{/if}}
   </div>
   {{#if this.currencySelectorShown}}
-    <OSS::InfiniteSelect
-      @items={{this.filteredCurrencies}}
-      @onSearch={{this.onSearch}}
-      @onSelect={{this.onSelect}}
-      @searchPlaceholder={{t "oss-components.currency-input.search"}}
-      {{on-click-outside this.hideCurrencySelector}}
-    >
-      <:option as |currency|>
-        <div class="fx-row fx-xalign-center {{if (eq this.selectedCurrency currency) 'row-selected'}}">
-          <span class="symbol text-color-default-light margin-left-xx-sm">{{currency.symbol}}</span>
-          <span class="text-color-default-light margin-left-xx-sm fx-1">{{currency.code}}</span>
-          {{#if (eq this.selectedCurrency currency)}}
-            <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
-          {{/if}}
-        </div>
-      </:option>
-    </OSS::InfiniteSelect>
+    {{#in-element this.portalTarget insertBefore=null}}
+      <OSS::InfiniteSelect
+        @items={{this.filteredCurrencies}}
+        @onSearch={{this.onSearch}}
+        @onSelect={{this.onSelect}}
+        @searchPlaceholder={{t "oss-components.currency-input.search"}}
+        class={{concat "margin-top-px-0 " this.dropdownAddressableClass}}
+        id={{this.portalId}}
+        {{on-click-outside this.hideCurrencySelector}}
+      >
+        <:option as |currency|>
+          <div class="fx-row fx-xalign-center {{if (eq this.selectedCurrency currency) 'row-selected'}}">
+            <span class="symbol text-color-default-light margin-left-xx-sm">{{currency.symbol}}</span>
+            <span class="text-color-default-light margin-left-xx-sm fx-1">{{currency.code}}</span>
+            {{#if (eq this.selectedCurrency currency)}}
+              <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
+            {{/if}}
+          </div>
+        </:option>
+      </OSS::InfiniteSelect>
+    {{/in-element}}
   {{/if}}
 </div>
