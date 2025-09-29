@@ -10,6 +10,7 @@ import type { Step } from '@upfluence/oss-components/services/wizard-manager';
 
 const SCROLL_EVENTS_DELAY = 1500;
 const DEFAULT_BASE_CLASS = 'step-wrapper';
+const DEFAULT_CLASS_TO_SKIP_SCROLL_LISTENER = 'prevent-wizard-scroll-events';
 
 interface WizardStepWrapperComponentSignature {
   step: Step;
@@ -66,6 +67,19 @@ export default class WizardStepWrapperComponent extends Component<WizardStepWrap
 
   @action
   handleWheelEvent(event: WheelEvent): void {
+    let target = event.target as HTMLElement | null;
+    while (target) {
+      if (
+        target.classList &&
+        target.classList.contains(
+          this.wizardManager.configOptions.skipScrollEventsClass ?? DEFAULT_CLASS_TO_SKIP_SCROLL_LISTENER
+        )
+      ) {
+        return;
+      }
+      target = target.parentElement;
+    }
+
     if (!this.wizardManager.wheelEnabled || !this.wheelListenerEnabled || this.wheelHandled) return;
     if (!this.scrollPosition && !this.wheelListenerEnabled) return;
     if (this.scrollPosition === 'middle') return;
