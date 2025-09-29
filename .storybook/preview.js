@@ -1,4 +1,3 @@
-import { themes } from '@storybook/theming';
 import { hbs } from 'ember-cli-htmlbars';
 
 import './styles/preview.less';
@@ -21,9 +20,6 @@ export const parameters = {
         ['Typography', 'Icons', 'Variables']
       ]
     }
-  },
-  docs: {
-    theme: themes.dark
   }
 };
 
