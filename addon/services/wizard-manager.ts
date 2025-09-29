@@ -30,6 +30,7 @@ export type ConfigurationOptions = {
   centerStepsInContainer?: boolean;
   stepWrapperBaseClass?: string;
   containerClass?: string;
+  skipScrollEventsClass?: string;
 };
 
 export type WizardConfiguration = {
@@ -150,12 +151,12 @@ export default class WizardManager extends Service {
     this.configOptions = {};
   }
 
+  markStepAsIncomplete(stepId: string): void {
+    this.markCompletionOnStep(stepId, false);
+  }
+
   markStepAsCompleted(stepId: string): void {
-    const step = this.findStepById(stepId);
-    if (step) {
-      set(step, 'completed', true);
-    }
-    this.notifySectionChange();
+    this.markCompletionOnStep(stepId, true);
   }
 
   toggleStepVisibility(stepId: string, hidden: boolean): void {
@@ -290,6 +291,14 @@ export default class WizardManager extends Service {
         displayState: 'empty'
       });
     }
+  }
+
+  private markCompletionOnStep(stepId: string, value: boolean): void {
+    const step = this.findStepById(stepId);
+    if (step) {
+      set(step, 'completed', value);
+    }
+    this.notifySectionChange();
   }
 }
 

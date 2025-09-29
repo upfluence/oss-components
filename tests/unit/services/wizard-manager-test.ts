@@ -348,6 +348,15 @@ module('Unit | Service | wizard-manager', function (hooks) {
     assert.true(step1.completed);
   });
 
+  test('markStepAsIncomplete marks a step as incomplete', async function (assert) {
+    this.service.initialize(this.config as WizardConfiguration);
+    await settled();
+    const step1 = this.service.allSteps[0];
+    step1.completed = true;
+    this.service.markStepAsIncomplete(step1.id);
+    assert.false(step1.completed);
+  });
+
   module('ToggleStepVisibility', function (hooks) {
     hooks.beforeEach(function () {
       this.setDisplayStatesStub = sinon.stub(this.service, 'setDisplayStates').resolves();
