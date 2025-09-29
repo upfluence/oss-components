@@ -110,7 +110,7 @@ function computePosition(state: EnableTooltipState) {
       placement: placement,
       cssVariableName: 'modifier-tooltip',
       targetOffset: 9,
-      viewportOffset: 16
+      viewportOffset: 6
     },
     { defaultRotation: 0, height: 4, width: 8 }
   );

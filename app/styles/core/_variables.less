@@ -19,16 +19,18 @@
 
   --topbar-height: 56px;
 
-  --sidebar-width: 60px;
-  --sidebar-bg-color: var(--color-primary-500);
-  --sidebar-font-color: var(--color-white);
-  --sidebar-inner-border-color: var(--color-primary-400);
-  --sidebar-outer-border-color: var(--color-primary-500);
-  --sidebar-item-hover-bg-color: var(--color-primary-600);
-  --sidebar-item-pressed-bg-color: var(--color-primary-400);
-  --sidebar-item-pressed-box-shadow: var(--box-shadow-xs), 0px 0px 0px 2px var(--color-primary-100);
-  --sidebar-item-active-bg-color: var(--color-primary-600);
-  --sidebar-item-active-font-color: var(--color-white);
+  --sidebar-default-width: 48px;
+  --sidebar-expanded-width: 160px;
+  --sidebar-width: var(--sidebar-default-width);
+  --sidebar-bg-color: var(--color-white);
+  --sidebar-font-color: var(--color-gray-600);
+  --sidebar-inner-border-color: var(--color-border-default);
+  --sidebar-outer-border-color: var(--color-border-default);
+  --sidebar-item-hover-font-color: var(--color-gray-900);
+  --sidebar-item-hover-bg-color: var(--color-primary-50);
+  --sidebar-item-pressed-bg-color: var(--color-primary-100);
+  --sidebar-item-active-bg-color: var(--color-primary-50);
+  --sidebar-item-active-font-color: var(--color-primary-500);
   --sidebar-item-lock-bg-color: var(--color-primary-500);
 
   //
@@ -36,6 +38,7 @@
   //
   --spacing-px-3: 3px;
   --spacing-px-9: 9px;
+
   .generate-spacing-vars(60);
   .generate-spacing-vars(@n, @i: 0) when (@i =< @n) {
     --spacing-px-@{i}: calc(@i * 1px);
@@ -87,6 +90,22 @@
     }
     .generate-width-height-pc-classes(@n, (@i + 10));
   }
+}
+
+.padding-px-9 {
+  padding: 9px;
+}
+.padding-left-px-9 {
+  padding-left: 9px;
+}
+.padding-right-px-9 {
+  padding-right: 9px;
+}
+.padding-top-px-9 {
+  padding-top: 9px;
+}
+.padding-bottom-px-9 {
+  padding-bottom: 9px;
 }
 
 .box-shadow-xs {

@@ -2,8 +2,8 @@ import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
 
 export default {
-  title: 'Components/OSS::Layout::Sidebar::Item',
-  component: 'item',
+  title: 'Components/OSS::Layout::Sidebar::Group',
+  component: 'group',
   argTypes: {
     icon: {
       description: 'Font Awesome class, for example: far fa-envelope-open',
@@ -35,8 +35,8 @@ export default {
       },
       control: { type: 'boolean' }
     },
-    hasNotifications: {
-      description: 'Has notifications',
+    collapsible: {
+      description: 'Allow the group to be collapsed',
       table: {
         type: {
           summary: 'boolean'
@@ -45,40 +45,20 @@ export default {
       },
       control: { type: 'boolean' }
     },
-    locked: {
-      description: 'Is item locked',
+    items: {
+      description: 'An array of items to display as children of the group using OSS::Layout::Sidebar::Item',
       table: {
-        type: { summary: 'boolean' },
-        defaultValue: { summary: 'false' }
-      },
-      control: {
-        type: 'boolean'
-      }
-    },
-    link: {
-      description: 'Url or Route to redirect on click',
-      table: {
-        type: { summary: 'string' },
-        defaultValue: { summary: '' }
-      },
-      control: {
-        type: 'text'
-      }
-    },
-    lockedAction: {
-      description: 'Function to be called on click when item is locked',
-      table: {
-        category: 'Actions',
         type: {
-          summary: 'lockedAction(): void'
+          summary: 'GroupItem[]'
         }
-      }
+      },
+      control: { type: 'array' }
     }
   },
   parameters: {
     docs: {
       description: {
-        component: 'Component Item used in sidebar.'
+        component: 'Group component (used in sidebar)'
       },
       iframeHeight: 120
     }
@@ -89,20 +69,34 @@ const defaultArgs = {
   icon: 'far fa-search',
   label: 'Search',
   expanded: false,
-  hasNotifications: false,
-  locked: false,
-  link: 'http://upfluence.com',
-  lockedAction: action('lockedAction')
+  collapsible: true,
+  items: [
+    {
+      icon: 'far fa-search',
+      label: 'Search',
+      expanded: false,
+      hasNotifications: false,
+      locked: false,
+      link: 'http://upfluence.com',
+      lockedAction: action('lockedAction')
+    },
+    {
+      icon: 'far fa-bullseye-pointer',
+      label: 'Live Capture',
+      expanded: false,
+      hasNotifications: true,
+      locked: false,
+      link: 'http://upfluence.com',
+      lockedAction: action('lockedAction')
+    }
+  ]
 };
 
 const Template = (args) => ({
   template: hbs`
     <div style="background: var(--sidebar-bg-color)">
-      <OSS::Layout::Sidebar::Item @icon={{this.icon}} @locked={{this.locked}}
-                                  @hasNotifications={{this.hasNotifications}}
-                                  @link={{this.link}} @label={{this.label}}
-                                  @expanded={{this.expanded}}
-                                  @lockedAction={{this.lockedAction}} />
+      <OSS::Layout::Sidebar::Group
+        @icon={{this.icon}} @label={{this.label}} @expanded={{this.expanded}} @items={{this.items}} />
     </div>
   `,
   context: args
@@ -110,14 +104,12 @@ const Template = (args) => ({
 
 const IconNamedBlockTemplate = (args) => ({
   template: hbs`
-      <OSS::Layout::Sidebar::Item
-        @icon={{this.icon}} @locked={{this.locked}} @hasNotifications={{this.hasNotifications}}
-        @link={{this.link}} @label={{this.label}} @expanded={{this.expanded}} @lockedAction={{this.lockedAction}}
-      >
+      <OSS::Layout::Sidebar::Group
+        @icon={{this.icon}} @label={{this.label}} @expanded={{true}} @items={{this.items}} @collapsible={{this.collapsible}}>
         <:icon>
           <OSS::Icon @icon="fa-ship" />
         </:icon>
-      </OSS::Layout::Sidebar::Item>
+      </OSS::Layout::Sidebar::Group>
   `,
   context: args
 });
