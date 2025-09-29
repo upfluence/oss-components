@@ -1,7 +1,6 @@
 /* global module require __dirname */
 const path = require('path');
 const root = path.join(__dirname, '../');
-const node_modules = path.join(root, 'node_modules');
 const addon_path = path.join(root, 'addon');
 const dummy_path = path.join(root, 'tests/dummy/app');
 
@@ -21,6 +20,7 @@ module.exports = {
 
   addons: [
     '@storybook/addon-links',
+    'storybook-addon-designs',
     {
       name: '@storybook/addon-essentials',
       options: {
