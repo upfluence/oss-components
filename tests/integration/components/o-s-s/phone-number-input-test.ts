@@ -41,6 +41,13 @@ module('Integration | Component | o-s-s/phone-number-input', function (hooks) {
       assert.dom('.upf-infinite-select').exists();
     });
 
+    test('Opening the country selector focuses the search input', async function (assert) {
+      await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
+
+      await click('.country-selector');
+      assert.dom('.upf-infinite-select input').isFocused();
+    });
+
     test('Selecting a new country in the Country selector triggers the onChange method', async function (assert) {
       await render(hbs`<OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />`);
 

@@ -45,6 +45,13 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       assert.dom('.upf-infinite-select').exists();
     });
 
+    test('Opening the currency selector focuses the search input', async function (assert) {
+      await render(hbs`<OSS::CurrencyInput @currency="" @value="" @onChange={{this.onChange}} />`);
+      await click('.currency-selector');
+
+      assert.dom('.upf-infinite-select input').isFocused();
+    });
+
     test('Selecting a new currency in the Currency selector triggers the onChange method', async function (assert) {
       this.currency = '';
       await render(hbs`<OSS::CurrencyInput @currency={{this.currency}} @value="" @onChange={{this.onChange}} />`);
