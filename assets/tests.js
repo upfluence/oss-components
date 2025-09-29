@@ -5437,6 +5437,20 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         await (0, _testHelpers.click)('.currency-selector');
         assert.dom('.upf-infinite-select').exists();
       });
+      (0, _qunit.test)('Opening the currency selector focuses the search input', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CurrencyInput @currency="" @value="" @onChange={{this.onChange}} />
+        */
+        {
+          "id": "1ORNPtBd",
+          "block": "[[[8,[39,0],null,[[\"@currency\",\"@value\",\"@onChange\"],[\"\",\"\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.currency-selector');
+        assert.dom('.upf-infinite-select input').isFocused();
+      });
       (0, _qunit.test)('Selecting a new currency in the Currency selector triggers the onChange method', async function (assert) {
         this.currency = '';
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -10411,6 +10425,20 @@ define("dummy/tests/integration/components/o-s-s/phone-number-input-test", ["qun
         }));
         await (0, _click.default)('.country-selector');
         assert.dom('.upf-infinite-select').exists();
+      });
+      (0, _qunit.test)('Opening the country selector focuses the search input', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::PhoneNumberInput @prefix="" @number="" @onChange={{this.onChange}} />
+        */
+        {
+          "id": "v6OgIA+r",
+          "block": "[[[8,[39,0],null,[[\"@prefix\",\"@number\",\"@onChange\"],[\"\",\"\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/phone-number-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/phone-number-input-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _click.default)('.country-selector');
+        assert.dom('.upf-infinite-select input').isFocused();
       });
       (0, _qunit.test)('Selecting a new country in the Country selector triggers the onChange method', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
