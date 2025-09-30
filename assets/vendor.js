@@ -87424,6 +87424,9 @@ interface OSSCodeBlockArgs {
   }, {
     code: 'RON',
     symbol: 'lei'
+  }, {
+    code: 'AED',
+    symbol: 'د.إ'
   }];
   const AUTHORIZED_INPUTS = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift', 'Control', '.', ',', 'ArrowUp', 'ArrowDown'];
   let OSSCurrencyInput = _exports.default = (_class = class OSSCurrencyInput extends _component2.default {
