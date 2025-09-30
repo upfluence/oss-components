@@ -167,7 +167,11 @@
     </div>
     <div class="fx-col fx-gap-px-24 fx-xalign-center">
       <OSS::Button @label="Toggle loading" {{on "click" this.toggleLoading}} />
-      <OSS::Smart::Immersive::Input @placeholder="Placeholder" @value={{this.value}} @loading={{this.loading}} />
+      <OSS::Smart::Immersive::Input @placeholder="Placeholder" @value={{this.value}} @loading={{this.loading}}>
+        <:suffix>
+          <i class="fas fa-user" />
+        </:suffix>
+      </OSS::Smart::Immersive::Input>
       <OSS::Smart::Immersive::Input
         @placeholder="Placeholder"
         @value={{this.value}}
