@@ -96,11 +96,41 @@ const defaultArgs = {
 
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
-      <Smart::Immersive::Input @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}} @type={{this.type}}
-                               @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} />
+    <OSS::Smart::Immersive::Input @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}} @type={{this.type}}
+                              @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} />
   `,
   context: args
 });
 
 export const BasicUsage = DefaultUsageTemplate.bind({});
 BasicUsage.args = defaultArgs;
+
+const PrefixUsageTemplate = (args) => ({
+  template: hbs`
+      <OSS::Smart::Immersive::Input @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}} @type={{this.type}}
+                               @errorMessage={{this.errorMessage}} @onChange={{this.onChange}}>
+        <:prefix>
+          <i class="fas fa-user" />
+        </:prefix>
+      </OSS::Smart::Immersive::Input>
+  `,
+  context: args
+});
+
+export const PrefixUsage = PrefixUsageTemplate.bind({});
+PrefixUsage.args = defaultArgs;
+
+const SuffixUsageTemplate = (args) => ({
+  template: hbs`
+      <OSS::Smart::Immersive::Input @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}} @type={{this.type}}
+                               @errorMessage={{this.errorMessage}} @onChange={{this.onChange}}>
+        <:suffix>
+          <i class="fas fa-user" />
+        </:suffix>
+      </OSS::Smart::Immersive::Input>
+  `,
+  context: args
+});
+
+export const SuffixUsage = SuffixUsageTemplate.bind({});
+SuffixUsage.args = defaultArgs;

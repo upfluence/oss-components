@@ -89,16 +89,74 @@ module('Integration | Component | o-s-s/smart/immersive/input', function (hooks)
       await renderComponent();
 
       const element = document.querySelector('.smart-immersive-input-container') as HTMLElement;
-      assert.equal(element.offsetWidth, 50);
+      assert.equal(element.offsetWidth, 52);
     });
 
     test('When input has value or placeholder, the size is based on input content', async function (assert) {
       await renderComponent();
 
       const element = document.querySelector('.smart-immersive-input-container') as HTMLElement;
-      assert.equal(element.offsetWidth, 102);
+      assert.equal(element.offsetWidth, 104);
       await typeIn('.smart-immersive-input-container input', 'more text');
-      assert.equal(element.offsetWidth, 156);
+      assert.equal(element.offsetWidth, 158);
+    });
+  });
+
+  module('Prefix name block', () => {
+    test('When no prefix is passed, prefix section is not displayed', async function (assert) {
+      await render(
+        hbs`<OSS::Smart::Immersive::Input @value={{this.value}} 
+                                        @placeholder={{this.placeholder}}
+                                        @loading={{this.loading}}
+                                        @onChange={{this.onChange}} />`
+      );
+
+      assert.dom('.smart-immersive-input-container .prefix').doesNotExist();
+    });
+
+    test('When a prefix is passed, prefix section is displayed properly', async function (assert) {
+      await render(
+        hbs`<OSS::Smart::Immersive::Input @value={{this.value}} 
+                                        @placeholder={{this.placeholder}}
+                                        @loading={{this.loading}}
+                                        @onChange={{this.onChange}}>
+            <:prefix>
+              <i class="fas fa-user" />
+            </:prefix>
+          </OSS::Smart::Immersive::Input>`
+      );
+
+      assert.dom('.smart-immersive-input-container .prefix').exists();
+      assert.dom('.smart-immersive-input-container .prefix i.fas.fa-user').exists();
+    });
+  });
+
+  module('Suffix name block', () => {
+    test('When no suffix is passed, suffix section is not displayed', async function (assert) {
+      await render(
+        hbs`<OSS::Smart::Immersive::Input @value={{this.value}} 
+                                        @placeholder={{this.placeholder}}
+                                        @loading={{this.loading}}
+                                        @onChange={{this.onChange}} />`
+      );
+
+      assert.dom('.smart-immersive-input-container .suffix').doesNotExist();
+    });
+
+    test('When a suffix is passed, suffix section is displayed properly', async function (assert) {
+      await render(
+        hbs`<OSS::Smart::Immersive::Input @value={{this.value}} 
+                                        @placeholder={{this.placeholder}}
+                                        @loading={{this.loading}}
+                                        @onChange={{this.onChange}}>
+            <:suffix>
+              <i class="fas fa-user" />
+            </:suffix>
+          </OSS::Smart::Immersive::Input>`
+      );
+
+      assert.dom('.smart-immersive-input-container .suffix').exists();
+      assert.dom('.smart-immersive-input-container .suffix i.fas.fa-user').exists();
     });
   });
 
