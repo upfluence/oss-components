@@ -4,6 +4,7 @@
       <OSS::Layout::Sidebar::Item
         @link={{or @homeParameters.url @homeURL}}
         @expanded={{this.expanded}}
+        data-control-name="sidebar-home-route-item"
         {{enable-tooltip title=@homeParameters.tooltip placement="right"}}
       >
         <:icon>
