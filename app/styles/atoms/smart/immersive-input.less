@@ -18,17 +18,42 @@
     }
   }
 
+  .smart-immersive--input-container {
+    display: flex;
+    border: 1px dashed var(--color-gray-400);
+    border-radius: var(--border-radius-sm);
+    height: 32px;
+    overflow: hidden;
+
+    .prefix,
+    .suffix {
+      display: flex;
+      position: relative;
+      background-color: var(--color-gray-100);
+      color: var(--color-gray-500);
+    }
+
+    &:focus,
+    &:active,
+    &:hover {
+      border: 1px dashed var(--color-gray-600);
+      background-color: transparent;
+      box-shadow: none;
+    }
+  }
+
   &.oss-input-container {
     .smart-immersive--input,
     .loading-placeholder {
-      height: 32px;
+      height: 100%;
       min-width: 50px;
-      border: 1px dashed var(--color-gray-400);
+      border: 0;
+      border-radius: 0;
 
       &:focus,
       &:active,
       &:hover {
-        border: 1px dashed var(--color-gray-600);
+        border: 0;
         background-color: transparent;
         box-shadow: none;
       }
@@ -69,16 +94,19 @@
   }
 
   &.oss-input-container.smart-rotating-gradient {
-    .smart-immersive--input {
+    .smart-immersive--input-container {
       border: 1px dashed transparent;
     }
   }
 
   &--filled {
     &.oss-input-container {
-      .smart-immersive--input {
-        color: var(--color-primary-400);
+      .smart-immersive--input-container {
         border-color: var(--color-primary-400);
+
+        .smart-immersive--input {
+          color: var(--color-primary-400);
+        }
 
         &:focus,
         &:active {
@@ -86,15 +114,30 @@
         }
 
         &:hover:not(:focus, :active) {
-          color: var(--color-primary-300);
           border: 1px dashed var(--color-primary-300);
+
+          .smart-immersive--input {
+            color: var(--color-primary-300);
+          }
+
+          .prefix,
+          .suffix {
+            color: var(--color-primary-300);
+          }
+        }
+
+        .prefix,
+        .suffix {
+          background-color: var(--color-primary-50);
+          color: var(--color-primary-400);
         }
       }
     }
   }
+
   &--warning {
     &.oss-input-container {
-      .smart-immersive--input {
+      .smart-immersive--input-container {
         border-color: var(--color-warning-500);
 
         &:hover:not(:focus, :active),
@@ -108,7 +151,7 @@
 
   &--success {
     &.oss-input-container {
-      .smart-immersive--input {
+      .smart-immersive--input-container {
         border-color: var(--color-success-500);
 
         &:hover:not(:focus, :active),
@@ -123,7 +166,7 @@
   &--errored,
   &--error {
     &.oss-input-container {
-      .smart-immersive--input {
+      .smart-immersive--input-container {
         border-color: var(--color-error-500);
 
         &:hover:not(:focus, :active),
