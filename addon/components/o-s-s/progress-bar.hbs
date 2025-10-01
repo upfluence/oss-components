@@ -5,19 +5,44 @@
     </span>
   {{/if}}
   <div class="oss-progress-bar__outer">
-    <div
-      class="oss-progress-bar__inner"
-      role="progressbar"
-      aria-valuenow={{@value}}
-      aria-valuemin="0"
-      aria-valuemax="100"
-      style={{this.progressBarWidthStyle}}
-    >
-    </div>
+    {{!-- Check if multi-skin mode is enabled --}}
+    {{#if this.hasSkins}}
+      {{!-- Multi-skin mode: render multiple progress segments side by side --}}
+      <div class="oss-progress-bar__segments">
+        {{!-- Loop through each skin segment with its calculated width --}}
+        {{#each this.progressSegments as |segment|}}
+          <div
+            class="oss-progress-bar__inner oss-progress-bar__inner--{{segment.skin}}"
+            role="progressbar"
+            aria-valuenow={{segment.value}}
+            aria-valuemin="0"
+            aria-valuemax="100"
+            style="width: {{segment.width}};"
+          >
+          </div>
+        {{/each}}
+      </div>
+    {{else}}
+      {{!-- Single-skin mode: render traditional single progress bar --}}
+      <div
+        class="oss-progress-bar__inner"
+        role="progressbar"
+        aria-valuenow={{@value}}
+        aria-valuemin="0"
+        aria-valuemax="100"
+        style={{this.progressBarWidthStyle}}
+      >
+      </div>
+    {{/if}}
   </div>
   {{#if @displayValue}}
     <span class="oss-progress-bar__value">
-      {{@value}}%
+      {{!-- Display total progress for multi-skin or single value for standard mode --}}
+      {{#if this.hasSkins}}
+        {{this.totalProgress}}%
+      {{else}}
+        {{@value}}%
+      {{/if}}
     </span>
   {{/if}}
 </div>
