@@ -97,10 +97,14 @@
   &__inner {
     width: 0;
     height: 10px;
-    animation: oss-progress-bar-animation 1s;
     border-radius: var(--border-radius-xs) 0 0 var(--border-radius-xs);
-    transition: width 0.6s ease;
     background-color: var(--color-primary-500);
+    transition: width 0.6s ease;
+
+    // Add initial animation for first render
+    &.oss-progress-bar__inner--initial {
+      animation: oss-progress-bar-animation 1s ease forwards;
+    }
 
     &--warning {
       background-color: var(--color-warning-500);
@@ -121,6 +125,12 @@
   &--multi-skin {
     .oss-progress-bar__inner {
       border-radius: 0;
+      transition: width 0.6s ease;
+
+      // Add initial animation for multi-skin segments
+      &.oss-progress-bar__inner--initial {
+        animation: oss-progress-bar-animation 1s ease forwards;
+      }
 
       &:first-child {
         border-radius: var(--border-radius-xs) 0 0 var(--border-radius-xs);
@@ -137,11 +147,11 @@
   }
 }
 
+// CSS animation for initial render
 @keyframes oss-progress-bar-animation {
   from {
-    width: 0;
+    width: 0%;
   }
-
   to {
     width: var(--progress-bar-animation-width);
   }
