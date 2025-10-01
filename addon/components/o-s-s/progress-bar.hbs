@@ -1,43 +1,38 @@
 <div class={{this.computedStyles}} ...attributes>
   {{#if @label}}
-    <span class="oss-progress-bar__label">
-      {{@label}}
-    </span>
+    <span class="oss-progress-bar__label">{{@label}}</span>
   {{/if}}
+
   <div class="oss-progress-bar__outer">
-    {{!-- Check if multi-skin mode is enabled --}}
     {{#if this.hasSkins}}
-      {{!-- Multi-skin mode: render multiple progress segments side by side --}}
       <div class="oss-progress-bar__segments">
-        {{!-- Loop through each skin segment with its calculated width --}}
-        {{#each this.progressSegments as |segment|}}
-          <div
-            class="oss-progress-bar__inner oss-progress-bar__inner--{{segment.skin}}"
-            role="progressbar"
-            aria-valuenow={{segment.value}}
-            aria-valuemin="0"
-            aria-valuemax="100"
-            style="width: {{segment.width}};"
-          >
-          </div>
+        {{#each this.progressSegments as |skin|}}
+          {{#if (this.isSegmentVisible skin=skin)}}
+            <div
+              class={{this.getSegmentClasses skin=skin}}
+              role="progressbar"
+              aria-valuenow={{this.getSegmentValue skin=skin}}
+              aria-valuemin="0"
+              aria-valuemax="100"
+              style={{this.progressBarStyle value=(this.getSegmentValue skin=skin)}}
+            ></div>
+          {{/if}}
         {{/each}}
       </div>
     {{else}}
-      {{!-- Single-skin mode: render traditional single progress bar --}}
       <div
-        class="oss-progress-bar__inner"
+        class={{this.progressBarInnerClasses}}
         role="progressbar"
         aria-valuenow={{@value}}
         aria-valuemin="0"
         aria-valuemax="100"
         style={{this.progressBarWidthStyle}}
-      >
-      </div>
+      ></div>
     {{/if}}
   </div>
+
   {{#if @displayValue}}
     <span class="oss-progress-bar__value">
-      {{!-- Display total progress for multi-skin or single value for standard mode --}}
       {{#if this.hasSkins}}
         {{this.totalProgress}}%
       {{else}}
