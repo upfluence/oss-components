@@ -729,6 +729,29 @@
       <OSS::ProgressBar @value={{78}} @displayValue={{true}} @label="Hello" @secondarySkin="danger" @size="sm" />
       <OSS::ProgressBar @value={{62}} @displayValue={{true}} @skin="success" @secondarySkin="danger" @size="sm" />
     </div>
+
+    <div class="font-size-sm font-weight-semibold margin-top-px-12">
+      Multi-skin Progress bars
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <OSS::ProgressBar
+        @skins={{hash success=30 warning=25 danger=15}}
+        @displayValue={{true}}
+        @label="Multi-segment example (70%)"
+      />
+      <OSS::ProgressBar
+        @skins={{hash success=50 warning=20 danger=30}}
+        @displayValue={{true}}
+        @label="Complete progress (100%)"
+        @size="sm"
+      />
+      <OSS::ProgressBar
+        @skins={{hash success=45 danger=10}}
+        @displayValue={{true}}
+        @label="Partial progress (55%)"
+        @coloredBackground={{true}}
+      />
+    </div>
   </div>
 
   <div
