@@ -1,0 +1,23 @@
+<div class="oss-smart__feedback {{this.currentStateClass}} fx-row fx-gap-px-18 fx-xalign-center" ...attributes>
+  <div>
+    {{yield to="icon"}}
+  </div>
+  <div class="oss-smart__feedback__content">
+    {{#if @loading}}
+      <div class="fx-col fx-1 fx-gap-px-10">
+        <OSS::Smart::Skeleton @width="75%" height="10px" />
+        <OSS::Smart::Skeleton @width="45%" height="10px" />
+      </div>
+    {{else}}
+      {{#if @contentString}}
+        <span class="oss-smart__feedback__content__text">{{@contentString}}</span>
+      {{else if @contentArray}}
+        <span class="oss-smart__feedback__content__text">
+          {{#each @contentArray as |item|}}
+            {{item}}
+          {{/each}}
+        </span>
+      {{/if}}
+    {{/if}}
+  </div>
+</div>

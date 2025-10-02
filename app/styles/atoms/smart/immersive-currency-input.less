@@ -1,0 +1,159 @@
+.smart-immersive-currency-input-container {
+  .currency-input-container;
+  width: fit-content;
+  flex: none;
+
+  &.smart-rotating-gradient {
+    .smart-immersive-currency-input {
+      border: 1px dashed transparent;
+    }
+  }
+
+  & * {
+    .font-weight-semibold;
+  }
+
+  .smart-immersive-currency-input {
+    .currency-input;
+    width: fit-content;
+    height: 32px;
+    border: 1px dashed var(--color-gray-400);
+    border-radius: var(--border-radius-sm);
+    background-color: var(--color-white);
+
+    &:not(.disabled, :disabled) {
+
+      &:hover,
+      &:focus-within {
+        border: 1px dashed var(--color-gray-500);
+        background-color: transparent;
+        box-shadow: none;
+      }
+    }
+
+    .currency-selector {
+      gap: var(--spacing-px-6);
+      padding: 10px;
+      width: 50px;
+      height: 100%;
+      border-right: none;
+      color: var(--color-gray-500);
+    }
+
+    .input-container {
+      min-width: 50px;
+      width: min-content;
+
+      .hidden-span {
+        height: 0px;
+        display: block;
+        padding: 0 6px;
+        visibility: hidden;
+        width: fit-content;
+        white-space: pre;
+      }
+
+      .displayed-input {
+        width: 100%;
+        padding: 5px 6px;
+        color: var(--color-gray-400);
+
+        &::placeholder {
+          color: var(--color-gray-400);
+        }
+      }
+    }
+
+    .displayed-input,
+    .loading-placeholder {
+      height: 32px;
+      min-width: 50px;
+      border: 1px transparent;
+    }
+
+    .loading-placeholder {
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      width: fit-content;
+      position: relative;
+      padding: 0;
+
+      .rainbow-text-animated {
+        .font-weight-semibold;
+        background: linear-gradient(130deg,
+            var(--color-gray-400) 18%,
+            var(--color-gray-300) 25%,
+            rgba(250, 198, 255, 1) 56%,
+            var(--color-primary-100) 62%,
+            var(--color-white) 66%,
+            rgba(250, 198, 255, 0.58) 68%,
+            var(--color-gray-300) 73%,
+            var(--color-gray-400) 85%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: smart_loading_text_animation 3.5s ease-in-out infinite;
+        background-size: 600% 100%;
+        padding: 5px 6px;
+      }
+    }
+  }
+
+  &--filled {
+    .smart-immersive-currency-input {
+      border-color: var(--color-primary-400);
+
+      .currency-selector,
+      .input-container .displayed-input {
+        transition: all 250ms ease-in-out;
+        color: var(--color-primary-400);
+      }
+
+      .currency-selector {
+        background-color: var(--color-primary-50);
+      }
+
+      &:not(.disabled, :disabled) {
+
+        &:focus-within,
+        &:active {
+          border-color: var(--color-primary-400);
+        }
+      }
+
+      &:hover:not(:focus, :active) {
+        border: 1px dashed var(--color-primary-300);
+
+        .currency-selector,
+        .displayed-input {
+          color: var(--color-primary-300);
+        }
+      }
+    }
+  }
+
+  &--errored {
+    .smart-immersive-currency-input {
+      .border-color-error;
+
+      &:not(.disabled, :disabled) {
+
+        &:focus-within,
+        &:hover {
+          .border-color-error;
+        }
+      }
+    }
+  }
+}
+
+@keyframes smart_loading_text_animation {
+  0% {
+    background-position: 100% 0;
+  }
+
+  100% {
+    background-position: 0 0%;
+  }
+}

@@ -1,9 +1,14 @@
 <div class={{this.computedClasses}} ...attributes>
-  <div class="currency-input fx-row fx-1 fx-xalign-center
-              {{if @onlyCurrency 'onlycurrency'}} {{if this.currencySelectorShown 'currency-input--active'}}">
-    <div class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center"
-         role={{if this.allowCurrencyUpdate 'button' 'img'}}
-         {{on "click" this.toggleCurrencySelector}}>
+  <div
+    class="currency-input fx-row fx-1 fx-xalign-center
+      {{if @onlyCurrency 'onlycurrency'}}
+      {{if this.currencySelectorShown 'currency-input--active'}}"
+  >
+    <div
+      class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center"
+      role={{if this.allowCurrencyUpdate "button" "img"}}
+      {{on "click" this.toggleCurrencySelector}}
+    >
       <div class="fx-col">
         <div class="fx-row fx-gap-px-9">
           <span>{{this.selectedCurrencySymbol}}</span>
@@ -14,8 +19,10 @@
       </div>
 
       {{#if (and this.allowCurrencyUpdate (not this.disabled))}}
-        <OSS::Icon @icon="{{if this.currencySelectorShown "fa-chevron-up" "fa-chevron-down"}}"
-                   class="margin-left-px-6" />
+        <OSS::Icon
+          @icon="{{if this.currencySelectorShown 'fa-chevron-up' 'fa-chevron-down'}}"
+          class="margin-left-px-6"
+        />
       {{/if}}
     </div>
     {{#unless @onlyCurrency}}

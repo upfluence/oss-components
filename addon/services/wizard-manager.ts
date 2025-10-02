@@ -30,6 +30,7 @@ export type ConfigurationOptions = {
   centerStepsInContainer?: boolean;
   stepWrapperBaseClass?: string;
   containerClass?: string;
+  skipScrollEventsClass?: string;
 };
 
 export type WizardConfiguration = {
@@ -52,6 +53,7 @@ export default class WizardManager extends Service {
   @tracked sections: Section[] = [];
   @tracked declare focusedStepId: string;
   @tracked declare configOptions: ConfigurationOptions;
+  @tracked wheelEnabled: boolean = true;
 
   get allSteps(): Step[] {
     return this.sections.flatMap((section: Section) => section.steps);
@@ -77,7 +79,10 @@ export default class WizardManager extends Service {
     const firstFocusableStep = this.sections[0]?.steps.find((step: Step) => step.displayState !== 'empty');
     if (firstFocusableStep) {
       this.focusedStepId = firstFocusableStep.id;
-      this.selectStep(firstFocusableStep.id);
+      this.setDisplayStates();
+      next(this, () => {
+        document.getElementById(firstFocusableStep.id)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
     }
   }
 
@@ -111,7 +116,7 @@ export default class WizardManager extends Service {
           this.focusStep(stepId);
         } else {
           const firstInvalidIndex = results.findIndex((result: boolean) => !result);
-          if (firstInvalidIndex !== -1) {
+          if (firstInvalidIndex !== -1 && currentStepIndex !== currentStepIndex + firstInvalidIndex) {
             this.focusStep(this.allSteps[currentStepIndex + firstInvalidIndex]?.id ?? '');
           }
         }
@@ -146,12 +151,12 @@ export default class WizardManager extends Service {
     this.configOptions = {};
   }
 
+  markStepAsIncomplete(stepId: string): void {
+    this.markCompletionOnStep(stepId, false);
+  }
+
   markStepAsCompleted(stepId: string): void {
-    const step = this.findStepById(stepId);
-    if (step) {
-      set(step, 'completed', true);
-    }
-    this.notifySectionChange();
+    this.markCompletionOnStep(stepId, true);
   }
 
   toggleStepVisibility(stepId: string, hidden: boolean): void {
@@ -161,6 +166,14 @@ export default class WizardManager extends Service {
       this.setDisplayStates();
       this.notifySectionChange();
     }
+  }
+
+  enableWheelScroll(): void {
+    this.wheelEnabled = true;
+  }
+
+  disableWheelScroll(): void {
+    this.wheelEnabled = false;
   }
 
   private get currentSection(): Section | undefined {
@@ -182,18 +195,29 @@ export default class WizardManager extends Service {
   private findFirstFocusableStepInSection(sectionId: string): Step | undefined {
     const section = this.sections.find((section: Section) => section.id === sectionId);
     if (section) {
-      return section.steps.find((step: Step) => step.displayState !== 'empty');
+      return section.steps.find((step: Step) => step.displayState !== 'empty' && !step.hidden);
     }
     return undefined;
   }
 
   private focusStep(stepId: string): void {
-    const stepExists = this.sections.some((section: Section) => section.steps.some((step: Step) => step.id === stepId));
-    if (stepExists) {
-      set(this, 'focusedStepId', stepId);
+    const stepPosition: 'before' | 'after' =
+      this.findIndexOfStep(stepId) > this.findIndexOfStep(this.focusedStepId) ? 'after' : 'before';
+
+    let targetStep = stepPosition === 'after' ? this.nextStep : this.previousStep;
+    if (!targetStep) {
+      targetStep = this.findStepById(stepId);
+    }
+    if (targetStep) {
+      set(this, 'focusedStepId', targetStep.id);
       this.setDisplayStates();
       next(this, () => {
         document.getElementById(stepId)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (stepId !== this.focusedStepId) {
+          next(this, () => {
+            this.focusStep(stepId);
+          });
+        }
       });
     }
   }
@@ -267,6 +291,14 @@ export default class WizardManager extends Service {
         displayState: 'empty'
       });
     }
+  }
+
+  private markCompletionOnStep(stepId: string, value: boolean): void {
+    const step = this.findStepById(stepId);
+    if (step) {
+      set(step, 'completed', value);
+    }
+    this.notifySectionChange();
   }
 }
 
