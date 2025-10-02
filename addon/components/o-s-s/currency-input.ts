@@ -50,8 +50,7 @@ export const PLATFORM_CURRENCIES: Currency[] = [
   { code: 'DKK', symbol: 'kr' },
   { code: 'PLN', symbol: 'zł' },
   { code: 'CZK', symbol: 'Kč' },
-  { code: 'RON', symbol: 'lei' },
-  { code: 'AED', symbol: 'د.إ' }
+  { code: 'RON', symbol: 'lei' }
 ];
 const AUTHORIZED_INPUTS = [
   'Backspace',
