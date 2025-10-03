@@ -2,7 +2,7 @@ import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 
-interface OSSNumberInputArgs {
+export interface OSSNumberInputArgs {
   value?: number;
   min?: number;
   max?: number;
@@ -21,7 +21,7 @@ const DECREASE_VALUE_KEYS = ['ArrowDown', 'ArrowLeft'];
 const BASE_INPUT_PIXEL_WIDTH = 40;
 const CHAR_PIXEL_WIDTH = 7;
 
-export default class OSSNumberInput extends Component<OSSNumberInputArgs> {
+export default class OSSNumberInput<T extends OSSNumberInputArgs> extends Component<T> {
   @tracked localValue: number = this.args.value || DEFAULT_VALUE;
   @tracked reachedTooltip: string | null = null;
   @tracked inputElement: HTMLElement | null = null;
