@@ -19,6 +19,11 @@ interface OSSInputContainerArgs {
   onChange?(value: string): void;
 }
 
+const NUMERIC = /^\d*(?:\.\d*)?$/;
+const NOT_NUMERIC = /[^\d.]/g;
+const DOTS = /\./g;
+const NUMBER_INPUT_PASSTHROUGH = ['deleteContentBackward', 'insertText', 'insertFromPaste'];
+
 export const AutocompleteValues = ['on', 'off'];
 
 export default class OSSInputContainer extends Component<OSSInputContainerArgs> {
@@ -52,24 +57,40 @@ export default class OSSInputContainer extends Component<OSSInputContainerArgs> 
 
   @action
   _onChange(value: string): void {
+    console.log(value);
     if (this.args.onChange) {
       this.args.onChange(value);
     }
   }
 
   @action
-  onPaste(event: ClipboardEvent): void {
+  registerBeforeInput(element: HTMLInputElement) {
+    element.addEventListener('beforeinput', this.beforeInputHandler);
+  }
+
+  @action
+  beforeInputHandler(event: InputEvent) {
+    if (this.type !== 'number' || !event.data || !NUMBER_INPUT_PASSTHROUGH.includes(event.inputType)) return;
+    if (this.type === 'number' && !NUMERIC.test(event.data)) event.preventDefault();
+  }
+
+  @action
+  onPaste(event: ClipboardEvent) {
     const element = event.target as HTMLInputElement;
-    next(this, () => {
-      this.args.onChange?.(
-        this.replaceStringAtRange(
-          element.value,
-          element.selectionStart ?? 0,
-          element.selectionEnd ?? 0,
-          event.clipboardData?.getData('Text') ?? ''
-        )
-      );
-    });
+    const paste = event.clipboardData?.getData('Text') ?? '';
+    let value = '';
+
+    if (element.type === 'number') {
+      event.preventDefault();
+
+      let cleanedPaste = paste.replace(NOT_NUMERIC, '');
+      element.value = element.value + (element.value.includes('.') ? cleanedPaste.replace(DOTS, '') : cleanedPaste);
+      value = element.value;
+    } else {
+      value = this.replaceStringAtRange(element.value, element.selectionStart ?? 0, element.selectionEnd ?? 0, paste);
+    }
+
+    next(this, () => this.args.onChange?.(value));
   }
 
   private replaceStringAtRange(s: string, start: number, end: number, substitute: string): string {

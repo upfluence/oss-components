@@ -24,6 +24,7 @@
         class="upf-input"
         {{on "keyup" (fn this._onChange @value)}}
         {{on "paste" this.onPaste}}
+        {{did-insert this.registerBeforeInput}}
       />
     {{/if}}
 
