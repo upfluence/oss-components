@@ -1,0 +1,153 @@
+.oss-smart-number-input-container {
+  .smart-number-input {
+    .number-input;
+
+    &:active,
+    &:focus-within {
+      .input-state-active;
+      border-color: var(--color-primary-400);
+      box-shadow: none;
+    }
+
+    border: 1px dashed var(--color-primary-400);
+    background-color: var(--color-white);
+    transition: all 0.2s ease;
+
+    .upf-square-btn {
+      background-color: var(--color-primary-50);
+      color: var(--color-primary-400);
+      border: none;
+      transition: all 0.2s ease;
+
+      &:hover:not(:disabled) {
+        background-color: var(--color-gray-100);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+    }
+
+    i,
+    input {
+      color: var(--color-primary-400);
+    }
+
+    .oss-input-container {
+      border: none;
+      background: transparent;
+
+      .upf-input {
+        border: none;
+        background: transparent;
+        color: var(--color-primary-400);
+
+        i,
+        input {
+          color: var(--color-gray-500);
+        }
+
+        &:focus {
+          border: none;
+          box-shadow: none;
+          background: transparent;
+        }
+
+        &:hover {
+          background: transparent;
+        }
+      }
+    }
+
+    &:hover:not(.smart-number-input--filled):not(.smart-number-input--errored):not(.smart-number-input--loading) {
+      .upf-square-btn {
+        background-color: var(--color-gray-100);
+        color: var(--color-gray-700);
+      }
+
+      i,
+      input {
+        color: var(--color-gray-700);
+      }
+    }
+
+    &:focus-within:not(.smart-number-input--filled):not(.smart-number-input--errored):not(
+        .smart-number-input--loading
+      ) {
+      border: 1px dashed var(--color-gray-500);
+
+      .upf-square-btn {
+        color: var(--color-gray-700);
+      }
+
+      i,
+      input {
+        color: var(--color-gray-700);
+      }
+
+      .upf-input {
+        cursor: text;
+      }
+    }
+
+    &--filled {
+      border-color: var(--color-primary-500);
+      background-color: var(--color-white);
+
+      .upf-square-btn {
+        background-color: var(--color-primary-100);
+        color: var(--color-primary-500);
+
+        &:hover:not(:disabled) {
+          background-color: var(--color-primary-200);
+        }
+      }
+
+      i,
+      input {
+        color: var(--color-primary-500);
+      }
+
+      &:hover {
+        border-color: var(--color-primary-400);
+
+        .upf-square-btn {
+          background-color: var(--color-primary-200);
+        }
+
+        i,
+        input {
+          color: var(--color-primary-400);
+        }
+      }
+    }
+
+    &--errored {
+      border: 1px dashed var(--color-error-500);
+      background-color: var(--color-white);
+
+      .upf-square-btn {
+        background-color: var(--color-gray-100);
+        color: var(--color-gray-500);
+      }
+
+      .oss-input-container .upf-input {
+        color: var(--color-gray-500);
+      }
+
+      i {
+        color: var(--color-gray-500);
+      }
+
+      &:hover {
+        border-color: var(--color-error-600);
+      }
+
+      &:focus-within {
+        border: 1px dashed var(--color-error-600);
+        box-shadow: none;
+      }
+    }
+  }
+}

@@ -30,6 +30,20 @@
     class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
   >
     <div class="font-size-md font-weight-semibold">
+      Number input
+    </div>
+    <div class="fx-col fx-gap-px-24">
+      <div class="fx-row fx-gap-px-24 fx-xalign-center">
+        <OSS::Smart::NumberInput @value={{this.numberValue}} @onChange={{this.onNumberChange}} @hasError={{true}} />
+        <OSS::Smart::NumberInput @value={{this.numberValue}} @onChange={{this.onNumberChange}} />
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
       Smart tag & Smart tag input
     </div>
     <div class="fx-col fx-gap-px-24">
