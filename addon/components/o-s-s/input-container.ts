@@ -57,10 +57,7 @@ export default class OSSInputContainer extends Component<OSSInputContainerArgs> 
 
   @action
   _onChange(value: string): void {
-    console.log(value);
-    if (this.args.onChange) {
-      this.args.onChange(value);
-    }
+    this.args.onChange?.(value);
   }
 
   @action
