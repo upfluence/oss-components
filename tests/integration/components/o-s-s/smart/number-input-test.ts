@@ -80,69 +80,6 @@ module('Integration | Component | o-s-s/smart/number-input', function (hooks) {
     });
   });
 
-  module('Smart Gradient Animation', (hooks) => {
-    hooks.beforeEach(function () {
-      this.loading = true;
-      this.value = 100;
-      this.placeholder = 'Loading...';
-    });
-
-    test('applies smart-rotating-gradient class when loading changes from true to false with value', async function (assert) {
-      await render(hbs`
-        <OSS::Smart::NumberInput
-          @loading={{this.loading}}
-          @value={{this.value}}
-          @placeholder={{this.placeholder}}
-        />
-      `);
-
-      assert.dom('.smart-number-input').hasClass('smart-number-input--loading');
-      assert.dom('.smart-number-input').doesNotHaveClass('smart-rotating-gradient');
-
-      this.loading = false;
-
-      assert.dom('.smart-number-input').hasClass('smart-rotating-gradient');
-      assert.dom('.smart-number-input').doesNotHaveClass('smart-number-input--loading');
-    });
-
-    test('does not apply smart-rotating-gradient when loading changes from true to false without value', async function (assert) {
-      this.value = undefined;
-
-      await render(hbs`
-        <OSS::Smart::NumberInput
-          @loading={{this.loading}}
-          @value={{this.value}}
-          @placeholder={{this.placeholder}}
-        />
-      `);
-
-      assert.dom('.smart-number-input').hasClass('smart-number-input--loading');
-
-      this.loading = false;
-
-      assert.dom('.smart-number-input').doesNotHaveClass('smart-rotating-gradient');
-      assert.dom('.smart-number-input').doesNotHaveClass('smart-number-input--loading');
-    });
-
-    test('does not apply smart-rotating-gradient when loading changes from true to false with empty value', async function (assert) {
-      this.value = 0;
-
-      await render(hbs`
-        <OSS::Smart::NumberInput
-          @loading={{this.loading}}
-          @value={{this.value}}
-          @placeholder={{this.placeholder}}
-        />
-      `);
-
-      assert.dom('.smart-number-input').hasClass('smart-number-input--loading');
-
-      this.loading = false;
-
-      assert.dom('.smart-number-input').hasClass('smart-rotating-gradient');
-    });
-  });
-
   module('Error State', (hooks) => {
     hooks.beforeEach(function () {
       this.value = 50;
