@@ -5,7 +5,7 @@
     &:active,
     &:focus-within {
       .input-state-active;
-      border-color: var(--color-primary-400);
+      border: 1px dashed var(--color-primary-400);
       box-shadow: none;
     }
 
@@ -18,10 +18,6 @@
       color: var(--color-primary-400);
       border: none;
       transition: all 0.2s ease;
-
-      &:hover:not(:disabled) {
-        background-color: var(--color-gray-100);
-      }
 
       &:disabled {
         opacity: 0.5;
@@ -92,33 +88,25 @@
     }
 
     &--filled {
-      border-color: var(--color-primary-500);
+      border-color: var(--color-primary-400);
       background-color: var(--color-white);
 
       .upf-square-btn {
         background-color: var(--color-primary-50);
-        color: var(--color-primary-500);
-
-        &:hover:not(:disabled) {
-          background-color: var(--color-primary-200);
-        }
+        color: var(--color-primary-400);
       }
 
       i,
       input {
-        color: var(--color-primary-500);
+        color: var(--color-primary-400);
       }
 
       &:hover {
-        border-color: var(--color-primary-400);
-
-        .upf-square-btn {
-          background-color: var(--color-primary-200);
-        }
+        border-color: var(--color-primary-300);
 
         i,
         input {
-          color: var(--color-primary-400);
+          color: var(--color-primary-300);
         }
       }
     }
