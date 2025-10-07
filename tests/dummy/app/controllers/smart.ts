@@ -61,6 +61,7 @@ export default class Smart extends Controller {
   @tracked inputValue: string = '';
   @tracked textAreaValue: string = '';
   @tracked multilinePlaceholder: string = 'Small placeholder\nwith multiple\nlines';
+  @tracked numberValue: number = 42;
 
   constructor() {
     super(...arguments);
@@ -203,6 +204,12 @@ export default class Smart extends Controller {
   onTextAreaChange(value: string): void {
     console.log('Text area value changed:', value);
     this.textAreaValue = value;
+  }
+
+  @action
+  onNumberChange(value: number): void {
+    console.log('Number value changed:', value);
+    this.numberValue = value;
   }
 
   @action
