@@ -2,15 +2,31 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import { setupIntl } from 'ember-intl/test-support';
 
 module('Integration | Component | o-s-s/empty-state', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
 
   test('it renders with default properties', async function (assert) {
     await render(hbs`<OSS::EmptyState @title="No Data" @subtitle="Try again later" />`);
 
     assert.dom('div.font-color-gray-900').hasText('No Data');
     assert.dom('div.font-color-gray-500').hasText('Try again later');
+  });
+
+  test('it renders with SafeString inputs', async function (assert) {
+    this.title = this.intl.t('oss-components.infinite-select.no-match.title', { htmlSafe: true });
+    this.subtitle = this.intl.t('oss-components.infinite-select.no-match.description', { htmlSafe: true });
+
+    await render(hbs`<OSS::EmptyState @title={{this.title}} @subtitle={{this.subtitle}} />`);
+
+    assert
+      .dom('div.font-color-gray-900')
+      .hasText(this.intl.t('oss-components.infinite-select.no-match.title', { htmlSafe: true }).toString());
+    assert
+      .dom('div.font-color-gray-500')
+      .hasText(this.intl.t('oss-components.infinite-select.no-match.description', { htmlSafe: true }).toString());
   });
 
   test('it renders with a badge icon', async function (assert) {
