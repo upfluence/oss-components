@@ -6213,12 +6213,13 @@ define("dummy/tests/integration/components/o-s-s/email-input-test", ["qunit", "e
     });
   });
 });
-define("dummy/tests/integration/components/o-s-s/empty-state-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+define("dummy/tests/integration/components/o-s-s/empty-state-test", ["qunit", "ember-qunit", "@ember/test-helpers", "ember-intl/test-support", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _testSupport, _templateFactory) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"ember-intl/test-support"eaimeta@70e063a35619d71f
   (0, _qunit.module)('Integration | Component | o-s-s/empty-state', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _testSupport.setupIntl)(hooks);
     (0, _qunit.test)('it renders with default properties', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
@@ -6232,6 +6233,30 @@ define("dummy/tests/integration/components/o-s-s/empty-state-test", ["qunit", "e
       }));
       assert.dom('div.font-color-gray-900').hasText('No Data');
       assert.dom('div.font-color-gray-500').hasText('Try again later');
+    });
+    (0, _qunit.test)('it renders with SafeString inputs', async function (assert) {
+      this.title = this.intl.t('oss-components.infinite-select.no-match.title', {
+        htmlSafe: true
+      });
+      this.subtitle = this.intl.t('oss-components.infinite-select.no-match.description', {
+        htmlSafe: true
+      });
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::EmptyState @title={{this.title}} @subtitle={{this.subtitle}} />
+      */
+      {
+        "id": "grwzHuRs",
+        "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/empty-state\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/empty-state-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('div.font-color-gray-900').hasText(this.intl.t('oss-components.infinite-select.no-match.title', {
+        htmlSafe: true
+      }).toString());
+      assert.dom('div.font-color-gray-500').hasText(this.intl.t('oss-components.infinite-select.no-match.description', {
+        htmlSafe: true
+      }).toString());
     });
     (0, _qunit.test)('it renders with a badge icon', async function (assert) {
       this.set('image', 'fa-thumbs-up');

@@ -88177,11 +88177,14 @@ interface OSSCodeBlockArgs {
     "isStrictMode": false
   });
   const ALLOWED_SIZES = ['sm', 'md'];
+  function isSafeString(arg) {
+    return arg && arg.constructor && arg.constructor.name === 'SafeString';
+  }
   class OSSEmptyStateComponent extends _component2.default {
     constructor(owner, args) {
       super(owner, args);
-      (true && !(typeof args.title === 'string') && (0, _debug.assert)('[component][OSS::EmptyState] The title parameter is mandatory', typeof args.title === 'string'));
-      (true && !(typeof args.subtitle === 'string') && (0, _debug.assert)('[component][OSS::EmptyState] The subtitle parameter is mandatory', typeof args.subtitle === 'string'));
+      (true && !(typeof args.title === 'string' || isSafeString(args.title)) && (0, _debug.assert)('[component][OSS::EmptyState] The title parameter is mandatory', typeof args.title === 'string' || isSafeString(args.title)));
+      (true && !(typeof args.subtitle === 'string' || isSafeString(args.subtitle)) && (0, _debug.assert)('[component][OSS::EmptyState] The subtitle parameter is mandatory', typeof args.subtitle === 'string' || isSafeString(args.subtitle)));
     }
     get titleSize() {
       return this.size === 'sm' ? 'md' : 'lg';
