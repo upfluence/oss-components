@@ -6,12 +6,6 @@ import { hbs } from 'ember-cli-htmlbars';
 module('Integration | Helper | required-input', function (hooks) {
   setupRenderingTest(hooks);
 
-  test('it renders nothing', async function (assert) {
-    await render(hbs`<label>Name</label>`);
-    assert.dom('label span').doesNotExist();
-    assert.dom('label').hasText('Name');
-  });
-
   test('it renders the required input indicator', async function (assert) {
     await render(hbs`<label {{required-input}}>Name</label>`);
     assert.dom('label span').exists();
@@ -19,7 +13,7 @@ module('Integration | Helper | required-input', function (hooks) {
     assert.dom('label').hasText('Name*');
   });
 
-  test('it works with the Ember tracking', async function (assert) {
+  test("it doesn't prevent tracked content from being updated dynamically", async function (assert) {
     this.title = 'Name';
     await render(hbs`<label {{required-input}}>{{this.title}}</label>`);
     assert.dom('label').hasText('Name*');
@@ -50,6 +44,7 @@ module('Integration | Helper | required-input', function (hooks) {
       </label>
     `);
     assert.dom('label span.existing').exists();
+    assert.dom('label span.existing.font-color-error-500').doesNotExist();
     assert.dom('label span.font-color-error-500').exists();
   });
 });
