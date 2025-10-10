@@ -10,6 +10,10 @@ export default class RegisterFormField extends Modifier<RequiredInputSignature> 
   modify(element: HTMLElement): void {
     this.targetElement = element;
 
-    element.innerHTML = element.innerHTML.trim() + '<span class="font-color-error-500">*</span>';
+    const span = document.createElement('span');
+    span.classList.add('font-color-error-500');
+    span.textContent = '*';
+
+    element.appendChild(span);
   }
 }
