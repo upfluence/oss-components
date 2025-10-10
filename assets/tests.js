@@ -17511,6 +17511,95 @@ define("dummy/tests/integration/helpers/redirect-to-test", ["qunit", "ember-quni
     });
   });
 });
+define("dummy/tests/integration/helpers/required-input-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Helper | required-input', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders the required input indicator', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <label {{required-input}}>Name</label>
+      */
+      {
+        "id": "umd8PG54",
+        "block": "[[[11,\"label\"],[4,[38,0],null,null],[12],[1,\"Name\"],[13]],[],false,[\"required-input\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/helpers/required-input-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('label span').exists();
+      assert.dom('label span').hasClass('font-color-error-500');
+      assert.dom('label').hasText('Name*');
+    });
+    (0, _qunit.test)("it doesn't prevent tracked content from being updated dynamically", async function (assert) {
+      this.title = 'Name';
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <label {{required-input}}>{{this.title}}</label>
+      */
+      {
+        "id": "3WN1vAyp",
+        "block": "[[[11,\"label\"],[4,[38,0],null,null],[12],[1,[30,0,[\"title\"]]],[13]],[],false,[\"required-input\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/helpers/required-input-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('label').hasText('Name*');
+      this.set('title', 'New name');
+      await (0, _testHelpers.settled)();
+      assert.dom('label').hasText('New name*');
+    });
+    (0, _qunit.test)('it handles empty strings', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <label {{required-input}}></label>
+      */
+      {
+        "id": "N89WHOlK",
+        "block": "[[[11,\"label\"],[4,[38,0],null,null],[12],[13]],[],false,[\"required-input\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/helpers/required-input-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('label').hasText('*');
+    });
+    (0, _qunit.test)('it handles multiple elements with the modifier', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+              <label {{required-input}}>First</label>
+              <label {{required-input}}>Second</label>
+          
+      */
+      {
+        "id": "YX00A+dJ",
+        "block": "[[[1,\"\\n        \"],[11,\"label\"],[4,[38,0],null,null],[12],[1,\"First\"],[13],[1,\"\\n        \"],[11,\"label\"],[4,[38,0],null,null],[12],[1,\"Second\"],[13],[1,\"\\n    \"]],[],false,[\"required-input\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/helpers/required-input-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('label:nth-child(1)').hasText('First*');
+      assert.dom('label:nth-child(2)').hasText('Second*');
+    });
+    (0, _qunit.test)('it preserves existing content structure', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <label {{required-input}}>
+              <span class="existing">Name</span>
+            </label>
+          
+      */
+      {
+        "id": "6t7XyHyz",
+        "block": "[[[1,\"\\n      \"],[11,\"label\"],[4,[38,0],null,null],[12],[1,\"\\n        \"],[10,1],[14,0,\"existing\"],[12],[1,\"Name\"],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"]],[],false,[\"required-input\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/helpers/required-input-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('label span.existing').exists();
+      assert.dom('label span.existing.font-color-error-500').doesNotExist();
+      assert.dom('label span.font-color-error-500').exists();
+    });
+  });
+});
 define("dummy/tests/integration/helpers/stop-propagation-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
   "use strict";
 

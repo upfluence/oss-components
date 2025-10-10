@@ -101659,7 +101659,10 @@ interface OSSCodeBlockArgs {
   class RegisterFormField extends _emberModifier.default {
     modify(element) {
       this.targetElement = element;
-      element.innerHTML = element.innerHTML.trim() + '<span class="font-color-error-500">*</span>';
+      const span = document.createElement('span');
+      span.classList.add('font-color-error-500');
+      span.textContent = '*';
+      element.appendChild(span);
     }
   }
   _exports.default = RegisterFormField;
