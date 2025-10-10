@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { guidFor } from '@ember/object/internals';
+import type { FeedbackMessage } from './input-container';
 
 export const AVAILABLE_SIZES = ['sm'];
 type SizeType = 'sm';
@@ -16,6 +17,7 @@ interface OSSCheckboxArgs {
   disabled?: boolean;
   size?: SizeType;
   hasError?: boolean;
+  feedbackMessage?: FeedbackMessage;
   onChange(value: boolean): void;
 }
 
@@ -38,7 +40,7 @@ export default class OSSCheckbox extends Component<OSSCheckboxArgs> {
       classes.push('upf-checkbox--disabled');
     }
 
-    if (this.args.hasError) {
+    if (this.args.hasError || this.args.feedbackMessage?.type === 'error') {
       classes.push('upf-checkbox--error');
     }
 
