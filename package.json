@@ -40,7 +40,7 @@
     "@embroider/macros": "^1.13.4",
     "@embroider/util": "^1.9.0",
     "@floating-ui/dom": "^1.6.3",
-    "@fortawesome/fontawesome-pro": "upfluence/fontawesome-pro",
+    "@fortawesome/fontawesome-pro": "upfluence/fontawesome-pro#pn/vel-6389-upgrade-to-7",
     "babel-plugin-debug-macros": "^0.3.1",
     "bootstrap": "^3.3.7",
     "broccoli-funnel": "^3.0.8",
