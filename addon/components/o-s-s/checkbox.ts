@@ -29,6 +29,14 @@ export default class OSSCheckbox extends Component<OSSCheckboxArgs> {
     assert('[component][OSS::Checkbox] @onChange argument is mandatory.', args.onChange);
   }
 
+  get feedbackMessage(): FeedbackMessage | undefined {
+    if (this.args.feedbackMessage && ['error', 'warning', 'success'].includes(this.args.feedbackMessage.type)) {
+      return this.args.feedbackMessage;
+    }
+
+    return undefined;
+  }
+
   get elementId(): string {
     return guidFor(this);
   }
@@ -40,9 +48,11 @@ export default class OSSCheckbox extends Component<OSSCheckboxArgs> {
       classes.push('upf-checkbox--disabled');
     }
 
-    if (this.args.hasError || this.args.feedbackMessage?.type === 'error') {
+    if (this.args.hasError) {
       classes.push('upf-checkbox--error');
     }
+
+    if (this.feedbackMessage) classes.push(` upf-checkbox--${this.feedbackMessage.type}`);
 
     if (this.args.size && Object.keys(SizeDefinition).includes(this.args.size as SizeType)) {
       classes.push(SizeDefinition[this.args.size]);
