@@ -75,6 +75,16 @@ export default {
       },
       control: { type: 'text' }
     },
+    feedbackMessage: {
+      description: 'A success, warning or error message that will be displayed below the input.',
+      table: {
+        type: {
+          summary: "{ type: 'error' | 'warning' | 'success', value: string }"
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'object' }
+    },
     onChange: {
       type: { required: true },
       description: 'A callback that sends the modifications of the value & the currency back to the parent component',
@@ -110,6 +120,7 @@ const defaultArgs = {
   disabled: false,
   onlyCurrency: false,
   errorMessage: '',
+  feedbackMessage: undefined,
   onChange: action('onChange'),
   allowCurrencyUpdate: true,
   allowedCurrencies: undefined,
@@ -120,7 +131,7 @@ const Template = (args) => ({
   template: hbs`
       <div style="width:270px">
         <OSS::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}}
-                            @onlyCurrency={{this.onlyCurrency}} @errorMessage={{this.errorMessage}}
+                            @onlyCurrency={{this.onlyCurrency}} @errorMessage={{this.errorMessage}} @feedbackMessage={{this.feedbackMessage}}
                             @allowCurrencyUpdate={{this.allowCurrencyUpdate}} @allowedCurrencies={{this.allowedCurrencies}}
                             @placeholder={{this.placeholder}} @disabled={{this.disabled}} />
       </div>
