@@ -3,6 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { isEmpty } from '@ember/utils';
+import type { FeedbackMessage } from '@upfluence/oss-components/components/o-s-s/input-container';
 
 export type Currency = {
   code: string;
@@ -18,6 +19,7 @@ interface OSSCurrencyInputArgs {
   onlyCurrency?: boolean;
   placeholder?: string;
   errorMessage?: string;
+  feedbackMessage?: FeedbackMessage;
   allowedCurrencies?: Currency[];
 }
 
@@ -120,9 +122,26 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
       classes.push('currency-input-container--disabled');
     }
     if (this.args.errorMessage) {
-      classes.push('currency-input-container--errored');
+      classes.push('currency-input-container--error');
+    }
+    if (this.feedbackMessage) {
+      classes.push(`currency-input-container--${this.feedbackMessage.type}`);
     }
     return classes.join(' ');
+  }
+
+  get feedbackMessage(): FeedbackMessage | undefined {
+    if (this.args.feedbackMessage && ['error', 'warning', 'success'].includes(this.args.feedbackMessage.type)) {
+      return this.args.feedbackMessage;
+    }
+
+    return undefined;
+  }
+
+  get messageIcon(): string | undefined {
+    if (this.args.feedbackMessage?.type === 'success') return 'fa-check-circle';
+    if (this.args.feedbackMessage?.type === 'warning') return 'fa-exclamation-circle';
+    return undefined;
   }
 
   @action
