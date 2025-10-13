@@ -137,6 +137,7 @@ module('Integration | Component | o-s-s/checkbox', function (hooks) {
       );
       assert.dom('.upf-checkbox').hasClass('upf-checkbox--warning');
     });
+
     test('When the feedbackMessage argument has a type success, the checkbox has the upf-checkbox--success class', async function (assert: Assert) {
       this.checked = false;
       this.feedbackMessage = { type: 'success', value: '' };
