@@ -87267,11 +87267,16 @@ interface OSSCodeBlockArgs {
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class={{this.computedClasses}} ...attributes>
-    <div class="currency-input fx-row fx-1 fx-xalign-center
-                {{if @onlyCurrency 'onlycurrency'}} {{if this.currencySelectorShown 'currency-input--active'}}">
-      <div class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center"
-           role={{if this.allowCurrencyUpdate 'button' 'img'}}
-           {{on "click" this.toggleCurrencySelector}}>
+    <div
+      class="currency-input fx-row fx-1 fx-xalign-center
+        {{if @onlyCurrency 'onlycurrency'}}
+        {{if this.currencySelectorShown 'currency-input--active'}}"
+    >
+      <div
+        class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center"
+        role={{if this.allowCurrencyUpdate "button" "img"}}
+        {{on "click" this.toggleCurrencySelector}}
+      >
         <div class="fx-col">
           <div class="fx-row fx-gap-px-9">
             <span>{{this.selectedCurrencySymbol}}</span>
@@ -87282,8 +87287,10 @@ interface OSSCodeBlockArgs {
         </div>
   
         {{#if (and this.allowCurrencyUpdate (not this.disabled))}}
-          <OSS::Icon @icon="{{if this.currencySelectorShown "fa-chevron-up" "fa-chevron-down"}}"
-                     class="margin-left-px-6" />
+          <OSS::Icon
+            @icon="{{if this.currencySelectorShown 'fa-chevron-up' 'fa-chevron-down'}}"
+            class="margin-left-px-6"
+          />
         {{/if}}
       </div>
       {{#unless @onlyCurrency}}
@@ -87306,6 +87313,13 @@ interface OSSCodeBlockArgs {
         <OSS::Icon @icon="fa-exclamation-triangle" />
         {{@errorMessage}}
       </div>
+    {{else if this.feedbackMessage}}
+      <span class={{concat "margin-top-px-6 font-color-" this.feedbackMessage.type "-500"}}>
+        {{#unless (eq this.feedbackMessage.type "error")}}
+          <OSS::Icon @icon={{this.messageIcon}} />
+        {{/unless}}
+        <span>{{this.feedbackMessage.value}}</span>
+      </span>
     {{/if}}
     {{#if this.currencySelectorShown}}
       <OSS::InfiniteSelect
@@ -87330,8 +87344,8 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "71aLeAsA",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"currency-input fx-row fx-1 fx-xalign-center\\n              \",[52,[30,2],\"onlycurrency\"],\" \",[52,[30,0,[\"currencySelectorShown\"]],\"currency-input--active\"]]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center\"],[16,\"role\",[52,[30,0,[\"allowCurrencyUpdate\"]],\"button\",\"img\"]],[4,[38,1],[\"click\",[30,0,[\"toggleCurrencySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-9\"],[12],[1,\"\\n          \"],[10,1],[12],[1,[30,0,[\"selectedCurrencySymbol\"]]],[13],[1,\"\\n\"],[41,[30,2],[[[1,\"            \"],[10,1],[14,0,\"margin-right-px-12\"],[12],[1,[30,0,[\"selectedCurrencyCode\"]]],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[28,[37,2],[[30,0,[\"allowCurrencyUpdate\"]],[28,[37,3],[[30,0,[\"disabled\"]]],null]],null],[[[1,\"        \"],[8,[39,4],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[[29,[[52,[30,0,[\"currencySelectorShown\"]],\"fa-chevron-up\",\"fa-chevron-down\"]]]]],null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[51,[30,2]],[[[1,\"      \"],[8,[39,6],[[24,\"min\",\"0\"],[24,\"autocomplete\",\"off\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[16,\"disabled\",[30,0,[\"disabled\"]]],[24,0,\"fx-1\"],[4,[38,1],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,1],[\"keyup\",[30,0,[\"notifyChanges\"]]],null],[4,[38,1],[\"paste\",[30,0,[\"handlePaste\"]]],null]],[[\"@value\",\"@type\"],[[30,0,[\"localValue\"]],\"text\"]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\"\\n      \"],[1,[30,3]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"    \"],[8,[39,7],[[4,[38,9],[[30,0,[\"hideCurrencySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\",\"@enableKeyboard\"],[[30,0,[\"filteredCurrencies\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[28,[37,8],[\"oss-components.currency-input.search\"],null],true]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,10],[[30,0,[\"selectedCurrency\"]],[30,4]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,1],[14,0,\"symbol text-color-default-light margin-left-xx-sm\"],[12],[1,[30,4,[\"symbol\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm fx-1\"],[12],[1,[30,4,[\"code\"]]],[13],[1,\"\\n\"],[41,[28,[37,10],[[30,0,[\"selectedCurrency\"]],[30,4]],null],[[[1,\"            \"],[8,[39,4],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@onlyCurrency\",\"@errorMessage\",\"currency\"],false,[\"if\",\"on\",\"and\",\"not\",\"o-s-s/icon\",\"unless\",\"input\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\",\"eq\"]]",
+    "id": "SlM4T1GU",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[12],[1,\"\\n  \"],[10,0],[15,0,[29,[\"currency-input fx-row fx-1 fx-xalign-center\\n      \",[52,[30,2],\"onlycurrency\"],\"\\n      \",[52,[30,0,[\"currencySelectorShown\"]],\"currency-input--active\"]]]],[12],[1,\"\\n    \"],[11,0],[24,0,\"currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center\"],[16,\"role\",[52,[30,0,[\"allowCurrencyUpdate\"]],\"button\",\"img\"]],[4,[38,1],[\"click\",[30,0,[\"toggleCurrencySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-9\"],[12],[1,\"\\n          \"],[10,1],[12],[1,[30,0,[\"selectedCurrencySymbol\"]]],[13],[1,\"\\n\"],[41,[30,2],[[[1,\"            \"],[10,1],[14,0,\"margin-right-px-12\"],[12],[1,[30,0,[\"selectedCurrencyCode\"]]],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[28,[37,2],[[30,0,[\"allowCurrencyUpdate\"]],[28,[37,3],[[30,0,[\"disabled\"]]],null]],null],[[[1,\"        \"],[8,[39,4],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[[29,[[52,[30,0,[\"currencySelectorShown\"]],\"fa-chevron-up\",\"fa-chevron-down\"]]]]],null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[51,[30,2]],[[[1,\"      \"],[8,[39,6],[[24,\"min\",\"0\"],[24,\"autocomplete\",\"off\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[16,\"disabled\",[30,0,[\"disabled\"]]],[24,0,\"fx-1\"],[4,[38,1],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,1],[\"keyup\",[30,0,[\"notifyChanges\"]]],null],[4,[38,1],[\"paste\",[30,0,[\"handlePaste\"]]],null]],[[\"@value\",\"@type\"],[[30,0,[\"localValue\"]],\"text\"]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\"\\n      \"],[1,[30,3]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"feedbackMessage\"]],[[[1,\"    \"],[10,1],[15,0,[28,[37,7],[\"margin-top-px-6 font-color-\",[30,0,[\"feedbackMessage\",\"type\"]],\"-500\"],null]],[12],[1,\"\\n\"],[41,[51,[28,[37,8],[[30,0,[\"feedbackMessage\",\"type\"]],\"error\"],null]],[[[1,\"        \"],[8,[39,4],null,[[\"@icon\"],[[30,0,[\"messageIcon\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[12],[1,[30,0,[\"feedbackMessage\",\"value\"]]],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],null]],[]]],[41,[30,0,[\"currencySelectorShown\"]],[[[1,\"    \"],[8,[39,9],[[4,[38,11],[[30,0,[\"hideCurrencySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\",\"@enableKeyboard\"],[[30,0,[\"filteredCurrencies\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[28,[37,10],[\"oss-components.currency-input.search\"],null],true]],[[\"option\"],[[[[1,\"\\n        \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,8],[[30,0,[\"selectedCurrency\"]],[30,4]],null],\"row-selected\"]]]],[12],[1,\"\\n          \"],[10,1],[14,0,\"symbol text-color-default-light margin-left-xx-sm\"],[12],[1,[30,4,[\"symbol\"]]],[13],[1,\"\\n          \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm fx-1\"],[12],[1,[30,4,[\"code\"]]],[13],[1,\"\\n\"],[41,[28,[37,8],[[30,0,[\"selectedCurrency\"]],[30,4]],null],[[[1,\"            \"],[8,[39,4],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[4]]]]],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@onlyCurrency\",\"@errorMessage\",\"currency\"],false,[\"if\",\"on\",\"and\",\"not\",\"o-s-s/icon\",\"unless\",\"input\",\"concat\",\"eq\",\"o-s-s/infinite-select\",\"t\",\"on-click-outside\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/currency-input.hbs",
     "isStrictMode": false
   });
@@ -87463,8 +87477,21 @@ interface OSSCodeBlockArgs {
       }
       if (this.args.errorMessage) {
         classes.push('currency-input-container--errored');
+      } else if (this.feedbackMessage) {
+        classes.push(`currency-input-container--${this.feedbackMessage.type}`);
       }
       return classes.join(' ');
+    }
+    get feedbackMessage() {
+      if (this.args.feedbackMessage && ['error', 'warning', 'success'].includes(this.args.feedbackMessage.type)) {
+        return this.args.feedbackMessage;
+      }
+      return undefined;
+    }
+    get messageIcon() {
+      if (this.args.feedbackMessage?.type === 'success') return 'fa-check-circle';
+      if (this.args.feedbackMessage?.type === 'warning') return 'fa-exclamation-circle';
+      return undefined;
     }
     onlyNumeric(event) {
       if (['c', 'v'].includes(event.key) && (event.metaKey || event.ctrlKey)) {
@@ -87640,6 +87667,20 @@ interface OSSCodeBlockArgs {
           type: 'text'
         }
       },
+      feedbackMessage: {
+        description: 'A success, warning or error message that will be displayed below the input.',
+        table: {
+          type: {
+            summary: "{ type: 'error' | 'warning' | 'success', value: string }"
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'object'
+        }
+      },
       onChange: {
         type: {
           required: true
@@ -87682,6 +87723,7 @@ interface OSSCodeBlockArgs {
     disabled: false,
     onlyCurrency: false,
     errorMessage: '',
+    feedbackMessage: undefined,
     onChange: (0, _addonActions.action)('onChange'),
     allowCurrencyUpdate: true,
     allowedCurrencies: undefined,
@@ -87693,15 +87735,15 @@ interface OSSCodeBlockArgs {
       
           <div style="width:270px">
             <OSS::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}}
-                                @onlyCurrency={{this.onlyCurrency}} @errorMessage={{this.errorMessage}}
+                                @onlyCurrency={{this.onlyCurrency}} @errorMessage={{this.errorMessage}} @feedbackMessage={{this.feedbackMessage}}
                                 @allowCurrencyUpdate={{this.allowCurrencyUpdate}} @allowedCurrencies={{this.allowedCurrencies}}
                                 @placeholder={{this.placeholder}} @disabled={{this.disabled}} />
           </div>
       
     */
     {
-      "id": "aArYGEVN",
-      "block": "[[[1,\"\\n      \"],[10,0],[14,5,\"width:270px\"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@value\",\"@currency\",\"@onChange\",\"@onlyCurrency\",\"@errorMessage\",\"@allowCurrencyUpdate\",\"@allowedCurrencies\",\"@placeholder\",\"@disabled\"],[[30,0,[\"value\"]],[30,0,[\"currency\"]],[30,0,[\"onChange\"]],[30,0,[\"onlyCurrency\"]],[30,0,[\"errorMessage\"]],[30,0,[\"allowCurrencyUpdate\"]],[30,0,[\"allowedCurrencies\"]],[30,0,[\"placeholder\"]],[30,0,[\"disabled\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/currency-input\"]]",
+      "id": "E4zA0GbC",
+      "block": "[[[1,\"\\n      \"],[10,0],[14,5,\"width:270px\"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@value\",\"@currency\",\"@onChange\",\"@onlyCurrency\",\"@errorMessage\",\"@feedbackMessage\",\"@allowCurrencyUpdate\",\"@allowedCurrencies\",\"@placeholder\",\"@disabled\"],[[30,0,[\"value\"]],[30,0,[\"currency\"]],[30,0,[\"onChange\"]],[30,0,[\"onlyCurrency\"]],[30,0,[\"errorMessage\"]],[30,0,[\"feedbackMessage\"]],[30,0,[\"allowCurrencyUpdate\"]],[30,0,[\"allowedCurrencies\"]],[30,0,[\"placeholder\"]],[30,0,[\"disabled\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/currency-input\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/currency-input.stories.js",
       "isStrictMode": false
     }),

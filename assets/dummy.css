@@ -9621,26 +9621,75 @@ For complete information visit: www.freakflagsprite.com
   cursor: not-allowed;
   background-color: var(--color-gray-100);
 }
-.currency-input-container--errored .currency-input {
+.currency-input-container--errored .currency-input,
+.currency-input-container--error .currency-input {
   border-color: var(--color-error-500);
 }
-.currency-input-container--errored .currency-input:not(.disabled, :disabled):hover {
+.currency-input-container--errored .currency-input:not(.disabled, :disabled):hover,
+.currency-input-container--error .currency-input:not(.disabled, :disabled):hover {
   border-color: var(--color-error-500);
   background-color: var(--color-gray-100);
 }
-.currency-input-container--errored .currency-input:not(.disabled, :disabled).currency-input--active {
+.currency-input-container--errored .currency-input:not(.disabled, :disabled).currency-input--active,
+.currency-input-container--error .currency-input:not(.disabled, :disabled).currency-input--active {
   border-color: var(--color-error-500);
   box-shadow: 0px 0px 0px 2px var(--color-error-100), var(--box-shadow-xs);
   background-color: var(--color-white);
 }
-.currency-input-container--errored .currency-input:not(.disabled, :disabled):focus-within {
+.currency-input-container--errored .currency-input:not(.disabled, :disabled):focus-within,
+.currency-input-container--error .currency-input:not(.disabled, :disabled):focus-within {
   box-shadow: 0px 0px 0px 2px var(--color-error-100), var(--box-shadow-xs);
   background-color: var(--color-white);
   border-color: var(--color-error-500);
 }
-.currency-input-container--errored .onlycurrency.currency-input--active {
+.currency-input-container--errored .onlycurrency.currency-input--active,
+.currency-input-container--error .onlycurrency.currency-input--active {
   border-color: var(--color-error-500);
   box-shadow: 0px 0px 0px 2px var(--color-error-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+}
+.currency-input-container--warning .currency-input {
+  border-color: var(--color-warning-500);
+}
+.currency-input-container--warning .currency-input:not(.disabled, :disabled):hover {
+  border-color: var(--color-warning-500);
+  background-color: var(--color-gray-100);
+}
+.currency-input-container--warning .currency-input:not(.disabled, :disabled).currency-input--active {
+  border-color: var(--color-warning-500);
+  box-shadow: 0px 0px 0px 2px var(--color-warning-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+}
+.currency-input-container--warning .currency-input:not(.disabled, :disabled):focus-within {
+  box-shadow: 0px 0px 0px 2px var(--color-warning-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+  border-color: var(--color-warning-500);
+}
+.currency-input-container--warning .onlycurrency.currency-input--active {
+  border-color: var(--color-warning-500);
+  box-shadow: 0px 0px 0px 2px var(--color-warning-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+}
+.currency-input-container--success .currency-input {
+  border-color: var(--color-success-500);
+}
+.currency-input-container--success .currency-input:not(.disabled, :disabled):hover {
+  border-color: var(--color-success-500);
+  background-color: var(--color-gray-100);
+}
+.currency-input-container--success .currency-input:not(.disabled, :disabled).currency-input--active {
+  border-color: var(--color-success-500);
+  box-shadow: 0px 0px 0px 2px var(--color-success-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+}
+.currency-input-container--success .currency-input:not(.disabled, :disabled):focus-within {
+  box-shadow: 0px 0px 0px 2px var(--color-success-100), var(--box-shadow-xs);
+  background-color: var(--color-white);
+  border-color: var(--color-success-500);
+}
+.currency-input-container--success .onlycurrency.currency-input--active {
+  border-color: var(--color-success-500);
+  box-shadow: 0px 0px 0px 2px var(--color-success-100), var(--box-shadow-xs);
   background-color: var(--color-white);
 }
 .currency-input-container .currency-selector {

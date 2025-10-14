@@ -5394,32 +5394,45 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
       }));
       assert.dom('.currency-selector').hasText('€');
     });
-    (0, _qunit.test)('It displays an error message below the component if @errorMessage is passed', async function (assert) {
-      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-      /*
-        <OSS::CurrencyInput @onChange={{this.onChange}} @errorMessage="This is an error message" />
-      */
-      {
-        "id": "UXTL+lKn",
-        "block": "[[[8,[39,0],null,[[\"@onChange\",\"@errorMessage\"],[[30,0,[\"onChange\"]],\"This is an error message\"]],null]],[],false,[\"o-s-s/currency-input\"]]",
-        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
-        "isStrictMode": false
-      }));
-      assert.dom('.currency-input-container').containsText('This is an error message');
-    });
-    (0, _qunit.test)('It displays an red border around the component if @errorMessage exists', async function (assert) {
-      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
-      /*
-        <OSS::CurrencyInput @onChange={{this.onChange}} @errorMessage="This is an error message" />
-      */
-      {
-        "id": "UXTL+lKn",
-        "block": "[[[8,[39,0],null,[[\"@onChange\",\"@errorMessage\"],[[30,0,[\"onChange\"]],\"This is an error message\"]],null]],[],false,[\"o-s-s/currency-input\"]]",
-        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
-        "isStrictMode": false
-      }));
-      assert.dom('.currency-input-container').hasStyle({
-        borderColor: 'rgb(27, 30, 33)'
+    (0, _qunit.module)('When @errorMessage is defined', () => {
+      (0, _qunit.test)('It displays an error message below the component', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CurrencyInput @onChange={{this.onChange}} @errorMessage="This is an error message" />
+        */
+        {
+          "id": "UXTL+lKn",
+          "block": "[[[8,[39,0],null,[[\"@onChange\",\"@errorMessage\"],[[30,0,[\"onChange\"]],\"This is an error message\"]],null]],[],false,[\"o-s-s/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.currency-input-container div.font-color-error-500').hasText('This is an error message');
+      });
+      (0, _qunit.test)('It displays an icon for with error message', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CurrencyInput @onChange={{this.onChange}} @errorMessage="This is an error message" />
+        */
+        {
+          "id": "UXTL+lKn",
+          "block": "[[[8,[39,0],null,[[\"@onChange\",\"@errorMessage\"],[[30,0,[\"onChange\"]],\"This is an error message\"]],null]],[],false,[\"o-s-s/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.currency-input-container div i.fa-exclamation-triangle').exists();
+      });
+      (0, _qunit.test)('It displays a red border around the component', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CurrencyInput @onChange={{this.onChange}} @errorMessage="This is an error message" />
+        */
+        {
+          "id": "UXTL+lKn",
+          "block": "[[[8,[39,0],null,[[\"@onChange\",\"@errorMessage\"],[[30,0,[\"onChange\"]],\"This is an error message\"]],null]],[],false,[\"o-s-s/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.currency-input-container').hasClass('currency-input-container--errored');
       });
     });
     (0, _qunit.module)('Currency selector', () => {
@@ -5761,6 +5774,68 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
         "isStrictMode": false
       }));
+    });
+    (0, _qunit.module)('When @feedbackMessage is defined', () => {
+      [{
+        type: 'error',
+        icon: undefined
+      }, {
+        type: 'warning',
+        icon: 'fa-exclamation-circle'
+      }, {
+        type: 'success',
+        icon: 'fa-check-circle'
+      }].forEach(({
+        type,
+        icon
+      }) => {
+        (0, _qunit.module)(`For ${type} message`, hooks => {
+          hooks.beforeEach(function () {
+            this.type = type;
+            this.value = `This is an ${type} message`;
+          });
+          (0, _qunit.test)('It displays a correct message below the component', async function (assert) {
+            await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+            /*
+              <OSS::CurrencyInput @onChange={{this.onChange}} @feedbackMessage={{hash type=this.type value=this.value}} />
+            */
+            {
+              "id": "cJDhrBeX",
+              "block": "[[[8,[39,0],null,[[\"@onChange\",\"@feedbackMessage\"],[[30,0,[\"onChange\"]],[28,[37,1],null,[[\"type\",\"value\"],[[30,0,[\"type\"]],[30,0,[\"value\"]]]]]]],null]],[],false,[\"o-s-s/currency-input\",\"hash\"]]",
+              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+              "isStrictMode": false
+            }));
+            assert.dom('.currency-input-container > span').hasText(`This is an ${type} message`);
+          });
+          (0, _qunit.test)("It doesn't display an icon below the component", async function (assert) {
+            assert.expect(1);
+            await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+            /*
+              <OSS::CurrencyInput @onChange={{this.onChange}} @feedbackMessage={{hash type=this.type value=this.value}} />
+            */
+            {
+              "id": "cJDhrBeX",
+              "block": "[[[8,[39,0],null,[[\"@onChange\",\"@feedbackMessage\"],[[30,0,[\"onChange\"]],[28,[37,1],null,[[\"type\",\"value\"],[[30,0,[\"type\"]],[30,0,[\"value\"]]]]]]],null]],[],false,[\"o-s-s/currency-input\",\"hash\"]]",
+              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+              "isStrictMode": false
+            }));
+            icon ? assert.dom('.currency-input-container > span i').hasClass(icon) : assert.dom('.currency-input-container > span i').doesNotExist();
+          });
+          (0, _qunit.test)('It displays a red border around the component', async function (assert) {
+            await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+            /*
+              <OSS::CurrencyInput @onChange={{this.onChange}} @feedbackMessage={{hash type=this.type value=this.value}} />
+            */
+            {
+              "id": "cJDhrBeX",
+              "block": "[[[8,[39,0],null,[[\"@onChange\",\"@feedbackMessage\"],[[30,0,[\"onChange\"]],[28,[37,1],null,[[\"type\",\"value\"],[[30,0,[\"type\"]],[30,0,[\"value\"]]]]]]],null]],[],false,[\"o-s-s/currency-input\",\"hash\"]]",
+              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+              "isStrictMode": false
+            }));
+            assert.dom('.currency-input-container').hasClass(`currency-input-container--${type}`);
+          });
+        });
+      });
     });
   });
 });
