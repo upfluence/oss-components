@@ -143,6 +143,14 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
     return undefined;
   }
 
+  get feedbackMessageComputedClasses(): string {
+    const classes = ['fx-row', 'fx-xalign-center', 'fx-gap-px-3', 'margin-top-px-6'];
+    if (this.feedbackMessage?.type) {
+      classes.push(`font-color-${this.feedbackMessage.type}-500`);
+    }
+    return classes.join(' ');
+  }
+
   @action
   onlyNumeric(event: KeyboardEvent): void {
     if (['c', 'v'].includes(event.key) && (event.metaKey || event.ctrlKey)) {

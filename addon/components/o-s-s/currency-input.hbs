@@ -46,7 +46,7 @@
       {{@errorMessage}}
     </div>
   {{else if this.feedbackMessage}}
-    <span class={{concat "margin-top-px-6 font-color-" this.feedbackMessage.type "-500"}}>
+    <span class={{this.feedbackMessageComputedClasses}}>
       {{#unless (eq this.feedbackMessage.type "error")}}
         <OSS::Icon @icon={{this.messageIcon}} />
       {{/unless}}
