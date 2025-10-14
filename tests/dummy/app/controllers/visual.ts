@@ -2,6 +2,7 @@ import Controller from '@ember/controller';
 import { tracked } from '@glimmer/tracking';
 import { action, set } from '@ember/object';
 import type { ModeSwitchOption } from '@upfluence/oss-components/components/o-s-s/mode-switch';
+import type { FeedbackMessage } from '@upfluence/oss-components/components/o-s-s/input-container';
 
 export default class Visual extends Controller {
   @tracked toggleValue: boolean = false;
@@ -107,6 +108,9 @@ export default class Visual extends Controller {
   ];
   @tracked modeSwitchSelected2: string = 'or';
   @tracked selectedPill: boolean = true;
+  @tracked feedbackMessageError: FeedbackMessage = { type: 'error', value: '' };
+  @tracked feedbackMessageWarning: FeedbackMessage = { type: 'warning', value: '' };
+  @tracked feedbackMessageSuccess: FeedbackMessage = { type: 'success', value: '' };
 
   @action
   redirectTo(route: string): void {
