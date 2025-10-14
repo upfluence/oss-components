@@ -258,7 +258,7 @@
       Input group
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-start">
-      <OSS::InputGroup @value={{this.inputValue}} @prefix="@" @placeholder="Username" @autocomplete="off"/>
+      <OSS::InputGroup @value={{this.inputValue}} @prefix="@" @placeholder="Username" @autocomplete="off" />
       <OSS::InputGroup @value={{this.inputValue}} @suffix="@example.com" @placeholder="john.doe" />
       <OSS::InputGroup
         @value={{this.inputValue}}
@@ -431,43 +431,88 @@
     <div class="font-size-md font-weight-semibold">
       Currency input
     </div>
-    <div class="fx-row fx-gap-px-24 fx-xalign-start">
-      <OSS::CurrencyInput
-        @currency={{this.currency}}
-        @value={{this.currencyValue}}
-        @onChange={{this.onCurrencyInputChange}}
-        @disabled={{true}}
-      />
-      <OSS::CurrencyInput
-        @currency={{this.currency}}
-        @value={{this.currencyValue}}
-        @onChange={{this.onCurrencyInputChange}}
-        @errorMessage="This is an error message"
-      />
-      <OSS::CurrencyInput
-        @currency={{this.currency}}
-        @value={{this.currencyValue}}
-        @allowCurrencyUpdate={{false}}
-        @onChange={{this.onCurrencyInputChange}}
-      />
-      <OSS::CurrencyInput
-        @currency={{this.currency}}
-        @value={{this.currencyValue}}
-        @onChange={{this.onCurrencyInputChange}}
-        @allowedCurrencies={{this.allowedCurrencies}}
-      />
-      <OSS::CurrencyInput
-        @currency={{this.currency}}
-        @value={{this.currencyValue}}
-        @onChange={{this.onCurrencyInputChange}}
-        @onlyCurrency={{true}}
-      />
-      <OSS::CurrencyInput
-        @currency={{this.currencyOnly}}
-        @onChange={{this.onCurrencyOnlyChange}}
-        @onlyCurrency={{true}}
-        @allowedCurrencies={{this.allowedCurrencies}}
-      />
+    <div class="fx-col fx-gap-px-24">
+      <div class="fx-row fx-gap-px-24 fx-xalign-start">
+        <OSS::CurrencyInput
+          @currency={{this.currency}}
+          @value={{this.currencyValue}}
+          @onChange={{this.onCurrencyInputChange}}
+          @disabled={{true}}
+        />
+        <OSS::CurrencyInput
+          @currency={{this.currency}}
+          @value={{this.currencyValue}}
+          @onChange={{this.onCurrencyInputChange}}
+          @errorMessage="This is an error message"
+        />
+        <OSS::CurrencyInput
+          @currency={{this.currency}}
+          @value={{this.currencyValue}}
+          @allowCurrencyUpdate={{false}}
+          @onChange={{this.onCurrencyInputChange}}
+        />
+        <OSS::CurrencyInput
+          @currency={{this.currency}}
+          @value={{this.currencyValue}}
+          @onChange={{this.onCurrencyInputChange}}
+          @allowedCurrencies={{this.allowedCurrencies}}
+        />
+        <OSS::CurrencyInput
+          @currency={{this.currency}}
+          @value={{this.currencyValue}}
+          @onChange={{this.onCurrencyInputChange}}
+          @onlyCurrency={{true}}
+        />
+        <OSS::CurrencyInput
+          @currency={{this.currencyOnly}}
+          @onChange={{this.onCurrencyOnlyChange}}
+          @onlyCurrency={{true}}
+          @allowedCurrencies={{this.allowedCurrencies}}
+        />
+      </div>
+      <div class="fx-row fx-gap-px-24 fx-xalign-start">
+        <OSS::CurrencyInput
+          @currency={{this.currency}}
+          @value={{this.currencyValue}}
+          @onChange={{this.onCurrencyInputChange}}
+          @feedbackMessage={{hash type="success" value="This is a success feedback message !"}}
+        />
+        <OSS::CurrencyInput
+          @currency={{this.currency}}
+          @value={{this.currencyValue}}
+          @onChange={{this.onCurrencyInputChange}}
+          @feedbackMessage={{hash type="warning" value="This is a warning feedback message !"}}
+        />
+        <OSS::CurrencyInput
+          @currency={{this.currency}}
+          @value={{this.currencyValue}}
+          @onChange={{this.onCurrencyInputChange}}
+          @feedbackMessage={{hash type="error" value="This is a error feedback message !"}}
+        />
+      </div>
+      <div class="fx-row fx-gap-px-24 fx-xalign-start">
+        <OSS::CurrencyInput
+          @currency={{this.currency}}
+          @value={{this.currencyValue}}
+          @onChange={{this.onCurrencyInputChange}}
+          @onlyCurrency={{true}}
+          @feedbackMessage={{hash type="success" value="This is a success feedback message for currency only !"}}
+        />
+        <OSS::CurrencyInput
+          @currency={{this.currency}}
+          @value={{this.currencyValue}}
+          @onChange={{this.onCurrencyInputChange}}
+          @onlyCurrency={{true}}
+          @feedbackMessage={{hash type="warning" value="This is a warning feedback message for currency only !"}}
+        />
+        <OSS::CurrencyInput
+          @currency={{this.currency}}
+          @value={{this.currencyValue}}
+          @onChange={{this.onCurrencyInputChange}}
+          @onlyCurrency={{true}}
+          @feedbackMessage={{hash type="error" value="This is a error feedback message for currency only !"}}
+        />
+      </div>
     </div>
   </div>
 

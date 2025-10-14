@@ -28,14 +28,21 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
     assert.dom('.currency-selector').hasText('€');
   });
 
-  test('It displays an error message below the component if @errorMessage is passed', async function (assert) {
-    await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @errorMessage="This is an error message" />`);
-    assert.dom('.currency-input-container').containsText('This is an error message');
-  });
+  module('When @errorMessage is defined', () => {
+    test('It displays an error message below the component', async function (assert) {
+      await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @errorMessage="This is an error message" />`);
+      assert.dom('.currency-input-container div.font-color-error-500').hasText('This is an error message');
+    });
 
-  test('It displays an red border around the component if @errorMessage exists', async function (assert) {
-    await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @errorMessage="This is an error message" />`);
-    assert.dom('.currency-input-container').hasStyle({ borderColor: 'rgb(27, 30, 33)' });
+    test('It displays an icon for with error message', async function (assert) {
+      await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @errorMessage="This is an error message" />`);
+      assert.dom('.currency-input-container div i.fa-exclamation-triangle').exists();
+    });
+
+    test('It displays a red border around the component', async function (assert) {
+      await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @errorMessage="This is an error message" />`);
+      assert.dom('.currency-input-container').hasClass('currency-input-container--errored');
+    });
   });
 
   module('Currency selector', () => {
@@ -225,5 +232,44 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
       );
     });
     await render(hbs`<OSS::CurrencyInput />`);
+  });
+
+  module('When @feedbackMessage is defined', () => {
+    [
+      { type: 'error', icon: undefined },
+      { type: 'warning', icon: 'fa-exclamation-circle' },
+      { type: 'success', icon: 'fa-check-circle' }
+    ].forEach(({ type, icon }) => {
+      module(`For ${type} message`, (hooks) => {
+        hooks.beforeEach(function () {
+          this.type = type;
+          this.value = `This is an ${type} message`;
+        });
+
+        test('It displays a correct message below the component', async function (assert) {
+          await render(
+            hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @feedbackMessage={{hash type=this.type value=this.value}} />`
+          );
+          assert.dom('.currency-input-container > span').hasText(`This is an ${type} message`);
+        });
+
+        test("It doesn't display an icon below the component", async function (assert) {
+          assert.expect(1);
+          await render(
+            hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @feedbackMessage={{hash type=this.type value=this.value}} />`
+          );
+          icon
+            ? assert.dom('.currency-input-container > span i').hasClass(icon)
+            : assert.dom('.currency-input-container > span i').doesNotExist();
+        });
+
+        test('It displays a red border around the component', async function (assert) {
+          await render(
+            hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @feedbackMessage={{hash type=this.type value=this.value}} />`
+          );
+          assert.dom('.currency-input-container').hasClass(`currency-input-container--${type}`);
+        });
+      });
+    });
   });
 });

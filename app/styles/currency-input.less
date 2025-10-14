@@ -70,7 +70,8 @@
     }
   }
 
-  &--errored {
+  &--errored,
+  &--error {
     .currency-input {
       .border-color-error;
 
@@ -92,6 +93,58 @@
     .onlycurrency {
       &.currency-input--active {
         .input-state-error-active;
+      }
+    }
+  }
+
+  &--warning {
+    .currency-input {
+      .border-color-warning;
+
+      &:not(.disabled, :disabled) {
+        &:hover {
+          .input-state-warning-hover;
+        }
+
+        &.currency-input--active {
+          .input-state-warning-active;
+        }
+
+        &:focus-within {
+          .input-state-warning-focus;
+        }
+      }
+    }
+
+    .onlycurrency {
+      &.currency-input--active {
+        .input-state-warning-active;
+      }
+    }
+  }
+
+  &--success {
+    .currency-input {
+      .border-color-success;
+
+      &:not(.disabled, :disabled) {
+        &:hover {
+          .input-state-success-hover;
+        }
+
+        &.currency-input--active {
+          .input-state-success-active;
+        }
+
+        &:focus-within {
+          .input-state-success-focus;
+        }
+      }
+    }
+
+    .onlycurrency {
+      &.currency-input--active {
+        .input-state-success-active;
       }
     }
   }
