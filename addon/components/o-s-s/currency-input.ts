@@ -122,7 +122,7 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
       classes.push('currency-input-container--disabled');
     }
     if (this.args.errorMessage) {
-      classes.push('currency-input-container--error');
+      classes.push('currency-input-container--errored');
     } else if (this.feedbackMessage) {
       classes.push(`currency-input-container--${this.feedbackMessage.type}`);
     }

@@ -31,12 +31,17 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
   module('When @errorMessage is defined', () => {
     test('It displays an error message below the component', async function (assert) {
       await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @errorMessage="This is an error message" />`);
-      assert.dom('.currency-input-container > span').hasText('This is an error message');
+      assert.dom('.currency-input-container div.font-color-error-500').hasText('This is an error message');
     });
 
-    test('It displays an red border around the component', async function (assert) {
+    test('It displays an icon for with error message', async function (assert) {
       await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @errorMessage="This is an error message" />`);
-      assert.dom('.currency-input-container').hasClass('currency-input-container--error');
+      assert.dom('.currency-input-container div i.fa-exclamation-triangle').exists();
+    });
+
+    test('It displays a red border around the component', async function (assert) {
+      await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @errorMessage="This is an error message" />`);
+      assert.dom('.currency-input-container').hasClass('currency-input-container--errored');
     });
   });
 
@@ -241,7 +246,7 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
           this.value = `This is an ${type} message`;
         });
 
-        test('It displays an correct message below the component', async function (assert) {
+        test('It displays a correct message below the component', async function (assert) {
           await render(
             hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @feedbackMessage={{hash type=this.type value=this.value}} />`
           );
@@ -258,7 +263,7 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
             : assert.dom('.currency-input-container > span i').doesNotExist();
         });
 
-        test('It displays an red border around the component', async function (assert) {
+        test('It displays a red border around the component', async function (assert) {
           await render(
             hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @feedbackMessage={{hash type=this.type value=this.value}} />`
           );
