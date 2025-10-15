@@ -2,7 +2,16 @@ import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { setupIntl } from 'ember-intl/test-support';
-import { render, setupOnerror, click, findAll, typeIn, triggerKeyEvent, triggerEvent } from '@ember/test-helpers';
+import {
+  render,
+  setupOnerror,
+  click,
+  findAll,
+  typeIn,
+  triggerKeyEvent,
+  triggerEvent,
+  fillIn
+} from '@ember/test-helpers';
 import sinon from 'sinon';
 
 module('Integration | Component | o-s-s/currency-input', function (hooks) {
@@ -270,6 +279,84 @@ module('Integration | Component | o-s-s/currency-input', function (hooks) {
           assert.dom('.currency-input-container').hasClass(`currency-input-container--${type}`);
         });
       });
+    });
+  });
+
+  module('@allowFloatValues argument', () => {
+    test('It allows float values when @allowFloatValues is true', async function (assert) {
+      await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @allowFloatValues={{true}} />`);
+      assert.dom('input').hasValue('0');
+      await typeIn('input', '8.25');
+      assert.dom('input').hasValue('08.25');
+    });
+
+    test('It prevents dot and comma characters from being entered when @allowFloatValues is false', async function (assert) {
+      await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @allowFloatValues={{false}} />`);
+
+      const input = this.element.querySelector('input');
+
+      const dotEvent = new KeyboardEvent('keydown', {
+        key: '.',
+        bubbles: true,
+        cancelable: true
+      });
+      input.dispatchEvent(dotEvent);
+      assert.true(dotEvent.defaultPrevented, 'Dot keydown event should be prevented');
+
+      const commaEvent = new KeyboardEvent('keydown', {
+        key: ',',
+        bubbles: true,
+        cancelable: true
+      });
+      input.dispatchEvent(commaEvent);
+      assert.true(commaEvent.defaultPrevented, 'Comma keydown event should be prevented');
+
+      const numberEvent = new KeyboardEvent('keydown', {
+        key: '8',
+        bubbles: true,
+        cancelable: true
+      });
+      input.dispatchEvent(numberEvent);
+      assert.false(numberEvent.defaultPrevented, 'Numeric keydown events should NOT be prevented');
+    });
+
+    test('When @allowFloatValues is false, pasted decimal values are truncated', async function (assert) {
+      await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @allowFloatValues={{false}} @value="123" />`);
+      assert.dom('input').hasValue('123');
+
+      await triggerEvent('input', 'paste', {
+        clipboardData: {
+          getData: sinon.stub().returns('45.67')
+        }
+      });
+
+      assert.dom('input').hasValue('12345');
+    });
+
+    test('When @allowFloatValues is false, pasted values with commas are truncated', async function (assert) {
+      await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @allowFloatValues={{false}} @value="123" />`);
+      assert.dom('input').hasValue('123');
+
+      await triggerEvent('input', 'paste', {
+        clipboardData: {
+          getData: sinon.stub().returns('45,67')
+        }
+      });
+
+      assert.dom('input').hasValue('12345');
+    });
+
+    test('When @allowFloatValues is true, pasted decimal values are properly inserted', async function (assert) {
+      await render(hbs`<OSS::CurrencyInput @onChange={{this.onChange}} @allowFloatValues={{true}} @value="123" />`);
+      assert.dom('input').hasValue('123');
+
+      await triggerEvent('input', 'paste', {
+        clipboardData: {
+          getData: sinon.stub().returns('45.67')
+        }
+      });
+
+      assert.dom('input').hasValue('12345.67');
     });
   });
 });

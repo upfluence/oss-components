@@ -21,6 +21,7 @@ interface OSSCurrencyInputArgs {
   errorMessage?: string;
   feedbackMessage?: FeedbackMessage;
   allowedCurrencies?: Currency[];
+  allowFloatValues?: boolean;
 }
 
 const NUMERIC_ONLY = /^\d$/i;
@@ -151,13 +152,20 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
     return classes.join(' ');
   }
 
+  get authorizedFloatInputs(): string[] {
+    if (this.args.allowFloatValues === false) {
+      return AUTHORIZED_INPUTS.filter((key: string) => !['.', ','].includes(key));
+    }
+    return AUTHORIZED_INPUTS;
+  }
+
   @action
   onlyNumeric(event: KeyboardEvent): void {
     if (['c', 'v'].includes(event.key) && (event.metaKey || event.ctrlKey)) {
       return;
     }
 
-    if (!NUMERIC_ONLY.test(event.key) && !AUTHORIZED_INPUTS.find((key: string) => key === event.key)) {
+    if (!NUMERIC_ONLY.test(event.key) && !this.authorizedFloatInputs.find((key: string) => key === event.key)) {
       event.preventDefault();
     }
   }
@@ -166,7 +174,10 @@ export default class OSSCurrencyInput extends Component<OSSCurrencyInputArgs> {
   handlePaste(event: ClipboardEvent): void {
     event.preventDefault();
 
-    const paste = (event.clipboardData?.getData('text') ?? '').replace(NOT_NUMERIC_FLOAT, '');
+    let paste = (event.clipboardData?.getData('text') ?? '').replace(NOT_NUMERIC_FLOAT, '');
+    if (this.args.allowFloatValues === false && (paste.includes('.') || paste.includes(','))) {
+      paste = paste.replace(/[.,].*$/, '');
+    }
     const target = event.target as HTMLInputElement;
     const initialSelectionStart = target.selectionStart ?? 0;
     const finalSelectionPosition = initialSelectionStart + paste.length;

@@ -102,6 +102,17 @@ export default {
         defaultValue: { summary: 'undefined' }
       },
       control: { type: 'array' }
+    },
+    allowFloatValues: {
+      description:
+        'Allow floating point values in the input. Setting to false will prevent the user from entering decimal points (commas and dots). It will also truncate any decimal values when pasting.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'boolean' }
     }
   },
   parameters: {
@@ -124,7 +135,8 @@ const defaultArgs = {
   onChange: action('onChange'),
   allowCurrencyUpdate: true,
   allowedCurrencies: undefined,
-  placeholder: undefined
+  placeholder: undefined,
+  allowFloatValues: undefined
 };
 
 const Template = (args) => ({
@@ -133,7 +145,7 @@ const Template = (args) => ({
         <OSS::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}}
                             @onlyCurrency={{this.onlyCurrency}} @errorMessage={{this.errorMessage}} @feedbackMessage={{this.feedbackMessage}}
                             @allowCurrencyUpdate={{this.allowCurrencyUpdate}} @allowedCurrencies={{this.allowedCurrencies}}
-                            @placeholder={{this.placeholder}} @disabled={{this.disabled}} />
+                            @placeholder={{this.placeholder}} @disabled={{this.disabled}} @allowFloatValues={{this.allowFloatValues}} />
       </div>
   `,
   context: args
