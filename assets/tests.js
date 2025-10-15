@@ -5837,6 +5837,114 @@ define("dummy/tests/integration/components/o-s-s/currency-input-test", ["qunit",
         });
       });
     });
+    (0, _qunit.module)('@allowFloatValues argument', () => {
+      (0, _qunit.test)('It allows float values when @allowFloatValues is true', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CurrencyInput @onChange={{this.onChange}} @allowFloatValues={{true}} />
+        */
+        {
+          "id": "xARtwjpC",
+          "block": "[[[8,[39,0],null,[[\"@onChange\",\"@allowFloatValues\"],[[30,0,[\"onChange\"]],true]],null]],[],false,[\"o-s-s/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('input').hasValue('0');
+        await (0, _testHelpers.typeIn)('input', '8.25');
+        assert.dom('input').hasValue('08.25');
+      });
+      (0, _qunit.test)('It prevents dot and comma characters from being entered when @allowFloatValues is false', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CurrencyInput @onChange={{this.onChange}} @allowFloatValues={{false}} />
+        */
+        {
+          "id": "tN0988ut",
+          "block": "[[[8,[39,0],null,[[\"@onChange\",\"@allowFloatValues\"],[[30,0,[\"onChange\"]],false]],null]],[],false,[\"o-s-s/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        const input = this.element.querySelector('input');
+        const dotEvent = new KeyboardEvent('keydown', {
+          key: '.',
+          bubbles: true,
+          cancelable: true
+        });
+        input.dispatchEvent(dotEvent);
+        assert.true(dotEvent.defaultPrevented, 'Dot keydown event should be prevented');
+        const commaEvent = new KeyboardEvent('keydown', {
+          key: ',',
+          bubbles: true,
+          cancelable: true
+        });
+        input.dispatchEvent(commaEvent);
+        assert.true(commaEvent.defaultPrevented, 'Comma keydown event should be prevented');
+        const numberEvent = new KeyboardEvent('keydown', {
+          key: '8',
+          bubbles: true,
+          cancelable: true
+        });
+        input.dispatchEvent(numberEvent);
+        assert.false(numberEvent.defaultPrevented, 'Numeric keydown events should NOT be prevented');
+      });
+      (0, _qunit.test)('When @allowFloatValues is false, pasted decimal values are truncated', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CurrencyInput @onChange={{this.onChange}} @allowFloatValues={{false}} @value="123" />
+        */
+        {
+          "id": "bv+E99vr",
+          "block": "[[[8,[39,0],null,[[\"@onChange\",\"@allowFloatValues\",\"@value\"],[[30,0,[\"onChange\"]],false,\"123\"]],null]],[],false,[\"o-s-s/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('input').hasValue('123');
+        await (0, _testHelpers.triggerEvent)('input', 'paste', {
+          clipboardData: {
+            getData: _sinon.default.stub().returns('45.67')
+          }
+        });
+        assert.dom('input').hasValue('12345');
+      });
+      (0, _qunit.test)('When @allowFloatValues is false, pasted values with commas are truncated', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CurrencyInput @onChange={{this.onChange}} @allowFloatValues={{false}} @value="123" />
+        */
+        {
+          "id": "bv+E99vr",
+          "block": "[[[8,[39,0],null,[[\"@onChange\",\"@allowFloatValues\",\"@value\"],[[30,0,[\"onChange\"]],false,\"123\"]],null]],[],false,[\"o-s-s/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('input').hasValue('123');
+        await (0, _testHelpers.triggerEvent)('input', 'paste', {
+          clipboardData: {
+            getData: _sinon.default.stub().returns('45,67')
+          }
+        });
+        assert.dom('input').hasValue('12345');
+      });
+      (0, _qunit.test)('When @allowFloatValues is true, pasted decimal values are properly inserted', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::CurrencyInput @onChange={{this.onChange}} @allowFloatValues={{true}} @value="123" />
+        */
+        {
+          "id": "yCvYQwhu",
+          "block": "[[[8,[39,0],null,[[\"@onChange\",\"@allowFloatValues\",\"@value\"],[[30,0,[\"onChange\"]],true,\"123\"]],null]],[],false,[\"o-s-s/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('input').hasValue('123');
+        await (0, _testHelpers.triggerEvent)('input', 'paste', {
+          clipboardData: {
+            getData: _sinon.default.stub().returns('45.67')
+          }
+        });
+        assert.dom('input').hasValue('12345.67');
+      });
+    });
   });
 });
 define("dummy/tests/integration/components/o-s-s/dialog-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {

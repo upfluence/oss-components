@@ -87500,17 +87500,26 @@ interface OSSCodeBlockArgs {
       }
       return classes.join(' ');
     }
+    get authorizedFloatInputs() {
+      if (this.args.allowFloatValues === false) {
+        return AUTHORIZED_INPUTS.filter(key => !['.', ','].includes(key));
+      }
+      return AUTHORIZED_INPUTS;
+    }
     onlyNumeric(event) {
       if (['c', 'v'].includes(event.key) && (event.metaKey || event.ctrlKey)) {
         return;
       }
-      if (!NUMERIC_ONLY.test(event.key) && !AUTHORIZED_INPUTS.find(key => key === event.key)) {
+      if (!NUMERIC_ONLY.test(event.key) && !this.authorizedFloatInputs.find(key => key === event.key)) {
         event.preventDefault();
       }
     }
     handlePaste(event) {
       event.preventDefault();
-      const paste = (event.clipboardData?.getData('text') ?? '').replace(NOT_NUMERIC_FLOAT, '');
+      let paste = (event.clipboardData?.getData('text') ?? '').replace(NOT_NUMERIC_FLOAT, '');
+      if (this.args.allowFloatValues === false && (paste.includes('.') || paste.includes(','))) {
+        paste = paste.replace(/[.,].*$/, '');
+      }
       const target = event.target;
       const initialSelectionStart = target.selectionStart ?? 0;
       const finalSelectionPosition = initialSelectionStart + paste.length;
@@ -87713,6 +87722,20 @@ interface OSSCodeBlockArgs {
         control: {
           type: 'array'
         }
+      },
+      allowFloatValues: {
+        description: 'Allow floating point values in the input. Setting to false will prevent the user from entering decimal points (commas and dots). It will also truncate any decimal values when pasting.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
       }
     },
     parameters: {
@@ -87734,7 +87757,8 @@ interface OSSCodeBlockArgs {
     onChange: (0, _addonActions.action)('onChange'),
     allowCurrencyUpdate: true,
     allowedCurrencies: undefined,
-    placeholder: undefined
+    placeholder: undefined,
+    allowFloatValues: undefined
   };
   const Template = args => ({
     template: (0, _templateFactory.createTemplateFactory)(
@@ -87744,13 +87768,13 @@ interface OSSCodeBlockArgs {
             <OSS::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}}
                                 @onlyCurrency={{this.onlyCurrency}} @errorMessage={{this.errorMessage}} @feedbackMessage={{this.feedbackMessage}}
                                 @allowCurrencyUpdate={{this.allowCurrencyUpdate}} @allowedCurrencies={{this.allowedCurrencies}}
-                                @placeholder={{this.placeholder}} @disabled={{this.disabled}} />
+                                @placeholder={{this.placeholder}} @disabled={{this.disabled}} @allowFloatValues={{this.allowFloatValues}} />
           </div>
       
     */
     {
-      "id": "E4zA0GbC",
-      "block": "[[[1,\"\\n      \"],[10,0],[14,5,\"width:270px\"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@value\",\"@currency\",\"@onChange\",\"@onlyCurrency\",\"@errorMessage\",\"@feedbackMessage\",\"@allowCurrencyUpdate\",\"@allowedCurrencies\",\"@placeholder\",\"@disabled\"],[[30,0,[\"value\"]],[30,0,[\"currency\"]],[30,0,[\"onChange\"]],[30,0,[\"onlyCurrency\"]],[30,0,[\"errorMessage\"]],[30,0,[\"feedbackMessage\"]],[30,0,[\"allowCurrencyUpdate\"]],[30,0,[\"allowedCurrencies\"]],[30,0,[\"placeholder\"]],[30,0,[\"disabled\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/currency-input\"]]",
+      "id": "Jk8arox9",
+      "block": "[[[1,\"\\n      \"],[10,0],[14,5,\"width:270px\"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@value\",\"@currency\",\"@onChange\",\"@onlyCurrency\",\"@errorMessage\",\"@feedbackMessage\",\"@allowCurrencyUpdate\",\"@allowedCurrencies\",\"@placeholder\",\"@disabled\",\"@allowFloatValues\"],[[30,0,[\"value\"]],[30,0,[\"currency\"]],[30,0,[\"onChange\"]],[30,0,[\"onlyCurrency\"]],[30,0,[\"errorMessage\"]],[30,0,[\"feedbackMessage\"]],[30,0,[\"allowCurrencyUpdate\"]],[30,0,[\"allowedCurrencies\"]],[30,0,[\"placeholder\"]],[30,0,[\"disabled\"]],[30,0,[\"allowFloatValues\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/currency-input\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/currency-input.stories.js",
       "isStrictMode": false
     }),
