@@ -6553,6 +6553,12 @@ body {
 .upf-checkbox--error .upf-checkbox__fake-checkbox {
   border-color: var(--color-error-500);
 }
+.upf-checkbox--warning .upf-checkbox__fake-checkbox {
+  border-color: var(--color-warning-500);
+}
+.upf-checkbox--success .upf-checkbox__fake-checkbox {
+  border-color: var(--color-success-500);
+}
 .upf-checkbox__label {
   position: absolute;
   left: 15%;

@@ -85728,6 +85728,12 @@ require('@ember/-internals/bootstrap')
       (true && !(typeof args.checked === 'boolean') && (0, _debug.assert)('[component][OSS::Checkbox] Boolean @checked argument is mandatory.', typeof args.checked === 'boolean'));
       (true && !(args.onChange) && (0, _debug.assert)('[component][OSS::Checkbox] @onChange argument is mandatory.', args.onChange));
     }
+    get feedbackMessage() {
+      if (this.args.feedbackMessage && ['error', 'warning', 'success'].includes(this.args.feedbackMessage.type)) {
+        return this.args.feedbackMessage;
+      }
+      return undefined;
+    }
     get elementId() {
       return (0, _internals.guidFor)(this);
     }
@@ -85739,6 +85745,7 @@ require('@ember/-internals/bootstrap')
       if (this.args.hasError) {
         classes.push('upf-checkbox--error');
       }
+      if (this.feedbackMessage) classes.push(` upf-checkbox--${this.feedbackMessage.type}`);
       if (this.args.size && Object.keys(SizeDefinition).includes(this.args.size)) {
         classes.push(SizeDefinition[this.args.size]);
       }
@@ -85845,6 +85852,20 @@ require('@ember/-internals/bootstrap')
         },
         control: {
           type: 'boolean'
+        }
+      },
+      feedbackMessage: {
+        description: 'Displays an error, warning, or success border around the checkbox.',
+        table: {
+          type: {
+            summary: '{ type: string, value: string }'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'object'
         }
       },
       onChange: {

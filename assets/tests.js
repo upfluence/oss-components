@@ -3929,6 +3929,77 @@ define("dummy/tests/integration/components/o-s-s/checkbox-test", ["qunit", "embe
         assert.dom('.upf-checkbox').doesNotHaveClass('upf-checkbox--error');
       });
     });
+    (0, _qunit.module)('@feedbackMessage argument', () => {
+      (0, _qunit.test)('When the feedbackMessage argument has a type error, the checkbox has the upf-checkbox--error class', async function (assert) {
+        this.checked = false;
+        this.feedbackMessage = {
+          type: 'error',
+          value: ''
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Checkbox @checked={{this.checked}} @feedbackMessage={{this.feedbackMessage}} @onChange={{this.onChange}} />
+        */
+        {
+          "id": "/BlkSdpX",
+          "block": "[[[8,[39,0],null,[[\"@checked\",\"@feedbackMessage\",\"@onChange\"],[[30,0,[\"checked\"]],[30,0,[\"feedbackMessage\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/checkbox\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/checkbox-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-checkbox').hasClass('upf-checkbox--error');
+      });
+      (0, _qunit.test)('When the feedbackMessage argument has a type warning, the checkbox has the upf-checkbox--warning class', async function (assert) {
+        this.checked = false;
+        this.feedbackMessage = {
+          type: 'warning',
+          value: ''
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Checkbox @checked={{this.checked}} @feedbackMessage={{this.feedbackMessage}} @onChange={{this.onChange}} />
+        */
+        {
+          "id": "/BlkSdpX",
+          "block": "[[[8,[39,0],null,[[\"@checked\",\"@feedbackMessage\",\"@onChange\"],[[30,0,[\"checked\"]],[30,0,[\"feedbackMessage\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/checkbox\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/checkbox-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-checkbox').hasClass('upf-checkbox--warning');
+      });
+      (0, _qunit.test)('When the feedbackMessage argument has a type success, the checkbox has the upf-checkbox--success class', async function (assert) {
+        this.checked = false;
+        this.feedbackMessage = {
+          type: 'success',
+          value: ''
+        };
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Checkbox @checked={{this.checked}} @feedbackMessage={{this.feedbackMessage}} @onChange={{this.onChange}} />
+        */
+        {
+          "id": "/BlkSdpX",
+          "block": "[[[8,[39,0],null,[[\"@checked\",\"@feedbackMessage\",\"@onChange\"],[[30,0,[\"checked\"]],[30,0,[\"feedbackMessage\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/checkbox\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/checkbox-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-checkbox').hasClass('upf-checkbox--success');
+      });
+      (0, _qunit.test)('When the feedbackMessage argument is undefined, the checkbox does not have the upf-checkbox--error class', async function (assert) {
+        this.checked = false;
+        this.feedbackMessage = undefined;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Checkbox @checked={{this.checked}} @hasError={{this.hasError}} @onChange={{this.onChange}} />
+        */
+        {
+          "id": "a+PECYgL",
+          "block": "[[[8,[39,0],null,[[\"@checked\",\"@hasError\",\"@onChange\"],[[30,0,[\"checked\"]],[30,0,[\"hasError\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/checkbox\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/checkbox-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-checkbox').doesNotHaveClass('upf-checkbox--error');
+      });
+    });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('it throws an error if checked argument is missing', async function (assert) {
         (0, _testHelpers.setupOnerror)(error => {
