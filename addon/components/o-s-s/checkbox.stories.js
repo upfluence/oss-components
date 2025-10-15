@@ -58,6 +58,16 @@ export default {
         type: 'boolean'
       }
     },
+    feedbackMessage: {
+      description: 'Displays an error, warning, or success border around the checkbox.',
+      table: {
+        type: {
+          summary: '{ type: string, value: string }'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'object' }
+    },
     onChange: {
       type: { required: true },
       description: 'The action triggered when the checkbox status is changed',

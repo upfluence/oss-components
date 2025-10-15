@@ -119,6 +119,44 @@ module('Integration | Component | o-s-s/checkbox', function (hooks) {
     });
   });
 
+  module('@feedbackMessage argument', () => {
+    test('When the feedbackMessage argument has a type error, the checkbox has the upf-checkbox--error class', async function (assert: Assert) {
+      this.checked = false;
+      this.feedbackMessage = { type: 'error', value: '' };
+      await render(
+        hbs`<OSS::Checkbox @checked={{this.checked}} @feedbackMessage={{this.feedbackMessage}} @onChange={{this.onChange}} />`
+      );
+      assert.dom('.upf-checkbox').hasClass('upf-checkbox--error');
+    });
+
+    test('When the feedbackMessage argument has a type warning, the checkbox has the upf-checkbox--warning class', async function (assert: Assert) {
+      this.checked = false;
+      this.feedbackMessage = { type: 'warning', value: '' };
+      await render(
+        hbs`<OSS::Checkbox @checked={{this.checked}} @feedbackMessage={{this.feedbackMessage}} @onChange={{this.onChange}} />`
+      );
+      assert.dom('.upf-checkbox').hasClass('upf-checkbox--warning');
+    });
+
+    test('When the feedbackMessage argument has a type success, the checkbox has the upf-checkbox--success class', async function (assert: Assert) {
+      this.checked = false;
+      this.feedbackMessage = { type: 'success', value: '' };
+      await render(
+        hbs`<OSS::Checkbox @checked={{this.checked}} @feedbackMessage={{this.feedbackMessage}} @onChange={{this.onChange}} />`
+      );
+      assert.dom('.upf-checkbox').hasClass('upf-checkbox--success');
+    });
+
+    test('When the feedbackMessage argument is undefined, the checkbox does not have the upf-checkbox--error class', async function (assert: Assert) {
+      this.checked = false;
+      this.feedbackMessage = undefined;
+      await render(
+        hbs`<OSS::Checkbox @checked={{this.checked}} @hasError={{this.hasError}} @onChange={{this.onChange}} />`
+      );
+      assert.dom('.upf-checkbox').doesNotHaveClass('upf-checkbox--error');
+    });
+  });
+
   module('Error management', function () {
     test('it throws an error if checked argument is missing', async function (assert) {
       setupOnerror((error: Error) => {

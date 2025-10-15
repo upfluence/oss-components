@@ -183,6 +183,30 @@
         @hasError={{true}}
         @onChange={{this.onCheck}}
       />
+      <OSS::Checkbox
+        @checked={{this.isChecked}}
+        @size="sm"
+        @disabled={{false}}
+        @partial={{false}}
+        @feedbackMessage={{this.feedbackMessageError}}
+        @onChange={{this.onCheck}}
+      />
+      <OSS::Checkbox
+        @checked={{this.isChecked}}
+        @size="sm"
+        @disabled={{false}}
+        @partial={{false}}
+        @feedbackMessage={{this.feedbackMessageWarning}}
+        @onChange={{this.onCheck}}
+      />
+      <OSS::Checkbox
+        @checked={{this.isChecked}}
+        @size="sm"
+        @disabled={{false}}
+        @partial={{false}}
+        @feedbackMessage={{this.feedbackMessageSuccess}}
+        @onChange={{this.onCheck}}
+      />
     </div>
   </div>
 

@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 import { guidFor } from '@ember/object/internals';
+import type { FeedbackMessage } from './input-container';
 
 export const AVAILABLE_SIZES = ['sm'];
 type SizeType = 'sm';
@@ -16,6 +17,7 @@ interface OSSCheckboxArgs {
   disabled?: boolean;
   size?: SizeType;
   hasError?: boolean;
+  feedbackMessage?: FeedbackMessage;
   onChange(value: boolean): void;
 }
 
@@ -25,6 +27,14 @@ export default class OSSCheckbox extends Component<OSSCheckboxArgs> {
 
     assert('[component][OSS::Checkbox] Boolean @checked argument is mandatory.', typeof args.checked === 'boolean');
     assert('[component][OSS::Checkbox] @onChange argument is mandatory.', args.onChange);
+  }
+
+  get feedbackMessage(): FeedbackMessage | undefined {
+    if (this.args.feedbackMessage && ['error', 'warning', 'success'].includes(this.args.feedbackMessage.type)) {
+      return this.args.feedbackMessage;
+    }
+
+    return undefined;
   }
 
   get elementId(): string {
@@ -41,6 +51,8 @@ export default class OSSCheckbox extends Component<OSSCheckboxArgs> {
     if (this.args.hasError) {
       classes.push('upf-checkbox--error');
     }
+
+    if (this.feedbackMessage) classes.push(` upf-checkbox--${this.feedbackMessage.type}`);
 
     if (this.args.size && Object.keys(SizeDefinition).includes(this.args.size as SizeType)) {
       classes.push(SizeDefinition[this.args.size]);
