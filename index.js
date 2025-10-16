@@ -55,7 +55,7 @@ module.exports = {
       new Funnel(`${faPath}/webfonts/`, {
         srcDir: '/',
         include: [
-          '**/fa-brand-*.woff2',
+          '**/fa-brands-*.woff2',
           '**/fa-duotone-*.woff2',
           '**/fa-light-*.woff2',
           '**/fa-regular-*.woff2',
