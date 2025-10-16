@@ -51,6 +51,11 @@
         @link="wizard"
       />
       <OSS::Layout::Sidebar::Item
+        @icon="far fa-brain-circuit"
+        class={{if (eq this.router.currentRouteName "smart") "active"}}
+        @link="smart"
+      />
+      <OSS::Layout::Sidebar::Item
         @icon="far fa-lock"
         @locked={{true}}
         @label="Locked State"
