@@ -1,12 +1,14 @@
 name: Compatibility Checks
 
 on:
-  push:
-    branches:
-      - master
-    tags:
-      - v*
-  pull_request:
+  schedule:
+    - cron: '55 14 * * 1'
+  #push:
+  #branches:
+  #- master
+  #tags:
+  #- v*
+  #pull_request:
 
 env:
   NODE_VERSION: 20
