@@ -1,0 +1,40 @@
+name: Compatibility Checks
+
+on:
+  schedule:
+    - cron: '55 14 * * 1'
+
+env:
+  NODE_VERSION: 20
+  GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+  FONTAWESOME_NPM_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
+
+jobs:
+  compatibility-checks:
+    name: Tests against supported Ember versions
+    timeout-minutes: 10
+    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        scenario:
+          - ember-lts-3.28
+          - ember-4.12
+    steps:
+      - uses: webfactory/ssh-agent@v0.5.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '${{ env.NODE_VERSION }}'
+          cache: 'pnpm'
+      - name: Install Dependencies
+        run: pnpm install
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
+      - run: pnpm ember try:one ${{ matrix.scenario }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT_TOKEN }}
