@@ -17468,7 +17468,7 @@ define("dummy/tests/integration/helpers/form-field-feedback-test", ["qunit", "em
       (0, _qunit.test)('it renders no error message if none is found', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::InputContainer @value="foo" @feedbackMessage={{form-field-feedback this.formInstance.id "name"}} />
+          <OSS::InputContainer @value="foo" @feedbackMessage={{(form-field-feedback this.formInstance.id "name")}} />
         */
         {
           "id": "KsaOpvog",
@@ -17483,12 +17483,12 @@ define("dummy/tests/integration/helpers/form-field-feedback-test", ["qunit", "em
         /*
           
                 {{! template-lint-disable no-implicit-this }}
-                <OSS::InputContainer @value="foo" @feedbackMessage={{form-field-feedback}} />
+                <OSS::InputContainer @value="foo" @feedbackMessage={{(form-field-feedback)}} />
               
         */
         {
-          "id": "P0hxnZfO",
-          "block": "[[[1,\"\\n\"],[1,\"        \"],[8,[39,0],null,[[\"@value\",\"@feedbackMessage\"],[\"foo\",[99,1,[\"@feedbackMessage\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/input-container\",\"form-field-feedback\"]]",
+          "id": "fgkTk2PW",
+          "block": "[[[1,\"\\n\"],[1,\"        \"],[8,[39,0],null,[[\"@value\",\"@feedbackMessage\"],[\"foo\",[28,[37,1],null,null]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/input-container\",\"form-field-feedback\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/helpers/form-field-feedback-test.ts",
           "isStrictMode": false
         }));
@@ -17512,7 +17512,7 @@ define("dummy/tests/integration/helpers/form-field-feedback-test", ["qunit", "em
       (0, _qunit.test)('it renders the error message', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::InputContainer @value="foo" @feedbackMessage={{form-field-feedback this.formInstance.id "name"}} />
+          <OSS::InputContainer @value="foo" @feedbackMessage={{(form-field-feedback this.formInstance.id "name")}} />
         */
         {
           "id": "KsaOpvog",
