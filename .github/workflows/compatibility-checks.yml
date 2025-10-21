@@ -2,7 +2,7 @@ name: Compatibility Checks
 
 on:
   schedule:
-    - cron: '55 14 * * 1'
+    - cron: '45 9 * * 2'
 
 env:
   NODE_VERSION: 20
