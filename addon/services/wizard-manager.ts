@@ -93,7 +93,7 @@ export default class WizardManager extends Service {
     }
   }
 
-  selectStep(stepId: string, bypassValidations?: boolean): void {
+  async selectStep(stepId: string, bypassValidations?: boolean): Promise<void> {
     if (bypassValidations) {
       this.focusStep(stepId);
       return;
@@ -106,22 +106,37 @@ export default class WizardManager extends Service {
     const currentStepIndex = this.focusedStepId ? this.findIndexOfStep(this.focusedStepId) : -1;
     if (currentStepIndex !== -1) {
       const stepsToValidate = this.allSteps.slice(currentStepIndex, targetStepIndex);
-      const validationPromises = stepsToValidate.map((step: Step) => {
-        if (step.completed) return Promise.resolve(true);
-        return step.validateStep ? step.validateStep() : Promise.resolve(true);
-      });
 
-      Promise.all(validationPromises).then((results: boolean[]) => {
-        if (results.every((result: boolean) => result)) {
-          this.focusStep(stepId);
-        } else {
-          const firstInvalidIndex = results.findIndex((result: boolean) => !result);
-          if (firstInvalidIndex !== -1 && currentStepIndex !== currentStepIndex + firstInvalidIndex) {
-            this.focusStep(this.allSteps[currentStepIndex + firstInvalidIndex]?.id ?? '');
-          }
-        }
-      });
+      const stepIdToFocus = await this.runValidationsSequentiallyAndReturnFirstFailingStep(
+        stepsToValidate,
+        currentStepIndex,
+        stepId
+      );
+      if (stepIdToFocus) {
+        this.focusStep(stepIdToFocus);
+      }
     }
+  }
+
+  private async runValidationsSequentiallyAndReturnFirstFailingStep(
+    stepsToValidate: Step[],
+    currentStepIndex: number,
+    targetStepId: string
+  ): Promise<string | null> {
+    for (let i = 0; i < stepsToValidate.length; i++) {
+      const step = stepsToValidate[i];
+      if (step?.completed) continue;
+
+      const isValid = step!.validateStep ? await step!.validateStep() : true;
+      if (!isValid) {
+        const failingStepIndex = currentStepIndex + i;
+        if (failingStepIndex !== currentStepIndex) {
+          return this.allSteps[failingStepIndex]?.id ?? null;
+        }
+        return null;
+      }
+    }
+    return targetStepId;
   }
 
   selectNextStep(): void {
