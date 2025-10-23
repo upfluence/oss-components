@@ -31,7 +31,7 @@ export default class WizardStepWrapperComponent extends Component<WizardStepWrap
     return this.args.step.displayState !== 'none';
   }
 
-  @computed('args.step.displayState')
+  @computed('args.step.{displayState,hidden}')
   get computedClasses(): string {
     const classArray = [this.baseClass];
     if (this.args.step.displayState === 'previous') {
