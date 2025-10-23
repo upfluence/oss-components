@@ -30,6 +30,7 @@ export type ConfigurationOptions = {
   centerStepsInContainer?: boolean;
   stepWrapperBaseClass?: string;
   containerClass?: string;
+  skipScrollEventsClass?: string;
 };
 
 export type WizardConfiguration = {
@@ -52,6 +53,7 @@ export default class WizardManager extends Service {
   @tracked sections: Section[] = [];
   @tracked declare focusedStepId: string;
   @tracked declare configOptions: ConfigurationOptions;
+  @tracked wheelEnabled: boolean = true;
 
   get allSteps(): Step[] {
     return this.sections.flatMap((section: Section) => section.steps);
@@ -77,7 +79,10 @@ export default class WizardManager extends Service {
     const firstFocusableStep = this.sections[0]?.steps.find((step: Step) => step.displayState !== 'empty');
     if (firstFocusableStep) {
       this.focusedStepId = firstFocusableStep.id;
-      this.selectStep(firstFocusableStep.id);
+      this.setDisplayStates();
+      next(this, () => {
+        document.getElementById(firstFocusableStep.id)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
     }
   }
 
@@ -88,7 +93,7 @@ export default class WizardManager extends Service {
     }
   }
 
-  selectStep(stepId: string, bypassValidations?: boolean): void {
+  async selectStep(stepId: string, bypassValidations?: boolean): Promise<void> {
     if (bypassValidations) {
       this.focusStep(stepId);
       return;
@@ -101,22 +106,37 @@ export default class WizardManager extends Service {
     const currentStepIndex = this.focusedStepId ? this.findIndexOfStep(this.focusedStepId) : -1;
     if (currentStepIndex !== -1) {
       const stepsToValidate = this.allSteps.slice(currentStepIndex, targetStepIndex);
-      const validationPromises = stepsToValidate.map((step: Step) => {
-        if (step.completed) return Promise.resolve(true);
-        return step.validateStep ? step.validateStep() : Promise.resolve(true);
-      });
 
-      Promise.all(validationPromises).then((results: boolean[]) => {
-        if (results.every((result: boolean) => result)) {
-          this.focusStep(stepId);
-        } else {
-          const firstInvalidIndex = results.findIndex((result: boolean) => !result);
-          if (firstInvalidIndex !== -1) {
-            this.focusStep(this.allSteps[currentStepIndex + firstInvalidIndex]?.id ?? '');
-          }
-        }
-      });
+      const stepIdToFocus = await this.runValidationsSequentiallyAndReturnFirstFailingStep(
+        stepsToValidate,
+        currentStepIndex,
+        stepId
+      );
+      if (stepIdToFocus) {
+        this.focusStep(stepIdToFocus);
+      }
     }
+  }
+
+  private async runValidationsSequentiallyAndReturnFirstFailingStep(
+    stepsToValidate: Step[],
+    currentStepIndex: number,
+    targetStepId: string
+  ): Promise<string | null> {
+    for (let i = 0; i < stepsToValidate.length; i++) {
+      const step = stepsToValidate[i];
+      if (step?.completed || step?.hidden) continue;
+
+      const isValid = step!.validateStep ? await step!.validateStep() : true;
+      if (!isValid) {
+        const failingStepIndex = currentStepIndex + i;
+        if (failingStepIndex !== currentStepIndex) {
+          return this.allSteps[failingStepIndex]?.id ?? null;
+        }
+        return null;
+      }
+    }
+    return targetStepId;
   }
 
   selectNextStep(): void {
@@ -146,12 +166,12 @@ export default class WizardManager extends Service {
     this.configOptions = {};
   }
 
+  markStepAsIncomplete(stepId: string): void {
+    this.markCompletionOnStep(stepId, false);
+  }
+
   markStepAsCompleted(stepId: string): void {
-    const step = this.findStepById(stepId);
-    if (step) {
-      set(step, 'completed', true);
-    }
-    this.notifySectionChange();
+    this.markCompletionOnStep(stepId, true);
   }
 
   toggleStepVisibility(stepId: string, hidden: boolean): void {
@@ -161,6 +181,14 @@ export default class WizardManager extends Service {
       this.setDisplayStates();
       this.notifySectionChange();
     }
+  }
+
+  enableWheelScroll(): void {
+    this.wheelEnabled = true;
+  }
+
+  disableWheelScroll(): void {
+    this.wheelEnabled = false;
   }
 
   private get currentSection(): Section | undefined {
@@ -182,18 +210,29 @@ export default class WizardManager extends Service {
   private findFirstFocusableStepInSection(sectionId: string): Step | undefined {
     const section = this.sections.find((section: Section) => section.id === sectionId);
     if (section) {
-      return section.steps.find((step: Step) => step.displayState !== 'empty');
+      return section.steps.find((step: Step) => step.displayState !== 'empty' && !step.hidden);
     }
     return undefined;
   }
 
   private focusStep(stepId: string): void {
-    const stepExists = this.sections.some((section: Section) => section.steps.some((step: Step) => step.id === stepId));
-    if (stepExists) {
-      set(this, 'focusedStepId', stepId);
+    const stepPosition: 'before' | 'after' =
+      this.findIndexOfStep(stepId) > this.findIndexOfStep(this.focusedStepId) ? 'after' : 'before';
+
+    let targetStep = stepPosition === 'after' ? this.nextStep : this.previousStep;
+    if (!targetStep) {
+      targetStep = this.findStepById(stepId);
+    }
+    if (targetStep) {
+      set(this, 'focusedStepId', targetStep.id);
       this.setDisplayStates();
       next(this, () => {
         document.getElementById(stepId)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        if (stepId !== this.focusedStepId) {
+          next(this, () => {
+            this.focusStep(stepId);
+          });
+        }
       });
     }
   }
@@ -267,6 +306,14 @@ export default class WizardManager extends Service {
         displayState: 'empty'
       });
     }
+  }
+
+  private markCompletionOnStep(stepId: string, value: boolean): void {
+    const step = this.findStepById(stepId);
+    if (step) {
+      set(step, 'completed', value);
+    }
+    this.notifySectionChange();
   }
 }
 
