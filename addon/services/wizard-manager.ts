@@ -125,7 +125,7 @@ export default class WizardManager extends Service {
   ): Promise<string | null> {
     for (let i = 0; i < stepsToValidate.length; i++) {
       const step = stepsToValidate[i];
-      if (step?.completed) continue;
+      if (step?.completed || step?.hidden) continue;
 
       const isValid = step!.validateStep ? await step!.validateStep() : true;
       if (!isValid) {
