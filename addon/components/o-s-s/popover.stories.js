@@ -97,6 +97,21 @@ const WithIllustrationTemplate = (args) => ({
   context: args
 });
 
+const WithCustomTitleTemplate = (args) => ({
+  template: hbs`
+    <OSS::Popover @arrowPlacement={{this.arrowPlacement}} @size={{this.size}}>
+      <:title>
+        Custom Title
+      </:title>
+
+      <:content>
+        Popover content
+      </:content>
+    </OSS::Popover>
+  `,
+  context: args
+});
+
 export const Default = Template.bind({});
 Default.args = defaultArgs;
 
@@ -105,3 +120,6 @@ WithContextualActions.args = defaultArgs;
 
 export const WithIllustration = WithIllustrationTemplate.bind({});
 WithIllustration.args = defaultArgs;
+
+export const WithCustomTitle = WithCustomTitleTemplate.bind({});
+WithCustomTitle.args = defaultArgs;

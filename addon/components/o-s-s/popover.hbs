@@ -7,7 +7,11 @@
     {{/if}}
     <div class="oss-popover__body">
       <div class="oss-popover__title-line">
-        <span class="oss-popover__title">{{@title}}</span>
+        {{#if (has-block "title")}}
+          {{yield to="title"}}
+        {{else}}
+          <span class="oss-popover__title">{{@title}}</span>
+        {{/if}}
         {{#if (has-block "contextual-actions")}}
           <span class="oss-popover__contextualactions">
             {{yield to="contextual-actions"}}

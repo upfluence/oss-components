@@ -58,4 +58,33 @@ module('Integration | Component | o-s-s-/popover', function (hooks) {
       assert.dom(document.querySelector('.oss-popover__content')).hasText('TEST3');
     });
   });
+
+  module('Title named-block content validation', () => {
+    test('Using the title named-block properly yields content', async function (assert) {
+      await render(hbs`
+        <OSS::Popover @title='Title test' @arrowplacement='top'>
+          <:title>TEST3</:title>
+        </OSS::Popover>
+      `);
+
+      assert.dom(document.querySelector('.oss-popover__title-line')).hasText('TEST3');
+    });
+
+    test('Using the title named-block overrides the title argument', async function (assert) {
+      await render(hbs`
+        <OSS::Popover @title="Title test" @arrowplacement="top">
+          <:title>TEST3</:title>
+        </OSS::Popover>
+      `);
+
+      assert.dom(document.querySelector('.oss-popover__title-line')).hasText('TEST3');
+      assert.dom(document.querySelector('.oss-popover__title-line')).doesNotContainText('Title test');
+    });
+
+    test('When no title named-block is used, the title argument is rendered', async function (assert) {
+      await render(hbs`<OSS::Popover @title="Title test" @arrowplacement="top" />`);
+
+      assert.dom(document.querySelector('.oss-popover__title-line')).hasText('Title test');
+    });
+  });
 });
