@@ -11301,6 +11301,56 @@ define("dummy/tests/integration/components/o-s-s/popover-test", ["qunit", "ember
         assert.dom(document.querySelector('.oss-popover__content')).hasText('TEST3');
       });
     });
+    (0, _qunit.module)('Title named-block content validation', () => {
+      (0, _qunit.test)('Using the title named-block properly yields content', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Popover @title='Title test' @arrowplacement='top'>
+                  <:title>TEST3</:title>
+                </OSS::Popover>
+              
+        */
+        {
+          "id": "+0SEMQvU",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@arrowplacement\"],[\"Title test\",\"top\"]],[[\"title\"],[[[[1,\"TEST3\"]],[]]]]],[1,\"\\n      \"]],[],false,[\"o-s-s/popover\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/popover-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom(document.querySelector('.oss-popover__title-line')).hasText('TEST3');
+      });
+      (0, _qunit.test)('Using the title named-block overrides the title argument', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Popover @title="Title test" @arrowplacement="top">
+                  <:title>TEST3</:title>
+                </OSS::Popover>
+              
+        */
+        {
+          "id": "+0SEMQvU",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@arrowplacement\"],[\"Title test\",\"top\"]],[[\"title\"],[[[[1,\"TEST3\"]],[]]]]],[1,\"\\n      \"]],[],false,[\"o-s-s/popover\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/popover-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom(document.querySelector('.oss-popover__title-line')).hasText('TEST3');
+        assert.dom(document.querySelector('.oss-popover__title-line')).doesNotContainText('Title test');
+      });
+      (0, _qunit.test)('When no title named-block is used, the title argument is rendered', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Popover @title="Title test" @arrowplacement="top" />
+        */
+        {
+          "id": "GKmHuvfW",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@arrowplacement\"],[\"Title test\",\"top\"]],null]],[],false,[\"o-s-s/popover\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/popover-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom(document.querySelector('.oss-popover__title-line')).hasText('Title test');
+      });
+    });
   });
 });
 define("dummy/tests/integration/components/o-s-s/power-select-test", ["qunit", "ember-qunit", "ember-intl/test-support", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testSupport, _testHelpers, _sinon, _templateFactory) {

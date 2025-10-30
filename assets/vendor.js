@@ -93751,7 +93751,11 @@ interface OSSCodeBlockArgs {
       {{/if}}
       <div class="oss-popover__body">
         <div class="oss-popover__title-line">
-          <span class="oss-popover__title">{{@title}}</span>
+          {{#if (has-block "title")}}
+            {{yield to="title"}}
+          {{else}}
+            <span class="oss-popover__title">{{@title}}</span>
+          {{/if}}
           {{#if (has-block "contextual-actions")}}
             <span class="oss-popover__contextualactions">
               {{yield to="contextual-actions"}}
@@ -93775,8 +93779,8 @@ interface OSSCodeBlockArgs {
   {{/in-element}}
   */
   {
-    "id": "voY5MAYK",
-    "block": "[[[40,[[[1,\"  \"],[11,0],[16,0,[29,[\"oss-popover oss-popover--\",[30,0,[\"size\"]]]]],[17,1],[12],[1,\"\\n\"],[41,[48,[30,4]],[[[1,\"      \"],[10,0],[14,0,\"oss-popover__illustration\"],[12],[1,\"\\n        \"],[18,4,null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[10,0],[14,0,\"oss-popover__body\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"oss-popover__title-line\"],[12],[1,\"\\n        \"],[10,1],[14,0,\"oss-popover__title\"],[12],[1,[30,2]],[13],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"          \"],[10,1],[14,0,\"oss-popover__contextualactions\"],[12],[1,\"\\n            \"],[18,5,null],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"        \"],[10,1],[14,0,\"oss-popover__subtitle\"],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,6]],[[[1,\"        \"],[10,0],[14,0,\"oss-popover__content\"],[12],[1,\"\\n          \"],[18,6,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"enableArrow\"]],[[[1,\"      \"],[10,0],[14,0,\"oss-popover__arrow\"],[14,\"data-floating-arrow\",\"\"],[12],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"]],[]],\"%cursor:0%\",[28,[37,1],[[30,0,[\"portalTarget\"]]],null],null]],[\"&attrs\",\"@title\",\"@subtitle\",\"&illustration\",\"&contextual-actions\",\"&content\"],false,[\"in-element\",\"-in-el-null\",\"if\",\"has-block\",\"yield\"]]",
+    "id": "k6Xm+qX3",
+    "block": "[[[40,[[[1,\"  \"],[11,0],[16,0,[29,[\"oss-popover oss-popover--\",[30,0,[\"size\"]]]]],[17,1],[12],[1,\"\\n\"],[41,[48,[30,4]],[[[1,\"      \"],[10,0],[14,0,\"oss-popover__illustration\"],[12],[1,\"\\n        \"],[18,4,null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[10,0],[14,0,\"oss-popover__body\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"oss-popover__title-line\"],[12],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"          \"],[18,5,null],[1,\"\\n\"]],[]],[[[1,\"          \"],[10,1],[14,0,\"oss-popover__title\"],[12],[1,[30,2]],[13],[1,\"\\n\"]],[]]],[41,[48,[30,6]],[[[1,\"          \"],[10,1],[14,0,\"oss-popover__contextualactions\"],[12],[1,\"\\n            \"],[18,6,null],[1,\"\\n          \"],[13],[1,\"\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n\"],[41,[30,3],[[[1,\"        \"],[10,1],[14,0,\"oss-popover__subtitle\"],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null],[41,[48,[30,7]],[[[1,\"        \"],[10,0],[14,0,\"oss-popover__content\"],[12],[1,\"\\n          \"],[18,7,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"enableArrow\"]],[[[1,\"      \"],[10,0],[14,0,\"oss-popover__arrow\"],[14,\"data-floating-arrow\",\"\"],[12],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"]],[]],\"%cursor:0%\",[28,[37,1],[[30,0,[\"portalTarget\"]]],null],null]],[\"&attrs\",\"@title\",\"@subtitle\",\"&illustration\",\"&title\",\"&contextual-actions\",\"&content\"],false,[\"in-element\",\"-in-el-null\",\"if\",\"has-block\",\"yield\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/popover.hbs",
     "isStrictMode": false
   });
@@ -93799,7 +93803,7 @@ interface OSSCodeBlockArgs {
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = _exports.WithIllustration = _exports.WithContextualActions = _exports.Default = void 0;
+  _exports.default = _exports.WithIllustration = _exports.WithCustomTitle = _exports.WithContextualActions = _exports.Default = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
   const Placements = ['top', 'right', 'bottom', 'left'];
   const Sizes = [null, 'sm', 'md'];
@@ -93931,12 +93935,37 @@ interface OSSCodeBlockArgs {
     }),
     context: args
   });
+  const WithCustomTitleTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <OSS::Popover @arrowPlacement={{this.arrowPlacement}} @size={{this.size}}>
+          <:title>
+            Custom Title
+          </:title>
+    
+          <:content>
+            Popover content
+          </:content>
+        </OSS::Popover>
+      
+    */
+    {
+      "id": "VL+z8QjN",
+      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@arrowPlacement\",\"@size\"],[[30,0,[\"arrowPlacement\"]],[30,0,[\"size\"]]]],[[\"title\",\"content\"],[[[[1,\"\\n        Custom Title\\n      \"]],[]],[[[1,\"\\n        Popover content\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/popover\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/popover.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
   const Default = _exports.Default = Template.bind({});
   Default.args = defaultArgs;
   const WithContextualActions = _exports.WithContextualActions = WithContextualActionsTemplate.bind({});
   WithContextualActions.args = defaultArgs;
   const WithIllustration = _exports.WithIllustration = WithIllustrationTemplate.bind({});
   WithIllustration.args = defaultArgs;
+  const WithCustomTitle = _exports.WithCustomTitle = WithCustomTitleTemplate.bind({});
+  WithCustomTitle.args = defaultArgs;
 });
 ;define("@upfluence/oss-components/components/o-s-s/power-select", ["exports", "@ember/component", "@ember/debug", "@ember/object", "@ember/runloop", "@upfluence/oss-components/utils/attach-dropdown", "@upfluence/oss-components/components/o-s-s/private/base-dropdown", "@ember/template-factory"], function (_exports, _component, _debug, _object, _runloop, _attachDropdown, _baseDropdown, _templateFactory) {
   "use strict";
