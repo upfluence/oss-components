@@ -1,0 +1,84 @@
+.upf-marketing-banner {
+  --primary-gradiant-color: var(--color-violet-100);
+  --secondary-gradiant-color: var(--color-melon-100);
+  --background-grid-display: flex;
+
+  position: relative;
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-px-18);
+  gap: var(--spacing-px-18);
+  box-shadow: var(--box-shadow-sm);
+
+  &:before {
+    display: var(--background-grid-display);
+    content: '';
+    top: 0;
+    left: 0;
+    width: 270px;
+    height: 150px;
+    position: absolute;
+    background-image: url('/@upfluence/oss-components/assets/components/marketing-banner/grid.svg');
+  }
+
+  &__gradient--primary,
+  &__gradient--secondary,
+  &__gradient--tertiary {
+    position: absolute;
+    border-radius: 50%;
+  }
+
+  &__gradient--primary,
+  &__gradient--secondary {
+    width: 350px;
+    height: 350px;
+    filter: blur(180px);
+  }
+
+  &__gradient--primary {
+    background: var(--primary-gradiant-color);
+    top: 15px;
+    left: -200px;
+  }
+
+  &__gradient--secondary {
+    background: var(--secondary-gradiant-color);
+    bottom: 15px;
+    right: -200px;
+  }
+
+  &__gradient--tertiary {
+    width: 250px;
+    height: 250px;
+    filter: blur(225px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--color-white);
+  }
+
+  &__content {
+    display: flex;
+    gap: var(--spacing-px-18);
+    flex: 1;
+    z-index: 0;
+  }
+
+  &__title {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  &__subtitle {
+    font-size: var(--font-size-md);
+    color: var(--color-gray-500);
+  }
+
+  &__illustration {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
