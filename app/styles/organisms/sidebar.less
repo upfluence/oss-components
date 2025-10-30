@@ -33,11 +33,22 @@
     a {
       max-width: 30px;
       max-height: 30px;
+      overflow: hidden;
     }
 
     .oss-sidebar-item {
       background-color: transparent;
       border: 1px solid transparent;
+      border-radius: var(--border-radius-sm);
+
+      &__icon {
+        width: 28px;
+        height: 28px;
+      }
+
+      img {
+        overflow: hidden;
+      }
     }
   }
 
