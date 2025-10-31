@@ -5,6 +5,7 @@ type Options = {
   primaryGradiantColor?: string;
   secondaryGradiantColor?: string;
   backgroundGridHidden?: boolean;
+  illustrationAlwaysVisible?: boolean;
 };
 
 interface OSSMarketingBannerComponentSignature {
@@ -26,10 +27,15 @@ export default class OSSMarketingBannerComponent extends Component<OSSMarketingB
     return this.args.options?.backgroundGridHidden ? 'none' : 'flex';
   }
 
+  get illustrationDisplay(): string {
+    return this.args.options?.illustrationAlwaysVisible ? 'flex' : 'none';
+  }
+
   @action
   setup(element: HTMLElement) {
     element.style.setProperty('--primary-gradiant-color', `var(${this.primaryGradiantColor})`);
     element.style.setProperty('--secondary-gradiant-color', `var(${this.secondaryGradiantColor})`);
     element.style.setProperty('--background-grid-display', this.backgroundGridDisplay);
+    element.style.setProperty('--illustration-display', this.illustrationDisplay);
   }
 }

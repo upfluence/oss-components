@@ -1,22 +1,24 @@
-<div class="upf-marketing-banner" {{did-insert this.setup}}>
-  <div class="upf-marketing-banner__gradient--primary"></div>
-  <div class="upf-marketing-banner__gradient--secondary"></div>
-  <div class="upf-marketing-banner__gradient--tertiary"></div>
+<div class="upf-marketing-banner" {{did-insert this.setup}} ...attributes>
+  <div class="upf-marketing-banner__container">
+    <div class="upf-marketing-banner__gradient--primary"></div>
+    <div class="upf-marketing-banner__gradient--secondary"></div>
+    <div class="upf-marketing-banner__gradient--tertiary"></div>
 
-  <div class="upf-marketing-banner__content">
-    {{#if (has-block "illustration")}}
-      <div class="upf-marketing-banner__illustration">
-        {{yield to="illustration"}}
+    <div class="upf-marketing-banner__content">
+      {{#if (has-block "illustration")}}
+        <div class="upf-marketing-banner__illustration">
+          {{yield to="illustration"}}
+        </div>
+      {{/if}}
+      <div class="fx-col fx-gap-px-6">
+        <span class="upf-marketing-banner__title">{{@title}}</span>
+        <span class="upf-marketing-banner__subtitle">{{@subtitle}}</span>
+      </div>
+    </div>
+    {{#if (has-block "actions")}}
+      <div class="upf-marketing-banner__actions">
+        {{yield to="actions"}}
       </div>
     {{/if}}
-    <div class="fx-col fx-gap-px-6">
-      <span class="upf-marketing-banner__title">{{@title}}</span>
-      <span class="upf-marketing-banner__subtitle">{{@subtitle}}</span>
-    </div>
   </div>
-  {{#if (has-block "actions")}}
-    <div class="upf-marketing-banner__actions">
-      {{yield to="actions"}}
-    </div>
-  {{/if}}
 </div>

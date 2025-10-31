@@ -2,25 +2,33 @@
   --primary-gradiant-color: var(--color-violet-100);
   --secondary-gradiant-color: var(--color-melon-100);
   --background-grid-display: flex;
+  --illustration-display: flex;
 
-  position: relative;
+  container-type: inline-size;
+  container-name: upf-marketing-banner;
   display: flex;
   flex: 1;
-  overflow: hidden;
-  border-radius: var(--border-radius-md);
-  padding: var(--spacing-px-18);
-  gap: var(--spacing-px-18);
-  box-shadow: var(--box-shadow-sm);
 
-  &:before {
-    display: var(--background-grid-display);
-    content: '';
-    top: 0;
-    left: 0;
-    width: 270px;
-    height: 150px;
-    position: absolute;
-    background-image: url('/@upfluence/oss-components/assets/components/marketing-banner/grid.svg');
+  &__container {
+    position: relative;
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-px-18);
+    gap: var(--spacing-px-18);
+    box-shadow: var(--box-shadow-sm);
+
+    &:before {
+      display: var(--background-grid-display);
+      content: '';
+      top: 0;
+      left: 0;
+      width: 270px;
+      height: 150px;
+      position: absolute;
+      background-image: url('/@upfluence/oss-components/assets/components/marketing-banner/grid.svg');
+    }
   }
 
   &__gradient--primary,
@@ -39,13 +47,13 @@
 
   &__gradient--primary {
     background: var(--primary-gradiant-color);
-    top: 15px;
+    bottom: -265px;
     left: -200px;
   }
 
   &__gradient--secondary {
     background: var(--secondary-gradiant-color);
-    bottom: 15px;
+    top: -265px;
     right: -200px;
   }
 
@@ -80,5 +88,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 0;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+  }
+}
+
+@container upf-marketing-banner (width <= 340px) {
+  .upf-marketing-banner {
+    &__container {
+      flex-direction: column;
+    }
+
+    &__illustration {
+      display: var(--illustration-display);
+    }
   }
 }
