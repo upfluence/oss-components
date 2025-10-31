@@ -13065,10 +13065,19 @@ a.upf-btn--sm {
 .oss-sidebar-container .logo-container a {
   max-width: 30px;
   max-height: 30px;
+  overflow: hidden;
 }
 .oss-sidebar-container .logo-container .oss-sidebar-item {
   background-color: transparent;
   border: 1px solid transparent;
+  border-radius: var(--border-radius-sm);
+}
+.oss-sidebar-container .logo-container .oss-sidebar-item__icon {
+  width: 28px;
+  height: 28px;
+}
+.oss-sidebar-container .logo-container .oss-sidebar-item img {
+  overflow: hidden;
 }
 .oss-sidebar-container__content {
   padding: var(--spacing-px-12) var(--spacing-px-9);
