@@ -16,7 +16,7 @@ interface OSSInputContainerArgs {
   placeholder?: string;
   type?: string;
   autocomplete?: 'on' | 'off';
-  onChange?(value: string): void;
+  onChange?(value: string | null): void;
 }
 
 export const AutocompleteValues = ['on', 'off'];
@@ -51,9 +51,15 @@ export default class OSSInputContainer extends Component<OSSInputContainerArgs> 
   }
 
   @action
-  _onChange(value: string): void {
-    if (this.args.onChange) {
-      this.args.onChange(value);
+  onInput(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    this.args.onChange?.(input.value);
+  }
+
+  @action
+  onKeyUp(event: KeyboardEvent): void {
+    if (event.key === 'Backspace' && this.args.value === null) {
+      this.args.onChange?.(null);
     }
   }
 
