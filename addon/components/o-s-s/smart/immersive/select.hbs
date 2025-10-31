@@ -1,0 +1,69 @@
+<div
+  class="{{this.computedClasses}}"
+  data-toggle="oss-dropdown"
+  {{did-insert this.registerContainer}}
+  {{did-insert (fn this.ensureBlockPresence (has-block "selected-item") (has-block "option-item"))}}
+  {{did-update this.runAnimationOnLoadEnd @loading}}
+  {{will-destroy this.disconnectObserver}}
+  ...attributes
+>
+  {{#if @loading}}
+    <div class="upf-input loading-placeholder fx-row fx-xalign-center">
+      <span class="smart_text_animated">{{@placeholder}}</span>
+    </div>
+  {{else}}
+    <div class="upf-power-select__array-container" role="button" {{on "click" this.toggleDropdown}}>
+      <div class="upf-input fx-row padding-px-6 {{if this.isOpen 'active'}}">
+        <div class="fx-row fx-xalign-center fx-1 fx-gap-px-6 fx-wrap">
+          {{#each this.values as |selectedItem|}}
+            <div class="select-smart-item" style={{this.computedSmartItemStyle}}>
+              {{yield selectedItem to="selected-item"}}
+            </div>
+          {{else}}
+            <span class="font-size-md font-color-gray-400">
+              {{@placeholder}}
+            </span>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  {{/if}}
+
+  {{#if this.isOpen}}
+    {{#in-element this.portalTarget insertBefore=null}}
+      <OSS::InfiniteSelect
+        @skin="smart"
+        @items={{@items}}
+        @onSearch={{@onSearch}}
+        @inline={{false}}
+        @onSelect={{this.onSelect}}
+        @searchPlaceholder={{@searchPlaceholder}}
+        @loading={{@loading}}
+        @loadingMore={{@loadingMore}}
+        @onBottomReached={{@onBottomReached}}
+        @enableKeyboard={{true}}
+        @searchEnabled={{@searchEnabled}}
+        class={{concat "margin-top-px-0 upf-power-select__dropdown " this.dropdownAddressableClass}}
+        id={{this.portalId}}
+        {{on "click" this.noop}}
+        {{on-click-outside this.onClickOutside useCapture=@captureClickOutside}}
+      >
+        <:option as |item|>
+          <div
+            class="item-wrapper fx-row fx-xalign-center fx-gap-px-6
+              {{unless @multiple 'fx-malign-space-between'}}
+              {{if (this.isSelected value=item.value) 'selected'}}"
+          >
+            {{#if (and @multiple (not @hideCheckboxes))}}
+              <OSS::Checkbox @checked={{this.isSelected value=item.value}} @onChange={{fn this.onSelect item}} />
+            {{/if}}
+            {{yield item to="option-item"}}
+            {{#if (and (not @multiple) (this.isSelected value=item.value))}}
+              <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
+            {{/if}}
+          </div>
+        </:option>
+      </OSS::InfiniteSelect>
+    {{/in-element}}
+  {{/if}}
+</div>

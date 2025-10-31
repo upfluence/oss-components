@@ -106,6 +106,7 @@ module('Unit | Service | wizard-manager', function (hooks) {
 
     test('selectStep focuses the step and updates focusedStepId', async function (assert) {
       this.service.initialize(this.config as WizardConfiguration);
+      await settled();
       const step2Id = this.service.allSteps[1].id;
 
       this.service.selectStep(step2Id);
@@ -122,6 +123,7 @@ module('Unit | Service | wizard-manager', function (hooks) {
       };
 
       this.service.initialize(this.config as WizardConfiguration);
+      await settled();
       const step1Id = this.service.allSteps[0].id;
       const step2Id = this.service.allSteps[1].id;
       this.validateStub = sinon.stub(this.service.allSteps[0], 'validateStep').resolves(true);
@@ -130,12 +132,13 @@ module('Unit | Service | wizard-manager', function (hooks) {
 
       this.service.selectStep(step2Id, true);
       await settled();
-      assert.equal(this.service.focusedStepId, step1Id);
+      assert.equal(this.service.focusedStepId, step2Id);
       assert.true(this.validateStub.notCalled, 'validateStep was not called when bypassValidations is true');
     });
 
     test("selectStep runs the current step's validateStep if provided", async function (assert) {
       this.service.initialize(this.config as WizardConfiguration);
+      await settled();
       this.validateStub = sinon.stub(this.service.allSteps[0], 'validateStep').resolves(true);
       const step1 = this.service.allSteps[0];
       const step2 = this.service.allSteps[1];
@@ -147,6 +150,7 @@ module('Unit | Service | wizard-manager', function (hooks) {
 
     test('selectStep does not change focusedStepId if validation fails', async function (assert) {
       this.service.initialize(this.config as WizardConfiguration);
+      await settled();
       const step1 = this.service.allSteps[0];
       const step2 = this.service.allSteps[1];
       step1.validateStep = () => Promise.resolve(false);
@@ -158,6 +162,7 @@ module('Unit | Service | wizard-manager', function (hooks) {
 
     test('selectStep runs all validation steps from current section to target step', async function (assert) {
       this.service.initialize(this.config as WizardConfiguration);
+      await settled();
       const step1 = this.service.allSteps[0];
       const step2 = this.service.allSteps[1];
       const step3 = this.service.allSteps[2];
@@ -177,6 +182,7 @@ module('Unit | Service | wizard-manager', function (hooks) {
 
     test('selectStep focuses the first failing step if validation fails', async function (assert) {
       this.service.initialize(this.config as WizardConfiguration);
+      await settled();
       const step1 = this.service.allSteps[0];
       const step2 = this.service.allSteps[1];
       const step3 = this.service.allSteps[2];
@@ -205,6 +211,7 @@ module('Unit | Service | wizard-manager', function (hooks) {
     module('previousStep', function () {
       test('It returns the step before the current step', async function (assert) {
         this.service.initialize(this.config as WizardConfiguration);
+        await settled();
         const step1 = this.service.allSteps[0];
         const step2 = this.service.allSteps[1];
         this.service.selectStep(step2.id);
@@ -215,6 +222,7 @@ module('Unit | Service | wizard-manager', function (hooks) {
 
       test('If previous step is hidden, it returns the previous visible', async function (assert) {
         this.service.initialize(this.config as WizardConfiguration);
+        await settled();
         const step1 = this.service.allSteps[0];
         const step2 = this.service.allSteps[1];
         const step3 = this.service.allSteps[2];
@@ -229,6 +237,7 @@ module('Unit | Service | wizard-manager', function (hooks) {
     module('nextStep', function () {
       test('nextStep returns the step after the current step', async function (assert) {
         this.service.initialize(this.config as WizardConfiguration);
+        await settled();
         const step1 = this.service.allSteps[0];
         const step2 = this.service.allSteps[1];
         this.service.selectStep(step1.id);
@@ -239,6 +248,7 @@ module('Unit | Service | wizard-manager', function (hooks) {
 
       test('If next step is hidden, it returns the next visible', async function (assert) {
         this.service.initialize(this.config as WizardConfiguration);
+        await settled();
         const step1 = this.service.allSteps[0];
         const step2 = this.service.allSteps[1];
         const step3 = this.service.allSteps[2];
@@ -250,8 +260,9 @@ module('Unit | Service | wizard-manager', function (hooks) {
       });
     });
 
-    test('allSteps returns all steps across sections', function (assert) {
+    test('allSteps returns all steps across sections', async function (assert) {
       this.service.initialize(this.config as WizardConfiguration);
+      await settled();
       const allSteps = this.service.allSteps;
 
       assert.strictEqual(allSteps.length, 3);
@@ -260,8 +271,9 @@ module('Unit | Service | wizard-manager', function (hooks) {
       assert.strictEqual(allSteps[2].key, 'step-3');
     });
 
-    test('findStepByKey returns the step with the given key', function (assert) {
+    test('findStepByKey returns the step with the given key', async function (assert) {
       this.service.initialize(this.config as WizardConfiguration);
+      await settled();
       const step1 = this.service.findStepByKey('step-1');
       const step2 = this.service.findStepByKey('step-2');
       const step3 = this.service.findStepByKey('step-3');
@@ -274,11 +286,12 @@ module('Unit | Service | wizard-manager', function (hooks) {
   });
 
   module('Select Next/Previous Step', function (hooks) {
-    hooks.beforeEach(function () {
+    hooks.beforeEach(async function () {
       this.config = {
         sections: [createSection('section-1', [createStep('step-1'), createStep('step-2'), createStep('step-3')])]
       };
       this.service.initialize(this.config as WizardConfiguration);
+      await settled();
     });
 
     test('selectNextStep focuses the next step', async function (assert) {
@@ -304,8 +317,9 @@ module('Unit | Service | wizard-manager', function (hooks) {
     });
   });
 
-  test('findStepsForSectionKey returns steps for a given section key', function (assert) {
+  test('findStepsForSectionKey returns steps for a given section key', async function (assert) {
     this.service.initialize(this.config as WizardConfiguration);
+    await settled();
     const steps = this.service.findStepsForSectionKey('section-1');
 
     assert.strictEqual(steps.length, 3);
@@ -314,8 +328,9 @@ module('Unit | Service | wizard-manager', function (hooks) {
     assert.strictEqual(steps[2].key, 'step-3');
   });
 
-  test('reset clears all sections and steps', function (assert) {
+  test('reset clears all sections and steps', async function (assert) {
     this.service.initialize(this.config as WizardConfiguration);
+    await settled();
     this.service.reset();
 
     assert.strictEqual(this.service.sections.length, 0);
@@ -324,12 +339,22 @@ module('Unit | Service | wizard-manager', function (hooks) {
     assert.strictEqual(this.service.initialized, false);
   });
 
-  test('markStepAsCompleted marks a step as completed', function (assert) {
+  test('markStepAsCompleted marks a step as completed', async function (assert) {
     this.service.initialize(this.config as WizardConfiguration);
+    await settled();
     const step1 = this.service.allSteps[0];
     assert.equal(step1.completed, undefined);
     this.service.markStepAsCompleted(step1.id);
     assert.true(step1.completed);
+  });
+
+  test('markStepAsIncomplete marks a step as incomplete', async function (assert) {
+    this.service.initialize(this.config as WizardConfiguration);
+    await settled();
+    const step1 = this.service.allSteps[0];
+    step1.completed = true;
+    this.service.markStepAsIncomplete(step1.id);
+    assert.false(step1.completed);
   });
 
   module('ToggleStepVisibility', function (hooks) {
@@ -337,8 +362,9 @@ module('Unit | Service | wizard-manager', function (hooks) {
       this.setDisplayStatesStub = sinon.stub(this.service, 'setDisplayStates').resolves();
     });
 
-    test('It allows to hide or display a step', function (assert) {
+    test('It allows to hide or display a step', async function (assert) {
       this.service.initialize(this.config as WizardConfiguration);
+      await settled();
       const step1 = this.service.allSteps[0];
       assert.equal(step1.hidden, undefined);
       this.service.toggleStepVisibility(step1.id, true);
@@ -347,12 +373,39 @@ module('Unit | Service | wizard-manager', function (hooks) {
       assert.equal(step1.hidden, false);
     });
 
-    test('It rerenders the display states when triggered', function (assert) {
+    test('It rerenders the display states when triggered', async function (assert) {
       this.service.initialize(this.config as WizardConfiguration);
-      const step1 = this.service.allSteps[0];
+      await settled();
+      this.setDisplayStatesStub.reset();
       assert.ok(this.setDisplayStatesStub.notCalled);
+      const step1 = this.service.allSteps[0];
       this.service.toggleStepVisibility(step1.id, true);
       assert.ok(this.setDisplayStatesStub.calledOnce);
+    });
+  });
+
+  module('Enable/Disable Wheel Scroll', function () {
+    test('By default, wheel scroll is enabled', async function (assert) {
+      this.service.initialize(this.config as WizardConfiguration);
+      await settled();
+      assert.true(this.service.wheelEnabled);
+    });
+
+    test('enableWheelScroll sets wheelEnabled to true', async function (assert) {
+      this.service.initialize(this.config as WizardConfiguration);
+      await settled();
+      this.service.wheelEnabled = false;
+      assert.false(this.service.wheelEnabled);
+      this.service.enableWheelScroll();
+      assert.true(this.service.wheelEnabled);
+    });
+
+    test('disableWheelScroll sets wheelEnabled to false', async function (assert) {
+      this.service.initialize(this.config as WizardConfiguration);
+      await settled();
+      assert.true(this.service.wheelEnabled);
+      this.service.disableWheelScroll();
+      assert.false(this.service.wheelEnabled);
     });
   });
 });
