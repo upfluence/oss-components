@@ -1,5 +1,6 @@
 import Component from '@glimmer/component';
 import { action } from '@ember/object';
+import { assert } from '@ember/debug';
 
 type Options = {
   primaryGradiantColor?: string;
@@ -15,6 +16,12 @@ interface OSSMarketingBannerComponentSignature {
 }
 
 export default class OSSMarketingBannerComponent extends Component<OSSMarketingBannerComponentSignature> {
+  constructor(owner: unknown, args: OSSMarketingBannerComponentSignature) {
+    super(owner, args);
+    assert('[component][OSS::MarketingBanner] @title is required', typeof args.title === 'string');
+    assert('[component][OSS::MarketingBanner] @subtitle is required', typeof args.subtitle === 'string');
+  }
+
   get primaryGradiantColor(): string {
     return this.args.options?.primaryGradiantColor ?? '--color-violet-100';
   }
