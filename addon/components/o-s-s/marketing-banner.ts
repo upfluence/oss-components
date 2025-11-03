@@ -5,7 +5,7 @@ import { assert } from '@ember/debug';
 type Options = {
   primaryGradiantColor?: string;
   secondaryGradiantColor?: string;
-  backgroundGridHidden?: boolean;
+  backgroundGridDisplayed?: boolean;
   illustrationAlwaysVisible?: boolean;
 };
 
@@ -30,11 +30,11 @@ export default class OSSMarketingBannerComponent extends Component<OSSMarketingB
     return this.args.options?.secondaryGradiantColor ?? '--color-melon-100';
   }
 
-  get backgroundGridDisplay(): string {
-    return this.args.options?.backgroundGridHidden ? 'none' : 'flex';
+  get displayBackgroundGrid(): string {
+    return this.args.options?.backgroundGridDisplayed ?? true ? 'flex' : 'none';
   }
 
-  get illustrationDisplay(): string {
+  get displayIllustration(): string {
     return this.args.options?.illustrationAlwaysVisible ? 'flex' : 'none';
   }
 
@@ -42,7 +42,7 @@ export default class OSSMarketingBannerComponent extends Component<OSSMarketingB
   setup(element: HTMLElement) {
     element.style.setProperty('--primary-gradiant-color', `var(${this.primaryGradiantColor})`);
     element.style.setProperty('--secondary-gradiant-color', `var(${this.secondaryGradiantColor})`);
-    element.style.setProperty('--background-grid-display', this.backgroundGridDisplay);
-    element.style.setProperty('--illustration-display', this.illustrationDisplay);
+    element.style.setProperty('--background-grid-display', this.displayBackgroundGrid);
+    element.style.setProperty('--illustration-display', this.displayIllustration);
   }
 }

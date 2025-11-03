@@ -62,13 +62,13 @@ export default {
       options: ColorOptions,
       control: { type: 'select' }
     },
-    backgroundGridHidden: {
-      description: 'Hides the background grid pattern',
+    backgroundGridDisplayed: {
+      description: 'Display the background grid pattern',
       table: {
         type: {
           summary: 'boolean'
         },
-        defaultValue: { summary: false }
+        defaultValue: { summary: true }
       },
       control: { type: 'boolean' }
     },
@@ -99,7 +99,7 @@ const defaultArgs = {
   subtitle: 'Discover powerful tools to grow your business',
   primaryGradiantColor: '--color-violet-100',
   secondaryGradiantColor: '--color-melon-100',
-  backgroundGridHidden: false,
+  backgroundGridDisplayed: true,
   illustrationAlwaysVisible: false
 };
 
@@ -112,7 +112,7 @@ const BasicUsageTemplate = (args) => ({
         @options={{hash
           primaryGradiantColor=this.primaryGradiantColor
           secondaryGradiantColor=this.secondaryGradiantColor
-          backgroundGridHidden=this.backgroundGridHidden
+          backgroundGridDisplayed=this.backgroundGridDisplayed
           illustrationAlwaysVisible=this.illustrationAlwaysVisible
         }}
       />
@@ -173,7 +173,7 @@ const CompleteExampleTemplate = (args) => ({
         @options={{hash
           primaryGradiantColor=this.primaryGradiantColor
           secondaryGradiantColor=this.secondaryGradiantColor
-          backgroundGridHidden=this.backgroundGridHidden
+          backgroundGridDisplayed=this.backgroundGridDisplayed
           illustrationAlwaysVisible=this.illustrationAlwaysVisible
         }}
       >
@@ -203,7 +203,7 @@ const CompleteExampleTemplateSmallScreen = (args) => ({
         @options={{hash
           primaryGradiantColor=this.primaryGradiantColor
           secondaryGradiantColor=this.secondaryGradiantColor
-          backgroundGridHidden=this.backgroundGridHidden
+          backgroundGridDisplayed=this.backgroundGridDisplayed
           illustrationAlwaysVisible=this.illustrationAlwaysVisible
         }}
       >

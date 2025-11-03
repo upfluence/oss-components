@@ -3,6 +3,8 @@ import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 
+import { CSSVariableToRGB } from 'dummy/tests/integration/utils';
+
 const ILLUSTRATION_SRC = '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg';
 
 module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
@@ -37,20 +39,20 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
     assert.dom('.upf-marketing-banner__subtitle').hasText('Subtitle');
   });
 
-  test('it renders all gradient elements', async function (assert) {
+  test('it renders all background effect elements', async function (assert) {
     await render(hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />`);
-    assert.dom('.upf-marketing-banner__gradient--primary').exists();
-    assert.dom('.upf-marketing-banner__gradient--secondary').exists();
-    assert.dom('.upf-marketing-banner__gradient--tertiary').exists();
+    assert.dom('.upf-marketing-banner__background--primary').exists();
+    assert.dom('.upf-marketing-banner__background--secondary').exists();
+    assert.dom('.upf-marketing-banner__background--tertiary').exists();
   });
 
   module('for @options', () => {
     module('for @primaryGradiantColor', () => {
       test('it renders the default colors', async function (assert) {
         await render(hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />`);
-        assert.dom('.upf-marketing-banner__gradient--primary').exists();
+        assert.dom('.upf-marketing-banner__background--primary').exists();
         assert
-          .dom('.upf-marketing-banner__gradient--primary')
+          .dom('.upf-marketing-banner__background--primary')
           .hasStyle({ 'background-color': CSSVariableToRGB('--color-violet-100') });
       });
 
@@ -62,9 +64,9 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
           hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
         );
 
-        assert.dom('.upf-marketing-banner__gradient--primary').exists();
+        assert.dom('.upf-marketing-banner__background--primary').exists();
         assert
-          .dom('.upf-marketing-banner__gradient--primary')
+          .dom('.upf-marketing-banner__background--primary')
           .hasStyle({ 'background-color': CSSVariableToRGB(this.options.primaryGradiantColor) });
       });
     });
@@ -72,9 +74,9 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
     module('for @secondaryGradiantColor', () => {
       test('it renders the default colors', async function (assert) {
         await render(hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />`);
-        assert.dom('.upf-marketing-banner__gradient--secondary').exists();
+        assert.dom('.upf-marketing-banner__background--secondary').exists();
         assert
-          .dom('.upf-marketing-banner__gradient--secondary')
+          .dom('.upf-marketing-banner__background--secondary')
           .hasStyle({ 'background-color': CSSVariableToRGB('--color-melon-100') });
       });
 
@@ -86,14 +88,14 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
           hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
         );
 
-        assert.dom('.upf-marketing-banner__gradient--secondary').exists();
+        assert.dom('.upf-marketing-banner__background--secondary').exists();
         assert
-          .dom('.upf-marketing-banner__gradient--secondary')
+          .dom('.upf-marketing-banner__background--secondary')
           .hasStyle({ 'background-color': CSSVariableToRGB(this.options.secondaryGradiantColor) });
       });
     });
 
-    module('for @backgroundGridHidden', () => {
+    module('for @backgroundGridDisplayed', () => {
       module('by default', () => {
         test('it renders it', async function (assert) {
           await render(hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />`);
@@ -108,10 +110,10 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
         });
       });
 
-      module('when the value is true', () => {
+      module('when the value is false', () => {
         test("it doesn't render the grid", async function (assert) {
           this.options = {
-            backgroundGridHidden: true
+            backgroundGridDisplayed: false
           };
           await render(
             hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
@@ -122,7 +124,7 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
 
         test('it sets the correct value for --background-grid-display CSS variable', async function (assert) {
           this.options = {
-            backgroundGridHidden: true
+            backgroundGridDisplayed: false
           };
           await render(
             hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
@@ -132,10 +134,10 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
         });
       });
 
-      module('when the value is false', () => {
+      module('when the value is true', () => {
         test('it renders the grid', async function (assert) {
           this.options = {
-            backgroundGridHidden: false
+            backgroundGridDisplayed: true
           };
           await render(
             hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
@@ -146,7 +148,7 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
 
         test('it sets the correct value for --background-grid-display CSS variable', async function (assert) {
           this.options = {
-            backgroundGridHidden: false
+            backgroundGridDisplayed: true
           };
           await render(
             hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
@@ -237,59 +239,4 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
       await render(hbs`<OSS::MarketingBanner @title={{this.title}} />`);
     });
   });
-
-  module('For private tests methods', function () {
-    test('CSSVariableToRGB converts CSS variable to RGB', function (assert) {
-      const root = document.documentElement;
-      root.style.setProperty('--test-hex-color', '#ff5733');
-      root.style.setProperty('--test-rgb-color', 'rgb(34, 139, 34)');
-
-      const hexColor = CSSVariableToRGB('--test-hex-color');
-      const rgbColor = CSSVariableToRGB('--test-rgb-color');
-
-      assert.equal(hexColor, 'rgb(255, 87, 51)', 'Hex color converted to RGB correctly');
-      assert.equal(rgbColor, 'rgba(34, 139, 34, 1)', 'RGB color converted to RGBA correctly');
-    });
-
-    test('hexToRGB converts hex color to RGB', function (assert) {
-      const shortHex = '#0f0';
-      const longHex = '#00ff00';
-
-      const shortHexRGB = hexToRGB(shortHex);
-      const longHexRGB = hexToRGB(longHex);
-
-      assert.equal(shortHexRGB, 'rgb(0, 255, 0)', 'Short hex color converted to RGB correctly');
-      assert.equal(longHexRGB, 'rgb(0, 255, 0)', 'Long hex color converted to RGB correctly');
-    });
-  });
 });
-
-function CSSVariableToRGB(variable: string): string {
-  const rootStyles = getComputedStyle(document.documentElement);
-  const colorValue = rootStyles.getPropertyValue(variable).trim();
-
-  if (colorValue.startsWith('rgb')) {
-    return colorValue.replace('rgb', 'rgba').replace(')', ', 1)');
-  } else if (colorValue.startsWith('#')) {
-    return hexToRGB(colorValue);
-  } else {
-    throw new Error(`Unsupported color format: ${colorValue}`);
-  }
-}
-
-function hexToRGB(hex: string): string {
-  hex = hex.replace('#', '');
-
-  if (hex.length === 3) {
-    hex = hex
-      .split('')
-      .map((char) => char + char)
-      .join('');
-  }
-
-  const r = parseInt(hex.substring(0, 2), 16);
-  const g = parseInt(hex.substring(2, 4), 16);
-  const b = parseInt(hex.substring(4, 6), 16);
-
-  return `rgb(${r}, ${g}, ${b})`;
-}
