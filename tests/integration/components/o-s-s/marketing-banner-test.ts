@@ -2,6 +2,7 @@ import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render, setupOnerror } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import { setupIntl } from 'ember-intl/test-support';
 
 import { CSSVariableToRGB } from 'dummy/tests/integration/utils';
 
@@ -9,6 +10,7 @@ const ILLUSTRATION_SRC = '/@upfluence/oss-components/assets/images/upfluence-blu
 
 module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
   setupRenderingTest(hooks);
+  setupIntl(hooks);
 
   hooks.beforeEach(function () {
     this.title = 'Title';

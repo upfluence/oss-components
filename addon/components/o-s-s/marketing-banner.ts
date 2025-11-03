@@ -15,11 +15,21 @@ interface OSSMarketingBannerComponentSignature {
   options?: Options;
 }
 
+function isSafeString(arg: any): boolean {
+  return arg && arg.constructor && arg.constructor.name === 'SafeString';
+}
+
 export default class OSSMarketingBannerComponent extends Component<OSSMarketingBannerComponentSignature> {
   constructor(owner: unknown, args: OSSMarketingBannerComponentSignature) {
     super(owner, args);
-    assert('[component][OSS::MarketingBanner] @title is required', typeof args.title === 'string');
-    assert('[component][OSS::MarketingBanner] @subtitle is required', typeof args.subtitle === 'string');
+    assert(
+      '[component][OSS::MarketingBanner] @title is required',
+      typeof args.title === 'string' || isSafeString(args.title)
+    );
+    assert(
+      '[component][OSS::MarketingBanner] @subtitle is required',
+      typeof args.subtitle === 'string' || isSafeString(args.subtitle)
+    );
   }
 
   get primaryGradiantColor(): string {
