@@ -2,6 +2,8 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { assert } from '@ember/debug';
 
+import { isSafeString } from '@upfluence/oss-components/utils';
+
 type Options = {
   primaryGradiantColor?: string;
   secondaryGradiantColor?: string;
@@ -13,10 +15,6 @@ interface OSSMarketingBannerComponentSignature {
   title: string;
   subtitle: string;
   options?: Options;
-}
-
-function isSafeString(arg: any): boolean {
-  return arg && arg.constructor && arg.constructor.name === 'SafeString';
 }
 
 export default class OSSMarketingBannerComponent extends Component<OSSMarketingBannerComponentSignature> {

@@ -2,6 +2,8 @@ import BaseModal, { type BaseModalArgs } from './private/base-modal';
 import { action } from '@ember/object';
 import { assert } from '@ember/debug';
 
+import { isSafeString } from '@upfluence/oss-components/utils';
+
 export type Skin = 'alert' | 'primary' | 'error';
 export type ButtonDefinition = { label: string; action: () => unknown; loading?: boolean; icon?: string };
 
@@ -26,7 +28,7 @@ export default class OSSDialog extends BaseModal<OSSDialogArgs> {
 
     assert(
       '[component][OSS::Dialog] The title parameter is mandatory',
-      typeof args.title === 'string' || this.isSafeString(args.title)
+      typeof args.title === 'string' || isSafeString(args.title)
     );
     assert('[component][OSS::Dialog] The mainAction parameter is mandatory', typeof args.mainAction === 'object');
     assert(
@@ -50,9 +52,5 @@ export default class OSSDialog extends BaseModal<OSSDialogArgs> {
   @action
   onInit(elem: HTMLElement): void {
     this.initialize(elem, false);
-  }
-
-  private isSafeString(data: any): boolean {
-    return data?.constructor?.name === 'SafeString';
   }
 }
