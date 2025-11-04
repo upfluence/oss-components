@@ -4487,10 +4487,10 @@ export default class OSSCodeBlock extends Component<OSSCodeBlockArgs> {
   }
 }`;
 });
-define("dummy/tests/integration/components/o-s-s/completion-badge-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@upfluence/oss-components/components/o-s-s/badge", "ember-intl/test-support", "@upfluence/oss-components/components/o-s-s/completion-badge", "@ember/object", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _badge, _testSupport, _completionBadge, _object, _templateFactory) {
+define("dummy/tests/integration/components/o-s-s/completion-badge-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@upfluence/oss-components/components/o-s-s/badge", "ember-intl/test-support", "@upfluence/oss-components/components/o-s-s/completion-badge", "@ember/object", "dummy/tests/integration/utils", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _badge, _testSupport, _completionBadge, _object, _utils, _templateFactory) {
   "use strict";
 
-  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"@upfluence/oss-components/components/o-s-s/badge",0,"ember-intl/test-support",0,"@upfluence/oss-components/components/o-s-s/completion-badge",0,"@ember/object"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"@upfluence/oss-components/components/o-s-s/badge",0,"ember-intl/test-support",0,"@upfluence/oss-components/components/o-s-s/completion-badge",0,"@ember/object",0,"dummy/tests/integration/utils"eaimeta@70e063a35619d71f
   (0, _qunit.module)('Integration | Component | o-s-s/completion-badge', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _testSupport.setupIntl)(hooks);
@@ -4507,28 +4507,17 @@ define("dummy/tests/integration/components/o-s-s/completion-badge-test", ["qunit
       }));
       assert.dom('.upf-completion-badge-wrapper').exists();
     });
-    function hexToRgb(hex) {
-      const bigint = parseInt(hex.slice(1), 16);
-      const r = bigint >> 16 & 255;
-      const g = bigint >> 8 & 255;
-      const b = bigint & 255;
-      return `rgb(${r}, ${g}, ${b})`;
-    }
     function getCSSVarValuesInRGB() {
-      const ring = document.querySelector('.upf-completion-badge-ring');
-      const backgroundSelector = _completionBadge.BACKGROUND_COLOR.replace('var(', '').replace(')', '');
-      const backgroundVarHexValue = getComputedStyle(ring).getPropertyValue(backgroundSelector).trim();
-      const successSelector = _completionBadge.SUCCESS_COLOR.replace('var(', '').replace(')', '');
-      const successVarHexValue = getComputedStyle(ring).getPropertyValue(successSelector).trim();
-      const progressSelector = _completionBadge.PROGRESS_COLOR.replace('var(', '').replace(')', '');
-      const progressVarHexValue = getComputedStyle(ring).getPropertyValue(progressSelector).trim();
       return {
-        successColor: successVarHexValue.startsWith('#') ? hexToRgb(successVarHexValue) : successVarHexValue,
-        progressColor: progressVarHexValue.startsWith('#') ? hexToRgb(progressVarHexValue) : progressVarHexValue,
-        backgroundColor: backgroundVarHexValue.startsWith('#') ? hexToRgb(backgroundVarHexValue) : backgroundVarHexValue
+        successColor: (0, _utils.CSSVariableToRGB)(_completionBadge.SUCCESS_COLOR),
+        progressColor: (0, _utils.CSSVariableToRGB)(_completionBadge.PROGRESS_COLOR),
+        backgroundColor: (0, _utils.CSSVariableToRGB)(_completionBadge.BACKGROUND_COLOR)
       };
     }
-    (0, _qunit.module)('progress', function () {
+    (0, _qunit.module)('progress', function (hooks) {
+      hooks.beforeEach(function () {
+        this.rgbValues = getCSSVarValuesInRGB();
+      });
       (0, _qunit.test)('it renders only the background border when @progress is undefined', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
@@ -4540,9 +4529,8 @@ define("dummy/tests/integration/components/o-s-s/completion-badge-test", ["qunit
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
           "isStrictMode": false
         }));
-        const rgbValues = getCSSVarValuesInRGB();
         assert.dom('.upf-completion-badge-ring').hasStyle({
-          backgroundImage: `conic-gradient(${rgbValues.progressColor} 0deg, ${rgbValues.progressColor} 0deg, ${rgbValues.backgroundColor} 0deg, ${rgbValues.backgroundColor} 360deg)`
+          backgroundImage: `conic-gradient(${this.rgbValues.progressColor} 0deg, ${this.rgbValues.progressColor} 0deg, ${this.rgbValues.backgroundColor} 0deg, ${this.rgbValues.backgroundColor} 360deg)`
         });
       });
       (0, _qunit.test)('it renders the progress ring with 0% progress', async function (assert) {
@@ -4556,9 +4544,8 @@ define("dummy/tests/integration/components/o-s-s/completion-badge-test", ["qunit
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
           "isStrictMode": false
         }));
-        const rgbValues = getCSSVarValuesInRGB();
         assert.dom('.upf-completion-badge-ring').hasStyle({
-          backgroundImage: `conic-gradient(${rgbValues.progressColor} 0deg, ${rgbValues.progressColor} 0deg, ${rgbValues.backgroundColor} 0deg, ${rgbValues.backgroundColor} 360deg)`
+          backgroundImage: `conic-gradient(${this.rgbValues.progressColor} 0deg, ${this.rgbValues.progressColor} 0deg, ${this.rgbValues.backgroundColor} 0deg, ${this.rgbValues.backgroundColor} 360deg)`
         });
       });
       (0, _qunit.test)('it renders the progress ring with 100% progress', async function (assert) {
@@ -4572,10 +4559,9 @@ define("dummy/tests/integration/components/o-s-s/completion-badge-test", ["qunit
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
           "isStrictMode": false
         }));
-        const rgbValues = getCSSVarValuesInRGB();
         await new Promise(resolve => setTimeout(resolve, _completionBadge.ANIMATION_DURATION * 2));
         assert.dom('.upf-completion-badge-ring').hasStyle({
-          backgroundImage: `conic-gradient(${rgbValues.successColor} 0deg, ${rgbValues.successColor} 360deg, ${rgbValues.successColor} 360deg, ${rgbValues.successColor} 360deg)`
+          backgroundImage: `conic-gradient(${this.rgbValues.successColor} 0deg, ${this.rgbValues.successColor} 360deg, ${this.rgbValues.successColor} 360deg, ${this.rgbValues.successColor} 360deg)`
         });
       });
       (0, _qunit.test)('it renders the progress ring with 25% progress', async function (assert) {
@@ -4589,10 +4575,9 @@ define("dummy/tests/integration/components/o-s-s/completion-badge-test", ["qunit
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
           "isStrictMode": false
         }));
-        const rgbValues = getCSSVarValuesInRGB();
         await new Promise(resolve => setTimeout(resolve, _completionBadge.ANIMATION_DURATION * 2));
         assert.dom('.upf-completion-badge-ring').hasStyle({
-          backgroundImage: `conic-gradient(${rgbValues.progressColor} 0deg, ${rgbValues.progressColor} 90deg, ${rgbValues.backgroundColor} 90deg, ${rgbValues.backgroundColor} 360deg)`
+          backgroundImage: `conic-gradient(${this.rgbValues.progressColor} 0deg, ${this.rgbValues.progressColor} 90deg, ${this.rgbValues.backgroundColor} 90deg, ${this.rgbValues.backgroundColor} 360deg)`
         });
       });
       (0, _qunit.test)('it renders the progress ring with 50% progress', async function (assert) {
@@ -4606,10 +4591,9 @@ define("dummy/tests/integration/components/o-s-s/completion-badge-test", ["qunit
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
           "isStrictMode": false
         }));
-        const rgbValues = getCSSVarValuesInRGB();
         await new Promise(resolve => setTimeout(resolve, _completionBadge.ANIMATION_DURATION * 2));
         assert.dom('.upf-completion-badge-ring').hasStyle({
-          backgroundImage: `conic-gradient(${rgbValues.progressColor} 0deg, ${rgbValues.progressColor} 180deg, ${rgbValues.backgroundColor} 180deg, ${rgbValues.backgroundColor} 360deg)`
+          backgroundImage: `conic-gradient(${this.rgbValues.progressColor} 0deg, ${this.rgbValues.progressColor} 180deg, ${this.rgbValues.backgroundColor} 180deg, ${this.rgbValues.backgroundColor} 360deg)`
         });
       });
       (0, _qunit.test)('it renders the progress ring with 75% progress', async function (assert) {
@@ -4623,10 +4607,9 @@ define("dummy/tests/integration/components/o-s-s/completion-badge-test", ["qunit
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
           "isStrictMode": false
         }));
-        const rgbValues = getCSSVarValuesInRGB();
         await new Promise(resolve => setTimeout(resolve, _completionBadge.ANIMATION_DURATION * 2));
         assert.dom('.upf-completion-badge-ring').hasStyle({
-          backgroundImage: `conic-gradient(${rgbValues.progressColor} 0deg, ${rgbValues.progressColor} 270deg, ${rgbValues.backgroundColor} 270deg, ${rgbValues.backgroundColor} 360deg)`
+          backgroundImage: `conic-gradient(${this.rgbValues.progressColor} 0deg, ${this.rgbValues.progressColor} 270deg, ${this.rgbValues.backgroundColor} 270deg, ${this.rgbValues.backgroundColor} 360deg)`
         });
       });
       (0, _qunit.test)('passing a @progress value above 100 caps the value to 100', async function (assert) {
@@ -4640,10 +4623,9 @@ define("dummy/tests/integration/components/o-s-s/completion-badge-test", ["qunit
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
           "isStrictMode": false
         }));
-        const rgbValues = getCSSVarValuesInRGB();
         await new Promise(resolve => setTimeout(resolve, _completionBadge.ANIMATION_DURATION * 2));
         assert.dom('.upf-completion-badge-ring').hasStyle({
-          backgroundImage: `conic-gradient(${rgbValues.successColor} 0deg, ${rgbValues.successColor} 360deg, ${rgbValues.successColor} 360deg, ${rgbValues.successColor} 360deg)`
+          backgroundImage: `conic-gradient(${this.rgbValues.successColor} 0deg, ${this.rgbValues.successColor} 360deg, ${this.rgbValues.successColor} 360deg, ${this.rgbValues.successColor} 360deg)`
         });
       });
       (0, _qunit.test)('it updates the progress ring when @progress changes', async function (assert) {
@@ -4658,15 +4640,14 @@ define("dummy/tests/integration/components/o-s-s/completion-badge-test", ["qunit
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/completion-badge-test.ts",
           "isStrictMode": false
         }));
-        const rgbValues = getCSSVarValuesInRGB();
         await new Promise(resolve => setTimeout(resolve, _completionBadge.ANIMATION_DURATION * 2));
         assert.dom('.upf-completion-badge-ring').hasStyle({
-          backgroundImage: `conic-gradient(${rgbValues.progressColor} 0deg, ${rgbValues.progressColor} 0deg, ${rgbValues.backgroundColor} 0deg, ${rgbValues.backgroundColor} 360deg)`
+          backgroundImage: `conic-gradient(${this.rgbValues.progressColor} 0deg, ${this.rgbValues.progressColor} 0deg, ${this.rgbValues.backgroundColor} 0deg, ${this.rgbValues.backgroundColor} 360deg)`
         });
         (0, _object.set)(this, 'progress', 50);
         await new Promise(resolve => setTimeout(resolve, _completionBadge.ANIMATION_DURATION * 2));
         assert.dom('.upf-completion-badge-ring').hasStyle({
-          backgroundImage: `conic-gradient(${rgbValues.progressColor} 0deg, ${rgbValues.progressColor} 180deg, ${rgbValues.backgroundColor} 180deg, ${rgbValues.backgroundColor} 360deg)`
+          backgroundImage: `conic-gradient(${this.rgbValues.progressColor} 0deg, ${this.rgbValues.progressColor} 180deg, ${this.rgbValues.backgroundColor} 180deg, ${this.rgbValues.backgroundColor} 360deg)`
         });
       });
     });
@@ -9091,6 +9072,397 @@ define("dummy/tests/integration/components/o-s-s/link-test", ["qunit", "ember-qu
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/link-test.ts",
         "isStrictMode": false
       }));
+    });
+  });
+});
+define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit", "ember-qunit", "@ember/test-helpers", "ember-intl/test-support", "dummy/tests/integration/utils", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _testSupport, _utils, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"ember-intl/test-support",0,"dummy/tests/integration/utils"eaimeta@70e063a35619d71f
+  const ILLUSTRATION_SRC = '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg';
+  (0, _qunit.module)('Integration | Component | o-s-s/marketing-banner', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _testSupport.setupIntl)(hooks);
+    hooks.beforeEach(function () {
+      this.title = 'Title';
+      this.subtitle = 'Subtitle';
+      this.illustrationSrc = ILLUSTRATION_SRC;
+    });
+    (0, _qunit.test)('it renders', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />
+      */
+      {
+        "id": "4WqMnasj",
+        "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-marketing-banner').exists();
+      assert.dom('.upf-marketing-banner__container').exists();
+      assert.dom('.upf-marketing-banner__content').exists();
+    });
+    (0, _qunit.test)("it doesn't renders unnecessary named blocks", async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />
+      */
+      {
+        "id": "4WqMnasj",
+        "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-marketing-banner__illustration').doesNotExist();
+      assert.dom('.upf-marketing-banner__actions').doesNotExist();
+    });
+    (0, _qunit.test)('for @title, it renders the correct value', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />
+      */
+      {
+        "id": "4WqMnasj",
+        "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-marketing-banner__title').hasText('Title');
+    });
+    (0, _qunit.test)('for @subtitle, it renders the correct value', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />
+      */
+      {
+        "id": "4WqMnasj",
+        "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-marketing-banner__subtitle').hasText('Subtitle');
+    });
+    (0, _qunit.test)('it renders all background effect elements', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />
+      */
+      {
+        "id": "4WqMnasj",
+        "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-marketing-banner__background--primary').exists();
+      assert.dom('.upf-marketing-banner__background--secondary').exists();
+      assert.dom('.upf-marketing-banner__background--tertiary').exists();
+    });
+    (0, _qunit.module)('for @options', () => {
+      (0, _qunit.module)('for @primaryGradiantColor', () => {
+        (0, _qunit.test)('it renders the default colors', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />
+          */
+          {
+            "id": "4WqMnasj",
+            "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.upf-marketing-banner__background--primary').exists();
+          assert.dom('.upf-marketing-banner__background--primary').hasStyle({
+            'background-color': (0, _utils.CSSVariableToRGB)('--color-violet-100')
+          });
+        });
+        (0, _qunit.test)('it renders the custom colors', async function (assert) {
+          this.options = {
+            primaryGradiantColor: '--color-cyan-100'
+          };
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />
+          */
+          {
+            "id": "U6R9N5Yz",
+            "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.upf-marketing-banner__background--primary').exists();
+          assert.dom('.upf-marketing-banner__background--primary').hasStyle({
+            'background-color': (0, _utils.CSSVariableToRGB)(this.options.primaryGradiantColor)
+          });
+        });
+      });
+      (0, _qunit.module)('for @secondaryGradiantColor', () => {
+        (0, _qunit.test)('it renders the default colors', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />
+          */
+          {
+            "id": "4WqMnasj",
+            "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.upf-marketing-banner__background--secondary').exists();
+          assert.dom('.upf-marketing-banner__background--secondary').hasStyle({
+            'background-color': (0, _utils.CSSVariableToRGB)('--color-melon-100')
+          });
+        });
+        (0, _qunit.test)('it renders the custom colors', async function (assert) {
+          this.options = {
+            secondaryGradiantColor: '--color-lime-100'
+          };
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />
+          */
+          {
+            "id": "U6R9N5Yz",
+            "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.upf-marketing-banner__background--secondary').exists();
+          assert.dom('.upf-marketing-banner__background--secondary').hasStyle({
+            'background-color': (0, _utils.CSSVariableToRGB)(this.options.secondaryGradiantColor)
+          });
+        });
+      });
+      (0, _qunit.module)('for @backgroundGridDisplayed', () => {
+        (0, _qunit.module)('by default', () => {
+          (0, _qunit.test)('it renders it', async function (assert) {
+            await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+            /*
+              <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />
+            */
+            {
+              "id": "4WqMnasj",
+              "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
+              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+              "isStrictMode": false
+            }));
+            const element = document.querySelector('.upf-marketing-banner__container');
+            assert.equal(getComputedStyle(element, 'before').display, 'flex');
+          });
+          (0, _qunit.test)('it sets the correct value for --background-grid-display CSS variable', async function (assert) {
+            await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+            /*
+              <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />
+            */
+            {
+              "id": "4WqMnasj",
+              "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
+              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+              "isStrictMode": false
+            }));
+            const element = document.querySelector('.upf-marketing-banner');
+            assert.equal(element.style.getPropertyValue('--background-grid-display'), 'flex');
+          });
+        });
+        (0, _qunit.module)('when the value is false', () => {
+          (0, _qunit.test)("it doesn't render the grid", async function (assert) {
+            this.options = {
+              backgroundGridDisplayed: false
+            };
+            await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+            /*
+              <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />
+            */
+            {
+              "id": "U6R9N5Yz",
+              "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
+              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+              "isStrictMode": false
+            }));
+            const element = document.querySelector('.upf-marketing-banner__container');
+            assert.equal(getComputedStyle(element, 'before').display, 'none');
+          });
+          (0, _qunit.test)('it sets the correct value for --background-grid-display CSS variable', async function (assert) {
+            this.options = {
+              backgroundGridDisplayed: false
+            };
+            await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+            /*
+              <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />
+            */
+            {
+              "id": "U6R9N5Yz",
+              "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
+              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+              "isStrictMode": false
+            }));
+            const element = document.querySelector('.upf-marketing-banner');
+            assert.equal(element.style.getPropertyValue('--background-grid-display'), 'none');
+          });
+        });
+        (0, _qunit.module)('when the value is true', () => {
+          (0, _qunit.test)('it renders the grid', async function (assert) {
+            this.options = {
+              backgroundGridDisplayed: true
+            };
+            await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+            /*
+              <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />
+            */
+            {
+              "id": "U6R9N5Yz",
+              "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
+              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+              "isStrictMode": false
+            }));
+            const element = document.querySelector('.upf-marketing-banner__container');
+            assert.equal(getComputedStyle(element, 'before').display, 'flex');
+          });
+          (0, _qunit.test)('it sets the correct value for --background-grid-display CSS variable', async function (assert) {
+            this.options = {
+              backgroundGridDisplayed: true
+            };
+            await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+            /*
+              <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />
+            */
+            {
+              "id": "U6R9N5Yz",
+              "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
+              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+              "isStrictMode": false
+            }));
+            const element = document.querySelector('.upf-marketing-banner');
+            assert.equal(element.style.getPropertyValue('--background-grid-display'), 'flex');
+          });
+        });
+      });
+      (0, _qunit.module)('for @illustrationAlwaysVisible', () => {
+        (0, _qunit.test)('it is visible on small screen', async function (assert) {
+          this.options = {
+            illustrationAlwaysVisible: true
+          };
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::MarketingBanner style="max-width:340px" @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}}>
+                          <:illustration>
+                              <img width="100" height="100" src={{this.illustrationSrc}} />
+                          </:illustration>
+                      </OSS::MarketingBanner>
+                      
+          */
+          {
+            "id": "yRhGWYir",
+            "block": "[[[8,[39,0],[[24,5,\"max-width:340px\"]],[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"options\"]]]],[[\"illustration\"],[[[[1,\"\\n                    \"],[10,\"img\"],[14,\"width\",\"100\"],[14,\"height\",\"100\"],[15,\"src\",[30,0,[\"illustrationSrc\"]]],[12],[13],[1,\"\\n                \"]],[]]]]],[1,\"\\n            \"]],[],false,[\"o-s-s/marketing-banner\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+            "isStrictMode": false
+          }));
+          const element = document.querySelector('.upf-marketing-banner');
+          assert.equal(element.style.getPropertyValue('--illustration-display'), 'flex');
+          assert.dom('.upf-marketing-banner__illustration').hasStyle({
+            display: 'flex'
+          });
+          assert.dom('.upf-marketing-banner__illustration img').hasAttribute('src', ILLUSTRATION_SRC);
+        });
+      });
+    });
+    (0, _qunit.module)('for illustration named block', () => {
+      (0, _qunit.test)('it renders it', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}}>
+                        <:illustration>
+                            <img width="100" height="100" src={{this.illustrationSrc}} />
+                        </:illustration>
+                    </OSS::MarketingBanner>
+                    
+        */
+        {
+          "id": "Z/5f+fHa",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],[[\"illustration\"],[[[[1,\"\\n                    \"],[10,\"img\"],[14,\"width\",\"100\"],[14,\"height\",\"100\"],[15,\"src\",[30,0,[\"illustrationSrc\"]]],[12],[13],[1,\"\\n                \"]],[]]]]],[1,\"\\n            \"]],[],false,[\"o-s-s/marketing-banner\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-marketing-banner__illustration').hasStyle({
+          display: 'flex'
+        });
+        assert.dom('.upf-marketing-banner__illustration img').hasAttribute('src', ILLUSTRATION_SRC);
+      });
+      (0, _qunit.test)('by default, it is not visible on small screen', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::MarketingBanner style="max-width:340px" @title={{this.title}} @subtitle={{this.subtitle}}>
+                        <:illustration>
+                            <img width="100" height="100" src={{this.illustrationSrc}} />
+                        </:illustration>
+                    </OSS::MarketingBanner>
+                    
+        */
+        {
+          "id": "Zl/r7nDb",
+          "block": "[[[8,[39,0],[[24,5,\"max-width:340px\"]],[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],[[\"illustration\"],[[[[1,\"\\n                    \"],[10,\"img\"],[14,\"width\",\"100\"],[14,\"height\",\"100\"],[15,\"src\",[30,0,[\"illustrationSrc\"]]],[12],[13],[1,\"\\n                \"]],[]]]]],[1,\"\\n            \"]],[],false,[\"o-s-s/marketing-banner\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+          "isStrictMode": false
+        }));
+        const element = document.querySelector('.upf-marketing-banner');
+        assert.equal(element.style.getPropertyValue('--illustration-display'), 'none');
+        assert.dom('.upf-marketing-banner__illustration').hasStyle({
+          display: 'none'
+        });
+      });
+    });
+    (0, _qunit.module)('for actions named block', () => {
+      (0, _qunit.test)('it renders it', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::MarketingBanner style="max-width:340px" @title={{this.title}} @subtitle={{this.subtitle}}>
+                        <:actions>
+                            <button class="test-action-button">Click me</button>
+                        </:actions>
+                    </OSS::MarketingBanner>
+                    
+        */
+        {
+          "id": "VI6yJoNM",
+          "block": "[[[8,[39,0],[[24,5,\"max-width:340px\"]],[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],[[\"actions\"],[[[[1,\"\\n                    \"],[10,\"button\"],[14,0,\"test-action-button\"],[12],[1,\"Click me\"],[13],[1,\"\\n                \"]],[]]]]],[1,\"\\n            \"]],[],false,[\"o-s-s/marketing-banner\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-marketing-banner__actions').exists();
+        assert.dom('.upf-marketing-banner__actions .test-action-button').exists();
+      });
+    });
+    (0, _qunit.module)('Error management', function () {
+      (0, _qunit.test)('It throws an error if @title is not passed', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::MarketingBanner] @title is required');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::MarketingBanner @subtitle={{this.subtitle}} />
+        */
+        {
+          "id": "aR6c1q7H",
+          "block": "[[[8,[39,0],null,[[\"@subtitle\"],[[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+          "isStrictMode": false
+        }));
+      });
+      (0, _qunit.test)('It throws an error if @subtitle is not passed', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::MarketingBanner] @subtitle is required');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::MarketingBanner @title={{this.title}} />
+        */
+        {
+          "id": "6xBvgbAW",
+          "block": "[[[8,[39,0],null,[[\"@title\"],[[30,0,[\"title\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+          "isStrictMode": false
+        }));
+      });
     });
   });
 });
@@ -18180,6 +18552,39 @@ define("dummy/tests/integration/modifiers/register-form-field-test", ["@ember/te
     }
   });
 });
+define("dummy/tests/integration/utils", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.CSSVariableToRGB = CSSVariableToRGB;
+  _exports.hexToRGB = hexToRGB;
+  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
+  function hexToRGB(hex) {
+    hex = hex.replace('#', '');
+    if (hex.length === 3) {
+      hex = hex.split('').map(char => char + char).join('');
+    }
+    const r = parseInt(hex.substring(0, 2), 16);
+    const g = parseInt(hex.substring(2, 4), 16);
+    const b = parseInt(hex.substring(4, 6), 16);
+    return `rgb(${r}, ${g}, ${b})`;
+  }
+  function CSSVariableToRGB(variable) {
+    const rootStyles = getComputedStyle(document.documentElement);
+    const colorValue = rootStyles.getPropertyValue(variable).trim();
+    if (colorValue.startsWith('rgb(')) {
+      return colorValue;
+    } else if (colorValue.startsWith('rgba(')) {
+      return colorValue.replace('rgba', 'rgb').replace(', 1)', ')');
+    } else if (colorValue.startsWith('#')) {
+      return hexToRGB(colorValue);
+    } else {
+      throw new Error(`Unsupported color format: ${colorValue}`);
+    }
+  }
+});
 define("dummy/tests/test-helper", ["dummy/app", "dummy/config/environment", "@ember/test-helpers", "qunit", "qunit-dom", "ember-qunit", "@upfluence/oss-components/test-support/register-assertions", "ember-cli-code-coverage/test-support"], function (_app, _environment, _testHelpers, QUnit, _qunitDom, _emberQunit, _registerAssertions, _testSupport) {
   "use strict";
 
@@ -19141,6 +19546,34 @@ define("dummy/tests/unit/utils/upf-local-storage-test", ["dummy/utils/upf-local-
         upfStorage.delete(TEST_KEY);
         assert.equal(null, upfStorage.getItem(TEST_KEY));
       });
+    });
+  });
+});
+define("dummy/tests/utils-test", ["qunit", "ember-qunit", "dummy/tests/integration/utils"], function (_qunit, _emberQunit, _utils) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"dummy/tests/integration/utils"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Tests | Utils', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('CSSVariableToRGB converts CSS variable to RGB', function (assert) {
+      const root = document.documentElement;
+      root.style.setProperty('--test-hex-color', '#ff5733');
+      root.style.setProperty('--test-rgb-color', 'rgb(34, 139, 34)');
+      root.style.setProperty('--test-rgba-color', 'rgba(139, 65, 9, 1)');
+      const hexColor = (0, _utils.CSSVariableToRGB)('--test-hex-color');
+      const rgbColor = (0, _utils.CSSVariableToRGB)('--test-rgb-color');
+      const rgbaColor = (0, _utils.CSSVariableToRGB)('--test-rgba-color');
+      assert.equal(hexColor, 'rgb(255, 87, 51)', 'Hex color converted to RGB correctly');
+      assert.equal(rgbaColor, 'rgb(139, 65, 9)', 'RGBA color converted to RGB correctly');
+      assert.equal(rgbColor, 'rgb(34, 139, 34)', 'RGB color converted to RGB correctly');
+    });
+    (0, _qunit.test)('hexToRGB converts hex color to RGB', function (assert) {
+      const shortHex = '#0f0';
+      const longHex = '#00ff00';
+      const shortHexRGB = (0, _utils.hexToRGB)(shortHex);
+      const longHexRGB = (0, _utils.hexToRGB)(longHex);
+      assert.equal(shortHexRGB, 'rgb(0, 255, 0)', 'Short hex color converted to RGB correctly');
+      assert.equal(longHexRGB, 'rgb(0, 255, 0)', 'Long hex color converted to RGB correctly');
     });
   });
 });

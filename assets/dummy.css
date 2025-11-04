@@ -13796,6 +13796,103 @@ a.upf-btn--sm {
     opacity: 1;
   }
 }
+.upf-marketing-banner {
+  --primary-gradiant-color: var(--color-violet-100);
+  --secondary-gradiant-color: var(--color-melon-100);
+  --background-grid-display: flex;
+  --illustration-display: flex;
+  container-type: inline-size;
+  container-name: upf-marketing-banner;
+  display: flex;
+  flex: 1;
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-sm);
+  overflow: hidden;
+}
+.upf-marketing-banner__container {
+  position: relative;
+  display: flex;
+  flex: 1;
+  padding: var(--spacing-px-18);
+  gap: var(--spacing-px-18);
+}
+.upf-marketing-banner__container:before {
+  display: var(--background-grid-display);
+  content: '';
+  top: 0;
+  left: 0;
+  width: 270px;
+  height: 150px;
+  position: absolute;
+  background-image: url('/@upfluence/oss-components/assets/components/marketing-banner/grid.svg');
+}
+.upf-marketing-banner__background--primary,
+.upf-marketing-banner__background--secondary,
+.upf-marketing-banner__background--tertiary {
+  position: absolute;
+  border-radius: 50%;
+}
+.upf-marketing-banner__background--primary,
+.upf-marketing-banner__background--secondary {
+  width: 350px;
+  height: 350px;
+  filter: blur(180px);
+}
+.upf-marketing-banner__background--primary {
+  background-color: var(--primary-gradiant-color);
+  bottom: -265px;
+  left: -200px;
+}
+.upf-marketing-banner__background--secondary {
+  background-color: var(--secondary-gradiant-color);
+  top: -265px;
+  right: -200px;
+}
+.upf-marketing-banner__background--tertiary {
+  width: 250px;
+  height: 250px;
+  filter: blur(225px);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--color-white);
+}
+.upf-marketing-banner__content {
+  display: flex;
+  gap: var(--spacing-px-18);
+  flex: 1;
+  z-index: 0;
+}
+.upf-marketing-banner__title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-gray-900);
+}
+.upf-marketing-banner__subtitle {
+  font-size: var(--font-size-md);
+  color: var(--color-gray-500);
+}
+.upf-marketing-banner__illustration {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
+.upf-marketing-banner__actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+}
+@container upf-marketing-banner (width <= 340px) {
+  .upf-marketing-banner__container {
+    flex-direction: column;
+  }
+  .upf-marketing-banner__illustration {
+    display: var(--illustration-display);
+  }
+}
 .smart-rotating-gradient {
   position: relative;
   z-index: 0;

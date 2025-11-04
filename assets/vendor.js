@@ -86432,9 +86432,9 @@ interface OSSCodeBlockArgs {
     "moduleName": "@upfluence/oss-components/components/o-s-s/completion-badge.hbs",
     "isStrictMode": false
   });
-  const SUCCESS_COLOR = _exports.SUCCESS_COLOR = 'var(--color-success-500)';
-  const PROGRESS_COLOR = _exports.PROGRESS_COLOR = 'var(--color-primary-500)';
-  const BACKGROUND_COLOR = _exports.BACKGROUND_COLOR = 'var(--color-gray-200)';
+  const SUCCESS_COLOR = _exports.SUCCESS_COLOR = '--color-success-500';
+  const PROGRESS_COLOR = _exports.PROGRESS_COLOR = '--color-primary-500';
+  const BACKGROUND_COLOR = _exports.BACKGROUND_COLOR = '--color-gray-200';
   const ANIMATION_DURATION = _exports.ANIMATION_DURATION = (0, _runtime.isTesting)() ? 25 : 1200;
   let OSSCompletionBadgeComponent = _exports.default = (_class = class OSSCompletionBadgeComponent extends _badge.default {
     constructor(owner, args) {
@@ -86448,9 +86448,9 @@ interface OSSCodeBlockArgs {
       const progress = this.animatedProgress;
       const angle = progress / 100 * 360;
       if (progress >= 100) {
-        return (0, _template.htmlSafe)(`background: conic-gradient(${SUCCESS_COLOR} 0deg 360deg, ${SUCCESS_COLOR} 360deg 360deg);`);
+        return (0, _template.htmlSafe)(`background: conic-gradient(var(${SUCCESS_COLOR}) 0deg 360deg, var(${SUCCESS_COLOR}) 360deg 360deg);`);
       }
-      return (0, _template.htmlSafe)(`background: conic-gradient(${PROGRESS_COLOR} 0deg ${angle}deg, ${BACKGROUND_COLOR} ${angle}deg 360deg);`);
+      return (0, _template.htmlSafe)(`background: conic-gradient(var(${PROGRESS_COLOR}) 0deg ${angle}deg, var(${BACKGROUND_COLOR}) ${angle}deg 360deg);`);
     }
     get computedClass() {
       const classes = ['upf-badge', 'upf-badge--shape-round'];
@@ -87813,7 +87813,7 @@ interface OSSCodeBlockArgs {
   const BasicUsage = _exports.BasicUsage = Template.bind({});
   BasicUsage.args = defaultArgs;
 });
-;define("@upfluence/oss-components/components/o-s-s/dialog", ["exports", "@ember/component", "@upfluence/oss-components/components/o-s-s/private/base-modal", "@ember/object", "@ember/debug", "@ember/template-factory"], function (_exports, _component, _baseModal, _object, _debug, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/dialog", ["exports", "@ember/component", "@upfluence/oss-components/components/o-s-s/private/base-modal", "@ember/object", "@ember/debug", "@upfluence/oss-components/utils", "@ember/template-factory"], function (_exports, _component, _baseModal, _object, _debug, _utils, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -87821,7 +87821,7 @@ interface OSSCodeBlockArgs {
   });
   _exports.default = void 0;
   var _class;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@upfluence/oss-components/components/o-s-s/private/base-modal",0,"@ember/object",0,"@ember/debug",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@upfluence/oss-components/components/o-s-s/private/base-modal",0,"@ember/object",0,"@ember/debug",0,"@upfluence/oss-components/utils",0,"@ember/component"eaimeta@70e063a35619d71f
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
@@ -87869,7 +87869,7 @@ interface OSSCodeBlockArgs {
   let OSSDialog = _exports.default = (_class = class OSSDialog extends _baseModal.default {
     constructor(owner, args) {
       super(owner, args);
-      (true && !(typeof args.title === 'string' || this.isSafeString(args.title)) && (0, _debug.assert)('[component][OSS::Dialog] The title parameter is mandatory', typeof args.title === 'string' || this.isSafeString(args.title)));
+      (true && !(typeof args.title === 'string' || (0, _utils.isSafeString)(args.title)) && (0, _debug.assert)('[component][OSS::Dialog] The title parameter is mandatory', typeof args.title === 'string' || (0, _utils.isSafeString)(args.title)));
       (true && !(typeof args.mainAction === 'object') && (0, _debug.assert)('[component][OSS::Dialog] The mainAction parameter is mandatory', typeof args.mainAction === 'object'));
       (true && !(typeof args.secondaryAction === 'object') && (0, _debug.assert)('[component][OSS::Dialog] The secondaryAction parameter is mandatory', typeof args.secondaryAction === 'object'));
     }
@@ -87884,9 +87884,6 @@ interface OSSCodeBlockArgs {
     }
     onInit(elem) {
       this.initialize(elem, false);
-    }
-    isSafeString(data) {
-      return data?.constructor?.name === 'SafeString';
     }
   }, (_applyDecoratedDescriptor(_class.prototype, "onInit", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onInit"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSDialog);
@@ -88244,14 +88241,14 @@ interface OSSCodeBlockArgs {
   const BasicUsage = _exports.BasicUsage = Template.bind({});
   BasicUsage.args = defaultArgs;
 });
-;define("@upfluence/oss-components/components/o-s-s/empty-state", ["exports", "@ember/component", "@ember/debug", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _debug, _component2, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/empty-state", ["exports", "@ember/component", "@ember/debug", "@glimmer/component", "@upfluence/oss-components/utils", "@ember/template-factory"], function (_exports, _component, _debug, _component2, _utils, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@glimmer/component",0,"@upfluence/oss-components/utils",0,"@ember/component"eaimeta@70e063a35619d71f
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class="fx-1 fx-col fx-xalign-center fx-gap-px-18" ...attributes>
@@ -88280,14 +88277,11 @@ interface OSSCodeBlockArgs {
     "isStrictMode": false
   });
   const ALLOWED_SIZES = ['sm', 'md'];
-  function isSafeString(arg) {
-    return arg && arg.constructor && arg.constructor.name === 'SafeString';
-  }
   class OSSEmptyStateComponent extends _component2.default {
     constructor(owner, args) {
       super(owner, args);
-      (true && !(typeof args.title === 'string' || isSafeString(args.title)) && (0, _debug.assert)('[component][OSS::EmptyState] The title parameter is mandatory', typeof args.title === 'string' || isSafeString(args.title)));
-      (true && !(typeof args.subtitle === 'string' || isSafeString(args.subtitle)) && (0, _debug.assert)('[component][OSS::EmptyState] The subtitle parameter is mandatory', typeof args.subtitle === 'string' || isSafeString(args.subtitle)));
+      (true && !(typeof args.title === 'string' || (0, _utils.isSafeString)(args.title)) && (0, _debug.assert)('[component][OSS::EmptyState] The title parameter is mandatory', typeof args.title === 'string' || (0, _utils.isSafeString)(args.title)));
+      (true && !(typeof args.subtitle === 'string' || (0, _utils.isSafeString)(args.subtitle)) && (0, _debug.assert)('[component][OSS::EmptyState] The subtitle parameter is mandatory', typeof args.subtitle === 'string' || (0, _utils.isSafeString)(args.subtitle)));
     }
     get titleSize() {
       return this.size === 'sm' ? 'md' : 'lg';
@@ -91733,6 +91727,389 @@ interface OSSCodeBlockArgs {
   });
   const BasicUsage = _exports.BasicUsage = Template.bind({});
   BasicUsage.args = defaultArgs;
+});
+;define("@upfluence/oss-components/components/o-s-s/marketing-banner", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@ember/debug", "@upfluence/oss-components/utils", "@ember/template-factory"], function (_exports, _component, _component2, _object, _debug, _utils, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/object",0,"@ember/debug",0,"@upfluence/oss-components/utils",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="upf-marketing-banner" {{did-insert this.setup}} ...attributes>
+    <div class="upf-marketing-banner__container">
+      <div class="upf-marketing-banner__background--primary"></div>
+      <div class="upf-marketing-banner__background--secondary"></div>
+      <div class="upf-marketing-banner__background--tertiary"></div>
+  
+      <div class="upf-marketing-banner__content">
+        {{#if (has-block "illustration")}}
+          <div class="upf-marketing-banner__illustration">
+            {{yield to="illustration"}}
+          </div>
+        {{/if}}
+        <div class="fx-col fx-gap-px-6">
+          <span class="upf-marketing-banner__title">{{@title}}</span>
+          <span class="upf-marketing-banner__subtitle">{{@subtitle}}</span>
+        </div>
+      </div>
+      {{#if (has-block "actions")}}
+        <div class="upf-marketing-banner__actions">
+          {{yield to="actions"}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+  */
+  {
+    "id": "RjYVJAwa",
+    "block": "[[[11,0],[24,0,\"upf-marketing-banner\"],[17,1],[4,[38,0],[[30,0,[\"setup\"]]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"upf-marketing-banner__container\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"upf-marketing-banner__background--primary\"],[12],[13],[1,\"\\n    \"],[10,0],[14,0,\"upf-marketing-banner__background--secondary\"],[12],[13],[1,\"\\n    \"],[10,0],[14,0,\"upf-marketing-banner__background--tertiary\"],[12],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"upf-marketing-banner__content\"],[12],[1,\"\\n\"],[41,[48,[30,4]],[[[1,\"        \"],[10,0],[14,0,\"upf-marketing-banner__illustration\"],[12],[1,\"\\n          \"],[18,4,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,0],[14,0,\"fx-col fx-gap-px-6\"],[12],[1,\"\\n        \"],[10,1],[14,0,\"upf-marketing-banner__title\"],[12],[1,[30,2]],[13],[1,\"\\n        \"],[10,1],[14,0,\"upf-marketing-banner__subtitle\"],[12],[1,[30,3]],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"      \"],[10,0],[14,0,\"upf-marketing-banner__actions\"],[12],[1,\"\\n        \"],[18,5,null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@title\",\"@subtitle\",\"&illustration\",\"&actions\"],false,[\"did-insert\",\"if\",\"has-block\",\"yield\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/marketing-banner.hbs",
+    "isStrictMode": false
+  });
+  let OSSMarketingBannerComponent = _exports.default = (_class = class OSSMarketingBannerComponent extends _component2.default {
+    constructor(owner, args) {
+      super(owner, args);
+      (true && !(typeof args.title === 'string' || (0, _utils.isSafeString)(args.title)) && (0, _debug.assert)('[component][OSS::MarketingBanner] @title is required', typeof args.title === 'string' || (0, _utils.isSafeString)(args.title)));
+      (true && !(typeof args.subtitle === 'string' || (0, _utils.isSafeString)(args.subtitle)) && (0, _debug.assert)('[component][OSS::MarketingBanner] @subtitle is required', typeof args.subtitle === 'string' || (0, _utils.isSafeString)(args.subtitle)));
+    }
+    get primaryGradiantColor() {
+      return this.args.options?.primaryGradiantColor ?? '--color-violet-100';
+    }
+    get secondaryGradiantColor() {
+      return this.args.options?.secondaryGradiantColor ?? '--color-melon-100';
+    }
+    get displayBackgroundGrid() {
+      return this.args.options?.backgroundGridDisplayed ?? true ? 'flex' : 'none';
+    }
+    get displayIllustration() {
+      return this.args.options?.illustrationAlwaysVisible ? 'flex' : 'none';
+    }
+    setup(element) {
+      element.style.setProperty('--primary-gradiant-color', `var(${this.primaryGradiantColor})`);
+      element.style.setProperty('--secondary-gradiant-color', `var(${this.secondaryGradiantColor})`);
+      element.style.setProperty('--background-grid-display', this.displayBackgroundGrid);
+      element.style.setProperty('--illustration-display', this.displayIllustration);
+    }
+  }, (_applyDecoratedDescriptor(_class.prototype, "setup", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setup"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSMarketingBannerComponent);
+});
+;define("@upfluence/oss-components/components/o-s-s/marketing-banner.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.WithIllustration = _exports.WithActions = _exports.CompleteExampleSmallScreen = _exports.CompleteExample = _exports.BasicUsage = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  function getAllCSSColorAvailable() {
+    const rootStyles = getComputedStyle(document.documentElement);
+    return Array.from(rootStyles).filter(prop => prop.startsWith('--color-') && !prop.includes('gradient') && !prop.includes('accent') && rootStyles.getPropertyValue(prop).trim().startsWith('#')).sort();
+  }
+  const ColorOptions = getAllCSSColorAvailable();
+  var _default = _exports.default = {
+    title: 'Components/OSS::MarketingBanner',
+    component: 'marketing-banner',
+    argTypes: {
+      title: {
+        description: 'The main title text displayed in the banner',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      subtitle: {
+        description: 'The subtitle text displayed below the title',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      primaryGradiantColor: {
+        description: 'CSS variable for the primary gradient color',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: '--color-violet-100'
+          }
+        },
+        options: ColorOptions,
+        control: {
+          type: 'select'
+        }
+      },
+      secondaryGradiantColor: {
+        description: 'CSS variable for the secondary gradient color',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: '--color-melon-100'
+          }
+        },
+        options: ColorOptions,
+        control: {
+          type: 'select'
+        }
+      },
+      backgroundGridDisplayed: {
+        description: 'Display the background grid pattern',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: true
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      illustrationAlwaysVisible: {
+        description: 'Makes the illustration always visible (not hidden on mobile)',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'A marketing banner component with background gradients. Supports custom illustrations and action buttons via named blocks.'
+        },
+        iframeHeight: 250
+      }
+    }
+  };
+  const defaultArgs = {
+    title: 'Welcome to Our Platform',
+    subtitle: 'Discover powerful tools to grow your business',
+    primaryGradiantColor: '--color-violet-100',
+    secondaryGradiantColor: '--color-melon-100',
+    backgroundGridDisplayed: true,
+    illustrationAlwaysVisible: false
+  };
+  const BasicUsageTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <div style="width: 600px;">
+          <OSS::MarketingBanner
+            @title={{this.title}}
+            @subtitle={{this.subtitle}}
+            @options={{hash
+              primaryGradiantColor=this.primaryGradiantColor
+              secondaryGradiantColor=this.secondaryGradiantColor
+              backgroundGridDisplayed=this.backgroundGridDisplayed
+              illustrationAlwaysVisible=this.illustrationAlwaysVisible
+            }}
+          />
+        </div>
+      
+    */
+    {
+      "id": "liaeueIS",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 600px;\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[28,[37,1],null,[[\"primaryGradiantColor\",\"secondaryGradiantColor\",\"backgroundGridDisplayed\",\"illustrationAlwaysVisible\"],[[30,0,[\"primaryGradiantColor\"]],[30,0,[\"secondaryGradiantColor\"]],[30,0,[\"backgroundGridDisplayed\"]],[30,0,[\"illustrationAlwaysVisible\"]]]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/marketing-banner\",\"hash\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/marketing-banner.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const WithIllustrationTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <div style="width: 600px;">
+          <OSS::MarketingBanner
+            @title={{this.title}}
+            @subtitle={{this.subtitle}}
+            @options={{hash
+              primaryGradiantColor=this.primaryGradiantColor
+              secondaryGradiantColor=this.secondaryGradiantColor
+              illustrationAlwaysVisible=this.illustrationAlwaysVisible
+            }}
+          >
+            <:illustration>
+              <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 40px;">
+                🚀
+              </div>
+            </:illustration>
+          </OSS::MarketingBanner>
+        </div>
+      
+    */
+    {
+      "id": "apzEZ/w/",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 600px;\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[28,[37,1],null,[[\"primaryGradiantColor\",\"secondaryGradiantColor\",\"illustrationAlwaysVisible\"],[[30,0,[\"primaryGradiantColor\"]],[30,0,[\"secondaryGradiantColor\"]],[30,0,[\"illustrationAlwaysVisible\"]]]]]]],[[\"illustration\"],[[[[1,\"\\n          \"],[10,0],[14,5,\"width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 40px;\"],[12],[1,\"\\n            🚀\\n          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/marketing-banner\",\"hash\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/marketing-banner.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const WithActionsTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <div style="width: 600px;">
+          <OSS::MarketingBanner
+            @title={{this.title}}
+            @subtitle={{this.subtitle}}
+            @options={{hash
+              primaryGradiantColor=this.primaryGradiantColor
+              secondaryGradiantColor=this.secondaryGradiantColor
+            }}
+          >
+            <:actions>
+              <button class="upf-btn upf-btn--primary">Get Started</button>
+            </:actions>
+          </OSS::MarketingBanner>
+        </div>
+      
+    */
+    {
+      "id": "6rGdDmkA",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 600px;\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[28,[37,1],null,[[\"primaryGradiantColor\",\"secondaryGradiantColor\"],[[30,0,[\"primaryGradiantColor\"]],[30,0,[\"secondaryGradiantColor\"]]]]]]],[[\"actions\"],[[[[1,\"\\n          \"],[10,\"button\"],[14,0,\"upf-btn upf-btn--primary\"],[12],[1,\"Get Started\"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/marketing-banner\",\"hash\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/marketing-banner.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const CompleteExampleTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <div style="width: 600px;">
+          <OSS::MarketingBanner
+            @title={{this.title}}
+            @subtitle={{this.subtitle}}
+            @options={{hash
+              primaryGradiantColor=this.primaryGradiantColor
+              secondaryGradiantColor=this.secondaryGradiantColor
+              backgroundGridDisplayed=this.backgroundGridDisplayed
+              illustrationAlwaysVisible=this.illustrationAlwaysVisible
+            }}
+          >
+            <:illustration>
+              <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 40px;">
+                ✨
+              </div>
+            </:illustration>
+            <:actions>
+                <div class="fx-row fx-gap-px-6">
+                  <button class="upf-btn upf-btn--primary">Get Started</button>
+                  <button class="upf-btn upf-btn--secondary">Learn More</button>
+                </div>
+            </:actions>
+          </OSS::MarketingBanner>
+        </div>
+      
+    */
+    {
+      "id": "MbZm6dtd",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 600px;\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[28,[37,1],null,[[\"primaryGradiantColor\",\"secondaryGradiantColor\",\"backgroundGridDisplayed\",\"illustrationAlwaysVisible\"],[[30,0,[\"primaryGradiantColor\"]],[30,0,[\"secondaryGradiantColor\"]],[30,0,[\"backgroundGridDisplayed\"]],[30,0,[\"illustrationAlwaysVisible\"]]]]]]],[[\"illustration\",\"actions\"],[[[[1,\"\\n          \"],[10,0],[14,5,\"width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 40px;\"],[12],[1,\"\\n            ✨\\n          \"],[13],[1,\"\\n        \"]],[]],[[[1,\"\\n            \"],[10,0],[14,0,\"fx-row fx-gap-px-6\"],[12],[1,\"\\n              \"],[10,\"button\"],[14,0,\"upf-btn upf-btn--primary\"],[12],[1,\"Get Started\"],[13],[1,\"\\n              \"],[10,\"button\"],[14,0,\"upf-btn upf-btn--secondary\"],[12],[1,\"Learn More\"],[13],[1,\"\\n            \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/marketing-banner\",\"hash\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/marketing-banner.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const CompleteExampleTemplateSmallScreen = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <div style="width: 300px;">
+          <OSS::MarketingBanner
+            @title={{this.title}}
+            @subtitle={{this.subtitle}}
+            @options={{hash
+              primaryGradiantColor=this.primaryGradiantColor
+              secondaryGradiantColor=this.secondaryGradiantColor
+              backgroundGridDisplayed=this.backgroundGridDisplayed
+              illustrationAlwaysVisible=this.illustrationAlwaysVisible
+            }}
+          >
+            <:illustration>
+              <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 40px;">
+                ✨
+              </div>
+            </:illustration>
+            <:actions>
+                <div class="fx-row fx-1 fx-gap-px-6">
+                  <button class="fx-1 upf-btn upf-btn--primary">Get Started</button>
+                  <button class="fx-1 upf-btn upf-btn--secondary">Learn More</button>
+                </div>
+            </:actions>
+          </OSS::MarketingBanner>
+        </div>
+      
+    */
+    {
+      "id": "FIzSCqeV",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 300px;\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[28,[37,1],null,[[\"primaryGradiantColor\",\"secondaryGradiantColor\",\"backgroundGridDisplayed\",\"illustrationAlwaysVisible\"],[[30,0,[\"primaryGradiantColor\"]],[30,0,[\"secondaryGradiantColor\"]],[30,0,[\"backgroundGridDisplayed\"]],[30,0,[\"illustrationAlwaysVisible\"]]]]]]],[[\"illustration\",\"actions\"],[[[[1,\"\\n          \"],[10,0],[14,5,\"width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 40px;\"],[12],[1,\"\\n            ✨\\n          \"],[13],[1,\"\\n        \"]],[]],[[[1,\"\\n            \"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-6\"],[12],[1,\"\\n              \"],[10,\"button\"],[14,0,\"fx-1 upf-btn upf-btn--primary\"],[12],[1,\"Get Started\"],[13],[1,\"\\n              \"],[10,\"button\"],[14,0,\"fx-1 upf-btn upf-btn--secondary\"],[12],[1,\"Learn More\"],[13],[1,\"\\n            \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/marketing-banner\",\"hash\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/marketing-banner.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const BasicUsage = _exports.BasicUsage = BasicUsageTemplate.bind({});
+  BasicUsage.args = defaultArgs;
+  const WithIllustration = _exports.WithIllustration = WithIllustrationTemplate.bind({});
+  WithIllustration.args = {
+    ...defaultArgs,
+    title: 'Launch Your Project',
+    subtitle: 'Connect with your audience and achieve your goals'
+  };
+  const WithActions = _exports.WithActions = WithActionsTemplate.bind({});
+  WithActions.args = {
+    ...defaultArgs,
+    title: 'Ready to Get Started?',
+    subtitle: 'Join thousands of users already using our platform'
+  };
+  const CompleteExample = _exports.CompleteExample = CompleteExampleTemplate.bind({});
+  CompleteExample.args = {
+    ...defaultArgs,
+    title: 'Transform Your Workflow',
+    subtitle: 'Elevate your productivity with data-driven insights',
+    primaryGradiantColor: '--color-cyan-100',
+    secondaryGradiantColor: '--color-lime-100'
+  };
+  const CompleteExampleSmallScreen = _exports.CompleteExampleSmallScreen = CompleteExampleTemplateSmallScreen.bind({});
+  CompleteExampleSmallScreen.args = {
+    ...defaultArgs,
+    title: 'Transform Your Workflow',
+    subtitle: 'Elevate your productivity with data-driven insights',
+    primaryGradiantColor: '--color-cyan-100',
+    secondaryGradiantColor: '--color-lime-100'
+  };
 });
 ;define("@upfluence/oss-components/components/o-s-s/modal-dialog", ["exports", "@ember/component", "@glimmer/tracking", "@ember/debug", "@upfluence/oss-components/components/o-s-s/private/base-modal", "@ember/template-factory"], function (_exports, _component, _tracking, _debug, _baseModal, _templateFactory) {
   "use strict";
@@ -107778,6 +108155,18 @@ interface OSSCodeBlockArgs {
       if (part.includes(FA_ICON_PREFIX)) iconValues.push(part);
     });
     return iconValues.join(' ');
+  }
+});
+;define("@upfluence/oss-components/utils/index", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.isSafeString = isSafeString;
+  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
+  function isSafeString(arg) {
+    return arg?.constructor?.name === 'SafeString';
   }
 });
 ;define("@upfluence/oss-components/utils/keyboard", ["exports"], function (_exports) {
