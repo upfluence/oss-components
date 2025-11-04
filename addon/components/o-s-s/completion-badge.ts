@@ -7,9 +7,9 @@ import { isTesting } from '@embroider/macros';
 import type { OSSBadgeArgs, SizeType, SkinType } from './badge';
 import OSSBadge, { SizeDefinition, SkinDefinition } from './badge';
 
-export const SUCCESS_COLOR = 'var(--color-success-500)';
-export const PROGRESS_COLOR = 'var(--color-primary-500)';
-export const BACKGROUND_COLOR = 'var(--color-gray-200)';
+export const SUCCESS_COLOR = '--color-success-500';
+export const PROGRESS_COLOR = '--color-primary-500';
+export const BACKGROUND_COLOR = '--color-gray-200';
 export const ANIMATION_DURATION = isTesting() ? 25 : 1200;
 
 interface OSSCompletionBadgeComponentSignature extends OSSBadgeArgs {
@@ -35,10 +35,12 @@ export default class OSSCompletionBadgeComponent extends OSSBadge<OSSCompletionB
     const progress = this.animatedProgress;
     const angle = (progress / 100) * 360;
     if (progress >= 100) {
-      return htmlSafe(`background: conic-gradient(${SUCCESS_COLOR} 0deg 360deg, ${SUCCESS_COLOR} 360deg 360deg);`);
+      return htmlSafe(
+        `background: conic-gradient(var(${SUCCESS_COLOR}) 0deg 360deg, var(${SUCCESS_COLOR}) 360deg 360deg);`
+      );
     }
     return htmlSafe(
-      `background: conic-gradient(${PROGRESS_COLOR} 0deg ${angle}deg, ${BACKGROUND_COLOR} ${angle}deg 360deg);`
+      `background: conic-gradient(var(${PROGRESS_COLOR}) 0deg ${angle}deg, var(${BACKGROUND_COLOR}) ${angle}deg 360deg);`
     );
   }
 

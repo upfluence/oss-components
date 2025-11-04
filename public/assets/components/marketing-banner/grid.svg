@@ -1,0 +1,33 @@
+<svg width="280" height="155" viewBox="0 0 280 155" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g style="mix-blend-mode:multiply" opacity="0.5">
+<g clip-path="url(#clip0_14306_8777)">
+<rect width="1.5986" height="959.162" transform="matrix(1 0 0 -1 4.21826 464.305)" fill="#D0D9FF"/>
+<rect width="1.5986" height="959.162" transform="matrix(1 0 0 -1 26.9893 464.305)" fill="#D0D9FF"/>
+<rect width="1.5986" height="959.162" transform="matrix(1 0 0 -1 49.7603 464.305)" fill="#D0D9FF"/>
+<rect width="1.5986" height="959.162" transform="matrix(1 0 0 -1 72.5317 464.305)" fill="#D0D9FF"/>
+<rect width="1.5986" height="959.162" transform="matrix(1 0 0 -1 95.3027 464.305)" fill="#D0D9FF"/>
+<rect width="1.5986" height="959.162" transform="matrix(1 0 0 -1 118.074 464.305)" fill="#D0D9FF"/>
+<rect width="1.5986" height="959.162" transform="matrix(1 0 0 -1 140.845 464.305)" fill="#D0D9FF"/>
+<rect width="1.5986" height="959.162" transform="matrix(1 0 0 -1 163.616 464.305)" fill="#D0D9FF"/>
+<rect width="1.5986" height="959.162" transform="matrix(1 0 0 -1 186.387 464.305)" fill="#D0D9FF"/>
+<rect width="1.5986" height="959.162" transform="matrix(1 0 0 -1 209.159 464.305)" fill="#D0D9FF"/>
+<rect width="1.5986" height="959.162" transform="matrix(1 0 0 -1 231.93 464.305)" fill="#D0D9FF"/>
+<rect width="1112.39" height="1.5986" transform="matrix(1 0 0 -1 -221.367 117.915)" fill="#D0D9FF"/>
+<rect width="1112.39" height="1.5986" transform="matrix(1 0 0 -1 -221.367 97.8276)" fill="#D0D9FF"/>
+<rect width="1112.39" height="1.5986" transform="matrix(1 0 0 -1 -221.367 77.7397)" fill="#D0D9FF"/>
+<rect width="1112.39" height="1.5986" transform="matrix(1 0 0 -1 -221.367 57.6519)" fill="#D0D9FF"/>
+<rect width="1112.39" height="1.5986" transform="matrix(1 0 0 -1 -221.367 37.5645)" fill="#D0D9FF"/>
+<rect width="1112.39" height="1.5986" transform="matrix(1 0 0 -1 -221.367 17.4766)" fill="#D0D9FF"/>
+</g>
+<rect width="500" height="380" transform="matrix(1 0 0 -1 -220 155)" fill="url(#paint0_radial_14306_8777)"/>
+</g>
+<defs>
+<radialGradient id="paint0_radial_14306_8777" cx="0" cy="0" r="1" gradientTransform="matrix(-0.554271 190 -278.099 -0.422851 250 190)" gradientUnits="userSpaceOnUse">
+<stop stop-color="white" stop-opacity="0"/>
+<stop offset="1" stop-color="white"/>
+</radialGradient>
+<clipPath id="clip0_14306_8777">
+<rect width="329.342" height="342.342" fill="white" transform="matrix(1 0 0 -1 -75.627 117.555)"/>
+</clipPath>
+</defs>
+</svg>

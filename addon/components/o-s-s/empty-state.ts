@@ -2,6 +2,8 @@ import type { htmlSafe } from '@ember/template';
 import { assert } from '@ember/debug';
 import Component from '@glimmer/component';
 
+import { isSafeString } from '@upfluence/oss-components/utils';
+
 interface OSSEmptyStateComponentSignature {
   badgeIcon?: string;
   title: ReturnType<typeof htmlSafe>;
@@ -10,10 +12,6 @@ interface OSSEmptyStateComponentSignature {
 }
 
 const ALLOWED_SIZES: string[] = ['sm', 'md'];
-
-function isSafeString(arg: any): boolean {
-  return arg && arg.constructor && arg.constructor.name === 'SafeString';
-}
 
 export default class OSSEmptyStateComponent extends Component<OSSEmptyStateComponentSignature> {
   constructor(owner: unknown, args: OSSEmptyStateComponentSignature) {
