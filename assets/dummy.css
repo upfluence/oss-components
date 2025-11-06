@@ -13885,7 +13885,7 @@ a.upf-btn--sm {
   align-items: center;
   z-index: 0;
 }
-@container upf-marketing-banner (width <= 340px) {
+@container upf-marketing-banner (width <= 630px) {
   .upf-marketing-banner__container {
     flex-direction: column;
   }

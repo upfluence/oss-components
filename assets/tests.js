@@ -9344,7 +9344,7 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
           };
           await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
           /*
-            <OSS::MarketingBanner style="max-width:340px" @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}}>
+            <OSS::MarketingBanner style="max-width:630px" @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}}>
                           <:illustration>
                               <img width="100" height="100" src={{this.illustrationSrc}} />
                           </:illustration>
@@ -9352,8 +9352,8 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
                       
           */
           {
-            "id": "yRhGWYir",
-            "block": "[[[8,[39,0],[[24,5,\"max-width:340px\"]],[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"options\"]]]],[[\"illustration\"],[[[[1,\"\\n                    \"],[10,\"img\"],[14,\"width\",\"100\"],[14,\"height\",\"100\"],[15,\"src\",[30,0,[\"illustrationSrc\"]]],[12],[13],[1,\"\\n                \"]],[]]]]],[1,\"\\n            \"]],[],false,[\"o-s-s/marketing-banner\"]]",
+            "id": "tKJ0rDeG",
+            "block": "[[[8,[39,0],[[24,5,\"max-width:630px\"]],[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"options\"]]]],[[\"illustration\"],[[[[1,\"\\n                    \"],[10,\"img\"],[14,\"width\",\"100\"],[14,\"height\",\"100\"],[15,\"src\",[30,0,[\"illustrationSrc\"]]],[12],[13],[1,\"\\n                \"]],[]]]]],[1,\"\\n            \"]],[],false,[\"o-s-s/marketing-banner\"]]",
             "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
             "isStrictMode": false
           }));
@@ -9391,7 +9391,7 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
       (0, _qunit.test)('by default, it is not visible on small screen', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::MarketingBanner style="max-width:340px" @title={{this.title}} @subtitle={{this.subtitle}}>
+          <OSS::MarketingBanner style="max-width:630px" @title={{this.title}} @subtitle={{this.subtitle}}>
                         <:illustration>
                             <img width="100" height="100" src={{this.illustrationSrc}} />
                         </:illustration>
@@ -9399,8 +9399,8 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
                     
         */
         {
-          "id": "Zl/r7nDb",
-          "block": "[[[8,[39,0],[[24,5,\"max-width:340px\"]],[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],[[\"illustration\"],[[[[1,\"\\n                    \"],[10,\"img\"],[14,\"width\",\"100\"],[14,\"height\",\"100\"],[15,\"src\",[30,0,[\"illustrationSrc\"]]],[12],[13],[1,\"\\n                \"]],[]]]]],[1,\"\\n            \"]],[],false,[\"o-s-s/marketing-banner\"]]",
+          "id": "FfIijTbM",
+          "block": "[[[8,[39,0],[[24,5,\"max-width:630px\"]],[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],[[\"illustration\"],[[[[1,\"\\n                    \"],[10,\"img\"],[14,\"width\",\"100\"],[14,\"height\",\"100\"],[15,\"src\",[30,0,[\"illustrationSrc\"]]],[12],[13],[1,\"\\n                \"]],[]]]]],[1,\"\\n            \"]],[],false,[\"o-s-s/marketing-banner\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
           "isStrictMode": false
         }));
@@ -9415,7 +9415,7 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
       (0, _qunit.test)('it renders it', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::MarketingBanner style="max-width:340px" @title={{this.title}} @subtitle={{this.subtitle}}>
+          <OSS::MarketingBanner style="max-width:630px" @title={{this.title}} @subtitle={{this.subtitle}}>
                         <:actions>
                             <button class="test-action-button">Click me</button>
                         </:actions>
@@ -9423,8 +9423,8 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
                     
         */
         {
-          "id": "VI6yJoNM",
-          "block": "[[[8,[39,0],[[24,5,\"max-width:340px\"]],[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],[[\"actions\"],[[[[1,\"\\n                    \"],[10,\"button\"],[14,0,\"test-action-button\"],[12],[1,\"Click me\"],[13],[1,\"\\n                \"]],[]]]]],[1,\"\\n            \"]],[],false,[\"o-s-s/marketing-banner\"]]",
+          "id": "fy88igQG",
+          "block": "[[[8,[39,0],[[24,5,\"max-width:630px\"]],[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],[[\"actions\"],[[[[1,\"\\n                    \"],[10,\"button\"],[14,0,\"test-action-button\"],[12],[1,\"Click me\"],[13],[1,\"\\n                \"]],[]]]]],[1,\"\\n            \"]],[],false,[\"o-s-s/marketing-banner\"]]",
           "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
           "isStrictMode": false
         }));
