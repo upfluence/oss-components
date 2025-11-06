@@ -26,6 +26,8 @@ interface OSSInfiniteSelectOptionComponentSignature {
     suffixTag?: OSSTagArgs;
     suffixIcon?: IconSpec;
 
+    // When multiple, display a checkbox before anything else, while using the @selected arg for its @checked arg.
+    // When single, only rely on the checkmark icon at the end of the line.
     selectionType?: 'multiple' | 'single';
     selected?: boolean;
     disabled?: boolean;
