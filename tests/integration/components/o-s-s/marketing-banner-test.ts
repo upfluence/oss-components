@@ -165,7 +165,7 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
       test('it is visible on small screen', async function (assert) {
         this.options = { illustrationAlwaysVisible: true };
         await render(
-          hbs`<OSS::MarketingBanner style="max-width:340px" @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}}>
+          hbs`<OSS::MarketingBanner style="max-width:630px" @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}}>
                 <:illustration>
                     <img width="100" height="100" src={{this.illustrationSrc}} />
                 </:illustration>
@@ -197,7 +197,7 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
 
     test('by default, it is not visible on small screen', async function (assert) {
       await render(
-        hbs`<OSS::MarketingBanner style="max-width:340px" @title={{this.title}} @subtitle={{this.subtitle}}>
+        hbs`<OSS::MarketingBanner style="max-width:630px" @title={{this.title}} @subtitle={{this.subtitle}}>
                 <:illustration>
                     <img width="100" height="100" src={{this.illustrationSrc}} />
                 </:illustration>
@@ -214,7 +214,7 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
   module('for actions named block', () => {
     test('it renders it', async function (assert) {
       await render(
-        hbs`<OSS::MarketingBanner style="max-width:340px" @title={{this.title}} @subtitle={{this.subtitle}}>
+        hbs`<OSS::MarketingBanner style="max-width:630px" @title={{this.title}} @subtitle={{this.subtitle}}>
                 <:actions>
                     <button class="test-action-button">Click me</button>
                 </:actions>
