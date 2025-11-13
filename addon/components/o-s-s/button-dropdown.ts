@@ -8,6 +8,7 @@ interface OSSButtonDropdownArgs {
   square?: boolean;
   hideArrow?: boolean;
   label?: string;
+  size?: 'sm' | 'md';
   mainAction?(): void;
 }
 
@@ -28,6 +29,10 @@ export default class extends Component<OSSButtonDropdownArgs> {
         typeof this.args.mainAction === 'function'
       );
     }
+  }
+
+  get buttonSize(): 'sm' | 'md' {
+    return this.args.size ?? 'md';
   }
 
   @action

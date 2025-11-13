@@ -53,6 +53,24 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
     assert.dom('.oss-button-dropdown__trigger .fx-row:first-child span').hasText('label');
   });
 
+  module('Button size', function () {
+    test('the button has md size by default', async function (assert) {
+      await render(
+        hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label"><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
+      );
+
+      assert.dom('.oss-button-dropdown').hasClass('oss-button-dropdown--md');
+    });
+
+    test('the button can be displayed in sm size', async function (assert) {
+      await render(
+        hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label" @buttonSize="sm"><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
+      );
+
+      assert.dom('.oss-button-dropdown').hasClass('oss-button-dropdown--sm');
+    });
+  });
+
   module('If @mainAction is undefined', function () {
     test('Clicking on the button opens the dropdown', async function (assert) {
       await render(
