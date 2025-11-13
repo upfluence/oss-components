@@ -13101,6 +13101,9 @@ a.upf-btn--sm {
   border-top: 1px solid var(--sidebar-inner-border-color);
   margin-right: -1px;
 }
+a.oss-sidebar-item {
+  text-decoration: none;
+}
 .oss-sidebar-item {
   position: relative;
   display: flex;
