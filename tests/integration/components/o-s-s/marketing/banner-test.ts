@@ -8,7 +8,7 @@ import { CSSVariableToRGB } from 'dummy/tests/integration/utils';
 
 const ILLUSTRATION_SRC = '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg';
 
-module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
+module('Integration | Component | o-s-s/marketing/banner', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks);
 
@@ -19,30 +19,30 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
   });
 
   test('it renders', async function (assert) {
-    await render(hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />`);
+    await render(hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} />`);
     assert.dom('.upf-marketing-banner').exists();
     assert.dom('.upf-marketing-banner__container').exists();
     assert.dom('.upf-marketing-banner__content').exists();
   });
 
   test("it doesn't renders unnecessary named blocks", async function (assert) {
-    await render(hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />`);
+    await render(hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} />`);
     assert.dom('.upf-marketing-banner__illustration').doesNotExist();
     assert.dom('.upf-marketing-banner__actions').doesNotExist();
   });
 
   test('for @title, it renders the correct value', async function (assert) {
-    await render(hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />`);
+    await render(hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} />`);
     assert.dom('.upf-marketing-banner__title').hasText('Title');
   });
 
   test('for @subtitle, it renders the correct value', async function (assert) {
-    await render(hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />`);
+    await render(hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} />`);
     assert.dom('.upf-marketing-banner__subtitle').hasText('Subtitle');
   });
 
   test('it renders all background effect elements', async function (assert) {
-    await render(hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />`);
+    await render(hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} />`);
     assert.dom('.upf-marketing-banner__background--primary').exists();
     assert.dom('.upf-marketing-banner__background--secondary').exists();
     assert.dom('.upf-marketing-banner__background--tertiary').exists();
@@ -51,7 +51,7 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
   module('for @options', () => {
     module('for @primaryGradiantColor', () => {
       test('it renders the default colors', async function (assert) {
-        await render(hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />`);
+        await render(hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} />`);
         assert.dom('.upf-marketing-banner__background--primary').exists();
         assert
           .dom('.upf-marketing-banner__background--primary')
@@ -63,7 +63,7 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
           primaryGradiantColor: '--color-cyan-100'
         };
         await render(
-          hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
+          hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
         );
 
         assert.dom('.upf-marketing-banner__background--primary').exists();
@@ -75,7 +75,7 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
 
     module('for @secondaryGradiantColor', () => {
       test('it renders the default colors', async function (assert) {
-        await render(hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />`);
+        await render(hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} />`);
         assert.dom('.upf-marketing-banner__background--secondary').exists();
         assert
           .dom('.upf-marketing-banner__background--secondary')
@@ -87,7 +87,7 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
           secondaryGradiantColor: '--color-lime-100'
         };
         await render(
-          hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
+          hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
         );
 
         assert.dom('.upf-marketing-banner__background--secondary').exists();
@@ -100,13 +100,13 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
     module('for @backgroundGridDisplayed', () => {
       module('by default', () => {
         test('it renders it', async function (assert) {
-          await render(hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />`);
+          await render(hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} />`);
           const element = document.querySelector('.upf-marketing-banner__container') as HTMLElement;
           assert.equal(getComputedStyle(element, 'before').display, 'flex');
         });
 
         test('it sets the correct value for --background-grid-display CSS variable', async function (assert) {
-          await render(hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />`);
+          await render(hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} />`);
           const element = document.querySelector('.upf-marketing-banner') as HTMLElement;
           assert.equal(element.style.getPropertyValue('--background-grid-display'), 'flex');
         });
@@ -118,7 +118,7 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
             backgroundGridDisplayed: false
           };
           await render(
-            hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
+            hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
           );
           const element = document.querySelector('.upf-marketing-banner__container') as HTMLElement;
           assert.equal(getComputedStyle(element, 'before').display, 'none');
@@ -129,7 +129,7 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
             backgroundGridDisplayed: false
           };
           await render(
-            hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
+            hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
           );
           const element = document.querySelector('.upf-marketing-banner') as HTMLElement;
           assert.equal(element.style.getPropertyValue('--background-grid-display'), 'none');
@@ -142,7 +142,7 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
             backgroundGridDisplayed: true
           };
           await render(
-            hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
+            hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
           );
           const element = document.querySelector('.upf-marketing-banner__container') as HTMLElement;
           assert.equal(getComputedStyle(element, 'before').display, 'flex');
@@ -153,7 +153,7 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
             backgroundGridDisplayed: true
           };
           await render(
-            hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
+            hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
           );
           const element = document.querySelector('.upf-marketing-banner') as HTMLElement;
           assert.equal(element.style.getPropertyValue('--background-grid-display'), 'flex');
@@ -165,11 +165,11 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
       test('it is visible on small screen', async function (assert) {
         this.options = { illustrationAlwaysVisible: true };
         await render(
-          hbs`<OSS::MarketingBanner style="max-width:630px" @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}}>
+          hbs`<OSS::Marketing::Banner style="max-width:630px" @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}}>
                 <:illustration>
                     <img width="100" height="100" src={{this.illustrationSrc}} />
                 </:illustration>
-            </OSS::MarketingBanner>
+            </OSS::Marketing::Banner>
             `
         );
         const element = document.querySelector('.upf-marketing-banner') as HTMLElement;
@@ -184,11 +184,11 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
   module('for illustration named block', () => {
     test('it renders it', async function (assert) {
       await render(
-        hbs`<OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}}>
+        hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}}>
                 <:illustration>
                     <img width="100" height="100" src={{this.illustrationSrc}} />
                 </:illustration>
-            </OSS::MarketingBanner>
+            </OSS::Marketing::Banner>
             `
       );
       assert.dom('.upf-marketing-banner__illustration').hasStyle({ display: 'flex' });
@@ -197,11 +197,11 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
 
     test('by default, it is not visible on small screen', async function (assert) {
       await render(
-        hbs`<OSS::MarketingBanner style="max-width:630px" @title={{this.title}} @subtitle={{this.subtitle}}>
+        hbs`<OSS::Marketing::Banner style="max-width:630px" @title={{this.title}} @subtitle={{this.subtitle}}>
                 <:illustration>
                     <img width="100" height="100" src={{this.illustrationSrc}} />
                 </:illustration>
-            </OSS::MarketingBanner>
+            </OSS::Marketing::Banner>
             `
       );
       const element = document.querySelector('.upf-marketing-banner') as HTMLElement;
@@ -214,11 +214,11 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
   module('for actions named block', () => {
     test('it renders it', async function (assert) {
       await render(
-        hbs`<OSS::MarketingBanner style="max-width:630px" @title={{this.title}} @subtitle={{this.subtitle}}>
+        hbs`<OSS::Marketing::Banner style="max-width:630px" @title={{this.title}} @subtitle={{this.subtitle}}>
                 <:actions>
                     <button class="test-action-button">Click me</button>
                 </:actions>
-            </OSS::MarketingBanner>
+            </OSS::Marketing::Banner>
             `
       );
       assert.dom('.upf-marketing-banner__actions').exists();
@@ -229,16 +229,16 @@ module('Integration | Component | o-s-s/marketing-banner', function (hooks) {
   module('Error management', function () {
     test('It throws an error if @title is not passed', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::MarketingBanner] @title is required');
+        assert.equal(err.message, 'Assertion Failed: [component][OSS::Marketing::Banner] @title is required');
       });
-      await render(hbs`<OSS::MarketingBanner @subtitle={{this.subtitle}} />`);
+      await render(hbs`<OSS::Marketing::Banner @subtitle={{this.subtitle}} />`);
     });
 
     test('It throws an error if @subtitle is not passed', async function (assert) {
       setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::MarketingBanner] @subtitle is required');
+        assert.equal(err.message, 'Assertion Failed: [component][OSS::Marketing::Banner] @subtitle is required');
       });
-      await render(hbs`<OSS::MarketingBanner @title={{this.title}} />`);
+      await render(hbs`<OSS::Marketing::Banner @title={{this.title}} />`);
     });
   });
 });

@@ -21,11 +21,11 @@ export default class OSSMarketingBannerComponent extends Component<OSSMarketingB
   constructor(owner: unknown, args: OSSMarketingBannerComponentSignature) {
     super(owner, args);
     assert(
-      '[component][OSS::MarketingBanner] @title is required',
+      '[component][OSS::Marketing::Banner] @title is required',
       typeof args.title === 'string' || isSafeString(args.title)
     );
     assert(
-      '[component][OSS::MarketingBanner] @subtitle is required',
+      '[component][OSS::Marketing::Banner] @subtitle is required',
       typeof args.subtitle === 'string' || isSafeString(args.subtitle)
     );
   }

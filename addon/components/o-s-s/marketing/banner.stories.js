@@ -17,7 +17,7 @@ function getAllCSSColorAvailable() {
 const ColorOptions = getAllCSSColorAvailable();
 
 export default {
-  title: 'Components/OSS::MarketingBanner',
+  title: 'Components/OSS::Marketing::Banner',
   component: 'marketing-banner',
   argTypes: {
     title: {
@@ -106,7 +106,7 @@ const defaultArgs = {
 const BasicUsageTemplate = (args) => ({
   template: hbs`
     <div style="width: 600px;">
-      <OSS::MarketingBanner
+      <OSS::Marketing::Banner
         @title={{this.title}}
         @subtitle={{this.subtitle}}
         @options={{hash
@@ -124,7 +124,7 @@ const BasicUsageTemplate = (args) => ({
 const WithIllustrationTemplate = (args) => ({
   template: hbs`
     <div style="width: 600px;">
-      <OSS::MarketingBanner
+      <OSS::Marketing::Banner
         @title={{this.title}}
         @subtitle={{this.subtitle}}
         @options={{hash
@@ -138,7 +138,7 @@ const WithIllustrationTemplate = (args) => ({
             🚀
           </div>
         </:illustration>
-      </OSS::MarketingBanner>
+      </OSS::Marketing::Banner>
     </div>
   `,
   context: args
@@ -147,7 +147,7 @@ const WithIllustrationTemplate = (args) => ({
 const WithActionsTemplate = (args) => ({
   template: hbs`
     <div style="width: 600px;">
-      <OSS::MarketingBanner
+      <OSS::Marketing::Banner
         @title={{this.title}}
         @subtitle={{this.subtitle}}
         @options={{hash
@@ -158,7 +158,7 @@ const WithActionsTemplate = (args) => ({
         <:actions>
           <button class="upf-btn upf-btn--primary">Get Started</button>
         </:actions>
-      </OSS::MarketingBanner>
+      </OSS::Marketing::Banner>
     </div>
   `,
   context: args
@@ -167,7 +167,7 @@ const WithActionsTemplate = (args) => ({
 const CompleteExampleTemplate = (args) => ({
   template: hbs`
     <div style="width: 600px;">
-      <OSS::MarketingBanner
+      <OSS::Marketing::Banner
         @title={{this.title}}
         @subtitle={{this.subtitle}}
         @options={{hash
@@ -188,7 +188,7 @@ const CompleteExampleTemplate = (args) => ({
               <button class="upf-btn upf-btn--secondary">Learn More</button>
             </div>
         </:actions>
-      </OSS::MarketingBanner>
+      </OSS::Marketing::Banner>
     </div>
   `,
   context: args
@@ -197,7 +197,7 @@ const CompleteExampleTemplate = (args) => ({
 const CompleteExampleTemplateSmallScreen = (args) => ({
   template: hbs`
     <div style="width: 300px;">
-      <OSS::MarketingBanner
+      <OSS::Marketing::Banner
         @title={{this.title}}
         @subtitle={{this.subtitle}}
         @options={{hash
@@ -218,7 +218,7 @@ const CompleteExampleTemplateSmallScreen = (args) => ({
               <button class="fx-1 upf-btn upf-btn--secondary">Learn More</button>
             </div>
         </:actions>
-      </OSS::MarketingBanner>
+      </OSS::Marketing::Banner>
     </div>
   `,
   context: args
