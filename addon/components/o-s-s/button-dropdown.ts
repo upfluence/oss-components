@@ -31,8 +31,18 @@ export default class extends Component<OSSButtonDropdownArgs> {
     }
   }
 
-  get buttonSize(): 'sm' | 'md' {
-    return this.args.size ?? 'md';
+  get computedClasses(): string {
+    const computedClasses = ['oss-button-dropdown'];
+
+    if (this.args.size === 'sm') {
+      computedClasses.push('oss-button-dropdown--sm');
+    }
+
+    if (!this.args.size || this.args.size === 'md') {
+      computedClasses.push('oss-button-dropdown--md');
+    }
+
+    return computedClasses.join(' ');
   }
 
   @action

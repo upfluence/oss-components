@@ -64,7 +64,7 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
 
     test('the button can be displayed in sm size', async function (assert) {
       await render(
-        hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label" @buttonSize="sm"><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
+        hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label" @size="sm"><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
       );
 
       assert.dom('.oss-button-dropdown').hasClass('oss-button-dropdown--sm');
