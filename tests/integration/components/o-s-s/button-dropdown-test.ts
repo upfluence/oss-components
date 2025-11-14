@@ -69,6 +69,14 @@ module('Integration | Component | o-s-s/button-dropdown', function (hooks) {
 
       assert.dom('.oss-button-dropdown').hasClass('oss-button-dropdown--sm');
     });
+
+    test('the button can be displayed in md size', async function (assert) {
+      await render(
+        hbs`<OSS::ButtonDropdown @icon="far fa-users" @label="label" @size="md"><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>`
+      );
+
+      assert.dom('.oss-button-dropdown').hasClass('oss-button-dropdown--md');
+    });
   });
 
   module('If @mainAction is undefined', function () {
