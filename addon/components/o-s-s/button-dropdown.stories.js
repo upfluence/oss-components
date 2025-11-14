@@ -1,6 +1,8 @@
 import { action } from '@storybook/addon-actions';
 import { hbs } from 'ember-cli-htmlbars';
 
+const SizeTypes = ['sm', 'md'];
+
 export default {
   title: 'Components/OSS::ButtonDropdown',
   component: 'button-dropdown',
@@ -44,6 +46,17 @@ export default {
         defaultValue: { summary: 'undefined' }
       },
       control: { type: 'text' }
+    },
+    size: {
+      description: 'Adjust the size of the button',
+      table: {
+        type: {
+          summary: SizeTypes.join('|')
+        },
+        defaultValue: { summary: 'md' }
+      },
+      options: SizeTypes,
+      control: { type: 'select' }
     },
     mainAction: {
       description: 'An action that is triggered on click in the left part of the button.',

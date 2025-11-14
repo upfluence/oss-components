@@ -8,6 +8,7 @@ interface OSSButtonDropdownArgs {
   square?: boolean;
   hideArrow?: boolean;
   label?: string;
+  size?: 'sm' | 'md';
   mainAction?(): void;
 }
 
@@ -28,6 +29,20 @@ export default class extends Component<OSSButtonDropdownArgs> {
         typeof this.args.mainAction === 'function'
       );
     }
+  }
+
+  get computedClasses(): string {
+    const computedClasses = ['oss-button-dropdown'];
+
+    if (this.args.size === 'sm') {
+      computedClasses.push('oss-button-dropdown--sm');
+    }
+
+    if (!this.args.size || this.args.size === 'md') {
+      computedClasses.push('oss-button-dropdown--md');
+    }
+
+    return computedClasses.join(' ');
   }
 
   @action
