@@ -7635,6 +7635,38 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
         });
       });
     });
+    (0, _qunit.module)('Skin', function (hooks) {
+      hooks.beforeEach(function () {
+        this.items = FAKE_DATA;
+        this.onSelect = () => {};
+      });
+      (0, _qunit.test)('When @skin is not specified the "default" skin is applied', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{false}} @onSelect={{this.onSelect}}/>
+        */
+        {
+          "id": "YU8eRyjM",
+          "block": "[[[8,[39,0],null,[[\"@items\",\"@searchEnabled\",\"@onSelect\"],[[30,0,[\"items\"]],false,[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select-test.js",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-infinite-select').hasClass('upf-infinite-select--default');
+      });
+      (0, _qunit.test)('it should render with the smart skin', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{false}} @onSelect={{this.onSelect}} @skin="smart"/>
+        */
+        {
+          "id": "h+nlmduk",
+          "block": "[[[8,[39,0],null,[[\"@items\",\"@searchEnabled\",\"@onSelect\",\"@skin\"],[[30,0,[\"items\"]],false,[30,0,[\"onSelect\"]],\"smart\"]],null]],[],false,[\"o-s-s/infinite-select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select-test.js",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-infinite-select').hasClass('upf-infinite-select--smart');
+      });
+    });
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.module)('On item selection, if onSelect is not passed', function () {
         (0, _qunit.test)('it should throw an error', async function (assert) {
@@ -12772,6 +12804,7 @@ define("dummy/tests/integration/components/o-s-s/scrollable-panel-test", ["qunit
     hooks.beforeEach(function () {
       this.onBottomReached = _sinon.default.stub();
       this.hideScrollbar = false;
+      this.offset = 0;
     });
     function scrollIntoView(elementId) {
       document.querySelector(`#${elementId}`)?.scrollIntoView({
@@ -12784,7 +12817,8 @@ define("dummy/tests/integration/components/o-s-s/scrollable-panel-test", ["qunit
       <div class="background-color-gray-50" style="height:300px; width: 500px">
         <OSS::ScrollablePanel @disableShadows={{this.disableShadows}}
                               @onBottomReached={{this.onBottomReached}}
-                              @hideScrollbar={{this.hideScrollbar}}>
+                              @hideScrollbar={{this.hideScrollbar}}
+                              @offset={{this.offset}} >
           <div class="fx-col fx-gap-px-12 padding-px-12">
             <div class="background-color-gray-200" style="height: 50px; width: 100%;" id="start-element"/>
             <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
@@ -12797,8 +12831,8 @@ define("dummy/tests/integration/components/o-s-s/scrollable-panel-test", ["qunit
     
     */
     {
-      "id": "AN7e8gXF",
-      "block": "[[[1,\"\\n  \"],[10,0],[14,0,\"background-color-gray-50\"],[14,5,\"height:300px; width: 500px\"],[12],[1,\"\\n    \"],[8,[39,0],null,[[\"@disableShadows\",\"@onBottomReached\",\"@hideScrollbar\"],[[30,0,[\"disableShadows\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"hideScrollbar\"]]]],[[\"default\"],[[[[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-12\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"start-element\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"center-element\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"end-element\"],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"]],[]]]]],[1,\"\\n  \"],[13],[1,\"\\n\"]],[],false,[\"o-s-s/scrollable-panel\"]]",
+      "id": "4wZXDHQc",
+      "block": "[[[1,\"\\n  \"],[10,0],[14,0,\"background-color-gray-50\"],[14,5,\"height:300px; width: 500px\"],[12],[1,\"\\n    \"],[8,[39,0],null,[[\"@disableShadows\",\"@onBottomReached\",\"@hideScrollbar\",\"@offset\"],[[30,0,[\"disableShadows\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"hideScrollbar\"]],[30,0,[\"offset\"]]]],[[\"default\"],[[[[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-12\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"start-element\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"center-element\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n        \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[14,1,\"end-element\"],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"]],[]]]]],[1,\"\\n  \"],[13],[1,\"\\n\"]],[],false,[\"o-s-s/scrollable-panel\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/scrollable-panel-test.ts",
       "isStrictMode": false
     });
@@ -12961,6 +12995,23 @@ define("dummy/tests/integration/components/o-s-s/scrollable-panel-test", ["qunit
       assert.dom('.oss-scrollable-panel-container .oss-scrollable-panel-content').hasNoClass('oss-scrollable-panel-content--hidden');
       this.set('hideScrollbar', true);
       assert.dom('.oss-scrollable-panel-container .oss-scrollable-panel-content').hasClass('oss-scrollable-panel-content--hidden');
+    });
+    (0, _qunit.module)('with @offset', function (hooks) {
+      hooks.beforeEach(function () {
+        this.set('offset', 10);
+      });
+      (0, _qunit.test)('When scrolling under the offset, it does not display top shadow', async function (assert) {
+        await (0, _testHelpers.render)(renderScrollableContent);
+        assert.dom('.oss-scrollable-panel--shadow__top').doesNotExist();
+        await (0, _testHelpers.scrollTo)('.oss-scrollable-panel-content', 0, 5);
+        assert.dom('.oss-scrollable-panel--shadow__top').doesNotExist();
+      });
+      (0, _qunit.test)('When scrolling above the offset, it displays the top shadow', async function (assert) {
+        await (0, _testHelpers.render)(renderScrollableContent);
+        assert.dom('.oss-scrollable-panel--shadow__top').doesNotExist();
+        await (0, _testHelpers.scrollTo)('.oss-scrollable-panel-content', 0, 15);
+        assert.dom('.oss-scrollable-panel--shadow__top').exists();
+      });
     });
   });
 });
@@ -14470,6 +14521,2041 @@ define("dummy/tests/integration/components/o-s-s/slider-test", ["qunit", "ember-
     });
   });
 });
+define("dummy/tests/integration/components/o-s-s/smart/button-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"qunit",0,"ember-qunit",0,"@ember/test-helpers"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/smart/button', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders the label when present', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Button @icon="fab fa-facebook" @label="Label" />
+      */
+      {
+        "id": "3FysJTjA",
+        "block": "[[[8,[39,0],null,[[\"@icon\",\"@label\"],[\"fab fa-facebook\",\"Label\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-smart-btn span').hasText('Label');
+    });
+    (0, _qunit.test)('it renders the icon when present', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Button @icon="fab fa-facebook" />
+      */
+      {
+        "id": "7xOTcuJX",
+        "block": "[[[8,[39,0],null,[[\"@icon\"],[\"fab fa-facebook\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-smart-btn i').hasClass('fa-facebook');
+    });
+    (0, _qunit.test)('it renders the iconUrl when present', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Button @iconUrl="/@upfluence/oss-components/assets/star-icon.svg" />
+      */
+      {
+        "id": "cWq9RgNP",
+        "block": "[[[8,[39,0],null,[[\"@iconUrl\"],[\"/@upfluence/oss-components/assets/star-icon.svg\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-smart-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/star-icon.svg');
+    });
+    (0, _qunit.test)('it renders the icon and label when present', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Button @icon="fab fa-facebook" @label="Label" />
+      */
+      {
+        "id": "3FysJTjA",
+        "block": "[[[8,[39,0],null,[[\"@icon\",\"@label\"],[\"fab fa-facebook\",\"Label\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-smart-btn i').hasClass('fa-facebook');
+      assert.dom('.upf-smart-btn span').hasText('Label');
+    });
+    (0, _qunit.test)('it renders the iconUrl and label when present', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Button @iconUrl="/@upfluence/oss-components/assets/star-icon.svg" @label="Label" />
+      */
+      {
+        "id": "hT2lzFO5",
+        "block": "[[[8,[39,0],null,[[\"@iconUrl\",\"@label\"],[\"/@upfluence/oss-components/assets/star-icon.svg\",\"Label\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-smart-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/star-icon.svg');
+      assert.dom('.upf-smart-btn span').hasText('Label');
+    });
+    (0, _qunit.test)('when icon and iconUrl are present, it only renders the icon', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Button @icon="fab fa-facebook" @iconUrl="/@upfluence/oss-components/assets/heart.svg" />
+      */
+      {
+        "id": "Dh0nLT02",
+        "block": "[[[8,[39,0],null,[[\"@icon\",\"@iconUrl\"],[\"fab fa-facebook\",\"/@upfluence/oss-components/assets/heart.svg\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-smart-btn i').hasClass('fa-facebook');
+      assert.dom('.upf-smart-btn img').doesNotExist();
+    });
+    (0, _qunit.module)('skin rendering', function () {
+      (0, _qunit.test)('it renders the primary skin as default', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Button @label="Test" />
+        */
+        {
+          "id": "/UuWqbum",
+          "block": "[[[8,[39,0],null,[[\"@label\"],[\"Test\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-smart-btn').exists({
+          count: 1
+        });
+        assert.dom('.upf-smart-btn').hasClass('upf-smart-btn--primary');
+        assert.dom('.upf-smart-btn').hasText('Test');
+      });
+      (0, _qunit.test)('when using an unknown skin, it defaults to primary', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Button @skin="unknown" @label="Test" />
+        */
+        {
+          "id": "alURndOT",
+          "block": "[[[8,[39,0],null,[[\"@skin\",\"@label\"],[\"unknown\",\"Test\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-smart-btn').hasClass('upf-smart-btn--primary');
+      });
+      (0, _qunit.test)('when the skin is primary, the proper skin is rendered', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Button @skin="primary" @label="Test" />
+        */
+        {
+          "id": "k2FDbqKW",
+          "block": "[[[8,[39,0],null,[[\"@skin\",\"@label\"],[\"primary\",\"Test\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-smart-btn').hasClass('upf-smart-btn--primary');
+      });
+      (0, _qunit.test)('when the skin is secondary, the proper skin is rendered', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Button @skin="secondary" @label="Test" />
+        */
+        {
+          "id": "KAEQKVhw",
+          "block": "[[[8,[39,0],null,[[\"@skin\",\"@label\"],[\"secondary\",\"Test\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-smart-btn').hasClass('upf-smart-btn--secondary');
+      });
+    });
+    (0, _qunit.module)('size rendering', function () {
+      (0, _qunit.test)('when using xs, it renders the corresponding size', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Button @size="xs" @label="Test" />
+        */
+        {
+          "id": "i9FGTL3N",
+          "block": "[[[8,[39,0],null,[[\"@size\",\"@label\"],[\"xs\",\"Test\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-smart-btn').hasClass('upf-smart-btn--xs');
+      });
+      (0, _qunit.test)('when using sm, it renders the corresponding size', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Button @size="sm" @label="Test" />
+        */
+        {
+          "id": "6WGXWDMt",
+          "block": "[[[8,[39,0],null,[[\"@size\",\"@label\"],[\"sm\",\"Test\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-smart-btn').hasClass('upf-smart-btn--sm');
+      });
+      (0, _qunit.test)('when using md, it renders the corresponding size', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Button @size="md" @label="Test" />
+        */
+        {
+          "id": "idqsrUjr",
+          "block": "[[[8,[39,0],null,[[\"@size\",\"@label\"],[\"md\",\"Test\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-smart-btn').hasClass('upf-smart-btn--md');
+      });
+      (0, _qunit.test)('when using lg, it renders the corresponding size', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Button @size="lg" @label="Test" />
+        */
+        {
+          "id": "JrqVgyOW",
+          "block": "[[[8,[39,0],null,[[\"@size\",\"@label\"],[\"lg\",\"Test\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-smart-btn').hasClass('upf-smart-btn--lg');
+      });
+    });
+    (0, _qunit.module)('loading state', function () {
+      (0, _qunit.test)('when using the default loading, it renders the loading state without the label', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Button @size="sm" @loading={{true}} @label="Test" />
+        */
+        {
+          "id": "KKna6r2U",
+          "block": "[[[8,[39,0],null,[[\"@size\",\"@loading\",\"@label\"],[\"sm\",true,\"Test\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-smart-btn i.fas').exists();
+        assert.dom('.upf-smart-btn i.fas').hasClass('fa-spinner-third');
+        assert.dom('.upf-smart-btn i.fas').hasClass('fa-spin');
+        assert.dom('.upf-smart-btn span.margin-left-px-6').doesNotExist();
+      });
+      (0, _qunit.test)('when both loading and the showLabel loading option are truthy, the label is also displayed', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Button @size="sm" @loading={{true}} @label="Test" @loadingOptions={{hash showLabel=true}} />
+        */
+        {
+          "id": "mQi1CouA",
+          "block": "[[[8,[39,0],null,[[\"@size\",\"@loading\",\"@label\",\"@loadingOptions\"],[\"sm\",true,\"Test\",[28,[37,1],null,[[\"showLabel\"],[true]]]]],null]],[],false,[\"o-s-s/smart/button\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-smart-btn i.fas').exists();
+        assert.dom('.upf-smart-btn i.fas').hasClass('fa-spinner-third');
+        assert.dom('.upf-smart-btn i.fas').hasClass('fa-spin');
+        assert.dom('.upf-smart-btn span.margin-left-px-6').exists();
+        assert.dom('.upf-smart-btn span.margin-left-px-6').hasText('Test');
+      });
+    });
+    (0, _qunit.module)('when @circle is truthy', function () {
+      (0, _qunit.test)('it renders a circular button', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Button @circle="true" @label="Test" />
+        */
+        {
+          "id": "uauVJSqQ",
+          "block": "[[[8,[39,0],null,[[\"@circle\",\"@label\"],[\"true\",\"Test\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-smart-square-btn').exists();
+      });
+      (0, _qunit.test)('if the icon and label are present, it renders only the icon', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Button @icon="fab fa-facebook" @label="Label" />
+        */
+        {
+          "id": "3FysJTjA",
+          "block": "[[[8,[39,0],null,[[\"@icon\",\"@label\"],[\"fab fa-facebook\",\"Label\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-smart-btn i').hasClass('fa-facebook');
+        assert.dom('.upf-smart-btn span').hasText('Label');
+      });
+      (0, _qunit.test)('if both the iconUrl and label are present, it renders only the iconUrl', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Button @iconUrl="/@upfluence/oss-components/assets/star-icon.svg" @label="Label" />
+        */
+        {
+          "id": "hT2lzFO5",
+          "block": "[[[8,[39,0],null,[[\"@iconUrl\",\"@label\"],[\"/@upfluence/oss-components/assets/star-icon.svg\",\"Label\"]],null]],[],false,[\"o-s-s/smart/button\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-smart-btn img').hasAttribute('src', '/@upfluence/oss-components/assets/star-icon.svg');
+        assert.dom('.upf-smart-btn span').hasText('Label');
+      });
+    });
+    (0, _qunit.module)('Error management', function () {
+      (0, _qunit.test)('it fails if @label, @icon and @iconUrl are missing', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::Smart::Button] You must pass either a @label, an @icon or an @iconUrl argument.');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Button />
+        */
+        {
+          "id": "pMdhC/7l",
+          "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/smart/button\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/button-test.ts",
+          "isStrictMode": false
+        }));
+      });
+    });
+  });
+});
+define("dummy/tests/integration/components/o-s-s/smart/feedback-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/smart/feedback', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders the component container', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Feedback />
+      */
+      {
+        "id": "NuYh+hTt",
+        "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/smart/feedback\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-smart__feedback').exists();
+    });
+    (0, _qunit.test)('it shows loading skeletons when @loading is true', async function (assert) {
+      this.loading = true;
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Feedback @loading={{this.loading}} />
+      */
+      {
+        "id": "4gxx0w+B",
+        "block": "[[[8,[39,0],null,[[\"@loading\"],[[30,0,[\"loading\"]]]],null]],[],false,[\"o-s-s/smart/feedback\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-smart-skeleton-effect').exists({
+        count: 2
+      });
+    });
+    (0, _qunit.test)('it renders content string when @loading is false and @contentString is provided', async function (assert) {
+      this.loading = false;
+      this.contentString = 'Test feedback message';
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <OSS::Smart::Feedback 
+              @loading={{this.loading}} 
+              @contentString={{this.contentString}} 
+            />
+          
+      */
+      {
+        "id": "WbXFKejh",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@loading\",\"@contentString\"],[[30,0,[\"loading\"]],[30,0,[\"contentString\"]]]],null],[1,\"\\n    \"]],[],false,[\"o-s-s/smart/feedback\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-smart__generated').exists();
+      assert.dom('.oss-smart__feedback__content__text').hasText('Test feedback message');
+    });
+    (0, _qunit.test)('it renders content array when @loading is false and @contentArray is provided', async function (assert) {
+      this.loading = false;
+      this.contentArray = ['First line', ' Second line'];
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <OSS::Smart::Feedback 
+              @loading={{this.loading}} 
+              @contentArray={{this.contentArray}} 
+            />
+          
+      */
+      {
+        "id": "9M7T9By7",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@loading\",\"@contentArray\"],[[30,0,[\"loading\"]],[30,0,[\"contentArray\"]]]],null],[1,\"\\n    \"]],[],false,[\"o-s-s/smart/feedback\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-smart__generated').exists();
+      assert.dom('.oss-smart__feedback__content__text').hasText('First line Second line');
+    });
+    (0, _qunit.test)('it yields the icon named-block content', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <OSS::Smart::Feedback>
+              <:icon>
+                <div class="test-blob">Blob Content</div>
+              </:icon>
+            </OSS::Smart::Feedback>
+          
+      */
+      {
+        "id": "+honiRPN",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,null,[[\"icon\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"test-blob\"],[12],[1,\"Blob Content\"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"]],[],false,[\"o-s-s/smart/feedback\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/feedback-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.test-blob').hasText('Blob Content');
+    });
+  });
+});
+define("dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test", ["qunit", "ember-qunit", "ember-intl/test-support", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testSupport, _testHelpers, _sinon, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"qunit",0,"ember-qunit",0,"ember-intl/test-support",0,"@ember/test-helpers",0,"sinon"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/smart/immersive/currency-input', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _testSupport.setupIntl)(hooks);
+    hooks.beforeEach(function () {
+      this.onChange = _sinon.default.stub();
+      this.placeholder = 'Placeholder';
+    });
+    (0, _qunit.test)('it renders', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Immersive::CurrencyInput @onChange={{this.onChange}} />
+      */
+      {
+        "id": "cwH0gixj",
+        "block": "[[[8,[39,0],null,[[\"@onChange\"],[[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.smart-immersive-currency-input-container').exists();
+    });
+    (0, _qunit.test)('The passed @value parameter is properly displayed in the input', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Immersive::CurrencyInput @value="12341234" @onChange={{this.onChange}} />
+      */
+      {
+        "id": "g5Lg1dYL",
+        "block": "[[[8,[39,0],null,[[\"@value\",\"@onChange\"],[\"12341234\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('input').hasValue('12341234');
+    });
+    (0, _qunit.test)('It properly loads the correct currency when the @currency parameter is defined', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Immersive::CurrencyInput @currency="EUR" @onChange={{this.onChange}} />
+      */
+      {
+        "id": "7XLjEPNv",
+        "block": "[[[8,[39,0],null,[[\"@currency\",\"@onChange\"],[\"EUR\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.currency-selector').hasText('€');
+    });
+    (0, _qunit.test)('It displays a blue border around the component if @value is truthy', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Immersive::CurrencyInput @value="12345" @onChange={{this.onChange}} />
+      */
+      {
+        "id": "W4lyqV4a",
+        "block": "[[[8,[39,0],null,[[\"@value\",\"@onChange\"],[\"12345\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.smart-immersive-currency-input-container').hasClass('smart-immersive-currency-input-container--filled');
+    });
+    (0, _qunit.test)('It displays a red border around the component if @hasError exists', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Immersive::CurrencyInput @onChange={{this.onChange}} @hasError={{true}} />
+      */
+      {
+        "id": "NZpHIK30",
+        "block": "[[[8,[39,0],null,[[\"@onChange\",\"@hasError\"],[[30,0,[\"onChange\"]],true]],null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.smart-immersive-currency-input-container').hasClass('smart-immersive-currency-input-container--errored');
+    });
+    (0, _qunit.module)('Currency selector', () => {
+      (0, _qunit.test)('Clicking on the currency symbol button opens the currency selector', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::CurrencyInput @currency="" @value="" @onChange={{this.onChange}} />
+        */
+        {
+          "id": "TnBmOE/7",
+          "block": "[[[8,[39,0],null,[[\"@currency\",\"@value\",\"@onChange\"],[\"\",\"\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.currency-selector');
+        assert.dom('.upf-infinite-select').exists();
+      });
+      (0, _qunit.test)('Selecting a new currency in the Currency selector triggers the onChange method', async function (assert) {
+        this.currency = '';
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::CurrencyInput @currency={{this.currency}} @value="" @onChange={{this.onChange}} />
+        */
+        {
+          "id": "UlatsS6G",
+          "block": "[[[8,[39,0],null,[[\"@currency\",\"@value\",\"@onChange\"],[[30,0,[\"currency\"]],\"\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.currency-selector');
+        await (0, _testHelpers.click)('.upf-infinite-select__item:nth-child(5)');
+        assert.true(this.onChange.calledOnceWith('AUD', ''));
+      });
+      (0, _qunit.test)('Typing in the search input filters the results', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::CurrencyInput @currency="" @value="" @onChange={{this.onChange}} />
+        */
+        {
+          "id": "TnBmOE/7",
+          "block": "[[[8,[39,0],null,[[\"@currency\",\"@value\",\"@onChange\"],[\"\",\"\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.currency-selector');
+        assert.dom('.upf-infinite-select').exists();
+        await (0, _testHelpers.typeIn)('.upf-infinite-select input', 'usd');
+        const clickableRows = (0, _testHelpers.findAll)('.upf-infinite-select__item');
+        assert.equal(clickableRows.length, 1);
+        assert.dom(clickableRows[0]).hasText('$ USD');
+      });
+      (0, _qunit.test)('Searching by currency symbol works', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::CurrencyInput @currency="" @value="" @onChange={{this.onChange}} />
+        */
+        {
+          "id": "TnBmOE/7",
+          "block": "[[[8,[39,0],null,[[\"@currency\",\"@value\",\"@onChange\"],[\"\",\"\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.currency-selector');
+        assert.dom('.upf-infinite-select').exists();
+        await (0, _testHelpers.typeIn)('.upf-infinite-select input', '€');
+        const clickableRows = (0, _testHelpers.findAll)('.upf-infinite-select__item');
+        assert.equal(clickableRows.length, 1);
+        assert.dom(clickableRows[0]).hasText('€ EUR');
+      });
+      (0, _qunit.test)('The passed @currency parameter changes are properly tracked in the input', async function (assert) {
+        this.currency = 'USD';
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::CurrencyInput @currency={{this.currency}} @value="" @onChange={{this.onChange}} />
+        */
+        {
+          "id": "UlatsS6G",
+          "block": "[[[8,[39,0],null,[[\"@currency\",\"@value\",\"@onChange\"],[[30,0,[\"currency\"]],\"\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.currency-selector').hasText('$');
+        this.set('currency', 'EUR');
+        assert.dom('.currency-selector').hasText('€');
+      });
+      (0, _qunit.test)('Passing the @allowedCurrencies parameter overwrites the selectable options', async function (assert) {
+        this.allowedCurrencies = [{
+          code: 'USD',
+          symbol: '$'
+        }, {
+          code: 'EUR',
+          symbol: '€'
+        }];
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::CurrencyInput @currency={{this.currency}} @value="" @onChange={{this.onChange}}
+                                                 @allowedCurrencies={{this.allowedCurrencies}} />
+        */
+        {
+          "id": "1djByeEh",
+          "block": "[[[8,[39,0],null,[[\"@currency\",\"@value\",\"@onChange\",\"@allowedCurrencies\"],[[30,0,[\"currency\"]],\"\",[30,0,[\"onChange\"]],[30,0,[\"allowedCurrencies\"]]]],null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.currency-selector');
+        const clickableRows = (0, _testHelpers.findAll)('.upf-infinite-select__item');
+        assert.equal(clickableRows.length, 2);
+      });
+    });
+    (0, _qunit.module)('Currency Input', () => {
+      (0, _qunit.test)('Typing numbers in the currency input triggers the onChange method', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::CurrencyInput @currency="" @value="" @onChange={{this.onChange}} />
+        */
+        {
+          "id": "TnBmOE/7",
+          "block": "[[[8,[39,0],null,[[\"@currency\",\"@value\",\"@onChange\"],[\"\",\"\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.typeIn)('input', '8');
+        assert.ok(this.onChange.calledOnce);
+        assert.dom('input').hasValue('8');
+      });
+      (0, _qunit.test)('Typing non-numeric characters does not apply changes', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::CurrencyInput @currency="" @value="" @onChange={{this.onChange}} />
+        */
+        {
+          "id": "TnBmOE/7",
+          "block": "[[[8,[39,0],null,[[\"@currency\",\"@value\",\"@onChange\"],[\"\",\"\",[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.typeIn)('input', '8');
+        assert.ok(this.onChange.calledOnce);
+        // @ts-ignore
+        await (0, _testHelpers.triggerKeyEvent)('input', 'keydown', 'A', {
+          code: 'a'
+        });
+        assert.dom('input').hasValue('8');
+      });
+      (0, _qunit.test)('Placeholder is correctly displayed when provided', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::CurrencyInput @currency="" @value="" @placeholder={{this.placeholder}} @onChange={{this.onChange}} />
+        */
+        {
+          "id": "LqnAo/AH",
+          "block": "[[[8,[39,0],null,[[\"@currency\",\"@value\",\"@placeholder\",\"@onChange\"],[\"\",\"\",[30,0,[\"placeholder\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('input').hasAttribute('placeholder', 'Placeholder');
+      });
+    });
+    (0, _qunit.module)('When the paste event is received', function (hooks) {
+      hooks.beforeEach(function () {
+        this.value = '1234567890';
+      });
+      (0, _qunit.test)('The value stored in the clipboard is inserted in the input', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::CurrencyInput @onChange={{this.onChange}} @value={{this.value}} />
+        */
+        {
+          "id": "mT6ZOvuO",
+          "block": "[[[8,[39,0],null,[[\"@onChange\",\"@value\"],[[30,0,[\"onChange\"]],[30,0,[\"value\"]]]],null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('input').hasValue('1234567890');
+        await (0, _testHelpers.triggerEvent)('input', 'paste', {
+          clipboardData: {
+            getData: _sinon.default.stub().returns('123')
+          }
+        });
+        assert.dom('input').hasValue('1234567890123');
+      });
+      (0, _qunit.test)('The non-numeric characters are escaped', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::CurrencyInput @onChange={{this.onChange}} @value={{this.value}} />
+        */
+        {
+          "id": "mT6ZOvuO",
+          "block": "[[[8,[39,0],null,[[\"@onChange\",\"@value\"],[[30,0,[\"onChange\"]],[30,0,[\"value\"]]]],null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('input').hasValue('1234567890');
+        await (0, _testHelpers.triggerEvent)('input', 'paste', {
+          clipboardData: {
+            getData: _sinon.default.stub().returns('1withletter0')
+          }
+        });
+        assert.dom('input').hasValue('123456789010');
+      });
+      (0, _qunit.test)('When selection is applied, it replaces the selection', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::CurrencyInput @onChange={{this.onChange}} @value={{this.value}} />
+        */
+        {
+          "id": "mT6ZOvuO",
+          "block": "[[[8,[39,0],null,[[\"@onChange\",\"@value\"],[[30,0,[\"onChange\"]],[30,0,[\"value\"]]]],null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('input').hasValue('1234567890');
+        let input = document.querySelector('input.ember-text-field');
+        input.setSelectionRange(4, 6);
+        await (0, _testHelpers.triggerEvent)('input', 'paste', {
+          clipboardData: {
+            getData: _sinon.default.stub().returns('0')
+          }
+        });
+        assert.dom('input').hasValue('123407890');
+      });
+    });
+    (0, _qunit.module)('Loading', () => {
+      hooks.beforeEach(function () {
+        this.loading = true;
+      });
+      (0, _qunit.test)('When the component is loading, it displays an animated div instead of the input', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::CurrencyInput @onChange={{this.onChange}} @placeholder={{this.placeholder}}
+                                                          @loading={{this.loading}} />
+        */
+        {
+          "id": "iIGPnQ8p",
+          "block": "[[[8,[39,0],null,[[\"@onChange\",\"@placeholder\",\"@loading\"],[[30,0,[\"onChange\"]],[30,0,[\"placeholder\"]],[30,0,[\"loading\"]]]],null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.smart-immersive-currency-input-container input').doesNotExist();
+        assert.dom('.loading-placeholder').exists();
+        assert.dom('.loading-placeholder').hasText(this.placeholder);
+      });
+      (0, _qunit.test)('Once loading is over, it displays an animation', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::CurrencyInput @onChange={{this.onChange}} @value="12345"
+                                                          @placeholder="Placeholder" @loading={{this.loading}} />
+        */
+        {
+          "id": "vr0yq2JR",
+          "block": "[[[8,[39,0],null,[[\"@onChange\",\"@value\",\"@placeholder\",\"@loading\"],[[30,0,[\"onChange\"]],\"12345\",\"Placeholder\",[30,0,[\"loading\"]]]],null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+          "isStrictMode": false
+        }));
+        this.set('loading', false);
+        assert.dom('.smart-immersive-currency-input-container').hasClass('smart-rotating-gradient');
+      });
+    });
+    (0, _qunit.test)('It throws an error if @onChange is not passed', async function (assert) {
+      (0, _testHelpers.setupOnerror)(err => {
+        assert.equal(err.message, 'Assertion Failed: [component][OSS::Smart::Immersive::CurrencyInput] The parameter @onChange of type function is mandatory');
+      });
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Immersive::CurrencyInput />
+      */
+      {
+        "id": "wKBPTWo6",
+        "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/currency-input-test.ts",
+        "isStrictMode": false
+      }));
+    });
+  });
+});
+define("dummy/tests/integration/components/o-s-s/smart/immersive/input-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/smart/immersive/input', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.value = 'Jolie mouche';
+      this.placeholder = "L'eteint ressort";
+      this.loading = false;
+      this.onChange = _sinon.default.stub();
+    });
+    (0, _qunit.test)('it renders', async function (assert) {
+      await renderComponent();
+      assert.dom('.smart-immersive-input-container').exists();
+    });
+    (0, _qunit.module)('value', () => {
+      (0, _qunit.test)('When a value is filled, it renders a specific styling', async function (assert) {
+        await renderComponent();
+        assert.dom('.smart-immersive-input-container').hasClass('smart-immersive-input-container--filled');
+      });
+      (0, _qunit.test)('When a value is empty, it renders a specific styling', async function (assert) {
+        this.value = '';
+        await renderComponent();
+        assert.dom('.smart-immersive-input-container').hasNoClass('smart-immersive-input-container--filled');
+      });
+    });
+    (0, _qunit.module)('placeholder', () => {
+      (0, _qunit.test)('When a placeholder is empty, it renders a specific styling', async function (assert) {
+        this.value = '';
+        this.placeholder = '';
+        await renderComponent();
+        assert.dom('.smart-immersive-input-container input').hasAttribute('placeholder', '');
+      });
+      (0, _qunit.test)('When a placeholder is filled, it renders a specific styling', async function (assert) {
+        this.value = '';
+        await renderComponent();
+        assert.dom('.smart-immersive-input-container input').hasAttribute('placeholder', this.placeholder);
+      });
+    });
+    (0, _qunit.module)('OnChange', () => {
+      (0, _qunit.test)('When input is updated, it trigger the onChange action', async function (assert) {
+        await renderComponent();
+        assert.ok(this.onChange.notCalled);
+        await (0, _testHelpers.typeIn)('.smart-immersive-input-container input', 'a');
+        assert.ok(this.onChange.calledOnceWith('Jolie mouchea'));
+      });
+    });
+    (0, _qunit.module)('loading', hooks => {
+      hooks.beforeEach(function () {
+        this.loading = true;
+      });
+      (0, _qunit.test)('When input is loading, it display an animated div instead of the input', async function (assert) {
+        await renderComponent();
+        assert.dom('.smart-immersive-input-container input').doesNotExist();
+        assert.dom('.loading-placeholder').exists();
+        assert.dom('.loading-placeholder').hasText(this.placeholder);
+      });
+      (0, _qunit.test)('Once loading is finish, it display an animation once', async function (assert) {
+        await renderComponent();
+        this.set('loading', false);
+        assert.dom('.smart-immersive-input-container').hasClass('smart-rotating-gradient');
+      });
+    });
+    (0, _qunit.module)('Dynamic width', () => {
+      (0, _qunit.test)('Input has a min width of 50px', async function (assert) {
+        this.value = '';
+        this.placeholder = '';
+        await renderComponent();
+        const element = document.querySelector('.smart-immersive-input-container');
+        assert.equal(element.offsetWidth, 52);
+      });
+      (0, _qunit.test)('When input has value or placeholder, the size is based on input content', async function (assert) {
+        await renderComponent();
+        const element = document.querySelector('.smart-immersive-input-container');
+        assert.equal(element.offsetWidth, 104);
+        await (0, _testHelpers.typeIn)('.smart-immersive-input-container input', 'more text');
+        assert.equal(element.offsetWidth, 158);
+      });
+    });
+    (0, _qunit.module)('Prefix name block', () => {
+      (0, _qunit.test)('When no prefix is passed, prefix section is not displayed', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::Input @value={{this.value}} 
+                                                @placeholder={{this.placeholder}}
+                                                @loading={{this.loading}}
+                                                @onChange={{this.onChange}} />
+        */
+        {
+          "id": "M4TFA2rh",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@placeholder\",\"@loading\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"placeholder\"]],[30,0,[\"loading\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/smart/immersive/input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.smart-immersive-input-container .prefix').doesNotExist();
+      });
+      (0, _qunit.test)('When a prefix is passed, prefix section is displayed properly', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::Input @value={{this.value}} 
+                                                @placeholder={{this.placeholder}}
+                                                @loading={{this.loading}}
+                                                @onChange={{this.onChange}}>
+                    <:prefix>
+                      <i class="fas fa-user" />
+                    </:prefix>
+                  </OSS::Smart::Immersive::Input>
+        */
+        {
+          "id": "Cc5FntFM",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@placeholder\",\"@loading\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"placeholder\"]],[30,0,[\"loading\"]],[30,0,[\"onChange\"]]]],[[\"prefix\"],[[[[1,\"\\n              \"],[10,\"i\"],[14,0,\"fas fa-user\"],[12],[13],[1,\"\\n            \"]],[]]]]]],[],false,[\"o-s-s/smart/immersive/input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.smart-immersive-input-container .prefix').exists();
+        assert.dom('.smart-immersive-input-container .prefix i.fas.fa-user').exists();
+      });
+    });
+    (0, _qunit.module)('Suffix name block', () => {
+      (0, _qunit.test)('When no suffix is passed, suffix section is not displayed', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::Input @value={{this.value}} 
+                                                @placeholder={{this.placeholder}}
+                                                @loading={{this.loading}}
+                                                @onChange={{this.onChange}} />
+        */
+        {
+          "id": "M4TFA2rh",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@placeholder\",\"@loading\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"placeholder\"]],[30,0,[\"loading\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/smart/immersive/input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.smart-immersive-input-container .suffix').doesNotExist();
+      });
+      (0, _qunit.test)('When a suffix is passed, suffix section is displayed properly', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::Input @value={{this.value}} 
+                                                @placeholder={{this.placeholder}}
+                                                @loading={{this.loading}}
+                                                @onChange={{this.onChange}}>
+                    <:suffix>
+                      <i class="fas fa-user" />
+                    </:suffix>
+                  </OSS::Smart::Immersive::Input>
+        */
+        {
+          "id": "1wHLe8mb",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@placeholder\",\"@loading\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"placeholder\"]],[30,0,[\"loading\"]],[30,0,[\"onChange\"]]]],[[\"suffix\"],[[[[1,\"\\n              \"],[10,\"i\"],[14,0,\"fas fa-user\"],[12],[13],[1,\"\\n            \"]],[]]]]]],[],false,[\"o-s-s/smart/immersive/input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.smart-immersive-input-container .suffix').exists();
+        assert.dom('.smart-immersive-input-container .suffix i.fas.fa-user').exists();
+      });
+    });
+    async function renderComponent() {
+      return await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Immersive::Input @value={{this.value}} 
+                                              @placeholder={{this.placeholder}}
+                                              @loading={{this.loading}}
+                                              @onChange={{this.onChange}} />
+      */
+      {
+        "id": "M4TFA2rh",
+        "block": "[[[8,[39,0],null,[[\"@value\",\"@placeholder\",\"@loading\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"placeholder\"]],[30,0,[\"loading\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/smart/immersive/input\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/input-test.ts",
+        "isStrictMode": false
+      }));
+    }
+  });
+});
+define("dummy/tests/integration/components/o-s-s/smart/immersive/logo-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "dummy/utils/logo-config", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _logoConfig, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon",0,"dummy/utils/logo-config"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/smart/immersive/logo', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.onEdit = _sinon.default.stub();
+    });
+    (0, _qunit.test)('it renders with icon mode', async function (assert) {
+      this.icon = 'fa:star';
+      this.editable = false;
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Immersive::Logo
+            @icon={{this.icon}}
+            @editable={{this.editable}}
+          />
+      */
+      {
+        "id": "dw9qQXg8",
+        "block": "[[[8,[39,0],null,[[\"@icon\",\"@editable\"],[[30,0,[\"icon\"]],[30,0,[\"editable\"]]]],null]],[],false,[\"o-s-s/smart/immersive/logo\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/logo-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.smart-logo-icon').exists();
+      assert.dom('.smart-logo-icon').hasClass('smart-logo-icon-color_star');
+      assert.dom('i.fad.fa-fa').exists();
+      assert.dom('.edit-overlay').doesNotExist();
+    });
+    (0, _qunit.test)('it renders image mode when url is provided', async function (assert) {
+      this.url = 'https://example.com/image.png';
+      this.editable = false;
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Immersive::Logo
+            @url={{this.url}}
+            @editable={{this.editable}}
+          />
+      */
+      {
+        "id": "xAVSzswg",
+        "block": "[[[8,[39,0],null,[[\"@url\",\"@editable\"],[[30,0,[\"url\"]],[30,0,[\"editable\"]]]],null]],[],false,[\"o-s-s/smart/immersive/logo\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/logo-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.smart-logo-image').exists();
+      assert.dom('.smart-logo-image').hasAttribute('src', this.url);
+      assert.dom('.smart-logo-icon').doesNotExist();
+    });
+    (0, _qunit.test)('it renders edit overlay when editable', async function (assert) {
+      this.icon = 'fa:pen';
+      this.editable = true;
+      this.onEdit = _sinon.default.stub();
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Immersive::Logo
+            @icon={{this.icon}}
+            @editable={{this.editable}}
+            @onEdit={{this.onEdit}}
+          />
+      */
+      {
+        "id": "007JxGDy",
+        "block": "[[[8,[39,0],null,[[\"@icon\",\"@editable\",\"@onEdit\"],[[30,0,[\"icon\"]],[30,0,[\"editable\"]],[30,0,[\"onEdit\"]]]],null]],[],false,[\"o-s-s/smart/immersive/logo\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/logo-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.edit-overlay').exists();
+    });
+    (0, _qunit.test)('onEdit is called when the component is clicked', async function (assert) {
+      this.icon = 'fa:pen';
+      this.editable = true;
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Immersive::Logo
+            @icon={{this.icon}}
+            @editable={{this.editable}}
+            @onEdit={{this.onEdit}}
+          />
+      */
+      {
+        "id": "007JxGDy",
+        "block": "[[[8,[39,0],null,[[\"@icon\",\"@editable\",\"@onEdit\"],[[30,0,[\"icon\"]],[30,0,[\"editable\"]],[30,0,[\"onEdit\"]]]],null]],[],false,[\"o-s-s/smart/immersive/logo\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/logo-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.edit-overlay').exists();
+      await this.element.querySelector('.edit-overlay').click();
+      assert.ok(this.onEdit.calledOnce);
+    });
+    _logoConfig.LOGO_ICONS.forEach(iconName => {
+      const icon = `${iconName}:orange`;
+      (0, _qunit.test)(`renders icon mode correctly for icon "${icon}"`, async function (assert) {
+        this.icon = icon;
+        this.editable = false;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::Logo
+                  @icon={{this.icon}}
+                  @editable={{this.editable}}
+                />
+        */
+        {
+          "id": "dw9qQXg8",
+          "block": "[[[8,[39,0],null,[[\"@icon\",\"@editable\"],[[30,0,[\"icon\"]],[30,0,[\"editable\"]]]],null]],[],false,[\"o-s-s/smart/immersive/logo\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/logo-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom(`.smart-logo-icon i.fa-${iconName}`).exists();
+      });
+    });
+    _logoConfig.LOGO_COLORS.forEach(color => {
+      const icon = `rabbit:${color}`;
+      (0, _qunit.test)(`renders icon mode correctly for color "${color}"`, async function (assert) {
+        this.icon = icon;
+        this.editable = false;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::Logo
+                @icon={{this.icon}}
+                @editable={{this.editable}}
+              />
+        */
+        {
+          "id": "dw9qQXg8",
+          "block": "[[[8,[39,0],null,[[\"@icon\",\"@editable\"],[[30,0,[\"icon\"]],[30,0,[\"editable\"]]]],null]],[],false,[\"o-s-s/smart/immersive/logo\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/logo-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom(`.smart-logo-icon`).hasClass(`smart-logo-icon-color_${color}`);
+      });
+    });
+    (0, _qunit.test)(`it renders the generating animation when loading is true`, async function (assert) {
+      this.loading = true;
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Immersive::Logo
+            @icon={{this.icon}}
+            @editable={{this.editable}}
+            @loading={{this.loading}}
+          />
+      */
+      {
+        "id": "itYmZBAN",
+        "block": "[[[8,[39,0],null,[[\"@icon\",\"@editable\",\"@loading\"],[[30,0,[\"icon\"]],[30,0,[\"editable\"]],[30,0,[\"loading\"]]]],null]],[],false,[\"o-s-s/smart/immersive/logo\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/logo-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-smart__immersive-icon-container--generating').exists();
+    });
+    (0, _qunit.module)('@hasError', () => {
+      (0, _qunit.test)('it applies the error class when hasError is true', async function (assert) {
+        this.hasError = true;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::Logo
+                @icon={{this.icon}}
+                @editable={{this.editable}}
+                @hasError={{this.hasError}}
+              />
+        */
+        {
+          "id": "RItjKPZB",
+          "block": "[[[8,[39,0],null,[[\"@icon\",\"@editable\",\"@hasError\"],[[30,0,[\"icon\"]],[30,0,[\"editable\"]],[30,0,[\"hasError\"]]]],null]],[],false,[\"o-s-s/smart/immersive/logo\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/logo-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-smart__immersive-icon-container--errored').exists();
+      });
+      (0, _qunit.test)('it does not apply the error class when hasError is false', async function (assert) {
+        this.hasError = false;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::Logo
+                @icon={{this.icon}}
+                @editable={{this.editable}}
+                @hasError={{this.hasError}}
+              />
+        */
+        {
+          "id": "RItjKPZB",
+          "block": "[[[8,[39,0],null,[[\"@icon\",\"@editable\",\"@hasError\"],[[30,0,[\"icon\"]],[30,0,[\"editable\"]],[30,0,[\"hasError\"]]]],null]],[],false,[\"o-s-s/smart/immersive/logo\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/logo-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-smart__immersive-icon-container--errored').doesNotExist();
+      });
+      (0, _qunit.test)('it does not apply the class by default', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::Logo
+                @icon={{this.icon}}
+                @editable={{this.editable}}
+                @hasError={{this.hasError}}
+              />
+        */
+        {
+          "id": "RItjKPZB",
+          "block": "[[[8,[39,0],null,[[\"@icon\",\"@editable\",\"@hasError\"],[[30,0,[\"icon\"]],[30,0,[\"editable\"]],[30,0,[\"hasError\"]]]],null]],[],false,[\"o-s-s/smart/immersive/logo\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/logo-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-smart__immersive-icon-container--errored').doesNotExist();
+      });
+    });
+    (0, _qunit.test)(`it renders the generated content animation when loading is false & url or icon is present`, async function (assert) {
+      this.loading = true;
+      this.icon = 'rabbit:orange';
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Immersive::Logo
+            @icon={{this.icon}}
+            @editable={{this.editable}}
+            @loading={{this.loading}}
+          />
+      */
+      {
+        "id": "itYmZBAN",
+        "block": "[[[8,[39,0],null,[[\"@icon\",\"@editable\",\"@loading\"],[[30,0,[\"icon\"]],[30,0,[\"editable\"]],[30,0,[\"loading\"]]]],null]],[],false,[\"o-s-s/smart/immersive/logo\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/logo-test.ts",
+        "isStrictMode": false
+      }));
+      this.set('loading', false);
+      assert.dom('.smart-rotating-gradient').exists();
+    });
+    (0, _qunit.test)('it throws an error if icon format is invalid', async function (assert) {
+      this.icon = 'invalidFormat';
+      (0, _testHelpers.setupOnerror)(error => {
+        assert.equal(error.message, `Assertion Failed: Invalid icon format "${this.icon}". Expected format is "iconName:colorName".`);
+      });
+      (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Immersive::Logo
+            @icon={{this.icon}}
+            @editable={{this.editable}}
+          />
+      */
+      {
+        "id": "dw9qQXg8",
+        "block": "[[[8,[39,0],null,[[\"@icon\",\"@editable\"],[[30,0,[\"icon\"]],[30,0,[\"editable\"]]]],null]],[],false,[\"o-s-s/smart/immersive/logo\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/logo-test.ts",
+        "isStrictMode": false
+      }));
+    });
+    (0, _qunit.test)('it uses the fallback SVG when both icon and url are missing', async function (assert) {
+      this.editable = false;
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Immersive::Logo
+            @editable={{this.editable}}
+            @onEdit={{this.onEdit}}
+          />
+      */
+      {
+        "id": "Gem9pXUT",
+        "block": "[[[8,[39,0],null,[[\"@editable\",\"@onEdit\"],[[30,0,[\"editable\"]],[30,0,[\"onEdit\"]]]],null]],[],false,[\"o-s-s/smart/immersive/logo\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/logo-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.smart-logo-image').exists('Fallback image container is rendered');
+      assert.dom('.smart-logo-image').hasAttribute('src', '/assets/images/picture-frame.svg');
+    });
+    (0, _qunit.module)('@size', () => {
+      (0, _qunit.test)('By default, it applies the size "md" class', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::Logo
+                @editable={{this.editable}}
+              />
+        */
+        {
+          "id": "mIZVAgBj",
+          "block": "[[[8,[39,0],null,[[\"@editable\"],[[30,0,[\"editable\"]]]],null]],[],false,[\"o-s-s/smart/immersive/logo\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/logo-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-smart__immersive-icon-container--size-md').exists();
+      });
+      (0, _qunit.test)('it applies the correct class for size "sm"', async function (assert) {
+        this.size = 'sm';
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::Logo
+                @size={{this.size}}
+                @editable={{this.editable}}
+              />
+        */
+        {
+          "id": "3AH8Vgxd",
+          "block": "[[[8,[39,0],null,[[\"@size\",\"@editable\"],[[30,0,[\"size\"]],[30,0,[\"editable\"]]]],null]],[],false,[\"o-s-s/smart/immersive/logo\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/logo-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-smart__immersive-icon-container--size-sm').exists();
+      });
+      (0, _qunit.test)('it applies the correct class for size "lg"', async function (assert) {
+        this.size = 'lg';
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::Logo
+                @size={{this.size}}
+                @editable={{this.editable}}
+              />
+        */
+        {
+          "id": "3AH8Vgxd",
+          "block": "[[[8,[39,0],null,[[\"@size\",\"@editable\"],[[30,0,[\"size\"]],[30,0,[\"editable\"]]]],null]],[],false,[\"o-s-s/smart/immersive/logo\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/logo-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-smart__immersive-icon-container--size-lg').exists();
+      });
+    });
+  });
+});
+define("dummy/tests/integration/components/o-s-s/smart/immersive/select-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "ember-intl/test-support", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _testSupport, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon",0,"ember-intl/test-support"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/smart/immersive/select', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _testSupport.setupIntl)(hooks);
+    hooks.beforeEach(function () {
+      this.selectedItems = [{
+        value: 'item1'
+      }];
+      this.items = [{
+        value: 'item1',
+        label: 'Item 1'
+      }, {
+        value: 'item2',
+        label: 'Item 2'
+      }];
+      this.placeholder = 'Default placeholder';
+      this.loading = false;
+      this.hasError = false;
+      this.multiple = true;
+      this.displayedItems = 0;
+      this.maxItemWidth = 200;
+      this.onSearch = _sinon.default.stub();
+      this.searchEnabled = true;
+      this.onChange = _sinon.default.stub();
+    });
+    (0, _qunit.module)('It renders', () => {
+      (0, _qunit.test)('When missing selected-item name block, it throws an error', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::Smart::Immersive::Select] You must pass selected-item named block');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::Select @value={{this.value}} @values={{this.selectedItems}} @items={{this.items}} 
+                                                 @multiple={{this.multiple}} @placeholder={{this.placeholder}}
+                                                 @loading={{this.loading}} @hasError={{this.hasError}}
+                                                 @displayedItems={{this.displayedItems}} @maxItemWidth={{this.maxItemWidth}}
+                                                 @onChange={{this.onChange}} @onSearch={{this.onSearch}}>
+                    <:option-item as |item|>
+                      <span class="option-item-label">{{item.label}}</span>
+                    </:option-item>
+                  </OSS::Smart::Immersive::Select>
+        */
+        {
+          "id": "UM7eyfXy",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@values\",\"@items\",\"@multiple\",\"@placeholder\",\"@loading\",\"@hasError\",\"@displayedItems\",\"@maxItemWidth\",\"@onChange\",\"@onSearch\"],[[30,0,[\"value\"]],[30,0,[\"selectedItems\"]],[30,0,[\"items\"]],[30,0,[\"multiple\"]],[30,0,[\"placeholder\"]],[30,0,[\"loading\"]],[30,0,[\"hasError\"]],[30,0,[\"displayedItems\"]],[30,0,[\"maxItemWidth\"]],[30,0,[\"onChange\"]],[30,0,[\"onSearch\"]]]],[[\"option-item\"],[[[[1,\"\\n              \"],[10,1],[14,0,\"option-item-label\"],[12],[1,[30,1,[\"label\"]]],[13],[1,\"\\n            \"]],[1]]]]]],[\"item\"],false,[\"o-s-s/smart/immersive/select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/select-test.ts",
+          "isStrictMode": false
+        }));
+      });
+      (0, _qunit.test)('With missing option-item name block, it throws an error', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::Smart::Immersive::Select] You must pass option-item named block');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Immersive::Select @value={{this.value}} @values={{this.selectedItems}} @items={{this.items}} 
+                                                 @multiple={{this.multiple}} @placeholder={{this.placeholder}}
+                                                 @loading={{this.loading}} @hasError={{this.hasError}}
+                                                 @displayedItems={{this.displayedItems}} @maxItemWidth={{this.maxItemWidth}}
+                                                 @onChange={{this.onChange}} @onSearch={{this.onSearch}}>
+                    <:selected-item as |item|>
+                      <span class="selected-item-label">{{item}}</span>
+                    </:selected-item>
+                  </OSS::Smart::Immersive::Select>
+        */
+        {
+          "id": "ov0I0OUb",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@values\",\"@items\",\"@multiple\",\"@placeholder\",\"@loading\",\"@hasError\",\"@displayedItems\",\"@maxItemWidth\",\"@onChange\",\"@onSearch\"],[[30,0,[\"value\"]],[30,0,[\"selectedItems\"]],[30,0,[\"items\"]],[30,0,[\"multiple\"]],[30,0,[\"placeholder\"]],[30,0,[\"loading\"]],[30,0,[\"hasError\"]],[30,0,[\"displayedItems\"]],[30,0,[\"maxItemWidth\"]],[30,0,[\"onChange\"]],[30,0,[\"onSearch\"]]]],[[\"selected-item\"],[[[[1,\"\\n              \"],[10,1],[14,0,\"selected-item-label\"],[12],[1,[30,1]],[13],[1,\"\\n            \"]],[1]]]]]],[\"item\"],false,[\"o-s-s/smart/immersive/select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/select-test.ts",
+          "isStrictMode": false
+        }));
+      });
+      (0, _qunit.test)('With all required named blocks', async function (assert) {
+        await renderComponent();
+        assert.dom('.smart-immersive-select-container').exists();
+      });
+    });
+    (0, _qunit.module)('Single select', hooks => {
+      hooks.beforeEach(function () {
+        this.selectedItems = null;
+        this.value = {
+          value: 'item1'
+        };
+        this.multiple = false;
+      });
+      (0, _qunit.test)('When clicking on the immersive input, it opens the infinite select', async function (assert) {
+        await renderSingleComponent();
+        assert.dom('.upf-infinite-select').doesNotExist();
+        await (0, _testHelpers.click)('.smart-immersive-select-container div');
+        assert.dom('.upf-infinite-select').exists().hasClass('upf-infinite-select--smart');
+      });
+      (0, _qunit.test)('Selected items are highlighted with a checkmark', async function (assert) {
+        await renderSingleComponent();
+        await (0, _testHelpers.click)('.smart-immersive-select-container div');
+        assert.dom('.upf-infinite-select__item .selected').exists();
+        assert.dom('.upf-infinite-select__item .selected i').exists();
+        assert.dom('.upf-infinite-select__item .selected i').hasClass('font-color-primary-500').hasClass('fa-check');
+      });
+      (0, _qunit.test)('Selecting an item automatically closes the dropdown', async function (assert) {
+        await renderSingleComponent();
+        await (0, _testHelpers.click)('.smart-immersive-select-container div');
+        await (0, _testHelpers.click)('.upf-infinite-select__item:nth-of-type(2)');
+        assert.dom('.upf-infinite-select').doesNotExist();
+      });
+      (0, _qunit.module)('@searchEnabled parameter', () => {
+        (0, _qunit.test)('The search input is hidden if the searchEnabled is false', async function (assert) {
+          this.searchEnabled = false;
+          await renderComponent();
+          await (0, _testHelpers.click)('.smart-immersive-select-container div');
+          assert.dom('.upf-infinite-select--search input').doesNotExist();
+        });
+        (0, _qunit.test)('The search input is visible if the searchEnabled is true', async function (assert) {
+          this.searchEnabled = true;
+          await renderComponent();
+          await (0, _testHelpers.click)('.smart-immersive-select-container div');
+          assert.dom('.upf-infinite-select--search input').exists();
+        });
+      });
+    });
+    (0, _qunit.module)('Multiple select', () => {
+      (0, _qunit.test)('When clicking on the immersive input, it opens the infinite select', async function (assert) {
+        await renderComponent();
+        assert.dom('.upf-infinite-select').doesNotExist();
+        await (0, _testHelpers.click)('.smart-immersive-select-container div');
+        assert.dom('.upf-infinite-select').exists().hasClass('upf-infinite-select--smart');
+      });
+      (0, _qunit.test)('Selected items are highlighted with an active checkbox', async function (assert) {
+        await renderComponent();
+        await (0, _testHelpers.click)('.smart-immersive-select-container div');
+        assert.dom('.upf-infinite-select__item:nth-of-type(1) > div').hasClass('selected');
+        assert.dom('.upf-infinite-select__item:nth-of-type(1) > div .upf-checkbox input').isChecked();
+        assert.dom('.upf-infinite-select__item:nth-of-type(2) > div').hasNoClass('selected');
+        assert.dom('.upf-infinite-select__item:nth-of-type(2) > div .upf-checkbox input').isNotChecked();
+      });
+      (0, _qunit.test)('When displayedItems is defined, only the X firsts items are displayed, the remaining ones are concatenated', async function (assert) {
+        this.displayedItems = 1;
+        this.selectedItems = [{
+          value: 'Item 1'
+        }, {
+          value: 'Item 2'
+        }, {
+          value: 'Item 3'
+        }, {
+          value: 'Item 4'
+        }];
+        await renderComponent();
+        assert.dom('.smart-immersive-select-container .select-smart-item').exists({
+          count: 2
+        });
+        assert.dom('.smart-immersive-select-container .select-smart-item:nth-of-type(1)').hasText('Item 1');
+        assert.dom('.smart-immersive-select-container .select-smart-item:nth-of-type(2)').exists('+3');
+      });
+      (0, _qunit.test)('Selecting an item does not automatically close the dropdown', async function (assert) {
+        await renderComponent();
+        await (0, _testHelpers.click)('.smart-immersive-select-container div');
+        await (0, _testHelpers.click)('.upf-infinite-select__item:nth-of-type(2)');
+        assert.dom('.upf-infinite-select').exists();
+      });
+      (0, _qunit.module)('@searchEnabled parameter', () => {
+        (0, _qunit.test)('The search input is hidden if the searchEnabled is false', async function (assert) {
+          this.searchEnabled = false;
+          await renderComponent();
+          await (0, _testHelpers.click)('.smart-immersive-select-container div');
+          assert.dom('.upf-infinite-select--search input').doesNotExist();
+        });
+        (0, _qunit.test)('The search input is visible if the searchEnabled is true', async function (assert) {
+          this.searchEnabled = true;
+          await renderComponent();
+          await (0, _testHelpers.click)('.smart-immersive-select-container div');
+          assert.dom('.upf-infinite-select--search input').exists();
+        });
+      });
+      (0, _qunit.test)('When @hideCheckboxes is true, checkboxes are not rendered', async function (assert) {
+        this.hideCheckboxes = true;
+        await renderComponent();
+        await (0, _testHelpers.click)('.smart-immersive-select-container div');
+        assert.dom('.upf-infinite-select__item:nth-of-type(1) .upf-checkbox').doesNotExist();
+        assert.dom('.upf-infinite-select__item:nth-of-type(2) .upf-checkbox').doesNotExist();
+      });
+    });
+    (0, _qunit.test)('When maxItemWidth is defined, it applies the max-width style to the selected items', async function (assert) {
+      await renderComponent();
+      assert.dom('.smart-immersive-select-container .select-smart-item').hasStyle({
+        'max-width': '200px'
+      });
+    });
+    (0, _qunit.test)('When selecting an item in the list, it triggers the onChange action ', async function (assert) {
+      await renderComponent();
+      assert.ok(this.onChange.notCalled);
+      await (0, _testHelpers.click)('.smart-immersive-select-container div');
+      await (0, _testHelpers.click)('.upf-infinite-select__item:nth-of-type(2)');
+      assert.ok(this.onChange.calledOnceWith({
+        value: 'item2',
+        label: 'Item 2'
+      }));
+    });
+    (0, _qunit.test)('When updating the search input, it triggers the onSearch action ', async function (assert) {
+      await renderComponent();
+      assert.ok(this.onSearch.notCalled);
+      await (0, _testHelpers.click)('.smart-immersive-select-container div');
+      await (0, _testHelpers.fillIn)('.upf-infinite-select--search input', 'test');
+      assert.ok(this.onSearch.calledOnceWith('test'));
+    });
+    (0, _qunit.module)('loading', hooks => {
+      hooks.beforeEach(function () {
+        this.loading = true;
+      });
+      (0, _qunit.test)('When input is loading, it display an animated div instead of the input', async function (assert) {
+        await renderComponent();
+        assert.dom('.smart-immersive-select-container .loading-placeholder').exists();
+        assert.dom('.smart-immersive-select-container .loading-placeholder').hasText(this.placeholder);
+      });
+      (0, _qunit.module)('Once loading is finished', () => {
+        (0, _qunit.test)('It displays an animation once', async function (assert) {
+          await renderComponent();
+          this.set('loading', false);
+          assert.dom('.smart-immersive-select-container').hasClass('smart-rotating-gradient');
+        });
+        (0, _qunit.test)('If the field is empty, it does not display an animation once', async function (assert) {
+          this.selectedItems = [];
+          await renderComponent();
+          this.set('loading', false);
+          assert.dom('.smart-immersive-select-container').hasNoClass('smart-rotating-gradient');
+        });
+      });
+    });
+    async function renderComponent() {
+      return await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Immersive::Select @values={{this.selectedItems}} @items={{this.items}} 
+                                               @multiple={{this.multiple}} @placeholder={{this.placeholder}}
+                                               @loading={{this.loading}} @hasError={{this.hasError}}
+                                               @displayedItems={{this.displayedItems}} @maxItemWidth={{this.maxItemWidth}}
+                                               @onChange={{this.onChange}} @onSearch={{this.onSearch}}
+                                               @searchEnabled={{this.searchEnabled}} @hideCheckboxes={{this.hideCheckboxes}} >
+                  <:selected-item as |item|>
+                    <span class="selected-item-label">{{item.value}}</span>
+                  </:selected-item>
+                  <:option-item as |item|>
+                    <span class="option-item-label">{{item.label}}</span>
+                  </:option-item>
+                </OSS::Smart::Immersive::Select>
+      */
+      {
+        "id": "KN61TsO6",
+        "block": "[[[8,[39,0],null,[[\"@values\",\"@items\",\"@multiple\",\"@placeholder\",\"@loading\",\"@hasError\",\"@displayedItems\",\"@maxItemWidth\",\"@onChange\",\"@onSearch\",\"@searchEnabled\",\"@hideCheckboxes\"],[[30,0,[\"selectedItems\"]],[30,0,[\"items\"]],[30,0,[\"multiple\"]],[30,0,[\"placeholder\"]],[30,0,[\"loading\"]],[30,0,[\"hasError\"]],[30,0,[\"displayedItems\"]],[30,0,[\"maxItemWidth\"]],[30,0,[\"onChange\"]],[30,0,[\"onSearch\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"hideCheckboxes\"]]]],[[\"selected-item\",\"option-item\"],[[[[1,\"\\n              \"],[10,1],[14,0,\"selected-item-label\"],[12],[1,[30,1,[\"value\"]]],[13],[1,\"\\n            \"]],[1]],[[[1,\"\\n              \"],[10,1],[14,0,\"option-item-label\"],[12],[1,[30,2,[\"label\"]]],[13],[1,\"\\n            \"]],[2]]]]]],[\"item\",\"item\"],false,[\"o-s-s/smart/immersive/select\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/select-test.ts",
+        "isStrictMode": false
+      }));
+    }
+    async function renderSingleComponent() {
+      return await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Immersive::Select @values={{array this.value}} @items={{this.items}} 
+                                               @multiple={{this.multiple}} @placeholder={{this.placeholder}}
+                                               @loading={{this.loading}} @hasError={{this.hasError}}
+                                               @displayedItems={{this.displayedItems}} @maxItemWidth={{this.maxItemWidth}}
+                                               @onChange={{this.onChange}} @onSearch={{this.onSearch}}
+                                               @searchEnabled={{this.searchEnabled}}>
+                  <:selected-item as |item|>
+                    <span class="selected-item-label">{{item}}</span>
+                  </:selected-item>
+                  <:option-item as |item|>
+                    <span class="option-item-label">{{item.label}}</span>
+                  </:option-item>
+                </OSS::Smart::Immersive::Select>
+      */
+      {
+        "id": "YhPUgdVT",
+        "block": "[[[8,[39,0],null,[[\"@values\",\"@items\",\"@multiple\",\"@placeholder\",\"@loading\",\"@hasError\",\"@displayedItems\",\"@maxItemWidth\",\"@onChange\",\"@onSearch\",\"@searchEnabled\"],[[28,[37,1],[[30,0,[\"value\"]]],null],[30,0,[\"items\"]],[30,0,[\"multiple\"]],[30,0,[\"placeholder\"]],[30,0,[\"loading\"]],[30,0,[\"hasError\"]],[30,0,[\"displayedItems\"]],[30,0,[\"maxItemWidth\"]],[30,0,[\"onChange\"]],[30,0,[\"onSearch\"]],[30,0,[\"searchEnabled\"]]]],[[\"selected-item\",\"option-item\"],[[[[1,\"\\n              \"],[10,1],[14,0,\"selected-item-label\"],[12],[1,[30,1]],[13],[1,\"\\n            \"]],[1]],[[[1,\"\\n              \"],[10,1],[14,0,\"option-item-label\"],[12],[1,[30,2,[\"label\"]]],[13],[1,\"\\n            \"]],[2]]]]]],[\"item\",\"item\"],false,[\"o-s-s/smart/immersive/select\",\"array\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/immersive/select-test.ts",
+        "isStrictMode": false
+      }));
+    }
+  });
+});
+define("dummy/tests/integration/components/o-s-s/smart/input-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"sinon"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/smart/input', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Input />
+      */
+      {
+        "id": "t/Grzeo/",
+        "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/smart/input\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/input-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-input').exists();
+    });
+    (0, _qunit.module)('Input Blocks', () => {
+      async function renderComponentWithPrefixSuffix() {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Smart::Input>
+                  <:prefix>
+                    <OSS::Icon @style="solid" @icon="fa-user" />
+                  </:prefix>
+                  <:input>
+                    <Input id="custom-input"/>
+                  </:input>
+                  <:suffix>
+                    <OSS::Icon @style="solid" @icon="fa-times" />
+                  </:suffix>
+                </OSS::Smart::Input>
+        */
+        {
+          "id": "fUZKkYsL",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,null,[[\"prefix\",\"input\",\"suffix\"],[[[[1,\"\\n            \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-user\"]],null],[1,\"\\n          \"]],[]],[[[1,\"\\n            \"],[8,[39,2],[[24,1,\"custom-input\"]],null,null],[1,\"\\n          \"]],[]],[[[1,\"\\n            \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-times\"]],null],[1,\"\\n          \"]],[]]]]]],[],false,[\"o-s-s/smart/input\",\"o-s-s/icon\",\"input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/input-test.ts",
+          "isStrictMode": false
+        }));
+      }
+      (0, _qunit.test)('Prefix block renders properly', async function (assert) {
+        await renderComponentWithPrefixSuffix();
+        assert.dom('.fa-user').exists();
+      });
+      (0, _qunit.test)('Suffix block renders properly', async function (assert) {
+        await renderComponentWithPrefixSuffix();
+        assert.dom('.fa-times').exists();
+      });
+      (0, _qunit.test)('Custom input block overrides default', async function (assert) {
+        await renderComponentWithPrefixSuffix();
+        assert.dom('#custom-input').exists();
+      });
+    });
+    (0, _qunit.module)('Component Parameters', hooks => {
+      let onValueChange;
+      hooks.beforeEach(function () {
+        onValueChange = _sinon.default.fake();
+        this.value = 'smartInput';
+        this.placeholder = 'Type here';
+        this.onValueChange = onValueChange;
+      });
+      async function renderComponentWithParams() {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Smart::Input
+                  @value={{this.value}}
+                  @onChange={{this.onValueChange}}
+                  @placeholder={{this.placeholder}}
+                />
+              
+        */
+        {
+          "id": "r+xbTKyJ",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@value\",\"@onChange\",\"@placeholder\"],[[30,0,[\"value\"]],[30,0,[\"onValueChange\"]],[30,0,[\"placeholder\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/smart/input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/input-test.ts",
+          "isStrictMode": false
+        }));
+      }
+      (0, _qunit.test)('Binds @value correctly', async function (assert) {
+        await renderComponentWithParams();
+        assert.dom('.upf-input').hasValue('smartInput');
+      });
+      (0, _qunit.test)('Sets @placeholder correctly', async function (assert) {
+        await renderComponentWithParams();
+        let input = (0, _testHelpers.find)('.upf-input');
+        assert.strictEqual(input?.getAttribute('placeholder'), 'Type here');
+      });
+      (0, _qunit.test)('Calls @onChange on input', async function (assert) {
+        await renderComponentWithParams();
+        let input = (0, _testHelpers.find)('.upf-input');
+        assert.ok(input, 'Input element should exist');
+        await (0, _testHelpers.typeIn)(input, 'X');
+        assert.ok(onValueChange.called);
+      });
+      (0, _qunit.test)('Calls @onChange on paste event', async function (assert) {
+        this.set('onChange', _sinon.default.stub());
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Smart::Input
+                  data-control-name="smart-input"
+                  @onChange={{this.onChange}}
+                />
+              
+        */
+        {
+          "id": "Kh/V2lTu",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],[[24,\"data-control-name\",\"smart-input\"]],[[\"@onChange\"],[[30,0,[\"onChange\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/smart/input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.ok(this.onChange.notCalled);
+        await (0, _testHelpers.triggerEvent)('.oss-input-container input', 'paste', {
+          clipboardData: {
+            getData: format => `clip/${format}`
+          }
+        });
+        assert.ok(this.onChange.calledWith('clip/Text'));
+      });
+    });
+    (0, _qunit.module)('Smart Input Specific Features', () => {
+      (0, _qunit.test)('Displays animated placeholder when loading is true', async function (assert) {
+        this.setProperties({
+          loading: true,
+          placeholder: 'Smart...'
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Smart::Input
+                  @loading={{this.loading}}
+                  @placeholder={{this.placeholder}}
+                />
+              
+        */
+        {
+          "id": "I/8cWV0E",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@loading\",\"@placeholder\"],[[30,0,[\"loading\"]],[30,0,[\"placeholder\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/smart/input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.smart_text_animated').hasText('Smart...');
+      });
+    });
+    (0, _qunit.module)('Feedback and Error States', () => {
+      (0, _qunit.test)('Displays success feedback', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Smart::Input
+                  @feedbackMessage={{hash type="success" value="All good!"}}
+                />
+              
+        */
+        {
+          "id": "W4L116m8",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@feedbackMessage\"],[[28,[37,1],null,[[\"type\",\"value\"],[\"success\",\"All good!\"]]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/smart/input\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-input-container--success').exists();
+        assert.dom('.font-color-success-500').hasText('All good!');
+      });
+      (0, _qunit.test)('Displays error message', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Input @errorMessage="Oops" />
+        */
+        {
+          "id": "iHjpnIWB",
+          "block": "[[[8,[39,0],null,[[\"@errorMessage\"],[\"Oops\"]],null]],[],false,[\"o-s-s/smart/input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-input-container--errored').exists();
+        assert.dom('.text-color-error').hasText('Oops');
+      });
+    });
+    (0, _qunit.module)('Extra attributes', () => {
+      (0, _qunit.test)('Custom class is applied', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Input class="extra-class" />
+        */
+        {
+          "id": "a6n80C6K",
+          "block": "[[[8,[39,0],[[24,0,\"extra-class\"]],null,null]],[],false,[\"o-s-s/smart/input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.extra-class').exists();
+      });
+      (0, _qunit.test)('data-control-name is passed through', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Input data-control-name="smart-name" />
+        */
+        {
+          "id": "2U0FcftP",
+          "block": "[[[8,[39,0],[[24,\"data-control-name\",\"smart-name\"]],null,null]],[],false,[\"o-s-s/smart/input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-input-container').hasAttribute('data-control-name', 'smart-name');
+      });
+    });
+  });
+});
+define("dummy/tests/integration/components/o-s-s/smart/number-input-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/smart/number-input', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::NumberInput />
+      */
+      {
+        "id": "LPqD8gx1",
+        "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/smart/number-input\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/number-input-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.smart-number-input').exists();
+      assert.dom('.upf-square-btn').exists({
+        count: 2
+      });
+      assert.dom('.oss-input-container').exists();
+    });
+    (0, _qunit.module)('Basic Functionality', hooks => {
+      let onChangeStub;
+      hooks.beforeEach(function () {
+        onChangeStub = _sinon.default.fake();
+        this.value = 10;
+        this.onChange = onChangeStub;
+      });
+      async function renderComponent() {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Smart::NumberInput
+                  @value={{this.value}}
+                  @onChange={{this.onChange}}
+                />
+              
+        */
+        {
+          "id": "e8/gChDV",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@value\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"onChange\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/smart/number-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/number-input-test.ts",
+          "isStrictMode": false
+        }));
+      }
+      (0, _qunit.test)('displays the current value', async function (assert) {
+        await renderComponent();
+        assert.dom('.upf-input').hasValue('10');
+      });
+      (0, _qunit.test)('increases value when plus button is clicked', async function (assert) {
+        await renderComponent();
+        await (0, _testHelpers.click)('.upf-square-btn:last-child');
+        assert.ok(onChangeStub.calledWith(11));
+      });
+      (0, _qunit.test)('decreases value when minus button is clicked', async function (assert) {
+        await renderComponent();
+        await (0, _testHelpers.click)('.upf-square-btn:first-child');
+        assert.ok(onChangeStub.calledWith(9));
+      });
+    });
+    (0, _qunit.module)('Loading State', hooks => {
+      hooks.beforeEach(function () {
+        this.loading = true;
+        this.placeholder = 'Loading...';
+      });
+      (0, _qunit.test)('disables buttons when loading', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Smart::NumberInput
+                  @loading={{this.loading}}
+                  @placeholder={{this.placeholder}}
+                />
+              
+        */
+        {
+          "id": "6vpaEe6/",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@loading\",\"@placeholder\"],[[30,0,[\"loading\"]],[30,0,[\"placeholder\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/smart/number-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/number-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-square-btn').hasAttribute('disabled', '');
+      });
+      (0, _qunit.test)('applies loading class to container', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Smart::NumberInput
+                  @loading={{this.loading}}
+                  @placeholder={{this.placeholder}}
+                />
+              
+        */
+        {
+          "id": "6vpaEe6/",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@loading\",\"@placeholder\"],[[30,0,[\"loading\"]],[30,0,[\"placeholder\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/smart/number-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/number-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.smart-number-input').hasClass('smart-number-input--loading');
+      });
+    });
+    (0, _qunit.module)('Error State', hooks => {
+      hooks.beforeEach(function () {
+        this.value = 50;
+        this.hasError = true;
+        this.errorMessage = 'Invalid value';
+      });
+      (0, _qunit.test)('applies error styling when hasError is true', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Smart::NumberInput
+                  @value={{this.value}}
+                  @hasError={{this.hasError}}
+                  @errorMessage={{this.errorMessage}}
+                />
+              
+        */
+        {
+          "id": "67JPaz9U",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@value\",\"@hasError\",\"@errorMessage\"],[[30,0,[\"value\"]],[30,0,[\"hasError\"]],[30,0,[\"errorMessage\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/smart/number-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/number-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.smart-number-input').hasClass('smart-number-input--errored');
+      });
+      (0, _qunit.test)('displays error message', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Smart::NumberInput
+                  @value={{this.value}}
+                  @hasError={{this.hasError}}
+                  @errorMessage={{this.errorMessage}}
+                />
+              
+        */
+        {
+          "id": "67JPaz9U",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@value\",\"@hasError\",\"@errorMessage\"],[[30,0,[\"value\"]],[30,0,[\"hasError\"]],[30,0,[\"errorMessage\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/smart/number-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/number-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.text-color-error').hasText('Invalid value');
+      });
+      (0, _qunit.test)('applies error styling when errorMessage is provided', async function (assert) {
+        this.hasError = false;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Smart::NumberInput
+                  @value={{this.value}}
+                  @errorMessage={{this.errorMessage}}
+                />
+              
+        */
+        {
+          "id": "hYgU+/4Z",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@value\",\"@errorMessage\"],[[30,0,[\"value\"]],[30,0,[\"errorMessage\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/smart/number-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/number-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.smart-number-input').hasClass('smart-number-input--errored');
+      });
+    });
+    (0, _qunit.module)('Filled State', () => {
+      (0, _qunit.test)('applies filled styling when value is present', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Smart::NumberInput
+                  @value={{100}}
+                />
+              
+        */
+        {
+          "id": "40vy3nZ8",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@value\"],[100]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/smart/number-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/number-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.smart-number-input').hasClass('smart-number-input--filled');
+      });
+      (0, _qunit.test)('does not apply filled styling when value is undefined', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Smart::NumberInput
+                  @value={{undefined}}
+                />
+              
+        */
+        {
+          "id": "z5iaNeLb",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@value\"],[[27]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/smart/number-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/number-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.smart-number-input').doesNotHaveClass('smart-number-input--filled');
+      });
+      (0, _qunit.test)('does not apply filled styling when value is null', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Smart::NumberInput
+                  @value={{null}}
+                />
+              
+        */
+        {
+          "id": "WgOOdBQt",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@value\"],[null]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/smart/number-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/number-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.smart-number-input').doesNotHaveClass('smart-number-input--filled');
+      });
+    });
+    (0, _qunit.module)('State Priority', hooks => {
+      (0, _qunit.test)('error state takes priority over filled state', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Smart::NumberInput
+                  @value={{100}}
+                  @hasError={{true}}
+                />
+              
+        */
+        {
+          "id": "vNa0orLQ",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@value\",\"@hasError\"],[100,true]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/smart/number-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/number-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.smart-number-input').hasClass('smart-number-input--errored');
+        assert.dom('.smart-number-input').hasClass('smart-number-input--filled');
+      });
+    });
+    (0, _qunit.module)('Number Input Specific Features', hooks => {
+      hooks.beforeEach(function () {
+        this.min = 5;
+        this.max = 15;
+        this.step = 2;
+      });
+      (0, _qunit.test)('respects min and max values', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Smart::NumberInput
+                  @value={{10}}
+                  @min={{this.min}}
+                  @max={{this.max}}
+                  @step={{this.step}}
+                />
+              
+        */
+        {
+          "id": "NcQCjO/6",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@value\",\"@min\",\"@max\",\"@step\"],[10,[30,0,[\"min\"]],[30,0,[\"max\"]],[30,0,[\"step\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/smart/number-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/number-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-square-btn:first-child').doesNotHaveAttribute('disabled');
+        assert.dom('.upf-square-btn:last-child').doesNotHaveAttribute('disabled');
+      });
+      (0, _qunit.test)('disables min button when at minimum value', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Smart::NumberInput
+                  @value={{this.min}}
+                  @min={{this.min}}
+                  @max={{this.max}}
+                />
+              
+        */
+        {
+          "id": "O4/U/Vex",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@value\",\"@min\",\"@max\"],[[30,0,[\"min\"]],[30,0,[\"min\"]],[30,0,[\"max\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/smart/number-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/number-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-square-btn:first-child').hasAttribute('disabled');
+      });
+      (0, _qunit.test)('disables max button when at maximum value', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Smart::NumberInput
+                  @value={{this.max}}
+                  @min={{this.min}}
+                  @max={{this.max}}
+                />
+              
+        */
+        {
+          "id": "W3XOx/aj",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@value\",\"@min\",\"@max\"],[[30,0,[\"max\"]],[30,0,[\"min\"]],[30,0,[\"max\"]]]],null],[1,\"\\n      \"]],[],false,[\"o-s-s/smart/number-input\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/number-input-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-square-btn:last-child').hasAttribute('disabled');
+      });
+    });
+  });
+});
 define("dummy/tests/integration/components/o-s-s/smart/pill-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
   "use strict";
 
@@ -14558,19 +16644,1011 @@ define("dummy/tests/integration/components/o-s-s/smart/pill-test", ["qunit", "em
         }));
         assert.dom('.label').hasClass('loading-animation');
       });
-      (0, _qunit.test)('Once loading is over, it displays the corresponding animation', async function (assert) {
+      (0, _qunit.module)('When selected is true', hooks => {
+        hooks.beforeEach(function () {
+          this.selected = true;
+        });
+        (0, _qunit.test)('Once loading is over, it displays the corresponding animation', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Smart::Pill @label="Pill" @loading={{this.loading}} @selected={{this.selected}}/>
+          */
+          {
+            "id": "2XDlNCRF",
+            "block": "[[[8,[39,0],null,[[\"@label\",\"@loading\",\"@selected\"],[\"Pill\",[30,0,[\"loading\"]],[30,0,[\"selected\"]]]],null]],[],false,[\"o-s-s/smart/pill\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/pill-test.ts",
+            "isStrictMode": false
+          }));
+          this.set('loading', false);
+          assert.dom('.oss-smart-pill-container').hasClass('smart-rotating-gradient');
+        });
+      });
+      (0, _qunit.module)('When selected is false', hooks => {
+        hooks.beforeEach(function () {
+          this.selected = false;
+        });
+        (0, _qunit.test)('Once loading is over, it does not displays the corresponding animation', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Smart::Pill @label="Pill" @loading={{this.loading}} @selected={{this.selected}}/>
+          */
+          {
+            "id": "2XDlNCRF",
+            "block": "[[[8,[39,0],null,[[\"@label\",\"@loading\",\"@selected\"],[\"Pill\",[30,0,[\"loading\"]],[30,0,[\"selected\"]]]],null]],[],false,[\"o-s-s/smart/pill\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/pill-test.ts",
+            "isStrictMode": false
+          }));
+          this.set('loading', false);
+          assert.dom('.oss-smart-pill-container').doesNotHaveClass('smart-rotating-gradient');
+        });
+      });
+    });
+  });
+});
+define("dummy/tests/integration/components/o-s-s/smart/skeleton-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"qunit",0,"ember-qunit",0,"@ember/test-helpers"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/smart/skeleton', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Skeleton/>
+      */
+      {
+        "id": "Tsl+Xeb4",
+        "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/smart/skeleton\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/skeleton-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-smart-skeleton-effect').exists();
+    });
+    (0, _qunit.module)('@height parameters', () => {
+      (0, _qunit.test)('Default height is 10px', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::Smart::Pill @label="Pill" @loading={{this.loading}} />
+          <OSS::Smart::Skeleton/>
         */
         {
-          "id": "lWkx18Vh",
-          "block": "[[[8,[39,0],null,[[\"@label\",\"@loading\"],[\"Pill\",[30,0,[\"loading\"]]]],null]],[],false,[\"o-s-s/smart/pill\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/pill-test.ts",
+          "id": "Tsl+Xeb4",
+          "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/smart/skeleton\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/skeleton-test.ts",
           "isStrictMode": false
         }));
-        this.set('loading', false);
-        assert.dom('.oss-smart-pill-container').hasClass('smart-rotating-gradient');
+        assert.dom('.upf-smart-skeleton-effect').hasStyle({
+          height: '10px'
+        });
+      });
+      (0, _qunit.test)('The component flat height should correspond to the parameter value', async function (assert) {
+        this.height = 400;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Skeleton @height={{this.height}}/>
+        */
+        {
+          "id": "ek5g9pNN",
+          "block": "[[[8,[39,0],null,[[\"@height\"],[[30,0,[\"height\"]]]],null]],[],false,[\"o-s-s/smart/skeleton\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/skeleton-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-smart-skeleton-effect').hasStyle({
+          height: '400px'
+        });
+      });
+      (0, _qunit.test)('The component percentage height should correspond to the parameter value', async function (assert) {
+        this.height = '100%';
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <div style="height:250px"><OSS::Smart::Skeleton @height={{this.height}}/></div>
+        */
+        {
+          "id": "HcabDYzN",
+          "block": "[[[10,0],[14,5,\"height:250px\"],[12],[8,[39,0],null,[[\"@height\"],[[30,0,[\"height\"]]]],null],[13]],[],false,[\"o-s-s/smart/skeleton\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/skeleton-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-smart-skeleton-effect').hasStyle({
+          height: '250px'
+        });
+      });
+    });
+    (0, _qunit.module)('@width parameters', () => {
+      (0, _qunit.test)('Default width is 36px', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Skeleton/>
+        */
+        {
+          "id": "Tsl+Xeb4",
+          "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/smart/skeleton\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/skeleton-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-smart-skeleton-effect').hasStyle({
+          width: '36px'
+        });
+      });
+      (0, _qunit.test)('The component flat width should correspond to the parameter value', async function (assert) {
+        this.width = 400;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Skeleton @width={{this.width}}/>
+        */
+        {
+          "id": "Y4xqFrrP",
+          "block": "[[[8,[39,0],null,[[\"@width\"],[[30,0,[\"width\"]]]],null]],[],false,[\"o-s-s/smart/skeleton\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/skeleton-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-smart-skeleton-effect').hasStyle({
+          width: '400px'
+        });
+      });
+      (0, _qunit.test)('The component percentage width should correspond to the parameter value', async function (assert) {
+        this.width = '100%';
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <div style="width:250px"><OSS::Smart::Skeleton @width={{this.width}}/></div>
+        */
+        {
+          "id": "cuPblg2N",
+          "block": "[[[10,0],[14,5,\"width:250px\"],[12],[8,[39,0],null,[[\"@width\"],[[30,0,[\"width\"]]]],null],[13]],[],false,[\"o-s-s/smart/skeleton\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/skeleton-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-smart-skeleton-effect').hasStyle({
+          width: '250px'
+        });
+      });
+    });
+    (0, _qunit.module)('@gap parameters', () => {
+      (0, _qunit.test)('Default gap is applied correctly', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Skeleton @multiple={{2}} />
+        */
+        {
+          "id": "Nx4E8Zq5",
+          "block": "[[[8,[39,0],null,[[\"@multiple\"],[2]],null]],[],false,[\"o-s-s/smart/skeleton\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/skeleton-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.fx-1').hasClass('fx-gap-px-9');
+      });
+      (0, _qunit.test)('The component gap corresponds to its parameter value', async function (assert) {
+        this.gap = 12;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Skeleton @gap={{this.gap}} @multiple={{2}} />
+        */
+        {
+          "id": "84ntFTo/",
+          "block": "[[[8,[39,0],null,[[\"@gap\",\"@multiple\"],[[30,0,[\"gap\"]],2]],null]],[],false,[\"o-s-s/smart/skeleton\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/skeleton-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.fx-1').hasClass('fx-gap-px-12');
+      });
+    });
+    (0, _qunit.module)('@multiple parameters', () => {
+      (0, _qunit.test)('Default has one skeleton effect', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Skeleton/>
+        */
+        {
+          "id": "Tsl+Xeb4",
+          "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/smart/skeleton\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/skeleton-test.ts",
+          "isStrictMode": false
+        }));
+        let items = (0, _testHelpers.findAll)('.upf-smart-skeleton-effect');
+        assert.ok(items.length === 1);
+      });
+      (0, _qunit.test)('The content has multiple skeleton effect', async function (assert) {
+        this.multiple = 4;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Skeleton @multiple={{this.multiple}}/>
+        */
+        {
+          "id": "3jXE0ot1",
+          "block": "[[[8,[39,0],null,[[\"@multiple\"],[[30,0,[\"multiple\"]]]],null]],[],false,[\"o-s-s/smart/skeleton\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/skeleton-test.ts",
+          "isStrictMode": false
+        }));
+        let items = (0, _testHelpers.findAll)('.upf-smart-skeleton-effect');
+        assert.ok(items.length === 4);
+      });
+    });
+    (0, _qunit.module)('@randomize parameters', hooks => {
+      hooks.beforeEach(function () {
+        this.multiple = 4;
+        this.width = 200;
+      });
+      (0, _qunit.test)('Default randomize is falsy', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Skeleton @width={{this.width}}/>
+        */
+        {
+          "id": "Y4xqFrrP",
+          "block": "[[[8,[39,0],null,[[\"@width\"],[[30,0,[\"width\"]]]],null]],[],false,[\"o-s-s/smart/skeleton\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/skeleton-test.ts",
+          "isStrictMode": false
+        }));
+        let item = (0, _testHelpers.find)('.upf-smart-skeleton-effect');
+        assert.ok(this.width == item?.offsetWidth);
+      });
+      (0, _qunit.test)('Randomize width is within a 15% range', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Skeleton @multiple={{this.multiple}} @width={{this.width}} @randomize={{true}}/>
+        */
+        {
+          "id": "K1FEcAd9",
+          "block": "[[[8,[39,0],null,[[\"@multiple\",\"@width\",\"@randomize\"],[[30,0,[\"multiple\"]],[30,0,[\"width\"]],true]],null]],[],false,[\"o-s-s/smart/skeleton\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/skeleton-test.ts",
+          "isStrictMode": false
+        }));
+        let item = (0, _testHelpers.find)('.upf-smart-skeleton-effect');
+        assert.ok(item.offsetWidth <= 230 && item.offsetWidth >= 170);
+      });
+    });
+    (0, _qunit.module)('@direction parameters', () => {
+      (0, _qunit.test)('Default value is row', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Skeleton @multiple="3" />
+        */
+        {
+          "id": "z0UBohtn",
+          "block": "[[[8,[39,0],null,[[\"@multiple\"],[\"3\"]],null]],[],false,[\"o-s-s/smart/skeleton\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/skeleton-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.fx-1').hasClass(`fx-row`);
+      });
+      (0, _qunit.test)('Value is column if specified', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Skeleton @direction="column" @multiple="2" />
+        */
+        {
+          "id": "bVmT1v5o",
+          "block": "[[[8,[39,0],null,[[\"@direction\",\"@multiple\"],[\"column\",\"2\"]],null]],[],false,[\"o-s-s/smart/skeleton\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/skeleton-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.fx-1').hasClass(`fx-col`);
+      });
+    });
+    (0, _qunit.module)('Extra attributes', () => {
+      (0, _qunit.test)('Passing an extra class applies it to the component', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Skeleton class="my-extra-class" />
+        */
+        {
+          "id": "Ka+JqTTF",
+          "block": "[[[8,[39,0],[[24,0,\"my-extra-class\"]],null,null]],[],false,[\"o-s-s/smart/skeleton\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/skeleton-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-smart-skeleton-effect.my-extra-class').exists();
+      });
+      (0, _qunit.test)('Passing a data-control-name applies it to the component', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Skeleton data-control-name="layout-sidebar" />
+        */
+        {
+          "id": "vEREtDLT",
+          "block": "[[[8,[39,0],[[24,\"data-control-name\",\"layout-sidebar\"]],null,null]],[],false,[\"o-s-s/smart/skeleton\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/skeleton-test.ts",
+          "isStrictMode": false
+        }));
+        let inputWrapper = (0, _testHelpers.find)('.upf-smart-skeleton-effect');
+        assert.equal(inputWrapper?.getAttribute('data-control-name'), 'layout-sidebar');
+      });
+    });
+    (0, _qunit.module)('Error management', () => {
+      (0, _qunit.test)('It throws an error if @direction is provided and does not match required values', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::Smart::Skeleton] The @direction argument should be a value of row,column,col');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Skeleton @direction="toto"/>
+        */
+        {
+          "id": "Oz28o/yZ",
+          "block": "[[[8,[39,0],null,[[\"@direction\"],[\"toto\"]],null]],[],false,[\"o-s-s/smart/skeleton\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/skeleton-test.ts",
+          "isStrictMode": false
+        }));
+      });
+    });
+  });
+});
+define("dummy/tests/integration/components/o-s-s/smart/tag-input-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "ember-intl/test-support", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _testSupport, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon",0,"ember-intl/test-support"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/smart/tag-input', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _testSupport.setupIntl)(hooks);
+    hooks.beforeEach(function () {
+      this.onKeydown = _sinon.default.stub();
+    });
+    (0, _qunit.test)('it renders', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::TagInput @value="" @onKeydown={{this.onKeydown}} />
+      */
+      {
+        "id": "wUPBYIA8",
+        "block": "[[[8,[39,0],null,[[\"@value\",\"@onKeydown\"],[\"\",[30,0,[\"onKeydown\"]]]],null]],[],false,[\"o-s-s/smart/tag-input\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/tag-input-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.tag-input-container').exists();
+    });
+    (0, _qunit.test)('it renders the empty state with the default placeholder', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::TagInput @value="" @onKeydown={{this.onKeydown}} />
+      */
+      {
+        "id": "wUPBYIA8",
+        "block": "[[[8,[39,0],null,[[\"@value\",\"@onKeydown\"],[\"\",[30,0,[\"onKeydown\"]]]],null]],[],false,[\"o-s-s/smart/tag-input\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/tag-input-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.tag-input-empty-state').hasText(this.intl.t('oss-components.smart.tag_input.placeholder'), 'Placeholder text is rendered');
+    });
+    (0, _qunit.test)('it displays the custom placeholder when @placeholder is provided', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::TagInput @value="" @placeholder="Custom Placeholder" @onKeydown={{this.onKeydown}} />
+      */
+      {
+        "id": "H99ijXga",
+        "block": "[[[8,[39,0],null,[[\"@value\",\"@placeholder\",\"@onKeydown\"],[\"\",\"Custom Placeholder\",[30,0,[\"onKeydown\"]]]],null]],[],false,[\"o-s-s/smart/tag-input\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/tag-input-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.tag-input-empty-state').hasText('Custom Placeholder', 'Custom placeholder is displayed');
+    });
+    (0, _qunit.test)('it calls @onKeydown when pressing Enter', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::TagInput @value="" @onKeydown={{this.onKeydown}} />
+      */
+      {
+        "id": "wUPBYIA8",
+        "block": "[[[8,[39,0],null,[[\"@value\",\"@onKeydown\"],[\"\",[30,0,[\"onKeydown\"]]]],null]],[],false,[\"o-s-s/smart/tag-input\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/tag-input-test.ts",
+        "isStrictMode": false
+      }));
+      await (0, _testHelpers.fillIn)('[data-control-name="tag-input"]', 'foo');
+      await (0, _testHelpers.triggerKeyEvent)('[data-control-name="tag-input"]', 'keydown', 'Enter');
+      assert.true(this.onKeydown.calledOnce, 'onKeydown is called once');
+    });
+    (0, _qunit.test)('the input is cleared on validation', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::TagInput @value="" @onKeydown={{this.onKeydown}} />
+      */
+      {
+        "id": "wUPBYIA8",
+        "block": "[[[8,[39,0],null,[[\"@value\",\"@onKeydown\"],[\"\",[30,0,[\"onKeydown\"]]]],null]],[],false,[\"o-s-s/smart/tag-input\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/tag-input-test.ts",
+        "isStrictMode": false
+      }));
+      await (0, _testHelpers.fillIn)('[data-control-name="tag-input"]', 'foo');
+      assert.dom('[data-control-name="tag-input"]').hasValue('foo', 'Input has value "foo"');
+      await (0, _testHelpers.triggerKeyEvent)('[data-control-name="tag-input"]', 'keydown', 'Enter');
+      assert.dom('[data-control-name="tag-input"]').hasValue('', 'Input is cleared after save');
+    });
+    (0, _qunit.test)('it renders the animated overlay when loading', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::TagInput @loading={{true}} @value="" @onKeydown={{this.onKeydown}} />
+      */
+      {
+        "id": "PDzjSKlB",
+        "block": "[[[8,[39,0],null,[[\"@loading\",\"@value\",\"@onKeydown\"],[true,\"\",[30,0,[\"onKeydown\"]]]],null]],[],false,[\"o-s-s/smart/tag-input\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/tag-input-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.animated-overlay').exists('Animated overlay is shown');
+    });
+    (0, _qunit.test)('it applies the error class when @hasError is true', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::TagInput @hasError={{true}} @value="" @onKeydown={{this.onKeydown}} />
+      */
+      {
+        "id": "l2WuHuKv",
+        "block": "[[[8,[39,0],null,[[\"@hasError\",\"@value\",\"@onKeydown\"],[true,\"\",[30,0,[\"onKeydown\"]]]],null]],[],false,[\"o-s-s/smart/tag-input\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/tag-input-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.tag-input--error').exists('Error class is present');
+    });
+  });
+});
+define("dummy/tests/integration/components/o-s-s/smart/tag-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon"eaimeta@70e063a35619d71f
+  const SIZES = ['md', 'lg'];
+  (0, _qunit.module)('Integration | Component | o-s-s/smart/tag', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    (0, _qunit.test)('it renders with default (keyword) type', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Tag @label="foo" />
+      */
+      {
+        "id": "ody3gXg/",
+        "block": "[[[8,[39,0],null,[[\"@label\"],[\"foo\"]],null]],[],false,[\"o-s-s/smart/tag\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/tag-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.smart-tag').hasClass('smart-tag--color-yellow', 'Has yellow color for keyword');
+      assert.dom('.smart-tag .fa-hashtag, .smart-tag .fa-at').doesNotExist('No icon for keyword');
+      assert.dom('.smart-tag span').hasText('foo', 'Displays label');
+    });
+    (0, _qunit.test)('it renders with hashtag type', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Tag @label="bar" @type="hashtag" />
+      */
+      {
+        "id": "cRPeJeBT",
+        "block": "[[[8,[39,0],null,[[\"@label\",\"@type\"],[\"bar\",\"hashtag\"]],null]],[],false,[\"o-s-s/smart/tag\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/tag-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.smart-tag').hasClass('smart-tag--color-cyan', 'Has cyan color for hashtag');
+      assert.dom('.smart-tag .fa-hashtag').exists('Has hashtag icon');
+      assert.dom('.smart-tag span').hasText('bar');
+    });
+    (0, _qunit.test)('it renders with mention type', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Tag @label="baz" @type="mention" />
+      */
+      {
+        "id": "XuALDr3P",
+        "block": "[[[8,[39,0],null,[[\"@label\",\"@type\"],[\"baz\",\"mention\"]],null]],[],false,[\"o-s-s/smart/tag\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/tag-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.smart-tag').hasClass('smart-tag--color-violet', 'Has violet color for mention');
+      assert.dom('.smart-tag .fa-at').exists('Has at icon');
+      assert.dom('.smart-tag span').hasText('baz');
+    });
+    (0, _qunit.test)('clicking on the close button calls the @onRemove method', async function (assert) {
+      this.onRemove = _sinon.default.stub();
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Tag @label="foo" @onRemove={{this.onRemove}} />
+      */
+      {
+        "id": "WgmYrwUI",
+        "block": "[[[8,[39,0],null,[[\"@label\",\"@onRemove\"],[\"foo\",[30,0,[\"onRemove\"]]]],null]],[],false,[\"o-s-s/smart/tag\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/tag-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('[data-control-name="remove-tag-button"]').exists('Remove button is rendered');
+      await (0, _testHelpers.click)('[data-control-name="remove-tag-button"]');
+      assert.ok(this.onRemove.calledOnce, 'onRemove action is called once');
+    });
+    (0, _qunit.test)('it applies the correct size class', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Tag @label="foo" @size="lg" />
+      */
+      {
+        "id": "uej5n1Wx",
+        "block": "[[[8,[39,0],null,[[\"@label\",\"@size\"],[\"foo\",\"lg\"]],null]],[],false,[\"o-s-s/smart/tag\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/tag-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.smart-tag-container').hasClass('smart-tag-container--lg', 'Has large size class');
+    });
+    (0, _qunit.module)('size attribute', () => {
+      (0, _qunit.test)(`it applies the default size class when no size is specified`, async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::Tag @label="foo" />
+        */
+        {
+          "id": "ody3gXg/",
+          "block": "[[[8,[39,0],null,[[\"@label\"],[\"foo\"]],null]],[],false,[\"o-s-s/smart/tag\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/tag-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.smart-tag-container').hasClass('smart-tag-container--md', 'Has default medium size class');
+      });
+      SIZES.forEach(size => {
+        (0, _qunit.test)(`it applies the ${size} size class`, async function (assert) {
+          this.size = size;
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Smart::Tag @label="foo" @size={{this.size}} />
+          */
+          {
+            "id": "nJLjI+1U",
+            "block": "[[[8,[39,0],null,[[\"@label\",\"@size\"],[\"foo\",[30,0,[\"size\"]]]],null]],[],false,[\"o-s-s/smart/tag\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/tag-test.ts",
+            "isStrictMode": false
+          }));
+          assert.dom('.smart-tag-container').hasClass(`smart-tag-container--${size}`, `Has ${size} size class`);
+        });
+      });
+    });
+    (0, _qunit.test)('it applies success animation class when @successAnimationOnInsertion is truthy', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::Tag @label="foo" @successAnimationOnInsertion={{true}} />
+      */
+      {
+        "id": "/QybPBIT",
+        "block": "[[[8,[39,0],null,[[\"@label\",\"@successAnimationOnInsertion\"],[\"foo\",true]],null]],[],false,[\"o-s-s/smart/tag\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/tag-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.smart-tag-container').hasClass('smart-rotating-gradient');
+    });
+  });
+});
+define("dummy/tests/integration/components/o-s-s/smart/text-area-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"sinon"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/smart/text-area', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.value = 'Data';
+      this.textareaSelector = '.oss-smart-text-area-container  .oss-textarea';
+      this.placeholder = 'Multiline\nplaceholder';
+    });
+    (0, _qunit.test)('it renders', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::TextArea @label='test' />
+      */
+      {
+        "id": "SIWlgS9h",
+        "block": "[[[8,[39,0],null,[[\"@label\"],[\"test\"]],null]],[],false,[\"o-s-s/smart/text-area\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/text-area-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-smart-text-area-container').exists();
+    });
+    (0, _qunit.module)('@resize', function () {
+      (0, _qunit.test)('Default it has the none resize class', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::TextArea />
+        */
+        {
+          "id": "Q8JH1xhJ",
+          "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/smart/text-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/text-area-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-v');
+        assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-h');
+        assert.dom(this.textareaSelector).hasClass('oss-textarea--resize-none');
+      });
+      (0, _qunit.test)('When resize is vertical should have class resize-v', async function (assert) {
+        this.resize = 'vertical';
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::TextArea @resize={{this.resize}}/>
+        */
+        {
+          "id": "QVdIAb2M",
+          "block": "[[[8,[39,0],null,[[\"@resize\"],[[30,0,[\"resize\"]]]],null]],[],false,[\"o-s-s/smart/text-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/text-area-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom(this.textareaSelector).hasClass('oss-textarea--resize-v');
+        assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-h');
+        assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-none');
+      });
+      (0, _qunit.test)('When resize is horizontal should have class resize-h', async function (assert) {
+        this.resize = 'horizontal';
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::TextArea @resize={{this.resize}}/>
+        */
+        {
+          "id": "QVdIAb2M",
+          "block": "[[[8,[39,0],null,[[\"@resize\"],[[30,0,[\"resize\"]]]],null]],[],false,[\"o-s-s/smart/text-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/text-area-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-v');
+        assert.dom(this.textareaSelector).hasClass('oss-textarea--resize-h');
+        assert.dom(this.textareaSelector).hasNoClass('oss-textarea--resize-none');
+      });
+    });
+    (0, _qunit.module)('@rows', function () {
+      (0, _qunit.test)('Default height', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::TextArea />
+        */
+        {
+          "id": "Q8JH1xhJ",
+          "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/smart/text-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/text-area-test.ts",
+          "isStrictMode": false
+        }));
+        assert.equal(document.querySelector(this.textareaSelector).offsetHeight, 52);
+      });
+      (0, _qunit.test)('Row change height', async function (assert) {
+        this.rows = 2;
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::TextArea @rows={{this.rows}}/>
+        */
+        {
+          "id": "OtDAMw99",
+          "block": "[[[8,[39,0],null,[[\"@rows\"],[[30,0,[\"rows\"]]]],null]],[],false,[\"o-s-s/smart/text-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/text-area-test.ts",
+          "isStrictMode": false
+        }));
+        const twoRowHeight = document.querySelector(this.textareaSelector).offsetHeight;
+        assert.ok(twoRowHeight > 36);
+        await this.set('rows', 8);
+        const heightRowHeight = document.querySelector(this.textareaSelector).offsetHeight;
+        assert.ok(heightRowHeight > twoRowHeight);
+      });
+    });
+    (0, _qunit.test)('When the field is updated, the @onChange method is called', async function (assert) {
+      this.onChange = _sinon.default.spy();
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::TextArea @value={{this.value}} @onChange={{this.onChange}}/>
+      */
+      {
+        "id": "rmVzVLCR",
+        "block": "[[[8,[39,0],null,[[\"@value\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"onChange\"]]]],null]],[],false,[\"o-s-s/smart/text-area\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/text-area-test.ts",
+        "isStrictMode": false
+      }));
+      await (0, _testHelpers.typeIn)(this.textareaSelector, 'b');
+      assert.ok(this.onChange.calledOnceWithExactly('Datab'));
+    });
+    (0, _qunit.module)('Extra attributes', () => {
+      (0, _qunit.test)('passing an extra class is applied to the component', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::TextArea class="my-extra-class" />
+        */
+        {
+          "id": "toMe6vHM",
+          "block": "[[[8,[39,0],[[24,0,\"my-extra-class\"]],null,null]],[],false,[\"o-s-s/smart/text-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/text-area-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.my-extra-class').exists();
+      });
+      (0, _qunit.test)('passing data-control-name works', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::TextArea data-control-name="description-input" />
+        */
+        {
+          "id": "sUEswoK7",
+          "block": "[[[8,[39,0],[[24,\"data-control-name\",\"description-input\"]],null,null]],[],false,[\"o-s-s/smart/text-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/text-area-test.ts",
+          "isStrictMode": false
+        }));
+        let inputWrapper = document.querySelector('.oss-smart-text-area-container');
+        assert.equal(inputWrapper?.getAttribute('data-control-name'), 'description-input');
+      });
+    });
+    (0, _qunit.module)('error management', () => {
+      (0, _qunit.test)('it throws an error if @resize is not a correct value', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::TextArea] The @resize parameter should be a value of resize');
+        });
+        this.resize = 'NotACorrectValue';
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::TextArea @resize={{this.resize}} />
+        */
+        {
+          "id": "QVdIAb2M",
+          "block": "[[[8,[39,0],null,[[\"@resize\"],[[30,0,[\"resize\"]]]],null]],[],false,[\"o-s-s/smart/text-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/text-area-test.ts",
+          "isStrictMode": false
+        }));
+      });
+    });
+    (0, _qunit.module)('loading', hooks => {
+      hooks.beforeEach(function () {
+        this.loading = true;
+      });
+      (0, _qunit.test)('When input is loading, it display an animated div instead of the input', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::TextArea @placeholder={{this.placeholder}} @loading={{this.loading}}/>
+        */
+        {
+          "id": "qfGZeMvk",
+          "block": "[[[8,[39,0],null,[[\"@placeholder\",\"@loading\"],[[30,0,[\"placeholder\"]],[30,0,[\"loading\"]]]],null]],[],false,[\"o-s-s/smart/text-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/text-area-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-smart-text-area-container .oss-textarea').hasClass('oss-textarea--loading');
+        assert.dom('.loading-placeholder').exists();
+        assert.dom('.loading-placeholder').hasText(this.placeholder);
+      });
+      (0, _qunit.test)('When input is loading, and a value is set it use the value instead of placeholder', async function (assert) {
+        this.set('value', 'Small value');
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::TextArea @placeholder={{this.placeholder}} @loading={{this.loading}} @value={{this.value}}/>
+        */
+        {
+          "id": "FR4ehNqq",
+          "block": "[[[8,[39,0],null,[[\"@placeholder\",\"@loading\",\"@value\"],[[30,0,[\"placeholder\"]],[30,0,[\"loading\"]],[30,0,[\"value\"]]]],null]],[],false,[\"o-s-s/smart/text-area\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/text-area-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-smart-text-area-container .oss-textarea').hasClass('oss-textarea--loading');
+        assert.dom('.loading-placeholder').exists();
+        assert.dom('.loading-placeholder').hasText(this.value);
+      });
+      (0, _qunit.module)('Once loading is finished', () => {
+        (0, _qunit.test)('If value is empty, it does not display an animation once', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Smart::TextArea @placeholder={{this.placeholder}} @loading={{this.loading}}/>
+          */
+          {
+            "id": "qfGZeMvk",
+            "block": "[[[8,[39,0],null,[[\"@placeholder\",\"@loading\"],[[30,0,[\"placeholder\"]],[30,0,[\"loading\"]]]],null]],[],false,[\"o-s-s/smart/text-area\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/text-area-test.ts",
+            "isStrictMode": false
+          }));
+          this.set('loading', false);
+          assert.dom('.oss-smart-text-area-container').hasNoClass('smart-rotating-gradient');
+        });
+        (0, _qunit.test)('If value is filled, it display an animation once', async function (assert) {
+          await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+          /*
+            <OSS::Smart::TextArea @value="filled" @placeholder={{this.placeholder}} @loading={{this.loading}}/>
+          */
+          {
+            "id": "sD1R/+yI",
+            "block": "[[[8,[39,0],null,[[\"@value\",\"@placeholder\",\"@loading\"],[\"filled\",[30,0,[\"placeholder\"]],[30,0,[\"loading\"]]]],null]],[],false,[\"o-s-s/smart/text-area\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/text-area-test.ts",
+            "isStrictMode": false
+          }));
+          this.set('loading', false);
+          assert.dom('.oss-smart-text-area-container').hasClass('smart-rotating-gradient');
+        });
+      });
+    });
+  });
+});
+define("dummy/tests/integration/components/o-s-s/smart/toggle-buttons-test", ["qunit", "ember-qunit", "@ember/object", "@ember/test-helpers", "@ember/test-helpers/settled", "@ember/test-helpers/setup-onerror", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _object, _testHelpers, _settled, _setupOnerror, _sinon, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"qunit",0,"ember-qunit",0,"@ember/object",0,"@ember/test-helpers",0,"@ember/test-helpers/settled",0,"@ember/test-helpers/setup-onerror",0,"sinon"eaimeta@70e063a35619d71f
+  (0, _qunit.module)('Integration | Component | o-s-s/smart/toggle-buttons', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.selectedToggle = 'first';
+      this.onSelection = value => {
+        (0, _object.set)(this, 'selectedToggle', value);
+      };
+      this.toggles = [{
+        value: 'first',
+        label: 'First'
+      }, {
+        value: 'second',
+        label: 'Second',
+        icon: 'far fa-2'
+      }];
+    });
+    (0, _qunit.test)('it renders', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>
+      */
+      {
+        "id": "cczenmKS",
+        "block": "[[[8,[39,0],null,[[\"@onSelection\",\"@toggles\",\"@selectedToggle\"],[[30,0,[\"onSelection\"]],[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]]]],null]],[],false,[\"o-s-s/smart/toggle-buttons\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/toggle-buttons-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-smart-toggle-buttons-container').exists();
+    });
+    (0, _qunit.test)('the right class is applied when the @disabled arg is truthy', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}} @disabled={{true}}/>
+      */
+      {
+        "id": "HduWdPGG",
+        "block": "[[[8,[39,0],null,[[\"@onSelection\",\"@toggles\",\"@selectedToggle\",\"@disabled\"],[[30,0,[\"onSelection\"]],[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]],true]],null]],[],false,[\"o-s-s/smart/toggle-buttons\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/toggle-buttons-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-smart-toggle-buttons-container').exists();
+      assert.dom('.oss-smart-toggle-buttons-container').hasClass('oss-smart-toggle-buttons-container--disabled');
+    });
+    (0, _qunit.test)('the toggle icon is displayed when provided', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Smart::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>
+      */
+      {
+        "id": "cczenmKS",
+        "block": "[[[8,[39,0],null,[[\"@onSelection\",\"@toggles\",\"@selectedToggle\"],[[30,0,[\"onSelection\"]],[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]]]],null]],[],false,[\"o-s-s/smart/toggle-buttons\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/toggle-buttons-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-smart-toggle-buttons-btn:first-child i.far').doesNotExist();
+      assert.dom('.oss-smart-toggle-buttons-btn:last-child i.far').exists();
+      assert.dom('.oss-smart-toggle-buttons-btn:last-child i.far').hasClass('fa-2');
+    });
+    (0, _qunit.module)('If @selectedToggle is passed', function () {
+      (0, _qunit.test)('If the selectedToggle matches an entry from the toggles, then the toggle is set to selected', async function (assert) {
+        this.selectedToggle = 'second';
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>
+        */
+        {
+          "id": "cczenmKS",
+          "block": "[[[8,[39,0],null,[[\"@onSelection\",\"@toggles\",\"@selectedToggle\"],[[30,0,[\"onSelection\"]],[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]]]],null]],[],false,[\"o-s-s/smart/toggle-buttons\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/toggle-buttons-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-smart-toggle-buttons-btn--selected').hasText('Second');
+      });
+    });
+    (0, _qunit.module)('When clicking on an item', () => {
+      (0, _qunit.test)('the toggle is selected', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>
+        */
+        {
+          "id": "cczenmKS",
+          "block": "[[[8,[39,0],null,[[\"@onSelection\",\"@toggles\",\"@selectedToggle\"],[[30,0,[\"onSelection\"]],[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]]]],null]],[],false,[\"o-s-s/smart/toggle-buttons\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/toggle-buttons-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.oss-smart-toggle-buttons-btn:first-child');
+        assert.dom('.oss-smart-toggle-buttons-btn--selected').hasText('First');
+        await (0, _testHelpers.click)('.oss-smart-toggle-buttons-btn:last-child');
+        assert.dom('.oss-smart-toggle-buttons-btn--selected').hasText('Second');
+      });
+      (0, _qunit.test)('the @onSelection method is not triggered if the item is already selected', async function (assert) {
+        this.onSelectionStub = _sinon.default.stub();
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::ToggleButtons @onSelection={{this.onSelectionStub}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>
+        */
+        {
+          "id": "8tQaSxlo",
+          "block": "[[[8,[39,0],null,[[\"@onSelection\",\"@toggles\",\"@selectedToggle\"],[[30,0,[\"onSelectionStub\"]],[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]]]],null]],[],false,[\"o-s-s/smart/toggle-buttons\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/toggle-buttons-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.oss-smart-toggle-buttons-btn:first-child');
+        assert.ok(this.onSelectionStub.notCalled);
+      });
+      (0, _qunit.test)('the @onSelection method is not triggered if the component is disabled', async function (assert) {
+        this.onSelectionStub = _sinon.default.stub();
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::ToggleButtons @onSelection={{this.onSelectionStub}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}} @disabled={{true}} />
+        */
+        {
+          "id": "g9eI39z0",
+          "block": "[[[8,[39,0],null,[[\"@onSelection\",\"@toggles\",\"@selectedToggle\",\"@disabled\"],[[30,0,[\"onSelectionStub\"]],[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]],true]],null]],[],false,[\"o-s-s/smart/toggle-buttons\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/toggle-buttons-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.oss-smart-toggle-buttons-btn:first-child');
+        assert.ok(this.onSelectionStub.notCalled);
+      });
+      (0, _qunit.test)('the @onSelection method is triggered with the selected value', async function (assert) {
+        this.onSelection = _sinon.default.spy();
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::ToggleButtons @onSelection={{this.onSelection}} @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>
+        */
+        {
+          "id": "cczenmKS",
+          "block": "[[[8,[39,0],null,[[\"@onSelection\",\"@toggles\",\"@selectedToggle\"],[[30,0,[\"onSelection\"]],[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]]]],null]],[],false,[\"o-s-s/smart/toggle-buttons\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/toggle-buttons-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.oss-smart-toggle-buttons-btn:last-child');
+        assert.ok(this.onSelection.calledWith('second'));
+      });
+    });
+    (0, _qunit.module)('Error management', () => {
+      (0, _qunit.test)('it throws an error if @toggles is not provided', async function (assert) {
+        (0, _setupOnerror.default)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @toggles parameter of type Toggle[] is mandatory');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::ToggleButtons @onSelection={{this.onSelection}} @selectedToggle={{this.selectedToggle}}/>
+        */
+        {
+          "id": "BF4yIqzj",
+          "block": "[[[8,[39,0],null,[[\"@onSelection\",\"@selectedToggle\"],[[30,0,[\"onSelection\"]],[30,0,[\"selectedToggle\"]]]],null]],[],false,[\"o-s-s/smart/toggle-buttons\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/toggle-buttons-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _settled.default)();
+      });
+      (0, _qunit.test)('it throws an error if @onSelection is not provided', async function (assert) {
+        (0, _setupOnerror.default)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @onSelection parameter of type function is mandatory');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}}/>
+        */
+        {
+          "id": "6AsZrezE",
+          "block": "[[[8,[39,0],null,[[\"@toggles\",\"@selectedToggle\"],[[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]]]],null]],[],false,[\"o-s-s/smart/toggle-buttons\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/toggle-buttons-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _settled.default)();
+      });
+      (0, _qunit.test)('it throws an error if @selectedToggle is not provided', async function (assert) {
+        (0, _setupOnerror.default)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @selectedToggle parameter of type string or null is mandatory');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::ToggleButtons @toggles={{this.toggles}} @onSelection={{this.onSelection}}  />
+        */
+        {
+          "id": "IYvlEplA",
+          "block": "[[[8,[39,0],null,[[\"@toggles\",\"@onSelection\"],[[30,0,[\"toggles\"]],[30,0,[\"onSelection\"]]]],null]],[],false,[\"o-s-s/smart/toggle-buttons\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/toggle-buttons-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _settled.default)();
+      });
+      (0, _qunit.test)('it throws an error if @selectedToggle is not a value of toggles', async function (assert) {
+        this.selectedToggle = 'toto';
+        (0, _setupOnerror.default)(err => {
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::Smart::ToggleButtons] The @selectedToggle parameter should be null or a value of toggles');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Smart::ToggleButtons @toggles={{this.toggles}} @onSelection={{this.onSelection}} @selectedToggle={{this.selectedToggle}}/>
+        */
+        {
+          "id": "rUZzka23",
+          "block": "[[[8,[39,0],null,[[\"@toggles\",\"@onSelection\",\"@selectedToggle\"],[[30,0,[\"toggles\"]],[30,0,[\"onSelection\"]],[30,0,[\"selectedToggle\"]]]],null]],[],false,[\"o-s-s/smart/toggle-buttons\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/smart/toggle-buttons-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _settled.default)();
       });
     });
   });
@@ -17874,6 +20952,90 @@ define("dummy/tests/integration/components/wizard/step-wrapper-test", ["qunit", 
       }
       assert.true(this.selectPreviousStepStub.calledOnce);
     });
+    (0, _qunit.test)('Wheel event does not call selectNextStep or selectPreviousStep when wheelEnabled is false', async function (assert) {
+      this.step.displayState = 'active';
+      this.wizardManager.disableWheelScroll();
+      this.selectNextStepStub = _sinon.default.stub(this.wizardManager, 'selectNextStep');
+      this.selectPreviousStepStub = _sinon.default.stub(this.wizardManager, 'selectPreviousStep');
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <Wizard::StepWrapper @step={{this.step}} />
+      */
+      {
+        "id": "7XakbciT",
+        "block": "[[[8,[39,0],null,[[\"@step\"],[[30,0,[\"step\"]]]],null]],[],false,[\"wizard/step-wrapper\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/step-wrapper-test.ts",
+        "isStrictMode": false
+      }));
+      const stepWrapper = document.querySelector('.step-wrapper');
+      if (stepWrapper) {
+        const wheelEventDown = new WheelEvent('wheel', {
+          deltaY: 100
+        });
+        stepWrapper.dispatchEvent(wheelEventDown);
+        const wheelEventUp = new WheelEvent('wheel', {
+          deltaY: -100
+        });
+        stepWrapper.dispatchEvent(wheelEventUp);
+      }
+      assert.true(this.selectNextStepStub.notCalled);
+      assert.true(this.selectPreviousStepStub.notCalled);
+    });
+    (0, _qunit.test)('Wheel event does not call selectNextStep or selectPreviousStep when event target has the prevent-wizard-scroll-events class', async function (assert) {
+      this.step.displayState = 'active';
+      this.selectPreviousStepStub = _sinon.default.stub(this.wizardManager, 'selectPreviousStep');
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <Wizard::StepWrapper @step={{this.step}}>
+            <div class="sub-component">Content</div>  
+          </Wizard::StepWrapper>
+      */
+      {
+        "id": "rUAiaKwn",
+        "block": "[[[8,[39,0],null,[[\"@step\"],[[30,0,[\"step\"]]]],[[\"default\"],[[[[1,\"\\n      \"],[10,0],[14,0,\"sub-component\"],[12],[1,\"Content\"],[13],[1,\"  \\n    \"]],[]]]]]],[],false,[\"wizard/step-wrapper\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/step-wrapper-test.ts",
+        "isStrictMode": false
+      }));
+
+      // await this.pauseTest();
+      const stepWrapper = document.querySelector('.step-wrapper');
+      stepWrapper?.classList.add('prevent-wizard-scroll-events');
+      if (stepWrapper) {
+        const wheelEventUp = new WheelEvent('wheel', {
+          deltaY: -100
+        });
+        stepWrapper.dispatchEvent(wheelEventUp);
+      }
+      assert.true(this.selectPreviousStepStub.notCalled);
+    });
+    (0, _qunit.test)('Wheel event does not call selectNextStep or selectPreviousStep when event target has the skipScrollEventsClass defined in the wizardManager', async function (assert) {
+      this.step.displayState = 'active';
+      this.selectPreviousStepStub = _sinon.default.stub(this.wizardManager, 'selectPreviousStep');
+      this.wizardManager.configOptions.skipScrollEventsClass = 'custom-class-name';
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <Wizard::StepWrapper @step={{this.step}}>
+            <div class="sub-component">Content</div>  
+          </Wizard::StepWrapper>
+      */
+      {
+        "id": "rUAiaKwn",
+        "block": "[[[8,[39,0],null,[[\"@step\"],[[30,0,[\"step\"]]]],[[\"default\"],[[[[1,\"\\n      \"],[10,0],[14,0,\"sub-component\"],[12],[1,\"Content\"],[13],[1,\"  \\n    \"]],[]]]]]],[],false,[\"wizard/step-wrapper\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/wizard/step-wrapper-test.ts",
+        "isStrictMode": false
+      }));
+
+      // await this.pauseTest();
+      const stepWrapper = document.querySelector('.step-wrapper');
+      stepWrapper?.classList.add('custom-class-name');
+      if (stepWrapper) {
+        const wheelEventUp = new WheelEvent('wheel', {
+          deltaY: -100
+        });
+        stepWrapper.dispatchEvent(wheelEventUp);
+      }
+      assert.true(this.selectPreviousStepStub.notCalled);
+    });
   });
 });
 define("dummy/tests/integration/helpers/form-field-feedback-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
@@ -19155,6 +22317,7 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
       });
       (0, _qunit.test)('selectStep focuses the step and updates focusedStepId', async function (assert) {
         this.service.initialize(this.config);
+        await (0, _testHelpers.settled)();
         const step2Id = this.service.allSteps[1].id;
         this.service.selectStep(step2Id);
         await (0, _testHelpers.settled)();
@@ -19171,17 +22334,19 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
           sections: [createSection('section-1', [step1, step2])]
         };
         this.service.initialize(this.config);
+        await (0, _testHelpers.settled)();
         const step1Id = this.service.allSteps[0].id;
         const step2Id = this.service.allSteps[1].id;
         this.validateStub = _sinon.default.stub(this.service.allSteps[0], 'validateStep').resolves(true);
         assert.equal(this.service.focusedStepId, step1Id);
         this.service.selectStep(step2Id, true);
         await (0, _testHelpers.settled)();
-        assert.equal(this.service.focusedStepId, step1Id);
+        assert.equal(this.service.focusedStepId, step2Id);
         assert.true(this.validateStub.notCalled, 'validateStep was not called when bypassValidations is true');
       });
       (0, _qunit.test)("selectStep runs the current step's validateStep if provided", async function (assert) {
         this.service.initialize(this.config);
+        await (0, _testHelpers.settled)();
         this.validateStub = _sinon.default.stub(this.service.allSteps[0], 'validateStep').resolves(true);
         const step1 = this.service.allSteps[0];
         const step2 = this.service.allSteps[1];
@@ -19191,6 +22356,7 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
       });
       (0, _qunit.test)('selectStep does not change focusedStepId if validation fails', async function (assert) {
         this.service.initialize(this.config);
+        await (0, _testHelpers.settled)();
         const step1 = this.service.allSteps[0];
         const step2 = this.service.allSteps[1];
         step1.validateStep = () => Promise.resolve(false);
@@ -19199,6 +22365,7 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
       });
       (0, _qunit.test)('selectStep runs all validation steps from current section to target step', async function (assert) {
         this.service.initialize(this.config);
+        await (0, _testHelpers.settled)();
         const step1 = this.service.allSteps[0];
         const step2 = this.service.allSteps[1];
         const step3 = this.service.allSteps[2];
@@ -19214,6 +22381,7 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
       });
       (0, _qunit.test)('selectStep focuses the first failing step if validation fails', async function (assert) {
         this.service.initialize(this.config);
+        await (0, _testHelpers.settled)();
         const step1 = this.service.allSteps[0];
         const step2 = this.service.allSteps[1];
         const step3 = this.service.allSteps[2];
@@ -19236,6 +22404,7 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
       (0, _qunit.module)('previousStep', function () {
         (0, _qunit.test)('It returns the step before the current step', async function (assert) {
           this.service.initialize(this.config);
+          await (0, _testHelpers.settled)();
           const step1 = this.service.allSteps[0];
           const step2 = this.service.allSteps[1];
           this.service.selectStep(step2.id);
@@ -19244,6 +22413,7 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
         });
         (0, _qunit.test)('If previous step is hidden, it returns the previous visible', async function (assert) {
           this.service.initialize(this.config);
+          await (0, _testHelpers.settled)();
           const step1 = this.service.allSteps[0];
           const step2 = this.service.allSteps[1];
           const step3 = this.service.allSteps[2];
@@ -19256,6 +22426,7 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
       (0, _qunit.module)('nextStep', function () {
         (0, _qunit.test)('nextStep returns the step after the current step', async function (assert) {
           this.service.initialize(this.config);
+          await (0, _testHelpers.settled)();
           const step1 = this.service.allSteps[0];
           const step2 = this.service.allSteps[1];
           this.service.selectStep(step1.id);
@@ -19264,6 +22435,7 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
         });
         (0, _qunit.test)('If next step is hidden, it returns the next visible', async function (assert) {
           this.service.initialize(this.config);
+          await (0, _testHelpers.settled)();
           const step1 = this.service.allSteps[0];
           const step2 = this.service.allSteps[1];
           const step3 = this.service.allSteps[2];
@@ -19273,16 +22445,18 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
           assert.strictEqual(this.service.nextStep?.id, step3.id);
         });
       });
-      (0, _qunit.test)('allSteps returns all steps across sections', function (assert) {
+      (0, _qunit.test)('allSteps returns all steps across sections', async function (assert) {
         this.service.initialize(this.config);
+        await (0, _testHelpers.settled)();
         const allSteps = this.service.allSteps;
         assert.strictEqual(allSteps.length, 3);
         assert.strictEqual(allSteps[0].key, 'step-1');
         assert.strictEqual(allSteps[1].key, 'step-2');
         assert.strictEqual(allSteps[2].key, 'step-3');
       });
-      (0, _qunit.test)('findStepByKey returns the step with the given key', function (assert) {
+      (0, _qunit.test)('findStepByKey returns the step with the given key', async function (assert) {
         this.service.initialize(this.config);
+        await (0, _testHelpers.settled)();
         const step1 = this.service.findStepByKey('step-1');
         const step2 = this.service.findStepByKey('step-2');
         const step3 = this.service.findStepByKey('step-3');
@@ -19294,11 +22468,12 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
       });
     });
     (0, _qunit.module)('Select Next/Previous Step', function (hooks) {
-      hooks.beforeEach(function () {
+      hooks.beforeEach(async function () {
         this.config = {
           sections: [createSection('section-1', [createStep('step-1'), createStep('step-2'), createStep('step-3')])]
         };
         this.service.initialize(this.config);
+        await (0, _testHelpers.settled)();
       });
       (0, _qunit.test)('selectNextStep focuses the next step', async function (assert) {
         const step1Id = this.service.allSteps[0].id;
@@ -19317,35 +22492,47 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
         assert.strictEqual(this.service.focusedStepId, step1Id);
       });
     });
-    (0, _qunit.test)('findStepsForSectionKey returns steps for a given section key', function (assert) {
+    (0, _qunit.test)('findStepsForSectionKey returns steps for a given section key', async function (assert) {
       this.service.initialize(this.config);
+      await (0, _testHelpers.settled)();
       const steps = this.service.findStepsForSectionKey('section-1');
       assert.strictEqual(steps.length, 3);
       assert.strictEqual(steps[0].key, 'step-1');
       assert.strictEqual(steps[1].key, 'step-2');
       assert.strictEqual(steps[2].key, 'step-3');
     });
-    (0, _qunit.test)('reset clears all sections and steps', function (assert) {
+    (0, _qunit.test)('reset clears all sections and steps', async function (assert) {
       this.service.initialize(this.config);
+      await (0, _testHelpers.settled)();
       this.service.reset();
       assert.strictEqual(this.service.sections.length, 0);
       assert.strictEqual(this.service.allSteps.length, 0);
       assert.strictEqual(this.service.focusedStepId, '');
       assert.strictEqual(this.service.initialized, false);
     });
-    (0, _qunit.test)('markStepAsCompleted marks a step as completed', function (assert) {
+    (0, _qunit.test)('markStepAsCompleted marks a step as completed', async function (assert) {
       this.service.initialize(this.config);
+      await (0, _testHelpers.settled)();
       const step1 = this.service.allSteps[0];
       assert.equal(step1.completed, undefined);
       this.service.markStepAsCompleted(step1.id);
       assert.true(step1.completed);
     });
+    (0, _qunit.test)('markStepAsIncomplete marks a step as incomplete', async function (assert) {
+      this.service.initialize(this.config);
+      await (0, _testHelpers.settled)();
+      const step1 = this.service.allSteps[0];
+      step1.completed = true;
+      this.service.markStepAsIncomplete(step1.id);
+      assert.false(step1.completed);
+    });
     (0, _qunit.module)('ToggleStepVisibility', function (hooks) {
       hooks.beforeEach(function () {
         this.setDisplayStatesStub = _sinon.default.stub(this.service, 'setDisplayStates').resolves();
       });
-      (0, _qunit.test)('It allows to hide or display a step', function (assert) {
+      (0, _qunit.test)('It allows to hide or display a step', async function (assert) {
         this.service.initialize(this.config);
+        await (0, _testHelpers.settled)();
         const step1 = this.service.allSteps[0];
         assert.equal(step1.hidden, undefined);
         this.service.toggleStepVisibility(step1.id, true);
@@ -19353,12 +22540,36 @@ define("dummy/tests/unit/services/wizard-manager-test", ["qunit", "ember-qunit",
         this.service.toggleStepVisibility(step1.id, false);
         assert.equal(step1.hidden, false);
       });
-      (0, _qunit.test)('It rerenders the display states when triggered', function (assert) {
+      (0, _qunit.test)('It rerenders the display states when triggered', async function (assert) {
         this.service.initialize(this.config);
-        const step1 = this.service.allSteps[0];
+        await (0, _testHelpers.settled)();
+        this.setDisplayStatesStub.reset();
         assert.ok(this.setDisplayStatesStub.notCalled);
+        const step1 = this.service.allSteps[0];
         this.service.toggleStepVisibility(step1.id, true);
         assert.ok(this.setDisplayStatesStub.calledOnce);
+      });
+    });
+    (0, _qunit.module)('Enable/Disable Wheel Scroll', function () {
+      (0, _qunit.test)('By default, wheel scroll is enabled', async function (assert) {
+        this.service.initialize(this.config);
+        await (0, _testHelpers.settled)();
+        assert.true(this.service.wheelEnabled);
+      });
+      (0, _qunit.test)('enableWheelScroll sets wheelEnabled to true', async function (assert) {
+        this.service.initialize(this.config);
+        await (0, _testHelpers.settled)();
+        this.service.wheelEnabled = false;
+        assert.false(this.service.wheelEnabled);
+        this.service.enableWheelScroll();
+        assert.true(this.service.wheelEnabled);
+      });
+      (0, _qunit.test)('disableWheelScroll sets wheelEnabled to false', async function (assert) {
+        this.service.initialize(this.config);
+        await (0, _testHelpers.settled)();
+        assert.true(this.service.wheelEnabled);
+        this.service.disableWheelScroll();
+        assert.false(this.service.wheelEnabled);
       });
     });
   });

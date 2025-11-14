@@ -85028,12 +85028,13 @@ require('@ember/-internals/bootstrap')
   const DEFAULT_COUNTER_TIME = 5000;
   const DEFAULT_STEP_COUNTER_TIME = 1000;
   let OSSButton = _exports.default = (_class = class OSSButton extends _component2.default {
-    constructor(owner, args) {
+    constructor(owner, args, preventDefaultAssertions) {
       super(owner, args);
       _initializerDefineProperty(this, "DOMElement", _descriptor, this);
       _initializerDefineProperty(this, "intervalID", _descriptor2, this);
       _initializerDefineProperty(this, "intervalState", _descriptor3, this);
       _initializerDefineProperty(this, "counterTimeLeft", _descriptor4, this);
+      if (preventDefaultAssertions) return;
       (true && !(args.label || args.icon || args.iconUrl) && (0, _debug.assert)('[component][OSS::Button] You must pass either a @label, an @icon or an @iconUrl argument.', args.label || args.icon || args.iconUrl));
       (true && !(args.countDown ? args.countDown.callback : true) && (0, _debug.assert)("[component][OSS::Button] You must pass either a hash with 'callback' value to @countDown argument.", args.countDown ? args.countDown.callback : true));
     }
@@ -87468,12 +87469,13 @@ interface OSSCodeBlockArgs {
   }];
   const AUTHORIZED_INPUTS = ['Backspace', 'Delete', 'ArrowLeft', 'ArrowRight', 'Tab', 'Shift', 'Control', '.', ',', 'ArrowUp', 'ArrowDown'];
   let OSSCurrencyInput = _exports.default = (_class = class OSSCurrencyInput extends _component2.default {
-    constructor(owner, args) {
+    constructor(owner, args, preventDefaultAssertions) {
       super(owner, args);
       _defineProperty(this, "currencies", this.args.allowedCurrencies ?? PLATFORM_CURRENCIES);
       _initializerDefineProperty(this, "currencySelectorShown", _descriptor, this);
       _initializerDefineProperty(this, "filteredCurrencies", _descriptor2, this);
       _initializerDefineProperty(this, "localValue", _descriptor3, this);
+      if (preventDefaultAssertions) return;
       if (!this.args.value && !this.args.placeholder) {
         this.localValue = 0;
       }
@@ -89321,7 +89323,9 @@ interface OSSCodeBlockArgs {
     <div
     id={{this.elementId}}
     data-internal-id={{this.elementId}}
-    class="fx-col fx-gap-px-12 upf-infinite-select {{unless this.inline 'upf-infinite-select--absolute'}}"
+    class="fx-col fx-gap-px-12 upf-infinite-select
+      {{unless this.inline 'upf-infinite-select--absolute'}}
+      upf-infinite-select--{{this.skin}}"
     {{did-insert this.onRender}}
     ...attributes
   >
@@ -89330,6 +89334,7 @@ interface OSSCodeBlockArgs {
         @value={{this._searchKeyword}}
         @placeholder={{this.searchPlaceholder}}
         @onChange={{this.updateSearchKeyword}}
+        class="upf-infinite-select--search"
         {{on "keydown" this.handleKeyEventInput}}
         {{did-insert this.initSearchInput}}
       />
@@ -89396,8 +89401,8 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "aFOfwGKv",
-    "block": "[[[11,0],[16,1,[30,0,[\"elementId\"]]],[16,\"data-internal-id\",[30,0,[\"elementId\"]]],[16,0,[29,[\"fx-col fx-gap-px-12 upf-infinite-select \",[52,[51,[30,0,[\"inline\"]]],\"upf-infinite-select--absolute\"]]]],[17,1],[4,[38,1],[[30,0,[\"onRender\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"searchEnabled\"]],[[[1,\"    \"],[8,[39,3],[[4,[38,4],[\"keydown\",[30,0,[\"handleKeyEventInput\"]]],null],[4,[38,1],[[30,0,[\"initSearchInput\"]]],null]],[[\"@value\",\"@placeholder\",\"@onChange\"],[[30,0,[\"_searchKeyword\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"updateSearchKeyword\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"upf-infinite-select__container\"],[12],[1,\"\\n    \"],[11,\"ul\"],[16,0,[29,[\"upf-infinite-select__items-container\\n        \",[52,[28,[37,5],[[30,0,[\"items\",\"length\"]],0],null],\"upf-infinite-select__items-container--empty\"]]]],[4,[38,6],[[30,0,[\"onBottomReached\"]]],null],[4,[38,7],null,null],[4,[38,4],[\"keydown\",[30,0,[\"handleKeyEvent\"]]],null],[12],[1,\"\\n\"],[41,[28,[37,8],[[30,2],[28,[37,9],[[30,3]],null]],null],[[[1,\"        \"],[8,[39,10],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",5,\"col\"]],null],[1,\"\\n\"]],[]],[[[42,[28,[37,12],[[28,[37,12],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"          \"],[11,\"li\"],[16,0,[29,[\"upf-infinite-select__item\\n              \",[52,[28,[37,8],[[28,[37,5],[[30,5],[30,0,[\"_focusElement\"]]],null],[30,0,[\"focusStylesDisabled\"]]],null],\" upf-infinite-select__item--disabled-focus\"]]]],[24,\"role\",\"button\"],[24,\"tabindex\",\"0\"],[4,[38,4],[\"mouseenter\",[28,[37,13],[[30,0,[\"handleItemHover\"]],[30,5]],null]],null],[4,[38,4],[\"mouseleave\",[30,0,[\"clearHoverState\"]]],null],[4,[38,4],[\"click\",[28,[37,13],[[30,0,[\"didSelectItem\"]],[30,4]],null]],null],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"              \"],[18,6,[[30,4],[30,5]]],[1,\"\\n\"]],[]],[[[1,\"              \"],[1,[28,[35,16],[[30,4],[30,0,[\"itemLabel\"]]],null]],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[4,5]],[[[1,\"          \"],[10,0],[14,0,\"fx-col fx-xalign-center\"],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"              \"],[18,7,null],[1,\"\\n\"]],[]],[[[1,\"              \"],[8,[39,17],[[24,\"data-control-name\",\"infinite-select-empty-state-illustration\"]],[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null],[1,\"\\n              \"],[10,0],[14,0,\"margin-top-xx-sm text-color-default upf-align--center\"],[12],[1,\"\\n\"],[41,[30,0,[\"_searchKeyword\"]],[[[1,\"                  \"],[10,2],[12],[1,[28,[35,18],[\"oss-components.infinite-select.no-match.title\"],null]],[13],[1,\"\\n                  \"],[10,2],[14,0,\"text-color-default-light\"],[12],[1,\"\\n                    \"],[1,[28,[35,18],[\"oss-components.infinite-select.no-match.description\"],null]],[1,\"\\n                  \"],[13],[1,\"\\n\"]],[]],[[[1,\"                  \"],[1,[28,[35,18],[\"oss-components.infinite-select.empty\"],null]],[1,\"\\n\"]],[]]],[1,\"              \"],[13],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,3],[[[1,\"          \"],[8,[39,10],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",3,\"col\"]],null],[1,\"\\n\"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@loading\",\"@loadingMore\",\"item\",\"index\",\"&option\",\"&empty-state\"],false,[\"unless\",\"did-insert\",\"if\",\"o-s-s/search-field\",\"on\",\"eq\",\"on-bottom-reached\",\"scroll-shadow\",\"and\",\"not\",\"o-s-s/skeleton\",\"each\",\"-track-array\",\"fn\",\"has-block\",\"yield\",\"get\",\"o-s-s/illustration\",\"t\"]]",
+    "id": "izKePBSx",
+    "block": "[[[11,0],[16,1,[30,0,[\"elementId\"]]],[16,\"data-internal-id\",[30,0,[\"elementId\"]]],[16,0,[29,[\"fx-col fx-gap-px-12 upf-infinite-select\\n    \",[52,[51,[30,0,[\"inline\"]]],\"upf-infinite-select--absolute\"],\"\\n    upf-infinite-select--\",[30,0,[\"skin\"]]]]],[17,1],[4,[38,1],[[30,0,[\"onRender\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"searchEnabled\"]],[[[1,\"    \"],[8,[39,3],[[24,0,\"upf-infinite-select--search\"],[4,[38,4],[\"keydown\",[30,0,[\"handleKeyEventInput\"]]],null],[4,[38,1],[[30,0,[\"initSearchInput\"]]],null]],[[\"@value\",\"@placeholder\",\"@onChange\"],[[30,0,[\"_searchKeyword\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"updateSearchKeyword\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"upf-infinite-select__container\"],[12],[1,\"\\n    \"],[11,\"ul\"],[16,0,[29,[\"upf-infinite-select__items-container\\n        \",[52,[28,[37,5],[[30,0,[\"items\",\"length\"]],0],null],\"upf-infinite-select__items-container--empty\"]]]],[4,[38,6],[[30,0,[\"onBottomReached\"]]],null],[4,[38,7],null,null],[4,[38,4],[\"keydown\",[30,0,[\"handleKeyEvent\"]]],null],[12],[1,\"\\n\"],[41,[28,[37,8],[[30,2],[28,[37,9],[[30,3]],null]],null],[[[1,\"        \"],[8,[39,10],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",5,\"col\"]],null],[1,\"\\n\"]],[]],[[[42,[28,[37,12],[[28,[37,12],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"          \"],[11,\"li\"],[16,0,[29,[\"upf-infinite-select__item\\n              \",[52,[28,[37,8],[[28,[37,5],[[30,5],[30,0,[\"_focusElement\"]]],null],[30,0,[\"focusStylesDisabled\"]]],null],\" upf-infinite-select__item--disabled-focus\"]]]],[24,\"role\",\"button\"],[24,\"tabindex\",\"0\"],[4,[38,4],[\"mouseenter\",[28,[37,13],[[30,0,[\"handleItemHover\"]],[30,5]],null]],null],[4,[38,4],[\"mouseleave\",[30,0,[\"clearHoverState\"]]],null],[4,[38,4],[\"click\",[28,[37,13],[[30,0,[\"didSelectItem\"]],[30,4]],null]],null],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"              \"],[18,6,[[30,4],[30,5]]],[1,\"\\n\"]],[]],[[[1,\"              \"],[1,[28,[35,16],[[30,4],[30,0,[\"itemLabel\"]]],null]],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[4,5]],[[[1,\"          \"],[10,0],[14,0,\"fx-col fx-xalign-center\"],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"              \"],[18,7,null],[1,\"\\n\"]],[]],[[[1,\"              \"],[8,[39,17],[[24,\"data-control-name\",\"infinite-select-empty-state-illustration\"]],[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null],[1,\"\\n              \"],[10,0],[14,0,\"margin-top-xx-sm text-color-default upf-align--center\"],[12],[1,\"\\n\"],[41,[30,0,[\"_searchKeyword\"]],[[[1,\"                  \"],[10,2],[12],[1,[28,[35,18],[\"oss-components.infinite-select.no-match.title\"],null]],[13],[1,\"\\n                  \"],[10,2],[14,0,\"text-color-default-light\"],[12],[1,\"\\n                    \"],[1,[28,[35,18],[\"oss-components.infinite-select.no-match.description\"],null]],[1,\"\\n                  \"],[13],[1,\"\\n\"]],[]],[[[1,\"                  \"],[1,[28,[35,18],[\"oss-components.infinite-select.empty\"],null]],[1,\"\\n\"]],[]]],[1,\"              \"],[13],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,3],[[[1,\"          \"],[8,[39,10],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",3,\"col\"]],null],[1,\"\\n\"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@loading\",\"@loadingMore\",\"item\",\"index\",\"&option\",\"&empty-state\"],false,[\"unless\",\"did-insert\",\"if\",\"o-s-s/search-field\",\"on\",\"eq\",\"on-bottom-reached\",\"scroll-shadow\",\"and\",\"not\",\"o-s-s/skeleton\",\"each\",\"-track-array\",\"fn\",\"has-block\",\"yield\",\"get\",\"o-s-s/illustration\",\"t\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/infinite-select.hbs",
     "isStrictMode": false
   });
@@ -89430,6 +89435,9 @@ interface OSSCodeBlockArgs {
     }
     get inline() {
       return this.args.inline ?? false;
+    }
+    get skin() {
+      return this.args.skin ?? 'default';
     }
     onRender() {
       this.args.didRender?.();
@@ -89606,6 +89614,7 @@ interface OSSCodeBlockArgs {
     superhero: 'Spider Man',
     characters: 'Peter Parker'
   }];
+  const SkinTypes = ['default', 'smart'];
   var _default = _exports.default = {
     title: 'Components/OSS::InfiniteSelect',
     component: 'infinite-select',
@@ -89667,6 +89676,21 @@ interface OSSCodeBlockArgs {
         },
         control: {
           type: 'boolean'
+        }
+      },
+      skin: {
+        description: 'Adjust the skin of the badge',
+        table: {
+          type: {
+            summary: SkinTypes.join('|')
+          },
+          defaultValue: {
+            summary: 'default'
+          }
+        },
+        options: SkinTypes,
+        control: {
+          type: 'select'
         }
       },
       loading: {
@@ -89795,6 +89819,7 @@ interface OSSCodeBlockArgs {
     loadingMore: false,
     inline: false,
     enableKeyboard: false,
+    skin: 'default',
     onSelect: (0, _addonActions.action)('onSelect'),
     onSearch: (0, _addonActions.action)('onSearch'),
     onBottomReached: (0, _addonActions.action)('onBottomReached'),
@@ -89808,12 +89833,13 @@ interface OSSCodeBlockArgs {
             @items={{this.items}} @itemLabel={{this.itemLabel}} @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}}
             @searchPlaceholder={{this.searchPlaceholder}} @onSelect={{this.onSelect}} @loading={{this.loading}}
             @loadingMore={{this.loadingMore}} @inline={{this.inline}} @onBottomReached={{this.onBottomReached}} 
-            @didRender={{this.didRender}} @enableKeyboard={{this.enableKeyboard}} class="upf-align--absolute-center"/>
+            @skin={{this.skin}} @didRender={{this.didRender}} @enableKeyboard={{this.enableKeyboard}}
+            class="upf-align--absolute-center"/>
       
     */
     {
-      "id": "0zJ/RNGp",
-      "block": "[[[1,\"\\n      \"],[8,[39,0],[[24,0,\"upf-align--absolute-center\"]],[[\"@items\",\"@itemLabel\",\"@searchEnabled\",\"@onSearch\",\"@searchPlaceholder\",\"@onSelect\",\"@loading\",\"@loadingMore\",\"@inline\",\"@onBottomReached\",\"@didRender\",\"@enableKeyboard\"],[[30,0,[\"items\"]],[30,0,[\"itemLabel\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"onSearch\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"onSelect\"]],[30,0,[\"loading\"]],[30,0,[\"loadingMore\"]],[30,0,[\"inline\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"didRender\"]],[30,0,[\"enableKeyboard\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/infinite-select\"]]",
+      "id": "0f2m8fia",
+      "block": "[[[1,\"\\n      \"],[8,[39,0],[[24,0,\"upf-align--absolute-center\"]],[[\"@items\",\"@itemLabel\",\"@searchEnabled\",\"@onSearch\",\"@searchPlaceholder\",\"@onSelect\",\"@loading\",\"@loadingMore\",\"@inline\",\"@onBottomReached\",\"@skin\",\"@didRender\",\"@enableKeyboard\"],[[30,0,[\"items\"]],[30,0,[\"itemLabel\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"onSearch\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"onSelect\"]],[30,0,[\"loading\"]],[30,0,[\"loadingMore\"]],[30,0,[\"inline\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"skin\"]],[30,0,[\"didRender\"]],[30,0,[\"enableKeyboard\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/infinite-select\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/infinite-select.stories.js",
       "isStrictMode": false
     }),
@@ -95408,6 +95434,9 @@ interface OSSCodeBlockArgs {
       _initializerDefineProperty(this, "shadowRightVisible", _descriptor5, this);
       _defineProperty(this, "resizeObserver", new ResizeObserver(this.resizeObserverCallback.bind(this)));
     }
+    get offset() {
+      return this.args.offset ?? 0;
+    }
     initScrollListener(element) {
       this.parentElement = element;
       if (this.args.horizontal) {
@@ -95435,7 +95464,7 @@ interface OSSCodeBlockArgs {
       this.args.onBottomReached?.();
     }
     scrollListener() {
-      if (this.parentElement.scrollTop > 0) {
+      if (this.parentElement.scrollTop - this.offset > 0) {
         this.shadowTopVisible = true;
       } else {
         this.shadowTopVisible = false;
@@ -95443,14 +95472,14 @@ interface OSSCodeBlockArgs {
       this.displayBottomShadow();
     }
     displayBottomShadow() {
-      if (this.parentElement.scrollTop + this.parentElement.clientHeight >= this.parentElement.scrollHeight - 1) {
+      if (this.parentElement.scrollTop + this.parentElement.clientHeight + this.offset >= this.parentElement.scrollHeight - 1) {
         this.shadowBottomVisible = false;
       } else {
         this.shadowBottomVisible = true;
       }
     }
     horizontalScrollListener() {
-      if (this.parentElement.scrollLeft > 0) {
+      if (this.parentElement.scrollLeft - this.offset > 0) {
         this.shadowLeftVisible = true;
       } else {
         this.shadowLeftVisible = false;
@@ -95458,7 +95487,7 @@ interface OSSCodeBlockArgs {
       this.displayRightShadow();
     }
     displayRightShadow() {
-      if (this.parentElement.scrollLeft + this.parentElement.clientWidth >= this.parentElement.scrollWidth - 1) {
+      if (this.parentElement.scrollLeft + this.parentElement.clientWidth + this.offset >= this.parentElement.scrollWidth - 1) {
         this.shadowRightVisible = false;
       } else {
         this.shadowRightVisible = true;
@@ -95575,6 +95604,20 @@ interface OSSCodeBlockArgs {
           type: 'boolean'
         }
       },
+      offset: {
+        description: 'Offset in pixels from which the scrollable panel will be considered as scrolled',
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: '0'
+          }
+        },
+        control: {
+          type: 'number'
+        }
+      },
       onBottomReached: {
         description: 'Function to be called when the scroll hits the bottom',
         table: {
@@ -95597,6 +95640,7 @@ interface OSSCodeBlockArgs {
     plain: false,
     disableShadows: false,
     hideScrollbar: false,
+    offset: 0,
     onBottomReached: (0, _addonActions.action)('onBottomReached')
   };
   const horizontalArgs = {
@@ -95612,7 +95656,8 @@ interface OSSCodeBlockArgs {
                                 @disableShadows={{this.disableShadows}}
                                 @onBottomReached={{this.onBottomReached}}
                                 @hideScrollbar={{this.hideScrollbar}}
-                                @horizontal={{this.horizontal}} >
+                                @horizontal={{this.horizontal}}
+                                @offset={{this.offset}} >
             <div class="fx-col fx-gap-px-12 padding-px-12">
               <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
               <div class="background-color-gray-200" style="height: 50px; width: 100%;" />
@@ -95625,8 +95670,8 @@ interface OSSCodeBlockArgs {
       
     */
     {
-      "id": "g3Nqrqw3",
-      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"height:200px; width: 300px; background-color: white; \"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@plain\",\"@disableShadows\",\"@onBottomReached\",\"@hideScrollbar\",\"@horizontal\"],[[30,0,[\"plain\"]],[30,0,[\"disableShadows\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"hideScrollbar\"]],[30,0,[\"horizontal\"]]]],[[\"default\"],[[[[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-12\"],[12],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/scrollable-panel\"]]",
+      "id": "OgbmEMMV",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"height:200px; width: 300px; background-color: white; \"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@plain\",\"@disableShadows\",\"@onBottomReached\",\"@hideScrollbar\",\"@horizontal\",\"@offset\"],[[30,0,[\"plain\"]],[30,0,[\"disableShadows\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"hideScrollbar\"]],[30,0,[\"horizontal\"]],[30,0,[\"offset\"]]]],[[\"default\"],[[[[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-12\"],[12],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100%;\"],[12],[13],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/scrollable-panel\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/scrollable-panel.stories.js",
       "isStrictMode": false
     }),
@@ -95641,7 +95686,8 @@ interface OSSCodeBlockArgs {
                                 @disableShadows={{this.disableShadows}}
                                 @onBottomReached={{this.onBottomReached}}
                                 @hideScrollbar={{this.hideScrollbar}}
-                                @horizontal={{this.horizontal}} >
+                                @horizontal={{this.horizontal}}
+                                @offset={{this.offset}} >
             <div class="fx-row fx-gap-px-12 padding-px-12" style="width: fit-content">
               <div class="background-color-gray-200" style="height: 50px; width: 100px;" />
               <div class="background-color-gray-200" style="height: 50px; width: 100px;" />
@@ -95654,8 +95700,8 @@ interface OSSCodeBlockArgs {
       
     */
     {
-      "id": "5LO0Kfaz",
-      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"height:70px; width: 300px; background-color: white; \"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@plain\",\"@disableShadows\",\"@onBottomReached\",\"@hideScrollbar\",\"@horizontal\"],[[30,0,[\"plain\"]],[30,0,[\"disableShadows\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"hideScrollbar\"]],[30,0,[\"horizontal\"]]]],[[\"default\"],[[[[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-12 padding-px-12\"],[14,5,\"width: fit-content\"],[12],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100px;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100px;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100px;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100px;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100px;\"],[12],[13],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/scrollable-panel\"]]",
+      "id": "XOCfxztF",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"height:70px; width: 300px; background-color: white; \"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@plain\",\"@disableShadows\",\"@onBottomReached\",\"@hideScrollbar\",\"@horizontal\",\"@offset\"],[[30,0,[\"plain\"]],[30,0,[\"disableShadows\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"hideScrollbar\"]],[30,0,[\"horizontal\"]],[30,0,[\"offset\"]]]],[[\"default\"],[[[[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-12 padding-px-12\"],[14,5,\"width: fit-content\"],[12],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100px;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100px;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100px;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100px;\"],[12],[13],[1,\"\\n          \"],[10,0],[14,0,\"background-color-gray-200\"],[14,5,\"height: 50px; width: 100px;\"],[12],[13],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/scrollable-panel\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/scrollable-panel.stories.js",
       "isStrictMode": false
     }),
@@ -96649,8 +96695,9 @@ interface OSSCodeBlockArgs {
   });
   const RANGE_PERCENTAGE = 15;
   class OSSSkeleton extends _component2.default {
-    constructor(owner, args) {
+    constructor(owner, args, preventDefaultAssertions) {
       super(owner, args);
+      if (preventDefaultAssertions) return;
       if (this.args.direction) {
         (true && !(['row', 'column', 'col'].includes(this.args.direction)) && (0, _debug.assert)(`[component][OSS::Skeleton] The @direction argument should be a value of ${['row', 'column', 'col']}`, ['row', 'column', 'col'].includes(this.args.direction)));
       }
@@ -97264,6 +97311,2360 @@ interface OSSCodeBlockArgs {
   const Default = _exports.Default = Template.bind({});
   Default.args = defaultArgs;
 });
+;define("@upfluence/oss-components/components/o-s-s/smart/button", ["exports", "@ember/component", "@ember/debug", "@upfluence/oss-components/components/o-s-s/button", "@ember/template-factory"], function (_exports, _component, _debug, _button, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@upfluence/oss-components/components/o-s-s/button",0,"@ember/component"eaimeta@70e063a35619d71f
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    {{! template-lint-disable u-template-lint/no-bare-button}}
+  <div class="upf-smart-btn-container fx-row" ...attributes>
+    <button
+      type="button"
+      class={{this.computedSmartClasses}}
+      disabled={{@disabled}}
+      {{did-insert this.didInsert}}
+      {{on "click" this.onclick}}
+    >
+      {{#if this.loadingState}}
+        <OSS::Icon @style="solid" @icon="fa-spinner-third fa-spin" />
+        {{#if (and @label @loadingOptions.showLabel)}}
+          <span class="margin-left-px-6">{{@label}}</span>
+        {{/if}}
+      {{else}}
+        {{#if @icon}}
+          <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
+        {{else if @iconUrl}}
+          <img src={{@iconUrl}} alt="icon" />
+        {{/if}}
+        {{#if (and @label (not this.isCircle))}}
+          <span class={{if (or @icon @iconUrl) "margin-left-px-6"}}>{{@label}}</span>
+        {{/if}}
+      {{/if}}
+    </button>
+  </div>
+  */
+  {
+    "id": "ProB41iA",
+    "block": "[[[11,0],[24,0,\"upf-smart-btn-container fx-row\"],[17,1],[12],[1,\"\\n  \"],[11,\"button\"],[16,0,[30,0,[\"computedSmartClasses\"]]],[16,\"disabled\",[30,2]],[24,4,\"button\"],[4,[38,0],[[30,0,[\"didInsert\"]]],null],[4,[38,1],[\"click\",[30,0,[\"onclick\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"loadingState\"]],[[[1,\"      \"],[8,[39,3],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-spinner-third fa-spin\"]],null],[1,\"\\n\"],[41,[28,[37,4],[[30,3],[30,4,[\"showLabel\"]]],null],[[[1,\"        \"],[10,1],[14,0,\"margin-left-px-6\"],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null]],[]],[[[41,[30,5],[[[1,\"        \"],[8,[39,3],null,[[\"@style\",\"@icon\"],[[28,[37,5],[[30,5]],null],[28,[37,6],[[30,5]],null]]],null],[1,\"\\n\"]],[]],[[[41,[30,6],[[[1,\"        \"],[10,\"img\"],[15,\"src\",[30,6]],[14,\"alt\",\"icon\"],[12],[13],[1,\"\\n      \"]],[]],null]],[]]],[41,[28,[37,4],[[30,3],[28,[37,7],[[30,0,[\"isCircle\"]]],null]],null],[[[1,\"        \"],[10,1],[15,0,[52,[28,[37,8],[[30,5],[30,6]],null],\"margin-left-px-6\"]],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],null]],[]]],[1,\"  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@disabled\",\"@label\",\"@loadingOptions\",\"@icon\",\"@iconUrl\"],false,[\"did-insert\",\"on\",\"if\",\"o-s-s/icon\",\"and\",\"fa-icon-style\",\"fa-icon-value\",\"not\",\"or\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/smart/button.hbs",
+    "isStrictMode": false
+  });
+  const SmartSkinDefinition = {
+    primary: 'primary',
+    secondary: 'secondary'
+  };
+  const SMART_BASE_CLASS = 'upf-smart-btn';
+  const SMART_SQUARE_CLASS = 'upf-smart-square-btn';
+  class OSSSmartButton extends _button.default {
+    constructor(owner, args) {
+      super(owner, args, true);
+      (true && !(args.label || args.icon || args.iconUrl) && (0, _debug.assert)('[component][OSS::Smart::Button] You must pass either a @label, an @icon or an @iconUrl argument.', args.label || args.icon || args.iconUrl));
+    }
+    get isCircle() {
+      return this.args.square || this.args.circle || false;
+    }
+    get smartSkin() {
+      if (!this.args.skin) {
+        return SmartSkinDefinition.primary;
+      }
+      return SmartSkinDefinition[this.args.skin] ?? SmartSkinDefinition.primary;
+    }
+    get computedSmartClasses() {
+      let classes = [this.isCircle ? SMART_SQUARE_CLASS : SMART_BASE_CLASS, `upf-smart-btn--${this.smartSkin}`];
+      if (this.size) {
+        classes.push(this.isCircle ? `upf-smart-square-btn--${this.size}` : `upf-smart-btn--${this.size}`);
+      }
+      return classes.join(' ');
+    }
+  }
+  _exports.default = OSSSmartButton;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSmartButton);
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/button.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.WithIconUrl = _exports.Default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  const SkinTypes = ['primary', 'secondary'];
+  const SizeTypes = ['xs', 'sm', 'md', 'lg'];
+  var _default = _exports.default = {
+    title: 'Components/OSS::Smart::Button',
+    component: 'button',
+    argTypes: {
+      skin: {
+        description: 'Adjust appearance',
+        table: {
+          type: {
+            summary: SkinTypes.join('|')
+          },
+          defaultValue: {
+            summary: 'primary'
+          }
+        },
+        options: SkinTypes,
+        control: {
+          type: 'select'
+        }
+      },
+      size: {
+        description: 'Adjust size',
+        table: {
+          type: {
+            summary: SizeTypes.join('|')
+          },
+          defaultValue: {
+            summary: 'null'
+          }
+        },
+        options: SizeTypes,
+        control: {
+          type: 'select'
+        }
+      },
+      loading: {
+        description: 'Display loading state',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      loadingOptions: {
+        description: 'Options to configure the loading state',
+        table: {
+          type: {
+            summary: '{ showLabel?: boolean }'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'object'
+        }
+      },
+      label: {
+        description: 'Text content of the button',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      icon: {
+        description: 'Font Awesome class, for example: far fa-envelope-open',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      iconUrl: {
+        description: 'Url of an icon that will be shown within the button',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      circle: {
+        description: 'Displays the button as a circle. Useful for icon buttons.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      disabled: {
+        description: 'Disables the button',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'The smart version of the button component. Configurable & skinable.'
+        }
+      }
+    }
+  };
+  const defaultArgs = {
+    skin: 'primary',
+    size: 'md',
+    loading: false,
+    label: 'Label',
+    icon: 'far fa-envelope-open',
+    circle: false,
+    loadingOptions: undefined,
+    iconUrl: undefined,
+    disabled: false
+  };
+  const Template = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <OSS::Smart::Button
+          @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
+          @circle={{this.circle}} @iconUrl={{this.iconUrl}} @loadingOptions={{this.loadingOptions}} @disabled={{this.disabled}} />
+      
+    */
+    {
+      "id": "VdfHlNlg",
+      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@skin\",\"@size\",\"@loading\",\"@label\",\"@icon\",\"@circle\",\"@iconUrl\",\"@loadingOptions\",\"@disabled\"],[[30,0,[\"skin\"]],[30,0,[\"size\"]],[30,0,[\"loading\"]],[30,0,[\"label\"]],[30,0,[\"icon\"]],[30,0,[\"circle\"]],[30,0,[\"iconUrl\"]],[30,0,[\"loadingOptions\"]],[30,0,[\"disabled\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/smart/button\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/smart/button.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const Default = _exports.Default = Template.bind({});
+  Default.args = defaultArgs;
+  const WithIconUrl = _exports.WithIconUrl = Template.bind({});
+  WithIconUrl.args = {
+    ...defaultArgs,
+    ...{
+      icon: undefined,
+      iconUrl: '/@upfluence/oss-components/assets/star-icon.svg'
+    }
+  };
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/feedback", ["exports", "@ember/component", "@glimmer/component", "@ember/template-factory"], function (_exports, _component, _component2, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/component"eaimeta@70e063a35619d71f
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="oss-smart__feedback {{this.currentStateClass}} fx-row fx-gap-px-18 fx-xalign-center" ...attributes>
+    <div>
+      {{yield to="icon"}}
+    </div>
+    <div class="oss-smart__feedback__content">
+      {{#if @loading}}
+        <div class="fx-col fx-1 fx-gap-px-10">
+          <OSS::Smart::Skeleton @width="75%" height="10px" />
+          <OSS::Smart::Skeleton @width="45%" height="10px" />
+        </div>
+      {{else}}
+        {{#if @contentString}}
+          <span class="oss-smart__feedback__content__text">{{@contentString}}</span>
+        {{else if @contentArray}}
+          <span class="oss-smart__feedback__content__text">
+            {{#each @contentArray as |item|}}
+              {{item}}
+            {{/each}}
+          </span>
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
+  */
+  {
+    "id": "Vgmt6O4j",
+    "block": "[[[11,0],[16,0,[29,[\"oss-smart__feedback \",[30,0,[\"currentStateClass\"]],\" fx-row fx-gap-px-18 fx-xalign-center\"]]],[17,1],[12],[1,\"\\n  \"],[10,0],[12],[1,\"\\n    \"],[18,6,null],[1,\"\\n  \"],[13],[1,\"\\n  \"],[10,0],[14,0,\"oss-smart__feedback__content\"],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"      \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-10\"],[12],[1,\"\\n        \"],[8,[39,2],[[24,\"height\",\"10px\"]],[[\"@width\"],[\"75%\"]],null],[1,\"\\n        \"],[8,[39,2],[[24,\"height\",\"10px\"]],[[\"@width\"],[\"45%\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],[[[41,[30,3],[[[1,\"        \"],[10,1],[14,0,\"oss-smart__feedback__content__text\"],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],[[[41,[30,4],[[[1,\"        \"],[10,1],[14,0,\"oss-smart__feedback__content__text\"],[12],[1,\"\\n\"],[42,[28,[37,4],[[28,[37,4],[[30,4]],null]],null],null,[[[1,\"            \"],[1,[30,5]],[1,\"\\n\"]],[5]],null],[1,\"        \"],[13],[1,\"\\n      \"]],[]],null]],[]]]],[]]],[1,\"  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@loading\",\"@contentString\",\"@contentArray\",\"item\",\"&icon\"],false,[\"yield\",\"if\",\"o-s-s/smart/skeleton\",\"each\",\"-track-array\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/smart/feedback.hbs",
+    "isStrictMode": false
+  });
+  class OSSSmartFeedback extends _component2.default {
+    get currentStateClass() {
+      if (this.args.loading) return 'oss-smart__feedback__loading';
+      if (this.args.contentString || this.args.contentArray) return 'oss-smart__generated';
+      return null;
+    }
+  }
+  _exports.default = OSSSmartFeedback;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSmartFeedback);
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/feedback.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.WithArrayContent = _exports.Loading = _exports.Default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::Smart::Feedback',
+    component: 'oss-smart-feedback',
+    argTypes: {
+      loading: {
+        description: 'Whether the feedback component is in a loading state',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      contentString: {
+        description: 'Text content to display when not loading',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: ''
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      contentArray: {
+        description: 'Array of text lines to display instead of a single string',
+        table: {
+          type: {
+            summary: 'string[]'
+          },
+          defaultValue: {
+            summary: '[]'
+          }
+        },
+        control: {
+          type: 'object'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'Component used to display feedback with optional loading skeletons and dynamic content (string or array).'
+        },
+        iframeHeight: 250
+      }
+    }
+  };
+  const defaultArgs = {
+    loading: false,
+    contentString: 'This is feedback content.',
+    contentArray: []
+  };
+  const Template = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <div class="bg-color-white padding-px-6">
+          <OSS::Smart::Feedback 
+            @loading={{this.loading}} 
+            @contentString={{this.contentString}} 
+            @contentArray={{this.contentArray}} 
+          >
+            <:icon>
+              <div class="w-px-40 h-px-40 bg-color-blue border-radius-px-6"></div>
+            </:icon>
+          </OSS::Smart::Feedback>
+        </div>
+      
+    */
+    {
+      "id": "8TRT6A9c",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,0,\"bg-color-white padding-px-6\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@loading\",\"@contentString\",\"@contentArray\"],[[30,0,[\"loading\"]],[30,0,[\"contentString\"]],[30,0,[\"contentArray\"]]]],[[\"icon\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"w-px-40 h-px-40 bg-color-blue border-radius-px-6\"],[12],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/smart/feedback\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/smart/feedback.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const Default = _exports.Default = Template.bind({});
+  Default.args = defaultArgs;
+  const WithArrayContent = _exports.WithArrayContent = Template.bind({});
+  WithArrayContent.args = {
+    loading: false,
+    contentArray: ['Line 1', 'Line 2', 'Line 3'],
+    contentString: ''
+  };
+  const Loading = _exports.Loading = Template.bind({});
+  Loading.args = {
+    loading: true,
+    contentString: '',
+    contentArray: []
+  };
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/immersive/currency-input", ["exports", "@ember/component", "@ember/debug", "@upfluence/oss-components/components/o-s-s/currency-input", "@ember/object", "@glimmer/tracking", "@upfluence/oss-components/utils/run-smart-gradient-animation", "@ember/utils", "@ember/object/internals", "@upfluence/oss-components/utils/attach-dropdown", "@ember/runloop", "@ember/template-factory", "@embroider/macros/runtime"], function (_exports, _component, _debug, _currencyInput, _object, _tracking, _runSmartGradientAnimation, _utils, _internals, _attachDropdown, _runloop, _templateFactory, _runtime) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@upfluence/oss-components/components/o-s-s/currency-input",0,"@ember/object",0,"@glimmer/tracking",0,"@upfluence/oss-components/utils/run-smart-gradient-animation",0,"@ember/utils",0,"@ember/object/internals",0,"@upfluence/oss-components/utils/attach-dropdown",0,"@ember/runloop",0,"@embroider/macros",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div
+    class={{this.computedClasses}}
+    id={{this.inputId}}
+    {{did-insert this.registerElement}}
+    {{did-update this.runAnimationOnLoadEnd @loading}}
+    ...attributes
+  >
+    <div class="smart-immersive-currency-input fx-row">
+      <div
+        class="currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center"
+        role={{if this.allowCurrencyUpdate "button" "img"}}
+        {{on "click" this.toggleCurrencySelector}}
+      >
+        <div class="fx-col">
+          <div class="fx-row fx-gap-px-9">
+            <span>{{this.selectedCurrencySymbol}}</span>
+          </div>
+        </div>
+  
+        {{#if this.allowCurrencyUpdate}}
+          <OSS::Icon
+            @icon="{{if this.currencySelectorShown 'fa-chevron-up' 'fa-chevron-down'}}"
+            class="margin-left-px-6"
+          />
+        {{/if}}
+      </div>
+      {{#if @loading}}
+        <div class="loading-placeholder fx-row fx-xalign-center">
+          <span class="rainbow-text-animated">{{@placeholder}}</span>
+        </div>
+      {{else}}
+        <div class="input-container">
+          <span class="hidden-span">{{or @value @placeholder}}</span>
+          <Input
+            class="displayed-input"
+            @value={{@value}}
+            @type="text"
+            min="0"
+            autocomplete="off"
+            placeholder={{this.placeholder}}
+            disabled={{@disabled}}
+            {{on "keydown" this.onlyNumeric}}
+            {{on "keyup" (fn this.onChange @currency @value)}}
+            {{on "paste" this.handlePaste}}
+          />
+        </div>
+      {{/if}}
+    </div>
+    {{#if this.currencySelectorShown}}
+      {{#in-element this.portalTarget insertBefore=null}}
+        <OSS::InfiniteSelect
+          @items={{this.filteredCurrencies}}
+          @onSearch={{this.onSearch}}
+          @onSelect={{this.onSelect}}
+          @searchPlaceholder={{t "oss-components.currency-input.search"}}
+          class={{concat "margin-top-px-0 " this.dropdownAddressableClass}}
+          id={{this.portalId}}
+          {{on-click-outside this.hideCurrencySelector}}
+        >
+          <:option as |currency|>
+            <div class="fx-row fx-xalign-center {{if (eq this.selectedCurrency currency) 'row-selected'}}">
+              <span class="symbol text-color-default-light margin-left-xx-sm">{{currency.symbol}}</span>
+              <span class="text-color-default-light margin-left-xx-sm fx-1">{{currency.code}}</span>
+              {{#if (eq this.selectedCurrency currency)}}
+                <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
+              {{/if}}
+            </div>
+          </:option>
+        </OSS::InfiniteSelect>
+      {{/in-element}}
+    {{/if}}
+  </div>
+  */
+  {
+    "id": "+a1fhJDL",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[16,1,[30,0,[\"inputId\"]]],[17,1],[4,[38,0],[[30,0,[\"registerElement\"]]],null],[4,[38,1],[[30,0,[\"runAnimationOnLoadEnd\"]],[30,2]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"smart-immersive-currency-input fx-row\"],[12],[1,\"\\n    \"],[11,0],[24,0,\"currency-selector fx-row fx-gap-px-12 fx-malign-space-between fx-xalign-center\"],[16,\"role\",[52,[30,0,[\"allowCurrencyUpdate\"]],\"button\",\"img\"]],[4,[38,3],[\"click\",[30,0,[\"toggleCurrencySelector\"]]],null],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-9\"],[12],[1,\"\\n          \"],[10,1],[12],[1,[30,0,[\"selectedCurrencySymbol\"]]],[13],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"allowCurrencyUpdate\"]],[[[1,\"        \"],[8,[39,4],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[[29,[[52,[30,0,[\"currencySelectorShown\"]],\"fa-chevron-up\",\"fa-chevron-down\"]]]]],null],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[30,2],[[[1,\"      \"],[10,0],[14,0,\"loading-placeholder fx-row fx-xalign-center\"],[12],[1,\"\\n        \"],[10,1],[14,0,\"rainbow-text-animated\"],[12],[1,[30,3]],[13],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],[[[1,\"      \"],[10,0],[14,0,\"input-container\"],[12],[1,\"\\n        \"],[10,1],[14,0,\"hidden-span\"],[12],[1,[28,[35,5],[[30,4],[30,3]],null]],[13],[1,\"\\n        \"],[8,[39,6],[[24,0,\"displayed-input\"],[24,\"min\",\"0\"],[24,\"autocomplete\",\"off\"],[16,\"placeholder\",[30,0,[\"placeholder\"]]],[16,\"disabled\",[30,5]],[4,[38,3],[\"keydown\",[30,0,[\"onlyNumeric\"]]],null],[4,[38,3],[\"keyup\",[28,[37,7],[[30,0,[\"onChange\"]],[30,6],[30,4]],null]],null],[4,[38,3],[\"paste\",[30,0,[\"handlePaste\"]]],null]],[[\"@value\",\"@type\"],[[30,4],\"text\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]]],[1,\"  \"],[13],[1,\"\\n\"],[41,[30,0,[\"currencySelectorShown\"]],[[[40,[[[1,\"      \"],[8,[39,10],[[16,0,[28,[37,11],[\"margin-top-px-0 \",[30,0,[\"dropdownAddressableClass\"]]],null]],[16,1,[30,0,[\"portalId\"]]],[4,[38,13],[[30,0,[\"hideCurrencySelector\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchPlaceholder\"],[[30,0,[\"filteredCurrencies\"]],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[28,[37,12],[\"oss-components.currency-input.search\"],null]]],[[\"option\"],[[[[1,\"\\n          \"],[10,0],[15,0,[29,[\"fx-row fx-xalign-center \",[52,[28,[37,14],[[30,0,[\"selectedCurrency\"]],[30,7]],null],\"row-selected\"]]]],[12],[1,\"\\n            \"],[10,1],[14,0,\"symbol text-color-default-light margin-left-xx-sm\"],[12],[1,[30,7,[\"symbol\"]]],[13],[1,\"\\n            \"],[10,1],[14,0,\"text-color-default-light margin-left-xx-sm fx-1\"],[12],[1,[30,7,[\"code\"]]],[13],[1,\"\\n\"],[41,[28,[37,14],[[30,0,[\"selectedCurrency\"]],[30,7]],null],[[[1,\"              \"],[8,[39,4],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"          \"],[13],[1,\"\\n        \"]],[7]]]]],[1,\"\\n\"]],[]],\"%cursor:0%\",[28,[37,9],[[30,0,[\"portalTarget\"]]],null],null]],[]],null],[13]],[\"&attrs\",\"@loading\",\"@placeholder\",\"@value\",\"@disabled\",\"@currency\",\"currency\"],false,[\"did-insert\",\"did-update\",\"if\",\"on\",\"o-s-s/icon\",\"or\",\"input\",\"fn\",\"in-element\",\"-in-el-null\",\"o-s-s/infinite-select\",\"concat\",\"t\",\"on-click-outside\",\"eq\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/smart/immersive/currency-input.hbs",
+    "isStrictMode": false
+  });
+  let OSSSmartImmersiveCurrencyInput = _exports.default = (_class = class OSSSmartImmersiveCurrencyInput extends _currencyInput.default {
+    constructor(owner, args) {
+      super(owner, args, true);
+      _defineProperty(this, "portalId", (0, _internals.guidFor)(this));
+      _initializerDefineProperty(this, "element", _descriptor, this);
+      _defineProperty(this, "cleanupDrodpownAutoplacement", void 0);
+      (true && !(typeof this.args.onChange === 'function') && (0, _debug.assert)('[component][OSS::Smart::Immersive::CurrencyInput] The parameter @onChange of type function is mandatory', typeof this.args.onChange === 'function'));
+    }
+    get placeholder() {
+      return this.args.placeholder ?? '';
+    }
+    get computedClasses() {
+      const classes = ['smart-immersive-currency-input-container'];
+      if (this.args.value && !this.args.loading) {
+        classes.push('smart-immersive-currency-input-container--filled');
+      }
+      if (this.args.hasError) {
+        classes.push('smart-immersive-currency-input-container--errored');
+      }
+      return classes.join(' ');
+    }
+    onChange(currency, value) {
+      this.args.onChange(currency, value);
+    }
+    registerElement(element) {
+      this.portalTarget = (0, _runtime.isTesting)() ? element : document.body;
+      this.element = element;
+    }
+    runAnimationOnLoadEnd() {
+      if (this.element && this.args.loading === false && !(0, _utils.isEmpty)(this.args.value)) {
+        (0, _runSmartGradientAnimation.runSmartGradientAnimation)(this.element);
+      }
+    }
+    toggleCurrencySelector(e) {
+      super.toggleCurrencySelector(e);
+      (0, _runloop.scheduleOnce)('afterRender', this, this.setupDropdownAutoplacement);
+    }
+    get dropdownAddressableClass() {
+      return this.args.addressableAs ? `${this.args.addressableAs}__dropdown` : '';
+    }
+    setupDropdownAutoplacement() {
+      const referenceTarget = this.element.querySelector('.currency-selector');
+      const floatingTarget = document.querySelector(`#${this.portalId}`);
+      if (referenceTarget && floatingTarget) {
+        this.cleanupDrodpownAutoplacement = (0, _attachDropdown.default)(referenceTarget, floatingTarget, {
+          maxHeight: 200,
+          maxWidth: 320,
+          placement: 'bottom-start',
+          fallbackPlacements: ['top-start']
+        });
+      }
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "element", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _applyDecoratedDescriptor(_class.prototype, "onChange", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onChange"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerElement"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "runAnimationOnLoadEnd", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "runAnimationOnLoadEnd"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleCurrencySelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleCurrencySelector"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSmartImmersiveCurrencyInput);
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/immersive/currency-input.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.BasicUsage = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::Smart::Immersive::CurrencyInput',
+    component: 'currency-input',
+    argTypes: {
+      currency: {
+        description: 'The currency applied to the component (EUR, USD, etc.)',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'USD'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      value: {
+        description: 'The value applied to the input',
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: 0
+          }
+        },
+        control: {
+          type: 'number'
+        }
+      },
+      placeholder: {
+        description: 'Placeholder for the number input when no value is passed',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: null
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      onChange: {
+        type: {
+          required: true
+        },
+        description: 'A callback that sends the modifications of the value & the currency back to the parent component',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'onChange(currency: string, value: number): void'
+          }
+        }
+      },
+      allowedCurrencies: {
+        description: 'Allows passing a custom set of selectable currencies to the component.',
+        table: {
+          type: {
+            summary: '{ code: string, symbol: string }[]'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'array'
+        }
+      }
+    },
+    hasError: {
+      description: 'Displays an error border around the input.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: {
+          summary: 'false'
+        }
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'A smart and immersive currency selector & input, used to set prices.'
+        },
+        iframeHeight: 200
+      }
+    }
+  };
+  const defaultArgs = {
+    value: 42,
+    currency: 'USD',
+    onChange: (0, _addonActions.action)('onChange'),
+    hasError: false,
+    allowedCurrencies: undefined,
+    placeholder: undefined
+  };
+  const Template = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+          <div style="width:270px">
+            <OSS::Smart::Immersive::CurrencyInput @value={{this.value}} @currency={{this.currency}} @onChange={{this.onChange}}
+                                                  @hasError={{this.hasError}} @allowedCurrencies={{this.allowedCurrencies}}
+                                                  @placeholder={{this.placeholder}} />
+          </div>
+      
+    */
+    {
+      "id": "D4m6cPvX",
+      "block": "[[[1,\"\\n      \"],[10,0],[14,5,\"width:270px\"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@value\",\"@currency\",\"@onChange\",\"@hasError\",\"@allowedCurrencies\",\"@placeholder\"],[[30,0,[\"value\"]],[30,0,[\"currency\"]],[30,0,[\"onChange\"]],[30,0,[\"hasError\"]],[30,0,[\"allowedCurrencies\"]],[30,0,[\"placeholder\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/smart/immersive/currency-input\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/smart/immersive/currency-input.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const BasicUsage = _exports.BasicUsage = Template.bind({});
+  BasicUsage.args = defaultArgs;
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/immersive/input", ["exports", "@ember/component", "@ember/object", "@ember/utils", "@glimmer/tracking", "@upfluence/oss-components/utils/run-smart-gradient-animation", "@upfluence/oss-components/components/o-s-s/input-container", "@ember/template-factory"], function (_exports, _component, _object, _utils, _tracking, _runSmartGradientAnimation, _inputContainer, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@ember/utils",0,"@glimmer/tracking",0,"@upfluence/oss-components/utils/run-smart-gradient-animation",0,"@upfluence/oss-components/components/o-s-s/input-container",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <OSS::InputContainer
+    @feedbackMessage={{@feedbackMessage}}
+    class={{this.computedClasses}}
+    {{did-insert this.registerElement}}
+    {{did-update this.runAnimationOnLoadEnd @loading}}
+    ...attributes
+  >
+    <:input>
+      <div class="smart-immersive--input-container">
+        {{#if (has-block "prefix")}}
+          <div class="prefix">
+            {{yield to="prefix"}}
+          </div>
+        {{/if}}
+        {{#if @loading}}
+          <div class="upf-input loading-placeholder fx-row fx-xalign-center">
+            <span class="smart_text_animated">{{@placeholder}}</span>
+          </div>
+        {{else}}
+          <div class="smart-immersive-input-sizer">
+            <span class="smart-immersive-span-placeholder">{{or @value @placeholder}}</span>
+            <Input
+              @value={{@value}}
+              @type={{this.type}}
+              placeholder={{this.placeholder}}
+              disabled={{@disabled}}
+              class="smart-immersive--input"
+              aria-label="input"
+              {{on "input" (fn this.onChange @value)}}
+            />
+          </div>
+        {{/if}}
+        {{#if (has-block "suffix")}}
+          <div class="suffix">
+            {{yield to="suffix"}}
+          </div>
+        {{/if}}
+      </div>
+    </:input>
+  </OSS::InputContainer>
+  */
+  {
+    "id": "W2m0fPVB",
+    "block": "[[[8,[39,0],[[16,0,[30,0,[\"computedClasses\"]]],[17,1],[4,[38,1],[[30,0,[\"registerElement\"]]],null],[4,[38,2],[[30,0,[\"runAnimationOnLoadEnd\"]],[30,3]],null]],[[\"@feedbackMessage\"],[[30,2]]],[[\"input\"],[[[[1,\"\\n    \"],[10,0],[14,0,\"smart-immersive--input-container\"],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"        \"],[10,0],[14,0,\"prefix\"],[12],[1,\"\\n          \"],[18,7,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[41,[30,3],[[[1,\"        \"],[10,0],[14,0,\"upf-input loading-placeholder fx-row fx-xalign-center\"],[12],[1,\"\\n          \"],[10,1],[14,0,\"smart_text_animated\"],[12],[1,[30,4]],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],[[[1,\"        \"],[10,0],[14,0,\"smart-immersive-input-sizer\"],[12],[1,\"\\n          \"],[10,1],[14,0,\"smart-immersive-span-placeholder\"],[12],[1,[28,[35,6],[[30,5],[30,4]],null]],[13],[1,\"\\n          \"],[8,[39,7],[[16,\"placeholder\",[30,0,[\"placeholder\"]]],[16,\"disabled\",[30,6]],[24,0,\"smart-immersive--input\"],[24,\"aria-label\",\"input\"],[4,[38,8],[\"input\",[28,[37,9],[[30,0,[\"onChange\"]],[30,5]],null]],null]],[[\"@value\",\"@type\"],[[30,5],[30,0,[\"type\"]]]],null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]]],[41,[48,[30,8]],[[[1,\"        \"],[10,0],[14,0,\"suffix\"],[12],[1,\"\\n          \"],[18,8,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n  \"]],[]]]]]],[\"&attrs\",\"@feedbackMessage\",\"@loading\",\"@placeholder\",\"@value\",\"@disabled\",\"&prefix\",\"&suffix\"],false,[\"o-s-s/input-container\",\"did-insert\",\"did-update\",\"if\",\"has-block\",\"yield\",\"or\",\"input\",\"on\",\"fn\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/smart/immersive/input.hbs",
+    "isStrictMode": false
+  });
+  let OSSSmartImmersiveInputComponent = _exports.default = (_class = class OSSSmartImmersiveInputComponent extends _inputContainer.default {
+    constructor(...args) {
+      super(...args);
+      _initializerDefineProperty(this, "element", _descriptor, this);
+    }
+    get placeholder() {
+      return this.args.placeholder ?? '';
+    }
+    get computedClasses() {
+      const classes = ['smart-immersive-input-container'];
+      if (this.args.value) {
+        classes.push('smart-immersive-input-container--filled');
+      }
+      if (this.args.hasError) {
+        classes.push('smart-immersive-input-container--errored');
+      }
+      if (this.feedbackMessage) {
+        classes.push(`smart-immersive-input-container--${this.feedbackMessage.type}`);
+      }
+      return classes.join(' ');
+    }
+    onChange(_, event) {
+      if (this.args.onChange) {
+        const target = event.target;
+        this.args.onChange(target.value);
+      }
+    }
+    registerElement(element) {
+      this.element = element;
+    }
+    runAnimationOnLoadEnd() {
+      if (this.element && this.args.loading === false && !(0, _utils.isEmpty)(this.args.value)) {
+        (0, _runSmartGradientAnimation.runSmartGradientAnimation)(this.element);
+      }
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "element", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _applyDecoratedDescriptor(_class.prototype, "onChange", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onChange"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerElement"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "runAnimationOnLoadEnd", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "runAnimationOnLoadEnd"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSmartImmersiveInputComponent);
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/immersive/input.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.SuffixUsage = _exports.PrefixUsage = _exports.BasicUsage = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::Smart::Immersive::Input',
+    component: 'input',
+    argTypes: {
+      value: {
+        description: 'Value of the input',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      type: {
+        description: 'The input type',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'text'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      disabled: {
+        description: 'Disable the default input (when not passing an input named block)',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      placeholder: {
+        description: 'Placeholder of the input',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      feedbackMessage: {
+        description: 'A success, warning or error message that will be displayed below the input-group.',
+        table: {
+          type: {
+            summary: '{ type: string, value: string }'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'object'
+        }
+      },
+      hasError: {
+        description: 'Allows setting the error style on the input without showing an error message. Useful for form validation.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      onChange: {
+        description: 'Method called every time the input is updated',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'onChange(value: string): void'
+          }
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'The smart & immersive version of the input component. Configurable.'
+        }
+      }
+    }
+  };
+  const defaultArgs = {
+    value: 'John',
+    disabled: false,
+    type: undefined,
+    placeholder: 'this is the placeholder',
+    errorMessage: undefined,
+    onChange: (0, _addonActions.action)('onChange')
+  };
+  const DefaultUsageTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <OSS::Smart::Immersive::Input @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}} @type={{this.type}}
+                                  @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} />
+      
+    */
+    {
+      "id": "j4vmIPJx",
+      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@value\",\"@disabled\",\"@placeholder\",\"@type\",\"@errorMessage\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"disabled\"]],[30,0,[\"placeholder\"]],[30,0,[\"type\"]],[30,0,[\"errorMessage\"]],[30,0,[\"onChange\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/smart/immersive/input\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/smart/immersive/input.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const BasicUsage = _exports.BasicUsage = DefaultUsageTemplate.bind({});
+  BasicUsage.args = defaultArgs;
+  const PrefixUsageTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+          <OSS::Smart::Immersive::Input @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}} @type={{this.type}}
+                                   @errorMessage={{this.errorMessage}} @onChange={{this.onChange}}>
+            <:prefix>
+              <i class="fas fa-user" />
+            </:prefix>
+          </OSS::Smart::Immersive::Input>
+      
+    */
+    {
+      "id": "itk2iC6d",
+      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@value\",\"@disabled\",\"@placeholder\",\"@type\",\"@errorMessage\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"disabled\"]],[30,0,[\"placeholder\"]],[30,0,[\"type\"]],[30,0,[\"errorMessage\"]],[30,0,[\"onChange\"]]]],[[\"prefix\"],[[[[1,\"\\n          \"],[10,\"i\"],[14,0,\"fas fa-user\"],[12],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/smart/immersive/input\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/smart/immersive/input.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const PrefixUsage = _exports.PrefixUsage = PrefixUsageTemplate.bind({});
+  PrefixUsage.args = defaultArgs;
+  const SuffixUsageTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+          <OSS::Smart::Immersive::Input @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}} @type={{this.type}}
+                                   @errorMessage={{this.errorMessage}} @onChange={{this.onChange}}>
+            <:suffix>
+              <i class="fas fa-user" />
+            </:suffix>
+          </OSS::Smart::Immersive::Input>
+      
+    */
+    {
+      "id": "tT6hK5+Z",
+      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@value\",\"@disabled\",\"@placeholder\",\"@type\",\"@errorMessage\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"disabled\"]],[30,0,[\"placeholder\"]],[30,0,[\"type\"]],[30,0,[\"errorMessage\"]],[30,0,[\"onChange\"]]]],[[\"suffix\"],[[[[1,\"\\n          \"],[10,\"i\"],[14,0,\"fas fa-user\"],[12],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/smart/immersive/input\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/smart/immersive/input.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const SuffixUsage = _exports.SuffixUsage = SuffixUsageTemplate.bind({});
+  SuffixUsage.args = defaultArgs;
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/immersive/logo", ["exports", "@ember/component", "@ember/debug", "@ember/object", "@ember/utils", "@glimmer/component", "@glimmer/tracking", "@upfluence/oss-components/utils/run-smart-gradient-animation", "@ember/template-factory"], function (_exports, _component, _debug, _object, _utils, _component2, _tracking, _runSmartGradientAnimation, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@ember/object",0,"@ember/utils",0,"@glimmer/component",0,"@glimmer/tracking",0,"@upfluence/oss-components/utils/run-smart-gradient-animation",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div
+    class={{this.computedClass}}
+    {{did-update this.handleLoadingUpdate @loading}}
+    {{did-insert this.registerElement}}
+    ...attributes
+  >
+    {{#if @editable}}
+      <div class="edit-overlay fx-row fx-malign-center fx-xalign-center" role="button" {{on "click" @onEdit}}>
+        <OSS::Icon @icon="fa-pen" />
+      </div>
+    {{/if}}
+    {{#if (eq this.logoMode "icon")}}
+      <div class="smart-logo-icon fx-row fx-malign-center fx-xalign-center {{this.logoColor}}">
+        <OSS::Icon @icon="fa-{{this.logoIcon}}" @style="duotone" />
+      </div>
+    {{else}}
+      <img class="smart-logo-image" src={{or @url this.fallbackSvgUrl}} onError={{this.onError}} alt="Smart branding" />
+    {{/if}}
+  </div>
+  */
+  {
+    "id": "cM6lss2z",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[4,[38,0],[[30,0,[\"handleLoadingUpdate\"]],[30,2]],null],[4,[38,1],[[30,0,[\"registerElement\"]]],null],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[11,0],[24,0,\"edit-overlay fx-row fx-malign-center fx-xalign-center\"],[24,\"role\",\"button\"],[4,[38,3],[\"click\",[30,4]],null],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\"],[\"fa-pen\"]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[41,[28,[37,5],[[30,0,[\"logoMode\"]],\"icon\"],null],[[[1,\"    \"],[10,0],[15,0,[29,[\"smart-logo-icon fx-row fx-malign-center fx-xalign-center \",[30,0,[\"logoColor\"]]]]],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@style\"],[[29,[\"fa-\",[30,0,[\"logoIcon\"]]]],\"duotone\"]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[10,\"img\"],[14,0,\"smart-logo-image\"],[15,\"src\",[28,[37,6],[[30,5],[30,0,[\"fallbackSvgUrl\"]]],null]],[15,\"onError\",[30,0,[\"onError\"]]],[14,\"alt\",\"Smart branding\"],[12],[13],[1,\"\\n\"]],[]]],[13]],[\"&attrs\",\"@loading\",\"@editable\",\"@onEdit\",\"@url\"],false,[\"did-update\",\"did-insert\",\"if\",\"on\",\"o-s-s/icon\",\"eq\",\"or\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/smart/immersive/logo.hbs",
+    "isStrictMode": false
+  });
+  const FALLBACK_SVG_URL = '/assets/images/picture-frame.svg';
+  const BASE_COMPONENT_CLASS = 'oss-smart__immersive-icon-container';
+  let OSSSmartImmersiveLogoComponent = _exports.default = (_class = class OSSSmartImmersiveLogoComponent extends _component2.default {
+    constructor(owner, args) {
+      super(owner, args);
+      _initializerDefineProperty(this, "element", _descriptor, this);
+      _defineProperty(this, "fallbackSvgUrl", FALLBACK_SVG_URL);
+      if (!args.url && args.icon) {
+        const parts = args.icon.split(':');
+        if (parts) {
+          (true && !(parts.length === 2 && typeof parts[0] === 'string' && typeof parts[1] === 'string' && parts[0].trim().length > 0 && parts[1].trim().length > 0) && (0, _debug.assert)(`Invalid icon format "${args.icon}". Expected format is "iconName:colorName".`, parts.length === 2 && typeof parts[0] === 'string' && typeof parts[1] === 'string' && parts[0].trim().length > 0 && parts[1].trim().length > 0));
+        }
+      }
+    }
+    get size() {
+      return this.args.size ?? 'md';
+    }
+    get computedClass() {
+      const classes = [BASE_COMPONENT_CLASS];
+      if (this.args.loading) {
+        classes.push(`${BASE_COMPONENT_CLASS}--generating`);
+      }
+      if (this.args.hasError) {
+        classes.push(`${BASE_COMPONENT_CLASS}--errored`);
+      }
+      if (this.size) {
+        classes.push(`${BASE_COMPONENT_CLASS}--size-${this.size}`);
+      }
+      return classes.join(' ');
+    }
+    get logoColor() {
+      return this.args.icon ? `smart-logo-icon-color_${this.args.icon.split(':')[1]}` : null;
+    }
+    get logoIcon() {
+      return this.args.icon?.split(':')[0] ?? null;
+    }
+    get logoMode() {
+      return this.args.url || !this.args.icon ? 'image' : 'icon';
+    }
+    handleLoadingUpdate() {
+      if (this.args.loading === false && !(0, _utils.isBlank)(this.args.url ?? this.args.icon)) {
+        (0, _runSmartGradientAnimation.runSmartGradientAnimation)(this.element);
+      }
+    }
+    registerElement(element) {
+      this.element = element;
+    }
+    onError(event) {
+      event.target.src = FALLBACK_SVG_URL;
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "element", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _applyDecoratedDescriptor(_class.prototype, "handleLoadingUpdate", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleLoadingUpdate"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerElement"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onError", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onError"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSmartImmersiveLogoComponent);
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/immersive/logo.stories", ["exports", "@storybook/addon-actions", "@upfluence/app/utils/logo-config", "@ember/template-factory"], function (_exports, _addonActions, _logoConfig, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.OversizeState = _exports.LoadingState = _exports.ImageMode = _exports.Editable = _exports.Default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions",0,"@upfluence/app/utils/logo-config"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::Smart::Immersive::Logo',
+    component: 'oss-smart-immersive-logo',
+    argTypes: {
+      icon: {
+        name: 'Icon',
+        description: 'icon name and color for icon mode (e.g., "rabbit:orange")',
+        table: {
+          disable: false
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      iconName: {
+        name: 'Icon Name',
+        description: 'Name of the icon to display, concatenated with iconColor to form "iconName:iconColor"',
+        control: {
+          type: 'select',
+          options: _logoConfig.LOGO_ICONS
+        }
+      },
+      iconColor: {
+        name: 'Icon Color',
+        description: 'Color of the icon to display, concatenated with iconName to form "iconName:iconColor"',
+        control: {
+          type: 'select',
+          options: _logoConfig.LOGO_COLORS
+        }
+      },
+      url: {
+        description: 'URL of the image for image mode',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      editable: {
+        description: 'Whether the logo is editable and shows an overlay',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      loading: {
+        description: 'Whether the logo is in a loading state',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      size: {
+        description: 'Allow to define the size of the container',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'md'
+          }
+        },
+        control: {
+          type: 'select',
+          options: ['sm', 'md', 'lg']
+        }
+      },
+      hasError: {
+        description: 'Display an error border around the component.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      onEdit: {
+        description: 'Action triggered when clicking the edit overlay',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: '() => void'
+          }
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'Smart immersive logo component which supports icon or image display and editable overlay.'
+        }
+      }
+    }
+  };
+  const Template = ({
+    iconName,
+    iconColor,
+    ...rest
+  }) => {
+    const icon = iconName && iconColor ? `${iconName}:${iconColor}` : undefined;
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
+              <OSS::Smart::Immersive::Logo
+                @icon={{this.icon}}
+                @url={{this.url}}
+                @editable={{this.editable}}
+                @loading={{this.loading}}
+                @size={{this.size}}
+                @hasError={{this.hasError}}
+                @onEdit={{this.onEdit}}
+              />
+            </div>
+          
+      */
+      {
+        "id": "RrbD6nUb",
+        "block": "[[[1,\"\\n      \"],[10,0],[14,5,\"width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);\"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@icon\",\"@url\",\"@editable\",\"@loading\",\"@size\",\"@hasError\",\"@onEdit\"],[[30,0,[\"icon\"]],[30,0,[\"url\"]],[30,0,[\"editable\"]],[30,0,[\"loading\"]],[30,0,[\"size\"]],[30,0,[\"hasError\"]],[30,0,[\"onEdit\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"]],[],false,[\"o-s-s/smart/immersive/logo\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/smart/immersive/logo.stories.js",
+        "isStrictMode": false
+      }),
+      context: {
+        ...rest,
+        icon
+      }
+    };
+  };
+  const Default = _exports.Default = Template.bind({});
+  Default.args = {
+    iconName: 'rabbit',
+    iconColor: 'orange',
+    url: undefined,
+    editable: false,
+    loading: false,
+    size: 'md',
+    hasError: false,
+    onEdit: (0, _addonActions.action)('onEdit')
+  };
+  const Editable = _exports.Editable = Template.bind({});
+  Editable.args = {
+    ...Default.args,
+    editable: true
+  };
+  const ImageMode = _exports.ImageMode = Template.bind({});
+  ImageMode.args = {
+    ...Default.args,
+    url: 'https://example.com/logo.png'
+  };
+  const LoadingState = _exports.LoadingState = Template.bind({});
+  LoadingState.args = {
+    ...Default.args,
+    loading: true
+  };
+  const OversizeState = _exports.OversizeState = Template.bind({});
+  OversizeState.args = {
+    ...Default.args,
+    oversize: true
+  };
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/immersive/select", ["exports", "@ember/component", "@ember/object", "@upfluence/oss-components/components/o-s-s/private/base-dropdown", "@upfluence/oss-components/utils/run-smart-gradient-animation", "@ember/utils", "@ember/debug", "@ember/runloop", "@upfluence/oss-components/utils/attach-dropdown", "@ember/component/helper", "@ember/template-factory"], function (_exports, _component, _object, _baseDropdown, _runSmartGradientAnimation, _utils, _debug, _runloop, _attachDropdown, _helper, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@upfluence/oss-components/components/o-s-s/private/base-dropdown",0,"@upfluence/oss-components/utils/run-smart-gradient-animation",0,"@ember/utils",0,"@ember/debug",0,"@ember/runloop",0,"@upfluence/oss-components/utils/attach-dropdown",0,"@ember/component/helper",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div
+    class="{{this.computedClasses}}"
+    data-toggle="oss-dropdown"
+    {{did-insert this.registerContainer}}
+    {{did-insert (fn this.ensureBlockPresence (has-block "selected-item") (has-block "option-item"))}}
+    {{did-update this.runAnimationOnLoadEnd @loading}}
+    {{will-destroy this.disconnectObserver}}
+    ...attributes
+  >
+    {{#if @loading}}
+      <div class="upf-input loading-placeholder fx-row fx-xalign-center">
+        <span class="smart_text_animated">{{@placeholder}}</span>
+      </div>
+    {{else}}
+      <div class="upf-power-select__array-container" role="button" {{on "click" this.toggleDropdown}}>
+        <div class="upf-input fx-row padding-px-6 {{if this.isOpen 'active'}}">
+          <div class="fx-row fx-xalign-center fx-1 fx-gap-px-6 fx-wrap">
+            {{#each this.values as |selectedItem|}}
+              <div class="select-smart-item" style={{this.computedSmartItemStyle}}>
+                {{yield selectedItem to="selected-item"}}
+              </div>
+            {{else}}
+              <span class="font-size-md font-color-gray-400">
+                {{@placeholder}}
+              </span>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    {{/if}}
+  
+    {{#if this.isOpen}}
+      {{#in-element this.portalTarget insertBefore=null}}
+        <OSS::InfiniteSelect
+          @skin="smart"
+          @items={{@items}}
+          @onSearch={{@onSearch}}
+          @inline={{false}}
+          @onSelect={{this.onSelect}}
+          @searchPlaceholder={{@searchPlaceholder}}
+          @loading={{@loading}}
+          @loadingMore={{@loadingMore}}
+          @onBottomReached={{@onBottomReached}}
+          @enableKeyboard={{true}}
+          @searchEnabled={{@searchEnabled}}
+          class={{concat "margin-top-px-0 upf-power-select__dropdown " this.dropdownAddressableClass}}
+          id={{this.portalId}}
+          {{on "click" this.noop}}
+          {{on-click-outside this.onClickOutside useCapture=@captureClickOutside}}
+        >
+          <:option as |item|>
+            <div
+              class="item-wrapper fx-row fx-xalign-center fx-gap-px-6
+                {{unless @multiple 'fx-malign-space-between'}}
+                {{if (this.isSelected value=item.value) 'selected'}}"
+            >
+              {{#if (and @multiple (not @hideCheckboxes))}}
+                <OSS::Checkbox @checked={{this.isSelected value=item.value}} @onChange={{fn this.onSelect item}} />
+              {{/if}}
+              {{yield item to="option-item"}}
+              {{#if (and (not @multiple) (this.isSelected value=item.value))}}
+                <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
+              {{/if}}
+            </div>
+          </:option>
+        </OSS::InfiniteSelect>
+      {{/in-element}}
+    {{/if}}
+  </div>
+  */
+  {
+    "id": "C1dIJbfN",
+    "block": "[[[11,0],[16,0,[29,[[30,0,[\"computedClasses\"]]]]],[24,\"data-toggle\",\"oss-dropdown\"],[17,1],[4,[38,0],[[30,0,[\"registerContainer\"]]],null],[4,[38,0],[[28,[37,1],[[30,0,[\"ensureBlockPresence\"]],[48,[30,15]],[48,[30,16]]],null]],null],[4,[38,3],[[30,0,[\"runAnimationOnLoadEnd\"]],[30,2]],null],[4,[38,4],[[30,0,[\"disconnectObserver\"]]],null],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[10,0],[14,0,\"upf-input loading-placeholder fx-row fx-xalign-center\"],[12],[1,\"\\n      \"],[10,1],[14,0,\"smart_text_animated\"],[12],[1,[30,3]],[13],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[11,0],[24,0,\"upf-power-select__array-container\"],[24,\"role\",\"button\"],[4,[38,6],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n      \"],[10,0],[15,0,[29,[\"upf-input fx-row padding-px-6 \",[52,[30,0,[\"isOpen\"]],\"active\"]]]],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-1 fx-gap-px-6 fx-wrap\"],[12],[1,\"\\n\"],[42,[28,[37,8],[[28,[37,8],[[30,0,[\"values\"]]],null]],null],null,[[[1,\"            \"],[10,0],[14,0,\"select-smart-item\"],[15,5,[30,0,[\"computedSmartItemStyle\"]]],[12],[1,\"\\n              \"],[18,15,[[30,4]]],[1,\"\\n            \"],[13],[1,\"\\n\"]],[4]],[[[1,\"            \"],[10,1],[14,0,\"font-size-md font-color-gray-400\"],[12],[1,\"\\n              \"],[1,[30,3]],[1,\"\\n            \"],[13],[1,\"\\n\"]],[]]],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,0,[\"isOpen\"]],[[[40,[[[1,\"      \"],[8,[39,12],[[16,0,[28,[37,13],[\"margin-top-px-0 upf-power-select__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[16,1,[30,0,[\"portalId\"]]],[4,[38,6],[\"click\",[30,0,[\"noop\"]]],null],[4,[38,14],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[[30,11]]]]],[[\"@skin\",\"@items\",\"@onSearch\",\"@inline\",\"@onSelect\",\"@searchPlaceholder\",\"@loading\",\"@loadingMore\",\"@onBottomReached\",\"@enableKeyboard\",\"@searchEnabled\"],[\"smart\",[30,5],[30,6],false,[30,0,[\"onSelect\"]],[30,7],[30,2],[30,8],[30,9],true,[30,10]]],[[\"option\"],[[[[1,\"\\n          \"],[10,0],[15,0,[29,[\"item-wrapper fx-row fx-xalign-center fx-gap-px-6\\n              \",[52,[51,[30,13]],\"fx-malign-space-between\"],\"\\n              \",[52,[28,[30,0,[\"isSelected\"]],null,[[\"value\"],[[30,12,[\"value\"]]]]],\"selected\"]]]],[12],[1,\"\\n\"],[41,[28,[37,16],[[30,13],[28,[37,17],[[30,14]],null]],null],[[[1,\"              \"],[8,[39,18],null,[[\"@checked\",\"@onChange\"],[[28,[30,0,[\"isSelected\"]],null,[[\"value\"],[[30,12,[\"value\"]]]]],[28,[37,1],[[30,0,[\"onSelect\"]],[30,12]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"            \"],[18,16,[[30,12]]],[1,\"\\n\"],[41,[28,[37,16],[[28,[37,17],[[30,13]],null],[28,[30,0,[\"isSelected\"]],null,[[\"value\"],[[30,12,[\"value\"]]]]]],null],[[[1,\"              \"],[8,[39,19],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"          \"],[13],[1,\"\\n        \"]],[12]]]]],[1,\"\\n\"]],[]],\"%cursor:0%\",[28,[37,11],[[30,0,[\"portalTarget\"]]],null],null]],[]],null],[13]],[\"&attrs\",\"@loading\",\"@placeholder\",\"selectedItem\",\"@items\",\"@onSearch\",\"@searchPlaceholder\",\"@loadingMore\",\"@onBottomReached\",\"@searchEnabled\",\"@captureClickOutside\",\"item\",\"@multiple\",\"@hideCheckboxes\",\"&selected-item\",\"&option-item\"],false,[\"did-insert\",\"fn\",\"has-block\",\"did-update\",\"will-destroy\",\"if\",\"on\",\"each\",\"-track-array\",\"yield\",\"in-element\",\"-in-el-null\",\"o-s-s/infinite-select\",\"concat\",\"on-click-outside\",\"unless\",\"and\",\"not\",\"o-s-s/checkbox\",\"o-s-s/icon\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/smart/immersive/select.hbs",
+    "isStrictMode": false
+  });
+  let OSSSmartImmersiveSelectComponent = _exports.default = (_class = class OSSSmartImmersiveSelectComponent extends _baseDropdown.default {
+    constructor(...args) {
+      super(...args);
+      _defineProperty(this, "cleanupDrodpownAutoplacement", void 0);
+      _defineProperty(this, "isSelected", (0, _helper.helper)((_, {
+        value
+      }) => {
+        return this.args.values?.some(item => item.value === value) || false;
+      }));
+    }
+    get hasValue() {
+      return !(0, _utils.isBlank)(this.args.values);
+    }
+    get computedClasses() {
+      const classes = ['smart-immersive-select-container'];
+      if (this.hasValue) {
+        classes.push('smart-immersive-select-container--filled');
+      }
+      if (this.args.hasError) {
+        classes.push('smart-immersive-select-container--errored');
+      }
+      return classes.join(' ');
+    }
+    get computedSmartItemStyle() {
+      const style = [];
+      if (this.args.maxItemWidth) {
+        style.push(`max-width: ${this.args.maxItemWidth}px;`);
+      }
+      return style.join(' ');
+    }
+    get dropdownAddressableClass() {
+      return this.args.addressableAs ? `${this.args.addressableAs}__dropdown` : '';
+    }
+    get displayedItems() {
+      return this.args.displayedItems ?? 0;
+    }
+    get values() {
+      let values = [];
+      values = [...(this.args.values?.filter(el => {
+        return !(0, _utils.isBlank)(el) && el !== undefined;
+      }) ?? [])];
+      if (this.displayedItems > 0 && values.length > this.displayedItems) {
+        values = values.slice(0, this.displayedItems);
+        values.push({
+          value: `+${(this.args.values?.length ?? 0) - this.displayedItems}`,
+          label: `+${(this.args.values?.length ?? 0) - this.displayedItems}`
+        });
+      }
+      return values;
+    }
+    runAnimationOnLoadEnd() {
+      if (this.container && this.args.loading === false && this.hasValue) {
+        (0, _runSmartGradientAnimation.runSmartGradientAnimation)(this.container);
+      }
+    }
+    onSelect(selection) {
+      this.args.onChange?.(selection);
+      if (!this.args.multiple) {
+        this.closeDropdown();
+      }
+    }
+    handleSelectorClose() {
+      if (!this.container.hasAttribute('open') && document.querySelector(`#${this.portalId}`)) {
+        document.querySelector(`#${this.portalId}`).remove();
+        this.cleanupDrodpownAutoplacement?.();
+        this.closeDropdown();
+      }
+    }
+    ensureBlockPresence(hasSelectedItem, hasOptionItem) {
+      (true && !(hasSelectedItem) && (0, _debug.assert)(`[component][OSS::Smart::Immersive::Select] You must pass selected-item named block`, hasSelectedItem));
+      (true && !(hasOptionItem) && (0, _debug.assert)(`[component][OSS::Smart::Immersive::Select] You must pass option-item named block`, hasOptionItem));
+    }
+    toggleDropdown(event) {
+      super.toggleDropdown(event);
+      if (!this.isOpen) {
+        this.args.onSearch?.('');
+        return;
+      }
+      (0, _runloop.scheduleOnce)('afterRender', this, this.setupDropdownAutoplacement);
+    }
+    onClickOutside(element, event) {
+      this.args.onSearch?.('');
+      super.onClickOutside(element, event);
+    }
+    setupDropdownAutoplacement() {
+      const referenceTarget = this.container.querySelector('.upf-input');
+      const floatingTarget = document.querySelector(`#${this.portalId}`);
+      if (referenceTarget && floatingTarget) {
+        this.cleanupDrodpownAutoplacement = (0, _attachDropdown.default)(referenceTarget, floatingTarget, {
+          maxHeight: 300,
+          maxWidth: 320,
+          placement: 'bottom-start',
+          fallbackPlacements: ['top-start']
+        });
+      }
+    }
+  }, (_applyDecoratedDescriptor(_class.prototype, "runAnimationOnLoadEnd", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "runAnimationOnLoadEnd"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleSelectorClose", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleSelectorClose"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "ensureBlockPresence", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "ensureBlockPresence"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSmartImmersiveSelectComponent);
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/immersive/select.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.Select = _exports.Multiple = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::Smart::Immersive::Select',
+    component: 'oss-smart-immersive-select',
+    argTypes: {
+      placeholder: {
+        name: 'Placeholder',
+        description: 'Text displayed when no value is selected.',
+        table: {
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      values: {
+        name: 'Values',
+        description: 'Selected values for multi-select mode.',
+        table: {
+          type: {
+            summary: '<Array<String>>'
+          },
+          defaultValue: {
+            summary: '[]'
+          }
+        },
+        control: {
+          type: 'array'
+        }
+      },
+      loading: {
+        name: 'Loading',
+        type: {
+          name: 'boolean'
+        },
+        description: 'Enable the loading state.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      multiple: {
+        name: 'Multiple',
+        type: {
+          name: 'boolean'
+        },
+        description: 'Allow multiple selections.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      hideCheckboxes: {
+        name: 'Hide Checkboxes',
+        type: {
+          name: 'boolean'
+        },
+        description: 'Hide checkboxes in multiple selection mode.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      searchEnabled: {
+        name: 'Search Enabled',
+        type: {
+          name: 'boolean'
+        },
+        description: 'Enable the search functionality.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: true
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      items: {
+        name: 'Items',
+        description: 'Array of selectable items, each with a value and label.',
+        table: {
+          type: {
+            summary: '<Array<{ value: string, label: string }>>'
+          },
+          defaultValue: {
+            summary: '[]'
+          }
+        },
+        control: {
+          type: 'array'
+        }
+      },
+      onSearch: {
+        description: 'Action triggered when the search field is edited.',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: '() => void'
+          }
+        }
+      },
+      onChange: {
+        description: 'Action triggered when a value is selected.',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: '() => void'
+          }
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'A customizable select component for immersive experiences, supporting single or multiple selection, search, and loading states.'
+        }
+      }
+    }
+  };
+  const Template = ({
+    iconName,
+    iconColor,
+    ...rest
+  }) => {
+    const icon = iconName && iconColor ? `${iconName}:${iconColor}` : undefined;
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
+              <OSS::Smart::Immersive::Select
+                @placeholder={{this.placeholder}}
+                @values={{this.values}}
+                @loading={{this.loading}}
+                @items={{this.items}}
+                @onSearch={{this.onSearch}}
+                @onChange={{this.onChange}}
+                @multiple={{this.multiple}}
+              >
+                <:selected-item as |item|>{{item}}</:selected-item>
+                <:option-item as |item|>
+                  <div class="text-ellipsis" {{enable-tooltip title=item.label displayOnlyOnOverflow=true}}>
+                    {{item.label}}
+                  </div>
+                </:option-item>
+              </OSS::Smart::Immersive::Select>
+            </div>
+          
+      */
+      {
+        "id": "Xe8EKLJO",
+        "block": "[[[1,\"\\n      \"],[10,0],[14,5,\"width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);\"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@placeholder\",\"@values\",\"@loading\",\"@items\",\"@onSearch\",\"@onChange\",\"@multiple\"],[[30,0,[\"placeholder\"]],[30,0,[\"values\"]],[30,0,[\"loading\"]],[30,0,[\"items\"]],[30,0,[\"onSearch\"]],[30,0,[\"onChange\"]],[30,0,[\"multiple\"]]]],[[\"selected-item\",\"option-item\"],[[[[1,[30,1]]],[1]],[[[1,\"\\n            \"],[11,0],[24,0,\"text-ellipsis\"],[4,[38,1],null,[[\"title\",\"displayOnlyOnOverflow\"],[[30,2,[\"label\"]],true]]],[12],[1,\"\\n              \"],[1,[30,2,[\"label\"]]],[1,\"\\n            \"],[13],[1,\"\\n          \"]],[2]]]]],[1,\"\\n      \"],[13],[1,\"\\n    \"]],[\"item\",\"item\"],false,[\"o-s-s/smart/immersive/select\",\"enable-tooltip\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/smart/immersive/select.stories.js",
+        "isStrictMode": false
+      }),
+      context: {
+        ...rest,
+        icon
+      }
+    };
+  };
+  const TemplateSingle = ({
+    iconName,
+    iconColor,
+    ...rest
+  }) => {
+    const icon = iconName && iconColor ? `${iconName}:${iconColor}` : undefined;
+    return {
+      template: (0, _templateFactory.createTemplateFactory)(
+      /*
+        
+            <div style="width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);">
+              <OSS::Smart::Immersive::Select
+                @placeholder={{this.placeholder}}
+                @values={{this.values}}
+                @loading={{this.loading}}
+                @items={{this.items}}
+                @onSearch={{this.onSearch}}
+                @onChange={{this.onChange}}
+                @multiple={{this.multiple}}
+                @hideCheckboxes={{this.hideCheckboxes}}
+                @searchEnabled={{this.searchEnabled}}
+              >
+                <:selected-item as |item|>{{item.value}}</:selected-item>
+                <:option-item as |item|>
+                  <div class="text-ellipsis" {{enable-tooltip title=item.label displayOnlyOnOverflow=true}}>
+                    {{item.label}}
+                  </div>
+                </:option-item>
+              </OSS::Smart::Immersive::Select>
+            </div>
+          
+      */
+      {
+        "id": "wa63Zf0R",
+        "block": "[[[1,\"\\n      \"],[10,0],[14,5,\"width: 350px; background-color: var(--color-gray-50); padding: var(--spacing-px-24);\"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@placeholder\",\"@values\",\"@loading\",\"@items\",\"@onSearch\",\"@onChange\",\"@multiple\",\"@hideCheckboxes\",\"@searchEnabled\"],[[30,0,[\"placeholder\"]],[30,0,[\"values\"]],[30,0,[\"loading\"]],[30,0,[\"items\"]],[30,0,[\"onSearch\"]],[30,0,[\"onChange\"]],[30,0,[\"multiple\"]],[30,0,[\"hideCheckboxes\"]],[30,0,[\"searchEnabled\"]]]],[[\"selected-item\",\"option-item\"],[[[[1,[30,1,[\"value\"]]]],[1]],[[[1,\"\\n            \"],[11,0],[24,0,\"text-ellipsis\"],[4,[38,1],null,[[\"title\",\"displayOnlyOnOverflow\"],[[30,2,[\"label\"]],true]]],[12],[1,\"\\n              \"],[1,[30,2,[\"label\"]]],[1,\"\\n            \"],[13],[1,\"\\n          \"]],[2]]]]],[1,\"\\n      \"],[13],[1,\"\\n    \"]],[\"item\",\"item\"],false,[\"o-s-s/smart/immersive/select\",\"enable-tooltip\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/smart/immersive/select.stories.js",
+        "isStrictMode": false
+      }),
+      context: {
+        ...rest,
+        icon
+      }
+    };
+  };
+  const Select = _exports.Select = TemplateSingle.bind({});
+  Select.args = {
+    placeholder: 'Placeholder',
+    values: [{
+      value: 'step 1'
+    }],
+    loading: false,
+    multiple: false,
+    hideCheckboxes: false,
+    searchEnabled: true,
+    items: [{
+      value: 'step 1',
+      label: 'Step 1'
+    }, {
+      value: 'step 2',
+      label: 'Step 2'
+    }, {
+      value: 'step 3',
+      label: 'Step 3'
+    }],
+    onSearch: (0, _addonActions.action)('onSearch'),
+    onChange: (0, _addonActions.action)('onChange')
+  };
+  const Multiple = _exports.Multiple = Template.bind({});
+  Multiple.args = {
+    placeholder: 'Placeholder',
+    values: [{
+      value: 'step 1'
+    }, {
+      value: 'step 2'
+    }],
+    loading: false,
+    multiple: true,
+    hideCheckboxes: false,
+    searchEnabled: true,
+    items: [{
+      value: 'step 1',
+      label: 'Step 1'
+    }, {
+      value: 'step 2',
+      label: 'Step 2'
+    }, {
+      value: 'step 3',
+      label: 'Step 3'
+    }],
+    onSearch: (0, _addonActions.action)('onSearch'),
+    onChange: (0, _addonActions.action)('onChange')
+  };
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/input", ["exports", "@ember/component", "@upfluence/oss-components/components/o-s-s/input-container", "@glimmer/tracking", "@ember/object", "@upfluence/oss-components/utils/run-smart-gradient-animation", "@ember/utils", "@ember/template-factory"], function (_exports, _component, _inputContainer, _tracking, _object, _runSmartGradientAnimation, _utils, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@upfluence/oss-components/components/o-s-s/input-container",0,"@glimmer/tracking",0,"@ember/object",0,"@upfluence/oss-components/utils/run-smart-gradient-animation",0,"@ember/utils",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="fx-col oss-smart-input-container" {{did-update this.handleUpdate @loading}}>
+    <div
+      class="oss-input-container
+        {{this.containerClass}}
+        {{if (has-block 'prefix') ' has-prefix'}}
+        {{if (has-block 'suffix') ' has-suffix'}}"
+      {{did-insert this.registerElement}}
+      data-control-name="oss-smart-input"
+      ...attributes
+    >
+      {{#if (has-block "prefix")}}
+        <div class="prefix">{{yield to="prefix"}}</div>
+      {{/if}}
+  
+      {{#if (has-block "input")}}
+        <div class="yielded-input">
+          {{yield to="input"}}
+        </div>
+      {{else}}
+        {{#if @loading}}
+          <div class="upf-input loading-placeholder fx-row fx-xalign-center">
+            <span class="smart_text_animated">{{@placeholder}}</span>
+          </div>
+        {{else}}
+          <Input
+            @value={{@value}}
+            @type={{this.type}}
+            placeholder={{@placeholder}}
+            disabled={{@disabled}}
+            class="upf-input"
+            {{on "keyup" (fn this._onChange @value)}}
+            {{on "paste" this.onPaste}}
+          />
+        {{/if}}
+      {{/if}}
+  
+      {{#if (has-block "suffix")}}
+        <div class="suffix">{{yield to="suffix"}}</div>
+      {{/if}}
+    </div>
+  
+    {{#if @errorMessage}}
+      <span class="text-color-error margin-top-px-6">{{@errorMessage}}</span>
+    {{else if this.feedbackMessage}}
+      <span class={{concat "margin-top-px-6 font-color-" this.feedbackMessage.type "-500"}}>
+        {{#unless (eq this.feedbackMessage.type "error")}}
+          <OSS::Icon @icon={{this.messageIcon}} />
+        {{/unless}}
+        <span>{{this.feedbackMessage.value}}</span>
+      </span>
+    {{/if}}
+  </div>
+  */
+  {
+    "id": "t5VdfFFR",
+    "block": "[[[11,0],[24,0,\"fx-col oss-smart-input-container\"],[4,[38,0],[[30,0,[\"handleUpdate\"]],[30,1]],null],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-input-container\\n      \",[30,0,[\"containerClass\"]],\"\\n      \",[52,[48,[30,7]],\" has-prefix\"],\"\\n      \",[52,[48,[30,8]],\" has-suffix\"]]]],[24,\"data-control-name\",\"oss-smart-input\"],[17,2],[4,[38,3],[[30,0,[\"registerElement\"]]],null],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"      \"],[10,0],[14,0,\"prefix\"],[12],[18,7,null],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[48,[30,9]],[[[1,\"      \"],[10,0],[14,0,\"yielded-input\"],[12],[1,\"\\n        \"],[18,9,null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],[[[41,[30,1],[[[1,\"        \"],[10,0],[14,0,\"upf-input loading-placeholder fx-row fx-xalign-center\"],[12],[1,\"\\n          \"],[10,1],[14,0,\"smart_text_animated\"],[12],[1,[30,3]],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,5],[[16,\"placeholder\",[30,3]],[16,\"disabled\",[30,4]],[24,0,\"upf-input\"],[4,[38,6],[\"keyup\",[28,[37,7],[[30,0,[\"_onChange\"]],[30,5]],null]],null],[4,[38,6],[\"paste\",[30,0,[\"onPaste\"]]],null]],[[\"@value\",\"@type\"],[[30,5],[30,0,[\"type\"]]]],null],[1,\"\\n\"]],[]]]],[]]],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"      \"],[10,0],[14,0,\"suffix\"],[12],[18,8,null],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\\n\"],[41,[30,6],[[[1,\"    \"],[10,1],[14,0,\"text-color-error margin-top-px-6\"],[12],[1,[30,6]],[13],[1,\"\\n\"]],[]],[[[41,[30,0,[\"feedbackMessage\"]],[[[1,\"    \"],[10,1],[15,0,[28,[37,8],[\"margin-top-px-6 font-color-\",[30,0,[\"feedbackMessage\",\"type\"]],\"-500\"],null]],[12],[1,\"\\n\"],[41,[51,[28,[37,10],[[30,0,[\"feedbackMessage\",\"type\"]],\"error\"],null]],[[[1,\"        \"],[8,[39,11],null,[[\"@icon\"],[[30,0,[\"messageIcon\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[12],[1,[30,0,[\"feedbackMessage\",\"value\"]]],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],null]],[]]],[13]],[\"@loading\",\"&attrs\",\"@placeholder\",\"@disabled\",\"@value\",\"@errorMessage\",\"&prefix\",\"&suffix\",\"&input\"],false,[\"did-update\",\"if\",\"has-block\",\"did-insert\",\"yield\",\"input\",\"on\",\"fn\",\"concat\",\"unless\",\"eq\",\"o-s-s/icon\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/smart/input.hbs",
+    "isStrictMode": false
+  });
+  let OSSSmartInput = _exports.default = (_class = class OSSSmartInput extends _inputContainer.default {
+    constructor(...args) {
+      super(...args);
+      _initializerDefineProperty(this, "element", _descriptor, this);
+    }
+    handleUpdate() {
+      if (!this.args.loading && !(0, _utils.isEmpty)(this.args.value)) {
+        (0, _runSmartGradientAnimation.runSmartGradientAnimation)(this.element);
+      }
+    }
+    registerElement(element) {
+      this.element = element;
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "element", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _applyDecoratedDescriptor(_class.prototype, "handleUpdate", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleUpdate"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerElement"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSmartInput);
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/input.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.Default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::Smart::Input',
+    component: 'button',
+    argTypes: {
+      argTypes: {
+        value: {
+          description: 'Value of the input',
+          table: {
+            type: {
+              summary: 'string'
+            },
+            defaultValue: {
+              summary: 'undefined'
+            }
+          },
+          control: {
+            type: 'text'
+          }
+        },
+        type: {
+          description: 'The input type',
+          table: {
+            type: {
+              summary: 'string'
+            },
+            defaultValue: {
+              summary: 'text'
+            }
+          },
+          control: {
+            type: 'text'
+          }
+        },
+        disabled: {
+          description: 'Disable the default input (when not passing an input named block)',
+          table: {
+            type: {
+              summary: 'boolean'
+            },
+            defaultValue: {
+              summary: false
+            }
+          },
+          control: {
+            type: 'boolean'
+          }
+        },
+        placeholder: {
+          description: 'Placeholder of the input',
+          table: {
+            type: {
+              summary: 'string'
+            },
+            defaultValue: {
+              summary: 'undefined'
+            }
+          },
+          control: {
+            type: 'text'
+          }
+        },
+        feedbackMessage: {
+          description: 'A success, warning or error message that will be displayed below the input-group.',
+          table: {
+            type: {
+              summary: '{ type: string, value: string }'
+            },
+            defaultValue: {
+              summary: 'undefined'
+            }
+          },
+          control: {
+            type: 'object'
+          }
+        },
+        errorMessage: {
+          description: 'An error message that will be displayed below the input-group.',
+          table: {
+            type: {
+              summary: 'string'
+            },
+            defaultValue: {
+              summary: 'undefined'
+            }
+          },
+          control: {
+            type: 'text'
+          }
+        },
+        hasError: {
+          description: 'Allows setting the error style on the input without showing an error message. Useful for form validation.',
+          table: {
+            type: {
+              summary: 'boolean'
+            },
+            defaultValue: {
+              summary: 'undefined'
+            }
+          },
+          control: {
+            type: 'boolean'
+          }
+        },
+        onChange: {
+          description: 'Method called every time the input is updated',
+          table: {
+            category: 'Actions',
+            type: {
+              summary: 'onChange(value: string): void'
+            }
+          }
+        }
+      },
+      loading: {
+        type: {
+          required: true
+        },
+        control: 'boolean',
+        description: 'Flag to display loading state',
+        defaultValue: false,
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        }
+      }
+    }
+  };
+  const Template = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+         <OSS::Smart::Input
+              @value={{this.value}} 
+              @disabled={{this.disabled}}
+              @placeholder={{this.placeholder}}
+              @type={{this.type}}
+              @errorMessage={{this.errorMessage}}
+              @onChange={{this.onChange}}
+              @loading={{this.loading}}
+            />
+      
+    */
+    {
+      "id": "UN3pCIBb",
+      "block": "[[[1,\"\\n     \"],[8,[39,0],null,[[\"@value\",\"@disabled\",\"@placeholder\",\"@type\",\"@errorMessage\",\"@onChange\",\"@loading\"],[[30,0,[\"value\"]],[30,0,[\"disabled\"]],[30,0,[\"placeholder\"]],[30,0,[\"type\"]],[30,0,[\"errorMessage\"]],[30,0,[\"onChange\"]],[30,0,[\"loading\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/smart/input\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/smart/input.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const defaultArgs = {
+    value: 'John',
+    disabled: false,
+    type: undefined,
+    placeholder: 'this is the placeholder',
+    errorMessage: undefined,
+    onChange: (0, _addonActions.action)('onChange'),
+    loading: false
+  };
+  const Default = _exports.Default = Template.bind({});
+  Default.args = defaultArgs;
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/number-input", ["exports", "@ember/component", "@upfluence/oss-components/components/o-s-s/number-input", "@glimmer/tracking", "@ember/object", "@upfluence/oss-components/utils/run-smart-gradient-animation", "@ember/utils", "@ember/template-factory"], function (_exports, _component, _numberInput, _tracking, _object, _runSmartGradientAnimation, _utils, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@upfluence/oss-components/components/o-s-s/number-input",0,"@glimmer/tracking",0,"@ember/object",0,"@upfluence/oss-components/utils/run-smart-gradient-animation",0,"@ember/utils",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="fx-col oss-smart-number-input-container" {{did-update this.handleUpdate @loading}}>
+    <div class="smart-number-input fx-row {{this.computedClasses}}" {{did-insert this.registerElement}} ...attributes>
+      <OSS::Button
+        @square={{true}}
+        @size="md"
+        @icon="far fa-minus"
+        {{on "click" this.decreaseValue}}
+        disabled={{or this.isMinDisabled @disabled @loading}}
+        {{enable-tooltip title=this.minTooltipTitle placement="top"}}
+      />
+  
+      {{! template-lint-disable no-triple-curlies}}
+      <OSS::InputContainer
+        @value={{this.localValue}}
+        @onChange={{this.checkUserInput}}
+        @disabled={{@disabled}}
+        @hasError={{@hasError}}
+        @errorMessage={{@errorMessage}}
+        @feedbackMessage={{@feedbackMessage}}
+        style={{{this.dynamicWidth}}}
+        {{on "keydown" this.keyParser}}
+        {{on "blur" this.checkUserInput}}
+        {{did-insert this.registerInputElement}}
+      />
+  
+      <OSS::Button
+        @square={{true}}
+        @size="md"
+        @icon="far fa-plus"
+        {{on "click" this.increaseValue}}
+        disabled={{or this.isMaxDisabled @disabled @loading}}
+        {{enable-tooltip title=this.maxTooltipTitle placement="top"}}
+      />
+    </div>
+  
+    {{#if @errorMessage}}
+      <span class="text-color-error margin-top-px-6">{{@errorMessage}}</span>
+    {{else if @feedbackMessage}}
+      <span class={{concat "margin-top-px-6 font-color-" @feedbackMessage.type "-500"}}>
+        {{#unless (eq @feedbackMessage.type "error")}}
+          <OSS::Icon @icon={{this.messageIcon}} />
+        {{/unless}}
+        <span>{{@feedbackMessage.value}}</span>
+      </span>
+    {{/if}}
+  </div>
+  */
+  {
+    "id": "VeCtQYy2",
+    "block": "[[[11,0],[24,0,\"fx-col oss-smart-number-input-container\"],[4,[38,0],[[30,0,[\"handleUpdate\"]],[30,1]],null],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"smart-number-input fx-row \",[30,0,[\"computedClasses\"]]]]],[17,2],[4,[38,1],[[30,0,[\"registerElement\"]]],null],[12],[1,\"\\n    \"],[8,[39,2],[[16,\"disabled\",[28,[37,3],[[30,0,[\"isMinDisabled\"]],[30,3],[30,1]],null]],[4,[38,4],[\"click\",[30,0,[\"decreaseValue\"]]],null],[4,[38,5],null,[[\"title\",\"placement\"],[[30,0,[\"minTooltipTitle\"]],\"top\"]]]],[[\"@square\",\"@size\",\"@icon\"],[true,\"md\",\"far fa-minus\"]],null],[1,\"\\n\\n\"],[1,\"    \"],[8,[39,6],[[23,5,[30,0,[\"dynamicWidth\"]]],[4,[38,4],[\"keydown\",[30,0,[\"keyParser\"]]],null],[4,[38,4],[\"blur\",[30,0,[\"checkUserInput\"]]],null],[4,[38,1],[[30,0,[\"registerInputElement\"]]],null]],[[\"@value\",\"@onChange\",\"@disabled\",\"@hasError\",\"@errorMessage\",\"@feedbackMessage\"],[[30,0,[\"localValue\"]],[30,0,[\"checkUserInput\"]],[30,3],[30,4],[30,5],[30,6]]],null],[1,\"\\n\\n    \"],[8,[39,2],[[16,\"disabled\",[28,[37,3],[[30,0,[\"isMaxDisabled\"]],[30,3],[30,1]],null]],[4,[38,4],[\"click\",[30,0,[\"increaseValue\"]]],null],[4,[38,5],null,[[\"title\",\"placement\"],[[30,0,[\"maxTooltipTitle\"]],\"top\"]]]],[[\"@square\",\"@size\",\"@icon\"],[true,\"md\",\"far fa-plus\"]],null],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,5],[[[1,\"    \"],[10,1],[14,0,\"text-color-error margin-top-px-6\"],[12],[1,[30,5]],[13],[1,\"\\n\"]],[]],[[[41,[30,6],[[[1,\"    \"],[10,1],[15,0,[28,[37,8],[\"margin-top-px-6 font-color-\",[30,6,[\"type\"]],\"-500\"],null]],[12],[1,\"\\n\"],[41,[51,[28,[37,10],[[30,6,[\"type\"]],\"error\"],null]],[[[1,\"        \"],[8,[39,11],null,[[\"@icon\"],[[30,0,[\"messageIcon\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,1],[12],[1,[30,6,[\"value\"]]],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[]],null]],[]]],[13]],[\"@loading\",\"&attrs\",\"@disabled\",\"@hasError\",\"@errorMessage\",\"@feedbackMessage\"],false,[\"did-update\",\"did-insert\",\"o-s-s/button\",\"or\",\"on\",\"enable-tooltip\",\"o-s-s/input-container\",\"if\",\"concat\",\"unless\",\"eq\",\"o-s-s/icon\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/smart/number-input.hbs",
+    "isStrictMode": false
+  });
+  let OSSSmartNumberInput = _exports.default = (_class = class OSSSmartNumberInput extends _numberInput.default {
+    constructor(...args) {
+      super(...args);
+      _initializerDefineProperty(this, "element", _descriptor, this);
+    }
+    get computedClasses() {
+      const classes = ['smart-number-input'];
+      if (this.args.loading) {
+        classes.push('smart-number-input--loading');
+      } else if (this.args.value !== undefined && this.args.value !== null) {
+        classes.push('smart-number-input--filled');
+      }
+      if (this.args.hasError || this.args.errorMessage) {
+        classes.push('smart-number-input--errored');
+      }
+      if (this.args.feedbackMessage) {
+        classes.push(`smart-number-input--${this.args.feedbackMessage.type}`);
+      }
+      return classes.join(' ');
+    }
+    handleUpdate() {
+      if (!this.args.loading && !(0, _utils.isEmpty)(this.args.value)) {
+        (0, _runSmartGradientAnimation.runSmartGradientAnimation)(this.element);
+      }
+    }
+    registerElement(element) {
+      this.element = element;
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "element", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _applyDecoratedDescriptor(_class.prototype, "handleUpdate", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleUpdate"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerElement"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSmartNumberInput);
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/number-input.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.Loading = _exports.Filled = _exports.Error = _exports.Disabled = _exports.Default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::Smart::NumberInput',
+    component: 'smart-number-input',
+    argTypes: {
+      value: {
+        description: '[OPTIONAL] The current value of the input',
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'number'
+        }
+      },
+      min: {
+        description: '[OPTIONAL] The minimum value the number can be',
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'number'
+        }
+      },
+      max: {
+        description: '[OPTIONAL] The maximum value the number can be',
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'number'
+        }
+      },
+      step: {
+        description: '[OPTIONAL] The increase & decrease value of each button press. Defaults to 1',
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: '1'
+          }
+        },
+        control: {
+          type: 'number'
+        }
+      },
+      loading: {
+        description: '[OPTIONAL] Shows loading state with animated placeholder',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      placeholder: {
+        description: '[OPTIONAL] Placeholder text shown during loading state',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      hasError: {
+        description: '[OPTIONAL] Applies error styling to the component',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      disabled: {
+        description: '[OPTIONAL] Disables all interactions with the component',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'false'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      onChange: {
+        description: '[OPTIONAL] Callback triggered when the value changes',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'onChange(value: number): void'
+          }
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'A smart number input component with loading states, error handling, and gradient animations. Features decrease & increase buttons with keyboard navigation support.'
+        }
+      }
+    }
+  };
+  const DefaultTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <OSS::Smart::NumberInput
+          @value={{this.value}}
+          @min={{this.min}}
+          @max={{this.max}}
+          @step={{this.step}}
+          @loading={{this.loading}}
+          @placeholder={{this.placeholder}}
+          @hasError={{this.hasError}}
+          @errorMessage={{this.errorMessage}}
+          @feedbackMessage={{this.feedbackMessage}}
+          @disabled={{this.disabled}}
+          @onChange={{this.onChange}}
+        />
+      
+    */
+    {
+      "id": "cVNzwbgE",
+      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@value\",\"@min\",\"@max\",\"@step\",\"@loading\",\"@placeholder\",\"@hasError\",\"@errorMessage\",\"@feedbackMessage\",\"@disabled\",\"@onChange\"],[[30,0,[\"value\"]],[30,0,[\"min\"]],[30,0,[\"max\"]],[30,0,[\"step\"]],[30,0,[\"loading\"]],[30,0,[\"placeholder\"]],[30,0,[\"hasError\"]],[30,0,[\"errorMessage\"]],[30,0,[\"feedbackMessage\"]],[30,0,[\"disabled\"]],[30,0,[\"onChange\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/smart/number-input\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/smart/number-input.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const Default = _exports.Default = DefaultTemplate.bind({});
+  Default.args = {
+    value: 10,
+    onChange: (0, _addonActions.action)('onChange')
+  };
+  const Loading = _exports.Loading = DefaultTemplate.bind({});
+  Loading.args = {
+    loading: true,
+    placeholder: 'Loading...',
+    onChange: (0, _addonActions.action)('onChange')
+  };
+  const Filled = _exports.Filled = DefaultTemplate.bind({});
+  Filled.args = {
+    value: 100,
+    onChange: (0, _addonActions.action)('onChange')
+  };
+  const Error = _exports.Error = DefaultTemplate.bind({});
+  Error.args = {
+    value: 50,
+    hasError: true,
+    errorMessage: 'Invalid value',
+    onChange: (0, _addonActions.action)('onChange')
+  };
+  const Disabled = _exports.Disabled = DefaultTemplate.bind({});
+  Disabled.args = {
+    value: 25,
+    disabled: true,
+    onChange: (0, _addonActions.action)('onChange')
+  };
+});
 ;define("@upfluence/oss-components/components/o-s-s/smart/pill", ["exports", "@ember/component", "@glimmer/tracking", "@upfluence/oss-components/components/o-s-s/pill", "@ember/object", "@upfluence/oss-components/utils/run-smart-gradient-animation", "@ember/template-factory"], function (_exports, _component, _tracking, _pill, _object, _runSmartGradientAnimation, _templateFactory) {
   "use strict";
 
@@ -97320,7 +99721,7 @@ interface OSSCodeBlockArgs {
       this.element = element;
     }
     runAnimationOnLoadEnd() {
-      if (this.element && this.args.loading === false) {
+      if (this.element && this.args.loading === false && this.args.selected) {
         (0, _runSmartGradientAnimation.runSmartGradientAnimation)(this.element);
       }
     }
@@ -97446,6 +99847,1108 @@ interface OSSCodeBlockArgs {
   });
   const BasicUsage = _exports.BasicUsage = DefaultUsageTemplate.bind({});
   BasicUsage.args = defaultArgs;
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/skeleton", ["exports", "@ember/component", "@ember/component/helper", "@upfluence/oss-components/components/o-s-s/skeleton", "@ember/debug", "@ember/template-factory"], function (_exports, _component, _helper, _skeleton, _debug, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/component/helper",0,"@upfluence/oss-components/components/o-s-s/skeleton",0,"@ember/debug",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    {{#if @multiple}}
+    <div class="fx-1 {{this.computedClass}}" ...attributes>
+      {{#each this.rows as |row|}}
+        <div class="upf-smart-skeleton-effect" style={{this.inlineStyles rowStyle=row}}></div>
+      {{/each}}
+    </div>
+  {{else}}
+    {{#each this.rows as |row|}}
+      <div class="upf-smart-skeleton-effect" style={{this.inlineStyles rowStyle=row}} ...attributes></div>
+    {{/each}}
+  {{/if}}
+  */
+  {
+    "id": "FbsX/D3d",
+    "block": "[[[41,[30,1],[[[1,\"  \"],[11,0],[16,0,[29,[\"fx-1 \",[30,0,[\"computedClass\"]]]]],[17,2],[12],[1,\"\\n\"],[42,[28,[37,2],[[28,[37,2],[[30,0,[\"rows\"]]],null]],null],null,[[[1,\"      \"],[10,0],[14,0,\"upf-smart-skeleton-effect\"],[15,5,[28,[30,0,[\"inlineStyles\"]],null,[[\"rowStyle\"],[[30,3]]]]],[12],[13],[1,\"\\n\"]],[3]],null],[1,\"  \"],[13],[1,\"\\n\"]],[]],[[[42,[28,[37,2],[[28,[37,2],[[30,0,[\"rows\"]]],null]],null],null,[[[1,\"    \"],[11,0],[24,0,\"upf-smart-skeleton-effect\"],[16,5,[28,[30,0,[\"inlineStyles\"]],null,[[\"rowStyle\"],[[30,4]]]]],[17,2],[12],[13],[1,\"\\n\"]],[4]],null]],[]]]],[\"@multiple\",\"&attrs\",\"row\",\"row\"],false,[\"if\",\"each\",\"-track-array\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/smart/skeleton.hbs",
+    "isStrictMode": false
+  });
+  const MIN_HEIGHT = 10;
+  class OSSSmartSkeleton extends _skeleton.default {
+    constructor(owner, args) {
+      super(owner, args, true);
+      _defineProperty(this, "inlineStyles", (0, _helper.helper)((_, {
+        rowStyle
+      }) => {
+        return [rowStyle, this.backgroundImage].join('; ');
+      }));
+      if (this.args.direction) {
+        (true && !(['row', 'column', 'col'].includes(this.args.direction)) && (0, _debug.assert)(`[component][OSS::Smart::Skeleton] The @direction argument should be a value of ${['row', 'column', 'col']}`, ['row', 'column', 'col'].includes(this.args.direction)));
+      }
+    }
+    get height() {
+      return parseInt(this.args.height || MIN_HEIGHT);
+    }
+    get rotationDegrees() {
+      const maxHeight = 100;
+      const clampedHeight = Math.max(MIN_HEIGHT, Math.min(this.height, maxHeight)) * 1.3;
+      const minDegree = 100;
+      const maxDegree = 150;
+      const logMin = Math.log(MIN_HEIGHT);
+      const logMax = Math.log(maxHeight);
+      const scale = (Math.log(clampedHeight) - logMin) / (logMax - logMin);
+      return Math.round(maxDegree - scale * (maxDegree - minDegree));
+    }
+    get backgroundImage() {
+      return `background-image: linear-gradient(
+      ${this.rotationDegrees}deg,
+      rgba(255, 255, 255, 0.15) 8.2%,
+      rgba(247, 213, 250, 0.15) 23.6%,
+      rgba(83, 94, 252, 0.15) 38.3%,
+      rgba(237, 33, 255, 0.15) 53.2%,
+      rgba(255, 255, 255, 0.15) 91.7%
+    );`;
+    }
+  }
+  _exports.default = OSSSmartSkeleton;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSmartSkeleton);
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/skeleton.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.Default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  const DirectionTypes = ['row', 'col', 'column'];
+  var _default = _exports.default = {
+    title: 'Components/OSS::Smart::Skeleton',
+    component: 'smart-skeleton',
+    argTypes: {
+      height: {
+        description: 'Box height in px',
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: '36'
+          }
+        },
+        control: {
+          type: 'number'
+        }
+      },
+      width: {
+        description: 'Box width in px',
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: '36'
+          }
+        },
+        control: {
+          type: 'number'
+        }
+      },
+      multiple: {
+        description: 'How many skeleton effects should be displayed',
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: '1'
+          }
+        },
+        control: {
+          type: 'number'
+        }
+      },
+      gap: {
+        description: 'Gap between multiple rows in px',
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: '9'
+          }
+        },
+        control: {
+          type: 'number'
+        }
+      },
+      randomize: {
+        description: 'Randomize skeleton effect width within a 15% range',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      direction: {
+        description: 'Direction of the skeleton',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'row'
+          }
+        },
+        options: DirectionTypes,
+        control: {
+          type: 'select'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'Component used to create a smart skeleton effect.'
+        },
+        iframeHeight: 250
+      }
+    }
+  };
+  const defaultArgs = {
+    height: 200,
+    width: 300,
+    multiple: 1,
+    gap: 9,
+    randomize: false
+  };
+  const Template = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <div class="bg-color-white padding-px-6">
+          <OSS::Smart::Skeleton @height={{this.height}} @width={{this.width}} @multiple={{this.multiple}} @gap={{this.gap}}
+                         @direction={{this.direction}}
+                         @randomize={{this.randomize}}/>
+        </div>
+      
+    */
+    {
+      "id": "vud53sgZ",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,0,\"bg-color-white padding-px-6\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@height\",\"@width\",\"@multiple\",\"@gap\",\"@direction\",\"@randomize\"],[[30,0,[\"height\"]],[30,0,[\"width\"]],[30,0,[\"multiple\"]],[30,0,[\"gap\"]],[30,0,[\"direction\"]],[30,0,[\"randomize\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/smart/skeleton\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/smart/skeleton.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const Default = _exports.Default = Template.bind({});
+  Default.args = defaultArgs;
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/tag-input", ["exports", "@ember/component", "@ember/object", "@ember/utils", "@ember/service", "@glimmer/component", "@glimmer/tracking", "@ember/template-factory"], function (_exports, _component, _object, _utils, _service, _component2, _tracking, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@ember/utils",0,"@ember/service",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div
+    class="tag-input-container {{if (gt this.inputValue.length 0) 'tag-input-container--active'}}"
+    {{on "click" this.onClickQueryBuilder}}
+    {{did-insert this.registerElement}}
+    ...attributes
+  >
+    <div class={{this.keywordInputClasses}}>
+      {{#if @loading}}
+        <div class="animated-overlay">
+          {{or this.inputValue this.placeholder}}
+        </div>
+      {{else}}
+        <div class="fx-col">
+          <span class="hidden-span">{{this.hiddenSpanValue}}</span>
+          <Input
+            class="displayed-input"
+            @value={{this.inputValue}}
+            @type="text"
+            data-control-name="tag-input"
+            {{on "keydown" this.onKeydown}}
+            {{on "focusin" this.onFocusin}}
+            {{on-click-outside this.onClickOutside}}
+            autocomplete="off"
+          />
+        </div>
+        <div class="tag-input-empty-state">
+          {{this.placeholder}}
+        </div>
+      {{/if}}
+      <span class="tag-input-icon">
+        <OSS::Icon @style="solid" @icon="fa-arrow-turn-down-left" />
+      </span>
+    </div>
+  </div>
+  */
+  {
+    "id": "WxGTPib6",
+    "block": "[[[11,0],[16,0,[29,[\"tag-input-container \",[52,[28,[37,1],[[30,0,[\"inputValue\",\"length\"]],0],null],\"tag-input-container--active\"]]]],[17,1],[4,[38,2],[\"click\",[30,0,[\"onClickQueryBuilder\"]]],null],[4,[38,3],[[30,0,[\"registerElement\"]]],null],[12],[1,\"\\n  \"],[10,0],[15,0,[30,0,[\"keywordInputClasses\"]]],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"      \"],[10,0],[14,0,\"animated-overlay\"],[12],[1,\"\\n        \"],[1,[28,[35,4],[[30,0,[\"inputValue\"]],[30,0,[\"placeholder\"]]],null]],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],[[[1,\"      \"],[10,0],[14,0,\"fx-col\"],[12],[1,\"\\n        \"],[10,1],[14,0,\"hidden-span\"],[12],[1,[30,0,[\"hiddenSpanValue\"]]],[13],[1,\"\\n        \"],[8,[39,5],[[24,0,\"displayed-input\"],[24,\"data-control-name\",\"tag-input\"],[24,\"autocomplete\",\"off\"],[4,[38,2],[\"keydown\",[30,0,[\"onKeydown\"]]],null],[4,[38,2],[\"focusin\",[30,0,[\"onFocusin\"]]],null],[4,[38,6],[[30,0,[\"onClickOutside\"]]],null]],[[\"@value\",\"@type\"],[[30,0,[\"inputValue\"]],\"text\"]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"tag-input-empty-state\"],[12],[1,\"\\n        \"],[1,[30,0,[\"placeholder\"]]],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]]],[1,\"    \"],[10,1],[14,0,\"tag-input-icon\"],[12],[1,\"\\n      \"],[8,[39,7],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-arrow-turn-down-left\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@loading\"],false,[\"if\",\"gt\",\"on\",\"did-insert\",\"or\",\"input\",\"on-click-outside\",\"o-s-s/icon\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/smart/tag-input.hbs",
+    "isStrictMode": false
+  });
+  let OSSSmartTagInput = _exports.default = (_class = class OSSSmartTagInput extends _component2.default {
+    constructor(...args) {
+      super(...args);
+      _initializerDefineProperty(this, "intl", _descriptor, this);
+      _initializerDefineProperty(this, "inputValue", _descriptor2, this);
+      _initializerDefineProperty(this, "isInputFocused", _descriptor3, this);
+      _initializerDefineProperty(this, "lastFocusInTime", _descriptor4, this);
+    }
+    get keywordInputClasses() {
+      const classes = ['tag-input'];
+      if (this.isInputFocused) {
+        classes.push('tag-input--focus');
+      }
+      if ((0, _utils.isBlank)(this.inputValue)) {
+        classes.push('tag-input--empty');
+      }
+      if (this.args.hasError) {
+        console.log('input has error');
+        classes.push('tag-input--error');
+      }
+      return classes.join(' ');
+    }
+    get placeholder() {
+      return this.args.placeholder ?? this.intl.t('oss-components.smart.tag_input.placeholder');
+    }
+    get hiddenSpanValue() {
+      return this.inputValue || this.isInputFocused ? this.inputValue : this.placeholder;
+    }
+    registerElement(element) {
+      this.element = element;
+    }
+    onClickQueryBuilder() {
+      this.focusKeywordInput();
+    }
+    onFocusin() {
+      this.lastFocusInTime = Date.now();
+      this.isInputFocused = true;
+    }
+    onKeydown(event) {
+      if (event.key === 'Enter' || event.key === 'Tab') {
+        this.formatAndNotify();
+      }
+    }
+    onClickOutside(_, event) {
+      if (Date.now() - this.lastFocusInTime < 150) {
+        return;
+      }
+      if (!this.isInputFocused) return;
+      this.isInputFocused = false;
+      if ((0, _utils.isBlank)(this.inputValue)) return;
+      event.stopImmediatePropagation();
+      this.formatAndNotify();
+    }
+    formatAndNotify() {
+      if (this.inputValue.trim().length > 0) {
+        let type = 'keyword';
+        if (this.inputValue.startsWith('@')) {
+          type = 'mention';
+        } else if (this.inputValue.startsWith('#')) {
+          type = 'hashtag';
+        }
+        const keyword = {
+          value: this.inputValue.trim(),
+          type
+        };
+        this.args.onKeydown(keyword);
+        this.inputValue = '';
+      }
+    }
+    focusKeywordInput() {
+      this.element.querySelector('[data-control-name="tag-input"]')?.focus();
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "intl", [_service.inject], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "inputValue", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return this.args.value || '';
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "isInputFocused", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, "lastFocusInTime", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return 0;
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "registerElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerElement"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickQueryBuilder", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickQueryBuilder"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onFocusin", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onFocusin"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onKeydown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onKeydown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSmartTagInput);
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/tag-input.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.Default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::Smart::TagInput',
+    component: 'smart-tag-input',
+    argTypes: {
+      value: {
+        description: 'The current value of the input field.',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: ''
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      loading: {
+        description: 'Whether the input is in a loading state (shows animated overlay).',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      hasError: {
+        description: 'If true, applies error styling to the input.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      onKeydown: {
+        description: 'Callback triggered when a key is pressed. Called with a `{ value, type }` object when Enter is pressed.',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: '(keyword: { value: string, type: "keyword" | "hashtag" | "mention" }) => void'
+          }
+        }
+      },
+      placeholder: {
+        description: 'The placeholder to show when the input is empty',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: undefined
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'A smart tag input component for entering keywords, @mentions, and #hashtags.'
+        }
+      }
+    }
+  };
+  const defaultArgs = {
+    value: 'Keyword',
+    loading: false,
+    hasError: false,
+    placeholder: 'Type a keyword, mention, or hashtag'
+  };
+  const Template = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <OSS::Smart::TagInput
+          @value={{this.value}}
+          @loading={{this.loading}}
+          @hasError={{this.hasError}}
+          @onKeydown={{this.onKeydown}}
+        />
+      
+    */
+    {
+      "id": "QUVpN48E",
+      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@value\",\"@loading\",\"@hasError\",\"@onKeydown\"],[[30,0,[\"value\"]],[30,0,[\"loading\"]],[30,0,[\"hasError\"]],[30,0,[\"onKeydown\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/smart/tag-input\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/smart/tag-input.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const Default = _exports.Default = Template.bind({});
+  Default.args = defaultArgs;
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/tag", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@glimmer/tracking", "@upfluence/oss-components/utils/run-smart-gradient-animation", "@ember/template-factory"], function (_exports, _component, _component2, _object, _tracking, _runSmartGradientAnimation, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/object",0,"@glimmer/tracking",0,"@upfluence/oss-components/utils/run-smart-gradient-animation",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div
+    class="smart-tag-container {{if (eq @size 'lg') 'smart-tag-container--lg' 'smart-tag-container--md'}}"
+    {{did-insert this.handleElementLifecycle}}
+    {{did-update this.runAnimationOnLoadEnd @successAnimationOnInsertion}}
+  >
+    <div class="smart-tag smart-tag--color-{{this.typeColor}}" ...attributes>
+      {{#if this.typeIcon}}
+        <OSS::Icon @icon={{this.typeIcon}} />
+      {{/if}}
+      <span class="text-ellipsis-140">{{this.displayLabel}}</span>
+      {{#if this.closable}}
+        <OSS::Icon @icon="fa-times" {{on "click" this.onRemove}} role="button" data-control-name="remove-tag-button" />
+      {{/if}}
+    </div>
+  </div>
+  */
+  {
+    "id": "x4rOuJ0y",
+    "block": "[[[11,0],[16,0,[29,[\"smart-tag-container \",[52,[28,[37,1],[[30,1],\"lg\"],null],\"smart-tag-container--lg\",\"smart-tag-container--md\"]]]],[4,[38,2],[[30,0,[\"handleElementLifecycle\"]]],null],[4,[38,3],[[30,0,[\"runAnimationOnLoadEnd\"]],[30,2]],null],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"smart-tag smart-tag--color-\",[30,0,[\"typeColor\"]]]]],[17,3],[12],[1,\"\\n\"],[41,[30,0,[\"typeIcon\"]],[[[1,\"      \"],[8,[39,4],null,[[\"@icon\"],[[30,0,[\"typeIcon\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"    \"],[10,1],[14,0,\"text-ellipsis-140\"],[12],[1,[30,0,[\"displayLabel\"]]],[13],[1,\"\\n\"],[41,[30,0,[\"closable\"]],[[[1,\"      \"],[8,[39,4],[[24,\"role\",\"button\"],[24,\"data-control-name\",\"remove-tag-button\"],[4,[38,5],[\"click\",[30,0,[\"onRemove\"]]],null]],[[\"@icon\"],[\"fa-times\"]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[13]],[\"@size\",\"@successAnimationOnInsertion\",\"&attrs\"],false,[\"if\",\"eq\",\"did-insert\",\"did-update\",\"o-s-s/icon\",\"on\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/smart/tag.hbs",
+    "isStrictMode": false
+  });
+  const TypeDefinition = {
+    hashtag: {
+      icon: 'fa-hashtag',
+      color: 'cyan'
+    },
+    mention: {
+      icon: 'fa-at',
+      color: 'violet'
+    },
+    keyword: {
+      icon: 'x',
+      color: 'yellow'
+    }
+  };
+  let OSSSmartTag = _exports.default = (_class = class OSSSmartTag extends _component2.default {
+    constructor(...args) {
+      super(...args);
+      _initializerDefineProperty(this, "element", _descriptor, this);
+    }
+    get closable() {
+      return Boolean(this.args.onRemove);
+    }
+    get typeColor() {
+      return TypeDefinition[this.args.type ?? 'keyword'].color;
+    }
+    get typeIcon() {
+      return TypeDefinition[this.args.type ?? 'keyword'].icon;
+    }
+    get displayLabel() {
+      if (this.args.label[0] === '@' || this.args.label[0] === '#') {
+        return this.args.label.slice(1);
+      }
+      return this.args.label;
+    }
+    onRemove(event) {
+      event?.stopPropagation();
+      this.args.onRemove?.();
+    }
+    handleElementLifecycle(element) {
+      this.element = element;
+      this.runAnimationOnLoadEnd();
+    }
+    runAnimationOnLoadEnd() {
+      if (this.element && this.args.successAnimationOnInsertion) {
+        (0, _runSmartGradientAnimation.runSmartGradientAnimation)(this.element);
+      }
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "element", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _applyDecoratedDescriptor(_class.prototype, "onRemove", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onRemove"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleElementLifecycle", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleElementLifecycle"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "runAnimationOnLoadEnd", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "runAnimationOnLoadEnd"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSmartTag);
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/tag.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.Default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::Smart::Tag',
+    component: 'smart-tag',
+    argTypes: {
+      label: {
+        description: 'The text content of the tag.',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      type: {
+        description: 'The type of tag, which determines color and icon. Defaults to "keyword".',
+        table: {
+          type: {
+            summary: '"keyword" | "hashtag" | "mention"'
+          },
+          defaultValue: {
+            summary: 'keyword'
+          }
+        },
+        control: {
+          type: 'select',
+          options: ['keyword', 'hashtag', 'mention']
+        }
+      },
+      size: {
+        description: 'The size of the tag. "md" (default) or "lg".',
+        table: {
+          type: {
+            summary: '"md" | "lg"'
+          },
+          defaultValue: {
+            summary: 'md'
+          }
+        },
+        control: {
+          type: 'select',
+          options: ['md', 'lg']
+        }
+      },
+      successAnimationOnInsertion: {
+        description: 'If true, plays a success animation when the tag is inserted.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      onRemove: {
+        description: 'Callback triggered when the close icon is clicked. If set, the tag is closable.',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: '() => void'
+          }
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'A colored tag component for keywords, hashtags, or mentions.'
+        }
+      }
+    }
+  };
+  const defaultArgs = {
+    label: 'Tag',
+    type: 'keyword',
+    size: 'md',
+    successAnimationOnInsertion: false
+  };
+  const Template = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <OSS::Smart::Tag
+          @label={{this.label}}
+          @type={{this.type}}
+          @size={{this.size}}
+          @successAnimationOnInsertion={{this.successAnimationOnInsertion}}
+          @onRemove={{this.onRemove}}
+        />
+      
+    */
+    {
+      "id": "GX46fH1Q",
+      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@label\",\"@type\",\"@size\",\"@successAnimationOnInsertion\",\"@onRemove\"],[[30,0,[\"label\"]],[30,0,[\"type\"]],[30,0,[\"size\"]],[30,0,[\"successAnimationOnInsertion\"]],[30,0,[\"onRemove\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/smart/tag\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/smart/tag.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const Default = _exports.Default = Template.bind({});
+  Default.args = defaultArgs;
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/text-area", ["exports", "@ember/component", "@ember/object", "@ember/utils", "@glimmer/tracking", "@upfluence/oss-components/utils/run-smart-gradient-animation", "@upfluence/oss-components/components/o-s-s/text-area", "@ember/template-factory"], function (_exports, _component, _object, _utils, _tracking, _runSmartGradientAnimation, _textArea, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor, _descriptor2;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@ember/utils",0,"@glimmer/tracking",0,"@upfluence/oss-components/utils/run-smart-gradient-animation",0,"@upfluence/oss-components/components/o-s-s/text-area",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div
+    class="oss-smart-text-area-container {{if @hasError ' oss-smart-text-area-container--errored'}}"
+    {{did-insert this.registerElement}}
+    {{did-update this.handleUpdate @loading}}
+    ...attributes
+  >
+    <div class="fx-row">
+      {{#if @loading}}
+        <div class="upf-input loading-placeholder fx-row fx-xalign-center">
+          <pre class="smart_text_animated">{{or @value @placeholder}}</pre>
+        </div>
+      {{/if}}
+      <Textarea
+        @value={{@value}}
+        placeholder={{@placeholder}}
+        disabled={{@disabled}}
+        rows={{this.rows}}
+        class="oss-textarea {{this.computedClass}}"
+        {{on "keyup" (fn this._onChange @value)}}
+      />
+    </div>
+  
+  </div>
+  */
+  {
+    "id": "ZOODWMvl",
+    "block": "[[[11,0],[16,0,[29,[\"oss-smart-text-area-container \",[52,[30,1],\" oss-smart-text-area-container--errored\"]]]],[17,2],[4,[38,1],[[30,0,[\"registerElement\"]]],null],[4,[38,2],[[30,0,[\"handleUpdate\"]],[30,3]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"fx-row\"],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"      \"],[10,0],[14,0,\"upf-input loading-placeholder fx-row fx-xalign-center\"],[12],[1,\"\\n        \"],[10,\"pre\"],[14,0,\"smart_text_animated\"],[12],[1,[28,[35,3],[[30,4],[30,5]],null]],[13],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[8,[39,4],[[16,\"placeholder\",[30,5]],[16,\"disabled\",[30,6]],[16,\"rows\",[30,0,[\"rows\"]]],[16,0,[29,[\"oss-textarea \",[30,0,[\"computedClass\"]]]]],[4,[38,5],[\"keyup\",[28,[37,6],[[30,0,[\"_onChange\"]],[30,4]],null]],null]],[[\"@value\"],[[30,4]]],null],[1,\"  \"],[13],[1,\"\\n\\n\"],[13]],[\"@hasError\",\"&attrs\",\"@loading\",\"@value\",\"@placeholder\",\"@disabled\"],false,[\"if\",\"did-insert\",\"did-update\",\"or\",\"textarea\",\"on\",\"fn\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/smart/text-area.hbs",
+    "isStrictMode": false
+  });
+  let OSSSmartTextareaComponent = _exports.default = (_class = class OSSSmartTextareaComponent extends _textArea.default {
+    constructor(...args) {
+      super(...args);
+      _initializerDefineProperty(this, "element", _descriptor, this);
+      _initializerDefineProperty(this, "textAreaElement", _descriptor2, this);
+    }
+    handleUpdate() {
+      if (!this.args.loading && !(0, _utils.isEmpty)(this.args.value)) {
+        (0, _runSmartGradientAnimation.runSmartGradientAnimation)(this.element);
+      }
+    }
+    registerElement(element) {
+      this.element = element;
+    }
+    get resize() {
+      return this.args.resize ?? 'none';
+    }
+    get computedClass() {
+      let computedClass = super.computedClass;
+      if (this.args.loading) {
+        computedClass += ' oss-textarea--loading';
+      }
+      return computedClass;
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "element", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "textAreaElement", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _applyDecoratedDescriptor(_class.prototype, "handleUpdate", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleUpdate"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "registerElement", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "registerElement"), _class.prototype)), _class);
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSmartTextareaComponent);
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/text-area.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.BasicUsage = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
+  const ResizeTypes = ['horizontal', 'vertical', 'none', null];
+  var _default = _exports.default = {
+    title: 'Components/OSS::Smart::TextArea',
+    component: 'smart text-area',
+    argTypes: {
+      value: {
+        description: 'Value of the textarea',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      rows: {
+        description: 'Number of rows dispayed in the textarea',
+        table: {
+          type: {
+            summary: 'number'
+          },
+          defaultValue: {
+            summary: 2
+          }
+        },
+        control: {
+          type: 'number'
+        }
+      },
+      resize: {
+        description: 'Define direction in which textarea can be resized (By default the resize is set to Both)',
+        table: {
+          type: {
+            summary: ResizeTypes.join('|')
+          },
+          defaultValue: {
+            summary: 'both'
+          }
+        },
+        options: ResizeTypes,
+        control: {
+          type: 'select'
+        }
+      },
+      disabled: {
+        description: 'Disable the default textarea',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      placeholder: {
+        description: 'Placeholder of the textarea',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      loading: {
+        description: 'Indicates if the textarea is in a loading state',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      hasError: {
+        description: 'Indicates if the textarea has an error',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      onChange: {
+        description: 'Method called every time the textarea is updated',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'onChange(value: string): void'
+          }
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'The OSS version of the textarea component.'
+        }
+      }
+    }
+  };
+  const defaultArgs = {
+    value: 'John',
+    rows: 2,
+    resize: null,
+    disabled: false,
+    placeholder: 'this is the placeholder',
+    hasError: false,
+    loading: false,
+    onChange: (0, _addonActions.action)('onChange')
+  };
+  const DefaultUsageTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+          <OSS::Smart::TextArea @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}}
+                         @hasError={{this.hasError}} @onChange={{this.onChange}} @rows={{this.rows}}
+                         @resize={{this.resize}} @loading={{this.loading}}/>
+      
+    */
+    {
+      "id": "aY5NPbVn",
+      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@value\",\"@disabled\",\"@placeholder\",\"@hasError\",\"@onChange\",\"@rows\",\"@resize\",\"@loading\"],[[30,0,[\"value\"]],[30,0,[\"disabled\"]],[30,0,[\"placeholder\"]],[30,0,[\"hasError\"]],[30,0,[\"onChange\"]],[30,0,[\"rows\"]],[30,0,[\"resize\"]],[30,0,[\"loading\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/smart/text-area\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/smart/text-area.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const BasicUsage = _exports.BasicUsage = DefaultUsageTemplate.bind({});
+  BasicUsage.args = defaultArgs;
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/toggle-buttons", ["exports", "@ember/component", "@ember/debug", "@upfluence/oss-components/components/o-s-s/toggle-buttons", "@ember/template-factory"], function (_exports, _component, _debug, _toggleButtons, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/debug",0,"@upfluence/oss-components/components/o-s-s/toggle-buttons",0,"@ember/component"eaimeta@70e063a35619d71f
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div
+    class={{concat "oss-smart-toggle-buttons-container " (if @disabled "oss-smart-toggle-buttons-container--disabled")}}
+    ...attributes
+  >
+    {{#each @toggles as |toggle|}}
+      <div
+        class="oss-smart-toggle-buttons-btn
+          {{if (eq @selectedToggle toggle.value) ' oss-smart-toggle-buttons-btn--selected'}}"
+        role="button"
+        {{on "click" (fn this.onSelectToggle toggle.value)}}
+      >
+        {{#if toggle.icon}}
+          <OSS::Icon @style={{fa-icon-style toggle.icon}} @icon={{fa-icon-value toggle.icon}} />
+        {{/if}}
+        {{toggle.label}}
+      </div>
+    {{/each}}
+  </div>
+  */
+  {
+    "id": "IWcgGGdS",
+    "block": "[[[11,0],[16,0,[28,[37,0],[\"oss-smart-toggle-buttons-container \",[52,[30,1],\"oss-smart-toggle-buttons-container--disabled\"]],null]],[17,2],[12],[1,\"\\n\"],[42,[28,[37,3],[[28,[37,3],[[30,3]],null]],null],null,[[[1,\"    \"],[11,0],[16,0,[29,[\"oss-smart-toggle-buttons-btn\\n        \",[52,[28,[37,4],[[30,5],[30,4,[\"value\"]]],null],\" oss-smart-toggle-buttons-btn--selected\"]]]],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[28,[37,6],[[30,0,[\"onSelectToggle\"]],[30,4,[\"value\"]]],null]],null],[12],[1,\"\\n\"],[41,[30,4,[\"icon\"]],[[[1,\"        \"],[8,[39,7],null,[[\"@style\",\"@icon\"],[[28,[37,8],[[30,4,[\"icon\"]]],null],[28,[37,9],[[30,4,[\"icon\"]]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"      \"],[1,[30,4,[\"label\"]]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[4]],null],[13]],[\"@disabled\",\"&attrs\",\"@toggles\",\"toggle\",\"@selectedToggle\"],false,[\"concat\",\"if\",\"each\",\"-track-array\",\"eq\",\"on\",\"fn\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/smart/toggle-buttons.hbs",
+    "isStrictMode": false
+  });
+  class OSSSmartToggleButtons extends _toggleButtons.default {
+    constructor(owner, args) {
+      super(owner, args, true);
+      (true && !(this.args.toggles instanceof Array) && (0, _debug.assert)('[component][OSS::Smart::ToggleButtons] The @toggles parameter of type Toggle[] is mandatory', this.args.toggles instanceof Array));
+      (true && !(typeof args.onSelection === 'function') && (0, _debug.assert)('[component][OSS::Smart::ToggleButtons] The @onSelection parameter of type function is mandatory', typeof args.onSelection === 'function'));
+      (true && !(args.selectedToggle === null || typeof args.selectedToggle === 'string') && (0, _debug.assert)('[component][OSS::Smart::ToggleButtons] The @selectedToggle parameter of type string or null is mandatory', args.selectedToggle === null || typeof args.selectedToggle === 'string'));
+      (true && !(args.selectedToggle === null || args.toggles.map(item => item.value).includes(args.selectedToggle)) && (0, _debug.assert)('[component][OSS::Smart::ToggleButtons] The @selectedToggle parameter should be null or a value of toggles', args.selectedToggle === null || args.toggles.map(item => item.value).includes(args.selectedToggle)));
+    }
+  }
+  _exports.default = OSSSmartToggleButtons;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSmartToggleButtons);
+});
+;define("@upfluence/oss-components/components/o-s-s/smart/toggle-buttons.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.Default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::Smart::ToggleButtons',
+    component: 'smart toggle-buttons',
+    argTypes: {
+      toggles: {
+        type: {
+          required: true
+        },
+        description: 'An array of toggles passed to the component',
+        table: {
+          type: {
+            summary: '{value: string, label: string}[]'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'object'
+        }
+      },
+      selectedToggle: {
+        type: {
+          required: true
+        },
+        description: 'Value selected',
+        table: {
+          type: {
+            summary: 'string | null'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      disabled: {
+        type: {
+          required: false
+        },
+        description: 'Disabled state',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
+      onSelection: {
+        type: {
+          required: true
+        },
+        description: 'Action triggered when selecting a new toggle',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'onSelection(selectedToggle: string): void'
+          }
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'The smart version of the toggle-buttons item component'
+        },
+        iframeHeight: 200
+      }
+    }
+  };
+  const defaultArgs = {
+    toggles: [{
+      value: 'categories',
+      label: 'Categories'
+    }, {
+      value: 'products',
+      label: 'Products'
+    }],
+    selectedToggle: 'categories',
+    onSelection: (0, _addonActions.action)('onSelection'),
+    disabled: false
+  };
+  const DefaultUsageTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <div style="width: 250px">
+          <OSS::Smart::ToggleButtons @toggles={{this.toggles}} @selectedToggle={{this.selectedToggle}} @onSelection={{this.onSelection}} @disabled={{this.disabled}} />
+        </div>
+      
+    */
+    {
+      "id": "yJ1TyN1O",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 250px\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@toggles\",\"@selectedToggle\",\"@onSelection\",\"@disabled\"],[[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]],[30,0,[\"onSelection\"]],[30,0,[\"disabled\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/smart/toggle-buttons\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/smart/toggle-buttons.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const Default = _exports.Default = DefaultUsageTemplate.bind({});
+  Default.args = defaultArgs;
 });
 ;define("@upfluence/oss-components/components/o-s-s/social-post-badge", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@ember/debug", "@ember/template-factory"], function (_exports, _component, _component2, _object, _debug, _templateFactory) {
   "use strict";
@@ -98491,9 +101994,12 @@ interface OSSCodeBlockArgs {
     get rows() {
       return this.args.rows || 2;
     }
+    get resize() {
+      return this.args.resize;
+    }
     get computedClass() {
       const classes = [];
-      if (this.args.resize === 'vertical') classes.push('oss-textarea--resize-v');else if (this.args.resize === 'horizontal') classes.push('oss-textarea--resize-h');else if (this.args.resize === 'none') classes.push('oss-textarea--resize-none');
+      if (this.resize === 'vertical') classes.push('oss-textarea--resize-v');else if (this.resize === 'horizontal') classes.push('oss-textarea--resize-h');else if (this.resize === 'none') classes.push('oss-textarea--resize-none');
       return classes.join(' ');
     }
     _onChange(value) {
@@ -99134,8 +102640,9 @@ interface OSSCodeBlockArgs {
     "isStrictMode": false
   });
   let OSSToggleButtons = _exports.default = (_class = class OSSToggleButtons extends _component2.default {
-    constructor(owner, args) {
+    constructor(owner, args, preventDefaultAssertions) {
       super(owner, args);
+      if (preventDefaultAssertions) return;
       (true && !(this.args.toggles instanceof Array) && (0, _debug.assert)('[component][OSS::ToggleButtons] The @toggles parameter of type Toggle[] is mandatory', this.args.toggles instanceof Array));
       (true && !(typeof args.onSelection === 'function') && (0, _debug.assert)('[component][OSS::ToggleButtons] The @onSelection parameter of type function is mandatory', typeof args.onSelection === 'function'));
       (true && !(args.selectedToggle === null || typeof args.selectedToggle === 'string') && (0, _debug.assert)('[component][OSS::ToggleButtons] The @selectedToggle parameter of type string or null is mandatory', args.selectedToggle === null || typeof args.selectedToggle === 'string'));
@@ -100735,7 +104242,7 @@ interface OSSCodeBlockArgs {
   let WizardBaseStep = _exports.WizardBaseStep = (_class = class WizardBaseStep extends _component.default {
     constructor(owner, args) {
       super(owner, args);
-      if (!args.step.validateStep) (0, _object.set)(args.step, 'validateStep', this.onStepSubmission.bind(this));
+      (0, _object.set)(args.step, 'validateStep', this.onStepSubmission?.bind(this));
     }
     onLeave() {}
     onVisibleState() {
@@ -100818,26 +104325,26 @@ interface OSSCodeBlockArgs {
     class={{this.computedClasses}}
     data-wheel-listener={{this.wheelListenerEnabled}}
     data-wheel-handled={{this.wheelHandled}}
-    {{did-insert this.initStepView}}
     {{did-update this.onDisplayStateUpdate @step.displayState}}
-    {{on "scroll" this.handleScrollEvent}}
+    {{did-insert this.initStepView}}
     {{on "wheel" this.handleWheelEvent}}
     ...attributes
   >
     {{#if this.isVisible}}
-      <this.componentToDisplay @step={{@step}} />
+      <this.componentToDisplay @step={{@step}} {{on "scroll" this.handleScrollEvent}} {{did-insert this.initStepView}} />
     {{/if}}
   </div>
   */
   {
-    "id": "Mes2LUZp",
-    "block": "[[[11,0],[16,1,[30,1,[\"id\"]]],[16,0,[30,0,[\"computedClasses\"]]],[16,\"data-wheel-listener\",[30,0,[\"wheelListenerEnabled\"]]],[16,\"data-wheel-handled\",[30,0,[\"wheelHandled\"]]],[17,2],[4,[38,0],[[30,0,[\"initStepView\"]]],null],[4,[38,1],[[30,0,[\"onDisplayStateUpdate\"]],[30,1,[\"displayState\"]]],null],[4,[38,2],[\"scroll\",[30,0,[\"handleScrollEvent\"]]],null],[4,[38,2],[\"wheel\",[30,0,[\"handleWheelEvent\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"isVisible\"]],[[[1,\"    \"],[8,[30,0,[\"componentToDisplay\"]],null,[[\"@step\"],[[30,1]]],null],[1,\"\\n\"]],[]],null],[13]],[\"@step\",\"&attrs\"],false,[\"did-insert\",\"did-update\",\"on\",\"if\"]]",
+    "id": "vUcW8DU8",
+    "block": "[[[11,0],[16,1,[30,1,[\"id\"]]],[16,0,[30,0,[\"computedClasses\"]]],[16,\"data-wheel-listener\",[30,0,[\"wheelListenerEnabled\"]]],[16,\"data-wheel-handled\",[30,0,[\"wheelHandled\"]]],[17,2],[4,[38,0],[[30,0,[\"onDisplayStateUpdate\"]],[30,1,[\"displayState\"]]],null],[4,[38,1],[[30,0,[\"initStepView\"]]],null],[4,[38,2],[\"wheel\",[30,0,[\"handleWheelEvent\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"isVisible\"]],[[[1,\"    \"],[8,[30,0,[\"componentToDisplay\"]],[[4,[38,2],[\"scroll\",[30,0,[\"handleScrollEvent\"]]],null],[4,[38,1],[[30,0,[\"initStepView\"]]],null]],[[\"@step\"],[[30,1]]],null],[1,\"\\n\"]],[]],null],[13]],[\"@step\",\"&attrs\"],false,[\"did-update\",\"did-insert\",\"on\",\"if\"]]",
     "moduleName": "@upfluence/oss-components/components/wizard/step-wrapper.hbs",
     "isStrictMode": false
   });
   const SCROLL_EVENTS_DELAY = 1500;
   const DEFAULT_BASE_CLASS = 'step-wrapper';
-  let WizardStepWrapperComponent = _exports.default = (_dec = (0, _object.computed)('args.step.displayState'), _dec2 = (0, _object.computed)('args.step.displayState'), (_class = class WizardStepWrapperComponent extends _component2.default {
+  const DEFAULT_CLASS_TO_SKIP_SCROLL_LISTENER = 'prevent-wizard-scroll-events';
+  let WizardStepWrapperComponent = _exports.default = (_dec = (0, _object.computed)('args.step.displayState'), _dec2 = (0, _object.computed)('args.step.{displayState,hidden}'), (_class = class WizardStepWrapperComponent extends _component2.default {
     constructor(...args) {
       super(...args);
       _initializerDefineProperty(this, "wizardManager", _descriptor, this);
@@ -100877,7 +104384,14 @@ interface OSSCodeBlockArgs {
       this.handleScrollPosition();
     }
     handleWheelEvent(event) {
-      if (!this.wheelListenerEnabled || this.wheelHandled) return;
+      let target = event.target;
+      while (target) {
+        if (target.classList && target.classList.contains(this.wizardManager.configOptions.skipScrollEventsClass ?? DEFAULT_CLASS_TO_SKIP_SCROLL_LISTENER)) {
+          return;
+        }
+        target = target.parentElement;
+      }
+      if (!this.wizardManager.wheelEnabled || !this.wheelListenerEnabled || this.wheelHandled) return;
       if (!this.scrollPosition && !this.wheelListenerEnabled) return;
       if (this.scrollPosition === 'middle') return;
       this.wheelHandled = true;
@@ -100895,7 +104409,8 @@ interface OSSCodeBlockArgs {
     }
     handleScrollEvent(event) {
       const target = event.target;
-      if (target.scrollHeight - target.scrollTop <= target.clientHeight) {
+      const Tolerance = 1;
+      if (target.scrollHeight - target.scrollTop - target.clientHeight <= Tolerance) {
         this.scrollPosition = 'bottom';
         this.enableWheelListenerAfterDelay(SCROLL_EVENTS_DELAY);
       } else if (target.scrollTop === 0) {
@@ -102614,7 +106129,7 @@ interface OSSCodeBlockArgs {
     value: true
   });
   _exports.default = void 0;
-  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4;
+  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
   0; //eaimeta@70e063a35619d71f0,"@ember/service",0,"@ember/object",0,"@glimmer/tracking",0,"@ember/object/internals",0,"@ember/runloop"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -102629,6 +106144,7 @@ interface OSSCodeBlockArgs {
       _initializerDefineProperty(this, "sections", _descriptor2, this);
       _initializerDefineProperty(this, "focusedStepId", _descriptor3, this);
       _initializerDefineProperty(this, "configOptions", _descriptor4, this);
+      _initializerDefineProperty(this, "wheelEnabled", _descriptor5, this);
     }
     get allSteps() {
       return this.sections.flatMap(section => section.steps);
@@ -102650,7 +106166,13 @@ interface OSSCodeBlockArgs {
       const firstFocusableStep = this.sections[0]?.steps.find(step => step.displayState !== 'empty');
       if (firstFocusableStep) {
         this.focusedStepId = firstFocusableStep.id;
-        this.selectStep(firstFocusableStep.id);
+        this.setDisplayStates();
+        (0, _runloop.next)(this, () => {
+          document.getElementById(firstFocusableStep.id)?.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center'
+          });
+        });
       }
     }
     selectSection(sectionId) {
@@ -102659,7 +106181,7 @@ interface OSSCodeBlockArgs {
         this.selectStep(firstFocusableStepOfSection.id);
       }
     }
-    selectStep(stepId, bypassValidations) {
+    async selectStep(stepId, bypassValidations) {
       if (bypassValidations) {
         this.focusStep(stepId);
         return;
@@ -102670,21 +106192,26 @@ interface OSSCodeBlockArgs {
       const currentStepIndex = this.focusedStepId ? this.findIndexOfStep(this.focusedStepId) : -1;
       if (currentStepIndex !== -1) {
         const stepsToValidate = this.allSteps.slice(currentStepIndex, targetStepIndex);
-        const validationPromises = stepsToValidate.map(step => {
-          if (step.completed) return Promise.resolve(true);
-          return step.validateStep ? step.validateStep() : Promise.resolve(true);
-        });
-        Promise.all(validationPromises).then(results => {
-          if (results.every(result => result)) {
-            this.focusStep(stepId);
-          } else {
-            const firstInvalidIndex = results.findIndex(result => !result);
-            if (firstInvalidIndex !== -1) {
-              this.focusStep(this.allSteps[currentStepIndex + firstInvalidIndex]?.id ?? '');
-            }
-          }
-        });
+        const stepIdToFocus = await this.runValidationsSequentiallyAndReturnFirstFailingStep(stepsToValidate, currentStepIndex, stepId);
+        if (stepIdToFocus) {
+          this.focusStep(stepIdToFocus);
+        }
       }
+    }
+    async runValidationsSequentiallyAndReturnFirstFailingStep(stepsToValidate, currentStepIndex, targetStepId) {
+      for (let i = 0; i < stepsToValidate.length; i++) {
+        const step = stepsToValidate[i];
+        if (step?.completed || step?.hidden) continue;
+        const isValid = step.validateStep ? await step.validateStep() : true;
+        if (!isValid) {
+          const failingStepIndex = currentStepIndex + i;
+          if (failingStepIndex !== currentStepIndex) {
+            return this.allSteps[failingStepIndex]?.id ?? null;
+          }
+          return null;
+        }
+      }
+      return targetStepId;
     }
     selectNextStep() {
       if (this.nextStep) this.selectStep(this.nextStep.id);
@@ -102708,12 +106235,11 @@ interface OSSCodeBlockArgs {
       this.focusedStepId = '';
       this.configOptions = {};
     }
+    markStepAsIncomplete(stepId) {
+      this.markCompletionOnStep(stepId, false);
+    }
     markStepAsCompleted(stepId) {
-      const step = this.findStepById(stepId);
-      if (step) {
-        (0, _object.set)(step, 'completed', true);
-      }
-      this.notifySectionChange();
+      this.markCompletionOnStep(stepId, true);
     }
     toggleStepVisibility(stepId, hidden) {
       const step = this.findStepById(stepId);
@@ -102722,6 +106248,12 @@ interface OSSCodeBlockArgs {
         this.setDisplayStates();
         this.notifySectionChange();
       }
+    }
+    enableWheelScroll() {
+      this.wheelEnabled = true;
+    }
+    disableWheelScroll() {
+      this.wheelEnabled = false;
     }
     get currentSection() {
       return this.sections.find(section => section.steps.some(step => step.id === this.focusedStepId));
@@ -102738,20 +106270,29 @@ interface OSSCodeBlockArgs {
     findFirstFocusableStepInSection(sectionId) {
       const section = this.sections.find(section => section.id === sectionId);
       if (section) {
-        return section.steps.find(step => step.displayState !== 'empty');
+        return section.steps.find(step => step.displayState !== 'empty' && !step.hidden);
       }
       return undefined;
     }
     focusStep(stepId) {
-      const stepExists = this.sections.some(section => section.steps.some(step => step.id === stepId));
-      if (stepExists) {
-        (0, _object.set)(this, 'focusedStepId', stepId);
+      const stepPosition = this.findIndexOfStep(stepId) > this.findIndexOfStep(this.focusedStepId) ? 'after' : 'before';
+      let targetStep = stepPosition === 'after' ? this.nextStep : this.previousStep;
+      if (!targetStep) {
+        targetStep = this.findStepById(stepId);
+      }
+      if (targetStep) {
+        (0, _object.set)(this, 'focusedStepId', targetStep.id);
         this.setDisplayStates();
         (0, _runloop.next)(this, () => {
           document.getElementById(stepId)?.scrollIntoView({
             behavior: 'smooth',
             block: 'center'
           });
+          if (stepId !== this.focusedStepId) {
+            (0, _runloop.next)(this, () => {
+              this.focusStep(stepId);
+            });
+          }
         });
       }
     }
@@ -102822,6 +106363,13 @@ interface OSSCodeBlockArgs {
         });
       }
     }
+    markCompletionOnStep(stepId, value) {
+      const step = this.findStepById(stepId);
+      if (step) {
+        (0, _object.set)(step, 'completed', value);
+      }
+      this.notifySectionChange();
+    }
   }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "initialized", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
@@ -102846,6 +106394,13 @@ interface OSSCodeBlockArgs {
     enumerable: true,
     writable: true,
     initializer: null
+  }), _descriptor5 = _applyDecoratedDescriptor(_class.prototype, "wheelEnabled", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return true;
+    }
   })), _class);
 });
 ;define("@upfluence/oss-components/types/uploader", ["exports"], function (_exports) {
@@ -102916,6 +106471,10 @@ interface OSSCodeBlockArgs {
           minWidth: `${desiredWidth}px`,
           width: `${desiredWidth}px`
         };
+        if (mergedOptions.maxWidth) {
+          floatingStyle.width = `fit-content`;
+          floatingStyle.maxWidth = `${mergedOptions.maxWidth}px`;
+        }
         if (mergedOptions.maxHeight) {
           floatingStyle.maxHeight = `${floatingStyle.maxHeight}px`;
           elements.floating.style.setProperty('--floating-max-height', `${mergedOptions.maxHeight}px`);
@@ -109992,6 +113551,11 @@ setupDeprecationWorkflow(${JSON.stringify(mergedConfig, undefined, 2)});`;
       },
       "sidebar": {
         "collapse": "Collapse"
+      },
+      "smart": {
+        "tag_input": {
+          "placeholder": "Add keywords, @mentions and #hashtags"
+        }
       },
       "upload-area": {
         "browse": "browse",

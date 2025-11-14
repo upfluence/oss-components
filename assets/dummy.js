@@ -1083,6 +1083,20 @@
   });
   0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/slider"eaimeta@70e063a35619d71f
 });
+;define("dummy/components/o-s-s/smart/button", ["exports", "@upfluence/oss-components/components/o-s-s/smart/button"], function (_exports, _button) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _button.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/smart/button"eaimeta@70e063a35619d71f
+});
 ;define("dummy/components/o-s-s/smart/charger", ["exports", "@upfluence/oss-components/components/o-s-s/smart/pill"], function (_exports, _pill) {
   "use strict";
 
@@ -1097,6 +1111,104 @@
   });
   0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/smart/pill"eaimeta@70e063a35619d71f
 });
+;define("dummy/components/o-s-s/smart/feedback", ["exports", "@upfluence/oss-components/components/o-s-s/smart/feedback"], function (_exports, _feedback) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _feedback.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/smart/feedback"eaimeta@70e063a35619d71f
+});
+;define("dummy/components/o-s-s/smart/immersive/currency-input", ["exports", "@upfluence/oss-components/components/o-s-s/smart/immersive/currency-input"], function (_exports, _currencyInput) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _currencyInput.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/smart/immersive/currency-input"eaimeta@70e063a35619d71f
+});
+;define("dummy/components/o-s-s/smart/immersive/input", ["exports", "@upfluence/oss-components/components/o-s-s/smart/immersive/input"], function (_exports, _input) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _input.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/smart/immersive/input"eaimeta@70e063a35619d71f
+});
+;define("dummy/components/o-s-s/smart/immersive/logo", ["exports", "@upfluence/oss-components/components/o-s-s/smart/immersive/logo"], function (_exports, _logo) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _logo.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/smart/immersive/logo"eaimeta@70e063a35619d71f
+});
+;define("dummy/components/o-s-s/smart/immersive/select", ["exports", "@upfluence/oss-components/components/o-s-s/smart/immersive/select"], function (_exports, _select) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _select.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/smart/immersive/select"eaimeta@70e063a35619d71f
+});
+;define("dummy/components/o-s-s/smart/input", ["exports", "@upfluence/oss-components/components/o-s-s/smart/input"], function (_exports, _input) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _input.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/smart/input"eaimeta@70e063a35619d71f
+});
+;define("dummy/components/o-s-s/smart/number-input", ["exports", "@upfluence/oss-components/components/o-s-s/smart/number-input"], function (_exports, _numberInput) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _numberInput.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/smart/number-input"eaimeta@70e063a35619d71f
+});
 ;define("dummy/components/o-s-s/smart/pill", ["exports", "@upfluence/oss-components/components/o-s-s/smart/pill"], function (_exports, _pill) {
   "use strict";
 
@@ -1110,6 +1222,76 @@
     }
   });
   0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/smart/pill"eaimeta@70e063a35619d71f
+});
+;define("dummy/components/o-s-s/smart/skeleton", ["exports", "@upfluence/oss-components/components/o-s-s/smart/skeleton"], function (_exports, _skeleton) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _skeleton.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/smart/skeleton"eaimeta@70e063a35619d71f
+});
+;define("dummy/components/o-s-s/smart/tag-input", ["exports", "@upfluence/oss-components/components/o-s-s/smart/tag-input"], function (_exports, _tagInput) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _tagInput.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/smart/tag-input"eaimeta@70e063a35619d71f
+});
+;define("dummy/components/o-s-s/smart/tag", ["exports", "@upfluence/oss-components/components/o-s-s/smart/tag"], function (_exports, _tag) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _tag.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/smart/tag"eaimeta@70e063a35619d71f
+});
+;define("dummy/components/o-s-s/smart/text-area", ["exports", "@upfluence/oss-components/components/o-s-s/smart/text-area"], function (_exports, _textArea) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _textArea.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/smart/text-area"eaimeta@70e063a35619d71f
+});
+;define("dummy/components/o-s-s/smart/toggle-buttons", ["exports", "@upfluence/oss-components/components/o-s-s/smart/toggle-buttons"], function (_exports, _toggleButtons) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  Object.defineProperty(_exports, "default", {
+    enumerable: true,
+    get: function () {
+      return _toggleButtons.default;
+    }
+  });
+  0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/components/o-s-s/smart/toggle-buttons"eaimeta@70e063a35619d71f
 });
 ;define("dummy/components/o-s-s/social-post-badge", ["exports", "@upfluence/oss-components/components/o-s-s/social-post-badge"], function (_exports, _socialPostBadge) {
   "use strict";
@@ -1492,7 +1674,7 @@
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="fx-col fx-gap-px-12" {{did-update this.onVisibleState @step.displayState}}>
+    <div class="fx-col fx-gap-px-12" {{did-update this.onVisibleState @step.displayState}} ...attributes>
     <span>Example step with overflowing contents</span>
     <span>First name:</span>
     <OSS::InputContainer />
@@ -1531,8 +1713,8 @@
   </div>
   */
   {
-    "id": "mSID6UEF",
-    "block": "[[[11,0],[24,0,\"fx-col fx-gap-px-12\"],[4,[38,0],[[30,0,[\"onVisibleState\"]],[30,1,[\"displayState\"]]],null],[12],[1,\"\\n  \"],[10,1],[12],[1,\"Example step with overflowing contents\"],[13],[1,\"\\n  \"],[10,1],[12],[1,\"First name:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Last name:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Address:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"City:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"State:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Zip code:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Country:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Phone number:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Email:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Notes:\"],[13],[1,\"\\n  \"],[8,[39,2],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Additional information:\"],[13],[1,\"\\n  \"],[8,[39,2],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Comments:\"],[13],[1,\"\\n  \"],[8,[39,2],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Feedback:\"],[13],[1,\"\\n  \"],[8,[39,2],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Pet name:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Favorite color:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Hobbies:\"],[13],[1,\"\\n  \"],[8,[39,2],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Interests:\"],[13],[1,\"\\n  \"],[8,[39,2],null,null,null],[1,\"\\n\"],[13]],[\"@step\"],false,[\"did-update\",\"o-s-s/input-container\",\"o-s-s/text-area\"]]",
+    "id": "1eNhcZEg",
+    "block": "[[[11,0],[24,0,\"fx-col fx-gap-px-12\"],[17,1],[4,[38,0],[[30,0,[\"onVisibleState\"]],[30,2,[\"displayState\"]]],null],[12],[1,\"\\n  \"],[10,1],[12],[1,\"Example step with overflowing contents\"],[13],[1,\"\\n  \"],[10,1],[12],[1,\"First name:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Last name:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Address:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"City:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"State:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Zip code:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Country:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Phone number:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Email:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Notes:\"],[13],[1,\"\\n  \"],[8,[39,2],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Additional information:\"],[13],[1,\"\\n  \"],[8,[39,2],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Comments:\"],[13],[1,\"\\n  \"],[8,[39,2],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Feedback:\"],[13],[1,\"\\n  \"],[8,[39,2],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Pet name:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Favorite color:\"],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Hobbies:\"],[13],[1,\"\\n  \"],[8,[39,2],null,null,null],[1,\"\\n  \"],[10,1],[12],[1,\"Interests:\"],[13],[1,\"\\n  \"],[8,[39,2],null,null,null],[1,\"\\n\"],[13]],[\"&attrs\",\"@step\"],false,[\"did-update\",\"o-s-s/input-container\",\"o-s-s/text-area\"]]",
     "moduleName": "dummy/components/wizard/example-step-with-scroll.hbs",
     "isStrictMode": false
   });
@@ -1586,14 +1768,14 @@
   function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="fx-col fx-gap-px-12" {{did-update this.onVisibleState @step.displayState}}>
+    <div class="fx-col fx-gap-px-12" {{did-update this.onVisibleState @step.displayState}} ...attributes>
     <span>Example step #{{@step.id}}</span>
     <OSS::InputContainer />
   </div>
   */
   {
-    "id": "bdKol6W2",
-    "block": "[[[11,0],[24,0,\"fx-col fx-gap-px-12\"],[4,[38,0],[[30,0,[\"onVisibleState\"]],[30,1,[\"displayState\"]]],null],[12],[1,\"\\n  \"],[10,1],[12],[1,\"Example step #\"],[1,[30,1,[\"id\"]]],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n\"],[13]],[\"@step\"],false,[\"did-update\",\"o-s-s/input-container\"]]",
+    "id": "6+FWnt+v",
+    "block": "[[[11,0],[24,0,\"fx-col fx-gap-px-12\"],[17,1],[4,[38,0],[[30,0,[\"onVisibleState\"]],[30,2,[\"displayState\"]]],null],[12],[1,\"\\n  \"],[10,1],[12],[1,\"Example step #\"],[1,[30,2,[\"id\"]]],[13],[1,\"\\n  \"],[8,[39,1],null,null,null],[1,\"\\n\"],[13]],[\"&attrs\",\"@step\"],false,[\"did-update\",\"o-s-s/input-container\"]]",
     "moduleName": "dummy/components/wizard/example-step.hbs",
     "isStrictMode": false
   });
@@ -2493,6 +2675,435 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
       return false;
     }
   }), _applyDecoratedDescriptor(_class.prototype, "openPopover", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "openPopover"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "openDialog", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "openDialog"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onDialogMainAction", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onDialogMainAction"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onDialogSecondaryAction", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onDialogSecondaryAction"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "openModalDialog", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "openModalDialog"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeModalDialog", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeModalDialog"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "saveModalDialog", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "saveModalDialog"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "openSplitModal", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "openSplitModal"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeSplitModal", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeSplitModal"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "openSidePanel", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "openSidePanel"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeSidePanel", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeSidePanel"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onReturn", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onReturn"), _class.prototype)), _class);
+});
+;define("dummy/controllers/smart", ["exports", "@ember/controller", "@ember/object", "@ember/runloop", "@glimmer/tracking"], function (_exports, _controller, _object, _runloop, _tracking) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6, _descriptor7, _descriptor8, _descriptor9, _descriptor10, _descriptor11, _descriptor12, _descriptor13, _descriptor14, _descriptor15, _descriptor16, _descriptor17, _descriptor18, _descriptor19, _descriptor20, _descriptor21, _descriptor22, _descriptor23, _descriptor24, _descriptor25, _descriptor26, _descriptor27, _descriptor28;
+  0; //eaimeta@70e063a35619d71f0,"@ember/controller",0,"@ember/object",0,"@ember/runloop",0,"@glimmer/tracking"eaimeta@70e063a35619d71f
+  function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
+  function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) { var desc = {}; Object.keys(descriptor).forEach(function (key) { desc[key] = descriptor[key]; }); desc.enumerable = !!desc.enumerable; desc.configurable = !!desc.configurable; if ('value' in desc || desc.initializer) { desc.writable = true; } desc = decorators.slice().reverse().reduce(function (desc, decorator) { return decorator(target, property, desc) || desc; }, desc); if (context && desc.initializer !== void 0) { desc.value = desc.initializer ? desc.initializer.call(context) : void 0; desc.initializer = undefined; } if (desc.initializer === void 0) { Object.defineProperty(target, property, desc); desc = null; } return desc; }
+  function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
+  let Smart = _exports.default = (_class = class Smart extends _controller.default {
+    constructor() {
+      super(...arguments);
+      _initializerDefineProperty(this, "selectedToggle", _descriptor, this);
+      _initializerDefineProperty(this, "selectedToggleTwo", _descriptor2, this);
+      _initializerDefineProperty(this, "toggleInputLoadingValue", _descriptor3, this);
+      _initializerDefineProperty(this, "smartFeedback", _descriptor4, this);
+      _initializerDefineProperty(this, "smartFeedbackLoading", _descriptor5, this);
+      _initializerDefineProperty(this, "contentArray", _descriptor6, this);
+      _initializerDefineProperty(this, "logoLoading", _descriptor7, this);
+      _initializerDefineProperty(this, "toggles", _descriptor8, this);
+      _initializerDefineProperty(this, "value", _descriptor9, this);
+      _initializerDefineProperty(this, "loading", _descriptor10, this);
+      _initializerDefineProperty(this, "currency", _descriptor11, this);
+      _initializerDefineProperty(this, "currencyValue", _descriptor12, this);
+      _initializerDefineProperty(this, "currencyValueTwo", _descriptor13, this);
+      _initializerDefineProperty(this, "currencyOnly", _descriptor14, this);
+      _defineProperty(this, "allowedCurrencies", [{
+        code: 'USD',
+        symbol: '$'
+      }, {
+        code: 'EUR',
+        symbol: '€'
+      }]);
+      _initializerDefineProperty(this, "hasError", _descriptor15, this);
+      _initializerDefineProperty(this, "currencyInputLoading", _descriptor16, this);
+      _initializerDefineProperty(this, "pillLoading", _descriptor17, this);
+      _initializerDefineProperty(this, "selectedPill", _descriptor18, this);
+      _initializerDefineProperty(this, "selectedPillTwo", _descriptor19, this);
+      _defineProperty(this, "intervalId", void 0);
+      _initializerDefineProperty(this, "values", _descriptor20, this);
+      _initializerDefineProperty(this, "items", _descriptor21, this);
+      _initializerDefineProperty(this, "tagLoading", _descriptor22, this);
+      _initializerDefineProperty(this, "tags", _descriptor23, this);
+      _initializerDefineProperty(this, "smartTags", _descriptor24, this);
+      _initializerDefineProperty(this, "inputValue", _descriptor25, this);
+      _initializerDefineProperty(this, "textAreaValue", _descriptor26, this);
+      _initializerDefineProperty(this, "multilinePlaceholder", _descriptor27, this);
+      _initializerDefineProperty(this, "numberValue", _descriptor28, this);
+      this.addContentToFeedbackComponent();
+    }
+    get fakeSelectedItems() {
+      const mapped = this.items.map(item => {
+        return {
+          value: item.value,
+          label: item.label
+        };
+      });
+      return [...mapped, ...mapped, ...mapped];
+    }
+    triggerSelection(value) {
+      console.log('selected toggle value : ', value);
+      this.selectedToggle = value;
+    }
+    toggleLogoLoading() {
+      this.logoLoading = !this.logoLoading;
+    }
+    toggleLoading() {
+      this.loading = !this.loading;
+      if (this.loading === false) {
+        this.value = 'Data loaded from a very smart backend';
+      }
+    }
+    onCurrencyInputChange(currency, value) {
+      console.log(currency, value);
+      this.currency = currency;
+      this.currencyValue = value;
+      this.hasError = !this.hasError;
+    }
+    toggleInputLoading() {
+      this.toggleInputLoadingValue = !this.toggleInputLoadingValue;
+    }
+    toggleCurrencyInputLoading() {
+      this.currencyInputLoading = !this.currencyInputLoading;
+      if (this.currencyInputLoading === false) {
+        this.currencyValue = 77777777777;
+      }
+    }
+    toggleSmartFeedbackLoading() {
+      this.smartFeedbackLoading = !this.smartFeedbackLoading;
+    }
+    addContentToFeedbackComponent() {
+      const wordsToAdd = ['Dynamic word 1', 'Dynamic word 2', 'Dynamic word 3', 'Dynamic word 4', 'Dynamic word 5'];
+      let index = 0;
+      if (this.intervalId) {
+        clearInterval(this.intervalId);
+      }
+      this.intervalId = window.setInterval(() => {
+        if (index >= wordsToAdd.length) {
+          clearInterval(this.intervalId);
+          return;
+        }
+        const wordToAdd = wordsToAdd[index];
+        if (typeof wordToAdd === 'string') {
+          this.contentArray = [...this.contentArray, wordToAdd];
+        }
+        index++;
+      }, 1000);
+    }
+    onPillChange() {
+      this.selectedPill = !this.selectedPill;
+    }
+    togglePillLoading() {
+      this.pillLoading = !this.pillLoading;
+      this.selectedPillTwo = !this.pillLoading;
+    }
+    onLogoClick() {
+      console.log('logo icon clicked');
+    }
+    onSearch(keyword) {
+      console.log('Search keyword:', keyword);
+    }
+    onChange(item) {
+      console.log('Selected item:', item);
+      if (this.values.some(value => value.value === item.value)) {
+        this.values = this.values.filter(value => value.value !== item.value);
+      } else {
+        this.values = [...this.values, {
+          value: item.value
+        }];
+      }
+      this.value = item.value;
+    }
+    onTagRemove() {
+      console.log('removing tag');
+    }
+    toggleTagAnimation() {
+      this.tagLoading = !this.tagLoading;
+    }
+    handleTagInput({
+      value,
+      type
+    }) {
+      this.tags = [...this.tags, {
+        value,
+        type
+      }];
+      return '';
+    }
+    handleSmartTagInput({
+      value,
+      type
+    }) {
+      this.smartTags = [...this.smartTags, {
+        value,
+        type
+      }];
+      return '';
+    }
+    onTextAreaChange(value) {
+      console.log('Text area value changed:', value);
+      this.textAreaValue = value;
+    }
+    onNumberChange(value) {
+      console.log('Number value changed:', value);
+      this.numberValue = value;
+    }
+    fakeLoadData() {
+      this.loading = true;
+      setTimeout(() => {
+        this.smartTags = [{
+          value: 'example',
+          type: 'keyword'
+        }, {
+          value: 'test',
+          type: 'mention'
+        }, {
+          value: 'sample',
+          type: 'hashtag'
+        }];
+        (0, _runloop.next)(() => {
+          this.loading = false;
+        });
+      }, 3000);
+    }
+  }, (_descriptor = _applyDecoratedDescriptor(_class.prototype, "selectedToggle", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return 'first';
+    }
+  }), _descriptor2 = _applyDecoratedDescriptor(_class.prototype, "selectedToggleTwo", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return 'second';
+    }
+  }), _descriptor3 = _applyDecoratedDescriptor(_class.prototype, "toggleInputLoadingValue", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
+  }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, "smartFeedback", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
+  }), _descriptor5 = _applyDecoratedDescriptor(_class.prototype, "smartFeedbackLoading", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
+  }), _descriptor6 = _applyDecoratedDescriptor(_class.prototype, "contentArray", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return ['This is the first content', 'This is the second content', 'This is the third content'];
+    }
+  }), _descriptor7 = _applyDecoratedDescriptor(_class.prototype, "logoLoading", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
+  }), _descriptor8 = _applyDecoratedDescriptor(_class.prototype, "toggles", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return [{
+        value: 'first',
+        label: 'First'
+      }, {
+        value: 'second',
+        label: 'Second'
+      }];
+    }
+  }), _descriptor9 = _applyDecoratedDescriptor(_class.prototype, "value", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _descriptor10 = _applyDecoratedDescriptor(_class.prototype, "loading", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
+  }), _descriptor11 = _applyDecoratedDescriptor(_class.prototype, "currency", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return 'USD';
+    }
+  }), _descriptor12 = _applyDecoratedDescriptor(_class.prototype, "currencyValue", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _descriptor13 = _applyDecoratedDescriptor(_class.prototype, "currencyValueTwo", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: null
+  }), _descriptor14 = _applyDecoratedDescriptor(_class.prototype, "currencyOnly", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return '';
+    }
+  }), _descriptor15 = _applyDecoratedDescriptor(_class.prototype, "hasError", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return true;
+    }
+  }), _descriptor16 = _applyDecoratedDescriptor(_class.prototype, "currencyInputLoading", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return true;
+    }
+  }), _descriptor17 = _applyDecoratedDescriptor(_class.prototype, "pillLoading", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return true;
+    }
+  }), _descriptor18 = _applyDecoratedDescriptor(_class.prototype, "selectedPill", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
+  }), _descriptor19 = _applyDecoratedDescriptor(_class.prototype, "selectedPillTwo", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
+  }), _descriptor20 = _applyDecoratedDescriptor(_class.prototype, "values", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return [{
+        value: 'content'
+      }];
+    }
+  }), _descriptor21 = _applyDecoratedDescriptor(_class.prototype, "items", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return [{
+        value: 'content',
+        label: 'Jace generated content'
+      }, {
+        value: '1',
+        label: 'Item 1'
+      }, {
+        value: '2',
+        label: 'Item 2'
+      }, {
+        value: '3',
+        label: 'Item 3'
+      }, {
+        value: '4',
+        label: 'Item 4'
+      }, {
+        value: '5',
+        label: 'Item 5'
+      }, {
+        value: '6',
+        label: 'Item 6'
+      }, {
+        value: '7',
+        label: 'Item 7'
+      }, {
+        value: '8',
+        label: 'Item 8'
+      }, {
+        value: '9',
+        label: 'Item 9'
+      }];
+    }
+  }), _descriptor22 = _applyDecoratedDescriptor(_class.prototype, "tagLoading", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
+    }
+  }), _descriptor23 = _applyDecoratedDescriptor(_class.prototype, "tags", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return [{
+        value: 'keyword',
+        type: 'keyword'
+      }, {
+        value: 'mention',
+        type: 'mention'
+      }, {
+        value: 'hashtag',
+        type: 'hashtag'
+      }];
+    }
+  }), _descriptor24 = _applyDecoratedDescriptor(_class.prototype, "smartTags", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return [];
+    }
+  }), _descriptor25 = _applyDecoratedDescriptor(_class.prototype, "inputValue", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return '';
+    }
+  }), _descriptor26 = _applyDecoratedDescriptor(_class.prototype, "textAreaValue", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return '';
+    }
+  }), _descriptor27 = _applyDecoratedDescriptor(_class.prototype, "multilinePlaceholder", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return 'Small placeholder\nwith multiple\nlines';
+    }
+  }), _descriptor28 = _applyDecoratedDescriptor(_class.prototype, "numberValue", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return 42;
+    }
+  }), _applyDecoratedDescriptor(_class.prototype, "triggerSelection", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "triggerSelection"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleLogoLoading", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleLogoLoading"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleLoading", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleLoading"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onCurrencyInputChange", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onCurrencyInputChange"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleInputLoading", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleInputLoading"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleCurrencyInputLoading", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleCurrencyInputLoading"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleSmartFeedbackLoading", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleSmartFeedbackLoading"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onPillChange", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onPillChange"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "togglePillLoading", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "togglePillLoading"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onLogoClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onLogoClick"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onChange", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onChange"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onTagRemove", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onTagRemove"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleTagAnimation", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleTagAnimation"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleTagInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleTagInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleSmartTagInput", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleSmartTagInput"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onTextAreaChange", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onTextAreaChange"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onNumberChange", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onNumberChange"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "fakeLoadData", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "fakeLoadData"), _class.prototype)), _class);
 });
 ;define("dummy/controllers/visual", ["exports", "@ember/controller", "@glimmer/tracking", "@ember/object"], function (_exports, _controller, _tracking, _object) {
   "use strict";
@@ -3648,6 +4259,7 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
     this.route('overlay');
     this.route('extra');
     this.route('wizard');
+    this.route('smart');
   });
 });
 ;define("dummy/routes/application", ["exports", "@ember/routing/route", "@ember/service"], function (_exports, _route, _service) {
@@ -3727,6 +4339,17 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
   0; //eaimeta@70e063a35619d71f0,"@ember/routing/route"eaimeta@70e063a35619d71f
   class Overlay extends _route.default {}
   _exports.default = Overlay;
+});
+;define("dummy/routes/smart", ["exports", "@ember/routing/route"], function (_exports, _route) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"@ember/routing/route"eaimeta@70e063a35619d71f
+  class Smart extends _route.default {}
+  _exports.default = Smart;
 });
 ;define("dummy/routes/visual", ["exports", "@ember/routing/route"], function (_exports, _route) {
   "use strict";
@@ -3896,6 +4519,11 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
           @link="wizard"
         />
         <OSS::Layout::Sidebar::Item
+          @icon="far fa-brain-circuit"
+          class={{if (eq this.router.currentRouteName "smart") "active"}}
+          @link="smart"
+        />
+        <OSS::Layout::Sidebar::Item
           @icon="far fa-lock"
           @locked={{true}}
           @label="Locked State"
@@ -3933,8 +4561,8 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
   </div>
   */
   {
-    "id": "FiWlX3qD",
-    "block": "[[[10,0],[14,0,\"fx-row\"],[12],[1,\"\\n  \"],[8,[39,0],null,[[\"@homeParameters\",\"@expandable\"],[[28,[37,1],null,[[\"logo\",\"url\"],[\"/assets/images/brand-icon.svg\",\"/\"]]],true]],[[\"content\",\"footer\"],[[[[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"index\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-message-plus\",\"Display\",[30,1,[\"expanded\"]],\"index\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"input\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-input-text\",\"Input\",[30,1,[\"expanded\"]],\"input\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"visual\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-toggle-on\",\"Visual\",[30,1,[\"expanded\"]],\"visual\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"data\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-line-columns\",\"Data\",[30,1,[\"expanded\"]],\"data\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"overlay\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-window-restore\",\"Overlay\",[30,1,[\"expanded\"]],\"overlay\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"extra\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-link\",\"Extra\",[30,1,[\"expanded\"]],\"extra\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"wizard\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-hat-wizard\",\"Wizard\",[30,1,[\"expanded\"]],\"wizard\"]],null],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@locked\",\"@label\",\"@expanded\",\"@defaultAction\",\"@lockedAction\"],[\"far fa-lock\",true,\"Locked State\",[30,1,[\"expanded\"]],[28,[37,5],[[30,0,[\"redirectTo\"]],\"credit-card\"],null],[28,[37,5],[[30,0,[\"redirectTo\"]],\"locked credit-card\"],null]]],null],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@defaultAction\",\"@label\",\"@expanded\",\"@hasNotifications\"],[\"far fa-bullhorn\",[28,[37,5],[[30,0,[\"redirectTo\"]],\"pointer\"],null],\"Notifications\",[30,1,[\"expanded\"]],true]],null],[1,\"\\n    \"]],[1]],[[[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@label\",\"@expanded\"],[\"fal fa-info-circle\",\"Help center\",[30,2,[\"expanded\"]]]],null],[1,\"\\n\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-9 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,6],null,[[\"@image\",\"@initials\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"Ts\"]],null],[1,\"\\n\\n\"],[41,[30,2,[\"expanded\"]],[[[1,\"          My account\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n    \"]],[2]]]]],[1,\"\\n\\n  \"],[10,0],[14,5,\"width:100%; height:100vh; overflow: auto; background-color: var(--color-gray-50)\"],[12],[1,\"\\n    \"],[46,[28,[37,8],null,null],null,null,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"state\",\"sidebar\"],false,[\"o-s-s/layout/sidebar\",\"hash\",\"o-s-s/layout/sidebar/item\",\"if\",\"eq\",\"fn\",\"o-s-s/avatar\",\"component\",\"-outlet\"]]",
+    "id": "z7DFMwZK",
+    "block": "[[[10,0],[14,0,\"fx-row\"],[12],[1,\"\\n  \"],[8,[39,0],null,[[\"@homeParameters\",\"@expandable\"],[[28,[37,1],null,[[\"logo\",\"url\"],[\"/assets/images/brand-icon.svg\",\"/\"]]],true]],[[\"content\",\"footer\"],[[[[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"index\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-message-plus\",\"Display\",[30,1,[\"expanded\"]],\"index\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"input\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-input-text\",\"Input\",[30,1,[\"expanded\"]],\"input\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"visual\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-toggle-on\",\"Visual\",[30,1,[\"expanded\"]],\"visual\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"data\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-line-columns\",\"Data\",[30,1,[\"expanded\"]],\"data\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"overlay\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-window-restore\",\"Overlay\",[30,1,[\"expanded\"]],\"overlay\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"extra\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-link\",\"Extra\",[30,1,[\"expanded\"]],\"extra\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"wizard\"],null],\"active\"]]],[[\"@icon\",\"@label\",\"@expanded\",\"@link\"],[\"far fa-hat-wizard\",\"Wizard\",[30,1,[\"expanded\"]],\"wizard\"]],null],[1,\"\\n      \"],[8,[39,2],[[16,0,[52,[28,[37,4],[[30,0,[\"router\",\"currentRouteName\"]],\"smart\"],null],\"active\"]]],[[\"@icon\",\"@link\"],[\"far fa-brain-circuit\",\"smart\"]],null],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@locked\",\"@label\",\"@expanded\",\"@defaultAction\",\"@lockedAction\"],[\"far fa-lock\",true,\"Locked State\",[30,1,[\"expanded\"]],[28,[37,5],[[30,0,[\"redirectTo\"]],\"credit-card\"],null],[28,[37,5],[[30,0,[\"redirectTo\"]],\"locked credit-card\"],null]]],null],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@defaultAction\",\"@label\",\"@expanded\",\"@hasNotifications\"],[\"far fa-bullhorn\",[28,[37,5],[[30,0,[\"redirectTo\"]],\"pointer\"],null],\"Notifications\",[30,1,[\"expanded\"]],true]],null],[1,\"\\n    \"]],[1]],[[[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@label\",\"@expanded\"],[\"fal fa-info-circle\",\"Help center\",[30,2,[\"expanded\"]]]],null],[1,\"\\n\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-9 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,6],null,[[\"@image\",\"@initials\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"Ts\"]],null],[1,\"\\n\\n\"],[41,[30,2,[\"expanded\"]],[[[1,\"          My account\\n\"]],[]],null],[1,\"      \"],[13],[1,\"\\n    \"]],[2]]]]],[1,\"\\n\\n  \"],[10,0],[14,5,\"width:100%; height:100vh; overflow: auto; background-color: var(--color-gray-50)\"],[12],[1,\"\\n    \"],[46,[28,[37,8],null,null],null,null,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"state\",\"sidebar\"],false,[\"o-s-s/layout/sidebar\",\"hash\",\"o-s-s/layout/sidebar/item\",\"if\",\"eq\",\"fn\",\"o-s-s/avatar\",\"component\",\"-outlet\"]]",
     "moduleName": "dummy/templates/application.hbs",
     "isStrictMode": false
   });
@@ -5789,6 +6417,550 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
     "isStrictMode": false
   });
 });
+;define("dummy/templates/smart", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  var _default = _exports.default = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="fx-col fx-gap-px-12 padding-px-18">
+    <div class="page-title-container">
+      <span class="font-size-h2 font-weight-semibold">Smart</span>
+      <span class="font-color-gray-500">Components that look like another component and act like another component but
+        aren't said component</span>
+      <span class="font-color-gray-500 font-size-xs text-style-italic">(also they might be smarter than you who knows)</span>
+    </div>
+  
+    <div
+      class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+    >
+      <div class="font-size-md font-weight-semibold">
+        Text-area
+      </div>
+      <div class="fx-col fx-gap-px-24">
+        <div class="fx-row fx-gap-px-24 fx-xalign-center">
+          <OSS::Button @label="Toggle loading" {{on "click" this.toggleLoading}} />
+          <OSS::Smart::TextArea
+            @value={{this.textAreaValue}}
+            @onChange={{this.onTextAreaChange}}
+            @rows={{7}}
+            @placeholder={{this.multilinePlaceholder}}
+            @loading={{this.loading}}
+          />
+        </div>
+      </div>
+    </div>
+  
+    <div
+      class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+    >
+      <div class="font-size-md font-weight-semibold">
+        Number input
+      </div>
+      <div class="fx-col fx-gap-px-24">
+        <div class="fx-row fx-gap-px-24 fx-xalign-center">
+          <OSS::Smart::NumberInput @value={{this.numberValue}} @onChange={{this.onNumberChange}} @hasError={{true}} />
+          <OSS::Smart::NumberInput @value={{this.numberValue}} @onChange={{this.onNumberChange}} />
+        </div>
+      </div>
+    </div>
+  
+    <div
+      class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+    >
+      <div class="font-size-md font-weight-semibold">
+        Smart tag & Smart tag input
+      </div>
+      <div class="fx-col fx-gap-px-24">
+        <div class="fx-row fx-gap-px-24 fx-xalign-center">
+          <OSS::Button @label="Toggle animation" {{on "click" this.toggleTagAnimation}} />
+          <OSS::Smart::Tag @label="Default" />
+          {{#each this.tags as |tag|}}
+            <OSS::Smart::Tag
+              @label={{tag.value}}
+              @type={{tag.type}}
+              @onRemove={{this.onTagRemove}}
+              @successAnimationOnInsertion={{this.tagLoading}}
+            />
+          {{/each}}
+          {{#each this.tags as |tag|}}
+            <OSS::Smart::Tag
+              @label={{tag.value}}
+              @type={{tag.type}}
+              @onRemove={{this.onTagRemove}}
+              @successAnimationOnInsertion={{this.tagLoading}}
+              @size="lg"
+            />
+          {{/each}}
+        </div>
+        <div class="fx-row fx-gap-px-24 fx-xalign-start">
+          {{#each this.smartTags as |smartTag|}}
+            <OSS::Smart::Tag @label={{smartTag.value}} @type={{smartTag.type}} @onRemove={{this.onTagRemove}} />
+          {{/each}}
+          <OSS::Smart::TagInput @value={{this.inputValue}} @onKeydown={{this.handleTagInput}} />
+          <OSS::Smart::TagInput @value={{this.inputValue}} @onKeydown={{this.handleTagInput}} @loading={{true}} />
+          <OSS::Smart::TagInput @value={{this.inputValue}} @onKeydown={{this.handleTagInput}} @hasError={{true}} />
+        </div>
+        <div class="fx-row fx-gap-px-24 fx-xalign-start">
+          <OSS::Button @label="Fake load data" {{on "click" this.fakeLoadData}} />
+          {{#each this.smartTags as |smartTag|}}
+            <OSS::Smart::Tag
+              @label={{smartTag.value}}
+              @type={{smartTag.type}}
+              @onRemove={{this.onTagRemove}}
+              @successAnimationOnInsertion={{this.loading}}
+            />
+          {{/each}}
+          <OSS::Smart::TagInput
+            @value={{this.inputValue}}
+            @onKeydown={{this.handleSmartTagInput}}
+            @loading={{this.loading}}
+          />
+        </div>
+      </div>
+    </div>
+  
+    <div
+      class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+    >
+      <div class="font-size-md font-weight-semibold">
+        Smart Immersive select
+      </div>
+      <div class="fx-col fx-gap-px-24 fx-xalign-center">
+        <OSS::Button @label="Toggle loading" {{on "click" this.toggleLoading}} />
+        <OSS::Smart::Immersive::Select
+          @placeholder="Placeholder"
+          @values={{this.values}}
+          @loading={{this.loading}}
+          @items={{this.items}}
+          @onSearch={{this.onSearch}}
+          @onChange={{this.onChange}}
+          @multiple={{true}}
+        >
+          <:selected-item as |item|>{{item.value}}</:selected-item>
+          <:option-item as |item|>
+            <div class="text-ellipsis" {{enable-tooltip title=item.label displayOnlyOnOverflow=true}}>
+              {{item.label}}
+            </div>
+          </:option-item>
+        </OSS::Smart::Immersive::Select>
+        <OSS::Smart::Immersive::Select
+          @placeholder="Placeholder"
+          @values={{this.values}}
+          @displayCount={{true}}
+          @loading={{this.loading}}
+          @hasError={{false}}
+          @displayedItems={{1}}
+          @maxItemWidth={{100}}
+          @items={{this.items}}
+          @onSearch={{this.onSearch}}
+          @onChange={{this.onChange}}
+          @multiple={{true}}
+        >
+          <:selected-item as |item|>{{item.value}}</:selected-item>
+          <:option-item as |item|>
+            <div class="text-ellipsis" {{enable-tooltip title=item.label displayOnlyOnOverflow=true}}>
+              {{item.label}}
+            </div>
+          </:option-item>
+        </OSS::Smart::Immersive::Select>
+        <OSS::Smart::Immersive::Select
+          @placeholder="Placeholder"
+          @values={{this.fakeSelectedItems}}
+          @displayCount={{true}}
+          @loading={{this.loading}}
+          @hasError={{false}}
+          @items={{this.items}}
+          @onSearch={{this.onSearch}}
+          @onChange={{this.onChange}}
+          @multiple={{true}}
+        >
+          <:selected-item as |item|>{{item.value}}</:selected-item>
+          <:option-item as |item|>
+            <div class="text-ellipsis" {{enable-tooltip title=item.label displayOnlyOnOverflow=true}}>
+              {{item.label}}
+            </div>
+          </:option-item>
+        </OSS::Smart::Immersive::Select>
+        <OSS::Smart::Immersive::Select
+          @placeholder="Type your name or pseudo"
+          @values={{array this.value}}
+          @loading={{this.loading}}
+          @hasError={{true}}
+          @items={{this.items}}
+          @onChange={{this.onChange}}
+          @searchEnabled={{false}}
+          @multiple={{false}}
+        >
+          <:selected-item as |item|>{{item}}</:selected-item>
+          <:option-item as |item|>{{item.label}}</:option-item>
+        </OSS::Smart::Immersive::Select>
+      </div>
+    </div>
+  
+    <div
+      class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+    >
+      <div class="font-size-md font-weight-semibold">
+        Smart immersive input
+      </div>
+      <div class="fx-col fx-gap-px-24 fx-xalign-center">
+        <OSS::Button @label="Toggle loading" {{on "click" this.toggleLoading}} />
+        <OSS::Smart::Immersive::Input @placeholder="Placeholder" @value={{this.value}} @loading={{this.loading}}>
+          <:suffix>
+            <i class="fas fa-user" />
+          </:suffix>
+        </OSS::Smart::Immersive::Input>
+        <OSS::Smart::Immersive::Input
+          @placeholder="Placeholder"
+          @value={{this.value}}
+          @loading={{this.loading}}
+          @hasError={{true}}
+        />
+        <OSS::Smart::Immersive::Input
+          @placeholder="Type your name or pseudo"
+          @value={{this.value}}
+          @loading={{this.loading}}
+          @type="number"
+        />
+      </div>
+    </div>
+  
+    <div
+      class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+    >
+      <div class="font-size-md font-weight-semibold">
+        Smart button
+      </div>
+      <div class="fx-row fx-gap-px-24 fx-xalign-start">
+        <div class="fx-col fx-gap-px-12">
+          <OSS::Smart::Button @skin="primary" @label="Primary" @icon="fas fa-box-open" @size="lg" />
+          <OSS::Smart::Button
+            @skin="primary"
+            @label="Primary"
+            @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+          />
+          <OSS::Smart::Button @skin="primary" @label="Primary" @icon="fas fa-box-open" @size="sm" />
+          <OSS::Smart::Button
+            @skin="primary"
+            @label="Primary"
+            @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+            @size="sm"
+          />
+          <div class="fx-row fx-xalign-center fx-gap-px-12">
+            <OSS::Smart::Button @skin="primary" @circle="true" @icon="fas fa-box-open" @size="lg" />
+            <OSS::Smart::Button @skin="primary" @square="true" @icon="fas fa-box-open" @size="sm" />
+          </div>
+        </div>
+        <div class="fx-col fx-gap-px-12">
+          <OSS::Smart::Button
+            @skin="primary"
+            @label="Loading"
+            @loading={{true}}
+            @loadingOptions={{hash showLabel=true}}
+            @size="lg"
+          />
+          <OSS::Smart::Button @skin="primary" @label="Loading" @loading={{true}} />
+          <OSS::Smart::Button
+            @skin="primary"
+            @label="Loading"
+            @loading={{true}}
+            @loadingOptions={{hash showLabel=true}}
+            @size="sm"
+          />
+          <OSS::Smart::Button @skin="primary" @label="Loading" @loading={{true}} @size="sm" />
+          <div class="fx-row fx-xalign-center fx-gap-px-12">
+            <OSS::Smart::Button
+              @skin="primary"
+              @square="true"
+              @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+              @size="md"
+            />
+            <OSS::Smart::Button
+              @skin="primary"
+              @square="true"
+              @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+              @size="sm"
+            />
+          </div>
+        </div>
+        <div class="fx-col fx-gap-px-12">
+          <OSS::Smart::Button @skin="primary" @label="Disabled" @size="lg" @disabled={{true}} />
+          <OSS::Smart::Button @skin="primary" @label="Disabled" @size="md" @disabled={{true}} />
+          <OSS::Smart::Button @skin="primary" @label="Disabled" @size="sm" @disabled={{true}} />
+        </div>
+        <div class="fx-col fx-gap-px-12">
+          <OSS::Smart::Button @skin="secondary" @label="Secondary" @icon="fas fa-box-open" @size="lg" />
+          <OSS::Smart::Button
+            @skin="secondary"
+            @label="Secondary"
+            @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+          />
+          <OSS::Smart::Button @skin="secondary" @label="Secondary" @icon="fas fa-box-open" @size="sm" />
+          <OSS::Smart::Button
+            @skin="secondary"
+            @label="Secondary"
+            @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+            @size="sm"
+          />
+          <div class="fx-row fx-xalign-center fx-gap-px-12">
+            <OSS::Smart::Button @skin="secondary" @square="true" @icon="fas fa-box-open" @size="md" />
+            <OSS::Smart::Button @skin="secondary" @square="true" @icon="fas fa-box-open" @size="sm" />
+          </div>
+        </div>
+        <div class="fx-col fx-gap-px-12">
+          <OSS::Smart::Button
+            @skin="secondary"
+            @label="Loading"
+            @loading={{true}}
+            @loadingOptions={{hash showLabel=true}}
+            @size="lg"
+          />
+          <OSS::Smart::Button @skin="secondary" @label="Loading" @loading={{true}} />
+          <OSS::Smart::Button
+            @skin="secondary"
+            @label="Loading"
+            @loading={{true}}
+            @loadingOptions={{hash showLabel=true}}
+            @size="sm"
+          />
+          <OSS::Smart::Button @skin="secondary" @label="Loading" @loading={{true}} @size="sm" />
+          <div class="fx-row fx-xalign-center fx-gap-px-12">
+            <OSS::Smart::Button
+              @skin="secondary"
+              @square="true"
+              @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+              @size="md"
+            />
+            <OSS::Smart::Button
+              @skin="secondary"
+              @square="true"
+              @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+              @size="sm"
+            />
+          </div>
+        </div>
+        <div class="fx-col fx-gap-px-12">
+          <OSS::Smart::Button @skin="secondary" @label="Disabled" @size="lg" @disabled={{true}} />
+          <OSS::Smart::Button @skin="secondary" @label="Disabled" @size="md" @disabled={{true}} />
+          <OSS::Smart::Button @skin="secondary" @label="Disabled" @size="sm" @disabled={{true}} />
+        </div>
+      </div>
+    </div>
+  
+    <div
+      class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+    >
+      <div class="font-size-md font-weight-semibold">
+        Smart toggle buttons
+      </div>
+      <div class="fx-row fx-gap-px-24 fx-xalign-center">
+        <div class="fx-row fx-xalign-start fx-gap-px-10">
+          <OSS::Smart::ToggleButtons
+            @toggles={{this.toggles}}
+            @selectedToggle={{this.selectedToggle}}
+            @onSelection={{this.triggerSelection}}
+          />
+          <OSS::Smart::ToggleButtons
+            @toggles={{this.toggles}}
+            @selectedToggle={{this.selectedToggleTwo}}
+            @onSelection={{this.triggerSelection}}
+            @disabled={{true}}
+          />
+        </div>
+      </div>
+    </div>
+  
+    <div
+      class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+    >
+      <div class="font-size-md font-weight-semibold">
+        Smart skeleton
+      </div>
+      <div class="fx-col fx-gap-px-24 padding-px-12 background-color-primary-50">
+        <div class="fx-row fx-1 fx-gap-px-10">
+          <OSS::Smart::Skeleton @width="70%" />
+          <OSS::Smart::Skeleton @width={{20}} />
+        </div>
+        <div class="fx-row fx-1 fx-gap-px-10">
+          <OSS::Smart::Skeleton
+            @direction="column"
+            @width="60%"
+            @height="60"
+            @gap="12"
+            @multiple="3"
+            @randomize={{true}}
+          />
+        </div>
+        <div class="fx-row fx-1 fx-gap-px-10">
+          <OSS::Smart::Skeleton @height="40" @width="100" @multiple="3" @direction="row" @randomize="true" />
+        </div>
+      </div>
+    </div>
+  
+    <div
+      class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+    >
+      <div class="fx-col fx-1 fx-gap-px-10">
+        <div class="font-size-md fx-row fx-gap-px-12 fx-xalign-center font-weight-semibold">
+          <span>Smart feedback : loading {{this.smartFeedbackLoading}}</span>
+          <OSS::ToggleSwitch @value={{this.smartFeedbackLoading}} @onChange={{this.toggleSmartFeedbackLoading}} />
+        </div>
+        <OSS::Smart::Feedback @loading={{this.smartFeedbackLoading}} @contentArray={{this.contentArray}}>
+          <:icon>
+            <OSS::Avatar @initials={{concat "+" "123"}} @size={{"sm"}} />
+          </:icon>
+        </OSS::Smart::Feedback>
+      </div>
+  
+      <div class="fx-row fx-gap-px-12 font-size-md font-weight-semibold">
+        Smart Inputs
+        <OSS::ToggleSwitch
+          @label="Toggle"
+          @value={{this.toggleInputLoadingValue}}
+          @onChange={{this.toggleInputLoading}}
+        />
+      </div>
+      <div class="fx-row fx-gap-px-24 fx-xalign-center">
+        <OSS::Smart::Input
+          @value={{null}}
+          @label="Label"
+          @placeholder="Placeholder"
+          @loading={{this.toggleInputLoadingValue}}
+        />
+  
+        <OSS::Smart::Input
+          @value={{null}}
+          @label="Label"
+          @placeholder="Placeholder"
+          @loading={{this.toggleInputLoadingValue}}
+        />
+  
+        <OSS::Smart::Input
+          @value={{"value"}}
+          @label="Label"
+          @placeholder="Placeholder"
+          @loading={{this.toggleInputLoadingValue}}
+        />
+      </div>
+      <div
+        class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+      >
+        <div class="font-size-md font-weight-semibold">
+          Smart immersive currency input
+        </div>
+        <div class="fx-row fx-gap-px-24 fx-xalign-center">
+          <OSS::Smart::Immersive::CurrencyInput
+            @currency={{this.currency}}
+            @value={{this.currencyValue}}
+            @onChange={{this.onCurrencyInputChange}}
+            @allowCurrencyUpdate={{true}}
+            @placeholder="Placeholder"
+            @loading={{this.currencyInputLoading}}
+          />
+          <OSS::Smart::Immersive::CurrencyInput
+            @currency={{this.currency}}
+            @value={{this.currencyValueTwo}}
+            @onChange={{this.onCurrencyInputChange}}
+            @allowCurrencyUpdate={{true}}
+            @placeholder="Placeholder"
+            @loading={{this.currencyInputLoading}}
+            @hasError={{this.hasError}}
+          />
+        </div>
+        <span>Loading = {{this.currencyInputLoading}}</span>
+        <span class="fx-row fx-gap-px-6">Toggle the @loading argument =>
+          <OSS::Button @label="Toggle loading" {{on "click" this.toggleCurrencyInputLoading}} />
+        </span>
+  
+      </div>
+  
+      <div
+        class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+      >
+        <div class="font-size-md font-weight-semibold">
+          Smart pill
+        </div>
+        <div class="fx-col fx-gap-px-24 fx-xalign-start">
+          <div class="fx-row fx-xalign-start fx-gap-px-10">
+            <OSS::Smart::Pill
+              @label="Text"
+              @icon="fad fa-badge-percent"
+              @selected={{this.selectedPill}}
+              {{on "click" this.onPillChange}}
+            />
+            <OSS::Smart::Pill @label="Text" @selected={{not this.selectedPill}} {{on "click" this.onPillChange}} />
+            <OSS::Smart::Pill @label="Text" @icon="fa-badge-percent" @selected={{this.selectedPill}} @disabled={{true}} />
+            <OSS::Smart::Pill @label="Text" @selected={{not this.selectedPill}} @disabled={{true}} />
+          </div>
+          <div class="fx-row fx-xalign-start fx-gap-px-10">
+            <OSS::Smart::Pill @label="Text" @selected={{false}} @loading={{this.pillLoading}} />
+            <OSS::Smart::Pill @label="Text" @selected={{this.selectedPillTwo}} @loading={{this.pillLoading}} />
+            <OSS::Button @label="Toggle loading" {{on "click" this.togglePillLoading}} />
+          </div>
+        </div>
+      </div>
+  
+      <div class="font-size-md font-weight-semibold">
+        Smart Logo
+        <OSS::ToggleSwitch @value={{this.logoLoading}} @onChange={{this.toggleLogoLoading}} />
+      </div>
+      <div class="fx-row fx-gap-px-24 padding-px-12 background-color-primary-50">
+        <OSS::Smart::Immersive::Logo
+          @url="https://picsum.photos/200/300"
+          @loading={{this.logoLoading}}
+          @onEdit={{this.onLogoClick}}
+        />
+        <OSS::Smart::Immersive::Logo
+          @url="https://picsum.photos/200/300"
+          @loading={{this.logoLoading}}
+          @onEdit={{this.onLogoClick}}
+          @hasError={{true}}
+        />
+  
+        <OSS::Smart::Immersive::Logo @icon="rabbit:orange" @loading={{this.logoLoading}} @onEdit={{this.onLogoClick}} />
+        <OSS::Smart::Immersive::Logo
+          @icon="rabbit:orange"
+          @loading={{this.logoLoading}}
+          @onEdit={{this.onLogoClick}}
+          @hasError={{true}}
+        />
+        <OSS::Smart::Immersive::Logo
+          @icon="rabbit:orange"
+          @oversize={{true}}
+          @loading={{this.logoLoading}}
+          @onEdit={{this.onLogoClick}}
+        />
+  
+        <OSS::Smart::Immersive::Logo
+          @icon="rabbit:orange"
+          @editable={{true}}
+          @loading={{this.logoLoading}}
+          @onEdit={{this.onLogoClick}}
+        />
+        <OSS::Smart::Immersive::Logo
+          @icon="rabbit:orange"
+          @editable={{true}}
+          @loading={{this.logoLoading}}
+          @onEdit={{this.onLogoClick}}
+        />
+  
+        <OSS::Smart::Immersive::Logo @editable={{true}} @loading={{this.logoLoading}} @onEdit={{this.onLogoClick}} />
+      </div>
+    </div>
+  </div>
+  */
+  {
+    "id": "YDDIfJRj",
+    "block": "[[[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-18\"],[12],[1,\"\\n  \"],[10,0],[14,0,\"page-title-container\"],[12],[1,\"\\n    \"],[10,1],[14,0,\"font-size-h2 font-weight-semibold\"],[12],[1,\"Smart\"],[13],[1,\"\\n    \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,\"Components that look like another component and act like another component but\\n      aren't said component\"],[13],[1,\"\\n    \"],[10,1],[14,0,\"font-color-gray-500 font-size-xs text-style-italic\"],[12],[1,\"(also they might be smarter than you who knows)\"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Text-area\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-24\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,0],[[4,[38,1],[\"click\",[30,0,[\"toggleLoading\"]]],null]],[[\"@label\"],[\"Toggle loading\"]],null],[1,\"\\n        \"],[8,[39,2],null,[[\"@value\",\"@onChange\",\"@rows\",\"@placeholder\",\"@loading\"],[[30,0,[\"textAreaValue\"]],[30,0,[\"onTextAreaChange\"]],7,[30,0,[\"multilinePlaceholder\"]],[30,0,[\"loading\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Number input\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-24\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,3],null,[[\"@value\",\"@onChange\",\"@hasError\"],[[30,0,[\"numberValue\"]],[30,0,[\"onNumberChange\"]],true]],null],[1,\"\\n        \"],[8,[39,3],null,[[\"@value\",\"@onChange\"],[[30,0,[\"numberValue\"]],[30,0,[\"onNumberChange\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Smart tag & Smart tag input\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-24\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,0],[[4,[38,1],[\"click\",[30,0,[\"toggleTagAnimation\"]]],null]],[[\"@label\"],[\"Toggle animation\"]],null],[1,\"\\n        \"],[8,[39,4],null,[[\"@label\"],[\"Default\"]],null],[1,\"\\n\"],[42,[28,[37,6],[[28,[37,6],[[30,0,[\"tags\"]]],null]],null],null,[[[1,\"          \"],[8,[39,4],null,[[\"@label\",\"@type\",\"@onRemove\",\"@successAnimationOnInsertion\"],[[30,1,[\"value\"]],[30,1,[\"type\"]],[30,0,[\"onTagRemove\"]],[30,0,[\"tagLoading\"]]]],null],[1,\"\\n\"]],[1]],null],[42,[28,[37,6],[[28,[37,6],[[30,0,[\"tags\"]]],null]],null],null,[[[1,\"          \"],[8,[39,4],null,[[\"@label\",\"@type\",\"@onRemove\",\"@successAnimationOnInsertion\",\"@size\"],[[30,2,[\"value\"]],[30,2,[\"type\"]],[30,0,[\"onTagRemove\"]],[30,0,[\"tagLoading\"]],\"lg\"]],null],[1,\"\\n\"]],[2]],null],[1,\"      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n\"],[42,[28,[37,6],[[28,[37,6],[[30,0,[\"smartTags\"]]],null]],null],null,[[[1,\"          \"],[8,[39,4],null,[[\"@label\",\"@type\",\"@onRemove\"],[[30,3,[\"value\"]],[30,3,[\"type\"]],[30,0,[\"onTagRemove\"]]]],null],[1,\"\\n\"]],[3]],null],[1,\"        \"],[8,[39,7],null,[[\"@value\",\"@onKeydown\"],[[30,0,[\"inputValue\"]],[30,0,[\"handleTagInput\"]]]],null],[1,\"\\n        \"],[8,[39,7],null,[[\"@value\",\"@onKeydown\",\"@loading\"],[[30,0,[\"inputValue\"]],[30,0,[\"handleTagInput\"]],true]],null],[1,\"\\n        \"],[8,[39,7],null,[[\"@value\",\"@onKeydown\",\"@hasError\"],[[30,0,[\"inputValue\"]],[30,0,[\"handleTagInput\"]],true]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n        \"],[8,[39,0],[[4,[38,1],[\"click\",[30,0,[\"fakeLoadData\"]]],null]],[[\"@label\"],[\"Fake load data\"]],null],[1,\"\\n\"],[42,[28,[37,6],[[28,[37,6],[[30,0,[\"smartTags\"]]],null]],null],null,[[[1,\"          \"],[8,[39,4],null,[[\"@label\",\"@type\",\"@onRemove\",\"@successAnimationOnInsertion\"],[[30,4,[\"value\"]],[30,4,[\"type\"]],[30,0,[\"onTagRemove\"]],[30,0,[\"loading\"]]]],null],[1,\"\\n\"]],[4]],null],[1,\"        \"],[8,[39,7],null,[[\"@value\",\"@onKeydown\",\"@loading\"],[[30,0,[\"inputValue\"]],[30,0,[\"handleSmartTagInput\"]],[30,0,[\"loading\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Smart Immersive select\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,0],[[4,[38,1],[\"click\",[30,0,[\"toggleLoading\"]]],null]],[[\"@label\"],[\"Toggle loading\"]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@placeholder\",\"@values\",\"@loading\",\"@items\",\"@onSearch\",\"@onChange\",\"@multiple\"],[\"Placeholder\",[30,0,[\"values\"]],[30,0,[\"loading\"]],[30,0,[\"items\"]],[30,0,[\"onSearch\"]],[30,0,[\"onChange\"]],true]],[[\"selected-item\",\"option-item\"],[[[[1,[30,5,[\"value\"]]]],[5]],[[[1,\"\\n          \"],[11,0],[24,0,\"text-ellipsis\"],[4,[38,9],null,[[\"title\",\"displayOnlyOnOverflow\"],[[30,6,[\"label\"]],true]]],[12],[1,\"\\n            \"],[1,[30,6,[\"label\"]]],[1,\"\\n          \"],[13],[1,\"\\n        \"]],[6]]]]],[1,\"\\n      \"],[8,[39,8],null,[[\"@placeholder\",\"@values\",\"@displayCount\",\"@loading\",\"@hasError\",\"@displayedItems\",\"@maxItemWidth\",\"@items\",\"@onSearch\",\"@onChange\",\"@multiple\"],[\"Placeholder\",[30,0,[\"values\"]],true,[30,0,[\"loading\"]],false,1,100,[30,0,[\"items\"]],[30,0,[\"onSearch\"]],[30,0,[\"onChange\"]],true]],[[\"selected-item\",\"option-item\"],[[[[1,[30,7,[\"value\"]]]],[7]],[[[1,\"\\n          \"],[11,0],[24,0,\"text-ellipsis\"],[4,[38,9],null,[[\"title\",\"displayOnlyOnOverflow\"],[[30,8,[\"label\"]],true]]],[12],[1,\"\\n            \"],[1,[30,8,[\"label\"]]],[1,\"\\n          \"],[13],[1,\"\\n        \"]],[8]]]]],[1,\"\\n      \"],[8,[39,8],null,[[\"@placeholder\",\"@values\",\"@displayCount\",\"@loading\",\"@hasError\",\"@items\",\"@onSearch\",\"@onChange\",\"@multiple\"],[\"Placeholder\",[30,0,[\"fakeSelectedItems\"]],true,[30,0,[\"loading\"]],false,[30,0,[\"items\"]],[30,0,[\"onSearch\"]],[30,0,[\"onChange\"]],true]],[[\"selected-item\",\"option-item\"],[[[[1,[30,9,[\"value\"]]]],[9]],[[[1,\"\\n          \"],[11,0],[24,0,\"text-ellipsis\"],[4,[38,9],null,[[\"title\",\"displayOnlyOnOverflow\"],[[30,10,[\"label\"]],true]]],[12],[1,\"\\n            \"],[1,[30,10,[\"label\"]]],[1,\"\\n          \"],[13],[1,\"\\n        \"]],[10]]]]],[1,\"\\n      \"],[8,[39,8],null,[[\"@placeholder\",\"@values\",\"@loading\",\"@hasError\",\"@items\",\"@onChange\",\"@searchEnabled\",\"@multiple\"],[\"Type your name or pseudo\",[28,[37,10],[[30,0,[\"value\"]]],null],[30,0,[\"loading\"]],true,[30,0,[\"items\"]],[30,0,[\"onChange\"]],false,false]],[[\"selected-item\",\"option-item\"],[[[[1,[30,11]]],[11]],[[[1,[30,12,[\"label\"]]]],[12]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Smart immersive input\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,0],[[4,[38,1],[\"click\",[30,0,[\"toggleLoading\"]]],null]],[[\"@label\"],[\"Toggle loading\"]],null],[1,\"\\n      \"],[8,[39,11],null,[[\"@placeholder\",\"@value\",\"@loading\"],[\"Placeholder\",[30,0,[\"value\"]],[30,0,[\"loading\"]]]],[[\"suffix\"],[[[[1,\"\\n          \"],[10,\"i\"],[14,0,\"fas fa-user\"],[12],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[8,[39,11],null,[[\"@placeholder\",\"@value\",\"@loading\",\"@hasError\"],[\"Placeholder\",[30,0,[\"value\"]],[30,0,[\"loading\"]],true]],null],[1,\"\\n      \"],[8,[39,11],null,[[\"@placeholder\",\"@value\",\"@loading\",\"@type\"],[\"Type your name or pseudo\",[30,0,[\"value\"]],[30,0,[\"loading\"]],\"number\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Smart button\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,12],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"primary\",\"Primary\",\"fas fa-box-open\",\"lg\"]],null],[1,\"\\n        \"],[8,[39,12],null,[[\"@skin\",\"@label\",\"@iconUrl\"],[\"primary\",\"Primary\",\"/@upfluence/oss-components/assets/star-icon.svg\"]],null],[1,\"\\n        \"],[8,[39,12],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"primary\",\"Primary\",\"fas fa-box-open\",\"sm\"]],null],[1,\"\\n        \"],[8,[39,12],null,[[\"@skin\",\"@label\",\"@iconUrl\",\"@size\"],[\"primary\",\"Primary\",\"/@upfluence/oss-components/assets/star-icon.svg\",\"sm\"]],null],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,12],null,[[\"@skin\",\"@circle\",\"@icon\",\"@size\"],[\"primary\",\"true\",\"fas fa-box-open\",\"lg\"]],null],[1,\"\\n          \"],[8,[39,12],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"primary\",\"true\",\"fas fa-box-open\",\"sm\"]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,12],null,[[\"@skin\",\"@label\",\"@loading\",\"@loadingOptions\",\"@size\"],[\"primary\",\"Loading\",true,[28,[37,13],null,[[\"showLabel\"],[true]]],\"lg\"]],null],[1,\"\\n        \"],[8,[39,12],null,[[\"@skin\",\"@label\",\"@loading\"],[\"primary\",\"Loading\",true]],null],[1,\"\\n        \"],[8,[39,12],null,[[\"@skin\",\"@label\",\"@loading\",\"@loadingOptions\",\"@size\"],[\"primary\",\"Loading\",true,[28,[37,13],null,[[\"showLabel\"],[true]]],\"sm\"]],null],[1,\"\\n        \"],[8,[39,12],null,[[\"@skin\",\"@label\",\"@loading\",\"@size\"],[\"primary\",\"Loading\",true,\"sm\"]],null],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,12],null,[[\"@skin\",\"@square\",\"@iconUrl\",\"@size\"],[\"primary\",\"true\",\"/@upfluence/oss-components/assets/star-icon.svg\",\"md\"]],null],[1,\"\\n          \"],[8,[39,12],null,[[\"@skin\",\"@square\",\"@iconUrl\",\"@size\"],[\"primary\",\"true\",\"/@upfluence/oss-components/assets/star-icon.svg\",\"sm\"]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,12],null,[[\"@skin\",\"@label\",\"@size\",\"@disabled\"],[\"primary\",\"Disabled\",\"lg\",true]],null],[1,\"\\n        \"],[8,[39,12],null,[[\"@skin\",\"@label\",\"@size\",\"@disabled\"],[\"primary\",\"Disabled\",\"md\",true]],null],[1,\"\\n        \"],[8,[39,12],null,[[\"@skin\",\"@label\",\"@size\",\"@disabled\"],[\"primary\",\"Disabled\",\"sm\",true]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,12],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"secondary\",\"Secondary\",\"fas fa-box-open\",\"lg\"]],null],[1,\"\\n        \"],[8,[39,12],null,[[\"@skin\",\"@label\",\"@iconUrl\"],[\"secondary\",\"Secondary\",\"/@upfluence/oss-components/assets/star-icon.svg\"]],null],[1,\"\\n        \"],[8,[39,12],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"secondary\",\"Secondary\",\"fas fa-box-open\",\"sm\"]],null],[1,\"\\n        \"],[8,[39,12],null,[[\"@skin\",\"@label\",\"@iconUrl\",\"@size\"],[\"secondary\",\"Secondary\",\"/@upfluence/oss-components/assets/star-icon.svg\",\"sm\"]],null],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,12],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"secondary\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n          \"],[8,[39,12],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"secondary\",\"true\",\"fas fa-box-open\",\"sm\"]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,12],null,[[\"@skin\",\"@label\",\"@loading\",\"@loadingOptions\",\"@size\"],[\"secondary\",\"Loading\",true,[28,[37,13],null,[[\"showLabel\"],[true]]],\"lg\"]],null],[1,\"\\n        \"],[8,[39,12],null,[[\"@skin\",\"@label\",\"@loading\"],[\"secondary\",\"Loading\",true]],null],[1,\"\\n        \"],[8,[39,12],null,[[\"@skin\",\"@label\",\"@loading\",\"@loadingOptions\",\"@size\"],[\"secondary\",\"Loading\",true,[28,[37,13],null,[[\"showLabel\"],[true]]],\"sm\"]],null],[1,\"\\n        \"],[8,[39,12],null,[[\"@skin\",\"@label\",\"@loading\",\"@size\"],[\"secondary\",\"Loading\",true,\"sm\"]],null],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,12],null,[[\"@skin\",\"@square\",\"@iconUrl\",\"@size\"],[\"secondary\",\"true\",\"/@upfluence/oss-components/assets/star-icon.svg\",\"md\"]],null],[1,\"\\n          \"],[8,[39,12],null,[[\"@skin\",\"@square\",\"@iconUrl\",\"@size\"],[\"secondary\",\"true\",\"/@upfluence/oss-components/assets/star-icon.svg\",\"sm\"]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,12],null,[[\"@skin\",\"@label\",\"@size\",\"@disabled\"],[\"secondary\",\"Disabled\",\"lg\",true]],null],[1,\"\\n        \"],[8,[39,12],null,[[\"@skin\",\"@label\",\"@size\",\"@disabled\"],[\"secondary\",\"Disabled\",\"md\",true]],null],[1,\"\\n        \"],[8,[39,12],null,[[\"@skin\",\"@label\",\"@size\",\"@disabled\"],[\"secondary\",\"Disabled\",\"sm\",true]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Smart toggle buttons\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10\"],[12],[1,\"\\n        \"],[8,[39,14],null,[[\"@toggles\",\"@selectedToggle\",\"@onSelection\"],[[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]],[30,0,[\"triggerSelection\"]]]],null],[1,\"\\n        \"],[8,[39,14],null,[[\"@toggles\",\"@selectedToggle\",\"@onSelection\",\"@disabled\"],[[30,0,[\"toggles\"]],[30,0,[\"selectedToggleTwo\"]],[30,0,[\"triggerSelection\"]],true]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Smart skeleton\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-24 padding-px-12 background-color-primary-50\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10\"],[12],[1,\"\\n        \"],[8,[39,15],null,[[\"@width\"],[\"70%\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@width\"],[20]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10\"],[12],[1,\"\\n        \"],[8,[39,15],null,[[\"@direction\",\"@width\",\"@height\",\"@gap\",\"@multiple\",\"@randomize\"],[\"column\",\"60%\",\"60\",\"12\",\"3\",true]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-10\"],[12],[1,\"\\n        \"],[8,[39,15],null,[[\"@height\",\"@width\",\"@multiple\",\"@direction\",\"@randomize\"],[\"40\",\"100\",\"3\",\"row\",\"true\"]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-1 fx-gap-px-10\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"font-size-md fx-row fx-gap-px-12 fx-xalign-center font-weight-semibold\"],[12],[1,\"\\n        \"],[10,1],[12],[1,\"Smart feedback : loading \"],[1,[30,0,[\"smartFeedbackLoading\"]]],[13],[1,\"\\n        \"],[8,[39,16],null,[[\"@value\",\"@onChange\"],[[30,0,[\"smartFeedbackLoading\"]],[30,0,[\"toggleSmartFeedbackLoading\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[8,[39,17],null,[[\"@loading\",\"@contentArray\"],[[30,0,[\"smartFeedbackLoading\"]],[30,0,[\"contentArray\"]]]],[[\"icon\"],[[[[1,\"\\n          \"],[8,[39,18],null,[[\"@initials\",\"@size\"],[[28,[37,19],[\"+\",\"123\"],null],\"sm\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-12 font-size-md font-weight-semibold\"],[12],[1,\"\\n      Smart Inputs\\n      \"],[8,[39,16],null,[[\"@label\",\"@value\",\"@onChange\"],[\"Toggle\",[30,0,[\"toggleInputLoadingValue\"]],[30,0,[\"toggleInputLoading\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,20],null,[[\"@value\",\"@label\",\"@placeholder\",\"@loading\"],[null,\"Label\",\"Placeholder\",[30,0,[\"toggleInputLoadingValue\"]]]],null],[1,\"\\n\\n      \"],[8,[39,20],null,[[\"@value\",\"@label\",\"@placeholder\",\"@loading\"],[null,\"Label\",\"Placeholder\",[30,0,[\"toggleInputLoadingValue\"]]]],null],[1,\"\\n\\n      \"],[8,[39,20],null,[[\"@value\",\"@label\",\"@placeholder\",\"@loading\"],[\"value\",\"Label\",\"Placeholder\",[30,0,[\"toggleInputLoadingValue\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n        Smart immersive currency input\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,21],null,[[\"@currency\",\"@value\",\"@onChange\",\"@allowCurrencyUpdate\",\"@placeholder\",\"@loading\"],[[30,0,[\"currency\"]],[30,0,[\"currencyValue\"]],[30,0,[\"onCurrencyInputChange\"]],true,\"Placeholder\",[30,0,[\"currencyInputLoading\"]]]],null],[1,\"\\n        \"],[8,[39,21],null,[[\"@currency\",\"@value\",\"@onChange\",\"@allowCurrencyUpdate\",\"@placeholder\",\"@loading\",\"@hasError\"],[[30,0,[\"currency\"]],[30,0,[\"currencyValueTwo\"]],[30,0,[\"onCurrencyInputChange\"]],true,\"Placeholder\",[30,0,[\"currencyInputLoading\"]],[30,0,[\"hasError\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,1],[12],[1,\"Loading = \"],[1,[30,0,[\"currencyInputLoading\"]]],[13],[1,\"\\n      \"],[10,1],[14,0,\"fx-row fx-gap-px-6\"],[12],[1,\"Toggle the @loading argument =>\\n        \"],[8,[39,0],[[4,[38,1],[\"click\",[30,0,[\"toggleCurrencyInputLoading\"]]],null]],[[\"@label\"],[\"Toggle loading\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\\n    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n        Smart pill\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10\"],[12],[1,\"\\n          \"],[8,[39,22],[[4,[38,1],[\"click\",[30,0,[\"onPillChange\"]]],null]],[[\"@label\",\"@icon\",\"@selected\"],[\"Text\",\"fad fa-badge-percent\",[30,0,[\"selectedPill\"]]]],null],[1,\"\\n          \"],[8,[39,22],[[4,[38,1],[\"click\",[30,0,[\"onPillChange\"]]],null]],[[\"@label\",\"@selected\"],[\"Text\",[28,[37,23],[[30,0,[\"selectedPill\"]]],null]]],null],[1,\"\\n          \"],[8,[39,22],null,[[\"@label\",\"@icon\",\"@selected\",\"@disabled\"],[\"Text\",\"fa-badge-percent\",[30,0,[\"selectedPill\"]],true]],null],[1,\"\\n          \"],[8,[39,22],null,[[\"@label\",\"@selected\",\"@disabled\"],[\"Text\",[28,[37,23],[[30,0,[\"selectedPill\"]]],null],true]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10\"],[12],[1,\"\\n          \"],[8,[39,22],null,[[\"@label\",\"@selected\",\"@loading\"],[\"Text\",false,[30,0,[\"pillLoading\"]]]],null],[1,\"\\n          \"],[8,[39,22],null,[[\"@label\",\"@selected\",\"@loading\"],[\"Text\",[30,0,[\"selectedPillTwo\"]],[30,0,[\"pillLoading\"]]]],null],[1,\"\\n          \"],[8,[39,0],[[4,[38,1],[\"click\",[30,0,[\"togglePillLoading\"]]],null]],[[\"@label\"],[\"Toggle loading\"]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Smart Logo\\n      \"],[8,[39,16],null,[[\"@value\",\"@onChange\"],[[30,0,[\"logoLoading\"]],[30,0,[\"toggleLogoLoading\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 padding-px-12 background-color-primary-50\"],[12],[1,\"\\n      \"],[8,[39,24],null,[[\"@url\",\"@loading\",\"@onEdit\"],[\"https://picsum.photos/200/300\",[30,0,[\"logoLoading\"]],[30,0,[\"onLogoClick\"]]]],null],[1,\"\\n      \"],[8,[39,24],null,[[\"@url\",\"@loading\",\"@onEdit\",\"@hasError\"],[\"https://picsum.photos/200/300\",[30,0,[\"logoLoading\"]],[30,0,[\"onLogoClick\"]],true]],null],[1,\"\\n\\n      \"],[8,[39,24],null,[[\"@icon\",\"@loading\",\"@onEdit\"],[\"rabbit:orange\",[30,0,[\"logoLoading\"]],[30,0,[\"onLogoClick\"]]]],null],[1,\"\\n      \"],[8,[39,24],null,[[\"@icon\",\"@loading\",\"@onEdit\",\"@hasError\"],[\"rabbit:orange\",[30,0,[\"logoLoading\"]],[30,0,[\"onLogoClick\"]],true]],null],[1,\"\\n      \"],[8,[39,24],null,[[\"@icon\",\"@oversize\",\"@loading\",\"@onEdit\"],[\"rabbit:orange\",true,[30,0,[\"logoLoading\"]],[30,0,[\"onLogoClick\"]]]],null],[1,\"\\n\\n      \"],[8,[39,24],null,[[\"@icon\",\"@editable\",\"@loading\",\"@onEdit\"],[\"rabbit:orange\",true,[30,0,[\"logoLoading\"]],[30,0,[\"onLogoClick\"]]]],null],[1,\"\\n      \"],[8,[39,24],null,[[\"@icon\",\"@editable\",\"@loading\",\"@onEdit\"],[\"rabbit:orange\",true,[30,0,[\"logoLoading\"]],[30,0,[\"onLogoClick\"]]]],null],[1,\"\\n\\n      \"],[8,[39,24],null,[[\"@editable\",\"@loading\",\"@onEdit\"],[true,[30,0,[\"logoLoading\"]],[30,0,[\"onLogoClick\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"tag\",\"tag\",\"smartTag\",\"smartTag\",\"item\",\"item\",\"item\",\"item\",\"item\",\"item\",\"item\",\"item\"],false,[\"o-s-s/button\",\"on\",\"o-s-s/smart/text-area\",\"o-s-s/smart/number-input\",\"o-s-s/smart/tag\",\"each\",\"-track-array\",\"o-s-s/smart/tag-input\",\"o-s-s/smart/immersive/select\",\"enable-tooltip\",\"array\",\"o-s-s/smart/immersive/input\",\"o-s-s/smart/button\",\"hash\",\"o-s-s/smart/toggle-buttons\",\"o-s-s/smart/skeleton\",\"o-s-s/toggle-switch\",\"o-s-s/smart/feedback\",\"o-s-s/avatar\",\"concat\",\"o-s-s/smart/input\",\"o-s-s/smart/immersive/currency-input\",\"o-s-s/smart/pill\",\"not\",\"o-s-s/smart/immersive/logo\"]]",
+    "moduleName": "dummy/templates/smart.hbs",
+    "isStrictMode": false
+  });
+});
 ;define("dummy/templates/visual", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
   "use strict";
 
@@ -6593,13 +7765,11 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
         Pill
       </div>
       <div class="fx-row fx-gap-px-24 fx-xalign-center">
-        {{this.loadingPill}}
         <OSS::Smart::Pill
           @label="Pill"
           @icon="fad fa-badge-percent"
           @selected={{not this.selectedPill}}
           {{on "click" this.onPillClick}}
-          @loading={{this.loadingPill}}
         />
         <OSS::Charger @label="Pill" @selected={{this.selectedPill}} {{on "click" this.onPillClick}} />
         <OSS::Pill @label="Pill" @icon="fa-badge-percent" @selected={{not this.selectedPill}} @disabled={{true}} />
@@ -6609,8 +7779,8 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
   </div>
   */
   {
-    "id": "ajeCh/On",
-    "block": "[[[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-18\"],[12],[1,\"\\n  \"],[10,0],[14,0,\"page-title-container\"],[12],[1,\"\\n    \"],[10,1],[14,0,\"font-size-h2 font-weight-semibold\"],[12],[1,\"Visual\"],[13],[1,\"\\n    \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,\"Components used to display information or actions in a simple and visual way\"],[13],[1,\"\\n    \"],[10,1],[14,0,\"font-color-gray-500 font-size-xs text-style-italic\"],[12],[1,\"(this one might work for people who can't read 👍)\"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Button\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"destructive\",\"destructive\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"destructive\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"alert\",\"alert\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"alert\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"secondary\",\"secondary\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"secondary\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"default\",\"default\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"default\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"success\",\"success\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"success\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-orange\",\"Extended orange\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-orange\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-yellow\",\"Extended yellow\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-yellow\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-lime\",\"Extended lime\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-lime\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-cyan\",\"Extended Cyan\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-cyan\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-blue\",\"Extended blue\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-blue\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-violet\",\"Extended violet\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-violet\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"primary\",\"xs\",\"XS\",\"far fa-envelope-open\"]],null],[1,\"\\n        \"],[8,[39,0],null,[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"primary\",\"sm\",\"SM\",\"far fa-envelope-open\"]],null],[1,\"\\n        \"],[8,[39,0],null,[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"primary\",\"md\",\"MD\",\"far fa-envelope-open\"]],null],[1,\"\\n        \"],[8,[39,0],null,[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"primary\",\"lg\",\"LG\",\"far fa-envelope-open\"]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@square\",\"@skin\",\"@size\",\"@icon\"],[\"true\",\"primary\",\"sm\",\"far fa-envelope-open\"]],null],[1,\"\\n        \"],[8,[39,0],null,[[\"@square\",\"@skin\",\"@size\",\"@icon\"],[\"true\",\"primary\",\"md\",\"far fa-envelope-open\"]],null],[1,\"\\n        \"],[8,[39,0],null,[[\"@square\",\"@skin\",\"@size\",\"@icon\"],[\"true\",\"primary\",\"lg\",\"far fa-envelope-open\"]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@label\",\"@loading\"],[\"loading\",true]],null],[1,\"\\n        \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\",\"@countDown\"],[\"destructive\",\"Count down\",\"far fa-hourglass\",\"md\",[28,[37,1],null,[[\"callback\"],[[30,0,[\"countDownAction\"]]]]]]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Button dropdown\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@label\",\"@mainAction\"],[\"far fa-credit-card\",\"Dropdown button\",[28,[37,3],[[30,0,[\"redirectTo\"]],\"test\"],null]]],[[\"items\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"\\n            \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-share\"]],null],[1,\"\\n            Share\\n          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@label\"],[\"far fa-hourglass\",\"Dropdown button\"]],[[\"items\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"\\n            \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-share\"]],null],[1,\"\\n            Share\\n          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Toggle buttons\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10\"],[12],[1,\"\\n        \"],[8,[39,5],null,[[\"@toggles\",\"@selectedToggle\",\"@onSelection\"],[[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]],[30,0,[\"triggerSelection\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Toggle switch\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-1 fx-col fx-gap-px-12\"],[12],[1,\"\\n        Active\\n        \"],[8,[39,6],null,[[\"@value\",\"@onChange\"],[[30,0,[\"toggleValue\"]],[28,[37,3],[[28,[37,7],[[30,0,[\"toggleValue\"]]],null]],null]]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-1 fx-col fx-gap-px-12\"],[12],[1,\"\\n        Disabled\\n        \"],[8,[39,6],null,[[\"@value\",\"@onChange\",\"@disabled\"],[[30,0,[\"toggleValue\"]],[28,[37,3],[[28,[37,7],[[30,0,[\"toggleValue\"]]],null]],null],[30,0,[\"disabled\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Checkbox\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@onChange\"],[[30,0,[\"isChecked\"]],[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@disabled\",\"@onChange\"],[[30,0,[\"isChecked\"]],true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@partial\",\"@onChange\"],[[30,0,[\"isChecked\"]],true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@disabled\",\"@partial\",\"@onChange\"],[[30,0,[\"isChecked\"]],true,true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@size\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@size\",\"@disabled\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@size\",\"@partial\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@size\",\"@disabled\",\"@partial\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",true,true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@size\",\"@disabled\",\"@partial\",\"@hasError\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",false,false,true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@size\",\"@disabled\",\"@partial\",\"@feedbackMessage\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",false,false,[30,0,[\"feedbackMessageError\"]],[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@size\",\"@disabled\",\"@partial\",\"@feedbackMessage\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",false,false,[30,0,[\"feedbackMessageWarning\"]],[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@size\",\"@disabled\",\"@partial\",\"@feedbackMessage\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",false,false,[30,0,[\"feedbackMessageSuccess\"]],[30,0,[\"onCheck\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Radio button\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,9],null,[[\"@selected\",\"@onChange\"],[[30,0,[\"radio1\"]],[28,[37,3],[[30,0,[\"onRadioBtnChange\"]],\"radio1\"],null]]],null],[1,\"\\n      \"],[8,[39,9],null,[[\"@selected\",\"@onChange\"],[[30,0,[\"radio2\"]],[28,[37,3],[[30,0,[\"onRadioBtnChange\"]],\"radio2\"],null]]],null],[1,\"\\n      \"],[8,[39,9],null,[[\"@selected\",\"@disabled\"],[true,true]],null],[1,\"\\n      \"],[8,[39,9],null,[[\"@selected\",\"@disabled\"],[false,true]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Copy button\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,10],null,[[\"@value\",\"@inline\"],[\"I am the value copied\",true]],null],[1,\"\\n      \"],[8,[39,10],null,[[\"@value\"],[\"I am the value copied\"]],null],[1,\"\\n      \"],[8,[39,10],null,[[\"@value\",\"@tooltip\"],[\"I am the value copied\",\"Custom tooltip\"]],null],[1,\"\\n      \"],[8,[39,10],null,[[\"@value\",\"@icon\"],[\"I am the value copied\",\"far fa-jedi\"]],null],[1,\"\\n      \"],[8,[39,10],null,[[\"@value\",\"@icon\",\"@inline\"],[\"I am the value copied\",\"fab fa-empire\",true]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Avatar\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,11],null,[[\"@image\",\"@initials\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"Ts\"]],null],[1,\"\\n      \"],[8,[39,11],null,[[\"@initials\"],[\"MI\"]],null],[1,\"\\n      \"],[8,[39,11],null,null,null],[1,\"\\n      \"],[8,[39,11],null,[[\"@size\"],[\"xs\"]],null],[1,\"\\n      \"],[8,[39,11],null,[[\"@size\"],[\"sm\"]],null],[1,\"\\n      \"],[8,[39,11],null,[[\"@size\"],[\"md\"]],null],[1,\"\\n      \"],[8,[39,11],null,[[\"@size\"],[\"lg\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Stack container\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-18\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-xalign-start fx-gap-px-12\"],[12],[1,\"\\n        \"],[10,1],[12],[1,\"@style=\\\"under\\\"\"],[13],[1,\"\\n        \"],[8,[39,12],null,[[\"@direction\",\"@style\",\"@pxMargin\"],[\"row\",\"under\",\"6px\"]],[[\"default\"],[[[[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"us\",\"United-States\"]],null],[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"fr\",\"France\"]],null],[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"ca\",\"Canada\"]],null],[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"de\",\"Germany\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-xalign-start fx-gap-px-12\"],[12],[1,\"\\n        \"],[10,1],[12],[1,\"@style=\\\"over\\\"\"],[13],[1,\"\\n        \"],[8,[39,12],null,[[\"@direction\",\"@style\"],[\"row\",\"over\"]],[[\"default\"],[[[[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"us\",\"United-States\"]],null],[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"fr\",\"France\"]],null],[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"ca\",\"Canada\"]],null],[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"de\",\"Germany\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-xalign-start fx-gap-px-12\"],[12],[1,\"\\n        \"],[10,1],[12],[1,\"@direction=\\\"column\\\"\"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,12],null,[[\"@direction\",\"@style\"],[\"column\",\"over\"]],[[\"default\"],[[[[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"us\",\"United-States\"]],null],[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"fr\",\"France\"]],null],[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"ca\",\"Canada\"]],null],[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"de\",\"Germany\"]],null],[1,\"\\n          \"]],[]]]]],[1,\"\\n          \"],[8,[39,12],null,[[\"@direction\",\"@style\"],[\"column\",\"under\"]],[[\"default\"],[[[[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"us\",\"United-States\"]],null],[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"fr\",\"France\"]],null],[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"ca\",\"Canada\"]],null],[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"de\",\"Germany\"]],null],[1,\"\\n          \"]],[]]]]],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-xalign-start fx-gap-px-12\"],[12],[1,\"\\n        \"],[10,1],[12],[1,\"Usage with random component and @bringToFrontOnHover=\"],[1,true],[13],[1,\"\\n        \"],[8,[39,12],null,[[\"@pxMargin\",\"@bringToFrontOnHover\"],[\"-30px\",true]],[[\"default\"],[[[[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-orange\",\"Extended orange\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-yellow\",\"Extended yellow\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-lime\",\"Extended lime\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-cyan\",\"Extended Cyan\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-blue\",\"Extended blue\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Avatar group\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,14],null,[[\"@avatars\",\"@size\"],[[30,0,[\"avatars\"]],\"lg\"]],null],[1,\"\\n      \"],[8,[39,14],null,[[\"@avatars\",\"@size\"],[[30,0,[\"avatars\"]],\"md\"]],null],[1,\"\\n      \"],[8,[39,14],null,[[\"@avatars\",\"@size\"],[[30,0,[\"avatars\"]],\"sm\"]],null],[1,\"\\n      \"],[8,[39,14],null,[[\"@avatars\",\"@size\"],[[30,0,[\"avatars\"]],\"xs\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Badge\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@size\"],[\"fas fa-box-open\",\"lg\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\"],[\"fas fa-box-open\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@size\",\"@icon\"],[\"md\",\"fas fa-box-open\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@size\",\"@icon\"],[\"sm\",\"fas fa-box-open\"]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"primary\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"primary\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"success\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"success\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"alert\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"alert\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"error\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"error\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-orange\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-orange\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-yellow\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-yellow\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-lime\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-lime\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-cyan\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-cyan\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-blue\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-blue\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-violet\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-violet\",true]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,15],null,[[\"@text\",\"@size\"],[\"2x\",\"lg\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@text\"],[\"2x\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@text\",\"@size\"],[\"2x\",\"sm\"]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,15],null,[[\"@image\",\"@size\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"lg\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@image\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@image\",\"@size\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"sm\"]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Social post badge\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n\"],[42,[28,[37,17],[[28,[37,17],[[30,0,[\"media\"]]],null]],null],null,[[[1,\"        \"],[8,[39,18],null,[[\"@postType\",\"@selected\",\"@plain\",\"@onToggle\"],[[30,1,[\"key\"]],[30,1,[\"active\"]],[30,1,[\"active\"]],[30,0,[\"toggleMedia\"]]]],null],[1,\"\\n\"]],[1]],null],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Expandable badge\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-6\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@size\"],[\"content\",\"fas fa-box-open\",\"lg\"]],null],[1,\"\\n        \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\"],[\"content\",\"fas fa-box-open\"]],null],[1,\"\\n        \"],[8,[39,13],null,[[\"@expandedLabel\",\"@size\",\"@icon\"],[\"content\",\"md\",\"fas fa-box-open\"]],null],[1,\"\\n        \"],[8,[39,13],null,[[\"@expandedLabel\",\"@size\",\"@icon\"],[\"content\",\"sm\",\"fas fa-box-open\"]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-6\"],[12],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"primary\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"primary\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"success\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"success\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"alert\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"alert\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"error\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"error\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"xtd-orange\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"xtd-orange\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"xtd-yellow\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"xtd-yellow\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"xtd-lime\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"xtd-lime\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"xtd-cyan\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"xtd-cyan\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"xtd-blue\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"xtd-blue\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"xtd-violet\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"xtd-violet\",true]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@image\",\"@size\"],[\"content\",\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"lg\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@image\"],[\"content\",\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@image\",\"@size\"],[\"content\",\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"sm\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-6\"],[12],[1,\"\\n      \"],[8,[39,13],null,[[\"@icon\",\"@size\",\"@expandedLabel\"],[\"fas fa-user-bounty-hunter\",\"md\",\"The Mandalorian\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@icon\",\"@size\",\"@expandedLabel\"],[\"fas fa-robot-astromech\",\"md\",\"R2-D2\"]],null],[1,\"\\n      \"],[8,[39,13],[[24,0,\"font-color-pinterest-500\"]],[[\"@icon\",\"@size\",\"@expandedLabel\",\"@fontColorClass\"],[\"fab fa-pinterest\",\"md\",\"pinterest\",\"font-color-pinterest-500\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Completion badge\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,19],null,[[\"@icon\",\"@size\"],[\"fas fa-box-open\",\"lg\"]],null],[1,\"\\n      \"],[8,[39,19],null,[[\"@progress\",\"@icon\",\"@size\"],[\"27\",\"fas fa-box-open\",\"lg\"]],null],[1,\"\\n      \"],[8,[39,19],null,[[\"@progress\",\"@size\",\"@icon\"],[\"50\",\"md\",\"fas fa-box-open\"]],null],[1,\"\\n      \"],[8,[39,19],null,[[\"@progress\",\"@size\",\"@icon\"],[\"76\",\"sm\",\"fas fa-box-open\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,19],null,[[\"@progress\",\"@text\"],[\"100\",\"2x\"]],null],[1,\"\\n      \"],[8,[39,19],[[4,[38,20],[[30,0,[\"increaseProgress\"]]],null]],[[\"@progress\",\"@image\"],[[30,0,[\"dynamicProgress\"]],\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\"]],null],[1,\"\\n      \"],[8,[39,19],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-orange\"]],null],[1,\"\\n      \"],[8,[39,19],null,[[\"@progress\",\"@icon\",\"@skin\",\"@plain\"],[\"66\",\"fas fa-box-open\",\"xtd-orange\",true]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Icon\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\"],[\"LaptopCode\"]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@style\"],[\"LaptopCode\",\"solid\"]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@style\"],[\"LaptopCode\",\"regular\"]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@style\"],[\"LaptopCode\",\"light\"]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@style\"],[\"LaptopCode\",\"duotone\"]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@style\"],[\"FacebookSquare\",\"brand\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Tag\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-69\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"primary\",\"far fa-thumbs-up\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"success\",\"far fa-thumbs-up\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"warning\",\"far fa-thumbs-up\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"danger\",\"far fa-thumbs-up\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"secondary\",\"far fa-thumbs-up\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@icon\"],[\"Tag\",\"far fa-thumbs-up\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@icon\"],[\"far fa-thumbs-up\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\"],[\"Tag\",\"secondary\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-orange\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-cyan\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-yellow\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-blue\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-violet\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-lime\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\"],[\"Tag\",\"chat-gpt\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,21],[[4,[38,22],null,[[\"title\",\"placement\",\"displayOnlyOnOverflow\"],[\"Test with a huge label sentence\",\"top\",true]]]],[[\"@label\",\"@skin\",\"@icon\"],[\"Test with a huge label sentence\",\"danger\",\"far fa-thumbs-up\"]],null],[1,\"\\n          \"],[8,[39,21],[[4,[38,22],null,[[\"title\",\"placement\",\"displayOnlyOnOverflow\"],[\"Test with a huge label sentence\",\"top\",true]]]],[[\"@label\",\"@skin\",\"@icon\",\"@hasEllipsis\"],[\"Test with a huge label sentence\",\"danger\",\"far fa-thumbs-up\",true]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"primary\",\"far fa-thumbs-up\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"success\",\"far fa-thumbs-up\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"warning\",\"far fa-thumbs-up\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"danger\",\"far fa-thumbs-up\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"secondary\",\"far fa-thumbs-up\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@icon\",\"@plain\"],[\"Tag\",\"far fa-thumbs-up\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@icon\",\"@plain\"],[\"far fa-thumbs-up\",true]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"secondary\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-orange\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-cyan\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-yellow\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-blue\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-violet\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-lime\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"chat-gpt\",true]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Test with a huge label sentence\",\"danger\",\"far fa-thumbs-up\",true]],null],[1,\"\\n          \"],[8,[39,21],[[4,[38,22],null,[[\"title\",\"placement\"],[\"Test with a huge label sentence\",\"top\"]]]],[[\"@label\",\"@skin\",\"@icon\",\"@hasEllipsis\",\"@plain\"],[\"Test with a huge label sentence\",\"danger\",\"far fa-thumbs-up\",true,true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\",\"@htmlSafe\"],[\"normal text - <b>bold text</b>\",\"danger\",\"far fa-thumbs-up\",true,true]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Chip\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,23],null,[[\"@label\",\"@onRemove\"],[\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,23],null,[[\"@skin\",\"@label\",\"@onRemove\"],[\"default\",\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,23],null,[[\"@skin\",\"@label\",\"@onRemove\"],[\"primary\",\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,23],null,[[\"@skin\",\"@label\",\"@onRemove\"],[\"success\",\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,23],null,[[\"@skin\",\"@label\",\"@onRemove\"],[\"danger\",\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,23],null,[[\"@skin\",\"@label\",\"@disabled\",\"@onRemove\"],[\"danger\",\"Chip\",true,[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,23],null,[[\"@skin\",\"@label\",\"@disabled\",\"@maxDisplayWidth\",\"@onRemove\"],[\"success\",\"Chip with a huge label\",false,100,[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,23],null,[[\"@skin\",\"@label\",\"@disabled\",\"@maxDisplayWidth\",\"@onRemove\"],[\"danger\",\"Chip with a huge label\",false,160,[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,24],null,[[\"@skin\",\"@label\",\"@disabled\",\"@onRemove\",\"@maxDisplayWidth\"],[\"danger\",\"Chip with a huge label\",true,[30,0,[\"onCrossChipClick\"]],50]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Star rating\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,25],null,[[\"@rating\",\"@totalStars\",\"@onChange\"],[3,5,[30,0,[\"onRatingClick\"]]]],null],[1,\"\\n      \"],[8,[39,25],null,[[\"@rating\",\"@totalStars\",\"@activeColor\",\"@passiveColor\",\"@onChange\"],[[30,0,[\"rating\"]],15,\"red\",\"blue\",[30,0,[\"onRatingClick\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Progress bar\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,26],null,[[\"@skin\",\"@value\",\"@displayValue\",\"@label\",\"@size\"],[\"success\",42,true,\"Hello\",\"xs\"]],null],[1,\"\\n      \"],[8,[39,26],null,[[\"@skin\",\"@value\",\"@displayValue\",\"@label\"],[\"warning\",21,true,\"Hello\"]],null],[1,\"\\n      \"],[8,[39,26],null,[[\"@skin\",\"@value\",\"@displayValue\",\"@label\",\"@coloredBackground\"],[\"danger\",78,true,\"Hello\",true]],null],[1,\"\\n      \"],[8,[39,26],null,[[\"@skin\",\"@value\",\"@displayValue\",\"@label\",\"@coloredBackground\"],[\"success\",78,true,\"Hello\",true]],null],[1,\"\\n      \"],[8,[39,26],null,[[\"@value\",\"@displayValue\",\"@label\",\"@coloredBackground\"],[78,true,\"Hello\",false]],null],[1,\"\\n      \"],[8,[39,26],null,[[\"@value\",\"@displayValue\",\"@label\",\"@secondarySkin\",\"@size\"],[78,true,\"Hello\",\"danger\",\"sm\"]],null],[1,\"\\n      \"],[8,[39,26],null,[[\"@value\",\"@displayValue\",\"@skin\",\"@secondarySkin\",\"@size\"],[62,true,\"success\",\"danger\",\"sm\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Slider\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-10\"],[12],[1,\"\\n        \"],[8,[39,27],null,[[\"@value\",\"@defaultValue\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue\"]],\"0\",true,[30,0,[\"onChangeSlider\"]]]],null],[1,\"\\n        \"],[8,[39,27],null,[[\"@value\",\"@unit\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue\"]],\"percentage\",true,[30,0,[\"onChangeSlider\"]]]],null],[1,\"\\n        \"],[8,[39,27],null,[[\"@value\",\"@unit\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue\"]],\"number\",true,[30,0,[\"onChangeSlider\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-10\"],[12],[1,\"\\n        \"],[8,[39,27],null,[[\"@value\",\"@disabled\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue2\"]],true,true,[30,0,[\"onChangeSlider2\"]]]],null],[1,\"\\n        \"],[8,[39,27],null,[[\"@value\",\"@disabled\",\"@unit\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue2\"]],true,\"percentage\",true,[30,0,[\"onChangeSlider2\"]]]],null],[1,\"\\n        \"],[8,[39,27],null,[[\"@value\",\"@disabled\",\"@unit\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue2\"]],true,\"number\",true,[30,0,[\"onChangeSlider2\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-10\"],[12],[1,\"\\n        \"],[8,[39,27],null,[[\"@value\",\"@inputOptions\",\"@min\",\"@max\",\"@step\",\"@unit\",\"@onChange\",\"@displayInputValue\"],[[30,0,[\"sliderValue3\"]],[28,[37,1],null,[[\"min\",\"max\"],[0,999]]],0,200,10,\"percentage\",[30,0,[\"onChangeSlider3\"]],true]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Mode switch\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-10\"],[12],[1,\"\\n        \"],[8,[39,28],null,[[\"@options\",\"@selected\",\"@onSelect\"],[[30,0,[\"modeSwitchOptions1\"]],[30,0,[\"modeSwitchSelected1\"]],[30,0,[\"onChangeMode1\"]]]],null],[1,\"\\n        \"],[8,[39,28],null,[[\"@options\",\"@selected\",\"@onSelect\",\"@plain\",\"@size\"],[[30,0,[\"modeSwitchOptions2\"]],[30,0,[\"modeSwitchSelected2\"]],[30,0,[\"onChangeMode2\"]],true,\"xs\"]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Pulsating dot\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-12\"],[12],[1,\"\\n        Primary:\\n        \"],[8,[39,29],null,null,null],[1,\"\\n        Success:\\n        \"],[8,[39,29],null,[[\"@skin\"],[\"success\"]],null],[1,\"\\n        Error:\\n        \"],[8,[39,29],null,[[\"@skin\"],[\"error\"]],null],[1,\"\\n        Warning:\\n        \"],[8,[39,29],null,[[\"@skin\"],[\"warning\"]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Pill\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[1,[30,0,[\"loadingPill\"]]],[1,\"\\n      \"],[8,[39,30],[[4,[38,32],[\"click\",[30,0,[\"onPillClick\"]]],null]],[[\"@label\",\"@icon\",\"@selected\",\"@loading\"],[\"Pill\",\"fad fa-badge-percent\",[28,[37,31],[[30,0,[\"selectedPill\"]]],null],[30,0,[\"loadingPill\"]]]],null],[1,\"\\n      \"],[8,[39,33],[[4,[38,32],[\"click\",[30,0,[\"onPillClick\"]]],null]],[[\"@label\",\"@selected\"],[\"Pill\",[30,0,[\"selectedPill\"]]]],null],[1,\"\\n      \"],[8,[39,34],null,[[\"@label\",\"@icon\",\"@selected\",\"@disabled\"],[\"Pill\",\"fa-badge-percent\",[28,[37,31],[[30,0,[\"selectedPill\"]]],null],true]],null],[1,\"\\n      \"],[8,[39,34],null,[[\"@label\",\"@selected\",\"@disabled\"],[\"Pill\",[30,0,[\"selectedPill\"]],true]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"socialMedia\"],false,[\"o-s-s/button\",\"hash\",\"o-s-s/button-dropdown\",\"fn\",\"o-s-s/icon\",\"o-s-s/toggle-buttons\",\"o-s-s/toggle-switch\",\"mut\",\"o-s-s/checkbox\",\"o-s-s/radio-button\",\"o-s-s/copy\",\"o-s-s/avatar\",\"o-s-s/stack-container\",\"o-s-s/expandable-badge\",\"o-s-s/avatar-group\",\"o-s-s/badge\",\"each\",\"-track-array\",\"o-s-s/social-post-badge\",\"o-s-s/completion-badge\",\"did-insert\",\"o-s-s/tag\",\"enable-tooltip\",\"o-s-s/chip\",\"o-s-s/chip-n-fish\",\"o-s-s/star-rating\",\"o-s-s/progress-bar\",\"o-s-s/slider\",\"o-s-s/mode-switch\",\"o-s-s/pulsating-dot\",\"o-s-s/smart/pill\",\"not\",\"on\",\"o-s-s/charger\",\"o-s-s/pill\"]]",
+    "id": "gbj5HX0r",
+    "block": "[[[10,0],[14,0,\"fx-col fx-gap-px-12 padding-px-18\"],[12],[1,\"\\n  \"],[10,0],[14,0,\"page-title-container\"],[12],[1,\"\\n    \"],[10,1],[14,0,\"font-size-h2 font-weight-semibold\"],[12],[1,\"Visual\"],[13],[1,\"\\n    \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,\"Components used to display information or actions in a simple and visual way\"],[13],[1,\"\\n    \"],[10,1],[14,0,\"font-color-gray-500 font-size-xs text-style-italic\"],[12],[1,\"(this one might work for people who can't read 👍)\"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Button\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"destructive\",\"destructive\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"destructive\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"alert\",\"alert\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"alert\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"secondary\",\"secondary\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"secondary\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"default\",\"default\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"default\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"success\",\"success\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"success\",\"true\",\"fas fa-box-open\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-orange\",\"Extended orange\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-orange\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-yellow\",\"Extended yellow\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-yellow\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-lime\",\"Extended lime\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-lime\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-cyan\",\"Extended Cyan\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-cyan\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-blue\",\"Extended blue\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-blue\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-col fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-violet\",\"Extended violet\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@square\",\"@icon\",\"@size\"],[\"xtd-violet\",\"true\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"primary\",\"xs\",\"XS\",\"far fa-envelope-open\"]],null],[1,\"\\n        \"],[8,[39,0],null,[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"primary\",\"sm\",\"SM\",\"far fa-envelope-open\"]],null],[1,\"\\n        \"],[8,[39,0],null,[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"primary\",\"md\",\"MD\",\"far fa-envelope-open\"]],null],[1,\"\\n        \"],[8,[39,0],null,[[\"@skin\",\"@size\",\"@label\",\"@icon\"],[\"primary\",\"lg\",\"LG\",\"far fa-envelope-open\"]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@square\",\"@skin\",\"@size\",\"@icon\"],[\"true\",\"primary\",\"sm\",\"far fa-envelope-open\"]],null],[1,\"\\n        \"],[8,[39,0],null,[[\"@square\",\"@skin\",\"@size\",\"@icon\"],[\"true\",\"primary\",\"md\",\"far fa-envelope-open\"]],null],[1,\"\\n        \"],[8,[39,0],null,[[\"@square\",\"@skin\",\"@size\",\"@icon\"],[\"true\",\"primary\",\"lg\",\"far fa-envelope-open\"]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n        \"],[8,[39,0],null,[[\"@label\",\"@loading\"],[\"loading\",true]],null],[1,\"\\n        \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\",\"@countDown\"],[\"destructive\",\"Count down\",\"far fa-hourglass\",\"md\",[28,[37,1],null,[[\"callback\"],[[30,0,[\"countDownAction\"]]]]]]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Button dropdown\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@label\",\"@mainAction\"],[\"far fa-credit-card\",\"Dropdown button\",[28,[37,3],[[30,0,[\"redirectTo\"]],\"test\"],null]]],[[\"items\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"\\n            \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-share\"]],null],[1,\"\\n            Share\\n          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[8,[39,2],null,[[\"@icon\",\"@label\"],[\"far fa-hourglass\",\"Dropdown button\"]],[[\"items\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"\\n            \"],[8,[39,4],null,[[\"@style\",\"@icon\"],[\"solid\",\"fa-share\"]],null],[1,\"\\n            Share\\n          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Toggle buttons\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-10\"],[12],[1,\"\\n        \"],[8,[39,5],null,[[\"@toggles\",\"@selectedToggle\",\"@onSelection\"],[[30,0,[\"toggles\"]],[30,0,[\"selectedToggle\"]],[30,0,[\"triggerSelection\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Toggle switch\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-1 fx-col fx-gap-px-12\"],[12],[1,\"\\n        Active\\n        \"],[8,[39,6],null,[[\"@value\",\"@onChange\"],[[30,0,[\"toggleValue\"]],[28,[37,3],[[28,[37,7],[[30,0,[\"toggleValue\"]]],null]],null]]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-1 fx-col fx-gap-px-12\"],[12],[1,\"\\n        Disabled\\n        \"],[8,[39,6],null,[[\"@value\",\"@onChange\",\"@disabled\"],[[30,0,[\"toggleValue\"]],[28,[37,3],[[28,[37,7],[[30,0,[\"toggleValue\"]]],null]],null],[30,0,[\"disabled\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Checkbox\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@onChange\"],[[30,0,[\"isChecked\"]],[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@disabled\",\"@onChange\"],[[30,0,[\"isChecked\"]],true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@partial\",\"@onChange\"],[[30,0,[\"isChecked\"]],true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@disabled\",\"@partial\",\"@onChange\"],[[30,0,[\"isChecked\"]],true,true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@size\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@size\",\"@disabled\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@size\",\"@partial\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@size\",\"@disabled\",\"@partial\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",true,true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@size\",\"@disabled\",\"@partial\",\"@hasError\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",false,false,true,[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@size\",\"@disabled\",\"@partial\",\"@feedbackMessage\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",false,false,[30,0,[\"feedbackMessageError\"]],[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@size\",\"@disabled\",\"@partial\",\"@feedbackMessage\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",false,false,[30,0,[\"feedbackMessageWarning\"]],[30,0,[\"onCheck\"]]]],null],[1,\"\\n      \"],[8,[39,8],null,[[\"@checked\",\"@size\",\"@disabled\",\"@partial\",\"@feedbackMessage\",\"@onChange\"],[[30,0,[\"isChecked\"]],\"sm\",false,false,[30,0,[\"feedbackMessageSuccess\"]],[30,0,[\"onCheck\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Radio button\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,9],null,[[\"@selected\",\"@onChange\"],[[30,0,[\"radio1\"]],[28,[37,3],[[30,0,[\"onRadioBtnChange\"]],\"radio1\"],null]]],null],[1,\"\\n      \"],[8,[39,9],null,[[\"@selected\",\"@onChange\"],[[30,0,[\"radio2\"]],[28,[37,3],[[30,0,[\"onRadioBtnChange\"]],\"radio2\"],null]]],null],[1,\"\\n      \"],[8,[39,9],null,[[\"@selected\",\"@disabled\"],[true,true]],null],[1,\"\\n      \"],[8,[39,9],null,[[\"@selected\",\"@disabled\"],[false,true]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Copy button\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,10],null,[[\"@value\",\"@inline\"],[\"I am the value copied\",true]],null],[1,\"\\n      \"],[8,[39,10],null,[[\"@value\"],[\"I am the value copied\"]],null],[1,\"\\n      \"],[8,[39,10],null,[[\"@value\",\"@tooltip\"],[\"I am the value copied\",\"Custom tooltip\"]],null],[1,\"\\n      \"],[8,[39,10],null,[[\"@value\",\"@icon\"],[\"I am the value copied\",\"far fa-jedi\"]],null],[1,\"\\n      \"],[8,[39,10],null,[[\"@value\",\"@icon\",\"@inline\"],[\"I am the value copied\",\"fab fa-empire\",true]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Avatar\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,11],null,[[\"@image\",\"@initials\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"Ts\"]],null],[1,\"\\n      \"],[8,[39,11],null,[[\"@initials\"],[\"MI\"]],null],[1,\"\\n      \"],[8,[39,11],null,null,null],[1,\"\\n      \"],[8,[39,11],null,[[\"@size\"],[\"xs\"]],null],[1,\"\\n      \"],[8,[39,11],null,[[\"@size\"],[\"sm\"]],null],[1,\"\\n      \"],[8,[39,11],null,[[\"@size\"],[\"md\"]],null],[1,\"\\n      \"],[8,[39,11],null,[[\"@size\"],[\"lg\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Stack container\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-18\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-xalign-start fx-gap-px-12\"],[12],[1,\"\\n        \"],[10,1],[12],[1,\"@style=\\\"under\\\"\"],[13],[1,\"\\n        \"],[8,[39,12],null,[[\"@direction\",\"@style\",\"@pxMargin\"],[\"row\",\"under\",\"6px\"]],[[\"default\"],[[[[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"us\",\"United-States\"]],null],[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"fr\",\"France\"]],null],[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"ca\",\"Canada\"]],null],[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"de\",\"Germany\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-xalign-start fx-gap-px-12\"],[12],[1,\"\\n        \"],[10,1],[12],[1,\"@style=\\\"over\\\"\"],[13],[1,\"\\n        \"],[8,[39,12],null,[[\"@direction\",\"@style\"],[\"row\",\"over\"]],[[\"default\"],[[[[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"us\",\"United-States\"]],null],[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"fr\",\"France\"]],null],[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"ca\",\"Canada\"]],null],[1,\"\\n          \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"de\",\"Germany\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-xalign-start fx-gap-px-12\"],[12],[1,\"\\n        \"],[10,1],[12],[1,\"@direction=\\\"column\\\"\"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,12],null,[[\"@direction\",\"@style\"],[\"column\",\"over\"]],[[\"default\"],[[[[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"us\",\"United-States\"]],null],[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"fr\",\"France\"]],null],[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"ca\",\"Canada\"]],null],[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"de\",\"Germany\"]],null],[1,\"\\n          \"]],[]]]]],[1,\"\\n          \"],[8,[39,12],null,[[\"@direction\",\"@style\"],[\"column\",\"under\"]],[[\"default\"],[[[[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"us\",\"United-States\"]],null],[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"fr\",\"France\"]],null],[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"ca\",\"Canada\"]],null],[1,\"\\n            \"],[8,[39,13],null,[[\"@flag\",\"@expandedLabel\"],[\"de\",\"Germany\"]],null],[1,\"\\n          \"]],[]]]]],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-xalign-start fx-gap-px-12\"],[12],[1,\"\\n        \"],[10,1],[12],[1,\"Usage with random component and @bringToFrontOnHover=\"],[1,true],[13],[1,\"\\n        \"],[8,[39,12],null,[[\"@pxMargin\",\"@bringToFrontOnHover\"],[\"-30px\",true]],[[\"default\"],[[[[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-orange\",\"Extended orange\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-yellow\",\"Extended yellow\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-lime\",\"Extended lime\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-cyan\",\"Extended Cyan\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n          \"],[8,[39,0],null,[[\"@skin\",\"@label\",\"@icon\",\"@size\"],[\"xtd-blue\",\"Extended blue\",\"fas fa-plus\",\"md\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Avatar group\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,14],null,[[\"@avatars\",\"@size\"],[[30,0,[\"avatars\"]],\"lg\"]],null],[1,\"\\n      \"],[8,[39,14],null,[[\"@avatars\",\"@size\"],[[30,0,[\"avatars\"]],\"md\"]],null],[1,\"\\n      \"],[8,[39,14],null,[[\"@avatars\",\"@size\"],[[30,0,[\"avatars\"]],\"sm\"]],null],[1,\"\\n      \"],[8,[39,14],null,[[\"@avatars\",\"@size\"],[[30,0,[\"avatars\"]],\"xs\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Badge\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@size\"],[\"fas fa-box-open\",\"lg\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\"],[\"fas fa-box-open\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@size\",\"@icon\"],[\"md\",\"fas fa-box-open\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@size\",\"@icon\"],[\"sm\",\"fas fa-box-open\"]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"primary\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"primary\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"success\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"success\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"alert\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"alert\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"error\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"error\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-orange\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-orange\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-yellow\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-yellow\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-lime\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-lime\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-cyan\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-cyan\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-blue\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-blue\",true]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-violet\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@icon\",\"@skin\",\"@plain\"],[\"fas fa-box-open\",\"xtd-violet\",true]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,15],null,[[\"@text\",\"@size\"],[\"2x\",\"lg\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@text\"],[\"2x\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@text\",\"@size\"],[\"2x\",\"sm\"]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,15],null,[[\"@image\",\"@size\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"lg\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@image\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\"]],null],[1,\"\\n        \"],[8,[39,15],null,[[\"@image\",\"@size\"],[\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"sm\"]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Social post badge\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n\"],[42,[28,[37,17],[[28,[37,17],[[30,0,[\"media\"]]],null]],null],null,[[[1,\"        \"],[8,[39,18],null,[[\"@postType\",\"@selected\",\"@plain\",\"@onToggle\"],[[30,1,[\"key\"]],[30,1,[\"active\"]],[30,1,[\"active\"]],[30,0,[\"toggleMedia\"]]]],null],[1,\"\\n\"]],[1]],null],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Expandable badge\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-6\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n        \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@size\"],[\"content\",\"fas fa-box-open\",\"lg\"]],null],[1,\"\\n        \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\"],[\"content\",\"fas fa-box-open\"]],null],[1,\"\\n        \"],[8,[39,13],null,[[\"@expandedLabel\",\"@size\",\"@icon\"],[\"content\",\"md\",\"fas fa-box-open\"]],null],[1,\"\\n        \"],[8,[39,13],null,[[\"@expandedLabel\",\"@size\",\"@icon\"],[\"content\",\"sm\",\"fas fa-box-open\"]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-6\"],[12],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"primary\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"primary\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"success\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"success\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"alert\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"alert\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"error\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"error\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"xtd-orange\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"xtd-orange\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"xtd-yellow\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"xtd-yellow\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"xtd-lime\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"xtd-lime\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"xtd-cyan\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"xtd-cyan\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"xtd-blue\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"xtd-blue\",true]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\"],[\"content\",\"fas fa-box-open\",\"xtd-violet\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@icon\",\"@skin\",\"@plain\"],[\"content\",\"fas fa-box-open\",\"xtd-violet\",true]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@image\",\"@size\"],[\"content\",\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"lg\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@image\"],[\"content\",\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@expandedLabel\",\"@image\",\"@size\"],[\"content\",\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\",\"sm\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-xalign-start fx-gap-px-6\"],[12],[1,\"\\n      \"],[8,[39,13],null,[[\"@icon\",\"@size\",\"@expandedLabel\"],[\"fas fa-user-bounty-hunter\",\"md\",\"The Mandalorian\"]],null],[1,\"\\n      \"],[8,[39,13],null,[[\"@icon\",\"@size\",\"@expandedLabel\"],[\"fas fa-robot-astromech\",\"md\",\"R2-D2\"]],null],[1,\"\\n      \"],[8,[39,13],[[24,0,\"font-color-pinterest-500\"]],[[\"@icon\",\"@size\",\"@expandedLabel\",\"@fontColorClass\"],[\"fab fa-pinterest\",\"md\",\"pinterest\",\"font-color-pinterest-500\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Completion badge\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,19],null,[[\"@icon\",\"@size\"],[\"fas fa-box-open\",\"lg\"]],null],[1,\"\\n      \"],[8,[39,19],null,[[\"@progress\",\"@icon\",\"@size\"],[\"27\",\"fas fa-box-open\",\"lg\"]],null],[1,\"\\n      \"],[8,[39,19],null,[[\"@progress\",\"@size\",\"@icon\"],[\"50\",\"md\",\"fas fa-box-open\"]],null],[1,\"\\n      \"],[8,[39,19],null,[[\"@progress\",\"@size\",\"@icon\"],[\"76\",\"sm\",\"fas fa-box-open\"]],null],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-12 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,19],null,[[\"@progress\",\"@text\"],[\"100\",\"2x\"]],null],[1,\"\\n      \"],[8,[39,19],[[4,[38,20],[[30,0,[\"increaseProgress\"]]],null]],[[\"@progress\",\"@image\"],[[30,0,[\"dynamicProgress\"]],\"https://reachr-assets.s3.us-west-2.amazonaws.com/influencer-server/influencer/7219681.png\"]],null],[1,\"\\n      \"],[8,[39,19],null,[[\"@icon\",\"@skin\"],[\"fas fa-box-open\",\"xtd-orange\"]],null],[1,\"\\n      \"],[8,[39,19],null,[[\"@progress\",\"@icon\",\"@skin\",\"@plain\"],[\"66\",\"fas fa-box-open\",\"xtd-orange\",true]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Icon\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\"],[\"LaptopCode\"]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@style\"],[\"LaptopCode\",\"solid\"]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@style\"],[\"LaptopCode\",\"regular\"]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@style\"],[\"LaptopCode\",\"light\"]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@style\"],[\"LaptopCode\",\"duotone\"]],null],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@style\"],[\"FacebookSquare\",\"brand\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Tag\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-69\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"primary\",\"far fa-thumbs-up\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"success\",\"far fa-thumbs-up\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"warning\",\"far fa-thumbs-up\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"danger\",\"far fa-thumbs-up\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\"],[\"Tag\",\"secondary\",\"far fa-thumbs-up\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@icon\"],[\"Tag\",\"far fa-thumbs-up\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@icon\"],[\"far fa-thumbs-up\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\"],[\"Tag\",\"secondary\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-orange\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-cyan\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-yellow\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-blue\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-violet\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\"],[\"Tag\",\"xtd-lime\"]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\"],[\"Tag\",\"chat-gpt\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,21],[[4,[38,22],null,[[\"title\",\"placement\",\"displayOnlyOnOverflow\"],[\"Test with a huge label sentence\",\"top\",true]]]],[[\"@label\",\"@skin\",\"@icon\"],[\"Test with a huge label sentence\",\"danger\",\"far fa-thumbs-up\"]],null],[1,\"\\n          \"],[8,[39,21],[[4,[38,22],null,[[\"title\",\"placement\",\"displayOnlyOnOverflow\"],[\"Test with a huge label sentence\",\"top\",true]]]],[[\"@label\",\"@skin\",\"@icon\",\"@hasEllipsis\"],[\"Test with a huge label sentence\",\"danger\",\"far fa-thumbs-up\",true]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-24 fx-xalign-start\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"primary\",\"far fa-thumbs-up\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"success\",\"far fa-thumbs-up\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"warning\",\"far fa-thumbs-up\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"danger\",\"far fa-thumbs-up\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Tag\",\"secondary\",\"far fa-thumbs-up\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@icon\",\"@plain\"],[\"Tag\",\"far fa-thumbs-up\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@icon\",\"@plain\"],[\"far fa-thumbs-up\",true]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"secondary\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-orange\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-cyan\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-yellow\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-blue\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-violet\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"xtd-lime\",true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@plain\"],[\"Tag\",\"chat-gpt\",true]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"fx-row fx-gap-px-12\"],[12],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\"],[\"Test with a huge label sentence\",\"danger\",\"far fa-thumbs-up\",true]],null],[1,\"\\n          \"],[8,[39,21],[[4,[38,22],null,[[\"title\",\"placement\"],[\"Test with a huge label sentence\",\"top\"]]]],[[\"@label\",\"@skin\",\"@icon\",\"@hasEllipsis\",\"@plain\"],[\"Test with a huge label sentence\",\"danger\",\"far fa-thumbs-up\",true,true]],null],[1,\"\\n          \"],[8,[39,21],null,[[\"@label\",\"@skin\",\"@icon\",\"@plain\",\"@htmlSafe\"],[\"normal text - <b>bold text</b>\",\"danger\",\"far fa-thumbs-up\",true,true]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Chip\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,23],null,[[\"@label\",\"@onRemove\"],[\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,23],null,[[\"@skin\",\"@label\",\"@onRemove\"],[\"default\",\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,23],null,[[\"@skin\",\"@label\",\"@onRemove\"],[\"primary\",\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,23],null,[[\"@skin\",\"@label\",\"@onRemove\"],[\"success\",\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,23],null,[[\"@skin\",\"@label\",\"@onRemove\"],[\"danger\",\"Chip\",[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,23],null,[[\"@skin\",\"@label\",\"@disabled\",\"@onRemove\"],[\"danger\",\"Chip\",true,[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,23],null,[[\"@skin\",\"@label\",\"@disabled\",\"@maxDisplayWidth\",\"@onRemove\"],[\"success\",\"Chip with a huge label\",false,100,[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,23],null,[[\"@skin\",\"@label\",\"@disabled\",\"@maxDisplayWidth\",\"@onRemove\"],[\"danger\",\"Chip with a huge label\",false,160,[30,0,[\"onCrossChipClick\"]]]],null],[1,\"\\n      \"],[8,[39,24],null,[[\"@skin\",\"@label\",\"@disabled\",\"@onRemove\",\"@maxDisplayWidth\"],[\"danger\",\"Chip with a huge label\",true,[30,0,[\"onCrossChipClick\"]],50]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Star rating\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,25],null,[[\"@rating\",\"@totalStars\",\"@onChange\"],[3,5,[30,0,[\"onRatingClick\"]]]],null],[1,\"\\n      \"],[8,[39,25],null,[[\"@rating\",\"@totalStars\",\"@activeColor\",\"@passiveColor\",\"@onChange\"],[[30,0,[\"rating\"]],15,\"red\",\"blue\",[30,0,[\"onRatingClick\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Progress bar\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,26],null,[[\"@skin\",\"@value\",\"@displayValue\",\"@label\",\"@size\"],[\"success\",42,true,\"Hello\",\"xs\"]],null],[1,\"\\n      \"],[8,[39,26],null,[[\"@skin\",\"@value\",\"@displayValue\",\"@label\"],[\"warning\",21,true,\"Hello\"]],null],[1,\"\\n      \"],[8,[39,26],null,[[\"@skin\",\"@value\",\"@displayValue\",\"@label\",\"@coloredBackground\"],[\"danger\",78,true,\"Hello\",true]],null],[1,\"\\n      \"],[8,[39,26],null,[[\"@skin\",\"@value\",\"@displayValue\",\"@label\",\"@coloredBackground\"],[\"success\",78,true,\"Hello\",true]],null],[1,\"\\n      \"],[8,[39,26],null,[[\"@value\",\"@displayValue\",\"@label\",\"@coloredBackground\"],[78,true,\"Hello\",false]],null],[1,\"\\n      \"],[8,[39,26],null,[[\"@value\",\"@displayValue\",\"@label\",\"@secondarySkin\",\"@size\"],[78,true,\"Hello\",\"danger\",\"sm\"]],null],[1,\"\\n      \"],[8,[39,26],null,[[\"@value\",\"@displayValue\",\"@skin\",\"@secondarySkin\",\"@size\"],[62,true,\"success\",\"danger\",\"sm\"]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Slider\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-10\"],[12],[1,\"\\n        \"],[8,[39,27],null,[[\"@value\",\"@defaultValue\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue\"]],\"0\",true,[30,0,[\"onChangeSlider\"]]]],null],[1,\"\\n        \"],[8,[39,27],null,[[\"@value\",\"@unit\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue\"]],\"percentage\",true,[30,0,[\"onChangeSlider\"]]]],null],[1,\"\\n        \"],[8,[39,27],null,[[\"@value\",\"@unit\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue\"]],\"number\",true,[30,0,[\"onChangeSlider\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-10\"],[12],[1,\"\\n        \"],[8,[39,27],null,[[\"@value\",\"@disabled\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue2\"]],true,true,[30,0,[\"onChangeSlider2\"]]]],null],[1,\"\\n        \"],[8,[39,27],null,[[\"@value\",\"@disabled\",\"@unit\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue2\"]],true,\"percentage\",true,[30,0,[\"onChangeSlider2\"]]]],null],[1,\"\\n        \"],[8,[39,27],null,[[\"@value\",\"@disabled\",\"@unit\",\"@displayInputValue\",\"@onChange\"],[[30,0,[\"sliderValue2\"]],true,\"number\",true,[30,0,[\"onChangeSlider2\"]]]],null],[1,\"\\n      \"],[13],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-10\"],[12],[1,\"\\n        \"],[8,[39,27],null,[[\"@value\",\"@inputOptions\",\"@min\",\"@max\",\"@step\",\"@unit\",\"@onChange\",\"@displayInputValue\"],[[30,0,[\"sliderValue3\"]],[28,[37,1],null,[[\"min\",\"max\"],[0,999]]],0,200,10,\"percentage\",[30,0,[\"onChangeSlider3\"]],true]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Mode switch\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-gap-px-10\"],[12],[1,\"\\n        \"],[8,[39,28],null,[[\"@options\",\"@selected\",\"@onSelect\"],[[30,0,[\"modeSwitchOptions1\"]],[30,0,[\"modeSwitchSelected1\"]],[30,0,[\"onChangeMode1\"]]]],null],[1,\"\\n        \"],[8,[39,28],null,[[\"@options\",\"@selected\",\"@onSelect\",\"@plain\",\"@size\"],[[30,0,[\"modeSwitchOptions2\"]],[30,0,[\"modeSwitchSelected2\"]],[30,0,[\"onChangeMode2\"]],true,\"xs\"]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Pulsating dot\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-row fx-xalign-center fx-gap-px-12\"],[12],[1,\"\\n        Primary:\\n        \"],[8,[39,29],null,null,null],[1,\"\\n        Success:\\n        \"],[8,[39,29],null,[[\"@skin\"],[\"success\"]],null],[1,\"\\n        Error:\\n        \"],[8,[39,29],null,[[\"@skin\"],[\"error\"]],null],[1,\"\\n        Warning:\\n        \"],[8,[39,29],null,[[\"@skin\"],[\"warning\"]],null],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[10,0],[14,0,\"fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"font-size-md font-weight-semibold\"],[12],[1,\"\\n      Pill\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-gap-px-24 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,30],[[4,[38,32],[\"click\",[30,0,[\"onPillClick\"]]],null]],[[\"@label\",\"@icon\",\"@selected\"],[\"Pill\",\"fad fa-badge-percent\",[28,[37,31],[[30,0,[\"selectedPill\"]]],null]]],null],[1,\"\\n      \"],[8,[39,33],[[4,[38,32],[\"click\",[30,0,[\"onPillClick\"]]],null]],[[\"@label\",\"@selected\"],[\"Pill\",[30,0,[\"selectedPill\"]]]],null],[1,\"\\n      \"],[8,[39,34],null,[[\"@label\",\"@icon\",\"@selected\",\"@disabled\"],[\"Pill\",\"fa-badge-percent\",[28,[37,31],[[30,0,[\"selectedPill\"]]],null],true]],null],[1,\"\\n      \"],[8,[39,34],null,[[\"@label\",\"@selected\",\"@disabled\"],[\"Pill\",[30,0,[\"selectedPill\"]],true]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"socialMedia\"],false,[\"o-s-s/button\",\"hash\",\"o-s-s/button-dropdown\",\"fn\",\"o-s-s/icon\",\"o-s-s/toggle-buttons\",\"o-s-s/toggle-switch\",\"mut\",\"o-s-s/checkbox\",\"o-s-s/radio-button\",\"o-s-s/copy\",\"o-s-s/avatar\",\"o-s-s/stack-container\",\"o-s-s/expandable-badge\",\"o-s-s/avatar-group\",\"o-s-s/badge\",\"each\",\"-track-array\",\"o-s-s/social-post-badge\",\"o-s-s/completion-badge\",\"did-insert\",\"o-s-s/tag\",\"enable-tooltip\",\"o-s-s/chip\",\"o-s-s/chip-n-fish\",\"o-s-s/star-rating\",\"o-s-s/progress-bar\",\"o-s-s/slider\",\"o-s-s/mode-switch\",\"o-s-s/pulsating-dot\",\"o-s-s/smart/pill\",\"not\",\"on\",\"o-s-s/charger\",\"o-s-s/pill\"]]",
     "moduleName": "dummy/templates/visual.hbs",
     "isStrictMode": false
   });
@@ -6733,6 +7903,17 @@ module('Integration | Component | o-s-s/code-block', function(hooks) {
     }
   });
   0; //eaimeta@70e063a35619d71f0,"@upfluence/oss-components/utils/keyboard"eaimeta@70e063a35619d71f
+});
+;define("dummy/utils/logo-config", ["exports"], function (_exports) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.LOGO_ICONS = _exports.LOGO_COLORS = void 0;
+  0; //eaimeta@70e063a35619d71feaimeta@70e063a35619d71f
+  const LOGO_ICONS = _exports.LOGO_ICONS = ['rabbit', 'star', 'heart', 'rocket-launch', 'money-bill', 'glass-whiskey-rocks', 'joystick', 'scroll', 'carrot', 'volleyball-ball', 'crown', 'chart-bar', 'users', 'saxophone', 'duck', 'university', 'tree-palm', 'trophy', 'pizza-slice', 'popcorn', 'chart-line', 'analytics', 'hat-wizard', 'chart-network', 'leaf', 'utensils', 'ufo', 'hat-winter', 'guitar', 'parachute-box', 'sheep', 'boot', 'shopping-basket', 'shopping-cart', 'shopping-bag', 'tags', 'meteor', 'globe-americas', 'globe-snow'];
+  const LOGO_COLORS = _exports.LOGO_COLORS = ['stone', 'rose', 'orange', 'yellow', 'lime', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuschia', 'pink', 'slate'];
 });
 ;define("dummy/utils/upf-local-storage", ["exports", "@upfluence/oss-components/utils/upf-local-storage"], function (_exports, _upfLocalStorage) {
   "use strict";
