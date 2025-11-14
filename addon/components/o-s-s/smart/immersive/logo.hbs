@@ -1,0 +1,19 @@
+<div
+  class={{this.computedClass}}
+  {{did-update this.handleLoadingUpdate @loading}}
+  {{did-insert this.registerElement}}
+  ...attributes
+>
+  {{#if @editable}}
+    <div class="edit-overlay fx-row fx-malign-center fx-xalign-center" role="button" {{on "click" @onEdit}}>
+      <OSS::Icon @icon="fa-pen" />
+    </div>
+  {{/if}}
+  {{#if (eq this.logoMode "icon")}}
+    <div class="smart-logo-icon fx-row fx-malign-center fx-xalign-center {{this.logoColor}}">
+      <OSS::Icon @icon="fa-{{this.logoIcon}}" @style="duotone" />
+    </div>
+  {{else}}
+    <img class="smart-logo-image" src={{or @url this.fallbackSvgUrl}} onError={{this.onError}} alt="Smart branding" />
+  {{/if}}
+</div>

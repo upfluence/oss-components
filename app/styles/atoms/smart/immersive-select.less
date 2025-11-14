@@ -1,0 +1,102 @@
+.smart-immersive-select-container {
+  width: fit-content;
+  position: relative;
+
+  .upf-input {
+    height: fit-content;
+    padding: 4px var(--spacing-px-6);
+    min-width: 50px;
+
+    border: 1px dashed var(--color-gray-400);
+    border-radius: var(--border-radius-sm);
+    display: flex;
+    align-items: center;
+
+    &.loading-placeholder {
+      height: 32px;
+      min-width: 50px;
+      padding: 0;
+      pointer-events: none;
+      border: 1px dashed var(--color-gray-400);
+    }
+
+    &:focus,
+    &.active,
+    &:hover {
+      border: 1px dashed var(--color-gray-600);
+      background-color: transparent;
+      box-shadow: none;
+    }
+  }
+
+  &.smart-rotating-gradient {
+    .upf-input {
+      border: 1px dashed transparent;
+    }
+  }
+
+  &--filled {
+    .upf-input {
+      color: var(--color-primary-400);
+      border-color: var(--color-primary-400);
+
+      &:focus,
+      &.active {
+        border: 1px dashed var(--color-primary-400);
+      }
+
+      &:hover:not(:focus, .active) {
+        border: 1px dashed var(--color-primary-300);
+
+        .select-smart-item {
+          color: var(--color-primary-300);
+        }
+      }
+    }
+  }
+
+  &--errored,
+  &--error {
+    .upf-input {
+      border-color: var(--color-error-500);
+
+      &:hover:not(:focus, .active),
+      &:focus,
+      &.active {
+        border: 1px dashed var(--color-error-500);
+      }
+    }
+  }
+
+  .select-smart-item {
+    .font-weight-semibold;
+    .text-ellipsis;
+    background: var(--color-primary-50);
+    border-radius: var(--border-radius-sm);
+    border: 1px solid var(--color-white);
+    padding: 0 var(--spacing-px-6);
+    color: var(--color-primary-400);
+  }
+
+  .smart_text_animated {
+    background: var(--color-gray-400);
+    background: linear-gradient(
+      130deg,
+      var(--color-gray-400) 18%,
+      var(--color-gray-300) 25%,
+      rgba(250, 198, 255, 1) 56%,
+      var(--color-primary-100) 62%,
+      var(--color-white) 66%,
+      rgba(250, 198, 255, 0.58) 68%,
+      var(--color-gray-300) 73%,
+      var(--color-gray-400) 85%
+    );
+    font-size: var(--font-size-md);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: smart_loading_text_animation 3.5s ease-in-out infinite;
+    background-size: 600% 100%;
+    padding: var(--spacing-px-6);
+  }
+}

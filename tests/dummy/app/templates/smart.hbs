@@ -1,0 +1,526 @@
+<div class="fx-col fx-gap-px-12 padding-px-18">
+  <div class="page-title-container">
+    <span class="font-size-h2 font-weight-semibold">Smart</span>
+    <span class="font-color-gray-500">Components that look like another component and act like another component but
+      aren't said component</span>
+    <span class="font-color-gray-500 font-size-xs text-style-italic">(also they might be smarter than you who knows)</span>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Text-area
+    </div>
+    <div class="fx-col fx-gap-px-24">
+      <div class="fx-row fx-gap-px-24 fx-xalign-center">
+        <OSS::Button @label="Toggle loading" {{on "click" this.toggleLoading}} />
+        <OSS::Smart::TextArea
+          @value={{this.textAreaValue}}
+          @onChange={{this.onTextAreaChange}}
+          @rows={{7}}
+          @placeholder={{this.multilinePlaceholder}}
+          @loading={{this.loading}}
+        />
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Number input
+    </div>
+    <div class="fx-col fx-gap-px-24">
+      <div class="fx-row fx-gap-px-24 fx-xalign-center">
+        <OSS::Smart::NumberInput @value={{this.numberValue}} @onChange={{this.onNumberChange}} @hasError={{true}} />
+        <OSS::Smart::NumberInput @value={{this.numberValue}} @onChange={{this.onNumberChange}} />
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Smart tag & Smart tag input
+    </div>
+    <div class="fx-col fx-gap-px-24">
+      <div class="fx-row fx-gap-px-24 fx-xalign-center">
+        <OSS::Button @label="Toggle animation" {{on "click" this.toggleTagAnimation}} />
+        <OSS::Smart::Tag @label="Default" />
+        {{#each this.tags as |tag|}}
+          <OSS::Smart::Tag
+            @label={{tag.value}}
+            @type={{tag.type}}
+            @onRemove={{this.onTagRemove}}
+            @successAnimationOnInsertion={{this.tagLoading}}
+          />
+        {{/each}}
+        {{#each this.tags as |tag|}}
+          <OSS::Smart::Tag
+            @label={{tag.value}}
+            @type={{tag.type}}
+            @onRemove={{this.onTagRemove}}
+            @successAnimationOnInsertion={{this.tagLoading}}
+            @size="lg"
+          />
+        {{/each}}
+      </div>
+      <div class="fx-row fx-gap-px-24 fx-xalign-start">
+        {{#each this.smartTags as |smartTag|}}
+          <OSS::Smart::Tag @label={{smartTag.value}} @type={{smartTag.type}} @onRemove={{this.onTagRemove}} />
+        {{/each}}
+        <OSS::Smart::TagInput @value={{this.inputValue}} @onKeydown={{this.handleTagInput}} />
+        <OSS::Smart::TagInput @value={{this.inputValue}} @onKeydown={{this.handleTagInput}} @loading={{true}} />
+        <OSS::Smart::TagInput @value={{this.inputValue}} @onKeydown={{this.handleTagInput}} @hasError={{true}} />
+      </div>
+      <div class="fx-row fx-gap-px-24 fx-xalign-start">
+        <OSS::Button @label="Fake load data" {{on "click" this.fakeLoadData}} />
+        {{#each this.smartTags as |smartTag|}}
+          <OSS::Smart::Tag
+            @label={{smartTag.value}}
+            @type={{smartTag.type}}
+            @onRemove={{this.onTagRemove}}
+            @successAnimationOnInsertion={{this.loading}}
+          />
+        {{/each}}
+        <OSS::Smart::TagInput
+          @value={{this.inputValue}}
+          @onKeydown={{this.handleSmartTagInput}}
+          @loading={{this.loading}}
+        />
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Smart Immersive select
+    </div>
+    <div class="fx-col fx-gap-px-24 fx-xalign-center">
+      <OSS::Button @label="Toggle loading" {{on "click" this.toggleLoading}} />
+      <OSS::Smart::Immersive::Select
+        @placeholder="Placeholder"
+        @values={{this.values}}
+        @loading={{this.loading}}
+        @items={{this.items}}
+        @onSearch={{this.onSearch}}
+        @onChange={{this.onChange}}
+        @multiple={{true}}
+      >
+        <:selected-item as |item|>{{item.value}}</:selected-item>
+        <:option-item as |item|>
+          <div class="text-ellipsis" {{enable-tooltip title=item.label displayOnlyOnOverflow=true}}>
+            {{item.label}}
+          </div>
+        </:option-item>
+      </OSS::Smart::Immersive::Select>
+      <OSS::Smart::Immersive::Select
+        @placeholder="Placeholder"
+        @values={{this.values}}
+        @displayCount={{true}}
+        @loading={{this.loading}}
+        @hasError={{false}}
+        @displayedItems={{1}}
+        @maxItemWidth={{100}}
+        @items={{this.items}}
+        @onSearch={{this.onSearch}}
+        @onChange={{this.onChange}}
+        @multiple={{true}}
+      >
+        <:selected-item as |item|>{{item.value}}</:selected-item>
+        <:option-item as |item|>
+          <div class="text-ellipsis" {{enable-tooltip title=item.label displayOnlyOnOverflow=true}}>
+            {{item.label}}
+          </div>
+        </:option-item>
+      </OSS::Smart::Immersive::Select>
+      <OSS::Smart::Immersive::Select
+        @placeholder="Placeholder"
+        @values={{this.fakeSelectedItems}}
+        @displayCount={{true}}
+        @loading={{this.loading}}
+        @hasError={{false}}
+        @items={{this.items}}
+        @onSearch={{this.onSearch}}
+        @onChange={{this.onChange}}
+        @multiple={{true}}
+      >
+        <:selected-item as |item|>{{item.value}}</:selected-item>
+        <:option-item as |item|>
+          <div class="text-ellipsis" {{enable-tooltip title=item.label displayOnlyOnOverflow=true}}>
+            {{item.label}}
+          </div>
+        </:option-item>
+      </OSS::Smart::Immersive::Select>
+      <OSS::Smart::Immersive::Select
+        @placeholder="Type your name or pseudo"
+        @values={{array this.value}}
+        @loading={{this.loading}}
+        @hasError={{true}}
+        @items={{this.items}}
+        @onChange={{this.onChange}}
+        @searchEnabled={{false}}
+        @multiple={{false}}
+      >
+        <:selected-item as |item|>{{item}}</:selected-item>
+        <:option-item as |item|>{{item.label}}</:option-item>
+      </OSS::Smart::Immersive::Select>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Smart immersive input
+    </div>
+    <div class="fx-col fx-gap-px-24 fx-xalign-center">
+      <OSS::Button @label="Toggle loading" {{on "click" this.toggleLoading}} />
+      <OSS::Smart::Immersive::Input @placeholder="Placeholder" @value={{this.value}} @loading={{this.loading}}>
+        <:suffix>
+          <i class="fas fa-user" />
+        </:suffix>
+      </OSS::Smart::Immersive::Input>
+      <OSS::Smart::Immersive::Input
+        @placeholder="Placeholder"
+        @value={{this.value}}
+        @loading={{this.loading}}
+        @hasError={{true}}
+      />
+      <OSS::Smart::Immersive::Input
+        @placeholder="Type your name or pseudo"
+        @value={{this.value}}
+        @loading={{this.loading}}
+        @type="number"
+      />
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Smart button
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Smart::Button @skin="primary" @label="Primary" @icon="fas fa-box-open" @size="lg" />
+        <OSS::Smart::Button
+          @skin="primary"
+          @label="Primary"
+          @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+        />
+        <OSS::Smart::Button @skin="primary" @label="Primary" @icon="fas fa-box-open" @size="sm" />
+        <OSS::Smart::Button
+          @skin="primary"
+          @label="Primary"
+          @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+          @size="sm"
+        />
+        <div class="fx-row fx-xalign-center fx-gap-px-12">
+          <OSS::Smart::Button @skin="primary" @circle="true" @icon="fas fa-box-open" @size="lg" />
+          <OSS::Smart::Button @skin="primary" @square="true" @icon="fas fa-box-open" @size="sm" />
+        </div>
+      </div>
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Smart::Button
+          @skin="primary"
+          @label="Loading"
+          @loading={{true}}
+          @loadingOptions={{hash showLabel=true}}
+          @size="lg"
+        />
+        <OSS::Smart::Button @skin="primary" @label="Loading" @loading={{true}} />
+        <OSS::Smart::Button
+          @skin="primary"
+          @label="Loading"
+          @loading={{true}}
+          @loadingOptions={{hash showLabel=true}}
+          @size="sm"
+        />
+        <OSS::Smart::Button @skin="primary" @label="Loading" @loading={{true}} @size="sm" />
+        <div class="fx-row fx-xalign-center fx-gap-px-12">
+          <OSS::Smart::Button
+            @skin="primary"
+            @square="true"
+            @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+            @size="md"
+          />
+          <OSS::Smart::Button
+            @skin="primary"
+            @square="true"
+            @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+            @size="sm"
+          />
+        </div>
+      </div>
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Smart::Button @skin="primary" @label="Disabled" @size="lg" @disabled={{true}} />
+        <OSS::Smart::Button @skin="primary" @label="Disabled" @size="md" @disabled={{true}} />
+        <OSS::Smart::Button @skin="primary" @label="Disabled" @size="sm" @disabled={{true}} />
+      </div>
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Smart::Button @skin="secondary" @label="Secondary" @icon="fas fa-box-open" @size="lg" />
+        <OSS::Smart::Button
+          @skin="secondary"
+          @label="Secondary"
+          @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+        />
+        <OSS::Smart::Button @skin="secondary" @label="Secondary" @icon="fas fa-box-open" @size="sm" />
+        <OSS::Smart::Button
+          @skin="secondary"
+          @label="Secondary"
+          @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+          @size="sm"
+        />
+        <div class="fx-row fx-xalign-center fx-gap-px-12">
+          <OSS::Smart::Button @skin="secondary" @square="true" @icon="fas fa-box-open" @size="md" />
+          <OSS::Smart::Button @skin="secondary" @square="true" @icon="fas fa-box-open" @size="sm" />
+        </div>
+      </div>
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Smart::Button
+          @skin="secondary"
+          @label="Loading"
+          @loading={{true}}
+          @loadingOptions={{hash showLabel=true}}
+          @size="lg"
+        />
+        <OSS::Smart::Button @skin="secondary" @label="Loading" @loading={{true}} />
+        <OSS::Smart::Button
+          @skin="secondary"
+          @label="Loading"
+          @loading={{true}}
+          @loadingOptions={{hash showLabel=true}}
+          @size="sm"
+        />
+        <OSS::Smart::Button @skin="secondary" @label="Loading" @loading={{true}} @size="sm" />
+        <div class="fx-row fx-xalign-center fx-gap-px-12">
+          <OSS::Smart::Button
+            @skin="secondary"
+            @square="true"
+            @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+            @size="md"
+          />
+          <OSS::Smart::Button
+            @skin="secondary"
+            @square="true"
+            @iconUrl="/@upfluence/oss-components/assets/star-icon.svg"
+            @size="sm"
+          />
+        </div>
+      </div>
+      <div class="fx-col fx-gap-px-12">
+        <OSS::Smart::Button @skin="secondary" @label="Disabled" @size="lg" @disabled={{true}} />
+        <OSS::Smart::Button @skin="secondary" @label="Disabled" @size="md" @disabled={{true}} />
+        <OSS::Smart::Button @skin="secondary" @label="Disabled" @size="sm" @disabled={{true}} />
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Smart toggle buttons
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <div class="fx-row fx-xalign-start fx-gap-px-10">
+        <OSS::Smart::ToggleButtons
+          @toggles={{this.toggles}}
+          @selectedToggle={{this.selectedToggle}}
+          @onSelection={{this.triggerSelection}}
+        />
+        <OSS::Smart::ToggleButtons
+          @toggles={{this.toggles}}
+          @selectedToggle={{this.selectedToggleTwo}}
+          @onSelection={{this.triggerSelection}}
+          @disabled={{true}}
+        />
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
+      Smart skeleton
+    </div>
+    <div class="fx-col fx-gap-px-24 padding-px-12 background-color-primary-50">
+      <div class="fx-row fx-1 fx-gap-px-10">
+        <OSS::Smart::Skeleton @width="70%" />
+        <OSS::Smart::Skeleton @width={{20}} />
+      </div>
+      <div class="fx-row fx-1 fx-gap-px-10">
+        <OSS::Smart::Skeleton
+          @direction="column"
+          @width="60%"
+          @height="60"
+          @gap="12"
+          @multiple="3"
+          @randomize={{true}}
+        />
+      </div>
+      <div class="fx-row fx-1 fx-gap-px-10">
+        <OSS::Smart::Skeleton @height="40" @width="100" @multiple="3" @direction="row" @randomize="true" />
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="fx-col fx-1 fx-gap-px-10">
+      <div class="font-size-md fx-row fx-gap-px-12 fx-xalign-center font-weight-semibold">
+        <span>Smart feedback : loading {{this.smartFeedbackLoading}}</span>
+        <OSS::ToggleSwitch @value={{this.smartFeedbackLoading}} @onChange={{this.toggleSmartFeedbackLoading}} />
+      </div>
+      <OSS::Smart::Feedback @loading={{this.smartFeedbackLoading}} @contentArray={{this.contentArray}}>
+        <:icon>
+          <OSS::Avatar @initials={{concat "+" "123"}} @size={{"sm"}} />
+        </:icon>
+      </OSS::Smart::Feedback>
+    </div>
+
+    <div class="fx-row fx-gap-px-12 font-size-md font-weight-semibold">
+      Smart Inputs
+      <OSS::ToggleSwitch
+        @label="Toggle"
+        @value={{this.toggleInputLoadingValue}}
+        @onChange={{this.toggleInputLoading}}
+      />
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <OSS::Smart::Input
+        @value={{null}}
+        @label="Label"
+        @placeholder="Placeholder"
+        @loading={{this.toggleInputLoadingValue}}
+      />
+
+      <OSS::Smart::Input
+        @value={{null}}
+        @label="Label"
+        @placeholder="Placeholder"
+        @loading={{this.toggleInputLoadingValue}}
+      />
+
+      <OSS::Smart::Input
+        @value={{"value"}}
+        @label="Label"
+        @placeholder="Placeholder"
+        @loading={{this.toggleInputLoadingValue}}
+      />
+    </div>
+    <div
+      class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+    >
+      <div class="font-size-md font-weight-semibold">
+        Smart immersive currency input
+      </div>
+      <div class="fx-row fx-gap-px-24 fx-xalign-center">
+        <OSS::Smart::Immersive::CurrencyInput
+          @currency={{this.currency}}
+          @value={{this.currencyValue}}
+          @onChange={{this.onCurrencyInputChange}}
+          @allowCurrencyUpdate={{true}}
+          @placeholder="Placeholder"
+          @loading={{this.currencyInputLoading}}
+        />
+        <OSS::Smart::Immersive::CurrencyInput
+          @currency={{this.currency}}
+          @value={{this.currencyValueTwo}}
+          @onChange={{this.onCurrencyInputChange}}
+          @allowCurrencyUpdate={{true}}
+          @placeholder="Placeholder"
+          @loading={{this.currencyInputLoading}}
+          @hasError={{this.hasError}}
+        />
+      </div>
+      <span>Loading = {{this.currencyInputLoading}}</span>
+      <span class="fx-row fx-gap-px-6">Toggle the @loading argument =>
+        <OSS::Button @label="Toggle loading" {{on "click" this.toggleCurrencyInputLoading}} />
+      </span>
+
+    </div>
+
+    <div
+      class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+    >
+      <div class="font-size-md font-weight-semibold">
+        Smart pill
+      </div>
+      <div class="fx-col fx-gap-px-24 fx-xalign-start">
+        <div class="fx-row fx-xalign-start fx-gap-px-10">
+          <OSS::Smart::Pill
+            @label="Text"
+            @icon="fad fa-badge-percent"
+            @selected={{this.selectedPill}}
+            {{on "click" this.onPillChange}}
+          />
+          <OSS::Smart::Pill @label="Text" @selected={{not this.selectedPill}} {{on "click" this.onPillChange}} />
+          <OSS::Smart::Pill @label="Text" @icon="fa-badge-percent" @selected={{this.selectedPill}} @disabled={{true}} />
+          <OSS::Smart::Pill @label="Text" @selected={{not this.selectedPill}} @disabled={{true}} />
+        </div>
+        <div class="fx-row fx-xalign-start fx-gap-px-10">
+          <OSS::Smart::Pill @label="Text" @selected={{false}} @loading={{this.pillLoading}} />
+          <OSS::Smart::Pill @label="Text" @selected={{this.selectedPillTwo}} @loading={{this.pillLoading}} />
+          <OSS::Button @label="Toggle loading" {{on "click" this.togglePillLoading}} />
+        </div>
+      </div>
+    </div>
+
+    <div class="font-size-md font-weight-semibold">
+      Smart Logo
+      <OSS::ToggleSwitch @value={{this.logoLoading}} @onChange={{this.toggleLogoLoading}} />
+    </div>
+    <div class="fx-row fx-gap-px-24 padding-px-12 background-color-primary-50">
+      <OSS::Smart::Immersive::Logo
+        @url="https://picsum.photos/200/300"
+        @loading={{this.logoLoading}}
+        @onEdit={{this.onLogoClick}}
+      />
+      <OSS::Smart::Immersive::Logo
+        @url="https://picsum.photos/200/300"
+        @loading={{this.logoLoading}}
+        @onEdit={{this.onLogoClick}}
+        @hasError={{true}}
+      />
+
+      <OSS::Smart::Immersive::Logo @icon="rabbit:orange" @loading={{this.logoLoading}} @onEdit={{this.onLogoClick}} />
+      <OSS::Smart::Immersive::Logo
+        @icon="rabbit:orange"
+        @loading={{this.logoLoading}}
+        @onEdit={{this.onLogoClick}}
+        @hasError={{true}}
+      />
+      <OSS::Smart::Immersive::Logo
+        @icon="rabbit:orange"
+        @oversize={{true}}
+        @loading={{this.logoLoading}}
+        @onEdit={{this.onLogoClick}}
+      />
+
+      <OSS::Smart::Immersive::Logo
+        @icon="rabbit:orange"
+        @editable={{true}}
+        @loading={{this.logoLoading}}
+        @onEdit={{this.onLogoClick}}
+      />
+      <OSS::Smart::Immersive::Logo
+        @icon="rabbit:orange"
+        @editable={{true}}
+        @loading={{this.logoLoading}}
+        @onEdit={{this.onLogoClick}}
+      />
+
+      <OSS::Smart::Immersive::Logo @editable={{true}} @loading={{this.logoLoading}} @onEdit={{this.onLogoClick}} />
+    </div>
+  </div>
+</div>

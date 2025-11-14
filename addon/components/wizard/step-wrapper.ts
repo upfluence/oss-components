@@ -10,6 +10,7 @@ import type { Step } from '@upfluence/oss-components/services/wizard-manager';
 
 const SCROLL_EVENTS_DELAY = 1500;
 const DEFAULT_BASE_CLASS = 'step-wrapper';
+const DEFAULT_CLASS_TO_SKIP_SCROLL_LISTENER = 'prevent-wizard-scroll-events';
 
 interface WizardStepWrapperComponentSignature {
   step: Step;
@@ -30,7 +31,7 @@ export default class WizardStepWrapperComponent extends Component<WizardStepWrap
     return this.args.step.displayState !== 'none';
   }
 
-  @computed('args.step.displayState')
+  @computed('args.step.{displayState,hidden}')
   get computedClasses(): string {
     const classArray = [this.baseClass];
     if (this.args.step.displayState === 'previous') {
@@ -66,7 +67,20 @@ export default class WizardStepWrapperComponent extends Component<WizardStepWrap
 
   @action
   handleWheelEvent(event: WheelEvent): void {
-    if (!this.wheelListenerEnabled || this.wheelHandled) return;
+    let target = event.target as HTMLElement | null;
+    while (target) {
+      if (
+        target.classList &&
+        target.classList.contains(
+          this.wizardManager.configOptions.skipScrollEventsClass ?? DEFAULT_CLASS_TO_SKIP_SCROLL_LISTENER
+        )
+      ) {
+        return;
+      }
+      target = target.parentElement;
+    }
+
+    if (!this.wizardManager.wheelEnabled || !this.wheelListenerEnabled || this.wheelHandled) return;
     if (!this.scrollPosition && !this.wheelListenerEnabled) return;
     if (this.scrollPosition === 'middle') return;
     this.wheelHandled = true;
@@ -86,7 +100,9 @@ export default class WizardStepWrapperComponent extends Component<WizardStepWrap
   @action
   handleScrollEvent(event: Event): void {
     const target = event.target as HTMLElement;
-    if (target.scrollHeight - target.scrollTop <= target.clientHeight) {
+    const Tolerance = 1;
+
+    if (target.scrollHeight - target.scrollTop - target.clientHeight <= Tolerance) {
       this.scrollPosition = 'bottom';
       this.enableWheelListenerAfterDelay(SCROLL_EVENTS_DELAY);
     } else if (target.scrollTop === 0) {

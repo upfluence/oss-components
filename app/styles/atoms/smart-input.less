@@ -1,0 +1,43 @@
+.oss-smart-input-container {
+  width: 100%;
+
+  .oss-input-container {
+    width: 100%;
+    position: relative;
+    display: flex;
+
+    .loading-placeholder {
+      pointer-events: none;
+      display: flex;
+      flex: 1;
+      align-items: center;
+      width: fit-content;
+      position: relative;
+    }
+
+    .upf-input.loading-placeholder {
+      padding: 0px;
+    }
+
+    .smart_text_animated {
+      background: var(--color-gray-400);
+      background: linear-gradient(
+        130deg,
+        var(--color-gray-400) 18%,
+        var(--color-gray-300) 25%,
+        rgba(250, 198, 255, 1) 56%,
+        var(--color-primary-100) 62%,
+        var(--color-white) 66%,
+        rgba(250, 198, 255, 0.58) 68%,
+        var(--color-gray-300) 73%,
+        var(--color-gray-400) 85%
+      );
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: smart_loading_text_animation 3.5s ease-in-out infinite;
+      background-size: 600% 100%;
+      padding: 6px 12px;
+    }
+  }
+}

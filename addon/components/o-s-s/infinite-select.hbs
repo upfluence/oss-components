@@ -1,7 +1,9 @@
 <div
   id={{this.elementId}}
   data-internal-id={{this.elementId}}
-  class="fx-col fx-gap-px-12 upf-infinite-select {{unless this.inline 'upf-infinite-select--absolute'}}"
+  class="fx-col fx-gap-px-12 upf-infinite-select
+    {{unless this.inline 'upf-infinite-select--absolute'}}
+    upf-infinite-select--{{this.skin}}"
   {{did-insert this.onRender}}
   ...attributes
 >
@@ -10,6 +12,7 @@
       @value={{this._searchKeyword}}
       @placeholder={{this.searchPlaceholder}}
       @onChange={{this.updateSearchKeyword}}
+      class="upf-infinite-select--search"
       {{on "keydown" this.handleKeyEventInput}}
       {{did-insert this.initSearchInput}}
     />

@@ -1,0 +1,242 @@
+.smart-logo-icon-color {
+  &_stone {
+    background-color: #f5f5f4;
+    color: #78716c;
+  }
+
+  &_rose {
+    background-color: #ffe4e6;
+    color: #f43f5e;
+  }
+
+  &_orange {
+    background-color: var(--color-orange-100);
+    color: var(--color-orange-500);
+  }
+
+  &_yellow {
+    background-color: var(--color-yellow-100);
+    color: var(--color-yellow-500);
+  }
+
+  &_lime {
+    background-color: var(--color-lime-100);
+    color: var(--color-lime-500);
+  }
+
+  &_emerald {
+    background-color: var(--color-success-100);
+    color: var(--color-success-500);
+  }
+
+  &_teal {
+    background-color: var(--color-info-100);
+    color: var(--color-info-500);
+  }
+
+  &_cyan {
+    background-color: var(--color-cyan-100);
+    color: var(--color-cyan-500);
+  }
+
+  &_sky {
+    background-color: #e0f2fe;
+    color: #0ea5e9;
+  }
+
+  &_blue {
+    background-color: var(--color-blue-100);
+    color: var(--color-blue-500);
+  }
+
+  &_indigo {
+    background-color: #e0e7ff;
+    color: #6366f1;
+  }
+
+  &_violet {
+    background-color: var(--color-violet-100);
+    color: var(--color-violet-500);
+  }
+
+  &_purple {
+    background-color: #f3e8ff;
+    color: #a855f7;
+  }
+
+  &_fuschia {
+    background-color: #fae8ff;
+    color: #d946ef;
+  }
+
+  &_pink {
+    background-color: #fce7f3;
+    color: #ec4899;
+  }
+
+  &_slate {
+    background-color: #f1f5f9;
+    color: #64748b;
+  }
+}
+
+.oss-smart__immersive-icon-container {
+  display: flex;
+  position: relative;
+  height: var(--spacing-px-36);
+  width: var(--spacing-px-36);
+  transition: all 250ms ease-in-out;
+
+  &--errored .smart-logo-icon,
+  &--errored .smart-logo-image {
+    border: 1px solid var(--color-error-500);
+  }
+
+  &.smart-rotating-gradient {
+    &::after {
+      border-radius: var(--border-radius-md);
+    }
+  }
+
+  .smart-logo-icon,
+  .smart-logo-image {
+    height: var(--spacing-px-36);
+    width: var(--spacing-px-36);
+    object-fit: cover;
+    background-size: cover;
+    background-position: center;
+    border-radius: var(--border-radius-md);
+    background-color: var(--color-gray-200);
+  }
+
+  .edit-overlay {
+    position: absolute;
+    opacity: 0;
+    transition: all 250ms ease-in-out;
+    height: var(--spacing-px-36);
+    width: var(--spacing-px-36);
+    border-radius: var(--border-radius-md);
+
+    &:active {
+      display: flex;
+      background-color: var(--color-gray-900);
+      opacity: 60%;
+      color: var(--color-white);
+      z-index: 1;
+      cursor: pointer;
+    }
+  }
+
+  &:hover {
+    .edit-overlay {
+      display: flex;
+      background-color: var(--color-gray-600);
+      opacity: 60%;
+      color: var(--color-white);
+      z-index: 1;
+      cursor: pointer;
+    }
+  }
+
+  &--size {
+    &-sm {
+      height: 12px;
+      width: 12px;
+      border-radius: calc(8px / 3);
+
+      .edit-overlay,
+      .smart-logo-icon,
+      .smart-logo-image {
+        font-size: 6px;
+        height: 12px;
+        width: 12px;
+        border-radius: calc(8px / 3);
+      }
+    }
+
+    &-md {
+      height: 36px;
+      width: 36px;
+
+      .edit-overlay,
+      .smart-logo-icon,
+      .smart-logo-image {
+        height: 36px;
+        width: 36px;
+      }
+    }
+
+    &-lg {
+      height: 60px;
+      width: 60px;
+
+      .edit-overlay,
+      .smart-logo-icon,
+      .smart-logo-image {
+        height: 60px;
+        width: 60px;
+      }
+    }
+  }
+
+  &--generating {
+    .smart-logo-icon::before,
+    .smart-logo-image::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+
+      background: linear-gradient(
+        270deg,
+        rgba(245, 245, 244, 0) 65%,
+        rgba(250, 198, 255, 0.7) 73.75%,
+        rgba(208, 217, 255, 0.8) 76.81%,
+        rgba(255, 255, 255, 0.3) 81.54%,
+        #fac6ff 85.82%,
+        #d0d9ff 92.59%,
+        rgba(245, 245, 244, 0) 100%
+      );
+      background-size: 300% 100%;
+      background-repeat: no-repeat;
+      background-blend-mode: normal;
+      animation: stripeGlow 2s ease-in-out infinite;
+      opacity: 0.6;
+    }
+
+    .smart-logo-icon,
+    .smart-logo-image {
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+  }
+}
+
+@keyframes stripeGlow {
+  0% {
+    background-position: 100% 0%;
+    transform: scaleX(1);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  50% {
+    background-position: 50% 0%;
+    transform: scaleX(1);
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    background-position: -100% 0%;
+    transform: scaleX(1.2);
+    opacity: 0;
+  }
+}

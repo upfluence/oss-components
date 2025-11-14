@@ -1,0 +1,51 @@
+.oss-smart-text-area-container {
+  .oss-textarea-container;
+  flex: 1;
+
+  > div {
+    position: relative;
+  }
+
+  .loading-placeholder {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    pointer-events: none;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .smart_text_animated {
+    background: var(--color-gray-400);
+    background: linear-gradient(
+      130deg,
+      var(--color-gray-400) 18%,
+      var(--color-gray-300) 25%,
+      rgba(250, 198, 255, 1) 56%,
+      var(--color-primary-100) 62%,
+      var(--color-white) 66%,
+      rgba(250, 198, 255, 0.58) 68%,
+      var(--color-gray-300) 73%,
+      var(--color-gray-400) 85%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: smart_loading_text_animation 3.5s ease-in-out infinite;
+    background-size: 600% 100%;
+    padding: var(--spacing-px-6) 0px;
+
+    border: 0;
+    font-family: var(--font-family-stack);
+    .font-size-sm;
+  }
+
+  .oss-textarea {
+    transition: all 0s;
+  }
+
+  .oss-textarea--loading {
+    visibility: hidden;
+  }
+}
