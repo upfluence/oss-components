@@ -70,6 +70,10 @@ function generateSubTitle(container: HTMLElement, subtitle?: string, html?: bool
   container.append(subtitleSpan);
 }
 
+function noopEvent(event: Event): void {
+  event.stopPropagation();
+}
+
 function generateHTMLStructure(state: EnableTooltipState): void {
   const { title, subtitle, icon, html, placement } = state.tooltipConfig;
   state.tooltipElement = document.createElement('div');
@@ -82,6 +86,8 @@ function generateHTMLStructure(state: EnableTooltipState): void {
   generateTitle(titleContainer, title, html);
   state.tooltipElement.append(titleContainer);
   generateSubTitle(state.tooltipElement, subtitle, html);
+
+  state.tooltipElement.addEventListener('click', noopEvent);
 
   if (isTesting()) {
     document.querySelector('#ember-testing')?.append(state.tooltipElement);
@@ -147,6 +153,7 @@ function destroy(state: EnableTooltipState): void {
   state.animation.reverse();
   state.animation.finished.then(() => {
     run(() => {
+      state.tooltipElement?.removeEventListener('click', noopEvent);
       state.tooltipElement?.remove();
       state.isRendered = false;
       state.tooltipElement = null;
