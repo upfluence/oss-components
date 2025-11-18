@@ -2980,6 +2980,47 @@ define("dummy/tests/integration/components/o-s-s/button-dropdown-test", ["qunit"
       assert.dom('.oss-button-dropdown__trigger .fx-row:first-child span').exists();
       assert.dom('.oss-button-dropdown__trigger .fx-row:first-child span').hasText('label');
     });
+    (0, _qunit.module)('Button size', function () {
+      (0, _qunit.test)('the button has md size by default', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ButtonDropdown @icon="far fa-users" @label="label"><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>
+        */
+        {
+          "id": "sg35jHlS",
+          "block": "[[[8,[39,0],null,[[\"@icon\",\"@label\"],[\"far fa-users\",\"label\"]],[[\"items\"],[[[[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"foo\"],[13]],[]]]]]],[],false,[\"o-s-s/button-dropdown\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/button-dropdown-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-button-dropdown').hasClass('oss-button-dropdown--md');
+      });
+      (0, _qunit.test)('the button can be displayed in sm size', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ButtonDropdown @icon="far fa-users" @label="label" @size="sm"><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>
+        */
+        {
+          "id": "1lOhUWxb",
+          "block": "[[[8,[39,0],null,[[\"@icon\",\"@label\",\"@size\"],[\"far fa-users\",\"label\",\"sm\"]],[[\"items\"],[[[[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"foo\"],[13]],[]]]]]],[],false,[\"o-s-s/button-dropdown\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/button-dropdown-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-button-dropdown').hasClass('oss-button-dropdown--sm');
+      });
+      (0, _qunit.test)('the button can be displayed in md size', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ButtonDropdown @icon="far fa-users" @label="label" @size="md"><:items><div class="oss-button-dropdown__item">foo</div></:items></OSS::ButtonDropdown>
+        */
+        {
+          "id": "2QU9T4t9",
+          "block": "[[[8,[39,0],null,[[\"@icon\",\"@label\",\"@size\"],[\"far fa-users\",\"label\",\"md\"]],[[\"items\"],[[[[10,0],[14,0,\"oss-button-dropdown__item\"],[12],[1,\"foo\"],[13]],[]]]]]],[],false,[\"o-s-s/button-dropdown\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/button-dropdown-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-button-dropdown').hasClass('oss-button-dropdown--md');
+      });
+    });
     (0, _qunit.module)('If @mainAction is undefined', function () {
       (0, _qunit.test)('Clicking on the button opens the dropdown', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(

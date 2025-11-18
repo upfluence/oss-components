@@ -13568,8 +13568,25 @@ a.upf-btn--sm {
 .oss-button-dropdown {
   position: relative;
 }
-.oss-button-dropdown .oss-button-dropdown__trigger-square {
+.oss-button-dropdown--md .oss-button-dropdown__trigger {
+  height: var(--spacing-px-36);
+}
+.oss-button-dropdown--md .oss-button-dropdown__trigger div {
+  height: var(--spacing-px-36);
+}
+.oss-button-dropdown--md .oss-button-dropdown__trigger-square {
   width: var(--spacing-px-36);
+}
+.oss-button-dropdown--sm .oss-button-dropdown__trigger {
+  height: var(--spacing-px-24);
+}
+.oss-button-dropdown--sm .oss-button-dropdown__trigger div {
+  height: var(--spacing-px-24);
+}
+.oss-button-dropdown--sm .oss-button-dropdown__trigger-square {
+  width: var(--spacing-px-24);
+}
+.oss-button-dropdown .oss-button-dropdown__trigger-square {
   display: flex;
   justify-content: center;
   gap: var(--spacing-px-3);
@@ -13592,12 +13609,10 @@ a.upf-btn--sm {
   background-color: var(--color-white);
   border: 1px solid var(--color-gray-200);
   border-radius: var(--border-radius-sm);
-  height: var(--spacing-px-36);
   padding: var(--spacing-px-6) 0;
   transition: all 0.25s ease-in-out;
 }
 .oss-button-dropdown__trigger div {
-  height: var(--spacing-px-36);
   padding-left: var(--spacing-px-18);
 }
 .oss-button-dropdown__trigger div[role='button'] {

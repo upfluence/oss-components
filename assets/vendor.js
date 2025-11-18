@@ -84719,7 +84719,7 @@ require('@ember/-internals/bootstrap')
   function _initializerWarningHelper(descriptor, context) { throw new Error('Decorating class property failed. Please ensure that ' + 'transform-class-properties is enabled and runs after the decorators transform.'); }
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
-    <div class="oss-button-dropdown">
+    <div class={{this.computedClasses}}>
     <div
       class="oss-button-dropdown__trigger
         {{if @square 'oss-button-dropdown__trigger-square'}}
@@ -84758,8 +84758,8 @@ require('@ember/-internals/bootstrap')
   </div>
   */
   {
-    "id": "VoKyjhZj",
-    "block": "[[[10,0],[14,0,\"oss-button-dropdown\"],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-button-dropdown__trigger\\n      \",[52,[30,1],\"oss-button-dropdown__trigger-square\"],\"\\n      \",[52,[30,0,[\"displayDropdown\"]],\"oss-button-dropdown__trigger--active\"],\"\\n      fx-row fx-xalign-center\"]]],[16,\"role\",[52,[51,[30,2]],\"button\"]],[17,3],[4,[38,2],[\"click\",[30,0,[\"onDropdownClick\"]]],null],[12],[1,\"\\n    \"],[11,0],[24,0,\"fx-row fx-xalign-center fx-gap-px-6\"],[16,\"role\",[52,[30,2],\"button\"]],[4,[38,2],[\"click\",[30,0,[\"onMainAction\"]]],null],[12],[1,\"\\n\"],[41,[30,4],[[[1,\"        \"],[8,[39,3],null,[[\"@style\",\"@icon\"],[[28,[37,4],[[30,4]],null],[28,[37,5],[[30,4]],null]]],null],[1,\"\\n\"]],[]],null],[41,[28,[37,6],[[30,5],[28,[37,7],[[30,1]],null]],null],[[[1,\"        \"],[10,1],[12],[1,[30,5]],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[51,[30,6]],[[[1,\"      \"],[11,0],[24,0,\"fx-row fx-xalign-center\"],[16,\"role\",[52,[30,2],\"button\"]],[4,[38,2],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n        \"],[8,[39,3],null,[[\"@icon\"],[[29,[\"fa-caret-\",[52,[30,0,[\"displayDropdown\"]],\"up\",\"down\"]]]]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displayDropdown\"]],[[[1,\"    \"],[11,0],[24,0,\"oss-button-dropdown__items\"],[4,[38,2],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[4,[38,8],[[30,0,[\"setupChildrenClickHandler\"]]],null],[4,[38,9],[[30,0,[\"teardownChildrenClickHandler\"]]],null],[4,[38,10],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[true]]],[12],[1,\"\\n      \"],[18,7,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"@square\",\"@mainAction\",\"&attrs\",\"@icon\",\"@label\",\"@hideArrow\",\"&items\"],false,[\"if\",\"unless\",\"on\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"and\",\"not\",\"did-insert\",\"will-destroy\",\"on-click-outside\",\"yield\"]]",
+    "id": "wwuFWNnl",
+    "block": "[[[10,0],[15,0,[30,0,[\"computedClasses\"]]],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"oss-button-dropdown__trigger\\n      \",[52,[30,1],\"oss-button-dropdown__trigger-square\"],\"\\n      \",[52,[30,0,[\"displayDropdown\"]],\"oss-button-dropdown__trigger--active\"],\"\\n      fx-row fx-xalign-center\"]]],[16,\"role\",[52,[51,[30,2]],\"button\"]],[17,3],[4,[38,2],[\"click\",[30,0,[\"onDropdownClick\"]]],null],[12],[1,\"\\n    \"],[11,0],[24,0,\"fx-row fx-xalign-center fx-gap-px-6\"],[16,\"role\",[52,[30,2],\"button\"]],[4,[38,2],[\"click\",[30,0,[\"onMainAction\"]]],null],[12],[1,\"\\n\"],[41,[30,4],[[[1,\"        \"],[8,[39,3],null,[[\"@style\",\"@icon\"],[[28,[37,4],[[30,4]],null],[28,[37,5],[[30,4]],null]]],null],[1,\"\\n\"]],[]],null],[41,[28,[37,6],[[30,5],[28,[37,7],[[30,1]],null]],null],[[[1,\"        \"],[10,1],[12],[1,[30,5]],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n\"],[41,[51,[30,6]],[[[1,\"      \"],[11,0],[24,0,\"fx-row fx-xalign-center\"],[16,\"role\",[52,[30,2],\"button\"]],[4,[38,2],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n        \"],[8,[39,3],null,[[\"@icon\"],[[29,[\"fa-caret-\",[52,[30,0,[\"displayDropdown\"]],\"up\",\"down\"]]]]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"displayDropdown\"]],[[[1,\"    \"],[11,0],[24,0,\"oss-button-dropdown__items\"],[4,[38,2],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[4,[38,8],[[30,0,[\"setupChildrenClickHandler\"]]],null],[4,[38,9],[[30,0,[\"teardownChildrenClickHandler\"]]],null],[4,[38,10],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[true]]],[12],[1,\"\\n      \"],[18,7,null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"@square\",\"@mainAction\",\"&attrs\",\"@icon\",\"@label\",\"@hideArrow\",\"&items\"],false,[\"if\",\"unless\",\"on\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\",\"and\",\"not\",\"did-insert\",\"will-destroy\",\"on-click-outside\",\"yield\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/button-dropdown.hbs",
     "isStrictMode": false
   });
@@ -84771,6 +84771,11 @@ require('@ember/-internals/bootstrap')
       if (this.args.mainAction) {
         (true && !(typeof this.args.mainAction === 'function') && (0, _debug.assert)('[component][OSS::ButtonDropdown] The parameter @mainAction should be a function.', typeof this.args.mainAction === 'function'));
       }
+    }
+    get computedClasses() {
+      const computedClasses = ['oss-button-dropdown'];
+      computedClasses.push(`oss-button-dropdown--${this.args.size ?? 'md'}`);
+      return computedClasses.join(' ');
     }
     onMainAction(event) {
       if (this.args.mainAction) {
@@ -84822,6 +84827,7 @@ require('@ember/-internals/bootstrap')
   });
   _exports.default = _exports.WithMainActionArgs = _exports.Usage = void 0;
   0; //eaimeta@70e063a35619d71f0,"@storybook/addon-actions",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  const SizeTypes = ['sm', 'md'];
   var _default = _exports.default = {
     title: 'Components/OSS::ButtonDropdown',
     component: 'button-dropdown',
@@ -84880,6 +84886,21 @@ require('@ember/-internals/bootstrap')
         },
         control: {
           type: 'text'
+        }
+      },
+      size: {
+        description: 'Adjust the size of the button',
+        table: {
+          type: {
+            summary: SizeTypes.join('|')
+          },
+          defaultValue: {
+            summary: 'md'
+          }
+        },
+        options: SizeTypes,
+        control: {
+          type: 'select'
         }
       },
       mainAction: {
