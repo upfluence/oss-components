@@ -91775,7 +91775,7 @@ interface OSSCodeBlockArgs {
   const BasicUsage = _exports.BasicUsage = Template.bind({});
   BasicUsage.args = defaultArgs;
 });
-;define("@upfluence/oss-components/components/o-s-s/marketing-banner", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@ember/debug", "@upfluence/oss-components/utils", "@ember/template-factory"], function (_exports, _component, _component2, _object, _debug, _utils, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/marketing/banner", ["exports", "@ember/component", "@glimmer/component", "@ember/object", "@ember/debug", "@upfluence/oss-components/utils", "@ember/template-factory"], function (_exports, _component, _component2, _object, _debug, _utils, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -91813,16 +91813,16 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "RjYVJAwa",
+    "id": "leNdCbdB",
     "block": "[[[11,0],[24,0,\"upf-marketing-banner\"],[17,1],[4,[38,0],[[30,0,[\"setup\"]]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"upf-marketing-banner__container\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"upf-marketing-banner__background--primary\"],[12],[13],[1,\"\\n    \"],[10,0],[14,0,\"upf-marketing-banner__background--secondary\"],[12],[13],[1,\"\\n    \"],[10,0],[14,0,\"upf-marketing-banner__background--tertiary\"],[12],[13],[1,\"\\n\\n    \"],[10,0],[14,0,\"upf-marketing-banner__content\"],[12],[1,\"\\n\"],[41,[48,[30,4]],[[[1,\"        \"],[10,0],[14,0,\"upf-marketing-banner__illustration\"],[12],[1,\"\\n          \"],[18,4,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[1,\"      \"],[10,0],[14,0,\"fx-col fx-gap-px-6\"],[12],[1,\"\\n        \"],[10,1],[14,0,\"upf-marketing-banner__title\"],[12],[1,[30,2]],[13],[1,\"\\n        \"],[10,1],[14,0,\"upf-marketing-banner__subtitle\"],[12],[1,[30,3]],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"      \"],[10,0],[14,0,\"upf-marketing-banner__actions\"],[12],[1,\"\\n        \"],[18,5,null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@title\",\"@subtitle\",\"&illustration\",\"&actions\"],false,[\"did-insert\",\"if\",\"has-block\",\"yield\"]]",
-    "moduleName": "@upfluence/oss-components/components/o-s-s/marketing-banner.hbs",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/marketing/banner.hbs",
     "isStrictMode": false
   });
   let OSSMarketingBannerComponent = _exports.default = (_class = class OSSMarketingBannerComponent extends _component2.default {
     constructor(owner, args) {
       super(owner, args);
-      (true && !(typeof args.title === 'string' || (0, _utils.isSafeString)(args.title)) && (0, _debug.assert)('[component][OSS::MarketingBanner] @title is required', typeof args.title === 'string' || (0, _utils.isSafeString)(args.title)));
-      (true && !(typeof args.subtitle === 'string' || (0, _utils.isSafeString)(args.subtitle)) && (0, _debug.assert)('[component][OSS::MarketingBanner] @subtitle is required', typeof args.subtitle === 'string' || (0, _utils.isSafeString)(args.subtitle)));
+      (true && !(typeof args.title === 'string' || (0, _utils.isSafeString)(args.title)) && (0, _debug.assert)('[component][OSS::Marketing::Banner] @title is required', typeof args.title === 'string' || (0, _utils.isSafeString)(args.title)));
+      (true && !(typeof args.subtitle === 'string' || (0, _utils.isSafeString)(args.subtitle)) && (0, _debug.assert)('[component][OSS::Marketing::Banner] @subtitle is required', typeof args.subtitle === 'string' || (0, _utils.isSafeString)(args.subtitle)));
     }
     get primaryGradiantColor() {
       return this.args.options?.primaryGradiantColor ?? '--color-violet-100';
@@ -91845,7 +91845,7 @@ interface OSSCodeBlockArgs {
   }, (_applyDecoratedDescriptor(_class.prototype, "setup", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "setup"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSMarketingBannerComponent);
 });
-;define("@upfluence/oss-components/components/o-s-s/marketing-banner.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/marketing/banner.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -91859,7 +91859,7 @@ interface OSSCodeBlockArgs {
   }
   const ColorOptions = getAllCSSColorAvailable();
   var _default = _exports.default = {
-    title: 'Components/OSS::MarketingBanner',
+    title: 'Components/OSS::Marketing::Banner',
     component: 'marketing-banner',
     argTypes: {
       title: {
@@ -91971,7 +91971,7 @@ interface OSSCodeBlockArgs {
     /*
       
         <div style="width: 600px;">
-          <OSS::MarketingBanner
+          <OSS::Marketing::Banner
             @title={{this.title}}
             @subtitle={{this.subtitle}}
             @options={{hash
@@ -91985,9 +91985,9 @@ interface OSSCodeBlockArgs {
       
     */
     {
-      "id": "liaeueIS",
-      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 600px;\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[28,[37,1],null,[[\"primaryGradiantColor\",\"secondaryGradiantColor\",\"backgroundGridDisplayed\",\"illustrationAlwaysVisible\"],[[30,0,[\"primaryGradiantColor\"]],[30,0,[\"secondaryGradiantColor\"]],[30,0,[\"backgroundGridDisplayed\"]],[30,0,[\"illustrationAlwaysVisible\"]]]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/marketing-banner\",\"hash\"]]",
-      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/marketing-banner.stories.js",
+      "id": "SCwV7Ucx",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 600px;\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[28,[37,1],null,[[\"primaryGradiantColor\",\"secondaryGradiantColor\",\"backgroundGridDisplayed\",\"illustrationAlwaysVisible\"],[[30,0,[\"primaryGradiantColor\"]],[30,0,[\"secondaryGradiantColor\"]],[30,0,[\"backgroundGridDisplayed\"]],[30,0,[\"illustrationAlwaysVisible\"]]]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/marketing/banner\",\"hash\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/marketing/banner.stories.js",
       "isStrictMode": false
     }),
     context: args
@@ -91997,7 +91997,7 @@ interface OSSCodeBlockArgs {
     /*
       
         <div style="width: 600px;">
-          <OSS::MarketingBanner
+          <OSS::Marketing::Banner
             @title={{this.title}}
             @subtitle={{this.subtitle}}
             @options={{hash
@@ -92011,14 +92011,14 @@ interface OSSCodeBlockArgs {
                 🚀
               </div>
             </:illustration>
-          </OSS::MarketingBanner>
+          </OSS::Marketing::Banner>
         </div>
       
     */
     {
-      "id": "apzEZ/w/",
-      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 600px;\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[28,[37,1],null,[[\"primaryGradiantColor\",\"secondaryGradiantColor\",\"illustrationAlwaysVisible\"],[[30,0,[\"primaryGradiantColor\"]],[30,0,[\"secondaryGradiantColor\"]],[30,0,[\"illustrationAlwaysVisible\"]]]]]]],[[\"illustration\"],[[[[1,\"\\n          \"],[10,0],[14,5,\"width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 40px;\"],[12],[1,\"\\n            🚀\\n          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/marketing-banner\",\"hash\"]]",
-      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/marketing-banner.stories.js",
+      "id": "lP1YFHv8",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 600px;\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[28,[37,1],null,[[\"primaryGradiantColor\",\"secondaryGradiantColor\",\"illustrationAlwaysVisible\"],[[30,0,[\"primaryGradiantColor\"]],[30,0,[\"secondaryGradiantColor\"]],[30,0,[\"illustrationAlwaysVisible\"]]]]]]],[[\"illustration\"],[[[[1,\"\\n          \"],[10,0],[14,5,\"width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 40px;\"],[12],[1,\"\\n            🚀\\n          \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/marketing/banner\",\"hash\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/marketing/banner.stories.js",
       "isStrictMode": false
     }),
     context: args
@@ -92028,7 +92028,7 @@ interface OSSCodeBlockArgs {
     /*
       
         <div style="width: 600px;">
-          <OSS::MarketingBanner
+          <OSS::Marketing::Banner
             @title={{this.title}}
             @subtitle={{this.subtitle}}
             @options={{hash
@@ -92039,14 +92039,14 @@ interface OSSCodeBlockArgs {
             <:actions>
               <button class="upf-btn upf-btn--primary">Get Started</button>
             </:actions>
-          </OSS::MarketingBanner>
+          </OSS::Marketing::Banner>
         </div>
       
     */
     {
-      "id": "6rGdDmkA",
-      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 600px;\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[28,[37,1],null,[[\"primaryGradiantColor\",\"secondaryGradiantColor\"],[[30,0,[\"primaryGradiantColor\"]],[30,0,[\"secondaryGradiantColor\"]]]]]]],[[\"actions\"],[[[[1,\"\\n          \"],[10,\"button\"],[14,0,\"upf-btn upf-btn--primary\"],[12],[1,\"Get Started\"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/marketing-banner\",\"hash\"]]",
-      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/marketing-banner.stories.js",
+      "id": "WAXiCe8X",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 600px;\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[28,[37,1],null,[[\"primaryGradiantColor\",\"secondaryGradiantColor\"],[[30,0,[\"primaryGradiantColor\"]],[30,0,[\"secondaryGradiantColor\"]]]]]]],[[\"actions\"],[[[[1,\"\\n          \"],[10,\"button\"],[14,0,\"upf-btn upf-btn--primary\"],[12],[1,\"Get Started\"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/marketing/banner\",\"hash\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/marketing/banner.stories.js",
       "isStrictMode": false
     }),
     context: args
@@ -92056,7 +92056,7 @@ interface OSSCodeBlockArgs {
     /*
       
         <div style="width: 600px;">
-          <OSS::MarketingBanner
+          <OSS::Marketing::Banner
             @title={{this.title}}
             @subtitle={{this.subtitle}}
             @options={{hash
@@ -92077,14 +92077,14 @@ interface OSSCodeBlockArgs {
                   <button class="upf-btn upf-btn--secondary">Learn More</button>
                 </div>
             </:actions>
-          </OSS::MarketingBanner>
+          </OSS::Marketing::Banner>
         </div>
       
     */
     {
-      "id": "MbZm6dtd",
-      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 600px;\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[28,[37,1],null,[[\"primaryGradiantColor\",\"secondaryGradiantColor\",\"backgroundGridDisplayed\",\"illustrationAlwaysVisible\"],[[30,0,[\"primaryGradiantColor\"]],[30,0,[\"secondaryGradiantColor\"]],[30,0,[\"backgroundGridDisplayed\"]],[30,0,[\"illustrationAlwaysVisible\"]]]]]]],[[\"illustration\",\"actions\"],[[[[1,\"\\n          \"],[10,0],[14,5,\"width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 40px;\"],[12],[1,\"\\n            ✨\\n          \"],[13],[1,\"\\n        \"]],[]],[[[1,\"\\n            \"],[10,0],[14,0,\"fx-row fx-gap-px-6\"],[12],[1,\"\\n              \"],[10,\"button\"],[14,0,\"upf-btn upf-btn--primary\"],[12],[1,\"Get Started\"],[13],[1,\"\\n              \"],[10,\"button\"],[14,0,\"upf-btn upf-btn--secondary\"],[12],[1,\"Learn More\"],[13],[1,\"\\n            \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/marketing-banner\",\"hash\"]]",
-      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/marketing-banner.stories.js",
+      "id": "gf8ri1qx",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 600px;\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[28,[37,1],null,[[\"primaryGradiantColor\",\"secondaryGradiantColor\",\"backgroundGridDisplayed\",\"illustrationAlwaysVisible\"],[[30,0,[\"primaryGradiantColor\"]],[30,0,[\"secondaryGradiantColor\"]],[30,0,[\"backgroundGridDisplayed\"]],[30,0,[\"illustrationAlwaysVisible\"]]]]]]],[[\"illustration\",\"actions\"],[[[[1,\"\\n          \"],[10,0],[14,5,\"width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 40px;\"],[12],[1,\"\\n            ✨\\n          \"],[13],[1,\"\\n        \"]],[]],[[[1,\"\\n            \"],[10,0],[14,0,\"fx-row fx-gap-px-6\"],[12],[1,\"\\n              \"],[10,\"button\"],[14,0,\"upf-btn upf-btn--primary\"],[12],[1,\"Get Started\"],[13],[1,\"\\n              \"],[10,\"button\"],[14,0,\"upf-btn upf-btn--secondary\"],[12],[1,\"Learn More\"],[13],[1,\"\\n            \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/marketing/banner\",\"hash\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/marketing/banner.stories.js",
       "isStrictMode": false
     }),
     context: args
@@ -92094,7 +92094,7 @@ interface OSSCodeBlockArgs {
     /*
       
         <div style="width: 300px;">
-          <OSS::MarketingBanner
+          <OSS::Marketing::Banner
             @title={{this.title}}
             @subtitle={{this.subtitle}}
             @options={{hash
@@ -92115,14 +92115,14 @@ interface OSSCodeBlockArgs {
                   <button class="fx-1 upf-btn upf-btn--secondary">Learn More</button>
                 </div>
             </:actions>
-          </OSS::MarketingBanner>
+          </OSS::Marketing::Banner>
         </div>
       
     */
     {
-      "id": "FIzSCqeV",
-      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 300px;\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[28,[37,1],null,[[\"primaryGradiantColor\",\"secondaryGradiantColor\",\"backgroundGridDisplayed\",\"illustrationAlwaysVisible\"],[[30,0,[\"primaryGradiantColor\"]],[30,0,[\"secondaryGradiantColor\"]],[30,0,[\"backgroundGridDisplayed\"]],[30,0,[\"illustrationAlwaysVisible\"]]]]]]],[[\"illustration\",\"actions\"],[[[[1,\"\\n          \"],[10,0],[14,5,\"width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 40px;\"],[12],[1,\"\\n            ✨\\n          \"],[13],[1,\"\\n        \"]],[]],[[[1,\"\\n            \"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-6\"],[12],[1,\"\\n              \"],[10,\"button\"],[14,0,\"fx-1 upf-btn upf-btn--primary\"],[12],[1,\"Get Started\"],[13],[1,\"\\n              \"],[10,\"button\"],[14,0,\"fx-1 upf-btn upf-btn--secondary\"],[12],[1,\"Learn More\"],[13],[1,\"\\n            \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/marketing-banner\",\"hash\"]]",
-      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/marketing-banner.stories.js",
+      "id": "R/t8ViaL",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"width: 300px;\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[28,[37,1],null,[[\"primaryGradiantColor\",\"secondaryGradiantColor\",\"backgroundGridDisplayed\",\"illustrationAlwaysVisible\"],[[30,0,[\"primaryGradiantColor\"]],[30,0,[\"secondaryGradiantColor\"]],[30,0,[\"backgroundGridDisplayed\"]],[30,0,[\"illustrationAlwaysVisible\"]]]]]]],[[\"illustration\",\"actions\"],[[[[1,\"\\n          \"],[10,0],[14,5,\"width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 40px;\"],[12],[1,\"\\n            ✨\\n          \"],[13],[1,\"\\n        \"]],[]],[[[1,\"\\n            \"],[10,0],[14,0,\"fx-row fx-1 fx-gap-px-6\"],[12],[1,\"\\n              \"],[10,\"button\"],[14,0,\"fx-1 upf-btn upf-btn--primary\"],[12],[1,\"Get Started\"],[13],[1,\"\\n              \"],[10,\"button\"],[14,0,\"fx-1 upf-btn upf-btn--secondary\"],[12],[1,\"Learn More\"],[13],[1,\"\\n            \"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/marketing/banner\",\"hash\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/marketing/banner.stories.js",
       "isStrictMode": false
     }),
     context: args

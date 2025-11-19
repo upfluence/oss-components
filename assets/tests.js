@@ -9148,12 +9148,12 @@ define("dummy/tests/integration/components/o-s-s/link-test", ["qunit", "ember-qu
     });
   });
 });
-define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit", "ember-qunit", "@ember/test-helpers", "ember-intl/test-support", "dummy/tests/integration/utils", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _testSupport, _utils, _templateFactory) {
+define("dummy/tests/integration/components/o-s-s/marketing/banner-test", ["qunit", "ember-qunit", "@ember/test-helpers", "ember-intl/test-support", "dummy/tests/integration/utils", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _testSupport, _utils, _templateFactory) {
   "use strict";
 
   0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars",0,"ember-intl/test-support",0,"dummy/tests/integration/utils"eaimeta@70e063a35619d71f
   const ILLUSTRATION_SRC = '/@upfluence/oss-components/assets/images/upfluence-blue-logo.svg';
-  (0, _qunit.module)('Integration | Component | o-s-s/marketing-banner', function (hooks) {
+  (0, _qunit.module)('Integration | Component | o-s-s/marketing/banner', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _testSupport.setupIntl)(hooks);
     hooks.beforeEach(function () {
@@ -9164,12 +9164,12 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
     (0, _qunit.test)('it renders', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
-        <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />
+        <OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} />
       */
       {
-        "id": "4WqMnasj",
-        "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
-        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+        "id": "FcP9mujs",
+        "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing/banner\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing/banner-test.ts",
         "isStrictMode": false
       }));
       assert.dom('.upf-marketing-banner').exists();
@@ -9179,12 +9179,12 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
     (0, _qunit.test)("it doesn't renders unnecessary named blocks", async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
-        <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />
+        <OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} />
       */
       {
-        "id": "4WqMnasj",
-        "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
-        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+        "id": "FcP9mujs",
+        "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing/banner\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing/banner-test.ts",
         "isStrictMode": false
       }));
       assert.dom('.upf-marketing-banner__illustration').doesNotExist();
@@ -9193,12 +9193,12 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
     (0, _qunit.test)('for @title, it renders the correct value', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
-        <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />
+        <OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} />
       */
       {
-        "id": "4WqMnasj",
-        "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
-        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+        "id": "FcP9mujs",
+        "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing/banner\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing/banner-test.ts",
         "isStrictMode": false
       }));
       assert.dom('.upf-marketing-banner__title').hasText('Title');
@@ -9206,12 +9206,12 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
     (0, _qunit.test)('for @subtitle, it renders the correct value', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
-        <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />
+        <OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} />
       */
       {
-        "id": "4WqMnasj",
-        "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
-        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+        "id": "FcP9mujs",
+        "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing/banner\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing/banner-test.ts",
         "isStrictMode": false
       }));
       assert.dom('.upf-marketing-banner__subtitle').hasText('Subtitle');
@@ -9219,12 +9219,12 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
     (0, _qunit.test)('it renders all background effect elements', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
-        <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />
+        <OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} />
       */
       {
-        "id": "4WqMnasj",
-        "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
-        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+        "id": "FcP9mujs",
+        "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing/banner\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing/banner-test.ts",
         "isStrictMode": false
       }));
       assert.dom('.upf-marketing-banner__background--primary').exists();
@@ -9236,12 +9236,12 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
         (0, _qunit.test)('it renders the default colors', async function (assert) {
           await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
           /*
-            <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />
+            <OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} />
           */
           {
-            "id": "4WqMnasj",
-            "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
-            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+            "id": "FcP9mujs",
+            "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing/banner\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing/banner-test.ts",
             "isStrictMode": false
           }));
           assert.dom('.upf-marketing-banner__background--primary').exists();
@@ -9255,12 +9255,12 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
           };
           await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
           /*
-            <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />
+            <OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />
           */
           {
-            "id": "U6R9N5Yz",
-            "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
-            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+            "id": "Roy0dulj",
+            "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/marketing/banner\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing/banner-test.ts",
             "isStrictMode": false
           }));
           assert.dom('.upf-marketing-banner__background--primary').exists();
@@ -9273,12 +9273,12 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
         (0, _qunit.test)('it renders the default colors', async function (assert) {
           await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
           /*
-            <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />
+            <OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} />
           */
           {
-            "id": "4WqMnasj",
-            "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
-            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+            "id": "FcP9mujs",
+            "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing/banner\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing/banner-test.ts",
             "isStrictMode": false
           }));
           assert.dom('.upf-marketing-banner__background--secondary').exists();
@@ -9292,12 +9292,12 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
           };
           await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
           /*
-            <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />
+            <OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />
           */
           {
-            "id": "U6R9N5Yz",
-            "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
-            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+            "id": "Roy0dulj",
+            "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/marketing/banner\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing/banner-test.ts",
             "isStrictMode": false
           }));
           assert.dom('.upf-marketing-banner__background--secondary').exists();
@@ -9311,12 +9311,12 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
           (0, _qunit.test)('it renders it', async function (assert) {
             await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
             /*
-              <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />
+              <OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} />
             */
             {
-              "id": "4WqMnasj",
-              "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
-              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+              "id": "FcP9mujs",
+              "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing/banner\"]]",
+              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing/banner-test.ts",
               "isStrictMode": false
             }));
             const element = document.querySelector('.upf-marketing-banner__container');
@@ -9325,12 +9325,12 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
           (0, _qunit.test)('it sets the correct value for --background-grid-display CSS variable', async function (assert) {
             await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
             /*
-              <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} />
+              <OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} />
             */
             {
-              "id": "4WqMnasj",
-              "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
-              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+              "id": "FcP9mujs",
+              "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing/banner\"]]",
+              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing/banner-test.ts",
               "isStrictMode": false
             }));
             const element = document.querySelector('.upf-marketing-banner');
@@ -9344,12 +9344,12 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
             };
             await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
             /*
-              <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />
+              <OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />
             */
             {
-              "id": "U6R9N5Yz",
-              "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
-              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+              "id": "Roy0dulj",
+              "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/marketing/banner\"]]",
+              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing/banner-test.ts",
               "isStrictMode": false
             }));
             const element = document.querySelector('.upf-marketing-banner__container');
@@ -9361,12 +9361,12 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
             };
             await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
             /*
-              <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />
+              <OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />
             */
             {
-              "id": "U6R9N5Yz",
-              "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
-              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+              "id": "Roy0dulj",
+              "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/marketing/banner\"]]",
+              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing/banner-test.ts",
               "isStrictMode": false
             }));
             const element = document.querySelector('.upf-marketing-banner');
@@ -9380,12 +9380,12 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
             };
             await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
             /*
-              <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />
+              <OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />
             */
             {
-              "id": "U6R9N5Yz",
-              "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
-              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+              "id": "Roy0dulj",
+              "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/marketing/banner\"]]",
+              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing/banner-test.ts",
               "isStrictMode": false
             }));
             const element = document.querySelector('.upf-marketing-banner__container');
@@ -9397,12 +9397,12 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
             };
             await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
             /*
-              <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />
+              <OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />
             */
             {
-              "id": "U6R9N5Yz",
-              "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
-              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+              "id": "Roy0dulj",
+              "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"options\"]]]],null]],[],false,[\"o-s-s/marketing/banner\"]]",
+              "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing/banner-test.ts",
               "isStrictMode": false
             }));
             const element = document.querySelector('.upf-marketing-banner');
@@ -9417,17 +9417,17 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
           };
           await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
           /*
-            <OSS::MarketingBanner style="max-width:630px" @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}}>
+            <OSS::Marketing::Banner style="max-width:630px" @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}}>
                           <:illustration>
                               <img width="100" height="100" src={{this.illustrationSrc}} />
                           </:illustration>
-                      </OSS::MarketingBanner>
+                      </OSS::Marketing::Banner>
                       
           */
           {
-            "id": "tKJ0rDeG",
-            "block": "[[[8,[39,0],[[24,5,\"max-width:630px\"]],[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"options\"]]]],[[\"illustration\"],[[[[1,\"\\n                    \"],[10,\"img\"],[14,\"width\",\"100\"],[14,\"height\",\"100\"],[15,\"src\",[30,0,[\"illustrationSrc\"]]],[12],[13],[1,\"\\n                \"]],[]]]]],[1,\"\\n            \"]],[],false,[\"o-s-s/marketing-banner\"]]",
-            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+            "id": "g53dxBOq",
+            "block": "[[[8,[39,0],[[24,5,\"max-width:630px\"]],[[\"@title\",\"@subtitle\",\"@options\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"options\"]]]],[[\"illustration\"],[[[[1,\"\\n                    \"],[10,\"img\"],[14,\"width\",\"100\"],[14,\"height\",\"100\"],[15,\"src\",[30,0,[\"illustrationSrc\"]]],[12],[13],[1,\"\\n                \"]],[]]]]],[1,\"\\n            \"]],[],false,[\"o-s-s/marketing/banner\"]]",
+            "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing/banner-test.ts",
             "isStrictMode": false
           }));
           const element = document.querySelector('.upf-marketing-banner');
@@ -9443,17 +9443,17 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
       (0, _qunit.test)('it renders it', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::MarketingBanner @title={{this.title}} @subtitle={{this.subtitle}}>
+          <OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}}>
                         <:illustration>
                             <img width="100" height="100" src={{this.illustrationSrc}} />
                         </:illustration>
-                    </OSS::MarketingBanner>
+                    </OSS::Marketing::Banner>
                     
         */
         {
-          "id": "Z/5f+fHa",
-          "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],[[\"illustration\"],[[[[1,\"\\n                    \"],[10,\"img\"],[14,\"width\",\"100\"],[14,\"height\",\"100\"],[15,\"src\",[30,0,[\"illustrationSrc\"]]],[12],[13],[1,\"\\n                \"]],[]]]]],[1,\"\\n            \"]],[],false,[\"o-s-s/marketing-banner\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+          "id": "Mu0u+wX5",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],[[\"illustration\"],[[[[1,\"\\n                    \"],[10,\"img\"],[14,\"width\",\"100\"],[14,\"height\",\"100\"],[15,\"src\",[30,0,[\"illustrationSrc\"]]],[12],[13],[1,\"\\n                \"]],[]]]]],[1,\"\\n            \"]],[],false,[\"o-s-s/marketing/banner\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing/banner-test.ts",
           "isStrictMode": false
         }));
         assert.dom('.upf-marketing-banner__illustration').hasStyle({
@@ -9464,17 +9464,17 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
       (0, _qunit.test)('by default, it is not visible on small screen', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::MarketingBanner style="max-width:630px" @title={{this.title}} @subtitle={{this.subtitle}}>
+          <OSS::Marketing::Banner style="max-width:630px" @title={{this.title}} @subtitle={{this.subtitle}}>
                         <:illustration>
                             <img width="100" height="100" src={{this.illustrationSrc}} />
                         </:illustration>
-                    </OSS::MarketingBanner>
+                    </OSS::Marketing::Banner>
                     
         */
         {
-          "id": "FfIijTbM",
-          "block": "[[[8,[39,0],[[24,5,\"max-width:630px\"]],[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],[[\"illustration\"],[[[[1,\"\\n                    \"],[10,\"img\"],[14,\"width\",\"100\"],[14,\"height\",\"100\"],[15,\"src\",[30,0,[\"illustrationSrc\"]]],[12],[13],[1,\"\\n                \"]],[]]]]],[1,\"\\n            \"]],[],false,[\"o-s-s/marketing-banner\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+          "id": "LO205Hh/",
+          "block": "[[[8,[39,0],[[24,5,\"max-width:630px\"]],[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],[[\"illustration\"],[[[[1,\"\\n                    \"],[10,\"img\"],[14,\"width\",\"100\"],[14,\"height\",\"100\"],[15,\"src\",[30,0,[\"illustrationSrc\"]]],[12],[13],[1,\"\\n                \"]],[]]]]],[1,\"\\n            \"]],[],false,[\"o-s-s/marketing/banner\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing/banner-test.ts",
           "isStrictMode": false
         }));
         const element = document.querySelector('.upf-marketing-banner');
@@ -9488,17 +9488,17 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
       (0, _qunit.test)('it renders it', async function (assert) {
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::MarketingBanner style="max-width:630px" @title={{this.title}} @subtitle={{this.subtitle}}>
+          <OSS::Marketing::Banner style="max-width:630px" @title={{this.title}} @subtitle={{this.subtitle}}>
                         <:actions>
                             <button class="test-action-button">Click me</button>
                         </:actions>
-                    </OSS::MarketingBanner>
+                    </OSS::Marketing::Banner>
                     
         */
         {
-          "id": "fy88igQG",
-          "block": "[[[8,[39,0],[[24,5,\"max-width:630px\"]],[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],[[\"actions\"],[[[[1,\"\\n                    \"],[10,\"button\"],[14,0,\"test-action-button\"],[12],[1,\"Click me\"],[13],[1,\"\\n                \"]],[]]]]],[1,\"\\n            \"]],[],false,[\"o-s-s/marketing-banner\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+          "id": "XoxTR8uv",
+          "block": "[[[8,[39,0],[[24,5,\"max-width:630px\"]],[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],[[\"actions\"],[[[[1,\"\\n                    \"],[10,\"button\"],[14,0,\"test-action-button\"],[12],[1,\"Click me\"],[13],[1,\"\\n                \"]],[]]]]],[1,\"\\n            \"]],[],false,[\"o-s-s/marketing/banner\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing/banner-test.ts",
           "isStrictMode": false
         }));
         assert.dom('.upf-marketing-banner__actions').exists();
@@ -9508,31 +9508,31 @@ define("dummy/tests/integration/components/o-s-s/marketing-banner-test", ["qunit
     (0, _qunit.module)('Error management', function () {
       (0, _qunit.test)('It throws an error if @title is not passed', async function (assert) {
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::MarketingBanner] @title is required');
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::Marketing::Banner] @title is required');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::MarketingBanner @subtitle={{this.subtitle}} />
+          <OSS::Marketing::Banner @subtitle={{this.subtitle}} />
         */
         {
-          "id": "aR6c1q7H",
-          "block": "[[[8,[39,0],null,[[\"@subtitle\"],[[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+          "id": "f18sCa21",
+          "block": "[[[8,[39,0],null,[[\"@subtitle\"],[[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/marketing/banner\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing/banner-test.ts",
           "isStrictMode": false
         }));
       });
       (0, _qunit.test)('It throws an error if @subtitle is not passed', async function (assert) {
         (0, _testHelpers.setupOnerror)(err => {
-          assert.equal(err.message, 'Assertion Failed: [component][OSS::MarketingBanner] @subtitle is required');
+          assert.equal(err.message, 'Assertion Failed: [component][OSS::Marketing::Banner] @subtitle is required');
         });
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
-          <OSS::MarketingBanner @title={{this.title}} />
+          <OSS::Marketing::Banner @title={{this.title}} />
         */
         {
-          "id": "6xBvgbAW",
-          "block": "[[[8,[39,0],null,[[\"@title\"],[[30,0,[\"title\"]]]],null]],[],false,[\"o-s-s/marketing-banner\"]]",
-          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing-banner-test.ts",
+          "id": "c821IPDo",
+          "block": "[[[8,[39,0],null,[[\"@title\"],[[30,0,[\"title\"]]]],null]],[],false,[\"o-s-s/marketing/banner\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/marketing/banner-test.ts",
           "isStrictMode": false
         }));
       });
