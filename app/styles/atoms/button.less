@@ -14,20 +14,23 @@
 
   &:hover,
   &:active {
-    box-shadow: 0px 0px 0px 2px var(~'--color-@{variant}-100'), var(--box-shadow-xs);
-    color: var(--color-white);
-
-    i,
-    span {
+    &:not(:disabled) {
       color: var(--color-white);
+
+      i,
+      span {
+        color: var(--color-white);
+      }
     }
+
+    box-shadow: 0px 0px 0px 2px var(~'--color-@{variant}-100'), var(--box-shadow-xs);    
   }
 
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: var(~'--color-@{variant}-500');
   }
 
-  &:active {
+  &:active:not(:disabled) {
     background-color: var(~'--color-@{variant}-400');
     border-color: var(~'--color-@{variant}-400');
   }
