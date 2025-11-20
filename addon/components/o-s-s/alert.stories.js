@@ -115,14 +115,3 @@ BasicUsage.args = defaultArgs;
 
 export const UsageExtraContent = ExtraContentTemplate.bind({});
 UsageExtraContent.args = defaultArgs;
-
-const noTitleArgs = {
-  skin: 'info',
-  subtitle: 'I am a subtitle in the alert',
-  plain: true,
-  closable: false,
-  onClose: action('onClose')
-};
-
-export const NoTitle = Template.bind({});
-NoTitle.args = noTitleArgs;
