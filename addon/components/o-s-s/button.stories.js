@@ -131,6 +131,17 @@ export default {
         defaultValue: { summary: 'undefined' }
       },
       control: { type: 'object' }
+    },
+    disabled: {
+      description:
+        'This is a non-ember parameter, it is passed to the HTML input tag using the splattributes. (It should not be passed with `@` prefix)',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: {
+        type: 'boolean'
+      }
     }
   },
   parameters: {
@@ -152,7 +163,8 @@ const defaultArgs = {
   square: false,
   countDown: undefined,
   loadingOptions: undefined,
-  iconUrl: undefined
+  iconUrl: undefined,
+  disabled: undefined
 };
 
 const Template = (args) => ({
@@ -160,7 +172,7 @@ const Template = (args) => ({
     <OSS::Button
       @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
       @theme={{this.theme}} @square={{this.square}} @countDown={{this.countDown}}
-      @iconUrl={{this.iconUrl}} @loadingOptions={{this.loadingOptions}} />
+      @iconUrl={{this.iconUrl}} @loadingOptions={{this.loadingOptions}} disabled={{this.disabled}} />
   `,
   context: args
 });
