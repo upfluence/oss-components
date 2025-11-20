@@ -85316,6 +85316,20 @@ require('@ember/-internals/bootstrap')
         control: {
           type: 'object'
         }
+      },
+      disabled: {
+        description: 'This is a non-ember parameter, it is passed to the HTML input tag using the splattributes. (It should not be passed with `@` prefix)',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
       }
     },
     parameters: {
@@ -85336,7 +85350,8 @@ require('@ember/-internals/bootstrap')
     square: false,
     countDown: undefined,
     loadingOptions: undefined,
-    iconUrl: undefined
+    iconUrl: undefined,
+    disabled: undefined
   };
   const Template = args => ({
     template: (0, _templateFactory.createTemplateFactory)(
@@ -85345,12 +85360,12 @@ require('@ember/-internals/bootstrap')
         <OSS::Button
           @skin={{this.skin}} @size={{this.size}} @loading={{this.loading}} @label={{this.label}} @icon={{this.icon}}
           @theme={{this.theme}} @square={{this.square}} @countDown={{this.countDown}}
-          @iconUrl={{this.iconUrl}} @loadingOptions={{this.loadingOptions}} />
+          @iconUrl={{this.iconUrl}} @loadingOptions={{this.loadingOptions}} disabled={{this.disabled}} />
       
     */
     {
-      "id": "mdt+ZR2p",
-      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@skin\",\"@size\",\"@loading\",\"@label\",\"@icon\",\"@theme\",\"@square\",\"@countDown\",\"@iconUrl\",\"@loadingOptions\"],[[30,0,[\"skin\"]],[30,0,[\"size\"]],[30,0,[\"loading\"]],[30,0,[\"label\"]],[30,0,[\"icon\"]],[30,0,[\"theme\"]],[30,0,[\"square\"]],[30,0,[\"countDown\"]],[30,0,[\"iconUrl\"]],[30,0,[\"loadingOptions\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/button\"]]",
+      "id": "NZHmgXlt",
+      "block": "[[[1,\"\\n    \"],[8,[39,0],[[16,\"disabled\",[30,0,[\"disabled\"]]]],[[\"@skin\",\"@size\",\"@loading\",\"@label\",\"@icon\",\"@theme\",\"@square\",\"@countDown\",\"@iconUrl\",\"@loadingOptions\"],[[30,0,[\"skin\"]],[30,0,[\"size\"]],[30,0,[\"loading\"]],[30,0,[\"label\"]],[30,0,[\"icon\"]],[30,0,[\"theme\"]],[30,0,[\"square\"]],[30,0,[\"countDown\"]],[30,0,[\"iconUrl\"]],[30,0,[\"loadingOptions\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/button\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/button.stories.js",
       "isStrictMode": false
     }),

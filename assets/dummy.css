@@ -10222,18 +10222,21 @@ a.upf-btn--destructive {
 .upf-btn--destructive:hover,
 .upf-btn--destructive:active {
   box-shadow: 0px 0px 0px 2px var(--color-error-100), var(--box-shadow-xs);
+}
+.upf-btn--destructive:hover:not(:disabled),
+.upf-btn--destructive:active:not(:disabled) {
   color: var(--color-white);
 }
-.upf-btn--destructive:hover i,
-.upf-btn--destructive:active i,
-.upf-btn--destructive:hover span,
-.upf-btn--destructive:active span {
+.upf-btn--destructive:hover:not(:disabled) i,
+.upf-btn--destructive:active:not(:disabled) i,
+.upf-btn--destructive:hover:not(:disabled) span,
+.upf-btn--destructive:active:not(:disabled) span {
   color: var(--color-white);
 }
-.upf-btn--destructive:hover {
+.upf-btn--destructive:hover:not(:disabled) {
   background-color: var(--color-error-500);
 }
-.upf-btn--destructive:active {
+.upf-btn--destructive:active:not(:disabled) {
   background-color: var(--color-error-400);
   border-color: var(--color-error-400);
 }
@@ -10252,18 +10255,21 @@ a.upf-btn--alert {
 .upf-btn--alert:hover,
 .upf-btn--alert:active {
   box-shadow: 0px 0px 0px 2px var(--color-warning-100), var(--box-shadow-xs);
+}
+.upf-btn--alert:hover:not(:disabled),
+.upf-btn--alert:active:not(:disabled) {
   color: var(--color-white);
 }
-.upf-btn--alert:hover i,
-.upf-btn--alert:active i,
-.upf-btn--alert:hover span,
-.upf-btn--alert:active span {
+.upf-btn--alert:hover:not(:disabled) i,
+.upf-btn--alert:active:not(:disabled) i,
+.upf-btn--alert:hover:not(:disabled) span,
+.upf-btn--alert:active:not(:disabled) span {
   color: var(--color-white);
 }
-.upf-btn--alert:hover {
+.upf-btn--alert:hover:not(:disabled) {
   background-color: var(--color-warning-500);
 }
-.upf-btn--alert:active {
+.upf-btn--alert:active:not(:disabled) {
   background-color: var(--color-warning-400);
   border-color: var(--color-warning-400);
 }
@@ -10282,18 +10288,21 @@ a.upf-btn--success {
 .upf-btn--success:hover,
 .upf-btn--success:active {
   box-shadow: 0px 0px 0px 2px var(--color-success-100), var(--box-shadow-xs);
+}
+.upf-btn--success:hover:not(:disabled),
+.upf-btn--success:active:not(:disabled) {
   color: var(--color-white);
 }
-.upf-btn--success:hover i,
-.upf-btn--success:active i,
-.upf-btn--success:hover span,
-.upf-btn--success:active span {
+.upf-btn--success:hover:not(:disabled) i,
+.upf-btn--success:active:not(:disabled) i,
+.upf-btn--success:hover:not(:disabled) span,
+.upf-btn--success:active:not(:disabled) span {
   color: var(--color-white);
 }
-.upf-btn--success:hover {
+.upf-btn--success:hover:not(:disabled) {
   background-color: var(--color-success-500);
 }
-.upf-btn--success:active {
+.upf-btn--success:active:not(:disabled) {
   background-color: var(--color-success-400);
   border-color: var(--color-success-400);
 }
@@ -10318,24 +10327,29 @@ a.upf-square-btn.upf-btn--extended-orange {
 .upf-btn.upf-btn--extended-orange:active,
 .upf-square-btn.upf-btn--extended-orange:active {
   box-shadow: 0px 0px 0px 2px var(--color-orange-100), var(--box-shadow-xs);
+}
+.upf-btn.upf-btn--extended-orange:hover:not(:disabled),
+.upf-square-btn.upf-btn--extended-orange:hover:not(:disabled),
+.upf-btn.upf-btn--extended-orange:active:not(:disabled),
+.upf-square-btn.upf-btn--extended-orange:active:not(:disabled) {
   color: var(--color-white);
 }
-.upf-btn.upf-btn--extended-orange:hover i,
-.upf-square-btn.upf-btn--extended-orange:hover i,
-.upf-btn.upf-btn--extended-orange:active i,
-.upf-square-btn.upf-btn--extended-orange:active i,
-.upf-btn.upf-btn--extended-orange:hover span,
-.upf-square-btn.upf-btn--extended-orange:hover span,
-.upf-btn.upf-btn--extended-orange:active span,
-.upf-square-btn.upf-btn--extended-orange:active span {
+.upf-btn.upf-btn--extended-orange:hover:not(:disabled) i,
+.upf-square-btn.upf-btn--extended-orange:hover:not(:disabled) i,
+.upf-btn.upf-btn--extended-orange:active:not(:disabled) i,
+.upf-square-btn.upf-btn--extended-orange:active:not(:disabled) i,
+.upf-btn.upf-btn--extended-orange:hover:not(:disabled) span,
+.upf-square-btn.upf-btn--extended-orange:hover:not(:disabled) span,
+.upf-btn.upf-btn--extended-orange:active:not(:disabled) span,
+.upf-square-btn.upf-btn--extended-orange:active:not(:disabled) span {
   color: var(--color-white);
 }
-.upf-btn.upf-btn--extended-orange:hover,
-.upf-square-btn.upf-btn--extended-orange:hover {
+.upf-btn.upf-btn--extended-orange:hover:not(:disabled),
+.upf-square-btn.upf-btn--extended-orange:hover:not(:disabled) {
   background-color: var(--color-orange-500);
 }
-.upf-btn.upf-btn--extended-orange:active,
-.upf-square-btn.upf-btn--extended-orange:active {
+.upf-btn.upf-btn--extended-orange:active:not(:disabled),
+.upf-square-btn.upf-btn--extended-orange:active:not(:disabled) {
   background-color: var(--color-orange-400);
   border-color: var(--color-orange-400);
 }
@@ -10360,24 +10374,29 @@ a.upf-square-btn.upf-btn--extended-yellow {
 .upf-btn.upf-btn--extended-yellow:active,
 .upf-square-btn.upf-btn--extended-yellow:active {
   box-shadow: 0px 0px 0px 2px var(--color-yellow-100), var(--box-shadow-xs);
+}
+.upf-btn.upf-btn--extended-yellow:hover:not(:disabled),
+.upf-square-btn.upf-btn--extended-yellow:hover:not(:disabled),
+.upf-btn.upf-btn--extended-yellow:active:not(:disabled),
+.upf-square-btn.upf-btn--extended-yellow:active:not(:disabled) {
   color: var(--color-white);
 }
-.upf-btn.upf-btn--extended-yellow:hover i,
-.upf-square-btn.upf-btn--extended-yellow:hover i,
-.upf-btn.upf-btn--extended-yellow:active i,
-.upf-square-btn.upf-btn--extended-yellow:active i,
-.upf-btn.upf-btn--extended-yellow:hover span,
-.upf-square-btn.upf-btn--extended-yellow:hover span,
-.upf-btn.upf-btn--extended-yellow:active span,
-.upf-square-btn.upf-btn--extended-yellow:active span {
+.upf-btn.upf-btn--extended-yellow:hover:not(:disabled) i,
+.upf-square-btn.upf-btn--extended-yellow:hover:not(:disabled) i,
+.upf-btn.upf-btn--extended-yellow:active:not(:disabled) i,
+.upf-square-btn.upf-btn--extended-yellow:active:not(:disabled) i,
+.upf-btn.upf-btn--extended-yellow:hover:not(:disabled) span,
+.upf-square-btn.upf-btn--extended-yellow:hover:not(:disabled) span,
+.upf-btn.upf-btn--extended-yellow:active:not(:disabled) span,
+.upf-square-btn.upf-btn--extended-yellow:active:not(:disabled) span {
   color: var(--color-white);
 }
-.upf-btn.upf-btn--extended-yellow:hover,
-.upf-square-btn.upf-btn--extended-yellow:hover {
+.upf-btn.upf-btn--extended-yellow:hover:not(:disabled),
+.upf-square-btn.upf-btn--extended-yellow:hover:not(:disabled) {
   background-color: var(--color-yellow-500);
 }
-.upf-btn.upf-btn--extended-yellow:active,
-.upf-square-btn.upf-btn--extended-yellow:active {
+.upf-btn.upf-btn--extended-yellow:active:not(:disabled),
+.upf-square-btn.upf-btn--extended-yellow:active:not(:disabled) {
   background-color: var(--color-yellow-400);
   border-color: var(--color-yellow-400);
 }
@@ -10402,24 +10421,29 @@ a.upf-square-btn.upf-btn--extended-lime {
 .upf-btn.upf-btn--extended-lime:active,
 .upf-square-btn.upf-btn--extended-lime:active {
   box-shadow: 0px 0px 0px 2px var(--color-lime-100), var(--box-shadow-xs);
+}
+.upf-btn.upf-btn--extended-lime:hover:not(:disabled),
+.upf-square-btn.upf-btn--extended-lime:hover:not(:disabled),
+.upf-btn.upf-btn--extended-lime:active:not(:disabled),
+.upf-square-btn.upf-btn--extended-lime:active:not(:disabled) {
   color: var(--color-white);
 }
-.upf-btn.upf-btn--extended-lime:hover i,
-.upf-square-btn.upf-btn--extended-lime:hover i,
-.upf-btn.upf-btn--extended-lime:active i,
-.upf-square-btn.upf-btn--extended-lime:active i,
-.upf-btn.upf-btn--extended-lime:hover span,
-.upf-square-btn.upf-btn--extended-lime:hover span,
-.upf-btn.upf-btn--extended-lime:active span,
-.upf-square-btn.upf-btn--extended-lime:active span {
+.upf-btn.upf-btn--extended-lime:hover:not(:disabled) i,
+.upf-square-btn.upf-btn--extended-lime:hover:not(:disabled) i,
+.upf-btn.upf-btn--extended-lime:active:not(:disabled) i,
+.upf-square-btn.upf-btn--extended-lime:active:not(:disabled) i,
+.upf-btn.upf-btn--extended-lime:hover:not(:disabled) span,
+.upf-square-btn.upf-btn--extended-lime:hover:not(:disabled) span,
+.upf-btn.upf-btn--extended-lime:active:not(:disabled) span,
+.upf-square-btn.upf-btn--extended-lime:active:not(:disabled) span {
   color: var(--color-white);
 }
-.upf-btn.upf-btn--extended-lime:hover,
-.upf-square-btn.upf-btn--extended-lime:hover {
+.upf-btn.upf-btn--extended-lime:hover:not(:disabled),
+.upf-square-btn.upf-btn--extended-lime:hover:not(:disabled) {
   background-color: var(--color-lime-500);
 }
-.upf-btn.upf-btn--extended-lime:active,
-.upf-square-btn.upf-btn--extended-lime:active {
+.upf-btn.upf-btn--extended-lime:active:not(:disabled),
+.upf-square-btn.upf-btn--extended-lime:active:not(:disabled) {
   background-color: var(--color-lime-400);
   border-color: var(--color-lime-400);
 }
@@ -10444,24 +10468,29 @@ a.upf-square-btn.upf-btn--extended-cyan {
 .upf-btn.upf-btn--extended-cyan:active,
 .upf-square-btn.upf-btn--extended-cyan:active {
   box-shadow: 0px 0px 0px 2px var(--color-cyan-100), var(--box-shadow-xs);
+}
+.upf-btn.upf-btn--extended-cyan:hover:not(:disabled),
+.upf-square-btn.upf-btn--extended-cyan:hover:not(:disabled),
+.upf-btn.upf-btn--extended-cyan:active:not(:disabled),
+.upf-square-btn.upf-btn--extended-cyan:active:not(:disabled) {
   color: var(--color-white);
 }
-.upf-btn.upf-btn--extended-cyan:hover i,
-.upf-square-btn.upf-btn--extended-cyan:hover i,
-.upf-btn.upf-btn--extended-cyan:active i,
-.upf-square-btn.upf-btn--extended-cyan:active i,
-.upf-btn.upf-btn--extended-cyan:hover span,
-.upf-square-btn.upf-btn--extended-cyan:hover span,
-.upf-btn.upf-btn--extended-cyan:active span,
-.upf-square-btn.upf-btn--extended-cyan:active span {
+.upf-btn.upf-btn--extended-cyan:hover:not(:disabled) i,
+.upf-square-btn.upf-btn--extended-cyan:hover:not(:disabled) i,
+.upf-btn.upf-btn--extended-cyan:active:not(:disabled) i,
+.upf-square-btn.upf-btn--extended-cyan:active:not(:disabled) i,
+.upf-btn.upf-btn--extended-cyan:hover:not(:disabled) span,
+.upf-square-btn.upf-btn--extended-cyan:hover:not(:disabled) span,
+.upf-btn.upf-btn--extended-cyan:active:not(:disabled) span,
+.upf-square-btn.upf-btn--extended-cyan:active:not(:disabled) span {
   color: var(--color-white);
 }
-.upf-btn.upf-btn--extended-cyan:hover,
-.upf-square-btn.upf-btn--extended-cyan:hover {
+.upf-btn.upf-btn--extended-cyan:hover:not(:disabled),
+.upf-square-btn.upf-btn--extended-cyan:hover:not(:disabled) {
   background-color: var(--color-cyan-500);
 }
-.upf-btn.upf-btn--extended-cyan:active,
-.upf-square-btn.upf-btn--extended-cyan:active {
+.upf-btn.upf-btn--extended-cyan:active:not(:disabled),
+.upf-square-btn.upf-btn--extended-cyan:active:not(:disabled) {
   background-color: var(--color-cyan-400);
   border-color: var(--color-cyan-400);
 }
@@ -10486,24 +10515,29 @@ a.upf-square-btn.upf-btn--extended-blue {
 .upf-btn.upf-btn--extended-blue:active,
 .upf-square-btn.upf-btn--extended-blue:active {
   box-shadow: 0px 0px 0px 2px var(--color-blue-100), var(--box-shadow-xs);
+}
+.upf-btn.upf-btn--extended-blue:hover:not(:disabled),
+.upf-square-btn.upf-btn--extended-blue:hover:not(:disabled),
+.upf-btn.upf-btn--extended-blue:active:not(:disabled),
+.upf-square-btn.upf-btn--extended-blue:active:not(:disabled) {
   color: var(--color-white);
 }
-.upf-btn.upf-btn--extended-blue:hover i,
-.upf-square-btn.upf-btn--extended-blue:hover i,
-.upf-btn.upf-btn--extended-blue:active i,
-.upf-square-btn.upf-btn--extended-blue:active i,
-.upf-btn.upf-btn--extended-blue:hover span,
-.upf-square-btn.upf-btn--extended-blue:hover span,
-.upf-btn.upf-btn--extended-blue:active span,
-.upf-square-btn.upf-btn--extended-blue:active span {
+.upf-btn.upf-btn--extended-blue:hover:not(:disabled) i,
+.upf-square-btn.upf-btn--extended-blue:hover:not(:disabled) i,
+.upf-btn.upf-btn--extended-blue:active:not(:disabled) i,
+.upf-square-btn.upf-btn--extended-blue:active:not(:disabled) i,
+.upf-btn.upf-btn--extended-blue:hover:not(:disabled) span,
+.upf-square-btn.upf-btn--extended-blue:hover:not(:disabled) span,
+.upf-btn.upf-btn--extended-blue:active:not(:disabled) span,
+.upf-square-btn.upf-btn--extended-blue:active:not(:disabled) span {
   color: var(--color-white);
 }
-.upf-btn.upf-btn--extended-blue:hover,
-.upf-square-btn.upf-btn--extended-blue:hover {
+.upf-btn.upf-btn--extended-blue:hover:not(:disabled),
+.upf-square-btn.upf-btn--extended-blue:hover:not(:disabled) {
   background-color: var(--color-blue-500);
 }
-.upf-btn.upf-btn--extended-blue:active,
-.upf-square-btn.upf-btn--extended-blue:active {
+.upf-btn.upf-btn--extended-blue:active:not(:disabled),
+.upf-square-btn.upf-btn--extended-blue:active:not(:disabled) {
   background-color: var(--color-blue-400);
   border-color: var(--color-blue-400);
 }
@@ -10528,24 +10562,29 @@ a.upf-square-btn.upf-btn--extended-violet {
 .upf-btn.upf-btn--extended-violet:active,
 .upf-square-btn.upf-btn--extended-violet:active {
   box-shadow: 0px 0px 0px 2px var(--color-violet-100), var(--box-shadow-xs);
+}
+.upf-btn.upf-btn--extended-violet:hover:not(:disabled),
+.upf-square-btn.upf-btn--extended-violet:hover:not(:disabled),
+.upf-btn.upf-btn--extended-violet:active:not(:disabled),
+.upf-square-btn.upf-btn--extended-violet:active:not(:disabled) {
   color: var(--color-white);
 }
-.upf-btn.upf-btn--extended-violet:hover i,
-.upf-square-btn.upf-btn--extended-violet:hover i,
-.upf-btn.upf-btn--extended-violet:active i,
-.upf-square-btn.upf-btn--extended-violet:active i,
-.upf-btn.upf-btn--extended-violet:hover span,
-.upf-square-btn.upf-btn--extended-violet:hover span,
-.upf-btn.upf-btn--extended-violet:active span,
-.upf-square-btn.upf-btn--extended-violet:active span {
+.upf-btn.upf-btn--extended-violet:hover:not(:disabled) i,
+.upf-square-btn.upf-btn--extended-violet:hover:not(:disabled) i,
+.upf-btn.upf-btn--extended-violet:active:not(:disabled) i,
+.upf-square-btn.upf-btn--extended-violet:active:not(:disabled) i,
+.upf-btn.upf-btn--extended-violet:hover:not(:disabled) span,
+.upf-square-btn.upf-btn--extended-violet:hover:not(:disabled) span,
+.upf-btn.upf-btn--extended-violet:active:not(:disabled) span,
+.upf-square-btn.upf-btn--extended-violet:active:not(:disabled) span {
   color: var(--color-white);
 }
-.upf-btn.upf-btn--extended-violet:hover,
-.upf-square-btn.upf-btn--extended-violet:hover {
+.upf-btn.upf-btn--extended-violet:hover:not(:disabled),
+.upf-square-btn.upf-btn--extended-violet:hover:not(:disabled) {
   background-color: var(--color-violet-500);
 }
-.upf-btn.upf-btn--extended-violet:active,
-.upf-square-btn.upf-btn--extended-violet:active {
+.upf-btn.upf-btn--extended-violet:active:not(:disabled),
+.upf-square-btn.upf-btn--extended-violet:active:not(:disabled) {
   background-color: var(--color-violet-400);
   border-color: var(--color-violet-400);
 }
