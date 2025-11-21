@@ -9761,8 +9761,8 @@ For complete information visit: www.freakflagsprite.com
   display: flex;
   flex-direction: row;
   flex: 1;
-  padding: 12px;
-  gap: 12px;
+  padding: var(--spacing-px-9);
+  gap: var(--spacing-px-12);
   background-color: var(--color-white);
 }
 .upf-alert .main-container--plain {
