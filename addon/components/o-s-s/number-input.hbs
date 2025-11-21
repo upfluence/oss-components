@@ -2,7 +2,7 @@
   <OSS::Button @square={{true}} @size="md" @icon="far fa-minus" {{on "click" this.decreaseValue}}
                disabled={{or this.isMinDisabled @disabled}} {{enable-tooltip title=this.minTooltipTitle placement="top"}} />
   {{! template-lint-disable no-triple-curlies}}
-  <OSS::InputContainer @value={{this.localValue}} @onChange={{this.checkUserInput}} @disabled={{@disabled}} style={{{this.dynamicWidth}}}
+  <OSS::InputContainer @value={{this.localValue}} @onChange={{fn this.checkUserInput}} @disabled={{@disabled}} style={{{this.dynamicWidth}}}
                        {{on "keydown" this.keyParser}} {{on "blur" this.checkUserInput}}
                        {{did-insert this.registerInputElement}} />
   <OSS::Button @square={{true}} @size="md" @icon="far fa-plus" {{on "click" this.increaseValue}}
