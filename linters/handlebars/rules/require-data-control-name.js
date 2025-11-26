@@ -67,7 +67,7 @@ class RequireDataControlName extends Rule {
         if (modifier.path?.original !== 'on') return false;
         if ((modifier.params?.length || 0) === 0) return true;
 
-        const eventName = node.modifiers.params[0];
+        const eventName = modifier.params[0];
         return (
           eventName.type === 'StringLiteral' &&
           ['click', 'submit', 'keydown', 'keyup', 'keypress'].includes(eventName.value)
