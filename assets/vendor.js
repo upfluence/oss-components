@@ -102961,31 +102961,41 @@ interface OSSCodeBlockArgs {
   /*
     <div class="oss-upload-area-container fx-1">
     {{#if this.displayUploadArea}}
-      <div class={{this.computedClass}}
-           {{on "dragover" this._allowDropEvent}}
-           {{on "dragenter" this._onDragEnter}}
-           {{on "dragleave" this._onDragLeave}}
-           {{on "drop" this._onDrop}}
-           {{on "click" this.triggerFileBrowser}}
-           {{on "mouseenter" this._mouseEnter}}
-           {{on "mouseleave" this._mouseLeave}}
-           {{did-insert this.init}}
-           ...attributes>
+      <div
+        class={{this.computedClass}}
+        {{on "dragover" this._allowDropEvent}}
+        {{on "dragenter" this._onDragEnter}}
+        {{on "dragleave" this._onDragLeave}}
+        {{on "drop" this._onDrop}}
+        {{on "click" this.triggerFileBrowser}}
+        {{on "mouseenter" this._mouseEnter}}
+        {{on "mouseleave" this._mouseLeave}}
+        {{did-insert this.init}}
+        ...attributes
+      >
         <div class="fx-gap-px-18 fx-xalign-center {{if (eq this.size 'lg') 'fx-col' 'fx-row fx-1'}}">
           <div class={{this.computedClassIllustration}}>
             {{#if @disabled}}
-              <img src={{asset-map (concat "@upfluence/oss-components/assets/images/upload-area/disabled-" this.size ".svg")}} />
+              <img
+                src={{asset-map
+                  (concat "@upfluence/oss-components/assets/images/upload-area/disabled-" this.size ".svg")
+                }}
+                alt="Upload area - disabled"
+              />
             {{else}}
-              <img src={{asset-map (concat "@upfluence/oss-components/assets/images/upload-area/default-" this.size ".svg")}} />
+              <img
+                src={{asset-map (concat "@upfluence/oss-components/assets/images/upload-area/default-" this.size ".svg")}}
+                alt="Upload area"
+              />
             {{/if}}
           </div>
   
           <div class="fx-col fx-gap-px-3 {{if (eq this.size 'lg') 'fx-xalign-center'}}">
             <div class={{if @disabled "font-color-gray-500" "font-color-gray-900"}}>
               {{#if @disabled}}
-                  {{t "oss-components.upload-area.drop_file.disabled"}}
+                {{t "oss-components.upload-area.drop_file.disabled"}}
               {{else}}
-                  {{t "oss-components.upload-area.drop_file.default"}}
+                {{t "oss-components.upload-area.drop_file.default"}}
                 <OSS::Link @label={{t "oss-components.upload-area.browse"}} {{on "click" this.triggerFileBrowser}} />
               {{/if}}
             </div>
@@ -103001,28 +103011,31 @@ interface OSSCodeBlockArgs {
     {{/if}}
   
     {{#if this.selectedFiles}}
-      {{!-- This forces the re-render by creating a new array after editing a file. --}}
+      {{! This forces the re-render by creating a new array after editing a file. }}
       <div class="fx-col fx-gap-px-6 {{if this.multiple 'margin-top-px-12'}}">
         {{#each this.selectedFiles as |selectedFile index|}}
           <OSS::UploadItem
-            @uploader={{@uploader}} @file={{selectedFile}}
-            @rules={{@rules}} @scope={{this.scope}} @privacy={{this.filePrivacy}}
+            @uploader={{@uploader}}
+            @file={{selectedFile}}
+            @rules={{@rules}}
+            @scope={{this.scope}}
+            @privacy={{this.filePrivacy}}
             @onEdition={{fn this.onFileEdition index}}
             @onDeletion={{fn this.onFileDeletion index}}
             @onUploadSuccess={{fn this.onUploadSuccess index}}
             @onUploadFailure={{fn this.onUploadFailure index}}
-            @displayPreview={{@displayPreview}} />
+            @displayPreview={{@displayPreview}}
+          />
         {{/each}}
       </div>
     {{/if}}
   
     <input type="file" {{on "change" this.onFileSelected}} {{did-insert this.assignFileInput}} />
   </div>
-  
   */
   {
-    "id": "Ev24IVwx",
-    "block": "[[[10,0],[14,0,\"oss-upload-area-container fx-1\"],[12],[1,\"\\n\"],[41,[30,0,[\"displayUploadArea\"]],[[[1,\"    \"],[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[4,[38,1],[\"dragover\",[30,0,[\"_allowDropEvent\"]]],null],[4,[38,1],[\"dragenter\",[30,0,[\"_onDragEnter\"]]],null],[4,[38,1],[\"dragleave\",[30,0,[\"_onDragLeave\"]]],null],[4,[38,1],[\"drop\",[30,0,[\"_onDrop\"]]],null],[4,[38,1],[\"click\",[30,0,[\"triggerFileBrowser\"]]],null],[4,[38,1],[\"mouseenter\",[30,0,[\"_mouseEnter\"]]],null],[4,[38,1],[\"mouseleave\",[30,0,[\"_mouseLeave\"]]],null],[4,[38,2],[[30,0,[\"init\"]]],null],[12],[1,\"\\n      \"],[10,0],[15,0,[29,[\"fx-gap-px-18 fx-xalign-center \",[52,[28,[37,3],[[30,0,[\"size\"]],\"lg\"],null],\"fx-col\",\"fx-row fx-1\"]]]],[12],[1,\"\\n        \"],[10,0],[15,0,[30,0,[\"computedClassIllustration\"]]],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"            \"],[10,\"img\"],[15,\"src\",[28,[37,4],[[28,[37,5],[\"@upfluence/oss-components/assets/images/upload-area/disabled-\",[30,0,[\"size\"]],\".svg\"],null]],null]],[12],[13],[1,\"\\n\"]],[]],[[[1,\"            \"],[10,\"img\"],[15,\"src\",[28,[37,4],[[28,[37,5],[\"@upfluence/oss-components/assets/images/upload-area/default-\",[30,0,[\"size\"]],\".svg\"],null]],null]],[12],[13],[1,\"\\n\"]],[]]],[1,\"        \"],[13],[1,\"\\n\\n        \"],[10,0],[15,0,[29,[\"fx-col fx-gap-px-3 \",[52,[28,[37,3],[[30,0,[\"size\"]],\"lg\"],null],\"fx-xalign-center\"]]]],[12],[1,\"\\n          \"],[10,0],[15,0,[52,[30,2],\"font-color-gray-500\",\"font-color-gray-900\"]],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"                \"],[1,[28,[35,6],[\"oss-components.upload-area.drop_file.disabled\"],null]],[1,\"\\n\"]],[]],[[[1,\"                \"],[1,[28,[35,6],[\"oss-components.upload-area.drop_file.default\"],null]],[1,\"\\n              \"],[8,[39,7],[[4,[38,1],[\"click\",[30,0,[\"triggerFileBrowser\"]]],null]],[[\"@label\"],[[28,[37,6],[\"oss-components.upload-area.browse\"],null]]],null],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\\n\"],[41,[30,3],[[[1,\"            \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,\"\\n              \"],[1,[30,3]],[1,\"\\n            \"],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,0,[\"selectedFiles\"]],[[[1,\"    \"],[10,0],[15,0,[29,[\"fx-col fx-gap-px-6 \",[52,[30,0,[\"multiple\"]],\"margin-top-px-12\"]]]],[12],[1,\"\\n\"],[42,[28,[37,9],[[28,[37,9],[[30,0,[\"selectedFiles\"]]],null]],null],null,[[[1,\"        \"],[8,[39,10],null,[[\"@uploader\",\"@file\",\"@rules\",\"@scope\",\"@privacy\",\"@onEdition\",\"@onDeletion\",\"@onUploadSuccess\",\"@onUploadFailure\",\"@displayPreview\"],[[30,6],[30,4],[30,7],[30,0,[\"scope\"]],[30,0,[\"filePrivacy\"]],[28,[37,11],[[30,0,[\"onFileEdition\"]],[30,5]],null],[28,[37,11],[[30,0,[\"onFileDeletion\"]],[30,5]],null],[28,[37,11],[[30,0,[\"onUploadSuccess\"]],[30,5]],null],[28,[37,11],[[30,0,[\"onUploadFailure\"]],[30,5]],null],[30,8]]],null],[1,\"\\n\"]],[4,5]],null],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n  \"],[11,\"input\"],[24,4,\"file\"],[4,[38,1],[\"change\",[30,0,[\"onFileSelected\"]]],null],[4,[38,2],[[30,0,[\"assignFileInput\"]]],null],[12],[13],[1,\"\\n\"],[13],[1,\"\\n\"]],[\"&attrs\",\"@disabled\",\"@subtitle\",\"selectedFile\",\"index\",\"@uploader\",\"@rules\",\"@displayPreview\"],false,[\"if\",\"on\",\"did-insert\",\"eq\",\"asset-map\",\"concat\",\"t\",\"o-s-s/link\",\"each\",\"-track-array\",\"o-s-s/upload-item\",\"fn\"]]",
+    "id": "JrenuXnU",
+    "block": "[[[10,0],[14,0,\"oss-upload-area-container fx-1\"],[12],[1,\"\\n\"],[41,[30,0,[\"displayUploadArea\"]],[[[1,\"    \"],[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[4,[38,1],[\"dragover\",[30,0,[\"_allowDropEvent\"]]],null],[4,[38,1],[\"dragenter\",[30,0,[\"_onDragEnter\"]]],null],[4,[38,1],[\"dragleave\",[30,0,[\"_onDragLeave\"]]],null],[4,[38,1],[\"drop\",[30,0,[\"_onDrop\"]]],null],[4,[38,1],[\"click\",[30,0,[\"triggerFileBrowser\"]]],null],[4,[38,1],[\"mouseenter\",[30,0,[\"_mouseEnter\"]]],null],[4,[38,1],[\"mouseleave\",[30,0,[\"_mouseLeave\"]]],null],[4,[38,2],[[30,0,[\"init\"]]],null],[12],[1,\"\\n      \"],[10,0],[15,0,[29,[\"fx-gap-px-18 fx-xalign-center \",[52,[28,[37,3],[[30,0,[\"size\"]],\"lg\"],null],\"fx-col\",\"fx-row fx-1\"]]]],[12],[1,\"\\n        \"],[10,0],[15,0,[30,0,[\"computedClassIllustration\"]]],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"            \"],[10,\"img\"],[15,\"src\",[28,[37,4],[[28,[37,5],[\"@upfluence/oss-components/assets/images/upload-area/disabled-\",[30,0,[\"size\"]],\".svg\"],null]],null]],[14,\"alt\",\"Upload area - disabled\"],[12],[13],[1,\"\\n\"]],[]],[[[1,\"            \"],[10,\"img\"],[15,\"src\",[28,[37,4],[[28,[37,5],[\"@upfluence/oss-components/assets/images/upload-area/default-\",[30,0,[\"size\"]],\".svg\"],null]],null]],[14,\"alt\",\"Upload area\"],[12],[13],[1,\"\\n\"]],[]]],[1,\"        \"],[13],[1,\"\\n\\n        \"],[10,0],[15,0,[29,[\"fx-col fx-gap-px-3 \",[52,[28,[37,3],[[30,0,[\"size\"]],\"lg\"],null],\"fx-xalign-center\"]]]],[12],[1,\"\\n          \"],[10,0],[15,0,[52,[30,2],\"font-color-gray-500\",\"font-color-gray-900\"]],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"              \"],[1,[28,[35,6],[\"oss-components.upload-area.drop_file.disabled\"],null]],[1,\"\\n\"]],[]],[[[1,\"              \"],[1,[28,[35,6],[\"oss-components.upload-area.drop_file.default\"],null]],[1,\"\\n              \"],[8,[39,7],[[4,[38,1],[\"click\",[30,0,[\"triggerFileBrowser\"]]],null]],[[\"@label\"],[[28,[37,6],[\"oss-components.upload-area.browse\"],null]]],null],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\\n\"],[41,[30,3],[[[1,\"            \"],[10,1],[14,0,\"font-color-gray-500\"],[12],[1,\"\\n              \"],[1,[30,3]],[1,\"\\n            \"],[13],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n      \"],[13],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,0,[\"selectedFiles\"]],[[[1,\"    \"],[10,0],[15,0,[29,[\"fx-col fx-gap-px-6 \",[52,[30,0,[\"multiple\"]],\"margin-top-px-12\"]]]],[12],[1,\"\\n\"],[42,[28,[37,9],[[28,[37,9],[[30,0,[\"selectedFiles\"]]],null]],null],null,[[[1,\"        \"],[8,[39,10],null,[[\"@uploader\",\"@file\",\"@rules\",\"@scope\",\"@privacy\",\"@onEdition\",\"@onDeletion\",\"@onUploadSuccess\",\"@onUploadFailure\",\"@displayPreview\"],[[30,6],[30,4],[30,7],[30,0,[\"scope\"]],[30,0,[\"filePrivacy\"]],[28,[37,11],[[30,0,[\"onFileEdition\"]],[30,5]],null],[28,[37,11],[[30,0,[\"onFileDeletion\"]],[30,5]],null],[28,[37,11],[[30,0,[\"onUploadSuccess\"]],[30,5]],null],[28,[37,11],[[30,0,[\"onUploadFailure\"]],[30,5]],null],[30,8]]],null],[1,\"\\n\"]],[4,5]],null],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n  \"],[11,\"input\"],[24,4,\"file\"],[4,[38,1],[\"change\",[30,0,[\"onFileSelected\"]]],null],[4,[38,2],[[30,0,[\"assignFileInput\"]]],null],[12],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@disabled\",\"@subtitle\",\"selectedFile\",\"index\",\"@uploader\",\"@rules\",\"@displayPreview\"],false,[\"if\",\"on\",\"did-insert\",\"eq\",\"asset-map\",\"concat\",\"t\",\"o-s-s/link\",\"each\",\"-track-array\",\"o-s-s/upload-item\",\"fn\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/upload-area.hbs",
     "isStrictMode": false
   });

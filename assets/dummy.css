@@ -6567,18 +6567,18 @@ body {
 }
 .upf-icon-group__superior {
   color: var(--color-success-500);
-  font: normal normal normal 14px/1 FontAwesome;
+  font: normal normal normal 14px/1 var(--font-family-fa);
   position: absolute;
 }
 .upf-icon-group__superior--edit:after {
   color: var(--color-success-500);
-  font: normal normal normal 14px/1 FontAwesome;
+  font: normal normal normal 14px/1 var(--font-family-fa);
   position: absolute;
   content: '\f044';
 }
 .upf-icon-group__superior--visibility:after {
   color: var(--color-success-500);
-  font: normal normal normal 14px/1 FontAwesome;
+  font: normal normal normal 14px/1 var(--font-family-fa);
   position: absolute;
   content: '\f06e';
 }
@@ -9565,8 +9565,8 @@ For complete information visit: www.freakflagsprite.com
   align-items: center;
 }
 .phone-number-container .phone-number-input input {
-  background-color: transparent;
   border: none;
+  background-color: transparent;
   outline: none;
 }
 .phone-number-container .phone-number-input:hover {
@@ -12053,10 +12053,8 @@ a.upf-btn--sm {
   padding: var(--spacing-px-12) var(--spacing-px-18);
   border-radius: var(--spacing-px-12);
   min-height: 56px;
-  transition: height 0.5s ease;
   border: 1px solid transparent;
   background: linear-gradient(45deg, var(--color-white) 0%, var(--color-primary-50) 100%) padding-box, linear-gradient(90deg, var(--color-primary-100) 0%, var(--color-white) 72.5%) border-box;
-  transition: background 0.3s ease;
 }
 .oss-smart__feedback__generated,
 .oss-smart__feedback__loading,
@@ -14940,11 +14938,11 @@ a.oss-sidebar-item {
 }
 .oss-panel .oss-panel-content--row {
   display: inline-flex;
+  align-items: center;
   cursor: pointer;
   height: 36px;
   width: 100%;
   padding: var(--spacing-px-9) var(--spacing-px-12);
-  align-items: center;
   gap: var(--spacing-px-9);
   flex-shrink: 0;
   background: var(--color-white);
