@@ -28,16 +28,34 @@ module('Integration | Component | o-s-s/expandable-badge', function (hooks) {
 
   module('Expansion behavior', function () {
     test('On touch event, it expands the badge', async function (assert: Assert) {
+      class TouchEventCompatibleWithFirefox extends UIEvent {
+        touches: any;
+        targetTouches: any;
+        changedTouches: any;
+        constructor(name: any, initDict: any) {
+          super(name, initDict);
+          this.touches = initDict.touches;
+          this.targetTouches = initDict.targetTouches;
+          this.changedTouches = initDict.changedTouches;
+        }
+      }
+
       await render(hbs`<OSS::ExpandableBadge @icon="fa-robot" @expandedLabel="content" />`);
       assert.dom('.upf-expandable-badge').doesNotHaveClass('upf-expandable-badge--expanded');
 
-      const touch = new Touch({
-        identifier: Date.now(),
-        target: this.element.querySelector('.upf-expandable-badge') as EventTarget
+      const touch = new TouchEventCompatibleWithFirefox('touch', {
+        touches: [
+          {
+            identifier: Date.now(),
+            target: this.element.querySelector('.upf-expandable-badge') as EventTarget
+          }
+        ],
+        targetTouches: [],
+        changedTouches: []
       });
 
       await this.element.querySelector('.upf-expandable-badge')?.dispatchEvent(
-        new TouchEvent('touchend', {
+        new TouchEventCompatibleWithFirefox('touchend', {
           touches: [touch],
           bubbles: true,
           cancelable: true
