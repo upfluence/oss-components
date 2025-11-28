@@ -1,6 +1,6 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, setupOnerror } from '@ember/test-helpers';
+import { render, settled, setupOnerror } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { setupIntl } from 'ember-intl/test-support';
 
@@ -102,7 +102,7 @@ module('Integration | Component | o-s-s/marketing/banner', function (hooks) {
         test('it renders it', async function (assert) {
           await render(hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} />`);
           const element = document.querySelector('.upf-marketing-banner__container') as HTMLElement;
-          assert.equal(getComputedStyle(element, 'before').display, 'flex');
+          assert.equal(getComputedStyle(element, ':before').display, 'flex');
         });
 
         test('it sets the correct value for --background-grid-display CSS variable', async function (assert) {
@@ -121,7 +121,7 @@ module('Integration | Component | o-s-s/marketing/banner', function (hooks) {
             hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
           );
           const element = document.querySelector('.upf-marketing-banner__container') as HTMLElement;
-          assert.equal(getComputedStyle(element, 'before').display, 'none');
+          assert.equal(getComputedStyle(element, ':before').display, 'none');
         });
 
         test('it sets the correct value for --background-grid-display CSS variable', async function (assert) {
@@ -145,7 +145,7 @@ module('Integration | Component | o-s-s/marketing/banner', function (hooks) {
             hbs`<OSS::Marketing::Banner @title={{this.title}} @subtitle={{this.subtitle}} @options={{this.options}} />`
           );
           const element = document.querySelector('.upf-marketing-banner__container') as HTMLElement;
-          assert.equal(getComputedStyle(element, 'before').display, 'flex');
+          assert.equal(getComputedStyle(element, ':before').display, 'flex');
         });
 
         test('it sets the correct value for --background-grid-display CSS variable', async function (assert) {
