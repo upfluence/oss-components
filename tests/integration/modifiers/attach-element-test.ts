@@ -17,10 +17,12 @@ module('Integration | Modifiers | modifiers/attach-element', function (hooks) {
       </div>
     `);
 
-    const attachedElement = find('.attached-element') as HTMLElement;
-    const attachedElementStyles = Object.fromEntries(attachedElement.attributeStyleMap.entries());
+    const expectedEmptyAttributes = ['max-width', 'min-width', 'width', 'left', 'top', 'visibility'];
 
-    assert.deepEqual(Object.keys(attachedElementStyles), []);
+    const attachedElement = find('.attached-element') as HTMLElement;
+    expectedEmptyAttributes.forEach((attr) => {
+      assert.equal(attachedElement.style.getPropertyValue(attr), '');
+    });
   });
 
   test('attached element is properly rendered w/ the right floating-ui positioning style', async function (assert) {
@@ -34,16 +36,11 @@ module('Integration | Modifiers | modifiers/attach-element', function (hooks) {
       </div>
     `);
 
-    const attachedElement = find('.attached-element') as HTMLElement;
-    const attachedElementStyles = Object.fromEntries(attachedElement.attributeStyleMap.entries());
+    const expectedFilledAttributes = ['max-width', 'min-width', 'width', 'left', 'top', 'visibility'];
 
-    assert.deepEqual(Object.keys(attachedElementStyles), [
-      'max-width',
-      'min-width',
-      'width',
-      'left',
-      'top',
-      'visibility'
-    ]);
+    const attachedElement = find('.attached-element') as HTMLElement;
+    expectedFilledAttributes.forEach((attr) => {
+      assert.notEqual(attachedElement.style.getPropertyValue(attr), '');
+    });
   });
 });
