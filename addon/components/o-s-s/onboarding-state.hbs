@@ -1,0 +1,18 @@
+<div class="upf-onboarding-state" ...attributes>
+  <div class="upf-onboarding-state__container">
+    <div class="upf-onboarding-state__illustration">
+      <img src={{@imageUrl}} alt="illustration" />
+    </div>
+    <div class="fx-col fx-gap-px-18">
+      <div class="fx-col fx-gap-px-6">
+        <span class="upf-onboarding-state__title">{{@title}}</span>
+        <span class="upf-onboarding-state__subtitle">{{@subtitle}}</span>
+      </div>
+      {{#if (has-block "actions")}}
+        <div class="upf-onboarding-state__actions">
+          {{yield to="actions"}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</div>
