@@ -11,8 +11,17 @@ export default class OSSOnboardingStateComponent extends Component<OSSOnboarding
   constructor(owner: unknown, args: OSSOnboardingStateComponentSignature) {
     super(owner, args);
 
-    assert('[OSS::OnboardingState] The @title parameter is mandatory', typeof args.title === 'string');
-    assert('[OSS::OnboardingState] The @subtitle parameter is mandatory', typeof args.subtitle === 'string');
-    assert('[OSS::OnboardingState] The @imageUrl parameter is mandatory', typeof args.imageUrl === 'string');
+    assert(
+      '[OSS::OnboardingState] The @title parameter is mandatory',
+      typeof args.title === 'string' && args.title.length > 0
+    );
+    assert(
+      '[OSS::OnboardingState] The @subtitle parameter is mandatory',
+      typeof args.subtitle === 'string' && args.subtitle.length > 0
+    );
+    assert(
+      '[OSS::OnboardingState] The @imageUrl parameter is mandatory',
+      typeof args.imageUrl === 'string' && args.imageUrl.length > 0
+    );
   }
 }
