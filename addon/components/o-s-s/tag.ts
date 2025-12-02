@@ -86,4 +86,14 @@ export default class OSSTag extends Component<OSSTagArgs> {
   get safeLabel(): SafeString {
     return htmlSafe(this.args.label ?? '');
   }
+
+  get iconIsFlag(): boolean {
+    console.log(this.args.icon);
+    return typeof this.args.icon === 'string' && this.args.icon.startsWith('flag-');
+  }
+
+  get flagIcon(): string | undefined {
+    if (!this.args.icon || !this.iconIsFlag) return '';
+    return this.args.icon.replace('flag-', '');
+  }
 }

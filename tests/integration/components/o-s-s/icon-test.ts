@@ -30,6 +30,13 @@ module('Integration | Component | o-s-s/icon', function (hooks) {
     assert.dom('i').hasClass('far');
   });
 
+  test(`it renders the correct style flag specific classes`, async function (assert) {
+    await render(hbs`<OSS::Icon @icon="US" @style="flag" />`);
+    assert.dom('i').hasClass('fflag-US');
+    assert.dom('i').hasClass('ff-sm');
+    assert.dom('i').hasClass('ff-round');
+  });
+
   for (const [key, value] of Object.entries(STYLE_CLASSES)) {
     test(`it renders the correct style ${key} class`, async function (assert) {
       this.style = key;
