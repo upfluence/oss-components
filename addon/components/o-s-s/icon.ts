@@ -29,7 +29,7 @@ export default class OSSIcon extends Component<OSSIconArgs> {
     if (typeof this.args.icon === 'string' && this.args.icon.includes('fa-')) {
       return this.args.icon;
     }
-    if (this.args.style === 'flag' && typeof this.args.icon === 'string') {
+    if (typeof this.args.icon === 'string' && this.args.style === 'flag') {
       return `fflag-${this.args.icon} ff-sm ff-round`;
     }
     return IconNames[this.args.icon as keyof typeof IconNames];
