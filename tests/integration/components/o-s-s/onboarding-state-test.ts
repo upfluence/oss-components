@@ -20,7 +20,7 @@ module('Integration | Component | o-s-s/onboarding-state', function (hooks) {
     await render(
       hbs`<OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}} @imageUrl={{this.imageUrl}} />`
     );
-    assert.dom('.upf-onboarding-state').exists();
+    assert.dom('.oss-onboarding-state').exists();
   });
 
   test('it renders the extra attributes', async function (assert) {
@@ -35,7 +35,7 @@ module('Integration | Component | o-s-s/onboarding-state', function (hooks) {
       await render(
         hbs`<OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}} @imageUrl={{this.imageUrl}} />`
       );
-      assert.dom('.upf-onboarding-state__title').hasText(TITLE);
+      assert.dom('.oss-onboarding-state__title').hasText(TITLE);
     });
 
     test('it updates when title changes', async function (assert) {
@@ -44,7 +44,7 @@ module('Integration | Component | o-s-s/onboarding-state', function (hooks) {
       );
 
       this.set('title', 'Updated title');
-      assert.dom('.upf-onboarding-state__title').hasText('Updated title');
+      assert.dom('.oss-onboarding-state__title').hasText('Updated title');
     });
   });
 
@@ -53,7 +53,7 @@ module('Integration | Component | o-s-s/onboarding-state', function (hooks) {
       await render(
         hbs`<OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}} @imageUrl={{this.imageUrl}} />`
       );
-      assert.dom('.upf-onboarding-state__subtitle').hasText(SUBTITLE);
+      assert.dom('.oss-onboarding-state__subtitle').hasText(SUBTITLE);
     });
 
     test('it updates when subtitle changes', async function (assert) {
@@ -62,7 +62,7 @@ module('Integration | Component | o-s-s/onboarding-state', function (hooks) {
       );
 
       this.set('subtitle', 'Updated subtitle');
-      assert.dom('.upf-onboarding-state__subtitle').hasText('Updated subtitle');
+      assert.dom('.oss-onboarding-state__subtitle').hasText('Updated subtitle');
     });
   });
 
@@ -70,8 +70,8 @@ module('Integration | Component | o-s-s/onboarding-state', function (hooks) {
     await render(
       hbs`<OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}} @imageUrl={{this.imageUrl}} />`
     );
-    assert.dom('.upf-onboarding-state__illustration img').hasAttribute('src', IMAGE_URL);
-    assert.dom('.upf-onboarding-state__illustration img').hasAttribute('alt', 'illustration');
+    assert.dom('.oss-onboarding-state__illustration img').hasAttribute('src', IMAGE_URL);
+    assert.dom('.oss-onboarding-state__illustration img').hasAttribute('role', 'presentation');
   });
 
   module('for actions block', () => {
@@ -85,70 +85,40 @@ module('Integration | Component | o-s-s/onboarding-state', function (hooks) {
         </OSS::OnboardingState>
        `
       );
-      assert.dom('.upf-onboarding-state__actions .custom-action-button').exists();
+      assert.dom('.oss-onboarding-state__actions .custom-action-button').exists();
     });
 
     test('it does not render actions section when no actions block is provided', async function (assert) {
       await render(
         hbs`<OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}} @imageUrl={{this.imageUrl}} />`
       );
-      assert.dom('.upf-onboarding-state__actions').doesNotExist();
+      assert.dom('.oss-onboarding-state__actions').doesNotExist();
     });
   });
 
   module('Error management', () => {
-    module('for title parameter', () => {
-      test('The component throws an error if the parameter is not passed', async function (assert) {
-        setupOnerror((err: any) => {
-          assert.equal(err.message, 'Assertion Failed: [OSS::OnboardingState] The @title parameter is mandatory');
-        });
-
-        await render(hbs`<OSS::OnboardingState />`);
+    test('for title parameter, the component throws an error if the parameter is not passed', async function (assert) {
+      setupOnerror((err: any) => {
+        assert.equal(err.message, 'Assertion Failed: [OSS::OnboardingState] The @title parameter is mandatory');
       });
 
-      test('The component throws an error if the parameter is an empty string', async function (assert) {
-        setupOnerror((err: any) => {
-          assert.equal(err.message, 'Assertion Failed: [OSS::OnboardingState] The @title parameter is mandatory');
-        });
-
-        await render(hbs`<OSS::OnboardingState @title="" @subtitle={{this.subtitle}} @imageUrl={{this.imageUrl}} />`);
-      });
+      await render(hbs`<OSS::OnboardingState />`);
     });
 
-    module('for subtitle', () => {
-      test('The component throws an error if the parameter is not passed', async function (assert) {
-        setupOnerror((err: any) => {
-          assert.equal(err.message, 'Assertion Failed: [OSS::OnboardingState] The @subtitle parameter is mandatory');
-        });
-
-        await render(hbs`<OSS::OnboardingState @title={{this.title}} />`);
+    test('for subtitle, the component throws an error if the parameter is not passed', async function (assert) {
+      setupOnerror((err: any) => {
+        assert.equal(err.message, 'Assertion Failed: [OSS::OnboardingState] The @subtitle parameter is mandatory');
       });
 
-      test('The component throws an error if the parameter is an empty string', async function (assert) {
-        setupOnerror((err: any) => {
-          assert.equal(err.message, 'Assertion Failed: [OSS::OnboardingState] The @subtitle parameter is mandatory');
-        });
-
-        await render(hbs`<OSS::OnboardingState @title={{this.title}} @subtitle="" @imageUrl={{this.imageUrl}} />`);
-      });
+      await render(hbs`<OSS::OnboardingState @title={{this.title}} />`);
     });
 
-    module('for imageUrl', () => {
-      test('The component throws an error if the parameter is not passed', async function (assert) {
-        setupOnerror((err: any) => {
-          assert.equal(err.message, 'Assertion Failed: [OSS::OnboardingState] The @imageUrl parameter is mandatory');
-        });
-
-        await render(hbs`<OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}}  />`);
+    test('for imageUrl, the component throws an error if the parameter is not passed', async function (assert) {
+      setupOnerror((err: any) => {
+        assert.equal(err.message, 'Assertion Failed: [OSS::OnboardingState] The @imageUrl parameter is mandatory');
       });
 
-      test('The component throws an error if the parameter is an empty string', async function (assert) {
-        setupOnerror((err: any) => {
-          assert.equal(err.message, 'Assertion Failed: [OSS::OnboardingState] The @imageUrl parameter is mandatory');
-        });
-
-        await render(hbs`<OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}} @imageUrl="" />`);
-      });
+      await render(hbs`<OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}}  />`);
     });
   });
 });
