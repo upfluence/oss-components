@@ -12,7 +12,8 @@ interface OSSCarouselArgs {
   indicatorsPosition?: 'top' | 'bottom';
   showControls?: 'overlay' | 'outside';
   autoPlay?: number;
-  onPageChange?(): void;
+  loop?: boolean;
+  onPageChange?(page: number): void;
 }
 
 interface AnimationHandler {
@@ -38,6 +39,18 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
 
   get showControls(): boolean {
     return !!this.args.showControls ?? false;
+  }
+
+  get loop(): boolean {
+    return this.args.loop ?? true;
+  }
+
+  get showPreviousControl(): boolean {
+    return this.showControls && (this.loop || this.currentPageIndex > 0);
+  }
+
+  get showNextControl(): boolean {
+    return this.showControls && (this.loop || this.currentPageIndex < (this.pages ?? []).length - 1);
   }
 
   get displaySidePadding(): boolean {
@@ -89,7 +102,7 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
     this.prevPageIndex = this.currentPageIndex;
     this.currentPageIndex = this.pages.indexOf(page);
 
-    this.args.onPageChange?.();
+    this.args.onPageChange?.(this.currentPageIndex);
   }
 
   willDestroy(): void {

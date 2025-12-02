@@ -13,6 +13,7 @@ module('Integration | Component | o-s-s/carousel', function (hooks) {
     this.showIndicators = undefined;
     this.showControls = undefined;
     this.autoPlay = undefined;
+    this.loop = undefined;
     this.onPageChange = sinon.spy();
   });
 
@@ -21,7 +22,7 @@ module('Integration | Component | o-s-s/carousel', function (hooks) {
       <OSS::Carousel @showIndicators={{this.showIndicators}} @showControls={{this.showControls}}
                      @animationStyle={{this.animationStyle}} @buttonIcon={{this.buttonIcon}}
                      @autoPlay={{this.autoPlay}} @onPageChange={{this.onPageChange}}
-                     @indicatorsPosition={{this.indicatorsPosition}}>
+                     @indicatorsPosition={{this.indicatorsPosition}} @loop={{this.loop}}>
         <:pages>
           <div class="page">Page 1</div>
           <div class="page">Page 2</div>
@@ -92,6 +93,73 @@ module('Integration | Component | o-s-s/carousel', function (hooks) {
       assert.dom('.oss-carousel .carousel-control--right').exists();
       assert.dom('.page-container--side-padding').exists();
     });
+
+    module('for @loop argument', (hooks) => {
+      hooks.beforeEach(function () {
+        this.showControls = true;
+      });
+
+      [undefined, true].forEach((value) => {
+        module(`When loop is ${value}`, (hooks) => {
+          hooks.beforeEach(function () {
+            this.loop = value;
+          });
+
+          test('The previous control is shown on the first page', async function (assert) {
+            await renderCarousel();
+            assert.dom('.oss-carousel .carousel-control').exists();
+            assert.dom('.oss-carousel .carousel-control--left').exists();
+            assert.dom('.oss-carousel .carousel-control--right').exists();
+          });
+
+          test('The previous and next controls are shown on the center page', async function (assert) {
+            await renderCarousel();
+            await click('.oss-carousel .page-btn:nth-child(2)');
+            assert.dom('.oss-carousel .carousel-control').exists();
+            assert.dom('.oss-carousel .carousel-control--left').exists();
+            assert.dom('.oss-carousel .carousel-control--right').exists();
+          });
+
+          test('The next control is shown on the last page', async function (assert) {
+            await renderCarousel();
+            await click('.oss-carousel .page-btn:nth-child(3)');
+            assert.dom('.oss-carousel .carousel-control').exists();
+            assert.dom('.oss-carousel .carousel-control--left').exists();
+            assert.dom('.oss-carousel .carousel-control--right').exists();
+          });
+        });
+      });
+
+      module('When loop is false', (hooks) => {
+        hooks.beforeEach(function () {
+          this.showControls = true;
+          this.loop = false;
+        });
+
+        test('The previous control is not shown on the first page', async function (assert) {
+          await renderCarousel();
+          assert.dom('.oss-carousel .carousel-control').exists();
+          assert.dom('.oss-carousel .carousel-control--left').doesNotExist();
+          assert.dom('.oss-carousel .carousel-control--right').exists();
+        });
+
+        test('The previous and next controls are shown on the center page', async function (assert) {
+          await renderCarousel();
+          await click('.oss-carousel .page-btn:nth-child(2)');
+          assert.dom('.oss-carousel .carousel-control').exists();
+          assert.dom('.oss-carousel .carousel-control--left').exists();
+          assert.dom('.oss-carousel .carousel-control--right').exists();
+        });
+
+        test('The next control is not shown on the last page', async function (assert) {
+          await renderCarousel();
+          await click('.oss-carousel .page-btn:nth-child(3)');
+          assert.dom('.oss-carousel .carousel-control').exists();
+          assert.dom('.oss-carousel .carousel-control--left').exists();
+          assert.dom('.oss-carousel .carousel-control--right').doesNotExist();
+        });
+      });
+    });
   });
 
   module('Indicator button icon', () => {
@@ -134,6 +202,6 @@ module('Integration | Component | o-s-s/carousel', function (hooks) {
   test('@onPageChange is called when changing the page when the parameter is defined', async function (assert) {
     await renderCarousel();
     await click('.oss-carousel .page-btn:nth-child(2)');
-    assert.true(this.onPageChange.calledOnceWithExactly());
+    assert.true(this.onPageChange.calledOnceWithExactly(1));
   });
 });
