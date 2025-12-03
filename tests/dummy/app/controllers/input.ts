@@ -162,4 +162,9 @@ export default class Input extends Controller {
       return { kind: 'blank', message: { type: 'error', value: 'This field is required' } };
     }
   }
+
+  @action
+  onFooterButtonClick(): void {
+    console.log('Footer button clicked');
+  }
 }

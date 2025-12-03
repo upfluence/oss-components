@@ -441,6 +441,46 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
     });
   });
 
+  module('Action', function (hooks) {
+    hooks.beforeEach(function () {
+      this.items = FAKE_DATA;
+      this.onSelect = () => {};
+      this.onActionClick = sinon.stub();
+      this.action = {
+        skin: 'tertiary',
+        label: 'Footer action',
+        icon: 'fa-plus',
+        onClick: this.onActionClick
+      };
+    });
+
+    test('it should render the action button in the footer', async function (assert) {
+      await render(
+        hbs`<OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{false}} @onSelect={{this.onSelect}} @action={{this.action}} />`
+      );
+
+      assert.dom('.upf-infinite-select .upf-btn').exists();
+      assert.dom('.upf-infinite-select .upf-btn').hasClass('upf-btn--default');
+      assert.dom('.upf-infinite-select .upf-btn .fa-plus').exists();
+      assert.dom('.upf-infinite-select .upf-btn').hasText('Footer action');
+    });
+
+    test('On action button click it should call the passed onClick action', async function (assert) {
+      await render(
+        hbs`<OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{false}} @onSelect={{this.onSelect}} @action={{this.action}} />`
+      );
+      await click('.upf-infinite-select .upf-btn');
+      assert.ok(this.onActionClick.calledOnce);
+    });
+
+    test('When action is not passed it should not render the action button in the footer', async function (assert) {
+      await render(
+        hbs`<OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{false}} @onSelect={{this.onSelect}} />`
+      );
+      assert.dom('.upf-infinite-select .upf-btn').doesNotExist();
+    });
+  });
+
   module('Error management', function () {
     module('On item selection, if onSelect is not passed', function () {
       test('it should throw an error', async function (assert) {

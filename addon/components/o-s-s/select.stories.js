@@ -112,6 +112,17 @@ export default {
           summary: 'string'
         }
       }
+    },
+    action: {
+      description:
+        'An optional action button to display in the footer of the select dropdown. The action object accepts the following properties: `skin` (string, default: "primary"), `label` (string, optional), `icon` (string, optional), `onClick` (function, required), `closeOnClick` (boolean, default: true).',
+      type: { name: 'object' },
+      table: {
+        type: {
+          summary: 'SelectAction'
+        }
+      },
+      control: { type: 'object' }
     }
   },
   parameters: {
@@ -133,6 +144,13 @@ const defaultArgs = {
   errorMessage: undefined,
   successMessage: undefined,
   addressableAs: undefined,
+  action: {
+    skin: 'tertiary',
+    label: 'Add Hero',
+    icon: 'fa-plus',
+    onClick: action('footer action clicked'),
+    closeOnClick: true
+  },
   onSearch: action('onSearch'),
   onChange: action('onChange')
 };
@@ -143,7 +161,7 @@ const Template = (args) => ({
     <OSS::Select
       @items={{this.items}} @value={{this.value}} @targetLabel={{this.targetLabel}} @placeholder={{this.placeholder}}
       @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} @successMessage={{this.successMessage}}
-      @onSearch={{this.onSearch}} @onChange={{this.onChange}}>
+      @onSearch={{this.onSearch}} @onChange={{this.onChange}} @action={{this.action}}>
       <:option as |item|>
         {{item.name}}
       </:option>

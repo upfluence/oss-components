@@ -30,6 +30,7 @@
         @searchEnabled={{this.searchEnabled}}
         @searchPlaceholder={{this.searchPlaceholder}}
         @enableKeyboard={{true}}
+        @action={{this.actionArguments}}
         id={{this.portalId}}
         class={{concat "margin-top-px-0 oss-select-container__dropdown " this.dropdownAddressableClass}}
         {{on-click-outside this.onClickOutside useCapture=@captureClickOutside}}

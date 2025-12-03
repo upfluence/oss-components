@@ -4,7 +4,16 @@ import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 
 import { guidFor } from '@ember/object/internals';
+import type { SkinType } from './button';
+import type { IconNames } from './iconName.enum';
 
+export type InfiniteSelectAction = {
+  skin?: SkinType;
+  label?: string;
+  icon?: keyof typeof IconNames | string;
+  onClick(): unknown;
+  closeOnClick: boolean;
+};
 interface InfiniteSelectArgs {
   searchEnabled: boolean;
   loading: boolean;
@@ -15,6 +24,7 @@ interface InfiniteSelectArgs {
   inline: boolean;
   enableKeyboard?: boolean;
   skin?: 'default' | 'smart';
+  action?: InfiniteSelectAction;
 
   onSelect: (item: InfinityItem) => void;
   onSearch?: (keyword: string) => void;

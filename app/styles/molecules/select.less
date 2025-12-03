@@ -76,11 +76,30 @@
 }
 
 .oss-select-container__dropdown {
-  &:has(.upf-input) {
+  &:has(.upf-input):not(:has(.upf-btn)) {
     overflow: hidden;
 
     .upf-infinite-select__items-container {
-      max-height: calc(var(--floating-max-height) - 78px);
+      --input-height-and-padding-and-gap: calc(var(--spacing-px-36) + var(--spacing-px-12) + var(--spacing-px-12));
+      max-height: calc(var(--floating-max-height) - var(--input-height-and-padding-and-gap));
+    }
+  }
+
+  &:has(.upf-btn--sm):not(:has(.upf-input)) {
+    overflow: hidden;
+
+    .upf-infinite-select__items-container {
+      --button-height-and-padding-and-gap: calc(var(--spacing-px-24) + var(--spacing-px-12) + var(--spacing-px-12));
+      max-height: calc(var(--floating-max-height) - var(--button-height-and-padding-and-gap));
+    }
+  }
+
+  &:has(.upf-btn--sm):has(.upf-input) {
+    overflow: hidden;
+
+    .upf-infinite-select__items-container {
+      --input-height-and-button-height-and-padding-and-gap: calc(var(--spacing-px-36) + var(--spacing-px-24) + var(--spacing-px-12) + var(--spacing-px-12) + var(--spacing-px-12));
+      max-height: calc(var(--floating-max-height) - var(--input-height-and-button-height-and-padding-and-gap));
     }
   }
 

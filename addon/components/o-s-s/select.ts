@@ -8,6 +8,7 @@ import { scheduleOnce } from '@ember/runloop';
 import type IntlService from 'ember-intl/services/intl';
 import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
 import BaseDropdown, { type BaseDropdownArgs } from './private/base-dropdown';
+import type { InfiniteSelectAction } from './infinite-select';
 
 interface OSSSelectArgs extends BaseDropdownArgs {
   value: any;
@@ -18,6 +19,7 @@ interface OSSSelectArgs extends BaseDropdownArgs {
   errorMessage?: string;
   successMessage?: string;
   addressableAs?: string;
+  action?: InfiniteSelectAction;
   onChange(value: any): void;
   onSearch?(keyword: string): void;
 }
@@ -76,6 +78,14 @@ export default class OSSSelect extends BaseDropdown<OSSSelectArgs> {
     return this.args.addressableAs ? `${this.args.addressableAs}__dropdown` : '';
   }
 
+  get actionArguments(): InfiniteSelectAction | undefined {
+    if (!this.args.action) return undefined;
+    return {
+      ...this.args.action,
+      onClick: this.onActionClick
+    };
+  }
+
   @action
   onSelect(value: any): void {
     this.args.onChange(value);
@@ -123,6 +133,15 @@ export default class OSSSelect extends BaseDropdown<OSSSelectArgs> {
   @action
   ensureBlockPresence(hasOptionItem: boolean): void {
     assert(`[component][OSS::Select] You must pass option named block`, hasOptionItem);
+  }
+
+  @action
+  onActionClick(): void {
+    this.args.action?.onClick();
+
+    if (this.args.action?.closeOnClick ?? true) {
+      this.hideSelector();
+    }
   }
 
   private setupDropdownAutoplacement(): void {

@@ -115,6 +115,17 @@ export default {
         type: 'boolean'
       }
     },
+    action: {
+      description:
+        'An optional action button to display in the footer of the select dropdown. The action object accepts the following properties: `skin` (string, default: "primary"), `label` (string, optional), `icon` (string, optional), `onClick` (function, required), `closeOnClick` (boolean, default: true).',
+      table: {
+        type: {
+          summary: 'object'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'object' }
+    },
     onSelect: {
       type: { required: true },
       description: 'Function to be called with the clicked item',
@@ -173,6 +184,13 @@ const defaultArgs = {
   inline: false,
   enableKeyboard: false,
   skin: 'default',
+  action: {
+    skin: 'tertiary',
+    label: 'Add Hero',
+    icon: 'fa-plus',
+    onClick: action('footer action clicked'),
+    closeOnClick: true
+  },
   onSelect: action('onSelect'),
   onSearch: action('onSearch'),
   onBottomReached: action('onBottomReached'),
@@ -185,7 +203,7 @@ const Template = (args) => ({
         @items={{this.items}} @itemLabel={{this.itemLabel}} @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}}
         @searchPlaceholder={{this.searchPlaceholder}} @onSelect={{this.onSelect}} @loading={{this.loading}}
         @loadingMore={{this.loadingMore}} @inline={{this.inline}} @onBottomReached={{this.onBottomReached}} 
-        @skin={{this.skin}} @didRender={{this.didRender}} @enableKeyboard={{this.enableKeyboard}}
+        @skin={{this.skin}} @didRender={{this.didRender}} @enableKeyboard={{this.enableKeyboard}} @action={{this.action}}
         class="upf-align--absolute-center"/>
   `,
   context: args
