@@ -1,0 +1,67 @@
+.oss-onboarding-state {
+  container-type: inline-size;
+  container-name: oss-onboarding-state;
+  display: flex;
+  flex: 1;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border-default);
+  background-color: var(--color-white);
+
+  &__container {
+    position: relative;
+    display: flex;
+    flex: 1;
+    padding: var(--spacing-px-18);
+    gap: var(--spacing-px-18);
+  }
+
+  &__illustration {
+    display: flex;
+    align-items: center;
+
+    img {
+      flex: 1;
+      width: 250px;
+      height: 100px;
+      max-width: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__title {
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  &__subtitle {
+    color: var(--color-gray-500);
+  }
+
+  &__actions {
+    display: flex;
+    gap: var(--spacing-px-12);
+  }
+}
+
+@container oss-onboarding-state (width < 540px) {
+  .oss-onboarding-state {
+    &__container {
+      flex-direction: column;
+    }
+
+    &__illustration {
+      img {
+        width: auto;
+        height: 150px;
+      }
+    }
+  }
+}
+
+@container oss-onboarding-state (width < 340px) {
+  .oss-onboarding-state {
+    &__actions {
+      flex-direction: column;
+    }
+  }
+}

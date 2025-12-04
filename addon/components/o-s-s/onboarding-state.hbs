@@ -1,0 +1,18 @@
+<div class="oss-onboarding-state" ...attributes>
+  <div class="oss-onboarding-state__container">
+    <div class="oss-onboarding-state__illustration">
+      <img src={{@imageUrl}} role="presentation" alt="" />
+    </div>
+    <div class="fx-col fx-gap-px-18">
+      <div class="fx-col fx-gap-px-6">
+        <span class="oss-onboarding-state__title">{{@title}}</span>
+        <span class="oss-onboarding-state__subtitle">{{@subtitle}}</span>
+      </div>
+      {{#if (has-block "actions")}}
+        <div class="oss-onboarding-state__actions">
+          {{yield to="actions"}}
+        </div>
+      {{/if}}
+    </div>
+  </div>
+</div>

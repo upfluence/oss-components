@@ -14,12 +14,16 @@
   {{/if}}
   <div class="page-container {{if this.displaySidePadding 'page-container--side-padding'}}">
     {{#if this.showControls}}
-      <div class="carousel-control carousel-control--left" {{on "click" this.previousPage}} role="button">
-        <i class="far fa-chevron-left"></i>
-      </div>
-      <div class="carousel-control carousel-control--right" {{on "click" this.nextPage}} role="button">
-        <i class="far fa-chevron-right"></i>
-      </div>
+      {{#if this.showPreviousControl}}
+        <div class="carousel-control carousel-control--left" {{on "click" this.previousPage}} role="button">
+          <i class="far fa-chevron-left"></i>
+        </div>
+      {{/if}}
+      {{#if this.showNextControl}}
+        <div class="carousel-control carousel-control--right" {{on "click" this.nextPage}} role="button">
+          <i class="far fa-chevron-right"></i>
+        </div>
+      {{/if}}
     {{/if}}
     {{yield to="pages"}}
   </div>

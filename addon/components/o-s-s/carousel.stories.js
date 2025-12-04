@@ -59,6 +59,16 @@ export default {
       },
       control: { type: 'number' }
     },
+    loop: {
+      description: 'Allows the carousel to render the arrow to go from the last slide to the first and vice versa.',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'true' }
+      },
+      control: { type: 'boolean' }
+    },
     onPageChange: {
       description: 'Action triggered when the page changes',
       table: {
@@ -96,6 +106,7 @@ const defaultArgs = {
   showIndicators: undefined,
   showControls: undefined,
   autoPlay: undefined,
+  loop: true,
   indicatorsPosition: 'top'
 };
 
@@ -103,7 +114,8 @@ const Template = (args) => ({
   template: hbs`
     <OSS::Carousel @showIndicators={{this.showIndicators}} @showControls={{this.showControls}}
                    @animationStyle={{this.animationStyle}} @buttonIcon={{this.buttonIcon}}
-                   @autoPlay={{this.autoPlay}} @indicatorsPosition={{this.indicatorsPosition}}>
+                   @autoPlay={{this.autoPlay}} @indicatorsPosition={{this.indicatorsPosition}}
+                   @loop={{this.loop}}>
       <:pages>
         <div class="page">
           <OSS::Banner @icon="fas fa-image" @title="PAGE 1"/>
