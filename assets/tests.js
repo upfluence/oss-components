@@ -6688,6 +6688,9 @@ define("dummy/tests/integration/components/o-s-s/expandable-badge-test", ["qunit
   "use strict";
 
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"qunit",0,"ember-qunit",0,"ember-intl/test-support",0,"@ember/test-helpers",0,"@upfluence/oss-components/components/o-s-s/badge"eaimeta@70e063a35619d71f
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
   (0, _qunit.module)('Integration | Component | o-s-s/expandable-badge', function (hooks) {
     (0, _emberQunit.setupRenderingTest)(hooks);
     (0, _testSupport.setupIntl)(hooks);
@@ -6723,6 +6726,17 @@ define("dummy/tests/integration/components/o-s-s/expandable-badge-test", ["qunit
     });
     (0, _qunit.module)('Expansion behavior', function () {
       (0, _qunit.test)('On touch event, it expands the badge', async function (assert) {
+        class TouchEventCompatibleWithFirefox extends UIEvent {
+          constructor(name, initDict) {
+            super(name, initDict);
+            _defineProperty(this, "touches", void 0);
+            _defineProperty(this, "targetTouches", void 0);
+            _defineProperty(this, "changedTouches", void 0);
+            this.touches = initDict.touches;
+            this.targetTouches = initDict.targetTouches;
+            this.changedTouches = initDict.changedTouches;
+          }
+        }
         await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
         /*
           <OSS::ExpandableBadge @icon="fa-robot" @expandedLabel="content" />
@@ -6734,11 +6748,15 @@ define("dummy/tests/integration/components/o-s-s/expandable-badge-test", ["qunit
           "isStrictMode": false
         }));
         assert.dom('.upf-expandable-badge').doesNotHaveClass('upf-expandable-badge--expanded');
-        const touch = new Touch({
-          identifier: Date.now(),
-          target: this.element.querySelector('.upf-expandable-badge')
+        const touch = new TouchEventCompatibleWithFirefox('touch', {
+          touches: [{
+            identifier: Date.now(),
+            target: this.element.querySelector('.upf-expandable-badge')
+          }],
+          targetTouches: [],
+          changedTouches: []
         });
-        await this.element.querySelector('.upf-expandable-badge')?.dispatchEvent(new TouchEvent('touchend', {
+        await this.element.querySelector('.upf-expandable-badge')?.dispatchEvent(new TouchEventCompatibleWithFirefox('touchend', {
           touches: [touch],
           bubbles: true,
           cancelable: true
@@ -7706,6 +7724,62 @@ define("dummy/tests/integration/components/o-s-s/infinite-select-test", ["qunit"
           "isStrictMode": false
         }));
         assert.dom('.upf-infinite-select').hasClass('upf-infinite-select--smart');
+      });
+    });
+    (0, _qunit.module)('Action', function (hooks) {
+      hooks.beforeEach(function () {
+        this.items = FAKE_DATA;
+        this.onSelect = () => {};
+        this.onActionClick = _sinon.default.stub();
+        this.action = {
+          skin: 'tertiary',
+          label: 'Footer action',
+          icon: 'fa-plus',
+          onClick: this.onActionClick
+        };
+      });
+      (0, _qunit.test)('it should render the action button in the footer', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{false}} @onSelect={{this.onSelect}} @action={{this.action}} />
+        */
+        {
+          "id": "ZVeCD9pF",
+          "block": "[[[8,[39,0],null,[[\"@items\",\"@searchEnabled\",\"@onSelect\",\"@action\"],[[30,0,[\"items\"]],false,[30,0,[\"onSelect\"]],[30,0,[\"action\"]]]],null]],[],false,[\"o-s-s/infinite-select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select-test.js",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-infinite-select .upf-btn').exists();
+        assert.dom('.upf-infinite-select .upf-btn').hasClass('upf-btn--default');
+        assert.dom('.upf-infinite-select .upf-btn .fa-plus').exists();
+        assert.dom('.upf-infinite-select .upf-btn').hasText('Footer action');
+      });
+      (0, _qunit.test)('On action button click it should call the passed onClick action', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{false}} @onSelect={{this.onSelect}} @action={{this.action}} />
+        */
+        {
+          "id": "ZVeCD9pF",
+          "block": "[[[8,[39,0],null,[[\"@items\",\"@searchEnabled\",\"@onSelect\",\"@action\"],[[30,0,[\"items\"]],false,[30,0,[\"onSelect\"]],[30,0,[\"action\"]]]],null]],[],false,[\"o-s-s/infinite-select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select-test.js",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.upf-infinite-select .upf-btn');
+        assert.ok(this.onActionClick.calledOnce);
+      });
+      (0, _qunit.test)('When action is not passed it should not render the action button in the footer', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::InfiniteSelect @items={{this.items}} @searchEnabled={{false}} @onSelect={{this.onSelect}} />
+        */
+        {
+          "id": "YU8eRyjM",
+          "block": "[[[8,[39,0],null,[[\"@items\",\"@searchEnabled\",\"@onSelect\"],[[30,0,[\"items\"]],false,[30,0,[\"onSelect\"]]]],null]],[],false,[\"o-s-s/infinite-select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/infinite-select-test.js",
+          "isStrictMode": false
+        }));
+        assert.dom('.upf-infinite-select .upf-btn').doesNotExist();
       });
     });
     (0, _qunit.module)('Error management', function () {
@@ -9320,7 +9394,7 @@ define("dummy/tests/integration/components/o-s-s/marketing/banner-test", ["qunit
               "isStrictMode": false
             }));
             const element = document.querySelector('.upf-marketing-banner__container');
-            assert.equal(getComputedStyle(element, 'before').display, 'flex');
+            assert.equal(getComputedStyle(element, ':before').display, 'flex');
           });
           (0, _qunit.test)('it sets the correct value for --background-grid-display CSS variable', async function (assert) {
             await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -9353,7 +9427,7 @@ define("dummy/tests/integration/components/o-s-s/marketing/banner-test", ["qunit
               "isStrictMode": false
             }));
             const element = document.querySelector('.upf-marketing-banner__container');
-            assert.equal(getComputedStyle(element, 'before').display, 'none');
+            assert.equal(getComputedStyle(element, ':before').display, 'none');
           });
           (0, _qunit.test)('it sets the correct value for --background-grid-display CSS variable', async function (assert) {
             this.options = {
@@ -9389,7 +9463,7 @@ define("dummy/tests/integration/components/o-s-s/marketing/banner-test", ["qunit
               "isStrictMode": false
             }));
             const element = document.querySelector('.upf-marketing-banner__container');
-            assert.equal(getComputedStyle(element, 'before').display, 'flex');
+            assert.equal(getComputedStyle(element, ':before').display, 'flex');
           });
           (0, _qunit.test)('it sets the correct value for --background-grid-display CSS variable', async function (assert) {
             this.options = {
@@ -13530,6 +13604,98 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
         await (0, _testHelpers.click)('.upf-input div');
         assert.dom('.upf-infinite-select').exists();
         assert.dom('.upf-infinite-select').hasClass('foobar-select__dropdown');
+      });
+    });
+    (0, _qunit.module)('Action argument', function (hooks) {
+      hooks.beforeEach(function () {
+        this.onActionClick = _sinon.default.stub();
+        this.action = {
+          skin: 'tertiary',
+          label: 'Add Item',
+          icon: 'fa-plus',
+          onClick: this.onActionClick
+        };
+        this.value = this.items[0];
+      });
+      async function renderWithAction() {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                  <OSS::Select
+                    @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}}
+                    @action={{this.action}}>
+                    <:option as |item|>
+                      {{item.name}}
+                    </:option>
+                  </OSS::Select>
+                
+        */
+        {
+          "id": "RHQIwPxI",
+          "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@onChange\",\"@items\",\"@value\",\"@action\"],[[30,0,[\"onChange\"]],[30,0,[\"items\"]],[30,0,[\"value\"]],[30,0,[\"action\"]]]],[[\"option\"],[[[[1,\"\\n              \"],[1,[30,1,[\"name\"]]],[1,\"\\n            \"]],[1]]]]],[1,\"\\n        \"]],[\"item\"],false,[\"o-s-s/select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/select-test.ts",
+          "isStrictMode": false
+        }));
+      }
+      (0, _qunit.test)('if the @action arg is provided, the action button is displayed in the footer', async function (assert) {
+        await renderWithAction();
+        await (0, _testHelpers.click)('.upf-input div');
+        assert.dom('.upf-infinite-select').exists();
+        assert.dom('.upf-infinite-select .upf-btn').hasClass('upf-btn--default');
+        assert.dom('.upf-infinite-select .upf-btn i.fa-plus').exists();
+        assert.dom('.upf-infinite-select .upf-btn').hasText('Add Item');
+      });
+      (0, _qunit.test)('clicking the action button calls the provided onClick function', async function (assert) {
+        await renderWithAction();
+        await (0, _testHelpers.click)('.upf-input div');
+        await (0, _testHelpers.click)('[data-control-name="infinite-select-footer-action-button"]');
+        assert.ok(this.onActionClick.calledOnce);
+      });
+      (0, _qunit.test)('if the closeOnClick property of the @action arg is true, clicking the action button closes the dropdown', async function (assert) {
+        this.action.closeOnClick = true;
+        await renderWithAction();
+        await (0, _testHelpers.click)('.upf-input div');
+        assert.dom('.upf-infinite-select').exists();
+        await (0, _testHelpers.click)('[data-control-name="infinite-select-footer-action-button"]');
+        assert.ok(this.onActionClick.calledOnce);
+        assert.dom('.upf-infinite-select').doesNotExist();
+      });
+      (0, _qunit.test)('if the closeOnClick property of the @action arg is false, clicking the action button does not close the dropdown', async function (assert) {
+        this.action.closeOnClick = false;
+        await renderWithAction();
+        await (0, _testHelpers.click)('.upf-input div');
+        assert.dom('.upf-infinite-select').exists();
+        await (0, _testHelpers.click)('[data-control-name="infinite-select-footer-action-button"]');
+        assert.ok(this.onActionClick.calledOnce);
+        assert.dom('.upf-infinite-select').exists();
+      });
+      (0, _qunit.test)('if the closeOnClick property of the @action arg is not provided, clicking the action button closes the dropdown', async function (assert) {
+        this.action.closeOnClick = undefined;
+        await renderWithAction();
+        await (0, _testHelpers.click)('.upf-input div');
+        assert.dom('.upf-infinite-select').exists();
+        await (0, _testHelpers.click)('[data-control-name="infinite-select-footer-action-button"]');
+        assert.ok(this.onActionClick.calledOnce);
+        assert.dom('.upf-infinite-select').doesNotExist();
+      });
+      (0, _qunit.test)('if the @action arg is not provided, no action button is displayed in the footer', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                  <OSS::Select
+                    @onChange={{this.onChange}} @items={{this.items}} @value={{this.value}}>
+                    <:option as |item|>
+                    </:option>
+                  </OSS::Select>
+                
+        */
+        {
+          "id": "/VX1MmCn",
+          "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@onChange\",\"@items\",\"@value\"],[[30,0,[\"onChange\"]],[30,0,[\"items\"]],[30,0,[\"value\"]]]],[[\"option\"],[[[[1,\"\\n            \"]],[1]]]]],[1,\"\\n        \"]],[\"item\"],false,[\"o-s-s/select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/select-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('[data-control-name="infinite-select-footer-action-button"]').doesNotExist();
       });
     });
     (0, _qunit.module)('Error management', function () {
@@ -21672,9 +21838,11 @@ define("dummy/tests/integration/modifiers/attach-element-test", ["qunit", "ember
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/modifiers/attach-element-test.ts",
         "isStrictMode": false
       }));
+      const expectedEmptyAttributes = ['max-width', 'min-width', 'width', 'left', 'top', 'visibility'];
       const attachedElement = (0, _testHelpers.find)('.attached-element');
-      const attachedElementStyles = Object.fromEntries(attachedElement.attributeStyleMap.entries());
-      assert.deepEqual(Object.keys(attachedElementStyles), []);
+      expectedEmptyAttributes.forEach(attr => {
+        assert.equal(attachedElement.style.getPropertyValue(attr), '');
+      });
     });
     (0, _qunit.test)('attached element is properly rendered w/ the right floating-ui positioning style', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -21695,9 +21863,11 @@ define("dummy/tests/integration/modifiers/attach-element-test", ["qunit", "ember
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/modifiers/attach-element-test.ts",
         "isStrictMode": false
       }));
+      const expectedFilledAttributes = ['max-width', 'min-width', 'width', 'left', 'top', 'visibility'];
       const attachedElement = (0, _testHelpers.find)('.attached-element');
-      const attachedElementStyles = Object.fromEntries(attachedElement.attributeStyleMap.entries());
-      assert.deepEqual(Object.keys(attachedElementStyles), ['max-width', 'min-width', 'width', 'left', 'top', 'visibility']);
+      expectedFilledAttributes.forEach(attr => {
+        assert.notEqual(attachedElement.style.getPropertyValue(attr), '');
+      });
     });
   });
 });

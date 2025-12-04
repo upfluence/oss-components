@@ -13110,6 +13110,7 @@ a.upf-btn--sm {
   animation: smart_loading_text_animation 3.5s ease-in-out infinite;
   background-size: 600% 100%;
   padding: var(--spacing-px-6) 0px;
+  white-space: wrap;
   border: 0;
   font-family: var(--font-family-stack);
   line-height: var(--font-text-line-height);
@@ -13456,11 +13457,26 @@ a.upf-btn--sm {
   background-color: var(--color-white);
   border-color: var(--color-success-500);
 }
-.oss-select-container__dropdown:has(.upf-input) {
+.oss-select-container__dropdown:has(.upf-input):not(:has(.upf-btn--sm)) {
   overflow: hidden;
 }
-.oss-select-container__dropdown:has(.upf-input) .upf-infinite-select__items-container {
-  max-height: calc(var(--floating-max-height) - 78px);
+.oss-select-container__dropdown:has(.upf-input):not(:has(.upf-btn--sm)) .upf-infinite-select__items-container {
+  --input-height-and-padding-and-gap: calc(var(--spacing-px-36) + var(--spacing-px-12) + var(--spacing-px-12));
+  max-height: calc(var(--floating-max-height) - var(--input-height-and-padding-and-gap));
+}
+.oss-select-container__dropdown:has(.upf-btn--sm):not(:has(.upf-input)) {
+  overflow: hidden;
+}
+.oss-select-container__dropdown:has(.upf-btn--sm):not(:has(.upf-input)) .upf-infinite-select__items-container {
+  --button-height-and-padding-and-gap: calc(var(--spacing-px-24) + var(--spacing-px-12) + var(--spacing-px-12));
+  max-height: calc(var(--floating-max-height) - var(--button-height-and-padding-and-gap));
+}
+.oss-select-container__dropdown:has(.upf-btn--sm):has(.upf-input) {
+  overflow: hidden;
+}
+.oss-select-container__dropdown:has(.upf-btn--sm):has(.upf-input) .upf-infinite-select__items-container {
+  --input-height-and-button-height-and-padding-and-gap: calc(var(--spacing-px-36) + var(--spacing-px-24) + var(--spacing-px-12) + var(--spacing-px-12) + var(--spacing-px-12));
+  max-height: calc(var(--floating-max-height) - var(--input-height-and-button-height-and-padding-and-gap));
 }
 .oss-select-container__dropdown .upf-infinite-select__item {
   padding: 0;

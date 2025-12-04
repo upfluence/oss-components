@@ -89434,11 +89434,22 @@ interface OSSCodeBlockArgs {
         {{/if}}
       </ul>
     </div>
+    {{#if @action}}
+      <OSS::Button
+        @size="sm"
+        @label={{@action.label}}
+        @skin={{@action.skin}}
+        @icon={{@action.icon}}
+        {{on "click" @action.onClick}}
+        class="width-pc-100"
+        data-control-name="infinite-select-footer-action-button"
+      />
+    {{/if}}
   </div>
   */
   {
-    "id": "izKePBSx",
-    "block": "[[[11,0],[16,1,[30,0,[\"elementId\"]]],[16,\"data-internal-id\",[30,0,[\"elementId\"]]],[16,0,[29,[\"fx-col fx-gap-px-12 upf-infinite-select\\n    \",[52,[51,[30,0,[\"inline\"]]],\"upf-infinite-select--absolute\"],\"\\n    upf-infinite-select--\",[30,0,[\"skin\"]]]]],[17,1],[4,[38,1],[[30,0,[\"onRender\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"searchEnabled\"]],[[[1,\"    \"],[8,[39,3],[[24,0,\"upf-infinite-select--search\"],[4,[38,4],[\"keydown\",[30,0,[\"handleKeyEventInput\"]]],null],[4,[38,1],[[30,0,[\"initSearchInput\"]]],null]],[[\"@value\",\"@placeholder\",\"@onChange\"],[[30,0,[\"_searchKeyword\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"updateSearchKeyword\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"upf-infinite-select__container\"],[12],[1,\"\\n    \"],[11,\"ul\"],[16,0,[29,[\"upf-infinite-select__items-container\\n        \",[52,[28,[37,5],[[30,0,[\"items\",\"length\"]],0],null],\"upf-infinite-select__items-container--empty\"]]]],[4,[38,6],[[30,0,[\"onBottomReached\"]]],null],[4,[38,7],null,null],[4,[38,4],[\"keydown\",[30,0,[\"handleKeyEvent\"]]],null],[12],[1,\"\\n\"],[41,[28,[37,8],[[30,2],[28,[37,9],[[30,3]],null]],null],[[[1,\"        \"],[8,[39,10],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",5,\"col\"]],null],[1,\"\\n\"]],[]],[[[42,[28,[37,12],[[28,[37,12],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"          \"],[11,\"li\"],[16,0,[29,[\"upf-infinite-select__item\\n              \",[52,[28,[37,8],[[28,[37,5],[[30,5],[30,0,[\"_focusElement\"]]],null],[30,0,[\"focusStylesDisabled\"]]],null],\" upf-infinite-select__item--disabled-focus\"]]]],[24,\"role\",\"button\"],[24,\"tabindex\",\"0\"],[4,[38,4],[\"mouseenter\",[28,[37,13],[[30,0,[\"handleItemHover\"]],[30,5]],null]],null],[4,[38,4],[\"mouseleave\",[30,0,[\"clearHoverState\"]]],null],[4,[38,4],[\"click\",[28,[37,13],[[30,0,[\"didSelectItem\"]],[30,4]],null]],null],[12],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"              \"],[18,6,[[30,4],[30,5]]],[1,\"\\n\"]],[]],[[[1,\"              \"],[1,[28,[35,16],[[30,4],[30,0,[\"itemLabel\"]]],null]],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[4,5]],[[[1,\"          \"],[10,0],[14,0,\"fx-col fx-xalign-center\"],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"              \"],[18,7,null],[1,\"\\n\"]],[]],[[[1,\"              \"],[8,[39,17],[[24,\"data-control-name\",\"infinite-select-empty-state-illustration\"]],[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null],[1,\"\\n              \"],[10,0],[14,0,\"margin-top-xx-sm text-color-default upf-align--center\"],[12],[1,\"\\n\"],[41,[30,0,[\"_searchKeyword\"]],[[[1,\"                  \"],[10,2],[12],[1,[28,[35,18],[\"oss-components.infinite-select.no-match.title\"],null]],[13],[1,\"\\n                  \"],[10,2],[14,0,\"text-color-default-light\"],[12],[1,\"\\n                    \"],[1,[28,[35,18],[\"oss-components.infinite-select.no-match.description\"],null]],[1,\"\\n                  \"],[13],[1,\"\\n\"]],[]],[[[1,\"                  \"],[1,[28,[35,18],[\"oss-components.infinite-select.empty\"],null]],[1,\"\\n\"]],[]]],[1,\"              \"],[13],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,3],[[[1,\"          \"],[8,[39,10],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",3,\"col\"]],null],[1,\"\\n\"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@loading\",\"@loadingMore\",\"item\",\"index\",\"&option\",\"&empty-state\"],false,[\"unless\",\"did-insert\",\"if\",\"o-s-s/search-field\",\"on\",\"eq\",\"on-bottom-reached\",\"scroll-shadow\",\"and\",\"not\",\"o-s-s/skeleton\",\"each\",\"-track-array\",\"fn\",\"has-block\",\"yield\",\"get\",\"o-s-s/illustration\",\"t\"]]",
+    "id": "2FgNS5th",
+    "block": "[[[11,0],[16,1,[30,0,[\"elementId\"]]],[16,\"data-internal-id\",[30,0,[\"elementId\"]]],[16,0,[29,[\"fx-col fx-gap-px-12 upf-infinite-select\\n    \",[52,[51,[30,0,[\"inline\"]]],\"upf-infinite-select--absolute\"],\"\\n    upf-infinite-select--\",[30,0,[\"skin\"]]]]],[17,1],[4,[38,1],[[30,0,[\"onRender\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"searchEnabled\"]],[[[1,\"    \"],[8,[39,3],[[24,0,\"upf-infinite-select--search\"],[4,[38,4],[\"keydown\",[30,0,[\"handleKeyEventInput\"]]],null],[4,[38,1],[[30,0,[\"initSearchInput\"]]],null]],[[\"@value\",\"@placeholder\",\"@onChange\"],[[30,0,[\"_searchKeyword\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"updateSearchKeyword\"]]]],null],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"upf-infinite-select__container\"],[12],[1,\"\\n    \"],[11,\"ul\"],[16,0,[29,[\"upf-infinite-select__items-container\\n        \",[52,[28,[37,5],[[30,0,[\"items\",\"length\"]],0],null],\"upf-infinite-select__items-container--empty\"]]]],[4,[38,6],[[30,0,[\"onBottomReached\"]]],null],[4,[38,7],null,null],[4,[38,4],[\"keydown\",[30,0,[\"handleKeyEvent\"]]],null],[12],[1,\"\\n\"],[41,[28,[37,8],[[30,2],[28,[37,9],[[30,3]],null]],null],[[[1,\"        \"],[8,[39,10],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",5,\"col\"]],null],[1,\"\\n\"]],[]],[[[42,[28,[37,12],[[28,[37,12],[[30,0,[\"items\"]]],null]],null],null,[[[1,\"          \"],[11,\"li\"],[16,0,[29,[\"upf-infinite-select__item\\n              \",[52,[28,[37,8],[[28,[37,5],[[30,5],[30,0,[\"_focusElement\"]]],null],[30,0,[\"focusStylesDisabled\"]]],null],\" upf-infinite-select__item--disabled-focus\"]]]],[24,\"role\",\"button\"],[24,\"tabindex\",\"0\"],[4,[38,4],[\"mouseenter\",[28,[37,13],[[30,0,[\"handleItemHover\"]],[30,5]],null]],null],[4,[38,4],[\"mouseleave\",[30,0,[\"clearHoverState\"]]],null],[4,[38,4],[\"click\",[28,[37,13],[[30,0,[\"didSelectItem\"]],[30,4]],null]],null],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"              \"],[18,7,[[30,4],[30,5]]],[1,\"\\n\"]],[]],[[[1,\"              \"],[1,[28,[35,16],[[30,4],[30,0,[\"itemLabel\"]]],null]],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[4,5]],[[[1,\"          \"],[10,0],[14,0,\"fx-col fx-xalign-center\"],[12],[1,\"\\n\"],[41,[48,[30,8]],[[[1,\"              \"],[18,8,null],[1,\"\\n\"]],[]],[[[1,\"              \"],[8,[39,17],[[24,\"data-control-name\",\"infinite-select-empty-state-illustration\"]],[[\"@src\"],[\"/@upfluence/oss-components/assets/images/no-records.svg\"]],null],[1,\"\\n              \"],[10,0],[14,0,\"margin-top-xx-sm text-color-default upf-align--center\"],[12],[1,\"\\n\"],[41,[30,0,[\"_searchKeyword\"]],[[[1,\"                  \"],[10,2],[12],[1,[28,[35,18],[\"oss-components.infinite-select.no-match.title\"],null]],[13],[1,\"\\n                  \"],[10,2],[14,0,\"text-color-default-light\"],[12],[1,\"\\n                    \"],[1,[28,[35,18],[\"oss-components.infinite-select.no-match.description\"],null]],[1,\"\\n                  \"],[13],[1,\"\\n\"]],[]],[[[1,\"                  \"],[1,[28,[35,18],[\"oss-components.infinite-select.empty\"],null]],[1,\"\\n\"]],[]]],[1,\"              \"],[13],[1,\"\\n\"]],[]]],[1,\"          \"],[13],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,3],[[[1,\"          \"],[8,[39,10],null,[[\"@width\",\"@height\",\"@multiple\",\"@direction\"],[\"100%\",\"18\",3,\"col\"]],null],[1,\"\\n\"]],[]],null]],[]]],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,6],[[[1,\"    \"],[8,[39,19],[[24,0,\"width-pc-100\"],[24,\"data-control-name\",\"infinite-select-footer-action-button\"],[4,[38,4],[\"click\",[30,6,[\"onClick\"]]],null]],[[\"@size\",\"@label\",\"@skin\",\"@icon\"],[\"sm\",[30,6,[\"label\"]],[30,6,[\"skin\"]],[30,6,[\"icon\"]]]],null],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@loading\",\"@loadingMore\",\"item\",\"index\",\"@action\",\"&option\",\"&empty-state\"],false,[\"unless\",\"did-insert\",\"if\",\"o-s-s/search-field\",\"on\",\"eq\",\"on-bottom-reached\",\"scroll-shadow\",\"and\",\"not\",\"o-s-s/skeleton\",\"each\",\"-track-array\",\"fn\",\"has-block\",\"yield\",\"get\",\"o-s-s/illustration\",\"t\",\"o-s-s/button\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/infinite-select.hbs",
     "isStrictMode": false
   });
@@ -89797,6 +89808,20 @@ interface OSSCodeBlockArgs {
           type: 'boolean'
         }
       },
+      action: {
+        description: 'An optional action button to display in the footer of the select dropdown. The action object accepts the following properties: `skin` (string, default: "primary"), `label` (string, optional), `icon` (string, optional), `onClick` (function, required), `closeOnClick` (boolean, default: true).',
+        table: {
+          type: {
+            summary: 'object'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'object'
+        }
+      },
       onSelect: {
         type: {
           required: true
@@ -89856,6 +89881,13 @@ interface OSSCodeBlockArgs {
     inline: false,
     enableKeyboard: false,
     skin: 'default',
+    action: {
+      skin: 'tertiary',
+      label: 'Add Hero',
+      icon: 'fa-plus',
+      onClick: (0, _addonActions.action)('footer action clicked'),
+      closeOnClick: true
+    },
     onSelect: (0, _addonActions.action)('onSelect'),
     onSearch: (0, _addonActions.action)('onSearch'),
     onBottomReached: (0, _addonActions.action)('onBottomReached'),
@@ -89869,13 +89901,13 @@ interface OSSCodeBlockArgs {
             @items={{this.items}} @itemLabel={{this.itemLabel}} @searchEnabled={{this.searchEnabled}} @onSearch={{this.onSearch}}
             @searchPlaceholder={{this.searchPlaceholder}} @onSelect={{this.onSelect}} @loading={{this.loading}}
             @loadingMore={{this.loadingMore}} @inline={{this.inline}} @onBottomReached={{this.onBottomReached}} 
-            @skin={{this.skin}} @didRender={{this.didRender}} @enableKeyboard={{this.enableKeyboard}}
+            @skin={{this.skin}} @didRender={{this.didRender}} @enableKeyboard={{this.enableKeyboard}} @action={{this.action}}
             class="upf-align--absolute-center"/>
       
     */
     {
-      "id": "0f2m8fia",
-      "block": "[[[1,\"\\n      \"],[8,[39,0],[[24,0,\"upf-align--absolute-center\"]],[[\"@items\",\"@itemLabel\",\"@searchEnabled\",\"@onSearch\",\"@searchPlaceholder\",\"@onSelect\",\"@loading\",\"@loadingMore\",\"@inline\",\"@onBottomReached\",\"@skin\",\"@didRender\",\"@enableKeyboard\"],[[30,0,[\"items\"]],[30,0,[\"itemLabel\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"onSearch\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"onSelect\"]],[30,0,[\"loading\"]],[30,0,[\"loadingMore\"]],[30,0,[\"inline\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"skin\"]],[30,0,[\"didRender\"]],[30,0,[\"enableKeyboard\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/infinite-select\"]]",
+      "id": "RzUBhQlJ",
+      "block": "[[[1,\"\\n      \"],[8,[39,0],[[24,0,\"upf-align--absolute-center\"]],[[\"@items\",\"@itemLabel\",\"@searchEnabled\",\"@onSearch\",\"@searchPlaceholder\",\"@onSelect\",\"@loading\",\"@loadingMore\",\"@inline\",\"@onBottomReached\",\"@skin\",\"@didRender\",\"@enableKeyboard\",\"@action\"],[[30,0,[\"items\"]],[30,0,[\"itemLabel\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"onSearch\"]],[30,0,[\"searchPlaceholder\"]],[30,0,[\"onSelect\"]],[30,0,[\"loading\"]],[30,0,[\"loadingMore\"]],[30,0,[\"inline\"]],[30,0,[\"onBottomReached\"]],[30,0,[\"skin\"]],[30,0,[\"didRender\"]],[30,0,[\"enableKeyboard\"]],[30,0,[\"action\"]]]],null],[1,\"\\n  \"]],[],false,[\"o-s-s/infinite-select\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/infinite-select.stories.js",
       "isStrictMode": false
     }),
@@ -95992,6 +96024,7 @@ interface OSSCodeBlockArgs {
           @searchEnabled={{this.searchEnabled}}
           @searchPlaceholder={{this.searchPlaceholder}}
           @enableKeyboard={{true}}
+          @action={{this.actionArguments}}
           id={{this.portalId}}
           class={{concat "margin-top-px-0 oss-select-container__dropdown " this.dropdownAddressableClass}}
           {{on-click-outside this.onClickOutside useCapture=@captureClickOutside}}
@@ -96028,8 +96061,8 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "OQZZ0W6S",
-    "block": "[[[11,0],[16,0,[30,0,[\"classNames\"]]],[24,\"data-toggle\",\"oss-dropdown\"],[17,1],[4,[38,0],[[28,[37,1],[[30,0,[\"ensureBlockPresence\"]],[48,[30,9]]],null]],null],[4,[38,0],[[30,0,[\"registerContainer\"]]],null],[4,[38,3],[[30,0,[\"disconnectObserver\"]]],null],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"upf-input \",[52,[30,0,[\"isOpen\"]],\"active\"],\" fx-row fx-1 fx-xalign-center\"]]],[4,[38,5],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-malign-space-between fx-xalign-center\"],[12],[1,\"\\n\"],[41,[30,2],[[[41,[48,[30,10]],[[[1,\"          \"],[18,10,[[30,2]]],[1,\"\\n\"]],[]],[[[1,\"          \"],[10,1],[14,0,\"text-ellipsis\"],[12],[1,[28,[35,7],[[30,2],[30,0,[\"targetValue\"]]],null]],[13],[1,\"\\n\"]],[]]]],[]],[[[1,\"        \"],[10,1],[14,0,\"upf-input--placeholder\"],[12],[1,[30,0,[\"placeholder\"]]],[13],[1,\"\\n\"]],[]]],[1,\"      \"],[8,[39,8],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[[29,[\"fa-chevron-\",[52,[30,0,[\"isOpen\"]],\"up\",\"down\"]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"isOpen\"]],[[[40,[[[1,\"      \"],[8,[39,11],[[16,1,[30,0,[\"portalId\"]]],[16,0,[28,[37,12],[\"margin-top-px-0 oss-select-container__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[4,[38,13],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[[30,4]]]],[4,[38,5],[\"click\",[30,0,[\"noop\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchEnabled\",\"@searchPlaceholder\",\"@enableKeyboard\"],[[30,3],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"searchPlaceholder\"]],true]],[[\"option\"],[[[[1,\"\\n          \"],[10,0],[15,0,[29,[\"item-wrapper fx-row fx-xalign-center fx-malign-space-between \",[52,[28,[37,14],[[30,2],[30,5]],null],\"selected\"]]]],[12],[1,\"\\n\"],[41,[48,[30,9]],[[[1,\"              \"],[18,9,[[30,5],[30,6]]],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,14],[[30,2],[30,5]],null],[[[1,\"              \"],[8,[39,8],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"          \"],[13],[1,\"\\n        \"]],[5,6]]]]],[1,\"\\n\"]],[]],\"%cursor:0%\",[28,[37,10],[[30,0,[\"portalTarget\"]]],null],null]],[]],null],[1,\"\\n\"],[41,[30,7],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,8],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\"\\n      \"],[1,[30,7]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,8],[[[1,\"    \"],[10,0],[14,0,\"font-color-success-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,8],null,[[\"@icon\"],[\"fa-check-circle\"]],null],[1,\"\\n      \"],[1,[30,8]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@value\",\"@items\",\"@captureClickOutside\",\"item\",\"index\",\"@errorMessage\",\"@successMessage\",\"&option\",\"&selected\"],false,[\"did-insert\",\"fn\",\"has-block\",\"will-destroy\",\"if\",\"on\",\"yield\",\"get\",\"o-s-s/icon\",\"in-element\",\"-in-el-null\",\"o-s-s/infinite-select\",\"concat\",\"on-click-outside\",\"eq\"]]",
+    "id": "3HqHf5Zz",
+    "block": "[[[11,0],[16,0,[30,0,[\"classNames\"]]],[24,\"data-toggle\",\"oss-dropdown\"],[17,1],[4,[38,0],[[28,[37,1],[[30,0,[\"ensureBlockPresence\"]],[48,[30,9]]],null]],null],[4,[38,0],[[30,0,[\"registerContainer\"]]],null],[4,[38,3],[[30,0,[\"disconnectObserver\"]]],null],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"upf-input \",[52,[30,0,[\"isOpen\"]],\"active\"],\" fx-row fx-1 fx-xalign-center\"]]],[4,[38,5],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-malign-space-between fx-xalign-center\"],[12],[1,\"\\n\"],[41,[30,2],[[[41,[48,[30,10]],[[[1,\"          \"],[18,10,[[30,2]]],[1,\"\\n\"]],[]],[[[1,\"          \"],[10,1],[14,0,\"text-ellipsis\"],[12],[1,[28,[35,7],[[30,2],[30,0,[\"targetValue\"]]],null]],[13],[1,\"\\n\"]],[]]]],[]],[[[1,\"        \"],[10,1],[14,0,\"upf-input--placeholder\"],[12],[1,[30,0,[\"placeholder\"]]],[13],[1,\"\\n\"]],[]]],[1,\"      \"],[8,[39,8],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[[29,[\"fa-chevron-\",[52,[30,0,[\"isOpen\"]],\"up\",\"down\"]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"isOpen\"]],[[[40,[[[1,\"      \"],[8,[39,11],[[16,1,[30,0,[\"portalId\"]]],[16,0,[28,[37,12],[\"margin-top-px-0 oss-select-container__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[4,[38,13],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[[30,4]]]],[4,[38,5],[\"click\",[30,0,[\"noop\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchEnabled\",\"@searchPlaceholder\",\"@enableKeyboard\",\"@action\"],[[30,3],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"searchPlaceholder\"]],true,[30,0,[\"actionArguments\"]]]],[[\"option\"],[[[[1,\"\\n          \"],[10,0],[15,0,[29,[\"item-wrapper fx-row fx-xalign-center fx-malign-space-between \",[52,[28,[37,14],[[30,2],[30,5]],null],\"selected\"]]]],[12],[1,\"\\n\"],[41,[48,[30,9]],[[[1,\"              \"],[18,9,[[30,5],[30,6]]],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,14],[[30,2],[30,5]],null],[[[1,\"              \"],[8,[39,8],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"          \"],[13],[1,\"\\n        \"]],[5,6]]]]],[1,\"\\n\"]],[]],\"%cursor:0%\",[28,[37,10],[[30,0,[\"portalTarget\"]]],null],null]],[]],null],[1,\"\\n\"],[41,[30,7],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,8],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\"\\n      \"],[1,[30,7]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,8],[[[1,\"    \"],[10,0],[14,0,\"font-color-success-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,8],null,[[\"@icon\"],[\"fa-check-circle\"]],null],[1,\"\\n      \"],[1,[30,8]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@value\",\"@items\",\"@captureClickOutside\",\"item\",\"index\",\"@errorMessage\",\"@successMessage\",\"&option\",\"&selected\"],false,[\"did-insert\",\"fn\",\"has-block\",\"will-destroy\",\"if\",\"on\",\"yield\",\"get\",\"o-s-s/icon\",\"in-element\",\"-in-el-null\",\"o-s-s/infinite-select\",\"concat\",\"on-click-outside\",\"eq\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/select.hbs",
     "isStrictMode": false
   });
@@ -96069,6 +96102,13 @@ interface OSSCodeBlockArgs {
     get dropdownAddressableClass() {
       return this.args.addressableAs ? `${this.args.addressableAs}__dropdown` : '';
     }
+    get actionArguments() {
+      if (!this.args.action) return undefined;
+      return {
+        ...this.args.action,
+        onClick: this.onActionClick
+      };
+    }
     onSelect(value) {
       this.args.onChange(value);
       this.hideSelector();
@@ -96101,6 +96141,12 @@ interface OSSCodeBlockArgs {
     ensureBlockPresence(hasOptionItem) {
       (true && !(hasOptionItem) && (0, _debug.assert)(`[component][OSS::Select] You must pass option named block`, hasOptionItem));
     }
+    onActionClick() {
+      this.args.action?.onClick();
+      if (this.args.action?.closeOnClick ?? true) {
+        this.hideSelector();
+      }
+    }
     setupDropdownAutoplacement() {
       const referenceTarget = this.container.querySelector('.upf-input');
       const floatingTarget = document.querySelector(`#${this.portalId}`);
@@ -96123,7 +96169,7 @@ interface OSSCodeBlockArgs {
     initializer: function () {
       return false;
     }
-  }), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "hideSelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "hideSelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleSelectorClose", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleSelectorClose"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "ensureBlockPresence", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "ensureBlockPresence"), _class.prototype)), _class);
+  }), _applyDecoratedDescriptor(_class.prototype, "onSelect", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSelect"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onSearch", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onSearch"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "toggleDropdown", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "toggleDropdown"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "hideSelector", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "hideSelector"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "handleSelectorClose", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "handleSelectorClose"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "ensureBlockPresence", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "ensureBlockPresence"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onActionClick", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onActionClick"), _class.prototype)), _class);
   (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSSelect);
 });
 ;define("@upfluence/oss-components/components/o-s-s/select.stories", ["exports", "@storybook/addon-actions", "@ember/template-factory"], function (_exports, _addonActions, _templateFactory) {
@@ -96286,6 +96332,20 @@ interface OSSCodeBlockArgs {
             summary: 'string'
           }
         }
+      },
+      action: {
+        description: 'An optional action button to display in the footer of the select dropdown. The action object accepts the following properties: `skin` (string, default: "primary"), `label` (string, optional), `icon` (string, optional), `onClick` (function, required), `closeOnClick` (boolean, default: true).',
+        type: {
+          name: 'object'
+        },
+        table: {
+          type: {
+            summary: 'SelectAction'
+          }
+        },
+        control: {
+          type: 'object'
+        }
       }
     },
     parameters: {
@@ -96306,6 +96366,13 @@ interface OSSCodeBlockArgs {
     errorMessage: undefined,
     successMessage: undefined,
     addressableAs: undefined,
+    action: {
+      skin: 'tertiary',
+      label: 'Add Hero',
+      icon: 'fa-plus',
+      onClick: (0, _addonActions.action)('footer action clicked'),
+      closeOnClick: true
+    },
     onSearch: (0, _addonActions.action)('onSearch'),
     onChange: (0, _addonActions.action)('onChange')
   };
@@ -96317,7 +96384,7 @@ interface OSSCodeBlockArgs {
         <OSS::Select
           @items={{this.items}} @value={{this.value}} @targetLabel={{this.targetLabel}} @placeholder={{this.placeholder}}
           @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} @successMessage={{this.successMessage}}
-          @onSearch={{this.onSearch}} @onChange={{this.onChange}}>
+          @onSearch={{this.onSearch}} @onChange={{this.onChange}} @action={{this.action}}>
           <:option as |item|>
             {{item.name}}
           </:option>
@@ -96326,8 +96393,8 @@ interface OSSCodeBlockArgs {
       
     */
     {
-      "id": "ZugdFk0j",
-      "block": "[[[1,\"\\n  \"],[10,0],[14,5,\"width: 250px\"],[12],[1,\"\\n    \"],[8,[39,0],null,[[\"@items\",\"@value\",\"@targetLabel\",\"@placeholder\",\"@disabled\",\"@errorMessage\",\"@successMessage\",\"@onSearch\",\"@onChange\"],[[30,0,[\"items\"]],[30,0,[\"value\"]],[30,0,[\"targetLabel\"]],[30,0,[\"placeholder\"]],[30,0,[\"disabled\"]],[30,0,[\"errorMessage\"]],[30,0,[\"successMessage\"]],[30,0,[\"onSearch\"]],[30,0,[\"onChange\"]]]],[[\"option\"],[[[[1,\"\\n        \"],[1,[30,1,[\"name\"]]],[1,\"\\n      \"]],[1]]]]],[1,\"\\n  \"],[13],[1,\"\\n  \"]],[\"item\"],false,[\"o-s-s/select\"]]",
+      "id": "rAPLAauS",
+      "block": "[[[1,\"\\n  \"],[10,0],[14,5,\"width: 250px\"],[12],[1,\"\\n    \"],[8,[39,0],null,[[\"@items\",\"@value\",\"@targetLabel\",\"@placeholder\",\"@disabled\",\"@errorMessage\",\"@successMessage\",\"@onSearch\",\"@onChange\",\"@action\"],[[30,0,[\"items\"]],[30,0,[\"value\"]],[30,0,[\"targetLabel\"]],[30,0,[\"placeholder\"]],[30,0,[\"disabled\"]],[30,0,[\"errorMessage\"]],[30,0,[\"successMessage\"]],[30,0,[\"onSearch\"]],[30,0,[\"onChange\"]],[30,0,[\"action\"]]]],[[\"option\"],[[[[1,\"\\n        \"],[1,[30,1,[\"name\"]]],[1,\"\\n      \"]],[1]]]]],[1,\"\\n  \"],[13],[1,\"\\n  \"]],[\"item\"],false,[\"o-s-s/select\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/select.stories.js",
       "isStrictMode": false
     }),
