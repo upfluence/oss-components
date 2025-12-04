@@ -3,7 +3,7 @@ import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
 
-type SkinType =
+export type SkinType =
   | 'default'
   | 'primary'
   | 'secondary'

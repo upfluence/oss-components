@@ -49,6 +49,41 @@
           @onChange={{this.onSelect}}
           @onSearch={{this.onPowerSelectSearch}}
           @successMessage="It works"
+          @action={{(hash
+            skin="tertiary" label="Add Hero (close on click)" icon="fa-plus" onClick=this.onFooterButtonClick
+          )}}
+          class="fx-1"
+        >
+          <:option as |item|>
+            {{item}}
+          </:option>
+        </OSS::Select>
+
+        <OSS::Select
+          @value={{this.selectedItem}}
+          @items={{this.superHeroes}}
+          @onChange={{this.onSelect}}
+          @onSearch={{this.onPowerSelectSearch}}
+          @successMessage="It works"
+          class="fx-1"
+        >
+          <:option as |item|>
+            {{item}}
+          </:option>
+        </OSS::Select>
+
+        <OSS::Select
+          @value={{this.selectedItem}}
+          @items={{this.superHeroes}}
+          @onChange={{this.onSelect}}
+          @successMessage="It works"
+          @action={{(hash
+            skin="tertiary"
+            label="Add Hero (don't close on click)"
+            icon="fa-plus"
+            onClick=this.onFooterButtonClick
+            closeOnClick=false
+          )}}
           class="fx-1"
         >
           <:option as |item|>
@@ -73,8 +108,34 @@
         @onSearch={{this.onInfiniteSelectSearch}}
         @searchPlaceholder="Enter a keyword"
         @onSelect={{this.onInfiniteSelectChange}}
+        @action={{(hash skin="tertiary" label="Add Hero" icon="fa-plus" onClick=this.onFooterButtonClick)}}
         style="position: relative; margin: 0"
       />
+      <OSS::InfiniteSelect
+        @items={{this.superHeroes}}
+        @searchEnabled={{true}}
+        @onSearch={{this.onInfiniteSelectSearch}}
+        @searchPlaceholder="Enter a keyword"
+        @onSelect={{this.onInfiniteSelectChange}}
+        style="position: relative; margin: 0"
+      >
+        <:option as |item|>
+          {{item}}
+        </:option>
+      </OSS::InfiniteSelect>
+      <OSS::InfiniteSelect
+        @items={{this.superHeroes}}
+        @searchEnabled={{true}}
+        @onSearch={{this.onInfiniteSelectSearch}}
+        @searchPlaceholder="Enter a keyword"
+        @onSelect={{this.onInfiniteSelectChange}}
+        @action={{(hash skin="tertiary" label="Add Hero" icon="fa-plus" onClick=this.onFooterButtonClick)}}
+        style="position: relative; margin: 0"
+      >
+        <:option as |item|>
+          {{item}}
+        </:option>
+      </OSS::InfiniteSelect>
     </div>
   </div>
 
@@ -541,65 +602,3 @@
     <OSS::Button @skin="primary" @label="Submit" type="submit" form={{this.formInstance.id}} />
   </div>
 </div>
-
-{{!-- <div class="fx-col fx-gap-px-6 padding-px-18">
-  <div class="fx-row fx-gap-px-6">
-    <OSS::Button @label="Open modal" {{on "click" this.openModal}} />
-    <OSS::Button @label="Open sidepanel" {{on "click" this.openSidePanel}} />
-  </div>
-
-{{#if this.displayModal}}
-  <OSS::ModalDialog
-    @title="Example modal"
-    @subtitle="subtitle"
-    @close={{this.closeModal}}
-    @disableClickOutside={{false}}
-    @size="md"
-  >
-    <:content>
-      <OSS::ScrollablePanel style="height: 280px">
-        <div class="fx-col fx-gap-px-6">
-          {{#each this.loop}}
-            <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}} />
-          {{/each}}
-        </div>
-      </OSS::ScrollablePanel>
-    </:content>
-    <:footer>
-      <div class="fx-1">
-        <OSS::Icon @icon="fa-info" /><a href="">More info</a>
-      </div>
-      <div class="fx-row fx-gap-px-12">
-        <OSS::Button @skin="default" @label="Close" {{on "click" this.closeModal}} />
-        <OSS::Button @skin="secondary" @label="Save" />
-      </div>
-    </:footer>
-  </OSS::ModalDialog>
-{{/if}}
-
-<OSS::SidePanel
-  @onClose={{this.closeSidePanel}}
-  @backdrop={{true}}
-  @visible={{this.displaySidePanel}}
-  @noPadding={{true}}
->
-  <:header>
-    <OSS::SidePanel::Header
-      @onClose={{this.closeSidePanel}}
-      @onReturn={{this.onReturn}}
-      @title="This is the side panel's header."
-    />
-  </:header>
-  <:main>
-    <OSS::ScrollablePanel>
-      <div class="fx-col fx-gap-px-6">
-        {{#each this.loop}}
-          <OSS::InputContainer @placeholder="search" @value={{this.shopUrl}} />
-        {{/each}}
-      </div>
-    </OSS::ScrollablePanel>
-  </:main>
-  <:footer>
-    <span>This is the side panel's footer.</span>
-  </:footer>
-</OSS::SidePanel> --}}

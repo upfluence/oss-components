@@ -76,4 +76,15 @@
       {{/if}}
     </ul>
   </div>
+  {{#if @action}}
+    <OSS::Button
+      @size="sm"
+      @label={{@action.label}}
+      @skin={{@action.skin}}
+      @icon={{@action.icon}}
+      {{on "click" @action.onClick}}
+      class="width-pc-100"
+      data-control-name="infinite-select-footer-action-button"
+    />
+  {{/if}}
 </div>
