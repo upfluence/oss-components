@@ -25,12 +25,12 @@ module('Integration | Component | o-s-s/icon', function (hooks) {
     assert.dom('i').hasClass('fa-code-merge');
   });
 
-  test(`it renders the correct default style class`, async function (assert) {
+  test('it renders the correct default style class', async function (assert) {
     await render(hbs`<OSS::Icon @icon="fa-code-merge" />`);
     assert.dom('i').hasClass('far');
   });
 
-  test(`it renders the correct style flag specific classes`, async function (assert) {
+  test('it renders the correct style flag specific classes', async function (assert) {
     await render(hbs`<OSS::Icon @icon="US" @style="flag" />`);
     assert.dom('i').hasClass('fflag-US');
     assert.dom('i').hasClass('ff-sm');

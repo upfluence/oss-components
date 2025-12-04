@@ -92,7 +92,7 @@ export default class OSSTag extends Component<OSSTagArgs> {
   }
 
   get flagIcon(): string | undefined {
-    if (!this.args.icon || !this.iconIsFlag) return '';
+    if (!this.args.icon || !this.iconIsFlag) return undefined;
     return this.args.icon.replace('flag-', '');
   }
 }
