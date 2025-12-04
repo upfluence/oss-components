@@ -85427,20 +85427,24 @@ require('@ember/-internals/bootstrap')
     {{/if}}
     <div class="page-container {{if this.displaySidePadding 'page-container--side-padding'}}">
       {{#if this.showControls}}
-        <div class="carousel-control carousel-control--left" {{on "click" this.previousPage}} role="button">
-          <i class="far fa-chevron-left"></i>
-        </div>
-        <div class="carousel-control carousel-control--right" {{on "click" this.nextPage}} role="button">
-          <i class="far fa-chevron-right"></i>
-        </div>
+        {{#if this.showPreviousControl}}
+          <div class="carousel-control carousel-control--left" {{on "click" this.previousPage}} role="button">
+            <i class="far fa-chevron-left"></i>
+          </div>
+        {{/if}}
+        {{#if this.showNextControl}}
+          <div class="carousel-control carousel-control--right" {{on "click" this.nextPage}} role="button">
+            <i class="far fa-chevron-right"></i>
+          </div>
+        {{/if}}
       {{/if}}
       {{yield to="pages"}}
     </div>
   </div>
   */
   {
-    "id": "KxhoCQ4n",
-    "block": "[[[11,0],[16,0,[29,[\"oss-carousel \",[52,[28,[37,1],[[30,1],\"bottom\"],null],\"oss-carousel__reverse\"]]]],[17,2],[4,[38,2],[[30,0,[\"initialize\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"showIndicators\"]],[[[1,\"    \"],[10,0],[14,0,\"fx-row oss-carousel__indicators\"],[12],[1,\"\\n\"],[42,[28,[37,4],[[28,[37,4],[[30,0,[\"pages\"]]],null]],null],null,[[[1,\"        \"],[11,0],[24,0,\"page-btn\"],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[28,[37,6],[[30,0,[\"displayPage\"]],[30,3]],null]],null],[12],[1,\"\\n          \"],[10,\"i\"],[15,0,[29,[[30,0,[\"buttonIcon\"]],\" \",[52,[28,[37,1],[[30,4],[30,0,[\"currentPageIndex\"]]],null],\"page-btn--active\"]]]],[12],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[3,4]],null],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[15,0,[29,[\"page-container \",[52,[30,0,[\"displaySidePadding\"]],\"page-container--side-padding\"]]]],[12],[1,\"\\n\"],[41,[30,0,[\"showControls\"]],[[[1,\"      \"],[11,0],[24,0,\"carousel-control carousel-control--left\"],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[30,0,[\"previousPage\"]]],null],[12],[1,\"\\n        \"],[10,\"i\"],[14,0,\"far fa-chevron-left\"],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n      \"],[11,0],[24,0,\"carousel-control carousel-control--right\"],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[30,0,[\"nextPage\"]]],null],[12],[1,\"\\n        \"],[10,\"i\"],[14,0,\"far fa-chevron-right\"],[12],[13],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[18,5,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"@indicatorsPosition\",\"&attrs\",\"page\",\"index\",\"&pages\"],false,[\"if\",\"eq\",\"did-insert\",\"each\",\"-track-array\",\"on\",\"fn\",\"yield\"]]",
+    "id": "2k92PYW1",
+    "block": "[[[11,0],[16,0,[29,[\"oss-carousel \",[52,[28,[37,1],[[30,1],\"bottom\"],null],\"oss-carousel__reverse\"]]]],[17,2],[4,[38,2],[[30,0,[\"initialize\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"showIndicators\"]],[[[1,\"    \"],[10,0],[14,0,\"fx-row oss-carousel__indicators\"],[12],[1,\"\\n\"],[42,[28,[37,4],[[28,[37,4],[[30,0,[\"pages\"]]],null]],null],null,[[[1,\"        \"],[11,0],[24,0,\"page-btn\"],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[28,[37,6],[[30,0,[\"displayPage\"]],[30,3]],null]],null],[12],[1,\"\\n          \"],[10,\"i\"],[15,0,[29,[[30,0,[\"buttonIcon\"]],\" \",[52,[28,[37,1],[[30,4],[30,0,[\"currentPageIndex\"]]],null],\"page-btn--active\"]]]],[12],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[3,4]],null],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[15,0,[29,[\"page-container \",[52,[30,0,[\"displaySidePadding\"]],\"page-container--side-padding\"]]]],[12],[1,\"\\n\"],[41,[30,0,[\"showControls\"]],[[[41,[30,0,[\"showPreviousControl\"]],[[[1,\"        \"],[11,0],[24,0,\"carousel-control carousel-control--left\"],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[30,0,[\"previousPage\"]]],null],[12],[1,\"\\n          \"],[10,\"i\"],[14,0,\"far fa-chevron-left\"],[12],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"showNextControl\"]],[[[1,\"        \"],[11,0],[24,0,\"carousel-control carousel-control--right\"],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[30,0,[\"nextPage\"]]],null],[12],[1,\"\\n          \"],[10,\"i\"],[14,0,\"far fa-chevron-right\"],[12],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null]],[]],null],[1,\"    \"],[18,5,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"@indicatorsPosition\",\"&attrs\",\"page\",\"index\",\"&pages\"],false,[\"if\",\"eq\",\"did-insert\",\"each\",\"-track-array\",\"on\",\"fn\",\"yield\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/carousel.hbs",
     "isStrictMode": false
   });
@@ -85486,6 +85490,15 @@ require('@ember/-internals/bootstrap')
     get showControls() {
       return !!this.args.showControls ?? false;
     }
+    get loop() {
+      return this.args.loop ?? true;
+    }
+    get showPreviousControl() {
+      return this.showControls && (this.loop || this.currentPageIndex > 0);
+    }
+    get showNextControl() {
+      return this.showControls && (this.loop || this.currentPageIndex < (this.pages ?? []).length - 1);
+    }
     get displaySidePadding() {
       return this.args.showControls === 'outside';
     }
@@ -85526,7 +85539,7 @@ require('@ember/-internals/bootstrap')
       page.classList.add('page--active');
       this.prevPageIndex = this.currentPageIndex;
       this.currentPageIndex = this.pages.indexOf(page);
-      this.args.onPageChange?.();
+      this.args.onPageChange?.(this.currentPageIndex);
     }
     willDestroy() {
       super.willDestroy();
@@ -85662,6 +85675,20 @@ require('@ember/-internals/bootstrap')
           type: 'number'
         }
       },
+      loop: {
+        description: 'Allows the carousel to render the arrow to go from the last slide to the first and vice versa.',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: 'true'
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
       onPageChange: {
         description: 'Action triggered when the page changes',
         table: {
@@ -85701,6 +85728,7 @@ require('@ember/-internals/bootstrap')
     showIndicators: undefined,
     showControls: undefined,
     autoPlay: undefined,
+    loop: true,
     indicatorsPosition: 'top'
   };
   const Template = args => ({
@@ -85709,7 +85737,8 @@ require('@ember/-internals/bootstrap')
       
         <OSS::Carousel @showIndicators={{this.showIndicators}} @showControls={{this.showControls}}
                        @animationStyle={{this.animationStyle}} @buttonIcon={{this.buttonIcon}}
-                       @autoPlay={{this.autoPlay}} @indicatorsPosition={{this.indicatorsPosition}}>
+                       @autoPlay={{this.autoPlay}} @indicatorsPosition={{this.indicatorsPosition}}
+                       @loop={{this.loop}}>
           <:pages>
             <div class="page">
               <OSS::Banner @icon="fas fa-image" @title="PAGE 1"/>
@@ -85725,8 +85754,8 @@ require('@ember/-internals/bootstrap')
       
     */
     {
-      "id": "exOJlVai",
-      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@showIndicators\",\"@showControls\",\"@animationStyle\",\"@buttonIcon\",\"@autoPlay\",\"@indicatorsPosition\"],[[30,0,[\"showIndicators\"]],[30,0,[\"showControls\"]],[30,0,[\"animationStyle\"]],[30,0,[\"buttonIcon\"]],[30,0,[\"autoPlay\"]],[30,0,[\"indicatorsPosition\"]]]],[[\"pages\"],[[[[1,\"\\n        \"],[10,0],[14,0,\"page\"],[12],[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\",\"@title\"],[\"fas fa-image\",\"PAGE 1\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"page\"],[12],[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\",\"@title\"],[\"fas fa-image\",\"PAGE 2\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"page\"],[12],[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\",\"@title\"],[\"fas fa-image\",\"PAGE 1\"]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/carousel\",\"o-s-s/banner\"]]",
+      "id": "w64s8Nkb",
+      "block": "[[[1,\"\\n    \"],[8,[39,0],null,[[\"@showIndicators\",\"@showControls\",\"@animationStyle\",\"@buttonIcon\",\"@autoPlay\",\"@indicatorsPosition\",\"@loop\"],[[30,0,[\"showIndicators\"]],[30,0,[\"showControls\"]],[30,0,[\"animationStyle\"]],[30,0,[\"buttonIcon\"]],[30,0,[\"autoPlay\"]],[30,0,[\"indicatorsPosition\"]],[30,0,[\"loop\"]]]],[[\"pages\"],[[[[1,\"\\n        \"],[10,0],[14,0,\"page\"],[12],[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\",\"@title\"],[\"fas fa-image\",\"PAGE 1\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"page\"],[12],[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\",\"@title\"],[\"fas fa-image\",\"PAGE 2\"]],null],[1,\"\\n        \"],[13],[1,\"\\n        \"],[10,0],[14,0,\"page\"],[12],[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\",\"@title\"],[\"fas fa-image\",\"PAGE 1\"]],null],[1,\"\\n        \"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/carousel\",\"o-s-s/banner\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/carousel.stories.js",
       "isStrictMode": false
     }),
@@ -93186,6 +93215,149 @@ interface OSSCodeBlockArgs {
     disabled: false,
     onChange: (0, _addonActions.action)('onChange')
   };
+});
+;define("@upfluence/oss-components/components/o-s-s/onboarding-state", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@upfluence/oss-components/utils", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _utils, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/debug",0,"@upfluence/oss-components/utils",0,"@ember/component"eaimeta@70e063a35619d71f
+  const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
+  /*
+    <div class="oss-onboarding-state" ...attributes>
+    <div class="oss-onboarding-state__container">
+      <div class="oss-onboarding-state__illustration">
+        <img src={{@imageUrl}} role="presentation" alt="" />
+      </div>
+      <div class="fx-col fx-gap-px-18">
+        <div class="fx-col fx-gap-px-6">
+          <span class="oss-onboarding-state__title">{{@title}}</span>
+          <span class="oss-onboarding-state__subtitle">{{@subtitle}}</span>
+        </div>
+        {{#if (has-block "actions")}}
+          <div class="oss-onboarding-state__actions">
+            {{yield to="actions"}}
+          </div>
+        {{/if}}
+      </div>
+    </div>
+  </div>
+  */
+  {
+    "id": "6SbXzUSo",
+    "block": "[[[11,0],[24,0,\"oss-onboarding-state\"],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-onboarding-state__container\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"oss-onboarding-state__illustration\"],[12],[1,\"\\n      \"],[10,\"img\"],[15,\"src\",[30,2]],[14,\"role\",\"presentation\"],[14,\"alt\",\"\"],[12],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-18\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-6\"],[12],[1,\"\\n        \"],[10,1],[14,0,\"oss-onboarding-state__title\"],[12],[1,[30,3]],[13],[1,\"\\n        \"],[10,1],[14,0,\"oss-onboarding-state__subtitle\"],[12],[1,[30,4]],[13],[1,\"\\n      \"],[13],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"        \"],[10,0],[14,0,\"oss-onboarding-state__actions\"],[12],[1,\"\\n          \"],[18,5,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@imageUrl\",\"@title\",\"@subtitle\",\"&actions\"],false,[\"if\",\"has-block\",\"yield\"]]",
+    "moduleName": "@upfluence/oss-components/components/o-s-s/onboarding-state.hbs",
+    "isStrictMode": false
+  });
+  class OSSOnboardingStateComponent extends _component2.default {
+    constructor(owner, args) {
+      super(owner, args);
+      (true && !(typeof args.title === 'string' || (0, _utils.isSafeString)(args.title)) && (0, _debug.assert)('[OSS::OnboardingState] The @title parameter is mandatory', typeof args.title === 'string' || (0, _utils.isSafeString)(args.title)));
+      (true && !(typeof args.subtitle === 'string' || (0, _utils.isSafeString)(args.subtitle)) && (0, _debug.assert)('[OSS::OnboardingState] The @subtitle parameter is mandatory', typeof args.subtitle === 'string' || (0, _utils.isSafeString)(args.subtitle)));
+      (true && !(typeof args.imageUrl === 'string' || (0, _utils.isSafeString)(args.imageUrl)) && (0, _debug.assert)('[OSS::OnboardingState] The @imageUrl parameter is mandatory', typeof args.imageUrl === 'string' || (0, _utils.isSafeString)(args.imageUrl)));
+    }
+  }
+  _exports.default = OSSOnboardingStateComponent;
+  (0, _component.setComponentTemplate)(__COLOCATED_TEMPLATE__, OSSOnboardingStateComponent);
+});
+;define("@upfluence/oss-components/components/o-s-s/onboarding-state.stories", ["exports", "@ember/template-factory"], function (_exports, _templateFactory) {
+  "use strict";
+
+  Object.defineProperty(_exports, "__esModule", {
+    value: true
+  });
+  _exports.default = _exports.Default = void 0;
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  var _default = _exports.default = {
+    title: 'Components/OSS::OnboardingState',
+    component: 'onboarding-state',
+    argTypes: {
+      title: {
+        description: 'The title of the onboarding state',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      subtitle: {
+        description: 'The subtitle of the onboarding state',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      },
+      imageUrl: {
+        description: 'The imageUrl of the onboarding state illustration',
+        table: {
+          type: {
+            summary: 'string'
+          },
+          defaultValue: {
+            summary: 'undefined'
+          }
+        },
+        control: {
+          type: 'text'
+        }
+      }
+    },
+    parameters: {
+      docs: {
+        description: {
+          component: 'The OSS::OnboardingState component is used to display an onboarding state with a customizable title, subtitle, and illustration. The buttons should to be defined in the actions named-block.'
+        }
+      }
+    }
+  };
+  const defaultArgs = {
+    title: 'Welcome to OSS',
+    subtitle: 'Get started by following the steps below.',
+    imageUrl: '/@upfluence/oss-components/assets/images/upfluence-full-blue-logo.svg'
+  };
+  const Template = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+        <div class="fx-row" style="width:600px" >
+          <OSS::OnboardingState
+            @title={{this.title}}
+            @subtitle={{this.subtitle}}
+            @imageUrl={{this.imageUrl}}
+          >
+            <:actions>
+              <OSS::Button @icon="fa-plus" @label="Start setup" @skin="primary" />
+              <OSS::Button @label="Learn more" />
+            </:actions>
+          </OSS::OnboardingState>
+        </div>
+      
+    */
+    {
+      "id": "2eLnEPox",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,0,\"fx-row\"],[14,5,\"width:600px\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@imageUrl\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"imageUrl\"]]]],[[\"actions\"],[[[[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\",\"@label\",\"@skin\"],[\"fa-plus\",\"Start setup\",\"primary\"]],null],[1,\"\\n          \"],[8,[39,1],null,[[\"@label\"],[\"Learn more\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/onboarding-state\",\"o-s-s/button\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/onboarding-state.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
+  const Default = _exports.Default = Template.bind({});
+  Default.args = defaultArgs;
 });
 ;define("@upfluence/oss-components/components/o-s-s/panel", ["exports", "@ember/component", "@ember/component/template-only", "@ember/template-factory"], function (_exports, _component, _templateOnly, _templateFactory) {
   "use strict";

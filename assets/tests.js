@@ -3654,6 +3654,7 @@ define("dummy/tests/integration/components/o-s-s/carousel-test", ["qunit", "embe
       this.showIndicators = undefined;
       this.showControls = undefined;
       this.autoPlay = undefined;
+      this.loop = undefined;
       this.onPageChange = _sinon.default.spy();
     });
     async function renderCarousel() {
@@ -3663,7 +3664,7 @@ define("dummy/tests/integration/components/o-s-s/carousel-test", ["qunit", "embe
             <OSS::Carousel @showIndicators={{this.showIndicators}} @showControls={{this.showControls}}
                            @animationStyle={{this.animationStyle}} @buttonIcon={{this.buttonIcon}}
                            @autoPlay={{this.autoPlay}} @onPageChange={{this.onPageChange}}
-                           @indicatorsPosition={{this.indicatorsPosition}}>
+                           @indicatorsPosition={{this.indicatorsPosition}} @loop={{this.loop}}>
               <:pages>
                 <div class="page">Page 1</div>
                 <div class="page">Page 2</div>
@@ -3673,8 +3674,8 @@ define("dummy/tests/integration/components/o-s-s/carousel-test", ["qunit", "embe
           
       */
       {
-        "id": "XJ1JyX9E",
-        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@showIndicators\",\"@showControls\",\"@animationStyle\",\"@buttonIcon\",\"@autoPlay\",\"@onPageChange\",\"@indicatorsPosition\"],[[30,0,[\"showIndicators\"]],[30,0,[\"showControls\"]],[30,0,[\"animationStyle\"]],[30,0,[\"buttonIcon\"]],[30,0,[\"autoPlay\"]],[30,0,[\"onPageChange\"]],[30,0,[\"indicatorsPosition\"]]]],[[\"pages\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 1\"],[13],[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 2\"],[13],[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 3\"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"]],[],false,[\"o-s-s/carousel\"]]",
+        "id": "0q1GjpVj",
+        "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@showIndicators\",\"@showControls\",\"@animationStyle\",\"@buttonIcon\",\"@autoPlay\",\"@onPageChange\",\"@indicatorsPosition\",\"@loop\"],[[30,0,[\"showIndicators\"]],[30,0,[\"showControls\"]],[30,0,[\"animationStyle\"]],[30,0,[\"buttonIcon\"]],[30,0,[\"autoPlay\"]],[30,0,[\"onPageChange\"]],[30,0,[\"indicatorsPosition\"]],[30,0,[\"loop\"]]]],[[\"pages\"],[[[[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 1\"],[13],[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 2\"],[13],[1,\"\\n          \"],[10,0],[14,0,\"page\"],[12],[1,\"Page 3\"],[13],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"]],[],false,[\"o-s-s/carousel\"]]",
         "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/carousel-test.ts",
         "isStrictMode": false
       }));
@@ -3744,6 +3745,64 @@ define("dummy/tests/integration/components/o-s-s/carousel-test", ["qunit", "embe
         assert.dom('.oss-carousel .carousel-control--right').exists();
         assert.dom('.page-container--side-padding').exists();
       });
+      (0, _qunit.module)('for @loop argument', hooks => {
+        hooks.beforeEach(function () {
+          this.showControls = true;
+        });
+        [undefined, true].forEach(value => {
+          (0, _qunit.module)(`When loop is ${value}`, hooks => {
+            hooks.beforeEach(function () {
+              this.loop = value;
+            });
+            (0, _qunit.test)('The previous control is shown on the first page', async function (assert) {
+              await renderCarousel();
+              assert.dom('.oss-carousel .carousel-control').exists();
+              assert.dom('.oss-carousel .carousel-control--left').exists();
+              assert.dom('.oss-carousel .carousel-control--right').exists();
+            });
+            (0, _qunit.test)('The previous and next controls are shown on the center page', async function (assert) {
+              await renderCarousel();
+              await (0, _testHelpers.click)('.oss-carousel .page-btn:nth-child(2)');
+              assert.dom('.oss-carousel .carousel-control').exists();
+              assert.dom('.oss-carousel .carousel-control--left').exists();
+              assert.dom('.oss-carousel .carousel-control--right').exists();
+            });
+            (0, _qunit.test)('The next control is shown on the last page', async function (assert) {
+              await renderCarousel();
+              await (0, _testHelpers.click)('.oss-carousel .page-btn:nth-child(3)');
+              assert.dom('.oss-carousel .carousel-control').exists();
+              assert.dom('.oss-carousel .carousel-control--left').exists();
+              assert.dom('.oss-carousel .carousel-control--right').exists();
+            });
+          });
+        });
+        (0, _qunit.module)('When loop is false', hooks => {
+          hooks.beforeEach(function () {
+            this.showControls = true;
+            this.loop = false;
+          });
+          (0, _qunit.test)('The previous control is not shown on the first page', async function (assert) {
+            await renderCarousel();
+            assert.dom('.oss-carousel .carousel-control').exists();
+            assert.dom('.oss-carousel .carousel-control--left').doesNotExist();
+            assert.dom('.oss-carousel .carousel-control--right').exists();
+          });
+          (0, _qunit.test)('The previous and next controls are shown on the center page', async function (assert) {
+            await renderCarousel();
+            await (0, _testHelpers.click)('.oss-carousel .page-btn:nth-child(2)');
+            assert.dom('.oss-carousel .carousel-control').exists();
+            assert.dom('.oss-carousel .carousel-control--left').exists();
+            assert.dom('.oss-carousel .carousel-control--right').exists();
+          });
+          (0, _qunit.test)('The next control is not shown on the last page', async function (assert) {
+            await renderCarousel();
+            await (0, _testHelpers.click)('.oss-carousel .page-btn:nth-child(3)');
+            assert.dom('.oss-carousel .carousel-control').exists();
+            assert.dom('.oss-carousel .carousel-control--left').exists();
+            assert.dom('.oss-carousel .carousel-control--right').doesNotExist();
+          });
+        });
+      });
     });
     (0, _qunit.module)('Indicator button icon', () => {
       (0, _qunit.test)('By default, it renders the default button icon', async function (assert) {
@@ -3784,7 +3843,7 @@ define("dummy/tests/integration/components/o-s-s/carousel-test", ["qunit", "embe
     (0, _qunit.test)('@onPageChange is called when changing the page when the parameter is defined', async function (assert) {
       await renderCarousel();
       await (0, _testHelpers.click)('.oss-carousel .page-btn:nth-child(2)');
-      assert.true(this.onPageChange.calledOnceWithExactly());
+      assert.true(this.onPageChange.calledOnceWithExactly(1));
     });
   });
 });
@@ -10680,6 +10739,201 @@ define("dummy/tests/integration/components/o-s-s/number-input-test", ["qunit", "
       assert.dom('.number-input input').isDisabled();
       assert.dom('.upf-square-btn:nth-of-type(1)').isDisabled();
       assert.dom('.upf-square-btn:nth-of-type(2)').isDisabled();
+    });
+  });
+});
+define("dummy/tests/integration/components/o-s-s/onboarding-state-test", ["qunit", "ember-qunit", "@ember/test-helpers", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _templateFactory) {
+  "use strict";
+
+  0; //eaimeta@70e063a35619d71f0,"qunit",0,"ember-qunit",0,"@ember/test-helpers",0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
+  const TITLE = 'Welcome to OSS';
+  const SUBTITLE = 'Get started by following the steps below.';
+  const IMAGE_URL = '/@upfluence/oss-components/assets/images/upfluence-full-blue-logo.svg';
+  (0, _qunit.module)('Integration | Component | o-s-s/onboarding-state', function (hooks) {
+    (0, _emberQunit.setupRenderingTest)(hooks);
+    hooks.beforeEach(function () {
+      this.title = TITLE;
+      this.subtitle = SUBTITLE;
+      this.imageUrl = IMAGE_URL;
+    });
+    (0, _qunit.test)('it renders', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}} @imageUrl={{this.imageUrl}} />
+      */
+      {
+        "id": "R580gPMd",
+        "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@imageUrl\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"imageUrl\"]]]],null]],[],false,[\"o-s-s/onboarding-state\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/onboarding-state-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-onboarding-state').exists();
+    });
+    (0, _qunit.test)('it renders the extra attributes', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}} @imageUrl={{this.imageUrl}} data-control-name="onboarding-state-test" />
+      */
+      {
+        "id": "IVkkhgIg",
+        "block": "[[[8,[39,0],[[24,\"data-control-name\",\"onboarding-state-test\"]],[[\"@title\",\"@subtitle\",\"@imageUrl\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"imageUrl\"]]]],null]],[],false,[\"o-s-s/onboarding-state\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/onboarding-state-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('[data-control-name="onboarding-state-test"]').exists();
+    });
+    (0, _qunit.module)('for title', () => {
+      (0, _qunit.test)('it renders', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}} @imageUrl={{this.imageUrl}} />
+        */
+        {
+          "id": "R580gPMd",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@imageUrl\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"imageUrl\"]]]],null]],[],false,[\"o-s-s/onboarding-state\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/onboarding-state-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-onboarding-state__title').hasText(TITLE);
+      });
+      (0, _qunit.test)('it updates when title changes', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}} @imageUrl={{this.imageUrl}} />
+        */
+        {
+          "id": "R580gPMd",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@imageUrl\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"imageUrl\"]]]],null]],[],false,[\"o-s-s/onboarding-state\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/onboarding-state-test.ts",
+          "isStrictMode": false
+        }));
+        this.set('title', 'Updated title');
+        assert.dom('.oss-onboarding-state__title').hasText('Updated title');
+      });
+    });
+    (0, _qunit.module)('for subtitle', () => {
+      (0, _qunit.test)('it renders the correct subtitle', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}} @imageUrl={{this.imageUrl}} />
+        */
+        {
+          "id": "R580gPMd",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@imageUrl\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"imageUrl\"]]]],null]],[],false,[\"o-s-s/onboarding-state\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/onboarding-state-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-onboarding-state__subtitle').hasText(SUBTITLE);
+      });
+      (0, _qunit.test)('it updates when subtitle changes', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}} @imageUrl={{this.imageUrl}} />
+        */
+        {
+          "id": "R580gPMd",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@imageUrl\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"imageUrl\"]]]],null]],[],false,[\"o-s-s/onboarding-state\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/onboarding-state-test.ts",
+          "isStrictMode": false
+        }));
+        this.set('subtitle', 'Updated subtitle');
+        assert.dom('.oss-onboarding-state__subtitle').hasText('Updated subtitle');
+      });
+    });
+    (0, _qunit.test)('it renders the correct illustration', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}} @imageUrl={{this.imageUrl}} />
+      */
+      {
+        "id": "R580gPMd",
+        "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@imageUrl\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"imageUrl\"]]]],null]],[],false,[\"o-s-s/onboarding-state\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/onboarding-state-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-onboarding-state__illustration img').hasAttribute('src', IMAGE_URL);
+      assert.dom('.oss-onboarding-state__illustration img').hasAttribute('role', 'presentation');
+    });
+    (0, _qunit.module)('for actions block', () => {
+      (0, _qunit.test)('it renders actions named block', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}} @imageUrl={{this.imageUrl}}>
+                  <:actions>
+                    <div class="custom-action-button">Get Started</div>
+                  </:actions>
+                </OSS::OnboardingState>
+               
+        */
+        {
+          "id": "uJ/vzF6w",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@imageUrl\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"imageUrl\"]]]],[[\"actions\"],[[[[1,\"\\n            \"],[10,0],[14,0,\"custom-action-button\"],[12],[1,\"Get Started\"],[13],[1,\"\\n          \"]],[]]]]],[1,\"\\n       \"]],[],false,[\"o-s-s/onboarding-state\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/onboarding-state-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-onboarding-state__actions .custom-action-button').exists();
+      });
+      (0, _qunit.test)('it does not render actions section when no actions block is provided', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}} @imageUrl={{this.imageUrl}} />
+        */
+        {
+          "id": "R580gPMd",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@imageUrl\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"imageUrl\"]]]],null]],[],false,[\"o-s-s/onboarding-state\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/onboarding-state-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-onboarding-state__actions').doesNotExist();
+      });
+    });
+    (0, _qunit.module)('Error management', () => {
+      (0, _qunit.test)('for title parameter, the component throws an error if the parameter is not passed', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [OSS::OnboardingState] The @title parameter is mandatory');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::OnboardingState />
+        */
+        {
+          "id": "htIF59Vn",
+          "block": "[[[8,[39,0],null,null,null]],[],false,[\"o-s-s/onboarding-state\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/onboarding-state-test.ts",
+          "isStrictMode": false
+        }));
+      });
+      (0, _qunit.test)('for subtitle, the component throws an error if the parameter is not passed', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [OSS::OnboardingState] The @subtitle parameter is mandatory');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::OnboardingState @title={{this.title}} />
+        */
+        {
+          "id": "X+NYoofW",
+          "block": "[[[8,[39,0],null,[[\"@title\"],[[30,0,[\"title\"]]]],null]],[],false,[\"o-s-s/onboarding-state\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/onboarding-state-test.ts",
+          "isStrictMode": false
+        }));
+      });
+      (0, _qunit.test)('for imageUrl, the component throws an error if the parameter is not passed', async function (assert) {
+        (0, _testHelpers.setupOnerror)(err => {
+          assert.equal(err.message, 'Assertion Failed: [OSS::OnboardingState] The @imageUrl parameter is mandatory');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}}  />
+        */
+        {
+          "id": "MHyoehby",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]]]],null]],[],false,[\"o-s-s/onboarding-state\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/onboarding-state-test.ts",
+          "isStrictMode": false
+        }));
+      });
     });
   });
 });

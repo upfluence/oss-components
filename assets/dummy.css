@@ -12771,6 +12771,8 @@ a.upf-btn--sm {
   background-size: cover;
   background-position: center;
   border-radius: var(--border-radius-md);
+}
+.oss-smart__immersive-icon-container .smart-logo-image {
   background-color: var(--color-gray-200);
 }
 .oss-smart__immersive-icon-container .edit-overlay {
@@ -13731,9 +13733,6 @@ a.upf-btn--sm {
   padding: var(--spacing-px-6) var(--spacing-px-12);
   gap: var(--spacing-px-9);
 }
-.oss-button-dropdown .oss-button-dropdown__items .oss-button-dropdown__item:not(:last-child) {
-  border-bottom: 1px solid var(--color-border-default);
-}
 .oss-button-dropdown .oss-button-dropdown__items .oss-button-dropdown__item:hover {
   background-color: var(--color-gray-50);
 }
@@ -14315,6 +14314,58 @@ a.upf-btn--sm {
 }
 .oss-stack-container--column {
   flex-direction: column;
+}
+.oss-onboarding-state {
+  container-type: inline-size;
+  container-name: oss-onboarding-state;
+  display: flex;
+  flex: 1;
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border-default);
+  background-color: var(--color-white);
+}
+.oss-onboarding-state__container {
+  position: relative;
+  display: flex;
+  flex: 1;
+  padding: var(--spacing-px-18);
+  gap: var(--spacing-px-18);
+}
+.oss-onboarding-state__illustration {
+  display: flex;
+  align-items: center;
+}
+.oss-onboarding-state__illustration img {
+  flex: 1;
+  width: 250px;
+  height: 100px;
+  max-width: 100%;
+  object-fit: cover;
+}
+.oss-onboarding-state__title {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+}
+.oss-onboarding-state__subtitle {
+  color: var(--color-gray-500);
+}
+.oss-onboarding-state__actions {
+  display: flex;
+  gap: var(--spacing-px-12);
+}
+@container oss-onboarding-state (width < 540px) {
+  .oss-onboarding-state__container {
+    flex-direction: column;
+  }
+  .oss-onboarding-state__illustration img {
+    width: auto;
+    height: 150px;
+  }
+}
+@container oss-onboarding-state (width < 340px) {
+  .oss-onboarding-state__actions {
+    flex-direction: column;
+  }
 }
 .upf-table-v2 {
   border: 1px solid var(--color-border-default);
