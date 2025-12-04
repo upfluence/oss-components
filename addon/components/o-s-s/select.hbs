@@ -6,7 +6,11 @@
   {{will-destroy this.disconnectObserver}}
   ...attributes
 >
-  <div class="upf-input {{if this.isOpen 'active'}} fx-row fx-1 fx-xalign-center" {{on "click" this.toggleDropdown}}>
+  <div
+    class="upf-input {{if this.isOpen 'active'}} fx-row fx-1 fx-xalign-center"
+    {{on "click" this.toggleDropdown}}
+    role="button"
+  >
     <div class="fx-row fx-1 fx-malign-space-between fx-xalign-center">
       {{#if @value}}
         {{#if (has-block "selected")}}
