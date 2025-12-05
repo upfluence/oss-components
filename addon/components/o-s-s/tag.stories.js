@@ -54,7 +54,8 @@ export default {
       }
     },
     icon: {
-      description: 'Icon placed before the label if any. Font Awesome class, for example: far fa-envelope-open',
+      description:
+        'Icon placed before the label if any. Font Awesome class, for example: far fa-envelope-open. For a flag, use the format flag-XX where XX is the country code (e.g., flag-US)',
       table: {
         type: { summary: 'string' },
         defaultValue: { summary: 'undefined' }
