@@ -112,6 +112,34 @@ export default class Visual extends Controller {
   @tracked feedbackMessageWarning: FeedbackMessage = { type: 'warning', value: '' };
   @tracked feedbackMessageSuccess: FeedbackMessage = { type: 'success', value: '' };
 
+  @tracked progressBarSuccess: number = 30;
+  @tracked progressBarWarning: number = 25;
+  @tracked progressBarDanger: number = 15;
+
+  constructor() {
+    super();
+    this.liveProgressBar();
+  }
+
+  get progressBarSkins(): Record<string, number> {
+    return {
+      success: this.progressBarSuccess,
+      warning: this.progressBarWarning,
+      danger: this.progressBarDanger
+    };
+  }
+
+  liveProgressBar = (negative: boolean = false): void => {
+    const value = negative ? -1 : 1;
+    setTimeout(() => {
+      this.progressBarSuccess += 20 * value;
+      this.progressBarWarning += 5 * value;
+      this.progressBarDanger += 5 * value;
+
+      this.liveProgressBar(!negative);
+    }, 2000);
+  };
+
   @action
   redirectTo(route: string): void {
     console.log('Redirect to', route);
