@@ -77,6 +77,18 @@ export default {
       },
       options: ProgressBarSkins,
       control: { type: 'select' }
+    },
+    skins: {
+      description: 'Set the multiple skin to be used for the progress bar.',
+      table: {
+        type: {
+          summary: '{ success: number, warning: number, danger: number }'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: {
+        type: 'object'
+      }
     }
   },
   parameters: {
@@ -106,7 +118,9 @@ const BasicUsageTemplate = (args) => ({
         @skin={{this.skin}}
         @size={{this.size}}
         @coloredBackground={{this.coloredBackground}}
-        @secondarySkin={{this.secondarySkin}} />
+        @secondarySkin={{this.secondarySkin}}
+        @skins={{this.skins}}
+      />
     </div>
   `,
   context: args
