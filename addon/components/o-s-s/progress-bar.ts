@@ -63,7 +63,7 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
     if (this.isInitialRender) {
       styles.push(`--progress-bar-animation-width: ${value}%`);
     }
-    return htmlSafe(styles.join('; '));
+    return htmlSafe(styles.join(';'));
   });
 
   get computedStyles(): string {
