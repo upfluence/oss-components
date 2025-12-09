@@ -428,4 +428,19 @@ module('Integration | Component | o-s-s/select', function (hooks) {
       await render(hbs`<OSS::Select @onChange={{this.onChange}} />`);
     });
   });
+
+  test('When hasError is true, the error style is applied to the select', async function (assert) {
+    await render(
+      hbs`
+          <OSS::Select @onChange={{this.onChange}} @onSearch={{this.onSearch}} @items={{this.items}} 
+                       @value={{this.value}} @hasError={{true}}>
+            <:option as |item|>
+              {{item.name}}
+            </:option>
+          </OSS::Select>
+        `
+    );
+
+    assert.dom('.oss-select-container').hasClass('oss-select-container--errorful');
+  });
 });
