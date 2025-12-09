@@ -233,9 +233,7 @@ module('Integration | Component | o-s-s/progress-bar', function (hooks) {
     test('if the value is updated, the classes also update', async function (assert) {
       await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />`);
 
-      this.skins = { success: 50, warning: 30, danger: 20 };
-
-      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />`);
+      this.set('skins', { success: 50, warning: 30, danger: 20 });
 
       assert.dom('.oss-progress-bar__inner--success').hasAttribute('aria-valuenow', '50');
       assert.dom('.oss-progress-bar__inner--warning').hasAttribute('aria-valuenow', '30');
