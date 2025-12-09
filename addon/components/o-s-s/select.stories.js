@@ -65,6 +65,16 @@ export default {
       },
       control: { type: 'boolean' }
     },
+    hasError: {
+      description: 'Apply error style to the select',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: false }
+      },
+      control: { type: 'boolean' }
+    },
     errorMessage: {
       description: 'Error message to display',
       table: {
@@ -141,6 +151,7 @@ const defaultArgs = {
   targetLabel: 'name',
   placeholder: undefined,
   disabled: false,
+  hasError: false,
   errorMessage: undefined,
   successMessage: undefined,
   addressableAs: undefined,
@@ -161,7 +172,7 @@ const Template = (args) => ({
     <OSS::Select
       @items={{this.items}} @value={{this.value}} @targetLabel={{this.targetLabel}} @placeholder={{this.placeholder}}
       @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} @successMessage={{this.successMessage}}
-      @onSearch={{this.onSearch}} @onChange={{this.onChange}} @action={{this.action}}>
+      @onSearch={{this.onSearch}} @onChange={{this.onChange}} @action={{this.action}} @hasError={{this.hasError}}>
       <:option as |item|>
         {{item.name}}
       </:option>

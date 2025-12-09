@@ -10,7 +10,7 @@ export type InfiniteSelectAction = {
   skin?: SkinType;
   label?: string;
   icon?: string;
-  onClick(): unknown;
+  onClick(event: PointerEvent): unknown;
   closeOnClick: boolean;
 };
 

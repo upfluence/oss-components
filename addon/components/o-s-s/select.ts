@@ -63,7 +63,7 @@ export default class OSSSelect extends BaseDropdown<OSSSelectArgs> {
       classes.push('oss-select-container--disabled');
     }
 
-    if (typeof this.args.errorMessage === 'string' && !isEmpty(this.args.errorMessage)) {
+    if ((typeof this.args.errorMessage === 'string' && !isEmpty(this.args.errorMessage)) || this.args.hasError) {
       classes.push('oss-select-container--errorful');
     }
 
@@ -136,8 +136,8 @@ export default class OSSSelect extends BaseDropdown<OSSSelectArgs> {
   }
 
   @action
-  onActionClick(): void {
-    this.args.action?.onClick();
+  onActionClick(event: PointerEvent): void {
+    this.args.action?.onClick(event);
 
     if (this.args.action?.closeOnClick ?? true) {
       this.hideSelector();
