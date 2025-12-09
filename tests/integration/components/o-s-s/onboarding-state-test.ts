@@ -96,6 +96,28 @@ module('Integration | Component | o-s-s/onboarding-state', function (hooks) {
     });
   });
 
+  module('for tag block', () => {
+    test('it renders tag named block', async function (assert) {
+      await render(
+        hbs`
+        <OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}} @imageUrl={{this.imageUrl}}>
+          <:tag>
+            <OSS::Tag @label="New" @icon="fa-sparkles" @skin="primary" />
+          </:tag>
+        </OSS::OnboardingState>
+       `
+      );
+      assert.dom('.oss-onboarding-state__header .upf-tag').exists();
+    });
+
+    test('it does not render a tag when no tag block is provided', async function (assert) {
+      await render(
+        hbs`<OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}} @imageUrl={{this.imageUrl}} />`
+      );
+      assert.dom('.oss-onboarding-state__header .upf-tag').doesNotExist();
+    });
+  });
+
   module('Error management', () => {
     test('for title parameter, the component throws an error if the parameter is not passed', async function (assert) {
       setupOnerror((err: any) => {

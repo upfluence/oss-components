@@ -63,6 +63,9 @@ const Template = (args) => ({
           <OSS::Button @icon="fa-plus" @label="Start setup" @skin="primary" />
           <OSS::Button @label="Learn more" />
         </:actions>
+        <:tag>
+          <OSS::Tag @label="New" @icon="fa-sparkles" @skin="primary" />
+        </:tag>
       </OSS::OnboardingState>
     </div>
   `,

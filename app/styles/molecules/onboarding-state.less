@@ -28,6 +28,16 @@
     }
   }
 
+  &__header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-px-9);
+
+    .upf-tag {
+      width: fit-content;
+    }
+  }
+
   &__title {
     font-size: var(--font-size-md);
     font-weight: var(--font-weight-semibold);
@@ -54,6 +64,10 @@
         width: auto;
         height: 150px;
       }
+    }
+
+    &__header {
+      flex-direction: column;
     }
   }
 }
