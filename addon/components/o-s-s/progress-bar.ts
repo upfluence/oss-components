@@ -43,20 +43,12 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
     }, 1000);
   }
 
-  get hasSkins(): boolean {
-    return !!this.args.skins && Object.keys(this.args.skins).length > 0;
-  }
-
-  get progressSegments(): ProgressBarSkins[] {
-    return this.hasSkins ? (Object.keys(this.args.skins!) as ProgressBarSkins[]) : [];
-  }
-
   isSegmentVisible = helper((_, { skin }: { skin: ProgressBarSkins }): boolean => {
-    return this.hasSkins && (this.args.skins![skin] || 0) > 0;
+    return this.hasSkins && (this.skins[skin] || 0) > 0;
   });
 
   getSegmentValue = helper((_, { skin }: { skin: ProgressBarSkins }): number => {
-    return this.hasSkins ? this.args.skins![skin] || 0 : 0;
+    return this.hasSkins ? this.skins[skin] || 0 : 0;
   });
 
   progressBarStyle = helper((_, { value }: { value: number }): ReturnType<typeof htmlSafe> => {
@@ -66,6 +58,22 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
     }
     return htmlSafe(styles.join(';'));
   });
+
+  getSegmentClasses = helper((_, { skin }: { skin: ProgressBarSkins }): string => {
+    const classes = ['oss-progress-bar__inner', `oss-progress-bar__inner--${skin}`];
+    if (this.isInitialRender) {
+      classes.push('oss-progress-bar__inner--initial');
+    }
+    return classes.join(' ');
+  });
+
+  get hasSkins(): boolean {
+    return !!this.args.skins && Object.keys(this.args.skins).length > 0;
+  }
+
+  get progressSegments(): ProgressBarSkins[] {
+    return this.hasSkins ? (Object.keys(this.skins) as ProgressBarSkins[]) : [];
+  }
 
   get computedStyles(): string {
     const classes = ['oss-progress-bar'];
@@ -95,15 +103,11 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
     return classes.join(' ');
   }
 
-  getSegmentClasses = helper((_, { skin }: { skin: ProgressBarSkins }): string => {
-    const classes = ['oss-progress-bar__inner', `oss-progress-bar__inner--${skin}`];
-    if (this.isInitialRender) {
-      classes.push('oss-progress-bar__inner--initial');
-    }
-    return classes.join(' ');
-  });
-
   get totalProgress(): number {
-    return this.hasSkins ? Object.values(this.args.skins!).reduce((sum, v) => sum + v, 0) : this.args.value;
+    return this.hasSkins ? Object.values(this.skins).reduce((sum, v) => sum + v, 0) : this.args.value;
+  }
+
+  private get skins(): Partial<Record<ProgressBarSkins, number>> {
+    return this.args.skins!;
   }
 }
