@@ -7166,7 +7166,7 @@ define("dummy/tests/integration/components/o-s-s/icon-test", ["qunit", "ember-qu
       }));
       assert.dom('i').hasClass('fa-code-merge');
     });
-    (0, _qunit.test)(`it renders the correct default style class`, async function (assert) {
+    (0, _qunit.test)('it renders the correct default style class', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
       /*
         <OSS::Icon @icon="fa-code-merge" />
@@ -7178,6 +7178,21 @@ define("dummy/tests/integration/components/o-s-s/icon-test", ["qunit", "ember-qu
         "isStrictMode": false
       }));
       assert.dom('i').hasClass('far');
+    });
+    (0, _qunit.test)('it renders the correct style flag specific classes', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Icon @icon="US" @style="flag" />
+      */
+      {
+        "id": "XSaiDQ5u",
+        "block": "[[[8,[39,0],null,[[\"@icon\",\"@style\"],[\"US\",\"flag\"]],null]],[],false,[\"o-s-s/icon\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/icon-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('i').hasClass('fflag-US');
+      assert.dom('i').hasClass('ff-sm');
+      assert.dom('i').hasClass('ff-round');
     });
     for (const [key, value] of Object.entries(STYLE_CLASSES)) {
       (0, _qunit.test)(`it renders the correct style ${key} class`, async function (assert) {
@@ -13984,6 +13999,26 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
         }));
       });
     });
+    (0, _qunit.test)('When hasError is true, the error style is applied to the select', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        
+                <OSS::Select @onChange={{this.onChange}} @onSearch={{this.onSearch}} @items={{this.items}} 
+                             @value={{this.value}} @hasError={{true}}>
+                  <:option as |item|>
+                    {{item.name}}
+                  </:option>
+                </OSS::Select>
+              
+      */
+      {
+        "id": "IL7ob85l",
+        "block": "[[[1,\"\\n          \"],[8,[39,0],null,[[\"@onChange\",\"@onSearch\",\"@items\",\"@value\",\"@hasError\"],[[30,0,[\"onChange\"]],[30,0,[\"onSearch\"]],[30,0,[\"items\"]],[30,0,[\"value\"]],true]],[[\"option\"],[[[[1,\"\\n              \"],[1,[30,1,[\"name\"]]],[1,\"\\n            \"]],[1]]]]],[1,\"\\n        \"]],[\"item\"],false,[\"o-s-s/select\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/select-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.oss-select-container').hasClass('oss-select-container--errorful');
+    });
   });
 });
 define("dummy/tests/integration/components/o-s-s/side-panel-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
@@ -18843,6 +18878,25 @@ define("dummy/tests/integration/components/o-s-s/tag-test", ["qunit", "ember-qun
         count: 1
       });
       assert.dom('.upf-tag i').hasClass('fa-thumbs-up');
+    });
+    (0, _qunit.test)('it renders the proper icon when a flag @icon is passed', async function (assert) {
+      await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+      /*
+        <OSS::Tag @icon="flag-US" />
+      */
+      {
+        "id": "K0Hv08Yj",
+        "block": "[[[8,[39,0],null,[[\"@icon\"],[\"flag-US\"]],null]],[],false,[\"o-s-s/tag\"]]",
+        "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/tag-test.ts",
+        "isStrictMode": false
+      }));
+      assert.dom('.upf-tag').exists({
+        count: 1
+      });
+      assert.dom('.upf-tag i').hasClass('fflag');
+      assert.dom('.upf-tag i').hasClass('fflag-US');
+      assert.dom('.upf-tag i').hasClass('ff-sm');
+      assert.dom('.upf-tag i').hasClass('ff-round');
     });
     (0, _qunit.test)('it renders the proper suffix icon when @suffixIcon is passed', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(

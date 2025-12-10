@@ -88970,11 +88970,10 @@ interface OSSCodeBlockArgs {
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <i class={{this.computedClass}} ...attributes></i>
-  
   */
   {
-    "id": "OiCSTHgK",
-    "block": "[[[11,\"i\"],[16,0,[30,0,[\"computedClass\"]]],[17,1],[12],[13],[1,\"\\n\"]],[\"&attrs\"],false,[]]",
+    "id": "LGmdNkG6",
+    "block": "[[[11,\"i\"],[16,0,[30,0,[\"computedClass\"]]],[17,1],[12],[13]],[\"&attrs\"],false,[]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/icon.hbs",
     "isStrictMode": false
   });
@@ -88984,7 +88983,8 @@ interface OSSCodeBlockArgs {
     light: 'fal',
     duotone: 'fad',
     brand: 'fab',
-    'duotone-regular': 'fadr'
+    'duotone-regular': 'fadr',
+    flag: 'fflag'
   };
   class OSSIcon extends _component2.default {
     constructor(owner, args) {
@@ -88994,6 +88994,9 @@ interface OSSCodeBlockArgs {
     get iconClass() {
       if (typeof this.args.icon === 'string' && this.args.icon.includes('fa-')) {
         return this.args.icon;
+      }
+      if (typeof this.args.icon === 'string' && this.args.style === 'flag') {
+        return `fflag-${this.args.icon} ff-sm ff-round`;
       }
       return _iconName.IconNames[this.args.icon];
     }
@@ -89015,7 +89018,7 @@ interface OSSCodeBlockArgs {
   });
   _exports.default = _exports.BasicUsage = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars"eaimeta@70e063a35619d71f
-  const StyleTypes = ['solid', 'regular', 'light', 'duotone', 'brand', 'duotone-regular'];
+  const StyleTypes = ['solid', 'regular', 'light', 'duotone', 'brand', 'duotone-regular', 'flag'];
   var _default = _exports.default = {
     title: 'Components/OSS::Icon',
     component: 'icon',
@@ -95174,13 +95177,13 @@ interface OSSCodeBlockArgs {
       }
       this._elem = elem;
     }
-    closeModal() {
-      this.args.close();
+    closeModal(event) {
+      this.args.close(event);
     }
     closeOnEscape(event) {
       if (event.key === 'Escape') {
         event.stopPropagation();
-        this.closeModal();
+        this.closeModal(event);
       }
     }
     trackInitialTarget(event) {
@@ -95189,7 +95192,7 @@ interface OSSCodeBlockArgs {
     onClickOutside(_, event) {
       if (this.args.disableClickOutside) return;
       if (event.target === this.initialTarget) {
-        this.closeModal();
+        this.closeModal(event);
       }
     }
     scrollbarVisible() {
@@ -96267,7 +96270,7 @@ interface OSSCodeBlockArgs {
       if (this.args.disabled) {
         classes.push('oss-select-container--disabled');
       }
-      if (typeof this.args.errorMessage === 'string' && !(0, _utils.isEmpty)(this.args.errorMessage)) {
+      if (typeof this.args.errorMessage === 'string' && !(0, _utils.isEmpty)(this.args.errorMessage) || this.args.hasError) {
         classes.push('oss-select-container--errorful');
       }
       if (typeof this.args.successMessage === 'string' && !(0, _utils.isEmpty)(this.args.successMessage)) {
@@ -96317,8 +96320,8 @@ interface OSSCodeBlockArgs {
     ensureBlockPresence(hasOptionItem) {
       (true && !(hasOptionItem) && (0, _debug.assert)(`[component][OSS::Select] You must pass option named block`, hasOptionItem));
     }
-    onActionClick() {
-      this.args.action?.onClick();
+    onActionClick(event) {
+      this.args.action?.onClick(event);
       if (this.args.action?.closeOnClick ?? true) {
         this.hideSelector();
       }
@@ -96452,6 +96455,20 @@ interface OSSCodeBlockArgs {
           type: 'boolean'
         }
       },
+      hasError: {
+        description: 'Apply error style to the select',
+        table: {
+          type: {
+            summary: 'boolean'
+          },
+          defaultValue: {
+            summary: false
+          }
+        },
+        control: {
+          type: 'boolean'
+        }
+      },
       errorMessage: {
         description: 'Error message to display',
         table: {
@@ -96539,6 +96556,7 @@ interface OSSCodeBlockArgs {
     targetLabel: 'name',
     placeholder: undefined,
     disabled: false,
+    hasError: false,
     errorMessage: undefined,
     successMessage: undefined,
     addressableAs: undefined,
@@ -96560,7 +96578,7 @@ interface OSSCodeBlockArgs {
         <OSS::Select
           @items={{this.items}} @value={{this.value}} @targetLabel={{this.targetLabel}} @placeholder={{this.placeholder}}
           @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} @successMessage={{this.successMessage}}
-          @onSearch={{this.onSearch}} @onChange={{this.onChange}} @action={{this.action}}>
+          @onSearch={{this.onSearch}} @onChange={{this.onChange}} @action={{this.action}} @hasError={{this.hasError}}>
           <:option as |item|>
             {{item.name}}
           </:option>
@@ -96569,8 +96587,8 @@ interface OSSCodeBlockArgs {
       
     */
     {
-      "id": "rAPLAauS",
-      "block": "[[[1,\"\\n  \"],[10,0],[14,5,\"width: 250px\"],[12],[1,\"\\n    \"],[8,[39,0],null,[[\"@items\",\"@value\",\"@targetLabel\",\"@placeholder\",\"@disabled\",\"@errorMessage\",\"@successMessage\",\"@onSearch\",\"@onChange\",\"@action\"],[[30,0,[\"items\"]],[30,0,[\"value\"]],[30,0,[\"targetLabel\"]],[30,0,[\"placeholder\"]],[30,0,[\"disabled\"]],[30,0,[\"errorMessage\"]],[30,0,[\"successMessage\"]],[30,0,[\"onSearch\"]],[30,0,[\"onChange\"]],[30,0,[\"action\"]]]],[[\"option\"],[[[[1,\"\\n        \"],[1,[30,1,[\"name\"]]],[1,\"\\n      \"]],[1]]]]],[1,\"\\n  \"],[13],[1,\"\\n  \"]],[\"item\"],false,[\"o-s-s/select\"]]",
+      "id": "9S48Lkkx",
+      "block": "[[[1,\"\\n  \"],[10,0],[14,5,\"width: 250px\"],[12],[1,\"\\n    \"],[8,[39,0],null,[[\"@items\",\"@value\",\"@targetLabel\",\"@placeholder\",\"@disabled\",\"@errorMessage\",\"@successMessage\",\"@onSearch\",\"@onChange\",\"@action\",\"@hasError\"],[[30,0,[\"items\"]],[30,0,[\"value\"]],[30,0,[\"targetLabel\"]],[30,0,[\"placeholder\"]],[30,0,[\"disabled\"]],[30,0,[\"errorMessage\"]],[30,0,[\"successMessage\"]],[30,0,[\"onSearch\"]],[30,0,[\"onChange\"]],[30,0,[\"action\"]],[30,0,[\"hasError\"]]]],[[\"option\"],[[[[1,\"\\n        \"],[1,[30,1,[\"name\"]]],[1,\"\\n      \"]],[1]]]]],[1,\"\\n  \"],[13],[1,\"\\n  \"]],[\"item\"],false,[\"o-s-s/select\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/select.stories.js",
       "isStrictMode": false
     }),
@@ -101995,7 +102013,10 @@ interface OSSCodeBlockArgs {
   /*
     <div class={{this.computedClass}} ...attributes>
     {{#if @icon}}
-      <OSS::Icon @style={{fa-icon-style @icon}} @icon={{fa-icon-value @icon}} />
+      <OSS::Icon
+        @style={{if this.iconIsFlag "flag" (fa-icon-style @icon)}}
+        @icon={{if this.iconIsFlag this.flagIcon (fa-icon-value @icon)}}
+      />
     {{/if}}
   
     {{#if @label}}
@@ -102018,8 +102039,8 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "4xiiv/JF",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[[28,[37,2],[[30,2]],null],[28,[37,3],[[30,2]],null]]],null],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,3],[[[41,[30,4],[[[1,\"      \"],[1,[30,0,[\"safeLabel\"]]],[1,\"\\n\"]],[]],[[[1,\"      \"],[10,0],[14,0,\"text-style-semibold fx-row\"],[12],[1,\"\\n\"],[41,[30,5],[[[1,\"          \"],[10,1],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],[[[1,\"          \"],[1,[30,3]],[1,\"\\n\"]],[]]],[1,\"      \"],[13],[1,\"\\n\"]],[]]]],[]],null],[1,\"\\n\"],[41,[30,6],[[[1,\"    \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[[28,[37,2],[[30,6]],null],[28,[37,3],[[30,6]],null]]],null],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@icon\",\"@label\",\"@htmlSafe\",\"@hasEllipsis\",\"@suffixIcon\"],false,[\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
+    "id": "VaVW7ZLb",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[[52,[30,0,[\"iconIsFlag\"]],\"flag\",[28,[37,2],[[30,2]],null]],[52,[30,0,[\"iconIsFlag\"]],[30,0,[\"flagIcon\"]],[28,[37,3],[[30,2]],null]]]],null],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,3],[[[41,[30,4],[[[1,\"      \"],[1,[30,0,[\"safeLabel\"]]],[1,\"\\n\"]],[]],[[[1,\"      \"],[10,0],[14,0,\"text-style-semibold fx-row\"],[12],[1,\"\\n\"],[41,[30,5],[[[1,\"          \"],[10,1],[12],[1,[30,3]],[13],[1,\"\\n\"]],[]],[[[1,\"          \"],[1,[30,3]],[1,\"\\n\"]],[]]],[1,\"      \"],[13],[1,\"\\n\"]],[]]]],[]],null],[1,\"\\n\"],[41,[30,6],[[[1,\"    \"],[8,[39,1],null,[[\"@style\",\"@icon\"],[[28,[37,2],[[30,6]],null],[28,[37,3],[[30,6]],null]]],null],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@icon\",\"@label\",\"@htmlSafe\",\"@hasEllipsis\",\"@suffixIcon\"],false,[\"if\",\"o-s-s/icon\",\"fa-icon-style\",\"fa-icon-value\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/tag.hbs",
     "isStrictMode": false
   });
@@ -102065,6 +102086,13 @@ interface OSSCodeBlockArgs {
     }
     get safeLabel() {
       return (0, _template.htmlSafe)(this.args.label ?? '');
+    }
+    get iconIsFlag() {
+      return typeof this.args.icon === 'string' && this.args.icon.startsWith('flag-');
+    }
+    get flagIcon() {
+      if (!this.args.icon || !this.iconIsFlag) return undefined;
+      return this.args.icon.replace('flag-', '');
     }
   }
   _exports.default = OSSTag;
@@ -102129,7 +102157,7 @@ interface OSSCodeBlockArgs {
         }
       },
       icon: {
-        description: 'Icon placed before the label if any. Font Awesome class, for example: far fa-envelope-open',
+        description: 'Icon placed before the label if any. Font Awesome class, for example: far fa-envelope-open. For a flag, use the format flag-XX where XX is the country code (e.g., flag-US)',
         table: {
           type: {
             summary: 'string'
