@@ -4,7 +4,7 @@ import { isTesting } from '@embroider/macros';
 import Component from '@glimmer/component';
 
 export interface BaseModalArgs {
-  close(): void;
+  close(event: PointerEvent | KeyboardEvent | MouseEvent | Event): void;
   disableClickOutside?: boolean;
 }
 
@@ -49,15 +49,15 @@ export default class BaseModal<T extends BaseModalArgs> extends Component<T> {
   }
 
   @action
-  closeModal(): void {
-    this.args.close();
+  closeModal(event: PointerEvent | KeyboardEvent | MouseEvent | Event): void {
+    this.args.close(event);
   }
 
   @action
   closeOnEscape(event: KeyboardEvent): void {
     if (event.key === 'Escape') {
       event.stopPropagation();
-      this.closeModal();
+      this.closeModal(event);
     }
   }
 
@@ -71,7 +71,7 @@ export default class BaseModal<T extends BaseModalArgs> extends Component<T> {
     if (this.args.disableClickOutside) return;
 
     if (event.target === this.initialTarget) {
-      this.closeModal();
+      this.closeModal(event);
     }
   }
 
