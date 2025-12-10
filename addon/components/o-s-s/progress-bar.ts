@@ -4,7 +4,8 @@ import { htmlSafe } from '@ember/template';
 import { helper } from '@ember/component/helper';
 import { tracked } from '@glimmer/tracking';
 
-type ProgressBarSkins = 'warning' | 'success' | 'danger';
+export type ProgressBarSkins = 'pending' | 'warning' | 'success' | 'danger';
+
 type ProgressBarSizes = 'xs' | 'sm';
 
 interface OSSProgressBarArgs {
@@ -15,7 +16,7 @@ interface OSSProgressBarArgs {
   size?: ProgressBarSizes;
   coloredBackground?: boolean;
   secondarySkin?: ProgressBarSkins;
-  skins?: Record<ProgressBarSkins, number>;
+  skins?: Partial<Record<ProgressBarSkins, number>>;
 }
 
 export default class OSSProgressBar extends Component<OSSProgressBarArgs> {

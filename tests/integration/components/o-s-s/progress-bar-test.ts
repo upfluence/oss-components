@@ -239,5 +239,12 @@ module('Integration | Component | o-s-s/progress-bar', function (hooks) {
       assert.dom('.oss-progress-bar__inner--warning').hasAttribute('aria-valuenow', '30');
       assert.dom('.oss-progress-bar__inner--danger').hasAttribute('aria-valuenow', '20');
     });
+
+    test('if the value is defined, the progress bar has the correct success value', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skins={{hash pending=33}} />`);
+
+      assert.dom('.oss-progress-bar__inner--pending').exists();
+      assert.dom('.oss-progress-bar__inner--pending').hasAttribute('aria-valuenow', '33');
+    });
   });
 });
