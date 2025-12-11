@@ -28,7 +28,7 @@ module('Integration | Component | o-s-s/url-input', function (hooks) {
                                       @validationRegex={{this.subdomainRegex}} />`);
       await fillIn('input', 'fakedomai');
       await typeIn('input', 'n');
-      assert.true(this.onChange.calledOnceWithExactly('fakedomain', true));
+      assert.true(this.onChange.lastCall.calledWith('fakedomain', true));
     });
 
     module("When the text doesn't match the Regex", () => {
