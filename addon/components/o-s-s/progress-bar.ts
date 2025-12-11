@@ -20,8 +20,6 @@ interface OSSProgressBarArgs {
 }
 
 export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
-  @tracked private isInitialRender = true;
-
   constructor(owner: unknown, args: OSSProgressBarArgs) {
     super(owner, args);
 
@@ -37,10 +35,6 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
         args.value >= 0 && args.value <= 100
       );
     }
-
-    setTimeout(() => {
-      this.isInitialRender = false;
-    }, 1000);
   }
 
   isSegmentVisible = helper((_, { skin }: { skin: ProgressBarSkins }): boolean => {
@@ -52,18 +46,12 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
   });
 
   progressBarStyle = helper((_, { value }: { value: number }): ReturnType<typeof htmlSafe> => {
-    const styles = [`width: ${value}%`];
-    if (this.isInitialRender) {
-      styles.push(`--progress-bar-animation-width: ${value}%`);
-    }
+    const styles = [`width: ${value}%`, `--progress-bar-animation-width: ${value}%`];
     return htmlSafe(styles.join(';'));
   });
 
   getSegmentClasses = helper((_, { skin }: { skin: ProgressBarSkins }): string => {
-    const classes = ['oss-progress-bar__inner', `oss-progress-bar__inner--${skin}`];
-    if (this.isInitialRender) {
-      classes.push('oss-progress-bar__inner--initial');
-    }
+    const classes = ['oss-progress-bar__inner', `oss-progress-bar__inner--${skin}`, 'oss-progress-bar__inner--initial'];
     return classes.join(' ');
   });
 
@@ -88,18 +76,12 @@ export default class OSSProgressBar extends Component<OSSProgressBarArgs> {
   }
 
   get progressBarWidthStyle(): ReturnType<typeof htmlSafe> {
-    const styles = [`width: ${this.args.value}%`];
-    if (this.isInitialRender) {
-      styles.push(`--progress-bar-animation-width: ${this.args.value}%`);
-    }
+    const styles = [`width: ${this.args.value}%`, `--progress-bar-animation-width: ${this.args.value}%`];
     return htmlSafe(styles.join('; '));
   }
 
   get progressBarInnerClasses(): string {
-    const classes = ['oss-progress-bar__inner'];
-    if (this.isInitialRender) {
-      classes.push('oss-progress-bar__inner--initial');
-    }
+    const classes = ['oss-progress-bar__inner', 'oss-progress-bar__inner--initial'];
     return classes.join(' ');
   }
 

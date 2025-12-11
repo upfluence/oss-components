@@ -102,7 +102,7 @@
     transition: width 0.6s ease;
 
     &.oss-progress-bar__inner--initial {
-      animation: oss-progress-bar-animation 1s ease forwards;
+      animation: oss-progress-bar-animation 1s ease;
     }
 
     &--warning {
@@ -127,7 +127,7 @@
       transition: width 0.6s ease;
 
       &.oss-progress-bar__inner--initial {
-        animation: oss-progress-bar-animation 1s ease forwards;
+        animation: oss-progress-bar-animation 1s ease;
       }
 
       &:first-child {
@@ -147,7 +147,7 @@
 
 @keyframes oss-progress-bar-animation {
   from {
-    width: 0%;
+    width: 0;
   }
   to {
     width: var(--progress-bar-animation-width);
