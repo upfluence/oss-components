@@ -7,7 +7,7 @@ module('Integration | Component | o-s-s/progress-bar', function (hooks) {
   setupRenderingTest(hooks);
   hooks.beforeEach(function () {
     this.checkedValue = 42;
-    this.skins = { success: 30, warning: 25, danger: 15 };
+    this.skins = { pending: 10, success: 30, warning: 25, danger: 15 };
   });
 
   test('it renders', async function (assert) {
@@ -194,9 +194,16 @@ module('Integration | Component | o-s-s/progress-bar', function (hooks) {
     test('if the value is defined, the progress bar has the correct success, warning, and danger classes', async function (assert) {
       await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />`);
 
-      assert.dom('.oss-progress-bar__inner').hasClass('oss-progress-bar__inner--success');
-      assert.dom('.oss-progress-bar__inner:nth-of-type(2)').hasClass('oss-progress-bar__inner--warning');
-      assert.dom('.oss-progress-bar__inner:nth-of-type(3)').hasClass('oss-progress-bar__inner--danger');
+      assert.dom('.oss-progress-bar__inner').hasClass('oss-progress-bar__inner--pending');
+      assert.dom('.oss-progress-bar__inner:nth-of-type(2)').hasClass('oss-progress-bar__inner--success');
+      assert.dom('.oss-progress-bar__inner:nth-of-type(3)').hasClass('oss-progress-bar__inner--warning');
+      assert.dom('.oss-progress-bar__inner:nth-of-type(4)').hasClass('oss-progress-bar__inner--danger');
+    });
+
+    test('if the value is defined, the progress bar has the correct pending value', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />`);
+
+      assert.dom('.oss-progress-bar__inner--pending').hasAttribute('aria-valuenow', '10');
     });
 
     test('if the value is defined, the progress bar has the correct success value', async function (assert) {
@@ -235,6 +242,7 @@ module('Integration | Component | o-s-s/progress-bar', function (hooks) {
 
       this.set('skins', { success: 50, warning: 30, danger: 20 });
 
+      assert.dom('.oss-progress-bar__inner--pending').doesNotExist();
       assert.dom('.oss-progress-bar__inner--success').hasAttribute('aria-valuenow', '50');
       assert.dom('.oss-progress-bar__inner--warning').hasAttribute('aria-valuenow', '30');
       assert.dom('.oss-progress-bar__inner--danger').hasAttribute('aria-valuenow', '20');

@@ -2,7 +2,6 @@ import Component from '@glimmer/component';
 import { assert } from '@ember/debug';
 import { htmlSafe } from '@ember/template';
 import { helper } from '@ember/component/helper';
-import { tracked } from '@glimmer/tracking';
 
 export type ProgressBarSkins = 'pending' | 'warning' | 'success' | 'danger';
 

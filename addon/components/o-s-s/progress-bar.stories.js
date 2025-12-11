@@ -80,12 +80,12 @@ export default {
     },
     skins: {
       description:
-        'Sets the multiple skins to be used for the progress bar. Sum of all values must be between 0 and 100 included.',
+        'Sets the multiple skins to be used for the progress bar. Sum of all values must be between 0 and 100 included. E.g { warning: 20, danger: 20, success: 40 } or { pending: 30 }',
       table: {
         type: {
           summary: '{ pending?: number, success?: number, warning?: number, danger?: number }'
         },
-        defaultValue: { summary: '{ warning: 20, danger: 20, success: 40 } or { pending: 30 }' }
+        defaultValue: { summary: undefined }
       },
       control: {
         type: 'object'
