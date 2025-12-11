@@ -85394,7 +85394,7 @@ require('@ember/-internals/bootstrap')
     }
   };
 });
-;define("@upfluence/oss-components/components/o-s-s/carousel", ["exports", "@ember/component", "@ember/object", "@glimmer/component", "@glimmer/tracking", "@ember/template-factory"], function (_exports, _component, _object, _component2, _tracking, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/carousel", ["exports", "@ember/component", "@ember/object", "@glimmer/component", "@glimmer/tracking", "@ember/template-factory", "@embroider/macros/runtime"], function (_exports, _component, _object, _component2, _tracking, _templateFactory, _runtime) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
@@ -85402,7 +85402,7 @@ require('@ember/-internals/bootstrap')
   });
   _exports.default = void 0;
   var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@glimmer/component",0,"@glimmer/tracking",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@ember/object",0,"@glimmer/component",0,"@glimmer/tracking",0,"@embroider/macros",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
   function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
@@ -85449,7 +85449,7 @@ require('@ember/-internals/bootstrap')
     "isStrictMode": false
   });
   const DEFAULT_BUTTON_ICON = 'fas fa-circle';
-  const ANIMATION_TIME = 500;
+  const ANIMATION_TIME = (0, _runtime.isTesting)() ? 5 : 500;
   let OSSCarousel = _exports.default = (_class = class OSSCarousel extends _component2.default {
     constructor(...args) {
       super(...args);
