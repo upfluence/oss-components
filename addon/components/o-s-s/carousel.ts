@@ -1,9 +1,10 @@
 import { action } from '@ember/object';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import { isTesting } from '@embroider/macros';
 
-const DEFAULT_BUTTON_ICON = 'fas fa-circle';
-const ANIMATION_TIME = 500;
+const DEFAULT_BUTTON_ICON: string = 'fas fa-circle';
+const ANIMATION_TIME: number = isTesting() ? 5 : 500;
 
 interface OSSCarouselArgs {
   buttonIcon?: string;
