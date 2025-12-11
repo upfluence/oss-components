@@ -93236,7 +93236,12 @@ interface OSSCodeBlockArgs {
       </div>
       <div class="fx-col fx-gap-px-18">
         <div class="fx-col fx-gap-px-6">
-          <span class="oss-onboarding-state__title">{{@title}}</span>
+          <div class="oss-onboarding-state__header">
+            <span class="oss-onboarding-state__title">{{@title}}</span>
+            {{#if (has-block "tag")}}
+              {{yield to="tag"}}
+            {{/if}}
+          </div>
           <span class="oss-onboarding-state__subtitle">{{@subtitle}}</span>
         </div>
         {{#if (has-block "actions")}}
@@ -93249,8 +93254,8 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "6SbXzUSo",
-    "block": "[[[11,0],[24,0,\"oss-onboarding-state\"],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-onboarding-state__container\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"oss-onboarding-state__illustration\"],[12],[1,\"\\n      \"],[10,\"img\"],[15,\"src\",[30,2]],[14,\"role\",\"presentation\"],[14,\"alt\",\"\"],[12],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-18\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-6\"],[12],[1,\"\\n        \"],[10,1],[14,0,\"oss-onboarding-state__title\"],[12],[1,[30,3]],[13],[1,\"\\n        \"],[10,1],[14,0,\"oss-onboarding-state__subtitle\"],[12],[1,[30,4]],[13],[1,\"\\n      \"],[13],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"        \"],[10,0],[14,0,\"oss-onboarding-state__actions\"],[12],[1,\"\\n          \"],[18,5,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@imageUrl\",\"@title\",\"@subtitle\",\"&actions\"],false,[\"if\",\"has-block\",\"yield\"]]",
+    "id": "9QNAXKTN",
+    "block": "[[[11,0],[24,0,\"oss-onboarding-state\"],[17,1],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-onboarding-state__container\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"oss-onboarding-state__illustration\"],[12],[1,\"\\n      \"],[10,\"img\"],[15,\"src\",[30,2]],[14,\"role\",\"presentation\"],[14,\"alt\",\"\"],[12],[13],[1,\"\\n    \"],[13],[1,\"\\n    \"],[10,0],[14,0,\"fx-col fx-gap-px-18\"],[12],[1,\"\\n      \"],[10,0],[14,0,\"fx-col fx-gap-px-6\"],[12],[1,\"\\n        \"],[10,0],[14,0,\"oss-onboarding-state__header\"],[12],[1,\"\\n          \"],[10,1],[14,0,\"oss-onboarding-state__title\"],[12],[1,[30,3]],[13],[1,\"\\n\"],[41,[48,[30,5]],[[[1,\"            \"],[18,5,null],[1,\"\\n\"]],[]],null],[1,\"        \"],[13],[1,\"\\n        \"],[10,1],[14,0,\"oss-onboarding-state__subtitle\"],[12],[1,[30,4]],[13],[1,\"\\n      \"],[13],[1,\"\\n\"],[41,[48,[30,6]],[[[1,\"        \"],[10,0],[14,0,\"oss-onboarding-state__actions\"],[12],[1,\"\\n          \"],[18,6,null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@imageUrl\",\"@title\",\"@subtitle\",\"&tag\",\"&actions\"],false,[\"if\",\"has-block\",\"yield\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/onboarding-state.hbs",
     "isStrictMode": false
   });
@@ -93347,13 +93352,16 @@ interface OSSCodeBlockArgs {
               <OSS::Button @icon="fa-plus" @label="Start setup" @skin="primary" />
               <OSS::Button @label="Learn more" />
             </:actions>
+            <:tag>
+              <OSS::Tag @label="New" @icon="fa-sparkles" @skin="primary" />
+            </:tag>
           </OSS::OnboardingState>
         </div>
       
     */
     {
-      "id": "2eLnEPox",
-      "block": "[[[1,\"\\n    \"],[10,0],[14,0,\"fx-row\"],[14,5,\"width:600px\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@imageUrl\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"imageUrl\"]]]],[[\"actions\"],[[[[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\",\"@label\",\"@skin\"],[\"fa-plus\",\"Start setup\",\"primary\"]],null],[1,\"\\n          \"],[8,[39,1],null,[[\"@label\"],[\"Learn more\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/onboarding-state\",\"o-s-s/button\"]]",
+      "id": "yDNABlDY",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,0,\"fx-row\"],[14,5,\"width:600px\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@imageUrl\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"imageUrl\"]]]],[[\"actions\",\"tag\"],[[[[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\",\"@label\",\"@skin\"],[\"fa-plus\",\"Start setup\",\"primary\"]],null],[1,\"\\n          \"],[8,[39,1],null,[[\"@label\"],[\"Learn more\"]],null],[1,\"\\n        \"]],[]],[[[1,\"\\n          \"],[8,[39,2],null,[[\"@label\",\"@icon\",\"@skin\"],[\"New\",\"fa-sparkles\",\"primary\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/onboarding-state\",\"o-s-s/button\",\"o-s-s/tag\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/onboarding-state.stories.js",
       "isStrictMode": false
     }),

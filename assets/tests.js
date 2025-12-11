@@ -10903,6 +10903,40 @@ define("dummy/tests/integration/components/o-s-s/onboarding-state-test", ["qunit
         assert.dom('.oss-onboarding-state__actions').doesNotExist();
       });
     });
+    (0, _qunit.module)('for tag block', () => {
+      (0, _qunit.test)('it renders tag named block', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}} @imageUrl={{this.imageUrl}}>
+                  <:tag>
+                    <OSS::Tag @label="New" @icon="fa-sparkles" @skin="primary" />
+                  </:tag>
+                </OSS::OnboardingState>
+               
+        */
+        {
+          "id": "thL7OWpY",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@imageUrl\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"imageUrl\"]]]],[[\"tag\"],[[[[1,\"\\n            \"],[8,[39,1],null,[[\"@label\",\"@icon\",\"@skin\"],[\"New\",\"fa-sparkles\",\"primary\"]],null],[1,\"\\n          \"]],[]]]]],[1,\"\\n       \"]],[],false,[\"o-s-s/onboarding-state\",\"o-s-s/tag\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/onboarding-state-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-onboarding-state__header .upf-tag').exists();
+      });
+      (0, _qunit.test)('it does not render a tag when no tag block is provided', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::OnboardingState @title={{this.title}} @subtitle={{this.subtitle}} @imageUrl={{this.imageUrl}} />
+        */
+        {
+          "id": "R580gPMd",
+          "block": "[[[8,[39,0],null,[[\"@title\",\"@subtitle\",\"@imageUrl\"],[[30,0,[\"title\"]],[30,0,[\"subtitle\"]],[30,0,[\"imageUrl\"]]]],null]],[],false,[\"o-s-s/onboarding-state\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/onboarding-state-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-onboarding-state__header .upf-tag').doesNotExist();
+      });
+    });
     (0, _qunit.module)('Error management', () => {
       (0, _qunit.test)('for title parameter, the component throws an error if the parameter is not passed', async function (assert) {
         (0, _testHelpers.setupOnerror)(err => {

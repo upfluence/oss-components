@@ -7791,12 +7791,13 @@ div.upf-image {
 }
 .split-settings__info {
   flex: 1;
-  padding-right: 60px;
+  padding-right: var(--spacing-px-60);
+  padding-bottom: var(--spacing-px-24);
 }
 .split-settings__info .title {
   font-size: 1.5rem;
   font-weight: var(--font-weight-semibold);
-  margin-bottom: 6px;
+  margin-bottom: var(--spacing-px-6);
 }
 .split-settings__info .description {
   padding: 0;
@@ -14342,6 +14343,14 @@ a.upf-btn--sm {
   max-width: 100%;
   object-fit: cover;
 }
+.oss-onboarding-state__header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-px-9);
+}
+.oss-onboarding-state__header .upf-tag {
+  width: fit-content;
+}
 .oss-onboarding-state__title {
   font-size: var(--font-size-md);
   font-weight: var(--font-weight-semibold);
@@ -14355,11 +14364,15 @@ a.upf-btn--sm {
 }
 @container oss-onboarding-state (width < 540px) {
   .oss-onboarding-state__container {
+    display: flex;
     flex-direction: column;
   }
   .oss-onboarding-state__illustration img {
     width: auto;
     height: 150px;
+  }
+  .oss-onboarding-state__header {
+    flex-direction: column;
   }
 }
 @container oss-onboarding-state (width < 340px) {
