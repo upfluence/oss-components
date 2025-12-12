@@ -1,12 +1,13 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render } from '@ember/test-helpers';
+import { render, setupOnerror } from '@ember/test-helpers';
 
 module('Integration | Component | o-s-s/progress-bar', function (hooks) {
   setupRenderingTest(hooks);
   hooks.beforeEach(function () {
     this.checkedValue = 42;
+    this.skins = { pending: 10, success: 30, warning: 25, danger: 15 };
   });
 
   test('it renders', async function (assert) {
@@ -180,6 +181,99 @@ module('Integration | Component | o-s-s/progress-bar', function (hooks) {
       assert.dom('.oss-progress-bar').doesNotHaveClass('oss-progress-bar--secondary-skin--warning');
       assert.dom('.oss-progress-bar').doesNotHaveClass('oss-progress-bar--secondary-skin--success');
       assert.dom('.oss-progress-bar').doesNotHaveClass('oss-progress-bar--secondary-skin--danger');
+    });
+  });
+
+  module('@skins arg behaviour', function () {
+    test('if the value is defined, the progress bar has the correct multi skin class', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />`);
+
+      assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--multi-skin');
+    });
+
+    test('if the value is defined, the progress bar has the correct success, warning, and danger classes', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />`);
+
+      assert.dom('.oss-progress-bar__inner').hasClass('oss-progress-bar__inner--pending');
+      assert.dom('.oss-progress-bar__inner:nth-of-type(2)').hasClass('oss-progress-bar__inner--success');
+      assert.dom('.oss-progress-bar__inner:nth-of-type(3)').hasClass('oss-progress-bar__inner--warning');
+      assert.dom('.oss-progress-bar__inner:nth-of-type(4)').hasClass('oss-progress-bar__inner--danger');
+    });
+
+    test('if the value is defined, the progress bar has the correct pending value', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />`);
+
+      assert.dom('.oss-progress-bar__inner--pending').hasAttribute('aria-valuenow', '10');
+    });
+
+    test('if the value is defined, the progress bar has the correct success value', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />`);
+
+      assert.dom('.oss-progress-bar__inner--success').hasAttribute('aria-valuenow', '30');
+    });
+
+    test('if the value is defined, the progress bar has the correct warning value', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />`);
+
+      assert.dom('.oss-progress-bar__inner--warning').hasAttribute('aria-valuenow', '25');
+    });
+
+    test('if the value is defined, the progress bar has the correct danger value', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />`);
+
+      assert.dom('.oss-progress-bar__inner--danger').hasAttribute('aria-valuenow', '15');
+    });
+
+    test('if the value is higher than 100, it throws an error', async function (assert) {
+      setupOnerror((error: Error) => {
+        assert.equal(
+          error.message,
+          'Assertion Failed: [component][OSS::ProgressBar] The sum of all skins values must be between 0 and 100'
+        );
+      });
+
+      await render(
+        hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skins={{hash success=30 warning=45 danger=35}} />`
+      );
+    });
+
+    test('if the value is updated, the classes also update', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />`);
+
+      this.set('skins', { success: 50, warning: 30, danger: 20 });
+
+      assert.dom('.oss-progress-bar__inner--pending').doesNotExist();
+      assert.dom('.oss-progress-bar__inner--success').hasAttribute('aria-valuenow', '50');
+      assert.dom('.oss-progress-bar__inner--warning').hasAttribute('aria-valuenow', '30');
+      assert.dom('.oss-progress-bar__inner--danger').hasAttribute('aria-valuenow', '20');
+    });
+
+    test('if only the pending value is defined, the progress bar has the correct pending value', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skins={{hash pending=33}} />`);
+
+      assert.dom('.oss-progress-bar__inner--pending').exists();
+      assert.dom('.oss-progress-bar__inner--pending').hasAttribute('aria-valuenow', '33');
+    });
+
+    test('if only the success value is defined, the progress bar has the correct success value', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skins={{hash success=33}} />`);
+
+      assert.dom('.oss-progress-bar__inner--success').exists();
+      assert.dom('.oss-progress-bar__inner--success').hasAttribute('aria-valuenow', '33');
+    });
+
+    test('if only the warning value is defined, the progress bar has the correct warning value', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skins={{hash warning=33}} />`);
+
+      assert.dom('.oss-progress-bar__inner--warning').exists();
+      assert.dom('.oss-progress-bar__inner--warning').hasAttribute('aria-valuenow', '33');
+    });
+
+    test('if only the danger value is defined, the progress bar has the correct danger value', async function (assert) {
+      await render(hbs`<OSS::ProgressBar @value={{this.checkedValue}} @skins={{hash danger=33}} />`);
+
+      assert.dom('.oss-progress-bar__inner--danger').exists();
+      assert.dom('.oss-progress-bar__inner--danger').hasAttribute('aria-valuenow', '33');
     });
   });
 });

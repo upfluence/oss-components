@@ -9,6 +9,65 @@
     class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
   >
     <div class="font-size-md font-weight-semibold">
+      Progress bar
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <OSS::ProgressBar @skin="success" @value={{42}} @displayValue={{true}} @label="Hello" @size="xs" />
+      <OSS::ProgressBar @skin="warning" @value={{21}} @displayValue={{true}} @label="Hello" />
+      <OSS::ProgressBar
+        @skin="danger"
+        @value={{78}}
+        @displayValue={{true}}
+        @label="Hello"
+        @coloredBackground={{true}}
+      />
+      <OSS::ProgressBar
+        @skin="success"
+        @value={{this.progressBarSuccess}}
+        @displayValue={{true}}
+        @label="Hello"
+        @coloredBackground={{true}}
+      />
+      <OSS::ProgressBar @value={{78}} @displayValue={{true}} @label="Hello" @coloredBackground={{false}} />
+      <OSS::ProgressBar @value={{78}} @displayValue={{true}} @label="Hello" @secondarySkin="danger" @size="sm" />
+      <OSS::ProgressBar @value={{62}} @displayValue={{true}} @skin="success" @secondarySkin="danger" @size="sm" />
+    </div>
+
+    <div class="font-size-sm font-weight-semibold margin-top-px-12">
+      Multi-skin Progress bars
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <OSS::ProgressBar @skins={{this.progressBarSkins}} @label="Multi-segment live example (70%-100%)" />
+      <OSS::ProgressBar
+        @skins={{hash success=30 warning=25 danger=15}}
+        @displayValue={{true}}
+        @label="Multi-segment example (70%)"
+      />
+      <OSS::ProgressBar
+        @skins={{hash success=50 warning=20 danger=30}}
+        @displayValue={{true}}
+        @label="Complete progress (100%)"
+        @size="sm"
+      />
+      <OSS::ProgressBar
+        @skins={{hash success=45 danger=10}}
+        @displayValue={{true}}
+        @label="Partial progress (55%)"
+        @coloredBackground={{true}}
+      />
+      <OSS::ProgressBar
+        @skins={{hash pending=45}}
+        @displayValue={{true}}
+        @label="Pending (45%)"
+        @coloredBackground={{true}}
+      />
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
       Button
     </div>
     <div class="fx-col fx-gap-px-24 fx-xalign-start">
@@ -699,35 +758,6 @@
         @passiveColor="blue"
         @onChange={{this.onRatingClick}}
       />
-    </div>
-  </div>
-
-  <div
-    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
-  >
-    <div class="font-size-md font-weight-semibold">
-      Progress bar
-    </div>
-    <div class="fx-row fx-gap-px-24 fx-xalign-center">
-      <OSS::ProgressBar @skin="success" @value={{42}} @displayValue={{true}} @label="Hello" @size="xs" />
-      <OSS::ProgressBar @skin="warning" @value={{21}} @displayValue={{true}} @label="Hello" />
-      <OSS::ProgressBar
-        @skin="danger"
-        @value={{78}}
-        @displayValue={{true}}
-        @label="Hello"
-        @coloredBackground={{true}}
-      />
-      <OSS::ProgressBar
-        @skin="success"
-        @value={{78}}
-        @displayValue={{true}}
-        @label="Hello"
-        @coloredBackground={{true}}
-      />
-      <OSS::ProgressBar @value={{78}} @displayValue={{true}} @label="Hello" @coloredBackground={{false}} />
-      <OSS::ProgressBar @value={{78}} @displayValue={{true}} @label="Hello" @secondarySkin="danger" @size="sm" />
-      <OSS::ProgressBar @value={{62}} @displayValue={{true}} @skin="success" @secondarySkin="danger" @size="sm" />
     </div>
   </div>
 

@@ -77,6 +77,19 @@ export default {
       },
       options: ProgressBarSkins,
       control: { type: 'select' }
+    },
+    skins: {
+      description:
+        'Sets the multiple skins to be used for the progress bar. Sum of all values must be between 0 and 100 included. E.g { warning: 20, danger: 20, success: 40 } or { pending: 30 }',
+      table: {
+        type: {
+          summary: '{ pending?: number, success?: number, warning?: number, danger?: number }'
+        },
+        defaultValue: { summary: undefined }
+      },
+      control: {
+        type: 'object'
+      }
     }
   },
   parameters: {
@@ -93,7 +106,8 @@ const defaultArgs = {
   label: 'Hello',
   displayValue: true,
   coloredBackground: false,
-  secondarySkin: undefined
+  secondarySkin: undefined,
+  skins: undefined
 };
 
 const BasicUsageTemplate = (args) => ({
@@ -106,7 +120,9 @@ const BasicUsageTemplate = (args) => ({
         @skin={{this.skin}}
         @size={{this.size}}
         @coloredBackground={{this.coloredBackground}}
-        @secondarySkin={{this.secondarySkin}} />
+        @secondarySkin={{this.secondarySkin}}
+        @skins={{this.skins}}
+      />
     </div>
   `,
   context: args
