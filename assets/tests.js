@@ -12702,6 +12702,12 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
     (0, _emberQunit.setupRenderingTest)(hooks);
     hooks.beforeEach(function () {
       this.checkedValue = 42;
+      this.skins = {
+        pending: 10,
+        success: 30,
+        warning: 25,
+        danger: 15
+      };
     });
     (0, _qunit.test)('it renders', async function (assert) {
       await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
@@ -13035,6 +13041,181 @@ define("dummy/tests/integration/components/o-s-s/progress-bar-test", ["qunit", "
         assert.dom('.oss-progress-bar').doesNotHaveClass('oss-progress-bar--secondary-skin--warning');
         assert.dom('.oss-progress-bar').doesNotHaveClass('oss-progress-bar--secondary-skin--success');
         assert.dom('.oss-progress-bar').doesNotHaveClass('oss-progress-bar--secondary-skin--danger');
+      });
+    });
+    (0, _qunit.module)('@skins arg behaviour', function () {
+      (0, _qunit.test)('if the value is defined, the progress bar has the correct multi skin class', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />
+        */
+        {
+          "id": "zvSvLLxZ",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[30,0,[\"skins\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-progress-bar').hasClass('oss-progress-bar--multi-skin');
+      });
+      (0, _qunit.test)('if the value is defined, the progress bar has the correct success, warning, and danger classes', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />
+        */
+        {
+          "id": "zvSvLLxZ",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[30,0,[\"skins\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-progress-bar__inner').hasClass('oss-progress-bar__inner--pending');
+        assert.dom('.oss-progress-bar__inner:nth-of-type(2)').hasClass('oss-progress-bar__inner--success');
+        assert.dom('.oss-progress-bar__inner:nth-of-type(3)').hasClass('oss-progress-bar__inner--warning');
+        assert.dom('.oss-progress-bar__inner:nth-of-type(4)').hasClass('oss-progress-bar__inner--danger');
+      });
+      (0, _qunit.test)('if the value is defined, the progress bar has the correct pending value', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />
+        */
+        {
+          "id": "zvSvLLxZ",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[30,0,[\"skins\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-progress-bar__inner--pending').hasAttribute('aria-valuenow', '10');
+      });
+      (0, _qunit.test)('if the value is defined, the progress bar has the correct success value', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />
+        */
+        {
+          "id": "zvSvLLxZ",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[30,0,[\"skins\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-progress-bar__inner--success').hasAttribute('aria-valuenow', '30');
+      });
+      (0, _qunit.test)('if the value is defined, the progress bar has the correct warning value', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />
+        */
+        {
+          "id": "zvSvLLxZ",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[30,0,[\"skins\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-progress-bar__inner--warning').hasAttribute('aria-valuenow', '25');
+      });
+      (0, _qunit.test)('if the value is defined, the progress bar has the correct danger value', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />
+        */
+        {
+          "id": "zvSvLLxZ",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[30,0,[\"skins\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-progress-bar__inner--danger').hasAttribute('aria-valuenow', '15');
+      });
+      (0, _qunit.test)('if the value is higher than 100, it throws an error', async function (assert) {
+        (0, _testHelpers.setupOnerror)(error => {
+          assert.equal(error.message, 'Assertion Failed: [component][OSS::ProgressBar] The sum of all skins values must be between 0 and 100');
+        });
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{hash success=30 warning=45 danger=35}} />
+        */
+        {
+          "id": "Nxj74gWz",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[28,[37,1],null,[[\"success\",\"warning\",\"danger\"],[30,45,35]]]]],null]],[],false,[\"o-s-s/progress-bar\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+          "isStrictMode": false
+        }));
+      });
+      (0, _qunit.test)('if the value is updated, the classes also update', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{this.skins}} />
+        */
+        {
+          "id": "zvSvLLxZ",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[30,0,[\"skins\"]]]],null]],[],false,[\"o-s-s/progress-bar\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+          "isStrictMode": false
+        }));
+        this.set('skins', {
+          success: 50,
+          warning: 30,
+          danger: 20
+        });
+        assert.dom('.oss-progress-bar__inner--pending').doesNotExist();
+        assert.dom('.oss-progress-bar__inner--success').hasAttribute('aria-valuenow', '50');
+        assert.dom('.oss-progress-bar__inner--warning').hasAttribute('aria-valuenow', '30');
+        assert.dom('.oss-progress-bar__inner--danger').hasAttribute('aria-valuenow', '20');
+      });
+      (0, _qunit.test)('if only the pending value is defined, the progress bar has the correct pending value', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{hash pending=33}} />
+        */
+        {
+          "id": "BLnpV6bg",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[28,[37,1],null,[[\"pending\"],[33]]]]],null]],[],false,[\"o-s-s/progress-bar\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-progress-bar__inner--pending').exists();
+        assert.dom('.oss-progress-bar__inner--pending').hasAttribute('aria-valuenow', '33');
+      });
+      (0, _qunit.test)('if only the success value is defined, the progress bar has the correct success value', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{hash success=33}} />
+        */
+        {
+          "id": "5tCC3LfZ",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[28,[37,1],null,[[\"success\"],[33]]]]],null]],[],false,[\"o-s-s/progress-bar\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-progress-bar__inner--success').exists();
+        assert.dom('.oss-progress-bar__inner--success').hasAttribute('aria-valuenow', '33');
+      });
+      (0, _qunit.test)('if only the warning value is defined, the progress bar has the correct warning value', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{hash warning=33}} />
+        */
+        {
+          "id": "Z0gNkBKR",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[28,[37,1],null,[[\"warning\"],[33]]]]],null]],[],false,[\"o-s-s/progress-bar\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-progress-bar__inner--warning').exists();
+        assert.dom('.oss-progress-bar__inner--warning').hasAttribute('aria-valuenow', '33');
+      });
+      (0, _qunit.test)('if only the danger value is defined, the progress bar has the correct danger value', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::ProgressBar @value={{this.checkedValue}} @skins={{hash danger=33}} />
+        */
+        {
+          "id": "cw3xZ/tU",
+          "block": "[[[8,[39,0],null,[[\"@value\",\"@skins\"],[[30,0,[\"checkedValue\"]],[28,[37,1],null,[[\"danger\"],[33]]]]],null]],[],false,[\"o-s-s/progress-bar\",\"hash\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/progress-bar-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-progress-bar__inner--danger').exists();
+        assert.dom('.oss-progress-bar__inner--danger').hasAttribute('aria-valuenow', '33');
       });
     });
   });

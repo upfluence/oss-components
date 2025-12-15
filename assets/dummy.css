@@ -13365,16 +13365,51 @@ a.upf-btn--sm {
   margin-bottom: 0;
   overflow: hidden;
 }
+.oss-progress-bar__segments {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
 .oss-progress-bar__inner {
   width: 0;
   height: 10px;
-  animation: oss-progress-bar-animation 1s;
   border-radius: var(--border-radius-xs) 0 0 var(--border-radius-xs);
-  transition: width 0.6s ease;
   background-color: var(--color-primary-500);
+  transition: width 0.6s ease;
+}
+.oss-progress-bar__inner.oss-progress-bar__inner--initial {
+  animation: oss-progress-bar-animation 1s ease;
+}
+.oss-progress-bar__inner--warning {
+  background-color: var(--color-warning-500);
+  border-radius: 0;
+}
+.oss-progress-bar__inner--success {
+  background-color: var(--color-success-500);
+  border-radius: 0;
+}
+.oss-progress-bar__inner--danger {
+  background-color: var(--color-error-500);
+  border-radius: 0;
 }
 .oss-progress-bar--colored-background .oss-progress-bar__outer {
   background-color: var(--color-primary-100);
+}
+.oss-progress-bar--multi-skin .oss-progress-bar__inner {
+  border-radius: 0;
+  transition: width 0.6s ease;
+}
+.oss-progress-bar--multi-skin .oss-progress-bar__inner.oss-progress-bar__inner--initial {
+  animation: oss-progress-bar-animation 1s ease;
+}
+.oss-progress-bar--multi-skin .oss-progress-bar__inner:first-child {
+  border-radius: var(--border-radius-xs) 0 0 var(--border-radius-xs);
+}
+.oss-progress-bar--multi-skin .oss-progress-bar__inner:last-child {
+  border-radius: 0 var(--border-radius-xs) var(--border-radius-xs) 0;
+}
+.oss-progress-bar--multi-skin .oss-progress-bar__inner:only-child {
+  border-radius: var(--border-radius-xs);
 }
 @keyframes oss-progress-bar-animation {
   from {

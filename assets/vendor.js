@@ -95208,69 +95208,125 @@ interface OSSCodeBlockArgs {
     }
   }, (_applyDecoratedDescriptor(_class.prototype, "onDestroy", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onDestroy"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "initialize", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "initialize"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeModal", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeModal"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "closeOnEscape", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "closeOnEscape"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "trackInitialTarget", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "trackInitialTarget"), _class.prototype), _applyDecoratedDescriptor(_class.prototype, "onClickOutside", [_object.action], Object.getOwnPropertyDescriptor(_class.prototype, "onClickOutside"), _class.prototype)), _class);
 });
-;define("@upfluence/oss-components/components/o-s-s/progress-bar", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@ember/template", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _template, _templateFactory) {
+;define("@upfluence/oss-components/components/o-s-s/progress-bar", ["exports", "@ember/component", "@glimmer/component", "@ember/debug", "@ember/template", "@ember/component/helper", "@ember/template-factory"], function (_exports, _component, _component2, _debug, _template, _helper, _templateFactory) {
   "use strict";
 
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
   _exports.default = void 0;
-  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/debug",0,"@ember/template",0,"@ember/component"eaimeta@70e063a35619d71f
+  0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/debug",0,"@ember/template",0,"@ember/component/helper",0,"@ember/component"eaimeta@70e063a35619d71f
+  function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+  function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == typeof i ? i : String(i); }
+  function _toPrimitive(t, r) { if ("object" != typeof t || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != typeof i) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
   const __COLOCATED_TEMPLATE__ = (0, _templateFactory.createTemplateFactory)(
   /*
     <div class={{this.computedStyles}} ...attributes>
     {{#if @label}}
-      <span class="oss-progress-bar__label">
-        {{@label}}
-      </span>
+      <span class="oss-progress-bar__label">{{@label}}</span>
     {{/if}}
+  
     <div class="oss-progress-bar__outer">
-      <div
-        class="oss-progress-bar__inner"
-        role="progressbar"
-        aria-valuenow={{@value}}
-        aria-valuemin="0"
-        aria-valuemax="100"
-        style={{this.progressBarWidthStyle}}
-      >
-      </div>
+      {{#if this.hasSkins}}
+        <div class="oss-progress-bar__segments">
+          {{#each this.progressSegments as |skin|}}
+            {{#if (this.isSegmentVisible skin=skin)}}
+              <div
+                class={{this.getSegmentClasses skin=skin}}
+                role="progressbar"
+                aria-valuenow={{this.getSegmentValue skin=skin}}
+                aria-valuemin="0"
+                aria-valuemax="100"
+                style={{this.progressBarStyle value=(this.getSegmentValue skin=skin)}}
+              ></div>
+            {{/if}}
+          {{/each}}
+        </div>
+      {{else}}
+        <div
+          class={{this.progressBarInnerClasses}}
+          role="progressbar"
+          aria-valuenow={{@value}}
+          aria-valuemin="0"
+          aria-valuemax="100"
+          style={{this.progressBarWidthStyle}}
+        ></div>
+      {{/if}}
     </div>
+  
     {{#if @displayValue}}
       <span class="oss-progress-bar__value">
-        {{@value}}%
+        {{this.totalProgress}}%
       </span>
     {{/if}}
   </div>
   */
   {
-    "id": "umeoeTiz",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedStyles\"]]],[17,1],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[10,1],[14,0,\"oss-progress-bar__label\"],[12],[1,\"\\n      \"],[1,[30,2]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"oss-progress-bar__outer\"],[12],[1,\"\\n    \"],[10,0],[14,0,\"oss-progress-bar__inner\"],[14,\"role\",\"progressbar\"],[15,\"aria-valuenow\",[30,3]],[14,\"aria-valuemin\",\"0\"],[14,\"aria-valuemax\",\"100\"],[15,5,[30,0,[\"progressBarWidthStyle\"]]],[12],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,4],[[[1,\"    \"],[10,1],[14,0,\"oss-progress-bar__value\"],[12],[1,\"\\n      \"],[1,[30,3]],[1,\"%\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@label\",\"@value\",\"@displayValue\"],false,[\"if\"]]",
+    "id": "OHS61nRU",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedStyles\"]]],[17,1],[12],[1,\"\\n\"],[41,[30,2],[[[1,\"    \"],[10,1],[14,0,\"oss-progress-bar__label\"],[12],[1,[30,2]],[13],[1,\"\\n\"]],[]],null],[1,\"\\n  \"],[10,0],[14,0,\"oss-progress-bar__outer\"],[12],[1,\"\\n\"],[41,[30,0,[\"hasSkins\"]],[[[1,\"      \"],[10,0],[14,0,\"oss-progress-bar__segments\"],[12],[1,\"\\n\"],[42,[28,[37,2],[[28,[37,2],[[30,0,[\"progressSegments\"]]],null]],null],null,[[[41,[28,[30,0,[\"isSegmentVisible\"]],null,[[\"skin\"],[[30,3]]]],[[[1,\"            \"],[10,0],[15,0,[28,[30,0,[\"getSegmentClasses\"]],null,[[\"skin\"],[[30,3]]]]],[14,\"role\",\"progressbar\"],[15,\"aria-valuenow\",[28,[30,0,[\"getSegmentValue\"]],null,[[\"skin\"],[[30,3]]]]],[14,\"aria-valuemin\",\"0\"],[14,\"aria-valuemax\",\"100\"],[15,5,[28,[30,0,[\"progressBarStyle\"]],null,[[\"value\"],[[28,[30,0,[\"getSegmentValue\"]],null,[[\"skin\"],[[30,3]]]]]]]],[12],[13],[1,\"\\n\"]],[]],null]],[3]],null],[1,\"      \"],[13],[1,\"\\n\"]],[]],[[[1,\"      \"],[10,0],[15,0,[30,0,[\"progressBarInnerClasses\"]]],[14,\"role\",\"progressbar\"],[15,\"aria-valuenow\",[30,4]],[14,\"aria-valuemin\",\"0\"],[14,\"aria-valuemax\",\"100\"],[15,5,[30,0,[\"progressBarWidthStyle\"]]],[12],[13],[1,\"\\n\"]],[]]],[1,\"  \"],[13],[1,\"\\n\\n\"],[41,[30,5],[[[1,\"    \"],[10,1],[14,0,\"oss-progress-bar__value\"],[12],[1,\"\\n      \"],[1,[30,0,[\"totalProgress\"]]],[1,\"%\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@label\",\"skin\",\"@value\",\"@displayValue\"],false,[\"if\",\"each\",\"-track-array\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/progress-bar.hbs",
     "isStrictMode": false
   });
   class OSSProgressBar extends _component2.default {
     constructor(owner, args) {
       super(owner, args);
-      (true && !(typeof args.value === 'number' && args.value >= 0 && args.value <= 100) && (0, _debug.assert)('[component][OSS::ProgressBar] You must pass a numbered value between 0 and 100', typeof args.value === 'number' && args.value >= 0 && args.value <= 100));
+      _defineProperty(this, "isSegmentVisible", (0, _helper.helper)((_, {
+        skin
+      }) => {
+        return this.hasSkins && (this.skins[skin] || 0) > 0;
+      }));
+      _defineProperty(this, "getSegmentValue", (0, _helper.helper)((_, {
+        skin
+      }) => {
+        return this.hasSkins ? this.skins[skin] || 0 : 0;
+      }));
+      _defineProperty(this, "progressBarStyle", (0, _helper.helper)((_, {
+        value
+      }) => {
+        const styles = [`width: ${value}%`, `--progress-bar-animation-width: ${value}%`];
+        return (0, _template.htmlSafe)(styles.join(';'));
+      }));
+      _defineProperty(this, "getSegmentClasses", (0, _helper.helper)((_, {
+        skin
+      }) => {
+        const classes = ['oss-progress-bar__inner', `oss-progress-bar__inner--${skin}`, 'oss-progress-bar__inner--initial'];
+        return classes.join(' ');
+      }));
+      if (args.skins) {
+        const total = Object.values(args.skins).reduce((sum, v) => sum + v, 0);
+        (true && !(total >= 0 && total <= 100) && (0, _debug.assert)('[component][OSS::ProgressBar] The sum of all skins values must be between 0 and 100', total >= 0 && total <= 100));
+      } else {
+        (true && !(args.value >= 0 && args.value <= 100) && (0, _debug.assert)('[component][OSS::ProgressBar] You must pass a numbered value between 0 and 100', args.value >= 0 && args.value <= 100));
+      }
+    }
+    get hasSkins() {
+      return !!this.args.skins && Object.keys(this.args.skins).length > 0;
+    }
+    get progressSegments() {
+      return this.hasSkins ? Object.keys(this.skins) : [];
     }
     get computedStyles() {
       const classes = ['oss-progress-bar'];
-      if (this.args.size) {
-        classes.push('oss-progress-bar--' + this.args.size);
-      }
-      if (this.args.skin) {
-        classes.push('oss-progress-bar--' + this.args.skin);
-      }
-      if (this.args.coloredBackground) {
-        classes.push('oss-progress-bar--colored-background');
-      }
-      if (this.args.secondarySkin) {
-        classes.push('oss-progress-bar--secondary-skin--' + this.args.secondarySkin);
-      }
+      if (this.args.size) classes.push(`oss-progress-bar--${this.args.size}`);
+      if (this.args.skin && !this.hasSkins) classes.push(`oss-progress-bar--${this.args.skin}`);
+      if (this.args.coloredBackground) classes.push('oss-progress-bar--colored-background');
+      if (this.args.secondarySkin) classes.push(`oss-progress-bar--secondary-skin--${this.args.secondarySkin}`);
+      if (this.hasSkins) classes.push('oss-progress-bar--multi-skin');
       return classes.join(' ');
     }
     get progressBarWidthStyle() {
-      return (0, _template.htmlSafe)(`width: ${this.args.value + '%'}; --progress-bar-animation-width: ${this.args.value + '%'};`);
+      const styles = [`width: ${this.args.value}%`, `--progress-bar-animation-width: ${this.args.value}%`];
+      return (0, _template.htmlSafe)(styles.join('; '));
+    }
+    get progressBarInnerClasses() {
+      const classes = ['oss-progress-bar__inner', 'oss-progress-bar__inner--initial'];
+      return classes.join(' ');
+    }
+    get totalProgress() {
+      return this.hasSkins ? Object.values(this.skins).reduce((sum, v) => sum + v, 0) : this.args.value;
+    }
+    get skins() {
+      return this.args.skins;
     }
   }
   _exports.default = OSSProgressBar;
@@ -95384,6 +95440,20 @@ interface OSSCodeBlockArgs {
         control: {
           type: 'select'
         }
+      },
+      skins: {
+        description: 'Sets the multiple skins to be used for the progress bar. Sum of all values must be between 0 and 100 included. E.g { warning: 20, danger: 20, success: 40 } or { pending: 30 }',
+        table: {
+          type: {
+            summary: '{ pending?: number, success?: number, warning?: number, danger?: number }'
+          },
+          defaultValue: {
+            summary: undefined
+          }
+        },
+        control: {
+          type: 'object'
+        }
       }
     },
     parameters: {
@@ -95399,7 +95469,8 @@ interface OSSCodeBlockArgs {
     label: 'Hello',
     displayValue: true,
     coloredBackground: false,
-    secondarySkin: undefined
+    secondarySkin: undefined,
+    skins: undefined
   };
   const BasicUsageTemplate = args => ({
     template: (0, _templateFactory.createTemplateFactory)(
@@ -95413,13 +95484,15 @@ interface OSSCodeBlockArgs {
             @skin={{this.skin}}
             @size={{this.size}}
             @coloredBackground={{this.coloredBackground}}
-            @secondarySkin={{this.secondarySkin}} />
+            @secondarySkin={{this.secondarySkin}}
+            @skins={{this.skins}}
+          />
         </div>
       
     */
     {
-      "id": "xv0aqhl1",
-      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"background-color: #1c1c1c;width:200px\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@value\",\"@label\",\"@displayValue\",\"@skin\",\"@size\",\"@coloredBackground\",\"@secondarySkin\"],[[30,0,[\"value\"]],[30,0,[\"label\"]],[30,0,[\"displayValue\"]],[30,0,[\"skin\"]],[30,0,[\"size\"]],[30,0,[\"coloredBackground\"]],[30,0,[\"secondarySkin\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/progress-bar\"]]",
+      "id": "XPHCCC9o",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"background-color: #1c1c1c;width:200px\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@value\",\"@label\",\"@displayValue\",\"@skin\",\"@size\",\"@coloredBackground\",\"@secondarySkin\",\"@skins\"],[[30,0,[\"value\"]],[30,0,[\"label\"]],[30,0,[\"displayValue\"]],[30,0,[\"skin\"]],[30,0,[\"size\"]],[30,0,[\"coloredBackground\"]],[30,0,[\"secondarySkin\"]],[30,0,[\"skins\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/progress-bar\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/progress-bar.stories.js",
       "isStrictMode": false
     }),
