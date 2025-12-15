@@ -12834,11 +12834,11 @@ a.upf-btn--sm {
   width: 60px;
 }
 .oss-smart__immersive-icon-container--generating .smart-logo-icon::before,
-.oss-smart__immersive-icon-container--generating .smart-logo-image::before {
+.oss-smart__immersive-icon-container--generating .smart-logo-image-container::before {
   content: '';
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: 2;
   pointer-events: none;
   background: linear-gradient(270deg, rgba(245, 245, 244, 0) 65%, rgba(250, 198, 255, 0.7) 73.75%, rgba(208, 217, 255, 0.8) 76.81%, rgba(255, 255, 255, 0.3) 81.54%, #fac6ff 85.82%, #d0d9ff 92.59%, rgba(245, 245, 244, 0) 100%);
   background-size: 300% 100%;
@@ -12846,6 +12846,7 @@ a.upf-btn--sm {
   background-blend-mode: normal;
   animation: stripeGlow 2s ease-in-out infinite;
   opacity: 0.6;
+  border-radius: var(--border-radius-md);
 }
 .oss-smart__immersive-icon-container--generating .smart-logo-icon,
 .oss-smart__immersive-icon-container--generating .smart-logo-image {

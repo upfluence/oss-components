@@ -98727,13 +98727,15 @@ interface OSSCodeBlockArgs {
         <OSS::Icon @icon="fa-{{this.logoIcon}}" @style="duotone" />
       </div>
     {{else}}
-      <img class="smart-logo-image" src={{or @url this.fallbackSvgUrl}} onError={{this.onError}} alt="Smart branding" />
+      <div class="smart-logo-image-container">
+        <img class="smart-logo-image" src={{or @url this.fallbackSvgUrl}} onError={{this.onError}} alt="Smart branding" />
+      </div>
     {{/if}}
   </div>
   */
   {
-    "id": "cM6lss2z",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[4,[38,0],[[30,0,[\"handleLoadingUpdate\"]],[30,2]],null],[4,[38,1],[[30,0,[\"registerElement\"]]],null],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[11,0],[24,0,\"edit-overlay fx-row fx-malign-center fx-xalign-center\"],[24,\"role\",\"button\"],[4,[38,3],[\"click\",[30,4]],null],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\"],[\"fa-pen\"]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[41,[28,[37,5],[[30,0,[\"logoMode\"]],\"icon\"],null],[[[1,\"    \"],[10,0],[15,0,[29,[\"smart-logo-icon fx-row fx-malign-center fx-xalign-center \",[30,0,[\"logoColor\"]]]]],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@style\"],[[29,[\"fa-\",[30,0,[\"logoIcon\"]]]],\"duotone\"]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[10,\"img\"],[14,0,\"smart-logo-image\"],[15,\"src\",[28,[37,6],[[30,5],[30,0,[\"fallbackSvgUrl\"]]],null]],[15,\"onError\",[30,0,[\"onError\"]]],[14,\"alt\",\"Smart branding\"],[12],[13],[1,\"\\n\"]],[]]],[13]],[\"&attrs\",\"@loading\",\"@editable\",\"@onEdit\",\"@url\"],false,[\"did-update\",\"did-insert\",\"if\",\"on\",\"o-s-s/icon\",\"eq\",\"or\"]]",
+    "id": "FRSY/efq",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClass\"]]],[17,1],[4,[38,0],[[30,0,[\"handleLoadingUpdate\"]],[30,2]],null],[4,[38,1],[[30,0,[\"registerElement\"]]],null],[12],[1,\"\\n\"],[41,[30,3],[[[1,\"    \"],[11,0],[24,0,\"edit-overlay fx-row fx-malign-center fx-xalign-center\"],[24,\"role\",\"button\"],[4,[38,3],[\"click\",[30,4]],null],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\"],[\"fa-pen\"]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[41,[28,[37,5],[[30,0,[\"logoMode\"]],\"icon\"],null],[[[1,\"    \"],[10,0],[15,0,[29,[\"smart-logo-icon fx-row fx-malign-center fx-xalign-center \",[30,0,[\"logoColor\"]]]]],[12],[1,\"\\n      \"],[8,[39,4],null,[[\"@icon\",\"@style\"],[[29,[\"fa-\",[30,0,[\"logoIcon\"]]]],\"duotone\"]],null],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],[[[1,\"    \"],[10,0],[14,0,\"smart-logo-image-container\"],[12],[1,\"\\n      \"],[10,\"img\"],[14,0,\"smart-logo-image\"],[15,\"src\",[28,[37,6],[[30,5],[30,0,[\"fallbackSvgUrl\"]]],null]],[15,\"onError\",[30,0,[\"onError\"]]],[14,\"alt\",\"Smart branding\"],[12],[13],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]]],[13]],[\"&attrs\",\"@loading\",\"@editable\",\"@onEdit\",\"@url\"],false,[\"did-update\",\"did-insert\",\"if\",\"on\",\"o-s-s/icon\",\"eq\",\"or\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/smart/immersive/logo.hbs",
     "isStrictMode": false
   });
