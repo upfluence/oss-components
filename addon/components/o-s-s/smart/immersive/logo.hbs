@@ -14,6 +14,8 @@
       <OSS::Icon @icon="fa-{{this.logoIcon}}" @style="duotone" />
     </div>
   {{else}}
-    <img class="smart-logo-image" src={{or @url this.fallbackSvgUrl}} onError={{this.onError}} alt="Smart branding" />
+    <div class="smart-logo-image-container">
+      <img class="smart-logo-image" src={{or @url this.fallbackSvgUrl}} onError={{this.onError}} alt="Smart branding" />
+    </div>
   {{/if}}
 </div>
