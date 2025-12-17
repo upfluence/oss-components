@@ -96277,31 +96277,66 @@ interface OSSCodeBlockArgs {
   
     {{#if this.isOpen}}
       {{#in-element this.portalTarget insertBefore=null}}
-        <OSS::InfiniteSelect
-          @items={{@items}}
-          @onSearch={{this.onSearch}}
-          @onSelect={{this.onSelect}}
-          @searchEnabled={{this.searchEnabled}}
-          @searchPlaceholder={{this.searchPlaceholder}}
-          @enableKeyboard={{true}}
-          @action={{this.actionArguments}}
-          id={{this.portalId}}
-          class={{concat "margin-top-px-0 oss-select-container__dropdown " this.dropdownAddressableClass}}
-          {{on-click-outside this.onClickOutside useCapture=@captureClickOutside}}
-          {{on "click" this.noop}}
-        >
-          <:option as |item index|>
-            <div class="item-wrapper fx-row fx-xalign-center fx-malign-space-between {{if (eq @value item) 'selected'}}">
-              {{#if (has-block "option")}}
-                {{yield item index to="option"}}
-              {{/if}}
+        {{#if (has-block "empty-state")}}
+          <OSS::InfiniteSelect
+            @items={{@items}}
+            @onSearch={{this.onSearch}}
+            @onSelect={{this.onSelect}}
+            @searchEnabled={{this.searchEnabled}}
+            @searchPlaceholder={{this.searchPlaceholder}}
+            @enableKeyboard={{true}}
+            @action={{this.actionArguments}}
+            id={{this.portalId}}
+            class={{concat "margin-top-px-0 oss-select-container__dropdown " this.dropdownAddressableClass}}
+            {{on-click-outside this.onClickOutside useCapture=@captureClickOutside}}
+            {{on "click" this.noop}}
+          >
+            <:option as |item index|>
+              <div
+                class="item-wrapper fx-row fx-xalign-center fx-malign-space-between {{if (eq @value item) 'selected'}}"
+              >
+                {{#if (has-block "option")}}
+                  {{yield item index to="option"}}
+                {{/if}}
   
-              {{#if (eq @value item)}}
-                <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
-              {{/if}}
-            </div>
-          </:option>
-        </OSS::InfiniteSelect>
+                {{#if (eq @value item)}}
+                  <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
+                {{/if}}
+              </div>
+            </:option>
+            <:empty-state>
+              {{yield to="empty-state"}}
+            </:empty-state>
+          </OSS::InfiniteSelect>
+        {{else}}
+          <OSS::InfiniteSelect
+            @items={{@items}}
+            @onSearch={{this.onSearch}}
+            @onSelect={{this.onSelect}}
+            @searchEnabled={{this.searchEnabled}}
+            @searchPlaceholder={{this.searchPlaceholder}}
+            @enableKeyboard={{true}}
+            @action={{this.actionArguments}}
+            id={{this.portalId}}
+            class={{concat "margin-top-px-0 oss-select-container__dropdown " this.dropdownAddressableClass}}
+            {{on-click-outside this.onClickOutside useCapture=@captureClickOutside}}
+            {{on "click" this.noop}}
+          >
+            <:option as |item index|>
+              <div
+                class="item-wrapper fx-row fx-xalign-center fx-malign-space-between {{if (eq @value item) 'selected'}}"
+              >
+                {{#if (has-block "option")}}
+                  {{yield item index to="option"}}
+                {{/if}}
+  
+                {{#if (eq @value item)}}
+                  <OSS::Icon @icon="fa-check" class="font-color-primary-500 padding-right-px-6" />
+                {{/if}}
+              </div>
+            </:option>
+          </OSS::InfiniteSelect>
+        {{/if}}
       {{/in-element}}
     {{/if}}
   
@@ -96321,8 +96356,8 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "CxLKJunD",
-    "block": "[[[11,0],[16,0,[30,0,[\"classNames\"]]],[24,\"data-toggle\",\"oss-dropdown\"],[17,1],[4,[38,0],[[28,[37,1],[[30,0,[\"ensureBlockPresence\"]],[48,[30,9]]],null]],null],[4,[38,0],[[30,0,[\"registerContainer\"]]],null],[4,[38,3],[[30,0,[\"disconnectObserver\"]]],null],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"upf-input \",[52,[30,0,[\"isOpen\"]],\"active\"],\" fx-row fx-1 fx-xalign-center\"]]],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-malign-space-between fx-xalign-center\"],[12],[1,\"\\n\"],[41,[30,2],[[[41,[48,[30,10]],[[[1,\"          \"],[18,10,[[30,2]]],[1,\"\\n\"]],[]],[[[1,\"          \"],[10,1],[14,0,\"text-ellipsis\"],[12],[1,[28,[35,7],[[30,2],[30,0,[\"targetValue\"]]],null]],[13],[1,\"\\n\"]],[]]]],[]],[[[1,\"        \"],[10,1],[14,0,\"upf-input--placeholder\"],[12],[1,[30,0,[\"placeholder\"]]],[13],[1,\"\\n\"]],[]]],[1,\"      \"],[8,[39,8],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[[29,[\"fa-chevron-\",[52,[30,0,[\"isOpen\"]],\"up\",\"down\"]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"isOpen\"]],[[[40,[[[1,\"      \"],[8,[39,11],[[16,1,[30,0,[\"portalId\"]]],[16,0,[28,[37,12],[\"margin-top-px-0 oss-select-container__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[4,[38,13],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[[30,4]]]],[4,[38,5],[\"click\",[30,0,[\"noop\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchEnabled\",\"@searchPlaceholder\",\"@enableKeyboard\",\"@action\"],[[30,3],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"searchPlaceholder\"]],true,[30,0,[\"actionArguments\"]]]],[[\"option\"],[[[[1,\"\\n          \"],[10,0],[15,0,[29,[\"item-wrapper fx-row fx-xalign-center fx-malign-space-between \",[52,[28,[37,14],[[30,2],[30,5]],null],\"selected\"]]]],[12],[1,\"\\n\"],[41,[48,[30,9]],[[[1,\"              \"],[18,9,[[30,5],[30,6]]],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,14],[[30,2],[30,5]],null],[[[1,\"              \"],[8,[39,8],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"          \"],[13],[1,\"\\n        \"]],[5,6]]]]],[1,\"\\n\"]],[]],\"%cursor:0%\",[28,[37,10],[[30,0,[\"portalTarget\"]]],null],null]],[]],null],[1,\"\\n\"],[41,[30,7],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,8],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\"\\n      \"],[1,[30,7]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,8],[[[1,\"    \"],[10,0],[14,0,\"font-color-success-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,8],null,[[\"@icon\"],[\"fa-check-circle\"]],null],[1,\"\\n      \"],[1,[30,8]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@value\",\"@items\",\"@captureClickOutside\",\"item\",\"index\",\"@errorMessage\",\"@successMessage\",\"&option\",\"&selected\"],false,[\"did-insert\",\"fn\",\"has-block\",\"will-destroy\",\"if\",\"on\",\"yield\",\"get\",\"o-s-s/icon\",\"in-element\",\"-in-el-null\",\"o-s-s/infinite-select\",\"concat\",\"on-click-outside\",\"eq\"]]",
+    "id": "mSZlTbBC",
+    "block": "[[[11,0],[16,0,[30,0,[\"classNames\"]]],[24,\"data-toggle\",\"oss-dropdown\"],[17,1],[4,[38,0],[[28,[37,1],[[30,0,[\"ensureBlockPresence\"]],[48,[30,11]]],null]],null],[4,[38,0],[[30,0,[\"registerContainer\"]]],null],[4,[38,3],[[30,0,[\"disconnectObserver\"]]],null],[12],[1,\"\\n  \"],[11,0],[16,0,[29,[\"upf-input \",[52,[30,0,[\"isOpen\"]],\"active\"],\" fx-row fx-1 fx-xalign-center\"]]],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[30,0,[\"toggleDropdown\"]]],null],[12],[1,\"\\n    \"],[10,0],[14,0,\"fx-row fx-1 fx-malign-space-between fx-xalign-center\"],[12],[1,\"\\n\"],[41,[30,2],[[[41,[48,[30,12]],[[[1,\"          \"],[18,12,[[30,2]]],[1,\"\\n\"]],[]],[[[1,\"          \"],[10,1],[14,0,\"text-ellipsis\"],[12],[1,[28,[35,7],[[30,2],[30,0,[\"targetValue\"]]],null]],[13],[1,\"\\n\"]],[]]]],[]],[[[1,\"        \"],[10,1],[14,0,\"upf-input--placeholder\"],[12],[1,[30,0,[\"placeholder\"]]],[13],[1,\"\\n\"]],[]]],[1,\"      \"],[8,[39,8],[[24,0,\"margin-left-px-6\"]],[[\"@icon\"],[[29,[\"fa-chevron-\",[52,[30,0,[\"isOpen\"]],\"up\",\"down\"]]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\\n\"],[41,[30,0,[\"isOpen\"]],[[[40,[[[41,[48,[30,13]],[[[1,\"        \"],[8,[39,11],[[16,1,[30,0,[\"portalId\"]]],[16,0,[28,[37,12],[\"margin-top-px-0 oss-select-container__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[4,[38,13],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[[30,4]]]],[4,[38,5],[\"click\",[30,0,[\"noop\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchEnabled\",\"@searchPlaceholder\",\"@enableKeyboard\",\"@action\"],[[30,3],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"searchPlaceholder\"]],true,[30,0,[\"actionArguments\"]]]],[[\"option\",\"empty-state\"],[[[[1,\"\\n            \"],[10,0],[15,0,[29,[\"item-wrapper fx-row fx-xalign-center fx-malign-space-between \",[52,[28,[37,14],[[30,2],[30,5]],null],\"selected\"]]]],[12],[1,\"\\n\"],[41,[48,[30,11]],[[[1,\"                \"],[18,11,[[30,5],[30,6]]],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,14],[[30,2],[30,5]],null],[[[1,\"                \"],[8,[39,8],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"            \"],[13],[1,\"\\n          \"]],[5,6]],[[[1,\"\\n            \"],[18,13,null],[1,\"\\n          \"]],[]]]]],[1,\"\\n\"]],[]],[[[1,\"        \"],[8,[39,11],[[16,1,[30,0,[\"portalId\"]]],[16,0,[28,[37,12],[\"margin-top-px-0 oss-select-container__dropdown \",[30,0,[\"dropdownAddressableClass\"]]],null]],[4,[38,13],[[30,0,[\"onClickOutside\"]]],[[\"useCapture\"],[[30,4]]]],[4,[38,5],[\"click\",[30,0,[\"noop\"]]],null]],[[\"@items\",\"@onSearch\",\"@onSelect\",\"@searchEnabled\",\"@searchPlaceholder\",\"@enableKeyboard\",\"@action\"],[[30,3],[30,0,[\"onSearch\"]],[30,0,[\"onSelect\"]],[30,0,[\"searchEnabled\"]],[30,0,[\"searchPlaceholder\"]],true,[30,0,[\"actionArguments\"]]]],[[\"option\"],[[[[1,\"\\n            \"],[10,0],[15,0,[29,[\"item-wrapper fx-row fx-xalign-center fx-malign-space-between \",[52,[28,[37,14],[[30,2],[30,7]],null],\"selected\"]]]],[12],[1,\"\\n\"],[41,[48,[30,11]],[[[1,\"                \"],[18,11,[[30,7],[30,8]]],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[28,[37,14],[[30,2],[30,7]],null],[[[1,\"                \"],[8,[39,8],[[24,0,\"font-color-primary-500 padding-right-px-6\"]],[[\"@icon\"],[\"fa-check\"]],null],[1,\"\\n\"]],[]],null],[1,\"            \"],[13],[1,\"\\n          \"]],[7,8]]]]],[1,\"\\n\"]],[]]]],[]],\"%cursor:0%\",[28,[37,10],[[30,0,[\"portalTarget\"]]],null],null]],[]],null],[1,\"\\n\"],[41,[30,9],[[[1,\"    \"],[10,0],[14,0,\"font-color-error-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,8],null,[[\"@icon\"],[\"fa-exclamation-triangle\"]],null],[1,\"\\n      \"],[1,[30,9]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[1,\"\\n\"],[41,[30,10],[[[1,\"    \"],[10,0],[14,0,\"font-color-success-500 margin-top-px-6 fx-row fx-gap-px-6 fx-xalign-center\"],[12],[1,\"\\n      \"],[8,[39,8],null,[[\"@icon\"],[\"fa-check-circle\"]],null],[1,\"\\n      \"],[1,[30,10]],[1,\"\\n    \"],[13],[1,\"\\n\"]],[]],null],[13]],[\"&attrs\",\"@value\",\"@items\",\"@captureClickOutside\",\"item\",\"index\",\"item\",\"index\",\"@errorMessage\",\"@successMessage\",\"&option\",\"&selected\",\"&empty-state\"],false,[\"did-insert\",\"fn\",\"has-block\",\"will-destroy\",\"if\",\"on\",\"yield\",\"get\",\"o-s-s/icon\",\"in-element\",\"-in-el-null\",\"o-s-s/infinite-select\",\"concat\",\"on-click-outside\",\"eq\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/select.hbs",
     "isStrictMode": false
   });
@@ -96438,7 +96473,7 @@ interface OSSCodeBlockArgs {
   Object.defineProperty(_exports, "__esModule", {
     value: true
   });
-  _exports.default = _exports.WithSelectedNamedBlock = _exports.Default = void 0;
+  _exports.default = _exports.WithSelectedNamedBlock = _exports.WithEmptyStateNamedBlock = _exports.Default = void 0;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@storybook/addon-actions"eaimeta@70e063a35619d71f
   const FAKE_DATA = [{
     name: 'Batman',
@@ -96702,10 +96737,42 @@ interface OSSCodeBlockArgs {
     }),
     context: args
   });
+  const WithEmptyStateNamedBlockTemplate = args => ({
+    template: (0, _templateFactory.createTemplateFactory)(
+    /*
+      
+      <div style="width: 250px">
+        <OSS::Select
+          @items={{this.items}} @value={{this.value}} @placeholder={{this.placeholder}}
+          @disabled={{this.disabled}} @errorMessage={{this.errorMessage}} @successMessage={{this.successMessage}}
+          @onSearch={{this.onSearch}} @onChange={{this.onChange}} @addressableAs={{this.addressableAs}}>
+          <:selected as |option|>
+            With named block — {{option.name}}
+          </:selected>
+          <:option as |item|>
+            {{item.name}}
+          </:option>
+          <:empty-state>
+            <div>***No items found***</div>
+          </:empty-state>
+        </OSS::Select>
+      </div>
+      
+    */
+    {
+      "id": "b1dssr8X",
+      "block": "[[[1,\"\\n  \"],[10,0],[14,5,\"width: 250px\"],[12],[1,\"\\n    \"],[8,[39,0],null,[[\"@items\",\"@value\",\"@placeholder\",\"@disabled\",\"@errorMessage\",\"@successMessage\",\"@onSearch\",\"@onChange\",\"@addressableAs\"],[[30,0,[\"items\"]],[30,0,[\"value\"]],[30,0,[\"placeholder\"]],[30,0,[\"disabled\"]],[30,0,[\"errorMessage\"]],[30,0,[\"successMessage\"]],[30,0,[\"onSearch\"]],[30,0,[\"onChange\"]],[30,0,[\"addressableAs\"]]]],[[\"selected\",\"option\",\"empty-state\"],[[[[1,\"\\n        With named block — \"],[1,[30,1,[\"name\"]]],[1,\"\\n      \"]],[1]],[[[1,\"\\n        \"],[1,[30,2,[\"name\"]]],[1,\"\\n      \"]],[2]],[[[1,\"\\n        \"],[10,0],[12],[1,\"***No items found***\"],[13],[1,\"\\n      \"]],[]]]]],[1,\"\\n  \"],[13],[1,\"\\n  \"]],[\"option\",\"item\"],false,[\"o-s-s/select\"]]",
+      "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/select.stories.js",
+      "isStrictMode": false
+    }),
+    context: args
+  });
   const Default = _exports.Default = Template.bind({});
   Default.args = defaultArgs;
   const WithSelectedNamedBlock = _exports.WithSelectedNamedBlock = WithSelectedNamedBlockTemplate.bind({});
   WithSelectedNamedBlock.args = defaultArgs;
+  const WithEmptyStateNamedBlock = _exports.WithEmptyStateNamedBlock = WithEmptyStateNamedBlockTemplate.bind({});
+  WithEmptyStateNamedBlock.args = defaultArgs;
 });
 ;define("@upfluence/oss-components/components/o-s-s/side-panel", ["exports", "@ember/component", "@glimmer/component", "@glimmer/tracking", "@ember/debug", "@ember/object", "@ember/runloop", "@ember/template-factory"], function (_exports, _component, _component2, _tracking, _debug, _object, _runloop, _templateFactory) {
   "use strict";

@@ -14234,6 +14234,60 @@ define("dummy/tests/integration/components/o-s-s/select-test", ["qunit", "ember-
       }));
       assert.dom('.oss-select-container').hasClass('oss-select-container--errorful');
     });
+    (0, _qunit.module)('empty state named block', () => {
+      (0, _qunit.test)('When named block is defined, a custom empty state is properly rendered', async function (assert) {
+        this.items = [];
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Select @onChange={{this.onChange}} @onSearch={{this.onSearch}} @items={{this.items}} 
+                              @value={{this.value}}>
+                  <:option as |item|>
+                    {{item.name}}
+                  </:option>
+                  <:empty-state>
+                    <div class="foobar">custom empty state</div>
+                  </:empty-state>
+                </OSS::Select>
+              
+        */
+        {
+          "id": "kQfqkn69",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@onChange\",\"@onSearch\",\"@items\",\"@value\"],[[30,0,[\"onChange\"]],[30,0,[\"onSearch\"]],[30,0,[\"items\"]],[30,0,[\"value\"]]]],[[\"option\",\"empty-state\"],[[[[1,\"\\n            \"],[1,[30,1,[\"name\"]]],[1,\"\\n          \"]],[1]],[[[1,\"\\n            \"],[10,0],[14,0,\"foobar\"],[12],[1,\"custom empty state\"],[13],[1,\"\\n          \"]],[]]]]],[1,\"\\n      \"]],[\"item\"],false,[\"o-s-s/select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/select-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-select-container').exists();
+        await (0, _testHelpers.click)('.oss-select-container .upf-input');
+        assert.dom('.oss-select-container').hasAttribute('open');
+        assert.dom('.upf-infinite-select .foobar').exists();
+        assert.dom('.upf-infinite-select .foobar').hasText('custom empty state');
+      });
+      (0, _qunit.test)('When named block is not defined, it uses the default empty state', async function (assert) {
+        this.items = [];
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          
+                <OSS::Select @onChange={{this.onChange}} @onSearch={{this.onSearch}} @items={{this.items}} 
+                              @value={{this.value}}>
+                  <:option as |item|>
+                    {{item.name}}
+                  </:option>
+                </OSS::Select>
+              
+        */
+        {
+          "id": "vD/kvKie",
+          "block": "[[[1,\"\\n        \"],[8,[39,0],null,[[\"@onChange\",\"@onSearch\",\"@items\",\"@value\"],[[30,0,[\"onChange\"]],[30,0,[\"onSearch\"]],[30,0,[\"items\"]],[30,0,[\"value\"]]]],[[\"option\"],[[[[1,\"\\n            \"],[1,[30,1,[\"name\"]]],[1,\"\\n          \"]],[1]]]]],[1,\"\\n      \"]],[\"item\"],false,[\"o-s-s/select\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/select-test.ts",
+          "isStrictMode": false
+        }));
+        assert.dom('.oss-select-container').exists();
+        await (0, _testHelpers.click)('.oss-select-container .upf-input');
+        assert.dom('.oss-select-container').hasAttribute('open');
+        assert.dom('.upf-infinite-select .foobar').doesNotExist();
+      });
+    });
   });
 });
 define("dummy/tests/integration/components/o-s-s/side-panel-test", ["qunit", "ember-qunit", "@ember/test-helpers", "sinon", "@ember/template-factory"], function (_qunit, _emberQunit, _testHelpers, _sinon, _templateFactory) {
