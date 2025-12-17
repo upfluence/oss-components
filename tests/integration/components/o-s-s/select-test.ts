@@ -443,4 +443,45 @@ module('Integration | Component | o-s-s/select', function (hooks) {
 
     assert.dom('.oss-select-container').hasClass('oss-select-container--errorful');
   });
+
+  module('empty state named block', () => {
+    test('When named block is defined, a custom empty state is properly rendered', async function (assert) {
+      this.items = [];
+      await render(hbs`
+        <OSS::Select @onChange={{this.onChange}} @onSearch={{this.onSearch}} @items={{this.items}} 
+                      @value={{this.value}}>
+          <:option as |item|>
+            {{item.name}}
+          </:option>
+          <:empty-state>
+            <div class="foobar">custom empty state</div>
+          </:empty-state>
+        </OSS::Select>
+      `);
+
+      assert.dom('.oss-select-container').exists();
+      await click('.oss-select-container .upf-input');
+
+      assert.dom('.oss-select-container').hasAttribute('open');
+      assert.dom('.upf-infinite-select .foobar').exists();
+      assert.dom('.upf-infinite-select .foobar').hasText('custom empty state');
+    });
+
+    test('When named block is not defined, it uses the default empty state', async function (assert) {
+      this.items = [];
+      await render(hbs`
+        <OSS::Select @onChange={{this.onChange}} @onSearch={{this.onSearch}} @items={{this.items}} 
+                      @value={{this.value}}>
+          <:option as |item|>
+            {{item.name}}
+          </:option>
+        </OSS::Select>
+      `);
+
+      assert.dom('.oss-select-container').exists();
+      await click('.oss-select-container .upf-input');
+      assert.dom('.oss-select-container').hasAttribute('open');
+      assert.dom('.upf-infinite-select .foobar').doesNotExist();
+    });
+  });
 });
