@@ -7,6 +7,7 @@
         @expanded={{state.expanded}}
         class={{if (eq this.router.currentRouteName "index") "active"}}
         @link="index"
+        @action={{this.onClick}}
       />
       <OSS::Layout::Sidebar::Item
         @icon="far fa-input-text"
