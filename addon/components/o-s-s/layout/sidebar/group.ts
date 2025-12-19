@@ -10,8 +10,9 @@ export type GroupItem = {
   hasNotifications?: boolean;
   link: string;
   active: boolean;
-  lockedAction?(): unknown;
   dataControlName?: string;
+  lockedAction?(): unknown;
+  action?(): void;
 };
 
 interface OSSLayoutSidebarGroupComponentSignature {

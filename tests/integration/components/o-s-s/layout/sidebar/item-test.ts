@@ -66,6 +66,7 @@ module('Integration | Component | oss/layout/sidebar/item', function (hooks) {
     hooks.beforeEach(function () {
       this.defaultAction = sinon.spy();
       this.lockedAction = sinon.spy();
+      this.action = sinon.spy();
     });
 
     test('on click, it redirect to the @link attribute', async function (assert) {
@@ -87,6 +88,16 @@ module('Integration | Component | oss/layout/sidebar/item', function (hooks) {
 
       assert.ok(this.defaultAction.notCalled);
       assert.ok(this.lockedAction.calledOnce);
+    });
+
+    test('on click, when item is not locked, the action is called ', async function (assert) {
+      await render(
+        hbs`<OSS::Layout::Sidebar::Item @icon="far fa-search" @locked={{false}} @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}} @action={{this.action}} />`
+      );
+      await click('.oss-sidebar-item');
+
+      assert.ok(this.defaultAction.notCalled);
+      assert.ok(this.action.calledOnce);
     });
   });
 
