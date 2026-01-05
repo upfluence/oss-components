@@ -23,6 +23,16 @@ export default {
         defaultValue: { summary: 'false' }
       },
       control: { type: 'boolean' }
+    },
+    alwaysExpanded: {
+      description: 'Whether the sidebar is always expanded and cannot be collapsed',
+      table: {
+        type: {
+          summary: 'boolean'
+        },
+        defaultValue: { summary: 'false' }
+      },
+      control: { type: 'boolean' }
     }
   },
   parameters: {
@@ -40,13 +50,14 @@ const defaultArgs = {
   homeParameters: {
     logo: '/assets/images/brand-icon.svg',
     url: 'https://www.upfluence.com'
-  }
+  },
+  alwaysExpanded: false
 };
 
 const Template = (args) => ({
   template: hbs`
     <div style="height:100vh; padding:5px;">
-      <OSS::Layout::Sidebar @expandable={{this.expandable}} @homeParameters={{this.homeParameters}} style="height:95vh; overflow: visible">
+      <OSS::Layout::Sidebar @expandable={{this.expandable}} @homeParameters={{this.homeParameters}} @alwaysExpanded={{this.alwaysExpanded}} style="height:95vh; overflow: visible">
         <:content as |sidebar|>
           <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-search" @label="Search" class="active" @homeAction={{this.homeAction}} />
           <OSS::Layout::Sidebar::Item @expanded={{sidebar.expanded}} @icon="far fa-list" @label="Community" />

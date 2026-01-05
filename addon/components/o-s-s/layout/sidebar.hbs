@@ -1,17 +1,23 @@
 <div class={{this.computedClasses}} ...attributes>
-  {{#if (or @homeParameters (and @logo @homeURL))}}
-    <div class="logo-container">
-      <OSS::Layout::Sidebar::Item
-        @link={{or @homeParameters.url @homeURL}}
-        @expanded={{this.expanded}}
-        data-control-name="sidebar-home-route-item"
-        {{enable-tooltip title=@homeParameters.tooltip placement="right"}}
-      >
-        <:icon>
-          <img src={{or @homeParameters.logo @logo}} alt="brand" />
-        </:icon>
-      </OSS::Layout::Sidebar::Item>
+  {{#if (has-block "header")}}
+    <div class="oss-sidebar-container__header">
+      {{yield (hash expanded=this.expanded) to="header"}}
     </div>
+  {{else}}
+    {{#if (or @homeParameters (and @logo @homeURL))}}
+      <div class="logo-container">
+        <OSS::Layout::Sidebar::Item
+          @link={{or @homeParameters.url @homeURL}}
+          @expanded={{this.expanded}}
+          data-control-name="sidebar-home-route-item"
+          {{enable-tooltip title=@homeParameters.tooltip placement="right"}}
+        >
+          <:icon>
+            <img src={{or @homeParameters.logo @logo}} alt="brand" />
+          </:icon>
+        </OSS::Layout::Sidebar::Item>
+      </div>
+    {{/if}}
   {{/if}}
 
   <div class="oss-sidebar-container__content">
@@ -19,7 +25,7 @@
       {{yield (hash expanded=this.expanded) to="content"}}
     </div>
 
-    {{#if @expandable}}
+    {{#if this.displayExpandedStateToggle}}
       <div class="oss-sidebar-container__expand">
         <OSS::Layout::Sidebar::Item
           @icon={{if this.expanded "fa-arrow-left-to-line" "fa-arrow-right-to-line"}}
