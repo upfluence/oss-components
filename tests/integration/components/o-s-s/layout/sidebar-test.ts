@@ -1,7 +1,7 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { click, render, settled } from '@ember/test-helpers';
+import { click, render } from '@ember/test-helpers';
 import { setupIntl } from 'ember-intl/test-support';
 
 import UPFLocalStorage from '@upfluence/oss-components/utils/upf-local-storage';
@@ -58,6 +58,18 @@ module('Integration | Component | o-s-s/layout/sidebar', function (hooks) {
   });
 
   module('Named blocks', () => {
+    test('The header named-block is properly displayed', async function (assert) {
+      await render(
+        hbs`
+        <OSS::Layout::Sidebar>
+          <:header>
+            <p>This is the header</p>
+          </:header>
+        </OSS::Layout::Sidebar>`
+      );
+      assert.dom('.oss-sidebar-container__header').hasText('This is the header');
+    });
+
     test('The content named-block is properly displayed', async function (assert) {
       await render(
         hbs`
@@ -133,7 +145,6 @@ module('Integration | Component | o-s-s/layout/sidebar', function (hooks) {
       assert.dom('.oss-sidebar-container').hasClass('oss-sidebar-container--expanded');
 
       await click('[data-control-name="sidebar-expanded-state-toggle"]');
-      await settled();
 
       assert.dom('.oss-sidebar-container').doesNotHaveClass('oss-sidebar-container--expanded');
       assert.equal(window.localStorage.getItem('_upf.oss-layout-sidebar-expanded'), 'false');
@@ -142,6 +153,45 @@ module('Integration | Component | o-s-s/layout/sidebar', function (hooks) {
 
       assert.dom('.oss-sidebar-container').hasClass('oss-sidebar-container--expanded');
       assert.equal(window.localStorage.getItem('_upf.oss-layout-sidebar-expanded'), 'true');
+    });
+  });
+
+  module('AlwaysExpanded behavior', (hooks) => {
+    hooks.beforeEach(function () {
+      this.expandable = true;
+      this.homeParameters = {
+        logo: '/assets/images/brand-icon.svg',
+        url: '/home'
+      };
+    });
+
+    test('the toggle button is not displayed when alwaysExpanded is true', async function (assert) {
+      await render(
+        hbs`<OSS::Layout::Sidebar @homeParameters={{this.homeParameters}} @expandable={{this.expandable}} @alwaysExpanded={{true}} />`
+      );
+      assert.dom('.oss-sidebar-container__expand').doesNotExist();
+    });
+
+    test('the toggle button is displayed when alwaysExpanded is false', async function (assert) {
+      await render(
+        hbs`<OSS::Layout::Sidebar @homeParameters={{this.homeParameters}} @expandable={{this.expandable}} />`
+      );
+      assert.dom('.oss-sidebar-container__expand').exists();
+      assert.dom('.oss-sidebar-container__expand').hasText(this.intl.t('oss-components.sidebar.collapse'));
+    });
+
+    test('the sidebar is expanded when alwaysExpanded is true and expandable is true', async function (assert) {
+      await render(
+        hbs`<OSS::Layout::Sidebar @homeParameters={{this.homeParameters}} @expandable={{this.expandable}} @alwaysExpanded={{true}} />`
+      );
+      assert.dom('.oss-sidebar-container').hasClass('oss-sidebar-container--expanded');
+    });
+
+    test('the sidebar is expanded when alwaysExpanded is true and expandable is false', async function (assert) {
+      await render(
+        hbs`<OSS::Layout::Sidebar @homeParameters={{this.homeParameters}} @expandable={{false}} @alwaysExpanded={{true}} />`
+      );
+      assert.dom('.oss-sidebar-container').hasClass('oss-sidebar-container--expanded');
     });
   });
 });
