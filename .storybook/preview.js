@@ -1,5 +1,7 @@
-import './styles/preview.less';
 import { themes } from '@storybook/theming';
+import { hbs } from 'ember-cli-htmlbars';
+
+import './styles/preview.less';
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -24,3 +26,15 @@ export const parameters = {
     theme: themes.dark
   }
 };
+
+export const decorators = [
+  (storyFn, { globals }) => {
+    return {
+      template: hbs`<Storybook @globals={{this.globals}} @story={{this.story}}/>`,
+      context: {
+        globals,
+        story: storyFn()
+      }
+    };
+  }
+];
