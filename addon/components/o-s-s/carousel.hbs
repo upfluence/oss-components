@@ -22,7 +22,7 @@
   {{#if this.showControls}}
     {{#if this.showPreviousControl}}
       <div
-        class="carousel-control {{concat 'carousel-control--left' (if this.isShowControlsOutside '-outside')}}"
+        class="carousel-control {{concat 'carousel-control--left' (if this.showControlsOutside '-outside')}}"
         {{on "click" this.previousPage}}
         role="button"
       >
@@ -31,7 +31,7 @@
     {{/if}}
     {{#if this.showNextControl}}
       <div
-        class="carousel-control {{concat 'carousel-control--right' (if this.isShowControlsOutside '-outside')}}"
+        class="carousel-control {{concat 'carousel-control--right' (if this.showControlsOutside '-outside')}}"
         {{on "click" this.nextPage}}
         role="button"
       >

@@ -54,7 +54,7 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
     return this.showControls && (this.loop || this.currentPageIndex < (this.pages ?? []).length - 1);
   }
 
-  get isShowControlsOutside(): boolean {
+  get showControlsOutside(): boolean {
     return this.args.showControls === 'outside';
   }
 
