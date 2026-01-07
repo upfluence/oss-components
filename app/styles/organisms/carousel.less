@@ -40,19 +40,29 @@
     transition: opacity 0.5s ease;
 
     &--left,
-    &--right {
+    &--left-outside,
+    &--right,
+    &--right-outside {
       position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
+      top: calc(50% - 4px);
     }
 
     &--left {
-      left: var(--spacing-px-24);
+      left: var(--spacing-px-12);
+    }
+
+    &--left-outside {
+      left: 0;
+      transform: translateX(-50%);
     }
 
     &--right {
-      left: unset;
-      right: var(--spacing-px-24);
+      right: var(--spacing-px-12);
+    }
+
+    &--right-outside {
+      right: 0;
+      transform: translateX(50%);
     }
   }
 
@@ -74,11 +84,6 @@
         display: flex;
         justify-content: center;
       }
-    }
-
-    &--side-padding {
-      padding-left: 46px;
-      padding-right: 46px;
     }
   }
 

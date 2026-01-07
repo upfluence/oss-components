@@ -7,24 +7,36 @@
     <div class="fx-row oss-carousel__indicators">
       {{#each this.pages as |page index|}}
         <div class="page-btn" role="button" {{on "click" (fn this.displayPage page)}}>
-          <i class="{{this.buttonIcon}} {{if (eq index this.currentPageIndex) 'page-btn--active'}}"></i>
+          <OSS::Icon
+            @icon={{this.buttonIcon}}
+            @style="solid"
+            class="{{if (eq index this.currentPageIndex) 'page-btn--active'}}"
+          />
         </div>
       {{/each}}
     </div>
   {{/if}}
-  <div class="page-container {{if this.displaySidePadding 'page-container--side-padding'}}">
-    {{#if this.showControls}}
-      {{#if this.showPreviousControl}}
-        <div class="carousel-control carousel-control--left" {{on "click" this.previousPage}} role="button">
-          <i class="far fa-chevron-left"></i>
-        </div>
-      {{/if}}
-      {{#if this.showNextControl}}
-        <div class="carousel-control carousel-control--right" {{on "click" this.nextPage}} role="button">
-          <i class="far fa-chevron-right"></i>
-        </div>
-      {{/if}}
-    {{/if}}
+  <div class="page-container">
     {{yield to="pages"}}
   </div>
+  {{#if this.showControls}}
+    {{#if this.showPreviousControl}}
+      <div
+        class="carousel-control {{concat 'carousel-control--left' (if this.isShowControlsOutside '-outside')}}"
+        {{on "click" this.previousPage}}
+        role="button"
+      >
+        <OSS::Icon @icon="fa-chevron-left" />
+      </div>
+    {{/if}}
+    {{#if this.showNextControl}}
+      <div
+        class="carousel-control {{concat 'carousel-control--right' (if this.isShowControlsOutside '-outside')}}"
+        {{on "click" this.nextPage}}
+        role="button"
+      >
+        <OSS::Icon @icon="fa-chevron-right" />
+      </div>
+    {{/if}}
+  {{/if}}
 </div>
