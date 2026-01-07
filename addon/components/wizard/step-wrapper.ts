@@ -8,9 +8,10 @@ import type WizardManager from '@upfluence/oss-components/services/wizard-manage
 import { tracked } from '@glimmer/tracking';
 import type { Step } from '@upfluence/oss-components/services/wizard-manager';
 
-const SCROLL_EVENTS_DELAY = 1500;
+const SCROLL_EVENTS_DELAY = 1200;
 const DEFAULT_BASE_CLASS = 'step-wrapper';
 const DEFAULT_CLASS_TO_SKIP_SCROLL_LISTENER = 'prevent-wizard-scroll-events';
+const WHEEL_MINIMAL_VELOCITY = 14;
 
 interface WizardStepWrapperComponentSignature {
   step: Step;
@@ -22,7 +23,6 @@ export default class WizardStepWrapperComponent extends Component<WizardStepWrap
   @tracked scrollPosition: 'top' | 'middle' | 'bottom' | undefined = undefined;
   @tracked declare element: HTMLElement;
   @tracked wheelListenerEnabled: boolean = false;
-  @tracked wheelHandled: boolean = false;
 
   private wheelListenerTimeoutId?: number;
 
@@ -80,19 +80,22 @@ export default class WizardStepWrapperComponent extends Component<WizardStepWrap
       target = target.parentElement;
     }
 
-    if (!this.wizardManager.wheelEnabled || !this.wheelListenerEnabled || this.wheelHandled) return;
+    if (!this.wizardManager.wheelEnabled || !this.wheelListenerEnabled || this.wizardManager.wheelHandled) return;
     if (!this.scrollPosition && !this.wheelListenerEnabled) return;
     if (this.scrollPosition === 'middle') return;
-    this.wheelHandled = true;
+    if (event.deltaY > -WHEEL_MINIMAL_VELOCITY && event.deltaY < WHEEL_MINIMAL_VELOCITY) return;
+
     if (event.deltaY > 0 && (this.scrollPosition === 'bottom' || !this.scrollPosition)) {
+      this.wizardManager.wheelHandled = true;
       this.wizardManager.selectNextStep();
       setTimeout(() => {
-        this.wheelHandled = false;
+        this.wizardManager.wheelHandled = false;
       }, SCROLL_EVENTS_DELAY);
     } else if ((event.deltaY < 0 && this.scrollPosition === 'top') || !this.scrollPosition) {
+      this.wizardManager.wheelHandled = true;
       this.wizardManager.selectPreviousStep();
       setTimeout(() => {
-        this.wheelHandled = false;
+        this.wizardManager.wheelHandled = false;
       }, SCROLL_EVENTS_DELAY);
     }
   }
@@ -100,9 +103,9 @@ export default class WizardStepWrapperComponent extends Component<WizardStepWrap
   @action
   handleScrollEvent(event: Event): void {
     const target = event.target as HTMLElement;
-    const Tolerance = 1;
+    const tolerance = 1;
 
-    if (target.scrollHeight - target.scrollTop - target.clientHeight <= Tolerance) {
+    if (target.scrollHeight - target.scrollTop - target.clientHeight <= tolerance) {
       this.scrollPosition = 'bottom';
       this.enableWheelListenerAfterDelay(SCROLL_EVENTS_DELAY);
     } else if (target.scrollTop === 0) {
@@ -115,7 +118,7 @@ export default class WizardStepWrapperComponent extends Component<WizardStepWrap
         this.wheelListenerTimeoutId = undefined;
       }
       this.wheelListenerEnabled = false;
-      this.wheelHandled = false;
+      this.wizardManager.wheelHandled = false;
     }
   }
 
