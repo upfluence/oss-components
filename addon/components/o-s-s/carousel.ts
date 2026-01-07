@@ -3,7 +3,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { isTesting } from '@embroider/macros';
 
-const DEFAULT_BUTTON_ICON: string = 'fas fa-circle';
+const DEFAULT_BUTTON_ICON: string = 'fa-circle';
 const ANIMATION_TIME: number = isTesting() ? 5 : 500;
 
 interface OSSCarouselArgs {
@@ -54,7 +54,7 @@ export default class OSSCarousel extends Component<OSSCarouselArgs> {
     return this.showControls && (this.loop || this.currentPageIndex < (this.pages ?? []).length - 1);
   }
 
-  get displaySidePadding(): boolean {
+  get showControlsOutside(): boolean {
     return this.args.showControls === 'outside';
   }
 
