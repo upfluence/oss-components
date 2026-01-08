@@ -22,7 +22,7 @@
     </div>
   {{/if}}
 
-  <div class="oss-sidebar-item__label">
+  <div class={{concat "oss-sidebar-item__label" (unless @icon " oss-sidebar-item__label__no-icon")}}>
     {{@label}}
   </div>
 

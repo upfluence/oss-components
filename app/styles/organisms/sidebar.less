@@ -94,6 +94,8 @@ a.oss-sidebar-item {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  min-width: 28px;
+  min-height: 28px;
 
   color: var(--sidebar-font-color);
   font-size: var(--font-size-sm);
@@ -115,6 +117,10 @@ a.oss-sidebar-item {
     overflow: hidden;
     white-space: nowrap;
     transition: width 300ms ease-in-out, opacity 300ms ease-in-out;
+
+    &__no-icon {
+      padding-left: var(--spacing-px-9);
+    }
   }
 
   &__notification {
