@@ -91,16 +91,11 @@
 
   &--scrollable {
     .upf-table__header {
-      overflow-y: scroll;
-
-      &::-webkit-scrollbar {
-        background-color: var(--color-gray-50);
-        border-radius: var(--border-radius-md);
-      }
+      overflow-y: auto;
     }
 
     .upf-table__content {
-      overflow-y: scroll;
+      overflow-y: auto;
     }
   }
 }
