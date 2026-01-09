@@ -8,10 +8,10 @@ import type WizardManager from '@upfluence/oss-components/services/wizard-manage
 import { tracked } from '@glimmer/tracking';
 import type { Step } from '@upfluence/oss-components/services/wizard-manager';
 
-const SCROLL_EVENTS_DELAY = 1200;
+const SCROLL_EVENTS_DELAY = 800;
 const DEFAULT_BASE_CLASS = 'step-wrapper';
 const DEFAULT_CLASS_TO_SKIP_SCROLL_LISTENER = 'prevent-wizard-scroll-events';
-const WHEEL_MINIMAL_VELOCITY = 14;
+const WHEEL_MINIMAL_VELOCITY = 9;
 
 interface WizardStepWrapperComponentSignature {
   step: Step;
