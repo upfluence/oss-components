@@ -104780,7 +104780,7 @@ interface OSSCodeBlockArgs {
     value: true
   });
   _exports.default = void 0;
-  var _dec, _dec2, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
+  var _dec, _dec2, _class, _descriptor, _descriptor2, _descriptor3, _descriptor4;
   0; //eaimeta@70e063a35619d71f0,"ember-cli-htmlbars",0,"@glimmer/component",0,"@ember/service",0,"@ember/object",0,"@embroider/util",0,"@ember/runloop",0,"@glimmer/tracking",0,"@ember/component"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -104811,9 +104811,10 @@ interface OSSCodeBlockArgs {
     "moduleName": "@upfluence/oss-components/components/wizard/step-wrapper.hbs",
     "isStrictMode": false
   });
-  const SCROLL_EVENTS_DELAY = 1500;
+  const SCROLL_EVENTS_DELAY = 800;
   const DEFAULT_BASE_CLASS = 'step-wrapper';
   const DEFAULT_CLASS_TO_SKIP_SCROLL_LISTENER = 'prevent-wizard-scroll-events';
+  const WHEEL_MINIMAL_VELOCITY = 9;
   let WizardStepWrapperComponent = _exports.default = (_dec = (0, _object.computed)('args.step.displayState'), _dec2 = (0, _object.computed)('args.step.{displayState,hidden}'), (_class = class WizardStepWrapperComponent extends _component2.default {
     constructor(...args) {
       super(...args);
@@ -104821,7 +104822,6 @@ interface OSSCodeBlockArgs {
       _initializerDefineProperty(this, "scrollPosition", _descriptor2, this);
       _initializerDefineProperty(this, "element", _descriptor3, this);
       _initializerDefineProperty(this, "wheelListenerEnabled", _descriptor4, this);
-      _initializerDefineProperty(this, "wheelHandled", _descriptor5, this);
       _defineProperty(this, "wheelListenerTimeoutId", void 0);
     }
     get isVisible() {
@@ -104861,26 +104861,28 @@ interface OSSCodeBlockArgs {
         }
         target = target.parentElement;
       }
-      if (!this.wizardManager.wheelEnabled || !this.wheelListenerEnabled || this.wheelHandled) return;
+      if (!this.wizardManager.wheelEnabled || !this.wheelListenerEnabled || this.wizardManager.wheelHandled) return;
       if (!this.scrollPosition && !this.wheelListenerEnabled) return;
       if (this.scrollPosition === 'middle') return;
-      this.wheelHandled = true;
+      if (event.deltaY > -WHEEL_MINIMAL_VELOCITY && event.deltaY < WHEEL_MINIMAL_VELOCITY) return;
       if (event.deltaY > 0 && (this.scrollPosition === 'bottom' || !this.scrollPosition)) {
+        this.wizardManager.wheelHandled = true;
         this.wizardManager.selectNextStep();
         setTimeout(() => {
-          this.wheelHandled = false;
+          this.wizardManager.wheelHandled = false;
         }, SCROLL_EVENTS_DELAY);
       } else if (event.deltaY < 0 && this.scrollPosition === 'top' || !this.scrollPosition) {
+        this.wizardManager.wheelHandled = true;
         this.wizardManager.selectPreviousStep();
         setTimeout(() => {
-          this.wheelHandled = false;
+          this.wizardManager.wheelHandled = false;
         }, SCROLL_EVENTS_DELAY);
       }
     }
     handleScrollEvent(event) {
       const target = event.target;
-      const Tolerance = 1;
-      if (target.scrollHeight - target.scrollTop - target.clientHeight <= Tolerance) {
+      const tolerance = 1;
+      if (target.scrollHeight - target.scrollTop - target.clientHeight <= tolerance) {
         this.scrollPosition = 'bottom';
         this.enableWheelListenerAfterDelay(SCROLL_EVENTS_DELAY);
       } else if (target.scrollTop === 0) {
@@ -104893,7 +104895,7 @@ interface OSSCodeBlockArgs {
           this.wheelListenerTimeoutId = undefined;
         }
         this.wheelListenerEnabled = false;
-        this.wheelHandled = false;
+        this.wizardManager.wheelHandled = false;
       }
     }
     handleScrollPosition() {
@@ -104935,13 +104937,6 @@ interface OSSCodeBlockArgs {
     writable: true,
     initializer: null
   }), _descriptor4 = _applyDecoratedDescriptor(_class.prototype, "wheelListenerEnabled", [_tracking.tracked], {
-    configurable: true,
-    enumerable: true,
-    writable: true,
-    initializer: function () {
-      return false;
-    }
-  }), _descriptor5 = _applyDecoratedDescriptor(_class.prototype, "wheelHandled", [_tracking.tracked], {
     configurable: true,
     enumerable: true,
     writable: true,
@@ -106599,7 +106594,7 @@ interface OSSCodeBlockArgs {
     value: true
   });
   _exports.default = void 0;
-  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5;
+  var _class, _descriptor, _descriptor2, _descriptor3, _descriptor4, _descriptor5, _descriptor6;
   0; //eaimeta@70e063a35619d71f0,"@ember/service",0,"@ember/object",0,"@glimmer/tracking",0,"@ember/object/internals",0,"@ember/runloop"eaimeta@70e063a35619d71f
   function _initializerDefineProperty(target, property, descriptor, context) { if (!descriptor) return; Object.defineProperty(target, property, { enumerable: descriptor.enumerable, configurable: descriptor.configurable, writable: descriptor.writable, value: descriptor.initializer ? descriptor.initializer.call(context) : void 0 }); }
   function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
@@ -106615,6 +106610,7 @@ interface OSSCodeBlockArgs {
       _initializerDefineProperty(this, "focusedStepId", _descriptor3, this);
       _initializerDefineProperty(this, "configOptions", _descriptor4, this);
       _initializerDefineProperty(this, "wheelEnabled", _descriptor5, this);
+      _initializerDefineProperty(this, "wheelHandled", _descriptor6, this);
     }
     get allSteps() {
       return this.sections.flatMap(section => section.steps);
@@ -106870,6 +106866,13 @@ interface OSSCodeBlockArgs {
     writable: true,
     initializer: function () {
       return true;
+    }
+  }), _descriptor6 = _applyDecoratedDescriptor(_class.prototype, "wheelHandled", [_tracking.tracked], {
+    configurable: true,
+    enumerable: true,
+    writable: true,
+    initializer: function () {
+      return false;
     }
   })), _class);
 });
