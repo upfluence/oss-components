@@ -3741,9 +3741,8 @@ define("dummy/tests/integration/components/o-s-s/carousel-test", ["qunit", "embe
         this.showControls = 'outside';
         await renderCarousel();
         assert.dom('.oss-carousel .carousel-control').exists();
-        assert.dom('.oss-carousel .carousel-control--left').exists();
-        assert.dom('.oss-carousel .carousel-control--right').exists();
-        assert.dom('.page-container--side-padding').exists();
+        assert.dom('.oss-carousel .carousel-control--left-outside').exists();
+        assert.dom('.oss-carousel .carousel-control--right-outside').exists();
       });
       (0, _qunit.module)('for @loop argument', hooks => {
         hooks.beforeEach(function () {
@@ -3812,7 +3811,7 @@ define("dummy/tests/integration/components/o-s-s/carousel-test", ["qunit", "embe
         });
       });
       (0, _qunit.test)('When specified, it renders the custom button icon', async function (assert) {
-        this.buttonIcon = 'fas fa-robot';
+        this.buttonIcon = 'fa-robot';
         await renderCarousel();
         assert.dom('.oss-carousel .fas.fa-robot').exists({
           count: 3

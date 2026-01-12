@@ -85420,35 +85420,47 @@ require('@ember/-internals/bootstrap')
       <div class="fx-row oss-carousel__indicators">
         {{#each this.pages as |page index|}}
           <div class="page-btn" role="button" {{on "click" (fn this.displayPage page)}}>
-            <i class="{{this.buttonIcon}} {{if (eq index this.currentPageIndex) 'page-btn--active'}}"></i>
+            <OSS::Icon
+              @icon={{this.buttonIcon}}
+              @style="solid"
+              class="{{if (eq index this.currentPageIndex) 'page-btn--active'}}"
+            />
           </div>
         {{/each}}
       </div>
     {{/if}}
-    <div class="page-container {{if this.displaySidePadding 'page-container--side-padding'}}">
-      {{#if this.showControls}}
-        {{#if this.showPreviousControl}}
-          <div class="carousel-control carousel-control--left" {{on "click" this.previousPage}} role="button">
-            <i class="far fa-chevron-left"></i>
-          </div>
-        {{/if}}
-        {{#if this.showNextControl}}
-          <div class="carousel-control carousel-control--right" {{on "click" this.nextPage}} role="button">
-            <i class="far fa-chevron-right"></i>
-          </div>
-        {{/if}}
-      {{/if}}
+    <div class="page-container">
       {{yield to="pages"}}
     </div>
+    {{#if this.showControls}}
+      {{#if this.showPreviousControl}}
+        <div
+          class="carousel-control {{concat 'carousel-control--left' (if this.showControlsOutside '-outside')}}"
+          {{on "click" this.previousPage}}
+          role="button"
+        >
+          <OSS::Icon @icon="fa-arrow-left" />
+        </div>
+      {{/if}}
+      {{#if this.showNextControl}}
+        <div
+          class="carousel-control {{concat 'carousel-control--right' (if this.showControlsOutside '-outside')}}"
+          {{on "click" this.nextPage}}
+          role="button"
+        >
+          <OSS::Icon @icon="fa-arrow-right" />
+        </div>
+      {{/if}}
+    {{/if}}
   </div>
   */
   {
-    "id": "2k92PYW1",
-    "block": "[[[11,0],[16,0,[29,[\"oss-carousel \",[52,[28,[37,1],[[30,1],\"bottom\"],null],\"oss-carousel__reverse\"]]]],[17,2],[4,[38,2],[[30,0,[\"initialize\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"showIndicators\"]],[[[1,\"    \"],[10,0],[14,0,\"fx-row oss-carousel__indicators\"],[12],[1,\"\\n\"],[42,[28,[37,4],[[28,[37,4],[[30,0,[\"pages\"]]],null]],null],null,[[[1,\"        \"],[11,0],[24,0,\"page-btn\"],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[28,[37,6],[[30,0,[\"displayPage\"]],[30,3]],null]],null],[12],[1,\"\\n          \"],[10,\"i\"],[15,0,[29,[[30,0,[\"buttonIcon\"]],\" \",[52,[28,[37,1],[[30,4],[30,0,[\"currentPageIndex\"]]],null],\"page-btn--active\"]]]],[12],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[3,4]],null],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[15,0,[29,[\"page-container \",[52,[30,0,[\"displaySidePadding\"]],\"page-container--side-padding\"]]]],[12],[1,\"\\n\"],[41,[30,0,[\"showControls\"]],[[[41,[30,0,[\"showPreviousControl\"]],[[[1,\"        \"],[11,0],[24,0,\"carousel-control carousel-control--left\"],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[30,0,[\"previousPage\"]]],null],[12],[1,\"\\n          \"],[10,\"i\"],[14,0,\"far fa-chevron-left\"],[12],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"showNextControl\"]],[[[1,\"        \"],[11,0],[24,0,\"carousel-control carousel-control--right\"],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[30,0,[\"nextPage\"]]],null],[12],[1,\"\\n          \"],[10,\"i\"],[14,0,\"far fa-chevron-right\"],[12],[13],[1,\"\\n        \"],[13],[1,\"\\n\"]],[]],null]],[]],null],[1,\"    \"],[18,5,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"@indicatorsPosition\",\"&attrs\",\"page\",\"index\",\"&pages\"],false,[\"if\",\"eq\",\"did-insert\",\"each\",\"-track-array\",\"on\",\"fn\",\"yield\"]]",
+    "id": "pTYtPGMq",
+    "block": "[[[11,0],[16,0,[29,[\"oss-carousel \",[52,[28,[37,1],[[30,1],\"bottom\"],null],\"oss-carousel__reverse\"]]]],[17,2],[4,[38,2],[[30,0,[\"initialize\"]]],null],[12],[1,\"\\n\"],[41,[30,0,[\"showIndicators\"]],[[[1,\"    \"],[10,0],[14,0,\"fx-row oss-carousel__indicators\"],[12],[1,\"\\n\"],[42,[28,[37,4],[[28,[37,4],[[30,0,[\"pages\"]]],null]],null],null,[[[1,\"        \"],[11,0],[24,0,\"page-btn\"],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[28,[37,6],[[30,0,[\"displayPage\"]],[30,3]],null]],null],[12],[1,\"\\n          \"],[8,[39,7],[[16,0,[29,[[52,[28,[37,1],[[30,4],[30,0,[\"currentPageIndex\"]]],null],\"page-btn--active\"]]]]],[[\"@icon\",\"@style\"],[[30,0,[\"buttonIcon\"]],\"solid\"]],null],[1,\"\\n        \"],[13],[1,\"\\n\"]],[3,4]],null],[1,\"    \"],[13],[1,\"\\n\"]],[]],null],[1,\"  \"],[10,0],[14,0,\"page-container\"],[12],[1,\"\\n    \"],[18,5,null],[1,\"\\n  \"],[13],[1,\"\\n\"],[41,[30,0,[\"showControls\"]],[[[41,[30,0,[\"showPreviousControl\"]],[[[1,\"      \"],[11,0],[16,0,[29,[\"carousel-control \",[28,[37,9],[\"carousel-control--left\",[52,[30,0,[\"showControlsOutside\"]],\"-outside\"]],null]]]],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[30,0,[\"previousPage\"]]],null],[12],[1,\"\\n        \"],[8,[39,7],null,[[\"@icon\"],[\"fa-arrow-left\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[41,[30,0,[\"showNextControl\"]],[[[1,\"      \"],[11,0],[16,0,[29,[\"carousel-control \",[28,[37,9],[\"carousel-control--right\",[52,[30,0,[\"showControlsOutside\"]],\"-outside\"]],null]]]],[24,\"role\",\"button\"],[4,[38,5],[\"click\",[30,0,[\"nextPage\"]]],null],[12],[1,\"\\n        \"],[8,[39,7],null,[[\"@icon\"],[\"fa-arrow-right\"]],null],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null]],[]],null],[13]],[\"@indicatorsPosition\",\"&attrs\",\"page\",\"index\",\"&pages\"],false,[\"if\",\"eq\",\"did-insert\",\"each\",\"-track-array\",\"on\",\"fn\",\"o-s-s/icon\",\"yield\",\"concat\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/carousel.hbs",
     "isStrictMode": false
   });
-  const DEFAULT_BUTTON_ICON = 'fas fa-circle';
+  const DEFAULT_BUTTON_ICON = 'fa-circle';
   const ANIMATION_TIME = (0, _runtime.isTesting)() ? 5 : 500;
   let OSSCarousel = _exports.default = (_class = class OSSCarousel extends _component2.default {
     constructor(...args) {
@@ -85499,7 +85511,7 @@ require('@ember/-internals/bootstrap')
     get showNextControl() {
       return this.showControls && (this.loop || this.currentPageIndex < (this.pages ?? []).length - 1);
     }
-    get displaySidePadding() {
+    get showControlsOutside() {
       return this.args.showControls === 'outside';
     }
     initialize(element) {
