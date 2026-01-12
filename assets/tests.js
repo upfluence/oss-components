@@ -9132,6 +9132,7 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
       hooks.beforeEach(function () {
         this.defaultAction = _sinon.default.spy();
         this.lockedAction = _sinon.default.spy();
+        this.action = _sinon.default.spy();
       });
       (0, _qunit.test)('on click, it redirect to the @link attribute', async function (assert) {
         const router = this.owner.lookup('service:router');
@@ -9163,6 +9164,21 @@ define("dummy/tests/integration/components/o-s-s/layout/sidebar/item-test", ["qu
         await (0, _testHelpers.click)('.oss-sidebar-item');
         assert.ok(this.defaultAction.notCalled);
         assert.ok(this.lockedAction.calledOnce);
+      });
+      (0, _qunit.test)('on click, when item is not locked, the action is called ', async function (assert) {
+        await (0, _testHelpers.render)((0, _templateFactory.createTemplateFactory)(
+        /*
+          <OSS::Layout::Sidebar::Item @icon="far fa-search" @locked={{false}} @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}} @action={{this.action}} />
+        */
+        {
+          "id": "GzbbhAEY",
+          "block": "[[[8,[39,0],null,[[\"@icon\",\"@locked\",\"@defaultAction\",\"@lockedAction\",\"@action\"],[\"far fa-search\",false,[30,0,[\"defaultAction\"]],[30,0,[\"lockedAction\"]],[30,0,[\"action\"]]]],null]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+          "moduleName": "/home/runner/work/oss-components/oss-components/dummy/tests/integration/components/o-s-s/layout/sidebar/item-test.ts",
+          "isStrictMode": false
+        }));
+        await (0, _testHelpers.click)('.oss-sidebar-item');
+        assert.ok(this.defaultAction.notCalled);
+        assert.ok(this.action.calledOnce);
       });
     });
     (0, _qunit.module)('Extra attributes', () => {

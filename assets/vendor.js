@@ -91177,6 +91177,7 @@ interface OSSCodeBlockArgs {
             @hasNotifications={{item.hasNotifications}}
             @link={{item.link}}
             @lockedAction={{item.lockedAction}}
+            @action={{item.action}}
             data-control-name={{item.dataControlName}}
             class={{if item.active "active"}}
           />
@@ -91186,8 +91187,8 @@ interface OSSCodeBlockArgs {
   </div>
   */
   {
-    "id": "j8loKBxz",
-    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[4,[38,0],[[30,0,[\"registerTrigger\"]]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-sidebar-group__title-container\"],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"      \"],[8,[39,3],[[16,0,[28,[37,4],[[52,[30,2],\"oss-sidebar-item--group-header\"],[52,[30,0,[\"isActive\"]],\" active\"]],null]],[4,[38,7],[\"mouseenter\",[30,0,[\"handleMouseEnter\"]]],null],[4,[38,7],[\"mouseleave\",[30,0,[\"handleMouseLeave\"]]],null]],[[\"@icon\",\"@label\",\"@expanded\",\"@hasNotifications\"],[[30,3],[30,4],[30,2],[28,[37,5],[[28,[37,6],[[30,2]],null],[30,0,[\"hasNotifications\"]]],null]]],[[\"icon\"],[[[[1,\"\\n          \"],[18,7,[[28,[37,9],null,[[\"expanded\"],[[30,2]]]]]],[1,\"\\n        \"]],[]]]]],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,3],[[16,0,[28,[37,4],[[52,[30,2],\"oss-sidebar-item--group-header\"],[52,[30,0,[\"isActive\"]],\" active\"]],null]],[4,[38,7],[\"mouseenter\",[30,0,[\"handleMouseEnter\"]]],null],[4,[38,7],[\"mouseleave\",[30,0,[\"handleMouseLeave\"]]],null]],[[\"@icon\",\"@label\",\"@expanded\",\"@hasNotifications\"],[[30,3],[30,4],[30,2],[28,[37,5],[[28,[37,6],[[30,2]],null],[30,0,[\"hasNotifications\"]]],null]]],null],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,0,[\"collapsible\"]],[[[1,\"      \"],[8,[39,10],[[24,\"role\",\"button\"],[24,0,\"oss-sidebar-group__collapse-trigger\"],[4,[38,7],[\"click\",[30,0,[\"toggleCollapsed\"]]],null]],[[\"@icon\"],[[52,[30,0,[\"collapsed\"]],\"fa-chevron-down\",\"fa-chevron-up\"]]],null],[1,\"\\n\"]],[]],null],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[11,0],[16,0,[28,[37,4],[\"oss-sidebar-group__items-container\",[52,[28,[37,11],[[30,2],[30,0,[\"displayGroupList\"]]],null],\" oss-sidebar-group__items-container--visible\"]],null]],[4,[38,7],[\"mouseenter\",[30,0,[\"handleGroupListEnter\"]]],null],[4,[38,7],[\"mouseleave\",[30,0,[\"handleGroupListLeave\"]]],null],[12],[1,\"\\n\"],[41,[51,[30,2]],[[[1,\"      \"],[10,0],[14,0,\"group-name\"],[12],[1,\"\\n        \"],[1,[30,4]],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[10,0],[14,0,\"group-list\"],[12],[1,\"\\n\"],[42,[28,[37,14],[[28,[37,14],[[30,5]],null]],null],null,[[[1,\"        \"],[8,[39,3],[[16,\"data-control-name\",[30,6,[\"dataControlName\"]]],[16,0,[52,[30,6,[\"active\"]],\"active\"]]],[[\"@expanded\",\"@icon\",\"@label\",\"@locked\",\"@hasNotifications\",\"@link\",\"@lockedAction\"],[[28,[37,11],[[30,2],[30,0,[\"displayGroupList\"]]],null],[30,6,[\"icon\"]],[30,6,[\"label\"]],[30,6,[\"locked\"]],[30,6,[\"hasNotifications\"]],[30,6,[\"link\"]],[30,6,[\"lockedAction\"]]]],null],[1,\"\\n\"]],[6]],null],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@expanded\",\"@icon\",\"@label\",\"@items\",\"item\",\"&icon\"],false,[\"did-insert\",\"if\",\"has-block\",\"o-s-s/layout/sidebar/item\",\"concat\",\"and\",\"not\",\"on\",\"yield\",\"hash\",\"o-s-s/icon\",\"or\",\"unless\",\"each\",\"-track-array\"]]",
+    "id": "mtCGHpxd",
+    "block": "[[[11,0],[16,0,[30,0,[\"computedClasses\"]]],[17,1],[4,[38,0],[[30,0,[\"registerTrigger\"]]],null],[12],[1,\"\\n  \"],[10,0],[14,0,\"oss-sidebar-group__title-container\"],[12],[1,\"\\n\"],[41,[48,[30,7]],[[[1,\"      \"],[8,[39,3],[[16,0,[28,[37,4],[[52,[30,2],\"oss-sidebar-item--group-header\"],[52,[30,0,[\"isActive\"]],\" active\"]],null]],[4,[38,7],[\"mouseenter\",[30,0,[\"handleMouseEnter\"]]],null],[4,[38,7],[\"mouseleave\",[30,0,[\"handleMouseLeave\"]]],null]],[[\"@icon\",\"@label\",\"@expanded\",\"@hasNotifications\"],[[30,3],[30,4],[30,2],[28,[37,5],[[28,[37,6],[[30,2]],null],[30,0,[\"hasNotifications\"]]],null]]],[[\"icon\"],[[[[1,\"\\n          \"],[18,7,[[28,[37,9],null,[[\"expanded\"],[[30,2]]]]]],[1,\"\\n        \"]],[]]]]],[1,\"\\n\"]],[]],[[[1,\"      \"],[8,[39,3],[[16,0,[28,[37,4],[[52,[30,2],\"oss-sidebar-item--group-header\"],[52,[30,0,[\"isActive\"]],\" active\"]],null]],[4,[38,7],[\"mouseenter\",[30,0,[\"handleMouseEnter\"]]],null],[4,[38,7],[\"mouseleave\",[30,0,[\"handleMouseLeave\"]]],null]],[[\"@icon\",\"@label\",\"@expanded\",\"@hasNotifications\"],[[30,3],[30,4],[30,2],[28,[37,5],[[28,[37,6],[[30,2]],null],[30,0,[\"hasNotifications\"]]],null]]],null],[1,\"\\n\"]],[]]],[1,\"\\n\"],[41,[30,0,[\"collapsible\"]],[[[1,\"      \"],[8,[39,10],[[24,\"role\",\"button\"],[24,0,\"oss-sidebar-group__collapse-trigger\"],[4,[38,7],[\"click\",[30,0,[\"toggleCollapsed\"]]],null]],[[\"@icon\"],[[52,[30,0,[\"collapsed\"]],\"fa-chevron-down\",\"fa-chevron-up\"]]],null],[1,\"\\n\"]],[]],null],[1,\"\\n  \"],[13],[1,\"\\n\\n  \"],[11,0],[16,0,[28,[37,4],[\"oss-sidebar-group__items-container\",[52,[28,[37,11],[[30,2],[30,0,[\"displayGroupList\"]]],null],\" oss-sidebar-group__items-container--visible\"]],null]],[4,[38,7],[\"mouseenter\",[30,0,[\"handleGroupListEnter\"]]],null],[4,[38,7],[\"mouseleave\",[30,0,[\"handleGroupListLeave\"]]],null],[12],[1,\"\\n\"],[41,[51,[30,2]],[[[1,\"      \"],[10,0],[14,0,\"group-name\"],[12],[1,\"\\n        \"],[1,[30,4]],[1,\"\\n      \"],[13],[1,\"\\n\"]],[]],null],[1,\"    \"],[10,0],[14,0,\"group-list\"],[12],[1,\"\\n\"],[42,[28,[37,14],[[28,[37,14],[[30,5]],null]],null],null,[[[1,\"        \"],[8,[39,3],[[16,\"data-control-name\",[30,6,[\"dataControlName\"]]],[16,0,[52,[30,6,[\"active\"]],\"active\"]]],[[\"@expanded\",\"@icon\",\"@label\",\"@locked\",\"@hasNotifications\",\"@link\",\"@lockedAction\",\"@action\"],[[28,[37,11],[[30,2],[30,0,[\"displayGroupList\"]]],null],[30,6,[\"icon\"]],[30,6,[\"label\"]],[30,6,[\"locked\"]],[30,6,[\"hasNotifications\"]],[30,6,[\"link\"]],[30,6,[\"lockedAction\"]],[30,6,[\"action\"]]]],null],[1,\"\\n\"]],[6]],null],[1,\"    \"],[13],[1,\"\\n  \"],[13],[1,\"\\n\"],[13]],[\"&attrs\",\"@expanded\",\"@icon\",\"@label\",\"@items\",\"item\",\"&icon\"],false,[\"did-insert\",\"if\",\"has-block\",\"o-s-s/layout/sidebar/item\",\"concat\",\"and\",\"not\",\"on\",\"yield\",\"hash\",\"o-s-s/icon\",\"or\",\"unless\",\"each\",\"-track-array\"]]",
     "moduleName": "@upfluence/oss-components/components/o-s-s/layout/sidebar/group.hbs",
     "isStrictMode": false
   });
@@ -91523,6 +91524,8 @@ interface OSSCodeBlockArgs {
     onClick() {
       if (this.locked) {
         this.args.lockedAction?.();
+      } else {
+        this.args.action?.();
       }
     }
     handleMouseEnter(event) {
@@ -91638,6 +91641,15 @@ interface OSSCodeBlockArgs {
             summary: 'lockedAction(): void'
           }
         }
+      },
+      action: {
+        description: 'Function to be called on click when item is not locked',
+        table: {
+          category: 'Actions',
+          type: {
+            summary: 'action(): void'
+          }
+        }
       }
     },
     parameters: {
@@ -91656,7 +91668,8 @@ interface OSSCodeBlockArgs {
     hasNotifications: false,
     locked: false,
     link: 'http://upfluence.com',
-    lockedAction: (0, _addonActions.action)('lockedAction')
+    lockedAction: (0, _addonActions.action)('lockedAction'),
+    action: (0, _addonActions.action)('action')
   };
   const Template = args => ({
     template: (0, _templateFactory.createTemplateFactory)(
@@ -91668,12 +91681,13 @@ interface OSSCodeBlockArgs {
                                       @link={{this.link}} @label={{this.label}}
                                       @expanded={{this.expanded}}
                                       @lockedAction={{this.lockedAction}} />
+                                      @action={{this.action}} />
         </div>
       
     */
     {
-      "id": "z/RQC49K",
-      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"background: var(--sidebar-bg-color)\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@icon\",\"@locked\",\"@hasNotifications\",\"@link\",\"@label\",\"@expanded\",\"@lockedAction\"],[[30,0,[\"icon\"]],[30,0,[\"locked\"]],[30,0,[\"hasNotifications\"]],[30,0,[\"link\"]],[30,0,[\"label\"]],[30,0,[\"expanded\"]],[30,0,[\"lockedAction\"]]]],null],[1,\"\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
+      "id": "25+ZEhCh",
+      "block": "[[[1,\"\\n    \"],[10,0],[14,5,\"background: var(--sidebar-bg-color)\"],[12],[1,\"\\n      \"],[8,[39,0],null,[[\"@icon\",\"@locked\",\"@hasNotifications\",\"@link\",\"@label\",\"@expanded\",\"@lockedAction\"],[[30,0,[\"icon\"]],[30,0,[\"locked\"]],[30,0,[\"hasNotifications\"]],[30,0,[\"link\"]],[30,0,[\"label\"]],[30,0,[\"expanded\"]],[30,0,[\"lockedAction\"]]]],null],[1,\"\\n                                  @action=\"],[1,[30,0,[\"action\"]]],[1,\" />\\n    \"],[13],[1,\"\\n  \"]],[],false,[\"o-s-s/layout/sidebar/item\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/layout/sidebar/item.stories.js",
       "isStrictMode": false
     }),
@@ -91685,7 +91699,7 @@ interface OSSCodeBlockArgs {
       
           <OSS::Layout::Sidebar::Item
             @icon={{this.icon}} @locked={{this.locked}} @hasNotifications={{this.hasNotifications}}
-            @link={{this.link}} @label={{this.label}} @expanded={{this.expanded}} @lockedAction={{this.lockedAction}}
+            @link={{this.link}} @label={{this.label}} @expanded={{this.expanded}} @lockedAction={{this.lockedAction}} @action={{this.action}}
           >
             <:icon>
               <OSS::Icon @icon="fa-ship" />
@@ -91694,8 +91708,8 @@ interface OSSCodeBlockArgs {
       
     */
     {
-      "id": "a96TJDnM",
-      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@icon\",\"@locked\",\"@hasNotifications\",\"@link\",\"@label\",\"@expanded\",\"@lockedAction\"],[[30,0,[\"icon\"]],[30,0,[\"locked\"]],[30,0,[\"hasNotifications\"]],[30,0,[\"link\"]],[30,0,[\"label\"]],[30,0,[\"expanded\"]],[30,0,[\"lockedAction\"]]]],[[\"icon\"],[[[[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\"],[\"fa-ship\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/layout/sidebar/item\",\"o-s-s/icon\"]]",
+      "id": "abHa7WWS",
+      "block": "[[[1,\"\\n      \"],[8,[39,0],null,[[\"@icon\",\"@locked\",\"@hasNotifications\",\"@link\",\"@label\",\"@expanded\",\"@lockedAction\",\"@action\"],[[30,0,[\"icon\"]],[30,0,[\"locked\"]],[30,0,[\"hasNotifications\"]],[30,0,[\"link\"]],[30,0,[\"label\"]],[30,0,[\"expanded\"]],[30,0,[\"lockedAction\"]],[30,0,[\"action\"]]]],[[\"icon\"],[[[[1,\"\\n          \"],[8,[39,1],null,[[\"@icon\"],[\"fa-ship\"]],null],[1,\"\\n        \"]],[]]]]],[1,\"\\n  \"]],[],false,[\"o-s-s/layout/sidebar/item\",\"o-s-s/icon\"]]",
       "moduleName": "/home/runner/work/oss-components/oss-components/@upfluence/oss-components/components/o-s-s/layout/sidebar/item.stories.js",
       "isStrictMode": false
     }),
