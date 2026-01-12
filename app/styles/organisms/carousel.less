@@ -23,7 +23,7 @@
 
   .carousel-control {
     position: absolute;
-    top: 0;
+    top: calc(50% - 18px);
     bottom: 0;
     z-index: 1;
     display: flex;
@@ -32,28 +32,34 @@
     width: var(--spacing-px-36);
     height: var(--spacing-px-36);
     border-radius: 50%;
-    border: 1px solid var(--color-gray-200);
+    border: 1px solid var(--color-border-default);
     background-color: var(--color-white);
     padding: 0;
-    color: var(--color-gray-500);
+    color: var(--color-gray-600);
     text-align: center;
     transition: opacity 0.5s ease;
 
-    &--left,
-    &--right {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
     &--left {
-      left: var(--spacing-px-24);
+      left: var(--spacing-px-12);
+    }
+
+    &--left-outside {
+      left: 0;
+      transform: translateX(-50%);
     }
 
     &--right {
-      left: unset;
-      right: var(--spacing-px-24);
+      right: var(--spacing-px-12);
     }
+
+    &--right-outside {
+      right: 0;
+      transform: translateX(50%);
+    }
+  }
+
+  &:has(.oss-carousel__indicators) .carousel-control {
+    top: calc(50% - 4px);
   }
 
   .page-container {
@@ -74,11 +80,6 @@
         display: flex;
         justify-content: center;
       }
-    }
-
-    &--side-padding {
-      padding-left: 46px;
-      padding-right: 46px;
     }
   }
 
