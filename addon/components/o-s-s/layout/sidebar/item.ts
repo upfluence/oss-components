@@ -12,6 +12,7 @@ interface OSSLayoutSidebarItemArgs {
   expanded?: boolean;
   label?: string;
   lockedAction?(): void;
+  action?(): void;
 }
 
 export default class OSSLayoutSidebarItem extends Component<OSSLayoutSidebarItemArgs> {
@@ -37,6 +38,8 @@ export default class OSSLayoutSidebarItem extends Component<OSSLayoutSidebarItem
   onClick(): void {
     if (this.locked) {
       this.args.lockedAction?.();
+    } else {
+      this.args.action?.();
     }
   }
 

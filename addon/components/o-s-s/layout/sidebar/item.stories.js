@@ -73,6 +73,15 @@ export default {
           summary: 'lockedAction(): void'
         }
       }
+    },
+    action: {
+      description: 'Function to be called on click when item is not locked',
+      table: {
+        category: 'Actions',
+        type: {
+          summary: 'action(): void'
+        }
+      }
     }
   },
   parameters: {
@@ -92,7 +101,8 @@ const defaultArgs = {
   hasNotifications: false,
   locked: false,
   link: 'http://upfluence.com',
-  lockedAction: action('lockedAction')
+  lockedAction: action('lockedAction'),
+  action: action('action')
 };
 
 const Template = (args) => ({
@@ -103,6 +113,7 @@ const Template = (args) => ({
                                   @link={{this.link}} @label={{this.label}}
                                   @expanded={{this.expanded}}
                                   @lockedAction={{this.lockedAction}} />
+                                  @action={{this.action}} />
     </div>
   `,
   context: args
@@ -112,7 +123,7 @@ const IconNamedBlockTemplate = (args) => ({
   template: hbs`
       <OSS::Layout::Sidebar::Item
         @icon={{this.icon}} @locked={{this.locked}} @hasNotifications={{this.hasNotifications}}
-        @link={{this.link}} @label={{this.label}} @expanded={{this.expanded}} @lockedAction={{this.lockedAction}}
+        @link={{this.link}} @label={{this.label}} @expanded={{this.expanded}} @lockedAction={{this.lockedAction}} @action={{this.action}}
       >
         <:icon>
           <OSS::Icon @icon="fa-ship" />
