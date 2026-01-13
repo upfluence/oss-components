@@ -35,7 +35,6 @@ export default class OSSAnchor extends Component<OSSAnchorArgs> {
   }
 
   get isInternalRoute(): boolean {
-    console.log('here');
     try {
       return Boolean(
         this.args.engine
