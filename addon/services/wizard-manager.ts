@@ -54,6 +54,7 @@ export default class WizardManager extends Service {
   @tracked declare focusedStepId: string;
   @tracked declare configOptions: ConfigurationOptions;
   @tracked wheelEnabled: boolean = true;
+  @tracked wheelHandled: boolean = false;
 
   get allSteps(): Step[] {
     return this.sections.flatMap((section: Section) => section.steps);

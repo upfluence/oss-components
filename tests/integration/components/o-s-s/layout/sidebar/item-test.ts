@@ -19,6 +19,12 @@ module('Integration | Component | oss/layout/sidebar/item', function (hooks) {
     assert.dom('.oss-sidebar-item .oss-sidebar-item__icon i').hasClass('fa-search');
   });
 
+  test('it does not render the icon div when no icon is provided', async function (assert) {
+    await render(hbs`<OSS::Layout::Sidebar::Item />`);
+
+    assert.dom('.oss-sidebar-item .oss-sidebar-item__icon').doesNotExist();
+  });
+
   test('it renders the icon named block instead of the icon argument when present', async function (assert) {
     await render(
       hbs`<OSS::Layout::Sidebar::Item @icon="fal fa-search"><:icon><OSS::Icon @icon="fa-ship" class="custom-icon" /></:icon></OSS::Layout::Sidebar::Item>`
@@ -66,6 +72,7 @@ module('Integration | Component | oss/layout/sidebar/item', function (hooks) {
     hooks.beforeEach(function () {
       this.defaultAction = sinon.spy();
       this.lockedAction = sinon.spy();
+      this.action = sinon.spy();
     });
 
     test('on click, it redirect to the @link attribute', async function (assert) {
@@ -87,6 +94,16 @@ module('Integration | Component | oss/layout/sidebar/item', function (hooks) {
 
       assert.ok(this.defaultAction.notCalled);
       assert.ok(this.lockedAction.calledOnce);
+    });
+
+    test('on click, when item is not locked, the action is called ', async function (assert) {
+      await render(
+        hbs`<OSS::Layout::Sidebar::Item @icon="far fa-search" @locked={{false}} @defaultAction={{this.defaultAction}} @lockedAction={{this.lockedAction}} @action={{this.action}} />`
+      );
+      await click('.oss-sidebar-item');
+
+      assert.ok(this.defaultAction.notCalled);
+      assert.ok(this.action.calledOnce);
     });
   });
 

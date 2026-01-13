@@ -10,4 +10,9 @@ export default class ApplicationController extends Controller {
   redirectTo(route) {
     console.log('redirectTo', route);
   }
+
+  @action
+  onClick() {
+    this.toast.success('Item clicked!');
+  }
 }
