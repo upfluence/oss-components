@@ -12,7 +12,7 @@ export const SizeDefinition: SizeDefType = {
   lg: 'upf-avatar--lg'
 };
 
-interface OSSAvatarArgs {
+export interface OSSAvatarArgs {
   image?: string;
   initials?: string;
   size?: SizeType;
