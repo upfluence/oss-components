@@ -1,14 +1,18 @@
 import Component from '@glimmer/component';
-import type { OSSTagArgs } from '../tag';
+import { assert } from '@ember/debug';
+import { action } from '@ember/object';
 import type { IntlService } from 'ember-intl';
-import type { CountryData } from '@upfluence/oss-components/utils/country-codes';
+
+import type { OSSTagArgs } from '../tag';
 import type { OSSAvatarArgs } from '../avatar';
 import type { OSSBadgeArgs } from '../badge';
 
-//type Avatar
-type IconSpec = {
-  name: string;
-  tooltip?: { title: ReturnType<IntlService['t']>; subtitle?: ReturnType<IntlService['t']>; placement?: string };
+import { isSafeString } from '@upfluence/oss-components/utils';
+import type { OSSIconArgs } from '@upfluence/oss-components/components/o-s-s/icon';
+import type { CountryData } from '@upfluence/oss-components/utils/country-codes';
+
+type IconSpec = OSSIconArgs & {
+  tooltip?: { title: ReturnType<IntlService['t']>; placement?: string };
 };
 
 interface OSSInfiniteSelectOptionComponentSignature {
@@ -18,19 +22,18 @@ interface OSSInfiniteSelectOptionComponentSignature {
     prefixIcon?: IconSpec;
     prefixCountry?: CountryData['alpha2'];
 
-    title: string;
-    subtitle?: string;
+    title: ReturnType<IntlService['t']>;
+    subtitle?: ReturnType<IntlService['t']>;
     icon?: IconSpec;
 
     suffixHint?: ReturnType<IntlService['t']>;
     suffixTag?: OSSTagArgs;
     suffixIcon?: IconSpec;
 
-    // When multiple, display a checkbox before anything else, while using the @selected arg for its @checked arg.
-    // When single, only rely on the checkmark icon at the end of the line.
     selectionType?: 'multiple' | 'single';
     selected?: boolean;
     disabled?: boolean;
+    onSelect(value: boolean): void;
   };
 
   Blocks: {
@@ -39,4 +42,48 @@ interface OSSInfiniteSelectOptionComponentSignature {
   };
 }
 
-export default class OSSInfiniteSelectOptionComponent extends Component<OSSInfiniteSelectOptionComponentSignature> {}
+export default class OSSInfiniteSelectOptionComponent extends Component<OSSInfiniteSelectOptionComponentSignature> {
+  constructor(owner: unknown, args: OSSInfiniteSelectOptionComponentSignature['Args']) {
+    super(owner, args);
+    assert(
+      '[component][OSS::InfiniteSelect::Option] @title is required',
+      typeof args.title === 'string' || isSafeString(args.title)
+    );
+    assert(
+      '[component][OSS::InfiniteSelect::Option] The parameter @onSelect of type function is mandatory',
+      typeof this.args.onSelect === 'function'
+    );
+  }
+
+  get computedClasses() {
+    const classes = ['oss-infinite-select-option'];
+    if (this.args.selected) {
+      classes.push('oss-infinite-select-option--selected');
+    }
+    if (this.args.disabled) {
+      classes.push('oss-infinite-select-option--disabled');
+    }
+    return classes.join(' ');
+  }
+
+  get selectionType(): 'multiple' | 'single' {
+    return this.args.selectionType ?? 'single';
+  }
+
+  get isSelectionMultiple(): boolean {
+    return this.selectionType === 'multiple';
+  }
+
+  get isSelectionSingle(): boolean {
+    return this.selectionType === 'single';
+  }
+
+  get selected(): boolean {
+    return this.args.selected ?? false;
+  }
+
+  @action
+  onSelect(value: boolean): void {
+    this.args.onSelect(value);
+  }
+}

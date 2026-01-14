@@ -143,6 +143,140 @@
     class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
   >
     <div class="font-size-md font-weight-semibold">
+      Infinite select option
+    </div>
+    <div class="fx-col fx-gap-px-12">
+      <div class="fx-row fx-gap-px-6 fx-xalign-center">
+        <div class="font-weight-semibold" style="width: 210px;">
+          Single with custom prefix and suffix
+        </div>
+        <OSS::InfiniteSelect::Option
+          @prefixAvatar={{hash initials="JV" size="sm"}}
+          @prefixBadge={{hash icon="far fa-thumbs-up" size="sm"}}
+          @prefixIcon={{hash icon="fa-thumbs-up" tooltip=(hash title="Prefix icon tooltip" placement="top")}}
+          @prefixCountry="FR"
+          @title="Title"
+          @subtitle="Subtitle"
+          @icon={{hash icon="fa-info-circle" tooltip=(hash title="Icon tooltip" placement="top")}}
+          @suffixHint="Hint"
+          @suffixTag={{hash label="Tag" skin="primary" size="sm"}}
+          @suffixIcon={{hash icon="fa-thumbs-up" tooltip=(hash title="Suffix icon tooltip" placement="top")}}
+          @onSelect={{this.onInfiniteSelectOptionChange}}
+        >
+          <:prefix>
+            Prefix
+          </:prefix>
+          <:suffix>
+            Suffix
+          </:suffix>
+        </OSS::InfiniteSelect::Option>
+      </div>
+      <div class="fx-row fx-gap-px-6 fx-xalign-center">
+        <div class="font-weight-semibold" style="width: 210px;">
+          Multiple
+        </div>
+        <OSS::InfiniteSelect::Option
+          @prefixAvatar={{hash initials="JV" size="sm"}}
+          @prefixBadge={{hash icon="far fa-thumbs-up" size="sm"}}
+          @prefixIcon={{hash icon="fa-thumbs-up" tooltip=(hash title="Icon tooltip" placement="top")}}
+          @prefixCountry="FR"
+          @title="Title"
+          @subtitle="Subtitle"
+          @icon={{hash icon="fa-info-circle" tooltip=(hash title="Icon tooltip" placement="top")}}
+          @suffixHint="Hint"
+          @suffixTag={{hash label="Tag" skin="primary" size="sm"}}
+          @suffixIcon={{hash icon="fa-thumbs-up" tooltip=(hash title="Suffix icon tooltip" placement="top")}}
+          @selectionType="multiple"
+          @onSelect={{this.onInfiniteSelectOptionChange}}
+        />
+      </div>
+      <div class="fx-row fx-gap-px-6 fx-xalign-center">
+        <div class="font-weight-semibold" style="width: 210px;">
+          Mutliple selected
+        </div>
+        <OSS::InfiniteSelect::Option
+          @prefixAvatar={{hash initials="JV" size="sm"}}
+          @prefixBadge={{hash icon="far fa-thumbs-up" size="sm"}}
+          @prefixIcon={{hash icon="fa-thumbs-up" tooltip=(hash title="Icon tooltip" placement="top")}}
+          @prefixCountry="FR"
+          @title="Title"
+          @subtitle="Subtitle"
+          @icon={{hash icon="fa-info-circle" tooltip=(hash title="Icon tooltip" placement="top")}}
+          @suffixHint="Hint"
+          @suffixTag={{hash label="Tag" skin="primary" size="sm"}}
+          @suffixIcon={{hash icon="fa-thumbs-up" tooltip=(hash title="Suffix icon tooltip" placement="top")}}
+          @selectionType="multiple"
+          @selected={{true}}
+          @onSelect={{this.onInfiniteSelectOptionChange}}
+        />
+      </div>
+      <div class="fx-row fx-gap-px-6 fx-xalign-center">
+        <div class="font-weight-semibold" style="width: 210px;">
+          Single selected
+        </div>
+        <OSS::InfiniteSelect::Option
+          @prefixAvatar={{hash initials="JV" size="sm"}}
+          @prefixBadge={{hash icon="far fa-thumbs-up" size="sm"}}
+          @prefixIcon={{hash icon="fa-thumbs-up" tooltip=(hash title="Icon tooltip" placement="top")}}
+          @prefixCountry="FR"
+          @title="Title"
+          @subtitle="Subtitle"
+          @icon={{hash icon="fa-info-circle" tooltip=(hash title="Icon tooltip" placement="top")}}
+          @suffixHint="Hint"
+          @suffixTag={{hash label="Tag" skin="primary" size="sm"}}
+          @suffixIcon={{hash icon="fa-thumbs-up" tooltip=(hash title="Suffix icon tooltip" placement="top")}}
+          @selectionType="single"
+          @selected={{true}}
+          @onSelect={{this.onInfiniteSelectOptionChange}}
+        />
+      </div>
+      <div class="fx-row fx-gap-px-6 fx-xalign-center">
+        <div class="font-weight-semibold" style="width: 210px;">
+          Single disabled
+        </div>
+        <OSS::InfiniteSelect::Option
+          @prefixAvatar={{hash initials="JV" size="sm"}}
+          @prefixBadge={{hash icon="far fa-thumbs-up" size="sm"}}
+          @prefixIcon={{hash icon="fa-thumbs-up" tooltip=(hash title="Icon tooltip" placement="top")}}
+          @prefixCountry="FR"
+          @title="Title"
+          @subtitle="Subtitle"
+          @icon={{hash icon="fa-info-circle" tooltip=(hash title="Icon tooltip" placement="top")}}
+          @suffixHint="Hint"
+          @suffixTag={{hash label="Tag" skin="primary" size="sm"}}
+          @suffixIcon={{hash icon="fa-thumbs-up" tooltip=(hash title="Suffix icon tooltip" placement="top")}}
+          @selectionType="single"
+          @disabled={{true}}
+          @onSelect={{this.onInfiniteSelectOptionChange}}
+        />
+      </div>
+      <div class="fx-row fx-gap-px-6 fx-xalign-center">
+        <div class="font-weight-semibold" style="width: 210px;">
+          Multiple disabled
+        </div>
+        <OSS::InfiniteSelect::Option
+          @prefixAvatar={{hash initials="JV" size="sm"}}
+          @prefixBadge={{hash icon="far fa-thumbs-up" size="sm"}}
+          @prefixIcon={{hash icon="fa-thumbs-up" tooltip=(hash title="Icon tooltip" placement="top")}}
+          @prefixCountry="FR"
+          @title="Title"
+          @subtitle="Subtitle"
+          @icon={{hash icon="fa-info-circle" tooltip=(hash title="Icon tooltip" placement="top")}}
+          @suffixHint="Hint"
+          @suffixTag={{hash label="Tag" skin="primary" size="sm"}}
+          @suffixIcon={{hash icon="fa-thumbs-up" tooltip=(hash title="Suffix icon tooltip" placement="top")}}
+          @selectionType="multiple"
+          @disabled={{true}}
+          @onSelect={{this.onInfiniteSelectOptionChange}}
+        />
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
       Power select
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-start">
