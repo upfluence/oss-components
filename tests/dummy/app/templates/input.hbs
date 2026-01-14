@@ -270,6 +270,27 @@
           @onSelect={{this.onInfiniteSelectOptionChange}}
         />
       </div>
+      <div class="fx-row fx-gap-px-6 fx-xalign-center">
+        <div class="font-weight-semibold" style="width: 210px;">
+          Multiple selected disabled
+        </div>
+        <OSS::InfiniteSelect::Option
+          @prefixAvatar={{hash initials="JV" size="sm"}}
+          @prefixBadge={{hash icon="far fa-thumbs-up" size="sm"}}
+          @prefixIcon={{hash icon="fa-thumbs-up" tooltip=(hash title="Icon tooltip" placement="top")}}
+          @prefixCountry="FR"
+          @title="Title"
+          @subtitle="Subtitle"
+          @icon={{hash icon="fa-info-circle" tooltip=(hash title="Icon tooltip" placement="top")}}
+          @suffixHint="Hint"
+          @suffixTag={{hash label="Tag" skin="primary" size="sm"}}
+          @suffixIcon={{hash icon="fa-thumbs-up" tooltip=(hash title="Suffix icon tooltip" placement="top")}}
+          @selected={{true}}
+          @selectionType="multiple"
+          @disabled={{true}}
+          @onSelect={{this.onInfiniteSelectOptionChange}}
+        />
+      </div>
     </div>
   </div>
 

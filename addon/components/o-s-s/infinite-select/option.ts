@@ -57,6 +57,12 @@ export default class OSSInfiniteSelectOptionComponent extends Component<OSSInfin
 
   get computedClasses() {
     const classes = ['oss-infinite-select-option'];
+    if (this.isSelectionMultiple) {
+      classes.push('oss-infinite-select-option--multiple');
+    }
+    if (this.isSelectionSingle) {
+      classes.push('oss-infinite-select-option--single');
+    }
     if (this.args.selected) {
       classes.push('oss-infinite-select-option--selected');
     }
@@ -84,6 +90,7 @@ export default class OSSInfiniteSelectOptionComponent extends Component<OSSInfin
 
   @action
   onSelect(value: boolean): void {
+    if (this.args.disabled) return;
     this.args.onSelect(value);
   }
 }
