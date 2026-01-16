@@ -4,7 +4,7 @@ import { IconNames } from './iconName.enum';
 
 export type IconStyle = 'solid' | 'regular' | 'light' | 'duotone' | 'brand' | 'flag' | 'duotone-regular';
 
-interface OSSIconArgs {
+export interface OSSIconArgs {
   icon: keyof typeof IconNames | string;
   style?: IconStyle;
 }

@@ -3,101 +3,103 @@
   width: 20px;
   min-height: 20px;
   height: 20px;
-}
-
-.upf-checkbox--has-label {
-  width: 100%;
-  left: var(--spacing-px-24);
-}
-
-.upf-checkbox--sm {
-  min-width: 16px;
-  width: 16px;
-  min-height: 16px;
-  height: 16px;
-}
-
-.upf-checkbox--disabled {
-  cursor: not-allowed;
-
-  .upf-checkbox__input:checked + .upf-checkbox__fake-checkbox,
-  .upf-checkbox__input + .upf-checkbox__fake-checkbox {
-    background-color: var(--color-gray-200);
-    border-color: var(--color-gray-200);
-    cursor: not-allowed;
-  }
-}
-
-//
-// For one checkbox to be styled, one checkbox must disappear
-//
-.upf-checkbox__input {
-  display: none;
-}
-
-//
-// As we hide the actual checkbox, all of the styling is done on it's label.
-// We then make it look like a checkbox square.
-//
-.upf-checkbox__fake-checkbox {
-  position: relative;
-  border: 1px solid var(--color-gray-200);
   border-radius: var(--border-radius-xs);
-  cursor: pointer;
-  background-color: var(--color-white);
+  transition: 300ms all ease-in-out;
 
-  margin-bottom: 0;
-  height: 100%;
-  width: 100%;
-
-  user-select: none;
-}
-
-//
-// Checked state of the "checkbox"
-//
-.upf-checkbox__input:checked + .upf-checkbox__fake-checkbox {
-  border-color: var(--color-primary-500);
-  background-color: var(--color-primary-500);
-
-  &:after {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: var(--color-white);
-    content: '\f00c';
-    font-family: var(--font-family-fa);
-    font-weight: 400;
-    font-size: 8px;
+  &--has-label {
+    width: 100%;
+    left: var(--spacing-px-24);
   }
 
-  &--partial {
-    background-color: var(--color-white);
+  &--sm {
+    min-width: 16px;
+    width: 16px;
+    min-height: 16px;
+    height: 16px;
+  }
 
-    &:after {
-      content: '\f068';
-      color: var(--color-primary-500);
+  &--disabled {
+    cursor: not-allowed;
+
+    .upf-checkbox__input:checked + .upf-checkbox__fake-checkbox,
+    .upf-checkbox__input + .upf-checkbox__fake-checkbox {
+      background-color: var(--color-gray-200);
+      border-color: var(--color-gray-200);
+      cursor: not-allowed;
     }
   }
-}
 
-.upf-checkbox--error .upf-checkbox__fake-checkbox {
-  .border-color-error
-}
+  &--error &__fake-checkbox {
+    .border-color-error;
+  }
 
-.upf-checkbox--warning .upf-checkbox__fake-checkbox {
-  .border-color-warning
-}
+  &--warning &__fake-checkbox {
+    .border-color-warning;
+  }
 
-.upf-checkbox--success .upf-checkbox__fake-checkbox {
-  .border-color-success
-}
+  &--success &__fake-checkbox {
+    .border-color-success;
+  }
 
-//
-// The real label of a checkbox. Aligned along it.
-//
-.upf-checkbox__label {
-  position: absolute;
-  left: 15%;
+  &:not(&--disabled) {
+    &:hover,
+    &:active {
+      box-shadow: 0px 0px 0px 2px var(--color-primary-100), var(--box-shadow-xs);
+    }
+  }
+
+  &__input {
+    display: none;
+
+    &:checked + .upf-checkbox__fake-checkbox {
+      border-color: var(--color-primary-500);
+      background-color: var(--color-primary-500);
+
+      &:after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        color: var(--color-white);
+        content: '\f00c';
+        font-family: var(--font-family-fa);
+        font-weight: 400;
+        font-size: 8px;
+      }
+
+      &--partial {
+        background-color: var(--color-white);
+
+        &:after {
+          content: '\f068';
+          color: var(--color-primary-500);
+        }
+      }
+    }
+  }
+
+  &__fake-checkbox {
+    position: relative;
+    border: 1px solid var(--color-gray-200);
+    border-radius: var(--border-radius-xs);
+    cursor: pointer;
+    background-color: var(--color-white);
+
+    margin-bottom: 0;
+    height: 100%;
+    width: 100%;
+
+    user-select: none;
+    transition: 300ms all ease-in-out;
+
+    &:hover,
+    &:active {
+      border-color: var(--color-primary-500);
+    }
+  }
+
+  &__label {
+    position: absolute;
+    left: 15%;
+  }
 }

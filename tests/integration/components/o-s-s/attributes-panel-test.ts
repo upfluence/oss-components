@@ -143,7 +143,7 @@ module('Integration | Component | o-s-s/attributes-panel', function (hooks) {
         assert.dom('.attributes-panel__container.attributes-panel__container--edition').exists();
       });
 
-      test('it render a loading state', async function (assert) {
+      test('it renders a loading state', async function (assert) {
         this.onSave.returns(new Promise(() => {}));
         await renderComponentAndClickOnEdit();
 

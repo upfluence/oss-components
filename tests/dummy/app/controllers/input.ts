@@ -167,4 +167,9 @@ export default class Input extends Controller {
   onFooterButtonClick(): void {
     console.log('Footer button clicked');
   }
+
+  @action
+  onInfiniteSelectOptionChange(value: boolean): void {
+    console.log('Infinite select option changed', value);
+  }
 }
