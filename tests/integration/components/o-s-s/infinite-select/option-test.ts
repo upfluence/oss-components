@@ -18,25 +18,6 @@ module('Integration | Component | o-s-s/infinite-select/option', function (hooks
     assert.dom('.oss-infinite-select-option').exists();
   });
 
-  module('for errors management', () => {
-    test('The component throws an error if the title parameter is not passed', async function (assert) {
-      setupOnerror((err: any) => {
-        assert.equal(err.message, 'Assertion Failed: [component][OSS::InfiniteSelect::Option] @title is required');
-      });
-      await render(hbs`<OSS::InfiniteSelect::Option />`);
-    });
-
-    test('The component throws an error if the onSelect function parameter is not passed', async function (assert) {
-      setupOnerror((err: any) => {
-        assert.equal(
-          err.message,
-          'Assertion Failed: [component][OSS::InfiniteSelect::Option] The parameter @onSelect of type function is mandatory'
-        );
-      });
-      await render(hbs`<OSS::InfiniteSelect::Option @title={{this.title}} />`);
-    });
-  });
-
   module('for @selectionType argument', () => {
     module('for "single" value', () => {
       test('it renders the correct class', async function (assert) {
@@ -87,7 +68,7 @@ module('Integration | Component | o-s-s/infinite-select/option', function (hooks
     });
 
     module('for false value', () => {
-      test('it render it as default value', async function (assert) {
+      test('it renders it as default value', async function (assert) {
         await render(hbs`<OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} />`);
         assert.dom('i.fa-check').doesNotExist();
         assert.dom('.upf-checkbox').doesNotExist();
@@ -120,7 +101,7 @@ module('Integration | Component | o-s-s/infinite-select/option', function (hooks
     });
 
     module('for multiple @selectionType argument', () => {
-      test('it render false value as default value', async function (assert) {
+      test('it renders false value as default value', async function (assert) {
         await render(
           hbs`<OSS::InfiniteSelect::Option @title={{this.title}} @selectionType="multiple" @onSelect={{this.onSelect}} />`
         );
@@ -134,7 +115,7 @@ module('Integration | Component | o-s-s/infinite-select/option', function (hooks
         assert.dom('.upf-checkbox input').isDisabled();
       });
 
-      test('for false value, it render it as default value', async function (assert) {
+      test('for false value, it renders it as default value', async function (assert) {
         await render(
           hbs`<OSS::InfiniteSelect::Option @title={{this.title}} @selectionType="multiple" @disabled={{false}} @onSelect={{this.onSelect}} />`
         );
@@ -341,7 +322,6 @@ module('Integration | Component | o-s-s/infinite-select/option', function (hooks
       const container = this.element.querySelector('.oss-infinite-select-option__container');
       const elements = Array.from(container!.children);
 
-      // Expected order: Avatar -> Badge -> Icon -> Country -> Title
       const avatarIndex = elements.findIndex((el) =>
         (el as Element).classList.contains('oss-infinite-select-option__prefix-avatar')
       );
@@ -373,7 +353,7 @@ module('Integration | Component | o-s-s/infinite-select/option', function (hooks
       assert.dom('.oss-infinite-select-option__title').exists();
     });
 
-    test('it render the correct value', async function (assert) {
+    test('it renders the correct value', async function (assert) {
       await render(hbs`<OSS::InfiniteSelect::Option @title={{this.title}} @onSelect={{this.onSelect}} /> `);
       assert.dom('.oss-infinite-select-option__title').hasText('Title');
     });
@@ -524,7 +504,6 @@ module('Integration | Component | o-s-s/infinite-select/option', function (hooks
       const suffixContainer = containers[1]; // Second container holds suffix elements
       const elements = Array.from(suffixContainer.children);
 
-      // Expected order: Hint -> Tag -> Icon -> Check icon (when selected)
       const hintIndex = elements.findIndex((el) =>
         (el as Element).classList.contains('oss-infinite-select-option__suffix-hint')
       );
@@ -539,6 +518,25 @@ module('Integration | Component | o-s-s/infinite-select/option', function (hooks
       assert.ok(hintIndex < tagIndex, 'Hint should come before Tag');
       assert.ok(tagIndex < iconIndex, 'Tag should come before Icon');
       assert.ok(iconIndex < checkIconIndex, 'Suffix Icon should come before Check Icon');
+    });
+  });
+
+  module('for errors management', () => {
+    test('The component throws an error if the title parameter is not passed', async function (assert) {
+      setupOnerror((err: any) => {
+        assert.equal(err.message, 'Assertion Failed: [component][OSS::InfiniteSelect::Option] @title is required');
+      });
+      await render(hbs`<OSS::InfiniteSelect::Option />`);
+    });
+
+    test('The component throws an error if the onSelect function parameter is not passed', async function (assert) {
+      setupOnerror((err: any) => {
+        assert.equal(
+          err.message,
+          'Assertion Failed: [component][OSS::InfiniteSelect::Option] The parameter @onSelect of type function is mandatory'
+        );
+      });
+      await render(hbs`<OSS::InfiniteSelect::Option @title={{this.title}} />`);
     });
   });
 });

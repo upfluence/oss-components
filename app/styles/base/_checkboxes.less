@@ -48,11 +48,9 @@
     }
   }
 
-  // For one checkbox to be styled, one checkbox must disappear
   &__input {
     display: none;
 
-    // Checked state of the "checkbox"
     &:checked + .upf-checkbox__fake-checkbox {
       border-color: var(--color-primary-500);
       background-color: var(--color-primary-500);
@@ -80,8 +78,6 @@
     }
   }
 
-  // As we hide the actual checkbox, all of the styling is done on it's label.
-  // We then make it look like a checkbox square.
   &__fake-checkbox {
     position: relative;
     border: 1px solid var(--color-gray-200);
@@ -102,7 +98,6 @@
     }
   }
 
-  // The real label of a checkbox. Aligned along it.
   &__label {
     position: absolute;
     left: 15%;

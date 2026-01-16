@@ -55,7 +55,7 @@ export default class OSSInfiniteSelectOptionComponent extends Component<OSSInfin
     );
   }
 
-  get computedClasses() {
+  get computedClasses(): string {
     const classes = ['oss-infinite-select-option'];
     if (this.isSelectionMultiple) {
       classes.push('oss-infinite-select-option--multiple');
