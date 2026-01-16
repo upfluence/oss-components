@@ -77,6 +77,21 @@ oss-components:
   forms:
     errors:
       required: This field is required.
+      toast:
+        format:
+          title: Some values are in the wrong format
+          message: Some inputs have incorrect formats. Please check and update.
+        requirement:
+          title: Required information missing
+          message: Please complete all mandatory fields before continuing.
+        format_and_requirement:
+          title: Please correct the highlighted fields
+          message: Some inputs have incorrect formats, and some required fields are missing. Please check and update.
+    success:
+      toast:
+        generic:
+          title: Success
+          message: Your changes have been saved.
   sidebar:
     collapse: Collapse
   smart:
