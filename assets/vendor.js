@@ -114017,7 +114017,29 @@ setupDeprecationWorkflow(${JSON.stringify(mergedConfig, undefined, 2)});`;
       },
       "forms": {
         "errors": {
-          "required": "This field is required."
+          "required": "This field is required.",
+          "toast": {
+            "format": {
+              "message": "Some inputs have incorrect formats. Please check and update.",
+              "title": "Some values are in the wrong format"
+            },
+            "format_and_requirement": {
+              "message": "Some inputs have incorrect formats, and some required fields are missing. Please check and update.",
+              "title": "Please correct the highlighted fields"
+            },
+            "requirement": {
+              "message": "Please complete all mandatory fields before continuing.",
+              "title": "Required information missing"
+            }
+          }
+        },
+        "success": {
+          "toast": {
+            "generic": {
+              "message": "Your changes have been saved.",
+              "title": "Success"
+            }
+          }
         }
       },
       "infinite-select": {
