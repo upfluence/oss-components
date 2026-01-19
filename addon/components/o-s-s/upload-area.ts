@@ -14,6 +14,8 @@ import {
   type FailedUploadResponse,
   FilePrivacy
 } from '@upfluence/oss-components/types/uploader';
+import type { FeedbackMessage } from '@upfluence/oss-components/components/o-s-s/input-container';
+import { isBlank } from '@ember/utils';
 
 interface OSSUploadAreaArgs {
   uploader: Uploader;
@@ -26,6 +28,7 @@ interface OSSUploadAreaArgs {
   size?: 'lg' | 'md';
   multiple?: boolean;
   displayPreview?: boolean;
+  feedbackMessage?: FeedbackMessage;
 
   onUploadSuccess(artifact: FileArtifact): void;
   onUploadFailure?(error: FailedUploadResponse): void;
@@ -72,6 +75,10 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
       classes.push('oss-upload-area--disabled');
     }
 
+    if (this.args.feedbackMessage?.type === 'error') {
+      classes.push('oss-upload-area--errored');
+    }
+
     if (this.dragging) {
       classes.push('oss-upload-area--dragging');
     }
@@ -110,6 +117,10 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
 
   get displayUploadArea(): boolean {
     return this.multiple || this.selectedFiles.length === 0;
+  }
+
+  get hasFeedbackMessageValue(): boolean {
+    return !isBlank(this.args.feedbackMessage?.value);
   }
 
   @action

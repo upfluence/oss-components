@@ -97,7 +97,6 @@
           @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)"
           @onUploadSuccess={{this.onUploadSuccess}}
         />
-
         <OSS::UploadArea
           @uploader={{this.uploader}}
           @rules={{array (hash type="filesize" value="8MB")}}
@@ -115,13 +114,31 @@
           @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)"
           @onUploadSuccess={{this.onUploadSuccess}}
         />
-
         <OSS::UploadArea
           @uploader={{this.uploader}}
           @rules={{array (hash type="filesize" value="8MB")}}
           @disabled={{true}}
           @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)"
           @onUploadSuccess={{this.onUploadSuccess}}
+        />
+      </div>
+      <div class="fx-row fx-gap-px-12">
+        <OSS::UploadArea
+          @uploader={{this.uploader}}
+          @rules={{array (hash type="filesize" value="8MB")}}
+          @size="lg"
+          @disabled={{true}}
+          @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)"
+          @onUploadSuccess={{this.onUploadSuccess}}
+          @feedbackMessage={{hash type="error" value="This is an error message"}}
+        />
+        <OSS::UploadArea
+          @uploader={{this.uploader}}
+          @rules={{array (hash type="filesize" value="8MB")}}
+          @disabled={{true}}
+          @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)"
+          @onUploadSuccess={{this.onUploadSuccess}}
+          @feedbackMessage={{hash type="error" value=""}}
         />
       </div>
     </div>
