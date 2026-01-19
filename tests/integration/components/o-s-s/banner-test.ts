@@ -152,6 +152,7 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
 
     test("when the value is undefined, it doesn't add the size class", async function (assert) {
       await render(hbs`<OSS::Banner />`);
+
       assert.dom('.upf-banner.upf-banner--size-sm').doesNotExist();
       assert.dom('.upf-banner.upf-banner--size-lg').doesNotExist();
     });
@@ -172,13 +173,13 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
     });
 
     test('When parameter is passed, the feedback message is swhown', async function (assert) {
-      await render(hbs`<OSS::Banner />`);
+      await render(hbs`<OSS::Banner @feedbackMessage={{this.feedbackMessage}} />`);
 
       assert.dom('.font-color-error-500').hasText('This is a feedback message');
     });
 
     test('When parameter is not passed, it does not add upf-banner--errored class', async function (assert) {
-      await render(hbs`<OSS::Banner @feedbackMessage={{this.feedbackMessage}} />`);
+      await render(hbs`<OSS::Banner />`);
 
       assert.dom('.upf-banner.upf-banner--errored').doesNotExist();
     });
