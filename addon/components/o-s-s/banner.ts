@@ -38,12 +38,6 @@ export default class OSSBanner extends Component<OSSBannerArgs> {
     return SIZE_CLASSES[this.args.size ?? 'md'] ?? '';
   }
 
-  get feedbackMessage(): string | undefined {
-    return this.args.feedbackMessage && !isBlank(this.args.feedbackMessage.value)
-      ? this.args.feedbackMessage.value
-      : undefined;
-  }
-
   get modifierClasses(): string {
     return [this.disabledClass, this.selectedClass, this.plainClass, this.sizeClass, this.errorClass]
       .filter((mc) => !isBlank(mc))

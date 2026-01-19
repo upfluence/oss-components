@@ -183,17 +183,5 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
 
       assert.dom('.upf-banner.upf-banner--error').doesNotExist();
     });
-
-    test('When parameter is passed with empty value, upf-banner--error class is added but no error message is displayed', async function (assert) {
-      this.feedbackMessage = {
-        type: 'error',
-        value: ''
-      };
-
-      await render(hbs`<OSS::Banner @feedbackMessage={{this.feedbackMessage}} />`);
-
-      assert.dom('.upf-banner.upf-banner--error').exists();
-      assert.dom('.font-color-error-500').doesNotExist();
-    });
   });
 });
