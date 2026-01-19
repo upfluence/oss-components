@@ -11,7 +11,7 @@
     border: 1px dashed var(--color-border-default);
     border-radius: var(--border-radius-lg);
 
-    .oss-upload-area__illustration {
+    &__illustration {
       position: relative;
 
       img {
@@ -147,6 +147,10 @@
     &--disabled {
       background-color: var(--color-gray-200);
       border-color: var(--color-gray-300);
+    }
+
+    &--errored {
+      border-color: var(--color-error-500);
     }
   }
 
