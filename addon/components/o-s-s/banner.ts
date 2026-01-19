@@ -1,5 +1,6 @@
 import { isBlank } from '@ember/utils';
 import Component from '@glimmer/component';
+import type { FeedbackMessage } from './input-container';
 
 type SizeType = 'sm' | 'md' | 'lg';
 
@@ -8,6 +9,7 @@ interface OSSBannerArgs {
   plain?: boolean;
   selected?: boolean;
   disabled?: boolean;
+  feedbackMessage?: FeedbackMessage;
 }
 
 const SIZE_CLASSES: Record<string, string> = {
@@ -24,6 +26,10 @@ export default class OSSBanner extends Component<OSSBannerArgs> {
     return this.args.selected ? 'upf-banner--selected' : '';
   }
 
+  get erroredClass(): string {
+    return this.args.feedbackMessage ? 'upf-banner--errored' : '';
+  }
+
   get plainClass(): string {
     return this.args.plain ? 'background-color-gray-50' : 'background-color-white';
   }
@@ -33,7 +39,7 @@ export default class OSSBanner extends Component<OSSBannerArgs> {
   }
 
   get modifierClasses(): string {
-    return [this.disabledClass, this.selectedClass, this.plainClass, this.sizeClass]
+    return [this.disabledClass, this.selectedClass, this.plainClass, this.sizeClass, this.erroredClass]
       .filter((mc) => !isBlank(mc))
       .join(' ');
   }

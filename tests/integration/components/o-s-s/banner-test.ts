@@ -156,4 +156,31 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
       assert.dom('.upf-banner.upf-banner--size-lg').doesNotExist();
     });
   });
+
+  module('@feedbackMessage parameter', function () {
+    hooks.beforeEach(function () {
+      this.feedbackMessage = {
+        type: 'error',
+        value: 'This is a feedback message'
+      };
+    });
+
+    test('When parameter is passed, it adds upf-banner--errored class', async function (assert) {
+      await render(hbs`<OSS::Banner @feedbackMessage={{this.feedbackMessage}} />`);
+
+      assert.dom('.upf-banner.upf-banner--errored').exists();
+    });
+
+    test('When parameter is passed, the feedback message is swhown', async function (assert) {
+      await render(hbs`<OSS::Banner />`);
+
+      assert.dom('.font-color-error-500').hasText('This is a feedback message');
+    });
+
+    test('When parameter is not passed, it does not add upf-banner--errored class', async function (assert) {
+      await render(hbs`<OSS::Banner @feedbackMessage={{this.feedbackMessage}} />`);
+
+      assert.dom('.upf-banner.upf-banner--errored').doesNotExist();
+    });
+  });
 });
