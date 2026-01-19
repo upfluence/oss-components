@@ -70,4 +70,7 @@
   {{/if}}
 
   <input type="file" {{on "change" this.onFileSelected}} {{did-insert this.assignFileInput}} />
+  {{#if this.hasFeedbackMessageValue}}
+    <span class="fx-row font-color-error-500 padding-top-px-6">{{@feedbackMessage.value}}</span>
+  {{/if}}
 </div>
