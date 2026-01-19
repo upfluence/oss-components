@@ -9,6 +9,7 @@ export type GroupItem = {
   label?: string;
   hasNotifications?: boolean;
   link: string;
+  engine?: string;
   active: boolean;
   dataControlName?: string;
   lockedAction?(): unknown;
