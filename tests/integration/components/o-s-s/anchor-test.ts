@@ -13,13 +13,13 @@ module('Integration | Component | o-s-s/anchor', function (hooks) {
     this.transitionToStub = sinon.stub(this.router, 'transitionTo');
   });
 
-  test('When link is registered in router it render as a anchor element', async function (assert) {
+  test('When link is registered in router it renders as a anchor element', async function (assert) {
     await render(hbs`<OSS::Anchor @link="http://www.google.fr" target="_blank" >test</OSS::Anchor>`);
 
     assert.dom('a').hasNoClass('ember-view');
   });
 
-  test('When link is registered in router it render as a linkTo helper', async function (assert) {
+  test('When link is registered in router it renders as a linkTo helper', async function (assert) {
     await render(hbs`<OSS::Anchor @link="index" >test</OSS::Anchor>`);
 
     assert.dom('a').hasClass('ember-view');

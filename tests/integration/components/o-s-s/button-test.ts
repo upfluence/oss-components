@@ -50,7 +50,7 @@ module('Integration | Component | o-s-s/button', function (hooks) {
     assert.dom('.upf-btn').hasText('Test');
   });
 
-  module('it render with the correct skin', function () {
+  module('it renders with the correct skin', function () {
     test('when using an unknown skin, it is set to default', async function (assert) {
       await render(hbs`<OSS::Button @skin="unknown" @label="Test" />`);
 
@@ -106,7 +106,7 @@ module('Integration | Component | o-s-s/button', function (hooks) {
     });
   });
 
-  module('it render with the right size', function () {
+  module('it renders with the right size', function () {
     test('when using xs', async function (assert) {
       await render(hbs`<OSS::Button @size="xs" @label="Test" />`);
 

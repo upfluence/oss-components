@@ -1,1 +1,86 @@
-{{yield}}
+<div class={{this.computedClasses}} {{on "click" (fn this.onSelect (not this.selected))}} ...attributes>
+  <div class="oss-infinite-select-option__container">
+    {{#if this.isSelectionMultiple}}
+      <OSS::Checkbox @checked={{this.selected}} @disabled={{@disabled}} @onChange={{this.onSelect}} />
+    {{/if}}
+    {{#if @prefixAvatar}}
+      <OSS::Avatar
+        class="oss-infinite-select-option__prefix-avatar"
+        @image={{@prefixAvatar.image}}
+        @initials={{@prefixAvatar.initials}}
+        @size={{@prefixAvatar.size}}
+        @loading={{@prefixAvatar.loading}}
+      />
+    {{/if}}
+    {{#if @prefixBadge}}
+      <OSS::Badge
+        class="oss-infinite-select-option__prefix-badge"
+        @icon={{@prefixBadge.icon}}
+        @image={{@prefixBadge.image}}
+        @text={{@prefixBadge.text}}
+        @skin={{@prefixBadge.skin}}
+        @plain={{@prefixBadge.plain}}
+        @size={{@prefixBadge.size}}
+      />
+    {{/if}}
+    {{#if @prefixIcon}}
+      <OSS::Icon
+        class="oss-infinite-select-option__prefix-icon"
+        @icon={{@prefixIcon.icon}}
+        @style={{@prefixIcon.style}}
+        {{enable-tooltip title=@prefixIcon.tooltip.title placement=@prefixIcon.tooltip.placement}}
+      />
+    {{/if}}
+    {{#if @prefixCountry}}
+      <div class="oss-infinite-select-option__prefix-country fflag fflag-{{@prefixCountry}} ff-sm ff-round" />
+    {{/if}}
+    {{#if (has-block "prefix")}}
+      {{yield to="prefix"}}
+    {{/if}}
+    <span class="oss-infinite-select-option__title">{{@title}}</span>
+    {{#if @subtitle}}
+      <span class="oss-infinite-select-option__subtitle">{{@subtitle}}</span>
+    {{/if}}
+    {{#if @icon}}
+      <OSS::Icon
+        class="oss-infinite-select-option__icon"
+        @icon={{@icon.icon}}
+        @style={{@icon.style}}
+        {{enable-tooltip title=@icon.tooltip.title placement=@icon.tooltip.placement}}
+      />
+    {{/if}}
+  </div>
+
+  <div class="oss-infinite-select-option__container">
+    {{#if @suffixHint}}
+      <span class="oss-infinite-select-option__suffix-hint">{{@suffixHint}}</span>
+    {{/if}}
+    {{#if @suffixTag}}
+      <OSS::Tag
+        class="oss-infinite-select-option__suffix-tag"
+        @label={{@suffixTag.label}}
+        @skin={{@suffixTag.skin}}
+        @icon={{@suffixTag.icon}}
+        @suffixIcon={{@suffixTag.suffixIcon}}
+        @hasEllipsis={{@suffixTag.hasEllipsis}}
+        @plain={{@suffixTag.plain}}
+        @htmlSafe={{@suffixTag.htmlSafe}}
+        @size={{@suffixTag.size}}
+      />
+    {{/if}}
+    {{#if @suffixIcon}}
+      <OSS::Icon
+        class="oss-infinite-select-option__suffix-icon"
+        @icon={{@suffixIcon.icon}}
+        @style={{@suffixIcon.style}}
+        {{enable-tooltip title=@suffixIcon.tooltip.title placement=@suffixIcon.tooltip.placement}}
+      />
+    {{/if}}
+    {{#if (has-block "suffix")}}
+      {{yield to="suffix"}}
+    {{/if}}
+    {{#if (and this.selected this.isSelectionSingle)}}
+      <OSS::Icon class="font-color-primary-500" @icon="fa-check" />
+    {{/if}}
+  </div>
+</div>
