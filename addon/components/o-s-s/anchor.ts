@@ -35,12 +35,9 @@ export default class OSSAnchor extends Component<OSSAnchorArgs> {
   }
 
   get isInternalRoute(): boolean {
+    const route = this.args.engine ? this.args.engine + '.' + this.args.link : this.args.link;
     try {
-      return Boolean(
-        this.args.engine
-          ? this.router.urlFor(this.args.engine + '.' + this.args.link)
-          : this.router.urlFor(this.args.link)
-      );
+      return Boolean(this.router.urlFor(route));
     } catch (error) {
       return false;
     }
