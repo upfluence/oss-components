@@ -166,10 +166,10 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
       };
     });
 
-    test('When parameter is passed, it adds upf-banner--errored class', async function (assert) {
+    test('When parameter is passed, it adds upf-banner--error class', async function (assert) {
       await render(hbs`<OSS::Banner @feedbackMessage={{this.feedbackMessage}} />`);
 
-      assert.dom('.upf-banner.upf-banner--errored').exists();
+      assert.dom('.upf-banner.upf-banner--error').exists();
     });
 
     test('When parameter is passed, the feedback message is swhown', async function (assert) {
@@ -178,10 +178,22 @@ module('Integration | Component | o-s-s/banner', function (hooks) {
       assert.dom('.font-color-error-500').hasText('This is a feedback message');
     });
 
-    test('When parameter is not passed, it does not add upf-banner--errored class', async function (assert) {
+    test('When parameter is not passed, it does not add upf-banner--error class', async function (assert) {
       await render(hbs`<OSS::Banner />`);
 
-      assert.dom('.upf-banner.upf-banner--errored').doesNotExist();
+      assert.dom('.upf-banner.upf-banner--error').doesNotExist();
+    });
+
+    test('When parameter is passed with empty value, upf-banner--error class is added but no error message is displayed', async function (assert) {
+      this.feedbackMessage = {
+        type: 'error',
+        value: ''
+      };
+
+      await render(hbs`<OSS::Banner @feedbackMessage={{this.feedbackMessage}} />`);
+
+      assert.dom('.upf-banner.upf-banner--error').exists();
+      assert.dom('.font-color-error-500').doesNotExist();
     });
   });
 });

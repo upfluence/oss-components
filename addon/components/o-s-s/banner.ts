@@ -26,8 +26,8 @@ export default class OSSBanner extends Component<OSSBannerArgs> {
     return this.args.selected ? 'upf-banner--selected' : '';
   }
 
-  get erroredClass(): string {
-    return this.args.feedbackMessage ? 'upf-banner--errored' : '';
+  get errorClass(): string {
+    return this.args.feedbackMessage ? 'upf-banner--error' : '';
   }
 
   get plainClass(): string {
@@ -38,8 +38,14 @@ export default class OSSBanner extends Component<OSSBannerArgs> {
     return SIZE_CLASSES[this.args.size ?? 'md'] ?? '';
   }
 
+  get feedbackMessage(): string | undefined {
+    return this.args.feedbackMessage && !isBlank(this.args.feedbackMessage.value)
+      ? this.args.feedbackMessage.value
+      : undefined;
+  }
+
   get modifierClasses(): string {
-    return [this.disabledClass, this.selectedClass, this.plainClass, this.sizeClass, this.erroredClass]
+    return [this.disabledClass, this.selectedClass, this.plainClass, this.sizeClass, this.errorClass]
       .filter((mc) => !isBlank(mc))
       .join(' ');
   }
