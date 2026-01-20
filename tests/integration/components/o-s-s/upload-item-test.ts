@@ -94,21 +94,7 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
           @onUploadSuccess={{this.onUploadSuccess}} />
       `);
 
-      assert.dom('[data-control-name="upload-item-filesize]').doesNotExist();
-    });
-
-    test('clicking the view button opens the file url', async function (assert) {
-      const windowOpenStub = sinon.stub(window, 'open');
-      await render(hbs`
-        <OSS::UploadItem
-          @uploader={{this.uploader}} @file={{this.file}}
-          @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
-          @onEdition={{this.onEdition}} @onDeletion={{this.onFileDeletion}}
-          @onUploadSuccess={{this.onUploadSuccess}} />
-      `);
-      await click('[data-control-name="upload-item-view-button"]');
-      assert.ok(windowOpenStub.calledOnceWithExactly(this.file.url, '_blank'));
-      windowOpenStub.restore();
+      assert.dom('[data-control-name="upload-item-filesize"]').doesNotExist();
     });
   });
 
@@ -227,28 +213,87 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
   });
 
   module('common actions', function () {
-    test('clicking the edit button triggers the onEdition action', async function (assert) {
-      await render(hbs`
-        <OSS::UploadItem
-          @uploader={{this.uploader}} @file={{this.file}}
-          @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
-          @onEdition={{this.onEdition}} @onDeletion={{this.onFileDeletion}}
-          @onUploadSuccess={{this.onUploadSuccess}} />
-      `);
-      await click('[data-control-name="upload-item-edit-button"]');
-      assert.ok(this.onEdition.calledOnce);
+    module('for edition button', () => {
+      test('clicking on it triggers the onEdition action', async function (assert) {
+        await render(hbs`
+          <OSS::UploadItem
+            @uploader={{this.uploader}} @file={{this.file}}
+            @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
+            @onEdition={{this.onEdition}} @onDeletion={{this.onFileDeletion}}
+            @onUploadSuccess={{this.onUploadSuccess}} />
+        `);
+        await click('[data-control-name="upload-item-edit-button"]');
+        assert.ok(this.onEdition.calledOnce);
+      });
+
+      test('it renders the correct tooltip', async function (assert) {
+        await render(hbs`
+          <OSS::UploadItem
+            @uploader={{this.uploader}} @file={{this.file}}
+            @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
+            @onEdition={{this.onEdition}} @onDeletion={{this.onFileDeletion}}
+            @onUploadSuccess={{this.onUploadSuccess}} />
+        `);
+        await assert
+          .tooltip('[data-control-name="upload-item-edit-button"]')
+          .hasTitle(this.intl.t('oss-components.upload_item.tooltips.edit'));
+      });
     });
 
-    test('clicking the remove button triggers the onDeletion action', async function (assert) {
-      await render(hbs`
-        <OSS::UploadItem
-          @uploader={{this.uploader}} @file={{this.file}}
-          @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
-          @onEdition={{this.onEdition}} @onDeletion={{this.onFileDeletion}}
-          @onUploadSuccess={{this.onUploadSuccess}} />
-      `);
-      await click('[data-control-name="upload-item-remove-button"]');
-      assert.ok(this.onFileDeletion.calledOnce);
+    module('for view button', () => {
+      test('clicking on it opens the file url', async function (assert) {
+        const windowOpenStub = sinon.stub(window, 'open');
+        await render(hbs`
+          <OSS::UploadItem
+            @uploader={{this.uploader}} @file={{this.file}}
+            @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
+            @onEdition={{this.onEdition}} @onDeletion={{this.onFileDeletion}}
+            @onUploadSuccess={{this.onUploadSuccess}} />
+        `);
+        await click('[data-control-name="upload-item-view-button"]');
+        assert.ok(windowOpenStub.calledOnceWithExactly(this.file.url, '_blank'));
+        windowOpenStub.restore();
+      });
+
+      test('it renders the correct tooltip', async function (assert) {
+        await render(hbs`
+          <OSS::UploadItem
+            @uploader={{this.uploader}} @file={{this.file}}
+            @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
+            @onEdition={{this.onEdition}} @onDeletion={{this.onFileDeletion}}
+            @onUploadSuccess={{this.onUploadSuccess}} />
+        `);
+        await assert
+          .tooltip('[data-control-name="upload-item-view-button"]')
+          .hasTitle(this.intl.t('oss-components.upload_item.tooltips.view'));
+      });
+    });
+
+    module('for delete button', () => {
+      test('clicking on it triggers the onDeletion action', async function (assert) {
+        await render(hbs`
+          <OSS::UploadItem
+            @uploader={{this.uploader}} @file={{this.file}}
+            @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
+            @onEdition={{this.onEdition}} @onDeletion={{this.onFileDeletion}}
+            @onUploadSuccess={{this.onUploadSuccess}} />
+        `);
+        await click('[data-control-name="upload-item-remove-button"]');
+        assert.ok(this.onFileDeletion.calledOnce);
+      });
+
+      test('it renders the correct tooltip', async function (assert) {
+        await render(hbs`
+          <OSS::UploadItem
+            @uploader={{this.uploader}} @file={{this.file}}
+            @rules={{this.validationRules}} @scope={{this.scope}} @privacy={{this.privacy}}
+            @onEdition={{this.onEdition}} @onDeletion={{this.onFileDeletion}}
+            @onUploadSuccess={{this.onUploadSuccess}} />
+        `);
+        await assert
+          .tooltip('[data-control-name="upload-item-remove-button"]')
+          .hasTitle(this.intl.t('oss-components.upload_item.tooltips.delete'));
+      });
     });
   });
 });
