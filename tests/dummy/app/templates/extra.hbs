@@ -127,7 +127,13 @@
           @uploader={{this.uploader}}
           @rules={{array (hash type="filesize" value="8MB")}}
           @size="lg"
-          @disabled={{true}}
+          @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)"
+          @onUploadSuccess={{this.onUploadSuccess}}
+          @feedbackMessage={{hash type="error" value=""}}
+        />
+        <OSS::UploadArea
+          @uploader={{this.uploader}}
+          @rules={{array (hash type="filesize" value="8MB")}}
           @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)"
           @onUploadSuccess={{this.onUploadSuccess}}
           @feedbackMessage={{hash type="error" value="This is an error message"}}
@@ -135,10 +141,16 @@
         <OSS::UploadArea
           @uploader={{this.uploader}}
           @rules={{array (hash type="filesize" value="8MB")}}
-          @disabled={{true}}
           @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)"
           @onUploadSuccess={{this.onUploadSuccess}}
-          @feedbackMessage={{hash type="error" value=""}}
+          @feedbackMessage={{hash type="warning" value="This is an warning message"}}
+        />
+        <OSS::UploadArea
+          @uploader={{this.uploader}}
+          @rules={{array (hash type="filesize" value="8MB")}}
+          @subtitle="JPG, PNG, PDF (Max 800x400px - 2MB)"
+          @onUploadSuccess={{this.onUploadSuccess}}
+          @feedbackMessage={{hash type="success" value="This is an success message"}}
         />
       </div>
     </div>

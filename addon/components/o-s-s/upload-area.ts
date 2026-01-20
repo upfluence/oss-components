@@ -16,6 +16,7 @@ import {
 } from '@upfluence/oss-components/types/uploader';
 import type { FeedbackMessage } from '@upfluence/oss-components/components/o-s-s/input-container';
 import { isBlank } from '@ember/utils';
+import { ALLOWED_FEEDBACK_MESSAGE_TYPES } from '@upfluence/oss-components/utils';
 
 interface OSSUploadAreaArgs {
   uploader: Uploader;
@@ -75,8 +76,8 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
       classes.push('oss-upload-area--disabled');
     }
 
-    if (this.args.feedbackMessage?.type === 'error') {
-      classes.push('oss-upload-area--errored');
+    if (ALLOWED_FEEDBACK_MESSAGE_TYPES.includes(this.args.feedbackMessage?.type ?? 'invalid')) {
+      classes.push(`oss-upload-area--${this.args.feedbackMessage?.type}`);
     }
 
     if (this.dragging) {
@@ -124,7 +125,7 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   }
 
   @action
-  init(element: HTMLElement): void {
+  onInit(element: HTMLElement): void {
     this._DOMElement = element;
   }
 
@@ -209,7 +210,7 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
 
     if (this.multiple) {
       this.selectedFiles.splice(index, 1);
-      this.selectedFiles = this.selectedFiles;
+      this.selectedFiles = [...this.selectedFiles];
       this.args.onFileDeletion?.(index);
     } else {
       this.selectedFiles = [];
@@ -245,7 +246,7 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
 
       if (this.editingFileIndex !== undefined) {
         this.selectedFiles[this.editingFileIndex] = file;
-        this.selectedFiles = this.selectedFiles;
+        this.selectedFiles = [...this.selectedFiles];
         this.editingFileIndex = undefined;
       } else {
         this.selectedFiles = [...this.selectedFiles, ...[file]];
