@@ -14,8 +14,8 @@ export default {
       },
       control: { type: 'text' }
     },
-    engine: {
-      description: 'Optional engine name to use for routing',
+    routePrefix: {
+      description: 'Optional route prefix (engine) name to use for routing',
       table: {
         type: {
           summary: 'string'
