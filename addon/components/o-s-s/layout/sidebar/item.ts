@@ -5,7 +5,7 @@ import type { OSSTagArgs } from '@upfluence/oss-components/components/o-s-s/tag'
 
 interface OSSLayoutSidebarItemArgs {
   link: string;
-  engine?: string;
+  routePrefix?: string;
   icon?: string;
   locked?: boolean;
   hasNotifications?: boolean;
