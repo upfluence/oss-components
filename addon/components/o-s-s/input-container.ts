@@ -2,10 +2,9 @@ import { action } from '@ember/object';
 import { next } from '@ember/runloop';
 import Component from '@glimmer/component';
 
-export type FeedbackMessage = {
-  type: 'error' | 'warning' | 'success';
-  value: string;
-};
+import type { FeedbackMessage } from '@upfluence/oss-components/types/utils';
+
+export type { FeedbackMessage };
 
 export interface OSSInputContainerArgs {
   value?: string;
