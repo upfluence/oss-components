@@ -7,6 +7,7 @@ import sinon from 'sinon';
 
 import MockUploader from '@upfluence/oss-components/test-support/services/uploader';
 import { setupToast } from '@upfluence/oss-components/test-support';
+import { ALLOWED_FEEDBACK_MESSAGE_TYPES } from '@upfluence/oss-components/utils';
 
 const file = new File(
   [new Blob(['iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg=='])],
@@ -374,6 +375,66 @@ module('Integration | Component | o-s-s/upload-area', function (hooks) {
       await click('.oss-upload-item:first-child [data-control-name="upload-item-remove-button"]');
 
       assert.dom('.oss-upload-item').exists({ count: 1 });
+    });
+  });
+
+  module('for @feedbackMessage', function () {
+    test('it does not display feedback message when not provided', async function (assert) {
+      await render(hbs`
+        <OSS::UploadArea
+          @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+          @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}} />
+      `);
+
+      assert.dom('.oss-upload-area-container .font-color-error-500').doesNotExist();
+      assert.dom('.oss-upload-area-container .font-color-warning-500').doesNotExist();
+      assert.dom('.oss-upload-area-container .font-color-success-500').doesNotExist();
+    });
+
+    test('it does not display feedback message when value is empty', async function (assert) {
+      this.feedbackMessage = { type: 'error', value: '' };
+
+      await render(hbs`
+        <OSS::UploadArea
+          @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+          @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}}
+          @feedbackMessage={{this.feedbackMessage}} />
+      `);
+
+      assert.dom('.oss-upload-area-container .font-color-error-500').doesNotExist();
+    });
+
+    ALLOWED_FEEDBACK_MESSAGE_TYPES.forEach((type) => {
+      test(`it displays ${type} feedback message with proper styling`, async function (assert) {
+        this.feedbackMessage = { type, value: `This is an ${type} message` };
+
+        await render(hbs`
+        <OSS::UploadArea
+          @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+          @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}}
+          @feedbackMessage={{this.feedbackMessage}} />
+      `);
+
+        assert.dom('.oss-upload-area').hasClass(`oss-upload-area--${type}`);
+        assert.dom(`.oss-upload-area-container .font-color-${type}-500`).exists();
+        assert.dom(`.oss-upload-area-container .font-color-${type}-500`).hasText(`This is an ${type} message`);
+      });
+    });
+
+    test('it does not apply type class when feedback message type is invalid', async function (assert) {
+      this.feedbackMessage = { type: 'invalid', value: 'Some message' };
+
+      await render(hbs`
+        <OSS::UploadArea
+          @uploader={{this.mockUploader}} @rules={{this.validationRules}} @size={{this.size}}
+          @subtitle={{this.subtitle}} @onUploadSuccess={{this.onUploadSuccess}}
+          @feedbackMessage={{this.feedbackMessage}} />
+      `);
+
+      assert.dom('.oss-upload-area').hasNoClass('oss-upload-area--invalid');
+      assert.dom('.oss-upload-area').hasNoClass('oss-upload-area--error');
+      assert.dom('.oss-upload-area').hasNoClass('oss-upload-area--warning');
+      assert.dom('.oss-upload-area').hasNoClass('oss-upload-area--success');
     });
   });
 });
