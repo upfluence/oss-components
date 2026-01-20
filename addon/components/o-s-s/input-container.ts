@@ -9,6 +9,9 @@ export type FeedbackMessage = {
   type: FeedbackType;
   value: string;
 };
+import type { FeedbackMessage } from '@upfluence/oss-components/types/utils';
+
+export type { FeedbackMessage };
 
 export interface OSSInputContainerArgs {
   value?: string;
