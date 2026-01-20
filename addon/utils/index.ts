@@ -5,3 +5,5 @@ export function isSafeString(arg: any): boolean {
 
   return (arg.constructor && arg.constructor.name === 'SafeString') || isHTMLSafe(arg);
 }
+
+export const ALLOWED_FEEDBACK_MESSAGE_TYPES = ['error', 'warning', 'success'];

@@ -9,7 +9,7 @@
       {{on "click" this.triggerFileBrowser}}
       {{on "mouseenter" this._mouseEnter}}
       {{on "mouseleave" this._mouseLeave}}
-      {{did-insert this.init}}
+      {{did-insert this.onInit}}
       ...attributes
     >
       <div class="fx-gap-px-18 fx-xalign-center {{if (eq this.size 'lg') 'fx-col' 'fx-row fx-1'}}">
@@ -70,7 +70,9 @@
   {{/if}}
 
   <input type="file" {{on "change" this.onFileSelected}} {{did-insert this.assignFileInput}} />
-  {{#if this.hasFeedbackMessageValue}}
-    <span class="fx-row font-color-error-500 padding-top-px-6">{{@feedbackMessage.value}}</span>
+  {{#if @feedbackMessage.value}}
+    <span class={{concat "fx-row font-color-" @feedbackMessage.type "-500 padding-top-px-6"}}>
+      {{@feedbackMessage.value}}
+    </span>
   {{/if}}
 </div>
