@@ -1,6 +1,6 @@
 <OSS::Anchor
   @link={{@link}}
-  @engine={{@engine}}
+  @routePrefix={{@routePrefix}}
   class={{this.computedClasses}}
   disabled={{this.locked}}
   {{on "click" this.onClick}}
@@ -23,7 +23,7 @@
     </div>
   {{/if}}
 
-  <div class={{concat "oss-sidebar-item__label" (unless @icon " oss-sidebar-item__label__no-icon")}}>
+  <div class={{concat "oss-sidebar-item__label" (unless @icon " oss-sidebar-item__label--no-icon")}}>
     {{@label}}
   </div>
 
