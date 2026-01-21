@@ -236,7 +236,7 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
         `);
         await assert
           .tooltip('[data-control-name="upload-item-edit-button"]')
-          .hasTitle(this.intl.t('oss-components.upload_item.tooltips.edit'));
+          .hasTitle(this.intl.t('oss-components.upload-area.tooltips.edit'));
       });
     });
 
@@ -265,7 +265,7 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
         `);
         await assert
           .tooltip('[data-control-name="upload-item-view-button"]')
-          .hasTitle(this.intl.t('oss-components.upload_item.tooltips.view'));
+          .hasTitle(this.intl.t('oss-components.upload-area.tooltips.view'));
       });
     });
 
@@ -292,7 +292,7 @@ module('Integration | Component | o-s-s/upload-item', function (hooks) {
         `);
         await assert
           .tooltip('[data-control-name="upload-item-remove-button"]')
-          .hasTitle(this.intl.t('oss-components.upload_item.tooltips.delete'));
+          .hasTitle(this.intl.t('oss-components.upload-area.tooltips.delete'));
       });
     });
   });

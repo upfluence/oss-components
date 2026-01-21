@@ -70,9 +70,9 @@
   {{/if}}
 
   <input type="file" {{on "change" this.onFileSelected}} {{did-insert this.assignFileInput}} />
-  {{#if @feedbackMessage.value}}
-    <span class={{concat "fx-row font-color-" @feedbackMessage.type "-500 padding-top-px-6"}}>
-      {{@feedbackMessage.value}}
+  {{#if this.feedbackMessage.value}}
+    <span class={{concat "fx-row font-color-" this.feedbackMessage.type "-500 padding-top-px-6"}}>
+      {{this.feedbackMessage.value}}
     </span>
   {{/if}}
 </div>
