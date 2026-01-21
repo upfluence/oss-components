@@ -45,14 +45,14 @@
             @square={{true}}
             data-control-name="upload-item-edit-button"
             {{on "click" @onEdition}}
-            {{enable-tooltip title=(t "oss-components.upload_item.tooltips.edit") placement="top"}}
+            {{enable-tooltip title=(t "oss-components.upload-area.tooltips.edit") placement="top"}}
           />
           <OSS::Button
             @icon="far fa-eye"
             @square={{true}}
             data-control-name="upload-item-view-button"
             {{on "click" (redirect-to url=this.fileUrl target="_blank")}}
-            {{enable-tooltip title=(t "oss-components.upload_item.tooltips.view")}}
+            {{enable-tooltip title=(t "oss-components.upload-area.tooltips.view")}}
           />
         {{/if}}
 
@@ -61,7 +61,7 @@
           @square={{true}}
           data-control-name="upload-item-remove-button"
           {{on "click" @onDeletion}}
-          {{enable-tooltip title=(t "oss-components.upload_item.tooltips.delete") placement="top"}}
+          {{enable-tooltip title=(t "oss-components.upload-area.tooltips.delete") placement="top"}}
         />
       {{/if}}
     </div>
