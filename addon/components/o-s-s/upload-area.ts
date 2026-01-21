@@ -77,7 +77,7 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
       classes.push('oss-upload-area--disabled');
     }
 
-    if (ALLOWED_FEEDBACK_MESSAGE_TYPES.includes(this.feedbackMessage?.type ?? 'invalid')) {
+    if (this.feedbackMessage?.type && ALLOWED_FEEDBACK_MESSAGE_TYPES.includes(this.feedbackMessage.type)) {
       classes.push(`oss-upload-area--${this.feedbackMessage?.type}`);
     }
 
