@@ -1,6 +1,6 @@
 import { hbs } from 'ember-cli-htmlbars';
 import { action } from '@storybook/addon-actions';
-import { MockUploader } from 'dummy/controllers/application';
+import { MockUploader } from 'dummy/controllers/extra';
 
 const PrivacyTypes = ['public', 'private'];
 const SizeTypes = ['md', 'lg'];
@@ -238,6 +238,14 @@ const DefaultUsageTemplate = (args) => ({
 export const Default = DefaultUsageTemplate.bind({});
 Default.args = defaultArgs;
 
+export const WithFeedbackMessage = DefaultUsageTemplate.bind({});
+WithFeedbackMessage.args = {
+  ...defaultArgs,
+  ...{
+    feedbackMessage: { type: 'error', value: 'File size exceeds the maximum allowed limit' }
+  }
+};
+
 export const SingleWithArtifact = DefaultUsageTemplate.bind({});
 SingleWithArtifact.args = {
   ...defaultArgs,
@@ -253,30 +261,5 @@ MultipleWithArtifact.args = {
     multiple: true,
     size: 'lg',
     artifact: defaultArtifact
-  }
-};
-
-export const WithErrorFeedback = DefaultUsageTemplate.bind({});
-WithErrorFeedback.args = {
-  ...defaultArgs,
-  ...{
-    feedbackMessage: { type: 'error', value: 'File size exceeds the maximum allowed limit' }
-  }
-};
-
-export const WithWarningFeedback = DefaultUsageTemplate.bind({});
-WithWarningFeedback.args = {
-  ...defaultArgs,
-  ...{
-    feedbackMessage: { type: 'warning', value: 'This file format may not be supported on all devices' }
-  }
-};
-
-export const WithSuccessFeedback = DefaultUsageTemplate.bind({});
-WithSuccessFeedback.args = {
-  ...defaultArgs,
-  ...{
-    artifact: defaultArtifact,
-    feedbackMessage: { type: 'success', value: 'File uploaded successfully' }
   }
 };

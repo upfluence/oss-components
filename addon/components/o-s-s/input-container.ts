@@ -2,7 +2,7 @@ import { action } from '@ember/object';
 import { next } from '@ember/runloop';
 import Component from '@glimmer/component';
 
-import type { FeedbackMessage } from '@upfluence/oss-components/types/utils';
+import type { FeedbackMessage } from '@upfluence/oss-components/types';
 import { ALLOWED_FEEDBACK_MESSAGE_TYPES } from '@upfluence/oss-components/utils';
 
 export type { FeedbackMessage };
