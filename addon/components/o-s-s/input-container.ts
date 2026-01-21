@@ -2,14 +2,7 @@ import { action } from '@ember/object';
 import { next } from '@ember/runloop';
 import Component from '@glimmer/component';
 
-export const FEEDBACK_TYPES = ['error', 'warning', 'success'] as const;
-export type FeedbackType = (typeof FEEDBACK_TYPES)[number];
-
-export type FeedbackMessage = {
-  type: FeedbackType;
-  value: string;
-};
-import type { FeedbackMessage } from '@upfluence/oss-components/types/utils';
+import type { FeedbackMessage } from '@upfluence/oss-components/types';
 import { ALLOWED_FEEDBACK_MESSAGE_TYPES } from '@upfluence/oss-components/utils';
 
 export type { FeedbackMessage };
