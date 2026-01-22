@@ -23,6 +23,16 @@ const FAKE_DATA = [
   { name: 'Wolverine', characters: 'James Howlett' }
 ];
 
+const FAKE_DATA_GROUPED = [
+  { name: 'banana', label: 'banana', groupKey: 'fruit' },
+  { name: 'lettuce', label: 'lettuce', groupKey: 'vegetable' },
+  { name: 'orange', label: 'orange', groupKey: 'fruit' },
+  { name: 'carrot', label: 'carrot', groupKey: 'vegetable' },
+  { name: 'apple', label: 'apple', groupKey: 'fruit' },
+  { name: 'spinach', label: 'spinach', groupKey: 'vegetable' },
+  { name: 'other', label: 'other' }
+];
+
 module('Integration | Component | o-s-s/infinite-select', function (hooks) {
   setupRenderingTest(hooks);
   setupIntl(hooks);
@@ -508,4 +518,73 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
       });
     });
   });
+
+  module('When data has groupKey', function (hooks) {
+    hooks.beforeEach(function () {
+      this.items = FAKE_DATA_GROUPED;
+      this.onSelect = () => {};
+    });
+
+    test('For each different groupKey, a group is created', async function (assert) {
+      await renderGrouped();
+
+      assert.dom('.upf-infinite-select__items-container ul').exists({ count: 3 });
+      assert
+        .dom('.upf-infinite-select__items-container ul:nth-of-type(1)')
+        .hasAttribute('data-control-name', 'infinite-select-group-fruit');
+      assert
+        .dom('.upf-infinite-select__items-container ul:nth-of-type(2)')
+        .hasAttribute('data-control-name', 'infinite-select-group-vegetable');
+      assert
+        .dom('.upf-infinite-select__items-container ul:nth-of-type(3)')
+        .hasAttribute('data-control-name', 'infinite-select-group-_ungrouped_');
+    });
+
+    test('Items are placed in their respective group', async function (assert) {
+      await renderGrouped();
+
+      const groupFruitItems = Array.from(
+        document.querySelectorAll('.upf-infinite-select__items-container ul:nth-of-type(1) .upf-infinite-select__item')
+      ).map((el) => el.textContent.trim());
+      const groupVegetableItems = Array.from(
+        document.querySelectorAll('.upf-infinite-select__items-container ul:nth-of-type(2) .upf-infinite-select__item')
+      ).map((el) => el.textContent.trim());
+      const groupUngroupedItems = Array.from(
+        document.querySelectorAll('.upf-infinite-select__items-container ul:nth-of-type(3) .upf-infinite-select__item')
+      ).map((el) => el.textContent.trim());
+
+      assert.deepEqual(groupFruitItems, ['banana', 'orange', 'apple']);
+      assert.deepEqual(groupVegetableItems, ['lettuce', 'carrot', 'spinach']);
+      assert.deepEqual(groupUngroupedItems, ['other']);
+    });
+
+    module('Separators', function () {
+      test('A separator is rendered between each group', async function (assert) {
+        await renderGrouped();
+
+        assert.dom('.upf-infinite-select__items-container hr.group-separator').exists({ count: 2 });
+      });
+
+      test('There is no separator after the last group', async function (assert) {
+        await renderGrouped();
+
+        assert.dom('.upf-infinite-select__items-container ul:last-of-type + hr.group-separator').doesNotExist();
+      });
+    });
+  });
+
+  async function renderGrouped(): Promise<void> {
+    await render(
+      hbs`<OSS::InfiniteSelect
+            @items={{this.items}}
+            @searchEnabled={{false}}
+            @onSelect={{this.onSelect}}
+          >
+            <:option as |item index|>
+              <div class="index">{{item.label}}</div>
+            </:option>
+          </OSS::InfiniteSelect>
+        `
+    );
+  }
 });

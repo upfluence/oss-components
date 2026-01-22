@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { assert } from '@ember/debug';
 import { action } from '@ember/object';
+import { helper } from '@ember/component/helper';
 
 import { guidFor } from '@ember/object/internals';
 import type { SkinType } from './button';
@@ -35,6 +36,11 @@ interface InfiniteSelectArgs {
 
 type InfinityItem = {
   selected: boolean;
+  groupKey?: string;
+};
+
+type InfinityItemByGroup = {
+  [key: string]: InfinityItem[];
 };
 
 const DEFAULT_ITEM_LABEL = 'name';
@@ -56,6 +62,28 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
     );
 
     assert('[component][OSS::InfiniteSelect] `onSelect` action is mandatory', typeof this.args.onSelect === 'function');
+  }
+
+  findItemIndex = helper((_, { item }: { item: InfinityItem }): number => {
+    return Object.values(this.groups)
+      .flat()
+      .findIndex((element) => element === item);
+  });
+
+  get groups(): InfinityItemByGroup {
+    return this.args.items?.reduce((groups, item) => {
+      const groupKey = item?.groupKey ?? '_ungrouped_';
+      if (!groups[groupKey]) {
+        groups[groupKey] = [];
+      }
+      groups[groupKey]?.push(item);
+
+      return groups;
+    }, {} as InfinityItemByGroup);
+  }
+
+  get lastKey(): string | undefined {
+    return Object.keys(this.groups).slice(-1)[0];
   }
 
   get enableKeyboard(): boolean {
@@ -170,7 +198,7 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   }
 
   @action
-  handleItemHover(index: number): void {
+  handleItemHover(index: number, event: MouseEvent): void {
     if (document.activeElement === this.searchInput) {
       return;
     }

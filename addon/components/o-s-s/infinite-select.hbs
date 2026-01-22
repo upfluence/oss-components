@@ -28,25 +28,34 @@
       {{#if (and @loading (not @loadingMore))}}
         <OSS::Skeleton @width="100%" @height="18" @multiple={{5}} @direction="col" />
       {{else}}
-        {{#each this.items as |item index|}}
-          <li
-            class="upf-infinite-select__item
-              {{if
-                (and (eq index this._focusElement) this.focusStylesDisabled)
-                ' upf-infinite-select__item--disabled-focus'
-              }}"
-            role="button"
-            {{on "mouseenter" (fn this.handleItemHover index)}}
-            {{on "mouseleave" this.clearHoverState}}
-            {{on "click" (fn this.didSelectItem item)}}
-            tabindex="0"
-          >
-            {{#if (has-block "option")}}
-              {{yield item index to="option"}}
-            {{else}}
-              {{get item this.itemLabel}}
+        {{#each-in this.groups as |groupKey items|}}
+          <ul class="group-container" data-control-name="infinite-select-group-{{groupKey}}">
+            {{#each items as |item|}}
+              {{#let (this.findItemIndex item=item) as |index|}}
+                <li
+                  class="upf-infinite-select__item
+                    {{if
+                      (and (eq index this._focusElement) this.focusStylesDisabled)
+                      ' upf-infinite-select__item--disabled-focus'
+                    }}"
+                  role="button"
+                  {{on "mouseenter" (fn this.handleItemHover index)}}
+                  {{on "mouseleave" this.clearHoverState}}
+                  {{on "click" (fn this.didSelectItem item)}}
+                  tabindex="0"
+                >
+                  {{#if (has-block "option")}}
+                    {{yield item index to="option"}}
+                  {{else}}
+                    {{get item this.itemLabel}}
+                  {{/if}}
+                </li>
+              {{/let}}
+            {{/each}}
+            {{#if (not-eq groupKey this.lastKey)}}
+              <hr class="group-separator" />
             {{/if}}
-          </li>
+          </ul>
         {{else}}
           <div class="fx-col fx-xalign-center">
             {{#if (has-block "empty-state")}}
@@ -68,8 +77,7 @@
               </div>
             {{/if}}
           </div>
-        {{/each}}
-
+        {{/each-in}}
         {{#if @loadingMore}}
           <OSS::Skeleton @width="100%" @height="18" @multiple={{3}} @direction="col" />
         {{/if}}
