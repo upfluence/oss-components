@@ -1,7 +1,6 @@
 <div class="oss-upload-item {{if this.error 'oss-upload-item--errored'}}">
   {{#if this.shouldDisplayPreview}}
-    <div class="upf-badge upf-badge--shape-round upf-badge--size-md"
-         style={{this.dynamicBackgroundImage}}></div>
+    <div class="upf-badge upf-badge--shape-round upf-badge--size-md" style={{this.dynamicBackgroundImage}}></div>
   {{else}}
     <OSS::Badge @icon={{this.icon}} />
   {{/if}}
@@ -31,28 +30,39 @@
         </div>
       {{else}}
         {{#if this.error}}
-          <span class="fx-row fx-gap-px-6 font-color-gray-500 fx-xalign-center" role="button"
-                data-control-name="upload-item-try-again-button" {{on "click" this.performUpload}}>
-            <OSS::Icon @icon="fa-redo" /> {{t "oss-components.upload-area.errors.try_again"}}
+          <span
+            class="fx-row fx-gap-px-6 font-color-gray-500 fx-xalign-center"
+            role="button"
+            data-control-name="upload-item-try-again-button"
+            {{on "click" this.performUpload}}
+          >
+            <OSS::Icon @icon="fa-redo" />
+            {{t "oss-components.upload-area.errors.try_again"}}
           </span>
         {{else}}
           <OSS::Button
             @icon="far fa-pen"
             @square={{true}}
             data-control-name="upload-item-edit-button"
-            {{on "click" @onEdition}} />
+            {{on "click" @onEdition}}
+            {{enable-tooltip title=(t "oss-components.upload-area.tooltips.edit") placement="top"}}
+          />
           <OSS::Button
             @icon="far fa-eye"
             @square={{true}}
             data-control-name="upload-item-view-button"
-            {{on "click" (redirect-to url=this.fileUrl target="_blank")}} />
+            {{on "click" (redirect-to url=this.fileUrl target="_blank")}}
+            {{enable-tooltip title=(t "oss-components.upload-area.tooltips.view")}}
+          />
         {{/if}}
 
         <OSS::Button
           @icon="far fa-trash"
           @square={{true}}
           data-control-name="upload-item-remove-button"
-          {{on "click" @onDeletion}} />
+          {{on "click" @onDeletion}}
+          {{enable-tooltip title=(t "oss-components.upload-area.tooltips.delete") placement="top"}}
+        />
       {{/if}}
     </div>
   </div>

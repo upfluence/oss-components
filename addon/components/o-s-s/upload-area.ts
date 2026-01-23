@@ -14,6 +14,9 @@ import {
   type FailedUploadResponse,
   FilePrivacy
 } from '@upfluence/oss-components/types/uploader';
+import type { FeedbackMessage } from '@upfluence/oss-components/components/o-s-s/input-container';
+import { isBlank } from '@ember/utils';
+import { ALLOWED_FEEDBACK_MESSAGE_TYPES } from '@upfluence/oss-components/utils';
 
 interface OSSUploadAreaArgs {
   uploader: Uploader;
@@ -26,6 +29,7 @@ interface OSSUploadAreaArgs {
   size?: 'lg' | 'md';
   multiple?: boolean;
   displayPreview?: boolean;
+  feedbackMessage?: FeedbackMessage;
 
   onUploadSuccess(artifact: FileArtifact): void;
   onUploadFailure?(error: FailedUploadResponse): void;
@@ -52,6 +56,7 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   @tracked dragging: boolean = false;
   @tracked hover: boolean = false;
   @tracked alreadyTriggerAnimation: boolean = false;
+  @tracked localFeedbackMessage?: FeedbackMessage;
 
   constructor(owner: unknown, args: OSSUploadAreaArgs) {
     super(owner, args);
@@ -70,6 +75,10 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
 
     if (this.args.disabled) {
       classes.push('oss-upload-area--disabled');
+    }
+
+    if (this.feedbackMessage?.type && ALLOWED_FEEDBACK_MESSAGE_TYPES.includes(this.feedbackMessage.type)) {
+      classes.push(`oss-upload-area--${this.feedbackMessage?.type}`);
     }
 
     if (this.dragging) {
@@ -112,8 +121,16 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
     return this.multiple || this.selectedFiles.length === 0;
   }
 
+  get hasFeedbackMessageValue(): boolean {
+    return !isBlank(this.args.feedbackMessage?.value);
+  }
+
+  get feedbackMessage(): FeedbackMessage | undefined {
+    return this.args.feedbackMessage ?? this.localFeedbackMessage;
+  }
+
   @action
-  init(element: HTMLElement): void {
+  onInit(element: HTMLElement): void {
     this._DOMElement = element;
   }
 
@@ -198,7 +215,7 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
 
     if (this.multiple) {
       this.selectedFiles.splice(index, 1);
-      this.selectedFiles = this.selectedFiles;
+      this.selectedFiles = [...this.selectedFiles];
       this.args.onFileDeletion?.(index);
     } else {
       this.selectedFiles = [];
@@ -225,7 +242,9 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
   }
 
   private _handleFileUpload(file: File): void {
+    if (this.args.disabled) return;
     this.args.onHandleFileUpload?.();
+    this.localFeedbackMessage = undefined;
     if (this._validateFile(file)) {
       if (this.args.onDryRun) {
         this.args.onDryRun(file);
@@ -234,7 +253,7 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
 
       if (this.editingFileIndex !== undefined) {
         this.selectedFiles[this.editingFileIndex] = file;
-        this.selectedFiles = this.selectedFiles;
+        this.selectedFiles = [...this.selectedFiles];
         this.editingFileIndex = undefined;
       } else {
         this.selectedFiles = [...this.selectedFiles, ...[file]];
@@ -263,6 +282,11 @@ export default class OSSUploadArea extends Component<OSSUploadAreaArgs> {
         if (v.rule.type === 'filesize') {
           intlArgs.max_filesize = v.rule.value;
         }
+
+        this.localFeedbackMessage = {
+          type: 'error',
+          value: this.intl.t(`oss-components.upload-area.errors.${v.rule.type}.feedback`, intlArgs)
+        };
 
         this.toast.error(
           this.intl.t(`oss-components.upload-area.errors.${v.rule.type}.description`, intlArgs),

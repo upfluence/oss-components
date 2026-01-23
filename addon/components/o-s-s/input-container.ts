@@ -2,10 +2,10 @@ import { action } from '@ember/object';
 import { next } from '@ember/runloop';
 import Component from '@glimmer/component';
 
-export type FeedbackMessage = {
-  type: 'error' | 'warning' | 'success';
-  value: string;
-};
+import type { FeedbackMessage } from '@upfluence/oss-components/types';
+import { ALLOWED_FEEDBACK_MESSAGE_TYPES } from '@upfluence/oss-components/utils';
+
+export type { FeedbackMessage };
 
 export interface OSSInputContainerArgs {
   value?: string;
@@ -23,7 +23,7 @@ export const AutocompleteValues = ['on', 'off'];
 
 export default class OSSInputContainer<T extends OSSInputContainerArgs> extends Component<T> {
   get feedbackMessage(): FeedbackMessage | undefined {
-    if (this.args.feedbackMessage && ['error', 'warning', 'success'].includes(this.args.feedbackMessage.type)) {
+    if (this.args.feedbackMessage && ALLOWED_FEEDBACK_MESSAGE_TYPES.includes(this.args.feedbackMessage.type)) {
       return this.args.feedbackMessage;
     }
 
