@@ -20,21 +20,37 @@ module('Integration | Component | o-s-s/anchor', function (hooks) {
     assert.dom('a').hasAttribute('href', 'http://www.google.fr');
   });
 
-  test('When routePrefix is defined, it renders as a linkTo helper', async function (assert) {
-    const urlForStub = sinon.stub(this.router, 'urlFor').returns('/display');
-    await render(hbs`<OSS::Anchor @link="index" @routePrefix="display">test</OSS::Anchor>`);
+  module('When link is registered in router', function () {
+    test('When routePrefix is defined, it renders as a linkTo helper', async function (assert) {
+      const urlForStub = sinon.stub(this.router, 'urlFor').returns('/display');
+      await render(hbs`<OSS::Anchor @link="index" @routePrefix="display">test</OSS::Anchor>`);
 
-    assert.ok(urlForStub.calledWithExactly('display.index'));
-    assert.dom('a').hasClass('ember-view');
-    assert.dom('a').hasAttribute('href', '/');
-  });
+      assert.ok(urlForStub.calledWithExactly('display.index'));
+      assert.dom('a').hasClass('ember-view');
+      assert.dom('a').hasAttribute('href', '/');
+    });
 
-  test('When link is registered in router it renders as a linkTo helper', async function (assert) {
-    const urlForSpy = sinon.spy(this.router, 'urlFor');
-    await render(hbs`<OSS::Anchor @link="index">test</OSS::Anchor>`);
+    test('It renders as a linkTo helper', async function (assert) {
+      const urlForSpy = sinon.spy(this.router, 'urlFor');
+      await render(hbs`<OSS::Anchor @link="index">test</OSS::Anchor>`);
 
-    assert.ok(urlForSpy.calledWithExactly('index'));
-    assert.dom('a').hasClass('ember-view');
-    assert.dom('a').hasAttribute('href', '/');
+      assert.ok(urlForSpy.calledWithExactly('index'));
+      assert.dom('a').hasClass('ember-view');
+      assert.dom('a').hasAttribute('href', '/');
+    });
+
+    test('It renders as active by default', async function (assert) {
+      await render(hbs`<OSS::Anchor @link="index">test</OSS::Anchor>`);
+
+      assert.dom('a').hasClass('ember-view');
+      assert.dom('a').hasClass('active');
+    });
+
+    test('When disableAutoActive is true, it does not render as active', async function (assert) {
+      await render(hbs`<OSS::Anchor @link="index">test</OSS::Anchor>`);
+
+      assert.dom('a').hasClass('ember-view');
+      assert.dom('a').doesNotHaveClass('active');
+    });
   });
 });
