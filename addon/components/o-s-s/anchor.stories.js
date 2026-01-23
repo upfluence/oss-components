@@ -24,6 +24,16 @@ export default {
       },
       control: { type: 'text' }
     },
+    disableAutoActive: {
+      description: 'Disables automatic active state based on current route',
+      table: {
+        type: { summary: 'boolean' },
+        defaultValue: { summary: 'false' }
+      },
+      control: {
+        type: 'boolean'
+      }
+    },
     noreferrer: {
       description: 'Enables the noreferrer rel attribute',
       table: {
@@ -66,6 +76,7 @@ const DefaultUsageTemplate = (args) => ({
 export const BasicUsage = DefaultUsageTemplate.bind({});
 BasicUsage.args = {
   link: 'https://www.upfluence.com',
+  disableAutoActive: false,
   noopener: true,
   noreferrer: true
 };
