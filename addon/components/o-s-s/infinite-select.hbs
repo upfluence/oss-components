@@ -29,7 +29,7 @@
         <OSS::Skeleton @width="100%" @height="18" @multiple={{5}} @direction="col" />
       {{else}}
         {{#each-in this.groups as |groupKey items|}}
-          <ul class="group-container" data-control-name="infinite-select-group-{{groupKey}}">
+          <ul class="group-container" data-control-name={{concat "infinite-select-group-" groupKey}}>
             {{#each items as |item|}}
               {{#let (this.findItemIndex item=item) as |index|}}
                 <li

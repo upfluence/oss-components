@@ -583,8 +583,7 @@ module('Integration | Component | o-s-s/infinite-select', function (hooks) {
             <:option as |item index|>
               <div class="index">{{item.label}}</div>
             </:option>
-          </OSS::InfiniteSelect>
-        `
+          </OSS::InfiniteSelect>`
     );
   }
 });

@@ -39,9 +39,7 @@ type InfinityItem = {
   groupKey?: string;
 };
 
-type InfinityItemByGroup = {
-  [key: string]: InfinityItem[];
-};
+type InfinityItemByGroup = Record<string, InfinityItem[]>;
 
 const DEFAULT_ITEM_LABEL = 'name';
 
@@ -71,15 +69,16 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   });
 
   get groups(): InfinityItemByGroup {
-    return this.args.items?.reduce((groups, item) => {
-      const groupKey = item?.groupKey ?? '_ungrouped_';
+    return (this.args.items ?? []).reduce<InfinityItemByGroup>((groups, item) => {
+      const groupKey = item.groupKey ?? '_ungrouped_';
       if (!groups[groupKey]) {
         groups[groupKey] = [];
       }
-      groups[groupKey]?.push(item);
+
+      groups[groupKey]!.push(item);
 
       return groups;
-    }, {} as InfinityItemByGroup);
+    }, {});
   }
 
   get lastKey(): string | undefined {
