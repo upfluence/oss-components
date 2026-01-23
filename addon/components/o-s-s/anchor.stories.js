@@ -14,6 +14,16 @@ export default {
       },
       control: { type: 'text' }
     },
+    routePrefix: {
+      description: 'Optional route prefix (engine) name to use for routing',
+      table: {
+        type: {
+          summary: 'string'
+        },
+        defaultValue: { summary: '' }
+      },
+      control: { type: 'text' }
+    },
     noreferrer: {
       description: 'Enables the noreferrer rel attribute',
       table: {
