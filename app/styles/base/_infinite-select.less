@@ -5,6 +5,16 @@
   ul {
     padding: 0;
   }
+
+  ul.group-container {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-px-3);
+  }
+
+  hr.group-separator {
+    margin: 0 var(--spacing-px-12);
+  }
 }
 
 .upf-infinite-select--absolute {
@@ -20,14 +30,13 @@
   margin: 0;
   overflow: hidden auto;
   overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-px-6);
 }
 
 .upf-infinite-select__item {
   .upf-floating-menu__item;
-
-  &:not(:first-child) {
-    margin-top: var(--spacing-px-3);
-  }
 
   &:hover {
     background-color: var(--color-gray-100);
