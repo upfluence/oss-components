@@ -26,9 +26,15 @@ export default class Input extends Controller {
     'Black Panther',
     'Captain Marvel'
   ];
-  @tracked items: { name: string; label: string }[] = [
+  @tracked items: { name: string; label: string; groupKey?: string }[] = [
     { name: 'foo', label: 'foo' },
-    { name: 'bar', label: 'bar' }
+    { name: 'bar', label: 'bar' },
+    { name: 'banana', label: 'banana', groupKey: 'fruit' },
+    { name: 'lettuce', label: 'lettuce', groupKey: 'vegetable' },
+    { name: 'orange', label: 'orange', groupKey: 'fruit' },
+    { name: 'carrot', label: 'carrot', groupKey: 'vegetable' },
+    { name: 'apple', label: 'apple', groupKey: 'fruit' },
+    { name: 'spinach', label: 'spinach', groupKey: 'vegetable' }
   ];
   @tracked selectedItem: { name: string; label: string } | undefined = this.items[0];
   @tracked emailInputValue: string = '';
