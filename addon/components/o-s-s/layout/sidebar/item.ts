@@ -12,6 +12,7 @@ interface OSSLayoutSidebarItemArgs {
   tag?: Pick<OSSTagArgs, 'label' | 'skin' | 'icon'>;
   expanded?: boolean;
   label?: string;
+  disableAutoActive?: boolean;
   lockedAction?(): void;
   action?(): void;
 }
