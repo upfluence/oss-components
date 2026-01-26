@@ -5,6 +5,8 @@ import { action } from '@ember/object';
 import { countries, type CountryData } from '@upfluence/oss-components/utils/country-codes';
 import type { Feedback, FormInstance } from '@upfluence/oss-components/services/form-manager';
 import { isBlank } from '@ember/utils';
+import type { ContextMenuItem } from '@upfluence/oss-components/components/o-s-s/context-menu/panel';
+import { ensureSafeComponent } from '@embroider/util';
 
 export default class Input extends Controller {
   @tracked shopUrl: string = '';
@@ -49,6 +51,204 @@ export default class Input extends Controller {
   @tracked currencyOnly: string = '';
   @tracked formInstance?: FormInstance;
   @tracked formFieldValue: string = '';
+
+  @tracked declare referenceTarget: HTMLElement;
+  @tracked declare contextMenuPanel: HTMLElement;
+  @tracked displayContextMenuPanel: boolean = false;
+
+  subMenu2 = [
+    {
+      icon: { icon: 'fa-arrow-progress' },
+      title: 'First',
+      action: () => {
+        console.log('click on first');
+      }
+    },
+    {
+      icon: { icon: 'fa-arrow-progress' },
+      title: 'Second',
+      action: () => {
+        console.log('click on second');
+      }
+    },
+    {
+      icon: { icon: 'fa-arrow-progress' },
+      title: 'Third',
+      action: () => {
+        console.log('click on third');
+      }
+    }
+  ];
+
+  subMenu1 = [
+    {
+      icon: { icon: 'fa-arrow-progress' },
+      title: 'First sub action',
+      items: this.subMenu2,
+      groupKey: 'actions',
+      action: () => {
+        console.log('click on first');
+      }
+    },
+    {
+      prefixIcon: { icon: 'fa-arrow-progress' },
+      title: 'Second sub action',
+      items: this.subMenu2,
+      groupKey: 'other',
+      action: () => {
+        console.log('click on second');
+      }
+    },
+    {
+      icon: { icon: 'fa-arrow-progress' },
+      title: 'Other',
+      groupKey: 'other',
+      action: () => {
+        console.log('click on other');
+      }
+    },
+    {
+      icon: { icon: 'fa-arrow-progress' },
+      title: 'Other',
+      groupKey: 'other',
+      action: () => {
+        console.log('click on other');
+      }
+    },
+    {
+      icon: { icon: 'fa-arrow-progress' },
+      title: 'Other',
+      groupKey: 'other',
+      action: () => {
+        console.log('click on other');
+      }
+    },
+    {
+      icon: { icon: 'fa-arrow-progress' },
+      title: 'Other',
+      groupKey: 'other',
+      action: () => {
+        console.log('click on other');
+      }
+    },
+    {
+      icon: { icon: 'fa-arrow-progress' },
+      title: 'Other',
+      groupKey: 'other',
+      action: () => {
+        console.log('click on other');
+      }
+    },
+    {
+      icon: { icon: 'fa-arrow-progress' },
+      title: 'Other',
+      groupKey: 'other',
+      action: () => {
+        console.log('click on other');
+      }
+    },
+    {
+      icon: { icon: 'fa-arrow-progress' },
+      title: 'Other',
+      groupKey: 'other',
+      action: () => {
+        console.log('click on other');
+      }
+    },
+    {
+      icon: { icon: 'fa-arrow-progress' },
+      title: 'Other',
+      groupKey: 'other',
+      action: () => {
+        console.log('click on other');
+      }
+    },
+    {
+      icon: { icon: 'fa-arrow-progress' },
+      title: 'Other',
+      groupKey: 'other',
+      action: () => {
+        console.log('click on other');
+      }
+    },
+    {
+      icon: { icon: 'fa-arrow-progress' },
+      title: 'Other',
+      groupKey: 'other',
+      action: () => {
+        console.log('click on other');
+      }
+    },
+    {
+      icon: { icon: 'fa-arrow-progress' },
+      title: 'Other',
+      groupKey: 'other',
+      action: () => {
+        console.log('click on other');
+      }
+    },
+    {
+      icon: { icon: 'fa-arrow-progress' },
+      title: 'Other',
+      groupKey: 'other',
+      action: () => {
+        console.log('click on other');
+      }
+    },
+    {
+      icon: { icon: 'fa-arrow-progress' },
+      title: 'Other',
+      groupKey: 'other',
+      action: () => {
+        console.log('click on other');
+      }
+    },
+    {
+      icon: { icon: 'fa-arrow-progress' },
+      title: 'Other',
+      groupKey: 'other',
+      action: () => {
+        console.log('click on other');
+      }
+    }
+  ];
+
+  @tracked customContextMenuItems: ContextMenuItem[] = [
+    {
+      prefixIcon: { icon: 'fa-arrow-progress' },
+      title: 'Move to next step',
+      items: this.subMenu1,
+      groupKey: 'actions',
+      action: () => {
+        console.log('click on move to next step');
+      }
+    },
+    {
+      prefixIcon: { icon: 'fa-paper-plane' },
+      title: 'Direct action',
+      groupKey: 'actions',
+      action: () => {
+        console.log('click on direct action');
+      }
+    },
+    {
+      prefixIcon: { icon: 'fa-paper-plane' },
+      title: 'Custom action',
+      groupKey: 'custom',
+      rowRenderer: ensureSafeComponent('panel/example-row', this),
+      action: () => {
+        console.log('click on direct action');
+      }
+    },
+    {
+      prefixIcon: { icon: 'fa-trash' },
+      title: 'Delete',
+      groupKey: 'overall',
+      action: () => {
+        console.log('click on delete');
+      }
+    }
+  ];
 
   countries: CountryData[] = countries;
   allowedCurrencies: { code: string; symbol: string }[] = [
@@ -177,5 +377,28 @@ export default class Input extends Controller {
   @action
   onInfiniteSelectOptionChange(value: boolean): void {
     console.log('Infinite select option changed', value);
+  }
+
+  @action
+  registerMenuTrigger(element: HTMLElement): void {
+    this.referenceTarget = element;
+  }
+
+  @action
+  toggleContextMenuPanel(): void {
+    this.displayContextMenuPanel = !this.displayContextMenuPanel;
+  }
+
+  @action
+  onContextMenuPanelMouseLeave(event: MouseEvent): void {
+    if (this.referenceTarget && this.referenceTarget.contains(event.relatedTarget as HTMLElement)) {
+      return;
+    }
+    this.displayContextMenuPanel = false;
+  }
+
+  @action
+  registerContextMenuPanel(element: HTMLElement): void {
+    this.contextMenuPanel = element;
   }
 }
