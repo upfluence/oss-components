@@ -1,0 +1,76 @@
+<div {{did-insert this.registerPanelContainer}}>
+  {{#if this.isInitialized}}
+    {{#in-element this.portalTarget insertBefore=null}}
+      <OSS::InfiniteSelect
+        @items={{@items}}
+        @searchEnabled={{false}}
+        @onSelect={{this.noop}}
+        @onClose={{this.closeDropdown}}
+        @enableKeyboard={{true}}
+        id={{this.portalId}}
+        class="margin-top-px-0 test"
+        {{on-click-outside this.onClickOutside}}
+        {{on "click" this.noop}}
+        {{did-insert this.registerPanel}}
+        {{on "scroll" this.onScroll}}
+        {{on "mouseleave" this.mouseLeave}}
+        ...attributes
+      >
+        <:option as |item index|>
+          {{#if item.items}}
+            <OSS::InfiniteSelect::Option
+              @prefixAvatar={{item.prefixAvatar}}
+              @prefixBadge={{item.prefixBadge}}
+              @prefixIcon={{item.prefixIcon}}
+              @prefixCountry={{item.prefixCountry}}
+              @title={{item.title}}
+              @subtitle={{item.subtitle}}
+              @icon={{item.icon}}
+              @suffixHint={{item.suffixHint}}
+              @suffixTag={{item.suffixTag}}
+              @suffixIcon={{or item.suffixIcon (hash icon="fa-chevron-right")}}
+              @selectionType={{item.selectionType}}
+              @selected={{item.selected}}
+              @disabled={{item.disabled}}
+              @onSelect={{item.action}}
+              {{on "mouseenter" (fn this.openSubMenu item.items index)}}
+              {{on "click" (fn this.toggleSubMenu item.items index)}}
+              {{! DATA-HERE TO mark is as triggerable ? }}
+            />
+          {{else if item.rowRenderer}}
+            <item.rowRenderer @item={{item}} />
+          {{else}}
+            <OSS::InfiniteSelect::Option
+              @prefixAvatar={{item.prefixAvatar}}
+              @prefixBadge={{item.prefixBadge}}
+              @prefixIcon={{item.prefixIcon}}
+              @prefixCountry={{item.prefixCountry}}
+              @title={{item.title}}
+              @subtitle={{item.subtitle}}
+              @icon={{item.icon}}
+              @suffixHint={{item.suffixHint}}
+              @suffixTag={{item.suffixTag}}
+              @suffixIcon={{item.suffixIcon}}
+              @selectionType={{item.selectionType}}
+              @selected={{item.selected}}
+              @disabled={{item.disabled}}
+              @onSelect={{item.action}}
+              {{on "mouseenter" this.closeSubMenu}}
+            />
+          {{/if}}
+        </:option>
+      </OSS::InfiniteSelect>
+    {{/in-element}}
+
+    {{#if this.displaySubMenu}}
+      <OSS::ContextMenu::Panel
+        @referenceTarget={{this.subReferenceTarget}}
+        @items={{this.subItems}}
+        @placement="right-start"
+        @offset={{12}}
+        @onMouseLeave={{this.onSubPanelMouseLeave}}
+        {{did-insert this.registerSubPanel}}
+      />
+    {{/if}}
+  {{/if}}
+</div>

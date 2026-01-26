@@ -99,6 +99,31 @@
     class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
   >
     <div class="font-size-md font-weight-semibold">
+      Context menu
+    </div>
+    <div class="fx-row fx-gap-px-24 fx-xalign-start">
+      <OSS::Button
+        @label="toggle menu"
+        {{did-insert this.registerMenuTrigger}}
+        {{on "click" this.toggleContextMenuPanel}}
+      />
+      {{#if this.displayContextMenuPanel}}
+        <OSS::ContextMenu::Panel
+          @referenceTarget={{this.referenceTarget}}
+          @items={{this.customContextMenuItems}}
+          @offset={{12}}
+          @placement="bottom-start"
+          @onMouseLeave={{this.onContextMenuPanelMouseLeave}}
+          {{did-insert this.registerContextMenuPanel}}
+        />
+      {{/if}}
+    </div>
+  </div>
+
+  <div
+    class="fx-col fx-1 background-color-white border border-color-default border-radius-md padding-px-12 fx-gap-px-12"
+  >
+    <div class="font-size-md font-weight-semibold">
       Infinite select
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-start">
