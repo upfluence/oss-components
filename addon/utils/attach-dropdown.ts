@@ -13,7 +13,7 @@ import {
 } from '@floating-ui/dom';
 
 export type AttachmentOptions = {
-  offset?: number;
+  offset?: number | { mainAxis: number; crossAxis: number };
   width?: number;
   maxHeight?: number;
   maxWidth?: number;
