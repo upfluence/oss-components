@@ -62,7 +62,7 @@ export default function attachDropdown(
         }
 
         if (mergedOptions.maxHeight) {
-          floatingStyle.maxHeight = `${floatingStyle.maxHeight}px`;
+          floatingStyle.maxHeight = `${mergedOptions.maxHeight}px`;
           elements.floating.style.setProperty('--floating-max-height', `${mergedOptions.maxHeight}px`);
         }
 

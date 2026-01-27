@@ -8,9 +8,8 @@
         @onClose={{this.closeDropdown}}
         @enableKeyboard={{true}}
         id={{this.portalId}}
-        class="margin-top-px-0 test"
+        class="margin-top-px-0 context-menu-panel__dropdown"
         {{on-click-outside this.onClickOutside}}
-        {{on "click" this.noop}}
         {{did-insert this.registerPanel}}
         {{on "scroll" this.onScroll}}
         {{on "mouseleave" this.mouseLeave}}
@@ -35,7 +34,6 @@
               @onSelect={{item.action}}
               {{on "mouseenter" (fn this.openSubMenu item.items index)}}
               {{on "click" (fn this.toggleSubMenu item.items index)}}
-              {{! DATA-HERE TO mark is as triggerable ? }}
             />
           {{else if item.rowRenderer}}
             <item.rowRenderer @item={{item}} />
@@ -56,6 +54,7 @@
               @disabled={{item.disabled}}
               @onSelect={{item.action}}
               {{on "mouseenter" this.closeSubMenu}}
+              {{on "click" this.closeSubMenu}}
             />
           {{/if}}
         </:option>
@@ -67,7 +66,7 @@
         @referenceTarget={{this.subReferenceTarget}}
         @items={{this.subItems}}
         @placement="right-start"
-        @offset={{12}}
+        @offset={{this.subPanelOffset}}
         @onMouseLeave={{this.onSubPanelMouseLeave}}
         {{did-insert this.registerSubPanel}}
       />
