@@ -66,7 +66,7 @@ export default {
       }
     },
     disableAutoActive: {
-      description: 'Disables automatic active state based on current route',
+      description: 'Disables automatic active state based on current route, managed by Ember by default',
       table: {
         type: { summary: 'boolean' },
         defaultValue: { summary: 'false' }
