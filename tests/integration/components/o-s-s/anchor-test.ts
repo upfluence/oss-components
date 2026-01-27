@@ -33,7 +33,7 @@ module('Integration | Component | o-s-s/anchor', function (hooks) {
       this.routing = this.owner.lookup('service:-routing');
     });
 
-    test('When routePrefix is defined, it renders as a linkTo helper', async function (assert) {
+    test('When routePrefix is defined and an internal route is given, it renders as a linkTo helper', async function (assert) {
       const urlForStub = sinon.stub(this.router, 'urlFor').returns('/display');
       await render(hbs`<OSS::Anchor @link="index" @routePrefix="display">test</OSS::Anchor>`);
 
@@ -42,7 +42,7 @@ module('Integration | Component | o-s-s/anchor', function (hooks) {
       assert.dom('a').hasAttribute('href', '/');
     });
 
-    test('It renders as a linkTo helper', async function (assert) {
+    test('With an internal route, it renders as a linkTo helper', async function (assert) {
       const urlForSpy = sinon.spy(this.router, 'urlFor');
       await render(hbs`<OSS::Anchor @link="index">test</OSS::Anchor>`);
 
@@ -54,7 +54,6 @@ module('Integration | Component | o-s-s/anchor', function (hooks) {
     test('It renders as active by default when on the correct route', async function (assert) {
       this.routing.isActiveForRoute.returns(true);
       await render(hbs`<OSS::Anchor @link="index">test</OSS::Anchor>`);
-      console.log(this.routing.currentState);
 
       assert.dom('a').hasClass('ember-view');
       assert.dom('a').hasClass('active');

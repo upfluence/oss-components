@@ -22,11 +22,7 @@ export default class OSSAnchor extends Component<OSSAnchorArgs> {
   }
 
   get currentWhen(): boolean | undefined {
-    if (this.args.disableAutoActive !== undefined) {
-      return !this.args.disableAutoActive;
-    }
-
-    return undefined;
+    return this.args.disableAutoActive !== undefined ? !this.args.disableAutoActive : undefined;
   }
 
   get rel(): string {
