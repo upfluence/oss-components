@@ -34,6 +34,7 @@ export default setModifierManager(
         if (observedEntry) {
           const hasScrollbar = observedEntry.target.scrollHeight > observedEntry.target.clientHeight;
 
+          console.log('hasScrollbar ??', hasScrollbar);
           if (hasScrollbar && !state.element.classList.contains(SCROLL_SHADOW_CLASS)) {
             window.requestAnimationFrame(() => {
               state.element.classList.add(SCROLL_SHADOW_CLASS, this.colorCSSClass(args.named.color));

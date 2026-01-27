@@ -94,7 +94,7 @@ export default class Input extends Controller {
       prefixIcon: { icon: 'fa-arrow-progress' },
       title: 'Second sub action',
       items: this.subMenu2,
-      groupKey: 'other',
+      groupKey: 'actions',
       action: () => {
         console.log('click on second');
       }
@@ -218,6 +218,7 @@ export default class Input extends Controller {
       prefixIcon: { icon: 'fa-arrow-progress' },
       title: 'Move to next step',
       items: this.subMenu1,
+      // selected: true,
       groupKey: 'actions',
       action: () => {
         console.log('click on move to next step');
@@ -385,7 +386,8 @@ export default class Input extends Controller {
   }
 
   @action
-  toggleContextMenuPanel(): void {
+  toggleContextMenuPanel(event: PointerEvent): void {
+    event.stopPropagation();
     this.displayContextMenuPanel = !this.displayContextMenuPanel;
   }
 

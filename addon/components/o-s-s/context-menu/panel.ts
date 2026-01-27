@@ -7,11 +7,13 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
 
+export const SUBPANEL_OFFSET = -6;
+
 ///////////////////// TODO EXPORT IN PROPER FILE WHEN IMPLEMENTATION IS DONE
 export type ContextMenuItem = {
   items?: ContextMenuItem[];
   groupKey?: string;
-  rowRenderer?: ReturnType<typeof ensureSafeComponent>;
+  rowRenderer?: ReturnType<typeof ensureSafeComponent>; // move to Component
   action: () => void | boolean;
   [key: string]: unknown;
 };
@@ -21,7 +23,7 @@ interface OSSContextMenuPanelComponentSignature {
   items: ContextMenuItem[];
   referenceTarget?: HTMLElement;
   placement: 'bottom-start' | 'right-start';
-  offset: number;
+  offset: number | { mainAxis: number; crossAxis: number };
   onMouseLeave?: (event: MouseEvent) => void;
 }
 
@@ -40,6 +42,11 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
 
   cleanupDrodpownAutoplacement?: () => void;
 
+  subPanelOffset: { mainAxis: number; crossAxis: number } = {
+    mainAxis: 0,
+    crossAxis: SUBPANEL_OFFSET
+  };
+
   constructor(owner: unknown, args: OSSContextMenuPanelComponentSignature) {
     super(owner, args);
   }
@@ -56,7 +63,7 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
           floatingTarget as HTMLElement,
           {
             placement: this.args.placement,
-            offset: { mainAxis: this.args.offset, crossAxis: -12 },
+            offset: this.args.offset,
             width: 250,
             maxHeight: 480
           }
@@ -79,8 +86,8 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
     next(() => {
       this.subItems = items;
       this.displaySubMenu = true;
-      // event.target or // currentTarget etc to focus the proper element on click :)
-      this.subReferenceTarget = event.target as HTMLElement;
+      const parentElement = (event.target as HTMLElement).closest('li[role="button"]') as HTMLElement;
+      this.subReferenceTarget = parentElement ? parentElement : (event.target as HTMLElement);
       this.subReferenceIndex = index;
     });
   }
@@ -104,7 +111,8 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
 
   @action
   onClickOutside(_: HTMLElement, event: MouseEvent): void {
-    console.log('click outside context menu panel');
+    this.clearSubMenu();
+    this.args.onMouseLeave?.(event);
   }
 
   @action
@@ -142,6 +150,4 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
     this.subReferenceTarget = null;
     this.subItems = [];
   }
-
-  // Fix the blink issue when moving the mouse on already opened menu
 }
