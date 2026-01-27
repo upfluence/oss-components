@@ -296,6 +296,24 @@
           </:actions>
         </OSS::Banner>
       </div>
+      <div class="fx-row fx-gap-px-12">
+        <OSS::Banner
+          @title="Error"
+          @subtitle="A banner with a feedback message"
+          @feedbackMessage={{hash type="error" value="This is a feedback message"}}
+        />
+        <OSS::Banner
+          @icon="fas fa-alicorn"
+          @title="Another error"
+          @selected={{true}}
+          @subtitle="Another banner with a feedback message"
+          @feedbackMessage={{hash type="error" value="This is another feedback message"}}
+        >
+          <:actions>
+            <OSS::RadioButton @selected={{true}} />
+          </:actions>
+        </OSS::Banner>
+      </div>
     </div>
   </div>
 

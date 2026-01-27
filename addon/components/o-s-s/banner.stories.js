@@ -77,6 +77,16 @@ export default {
         type: 'boolean'
       }
     },
+    feedbackMessage: {
+      description: 'An error message that will be displayed below the banner.',
+      table: {
+        type: {
+          summary: '{ type: string, value: string }'
+        },
+        defaultValue: { summary: 'undefined' }
+      },
+      control: { type: 'object' }
+    },
     size: {
       description:
         'Allows to adjust the size of the component. Currently available options are `sm`, `md` and `lg`. Defaults to `md`.',
