@@ -56,20 +56,7 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
   registerPanel(element: HTMLElement): void {
     this.currentPanel = element;
     scheduleOnce('afterRender', this, () => {
-      const referenceTarget = this.args.referenceTarget;
-      const floatingTarget = document.querySelector(`#${this.portalId}`);
-      if (referenceTarget && floatingTarget) {
-        this.cleanupDrodpownAutoplacement = attachDropdown(
-          referenceTarget as HTMLElement,
-          floatingTarget as HTMLElement,
-          {
-            placement: this.args.placement,
-            offset: this.args.offset,
-            width: 250,
-            maxHeight: 480
-          }
-        );
-      }
+      this.initializeDropdown();
     });
 
     this.currentPanel.querySelector('.oss-scrollable-panel-content')?.addEventListener('scroll', this.onScrollbound);
@@ -93,11 +80,7 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
     this.displaySubMenu = false;
 
     next(() => {
-      this.subItems = items;
-      this.displaySubMenu = true;
-      const parentElement = (event.target as HTMLElement).closest('li[role="button"]') as HTMLElement;
-      this.subReferenceTarget = parentElement ? parentElement : (event.target as HTMLElement);
-      this.subReferenceIndex = index;
+      this.setupSubMenu(items, index, event);
     });
   }
 
@@ -159,5 +142,30 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
     this.subReferenceIndex = -1;
     this.subReferenceTarget = null;
     this.subItems = [];
+  }
+
+  private initializeDropdown(): void {
+    const referenceTarget = this.args.referenceTarget;
+    const floatingTarget = document.querySelector(`#${this.portalId}`);
+    if (referenceTarget && floatingTarget) {
+      this.cleanupDrodpownAutoplacement = attachDropdown(
+        referenceTarget as HTMLElement,
+        floatingTarget as HTMLElement,
+        {
+          placement: this.args.placement,
+          offset: this.args.offset,
+          width: 250,
+          maxHeight: 480
+        }
+      );
+    }
+  }
+
+  private setupSubMenu(items: ContextMenuItem[], index: number, event: PointerEvent): void {
+    this.subItems = items;
+    this.displaySubMenu = true;
+    const parentElement = (event.target as HTMLElement).closest('li[role="button"]') as HTMLElement;
+    this.subReferenceTarget = parentElement ? parentElement : (event.target as HTMLElement);
+    this.subReferenceIndex = index;
   }
 }
