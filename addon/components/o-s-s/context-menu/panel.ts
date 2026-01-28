@@ -13,7 +13,7 @@ export const SUBPANEL_OFFSET = -6;
 export type ContextMenuItem = {
   items?: ContextMenuItem[];
   groupKey?: string;
-  rowRenderer?: ReturnType<typeof ensureSafeComponent>; // move to Component
+  rowRenderer?: ReturnType<typeof ensureSafeComponent>;
   action: () => void | boolean;
   [key: string]: unknown;
 };

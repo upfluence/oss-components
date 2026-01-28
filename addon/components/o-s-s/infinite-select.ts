@@ -27,7 +27,7 @@ interface InfiniteSelectArgs {
   skin?: 'default' | 'smart';
   action?: InfiniteSelectAction;
 
-  onSelect: (item: InfinityItem, event: PointerEvent | KeyboardEvent) => void;
+  onSelect: (item: InfinityItem) => void;
   onSearch?: (keyword: string) => void;
   onBottomReached?: () => void;
   onClose?: () => void;
@@ -136,9 +136,9 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
   }
 
   @action
-  didSelectItem(item: InfinityItem, event: PointerEvent | KeyboardEvent) {
+  didSelectItem(item: InfinityItem, event?: PointerEvent) {
     event?.stopPropagation();
-    this.args.onSelect(item, event);
+    this.args.onSelect(item);
   }
 
   @action
@@ -249,9 +249,9 @@ export default class OSSInfiniteSelect extends Component<InfiniteSelectArgs> {
     }
   }
 
-  private handleEnter(self: any, event: KeyboardEvent): void {
-    self.didSelectItem(self.items[self._focusElement], event);
-    event.preventDefault();
+  private handleEnter(self: any, e: KeyboardEvent): void {
+    self.didSelectItem(self.items[self._focusElement]);
+    e.preventDefault();
   }
 
   private handleTab(self: any): void {

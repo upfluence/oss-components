@@ -80,6 +80,15 @@ export default class Input extends Controller {
     }
   ];
 
+  otherItem = {
+    icon: { icon: 'fa-arrow-progress' },
+    title: 'Other',
+    groupKey: 'other',
+    action: () => {
+      console.log('click on other');
+    }
+  };
+
   subMenu1 = [
     {
       icon: { icon: 'fa-arrow-progress' },
@@ -99,118 +108,13 @@ export default class Input extends Controller {
         console.log('click on second');
       }
     },
-    {
-      icon: { icon: 'fa-arrow-progress' },
-      title: 'Other',
-      groupKey: 'other',
-      action: () => {
-        console.log('click on other');
-      }
-    },
-    {
-      icon: { icon: 'fa-arrow-progress' },
-      title: 'Other',
-      groupKey: 'other',
-      action: () => {
-        console.log('click on other');
-      }
-    },
-    {
-      icon: { icon: 'fa-arrow-progress' },
-      title: 'Other',
-      groupKey: 'other',
-      action: () => {
-        console.log('click on other');
-      }
-    },
-    {
-      icon: { icon: 'fa-arrow-progress' },
-      title: 'Other',
-      groupKey: 'other',
-      action: () => {
-        console.log('click on other');
-      }
-    },
-    {
-      icon: { icon: 'fa-arrow-progress' },
-      title: 'Other',
-      groupKey: 'other',
-      action: () => {
-        console.log('click on other');
-      }
-    },
-    {
-      icon: { icon: 'fa-arrow-progress' },
-      title: 'Other',
-      groupKey: 'other',
-      action: () => {
-        console.log('click on other');
-      }
-    },
-    {
-      icon: { icon: 'fa-arrow-progress' },
-      title: 'Other',
-      groupKey: 'other',
-      action: () => {
-        console.log('click on other');
-      }
-    },
-    {
-      icon: { icon: 'fa-arrow-progress' },
-      title: 'Other',
-      groupKey: 'other',
-      action: () => {
-        console.log('click on other');
-      }
-    },
-    {
-      icon: { icon: 'fa-arrow-progress' },
-      title: 'Other',
-      groupKey: 'other',
-      action: () => {
-        console.log('click on other');
-      }
-    },
-    {
-      icon: { icon: 'fa-arrow-progress' },
-      title: 'Other',
-      groupKey: 'other',
-      action: () => {
-        console.log('click on other');
-      }
-    },
-    {
-      icon: { icon: 'fa-arrow-progress' },
-      title: 'Other',
-      groupKey: 'other',
-      action: () => {
-        console.log('click on other');
-      }
-    },
-    {
-      icon: { icon: 'fa-arrow-progress' },
-      title: 'Other',
-      groupKey: 'other',
-      action: () => {
-        console.log('click on other');
-      }
-    },
-    {
-      icon: { icon: 'fa-arrow-progress' },
-      title: 'Other',
-      groupKey: 'other',
-      action: () => {
-        console.log('click on other');
-      }
-    },
-    {
-      icon: { icon: 'fa-arrow-progress' },
-      title: 'Other',
-      groupKey: 'other',
-      action: () => {
-        console.log('click on other');
-      }
-    }
+    this.otherItem,
+    this.otherItem,
+    this.otherItem,
+    this.otherItem,
+    this.otherItem,
+    this.otherItem,
+    this.otherItem
   ];
 
   @tracked customContextMenuItems: ContextMenuItem[] = [
