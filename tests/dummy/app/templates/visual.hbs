@@ -37,6 +37,11 @@
       Multi-skin Progress bars
     </div>
     <div class="fx-row fx-gap-px-24 fx-xalign-center">
+      <OSS::ProgressBar
+        @skins={{hash success=0 warning=0 danger=0}}
+        @displayValue={{true}}
+        @label="Multi-segment example (0%)"
+      />
       <OSS::ProgressBar @skins={{this.progressBarSkins}} @label="Multi-segment live example (70%-100%)" />
       <OSS::ProgressBar
         @skins={{hash success=30 warning=25 danger=15}}
@@ -53,6 +58,12 @@
         @skins={{hash success=45 danger=10}}
         @displayValue={{true}}
         @label="Partial progress (55%)"
+        @coloredBackground={{true}}
+      />
+      <OSS::ProgressBar
+        @skins={{hash pending=0}}
+        @displayValue={{true}}
+        @label="Pending (0%)"
         @coloredBackground={{true}}
       />
       <OSS::ProgressBar
