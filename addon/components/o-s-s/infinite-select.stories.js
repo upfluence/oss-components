@@ -237,3 +237,14 @@ EmptyState.args = {
     items: []
   }
 };
+
+export const WithGroupsBlock = Template.bind({});
+WithGroupsBlock.args = {
+  ...defaultArgs,
+  ...{
+    items: FAKE_DATA.map((item, index) => ({
+      ...item,
+      groupKey: index % 2 === 0 ? 'Group A' : 'Group B'
+    }))
+  }
+};
