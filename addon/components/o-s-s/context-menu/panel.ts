@@ -41,6 +41,7 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
   @tracked subPanelElement: HTMLElement | null = null;
 
   cleanupDrodpownAutoplacement?: () => void;
+  onScrollbound = this.onScroll.bind(this);
 
   subPanelOffset: { mainAxis: number; crossAxis: number } = {
     mainAxis: 0,
@@ -70,6 +71,14 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
         );
       }
     });
+
+    this.currentPanel.querySelector('.oss-scrollable-panel-content')?.addEventListener('scroll', this.onScrollbound);
+  }
+
+  @action
+  willDestroy(): void {
+    super.willDestroy();
+    this.currentPanel.querySelector('.oss-scrollable-panel-content')?.removeEventListener('scroll', this.onScrollbound);
   }
 
   @action
@@ -117,8 +126,9 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
 
   @action
   onSubPanelMouseLeave(event: MouseEvent): void {
-    this.clearSubMenu();
-
+    if (this.subReferenceTarget && !this.subReferenceTarget.contains(event.relatedTarget as HTMLElement)) {
+      this.clearSubMenu();
+    }
     if (this.currentPanel && this.currentPanel.contains(event.relatedTarget as HTMLElement)) {
       return;
     }

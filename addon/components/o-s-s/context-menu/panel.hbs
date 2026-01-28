@@ -1,64 +1,69 @@
 <div {{did-insert this.registerPanelContainer}}>
   {{#if this.isInitialized}}
     {{#in-element this.portalTarget insertBefore=null}}
-      <OSS::InfiniteSelect
-        @items={{@items}}
-        @searchEnabled={{false}}
-        @onSelect={{this.noop}}
-        @onClose={{this.closeDropdown}}
-        @enableKeyboard={{true}}
+      <OSS::ScrollablePanel
         id={{this.portalId}}
-        class="margin-top-px-0 context-menu-panel__dropdown"
-        {{on-click-outside this.onClickOutside}}
+        class="context-menu-panel__scrollable-container"
         {{did-insert this.registerPanel}}
-        {{on "scroll" this.onScroll}}
         {{on "mouseleave" this.mouseLeave}}
+        {{on "scroll" this.onScroll}}
         ...attributes
       >
-        <:option as |item index|>
-          {{#if item.items}}
-            <OSS::InfiniteSelect::Option
-              @prefixAvatar={{item.prefixAvatar}}
-              @prefixBadge={{item.prefixBadge}}
-              @prefixIcon={{item.prefixIcon}}
-              @prefixCountry={{item.prefixCountry}}
-              @title={{item.title}}
-              @subtitle={{item.subtitle}}
-              @icon={{item.icon}}
-              @suffixHint={{item.suffixHint}}
-              @suffixTag={{item.suffixTag}}
-              @suffixIcon={{or item.suffixIcon (hash icon="fa-chevron-right")}}
-              @selectionType={{item.selectionType}}
-              @selected={{item.selected}}
-              @disabled={{item.disabled}}
-              @onSelect={{item.action}}
-              {{on "mouseenter" (fn this.openSubMenu item.items index)}}
-              {{on "click" (fn this.toggleSubMenu item.items index)}}
-            />
-          {{else if item.rowRenderer}}
-            <item.rowRenderer @item={{item}} />
-          {{else}}
-            <OSS::InfiniteSelect::Option
-              @prefixAvatar={{item.prefixAvatar}}
-              @prefixBadge={{item.prefixBadge}}
-              @prefixIcon={{item.prefixIcon}}
-              @prefixCountry={{item.prefixCountry}}
-              @title={{item.title}}
-              @subtitle={{item.subtitle}}
-              @icon={{item.icon}}
-              @suffixHint={{item.suffixHint}}
-              @suffixTag={{item.suffixTag}}
-              @suffixIcon={{item.suffixIcon}}
-              @selectionType={{item.selectionType}}
-              @selected={{item.selected}}
-              @disabled={{item.disabled}}
-              @onSelect={{item.action}}
-              {{on "mouseenter" this.closeSubMenu}}
-              {{on "click" this.closeSubMenu}}
-            />
-          {{/if}}
-        </:option>
-      </OSS::InfiniteSelect>
+        <OSS::InfiniteSelect
+          @items={{@items}}
+          @searchEnabled={{false}}
+          @onSelect={{this.noop}}
+          @onClose={{this.closeDropdown}}
+          @enableKeyboard={{false}}
+          class="margin-top-px-0 context-menu-panel__dropdown"
+          {{on-click-outside this.onClickOutside}}
+          {{did-insert this.registerPanel}}
+        >
+          <:option as |item index|>
+            {{#if item.items}}
+              <OSS::InfiniteSelect::Option
+                @prefixAvatar={{item.prefixAvatar}}
+                @prefixBadge={{item.prefixBadge}}
+                @prefixIcon={{item.prefixIcon}}
+                @prefixCountry={{item.prefixCountry}}
+                @title={{item.title}}
+                @subtitle={{item.subtitle}}
+                @icon={{item.icon}}
+                @suffixHint={{item.suffixHint}}
+                @suffixTag={{item.suffixTag}}
+                @suffixIcon={{or item.suffixIcon (hash icon="fa-chevron-right")}}
+                @selectionType={{item.selectionType}}
+                @selected={{item.selected}}
+                @disabled={{item.disabled}}
+                @onSelect={{item.action}}
+                {{on "mouseenter" (fn this.openSubMenu item.items index)}}
+                {{on "click" (fn this.toggleSubMenu item.items index)}}
+              />
+            {{else if item.rowRenderer}}
+              <item.rowRenderer @item={{item}} />
+            {{else}}
+              <OSS::InfiniteSelect::Option
+                @prefixAvatar={{item.prefixAvatar}}
+                @prefixBadge={{item.prefixBadge}}
+                @prefixIcon={{item.prefixIcon}}
+                @prefixCountry={{item.prefixCountry}}
+                @title={{item.title}}
+                @subtitle={{item.subtitle}}
+                @icon={{item.icon}}
+                @suffixHint={{item.suffixHint}}
+                @suffixTag={{item.suffixTag}}
+                @suffixIcon={{item.suffixIcon}}
+                @selectionType={{item.selectionType}}
+                @selected={{item.selected}}
+                @disabled={{item.disabled}}
+                @onSelect={{item.action}}
+                {{on "mouseenter" this.closeSubMenu}}
+                {{on "click" this.closeSubMenu}}
+              />
+            {{/if}}
+          </:option>
+        </OSS::InfiniteSelect>
+      </OSS::ScrollablePanel>
     {{/in-element}}
 
     {{#if this.displaySubMenu}}
