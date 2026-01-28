@@ -10,6 +10,7 @@ export interface OSSTextAreaArgs {
   value?: string;
   disabled?: boolean;
   errorMessage?: string;
+  hasError?: boolean;
   placeholder?: string;
   onChange?(value: string): void;
 }
@@ -34,11 +35,16 @@ export default class OSSTextArea<T extends OSSTextAreaArgs> extends Component<T>
     return this.args.resize;
   }
 
+  get hasError(): boolean {
+    return this.args.hasError || !!this.args.errorMessage;
+  }
+
   get computedClass(): string {
     const classes: string[] = [];
     if (this.resize === 'vertical') classes.push('oss-textarea--resize-v');
     else if (this.resize === 'horizontal') classes.push('oss-textarea--resize-h');
     else if (this.resize === 'none') classes.push('oss-textarea--resize-none');
+    if (this.hasError) classes.push('oss-textarea--errored');
 
     return classes.join(' ');
   }
