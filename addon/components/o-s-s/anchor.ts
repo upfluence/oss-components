@@ -7,6 +7,7 @@ interface OSSAnchorArgs {
   routePrefix?: string;
   noopener?: boolean;
   noreferrer?: boolean;
+  disableAutoActive?: boolean;
 }
 
 export default class OSSAnchor extends Component<OSSAnchorArgs> {
@@ -18,6 +19,10 @@ export default class OSSAnchor extends Component<OSSAnchorArgs> {
 
   get noreferrer(): boolean {
     return this.args.noreferrer ?? true;
+  }
+
+  get currentWhen(): boolean | undefined {
+    return this.args.disableAutoActive !== undefined ? !this.args.disableAutoActive : undefined;
   }
 
   get rel(): string {
