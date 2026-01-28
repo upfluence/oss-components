@@ -15,7 +15,21 @@
     border-radius: 0;
 
     .upf-infinite-select__item {
-      padding: 0px;
+      padding: var(--spacing-px-3) var(--spacing-px-12);
+
+      &:hover {
+        background-color: var(--color-primary-50);
+      }
+
+      &:active,
+      &:has(.infinit-select-option-panel-container.active) {
+        background-color: var(--color-primary-100);
+      }
+    }
+
+    .infinit-select-option-panel-container {
+      padding: 0;
+      background-color: transparent;
     }
   }
 }
