@@ -38,6 +38,7 @@
                 @onSelect={{item.action}}
                 {{on "mouseenter" (fn this.openSubMenu item.items index)}}
                 {{on "click" (fn this.toggleSubMenu item.items index)}}
+                class="infinit-select-option-panel-container {{if (eq index subReferenceIndex) 'active' ''}}"
               />
             {{else if item.rowRenderer}}
               <item.rowRenderer @item={{item}} />
@@ -59,6 +60,7 @@
                 @onSelect={{item.action}}
                 {{on "mouseenter" this.closeSubMenu}}
                 {{on "click" this.closeSubMenu}}
+                class="infinit-select-option-panel-container"
               />
             {{/if}}
           </:option>
