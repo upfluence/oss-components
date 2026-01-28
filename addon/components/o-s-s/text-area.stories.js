@@ -68,16 +68,6 @@ export default {
       },
       control: { type: 'text' }
     },
-    hasError: {
-      description: 'Indicates if the textarea has an error state (adds danger-500 border)',
-      table: {
-        type: {
-          summary: 'boolean'
-        },
-        defaultValue: { summary: 'false' }
-      },
-      control: { type: 'boolean' }
-    },
     onChange: {
       description: 'Method called every time the textarea is updated',
       table: {
@@ -104,14 +94,13 @@ const defaultArgs = {
   disabled: false,
   placeholder: 'this is the placeholder',
   errorMessage: undefined,
-  hasError: false,
   onChange: action('onChange')
 };
 
 const DefaultUsageTemplate = (args) => ({
   template: hbs`
       <OSS::TextArea @value={{this.value}} @disabled={{this.disabled}} @placeholder={{this.placeholder}}
-                     @errorMessage={{this.errorMessage}} @hasError={{this.hasError}} @onChange={{this.onChange}} @rows={{this.rows}}
+                     @errorMessage={{this.errorMessage}} @onChange={{this.onChange}} @rows={{this.rows}}
                      @resize={{this.resize}} />
   `,
   context: args
@@ -119,15 +108,3 @@ const DefaultUsageTemplate = (args) => ({
 
 export const BasicUsage = DefaultUsageTemplate.bind({});
 BasicUsage.args = defaultArgs;
-
-export const WithError = DefaultUsageTemplate.bind({});
-WithError.args = {
-  ...defaultArgs,
-  hasError: true
-};
-
-export const WithErrorMessage = DefaultUsageTemplate.bind({});
-WithErrorMessage.args = {
-  ...defaultArgs,
-  errorMessage: 'This field is required'
-};

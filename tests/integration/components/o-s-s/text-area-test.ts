@@ -107,45 +107,5 @@ module('Integration | Component | o-s-s/text-area', function (hooks) {
       this.resize = 'NotACorrectValue';
       await render(hbs`<OSS::TextArea @resize={{this.resize}} />`);
     });
-
-    test('when @hasError is true, textarea has errored class', async function (assert) {
-      await render(hbs`<OSS::TextArea @hasError={{true}} />`);
-      assert.dom(this.textareaSelector).hasClass('oss-textarea--errored');
-      assert.dom('.oss-textarea-container').hasClass('oss-textarea-container--errored');
-    });
-
-    test('when @hasError is false, textarea does not have errored class', async function (assert) {
-      await render(hbs`<OSS::TextArea @hasError={{false}} />`);
-      assert.dom(this.textareaSelector).hasNoClass('oss-textarea--errored');
-      assert.dom('.oss-textarea-container').hasNoClass('oss-textarea-container--errored');
-    });
-
-    test('when @errorMessage is provided, textarea has errored class', async function (assert) {
-      await render(hbs`<OSS::TextArea @errorMessage="This is an error" />`);
-      assert.dom(this.textareaSelector).hasClass('oss-textarea--errored');
-      assert.dom('.oss-textarea-container').hasClass('oss-textarea-container--errored');
-      assert.dom('.font-color-error-500').exists();
-      assert.dom('.font-color-error-500').hasText('This is an error');
-    });
-
-    test('when @errorMessage is empty string, textarea does not have errored class', async function (assert) {
-      await render(hbs`<OSS::TextArea @errorMessage="" />`);
-      assert.dom(this.textareaSelector).hasNoClass('oss-textarea--errored');
-      assert.dom('.oss-textarea-container').hasNoClass('oss-textarea-container--errored');
-    });
-
-    test('when both @hasError and @errorMessage are provided, textarea has errored class', async function (assert) {
-      await render(hbs`<OSS::TextArea @hasError={{true}} @errorMessage="Error message" />`);
-      assert.dom(this.textareaSelector).hasClass('oss-textarea--errored');
-      assert.dom('.oss-textarea-container').hasClass('oss-textarea-container--errored');
-      assert.dom('.font-color-error-500').exists();
-      assert.dom('.font-color-error-500').hasText('Error message');
-    });
-
-    test('when neither @hasError nor @errorMessage are provided, textarea does not have errored class', async function (assert) {
-      await render(hbs`<OSS::TextArea />`);
-      assert.dom(this.textareaSelector).hasNoClass('oss-textarea--errored');
-      assert.dom('.oss-textarea-container').hasNoClass('oss-textarea-container--errored');
-    });
   });
 });
