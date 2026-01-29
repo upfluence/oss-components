@@ -41,7 +41,7 @@
                 class="infinit-select-option-panel-container {{if (eq index this.subReferenceIndex) 'active' ''}}"
               />
             {{else if item.rowRenderer}}
-              <item.rowRenderer @item={{item}} />
+              <item.rowRenderer @item={{item}} {{on "mouseenter" this.closeSubMenu}} {{on "click" this.closeSubMenu}} />
             {{else}}
               <OSS::InfiniteSelect::Option
                 @prefixAvatar={{item.prefixAvatar}}
