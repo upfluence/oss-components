@@ -51,7 +51,6 @@ export default class Input extends Controller {
   @tracked currencyOnly: string = '';
   @tracked formInstance?: FormInstance;
   @tracked formFieldValue: string = '';
-
   @tracked declare referenceTarget: HTMLElement;
   @tracked declare contextMenuPanel: HTMLElement;
   @tracked displayContextMenuPanel: boolean = false;
@@ -122,7 +121,6 @@ export default class Input extends Controller {
       prefixIcon: { icon: 'fa-arrow-progress' },
       title: 'Move to next step',
       items: this.subMenu1,
-      // selected: true,
       groupKey: 'actions',
       action: () => {
         console.log('click on move to next step');
