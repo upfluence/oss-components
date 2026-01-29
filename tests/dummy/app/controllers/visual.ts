@@ -116,9 +116,14 @@ export default class Visual extends Controller {
   @tracked progressBarWarning: number = 25;
   @tracked progressBarDanger: number = 15;
 
+  @tracked progressBarSuccess2: number = 30;
+  @tracked progressBarWarning2: number = 25;
+  @tracked progressBarDanger2: number = 15;
+
   constructor() {
     super();
     this.liveProgressBar();
+    this.liveProgressBarZero();
   }
 
   get progressBarSkins(): Record<string, number> {
@@ -126,6 +131,14 @@ export default class Visual extends Controller {
       success: this.progressBarSuccess,
       warning: this.progressBarWarning,
       danger: this.progressBarDanger
+    };
+  }
+
+  get progressBarSkins2(): Record<string, number> {
+    return {
+      success: this.progressBarSuccess2,
+      warning: this.progressBarWarning2,
+      danger: this.progressBarDanger2
     };
   }
 
@@ -137,6 +150,17 @@ export default class Visual extends Controller {
       this.progressBarDanger += 5 * value;
 
       this.liveProgressBar(!negative);
+    }, 2000);
+  };
+
+  liveProgressBarZero = (negative: boolean = false): void => {
+    const value = negative ? -1 : 1;
+    setTimeout(() => {
+      this.progressBarSuccess2 = value === 1 ? 0 : 20;
+      this.progressBarWarning2 = value === 1 ? 0 : 10;
+      this.progressBarDanger2 = value === 1 ? 0 : 5;
+
+      this.liveProgressBarZero(!negative);
     }, 2000);
   };
 
