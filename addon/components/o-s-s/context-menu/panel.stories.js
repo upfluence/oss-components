@@ -27,7 +27,7 @@ export default {
         'The offset distance between the context menu panel and its reference target. Can be a number or an object specifying mainAxis and crossAxis offsets.',
       table: {
         type: { summary: 'number | { mainAxis: number; crossAxis: number }' },
-        defaultValue: { summary: 0 }
+        defaultValue: { summary: '{ mainAxis: 0, crossAxis: 0 }' }
       },
       control: { type: 'object' }
     },
@@ -88,7 +88,7 @@ const items = [
 
 const defaultArgs = {
   items: items,
-  offset: 6,
+  offset: { mainAxis: -100, crossAxis: -100 },
   placement: 'bottom-start',
   onMouseLeave: action('onMouseLeave'),
   isInitialized: false,

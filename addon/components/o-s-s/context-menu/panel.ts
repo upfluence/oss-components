@@ -7,6 +7,8 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import attachDropdown from '@upfluence/oss-components/utils/attach-dropdown';
 
+export const DEFAULT_PLACEMENT = 'bottom-start';
+export const DEFAULT_OFFSET = { mainAxis: 0, crossAxis: 0 };
 export const SUBPANEL_OFFSET = -6;
 
 ///////////////////// TODO EXPORT IN PROPER FILE WHEN IMPLEMENTATION IS DONE
@@ -152,8 +154,8 @@ export default class OSSContextMenuPanelComponent extends Component<OSSContextMe
         referenceTarget as HTMLElement,
         floatingTarget as HTMLElement,
         {
-          placement: this.args.placement,
-          offset: this.args.offset,
+          placement: this.args.placement ?? DEFAULT_PLACEMENT,
+          offset: this.args.offset ?? DEFAULT_OFFSET,
           width: 250,
           maxHeight: 480
         }
